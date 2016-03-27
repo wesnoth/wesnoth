@@ -19,7 +19,7 @@ end
 
 local ca_forest_animals_tusklet_move = {}
 
-function ca_forest_animals_tusklet_move:evaluation(ai, cfg)
+function ca_forest_animals_tusklet_move:evaluation(cfg)
     -- Tusklets will simply move toward the closest tusker, without regard for anything else
     -- Except if no tuskers are left, in which case ca_forest_animals_move takes over and does a random move
 
@@ -29,7 +29,7 @@ function ca_forest_animals_tusklet_move:evaluation(ai, cfg)
     return cfg.ca_score
 end
 
-function ca_forest_animals_tusklet_move:execution(ai, cfg)
+function ca_forest_animals_tusklet_move:execution(cfg)
     local tusklets = get_tusklets(cfg)
     local tuskers = get_tuskers(cfg)
 

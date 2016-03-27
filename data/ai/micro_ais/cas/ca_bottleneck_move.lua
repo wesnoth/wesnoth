@@ -81,19 +81,19 @@ local function bottleneck_triple_from_keys(key_x, key_y, max_value)
     return AH.LS_of_triples(coords)
 end
 
-local function bottleneck_create_positioning_map(max_value, self)
+local function bottleneck_create_positioning_map(max_value, data)
     -- Create the positioning maps for the healers and leaders, if not given by WML keys
     -- @max_value: the rating value for the first hex in the set
-    -- self.data.BD_def_map must have been created when this function is called.
+    -- data.BD_def_map must have been created when this function is called.
 
     -- Find all locations adjacent to def_map.
     -- This might include hexes on the line itself.
     -- Only store those that are not in enemy territory.
     local map = LS.create()
-    self.data.BD_def_map:iter(function(x, y, v)
+    data.BD_def_map:iter(function(x, y, v)
         for xa,ya in H.adjacent_tiles(x, y) do
-            if self.data.BD_is_my_territory:get(xa, ya) then
-                local rating = self.data.BD_def_map:get(x, y) or 0
+            if data.BD_is_my_territory:get(xa, ya) then
+                local rating = data.BD_def_map:get(x, y) or 0
                 rating = rating + (map:get(xa, ya) or 0)
                 map:insert(xa, ya, rating)
             end
@@ -108,14 +108,14 @@ local function bottleneck_create_positioning_map(max_value, self)
 
     -- We merge the defense map into this, as healers/leaders (by default)
     -- can take position on the front line
-    map:union_merge(self.data.BD_def_map,
+    map:union_merge(data.BD_def_map,
         function(x, y, v1, v2) return v1 or v2 end
     )
 
     return map
 end
 
-local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, self)
+local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, data)
     -- Calculate rating of a unit @unit at coordinates (@x,@y).
     -- Don't want to extract @is_healer and @has_leadership inside this function, as it is very slow.
     -- Thus they are provided as parameters from the calling function.
@@ -125,18 +125,18 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, self
     -- Defense positioning rating
     -- We exclude healers/leaders here, as we don't necessarily want them on the front line
     if (not is_healer) and (not has_leadership) then
-        rating = self.data.BD_def_map:get(x, y) or 0
+        rating = data.BD_def_map:get(x, y) or 0
     end
 
     -- Healer positioning rating
     if is_healer then
-        local healer_rating = self.data.BD_healer_map:get(x, y) or 0
+        local healer_rating = data.BD_healer_map:get(x, y) or 0
         if (healer_rating > rating) then rating = healer_rating end
     end
 
     -- Leadership unit positioning rating
     if has_leadership then
-        local leadership_rating = self.data.BD_leadership_map:get(x, y) or 0
+        local leadership_rating = data.BD_leadership_map:get(x, y) or 0
 
         -- If leadership unit is injured -> prefer hexes next to healers
         if (unit.hitpoints < unit.max_hitpoints) then
@@ -154,18 +154,18 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, self
 
     -- Injured unit positioning
     if (unit.hitpoints < unit.max_hitpoints) then
-        local healing_rating = self.data.BD_healing_map:get(x, y) or 0
+        local healing_rating = data.BD_healing_map:get(x, y) or 0
         if (healing_rating > rating) then rating = healing_rating end
     end
 
     -- If this did not produce a positive rating, we add a
     -- distance-based rating, to get units to the bottleneck in the first place
-    if (rating <= 0) and self.data.BD_is_my_territory:get(x, y) then
+    if (rating <= 0) and data.BD_is_my_territory:get(x, y) then
         local combined_dist = 0
-        self.data.BD_def_map:iter(function(x_def, y_def, v)
+        data.BD_def_map:iter(function(x_def, y_def, v)
             combined_dist = combined_dist + H.distance_between(x, y, x_def, y_def)
         end)
-        combined_dist = combined_dist / self.data.BD_def_map:size()
+        combined_dist = combined_dist / data.BD_def_map:size()
         rating = 1000 - combined_dist * 10.
     end
 
@@ -177,7 +177,7 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, self
     return rating
 end
 
-local function bottleneck_move_out_of_way(unit_in_way, self)
+local function bottleneck_move_out_of_way(unit_in_way, data)
     -- Find the best move out of the way for a unit @unit_in_way and choose the
     -- shortest possible move. Returns nil if no move was found.
 
@@ -193,7 +193,7 @@ local function bottleneck_move_out_of_way(unit_in_way, self)
 
     local best_reach, best_hex = -9e99
     for _,loc in ipairs(reach) do
-        if self.data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
+        if data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
             -- Criterion: MP left after the move has been done
             if (loc[3] > best_reach) then
                 best_reach, best_hex = loc[3], { loc[1], loc[2] }
@@ -206,9 +206,9 @@ end
 
 local ca_bottleneck_move = {}
 
-function ca_bottleneck_move:evaluation(ai, cfg, self)
+function ca_bottleneck_move:evaluation(cfg, data)
     if cfg.active_side_leader and
-        (not MAISD.get_mai_self_data(self.data, cfg.ai_id, "side_leader_activated"))
+        (not MAISD.get_mai_self_data(data, cfg.ai_id, "side_leader_activated"))
     then
         local can_still_recruit = false  -- Enough gold left for another recruit?
         for _,recruit_type in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
@@ -218,12 +218,12 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
             end
         end
         if (not can_still_recruit) then
-            MAISD.set_mai_self_data(self.data, cfg.ai_id, { side_leader_activated = true })
+            MAISD.set_mai_self_data(data, cfg.ai_id, { side_leader_activated = true })
         end
     end
 
     local units = {}
-    if MAISD.get_mai_self_data(self.data, cfg.ai_id, "side_leader_activated") then
+    if MAISD.get_mai_self_data(data, cfg.ai_id, "side_leader_activated") then
         units = AH.get_units_with_moves { side = wesnoth.current.side }
     else
         units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
@@ -231,54 +231,54 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
     if (not units[1]) then return 0 end
 
     -- Set up the array that tells the AI where to defend the bottleneck
-    self.data.BD_def_map = bottleneck_triple_from_keys(cfg.x, cfg.y, 10000)
+    data.BD_def_map = bottleneck_triple_from_keys(cfg.x, cfg.y, 10000)
 
     -- Territory map, describing which hex is on AI's side of the bottleneck
     -- This one is a bit expensive, esp. on large maps -> don't delete every move and reuse
-    -- However, after a reload, self.data.BD_is_my_territory is an empty string
+    -- However, after a reload, data.BD_is_my_territory is an empty string
     --  -> need to recalculate in that case also  (the reason is that is_my_territory is not a WML table)
-    if (not self.data.BD_is_my_territory) or (type(self.data.BD_is_my_territory) == 'string') then
+    if (not data.BD_is_my_territory) or (type(data.BD_is_my_territory) == 'string') then
         local enemy_map = bottleneck_triple_from_keys(cfg.enemy_x, cfg.enemy_y, 10000)
-        self.data.BD_is_my_territory = bottleneck_is_my_territory(self.data.BD_def_map, enemy_map)
+        data.BD_is_my_territory = bottleneck_is_my_territory(data.BD_def_map, enemy_map)
     end
 
     -- Healer positioning map
     if cfg.healer_x and cfg.healer_y then
-        self.data.BD_healer_map = bottleneck_triple_from_keys(cfg.healer_x, cfg.healer_y, 5000)
+        data.BD_healer_map = bottleneck_triple_from_keys(cfg.healer_x, cfg.healer_y, 5000)
     else
-        self.data.BD_healer_map = bottleneck_create_positioning_map(5000, self)
+        data.BD_healer_map = bottleneck_create_positioning_map(5000, data)
     end
     -- Use def_map values for any healer hexes that are defined in def_map as well
-    self.data.BD_healer_map:inter_merge(self.data.BD_def_map,
+    data.BD_healer_map:inter_merge(data.BD_def_map,
         function(x, y, v1, v2) return v2 or v1 end
     )
 
     -- Leadership position map
     if cfg.leadership_x and cfg.leadership_y then
-        self.data.BD_leadership_map = bottleneck_triple_from_keys(cfg.leadership_x, cfg.leadership_y, 4000)
+        data.BD_leadership_map = bottleneck_triple_from_keys(cfg.leadership_x, cfg.leadership_y, 4000)
     else
-        self.data.BD_leadership_map = bottleneck_create_positioning_map(4000, self)
+        data.BD_leadership_map = bottleneck_create_positioning_map(4000, data)
     end
     -- Use def_map values for any leadership hexes that are defined in def_map as well
-    self.data.BD_leadership_map:inter_merge(self.data.BD_def_map,
+    data.BD_leadership_map:inter_merge(data.BD_def_map,
         function(x, y, v1, v2) return v2 or v1 end
     )
 
     -- Healing map: positions next to healers
     -- Healers get moved with higher priority, so don't need to check their MP
     local healers = wesnoth.get_units { side = wesnoth.current.side, ability = "healing" }
-    self.data.BD_healing_map = LS.create()
+    data.BD_healing_map = LS.create()
     for _,healer in ipairs(healers) do
         for xa,ya in H.adjacent_tiles(healer.x, healer.y) do
             -- Cannot be on the line, and needs to be in own territory
-            if self.data.BD_is_my_territory:get(xa, ya) then
+            if data.BD_is_my_territory:get(xa, ya) then
                 local min_dist = 9e99
-                self.data.BD_def_map:iter( function(xd, yd, vd)
+                data.BD_def_map:iter( function(xd, yd, vd)
                     local dist_line = H.distance_between(xa, ya, xd, yd)
                     if (dist_line < min_dist) then min_dist = dist_line end
                 end)
                 if (min_dist > 0) then
-                    self.data.BD_healing_map:insert(xa, ya, 3000 + min_dist)  -- Farther away from enemy is good
+                    data.BD_healing_map:insert(xa, ya, 3000 + min_dist)  -- Farther away from enemy is good
                 end
             end
         end
@@ -299,13 +299,13 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
         local is_healer = (unit.__cfg.usage == "healer")
         local has_leadership = AH.has_ability(unit, "leadership")
 
-        local rating = bottleneck_get_rating(unit, unit.x, unit.y, has_leadership, is_healer, self)
+        local rating = bottleneck_get_rating(unit, unit.x, unit.y, has_leadership, is_healer, data)
         current_rating_map:insert(unit.x, unit.y, rating)
 
         -- A unit that cannot move any more, (or at least cannot move out of the way)
         -- must be considered to have a very high rating (it's in the best position
         -- it can possibly achieve)
-        local best_move_away = bottleneck_move_out_of_way(unit, self)
+        local best_move_away = bottleneck_move_out_of_way(unit, data)
         if (not best_move_away) then current_rating_map:insert(unit.x, unit.y, 20000) end
     end
 
@@ -315,7 +315,7 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
     local attacks = {}
     for _,enemy in ipairs(enemies) do
         for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
-            if self.data.BD_is_my_territory:get(xa, ya) then
+            if data.BD_is_my_territory:get(xa, ya) then
                 local unit_in_way = wesnoth.get_unit(xa, ya)
                 local data = { x = xa, y = ya,
                     defender = enemy,
@@ -346,7 +346,7 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
 
         local reach = wesnoth.find_reach(unit)
         for _,loc in ipairs(reach) do
-            local rating = bottleneck_get_rating(unit, loc[1], loc[2], has_leadership, is_healer, self)
+            local rating = bottleneck_get_rating(unit, loc[1], loc[2], has_leadership, is_healer, data)
 
             -- A move is only considered if it improves the overall rating,
             -- that is, its rating must be higher than:
@@ -408,7 +408,7 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
                         -- Small penalty if there's a unit in the way
                         -- We also need to check whether this unit can actually move out of the way
                         if attack.unit_in_way then
-                            if bottleneck_move_out_of_way(attack.unit_in_way, self) then
+                            if bottleneck_move_out_of_way(attack.unit_in_way, data) then
                                 level_up_rating = level_up_rating - 0.001
                             else
                                 level_up_rating = 0
@@ -417,8 +417,8 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
 
                         if (level_up_rating > max_rating) then
                             max_rating, best_unit, best_hex = level_up_rating, unit, { loc[1], loc[2] }
-                            self.data.BD_level_up_defender = attack.defender
-                            self.data.BD_level_up_weapon = n_weapon
+                            data.BD_level_up_defender = attack.defender
+                            data.BD_level_up_weapon = n_weapon
                         end
                     end
                 end
@@ -428,7 +428,7 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
 
     -- Set the variables for the exec() function
     if (not best_hex) then
-        self.data.BD_bottleneck_moves_done = true
+        data.BD_bottleneck_moves_done = true
     else
         -- If there's another unit in the best location, moving it out of the way becomes the best move
         local unit_in_way = wesnoth.get_units { x = best_hex[1], y = best_hex[2],
@@ -436,23 +436,23 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
         }[1]
 
         if unit_in_way then
-            best_hex = bottleneck_move_out_of_way(unit_in_way, self)
+            best_hex = bottleneck_move_out_of_way(unit_in_way, data)
             best_unit = unit_in_way
-            self.data.BD_level_up_defender = nil
-            self.data.BD_level_up_weapon = nil
+            data.BD_level_up_defender = nil
+            data.BD_level_up_weapon = nil
         end
 
-        self.data.BD_bottleneck_moves_done = false
-        self.data.BD_unit, self.data.BD_hex = best_unit, best_hex
+        data.BD_bottleneck_moves_done = false
+        data.BD_unit, data.BD_hex = best_unit, best_hex
     end
 
     return cfg.ca_score
 end
 
-function ca_bottleneck_move:execution(ai, cfg, self)
-    if self.data.BD_bottleneck_moves_done then
+function ca_bottleneck_move:execution(cfg, data)
+    if data.BD_bottleneck_moves_done then
         local units = {}
-        if MAISD.get_mai_self_data(self.data, cfg.ai_id, "side_leader_activated") then
+        if MAISD.get_mai_self_data(data, cfg.ai_id, "side_leader_activated") then
             units = AH.get_units_with_moves { side = wesnoth.current.side }
         else
             units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
@@ -462,23 +462,23 @@ function ca_bottleneck_move:execution(ai, cfg, self)
             AH.checked_stopunit_moves(ai, unit)
         end
     else
-        if (self.data.BD_unit.x ~= self.data.BD_hex[1]) or (self.data.BD_unit.y ~= self.data.BD_hex[2]) then
+        if (data.BD_unit.x ~= data.BD_hex[1]) or (data.BD_unit.y ~= data.BD_hex[2]) then
             -- Don't want full move, as this might be stepping out of the way
-            AH.checked_move(ai, self.data.BD_unit, self.data.BD_hex[1], self.data.BD_hex[2])
+            AH.checked_move(ai, data.BD_unit, data.BD_hex[1], data.BD_hex[2])
         end
-        if (not self.data.BD_unit) or (not self.data.BD_unit.valid) then return end
+        if (not data.BD_unit) or (not data.BD_unit.valid) then return end
 
-        if self.data.BD_level_up_defender then
-            AH.checked_attack(ai, self.data.BD_unit, self.data.BD_level_up_defender, self.data.BD_level_up_weapon)
+        if data.BD_level_up_defender then
+            AH.checked_attack(ai, data.BD_unit, data.BD_level_up_defender, data.BD_level_up_weapon)
         end
     end
 
     -- Now delete almost everything
-    -- Keep only self.data.BD_is_my_territory because it is very expensive
-    self.data.BD_unit, self.data.BD_hex = nil, nil
-    self.data.BD_level_up_defender, self.data.BD_level_up_weapon = nil, nil
-    self.data.BD_bottleneck_moves_done = nil
-    self.data.BD_def_map, self.data.BD_healer_map, self.data.BD_leadership_map, self.data.BD_healing_map = nil, nil, nil, nil
+    -- Keep only data.BD_is_my_territory because it is very expensive
+    data.BD_unit, data.BD_hex = nil, nil
+    data.BD_level_up_defender, data.BD_level_up_weapon = nil, nil
+    data.BD_bottleneck_moves_done = nil
+    data.BD_def_map, data.BD_healer_map, data.BD_leadership_map, data.BD_healing_map = nil, nil, nil, nil
 end
 
 return ca_bottleneck_move

@@ -4,14 +4,14 @@ local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
 
 local ca_fast_move = {}
 
-function ca_fast_move:evaluation(ai, cfg, self)
+function ca_fast_move:evaluation(cfg)
     local unit = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }[1]
 
     if unit then return 20000 end
     return 0
 end
 
-function ca_fast_move:execution(ai, cfg, self)
+function ca_fast_move:execution(cfg)
     local move_cost_factor = cfg.move_cost_factor or 2.0
     if (move_cost_factor < 1.1) then move_cost_factor = 1.1 end
 

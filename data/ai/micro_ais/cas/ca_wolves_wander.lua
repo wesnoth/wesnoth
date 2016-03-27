@@ -6,20 +6,20 @@ local LS = wesnoth.require "lua/location_set.lua"
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }
     return wolves
 end
 
 local ca_wolves_wander = {}
 
-function ca_wolves_wander:evaluation(ai, cfg)
+function ca_wolves_wander:evaluation(cfg)
     -- When there's no prey left, the wolves wander and regroup
     if get_wolves(cfg)[1] then return cfg.ca_score end
     return 0
 end
 
-function ca_wolves_wander:execution(ai, cfg)
+function ca_wolves_wander:execution(cfg)
     local wolves = get_wolves(cfg)
 
     -- Number of wolves that can reach each hex

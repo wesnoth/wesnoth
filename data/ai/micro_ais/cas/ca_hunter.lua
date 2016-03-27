@@ -35,7 +35,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 end
 
 local function get_hunter(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local hunter = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -45,12 +45,12 @@ end
 
 local ca_hunter = {}
 
-function ca_hunter:evaluation(ai, cfg)
+function ca_hunter:evaluation(cfg)
     if get_hunter(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_hunter:execution(ai, cfg)
+function ca_hunter:execution(cfg)
     -- Hunter does a random wander in area given by @cfg.hunting_ground until it finds
     -- and kills an enemy unit, then retreats to position given by @cfg.home_x/y
     -- for @cfg.rest_turns turns, or until fully healed
@@ -64,7 +64,7 @@ function ca_hunter:execution(ai, cfg)
         local rand = math.random(10)
         if (not hunter_vars.goal_x) or (rand == 1) then
             -- 'locs' includes border hexes, but that does not matter here
-            locs = AH.get_passable_locations((cfg.filter_location or {}), hunter)
+            locs = AH.get_passable_locations((H.get_child(cfg, "filter_location") or {}), hunter)
             local rand = math.random(#locs)
 
             hunter_vars.goal_x, hunter_vars.goal_y = locs[rand][1], locs[rand][2]

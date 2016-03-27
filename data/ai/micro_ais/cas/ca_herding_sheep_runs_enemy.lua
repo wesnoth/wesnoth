@@ -4,7 +4,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local function get_next_sheep(cfg)
     local sheep = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter_second },
+        { "and", H.get_child(cfg, "filter_second") },
         { "filter_location",
             {
                 { "filter", { { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } } }
@@ -18,13 +18,13 @@ end
 
 local ca_herding_sheep_runs_enemy = {}
 
-function ca_herding_sheep_runs_enemy:evaluation(ai, cfg)
+function ca_herding_sheep_runs_enemy:evaluation(cfg)
     -- Sheep runs from any enemy within attention_distance hexes (after the dogs have moved in)
     if get_next_sheep(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_herding_sheep_runs_enemy:execution(ai, cfg)
+function ca_herding_sheep_runs_enemy:execution(cfg)
     -- Simply start with the first sheep, order does not matter
     local sheep = get_next_sheep(cfg)
 

@@ -5,24 +5,24 @@ local LS = wesnoth.require "lua/location_set.lua"
 local function get_dog(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter },
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", cfg.filter_second } } } } }
+        { "and", H.get_child(cfg, "filter") },
+        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter_second") } } } } }
     }
     return dogs[1]
 end
 
 local ca_herding_dog_move = {}
 
-function ca_herding_dog_move:evaluation(ai, cfg)
+function ca_herding_dog_move:evaluation(cfg)
     -- As a final step, any dog not adjacent to a sheep moves within herding_perimeter
     if get_dog(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_herding_dog_move:execution(ai, cfg)
+function ca_herding_dog_move:execution(cfg)
     -- We simply move the first dog first, order does not matter
     local dog = get_dog(cfg)
-    local herding_perimeter = LS.of_pairs(wesnoth.get_locations(cfg.filter_location))
+    local herding_perimeter = LS.of_pairs(wesnoth.get_locations(H.get_child(cfg, "filter_location")))
 
     -- Find average distance of herding_perimeter from center
     local av_dist = 0

@@ -1,8 +1,9 @@
+local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local function get_patrol(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local patrol = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -12,12 +13,12 @@ end
 
 local ca_patrol = {}
 
-function ca_patrol:evaluation(ai, cfg)
+function ca_patrol:evaluation(cfg)
     if get_patrol(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_patrol:execution(ai, cfg)
+function ca_patrol:execution(cfg)
     local patrol = get_patrol(cfg)
     local patrol_vars = MAIUV.get_mai_unit_variables(patrol, cfg.ai_id)
 

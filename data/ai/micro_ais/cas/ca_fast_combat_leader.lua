@@ -5,7 +5,7 @@ local LS = wesnoth.require "lua/location_set.lua"
 
 local ca_fast_combat_leader = {}
 
-function ca_fast_combat_leader:evaluation(ai, cfg, self)
+function ca_fast_combat_leader:evaluation(cfg, data)
     -- Some parts of this are very similar to ca_fast_combat.lua.
     -- However, for speed reasons we really want this to be a separate CA, so
     -- that the (more expensive) calculations for keeping the leader safe only
@@ -15,11 +15,11 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
     leader_attack_max_units = (cfg and cfg.leader_attack_max_units) or 3
     leader_additional_threat = (cfg and cfg.leader_additional_threat) or 1
 
-    self.data.move_cache = { turn = wesnoth.current.turn }
-    self.data.gamedata = FAU.gamedata_setup()
+    data.move_cache = { turn = wesnoth.current.turn }
+    data.gamedata = FAU.gamedata_setup()
 
-    local filter_own = cfg.filter
-    local filter_enemy = cfg.filter_second
+    local filter_own = H.get_child(cfg, "filter")
+    local filter_enemy = H.get_child(cfg, "filter_second")
     if (not filter_own) and (not filter_enemy) then
         local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
         for aspect in H.child_range(ai_tag, 'aspect') do
@@ -108,8 +108,8 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
         end
     end
 
-    local leader_info = FAU.get_unit_info(leader, self.data.gamedata)
-    local leader_copy = FAU.get_unit_copy(leader.id, self.data.gamedata)
+    local leader_info = FAU.get_unit_info(leader, data.gamedata)
+    local leader_copy = FAU.get_unit_copy(leader.id, data.gamedata)
 
     -- If threatened_leader_fights=yes, check out the current threat (power only,
     -- not units) on the AI leader
@@ -156,16 +156,16 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
 
                 if acceptable_attack then
                     local target = wesnoth.get_unit(attack.target.x, attack.target.y)
-                    local target_info = FAU.get_unit_info(target, self.data.gamedata)
+                    local target_info = FAU.get_unit_info(target, data.gamedata)
 
                     local att_stat, def_stat = FAU.battle_outcome(
                         leader_copy, target, { attack.dst.x, attack.dst.y },
-                        leader_info, target_info, self.data.gamedata, self.data.move_cache
+                        leader_info, target_info, data.gamedata, data.move_cache
                     )
 
                     local rating, attacker_rating, defender_rating, extra_rating = FAU.attack_rating(
                         { leader_info }, target_info, { { attack.dst.x, attack.dst.y } },
-                        { att_stat }, def_stat, self.data.gamedata,
+                        { att_stat }, def_stat, data.gamedata,
                         {
                             own_value_weight = own_value_weight,
                             leader_weight = cfg.leader_weight
@@ -182,8 +182,8 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
         end
 
         if best_target then
-            self.data.leader = leader
-            self.data.fast_target, self.data.fast_dst = best_target, best_dst
+            data.leader = leader
+            data.fast_target, data.fast_dst = best_target, best_dst
             return cfg.ca_score
         end
     end
@@ -191,17 +191,17 @@ function ca_fast_combat_leader:evaluation(ai, cfg, self)
     return 0
 end
 
-function ca_fast_combat_leader:execution(ai, cfg, self)
-    local leader = self.data.leader
-    AH.movefull_outofway_stopunit(ai, leader, self.data.fast_dst.x, self.data.fast_dst.y)
+function ca_fast_combat_leader:execution(cfg, data)
+    local leader = data.leader
+    AH.movefull_outofway_stopunit(ai, leader, data.fast_dst.x, data.fast_dst.y)
 
     if (not leader) or (not leader.valid) then return end
-    if (not self.data.fast_target) or (not self.data.fast_target.valid) then return end
-    if (H.distance_between(leader.x, leader.y, self.data.fast_target.x, self.data.fast_target.y) ~= 1) then return end
+    if (not data.fast_target) or (not data.fast_target.valid) then return end
+    if (H.distance_between(leader.x, leader.y, data.fast_target.x, data.fast_target.y) ~= 1) then return end
 
-    AH.checked_attack(ai, leader, self.data.fast_target)
+    AH.checked_attack(ai, leader, data.fast_target)
 
-    self.data.leader = nil
+    data.leader = nil
 end
 
 return ca_fast_combat_leader

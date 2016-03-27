@@ -8,14 +8,14 @@ local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f
 local function get_escorts(cfg)
     local escorts = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter_second }
+        { "and", H.get_child(cfg, "filter_second") }
     }
     return escorts
 end
 
 local ca_messenger_escort_move = {}
 
-function ca_messenger_escort_move:evaluation(ai, cfg)
+function ca_messenger_escort_move:evaluation(cfg)
     -- Move escort units close to messengers, and in between messengers and enemies
     -- The messengers have moved at this time, so we don't need to exclude them,
     -- but we check that there are messengers left
@@ -28,7 +28,7 @@ function ca_messenger_escort_move:evaluation(ai, cfg)
     return cfg.ca_score
 end
 
-function ca_messenger_escort_move:execution(ai, cfg)
+function ca_messenger_escort_move:execution(cfg)
     local escorts = get_escorts(cfg)
     local _, _, _, messengers = messenger_next_waypoint(cfg)
 

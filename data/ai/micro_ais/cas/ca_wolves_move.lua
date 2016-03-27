@@ -5,7 +5,7 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }
     return wolves
 end
@@ -13,20 +13,20 @@ end
 local function get_prey(cfg)
     local prey = wesnoth.get_units {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "and", cfg.filter_second }
+        { "and", H.get_child(cfg, "filter_second") }
     }
     return prey
 end
 
 local ca_wolves_move = {}
 
-function ca_wolves_move:evaluation(ai, cfg)
+function ca_wolves_move:evaluation(cfg)
     if (not get_wolves(cfg)[1]) then return 0 end
     if (not get_prey(cfg)[1]) then return 0 end
     return cfg.ca_score
 end
 
-function ca_wolves_move:execution(ai, cfg)
+function ca_wolves_move:execution(cfg)
     local wolves = get_wolves(cfg)
     local prey = get_prey(cfg)
 

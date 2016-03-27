@@ -6,7 +6,7 @@ local recruit_type
 
 local ca_recruit_random = {}
 
-function ca_recruit_random:evaluation(ai, cfg)
+function ca_recruit_random:evaluation(cfg)
     -- Random recruiting from all the units the side has
 
     -- Check if leader is on keep
@@ -59,15 +59,14 @@ function ca_recruit_random:evaluation(ai, cfg)
     local probabilities, probability_sum  = {}, 0
 
     -- Go through all the types listed in [probability] tags (which can be comma-separated lists)
-    -- Types and probabilities are put into cfg.type and cfg.prob arrays by micro_ai_wml_tag.lua
-    for ind,types in ipairs(cfg.type) do
-        types = AH.split(types, ",")
+    for prob in H.child_range(cfg, "probability") do
+        types = AH.split(prob.type, ",")
         for _,typ in ipairs(types) do  -- 'type' is a reserved keyword in Lua
             -- If this type is in the recruit list, add it
             for _,recruit in ipairs(wesnoth.sides[wesnoth.current.side].recruit) do
                 if (recruit == typ) then
-                    probabilities[typ] = { value = cfg.prob[ind] }
-                    probability_sum = probability_sum + cfg.prob[ind]
+                    probabilities[typ] = { value = prob.probability }
+                    probability_sum = probability_sum + prob.probability
                     break
                 end
             end
@@ -119,7 +118,7 @@ function ca_recruit_random:evaluation(ai, cfg)
     return cfg.ca_score
 end
 
-function ca_recruit_random:execution(ai, cfg)
+function ca_recruit_random:execution(cfg)
     -- Let this function blacklist itself if the chosen recruit is too expensive
     if wesnoth.unit_types[recruit_type].cost <= wesnoth.sides[wesnoth.current.side].gold then
         AH.checked_recruit(ai, recruit_type)

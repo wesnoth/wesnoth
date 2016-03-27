@@ -1,5 +1,5 @@
 return {
-    init = function(ai)
+    init = function()
         local priority_target = {}
 
         local H = wesnoth.require "lua/helper.lua"

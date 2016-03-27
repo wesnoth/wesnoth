@@ -18,13 +18,13 @@ end
 
 local ca_swarm_scatter = {}
 
-function ca_swarm_scatter:evaluation(ai, cfg)
+function ca_swarm_scatter:evaluation(cfg)
     if (not get_enemies(cfg)[1]) then return 0 end
     if (not get_swarm_units(cfg)[1]) then return 0 end
     return cfg.ca_score
 end
 
-function ca_swarm_scatter:execution(ai, cfg)
+function ca_swarm_scatter:execution(cfg)
     local enemies = get_enemies(cfg)
     local units = get_swarm_units(cfg)
     local vision_distance = cfg.vision_distance or 12

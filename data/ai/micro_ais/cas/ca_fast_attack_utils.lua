@@ -20,19 +20,13 @@ function ca_fast_attack_utils.get_avoid_map(cfg)
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, return an empty location set.
 
-    local avoid_tag
+    local avoid_tag = H.get_child(cfg, "avoid")
 
-    if cfg.avoid then
-        avoid_tag = cfg.avoid
-    else
+    if not avoid_tag then
         return LS.of_pairs(ai.aspects.avoid)
     end
 
-    if avoid_tag then
-        return LS.of_pairs(wesnoth.get_locations(avoid_tag))
-    else
-        return LS.create()
-    end
+    return LS.of_pairs(wesnoth.get_locations(avoid_tag))
 end
 
 function ca_fast_attack_utils.gamedata_setup()

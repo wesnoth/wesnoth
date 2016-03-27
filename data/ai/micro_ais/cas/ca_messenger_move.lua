@@ -5,7 +5,7 @@ local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f
 
 local ca_messenger_move = {}
 
-function ca_messenger_move:evaluation(ai, cfg)
+function ca_messenger_move:evaluation(cfg)
     -- Move the messenger toward goal, potentially attack adjacent unit
 
     local messenger = messenger_next_waypoint(cfg)
@@ -14,7 +14,7 @@ function ca_messenger_move:evaluation(ai, cfg)
     return 0
 end
 
-function ca_messenger_move:execution(ai, cfg)
+function ca_messenger_move:execution(cfg)
     local messenger, x, y = messenger_next_waypoint(cfg)
 
     if (messenger.x ~= x) or (messenger.y ~= y) then

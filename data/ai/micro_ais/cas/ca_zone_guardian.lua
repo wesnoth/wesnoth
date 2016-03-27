@@ -3,7 +3,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
 local function get_guardian(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local guardian = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -13,16 +13,17 @@ end
 
 local ca_zone_guardian = {}
 
-function ca_zone_guardian:evaluation(ai, cfg)
+function ca_zone_guardian:evaluation(cfg)
     if get_guardian(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_zone_guardian:execution(ai, cfg)
+function ca_zone_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
     local reach = wesnoth.find_reach(guardian)
 
-    local zone_enemy = cfg.filter_location_enemy or cfg.filter_location
+	local zone = H.get_child(cfg, "filter_location")
+    local zone_enemy = H.get_child(cfg, "filter_location_enemy") or zone
     local enemies = wesnoth.get_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
             { "filter_location", zone_enemy }
@@ -95,7 +96,7 @@ function ca_zone_guardian:execution(ai, cfg)
             local locs_map = LS.of_pairs(wesnoth.get_locations {
                 x = '1-' .. width,
                 y = '1-' .. height,
-                { "and", cfg.filter_location }
+                { "and", zone }
             })
 
             -- Check out which of those hexes the guardian can reach

@@ -440,9 +440,7 @@ return {
             return score
         end
 
-        function ai_cas:recruit_rushers_exec(ai_local)
-            if ai_local then ai = ai_local end
-
+        function ai_cas:recruit_rushers_exec()
             if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
 
             local enemy_counts = recruit_data.recruit.enemy_counts

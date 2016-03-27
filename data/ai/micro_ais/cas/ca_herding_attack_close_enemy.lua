@@ -4,7 +4,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local function get_sheep(cfg)
     local sheep = wesnoth.get_units {
         side = wesnoth.current.side,
-        { "and", cfg.filter_second }
+        { "and", H.get_child(cfg, "filter_second") }
     }
     return sheep
 end
@@ -12,7 +12,7 @@ end
 local function get_dogs(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }
     return dogs
 end
@@ -22,7 +22,7 @@ local function get_enemies(cfg, radius)
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
         { "filter_location",
             { radius = radius,
-            { "filter", { side = wesnoth.current.side, { "and", cfg.filter_second } } } }
+            { "filter", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter_second") } } } }
         }
     }
     return enemies
@@ -30,7 +30,7 @@ end
 
 local ca_herding_attack_close_enemy = {}
 
-function ca_herding_attack_close_enemy:evaluation(ai, cfg)
+function ca_herding_attack_close_enemy:evaluation(cfg)
     -- Any enemy within attention_distance (default = 8) hexes of a sheep will get the dogs' attention
     -- with enemies within attack_distance (default: 4) being attacked
     if not get_sheep(cfg)[1] then return 0 end
@@ -41,7 +41,7 @@ function ca_herding_attack_close_enemy:evaluation(ai, cfg)
     return 0
 end
 
-function ca_herding_attack_close_enemy:execution(ai, cfg)
+function ca_herding_attack_close_enemy:execution(cfg)
     local sheep = get_sheep(cfg)
     local dogs = get_dogs(cfg)
 

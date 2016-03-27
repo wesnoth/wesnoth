@@ -2,7 +2,7 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_guardian(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local guardian = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -12,12 +12,12 @@ end
 
 local ca_stationed_guardian = {}
 
-function ca_stationed_guardian:evaluation(ai, cfg)
+function ca_stationed_guardian:evaluation(cfg)
     if get_guardian(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_stationed_guardian:execution(ai, cfg)
+function ca_stationed_guardian:execution(cfg)
     -- (s_x, s_y): coordinates where guardian is stationed; tries to move here if there is nobody to attack
     -- (g_x, g_y): location that the guardian guards
 

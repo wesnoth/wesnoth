@@ -1,5 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
+local T = H.set_wml_tag_metatable {}
 local AH = wesnoth.require("ai/lua/ai_helper.lua")
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
@@ -38,7 +39,7 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
         end
 
         -- Ideally, we would also delete previous occurrences of [micro_ai] tags in the
-        -- AI's self.data variable. However, the MAI can be changed while it is not
+        -- AI's data variable. However, the MAI can be changed while it is not
         -- the AI's turn, when this is not possible. So instead, we check for the
         -- existence of such tags and make sure we are using a different ai_id.
         for ai_tag in H.child_range(wesnoth.sides[side].__cfg, 'ai') do
@@ -74,15 +75,13 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
         }
 
         CA.location = parms.location
-        local cfg = string.sub(AH.serialize(CA_cfg), 2, -2) -- need to strip surrounding {}
-        CA.eval_parms = cfg
-        CA.exec_parms = cfg
+        table.insert(CA, T.args(CA_cfg))
 
         W.modify_ai {
             side = side,
             action = "add",
             path = "stage[main_loop].candidate_action",
-            { "candidate_action", CA }
+            T.candidate_action(CA)
         }
     end
 end
@@ -136,7 +135,7 @@ function micro_ai_helper.add_aspects(side, aspect_parms)
             side = side,
             action = "add",
             path = "aspect[" .. parms.aspect .. "].facet",
-            { "facet", parms.facet }
+            T.facet(parms.facet)
         }
     end
 end
@@ -180,14 +179,14 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
             H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v)
         end
         CA_cfg[v] = cfg[v]
-        if child then CA_cfg[v] = child end
+        if child then table.insert(CA_cfg, T[v](child)) end
     end
 
     -- Optional keys
     for _,v in pairs(optional_keys) do
         CA_cfg[v] = cfg[v]
         local child = H.get_child(cfg, v)
-        if child then CA_cfg[v] = child end
+        if child then table.insert(CA_cfg, T[v](child)) end
     end
 
     -- Finally, set up the candidate actions themselves

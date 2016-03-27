@@ -5,7 +5,7 @@ local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lu
 
 local ca_wolves_multipacks_attack = {}
 
-function ca_wolves_multipacks_attack:evaluation(ai, cfg)
+function ca_wolves_multipacks_attack:evaluation(cfg)
     -- If wolves have attacks left, call this CA
     -- It will be disabled by being black-listed, so as to avoid
     -- having to do the full attack evaluation for every single move evaluation
@@ -19,7 +19,7 @@ function ca_wolves_multipacks_attack:evaluation(ai, cfg)
     return 0
 end
 
-function ca_wolves_multipacks_attack:execution(ai, cfg)
+function ca_wolves_multipacks_attack:execution(cfg)
     local packs = WMPF.assign_packs(cfg)
 
     -- Attacks are dealt with on a pack by pack basis

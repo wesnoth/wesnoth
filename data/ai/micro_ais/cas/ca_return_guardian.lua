@@ -1,7 +1,8 @@
+local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_guardian(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local guardian = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -12,7 +13,7 @@ end
 
 local ca_return_guardian = {}
 
-function ca_return_guardian:evaluation(ai, cfg)
+function ca_return_guardian:evaluation(cfg)
     local guardian = get_guardian(cfg)
     if guardian then
         if (guardian.x == cfg.return_x) and (guardian.y == cfg.return_y) then
@@ -25,7 +26,7 @@ function ca_return_guardian:evaluation(ai, cfg)
     return 0
 end
 
-function ca_return_guardian:execution(ai, cfg)
+function ca_return_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
 
     -- In case the return hex is occupied:

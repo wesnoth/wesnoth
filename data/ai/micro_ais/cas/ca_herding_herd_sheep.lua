@@ -6,7 +6,7 @@ local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area
 local function get_dogs(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }
     return dogs
 end
@@ -14,8 +14,8 @@ end
 local function get_sheep_to_herd(cfg)
     local all_sheep = wesnoth.get_units {
         side = wesnoth.current.side,
-        { "and", cfg.filter_second },
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", cfg.filter } } } } }
+        { "and", H.get_child(cfg, "filter_second") },
+        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter") } } } } }
     }
 
     local sheep_to_herd = {}
@@ -30,7 +30,7 @@ end
 
 local ca_herding_herd_sheep = {}
 
-function ca_herding_herd_sheep:evaluation(ai, cfg)
+function ca_herding_herd_sheep:evaluation(cfg)
     -- If dogs have moves left, and there is a sheep with moves left outside the
     -- herding area, chase it back
     if (not get_dogs(cfg)[1]) then return 0 end
@@ -38,7 +38,7 @@ function ca_herding_herd_sheep:evaluation(ai, cfg)
     return cfg.ca_score
 end
 
-function ca_herding_herd_sheep:execution(ai, cfg)
+function ca_herding_herd_sheep:execution(cfg)
     local dogs = get_dogs(cfg)
     local sheep_to_herd = get_sheep_to_herd(cfg)
 
@@ -62,7 +62,7 @@ function ca_herding_herd_sheep:execution(ai, cfg)
                 -- And the closer dog goes first (so that it might be able to chase another sheep afterward)
                 rating = rating - H.distance_between(x, y, dog.x, dog.y) / 100.
                 -- Finally, prefer to stay on path, if possible
-                if (wesnoth.match_location(x, y, cfg.filter_location) ) then rating = rating + 0.001 end
+                if (wesnoth.match_location(x, y, H.get_child(cfg, "filter_location")) ) then rating = rating + 0.001 end
 
                 reach_map:insert(x, y, rating)
 

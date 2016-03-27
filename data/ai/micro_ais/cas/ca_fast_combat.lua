@@ -5,12 +5,12 @@ local LS = wesnoth.require "lua/location_set.lua"
 
 local ca_fast_combat = {}
 
-function ca_fast_combat:evaluation(ai, cfg, self)
-    self.data.move_cache = { turn = wesnoth.current.turn }
-    self.data.gamedata = FAU.gamedata_setup()
+function ca_fast_combat:evaluation(cfg, data)
+    data.move_cache = { turn = wesnoth.current.turn }
+    data.gamedata = FAU.gamedata_setup()
 
-    local filter_own = cfg.filter
-    local filter_enemy = cfg.filter_second
+    local filter_own = H.get_child(cfg, "filter")
+    local filter_enemy = H.get_child(cfg, "filter_second")
     if (not filter_own) and (not filter_enemy) then
         local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
         for aspect in H.child_range(ai_tag, 'aspect') do
@@ -24,20 +24,20 @@ function ca_fast_combat:evaluation(ai, cfg, self)
         end
     end
 
-    if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
-        self.data.fast_combat_units = wesnoth.get_units {
+    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
+        data.fast_combat_units = wesnoth.get_units {
             side = wesnoth.current.side,
             canrecruit = 'no',
             { "and", filter_own }
         }
 
-        if (not self.data.fast_combat_units[1]) then return 0 end
+        if (not data.fast_combat_units[1]) then return 0 end
 
         -- For speed reasons, we'll go through the arrays from the end, so they are sorted backwards
         if cfg.weak_units_first then
-            table.sort(self.data.fast_combat_units, function(a,b) return a.hitpoints > b.hitpoints end)
+            table.sort(data.fast_combat_units, function(a,b) return a.hitpoints > b.hitpoints end)
         else
-            table.sort(self.data.fast_combat_units, function(a,b) return a.hitpoints < b.hitpoints end)
+            table.sort(data.fast_combat_units, function(a,b) return a.hitpoints < b.hitpoints end)
         end
     end
 
@@ -74,10 +74,10 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     -- Get the locations to be avoided
     local avoid_map = FAU.get_avoid_map(cfg)
 
-    for i = #self.data.fast_combat_units,1,-1 do
-        local unit = self.data.fast_combat_units[i]
-        local unit_info = FAU.get_unit_info(unit, self.data.gamedata)
-        local unit_copy = FAU.get_unit_copy(unit.id, self.data.gamedata)
+    for i = #data.fast_combat_units,1,-1 do
+        local unit = data.fast_combat_units[i]
+        local unit_info = FAU.get_unit_info(unit, data.gamedata)
+        local unit_copy = FAU.get_unit_copy(unit.id, data.gamedata)
 
         if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
             local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes })
@@ -89,16 +89,16 @@ function ca_fast_combat:evaluation(ai, cfg, self)
                         and (not avoid_map:get(attack.dst.x, attack.dst.y))
                     then
                         local target = wesnoth.get_unit(attack.target.x, attack.target.y)
-                        local target_info = FAU.get_unit_info(target, self.data.gamedata)
+                        local target_info = FAU.get_unit_info(target, data.gamedata)
 
                         local att_stat, def_stat = FAU.battle_outcome(
                             unit_copy, target, { attack.dst.x, attack.dst.y },
-                            unit_info, target_info, self.data.gamedata, self.data.move_cache
+                            unit_info, target_info, data.gamedata, data.move_cache
                         )
 
                         local rating, attacker_rating, defender_rating, extra_rating = FAU.attack_rating(
                             { unit_info }, target_info, { { attack.dst.x, attack.dst.y } },
-                            { att_stat }, def_stat, self.data.gamedata,
+                            { att_stat }, def_stat, data.gamedata,
                             {
                                 own_value_weight = own_value_weight,
                                 leader_weight = cfg.leader_weight
@@ -114,30 +114,30 @@ function ca_fast_combat:evaluation(ai, cfg, self)
                 end
 
                 if best_target then
-                    self.data.fast_combat_unit_i = i
-                    self.data.fast_target, self.data.fast_dst = best_target, best_dst
+                    data.fast_combat_unit_i = i
+                    data.fast_target, data.fast_dst = best_target, best_dst
                     return cfg.ca_score
                 end
             end
         end
 
-        self.data.fast_combat_units[i] = nil
+        data.fast_combat_units[i] = nil
     end
 
     return 0
 end
 
-function ca_fast_combat:execution(ai, cfg, self)
-    local unit = self.data.fast_combat_units[self.data.fast_combat_unit_i]
-    AH.movefull_outofway_stopunit(ai, unit, self.data.fast_dst.x, self.data.fast_dst.y)
+function ca_fast_combat:execution(cfg, data)
+    local unit = data.fast_combat_units[data.fast_combat_unit_i]
+    AH.movefull_outofway_stopunit(ai, unit, data.fast_dst.x, data.fast_dst.y)
 
     if (not unit) or (not unit.valid) then return end
-    if (not self.data.fast_target) or (not self.data.fast_target.valid) then return end
-    if (H.distance_between(unit.x, unit.y, self.data.fast_target.x, self.data.fast_target.y) ~= 1) then return end
+    if (not data.fast_target) or (not data.fast_target.valid) then return end
+    if (H.distance_between(unit.x, unit.y, data.fast_target.x, data.fast_target.y) ~= 1) then return end
 
-    AH.checked_attack(ai, unit, self.data.fast_target)
+    AH.checked_attack(ai, unit, data.fast_target)
 
-    self.data.fast_combat_units[self.data.fast_combat_unit_i] = nil
+    data.fast_combat_units[data.fast_combat_unit_i] = nil
 end
 
 return ca_fast_combat

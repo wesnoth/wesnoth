@@ -15,12 +15,12 @@ local function custom_cost(x, y, unit, enemy_map, enemy_attack_map, multiplier)
     return move_cost
 end
 
-local ca_goto = {}
+local ca_goto, GO_units, GO_locs = {}
 
-function ca_goto:evaluation(ai, cfg, self)
+function ca_goto:evaluation(cfg, data)
     -- If cfg.release_all_units_at_goal is set, check whether the goal has
     -- already been reached, in which case we do not do anything
-    if MAISD.get_mai_self_data(self.data, cfg.ai_id, "release_all") then
+    if MAISD.get_mai_self_data(data, cfg.ai_id, "release_all") then
         return 0
     end
 
@@ -30,7 +30,7 @@ function ca_goto:evaluation(ai, cfg, self)
     local all_locs = wesnoth.get_locations {
         x = '1-' .. width,
         y = '1-' .. height,
-        { "and", cfg.filter_location }
+        { "and", H.get_child(cfg, "filter_location") }
     }
     if (#all_locs == 0) then return 0 end
 
@@ -40,17 +40,17 @@ function ca_goto:evaluation(ai, cfg, self)
     if cfg.unique_goals then
         -- First, some cleanup of previous turn data
         local str = 'goal_taken_' .. (wesnoth.current.turn - 1)
-        local old_goals = MAISD.get_mai_self_data(self.data, cfg.ai_id)
+        local old_goals = MAISD.get_mai_self_data(data, cfg.ai_id)
         for goal,_ in pairs(old_goals) do
             if string.find(goal, str) then
-                old_goals[goal] = nil  -- This also removes it from self.data
+                old_goals[goal] = nil  -- This also removes it from data
             end
         end
 
         -- Now on to the current turn
         for _,loc in ipairs(all_locs) do
             local str = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. loc[1] .. '_' .. loc[2]
-            if (not MAISD.get_mai_self_data(self.data, cfg.ai_id, str)) then
+            if (not MAISD.get_mai_self_data(data, cfg.ai_id, str)) then
                 table.insert(locs, loc)
             end
         end
@@ -61,7 +61,7 @@ function ca_goto:evaluation(ai, cfg, self)
 
     local all_units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }
 
     local units = {}
@@ -76,14 +76,14 @@ function ca_goto:evaluation(ai, cfg, self)
     end
     if (not units[1]) then return 0 end
 
-    -- Now store units and locs in self.data, so that we don't need to duplicate this in the exec function
-    self.data.GO_units, self.data.GO_locs = units, locs
+    -- Now store units and locs, so that we don't need to duplicate this in the exec function
+    GO_units, GO_locs = units, locs
 
     return cfg.ca_score
 end
 
-function ca_goto:execution(ai, cfg, self)
-    local units, locs = self.data.GO_units, self.data.GO_locs
+function ca_goto:execution(cfg, data)
+    local units, locs = GO_units, GO_locs
 
     local enemy_map, enemy_attack_map
     if cfg.avoid_enemies then
@@ -150,7 +150,7 @@ function ca_goto:execution(ai, cfg, self)
                     end
                 end
 
-                -- Make all hexes within the unit's current MP equaivalent
+                -- Make all hexes within the unit's current MP equivalent
                 if (cost <= unit.moves) then cost = 0 end
 
                 local rating = - cost
@@ -174,7 +174,7 @@ function ca_goto:execution(ai, cfg, self)
         local str = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. closest_hex[1] .. '_' .. closest_hex[2]
         local tmp_table = {}
         tmp_table[str] = true
-        MAISD.insert_mai_self_data(self.data, cfg.ai_id, tmp_table)
+        MAISD.insert_mai_self_data(data, cfg.ai_id, tmp_table)
     end
 
     -- If any of the non-standard path finding options were used,
@@ -227,12 +227,12 @@ function ca_goto:execution(ai, cfg, self)
             end
 
             if cfg.release_all_units_at_goal then
-                MAISD.insert_mai_self_data(self.data, cfg.ai_id, { release_all = true })
+                MAISD.insert_mai_self_data(data, cfg.ai_id, { release_all = true })
             end
         end
     end
 
-    self.data.GO_units, self.data.GO_locs = nil, nil
+    GO_units, GO_locs = nil, nil
 end
 
 return ca_goto
