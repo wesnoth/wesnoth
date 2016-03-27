@@ -138,6 +138,9 @@ Version 1.13.4+dev:
        The table is read-only and raises an error if you attempt to write to it.
      * The way to create Lua candidate actions has changed a little. Old code
        will require minor changes.
+     * New wesnoth.micro_ais table contains the loaders for all Micro AIs.
+       New loaders can easily be installed by add-ons. See any built-in
+       micro AI (in ai/micro_ais/mai-defs/) for an example of how to do this.
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
    * New syntax features:
