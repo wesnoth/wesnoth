@@ -38,15 +38,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
     if wesnoth.micro_ais[cfg.ai_type] == nil then
         H.wml_error("unknown value for ai_type= in [micro_ai]")
     end
-    
+
     local required_keys, optional_keys, CA_parms = wesnoth.micro_ais[cfg.ai_type](cfg)
-    
+
     -- Fixup any relative CA paths
     for i,v in ipairs(CA_parms) do
-    	if v.location and v.location:find('~') ~= 1  then
-    		v.location = CA_path .. v.location
-    	end
+        if v.location and v.location:find('~') ~= 1  then
+            v.location = CA_path .. v.location
+        end
     end
-    
+
     MAIH.micro_ai_setup(cfg, CA_parms, required_keys, optional_keys)
 end

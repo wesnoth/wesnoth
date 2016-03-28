@@ -22,7 +22,7 @@ function ca_zone_guardian:execution(cfg)
     local guardian = get_guardian(cfg)
     local reach = wesnoth.find_reach(guardian)
 
-	local zone = H.get_child(cfg, "filter_location")
+    local zone = H.get_child(cfg, "filter_location")
     local zone_enemy = H.get_child(cfg, "filter_location_enemy") or zone
     local enemies = wesnoth.get_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
