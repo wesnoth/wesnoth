@@ -2,8 +2,8 @@ local H = wesnoth.require "lua/helper.lua"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.micro_ais.big_animals(cfg)
-    local required_keys = { "filter"}
-    local optional_keys = { "avoid_unit", "filter_location", "filter_location_wander" }
+    local required_keys = { "[filter]"}
+    local optional_keys = { "[avoid_unit]", "[filter_location]", "[filter_location_wander]" }
     local CA_parms = {
         ai_id = 'mai_big_animals',
         { ca_id = "move", location = 'ca_big_animals.lua', score = cfg.ca_score or 300000 }
@@ -12,7 +12,7 @@ function wesnoth.micro_ais.big_animals(cfg)
 end
 
 function wesnoth.micro_ais.wolves(cfg)
-	local required_keys = { "filter", "filter_second" }
+	local required_keys = { "[filter]", "[filter_second]" }
 	local optional_keys = { "attack_only_prey", "avoid_type" }
 	local score = cfg.ca_score or 90000
 	local CA_parms = {
@@ -66,7 +66,7 @@ function wesnoth.micro_ais.wolves(cfg)
 end
 
 function wesnoth.micro_ais.herding(cfg)
-	local required_keys = { "filter_location", "filter", "filter_second", "herd_x", "herd_y" }
+	local required_keys = { "[filter_location]", "[filter]", "[filter_second]", "herd_x", "herd_y" }
 	local optional_keys = { "attention_distance", "attack_distance" }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -84,7 +84,7 @@ end
 
 function wesnoth.micro_ais.forest_animals(cfg)
 	local optional_keys = { "rabbit_type", "rabbit_number", "rabbit_enemy_distance", "rabbit_hole_img",
-		"tusker_type", "tusklet_type", "deer_type", "filter_location"
+		"tusker_type", "tusklet_type", "deer_type", "[filter_location]"
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -124,7 +124,7 @@ function wesnoth.micro_ais.hunter(cfg)
 		H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "home_x", "home_y" }
-	local optional_keys = { "id", "filter", "filter_location", "rest_turns", "show_messages" }
+	local optional_keys = { "id", "[filter]", "[filter_location]", "rest_turns", "show_messages" }
 	local CA_parms = {
 		ai_id = 'mai_hunter',
 		{ ca_id = "move", location = 'ca_hunter.lua', score = cfg.ca_score or 300000 }

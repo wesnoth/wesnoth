@@ -5,7 +5,7 @@ function wesnoth.micro_ais.messenger_escort(cfg)
 		H.wml_error("Messenger [micro_ai] tag requires either id= key or [filter] tag")
 	end
 	local required_keys = { "waypoint_x", "waypoint_y" }
-	local optional_keys = { "id", "enemy_death_chance", "filter", "filter_second", "invert_order", "messenger_death_chance" }
+	local optional_keys = { "id", "enemy_death_chance", "[filter]", "[filter_second]", "invert_order", "messenger_death_chance" }
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
 		ai_id = 'mai_messenger',

@@ -24,9 +24,6 @@ function wesnoth.micro_ais.protect_unit(cfg)
 		end
 		table.insert(unit_ids, u.id)
 	end
-	if #unit_ids == 0 then
-		H.wml_error("Protect Unit Micro AI is missing required [unit] tag")
-	end
 
 	-- Optional key disable_move_leader_to_keep: needs to be dealt with
 	-- separately as it affects a default CA
@@ -74,5 +71,5 @@ function wesnoth.micro_ais.protect_unit(cfg)
 	else
 		MAIH.add_aspects(cfg.side, aspect_parms)
 	end
-    return {}, {}, CA_parms
+    return {"[unit]"}, {}, CA_parms
 end

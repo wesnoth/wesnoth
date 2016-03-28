@@ -1,7 +1,7 @@
 
 function wesnoth.micro_ais.lurkers(cfg)
-	local required_keys = { "filter", "filter_location" }
-	local optional_keys = { "stationary", "filter_location_wander" }
+	local required_keys = { "[filter]", "[filter_location]" }
+	local optional_keys = { "stationary", "[filter_location_wander]" }
 	local CA_parms = {
 		ai_id = 'mai_lurkers',
 		{ ca_id = 'move', location = 'ca_lurkers.lua', score = cfg.ca_score or 300000 }
@@ -11,9 +11,9 @@ end
 
 -- goto is a keyword, so need to use index operator directly
 wesnoth.micro_ais["goto"] = function(cfg)
-	local required_keys = { "filter_location" }
+	local required_keys = { "[filter_location]" }
 	local optional_keys = {
-		"avoid_enemies", "filter", "ignore_units", "ignore_enemy_at_goal",
+		"avoid_enemies", "[filter]", "ignore_units", "ignore_enemy_at_goal",
 		"release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line"
 	}
 	local CA_parms = {
@@ -24,7 +24,7 @@ wesnoth.micro_ais["goto"] = function(cfg)
 end
 
 function wesnoth.micro_ais.hang_out(cfg)
-	local optional_keys = { "filter", "filter_location", "avoid", "mobilize_condition", "mobilize_on_gold_less_than" }
+	local optional_keys = { "[filter]", "[filter_location]", "[avoid]", "[mobilize_condition]", "mobilize_on_gold_less_than" }
 	local CA_parms = {
 		ai_id = 'mai_hang_out',
 		{ ca_id = 'move', location = 'ca_hang_out.lua', score = cfg.ca_score or 170000 }

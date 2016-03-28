@@ -39,7 +39,7 @@ function wesnoth.micro_ais.recruit_rushers(cfg)
 end
 
 function wesnoth.micro_ais.recruit_random(cfg)
-	local optional_keys = { "skip_low_gold_recruiting", "type", "probability" }
+	local optional_keys = { "skip_low_gold_recruiting", "[probability]" }
 	local CA_parms = {
 		ai_id = 'mai_random_recruit',
 		{ ca_id = "move", location = 'ca_recruit_random.lua', score = cfg.ca_score or 180000 }

@@ -174,19 +174,32 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
 
     -- Required keys
     for _,v in pairs(required_keys) do
-        local child = H.get_child(cfg, v)
-        if (not cfg[v]) and (not child) then
-            H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v)
+        if v:match('%[[a-zA-Z0-9_]+%]')  then
+            v = v:sub(2,-2)
+            if not H.get_child(cfg, v) then
+                H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
+            end
+            for child in H.child_range(cfg, v) do
+                table.insert(CA_cfg, T[v](child))
+            end
+        else
+            if not cfg[v] then
+                H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v .."=")
+            end
+            CA_cfg[v] = cfg[v]
         end
-        CA_cfg[v] = cfg[v]
-        if child then table.insert(CA_cfg, T[v](child)) end
     end
 
     -- Optional keys
     for _,v in pairs(optional_keys) do
-        CA_cfg[v] = cfg[v]
-        local child = H.get_child(cfg, v)
-        if child then table.insert(CA_cfg, T[v](child)) end
+        if v:match('%[[a-zA-Z0-9_]+%]')  then
+            v = v:sub(2,-2)
+            for child in H.child_range(cfg, v) do
+                table.insert(CA_cfg, T[v](child))
+            end
+        else
+            CA_cfg[v] = cfg[v]
+        end
     end
 
     -- Finally, set up the candidate actions themselves

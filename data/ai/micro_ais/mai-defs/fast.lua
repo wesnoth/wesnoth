@@ -3,8 +3,8 @@ local W = H.set_wml_action_metatable {}
 
 function wesnoth.micro_ais.fast_ai(cfg)
 	local optional_keys = {
-		"attack_hidden_enemies", "avoid", "dungeon_mode",
-		"filter", "filter_second", "include_occupied_attack_hexes",
+		"attack_hidden_enemies", "[avoid]", "dungeon_mode",
+		"[filter]", "[filter_second]", "include_occupied_attack_hexes",
 		"leader_additional_threat", "leader_attack_max_units", "leader_weight", "move_cost_factor",
 		"weak_units_first", "skip_combat_ca", "skip_move_ca", "threatened_leader_fights"
 	}
