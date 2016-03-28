@@ -412,12 +412,18 @@ config aspect_attacks::to_config() const
 
 bool aspect_attacks::is_allowed_attacker(const unit& u) const
 {
-	return (*filter_own_)(u);
+	if (filter_own_) {
+		return (*filter_own_)(u);
+	}
+	return true;
 }
 
 bool aspect_attacks::is_allowed_enemy(const unit& u) const
 {
-	return (*filter_enemy_)(u);
+	if (filter_enemy_) {
+		return (*filter_enemy_)(u);
+	}
+	return true;
 }
 
 } // end of namespace testing_ai_default
