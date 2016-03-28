@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python -u
 # -*- encoding: utf-8 -*-
 #
 # The code is placed into public domain by:
