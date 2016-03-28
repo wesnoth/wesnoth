@@ -31,7 +31,7 @@
 #include "pathfind/pathfind.hpp"
 #include "units/filter.hpp"
 #include "scripting/lua_api.hpp"
-#include "lauxlib.h"
+#include "lua/lauxlib.h"
 
 namespace ai {
 
