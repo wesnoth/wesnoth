@@ -33,7 +33,7 @@ function wesnoth.micro_ais.hang_out(cfg)
 end
 
 function wesnoth.micro_ais.simple_attack(cfg)
-	local optional_keys = { "filter", "filter_second", "weapon" }
+	local optional_keys = { "[filter]", "[filter_second]", "weapon" }
 	local CA_parms = {
 		ai_id = 'mai_simple_attack',
 		{ ca_id = 'move', location = 'ca_simple_attack.lua', score = cfg.ca_score or 110000 }
