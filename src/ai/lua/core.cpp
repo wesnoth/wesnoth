@@ -54,7 +54,7 @@ static char const aisKey     = 0;
 
 namespace ai {
 
-static void push_attack_analysis(lua_State *L, attack_analysis&);
+static void push_attack_analysis(lua_State *L, const attack_analysis&);
 
 void lua_ai_context::init(lua_State *L)
 {
@@ -410,11 +410,11 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 
 static int cfun_ai_get_attacks(lua_State *L)
 {
-	ai::attacks_vector attacks = get_readonly_context(L).get_attacks();
+	const ai::attacks_vector& attacks = get_readonly_context(L).get_attacks();
 	lua_createtable(L, attacks.size(), 0);
 	int table_index = lua_gettop(L);
 
-	ai::attacks_vector::iterator it = attacks.begin();
+	ai::attacks_vector::const_iterator it = attacks.begin();
 	for (int i = 1; it != attacks.end(); ++it, ++i)
 	{
 		push_attack_analysis(L, *it);
@@ -546,7 +546,7 @@ static int cfun_attack_rating(lua_State *L)
 	// the attack_analysis table should be on top of the stack
 	lua_getfield(L, -1, "att_ptr"); // [-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 	// now the pointer to our attack_analysis C++ object is on top
-	attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1));
+	const attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1));
 
 	//[-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 
@@ -586,13 +586,13 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 
 }
 
-static void push_attack_analysis(lua_State *L, attack_analysis& aa)
+static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
 {
 	lua_newtable(L);
 
 	// Pushing a pointer to the current object
 	lua_pushstring(L, "att_ptr");
-	lua_pushlightuserdata(L, &aa);
+	lua_pushlightuserdata(L, const_cast<attack_analysis*>(&aa));
 	lua_rawset(L, -3);
 
 	// Registering callback function for the rating method

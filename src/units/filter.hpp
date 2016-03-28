@@ -33,6 +33,7 @@
 
 class filter_context;
 class unit;
+class config;
 class vconfig;
 struct map_location;
 
@@ -41,6 +42,8 @@ public:
 	virtual bool matches(const unit & u, const map_location & loc, const unit * u2 = NULL) const = 0;
 	virtual std::vector<const unit*> all_matches_on_map(unsigned max_matches) const = 0;
 	virtual unit_const_ptr first_match_on_map() const = 0;
+	virtual config to_config() const = 0;
+	virtual bool empty() const {return false;}
 	virtual ~unit_filter_abstract_impl() {}
 };
 
@@ -94,6 +97,12 @@ public:
 
 	unit_const_ptr first_match_on_map() const {
 		return impl_->first_match_on_map();
+	}
+	
+	config to_config() const;
+	
+	bool empty() const {
+		return impl_->empty();
 	}
 private:
 	boost::shared_ptr<unit_filter_abstract_impl> impl_;

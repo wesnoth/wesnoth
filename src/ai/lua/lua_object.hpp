@@ -69,7 +69,7 @@ public:
 
 	void store(lua_State* L, int n)
 	{
-		this->value_ = boost::shared_ptr<T>(to_type(L, n));
+		this->value_ = boost::shared_ptr<T>(to_type(L, lua_absindex(L, n)));
 	}
 
 protected:
@@ -200,6 +200,11 @@ inline boost::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_
 	boost::shared_ptr<unit_advancements_aspect> uaa = boost::shared_ptr<unit_advancements_aspect>(new unit_advancements_aspect(L, n));
 	return uaa;
 }
+
+// This one is too complex to define in the header.
+struct aspect_attacks_lua_filter;
+template <>
+boost::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n);
 } // end of namespace ai
 
 

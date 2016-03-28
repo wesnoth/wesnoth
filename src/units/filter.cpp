@@ -48,6 +48,11 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
+// Defined out of line to avoid including config in unit_filter.hpp
+config unit_filter::to_config() const {
+	return impl_->to_config();
+}
+
 ///Defined out of line to prevent including unit at unit_filter.hpp
 bool unit_filter::matches(const unit & u) const {
 	return matches (u, u.get_location());
@@ -95,6 +100,14 @@ public:
 
 
 	virtual ~null_unit_filter_impl() {}
+	
+	config to_config() const {
+		return config();
+	}
+	
+	bool empty() const {
+		return true;
+	}
 
 private:
 	const filter_context & fc_;
@@ -159,6 +172,9 @@ public:
 	virtual bool matches(const unit & u, const map_location & loc, const unit * u2) const;
 	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches) const;
 	virtual unit_const_ptr first_match_on_map() const;
+	config to_config() const {
+		return vcfg.get_config();
+	}
 
 	virtual ~basic_unit_filter_impl() {}
 private:

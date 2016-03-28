@@ -419,6 +419,9 @@ static register_lua_aspect_factory< lua_aspect<double> >
 static register_lua_aspect_factory< lua_aspect<int> >
 	attack_depth__lua_aspect_factory("attack_depth*lua_aspect");
 
+static register_lua_aspect_factory< aspect_attacks_lua >
+	attacks__lua_aspect_factory("attacks*lua_aspect");
+
 static register_lua_aspect_factory< lua_aspect<terrain_filter> >
 	avoid__lua_aspect_factory("avoid*lua_aspect");
 

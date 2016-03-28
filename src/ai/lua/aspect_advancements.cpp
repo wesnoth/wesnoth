@@ -59,6 +59,14 @@ unit_advancements_aspect::unit_advancements_aspect(const std::string& val):  val
 {
 }
 
+unit_advancements_aspect::~unit_advancements_aspect()
+{
+	if(L_) {
+		// Remove the function from the registry
+		luaL_unref(L_, LUA_REGISTRYINDEX, ref_);
+	}
+}
+
 const std::vector<std::string> unit_advancements_aspect::get_advancements(const unit_map::const_iterator& unit) const
 {
 

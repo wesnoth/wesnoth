@@ -30,6 +30,8 @@
 #include "units/unit.hpp"
 #include "pathfind/pathfind.hpp"
 #include "units/filter.hpp"
+#include "scripting/lua_api.hpp"
+#include "lauxlib.h"
 
 namespace ai {
 
@@ -40,30 +42,35 @@ static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 #define LOG_AI LOG_STREAM(info, log_ai_testing_aspect_attacks)
 #define ERR_AI LOG_STREAM(err, log_ai_testing_aspect_attacks)
 
-aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
+aspect_attacks_base::aspect_attacks_base(readonly_context &context, const config &cfg, const std::string &id)
 	: typesafe_aspect<attacks_vector>(context,cfg,id)
+{
+}
+
+aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
+	: aspect_attacks_base(context,cfg,id)
 	, filter_own_()
 	, filter_enemy_()
 {
 	if (const config &filter_own = cfg.child("filter_own")) {
-		filter_own_ = filter_own;
+		vconfig vcfg(filter_own);
+		vcfg.make_safe();
+		filter_own_.reset(new unit_filter(vcfg, resources::filter_con));
 	}
 	if (const config &filter_enemy = cfg.child("filter_enemy")) {
-		filter_enemy_ = filter_enemy;
+		vconfig vcfg(filter_enemy);
+		vcfg.make_safe();
+		filter_enemy_.reset(new unit_filter(vcfg, resources::filter_con));
 	}
 }
 
-aspect_attacks::~aspect_attacks()
-{
-}
-
-void aspect_attacks::recalculate() const
+void aspect_attacks_base::recalculate() const
 {
 	this->value_ = analyze_targets();
 	this->valid_ = true;
 }
 
-boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
+boost::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 {
 		const move_map& srcdst = get_srcdst();
 		const move_map& dstsrc = get_dstsrc();
@@ -74,10 +81,9 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		unit_map& units_ = *resources::units;
 
 		std::vector<map_location> unit_locs;
-		const unit_filter filt_own(vconfig(filter_own_), resources::filter_con);
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && get_passive_leader())) {
-				if (!filt_own(*i)) {
+				if (!is_allowed_attacker(*i)) {
 					continue;
 				}
 				unit_locs.push_back(i->get_location());
@@ -93,7 +99,6 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 
 		unit_stats_cache().clear();
 
-		const unit_filter filt_en(vconfig(filter_enemy_), resources::filter_con);
 		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
 			// Attack anyone who is on the enemy side,
@@ -101,7 +106,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 			if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
 			    !j->invisible(j->get_location()))
 			{
-				if (!filt_en( *j)) {
+				if (!is_allowed_enemy(*j)) {
 					continue;
 				}
 				map_location adjacent[6];
@@ -120,7 +125,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 
 
 
-void aspect_attacks::do_attack_analysis(
+void aspect_attacks_base::do_attack_analysis(
 	                 const map_location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
 					 const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
@@ -361,7 +366,7 @@ void aspect_attacks::do_attack_analysis(
 	}
 }
 
-int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
+int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 {
 	const gamemap &map_ = resources::gameboard->map();
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
@@ -396,15 +401,110 @@ int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 config aspect_attacks::to_config() const
 {
 	config cfg = typesafe_aspect<attacks_vector>::to_config();
-	if (!filter_own_.empty()) {
-		cfg.add_child("filter_own",filter_own_);
+	if (filter_own_ && !filter_own_->empty()) {
+		cfg.add_child("filter_own", filter_own_->to_config());
 	}
-	if (!filter_enemy_.empty()) {
-		cfg.add_child("filter_enemy",filter_enemy_);
+	if (filter_enemy_ && !filter_enemy_->empty()) {
+		cfg.add_child("filter_enemy", filter_enemy_->to_config());
 	}
 	return cfg;
 }
 
+bool aspect_attacks::is_allowed_attacker(const unit& u) const
+{
+	return (*filter_own_)(u);
+}
+
+bool aspect_attacks::is_allowed_enemy(const unit& u) const
+{
+	return (*filter_enemy_)(u);
+}
+
 } // end of namespace testing_ai_default
+
+aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+	: aspect_attacks_base(context, cfg, id)
+	, handler_(), code_(), params_(cfg.child_or_empty("args"))
+{
+	this->name_ = "lua_aspect";
+	if (cfg.has_attribute("code"))
+	{
+		code_ = cfg["code"].str();
+	}
+	else if (cfg.has_attribute("value"))
+	{
+		code_ = "return " + cfg["value"].apply_visitor(lua_aspect_visitor());
+	}
+	else
+	{
+		// error
+		return;
+	}
+	handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+}
+
+void aspect_attacks_lua::recalculate() const
+{
+	obj_.reset(new lua_object<aspect_attacks_lua_filter>);
+	handler_->handle(params_, true, obj_);
+	aspect_attacks_lua_filter filt = *obj_->get();
+	aspect_attacks_base::recalculate();
+	if(filt.lua) {
+		if(filt.ref_own_ != -1) {
+			luaL_unref(filt.lua, LUA_REGISTRYINDEX, filt.ref_own_);
+		}
+		if(filt.ref_enemy_ != -1) {
+			luaL_unref(filt.lua, LUA_REGISTRYINDEX, filt.ref_enemy_);
+		}
+	}
+	obj_.reset();
+}
+
+config aspect_attacks_lua::to_config() const
+{
+	config cfg = aspect::to_config();
+	cfg["code"] = code_;
+	if (!params_.empty()) {
+		cfg.add_child("args", params_);
+	}
+	return cfg;
+}
+
+static bool call_lua_filter_fcn(lua_State* L, const unit& u, int idx)
+{
+	lua_rawgeti(L, LUA_REGISTRYINDEX, idx);
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
+	lua_pushlightuserdata(L, getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	luaW_pcall(L, 1, 1);
+	bool result = luaW_toboolean(L, -1);
+	lua_pop(L, 1);
+	return result;
+}
+
+bool aspect_attacks_lua::is_allowed_attacker(const unit& u) const
+{
+	const aspect_attacks_lua_filter& filt = *obj_->get();
+	if(filt.lua && filt.ref_own_ != -1) {
+		return call_lua_filter_fcn(filt.lua, u, filt.ref_own_);
+	} else if(filt.filter_own_) {
+		return (*filt.filter_own_)(u);
+	} else {
+		return true;
+	}
+}
+
+bool aspect_attacks_lua::is_allowed_enemy(const unit& u) const
+{
+	const aspect_attacks_lua_filter& filt = *obj_->get();
+	if(filt.lua && filt.ref_enemy_ != -1) {
+		return call_lua_filter_fcn(filt.lua, u, filt.ref_enemy_);
+	} else if(filt.filter_enemy_) {
+		return (*filt.filter_enemy_)(u);
+	} else {
+		return true;
+	}
+}
 
 } // end of namespace ai

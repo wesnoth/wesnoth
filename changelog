@@ -147,6 +147,10 @@ Version 1.13.4+dev:
      * New wesnoth.micro_ais table contains the loaders for all Micro AIs.
        New loaders can easily be installed by add-ons. See any built-in
        micro AI (in ai/micro_ais/mai-defs/) for an example of how to do this.
+     * The attacks aspect can now be defined as a Lua aspect. The code
+       should return a table with keys "own" and "enemy", each of which may
+       be either a unit filter table or a function which takes a unit as a
+       parameter and returns true or false.
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
    * New syntax features:

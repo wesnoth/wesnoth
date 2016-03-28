@@ -31,9 +31,7 @@ public:
 	unit_advancements_aspect(lua_State* L, int n);
 	unit_advancements_aspect(const std::string& val);
 	const std::vector<std::string> get_advancements(const unit_map::const_iterator& unit) const;
-	virtual ~unit_advancements_aspect()
-	{
-	}
+	virtual ~unit_advancements_aspect();
 	const std::string get_value() const;
 
 private:
