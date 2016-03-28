@@ -10,6 +10,7 @@ local ca_recruit_rushers = {}
 
 function ca_recruit_rushers:evaluation(cfg)
     internal_params.randomness = cfg.randomness
+    internal_params.score_function = function() return cfg.ca_score end
     return internal_recruit_cas:recruit_rushers_eval()
 end
 
