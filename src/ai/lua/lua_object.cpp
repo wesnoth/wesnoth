@@ -26,7 +26,7 @@
 #include "resources.hpp"
 
 #include <boost/smart_ptr/make_shared_object.hpp>
-#include "lauxlib.h"
+#include "lua/lauxlib.h"
 
 namespace ai {
 
