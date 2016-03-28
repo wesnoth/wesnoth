@@ -889,7 +889,6 @@
 		ECA4A67C1A1EC319006BCCF2 /* lua_map_location_ops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA4A6791A1EC319006BCCF2 /* lua_map_location_ops.cpp */; };
 		ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */; };
 		ECA563871A47BA36006278A5 /* hotkey_handler_mp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */; };
-		ECA563881A47BA36006278A5 /* hotkey_handler_replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563841A47BA36006278A5 /* hotkey_handler_replay.cpp */; };
 		ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */; };
 		ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563861A47BA36006278A5 /* hotkey_handler.cpp */; };
 		ECA9E7471CA20AA800A947D6 /* libreadline.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.6.dylib */; };
@@ -1269,7 +1268,6 @@
 		91B6218D1B7670DE00B00E0F /* help_topic_generators.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = help_topic_generators.hpp; sourceTree = "<group>"; };
 		91B6218F1B76717400B00E0F /* hotkey_handler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hotkey_handler.hpp; sourceTree = "<group>"; };
 		91B621901B76717B00B00E0F /* hotkey_handler_sp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hotkey_handler_sp.hpp; sourceTree = "<group>"; };
-		91B621911B76718000B00E0F /* hotkey_handler_replay.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hotkey_handler_replay.hpp; sourceTree = "<group>"; };
 		91B621921B76718700B00E0F /* hotkey_handler_mp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hotkey_handler_mp.hpp; sourceTree = "<group>"; };
 		91B621931B76720B00B00E0F /* make_enum.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = make_enum.hpp; sourceTree = "<group>"; };
 		91B621941B76722E00B00E0F /* mp_ui_alerts.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mp_ui_alerts.hpp; sourceTree = "<group>"; };
@@ -2201,7 +2199,6 @@
 		ECA4A6791A1EC319006BCCF2 /* lua_map_location_ops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_map_location_ops.cpp; sourceTree = "<group>"; };
 		ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_rng.cpp; sourceTree = "<group>"; };
 		ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_mp.cpp; sourceTree = "<group>"; };
-		ECA563841A47BA36006278A5 /* hotkey_handler_replay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_replay.cpp; sourceTree = "<group>"; };
 		ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_sp.cpp; sourceTree = "<group>"; };
 		ECA563861A47BA36006278A5 /* hotkey_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler.cpp; sourceTree = "<group>"; };
 		ECA9E7461CA20AA800A947D6 /* libreadline.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.6.dylib; path = lib/libreadline.6.dylib; sourceTree = "<group>"; };
@@ -3128,8 +3125,6 @@
 				91B6218F1B76717400B00E0F /* hotkey_handler.hpp */,
 				ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */,
 				91B621921B76718700B00E0F /* hotkey_handler_mp.hpp */,
-				ECA563841A47BA36006278A5 /* hotkey_handler_replay.cpp */,
-				91B621911B76718000B00E0F /* hotkey_handler_replay.hpp */,
 				ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */,
 				91B621901B76717B00B00E0F /* hotkey_handler_sp.hpp */,
 				ECFA82DE184E59F3006782FB /* hotkey_item.cpp */,
@@ -4507,7 +4502,6 @@
 				B5795A680F05858100EB190E /* horizontal_scrollbar.cpp in Sources */,
 				ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */,
 				ECA563871A47BA36006278A5 /* hotkey_handler_mp.cpp in Sources */,
-				ECA563881A47BA36006278A5 /* hotkey_handler_replay.cpp in Sources */,
 				ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */,
 				ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */,
 				ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */,
