@@ -286,6 +286,10 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_PREFERENCES:
 		case HOTKEY_HELP:
 		case HOTKEY_QUIT_GAME:
+		case HOTKEY_SCROLL_UP:
+		case HOTKEY_SCROLL_DOWN:
+		case HOTKEY_SCROLL_LEFT:
+		case HOTKEY_SCROLL_RIGHT:
 			return true; //general hotkeys we can always do
 
 		case hotkey::HOTKEY_UNIT_LIST:
@@ -584,12 +588,18 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	}
 }
 
-bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int index)
+bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
 {
 	const int zoom_amount = 4;
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	SCOPE_ED;
 	using namespace hotkey;
+
+	// nothing here handles release; fall through to base implementation
+	if (!press) {
+		return hotkey::command_executor::execute_command(cmd, index, press);
+	}
+
 	switch (command) {
 		case HOTKEY_NULL:
 			switch (active_menu_) {
@@ -972,7 +982,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			gui().invalidate_all();
 			return true;
 		default:
-			return hotkey::command_executor::execute_command(cmd, index);
+			return hotkey::command_executor::execute_command(cmd, index, press);
 	}
 }
 
@@ -1354,6 +1364,11 @@ void editor_controller::process_keyup_event(const SDL_Event& event)
 
 hotkey::command_executor * editor_controller::get_hotkey_command_executor() {
 	return this;
+}
+
+void editor_controller::keyboard_scroll(int x, int y)
+{
+	controller_base::keyboard_scroll(x, y);
 }
 
 } //end namespace editor

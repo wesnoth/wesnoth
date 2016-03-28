@@ -107,7 +107,7 @@ class editor_controller : public controller_base,
 		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 
 		/** command_executor override */
-		bool execute_command(const hotkey::hotkey_command& command, int index = -1);
+		bool execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true);
 
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
@@ -117,6 +117,9 @@ class editor_controller : public controller_base,
 
 		/** Show the preferences dialog */
 		void preferences();
+
+		/** Handle hotkeys to scroll map */
+		void keyboard_scroll(int /*x*/, int /*y*/);
 
 		/** Grid toggle */
 		void toggle_grid();
