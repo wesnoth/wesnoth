@@ -31,6 +31,9 @@
 // Disable warning about deprecated functions.
 #pragma warning(disable: 4996)
 
+// Disable warning when using time_t in snprintf.
+#pragma warning(disable: 4477)
+
 // Disable some MSVC warnings which are useless according to mordante
 #pragma warning(disable: 4244)
 #pragma warning(disable: 4345)
