@@ -187,7 +187,7 @@ private:
 	std::vector<unit_filter> cond_children_;
 	std::vector<conditional::TYPE> cond_child_types_;
 
-	bool internal_matches_filter(const unit & u, const map_location & loc) const;
+	bool internal_matches_filter(const unit & u, const map_location & loc, const unit* u2) const;
 };
 
 /** "Factory" method which constructs an appropriate implementation
@@ -233,13 +233,13 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 		if (u2) {
 			const map_location& loc2 = u2->get_location();
 			scoped_xy_unit auto_store("other_unit", loc2.x, loc2.y, fc_.get_disp_context().units());
-			matches = internal_matches_filter(u, loc);
+			matches = internal_matches_filter(u, loc, u2);
 		} else {
-			matches = internal_matches_filter(u, loc);
+			matches = internal_matches_filter(u, loc, u2);
 		}
 	} else {
 		// If loc is invalid, then this is a recall list unit (already been scoped)
-		matches = internal_matches_filter(u, loc);
+		matches = internal_matches_filter(u, loc, NULL);
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
@@ -258,7 +258,7 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 	return matches;
 }
 
-bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_location& loc) const
+bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_location& loc, const unit* u2) const
 {
 	if (!vcfg["name"].blank() && vcfg["name"].t_str() != u.name()) {
 		return false;
@@ -554,7 +554,13 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	}
 	if (!vcfg["formula"].blank()) {
 		try {
-			const unit_callable callable(loc,u);
+			const unit_callable main(loc,u);
+			game_logic::map_formula_callable callable(&main);
+			if (u2) {
+				boost::intrusive_ptr<unit_callable> secondary(new unit_callable(*u2));
+				callable.add("other", variant(secondary.get()));
+				// It's not destroyed upon scope exit because the variant holds a reference
+			}
 			const game_logic::formula form(vcfg["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;

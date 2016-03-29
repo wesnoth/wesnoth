@@ -16,6 +16,7 @@ Version 1.13.4+dev:
    * New ~SCALE_INTO_SHARP(w,h) IPF which preserves aspect ratio, using
      nearest neighbor scaling.
    * Support delayed_variable_substitution= in [on_undo], [on_redo]
+   * formula= in SUF can now reference $other_unit via the formula variable "other"
    * AiWML:
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
