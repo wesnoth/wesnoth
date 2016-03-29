@@ -38,10 +38,10 @@
 #include "hotkey/hotkey_handler.hpp"
 #include "map/label.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "pathfind/teleport.hpp"
 #include "preferences_display.hpp"
@@ -224,15 +224,7 @@ struct throw_end_level
 
 void play_controller::init(CVideo& video, const config& level)
 {
-	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
-	loadscreen::global_loadscreen_manager* loadscreen_manager = loadscreen::global_loadscreen_manager::get();
-	if (!loadscreen_manager)
-	{
-		scoped_loadscreen_manager.assign(new loadscreen::global_loadscreen_manager(video));
-		loadscreen_manager = scoped_loadscreen_manager.get();
-	}
-
-	loadscreen::start_stage("load level");
+	gui2::tloadscreen::display(video);
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
 	gamestate_.reset(new game_state(level, *this, tdata_));
@@ -254,15 +246,12 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::whiteboard = whiteboard_manager_;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks()) << std::endl;
-	loadscreen::start_stage("load units");
 	preferences::encounter_all_content(gamestate().board_);
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
-	loadscreen::start_stage("init theme");
 	const config& theme_cfg = controller_base::get_theme(game_config_, level["theme"]);
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
-	loadscreen::start_stage("build terrain");
 	gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
@@ -271,7 +260,6 @@ void play_controller::init(CVideo& video, const config& level)
 			gui_->get_theme().modify_label("time-icon", _ ("current local time"));
 	}
 
-	loadscreen::start_stage("init display");
 	mouse_handler_.set_gui(gui_.get());
 	menu_handler_.set_gui(gui_.get());
 	resources::screen = gui_.get();
@@ -279,7 +267,6 @@ void play_controller::init(CVideo& video, const config& level)
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks()) << std::endl;
 
 	LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks()) << std::endl;
-	//loadscreen::start_stage("build events manager & lua");
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
@@ -304,8 +291,7 @@ void play_controller::init(CVideo& video, const config& level)
 	}
 
 	init_managers();
-	loadscreen::global_loadscreen->start_stage("start game");
-	loadscreen_manager->reset();
+	//loadscreen_manager->reset();
 	gamestate().gamedata_.set_phase(game_data::PRELOAD);
 	gamestate().lua_kernel_->initialize(level);
 

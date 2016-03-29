@@ -18,7 +18,6 @@
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "game_events/manager.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
@@ -177,7 +176,6 @@ void game_state::init(const config& level, play_controller & pc)
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
-	//loadscreen::start_stage("init teams");
 
 	board_.teams_.resize(level.child_count("side"));
 

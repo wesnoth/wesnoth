@@ -113,7 +113,6 @@ libwesnoth_sources = Split("""
     generators/lua_map_generator.cpp
     key.cpp
     language.cpp
-    loadscreen.cpp
     utils/make_enum.cpp
     map/label.cpp
     marked-up_text.cpp
@@ -154,7 +153,6 @@ libwesnoth_sources = Split("""
 libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
 
 libwesnothd_sources = Split("""
-    loadscreen_empty.cpp
     tools/dummy_video.cpp
     """)
 libwesnothd = env.Library("wesnothd", libwesnothd_sources)
@@ -375,6 +373,7 @@ wesnoth_sources = Split("""
     gui/dialogs/gamestate_inspector.cpp
     gui/dialogs/label_settings.cpp
     gui/dialogs/language_selection.cpp
+    gui/dialogs/loadscreen.cpp.cpp
     gui/dialogs/lobby/data.cpp
     gui/dialogs/lobby/info.cpp
     gui/dialogs/lobby/lobby.cpp
@@ -686,7 +685,6 @@ wesmage_sources = Split("""
     sdl/alpha.cpp
     sdl/window.cpp
     tracer.cpp
-    loadscreen_empty.cpp
     """)
 client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
 
@@ -738,7 +736,6 @@ create_images_sources = Split("""
     sdl/alpha.cpp
     sdl/window.cpp
     tracer.cpp
-    loadscreen_empty.cpp
 """)
 
 env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])

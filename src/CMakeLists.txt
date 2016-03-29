@@ -837,6 +837,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
+	gui/dialogs/loadscreen.cpp.cpp
 	gui/dialogs/lobby/data.cpp
 	gui/dialogs/lobby/info.cpp
 	gui/dialogs/lobby/lobby.cpp
@@ -1026,7 +1027,6 @@ set(libwesnoth-game_STAT_SRC
 	game_end_exceptions.cpp
 	key.cpp
 	language.cpp
-	loadscreen.cpp
 	lobby_preferences.cpp
 	utils/make_enum.cpp
 	map/label.cpp
@@ -1177,7 +1177,6 @@ set(wesnothd_SRC
 	server/forum_user_handler.cpp
 	server/sample_user_handler.cpp
 	${network_implementation_files}
-	loadscreen_empty.cpp
 )
 
 add_executable(wesnothd WIN32
@@ -1202,7 +1201,6 @@ set(campaignd_SRC
 	campaign_server/campaign_server.cpp
 	server/input_stream.cpp
 	${network_implementation_files}
-	loadscreen_empty.cpp
 )
 
 check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
@@ -1236,7 +1234,6 @@ set(exploder_SRC
 	tools/dummy_video.cpp
 	sdl/utils.cpp
 	tracer.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(exploder ${exploder_SRC})
@@ -1257,7 +1254,6 @@ set(cutter_SRC
 	tools/dummy_video.cpp
 	sdl/utils.cpp
 	tracer.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(cutter ${cutter_SRC})
@@ -1279,7 +1275,6 @@ set(schema_generator_SRC
 	tools/schema/tag.cpp
 	filesystem_boost.cpp
 	filesystem_common.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(schema_generator ${schema_generator_SRC})
@@ -1303,7 +1298,6 @@ set(schema_validator_SRC
 	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(schema_validator ${schema_validator_SRC})
@@ -1328,7 +1322,6 @@ set(wesmage_SRC
 	tools/exploder_utils.cpp
 	sdl/utils.cpp
 	tracer.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(wesmage ${wesmage_SRC})
@@ -1482,7 +1475,6 @@ if(ENABLE_TESTS)
 			tools/exploder_utils.cpp
 			sdl/utils.cpp
 			tracer.cpp
-			loadscreen_empty.cpp
 		)
 
 		add_executable(create_images ${create_images_SRC})

@@ -20,11 +20,11 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -138,8 +138,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		}
 	}
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(video_);
-	cursor::setter cur(cursor::WAIT);
+	gui2::tloadscreen::display(video_);
 
 	// The loadscreen will erase the titlescreen.
 	// NOTE: even without loadscreen, needed after MP lobby.
@@ -151,9 +150,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
-		loadscreen::start_stage("verify cache");
 		filesystem::data_tree_checksum();
-		loadscreen::start_stage("create cache");
 
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
@@ -473,7 +470,6 @@ void game_config_manager::set_color_info()
 void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
-	loadscreen::start_stage("load unit types");
 	if(config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}

@@ -30,6 +30,7 @@
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
@@ -39,7 +40,6 @@
 #include "gui/widgets/window.hpp"       // for twindow, etc
 #include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
-#include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map/exception.hpp"
 #include "game_initialization/multiplayer.hpp"              // for start_client, etc
@@ -1011,8 +1011,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(video());
-	loadscreen::start_stage("load data");
+	gui2::tloadscreen::display(video());
+
 	if(reload == RELOAD_DATA) {
 		try {
 			game_config_manager::get()->

@@ -25,7 +25,6 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
-#include "loadscreen.hpp"
 #include "wesconfig.h"
 #include "serialization/preprocessor.hpp"
 #include "serialization/tokenizer.hpp"
@@ -136,7 +135,6 @@ void parser::operator()()
 		case token::END:
 			break;
 		}
-		loadscreen::increment_progress();
 	} while (tok_.current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.

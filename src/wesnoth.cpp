@@ -33,12 +33,12 @@
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"  // for tmanager
 #include "gui/dialogs/core_selection.hpp"  // for tcore_selection
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
 #include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "help/help.hpp"                     // for help_manager
 #include "image.hpp"                    // for flush_cache, etc
-#include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "network.hpp"			// for describe_versions
 #include "preferences.hpp"              // for core_id, etc
@@ -46,6 +46,7 @@
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp"            // for texception
+#include "sdl/rect.hpp"
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
 #include "serialization/preprocessor.hpp"  // for preproc_define, etc
@@ -629,28 +630,25 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	check_fpu();
 	const cursor::manager cursor_manager;
-	cursor::set(cursor::WAIT);
+	//cursor::set(cursor::WAIT);
 
 #if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game->video());
-
-	loadscreen::start_stage("init gui");
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
+
+	gui2::tloadscreen::display(game->video());
 
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
-	loadscreen::start_stage("load config");
 	res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;
 	}
-	loadscreen::start_stage("init fonts");
 
 	res = font::load_font_config();
 	if(res == false) {
@@ -658,12 +656,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	loadscreen::start_stage("refresh addons");
 	refresh_addon_version_info_cache();
 
 	config tips_of_day;
-
-	loadscreen::start_stage("titlescreen");
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
@@ -704,8 +699,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 				sound::stop_music();
 			}
 		}
-
-		loadscreen_manager.reset();
 
 		handle_lua_script_args(&*game,cmdline_opts);
 
@@ -852,7 +845,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			loadscreen::global_loadscreen_manager loadscreen(game->video());
+			gui2::tloadscreen::display(game->video());
 			config_manager.reload_changed_game_config();
 			image::flush_cache();
 			continue;

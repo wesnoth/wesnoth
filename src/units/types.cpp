@@ -24,7 +24,6 @@
 #include "game_config.hpp"
 #include "game_errors.hpp" //thrown sometimes
 //#include "gettext.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "utils/make_enum.hpp"
 #include "units/unit.hpp"
@@ -1012,14 +1011,12 @@ void unit_type_data::set_config(config &cfg)
 	BOOST_FOREACH(const config &mt, cfg.child_range("movetype"))
 	{
 		movement_types_.insert(std::make_pair(mt["name"].str(), movetype(mt)));
-		loadscreen::increment_progress();
 	}
 
 	BOOST_FOREACH(const config &r, cfg.child_range("race"))
 	{
 		const unit_race race(r);
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
-		loadscreen::increment_progress();
 	}
 
 	// Movetype resistance patching
@@ -1101,7 +1098,6 @@ void unit_type_data::set_config(config &cfg)
 			if ( !id.empty() ) {
 				std::vector<std::string> base_tree(1, id);
 				apply_base_unit(ut, cfg, base_tree);
-				loadscreen::increment_progress();
 			}
 		}
 	}
@@ -1135,8 +1131,6 @@ void unit_type_data::set_config(config &cfg)
 		} else {
 			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered." << std::endl;
 		}
-
-		loadscreen::increment_progress();
 	}
 
 	// Build all unit types. (This was not done within the loop for performance.)
@@ -1202,7 +1196,6 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
 		build_unit_type(u->second, status);
-		loadscreen::increment_progress();
 	}
 	// Handle [advancefrom] (once) after building to (at least) the CREATED level.
 	// (Currently, this could be simply a test for build_status_ == NOT_BUILT,
