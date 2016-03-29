@@ -43,8 +43,6 @@ public:
 	const std::string& get_loop_formula() const { return unit_loop_formula_; }
 	const std::string& get_priority_formula() const { return unit_priority_formula_; }
 
-	bool matches_filter( const std::string & cfg_formula, const map_location & loc, const unit & me);
-
 	void read(const config & ai);
 	void write(config & cfg);
 

@@ -35,6 +35,8 @@
 #include "units/types.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
 #include "wml_exception.hpp" // needed for FAIL
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
@@ -551,7 +553,16 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		}
 	}
 	if (!vcfg["formula"].blank()) {
-		if (!u.formula_manager().matches_filter(vcfg["formula"], loc, u)) {
+		try {
+			const unit_callable callable(loc,u);
+			const game_logic::formula form(vcfg["formula"]);
+			if(!form.evaluate(callable).as_bool()) {
+				return false;
+			}
+			return true;
+		} catch(game_logic::formula_error& e) {
+			lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			// Formulae with syntax errors match nothing
 			return false;
 		}
 	}
