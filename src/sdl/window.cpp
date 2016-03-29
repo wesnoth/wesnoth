@@ -55,6 +55,8 @@ twindow::twindow(const std::string& title,
 	pixel_format_ = info.texture_formats[0];
 
 	fill(0,0,0);
+
+	render();
 }
 
 twindow::~twindow()
