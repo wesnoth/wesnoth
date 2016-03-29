@@ -8,6 +8,6 @@ def get_best_defense_loc(moves, attacker, enemy)
 	attack(me.loc, get_best_defense_loc(my_moves.moves, me, target), target.loc, att_weap)
 
 
-    where att_weap = index_of(['poison'],map(me.attacks,special))
+    where att_weap = index_of(['poison'],map(me.attacks,specials))
 
 faiend

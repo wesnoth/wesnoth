@@ -160,9 +160,16 @@ Version 1.13.4+dev:
        parameter and returns true or false.
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
+     The following attributes were renamed (old names still work, for now):
+     leader -> canrecruit
+     total_movement -> max_moves
+     movement_left -> moves
+     states -> status
    * Nearly All side, weapon, and terrain attributes available to Lua code
      are now also exposed to WFL. The exceptions are mainly translatable
      strings.
+   * The 'special' attribute of weapons was renamed to 'specials', and it now
+     contains the special IDs rather than their translateable names.
    * New syntax features:
      * String interpolation syntax. Within a formula string (enclosed in
        'single quotes'), the syntax [some_formula] interpolates the result

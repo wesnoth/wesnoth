@@ -40,6 +40,8 @@ The Wesnoth formula language used by $(...) substitution, the formula= key in st
 [*]Improved formula debugger
 [/list]
 The "fai" and "faiend" keywords are deprecated in favour of "wfl" and "wflend" respectively. This is part of a move to more clearly distinguish [wiki]Wesnoth Formula Language[/wiki], the language itself, from [wiki]FormulaAI[/wiki], which is just one use of the language in Wesnoth.
+
+The attributes leader, total_movement, movement_left, and states in WFL unit variables were renamed to canrecruit, max_moves, moves, and status respectively; this was done to make them match the Lua and WML names for the same things. Also, the special attribute in WFL weapon variables is now specials. The old names will continue to work for now, but they may be removed in a future version.
 [/rasection]
 
 [rasection="Changes to the AI"]

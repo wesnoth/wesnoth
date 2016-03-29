@@ -35,7 +35,7 @@ def get_important_locations(ai* )
 def enemy_leaders( ai* )
 	sum(
 		map( enemies, 'enemy',
-			filter( units_of_side[enemy], leader )
+			filter( units_of_side[enemy], canrecruit )
 		)
 	);
 
@@ -123,7 +123,7 @@ def locally_normalize_to_lowest( input_map )
 # Returns a List of all enemy leaders #
 # (for some reason this function is defined twice) #
 def enemy_leaders(ai*)
-	map( enemies, 'enemy_side', find(units_of_side[enemy_side], leader ) );
+	map( enemies, 'enemy_side', find(units_of_side[enemy_side], canrecruit ) );
 
 # UNUSED FUNCTION #
 # Returns a Map. #
@@ -249,7 +249,7 @@ def movement_eval(ai*, recruits_id_map)
 					my_recruits_movement_cost( ai ),
 					tomap( recruits_id_map,
 						map( my_recruits,
-							total_movement
+							max_moves
 						)
 					)
 				),
@@ -357,7 +357,7 @@ if( vars.side_terrain,
 			mark_important_locations( self,
 				calculate_map_ownership(
 					recruits_of_side,
-					map(filter(sum(units_of_side), leader), loc),
+					map(filter(sum(units_of_side), canrecruit), loc),
 					4, 7, 4
 				)
 			)
