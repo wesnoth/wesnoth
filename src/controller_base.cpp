@@ -347,7 +347,7 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 	return empty;
 }
 
-void controller_base::keyboard_scroll(int x, int y)
+void controller_base::apply_keyboard_scroll(int x, int y)
 {
 	if (have_keyboard_focus()) {
 		// clamp between -1 and 1 so key repeats don't accelerate scrolling

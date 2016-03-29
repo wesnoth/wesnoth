@@ -220,7 +220,7 @@ void play_controller::hotkey_handler::toggle_accelerated_speed()
 
 void play_controller::hotkey_handler::keyboard_scroll(int x, int y)
 {
-	play_controller_.keyboard_scroll(x, y);
+	play_controller_.apply_keyboard_scroll(x, y);
 }
 
 bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index, bool press)

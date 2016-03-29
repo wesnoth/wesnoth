@@ -1368,7 +1368,7 @@ hotkey::command_executor * editor_controller::get_hotkey_command_executor() {
 
 void editor_controller::keyboard_scroll(int x, int y)
 {
-	controller_base::keyboard_scroll(x, y);
+	controller_base::apply_keyboard_scroll(x, y);
 }
 
 } //end namespace editor

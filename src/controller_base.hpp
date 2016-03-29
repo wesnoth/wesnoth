@@ -65,7 +65,7 @@ public:
 
 	static const config &get_theme(const config& game_config, std::string theme_name);
 
-	void keyboard_scroll(int x, int y);
+	void apply_keyboard_scroll(int x, int y);
 protected:
 	virtual bool is_browsing() const
 	{ return false; }
