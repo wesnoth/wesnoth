@@ -808,4 +808,15 @@ void ttree_view_node::select_node()
 	label_->set_value_bool(true);
 }
 
+void ttree_view_node::layout_initialise(const bool full_initialisation)
+{
+	// Inherited.
+	twidget::layout_initialise(full_initialisation);
+	grid_.layout_initialise(full_initialisation);
+	// Clear child caches.
+	FOREACH(AUTO & child, children_)
+	{
+		child.layout_initialise(full_initialisation);
+	}
+}
 } // namespace gui2

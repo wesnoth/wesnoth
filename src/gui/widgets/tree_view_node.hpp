@@ -221,6 +221,7 @@ public:
 	ttree_view_node* get_selectable_node_below();
 	void select_node();
 	tgrid& get_grid() { return grid_; }
+	void layout_initialise(const bool full_initialisation);
 private:
 
 	int calculate_ypos();
