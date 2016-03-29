@@ -188,26 +188,66 @@ private:
 
 
 CALLABLE_WRAPPER_START(team)
+CALLABLE_WRAPPER_INPUT(side)
+CALLABLE_WRAPPER_INPUT(id)
 CALLABLE_WRAPPER_INPUT(gold)
 CALLABLE_WRAPPER_INPUT(start_gold)
 CALLABLE_WRAPPER_INPUT(base_income)
+CALLABLE_WRAPPER_INPUT(total_income)
 CALLABLE_WRAPPER_INPUT(village_gold)
 CALLABLE_WRAPPER_INPUT(village_support)
+CALLABLE_WRAPPER_INPUT(recall_cost)
 CALLABLE_WRAPPER_INPUT(name)
 CALLABLE_WRAPPER_INPUT(is_human)
 CALLABLE_WRAPPER_INPUT(is_ai)
 CALLABLE_WRAPPER_INPUT(is_network)
+CALLABLE_WRAPPER_INPUT(fog)
+CALLABLE_WRAPPER_INPUT(shroud)
+CALLABLE_WRAPPER_INPUT(hidden)
+CALLABLE_WRAPPER_INPUT(flag)
+CALLABLE_WRAPPER_INPUT(flag_icon)
+CALLABLE_WRAPPER_INPUT(team_name)
+CALLABLE_WRAPPER_INPUT(color)
+CALLABLE_WRAPPER_INPUT(share_vision)
+CALLABLE_WRAPPER_INPUT(carryover_bonus)
+CALLABLE_WRAPPER_INPUT(carryover_percentage)
+CALLABLE_WRAPPER_INPUT(carryover_add)
+CALLABLE_WRAPPER_INPUT(recruit)
 CALLABLE_WRAPPER_INPUT_END
+CALLABLE_WRAPPER_FN(side)
+CALLABLE_WRAPPER_FN2(id, save_id)
+CALLABLE_WRAPPER_FN(save_id)
 CALLABLE_WRAPPER_FN(gold)
-	if(key == "start_gold") { \
-		return variant(lexical_cast<int>(object_.start_gold())); \
+	if(key == "start_gold") {
+		return variant(lexical_cast<int>(object_.start_gold()));
 	} else
 CALLABLE_WRAPPER_FN(base_income)
+CALLABLE_WRAPPER_FN(total_income)
 CALLABLE_WRAPPER_FN(village_gold)
 CALLABLE_WRAPPER_FN(village_support)
+CALLABLE_WRAPPER_FN(recall_cost)
 CALLABLE_WRAPPER_FN2(is_human, is_local_human)
 CALLABLE_WRAPPER_FN2(is_ai, is_local_ai)
 CALLABLE_WRAPPER_FN(is_network)
+CALLABLE_WRAPPER_FN2(fog, uses_fog)
+CALLABLE_WRAPPER_FN2(shroud, uses_shroud)
+CALLABLE_WRAPPER_FN(hidden)
+CALLABLE_WRAPPER_FN(flag)
+CALLABLE_WRAPPER_FN(flag_icon)
+CALLABLE_WRAPPER_FN(team_name)
+CALLABLE_WRAPPER_FN(color)
+CALLABLE_WRAPPER_FN2(share_vision, share_vision().to_string)
+CALLABLE_WRAPPER_FN(carryover_bonus)
+CALLABLE_WRAPPER_FN(carryover_percentage)
+CALLABLE_WRAPPER_FN(carryover_add)
+	if(key == "recruit") {
+		const std::set<std::string>& recruits = object_.recruits();
+		std::vector<variant> result;
+		for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
+			result.push_back(variant(*it));
+		}
+		return variant(&result);
+	} else
 CALLABLE_WRAPPER_END
 
 #endif

@@ -30,6 +30,8 @@
 #include "units/unit.hpp"
 #include "units/filter.hpp"
 #include "variable.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -322,6 +324,24 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	else if(!owner_side.empty()) {
 		const int side_index = owner_side.to_int(0) - 1;
 		if(fc_->get_disp_context().village_owner(loc) != side_index) {
+			return false;
+		}
+	}
+	
+	if(cfg_.has_attribute("formula")) {
+		try {
+			const gamemap& map = fc_->get_disp_context().map();
+			t_translation::t_terrain t = map.get_terrain(loc);
+			const terrain_type& ter = map.tdata()->get_terrain_info(t);
+			const terrain_callable callable(ter,loc);
+			const game_logic::formula form(cfg_["formula"]);
+			if(!form.evaluate(callable).as_bool()) {
+				return false;
+			}
+			return true;
+		} catch(game_logic::formula_error& e) {
+			lg::wml_error() << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			// Formulae with syntax errors match nothing
 			return false;
 		}
 	}

@@ -31,6 +31,8 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "variable.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -239,6 +241,21 @@ bool side_filter::match_internal(const team &t) const
 			if(!found) {
 				return false;
 			}
+		}
+	}
+	
+	if (cfg_.has_attribute("formula")) {
+		try {
+			const team_callable callable(t);
+			const game_logic::formula form(cfg_["formula"]);
+			if(!form.evaluate(callable).as_bool()) {
+				return false;
+			}
+			return true;
+		} catch(game_logic::formula_error& e) {
+			lg::wml_error() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			// Formulae with syntax errors match nothing
+			return false;
 		}
 	}
 

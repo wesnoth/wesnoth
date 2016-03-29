@@ -399,7 +399,21 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		}
 	}
 
-	if (!vcfg["has_weapon"].blank()) {
+	if (vcfg.has_child("has_attack")) {
+		const vconfig& weap_filter = vcfg.child("has_attack");
+		bool has_weapon = false;
+		const std::vector<attack_type>& attacks = u.attacks();
+		for(std::vector<attack_type>::const_iterator i = attacks.begin();
+			i != attacks.end(); ++i) {
+			if(i->matches_filter(weap_filter.get_parsed_config())) {
+				has_weapon = true;
+				break;
+			}
+		}
+		if(!has_weapon) {
+			return false;
+		}
+	} else if (!vcfg["has_weapon"].blank()) {
 		std::string weapon = vcfg["has_weapon"];
 		bool has_weapon = false;
 		const std::vector<attack_type>& attacks = u.attacks();

@@ -17,6 +17,10 @@ Version 1.13.4+dev:
      nearest neighbor scaling.
    * Support delayed_variable_substitution= in [on_undo], [on_redo]
    * formula= in SUF can now reference $other_unit via the formula variable "other"
+   * formula= now supported in location, side, and weapon filters
+   * Weapon filters now support number, parry, accuracy, and movement_used
+   * New [has_attack] in standard unit filters; supercedes has_weapon= and
+     uses full weapon filter.
    * AiWML:
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
@@ -156,6 +160,9 @@ Version 1.13.4+dev:
        parameter and returns true or false.
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
+   * Nearly All side, weapon, and terrain attributes available to Lua code
+     are now also exposed to WFL. The exceptions are mainly translatable
+     strings.
    * New syntax features:
      * String interpolation syntax. Within a formula string (enclosed in
        'single quotes'), the syntax [some_formula] interpolates the result

@@ -20,6 +20,8 @@
 #include "global.hpp"
 
 #include "units/attack_type.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -96,14 +98,31 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
+	const std::string& filter_attacks = filter["number"];
+	const std::string& filter_accuracy = filter["accuracy"];
+	const std::string& filter_parry = filter["parry"];
+	const std::string& filter_movement = filter["movement_used"];
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::string filter_special = filter["special"];
+	const std::string filter_formula = filter["formula"];
 
 	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
 		return false;
 
 	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges(filter_damage)) )
+		return false;
+
+	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks)))
+		return false;
+	
+	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy)))
+		return false;
+	
+	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges(filter_parry)))
+		return false;
+	
+	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
 		return false;
 
 	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
@@ -114,6 +133,21 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if ( !filter_special.empty() && !attack.get_special_bool(filter_special, true) )
 		return false;
+	
+	if (!filter_formula.empty()) {
+		try {
+			const attack_type_callable callable(attack);
+			const game_logic::formula form(filter_formula);
+			if(!form.evaluate(callable).as_bool()) {
+				return false;
+			}
+			return true;
+		} catch(game_logic::formula_error& e) {
+			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			// Formulae with syntax errors match nothing
+			return false;
+		}
+	}
 
 	// Passed all tests.
 	return true;

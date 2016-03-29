@@ -15,6 +15,7 @@
 #include "formula/callable_objects.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
+#include "utils/foreach.hpp"
 
 template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {
@@ -80,22 +81,38 @@ void location_callable::serialize_to_string(std::string& str) const
 
 variant attack_type_callable::get_value(const std::string& key) const
 {
-	if(key == "id") {
+	if(key == "id" || key == "name") {
 		return variant(att_.id());
+	} else if(key == "description") {
+		return variant(att_.name());
 	} else if(key == "type") {
 		return variant(att_.type());
+	} else if(key == "icon") {
+		return variant(att_.icon());
 	} else if(key == "range") {
 		return variant(att_.range());
 	} else if(key == "damage") {
 		return variant(att_.damage());
-	} else if(key == "number_of_attacks") {
+	} else if(key == "number_of_attacks" || key == "number" || key == "num_attacks" || key == "attacks") {
 		return variant(att_.num_attacks());
-	} else if(key == "special") {
-		std::vector<std::pair<t_string, t_string> > specials = att_.special_tooltips();
+	} else if(key == "attack_weight") {
+		return variant(att_.attack_weight(), variant::DECIMAL_VARIANT);
+	} else if(key == "defense_weight") {
+		return variant(att_.defense_weight(), variant::DECIMAL_VARIANT);
+	} else if(key == "accuracy") {
+		return variant(att_.accuracy());
+	} else if(key == "parry") {
+		return variant(att_.parry());
+	} else if(key == "movement_used") {
+		return variant(att_.movement_used());
+	} else if(key == "specials" || key == "special") {
+		const config specials = att_.specials();
 		std::vector<variant> res;
 
-		for( size_t i = 0; i != specials.size(); ++i ) {
-			res.push_back( variant(specials[i].first.base_str()) );
+		FOREACH(const AUTO& special , specials.all_children_range()) {
+			if(!special.cfg["id"].empty()) {
+				res.push_back(variant(special.cfg["id"].str()));
+			}
 		}
 		return variant(&res);
 	}
@@ -106,12 +123,19 @@ variant attack_type_callable::get_value(const std::string& key) const
 void attack_type_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
 {
 	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("name", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("description", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("icon", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("range", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("damage", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("number_of_attacks", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("special", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("number", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("accuracy", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("parry", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("movement_used", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("attack_weight", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("defense_weight", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("specials", FORMULA_READ_ONLY));
 }
 
 int attack_type_callable::do_compare(const formula_callable* callable) const
@@ -431,6 +455,24 @@ variant terrain_callable::get_value(const std::string& key) const
 		return variant(new location_callable(loc_));
 	} else if(key == "id") {
 		return variant(std::string(t_.id()));
+	} else if(key == "name") {
+		return variant(t_.name());
+	} else if(key == "editor_name") {
+		return variant(t_.editor_name());
+	} else if(key == "description") {
+		return variant(t_.description());
+	} else if(key == "icon") {
+		return variant(t_.icon_image());
+	} else if(key == "light") {
+		return variant(t_.light_bonus(0));
+	} else if(key == "village") {
+		return variant(t_.is_village());
+	} else if(key == "castle") {
+		return variant(t_.is_castle());
+	} else if(key == "keep") {
+		return variant(t_.is_keep());
+	} else if(key == "healing") {
+		return variant(t_.gives_healing());
 	} else
 		return variant();
 }
@@ -442,6 +484,15 @@ void terrain_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 	inputs->push_back(game_logic::formula_input("y", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("name", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("editor_name", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("description", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("icon", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("light", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("village", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("castle", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("keep", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("healing", FORMULA_READ_ONLY));
 }
 
 int terrain_callable::do_compare(const formula_callable* callable) const
