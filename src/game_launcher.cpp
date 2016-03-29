@@ -1012,6 +1012,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	}
 
 	gui2::tloadscreen::display(video());
+	gui2::tloadscreen::progress("load data");
 
 	if(reload == RELOAD_DATA) {
 		try {

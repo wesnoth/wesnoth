@@ -30,6 +30,7 @@
 #include "teambuilder.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -165,6 +166,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 void game_state::init(const config& level, play_controller & pc)
 {
 	events_manager_->read_scenario(level);
+	gui2::tloadscreen::progress("init teams");
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);

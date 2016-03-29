@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "serialization/string_utils.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -866,6 +867,7 @@ void terrain_builder::add_rotated_rules(building_ruleset &rules, building_rule &
 void terrain_builder::parse_config(const config &cfg, bool local)
 {
 	log_scope("terrain_builder::parse_config");
+	int n = 0;
 
 	// Parses the list of building rules (BRs)
 	BOOST_FOREACH(const config &br, cfg.child_range("terrain_graphics"))
@@ -946,6 +948,11 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		pbr.precedence = br["precedence"];
 
 		add_rotated_rules(building_rules_, pbr, rotations);
+
+		n++;
+		if(n % 10 == 0) {
+			gui2::tloadscreen::progress();
+		}
 	}
 
 // Debug output for the terrain rules

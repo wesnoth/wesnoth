@@ -150,7 +150,9 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
+		gui2::tloadscreen::progress("verify cache");
 		filesystem::data_tree_checksum();
+		gui2::tloadscreen::progress("create cache");
 
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
@@ -470,6 +472,7 @@ void game_config_manager::set_color_info()
 void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
+	gui2::tloadscreen::progress("load unit types");
 	if(config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}

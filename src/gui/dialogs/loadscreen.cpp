@@ -64,4 +64,19 @@ void tloadscreen::post_show(twindow& /*window*/)
 	cursor::setter cur(cursor::NORMAL);
 }
 
+void tloadscreen::progress(const char* stage)
+{
+	if(!current_load) {
+		return;
+	}
+	// Currently this is a no-op stub
+	if(stage) {
+		// TODO: Update displayed stage
+		current_load->current_stage = stage;
+	}
+	// TODO: Indicate progress somehow
+}
+
+tloadscreen* tloadscreen::current_load = NULL;
+
 } // namespace gui2

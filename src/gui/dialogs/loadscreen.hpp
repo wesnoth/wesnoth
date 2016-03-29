@@ -27,12 +27,16 @@ class tloadscreen : public tdialog
 public:
 	tloadscreen()
 		: window_(NULL)
+		, previous_load(current_load)
+		, current_stage(NULL)
 	{
+		current_load = this;
 	}
 
 	~tloadscreen()
 	{
 		close();
+		current_load = previous_load;
 	}
 
 	static void display(CVideo& video) {
@@ -40,6 +44,8 @@ public:
 	}
 
 	void show(CVideo& video);
+	
+	static void progress(const char* stage_name = NULL);
 
 	/**
 	 * Hides the window.
@@ -61,6 +67,10 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
+
+	static tloadscreen* current_load;
+	tloadscreen*const previous_load;
+	const char* current_stage;
 };
 
 } // namespace gui2

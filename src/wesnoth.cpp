@@ -630,12 +630,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	check_fpu();
 	const cursor::manager cursor_manager;
-	//cursor::set(cursor::WAIT);
+	cursor::set(cursor::WAIT);
 
 #if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
+	gui2::tloadscreen::progress("init gui"); // Does nothing since there's no loadscreen yet
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
@@ -644,11 +645,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
+	gui2::tloadscreen::progress("load config");
 	res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;
 	}
+	gui2::tloadscreen::progress("init fonts");
 
 	res = font::load_font_config();
 	if(res == false) {
@@ -656,9 +659,12 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
+	gui2::tloadscreen::progress("refresh addons");
 	refresh_addon_version_info_cache();
 
 	config tips_of_day;
+
+	gui2::tloadscreen::progress("titlescreen");
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
