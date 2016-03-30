@@ -30,6 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
@@ -72,6 +73,7 @@
 			<Add library="libboost_random-mgw51-mt-1_58.a" />
 			<Add library="libboost_regex-mgw51-mt-1_58.a" />
 			<Add library="libboost_system-mgw51-mt-1_58.a" />
+			<Add library="libboost_thread-mgw51-mt-1_58.a" />
 			<Add library="libboost_zlib-mgw51-mt-1_58.a" />
 			<Add directory="./" />
 		</Linker>

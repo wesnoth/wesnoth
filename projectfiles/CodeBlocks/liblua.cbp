@@ -31,6 +31,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Unit filename="../../src/lua/lapi.cpp">
