@@ -19,7 +19,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/core/timer.hpp"
 #include "video.hpp"
-
+#include "cursor.hpp"
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
 
@@ -28,6 +28,15 @@ namespace gui2
 
 REGISTER_DIALOG(loadscreen)
 
+tloadscreen::tloadscreen(boost::function<void()> f)
+	: window_(NULL)
+	, timer_id_(0)
+	, work_(f)
+	, worker_()
+	, cursor_setter_()
+	, current_stage(NULL)
+{
+}
 void tloadscreen::show(CVideo& video)
 {
 	tdialog::show(video);
@@ -63,15 +72,14 @@ void tloadscreen::pre_show(twindow& window)
 {
 	worker_.reset(new boost::thread(work_));
 	timer_id_ = add_timer(100, boost::bind(&tloadscreen::timer_callback, this, boost::ref(window)), true);
-	// FIXME
-	cursor::setter cur(cursor::WAIT);
+	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 }
 
 void tloadscreen::post_show(twindow& /*window*/)
 {
 	worker_.reset();
 	remove_timer(timer_id_);
-	cursor::setter cur(cursor::NORMAL);
+	cursor_setter_.reset();
 }
 
 void tloadscreen::progress(const char* stage)

@@ -23,6 +23,10 @@ namespace boost
 {
 	class thread;
 }
+namespace cursor
+{
+	struct setter;
+}
 namespace gui2
 {
 
@@ -32,15 +36,7 @@ class tloadscreen : public tdialog
 {
 public:
 
-	tloadscreen(boost::function<void()> f)
-		: window_(NULL)
-		, current_stage(NULL)
-		, timer_id_(0)
-		, work_(f)
-		, worker_()
-	{
-		current_load = this;
-	}
+	tloadscreen(boost::function<void()> f);
 
 	~tloadscreen()
 	{
@@ -72,10 +68,11 @@ public:
 	void close();
 
 private:
+	twindow* window_;
 	size_t timer_id_;
 	boost::function<void()> work_;
 	boost::scoped_ptr<boost::thread> worker_;
-	twindow* window_;
+	boost::scoped_ptr<cursor::setter> cursor_setter_;
 
 	twindow* build_window(CVideo& video) const;
 
