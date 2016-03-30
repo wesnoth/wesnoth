@@ -111,6 +111,10 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_SCROLL_RIGHT:
 			keyboard_scroll(1, 0);
 			break;
+		case HOTKEY_CYCLE_UNITS:
+			cycle_units();
+			break;
+		case HOTKEY_CYCLE_BACK_UNITS:
 			cycle_back_units();
 			break;
 		case HOTKEY_ENDTURN:
