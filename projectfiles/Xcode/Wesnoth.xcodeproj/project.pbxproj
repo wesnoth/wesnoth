@@ -5189,22 +5189,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				ENABLE_OPENMP_SUPPORT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = unit_tests;
 			};
 			name = Debug;
@@ -5222,15 +5218,12 @@
 					BOOST_TEST_DYN_LINK,
 					"LOCALEDIR=\\\"translations\\\"",
 				);
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = unit_tests;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -5240,29 +5233,19 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 					"$(PROJECT_DIR)/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-isystem",
-					./Headers,
-				);
-				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
-				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -5274,16 +5257,13 @@
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
-				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 					"$(PROJECT_DIR)/lib",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -5299,7 +5279,6 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -5309,7 +5288,6 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
-				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -5318,7 +5296,6 @@
 					"\"$(SRCROOT)/lib\"",
 					"$(PROJECT_DIR)/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
@@ -5330,7 +5307,6 @@
 					"-lreadline",
 				);
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = "";
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
@@ -5361,7 +5337,6 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
-				GCC_VERSION = "";
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -5397,6 +5372,9 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -5434,17 +5412,19 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ./lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-unused-local-typedefs",
 					"-Wno-unknown-warning-option",
+					"-isystem",
+					./Headers,
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 				);
-				PREBINDING = NO;
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
@@ -5460,14 +5440,15 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 				);
-				GCC_VERSION = "";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../..,
@@ -5484,11 +5465,12 @@
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ./lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx10.7;
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
