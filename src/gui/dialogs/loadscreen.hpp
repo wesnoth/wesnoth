@@ -14,6 +14,7 @@
 #pragma once
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/label.hpp"
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -38,22 +39,10 @@ public:
 
 	tloadscreen(boost::function<void()> f);
 
-	~tloadscreen()
-	{
-		close();
-	}
+	~tloadscreen();
 
-	static void display(CVideo& video, boost::function<void()> f) {
-		static bool already_shown = false;
-		if (already_shown) {
-			f();
-		}
-		else {
-			already_shown = true;
-			tloadscreen(f).show(video);
-			already_shown = false;
-		}
-	}
+	static void display(CVideo& video, boost::function<void()> f);
+	static bool displaying() { return current_load != NULL; }
 
 	void show(CVideo& video);
 	
@@ -66,7 +55,6 @@ public:
 	 * when the window is not shown.
 	 */
 	void close();
-
 private:
 	twindow* window_;
 	size_t timer_id_;
@@ -86,8 +74,12 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
+	tlabel* progress_stage_label_;
 	static tloadscreen* current_load;
-	const char* current_stage;
+
+	//Note we cannot use std::strings here unless we we explicitly use mutexes.
+	const char* current_stage_;
+	const char* current_visible_stage_;
 };
 
 } // namespace gui2

@@ -18,6 +18,8 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/auxiliary/find_widget.hpp"
+
 #include "video.hpp"
 #include "cursor.hpp"
 #include <boost/bind.hpp>
@@ -34,8 +36,10 @@ tloadscreen::tloadscreen(boost::function<void()> f)
 	, work_(f)
 	, worker_()
 	, cursor_setter_()
-	, current_stage(NULL)
+	, current_stage_(NULL)
+	, current_visible_stage_(NULL)
 {
+	current_load = this;
 }
 void tloadscreen::show(CVideo& video)
 {
@@ -73,6 +77,7 @@ void tloadscreen::pre_show(twindow& window)
 	worker_.reset(new boost::thread(work_));
 	timer_id_ = add_timer(100, boost::bind(&tloadscreen::timer_callback, this, boost::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
+	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
 }
 
 void tloadscreen::post_show(twindow& /*window*/)
@@ -89,10 +94,8 @@ void tloadscreen::progress(const char* stage)
 	}
 	// Currently this is a no-op stub
 	if(stage) {
-		// TODO: Update displayed stage
-		current_load->current_stage = stage;
+		current_load->current_stage_ = stage;
 	}
-	// TODO: Indicate progress somehow
 }
 
 tloadscreen* tloadscreen::current_load = NULL;
@@ -101,7 +104,28 @@ void tloadscreen::timer_callback(twindow& window)
 {
 	if (!worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		window.close();
+	}
+	if (current_stage_ != current_visible_stage_)
+	{
+		current_visible_stage_ = current_stage_;
+		progress_stage_label_->set_label(current_visible_stage_);
 
+	}
+}
+
+tloadscreen::~tloadscreen()
+{
+	close();
+	current_load = NULL;
+}
+
+void tloadscreen::display(CVideo& video, boost::function<void()> f)
+{
+	if (current_load || video.faked()) {
+		f();
+	}
+	else {
+		tloadscreen(f).show(video);
 	}
 }
 
