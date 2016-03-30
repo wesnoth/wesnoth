@@ -74,8 +74,8 @@ game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb:
 		const tod_manager& tod,
 		const config& theme_cfg,
 		const config& level,
-		bool dummy) :
-		display(&board, video, wb, reports_object, theme_cfg, level, !dummy),
+		bool) :
+		display(&board, video, wb, reports_object, theme_cfg, level, false),
 		overlay_map_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),

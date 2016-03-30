@@ -257,10 +257,6 @@ void play_controller::init(CVideo& video, const config& level)
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 	gui2::tloadscreen::progress("build terrain");
-	//NOTE: since the loading now happens in a sperate thread creating the game_display object here is dangerous.
-	// for example becasue it might registers an sdl_handler while the main thread is calling events::pump
-	//TODO: Find a way to move the sdl_handler::join() calls out of here.
-
 	gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
@@ -313,6 +309,8 @@ void play_controller::init(CVideo& video, const config& level)
 	plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("quit", throw_end_level(), false);
 	});
+	//Do this after the loadingscreen, so that ita happens in the main thread.
+	gui_->join();
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
