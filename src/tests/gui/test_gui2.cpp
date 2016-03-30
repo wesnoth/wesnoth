@@ -50,6 +50,7 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/lobby/lobby.hpp"
 #include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
@@ -396,6 +397,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_save_oos>();
 	test<gui2::tgamestate_inspector>();
 	test<gui2::tlanguage_selection>();
+	// test<gui2::tloadscreen>(); TODO: enable
 	test<gui2::tlobby_main>();
 	test<gui2::tlobby_player_info>();
 	test<gui2::tmessage>();
@@ -473,6 +475,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "addon_filter_options"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "addon_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "loadscreen"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "drop_down_list"), list.end());
