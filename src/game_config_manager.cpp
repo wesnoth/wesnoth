@@ -560,7 +560,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp)
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
 	try{
-		load_game_config(NO_INCLUDE_RELOAD);
+		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
 	}
 	catch(game::error&) {
 		cache_.clear_defines();
@@ -572,7 +572,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp)
 			previous_defines.push_back(new_define);
 		}
 
-		load_game_config(NO_FORCE_RELOAD);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 
 		throw;
 	}

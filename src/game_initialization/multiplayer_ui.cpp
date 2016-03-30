@@ -19,6 +19,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -309,6 +310,9 @@ void ui::process_event()
 
 void ui::handle_event(const SDL_Event& event)
 {
+	if (gui2::tloadscreen::displaying()) {
+		return;
+	}
 	gui::widget::handle_event(event);
 
 	if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
