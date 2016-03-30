@@ -11,7 +11,6 @@ compiler:
 env:
     - BUILD="-O0"
     - BUILD="-O2"
-    - BUILD="C++11 -O0"
     - BUILD="translations"
 
 matrix:
@@ -32,17 +31,16 @@ before_install:
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=20
     - export NLS=false
-    - export CXX11=false
+    - export CXX11=true
 
     - if [ "$BUILD" == "-O2" ]; then export STRICT_COMPILATION=false; fi
     - if [ "$BUILD" == "-O2" ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$BUILD" == "-O2" ]; then export WML_TEST_TIME=15; fi
 
-    - if [ "$BUILD" == "C++11 -O0" ]; then export CXX11=true; fi
-    - if [ "$BUILD" == "C++11 -O0" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
-    - if [[ "$BUILD" == "C++11 -O0" ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
-    - if [ "$BUILD" == "C++11 -O0" ]; then export PLAY_TEST=false; fi
-    - if [ "$BUILD" == "C++11 -O0" ]; then export MP_TEST=false; fi
+    - if [ "$BUILD" == "-O0" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
+    - if [[ "$BUILD" == "-O0" ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
+    - if [ "$BUILD" == "-O0" ]; then export PLAY_TEST=false; fi
+    - if [ "$BUILD" == "-O0" ]; then export MP_TEST=false; fi
 
     - if [ "$BUILD" == "translations" ]; then export NLS=true; fi
     - if [ "$BUILD" == "translations" ]; then export TARGETS="translations"; fi
