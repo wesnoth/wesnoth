@@ -38,7 +38,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 		return false;
 	}
 
-	std::auto_ptr<twindow> window(build_window(video));
+	std::unique_ptr<twindow> window(build_window(video));
 	assert(window.get());
 
 	post_build(*window);

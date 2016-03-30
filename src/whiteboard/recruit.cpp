@@ -176,7 +176,7 @@ unit_ptr recruit::create_corresponding_unit()
 	unit_ptr result(new unit(*type, side_num, real_unit));
 	result->set_movement(0, true);
 	result->set_attacks(0);
-	return result; //ownership gets transferred to returned auto_ptr copy
+	return result; //ownership gets transferred to returned unique_ptr copy
 }
 
 action::error recruit::check_validity() const

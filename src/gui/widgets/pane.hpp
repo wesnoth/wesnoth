@@ -161,7 +161,7 @@ private:
 	unsigned item_id_generator_;
 
 	/** Helper to do the placement. */
-	std::auto_ptr<tplacer_> placer_;
+	std::unique_ptr<tplacer_> placer_;
 
 	/** Places the children on the pane. */
 	void place_children();

@@ -971,7 +971,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			continue;
 		}
 
-		std::auto_ptr<simple_wml::document> message(new simple_wml::document);
+		std::unique_ptr<simple_wml::document> message(new simple_wml::document);
 		simple_wml::node& turn = message->root().add_child("turn");
 		simple_wml::node& command = turn.add_child("command");
 		speak->copy_into(command.add_child("speak"));
