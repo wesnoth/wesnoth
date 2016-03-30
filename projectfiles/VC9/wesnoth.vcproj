@@ -8168,6 +8168,62 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\dialogs\loadscreen.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\loadscreen.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\dialogs\lua_interpreter.cpp"
 					>
 					<FileConfiguration
@@ -23316,14 +23372,6 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\loadscreen.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\loadscreen.hpp"
-			>
-		</File>
-		<File
 			RelativePath="..\..\src\lobby_preferences.cpp"
 			>
 		</File>
@@ -23637,10 +23685,6 @@
 		</File>
 		<File
 			RelativePath="..\..\src\resources.hpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\rng.hpp"
 			>
 		</File>
 		<File
