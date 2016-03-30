@@ -20,37 +20,29 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
     local filter_own = H.get_child(cfg, "filter")
     local filter_enemy = H.get_child(cfg, "filter_second")
+    local excluded_enemies, leader
     if (not filter_own) and (not filter_enemy) then
-        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
-        for aspect in H.child_range(ai_tag, 'aspect') do
-            if (aspect.id == 'attacks') then
-                local facet = H.get_child(aspect, 'facet')
-                if facet then
-                    filter_own = H.get_child(facet, 'filter_own')
-                    filter_enemy = H.get_child(facet, 'filter_enemy')
-                end
-            end
+        leader = FAU.get_attackers(data, "leader")[1]
+        if (not leader) then return 0 end
+        excluded_enemies = FAU.get_attackers(data, "enemy")
+    else
+        leader = wesnoth.get_units(
+            FAU.build_attack_filter("leader", filter_own)
+        )[1]
+        if (not leader) then return 0 end
+        if filter_enemy then
+            excluded_enemies = wesnoth.get_units(
+                FAU.build_attack_filter("enemy", filter_enemy)
+            )
         end
     end
 
-    local leader = wesnoth.get_units {
-        side = wesnoth.current.side,
-        canrecruit = 'yes',
-        { "and", filter_own }
-    }[1]
-
-    if (not leader) then return 0 end
     if (leader.attacks_left == 0) or (not H.get_child(leader.__cfg, 'attack')) then return 0 end
 
     local excluded_enemies_map = LS.create()
 
     -- Exclude enemies not matching [filter_enemy]
-    if filter_enemy then
-        local excluded_enemies = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "not", filter_enemy }
-        }
-
+    if excluded_enemies then
         for _,e in ipairs(excluded_enemies) do
             excluded_enemies_map:insert(e.x, e.y)
         end

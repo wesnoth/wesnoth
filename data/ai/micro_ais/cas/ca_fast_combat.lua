@@ -11,28 +11,31 @@ function ca_fast_combat:evaluation(cfg, data)
 
     local filter_own = H.get_child(cfg, "filter")
     local filter_enemy = H.get_child(cfg, "filter_second")
+    local excluded_enemies
+    local units_sorted = true
     if (not filter_own) and (not filter_enemy) then
-        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
-        for aspect in H.child_range(ai_tag, 'aspect') do
-            if (aspect.id == 'attacks') then
-                local facet = H.get_child(aspect, 'facet')
-                if facet then
-                    filter_own = H.get_child(facet, 'filter_own')
-                    filter_enemy = H.get_child(facet, 'filter_enemy')
-                end
-            end
+	    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
+	    	data.fast_combat_units = FAU.get_attackers(data, "own")
+			if (not data.fast_combat_units[1]) then return 0 end
+	    	units_sorted = false
+	    end
+	    excluded_enemies = FAU.get_attackers(data, "enemy")
+    else
+	    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
+			data.fast_combat_units = wesnoth.get_units(
+				FAU.build_attack_filter("own", filter_own)
+			)
+        	if (not data.fast_combat_units[1]) then return 0 end
+        	units_sorted = false
         end
+        if filter_enemy then
+			excluded_enemies = wesnoth.get_units(
+                FAU.build_attack_filter("enemy", filter_enemy)
+            )
+		end
     end
 
-    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
-        data.fast_combat_units = wesnoth.get_units {
-            side = wesnoth.current.side,
-            canrecruit = 'no',
-            { "and", filter_own }
-        }
-
-        if (not data.fast_combat_units[1]) then return 0 end
-
+    if not units_sorted then
         -- For speed reasons, we'll go through the arrays from the end, so they are sorted backwards
         if cfg.weak_units_first then
             table.sort(data.fast_combat_units, function(a,b) return a.hitpoints > b.hitpoints end)
@@ -44,12 +47,7 @@ function ca_fast_combat:evaluation(cfg, data)
     local excluded_enemies_map = LS.create()
 
     -- Exclude enemies not matching [filter_enemy]
-    if filter_enemy then
-        local excluded_enemies = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "not", filter_enemy }
-        }
-
+    if excluded_enemies then
         for _,e in ipairs(excluded_enemies) do
             excluded_enemies_map:insert(e.x, e.y)
         end
