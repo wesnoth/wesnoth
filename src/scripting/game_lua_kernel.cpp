@@ -518,8 +518,8 @@ static int impl_unit_variables_get(lua_State *L)
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
 /**
- * Gets the attacks of a unit (__index metamethod).
- * - Arg 1: table containing the userdata containing the unit id.
+ * Gets the attacks of a unit or unit type (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit or unit type.
  * - Arg 2: index (int) or id (string) identifying a particular attack.
  * - Ret 1: the unit's attacks.
  */
@@ -530,11 +530,12 @@ static int impl_unit_attacks_get(lua_State *L)
 	}
 	lua_rawgeti(L, 1, -1);
 	const unit* u = luaW_tounit(L, -1);
-	if (!u) {
+	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
+	if (!u && !ut) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
 	const attack_type* attack = NULL;
-	const std::vector<attack_type>& attacks = u->attacks();
+	const std::vector<attack_type>& attacks = u ? u->attacks() : ut->attacks();
 	if(!lua_isnumber(L,2)) {
 		std::string attack_id = luaL_checkstring(L, 2);
 		BOOST_FOREACH(const attack_type& at, attacks) {

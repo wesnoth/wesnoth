@@ -376,6 +376,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.type_name());
 	} else if(key == "alignment") {
 		return variant(lexical_cast<std::string>(u_.alignment()));
+	} else if(key == "race") {
+		return variant(u_.race_id());
 	} else if(key == "abilities") {
 		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;
@@ -388,6 +390,14 @@ variant unit_type_callable::get_value(const std::string& key) const
 			res.push_back( variant(*it) );
 		}
 		return variant( &res );
+	} else if(key == "traits") {
+		std::vector<variant> res;
+
+		FOREACH(const AUTO& config , u_.possible_traits())
+		{
+			res.push_back(variant(config["id"].str()));
+		}
+		return variant(&res);
 	} else if(key == "attacks") {
 		std::vector<attack_type> att = u_.attacks();
 		std::vector<variant> res;
@@ -395,13 +405,13 @@ variant unit_type_callable::get_value(const std::string& key) const
 		for( std::vector<attack_type>::iterator i = att.begin(); i != att.end(); ++i)
 			res.push_back(variant(new attack_type_callable(*i)));
 		return variant(&res);
-	} else if(key == "hitpoints") {
+	} else if(key == "hitpoints" || key == "max_hitpoints") {
 		return variant(u_.hitpoints());
-	} else if(key == "experience") {
+	} else if(key == "experience" || key == "max_experience") {
 		return variant(u_.experience_needed(true));
 	} else if(key == "level") {
 		return variant(u_.level());
-	} else if(key == "total_movement") {
+	} else if(key == "total_movement" || key == "max_moves" || key == "moves") {
 		return variant(u_.movement());
 	} else if(key == "unpoisonable") {
 		return variant(u_.musthave_status("unpoisonable"));
@@ -411,6 +421,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.musthave_status("unplagueable"));
 	} else if(key == "cost") {
 		return variant(u_.cost());
+	} else if(key == "recall_cost") {
+		return variant(u_.recall_cost());
 	} else if(key == "usage") {
 		return variant(u_.usage());
 	} else {
@@ -423,8 +435,10 @@ void unit_type_callable::get_inputs(std::vector<game_logic::formula_input>* inpu
 	using game_logic::FORMULA_READ_ONLY;
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("race", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("alignment", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("abilities", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("traits", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("hitpoints", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("experience", FORMULA_READ_ONLY));
@@ -432,6 +446,7 @@ void unit_type_callable::get_inputs(std::vector<game_logic::formula_input>* inpu
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("undead", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("recall_cost", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("usage", FORMULA_READ_ONLY));
 }
 

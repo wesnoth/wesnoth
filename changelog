@@ -127,6 +127,10 @@ Version 1.13.4+dev:
      * abilities - list of the IDs of all abilities
    * Additional fields in table returned by wesnoth.get_terrain_info:
      * icon, editor_image, light
+   * Additional fields in unit type proxu:
+     * race, id, alignment
+     * attacks, which returns the same thing as unit.attacks
+     * abilities, same as unit.abilities
    * LuaAI:
      * The table returned by check_*() now has a "result" field which
        gives a description of the action's result; similar to "status"
@@ -165,9 +169,9 @@ Version 1.13.4+dev:
      total_movement -> max_moves
      movement_left -> moves
      states -> status
-   * Nearly All side, weapon, and terrain attributes available to Lua code
-     are now also exposed to WFL. The exceptions are mainly translatable
-     strings.
+   * Nearly all unit type, side, weapon, and terrain attributes available
+     to Lua code are now also exposed to WFL. The exceptions are mainly
+     translatable strings.
    * The 'special' attribute of weapons was renamed to 'specials', and it now
      contains the special IDs rather than their translateable names.
    * New syntax features:
