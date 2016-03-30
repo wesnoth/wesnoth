@@ -782,6 +782,8 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 			item_string.begin(), item_string.end());
 
 
+	constraint.no_draw = cfg["no_draw"].to_bool(false);
+
 	add_images_from_config(constraint.images, cfg, false);
 }
 
@@ -1081,8 +1083,10 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 		tile& btile = tile_map_[tloc];
 
-		BOOST_FOREACH(const rule_image &img, constraint.images) {
-			btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
+		if (!constraint.no_draw) {
+			BOOST_FOREACH(const rule_image &img, constraint.images) {
+				btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
+			}
 		}
 
 		// Sets flags

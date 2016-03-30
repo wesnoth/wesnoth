@@ -256,6 +256,7 @@ public:
 			set_flag(),
 			no_flag(),
 			has_flag(),
+			no_draw(),
 			images()
 			{}
 
@@ -265,6 +266,7 @@ public:
 			set_flag(),
 			no_flag(),
 			has_flag(),
+			no_draw(),
 			images()
 			{}
 
@@ -273,6 +275,10 @@ public:
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
+
+		/** Whether to actually draw the images onto this hex or not */
+		bool no_draw;
+
 		rule_imagelist images;
 	};
 
