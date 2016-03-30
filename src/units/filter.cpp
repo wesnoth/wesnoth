@@ -42,7 +42,6 @@
 #include <boost/optional.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/utility/in_place_factory.hpp> //needed for boost::in_place to initialize optionals
 
 #include <vector>
 
@@ -102,11 +101,11 @@ public:
 
 
 	virtual ~null_unit_filter_impl() {}
-	
+
 	config to_config() const {
 		return config();
 	}
-	
+
 	bool empty() const {
 		return true;
 	}
@@ -146,7 +145,7 @@ public:
 				const vconfig& cond_filter = cond.get_child();
 
 				cond_children_.push_back(unit_filter(cond_filter, &fc_, use_flat_tod_));
-				cond_child_types_.push_back(type);			
+				cond_child_types_.push_back(type);
 			}
 			else {
 				static const int NUM_VALID_TAGS = 5;
