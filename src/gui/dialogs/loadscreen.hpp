@@ -58,6 +58,7 @@ public:
 private:
 	twindow* window_;
 	size_t timer_id_;
+	int animation_counter_;
 	boost::function<void()> work_;
 	boost::scoped_ptr<boost::thread> worker_;
 	boost::scoped_ptr<cursor::setter> cursor_setter_;
@@ -75,6 +76,7 @@ private:
 	void post_show(twindow& window);
 
 	tlabel* progress_stage_label_;
+	tlabel* animation_label_;
 	static tloadscreen* current_load;
 
 	//Note we cannot use std::strings here unless we we explicitly use mutexes.

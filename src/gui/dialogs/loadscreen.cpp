@@ -33,6 +33,7 @@ REGISTER_DIALOG(loadscreen)
 tloadscreen::tloadscreen(boost::function<void()> f)
 	: window_(NULL)
 	, timer_id_(0)
+	, animation_counter_(0)
 	, work_(f)
 	, worker_()
 	, cursor_setter_()
@@ -78,6 +79,8 @@ void tloadscreen::pre_show(twindow& window)
 	timer_id_ = add_timer(100, boost::bind(&tloadscreen::timer_callback, this, boost::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
+	animation_label_ = &find_widget<tlabel>(&window, "test_animation", false);
+	
 }
 
 void tloadscreen::post_show(twindow& /*window*/)
@@ -109,7 +112,13 @@ void tloadscreen::timer_callback(twindow& window)
 	{
 		current_visible_stage_ = current_stage_;
 		progress_stage_label_->set_label(current_visible_stage_);
-
+	}
+	++animation_counter_;
+	if (animation_counter_ % 2 == 0) {
+		int animation_state = (animation_counter_ / 2) % 20;
+		std::string s(20, ' ');
+		s[animation_state] = '.';
+		animation_label_->set_label(s);
 	}
 }
 
