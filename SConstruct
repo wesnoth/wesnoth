@@ -409,7 +409,8 @@ if env["prereqs"]:
         conf.CheckPango("cairo", require_version = "1.21.3") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version="1.35.0") & \
-        conf.CheckBoost("regex", require_version = "1.35.0") \
+        conf.CheckBoost("thread") & \
+        conf.CheckBoost("regex") \
             or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
