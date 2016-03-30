@@ -15,8 +15,14 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-class CVideo;
+#include <boost/function.hpp>
+#include <boost/scoped_ptr.hpp>
 
+class CVideo;
+namespace boost
+{
+	class thread;
+}
 namespace gui2
 {
 
@@ -25,10 +31,13 @@ class twindow;
 class tloadscreen : public tdialog
 {
 public:
-	tloadscreen()
+
+	tloadscreen(boost::function<void()> f)
 		: window_(NULL)
-		, previous_load(current_load)
 		, current_stage(NULL)
+		, timer_id_(0)
+		, work_(f)
+		, worker_()
 	{
 		current_load = this;
 	}
@@ -36,11 +45,18 @@ public:
 	~tloadscreen()
 	{
 		close();
-		current_load = previous_load;
 	}
 
-	static void display(CVideo& video) {
-		tloadscreen().show(video);
+	static void display(CVideo& video, boost::function<void()> f) {
+		static bool already_shown = false;
+		if (already_shown) {
+			f();
+		}
+		else {
+			already_shown = true;
+			tloadscreen(f).show(video);
+			already_shown = false;
+		}
 	}
 
 	void show(CVideo& video);
@@ -56,11 +72,16 @@ public:
 	void close();
 
 private:
+	size_t timer_id_;
+	boost::function<void()> work_;
+	boost::scoped_ptr<boost::thread> worker_;
 	twindow* window_;
 
 	twindow* build_window(CVideo& video) const;
 
 	virtual const std::string& window_id() const;
+
+	void timer_callback(twindow& window);
 
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
@@ -69,7 +90,6 @@ private:
 	void post_show(twindow& window);
 
 	static tloadscreen* current_load;
-	tloadscreen*const previous_load;
 	const char* current_stage;
 };
 

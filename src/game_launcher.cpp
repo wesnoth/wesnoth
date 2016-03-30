@@ -1011,9 +1011,9 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	gui2::tloadscreen::display(video());
-	gui2::tloadscreen::progress("load data");
+	gui2::tloadscreen::display(video(), [=]() {
 
+	gui2::tloadscreen::progress("load data");
 	if(reload == RELOAD_DATA) {
 		try {
 			game_config_manager::get()->
@@ -1022,6 +1022,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 			return;
 		}
 	}
+	});
 
 	try {
 		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());

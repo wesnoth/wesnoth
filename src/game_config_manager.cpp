@@ -89,7 +89,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
-	load_game_config(force_reload);
+	load_game_config_with_loadscreen(force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
 
@@ -119,10 +119,17 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 }
 } // end anonymous namespace
 
-void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
+void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
-	// Make sure that 'debug mode' symbol is set
+	gui2::tloadscreen::display(video_, [=]() {
+		load_game_config(force_reload, classification);
+	});
+}
+void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
+	game_classification const* classification)
+	{
+		// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
 	// also if we're in multiplayer and actual debug mode is disabled.
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
@@ -137,8 +144,6 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			return;
 		}
 	}
-
-	gui2::tloadscreen::display(video_);
 
 	// The loadscreen will erase the titlescreen.
 	// NOTE: even without loadscreen, needed after MP lobby.
@@ -493,7 +498,7 @@ void game_config_manager::reload_changed_game_config()
 void game_config_manager::load_game_config_for_editor()
 {
 	game_config::scoped_preproc_define editor("EDITOR");
-	load_game_config(NO_FORCE_RELOAD);
+	load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 }
 
 void game_config_manager::load_game_config_for_game(
@@ -529,7 +534,7 @@ void game_config_manager::load_game_config_for_game(
 	}
 
 	try{
-		load_game_config(NO_FORCE_RELOAD, &classification);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification);
 	}
 	catch(game::error&) {
 		cache_.clear_defines();
@@ -541,7 +546,7 @@ void game_config_manager::load_game_config_for_game(
 			previous_defines.push_back(new_define);
 		}
 
-		load_game_config(NO_FORCE_RELOAD);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 
 		throw;
 	}

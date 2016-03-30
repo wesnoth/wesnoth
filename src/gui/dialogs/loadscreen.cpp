@@ -17,7 +17,11 @@
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/core/timer.hpp"
 #include "video.hpp"
+
+#include <boost/bind.hpp>
+#include <boost/thread.hpp>
 
 namespace gui2
 {
@@ -26,6 +30,8 @@ REGISTER_DIALOG(loadscreen)
 
 void tloadscreen::show(CVideo& video)
 {
+	tdialog::show(video);
+	return;
 	if(video.faked()) {
 		return;
 	}
@@ -53,14 +59,18 @@ twindow* tloadscreen::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-void tloadscreen::pre_show(twindow& /*window*/)
+void tloadscreen::pre_show(twindow& window)
 {
+	worker_.reset(new boost::thread(work_));
+	timer_id_ = add_timer(100, boost::bind(&tloadscreen::timer_callback, this, boost::ref(window)), true);
 	// FIXME
 	cursor::setter cur(cursor::WAIT);
 }
 
 void tloadscreen::post_show(twindow& /*window*/)
 {
+	worker_.reset();
+	remove_timer(timer_id_);
 	cursor::setter cur(cursor::NORMAL);
 }
 
@@ -78,5 +88,13 @@ void tloadscreen::progress(const char* stage)
 }
 
 tloadscreen* tloadscreen::current_load = NULL;
+
+void tloadscreen::timer_callback(twindow& window)
+{
+	if (!worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
+		window.close();
+
+	}
+}
 
 } // namespace gui2

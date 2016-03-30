@@ -224,7 +224,8 @@ struct throw_end_level
 
 void play_controller::init(CVideo& video, const config& level)
 {
-	gui2::tloadscreen::display(video);
+
+	gui2::tloadscreen::display(video, [this, &video, &level]() {
 	gui2::tloadscreen::progress("load level");
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
@@ -307,6 +308,7 @@ void play_controller::init(CVideo& video, const config& level)
 	plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("quit", throw_end_level(), false);
+	});
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)

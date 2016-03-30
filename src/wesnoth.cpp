@@ -640,13 +640,15 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
-	gui2::tloadscreen::display(game->video());
 
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
-	gui2::tloadscreen::progress("load config");
-	res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
+	gui2::tloadscreen::display(game->video(), [&]() {
+		gui2::tloadscreen::progress("load config");
+		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
+	});
+
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;
@@ -851,9 +853,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			gui2::tloadscreen::display(game->video());
-			config_manager.reload_changed_game_config();
-			image::flush_cache();
+			gui2::tloadscreen::display(game->video(), [&]() {
+				config_manager.reload_changed_game_config();
+				image::flush_cache();
+			});
 			continue;
 		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
 			game->start_editor();
