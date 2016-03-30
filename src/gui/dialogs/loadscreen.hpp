@@ -43,8 +43,6 @@ public:
 
 	static void display(CVideo& video, boost::function<void()> f);
 	static bool displaying() { return current_load != NULL; }
-
-	void show(CVideo& video);
 	
 	static void progress(const char* stage_name = NULL);
 

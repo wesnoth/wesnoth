@@ -42,22 +42,6 @@ tloadscreen::tloadscreen(boost::function<void()> f)
 {
 	current_load = this;
 }
-void tloadscreen::show(CVideo& video)
-{
-	tdialog::show(video);
-	return;
-	if(video.faked()) {
-		return;
-	}
-
-	window_ = build_window(video);
-
-	pre_show(*window_);
-
-	window_->show_non_modal();
-
-	post_show(*window_);
-}
 
 void tloadscreen::close()
 {
