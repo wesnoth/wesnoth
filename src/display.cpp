@@ -46,6 +46,7 @@
 #include "units/drawer.hpp"
 #include "whiteboard/manager.hpp"
 #include "show_dialog.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 
 #include <SDL_image.h>
 
@@ -3782,6 +3783,9 @@ void display::handle_window_event(const SDL_Event& event) {
 }
 
 void display::handle_event(const SDL_Event& event) {
+	if (gui2::tloadscreen::displaying()) {
+		return;
+	}
 	if (event.type == DRAW_ALL_EVENT) {
 		draw();
 	}
