@@ -820,7 +820,7 @@ static int impl_ai_aspect_get(lua_State* L)
 		(void) aspect;
 	} else if(typesafe_aspect<unit_advancements_aspect>* aspect = try_aspect_as<unit_advancements_aspect>(iter->second)) {
 		const unit_advancements_aspect& val = aspect->get();
-		int my_side = luaW_getglobal(L, "ai", "side", nullptr) - 1;
+		int my_side = luaW_getglobal(L, "ai", "side") - 1;
 		lua_newtable(L);
 		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if (!u.valid() || u->side() != my_side) {

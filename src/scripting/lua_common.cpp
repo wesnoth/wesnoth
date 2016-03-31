@@ -790,30 +790,22 @@ vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing)
 	return result;
 }
 
-
-#ifdef __GNUC__
-__attribute__((sentinel))
-#endif
-bool luaW_getglobal(lua_State *L, ...)
+bool luaW_getglobal(lua_State *L, const std::vector<std::string>& path)
 {
 	lua_pushglobaltable(L);
-	va_list ap;
-	va_start(ap, L);
-	while (const char *s = va_arg(ap, const char *))
+	for (const std::string& s : path)
 	{
 		if (!lua_istable(L, -1)) goto discard;
-		lua_pushstring(L, s);
+		lua_pushlstring(L, s.c_str(), s.size());
 		lua_rawget(L, -2);
 		lua_remove(L, -2);
 	}
 
 	if (lua_isnil(L, -1)) {
 		discard:
-		va_end(ap);
 		lua_pop(L, 1);
 		return false;
 	}
-	va_end(ap);
 	return true;
 }
 

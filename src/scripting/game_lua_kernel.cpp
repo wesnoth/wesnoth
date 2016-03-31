@@ -4075,7 +4075,7 @@ namespace {
 	{
 		lua_State *L = mState;
 		config cfg;
-		if (!luaW_getglobal(L, "wesnoth", "theme_items", name.c_str(), nullptr))
+		if (!luaW_getglobal(L, "wesnoth", "theme_items", name))
 			return cfg;
 		if (!luaW_pcall(L, 0, 1)) return cfg;
 		luaW_toconfig(L, -1, cfg);
@@ -4546,7 +4546,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	{
 		set_wml_action(handler.first, handler.second);
 	}
-	luaW_getglobal(L, "wesnoth", "effects", nullptr);
+	luaW_getglobal(L, "wesnoth", "effects");
 	BOOST_FOREACH(const std::string& effect, unit::builtin_effects) {
 		lua_pushstring(L, effect.c_str());
 		push_builtin_effect();
@@ -4678,7 +4678,7 @@ void game_lua_kernel::load_game(const config& level)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_load", nullptr))
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_load"))
 		return;
 
 	lua_newtable(L);
@@ -4705,7 +4705,7 @@ void game_lua_kernel::save_game(config &cfg)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_save", nullptr))
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_save"))
 		return;
 
 	if (!luaW_pcall(L, 0, 1, false))
@@ -4743,7 +4743,7 @@ bool game_lua_kernel::run_event(game_events::queued_event const &ev)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_event", nullptr))
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_event"))
 		return false;
 
 	queued_event_context dummy(&ev, queued_events_);
@@ -4847,7 +4847,7 @@ bool game_lua_kernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 	lua_State *L = mState;
 
 
-	if (!luaW_getglobal(L, "wesnoth", "wml_actions", cmd.c_str(), nullptr))
+	if (!luaW_getglobal(L, "wesnoth", "wml_actions", cmd))
 		return false;
 
 	queued_event_context dummy(&ev, queued_events_);
@@ -4868,7 +4868,7 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 	lua_State *L = mState;
 
 
-	if (!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd.c_str(), nullptr)) {
+	if (!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd)) {
 		std::string err_msg = "unknown conditional wml: [";
 		err_msg += cmd;
 		err_msg += "]";
@@ -4896,7 +4896,7 @@ bool game_lua_kernel::run_filter(char const *name, unit const &u)
 	if (!ui.valid()) return false;
 
 	// Get the user filter by name.
-	if(!luaW_getglobal(L, name, nullptr))
+	if(!luaW_getglobal(L, name))
 	{
 		std::string message = std::string() + "function " + name + " not found";
 		log_error(message.c_str(), "Lua SUF Error");
@@ -4928,7 +4928,7 @@ std::string game_lua_kernel::apply_effect(const std::string& name, unit& u, cons
 	// (Note: The unit needs to be on the stack twice to prevent untimely GC.)
 	luaW_pushconfig(L, cfg);
 	// Stack: unit, cfg
-	if(luaW_getglobal(L, "wesnoth", "effects", name.c_str(), nullptr)) {
+	if(luaW_getglobal(L, "wesnoth", "effects", name)) {
 		map_locker(this);
 		// Stack: unit, cfg, effect
 		if(lua_istable(L, -1)) {
@@ -4997,7 +4997,7 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_move", nullptr)) {
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_move")) {
 		return;
 	}
 	lua_push(L, loc.x + 1);
@@ -5010,7 +5010,7 @@ void game_lua_kernel::select_hex_callback(const map_location& loc)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_action", nullptr)) {
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_action")) {
 		return;
 	}
 	lua_push(L, loc.x + 1);
