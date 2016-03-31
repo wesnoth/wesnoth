@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+// For some reason, it became necessary to include this before the header
+// after switching to c++11
+#include <cstdio>
+
 #include "log_windows.hpp"
 
 #include "filesystem.hpp"
@@ -19,7 +23,6 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
-#include <cstdio>
 #include <ctime>
 
 #include <boost/algorithm/string/predicate.hpp>
