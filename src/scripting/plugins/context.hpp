@@ -23,6 +23,7 @@
 #include <map>
 #include <string>
 #include <boost/function.hpp>
+#include <vector>
 
 class config;
 
@@ -36,7 +37,23 @@ public:
 	typedef struct { char const * name; accessor_function func; } aReg;
 
 	plugins_context( const std::string & name );
-	plugins_context( const std::string & name, const Reg * callbacks, const aReg * accessors);
+	plugins_context( const std::string & name, const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors);
+	template<int N, int M>
+	plugins_context( const std::string & name, const Reg (& callbacks)[N], const aReg (& accessors)[M])
+		: name_(name)
+	{
+		std::vector<Reg> l;
+		std::vector<aReg> r;
+		l.reserve(N);
+		r.reserve(M);
+		for(int i = 0; i < N; i++) {
+			l.push_back(callbacks[i]);
+		}
+		for(int i = 0; i < M; i++) {
+			r.push_back(accessors[i]);
+		}
+		initialize(l, r);
+	}
 
 	void play_slice();
 
@@ -56,6 +73,8 @@ public:
 private:
 	typedef std::map<std::string, callback_function > callback_list;
 	typedef std::map<std::string, accessor_function > accessor_list;
+	
+	void initialize(const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors);
 
 	callback_list callbacks_;
 	accessor_list accessors_;

@@ -286,21 +286,21 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ nullptr, nullptr }
 	};
 
-
+/*
 	lua_cpp::Reg const cpp_callbacks[] = {
-/*		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
+		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
 		{ "require", 		boost::bind(&lua_kernel_base::intf_require, this, _1)},
 		{ "show_dialog",	boost::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
 		{ "show_lua_console",	boost::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
-*/		{}
 	};
+*/
 
 	lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
-	lua_cpp::set_functions(L, cpp_callbacks, 0);
+	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
 	// Override the print function

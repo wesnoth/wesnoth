@@ -4365,15 +4365,16 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
 		{ nullptr, nullptr }
 	};
+	/*
 	lua_cpp::Reg const cpp_callbacks[] = {
-		{}
 	};
+	*/
 	lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
-	lua_cpp::set_functions(L, cpp_callbacks);
+	//lua_cpp::set_functions(L, cpp_callbacks);
 	lua_setglobal(L, "wesnoth");
 
 	// Create the getside metatable.

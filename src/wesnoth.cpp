@@ -674,11 +674,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
-		{}
 	};
 	plugins_context::aReg const accessors[] = {
 		{ "command_line",		boost::bind(&commandline_options::to_config, &cmdline_opts)},
-		{}
 	};
 
 	plugins_context plugins("titlescreen", callbacks, accessors);

@@ -28,16 +28,25 @@ plugins_context::plugins_context(const std::string & name)
 	, name_(name)
 {}
 
-plugins_context::plugins_context(const std::string & name, const Reg * l, const aReg * r)
+plugins_context::plugins_context(const std::string& name, const std::vector<Reg>& l, const std::vector<aReg>& r)
 	: callbacks_()
 	, accessors_()
 	, name_(name)
 {
-	for (; l->name != nullptr; l++) {  /* fill the table with given functions */
-		callbacks_.insert(std::make_pair(l->name, l->func));
+	initialize(l, r);
+}
+
+void plugins_context::initialize(const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors)
+{
+	for (const Reg& l : callbacks) {  /* fill the table with given functions */
+		if (l.name != nullptr) {
+			callbacks_.insert(std::make_pair(l.name, l.func));
+		}
 	}
-	for (; r->name != nullptr; r++) {  /* fill the table with given functions */
-		accessors_.insert(std::make_pair(r->name, r->func));
+	for (const aReg& r : accessors) {  /* fill the table with given functions */
+		if (r.name != nullptr) {
+			accessors_.insert(std::make_pair(r.name, r.func));
+		}
 	}
 }
 
