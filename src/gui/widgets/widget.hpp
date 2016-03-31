@@ -158,7 +158,7 @@ public:
 	 */
 	explicit twidget(const tbuilder_widget& builder);
 
-	virtual ~twidget() OVERRIDE;
+	virtual ~twidget() override;
 
 
 	/***** ***** ***** ***** ID functions. ***** ***** ***** *****/
@@ -801,7 +801,7 @@ public:
 
 private:
 	/** See @ref event::tdispatcher::is_at. */
-	virtual bool is_at(const tpoint& coordinate) const OVERRIDE;
+	virtual bool is_at(const tpoint& coordinate) const override;
 
 	/**
 	 * Is the coordinate inside our area.

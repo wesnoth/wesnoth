@@ -45,33 +45,33 @@ public:
 	}
 
 	/** See @ref tcontainer_::get_client_rect. */
-	virtual SDL_Rect get_client_rect() const OVERRIDE;
+	virtual SDL_Rect get_client_rect() const override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 private:
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
 	/** See @ref twidget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/** See @ref tcontainer_::border_space. */
-	virtual tpoint border_space() const OVERRIDE;
+	virtual tpoint border_space() const override;
 
 	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	virtual void set_self_active(const bool active) override;
 };
 
 // }---------- DEFINITION ---------{

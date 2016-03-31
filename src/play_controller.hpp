@@ -214,7 +214,7 @@ public:
 
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
-	bool is_browsing() const OVERRIDE;
+	bool is_browsing() const override;
 	bool is_lingering() const { return linger_; }
 
 	class hotkey_handler;

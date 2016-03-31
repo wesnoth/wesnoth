@@ -75,16 +75,6 @@ class config
 	 */
 	void check_valid(const config &cfg) const;
 
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/**
-	 * Used as the return type of the conversion operator for boolean contexts.
-	 * Needed, since the compiler would otherwise consider the following
-	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
-	 */
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
 public:
 	// Create an empty node.
 	config();
@@ -92,10 +82,8 @@ public:
 	config(const config &);
 	config &operator=(const config &);
 
-#ifdef HAVE_CXX11
 	config(config &&);
 	config &operator=(config &&);
-#endif
 
 	/**
 	 * Creates a config object with an empty child of name @a child.
@@ -107,13 +95,8 @@ public:
 	// Verifies that the string can be used as an attribute or tag name
 	static bool valid_id(const std::string& id);
 
-#ifdef HAVE_CXX11
 	explicit operator bool() const
 	{ return this != &invalid; }
-#else
-	operator safe_bool() const
-	{ return this != &invalid ? &safe_bool_impl::nonnull : NULL; }
-#endif
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;

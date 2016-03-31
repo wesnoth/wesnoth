@@ -98,18 +98,18 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -169,7 +169,7 @@ protected:
 	 *
 	 * After a recalculation the canvasses also need to be updated.
 	 */
-	virtual void update_canvas() OVERRIDE;
+	virtual void update_canvas() override;
 
 	/**
 	 * Callback for subclasses to get notified about positioner movement.

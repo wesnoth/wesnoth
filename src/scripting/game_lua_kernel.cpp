@@ -2974,7 +2974,7 @@ namespace
 			return cfg;
 		}
 
-		virtual std::string description() const OVERRIDE
+		virtual std::string description() const override
 		{
 			return desc;
 		}

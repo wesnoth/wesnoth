@@ -36,7 +36,7 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -154,7 +154,7 @@ private:
 	}
 
 	/** See @ref tcontrol::update_canvas. */
-	virtual void update_canvas() OVERRIDE;
+	virtual void update_canvas() override;
 
 	/**
 	 * When the slider shows the minimum value can show a special text.
@@ -177,7 +177,7 @@ private:
 	tlabel_creator value_labels_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/**
 	 * Handlers for keyboard input

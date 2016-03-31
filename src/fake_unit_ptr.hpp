@@ -67,24 +67,10 @@ private :
 	internal_ptr unit_; //!< Internal unit pointer.
 	fake_unit_manager * my_manager_; //!< Raw pointer to the manager.
 
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/**
-	 * Used as t he return type of the conversion operator for boolean contexts.
-	 * Needed, since the compiler would otherwise consider the following
-	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
-	 */
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
 public:
-#ifdef HAVE_CXX11
+
 	explicit operator bool() const
 	{ return unit_.get(); }
-#else
-	operator safe_bool() const
-	{ return unit_ ? &safe_bool_impl::nonnull : NULL; }
-#endif
 };
 
 #endif

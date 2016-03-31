@@ -281,11 +281,11 @@ public:
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+								   const bool must_be_active) const override;
 
 	/** Inherited from twidget. */
 	tdialog* dialog()
@@ -294,11 +294,11 @@ public:
 	}
 
 	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	twidget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref twidget::find. */
 	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+						const bool must_be_active) const override;
 
 #if 0
 	/** @todo Implement these functions. */
@@ -669,7 +669,7 @@ private:
 	Uint8 mouse_button_state_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/**
 	 * Inherited from tpanel.

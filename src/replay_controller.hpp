@@ -62,7 +62,7 @@ private:
 	void init();
 	void update_gui();
 	void rebuild_replay_theme();
-	void handle_generic_event(const std::string& name) OVERRIDE;
+	void handle_generic_event(const std::string& name) override;
 
 	void reset_replay_ui();
 	void update_replay_ui();

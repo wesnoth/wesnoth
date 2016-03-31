@@ -31,7 +31,7 @@ public:
 	std::string topic() const { return topic_; }
 	void join();
 	void leave();
-	CVideo& get_video() OVERRIDE { return video_; }
+	CVideo& get_video() override { return video_; }
 private:
 	void show_help();
 	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const;

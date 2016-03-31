@@ -32,28 +32,28 @@ public:
 	tlabel();
 
 	/** See @ref twidget::can_wrap. */
-	virtual bool can_wrap() const OVERRIDE;
+	virtual bool can_wrap() const override;
 
 	/** See @ref tcontrol::get_characters_per_line. */
-	virtual unsigned get_characters_per_line() const OVERRIDE;
+	virtual unsigned get_characters_per_line() const override;
 
 	/** See @ref tcontrol::get_link_aware. */
-	virtual bool get_link_aware() const OVERRIDE;
+	virtual bool get_link_aware() const override;
 
 	/** See @ref tcontrol::get_link_aware. */
-	virtual std::string get_link_color() const OVERRIDE;
+	virtual std::string get_link_color() const override;
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -68,7 +68,7 @@ public:
 
 	void set_link_color(const std::string & color);
 
-	virtual bool can_mouse_focus() const OVERRIDE { return false; }
+	virtual bool can_mouse_focus() const override { return false; }
 private:
 	/**
 	 * Possible states of the widget.
@@ -113,7 +113,7 @@ private:
 	std::string link_color_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/** Inherited from tcontrol. */
 	void load_config_extra();

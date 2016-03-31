@@ -38,7 +38,6 @@ inline bool sort(const tpane::titem& lhs,
 				 const std::string& tag,
 				 const bool ascending)
 {
-#ifdef HAVE_CXX11
 	if(ascending) {
 		return lexical_cast<T>(lhs.tags.at(tag))
 			   < lexical_cast<T>(rhs.tags.at(tag));
@@ -46,18 +45,6 @@ inline bool sort(const tpane::titem& lhs,
 		return lexical_cast<T>(lhs.tags.at(tag))
 			   > lexical_cast<T>(rhs.tags.at(tag));
 	}
-#else
-	typedef std::map<std::string,std::string>::const_iterator iterator;
-	iterator lhs_it = lhs.tags.find(tag), rhs_it = rhs.tags.find(tag);
-	if(lhs_it == lhs.tags.end() || rhs_it == rhs.tags.end()) {
-		throw std::out_of_range("Key »" + tag + "« doesn't exist.");
-	}
-	if(ascending) {
-		return lexical_cast<T>(*lhs_it) < lexical_cast<T>(*rhs_it);
-	} else {
-		return lexical_cast<T>(*lhs_it) > lexical_cast<T>(*rhs_it);
-	}
-#endif
 }
 
 /**

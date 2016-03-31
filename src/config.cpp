@@ -464,7 +464,6 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
-#ifdef HAVE_CXX11
 config::config(config &&cfg):
 	values(std::move(cfg.values)),
 	children(std::move(cfg.children)),
@@ -478,7 +477,6 @@ config &config::operator=(config &&cfg)
 	swap(cfg);
 	return *this;
 }
-#endif
 
 bool config::valid_id(const std::string& id)
 {

@@ -135,25 +135,25 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() OVERRIDE
+	virtual iterator::twalker_* create_walker() override
 	{
 		return NULL;
 	}
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	twidget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref twidget::find. */
 	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+						const bool must_be_active) const override;
 
 	/**
 	 * The "size" of the widget.
@@ -226,7 +226,7 @@ private:
 
 	int calculate_ypos();
 	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/**
 	 * Our parent node.
@@ -277,10 +277,10 @@ private:
 								  const std::vector<twidget*>& call_stack);
 
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	tpoint calculate_best_size(const int indention_level,
 							   const unsigned indention_step_size) const;
@@ -290,21 +290,21 @@ private:
 	tpoint get_unfolded_size() const;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) OVERRIDE;
+	virtual void set_origin(const tpoint& origin) override;
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	unsigned
 	place(const unsigned indention_step_size, tpoint origin, unsigned width);
 
 	/** See @ref twidget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
-									int y_offset) OVERRIDE;
+									int y_offset) override;
 									
 	/** See tselectable_::set_callback_state_change. */
 	boost::function<void(twidget&)> callback_state_change_;

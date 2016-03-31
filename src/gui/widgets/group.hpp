@@ -53,16 +53,8 @@ public:
 	 */
 	void remove_member(tselectable_* widget)
 	{
-#ifdef HAVE_CXX11
 		members_.erase(std::find_if(members_.begin(), members_.end(),
 			[&widget](const group_type& member){ return member.first == widget; }));
-#else
-		for(group_iterator iter = members_.end() - 1; iter >= members_.begin(); iter--) {
-			if(iter->first == widget) {
-				iter = members_.erase(iter);
-			}
-		}
-#endif
 	}
 
 	/**

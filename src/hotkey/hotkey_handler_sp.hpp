@@ -77,25 +77,25 @@ public:
 		assert(playsingle_controller_.get_replay_controller());
 		return *playsingle_controller_.get_replay_controller();
 	}
-	virtual void stop_replay() OVERRIDE
+	virtual void stop_replay() override
 	{ return get_replay_controller().stop_replay(); }
-	virtual void play_replay() OVERRIDE
+	virtual void play_replay() override
 	{ return get_replay_controller().play_replay(); }
-	virtual void replay_next_turn() OVERRIDE
+	virtual void replay_next_turn() override
 	{ return get_replay_controller().replay_next_turn(); }
-	virtual void replay_next_side() OVERRIDE
+	virtual void replay_next_side() override
 	{ return get_replay_controller().replay_next_side(); }
-	virtual void replay_next_move() OVERRIDE
+	virtual void replay_next_move() override
 	{ return get_replay_controller().replay_next_move(); }
-	virtual void replay_show_everything() OVERRIDE
+	virtual void replay_show_everything() override
 	{ return get_replay_controller().replay_show_everything(); }
-	virtual void replay_show_each() OVERRIDE
+	virtual void replay_show_each() override
 	{ return get_replay_controller().replay_show_each(); }
-	virtual void replay_show_team1() OVERRIDE
+	virtual void replay_show_team1() override
 	{ return get_replay_controller().replay_show_team1(); }
-	virtual void reset_replay() OVERRIDE
+	virtual void reset_replay() override
 	{ return playsingle_controller_.reset_replay(); }
-	virtual void replay_exit() OVERRIDE;
+	virtual void replay_exit() override;
 	virtual void load_autosave(const std::string& filename);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 };

@@ -147,12 +147,12 @@ protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::update_canvas. */
-	virtual void update_canvas() OVERRIDE;
+	virtual void update_canvas() override;
 
 	/** Inherited from ttext_. */
 	void goto_end_of_line(const bool select = false)
@@ -257,7 +257,7 @@ private:
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/** Inherited from tcontrol. */
 	void load_config_extra();
