@@ -17,6 +17,10 @@
 
 #define BOOST_TEST_MODULE wesnoth unit tests master suite
 
+#ifndef BOOST_TEST_DYN_LINK
+#error Compiler misconfiguration - must define BOOST_TEST_DYN_LINK
+#endif
+
 #include <boost/version.hpp>
 
 #include <boost/test/unit_test.hpp>
