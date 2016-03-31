@@ -105,7 +105,7 @@ std::string carryover::get_recruits(bool erase){
 
 const std::string carryover::to_string(){
 	std::string side = "";
-	side.append("Side " + save_id_ + ": gold " + str_cast<int>(gold_) + " recruits " + get_recruits(false) + " units ");
+	side.append("Side " + save_id_ + ": gold " + std::to_string(gold_) + " recruits " + get_recruits(false) + " units ");
 	BOOST_FOREACH(const config & u_cfg, recall_list_) {
 		side.append(u_cfg["name"].str() + ", ");
 	}

@@ -96,7 +96,7 @@ config game_classification::to_config() const
 
 	cfg["label"] = label;
 	cfg["version"] = game_config::version;
-	cfg["campaign_type"] = lexical_cast<std::string> (campaign_type);
+	cfg["campaign_type"] = game_classification::CAMPAIGN_TYPE::enum_to_string(campaign_type);
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["scenario_define"] = scenario_define;
@@ -106,7 +106,7 @@ config game_classification::to_config() const
 	cfg["abbrev"] = abbrev;
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
+	cfg["end_text_duration"] = std::to_string(end_text_duration);
 	cfg["difficulty"] = difficulty;
 	cfg["random_mode"] = random_mode;
 	cfg["oos_debug"] = oos_debug;

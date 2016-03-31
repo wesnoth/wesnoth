@@ -29,7 +29,7 @@ namespace editor {
 	}
 
 	void set_auto_update_transitions(int value) {
-		preferences::set("editor_auto_update_transitions", lexical_cast<std::string>(value));
+		preferences::set("editor_auto_update_transitions", std::to_string(value));
 	}
 
 	std::string default_dir() {
@@ -67,19 +67,19 @@ namespace editor {
 	void set_tod_r(int value)
 	{
 		normalize_editor_rgb(value);
-		preferences::set("editor_r",lexical_cast<std::string>(value));
+		preferences::set("editor_r",std::to_string(value));
 	}
 
 	void set_tod_g(int value)
 	{
 		normalize_editor_rgb(value);
-		preferences::set("editor_g",lexical_cast<std::string>(value));
+		preferences::set("editor_g",std::to_string(value));
 	}
 
 	void set_tod_b(int value)
 	{
 		normalize_editor_rgb(value);
-		preferences::set("editor_b",lexical_cast<std::string>(value));
+		preferences::set("editor_b",std::to_string(value));
 	}
 
 	int tod_r()

@@ -54,7 +54,7 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 	}
 	for(size_t i = 0; i < dc.teams().size(); i++) {
 		const team& team = dc.teams()[i];
-		const std::string label_cat_key = "side:" + str_cast(i + 1);
+		const std::string label_cat_key = "side:" + std::to_string(i + 1);
 		if(team.hidden()) {
 			labels_display[label_cat_key] = "";
 			continue;
@@ -67,7 +67,7 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 			team_name = _("Unknown");
 		}
 		string_map subst;
-		subst["side_number"] = str_cast(i + 1);
+		subst["side_number"] = std::to_string(i + 1);
 		subst["name"] = team_name;
 		labels_display[label_cat_key] = vgettext("Side $side_number ($name)", subst);
 	}

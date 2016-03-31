@@ -42,7 +42,7 @@ int intf_get_direction(lua_State* L)
 	int nargs = lua_gettop(L);
 	if (nargs != 2 and nargs != 3) {
 		std::string msg("get_direction: must pass 2 or 3 args, found ");
-		msg += str_cast(nargs);
+		msg += std::to_string(nargs);
 		luaL_error(L, msg.c_str());
 		return 0;
 	}

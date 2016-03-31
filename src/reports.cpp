@@ -336,7 +336,7 @@ static config unit_alignment(reports::context & rc, const unit* u)
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
-	const std::string align_id = lexical_cast<std::string>(u->alignment());
+	const std::string align_id = unit_type::ALIGNMENT::enum_to_string(u->alignment());
 	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 
@@ -1278,7 +1278,7 @@ REPORT_GENERATOR(villages, rc)
 
 REPORT_GENERATOR(num_units, rc)
 {
-	return gray_inactive(rc, str_cast(rc.dc().side_units(rc.screen().viewing_side())));
+	return gray_inactive(rc, std::to_string(rc.dc().side_units(rc.screen().viewing_side())));
 }
 
 REPORT_GENERATOR(upkeep, rc)
@@ -1296,7 +1296,7 @@ REPORT_GENERATOR(expenses, rc)
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.teams()[viewing_side - 1];
 	team_data td = rc.dc().calculate_team_data(viewing_team, rc.screen().viewing_side());
-	return gray_inactive(rc,str_cast(td.expenses));
+	return gray_inactive(rc,std::to_string(td.expenses));
 }
 
 REPORT_GENERATOR(income, rc)

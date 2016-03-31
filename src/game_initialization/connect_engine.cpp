@@ -114,7 +114,7 @@ connect_engine::connect_engine(saved_game& state,
 	std::string team_prefix(std::string(_("Team")) + " ");
 	int side_count = 1;
 	BOOST_FOREACH(config& side, sides) {
-		const std::string side_str = lexical_cast<std::string>(side_count);
+		const std::string side_str = std::to_string(side_count);
 		config::attribute_value& team_name = side["team_name"];
 		config::attribute_value& user_team_name =
 			side["user_team_name"];
@@ -146,9 +146,9 @@ connect_engine::connect_engine(saved_game& state,
 				original_team_names.push_back(team_name);
 
 				team_name = "Team " +
-					lexical_cast<std::string>(original_team_names.size());
+					std::to_string(original_team_names.size());
 			} else {
-				team_name = "Team " + lexical_cast<std::string>(
+				team_name = "Team " + std::to_string(
 					name_itor - original_team_names.begin() + 1);
 			} // Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed so that the attribute
 			  // is not interpretted as an int when reading from config, which causes bugs later.
@@ -892,7 +892,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
 		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
-		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + lexical_cast<std::string>(index);
+		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
 	}
 
 	update_controller_options();
@@ -1365,7 +1365,7 @@ std::string side_engine::get_color(int index) const
 		}
 		index -= 1;
 	}
-	return lexical_cast<std::string>(index + 1);
+	return std::to_string(index + 1);
 }
 
 int side_engine::num_colors() const

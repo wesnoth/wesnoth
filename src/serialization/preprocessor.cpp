@@ -142,7 +142,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("name", name);
 	writer.write_key_val("value", value);
 	writer.write_key_val("textdomain", textdomain);
-	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
+	writer.write_key_val("linenum", std::to_string(linenum));
 	writer.write_key_val("location", get_location(location));
 
 	BOOST_FOREACH(const std::string &arg, arguments)

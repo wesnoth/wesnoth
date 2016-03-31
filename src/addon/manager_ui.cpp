@@ -708,7 +708,7 @@ void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& a
 		const std::string& display_sep = sep;
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
-		const std::string& display_down = str_cast(addon.downloads);
+		const std::string& display_down = std::to_string(addon.downloads);
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_status = describe_addon_status(tracking[addon.id]);
 

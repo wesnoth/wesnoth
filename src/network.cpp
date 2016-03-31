@@ -171,8 +171,8 @@ static void check_timeout()
 		ERR_NW << "No server ping since " << timeout
 				<< " seconds. Connection timed out.\n";
 		utils::string_map symbols;
-		symbols["timeout"] = lexical_cast<std::string>(timeout);
-		throw network::error("No server ping since " + str_cast(timeout) + " second. "
+		symbols["timeout"] = std::to_string(timeout);
+		throw network::error("No server ping since " + std::to_string(timeout) + " second. "
 				"Connection timed out.");
 	}
 	last_ping_check = now;

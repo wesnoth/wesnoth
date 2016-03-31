@@ -93,7 +93,7 @@ void tunit_recruit::pre_show(twindow& window)
 
 		const bool can_afford = recruit->cost() < team_.gold() - wb_gold;
 
-		const std::string cost_string = lexical_cast<std::string>(recruit->cost());
+		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["label"] = image_string;
 		row_data.insert(std::make_pair("unit_image", column));

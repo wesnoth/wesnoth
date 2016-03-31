@@ -594,7 +594,7 @@ REGISTER_MOD_PARSER(TC, args)
 	else {
 		// This side is not initialized; use default "n"
 		try {
-			team_color = lexical_cast<std::string>(side_n);
+			team_color = std::to_string(side_n);
 		} catch(bad_lexical_cast const&) {
 			ERR_DP << "bad things happen" << std::endl;
 

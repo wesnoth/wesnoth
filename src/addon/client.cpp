@@ -51,7 +51,7 @@ addons_client::addons_client(CVideo& v, const std::string& address)
 	// FIXME: this parsing will break IPv6 numeric addresses! */
 	host_ = address_components[0];
 	port_ = address_components.size() == 2 ?
-		address_components[1] : str_cast(default_campaignd_port);
+		address_components[1] : std::to_string(default_campaignd_port);
 }
 
 void addons_client::connect()

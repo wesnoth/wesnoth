@@ -242,7 +242,7 @@ config holder::to_config() const
 
 const std::string holder::describe_ai()
 {
-	std::string sidestr = lexical_cast<std::string>(this->side_);
+	std::string sidestr = std::to_string(this->side_);
 
 	if (this->ai_!=NULL) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
@@ -575,9 +575,9 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,false)){
-				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			} else {
-				return std::string("AI MANAGER: failed attempt to add AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+				return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			}
 		}
 		//!replace_ai side file
@@ -585,9 +585,9 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,true)){
-					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			} else {
-					return std::string("AI MANAGER: failed attempt to add AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+					return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			}
 		}
 
@@ -596,7 +596,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		if (cmd.at(0)=="!remove_ai"){
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			remove_ai_for_side(side);
-			return std::string("AI MANAGER: made an attempt to remove AI for side ")+lexical_cast<std::string>(side);
+			return std::string("AI MANAGER: made an attempt to remove AI for side ")+std::to_string(side);
 		}
 		if (cmd.at(0)=="!"){
 			//this command should not be recorded in history

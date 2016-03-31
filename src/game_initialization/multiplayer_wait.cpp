@@ -372,7 +372,7 @@ void wait::join_game(bool observe)
 
 			const int faction_choice = gui::show_dialog(video(), NULL,
 				_("Choose your faction:"), _("Starting position: ") +
-				lexical_cast<std::string>(side_num + 1), gui::OK_CANCEL,
+				std::to_string(side_num + 1), gui::OK_CANCEL,
 				&choices, &preview_panes);
 			if(faction_choice < 0) {
 				set_result(QUIT);

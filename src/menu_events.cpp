@@ -141,7 +141,7 @@ void menu_handler::objectives(int side_num)
 	}
 
 	config cfg;
-	cfg["side"] = str_cast(side_num);
+	cfg["side"] = std::to_string(side_num);
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()));
@@ -655,7 +655,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
 	if (current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(unit_cost);
+		i18n_symbols["cost"] = std::to_string(unit_cost);
 		std::string msg = vngettext(
 			"You must have at least 1 gold piece to recall a unit",
 			"You must have at least $cost gold pieces to recall this unit",
@@ -1480,7 +1480,7 @@ class map_command_handler
 		void command_failed_need_arg(int argn)
 		{
 			utils::string_map symbols;
-			symbols["arg_id"] = lexical_cast<std::string>(argn);
+			symbols["arg_id"] = std::to_string(argn);
 			command_failed(VGETTEXT("Missing argument $arg_id", symbols));
 		}
 		void print_usage()
@@ -2082,7 +2082,7 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	|| cmd == "mute" || cmd == "unmute") {
 		data.add_child(cmd)["username"] = args;
 	} else if (cmd == "ping") {
-		data[cmd] = lexical_cast<std::string>(time(NULL));
+		data[cmd] = std::to_string(time(NULL));
 	} else if (cmd == "green") {
 		data.add_child("query")["type"] = "lobbymsg @" + args;
 	} else if (cmd == "red") {
@@ -2518,7 +2518,7 @@ void console_handler::do_droid() {
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_network()) {
 		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
+		symbols["side"] = std::to_string(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_local_human()) {
@@ -2533,7 +2533,7 @@ void console_handler::do_droid() {
 		}
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 //		menu_handler_.teams()[side - 1].make_human();
-//		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+//		menu_handler_.change_controller(std::to_string(side),"human");
 
 		utils::string_map symbols;
 		symbols["side"] = side_s;
@@ -2557,12 +2557,12 @@ void console_handler::do_idle() {
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_network()) {
 		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
+		symbols["side"] = std::to_string(side);
 		command_failed(vgettext("Can't idle networked side: '$side'.", symbols));
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
+		symbols["side"] = std::to_string(side);
 		command_failed(vgettext("Can't idle local ai side: '$side'.", symbols));
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_local_human()) {
@@ -3071,7 +3071,7 @@ void menu_handler::user_command()
 
 void menu_handler::request_control_change ( int side_num, const std::string& player )
 {
-	std::string side = str_cast(side_num);
+	std::string side = std::to_string(side_num);
 	if (teams()[side_num - 1].is_local_human() && player == preferences::login()) {
 		//this is already our side.
 		return;

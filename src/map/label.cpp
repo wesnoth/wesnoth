@@ -301,7 +301,7 @@ const std::vector<std::string>& map_labels::all_categories() const {
 		categories.clear();
 		categories.push_back("team");
 		for(size_t i = 1; i <= resources::teams->size(); i++) {
-			categories.push_back("side:" + str_cast(i));
+			categories.push_back("side:" + std::to_string(i));
 		}
 		std::set<std::string> unique_cats;
 		BOOST_FOREACH(const team_label_map::value_type& m, labels_) {
@@ -597,7 +597,7 @@ bool terrain_label::hidden() const
 {
 	// Respect user's label preferences
 	std::string category = "cat:" + category_;
-	std::string creator = "side:" + str_cast(creator_ + 1);
+	std::string creator = "side:" + std::to_string(creator_ + 1);
 	const std::vector<std::string>& hidden_categories = parent_->disp().get_disp_context().hidden_label_categories();
 
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end())

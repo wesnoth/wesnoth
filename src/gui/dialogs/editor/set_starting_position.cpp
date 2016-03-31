@@ -94,7 +94,7 @@ void teditor_set_starting_position::pre_show(twindow& window)
 		data.clear();
 
 		utils::string_map symbols;
-		symbols["player_number"] = str_cast(i + 1);
+		symbols["player_number"] = std::to_string(i + 1);
 
 		column["label"] = utils::interpolate_variables_into_string(
 				_("Player $player_number"), &symbols);

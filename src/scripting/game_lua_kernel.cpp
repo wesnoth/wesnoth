@@ -430,7 +430,7 @@ static int impl_unit_set(lua_State *L)
 		u.set_advancements(lua_check<std::vector<config> >(L, 3));
 		return 0;
 	}
-	
+
 	if (strcmp(m, "upkeep") == 0) {
 		if(lua_isnumber(L, 3)) {
 			u.set_upkeep(luaL_checkint(L, 3));
@@ -441,10 +441,10 @@ static int impl_unit_set(lua_State *L)
 			u.set_upkeep(unit::upkeep_loyal());
 		}
 		else if(strcmp(m, "full") == 0) {
-			u.set_upkeep(unit::upkeep_full());		
+			u.set_upkeep(unit::upkeep_full());
 		}
 		else {
-		
+
 			std::string err_msg = "unknown upkeep value of unit: ";
 			err_msg += v;
 			return luaL_argerror(L, 2, err_msg.c_str());
@@ -1551,7 +1551,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
 
-	return_string_attrib("campaign_type", lexical_cast<std::string>(classification.campaign_type));
+	return_string_attrib("campaign_type", game_classification::CAMPAIGN_TYPE::enum_to_string(classification.campaign_type));
 	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		return_cfgref_attrib("mp_settings", mp_settings.to_config());
 		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));
@@ -1967,11 +1967,11 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 		if (!lua_istable(L, entry)) {
 			goto error;
 		}
-		
+
 		if (!luaW_tolocation(L, entry, src)) {
 			goto error;
 		}
-		
+
 		lua_rawgeti(L, entry, 3);
 		if (!lua_isnumber(L, -1)) {
 			lua_getfield(L, entry, "side");
@@ -1980,7 +1980,7 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 			}
 		}
 		int side = lua_tointeger(L, -1);
-		
+
 		lua_rawgeti(L, entry, 4);
 		if (!lua_isstring(L, -1)) {
 			lua_getfield(L, entry, "type");
@@ -1989,10 +1989,10 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 			}
 		}
 		std::string unit_type = lua_tostring(L, -1);
-		
+
 		boost::tuple<map_location, int, std::string> tuple(src, side, unit_type);
 		fake_units.push_back(tuple);
-		
+
 		lua_settop(L, entry - 1);
 	}
 	return 0;
@@ -2547,7 +2547,7 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 	if (!lua_isnoneornil(L, 3)) {
 		color = string_to_color(luaL_checkstring(L, 3));
 	}
-	
+
 	if (game_display_) {
 		game_display_->float_label(loc, text, color);
 	}
@@ -2865,14 +2865,14 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 int game_lua_kernel::intf_select_hex(lua_State *L)
 {
 	ERR_LUA << "wesnoth.select_hex is deprecated, use wesnoth.select_unit and/or wesnoth.highlight_hex" << std::endl;
-	
+
 	// Need this because check_location may change the stack
 	// By doing this now, we ensure that it won't do so when
 	// intf_select_unit and intf_highlight_hex call it.
 	const map_location loc = luaW_checklocation(L, 1);
 	luaW_pushlocation(L, loc);
 	lua_replace(L, 1);
-	
+
 	intf_select_unit(L);
 	if(!lua_isnoneornil(L, 2) && luaW_toboolean(L,2)) {
 		intf_highlight_hex(L);
@@ -4165,7 +4165,7 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	teleport_path.push_back(src_loc);
 	teleport_path.push_back(vacant_dst);
 	unit_display::move_unit(teleport_path, u, animate);
-	
+
 	resources::units->move(src_loc, vacant_dst);
 	unit::clear_status_caches();
 
@@ -4769,7 +4769,7 @@ int game_lua_kernel::cfun_builtin_effect(lua_State *L)
 	// The times= key is supposed to be ignored by the effect function.
 	// However, just in case someone doesn't realize this, we will set it to 1 here.
 	cfg["times"] = 1;
-	
+
 	if(need_apply) {
 		u.get()->apply_builtin_effect(which_effect, cfg);
 		return 0;

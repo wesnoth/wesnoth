@@ -366,11 +366,11 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<std::string>&
 			std::vector<std::string> newitems;
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
-				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
+				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + std::to_string(turn);
 				if (savegame::save_game_exists(name, comp_format)) {
 					newsaves.push_back(
 						name + compression::format_extension(comp_format));
-					newitems.push_back(_("Back to Turn ") + lexical_cast<std::string>(turn));
+					newitems.push_back(_("Back to Turn ") + std::to_string(turn));
 				}
 			}
 

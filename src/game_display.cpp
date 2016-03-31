@@ -446,7 +446,7 @@ void game_display::draw_hex(const map_location& loc)
 	if(game_config::debug) {
 		int debugH = debugHighlights_[loc];
 		if (debugH) {
-			std::string txt = lexical_cast<std::string>(debugH);
+			std::string txt = std::to_string(debugH);
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
 		}
 	}
@@ -585,7 +585,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	if (!reach_map_.empty()) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
-			const std::string num = lexical_cast<std::string>(reach->second);
+			const std::string num = std::to_string(reach->second);
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
 		}
 	}

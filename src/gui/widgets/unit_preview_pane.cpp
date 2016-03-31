@@ -90,7 +90,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 
 	if(label_level_) {
 		utils::string_map symbols;
-		symbols["lvl"] = lexical_cast<std::string>(type->level());
+		symbols["lvl"] = std::to_string(type->level());
 
 		std::string l_str = vgettext("Lvl $lvl", symbols);
 

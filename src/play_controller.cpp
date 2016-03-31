@@ -447,8 +447,8 @@ void play_controller::do_init_side()
 	gamestate_->init_side_done() = true;
 	init_side_done_now_ = true;
 
-	const std::string turn_num = str_cast(turn());
-	const std::string side_num = str_cast(current_side());
+	const std::string turn_num = std::to_string(turn());
+	const std::string side_num = std::to_string(current_side());
 
 	gamestate().gamedata_.get_variable("side_number") = current_side();
 
@@ -544,8 +544,8 @@ void play_controller::finish_side_turn()
 		// Ending the turn commits all moves.
 		undo_stack().clear();
 		gamestate().board_.end_turn(current_side());
-		const std::string turn_num = str_cast(turn());
-		const std::string side_num = str_cast(current_side());
+		const std::string turn_num = std::to_string(turn());
+		const std::string side_num = std::to_string(current_side());
 
 		// Clear shroud, in case units had been slowed for the turn.
 		actions::clear_shroud(current_side());
@@ -568,7 +568,7 @@ void play_controller::finish_side_turn()
 void play_controller::finish_turn()
 {
 	set_scontext_synced sync(2);
-	const std::string turn_num = str_cast(turn());
+	const std::string turn_num = std::to_string(turn());
 	pump().fire("turn end");
 	pump().fire("turn " + turn_num + " end");
 	sync.do_final_checkup();

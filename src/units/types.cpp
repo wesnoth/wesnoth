@@ -836,9 +836,9 @@ std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER 
 	std::string str = std::string();
 	if (gender == unit_race::FEMALE) {
 		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
-		str = lexical_cast<std::string>(fem);
+		str = ALIGNMENT_FEMALE_VARIATION::enum_to_string(fem);
 	} else {
-		str = lexical_cast<std::string>(align);
+		str = ALIGNMENT::enum_to_string(align);
 	}
 	return translation::sgettext(str.c_str());
 }
@@ -1307,7 +1307,7 @@ void adjust_profile(std::string& profile)
 		}
 
 		return;
-	} 
+	}
 
 	// else, check for the file with /transparent appended...
 	offset != std::string::npos ?

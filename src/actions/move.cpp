@@ -1115,8 +1115,8 @@ namespace { // Private helpers for move_unit()
 			// Create the message to display (depends on whether friends,
 			// enemies, or both were sighted, and on how many of each).
 			utils::string_map symbols;
-			symbols["enemies"] = lexical_cast<std::string>(enemy_count_);
-			symbols["friends"] = lexical_cast<std::string>(friend_count_);
+			symbols["enemies"] = std::to_string(enemy_count_);
+			symbols["friends"] = std::to_string(friend_count_);
 			std::string message;
 			SDL_Color msg_color;
 			if ( friend_count_ != 0  &&  enemy_count_ != 0 ) {

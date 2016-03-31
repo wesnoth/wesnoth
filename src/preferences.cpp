@@ -381,8 +381,8 @@ bool fullscreen()
 
 void _set_resolution(const std::pair<int, int>& res)
 {
-	preferences::set("xresolution", lexical_cast<std::string>(res.first));
-	preferences::set("yresolution", lexical_cast<std::string>(res.second));
+	preferences::set("xresolution", std::to_string(res.first));
+	preferences::set("yresolution", std::to_string(res.second));
 }
 
 void _set_maximized(bool ison)

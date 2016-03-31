@@ -452,7 +452,7 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 	{
 		int number = numbers_to_draw[i];
 
-		std::string number_text = boost::lexical_cast<std::string>(number);
+		std::string number_text = std::to_string(number);
 		size_t font_size;
 		if (int(i) == main_number) font_size = 19;
 		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;

@@ -114,7 +114,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 	{
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
 		const team& tm = teams()[i.side()-1];
-		DBG_EE << "That team's defeat condition is: " << lexical_cast<std::string> (tm.defeat_condition()) << std::endl;
+		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
 		if (i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
 			not_defeated.insert(i.side());
 		} else if (tm.defeat_condition() == team::DEFEAT_CONDITION::NO_UNITS) {
@@ -207,10 +207,10 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	tm.change_proxy(proxy);
 	tm.set_local(true);
 
-	tm.set_current_player(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+	tm.set_current_player(team::CONTROLLER::enum_to_string(ctrl) + std::to_string(side_num));
 
 	unit_map::iterator leader = units_.find_leader(side_num);
-	if (leader.valid()) leader->rename(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+	if (leader.valid()) leader->rename(team::CONTROLLER::enum_to_string(ctrl) + std::to_string(side_num));
 }
 
 void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
@@ -349,7 +349,7 @@ void game_board::write_config(config & cfg) const
 		config& side = cfg.add_child("side");
 		t->write(side);
 		side["no_leader"] = true;
-		side["side"] = str_cast(side_num);
+		side["side"] = std::to_string(side_num);
 
 		//current units
 		{

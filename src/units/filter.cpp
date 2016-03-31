@@ -375,7 +375,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 
 	if (!vcfg["side"].empty() && vcfg["side"].to_int(-999) != u.side()) {
 		std::vector<std::string> sides = utils::split(vcfg["side"]);
-		const std::string u_side = str_cast(u.side());
+		const std::string u_side = std::to_string(u.side());
 		if (std::find(sides.begin(), sides.end(), u_side) == sides.end()) {
 			return false;
 		}

@@ -117,7 +117,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 	//if line number = 0, don't display info about filename and line number
 	if (e.line != 0) {
 		LOG_AI << e.type << " in " << e.filename << ":" << e.line << std::endl;
-		display_message(e.type + " in " + e.filename + ":" + boost::lexical_cast<std::string>(e.line));
+		display_message(e.type + " in " + e.filename + ":" + std::to_string(e.line));
 	} else {
 		LOG_AI << e.type << std::endl;
 		display_message(e.type);

@@ -155,7 +155,7 @@ void tcampaign_selection::pre_show(twindow& window)
 			tree_group_field["label"] = campaign["completed"].to_bool() ? "misc/laurel.png" : "misc/blank-hex.png";
 			tree_group_item["victory"] = tree_group_field;
 
-			tree.add_node("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
+			tree.add_node("campaign", tree_group_item).set_id(std::to_string(id++));
 
 			/*** Add detail item ***/
 			string_map detail_item;

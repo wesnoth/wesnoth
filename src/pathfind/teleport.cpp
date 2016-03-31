@@ -291,13 +291,13 @@ config manager::to_config() const {
 	for(; tunnel != tunnels_.end(); ++tunnel) {
 		store.add_child("tunnel", tunnel->to_config());
 	}
-	store["next_teleport_group_id"] = str_cast(id_);
+	store["next_teleport_group_id"] = std::to_string(id_);
 
 	return store;
 }
 
 std::string manager::next_unique_id() {
-	return str_cast(++id_);
+	return std::to_string(++id_);
 }
 
 

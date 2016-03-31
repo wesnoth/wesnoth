@@ -171,12 +171,6 @@ float lexical_cast_default<float, const std::string&>(const std::string& a, floa
 template<>
 float lexical_cast_default<float, const char*>(const char* a, float def);
 
-template<typename From>
-std::string str_cast(From a)
-{
-	return lexical_cast<std::string,From>(a);
-}
-
 template<typename To, typename From>
 To lexical_cast_in_range(From a, To def, To min, To max)
 {

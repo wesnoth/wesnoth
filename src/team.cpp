@@ -330,7 +330,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	if (gold_ != info_.gold)
 		info_.start_gold = gold;
 	// Old code was doing:
-	// info_.start_gold = str_cast(gold) + " (" + info_.start_gold + ")";
+	// info_.start_gold = std::to_string(gold) + " (" + info_.start_gold + ")";
 	// Was it correct?
 
 	// Load in the villages the side controls at the start
@@ -660,7 +660,7 @@ void validate_side(int side)
 	}
 
 	if(side < 1 || side > int(teams->size())) {
-		throw game::game_error("invalid side(" + str_cast(side) + ") found in unit definition");
+		throw game::game_error("invalid side(" + std::to_string(side) + ") found in unit definition");
 	}
 }
 
@@ -846,7 +846,7 @@ std::string team::get_side_color_index(int side)
 			return side_map;
 		}
 	}
-	return str_cast(side);
+	return std::to_string(side);
 }
 
 std::string team::get_side_highlight(int side)

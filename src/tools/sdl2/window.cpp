@@ -53,7 +53,7 @@ static void create(std::string& command, std::string::const_iterator begin)
 	utf8::insert(command,
 				 utf8::size(command),
 				 " -> OK ID "
-				 + boost::lexical_cast<std::string>(windows.size() - 1));
+				 + std::to_string(windows.size() - 1));
 }
 
 static void modify(std::string& command, std::string::const_iterator begin)

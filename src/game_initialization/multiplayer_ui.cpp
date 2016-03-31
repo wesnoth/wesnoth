@@ -83,7 +83,7 @@ namespace mp {
 std::string get_color_string(int id)
 {
 	std::string prefix = team::get_side_highlight(id);
-	std::map<std::string, t_string>::iterator name = game_config::team_rgb_name.find(str_cast(id + 1));
+	std::map<std::string, t_string>::iterator name = game_config::team_rgb_name.find(std::to_string(id + 1));
 	if(name != game_config::team_rgb_name.end()){
 		return prefix + name->second;
 	}else{

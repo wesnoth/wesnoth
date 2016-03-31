@@ -285,11 +285,11 @@ void user_choice_manager::search_in_replay()
 		}
 		if(required_.find(from_side) == required_.end())
 		{
-			replay::process_error("MP synchronization: we got an answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] which is not was we expected\n");
+			replay::process_error("MP synchronization: we got an answer from side " + std::to_string(from_side) + "for [" + tagname_ + "] which is not was we expected\n");
 		}
 		if(res_.find(from_side) != res_.end())
 		{
-			replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
+			replay::process_error("MP synchronization: we got already our answer from side " + std::to_string(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
 		}
 		res_[from_side] = action->child(tagname_);
 		changed_event_.notify_observers();
@@ -318,7 +318,7 @@ void user_choice_manager::update_local_choice()
 		if(res_.find(side) == res_.end())
 		{
 			sides_str += " ";
-			sides_str += lexical_cast<std::string>(side);
+			sides_str += std::to_string(side);
 			//and it is local
 			if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
 			{

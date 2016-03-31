@@ -703,7 +703,7 @@ public:
 							? static_cast<int>((*resources::teams).size())
 							: 0;
 		for(int side = 1; side <= sides; ++side) {
-			std::string side_str = str_cast(side);
+			std::string side_str = std::to_string(side);
 			sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
 					new team_mode_controller(
 							std::string("team ") + side_str, model_, side)));

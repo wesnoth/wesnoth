@@ -114,7 +114,7 @@ public:
 				<< "\" label: \"" << label << "\")\n";
 		std::map<std::string, string_map> data;
 		string_map item;
-		item["id"] = std::string("side_") + str_cast(side_num);
+		item["id"] = std::string("side_") + std::to_string(side_num);
 		item["label"] = label;
 		item["use_markup"] = "true";
 		data.insert(std::make_pair("side", item));
@@ -247,7 +247,7 @@ public:
 		for(int side = 1; side <= sides; ++side) {
 			if(!resources::teams->at(side - 1).hidden()) {
 				string_map symbols;
-				symbols["side"] = str_cast(side);
+				symbols["side"] = std::to_string(side);
 				std::string side_str = vgettext("Side $side", symbols);
 				side_str = font::span_color(team::get_side_color(side))
 						   + side_str + "</span>";

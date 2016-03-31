@@ -267,7 +267,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 
 const std::string hotkey_mouse::get_name_helper() const
 {
-	return "mouse " + lexical_cast<std::string>(button_);
+	return "mouse " + std::to_string(button_);
 }
 
 void hotkey_mouse::save_helper(config &item) const

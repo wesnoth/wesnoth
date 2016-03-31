@@ -68,7 +68,7 @@ void save_index_class::rebuild(const std::string& name, const time_t& modified) 
 	} catch(game::load_game_failed&) {
 		summary["corrupt"] = true;
 		}
-	summary["mod_time"] = str_cast(static_cast<int>(modified));
+	summary["mod_time"] = std::to_string(static_cast<int>(modified));
 	write_save_index();
 }
 

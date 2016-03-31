@@ -305,7 +305,7 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 					else
 						filename = _("(New Scenario)");
 				}
-				std::string label = "[" + lexical_cast<std::string>(mci) + "] "
+				std::string label = "[" + std::to_string(mci) + "] "
 					+ filename + (changed ? " [*]" : "");
 				if (map_contexts_[mci]->is_embedded()) {
 					label += " (E)";

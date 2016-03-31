@@ -300,15 +300,15 @@ void default_map_generator::user_config(CVideo& v)
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_label,landform_rect.x,landform_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, str_cast(nplayers_),
+			font::NORMAL_COLOR, std::to_string(nplayers_),
 			slider_right + horz_margin, players_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, str_cast(width_),
+			font::NORMAL_COLOR, std::to_string(width_),
 			slider_right + horz_margin, width_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, str_cast(height_),
+			font::NORMAL_COLOR, std::to_string(height_),
 			slider_right+horz_margin,height_rect.y);
 
 		std::stringstream villages_str;
@@ -317,7 +317,7 @@ void default_map_generator::user_config(CVideo& v)
 		                slider_right+horz_margin,villages_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, str_cast(castle_size_),
+			font::NORMAL_COLOR, std::to_string(castle_size_),
 			slider_right + horz_margin, castlesize_rect.y);
 
 		std::stringstream landform_str;

@@ -36,7 +36,7 @@ namespace foo {
 enum enumname {con1, con2 ,con3}
 }
 
-foo::enumname lexical_cast<std::string> ( std::string str ) throws bad_lexical_cast
+foo::enumname std::to_string ( std::string str ) throws bad_lexical_cast
 {
     ...
 }
@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 	BOOST_CHECK_EQUAL ( str, "name1" );
 
-	std::string str2 = lexical_cast<std::string> (e); //returns "name2" since e is con2
+	std::string str2 = std::to_string (e); //returns "name2" since e is con2
 
 	BOOST_CHECK_EQUAL ( str2, "name2" );
 
@@ -107,7 +107,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 
 	BOOST_CHECK_EQUAL ( str, "name1" );
 
-	std::string str2 = lexical_cast<std::string> (e); //returns "name2" since e is val2
+	std::string str2 = std::to_string (e); //returns "name2" since e is val2
 
 	BOOST_CHECK_EQUAL ( str2, "name2" );
 

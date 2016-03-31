@@ -817,7 +817,7 @@ int village_support()
 
 void set_village_support(int value)
 {
-	preferences::set("mp_village_support", lexical_cast<std::string>(value));
+	preferences::set("mp_village_support", std::to_string(value));
 }
 
 int xp_modifier()

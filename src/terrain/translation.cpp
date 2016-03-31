@@ -783,7 +783,7 @@ static std::string number_to_string_(t_terrain terrain, const int start_position
 
 	// Insert the start position
 	if(start_position > 0) {
-		result = str_cast(start_position) + " ";
+		result = std::to_string(start_position) + " ";
 	}
 
 	/*

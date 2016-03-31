@@ -47,7 +47,7 @@ public:
 
 	static void value_to_cfg(const T &value, config &cfg)
 	{
-		cfg["value"] = str_cast(value);
+		cfg["value"] = lexical_cast<std::string>(value);
 	}
 
 	static config value_to_cfg(const T &value)

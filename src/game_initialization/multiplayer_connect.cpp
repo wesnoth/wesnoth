@@ -75,11 +75,11 @@ connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 	color_lock_(engine_->cfg()["color_lock"].to_bool(
 		parent_->force_lock_settings())),
 	changed_(false),
-	label_player_number_(parent.video(), str_cast(engine_->index() + 1),
+	label_player_number_(parent.video(), std::to_string(engine_->index() + 1),
 		font::SIZE_LARGE, font::LOBBY_COLOR),
 	label_original_controller_(parent.video(), engine_->reserved_for(),
 		font::SIZE_SMALL),
-	label_gold_(parent.video(), str_cast(engine_->gold()), font::SIZE_SMALL, font::LOBBY_COLOR),
+	label_gold_(parent.video(), std::to_string(engine_->gold()), font::SIZE_SMALL, font::LOBBY_COLOR),
 	label_income_(parent.video(), get_income_string(engine_->income()), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
 	combo_controller_(new gui::combo_drag(parent.video(),
@@ -220,7 +220,7 @@ void connect::side::process_event()
 	if (slider_gold_.value() != engine_->gold() && slider_gold_.enabled()) {
 		engine_->set_gold(slider_gold_.value());
 		changed_ = true;
-		label_gold_.set_text(str_cast(engine_->gold()));
+		label_gold_.set_text(std::to_string(engine_->gold()));
 	}
 	if (slider_income_.value() != engine_->income() && slider_income_.enabled()) {
 		engine_->set_income(slider_income_.value());
@@ -250,7 +250,7 @@ void connect::side::update_ui()
 	combo_team_.set_selected(engine_->team());
 	combo_color_.set_selected(engine_->color());
 	slider_gold_.set_value(engine_->gold());
-	label_gold_.set_text(str_cast(engine_->gold()));
+	label_gold_.set_text(std::to_string(engine_->gold()));
 	slider_income_.set_value(engine_->income());
 	std::stringstream buf;
 	if (engine_->income() < 0) {

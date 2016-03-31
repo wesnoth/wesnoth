@@ -154,7 +154,7 @@ chat_msg::chat_msg(const config &cfg)
 	{
 		nick_ = cfg["id"].str();
 	} else {
-		nick_ = str_cast("*")+cfg["id"].str()+"*";
+		nick_ = "*"+cfg["id"].str()+"*";
 	}
 	int side = cfg["side"].to_int(0);
 	LOG_REPLAY << "side in message: " << side << std::endl;

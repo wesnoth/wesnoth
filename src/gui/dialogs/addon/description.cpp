@@ -320,7 +320,7 @@ taddon_description::taddon_description(const std::string& addon_id,
 	register_label("author", true, addon.author);
 	register_label("type", true, addon.display_type());
 	register_label("size", true, size_display_string(addon.size));
-	register_label("downloads", true, str_cast(addon.downloads));
+	register_label("downloads", true, std::to_string(addon.downloads));
 	register_label("created", true, created_text);
 	register_label("updated", true, updated_text);
 	if(!addon.description.empty()) {

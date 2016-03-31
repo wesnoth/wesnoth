@@ -1465,7 +1465,7 @@ void unit::write(config& cfg) const
 	cfg["alignment"] = alignment_.to_string();
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
-	cfg["alpha"] = str_cast(alpha_);
+	cfg["alpha"] = std::to_string(alpha_);
 
 	cfg["attacks_left"] = attacks_left_;
 	cfg["max_attacks"] = max_attacks_;

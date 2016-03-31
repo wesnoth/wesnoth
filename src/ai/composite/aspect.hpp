@@ -403,9 +403,9 @@ class lua_aspect_visitor : public boost::static_visitor<std::string> {
 	static std::string quote_string(const std::string& s);
 public:
 	std::string operator()(bool b) const {return b ? "true" : "false";}
-	std::string operator()(int i) const {return str_cast(i);}
-	std::string operator()(unsigned long long i) const {return str_cast(i);}
-	std::string operator()(double i) const {return str_cast(i);}
+	std::string operator()(int i) const {return std::to_string(i);}
+	std::string operator()(unsigned long long i) const {return std::to_string(i);}
+	std::string operator()(double i) const {return std::to_string(i);}
 	std::string operator()(const std::string& s) const {return quote_string(s);}
 	std::string operator()(const t_string& s) const {return quote_string(s.str());}
 	std::string operator()(boost::blank) const {return "nil";}

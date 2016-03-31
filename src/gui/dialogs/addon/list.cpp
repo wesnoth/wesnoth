@@ -407,7 +407,7 @@ void taddon_list::pre_show(twindow& window)
 		item["label"] = size_display_string(info.size);
 		data.insert(std::make_pair("size", item));
 
-		item["label"] = lexical_cast<std::string>(info.downloads);
+		item["label"] = std::to_string(info.downloads);
 		data.insert(std::make_pair("downloads", item));
 
 		item["label"] = info.display_type();
@@ -516,7 +516,7 @@ void taddon_list::on_addon_select(twindow& window)
 	status.set_use_markup(true);
 
 	find_widget<tcontrol>(&window, "size", false).set_label(size_display_string(info.size));
-	find_widget<tcontrol>(&window, "downloads", false).set_label(lexical_cast<std::string>(info.downloads));
+	find_widget<tcontrol>(&window, "downloads", false).set_label(std::to_string(info.downloads));
 	find_widget<tcontrol>(&window, "created", false).set_label(format_addon_time(info.created));
 	find_widget<tcontrol>(&window, "updated", false).set_label(format_addon_time(info.updated));
 

@@ -455,7 +455,7 @@ void tpreferences::initialize_members(twindow& window)
 		find_widget<tslider>(&window, "turbo_slider", false);
 
 	const int selected_speed = std::find(
-		  (accl_speeds_.begin()), accl_speeds_.end(), lexical_cast<std::string>(turbo_speed()))
+		  (accl_speeds_.begin()), accl_speeds_.end(), std::to_string(turbo_speed()))
 		- (accl_speeds_.begin());
 
 	accl_slider.set_value_labels(accl_speeds_);

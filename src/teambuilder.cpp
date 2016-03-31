@@ -215,7 +215,7 @@ protected:
 			if ( seen_ids_.find(id)!=seen_ids_.end() ) {
 				//seen before
 				config u_tmp = u;
-				u_tmp["side"] = str_cast(side_);
+				u_tmp["side"] = std::to_string(side_);
 				t_->recall_list().add(unit_ptr(new unit(u_tmp,true)));
 			} else {
 				//not seen before

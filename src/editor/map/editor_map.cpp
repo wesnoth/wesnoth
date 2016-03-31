@@ -153,7 +153,7 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 	label += " ";
 	for (int i = 0, size = starting_positions_.size(); i < size; ++i) {
 		if (starting_positions_[i].valid()) {
-			disp.labels().set_label(starting_positions_[i], label + lexical_cast<std::string>(i + 1));
+			disp.labels().set_label(starting_positions_[i], label + std::to_string(i + 1));
 			label_locs.insert(starting_positions_[i]);
 		}
 	}

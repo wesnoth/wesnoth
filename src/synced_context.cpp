@@ -425,7 +425,7 @@ set_scontext_synced::set_scontext_synced()
 
 set_scontext_synced::set_scontext_synced(int number)
 	: set_scontext_synced_base()
-	, new_checkup_(generate_checkup("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
+	, new_checkup_(generate_checkup("checkup" + std::to_string(number))), disabler_()
 {
 	init();
 }

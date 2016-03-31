@@ -209,7 +209,7 @@ void scenario::set_sides()
 			pos < map_positions; ++pos) {
 			config& side = data_.add_child("side");
 			side["side"] = pos + 1;
-			side["team_name"] = "Team " + lexical_cast<std::string>(pos + 1);
+			side["team_name"] = "Team " + std::to_string(pos + 1);
 			side["canrecruit"] = true;
 			side["controller"] = "human";
 		}
@@ -1059,7 +1059,7 @@ void create_engine::init_all_levels()
 	// Stand-alone scenarios.
 	BOOST_FOREACH(const config &data,
 		game_config_manager::get()->game_config().child_range(
-		lexical_cast<std::string> (game_classification::CAMPAIGN_TYPE::MULTIPLAYER)))
+		std::to_string (game_classification::CAMPAIGN_TYPE::MULTIPLAYER)))
 	{
 		if (!data["allow_new_game"].to_bool(true))
 			continue;
