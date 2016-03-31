@@ -122,28 +122,29 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
+	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
+		game_config::debug || game_config::mp_debug);
+
+	// Game_config already holds requested config in memory.
+	if (!game_config_.empty()) {
+		if ((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
+			return;
+		}
+		if ((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+			return;
+		}
+	}
+
 	gui2::tloadscreen::display(video_, [=]() {
 		load_game_config(force_reload, classification);
 	});
 }
 void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
-	{
+{
 		// Make sure that 'debug mode' symbol is set
 	// if command line parameter is selected
 	// also if we're in multiplayer and actual debug mode is disabled.
-	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
-	    game_config::debug || game_config::mp_debug);
-
-	// Game_config already holds requested config in memory.
-	if(!game_config_.empty()) {
-		if((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
-			return;
-		}
-		if((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
-			return;
-		}
-	}
 
 	// The loadscreen will erase the titlescreen.
 	// NOTE: even without loadscreen, needed after MP lobby.
