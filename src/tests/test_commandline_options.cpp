@@ -207,7 +207,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--label=labelfoo",
 		"--load=loadfoo",
 		"--log-error=errfoo,errbar/*",
-		"--log-warning=warnfoo,warnfoo/bar",)
+		"--log-warning=warnfoo,warnfoo/bar",
 		"--log-info=infofoo",
 		"--log-debug=dbgfoo,dbgbar,dbg/foo/bar/baz",
 		"--logdomains=filterfoo",
