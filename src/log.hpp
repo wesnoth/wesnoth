@@ -62,7 +62,7 @@ namespace lg {
  * Helper class to redirect the output of the logger in a certain scope.
  *
  * The main usage of the redirection is for the unit tests to validate the
- * ourput on the logger with the expected output.
+ * output on the logger with the expected output.
  */
 class tredirect_output_setter
 {
