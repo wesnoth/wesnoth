@@ -276,8 +276,8 @@ std::string gamemap::write() const
 	for(int i = 0, size = starting_positions_.size(); i < size; ++i) {
 		if(on_board(starting_positions_[i])) {
 			starting_positions[i + 1] = t_translation::coordinate(
-				starting_positions[i].x + border_size_,
-				starting_positions[i].y + border_size_
+				starting_positions_[i].x + border_size_,
+				starting_positions_[i].y + border_size_
 			);
 		}	
 	}
