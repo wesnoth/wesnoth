@@ -66,8 +66,6 @@
 
 namespace {
 
-const std::string text_feature_on =  "<span color='#0f0'>&#10003;</span>";
-
 struct advanced_preferences_sorter
 {
 	bool operator()(const config& lhs, const config& rhs) const
@@ -935,6 +933,8 @@ void tpreferences::setup_hotkey_list(twindow& window)
 
 	hotkey_list.clear();
 	visible_hotkeys_.clear();
+
+	std::string text_feature_on =  "<span color='#0f0'>" + _("&#10003;") + "</span>";
 
 	FOREACH(const AUTO& hotkey_item, hotkey::get_hotkey_commands())
 	{
