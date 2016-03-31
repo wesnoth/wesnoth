@@ -375,7 +375,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "type") {
 		return variant(u_.type_name());
 	} else if(key == "alignment") {
-		return variant(unit_type::ALIGNMENT::enum_to_string(u_.alignment()));
+		return variant(u_.alignment().to_string());
 	} else if(key == "race") {
 		return variant(u_.race_id());
 	} else if(key == "abilities") {

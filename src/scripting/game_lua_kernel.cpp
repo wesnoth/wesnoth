@@ -1551,7 +1551,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
 
-	return_string_attrib("campaign_type", game_classification::CAMPAIGN_TYPE::enum_to_string(classification.campaign_type));
+	return_string_attrib("campaign_type", classification.campaign_type.to_string());
 	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		return_cfgref_attrib("mp_settings", mp_settings.to_config());
 		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));

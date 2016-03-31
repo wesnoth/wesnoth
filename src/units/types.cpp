@@ -836,9 +836,9 @@ std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER 
 	std::string str = std::string();
 	if (gender == unit_race::FEMALE) {
 		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
-		str = ALIGNMENT_FEMALE_VARIATION::enum_to_string(fem);
+		str = fem.to_string();
 	} else {
-		str = ALIGNMENT::enum_to_string(align);
+		str = align.to_string();
 	}
 	return translation::sgettext(str.c_str());
 }

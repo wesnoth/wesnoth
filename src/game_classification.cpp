@@ -96,7 +96,7 @@ config game_classification::to_config() const
 
 	cfg["label"] = label;
 	cfg["version"] = game_config::version;
-	cfg["campaign_type"] = game_classification::CAMPAIGN_TYPE::enum_to_string(campaign_type);
+	cfg["campaign_type"] = campaign_type.to_string();
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["scenario_define"] = scenario_define;

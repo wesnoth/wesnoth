@@ -336,7 +336,7 @@ static config unit_alignment(reports::context & rc, const unit* u)
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
-	const std::string align_id = unit_type::ALIGNMENT::enum_to_string(u->alignment());
+	const std::string align_id = u->alignment().to_string();
 	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 

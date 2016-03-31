@@ -207,10 +207,10 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	tm.change_proxy(proxy);
 	tm.set_local(true);
 
-	tm.set_current_player(team::CONTROLLER::enum_to_string(ctrl) + std::to_string(side_num));
+	tm.set_current_player(ctrl.to_string() + std::to_string(side_num));
 
 	unit_map::iterator leader = units_.find_leader(side_num);
-	if (leader.valid()) leader->rename(team::CONTROLLER::enum_to_string(ctrl) + std::to_string(side_num));
+	if (leader.valid()) leader->rename(ctrl.to_string() + std::to_string(side_num));
 }
 
 void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
