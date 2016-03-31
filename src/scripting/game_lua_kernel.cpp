@@ -4896,7 +4896,8 @@ bool game_lua_kernel::run_filter(char const *name, unit const &u)
 	if (!ui.valid()) return false;
 
 	// Get the user filter by name.
-	if(!luaW_getglobal(L, name))
+	const std::vector<std::string>& path = utils::split(name, '.', utils::STRIP_SPACES);
+	if(!luaW_getglobal(L, path))
 	{
 		std::string message = std::string() + "function " + name + " not found";
 		log_error(message.c_str(), "Lua SUF Error");

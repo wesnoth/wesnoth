@@ -21,6 +21,8 @@ Version 1.13.4+dev:
    * Weapon filters now support number, parry, accuracy, and movement_used
    * New [has_attack] in standard unit filters; supercedes has_weapon= and
      uses full weapon filter.
+   * lua_function=var.member now works in SUF; however, 'var' still needs to
+     be a global variable.
    * AiWML:
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
