@@ -79,16 +79,16 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		switch(cmd.id) {
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
-				keyboard_scroll(0, 1);
+				scroll_up(false);
 				break;
 			case HOTKEY_SCROLL_DOWN:
-				keyboard_scroll(0, -1);
+				scroll_down(false);
 				break;
 			case HOTKEY_SCROLL_LEFT:
-				keyboard_scroll(1, 0);
+				scroll_left(false);
 				break;
 			case HOTKEY_SCROLL_RIGHT:
-				keyboard_scroll(-1, 0);
+				scroll_right(false);
 				break;
 			default:
 				return false; // nothing else handles a hotkey release
@@ -100,16 +100,16 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 	// hotkey press handling
 	switch(cmd.id) {
 		case HOTKEY_SCROLL_UP:
-			keyboard_scroll(0, -1);
+			scroll_up(true);
 			break;
 		case HOTKEY_SCROLL_DOWN:
-			keyboard_scroll(0, 1);
+			scroll_down(true);
 			break;
 		case HOTKEY_SCROLL_LEFT:
-			keyboard_scroll(-1, 0);
+			scroll_left(true);
 			break;
 		case HOTKEY_SCROLL_RIGHT:
-			keyboard_scroll(1, 0);
+			scroll_right(true);
 			break;
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();

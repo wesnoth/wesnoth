@@ -66,6 +66,10 @@ public:
 	static const config &get_theme(const config& game_config, std::string theme_name);
 
 	void apply_keyboard_scroll(int x, int y);
+	void set_scroll_up(bool on);
+	void set_scroll_down(bool on);
+	void set_scroll_left(bool on);
+	void set_scroll_right(bool on);
 protected:
 	virtual bool is_browsing() const
 	{ return false; }
@@ -143,8 +147,10 @@ protected:
 	const config& game_config_;
 	CKey key_;
 	bool scrolling_;
-	int scrollx_;
-	int scrolly_;
+	bool scroll_up_;
+	bool scroll_down_;
+	bool scroll_left_;
+	bool scroll_right_;
 	joystick_manager joystick_manager_;
 };
 

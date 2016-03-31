@@ -108,7 +108,10 @@ public:
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
 	virtual void toggle_accelerated_speed() {}
-	virtual void keyboard_scroll(int /*x*/, int /*y*/) {}
+	virtual void scroll_up(bool /*on*/) {}
+	virtual void scroll_down(bool /*on*/) {}
+	virtual void scroll_left(bool /*on*/) {}
+	virtual void scroll_right(bool /*on*/) {}
 	virtual void lua_console();
 	virtual void zoom_in() {}
 	virtual void zoom_out() {}

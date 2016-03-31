@@ -117,7 +117,10 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 	virtual void toggle_accelerated_speed();
-	virtual void keyboard_scroll(int x, int y);
+	virtual void scroll_up(bool on);
+	virtual void scroll_down(bool on);
+	virtual void scroll_left(bool on);
+	virtual void scroll_right(bool on);
 	virtual void replay_skip_animation() override
 	{ return play_controller_.toggle_skipping_replay(); }
 

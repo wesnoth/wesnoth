@@ -34,8 +34,10 @@ controller_base::controller_base(
 	: game_config_(game_config)
 	, key_()
 	, scrolling_(false)
-	, scrollx_(0)
-	, scrolly_(0)
+	, scroll_up_(false)
+	, scroll_down_(false)
+	, scroll_left_(false)
+	, scroll_right_(false)
 	, joystick_manager_()
 {
 }
@@ -145,9 +147,11 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 		}
 	}
 
-	// scroll with keyboard
-	dx += scrollx_ * scroll_speed;
-	dy += scrolly_ * scroll_speed;
+	// apply keyboard scrolling
+	dy -= scroll_up_ * scroll_speed;
+	dy += scroll_down_ * scroll_speed;
+	dx -= scroll_left_ * scroll_speed;
+	dx += scroll_right_ * scroll_speed;
 
 	// scroll if mouse is placed near the edge of the screen
 	if (mouse_in_window) {
@@ -347,11 +351,22 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 	return empty;
 }
 
-void controller_base::apply_keyboard_scroll(int x, int y)
+void controller_base::set_scroll_up(bool on)
 {
-	if (have_keyboard_focus()) {
-		// clamp between -1 and 1 so key repeats don't accelerate scrolling
-		scrollx_ = std::min(1, std::max(-1, scrollx_ + x));
-		scrolly_ = std::min(1, std::max(-1, scrolly_ + y));
-	}
+	scroll_up_ = on;
+}
+
+void controller_base::set_scroll_down(bool on)
+{
+	scroll_down_ = on;
+}
+
+void controller_base::set_scroll_left(bool on)
+{
+	scroll_left_ = on;
+}
+
+void controller_base::set_scroll_right(bool on)
+{
+	scroll_right_ = on;
 }

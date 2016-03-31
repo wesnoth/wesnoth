@@ -119,7 +119,10 @@ class editor_controller : public controller_base,
 		void preferences();
 
 		/** Handle hotkeys to scroll map */
-		void keyboard_scroll(int /*x*/, int /*y*/);
+		void scroll_up(bool on);
+		void scroll_down(bool on);
+		void scroll_left(bool on);
+		void scroll_right(bool on);
 
 		/** Grid toggle */
 		void toggle_grid();
