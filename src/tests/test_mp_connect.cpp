@@ -82,7 +82,7 @@ struct mp_connect_fixture {
 		state->mp_settings().saved_game = false;
 
 		state->set_scenario(config_manager->
-			game_config().find_child(std::to_string(game_classification::CAMPAIGN_TYPE::MULTIPLAYER), "id", state->mp_settings().name));
+			game_config().find_child("multiplayer", "id", state->mp_settings().name));
 
 		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
 
