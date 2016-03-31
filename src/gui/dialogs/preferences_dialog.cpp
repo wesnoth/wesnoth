@@ -116,7 +116,10 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	, adv_preferences_cfg_()
 	, friend_names_()
 	, last_selected_item_(0)
-	, accl_speeds_()
+	, accl_speeds_(
+		// IMPORTANT: NEVER have trailing zeroes here, or else the cast from doubles
+		// to string will not match, since lexical_cast strips trailing zeroes.
+		{"0.25", "0.5", "0.75", "1", "1.25", "1.5", "1.75", "2", "3", "4", "8", "16" })
 	, visible_hotkeys_()
 	, font_scaling_(font_scaling())
 	, index_(0,0)
@@ -127,14 +130,6 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 
 	std::sort(adv_preferences_cfg_.begin(), adv_preferences_cfg_.end(),
 		advanced_preferences_sorter());
-
-	// IMPORTANT: NEVER have trailing zeroes here, or else the cast from doubles
-	// to string will not match, since lexical_cast strips trailing zeroes.
-	static const char* const speeds[] = {
-		"0.25", "0.5", "0.75", "1", "1.25", "1.5", "1.75", "2", "3", "4", "8", "16" };
-
-	const size_t num_items = sizeof(speeds)/sizeof(const char*);
-	accl_speeds_.insert(accl_speeds_.end(), speeds, &speeds[num_items]);
 }
 
 // Determine the template type in order to use the correct value getter
