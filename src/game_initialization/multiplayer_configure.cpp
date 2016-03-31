@@ -35,7 +35,6 @@
 #include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 

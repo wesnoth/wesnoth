@@ -16,10 +16,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <boost/foreach.hpp>
-
-using boost::assign::list_of;
 
 #if 0
 namespace {

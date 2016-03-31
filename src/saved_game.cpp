@@ -61,7 +61,6 @@
 #include "formula/string_utils.hpp"
 #include "config.hpp" //Also for variable_set
 
-#include <boost/assign/list_of.hpp>
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/foreach.hpp>
@@ -170,10 +169,10 @@ void saved_game::set_defaults()
 {
 	const bool is_loaded_game = this->starting_pos_type_ != STARTINGPOS_SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
-	static const std::vector<std::string> team_defaults = boost::assign::list_of
-		("carryover_percentage")
-		("carryover_add")
-	;
+	static const std::vector<std::string> team_defaults = {
+		"carryover_percentage",
+		"carryover_add",
+	};
 	BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
 	{
 		// Set save_id default value directly after loading to its default to prevent different default behaviour in mp_connect code and sp code.

@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include <boost/assign/list_of.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "save_index.hpp"
@@ -254,7 +253,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	static const std::vector<std::string> suffixes = boost::assign::list_of("")(".gz")(".bz2");
+	static const std::vector<std::string> suffixes = {"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
 
 	cfg.clear();

@@ -28,7 +28,6 @@
 #include "config_assign.hpp"
 
 #include <boost/foreach.hpp>
-#include <boost/assign/list_of.hpp>
 
 #include <vector>
 #include <deque>
@@ -248,9 +247,9 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 
 }
 	
-static const std::set<std::string> non_aspect_attributes = boost::assign::list_of("turns")("time_of_day")("engine")("ai_algorithm")("id")("description");
-static const std::set<std::string> just_copy_tags = boost::assign::list_of("engine")("stage")("aspect")("goal")("modify_ai");
-static const std::set<std::string> old_goal_tags = boost::assign::list_of("target")("target_location")("protect_unit")("protect_location");
+static const std::set<std::string> non_aspect_attributes = {"turns", "time_of_day", "engine", "ai_algorithm", "id", "description"};
+static const std::set<std::string> just_copy_tags = {"engine", "stage", "aspect", "goal", "modify_ai"};
+static const std::set<std::string> old_goal_tags = {"target", "target_location", "protect_unit", "protect_location"};
 
 void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	std::string algorithm;

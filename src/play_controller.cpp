@@ -66,7 +66,6 @@
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
-#include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)

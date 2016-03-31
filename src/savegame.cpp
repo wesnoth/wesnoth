@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include <boost/assign/list_of.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "savegame.hpp"

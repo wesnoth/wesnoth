@@ -88,7 +88,6 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
@@ -776,7 +775,7 @@ struct twrapper<gui2::tdepcheck_confirm_change>
 {
 	static gui2::tdepcheck_confirm_change* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
+		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_confirm_change(true, mods, "requester");
 	}
 };
@@ -786,7 +785,7 @@ struct twrapper<gui2::tdepcheck_select_new>
 {
 	static gui2::tdepcheck_select_new* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
+		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_select_new(ng::depcheck::MODIFICATION, mods);
 	}
 };
@@ -844,8 +843,8 @@ struct twrapper<gui2::ttheme_list>
 	}
 	static gui2::ttheme_list* create()
 	{
-		static std::vector<theme_info> themes = boost::assign::list_of(make_theme("classic"))
-		(make_theme("new"))(make_theme("more"))(make_theme("themes"));
+		static std::vector<theme_info> themes = {make_theme("classic"),
+		make_theme("new"), make_theme("more"), make_theme("themes")};
 		return new gui2::ttheme_list(themes, 0);
 	}
 };
@@ -947,7 +946,7 @@ struct twrapper<gui2::twml_error>
 {
 	static gui2::twml_error* create()
 	{
-		static std::vector<std::string> files = boost::assign::list_of("some")("files")("here");
+		static std::vector<std::string> files = {"some", "files", "here"};
 		return new gui2::twml_error("Summary", "Post summary", files, "Details");
 	}
 };

@@ -1708,13 +1708,13 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 	return res;
 }
 
-const std::set<std::string> unit::builtin_effects = boost::assign::list_of
-	("alignment")("attack")("defense")("ellipse")("experience")("fearless")
-	("halo")("healthy")("hitpoints")("image_mod")("jamming")("jamming_costs")
-	("loyal")("max_attacks")("max_experience")("movement")("movement_costs")
-	("new_ability")("new_advancement")("new_animation")("new_attack")("overlay")("profile")
-	("recall_cost")("remove_ability")("remove_advancement")("remove_attacks")("resistance")
-	("status")("type")("variation")("vision")("vision_costs")("zoc");
+const std::set<std::string> unit::builtin_effects = {
+	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
+	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
+	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
+	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
+	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
+	"status", "type", "variation", "vision", "vision_costs", "zoc"};
 
 std::string unit::describe_builtin_effect(std::string apply_to, const config& effect)
 {
