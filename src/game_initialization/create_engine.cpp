@@ -1058,8 +1058,7 @@ void create_engine::init_all_levels()
 
 	// Stand-alone scenarios.
 	BOOST_FOREACH(const config &data,
-		game_config_manager::get()->game_config().child_range(
-		std::to_string (game_classification::CAMPAIGN_TYPE::MULTIPLAYER)))
+		game_config_manager::get()->game_config().child_range("multiplayer"))
 	{
 		if (!data["allow_new_game"].to_bool(true))
 			continue;
