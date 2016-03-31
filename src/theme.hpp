@@ -144,7 +144,7 @@ public:
 		const std::string& postfix() const { return postfix_; }
 
 		// If the item has a label associated with it, Show where the label is
-		const label* get_label() const { return label_.empty() ? NULL : &label_; }
+		const label* get_label() const { return label_.empty() ? nullptr : &label_; }
 
 		size_t font_size() const { return font_; }
 		Uint32 font_rgb() const { return font_rgb_; }
@@ -265,7 +265,7 @@ public:
 	const std::vector<action>& actions() const { return actions_; }
 
 	const menu* context_menu() const
-		{ return context_.is_context() ? &context_ : NULL; }
+		{ return context_.is_context() ? &context_ : nullptr; }
 
 	//refresh_title2 changes the title of a menu entry, identified by id.
 	//If no menu entry is found, an empty menu object is returned.

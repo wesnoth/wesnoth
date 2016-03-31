@@ -42,9 +42,9 @@ public:
 	~tloadscreen();
 
 	static void display(CVideo& video, boost::function<void()> f);
-	static bool displaying() { return current_load != NULL; }
+	static bool displaying() { return current_load != nullptr; }
 	
-	static void progress(const char* stage_name = NULL);
+	static void progress(const char* stage_name = nullptr);
 
 	/**
 	 * Hides the window.

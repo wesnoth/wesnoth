@@ -179,7 +179,7 @@ void tokenizer::skip_comment()
 {
 	next_char_fast();
 	if (current_ == '\n' || current_ == EOF) return;
-	std::string *dst = NULL;
+	std::string *dst = nullptr;
 
 	if (current_ == 't')
 	{

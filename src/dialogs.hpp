@@ -79,7 +79,7 @@ public:
 		std::vector<std::string> overlays;
 	};
 
-	unit_preview_pane(const gui::filter_textbox *filter = NULL,
+	unit_preview_pane(const gui::filter_textbox *filter = nullptr,
 			TYPE type = SHOW_ALL, bool left_side = true);
 
 	bool show_above() const;
@@ -109,7 +109,7 @@ class units_list_preview_pane : public dialogs::unit_preview_pane
 public:
 	units_list_preview_pane(unit_const_ptr u, TYPE type = SHOW_ALL, bool left_side = true);
 	units_list_preview_pane(const boost::shared_ptr<const std::vector<unit_const_ptr > > & units,
-		const gui::filter_textbox *filter = NULL,
+		const gui::filter_textbox *filter = nullptr,
 		TYPE type = SHOW_ALL, bool left_side = true);
 
 private:
@@ -125,7 +125,7 @@ class unit_types_preview_pane : public dialogs::unit_preview_pane
 {
 public:
 	unit_types_preview_pane(
-			std::vector<const unit_type*>& unit_types, const gui::filter_textbox* filterbox=NULL,
+			std::vector<const unit_type*>& unit_types, const gui::filter_textbox* filterbox=nullptr,
 			int side = 1, TYPE type=SHOW_ALL, bool left_side=true);
 
 private:

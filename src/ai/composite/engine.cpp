@@ -31,7 +31,7 @@ static lg::log_domain log_ai_engine("ai/engine");
 
 engine::engine( readonly_context &context, const config &cfg )
 	: ai_(context)
-	, ai_context_(NULL)
+	, ai_context_(nullptr)
 	, engine_(cfg["engine"])
 	, id_(cfg["id"])
 	, name_(cfg["name"])

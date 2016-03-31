@@ -42,7 +42,7 @@ attack_type::attack_type(const config& cfg) :
 	self_loc_(),
 	other_loc_(),
 	is_attacker_(false),
-	other_attack_(NULL),
+	other_attack_(nullptr),
 	description_(cfg["description"].t_str()),
 	id_(cfg["name"]),
 	type_(cfg["type"]),
@@ -336,7 +336,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		return false;
 
 	// Did the caller want the description?
-	if(description != NULL) {
+	if(description != nullptr) {
 		const std::string& increase_damage = cfg["increase_damage"];
 		const std::string& set_damage = cfg["set_damage"];
 		const std::string& increase_attacks = cfg["increase_attacks"];

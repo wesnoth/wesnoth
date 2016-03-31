@@ -71,7 +71,7 @@ game_config_manager::game_config_manager(
 game_config_manager::~game_config_manager()
 {
 	assert(singleton);
-	singleton = NULL;
+	singleton = nullptr;
 }
 
 game_config_manager * game_config_manager::get() {
@@ -268,7 +268,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// If multiplayer campaign is being loaded, [scenario] tags should
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
-		if (classification != NULL) {
+		if (classification != nullptr) {
 			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
 			{
 				const bool require_campaign = campaign["require_campaign"].to_bool(true);
@@ -413,7 +413,7 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", NULL };
+			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", nullptr };
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{

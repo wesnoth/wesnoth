@@ -61,7 +61,7 @@ public:
 	void set_player_type_changed() { player_type_changed_ = true; }
 	virtual bool should_return_to_play_side();
 	replay_controller * get_replay_controller() { return replay_.get(); }
-	bool is_replay() { return get_replay_controller() != NULL; }
+	bool is_replay() { return get_replay_controller() != nullptr; }
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
 protected:

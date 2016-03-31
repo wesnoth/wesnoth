@@ -41,7 +41,7 @@ public:
 	mouse_action(common_palette& palette, const CKey& key)
 		: previous_move_hex_()
 		, key_(key)
-		, toolbar_button_(NULL)
+		, toolbar_button_(nullptr)
 		, palette_(palette)
 	{
 	}
@@ -105,12 +105,12 @@ public:
 
 	/**
 	 * Helper variable setter - pointer to a toolbar menu/button used for highlighting
-	 * the current action. Should always be NULL or point to a valid menu.
+	 * the current action. Should always be nullptr or point to a valid menu.
 	 */
 	void set_toolbar_button(const theme::menu* value) { toolbar_button_ = value; }
 
 	/**
-	 * Getter for the (possibly NULL) associated menu/button.
+	 * Getter for the (possibly nullptr) associated menu/button.
 	 */
 	const theme::menu* toolbar_button() const { return toolbar_button_; }
 
@@ -374,7 +374,7 @@ public:
 
 	/**
 	 * Left click displays a player-number-selector dialog and then creates an action
-	 * or returns NULL if cancel was pressed or there would be no change.
+	 * or returns nullptr if cancel was pressed or there would be no change.
 	 * Do this on mouse up to avoid drag issue.
 	 */
 	editor_action* up_left(editor_display& disp, int x, int y);

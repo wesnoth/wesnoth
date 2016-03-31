@@ -128,7 +128,7 @@ protected:
 		or error messages to appear, you have to provide the gui parameter.
 		The return value denotes, if the save was successful or not.
 	*/
-	bool save_game(CVideo* video = NULL, const std::string& filename = "");
+	bool save_game(CVideo* video = nullptr, const std::string& filename = "");
 
 	/** Sets the filename and removes invalid characters. Don't set the filename directly but
 		use this method instead. */

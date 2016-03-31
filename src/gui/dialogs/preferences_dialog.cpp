@@ -977,7 +977,7 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 	hotkey::hotkey_ptr oldhk;
 
 	// only if not cancelled.
-	if (newhk.get() == NULL) {
+	if (newhk.get() == nullptr) {
 		return;
 	}
 

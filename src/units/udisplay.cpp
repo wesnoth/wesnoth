@@ -130,7 +130,7 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
-			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
+			false,"",0,unit_animation::INVALID,nullptr,nullptr,step_left);
 	animator.start_animations();
 	animator.pause_animation();
 	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
@@ -204,7 +204,7 @@ unit_mover::~unit_mover()
  */
 void unit_mover::replace_temporary(unit_ptr u)
 {
-	if ( disp_ == NULL )
+	if ( disp_ == nullptr )
 		// No point in creating a temp unit with no way to display it.
 		return;
 
@@ -656,7 +656,7 @@ void unit_attack(display * disp, game_board & board,
 	int damage_left = damage;
 	bool extra_hit_sounds_played = false;
 	while(damage_left > 0 && !animator.would_end()) {
-		if(!extra_hit_sounds_played && extra_hit_sounds != NULL) {
+		if(!extra_hit_sounds_played && extra_hit_sounds != nullptr) {
 			BOOST_FOREACH (std::string hit_sound, *extra_hit_sounds) {
 				sound::play_sound(hit_sound);
 			}
@@ -801,8 +801,8 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	// We have found a unit that matches the filter
 	if (u && !resources::screen->fogged(u->get_location()))
 	{
-		attack_type *primary = NULL;
-		attack_type *secondary = NULL;
+		attack_type *primary = nullptr;
+		attack_type *secondary = nullptr;
 		Uint32 text_color;
 		unit_animation::hit_type hits=  unit_animation::INVALID;
 		std::vector<attack_type> attacks = u->attacks();

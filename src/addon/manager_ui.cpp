@@ -248,7 +248,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
 		gui::menu* addon_menu = new gui::menu(
 			v, options, false, -1,
-			gui::dialog::max_menu_width, NULL, &addon_style, false);
+			gui::dialog::max_menu_width, nullptr, &addon_style, false);
 		dlg.set_menu(addon_menu);
 
 		cursor_setter.reset();
@@ -431,7 +431,7 @@ public:
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
 	{
-		assert(filter_ != NULL);
+		assert(filter_ != nullptr);
 
 		const int menu_selection = filter_->get_index(filter_choice);
 		if(menu_selection < 0) { return gui::CONTINUE_DIALOG; }
@@ -526,7 +526,7 @@ struct addon_pointer_list_sorter
 	{}
 
 	inline bool operator()(const addons_list::value_type* a, const addons_list::value_type* b) {
-		assert(a != NULL && b != NULL);
+		assert(a != nullptr && b != nullptr);
 
 		if(dir_ == DIRECTION_DESCENDING) {
 			const addons_list::value_type* c = a;

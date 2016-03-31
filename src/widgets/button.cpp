@@ -55,9 +55,9 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  overlayImage_(), overlayPressedImage_(), overlayActiveImage_(),
 #else
 	  label_text_(label),
-	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
-	  disabledImage_(NULL), pressedDisabledImage_(NULL),
-	  overlayImage_(NULL), overlayPressedImage_(NULL), overlayActiveImage_(NULL),
+	  image_(nullptr), pressedImage_(nullptr), activeImage_(nullptr), pressedActiveImage_(nullptr),
+	  disabledImage_(nullptr), pressedDisabledImage_(nullptr),
+	  overlayImage_(nullptr), overlayPressedImage_(nullptr), overlayActiveImage_(nullptr),
 #endif
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
@@ -218,10 +218,10 @@ void button::load_images() {
 		if (overlayPressedDisabledImage_.null())
 			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
 	} else {
-		overlayImage_.assign(NULL);
+		overlayImage_.assign(nullptr);
 	}
 
-	if (disabled_image == NULL) {
+	if (disabled_image == nullptr) {
 		disabled_image = image::get_image(button_image_name_ + ".png~GS()" + button_image_path_suffix_);
 	}
 
@@ -312,7 +312,7 @@ void button::calculate_size()
 			int fs = font_size;
 			int style = TTF_STYLE_NORMAL;
 			std::string::const_iterator i_beg = label_text_.begin(), i_end = label_text_.end(),
-				i = font::parse_markup(i_beg, i_end, &fs, NULL, &style);
+				i = font::parse_markup(i_beg, i_end, &fs, nullptr, &style);
 			if (i != i_end) {
 				std::string tmp(i, i_end);
 				label_text_.erase(i - i_beg, i_end - i_beg);
@@ -322,7 +322,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::draw_text(NULL, screen_area(), font_size,
+		textRect_ = font::draw_text(nullptr, screen_area(), font_size,
 									font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
@@ -555,7 +555,7 @@ void button::draw_contents()
 		}
 
 		surface nimage = make_neutral_surface(image);
-		blit_surface(noverlay, NULL, nimage, NULL);
+		blit_surface(noverlay, nullptr, nimage, nullptr);
 		image = nimage;
 	}
 

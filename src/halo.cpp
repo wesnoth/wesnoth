@@ -145,14 +145,14 @@ halo_impl::effect::effect(display * screen, int xpos, int ypos, const animated<i
 	orientation_(orientation),
 	x_(xpos),
 	y_(ypos),
-	surf_(NULL),
-	buffer_(NULL),
+	surf_(nullptr),
+	buffer_(nullptr),
 	rect_(sdl::empty_rect),
 	loc_(loc),
 	overlayed_hexes_(),
 	disp(screen)
 {
-	assert(disp != NULL);
+	assert(disp != nullptr);
 
 	set_location(xpos,ypos);
 
@@ -167,14 +167,14 @@ void halo_impl::effect::set_location(int x, int y)
 	if (new_x != x_ || new_y != y_) {
 		x_ = new_x;
 		y_ = new_y;
-		buffer_.assign(NULL);
+		buffer_.assign(nullptr);
 		overlayed_hexes_.clear();
 	}
 }
 
 bool halo_impl::effect::render()
 {
-	if(disp == NULL) {
+	if(disp == nullptr) {
 		return false;
 	}
 
@@ -197,7 +197,7 @@ bool halo_impl::effect::render()
 
 	images_.update_last_draw_time();
 	surf_.assign(image::get_image(current_image(),image::SCALED_TO_ZOOM));
-	if(surf_ == NULL) {
+	if(surf_ == nullptr) {
 		return false;
 	}
 	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
@@ -228,22 +228,22 @@ bool halo_impl::effect::render()
 	}
 
 	if(sdl::rects_overlap(rect,clip_rect) == false) {
-		buffer_.assign(NULL);
+		buffer_.assign(nullptr);
 		return false;
 	}
 
 	surface& screen = disp->get_screen_surface();
 
 	const clip_rect_setter clip_setter(screen, &clip_rect);
-	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
+	if(buffer_ == nullptr || buffer_->w != rect.w || buffer_->h != rect.h) {
 		SDL_Rect rect = rect_;
 		buffer_.assign(get_surface_portion(screen,rect));
 	} else {
 		SDL_Rect rect = rect_;
-		sdl_copy_portion(screen,&rect,buffer_,NULL);
+		sdl_copy_portion(screen,&rect,buffer_,nullptr);
 	}
 
-	sdl_blit(surf_,NULL,screen,&rect);
+	sdl_blit(surf_,nullptr,screen,&rect);
 
 	update_rect(rect_);
 
@@ -279,7 +279,7 @@ void halo_impl::effect::unrender()
 	const int ypos = y_ + screeny - surf_->h/2;
 
 	SDL_Rect rect = sdl::create_rect(xpos, ypos, surf_->w, surf_->h);
-	sdl_blit(buffer_,NULL,screen,&rect);
+	sdl_blit(buffer_,nullptr,screen,&rect);
 	update_rect(rect);
 }
 

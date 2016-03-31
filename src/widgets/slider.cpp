@@ -155,7 +155,7 @@ void slider::draw_contents()
 			break;
 	}
 
-	assert(image != NULL);
+	assert(image != nullptr);
 
 	SDL_Color line_color = line_color_;
 	if (!enabled()) {
@@ -272,7 +272,7 @@ bool slider::requires_event_focus(const SDL_Event* event) const
 	if(!focus_ || !enabled() || hidden()) {
 		return false;
 	}
-	if(event == NULL) {
+	if(event == nullptr) {
 		//when event is not specified, signal that focus may be desired later
 		return true;
 	}

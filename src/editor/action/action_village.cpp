@@ -33,10 +33,10 @@ editor_action* editor_action_village::perform(map_context& mc) const
 {
 	std::unique_ptr<editor_action> undo;
 
-	if(!mc.get_map().is_village(loc_)) return NULL;
+	if(!mc.get_map().is_village(loc_)) return nullptr;
 	std::vector<team>& teams = mc.get_teams();
-	team *t = unsigned(side_number_) < teams.size() ? &teams[side_number_] : NULL;
-	if (t && t->owns_village(loc_))	return NULL;
+	team *t = unsigned(side_number_) < teams.size() ? &teams[side_number_] : nullptr;
+	if (t && t->owns_village(loc_))	return nullptr;
 
 	undo.reset(new editor_action_village_delete(loc_));
 
@@ -58,7 +58,7 @@ void editor_action_village::perform_without_undo(map_context& mc) const
 	}
 
 	//TODO 0 is a bad argument
-	teams[side_number_].get_village(loc_, 0, NULL);
+	teams[side_number_].get_village(loc_, 0, nullptr);
 }
 
 

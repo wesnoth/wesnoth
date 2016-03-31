@@ -64,8 +64,8 @@ tlistbox::tlistbox(const bool has_minimum,
 	: tscrollbar_container(2) // FIXME magic number
 	, generator_(tgenerator_::build(has_minimum, has_maximum, placement, select))
 	, is_horizonal_(placement == tgenerator_::horizontal_list)
-	, list_builder_(NULL)
-	, callback_value_changed_(NULL)
+	, list_builder_(nullptr)
+	, callback_value_changed_()
 	, need_layout_(false)
 	, orders_()
 {
@@ -506,7 +506,7 @@ void swap_grid(tgrid* grid,
 	widget->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = NULL;
+	tgrid* parent_grid = nullptr;
 	if(grid) {
 		parent_grid = find_widget<tgrid>(grid, id, false, false);
 	}
@@ -553,7 +553,7 @@ void tlistbox::finalize(tbuilder_grid_const_ptr header,
 
 	generator_->create_items(
 			-1, list_builder_, list_data, callback_list_item_clicked);
-	swap_grid(NULL, content_grid(), generator_, "_list_grid");
+	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
 }
 namespace {
 	bool default_sort(unsigned i1, unsigned i2)
@@ -570,7 +570,7 @@ void tlistbox::order_by_column(unsigned column, twidget& widget)
 	}
 	FOREACH(AUTO& pair, orders_)
 	{
-		if(pair.first != NULL && pair.first != &selectable) {
+		if(pair.first != nullptr && pair.first != &selectable) {
 			pair.first->set_value(0);
 		}
 	}
@@ -723,7 +723,7 @@ tlistbox_definition::tlistbox_definition(const config& cfg)
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
 tlistbox_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(NULL)
+	: tresolution_definition_(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum tstate in listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -839,9 +839,9 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, header(NULL)
-	, footer(NULL)
-	, list_builder(NULL)
+	, header(nullptr)
+	, footer(nullptr)
+	, list_builder(nullptr)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
@@ -1018,7 +1018,7 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, list_builder(NULL)
+	, list_builder(nullptr)
 	, list_data()
 {
 	const config& l = cfg.child("list_definition");
@@ -1085,7 +1085,7 @@ twidget* tbuilder_horizontal_listbox::build() const
 
 	widget->init_grid(conf->grid);
 
-	widget->finalize(NULL, NULL, list_data);
+	widget->finalize(nullptr, nullptr, list_data);
 
 	return widget;
 #endif

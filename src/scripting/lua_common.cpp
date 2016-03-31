@@ -380,7 +380,7 @@ std::string register_gettext_metatable(lua_State *L)
 
 	static luaL_Reg const callbacks[] = {
 		{ "__call", 	    &impl_gettext},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 
@@ -404,7 +404,7 @@ std::string register_tstring_metatable(lua_State *L)
 		{ "__lt",	        &impl_tstring_lt},
 		{ "__le",	        &impl_tstring_le},
 		{ "__eq",	        &impl_tstring_eq},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 
@@ -427,7 +427,7 @@ std::string register_vconfig_metatable(lua_State *L)
 		{ "__len",          &impl_vconfig_size},
 		{ "__pairs",        &impl_vconfig_pairs},
 		{ "__ipairs",       &impl_vconfig_ipairs},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 

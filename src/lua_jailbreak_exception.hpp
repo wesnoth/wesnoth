@@ -70,7 +70,7 @@ private:
 	 *
 	 * @note it's implemented by the subclass to avoid slicing.
 	 *
-	 * @pre                       jailbreak_exception != NULL
+	 * @pre                       jailbreak_exception != nullptr
 	 */
 	virtual void execute() = 0;
 };

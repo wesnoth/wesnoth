@@ -1181,7 +1181,7 @@ void timage::draw(surface& canvas,
 					for(int y = 0; y < rows; ++y) {
 						const SDL_Rect dest = sdl::create_rect(
 								x * image_->w, y * image_->h, 0, 0);
-						blit_surface(image_, NULL, surf, &dest);
+						blit_surface(image_, nullptr, surf, &dest);
 					}
 				}
 
@@ -1512,11 +1512,11 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 			SDL_Rect r = rect;
 			surface s = get_surface_portion(surf, r);
 			s = blur_surface(s, blur_depth_, false);
-			sdl_blit(s, NULL, surf, &rect);
+			sdl_blit(s, nullptr, surf, &rect);
 		}
 	}
 
-	sdl_blit(canvas_, NULL, surf, &rect);
+	sdl_blit(canvas_, nullptr, surf, &rect);
 }
 
 void tcanvas::parse_cfg(const config& cfg)

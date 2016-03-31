@@ -45,8 +45,8 @@ ttree_view_node::ttree_view_node(
 	, grid_()
 	, children_()
 	, node_definitions_(node_definitions)
-	, toggle_(NULL)
-	, label_(NULL)
+	, toggle_(nullptr)
+	, label_(nullptr)
 	, unfolded_(false)
 	, callback_state_change_()
 	, callback_state_to_folded_()
@@ -130,7 +130,7 @@ ttree_view_node::ttree_view_node(
 ttree_view_node::~ttree_view_node()
 {
 	if(/*tree_view() &&*/ tree_view().selected_item_ == this) {
-		tree_view().selected_item_ = NULL;
+		tree_view().selected_item_ = nullptr;
 	}
 }
 
@@ -312,7 +312,7 @@ private:
 				return widget;
 			}
 		}
-		return NULL;
+		return nullptr;
 	}
 
 public:
@@ -329,7 +329,7 @@ public:
 		}
 
 		if(tree_view_node.is_folded()) {
-			return NULL;
+			return nullptr;
 		}
 
 		return find_at_aux<W>(tree_view_node.children_.begin(),
@@ -732,11 +732,11 @@ ttree_view_node* ttree_view_node::get_last_visible_parent_node()
 ttree_view_node* ttree_view_node::get_node_above()
 {
 	assert(!is_root_node());
-	ttree_view_node* cur = NULL;
+	ttree_view_node* cur = nullptr;
 	for(size_t i = 0; i < parent_node_->size(); ++i) {
 		if(&parent_node_->children_[i] == this) {
 			if(i == 0) {
-				return parent_node_->is_root_node() ? NULL : parent_node_;
+				return parent_node_->is_root_node() ? nullptr : parent_node_;
 			}
 			else {
 				cur = &parent_node_->children_[i - 1];
@@ -757,7 +757,7 @@ ttree_view_node* ttree_view_node::get_node_below()
 		return &get_child_at(0);
 	}
 	ttree_view_node* cur = this;
-	while(cur->parent_node_ != NULL) {
+	while(cur->parent_node_ != nullptr) {
 		ttree_view_node& parent = *cur->parent_node_;
 
 		for(size_t i = 0; i < parent.size(); ++i) {
@@ -772,14 +772,14 @@ ttree_view_node* ttree_view_node::get_node_below()
 			}
 		}	
 	}
-	return NULL;
+	return nullptr;
 }
 ttree_view_node* ttree_view_node::get_selectable_node_above()
 {
 	ttree_view_node* above = this;
 	do {
 		above = above->get_node_above();
-	} while(above != NULL && above->label_ == NULL);
+	} while(above != nullptr && above->label_ == nullptr);
 	return above;
 }
 ttree_view_node* ttree_view_node::get_selectable_node_below()
@@ -787,7 +787,7 @@ ttree_view_node* ttree_view_node::get_selectable_node_below()
 	ttree_view_node* below = this;
 	do {
 		below = below->get_node_below();
-	} while(below != NULL && below->label_ == NULL);
+	} while(below != nullptr && below->label_ == nullptr);
 	return below;
 
 }

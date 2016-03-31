@@ -165,7 +165,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 	int index = 1;
 
 	ai::readonly_context &context = get_readonly_context(L);
-	unit* leader = NULL;
+	unit* leader = nullptr;
 	if (lua_isuserdata(L, index))
 	{
 		leader = luaW_tounit(L, index);
@@ -820,7 +820,7 @@ static int impl_ai_aspect_get(lua_State* L)
 		(void) aspect;
 	} else if(typesafe_aspect<unit_advancements_aspect>* aspect = try_aspect_as<unit_advancements_aspect>(iter->second)) {
 		const unit_advancements_aspect& val = aspect->get();
-		int my_side = luaW_getglobal(L, "ai", "side", NULL) - 1;
+		int my_side = luaW_getglobal(L, "ai", "side", nullptr) - 1;
 		lua_newtable(L);
 		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if (!u.valid() || u->side() != my_side) {
@@ -911,7 +911,7 @@ static int impl_ai_get(lua_State* L)
 			{ "check_recruit", &cfun_ai_check_recruit },
 			//{ "",},
 			//{ "",},
-			{ NULL, NULL } };
+			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = callbacks; p->name; ++p) {
 		if(m == p->name) {
 			lua_pushlightuserdata(L, &engine); // [-1: engine  ...]
@@ -940,7 +940,7 @@ static int impl_ai_get(lua_State* L)
 			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
 			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
 			{ "synced_command", &cfun_ai_execute_synced_command },
-			{ NULL, NULL } };
+			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
 		if(m == p->name) {
 			lua_pushlightuserdata(L, &engine);
@@ -985,7 +985,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		char const *m = lua_tostring(L, -1);
 		ERR_LUA << "error while initializing ai:  " <<m << '\n';
 		lua_pop(L, 2);//return with stack size 0 []
-		return NULL;
+		return nullptr;
 	}
 	//push data table here
 	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
@@ -1027,7 +1027,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 		char const *m = lua_tostring(L, -1);
 		ERR_LUA << "error while creating ai function:  " <<m << '\n';
 		lua_pop(L, 2);//return with stack size 0 []
-		return NULL;
+		return nullptr;
 	}
 
 	// Retrieve the ai elements table from the registry.

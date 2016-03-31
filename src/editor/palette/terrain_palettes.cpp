@@ -166,11 +166,11 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 		const std::string base_filename = map().get_terrain_info(base_terrain).editor_image();
 		surface base_image(image::get_image(base_filename));
 
-		if(base_image == NULL) {
+		if(base_image == nullptr) {
 			tooltip_text << "BASE IMAGE NOT FOUND\n";
 			ERR_ED << "image for terrain : '" << base_filename << "' not found" << std::endl;
 			base_image = image::get_image(game_config::images::missing);
-			if (base_image == NULL) {
+			if (base_image == nullptr) {
 				ERR_ED << "Placeholder image not found" << std::endl;
 				return;
 			}
@@ -184,11 +184,11 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 
 	const std::string filename = map().get_terrain_info(terrain).editor_image();
 	image = image::get_image(filename);
-	if(image == NULL) {
+	if(image == nullptr) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for terrain: '" << filename << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == NULL) {
+		if (image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}

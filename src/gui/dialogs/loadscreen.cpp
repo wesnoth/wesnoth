@@ -31,14 +31,14 @@ namespace gui2
 REGISTER_DIALOG(loadscreen)
 
 tloadscreen::tloadscreen(boost::function<void()> f)
-	: window_(NULL)
+	: window_(nullptr)
 	, timer_id_(0)
 	, animation_counter_(0)
 	, work_(f)
 	, worker_()
 	, cursor_setter_()
-	, current_stage_(NULL)
-	, current_visible_stage_(NULL)
+	, current_stage_(nullptr)
+	, current_visible_stage_(nullptr)
 {
 	current_load = this;
 }
@@ -48,7 +48,7 @@ void tloadscreen::close()
 	if(window_) {
 		window_->undraw();
 		delete window_;
-		window_ = NULL;
+		window_ = nullptr;
 	}
 }
 
@@ -85,7 +85,7 @@ void tloadscreen::progress(const char* stage)
 	}
 }
 
-tloadscreen* tloadscreen::current_load = NULL;
+tloadscreen* tloadscreen::current_load = nullptr;
 
 void tloadscreen::timer_callback(twindow& window)
 {
@@ -109,7 +109,7 @@ void tloadscreen::timer_callback(twindow& window)
 tloadscreen::~tloadscreen()
 {
 	close();
-	current_load = NULL;
+	current_load = nullptr;
 }
 
 void tloadscreen::display(CVideo& video, boost::function<void()> f)

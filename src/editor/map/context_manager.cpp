@@ -140,7 +140,7 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 	, game_config_(game_config)
 	, default_dir_(preferences::editor::default_dir())
 	, map_generators_()
-	, last_map_generator_(NULL)
+	, last_map_generator_(nullptr)
 	, current_context_index_(0)
 	, auto_update_transitions_(preferences::editor::auto_update_transitions())
 	, map_contexts_()
@@ -415,7 +415,7 @@ void context_manager::expand_time_menu(std::vector<std::string>& items)
 
 			tod_manager* tod_m = get_map_context().get_time_manager();
 
-			assert(tod_m != NULL);
+			assert(tod_m != nullptr);
 
 			BOOST_FOREACH(const time_of_day& time, tod_m->times()) {
 

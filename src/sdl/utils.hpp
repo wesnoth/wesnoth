@@ -55,21 +55,21 @@ struct surface
 private:
 	static void sdl_add_ref(SDL_Surface *surf)
 	{
-		if (surf != NULL)
+		if (surf != nullptr)
 			++surf->refcount;
 	}
 
 	struct free_sdl_surface {
 		void operator()(SDL_Surface *surf) const
 		{
-			if (surf != NULL)
+			if (surf != nullptr)
 				 SDL_FreeSurface(surf);
 		}
 	};
 
 	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 public:
-	surface() : surface_(NULL)
+	surface() : surface_(nullptr)
 	{}
 
 	surface(SDL_Surface *surf) : surface_(surf)
@@ -101,7 +101,7 @@ public:
 
 	void assign(SDL_Surface* surf) { surface_.assign(surf); }
 
-	bool null() const { return surface_.get() == NULL; }
+	bool null() const { return surface_.get() == nullptr; }
 
 private:
 	scoped_sdl_surface surface_;
@@ -269,7 +269,7 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
 surface brighten_image(const surface &surf, fixed_t amount, bool optimize=true);
 
 /** Get a portion of the screen.
- *  Send NULL if the portion is outside of the screen.
+ *  Send nullptr if the portion is outside of the screen.
  *  @param surf              The source surface.
  *  @param rect              The portion of the source surface to copy.
  *  @return                  A surface containing the portion of the source.
@@ -282,7 +282,7 @@ surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize=
 surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize=true);
 
 /** Applies a mask on a surface. */
-surface mask_surface(const surface &surf, const surface &mask, bool* empty_result = NULL, const std::string& filename = std::string());
+surface mask_surface(const surface &surf, const surface &mask, bool* empty_result = nullptr, const std::string& filename = std::string());
 
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface &surf, const surface &mask);
@@ -491,7 +491,7 @@ private:
 
 struct clip_rect_setter
 {
-	// if r is NULL, clip to the full size of the surface.
+	// if r is nullptr, clip to the full size of the surface.
 	clip_rect_setter(const surface &surf, const SDL_Rect* r, bool operate = true) : surface_(surf), rect_(), operate_(operate)
 	{
 		if(operate_){

@@ -46,7 +46,7 @@
 #ifdef NDEBUG
 /*
  * Wesnoth uses asserts to avoid undefined behaviour. For example, to make sure
- * pointers are not NULL before deferring them, or collections are not empty
+ * pointers are not nullptr before deferring them, or collections are not empty
  * before accessing their elements. Therefore Wesnoth should not be compiled
  * with assertions disabled.
  */

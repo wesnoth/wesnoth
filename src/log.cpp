@@ -50,7 +50,7 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 
 static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
-static std::ostream *output_stream = NULL;
+static std::ostream *output_stream = nullptr;
 
 static std::ostream& output()
 {
@@ -110,7 +110,7 @@ log_domain& general()
 }
 
 log_domain::log_domain(char const *name)
-	: domain_(NULL)
+	: domain_(nullptr)
 {
 	// Indirection to prevent initialization depending on link order.
 	if (!domains) domains = new domain_map;
@@ -219,7 +219,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 			if(precise_timestamp) {
 				print_precise_timestamp(stream);
 			} else {
-				stream << get_timestamp(time(NULL));
+				stream << get_timestamp(time(nullptr));
 			}
 		}
 		if (show_names) {
@@ -243,7 +243,7 @@ void scope_logger::do_log_exit()
 	const int ticks = SDL_GetTicks() - ticks_;
 	--indent;
 	do_indent();
-	if (timestamp) (*output_) << get_timestamp(time(NULL));
+	if (timestamp) (*output_) << get_timestamp(time(nullptr));
 	(*output_) << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 

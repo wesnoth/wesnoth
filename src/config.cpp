@@ -349,7 +349,7 @@ t_string config::attribute_value::t_str() const
  */
 bool config::attribute_value::blank() const
 {
-	return boost::get<const boost::blank>(&value_) != NULL;
+	return boost::get<const boost::blank>(&value_) != nullptr;
 }
 
 /**
@@ -881,7 +881,7 @@ const config::attribute_value *config::get(const std::string &key) const
 {
 	check_valid();
 	attribute_map::const_iterator i = values.find(key);
-	return i != values.end() ? &i->second : NULL;
+	return i != values.end() ? &i->second : nullptr;
 }
 
 config::attribute_value &config::operator[](const std::string &key)
@@ -985,7 +985,7 @@ namespace {
 	struct config_clear_state
 	{
 		config_clear_state()
-			: c(NULL)
+			: c(nullptr)
 			, mi()
 			, vi(0)
 		{
@@ -1090,14 +1090,14 @@ void config::get_diff(const config& c, config& res) const
 	check_valid(c);
 	check_valid(res);
 
-	config* inserts = NULL;
+	config* inserts = nullptr;
 
 	attribute_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
 		if(i->second.blank()) continue;
 		const attribute_map::const_iterator j = c.values.find(i->first);
 		if(j == c.values.end() || (i->second != j->second && !i->second.blank() )) {
-			if(inserts == NULL) {
+			if(inserts == nullptr) {
 				inserts = &res.add_child("insert");
 			}
 
@@ -1105,13 +1105,13 @@ void config::get_diff(const config& c, config& res) const
 		}
 	}
 
-	config* deletes = NULL;
+	config* deletes = nullptr;
 
 	for(i = c.values.begin(); i != c.values.end(); ++i) {
 		if(i->second.blank()) continue;
 		const attribute_map::const_iterator itor = values.find(i->first);
 		if(itor == values.end() || itor->second.blank()) {
-			if(deletes == NULL) {
+			if(deletes == nullptr) {
 				deletes = &res.add_child("delete");
 			}
 

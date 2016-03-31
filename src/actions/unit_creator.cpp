@@ -140,7 +140,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
-				                       pass ? pass_check : NULL, NULL, board_);
+				                       pass ? pass_check : nullptr, nullptr, board_);
 			}
 			if(loc.valid() && board_->map().on_board(loc)) {
 				return loc;
@@ -205,7 +205,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		preferences::encountered_units().insert(new_unit.type_id());
 	}
 
-	bool show = show_ && (resources::screen !=NULL) && !resources::screen->fogged(loc);
+	bool show = show_ && (resources::screen !=nullptr) && !resources::screen->fogged(loc);
 	bool animate = show && anim;
 
 	if (get_village_) {
@@ -216,11 +216,11 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 	}
 
 	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
-	if (resources::lua_kernel != NULL) {
+	if (resources::lua_kernel != nullptr) {
 		resources::game_events->pump().fire("unit placed", loc);
 	}
 
-	if (resources::screen!=NULL) {
+	if (resources::screen!=nullptr) {
 
 		if (invalidate_ ) {
 			resources::screen->invalidate(loc);

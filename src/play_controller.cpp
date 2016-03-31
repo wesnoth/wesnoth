@@ -125,24 +125,24 @@ static void copy_persistent(const config& src, config& dst)
 
 static void clear_resources()
 {
-	resources::controller = NULL;
-	resources::filter_con = NULL;
-	resources::gameboard = NULL;
-	resources::gamedata = NULL;
-	resources::game_events = NULL;
-	resources::lua_kernel = NULL;
-	resources::persist = NULL;
-	resources::screen = NULL;
-	resources::soundsources = NULL;
-	resources::teams = NULL;
-	resources::tod_manager = NULL;
-	resources::tunnels = NULL;
-	resources::undo_stack = NULL;
-	resources::recorder = NULL;
-	resources::units = NULL;
+	resources::controller = nullptr;
+	resources::filter_con = nullptr;
+	resources::gameboard = nullptr;
+	resources::gamedata = nullptr;
+	resources::game_events = nullptr;
+	resources::lua_kernel = nullptr;
+	resources::persist = nullptr;
+	resources::screen = nullptr;
+	resources::soundsources = nullptr;
+	resources::teams = nullptr;
+	resources::tod_manager = nullptr;
+	resources::tunnels = nullptr;
+	resources::undo_stack = nullptr;
+	resources::recorder = nullptr;
+	resources::units = nullptr;
 	resources::whiteboard.reset();
-	resources::classification = NULL;
-	resources::mp_settings = NULL;
+	resources::classification = nullptr;
+	resources::mp_settings = nullptr;
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
@@ -162,8 +162,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, plugins_context_()
 	, labels_manager_()
 	, help_manager_(&game_config)
-	, mouse_handler_(NULL, *this)
-	, menu_handler_(NULL, *this, game_config)
+	, mouse_handler_(nullptr, *this)
+	, menu_handler_(nullptr, *this, game_config)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()
@@ -315,16 +315,16 @@ void play_controller::init(CVideo& video, const config& level)
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
-	resources::gameboard = NULL;
-	resources::gamedata = NULL;
-	resources::teams = NULL;
-	resources::tod_manager = NULL;
-	resources::units = NULL;
-	resources::filter_con = NULL;
-	resources::lua_kernel = NULL;
-	resources::game_events = NULL;
-	resources::tunnels = NULL;
-	resources::undo_stack = NULL;
+	resources::gameboard = nullptr;
+	resources::gamedata = nullptr;
+	resources::teams = nullptr;
+	resources::tod_manager = nullptr;
+	resources::units = nullptr;
+	resources::filter_con = nullptr;
+	resources::lua_kernel = nullptr;
+	resources::game_events = nullptr;
+	resources::tunnels = nullptr;
+	resources::undo_stack = nullptr;
 
 	gamestate_.reset(new game_state(level, *this, tdata_));
 	resources::gameboard = &gamestate().board_;

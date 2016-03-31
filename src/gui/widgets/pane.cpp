@@ -58,7 +58,7 @@ struct tpane_implementation
 		 * First test whether the mouse is at the pane.
 		 */
 		if(pane->twidget::find_at(coordinate, must_be_active) != pane) {
-			return NULL;
+			return nullptr;
 		}
 
 		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
@@ -82,7 +82,7 @@ struct tpane_implementation
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	/**
@@ -104,7 +104,7 @@ struct tpane_implementation
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 };
 
@@ -262,7 +262,7 @@ iterator::twalker_* tpane::create_walker()
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
 
 tgrid* tpane::grid(const unsigned id)

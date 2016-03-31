@@ -158,7 +158,7 @@ namespace lua_team {
 		static luaL_Reg const callbacks[] = {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
-			{ NULL, NULL }
+			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, callbacks, 0);
 

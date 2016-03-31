@@ -44,10 +44,10 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	, need_layout_(false)
 	, root_node_(new ttree_view_node("root",
 									 node_definitions_,
-									 NULL,
+									 nullptr,
 									 *this,
 									 std::map<std::string, string_map>()))
-	, selected_item_(NULL)
+	, selected_item_(nullptr)
 	, selection_change_callback_()
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -193,7 +193,7 @@ ttree_view_node* ttree_view::get_next_node()
 {	
 	ttree_view_node* selected = selected_item();
 	if(!selected) {
-		return NULL;
+		return nullptr;
 	}
 	ttree_view_node* visible = selected->get_last_visible_parent_node();
 	if(visible != selected) {
@@ -297,7 +297,7 @@ ttree_view_definition::ttree_view_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  */
 ttree_view_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(NULL)
+	: tresolution_definition_(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum tstate is listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -418,7 +418,7 @@ twidget* tbuilder_tree_view::build() const
 ttree_node::ttree_node(const config& cfg)
 	: id(cfg["id"])
 	, unfolded(cfg["unfolded"].to_bool(false))
-	, builder(NULL)
+	, builder(nullptr)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 

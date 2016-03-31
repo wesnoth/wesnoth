@@ -163,7 +163,7 @@ MD5::uint1 *MD5::raw_digest()
   if (!finalized){
     std::cerr << "MD5::raw_digest:  Can't get digest if you haven't "<<
       "finalized the digest!" <<std::endl;
-    return NULL;
+    return nullptr;
   }
 
   memcpy(s, digest, 16);

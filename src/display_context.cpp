@@ -54,10 +54,10 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 
 const unit * display_context::get_visible_unit(const map_location & loc, const team &current_team, bool see_all) const
 {
-	if (!map().on_board(loc)) return NULL;
+	if (!map().on_board(loc)) return nullptr;
 	const unit_map::const_iterator u = units().find(loc);
 	if (!u.valid() || !u->is_visible_to_team(current_team, map(), see_all)) {
-		return NULL;
+		return nullptr;
 	}
 	return &*u;
 }

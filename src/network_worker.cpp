@@ -147,8 +147,8 @@ socket_stats_map transfer_stats; // stats_mutex
 
 int socket_errors[NUM_SHARDS];
 threading::mutex* shard_mutexes[NUM_SHARDS];
-threading::mutex* stats_mutex = NULL;
-threading::mutex* received_mutex = NULL;
+threading::mutex* stats_mutex = nullptr;
+threading::mutex* received_mutex = nullptr;
 threading::condition* cond[NUM_SHARDS];
 
 std::map<Uint32,threading::thread*> threads[NUM_SHARDS];
@@ -260,7 +260,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 					struct timeval tv;
 					tv.tv_sec = select_timeout/1000;
 					tv.tv_usec = select_timeout % 1000 * 1000;
-					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
+					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, nullptr, nullptr, &tv);
 					DBG_NW << "select retval: " << retval << ", timeout idle " << timeout_ms
 						<< " total " << total_timeout_ms << " (ms)\n";
 					if(retval == 0) {
@@ -417,7 +417,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 			tv.tv_usec = 0;
 
 			do {
-				retval = select(((_TCPsocket*)sock)->channel + 1, NULL, &writefds, NULL, &tv);
+				retval = select(((_TCPsocket*)sock)->channel + 1, nullptr, &writefds, nullptr, &tv);
 			} while(retval == -1 && errno == EINTR);
 
 			if(retval > 0)
@@ -624,10 +624,10 @@ static int process_queue(void* shard_num)
 	DBG_NW << "thread started...\n";
 	for(;;) {
 
-		//if we find a socket to send data to, sent_buf will be non-NULL. If we find a socket
-		//to receive data from, sent_buf will be NULL. 'sock' will always refer to the socket
+		//if we find a socket to send data to, sent_buf will be non-nullptr. If we find a socket
+		//to receive data from, sent_buf will be nullptr. 'sock' will always refer to the socket
 		//that data is being sent to/received from
-		TCPsocket sock = NULL;
+		TCPsocket sock = nullptr;
 		buffer* sent_buf = 0;
 
 		{
@@ -661,7 +661,7 @@ static int process_queue(void* shard_num)
 					}
 				}
 
-				if(sock == NULL) {
+				if(sock == nullptr) {
 					receive_list::iterator itor = pending_receives[shard].begin(), itor_end = pending_receives[shard].end();
 					for(; itor != itor_end; ++itor) {
 						socket_state_map::iterator lock_it = sockets_locked[shard].find(*itor);
@@ -675,7 +675,7 @@ static int process_queue(void* shard_num)
 					}
 				}
 
-				if(sock != NULL) {
+				if(sock != nullptr) {
 					break;
 				}
 
@@ -816,9 +816,9 @@ manager::~manager()
 			// Have to clean up to_clear so no bogus clearing of threads
 			to_clear[shard].clear();
  			delete cond[shard];
- 			cond[shard] = NULL;
+ 			cond[shard] = nullptr;
 			delete shard_mutexes[shard];
- 			shard_mutexes[shard] = NULL;
+ 			shard_mutexes[shard] = nullptr;
  		}
 
 		delete stats_mutex;
@@ -880,7 +880,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, network::bandwidth_in_p
 	assert(!raw_data_only);
 	const threading::lock lock_received(*received_mutex);
 	received_queue::iterator itor = received_data_queue.begin();
-	if(sock != NULL) {
+	if(sock != nullptr) {
 		for(; itor != received_data_queue.end(); ++itor) {
 			if((*itor)->sock == sock) {
 				break;
@@ -889,7 +889,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, network::bandwidth_in_p
 	}
 
 	if(itor == received_data_queue.end()) {
-		return NULL;
+		return nullptr;
 	} else if (!(*itor)->config_error.empty()){
 		// throw the error in parent thread
 		std::string error = (*itor)->config_error;
@@ -914,7 +914,7 @@ TCPsocket get_received_data(std::vector<char>& out)
 	assert(raw_data_only);
 	const threading::lock lock_received(*received_mutex);
 	if(received_data_queue.empty()) {
-		return NULL;
+		return nullptr;
 	}
 
 	buffer* buf = received_data_queue.front();

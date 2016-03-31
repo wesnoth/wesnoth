@@ -39,7 +39,7 @@ public:
 	/** Default construct a unit animation component corresponding to a unit. */
 	unit_animation_component(unit & my_unit) :
 		u_(my_unit),
-		anim_(NULL),
+		anim_(nullptr),
 		animations_(),
 		state_(STATE_STANDING),
 		next_idling_(0),
@@ -51,7 +51,7 @@ public:
 	/** Copy construct a unit animation component, for use when copy constructing a unit. */
 	unit_animation_component(unit & my_unit, const unit_animation_component & o) :
 		u_(my_unit),
-		anim_(NULL),
+		anim_(nullptr),
 		animations_(o.animations_),
 		state_(o.state_),
 		next_idling_(0),
@@ -66,7 +66,7 @@ public:
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,
 			const unit_animation::hit_type hit_type = unit_animation::INVALID,
-			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
+			const attack_type* attack=nullptr,const attack_type* second_attack = nullptr,
 			int swing_num =0);
 
 	/** Sets the animation state to standing. */
@@ -99,7 +99,7 @@ public:
 	void clear_haloes();
 
 	/** Resets the animations list after the unit is advanced. */
-	void reset_after_advance(const unit_type * newtype = NULL);
+	void reset_after_advance(const unit_type * newtype = nullptr);
 
 	/** Adds an animation described by a config. Uses an internal cache to avoid redoing work. */
 	void apply_new_animation_effect(const config & effect);

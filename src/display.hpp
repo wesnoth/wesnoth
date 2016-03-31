@@ -81,7 +81,7 @@ public:
 			reports & reports_object,
 			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
-	/// Returns the display object if a display object exists. Otherwise it returns NULL.
+	/// Returns the display object if a display object exists. Otherwise it returns nullptr.
 	/// the display object represents the game gui which handles themewml and drawing the map.
 	/// A display object only exists during a game or while the mapeditor is running.
 	static display* get_singleton() { return singleton_ ;}
@@ -165,8 +165,8 @@ public:
 	void change_display_context(const display_context * dc);
 	const display_context & get_disp_context() const { return *dc_; }
 	virtual const tod_manager & get_tod_man() const; //!< This is implemented properly in game_display. The display:: impl could be pure virtual here but we decide not to.
-	virtual const game_data * get_game_data() const { return NULL; }
-	virtual game_lua_kernel * get_lua_kernel() const { return NULL; } //!< TODO: display should not work as a filter context, this was only done for expedience so that the unit animation code can have a convenient and correct filter context readily available. a more correct solution is most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to store filter contexts with animations, because animations are cached across scenarios.) Note that after these lines which return NULL, unit filters used in animations will not be able to make use of wml variables or lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the script.)
+	virtual const game_data * get_game_data() const { return nullptr; }
+	virtual game_lua_kernel * get_lua_kernel() const { return nullptr; } //!< TODO: display should not work as a filter context, this was only done for expedience so that the unit animation code can have a convenient and correct filter context readily available. a more correct solution is most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to store filter contexts with animations, because animations are cached across scenarios.) Note that after these lines which return nullptr, unit filters used in animations will not be able to make use of wml variables or lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the script.)
 
 	void reset_halo_manager();
 	void reset_halo_manager(halo::manager & hm);
@@ -386,7 +386,7 @@ public:
 	/**
 	 * Retrieves a pointer to a theme UI button.
 	 *
-	 * @note The returned pointer may either be NULL, meaning the button
+	 * @note The returned pointer may either be nullptr, meaning the button
 	 *       isn't defined by the current theme, or point to a valid
 	 *       gui::button object. However, the objects retrieved will be
 	 *       destroyed and recreated by draw() method calls. Do *NOT* store
@@ -406,7 +406,7 @@ public:
 
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(std::string const &report_name, const config * new_cfg=NULL);
+	void refresh_report(std::string const &report_name, const config * new_cfg=nullptr);
 
 	void draw_minimap_units();
 
@@ -458,7 +458,7 @@ public:
 		{ mouseover_hex_overlay_ = image; }
 
 	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_ = NULL; }
+		{ mouseover_hex_overlay_ = nullptr; }
 #endif
 
 	/**
@@ -619,7 +619,7 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; }
+	void recalculate_minimap() {minimap_ = nullptr; redrawMinimap_ = true; }
 
 	/**
 	 * Schedule the minimap to be redrawn.
@@ -1097,7 +1097,7 @@ protected:
 	void draw_all_panels();
 
 #ifdef SDL_GPU
-	void draw_panel_image(SDL_Rect *clip = NULL);
+	void draw_panel_image(SDL_Rect *clip = nullptr);
 #endif
 
 	/**

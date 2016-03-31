@@ -176,7 +176,7 @@ static void get_file_tree_checksum_internal(const std::string& path, file_tree_c
 {
 
 	std::vector<std::string> dirs;
-	get_files_in_dir(path,NULL,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DONT_REORDER, &res);
+	get_files_in_dir(path,nullptr,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DONT_REORDER, &res);
 
 	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 		get_file_tree_checksum_internal(*j,res);
@@ -218,8 +218,8 @@ SDL_RWops* load_RWops(const std::string &path) {
 
 	std::istream *ifs = istream_file(path);
 	if(!ifs) {
-		ERR_FS << "load_RWops: istream_file returned NULL on " << path << '\n';
-		return NULL;
+		ERR_FS << "load_RWops: istream_file returned nullptr on " << path << '\n';
+		return nullptr;
 	}
 
 	rw->hidden.unknown.data1 = ifs;

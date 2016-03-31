@@ -212,7 +212,7 @@ config* connect_engine::current_config() {
 	if(config& s = scenario())
 		return &s;
 	else
-		return NULL;
+		return nullptr;
 }
 
 void connect_engine::import_user(const std::string& name, const bool observer,
@@ -1063,7 +1063,7 @@ config side_engine::new_config() const
 		// Find a config where a default leader is and set a new type
 		// and gender values for it.
 		config* leader = &res;
-		if (flg_.default_leader_cfg() != NULL) {
+		if (flg_.default_leader_cfg() != nullptr) {
 			BOOST_FOREACH(config& side_unit, res.child_range("unit")) {
 				if (*flg_.default_leader_cfg() == side_unit) {
 					leader = &side_unit;

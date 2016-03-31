@@ -272,7 +272,7 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
 	streambuf(),
 	out_buffer_(""),
 	buffer_(),
-	current_(NULL),
+	current_(nullptr),
 	defines_(def),
 	default_defines_(),
 	textdomain_(PACKAGE),
@@ -287,7 +287,7 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	streambuf(),
 	out_buffer_(""),
 	buffer_(),
-	current_(NULL),
+	current_(nullptr),
 	defines_(t.defines_),
 	default_defines_(),
 	textdomain_(PACKAGE),
@@ -556,7 +556,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 {
 	if (filesystem::is_directory(name)) {
 
-		filesystem::get_files_in_dir(name, &files_, NULL, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
+		filesystem::get_files_in_dir(name, &files_, nullptr, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
 		BOOST_FOREACH(std::string fname, files_) {
 			size_t cpos = fname.rfind(" ");
@@ -577,7 +577,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 		}
 		else
 			new preprocessor_data(t, file_stream, "", filesystem::get_short_wml_path(name),
-				1, filesystem::directory_name(name), t.textdomain_, NULL);
+				1, filesystem::directory_name(name), t.textdomain_, nullptr);
 	}
 	pos_ = files_.begin();
 	end_ = files_.end();
@@ -1230,7 +1230,7 @@ preprocessor_deleter::~preprocessor_deleter()
 {
 	clear(std::ios_base::goodbit);
 	exceptions(std::ios_base::goodbit);
-	rdbuf(NULL);
+	rdbuf(nullptr);
 	delete buf_;
 	delete defines_;
 }
@@ -1238,7 +1238,7 @@ preprocessor_deleter::~preprocessor_deleter()
 std::istream *preprocess_file(std::string const &fname, preproc_map *defines)
 {
 	log_scope("preprocessing file " + fname + " ...");
-	preproc_map *owned_defines = NULL;
+	preproc_map *owned_defines = nullptr;
 	if (!defines) {
 		// If no preproc_map has been given, create a new one,
 		// and ensure it is destroyed when the stream is

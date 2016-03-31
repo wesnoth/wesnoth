@@ -111,8 +111,8 @@ public:
 	explicit unit(
 			  const config& cfg
 			, bool use_traits = false
-			, const vconfig* vcfg = NULL
-			, n_unit::id_manager* id_manager = NULL);
+			, const vconfig* vcfg = nullptr
+			, n_unit::id_manager* id_manager = nullptr);
 
 	/**
 	  * Initializes a unit from a unit type
@@ -367,7 +367,7 @@ public:
 	const config &variables() const { return variables_; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	void set_alignment(unit_type::ALIGNMENT alignment) { alignment_ = alignment; }
-	/// Never returns NULL, but may point to the null race.
+	/// Never returns nullptr, but may point to the null race.
 	const unit_race* race() const { return race_; }
 
 
@@ -386,7 +386,7 @@ public:
 	unit_ability_list get_abilities(const std::string &tag_name) const
 	{ return get_abilities(tag_name, loc_); }
 	/** Tuple of: neutral ability name, gendered ability name, description */
-	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=NULL) const;
+	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=nullptr) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 
@@ -440,9 +440,9 @@ private:
 	map_location loc_;
 
 	std::vector<std::string> advances_to_;
-	const unit_type * type_;/// Never NULL. Adjusted for gender and variation.
+	const unit_type * type_;/// Never nullptr. Adjusted for gender and variation.
 	t_string type_name_;    /// The displayed name of the unit type.
-	const unit_race* race_;	/// Never NULL, but may point to the null race.
+	const unit_race* race_;	/// Never nullptr, but may point to the null race.
 	std::string id_;
 	t_string name_;
 	n_unit::unit_id underlying_id_;

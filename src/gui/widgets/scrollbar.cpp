@@ -97,7 +97,7 @@ void tscrollbar_::scroll(const tscroll scroll)
 			assert(false);
 	}
 
-	fire(event::NOTIFY_MODIFIED, *this, NULL);
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void tscrollbar_::place(const tpoint& origin, const tpoint& size)
@@ -281,7 +281,7 @@ void tscrollbar_::move_positioner(const int distance)
 
 		child_callback_positioner_moved();
 
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 		// positioner_moved_notifier_.notify();
 	}
@@ -402,11 +402,11 @@ void tscrollbar_::signal_handler_left_button_down(const event::tevent event,
 
 	if(bar == -1) {
 		scroll(HALF_JUMP_BACKWARDS);
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		// positioner_moved_notifier_.notify();
 	} else if(bar == 1) {
 		scroll(HALF_JUMP_FORWARD);
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		// positioner_moved_notifier_.notify();
 	} else {
 		assert(bar == 0);

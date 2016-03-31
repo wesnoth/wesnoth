@@ -36,7 +36,7 @@ namespace gui2
 class tminimap : public tcontrol
 {
 public:
-	tminimap() : tcontrol(1), map_data_(), terrain_(NULL)
+	tminimap() : tcontrol(1), map_data_(), terrain_(nullptr)
 	{
 	}
 
@@ -96,7 +96,7 @@ private:
 	 * @param w                   The wanted width of the image.
 	 * @param h                   The wanted height of the image.
 	 *
-	 * @returns                   The image, NULL upon error.
+	 * @returns                   The image, nullptr upon error.
 	 */
 	const surface get_image(const int w, const int h) const;
 

@@ -87,7 +87,7 @@
 
 #include <algorithm>                    // for transform
 #include <cerrno>                       // for ENOMEM
-#include <clocale>                      // for setlocale, NULL, LC_ALL, etc
+#include <clocale>                      // for setlocale, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
 #include <cstdlib>                     // for srand, exit
 #include <ctime>                       // for time, ctime, time_t
@@ -575,7 +575,7 @@ static void check_fpu()
  */
 static int do_gameloop(const std::vector<std::string>& args)
 {
-	srand(time(NULL));
+	srand(time(nullptr));
 
 	commandline_options cmdline_opts = commandline_options(args);
 	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
@@ -674,11 +674,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
-		{ NULL, NULL }
+		{}
 	};
 	plugins_context::aReg const accessors[] = {
 		{ "command_line",		boost::bind(&commandline_options::to_config, &cmdline_opts)},
-		{ NULL, NULL }
+		{}
 	};
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
@@ -928,7 +928,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 {
 	wchar_t process_path[MAX_PATH];
 	SetLastError(ERROR_SUCCESS);
-	GetModuleFileNameW(NULL, process_path, MAX_PATH);
+	GetModuleFileNameW(nullptr, process_path, MAX_PATH);
 	if (GetLastError() != ERROR_SUCCESS)
 	{
 		throw std::runtime_error("Failed to retrieve the process path");
@@ -947,8 +947,8 @@ static void restart_process(const std::vector<std::string>& commandline)
 	PROCESS_INFORMATION process_info;
 	ZeroMemory(&process_info, sizeof(process_info));
 
-	CreateProcessW(process_path, commandline_c_str, NULL, NULL,
-		false, 0u, NULL, NULL, &startup_info, &process_info);
+	CreateProcessW(process_path, commandline_c_str, nullptr, nullptr,
+		false, 0u, nullptr, nullptr, &startup_info, &process_info);
 
 	CloseHandle(process_info.hProcess);
 	CloseHandle(process_info.hThread);
@@ -1034,13 +1034,13 @@ int main(int argc, char** argv)
 	terminate_handler.sa_handler = wesnoth_terminate_handler;
 	terminate_handler.sa_flags = 0;
 	sigemptyset(&terminate_handler.sa_mask);
-	sigaction(SIGTERM, &terminate_handler, NULL);
-	sigaction(SIGINT, &terminate_handler, NULL);
+	sigaction(SIGTERM, &terminate_handler, nullptr);
+	sigaction(SIGINT, &terminate_handler, nullptr);
 #endif
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
-		const time_t t = time(NULL);
+		const time_t t = time(nullptr);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		const std::string& exe_dir = filesystem::get_exe_dir();

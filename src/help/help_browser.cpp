@@ -13,7 +13,6 @@
 */
 
 #include "help_browser.hpp"
-#include <stddef.h>                     // for NULL
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <SDL_mouse.h>                  // for SDL_GetMouseState, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
@@ -41,7 +40,7 @@ help_browser::help_browser(CVideo& video, const section &toplevel) :
 	forward_topics_(),
 	back_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_left"),
 	forward_button_(video, "", gui::button::TYPE_PRESS, "button_normal/button_small_H22", gui::button::DEFAULT_SPACE, true, "icons/arrows/long_arrow_ornate_right"),
-	shown_topic_(NULL)
+	shown_topic_(nullptr)
 {
 	// Hide the buttons at first since we do not have any forward or
 	// back topics at this point. They will be unhidden when history
@@ -103,7 +102,7 @@ void help_browser::process_event()
 	if (sdl::point_in_rect(mousex, mousey, menu_.location())) {
 		menu_.process();
 		const topic *chosen_topic = menu_.chosen_topic();
-		if (chosen_topic != NULL && chosen_topic != shown_topic_) {
+		if (chosen_topic != nullptr && chosen_topic != shown_topic_) {
 			/// A new topic has been chosen in the menu, display it.
 			show_topic(*chosen_topic);
 		}
@@ -124,7 +123,7 @@ void help_browser::move_in_history(std::deque<const topic *> &from,
 	if (!from.empty()) {
 		const topic *to_show = from.back();
 		from.pop_back();
-		if (shown_topic_ != NULL) {
+		if (shown_topic_ != nullptr) {
 			if (to.size() > max_history) {
 				to.pop_front();
 			}
@@ -148,7 +147,7 @@ void help_browser::handle_event(const SDL_Event &event)
 			const std::string ref = text_area_.ref_at(mousex, mousey);
 			if (ref != "") {
 				const topic *t = find_topic(toplevel_, ref);
-				if (t == NULL) {
+				if (t == nullptr) {
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
 					gui2::show_transient_message(video(), "", msg.str());
@@ -185,7 +184,7 @@ void help_browser::show_topic(const std::string &topic_id)
 {
 	const topic *t = find_topic(toplevel_, topic_id);
 
-	if (t != NULL) {
+	if (t != nullptr) {
 		show_topic(*t);
 	} else if (topic_id.find(unit_prefix)==0 || topic_id.find(hidden_symbol() + unit_prefix)==0) {
 		show_topic(unknown_unit_topic);
@@ -201,7 +200,7 @@ void help_browser::show_topic(const topic &t, bool save_in_history)
 
 	if (save_in_history) {
 		forward_topics_.clear();
-		if (shown_topic_ != NULL) {
+		if (shown_topic_ != nullptr) {
 			if (back_topics_.size() > max_history) {
 				back_topics_.pop_front();
 			}

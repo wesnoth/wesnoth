@@ -80,7 +80,7 @@ tsignal_keyboard_function;
  * Callback function signature.
  *
  * This function is used for the callbacks in tset_event_notification.
- * Added the dummy void* parameter which will be NULL to get a different
+ * Added the dummy void* parameter which will be nullptr to get a different
  * signature as tsignal_function's callback.
  */
 typedef boost::function<void(tdispatcher& dispatcher,

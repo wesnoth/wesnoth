@@ -349,7 +349,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 
 			// See if there is a matching rule
-			const overlay_rule* rule = NULL;
+			const overlay_rule* rule = nullptr;
 			BOOST_FOREACH(const overlay_rule& current_rule, rules)
 			{
 				if(!current_rule.old_.empty() && !t_translation::terrain_matches(current, current_rule.old_)) {

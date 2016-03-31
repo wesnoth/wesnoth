@@ -155,8 +155,8 @@ void formula_debugger::check_breakpoints()
 
 void formula_debugger::show_gui()
 {
-	if (resources::screen == NULL) {
-		WRN_FDB << "do not showing debug window due to NULL gui" << std::endl;
+	if (resources::screen == nullptr) {
+		WRN_FDB << "do not showing debug window due to nullptr gui" << std::endl;
 		return;
 	}
 	if (game_config::debug) {
@@ -201,7 +201,7 @@ variant formula_debugger::evaluate_arg_callback(const formula_expression &expres
 	variant v = expression.execute(variables,this);
 	call_stack_set_value(v);
 	call_stack_set_evaluated(true);
-	msg(" evaluated expression: ",call_stack_.back()," to ",v.to_debug_string(NULL,true).c_str());
+	msg(" evaluated expression: ",call_stack_.back()," to ",v.to_debug_string(nullptr,true).c_str());
 	check_breakpoints();
 	call_stack_pop();
 	return v;
@@ -216,7 +216,7 @@ variant formula_debugger::evaluate_formula_callback(const formula &f, const form
 	variant v = f.execute(variables,this);
 	call_stack_set_value(v);
 	call_stack_set_evaluated(true);
-	msg(" evaluated formula: ",call_stack_.back()," to ",v.to_debug_string(NULL,true).c_str());
+	msg(" evaluated formula: ",call_stack_.back()," to ",v.to_debug_string(nullptr,true).c_str());
 	check_breakpoints();
 	call_stack_pop();
 	return v;
@@ -231,7 +231,7 @@ variant formula_debugger::evaluate_formula_callback(const formula &f)
 	variant v = f.execute(this);
 	call_stack_set_value(v);
 	call_stack_set_evaluated(true);
-	msg(" evaluated formula without variables: ",call_stack_.back()," to ",v.to_debug_string(NULL,true).c_str());
+	msg(" evaluated formula without variables: ",call_stack_.back()," to ",v.to_debug_string(nullptr,true).c_str());
 	check_breakpoints();
 	call_stack_pop();
 	return v;

@@ -190,7 +190,7 @@ namespace implementation
 {
 
 tbuilder_panel::tbuilder_panel(const config& cfg)
-	: tbuilder_control(cfg), grid(NULL)
+	: tbuilder_control(cfg), grid(nullptr)
 {
 	const config& c = cfg.child("grid");
 

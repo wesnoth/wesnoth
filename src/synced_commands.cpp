@@ -312,7 +312,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	{
 		show_move = show_move && preferences::show_ai_moves();
 	}
-	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, skip_sighted, skip_ally_sighted, show_move);
+	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : nullptr, skip_sighted, skip_ally_sighted, show_move);
 
 	return true;
 }

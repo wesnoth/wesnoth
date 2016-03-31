@@ -79,17 +79,17 @@ protected:
 	/**
 	 * Get (optionally) a soundsources manager a derived class uses
 	 */
-	virtual soundsource::manager * get_soundsource_man() { return NULL; }
+	virtual soundsource::manager * get_soundsource_man() { return nullptr; }
 
 	/**
 	 * Get (optionally) a plugins context a derived class uses
 	 */
-	virtual plugins_context * get_plugins_context() { return NULL; }
+	virtual plugins_context * get_plugins_context() { return nullptr; }
 
 	/**
 	 * Get (optionally) a command executor to handle context menu events
 	 */
-	virtual hotkey::command_executor * get_hotkey_command_executor() { return NULL; }
+	virtual hotkey::command_executor * get_hotkey_command_executor() { return nullptr; }
 
 	/**
 	 * Derived classes should override this to return false when arrow keys

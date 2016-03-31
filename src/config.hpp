@@ -480,7 +480,7 @@ public:
 
 	/**
 	 * Returns a pointer to the attribute with the given @a key
-	 * or NULL if it does not exist.
+	 * or nullptr if it does not exist.
 	 */
 	const attribute_value *get(const std::string &key) const;
 

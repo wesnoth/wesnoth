@@ -75,15 +75,15 @@ static void create_jamming_map(std::map<map_location, int> & jamming,
  * Determines if @a loc is within @a viewer's visual range.
  * This is a moderately expensive function (vision is recalculated
  * with each call), so avoid using it heavily.
- * If @a jamming is left as NULL, the jamming map is also calculated
+ * If @a jamming is left as nullptr, the jamming map is also calculated
  * with each invocation.
  */
 static bool can_see(const unit & viewer, const map_location & loc,
-                    const std::map<map_location, int> * jamming = NULL)
+                    const std::map<map_location, int> * jamming = nullptr)
 {
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
-	if ( jamming == NULL ) {
+	if ( jamming == nullptr ) {
 		create_jamming_map(local_jamming, (*resources::teams)[viewer.side()-1]);
 		jamming = &local_jamming;
 	}
@@ -169,7 +169,7 @@ inline void shroud_clearer::record_sighting(
 /**
  * Default constructor.
  */
-shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(NULL)
+shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(nullptr)
 {}
 
 
@@ -189,7 +189,7 @@ shroud_clearer::~shroud_clearer()
  * Causes this object's "jamming" map to be recalculated.
  * This gets called as needed, and can also be manually invoked
  * via cache_units().
- * @param[in] new_team  The team whose vision will be used. If NULL, the
+ * @param[in] new_team  The team whose vision will be used. If nullptr, the
  *                      jamming map will be cleared.
  */
 void shroud_clearer::calculate_jamming(const team * new_team)
@@ -198,7 +198,7 @@ void shroud_clearer::calculate_jamming(const team * new_team)
 	jamming_.clear();
 	view_team_ = new_team;
 
-	if ( view_team_ == NULL )
+	if ( view_team_ == nullptr )
 		return;
 
 	// Build the map.
@@ -345,9 +345,9 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
 	size_t enemies=0, friends=0;
-	if ( enemy_count == NULL )
+	if ( enemy_count == nullptr )
 		enemy_count = &enemies;
-	if ( friend_count == NULL )
+	if ( friend_count == nullptr )
 		friend_count = &friends;
 
 	// Make sure the jamming map is up-to-date.
@@ -441,7 +441,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 
 	return clear_unit(view_loc, view_team, viewer.underlying_id,
 	                  viewer.sight_range, viewer.slowed, viewer.costs,
-	                  real_loc, NULL, NULL, NULL, NULL, instant);
+	                  real_loc, nullptr, nullptr, nullptr, nullptr, instant);
 }
 
 
@@ -613,7 +613,7 @@ std::vector<int> get_sides_not_seeing(const unit & target)
 /**
  * Fires sighted events for the sides that can see @a target.
  * If @a cache is supplied, only those sides might get events.
- * If @a cache is NULL, all sides might get events.
+ * If @a cache is nullptr, all sides might get events.
  * This function is for the sighting *of* units that clear the shroud; it is
  * the complement of shroud_clearer::fire_events(), which handles sighting *by*
  * units that clear the shroud.
@@ -638,8 +638,8 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	const map_location & target_loc = target.get_location();
 
 	// Determine the teams that (probably) should get events.
-	std::vector<bool> needs_event(teams_size, cache == NULL);
-	if ( cache != NULL ) {
+	std::vector<bool> needs_event(teams_size, cache == nullptr);
+	if ( cache != nullptr ) {
 		// Flag just the sides in the cache as needing events.
 		BOOST_FOREACH (int side, *cache)
 			needs_event[side-1] = true;
@@ -657,7 +657,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 			create_jamming_map(jamming_cache[i], teams[i]);
 
 	// Look for units that can be used as the second unit in sighted events.
-	std::vector<const unit *> second_units(teams_size, NULL);
+	std::vector<const unit *> second_units(teams_size, nullptr);
 	std::vector<size_t> distances(teams_size, UINT_MAX);
 	BOOST_FOREACH (const unit & viewer, *resources::units) {
 		const size_t index = viewer.side() - 1;
@@ -683,7 +683,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	// Raise events for the appropriate teams.
 	const game_events::entity_location target_entity(target);
 	for ( size_t i = 0; i != teams_size; ++i )
-		if ( second_units[i] != NULL ) {
+		if ( second_units[i] != nullptr ) {
 			resources::game_events->pump().raise(sighted_str, target_entity, game_events::entity_location(*second_units[i]));
 		}
 

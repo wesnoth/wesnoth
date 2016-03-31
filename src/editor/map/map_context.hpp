@@ -341,10 +341,10 @@ public:
 	/** @return true when redo can be performed, false otherwise */
 	bool can_redo() const;
 
-	/** @return a pointer to the last undo action or NULL if the undo stack is empty */
+	/** @return a pointer to the last undo action or nullptr if the undo stack is empty */
 	editor_action* last_undo_action();
 
-	/** @return a pointer to the last redo action or NULL if the undo stack is empty */
+	/** @return a pointer to the last redo action or nullptr if the undo stack is empty */
 	editor_action* last_redo_action();
 
 	/** const version of last_undo_action */

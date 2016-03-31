@@ -148,7 +148,7 @@ void move::init()
 	// As per Bug #18637, this should be fixed so that planning moves on planned recruits work properly.
 	// The alternative is to disable movement on planned recruits altogether,
 	// possibly in select_or_action() where the fake unit is selected in the first place.
-	if (get_unit() == NULL)
+	if (get_unit() == nullptr)
 		return;
 
 	assert(get_unit());
@@ -471,7 +471,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != nullptr) {
 		return LOCATION_OCCUPIED;
 	}
 

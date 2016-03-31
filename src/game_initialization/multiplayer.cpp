@@ -413,7 +413,7 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 
 				// Somewhat hacky...
 				// If we broke out of the do-while loop above error
-				// is still going to be NULL
+				// is still going to be nullptr
 				if(!*error) break;
 			} // end login loop
 		}
@@ -686,7 +686,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 				, 0
 				, SDL_ALPHA_OPAQUE);
 
-		sdl::fill_rect(video.getSurface(), NULL, color);
+		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
 			gui2::tlobby_main dlg(game_config, li, video);
@@ -851,7 +851,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 		state.set_scenario(level);
 	} else {
 		DBG_MP << "generating random map" << std::endl;
-		util::scoped_ptr<map_generator> generator(NULL);
+		util::scoped_ptr<map_generator> generator(nullptr);
 		generator.assign(create_map_generator(level["map_generation"], level.child("generator")));
 		state.set_scenario(generator->create_scenario());
 
@@ -883,7 +883,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, NULL));
+		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, nullptr));
 		mp::connect ui(video, parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 

@@ -64,7 +64,7 @@
 #pragma warning (pop)
 #endif
 #include <cassert>                     // for assert
-#include <cstdlib>                     // for NULL, rand
+#include <cstdlib>                     // for rand
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <new>                          // for operator new
@@ -238,7 +238,7 @@ namespace {
 	template<typename T>
 	T* copy_or_null(const boost::scoped_ptr<T>& ptr)
 	{
-		return ptr ? new T(*ptr) : NULL;
+		return ptr ? new T(*ptr) : nullptr;
 	}
 }
 // Copy constructor
@@ -1179,7 +1179,7 @@ inline bool mod_duration_match(const std::string & mod_dur,
 void unit::expire_modifications(const std::string & duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
-	const unit_type * rebuild_from = NULL;
+	const unit_type * rebuild_from = nullptr;
 
 	// Loop through all types of modifications.
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
@@ -1196,7 +1196,7 @@ void unit::expire_modifications(const std::string & duration)
 					rebuild_from = &get_unit_type(v->str());
 				}
 				// Else, if we have not already specified a type to build from:
-				else if ( rebuild_from == NULL )
+				else if ( rebuild_from == nullptr )
 					rebuild_from = &type();
 
 				modifications_.remove_child(mod_name, j);
@@ -1204,7 +1204,7 @@ void unit::expire_modifications(const std::string & duration)
 		}
 	}
 
-	if ( rebuild_from != NULL ) {
+	if ( rebuild_from != nullptr ) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
 	}
@@ -1500,10 +1500,10 @@ int unit::upkeep() const
 	if(can_recruit()) {
 		return 0;
 	}
-	else if(boost::get<upkeep_full>(&upkeep_) != NULL) {
+	else if(boost::get<upkeep_full>(&upkeep_) != nullptr) {
 		return level();
 	}
-	else if(boost::get<upkeep_loyal>(&upkeep_) != NULL) {
+	else if(boost::get<upkeep_loyal>(&upkeep_) != nullptr) {
 		return 0;
 	}
 	else {
@@ -1513,7 +1513,7 @@ int unit::upkeep() const
 
 bool unit::loyal() const
 {
-	return boost::get<upkeep_loyal>(&upkeep_) != NULL;
+	return boost::get<upkeep_loyal>(&upkeep_) != nullptr;
 }
 
 int unit::defense_modifier(const t_translation::t_terrain & terrain) const
@@ -2107,7 +2107,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if (effect["apply_to"] == "variation") {
 		variation_ = effect["name"].str();
 		const unit_type * base_type = unit_types.find(type().base_id());
-		assert(base_type != NULL);
+		assert(base_type != nullptr);
 		advance_to(*base_type);
 	} else if (effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
@@ -2497,10 +2497,10 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 }
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	if(boost::get<upkeep_full>(&upkeep_) != NULL) {
+	if(boost::get<upkeep_full>(&upkeep_) != nullptr) {
 		upkeep = "full";
 	}
-	else if(boost::get<upkeep_loyal>(&upkeep_) != NULL) {
+	else if(boost::get<upkeep_loyal>(&upkeep_) != nullptr) {
 		upkeep = "loyal";
 	}
 	else {

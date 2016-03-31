@@ -89,14 +89,14 @@ void music_track::resolve()
 	if (title_.empty()) {
 		FILE* f;
 		f = fopen(file_path_.c_str(), "r");
-		if (f == NULL) {
+		if (f == nullptr) {
 			LOG_AUDIO << "Error opening file '" << file_path_
 					<< "' for track identification\n";
 			return;
 		}
 
 		OggVorbis_File vf;
-		if(ov_open(f, &vf, NULL, 0) < 0) {
+		if(ov_open(f, &vf, nullptr, 0) < 0) {
 			LOG_AUDIO << "track does not appear to be an Ogg file '"
 					<< id_ << "', cannot be identified\n";
 			ov_clear(&vf);

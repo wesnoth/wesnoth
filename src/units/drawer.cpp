@@ -184,8 +184,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 	sdl::timage ellipse_front;
 	sdl::timage ellipse_back;
 #else
-	surface ellipse_front(NULL);
-	surface ellipse_back(NULL);
+	surface ellipse_front(nullptr);
+	surface ellipse_back(nullptr);
 #endif
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
@@ -236,20 +236,20 @@ void unit_drawer::redraw_unit (const unit & u) const
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 #else
-	if (ellipse_back != NULL) {
+	if (ellipse_back != nullptr) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 	}
 
-	if (ellipse_front != NULL) {
+	if (ellipse_front != nullptr) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 #endif
 	if(draw_bars) {
-		const image::locator* orb_img = NULL;
+		const image::locator* orb_img = nullptr;
 		const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
 		const int xoff = (hex_size - unit_img->w)/2;
 		const int yoff = (hex_size - unit_img->h)/2;
@@ -272,31 +272,31 @@ void unit_drawer::redraw_unit (const unit & u) const
 				if (preferences::show_enemy_orb() && !u.incapacitated())
 					orb_img = &enemy_orb;
 				else
-					orb_img = NULL;
+					orb_img = nullptr;
 			} else {
 				if (preferences::show_allied_orb())
 					orb_img = &ally_orb;
-				else orb_img = NULL;
+				else orb_img = nullptr;
 			}
 		} else {
 			if (preferences::show_moved_orb())
 				orb_img = &moved_orb;
-			else orb_img = NULL;
+			else orb_img = nullptr;
 
 			if(playing_team == viewing_team && !u.user_end_turn()) {
 				if (movement_left == total_movement) {
 					if (preferences::show_unmoved_orb())
 						orb_img = &unmoved_orb;
-					else orb_img = NULL;
+					else orb_img = nullptr;
 				} else if ( dc.unit_can_move(u) ) {
 					if (preferences::show_partial_orb())
 						orb_img = &partmoved_orb;
-					else orb_img = NULL;
+					else orb_img = nullptr;
 				}
 			}
 		}
 
-		if (orb_img != NULL) {
+		if (orb_img != nullptr) {
 			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 				loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
@@ -343,7 +343,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 			}
 #else
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
-			if(ov_img != NULL) {
+			if(ov_img != nullptr) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
 			}
@@ -385,7 +385,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	// is bad for calculate_energy_bar.
 	// But we will do a geometric scaling later.
 	surface bar_surf(image::get_image(image));
-	if(surf == NULL || bar_surf == NULL) {
+	if(surf == nullptr || bar_surf == nullptr) {
 		return;
 	}
 
@@ -413,7 +413,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	//if(alpha != ftofxp(1.0)) {
 	//	surf.assign(adjust_surface_alpha(surf,alpha));
-	//	if(surf == NULL) {
+	//	if(surf == nullptr) {
 	//		return;
 	//	}
 	//}

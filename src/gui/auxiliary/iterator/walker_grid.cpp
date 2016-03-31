@@ -38,7 +38,7 @@ twalker_::tstate tgrid::next(const tlevel level)
 	switch(level) {
 		case widget:
 			if(widget_) {
-				widget_ = NULL;
+				widget_ = nullptr;
 				return invalid;
 			} else {
 				/* FALL DOWN */
@@ -63,7 +63,7 @@ bool tgrid::at_end(const tlevel level) const
 {
 	switch(level) {
 		case widget:
-			return widget_ == NULL;
+			return widget_ == nullptr;
 		case grid:
 			return true;
 		case child:
@@ -80,17 +80,17 @@ gui2::twidget* tgrid::get(const tlevel level)
 		case widget:
 			return widget_;
 		case grid:
-			return NULL;
+			return nullptr;
 		case child:
 			if(itor_ == grid_.end()) {
-				return NULL;
+				return nullptr;
 			} else {
 				return *itor_;
 			}
 	}
 
 	assert(false);
-	return NULL;
+	return nullptr;
 }
 
 } // namespace iterator

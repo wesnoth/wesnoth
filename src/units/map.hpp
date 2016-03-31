@@ -102,7 +102,7 @@ class unit_map {
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
 	};
 
-	///Map of underlying_id to unit and a reference counter. Dead units have a unit pointer equal to NULL.
+	///Map of underlying_id to unit and a reference counter. Dead units have a unit pointer equal to nullptr.
 	///The map entry is removed iff the reference counter equals zero and there are no more
 	///iterators pointing to this unit.
 	typedef std::map<size_t, unit_pod> t_umap;
@@ -138,7 +138,7 @@ public:
 
 		~iterator_base()	{ dec(); }
 
-		iterator_base(): i_(), tank_(NULL) { }
+		iterator_base(): i_(), tank_(nullptr) { }
 
 		iterator_base(iterator_type i, container_type *m) : i_(i), tank_(m) {
 			inc();
@@ -240,7 +240,7 @@ public:
 		typedef void (safe_bool_impl::*safe_bool)();
 
 		operator safe_bool() const
-		{ return valid() ? &safe_bool_impl::nonnull : NULL; }
+		{ return valid() ? &safe_bool_impl::nonnull : nullptr; }
 #else
 		explicit operator bool() const
 		{ return valid(); }
@@ -253,14 +253,14 @@ public:
 		template<typename Y> friend struct iterator_base;
 
 	private:
-		bool valid_for_dereference() const { return (tank_ != NULL) && (i_ != the_map().end()); }
-		bool valid_entry() const { return  ((tank_ != NULL) && (i_ != the_map().end())) ; }
+		bool valid_for_dereference() const { return (tank_ != nullptr) && (i_ != the_map().end()); }
+		bool valid_entry() const { return  ((tank_ != nullptr) && (i_ != the_map().end())) ; }
 		void valid_exit() const {
-			if((tank_ != NULL) && i_ != the_map().end()){
+			if((tank_ != nullptr) && i_ != the_map().end()){
 				assert(i_->second.ref_count > 0);
 			}
 		}
-		bool valid_ref_count() const { return (tank_ != NULL) && (i_ != the_map().end()) ; }
+		bool valid_ref_count() const { return (tank_ != nullptr) && (i_ != the_map().end()) ; }
 
 		///Increment the reference counter
 		void inc() { if(valid_ref_count()) { ++(i_->second.ref_count); } }
@@ -401,7 +401,7 @@ public:
 	/**
 	 * Is the unit in the map?
 	 *
-	 * @pre                       @p u != @c NULL
+	 * @pre                       @p u != @c nullptr
 	 *
 	 * @param u                   Pointer to the unit to find.
 	 *
@@ -413,10 +413,10 @@ private:
 	t_umap::iterator begin_core() const ;
 
 	bool is_valid(const t_umap::const_iterator &i) const {
-		return is_found(i) && (i->second.unit != NULL);
+		return is_found(i) && (i->second.unit != nullptr);
 	}
 	bool is_valid(const t_lmap::const_iterator &i) const {
-		return is_found(i) && (i->second->second.unit != NULL);
+		return is_found(i) && (i->second->second.unit != nullptr);
 	}
 
 	bool is_found(const t_umap::const_iterator &i) const { return i != umap_.end(); }

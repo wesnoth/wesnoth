@@ -93,8 +93,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	assert(!movements.empty());
 	std::vector<std::pair<map_location,map_location> >::const_iterator m;
 
-	battle_context *prev_bc = NULL;
-	const combatant *prev_def = NULL;
+	battle_context *prev_bc = nullptr;
+	const combatant *prev_def = nullptr;
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
@@ -340,7 +340,7 @@ variant attack_analysis::get_value(const std::string& key) const
 	} else if(key == "movements") {
 		std::vector<variant> res;
 		for(size_t n = 0; n != movements.size(); ++n) {
-			map_formula_callable* item = new map_formula_callable(NULL);
+			map_formula_callable* item = new map_formula_callable(nullptr);
 			item->add("src", variant(new location_callable(movements[n].first)));
 			item->add("dst", variant(new location_callable(movements[n].second)));
 			res.push_back(variant(item));

@@ -112,7 +112,7 @@ const class_key * class_tag::find_key(const std::string &name) const{
 	if ( it_keys!= keys_.end() ){
 		return &(it_keys->second);
 	}
-	return NULL;
+	return nullptr;
 }
 
 const std::string * class_tag::find_link(const std::string &name) const{
@@ -120,12 +120,12 @@ const std::string * class_tag::find_link(const std::string &name) const{
 	if ( it_links!= links_.end() ){
 		return &(it_links->second);
 	}
-	return NULL;
+	return nullptr;
 }
 
 const class_tag * class_tag::find_tag(const std::string &fullpath,
 									   const class_tag &root) const{
-	 if (fullpath.empty()) return NULL;
+	 if (fullpath.empty()) return nullptr;
 	 std::string::size_type pos = fullpath.find('/');
 	 std::string name;
 	 std::string next_path;
@@ -147,7 +147,7 @@ const class_tag * class_tag::find_tag(const std::string &fullpath,
 	 if (it_links != links_.end()){
 		 return root.find_tag(it_links->second + "/" +next_path,root);
 	 }
-	 return NULL;
+	 return nullptr;
 
  }
 
@@ -228,7 +228,7 @@ void class_tag::printl(std::ostream &os,int level, int step){
 
  class_tag * class_tag::find_tag(const std::string &fullpath,
 									   class_tag &root) {
-	 if (fullpath.empty()) return NULL;
+	 if (fullpath.empty()) return nullptr;
 	 std::string::size_type pos = fullpath.find('/');
 	 std::string name;
 	 std::string next_path;
@@ -251,7 +251,7 @@ void class_tag::printl(std::ostream &os,int level, int step){
 	 if (it_links != links_.end()){
 		 return root.find_tag(it_links->second +"/" +next_path,root);
 	 }
-	 return NULL;
+	 return nullptr;
 
  }
 // class_tag & class_tag::operator= (class_tag const& t){

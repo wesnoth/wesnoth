@@ -25,13 +25,13 @@
 class abstract_validator;
 // Read data in, clobbering existing data.
 void read(config &cfg, std::istream &in,
-		  abstract_validator * validator = NULL); 	// Throws config::error
+		  abstract_validator * validator = nullptr); 	// Throws config::error
 void read(config &cfg, const std::string &in,
-		  abstract_validator * validator = NULL); 	// Throws config::error
+		  abstract_validator * validator = nullptr); 	// Throws config::error
 void read_gz(config &cfg, std::istream &in,
-			 abstract_validator * validator = NULL);
+			 abstract_validator * validator = nullptr);
 void read_bz2(config &cfg, std::istream &in,
-			 abstract_validator * validator = NULL);
+			 abstract_validator * validator = nullptr);
 
 void write(std::ostream &out, config const &cfg, unsigned int level=0);
 void write_gz(std::ostream &out, config const &cfg);

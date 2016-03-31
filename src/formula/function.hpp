@@ -25,9 +25,9 @@ class formula_expression {
 public:
 	formula_expression() : name_("") {}
 	virtual ~formula_expression() {}
-	variant evaluate(const formula_callable& variables, formula_debugger *fdb = NULL) const {
+	variant evaluate(const formula_callable& variables, formula_debugger *fdb = nullptr) const {
 		call_stack_manager manager(name_);
-		if (fdb!=NULL) {
+		if (fdb!=nullptr) {
 			return evaluate_arg_callback(*fdb,*this,variables);
 		} else {
 			return execute(variables,fdb);
@@ -38,7 +38,7 @@ public:
 	const char* get_name() const { return name_; }
 	virtual std::string str() const = 0;
 private:
-	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const = 0;
+	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = nullptr) const = 0;
 	const char* name_;
 	friend class formula_debugger;
 };
@@ -161,7 +161,7 @@ public:
 		}
 	}
 private:
-	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const
+	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = nullptr) const
 	{
 		if (arg_) {
 			return arg_->evaluate(variables,fdb);

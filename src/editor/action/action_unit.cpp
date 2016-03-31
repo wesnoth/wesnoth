@@ -67,7 +67,7 @@ editor_action* editor_action_unit_delete::perform(map_context& mc) const
 		perform_without_undo(mc);
 		return undo.release();
 	}
-	return NULL;
+	return nullptr;
 }
 
 void editor_action_unit_delete::perform_without_undo(map_context& mc) const

@@ -107,7 +107,7 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *stage_factories;
-		if (stage_factories==NULL) {
+		if (stage_factories==nullptr) {
 			stage_factories = new factory_map;
 		}
 		return *stage_factories;

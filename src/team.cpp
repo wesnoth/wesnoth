@@ -439,7 +439,7 @@ int team::minimum_recruit_price() const
 
 bool team::calculate_enemies(size_t index) const
 {
-	if(teams == NULL || index >= teams->size()) {
+	if(teams == nullptr || index >= teams->size()) {
 		return false;
 	}
 
@@ -547,7 +547,7 @@ void team::change_team(const std::string &name, const t_string &user_name)
 
 void team::clear_caches(){
 	// Reset the cache of allies for all teams
-	if(teams != NULL) {
+	if(teams != nullptr) {
 		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
 			i->enemies_.clear();
 			i->ally_shroud_.clear();
@@ -655,7 +655,7 @@ void team::remove_fog_override(const std::set<map_location> &hexes)
 
 void validate_side(int side)
 {
-	if(teams == NULL) {
+	if(teams == nullptr) {
 		return;
 	}
 
@@ -840,7 +840,7 @@ std::string team::get_side_color_index(int side)
 {
 	size_t index = size_t(side-1);
 
-	if(teams != NULL && index < teams->size()) {
+	if(teams != nullptr && index < teams->size()) {
 		const std::string side_map = (*teams)[index].color();
 		if(!side_map.empty()) {
 			return side_map;

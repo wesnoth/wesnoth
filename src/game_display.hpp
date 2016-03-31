@@ -111,7 +111,7 @@ public:
 
 	/**
 	 * Sets the route along which footsteps are drawn to show movement of a
-	 * unit. If NULL, no route is displayed. @a route does not have to remain
+	 * unit. If nullptr, no route is displayed. @a route does not have to remain
 	 * valid after being set.
 	 */
 	void set_route(const pathfind::marked_route *route);

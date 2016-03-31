@@ -71,7 +71,7 @@ bool open_object(const std::string& path_or_url)
 		ERR_DU << "open_object(): fork() failed" << std::endl;
 		return false;
 	} else if(child == 0) {
-		execlp(launcher, launcher, path_or_url.c_str(), reinterpret_cast<char*>(NULL));
+		execlp(launcher, launcher, path_or_url.c_str(), nullptr);
 		_exit(1); // This shouldn't happen.
 	} else if(waitpid(child, &child_status, 0) == -1) {
 		ERR_DU << "open_object(): waitpid() failed" << std::endl;
@@ -97,7 +97,7 @@ bool open_object(const std::string& path_or_url)
 
 	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
 
-	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(NULL, L"open", u16path.c_str(), NULL, NULL, SW_SHOW));
+	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(nullptr, L"open", u16path.c_str(), nullptr, nullptr, SW_SHOW));
 	if(res <= 32) {
 		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")" << std::endl;
 		return false;

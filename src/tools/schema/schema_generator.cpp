@@ -163,7 +163,7 @@ int main(int argc, char *argv[]){
 		while (true) {
 			std::cin.get(c);
 			const char *r = strchr("yYnN",c);
-			if (r == NULL){
+			if (r == nullptr){
 				std::cout << "Please, choose your answer " << std::endl;
 				continue;
 			}

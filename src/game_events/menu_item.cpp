@@ -206,7 +206,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	{
 		//It is possible to for example show a help menu during a [delay] of a synced event.
 		set_scontext_unsynced leave_synced_context;
-		assert(resources::game_events != NULL);
+		assert(resources::game_events != nullptr);
 		resources::game_events->pump().fire(event_name_, event_hex);
 		return;
 	}
@@ -223,7 +223,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	}
 	else
 	{
-		synced_context::run_in_synced_context_if_not_already("fire_event",  replay_helper::get_event(event_name_, event_hex, NULL));
+		synced_context::run_in_synced_context_if_not_already("fire_event",  replay_helper::get_event(event_name_, event_hex, nullptr));
 	}
 }
 

@@ -138,7 +138,7 @@ scenario::~scenario()
 
 bool scenario::can_launch_game() const
 {
-	return map_.get() != NULL;
+	return map_.get() != nullptr;
 }
 
 surface scenario::create_image_surface(const SDL_Rect& image_rect)
@@ -187,7 +187,7 @@ std::string scenario::map_size() const
 {
 	std::stringstream map_size;
 
-	if (map_.get() != NULL) {
+	if (map_.get() != nullptr) {
 		map_size << map_.get()->w();
 		map_size << utils::unicode_multiplication_sign;
 		map_size << map_.get()->h();
@@ -200,7 +200,7 @@ std::string scenario::map_size() const
 
 void scenario::set_sides()
 {
-	if (map_.get() != NULL) {
+	if (map_.get() != nullptr) {
 		// If there are less sides in the configuration than there are
 		// starting positions, then generate the additional sides
 		const int map_positions = map_->num_valid_starting_positions();
@@ -227,7 +227,7 @@ user_map::user_map(const config& data, const std::string& name, gamemap* map) :
 	scenario(data),
 	name_(name)
 {
-	if (map != NULL) {
+	if (map != nullptr) {
 		map_.reset(new gamemap(*map));
 	}
 }
@@ -407,8 +407,8 @@ create_engine::create_engine(CVideo& v, saved_game& state) :
 	mods_(),
 	state_(state),
 	video_(v),
-	dependency_manager_(NULL),
-	generator_(NULL)
+	dependency_manager_(nullptr),
+	generator_(nullptr)
 {
 	DBG_MP << "restoring game config\n";
 
@@ -423,10 +423,10 @@ create_engine::create_engine(CVideo& v, saved_game& state) :
 	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, video_));
 	//TODO the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
-		NULL, filesystem::FILE_NAME_ONLY);
+		nullptr, filesystem::FILE_NAME_ONLY);
 
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
-		NULL, filesystem::FILE_NAME_ONLY);
+		nullptr, filesystem::FILE_NAME_ONLY);
 
 	DBG_MP << "initializing all levels, eras and mods\n";
 
@@ -804,7 +804,7 @@ void create_engine::set_current_level(const size_t index)
 
 		generator_.reset(current_random_map->create_map_generator());
 	} else {
-		generator_.reset(NULL);
+		generator_.reset(nullptr);
 	}
 
 	if (current_level_type_ != level::TYPE::CAMPAIGN &&
@@ -849,7 +849,7 @@ bool create_engine::toggle_current_mod(bool force)
 
 bool create_engine::generator_assigned() const
 {
-	return generator_ != NULL;
+	return generator_ != nullptr;
 }
 
 void create_engine::generator_user_config(CVideo& v)

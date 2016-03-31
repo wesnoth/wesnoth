@@ -330,7 +330,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 			switch(ct.v) {
 				case game_classification::CAMPAIGN_TYPE::SCENARIO: {
 					const std::string campaign_id = cfg_summary["campaign"];
-					const config* campaign = NULL;
+					const config* campaign = nullptr;
 					if(!campaign_id.empty()) {
 						if(const config& c = cache_config_.find_child(
 								   "campaign", "id", campaign_id)) {
@@ -339,7 +339,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 						}
 					}
 					utils::string_map symbols;
-					if(campaign != NULL) {
+					if(campaign != nullptr) {
 						symbols["campaign_name"] = (*campaign)["name"];
 					} else {
 						// Fallback to nontranslatable campaign id.
@@ -348,7 +348,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 					str << vgettext("Campaign: $campaign_name", symbols);
 
 					// Display internal id for debug purposes if we didn't above
-					if(game_config::debug && (campaign != NULL)) {
+					if(game_config::debug && (campaign != nullptr)) {
 						str << '\n' << "(" << campaign_id << ")";
 					}
 					break;

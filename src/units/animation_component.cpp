@@ -41,7 +41,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 	}
 
 	if(max_val == unit_animation::MATCH_FAIL) {
-		return NULL;
+		return nullptr;
 	}
 	return options[rand()%options.size()];
 }

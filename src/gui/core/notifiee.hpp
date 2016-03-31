@@ -35,7 +35,7 @@ public:
 	typedef FUNCTOR tfunctor;
 	friend class tnotifier<tfunctor>;
 
-	tnotifiee() : notifier_(NULL)
+	tnotifiee() : notifier_(nullptr)
 	{
 	}
 

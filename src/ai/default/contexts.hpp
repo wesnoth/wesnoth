@@ -195,7 +195,7 @@ public:
 
 
 	default_ai_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 

@@ -84,7 +84,7 @@ namespace lua_race {
 
 		static luaL_Reg const callbacks[] = {
 			{ "__index", 	    &impl_race_get},
-			{ NULL, NULL }
+			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, callbacks, 0);
 

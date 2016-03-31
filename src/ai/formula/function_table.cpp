@@ -65,7 +65,7 @@ class unit_adapter {
 		}
 
 		int damage_from(const attack_type& attack) const {
-			if(unit_type_ != NULL) {
+			if(unit_type_ != nullptr) {
 				return unit_type_->movement_type().resistance_against(attack);
 			} else {
 				return unit_->damage_from(attack, false, map_location());
@@ -75,7 +75,7 @@ class unit_adapter {
 		// FIXME: we return a vector by value because unit_type and unit APIs
 		// disagree as to what should be returned by their attacks() method
 		std::vector<attack_type> attacks() const {
-			if(unit_type_ != NULL) {
+			if(unit_type_ != nullptr) {
 				return unit_type_->attacks();
 			} else {
 				return unit_->attacks();
@@ -83,7 +83,7 @@ class unit_adapter {
 		}
 
 		int movement_cost(const t_translation::t_terrain & terrain) const {
-			if(unit_type_ != NULL) {
+			if(unit_type_ != nullptr) {
 				return unit_type_->movement_type().movement_cost(terrain);
 			} else {
 				return unit_->movement_cost(terrain);
@@ -581,19 +581,19 @@ private:
 
 		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
 
-		if (u_call == NULL) {
+		if (u_call == nullptr) {
 			return variant();
 		}
 
 		const unit& un = u_call->get_unit();
 
-		map_location const* loc = NULL;
+		map_location const* loc = nullptr;
 
 		if(args().size()==2) {
 			loc = &convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"timeofday_modifier:location")))->loc();
 		}
 
-		if (loc == NULL) {
+		if (loc == nullptr) {
 			loc = &u_call->get_location();
 		}
 
@@ -760,7 +760,7 @@ private:
 		}
 
 		battle_context bc(units, convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"calculate_outcome:attacker_attack_location")))->loc(),
-			defender_location, weapon, -1, 1.0, NULL, &*units.find(attacker_location));
+			defender_location, weapon, -1, 1.0, nullptr, &*units.find(attacker_location));
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();
 		int i = 0;

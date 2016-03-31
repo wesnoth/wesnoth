@@ -252,7 +252,7 @@ public:
 	 * Captures the keyboard input.
 	 *
 	 * @param widget              The widget which should capture the keyboard.
-	 *                            Sending NULL releases the capturing.
+	 *                            Sending nullptr releases the capturing.
 	 */
 	void keyboard_capture(twidget* widget);
 

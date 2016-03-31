@@ -512,7 +512,7 @@ bool class_source_parser::check_allow_link(const std::string &s){
 		if (!current_.empty()){
 			std::string link = sub[1];
 			current_.back().add_link(link);
-			if (static_cast<const class_tag>(root_).find_tag(link,root_) == NULL){
+			if (static_cast<const class_tag>(root_).find_tag(link,root_) == nullptr){
 				errors_.add_link_error(input_,line_,link);
 			}
 		}

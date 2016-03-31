@@ -130,7 +130,7 @@ void room::send_server_message(const char* message, network::connection sock,
 						   simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
-	if(docptr == NULL) {
+	if(docptr == nullptr) {
 		docptr = &docbuf;
 	}
 	simple_wml::document& doc = *docptr;

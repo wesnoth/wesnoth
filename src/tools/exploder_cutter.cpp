@@ -79,13 +79,13 @@ void cutter::load_masks(const config& conf)
 			cur_mask.cut = cut;
 			cur_mask.filename = image;
 			surface tmp(IMG_Load(image.c_str()));
-			if(tmp == NULL)
+			if(tmp == nullptr)
 				throw exploder_failure("Unable to load mask image " + image);
 
 			cur_mask.image = make_neutral_surface(tmp);
 		}
 
-		if(masks_[name].image == NULL)
+		if(masks_[name].image == nullptr)
 			throw exploder_failure("Unable to load mask image " + image);
 	}
 }
@@ -147,7 +147,7 @@ void cutter::add_sub_image(const surface &surf, surface_map &map, const config* 
 
 	positioned_surface ps;
 	ps.image = ::cut_surface(surf, cut);
-	if(ps.image == NULL)
+	if(ps.image == nullptr)
 		throw exploder_failure("Unable to cut surface!");
 	ps.name = name;
 	ps.mask = mask;

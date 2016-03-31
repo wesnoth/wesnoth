@@ -48,7 +48,7 @@ public:
 		, seen_ids_()
 		, side_(0)
 		, side_cfg_(side_cfg)
-		, t_(NULL)
+		, t_(nullptr)
 		, teams_(teams)
 		, unit_configs_()
 	{
@@ -65,7 +65,7 @@ public:
 		//create a new instance of team and push it to back of resources::teams vector
 		new_team();
 
-		assert(t_!=NULL);
+		assert(t_!=nullptr);
 
 		//set team objectives if necessary
 		objectives();

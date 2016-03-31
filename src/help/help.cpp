@@ -41,7 +41,6 @@
 #include "widgets/button.hpp"           // for button
 
 #include <assert.h>                     // for assert
-#include <stddef.h>                     // for NULL
 #include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
@@ -94,14 +93,14 @@ extern config dummy_cfg;
 
 help_manager::help_manager(const config *cfg) //, gamemap *_map)
 {
-	game_cfg = cfg == NULL ? &dummy_cfg : cfg;
+	game_cfg = cfg == nullptr ? &dummy_cfg : cfg;
 //	map = _map;
 }
 
 help_manager::~help_manager()
 {
-	game_cfg = NULL;
-//	map = NULL;
+	game_cfg = nullptr;
+//	map = nullptr;
 	toplevel.clear();
 	hidden_sections.clear();
     // These last numbers must be reset so that the content is regenerated.

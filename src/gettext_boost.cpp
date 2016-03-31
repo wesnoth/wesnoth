@@ -225,7 +225,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 	std::string msgval = dgettext (domainname, msgid);
 	if (msgval == msgid) {
 		const char* firsthat = std::strrchr (msgid, '^');
-		if (firsthat == NULL)
+		if (firsthat == nullptr)
 			msgval = msgid;
 		else
 			msgval = firsthat + 1;
@@ -238,7 +238,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	std::string msgval = boost::locale::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
 		const char* firsthat = std::strrchr (singular, '^');
-		if (firsthat == NULL)
+		if (firsthat == nullptr)
 			msgval = singular;
 		else
 			msgval = firsthat + 1;

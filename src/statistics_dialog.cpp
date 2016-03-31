@@ -317,9 +317,9 @@ void statistics_dialog::do_scene_selection()
 
 	// Let the player choose a scenario.
 	SDL_Rect const &loc = scene_btn_->location();
-	size_t new_scenario = gui::show_dialog(get_video(), NULL, "", "",
-	                                       gui::MESSAGE, &names, NULL, "", NULL,
-	                                       -1, NULL, loc.x, loc.y + loc.h);
+	size_t new_scenario = gui::show_dialog(get_video(), nullptr, "", "",
+	                                       gui::MESSAGE, &names, nullptr, "", nullptr,
+	                                       -1, nullptr, loc.x, loc.y + loc.h);
 
 	if ( new_scenario != scenario_index_  &&  new_scenario < scenarios_.size() )
 	{

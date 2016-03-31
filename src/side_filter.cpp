@@ -48,7 +48,7 @@ side_filter::side_filter()
 	: cfg_(vconfig::unconstructed_vconfig())
 	, flat_()
 	, side_string_()
-	, fc_(NULL)
+	, fc_(nullptr)
 {
 	assert(false);
 }

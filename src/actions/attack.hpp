@@ -48,7 +48,7 @@ inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp,
 /** Structure describing the statistics of a unit involved in the battle. */
 struct battle_context_unit_stats
 {
-	const attack_type *weapon;	/**< The weapon used by the unit to attack the opponent, or NULL if there is none. */
+	const attack_type *weapon;	/**< The weapon used by the unit to attack the opponent, or nullptr if there is none. */
 	int attack_num;			/**< Index into unit->attacks() or -1 for none. */
 	bool is_attacker;		/**< True if the unit is the attacker. */
 	bool is_poisoned;		/**< True if the unit is poisoned at the beginning of the battle. */
@@ -109,7 +109,7 @@ struct battle_context_unit_stats
 	battle_context_unit_stats(int dmg, int blows, int hitpoints, int maximum_hp,
 	                          int hit_chance, bool drain, bool slows, bool slowed,
 	                          bool berserk, bool first, bool do_swarm) :
-		weapon(NULL), attack_num(0), is_attacker(true), // These are not used in attack prediction.
+		weapon(nullptr), attack_num(0), is_attacker(true), // These are not used in attack prediction.
 		is_poisoned(false), is_slowed(slowed),
 		slows(slows), drains(drain), petrifies(false), plagues(false),
 		poisons(false), backstab_pos(false), swarm(do_swarm), firststrike(first), disable(false),
@@ -145,8 +145,8 @@ public:
 	battle_context(const unit_map &units,
 	               const map_location& attacker_loc, const map_location& defender_loc,
 	               int attacker_weapon = -1, int defender_weapon = -1,
-	               double aggression = 0.0, const combatant *prev_def = NULL,
-	               const unit* attacker_ptr=NULL);
+	               double aggression = 0.0, const combatant *prev_def = nullptr,
+	               const unit* attacker_ptr=nullptr);
 
 	/** Used by the AI which caches battle_context_unit_stats */
 	battle_context(const battle_context_unit_stats &att, const battle_context_unit_stats &def);
@@ -163,8 +163,8 @@ public:
 	const battle_context_unit_stats& get_defender_stats() const { return *defender_stats_; }
 
 	/** Get the simulation results. */
-	const combatant &get_attacker_combatant(const combatant *prev_def = NULL);
-	const combatant &get_defender_combatant(const combatant *prev_def = NULL);
+	const combatant &get_attacker_combatant(const combatant *prev_def = nullptr);
+	const combatant &get_defender_combatant(const combatant *prev_def = nullptr);
 
 	/** Given this harm_weight, is this attack better than that? */
 	bool better_attack(class battle_context &that, double harm_weight);
@@ -213,7 +213,7 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 */
 struct advance_unit_params
 {
-	advance_unit_params(const map_location& loc) : loc_(loc), ai_advancements_(NULL), force_dialog_(false), fire_events_(true), animate_(true) {}
+	advance_unit_params(const map_location& loc) : loc_(loc), ai_advancements_(nullptr), force_dialog_(false), fire_events_(true), animate_(true) {}
 	advance_unit_params& ai_advancements(const ai::unit_advancements_aspect& value) {ai_advancements_ = &value; return *this;}
 	advance_unit_params& force_dialog(bool value) {force_dialog_ = value; return *this;}
 	advance_unit_params& fire_events(bool value) {fire_events_ = value; return *this;}
@@ -245,17 +245,17 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option);
  * that we're going to delete, since deletion would invalidate the reference.
  */
 void advance_unit(map_location loc, const std::string &advance_to,
-                  const bool &fire_event = true, const config * mod_option = NULL);
+                  const bool &fire_event = true, const config * mod_option = nullptr);
 
 /**
  * function which tests if the unit at loc is currently affected by leadership.
  * (i.e. has a higher-level 'leadership' unit next to it).
  * If it does, then the location of the leader unit will be returned,
  * Otherwise map_location::null_location() will be returned.
- * If 'bonus' is not NULL, the % bonus will be stored in it.
+ * If 'bonus' is not nullptr, the % bonus will be stored in it.
  */
 map_location under_leadership(const unit_map& units, const map_location& loc,
-                              int* bonus=NULL);
+                              int* bonus=nullptr);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by

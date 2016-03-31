@@ -19,7 +19,7 @@ namespace actions {
 	struct undo_action_base : boost::noncopyable
 	{
 		/// Default constructor.
-		/// This is the only way to get NULL view_info.
+		/// This is the only way to get nullptr view_info.
 		undo_action_base()
 		{ }
 		// Virtual destructor to support derived classes.

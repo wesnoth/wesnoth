@@ -61,7 +61,7 @@ public:
 	editor_action* drag_end_left(editor_display& disp, int x, int y);
 
 	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {
-		return NULL;
+		return nullptr;
 	}
 
 	virtual void set_mouse_overlay(editor_display& disp);

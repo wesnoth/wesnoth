@@ -73,7 +73,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	tod_manager_(level),
 	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
+	lua_kernel_(new game_lua_kernel(nullptr, *this, pc, *reports_)),
 	events_manager_(new game_events::manager()),
 	player_number_(level["playing_team"].to_int() + 1),
 	end_level_data_(),
@@ -219,7 +219,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 	pathfind_manager_.reset(new pathfind::manager(level));
 
-	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
+	lua_kernel_.reset(new game_lua_kernel(nullptr, *this, pc, *reports_));
 }
 
 void game_state::bind(wb::manager *, game_display * gd)
@@ -260,7 +260,7 @@ void game_state::write(config& cfg) const
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
-	if(end_level_data_.get_ptr() != NULL) {
+	if(end_level_data_.get_ptr() != nullptr) {
 		end_level_data_->write(cfg.add_child("end_level_data"));
 	}
 }
@@ -314,7 +314,7 @@ bool game_state::can_recruit_from(const map_location& leader_loc, int side) cons
  		return false;
 	}
 
-	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
+	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, nullptr,
 	                                  &(board_.teams())[side-1])
 	       != map_location::null_location();
 }

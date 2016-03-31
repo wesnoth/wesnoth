@@ -102,7 +102,7 @@ public:
 	 *
 	 * @param handle              The instance id of the window.
 	 *
-	 * @returns                   The window or NULL.
+	 * @returns                   The window or nullptr.
 	 */
 	static twindow* window_instance(const unsigned handle);
 

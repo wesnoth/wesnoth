@@ -196,7 +196,7 @@ unit* game_board::get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all)
 {
 	unit_map::iterator ui = find_visible_unit(loc, current_team, see_all);
-	if (ui == units_.end()) return NULL;
+	if (ui == units_.end()) return nullptr;
 	return &*ui;
 }
 

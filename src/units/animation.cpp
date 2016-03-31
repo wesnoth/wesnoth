@@ -96,7 +96,7 @@ struct animation_cursor
 	animation_branches branches;
 	animation_cursor *parent;
 	animation_cursor(const config &cfg):
-		itors(cfg.all_children_range()), branches(1), parent(NULL)
+		itors(cfg.all_children_range()), branches(1), parent(nullptr)
 	{
 		branches.back().attributes.merge_attributes(cfg);
 	}
@@ -1339,7 +1339,7 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 		tmp.text_color = text_color;
 		tmp.src = src;
 		tmp.with_bars= with_bars;
-		tmp.animation = NULL;
+		tmp.animation = nullptr;
 		animated_units_.push_back(tmp);
 	}else {
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
@@ -1363,7 +1363,7 @@ void unit_animator::start_animations()
 		if(anim->animation) {
 			anim->my_unit->anim_comp().start_animation(begin_time, anim->animation,
 				anim->with_bars,  anim->text, anim->text_color);
-			anim->animation = NULL;
+			anim->animation = nullptr;
 		} else {
 			anim->my_unit->anim_comp().get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));
 		}

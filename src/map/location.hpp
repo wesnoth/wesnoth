@@ -59,7 +59,7 @@ struct map_location {
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
-	map_location(const config& cfg, const variable_set *variables = NULL);
+	map_location(const config& cfg, const variable_set *variables = nullptr);
 
 	static const map_location & ZERO();
 	static const map_location & null_location();

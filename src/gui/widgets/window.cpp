@@ -97,7 +97,7 @@ public:
 
 	twidget* build() const
 	{
-		return NULL;
+		return nullptr;
 	}
 };
 
@@ -142,8 +142,8 @@ static Uint32 draw_timer(Uint32, void*)
 
 	data.type = DRAW_EVENT;
 	data.code = 0;
-	data.data1 = NULL;
-	data.data2 = NULL;
+	data.data1 = nullptr;
+	data.data2 = nullptr;
 
 	event.type = DRAW_EVENT;
 	event.user = data;
@@ -193,8 +193,8 @@ static bool helptip()
 
 	data.type = SHOW_HELPTIP_EVENT;
 	data.code = 0;
-	data.data1 = NULL;
-	data.data2 = NULL;
+	data.data1 = nullptr;
+	data.data2 = nullptr;
 
 	event.type = SHOW_HELPTIP_EVENT;
 	event.user = data;
@@ -282,7 +282,7 @@ twindow* tmanager::window(const unsigned id)
 	std::map<unsigned, twindow*>::iterator itor = windows_.find(id);
 
 	if(itor == windows_.end()) {
-		return NULL;
+		return nullptr;
 	} else {
 		return itor->second;
 	}
@@ -614,7 +614,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		{
 			if(interval_ == 0) {
 				draw_interval = 30;
-				SDL_AddTimer(draw_interval, draw_timer, NULL);
+				SDL_AddTimer(draw_interval, draw_timer, nullptr);
 
 				// There might be some time between creation and showing so
 				// reupdate the sizes.
@@ -657,8 +657,8 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 
 		data.type = CLOSE_WINDOW_EVENT;
 		data.code = tmanager::instance().get_id(*this);
-		data.data1 = NULL;
-		data.data2 = NULL;
+		data.data1 = nullptr;
+		data.data2 = nullptr;
 
 		event.type = CLOSE_WINDOW_EVENT;
 		event.user = data;
@@ -687,7 +687,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 				 * return the proper button state. When initializing here all
 				 * works fine.
 				 */
-				mouse_button_state_ = SDL_GetMouseState(NULL, NULL);
+				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
 				mouse_button_state_initialised = true;
 			}
 
@@ -1041,7 +1041,7 @@ void twindow::layout()
 			: h_(variables_, &functions_);
 
 	/***** Handle click dismiss status. *****/
-	tbutton* click_dismiss_button = NULL;
+	tbutton* click_dismiss_button = nullptr;
 	if((click_dismiss_button
 		= find_widget<tbutton>(this, "click_dismiss", false, false))) {
 
@@ -1281,7 +1281,7 @@ void swap_grid(tgrid* grid,
 	widget->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = NULL;
+	tgrid* parent_grid = nullptr;
 	if(grid) {
 		parent_grid = find_widget<tgrid>(grid, id, false, false);
 	}
@@ -1308,7 +1308,7 @@ void swap_grid(tgrid* grid,
 
 void twindow::finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid)
 {
-	swap_grid(NULL, &grid(), content_grid->build(), "_window_content_grid");
+	swap_grid(nullptr, &grid(), content_grid->build(), "_window_content_grid");
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -1534,7 +1534,7 @@ twindow_definition::twindow_definition(const config& cfg)
 }
 
 twindow_definition::tresolution::tresolution(const config& cfg)
-	: tpanel_definition::tresolution(cfg), grid(NULL)
+	: tpanel_definition::tresolution(cfg), grid(nullptr)
 {
 	const config& child = cfg.child("grid");
 	// VALIDATE(child, _("No grid defined."));

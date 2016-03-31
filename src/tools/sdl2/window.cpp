@@ -63,7 +63,7 @@ static void modify(std::string& command, std::string::const_iterator begin)
 
 	if(id >= windows.size()) {
 		utf8::insert(command, utf8::size(command), " -> ID out of range");
-	} else if(windows[id] == NULL) {
+	} else if(windows[id] == nullptr) {
 		utf8::insert(command, utf8::size(command), " -> ID destroyed");
 	} else {
 
@@ -100,11 +100,11 @@ static void destroy(std::string& command, std::string::const_iterator begin)
 
 	if(id >= windows.size()) {
 		utf8::insert(command, utf8::size(command), " -> ID out of range");
-	} else if(windows[id] == NULL) {
+	} else if(windows[id] == nullptr) {
 		utf8::insert(command, utf8::size(command), " -> ID already destroyed");
 	} else {
 		delete windows[id];
-		windows[id] = NULL;
+		windows[id] = nullptr;
 		utf8::insert(command, utf8::size(command), " -> OK");
 	}
 }

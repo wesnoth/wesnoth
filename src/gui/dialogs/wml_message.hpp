@@ -56,10 +56,10 @@ public:
 		, mirror_(mirror)
 		, has_input_(false)
 		, input_caption_("")
-		, input_text_(NULL)
+		, input_text_(nullptr)
 		, input_maximum_length_(0)
 		, option_list_()
-		, chosen_option_(NULL)
+		, chosen_option_(nullptr)
 	{
 	}
 

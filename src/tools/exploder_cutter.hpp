@@ -26,7 +26,7 @@ public:
 	{
 		mask()
 			: name()
-			, image(NULL)
+			, image(nullptr)
 			, filename()
 			, shift()
 			, cut()
@@ -45,7 +45,7 @@ public:
 		positioned_surface()
 			: name()
 			, pos()
-			, image(NULL)
+			, image(nullptr)
 			, mask()
 		{
 		}

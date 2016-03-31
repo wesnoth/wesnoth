@@ -199,7 +199,7 @@ namespace {
 namespace filesystem {
 
 static void push_if_exists(std::vector<std::string> *vec, const path &file, bool full) {
-	if (vec != NULL) {
+	if (vec != nullptr) {
 		if (full)
 			vec->push_back(file.generic_string());
 		else
@@ -353,7 +353,7 @@ void get_files_in_dir(const std::string &dir,
 			}
 			push_if_exists(files, di->path(), mode == ENTIRE_FILE_PATH);
 
-			if (checksum != NULL) {
+			if (checksum != nullptr) {
 				std::time_t mtime = bfs::last_write_time(di->path(), ec);
 				if (ec) {
 					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message() << '\n';
@@ -391,13 +391,13 @@ void get_files_in_dir(const std::string &dir,
 		}
 	}
 
-	if (files != NULL)
+	if (files != nullptr)
 		std::sort(files->begin(),files->end());
 
-	if (dirs != NULL)
+	if (dirs != nullptr)
 		std::sort(dirs->begin(),dirs->end());
 
-	if (files != NULL && reorder == DO_REORDER) {
+	if (files != nullptr && reorder == DO_REORDER) {
 		// move finalcfg_filename, if present, to the end of the vector
 		for (unsigned int i = 0; i < files->size(); i++) {
 			if (ends_with((*files)[i], "/" + finalcfg_filename)) {
@@ -523,8 +523,8 @@ void set_user_data_dir(std::string newprefdir)
 
 		wchar_t docs_path[MAX_PATH];
 
-		HRESULT res = SHGetFolderPathW(NULL,
-									   CSIDL_PERSONAL | CSIDL_FLAG_CREATE, NULL,
+		HRESULT res = SHGetFolderPathW(nullptr,
+									   CSIDL_PERSONAL | CSIDL_FLAG_CREATE, nullptr,
 									   SHGFP_TYPE_CURRENT,
 									   docs_path);
 		if(res != S_OK) {
@@ -675,7 +675,7 @@ std::string get_exe_dir()
 #ifdef _WIN32
     wchar_t process_path[MAX_PATH];
     SetLastError(ERROR_SUCCESS);
-    GetModuleFileNameW(NULL, process_path, MAX_PATH);
+    GetModuleFileNameW(nullptr, process_path, MAX_PATH);
     if (GetLastError() != ERROR_SUCCESS) {
         return get_cwd();
     }

@@ -46,7 +46,7 @@ static int intf_dispatcher ( lua_State* L )
 static int intf_cleanup ( lua_State* L )
 {
 	lua_function * d = static_cast< lua_function *> (luaL_testudata(L, 1, cpp_function));
-	if (d == NULL) {
+	if (d == nullptr) {
 		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
 		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
 		lua_pushstring(L, "C++ function object garbage collection failure");
@@ -92,7 +92,7 @@ void push_function( lua_State* L, const lua_function & f )
 void set_functions( lua_State* L, const lua_cpp::Reg * l)
 {
 	luaL_checkversion(L);
-	for (; l->name != NULL; l++) {  /* fill the table with given functions */
+	for (; l->name != nullptr; l++) {  /* fill the table with given functions */
 		push_function(L, l->func);
 		lua_setfield(L, -2, l->name);
 	}
@@ -115,7 +115,7 @@ void set_functions( lua_State* L, const lua_cpp::Reg * l, int nup )
 {
 	luaL_checkversion(L);
 	luaL_checkstack(L, nup+1, "too many upvalues");
-	for (; l->name != NULL; l++) {  /* fill the table with given functions */
+	for (; l->name != nullptr; l++) {  /* fill the table with given functions */
 		int i;
 		for (i = 0; i < nup; ++i)  /* copy upvalues to the top */
 			lua_pushvalue(L, -nup);

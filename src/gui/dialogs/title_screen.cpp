@@ -132,7 +132,7 @@ static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 	return true;
 }
 
-ttitle_screen::ttitle_screen() : debug_clock_(NULL)
+ttitle_screen::ttitle_screen() : debug_clock_(nullptr)
 {
 }
 
@@ -394,7 +394,7 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 
 	if(debug_clock_) {
 		delete debug_clock_;
-		debug_clock_ = NULL;
+		debug_clock_ = nullptr;
 	} else {
 		debug_clock_ = new tdebug_clock();
 		debug_clock_->show(video, true);

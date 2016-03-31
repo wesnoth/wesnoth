@@ -151,7 +151,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 	char str_buf[10];
 
 	// With a weapon.
-	if(stats.weapon != NULL) {
+	if(stats.weapon != nullptr) {
 
 		// Set specials context (for safety, it should not have changed normally).
 		const attack_type *weapon = stats.weapon;
@@ -162,7 +162,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), stats.backstab_pos);
 
 		// Get the SET damage modifier, if any.
-		const unit_abilities::individual_effect *set_dmg_effect = NULL;
+		const unit_abilities::individual_effect *set_dmg_effect = nullptr;
 		unit_abilities::effect::const_iterator i;
 		for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 			if(i->type == unit_abilities::SET) {
@@ -172,7 +172,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		}
 
 		// Either user the SET modifier or the base weapon damage.
-		if(set_dmg_effect == NULL) {
+		if(set_dmg_effect == nullptr) {
 			left_strings.push_back(weapon->name());
 			str.str("");
 			str << weapon->damage();
@@ -534,7 +534,7 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
 
-		gui::show_dialog(resources::screen->video(), NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
+		gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
 	}
 
 	return gui::CONTINUE_DIALOG;

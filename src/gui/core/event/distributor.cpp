@@ -111,11 +111,11 @@ private:
 
 tmouse_motion::tmouse_motion(twidget& owner,
 							 const tdispatcher::tposition queue_position)
-	: mouse_focus_(NULL)
+	: mouse_focus_(nullptr)
 	, mouse_captured_(false)
 	, owner_(owner)
 	, hover_timer_(0)
-	, hover_widget_(NULL)
+	, hover_widget_(nullptr)
 	, hover_position_(0, 0)
 	, hover_shown_(true)
 	, signal_handler_sdl_mouse_motion_entered_(false)
@@ -296,7 +296,7 @@ void tmouse_motion::show_tooltip()
 	hover_shown_ = true;
 
 	hover_timer_ = 0;
-	hover_widget_ = NULL;
+	hover_widget_ = nullptr;
 	hover_position_ = tpoint(0, 0);
 }
 
@@ -309,9 +309,9 @@ void tmouse_motion::mouse_leave()
 		owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
 	}
 
-	owner_.fire(NOTIFY_REMOVE_TOOLTIP, *mouse_focus_, NULL);
+	owner_.fire(NOTIFY_REMOVE_TOOLTIP, *mouse_focus_, nullptr);
 
-	mouse_focus_ = NULL;
+	mouse_focus_ = nullptr;
 
 	stop_hover_timer();
 }
@@ -353,7 +353,7 @@ void tmouse_motion::stop_hover_timer()
 		}
 
 		hover_timer_ = 0;
-		hover_widget_ = NULL;
+		hover_widget_ = nullptr;
 		hover_position_ = tpoint(0, 0);
 	}
 }
@@ -381,7 +381,7 @@ tmouse_button<sdl_button_down,
 														  queue_position)
 	: tmouse_motion(owner, queue_position)
 	, last_click_stamp_(0)
-	, last_clicked_widget_(NULL)
+	, last_clicked_widget_(nullptr)
 	, focus_(0)
 	, name_(name_)
 	, is_down_(false)
@@ -430,7 +430,7 @@ void tmouse_button<sdl_button_down,
 				   button_double_click>::initialize_state(const bool is_down)
 {
 	last_click_stamp_ = 0;
-	last_clicked_widget_ = NULL;
+	last_clicked_widget_ = nullptr;
 	focus_ = 0;
 	is_down_ = is_down;
 }
@@ -539,7 +539,7 @@ void tmouse_button<sdl_button_down,
 		const unsigned mask = SDL_BUTTON_LMASK | SDL_BUTTON_MMASK
 							  | SDL_BUTTON_RMASK;
 
-		if((SDL_GetMouseState(NULL, NULL) & mask) == 0) {
+		if((SDL_GetMouseState(nullptr, nullptr) & mask) == 0) {
 			mouse_captured_ = false;
 		}
 
@@ -556,7 +556,7 @@ void tmouse_button<sdl_button_down,
 		mouse_button_click(focus_);
 	}
 
-	focus_ = NULL;
+	focus_ = nullptr;
 	handled = true;
 }
 
@@ -581,7 +581,7 @@ void tmouse_button<sdl_button_down,
 
 		owner_.fire(button_double_click, *widget);
 		last_click_stamp_ = 0;
-		last_clicked_widget_ = NULL;
+		last_clicked_widget_ = nullptr;
 
 	} else {
 
@@ -644,7 +644,7 @@ tdistributor::~tdistributor()
 
 void tdistributor::initialize_state()
 {
-	const Uint8 button_state = SDL_GetMouseState(NULL, NULL);
+	const Uint8 button_state = SDL_GetMouseState(nullptr, nullptr);
 
 	tmouse_button_left::initialize_state((button_state & SDL_BUTTON(1)) != 0);
 	tmouse_button_middle::initialize_state((button_state & SDL_BUTTON(2)) != 0);
@@ -659,7 +659,7 @@ void tdistributor::keyboard_capture(twidget* widget)
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::LOSE_KEYBOARD_FOCUS
 				  << ".\n";
 
-		owner_.fire(event::LOSE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
+		owner_.fire(event::LOSE_KEYBOARD_FOCUS, *keyboard_focus_, nullptr);
 	}
 
 	keyboard_focus_ = widget;
@@ -668,7 +668,7 @@ void tdistributor::keyboard_capture(twidget* widget)
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::RECEIVE_KEYBOARD_FOCUS
 				  << ".\n";
 
-		owner_.fire(event::RECEIVE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
+		owner_.fire(event::RECEIVE_KEYBOARD_FOCUS, *keyboard_focus_, nullptr);
 	}
 }
 
@@ -746,7 +746,7 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key,
 		// widget is disabled. If the cast fails, we assume the widget
 		// is enabled and ready to receive events.
 		tcontrol* control = dynamic_cast<tcontrol*>(keyboard_focus_);
-		if(control != NULL && !control->get_active()) {
+		if(control != nullptr && !control->get_active()) {
 			continue;
 		}
 
@@ -775,32 +775,32 @@ void tdistributor::signal_handler_notify_removal(tdispatcher& widget,
 	}
 
 	if(tmouse_button_left::last_clicked_widget_ == &widget) {
-		tmouse_button_left::last_clicked_widget_ = NULL;
+		tmouse_button_left::last_clicked_widget_ = nullptr;
 	}
 	if(tmouse_button_left::focus_ == &widget) {
-		tmouse_button_left::focus_ = NULL;
+		tmouse_button_left::focus_ = nullptr;
 	}
 
 	if(tmouse_button_middle::last_clicked_widget_ == &widget) {
-		tmouse_button_middle::last_clicked_widget_ = NULL;
+		tmouse_button_middle::last_clicked_widget_ = nullptr;
 	}
 	if(tmouse_button_middle::focus_ == &widget) {
-		tmouse_button_middle::focus_ = NULL;
+		tmouse_button_middle::focus_ = nullptr;
 	}
 
 	if(tmouse_button_right::last_clicked_widget_ == &widget) {
-		tmouse_button_right::last_clicked_widget_ = NULL;
+		tmouse_button_right::last_clicked_widget_ = nullptr;
 	}
 	if(tmouse_button_right::focus_ == &widget) {
-		tmouse_button_right::focus_ = NULL;
+		tmouse_button_right::focus_ = nullptr;
 	}
 
 	if(mouse_focus_ == &widget) {
-		mouse_focus_ = NULL;
+		mouse_focus_ = nullptr;
 	}
 
 	if(keyboard_focus_ == &widget) {
-		keyboard_focus_ = NULL;
+		keyboard_focus_ = nullptr;
 	}
 	const std::vector<twidget*>::iterator itor
 			= std::find(keyboard_focus_chain_.begin(),

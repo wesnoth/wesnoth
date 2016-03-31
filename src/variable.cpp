@@ -82,7 +82,7 @@ vconfig::vconfig(const config & cfg, const boost::shared_ptr<const config> & cac
  * See also make_safe().
  */
 vconfig::vconfig(const config &cfg, bool manage_memory) :
-	cache_(manage_memory ? new config(cfg) : NULL),
+	cache_(manage_memory ? new config(cfg) : nullptr),
 	cfg_(manage_memory ? cache_.get() : &cfg)
 {
 }

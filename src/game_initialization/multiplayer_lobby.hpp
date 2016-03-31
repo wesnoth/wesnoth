@@ -145,7 +145,7 @@ public:
 	ADDON_REQ selection_addon_outcome() const
 	{ return empty() ? SATISFIED : games_[selected_].addons_outcome; }
 	const std::vector<required_addon> * selection_addon_requirements() const
-	{ return empty() ? NULL : &games_[selected_].addons; }
+	{ return empty() ? nullptr : &games_[selected_].addons; }
 	bool selected() const { return double_clicked_ && !empty(); }
 	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }

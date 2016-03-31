@@ -139,7 +139,7 @@ static time_t get_time(const config &speak)
 	else
 	{
 		//fallback in case sender uses wesnoth that doesn't send timestamps
-		time = ::time(NULL);
+		time = ::time(nullptr);
 	}
 	return time;
 }
@@ -599,7 +599,7 @@ void replay::revert_action()
 config* replay::get_next_action()
 {
 	if (at_end())
-		return NULL;
+		return nullptr;
 
 	LOG_REPLAY << "up to replay action " << base_->get_pos() + 1 << '/' << ncommands() << '\n';
 
@@ -688,7 +688,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
 
-		if (cfg != NULL)
+		if (cfg != nullptr)
 		{
 			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
 		}

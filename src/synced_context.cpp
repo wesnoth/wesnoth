@@ -529,7 +529,7 @@ leave_synced_context::~leave_synced_context()
 }
 
 set_scontext_unsynced::set_scontext_unsynced()
-	: leaver_(synced_context::is_synced() ? new leave_synced_context() : NULL)
+	: leaver_(synced_context::is_synced() ? new leave_synced_context() : nullptr)
 {
 
 }

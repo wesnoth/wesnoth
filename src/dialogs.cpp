@@ -433,7 +433,7 @@ void show_objectives(const std::string &scenarioname, const std::string &objecti
 int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const std::vector< std::string >& items, int side, const std::string& title_suffix)
 {
 	dialogs::unit_types_preview_pane unit_preview(
-		units, NULL, side);
+		units, nullptr, side);
 	std::vector<gui::preview_pane*> preview_panes;
 	preview_panes.push_back(&unit_preview);
 
@@ -843,7 +843,7 @@ void unit_preview_pane::draw_contents()
 
 	SDL_Rect image_rect = sdl::create_rect(area.x, area.y, 0, 0);
 
-	if(unit_image != NULL) {
+	if(unit_image != nullptr) {
 		SDL_Rect rect = sdl::create_rect(
 				  right_align
 					? area.x
@@ -852,7 +852,7 @@ void unit_preview_pane::draw_contents()
 				, unit_image->w
 				, unit_image->h);
 
-		sdl_blit(unit_image,NULL,screen,&rect);
+		sdl_blit(unit_image,nullptr,screen,&rect);
 		image_rect = rect;
 
 		if(!det.overlays.empty()) {
@@ -867,7 +867,7 @@ void unit_preview_pane::draw_contents()
 					os = scale_surface(os, rect.w, rect.h, false);
 				}
 
-				sdl_blit(os, NULL, screen, &rect);
+				sdl_blit(os, nullptr, screen, &rect);
 			}
 		}
 	}
@@ -980,7 +980,7 @@ void unit_preview_pane::draw_contents()
 
 
 units_list_preview_pane::units_list_preview_pane(unit_const_ptr u, TYPE type, bool on_left_side) :
-	unit_preview_pane(NULL, type, on_left_side),
+	unit_preview_pane(nullptr, type, on_left_side),
 	units_(boost::make_shared<const std::vector<unit_const_ptr> >(1, u))
 {
 }
@@ -1073,7 +1073,7 @@ unit_types_preview_pane::unit_types_preview_pane(
 
 size_t unit_types_preview_pane::size() const
 {
-	return (unit_types_!=NULL) ? unit_types_->size() : 0;
+	return (unit_types_!=nullptr) ? unit_types_->size() : 0;
 }
 
 const unit_types_preview_pane::details unit_types_preview_pane::get_details() const
@@ -1081,7 +1081,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	const unit_type* t = (*unit_types_)[index_];
 	details det;
 
-	if (t==NULL)
+	if (t==nullptr)
 		return det;
 
 	// Make sure the unit type is built with enough data for our needs.
@@ -1148,7 +1148,7 @@ void unit_types_preview_pane::process_event()
 	assert(resources::screen);
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
-		if (type != NULL)
+		if (type != nullptr)
 			help::show_unit_description(resources::screen->video(), *type);
 	}
 }

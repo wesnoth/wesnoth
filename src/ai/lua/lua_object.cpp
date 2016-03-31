@@ -42,7 +42,7 @@ namespace ai {
 	boost::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n)
 	{
 		boost::shared_ptr<aspect_attacks_lua_filter> att(new aspect_attacks_lua_filter);
-		att->lua = NULL;
+		att->lua = nullptr;
 		att->ref_own_ = att->ref_enemy_ = -1;
 		if(!lua_istable(L, n)) {
 			return att;

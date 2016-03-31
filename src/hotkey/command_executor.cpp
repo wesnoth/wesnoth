@@ -468,21 +468,21 @@ void basic_handler::handle_event(const SDL_Event& event)
 		// If we're not in a dialog we can call the regular key event handler.
 		if (!gui::in_dialog()) {
 			key_event(event,exec_);
-		} else if (exec_ != NULL) {
+		} else if (exec_ != nullptr) {
 			event_execute(event,exec_);
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
 		if (!gui::in_dialog()) {
 			jbutton_event(event,exec_);
-		} else if (exec_ != NULL) {
+		} else if (exec_ != nullptr) {
 			event_execute(event,exec_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!gui::in_dialog()) {
 			mbutton_event(event,exec_);
-		} else if (exec_ != NULL) {
+		} else if (exec_ != nullptr) {
 			event_execute(event,exec_);
 		}
 		break;
@@ -524,7 +524,7 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 
 void execute_command(const hotkey_command& command, command_executor* executor, int index)
 {
-	if (executor != NULL) {
+	if (executor != nullptr) {
 		if (!executor->can_execute_command(command, index)
 				|| executor->execute_command(command, index)) {
 			return;

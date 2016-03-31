@@ -67,7 +67,7 @@ class CVideo;
 
 #define FAIL(message)                                                     \
 	do {                                                                  \
-		wml_exception(NULL, __FILE__, __LINE__, __func__, message);       \
+		wml_exception(nullptr, __FILE__, __LINE__, __func__, message);       \
 		/* wml_exception never returns. */                                \
 		/* Help the compiler to figure that out */                        \
 		throw 42;                                                         \
@@ -75,7 +75,7 @@ class CVideo;
 
 #define FAIL_WITH_DEV_MESSAGE(message, dev_message)                       \
 	do {                                                                  \
-		wml_exception(NULL                                                \
+		wml_exception(nullptr                                                \
 				, __FILE__                                                \
 				, __LINE__                                                \
 				, __func__                                                \

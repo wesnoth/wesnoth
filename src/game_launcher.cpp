@@ -63,7 +63,7 @@
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>           // for optional
 #include <boost/tuple/tuple.hpp>        // for tuple
-#include <cstdlib>                     // for NULL, system
+#include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
 #include <SDL.h>                        // for SDL_INIT_JOYSTICK, etc
@@ -385,7 +385,7 @@ bool game_launcher::init_video()
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
-	if(icon != NULL) {
+	if(icon != nullptr) {
 
 		video().set_window_icon(icon);
 	}

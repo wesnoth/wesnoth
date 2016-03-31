@@ -63,7 +63,7 @@ editor_action* editor_action_label_delete::perform(map_context& mc) const
 
 	const terrain_label* deleted = mc.get_labels().get_label(loc_);
 
-	if (!deleted) return NULL;
+	if (!deleted) return nullptr;
 
 	undo.reset(new editor_action_label(loc_, deleted->text(), deleted->team_name()
 			, deleted->color(), deleted->visible_in_fog(), deleted->visible_in_shroud(), deleted->immutable(), deleted->category()));

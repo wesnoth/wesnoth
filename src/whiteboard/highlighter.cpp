@@ -224,7 +224,7 @@ void highlighter::find_secondary_highlights()
 	assert(owner_unit_);
 	assert(secondary_highlights_.empty());
 
-	if(owner_unit_ == NULL) {
+	if(owner_unit_ == nullptr) {
 		return;
 	}
 

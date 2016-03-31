@@ -35,12 +35,12 @@ tlobby_player_info::tlobby_player_info(events::chat_handler& chat,
 									   const lobby_info& li)
 	: chat_(chat)
 	, info_(info)
-	, reason_(NULL)
-	, time_(NULL)
-	, relation_(NULL)
-	, add_to_friends_(NULL)
-	, add_to_ignores_(NULL)
-	, remove_from_list_(NULL)
+	, reason_(nullptr)
+	, time_(nullptr)
+	, relation_(nullptr)
+	, add_to_friends_(nullptr)
+	, add_to_ignores_(nullptr)
+	, remove_from_list_(nullptr)
 	, result_open_whisper_(false)
 	, lobby_info_(li)
 {
@@ -103,7 +103,7 @@ void tlobby_player_info::pre_show(twindow& window)
 
 	std::stringstream loc;
 	const game_info* game = lobby_info_.get_game_by_id(info_.game_id);
-	if(game != NULL) {
+	if(game != nullptr) {
 		loc << _("In game:") << " " << game->name << " ";
 		if(info_.observing) {
 			loc << _("(observing)");

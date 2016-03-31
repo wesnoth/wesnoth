@@ -69,7 +69,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		boost::shared_ptr<formula_debugger> fdbp;
 		bool need_wrapper = false;
-		if (fdb==NULL) {
+		if (fdb==nullptr) {
 			fdbp = boost::shared_ptr<formula_debugger>(new formula_debugger());
 			fdb = &*fdbp;
 			need_wrapper = true;
@@ -287,19 +287,19 @@ private:
 
 		if( args().size() == 1)
 		{
-			str1 = var1.to_debug_string(NULL, true);
+			str1 = var1.to_debug_string(nullptr, true);
 			LOG_SF << str1 << std::endl;
 			if(game_config::debug) {
-				game_display::get_singleton()->get_chat_manager().add_chat_message(time(NULL), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
+				game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
 			}
 			return var1;
 		} else {
 			str1 = var1.string_cast();
 			const variant var2 = args()[1]->evaluate(variables,fdb);
-			str2 = var2.to_debug_string(NULL, true);
+			str2 = var2.to_debug_string(nullptr, true);
 			LOG_SF << str1 << str2 << std::endl;
 			if(game_config::debug) {
-				game_display::get_singleton()->get_chat_manager().add_chat_message(time(NULL), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
+				game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
 			}
 			return var2;
 		}
@@ -333,7 +333,7 @@ private:
 		str << "Evaluated in " << (run_time / 1000.0) << " ms on average";
 		LOG_SF << speaker << ": " << str.str() << std::endl;
 		if(game_config::debug) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(time(NULL), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 		}
 		return value;
 	}

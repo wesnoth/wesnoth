@@ -96,7 +96,7 @@ public:
 	 */
 	bool is_root_node() const
 	{
-		return parent_node_ == NULL;
+		return parent_node_ == nullptr;
 	}
 
 	/**
@@ -137,7 +137,7 @@ public:
 	 */
 	virtual iterator::twalker_* create_walker() override
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	/** See @ref twidget::find_at. */

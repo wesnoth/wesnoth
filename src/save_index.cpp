@@ -297,7 +297,7 @@ void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 	if (countdown == infinite_auto_saves)
 		return;
 
-	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
+	std::vector<save_info> games = get_saves_list(nullptr, &auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
 		if (countdown-- <= 0) {
 			LOG_SAVE << "Deleting savegame '" << i->name() << "'\n";

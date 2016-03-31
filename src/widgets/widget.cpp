@@ -103,7 +103,7 @@ void widget::update_location(SDL_Rect const &rect)
 
 const SDL_Rect* widget::clip_rect() const
 {
-	return clip_ ? &clip_rect_ : NULL;
+	return clip_ ? &clip_rect_ : nullptr;
 }
 
 void widget::bg_register(SDL_Rect const &rect)

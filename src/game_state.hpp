@@ -52,7 +52,7 @@ public:
 	boost::scoped_ptr<reports> reports_;
 	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
-	/// undo_stack_ is never NULL. It is implemented as a pointer so that
+	/// undo_stack_ is never nullptr. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
 	boost::scoped_ptr<actions::undo_list> undo_stack_;

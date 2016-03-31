@@ -23,7 +23,6 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"    // for unit_map::const_iterator, etc
 
-#include <cstddef>                     // for NULL
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, char_traits, etc
 #include <vector>                       // for vector
@@ -82,7 +81,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 
 	LOG_LUA << "Entering unit_advancements_aspect::get_advancements() in instance " << this << " with unit " << unit_id <<  " on (x,y) = (" << unit_x << ", " << unit_y << ")\n";
 
-	if(L_ == NULL || ref_ == LUA_REFNIL)
+	if(L_ == nullptr || ref_ == LUA_REFNIL)
 	{
 		//If we end up here, most likely the aspect don't use the lua-engine.
 		//Just to make sure:

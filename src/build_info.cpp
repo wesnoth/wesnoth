@@ -71,7 +71,7 @@ version_table_manager::version_table_manager()
 	, features()
 {
 	SDL_version sdl_version;
-	const SDL_version* sdl_rt_version = NULL;
+	const SDL_version* sdl_rt_version = nullptr;
 
 
 	//
@@ -172,7 +172,7 @@ version_table_manager::version_table_manager()
 
 #ifdef HAVE_LIBPNG
 	compiled[LIB_PNG] = PNG_LIBPNG_VER_STRING;
-	linked[LIB_PNG] = png_get_libpng_ver(NULL);
+	linked[LIB_PNG] = png_get_libpng_ver(nullptr);
 	names[LIB_PNG] = "libpng";
 #endif
 

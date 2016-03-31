@@ -587,7 +587,7 @@ bool variant::as_bool() const
 	case TYPE_DECIMAL:
 		return decimal_value_ != 0;
 	case TYPE_CALLABLE:
-		return callable_ != NULL;
+		return callable_ != nullptr;
 	case TYPE_LIST:
 		return !list_->elements.empty();
 	case TYPE_MAP:

@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-tpopup::tpopup() : window_(NULL)
+tpopup::tpopup() : window_(nullptr)
 {
 }
 
@@ -59,7 +59,7 @@ void tpopup::hide()
 	if(window_) {
 		window_->undraw();
 		delete window_;
-		window_ = NULL;
+		window_ = nullptr;
 	}
 }
 

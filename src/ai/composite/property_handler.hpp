@@ -88,7 +88,7 @@ public:
 		if (i!=values_.end()){
 			return &*(*i);
 		}
-		return NULL;
+		return nullptr;
 	}
 	bool handle_change(const path_element &child, config cfg)
 	{
@@ -235,7 +235,7 @@ public:
 		if (a!=aspects_.end()){
 			return &*a->second;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	bool handle_change(const path_element &child, config cfg)

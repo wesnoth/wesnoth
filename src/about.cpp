@@ -40,7 +40,6 @@
 #include <algorithm>                    // for max
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
-#include <cstddef>                     // for NULL
 #include <map>                          // for map, map<>::mapped_type
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
@@ -211,7 +210,7 @@ void show_about(CVideo &video, const std::string &campaign)
 {
 	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
 	surface& screen = video.getSurface();
-	if (screen == NULL) return;
+	if (screen == nullptr) return;
 
 	// If the title is multi-line, we need to split it accordingly or we
 	// get slight scrolling glitches in the credits screen.
@@ -350,14 +349,14 @@ void show_about(CVideo &video, const std::string &campaign)
 
 		if (redraw_mapimage) {
 			// draw map to screen, thus erasing all text
-			sdl_blit(map_image_scaled, NULL, screen, NULL);
+			sdl_blit(map_image_scaled, nullptr, screen, nullptr);
 			update_rect(screen_rect);
 
 			// redraw the dialog
 			f.draw_background();
 			f.draw_border();
 			// cache the dialog background (alpha blending + blurred map)
-			sdl_blit(screen, &text_rect, text_surf, NULL);
+			sdl_blit(screen, &text_rect, text_surf, nullptr);
 			redraw_mapimage = false;
 		} else {
 			// redraw the saved part of the dialog where text scrolled
@@ -385,7 +384,7 @@ void show_about(CVideo &video, const std::string &campaign)
 				// since the real drawing on screen is clipped,
 				// we do a dummy one to get the height of the not clipped line.
 				// (each time because special format characters may change it)
-				const int line_height = font::draw_text(NULL, text_rect, def_size, def_color,
+				const int line_height = font::draw_text(nullptr, text_rect, def_size, def_color,
 										text[line], 0,0).h;
 
 				if(is_new_line) {

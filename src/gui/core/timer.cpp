@@ -99,7 +99,7 @@ static Uint32 timer_callback(Uint32, void* id)
 	data.type = TIMER_EVENT;
 	data.code = 0;
 	data.data1 = id;
-	data.data2 = NULL;
+	data.data2 = nullptr;
 
 	event.type = TIMER_EVENT;
 	event.user = data;

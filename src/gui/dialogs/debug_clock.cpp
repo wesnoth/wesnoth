@@ -175,7 +175,7 @@ tdebug_clock::ttime::ttime() : hour(0), minute(0), second(0), millisecond(0)
 
 void tdebug_clock::ttime::set_current_time()
 {
-	time_t now = time(NULL);
+	time_t now = time(nullptr);
 	tm* stamp = localtime(&now);
 
 	hour = stamp->tm_hour;

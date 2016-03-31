@@ -48,13 +48,13 @@ const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
 const size_t dialog::left_padding = font::relative_size(10);
 const size_t dialog::right_padding = font::relative_size(10);
-const size_t dialog::image_h_pad = font::relative_size(/*image_ == NULL ? 0 :*/ 10);
+const size_t dialog::image_h_pad = font::relative_size(/*image_ == nullptr ? 0 :*/ 10);
 const size_t dialog::top_padding = font::relative_size(10);
 const size_t dialog::bottom_padding = font::relative_size(10);
 
 const int dialog::max_menu_width = -1;
 
-menu * dialog::empty_menu = NULL;
+menu * dialog::empty_menu = nullptr;
 }
 
 namespace {
@@ -97,11 +97,11 @@ dialog::dimension_measurements::dimension_measurements() :
 dialog::dialog(CVideo& video, const std::string& title, const std::string& message,
 		const DIALOG_TYPE type, const style& dialog_style) :
 	video_(video),
-	image_(NULL),
+	image_(nullptr),
 	title_(title),
 	style_(dialog_style),
-	title_widget_(NULL),
-	message_(NULL),
+	title_widget_(nullptr),
+	message_(nullptr),
 	type_(type),
 	menu_(get_empty_menu(video)),
 	preview_panes_(),
@@ -111,9 +111,9 @@ dialog::dialog(CVideo& video, const std::string& title, const std::string& messa
 	top_buttons_(),
 	frame_buttons_(),
 	topic_(),
-	help_button_(NULL),
-	text_widget_(NULL),
-	frame_(NULL),
+	help_button_(nullptr),
+	text_widget_(nullptr),
+	frame_(nullptr),
 	dim_(),
 	result_(CONTINUE_DIALOG)
 {
@@ -270,8 +270,8 @@ void dialog::set_menu_items(const std::vector<std::string> &menu_items, bool kee
  */
 menu * dialog::get_empty_menu(CVideo& video)
 {
-	if ( empty_menu == NULL ) {
-		empty_menu = new gui::menu(video, empty_string_vector, false, -1, -1, NULL, &menu::simple_style);
+	if ( empty_menu == nullptr ) {
+		empty_menu = new gui::menu(video, empty_string_vector, false, -1, -1, nullptr, &menu::simple_style);
 		empty_menu->leave();
 	}
 	return empty_menu;
@@ -369,7 +369,7 @@ void dialog::draw_contents()
 
 dialog_frame& dialog::get_frame()
 {
-	if(frame_ == NULL) {
+	if(frame_ == nullptr) {
 		frame_buttons_.clear();
 		for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
 		{
@@ -382,7 +382,7 @@ dialog_frame& dialog::get_frame()
 
 void dialog::clear_background() {
 	delete frame_;
-	frame_ = NULL;
+	frame_ = nullptr;
 }
 
 void dialog::draw_frame()
@@ -411,7 +411,7 @@ void dialog::update_widget_positions()
 	if(get_menu().height() > 0) {
 		menu_->leave();
 		menu_->join();
-		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
+		menu_->set_numeric_keypress_selection(text_widget_ == nullptr);
 		menu_->set_width( dim_.menu_width );
 		menu_->set_max_width( dim_.menu_width ); //lock the menu width
 		if(dim_.menu_height >= 0) {
@@ -471,7 +471,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	dim.x = xloc;
 	dim.y = yloc;
 
-	const bool use_textbox = (text_widget_ != NULL);
+	const bool use_textbox = (text_widget_ != nullptr);
 	int text_widget_width = 0;
 	int text_widget_height = 0;
 	if(use_textbox) {
@@ -479,7 +479,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		dim.textbox.w = std::min<size_t>(screen.getx()/2,std::max<size_t>(area.w,text_widget_->width()));
 		dim.textbox.h = std::min<size_t>(screen.gety()/2,std::max<size_t>(area.h,text_widget_->height()));
 		text_widget_width = dim.textbox.w;
-		text_widget_width += (text_widget_->get_label() == NULL) ? 0 : text_widget_->get_label()->width();
+		text_widget_width += (text_widget_->get_label() == nullptr) ? 0 : text_widget_->get_label()->width();
 		text_widget_height = dim.textbox.h + message_font_size;
 	}
 
@@ -490,7 +490,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	}
 	unsigned int caption_width = 0;
 	unsigned int caption_height = 0;
-	if (image_ != NULL && image_->caption() != NULL) {
+	if (image_ != nullptr && image_->caption() != nullptr) {
 		caption_width = image_->caption()->width();
 		caption_height = image_->caption()->height();
 	}
@@ -547,11 +547,11 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	}
 
 	const int menu_hpadding = font::relative_size((dim.message.h > 0 && use_menu) ? 10 : 0);
-	const size_t image_h_padding = (image_ == NULL)? 0 : image_h_pad;
+	const size_t image_h_padding = (image_ == nullptr)? 0 : image_h_pad;
 	const size_t padding_width = left_padding + right_padding + image_h_padding;
 	const size_t padding_height = top_padding + bottom_padding + menu_hpadding;
-	const size_t image_width = (image_ == NULL) ? 0 : image_->width();
-	const size_t image_height = (image_ == NULL) ? 0 : image_->height();
+	const size_t image_width = (image_ == nullptr) ? 0 : image_->width();
+	const size_t image_height = (image_ == nullptr) ? 0 : image_->height();
 	const size_t total_text_height = dim.message.h + caption_height;
 
 	size_t text_width = dim.message.w;
@@ -702,7 +702,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	dim.message.x = dim.x + left_padding;
 	dim.message.y = dim.y + top_padding + caption_height;
 
-	if(image_ != NULL) {
+	if(image_ != nullptr) {
 		const int x = dim.x + left_padding;
 		const int y = dim.y + top_padding;
 		dim.message.x += image_width + image_h_padding;
@@ -764,7 +764,7 @@ int dialog::process(dialog_process_info &info)
 					info.key[SDLK_ESCAPE] || info.key[SDLK_KP_ENTER];
 	info.double_clicked = menu_->double_clicked();
 	const bool use_menu = (menu_ != empty_menu);
-	const bool use_text_input = (text_widget_!=NULL);
+	const bool use_text_input = (text_widget_!=nullptr);
 	const bool has_input = (use_menu||use_text_input);//input of any sort has to be made
 
 	if((((!info.key_down && (info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER])) || info.double_clicked) &&
@@ -851,7 +851,7 @@ int dialog::process(dialog_process_info &info)
 }
 
 int dialog_button::action(dialog_process_info &info) {
-	if(handler_ != NULL) {
+	if(handler_ != nullptr) {
 		menu &menu_ref = parent_->get_menu();
 		dialog_button_action::RESULT res = handler_->button_pressed(menu_ref.selection());
 
@@ -903,7 +903,7 @@ int standard_dialog_button::action(dialog_process_info &/*info*/) {
 
 void dialog::set_image(surface surf, const std::string &caption)
 {
-	label *label_ptr = NULL;
+	label *label_ptr = nullptr;
 	if(!caption.empty()) {
 		label_ptr = new label(video_, caption, caption_font_size, font::NORMAL_COLOR, false);
 	}

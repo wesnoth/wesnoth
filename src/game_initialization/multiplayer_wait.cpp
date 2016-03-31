@@ -143,7 +143,7 @@ void wait::leader_preview_pane::draw_contents()
 	if (!unit_image.null()) {
 		image_rect.w = unit_image->w;
 		image_rect.h = unit_image->h;
-		sdl_blit(unit_image, NULL, screen, &image_rect);
+		sdl_blit(unit_image, nullptr, screen, &image_rect);
 	}
 
 	font::draw_text(&video(), area, font::SIZE_PLUS, font::NORMAL_COLOR,
@@ -199,7 +199,7 @@ wait::wait(CVideo& v, const config& cfg, saved_game& state,
 	ui(v, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(video(), first_scenario ? _("Cancel") : _("Quit")),
 	start_label_(video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
-	game_menu_(video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
+	game_menu_(video(), std::vector<std::string>(), false, -1, -1, nullptr, &gui::menu::bluebg_style),
 	level_(),
 	state_(state),
 	first_scenario_(first_scenario),
@@ -269,7 +269,7 @@ void wait::join_game(bool observe)
 		//(i.e. we're loading from a saved game), then prefer to get the side
 		//with the same description as our login. Otherwise just choose the first
 		//available side.
-		const config *side_choice = NULL;
+		const config *side_choice = nullptr;
 		int side_num = -1, nb_sides = 0;
 		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 		{
@@ -370,7 +370,7 @@ void wait::join_game(bool observe)
 			leader_preview_pane leader_selector(video(), flg, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int faction_choice = gui::show_dialog(video(), NULL,
+			const int faction_choice = gui::show_dialog(video(), nullptr,
 				_("Choose your faction:"), _("Starting position: ") +
 				std::to_string(side_num + 1), gui::OK_CANCEL,
 				&choices, &preview_panes);

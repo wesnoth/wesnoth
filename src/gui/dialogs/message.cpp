@@ -103,7 +103,7 @@ void tmessage::post_show(twindow& /*window*/)
 {
 	FOREACH(AUTO & button_status, buttons_)
 	{
-		button_status.button = NULL;
+		button_status.button = nullptr;
 	}
 }
 
@@ -134,7 +134,7 @@ void tmessage::set_button_retval(const tbutton_id button, const int retval)
 }
 
 tmessage::tbutton_status::tbutton_status()
-	: button(NULL)
+	: button(nullptr)
 	, caption()
 	, visible(twidget::tvisible::invisible)
 	, retval(twindow::NONE)

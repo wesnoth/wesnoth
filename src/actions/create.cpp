@@ -133,7 +133,7 @@ namespace { // Helpers for get_recalls()
 	 */
 	void add_leader_filtered_recalls(const unit_const_ptr leader,
 	                                 std::vector< unit_const_ptr > & result,
-	                                 std::set<size_t> * already_added = NULL)
+	                                 std::set<size_t> * already_added = nullptr)
 	{
 		const team& leader_team = (*resources::teams)[leader->side()-1];
 		const std::string& save_id = leader_team.save_id();
@@ -153,7 +153,7 @@ namespace { // Helpers for get_recalls()
 				if ( ufilt(recall_unit, map_location::null_location()) )
 				{
 					result.push_back(recall_unit_ptr);
-					if ( already_added != NULL )
+					if ( already_added != nullptr )
 						already_added->insert(underlying_id);
 				}
 			}
@@ -659,7 +659,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	}
 	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
-	if ( resources::screen != NULL ) {
+	if ( resources::screen != nullptr ) {
 		resources::screen->invalidate(current_loc);
 		resources::screen->redraw_minimap();
 	}
@@ -720,7 +720,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	}
 
 	// Update the screen.
-	if ( resources::screen != NULL )
+	if ( resources::screen != nullptr )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
 }
@@ -767,7 +767,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	}
 
 	// Update the screen.
-	if ( resources::screen != NULL )
+	if ( resources::screen != nullptr )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
 

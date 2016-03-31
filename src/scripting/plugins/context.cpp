@@ -33,10 +33,10 @@ plugins_context::plugins_context(const std::string & name, const Reg * l, const 
 	, accessors_()
 	, name_(name)
 {
-	for (; l->name != NULL; l++) {  /* fill the table with given functions */
+	for (; l->name != nullptr; l++) {  /* fill the table with given functions */
 		callbacks_.insert(std::make_pair(l->name, l->func));
 	}
-	for (; r->name != NULL; r++) {  /* fill the table with given functions */
+	for (; r->name != nullptr; r++) {  /* fill the table with given functions */
 		accessors_.insert(std::make_pair(r->name, r->func));
 	}
 }

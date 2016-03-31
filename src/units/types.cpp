@@ -100,8 +100,8 @@ unit_type::unit_type(const unit_type& o) :
 	animations_(o.animations_),
     build_status_(o.build_status_)
 {
-	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
-	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
+	gender_types_[0] = o.gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr;
+	gender_types_[1] = o.gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr;
 
 	for(variations_map::const_iterator i = o.variations_.begin(); i != o.variations_.end(); ++i) {
 		variations_[i->first] = new unit_type(*i->second);
@@ -159,8 +159,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	animations_(),
 	build_status_(NOT_BUILT)
 {
-	gender_types_[0] = NULL;
-	gender_types_[1] = NULL;
+	gender_types_[0] = nullptr;
+	gender_types_[1] = nullptr;
 }
 
 unit_type::~unit_type()
@@ -370,9 +370,9 @@ void unit_type::build_created(const movement_type_map &mv_types,
 		return;
 	// There is no preceding build level (other than being constructed).
 
-	// These should still be NULL from the constructor.
-	assert(gender_types_[0] == NULL);
-	assert(gender_types_[1] == NULL);
+	// These should still be nullptr from the constructor.
+	assert(gender_types_[0] == nullptr);
+	assert(gender_types_[1] == nullptr);
 
 	if ( const config &male_cfg = cfg_.child("male") ) {
 		gender_types_[0] = new unit_type(male_cfg, id_);
@@ -447,7 +447,7 @@ const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
 	const size_t i = gender;
 	if(i < sizeof(gender_types_)/sizeof(*gender_types_)
-	&& gender_types_[i] != NULL) {
+	&& gender_types_[i] != nullptr) {
 		return *gender_types_[i];
 	}
 
@@ -600,8 +600,8 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
-		if(gender_types_[gender] == NULL) continue;
-		if(to_unit.gender_types_[gender] == NULL) {
+		if(gender_types_[gender] == nullptr) continue;
+		if(to_unit.gender_types_[gender] == nullptr) {
 			WRN_CF << to_unit.log_id() << " does not support gender " << gender << std::endl;
 			continue;
 		}
@@ -741,7 +741,7 @@ bool unit_type::has_variation(const std::string& variation_id) const
 bool unit_type::show_variations_in_help() const
 {
 	BOOST_FOREACH(const variations_map::value_type &val, variations_) {
-		assert(val.second != NULL);
+		assert(val.second != nullptr);
 		if (!val.second->hide_help()) {
 			return true;
 		}
@@ -854,7 +854,7 @@ unit_type_data::unit_type_data() :
 	hide_help_all_(false),
 	hide_help_type_(),
 	hide_help_race_(),
-	unit_cfg_(NULL),
+	unit_cfg_(nullptr),
 	build_status_(unit_type::NOT_BUILT)
 {
 }
@@ -1154,7 +1154,7 @@ void unit_type_data::set_config(config &cfg)
  */
 const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_STATUS status) const
 {
-	if (key.empty() || key == "random") return NULL;
+	if (key.empty() || key == "random") return nullptr;
 
 	DBG_CF << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
     const unit_type_map::iterator itor = types_.find(key);
@@ -1165,7 +1165,7 @@ const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_S
         for (unit_type_map::const_iterator ut = types_.begin(); ut != types_.end(); ut++)
             DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.log_id() << "'\n";
         */
-		return NULL;
+		return nullptr;
     }
 
     // Make sure the unit_type is built to the requested level.
@@ -1198,7 +1198,7 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 	// Nothing to do if already built to the requested level.
 	if ( status <= build_status_ )
 		return;
-	assert(unit_cfg_ != NULL);
+	assert(unit_cfg_ != nullptr);
 
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
 		build_unit_type(u->second, status);
@@ -1286,7 +1286,7 @@ void unit_type_data::add_advancement(unit_type& to_unit) const
 const unit_race *unit_type_data::find_race(const std::string &key) const
 {
 	race_map::const_iterator i = races_.find(key);
-	return i != races_.end() ? &i->second : NULL;
+	return i != races_.end() ? &i->second : nullptr;
 }
 
 unit_type_data unit_types;

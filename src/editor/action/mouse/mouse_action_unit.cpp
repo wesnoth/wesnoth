@@ -50,7 +50,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 		const unit_map::const_unit_iterator unit_it = units.find(hex);
 		if (unit_it != units.end()) {
 
-			disp.set_mouseover_hex_overlay(NULL);
+			disp.set_mouseover_hex_overlay(nullptr);
 
 			SDL_Rect rect;
 			rect.x = disp.get_location_x(hex);
@@ -77,7 +77,7 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(start_hex_)) {
-		return NULL;
+		return nullptr;
 	}
 
 	const unit_map& units = disp.get_units();
@@ -86,23 +86,23 @@ editor_action* mouse_action_unit::click_left(editor_display& disp, int x, int y)
 		set_unit_mouse_overlay(disp, unit_it->type());
 
 	click_ = true;
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == start_hex_);
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 {
-	if (!click_) return NULL;
+	if (!click_) return nullptr;
 	click_ = false;
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex)) {
-		return NULL;
+		return nullptr;
 	}
 
 	unit_type type = unit_palette_.selected_fg_item();
@@ -115,7 +115,7 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 	if (!new_unit_type) {
 		//TODO rewrite the error message.
 		ERR_ED << "create unit dialog returned inexistent or unusable unit_type id '" << type_id << "'" << std::endl;
-		return NULL;
+		return nullptr;
 	}
 
 	const unit_type &ut = *new_unit_type;
@@ -128,17 +128,17 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 
 editor_action* mouse_action_unit::drag_end_left(editor_display& disp, int x, int y)
 {
-	if (click_) return NULL;
-	editor_action* action = NULL;
+	if (click_) return nullptr;
+	editor_action* action = nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
-		return NULL;
+		return nullptr;
 
 	const unit_map& units = disp.get_units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it == units.end())
-		return NULL;
+		return nullptr;
 
 	action = new editor_action_unit_replace(start_hex_, hex);
 	return action;
@@ -159,7 +159,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 	}
 
 	click_ = true;
-	return NULL;
+	return nullptr;
 }
 */
 
@@ -167,7 +167,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //{
 //	map_location hex = disp.hex_clicked_on(x, y);
 //	if (previous_move_hex_ == hex)
-//		return NULL;
+//		return nullptr;
 //
 //	click_ = (start_hex_ == hex);
 //	previous_move_hex_ = hex;
@@ -185,12 +185,12 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //		}
 //	}
 //
-//	return NULL;
+//	return nullptr;
 //}
 
 //editor_action* mouse_action_unit::up_right(editor_display& disp, int /*x*/, int /*y*/)
 //{
-//	if (!click_) return NULL;
+//	if (!click_) return nullptr;
 //	click_ = false;
 //
 //	const unit_map& units = disp.get_units();
@@ -199,16 +199,16 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //		return new editor_action_unit_delete(start_hex_);
 //	}
 //
-//	return NULL;
+//	return nullptr;
 //}
 
 //editor_action* mouse_action_unit::drag_end_right(editor_display& disp, int x, int y)
 //{
-//	if (click_) return NULL;
+//	if (click_) return nullptr;
 //
 //	map_location hex = disp.hex_clicked_on(x, y);
 //	if (!disp.get_map().on_board(hex))
-//		return NULL;
+//		return nullptr;
 //
 //	if(new_direction_ != old_direction_) {
 //
@@ -219,7 +219,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //		}
 //	}
 //
-//	return NULL;
+//	return nullptr;
 //}
 
 

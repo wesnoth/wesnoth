@@ -112,7 +112,7 @@ private:
 
 	//make it so that only one textbox object can be receiving
 	//events at a time.
-	bool requires_event_focus(const SDL_Event *event=NULL) const;
+	bool requires_event_focus(const SDL_Event *event=nullptr) const;
 
 	bool show_scrollbar() const;
 	bool handle_text_input(const SDL_Event& event);

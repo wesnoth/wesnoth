@@ -340,16 +340,16 @@ const unit *move_result::get_unit()
 	unit_map::const_iterator un = resources::units->find(from_);
 	if (un==resources::units->end()){
 		set_error(E_NO_UNIT);
-		return NULL;
+		return nullptr;
 	}
 	const unit *u = &*un;
 	if (u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
-		return NULL;
+		return nullptr;
 	}
 	if (u->incapacitated()) {
 		set_error(E_INCAPACITATED_UNIT);
-		return NULL;
+		return nullptr;
 	}
 	return u;
 }
@@ -469,10 +469,10 @@ void move_result::do_execute()
 	if (from_ != to_) {
 		size_t num_steps = ::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
-			/*::actions::undo_list* undo_stack*/ NULL,
+			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
-			/*bool* interrupted*/ NULL,
+			/*bool* interrupted*/ nullptr,
 			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
 
 		if ( num_steps > 0 ) {
@@ -688,7 +688,7 @@ const unit_type *recruit_result::get_unit_type_known(const std::string &recruit)
 	const unit_type *type = unit_types.find(recruit);
 	if (!type) {
 		set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
-		return NULL;
+		return nullptr;
 	}
 	return type;
 }
@@ -791,7 +791,7 @@ void recruit_result::do_execute()
 	// Assert that recruit_location_ has been validated.
 	// This should be implied by is_success() once check_before() has been
 	// called, so this is a guard against future breakage.
-	assert(location_checked_  &&  u != NULL);
+	assert(location_checked_  &&  u != nullptr);
 
 	if(resources::simulation_){
 		bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
@@ -831,16 +831,16 @@ const unit *stopunit_result::get_unit()
 	unit_map::const_iterator un = resources::units->find(unit_location_);
 	if (un==resources::units->end()){
 		set_error(E_NO_UNIT);
-		return NULL;
+		return nullptr;
 	}
 	const unit *u = &*un;
 	if (u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
-		return NULL;
+		return nullptr;
 	}
 	if (u->incapacitated()) {
 		set_error(E_INCAPACITATED_UNIT);
-		return NULL;
+		return nullptr;
 	}
 	return u;
 }

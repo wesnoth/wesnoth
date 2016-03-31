@@ -81,7 +81,7 @@ private:
 	tscroll_label* msg_label; //the view is extremely simple, it's pretty much just this one widget that gets updated
 
 public:
-	view() : msg_label(NULL) {}
+	view() : msg_label(nullptr) {}
 
 	/** Bind the scroll label widget to my pointer, and configure */
 	void bind(twindow& window) {
@@ -143,7 +143,7 @@ public:
 	~lua_model()
 	{
 		DBG_LUA << "destroying a tlua_interpreter::model\n";
-		L_.set_external_log(NULL); //deregister our log since it's about to be destroyed
+		L_.set_external_log(nullptr); //deregister our log since it's about to be destroyed
 	}
 
 	/** Ask the lua kernel to execute a command. No throw of game::lua_error, instead the error message is formatted and printed to console.*/
@@ -232,7 +232,7 @@ public:
 #ifdef HAVE_HISTORY
 		LOG_LUA << "searching in direction " << direction << " from position " << where_history() << "\n";
 
-		HIST_ENTRY * e = NULL;
+		HIST_ENTRY * e = nullptr;
 		if (end_of_history_) {
 			// if the direction is > 0, do nothing because searching down only takes place when we are in the history records.
 			if (direction < 0) {
@@ -254,7 +254,7 @@ public:
 				if (result == 0) {
 					e = current_history();
 				} else {
-					e = NULL;		// if the search misses, it leaves the state as it was, which might not have been on an entry matching prefix.
+					e = nullptr;		// if the search misses, it leaves the state as it was, which might not have been on an entry matching prefix.
 					end_of_history_ = true;	// we actually want to force it to be null and treat as off the end of history in this case.
 				}
 			}
@@ -364,8 +364,8 @@ private:
 	void search(int direction);
 public:
 	controller(lua_kernel_base & lk)
-		: copy_button(NULL)
-		, text_entry(NULL)
+		: copy_button(nullptr)
+		, text_entry(nullptr)
 		, text_entry_()
 		, lua_model_(new tlua_interpreter::lua_model(lk))
 		, input_model_(new tlua_interpreter::input_model())

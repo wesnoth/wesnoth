@@ -203,8 +203,8 @@ struct find<false>
 		} else {
 			typedef typename boost::mpl::next<itor>::type titor;
 			return find<boost::is_same<titor, end>::value>::execute(
-					static_cast<titor*>(NULL),
-					static_cast<end*>(NULL),
+					static_cast<titor*>(nullptr),
+					static_cast<end*>(nullptr),
 					event,
 					functor);
 		}
@@ -240,7 +240,7 @@ inline bool find(E event, F functor)
 	typedef typename boost::mpl::end<sequence>::type end;
 
 	return implementation::find<boost::is_same<begin, end>::value>::execute(
-			static_cast<begin*>(NULL), static_cast<end*>(NULL), event, functor);
+			static_cast<begin*>(nullptr), static_cast<end*>(nullptr), event, functor);
 }
 
 namespace implementation
@@ -279,8 +279,8 @@ namespace implementation
  * If there's no line from widget to parent the result is undefined.
  * (If widget == dispatcher the result will always be empty.)
  *
- * @pre                           dispatcher != NULL
- * @pre                           widget != NULL
+ * @pre                           dispatcher != nullptr
+ * @pre                           widget != nullptr
  *
  * @param event                   The event to test.
  * @param dispatcher              The final widget to test, this is also the
@@ -498,8 +498,8 @@ inline bool fire_event(const tevent event,
  * A helper to allow the common event firing code to be shared between the
  * different signal function types.
  *
- * @pre                           dispatcher != NULL
- * @pre                           widget != NULL
+ * @pre                           dispatcher != nullptr
+ * @pre                           widget != nullptr
  *
  * @tparam T                      The signal type of the event to handle.
  * @tparam F                      The type of the functor.

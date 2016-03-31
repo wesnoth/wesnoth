@@ -92,7 +92,7 @@ floating_image::render_input floating_image::get_render_input(double xscale, dou
 #else
 	render_input ri = {
 		{0,0,0,0},
-		file_.empty() ? NULL : image::get_image(file_)
+		file_.empty() ? nullptr : image::get_image(file_)
 	};
 
 	if(!ri.image.null()) {

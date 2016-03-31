@@ -209,7 +209,7 @@ namespace {
 				try {
 					dlg->show(video, interact);
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
-					BOOST_REQUIRE_NE(window, static_cast<void*>(NULL));
+					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
 				} catch(gui2::tlayout_exception_width_modified&) {
 					exception = "gui2::tlayout_exception_width_modified";
@@ -439,14 +439,14 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/*
 	 * The unit attack unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
+	 * don't allow 'nullptr's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
 			, list.end());
 	/*
 	 * The chat log unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
+	 * don't allow 'nullptr's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "chat_log")
@@ -571,7 +571,7 @@ struct twrapper<gui2::tchat_log>
 		static config cfg;
 		static vconfig vcfg(cfg);
 
-		return new gui2::tchat_log(vcfg, NULL);
+		return new gui2::tchat_log(vcfg, nullptr);
 	}
 };
 
@@ -729,7 +729,7 @@ struct twrapper<gui2::tmp_change_control>
 {
 	static gui2::tmp_change_control* create()
 	{
-		return new gui2::tmp_change_control(NULL);
+		return new gui2::tmp_change_control(nullptr);
 	}
 };
 

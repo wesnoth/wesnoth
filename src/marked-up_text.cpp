@@ -156,7 +156,7 @@ std::string del_tags(const std::string& text){
 	for(line = lines.begin(); line != lines.end(); ++line) {
 		std::string::const_iterator i1 = line->begin(),
 			i2 = line->end();
-		*line = std::string(parse_markup(i1,i2,NULL,NULL,NULL),i2);
+		*line = std::string(parse_markup(i1,i2,nullptr,nullptr,nullptr),i2);
 	}
 	return utils::join(lines, "\n");
 }
@@ -188,7 +188,7 @@ std::string span_color(const SDL_Color &color)
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};
-	return draw_text(NULL, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
+	return draw_text(nullptr, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 
 SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
@@ -242,9 +242,9 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	surface null_surf = surface(NULL);
+	surface null_surf = surface(nullptr);
 
-	return draw_text(gui != NULL ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
+	return draw_text(gui != nullptr ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
 }
 
 bool is_format_char(char c)
@@ -571,7 +571,7 @@ sdl::timage draw_text_to_texture(const SDL_Rect &area, int size, const SDL_Color
 										0x00ff0000,
 										0x0000ff00,
 										0x000000ff);
-	SDL_FillRect(surf, NULL, 0x000000ff);
+	SDL_FillRect(surf, nullptr, 0x000000ff);
 	draw_text(surf, area, size, color, text, 0, 0, use_tooltips, style);
 
 	return sdl::timage(surf);

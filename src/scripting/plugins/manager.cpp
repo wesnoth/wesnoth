@@ -42,7 +42,7 @@ struct plugin {
 	std::vector<plugins_manager::event> queue;
 };
 
-static plugins_manager * singleton = NULL;
+static plugins_manager * singleton = nullptr;
 
 plugins_manager::plugins_manager(application_lua_kernel * kernel)
 	: plugins_()
