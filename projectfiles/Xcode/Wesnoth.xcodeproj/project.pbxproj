@@ -71,6 +71,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		911F2DAD1BA086A400E3102E /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAB1BA086A400E3102E /* window.cpp */; };
 		911F2DB01BA086FA00E3102E /* alpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAE1BA086F900E3102E /* alpha.cpp */; };
+		911F47171CADC83800F47035 /* libboost_unit_test_frameworkw.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91E355621CACA1CE00774252 /* libboost_unit_test_frameworkw.dylib */; };
+		911F47181CADCF3F00F47035 /* libboost_program_optionsw.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_optionsw.dylib */; };
 		9122417C1CAAB7B7008B347F /* loadscreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9122417A1CAAB7B7008B347F /* loadscreen.cpp */; };
 		91273E8F1C7BF1D7005E7F81 /* _main.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E721C7BF1C0005E7F81 /* _main.cfg */; };
 		91273E901C7BF1D7005E7F81 /* advanced_preferences.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E731C7BF1C0005E7F81 /* advanced_preferences.cfg */; };
@@ -1277,6 +1279,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		911F47161CADC81000F47035 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = TestFrameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				911F47171CADC83800F47035 /* libboost_unit_test_frameworkw.dylib in Copy Frameworks */,
+				911F47181CADCF3F00F47035 /* libboost_program_optionsw.dylib in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		91273E191C7BF105005E7F81 /* Copy Data Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4547,6 +4561,7 @@
 			buildPhases = (
 				B597C4950FACD3CD00CE81F5 /* Sources */,
 				B597C4960FACD3CD00CE81F5 /* Frameworks */,
+				911F47161CADC81000F47035 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
