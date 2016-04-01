@@ -636,10 +636,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	gui2::tloadscreen::progress("init gui"); // Does nothing since there's no loadscreen yet
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
-
 
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
@@ -647,26 +645,28 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::tloadscreen::display(game->video(), [&res, &config_manager]() {
 		gui2::tloadscreen::progress("load config");
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
-	});
 
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
-		return 1;
+		return;
 	}
 	gui2::tloadscreen::progress("init fonts");
 
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not re-initialize fonts for the current language\n";
-		return 1;
+		return;
 	}
 
 	gui2::tloadscreen::progress("refresh addons");
 	refresh_addon_version_info_cache();
+	});
+	
+	if(res == false) {
+		return 1;
+	}
 
 	config tips_of_day;
-
-	gui2::tloadscreen::progress("titlescreen");
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 

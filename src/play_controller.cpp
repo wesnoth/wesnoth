@@ -243,6 +243,7 @@ void play_controller::init(CVideo& video, const config& level)
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
+	gui2::tloadscreen::progress("init whiteboard");
 	whiteboard_manager_.reset(new wb::manager());
 	resources::whiteboard = whiteboard_manager_;
 
@@ -272,7 +273,6 @@ void play_controller::init(CVideo& video, const config& level)
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks()) << std::endl;
 
 	LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks()) << std::endl;
-	gui2::tloadscreen::progress("init whiteboard");
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
