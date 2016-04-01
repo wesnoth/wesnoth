@@ -70,7 +70,7 @@ private :
 public:
 
 	explicit operator bool() const
-	{ return unit_.get(); }
+	{ return unit_.get() != nullptr; }
 };
 
 #endif
