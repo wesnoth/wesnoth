@@ -261,7 +261,7 @@ carryover* carryover_info::get_side(std::string save_id){
 			return &side;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 

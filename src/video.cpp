@@ -43,7 +43,7 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
-CVideo* CVideo::singleton_ = NULL;
+CVideo* CVideo::singleton_ = nullptr;
 
 namespace {
 #ifdef SDL_GPU
@@ -66,7 +66,7 @@ static unsigned int get_flags(unsigned int flags)
 
 namespace {
 
-surface frameBuffer = NULL;
+surface frameBuffer = nullptr;
 bool fake_interactive = false;
 }
 
@@ -103,8 +103,8 @@ void trigger_full_redraw() {
 
 	data.type = DRAW_ALL_EVENT;
 	data.code = 0;
-	data.data1 = NULL;
-	data.data2 = NULL;
+	data.data1 = nullptr;
+	data.data2 = nullptr;
 
 	drawEvent.type = DRAW_ALL_EVENT;
 	drawEvent.user = data;
@@ -118,7 +118,7 @@ bool CVideo::non_interactive()
 {
 	if (fake_interactive)
 		return false;
-	return window == NULL;
+	return window == nullptr;
 }
 
 
@@ -149,8 +149,8 @@ void update_rect(const SDL_Rect& rect_value)
 
 	SDL_Rect rect = rect_value;
 
-	surface const fb = NULL;
-	if(fb != NULL) {
+	surface const fb = nullptr;
+	if(fb != nullptr) {
 		if(rect.x < 0) {
 			if(rect.x*-1 >= int(rect.w))
 				return;
@@ -200,8 +200,8 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 
 				data.type = DRAW_ALL_EVENT;
 				data.code = 0;
-				data.data1 = NULL;
-				data.data2 = NULL;
+				data.data1 = nullptr;
+				data.data2 = nullptr;
 
 				drawEvent.type = DRAW_ALL_EVENT;
 				drawEvent.user = data;
@@ -246,7 +246,7 @@ void CVideo::initSDL()
 	//800x600 is a dummy value, the actual resolution is set in setMode
 	render_target_ = GPU_Init(800, 600, GPU_DEFAULT_INIT_FLAGS);
 
-	if(render_target_ == NULL) {
+	if(render_target_ == nullptr) {
 		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
 		throw CVideo::error();
 	}
@@ -274,7 +274,7 @@ void CVideo::update_overlay(SDL_Rect *rect)
 	// Re-render the appropriate screen area so that overlay change is visible
 	static sdl::timage empty(image::get_texture("images/misc/blank.png"));
 	SDL_Rect whole = sdl::create_rect(0, 0, overlay_->w, overlay_->h);
-	SDL_Rect *r = rect == NULL ? &whole : rect;
+	SDL_Rect *r = rect == nullptr ? &whole : rect;
 	empty.set_scale(float(r->w) / empty.base_width(), float(r->h) / empty.base_height());
 	draw_texture(empty, r->x, r->y);
 }
@@ -285,7 +285,7 @@ CVideo::~CVideo()
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
 	assert(singleton_);
-	singleton_ = NULL;
+	singleton_ = nullptr;
 	LOG_DP << "called SDL_Quit()\n";
 }
 
@@ -294,7 +294,7 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	surface& target(getSurface());
 	SDL_Rect dst = sdl::create_rect(x, y, 0, 0);
 
-	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
+	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
 	sdl_blit(surf,srcrect,target,&dst);
 }
 
@@ -330,7 +330,7 @@ void CVideo::blit_to_overlay(surface surf, int x, int y)
 		return;
 	}
 	SDL_Rect r = sdl::create_rect(x, y, surf->w, surf->h);
-	SDL_BlitSurface(surf, NULL, overlay_, &r);
+	SDL_BlitSurface(surf, nullptr, overlay_, &r);
 	update_overlay(&r);
 }
 

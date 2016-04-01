@@ -78,7 +78,7 @@ public:
 	unit* get();
 	unit_ptr get_shared();
 
-	void clear_ref() { uid = 0; ptr = unit_ptr(); side = 0; c_ptr = NULL; }
+	void clear_ref() { uid = 0; ptr = unit_ptr(); side = 0; c_ptr = nullptr; }
 	// Clobbers loc
 	bool put_map(const map_location &loc);
 };

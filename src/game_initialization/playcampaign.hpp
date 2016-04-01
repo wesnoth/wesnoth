@@ -70,7 +70,7 @@ public:
 		, tdata_(tdata)
 		, is_unit_test_(is_unit_test)
 		, is_replay_(false)
-		, mp_info_(NULL)
+		, mp_info_(nullptr)
 	{
 	}
 	LEVEL_RESULT play_game();

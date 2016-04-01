@@ -63,7 +63,7 @@
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>           // for optional
 #include <boost/tuple/tuple.hpp>        // for tuple
-#include <cstdlib>                     // for NULL, system
+#include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
 #include <SDL.h>                        // for SDL_INIT_JOYSTICK, etc
@@ -385,7 +385,7 @@ bool game_launcher::init_video()
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
-	if(icon != NULL) {
+	if(icon != nullptr) {
 
 		video().set_window_icon(icon);
 	}
@@ -1011,17 +1011,17 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	gui2::tloadscreen::display(video(), [=]() {
+	gui2::tloadscreen::display(video(), [this, reload]() {
 
-	gui2::tloadscreen::progress("load data");
-	if(reload == RELOAD_DATA) {
-		try {
-			game_config_manager::get()->
-				load_game_config_for_game(state_.classification());
-		} catch(config::error&) {
-			return;
+		gui2::tloadscreen::progress("load data");
+		if(reload == RELOAD_DATA) {
+			try {
+				game_config_manager::get()->
+					load_game_config_for_game(state_.classification());
+			} catch(config::error&) {
+				return;
+			}
 		}
-	}
 	});
 
 	try {

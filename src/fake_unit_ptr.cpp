@@ -20,13 +20,13 @@
 
 #include <boost/swap.hpp>
 
-fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(NULL) {}
-fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(NULL) {}
-fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : unit_(u), my_manager_(NULL)
+fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(nullptr) {}
+fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(nullptr) {}
+fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : unit_(u), my_manager_(nullptr)
 {
 	place_on_fake_unit_manager(mgr);
 }
-fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr) : unit_(ptr.unit_), my_manager_(NULL) {}
+fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr) : unit_(ptr.unit_), my_manager_(nullptr) {}
 
 void fake_unit_ptr::swap (fake_unit_ptr & o) {
 	boost::swap(unit_, o.unit_);
@@ -60,7 +60,7 @@ fake_unit_ptr & fake_unit_ptr::operator=(fake_unit_ptr other) {
 		this->~fake_unit();
 		new (this) fake_unit(a);
 		// Restore our old manager.
-		if ( mgr != NULL )
+		if ( mgr != nullptr )
 			place_on_fake_unit_manager(mgr);
 	}
 	return *this;
@@ -113,7 +113,7 @@ fake_unit_ptr::~fake_unit_ptr()
  * Duplicate additions are not allowed.
  */
 void fake_unit_ptr::place_on_fake_unit_manager(fake_unit_manager * manager){
-	assert(my_manager_ == NULL); //Can only be placed on 1 fake_unit_manager
+	assert(my_manager_ == nullptr); //Can only be placed on 1 fake_unit_manager
 	my_manager_=manager;
 	my_manager_->place_temporary_unit(unit_.get());
 }
@@ -125,9 +125,9 @@ void fake_unit_ptr::place_on_fake_unit_manager(fake_unit_manager * manager){
  */
 int fake_unit_ptr::remove_from_fake_unit_manager(){
 	int ret(0);
-	if(my_manager_ != NULL){
+	if(my_manager_ != nullptr){
 		ret = my_manager_->remove_temporary_unit(unit_.get());
-		my_manager_=NULL;
+		my_manager_=nullptr;
 	}
 	return ret;
 }

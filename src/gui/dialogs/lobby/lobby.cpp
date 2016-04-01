@@ -172,7 +172,7 @@ void tlobby_main::send_chat_message(const std::string& message,
 	msg["sender"] = preferences::login();
 	data.add_child("message", msg);
 
-	add_chat_message(time(NULL), preferences::login(), 0, message); // local
+	add_chat_message(time(nullptr), preferences::login(), 0, message); // local
 																	// echo
 	network::send_data(data, 0);
 }
@@ -342,21 +342,21 @@ tlobby_main::tlobby_main(const config& game_config,
 						 CVideo& video)
 	: legacy_result_(QUIT)
 	, game_config_(game_config)
-	, gamelistbox_(NULL)
-	, userlistbox_(NULL)
-	, roomlistbox_(NULL)
-	, chat_log_container_(NULL)
-	, chat_input_(NULL)
-	, window_(NULL)
+	, gamelistbox_(nullptr)
+	, userlistbox_(nullptr)
+	, roomlistbox_(nullptr)
+	, chat_log_container_(nullptr)
+	, chat_input_(nullptr)
+	, window_(nullptr)
 	, lobby_info_(info)
-	, preferences_callback_(NULL)
+	, preferences_callback_()
 	, open_windows_()
 	, active_window_(0)
-	, filter_friends_(NULL)
-	, filter_ignored_(NULL)
-	, filter_slots_(NULL)
-	, filter_invert_(NULL)
-	, filter_text_(NULL)
+	, filter_friends_(nullptr)
+	, filter_ignored_(nullptr)
+	, filter_slots_(nullptr)
+	, filter_invert_(nullptr)
+	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_()
 	, player_list_dirty_(false)
@@ -454,10 +454,10 @@ void modify_grid_with_data(tgrid* grid,
 		const std::string& key = v.first;
 		const string_map& strmap = v.second;
 		twidget* w = grid->find(key, false);
-		if(w == NULL)
+		if(w == nullptr)
 			continue;
 		tcontrol* c = dynamic_cast<tcontrol*>(w);
-		if(c == NULL)
+		if(c == nullptr)
 			continue;
 		FOREACH(const AUTO & vv, strmap)
 		{
@@ -794,7 +794,7 @@ void tlobby_main::update_playerlist()
 	FOREACH(AUTO userptr, lobby_info_.users_sorted())
 	{
 		user_info& user = *userptr;
-		tsub_player_list* target_list(NULL);
+		tsub_player_list* target_list(nullptr);
 		std::map<std::string, string_map> data;
 		std::stringstream icon_ss;
 		std::string name = user.name;
@@ -1032,7 +1032,7 @@ void tlobby_main::pre_show(twindow& window)
 
 void tlobby_main::post_show(twindow& /*window*/)
 {
-	window_ = NULL;
+	window_ = nullptr;
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
 }
@@ -1041,7 +1041,7 @@ room_info* tlobby_main::active_window_room()
 {
 	const tlobby_chat_window& t = open_windows_[active_window_];
 	if(t.whisper)
-		return NULL;
+		return nullptr;
 	return lobby_info_.get_room(t.name);
 }
 
@@ -1101,7 +1101,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 
 		return &open_windows_.back();
 	}
-	return NULL;
+	return nullptr;
 }
 
 bool tlobby_main::whisper_window_active(const std::string& name)

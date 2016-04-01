@@ -64,7 +64,7 @@ REGISTER_DIALOG(editor_generate_map)
 
 teditor_generate_map::teditor_generate_map()
 	: map_generators_()
-	, last_map_generator_(NULL)
+	, last_map_generator_(nullptr)
 	, current_map_generator_(0)
 	, random_seed_()
 {
@@ -125,7 +125,7 @@ void teditor_generate_map::pre_show(twindow& window)
 		}
 	}
 
-	if (last_map_generator_ != NULL) {
+	if (last_map_generator_ != nullptr) {
 		// We need to call this manually because it won't be called by
 		// list.select_row() even if we set the callback before
 		// calling it

@@ -75,7 +75,7 @@ void swap_grid(tgrid* grid,
 	widget->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = NULL;
+	tgrid* parent_grid = nullptr;
 	if(grid) {
 		parent_grid = find_widget<tgrid>(grid, id, false, false);
 	}
@@ -103,7 +103,7 @@ tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 	{
 		generator_->create_item(-1, builder, empty_data, NULL);
 	}
-	swap_grid(NULL, &grid(), generator_, "_content_grid");
+	swap_grid(nullptr, &grid(), generator_, "_content_grid");
 
 	select_layer(-1);
 }
@@ -191,7 +191,7 @@ tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  */
 tstacked_widget_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(NULL)
+	: tresolution_definition_(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");

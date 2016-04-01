@@ -136,12 +136,12 @@ public:
 	 *
 	 * returns                    The widget which got removed (the parent of
 	 *                            the widget is cleared). If no widget found
-	 *                            and thus not replace NULL will returned.
+	 *                            and thus not replace nullptr will returned.
 	 */
 	twidget* swap_child(const std::string& id,
 						twidget* widget,
 						const bool recurse,
-						twidget* new_parent = NULL);
+						twidget* new_parent = nullptr);
 
 	/**
 	 * Removes and frees a widget in a cell.
@@ -311,7 +311,7 @@ private:
 		friend struct tgrid_implementation;
 
 	public:
-		tchild() : flags_(0), border_size_(0), widget_(NULL)
+		tchild() : flags_(0), border_size_(0), widget_(nullptr)
 
 		// Fixme make a class where we can store some properties in the cache
 		// regarding size etc.

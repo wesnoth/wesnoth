@@ -35,7 +35,7 @@ tmulti_page::tmulti_page()
 	: tcontainer_(0)
 	, generator_(
 			  tgenerator_::build(true, true, tgenerator_::independent, false))
-	, page_builder_(NULL)
+	, page_builder_(nullptr)
 {
 }
 
@@ -132,7 +132,7 @@ void swap_grid(tgrid* grid,
 	widget->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = NULL;
+	tgrid* parent_grid = nullptr;
 	if(grid) {
 		parent_grid = find_widget<tgrid>(grid, id, false, false);
 	}
@@ -155,7 +155,7 @@ void tmulti_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
 	generator_->create_items(-1, page_builder_, page_data, NULL);
-	swap_grid(NULL, &grid(), generator_, "_content_grid");
+	swap_grid(nullptr, &grid(), generator_, "_content_grid");
 }
 
 void tmulti_page::impl_draw_background(surface& /*frame_buffer*/
@@ -210,7 +210,7 @@ tmulti_page_definition::tmulti_page_definition(const config& cfg)
  * A multipage has no states.
  */
 tmulti_page_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(NULL)
+	: tresolution_definition_(cfg), grid(nullptr)
 {
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -267,7 +267,7 @@ namespace implementation
 {
 
 tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
-	: implementation::tbuilder_control(cfg), builder(NULL), data()
+	: implementation::tbuilder_control(cfg), builder(nullptr), data()
 {
 	const config& page = cfg.child("page_definition");
 

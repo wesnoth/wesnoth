@@ -99,7 +99,7 @@ static int intf_find_path(lua_State *L)
 	if(lua_isboolean(L, 8)) {
 		border = luaW_toboolean(L, 8);
 	}
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, &calc, width, height, NULL, border);
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, &calc, width, height, nullptr, border);
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
@@ -119,7 +119,7 @@ static int intf_find_path(lua_State *L)
 
 
 mapgen_lua_kernel::mapgen_lua_kernel()
-	: lua_kernel_base(NULL)
+	: lua_kernel_base(nullptr)
 	, random_seed_()
 	, default_rng_()
 {
@@ -129,7 +129,7 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 	static luaL_Reg const callbacks[] = {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 
 	lua_getglobal(L, "wesnoth");

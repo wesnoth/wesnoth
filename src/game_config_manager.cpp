@@ -71,7 +71,7 @@ game_config_manager::game_config_manager(
 game_config_manager::~game_config_manager()
 {
 	assert(singleton);
-	singleton = NULL;
+	singleton = nullptr;
 }
 
 game_config_manager * game_config_manager::get() {
@@ -122,28 +122,30 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
-	gui2::tloadscreen::display(video_, [=]() {
-		load_game_config(force_reload, classification);
-	});
-}
-void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
-	game_classification const* classification)
-	{
-		// Make sure that 'debug mode' symbol is set
-	// if command line parameter is selected
-	// also if we're in multiplayer and actual debug mode is disabled.
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
-	    game_config::debug || game_config::mp_debug);
+		game_config::debug || game_config::mp_debug);
 
 	// Game_config already holds requested config in memory.
-	if(!game_config_.empty()) {
-		if((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
+	if (!game_config_.empty()) {
+		if ((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
 			return;
 		}
-		if((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+		if ((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
 			return;
 		}
 	}
+
+	gui2::tloadscreen::display(video_, [this, force_reload, classification]() {
+		load_game_config(force_reload, classification);
+	});
+}
+
+void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
+	game_classification const* classification)
+{
+		// Make sure that 'debug mode' symbol is set
+	// if command line parameter is selected
+	// also if we're in multiplayer and actual debug mode is disabled.
 
 	// The loadscreen will erase the titlescreen.
 	// NOTE: even without loadscreen, needed after MP lobby.
@@ -268,7 +270,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// If multiplayer campaign is being loaded, [scenario] tags should
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
-		if (classification != NULL) {
+		if (classification != nullptr) {
 			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
 			{
 				const bool require_campaign = campaign["require_campaign"].to_bool(true);
@@ -413,7 +415,7 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", NULL };
+			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", nullptr };
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{

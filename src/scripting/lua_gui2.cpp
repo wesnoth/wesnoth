@@ -79,7 +79,7 @@ namespace {
 		scoped_dialog(const scoped_dialog &); // not implemented; not allowed.
 	};
 
-	scoped_dialog *scoped_dialog::current = NULL;
+	scoped_dialog *scoped_dialog::current = nullptr;
 
 	scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
 		: L(l), prev(current), window(w), callbacks()
@@ -118,7 +118,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 		luaL_typerror(L, i, "string");
 		error_call_destructors_3:
 		luaL_argerror(L, i, "widget not found");
-		return NULL;
+		return nullptr;
 	}
 
 	gui2::twidget *w = scoped_dialog::current->window;

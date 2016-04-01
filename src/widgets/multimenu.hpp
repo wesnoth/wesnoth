@@ -28,7 +28,7 @@ namespace gui {
 	public:
 		multimenu(CVideo& video, const std::vector<std::string>& items,
 				  bool click_selects=false, int max_height=-1, int max_width=-1,
-				  const sorter* sorter_obj=NULL, style *menu_style=NULL, const bool auto_join=true);
+				  const sorter* sorter_obj=nullptr, style *menu_style=nullptr, const bool auto_join=true);
 
 
 		void set_active(size_t index, bool active=true);

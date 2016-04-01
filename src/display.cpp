@@ -163,7 +163,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	zoom_(DefaultZoom),
 	fake_unit_man_(new fake_unit_manager(*this)),
 	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
-	minimap_(NULL),
+	minimap_(nullptr),
 	minimap_location_(sdl::empty_rect),
 	redrawMinimap_(false),
 	redraw_background_(true),
@@ -191,9 +191,9 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	sliders_(),
 	invalidated_(),
 	previous_invalidated_(),
-	mouseover_hex_overlay_(NULL),
-	tod_hex_mask1(NULL),
-	tod_hex_mask2(NULL),
+	mouseover_hex_overlay_(nullptr),
+	tod_hex_mask1(nullptr),
+	tod_hex_mask2(nullptr),
 	fog_images_(),
 	shroud_images_(),
 	selectedHex_(),
@@ -208,13 +208,13 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	reach_map_(),
 	reach_map_old_(),
 	reach_map_changed_(true),
-	overlays_(NULL),
+	overlays_(nullptr),
 	fps_handle_(0),
 	invalidated_hexes_(0),
 	drawn_hexes_(0),
 	idle_anim_(preferences::idle_anim()),
 	idle_anim_rate_(1.0),
-	map_screenshot_surf_(NULL),
+	map_screenshot_surf_(nullptr),
 	redraw_observers_(),
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
@@ -227,7 +227,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 #endif
 {
 	//The following assertion fails when starting a campaign
-	assert(singleton_ == NULL);
+	assert(singleton_ == nullptr);
 	singleton_ = this;
 
 	resources::fake_units = fake_unit_man_.get();
@@ -237,7 +237,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	read(level.child_or_empty("display"));
 
 	if(video.non_interactive()
-		&& (get_video_surface() != NULL
+		&& (get_video_surface() != nullptr
 		&& video.faked())) {
 		screen_.lock_updates(true);
 	}
@@ -259,8 +259,8 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 
 display::~display()
 {
-	singleton_ = NULL;
-	resources::fake_units = NULL;
+	singleton_ = nullptr;
+	resources::fake_units = nullptr;
 }
 
 
@@ -293,7 +293,7 @@ void display::reinit_flags_for_side(size_t side)
 
 void display::init_flags_for_side_internal(size_t n, const std::string& side_color)
 {
-	assert(dc_ != NULL);
+	assert(dc_ != nullptr);
 	assert(n < dc_->teams().size());
 	assert(n < flags_.size());
 
@@ -340,7 +340,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 sdl::timage display::get_flag(const map_location& loc)
 {
 	if(!get_map().is_village(loc)) {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 
 	for(size_t i = 0; i != dc_->teams().size(); ++i) {
@@ -360,7 +360,7 @@ sdl::timage display::get_flag(const map_location& loc)
 surface display::get_flag(const map_location& loc)
 {
 	if(!get_map().is_village(loc)) {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 
 	for(size_t i = 0; i != dc_->teams().size(); ++i) {
@@ -374,7 +374,7 @@ surface display::get_flag(const map_location& loc)
 		}
 	}
 
-	return surface(NULL);
+	return surface(nullptr);
 }
 #endif
 
@@ -389,7 +389,7 @@ void display::set_team(size_t teamindex, bool show_everything)
 	}
 	else
 	{
-		labels().set_team(NULL);
+		labels().set_team(nullptr);
 		dont_show_all_ = false;
 	}
 	labels().recalculate_labels();
@@ -777,7 +777,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		SDL_Rect area = max_map_area();
 		map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
 
-		if (map_screenshot_surf_ == NULL) {
+		if (map_screenshot_surf_ == nullptr) {
 			// Memory problem ?
 			ERR_DP << "Could not create screenshot surface, try zooming out.\n";
 			return false;
@@ -805,13 +805,13 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		if (!res) {
 			// Need to do this ASAP or spurious messages result due to
 			// redraw_everything calling SDL too (e.g. "SDL_UpperBlit: passed
-			// a NULL surface")
+			// a nullptr surface")
 			ERR_DP << "Map screenshot failed: " << SDL_GetError() << '\n';
 		}
 #endif
 
 		//NOTE: need to be sure that we free this huge surface (is it enough?)
-		map_screenshot_surf_ = NULL;
+		map_screenshot_surf_ = nullptr;
 
 		// restore normal rendering
 		map_screenshot_= false;
@@ -832,7 +832,7 @@ gui::button* display::find_action_button(const std::string& id)
 			return &action_buttons_[i];
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 gui::button* display::find_menu_button(const std::string& id)
@@ -842,7 +842,7 @@ gui::button* display::find_menu_button(const std::string& id)
 			return &menu_buttons_[i];
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 gui::zoom_slider* display::find_slider(const std::string& id)
@@ -852,7 +852,7 @@ gui::zoom_slider* display::find_slider(const std::string& id)
 			return &sliders_[i];
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 void display::layout_buttons()
@@ -1166,7 +1166,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		}
 	}
 
-	if(terrains != NULL) {
+	if(terrains != nullptr) {
 		// Cache the offmap name.
 		// Since it is themeable it can change,
 		// so don't make it static.
@@ -1371,7 +1371,7 @@ void display::drawing_buffer_commit()
 			SDL_Rect dstrect = sdl::create_rect(blit.x(), blit.y(), 0, 0);
 			SDL_Rect srcrect = blit.clip();
 			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
-				? &srcrect : NULL;
+				? &srcrect : nullptr;
 			sdl_blit(surf, srcrectArg, screen, &dstrect);
 			//NOTE: the screen part should already be marked as 'to update'
 		}
@@ -1507,7 +1507,7 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<gui
 			surf.assign(tile_surface(surf,loc.w,loc.h));
 		}
 #ifdef SDL_GPU
-		blit_surface(surf, NULL, target, &loc);
+		blit_surface(surf, nullptr, target, &loc);
 #else
 		video.blit_surface(loc.x, loc.y, surf);
 		update_rect(loc);
@@ -1545,7 +1545,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 				surf.assign(scale_surface(surf,loc.w,loc.h));
 			}
 
-			sdl_blit(surf,NULL,target,&loc);
+			sdl_blit(surf,nullptr,target,&loc);
 		}
 
 		if(text.empty() == false) {
@@ -1615,12 +1615,12 @@ void display::draw_panel_image(SDL_Rect *clip)
 		update_panel_image_ = false;
 	}
 
-	if (clip != NULL)
+	if (clip != nullptr)
 		GPU_SetClip(get_render_target(), clip->x, clip->y, clip->w, clip->h);
 
 	video().draw_texture(panel_image_, 0, 0);
 
-	if (clip != NULL)
+	if (clip != nullptr)
 		GPU_UnsetClip(get_render_target());
 }
 #endif
@@ -1652,7 +1652,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
 			SDL_Rect clip = sdl::create_rect(w_off, h_off, 0, 0);
-			sdl_blit(background, NULL, screen, &clip);
+			sdl_blit(background, nullptr, screen, &clip);
 		}
 	}
 }
@@ -1719,7 +1719,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)
 {
-	if (image==NULL)
+	if (image==nullptr)
 		return;
 
 	SDL_Rect image_rect = sdl::create_rect(x, y, image->w, image->h);
@@ -1751,7 +1751,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		surf = adjust_surface_alpha(surf, alpha, false);
 	}
 
-	if(surf == NULL) {
+	if(surf == nullptr) {
 		ERR_DP << "surface lost..." << std::endl;
 		return;
 	}
@@ -1897,13 +1897,13 @@ const theme::action* display::action_pressed()
 			const size_t index = i - action_buttons_.begin();
 			if(index >= theme_.actions().size()) {
 				assert(false);
-				return NULL;
+				return nullptr;
 			}
 			return &theme_.actions()[index];
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const theme::menu* display::menu_pressed()
@@ -1913,13 +1913,13 @@ const theme::menu* display::menu_pressed()
 			const size_t index = i - menu_buttons_.begin();
 			if(index >= theme_.menus().size()) {
 				assert(false);
-				return NULL;
+				return nullptr;
 			}
 			return theme_.get_menu_item(i->id());
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void display::enable_menu(const std::string& item, bool enable)
@@ -2087,13 +2087,13 @@ void display::draw_minimap()
 	}
 
 #ifdef SDL_GPU
-	minimap_location_ = image::draw_minimap(screen_, area, get_map(), &dc_->teams()[currentTeam_], NULL);
+	minimap_location_ = image::draw_minimap(screen_, area, get_map(), &dc_->teams()[currentTeam_], nullptr);
 
 	draw_minimap_units();
 #else
-	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
-		if(minimap_ == NULL) {
+	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
+		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
+		if(minimap_ == nullptr) {
 			return;
 		}
 	}
@@ -2916,7 +2916,7 @@ void display::draw_hex(const map_location& loc) {
 			image::get_texture(tod_hex_mask,image::SCALED_TO_HEX));
 	}
 #else
-	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
+	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
 	} else if(!tod_hex_mask.empty()) {
@@ -2930,7 +2930,7 @@ void display::draw_hex(const map_location& loc) {
 #ifdef SDL_GPU
 			&& !mouseover_hex_overlay_.null()) {
 #else
-			&& mouseover_hex_overlay_ != NULL) {
+			&& mouseover_hex_overlay_ != nullptr) {
 #endif
 		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
 	}
@@ -3078,7 +3078,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			img.assign(scale_surface(img,rect.w,rect.h));
 		}
 
-		sdl_blit(img,NULL,screen_.getSurface(),&target);
+		sdl_blit(img,nullptr,screen_.getSurface(),&target);
 	}
 }
 #endif
@@ -3108,7 +3108,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
 	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
-	if ( new_cfg == NULL )
+	if ( new_cfg == nullptr )
 		new_cfg = &generated_cfg;
 
 	SDL_Rect &rect = reportRects_[report_name];
@@ -3141,7 +3141,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		// TODO: handle this somehow for SDL_gpu
 		/*if (rect.w > 0 && rect.h > 0) {
 			img.assign(get_surface_portion(screen_.getSurface(), rect));
-			if (reportSurfaces_[report_name] == NULL) {
+			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
 		}
@@ -3304,7 +3304,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 #else
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
-		reportSurfaces_[report_name].assign(NULL);
+		reportSurfaces_[report_name].assign(nullptr);
 		return;
 	}
 
@@ -3319,7 +3319,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
 	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
-	if ( new_cfg == NULL )
+	if ( new_cfg == nullptr )
 		new_cfg = &generated_cfg;
 
 	SDL_Rect &rect = reportRects_[report_name];
@@ -3336,14 +3336,14 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	report = *new_cfg;
 
 	if (surf) {
-		sdl_blit(surf, NULL, screen_.getSurface(), &rect);
+		sdl_blit(surf, nullptr, screen_.getSurface(), &rect);
 		update_rect(rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
 	if (!surf || new_rect != rect)
 	{
-		surf.assign(NULL);
+		surf.assign(nullptr);
 		rect = new_rect;
 
 		// If the rectangle is present, and we are blitting text,
@@ -3352,7 +3352,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
 			surf.assign(get_surface_portion(screen_.getSurface(), rect));
-			if (reportSurfaces_[report_name] == NULL) {
+			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
 		}
@@ -3791,5 +3791,5 @@ void display::handle_event(const SDL_Event& event) {
 	}
 }
 
-display *display::singleton_ = NULL;
+display *display::singleton_ = nullptr;
 

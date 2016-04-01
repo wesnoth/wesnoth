@@ -39,7 +39,7 @@ inline bool might_contain_variables(const std::string &str)
 /**
  * Function which will interpolate variables, starting with '$' in the string
  * 'str' with the equivalent symbols in the given symbol table. If 'symbols'
- * is NULL, then game event variables will be used instead.
+ * is nullptr, then game event variables will be used instead.
  */
 std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols);
 std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables);

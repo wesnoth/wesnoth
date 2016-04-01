@@ -110,7 +110,7 @@ void tformula_debugger::pre_show(twindow& window)
 						   << "</span>: \"<span color=\"yellow\">" << font::escape_text(i.name())
 						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
 						   << "<span color=\"orange\">"
-						   << font::escape_text(i.value().to_debug_string(NULL, false))
+						   << font::escape_text(i.value().to_debug_string(nullptr, false))
 						   << "</span>" << std::endl;
 		}
 	}

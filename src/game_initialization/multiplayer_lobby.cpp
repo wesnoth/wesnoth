@@ -64,7 +64,7 @@ std::vector<std::string> empty_string_vector;
 
 namespace mp {
 gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
-	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
+	menu(video, empty_string_vector, false, -1, -1, nullptr, &menu::bluebg_style),
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
 	map_size_icon_locator_("misc/map.png"),
@@ -128,7 +128,7 @@ void gamebrowser::draw()
 		return;
 	if(dirty()) {
 		bg_restore();
-		util::scoped_ptr<clip_rect_setter> clipper(NULL);
+		util::scoped_ptr<clip_rect_setter> clipper(nullptr);
 		if(clip_rect())
 			clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect()));
 		draw_contents();
@@ -155,7 +155,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	int ypos = item_rect.y + margin_;
 	std::string no_era_string = "";
 	// Draw minimaps
-	if (game.mini_map != NULL) {
+	if (game.mini_map != nullptr) {
 		int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
 		int minimap_y = ypos + (minimap_size_ - game.mini_map->h)/2;
 		video().blit_surface(minimap_x, minimap_y, game.mini_map);

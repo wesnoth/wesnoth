@@ -331,7 +331,7 @@ void recruitment::execute() {
 	 */
 
 	action_result_ptr action_result;
-	config* job = NULL;
+	config* job = nullptr;
 	do {  // Recruitment loop
 		recruit_situation_change_observer_.reset_gamestate_changed();
 
@@ -471,7 +471,7 @@ action_result_ptr recruitment::execute_recruit(const std::string& type, data& le
  */
 const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		const data& leader_data) const {
-	const std::string* best_recall_id = NULL;
+	const std::string* best_recall_id = nullptr;
 	double best_recall_value = -1;
 	BOOST_FOREACH(const unit_const_ptr & recall_unit, current_team().recall_list()) {
 		if (type != recall_unit->type_id()) {
@@ -533,7 +533,7 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 	std::random_shuffle(leader_data.begin(), leader_data.end());
 
 	// Find which leader should recruit according to ratio_scores.
-	data* best_leader_data = NULL;
+	data* best_leader_data = nullptr;
 	double biggest_difference = -99999.;
 	BOOST_FOREACH(data& data, leader_data) {
 		if (!leader_matches_job(data, job)) {
@@ -1024,12 +1024,12 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 /**
  * For Combat Analysis.
  * Returns the cached combat value for two unit types
- * or NULL if there is none or terrain defenses are not within range.
+ * or nullptr if there is none or terrain defenses are not within range.
  */
 const double* recruitment::get_cached_combat_value(const std::string& a, const std::string& b,
 		double a_defense, double b_defense) {
 	double best_distance = 999;
-	const double* best_value = NULL;
+	const double* best_value = nullptr;
 	const std::set<cached_combat_value>& cache = combat_cache_[a][b];
 	BOOST_FOREACH(const cached_combat_value& entry, cache) {
 		double distance_a = std::abs(entry.a_defense - a_defense);
@@ -1117,7 +1117,7 @@ void recruitment::simulate_attack(
 			double attacker_defense, double defender_defense,
 			double* damage_to_attacker, double* damage_to_defender) const {
 	if(!attacker || !defender || !damage_to_attacker || !damage_to_defender) {
-		ERR_AI_RECRUITMENT << "NULL pointer in simulate_attack()" << std::endl;
+		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()" << std::endl;
 		return;
 	}
 	const std::vector<attack_type> attacker_weapons = attacker->attacks();
@@ -1147,7 +1147,7 @@ void recruitment::simulate_attack(
 			best_def_response.reset(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, NULL, average_lawful_bonus_));
+					&att_weapon, nullptr, average_lawful_bonus_));
 		}
 		if (!best_att_attack || best_def_response->better_result(best_att_attack.get(), false)) {
 			best_att_attack = best_def_response;
@@ -1167,7 +1167,7 @@ void recruitment::simulate_attack(
  * We call a [recruit] tag a "job".
  */
 config* recruitment::get_most_important_job() {
-	config* most_important_job = NULL;
+	config* most_important_job = nullptr;
 	int most_important_importance = -1;
 	int biggest_number = -1;
 	BOOST_FOREACH(config& job, recruitment_instructions_.child_range("recruit")) {

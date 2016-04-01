@@ -88,7 +88,6 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
@@ -209,7 +208,7 @@ namespace {
 				try {
 					dlg->show(video, interact);
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
-					BOOST_REQUIRE_NE(window, static_cast<void*>(NULL));
+					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
 				} catch(gui2::tlayout_exception_width_modified&) {
 					exception = "gui2::tlayout_exception_width_modified";
@@ -439,14 +438,14 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/*
 	 * The unit attack unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
+	 * don't allow 'nullptr's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
 			, list.end());
 	/*
 	 * The chat log unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
+	 * don't allow 'nullptr's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "chat_log")
@@ -571,7 +570,7 @@ struct twrapper<gui2::tchat_log>
 		static config cfg;
 		static vconfig vcfg(cfg);
 
-		return new gui2::tchat_log(vcfg, NULL);
+		return new gui2::tchat_log(vcfg, nullptr);
 	}
 };
 
@@ -729,7 +728,7 @@ struct twrapper<gui2::tmp_change_control>
 {
 	static gui2::tmp_change_control* create()
 	{
-		return new gui2::tmp_change_control(NULL);
+		return new gui2::tmp_change_control(nullptr);
 	}
 };
 
@@ -776,7 +775,7 @@ struct twrapper<gui2::tdepcheck_confirm_change>
 {
 	static gui2::tdepcheck_confirm_change* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
+		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_confirm_change(true, mods, "requester");
 	}
 };
@@ -786,7 +785,7 @@ struct twrapper<gui2::tdepcheck_select_new>
 {
 	static gui2::tdepcheck_select_new* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
+		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_select_new(ng::depcheck::MODIFICATION, mods);
 	}
 };
@@ -844,8 +843,8 @@ struct twrapper<gui2::ttheme_list>
 	}
 	static gui2::ttheme_list* create()
 	{
-		static std::vector<theme_info> themes = boost::assign::list_of(make_theme("classic"))
-		(make_theme("new"))(make_theme("more"))(make_theme("themes"));
+		static std::vector<theme_info> themes = {make_theme("classic"),
+		make_theme("new"), make_theme("more"), make_theme("themes")};
 		return new gui2::ttheme_list(themes, 0);
 	}
 };
@@ -947,7 +946,7 @@ struct twrapper<gui2::twml_error>
 {
 	static gui2::twml_error* create()
 	{
-		static std::vector<std::string> files = boost::assign::list_of("some")("files")("here");
+		static std::vector<std::string> files = {"some", "files", "here"};
 		return new gui2::twml_error("Summary", "Post summary", files, "Details");
 	}
 };

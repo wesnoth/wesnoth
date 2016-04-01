@@ -151,9 +151,9 @@ public:
 	void quit_to_main_menu();
 };
 /* Functions to be called every time a event is intercepted.
- * Will call the relevant function in executor if the event is not NULL.
+ * Will call the relevant function in executor if the event is not nullptr.
  * Also handles some events in the function itself,
- * and so is still meaningful to call with executor=NULL
+ * and so is still meaningful to call with executor=nullptr
  */
 void jbutton_event(const SDL_Event& event, command_executor* executor);
 void jhat_event(const SDL_Event& event, command_executor* executor);

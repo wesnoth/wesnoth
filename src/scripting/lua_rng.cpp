@@ -46,7 +46,7 @@ int impl_rng_create(lua_State* L)
 int impl_rng_destroy(lua_State* L)
 {
 	mt_rng * d = static_cast< mt_rng *> (luaL_testudata(L, 1, Rng));
-	if (d == NULL) {
+	if (d == nullptr) {
 		ERR_LUA << "rng_destroy called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
 		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
 		lua_pushstring(L, "Rng object garbage collection failure");
@@ -85,7 +85,7 @@ void load_tables(lua_State* L)
 		{ "__gc",           &impl_rng_destroy},
 		{ "seed", 	    &impl_rng_seed},
 		{ "draw",	    &impl_rng_draw},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 

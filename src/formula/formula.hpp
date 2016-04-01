@@ -29,7 +29,7 @@ typedef boost::shared_ptr<formula_expression> expression_ptr;
 class formula {
 public:
 	static variant evaluate(const const_formula_ptr& f,
-				const formula_callable& variables, formula_debugger *fdb = NULL,
+				const formula_callable& variables, formula_debugger *fdb = nullptr,
 				variant default_res=variant(0)) {
 		if(f) {
 			return f->evaluate(variables, fdb);
@@ -38,32 +38,32 @@ public:
 		}
 	}
 
-	variant evaluate(const formula_callable& variables, formula_debugger *fdb = NULL) const
+	variant evaluate(const formula_callable& variables, formula_debugger *fdb = nullptr) const
 	{
-		if (fdb!=NULL) {
+		if (fdb!=nullptr) {
 			return evaluate_formula_callback(*fdb,*this,variables);
 		} else {
 			return execute(variables,fdb);
 		}
 	}
 
-	variant evaluate(formula_debugger *fdb = NULL) const
+	variant evaluate(formula_debugger *fdb = nullptr) const
 	{
-		if (fdb!=NULL) {
+		if (fdb!=nullptr) {
 			return evaluate_formula_callback(*fdb,*this);
 		} else {
 			return execute(fdb);
 		}
 	}
 
-	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=NULL);
-	explicit formula(const std::string& str, function_symbol_table* symbols=NULL);
-	explicit formula(const formula_tokenizer::token* i1, const formula_tokenizer::token* i2, function_symbol_table* symbols=NULL);
+	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=nullptr);
+	explicit formula(const std::string& str, function_symbol_table* symbols=nullptr);
+	explicit formula(const formula_tokenizer::token* i1, const formula_tokenizer::token* i2, function_symbol_table* symbols=nullptr);
 	~formula();
 	const std::string& str() const { return str_; }
 
 private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const;
+	variant execute(const formula_callable& variables, formula_debugger *fdb = nullptr) const;
 	variant execute(formula_debugger *fdb) const;
 	formula() : expr_(), str_()
    	{}

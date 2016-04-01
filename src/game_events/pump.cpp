@@ -296,14 +296,14 @@ namespace { // Support functions
 		// The event hasn't been filtered out, so execute the handler.
 		++impl_->internal_wml_tracking;
 		context::scoped evc(impl_->contexts_);
-		assert(resources::lua_kernel != NULL);
+		assert(resources::lua_kernel != nullptr);
 		handler_p->handle_event(ev, handler_p, *resources::lua_kernel);
 		// NOTE: handler_p may be null at this point!
 
 		if(ev.name == "select") {
 			resources::gamedata->last_selected = ev.loc1;
 		}
-		if(resources::screen != NULL) {
+		if(resources::screen != nullptr) {
 			resources::screen->maybe_rebuild();
 		}
 		return context_mutated();
@@ -363,7 +363,7 @@ namespace { // Support functions
 				msg << " (" << itor->second << ")";
 			}
 
-			resources::screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg.str(),
+			resources::screen->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg.str(),
 					events::chat_handler::MESSAGE_PUBLIC, false);
 			if ( to_cerr )
 				std::cerr << caption << ": " << msg.str() << '\n';
@@ -483,7 +483,7 @@ void t_pump::raise(const std::string& event,
            const entity_location& loc2,
            const config& data)
 {
-	if(resources::screen == NULL)
+	if(resources::screen == nullptr)
 		return;
 
 	DBG_EH << "raising event: " << event << "\n";
@@ -494,9 +494,9 @@ void t_pump::raise(const std::string& event,
 bool t_pump::operator()()
 {
 	// Quick aborts:
-	if(resources::screen == NULL)
+	if(resources::screen == nullptr)
 		return false;
-	assert(resources::lua_kernel != NULL);
+	assert(resources::lua_kernel != nullptr);
 	if ( impl_->events_queue.empty() ) {
 		DBG_EH << "Processing queued events, but none found.\n";
 		return false;

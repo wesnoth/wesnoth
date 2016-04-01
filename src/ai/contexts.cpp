@@ -62,7 +62,7 @@
 #include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
 #include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
-#include <cstdlib>                     // for NULL, abs
+#include <cstdlib>                     // for abs
 #include <ctime>                       // for time
 #include <iterator>                     // for back_inserter
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -346,7 +346,7 @@ const team& readonly_context_impl::current_team() const
 void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), "ai", get_side(), msg,
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "ai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
@@ -415,7 +415,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
 	static const config only_not_tag("not");
 	if(remove_destinations && remove_destinations->to_config() == only_not_tag) {
-		remove_destinations = NULL;
+		remove_destinations = nullptr;
 	}
 
 	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m) {
@@ -424,7 +424,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
 
-			if(remove_destinations != NULL && remove_destinations->match(dst)) {
+			if(remove_destinations != nullptr && remove_destinations->match(dst)) {
 				continue;
 			}
 
@@ -956,7 +956,7 @@ const std::set<map_location>& readonly_context_impl::keeps() const
 
 
 keeps_cache::keeps_cache()
-	: map_(NULL)
+	: map_(nullptr)
 	, keeps_()
 {
 	ai::manager::add_turn_started_observer(this);
@@ -1040,14 +1040,14 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 		return dummy;
 	}
 
-	const map_location* res = NULL;
+	const map_location* res = nullptr;
 	int closest = -1;
 	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
 		if (avoided_locations.find(*i)!=avoided_locations.end()) {
 			continue;
 		}
 		const int distance = distance_between(*i,loc);
-		if(res == NULL || distance < closest) {
+		if(res == nullptr || distance < closest) {
 			closest = distance;
 			res = &*i;
 		}

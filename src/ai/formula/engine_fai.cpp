@@ -131,7 +131,7 @@ std::string engine_fai::evaluate(const std::string &str)
 
 void engine_fai::set_ai_context(ai_context *context)
 {
-	if (context!=NULL) {
+	if (context!=nullptr) {
 		DBG_AI_ENGINE_FAI << "fai engine: ai_context is set" << std::endl;
 	} else {
 		DBG_AI_ENGINE_FAI << "fai engine: ai_context is cleared" << std::endl;

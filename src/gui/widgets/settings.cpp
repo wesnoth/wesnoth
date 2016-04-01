@@ -349,7 +349,7 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	FOREACH(AUTO & widget_type, registred_widget_type())
 	{
-		widget_type.second(*this, widget_type.first, cfg, NULL);
+		widget_type.second(*this, widget_type.first, cfg, nullptr);
 	}
 
 	/***** Window types *****/

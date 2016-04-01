@@ -89,12 +89,12 @@ tcustom_tod::tcustom_tod(editor::editor_display* display,
 						 const std::vector<time_of_day>& tods)
 	: tods_(tods)
 	, current_tod_(0)
-	, current_tod_name_(NULL)
-	, current_tod_id_(NULL)
-	, current_tod_image_(NULL)
-	, current_tod_mask_(NULL)
-	, current_tod_sound_(NULL)
-	, current_tod_number_(NULL)
+	, current_tod_name_(nullptr)
+	, current_tod_id_(nullptr)
+	, current_tod_image_(nullptr)
+	, current_tod_mask_(nullptr)
+	, current_tod_sound_(nullptr)
+	, current_tod_number_(nullptr)
 	, lawful_bonus_field_(register_integer("lawful_bonus", true))
 	, tod_red_field_(register_integer("tod_red",
 									  true,

@@ -157,9 +157,9 @@ class tod_manager : public savegame::savegame_config
 		void set_number_of_turns_by_wml(int num);
 
 		/** Dynamically change the current turn number. */
-		void set_turn(const int num, game_data* vars = NULL, const bool increase_limit_if_needed = true);
+		void set_turn(const int num, game_data* vars = nullptr, const bool increase_limit_if_needed = true);
 		/** Dynamically change the current turn number. */
-		void set_turn_by_wml(const int num, game_data* vars = NULL, const bool increase_limit_if_needed = true);
+		void set_turn_by_wml(const int num, game_data* vars = nullptr, const bool increase_limit_if_needed = true);
 
 		/**
 		 * Function to move to the next turn.

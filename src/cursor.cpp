@@ -37,8 +37,8 @@ static bool use_color_cursors()
 static SDL_Cursor* create_cursor(surface surf)
 {
 	const surface nsurf(make_neutral_surface(surf));
-	if(nsurf == NULL) {
-		return NULL;
+	if(nsurf == nullptr) {
+		return nullptr;
 	}
 
 	// The width must be a multiple of 8 (SDL requirement)
@@ -82,7 +82,7 @@ static SDL_Cursor* create_cursor(surface surf)
 
 namespace {
 
-SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+SDL_Cursor* cache[cursor::NUM_CURSORS] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
 tribool cache_color[cursor::NUM_CURSORS] = {
 	indeterminate, indeterminate, indeterminate, indeterminate,
 	indeterminate, indeterminate, indeterminate, indeterminate,
@@ -112,7 +112,7 @@ bool have_focus = true;
 static SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	bool is_color = use_color_cursors();
-	if(cache[type] == NULL || indeterminate(cache_color[type]) || cache_color[type] != is_color) {
+	if(cache[type] == nullptr || indeterminate(cache_color[type]) || cache_color[type] != is_color) {
 		const std::string prefix = is_color ? "cursors/" : "cursors-bw/";
 		const surface surf(image::get_image(prefix + (is_color ? color_images : bw_images)[type]));
 		if (is_color) {
@@ -129,9 +129,9 @@ static SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 static void clear_cache()
 {
 	for(size_t n = 0; n != cursor::NUM_CURSORS; ++n) {
-		if(cache[n] != NULL) {
+		if(cache[n] != nullptr) {
 			SDL_FreeCursor(cache[n]);
-			cache[n] = NULL;
+			cache[n] = nullptr;
 		}
 	}
 }
@@ -165,7 +165,7 @@ void set(CURSOR_TYPE type)
 	SDL_Cursor * cursor_image = get_cursor(current_cursor);
 
 	// Causes problem on Mac:
-	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
+	//if (cursor_image != nullptr && cursor_image != SDL_GetCursor())
 	SDL_SetCursor(cursor_image);
 
 	SDL_ShowCursor(SDL_ENABLE);

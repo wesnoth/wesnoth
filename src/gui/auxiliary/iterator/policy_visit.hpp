@@ -58,7 +58,7 @@ public:
 	 */
 	gui2::twidget* get(twalker_&)
 	{
-		return NULL;
+		return nullptr;
 	}
 };
 

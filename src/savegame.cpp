@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include <boost/assign/list_of.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "savegame.hpp"
@@ -466,7 +465,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		before_save();
 
 		write_game_to_disk(filename_);
-		if (resources::persist != NULL) {
+		if (resources::persist != nullptr) {
 			resources::persist->end_transaction();
 			resources::persist ->start_transaction();
 		}
@@ -474,12 +473,12 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
 
-		if (video != NULL && show_confirmation_)
+		if (video != nullptr && show_confirmation_)
 			gui2::show_transient_message(*video, _("Saved"), _("The game has been saved."));
 		return true;
 	} catch(game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message << std::endl;
-		if (video != NULL){
+		if (video != nullptr){
 			gui2::show_error_message(*video, error_message_ + e.message);
 			//do not bother retrying, since the user can just try to save the game again
 			//maybe show a yes-no dialog for "disable autosaves now"?

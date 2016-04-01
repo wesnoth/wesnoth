@@ -58,7 +58,7 @@ unsigned tstate_default::get_state() const
 }
 
 tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
-	: tbase(builder, get_control_type()), content_(), pane_(NULL)
+	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
 	boost::intrusive_ptr<const tmatrix_definition::tresolution>
 	cfg = boost::dynamic_pointer_cast<const tmatrix_definition::tresolution>(
@@ -182,7 +182,7 @@ iterator::twalker_* tmatrix::create_walker()
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
 
 const std::string& tmatrix::get_control_type() const
@@ -279,10 +279,10 @@ tbuilder_matrix::tbuilder_matrix(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, builder_top(NULL)
-	, builder_bottom(NULL)
-	, builder_left(NULL)
-	, builder_right(NULL)
+	, builder_top(nullptr)
+	, builder_bottom(nullptr)
+	, builder_left(nullptr)
+	, builder_right(nullptr)
 	, builder_main(create_builder_widget(cfg.child("main", "[matrix]")))
 {
 	if(const config& top = cfg.child("top")) {

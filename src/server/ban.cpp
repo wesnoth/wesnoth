@@ -237,7 +237,7 @@ static lg::log_domain log_server("server");
 		{
 			return "permanent";
 		}
-		return lg::get_timespan(end_time_ - time(NULL));
+		return lg::get_timespan(end_time_ - time(nullptr));
 	}
 
 	bool banned::operator>(const banned& b) const

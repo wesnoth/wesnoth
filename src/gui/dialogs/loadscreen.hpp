@@ -18,6 +18,7 @@
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <map>
 
 class CVideo;
 namespace boost
@@ -42,9 +43,9 @@ public:
 	~tloadscreen();
 
 	static void display(CVideo& video, boost::function<void()> f);
-	static bool displaying() { return current_load != NULL; }
+	static bool displaying() { return current_load != nullptr; }
 	
-	static void progress(const char* stage_name = NULL);
+	static void progress(const char* stage_name = nullptr);
 
 	/**
 	 * Hides the window.
@@ -77,9 +78,8 @@ private:
 	tlabel* animation_label_;
 	static tloadscreen* current_load;
 
-	//Note we cannot use std::strings here unless we we explicitly use mutexes.
-	const char* current_stage_;
-	const char* current_visible_stage_;
+	std::map<std::string,std::string>::const_iterator current_stage_;
+	std::map<std::string,std::string>::const_iterator current_visible_stage_;
 };
 
 } // namespace gui2

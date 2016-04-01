@@ -256,7 +256,7 @@ public:
 					bool& handled,
 					bool& halt)
 	{
-		functor(dispatcher, event, handled, halt, NULL);
+		functor(dispatcher, event, handled, halt, nullptr);
 	}
 };
 

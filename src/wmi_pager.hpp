@@ -42,7 +42,7 @@ private:
 	const game_events::wmi_container * wmi_container_; //!< Internal pointer to the collection of wml menu items
 
 public:
-	wmi_pager() : page_num_(0), wmi_container_(NULL) {}
+	wmi_pager() : page_num_(0), wmi_container_(nullptr) {}
 
 	void update_ref(game_events::wmi_container * ptr) { wmi_container_ = ptr; } //!< Updates the internal wmi_container pointer
 

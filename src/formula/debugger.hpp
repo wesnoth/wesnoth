@@ -136,8 +136,8 @@ public:
 
 	static formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const std::string& f_name)
 	{
-		if (fdb==NULL) {
-			return NULL;
+		if (fdb==nullptr) {
+			return nullptr;
 		}
 		fdb->add_debug_info(arg_number,f_name);
 		return fdb;

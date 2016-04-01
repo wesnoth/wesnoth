@@ -126,14 +126,14 @@ void default_map_generator::user_config(CVideo& v)
 	const std::string& castlesize_label = _("Castle size:");
 	const std::string& landform_label = _("Landform:");
 
-	SDL_Rect players_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,0,0);
-	SDL_Rect width_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,width_label,0,0);
-	SDL_Rect height_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,height_label,0,0);
-	SDL_Rect iterations_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,0,0);
-	SDL_Rect hillsize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,hillsize_label,0,0);
-	SDL_Rect villages_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_label,0,0);
-	SDL_Rect castlesize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,castlesize_label,0,0);
-	SDL_Rect landform_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_label,0,0);
+	SDL_Rect players_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,0,0);
+	SDL_Rect width_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,width_label,0,0);
+	SDL_Rect height_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,height_label,0,0);
+	SDL_Rect iterations_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,0,0);
+	SDL_Rect hillsize_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,hillsize_label,0,0);
+	SDL_Rect villages_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_label,0,0);
+	SDL_Rect castlesize_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,castlesize_label,0,0);
+	SDL_Rect landform_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_label,0,0);
 
 	const int horz_margin = 15;
 	const int text_right = xpos + horz_margin +
@@ -348,7 +348,7 @@ std::string default_map_generator::config_name() const
 
 std::string default_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
 {
-	return generate_map(NULL, randomseed);
+	return generate_map(nullptr, randomseed);
 }
 
 std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, boost::optional<boost::uint32_t> randomseed)
@@ -363,7 +363,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 
 	// Suppress labels?
 	if ( !show_labels_ )
-		labels = NULL;
+		labels = nullptr;
 
 	// the random generator thinks odd widths are nasty, so make them even
 	if (is_odd(width_))
@@ -396,7 +396,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	std::string map;
 	// Keep a copy of labels as it can be written to by the map generator func
 	std::map<map_location,std::string> labels_copy;
-	std::map<map_location,std::string> * labels_ptr =  labels ? &labels_copy : NULL;
+	std::map<map_location,std::string> * labels_ptr =  labels ? &labels_copy : nullptr;
 	std::string error_message;
 	//initilize the job outside the loop so that we really get a different result everytime we run the loop.
 	default_map_generator_job job(seed);

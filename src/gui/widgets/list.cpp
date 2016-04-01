@@ -46,7 +46,7 @@ tlist::tlist(const bool has_minimum,
 			 const tbuilder_grid_const_ptr list_builder)
 	: tcontainer_(2) // FIXME magic number
 	, state_(ENABLED)
-	, generator_(NULL)
+	, generator_(nullptr)
 	, list_builder_(list_builder)
 	, need_layout_(false)
 {
@@ -82,7 +82,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 			   const int index)
 {
 	assert(generator_);
-	tgrid& grid = generator_->create_item(index, list_builder_, data, NULL);
+	tgrid& grid = generator_->create_item(index, list_builder_, data, nullptr);
 
 	tselectable_* selectable
 			= find_widget<tselectable_>(&grid, "_toggle", false, false);
@@ -198,7 +198,7 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 	}
 
 	if(selected_row != get_selected_row()) {
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -232,7 +232,7 @@ void tlist::set_row_shown(const std::vector<bool>& shown)
 	}
 
 	if(selected_row != get_selected_row()) {
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -438,7 +438,7 @@ void tlist::signal_handler_left_button_click(tgrid* grid,
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(&generator_->item(i) == grid) {
 			generator_->select_item(i);
-			fire(event::NOTIFY_MODIFIED, *this, NULL);
+			fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		}
 	}
 }
@@ -472,7 +472,7 @@ void tlist::signal_handler_sdl_key_down(const event::tevent event,
 			/* Do nothing. */
 	}
 	if(handled) {
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 

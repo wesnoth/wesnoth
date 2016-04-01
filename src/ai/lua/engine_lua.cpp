@@ -258,7 +258,7 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	config data(cfg.child_or_empty("data"));
 	config args(cfg.child_or_empty("args"));
 
-	if (lua_ai_context_) { // The context might be NULL if the config contains errors
+	if (lua_ai_context_) { // The context might be nullptr if the config contains errors
 		lua_ai_context_->set_persistent_data(data);
 		lua_ai_context_->set_arguments(args);
 		lua_ai_context_->update_state();

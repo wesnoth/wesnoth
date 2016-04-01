@@ -135,7 +135,7 @@ twidget* tgrid::swap_child(const std::string& id,
 		return old;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void tgrid::remove_child(const unsigned row, const unsigned col)
@@ -147,7 +147,7 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 	if(cell.widget()) {
 		delete cell.widget();
 	}
-	cell.set_widget(NULL);
+	cell.set_widget(nullptr);
 }
 
 void tgrid::remove_child(const std::string& id, const bool find_all)
@@ -157,7 +157,7 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 
 		if(child.id() == id) {
 			delete child.widget();
-			child.set_widget(NULL);
+			child.set_widget(nullptr);
 
 			if(!find_all) {
 				break;
@@ -469,7 +469,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 		out << " Failed to place a grid, we have " << size << " space but we need " << best_size << " space.";
 		out << " This happened at a grid with the id '" << id() << "'";
 		twidget* pw = parent();
-		while(pw != NULL) {
+		while(pw != nullptr) {
 			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
 			pw = pw->parent();
 		}

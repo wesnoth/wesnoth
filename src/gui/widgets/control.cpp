@@ -52,7 +52,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, tooltip_()
 	, help_message_()
 	, canvas_(canvas_count)
-	, config_(NULL)
+	, config_(nullptr)
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
@@ -79,7 +79,7 @@ tcontrol::tcontrol(const implementation::tbuilder_control& builder,
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
 	, canvas_(canvas_count)
-	, config_(NULL)
+	, config_(nullptr)
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
@@ -287,7 +287,7 @@ twidget* tcontrol::find_at(const tpoint& coordinate, const bool must_be_active)
 	return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
-				   : NULL;
+				   : nullptr;
 }
 
 const twidget* tcontrol::find_at(const tpoint& coordinate,
@@ -296,7 +296,7 @@ const twidget* tcontrol::find_at(const tpoint& coordinate,
 	return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
-				   : NULL;
+				   : nullptr;
 }
 
 twidget* tcontrol::find(const std::string& id, const bool must_be_active)
@@ -304,7 +304,7 @@ twidget* tcontrol::find(const std::string& id, const bool must_be_active)
 	return (twidget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
-				   : NULL;
+				   : nullptr;
 }
 
 const twidget* tcontrol::find(const std::string& id, const bool must_be_active)
@@ -313,7 +313,7 @@ const twidget* tcontrol::find(const std::string& id, const bool must_be_active)
 	return (twidget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
-				   : NULL;
+				   : nullptr;
 }
 
 void tcontrol::set_definition(const std::string& definition)

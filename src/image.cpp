@@ -517,8 +517,8 @@ static surface load_image_file(const image::locator &loc)
 static surface load_image_sub_file(const image::locator &loc)
 {
 	surface surf = get_image(loc.get_filename(), UNSCALED);
-	if(surf == NULL)
-		return NULL;
+	if(surf == nullptr)
+		return nullptr;
 
 	modification_queue mods = modification::decode(loc.get_modifications());
 
@@ -558,7 +558,7 @@ static surface load_image_sub_file(const image::locator &loc)
 			// Safe because those images are only used by terrain rendering
 			// and it filters them out.
 			// A safer and more general way would be to keep only one copy of it
-			surf = NULL;
+			surf = nullptr;
 		}
 		loc.add_to_cache(is_empty_hex_, is_empty);
 	}
@@ -591,7 +591,7 @@ static surface apply_light(surface surf, const light_string& ls){
 	}
 
 	// check if the lightmap is already cached or need to be generated
-	surface lightmap = NULL;
+	surface lightmap = nullptr;
 	lit_variants::iterator i = lightmaps_.find(ls);
 	if(i != lightmaps_.end()) {
 		lightmap = i->second;
@@ -612,11 +612,11 @@ static surface apply_light(surface surf, const light_string& ls){
 			//note that we avoid infinite recursion by using only atomic operation
 			surface lts = image::get_lighted_image(lm_img[sls[0]], sls, HEXED);
 			//first image will be the base where we blit the others
-			if(lightmap == NULL) {
+			if(lightmap == nullptr) {
 				//copy the cached image to avoid modifying the cache
 				lightmap = make_neutral_surface(lts);
 			} else{
-				blit_surface(lts, NULL, lightmap, NULL);
+				blit_surface(lts, nullptr, lightmap, nullptr);
 			}
 		}
 		//cache the result
@@ -639,7 +639,7 @@ surface load_from_disk(const locator &loc)
 		case locator::SUB_FILE:
 			return load_image_sub_file(loc);
 		default:
-			return surface(NULL);
+			return surface(nullptr);
 	}
 }
 
@@ -666,7 +666,7 @@ static SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)
 {
-	assert(format != NULL);
+	assert(format != nullptr);
 
 	SDL_PixelFormat &f = *format;
 	SDL_PixelFormat &l = last_pixel_format;
@@ -722,7 +722,7 @@ void color_adjustment_resetter::reset()
 
 void set_team_colors(const std::vector<std::string>* colors)
 {
-	if (colors == NULL)
+	if (colors == nullptr)
 		team_colors.clear();
 	else {
 		team_colors = *colors;
@@ -811,7 +811,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 	if (!img.null()) {
 		return scale_to_hex_func(img, zoom, zoom);
 	} else {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 }
 
@@ -831,7 +831,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	if(!res.null()) {
 		return scale_to_zoom_func(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
 	} else {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 }
 
@@ -1165,8 +1165,8 @@ bool is_empty_hex(const locator& i_locator)
 
 surface reverse_image(const surface& surf)
 {
-	if(surf == NULL) {
-		return surface(NULL);
+	if(surf == nullptr) {
+		return surface(nullptr);
 	}
 
 	const std::map<surface,surface>::iterator itor = reversed_images_.find(surf);
@@ -1176,8 +1176,8 @@ surface reverse_image(const surface& surf)
 	}
 
 	const surface rev(flip_surface(surf));
-	if(rev == NULL) {
-		return surface(NULL);
+	if(rev == nullptr) {
+		return surface(nullptr);
 	}
 
 	reversed_images_.insert(std::pair<surface,surface>(surf,rev));

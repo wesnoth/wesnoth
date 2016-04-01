@@ -248,9 +248,9 @@ public:
 	int effects() const;
 
 	/**
-	 * Returns true if the managed texture is NULL.
+	 * Returns true if the managed texture is nullptr.
 	 */
-	bool null() const;
+	bool nullptr() const;
 
 	timage clone() const;
 

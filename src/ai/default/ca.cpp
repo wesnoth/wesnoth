@@ -386,7 +386,7 @@ double move_leader_to_keep_phase::evaluate()
 	}
 
 	// 2. + 3.
-	const unit* best_leader = NULL;
+	const unit* best_leader = nullptr;
 	map_location best_keep;
 	int shortest_distance = 99999;
 
@@ -422,7 +422,7 @@ double move_leader_to_keep_phase::evaluate()
 		}
 	}
 
-	if (best_leader == NULL) {
+	if (best_leader == nullptr) {
 		return BAD_SCORE;
 	}
 

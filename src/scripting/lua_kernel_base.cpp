@@ -150,7 +150,7 @@ int lua_kernel_base::intf_show_lua_console(lua_State *L)
 		return 0;
 	}
 
-	if (cmd_log_.external_log_ != NULL) {
+	if (cmd_log_.external_log_ != nullptr) {
 		std::string message = "There is already an external logger attached to this lua kernel, you cannot open the lua console right now.";
 		log_error(message.c_str());
 		cmd_log_ << message << "\n";
@@ -194,7 +194,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "debug",  luaopen_debug  },
 		{ "os",     luaopen_os     },
 		{ "bit32",  luaopen_bit32  }, // added in Lua 5.2
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
@@ -283,24 +283,24 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "show_message_dialog",     &dispatch<&lua_kernel_base::intf_show_message_dialog> },
 		{ "show_popup_dialog",       &dispatch<&lua_kernel_base::intf_show_popup_dialog>   },
 		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 
-
+/*
 	lua_cpp::Reg const cpp_callbacks[] = {
-/*		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
+		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
 		{ "require", 		boost::bind(&lua_kernel_base::intf_require, this, _1)},
 		{ "show_dialog",	boost::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
 		{ "show_lua_console",	boost::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
-*/		{ NULL, NULL }
 	};
+*/
 
 	lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
-	lua_cpp::set_functions(L, cpp_callbacks, 0);
+	//lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
 	// Override the print function
@@ -335,7 +335,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
 		{ "parse_direction",		&lua_map_location::intf_parse_direction			},
 		{ "write_direction",		&lua_map_location::intf_write_direction			},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 
 	// Create the map_location table.

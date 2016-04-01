@@ -105,7 +105,7 @@ part_ui::part_ui(part &p, CVideo& video, gui::button &next_button,
 	, background_images_()
 	, background_positions_()
 #else
-	, background_(NULL)
+	, background_(nullptr)
 #endif
 	, imgs_()
 	, has_background_(false)
@@ -256,7 +256,7 @@ void part_ui::prepare_background()
 		}
 
 		blit_surface(layer, &srect, background_, &drect);
-		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got NULL");
+		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got nullptr");
 
 		if (bl.is_base_layer() || no_base_yet) {
 			x_scale_factor_ = x_scale_factor;
@@ -314,7 +314,7 @@ void part_ui::render_background()
 			0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 			video_.getSurface()
 	);
-	sdl_blit(background_, NULL, video_.getSurface(), NULL);
+	sdl_blit(background_, nullptr, video_.getSurface(), nullptr);
 	// Render the titlebox over the background
 	render_title_box();
 }
@@ -364,7 +364,7 @@ bool part_ui::render_floating_images()
 			for (size_t i = 0; i <= fi_n; i++)
 			{
 				floating_image::render_input& old_ri = imgs_[i];
-				sdl_blit(old_ri.image, NULL, video_.getSurface(), &old_ri.rect);
+				sdl_blit(old_ri.image, nullptr, video_.getSurface(), &old_ri.rect);
 				update_rect(old_ri.rect);
 			}
 		}
@@ -580,8 +580,8 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 
 	if(has_background_) {
-		surface border_top = NULL;
-		surface border_bottom = NULL;
+		surface border_top = nullptr;
+		surface border_bottom = nullptr;
 
 		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
 			border_top = image::get_image(storybox_top_border_path);

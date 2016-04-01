@@ -50,7 +50,7 @@ terrain_filter::~terrain_filter()
 #pragma warning(disable:4413)
 terrain_filter::terrain_filter():
 	cfg_(vconfig::unconstructed_vconfig()),
-	fc_(NULL),
+	fc_(nullptr),
 	cache_(),
 	max_loop_(),
 	flat_()
@@ -102,8 +102,8 @@ terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 }
 
 terrain_filter::terrain_filter_cache::terrain_filter_cache() :
-	parsed_terrain(NULL),
-	adjacent_matches(NULL),
+	parsed_terrain(nullptr),
+	adjacent_matches(nullptr),
 	adjacent_match_cache(),
 	ufilter_()
 {}
@@ -124,7 +124,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		return false;
 
 	if(cfg_.has_attribute("terrain")) {
-		if(cache_.parsed_terrain == NULL) {
+		if(cache_.parsed_terrain == nullptr) {
 			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
 		}
 		if(!cache_.parsed_terrain->is_empty) {
@@ -149,7 +149,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 					bool found = false;
 					BOOST_FOREACH(const config &cfg, vi.as_array()) {
-						if (map_location(cfg, NULL) == loc) {
+						if (map_location(cfg, nullptr) == loc) {
 							found = true;
 							break;
 						}
@@ -214,7 +214,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			for (j = dirs.begin(); j != j_end; ++j) {
 				map_location &adj = adjacent[*j];
 				if (fc_->get_disp_context().map().on_board(adj)) {
-					if(cache_.adjacent_matches == NULL) {
+					if(cache_.adjacent_matches == nullptr) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
 							const vconfig& adj_cfg = adj_cfgs[cache_.adjacent_match_cache.size()];
 							std::pair<terrain_filter, std::map<map_location,bool> > amc_pair(
@@ -463,7 +463,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 				BOOST_FOREACH(const config& cfg, vi.as_array())
 				{
-					map_location test_loc(cfg, NULL);
+					map_location test_loc(cfg, nullptr);
 					match_set.insert(test_loc);
 				}
 			}
@@ -500,7 +500,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 				BOOST_FOREACH(const config& cfg, vi.as_array())
 				{
-					map_location test_loc(cfg, NULL);
+					map_location test_loc(cfg, nullptr);
 					if (match_set.count(test_loc)) {
 						findin_locs.insert(test_loc);
 					}
@@ -544,7 +544,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 				BOOST_FOREACH(const config& cfg, vi.as_array())
 				{
-					map_location test_loc(cfg, NULL);
+					map_location test_loc(cfg, nullptr);
 					if (area.count(test_loc) != 0)
 						match_set.insert(test_loc);
 				}
@@ -574,7 +574,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 
 				BOOST_FOREACH(const config &cfg, vi.as_array()) {
-					map_location test_loc(cfg, NULL);
+					map_location test_loc(cfg, nullptr);
 					if (area.count(test_loc) != 0 && xy_set.count(test_loc) != 0)
 						match_set.insert(test_loc);
 				}
@@ -588,7 +588,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 
 	//handle location filter
 	if(cfg_.has_child("filter_adjacent_location")) {
-		if(cache_.adjacent_matches == NULL) {
+		if(cache_.adjacent_matches == nullptr) {
 			cache_.adjacent_matches = new std::vector<std::set<map_location> >();
 		}
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");

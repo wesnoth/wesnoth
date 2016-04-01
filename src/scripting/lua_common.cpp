@@ -380,7 +380,7 @@ std::string register_gettext_metatable(lua_State *L)
 
 	static luaL_Reg const callbacks[] = {
 		{ "__call", 	    &impl_gettext},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 
@@ -404,7 +404,7 @@ std::string register_tstring_metatable(lua_State *L)
 		{ "__lt",	        &impl_tstring_lt},
 		{ "__le",	        &impl_tstring_le},
 		{ "__eq",	        &impl_tstring_eq},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 
@@ -427,7 +427,7 @@ std::string register_vconfig_metatable(lua_State *L)
 		{ "__len",          &impl_vconfig_size},
 		{ "__pairs",        &impl_vconfig_pairs},
 		{ "__ipairs",       &impl_vconfig_ipairs},
-		{ NULL, NULL }
+		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
 
@@ -790,30 +790,22 @@ vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing)
 	return result;
 }
 
-
-#ifdef __GNUC__
-__attribute__((sentinel))
-#endif
-bool luaW_getglobal(lua_State *L, ...)
+bool luaW_getglobal(lua_State *L, const std::vector<std::string>& path)
 {
 	lua_pushglobaltable(L);
-	va_list ap;
-	va_start(ap, L);
-	while (const char *s = va_arg(ap, const char *))
+	for (const std::string& s : path)
 	{
 		if (!lua_istable(L, -1)) goto discard;
-		lua_pushstring(L, s);
+		lua_pushlstring(L, s.c_str(), s.size());
 		lua_rawget(L, -2);
 		lua_remove(L, -2);
 	}
 
 	if (lua_isnil(L, -1)) {
 		discard:
-		va_end(ap);
 		lua_pop(L, 1);
 		return false;
 	}
-	va_end(ap);
 	return true;
 }
 

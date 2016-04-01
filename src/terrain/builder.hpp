@@ -114,7 +114,7 @@ public:
 	 *              before, or after the unit sprite.
 	 *
 	 * @return      Returns a pointer list of animated images corresponding
-	 *              to the parameters, or NULL if there is none.
+	 *              to the parameters, or nullptr if there is none.
 	 */
 	const imagelist *get_terrain_at(const map_location &loc,
 			const std::string &tod, TERRAIN_TYPE const terrain_type);
@@ -302,7 +302,7 @@ public:
 		 *
 		 * @param tod    The current time-of-day
 		 */
-		void rebuild_cache(const std::string &tod, logs* log = NULL);
+		void rebuild_cache(const std::string &tod, logs* log = nullptr);
 
 		/** Clears all data in this tile, and resets the cache */
 		void clear();

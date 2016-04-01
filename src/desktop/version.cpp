@@ -67,7 +67,7 @@ bool on_wine()
 		return false;
 	}
 
-	return GetProcAddress(ntdll, "wine_get_version") != NULL;
+	return GetProcAddress(ntdll, "wine_get_version") != nullptr;
 }
 #endif
 
@@ -77,7 +77,7 @@ bool on_wine()
  */
 struct posix_pipe_release_policy
 {
-	void operator()(std::FILE* f) const { if(f != NULL) { pclose(f); } }
+	void operator()(std::FILE* f) const { if(f != nullptr) { pclose(f); } }
 };
 
 /**

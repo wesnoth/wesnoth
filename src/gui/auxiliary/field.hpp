@@ -54,7 +54,7 @@ public:
 	 * @param mandatory           Is the widget mandatory
 	 */
 	tfield_(const std::string& id, const bool mandatory)
-		: id_(id), mandatory_(mandatory), widget_(NULL)
+		: id_(id), mandatory_(mandatory), widget_(nullptr)
 	{
 	}
 
@@ -74,7 +74,7 @@ public:
 	 * @todo Most functions that have a window parameter only use it to get the
 	 * widget. Evaluate and remove the window parameter where applicable.
 	 *
-	 * @pre widget_ == NULL
+	 * @pre widget_ == nullptr
 	 *
 	 * @param window               The window to be attached to.
 	 */
@@ -130,12 +130,12 @@ public:
 	/**
 	 * Detaches the field from a window.
 	 *
-	 * @pre widget_ != NULL || !mandatory_
+	 * @pre widget_ != nullptr || !mandatory_
 	 */
 	void detach_from_window()
 	{
 		assert(!mandatory_ || widget_);
-		widget_ = NULL;
+		widget_ = nullptr;
 	}
 
 	/**

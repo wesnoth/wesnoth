@@ -16,10 +16,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <boost/foreach.hpp>
-
-using boost::assign::list_of;
 
 #if 0
 namespace {
@@ -93,19 +90,19 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 {
 	const std::string path = "data/test/test/filesystem/enum";
 
-	const std::vector<std::string> expected_filenames = list_of
-		("_initial.cfg")
-		("A1.cfg")
-		("A2.cfg")
-		("A3.cfg")
-		("B1.cfg")
-		("B2.cfg")
-		("B3.cfg")
-		("_final.cfg");
-	const std::vector<std::string> expected_dirnames = list_of
-		("D1")
-		("D2")
-		("D3");
+	const std::vector<std::string> expected_filenames = {
+		"_initial.cfg",
+		"A1.cfg",
+		"A2.cfg",
+		"A3.cfg",
+		"B1.cfg",
+		"B2.cfg",
+		"B3.cfg",
+		"_final.cfg"};
+	const std::vector<std::string> expected_dirnames = {
+		"D1",
+		"D2",
+		"D3"};
 
 	std::vector<std::string> files, dirs;
 	std::vector<std::string> expected_filepaths, expected_dirpaths;

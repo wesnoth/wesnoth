@@ -55,7 +55,7 @@ class parser
 	parser& operator=(const parser&);
 public:
 	parser(config& cfg, std::istream& in,
-		   abstract_validator * validator = NULL);
+		   abstract_validator * validator = nullptr);
 	~parser();
 	void operator()();
 
@@ -155,7 +155,7 @@ void parser::parse_element()
 {
 	tok_.next_token();
 	std::string elname;
-	config* current_element = NULL;
+	config* current_element = nullptr;
 	switch(tok_.current_token().type) {
 	case token::STRING: // [element]
 		elname = tok_.current_token().value;

@@ -61,7 +61,6 @@
 #include <boost/ptr_container/ptr_sequence_adapter.hpp>
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
-#include <cstddef>                     // for NULL
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <set>                          // for set
 
@@ -76,12 +75,12 @@ namespace actions {
 
 /**
  * Creates an undo_action based on a config.
- * @return a pointer that must be deleted, or NULL if the @a cfg could not be parsed.
+ * @return a pointer that must be deleted, or nullptr if the @a cfg could not be parsed.
  */
 undo_action_base * undo_list::create_action(const config & cfg)
 {
 	const std::string str = cfg["type"];
-	undo_action_base * res = NULL;
+	undo_action_base * res = nullptr;
 	// The general division of labor in this function is that the various
 	// constructors will parse the "unit" child config, while this function
 	// parses everything else.
@@ -101,13 +100,13 @@ undo_action_base * undo_list::create_action(const config & cfg)
 			// Bad data.
 			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type '"
 			       << child["type"] << "' was not found.\n";
-			return NULL;
+			return nullptr;
 		}
-		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), NULL));
+		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), nullptr));
 	}
 
 	else if ( str == "recall" )
-		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), NULL));
+		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
 
 	else if ( str == "dismiss" )
 		res =  new undo::dismiss_action(cfg, cfg.child("unit"));
@@ -121,7 +120,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 	{
 		// Unrecognized type.
 		ERR_NG << "Unrecognized undo action type: " << str << "." << std::endl;
-		return NULL;
+		return nullptr;
 	}
 	return res;
 }

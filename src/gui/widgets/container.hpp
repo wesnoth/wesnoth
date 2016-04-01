@@ -150,7 +150,7 @@ public:
 	 */
 	virtual iterator::twalker_* create_walker() override
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	/**

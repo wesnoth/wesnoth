@@ -22,19 +22,19 @@
 
 #include "video.hpp"		// CVideo class holds the twindow -> SDL_Window object which contains the handle of the main window
 
-NOTIFYICONDATA* windows_tray_notification::nid = NULL;
+NOTIFYICONDATA* windows_tray_notification::nid = nullptr;
 bool windows_tray_notification::message_reset = false;
 
 void windows_tray_notification::destroy_tray_icon()
 {
-	if (nid == NULL) {
+	if (nid == nullptr) {
 		return;
 	}
 
 	if (!message_reset){
 		Shell_NotifyIcon(NIM_DELETE, nid);
 		delete nid;
-		nid = NULL;
+		nid = nullptr;
 	} else {
 		message_reset = false;
 	}
@@ -72,23 +72,23 @@ void windows_tray_notification::handle_system_event(const SDL_Event& event)
 bool windows_tray_notification::create_tray_icon()
 {
 	// getting handle to a 32x32 icon, contained in "WESNOTH_ICON" icon group of wesnoth.exe resources
-	const HMODULE wesnoth_exe = GetModuleHandle(NULL);
-	if (wesnoth_exe == NULL) {
+	const HMODULE wesnoth_exe = GetModuleHandle(nullptr);
+	if (wesnoth_exe == nullptr) {
 		return false;
 	}
 
 	const HRSRC group_icon_info = FindResource(wesnoth_exe, TEXT("WESNOTH_ICON"), RT_GROUP_ICON);
-	if (group_icon_info == NULL) {
+	if (group_icon_info == nullptr) {
 		return false;
 	}
 
 	HGLOBAL hGlobal = LoadResource(wesnoth_exe, group_icon_info);
-	if (hGlobal == NULL) {
+	if (hGlobal == nullptr) {
 		return false;
 	}
 
 	const PBYTE group_icon_res = static_cast<PBYTE>(LockResource(hGlobal));
-	if (group_icon_res == NULL) {
+	if (group_icon_res == nullptr) {
 		return false;
 	}
 
@@ -98,27 +98,27 @@ bool windows_tray_notification::create_tray_icon()
 	}
 
 	const HRSRC icon_info = FindResource(wesnoth_exe, MAKEINTRESOURCE(nID), MAKEINTRESOURCE(3));
-	if (icon_info == NULL) {
+	if (icon_info == nullptr) {
 		return false;
 	}
 
 	hGlobal = LoadResource(wesnoth_exe, icon_info);
-	if (hGlobal == NULL) {
+	if (hGlobal == nullptr) {
 		return false;
 	}
 
 	const PBYTE icon_res = static_cast<PBYTE>(LockResource(hGlobal));
-	if (icon_res == NULL) {
+	if (icon_res == nullptr) {
 		return false;
 	}
 
 	const HICON icon = CreateIconFromResource(icon_res, SizeofResource(wesnoth_exe, icon_info), TRUE, 0x00030000);
-	if (icon == NULL) {
+	if (icon == nullptr) {
 		return false;
 	}
 
 	const HWND window = get_window_handle();
-	if (window == NULL) {
+	if (window == nullptr) {
 		return false;
 	}
 
@@ -177,7 +177,7 @@ HWND windows_tray_notification::get_window_handle()
 	sdl::twindow* window = CVideo::get_singleton().get_window();
 	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
 	if (!window || SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*window), &wmInfo) != SDL_TRUE) {
-		return NULL;
+		return nullptr;
 	}
 
 	return wmInfo.info.win.window;
@@ -186,7 +186,7 @@ HWND windows_tray_notification::get_window_handle()
 void windows_tray_notification::switch_to_wesnoth_window()
 {
 	const HWND window = get_window_handle();
-	if (window == NULL) {
+	if (window == nullptr) {
 		return;
 	}
 
@@ -212,11 +212,11 @@ bool windows_tray_notification::show(std::string title, std::string message)
 {
 	adjust_length(title, message);
 
-	const bool tray_icon_exist = nid != NULL;
+	const bool tray_icon_exist = nid != nullptr;
 	if (!tray_icon_exist) {
 		const bool tray_icon_created = create_tray_icon();
 		if (!tray_icon_created) {
-			const bool memory_allocated = nid != NULL;
+			const bool memory_allocated = nid != nullptr;
 			if (memory_allocated) {
 				destroy_tray_icon();
 			}

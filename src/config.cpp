@@ -42,6 +42,24 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
+
+#ifdef USE_HETEROGENOUS_LOOKUPS 
+struct config_simple_key
+{
+	const char* str;
+	int len;
+
+	friend bool operator<(const config_simple_key& l, const std::string& r)
+	{
+		return r.compare(0, r.size(), l.str, l.len) > 0;
+	}
+	friend bool operator<(const std::string& l, const config_simple_key& r)
+	{
+		return l.compare(0, l.size(), r.str, r.len) < 0;
+	}
+};
+#endif
+
 struct tconfig_implementation
 {
 	/**
@@ -349,7 +367,7 @@ t_string config::attribute_value::t_str() const
  */
 bool config::attribute_value::blank() const
 {
-	return boost::get<const boost::blank>(&value_) != NULL;
+	return boost::get<const boost::blank>(&value_) != nullptr;
 }
 
 /**
@@ -653,7 +671,8 @@ config &config::child(const std::string& key, int n)
 	if (n < 0) n = i->second.size() + n;
 	if(size_t(n) < i->second.size()) {
 		return *i->second[n];
-	} else {
+	}
+	else {
 		DBG_CF << "The config object has only »" << i->second.size()
 			<< "« children named »" << key
 			<< "«; request for the index »" << n << "« cannot be honored.\n";
@@ -661,6 +680,33 @@ config &config::child(const std::string& key, int n)
 		return invalid;
 	}
 }
+
+#ifdef USE_HETEROGENOUS_LOOKUPS
+config &config::child_impl(const char* key, int len, int n)
+{
+	check_valid();
+
+	const child_map::const_iterator i = children.find(config_simple_key{ key, len });
+	if (i == children.end()) {
+		DBG_CF << "The config object has no child named »"
+			<< key << "«.\n";
+
+		return invalid;
+	}
+
+	if (n < 0) n = i->second.size() + n;
+	if (size_t(n) < i->second.size()) {
+		return *i->second[n];
+	}
+	else {
+		DBG_CF << "The config object has only »" << i->second.size()
+			<< "« children named »" << key
+			<< "«; request for the index »" << n << "« cannot be honored.\n";
+
+		return invalid;
+	}
+}
+#endif
 
 config& config::child(const std::string& key, const std::string& parent)
 {
@@ -715,7 +761,6 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
-#ifdef HAVE_CXX11
 config &config::add_child(const std::string &key, config &&val)
 {
 	check_valid(val);
@@ -725,7 +770,6 @@ config &config::add_child(const std::string &key, config &&val)
 	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
 	return *v.back();
 }
-#endif
 
 config &config::add_child_at(const std::string &key, const config &val, unsigned index)
 {
@@ -877,11 +921,23 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	return empty_attribute;
 }
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+const config::attribute_value& config::get_attribute(const char* key, int len) const
+{
+	check_valid();
+
+	const attribute_map::const_iterator i = values.find(config_simple_key { key, len });
+	if (i != values.end()) return i->second;
+	static const attribute_value empty_attribute;
+	return empty_attribute;
+}
+
+#endif
 const config::attribute_value *config::get(const std::string &key) const
 {
 	check_valid();
 	attribute_map::const_iterator i = values.find(key);
-	return i != values.end() ? &i->second : NULL;
+	return i != values.end() ? &i->second : nullptr;
 }
 
 config::attribute_value &config::operator[](const std::string &key)
@@ -985,7 +1041,7 @@ namespace {
 	struct config_clear_state
 	{
 		config_clear_state()
-			: c(NULL)
+			: c(nullptr)
 			, mi()
 			, vi(0)
 		{
@@ -1090,14 +1146,14 @@ void config::get_diff(const config& c, config& res) const
 	check_valid(c);
 	check_valid(res);
 
-	config* inserts = NULL;
+	config* inserts = nullptr;
 
 	attribute_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
 		if(i->second.blank()) continue;
 		const attribute_map::const_iterator j = c.values.find(i->first);
 		if(j == c.values.end() || (i->second != j->second && !i->second.blank() )) {
-			if(inserts == NULL) {
+			if(inserts == nullptr) {
 				inserts = &res.add_child("insert");
 			}
 
@@ -1105,13 +1161,13 @@ void config::get_diff(const config& c, config& res) const
 		}
 	}
 
-	config* deletes = NULL;
+	config* deletes = nullptr;
 
 	for(i = c.values.begin(); i != c.values.end(); ++i) {
 		if(i->second.blank()) continue;
 		const attribute_map::const_iterator itor = values.find(i->first);
 		if(itor == values.end() || itor->second.blank()) {
-			if(deletes == NULL) {
+			if(deletes == nullptr) {
 				deletes = &res.add_child("delete");
 			}
 

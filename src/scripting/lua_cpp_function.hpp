@@ -126,6 +126,7 @@
 #define LUA_CPP_FUNCTION_HPP_INCLUDED
 
 #include <boost/function.hpp>
+#include <vector>
 
 struct lua_State;
 
@@ -155,7 +156,24 @@ void push_function( lua_State* L, const lua_function & f );
  *
  * The note above applies.
  */
-void set_functions( lua_State* L, const lua_cpp::Reg * l);
+void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions);
+
+/**
+ * Analogous to lua_setfuncs, it registers a collection of function wrapper
+ * objects into a table, using push_function.
+ *
+ * The note above applies.
+ */
+template<int N>
+void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N])
+{
+	std::vector<lua_cpp::Reg> l;
+	l.reserve(N);
+	for(int i = 0; i < N; i++) {
+		l.push_back(functions[i]);
+	}
+	set_functions(L, l);
+}
 
 /**
  * Pushes a closure which retains a boost::function object as its first up-value.
@@ -173,7 +191,24 @@ void push_closure( lua_State* L, const lua_function & f, int nup);
  * NOTE: set_functions(L, l, 0) is NOT the same as set_functions(L, l), as
  * the latter produces userdata and the former doesn't.
  */
-void set_functions( lua_State* L, const lua_cpp::Reg * l, int nup);
+void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup);
+
+/**
+ * Analogous to lua_setfuncs and set_functions above, but pushes closures.
+ *
+ * NOTE: set_functions(L, l, 0) is NOT the same as set_functions(L, l), as
+ * the latter produces userdata and the former doesn't.
+ */
+template<int N>
+void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N], int nup)
+{
+	std::vector<lua_cpp::Reg> l;
+	l.reserve(N);
+	for(int i = 0; i < N; i++) {
+		l.push_back(functions[i]);
+	}
+	set_functions(L, l, nup);
+}
 
 } // end namespace lua_cpp_func
 

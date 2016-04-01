@@ -81,13 +81,13 @@ public:
 	 * @param functions           The variables, which can be called during the
 	 *                            evaluation of the formula. (Note is is also
 	 *                            possible to add extra functions to the table,
-	 *                            when the variable is not @c NULL.
+	 *                            when the variable is not @c nullptr.
 	 *
 	 * @returns                   The stored result or the result of the
 	 *                            evaluation of the formula.
 	 */
 	T operator()(const game_logic::map_formula_callable& variables,
-				 game_logic::function_symbol_table* functions = NULL) const;
+				 game_logic::function_symbol_table* functions = nullptr) const;
 
 	/** Determine whether the class contains a formula. */
 	bool has_formula() const
@@ -119,7 +119,7 @@ private:
 	 * @param functions           The variables, which can be called during the
 	 *                            evaluation of the formula. (Note is is also
 	 *                            possible to add extra functions to the table,
-	 *                            when the variable is not @c NULL.
+	 *                            when the variable is not @c nullptr.
 	 *
 	 * @returns                   The calculated value.
 	 */

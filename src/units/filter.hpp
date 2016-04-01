@@ -39,7 +39,7 @@ struct map_location;
 
 class unit_filter_abstract_impl {
 public:
-	virtual bool matches(const unit & u, const map_location & loc, const unit * u2 = NULL) const = 0;
+	virtual bool matches(const unit & u, const map_location & loc, const unit * u2 = nullptr) const = 0;
 	virtual std::vector<const unit*> all_matches_on_map(unsigned max_matches) const = 0;
 	virtual unit_const_ptr first_match_on_map() const = 0;
 	virtual config to_config() const = 0;

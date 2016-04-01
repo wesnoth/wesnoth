@@ -203,7 +203,7 @@ public:
 
 	/// Returns the ID of this type's race without the need to build the type.
 	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
-	/// Never returns NULL, but may point to the null race.
+	/// Never returns nullptr, but may point to the null race.
 	/// Requires building to the HELP_INDEXED status to get the correct race.
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
@@ -264,7 +264,7 @@ private:
 	std::string default_variation_;
 	std::string variation_name_;
 
-	const unit_race* race_;	/// Never NULL, but may point to the null race.
+	const unit_race* race_;	/// Never nullptr, but may point to the null race.
 
 	fixed_t alpha_;
 

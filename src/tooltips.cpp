@@ -29,7 +29,7 @@
 
 namespace {
 
-CVideo* video_ = NULL;
+CVideo* video_ = nullptr;
 
 static const int font_size = font::SIZE_SMALL;
 static const int text_width = 400;
@@ -52,7 +52,7 @@ std::map<int, tooltip>::const_iterator current_tooltip = tips.end();
 int tooltip_handle = 0;
 int tooltip_id = 0;
 
-surface current_background = NULL;
+surface current_background = nullptr;
 
 }
 
@@ -66,7 +66,7 @@ static void clear_tooltip()
 
 static void show_tooltip(const tooltip& tip)
 {
-	if(video_ == NULL) {
+	if(video_ == nullptr) {
 		return;
 	}
 
@@ -121,7 +121,7 @@ manager::~manager()
 	try {
 	clear_tooltips();
 	} catch (...) {}
-	video_ = NULL;
+	video_ = nullptr;
 }
 
 void clear_tooltips()

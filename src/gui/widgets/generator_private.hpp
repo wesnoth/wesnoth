@@ -566,7 +566,7 @@ struct tshow : public virtual tgenerator_
 	 *                            the new item. No widgets with id == "" are
 	 *                            allowed.
 	 * @param callback            The callback function is not used and
-	 *                            should be NULL.
+	 *                            should be nullptr.
 	 */
 	void init(tgrid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
@@ -935,7 +935,7 @@ public:
 	 */
 	virtual iterator::twalker_* create_walker() override
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/

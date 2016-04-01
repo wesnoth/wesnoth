@@ -375,7 +375,7 @@ void editor_palette<Item>::draw_contents()
 		//typedef std::map<std::string, Item> item_map_wurscht;
 		typename item_map::iterator item = item_map_.find(item_id);
 
-		surface item_image(NULL);
+		surface item_image(nullptr);
 		std::stringstream tooltip_text;
 		draw_item((*item).second, item_image, tooltip_text);
 

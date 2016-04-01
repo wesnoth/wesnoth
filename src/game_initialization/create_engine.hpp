@@ -304,7 +304,7 @@ private:
 	saved_game& state_;
 
 	CVideo& video_;
-	//Never NULL
+	//Never nullptr
 	boost::scoped_ptr<depcheck::manager> dependency_manager_;
 
 	boost::scoped_ptr<map_generator> generator_;

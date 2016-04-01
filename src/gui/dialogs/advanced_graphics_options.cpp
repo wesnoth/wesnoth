@@ -31,7 +31,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
-#include <boost/assign/list_of.hpp>
 
 #include "gettext.hpp"
 
@@ -40,7 +39,7 @@ namespace gui2
 
 REGISTER_DIALOG(advanced_graphics_options)
 
-const std::vector<std::string> tadvanced_graphics_options::scale_cases = boost::assign::list_of("zoom")("hex");
+const std::vector<std::string> tadvanced_graphics_options::scale_cases = {"zoom", "hex"};
 
 tadvanced_graphics_options::SCALING_ALGORITHM tadvanced_graphics_options::get_scale_pref(const std::string& pref_id)
 {

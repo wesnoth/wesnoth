@@ -227,7 +227,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	gui_->labels().read(level);
 
 	// Read sound sources
-	assert(soundsources_manager_ != NULL);
+	assert(soundsources_manager_ != nullptr);
 	BOOST_FOREACH(const config &s, level.child_range("sound_source")) {
 		try {
 			soundsource::sourcespec spec(s);
@@ -361,7 +361,7 @@ void playsingle_controller::play_side_impl()
 	if (!skip_next_turn_) {
 		end_turn_ = END_TURN_NONE;
 	}
-	if(replay_.get() != NULL) {
+	if(replay_.get() != nullptr) {
 		REPLAY_RETURN res = replay_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
 			end_turn_ = END_TURN_SYNCED;
@@ -519,7 +519,7 @@ void playsingle_controller::end_turn_enable(bool enable)
 void playsingle_controller::after_human_turn()
 {
 	// Clear moves from the GUI.
-	gui_->set_route(NULL);
+	gui_->set_route(nullptr);
 	gui_->unhighlight_reach();
 }
 
@@ -576,7 +576,7 @@ void playsingle_controller::play_ai_turn()
  */
 void playsingle_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(time(NULL), "Wesnoth", 0,
+	gui_->get_chat_manager().add_chat_message(time(nullptr), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

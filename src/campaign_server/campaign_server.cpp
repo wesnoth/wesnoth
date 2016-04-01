@@ -101,7 +101,7 @@ time_t monotonic_clock()
 	return ts.tv_sec;
 #else
 	#warning monotonic_clock() is not truly monotonic!
-	return time(NULL);
+	return time(nullptr);
 #endif
 }
 
@@ -297,7 +297,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 		// We are the child process. Execute the script. We run as a
 		// separate thread sharing stdout/stderr, which will make the
 		// log look ugly.
-		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(NULL));
+		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(nullptr));
 
 		// exec() and family never return; if they do, we have a problem
 		std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
@@ -447,7 +447,7 @@ void server::run()
 			network::connection err_sock = 0;
 			network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
 
-			if(err_connection != NULL) {
+			if(err_connection != nullptr) {
 				err_sock = *err_connection;
 			}
 
@@ -489,7 +489,7 @@ void server::handle_request_campaign_list(const server::request& req)
 {
 	LOG_CS << "sending campaign list to " << req.addr << " using gzip";
 
-	time_t epoch = time(NULL);
+	time_t epoch = time(nullptr);
 	config campaign_list;
 
 	campaign_list["timestamp"] = epoch;
@@ -627,7 +627,7 @@ void server::handle_upload(const server::request& req)
 	config data = upload.child("data");
 
 	const std::string& name = upload["name"];
-	config *campaign = NULL;
+	config *campaign = nullptr;
 
 	bool passed_name_utf8_check = false;
 
@@ -698,7 +698,7 @@ void server::handle_upload(const server::request& req)
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
 	} else {
-		const time_t upload_ts = time(NULL);
+		const time_t upload_ts = time(nullptr);
 
 		LOG_CS << "Upload is owner upload.\n";
 
@@ -721,11 +721,11 @@ void server::handle_upload(const server::request& req)
 			return;
 		}
 
-		const bool existing_upload = campaign != NULL;
+		const bool existing_upload = campaign != nullptr;
 
 		std::string message = "Add-on accepted.";
 
-		if(campaign == NULL) {
+		if(campaign == nullptr) {
 			campaign = &campaigns().add_child("campaign");
 			(*campaign)["original_timestamp"] = upload_ts;
 		}

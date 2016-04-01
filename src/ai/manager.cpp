@@ -47,7 +47,6 @@
 #include <algorithm>                    // for min
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <cassert>                     // for assert
-#include <cstddef>                     // for NULL
 #include <iterator>                     // for reverse_iterator, etc
 #include <map>                          // for _Rb_tree_iterator, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -79,7 +78,7 @@ static lg::log_domain log_ai_mod("ai/mod");
 #define ERR_AI_MOD LOG_STREAM(err, log_ai_mod)
 
 holder::holder( side_number side, const config &cfg )
-	: ai_(), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), side_(side), cfg_(cfg)
+	: ai_(), side_context_(nullptr), readonly_context_(nullptr), readwrite_context_(nullptr), default_ai_context_(nullptr), side_(side), cfg_(cfg)
 {
 	DBG_AI_MANAGER << describe_ai() << "Preparing new AI holder" << std::endl;
 }
@@ -87,19 +86,19 @@ holder::holder( side_number side, const config &cfg )
 
 void holder::init( side_number side )
 {
-	if (side_context_ == NULL) {
+	if (side_context_ == nullptr) {
 		side_context_ = new side_context_impl(side,cfg_);
 	} else {
 		side_context_->set_side(side);
 	}
-	if (readonly_context_ == NULL){
+	if (readonly_context_ == nullptr){
 		readonly_context_ = new readonly_context_impl(*side_context_,cfg_);
 		readonly_context_->on_readonly_context_create();
 	}
-	if (readwrite_context_ == NULL){
+	if (readwrite_context_ == nullptr){
 		readwrite_context_ = new readwrite_context_impl(*readonly_context_,cfg_);
 	}
-	if (default_ai_context_ == NULL){
+	if (default_ai_context_ == nullptr){
 		default_ai_context_ = new default_ai_context_impl(*readwrite_context_,cfg_);
 	}
 	if (!this->ai_){
@@ -163,7 +162,7 @@ void holder::modify_side_ai_config(config cfg)
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
 	// TODO: Also add [goal] tags. And what about [stage] or [engine] tags? (Maybe they're not important.)
-	if (this->readonly_context_ == NULL) {
+	if (this->readonly_context_ == nullptr) {
 		// if not initialized, append that config to the bottom of base cfg
 		// then, merge aspects with the same id
 		cfg_.merge_with(cfg);
@@ -221,16 +220,16 @@ config holder::to_config() const
 	} else {
 		config cfg = ai_->to_config();
 		cfg["version"] = "10703";
-		if (this->side_context_!=NULL) {
+		if (this->side_context_!=nullptr) {
 			cfg.merge_with(this->side_context_->to_side_context_config());
 		}
-		if (this->readonly_context_!=NULL) {
+		if (this->readonly_context_!=nullptr) {
 			cfg.merge_with(this->readonly_context_->to_readonly_context_config());
 		}
-		if (this->readwrite_context_!=NULL) {
+		if (this->readwrite_context_!=nullptr) {
 			cfg.merge_with(this->readwrite_context_->to_readwrite_context_config());
 		}
-		if (this->default_ai_context_!=NULL) {
+		if (this->default_ai_context_!=nullptr) {
 			cfg.merge_with(this->default_ai_context_->to_default_ai_context_config());
 		}
 
@@ -244,7 +243,7 @@ const std::string holder::describe_ai()
 {
 	std::string sidestr = std::to_string(this->side_);
 
-	if (this->ai_!=NULL) {
+	if (this->ai_!=nullptr) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
 	} else {
 		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
@@ -304,10 +303,10 @@ const std::string holder::get_ai_identifier() const
 component* holder::get_component(component *root, const std::string &path) {
 	if (!game_config::debug) // Debug guard
 	{
-		return NULL;
+		return nullptr;
 	}
 
-	if (root == NULL) // Return root component(ai_)
+	if (root == nullptr) // Return root component(ai_)
 	{
 		if (!this->ai_) {
 			this->init(this->side_);
@@ -340,7 +339,7 @@ int manager::num_interact_ = 0;
 
 void manager::set_ai_info(const game_info& i)
 {
-	if (ai_info_!=NULL){
+	if (ai_info_!=nullptr){
 		clear_ai_info();
 	}
 	ai_info_ = new game_info(i);
@@ -350,7 +349,7 @@ void manager::set_ai_info(const game_info& i)
 
 void manager::clear_ai_info(){
 	delete ai_info_;
-	ai_info_ = NULL;
+	ai_info_ = nullptr;
 }
 
 
@@ -723,7 +722,7 @@ void manager::modify_active_ai_config_old_for_side ( side_number side, const con
 
 void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 {
-	if (ai_info_==NULL) {
+	if (ai_info_==nullptr) {
 		//replay ?
 		return;
 	}

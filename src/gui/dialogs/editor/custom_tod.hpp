@@ -111,7 +111,7 @@ private:
 	/**
 	 * The display to update when the ToD changes.
 	 *
-	 * The pointer may be NULL, in the unit tests, but normally it should be a
+	 * The pointer may be nullptr, in the unit tests, but normally it should be a
 	 * pointer to a valid object.
 	 */
 	editor::editor_display* display_;

@@ -179,7 +179,7 @@ void schema_validator::open_tag(const std::string & name,
 								const std::string &file,
 								bool addittion){
 	if (! stack_.empty()){
-		const class_tag * tag = NULL;
+		const class_tag * tag = nullptr;
 		if (stack_.top()){
 			tag = stack_.top()->find_tag(name,root_);
 			if (! tag){
@@ -194,7 +194,7 @@ void schema_validator::open_tag(const std::string & name,
 		}
 		stack_.push(tag);
 	}else{
-		stack_.push(NULL);
+		stack_.push(nullptr);
 	}
 	counter_.push(cnt_map());
 	cache_.push(message_map());
@@ -249,7 +249,7 @@ void schema_validator::validate(const config & cfg, const std::string & name,
 		for (class_tag::const_key_iterator key = k.first;
 			 key != k.second ; ++key){
 			if (key->second.is_mandatory()){
-				if (cfg.get(key->first) == NULL){
+				if (cfg.get(key->first) == nullptr){
 					cache_.top()[&cfg].push_back(
 							message_info(MISSING_KEY,file,start_line,0,
 										 name,key->first ));

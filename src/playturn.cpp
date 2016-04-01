@@ -45,7 +45,7 @@
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
 #include <cstdlib>                     // for atoi
-#include <ctime>                        // for time, NULL
+#include <ctime>                        // for time
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector
 
@@ -105,7 +105,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t)
 
 void turn_info::do_save()
 {
-	if (resources::controller != NULL) {
+	if (resources::controller != nullptr) {
 		resources::controller->do_autosave();
 	}
 }
@@ -139,13 +139,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &msg = cfg.child("message"))
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), msg["sender"], msg["side"],
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), msg["sender"], msg["side"],
 				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + msg["sender"].str(), 0,
 				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}

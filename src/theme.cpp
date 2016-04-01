@@ -240,7 +240,7 @@ static config expand_partialresolution(const config& theme)
 	return result;
 }
 
-static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
+static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = nullptr) {
 
 		// recursively resolve children
 		BOOST_FOREACH(const config::any_child &value, cfg.all_children_range()) {
@@ -254,7 +254,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {
-			if (resol_cfg == NULL) {
+			if (resol_cfg == nullptr) {
 				ERR_DP << "Use of ref= outside a [resolution] block" << std::endl;
 			} else {
 				//DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
@@ -636,7 +636,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	bool result = false;
 
 	int current_rating = 1000000;
-	const config *current = NULL;
+	const config *current = nullptr;
 	BOOST_FOREACH(const config &i, cfg_.child_range("resolution"))
 	{
 		int width = i["width"];
@@ -904,7 +904,7 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 	if(i != status_.end())
 		return &i->second;
 	else
-		return NULL;
+		return nullptr;
 }
 
 typedef std::map<std::string, config> known_themes_map;
@@ -948,7 +948,7 @@ const theme::menu *theme::get_menu_item(const std::string &key) const
 	BOOST_FOREACH(const theme::menu &m, menus_) {
 		if (m.get_id() == key) return &m;
 	}
-	return NULL;
+	return nullptr;
 }
 
 const theme::action *theme::get_action_item(const std::string &key) const
@@ -956,12 +956,12 @@ const theme::action *theme::get_action_item(const std::string &key) const
 	BOOST_FOREACH(const theme::action &a, actions_) {
 		if (a.get_id() == key) return &a;
 	}
-	return NULL;
+	return nullptr;
 }
 
 theme::object* theme::refresh_title(const std::string& id, const std::string& new_title){
 
-	theme::object* res = NULL;
+	theme::object* res = nullptr;
 
 	for (std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a){
 		if (a->get_id() == id) {

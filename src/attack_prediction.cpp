@@ -155,7 +155,7 @@ public:
 	         std::vector<double> & col_sums) const;
 
 	/// Returns true if the specified plane might have data in it.
-	bool plane_used(unsigned p) const { return p < NUM_PLANES  &&  plane_[p] != NULL; }
+	bool plane_used(unsigned p) const { return p < NUM_PLANES  &&  plane_[p] != nullptr; }
 
 	unsigned int num_rows() const { return rows_; }
 	unsigned int num_cols() const { return cols_; }
@@ -253,9 +253,9 @@ prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
 
 	// Allocate the needed planes.
 	plane_[NEITHER_SLOWED] = new_plane();
-	plane_[A_SLOWED] = !need_a_slowed ? NULL : new_plane();
-	plane_[B_SLOWED] = !need_b_slowed ? NULL : new_plane();
-	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? NULL : new_plane();
+	plane_[A_SLOWED] = !need_a_slowed ? nullptr : new_plane();
+	plane_[B_SLOWED] = !need_b_slowed ? nullptr : new_plane();
+	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? nullptr : new_plane();
 
 	// Initialize the probability distribution.
 	initialize_plane(NEITHER_SLOWED, a_cur, b_cur, a_initial[0], b_initial[0]);
@@ -1799,7 +1799,7 @@ static void run(unsigned specific_battle)
 		list_combatant(*stats[i], i+1);
 	}
 
-	gettimeofday(&start, NULL);
+	gettimeofday(&start, nullptr);
 	// Go through all fights with two attackers (j and k attacking i).
 	for (i = 0; i < NUM_UNITS; ++i) {
 		for (j = 0; j < NUM_UNITS; ++j) {
@@ -1825,7 +1825,7 @@ static void run(unsigned specific_battle)
 			}
 		}
 	}
-	gettimeofday(&end, NULL);
+	gettimeofday(&end, nullptr);
 
 	timer_sub(&end, &start, &total);
 
@@ -1924,7 +1924,7 @@ int main(int argc, char *argv[])
 		att_stats[i] = parse_unit(&argv);
 		att[i] = new combatant(*att_stats[i]);
 	}
-	att[i] = NULL;
+	att[i] = nullptr;
 
 	for (i = 0; att[i]; ++i) {
 		debug(("Fighting next attacker\n"));

@@ -68,11 +68,11 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 		filename << item.halo;
 
 	image = image::get_image(filename.str());
-	if(image == NULL) {
+	if(image == nullptr) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for item type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == NULL) {
+		if (image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}

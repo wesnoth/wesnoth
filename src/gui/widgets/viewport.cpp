@@ -52,7 +52,7 @@ struct tviewport_implementation
 		 * First test whether the mouse is at the pane.
 		 */
 		if(viewport->twidget::find_at(coordinate, must_be_active) != viewport) {
-			return NULL;
+			return nullptr;
 		}
 
 		/*
@@ -183,7 +183,7 @@ iterator::twalker_* tviewport::create_walker()
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
 
 // }---------- BUILDER -----------{

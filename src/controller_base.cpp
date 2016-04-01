@@ -211,14 +211,14 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 
 	const theme::menu* const m = get_display().menu_pressed();
-	if(m != NULL) {
+	if(m != nullptr) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
 		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false, get_display());
 
 		return;
 	}
 	const theme::action* const a = get_display().action_pressed();
-	if(a != NULL) {
+	if(a != nullptr) {
 		const SDL_Rect& action_loc = a->location(get_display().screen_area());
 		execute_action(a->items(), action_loc.x+1, action_loc.y + action_loc.h + 1,false);
 

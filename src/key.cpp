@@ -20,7 +20,7 @@
 #include <SDL_version.h>
 
 CKey::CKey() :
-	key_list(SDL_GetKeyState(NULL))
+	key_list(SDL_GetKeyState(nullptr))
 {
 }
 

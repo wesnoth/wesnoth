@@ -157,7 +157,7 @@ static void check_timeout()
 		last_ping = 0;
 		return;
 	}
-	const time_t& now = time(NULL);
+	const time_t& now = time(nullptr);
 	DBG_NW << "Last ping: '" << last_ping << "' Current time: '" << now
 			<< "' Time since last ping: " << now - last_ping << "s\n";
 	// Reset last_ping if we didn't check for the last 10s.
@@ -203,7 +203,7 @@ TCPsocket server_socket;
 std::deque<network::connection> disconnection_queue;
 std::set<network::connection> bad_sockets;
 
-network_worker_pool::manager* worker_pool_man = NULL;
+network_worker_pool::manager* worker_pool_man = nullptr;
 
 } // end anon namespace
 
@@ -267,7 +267,7 @@ manager::~manager()
 	if(free_) {
 		disconnect();
 		delete worker_pool_man;
-		worker_pool_man = NULL;
+		worker_pool_man = nullptr;
 		SDLNet_FreeSocketSet(socket_set);
 		socket_set = 0;
 		waiting_sockets.clear();
@@ -342,7 +342,7 @@ void server_manager::stop()
 
 bool server_manager::is_running() const
 {
-	return server_socket != NULL;
+	return server_socket != nullptr;
 }
 
 size_t nconnections()
@@ -394,7 +394,7 @@ namespace {
 
 void connect_operation::run()
 {
-	char* const hostname = host_.empty() ? NULL : const_cast<char*>(host_.c_str());
+	char* const hostname = host_.empty() ? nullptr : const_cast<char*>(host_.c_str());
 	IPaddress ip;
 	if(SDLNet_ResolveHost(&ip,hostname,port_) == -1) {
 		error_ = N_("Could not connect to host.");
@@ -403,7 +403,7 @@ void connect_operation::run()
 
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
 	if(!sock) {
-		error_ = hostname == NULL
+		error_ = hostname == nullptr
 				? "Could not bind to port"
 				: N_("Could not connect to host.");
 		return;
@@ -442,7 +442,7 @@ void connect_operation::run()
 #endif
 
 	// If this is a server socket
-	if(hostname == NULL) {
+	if(hostname == nullptr) {
 		const threading::lock l(get_mutex());
 		connect_ = create_connection(sock,"",port_);
 		return;
@@ -786,7 +786,7 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 		sock = network_worker_pool::get_received_data(sock,cfg, *bandwidth_in);
 	} catch(const config::error& e) {
 		TCPsocket const * err_sock = boost::get_error_info<tcpsocket_info>(e);
-		if(err_sock == NULL)
+		if(err_sock == nullptr)
 			throw;
 		connection err_connection = 0;
 		for(connection_map::const_iterator i = connections.begin(); i != connections.end(); ++i) {
@@ -799,7 +799,7 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 		}
 		throw;
 	}
-	if (sock == NULL) {
+	if (sock == nullptr) {
 		if (!is_server() && last_ping != 0 && ping_timeout != 0)
 		{
 			if (connection_num == 0)
@@ -836,7 +836,7 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 	assert(result != 0);
 	waiting_sockets.insert(result);
 	if(!is_server()) {
-		const time_t& now = time(NULL);
+		const time_t& now = time(nullptr);
 		if (cfg.has_attribute("ping")) {
 			LOG_NW << "Lag: " << (now - lexical_cast<time_t>(cfg["ping"])) << "\n";
 			last_ping = now;
@@ -903,7 +903,7 @@ connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
 
 
 	TCPsocket sock = network_worker_pool::get_received_data(buf);
-	if (sock == NULL) {
+	if (sock == nullptr) {
 		return 0;
 	}
 
@@ -1178,7 +1178,7 @@ std::string ip_address(connection connection_num)
 {
 	std::stringstream str;
 	const IPaddress* const ip = SDLNet_TCP_GetPeerAddress(get_socket(connection_num));
-	if(ip != NULL) {
+	if(ip != nullptr) {
 		const unsigned char* buf = reinterpret_cast<const unsigned char*>(&ip->host);
 		for(int i = 0; i != sizeof(ip->host); ++i) {
 			str << int(buf[i]);

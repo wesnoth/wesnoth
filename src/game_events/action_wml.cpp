@@ -349,7 +349,7 @@ WML_HANDLER_FUNCTION(do_command, cfg)
 		return;
 	}
 
-	static const std::set<std::string> allowed_tags = boost::assign::list_of("attack")("move")("recruit")("recall")("disband")("fire_event")("lua_ai");
+	static const std::set<std::string> allowed_tags = {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	if(is_too_early)
@@ -529,7 +529,7 @@ WML_HANDLER_FUNCTION(recall, cfg)
 				DBG_NG << (*u)->id() << " matched the filter...\n";
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
-				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
+				if(!cfg["check_passability"].to_bool(true)) pass_check = nullptr;
 				const map_location cfg_loc = cfg_to_loc(cfg);
 
 				/// @todo fendrin: comment this monster
@@ -971,12 +971,12 @@ WML_HANDLER_FUNCTION(set_variables, cfg)
 
 				bool remove_empty = split_element["remove_empty"].to_bool();
 
-				char* separator = separator_string.empty() ? NULL : &separator_string[0];
+				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
 
 				std::vector<std::string> split_vector;
 
 				//if no separator is specified, explode the string
-				if(separator == NULL)
+				if(separator == nullptr)
 				{
 					for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
 					{

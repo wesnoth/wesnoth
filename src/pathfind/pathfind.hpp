@@ -42,9 +42,9 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 /// to @a loc as possible, but which is unoccupied by any units.
 map_location find_vacant_tile(const map_location& loc,
                               VACANT_TILE_TYPE vacancy=VACANT_ANY,
-                              const unit* pass_check=NULL,
-                              const team* shroud_check=NULL,
-                              const game_board* board=NULL);
+                              const unit* pass_check=nullptr,
+                              const team* shroud_check=nullptr,
+                              const game_board* board=nullptr);
 /// Wrapper for find_vacant_tile() when looking for a vacant castle tile
 /// near a leader.
 map_location find_vacant_castle(const unit & leader);
@@ -193,7 +193,7 @@ struct marked_route
 plain_route a_star_search(map_location const &src, map_location const &dst,
 		double stop_at, const cost_calculator* costCalculator,
 		const size_t parWidth, const size_t parHeight,
-		const teleport_map* teleports = NULL, bool border = false);
+		const teleport_map* teleports = nullptr, bool border = false);
 
 /**
  * Add marks on a route @a rt assuming that the unit located at the first hex of

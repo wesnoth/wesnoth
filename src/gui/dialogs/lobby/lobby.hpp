@@ -190,7 +190,7 @@ private:
 	legacy_result legacy_result_;
 
 	/**
-	 * Get the room* corresponding to the currently active window, or NULL
+	 * Get the room* corresponding to the currently active window, or nullptr
 	 * if a whisper window is active at the moment
 	 */
 	room_info* active_window_room();

@@ -157,7 +157,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	locale = win_locale;
 #endif
 
-	char *res = NULL;
+	char *res = nullptr;
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 
@@ -205,8 +205,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 	done:
-	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
-	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
+	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr) << '\n';
+	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr) << '\n';
 }
 
 void set_language(const language_def& locale)
@@ -259,7 +259,7 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
-		translation::set_language(prefs_locale, NULL);
+		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)
@@ -276,7 +276,7 @@ const language_def& get_locale()
 		#include "language_win32.ii"
 		return win_locale;
 	#endif
-	if(locale != NULL && strlen(locale) >= 2) {
+	if(locale != nullptr && strlen(locale) >= 2) {
 		//we can't pass pointers into the string to the std::string
 		//constructor because some STL implementations don't support
 		//it (*cough* MSVC++6)

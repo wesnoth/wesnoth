@@ -63,12 +63,12 @@ struct movetype::terrain_info::parameters
 	int max_value;     /// The largest allowable value.
 	int default_value; /// The default value (if no data is available).
 
-	int (*eval)(int);  /// Converter for values taken from a config. May be NULL.
+	int (*eval)(int);  /// Converter for values taken from a config. May be nullptr.
 
 	bool use_move;     /// Whether to look at underlying movement or defense terrains.
 	bool high_is_good; /// Whether we are looking for highest or lowest (unless inverted by the underlying terrain).
 
-	parameters(int min, int max, int (*eval_fun)(int)=NULL, bool move=true, bool high=false) :
+	parameters(int min, int max, int (*eval_fun)(int)=nullptr, bool move=true, bool high=false) :
 		min_value(min), max_value(max), default_value(high ? min : max),
 		eval(eval_fun), use_move(move), high_is_good(high)
 	{}
@@ -248,7 +248,7 @@ void movetype::terrain_info::data::write(
  * @param[out] out_cfg     The config that will receive the data.
  * @param[in]  child_name  If not empty, create and write to a child config with this tag.
  *                         This *will* be created even if there is no data to write.
- * @param[in]  fallback    If not NULL, its data will be merged with ours for the write.
+ * @param[in]  fallback    If not nullptr, its data will be merged with ours for the write.
  */
 void movetype::terrain_info::data::write(
 	config & out_cfg, const std::string & child_name, const terrain_info * fallback) const
@@ -306,10 +306,10 @@ int movetype::terrain_info::data::calc_value(
 		if (const config::attribute_value *val = cfg_.get(id)) {
 			// Read the value from our config.
 			result = val->to_int(params_.default_value);
-			if ( params_.eval != NULL )
+			if ( params_.eval != nullptr )
 				result = params_.eval(result);
 		}
-		else if ( fallback != NULL ) {
+		else if ( fallback != nullptr ) {
 			// Get the value from our fallback.
 			result = fallback->value(terrain);
 		}
@@ -699,9 +699,9 @@ void movetype::resistances::write(config & out_cfg, const std::string & child_na
  * Default constructor
  */
 movetype::movetype() :
-	movement_(NULL, &vision_),      // This is not access before initialization; the address is merely stored at this point.
+	movement_(nullptr, &vision_),      // This is not access before initialization; the address is merely stored at this point.
 	vision_(&movement_, &jamming_), // This is not access before initialization; the address is merely stored at this point.
-	jamming_(&vision_, NULL),
+	jamming_(&vision_, nullptr),
 	defense_(),
 	resist_(),
 	flying_(false)
@@ -713,9 +713,9 @@ movetype::movetype() :
  * Constructor from a config
  */
 movetype::movetype(const config & cfg) :
-	movement_(cfg.child_or_empty("movement_costs"), NULL, &vision_),    // This is not access before initialization; the address is merely stored at this point.
+	movement_(cfg.child_or_empty("movement_costs"), nullptr, &vision_),    // This is not access before initialization; the address is merely stored at this point.
 	vision_(cfg.child_or_empty("vision_costs"), &movement_, &jamming_), // This is not access before initialization; the address is merely stored at this point.
-	jamming_(cfg.child_or_empty("jamming_costs"), &vision_, NULL),
+	jamming_(cfg.child_or_empty("jamming_costs"), &vision_, nullptr),
 	defense_(cfg.child_or_empty("defense")),
 	resist_(cfg.child_or_empty("resistance")),
 	flying_(cfg["flies"].to_bool(false))
@@ -727,9 +727,9 @@ movetype::movetype(const config & cfg) :
  * Copy constructor
  */
 movetype::movetype(const movetype & that) :
-	movement_(that.movement_, NULL, &vision_),    // This is not access before initialization; the address is merely stored at this point.
+	movement_(that.movement_, nullptr, &vision_),    // This is not access before initialization; the address is merely stored at this point.
 	vision_(that.vision_, &movement_, &jamming_), // This is not access before initialization; the address is merely stored at this point.
-	jamming_(that.jamming_, &vision_, NULL),
+	jamming_(that.jamming_, &vision_, nullptr),
 	defense_(that.defense_),
 	resist_(that.resist_),
 	flying_(that.flying_)
@@ -777,8 +777,8 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 /**
  * The set of strings defining effects which apply to movetypes.
  */
-const std::set<std::string> movetype::effects = boost::assign::list_of("movement_costs")
-	("vision_costs")("jamming_costs")("defense")("resistance");
+const std::set<std::string> movetype::effects = {"movement_costs",
+	"vision_costs", "jamming_costs", "defense", "resistance"};
 
 /**
  * Writes the movement type data to the provided config.

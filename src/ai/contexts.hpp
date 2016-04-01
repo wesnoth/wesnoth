@@ -199,11 +199,11 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const = 0;
+		const terrain_filter* remove_destinations=nullptr) const = 0;
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const = 0;
 
 	virtual const game_info& get_info() const = 0;
@@ -465,7 +465,7 @@ public:
 class side_context_proxy : public virtual side_context {
 public:
 	side_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -512,7 +512,7 @@ private:
 class readonly_context_proxy : public virtual readonly_context, public virtual side_context_proxy {
 public:
 	readonly_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -588,7 +588,7 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const
+		const terrain_filter* remove_destinations=nullptr) const
 	{
 		target_->calculate_possible_moves(possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations);
 	}
@@ -596,7 +596,7 @@ public:
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const
 	{
 		target_->calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
@@ -1006,7 +1006,7 @@ private:
 class readwrite_context_proxy : public virtual readwrite_context, public virtual readonly_context_proxy {
 public:
 	readwrite_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -1280,7 +1280,7 @@ public:
 	void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const;
+		const terrain_filter* remove_destinations=nullptr) const;
 
  	/**
 	 * A more fundamental version of calculate_possible_moves which allows the
@@ -1292,7 +1292,7 @@ public:
 	void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const;
 
 

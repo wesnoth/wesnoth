@@ -62,7 +62,7 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-const config *game_cfg = NULL;
+const config *game_cfg = nullptr;
 // The default toplevel.
 help::section toplevel;
 // All sections and topics not referenced from the default toplevel.
@@ -148,7 +148,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
 				  << std::endl;
 	}
-	else if (section_cfg != NULL) {
+	else if (section_cfg != nullptr) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
 		sec.level = level;
 		std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"].str();
@@ -251,9 +251,9 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 section parse_config(const config *cfg)
 {
 	section sec;
-	if (cfg != NULL) {
+	if (cfg != nullptr) {
 		config const &toplevel_cfg = cfg->child("toplevel");
-		parse_config_internal(cfg, toplevel_cfg ? &toplevel_cfg : NULL, sec);
+		parse_config_internal(cfg, toplevel_cfg ? &toplevel_cfg : nullptr, sec);
 	}
 	return sec;
 }
@@ -350,7 +350,7 @@ const std::vector<std::string>& topic_text::parsed_text() const
 		parsed_text_ = parse_text((*generator_)());
 		if (--generator_->count == 0)
 			delete generator_;
-		generator_ = NULL;
+		generator_ = nullptr;
 	}
 	return parsed_text_;
 }
@@ -1057,11 +1057,11 @@ const topic *find_topic(const section &sec, const std::string &id)
 	section_list::const_iterator sit;
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
 		const topic *t = find_topic(*(*sit), id);
-		if (t != NULL) {
+		if (t != nullptr) {
 			return t;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 const section *find_section(const section &sec, const std::string &id)
@@ -1073,11 +1073,11 @@ const section *find_section(const section &sec, const std::string &id)
 	}
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); ++sit) {
 		const section *s = find_section(*(*sit), id);
-		if (s != NULL) {
+		if (s != nullptr) {
 			return s;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 std::vector<std::string> parse_text(const std::string &text)
@@ -1223,7 +1223,7 @@ SDL_Color string_to_color(const std::string &cmp_str)
 	}
 	// a #rrggbb color in pango format.
 	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return int_to_color(strtoul(cmp_str.c_str() + 1, NULL, 16));
+		return int_to_color(strtoul(cmp_str.c_str() + 1, nullptr, 16));
 	}
 	return font::NORMAL_COLOR;
 }
@@ -1285,7 +1285,7 @@ void generate_contents()
 {
 	toplevel.clear();
 	hidden_sections.clear();
-	if (game_cfg != NULL) {
+	if (game_cfg != nullptr) {
 		const config *help_config = &game_cfg->child("help");
 		if (!*help_config) {
 			help_config = &dummy_cfg;
@@ -1303,7 +1303,7 @@ void generate_contents()
 			BOOST_FOREACH(const config &section, help_config->child_range("section"))
 			{
 				const std::string id = section["id"];
-				if (find_section(toplevel, id) == NULL) {
+				if (find_section(toplevel, id) == nullptr) {
 					// This section does not exist referenced from the
 					// toplevel. Hence, add it to the hidden ones if it
 					// is not referenced from another section.
@@ -1320,7 +1320,7 @@ void generate_contents()
 			BOOST_FOREACH(const config &topic, help_config->child_range("topic"))
 			{
 				const std::string id = topic["id"];
-				if (find_topic(toplevel, id) == NULL) {
+				if (find_topic(toplevel, id) == nullptr) {
 					if (!topic_is_referenced(id, *help_config)) {
 						if (ss.str() != "") {
 							ss << ",";
@@ -1381,7 +1381,7 @@ unsigned image_width(const std::string &filename)
 {
 	image::locator loc(filename);
 	surface surf(image::get_image(loc));
-	if (surf != NULL) {
+	if (surf != nullptr) {
 		return surf->w;
 	}
 	return 0;

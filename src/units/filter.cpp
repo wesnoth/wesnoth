@@ -238,7 +238,7 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 		}
 	} else {
 		// If loc is invalid, then this is a recall list unit (already been scoped)
-		matches = internal_matches_filter(u, loc, NULL);
+		matches = internal_matches_filter(u, loc, nullptr);
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
@@ -599,7 +599,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned max_matches) const {
 	std::vector<const unit *> ret;
 	BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
-		if (matches(u, u.get_location(), NULL)) {
+		if (matches(u, u.get_location(), nullptr)) {
 			if(max_matches == 0) {
 				return ret;
 			}
@@ -613,7 +613,7 @@ std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned ma
 unit_const_ptr basic_unit_filter_impl::first_match_on_map() const {
 	const unit_map & units = fc_.get_disp_context().units();
 	for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
-		if (matches(*u,u->get_location(),NULL)) {
+		if (matches(*u,u->get_location(),nullptr)) {
 			return u.get_shared_ptr();
 		}
 	}

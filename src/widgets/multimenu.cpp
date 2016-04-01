@@ -26,7 +26,7 @@ namespace gui {
 		surface img = image::get_image(active_items_[row_index]
 									   ? "buttons/checkbox-pressed.png"
 									   : "buttons/checkbox.png");
-		blit_surface(img, NULL, video().getSurface(), &rect);
+		blit_surface(img, nullptr, video().getSurface(), &rect);
 		SDL_Rect newrect = {
 				Sint16 (rect.x + img->w + 2),
 				rect.y,

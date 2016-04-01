@@ -25,7 +25,7 @@
 namespace help {
 
 help_button::help_button(CVideo& video, const std::string &help_topic)
-	: dialog_button(video, _("Help")), video_(video), topic_(help_topic), help_hand_(NULL)
+	: dialog_button(video, _("Help")), video_(video), topic_(help_topic), help_hand_(nullptr)
 {}
 
 help_button::~help_button() {
@@ -64,7 +64,7 @@ void help_button::leave() {
 
 	//now kill the hotkey handler
 	delete help_hand_;
-	help_hand_ = NULL;
+	help_hand_ = nullptr;
 }
 
 } // end namespace help

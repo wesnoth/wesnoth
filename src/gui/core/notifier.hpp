@@ -48,7 +48,7 @@ public:
 			assert(item.first);
 			assert((*item.first).notifier_ == this);
 
-			(*item.first).notifier_ = NULL;
+			(*item.first).notifier_ = nullptr;
 		}
 	}
 
@@ -84,7 +84,7 @@ public:
 
 			assert(notifiee.notifier_ == this);
 
-			notifiee.notifier_ = NULL;
+			notifiee.notifier_ = nullptr;
 
 			notifiees_.erase(itor);
 		}

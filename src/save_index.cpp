@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include <boost/assign/list_of.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "save_index.hpp"
@@ -254,7 +253,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	static const std::vector<std::string> suffixes = boost::assign::list_of("")(".gz")(".bz2");
+	static const std::vector<std::string> suffixes = {"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
 
 	cfg.clear();
@@ -297,7 +296,7 @@ void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 	if (countdown == infinite_auto_saves)
 		return;
 
-	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
+	std::vector<save_info> games = get_saves_list(nullptr, &auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
 		if (countdown-- <= 0) {
 			LOG_SAVE << "Deleting savegame '" << i->name() << "'\n";

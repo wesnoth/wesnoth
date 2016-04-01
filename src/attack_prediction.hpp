@@ -30,7 +30,7 @@ struct battle_context_unit_stats;
 struct combatant
 {
 	/** Construct a combatant. */
-	combatant(const battle_context_unit_stats &u, const combatant *prev = NULL);
+	combatant(const battle_context_unit_stats &u, const combatant *prev = nullptr);
 
 	/** Copy constructor */
 	combatant(const combatant &that, const battle_context_unit_stats &u);

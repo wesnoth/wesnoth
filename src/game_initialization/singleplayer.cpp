@@ -157,7 +157,7 @@ bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& 
 bool enter_connect_mode(CVideo& video, const config& game_config,
 	saved_game& state, bool local_players_only) {
 
-	ng::connect_engine connect_eng(state, true, NULL);
+	ng::connect_engine connect_eng(state, true, nullptr);
 
 	if (state.mp_settings().show_connect) {
 		mp::ui::result res;

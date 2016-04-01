@@ -1016,7 +1016,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				++i1;
 			}
 			const std::string precond = "";
-			if(symbols == NULL) {
+			if(symbols == nullptr) {
 				throw formula_error("Function symbol table required but not present", "",*i1->filename, i1->line_number);
 			}
 			symbols->add_formula_function(formula_name,
@@ -1033,7 +1033,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 	}
 
 	int parens = 0;
-	const token* op = NULL;
+	const token* op = nullptr;
 	bool operator_group = false;
 	for(const token* i = i1; i != i2; ++i) {
 		if(i->type == TOKEN_LPARENS || i->type == TOKEN_LSQUARE) {
@@ -1041,10 +1041,10 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if(i->type == TOKEN_RPARENS || i->type == TOKEN_RSQUARE) {
 			--parens;
 		} else if(parens == 0 && i->type == TOKEN_OPERATOR) {
-			if( ( !operator_group ) && (op == NULL || operator_precedence(*op) >=
+			if( ( !operator_group ) && (op == nullptr || operator_precedence(*op) >=
 							 operator_precedence(*i)) ) {
 				// Need special exception for exponentiation to be right-associative
-				if(*i->begin != '^' || op == NULL || *op->begin != '^')
+				if(*i->begin != '^' || op == nullptr || *op->begin != '^')
 					op = i;
 			}
 			operator_group = true;
@@ -1053,7 +1053,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		}
 	}
 
-	if(op == NULL) {
+	if(op == nullptr) {
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
 		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
@@ -1219,11 +1219,11 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	expr_(),
 	str_(str),
 	symbols_(symbols),
-	managing_symbols(symbols == NULL)
+	managing_symbols(symbols == nullptr)
 {
 	using namespace formula_tokenizer;
 	
-	if(symbols == NULL) {
+	if(symbols == nullptr) {
 		symbols_ = new function_symbol_table;
 	}
 
@@ -1351,9 +1351,9 @@ formula::formula(const token* i1, const token* i2, function_symbol_table* symbol
 	expr_(),
 	str_(),
 	symbols_(symbols),
-	managing_symbols(symbols == NULL)
+	managing_symbols(symbols == nullptr)
 {
-	if(symbols == NULL) {
+	if(symbols == nullptr) {
 		symbols_ = new function_symbol_table;
 	}
 

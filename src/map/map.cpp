@@ -276,8 +276,8 @@ std::string gamemap::write() const
 	for(int i = 0, size = starting_positions_.size(); i < size; ++i) {
 		if(on_board(starting_positions_[i])) {
 			starting_positions[i + 1] = t_translation::coordinate(
-				starting_positions[i].x + border_size_,
-				starting_positions[i].y + border_size_
+				starting_positions_[i].x + border_size_,
+				starting_positions_[i].y + border_size_
 			);
 		}	
 	}
@@ -349,7 +349,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 
 			// See if there is a matching rule
-			const overlay_rule* rule = NULL;
+			const overlay_rule* rule = nullptr;
 			BOOST_FOREACH(const overlay_rule& current_rule, rules)
 			{
 				if(!current_rule.old_.empty() && !t_translation::terrain_matches(current, current_rule.old_)) {

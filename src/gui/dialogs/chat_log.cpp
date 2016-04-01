@@ -71,7 +71,7 @@ class tchat_log::model
 public:
 	model(const vconfig& c, replay* r)
 		: cfg(c)
-		, msg_label(NULL)
+		, msg_label(nullptr)
 		, chat_log_history(r->build_chat_log())
 		, page(0)
 		, page_number()

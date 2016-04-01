@@ -104,7 +104,7 @@ struct user_info
 	explicit user_info(const config& c);
 
 	void update_state(int selected_game_id,
-					  const room_info* current_room = NULL);
+					  const room_info* current_room = nullptr);
 	void update_relation();
 
 	enum user_relation {

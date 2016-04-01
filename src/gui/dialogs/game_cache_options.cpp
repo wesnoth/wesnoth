@@ -76,9 +76,9 @@ REGISTER_DIALOG(game_cache_options)
 
 tgame_cache_options::tgame_cache_options()
 	: cache_path_(filesystem::get_cache_dir())
-	, clean_button_(NULL)
-	, purge_button_(NULL)
-	, size_label_(NULL)
+	, clean_button_(nullptr)
+	, purge_button_(nullptr)
+	, size_label_(nullptr)
 {
 }
 
@@ -121,7 +121,7 @@ void tgame_cache_options::pre_show(twindow& window)
 
 void tgame_cache_options::post_show(twindow& /*window*/)
 {
-	size_label_ = NULL;
+	size_label_ = nullptr;
 }
 
 void tgame_cache_options::update_cache_size_display()

@@ -186,8 +186,8 @@ namespace image {
 
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team
-	///using NULL will reset to default TC
-	void set_team_colors(const std::vector<std::string>* colors = NULL);
+	///using nullptr will reset to default TC
+	void set_team_colors(const std::vector<std::string>* colors = nullptr);
 
 	const std::vector<std::string>& get_team_colors();
 

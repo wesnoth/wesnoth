@@ -11,6 +11,11 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file
+ * Screen with logo and loading status info during program-startup.
+ */
+
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "cursor.hpp"
@@ -22,8 +27,36 @@
 
 #include "video.hpp"
 #include "cursor.hpp"
+#include "gettext.hpp"
+#include "log.hpp"
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
+
+static lg::log_domain log_loadscreen("loadscreen");
+#define ERR_LS LOG_STREAM(err, log_loadscreen)
+#define WRN_LS LOG_STREAM(warn, log_loadscreen)
+#define LOG_LS LOG_STREAM(info, log_loadscreen)
+#define DBG_LS LOG_STREAM(debug, log_loadscreen)
+
+static const std::map<std::string, std::string> stages =
+{
+	{ "build terrain", N_("Building terrain rules") },
+	{ "create cache", N_("Reading files and creating cache") },
+	{ "init display", N_("Initializing display") },
+	{ "init fonts", N_("Reinitialize fonts for the current language") },
+	{ "init teams", N_("Initializing teams") },
+	{ "init theme", N_("Initializing display") },
+	{ "load config", N_("Loading game configuration") },
+	{ "load data", N_("Loading data files") },
+	{ "load level", N_("Loading level") },
+	{ "init lua", N_("Initializing scripting engine") },
+	{ "init whiteboard", N_("Initializing planning mode") },
+	{ "load unit types", N_("Reading unit files") },
+	{ "load units", N_("Loading units") },
+	{ "refresh addons", N_("Searching for installed add-ons") },
+	{ "start game", N_("Starting game") },
+	{ "verify cache", N_("Verifying cache") },
+};
 
 namespace gui2
 {
@@ -31,14 +64,14 @@ namespace gui2
 REGISTER_DIALOG(loadscreen)
 
 tloadscreen::tloadscreen(boost::function<void()> f)
-	: window_(NULL)
+	: window_(nullptr)
 	, timer_id_(0)
 	, animation_counter_(0)
 	, work_(f)
 	, worker_()
 	, cursor_setter_()
-	, current_stage_(NULL)
-	, current_visible_stage_(NULL)
+	, current_stage_()
+	, current_visible_stage_()
 {
 	current_load = this;
 }
@@ -48,7 +81,7 @@ void tloadscreen::close()
 	if(window_) {
 		window_->undraw();
 		delete window_;
-		window_ = NULL;
+		window_ = nullptr;
 	}
 }
 
@@ -79,13 +112,17 @@ void tloadscreen::progress(const char* stage)
 	if(!current_load) {
 		return;
 	}
-	// Currently this is a no-op stub
 	if(stage) {
-		current_load->current_stage_ = stage;
+		auto iter = stages.find(stage);
+		if(iter == stages.end()) {
+			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
+			return;
+		}
+		current_load->current_stage_ = iter;
 	}
 }
 
-tloadscreen* tloadscreen::current_load = NULL;
+tloadscreen* tloadscreen::current_load = nullptr;
 
 void tloadscreen::timer_callback(twindow& window)
 {
@@ -95,7 +132,7 @@ void tloadscreen::timer_callback(twindow& window)
 	if (current_stage_ != current_visible_stage_)
 	{
 		current_visible_stage_ = current_stage_;
-		progress_stage_label_->set_label(current_visible_stage_);
+		progress_stage_label_->set_label(t_string(current_stage_->second, "wesnoth-lib") + "...");
 	}
 	++animation_counter_;
 	if (animation_counter_ % 2 == 0) {
@@ -109,7 +146,7 @@ void tloadscreen::timer_callback(twindow& window)
 tloadscreen::~tloadscreen()
 {
 	close();
-	current_load = NULL;
+	current_load = nullptr;
 }
 
 void tloadscreen::display(CVideo& video, boost::function<void()> f)

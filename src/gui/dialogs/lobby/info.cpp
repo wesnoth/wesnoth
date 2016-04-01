@@ -204,7 +204,7 @@ void lobby_info::process_userlist()
 	{
 		if(ui.game_id != 0) {
 			game_info* g = get_game_by_id(ui.game_id);
-			if(g == NULL) {
+			if(g == nullptr) {
 				WRN_NG << "User " << ui.name
 					   << " has unknown game_id: " << ui.game_id << "\n";
 			} else {
@@ -243,13 +243,13 @@ void lobby_info::sync_games_display_status()
 game_info* lobby_info::get_game_by_id(int id)
 {
 	std::map<int, game_info*>::iterator i = games_by_id_.find(id);
-	return i == games_by_id_.end() ? NULL : i->second;
+	return i == games_by_id_.end() ? nullptr : i->second;
 }
 
 const game_info* lobby_info::get_game_by_id(int id) const
 {
 	std::map<int, game_info*>::const_iterator i = games_by_id_.find(id);
-	return i == games_by_id_.end() ? NULL : i->second;
+	return i == games_by_id_.end() ? nullptr : i->second;
 }
 
 room_info* lobby_info::get_room(const std::string& name)
@@ -259,7 +259,7 @@ room_info* lobby_info::get_room(const std::string& name)
 		if(r.name() == name)
 			return &r;
 	}
-	return NULL;
+	return nullptr;
 }
 
 const room_info* lobby_info::get_room(const std::string& name) const
@@ -269,12 +269,12 @@ const room_info* lobby_info::get_room(const std::string& name) const
 		if(r.name() == name)
 			return &r;
 	}
-	return NULL;
+	return nullptr;
 }
 
 bool lobby_info::has_room(const std::string& name) const
 {
-	return get_room(name) != NULL;
+	return get_room(name) != nullptr;
 }
 
 chat_log& lobby_info::get_whisper_log(const std::string& name)

@@ -97,7 +97,7 @@ manager::~manager()
 #if 0
 static void print_to_chat(const std::string& title, const std::string& message)
 {
-	resources::screen->add_chat_message(time(NULL), title, 0, message,
+	resources::screen->add_chat_message(time(nullptr), title, 0, message,
 			events::chat_handler::MESSAGE_PRIVATE, false);
 }
 #endif
@@ -145,7 +145,7 @@ void manager::print_help_once()
 bool manager::can_modify_game_state() const
 {
 	if(wait_for_side_init_
-					|| resources::teams == NULL
+					|| resources::teams == nullptr
 					|| executing_actions_
 					|| resources::gameboard->is_observer()
 					|| resources::controller->is_linger_mode())
@@ -1056,7 +1056,7 @@ bool manager::has_actions() const
 
 bool manager::unit_has_actions(unit const* unit) const
 {
-	assert(unit != NULL);
+	assert(unit != nullptr);
 	assert(resources::teams);
 	return viewer_actions()->unit_has_actions(*unit);
 }

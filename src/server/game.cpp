@@ -96,7 +96,7 @@ game::game(player_map& players, const network::connection host,
 	started_(false),
 	level_(),
 	history_(),
-	description_(NULL),
+	description_(nullptr),
 	end_turn_(0),
 	num_turns_(0),
 	all_observers_muted_(false),
@@ -600,7 +600,7 @@ void game::notify_new_host(){
 }
 
 bool game::describe_slots() {
-	if(started_ || description_ == NULL)
+	if(started_ || description_ == nullptr)
 		return false;
 
 	int available_slots = 0;
@@ -956,7 +956,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	}
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		simple_wml::node* const speak = (**command).child("speak");
-		if (speak == NULL) {
+		if (speak == nullptr) {
 			simple_wml::document* mdata = new simple_wml::document;
 			simple_wml::node& turn = mdata->root().add_child("turn");
 			(**command).copy_into(turn.add_child("command"));
@@ -1149,7 +1149,7 @@ bool game::end_turn() {
 	}
 	if (!turn_ended) return false;
 
-	if (description_ == NULL) {
+	if (description_ == nullptr) {
 		return false;
 	}
 
@@ -1322,7 +1322,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 void game::send_user_list(const network::connection exclude) const {
 	//if the game hasn't started yet, then send all players a list
 	//of the users in the game
-	if (started_ || description_ == NULL) return;
+	if (started_ || description_ == nullptr) return;
 	/** @todo Should be renamed to userlist. */
 	simple_wml::document cfg;
 	cfg.root().add_child("gamelist");
@@ -1533,7 +1533,7 @@ void game::save_replay() {
 		//level_.set_attr_dup("label", name.str().c_str());
 		//TODO: comment where mp_game_title= is used.
 		level_.set_attr_dup("mp_game_title", name_.c_str());
-		const bool has_old_replay = level_.child("replay") != NULL;
+		const bool has_old_replay = level_.child("replay") != nullptr;
 		//If there is already a replay in the level_, which means this is a reloaded game,
 		//then we dont need to add the [start] in the replay.
 		replay_data << level_.output()
@@ -1679,7 +1679,7 @@ void game::send_server_message_to_all(const char* message, network::connection e
 void game::send_server_message(const char* message, network::connection sock, simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
-	if(docptr == NULL) {
+	if(docptr == nullptr) {
 		docptr = &docbuf;
 	}
 

@@ -276,12 +276,12 @@ extra_opts+="$*"
 
 # Make sure the binary exists
 if [ "$DebugMode" -eq 1 ]; then
-  if [ "! ( -f $BinPath/wesnoth-debug -a -x $BinPath/wesnoth-debug )" ]; then
+  if [ ! -x "$BinPath/wesnoth-debug" ]; then
     echo "Wesnoth binary not found at $BinPath/wesnoth-debug"
     exit 1
   fi
 else
-  if [ "! ( -f $BinPath/wesnoth -a -x $BinPath/wesnoth )" ]; then
+  if [ ! -x "$BinPath/wesnoth" ]; then
     echo "Wesnoth binary not found at $BinPath/wesnoth"
     exit 1
   fi

@@ -111,7 +111,7 @@ public:
 	int gety() const;
 
 	//blits a surface with black as alpha
-	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
+	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=nullptr, SDL_Rect* clip_rect=nullptr);
 #ifdef SDL_GPU
 	GPU_Target *render_target() const;
 
@@ -224,7 +224,7 @@ private:
 
 	void initSDL();
 #ifdef SDL_GPU
-	void update_overlay(SDL_Rect *rect = NULL);
+	void update_overlay(SDL_Rect *rect = nullptr);
 
 	sdl::shader_program shader_;
 	surface overlay_;

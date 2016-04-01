@@ -255,7 +255,7 @@ namespace {
  * Returns names and descriptions of the unit's abilities.
  * The returned triples consist of (in order) base name, male or female name as
  * appropriate for the unit, and description.
- * @param active_list  If NULL, then all abilities are forced active. If not
+ * @param active_list  If nullptr, then all abilities are forced active. If not
  *                     null, this vector will be the same length as the returned
  *                     one and will indicate whether or not the corresponding
  *                     ability is active.
@@ -608,7 +608,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
  *
  * This uses either the active or inactive name/description for each special,
  * based on the current context (see set_specials_context), provided
- * @a active_list is not NULL. Otherwise specials are assumed active.
+ * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
 std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
@@ -699,7 +699,7 @@ void attack_type::set_specials_context(const map_location& loc, bool attacking) 
 	self_loc_ = loc;
 	other_loc_ = map_location::null_location();
 	is_attacker_ = attacking;
-	other_attack_ = NULL;
+	other_attack_ = nullptr;
 	is_for_listing_ = false;
 }
 

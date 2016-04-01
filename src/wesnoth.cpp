@@ -87,7 +87,7 @@
 
 #include <algorithm>                    // for transform
 #include <cerrno>                       // for ENOMEM
-#include <clocale>                      // for setlocale, NULL, LC_ALL, etc
+#include <clocale>                      // for setlocale, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
 #include <cstdlib>                     // for srand, exit
 #include <ctime>                       // for time, ctime, time_t
@@ -575,7 +575,7 @@ static void check_fpu()
  */
 static int do_gameloop(const std::vector<std::string>& args)
 {
-	srand(time(NULL));
+	srand(time(nullptr));
 
 	commandline_options cmdline_opts = commandline_options(args);
 	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
@@ -636,37 +636,37 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	gui2::tloadscreen::progress("init gui"); // Does nothing since there's no loadscreen yet
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
-
 
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
-	gui2::tloadscreen::display(game->video(), [&]() {
+	gui2::tloadscreen::display(game->video(), [&res, &config_manager]() {
 		gui2::tloadscreen::progress("load config");
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
+
+		if(res == false) {
+			std::cerr << "could not initialize game config\n";
+			return;
+		}
+		gui2::tloadscreen::progress("init fonts");
+
+		res = font::load_font_config();
+		if(res == false) {
+			std::cerr << "could not re-initialize fonts for the current language\n";
+			return;
+	}
+
+		gui2::tloadscreen::progress("refresh addons");
+		refresh_addon_version_info_cache();
 	});
-
+	
 	if(res == false) {
-		std::cerr << "could not initialize game config\n";
 		return 1;
 	}
-	gui2::tloadscreen::progress("init fonts");
-
-	res = font::load_font_config();
-	if(res == false) {
-		std::cerr << "could not re-initialize fonts for the current language\n";
-		return 1;
-	}
-
-	gui2::tloadscreen::progress("refresh addons");
-	refresh_addon_version_info_cache();
 
 	config tips_of_day;
-
-	gui2::tloadscreen::progress("titlescreen");
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
@@ -674,11 +674,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
-		{ NULL, NULL }
 	};
 	plugins_context::aReg const accessors[] = {
 		{ "command_line",		boost::bind(&commandline_options::to_config, &cmdline_opts)},
-		{ NULL, NULL }
 	};
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
@@ -853,7 +851,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			gui2::tloadscreen::display(game->video(), [&]() {
+			gui2::tloadscreen::display(game->video(), [&config_manager]() {
 				config_manager.reload_changed_game_config();
 				image::flush_cache();
 			});
@@ -928,7 +926,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 {
 	wchar_t process_path[MAX_PATH];
 	SetLastError(ERROR_SUCCESS);
-	GetModuleFileNameW(NULL, process_path, MAX_PATH);
+	GetModuleFileNameW(nullptr, process_path, MAX_PATH);
 	if (GetLastError() != ERROR_SUCCESS)
 	{
 		throw std::runtime_error("Failed to retrieve the process path");
@@ -947,8 +945,8 @@ static void restart_process(const std::vector<std::string>& commandline)
 	PROCESS_INFORMATION process_info;
 	ZeroMemory(&process_info, sizeof(process_info));
 
-	CreateProcessW(process_path, commandline_c_str, NULL, NULL,
-		false, 0u, NULL, NULL, &startup_info, &process_info);
+	CreateProcessW(process_path, commandline_c_str, nullptr, nullptr,
+		false, 0u, nullptr, nullptr, &startup_info, &process_info);
 
 	CloseHandle(process_info.hProcess);
 	CloseHandle(process_info.hThread);
@@ -1034,13 +1032,13 @@ int main(int argc, char** argv)
 	terminate_handler.sa_handler = wesnoth_terminate_handler;
 	terminate_handler.sa_flags = 0;
 	sigemptyset(&terminate_handler.sa_mask);
-	sigaction(SIGTERM, &terminate_handler, NULL);
-	sigaction(SIGINT, &terminate_handler, NULL);
+	sigaction(SIGTERM, &terminate_handler, nullptr);
+	sigaction(SIGINT, &terminate_handler, nullptr);
 #endif
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
-		const time_t t = time(NULL);
+		const time_t t = time(nullptr);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		const std::string& exe_dir = filesystem::get_exe_dir();

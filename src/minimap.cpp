@@ -58,7 +58,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
 	if(map_width == 0 || map_height == 0) {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 
 	if(!preferences_minimap_draw_villages && !preferences_minimap_draw_terrain)
@@ -70,8 +70,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	}
 
 	surface minimap(create_neutral_surface(map_width, map_height));
-	if(minimap == NULL)
-		return surface(NULL);
+	if(minimap == nullptr)
+		return surface(nullptr);
 
 	typedef mini_terrain_cache_map cache_map;
 	cache_map *normal_cache = &mini_terrain_cache;
@@ -87,9 +87,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			const bool highlighted = reach_map && reach_map->count(loc) != 0;
 
-			const bool shrouded = (resources::screen != NULL && resources::screen->is_blindfolded()) || (vw != NULL && vw->shrouded(loc));
+			const bool shrouded = (resources::screen != nullptr && resources::screen->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
-			const bool fogged = (vw != NULL && !shrouded && vw->fogged(loc));
+			const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
 
 			const t_translation::t_terrain terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];
@@ -111,7 +111,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 				if (preferences_minimap_terrain_coding) {
 
-					surface surf(NULL);
+					surface surf(nullptr);
 
 					bool need_fogging = false;
 					bool need_highlighting = false;
@@ -144,20 +144,20 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 						//Compose images of base and overlay if necessary
 						// NOTE we also skip overlay when base is missing (to avoid hiding the error)
-						if(tile != NULL && tdata.get_terrain_info(terrain).is_combined() && !terrain_info.minimap_image_overlay().empty()) {
+						if(tile != nullptr && tdata.get_terrain_info(terrain).is_combined() && !terrain_info.minimap_image_overlay().empty()) {
 							std::string overlay_file =
 									"terrain/" + terrain_info.minimap_image_overlay() + ".png";
 							surface overlay = get_image(overlay_file,image::HEXED);
 
-							if(overlay != NULL && overlay != tile) {
+							if(overlay != nullptr && overlay != tile) {
 								surface combined = create_neutral_surface(tile->w, tile->h);
 								SDL_Rect r = sdl::create_rect(0,0,0,0);
-								sdl_blit(tile, NULL, combined, &r);
+								sdl_blit(tile, nullptr, combined, &r);
 								r.x = std::max(0, (tile->w - overlay->w)/2);
 								r.y = std::max(0, (tile->h - overlay->h)/2);
 								//blit_surface needs neutral surface
 								surface overlay_neutral = make_neutral_surface(overlay);
-								blit_surface(overlay_neutral, NULL, combined, &r);
+								blit_surface(overlay_neutral, nullptr, combined, &r);
 								tile = combined;
 							}
 						}
@@ -179,8 +179,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						highlight_cache->insert(cache_map::value_type(terrain,surf));
 					}
 
-					if(surf != NULL)
-						sdl_blit(surf, NULL, minimap, &maprect);
+					if(surf != nullptr)
+						sdl_blit(surf, nullptr, minimap, &maprect);
 
 				} else {
 
@@ -307,9 +307,9 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 				continue;
 
 			const bool highlighted = reach_map && reach_map->count(loc) != 0;
-			const bool shrouded = (resources::screen != NULL && resources::screen->is_blindfolded()) || (vw != NULL && vw->shrouded(loc));
+			const bool shrouded = (resources::screen != nullptr && resources::screen->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
-			const bool fogged = (vw != NULL && !shrouded && vw->fogged(loc));
+			const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
 
 			const t_translation::t_terrain terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];

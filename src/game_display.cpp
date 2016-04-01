@@ -130,22 +130,22 @@ void game_display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 #ifdef SDL_GPU
-				if(old_mask != NULL) {
+				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					tod_hex_mask1 = sdl::timage(adjust_surface_alpha(old_mask,proportion));
 				}
 
-				if(new_mask != NULL) {
+				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
 					tod_hex_mask2 = sdl::timage(adjust_surface_alpha(new_mask,proportion));
 				}
 #else
-				if(old_mask != NULL) {
+				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					tod_hex_mask1.assign(adjust_surface_alpha(old_mask,proportion));
 				}
 
-				if(new_mask != NULL) {
+				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
 					tod_hex_mask2.assign(adjust_surface_alpha(new_mask,proportion));
 				}
@@ -166,8 +166,8 @@ void game_display::new_turn()
 		tod_hex_mask1 = sdl::timage();
 		tod_hex_mask2 = sdl::timage();
 #else
-		tod_hex_mask1.assign(NULL);
-		tod_hex_mask2.assign(NULL);
+		tod_hex_mask1.assign(nullptr);
+		tod_hex_mask2.assign(nullptr);
 #endif
 	}
 
@@ -309,11 +309,11 @@ void game_display::draw_hex(const map_location& loc)
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
-		if( u != NULL ) {
+		if( u != nullptr ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
 #ifdef SDL_GPU
-		if(u == NULL) {
+		if(u == nullptr) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
@@ -335,7 +335,7 @@ void game_display::draw_hex(const map_location& loc)
 					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 		}
 #else
-		if(u == NULL) {
+		if(u == nullptr) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
@@ -629,7 +629,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 #ifdef SDL_GPU
 	sdl::timage teleport;
 #else
-	surface teleport = NULL;
+	surface teleport = nullptr;
 #endif
 
 	// We draw 2 half-hex (with possibly different directions),
@@ -677,7 +677,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 #ifdef SDL_GPU
 	if (!teleport.null()) res.push_back(teleport);
 #else
-	if (teleport != NULL) res.push_back(teleport);
+	if (teleport != nullptr) res.push_back(teleport);
 #endif
 
 	return res;
@@ -720,7 +720,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 {
 	invalidate_route();
 
-	if(route != NULL) {
+	if(route != nullptr) {
 		route_ = *route;
 	} else {
 		route_.steps.clear();

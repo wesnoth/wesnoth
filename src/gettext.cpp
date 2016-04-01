@@ -51,7 +51,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 	const char *msgval = ::dgettext (domainname, msgid);
 	if (msgval == msgid) {
 		msgval = std::strrchr (msgid, '^');
-		if (msgval == NULL)
+		if (msgval == nullptr)
 			msgval = msgid;
 		else
 			msgval++;
@@ -66,7 +66,7 @@ const char* sgettext (const char *msgid)
 	const char *msgval = gettext (msgid);
 	if (msgval == msgid) {
 		msgval = std::strrchr (msgid, '^');
-		if (msgval == NULL)
+		if (msgval == nullptr)
 			msgval = msgid;
 		else
 			msgval++;
@@ -79,7 +79,7 @@ const char* sngettext (const char *singular, const char *plural, int n)
 	const char *msgval = ngettext (singular, plural, n);
 	if (msgval == singular) {
 		msgval = std::strrchr (singular, '^');
-		if (msgval == NULL)
+		if (msgval == nullptr)
 			msgval = singular;
 		else
 			msgval++;
@@ -94,7 +94,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	const char *msgval = ::dngettext (domainname, singular, plural, n);
 	if (msgval == singular) {
 		msgval = std::strrchr (singular, '^');
-		if (msgval == NULL)
+		if (msgval == nullptr)
 			msgval = singular;
 		else
 			msgval++;
@@ -104,7 +104,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 
 void bind_textdomain(const char* domain, const char* directory, const char* encoding)
 {
-	if(domain != NULL && strchr(domain, '/') != NULL) {
+	if(domain != nullptr && strchr(domain, '/') != nullptr) {
 		// For compatibility with Boost.Locale implementation, which interprets
 		// slashes in domain names in a special fashion.
 		ERR_G << "illegal textdomain name '" << domain
@@ -112,9 +112,9 @@ void bind_textdomain(const char* domain, const char* directory, const char* enco
 		return;
 	}
 
-	if(directory != NULL)
+	if(directory != nullptr)
 		bindtextdomain(domain, directory);
-	if(encoding != NULL)
+	if(encoding != nullptr)
 		bind_textdomain_codeset(domain, encoding);
 }
 
@@ -150,7 +150,7 @@ void set_language(const std::string& slocale, const std::vector<std::string>* al
 	}
 #endif
 
-	char *res = NULL;
+	char *res = nullptr;
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 

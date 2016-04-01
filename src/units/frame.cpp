@@ -667,7 +667,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
-	if (image != NULL) {
+	if (image != nullptr) {
 #ifdef LOW_MEM
 		bool facing_west = false;
 #else
@@ -804,7 +804,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 						image::SCALED_TO_ZOOM
 						);
 			}
-			if(image != NULL) {
+			if(image != nullptr) {
 				w = image->w;
 				h = image->h;
 			}

@@ -108,7 +108,7 @@ int main (int argc, char **argv)
 		}
 		gArgs.push_back(argv[i]);
 	}
-	gArgs.push_back(NULL);
+	gArgs.push_back(nullptr);
 
 	[SDLApplication sharedApplication];
 	[NSBundle loadNibNamed:@"SDLMain" owner:NSApp];

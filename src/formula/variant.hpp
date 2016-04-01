@@ -106,7 +106,7 @@ public:
 	template<typename T>
 	T* try_convert() const {
 		if(!is_callable()) {
-			return NULL;
+			return nullptr;
 		}
 
 		return dynamic_cast<T*>(mutable_callable());
@@ -158,7 +158,7 @@ public:
 
 	std::string string_cast() const;
 
-	std::string to_debug_string(std::vector<const game_logic::formula_callable*>* seen=NULL, bool verbose = false) const;
+	std::string to_debug_string(std::vector<const game_logic::formula_callable*>* seen=nullptr, bool verbose = false) const;
 
 private:
 	void must_be(TYPE t) const;
@@ -248,7 +248,7 @@ T* convert_variant(const variant& v) {
 template<typename T>
 T* try_convert_variant(const variant& v) {
 	if(!v.is_callable()) {
-		return NULL;
+		return nullptr;
 	}
 
 	return dynamic_cast<T*>(v.mutable_callable());

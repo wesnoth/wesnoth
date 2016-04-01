@@ -46,7 +46,7 @@ namespace gui{
 		void show(gui::TEXTBOX_MODE mode, const std::string& label,
 			const std::string& check_label, bool checked, game_display& gui);
 		void tab(const std::set<std::string>& dictionary);
-		bool active() const { return box_.get() != NULL; }
+		bool active() const { return box_.get() != nullptr; }
 
 	private:
 		util::scoped_ptr<gui::textbox> box_;

@@ -15,7 +15,6 @@
 #ifndef DESKTOP_WINDOWS_LOG_HPP_INCLUDED
 #define DESKTOP_WINDOWS_LOG_HPP_INCLUDED
 
-#include <stdio.h>
 #include <string>
 
 /**

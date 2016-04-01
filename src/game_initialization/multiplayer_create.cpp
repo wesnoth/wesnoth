@@ -112,7 +112,7 @@ create::create(CVideo& video, const config& cfg, saved_game& state,
 	filter_num_players_slider_(video),
 	description_(video, 100, "", false),
 	filter_name_(video, 100, "", true, 256, font::SIZE_SMALL),
-	image_restorer_(NULL),
+	image_restorer_(nullptr),
 	image_rect_(null_rect),
 	available_level_types_(),
 	engine_(video, state)
@@ -618,7 +618,7 @@ void create::hide_children(bool hide)
 	filter_name_.hide(hide);
 
 	if (hide) {
-		image_restorer_.assign(NULL);
+		image_restorer_.assign(nullptr);
 	} else {
 		image_restorer_.assign(new surface_restorer(&video(), image_rect_));
 

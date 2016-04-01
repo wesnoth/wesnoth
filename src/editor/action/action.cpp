@@ -136,7 +136,7 @@ editor_action* editor_action_chain::pop_first_action() {
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	util::unique_ptr<editor_action_chain> undo(new editor_action_chain());
 	BOOST_FOREACH(editor_action* a, actions_) {
-		if (a != NULL) {
+		if (a != nullptr) {
 			undo->append_action(a->perform(mc));
 		}
 	}
@@ -146,7 +146,7 @@ editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
 	BOOST_FOREACH(editor_action* a, actions_) {
-		if (a != NULL) {
+		if (a != nullptr) {
 			a->perform_without_undo(mc);
 		}
 	}

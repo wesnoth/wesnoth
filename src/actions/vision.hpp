@@ -64,9 +64,9 @@ public:
 	/// It can also be called if it is desirable to calculate the cache
 	/// in advance of fog clearing.
 	/// @param[in] new_team  The team whose vision will be used. If left as
-	///                      NULL, the cache will be just be cleared (to be
+	///                      nullptr, the cache will be just be cleared (to be
 	///                      recalculated later as needed).
-	void cache_units(const team * new_team=NULL) { calculate_jamming(new_team); }
+	void cache_units(const team * new_team=nullptr) { calculate_jamming(new_team); }
 	// cache_units() is currently a near-synonym for calculate_jamming(). The
 	// reason for the two names is so the private function says what it does,
 	// while the public one says why it might be invoked.
@@ -77,22 +77,22 @@ public:
 	                size_t viewer_id, int sight_range, bool slowed,
 	                const movetype::terrain_costs & costs,
 	                const map_location & real_loc,
-	  	            const std::set<map_location>* known_units = NULL,
-	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
-	                move_unit_spectator * spectator = NULL, bool instant = true);
+	  	            const std::set<map_location>* known_units = nullptr,
+	                size_t * enemy_count = nullptr, size_t * friend_count = nullptr,
+	                move_unit_spectator * spectator = nullptr, bool instant = true);
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there.
 	bool clear_unit(const map_location &view_loc,
 	                const unit &viewer, team &view_team,
-	                const std::set<map_location>* known_units = NULL,
-	                size_t * enemy_count = NULL, size_t * friend_count = NULL,
-	                move_unit_spectator * spectator = NULL, bool instant = true);
+	                const std::set<map_location>* known_units = nullptr,
+	                size_t * enemy_count = nullptr, size_t * friend_count = nullptr,
+	                move_unit_spectator * spectator = nullptr, bool instant = true);
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there. Setting @a instant to false
 	/// allows some drawing delays that are used to make movement look better.
 	bool clear_unit(const map_location &view_loc, const unit &viewer,
 	                team &view_team, bool instant)
-	{ return clear_unit(view_loc, viewer, view_team, NULL, NULL, NULL, NULL, instant); }
+	{ return clear_unit(view_loc, viewer, view_team, nullptr, nullptr, nullptr, nullptr, instant); }
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there.
 	bool clear_unit(const map_location &view_loc, team &view_team,
@@ -126,7 +126,7 @@ private:
 	bool clear_loc(team &tm, const map_location &loc, const map_location &view_loc,
 	               const map_location &event_non_loc, size_t viewer_id,
 	               bool check_units, size_t &enemy_count, size_t &friend_count,
-	               move_unit_spectator * spectator = NULL);
+	               move_unit_spectator * spectator = nullptr);
 
 	/// Convenience wrapper for adding sighting data to the sightings_ vector.
 	inline void record_sighting(const unit & seen, const map_location & seen_loc,
@@ -143,7 +143,7 @@ private: // data
 /// Returns the sides that cannot currently see @a target.
 std::vector<int> get_sides_not_seeing(const unit & target);
 /// Fires sighted events for the sides that can see @a target.
-bool actor_sighted(const unit & target, const std::vector<int> * cache =  NULL);
+bool actor_sighted(const unit & target, const std::vector<int> * cache =  nullptr);
 
 
 /// Function that recalculates the fog of war.

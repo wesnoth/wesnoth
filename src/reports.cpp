@@ -336,7 +336,7 @@ static config unit_alignment(reports::context & rc, const unit* u)
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
-	const std::string align_id = unit_type::ALIGNMENT::enum_to_string(u->alignment());
+	const std::string align_id = u->alignment().to_string();
 	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 
@@ -867,7 +867,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			battle_context weapon(rc.units(), attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
+			battle_context weapon(rc.units(), attacker_pos, defender->get_location(), i, -1, 0.0, nullptr, attacker);
 			weapons.push_back(weapon);
 		}
 	}
@@ -1525,7 +1525,7 @@ REPORT_GENERATOR(edit_left_button_function)
 
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
-	time_t t = std::time(NULL);
+	time_t t = std::time(nullptr);
 	struct tm *lt = std::localtime(&t);
 	if (!lt) return config();
 	char temp[15];

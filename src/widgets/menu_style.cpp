@@ -196,7 +196,7 @@ void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, con
 			bg_cache_.height = rect.h;
 		}
 		SDL_Rect clip = rect;
-		menu_ref.video().blit_surface(rect.x,rect.y,bg_cache_.surf,NULL,&clip);
+		menu_ref.video().blit_surface(rect.x,rect.y,bg_cache_.surf,nullptr,&clip);
 	}
 #endif
 	else {
@@ -288,7 +288,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const 
 			area.x = rect.x;
 			area.y = rect.y;
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,NULL,&clip);
+				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
 				area.x += image->w;
 			} while( area.x < rect.x + rect.w );
 
@@ -296,7 +296,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const 
 			area.x = rect.x;
 			area.y = rect.y;
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,NULL,&clip);
+				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
 				area.y += image->h;
 			} while( area.y < rect.y + rect.h );
 
@@ -304,7 +304,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const 
 			area.x = rect.x + rect.w - thickness_;
 			area.y = rect.y;
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,NULL,&clip);
+				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
 				area.y += image->h;
 			} while( area.y < rect.y + rect.h );
 
@@ -312,7 +312,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const 
 			area.x = rect.x;
 			area.y = rect.y + rect.h - thickness_;
 			do {
-				menu_ref.video().blit_surface(area.x,area.y,image,NULL,&clip);
+				menu_ref.video().blit_surface(area.x,area.y,image,nullptr,&clip);
 				area.x += image->w;
 			} while( area.x < rect.x + rect.w );
 

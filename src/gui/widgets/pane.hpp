@@ -134,7 +134,7 @@ public:
 	 *                            @ref create_item().
 	 *
 	 * @returns                   The wanted grid.
-	 * @retval NULL               The id isn't associated with an item.
+	 * @retval nullptr               The id isn't associated with an item.
 	 */
 	tgrid* grid(const unsigned id);
 
@@ -146,7 +146,7 @@ public:
 	 *                            @ref create_item().
 	 *
 	 * @returns                   The wanted grid.
-	 * @retval NULL               The id isn't associated with an item.
+	 * @retval nullptr               The id isn't associated with an item.
 	 */
 	const tgrid* grid(const unsigned id) const;
 

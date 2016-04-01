@@ -132,7 +132,7 @@ static const size_t cache_max_size = 100;
  * normally doesn't happen a lot so the clearing of the cache is rather
  * unusual.
  */
-static const ::config* terrain = NULL;
+static const ::config* terrain = nullptr;
 
 /** The cache. */
 typedef std::map<tkey, tvalue> tcache;
@@ -185,7 +185,7 @@ bool tminimap::disable_click_dismiss() const
 const surface tminimap::get_image(const int w, const int h) const
 {
 	if(!terrain_) {
-		return NULL;
+		return nullptr;
 	}
 
 	if(terrain_ != terrain) {
@@ -216,7 +216,7 @@ const surface tminimap::get_image(const int w, const int h) const
 	try
 	{
 		const gamemap map(boost::make_shared<terrain_type_data>(*terrain_), map_data_);
-		const surface surf = image::getMinimap(w, h, map, NULL);
+		const surface surf = image::getMinimap(w, h, map, nullptr);
 		cache.insert(std::make_pair(key, tvalue(surf)));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';
@@ -230,7 +230,7 @@ const surface tminimap::get_image(const int w, const int h) const
 		std::cerr << 'X';
 #endif
 	}
-	return NULL;
+	return nullptr;
 }
 
 void tminimap::impl_draw_background(surface& frame_buffer,
@@ -253,7 +253,7 @@ void tminimap::impl_draw_background(surface& frame_buffer,
 
 	const ::surface surf = get_image(rect.w, rect.h);
 	if(surf) {
-		sdl_blit(surf, NULL, frame_buffer, &rect);
+		sdl_blit(surf, nullptr, frame_buffer, &rect);
 	}
 }
 

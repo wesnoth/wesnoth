@@ -83,7 +83,7 @@ std::string get_child_widget_id(const std::string& parent_id,
 std::string get_base_filename()
 {
 	char buf[17] = { 0 };
-	time_t t = time(NULL);
+	time_t t = time(nullptr);
 	tm* lt = localtime(&t);
 	if(lt) {
 		strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", lt);

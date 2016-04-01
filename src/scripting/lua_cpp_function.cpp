@@ -46,7 +46,7 @@ static int intf_dispatcher ( lua_State* L )
 static int intf_cleanup ( lua_State* L )
 {
 	lua_function * d = static_cast< lua_function *> (luaL_testudata(L, 1, cpp_function));
-	if (d == NULL) {
+	if (d == nullptr) {
 		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
 		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
 		lua_pushstring(L, "C++ function object garbage collection failure");
@@ -89,12 +89,14 @@ void push_function( lua_State* L, const lua_function & f )
 	new (p) lua_function(f);
 }
 
-void set_functions( lua_State* L, const lua_cpp::Reg * l)
+void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions)
 {
 	luaL_checkversion(L);
-	for (; l->name != NULL; l++) {  /* fill the table with given functions */
-		push_function(L, l->func);
-		lua_setfield(L, -2, l->name);
+	for (const lua_cpp::Reg& l : functions) {  /* fill the table with given functions */
+		if (l.name != nullptr) {
+			push_function(L, l.func);
+			lua_setfield(L, -2, l.name);
+		}
 	}
 }
 
@@ -111,16 +113,19 @@ void push_closure( lua_State* L, const lua_function & f, int nup)
 	lua_pushcclosure(L, &intf_closure_dispatcher, 1+nup);
 }
 
-void set_functions( lua_State* L, const lua_cpp::Reg * l, int nup )
+void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup )
 {
 	luaL_checkversion(L);
 	luaL_checkstack(L, nup+1, "too many upvalues");
-	for (; l->name != NULL; l++) {  /* fill the table with given functions */
+	for (const lua_cpp::Reg& l : functions) {  /* fill the table with given functions */
+		if (l.name == nullptr) {
+			continue;
+		}
 		int i;
 		for (i = 0; i < nup; ++i)  /* copy upvalues to the top */
 			lua_pushvalue(L, -nup);
-		push_closure(L, l->func, nup);  /* closure with those upvalues */
-		lua_setfield(L, -(nup + 2), l->name);
+		push_closure(L, l.func, nup);  /* closure with those upvalues */
+		lua_setfield(L, -(nup + 2), l.name);
 	}
 	lua_pop(L, nup);  /* remove upvalues */
 }

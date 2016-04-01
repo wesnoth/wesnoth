@@ -94,7 +94,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
 		// thus, we need to check if the LMB/MMB is still down
-		minimap_scrolling_ = ((SDL_GetMouseState(NULL,NULL) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
+		minimap_scrolling_ = ((SDL_GetMouseState(nullptr,nullptr) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
 		if(minimap_scrolling_) {
 			const map_location& loc = gui().minimap_location_on(x,y);
 			if(loc.valid()) {
@@ -308,7 +308,7 @@ bool mouse_handler_base::right_click(int x, int y, const bool browse)
 	if (right_click_show_menu(x, y, browse)) {
 		gui().draw(); // redraw highlight (and maybe some more)
 		const theme::menu* const m = gui().get_theme().context_menu();
-		if (m != NULL) {
+		if (m != nullptr) {
 			show_menu_ = true;
 		} else {
 			WRN_DP << "no context menu found..." << std::endl;

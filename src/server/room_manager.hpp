@@ -75,7 +75,7 @@ public:
 	bool dirty() const { return dirty_; }
 
 	/**
-	 * Get a room by name, or NULL if it does not exist
+	 * Get a room by name, or nullptr if it does not exist
 	 */
 	room* get_room(const std::string& name);
 
@@ -93,7 +93,7 @@ public:
 	/**
 	 * Get a room by name or create that room if it does not exist and
 	 * creating rooms is allowed.
-	 * @return a valid pointer to a room or NULL if the room did not exist and
+	 * @return a valid pointer to a room or nullptr if the room did not exist and
 	 *         could not be created.
 	 */
 	room* get_create_room(const std::string& name, network::connection player);
@@ -126,14 +126,14 @@ public:
 
 	/**
 	 * Check if the room exists, log failures.
-	 * @return non-NULL iff the room exists and the player is a member
+	 * @return non-nullptr iff the room exists and the player is a member
 	 */
 	room* require_room(const std::string& room_name,
 		const player_map::iterator user, const char* log_string = "use");
 
 	/**
 	 * Check if the room exists and if the player is a member, log failures.
-	 * @return non-NULL iff the room exists and the player is a member
+	 * @return non-nullptr iff the room exists and the player is a member
 	 */
 	room* require_member(const std::string& room_name,
 		const player_map::iterator user, const char* log_string = "use");

@@ -409,7 +409,7 @@ namespace implementation
 
 tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 	: tbuilder_control(cfg)
-	, grid(NULL)
+	, grid(nullptr)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {

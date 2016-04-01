@@ -16,8 +16,8 @@
 #include <exception>
 #include <iostream>
 
-play_controller* save_blocker::controller_ = NULL;
-void (play_controller::*save_blocker::callback_)() = NULL;
+play_controller* save_blocker::controller_ = nullptr;
+void (play_controller::*save_blocker::callback_)() = nullptr;
 SDL_sem* save_blocker::sem_ = SDL_CreateSemaphore(1);
 
 save_blocker::save_blocker() {
@@ -29,8 +29,8 @@ save_blocker::~save_blocker() {
 	unblock();
 	if(controller_ && callback_) {
 		(controller_->*callback_)();
-		controller_ = NULL;
-		callback_ = NULL;
+		controller_ = nullptr;
+		callback_ = nullptr;
 	}
 	} catch (std::exception & e) {
 		std::cerr << "Save blocker dtor swallowing an exception: " << e.what() << "\n";

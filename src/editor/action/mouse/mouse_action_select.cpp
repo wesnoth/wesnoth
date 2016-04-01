@@ -49,12 +49,12 @@ editor_action* mouse_action_select::click_perform_left(
 editor_action* mouse_action_select::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& /*hexes*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action_select::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 void mouse_action_select::set_mouse_overlay(editor_display& disp)

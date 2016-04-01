@@ -107,7 +107,7 @@ public:
 	/**
 	 * Gets the minimum size as defined in the config.
 	 *
-	 * @pre                       config_ !=  NULL
+	 * @pre                       config_ !=  nullptr
 	 *
 	 * @returns                   The size.
 	 */
@@ -116,7 +116,7 @@ public:
 	/**
 	 * Gets the default size as defined in the config.
 	 *
-	 * @pre                       config_ !=  NULL
+	 * @pre                       config_ !=  nullptr
 	 *
 	 * @returns                   The size.
 	 */
@@ -125,7 +125,7 @@ public:
 	/**
 	 * Gets the best size as defined in the config.
 	 *
-	 * @pre                       config_ !=  NULL
+	 * @pre                       config_ !=  nullptr
 	 *
 	 * @returns                   The size.
 	 */

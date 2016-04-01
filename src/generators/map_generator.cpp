@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 		nplayers = atoi(argv[7]);
 	}
 
-	srand(time(NULL));
+	srand(time(nullptr));
 	std::cout << generate_map(x,y,iterations,hill_size,lakes,nvillages,nplayers) << "\n";
 }
 

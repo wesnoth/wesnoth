@@ -190,7 +190,7 @@ public:
 	 * Get the parent window.
 	 *
 	 * @returns                   Pointer to parent window.
-	 * @retval NULL               No parent window found.
+	 * @retval nullptr               No parent window found.
 	 */
 	twindow* get_window();
 
@@ -208,7 +208,7 @@ public:
 	 * function will be removed.
 	 *
 	 * @returns                   The top-level dialogue.
-	 * @retval NULL               No top-level window or the top-level window is
+	 * @retval nullptr               No top-level window or the top-level window is
 	 *                            not owned by a dialogue.
 	 */
 	tdialog* dialog();
@@ -225,7 +225,7 @@ private:
 	 * The parent widget.
 	 *
 	 * If the widget has a parent it contains a pointer to the parent, else it
-	 * is set to @c NULL.
+	 * is set to @c nullptr.
 	 */
 	twidget* parent_;
 
@@ -755,7 +755,7 @@ public:
 	 *                            flag.
 	 *
 	 * @returns                   The widget with the id.
-	 * @retval NULL               No widget at the wanted coordinate found (or
+	 * @retval nullptr               No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
 	virtual twidget* find_at(const tpoint& coordinate,
@@ -777,7 +777,7 @@ public:
 	 *                            flag.
 	 *
 	 * @returns                   The widget with the id.
-	 * @retval NULL               No widget with the id found (or not active if
+	 * @retval nullptr               No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
 	virtual twidget* find(const std::string& id, const bool must_be_active);
