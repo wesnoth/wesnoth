@@ -481,19 +481,24 @@ http://www.boost.org/doc/libs/1_55_0/more/getting_started/windows.html#or-build-
 """
 BOOSTPATH = (LOOT + toolspec['boost']['path']).replace('\\', '/')
 BOOSTLIBS = BOOSTPATH + '/stage/lib'
+BOOSTLOG  = ROOT + '/boot.boost.log'
 BZIP2PATH = LOOT + toolspec['bzip2']['path']
 toolpath = BOOSTPATH + '/_b2'
 if exists(toolpath):
-  print('. (skip) building Boost.Build (%s already exists)' % toolpath)
+  print('. (skip) building Boost.Build ({} already exists)'.format(toolpath))
+  res = run('echo ---[not building boost.build]--- > ' + BOOSTLOG)
 else:
-  print('. compiling Boost.Build tool (boost.bootstrap.log)')
+  print('. compiling Boost.Build tool ({})'.format(os.path.basename(BOOSTLOG)))
+  res = run('echo ---[building boost.build]--- > ' + BOOSTLOG)
   if exists(BOOSTPATH + '/tools/build/v2'):   # 1.55.0
     os.chdir(BOOSTPATH + '/tools/build/v2')
   else:
     os.chdir(BOOSTPATH + '/tools/build')      # 1.57.0
-  res = run('bootstrap.bat mingw > %s/boots.bootstrap.log' % ROOT)
-  print('. installing Boost.Build to %s (boost.install.log)' % toolpath)
-  res = run('b2 --prefix=%s install toolset=gcc > %s/boost.install.log' % (toolpath, ROOT))
+  res = run('bootstrap.bat mingw >> ' + BOOSTLOG)
+  res = run('echo ---[installing boost.build]--- >> ' + BOOSTLOG)
+  print('. installing Boost.Build to {} ({})'.format(
+    toolpath, os.path.basename(BOOSTLOG)))
+  res = run('b2 --prefix={} install toolset=gcc >> {}'.format(toolpath, BOOSTLOG))
   os.chdir(ROOT)
 
 print('. adding b2 to PATH')
@@ -544,11 +549,12 @@ if True:
   cmdline = 'b2 toolset=gcc --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
   # BZip2 is needed for Iostreams
   cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
-  print('. building Boost libs (boost.libbuild.log)')
+  print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
+  res = run('echo ---[building libs]--- >> ' + BOOSTLOG)
   print('.. ' + cmdline)
-  res = run(cmdline + ' > %s/boost.libbuild.log' % ROOT)
+  res = run(cmdline + ' >> {}'.format(BOOSTLOG))
   if res.retcode != 0:
-    print('.   build failed - check boost.libbuild.log')
+    print('.   build failed - check {}'.format(BOOSTLOG))
 os.chdir(ROOT)
 
 
