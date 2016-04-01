@@ -906,9 +906,7 @@ namespace { // Helpers for create_unit()
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
-			// the static cast fixes http://connect.microsoft.com/VisualStudio/feedback/details/520043/
-			// c++11's nullptr would be a better solution as soon as we support it.
-			return type_and_gender(static_cast<const unit_type *>(nullptr), unit_race::NUM_GENDERS);
+			return type_and_gender(nullptr, unit_race::NUM_GENDERS);
 		}
 
 		const std::string& ut_id = create_dlg.choice();
