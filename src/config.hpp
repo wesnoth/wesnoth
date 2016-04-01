@@ -64,7 +64,9 @@
 #	elif defined(__GNUC__) && __GNUC__ >= 5 // GCC 5.0+
 #		define USE_HETEROGENOUS_LOOKUPS
 #	endif
-#elif defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
+#endif
+
+#if defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
 #	define USE_HETEROGENOUS_LOOKUPS
 #endif
 
