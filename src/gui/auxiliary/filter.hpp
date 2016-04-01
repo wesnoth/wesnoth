@@ -25,9 +25,6 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#ifndef HAVE_CXX11
-#include <stdexcept> // needed for the at() emulation
-#endif
 
 namespace gui2
 {
@@ -70,16 +67,8 @@ inline bool contains(const tpane::titem& item,
 					 const std::string& tag,
 					 const ttext_box& text_box)
 {
-#ifdef HAVE_CXX11
 	return item.tags.at(tag).find(utf8::lowercase(text_box.text()))
 		   != std::string::npos;
-#else
-	std::map<std::string,std::string>::const_iterator it = item.tags.find(tag);
-	if(it == item.tags.end()) {
-		throw std::out_of_range("Key »" + tag + "« doesn't exist.");
-	}
-	return it->second.find(utf8::lowercase(text_box.text())) != std::string::npos;
-#endif
 }
 
 } // namespace gui2

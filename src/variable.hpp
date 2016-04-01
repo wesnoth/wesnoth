@@ -47,12 +47,6 @@ private:
 	friend class std::pair;
 #endif
 
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/// Used as the return type of the conversion operator for boolean contexts.
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
 	vconfig();
 	vconfig(const config & cfg, const boost::shared_ptr<const config> & cache);
 public:
