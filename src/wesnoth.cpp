@@ -644,7 +644,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
-	gui2::tloadscreen::display(game->video(), [&]() {
+	gui2::tloadscreen::display(game->video(), [&res, &config_manager]() {
 		gui2::tloadscreen::progress("load config");
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 	});
@@ -851,7 +851,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
-			gui2::tloadscreen::display(game->video(), [&]() {
+			gui2::tloadscreen::display(game->video(), [&config_manager]() {
 				config_manager.reload_changed_game_config();
 				image::flush_cache();
 			});

@@ -135,10 +135,11 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 		}
 	}
 
-	gui2::tloadscreen::display(video_, [=]() {
+	gui2::tloadscreen::display(video_, [this, force_reload, classification]() {
 		load_game_config(force_reload, classification);
 	});
 }
+
 void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
