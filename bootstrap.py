@@ -520,6 +520,7 @@ req = """
  boost_asio >= 1.36.0 (header only)
  boost_program_options >= 1.36.0
  boost_system >= 1.36.0
+ boost_thread
 
   [x] b2 --show-libraries
   [x] b2.exe toolset=gcc --build-type=complete stage release --with-system --with-iostreams --with-program_options --with-regex
