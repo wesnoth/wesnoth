@@ -596,8 +596,7 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
          ker.g == ker.k))
         return result;
 
-    //auto dist = [&](uint32_t col1, uint32_t col2) { return colorDist(col1, col2, cfg.luminanceWeight_); };
-    boost::function<double (uint32_t, uint32_t)> dist = boost::bind(&colorDist, _1, _2, cfg.luminanceWeight_);
+    auto dist = [&cfg](uint32_t col1, uint32_t col2) { return colorDist(col1, col2, cfg.luminanceWeight_); };
 
     const int weight = 4;
     double jg = dist(ker.i, ker.f) + dist(ker.f, ker.c) + dist(ker.n, ker.k) + dist(ker.k, ker.h) + weight * dist(ker.j, ker.g);
@@ -685,12 +684,6 @@ int debugPixelY = 84;
 bool breakIntoDebugger = false;
 #endif
 
-// non-C++11, non-lambda solution to get a function pointer to comparison of doubles
-static bool double_cmp (double a, double b)
-{
-	return a < b;
-}
-
 /*
 input kernel area naming convention:
 -------------
@@ -728,17 +721,15 @@ void scalePixel(const Kernel_3x3& ker,
 
     if (getBottomR(blend) >= BLEND_NORMAL)
     {
-        //auto eq   = [&](uint32_t col1, uint32_t col2) { return colorDist(col1, col2, cfg.luminanceWeight_) < cfg.equalColorTolerance_; };
-	boost::function<bool (uint32_t, uint32_t)> eq = boost::bind(&double_cmp, boost::bind(&colorDist, _1, _2, cfg.luminanceWeight_), cfg.equalColorTolerance_);
+        auto eq   = [&cfg](uint32_t col1, uint32_t col2) { return colorDist(col1, col2, cfg.luminanceWeight_) < cfg.equalColorTolerance_; };
 
-        //auto dist = [&](uint32_t col1, uint32_t col2) { return colorDist(col1, col2, cfg.luminanceWeight_); };
-	boost::function<double (uint32_t, uint32_t)> dist = boost::bind(&colorDist, _1, _2, cfg.luminanceWeight_);
+        auto dist = [&cfg](uint32_t col1, uint32_t col2) { return colorDist(col1, col2, cfg.luminanceWeight_); };
 
         const uint32_t px = dist(e, f) <= dist(e, h) ? f : h; //choose most similar color
 
         OutputMatrix<Scaler::scale, rotDeg> out(target, trgWidth);
 
-        bool doLineBlend = true; //const bool doLineBlend = [&]() -> bool
+        bool doLineBlend = true;
         {
             if (getBottomR(blend) >= BLEND_DOMINANT)
                 doLineBlend = true;
