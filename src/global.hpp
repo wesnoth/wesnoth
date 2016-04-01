@@ -55,4 +55,9 @@
 
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
+// To allow using some optional C++14 features
+#if __cplusplus >= 201402L
+#define HAVE_CXX14
+#endif
+
 #endif //GLOBAL_HPP_INCLUDED

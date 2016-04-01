@@ -50,6 +50,8 @@
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
+#ifdef HAVE_CXX14
+
 #ifdef __clang__ // Check this first, because clang also defines __GNUC__
 #	ifdef __apple_build_version__ // Apple clang
 #		if (__clang_major__ == 5 && __clang_minor__ >= 1) || __clang_major__ > 5 // Apple clang 5.1+
@@ -64,6 +66,8 @@
 #	define USE_HETEROGENOUS_LOOKUPS
 #elif defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
 #	define USE_HETEROGENOUS_LOOKUPS
+#endif
+
 #endif
 
 class config;
