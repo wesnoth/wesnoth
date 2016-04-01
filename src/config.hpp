@@ -528,6 +528,12 @@ public:
 		//-1 for the terminating null character.
 		return get_attribute(key, N - 1);
 	}
+
+	template<int N>
+	inline attribute_value& operator[](const char (&key)[N])
+	{
+		return (*this)[std::string(key)];
+	}
 #endif
 	/**
 	 * Returns a pointer to the attribute with the given @a key
