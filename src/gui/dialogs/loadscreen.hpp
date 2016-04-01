@@ -79,7 +79,7 @@ private:
 	tlabel* animation_label_;
 	static tloadscreen* current_load;
 
-	volatile std::atomic<std::map<std::string,std::string>::const_iterator> current_stage_;
+	std::atomic<std::map<std::string,std::string>::const_iterator> current_stage_;
 	std::map<std::string,std::string>::const_iterator current_visible_stage_;
 };
 
