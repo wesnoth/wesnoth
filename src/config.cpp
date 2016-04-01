@@ -42,6 +42,24 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
+
+#ifdef USE_HETEROGENOUS_LOOKUPS 
+struct config_simple_key
+{
+	const char* str;
+	int len;
+
+	friend bool operator<(const config_simple_key& l, const std::string& r)
+	{
+		return r.compare(0, r.size(), l.str, l.len) > 0;
+	}
+	friend bool operator<(const std::string& l, const config_simple_key& r)
+	{
+		return l.compare(0, l.size(), r.str, r.len) < 0;
+	}
+};
+#endif
+
 struct tconfig_implementation
 {
 	/**
@@ -653,7 +671,8 @@ config &config::child(const std::string& key, int n)
 	if (n < 0) n = i->second.size() + n;
 	if(size_t(n) < i->second.size()) {
 		return *i->second[n];
-	} else {
+	}
+	else {
 		DBG_CF << "The config object has only »" << i->second.size()
 			<< "« children named »" << key
 			<< "«; request for the index »" << n << "« cannot be honored.\n";
@@ -661,6 +680,33 @@ config &config::child(const std::string& key, int n)
 		return invalid;
 	}
 }
+
+#ifdef USE_HETEROGENOUS_LOOKUPS
+config &config::child_impl(const char* key, int len, int n)
+{
+	check_valid();
+
+	const child_map::const_iterator i = children.find(config_simple_key{ key, len });
+	if (i == children.end()) {
+		DBG_CF << "The config object has no child named »"
+			<< key << "«.\n";
+
+		return invalid;
+	}
+
+	if (n < 0) n = i->second.size() + n;
+	if (size_t(n) < i->second.size()) {
+		return *i->second[n];
+	}
+	else {
+		DBG_CF << "The config object has only »" << i->second.size()
+			<< "« children named »" << key
+			<< "«; request for the index »" << n << "« cannot be honored.\n";
+
+		return invalid;
+	}
+}
+#endif
 
 config& config::child(const std::string& key, const std::string& parent)
 {
@@ -877,6 +923,18 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	return empty_attribute;
 }
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+const config::attribute_value& config::get_attribute(const char* key, int len) const
+{
+	check_valid();
+
+	const attribute_map::const_iterator i = values.find(config_simple_key { key, len });
+	if (i != values.end()) return i->second;
+	static const attribute_value empty_attribute;
+	return empty_attribute;
+}
+
+#endif
 const config::attribute_value *config::get(const std::string &key) const
 {
 	check_valid();

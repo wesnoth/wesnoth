@@ -50,6 +50,11 @@
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
+ //TODO: enable for gcc 5.0 and clang 3.4
+#if defined(_MSC_VER) && _MSC_VER >= 1900
+# define USE_HETEROGENOUS_LOOKUPS
+#endif
+
 class config;
 class enum_tag;
 
@@ -99,7 +104,11 @@ public:
 	{ return this != &invalid; }
 
 	typedef std::vector<config*> child_list;
-	typedef std::map<std::string,child_list> child_map;
+	typedef std::map<std::string, child_list
+#ifdef USE_HETEROGENOUS_LOOKUPS
+		, std::less<>
+#endif
+	> child_map;
 
 	struct const_child_iterator;
 
@@ -357,7 +366,13 @@ public:
 		static const std::string s_true, s_false;
 	};
 
-	typedef std::map<std::string, attribute_value> attribute_map;
+	typedef std::map<
+		std::string
+		, attribute_value
+#ifdef USE_HETEROGENOUS_LOOKUPS
+		, std::less<>
+#endif
+	> attribute_map;
 	typedef attribute_map::value_type attribute;
 
 	struct const_attribute_iterator
@@ -415,6 +430,12 @@ public:
 	 */
 	config &child(const std::string& key, int n = 0);
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	template<int N>
+	config &child(const char(&key)[N], int n = 0)
+	{ return child_impl(key, N - 1, n); }
+	config &child_impl(const char* key, int len, int n = 0);
+#endif
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
@@ -424,6 +445,11 @@ public:
 	const config &child(const std::string& key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	template<int N>
+	const config &child(const char(&key)[N], int n = 0) const
+	{ return const_cast<config *>(this)->child_impl(key, N- 1, n); }
+#endif
 	/**
 	 * Returns a mandatory child node.
 	 *
@@ -478,6 +504,18 @@ public:
 	 */
 	const attribute_value &operator[](const std::string &key) const;
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	/**
+	 * Returns a reference to the attribute with the given @a key
+	 * or to a dummy empty attribute if it does not exist.
+	 */
+	template<int N>
+	inline const attribute_value &operator[](const char (&key)[N]) const
+	{
+		//-1 for the terminating null character.
+		return get_attribute(key, N - 1);
+	}
+#endif
 	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
@@ -683,6 +721,9 @@ public:
 	void swap(config& cfg);
 
 private:
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	const attribute_value& get_attribute(const char* key, int len) const;
+#endif
 	/**
 	 * Removes the child at position @a pos of @a l.
 	 */
