@@ -203,6 +203,7 @@ endmacro(check_compiler_has_flag)
 
 
 ### Set the environment compiler flags.
+option(ENABLE_STD_G11 "compile with latest c++ standard on GCC" OFF)
 
 if(CONFIGURED)
 	# The CONFIGURED flag was replaced when trunk `was' 1.11, before the release of 1.11.0
@@ -245,7 +246,15 @@ if(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 endif(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 
 set(CXX_FLAGS_PROJECT)
-check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++98" HAS_COMPILER_FLAG_STD)
+check_cxx_compiler_flag("-std=c++98" HAS_COMPILER_FLAG_STD)
+check_cxx_compiler_flag("-std=gnu++11" HAS_COMPILER_FLAG_STD_G11)
+if(HAS_COMPILER_FLAG_STD_G11 AND ENABLE_STD_G11)
+	set(CXX_FLAGS_PROJECT "-std=gnu++11")
+else(HAS_COMPILER_FLAG_STD_G11 AND ENABLE_STD_G11)
+	if(HAS_COMPILER_FLAG_STD)
+		set(CXX_FLAGS_PROJECT "-std=c++98")
+	endif(HAS_COMPILER_FLAG_STD)
+endif(HAS_COMPILER_FLAG_STD_G11 AND ENABLE_STD_G11)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-W" HAS_COMPILER_FLAG_W)
 # MSVC's -Wall is not like gcc's, it really enables *all* warnings which include zillions for system headers and doesn't make sense.
 if(NOT MSVC)
@@ -440,9 +449,9 @@ set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
 if(MSVC)
 	set(COMPILER_FLAGS "${CXX_FLAGS_MSVC} ${COMPILER_FLAGS}")
 endif(MSVC)
-if(ENABLE_STRICT_COMPILATION)
+if(ENABLE_STRICT_COMPILATION AND NOT (HAS_COMPILER_FLAG_STD_G11 AND ENABLE_STD_G11))
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
-endif(ENABLE_STRICT_COMPILATION)
+endif(ENABLE_STRICT_COMPILATION AND NOT (HAS_COMPILER_FLAG_STD_G11 AND ENABLE_STD_G11))
 if(ENABLE_PEDANTIC_COMPILATION)
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
 endif(ENABLE_PEDANTIC_COMPILATION)
