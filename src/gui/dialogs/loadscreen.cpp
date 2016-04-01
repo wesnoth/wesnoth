@@ -70,8 +70,8 @@ tloadscreen::tloadscreen(boost::function<void()> f)
 	, work_(f)
 	, worker_()
 	, cursor_setter_()
-	, current_stage_()
-	, current_visible_stage_()
+	, current_stage_(nullptr)
+	, current_visible_stage_(stages.end())
 {
 	current_load = this;
 }
@@ -98,6 +98,8 @@ void tloadscreen::pre_show(twindow& window)
 	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
 	animation_label_ = &find_widget<tlabel>(&window, "test_animation", false);
 	
+	window.set_enter_disabled(true);
+	window.set_escape_disabled(true);
 }
 
 void tloadscreen::post_show(twindow& /*window*/)
@@ -113,12 +115,7 @@ void tloadscreen::progress(const char* stage)
 		return;
 	}
 	if(stage) {
-		auto iter = stages.find(stage);
-		if(iter == stages.end()) {
-			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
-			return;
-		}
-		current_load->current_stage_.store(iter, std::memory_order_release);
+		current_load->current_stage_.store(stage, std::memory_order_release);
 	}
 }
 
@@ -129,11 +126,16 @@ void tloadscreen::timer_callback(twindow& window)
 	if (!worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		window.close();
 	}
-	auto stage = current_stage_.load(std::memory_order_acquire);
-	if (stage != current_visible_stage_)
+	const char* stage = current_stage_.load(std::memory_order_acquire);
+	if (stage && (current_visible_stage_ == stages.end() || stage != current_visible_stage_->first))
 	{
-		current_visible_stage_ = stage;
-		progress_stage_label_->set_label(t_string(stage->second, "wesnoth-lib") + "...");
+		auto iter = stages.find(stage);
+		if(iter == stages.end()) {
+			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
+			return;
+		}
+		current_visible_stage_ = iter;
+		progress_stage_label_->set_label(t_string(iter->second, "wesnoth-lib") + "...");
 	}
 	++animation_counter_;
 	if (animation_counter_ % 2 == 0) {
