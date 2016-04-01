@@ -118,7 +118,7 @@ void tloadscreen::progress(const char* stage)
 			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
 			return;
 		}
-		current_load->current_stage_ = iter;
+		current_load->current_stage_.store(iter, std::memory_order_release);
 	}
 }
 
@@ -129,10 +129,11 @@ void tloadscreen::timer_callback(twindow& window)
 	if (!worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		window.close();
 	}
-	if (current_stage_ != current_visible_stage_)
+	auto stage = current_stage_.load(std::memory_order_acquire);
+	if (stage != current_visible_stage_)
 	{
-		current_visible_stage_ = current_stage_;
-		progress_stage_label_->set_label(t_string(current_stage_->second, "wesnoth-lib") + "...");
+		current_visible_stage_ = stage;
+		progress_stage_label_->set_label(t_string(stage->second, "wesnoth-lib") + "...");
 	}
 	++animation_counter_;
 	if (animation_counter_ % 2 == 0) {
