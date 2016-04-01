@@ -50,9 +50,20 @@
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
- //TODO: enable for gcc 5.0 and clang 3.4
-#if defined(_MSC_VER) && _MSC_VER >= 1900
-# define USE_HETEROGENOUS_LOOKUPS
+#ifdef __clang__ // Check this first, because clang also defines __GNUC__
+#	ifdef __apple_build_version__ // Apple clang
+#		if (__clang_major__ == 5 && __clang_minor__ >= 1) || __clang_major__ > 5 // Apple clang 5.1+
+#			define USE_HETEROGENOUS_LOOKUPS
+#		endif
+#	else // Non-Apple clang
+#		if (__clang_major__ == 3 && __clang_minor__ >= 4) || __clang_major__ > 3 // clang 3.4+
+#			define USE_HETEROGENOUS_LOOKUPS
+#		endif
+#	endif
+#elif defined(__GNUC__) && __GNUC__ >= 5 // GCC 5.0+
+#	define USE_HETEROGENOUS_LOOKUPS
+#elif defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
+#	define USE_HETEROGENOUS_LOOKUPS
 #endif
 
 class config;
