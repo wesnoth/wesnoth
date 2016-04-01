@@ -276,7 +276,7 @@ void play_controller::init(CVideo& video, const config& level)
 		// This *needs* to be created before the show_intro and show_map_scene
 		// as that functions use the manager state_of_game
 		// Has to be done before registering any events!
-		gamestate().bind(whiteboard_manager_.get(), gui_.get());
+		gamestate().set_game_display(gui_.get());
 		gui2::tloadscreen::progress("init lua");
 		resources::lua_kernel = gamestate().lua_kernel_.get();
 
@@ -336,7 +336,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::game_events = gamestate().events_manager_.get();
 
 	gamestate_->init(level, *this);
-	gamestate().bind(whiteboard_manager_.get(), gui_.get());
+	gamestate().set_game_display(gui_.get());
 	resources::lua_kernel = gamestate().lua_kernel_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
 

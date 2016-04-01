@@ -82,8 +82,6 @@ public:
 
 	void init(const config& level, play_controller &);
 
-	void bind(wb::manager *, game_display *);
-
 	void set_game_display(game_display *);
 
 	void write(config& cfg) const;

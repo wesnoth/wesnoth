@@ -222,11 +222,6 @@ void game_state::init(const config& level, play_controller & pc)
 	lua_kernel_.reset(new game_lua_kernel(nullptr, *this, pc, *reports_));
 }
 
-void game_state::bind(wb::manager *, game_display * gd)
-{
-	set_game_display(gd);
-}
-
 void game_state::set_game_display(game_display * gd)
 {
 	lua_kernel_->set_game_display(gd);
