@@ -19,6 +19,7 @@
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <map>
+#include <atomic>
 
 class CVideo;
 namespace boost
@@ -78,7 +79,7 @@ private:
 	tlabel* animation_label_;
 	static tloadscreen* current_load;
 
-	std::map<std::string,std::string>::const_iterator current_stage_;
+	volatile std::atomic<std::map<std::string,std::string>::const_iterator> current_stage_;
 	std::map<std::string,std::string>::const_iterator current_visible_stage_;
 };
 
