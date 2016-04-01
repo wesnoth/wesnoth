@@ -157,16 +157,16 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 	if (mouse_in_window) {
 		if (mousey < scroll_threshold) {
 			dy -= scroll_speed;
-        }
+		}
 		if (mousey > get_display().h() - scroll_threshold) {
 			dy += scroll_speed;
-        }
+		}
 		if (mousex < scroll_threshold) {
 			dx -= scroll_speed;
-        }
+		}
 		if (mousex > get_display().w() - scroll_threshold) {
 			dx += scroll_speed;
-        }
+		}
 	}
 
 	// scroll with middle-mouse if enabled
