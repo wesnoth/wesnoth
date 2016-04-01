@@ -488,9 +488,7 @@ public:
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string &key, const config &val, unsigned index);
 
-#ifdef HAVE_CXX11
 	config &add_child(const std::string &key, config &&val);
-#endif
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.

@@ -761,7 +761,6 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
-#ifdef HAVE_CXX11
 config &config::add_child(const std::string &key, config &&val)
 {
 	check_valid(val);
@@ -771,7 +770,6 @@ config &config::add_child(const std::string &key, config &&val)
 	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
 	return *v.back();
 }
-#endif
 
 config &config::add_child_at(const std::string &key, const config &val, unsigned index)
 {
