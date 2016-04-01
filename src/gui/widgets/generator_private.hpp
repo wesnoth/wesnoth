@@ -22,7 +22,6 @@
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "utils/foreach.hpp"
 
 namespace gui2
 {
@@ -637,7 +636,7 @@ public:
 	/** Inherited from tgenerator_. */
 	void clear()
 	{
-		FOREACH(AUTO item, items_)
+		for(auto item : items_)
 		{
 			delete item;
 		}
@@ -820,7 +819,7 @@ public:
 	/** See @ref twidget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override
 	{
-		FOREACH(AUTO item, items_)
+		for(auto item : items_)
 		{
 			if(item->grid.get_visible() != twidget::tvisible::invisible
 			   && item->shown) {
@@ -879,7 +878,7 @@ public:
 	{
 		assert(this->get_visible() == twidget::tvisible::visible);
 		calculate_order();
-		FOREACH(AUTO index, order_)
+		for(auto index : order_)
 		{
 			titem* item = items_[index];
 			if(item->grid.get_visible() == twidget::tvisible::visible
@@ -895,7 +894,7 @@ public:
 	child_populate_dirty_list(twindow& caller,
 							  const std::vector<twidget*>& call_stack) override
 	{
-		FOREACH(AUTO item, items_)
+		for(auto item : items_)
 		{
 			std::vector<twidget*> child_call_stack = call_stack;
 			item->grid.populate_dirty_list(caller, child_call_stack);
@@ -919,7 +918,7 @@ public:
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override
 	{
-		FOREACH(AUTO item, items_)
+		for(auto item : items_)
 		{
 			if(item->grid.disable_click_dismiss()) {
 				return true;
@@ -1127,7 +1126,7 @@ private:
 						   const boost::function<void(twidget&)>& callback)
 	{
 		int i = index;
-		FOREACH(const AUTO & item_data, data)
+		for(const auto & item_data : data)
 		{
 			create_item(i, list_builder, item_data, callback);
 			if(i != -1) {

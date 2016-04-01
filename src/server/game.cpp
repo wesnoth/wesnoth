@@ -22,7 +22,6 @@
 #include "player_network.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#include "utils/foreach.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -1371,7 +1370,7 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	simple_wml::document doc_controllers;
 	simple_wml::node & cfg_controllers = doc_controllers.root().add_child("controllers");
 
-	FOREACH(const AUTO& side_user, sides_) {
+	for (const auto& side_user : sides_) {
 		simple_wml::node & cfg_controller = cfg_controllers.add_child("controller");
 		cfg_controller.set_attr("is_local", side_user == user->first ? "yes" : "no");
 	}

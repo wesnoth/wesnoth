@@ -21,7 +21,6 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
-#include "utils/foreach.hpp"
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 
@@ -57,7 +56,7 @@ void tdrop_down_list::pre_show(twindow& window)
 	std::map<std::string, string_map> data;
 	t_string& label = data["label"]["label"];
 	t_string& use_markup = data["label"]["use_markup"];
-	FOREACH(const AUTO& str, items_) {
+	for(const auto& str : items_) {
 		label = str;
 		use_markup = use_markup_ ? "true" : "false";
 		list.add_row(data);

@@ -76,7 +76,7 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 void tlabel_settings::pre_show(twindow& window) {
 	std::map<std::string, string_map> list_data;
 	tlistbox& cats_listbox = find_widget<tlistbox>(&window, "label_types", false);
-	FOREACH(const AUTO & label_entry, all_labels) {
+	for(const auto & label_entry : all_labels) {
 		const std::string& category = label_entry.first;
 		const bool& visible = label_entry.second;
 
@@ -112,8 +112,7 @@ bool tlabel_settings::execute(display_context& dc, CVideo& video) {
 	tlabel_settings window(dc);
 	if(!window.show(video)) return false;
 	std::vector<std::string> hidden_categories;
-	typedef std::map<std::string,bool>::value_type value_type;
-	BOOST_FOREACH(value_type lbl, window.all_labels) {
+	for(auto lbl : window.all_labels) {
 		if(lbl.second == false) {
 			hidden_categories.push_back(lbl.first);
 		}

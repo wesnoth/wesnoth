@@ -149,7 +149,7 @@ void tgame_version::pre_show(twindow& window)
 	// Game paths tab.
 	//
 
-	FOREACH(const AUTO & path_ent, path_map_)
+	for(const auto & path_ent : path_map_)
 	{
 		const std::string& path_id = path_ent.first;
 		const std::string& path_path = path_ent.second;
@@ -211,7 +211,7 @@ void tgame_version::pre_show(twindow& window)
 	tlistbox& deps_listbox
 			= find_widget<tlistbox>(&window, "deps_listbox", false);
 
-	FOREACH(const AUTO & dep, deps_)
+	for(const auto & dep : deps_)
 	{
 		list_data["dep_name"]["label"] = dep[0];
 
@@ -239,7 +239,7 @@ void tgame_version::pre_show(twindow& window)
 	tlistbox& opts_listbox
 			= find_widget<tlistbox>(&window, "opts_listbox", false);
 
-	FOREACH(const AUTO & opt, opts_)
+	for(const auto & opt : opts_)
 	{
 		list_data["opt_name"]["label"] = opt.name;
 

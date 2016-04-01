@@ -20,7 +20,6 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 
 namespace gui2
 {
@@ -61,7 +60,7 @@ unsigned get_h_align(const std::string& h_align)
 unsigned get_border(const std::vector<std::string>& borders)
 {
 	unsigned result = 0;
-	FOREACH(const AUTO & border, borders)
+	for(const auto & border : borders)
 	{
 		if(border == "all") {
 			return tgrid::BORDER_ALL;

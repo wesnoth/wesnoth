@@ -22,7 +22,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
-#include "utils/foreach.hpp"
 #include "serialization/unicode.hpp"
 #include <boost/bind.hpp>
 
@@ -168,7 +167,7 @@ void ttext_box::update_canvas()
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
 
-	FOREACH(AUTO & tmp, canvas())
+	for(auto & tmp : canvas())
 	{
 
 		tmp.set_variable("text", variant(get_value()));
@@ -264,7 +263,7 @@ void ttext_box::update_offsets()
 
 	// Since this variable doesn't change set it here instead of in
 	// update_canvas().
-	FOREACH(AUTO & tmp, canvas())
+	for(auto & tmp : canvas())
 	{
 		tmp.set_variable("text_font_height", variant(text_height_));
 	}

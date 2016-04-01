@@ -26,7 +26,6 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 
 namespace gui2
 {
@@ -84,7 +83,7 @@ void tsimple_item_selector::pre_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
-	FOREACH(const AUTO & it, items_)
+	for(const auto & it : items_)
 	{
 		std::map<std::string, string_map> data;
 		string_map column;

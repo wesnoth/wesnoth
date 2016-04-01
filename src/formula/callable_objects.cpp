@@ -15,7 +15,6 @@
 #include "formula/callable_objects.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
-#include "utils/foreach.hpp"
 
 template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {
@@ -109,7 +108,7 @@ variant attack_type_callable::get_value(const std::string& key) const
 		const config specials = att_.specials();
 		std::vector<variant> res;
 
-		FOREACH(const AUTO& special , specials.all_children_range()) {
+		for(const auto& special : specials.all_children_range()) {
 			if(!special.cfg["id"].empty()) {
 				res.push_back(variant(special.cfg["id"].str()));
 			}
@@ -393,7 +392,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "traits") {
 		std::vector<variant> res;
 
-		FOREACH(const AUTO& config , u_.possible_traits())
+		for(const auto& config : u_.possible_traits())
 		{
 			res.push_back(variant(config["id"].str()));
 		}

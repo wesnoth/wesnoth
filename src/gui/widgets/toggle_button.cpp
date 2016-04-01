@@ -22,7 +22,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sound.hpp"
-#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
@@ -104,7 +103,7 @@ void ttoggle_button::update_canvas()
 
 	// set icon in canvases
 	std::vector<tcanvas>& canvases = tcontrol::canvas();
-	FOREACH(AUTO & canvas, canvases)
+	for(auto & canvas : canvases)
 	{
 		canvas.set_variable("icon", variant(icon_name_));
 	}
@@ -244,7 +243,7 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
 {
 	// Note the order should be the same as the enum tstate in
 	// toggle_button.hpp.
-	FOREACH(const AUTO& c, cfg.child_range("state"))
+	for(const auto& c : cfg.child_range("state"))
 	{
 		state.push_back(tstate_definition(c.child("enabled")));
 		state.push_back(tstate_definition(c.child("disabled")));

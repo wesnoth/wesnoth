@@ -35,7 +35,6 @@
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "utils/foreach.hpp"
 
 #include <vector>
 #include <boost/bind.hpp>
@@ -192,7 +191,7 @@ public:
 		int i = 0; // because we need to know which row contains the controlling
 				   // player
 
-		FOREACH(const AUTO & nick, nicks)
+		for(const auto & nick : nicks)
 		{
 			if(side_number_ <= static_cast<int>(resources::teams->size())
 			   && resources::teams->at(side_number_ - 1).current_player()

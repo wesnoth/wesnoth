@@ -31,7 +31,6 @@
 #include "desktop/clipboard.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
-#include "utils/foreach.hpp"
 
 #include "game_data.hpp"
 #include "recall_list_manager.hpp"
@@ -61,7 +60,7 @@ inline std::string config_to_string(const config& cfg)
 inline std::string config_to_string(const config& cfg, std::string only_children)
 {
 	config filtered;
-	BOOST_FOREACH(const config& child, cfg.child_range(only_children)) {
+	for(const config& child : cfg.child_range(only_children)) {
 		filtered.add_child(only_children, child);
 	}
 	return config_to_string(filtered);
@@ -256,14 +255,14 @@ public:
 									 ? resources::gamedata->get_variables()
 									 : config();
 
-		FOREACH(const AUTO & a, vars.attribute_range())
+		for(const auto & a : vars.attribute_range())
 		{
 			model_.add_row_to_stuff_list(a.first, a.first);
 		}
 
 		std::map<std::string, size_t> wml_array_sizes;
 
-		FOREACH(const AUTO & c, vars.all_children_range())
+		for(const auto & c : vars.all_children_range())
 		{
 			if (wml_array_sizes.find(c.key) == wml_array_sizes.end()) {
 				wml_array_sizes[c.key] = 0;
@@ -298,7 +297,7 @@ public:
 									 ? resources::gamedata->get_variables()
 									 : config();
 
-		FOREACH(const AUTO & a, vars.attribute_range())
+		for(const auto & a : vars.attribute_range())
 		{
 			if(selected == i) {
 				model_.set_inspect_window_text(a.second);
@@ -307,7 +306,7 @@ public:
 			i++;
 		}
 
-		FOREACH(const AUTO & c, vars.all_children_range())
+		for(const auto & c : vars.all_children_range())
 		{
 			for (unsigned int j = 0; j < model_.get_num_page(config_to_string(c.cfg)); ++j) {
 				if (selected == i) {
@@ -371,7 +370,7 @@ public:
 		config events_config;
 		resources::game_events->write_events(events_config);
 
-		FOREACH(const AUTO & cfg, events_config.child_range(handler_key))
+		for(const auto & cfg : events_config.child_range(handler_key))
 		{
 			shared_string_ptr sstrp(new std::string(config_to_string(cfg)));
 			const std::string& wmltext = *sstrp;
@@ -474,7 +473,7 @@ public:
 				  << "L" << i->level() << "; " << i->experience() << '/'
 				  << i->max_experience() << " xp; " << i->hitpoints() << '/'
 				  << i->max_hitpoints() << " hp;";
-				FOREACH(const AUTO & str, i->get_traits_list())
+				for(const auto & str : i->get_traits_list())
 				{
 					s << " " << str;
 				}
@@ -599,13 +598,13 @@ public:
 		if(selected == 6) {
 			std::stringstream s;
 			if (resources::teams) {
-				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
+				for(const auto & u : resources::teams->at(side_ - 1).recall_list())
 				{
 					s << "id=\"" << u->id() << "\" (" << u->type_id() << ")\nL"
 					  << u->level() << "; " << u->experience() << "/"
 					  << u->max_experience() << " xp; " << u->hitpoints() << "/"
 					  << u->max_hitpoints() << " hp\n";
-					FOREACH(const AUTO & str, u->get_traits_list())
+					for(const auto & str : u->get_traits_list())
 					{
 						s << "\t" << str << std::endl;
 					}
@@ -619,7 +618,7 @@ public:
 		if(selected == 7) {
 			config c;
 			if (resources::teams) {
-				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
+				for(const auto & u : resources::teams->at(side_ - 1).recall_list())
 				{
 					config c_unit;
 					u->write(c_unit);
@@ -655,7 +654,7 @@ public:
 					  << "L" << i->level() << "; " << i->experience() << '/'
 					  << i->max_experience() << " xp; " << i->hitpoints() << '/'
 					  << i->max_hitpoints() << " hp\n";
-					FOREACH(const AUTO & str, i->get_traits_list())
+					for(const auto & str : i->get_traits_list())
 					{
 						s << "\t" << str << std::endl;
 					}
@@ -723,7 +722,7 @@ public:
 	void show_stuff_types_list()
 	{
 		model_.clear_stuff_types_list();
-		FOREACH(AUTO sm_controller, sm_controllers_)
+		for(auto sm_controller : sm_controllers_)
 		{
 			model_.add_row_to_stuff_types_list(sm_controller->name(),
 											   sm_controller->name());

@@ -18,7 +18,6 @@
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
-#include "utils/foreach.hpp"
 #include "video.hpp"
 
 namespace gui2
@@ -26,7 +25,7 @@ namespace gui2
 
 tdialog::~tdialog()
 {
-	FOREACH(AUTO field, fields_)
+	for(auto field : fields_)
 	{
 		delete field;
 	}
@@ -191,7 +190,7 @@ void tdialog::post_show(twindow& /*window*/)
 
 void tdialog::init_fields(twindow& window)
 {
-	FOREACH(AUTO field, fields_)
+	for(auto field : fields_)
 	{
 		field->attach_to_window(window);
 		field->widget_init(window);
@@ -206,7 +205,7 @@ void tdialog::init_fields(twindow& window)
 
 void tdialog::finalize_fields(twindow& window, const bool save_fields)
 {
-	FOREACH(AUTO field, fields_)
+	for(auto field : fields_)
 	{
 		if(save_fields) {
 			field->widget_finalize(window);

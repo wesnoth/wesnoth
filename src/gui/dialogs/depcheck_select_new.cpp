@@ -91,7 +91,7 @@ void tdepcheck_select_new::pre_show(twindow& window)
 {
 	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 
-	FOREACH(const AUTO & item, items_)
+	for(const auto & item : items_)
 	{
 		string_map current;
 		current.insert(std::make_pair("label", item));

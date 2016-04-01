@@ -26,7 +26,6 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
-#include "utils/foreach.hpp"
 
 namespace gui2
 {
@@ -66,7 +65,7 @@ void tlanguage_selection::pre_show(twindow& window)
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
-	FOREACH(const AUTO & lang, languages)
+	for(const auto & lang : languages)
 	{
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));

@@ -32,7 +32,6 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 #include "formula/string_utils.hpp"
-#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -347,13 +346,13 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	/***** Control definitions *****/
 
-	FOREACH(AUTO & widget_type, registred_widget_type())
+	for(auto & widget_type : registred_widget_type())
 	{
 		widget_type.second(*this, widget_type.first, cfg, nullptr);
 	}
 
 	/***** Window types *****/
-	FOREACH(const AUTO & w, cfg.child_range("window"))
+	for(const auto & w : cfg.child_range("window"))
 	{
 		std::pair<std::string, twindow_builder> child;
 		child.first = child.second.read(w);
@@ -433,7 +432,7 @@ void tgui_definition::load_widget_definitions(
 		const std::string& definition_type,
 		const std::vector<tcontrol_definition_ptr>& definitions)
 {
-	FOREACH(const AUTO & def, definitions)
+	for(const auto & def : definitions)
 	{
 
 		// We assume all definitions are unique if not we would leak memory.
@@ -515,7 +514,7 @@ void load_settings()
 		ERR_GUI_P << e.message;
 	}
 	// Parse guis
-	FOREACH(const AUTO & g, cfg.child_range("gui"))
+	for(const auto & g : cfg.child_range("gui"))
 	{
 		std::pair<std::string, tgui_definition> child;
 		child.first = child.second.read(g);

@@ -23,7 +23,6 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "utils/foreach.hpp"
 #include "video.hpp"
 #include "serialization/unicode_cast.hpp"
 
@@ -470,7 +469,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	}
 
 	/***** Set proper state for the other dispatchers. *****/
-	FOREACH(AUTO dispatcher, dispatchers_)
+	for(auto dispatcher : dispatchers_)
 	{
 		dynamic_cast<twidget&>(*dispatcher).set_is_dirty(true);
 	}
@@ -490,7 +489,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 
 void thandler::activate()
 {
-	FOREACH(AUTO dispatcher, dispatchers_)
+	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(
 				SDL_ACTIVATE, dynamic_cast<twidget&>(*dispatcher), nullptr);
@@ -514,7 +513,7 @@ void thandler::draw(const bool force)
 	 *
 	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
 	 */
-	FOREACH(AUTO dispatcher, dispatchers_)
+	for(auto dispatcher : dispatchers_)
 	{
 		if(!first) {
 			/*
@@ -542,7 +541,7 @@ void thandler::video_resize(const tpoint& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
-	FOREACH(AUTO dispatcher, dispatchers_)
+	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(SDL_VIDEO_RESIZE,
 						 dynamic_cast<twidget&>(*dispatcher),

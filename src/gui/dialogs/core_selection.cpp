@@ -28,7 +28,6 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
@@ -104,7 +103,7 @@ void tcore_selection::pre_show(twindow& window)
 	tmulti_page& multi_page
 			= find_widget<tmulti_page>(&window, "core_details", false);
 
-	FOREACH(const AUTO & core, cores_)
+	for(const auto & core : cores_)
 	{
 		/*** Add list item ***/
 		string_map list_item;

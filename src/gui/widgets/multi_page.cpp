@@ -281,14 +281,14 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
 		return;
 	}
 
-	FOREACH(const AUTO & row, d.child_range("row"))
+	for(const auto & row : d.child_range("row"))
 	{
 		unsigned col = 0;
 
-		FOREACH(const AUTO & column, row.child_range("column"))
+		for(const auto & column : row.child_range("column"))
 		{
 			data.push_back(string_map());
-			FOREACH(const AUTO & i, column.attribute_range())
+			for(const auto & i : column.attribute_range())
 			{
 				data.back()[i.first] = i.second;
 			}

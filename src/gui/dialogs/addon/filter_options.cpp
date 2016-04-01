@@ -169,7 +169,7 @@ void taddon_filter_options::toggle_all_displayed_types_button_callback(
 										  boost::ref(window),
 										  _1));
 
-	FOREACH(const AUTO field, displayed_types_fields_)
+	for(const auto field : displayed_types_fields_)
 	{
 		field->set_widget_value(window, !have_any_unchecked);
 	}

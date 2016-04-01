@@ -21,8 +21,6 @@
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 
-#include "utils/foreach.hpp"
-
 #include <boost/foreach.hpp>
 #include <set>
 #include <vector>
@@ -263,7 +261,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
-	FOREACH(const AUTO& village, map_->villages()) {
+	for(const auto& village : map_->villages()) {
 		const int owner = village_owner(village);
 		if(owner != -1) {
 			villages[village] = owner;
@@ -282,7 +280,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	}
 
 	/* Disown villages that are no longer villages. */
-	FOREACH(const AUTO& village, villages) {
+	for(const auto& village : villages) {
 		if(!newmap.is_village(village.first)) {
 			teams_[village.second].lose_village(village.first);
 		}

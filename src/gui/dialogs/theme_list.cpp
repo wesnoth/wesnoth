@@ -23,7 +23,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"
-#include "utils/foreach.hpp"
 
 namespace gui2
 {
@@ -62,7 +61,7 @@ void ttheme_list::pre_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
 	window.keyboard_capture(&list);
 
-	FOREACH(const AUTO & t, themes_)
+	for(const auto & t : themes_)
 	{
 		std::map<std::string, string_map> data;
 		string_map column;

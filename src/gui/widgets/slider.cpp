@@ -22,7 +22,6 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sound.hpp"
-#include "utils/foreach.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
@@ -232,7 +231,7 @@ void tslider::update_canvas()
 	// Inherited.
 	tscrollbar_::update_canvas();
 
-	FOREACH(AUTO & tmp, canvas())
+	for(auto & tmp : canvas())
 	{
 		tmp.set_variable("text", variant(get_value_label()));
 	}
@@ -448,7 +447,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 		return;
 	}
 
-	FOREACH(const AUTO & label, labels.child_range("value"))
+	for(const auto & label : labels.child_range("value"))
 	{
 		value_labels_.push_back(label["label"]);
 	}

@@ -17,7 +17,6 @@
 #include "gui/widgets/generator_private.hpp"
 
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -699,7 +698,7 @@ void tshow::init(tgrid* grid,
 {
 	assert(!callback);
 
-	FOREACH(const AUTO & item, data)
+	for(const auto & item : data)
 	{
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {

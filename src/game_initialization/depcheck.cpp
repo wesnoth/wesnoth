@@ -69,7 +69,7 @@ manager::manager(const config& gamecfg, bool mp, CVideo& video)
 	, prev_mods_()
 {
 	DBG_MP << "Initializing the dependency manager" << std::endl;
-	BOOST_FOREACH (const config& cfg, gamecfg.child_range("modification")) {
+	for (const config& cfg : gamecfg.child_range("modification")) {
 		component_availabilty type = cfg["type"].to_enum<component_availabilty>(component_availabilty::HYBRID);
 		if((type != component_availabilty::MP || mp) && (type != component_availabilty::SP || !mp) ) {
 			config info;
@@ -84,7 +84,7 @@ manager::manager(const config& gamecfg, bool mp, CVideo& video)
 		}
 	}
 
-	BOOST_FOREACH (const config& cfg, gamecfg.child_range("era")) {
+	for (const config& cfg : gamecfg.child_range("era")) {
 		component_availabilty type = cfg["type"].to_enum<component_availabilty>(component_availabilty::MP);
 		if((type != component_availabilty::MP || mp) && (type != component_availabilty::SP || !mp) ) {
 			config info;
@@ -98,7 +98,7 @@ manager::manager(const config& gamecfg, bool mp, CVideo& video)
 		}
 	}
 
-	BOOST_FOREACH (const config& cfg, gamecfg.child_range("multiplayer")) {
+	for (const config& cfg : gamecfg.child_range("multiplayer")) {
 		if (cfg["allow_new_game"].to_bool(true)) {
 			config info;
 			info["id"] = cfg["id"];
@@ -131,7 +131,7 @@ void manager::revert()
 
 bool manager::exists(const elem& e) const
 {
-	BOOST_FOREACH (const config& cfg, depinfo_.child_range(e.type)) {
+	for (const config& cfg : depinfo_.child_range(e.type)) {
 		if (cfg["id"] == e.id) {
 			return true;
 		}
@@ -154,7 +154,7 @@ std::vector<std::string>
 
 	std::vector<std::string> items = get_required(e);
 
-	BOOST_FOREACH (const std::string& str, items) {
+	for (const std::string& str : items) {
 		if (!exists(elem(str, "modification"))) {
 			result.push_back(str);
 		}
@@ -185,7 +185,7 @@ std::vector<std::string> manager::get_required_not_enabled(const elem& e) const
 	std::vector<std::string> required = get_required(e);
 	std::vector<std::string> result;
 
-	BOOST_FOREACH (std::string str, required) {
+	for (std::string str : required) {
 		if ( !util::contains(mods_, str) ) {
 			result.push_back(str);
 		}
@@ -198,7 +198,7 @@ std::vector<std::string> manager::get_conflicting_enabled(const elem& e) const
 {
 	std::vector<std::string> result;
 
-	BOOST_FOREACH(const std::string& mod, mods_) {
+	for (const std::string& mod : mods_) {
 		if (conflicts(elem(mod, "modification"), e)) {
 			result.push_back(mod);
 		}
@@ -277,7 +277,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		std::vector<std::string>	req1 = get_required(elem1),
 									req2 = get_required(elem2);
 
-		BOOST_FOREACH (const std::string& s, req1) {
+		for (const std::string& s : req1) {
 			elem m(s, "modification");
 
 			if (conflicts(elem2, m, true)) {
@@ -285,7 +285,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 			}
 		}
 
-		BOOST_FOREACH (const std::string& s, req2) {
+		for (const std::string& s : req2) {
 			elem m(s, "modification");
 
 			if (conflicts(elem1, m, true)) {
@@ -293,10 +293,10 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 			}
 		}
 
-		BOOST_FOREACH (const std::string& id1, req1) {
+		for (const std::string& id1 : req1) {
 			elem m1(id1, "modification");
 
-			BOOST_FOREACH (const std::string& id2, req2) {
+			for (const std::string& id2 : req2) {
 				elem m2(id2, "modification");
 
 				if (conflicts(m1, m2)) {
@@ -392,7 +392,7 @@ void manager::try_scenario_by_index(int index, bool force)
 int manager::get_era_index() const
 {
 	int result = 0;
-	BOOST_FOREACH (const config& i, depinfo_.child_range("era"))
+	for (const config& i : depinfo_.child_range("era"))
 	{
 		if (i["id"] == era_) {
 			return result;
@@ -407,7 +407,7 @@ int manager::get_scenario_index() const
 {
 	int result = 0;
 
-	BOOST_FOREACH (const config& i, depinfo_.child_range("scenario"))
+	for (const config& i : depinfo_.child_range("scenario"))
 	{
 		if (i["id"] == scenario_) {
 			return result;
@@ -430,7 +430,7 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods,
 								 const std::string& requester)
 {
 	std::vector<std::string> items;
-	BOOST_FOREACH (const std::string& mod, mods) {
+	for (const std::string& mod : mods) {
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
@@ -442,7 +442,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods,
 								  const std::string& requester)
 {
 	std::vector<std::string> items;
-	BOOST_FOREACH (const std::string& mod, mods) {
+	for (const std::string& mod : mods) {
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
@@ -453,7 +453,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods,
 std::string manager::change_era_dialog(const std::vector<std::string>& eras)
 {
 	std::vector<std::string> items;
-	BOOST_FOREACH(const std::string& era, eras) {
+	for(const std::string& era : eras) {
 		items.push_back(depinfo_.find_child("era", "id", era)["name"]);
 	}
 
@@ -470,7 +470,7 @@ std::string
 	manager::change_scenario_dialog(const std::vector<std::string>& scenarios)
 {
 	std::vector<std::string> items;
-	BOOST_FOREACH (const std::string& scenario, scenarios) {
+	for (const std::string& scenario : scenarios) {
 		items.push_back(depinfo_.find_child("scenario", "id", scenario)["name"]);
 	}
 
@@ -542,7 +542,7 @@ bool manager::change_scenario(const std::string& id)
 	}
 
 	std::vector<std::string> newmods = req;
-	BOOST_FOREACH (const std::string& i, mods_) {
+	for (const std::string& i : mods_) {
 		if ( !util::contains(con, i) ) {
 			newmods.push_back(i);
 		}
@@ -558,7 +558,7 @@ bool manager::change_scenario(const std::string& id)
 	}
 
 	std::vector<std::string> compatible;
-	BOOST_FOREACH (const config& i, depinfo_.child_range("era")) {
+	for (const config& i : depinfo_.child_range("era")) {
 		if (!conflicts(scen, elem(i["id"], "era"))) {
 			compatible.push_back(i["id"]);
 		}
@@ -612,7 +612,7 @@ bool manager::change_era(const std::string& id)
 	}
 
 	std::vector<std::string> newmods = req;
-	BOOST_FOREACH (const std::string& i, mods_) {
+	for (const std::string& i : mods_) {
 		if ( !util::contains(con, i) ) {
 			newmods.push_back(i);
 		}
@@ -627,7 +627,7 @@ bool manager::change_era(const std::string& id)
 	}
 
 	std::vector<std::string> compatible;
-	BOOST_FOREACH (const config& i, depinfo_.child_range("scenario")) {
+	for (const config& i : depinfo_.child_range("scenario")) {
 		if (!conflicts(era, elem(i["id"], "scenario"))) {
 			compatible.push_back(i["id"]);
 		}
@@ -652,10 +652,10 @@ bool manager::change_modifications
 {
 	// Checking if the selected combination of mods is valid at all
 	std::vector<std::string> filtered;
-	BOOST_FOREACH (const std::string& i, modifications) {
+	for (const std::string& i : modifications) {
 		bool ok = true;
 		elem ei(i, "modification");
-		BOOST_FOREACH (const std::string& j, filtered) {
+		for (const std::string& j : filtered) {
 			ok = ok && !conflicts(ei, elem(j, "modification"));
 		}
 
@@ -674,10 +674,10 @@ bool manager::change_modifications
 	// Checking if the currently selected era is compatible with the set
 	// modifications, and changing era if necessary
 	std::vector<std::string> compatible;
-	BOOST_FOREACH (const config& c, depinfo_.child_range("era")) {
+	for (const config& c : depinfo_.child_range("era")) {
 		elem era(c["id"], "era");
 		bool ok = true;
-		BOOST_FOREACH (const std::string& s, mods_) {
+		for (const std::string& s : mods_) {
 			ok = ok && !conflicts(era, elem(s, "modification"));
 		}
 
@@ -711,10 +711,10 @@ bool manager::change_modifications
 
 	// Checking if the currently selected scenario is compatible with
 	// the set modifications, and changing scenario if necessary
-	BOOST_FOREACH (const config& c, depinfo_.child_range("scenario")) {
+	for (const config& c : depinfo_.child_range("scenario")) {
 		elem scen(c["id"], "scenario");
 		bool ok = true;
-		BOOST_FOREACH (const std::string& s, mods_) {
+		for (const std::string& s : mods_) {
 			ok = ok && !conflicts(scen, elem(s, "modification"));
 		}
 

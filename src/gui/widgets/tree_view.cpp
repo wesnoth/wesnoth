@@ -377,7 +377,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 	, nodes()
 {
 
-	FOREACH(const AUTO & node, cfg.child_range("node"))
+	for(const auto & node : cfg.child_range("node"))
 	{
 		nodes.push_back(ttree_node(node));
 	}

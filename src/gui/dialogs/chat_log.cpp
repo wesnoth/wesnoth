@@ -28,7 +28,6 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/slider.hpp"
-#include "utils/foreach.hpp"
 
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
@@ -121,7 +120,7 @@ public:
 		const std::string& lcfilter = utf8::lowercase(filter->get_value());
 		LOG_CHAT_LOG << "entering tchat_log::model::stream_log\n";
 
-		FOREACH(const AUTO & t, make_pair(chat_log_history.begin() + first,
+		for(const auto & t : make_pair(chat_log_history.begin() + first,
 										  chat_log_history.begin() + last))
 		{
 			const std::string& timestamp

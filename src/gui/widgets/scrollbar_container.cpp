@@ -22,7 +22,6 @@
 #include "gui/widgets/clickable.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 #include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
@@ -766,7 +765,7 @@ void tscrollbar_container::finalize_setup()
 						this));
 
 	/***** Setup the scrollbar buttons *****/
-	FOREACH(const AUTO & item, scroll_lookup())
+	for(const auto & item : scroll_lookup())
 	{
 
 		// Vertical.
@@ -915,7 +914,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 {
 	if(true) { /** @todo scrollbar visibility. */
 		/***** set scroll up button status *****/
-		FOREACH(const AUTO & name, button_up_names)
+		for(const auto & name : button_up_names)
 		{
 			tcontrol* button = find_widget<tcontrol>(
 					vertical_scrollbar_grid_, name, false, false);
@@ -926,7 +925,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** set scroll down status *****/
-		FOREACH(const AUTO & name, button_down_names)
+		for(const auto & name : button_down_names)
 		{
 			tcontrol* button = find_widget<tcontrol>(
 					vertical_scrollbar_grid_, name, false, false);
@@ -943,7 +942,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 
 	if(true) { /** @todo scrollbar visibility. */
 		/***** Set scroll left button status *****/
-		FOREACH(const AUTO & name, button_up_names)
+		for(const auto & name : button_up_names)
 		{
 			tcontrol* button = find_widget<tcontrol>(
 					horizontal_scrollbar_grid_, name, false, false);
@@ -954,7 +953,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** Set scroll right button status *****/
-		FOREACH(const AUTO & name, button_down_names)
+		for(const auto & name : button_down_names)
 		{
 			tcontrol* button = find_widget<tcontrol>(
 					horizontal_scrollbar_grid_, name, false, false);

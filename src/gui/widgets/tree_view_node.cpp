@@ -22,7 +22,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -55,7 +54,7 @@ ttree_view_node::ttree_view_node(
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
 	if(id != "root") {
-		FOREACH(const AUTO & node_definition, node_definitions_)
+		for(const auto & node_definition : node_definitions_)
 		{
 			if(node_definition.id == id) {
 				node_definition.builder->build(&grid_);
@@ -283,7 +282,7 @@ void ttree_view_node::clear()
 	int height_reduction = 0;
 
 	if(!is_folded()) {
-		FOREACH(const AUTO & node, children_)
+		for(const auto & node : children_)
 		{
 			height_reduction += node.get_current_size().y;
 		}
@@ -376,7 +375,7 @@ void ttree_view_node::impl_populate_dirty_list(
 		return;
 	}
 
-	FOREACH(AUTO & node, children_)
+	for(auto & node : children_)
 	{
 		std::vector<twidget*> child_call_stack = call_stack;
 		node.impl_populate_dirty_list(caller, child_call_stack);
@@ -541,7 +540,7 @@ unsigned ttree_view_node::place(const unsigned indention_step_size,
 	}
 
 	DBG_GUI_L << LOG_HEADER << " set children.\n";
-	FOREACH(AUTO & node, children_)
+	for(auto & node : children_)
 	{
 		origin.y += node.place(indention_step_size, origin, width);
 	}
@@ -564,7 +563,7 @@ void ttree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 		return;
 	}
 
-	FOREACH(AUTO & node, children_)
+	for(auto & node : children_)
 	{
 		node.set_visible_rectangle(rectangle);
 	}
@@ -580,7 +579,7 @@ void ttree_view_node::impl_draw_children(surface& frame_buffer,
 		return;
 	}
 
-	FOREACH(AUTO & node, children_)
+	for(auto & node : children_)
 	{
 		node.impl_draw_children(frame_buffer, x_offset, y_offset);
 	}
@@ -712,7 +711,7 @@ int ttree_view_node::calculate_ypos()
 		return 0;
 	}
 	int res = parent_node_->calculate_ypos();
-	FOREACH(const AUTO& node, parent_node_->children_) {
+	for(const auto& node : parent_node_->children_) {
 		if(&node == this) {
 			break;
 		}
@@ -814,7 +813,7 @@ void ttree_view_node::layout_initialise(const bool full_initialisation)
 	twidget::layout_initialise(full_initialisation);
 	grid_.layout_initialise(full_initialisation);
 	// Clear child caches.
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 		child.layout_initialise(full_initialisation);
 	}

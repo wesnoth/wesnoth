@@ -29,7 +29,6 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 
 #include "log.hpp"
 
@@ -119,7 +118,7 @@ void tcampaign_difficulty::pre_show(twindow& window)
 
 	std::map<std::string, string_map> data;
 
-	BOOST_FOREACH(const config &d, difficulties_.child_range("difficulty"))
+	for (const config &d : difficulties_.child_range("difficulty"))
 	{
 		data["icon"]["label"] = d["image"];
 		data["label"]["label"] = d["label"];

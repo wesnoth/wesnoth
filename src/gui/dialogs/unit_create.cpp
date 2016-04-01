@@ -42,8 +42,6 @@
 #include "team.hpp"
 #include "units/types.hpp"
 
-#include "utils/foreach.hpp"
-
 #include <boost/bind.hpp>
 
 static std::string last_chosen_type_id = "";
@@ -129,7 +127,7 @@ void tunit_create::pre_show(twindow& window)
 
 	list.clear();
 
-	FOREACH(const AUTO & i, unit_types.types())
+	for(const auto & i : unit_types.types())
 	{
 		if(i.second.do_not_list())
 			continue;
@@ -251,7 +249,7 @@ bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 					= find_widget<tlabel>(*it, "unit_type", false);
 
 			bool found = false;
-			FOREACH(const AUTO & word, words)
+			for(const auto & word : words)
 			{
 				found = std::search(type_label.label().str().begin(),
 									type_label.label().str().end(),

@@ -21,7 +21,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -99,7 +98,7 @@ tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
 	string_map empty_data;
-	FOREACH(const AUTO & builder, widget_builder)
+	for(const auto & builder : widget_builder)
 	{
 		generator_->create_item(-1, builder, empty_data, NULL);
 	}
@@ -235,7 +234,7 @@ tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
 {
 	const config& s = cfg.child("stack");
 	VALIDATE(s, _("No stack defined."));
-	FOREACH(const AUTO & layer, s.child_range("layer"))
+	for(const auto & layer : s.child_range("layer"))
 	{
 		stack.push_back(new tbuilder_grid(layer));
 	}

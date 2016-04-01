@@ -106,7 +106,7 @@ void tcampaign_settings::update_lists(twindow& window)
 	era_list.clear();
 
 	if (engine_.current_level().allow_era_choice()) {
-		BOOST_FOREACH(std::string era, engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
+		for (std::string era : engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
 			std::map<std::string, string_map> row;
 			string_map column;
 
@@ -126,7 +126,7 @@ void tcampaign_settings::update_lists(twindow& window)
 
 	{
 		int i = 0;
-		BOOST_FOREACH(const ng::create_engine::extras_metadata_ptr mod, engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
+		for (const ng::create_engine::extras_metadata_ptr mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
 			std::map<std::string, string_map> row;
 			string_map column;
 

@@ -24,7 +24,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 
 #include <algorithm>
 
@@ -62,7 +61,7 @@ void taddon_uninstall_list::pre_show(twindow& window)
 
 	this->selections_.clear();
 
-	FOREACH(const AUTO & entry, titles_map_)
+	for(const auto & entry : titles_map_)
 	{
 		const std::string& id = entry.first;
 		const std::string& title = entry.second;
@@ -102,7 +101,7 @@ std::vector<std::string> taddon_uninstall_list::selected_addons() const
 {
 	std::vector<std::string> retv;
 
-	FOREACH(const AUTO & entry, selections_)
+	for(const auto & entry : selections_)
 	{
 		if(entry.second) {
 			retv.push_back(entry.first);

@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "font_options.hpp"
 #include "gui/core/canvas.hpp"
-#include "utils/foreach.hpp"
 
 namespace gui2
 {
@@ -95,8 +94,7 @@ struct tcontrol_definition : public reference_counted_object
 	template <class T>
 	void load_resolutions(const config& cfg)
 	{
-		config::const_child_itors itors = cfg.child_range("resolution");
-		FOREACH(const AUTO & resolution, itors)
+		for (const auto & resolution : cfg.child_range("resolution"))
 		{
 			resolutions.push_back(new T(resolution));
 		}

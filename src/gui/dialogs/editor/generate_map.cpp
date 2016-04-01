@@ -28,7 +28,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "generators/map_generator.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -112,7 +111,7 @@ void teditor_generate_map::pre_show(twindow& window)
 	window.keyboard_capture(&list);
 
 	std::map<std::string, string_map> lrow;
-	FOREACH(const AUTO & gen, map_generators_)
+	for(const auto & gen : map_generators_)
 	{
 		assert(gen);
 		lrow["generator_name"]["label"] = gen->config_name();

@@ -28,7 +28,6 @@
 #include "language.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -54,7 +53,7 @@ std::string format_addon_time(time_t time)
 
 std::string langcode_to_string(const std::string& lcode)
 {
-	FOREACH(const AUTO & ld, get_languages())
+	for(const auto & ld : get_languages())
 	{
 		if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
 			return ld.language;
@@ -191,7 +190,7 @@ std::string make_display_dependencies(const std::string& addon_id,
 
 	const std::set<std::string>& deps = addon.resolve_dependencies(addons_list);
 
-	FOREACH(const AUTO & dep_id, deps)
+	for(const auto & dep_id : deps)
 	{
 		addon_info dep;
 		addon_tracking_info depstate;
@@ -338,7 +337,7 @@ taddon_description::taddon_description(const std::string& addon_id,
 
 	std::string languages;
 
-	FOREACH(const AUTO & lc, addon.locales)
+	for(const auto & lc : addon.locales)
 	{
 		const std::string& langlabel = langcode_to_string(lc);
 		if(!langlabel.empty()) {

@@ -59,7 +59,6 @@
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 #include "tstring.hpp"
-#include "utils/foreach.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -814,7 +813,7 @@ void twindow::draw()
 		return;
 	}
 
-	FOREACH(AUTO & item, dirty_list_)
+	for(auto & item : dirty_list_)
 	{
 
 		assert(!item.empty());
@@ -1195,13 +1194,13 @@ void twindow::layout()
 void twindow::layout_linked_widgets()
 {
 	// evaluate the group sizes
-	FOREACH(AUTO & linked_size, linked_size_)
+	for(auto & linked_size : linked_size_)
 	{
 
 		tpoint max_size(0, 0);
 
 		// Determine the maximum size.
-		FOREACH(AUTO widget, linked_size.second.widgets)
+		for(auto widget : linked_size.second.widgets)
 		{
 
 			const tpoint size = widget->get_best_size();
@@ -1221,7 +1220,7 @@ void twindow::layout_linked_widgets()
 		}
 
 		// Set the maximum size.
-		FOREACH(AUTO widget, linked_size.second.widgets)
+		for(auto widget : linked_size.second.widgets)
 		{
 
 			tpoint size = widget->get_best_size();

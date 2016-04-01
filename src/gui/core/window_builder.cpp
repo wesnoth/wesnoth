@@ -43,7 +43,6 @@
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/string_utils.hpp"
-#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
@@ -93,7 +92,7 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 								  definition->helptip);
 	assert(window);
 
-	FOREACH(const AUTO & lg, definition->linked_groups)
+	for(const auto & lg : definition->linked_groups)
 	{
 
 		if(window->has_linked_size_group(lg.id)) {
@@ -159,7 +158,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	size_t nb_children = std::distance(children.first, children.second);
 	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
 
-	FOREACH(const AUTO & item, builder_widget_lookup())
+	for(const auto & item : builder_widget_lookup())
 	{
 		if(item.first == "window" || item.first == "tooltip") {
 			continue;
@@ -269,7 +268,7 @@ const std::string& twindow_builder::read(const config& cfg)
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
-	FOREACH(const AUTO & i, cfgs)
+	for(const auto & i : cfgs)
 	{
 		resolutions.push_back(tresolution(i));
 	}
@@ -427,7 +426,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 		definition = "default";
 	}
 
-	FOREACH(const AUTO & lg, cfg.child_range("linked_group"))
+	for(const auto & lg : cfg.child_range("linked_group"))
 	{
 		tlinked_group linked_group;
 		linked_group.id = lg["id"].str();
@@ -532,13 +531,13 @@ tbuilder_grid::tbuilder_grid(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
-	FOREACH(const AUTO & row, cfg.child_range("row"))
+	for(const auto & row : cfg.child_range("row"))
 	{
 		unsigned col = 0;
 
 		row_grow_factor.push_back(row["grow_factor"]);
 
-		FOREACH(const AUTO & c, row.child_range("column"))
+		for(const auto & c : row.child_range("column"))
 		{
 			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(c["border_size"]);

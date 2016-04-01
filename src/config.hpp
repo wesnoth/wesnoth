@@ -49,6 +49,7 @@
 
 #include "exceptions.hpp"
 #include "tstring.hpp"
+#include "utils/iterable_pair.hpp"
 
 #ifdef HAVE_CXX14
 #	ifdef __clang__ // Check this first, because clang also defines __GNUC__

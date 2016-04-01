@@ -26,7 +26,6 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -96,7 +95,7 @@ void tmp_server_list::pre_show(twindow& window)
 	const std::vector<game_config::server_info>& pref_servers
 			= preferences::server_list();
 
-	FOREACH(const AUTO & server, pref_servers)
+	for(const auto & server : pref_servers)
 	{
 
 		std::map<std::string, string_map> data;

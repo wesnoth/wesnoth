@@ -281,7 +281,7 @@ tbuilder_combobox::tbuilder_combobox(const config& cfg)
 	, retval_(cfg["return_value"])
 	, options_()
 {
-	FOREACH(const AUTO& option, cfg.child_range("option")) {
+	for(const auto& option : cfg.child_range("option")) {
 		options_.push_back(option["label"]);
 	}
 }

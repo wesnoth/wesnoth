@@ -23,7 +23,6 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
-#include "utils/foreach.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
@@ -91,7 +90,7 @@ unsigned ttoggle_panel::num_states() const
 void ttoggle_panel::set_child_members(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
-	FOREACH(const AUTO & item, data)
+	for(const auto & item : data)
 	{
 		tcontrol* control = dynamic_cast<tcontrol*>(find(item.first, false));
 		if(control) {
@@ -366,7 +365,7 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
-	FOREACH(const AUTO& c, cfg.child_range("state"))
+	for(const auto& c : cfg.child_range("state"))
 	{
 		state.push_back(tstate_definition(c.child("enabled")));
 		state.push_back(tstate_definition(c.child("disabled")));

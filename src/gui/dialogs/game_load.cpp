@@ -41,7 +41,6 @@
 #include "language.hpp"
 #include "preferences_display.hpp"
 #include "savegame.hpp"
-#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cctype>
@@ -172,7 +171,7 @@ void tgame_load::fill_game_list(twindow& window,
 	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 	list.clear();
 
-	FOREACH(const AUTO & game, games)
+	for(const auto & game : games)
 	{
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -224,7 +223,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 					= find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
-			FOREACH(const AUTO & word, words)
+			for(const auto & word : words)
 			{
 				found = std::search(filename_label.label().str().begin(),
 									filename_label.label().str().end(),

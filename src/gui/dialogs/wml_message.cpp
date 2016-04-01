@@ -101,7 +101,7 @@ void twml_message_::pre_show(twindow& window)
 
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
-		BOOST_FOREACH(const twml_message_option& item, option_list_) {
+		for(const twml_message_option& item : option_list_) {
 			// Add the data.
 			data["icon"]["label"] = item.image();
 			data["label"]["label"] = item.label();

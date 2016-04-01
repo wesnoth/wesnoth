@@ -32,7 +32,6 @@
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "settings.hpp"
-#include "utils/foreach.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include <boost/bind.hpp>
@@ -113,7 +112,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 	// Standard maps
 	int i = 0;
-	FOREACH(const AUTO & map, cfg_.child_range("multiplayer"))
+	for(const auto & map : cfg_.child_range("multiplayer"))
 	{
 		if(map["allow_new_game"].to_bool(true)) {
 			string_map item;

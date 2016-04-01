@@ -37,7 +37,6 @@
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 #include "video.hpp"
 
 #include <boost/bind.hpp>
@@ -288,7 +287,7 @@ void ttitle_screen::pre_show(twindow& window)
 		WRN_CF << "There are not tips of day available." << std::endl;
 	}
 
-	FOREACH(const AUTO & tip, tips)
+	for(const auto & tip : tips)
 	{
 
 		string_map widget;

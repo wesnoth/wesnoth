@@ -56,7 +56,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "util.hpp"
-#include "utils/foreach.hpp"
 
 #include "gettext.hpp"
 
@@ -122,7 +121,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	, font_scaling_(font_scaling())
 	, index_(0,0)
 {
-	BOOST_FOREACH(const config& adv, game_cfg.child_range("advanced_preference")) {
+	for(const config& adv : game_cfg.child_range("advanced_preference")) {
 		adv_preferences_cfg_.push_back(adv);
 	}
 
@@ -169,7 +168,7 @@ static void set_resolution_list(tcombobox& res_list, CVideo& video)
 	const std::vector<std::pair<int,int> > resolutions = video.get_available_resolutions(true);
 
 	std::vector<std::string> options;
-	FOREACH(const AUTO& res, resolutions)
+	for(const auto& res : resolutions)
 	{
 		std::ostringstream option;
 		option << res.first << utils::unicode_multiplication_sign << res.second;
@@ -334,7 +333,7 @@ void tpreferences::setup_friends_list(twindow& window)
 		return;
 	}
 
-	FOREACH(const AUTO& acquaintence, acquaintances)
+	for(const auto& acquaintence : acquaintances)
 	{
 		std::string image = "friend.png";
 		std::string descriptor = _("friend");
@@ -726,7 +725,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	std::map<std::string, string_map> row_data;
 
-	BOOST_FOREACH(const config& option, adv_preferences_cfg_)
+	for(const config& option : adv_preferences_cfg_)
 	{
 		// Details about the current option
 		const ADVANCED_PREF_TYPE& pref_type = ADVANCED_PREF_TYPE::string_to_enum(
@@ -802,7 +801,7 @@ void tpreferences::initialize_members(twindow& window)
 			case ADVANCED_PREF_TYPE::COMBO: {
 				combo_data combo_options;
 
-				BOOST_FOREACH(const config& choice, option.child_range("option"))
+				for(const config& choice : option.child_range("option"))
 				{
 					combo_options.first.push_back(choice["name"]);
 					combo_options.second.push_back(choice["id"]);
@@ -936,7 +935,7 @@ void tpreferences::setup_hotkey_list(twindow& window)
 
 	std::string text_feature_on =  "<span color='#0f0'>" + _("&#10003;") + "</span>";
 
-	FOREACH(const AUTO& hotkey_item, hotkey::get_hotkey_commands())
+	for(const auto& hotkey_item : hotkey::get_hotkey_commands())
 	{
 		if (hotkey_item.hidden) {
 			continue;
@@ -976,7 +975,7 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 		return;
 	}
 
-	BOOST_FOREACH(const hotkey::hotkey_ptr& hk, hotkey::get_hotkeys()) {
+	for(const hotkey::hotkey_ptr& hk : hotkey::get_hotkeys()) {
 		if(!hk->is_disabled() && newhk->bindings_equal(hk)) {
 			oldhk = hk;
 		}

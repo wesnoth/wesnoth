@@ -20,7 +20,6 @@
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
-#include "utils/foreach.hpp"
 #include "utils/boost_function_guarded.hpp"
 #include "config.hpp"
 #include "gui/core/widget_definition.hpp"
@@ -125,7 +124,7 @@ void load_widget_definitions(tgui_definition& gui_definition,
 {
 	std::vector<tcontrol_definition_ptr> definitions;
 
-	FOREACH(const AUTO & definition,
+	for (const auto & definition :
 			cfg.child_range(key ? key : definition_type + "_definition"))
 	{
 

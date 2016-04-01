@@ -568,7 +568,7 @@ void tlistbox::order_by_column(unsigned column, twidget& widget)
 	if(column >= orders_.size()) {
 		return;
 	}
-	FOREACH(AUTO& pair, orders_)
+	for(auto& pair : orders_)
 	{
 		if(pair.first != nullptr && pair.first != &selectable) {
 			pair.first->set_value(0);
@@ -867,14 +867,14 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 		return;
 	}
 
-	FOREACH(const AUTO & row, data.child_range("row"))
+	for(const auto & row : data.child_range("row"))
 	{
 		unsigned col = 0;
 
-		FOREACH(const AUTO & c, row.child_range("column"))
+		for(const auto & c : row.child_range("column"))
 		{
 			list_data.push_back(string_map());
-			FOREACH(const AUTO & i, c.attribute_range())
+			for(const auto & i : c.attribute_range())
 			{
 				list_data.back()[i.first] = i.second;
 			}
@@ -1033,14 +1033,14 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 	if(!data)
 		return;
 
-	FOREACH(const AUTO & row, data.child_range("row"))
+	for(const auto & row : data.child_range("row"))
 	{
 		unsigned col = 0;
 
-		FOREACH(const AUTO & c, row.child_range("column"))
+		for(const auto & c : row.child_range("column"))
 		{
 			list_data.push_back(string_map());
-			FOREACH(const AUTO & i, c.attribute_range())
+			for(const auto & i : c.attribute_range())
 			{
 				list_data.back()[i.first] = i.second;
 			}

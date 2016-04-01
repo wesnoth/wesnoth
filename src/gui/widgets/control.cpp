@@ -25,7 +25,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
-#include "utils/foreach.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -251,7 +250,7 @@ tpoint tcontrol::calculate_best_size() const
 void tcontrol::place(const tpoint& origin, const tpoint& size)
 {
 	// resize canvasses
-	FOREACH(AUTO & canvas, canvas_)
+	for(auto & canvas : canvas_)
 	{
 		canvas.set_width(size.x);
 		canvas.set_height(size.y);
@@ -368,7 +367,7 @@ void tcontrol::update_canvas()
 	const int max_height = get_text_maximum_height();
 
 	// set label in canvases
-	FOREACH(AUTO & canvas, canvas_)
+	for(auto & canvas : canvas_)
 	{
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));

@@ -20,7 +20,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/widgets/control.hpp"
-#include "utils/foreach.hpp"
 
 #include <numeric>
 
@@ -50,7 +49,7 @@ tgrid::~tgrid()
 {
 	// Delete the children in this destructor since resizing a vector copies the
 	// children and thus frees the child prematurely.
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 		delete child.widget();
 	}
@@ -104,7 +103,7 @@ twidget* tgrid::swap_child(const std::string& id,
 {
 	assert(widget);
 
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 		if(child.id() != id) {
 
@@ -152,7 +151,7 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 
 void tgrid::remove_child(const std::string& id, const bool find_all)
 {
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		if(child.id() == id) {
@@ -168,7 +167,7 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 
 void tgrid::set_active(const bool active)
 {
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		twidget* widget = child.widget();
@@ -195,7 +194,7 @@ void tgrid::layout_initialise(const bool full_initialisation)
 	twidget::layout_initialise(full_initialisation);
 
 	// Clear child caches.
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		child.layout_initialise(full_initialisation);
@@ -422,7 +421,7 @@ tpoint tgrid::calculate_best_size() const
 
 bool tgrid::can_wrap() const
 {
-	FOREACH(const AUTO & child, children_)
+	for(const auto & child : children_)
 	{
 		if(child.can_wrap()) {
 			return true;
@@ -492,7 +491,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 
 		if(w_size == 0) {
 			// If all sizes are 0 reset them to 1
-			FOREACH(AUTO & val, col_grow_factor_)
+			for(auto & val : col_grow_factor_)
 			{
 				val = 1;
 			}
@@ -519,7 +518,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 
 		if(h_size == 0) {
 			// If all sizes are 0 reset them to 1
-			FOREACH(AUTO & val, row_grow_factor_)
+			for(auto & val : row_grow_factor_)
 			{
 				val = 1;
 			}
@@ -547,7 +546,7 @@ void tgrid::set_origin(const tpoint& origin)
 	// Inherited.
 	twidget::set_origin(origin);
 
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		twidget* widget = child.widget();
@@ -563,7 +562,7 @@ void tgrid::set_visible_rectangle(const SDL_Rect& rectangle)
 	// Inherited.
 	twidget::set_visible_rectangle(rectangle);
 
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		twidget* widget = child.widget();
@@ -575,7 +574,7 @@ void tgrid::set_visible_rectangle(const SDL_Rect& rectangle)
 
 void tgrid::layout_children()
 {
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 		assert(child.widget());
 		child.widget()->layout_children();
@@ -587,7 +586,7 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 {
 	assert(!call_stack.empty() && call_stack.back() == this);
 
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		assert(child.widget());
@@ -627,7 +626,7 @@ bool tgrid::has_widget(const twidget& widget) const
 		return true;
 	}
 
-	FOREACH(const AUTO & child, children_)
+	for(const auto & child : children_)
 	{
 		if(child.widget()->has_widget(widget)) {
 			return true;
@@ -642,7 +641,7 @@ bool tgrid::disable_click_dismiss() const
 		return false;
 	}
 
-	FOREACH(const AUTO & child, children_)
+	for(const auto & child : children_)
 	{
 		const twidget* widget = child.widget();
 		assert(widget);
@@ -921,7 +920,7 @@ void tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset
 	assert(get_visible() == twidget::tvisible::visible);
 	set_is_dirty(false);
 
-	FOREACH(AUTO & child, children_)
+	for(auto & child : children_)
 	{
 
 		twidget* widget = child.widget();

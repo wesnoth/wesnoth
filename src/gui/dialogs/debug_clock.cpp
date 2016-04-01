@@ -23,7 +23,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -148,7 +147,7 @@ void tdebug_clock::update_time(const bool force)
 	}
 
 	if(clock_) {
-		FOREACH(AUTO & canvas, clock_->canvas())
+		for(auto & canvas : clock_->canvas())
 		{
 			canvas.set_variable("hour", variant(hour_stamp));
 			canvas.set_variable("minute", variant(minute_stamp));

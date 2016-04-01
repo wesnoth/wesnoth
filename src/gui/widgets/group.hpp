@@ -17,7 +17,7 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/widget.hpp"
-#include "utils/foreach.hpp"
+#include "utils/iterable_pair.hpp"
 
 #include <vector>
 #include <boost/bind.hpp>
@@ -84,7 +84,7 @@ public:
 	 */
 	void group_operator()
 	{
-		FOREACH(AUTO& member, members())
+		for(auto& member : members())
 		{
 			member.first->set_value(false);
 		}
@@ -96,7 +96,7 @@ public:
 	 */
 	T get_active_member_value()
 	{
-		FOREACH(AUTO& member, members())
+		for(auto& member : members())
 		{
 			if(member.first->get_value_bool()) {
 				return member.second;
@@ -112,7 +112,7 @@ public:
 	 */
 	void set_member_states(const T& value)
 	{
-		FOREACH(AUTO& member, members())
+		for(auto& member : members())
 		{
 			member.first->set_value(member.second == value);
 		}

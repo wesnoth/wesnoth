@@ -36,8 +36,6 @@
 #include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 
-#include "utils/foreach.hpp"
-
 #include <boost/bind.hpp>
 
 namespace gui2
@@ -75,7 +73,7 @@ void tunit_recruit::pre_show(twindow& window)
 		find_widget<tbutton>(&window, "show_help", false),
 		boost::bind(&tunit_recruit::show_help, this, boost::ref(window)));
 
-	FOREACH(const AUTO& recruit, recruit_list_)
+	for(const auto& recruit : recruit_list_)
 	{
 		std::map<std::string, string_map> row_data;
 		string_map column;

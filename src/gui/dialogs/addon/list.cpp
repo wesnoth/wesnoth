@@ -41,7 +41,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "marked-up_text.hpp"
@@ -113,10 +112,10 @@ namespace {
 		filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
 		bool operator()(const config& cfg) const
 		{
-			FOREACH(const AUTO& filter, filtertext_)
+			for(const auto& filter : filtertext_)
 			{
 				bool found = false;
-				FOREACH(const AUTO& attribute, cfg.attribute_range())
+				for(const auto& attribute : cfg.attribute_range())
 				{
 					std::string val = attribute.second.str();
 					if(std::search(val.begin(),
@@ -189,7 +188,7 @@ void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text
 	filter_transform filter(utils::split(text, ' '));
 	std::vector<bool> res;
 	res.reserve(cfg_.child_count("campaign"));
-	FOREACH(const AUTO& child, cfg_.child_range("campaign"))
+	for(const auto& child : cfg_.child_range("campaign"))
 	{
 		res.push_back(filter(child));
 	}
@@ -199,7 +198,7 @@ void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text
 void taddon_list::on_order_button_click(twindow& window, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down, twidget& w)
 {
 	tselectable_& selectable = dynamic_cast<tselectable_&>(w);
-	FOREACH(AUTO& other, orders_)
+	for(auto& other : orders_)
 	{
 		if(other != &selectable) {
 			other->set_value(0);
@@ -379,7 +378,7 @@ void taddon_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
 
-	FOREACH(const AUTO & c, cfg_.child_range("campaign"))
+	for(const auto & c : cfg_.child_range("campaign"))
 	{
 		ids_.push_back(c["name"]);
 		const addon_info& info = addon_at(ids_.back(), addons_);

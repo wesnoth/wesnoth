@@ -34,7 +34,6 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
@@ -141,7 +140,7 @@ void tcampaign_selection::pre_show(twindow& window)
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		unsigned id = 0;
-		FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
+		for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
 		{
 			const config& campaign = level->data();
 
@@ -185,7 +184,7 @@ void tcampaign_selection::pre_show(twindow& window)
 
 			id = 0;
 			tree_group_item.clear();
-			FOREACH(const AUTO& mod, engine_.get_const_extras_by_type(ng::create_engine::MOD))
+			for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD))
 			{
 				bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 				/*** Add tree item ***/
@@ -228,7 +227,7 @@ void tcampaign_selection::pre_show(twindow& window)
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
-		FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
+		for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
 		{
 			const config& campaign = level->data();
 

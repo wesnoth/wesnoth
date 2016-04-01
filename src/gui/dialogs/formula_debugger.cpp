@@ -23,7 +23,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/debugger.hpp"
-#include "utils/foreach.hpp"
 
 #include <boost/bind.hpp>
 
@@ -75,7 +74,7 @@ void tformula_debugger::pre_show(twindow& window)
 	std::stringstream stack_text;
 	std::string indent = "  ";
 	int c = 0;
-	FOREACH(const AUTO & i, fdb_.get_call_stack())
+	for(const auto & i : fdb_.get_call_stack())
 	{
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
@@ -96,7 +95,7 @@ void tformula_debugger::pre_show(twindow& window)
 			= find_widget<tscroll_label>(&window, "execution", false, true);
 
 	std::stringstream execution_text;
-	FOREACH(const AUTO & i, fdb_.get_execution_trace())
+	for(const auto & i : fdb_.get_execution_trace())
 	{
 		for(int d = 0; d < i.level(); ++d) {
 			execution_text << indent;

@@ -30,7 +30,6 @@
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
 #include "text.hpp"
-#include "utils/foreach.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -1524,7 +1523,7 @@ void tcanvas::parse_cfg(const config& cfg)
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
-	FOREACH(const AUTO & shape, cfg.all_children_range())
+	for(const auto & shape : cfg.all_children_range())
 	{
 		const std::string& type = shape.key;
 		const config& data = shape.cfg;
@@ -1544,7 +1543,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			FOREACH(const AUTO & function, data.all_children_range())
+			for(const auto & function : data.all_children_range())
 			{
 
 				if(function.key == "blur") {

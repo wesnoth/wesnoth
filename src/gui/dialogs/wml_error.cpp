@@ -50,7 +50,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 	const std::string& addons_path = filesystem::get_addons_dir();
 	std::vector<std::string> files(files_original);
 
-	BOOST_FOREACH(std::string & file, files)
+	for(std::string & file : files)
 	{
 		std::string base;
 		std::string filename = filesystem::base_name(file);

@@ -1516,6 +1516,7 @@
 		911F2DAE1BA086F900E3102E /* alpha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alpha.cpp; sourceTree = "<group>"; };
 		911F2DAF1BA086FA00E3102E /* alpha.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alpha.hpp; sourceTree = "<group>"; };
 		911F2DB11BA0870E00E3102E /* compat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compat.hpp; sourceTree = "<group>"; };
+		911F471B1CAE5A7E00F47035 /* iterable_pair.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iterable_pair.hpp; sourceTree = "<group>"; };
 		9122417A1CAAB7B7008B347F /* loadscreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loadscreen.cpp; sourceTree = "<group>"; };
 		9122417B1CAAB7B7008B347F /* loadscreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = loadscreen.hpp; sourceTree = "<group>"; };
 		91273E721C7BF1C0005E7F81 /* _main.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = _main.cfg; sourceTree = "<group>"; };
@@ -1699,7 +1700,6 @@
 		91ECD5D11BA11A5200B25CF1 /* unit_creator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_creator.hpp; sourceTree = "<group>"; };
 		91EF6BFB1C9E22E400E2A733 /* boost_function_guarded.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = boost_function_guarded.hpp; sourceTree = "<group>"; };
 		91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = const_clone.hpp; sourceTree = "<group>"; };
-		91EF6BFE1C9E22E400E2A733 /* foreach.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = foreach.hpp; sourceTree = "<group>"; };
 		91EF6BFF1C9E22E400E2A733 /* iterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iterator.hpp; sourceTree = "<group>"; };
 		91EF6C001C9E22E400E2A733 /* reference_counter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = reference_counter.hpp; sourceTree = "<group>"; };
 		91EF6C011C9E22E400E2A733 /* sha1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
@@ -3565,7 +3565,7 @@
 			children = (
 				91EF6BFB1C9E22E400E2A733 /* boost_function_guarded.hpp */,
 				91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */,
-				91EF6BFE1C9E22E400E2A733 /* foreach.hpp */,
+				911F471B1CAE5A7E00F47035 /* iterable_pair.hpp */,
 				91EF6BFF1C9E22E400E2A733 /* iterator.hpp */,
 				EC53B04D1B23BB0E002F758F /* make_enum.cpp */,
 				91B621931B76720B00B00E0F /* make_enum.hpp */,

@@ -37,7 +37,6 @@
 
 #include <boost/optional.hpp>
 #include <boost/foreach.hpp>
-#include "utils/foreach.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -185,7 +184,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 
 	// Convert the starting positions to the array
 	int max_stating_pos = 0;
-	FOREACH(const AUTO& pair, starting_positions) {
+	for(const auto& pair : starting_positions) {
 		// Check for valid position,
 		// the first valid position is 1,
 		// so the offset 0 in the array is never used.
@@ -201,7 +200,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 		max_stating_pos = std::max<int>(max_stating_pos, pair.first);
 	}
 	starting_positions_.resize(max_stating_pos);
-	FOREACH(const AUTO& pair, starting_positions) {
+	for(const auto& pair : starting_positions) {
 		starting_positions_[pair.first - 1] =  map_location(pair.second.x - border_size_, pair.second.y - border_size_);
 	}
 	// Post processing on the map

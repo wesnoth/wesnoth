@@ -19,7 +19,6 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "network.hpp"
-#include "utils/foreach.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
@@ -64,7 +63,7 @@ lobby_info::~lobby_info()
 
 void lobby_info::delete_games()
 {
-	FOREACH(const AUTO & v, games_by_id_)
+	for(const auto & v : games_by_id_)
 	{
 		delete v.second;
 	}
@@ -76,7 +75,7 @@ namespace
 std::string dump_games_map(const lobby_info::game_info_map& games)
 {
 	std::stringstream ss;
-	FOREACH(const AUTO & v, games)
+	for(const auto & v : games)
 	{
 		const game_info& game = *v.second;
 		ss << "G" << game.id << "(" << game.name << ") "
@@ -89,7 +88,7 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 std::string dump_games_config(const config& gamelist)
 {
 	std::stringstream ss;
-	FOREACH(const AUTO & c, gamelist.child_range("game"))
+	for(const auto & c : gamelist.child_range("game"))
 	{
 		ss << "g" << c["id"] << "(" << c["name"] << ") "
 		   << c[config::diff_track_attribute] << " ";
@@ -107,7 +106,7 @@ void lobby_info::process_gamelist(const config& data)
 	gamelist_initialized_ = true;
 	delete_games();
 	games_by_id_.clear();
-	FOREACH(const AUTO & c, gamelist_.child("gamelist").child_range("game"))
+	for(const auto & c : gamelist_.child("gamelist").child_range("game"))
 	{
 		game_info* game = new game_info(c, game_config_);
 		games_by_id_[game->id] = game;
@@ -196,11 +195,11 @@ void lobby_info::process_userlist()
 {
 	SCOPE_LB;
 	users_.clear();
-	FOREACH(const AUTO & c, gamelist_.child_range("user"))
+	for(const auto & c : gamelist_.child_range("user"))
 	{
 		users_.push_back(user_info(c));
 	}
-	FOREACH(AUTO & ui, users_)
+	for(auto & ui : users_)
 	{
 		if(ui.game_id != 0) {
 			game_info* g = get_game_by_id(ui.game_id);
@@ -254,7 +253,7 @@ const game_info* lobby_info::get_game_by_id(int id) const
 
 room_info* lobby_info::get_room(const std::string& name)
 {
-	FOREACH(AUTO & r, rooms_)
+	for(auto & r : rooms_)
 	{
 		if(r.name() == name)
 			return &r;
@@ -264,7 +263,7 @@ room_info* lobby_info::get_room(const std::string& name)
 
 const room_info* lobby_info::get_room(const std::string& name) const
 {
-	FOREACH(const AUTO & r, rooms_)
+	for(const auto & r : rooms_)
 	{
 		if(r.name() == name)
 			return &r;
@@ -324,7 +323,7 @@ void lobby_info::make_games_vector()
 	games_filtered_.clear();
 	games_visibility_.clear();
 	games_.clear();
-	FOREACH(const AUTO & v, games_by_id_)
+	for(const auto & v : games_by_id_)
 	{
 		games_.push_back(v.second);
 	}
@@ -334,7 +333,7 @@ void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
 	games_visibility_.clear();
-	FOREACH(AUTO g, games_)
+	for(auto g : games_)
 	{
 		game_info& gi = *g;
 		bool show = game_filter_.match(gi);
@@ -350,7 +349,7 @@ void lobby_info::apply_game_filter()
 
 void lobby_info::update_user_statuses(int game_id, const room_info* room)
 {
-	FOREACH(AUTO & user, users_)
+	for(auto & user : users_)
 	{
 		user.update_state(game_id, room);
 	}
@@ -397,7 +396,7 @@ struct user_sorter_relation_name
 void lobby_info::sort_users(bool by_name, bool by_relation)
 {
 	users_sorted_.clear();
-	FOREACH(AUTO & u, users_)
+	for(auto & u : users_)
 	{
 		users_sorted_.push_back(&u);
 	}
