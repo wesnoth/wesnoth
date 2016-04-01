@@ -1013,15 +1013,15 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 	gui2::tloadscreen::display(video(), [this, reload]() {
 
-	gui2::tloadscreen::progress("load data");
-	if(reload == RELOAD_DATA) {
-		try {
-			game_config_manager::get()->
-				load_game_config_for_game(state_.classification());
-		} catch(config::error&) {
-			return;
+		gui2::tloadscreen::progress("load data");
+		if(reload == RELOAD_DATA) {
+			try {
+				game_config_manager::get()->
+					load_game_config_for_game(state_.classification());
+			} catch(config::error&) {
+				return;
+			}
 		}
-	}
 	});
 
 	try {

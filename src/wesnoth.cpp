@@ -646,20 +646,20 @@ static int do_gameloop(const std::vector<std::string>& args)
 		gui2::tloadscreen::progress("load config");
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
-	if(res == false) {
-		std::cerr << "could not initialize game config\n";
-		return;
-	}
-	gui2::tloadscreen::progress("init fonts");
+		if(res == false) {
+			std::cerr << "could not initialize game config\n";
+			return;
+		}
+		gui2::tloadscreen::progress("init fonts");
 
-	res = font::load_font_config();
-	if(res == false) {
-		std::cerr << "could not re-initialize fonts for the current language\n";
-		return;
+		res = font::load_font_config();
+		if(res == false) {
+			std::cerr << "could not re-initialize fonts for the current language\n";
+			return;
 	}
 
-	gui2::tloadscreen::progress("refresh addons");
-	refresh_addon_version_info_cache();
+		gui2::tloadscreen::progress("refresh addons");
+		refresh_addon_version_info_cache();
 	});
 	
 	if(res == false) {
