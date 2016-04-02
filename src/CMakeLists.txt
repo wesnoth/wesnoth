@@ -934,6 +934,7 @@ set(wesnoth-main_SRC
 	scripting/lua_common.cpp
 	scripting/lua_cpp_function.cpp
 	scripting/lua_fileops.cpp
+	scripting/lua_formula_bridge.cpp
 	scripting/lua_gui2.cpp
 	scripting/lua_kernel_base.cpp
 	scripting/lua_map_location_ops.cpp
