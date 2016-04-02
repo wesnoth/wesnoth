@@ -406,11 +406,16 @@ private:
 		} else
 		{
 			for(variant_iterator it = var_1.begin(); it != var_1.end(); ++it) {
-				std::map<variant, variant>::iterator map_it = tmp.find( *it );
-				if (map_it == tmp.end())
-					tmp[ *it ] = variant( 1 );
-				else
-					map_it->second = variant(map_it->second.as_int() + 1);
+				if (key_value_pair* kv = (*it).try_convert<key_value_pair>())
+					tmp[kv->query_value("key")] = kv->query_value("value");
+				else {
+					std::map<variant, variant>::iterator map_it = tmp.find( *it );
+					if (map_it == tmp.end()) {
+						tmp[*it] = variant(1);
+					} else {
+						map_it->second = variant(map_it->second.as_int() + 1);
+					}
+				}
 			}
 		}
 
@@ -1355,6 +1360,20 @@ private:
 	}
 };
 
+class pair_function : public function_expression {
+public:
+	explicit pair_function(const args_list& args)
+	  : function_expression("pair", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(new key_value_pair(
+			args()[0]->evaluate(variables,add_debug_info(fdb,0,"pair:key")),
+			args()[1]->evaluate(variables,add_debug_info(fdb,1,"pair_value"))
+		));
+	}
+};
+
 class distance_between_function : public function_expression {
 public:
 	explicit distance_between_function(const args_list& args)
@@ -1400,6 +1419,15 @@ variant key_value_pair::get_value(const std::string& key) const
 void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
 		inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
 		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+}
+
+	
+void key_value_pair::serialize_to_string(std::string& str) const {
+	str += "pair(";
+	key_.serialize_to_string(str);
+	str += ",";
+	value_.serialize_to_string(str);
+	str += ")";
 }
 
 formula_function_expression::formula_function_expression(const std::string& name, const args_list& args, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& arg_names)
@@ -1516,6 +1544,7 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(round);
 		FUNCTION(as_decimal);
 		FUNCTION(refcount);
+		FUNCTION(pair);
 		FUNCTION(loc);
 		FUNCTION(distance_between);
 		FUNCTION(index_of);
@@ -1543,10 +1572,6 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(type);
 #undef FUNCTION
 	}
-
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-	VLDEnable();
-#endif
 
 	return functions_table;
 }

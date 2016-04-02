@@ -214,6 +214,7 @@ Version 1.13.4+dev:
        This counts backwards from the specified offset
        A size of -1 is the same as 1.
      * if() can take two arguments; returns null if the condition is false
+     * tolist() will now invert the effect of tomap()
      * debug_print() now shows in console if debug mode is on
    * New core functions:
      * Trig functions tan, acos, asin, atan have been added. (Sin and cos
@@ -230,6 +231,9 @@ Version 1.13.4+dev:
      * replace() replaces a sequence within a string
      * type() function checks the type of a formula result
      * distance_between() - this was promoted from FormulaAI to core
+     * pair() function that produces a key-value pair suitable for
+       passing to tomap() - this also means key-value pairs are now
+       serializable (relevant in FormulaAI)
    * Bugfixes:
      * Dice operator is now synced (where possible)
      * Modulus (%) operator now works on decimal numbers

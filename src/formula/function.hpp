@@ -80,6 +80,8 @@ class key_value_pair : public formula_callable {
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
 	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}
+	
+	void serialize_to_string(std::string& str) const;
 };
 
 class formula_function_expression : public function_expression {
