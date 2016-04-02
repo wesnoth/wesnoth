@@ -25,5 +25,6 @@ extern luatypekey const unitvarKey;
 extern luatypekey const ustatusKey;
 extern luatypekey const uattacksKey;
 extern luatypekey const uattackKey;
+extern luatypekey const formulaKey;
 
 #endif
