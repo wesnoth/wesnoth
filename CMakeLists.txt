@@ -66,7 +66,7 @@ else (UNIX AND NOT APPLE AND NOT CYGWIN)
 	find_package(SDL2 2.0.4 REQUIRED)
 endif (UNIX AND NOT APPLE AND NOT CYGWIN)
   
-find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system)
+find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system thread)
 find_package(Boost 1.40 REQUIRED COMPONENTS random)
 
 # no, gettext executables are not required when NLS is deactivated
@@ -245,12 +245,15 @@ if(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 endif(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 
 set(CXX_FLAGS_PROJECT)
-check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++98" HAS_COMPILER_FLAG_STD)
+check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++11" HAS_COMPILER_FLAG_STD)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-W" HAS_COMPILER_FLAG_W)
 # MSVC's -Wall is not like gcc's, it really enables *all* warnings which include zillions for system headers and doesn't make sense.
 if(NOT MSVC)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-Wall" HAS_COMPILER_FLAG_WALL)
 endif(NOT MSVC)
+
+### Set some extra var for C++11
+add_definitions(-DHAVE_CXX0X)
 
 
 ### Set strict compiler flags.
