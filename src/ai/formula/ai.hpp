@@ -163,7 +163,6 @@ private:
 	gamestate_change_observer infinite_loop_guardian_;
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table_;
-	game_logic::candidate_action_manager candidate_action_manager_;
 
 	friend class ai_default;
 };

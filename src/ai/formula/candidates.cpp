@@ -30,57 +30,6 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 
 namespace game_logic {
 
-void candidate_action_manager::load_config(const config& cfg, ai::formula_ai* ai, function_symbol_table* function_table)
-{
-	// register candidate actions
-	BOOST_FOREACH(const config &rc_action, cfg.child_range("register_candidate_action"))
-	{
-		candidate_action_ptr new_ca = load_candidate_action_from_config(rc_action,ai,function_table);
-
-		if (new_ca) {
-			candidate_actions_.push_back(new_ca);
-		}
-
-	}
-}
-
-candidate_action_ptr candidate_action_manager::load_candidate_action_from_config(const config& rc_action, ai::formula_ai* ai, function_symbol_table* function_table)
-{
-	candidate_action_ptr new_ca;
-	const t_string &name = rc_action["name"];
-	try {
-		const t_string &type = rc_action["type"];
-
-		if( type == "movement") {
-			new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
-		} else if( type == "attack") {
-			new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
-		} else {
-			ERR_AI << "Unknown candidate action type: " << type << std::endl;
-		}
-	} catch(formula_error& e) {
-		ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
-	}
-	return new_ca;
-}
-
-bool candidate_action_manager::evaluate_candidate_actions(ai::formula_ai* ai, unit_map& units)
-{
-	evaluated_candidate_actions_.clear();
-
-	BOOST_FOREACH(candidate_action_ptr cm, candidate_actions_)
-	{
-		cm->evaluate(ai, units);
-		evaluated_candidate_actions_.insert(cm);
-	}
-
-	if( evaluated_candidate_actions_.empty() ||
-		(*evaluated_candidate_actions_.begin())->get_score() <= 0 ) //@note ai::candidate_action::BAD_SCORE )
-		return false;
-
-	return true;
-}
-
 base_candidate_action::base_candidate_action(const std::string& name,
 		const std::string& type, const config& cfg,
 		function_symbol_table* function_table) :

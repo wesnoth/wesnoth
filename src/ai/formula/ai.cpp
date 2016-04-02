@@ -77,9 +77,26 @@ using namespace game_logic;
 
 namespace ai {
 
-game_logic::candidate_action_ptr formula_ai::load_candidate_action_from_config(const config& cfg)
+using ca_ptr = game_logic::candidate_action_ptr;
+
+ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 {
-	return candidate_action_manager_.load_candidate_action_from_config(cfg,this,&function_table_);
+	ca_ptr new_ca;
+	const t_string &name = rc_action["name"];
+	try {
+		const t_string &type = rc_action["type"];
+
+		if( type == "movement") {
+			new_ca = ca_ptr(new move_candidate_action(name, type, rc_action, &function_table_));
+		} else if( type == "attack") {
+			new_ca = ca_ptr(new attack_candidate_action(name, type, rc_action, &function_table_));
+		} else {
+			ERR_AI << "Unknown candidate action type: " << type << std::endl;
+		}
+	} catch(formula_error& e) {
+		handle_exception(e, "Error while registering candidate action '" + name + "'");
+	}
+	return new_ca;
 }
 
 int formula_ai::get_recursion_count() const{
@@ -97,8 +114,7 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	keeps_cache_(),
 	infinite_loop_guardian_(),
 	vars_(),
-	function_table_(*this),
-	candidate_action_manager_()
+	function_table_(*this)
 {
 	add_ref();
 	init_readonly_context_proxy(context);
@@ -956,13 +972,13 @@ void formula_ai::on_create(){
 }
 
 
-void formula_ai::evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca)
+void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 {
 	fai_ca->evaluate(this,*resources::units);
 
 }
 
-bool formula_ai::execute_candidate_action(game_logic::candidate_action_ptr fai_ca)
+bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
