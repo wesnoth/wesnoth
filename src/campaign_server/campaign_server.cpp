@@ -162,7 +162,7 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
-		BOOST_FOREACH(config& campaign, campaigns().child_range("campaign")) {
+		for(config& campaign : campaigns().child_range("campaign")) {
 			// Campaign already has a hashed password
 			if (campaign["passphrase"].empty()) {
 				continue;
@@ -513,7 +513,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
 
-	BOOST_FOREACH(const config& i, campaigns().child_range("campaign"))
+	for(const config& i : campaigns().child_range("campaign"))
 	{
 		if(!name.empty() && name != i["name"]) {
 			continue;
@@ -531,7 +531,7 @@ void server::handle_request_campaign_list(const server::request& req)
 		if(!lang.empty()) {
 			bool found = false;
 
-			BOOST_FOREACH(const config& j, i.child_range("translation"))
+			for(const config& j : i.child_range("translation"))
 			{
 				if(j["language"] == lang) {
 					found = true;
@@ -547,7 +547,7 @@ void server::handle_request_campaign_list(const server::request& req)
 		campaign_list.add_child("campaign", i);
 	}
 
-	BOOST_FOREACH(config& j, campaign_list.child_range("campaign"))
+	for(config& j : campaign_list.child_range("campaign"))
 	{
 		j["passphrase"] = "";
 		j["passhash"] = "";
@@ -634,7 +634,7 @@ void server::handle_upload(const server::request& req)
 		const std::string& lc_name = utf8::lowercase(name);
 		passed_name_utf8_check = true;
 
-		BOOST_FOREACH(config& c, campaigns().child_range("campaign"))
+		for(config& c : campaigns().child_range("campaign"))
 		{
 			if(utf8::lowercase(c["name"]) == lc_name) {
 				campaign = &c;

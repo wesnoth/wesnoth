@@ -128,7 +128,7 @@ main(int argc, char* argv[])
 		}
 	}
 
-	BOOST_FOREACH(const tcreator& creator, creators) {
+	for(const tcreator& creator : creators) {
 		if(!filesystem::make_directory(root + creator.first)) {
 			std::cerr << "";
 			return EXIT_FAILURE;
@@ -138,7 +138,7 @@ main(int argc, char* argv[])
 	try {
 		const surface base_image = create_image_base(root + "/base.png");
 
-		BOOST_FOREACH(const tcreator& creator, creators) {
+		for(const tcreator& creator : creators) {
 			creator.second(base_image, root + creator.first);
 		}
 

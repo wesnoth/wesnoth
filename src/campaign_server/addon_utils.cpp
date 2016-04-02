@@ -42,7 +42,7 @@ std::string fast_interpolate_variables_into_string(const std::string &str, const
 	std::string res = str;
 
 	if(symbols) {
-		BOOST_FOREACH(const plain_string_map::value_type& sym, *symbols) {
+		for(const plain_string_map::value_type& sym : *symbols) {
 			res = utils::replace(res, "$" + sym.first, sym.second);
 		}
 	}
@@ -68,7 +68,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 		// Percent-encode parameter values for URL interpolation. This is
 		// VERY important since otherwise people could e.g. alter query
 		// strings from the format string.
-		BOOST_FOREACH(const config::attribute& a, attrs) {
+		for(const config::attribute& a : attrs) {
 			escaped[a.first] = utils::urlencode(a.second.str());
 		}
 
@@ -92,7 +92,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 
 void find_translations(const config& base_dir, config& addon)
 {
-	BOOST_FOREACH(const config &dir, base_dir.child_range("dir"))
+	for(const config &dir : base_dir.child_range("dir"))
 	{
 		if(dir["name"] == "LC_MESSAGES") {
 			addon.add_child("translation")["language"] = base_dir["name"];

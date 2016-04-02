@@ -241,7 +241,7 @@ filter_list()
 {
 	std::vector<tfilter_description> result;
 	typedef std::pair<std::string, tfilter> thack;
-	BOOST_FOREACH(const thack& filter, filters) {
+	for(const thack& filter : filters) {
 		result.push_back(filter.second.description);
 	}
 	return result;

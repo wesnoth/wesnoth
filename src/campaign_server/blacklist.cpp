@@ -94,7 +94,7 @@ bool blacklist::is_in_globlist(const std::string& str, const blacklist::globlist
 	if (!str.empty())
 	{
 		const std::string& lc_str = utf8::lowercase(str);
-		BOOST_FOREACH(const std::string& glob, glist)
+		for(const std::string& glob : glist)
 		{
 			const std::string& lc_glob = utf8::lowercase(glob);
 			if (utils::wildcard_string_match(lc_str, lc_glob)) {
@@ -111,7 +111,7 @@ bool blacklist::is_in_ip_masklist(const std::string& ip, const blacklist::globli
 {
 	if (!ip.empty())
 	{
-		BOOST_FOREACH(const std::string& ip_mask, mlist)
+		for(const std::string& ip_mask : mlist)
 		{
 			if (ip_matches(ip, ip_mask)) {
 				LOG_BL << "Blacklisted IP found: " << ip << " (" << ip_mask << ")\n";

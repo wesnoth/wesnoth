@@ -122,7 +122,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 
 	std::vector<std::string> params = utils::split(level);
 
-	FOREACH(const AUTO & param, params)
+	for(const auto & param : params)
 	{
 		if(param == "all") {
 			level_ = ALL;
@@ -150,7 +150,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 
 	std::vector<std::string> params = utils::split(domain);
 
-	FOREACH(const AUTO & param, params)
+	for(const auto & param : params)
 	{
 		if(param == "all") {
 			domain_ = ALL;

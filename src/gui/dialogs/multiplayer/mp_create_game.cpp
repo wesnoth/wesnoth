@@ -103,7 +103,7 @@ void tmp_create_game::pre_show(twindow& window)
 		filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &maps, nullptr,
 	   filesystem::FILE_NAME_ONLY);
 
-		FOREACH(const AUTO& map, maps) {
+		for(const auto& map : maps) {
 			std::map<std::string, t_string> item;
 			item.insert(std::make_pair("label", map));
 			list->add_row(item);
