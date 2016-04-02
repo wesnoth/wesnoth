@@ -6,20 +6,33 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local micro_ai_helper = {}
 
-function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
+function micro_ai_helper.add_CAs(side, ca_id_core, CA_parms, CA_cfg)
     -- Add the candidate actions defined in @CA_parms to the AI of @side
-    -- @CA_parms is an array of tables, one for each CA to be added (CA setup parameters)
-    -- and also contains one key: ai_id
-    -- @CA_cfg is a table with the parameters passed to the eval/exec functions
+    -- @ca_id_core: ca_id= key from the [micro_ai] tag
+    -- @CA_parms: array of tables, one for each CA to be added (CA setup parameters)
+    --   Also contains one key: ai_id
+    -- @CA_cfg: table with the parameters passed to the eval/exec functions
     --
     -- Required keys for each table of @CA_parms:
     --  - ca_id: is used for CA id/name
     --  - location: the path+file name for the external CA file
     --  - score: the evaluation score
 
-    -- We need to make sure that the id/name of each CA are unique.
-    -- We do this by checking if CAs starting with ai_id exist already
-    -- If yes, we add numbers to the end of ai_id until we find an id that does not exist yet
+    -- About ai_id, ca_id_core and ca_id:
+    -- ai_id: If the AI stores information in the [data] variable, we need to
+    --   ensure that it is uniquely attributed to this AI, and not to a separate
+    --   AI of the same type. ai_id is used for this and must therefore be unique.
+    --   We ensure this by checking if CAs or [data][micro_ai] tags using the
+    --   default ai_id value exist already and if so, by adding numbers to the end
+    --   until we find an id that is not used yet.
+    -- ca_id_core: This is used as base for the id= and name= keys of the
+    --   [candidate_action] tags. If [micro_ai]ca_id= is given, we use it as is
+    --   without checking if an AI with this id already exists. This is required in
+    --   order to ensure that removal with action=delete is possible and it is the
+    --   responsibility of the user to ensure uniqueness. If [micro_ai]ca_id= is not
+    --   given, use ai_id for ca_id_core, which also makes ids unique for this case.
+    -- ca_id: This is specific to the individual CAs of an AI and is added to
+    --    ca_id_core for the names and ids of each CA.
 
     local ai_id, id_found = CA_parms.ai_id, true
 
@@ -59,9 +72,12 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
         n = n + 1
     end
 
+    -- For CA ids and names, use value of [micro_ai]ca_id= if given, ai_id otherwise
+    ca_id_core = ca_id_core or ai_id
+
     -- Now add the CAs
     for _,parms in ipairs(CA_parms) do
-        local ca_id = ai_id .. '_' .. parms.ca_id
+        local ca_id = ca_id_core .. '_' .. parms.ca_id
 
         -- Always pass the ai_id and ca_score to the eval/exec functions
         CA_cfg.ai_id = ai_id
@@ -86,14 +102,18 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
     end
 end
 
-function micro_ai_helper.delete_CAs(side, CA_parms)
+function micro_ai_helper.delete_CAs(side, ca_id_core, CA_parms)
     -- Delete the candidate actions defined in @CA_parms from the AI of @side
-    -- @CA_parms is an array of tables, one for each CA to be removed
-    -- We can simply pass the one used for add_CAs(), although only the
-    -- CA_parms.ca_id field is needed
+    -- @ca_id_core: ca_id= key from the [micro_ai] tag
+    -- @CA_parms: array of tables, one for each CA to be removed
+    --   We can simply pass the one used for add_CAs(), although only the
+    --   CA_parms.ca_id field is needed
+
+    -- For CA ids, use value of [micro_ai]ca_id= if given, ai_id otherwise
+    ca_id_core = ca_id_core or CA_parms.ai_id
 
     for _,parms in ipairs(CA_parms) do
-        local ca_id = CA_parms.ai_id .. '_' .. parms.ca_id
+        local ca_id = ca_id_core .. '_' .. parms.ca_id
 
         W.modify_ai {
             side = side,
@@ -156,16 +176,8 @@ function micro_ai_helper.delete_aspects(side, aspect_parms)
 end
 
 function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_keys)
-    -- If cfg.ca_id is set, it gets used as the ai_id= key
-    -- This allows for selective removal of CAs
-    -- Note: the ca_id key of the [micro_ai] tag should really be renamed to ai_id,
-    -- but that would mean breaking backward compatibility, so we'll just deal with it internally instead
-
-    CA_parms.ai_id = cfg.ca_id or CA_parms.ai_id
-
-    -- If action=delete, we do that and are done
     if (cfg.action == 'delete') then
-        micro_ai_helper.delete_CAs(cfg.side, CA_parms)
+        micro_ai_helper.delete_CAs(cfg.side, cfg.ca_id, CA_parms)
         return
     end
 
@@ -203,10 +215,10 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     end
 
     -- Finally, set up the candidate actions themselves
-    if (cfg.action == 'add') then micro_ai_helper.add_CAs(cfg.side, CA_parms, CA_cfg) end
+    if (cfg.action == 'add') then micro_ai_helper.add_CAs(cfg.side, cfg.ca_id, CA_parms, CA_cfg) end
     if (cfg.action == 'change') then
-        micro_ai_helper.delete_CAs(cfg.side, CA_parms, cfg.id)
-        micro_ai_helper.add_CAs(cfg.side, CA_parms, CA_cfg)
+        micro_ai_helper.delete_CAs(cfg.side, cfg.ca_id, CA_parms)
+        micro_ai_helper.add_CAs(cfg.side, cfg.ca_id, CA_parms, CA_cfg)
     end
 end
 
