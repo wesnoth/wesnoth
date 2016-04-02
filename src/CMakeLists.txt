@@ -109,6 +109,7 @@ set(game-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
+	${Boost_THREAD_LIBRARY}
 	${sdl_image-lib}
 	${sdl_mixer-lib}
 	${sdl_ttf-lib}
