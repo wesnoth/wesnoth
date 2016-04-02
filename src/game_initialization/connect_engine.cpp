@@ -489,10 +489,14 @@ void connect_engine::start_game_commandline(
 			for (const mp_option& option : *cmdline_opts.multiplayer_side) {
 
 				if (option.get<0>() == num) {
-					DBG_MP << "\tsetting side " << option.get<0>() <<
-						"\tfaction: " << option.get<1>() << std::endl;
+					if (std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == option.get<1>(); }) != era_factions_.end()) {
+						DBG_MP << "\tsetting side " << option.get<0>() << "\tfaction: " << option.get<1>() << std::endl;
 
-					side->set_faction_commandline(option.get<1>());
+						side->set_faction_commandline(option.get<1>());
+					}
+					else {
+						ERR_MP << "failed to set side " << option.get<0>() << " to faction " << option.get<1>() << std::endl;
+					}
 				}
 			}
 		}

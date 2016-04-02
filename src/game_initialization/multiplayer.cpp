@@ -14,6 +14,7 @@
 #include "multiplayer.hpp"
 
 #include "addon/manager.hpp" // for get_installed_addons
+#include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
@@ -802,74 +803,36 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
 	// In particular, we do not want to use the preferences values.
 
-	// scope for config objects that will become invalid after reload
-	{
-		// Override era, faction (side) and scenario if set on the commandline
-		if (cmdline_opts.multiplayer_era)
-			parameters.mp_era = *cmdline_opts.multiplayer_era;
-		const config& era_cfg_preload = game_config.find_child("era", "id", parameters.mp_era);
-		if (!era_cfg_preload) {
-			std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
-			return;
-		}
-
-		if (cmdline_opts.multiplayer_scenario)
-			parameters.name = *cmdline_opts.multiplayer_scenario;
-		const config &level_preload = game_config.find_child("multiplayer", "id", parameters.name);
-		if (!level_preload) {
-			std::cerr << "Could not find scenario '" << parameters.name << "'\n";
-			return;
-		}
-
-		game_classification classification;
-		classification.campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-		classification.scenario_define = level_preload["define"].str();
-		classification.era_define = era_cfg_preload["define"].str();
-		game_config_manager::get()->load_game_config_for_game(classification);
+	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	//[era] define.
+	if (cmdline_opts.multiplayer_era) {
+		parameters.mp_era = *cmdline_opts.multiplayer_era;
 	}
-
-	const config& era_cfg = game_config_manager::get()->game_config().find_child("era", "id", parameters.mp_era);
-	const config& level = game_config_manager::get()->game_config().find_child("multiplayer", "id", parameters.name);
-
-	if (cmdline_opts.multiplayer_side) {
-		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
-			it=cmdline_opts.multiplayer_side->begin(); it!=cmdline_opts.multiplayer_side->end(); ++it)
-		{
-			const config *faction = &era_cfg.find_child("multiplayer_side", "id", it->get<1>());
-			if (!*faction) {
-				std::cerr << "Could not find faction '" << it->get<1>() << "'\n";
-				return;
-			}
-		}
+	if (const config& cfg_era = game_config.find_child("era", "id", parameters.mp_era)) {
+		state.classification().era_define = cfg_era["define"];
 	}
-
-
-	// Should the map be randomly generated?
-	if (level["map_generation"].empty()) {
-		DBG_MP << "using scenario map" << std::endl;
-		state.set_scenario(level);
-	} else {
-		DBG_MP << "generating random map" << std::endl;
-		util::scoped_ptr<map_generator> generator(nullptr);
-		generator.assign(create_map_generator(level["map_generation"], level.child("generator")));
-		state.set_scenario(generator->create_scenario());
-
-		// Set the scenario to have placing of sides
-		// based on the terrain they prefer
-		state.get_starting_pos()["modify_placing"] = "true";
-
-		util::unique_ptr<gamemap> map;
-		const int map_positions = level.child("generator")["players"];
-		DBG_MP << "map positions: " << map_positions << std::endl;
-
-		for (int pos = state.get_starting_pos().child_count("side"); pos < map_positions; ++pos) {
-			config& side = state.get_starting_pos().add_child("side");
-			side["side"] = pos + 1;
-			side["team_name"] = pos + 1;
-			side["canrecruit"] = true;
-			side["controller"] = "human";
-		}
+	else {
+		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
+		return;
 	}
+	//[multiplayer] define.
+	if (cmdline_opts.multiplayer_scenario) {
+		parameters.name = *cmdline_opts.multiplayer_scenario;
+	}
+	if (const config& cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
+		state.classification().scenario_define = cfg_multiplayer["define"];
+	}
+	else {
+		std::cerr << "Could not find [multiplayer] '" << parameters.name << "'\n";
+		return;
+	}
+	game_config_manager::get()->load_game_config_for_game(state.classification());
+	state.set_carryover_sides_start(
+		config_of("next_scenario", parameters.name)
+	);
+	state.expand_random_scenario();
+	state.expand_mp_events();
+	state.expand_mp_options();
 
 	// Should number of turns be determined from scenario data?
 	if (parameters.use_map_settings && state.get_starting_pos()["turns"]) {
