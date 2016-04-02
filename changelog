@@ -179,6 +179,11 @@ Version 1.13.4+dev:
    * Nearly all unit type, side, weapon, and terrain attributes available
      to Lua code are now also exposed to WFL. The exceptions are mainly
      translatable strings.
+   * Unit and side WML variables are now accessible under "wml_vars".
+     Since WML variables don't easily translate to formula variables, the
+     special attributes __all_children, __children, and __attributes provide
+     specialized views of the variables config as a list, string-list map,
+     and string-value map, respectively.
    * The 'special' attribute of weapons was renamed to 'specials', and it now
      contains the special IDs rather than their translateable names.
    * New syntax features:

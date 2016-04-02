@@ -309,6 +309,8 @@ variant unit_callable::get_value(const std::string& key) const
 		} else {
 			return variant();
 		}
+	} else if(key == "wml_vars") {
+		return variant(new config_callable(u_.variables()));
 	} else if(key == "n" || key == "s" || key == "ne" || key == "se" || key == "nw" || key == "sw" || key == "lawful" || key == "neutral" || key == "chaotic" || key == "liminal" || key == "male" || key == "female") {
 		return variant(key);
 	} else {
@@ -357,6 +359,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("alignment", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("facing", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("wml_vars", FORMULA_READ_ONLY));
 }
 
 int unit_callable::do_compare(const formula_callable* callable) const

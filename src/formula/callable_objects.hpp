@@ -224,6 +224,7 @@ CALLABLE_WRAPPER_INPUT(carryover_bonus)
 CALLABLE_WRAPPER_INPUT(carryover_percentage)
 CALLABLE_WRAPPER_INPUT(carryover_add)
 CALLABLE_WRAPPER_INPUT(recruit)
+CALLABLE_WRAPPER_INPUT(wml_vars)
 CALLABLE_WRAPPER_INPUT_END
 CALLABLE_WRAPPER_FN(side)
 CALLABLE_WRAPPER_FN2(id, save_id)
@@ -258,6 +259,8 @@ CALLABLE_WRAPPER_FN(carryover_add)
 			result.push_back(variant(*it));
 		}
 		return variant(&result);
+	} else if(key == "wml_vars") {
+		return variant(new config_callable(object_.variables()));
 	} else
 CALLABLE_WRAPPER_END
 
