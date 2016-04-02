@@ -115,7 +115,12 @@ void tloadscreen::progress(const char* stage)
 		return;
 	}
 	if(stage) {
-		current_load->current_stage_.store(stage, std::memory_order_release);
+		current_load->current_stage_
+#if defined(_MSC_VER) && _MSC_VER < 1900
+			= stage;
+#else
+			.store(stage, std::memory_order_release);
+#endif
 	}
 }
 
@@ -126,7 +131,12 @@ void tloadscreen::timer_callback(twindow& window)
 	if (!worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		window.close();
 	}
-	const char* stage = current_stage_.load(std::memory_order_acquire);
+	const char* stage = current_stage_
+#if defined(_MSC_VER) && _MSC_VER < 1900
+		;
+#else
+		.load(std::memory_order_acquire);
+#endif
 	if (stage && (current_visible_stage_ == stages.end() || stage != current_visible_stage_->first))
 	{
 		auto iter = stages.find(stage);

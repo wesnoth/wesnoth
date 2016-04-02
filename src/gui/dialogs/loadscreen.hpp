@@ -51,7 +51,7 @@ public:
 	/**
 	 * Hides the window.
 	 *
-	 * The hiding also destroys the window. It is save to call the function
+	 * The hiding also destroys the window. It is safe to call the function
 	 * when the window is not shown.
 	 */
 	void close();
@@ -79,7 +79,12 @@ private:
 	tlabel* animation_label_;
 	static tloadscreen* current_load;
 
+#if defined(_MSC_VER) && _MSC_VER < 1900
+	// std::atomic is buggy in MSVC 2013 - doesn't work for cv types
+	const char* current_stage_;
+#else
 	std::atomic<const char*> current_stage_;
+#endif
 	std::map<std::string,std::string>::const_iterator current_visible_stage_;
 };
 
