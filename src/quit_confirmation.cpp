@@ -19,7 +19,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "resources.hpp"
-#include <boost/foreach.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 
 std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
 bool quit_confirmation::open_ = false;
@@ -28,7 +28,7 @@ bool quit_confirmation::quit()
 {
 	if(!open_) {
 		open_ = true;
-		BOOST_REVERSE_FOREACH(quit_confirmation* blocker, blockers_)
+		for(quit_confirmation* blocker : boost::adaptors::reverse(blockers_))
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;

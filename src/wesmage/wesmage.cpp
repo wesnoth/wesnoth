@@ -22,8 +22,6 @@
 #include "wesmage/filter.hpp"
 #include "wesmage/options.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <SDL_image.h>
 
 #include <ctime>

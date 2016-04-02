@@ -48,7 +48,6 @@
 #include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -140,7 +139,7 @@ create::create(CVideo& video, const config& cfg, saved_game& state,
 
 	std::vector<std::string> combo_level_names;
 
-	BOOST_FOREACH(level_type_info type_info, all_level_types) {
+	for (level_type_info type_info : all_level_types) {
 		if (!engine_.get_levels_by_type_unfiltered(type_info.first).empty()) {
 			available_level_types_.push_back(type_info.first);
 			combo_level_names.push_back(type_info.second);
@@ -159,7 +158,7 @@ create::create(CVideo& video, const config& cfg, saved_game& state,
 
 	// Set level selection according to the preferences, if possible.
 	size_t type_index = 0;
-	BOOST_FOREACH(ng::level::TYPE type, available_level_types_) {
+	for (ng::level::TYPE type : available_level_types_) {
 		if (preferences::level_type() == type.cast<int>()) {
 			break;
 		}
@@ -536,7 +535,7 @@ void create::synchronize_selections()
 			levels_menu_.set_items(engine_.levels_menu_item_names());
 			levels_menu_.move_selection(index);
 			type_index = 0;
-			BOOST_FOREACH(ng::level::TYPE type, available_level_types_) {
+			for (ng::level::TYPE type : available_level_types_) {
 				if (level_type_at_index == type) {
 					level_type_combo_.set_selected(type_index);
 					break;

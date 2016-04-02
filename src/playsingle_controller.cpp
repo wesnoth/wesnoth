@@ -57,8 +57,6 @@
 #include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
 //If necessary, this define can be replaced with `#define LOG_AIT std::cout` to restore previous behavior
@@ -216,7 +214,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
 	// Start music.
-	BOOST_FOREACH(const config &m, level.child_range("music")) {
+	for(const config &m : level.child_range("music")) {
 		sound::play_music_config(m);
 	}
 	sound::commit_music_changes();
@@ -228,7 +226,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 
 	// Read sound sources
 	assert(soundsources_manager_ != nullptr);
-	BOOST_FOREACH(const config &s, level.child_range("sound_source")) {
+	for (const config &s : level.child_range("sound_source")) {
 		try {
 			soundsource::sourcespec spec(s);
 			soundsources_manager_->add(spec);

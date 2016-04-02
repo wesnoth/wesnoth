@@ -17,8 +17,6 @@
 #include "wesmage/exit.hpp"
 #include "wesmage/filter.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <cassert>
 #include <cstdlib>
 #include <ctime>

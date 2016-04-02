@@ -21,7 +21,6 @@
 #include <vector>
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 static bool find_if_matches_helper(const unit_ptr & ptr, const std::string & unit_id)
 {

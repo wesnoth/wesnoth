@@ -19,7 +19,6 @@
 #include "config.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
-#include <boost/foreach.hpp>
 #include <cassert>
 
 carryover::carryover(const config& side)
@@ -32,7 +31,7 @@ carryover::carryover(const config& side)
 		, save_id_(side["save_id"])
 		, variables_(side.child_or_empty("variables"))
 {
-	BOOST_FOREACH(const config& u, side.child_range("unit")){
+	for(const config& u : side.child_range("unit")) {
 		recall_list_.push_back(u);
 		config& u_back = recall_list_.back();
 		u_back.remove_attribute("side");
@@ -52,7 +51,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, save_id_(t.save_id())
 		, variables_(t.variables())
 {
-	BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
+	for(const unit_const_ptr & u : t.recall_list()) {
 		recall_list_.push_back(config());
 		u->write(recall_list_.back());
 	}
@@ -87,7 +86,7 @@ void carryover::transfer_all_recruits_to(config& side_cfg){
 }
 
 void carryover::transfer_all_recalls_to(config& side_cfg){
-	BOOST_FOREACH(const config & u_cfg, recall_list_) {
+	for(const config & u_cfg : recall_list_) {
 		side_cfg.add_child("unit", u_cfg);
 	}
 	recall_list_.clear();
@@ -106,7 +105,7 @@ std::string carryover::get_recruits(bool erase){
 const std::string carryover::to_string(){
 	std::string side = "";
 	side.append("Side " + save_id_ + ": gold " + std::to_string(gold_) + " recruits " + get_recruits(false) + " units ");
-	BOOST_FOREACH(const config & u_cfg, recall_list_) {
+	for(const config & u_cfg : recall_list_) {
 		side.append(u_cfg["name"].str() + ", ");
 	}
 	return side;
@@ -119,8 +118,9 @@ void carryover::to_config(config& cfg){
 	side["add"] = add_;
 	side["current_player"] = current_player_;
 	side["previous_recruits"] = get_recruits(false);
-	BOOST_FOREACH(const config & u_cfg, recall_list_)
+	for(const config & u_cfg : recall_list_) {
 		side.add_child("unit", u_cfg);
+	}
 }
 
 carryover_info::carryover_info(const config& cfg, bool from_snpashot)
@@ -131,7 +131,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	, next_scenario_(cfg["next_scenario"])
 	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
-	BOOST_FOREACH(const config& side, cfg.child_range("side"))
+	for(const config& side : cfg.child_range("side"))
 	{
 		if(side["lost"].to_bool(false) || !side["persistent"].to_bool(true))
 		{
@@ -141,7 +141,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 		}
 		this->carryover_sides_.push_back(carryover(side));
 	}
-	BOOST_FOREACH(const config& item, cfg.child_range("menu_item"))
+	for(const config& item : cfg.child_range("menu_item"))
 	{
 		wml_menu_items_.push_back(new config(item));
 	}
@@ -222,7 +222,7 @@ void carryover_info::transfer_to(config& level)
 	}
 
 	if(!level.has_child("menu_item")){
-		BOOST_FOREACH(config& item , wml_menu_items_)
+		for(config& item : wml_menu_items_)
 		{
 			level.add_child("menu_item").swap(item);
 		}
@@ -240,7 +240,7 @@ const config carryover_info::to_config()
 	cfg["next_underlying_unit_id"] = next_underlying_unit_id_;
 	cfg["next_scenario"] = next_scenario_;
 
-	BOOST_FOREACH(carryover& c, carryover_sides_){
+	for(carryover& c : carryover_sides_) {
 		c.to_config(cfg);
 	}
 
@@ -248,7 +248,7 @@ const config carryover_info::to_config()
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);
-	BOOST_FOREACH(const config& item , wml_menu_items_)
+	for(const config& item : wml_menu_items_)
 	{
 		cfg.add_child("menu_item", item);
 	}
@@ -256,7 +256,7 @@ const config carryover_info::to_config()
 }
 
 carryover* carryover_info::get_side(std::string save_id){
-	BOOST_FOREACH(carryover& side, carryover_sides_){
+	for(carryover& side : carryover_sides_) {
 		if(side.get_save_id() == save_id){
 			return &side;
 		}
@@ -267,7 +267,7 @@ carryover* carryover_info::get_side(std::string save_id){
 
 void carryover_info::merge_old_carryover(const carryover_info& old_carryover)
 {
-	BOOST_FOREACH(const carryover & old_side, old_carryover.carryover_sides_)
+	for(const carryover & old_side : old_carryover.carryover_sides_)
 	{
 		std::vector<carryover>::iterator iside = std::find_if(
 			carryover_sides_.begin(),

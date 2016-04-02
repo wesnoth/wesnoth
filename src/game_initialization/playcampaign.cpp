@@ -48,8 +48,6 @@
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
 
-#include <boost/foreach.hpp>
-
 #define LOG_G LOG_STREAM(info, lg::general)
 
 static lg::log_domain log_engine("engine");
@@ -150,7 +148,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 	//We need to write the carryover amount to the team thats why we need non const
 	std::vector<team>& teams = *resources::teams;
 	int persistent_teams = 0;
-	BOOST_FOREACH(const team &t, teams) {
+	for (const team &t : teams) {
 		if (t.persistent()){
 			++persistent_teams;
 		}
@@ -162,7 +160,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 		gamemap map = playcontroller.get_map_const();
 		tod_manager tod = playcontroller.get_tod_manager_const();
 		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
-		BOOST_FOREACH(team &t, teams)
+		for (team &t : teams)
 		{
 			if (!t.persistent() || t.lost())
 			{

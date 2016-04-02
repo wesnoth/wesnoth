@@ -53,7 +53,6 @@
 #include <boost/bind.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
-#include <boost/foreach.hpp>
 #include <boost/utility.hpp>
 #include <algorithm>
 #include <cassert>
@@ -562,15 +561,15 @@ void server::load_config() {
 	}
 
 	redirected_versions_.clear();
-	BOOST_FOREACH(const config &redirect, cfg_.child_range("redirect")) {
-		BOOST_FOREACH(const std::string &version, utils::split(redirect["version"])) {
+	for(const config &redirect : cfg_.child_range("redirect")) {
+		for(const std::string &version : utils::split(redirect["version"])) {
 			redirected_versions_[version] = redirect;
 		}
 	}
 
 	proxy_versions_.clear();
-	BOOST_FOREACH(const config &proxy, cfg_.child_range("proxy")) {
-		BOOST_FOREACH(const std::string &version, utils::split(proxy["version"])) {
+	for(const config &proxy : cfg_.child_range("proxy")) {
+		for(const std::string &version : utils::split(proxy["version"])) {
 			proxy_versions_[version] = proxy;
 		}
 	}
@@ -710,7 +709,7 @@ void server::run() {
 				simple_wml::document ping( strstr.str().c_str(),
 							   simple_wml::INIT_COMPRESSED );
 				simple_wml::string_span s = ping.output_compressed();
-				BOOST_FOREACH(network::connection sock, ghost_players_) {
+				for(network::connection sock : ghost_players_) {
 					if (!lg::debug().dont_log(log_server)) {
 						wesnothd::player_map::const_iterator i = players_.find(sock);
 						if (i != players_.end()) {
@@ -726,7 +725,7 @@ void server::run() {
  				// Only a single thread should be accessing this
 				// Erase before we copy - speeds inserts
 				ghost_players_.clear();
-				BOOST_FOREACH(const wesnothd::player_map::value_type v, players_) {
+				for(const wesnothd::player_map::value_type v : players_) {
 					ghost_players_.insert(v.first);
 				}
 				last_ping_ = now;
@@ -2470,7 +2469,7 @@ void server::process_data_game(const network::connection sock,
 		}
 
 		const simple_wml::node::child_list& mlist = data.children("modification");
-		BOOST_FOREACH (const simple_wml::node* m, mlist) {
+		for (const simple_wml::node* m : mlist) {
 			desc.add_child_at("modification", 0);
 			desc.child("modification")->set_attr_dup("id", m->attr("id"));
 			if (m->attr("require_modification").to_bool(false))

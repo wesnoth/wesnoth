@@ -24,7 +24,6 @@
 #include "serialization/unicode.hpp"
 #include "sdl/utils.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/predicate.hpp>
@@ -325,7 +324,7 @@ void hotkey_keyboard::save_helper(config &item) const
 
 bool has_hotkey_item(const std::string& command)
 {
-	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
+	for (hotkey_ptr item : hotkeys_) {
 		if (item->get_command() == command) {
 			return true;
 		}
@@ -375,7 +374,7 @@ void add_hotkey(const hotkey_ptr item)
 
 void clear_hotkeys(const std::string& command)
 {
-	BOOST_FOREACH(hotkey::hotkey_ptr item, hotkeys_) {
+	for (hotkey::hotkey_ptr item : hotkeys_) {
 		if (item->get_command() == command)
 		{
 			if (item->is_default())
@@ -393,7 +392,7 @@ void clear_hotkeys()
 
 const hotkey_ptr get_hotkey(const SDL_Event &event)
 {
-	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
+	for (hotkey_ptr item : hotkeys_) {
 		if (item->matches(event)) {
 			return item;
 		}
@@ -403,7 +402,7 @@ const hotkey_ptr get_hotkey(const SDL_Event &event)
 
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
-	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey")) {
+	for (const config &hk : cfg.child_range("hotkey")) {
 
 		hotkey_ptr item = load_from_config(hk);
 		if (!set_as_default) {
@@ -440,7 +439,7 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
+	for (hotkey_ptr item : hotkeys_) {
 		if ((!item->is_default() && item->active()) ||
 			(item->is_default() && item->is_disabled())) {
 			item->save(cfg.add_child("hotkey"));
@@ -452,7 +451,7 @@ std::string get_names(std::string id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
-	BOOST_FOREACH(const hotkey::hotkey_ptr item, hotkeys_) {
+	for (const hotkey::hotkey_ptr item : hotkeys_) {
 		if (item->get_command() == id && !item->null() && !item->is_disabled()) {
 			names.push_back(item->get_name());
 		}

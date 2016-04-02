@@ -26,8 +26,6 @@
 
 #include <SDL.h>
 
-#include <boost/foreach.hpp>
-
 #include <iostream>
 #include <deque>
 

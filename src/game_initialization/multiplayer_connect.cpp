@@ -30,7 +30,6 @@
 #include "wml_separators.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_mp_connect("mp/connect");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect)
@@ -42,7 +41,7 @@ std::vector<std::string> controller_options_names(
 	const std::vector<ng::controller_option>& controller_options)
 {
 	std::vector<std::string> names;
-	BOOST_FOREACH(const ng::controller_option& option, controller_options) {
+	for (const ng::controller_option& option : controller_options) {
 		names.push_back(option.second);
 	}
 
@@ -298,7 +297,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 void connect::side::update_faction_combo()
 {
 	std::vector<std::string> factions;
-	BOOST_FOREACH(const config* faction, engine_->flg().choosable_factions()) {
+	for (const config* faction : engine_->flg().choosable_factions()) {
 		const std::string& name = (*faction)["name"];
 		const std::string& icon = (*faction)["image"];
 		if (!icon.empty()) {
@@ -331,7 +330,7 @@ void connect::side::update_controller_ui()
 	int sel = 0;
 	int i = 0;
 	std::vector<std::string> ais;
-	BOOST_FOREACH(const ai::description* desc,  parent_->ai_algorithms_){
+	for (const ai::description* desc :  parent_->ai_algorithms_) {
 		ais.push_back(desc->text);
 		if (desc->id == engine_->ai_algorithm()) {
 			sel = i;
@@ -407,7 +406,7 @@ connect::connect(CVideo& v, const std::string& game_name,
 	ai_algorithms_ = ai::configuration::get_available_ais();
 
 	// Sides.
-	BOOST_FOREACH(ng::side_engine_ptr s, engine_.side_engines()) {
+	for (ng::side_engine_ptr s : engine_.side_engines()) {
 		sides_.push_back(side(*this, s));
 	}
 	if (sides_.empty() && !game_config::debug) {
@@ -417,7 +416,7 @@ connect::connect(CVideo& v, const std::string& game_name,
 
 	// Add side widgets to scroll pane.
 	int side_pos_y_offset = 0;
-	BOOST_FOREACH(side& s, sides_) {
+	for (side& s : sides_) {
 		if (!s.engine()->allow_player() && !game_config::debug) {
 			continue;
 		}
@@ -463,7 +462,7 @@ void connect::process_event_impl(const process_event_data & data)
 {
 	bool changed = false;
 
-	BOOST_FOREACH(side& s, sides_) {
+	for (side& s : sides_) {
 		s.process_event();
 		if (s.changed()) {
 			changed = true;
@@ -573,7 +572,7 @@ void connect::process_network_data(const config& data,
 		set_result(QUIT);
 	}
 
-	BOOST_FOREACH(side& s, sides_) {
+	for (side& s : sides_) {
 		s.update_ui();
 	}
 
@@ -606,7 +605,7 @@ void connect::update_playerlist_state(bool silent)
 	} else {
 		// Updates the player list
 		std::vector<std::string> playerlist;
-		BOOST_FOREACH(const std::string& user, engine_.connected_users()) {
+		for (const std::string& user : engine_.connected_users()) {
 			playerlist.push_back(user);
 		}
 		set_user_list(playerlist, silent);

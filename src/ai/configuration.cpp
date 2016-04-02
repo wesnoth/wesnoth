@@ -27,8 +27,6 @@
 #include "wml_exception.hpp"
 #include "config_assign.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <vector>
 #include <deque>
 #include <set>
@@ -55,7 +53,7 @@ void configuration::init(const config &game_config)
 	}
 
 
-	BOOST_FOREACH(const config &ai_configuration, ais.child_range("ai")) {
+	for (const config &ai_configuration : ais.child_range("ai")) {
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
@@ -80,7 +78,7 @@ void configuration::init(const config &game_config)
 namespace {
 void extract_ai_configurations(std::map<std::string, description> &storage, const config &input)
 {
-	BOOST_FOREACH(const config &ai_configuration, input.child_range("ai")) {
+	for (const config &ai_configuration : input.child_range("ai")) {
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
@@ -112,7 +110,7 @@ void configuration::add_era_ai_from_config(const config &era)
 void configuration::add_mod_ai_from_config(config::const_child_itors mods)
 {
 	mod_ai_configurations_.clear();
-	BOOST_FOREACH(const config &mod, mods) {
+	for (const config &mod : mods) {
 		extract_ai_configurations(mod_ai_configurations_, mod);
 	}
 }
@@ -184,7 +182,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 
 	//leave only the [ai] children
 	cfg = config();
-	BOOST_FOREACH(const config &aiparam, original_cfg.child_range("ai")) {
+	for (const config &aiparam : original_cfg.child_range("ai")) {
 		cfg.add_child("ai",aiparam);
 	}
 
@@ -212,7 +210,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	config parsed_cfg = config();
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations"<< std::endl;
-	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
+	for (const config &aiparam : cfg.child_range("ai")) {
 		parsed_cfg.append(aiparam);
 	}
 
@@ -221,7 +219,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	parsed_cfg.merge_children_by_attribute("aspect","id");
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects"<< std::endl;
-	BOOST_FOREACH(config &aspect_cfg, parsed_cfg.child_range("aspect")) {
+	for (config &aspect_cfg : parsed_cfg.child_range("aspect")) {
 		if (aspect_cfg["name"] != "composite_aspect") {
 			// No point in warning about Lua or standard aspects lacking [default]
 			continue;
@@ -254,7 +252,7 @@ static const std::set<std::string> old_goal_tags = {"target", "target_location",
 void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	std::string algorithm;
 	config base_config, parsed_config;
-	BOOST_FOREACH(const config &aiparam, cfg.child_range("ai")) {
+	for (const config &aiparam : cfg.child_range("ai")) {
 		std::string turns, time_of_day, engine = "cpp";
 		if (aiparam.has_attribute("turns")) {
 			turns = aiparam["turns"].str();
@@ -274,7 +272,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			}
 		}
 		std::deque<std::pair<std::string, config> > facet_configs;
-		BOOST_FOREACH(const config::attribute &attr, aiparam.attribute_range()) {
+		for (const config::attribute &attr : aiparam.attribute_range()) {
 			if (non_aspect_attributes.count(attr.first)) {
 				continue;
 			}
@@ -286,7 +284,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["value"] = attr.second;
 			facet_configs.push_back(std::make_pair(attr.first, facet_config));
 		}
-		BOOST_FOREACH(const config::any_child &child, aiparam.all_children_range()) {
+		for (const config::any_child &child : aiparam.all_children_range()) {
 			if (just_copy_tags.count(child.key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child.key, child.cfg);
@@ -340,14 +338,14 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_configs.pop_front();
 		}
 		typedef std::map<std::string, config>::value_type aspect_pair;
-		BOOST_FOREACH(const aspect_pair& p, aspect_configs) {
+		for (const aspect_pair& p : aspect_configs) {
 			parsed_config.add_child("aspect", p.second);
 		}
 	}
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {
 		base_config = get_ai_config_for("ai_default_rca");
 	}
-	BOOST_FOREACH(const config::any_child &child, parsed_config.all_children_range()) {
+	for (const config::any_child &child : parsed_config.all_children_range()) {
 		base_config.add_child(child.key, child.cfg);
 	}
 	cfg.clear_children("ai");

@@ -26,7 +26,6 @@
 #include "serialization/string_utils.hpp"
 #include "version.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
@@ -112,7 +111,7 @@ void config_cache::write_file(std::string path, const preproc_map& defines)
 	config_writer writer(*stream, true, game_config::cache_compression_level);
 
 	// Write all defines to stream.
-	BOOST_FOREACH(const preproc_map::value_type& define, defines) {
+	for(const preproc_map::value_type& define : defines) {
 		define.second.write(writer, define.first);
 	}
 }
@@ -149,7 +148,7 @@ void config_cache::read_cache(const std::string& path, config& cfg)
 
 	bool is_valid = true;
 
-	BOOST_FOREACH(const preproc_map::value_type& d, defines_map_) {
+	for(const preproc_map::value_type& d : defines_map_) {
 		//
 		// Only WESNOTH_VERSION is allowed to be non-empty.
 		//
@@ -262,7 +261,7 @@ void config_cache::read_defines_file(const std::string& path)
 
 	// use static preproc_define::read_pair(config) to make a object
 	// and pass that object config_cache_transaction::insert_to_active method
-	BOOST_FOREACH(const config::any_child &value, cfg.all_children_range()) {
+	for(const config::any_child &value : cfg.all_children_range()) {
 		config_cache_transaction::instance().insert_to_active(
 			preproc_define::read_pair(value.cfg));
 	}
@@ -272,7 +271,7 @@ void config_cache::read_defines_queue()
 {
 	const std::vector<std::string>& files = config_cache_transaction::instance().get_define_files();
 
-	BOOST_FOREACH(const std::string &path, files) {
+	for(const std::string &path : files) {
 		read_defines_file(path);
 	}
 }
@@ -378,7 +377,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 	const bool delete_everything = exclude_pattern.empty();
 	bool status = true;
 
-	BOOST_FOREACH(const std::string& path, paths)
+	for(const std::string& path : paths)
 	{
 		if(!delete_everything) {
 			const std::string& fn = filesystem::base_name(path);
@@ -479,7 +478,7 @@ void config_cache_transaction::add_defines_map_diff(preproc_map& new_map)
 				std::insert_iterator<preproc_map>(temp,temp.begin()),
 				&compare_define);
 
-		BOOST_FOREACH(const preproc_map::value_type &def, temp) {
+		for(const preproc_map::value_type &def : temp) {
 			insert_to_active(def);
 		}
 

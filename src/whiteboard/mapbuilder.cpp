@@ -29,7 +29,7 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"
 
-#include <boost/foreach.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 
 namespace wb
 {
@@ -56,13 +56,13 @@ mapbuilder::~mapbuilder()
 
 void mapbuilder::pre_build()
 {
-	BOOST_FOREACH(team& t, *resources::teams) {
+	for (team& t : *resources::teams) {
 		//Reset spent gold to zero, it'll be recalculated during the map building
 		t.get_side_actions()->reset_gold_spent();
 	}
 
 	int current_side = resources::controller->current_side();
-	BOOST_FOREACH(unit& u, *resources::units) {
+	for (unit& u : *resources::units) {
 		bool on_current_side = (u.side() == current_side);
 
 		//Remove any unit the current side cannot see to avoid their detection by planning
@@ -96,7 +96,7 @@ void mapbuilder::build_map()
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
 		end = true;
-		BOOST_FOREACH(team &side, *resources::teams) {
+		for (team &side : *resources::teams) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_has_visible_plan(side)) {
 				end = false;
@@ -177,7 +177,7 @@ void mapbuilder::post_visit_team(size_t turn)
 
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
-	BOOST_REVERSE_FOREACH(action_ptr action, applied_actions_this_turn_) {
+	for(action_ptr action : boost::adaptors::reverse(applied_actions_this_turn_)) {
 		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
@@ -197,7 +197,7 @@ void mapbuilder::post_visit_team(size_t turn)
 void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
-	BOOST_REVERSE_FOREACH(action_ptr act, applied_actions_) {
+	for(action_ptr act : boost::adaptors::reverse(applied_actions_)) {
 		act->remove_temp_modifier(unit_map_);
 	}
 }

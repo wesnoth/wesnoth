@@ -22,7 +22,6 @@
 #include "util.hpp"                     // for lexical_cast
 
 #include <boost/any.hpp>                // for any
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/program_options/cmdline.hpp>
 #include <boost/program_options/errors.hpp>  // for validation_error, etc
 #include <boost/program_options/parsers.hpp>
@@ -497,7 +496,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
 {
 	const std::vector<std::string> domains = utils::split(domains_string, ',');
-	BOOST_FOREACH(const std::string& domain, domains)
+	for (const std::string& domain : domains)
 	{
 		if (!log)
 			log = std::vector<boost::tuple<int, std::string> >();
@@ -507,7 +506,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 
 void commandline_options::parse_log_strictness (const std::string & severity ) {
 	static lg::logger const *loggers[] = { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
-	BOOST_FOREACH (const lg::logger * l, loggers ) {
+	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);
 			return ;
@@ -543,7 +542,7 @@ std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING";
 
-	BOOST_FOREACH(const std::string &s, strings)
+	for (const std::string &s : strings)
 	{
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 2) {
@@ -571,7 +570,7 @@ std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_opt
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
 
-	BOOST_FOREACH(const std::string &s, strings)
+	for (const std::string &s : strings)
 	{
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 3) {

@@ -18,8 +18,6 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace preferences {
 
 namespace editor {
@@ -119,7 +117,7 @@ namespace editor {
 				return mru;
 			}
 
-			BOOST_FOREACH(const config& child, cfg.child_range("entry"))
+			for(const config& child : cfg.child_range("entry"))
 			{
 				const std::string& entry = child["path"].str();
 				if(!entry.empty()) {
@@ -137,7 +135,7 @@ namespace editor {
 			config cfg;
 			unsigned n = 0;
 
-			BOOST_FOREACH(const std::string& entry, mru)
+			for(const std::string& entry : mru)
 			{
 				if(entry.empty()) {
 					continue;

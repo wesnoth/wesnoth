@@ -18,7 +18,6 @@
 #include "scripting/push_check.hpp"
 #include "units/types.hpp"
 
-#include <boost/foreach.hpp>
 #include <string>
 
 #include "lua/lua.h"
@@ -60,7 +59,7 @@ static int impl_unit_type_get(lua_State *L)
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	if (strcmp(m, "traits") == 0) {
 		lua_newtable(L);
-		BOOST_FOREACH(const config& trait, ut.possible_traits()) {
+		for (const config& trait : ut.possible_traits()) {
 			const std::string& id = trait["id"];
 			lua_pushlstring(L, id.c_str(), id.length());
 			luaW_pushconfig(L, trait);

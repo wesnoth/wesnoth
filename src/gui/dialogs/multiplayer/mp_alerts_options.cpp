@@ -30,7 +30,6 @@
 #include "formula/string_utils.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #include "gettext.hpp"
 
@@ -111,7 +110,7 @@ static void set_pref_and_button(const std::string & id, bool value, twindow & wi
 
 static void revert_to_default_pref_values(twindow & window)
 {
-	BOOST_FOREACH(const std::string & i, mp_ui_alerts::items) {
+	for (const std::string & i : mp_ui_alerts::items) {
 		set_pref_and_button(i+"_sound", mp_ui_alerts::get_def_pref_sound(i), window);
 		set_pref_and_button(i+"_notif", mp_ui_alerts::get_def_pref_notif(i), window);
 		set_pref_and_button(i+"_lobby", mp_ui_alerts::get_def_pref_lobby(i), window);
@@ -126,7 +125,7 @@ tmp_alerts_options::tmp_alerts_options()
 
 void tmp_alerts_options::pre_show(twindow& window)
 {
-	BOOST_FOREACH(const std::string & i, mp_ui_alerts::items) {
+	for (const std::string & i : mp_ui_alerts::items) {
 		setup_item(i, window);
 	}
 

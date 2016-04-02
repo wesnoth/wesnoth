@@ -25,8 +25,6 @@
 
 #include "resources.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace editor {
 
 int editor_action::next_id_ = 1;
@@ -77,25 +75,25 @@ void editor_action_whole_map::perform_without_undo(map_context& mc) const {
 editor_action_chain::editor_action_chain(const editor::editor_action_chain &other)
 	: editor_action(), actions_()
 {
-	BOOST_FOREACH(editor_action* a, other.actions_) {
+	for (editor_action* a : other.actions_) {
 		actions_.push_back(a->clone());
 	}
 }
 editor_action_chain& editor_action_chain::operator=(const editor_action_chain& other)
 {
 	if (this == &other) return *this;
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for (editor_action* a : actions_) {
 		delete a;
 	}
 	actions_.clear();
-	BOOST_FOREACH(editor_action* a, other.actions_) {
+	for (editor_action* a : other.actions_) {
 		actions_.push_back(a->clone());
 	}
 	return *this;
 }
 editor_action_chain::~editor_action_chain()
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for (editor_action* a : actions_) {
 		delete a;
 	}
 }
@@ -105,7 +103,7 @@ editor_action_chain* editor_action_chain::clone() const
 }
 int editor_action_chain::action_count() const {
 	int count = 0;
-	BOOST_FOREACH(const editor_action* a, actions_) {
+	for (const editor_action* a : actions_) {
 		if (a) {
 			count += a->action_count();
 		}
@@ -135,7 +133,7 @@ editor_action* editor_action_chain::pop_first_action() {
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	util::unique_ptr<editor_action_chain> undo(new editor_action_chain());
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for (editor_action* a : actions_) {
 		if (a != nullptr) {
 			undo->append_action(a->perform(mc));
 		}
@@ -145,7 +143,7 @@ editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for (editor_action* a : actions_) {
 		if (a != nullptr) {
 			a->perform_without_undo(mc);
 		}

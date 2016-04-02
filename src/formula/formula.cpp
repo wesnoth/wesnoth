@@ -21,8 +21,6 @@
 #include "random_new.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace game_logic
 {
 
@@ -123,7 +121,7 @@ private:
 		std::stringstream s;
 		s << '[';
 		bool first_item = true;
-		BOOST_FOREACH(expression_ptr a , items_) {
+		for(expression_ptr a : items_) {
 			if (!first_item) {
 				s << ',';
 			} else {
@@ -236,7 +234,7 @@ public:
 			return variant(string_.as_string().empty());
 		} else if(key == "char" || key == "chars") {
 			std::vector<variant> chars;
-			BOOST_FOREACH(char c , string_.as_string()) {
+			for(char c : string_.as_string()) {
 				chars.push_back(variant(std::string(1, c)));
 			}
 			return variant(&chars);
@@ -255,7 +253,7 @@ public:
 			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
 			items.reserve(split.size());
-			BOOST_FOREACH(const std::string s , split) {
+			for(const std::string s : split) {
 				items.push_back(variant(s));
 			}
 			return variant(&items);
@@ -320,7 +318,7 @@ public:
 			}
 			std::string key = key_variant.as_string();
 			bool valid = true;
-			BOOST_FOREACH(char c , key) {
+			for(char c : key) {
 				if(!isalpha(c) && c != '_') {
 					valid = false;
 					break;
@@ -603,7 +601,7 @@ public:
 		std::stringstream s;
 		s << "{where:(";
 		s << body_->str();
-		BOOST_FOREACH(const expr_table::value_type &a, *clauses_) {
+		for(const expr_table::value_type &a : *clauses_) {
 			s << ", [" << a.first << "] -> ["<< a.second->str()<<"]";
 		}
 		s << ")}";

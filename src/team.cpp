@@ -36,8 +36,6 @@
 #include "config_assign.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -333,7 +331,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	// Was it correct?
 
 	// Load in the villages the side controls at the start
-	BOOST_FOREACH(const config &v, cfg.child_range("village"))
+	for (const config &v : cfg.child_range("village"))
 	{
 		map_location loc(v);
 		if (map.is_village(loc)) {
@@ -421,7 +419,7 @@ int team::minimum_recruit_price() const
 		return info_.minimum_recruit_price;
 	}else{
 		int min = 20;
-		BOOST_FOREACH(std::string recruit, info_.can_recruit){
+		for(std::string recruit : info_.can_recruit) {
 			const unit_type *ut = unit_types.find(recruit);
 			if(!ut)
 				continue;
@@ -734,7 +732,7 @@ bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, 
 		return true;
 
 	// A tile is uncovered if it is uncovered on any shared map.
-	BOOST_FOREACH(const shroud_map * const shared_map, maps) {
+	for (const shroud_map * const shared_map : maps) {
 		if ( shared_map->enabled_  &&  !shared_map->value(x,y) )
 			return false;
 	}
@@ -878,7 +876,7 @@ config team::to_config() const
 std::string team::allied_human_teams() const
 {
 	std::vector<int> res;
-	BOOST_FOREACH(const team& t, *teams)
+	for(const team& t : *teams)
 	{
 		if(!t.is_enemy(this->side()) && t.is_human()) {
 			res.push_back(t.side());

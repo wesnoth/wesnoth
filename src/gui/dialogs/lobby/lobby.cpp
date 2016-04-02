@@ -48,7 +48,6 @@
 #include "mp_ui_alerts.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)

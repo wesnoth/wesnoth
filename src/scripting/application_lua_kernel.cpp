@@ -49,7 +49,6 @@
 #include <utility>
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/range/adaptors.hpp>
@@ -271,7 +270,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	// Now we have to create the context object. It is arranged as a table of boost functions.
 	boost::shared_ptr<lua_context_backend> this_context_backend = boost::make_shared<lua_context_backend> (lua_context_backend());
 	lua_newtable(T_); // this will be the context table
-	BOOST_FOREACH( const std::string & key, ctxt.callbacks_ | boost::adaptors::map_keys ) {
+	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());
 		lua_cpp::push_function(T_, boost::bind(&impl_context_backend, _1, this_context_backend, key));
 		lua_settable(T_, -3);
@@ -282,7 +281,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	lua_pushstring(T_, "name");
 	lua_pushstring(T_, ctxt.name_.c_str());
 	lua_settable(T_, -3);
-	BOOST_FOREACH( const plugins_context::accessor_list::value_type & v, ctxt.accessors_) {
+	for (const plugins_context::accessor_list::value_type & v : ctxt.accessors_) {
 		const std::string & key = v.first;
 		const plugins_context::accessor_function & func = v.second;
 		lua_pushstring(T_, key.c_str());
@@ -323,7 +322,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	application_lua_kernel::request_list results;
 
-	BOOST_FOREACH( const plugins_manager::event & req, this_context_backend->requests) {
+	for (const plugins_manager::event & req : this_context_backend->requests) {
 		results.push_back(boost::bind(ctxt.callbacks_.find(req.name)->second, req.data));
 		//results.push_back(std::make_pair(ctxt.callbacks_.find(req.name)->second, req.data));
 	}

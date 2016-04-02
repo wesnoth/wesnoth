@@ -22,8 +22,6 @@
 #include "sdl/alpha.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <map>
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -60,7 +58,7 @@ void modification_queue::pop()
 size_t modification_queue::size() const
 {
 	size_t count = 0;
-	BOOST_FOREACH ( const map_type::value_type & pair, priorities_ )
+	for (const map_type::value_type & pair : priorities_)
 		count += pair.second.size();
 	return count;
 }
@@ -138,8 +136,7 @@ modification_queue modification::decode(const std::string& encoded_mods)
 {
 	modification_queue mods;
 
-	BOOST_FOREACH(const std::string& encoded_mod,
-		utils::parenthetical_split(encoded_mods, '~')) {
+	for(const std::string& encoded_mod : utils::parenthetical_split(encoded_mods, '~')) {
 		modification* mod = decode_modification(encoded_mod);
 
 		if(mod) {

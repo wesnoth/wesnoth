@@ -37,7 +37,6 @@
 #include "wml_exception.hpp"
 
 #include <boost/lexical_cast.hpp>
-#include <boost/foreach.hpp>
 #include <set>
 #include <sstream>
 
@@ -154,7 +153,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 
 	//find the enemy leaders and explicit targets
 	const unit_filter ufilt(vconfig(criteria), resources::filter_con);
-	BOOST_FOREACH(const unit &u, *resources::units) {
+	for (const unit &u : *resources::units) {
 		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::TYPE::EXPLICIT);
@@ -204,7 +203,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 
 	std::set<map_location> items;
 	filter_ptr_->get_locations(items);
-	BOOST_FOREACH(const map_location &loc, items)
+	for (const map_location &loc : items)
 	{
 		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
 		*target_list = target(loc, value(), target::TYPE::EXPLICIT);
@@ -285,7 +284,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	std::set<map_location> items;
 	if (protect_unit_) {
 		const unit_filter ufilt(vconfig(criteria), resources::filter_con);
-		BOOST_FOREACH(const unit &u, units)
+		for (const unit &u : units)
 		{
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
 			if (ufilt(u)) {
@@ -298,9 +297,9 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	}
 	DBG_AI_GOAL << "side " << get_side() << ": seaching for threats in "+goal_type+" goal" << std::endl;
 	// Look for directions to protect a specific location or specific unit.
-	BOOST_FOREACH(const map_location &loc, items)
+	for (const map_location &loc : items)
 	{
-		BOOST_FOREACH(const unit &u, units)
+		for (const unit &u : units)
 		{
 			int distance = distance_between(u.get_location(), loc);
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
@@ -355,7 +354,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > ta
 	try {
 		std::vector < target > targets = *(l_obj->get());
 
-		BOOST_FOREACH(target tg, targets)
+		for (target tg : targets)
 		{
 			*target_list = tg;
 		}

@@ -37,8 +37,6 @@
 #include "synced_context.hpp"
 #include "replay_helper.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 

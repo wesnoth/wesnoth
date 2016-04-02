@@ -35,7 +35,6 @@
 #include "formula/string_utils.hpp"
 
 #include <boost/regex.hpp>
-#include <boost/foreach.hpp>
 
 
 namespace editor {
@@ -289,31 +288,31 @@ void map_context::load_scenario(const config& game_config)
 	labels_.read(scenario);
 
 	tod_manager_.reset(new tod_manager(scenario));
-	BOOST_FOREACH(const config &time_area, scenario.child_range("time_area")) {
+	for(const config &time_area : scenario.child_range("time_area")) {
 		tod_manager_->add_time_area(map_,time_area);
 	}
 
-	BOOST_FOREACH(const config& item, scenario.child_range("item")) {
+	for(const config& item : scenario.child_range("item")) {
 		const map_location loc(item);
 		overlays_.insert(std::pair<map_location,
 				overlay>(loc, overlay(item) ));
 	}
 
-	BOOST_FOREACH(const config& music, scenario.child_range("music")) {
+	for(const config& music : scenario.child_range("music")) {
 		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
 
 	resources::teams = &teams_;
 
 	int i = 1;
-	BOOST_FOREACH(config &side, scenario.child_range("side"))
+	for(config &side : scenario.child_range("side"))
 	{
 		team t;
 		side["side"] = i;
 		t.build(side, map_);
 		teams_.push_back(t);
 
-		BOOST_FOREACH(config &a_unit, side.child_range("unit")) {
+		for(config &a_unit : side.child_range("unit")) {
 			map_location loc(a_unit, nullptr);
 			a_unit["side"] = i;
 			units_.add(loc, unit(a_unit, true) );
@@ -370,7 +369,7 @@ void map_context::draw_terrain(const t_translation::t_terrain & terrain,
 	t_translation::t_terrain full_terrain = one_layer_only ? terrain :
 		map_.get_terrain_info(terrain).terrain_with_default_base();
 
-	BOOST_FOREACH(const map_location& loc, locs) {
+	for(const map_location& loc : locs) {
 		draw_terrain_actual(full_terrain, loc, one_layer_only);
 	}
 }
@@ -454,7 +453,7 @@ config map_context::to_config()
 			item["team_name"] = it->second.team_name;
 	}
 
-	BOOST_FOREACH(const music_map::value_type& track, music_tracks_) {
+	for(const music_map::value_type& track : music_tracks_) {
 		track.second.write(scenario, true);
 	}
 
@@ -482,7 +481,7 @@ config map_context::to_config()
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();
 
-		BOOST_FOREACH(const map_location& village, t->villages()) {
+		for(const map_location& village : t->villages()) {
 			village.write(side.add_child("village"));
 		}
 
@@ -719,7 +718,7 @@ void map_context::trim_stack(action_stack& stack)
 
 void map_context::clear_stack(action_stack& stack)
 {
-	BOOST_FOREACH(editor_action* a, stack) {
+	for (editor_action* a : stack) {
 		delete a;
 	}
 	stack.clear();

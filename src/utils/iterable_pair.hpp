@@ -20,6 +20,7 @@
 #define UTILS_ITERABLE_PAIR_HPP_INCLUDED
 
 #include <utility>
+#include <iterator>
 
 namespace std { // Some cases don't work if not in std namespace
 
@@ -31,6 +32,38 @@ inline T begin(const std::pair<T, T>& p) {
 template<typename T>
 inline T end(const std::pair<T, T>& p) {
 	return p.second;
+}
+
+// TODO: Is there a way to enforce that this is called only for const_iterators?
+template<typename T>
+inline T cbegin(const std::pair<T, T>& p) {
+	return p.first;
+}
+
+template<typename T>
+inline T cend(const std::pair<T, T>& p) {
+	return p.second;
+}
+
+template<typename T>
+inline std::reverse_iterator<T> rbegin(const std::pair<T, T>& p) {
+	return std::reverse_iterator<T>(p.second);
+}
+
+template<typename T>
+inline std::reverse_iterator<T> rend(const std::pair<T, T>& p) {
+	return std::reverse_iterator<T>(p.first);
+}
+
+// TODO: Is there a way to enforce that this is called only for const_iterators?
+template<typename T>
+inline std::reverse_iterator<T> crbegin(const std::pair<T, T>& p) {
+	return std::reverse_iterator<T>(p.second);
+}
+
+template<typename T>
+inline std::reverse_iterator<T> crend(const std::pair<T, T>& p) {
+	return std::reverse_iterator<T>(p.first);
 }
 
 }

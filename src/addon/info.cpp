@@ -22,8 +22,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_AC LOG_STREAM(err ,  log_addons_client)
 #define LOG_AC LOG_STREAM(info,  log_addons_client)
@@ -45,7 +43,7 @@ namespace {
 			return;
 		}
 
-		BOOST_FOREACH(const std::string& dep, base_deps) {
+		for(const std::string& dep : base_deps) {
 			if(base_id == dep) {
 				LOG_AC << dep << " depends upon itself; breaking circular dependency\n";
 				continue;
@@ -76,7 +74,7 @@ void addon_info::read(const config& cfg)
 
 	const config::const_child_itors& locales = cfg.child_range("translation");
 
-	BOOST_FOREACH(const config& locale, locales) {
+	for(const config& locale : locales) {
 		this->locales.push_back(locale["language"].str());
 	}
 
@@ -101,7 +99,7 @@ void addon_info::write(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 
-	BOOST_FOREACH(const std::string& locale_id, this->locales) {
+	for (const std::string& locale_id : this->locales) {
 		cfg.add_child("translation")["language"] = locale_id;
 	}
 
@@ -204,9 +202,10 @@ void read_addons_list(const config& cfg, addons_list& dest)
 
 	unsigned order = 0;
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
+	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
+	 */
 	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
-	BOOST_FOREACH(const config& addon_cfg, addon_cfgs) {
+	for(const config& addon_cfg : addon_cfgs) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
 			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;

@@ -23,8 +23,6 @@
 
 #include "map/map.hpp"
 
-#include <boost/foreach.hpp>
-
 
 /**
  * Function that will add to @a result all locations exactly @a radius tiles
@@ -109,7 +107,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		// Perform this conversion once.
 		const int radius_i = static_cast<int>(radius);
 
-		BOOST_FOREACH (const map_location &loc, locs)
+		for (const map_location &loc : locs)
 			if ( loc != map_location::null_location() )
 			{
 				// Calculate the circle of hexes around this one.
@@ -160,7 +158,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		// Note: This hint will get incremented later, which is the only
 		// reason we require result to be initially non-empty.
 
-		BOOST_FOREACH (const column_ranges::value_type & column, collected_tiles)
+		for (const column_ranges::value_type & column : collected_tiles)
 		{
 			// For this loop, the order within the set is crucial; we need
 			// rows.first to be non-decreasing with each iteration.
@@ -168,7 +166,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 			// have been processed and either added to result or skipped.
 			// There is no going back (nor a need to).
 			int next_row = row_begin;
-			BOOST_FOREACH (const row_range &rows, column.second)
+			for (const row_range &rows : column.second)
 			{
 				// Skipping some rows?
 				if ( next_row < rows.first )

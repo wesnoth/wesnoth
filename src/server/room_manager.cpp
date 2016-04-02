@@ -22,8 +22,6 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_server_lobby("server/lobby");
 #define ERR_LOBBY LOG_STREAM(err, log_server_lobby)
 #define WRN_LOBBY LOG_STREAM(warn, log_server_lobby)
@@ -58,7 +56,7 @@ room_manager::~room_manager()
 	// this assumes the server is shutting down, so there's no need to
 	// send the actual room-quit messages to clients
 	write_rooms();
-	BOOST_FOREACH(t_rooms_by_name_::value_type i, rooms_by_name_) {
+	for (t_rooms_by_name_::value_type i : rooms_by_name_) {
 		delete i.second;
 	}
 }
@@ -97,7 +95,7 @@ void room_manager::read_rooms()
 			read(cfg, *file);
 		}
 
-		BOOST_FOREACH(const config &c, cfg.child_range("room")) {
+		for (const config &c : cfg.child_range("room")) {
 			room* r(new room(c));
 			if (room_exists(r->name())) {
 				ERR_LOBBY << "Duplicate room ignored in stored rooms: "
@@ -122,7 +120,7 @@ void room_manager::write_rooms()
 	if (filename_.empty()) return;
 	LOG_LOBBY << "Writing rooms to " << filename_ << "\n";
 	config cfg;
-	BOOST_FOREACH(const t_rooms_by_name_::value_type& v, rooms_by_name_) {
+	for (const t_rooms_by_name_::value_type& v : rooms_by_name_) {
 		const room& r = *v.second;
 		if (r.persistent()) {
 			config& c = cfg.add_child("room");
@@ -211,7 +209,7 @@ void room_manager::enter_lobby(network::connection player)
 
 void room_manager::enter_lobby(const wesnothd::game &game)
 {
-	BOOST_FOREACH(network::connection player, game.all_game_users()) {
+	for (network::connection player : game.all_game_users()) {
 		enter_lobby(player);
 	}
 }
@@ -225,7 +223,7 @@ void room_manager::exit_lobby(network::connection player)
 	store_player_rooms(player);
 	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
 	if (i != rooms_by_player_.end()) {
-		BOOST_FOREACH(room* r, i->second) {
+		for (room* r : i->second) {
 			r->remove_player(player);
 		}
 	}
@@ -244,7 +242,7 @@ void room_manager::remove_player(network::connection player)
 	lobby_->remove_player(player);
 	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
 	if (i != rooms_by_player_.end()) {
-		BOOST_FOREACH(room* r, i->second) {
+		for (room* r : i->second) {
 			r->remove_player(player);
 		}
 	}
@@ -315,7 +313,7 @@ void room_manager::store_player_rooms(network::connection player)
 	t_player_stored_rooms_::iterator it =
 		player_stored_rooms_.insert(std::make_pair(player, std::set<std::string>())).first;
 	std::set<std::string>& store = it->second;
-	BOOST_FOREACH(room* r, i->second) {
+	for (room* r : i->second) {
 		store.insert(r->name());
 	}
 }
@@ -337,7 +335,7 @@ void room_manager::unstore_player_rooms(const player_map::iterator user)
 	simple_wml::document doc;
 	simple_wml::node& join_msg = doc.root().add_child("room_join");
 	join_msg.set_attr_dup("player", user->second.name().c_str());
-	BOOST_FOREACH(const std::string& room_name, it->second) {
+	for (const std::string& room_name : it->second) {
 		room* r = get_create_room(room_name, user->first);
 		if (r == nullptr) {
 			LOG_LOBBY << "Player " << user->second.name() << " unable to rejoin room " << room_name << "\n";
@@ -528,7 +526,7 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 void room_manager::fill_room_list(simple_wml::node& root)
 {
 	simple_wml::node& rooms = root.add_child("rooms");
-	BOOST_FOREACH(const t_rooms_by_name_::value_type& tr, rooms_by_name_) {
+	for (const t_rooms_by_name_::value_type& tr : rooms_by_name_) {
 		const room& r = *tr.second;
 		simple_wml::node& room = rooms.add_child("room");
 		room.set_attr_dup("name", r.name().c_str());
@@ -539,7 +537,7 @@ void room_manager::fill_room_list(simple_wml::node& root)
 void room_manager::fill_member_list(const room* room, simple_wml::node& root)
 {
 	simple_wml::node& members = root.add_child("members");
-	BOOST_FOREACH(network::connection m, room->members()) {
+	for (network::connection m : room->members()) {
 		simple_wml::node& member = members.add_child("member");
 		player_map::const_iterator mi = all_players_.find(m);
 		if (mi != all_players_.end()) {

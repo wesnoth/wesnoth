@@ -51,7 +51,6 @@
 #include "variable.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -140,7 +139,7 @@ namespace { // Helpers for get_recalls()
 
 		const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
 
-		BOOST_FOREACH(const unit_const_ptr & recall_unit_ptr, leader_team.recall_list())
+		for (const unit_const_ptr & recall_unit_ptr : leader_team.recall_list())
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
@@ -220,7 +219,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 	if ( !leader_in_place )
 	{
 		// Return the full recall list.
-		BOOST_FOREACH(const unit_const_ptr & recall, (*resources::teams)[side-1].recall_list())
+		for (const unit_const_ptr & recall : (*resources::teams)[side-1].recall_list())
 		{
 			result.push_back(recall);
 		}

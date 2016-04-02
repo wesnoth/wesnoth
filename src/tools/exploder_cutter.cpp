@@ -20,8 +20,6 @@
 #include "serialization/string_utils.hpp"
 #include <SDL_image.h>
 
-#include <boost/foreach.hpp>
-
 #include <iostream>
 
 cutter::cutter()

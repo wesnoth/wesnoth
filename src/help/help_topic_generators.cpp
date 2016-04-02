@@ -29,7 +29,6 @@
 #include "units/types.hpp"               // for unit_type, unit_type_data, etc
 #include "video.hpp"                    // fore current_resolution
 
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>  // for optional
 #include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
@@ -106,7 +105,7 @@ static std::string print_behavior_description(t_it start, t_it end, const tdata_
 		if (!first_level) ss << "( ";
 		ss << print_behavior_description(start, *last_change_pos-1, tdata, false, begin_best);
 		// Printed the (parenthesized) leading part from before the change, now print the remaining names in this group.
-		BOOST_FOREACH(const std::string & s, names) {
+		for (const std::string & s : names) {
 			ss << ", " << s;
 		}
 		if (!first_level) ss << " )";
@@ -143,7 +142,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << "\n" << _("Base Terrain: ");
 
 		bool first = true;
-		BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_mvt_terrains) {
+		for (const t_translation::t_terrain& underlying_terrain : underlying_mvt_terrains) {
 			const terrain_type& mvt_base = tdata->get_terrain_info(underlying_terrain);
 
 			if (mvt_base.editor_name().empty()) continue;
@@ -200,13 +199,13 @@ std::string terrain_topic_generator::operator()() const {
 
 		const t_translation::t_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
-		BOOST_FOREACH(const t_translation::t_terrain & t, underlying_mvt_terrains) {
+		for (const t_translation::t_terrain & t : underlying_mvt_terrains) {
 			ss << " " << t;
 		}
 
 		const t_translation::t_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
-		BOOST_FOREACH(const t_translation::t_terrain & t, underlying_def_terrains) {
+		for (const t_translation::t_terrain & t : underlying_def_terrains) {
 			ss << " " << t;
 		}
 
@@ -294,7 +293,7 @@ std::string unit_topic_generator::operator()() const {
 				reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
 			
-			BOOST_FOREACH(const std::string &adv, adv_units) {
+			for (const std::string &adv : adv_units) {
 				const unit_type *type = unit_types.find(adv, unit_type::HELP_INDEXED);
 				if (!type || type->hide_help()) {
 					continue;
@@ -336,7 +335,7 @@ std::string unit_topic_generator::operator()() const {
 		ss << _("Base unit: ") << make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
 	} else {
 		bool first = true;
-		BOOST_FOREACH(const std::string& base_id, utils::split(type_.get_cfg()["base_ids"])) {
+		for (const std::string& base_id : utils::split(type_.get_cfg()["base_ids"])) {
 			if (first) {
 				ss << _("Base units: ");
 				first = false;
@@ -348,7 +347,7 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	bool first = true;
-	BOOST_FOREACH(const std::string &var_id, parent->variations()) {
+	for (const std::string &var_id : parent->variations()) {
 		const unit_type &type = parent->get_variation(var_id);
 
 		if(type.hide_help()) {
@@ -393,7 +392,7 @@ std::string unit_topic_generator::operator()() const {
 		std::vector<trait_data> must_have_traits;
 		std::vector<trait_data> random_traits;
 
-		BOOST_FOREACH(const config & trait, traits) {
+		for (const config & trait : traits) {
 			const std::string trait_name = trait["male_name"];
 			std::string lang_trait_name = translation::gettext(trait_name.c_str());
 			const std::string ref_id = "traits_"+trait["id"].str();
@@ -555,9 +554,9 @@ std::string unit_topic_generator::operator()() const {
 	movetype movement_type = type_.movement_type();
 	traits = type_.possible_traits();
 	if (traits.first != traits.second && type_.num_traits() > 0) {
-		BOOST_FOREACH(const config & t, traits) {
+		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
-				BOOST_FOREACH (const config & effect, t.child_range("effect")) {
+				for (const config & effect : t.child_range("effect")) {
 					if (!effect.child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
 							&& movetype::effects.find(effect["apply_to"].str()) != movetype::effects.end()) {
 						movement_type.merge(effect, effect["replace"].to_bool());

@@ -40,7 +40,6 @@
 #include <csignal>
 #include <ctime>
 
-#include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>

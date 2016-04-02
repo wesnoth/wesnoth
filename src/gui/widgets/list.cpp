@@ -27,7 +27,6 @@
 #include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -121,7 +120,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 
 void tlist::append_rows(const std::vector<string_map>& items)
 {
-	BOOST_FOREACH(const string_map & item, items)
+	for(const string_map & item : items)
 	{
 		add_row(item);
 	}

@@ -26,7 +26,6 @@
 
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/date_time.hpp>
 
 #include <map>
@@ -121,11 +120,11 @@ bool set_log_domain_severity(std::string const &name, int severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
-		BOOST_FOREACH(logd &l, *domains) {
+		for(logd &l : *domains) {
 			l.second = severity;
 		}
 	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
-		BOOST_FOREACH(logd &l, *domains) {
+		for(logd &l : *domains) {
 			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
 				l.second = severity;
 		}
@@ -144,7 +143,7 @@ bool set_log_domain_severity(std::string const &name, const logger &lg) {
 std::string list_logdomains(const std::string& filter)
 {
 	std::ostringstream res;
-	BOOST_FOREACH(logd &l, *domains) {
+	for(logd &l : *domains) {
 		if(l.first.find(filter) != std::string::npos)
 			res << l.first << "\n";
 	}

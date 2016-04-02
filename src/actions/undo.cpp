@@ -54,7 +54,6 @@
 #include "undo_update_shroud_action.hpp"
 
 #include <algorithm>                    // for reverse
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/ptr_container/detail/static_move_ptr.hpp>
 #include <boost/ptr_container/detail/void_ptr_iterator.hpp>
@@ -299,7 +298,7 @@ void undo_list::read(const config & cfg)
 	committed_actions_ = committed_actions_ || cfg["committed"].to_bool();
 
 	// Build the undo stack.
-	BOOST_FOREACH( const config & child, cfg.child_range("undo") ) {
+	for (const config & child : cfg.child_range("undo")) {
 		try {
 			undo_action_base * action = create_action(child);
 			if ( action ) {
@@ -317,7 +316,7 @@ void undo_list::read(const config & cfg)
 	}
 
 	// Build the redo stack.
-	BOOST_FOREACH( const config & child, cfg.child_range("redo") ) {
+	for (const config & child : cfg.child_range("redo")) {
 		try {
 			undo_action_base * action = create_action(child);
 			if ( undo_action* undoable_action = dynamic_cast<undo_action*>(action)) {

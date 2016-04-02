@@ -21,8 +21,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_network("network");
 #define LOG_CS if (lg::err().dont_log(log_network)) ; else lg::err()(log_network, false)
 

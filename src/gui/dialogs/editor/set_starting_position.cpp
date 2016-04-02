@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/editor/set_starting_position.hpp"
 
-#include <boost/foreach.hpp>
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"

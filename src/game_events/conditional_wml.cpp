@@ -36,7 +36,6 @@
 #include "util.hpp"
 #include "variable.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -72,7 +71,7 @@ namespace { // Support functions
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			int match_count = 0;
 			const unit_filter ufilt(*u, resources::filter_con);
-			BOOST_FOREACH(const unit &i, *resources::units)
+			for (const unit &i : *resources::units)
 			{
 				if ( i.hitpoints() > 0  &&  ufilt(i) ) {
 					++match_count;
@@ -125,7 +124,7 @@ namespace { // Support functions
 		// to see if the variable matches the conditions or not.
 		const vconfig::child_list& variables = cond.get_children("variable");
 
-		BOOST_FOREACH(const vconfig &values, variables)
+		for (const vconfig &values : variables)
 		{
 			const std::string name = values["name"];
 			config::attribute_value value = resources::gamedata->get_variable_const(name);

@@ -45,7 +45,6 @@
 #include "units/drawer.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_display("display");
@@ -275,7 +274,7 @@ void game_display::draw_invalidated()
 
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
-	BOOST_FOREACH(const unit* temp_unit, *fake_unit_man_) {
+	for (const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
@@ -477,7 +476,7 @@ void game_display::draw_sidebar()
 
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		BOOST_FOREACH(const std::string &name, reports_object_->report_list()) {
+		for (const std::string &name : reports_object_->report_list()) {
 			refresh_report(name);
 		}
 		invalidateGameStatus_ = false;
@@ -694,7 +693,7 @@ void game_display::highlight_reach(const pathfind::paths &paths_list)
 void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 {
 	// Fold endpoints of routes into reachability map.
-	BOOST_FOREACH(const pathfind::paths::step &dest, paths_list.destinations) {
+	for (const pathfind::paths::step &dest : paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;

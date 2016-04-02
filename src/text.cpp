@@ -26,8 +26,6 @@
 #include "tstring.hpp"
 #include "preferences.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <cassert>
 #include <cstring>
 
@@ -73,7 +71,7 @@ static bool looks_like_url(const std::string & token);
 std::string escape_text(const std::string& text)
 {
 	std::string result;
-	BOOST_FOREACH(const char c, text) {
+	for(const char c : text) {
 		switch(c) {
 			case '&':  result += "&amp;";  break;
 			case '<':  result += "&lt;";   break;
@@ -870,7 +868,7 @@ bool ttext::set_markup_helper(const std::string& text)
 	 * with the escaped version.
 	 */
 	std::string semi_escaped;
-	BOOST_FOREACH(const char c, text) {
+	for(const char c : text) {
 		if(c == '&') {
 			semi_escaped += "&amp;";
 		} else {

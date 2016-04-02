@@ -74,7 +74,6 @@
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
 #include <boost/iostreams/copy.hpp>     // for copy
 #include <boost/iostreams/filter/bzip2.hpp>  // for bzip2_compressor, etc
@@ -232,7 +231,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		BOOST_FOREACH( const config::any_child &value, cfg.all_children_range() ) {
+		for (const config::any_child &value : cfg.all_children_range()) {
 			const preproc_map::value_type def = preproc_define::read_pair( value.cfg );
 			input_macros[def.first] = def.second;
 			++read;
@@ -253,7 +252,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	if ( cmdline_opts.preprocess_defines ) {
 
 		// add the specified defines
-		BOOST_FOREACH( const std::string &define, *cmdline_opts.preprocess_defines ) {
+		for (const std::string &define : *cmdline_opts.preprocess_defines) {
 			if (define.empty()){
 				std::cerr << "empty define supplied\n";
 				continue;
@@ -696,7 +695,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			    config_manager.game_config().child("titlescreen_music");
 			if (cfg) {
 				sound::play_music_repeatedly(game_config::title_music);
-				BOOST_FOREACH(const config &i, cfg.child_range("music")) {
+				for (const config &i : cfg.child_range("music")) {
 					sound::play_music_config(i);
 				}
 				sound::commit_music_changes();
@@ -835,8 +834,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 			int current = 0;
 			std::vector<config> cores;
-			BOOST_FOREACH(const config& core,
-					game_config_manager::get()->game_config().child_range("core")) {
+			for (const config& core : game_config_manager::get()->game_config().child_range("core")) {
 				cores.push_back(core);
 				if (core["id"] == preferences::core_id())
 					current = cores.size() -1;

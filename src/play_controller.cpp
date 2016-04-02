@@ -64,7 +64,6 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
@@ -111,12 +110,12 @@ static void copy_persistent(const config& src, config& dst)
 			("lua")
 		.convert_to_container<stringset>();
 
-	BOOST_FOREACH(const std::string& attr, attrs)
+	for (const std::string& attr : attrs)
 	{
 		dst[attr] = src[attr];
 	}
 
-	BOOST_FOREACH(const std::string& tag, tags)
+	for (const std::string& tag : tags)
 	{
 		dst.append_children(src, tag);
 	}
@@ -374,7 +373,7 @@ void play_controller::fire_prestart()
 
 	// Fire these right before prestart events, to catch only the units sides
 	// have started with.
-	BOOST_FOREACH(const unit& u, gamestate().board_.units()) {
+	for (const unit& u : gamestate().board_.units()) {
 		pump().fire("unit placed", map_location(u.get_location()));
 	}
 
@@ -392,7 +391,7 @@ void play_controller::fire_start()
 	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
-	BOOST_FOREACH(team& tm, gamestate().board_.teams_)
+	for (team& tm : gamestate().board_.teams_)
 	{
 		tm.set_start_gold(tm.gold());
 	}
@@ -580,7 +579,7 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	BOOST_FOREACH(const unit& u, gamestate().board_.units()) {
+	for (const unit& u : gamestate().board_.units()) {
 		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
 		}
@@ -630,7 +629,7 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		BOOST_FOREACH(const unit& u, gamestate().board_.units()){
+		for (const unit& u : gamestate().board_.units()){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
 					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
@@ -647,18 +646,18 @@ void play_controller::tab()
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
-		BOOST_FOREACH(const team& t, gamestate().board_.teams()) {
+		for (const team& t : gamestate().board_.teams()) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());
 		}
 
 		// Add observers
-		BOOST_FOREACH(const std::string& o, gui_->observers()){
+		for (const std::string& o : gui_->observers()){
 			dictionary.insert(o);
 		}
 
 		// Add nicks who whispered you
-		BOOST_FOREACH(const std::string& w, gui_->get_chat_manager().whisperers()){
+		for (const std::string& w : gui_->get_chat_manager().whisperers()){
 			dictionary.insert(w);
 		}
 
@@ -972,7 +971,7 @@ void play_controller::check_victory()
 
 	if (gui_->video().non_interactive()) {
 		LOG_AIT << "winner: ";
-		BOOST_FOREACH(unsigned l, not_defeated) {
+		for (unsigned l : not_defeated) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
 			if (ai.empty()) ai = "default ai";
 			LOG_AIT << l << " (using " << ai << ") ";
@@ -1113,7 +1112,7 @@ void play_controller::start_game()
 		sync.do_final_checkup();
 		gui_->recalculate_minimap();
 		// Initialize countdown clock.
-		BOOST_FOREACH(const team& t, gamestate().board_.teams())
+		for (const team& t : gamestate().board_.teams())
 		{
 			if (saved_game_.mp_settings().mp_countdown) {
 				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
@@ -1138,7 +1137,7 @@ bool play_controller::can_use_synced_wml_menu() const
 std::set<std::string> play_controller::all_players() const
 {
 	std::set<std::string> res = gui_->observers();
-	BOOST_FOREACH(const team& t, get_teams_const())
+	for (const team& t : get_teams_const())
 	{
 		if (t.is_human()) {
 			res.insert(t.current_player());

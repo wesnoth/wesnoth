@@ -33,8 +33,6 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -148,7 +146,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 					variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 
 					bool found = false;
-					BOOST_FOREACH(const config &cfg, vi.as_array()) {
+					for (const config &cfg : vi.as_array()) {
 						if (map_location(cfg, nullptr) == loc) {
 							found = true;
 							break;
@@ -187,7 +185,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			std::vector<int> sides = ssf.get_teams();
 
 			bool found = false;
-			BOOST_FOREACH(const int side, sides) {
+			for (const int side : sides) {
 				const team &viewing_team = fc_->get_disp_context().teams().at(side - 1);
 				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
 				if (visible == viewer_sees) {
@@ -312,7 +310,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		bool found = false;
 		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == -1)
 			found = true;
-		BOOST_FOREACH(const int side, sides) {
+		for(const int side : sides) {
 			if(fc_->get_disp_context().teams().at(side - 1).owns_village(loc)) {
 				found = true;
 				break;
@@ -461,7 +459,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			try
 			{
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-				BOOST_FOREACH(const config& cfg, vi.as_array())
+				for (const config& cfg : vi.as_array())
 				{
 					map_location test_loc(cfg, nullptr);
 					match_set.insert(test_loc);
@@ -498,7 +496,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			{
 				std::set<map_location> findin_locs;
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-				BOOST_FOREACH(const config& cfg, vi.as_array())
+				for (const config& cfg : vi.as_array())
 				{
 					map_location test_loc(cfg, nullptr);
 					if (match_set.count(test_loc)) {
@@ -523,7 +521,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 
-		BOOST_FOREACH(const map_location& loc, xy_vector) {
+		for (const map_location& loc : xy_vector) {
 			if (area.count(loc) != 0)
 				match_set.insert(loc);
 		}
@@ -542,7 +540,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			try
 			{
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-				BOOST_FOREACH(const config& cfg, vi.as_array())
+				for (const config& cfg : vi.as_array())
 				{
 					map_location test_loc(cfg, nullptr);
 					if (area.count(test_loc) != 0)
@@ -573,7 +571,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			{
 				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 
-				BOOST_FOREACH(const config &cfg, vi.as_array()) {
+				for (const config &cfg : vi.as_array()) {
 					map_location test_loc(cfg, nullptr);
 					if (area.count(test_loc) != 0 && xy_set.count(test_loc) != 0)
 						match_set.insert(test_loc);

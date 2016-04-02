@@ -36,7 +36,6 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/math/common_factor_rt.hpp>
 
 namespace preferences {

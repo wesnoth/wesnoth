@@ -27,8 +27,6 @@
 #include "units/filter.hpp"
 #include "variable.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <algorithm>
 
 struct tag_name_manager {
@@ -81,7 +79,7 @@ struct animation_branch
 	config merge() const
 	{
 		config result = attributes;
-		BOOST_FOREACH(const config::all_children_iterator &i, children) {
+		for (const config::all_children_iterator &i : children) {
 			result.add_child(i->key, i->cfg);
 		}
 		return result;
@@ -222,7 +220,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 		}
 		if (ac.itors.first->key != "if") {
 			// Append current config object to all the branches in scope.
-			BOOST_FOREACH(animation_branch &ab, ac.branches) {
+			for (animation_branch &ab : ac.branches) {
 				ab.children.push_back(ac.itors.first);
 			}
 			++ac.itors.first;
@@ -243,9 +241,9 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 	}
 
 	//debug
-	/*BOOST_FOREACH(animation_branch &ab, anim_cursors.back().branches) {
+	/*for (animation_branch &ab : anim_cursors.back().branches) {
 		std::cout << "--branch--\n" << ab.attributes;
-		BOOST_FOREACH(config::all_children_iterator &ci, ab.children) {
+		for (config::all_children_iterator &ci : ab.children) {
 			std::cout << "--branchcfg--\n" << ci->cfg;
 		}
 		std::cout << "\n";
@@ -261,7 +259,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 static animation_branches prepare_animation(const config &cfg, const std::string &animation_tag)
 {
 	animation_branches expanded_animations;
-	BOOST_FOREACH(const config &anim, cfg.child_range(animation_tag)) {
+	for (const config &anim : cfg.child_range(animation_tag)) {
 		prepare_single_animation(anim, expanded_animations);
 	}
 	return expanded_animations;
@@ -314,7 +312,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	overlaped_hex_()
 {
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
-	BOOST_FOREACH(const config::any_child &fr, cfg.all_children_range())
+	for (const config::any_child &fr : cfg.all_children_range())
 	{
 		if (fr.key == frame_string) continue;
 		if (fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) continue;
@@ -334,11 +332,11 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		fc = resources::filter_con; //!< This is a pointer to the gamestate. Would prefer to tie unit animations only to the display, but for now this is an acceptable fallback. It seems to be relevant because when a second game is created, it seems that the game_display is null at the time that units are being constructed, and hence at the time that this code is running. A different solution might be to delay the team_builder stage 2 call until after the gui is initialized. Note that the current set up could concievably cause problems with the editor, iirc it doesn't initailize a filter context.
 		assert(fc);
 	}*/
-	BOOST_FOREACH(const config &filter, cfg.child_range("filter")) {
+	for (const config &filter : cfg.child_range("filter")) {
 		unit_filter_.push_back(filter);
 	}
 
-	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second")) {
+	for (const config &filter : cfg.child_range("filter_second")) {
 		secondary_unit_filter_.push_back(filter);
 	}
 
@@ -366,10 +364,10 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	for(value2=value2_str.begin() ; value2 != value2_str.end() ; ++value2) {
 		value2_.push_back(atoi(value2->c_str()));
 	}
-	BOOST_FOREACH(const config &filter, cfg.child_range("filter_attack")) {
+	for (const config &filter : cfg.child_range("filter_attack")) {
 		primary_attack_filter_.push_back(filter);
 	}
-	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second_attack")) {
+	for (const config &filter : cfg.child_range("filter_second_attack")) {
 		secondary_attack_filter_.push_back(filter);
 	}
 	play_offscreen_ = cfg["offscreen"].to_bool(true);
@@ -418,7 +416,7 @@ int unit_animation::matches(const display &disp, const map_location& loc,const m
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit = disp.get_units().find(second_loc);
 			if (unit.valid()) {
-				BOOST_FOREACH(const config &c , secondary_unit_filter_) {
+				for (const config &c : secondary_unit_filter_) {
 					unit_filter f(vconfig(c), &disp);
 					if (!f(*unit, second_loc)) return MATCH_FAIL;
 					result++;
@@ -603,7 +601,7 @@ static void add_simple_anim(std::vector<unit_animation> &animations,
 	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
 	bool offscreen = true)
 {
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, tag_name))
+	for (const animation_branch &ab : prepare_animation(cfg, tag_name))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = apply_to;
@@ -619,7 +617,7 @@ static void add_simple_anim(std::vector<unit_animation> &animations,
 
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "animation")) {
+	for (const animation_branch &ab : prepare_animation(cfg, "animation")) {
 		animations.push_back(unit_animation(ab.merge()));
 	}
 
@@ -635,13 +633,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
 	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "standing_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "standing";
 		anim["cycles"] = "true";
 		// add cycles to all frames within a standing animation block
-		BOOST_FOREACH(config::all_children_iterator ci, ab.children)
+		for (config::all_children_iterator ci : ab.children)
 		{
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
@@ -654,12 +652,12 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 	// standing animations are also used as default animations
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "standing_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "default";
 		anim["cycles"] = "true";
-		BOOST_FOREACH(config::all_children_iterator ci, ab.children)
+		for (config::all_children_iterator ci : ab.children)
 		{
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
@@ -671,7 +669,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["offscreen"].empty()) anim["offscreen"] = false;
 		animations.push_back(unit_animation(anim));
 	}
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healing_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "healing_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "healing";
@@ -680,7 +678,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healed_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "healed_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "healed";
@@ -697,7 +695,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);
 	}
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "poison_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "poison_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] ="poisoned";
@@ -710,7 +708,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "movement_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "movement_anim"))
 	{
 		config anim = ab.merge();
 		if (anim["offset"].empty()) {
@@ -723,7 +721,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "defend"))
+	for (const animation_branch &ab : prepare_animation(cfg, "defend"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "defend";
@@ -748,7 +746,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		else
 		{
 			std::vector<std::string> v = utils::split(anim["hits"]);
-			BOOST_FOREACH(const std::string &hit_type, v)
+			for (const std::string &hit_type : v)
 			{
 				config tmp = anim;
 				tmp["hits"] = hit_type;
@@ -767,7 +765,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
 	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "attack_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "attack_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "attack";
@@ -788,7 +786,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "death"))
+	for (const animation_branch &ab : prepare_animation(cfg, "death"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "death";
@@ -808,7 +806,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "victory_anim", "victory");
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "extra_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "extra_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = anim["flag"];
@@ -816,7 +814,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "teleport_anim"))
+	for (const animation_branch &ab : prepare_animation(cfg, "teleport_anim"))
 	{
 		config anim = ab.merge();
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -887,14 +885,14 @@ unit_animation::particule::particule(
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
-		BOOST_FOREACH(const config &frame, range) {
+		for (const config &frame : range) {
 			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
 		}
 	} else {
 		starting_frame_time_ = cfg[frame_string+"start_time"];
 	}
 
-	BOOST_FOREACH(const config &frame, range)
+	for (const config &frame : range)
 	{
 		unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
@@ -1101,7 +1099,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 {
 	std::cout << "[";
 	int i=0;
-	BOOST_FOREACH(std::string event, u_animation.event_) {
+	for (std::string event : u_animation.event_) {
 		if (i>0) std::cout << ','; i++;
 		std::cout << event;
 	}
@@ -1112,7 +1110,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	if (u_animation.hits_.size() > 0) {
 		std::cout << "\thits=";
 		i=0;
-		BOOST_FOREACH(const unit_animation::hit_type hit_type, u_animation.hits_) {
+		for (const unit_animation::hit_type hit_type : u_animation.hits_) {
 			if (i>0) std::cout << ','; i++;
 			switch (hit_type) {
 				case (unit_animation::HIT)     : std::cout << "hit"; break;
@@ -1126,7 +1124,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	if (u_animation.directions_.size() > 0) {
 		std::cout << "\tdirections=";
 		i=0;
-		BOOST_FOREACH(const map_location::DIRECTION direction, u_animation.directions_) {
+		for (const map_location::DIRECTION direction : u_animation.directions_) {
 			if (i>0) std::cout << ','; i++;
 			switch (direction) {
 				case (map_location::NORTH)     : std::cout << "n"; break;
@@ -1143,7 +1141,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	if (u_animation.terrain_types_.size() > 0) {
 		i=0;
 		std::cout << "\tterrain=";
-		BOOST_FOREACH(const t_translation::t_terrain terrain, u_animation.terrain_types_) {
+		for (const t_translation::t_terrain terrain : u_animation.terrain_types_) {
 			if (i>0) std::cout << ','; i++;
 			std::cout << terrain;
 		}
@@ -1153,7 +1151,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 
 	if (u_animation.unit_filter_.size() > 0) {
 		std::cout << "[filter]\n";
-		BOOST_FOREACH(const config & cfg, u_animation.unit_filter_) {
+		for (const config & cfg : u_animation.unit_filter_) {
 			std::cout << cfg.debug();
 		}
 		//std::cout << "TODO: create debugging output for unit filters";
@@ -1161,7 +1159,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	}
 	if (u_animation.secondary_unit_filter_.size() > 0) {
 		std::cout << "[filter_second]\n";
-		BOOST_FOREACH(const config & cfg, u_animation.secondary_unit_filter_) {
+		for (const config & cfg : u_animation.secondary_unit_filter_) {
 			std::cout << cfg.debug();
 		}
 		//std::cout << "TODO: create debugging output for unit filters";
@@ -1169,14 +1167,14 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	}
 	if (u_animation.primary_attack_filter_.size() > 0) {
 		std::cout << "[filter_attack]\n";
-		BOOST_FOREACH(const config cfg, u_animation.primary_attack_filter_) {
+		for (const config cfg : u_animation.primary_attack_filter_) {
 			std::cout << cfg.debug();
 		}
 		std::cout << "[/filter_attack]\n";
 	}
 	if (u_animation.secondary_attack_filter_.size() > 0) {
 		std::cout << "[filter_second_attack]\n";
-		BOOST_FOREACH(const config cfg, u_animation.secondary_attack_filter_) {
+		for (const config cfg : u_animation.secondary_attack_filter_) {
 			std::cout << cfg.debug();
 		}
 		std::cout << "[/filter_second_attack]\n";
@@ -1184,21 +1182,20 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 
 	for (size_t i=0; i<u_animation.unit_anim_.get_frames_count(); i++) {
 		std::cout << "\t[frame]\n";
-		BOOST_FOREACH(const std::string frame_string, u_animation.unit_anim_.get_frame(i).debug_strings()) {
+		for (const std::string frame_string : u_animation.unit_anim_.get_frame(i).debug_strings()) {
 			std::cout << "\t\t" << frame_string <<"\n";
 		}
 		std::cout << "\t[/frame]\n";
 	}
 
-	std::pair<std::string, unit_animation::particule> p;
-	BOOST_FOREACH (p, u_animation.sub_anims_) {
+	for (std::pair<std::string, unit_animation::particule> p : u_animation.sub_anims_) {
 		for (size_t i=0; i<p.second.get_frames_count(); i++) {
 			std::string sub_frame_name = p.first;
 			size_t pos = sub_frame_name.find("_frame");
 			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
 			std::cout << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
 			std::cout << "\t[" << p.first << "]\n";
-			BOOST_FOREACH(const std::string frame_string, p.second.get_frame(i).debug_strings()) {
+			for (const std::string frame_string : p.second.get_frame(i).debug_strings()) {
 				std::cout << "\t\t" << frame_string << '\n';
 			}
 			std::cout << "\t[/" << p.first << "]\n";
@@ -1207,7 +1204,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 
 	std::cout << "[/";
 	i=0;
-	BOOST_FOREACH(std::string event, u_animation.event_) {
+	for (std::string event : u_animation.event_) {
 		if (i>0) std::cout << ','; i++;
 		std::cout << event;
 	}

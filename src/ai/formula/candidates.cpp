@@ -22,8 +22,6 @@
 #include "log.hpp"
 #include "resources.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
@@ -66,7 +64,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 	const config & filter_params = cfg.child("filter");
 
 	if( filter_params ) {
-		BOOST_FOREACH( const config::attribute filter_param, filter_params.attribute_range() )
+		for(const config::attribute filter_param : filter_params.attribute_range())
 		{
 			game_logic::const_formula_ptr filter_formula(
 					new game_logic::formula(filter_param.second, function_table));

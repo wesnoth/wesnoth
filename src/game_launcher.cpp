@@ -60,7 +60,6 @@
 #include "wml_exception.hpp"            // for twml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>           // for optional
 #include <boost/tuple/tuple.hpp>        // for tuple
 #include <cstdlib>                     // for system
@@ -346,7 +345,7 @@ bool game_launcher::init_language()
 	language_def locale;
 	if(cmdline_opts_.language) {
 		std::vector<language_def> langs = get_languages();
-		BOOST_FOREACH(const language_def & def, langs) {
+		for(const language_def & def : langs) {
 			if(def.localename == *cmdline_opts_.language) {
 				locale = def;
 				break;
@@ -742,7 +741,7 @@ void game_launcher::set_tutorial()
 
 void game_launcher::mark_completed_campaigns(std::vector<config> &campaigns)
 {
-	BOOST_FOREACH(config &campaign, campaigns) {
+	for (config &campaign : campaigns) {
 		campaign["completed"] = preferences::is_campaign_completed(campaign["id"]);
 	}
 }

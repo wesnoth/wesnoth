@@ -23,7 +23,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/textbox.hpp"
-#include <boost/foreach.hpp>
 #include <boost/bind.hpp>
 
 static lg::log_domain log_mp_create_options("mp/create/options");
@@ -37,7 +36,7 @@ namespace options
 
 void manager::init_info(const config& cfg, const std::string& key)
 {
-	BOOST_FOREACH (const config& comp, cfg.child_range(key)) {
+	for (const config& comp : cfg.child_range(key)) {
 		config entry;
 		entry["id"] = comp["id"];
 		entry["name"] = comp["name"];
@@ -45,8 +44,7 @@ void manager::init_info(const config& cfg, const std::string& key)
 		if (comp.has_child("options") && comp["allow_new_game"].to_bool(true)) {
 			const config& options = comp.child("options");
 
-			BOOST_FOREACH (const config::any_child& c,
-								options.all_children_range()) {
+			for (const config::any_child& c : options.all_children_range()) {
 				entry.add_child(c.key, c.cfg);
 			}
 
@@ -60,20 +58,20 @@ void manager::init_info(const config& cfg, const std::string& key)
 
 void manager::init_widgets()
 {
-	BOOST_FOREACH(option_display* od, widgets_ordered_) {
+	for (option_display* od : widgets_ordered_) {
 		delete od;
 	}
 
 	widgets_.clear();
 	widgets_ordered_.clear();
 
-	BOOST_FOREACH (const config::any_child& comp, options_info_.all_children_range()) {
+	for (const config::any_child& comp : options_info_.all_children_range()) {
 		if (comp.cfg.all_children_count() == 0 || !is_active(comp.cfg["id"])) {
 			continue;
 		}
 
 		widgets_ordered_.push_back(new title_display(video_, comp.cfg["name"]));
-		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
+		for (const config::any_child& c : comp.cfg.all_children_range()) {
 			const std::string id = c.cfg["id"];
 			if (c.key == "slider") {
 				widgets_ordered_.push_back(new slider_display(video_, c.cfg));
@@ -93,7 +91,7 @@ void manager::init_widgets()
 
 void manager::restore_defaults(const std::string &component)
 {
-	BOOST_FOREACH (const config::any_child& i, get_component_cfg(component).all_children_range()) {
+	for (const config::any_child& i : get_component_cfg(component).all_children_range()) {
 		if (!is_valid_option(i.key, i.cfg)) {
 			continue;
 		}
@@ -127,10 +125,9 @@ manager::manager(const config &gamecfg, CVideo &video, gui::scrollpane *pane, co
 	init_info(gamecfg, "multiplayer");
 	init_info(gamecfg, "campaign");
 
-	BOOST_FOREACH (const config::any_child& i,
-				   options_info_.all_children_range())
+	for (const config::any_child& i : options_info_.all_children_range())
 	{
-		BOOST_FOREACH (const config::any_child& j, i.cfg.all_children_range())
+		for (const config::any_child& j : i.cfg.all_children_range())
 		{
 			if (is_valid_option(j.key, j.cfg)) {
 				config& value = get_value_cfg(j.cfg["id"]);
@@ -144,7 +141,7 @@ manager::manager(const config &gamecfg, CVideo &video, gui::scrollpane *pane, co
 
 manager::~manager()
 {
-	BOOST_FOREACH(option_display* od, widgets_ordered_)
+	for (option_display* od : widgets_ordered_)
 	{
 		delete od;
 	}
@@ -182,7 +179,7 @@ void manager::layout_widgets(int startx, int starty, int w)
 {
 	int ypos = starty;
 	int border_size = 3;
-	BOOST_FOREACH(option_display* od, widgets_ordered_)
+	for (option_display* od : widgets_ordered_)
 	{
 		od->layout(startx, ypos, w, border_size, pane_);
 		ypos += border_size;
@@ -241,8 +238,8 @@ const config& manager::get_value_cfg_or_empty(const std::string& id) const
 {
 	static const config empty;
 
-	BOOST_FOREACH (const config::any_child& i, values_.all_children_range()) {
-		BOOST_FOREACH (const config& j, i.cfg.child_range("option")) {
+	for (const config::any_child& i : values_.all_children_range()) {
+		for (const config& j : i.cfg.child_range("option")) {
 			if (j["id"] == id) {
 				return j;
 			}
@@ -258,9 +255,8 @@ config::any_child manager::get_option_parent(const std::string& id) const
 	static const std::string empty_key = "";
 	static config::any_child not_found(&empty_key, &empty);
 
-	BOOST_FOREACH (const config::any_child& i,
-				   options_info_.all_children_range()) {
-		BOOST_FOREACH (const config::any_child& j, i.cfg.all_children_range()) {
+	for (const config::any_child& i : options_info_.all_children_range()) {
+		for (const config::any_child& j : i.cfg.all_children_range()) {
 			if (j.cfg["id"] == id) {
 				return i;
 			}
@@ -274,9 +270,8 @@ const config& manager::get_option_info_cfg(const std::string& id) const
 {
 	static const config empty;
 
-	BOOST_FOREACH (const config::any_child& i,
-				   options_info_.all_children_range()) {
-		BOOST_FOREACH (const config::any_child& j, i.cfg.all_children_range()) {
+	for (const config::any_child& i : options_info_.all_children_range()) {
+		for (const config::any_child& j : i.cfg.all_children_range()) {
 			if (j.cfg["id"] == id) {
 				return j.cfg;
 			}
@@ -327,8 +322,7 @@ config::attribute_value manager::get_default_value(const std::string& id) const
 
 void manager::extract_values(const std::string& key, const std::string& id)
 {
-	BOOST_FOREACH (const config::any_child& c,
-				   options_info_.find_child(key, "id", id).all_children_range())
+	for (const config::any_child& c : options_info_.find_child(key, "id", id).all_children_range())
 	{
 		if (!is_valid_option(c.key, c.cfg)) {
 			continue;
@@ -348,7 +342,7 @@ void manager::update_values()
 	else {
 		extract_values("multiplayer", scenario_);
 	}
-	BOOST_FOREACH(const std::string& str, modifications_) {
+	for (const std::string& str : modifications_) {
 		extract_values("modification", str);
 	}
 }
@@ -529,7 +523,7 @@ combo_display::combo_display(CVideo &video, const config &cfg) :
 	values_()
 {
 	std::vector<std::string> items;
-	BOOST_FOREACH(const config& item, cfg.child_range("item")) {
+	for (const config& item : cfg.child_range("item")) {
 		items.push_back(item["name"]);
 		values_.push_back(item["value"]);
 	}

@@ -33,7 +33,6 @@
 #include "gui/dialogs/loadscreen.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 #include <SDL_timer.h>
@@ -135,7 +134,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	int num_pos = board_.map().num_valid_starting_positions();
 
 	int side_num = 1;
-	BOOST_FOREACH(const config &side, level.child_range("side"))
+	for(const config &side : level.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = board_.map().starting_position(p);
@@ -173,7 +172,7 @@ void game_state::init(const config& level, play_controller & pc)
 	}
 
 	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
-	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
+	for (const config &t : level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
@@ -184,7 +183,7 @@ void game_state::init(const config& level, play_controller & pc)
 	std::vector<team_builder_ptr> team_builders;
 
 	int team_num = 0;
-	BOOST_FOREACH(const config &side, level.child_range("side"))
+	for (const config &side : level.child_range("side"))
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
@@ -204,7 +203,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*random_new::generator);
 
-		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
+		for(team_builder_ptr tb_ptr : team_builders)
 		{
 			build_team_stage_two(tb_ptr);
 		}

@@ -40,8 +40,6 @@
 #include "formula/string_utils.hpp"
 #include "addon/client.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
 #define LOG_CFG LOG_STREAM(info, log_config)
@@ -317,11 +315,11 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 
 	filesystem::make_directory(dir);
 
-	BOOST_FOREACH(const config &d, cfg.child_range("dir")) {
+	for(const config &d : cfg.child_range("dir")) {
 		unarchive_dir(dir, d);
 	}
 
-	BOOST_FOREACH(const config &f, cfg.child_range("file")) {
+	for(const config &f : cfg.child_range("file")) {
 		unarchive_file(dir, f);
 	}
 }

@@ -33,8 +33,6 @@
 #include "video.hpp"
 #include "widgets/button.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
 #define WARN_NG LOG_STREAM(warn, log_engine)
@@ -125,7 +123,7 @@ void part_ui::prepare_background()
 	has_background_ = false;
 	bool no_base_yet = true;
 
-	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
+	for (const background_layer& bl : p_.get_background_layers()) {
 		sdl::timage layer;
 
 		if (!bl.file().empty()) {
@@ -194,7 +192,7 @@ void part_ui::prepare_background()
 	bool no_base_yet = true;
 
 	// Build background surface
-	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
+	for (const background_layer& bl : p_.get_background_layers()) {
 		surface layer;
 
 		if(bl.file().empty() != true) {
@@ -303,7 +301,7 @@ void part_ui::prepare_geometry()
 void part_ui::prepare_floating_images()
 {
 	// Build floating image surfaces
-	BOOST_FOREACH(const floating_image& fi, p_.get_floating_images()) {
+	for (const floating_image& fi : p_.get_floating_images()) {
 		imgs_.push_back( fi.get_render_input(x_scale_factor_, y_scale_factor_, base_rect_) );
 	}
 }
@@ -326,7 +324,7 @@ bool part_ui::render_floating_images()
 	last_key_ = true;
 
 	size_t fi_n = 0;
-	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
+	for (floating_image::render_input& ri : imgs_) {
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
@@ -356,7 +354,7 @@ bool part_ui::render_floating_images()
 	last_key_ = true;
 
 	size_t fi_n = 0;
-	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
+	for (floating_image::render_input& ri : imgs_) {
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {

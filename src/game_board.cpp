@@ -21,7 +21,6 @@
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 
-#include <boost/foreach.hpp>
 #include <set>
 #include <vector>
 
@@ -68,7 +67,7 @@ game_board & game_board::operator= (game_board other)
 }
 
 void game_board::new_turn(int player_num) {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		if (i.side() == player_num) {
 			i.new_turn();
 		}
@@ -76,7 +75,7 @@ void game_board::new_turn(int player_num) {
 }
 
 void game_board::end_turn(int player_num) {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		if (i.side() == player_num) {
 			i.end_turn();
 		}
@@ -84,7 +83,7 @@ void game_board::end_turn(int player_num) {
 }
 
 void game_board::set_all_units_user_end_turn() {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		i.set_user_end_turn(true);
 	}
 }
@@ -108,7 +107,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 
 	not_defeated = std::set<unsigned>();
 
-	BOOST_FOREACH( const unit & i , units())
+	for (const unit & i : units())
 	{
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
 		const team& tm = teams()[i.side()-1];
@@ -120,7 +119,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 		}
 	}
 
-	BOOST_FOREACH(team& tm, teams_)
+	for (team& tm : teams_)
 	{
 		if(tm.defeat_condition() == team::DEFEAT_CONDITION::NEVER)
 		{
@@ -237,7 +236,7 @@ bool game_board::team_is_defeated(const team& t) const
 	case team::DEFEAT_CONDITION::NO_LEADER:
 		return !units_.find_leader(t.side()).valid();
 	case team::DEFEAT_CONDITION::NO_UNITS:
-		BOOST_FOREACH(const unit& u, units_)
+		for (const unit& u : units_)
 		{
 			if(u.side() == t.side())
 				return false;
@@ -332,7 +331,7 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 
 	map_->set_terrain(loc, new_t);
 
-	BOOST_FOREACH(const t_translation::t_terrain &ut, map_->underlying_union_terrain(loc)) {
+	for(const t_translation::t_terrain &ut : map_->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
 	}
 	return true;
@@ -351,7 +350,7 @@ void game_board::write_config(config & cfg) const
 
 		//current units
 		{
-			BOOST_FOREACH(const unit & i, units_) {
+			for (const unit & i : units_) {
 				if (i.side() == side_num) {
 					config& u = side.add_child("unit");
 					i.get_location().write(u);
@@ -361,7 +360,7 @@ void game_board::write_config(config & cfg) const
 		}
 		//recall list
 		{
-			BOOST_FOREACH(const unit_const_ptr & j, t->recall_list()) {
+			for (const unit_const_ptr & j : t->recall_list()) {
 				config& u = side.add_child("unit");
 				j->write(u);
 			}

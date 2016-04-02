@@ -68,7 +68,7 @@ public:
 	std::pair<int,map_location> highest(const std::string& key, int def=0) const;
 	std::pair<int,map_location> lowest(const std::string& key, int def=0) const;
 
-	// The following make this class usable with BOOST_FOREACH:
+	// The following make this class usable with standard library algorithms and such:
 	typedef std::vector<unit_ability>::iterator       iterator;
 	typedef std::vector<unit_ability>::const_iterator const_iterator;
 	iterator       begin()        { return cfgs_.begin(); }

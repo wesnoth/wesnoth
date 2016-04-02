@@ -25,8 +25,6 @@
 
 #include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
 
-#include <boost/foreach.hpp>
-
 namespace {
 
 CVideo* video_ = nullptr;

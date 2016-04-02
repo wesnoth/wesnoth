@@ -23,7 +23,6 @@
 #include "config_assign.hpp"
 #include "playsingle_controller.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");

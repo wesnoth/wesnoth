@@ -22,8 +22,6 @@
 #include <functional>
 #include "units/map.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -382,7 +380,7 @@ bool unit_map::has_unit(const unit * const u) const
 {
 	assert(u);
 
-	BOOST_FOREACH(const t_umap::value_type& item, umap_) {
+	for(const t_umap::value_type& item : umap_) {
 		if(item.second.unit.get() == u) {
 			return true;
 		}

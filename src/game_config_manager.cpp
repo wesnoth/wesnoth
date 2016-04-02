@@ -35,7 +35,6 @@
 #include "theme.hpp"
 #include "image.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
@@ -108,7 +107,7 @@ namespace {
 /// returns true if every define in special is also defined in general
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
-	BOOST_FOREACH(const preproc_map::value_type& pair, special)
+	for (const preproc_map::value_type& pair : special)
 	{
 		preproc_map::const_iterator it = general.find(pair.first);
 		if (it == general.end() || it->second != pair.second) {
@@ -176,7 +175,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
 					filesystem::ENTIRE_FILE_PATH);
 		}
-		BOOST_FOREACH(const std::string& umc, user_dirs) {
+		for (const std::string& umc : user_dirs) {
 			const std::string cores_file = umc + "/cores.cfg";
 			if (filesystem::file_exists(cores_file)) {
 				config cores;
@@ -189,7 +188,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		config valid_cores;
 		bool current_core_valid = false;
 		std::string wml_tree_root;
-		BOOST_FOREACH(const config& core, cores_cfg.child_range("core")) {
+		for (const config& core : cores_cfg.child_range("core")) {
 
 			const std::string& id = core["id"];
 			if (id.empty()) {
@@ -274,10 +273,10 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
 			{
 				const bool require_campaign = campaign["require_campaign"].to_bool(true);
-				BOOST_FOREACH(config& scenario, game_config_.child_range("scenario"))
+				for (config& scenario : game_config_.child_range("scenario"))
 				{
 					scenario["require_scenario"] = require_campaign;
-					BOOST_FOREACH(config& side, scenario.child_range("side"))
+					for (config& side : scenario.child_range("side"))
 					{
 						side["no_leader"] = side["no_leader"].to_bool(true);
 					}
@@ -352,7 +351,7 @@ void game_config_manager::load_addons_cfg()
 	std::vector<std::string> error_log;
 
 	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
-	BOOST_FOREACH(const std::string& uc, user_files) {
+	for(const std::string& uc : user_files) {
 		const std::string file = uc;
 		const int size_minus_extension = file.size() - 4;
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
@@ -375,7 +374,7 @@ void game_config_manager::load_addons_cfg()
 		filesystem::FILE_NAME_ONLY);
 
 	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
-	BOOST_FOREACH(const std::string& uc, user_dirs) {
+	for (const std::string& uc : user_dirs) {
 		const std::string addon_id = uc;
 		const std::string addon_dir = user_campaign_dir + "/" + uc;
 
@@ -408,7 +407,7 @@ void game_config_manager::load_addons_cfg()
 	}
 
 	// Load the addons.
-	BOOST_FOREACH(const addon_source & addon, addons_to_load) {
+	for (const addon_source & addon : addons_to_load) {
 		try {
 			// Load this addon from the cache, to a config
 			config umc_cfg;
@@ -419,7 +418,7 @@ void game_config_manager::load_addons_cfg()
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{
-				BOOST_FOREACH(config & cfg, umc_cfg.child_range(*type)) {
+				for (config & cfg : umc_cfg.child_range(*type)) {
 					cfg["addon_id"] = addon.addon_id;
 					// Note that this may reformat the string in a canonical form.
 					cfg["addon_version"] = addon.version.str();
@@ -463,7 +462,7 @@ void game_config_manager::load_addons_cfg()
 void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");
-	BOOST_FOREACH(const config &ch, game_config_.child_range("multiplayer")) {
+	for (const config &ch : game_config_.child_range("multiplayer")) {
 		hashes[ch["id"]] = ch.hash();
 	}
 }
@@ -521,17 +520,13 @@ void game_config_manager::load_game_config_for_game(
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
 	std::deque<define> extra_defines;
-	BOOST_FOREACH(const std::string& extra_define,
-		classification.campaign_xtra_defines) {
-		define new_define
-			(new game_config::scoped_preproc_define(extra_define));
+	for (const std::string& extra_define : classification.campaign_xtra_defines) {
+		define new_define(new game_config::scoped_preproc_define(extra_define));
 		extra_defines.push_back(new_define);
 	}
 	std::deque<define> modification_defines;
-	BOOST_FOREACH(const std::string& mod_define,
-		classification.mod_defines) {
-		define new_define
-			(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
+	for (const std::string& mod_define : classification.mod_defines) {
+		define new_define(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
 		modification_defines.push_back(new_define);
 	}
 
@@ -542,9 +537,8 @@ void game_config_manager::load_game_config_for_game(
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
-		BOOST_FOREACH(const preproc_map::value_type& preproc, old_defines_map_) {
-			define new_define
-				(new game_config::scoped_preproc_define(preproc.first));
+		for (const preproc_map::value_type& preproc : old_defines_map_) {
+			define new_define(new game_config::scoped_preproc_define(preproc.first));
 			previous_defines.push_back(new_define);
 		}
 
@@ -568,9 +562,8 @@ void game_config_manager::load_game_config_for_create(bool is_mp)
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
-		BOOST_FOREACH(const preproc_map::value_type& preproc, old_defines_map_) {
-			define new_define
-				(new game_config::scoped_preproc_define(preproc.first));
+		for (const preproc_map::value_type& preproc : old_defines_map_) {
+			define new_define(new game_config::scoped_preproc_define(preproc.first));
 			previous_defines.push_back(new_define);
 		}
 

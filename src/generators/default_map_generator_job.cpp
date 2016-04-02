@@ -33,7 +33,6 @@
 #include "formula/string_utils.hpp"
 #include <SDL.h>
 
-#include <boost/foreach.hpp>
 #include "seed_rng.hpp"
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
@@ -793,7 +792,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 	std::vector<terrain_height_mapper> height_conversion;
 
-	BOOST_FOREACH(const config &h, cfg.child_range("height")) {
+	for(const config &h : cfg.child_range("height")) {
 		height_conversion.push_back(terrain_height_mapper(h));
 	}
 
@@ -928,7 +927,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
-	BOOST_FOREACH(const config &cv, cfg.child_range("convert")) {
+	for(const config &cv : cfg.child_range("convert")) {
 		converters.push_back(terrain_converter(cv));
 	}
 

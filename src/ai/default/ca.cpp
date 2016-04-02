@@ -34,8 +34,6 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <numeric>
 
 #include <SDL.h>
@@ -307,7 +305,7 @@ double move_leader_to_goals_phase::evaluate()
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
 
 	map_location loc;
-	BOOST_FOREACH(const map_location &l, route.steps)
+	for (const map_location &l : route.steps)
 	{
 		if (leader_paths.destinations.contains(l) &&
 		    power_projection(l, get_enemy_dstsrc()) < leader->hitpoints() * max_risk)
@@ -390,7 +388,7 @@ double move_leader_to_keep_phase::evaluate()
 	map_location best_keep;
 	int shortest_distance = 99999;
 
-	BOOST_FOREACH(const unit_map::const_iterator& leader, leaders) {
+	for (const unit_map::const_iterator& leader : leaders) {
 		if (leader->incapacitated() || leader->movement_left() == 0) {
 			continue;
 		}
@@ -454,7 +452,7 @@ double move_leader_to_keep_phase::evaluate()
 	// find next hop
 	map_location next_hop = map_location::null_location();
 	int next_hop_cost = 0;
-	BOOST_FOREACH(const map_location& step, route.steps) {
+	for (const map_location& step : route.steps) {
 		if (leader_paths.destinations.contains(step)) {
 			next_hop = step;
 			next_hop_cost += leader->movement_cost(resources::gameboard->map().get_terrain(step));
@@ -468,7 +466,7 @@ double move_leader_to_keep_phase::evaluate()
 	//define the next hop to have the lowest cost (0)
 	moves_toward_keep.insert(std::make_pair(0, next_hop));
 
-	BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations) {
+	for (const pathfind::paths::step &dest : leader_paths.destinations) {
 		if (!units_.find(dest.curr).valid()) {
 			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, &calc,
 					resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
@@ -480,7 +478,7 @@ double move_leader_to_keep_phase::evaluate()
 
 	// Find the first location which we can move to,
 	// without the threat of enemies.
-	BOOST_FOREACH(const ordered_locations::value_type& pair, moves_toward_keep) {
+	for (const ordered_locations::value_type& pair : moves_toward_keep) {
 		const map_location& loc = pair.second;
 		if (get_enemy_dstsrc().count(loc) == 0) {
 			move_ = check_move_action(leader->get_location(), loc, true);
@@ -1415,12 +1413,12 @@ double retreat_phase::evaluate()
 	}*/
 	//int leader_adj_count = 0;
 	std::vector<map_location> leaders_adj_v;
-	BOOST_FOREACH(unit_map::const_iterator leader, leaders){
+	for (unit_map::const_iterator leader : leaders) {
 		map_location tmp_leader_adj[6];
 		get_adjacent_tiles(leader->get_location(), tmp_leader_adj);
-		BOOST_FOREACH(map_location &loc, tmp_leader_adj){
+		for (map_location &loc : tmp_leader_adj) {
 			bool found = false;
-			BOOST_FOREACH(map_location &new_loc, leaders_adj_v){
+			for (map_location &new_loc : leaders_adj_v) {
 				if(new_loc == loc){
 					found = true;
 					break;
@@ -1591,7 +1589,7 @@ double leader_shares_keep_phase::evaluate()
 		return BAD_SCORE;
 	}
 	bool allied_leaders_available = false;
-	BOOST_FOREACH(team &tmp_team, *resources::teams){
+	for(team &tmp_team : *resources::teams) {
 		if(!current_team().is_enemy(tmp_team.side())){
 			std::vector<unit_map::unit_iterator> allied_leaders = resources::units->find_leaders(get_side());
 			if (!allied_leaders.empty()){
@@ -1618,7 +1616,7 @@ void leader_shares_keep_phase::execute()
 	calculate_moves(*resources::units, possible_moves, friends_srcdst, friends_dstsrc, false, true);
 
 	//check for each ai leader if he should move away from his keep
-	BOOST_FOREACH(unit_map::unit_iterator &ai_leader, ai_leaders){
+	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
 		//only if leader is on a keep
 		const map_location &keep = ai_leader->get_location();
 		if ( !resources::gameboard->map().is_keep(keep) ) {
@@ -1679,7 +1677,7 @@ void leader_shares_keep_phase::execute()
 		}
 		ai_leader->remove_movement_ai();
 	}
-	BOOST_FOREACH(unit_map::unit_iterator &leader, ai_leaders){
+	for(unit_map::unit_iterator &leader : ai_leaders) {
 		leader->remove_movement_ai();
 	}
 	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;

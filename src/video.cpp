@@ -31,8 +31,6 @@
 #include "sdl/gpu.hpp"
 #include "display.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <vector>
 #include <map>
 #include <algorithm>

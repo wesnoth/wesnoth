@@ -91,7 +91,7 @@ class  smart_list
 		typedef value_type *                    pointer;
 		typedef value_type &                    reference;
 		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef ptrdiff_t                       difference_type; // Needed to use this with BOOST_FOREACH
+		typedef ptrdiff_t                       difference_type;
 
 	protected: // Construct this via derived classes.
 		/// Default constructor

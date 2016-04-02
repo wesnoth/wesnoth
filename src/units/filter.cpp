@@ -38,7 +38,6 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
@@ -85,7 +84,7 @@ public:
 	}
 	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches) const {
 		std::vector<const unit *> ret;
-		BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
+		for(const unit & u : fc_.get_disp_context().units()) {
 			--max_matches;
 			ret.push_back(&u);
 			if(max_matches == 0) {
@@ -340,7 +339,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		const unit_type* const type = u.variation().empty() ? &u.type() : unit_types.find(u.type().base_id());
 		assert(type);
 
-		BOOST_FOREACH(const std::string& variation_id, utils::split(vcfg["has_variation"])) {
+		for (const std::string& variation_id : utils::split(vcfg["has_variation"])) {
 			if (type->has_variation(variation_id)) {
 				match = true;
 				break;
@@ -353,7 +352,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	{
 		bool match = false;
 
-		BOOST_FOREACH(const std::string& ability_id, utils::split(vcfg["ability"])) {
+		for (const std::string& ability_id : utils::split(vcfg["ability"])) {
 			if (u.has_ability_by_id(ability_id)) {
 				match = true;
 				break;
@@ -386,7 +385,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		bool status_found = false;
 		std::map<std::string, std::string> states_map = u.get_states();
 
-		BOOST_FOREACH (const std::string status, utils::split(vcfg["status"])) {
+		for (const std::string status : utils::split(vcfg["status"])) {
 			if (states_map[status] == "yes") {
 				status_found = true;
 				break;
@@ -461,7 +460,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	// filter only => not for us
 	// unit only => not filtered
 	config unit_cfg; // No point in serializing the unit once for each [filter_wml]!
-	BOOST_FOREACH(const vconfig& wmlcfg, vcfg.get_children("filter_wml")) {
+	for (const vconfig& wmlcfg : vcfg.get_children("filter_wml")) {
 			config fwml = wmlcfg.get_parsed_config();
 			/* Check if the filter only cares about variables.
 			   If so, no need to serialize the whole unit. */
@@ -480,7 +479,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			}
 	}
 
-	BOOST_FOREACH(const vconfig& vision, vcfg.get_children("filter_vision")) {
+	for (const vconfig& vision : vcfg.get_children("filter_vision")) {
 		std::set<int> viewers;
 
 		// Use standard side filter
@@ -489,7 +488,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		viewers.insert(sides.begin(), sides.end());
 
 		bool found = false;
-		BOOST_FOREACH (const int viewer, viewers) {
+		for (const int viewer : viewers) {
 			bool fogged = fc_.get_disp_context().teams()[viewer - 1].fogged(loc);
 			bool hiding = u.invisible(loc/*, false(?) */);
 			bool unit_hidden = fogged || hiding;
@@ -506,7 +505,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 
-		BOOST_FOREACH(const vconfig& adj_cfg, vcfg.get_children("filter_adjacent")) {
+		for (const vconfig& adj_cfg : vcfg.get_children("filter_adjacent")) {
 			int match_count=0;
 			unit_filter filt(adj_cfg, &fc_, use_flat_tod_);
 
@@ -549,7 +548,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			{
 				variable_access_const vi = gd->get_variable_access_read(vcfg["find_in"]);
 				bool found_id = false;
-				BOOST_FOREACH(const config& c, vi.as_array())
+				for (const config& c : vi.as_array())
 				{
 					if(c["id"] == u.id())
 						found_id = true;
@@ -598,7 +597,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 
 std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned max_matches) const {
 	std::vector<const unit *> ret;
-	BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
+	for (const unit & u : fc_.get_disp_context().units()) {
 		if (matches(u, u.get_location(), nullptr)) {
 			if(max_matches == 0) {
 				return ret;

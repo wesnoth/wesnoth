@@ -5,7 +5,6 @@
 #include "settings.hpp"
 #include "tod_manager.hpp"
 
-#include <boost/foreach.hpp>
 #include <cassert>
 #include <sstream>
 #include <iostream>
@@ -28,7 +27,7 @@ configure_engine::configure_engine(saved_game& state) :
 
 	set_use_map_settings(use_map_settings_default());
 	if(state_.classification().get_tagname() == "scenario") {
-		BOOST_FOREACH(const config& scenario,
+		for (const config& scenario :
 			game_config_manager::get()->game_config().child_range(state_.classification().get_tagname())) {
 
 			if (scenario["allow_new_game"].to_bool(true) || game_config::debug) {
@@ -216,7 +215,7 @@ void configure_engine::write_parameters()
 	scenario["experience_modifier"] = params.xp_modifier;
 	scenario["turns"] = params.num_turns;
 
-	BOOST_FOREACH(config& side, scenario.child_range("side"))
+	for (config& side : scenario.child_range("side"))
 	{
 		side["fog"] = params.fog_game;
 		side["shroud"] = params.shroud_game;

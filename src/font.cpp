@@ -33,7 +33,6 @@
 #include "serialization/unicode.hpp"
 #include "preferences.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 
 #include <list>
@@ -413,12 +412,12 @@ void manager::init() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
+	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path)) {
 			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
 		}
-		BOOST_FOREACH(const std::string& file, files) {
+		for(const std::string& file : files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
@@ -436,11 +435,11 @@ void manager::deinit() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
+	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path))
 			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
-		BOOST_FOREACH(const std::string& file, files) {
+		for(const std::string& file : files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
@@ -487,7 +486,7 @@ font::subset_descriptor::subset_descriptor(const config & font)
 
 	std::vector<std::string> ranges = utils::split(font["codepoints"]);
 
-	BOOST_FOREACH(const std::string & i, ranges) {
+	for (const std::string & i : ranges) {
 		std::vector<std::string> r = utils::split(i, '-');
 		if(r.size() == 1) {
 			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
@@ -546,7 +545,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 			italic_names.push_back("");
 		}
 
-		BOOST_FOREACH(const subset_descriptor::range &cp_range, itor->present_codepoints) {
+		for (const subset_descriptor::range &cp_range : itor->present_codepoints) {
 			char_blocks.insert(cp_range.first, cp_range.second, subset);
 		}
 	}
@@ -705,7 +704,7 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 
-	BOOST_FOREACH(text_chunk const &chunk, chunks_)
+	for(text_chunk const &chunk : chunks_)
 	{
 		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
 		if(ttfont == nullptr) {
@@ -751,7 +750,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	BOOST_FOREACH(text_chunk const &chunk, chunks_)
+	for(text_chunk const &chunk : chunks_)
 	{
 		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
 
@@ -1071,7 +1070,7 @@ bool load_font_config()
 		return false;
 
 	std::set<std::string> known_fonts;
-	BOOST_FOREACH(const config &font, fonts_config.child_range("font")) {
+	for (const config &font : fonts_config.child_range("font")) {
 		known_fonts.insert(font["name"]);
 		if (font.has_attribute("bold_name")) {
 			known_fonts.insert(font["bold_name"]);

@@ -21,8 +21,6 @@
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace schema_validation{
 
 static lg::log_domain log_validation("validation");
@@ -149,14 +147,14 @@ bool schema_validator::read_config_file(const std::string &filename){
 		ERR_VL << "Failed to read file "<< filename << ":\n" << e.what() << "\n";
 		return false;
 	}
-	BOOST_FOREACH(const config &g, cfg.child_range("wml_schema")) {
-		BOOST_FOREACH(const config &schema, g.child_range("tag")) {
+	for(const config &g : cfg.child_range("wml_schema")) {
+		for(const config &schema : g.child_range("tag")) {
 			if (schema["name"].str() == "root"){
 				//@NOTE Don't know, maybe merging of roots needed.
 				root_ = class_tag (schema);
 			}
 		}
-		BOOST_FOREACH(const config &type, g.child_range("type")) {
+		for(const config &type : g.child_range("type")) {
 			try{
 				types_[type["name"].str()] = boost::regex( type["value"].str());
 			}

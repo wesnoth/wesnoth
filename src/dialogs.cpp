@@ -61,7 +61,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -107,7 +106,7 @@ template<typename T> void dump(const T & units)
 
 	LOG_DP << "size: " << units.size() << "\n";
 	size_t idx = 0;
-	BOOST_FOREACH(const unit_const_ptr & u_ptr, units) {
+	for (const unit_const_ptr & u_ptr : units) {
 		LOG_DP << "unit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
 	}
 }
@@ -194,7 +193,7 @@ int advance_unit_dialog(const map_location &loc)
 	}
 
 	bool always_display = false;
-	BOOST_FOREACH(const config &mod, u->get_modification_advances())
+	for (const config &mod : u->get_modification_advances())
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units->push_back(::get_amla_unit(*u, mod));
@@ -483,7 +482,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const unit_const_ptr & u, *units)
+	for (const unit_const_ptr & u : *units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -499,7 +498,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 			option << "~BLIT(" << unit::leader_crown() << ")";
 		}
 
-		BOOST_FOREACH(const std::string& overlay, u->overlays())
+		for(const std::string& overlay : u->overlays())
 		{
 			option << "~BLIT(" << overlay << ")";
 		}
@@ -545,7 +544,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 		option_to_filter << u->type_name() << " " << name << " " << u->level();
 
 		option << COLUMN_SEPARATOR;
-		BOOST_FOREACH(const t_string& trait, u->trait_names()) {
+		for(const t_string& trait : u->trait_names()) {
 			option << trait << '\n';
 			option_to_filter << " " << trait;
 		}
@@ -711,7 +710,7 @@ void unit_preview_pane::draw_contents()
 		image_rect = rect;
 
 		if(!det.overlays.empty()) {
-			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+			for(const std::string& overlay : det.overlays) {
 				sdl::timage oi = image::get_texture(overlay);
 
 				if(!oi.null()) {
@@ -856,7 +855,7 @@ void unit_preview_pane::draw_contents()
 		image_rect = rect;
 
 		if(!det.overlays.empty()) {
-			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+			for(const std::string& overlay : det.overlays) {
 				surface os = image::get_image(overlay);
 
 				if(!os) {
@@ -1049,7 +1048,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 		det.overlays.push_back(unit::leader_crown());
 	};
 
-	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
+	for(const std::string& overlay : u.overlays()) {
 		det.overlays.push_back(overlay);
 	}
 
@@ -1097,7 +1096,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.race = t->race()->name(t->genders().front());
 
 	//FIXME: This probably must be move into a unit_type function
-	BOOST_FOREACH(const config &tr, t->possible_traits())
+	for (const config &tr : t->possible_traits())
 	{
 		if (tr["availability"] != "musthave") continue;
 
@@ -1128,7 +1127,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	// Check if AMLA color is needed
 	// FIXME: not sure if it's fully accurate (but not very important for unit_type)
 	// xp_color also need a simpler function for doing this
-	BOOST_FOREACH(const config &adv, t->modification_advancements())
+	for (const config &adv : t->modification_advancements())
 	{
 		if (!adv["strict_amla"].to_bool() || !t->can_advance()) {
 			det.xp_color = "<170,0,255>"; // from unit::xp_color()

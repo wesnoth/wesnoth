@@ -48,8 +48,6 @@
 #include "units/id.hpp"
 #include "version.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
 #define ERR_SAVE LOG_STREAM(err, log_engine)
@@ -128,7 +126,7 @@ void loadgame::show_difficulty_dialog()
 
 	std::string campaign_id = summary_["campaign"];
 
-	BOOST_FOREACH(const config &campaign, game_config_.child_range("campaign"))
+	for(const config &campaign : game_config_.child_range("campaign"))
 	{
 		if(campaign["id"] != campaign_id) {
 			continue;
@@ -674,7 +672,7 @@ static void convert_old_saves_1_11_0(config& cfg)
 		//copy rng and menu items from toplevel to new carryover_sides
 		carryover["random_seed"] = cfg["random_seed"];
 		carryover["random_calls"] = cfg["random_calls"];
-		BOOST_FOREACH(const config& menu_item, cfg.child_range("menu_item")){
+		for(const config& menu_item : cfg.child_range("menu_item")) {
 			carryover.add_child("menu_item", menu_item);
 		}
 		carryover["difficulty"] = cfg["difficulty"];
@@ -686,28 +684,28 @@ static void convert_old_saves_1_11_0(config& cfg)
 
 		//copy sides from either snapshot or replay_start to new carryover_sides
 		if(!snapshot.empty()){
-			BOOST_FOREACH(const config& side, snapshot.child_range("side")){
+			for(const config& side : snapshot.child_range("side")) {
 				carryover.add_child("side", side);
 			}
 			//for compatibility with old savegames that use player instead of side
-			BOOST_FOREACH(const config& side, snapshot.child_range("player")){
+			for(const config& side : snapshot.child_range("player")) {
 				carryover.add_child("side", side);
 			}
 			//save the sides from replay_start in carryover_sides_start
-			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+			for(const config& side : replay_start.child_range("side")) {
 				carryover_start.add_child("side", side);
 			}
 			//for compatibility with old savegames that use player instead of side
-			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+			for(const config& side : replay_start.child_range("player")) {
 				carryover_start.add_child("side", side);
 			}
 		} else if (!replay_start.empty()){
-			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+			for(const config& side : replay_start.child_range("side")) {
 				carryover.add_child("side", side);
 				carryover_start.add_child("side", side);
 			}
 			//for compatibility with old savegames that use player instead of side
-			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+			for(const config& side : replay_start.child_range("player")) {
 				carryover.add_child("side", side);
 				carryover_start.add_child("side", side);
 			}
@@ -812,13 +810,13 @@ static void convert_old_saves_1_13_1(config& cfg)
 	//This currently only fixes start-of-scenario saves.
 	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
 	{
-		BOOST_FOREACH(config& side, carryover_sides_start.child_range("side"))
+		for(config& side : carryover_sides_start.child_range("side"))
 		{
-			BOOST_FOREACH(config& unit, side.child_range("unit"))
+			for(config& unit : side.child_range("unit"))
 			{
 				if(config& modifications = unit.child("modifications"))
 				{
-					BOOST_FOREACH(config& advancement, modifications.child_range("advance"))
+					for(config& advancement : modifications.child_range("advance"))
 					{
 						modifications.add_child("advancement", advancement);
 					}
@@ -827,10 +825,10 @@ static void convert_old_saves_1_13_1(config& cfg)
 			}
 		}
 	}
-	BOOST_FOREACH(config& snapshot, cfg.child_range("snapshot")) {
+	for(config& snapshot : cfg.child_range("snapshot")) {
 		if (snapshot.has_attribute("used_items")) {
 			config used_items;
-			BOOST_FOREACH(const std::string& item, utils::split(snapshot["used_items"])) {
+			for(const std::string& item : utils::split(snapshot["used_items"])) {
 				used_items[item] = true;
 			}
 			snapshot.remove_attribute("used_items");

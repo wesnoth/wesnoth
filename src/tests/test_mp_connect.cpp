@@ -25,7 +25,6 @@
 #include "saved_game.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/assign.hpp>
 

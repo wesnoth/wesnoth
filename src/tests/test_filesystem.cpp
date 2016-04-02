@@ -16,8 +16,6 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 
-#include <boost/foreach.hpp>
-
 #if 0
 namespace {
 
@@ -107,11 +105,11 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 	std::vector<std::string> files, dirs;
 	std::vector<std::string> expected_filepaths, expected_dirpaths;
 
-	BOOST_FOREACH(const std::string& n, expected_filenames) {
+	for(const std::string& n : expected_filenames) {
 		expected_filepaths.push_back(gamedata + "/" + path + "/" + n);
 	}
 
-	BOOST_FOREACH(const std::string& n, expected_dirnames) {
+	for(const std::string& n : expected_dirnames) {
 		expected_dirpaths.push_back(gamedata + "/" + path + "/" + n);
 	}
 

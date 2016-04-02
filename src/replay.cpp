@@ -41,7 +41,6 @@
 #include "whiteboard/manager.hpp"
 #include "replay_recorder_base.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
@@ -71,7 +70,7 @@ static void verify(const unit_map& units, const config& cfg) {
 			   << nunits << " according to data source. " << units.size() << " locally\n";
 
 		std::set<map_location> locs;
-		BOOST_FOREACH(const config &u, cfg.child_range("unit"))
+		for (const config &u : cfg.child_range("unit"))
 		{
 			const map_location loc(u);
 			locs.insert(loc);
@@ -92,7 +91,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		errbuf.clear();
 	}
 
-	BOOST_FOREACH(const config &un, cfg.child_range("unit"))
+	for (const config &un : cfg.child_range("unit"))
 	{
 		const map_location loc(un);
 		const unit_map::const_iterator u = units.find(loc);
@@ -411,7 +410,7 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 void replay::redo(const config& cfg)
 {
 	assert(base_->get_pos() == ncommands());
-	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
+	for (const config &cmd : cfg.child_range("command"))
 	{
 		base_->add_child() = cmd;
 	}
@@ -627,7 +626,7 @@ bool replay::empty()
 
 void replay::add_config(const config& cfg, MARK_SENT mark)
 {
-	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
+	for (const config &cmd : cfg.child_range("command"))
 	{
 		config &cfg = base_->insert_command(base_->size());
 		cfg = cmd;

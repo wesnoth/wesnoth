@@ -20,7 +20,6 @@
 #include "whiteboard/visitor.hpp"
 
 #include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
 
 using namespace wb;
 
@@ -61,7 +60,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 1);
 
 	int tmp=0;
-	BOOST_FOREACH(action_ptr act, sac){
+	for(action_ptr act : sac) {
 		++tmp;
 		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -82,7 +81,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 3);
 
 	tmp=0;
-	BOOST_FOREACH(action_ptr act, sac){
+	for(action_ptr act : sac) {
 		++tmp;
 		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);

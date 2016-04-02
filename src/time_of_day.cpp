@@ -18,8 +18,6 @@
 #include "time_of_day.hpp"
 #include "gettext.hpp"
 
-#include <boost/foreach.hpp>
-
 std::ostream &operator<<(std::ostream &s, const tod_color& c){
 	s << c.r << "," << c.g << "," << c.b;
 	return s;
@@ -67,7 +65,7 @@ void time_of_day::write(config& cfg) const
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& times)
 {
-	BOOST_FOREACH(const config &t, cfg.child_range("time")) {
+	for(const config &t : cfg.child_range("time")) {
 		times.push_back(time_of_day(t));
 	}
 

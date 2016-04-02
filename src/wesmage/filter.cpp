@@ -18,7 +18,6 @@
 #include "wesmage/exit.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 #include "utils/boost_function_guarded.hpp"
 
 #include <iostream>

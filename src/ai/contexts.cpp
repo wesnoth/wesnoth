@@ -58,7 +58,6 @@
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
 #include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
@@ -265,19 +264,19 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 void readonly_context_impl::on_readonly_context_create() {
 	//init the composite ai engines
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("engine")){
+	for(const config &cfg_element : cfg_.child_range("engine")) {
 		engine::parse_engine_from_config(*this,cfg_element,std::back_inserter(engines_));
 	}
 
 	// init the composite ai aspects
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("aspect")){
+	for(const config &cfg_element : cfg_.child_range("aspect")) {
 		std::vector<aspect_ptr> aspects;
 		engine::parse_aspect_from_config(*this,cfg_element,cfg_element["id"],std::back_inserter(aspects));
 		add_aspects(aspects);
 	}
 
 	// init the composite ai goals
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("goal")){
+	for(const config &cfg_element : cfg_.child_range("goal")) {
 		engine::parse_goal_from_config(*this,cfg_element,std::back_inserter(get_goals()));
 	}
 }
@@ -297,13 +296,13 @@ config readwrite_context_impl::to_readwrite_context_config() const
 config readonly_context_impl::to_readonly_context_config() const
 {
 	config cfg;
-	BOOST_FOREACH(const engine_ptr e, engines_) {
+	for(const engine_ptr e : engines_) {
 		cfg.add_child("engine",e->to_config());
 	}
-	BOOST_FOREACH(const aspect_map::value_type a, aspects_) {
+	for(const aspect_map::value_type a : aspects_) {
 		cfg.add_child("aspect",a.second->to_config());
 	}
-	BOOST_FOREACH(const goal_ptr g, goals_) {
+	for(const goal_ptr g : goals_) {
 		cfg.add_child("goal",g->to_config());
 	}
 	return cfg;
@@ -419,7 +418,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 	}
 
 	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m) {
-		BOOST_FOREACH(const pathfind::paths::step &dest, m->second.destinations)
+		for(const pathfind::paths::step &dest : m->second.destinations)
 		{
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
@@ -459,7 +458,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 {
-	BOOST_FOREACH(aspect_ptr a, aspects) {
+	for(aspect_ptr a : aspects) {
 		const std::string id = a->get_id();
 		known_aspect_map::iterator i = known_aspects_.find(id);
 		if (i != known_aspects_.end()) {
@@ -1130,7 +1129,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
 			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int most_damage = 0;
-			BOOST_FOREACH(const attack_type &att, un.attacks())
+			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
 				if (damage > most_damage) {
@@ -1245,7 +1244,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 	map_location const* best_occupied_keep = &map_location::null_location();
 	double move_left_at_best_occupied_keep = 0.0;
 
-	BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations)
+	for(const pathfind::paths::step &dest : leader_paths.destinations)
 	{
 		const map_location &loc = dest.curr;
 		if (keeps().find(loc)!=keeps().end()){

@@ -50,8 +50,6 @@
 
 #include <SDL_image.h>
 
-#include <boost/foreach.hpp>
-
 #ifdef __SUNPRO_CC
 // GCC doesn't have hypot in cmath so include it for Sun Studio
 #include <math.h>
@@ -84,7 +82,7 @@ void display::parse_team_overlays()
 {
 	const team& curr_team = dc_->teams()[playing_team()];
 	const team& prev_team = dc_->teams()[playing_team()-1 < dc_->teams().size() ? playing_team()-1 : dc_->teams().size()-1];
-	BOOST_FOREACH(const game_display::overlay_map::value_type i, *overlays_) {
+	for (const game_display::overlay_map::value_type i : *overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
@@ -976,15 +974,15 @@ void display::create_buttons()
 
 void display::render_buttons()
 {
-	BOOST_FOREACH(gui::button &btn, menu_buttons_) {
+	for (gui::button &btn : menu_buttons_) {
 		btn.set_dirty(true);
 	}
 
-	BOOST_FOREACH(gui::button &btn, action_buttons_) {
+	for (gui::button &btn : action_buttons_) {
 		btn.set_dirty(true);
 	}
 
-	BOOST_FOREACH(gui::slider &sld, sliders_) {
+	for (gui::slider &sld : sliders_) {
 		sld.set_dirty(true);
 	}
 }
@@ -1094,7 +1092,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	std::vector<surface> res;
 #endif
 
-	BOOST_FOREACH(std::string& name, names) {
+	for (std::string& name : names) {
 #ifdef SDL_GPU
 		const sdl::timage img(image::get_texture(name, image_type));
 		if (!img.null())
@@ -1336,8 +1334,8 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'tblit' > surface
 	 */
 
-	BOOST_FOREACH(tblit &blit, drawing_buffer_) {
-		BOOST_FOREACH(sdl::timage& img, blit.images()) {
+	for (tblit &blit : drawing_buffer_) {
+		for (sdl::timage& img : blit.images()) {
 			if (!img.null()) {
 				screen_.draw_texture(img, blit.x(), blit.y());
 			}
@@ -1363,8 +1361,8 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'tblit' > surface
 	 */
 
-	BOOST_FOREACH(const tblit &blit, drawing_buffer_) {
-		BOOST_FOREACH(const surface& surf, blit.surf()) {
+	for (const tblit &blit : drawing_buffer_) {
+		for (const surface& surf : blit.surf()) {
 			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
 			// to pass to each call to sdl_blit.
@@ -2678,7 +2676,7 @@ void display::redraw_everything()
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
-	BOOST_FOREACH(boost::function<void(display&)> f, redraw_observers_) {
+	for (boost::function<void(display&)> f : redraw_observers_) {
 		f(*this);
 	}
 
@@ -2789,7 +2787,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
-	BOOST_FOREACH(const map_location& loc, invalidated_) {
+	for (const map_location& loc : invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
@@ -2811,7 +2809,7 @@ void display::draw_invalidated() {
 
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
-	BOOST_FOREACH(const map_location& loc, invalidated_) {
+	for (const map_location& loc : invalidated_) {
 		unit_map::const_iterator u_it = dc_->units().find(loc);
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (u_it != dc_->units().end()
@@ -2938,7 +2936,7 @@ void display::draw_hex(const map_location& loc) {
 	// Paint arrows
 	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
 	if(arrows_in_hex != arrows_map_.end()) {
-		BOOST_FOREACH(arrow* const a, arrows_in_hex->second) {
+		for (arrow* const a : arrows_in_hex->second) {
 			a->draw_hex(loc);
 		}
 	}
@@ -3543,7 +3541,7 @@ bool display::invalidate(const std::set<map_location>& locs)
 	if(invalidateAll_)
 		return false;
 	bool ret = false;
-	BOOST_FOREACH(const map_location& loc, locs) {
+	for (const map_location& loc : locs) {
 #ifdef _OPENMP
 #pragma omp critical(invalidated_)
 #endif //_OPENMP
@@ -3593,7 +3591,7 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 		return false;
 
 	bool result = false;
-	BOOST_FOREACH(const map_location &loc, hexes_under_rect(rect)) {
+	for (const map_location &loc : hexes_under_rect(rect)) {
 		result |= invalidate(loc);
 	}
 	return result;
@@ -3614,7 +3612,7 @@ void display::invalidate_animations()
 	new_animation_frame();
 	animate_map_ = preferences::animate_map();
 	if (animate_map_) {
-		BOOST_FOREACH(const map_location &loc, get_visible_hexes())
+		for (const map_location &loc : get_visible_hexes())
 		{
 			if (shrouded(loc)) continue;
 			if (builder_->update_animation(loc)) {
@@ -3626,22 +3624,22 @@ void display::invalidate_animations()
 	}
 
 #ifndef _OPENMP
-	BOOST_FOREACH(const unit & u, dc_->units()) {
+	for (const unit & u : dc_->units()) {
 		u.anim_comp().refresh();
 	}
-	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
+	for (const unit* u : *fake_unit_man_) {
 		u->anim_comp().refresh();
 	}
 #else
 	std::vector<const unit *> open_mp_list;
-	BOOST_FOREACH(const unit & u, dc_->units()) {
+	for (const unit & u : dc_->units()) {
 		open_mp_list.push_back(&u);
 	}
 	// Note that it is an important assumption of the
 	// system that the fake units are added to the list
 	// after the real units, so that e.g. whiteboard
 	// planned moves are drawn over the real units.
-	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
+	for (const unit* u : *fake_unit_man_) {
 		open_mp_list.push_back(u);
 	}
 
@@ -3663,10 +3661,10 @@ void display::invalidate_animations()
 	do {
 		new_inval = false;
 #ifndef _OPENMP
-		BOOST_FOREACH(const unit & u, dc_->units()) {
+		for (const unit & u : dc_->units()) {
 			new_inval |=  u.anim_comp().invalidate(*this);
 		}
-		BOOST_FOREACH(const unit* u, *fake_unit_man_) {
+		for (const unit* u : *fake_unit_man_) {
 			new_inval |=  u->anim_comp().invalidate(*this);
 		}
 #else
@@ -3681,7 +3679,7 @@ void display::invalidate_animations()
 void display::add_arrow(arrow& arrow)
 {
 	const arrow_path_t & arrow_path = arrow.get_path();
-	BOOST_FOREACH(const map_location& loc, arrow_path)
+	for (const map_location& loc : arrow_path)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}
@@ -3690,7 +3688,7 @@ void display::add_arrow(arrow& arrow)
 void display::remove_arrow(arrow& arrow)
 {
 	const arrow_path_t & arrow_path = arrow.get_path();
-	BOOST_FOREACH(const map_location& loc, arrow_path)
+	for (const map_location& loc : arrow_path)
 	{
 		arrows_map_[loc].remove(&arrow);
 	}
@@ -3699,12 +3697,12 @@ void display::remove_arrow(arrow& arrow)
 void display::update_arrow(arrow & arrow)
 {
 	const arrow_path_t & previous_path = arrow.get_previous_path();
-	BOOST_FOREACH(const map_location& loc, previous_path)
+	for (const map_location& loc : previous_path)
 	{
 		arrows_map_[loc].remove(&arrow);
 	}
 	const arrow_path_t & arrow_path = arrow.get_path();
-	BOOST_FOREACH(const map_location& loc, arrow_path)
+	for (const map_location& loc : arrow_path)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}

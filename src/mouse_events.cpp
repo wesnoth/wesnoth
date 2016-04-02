@@ -54,7 +54,6 @@
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
 #include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
@@ -1068,7 +1067,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 
 	map_location adj[6];
 	get_adjacent_tiles(loc, adj);
-	BOOST_FOREACH(const map_location &aloc, adj) {
+	for(const map_location &aloc : adj) {
 		unit_map::const_iterator i = find_unit(aloc);
 		if (i && uteam.is_enemy(i->side()))
 			res.insert(aloc);
@@ -1095,7 +1094,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 	// Check each adjacent hex.
 	map_location adj[6];
 	get_adjacent_tiles(u->get_location(), adj);
-	BOOST_FOREACH(const map_location &loc, adj)
+	for(const map_location &loc : adj)
 	{
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)

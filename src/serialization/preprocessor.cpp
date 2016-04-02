@@ -33,8 +33,6 @@
 #include "util.hpp"
 #include "version.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <stdexcept>
 
 static lg::log_domain log_preprocessor("preprocessor");
@@ -66,7 +64,7 @@ static std::string get_filename(const std::string& file_code){
 	int n = 0;
 	s >> std::hex >> n;
 
-	BOOST_FOREACH(const t_file_number_map::value_type& p, file_number_map){
+	for(const t_file_number_map::value_type& p : file_number_map) {
 		if(p.second == n)
 			return p.first;
 	}
@@ -145,8 +143,9 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("linenum", std::to_string(linenum));
 	writer.write_key_val("location", get_location(location));
 
-	BOOST_FOREACH(const std::string &arg, arguments)
+	for(const std::string &arg : arguments) {
 		write_argument(writer, arg);
+	}
 
 	writer.close_child(key);
 }
@@ -163,8 +162,9 @@ void preproc_define::read(const config& cfg)
 	linenum = cfg["linenum"];
 	location = cfg["location"].str();
 
-	BOOST_FOREACH(const config &arg, cfg.child_range("argument"))
+	for(const config &arg : cfg.child_range("argument")) {
 		read_argument(arg);
+	}
 }
 
 preproc_map::value_type preproc_define::read_pair(const config &cfg)
@@ -558,7 +558,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 
 		filesystem::get_files_in_dir(name, &files_, nullptr, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
-		BOOST_FOREACH(std::string fname, files_) {
+		for(std::string fname : files_) {
 			size_t cpos = fname.rfind(" ");
 			if (cpos != std::string::npos && cpos >= symbol_index) {
 				std::stringstream ss;
@@ -1263,14 +1263,14 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
 		// subdirectories
-		BOOST_FOREACH(const std::string& dir, dirs)
+		for(const std::string& dir : dirs)
 		{
 			LOG_PREPROC << "processing sub-dir: " << dir << '\n';
 			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, target_directory);
 		}
 
 		// files in current directory
-		BOOST_FOREACH(const std::string& file, files)
+		for(const std::string& file : files)
 		{
 			preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, target_directory);
 		}

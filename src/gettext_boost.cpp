@@ -19,7 +19,6 @@
 #include <iostream>
 #include <locale>
 #include <boost/locale.hpp>
-#include <boost/foreach.hpp>
 // including boost/thread fixes linking of boost locale for msvc on boost 1.60
 #include <boost/thread.hpp>
 #include <set>
@@ -78,7 +77,7 @@ namespace
 			, is_dirty_(true)
 		{
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
-			BOOST_FOREACH(const std::string& name, g_mgr.get_all_backends())
+			for(const std::string& name : g_mgr.get_all_backends())
 			{
 				LOG_G << "Found boost locale backend: '" << name << "'\n";
 			}

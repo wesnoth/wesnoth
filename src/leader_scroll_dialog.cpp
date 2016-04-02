@@ -28,9 +28,6 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 
-//
-//#include <boost/foreach.hpp>
-
 /**
  * @namespace about
  * Display credits %about all contributors.

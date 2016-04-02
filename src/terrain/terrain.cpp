@@ -20,8 +20,6 @@
 #include "terrain/terrain.hpp"
 #include "util.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <set>
 
 static lg::log_domain log_config("config");
@@ -319,7 +317,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
 {
-	BOOST_FOREACH(const config &t, cfgs)
+	for (const config &t : cfgs)
 	{
 		terrain_type terrain(t);
 		DBG_G << "create_terrain_maps: " << terrain.number() << " "
@@ -336,10 +334,12 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
 				std::set<std::string> egs;
 				bool clean_merge = true;
-				BOOST_FOREACH(std::string& t, eg1)
+				for (std::string& t : eg1) {
 					clean_merge &= egs.insert(t).second;
-				BOOST_FOREACH(std::string& t, eg2)
+				}
+				for (std::string& t : eg2) {
 					clean_merge &= egs.insert(t).second;
+				}
 
 				std::string joined = utils::join(egs);
 				curr.set_editor_group(joined);

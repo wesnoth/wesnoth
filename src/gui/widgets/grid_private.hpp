@@ -34,8 +34,6 @@
 
 #include "utils/const_clone.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace gui2
 {
 
@@ -59,7 +57,7 @@ struct tgrid_implementation
 					  const bool must_be_active)
 	{
 		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
-		BOOST_FOREACH(hack & child, grid.children_)
+		for(hack & child : grid.children_)
 		{
 
 			W* widget = child.widget();
@@ -95,7 +93,7 @@ struct tgrid_implementation
 		}
 
 		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
-		BOOST_FOREACH(hack & child, grid.children_)
+		for(hack & child : grid.children_)
 		{
 
 			widget = child.widget();

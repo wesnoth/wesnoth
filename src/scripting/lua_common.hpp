@@ -212,7 +212,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 		const std::vector<std::string>& vector = accessor; \
 		lua_createtable(L, vector.size(), 0); \
 		int i = 1; \
-		BOOST_FOREACH(const std::string& s, vector) { \
+		for (const std::string& s : vector) { \
 			lua_pushstring(L, s.c_str()); \
 			lua_rawseti(L, -2, i); \
 			++i; \

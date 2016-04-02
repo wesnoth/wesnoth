@@ -45,7 +45,6 @@
 
 
 #include <algorithm>                    // for min
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <cassert>                     // for assert
 #include <iterator>                     // for reverse_iterator, etc
 #include <map>                          // for _Rb_tree_iterator, etc
@@ -107,7 +106,7 @@ void holder::init( side_number side )
 
 	if (this->ai_) {
 		ai_->on_create();
-		BOOST_FOREACH(config &mod_ai, cfg_.child_range("modify_ai")) {
+		for (config &mod_ai : cfg_.child_range("modify_ai")) {
 			if (!mod_ai.has_attribute("side")) {
 				mod_ai["side"] = side;
 			}
@@ -169,8 +168,8 @@ void holder::modify_side_ai_config(config cfg)
 		cfg_.merge_children_by_attribute("aspect","id");
 	} else {
 		// else run 'add_facet' command on each [aspect][facet]
-		BOOST_FOREACH(const config &cfg_a, cfg.child_range("aspect")) {
-			BOOST_FOREACH(const config &cfg_f, cfg_a.child_range("facet")) {
+		for (const config &cfg_a : cfg.child_range("aspect")) {
+			for (const config &cfg_f : cfg_a.child_range("facet")) {
 				readonly_context_->add_facet(cfg_a["id"],cfg_f);
 			}
 		}
@@ -714,7 +713,7 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
 {
-	BOOST_FOREACH(const config& cfg, ai_parameters) {
+	for (const config& cfg : ai_parameters) {
 		get_active_ai_holder_for_side(side).modify_side_ai_config(cfg);
 	}
 }

@@ -40,7 +40,6 @@
 
 #include "game_display.hpp" // for resources::screen
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -113,7 +112,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	BOOST_FOREACH(const std::string& place, placements)
+	for (const std::string& place : placements)
 	{
 		map_location loc;
 

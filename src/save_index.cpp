@@ -29,7 +29,6 @@
 
 #include "filesystem.hpp"
 #include "config.hpp"
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
@@ -233,7 +232,7 @@ bool save_info_less_time::operator() (const save_info& a, const save_info& b) co
 }
 
 static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
-	BOOST_FOREACH(const std::string &suf, suffixes) {
+	for (const std::string &suf : suffixes) {
 		std::istream *file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
 		if (file_stream->fail()) {
 			delete file_stream;
@@ -376,7 +375,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	std::string leader_image;
 	std::string leader_image_tc_modifier;
 
-	//BOOST_FOREACH(const config &p, cfg_save.child_range("player"))
+	//for (const config &p : cfg_save.child_range("player"))
 	//{
 	//	if (p["canrecruit"].to_bool(false))) {
 	//		leader = p["save_id"];
@@ -389,7 +388,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	//{
 		if (const config &snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start))
 		{
-			BOOST_FOREACH(const config &side, snapshot.child_range("side"))
+			for (const config &side : snapshot.child_range("side"))
 			{
 				if (side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
 					continue;
@@ -407,7 +406,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 						break;
 				}
 
-				BOOST_FOREACH(const config &u, side.child_range("unit"))
+				for (const config &u : side.child_range("unit"))
 				{
 					if (u["canrecruit"].to_bool()) {
 						leader = u["id"].str();

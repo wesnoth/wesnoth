@@ -26,8 +26,6 @@
 #include "serialization/string_utils.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -121,16 +119,16 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 		sorted_images = true;
 	}
 
-	BOOST_FOREACH(const rule_image_rand& ri, images){
+	for(const rule_image_rand& ri : images) {
 		bool is_background = ri->is_background();
 		bool animate = (!ri.ri->is_water || preferences::animate_water());
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
-		BOOST_FOREACH(const rule_image_variant& variant, ri->variants){
+		for(const rule_image_variant& variant : ri->variants) {
 			if(!variant.has_flag.empty()) {
 				bool has_flag_match = true;
-				BOOST_FOREACH(const std::string& s, variant.has_flag) {
+				for(const std::string& s : variant.has_flag) {
 					// If a flag listed in "has_flag" is not present, this variant does not match
 					if(flags.find(s) == flags.end()) {
 						has_flag_match = false;
@@ -337,12 +335,12 @@ bool terrain_builder::update_animation(const map_location &loc)
 
 	tile& btile = tile_map_[loc];
 
-	BOOST_FOREACH(animated<image::locator>& a, btile.images_background) {
+	for(animated<image::locator>& a : btile.images_background) {
 		if(a.need_update())
 			changed = true;
 		a.update_last_draw_time();
 	}
-	BOOST_FOREACH(animated<image::locator>& a, btile.images_foreground) {
+	for(animated<image::locator>& a : btile.images_foreground) {
 		if(a.need_update())
 			changed = true;
 		a.update_last_draw_time();
@@ -419,7 +417,7 @@ static std::vector<std::string> get_variations(const std::string& base, const st
 	}
 	std::vector<std::string> vars = utils::split(variations, ';', 0);
 
-	BOOST_FOREACH(const std::string& v, vars){
+	for (const std::string& v : vars) {
 		res.push_back(base);
 		std::string::size_type pos = 0;
 		while ((pos = res.back().find("@V", pos)) != std::string::npos) {
@@ -438,21 +436,21 @@ bool terrain_builder::load_images(building_rule &rule)
 
 	// Parse images and animations data
 	// If one is not valid, return false.
-	BOOST_FOREACH(terrain_constraint &constraint, rule.constraints)
+	for(terrain_constraint &constraint : rule.constraints)
 	{
-		BOOST_FOREACH(rule_image& ri, constraint.images)
+		for(rule_image& ri : constraint.images)
 		{
-			BOOST_FOREACH(rule_image_variant& variant, ri.variants)
+			for(rule_image_variant& variant : ri.variants)
 			{
 
 				std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
-				BOOST_FOREACH(const std::string& var, var_strings)
+				for(const std::string& var : var_strings)
 				{
 					/** @todo improve this, 99% of terrains are not animated. */
 					std::vector<std::string> frames = utils::square_parenthetical_split(var,',');
 					animated<image::locator> res;
 
-					BOOST_FOREACH(const std::string& frame, frames)
+					for(const std::string& frame : frames)
 					{
 						const std::vector<std::string> items = utils::split(frame, ':');
 						const std::string& str = items.front();
@@ -592,7 +590,7 @@ void terrain_builder::replace_rotate_tokens(std::string &s, int angle,
 void terrain_builder::replace_rotate_tokens(rule_image &image, int angle,
 	const std::vector<std::string> &replacement)
 {
-	BOOST_FOREACH(rule_image_variant& variant, image.variants) {
+	for(rule_image_variant& variant : image.variants) {
 		replace_rotate_tokens(variant, angle, replacement);
 	}
 }
@@ -600,7 +598,7 @@ void terrain_builder::replace_rotate_tokens(rule_image &image, int angle,
 void terrain_builder::replace_rotate_tokens(rule_imagelist &list, int angle,
 	const std::vector<std::string> &replacement)
 {
-	BOOST_FOREACH(rule_image &img, list) {
+	for(rule_image &img : list) {
 		replace_rotate_tokens(img, angle, replacement);
 	}
 }
@@ -608,16 +606,16 @@ void terrain_builder::replace_rotate_tokens(rule_imagelist &list, int angle,
 void terrain_builder::replace_rotate_tokens(building_rule &rule, int angle,
 	const std::vector<std::string> &replacement)
 {
-	BOOST_FOREACH(terrain_constraint &cons, rule.constraints)
+	for(terrain_constraint &cons : rule.constraints)
 	{
 		// Transforms attributes
-		BOOST_FOREACH(std::string &flag, cons.set_flag) {
+		for(std::string &flag : cons.set_flag) {
 			replace_rotate_tokens(flag, angle, replacement);
 		}
-		BOOST_FOREACH(std::string &flag, cons.no_flag) {
+		for(std::string &flag : cons.no_flag) {
 			replace_rotate_tokens(flag, angle, replacement);
 		}
-		BOOST_FOREACH(std::string &flag, cons.has_flag) {
+		for(std::string &flag : cons.has_flag) {
 			replace_rotate_tokens(flag, angle, replacement);
 		}
 		replace_rotate_tokens(cons.images, angle, replacement);
@@ -634,7 +632,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 		return;
 	}
 
-	BOOST_FOREACH(terrain_constraint &cons, ret.constraints) {
+	for(terrain_constraint &cons : ret.constraints) {
 		rotate(cons, angle);
 	}
 
@@ -642,7 +640,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	int minx = INT_MAX;
 	int miny = INT_MAX;
 
-	BOOST_FOREACH(const terrain_constraint &cons, ret.constraints) {
+	for(const terrain_constraint &cons : ret.constraints) {
 		minx = std::min<int>(cons.loc.x, minx);
 		miny = std::min<int>(2 * cons.loc.y + (cons.loc.x & 1), miny);
 	}
@@ -652,7 +650,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	if(!(miny & 1) && (minx & 1) && (minx > 0))
 		miny -= 2;
 
-	BOOST_FOREACH(terrain_constraint &cons, ret.constraints) {
+	for(terrain_constraint &cons : ret.constraints) {
 		legacy_sum_assign(cons.loc,map_location(-minx, -((miny - 1) / 2)));
 	}
 
@@ -678,7 +676,7 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string &image
 
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
-	BOOST_FOREACH(const config &img, cfg.child_range("image"))
+	for (const config &img : cfg.child_range("image"))
 	{
 		int layer = img["layer"];
 
@@ -705,7 +703,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y, is_water));
 
 		// Adds the other variants of the image
-		BOOST_FOREACH(const config &variant, img.child_range("variant"))
+		for(const config &variant : img.child_range("variant"))
 		{
 			const std::string &name = variant["name"];
 			const std::string &variations = img["variations"];
@@ -731,7 +729,7 @@ terrain_builder::terrain_constraint &terrain_builder::add_constraints(
 		const t_translation::t_match& type, const config& global_images)
 {
 	terrain_constraint *cons = nullptr;
-	BOOST_FOREACH(terrain_constraint &c, constraints) {
+	for (terrain_constraint &c : constraints) {
 		if (c.loc == loc) {
 			cons = &c;
 			break;
@@ -872,7 +870,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 	int n = 0;
 
 	// Parses the list of building rules (BRs)
-	BOOST_FOREACH(const config &br, cfg.child_range("terrain_graphics"))
+	for(const config &br : cfg.child_range("terrain_graphics"))
 	{
 		building_rule pbr; // Parsed Building rule
 		pbr.local = local;
@@ -894,7 +892,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		parse_mapstring(br["map"], pbr, anchors, br);
 
 		// Parses the terrain constraints (TCs)
-		BOOST_FOREACH(const config &tc, br.child_range("tile"))
+		for (const config &tc : br.child_range("tile"))
 		{
 			// Adds the terrain constraint to the current built terrain's list
 			// of terrain constraints, if it does not exist.
@@ -930,7 +928,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		const std::vector<std::string> global_has_flag = utils::split(br["has_flag"]);
 		const std::vector<std::string> global_set_no_flag = utils::split(br["set_no_flag"]);
 
-		BOOST_FOREACH(terrain_constraint &constraint, pbr.constraints)
+		for(terrain_constraint &constraint : pbr.constraints)
 		{
 			constraint.set_flag.insert(constraint.set_flag.end(),
 				global_set_flag.begin(), global_set_flag.end());
@@ -1035,7 +1033,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		}
 	}
 
-	BOOST_FOREACH(const terrain_constraint &cons, rule.constraints)
+	for(const terrain_constraint &cons : rule.constraints)
 	{
 		// Translated location
 		const map_location tloc = legacy_sum(loc,cons.loc);
@@ -1053,13 +1051,13 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 
 		const std::set<std::string> &flags = tile_map_[tloc].flags;
 
-		BOOST_FOREACH(const std::string &s, cons.no_flag) {
+		for (const std::string &s : cons.no_flag) {
 			// If a flag listed in "no_flag" is present, the rule does not match
 			if (flags.find(s) != flags.end()) {
 				return false;
 			}
 		}
-		BOOST_FOREACH(const std::string &s, cons.has_flag) {
+		for (const std::string &s : cons.has_flag) {
 			// If a flag listed in "has_flag" is not present, this rule does not match
 			if (flags.find(s) == flags.end()) {
 				return false;
@@ -1074,7 +1072,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 {
 	unsigned int rand_seed = get_noise(loc, rule.get_hash());
 
-	BOOST_FOREACH(const terrain_constraint &constraint, rule.constraints)
+	for(const terrain_constraint &constraint : rule.constraints)
 	{
 		const map_location tloc = legacy_sum(loc,constraint.loc);
 		if(!tile_map_.on_map(tloc)) {
@@ -1084,13 +1082,13 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		tile& btile = tile_map_[tloc];
 
 		if (!constraint.no_draw) {
-			BOOST_FOREACH(const rule_image &img, constraint.images) {
+			for (const rule_image &img : constraint.images) {
 				btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
 			}
 		}
 
 		// Sets flags
-		BOOST_FOREACH(const std::string &flag, constraint.set_flag) {
+		for (const std::string &flag : constraint.set_flag) {
 			btile.flags.insert(flag);
 		}
 
@@ -1113,9 +1111,9 @@ unsigned int terrain_builder::building_rule::get_hash() const
 	if(hash_ != DUMMY_HASH)
 		return hash_;
 
-	BOOST_FOREACH(const terrain_constraint &constraint, constraints) {
-		BOOST_FOREACH(const rule_image& ri, constraint.images) {
-			BOOST_FOREACH(const rule_image_variant& variant, ri.variants) {
+	for(const terrain_constraint &constraint : constraints) {
+		for(const rule_image& ri : constraint.images) {
+			for(const rule_image_variant& variant : ri.variants) {
 				// we will often hash the same string, but that seems fast enough
 				hash_ += hash_str(variant.image_string);
 			}
@@ -1143,7 +1141,7 @@ void terrain_builder::build_terrains()
 		}
 	}
 
-	BOOST_FOREACH(const building_rule &rule, building_rules_)
+	for(const building_rule &rule : building_rules_)
 	{
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
@@ -1152,7 +1150,7 @@ void terrain_builder::build_terrains()
 		t_translation::t_list min_types = t_translation::t_list(); // <-- This must be explicitly initialized, just as min_constraint is, at start of loop, or we get a null pointer dereference when we go through on later times.
 		const terrain_constraint *min_constraint = nullptr;
 
-		BOOST_FOREACH(const terrain_constraint &constraint, rule.constraints)
+		for(const terrain_constraint &constraint : rule.constraints)
 		{
 			const t_translation::t_match& match = constraint.terrain_types_match;
 			t_translation::t_list matching_types;

@@ -23,8 +23,6 @@
 #include "log.hpp"
 #include "resources.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_arrows("arrows");
 #define ERR_ARR LOG_STREAM(err, log_arrows)
 #define WRN_ARR LOG_STREAM(warn, log_arrows)
@@ -289,7 +287,7 @@ void arrow::invalidate_arrow_path(arrow_path_t const& path)
 {
 	if(!SCREEN) return;
 
-	BOOST_FOREACH(map_location const& loc, path)
+	for (map_location const& loc : path)
 	{
 		SCREEN->invalidate(loc);
 	}

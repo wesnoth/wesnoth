@@ -37,8 +37,6 @@
 #include "units/types.hpp"
 #include "units/udisplay.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
@@ -425,7 +423,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		i->write(cfg);
 		resources::units->erase(loc);
 		config& statuses = cfg.child_or_add("status");
-		BOOST_FOREACH(std::string status, utils::split(value)) {
+		for (std::string status : utils::split(value)) {
 			bool add = true;
 			if (status.length() >= 1 && status[0] == '-') {
 				add = false;

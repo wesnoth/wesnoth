@@ -34,8 +34,6 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace wb {
 
 size_t viewer_team()
@@ -82,7 +80,7 @@ unit* find_recruiter(size_t team_index, map_location const& hex)
 	if ( !resources::gameboard->map().is_castle(hex) )
 		return nullptr;
 
-	BOOST_FOREACH(unit& u, *resources::units)
+	for(unit& u : *resources::units)
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
 				&& dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(u, hex))
@@ -124,8 +122,9 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 
 	int result = 0;
 	gamemap const& map = resources::gameboard->map();
-	BOOST_FOREACH(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
+	for(map_location const& loc : std::make_pair(path.begin()+1,path.end())) {
 		result += u.movement_cost(map[loc]);
+	}
 	return result;
 }
 
@@ -153,9 +152,10 @@ void unghost_owner_unit(unit* unit)
 
 bool has_actions()
 {
-	BOOST_FOREACH(team& t, *resources::teams)
+	for (team& t : *resources::teams) {
 		if (!t.get_side_actions()->empty())
 			return true;
+	}
 
 	return false;
 }
@@ -170,7 +170,7 @@ void for_each_action(boost::function<void(action_ptr)> function, team_filter tea
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
 		end = true;
-		BOOST_FOREACH(team &side, *resources::teams) {
+		for(team &side : *resources::teams) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_filter(side)) {
 				std::for_each(actions.turn_begin(turn), actions.turn_end(turn), function);
@@ -185,7 +185,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 	action_ptr result;
 	size_t result_turn = std::numeric_limits<size_t>::max();
 
-	BOOST_FOREACH(team &side, *resources::teams) {
+	for(team &side : *resources::teams) {
 		side_actions &actions = *side.get_side_actions();
 		if(team_filter(side)) {
 			side_actions::iterator chall = actions.find_first_action_at(hex);

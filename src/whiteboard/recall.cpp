@@ -36,8 +36,6 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace wb
 {
 
@@ -75,7 +73,7 @@ recall::recall(config const& cfg, bool hidden)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	BOOST_FOREACH(const unit_const_ptr & recall_unit, resources::teams->at(team_index()).recall_list())
+	for(const unit_const_ptr & recall_unit : resources::teams->at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{

@@ -46,7 +46,6 @@
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
@@ -485,8 +484,7 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 				if (map_hashes_ && !item.reloaded) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					BOOST_FOREACH(const config::attribute& i,
-						map_hashes_.attribute_range()) {
+					for (const config::attribute& i : map_hashes_.attribute_range()) {
 
 						if (i.first == game["mp_scenario"] &&
 							i.second == hash) {
@@ -547,7 +545,7 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 			//TODO: use difficulties instead of difficulty_descriptions if
 			//difficulty_descriptions is not available
 			assert(difficulties.size() == difficulty_options.size());
-			BOOST_FOREACH(const std::string& difficulty, difficulties) {
+			for (const std::string& difficulty : difficulties) {
 				if (difficulty == game["difficulty_define"]) {
 					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
 					item.map_info += " — ";
@@ -728,7 +726,7 @@ void gamebrowser::populate_game_item_mod_info(gamebrowser::game_item & item, con
 		item.era_and_mod_info += _("Modifications:");
 		item.era_and_mod_info += " ";
 
-		BOOST_FOREACH (const config& m, game.child_range("modification")) {
+		for (const config& m : game.child_range("modification")) {
 			const config& mod_cfg = game_config.find_child("modification", "id", m["id"]);
 			if (mod_cfg) {
 				item.era_and_mod_info += mod_cfg["name"].str();
@@ -754,7 +752,7 @@ void gamebrowser::populate_game_item_mod_info(gamebrowser::game_item & item, con
 // Do this before populating eras and mods, to get reports of missing add-ons in the most sensible order.
 void gamebrowser::populate_game_item_addons_installed(gamebrowser::game_item & item, const config & game, const std::vector<std::string> & installed_addons)
 {
-	BOOST_FOREACH(const config & addon, game.child_range("addon")) {
+	for (const config & addon : game.child_range("addon")) {
 		if (addon.has_attribute("id")) {
 			if (std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
 				required_addon r;
@@ -864,7 +862,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config, c
 
 	games_.clear();
 
-	BOOST_FOREACH(const config &game, cfg.child("gamelist").child_range("game"))
+	for (const config &game : cfg.child("gamelist").child_range("game"))
 	{
 		games_.push_back(game_item());
 		populate_game_item(games_.back(), game, game_config, installed_addons);
@@ -926,7 +924,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 	}
 	if(preferences::fi_friends_in_game()) {
 		bool found_friend = false;
-		BOOST_FOREACH(const config &user, cfg.child_range("user")) {
+		for (const config &user : cfg.child_range("user")) {
 			if(preferences::is_friend(user["name"]) && user["game_id"] == i.id) {
 				found_friend = true;
 				break;
@@ -939,7 +937,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 
 	if(!preferences::fi_text().empty()) {
 		bool found_match = true;
-		BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
+		for (const std::string& search_string : utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
 
 			if(!boost::contains(i.map_info, search_string, chars_equal_insensitive) &&
 			   !boost::contains(i.name, search_string, chars_equal_insensitive) &&
@@ -1200,7 +1198,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		err_msg += _("Details:");
 		err_msg += "\n";
 
-		BOOST_FOREACH(const required_addon & a, reqs) {
+		for (const required_addon & a : reqs) {
 			if (a.outcome == CANNOT_SATISFY) {
 				err_msg += a.message;
 				err_msg += "\n";
@@ -1216,7 +1214,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		err_msg += "\n";
 
 		std::vector<std::string> needs_download;
-		BOOST_FOREACH(const required_addon & a, reqs) {
+		for (const required_addon & a : reqs) {
 			if (a.outcome == NEED_DOWNLOAD) {
 				err_msg += a.message;
 				err_msg += "\n";

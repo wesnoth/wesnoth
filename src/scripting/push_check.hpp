@@ -6,7 +6,6 @@
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/has_xxx.hpp>
-#include <boost/foreach.hpp>
 #include "tstring.hpp"
 #include "map/location.hpp"
 #include "lua/lauxlib.h"
@@ -293,7 +292,7 @@ namespace lua_check_impl
 	lua_push(lua_State * L, const T& map )
 	{
 		lua_newtable(L);
-		BOOST_FOREACH(const typename T::value_type& pair, map)
+		for(const typename T::value_type& pair : map)
 		{
 			lua_check_impl::lua_push<typename remove_constref<typename T::key_type>::type>(L, pair.first);
 			lua_check_impl::lua_push<typename remove_constref<typename T::mapped_type>::type>(L, pair.second);

@@ -26,7 +26,6 @@
 #include <ctime>
 
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/foreach.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 

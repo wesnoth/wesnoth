@@ -32,7 +32,6 @@
 #include "soundsource.hpp"
 #include "util.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/unordered_map.hpp>
 #include <iostream>
 
@@ -72,10 +71,10 @@ manager::manager()
 
 void manager::read_scenario(const config& scenario_cfg)
 {
-	BOOST_FOREACH(const config &ev, scenario_cfg.child_range("event")) {
+	for(const config &ev : scenario_cfg.child_range("event")) {
 		add_event_handler(ev);
 	}
-	BOOST_FOREACH(const std::string &id, utils::split(scenario_cfg["unit_wml_ids"])) {
+	for(const std::string &id : utils::split(scenario_cfg["unit_wml_ids"])) {
 		unit_wml_ids_.insert(id);
 	}
 
@@ -169,7 +168,7 @@ void manager::add_events(const config::const_child_itors &cfgs, const std::strin
 		if(std::find(unit_wml_ids_.begin(),unit_wml_ids_.end(),type) != unit_wml_ids_.end()) return;
 		unit_wml_ids_.insert(type);
 	}
-	BOOST_FOREACH(const config &new_ev, cfgs) {
+	for(const config &new_ev : cfgs) {
 		if(type.empty() && new_ev["id"].empty())
 		{
 			WRN_NG << "attempt to add an [event] with empty id=, ignoring " << std::endl;
@@ -181,7 +180,7 @@ void manager::add_events(const config::const_child_itors &cfgs, const std::strin
 
 void manager::write_events(config& cfg)
 {
-	BOOST_FOREACH(const handler_ptr &eh, *event_handlers_) {
+	for(const handler_ptr &eh : *event_handlers_) {
 		if ( !eh || eh->is_menu_item() ) {
 			continue;
 		}

@@ -25,7 +25,6 @@
 
 #include "terrain/type_data.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -113,7 +112,7 @@ void editor_map::sanity_check()
 			++errors;
 		}
 	}
-	BOOST_FOREACH(const map_location& loc, selection_) {
+	for (const map_location& loc : selection_) {
 		if (!on_board_with_border(loc)) {
 			ERR_ED << "Off-map tile in selection: " << loc << std::endl;
 		}
@@ -173,7 +172,7 @@ bool editor_map::add_to_selection(const map_location& loc)
 bool editor_map::set_selection(const std::set<map_location>& area)
 {
 	clear_selection();
-	BOOST_FOREACH(const map_location& loc, area) {
+	for (const map_location& loc : area) {
 		if (!add_to_selection(loc))
 			return false;
 	}

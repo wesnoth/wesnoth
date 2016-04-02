@@ -67,7 +67,6 @@
 #include "wml_exception.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/regex.hpp>
@@ -228,7 +227,7 @@ namespace { // Support functions
 		t_filter.get_locations(locs, true);
 
 		// Loop through sides.
-		BOOST_FOREACH(const int &side_num, sides)
+		for (const int &side_num : sides)
 		{
 			team &t = (*resources::teams)[side_num-1];
 			if ( !clear )
@@ -243,8 +242,9 @@ namespace { // Support functions
 				t.add_fog_override(locs);
 			else
 				// Simply clear fog from the locations.
-				BOOST_FOREACH(const map_location &hex, locs)
+				for (const map_location &hex : locs) {
 					t.clear_fog(hex);
+				}
 		}
 
 		// Flag a screen update.
@@ -453,7 +453,7 @@ WML_HANDLER_FUNCTION(move_units_fake, cfg)
 
 	size_t longest_path = 0;
 
-	BOOST_FOREACH(const vconfig& config, unit_cfgs) {
+	for (const vconfig& config : unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
@@ -533,7 +533,7 @@ WML_HANDLER_FUNCTION(recall, cfg)
 				const map_location cfg_loc = cfg_to_loc(cfg);
 
 				/// @todo fendrin: comment this monster
-				BOOST_FOREACH(unit_map::const_unit_iterator leader, leaders) {
+				for (unit_map::const_unit_iterator leader : leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
 					if ( lfilt(*leader)  &&
@@ -909,7 +909,7 @@ WML_HANDLER_FUNCTION(set_variable, cfg)
 
 			variable_access_const vi = resources::gamedata->get_variable_access_read(array_name);
 			bool first = true;
-			BOOST_FOREACH(const config &cfg, vi.as_array())
+			for (const config &cfg : vi.as_array())
 			{
 				std::string current_string = cfg[key_name];
 				if (remove_empty && current_string.empty()) continue;
@@ -942,7 +942,7 @@ WML_HANDLER_FUNCTION(set_variables, cfg)
 		try
 		{
 			variable_access_const tovar = resources::gamedata->get_variable_access_read(cfg["to_variable"]);
-			BOOST_FOREACH(const config& c, tovar.as_array())
+			for (const config& c : tovar.as_array())
 			{
 				data.push_back(c);
 			}
@@ -953,7 +953,7 @@ WML_HANDLER_FUNCTION(set_variables, cfg)
 		}
 	} else {
 		typedef std::pair<std::string, vconfig> vchild;
-		BOOST_FOREACH(const vchild& p, cfg.all_ordered()) {
+		for (const vchild& p : cfg.all_ordered()) {
 			if(p.first == "value") {
 				data.push_back(p.second.get_parsed_config());
 			} else if(p.first == "literal") {
@@ -1003,7 +1003,7 @@ WML_HANDLER_FUNCTION(set_variables, cfg)
 			{
 				//merge children into one
 				config merged_children;
-				BOOST_FOREACH(const config &cfg, data) {
+				for (const config &cfg : data) {
 					merged_children.append(cfg);
 				}
 				data = boost::assign::list_of(merged_children).convert_to_container<std::vector<config> >();
@@ -1177,7 +1177,7 @@ WML_HANDLER_FUNCTION(tunnel, cfg)
 	const bool remove = cfg["remove"].to_bool(false);
 	if (remove) {
 		const std::vector<std::string> ids = utils::split(cfg["id"]);
-		BOOST_FOREACH(const std::string &id, ids) {
+		for (const std::string &id : ids) {
 			resources::tunnels->remove(id);
 		}
 	} else if (cfg.get_children("source").empty() ||

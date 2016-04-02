@@ -36,7 +36,6 @@
 #include "video.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -271,7 +270,7 @@ void wait::join_game(bool observe)
 		//available side.
 		const config *side_choice = nullptr;
 		int side_num = -1, nb_sides = 0;
-		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
+		for (const config &sd : get_scenario().child_range("side"))
 		{
 			DBG_MP << "*** side " << nb_sides << "***\n" << sd.debug() << "***\n";
 
@@ -331,7 +330,7 @@ void wait::join_game(bool observe)
 			const std::string color = (*side_choice)["color"].str();
 
 			std::vector<const config*> era_factions;
-			BOOST_FOREACH(const config &side, possible_sides) {
+			for (const config &side : possible_sides) {
 				era_factions.push_back(&side);
 			}
 
@@ -347,7 +346,7 @@ void wait::join_game(bool observe)
 				saved_game);
 
 			std::vector<std::string> choices;
-			BOOST_FOREACH(const config *s, flg.choosable_factions())
+			for (const config *s : flg.choosable_factions())
 			{
 				const config &side = *s;
 				const std::string &name = side["name"];
@@ -520,7 +519,7 @@ void wait::generate_menu()
 	std::vector<std::string> details;
 	std::set<std::string> playerlist;
 
-	BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
+	for (const config &sd : get_scenario().child_range("side"))
 	{
 		if (!sd["allow_player"].to_bool(true)) {
 			continue;
@@ -535,7 +534,7 @@ void wait::generate_menu()
 		// Hack: if there is a unit which can recruit, use it as a
 		// leader. Necessary to display leader information when loading
 		// saves.
-		BOOST_FOREACH(const config &side_unit, sd.child_range("unit"))
+		for (const config &side_unit : sd.child_range("unit"))
 		{
 			if (side_unit["canrecruit"].to_bool()) {
 				leader_type = side_unit["type"].str();
@@ -647,7 +646,7 @@ bool wait::download_level_data()
 		}
 		else if(config& controllers = revc.child("controllers")) {
 			int index = 0;
-			BOOST_FOREACH(const config& controller, controllers.child_range("controller")) {
+			for (const config& controller : controllers.child_range("controller")) {
 				if(config& side = get_scenario().child("side", index)) {
 					side["is_local"] = controller["is_local"];
 				}

@@ -89,7 +89,6 @@
 #include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #include <memory>
 
@@ -158,7 +157,7 @@ namespace {
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
-		BOOST_FOREACH(const tresolution& resolution, resolutions) {
+		for(const tresolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			boost::scoped_ptr<gui2::tdialog> dlg(twrapper<T>::create());
@@ -196,7 +195,7 @@ namespace {
 	{
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
-			BOOST_FOREACH(const tresolution& resolution, resolutions) {
+			for(const tresolution& resolution : resolutions) {
 				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 				boost::scoped_ptr<gui2::tpopup> dlg(twrapper<T>::create());
@@ -242,7 +241,7 @@ namespace {
 	void test_tip_resolutions(const tresolution_list& resolutions
 			, const std::string& id)
 	{
-		BOOST_FOREACH(const tresolution& resolution, resolutions) {
+		for(const tresolution& resolution : resolutions) {
 			
 			//CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
@@ -483,7 +482,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
-	BOOST_FOREACH(const std::string& id, list) {
+	for(const std::string& id : list) {
 		std::cerr << "Window '" << id << "' registered but not tested.\n";
 	}
 }
@@ -858,7 +857,7 @@ struct twrapper<gui2::teditor_generate_map>
 		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
 
 		std::vector<map_generator*> map_generators;
-		BOOST_FOREACH(const config &i, main_config.child_range("multiplayer")) {
+		for(const config &i : main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {

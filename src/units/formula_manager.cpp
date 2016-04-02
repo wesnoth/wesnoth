@@ -21,8 +21,6 @@
 #include "map/location.hpp"
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
-
 void unit_formula_manager::add_formula_var(std::string str, variant var)
 {
 	if(!formula_vars_) formula_vars_ = new game_logic::map_formula_callable;
@@ -40,7 +38,7 @@ void unit_formula_manager::read(const config & ai)
 		formula_vars_ = new game_logic::map_formula_callable;
 
 		variant var;
-		BOOST_FOREACH(const config::attribute &i, ai_vars.attribute_range()) {
+		for (const config::attribute &i : ai_vars.attribute_range()) {
 			var.serialize_from_string(i.second);
 			formula_vars_->add(i.first, var);
 		}

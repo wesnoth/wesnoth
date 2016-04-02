@@ -27,8 +27,6 @@
 #include "units/animation_component.hpp"
 #include "units/frame.hpp"
 
-#include <boost/foreach.hpp>
-
 unit_drawer::unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects) :
 	disp(thedisp),
 	dc(disp.get_disp_context()),

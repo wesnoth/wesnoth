@@ -26,8 +26,6 @@
 #include <SDL_mixer.h>
 #include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
 
-#include <boost/foreach.hpp>
-
 #include <list>
 #include <string>
 #include <sstream>
@@ -629,7 +627,7 @@ void commit_music_changes()
 		return;
 
 	// If current track no longer on playlist, change it.
-	BOOST_FOREACH(const music_track &m, current_track_list) {
+	for (const music_track &m : current_track_list) {
 		if (current_track == m)
 			return;
 	}
@@ -647,7 +645,7 @@ void write_music_play_list(config& snapshot)
 {
 	// First entry clears playlist, others append to it.
 	bool append = false;
-	BOOST_FOREACH(music_track &m, current_track_list) {
+	for (music_track &m : current_track_list) {
 		m.write(snapshot, append);
 		append = true;
 	}

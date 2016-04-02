@@ -81,7 +81,6 @@
 #include "whiteboard/manager.hpp"
 #include "widgets/combo.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/range/algorithm/find_if.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -622,7 +621,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	BOOST_FOREACH(const unit_const_ptr & unit, *recall_list_team)
+	for(const unit_const_ptr & unit : *recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}
@@ -1418,7 +1417,7 @@ class map_command_handler
 		std::vector<std::string> get_commands_list() const
 		{
 			std::vector<std::string> res;
-			BOOST_FOREACH(typename command_map::value_type i, command_map_) {
+			for(typename command_map::value_type i : command_map_) {
 				res.push_back(i.first);
 			}
 			return res;
@@ -1509,7 +1508,7 @@ class map_command_handler
 			}
 			std::stringstream ss;
 			bool show_unavail = show_unavailable_ || get_arg(1) == "all";
-			BOOST_FOREACH(typename command_map::value_type i, command_map_) {
+			for(typename command_map::value_type i : command_map_) {
 				if (show_unavail || is_enabled(i.second)) {
 					ss << i.first;
 					//if (!i.second.usage.empty()) {
@@ -1594,7 +1593,7 @@ class map_command_handler
 		{
 			std::vector<std::string> aliases;
 			typedef command_alias_map::value_type p;
-			BOOST_FOREACH(p i, command_alias_map_) {
+			for(p i : command_alias_map_) {
 				if (i.second == cmd) {
 					aliases.push_back(i.first);
 				}
@@ -2008,7 +2007,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 			if (const config &alias_list = preferences::get_alias())
 			{
-				BOOST_FOREACH(const config::attribute &a, alias_list.attribute_range()) {
+				for(const config::attribute &a : alias_list.attribute_range()) {
 					register_alias(a.second, a.first);
 				}
 			}
@@ -2696,7 +2695,7 @@ void console_handler::do_layers() {
 	tile->rebuild_cache(tod_id, &tile_logs);
 
 	int order = 1;
-	BOOST_FOREACH(const terrain_builder::tile::log_details det, tile_logs) {
+	for(const terrain_builder::tile::log_details det : tile_logs) {
 		const terrain_builder::tile::rule_image_rand& ri = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
 
@@ -2800,7 +2799,7 @@ void console_handler::do_next_level()
 void console_handler::do_choose_level() {
 	std::vector<std::string> options;
 	int next = 0, nb = 0;
-	BOOST_FOREACH(const config &sc, menu_handler_.game_config_.child_range("scenario"))
+	for(const config &sc : menu_handler_.game_config_.child_range("scenario"))
 	{
 		const std::string &id = sc["id"];
 		options.push_back(id);
@@ -2811,7 +2810,7 @@ void console_handler::do_choose_level() {
 	// find scenarios of multiplayer campaigns
 	// (assumes that scenarios are ordered properly in the game_config)
 	std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
-	BOOST_FOREACH(const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
+	for(const config &mp : menu_handler_.game_config_.child_range("multiplayer"))
 	{
 		if (mp["id"] == scenario)
 		{
@@ -2980,7 +2979,7 @@ void console_handler::do_unit() {
 }
 
 void console_handler::do_discover() {
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
+	for(const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		preferences::encountered_units().insert(i.second.id());
 	}
 }

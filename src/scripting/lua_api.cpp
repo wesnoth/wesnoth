@@ -30,7 +30,6 @@
 #include "units/map.hpp"
 #include "variable.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/variant/static_visitor.hpp>
 #include <map>                          // for map<>::key_type
 #include <new>                          // for operator new

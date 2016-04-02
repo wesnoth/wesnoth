@@ -41,7 +41,6 @@
 #include "whiteboard/manager.hpp"       // for manager
 #include "widgets/button.hpp"           // for button
 
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
 #include <cstdlib>                     // for atoi
@@ -257,7 +256,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
-			BOOST_FOREACH(const std::string &ob, resources::screen->observers())
+			for (const std::string &ob : resources::screen->observers())
 			{
 				t_vars["player"] = ob;
 				options.push_back(vgettext("Replace with $player", t_vars));
@@ -267,7 +266,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			const team &tm = resources::gameboard->teams()[index];
 
 			//get all allies in as options to transfer control
-			BOOST_FOREACH(const team &t, resources::gameboard->teams())
+			for (const team &t : resources::gameboard->teams())
 			{
 				if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())

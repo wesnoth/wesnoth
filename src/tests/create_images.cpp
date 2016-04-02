@@ -24,7 +24,6 @@
 #include <SDL_image.h>
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #include <iostream>
 

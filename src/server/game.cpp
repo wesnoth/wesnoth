@@ -25,7 +25,6 @@
 
 #include <sstream>
 #include <iomanip>
-#include <boost/foreach.hpp>
 
 #include <cstdio>
 
@@ -1419,7 +1418,7 @@ void game::send_data_sides(simple_wml::document& data,
 
 bool game::controls_side(const std::vector<int>& sides, const network::connection player) const
 {
-	BOOST_FOREACH(int side, sides)
+	for (int side : sides)
 	{
 		size_t side_index = side - 1;
 		if(side_index < sides_.size() && sides_[side_index] == player) {

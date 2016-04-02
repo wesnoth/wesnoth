@@ -26,8 +26,6 @@
 #include "savegame.hpp"
 #include "units/id.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)

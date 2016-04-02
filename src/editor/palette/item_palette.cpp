@@ -21,7 +21,6 @@
 #include "item_palette.hpp"
 #include "gettext.hpp"
 
-#include <boost/foreach.hpp>
 #include <string>
 
 namespace editor {
@@ -34,11 +33,11 @@ std::string item_palette::get_help_string()
 void item_palette::setup(const config& cfg)
 {
 
-	BOOST_FOREACH(const config& group, cfg.child_range("item_group")) {
+	for (const config& group : cfg.child_range("item_group")) {
 
 		groups_.push_back(item_group(group));
 
-		BOOST_FOREACH(const config& item, group.child_range("item")) {
+		for (const config& item : group.child_range("item")) {
 
 			item_map_.insert(std::pair<std::string, overlay>(item["id"], overlay(item)));
 			group_map_[group["id"]].push_back(item["id"]);

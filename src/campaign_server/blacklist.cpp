@@ -18,8 +18,6 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_campaignd_bl("campaignd/blacklist");
 #define LOG_BL LOG_STREAM(err, log_campaignd_bl)
 

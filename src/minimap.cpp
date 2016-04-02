@@ -31,8 +31,6 @@
 
 #include "game_display.hpp"
 
-#include <boost/foreach.hpp>
-
 #include "preferences.hpp"
 
 static lg::log_domain log_display("display");
@@ -193,7 +191,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 					bool first = true;
 					const t_translation::t_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
-					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+					for(const t_translation::t_terrain& underlying_terrain : underlying_terrains) {
 
 						const std::string& terrain_id = tdata.get_terrain_info(underlying_terrain).id();
 						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);
@@ -355,7 +353,7 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 
 					bool first = true;
 					const t_translation::t_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
-					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+					for(const t_translation::t_terrain& underlying_terrain : underlying_terrains) {
 
 						const std::string& terrain_id = tdata.get_terrain_info(underlying_terrain).id();
 						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);

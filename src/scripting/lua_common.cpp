@@ -33,7 +33,6 @@
 #include "log.hpp"
 #include "gettext.hpp"
 
-#include <boost/foreach.hpp>
 #include <cstring>
 #include <iterator>                     // for distance, advance
 #include <new>                          // for operator new
@@ -213,7 +212,7 @@ static int impl_vconfig_get(lua_State *L)
 	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
 	{
 		lua_newtable(L);
-		BOOST_FOREACH(const config::attribute &a, v->get_config().attribute_range()) {
+		for (const config::attribute &a : v->get_config().attribute_range()) {
 			if (shallow_literal)
 				luaW_pushscalar(L, a.second);
 			else
@@ -574,7 +573,7 @@ void luaW_filltable(lua_State *L, config const &cfg)
 		return;
 
 	int k = 1;
-	BOOST_FOREACH(const config::any_child &ch, cfg.all_children_range())
+	for (const config::any_child &ch : cfg.all_children_range())
 	{
 		lua_createtable(L, 2, 0);
 		lua_pushstring(L, ch.key.c_str());
@@ -584,7 +583,7 @@ void luaW_filltable(lua_State *L, config const &cfg)
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
-	BOOST_FOREACH(const config::attribute &attr, cfg.attribute_range())
+	for (const config::attribute &attr : cfg.attribute_range())
 	{
 		luaW_pushscalar(L, attr.second);
 		lua_setfield(L, -2, attr.first.c_str());

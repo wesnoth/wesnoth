@@ -53,8 +53,6 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)

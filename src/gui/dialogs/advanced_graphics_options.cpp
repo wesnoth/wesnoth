@@ -30,7 +30,6 @@
 #include "formula/string_utils.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 #include "gettext.hpp"
 
@@ -81,7 +80,7 @@ tadvanced_graphics_options::tadvanced_graphics_options()
 
 void tadvanced_graphics_options::pre_show(twindow& window)
 {
-	BOOST_FOREACH(const std::string & i, scale_cases) {
+	for(const std::string & i : scale_cases) {
 		setup_scale_case(i, window);
 	}
 
@@ -95,7 +94,7 @@ void tadvanced_graphics_options::pre_show(twindow& window)
 void tadvanced_graphics_options::post_show(twindow& /*window*/)
 {
 	if(get_retval() == twindow::OK) {
-		BOOST_FOREACH(const std::string & i, scale_cases) {
+		for(const std::string & i : scale_cases) {
 			update_scale_case(i);
 		}
 		image::update_from_preferences();

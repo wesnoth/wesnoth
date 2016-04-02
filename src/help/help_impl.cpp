@@ -45,7 +45,6 @@
 
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
@@ -105,7 +104,7 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 		}
 	}
 
-	BOOST_FOREACH(const config &section, cfg.child_range("section"))
+	for (const config &section : cfg.child_range("section"))
 	{
 		const std::vector<std::string> sections_refd
 			= utils::quoted_split(section["sections"]);
@@ -129,7 +128,7 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 		}
 	}
 
-	BOOST_FOREACH(const config &section, cfg.child_range("section"))
+	for (const config &section : cfg.child_range("section"))
 	{
 		const std::vector<std::string> topics_refd
 			= utils::quoted_split(section["topics"]);
@@ -366,7 +365,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		return topics;
 	}
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
-	BOOST_FOREACH(const time_of_day& time, times)
+	for (const time_of_day& time : times)
 	{
 		const std::string id = "time_of_day_" + time.id;
 		const std::string image = "<img>src='" + time.image + "'</img>";
@@ -394,7 +393,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::map<t_string, std::string> special_description;
 	std::map<t_string, std::set<std::string, string_less> > special_units;
 
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		const unit_type &type = i.second;
 		// Only show the weapon special if we find it on a unit that
@@ -456,7 +455,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
 	// not encountered yet.
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		const unit_type &type = i.second;
 		if (description_type(type) == FULL_DESCRIPTION) {
@@ -521,7 +520,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 		topics = generate_faction_topics(era, sort_generated);
 
 		std::vector<std::string> faction_links;
-		BOOST_FOREACH(const topic & t, topics) {
+		for (const topic & t : topics) {
 			faction_links.push_back(make_link(t.title, t.id));
 		}
 
@@ -537,7 +536,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 		text << "<header>text='" << _("Factions") << "'</header>" << "\n";
 
 		std::sort(faction_links.begin(), faction_links.end());
-		BOOST_FOREACH(const std::string &link, faction_links) {
+		for (const std::string &link : faction_links) {
 			text << "• " << link << "\n";
 		}
 
@@ -551,7 +550,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 std::vector<topic> generate_faction_topics(const config & era, const bool sort_generated)
 {
 	std::vector<topic> topics;
-	BOOST_FOREACH(const config &f, era.child_range("multiplayer_side")) {
+	for (const config &f : era.child_range("multiplayer_side")) {
 		const std::string& id = f["id"];
 		if (id == "Random")
 			continue;
@@ -568,7 +567,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		std::set<std::string> races;
 		std::set<std::string> alignments;
 
-		BOOST_FOREACH(const std::string & u_id, recruit_ids) {
+		for (const std::string & u_id : recruit_ids) {
 			if (const unit_type * t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
 				assert(t);
 				const unit_type & type = *t;
@@ -602,7 +601,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		text << "<header>text='" << _("Leaders") << "'</header>" << "\n";
 		const std::vector<std::string> leaders =
 				make_unit_links_list( utils::split(f["leader"]), true );
-		BOOST_FOREACH(const std::string &link, leaders) {
+		for (const std::string &link : leaders) {
 			text << "• " << link << "\n";
 		}
 
@@ -611,7 +610,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		text << "<header>text='" << _("Recruits") << "'</header>" << "\n";
 		const std::vector<std::string> recruit_links =
 				make_unit_links_list( recruit_ids, true );
-		BOOST_FOREACH(const std::string &link, recruit_links) {
+		for (const std::string &link : recruit_links) {
 			text << "• " << link << "\n";
 		}
 
@@ -653,7 +652,7 @@ std::string make_unit_link(const std::string& type_id)
 std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered)
 {
 	std::vector<std::string> links_list;
-	BOOST_FOREACH(const std::string &type_id, type_id_list) {
+	for (const std::string &type_id : type_id_list) {
 		std::string unit_link = make_unit_link(type_id);
 		if (!unit_link.empty())
 			links_list.push_back(unit_link);
@@ -670,7 +669,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	std::set<std::string, string_less> races;
 	std::set<std::string, string_less> visible_races;
 
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		const unit_type &type = i.second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
@@ -707,7 +706,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 void generate_era_sections(const config* help_cfg, section & sec, int level)
 {
-	BOOST_FOREACH(const config & era, game_cfg->child_range("era")) {
+	for (const config & era : game_cfg->child_range("era")) {
 		if (era["hide_help"].to_bool()) {
 			continue;
 		}
@@ -741,7 +740,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 	const t_translation::t_list& t_listi = tdata->list();
 
-	BOOST_FOREACH(const t_translation::t_terrain& t, t_listi) {
+	for (const t_translation::t_terrain& t : t_listi) {
 
 		const terrain_type& info = tdata->get_terrain_info(t);
 
@@ -757,7 +756,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.text  = new terrain_topic_generator(info);
 
 		t_translation::t_list base_terrains = tdata->underlying_union_terrain(t);
-		BOOST_FOREACH(const t_translation::t_terrain& base, base_terrains) {
+		for (const t_translation::t_terrain& base : base_terrains) {
 
 			const terrain_type& base_info = tdata->get_terrain_info(base);
 
@@ -782,7 +781,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level, const bool /*sort_generated*/, const std::string& race)
 {
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		const unit_type &type = i.second;
 
 		if (type.race_id() != race)
@@ -792,7 +791,7 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level,
 			continue;
 
 		section base_unit;
-		BOOST_FOREACH(const std::string &variation_id, type.variations()) {
+		for (const std::string &variation_id : type.variations()) {
 			// TODO: Do we apply encountered stuff to variations?
 			const unit_type &var_type = type.get_variation(variation_id);
 			const std::string topic_name = var_type.type_name() + "\n" + var_type.variation_name();
@@ -821,7 +820,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::set<std::string, string_less> race_topics;
 	std::set<std::string> alignments;
 
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		const unit_type &type = i.second;
 
@@ -857,7 +856,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		race_name = r->plural_name();
 		race_description = r->description();
 		// if (description.empty()) description =  _("No description Available");
-		BOOST_FOREACH(const config &additional_topic, r->additional_topics())
+		for (const config &additional_topic : r->additional_topics())
 		  {
 		    std::string id = additional_topic["id"];
 		    std::string title = additional_topic["title"];
@@ -1300,7 +1299,7 @@ void generate_contents()
 			// opening the help browser in the default manner.
 			config hidden_toplevel;
 			std::stringstream ss;
-			BOOST_FOREACH(const config &section, help_config->child_range("section"))
+			for (const config &section : help_config->child_range("section"))
 			{
 				const std::string id = section["id"];
 				if (find_section(toplevel, id) == nullptr) {
@@ -1317,7 +1316,7 @@ void generate_contents()
 			}
 			hidden_toplevel["sections"] = ss.str();
 			ss.str("");
-			BOOST_FOREACH(const config &topic, help_config->child_range("topic"))
+			for (const config &topic : help_config->child_range("topic"))
 			{
 				const std::string id = topic["id"];
 				if (find_topic(toplevel, id) == nullptr) {

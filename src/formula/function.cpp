@@ -22,7 +22,6 @@
 #include "game_config.hpp"
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
 
@@ -46,7 +45,7 @@ std::string function_expression::str() const
 	s << get_name();
 	s << '(';
 	bool first_arg = true;
-	BOOST_FOREACH(expression_ptr a , args()) {
+	for (expression_ptr a : args()) {
 		if (!first_arg) {
 			s << ',';
 		} else {
@@ -510,7 +509,7 @@ private:
 		variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 			std::string result;
 
-			BOOST_FOREACH(expression_ptr arg, args()) {
+			for(expression_ptr arg : args()) {
 					result += arg->evaluate(variables, fdb).string_cast();
 			}
 
@@ -1072,7 +1071,7 @@ private:
 		} else {
 			std::vector<variant> input;
 			input.reserve(args().size());
-			BOOST_FOREACH(expression_ptr expr, args()) {
+			for(expression_ptr expr : args()) {
 				input.push_back(expr->evaluate(variables, fdb));
 			}
 			return input;
@@ -1501,7 +1500,7 @@ typedef std::map<std::string, base_function_creator*> functions_map;
 struct functions_map_manager {
 	functions_map map_;
 	~functions_map_manager() {
-		BOOST_FOREACH (functions_map::value_type & v, map_) {
+		for (functions_map::value_type & v : map_) {
 			delete(v.second);
 		}
 	}

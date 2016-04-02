@@ -29,7 +29,6 @@
 #include "network.hpp"
 #include "config_assign.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/lambda/bind.hpp>
@@ -314,7 +313,7 @@ void tod_manager::set_area_id(int area_index, const std::string& id) {
 std::vector<std::string> tod_manager::get_area_ids() const
 {
 	std::vector<std::string> areas;
-	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+	for (const area_time_of_day& area : areas_) {
 		areas.push_back(area.id);
 	}
 	return areas;
@@ -322,7 +321,7 @@ std::vector<std::string> tod_manager::get_area_ids() const
 
 const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id) const
 {
-	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+	for (const area_time_of_day& area : areas_) {
 		if (area.id == id)
 			return area.hexes;
 	}
@@ -451,7 +450,7 @@ void tod_manager::set_turn_by_wml(const int num, game_data* vars, const bool inc
 void tod_manager::set_new_current_times(const int new_current_turn_number)
 {
 	set_current_time(calculate_current_time(times_.size(), new_current_turn_number, currentTime_));
-	BOOST_FOREACH(area_time_of_day& area, areas_) {
+	for (area_time_of_day& area : areas_) {
 		set_current_time(calculate_current_time(
 			area.times.size(),
 			new_current_turn_number,

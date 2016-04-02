@@ -25,8 +25,6 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
 
@@ -167,18 +165,20 @@ teleport_map::teleport_map(
 	, targets_()
 {
 
-	BOOST_FOREACH(const teleport_group& group, groups) {
+	for (const teleport_group& group : groups) {
 
 		teleport_pair locations;
 		group.get_teleport_pair(locations, u, ignore_units);
 		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
 			teleport_pair filter_locs;
-			BOOST_FOREACH(const map_location &loc, locations.first)
+			for (const map_location &loc : locations.first) {
 				if(!viewing_team.fogged(loc))
 					filter_locs.first.insert(loc);
-			BOOST_FOREACH(const map_location &loc, locations.second)
+			}
+			for (const map_location &loc : locations.second) {
 				if(!viewing_team.fogged(loc))
 					filter_locs.second.insert(loc);
+			}
 			locations.first.swap(filter_locs.first);
 			locations.second.swap(filter_locs.second);
 		}
@@ -237,7 +237,7 @@ const teleport_map get_teleport_locations(const unit &u,
 	std::vector<teleport_group> groups;
 
 	if (u.get_ability_bool("teleport")) {
-		BOOST_FOREACH (const unit_ability & teleport, u.get_abilities("teleport")) {
+		for (const unit_ability & teleport : u.get_abilities("teleport")) {
 			const int tunnel_count = (teleport.first)->child_count("tunnel");
 			for(int i = 0; i < tunnel_count; ++i) {
 				config teleport_group_cfg = (teleport.first)->child("tunnel", i);

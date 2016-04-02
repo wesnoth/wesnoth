@@ -36,7 +36,6 @@
 #include "formula/string_utils.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

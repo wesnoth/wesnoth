@@ -15,8 +15,6 @@
 #include "command_executor.hpp"
 #include "hotkey_item.hpp"
 
-#include <boost/foreach.hpp>
-
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
@@ -597,12 +595,12 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 void command_executor_default::set_button_state()
 {
 	display& disp = get_display();
-	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
+	for (const theme::menu& menu : disp.get_theme().menus()) {
 
 		gui::button* button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
-		BOOST_FOREACH(const std::string& command, menu.items()) {
+		for (const std::string& command : menu.items()) {
 
 			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			bool can_execute = can_execute_command(command_obj);
@@ -614,13 +612,13 @@ void command_executor_default::set_button_state()
 		button->enable(enabled);
 	}
 
-	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
+	for (const theme::action& action : disp.get_theme().actions()) {
 
 		gui::button* button = disp.find_action_button(action.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		int i = 0;
-		BOOST_FOREACH(const std::string& command, action.items()) {
+		for (const std::string& command : action.items()) {
 
 			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			std::string tooltip = action.tooltip(i);

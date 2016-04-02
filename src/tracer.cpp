@@ -14,8 +14,6 @@
 
 #include "tracer.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <iomanip>
 #include <iostream>
 

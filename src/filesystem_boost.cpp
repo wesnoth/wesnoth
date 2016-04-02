@@ -25,7 +25,6 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
-#include <boost/foreach.hpp>
 #include <boost/system/windows_error.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
@@ -1002,7 +1001,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 	cleanup();
 	init_binary_paths();
 
-	BOOST_FOREACH(const config &bp, cfg.child_range("binary_path"))
+	for (const config &bp : cfg.child_range("binary_path"))
 	{
 		std::string path = bp["path"].str();
 		if (path.find("..") != std::string::npos) {
@@ -1076,7 +1075,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	init_binary_paths();
 
-	BOOST_FOREACH(const std::string &path, binary_paths)
+	for(const std::string &path : binary_paths)
 	{
 		res.push_back(get_user_data_dir() + "/" + path + type + "/");
 
@@ -1109,7 +1108,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	if (!is_legal_file(filename))
 		return std::string();
 
-	BOOST_FOREACH(const std::string &bp, get_binary_paths(type))
+	for(const std::string &bp : get_binary_paths(type))
 	{
 		path bpath(bp);
 		bpath /= filename;
@@ -1129,7 +1128,7 @@ std::string get_binary_dir_location(const std::string &type, const std::string &
 	if (!is_legal_file(filename))
 		return std::string();
 
-	BOOST_FOREACH(const std::string &bp, get_binary_paths(type))
+	for (const std::string &bp : get_binary_paths(type))
 	{
 		path bpath(bp);
 		bpath /= filename;

@@ -32,8 +32,6 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 
-#include <boost/foreach.hpp>
-
 #define LOG_DP LOG_STREAM(info, display)
 
 
@@ -629,7 +627,7 @@ void unit_attack(display * disp, game_board & board,
 	animator.add_animation(&defender, defender_anim, def->get_location(),
 		true,  text , display::rgb(255, 0, 0));
 
-	BOOST_FOREACH (const unit_ability & ability, leaders) {
+	for (const unit_ability & ability : leaders) {
 		if(ability.second == a) continue;
 		if(ability.second == b) continue;
 		unit_map::const_iterator leader = board.units().find(ability.second);
@@ -639,7 +637,7 @@ void unit_attack(display * disp, game_board & board,
 			att->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
-	BOOST_FOREACH (const unit_ability & ability, helpers) {
+	for (const unit_ability & ability : helpers) {
 		if(ability.second == a) continue;
 		if(ability.second == b) continue;
 		unit_map::const_iterator helper = board.units().find(ability.second);
@@ -657,7 +655,7 @@ void unit_attack(display * disp, game_board & board,
 	bool extra_hit_sounds_played = false;
 	while(damage_left > 0 && !animator.would_end()) {
 		if(!extra_hit_sounds_played && extra_hit_sounds != nullptr) {
-			BOOST_FOREACH (std::string hit_sound, *extra_hit_sounds) {
+			for (std::string hit_sound : *extra_hit_sounds) {
 				sound::play_sound(hit_sound);
 			}
 			extra_hit_sounds_played = true;
@@ -685,7 +683,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	const unit_map& units = disp->get_units();
 	if(attacker) {
 		unit_ability_list leaders = attacker->get_abilities("leadership");
-		BOOST_FOREACH (const unit_ability & ability, leaders) {
+		for (const unit_ability & ability : leaders) {
 			unit_map::const_iterator leader = units.find(ability.second);
 			assert(leader != units.end());
 			leader->anim_comp().set_standing();
@@ -694,7 +692,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 	if(defender) {
 		unit_ability_list helpers = defender->get_abilities("resistance");
-		BOOST_FOREACH (const unit_ability & ability, helpers) {
+		for (const unit_ability & ability : helpers) {
 			unit_map::const_iterator helper = units.find(ability.second);
 			assert(helper != units.end());
 			helper->anim_comp().set_standing();
@@ -742,7 +740,7 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 	disp->display_unit_hex(healed_loc);
 	unit_animator animator;
 
-	BOOST_FOREACH(unit *h, healers) {
+	for (unit *h : healers) {
 		h->set_facing(h->get_location().get_relative_dir(healed_loc));
 		animator.add_animation(h, "healing", h->get_location(),
 			healed_loc, healing);

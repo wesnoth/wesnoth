@@ -44,7 +44,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/functional/hash.hpp>
-#include <boost/foreach.hpp>
 
 #include <list>
 #include <set>
@@ -407,7 +406,7 @@ static bool localized_file_uptodate (const std::string& loc_file)
 		std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
 		std::string contents = filesystem::read_file(trackpath);
 		std::vector<std::string> lines = utils::split(contents, '\n');
-		BOOST_FOREACH(const std::string &line, lines) {
+		for (const std::string &line : lines) {
 			size_t p1 = line.find(fsep);
 			if (p1 == std::string::npos)
 				continue;
@@ -454,7 +453,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 	// add en_US with lowest priority, since the message above will
 	// not have it when translated.
 	langs.push_back("en_US");
-	BOOST_FOREACH(const std::string &lang, langs) {
+	for (const std::string &lang : langs) {
 		std::string loc_file = dir + "/" + "l10n" + "/" + lang + "/" + loc_base;
 		if (filesystem::file_exists(loc_file) && localized_file_uptodate(loc_file)) {
 			return loc_file;

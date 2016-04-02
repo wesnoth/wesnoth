@@ -34,8 +34,6 @@
 #include "units/map.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -78,7 +76,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 		std::set<map_location> tiles_checking;
 		tiles_checking.swap(pending_tiles_to_check);
 		//Iterate over all the hexes we need to check
-		BOOST_FOREACH(const map_location &loc, tiles_checking)
+		for (const map_location &loc : tiles_checking)
 		{
 			// Skip shrouded locations.
 			if ( do_shroud  &&  shroud_check->shrouded(loc) )
@@ -98,7 +96,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 			if (units.find(loc) == units.end() && !pass_check_and_unreachable) return loc;
 			map_location adjs[6];
 			get_adjacent_tiles(loc,adjs);
-			BOOST_FOREACH(const map_location &loc, adjs)
+			for (const map_location &loc : adjs)
 			{
 				if (!map.on_board(loc)) continue;
 				// Add the tile to be checked if it hasn't already been and
