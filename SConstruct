@@ -103,7 +103,7 @@ opts.AddVariables(
     BoolVariable('ccache', "Use ccache", False),
     ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
-    EnumVariable('cxx_std', 'Target c++ std version', '11', ['11', '14']),
+    EnumVariable('cxx_std', 'Target c++ std version', '11', ['11', '14', '1y']),
     BoolVariable('openmp', 'Enable openmp use.', False),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
