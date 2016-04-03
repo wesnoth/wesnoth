@@ -100,7 +100,7 @@ tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 	string_map empty_data;
 	for(const auto & builder : widget_builder)
 	{
-		generator_->create_item(-1, builder, empty_data, NULL);
+		generator_->create_item(-1, builder, empty_data, nullptr);
 	}
 	swap_grid(nullptr, &grid(), generator_, "_content_grid");
 

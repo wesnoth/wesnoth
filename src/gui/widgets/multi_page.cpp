@@ -42,14 +42,14 @@ tmulti_page::tmulti_page()
 void tmulti_page::add_page(const string_map& item)
 {
 	assert(generator_);
-	generator_->create_item(-1, page_builder_, item, NULL);
+	generator_->create_item(-1, page_builder_, item, nullptr);
 }
 
 void tmulti_page::add_page(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(generator_);
-	generator_->create_item(-1, page_builder_, data, NULL);
+	generator_->create_item(-1, page_builder_, data, nullptr);
 }
 
 void tmulti_page::remove_page(const unsigned page, unsigned count)
@@ -154,7 +154,7 @@ void swap_grid(tgrid* grid,
 void tmulti_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
-	generator_->create_items(-1, page_builder_, page_data, NULL);
+	generator_->create_items(-1, page_builder_, page_data, nullptr);
 	swap_grid(nullptr, &grid(), generator_, "_content_grid");
 }
 

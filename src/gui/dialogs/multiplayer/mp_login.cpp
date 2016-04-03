@@ -74,7 +74,7 @@ tmp_login::tmp_login(const std::string& label, const bool focus_password)
 	register_text("password",
 				  true,
 				  &preferences::password,
-				  NULL /* The password box returns '*' as value. */
+				  nullptr /* The password box returns '*' as value. */
 				  ,
 				  focus_password);
 

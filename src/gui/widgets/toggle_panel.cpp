@@ -42,7 +42,7 @@ ttoggle_panel::ttoggle_panel()
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
-	, callback_state_change_(0)
+	, callback_state_change_(nullptr)
 	, callback_mouse_left_double_click_()
 {
 	set_wants_mouse_left_double_click();
