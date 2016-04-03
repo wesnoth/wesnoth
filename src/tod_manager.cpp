@@ -31,8 +31,6 @@
 
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm/copy.hpp>
-#include <boost/lambda/bind.hpp>
-#include <boost/lambda/lambda.hpp>
 #include "utils/functional.hpp"
 
 static lg::log_domain log_engine("engine");
