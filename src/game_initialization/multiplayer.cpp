@@ -809,7 +809,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 		parameters.mp_era = *cmdline_opts.multiplayer_era;
 	}
 	if (const config& cfg_era = game_config.find_child("era", "id", parameters.mp_era)) {
-		state.classification().era_define = cfg_era["define"];
+		state.classification().era_define = cfg_era["define"].str();
 	}
 	else {
 		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
@@ -820,7 +820,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 		parameters.name = *cmdline_opts.multiplayer_scenario;
 	}
 	if (const config& cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
-		state.classification().scenario_define = cfg_multiplayer["define"];
+		state.classification().scenario_define = cfg_multiplayer["define"].str();
 	}
 	else {
 		std::cerr << "Could not find [multiplayer] '" << parameters.name << "'\n";
