@@ -36,9 +36,9 @@ namespace lua_formula_bridge {
 	class fwrapper {
 		boost::shared_ptr<game_logic::formula> formula_ptr;
 	public:
-		fwrapper(const std::string& code, game_logic::function_symbol_table* functions = NULL);
+		fwrapper(const std::string& code, game_logic::function_symbol_table* functions = nullptr);
 		std::string str() const;
-		variant evaluate(const game_logic::formula_callable& variables, game_logic::formula_debugger* fdb = NULL) const;
+		variant evaluate(const game_logic::formula_callable& variables, game_logic::formula_debugger* fdb = nullptr) const;
 	};
 	
 } // end namespace lua_formula_bridge
