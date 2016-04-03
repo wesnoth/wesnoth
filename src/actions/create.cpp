@@ -51,6 +51,8 @@
 #include "variable.hpp"
 #include "whiteboard/manager.hpp"
 
+#include "utils/functional.hpp"
+
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
