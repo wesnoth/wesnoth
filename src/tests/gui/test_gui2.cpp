@@ -289,15 +289,6 @@ namespace {
 #pragma warning(pop)
 #endif
 
-const tresolution_list& get_small_gui_resolutions()
-{
-	static tresolution_list result;
-	if(result.empty()) {
-		result.push_back(std::make_pair(800, 480));
-	}
-	return result;
-}
-
 const tresolution_list& get_gui_resolutions()
 {
 	static tresolution_list result;
@@ -317,7 +308,6 @@ void test()
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		test_resolutions<T>(get_small_gui_resolutions());
 		test_resolutions<T>(get_gui_resolutions());
 
 		break; // FIXME: New widgets break
@@ -332,7 +322,6 @@ void test_popup()
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		test_popup_resolutions<T>(get_small_gui_resolutions());
 		test_popup_resolutions<T>(get_gui_resolutions());
 
 		gui2::new_widgets = true;
@@ -345,7 +334,6 @@ void test_tip(const std::string& id)
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		test_tip_resolutions(get_small_gui_resolutions(), id);
 		test_tip_resolutions(get_gui_resolutions(), id);
 
 		gui2::new_widgets = true;
