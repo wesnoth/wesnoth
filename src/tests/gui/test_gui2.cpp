@@ -88,7 +88,7 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <memory>
 

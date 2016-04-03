@@ -24,7 +24,7 @@
 
 #include <ostream>
 #include <string>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -141,9 +141,9 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
 {
-	load_string(prog, boost::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	load_string(prog, std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
 	luaW_pushconfig(mState, generator);
-	protected_call(1, 1, boost::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, _1, _2));
 }
 
 void mapgen_lua_kernel::user_config(const char * prog, const config & generator)

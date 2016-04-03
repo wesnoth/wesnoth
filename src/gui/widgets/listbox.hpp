@@ -216,13 +216,13 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	void
-	set_callback_item_change(const boost::function<void(size_t)>& callback)
+	set_callback_item_change(const std::function<void(size_t)>& callback)
 	{
 		callback_item_changed_ = callback;
 	}
 
 	void
-	set_callback_value_change(const boost::function<void(twidget&)>& callback)
+	set_callback_value_change(const std::function<void(twidget&)>& callback)
 	{
 		callback_value_changed_ = callback;
 	}
@@ -295,7 +295,7 @@ private:
 	 *
 	 * The function is passed the index of the toggled item.
 	 */
-	boost::function<void(size_t)> callback_item_changed_;
+	std::function<void(size_t)> callback_item_changed_;
 
 	/**
 	 * This callback is called when the value in the listbox changes.
@@ -304,7 +304,7 @@ private:
 	 * there might be too many calls. That might happen if an arrow up didn't
 	 * change the selected item.
 	 */
-	boost::function<void(twidget&)> callback_value_changed_;
+	std::function<void(twidget&)> callback_value_changed_;
 
 	bool need_layout_;
 

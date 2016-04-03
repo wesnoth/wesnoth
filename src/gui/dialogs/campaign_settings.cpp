@@ -29,7 +29,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -170,9 +170,9 @@ void tcampaign_settings::pre_show(twindow& window)
 	}
 
 	era_list.set_callback_item_change(
-			boost::bind(&tcampaign_settings::change_era, this, boost::ref(window)));
+			std::bind(&tcampaign_settings::change_era, this, std::ref(window)));
 	mod_list.set_callback_item_change(
-			boost::bind(&tcampaign_settings::change_mod, this, _1, boost::ref(window)));
+			std::bind(&tcampaign_settings::change_mod, this, _1, std::ref(window)));
 }
 
 void tcampaign_settings::post_show(twindow& window)

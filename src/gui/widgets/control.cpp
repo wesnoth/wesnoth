@@ -30,7 +30,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <iomanip>
 
@@ -57,13 +57,13 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, shrunken_(false)
 {
-	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
+	connect_signal<event::SHOW_TOOLTIP>(std::bind(
 			&tcontrol::signal_handler_show_tooltip, this, _2, _3, _5));
 
-	connect_signal<event::SHOW_HELPTIP>(boost::bind(
+	connect_signal<event::SHOW_HELPTIP>(std::bind(
 			&tcontrol::signal_handler_show_helptip, this, _2, _3, _5));
 
-	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
+	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
 			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
@@ -86,13 +86,13 @@ tcontrol::tcontrol(const implementation::tbuilder_control& builder,
 {
 	definition_load_configuration(control_type);
 
-	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
+	connect_signal<event::SHOW_TOOLTIP>(std::bind(
 			&tcontrol::signal_handler_show_tooltip, this, _2, _3, _5));
 
-	connect_signal<event::SHOW_HELPTIP>(boost::bind(
+	connect_signal<event::SHOW_HELPTIP>(std::bind(
 			&tcontrol::signal_handler_show_helptip, this, _2, _3, _5));
 
-	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
+	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
 			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 

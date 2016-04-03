@@ -27,7 +27,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -179,9 +179,9 @@ void tmp_connect::pre_show(twindow& window)
 	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
 
 		connect_signal_mouse_left_click(*button,
-										boost::bind(show_server_list,
-													boost::ref(window.video()),
-													boost::ref(window),
+										std::bind(show_server_list,
+													std::ref(window.video()),
+													std::ref(window),
 													host_name_));
 	}
 }

@@ -92,8 +92,8 @@ playsingle_controller::playsingle_controller(const config& level,
 	ai::manager::set_ai_info(ai_info);
 	ai::manager::add_observer(this) ;
 
-	plugins_context_->set_accessor_string("level_result", boost::bind(&playsingle_controller::describe_result, this));
-	plugins_context_->set_accessor_int("turn", boost::bind(&play_controller::turn, this));
+	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
+	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
 }
 
 std::string playsingle_controller::describe_result() const
@@ -671,7 +671,7 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
 		replay_->play_replay();
 	}

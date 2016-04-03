@@ -18,7 +18,7 @@
 #include "gui/core/notifier.hpp"
 #include "gui/widgets/control.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 namespace gui2
 {

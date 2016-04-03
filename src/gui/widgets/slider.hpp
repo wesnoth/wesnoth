@@ -68,7 +68,7 @@ public:
 	{
 		return minimum_value_ + get_item_count() - 1;
 	}
-	typedef boost::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
+	typedef std::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length)

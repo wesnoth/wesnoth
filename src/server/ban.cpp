@@ -23,7 +23,7 @@
 
 #include "ban.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace wesnothd {
 
@@ -550,7 +550,7 @@ static lg::log_domain log_server("server");
 	{
 		ban_set temp;
 		std::insert_iterator<ban_set> temp_inserter(temp, temp.begin());
-		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, boost::bind(&banned::match_group,boost::bind(&banned_ptr::get,_1),group));
+		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, std::bind(&banned::match_group,std::bind(&banned_ptr::get,_1),group));
 
 		os << "Removed " << (bans_.size() - temp.size()) << " bans";
 		bans_.swap(temp);
@@ -646,7 +646,7 @@ static lg::log_domain log_server("server");
 
 			out << *groups.begin();
 			std::ostream& (*fn)(std::ostream&,const std::string&) = &std::operator<<;
-			std::for_each( ++groups.begin(), groups.end(), boost::bind(fn,boost::bind(fn,boost::ref(out),std::string(", ")),_1));
+			std::for_each( ++groups.begin(), groups.end(), std::bind(fn,std::bind(fn,std::ref(out),std::string(", ")),_1));
 		}
 
 	}
@@ -660,7 +660,7 @@ static lg::log_domain log_server("server");
 		} catch (banned::error&) {
 			return "";
 		}
-		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), pair));
+		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), std::bind(&banned::match_ip, std::bind(&banned_ptr::get, _1), pair));
 		if (ban == bans_.end()) return "";
 		const std::string& nick = (*ban)->get_nick();
 		return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (" + (*ban)->get_human_time_span() + ")";

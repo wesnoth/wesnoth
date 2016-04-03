@@ -26,7 +26,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -56,14 +56,14 @@ tlist::tlist(const bool has_minimum,
 	assert(generator_);
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			boost::bind(&tlist::signal_handler_left_button_down, this, _2),
+			std::bind(&tlist::signal_handler_left_button_down, this, _2),
 			event::tdispatcher::back_pre_child);
 
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tlist::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
 
 	connect_signal<event::SDL_KEY_DOWN>(
-			boost::bind(
+			std::bind(
 					&tlist::signal_handler_sdl_key_down, this, _2, _3, _5, _6),
 			event::tdispatcher::back_pre_child);
 }
@@ -89,7 +89,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 	if(selectable) {
 		dynamic_cast<twidget&>(*selectable)
 				.connect_signal<event::LEFT_BUTTON_CLICK>(
-						 boost::bind(
+						 std::bind(
 								 &tlist::signal_handler_pre_child_left_button_click,
 								 this,
 								 &grid,
@@ -101,7 +101,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 		// Post widget for panel.
 		dynamic_cast<twidget&>(*selectable)
 				.connect_signal<event::LEFT_BUTTON_CLICK>(
-						 boost::bind(&tlist::signal_handler_left_button_click,
+						 std::bind(&tlist::signal_handler_left_button_click,
 									 this,
 									 &grid,
 									 _2),
@@ -110,7 +110,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 		// Post widget for button and widgets on the panel.
 		dynamic_cast<twidget&>(*selectable)
 				.connect_signal<event::LEFT_BUTTON_CLICK>(
-						 boost::bind(&tlist::signal_handler_left_button_click,
+						 std::bind(&tlist::signal_handler_left_button_click,
 									 this,
 									 &grid,
 									 _2),

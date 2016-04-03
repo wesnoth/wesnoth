@@ -53,7 +53,7 @@
 
 #include "halo.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace {
 static std::vector<std::string> saved_windows_;
@@ -64,7 +64,7 @@ namespace editor {
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(game_config, video)
 	, mouse_handler_base()
-	, quit_confirmation(boost::bind(&editor_controller::quit_confirm, this))
+	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
 	, gui_(new editor_display(editor::get_dummy_display_context(), video, *reports_, controller_base::get_theme(game_config, "editor"), config()))
@@ -97,7 +97,7 @@ void editor_controller::init_gui()
 {
 	gui_->change_display_context(&context_manager_->get_map_context());
 	gui_->set_grid(preferences::grid());
-	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
+	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());

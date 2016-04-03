@@ -102,13 +102,13 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(boost::function<void(twidget&)> callback)
+	void set_callback_state_change(std::function<void(twidget&)> callback)
 	{
 		callback_state_change_ = callback;
 	}
 
 	void set_callback_mouse_left_double_click(
-			boost::function<void(twidget&)> callback)
+			std::function<void(twidget&)> callback)
 	{
 		callback_mouse_left_double_click_ = callback;
 	}
@@ -153,10 +153,10 @@ private:
 	int retval_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_change_;
+	std::function<void(twidget&)> callback_state_change_;
 
 	/** Mouse left double click callback */
-	boost::function<void(twidget&)> callback_mouse_left_double_click_;
+	std::function<void(twidget&)> callback_mouse_left_double_click_;
 
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,

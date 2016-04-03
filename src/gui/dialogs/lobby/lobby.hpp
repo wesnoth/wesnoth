@@ -91,7 +91,7 @@ public:
 	/**
 	 * Set the callback used to show the preferences.
 	 */
-	void set_preferences_callback(boost::function<void()> f);
+	void set_preferences_callback(std::function<void()> f);
 
 	void update_gamelist();
 
@@ -381,7 +381,7 @@ private:
 
 	lobby_info& lobby_info_;
 
-	boost::function<void()> preferences_callback_;
+	std::function<void()> preferences_callback_;
 
 	/**
 	 * This represents the open chat windows (rooms and whispers at the moment)
@@ -419,7 +419,7 @@ private:
 	size_t lobby_update_timer_;
 
 	/** Wrapper for the preferences hotkey. */
-	boost::function<void()> preferences_wrapper_;
+	std::function<void()> preferences_wrapper_;
 
 	std::vector<int> gamelist_id_at_row_;
 

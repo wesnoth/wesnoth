@@ -28,7 +28,7 @@
 
 #include "sound.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -43,15 +43,15 @@ REGISTER_WIDGET(button)
 tbutton::tbutton() : tcontrol(COUNT), tclickable_(), state_(ENABLED), retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
-			boost::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			boost::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
 
-	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
 			&tbutton::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			boost::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+			std::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&tbutton::signal_handler_left_button_click, this, _2, _3));
 }
 

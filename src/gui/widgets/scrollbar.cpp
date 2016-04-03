@@ -19,7 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -39,15 +39,15 @@ tscrollbar_::tscrollbar_()
 	, positioner_offset_(0)
 	, positioner_length_(0)
 {
-	connect_signal<event::MOUSE_ENTER>(boost::bind(
+	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&tscrollbar_::signal_handler_mouse_enter, this, _2, _3, _4));
-	connect_signal<event::MOUSE_MOTION>(boost::bind(
+	connect_signal<event::MOUSE_MOTION>(std::bind(
 			&tscrollbar_::signal_handler_mouse_motion, this, _2, _3, _4, _5));
-	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+	connect_signal<event::MOUSE_LEAVE>(std::bind(
 			&tscrollbar_::signal_handler_mouse_leave, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
 			&tscrollbar_::signal_handler_left_button_down, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
 			&tscrollbar_::signal_handler_left_button_up, this, _2, _3));
 }
 

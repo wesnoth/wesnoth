@@ -27,7 +27,7 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -42,7 +42,7 @@ REGISTER_WIDGET(scroll_label)
 tscroll_label::tscroll_label(bool wrap) : tscrollbar_container(COUNT), state_(ENABLED), wrap_on(wrap)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			boost::bind(
+			std::bind(
 					&tscroll_label::signal_handler_left_button_down, this, _2),
 			event::tdispatcher::back_pre_child);
 }

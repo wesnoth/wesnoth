@@ -35,7 +35,7 @@
 #include "formula/string_utils.hpp"
 #include "video.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -210,8 +210,8 @@ wait::wait(CVideo& v, const config& cfg, saved_game& state,
 	plugins_context_.reset(new plugins_context("Multiplayer Wait"));
 
 	//These structure initializers create a lobby::process_data_event
-	plugins_context_->set_callback("quit", 		boost::bind(&wait::process_event_impl, this, true), 						false);
-	plugins_context_->set_callback("chat",		boost::bind(&wait::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("quit", 		std::bind(&wait::process_event_impl, this, true), 						false);
+	plugins_context_->set_callback("chat",		std::bind(&wait::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
 }
 
 wait::~wait()

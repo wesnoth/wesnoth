@@ -50,7 +50,8 @@
 #include "forum_user_handler.hpp"
 #endif
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/utility.hpp>
@@ -1403,10 +1404,10 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		const cmd_handler &handler = handler_itor->second;
 		try {
 			handler(this, issuer_name, query, parameters, &out);
-		} catch (boost::bad_function_call & ex) {
-			ERR_SERVER << "While handling a command '" << command << "', caught a boost::bad_function_call exception.\n";
+		} catch (std::bad_function_call & ex) {
+			ERR_SERVER << "While handling a command '" << command << "', caught an std::bad_function_call exception.\n";
 			ERR_SERVER << ex.what() << std::endl;
-			out << "An internal server error occurred (boost::bad_function_call) while executing '" << command << "'\n";
+			out << "An internal server error occurred (std::bad_function_call) while executing '" << command << "'\n";
 		}
 	}
 
@@ -2035,7 +2036,7 @@ void server::searchlog_handler(const std::string& /*issuer_name*/, const std::st
 		if ((match_ip && utils::wildcard_string_match(ip, parameters))
 		|| (!match_ip && utils::wildcard_string_match(username, parameters))) {
 			found_something = true;
-			wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
+			wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), std::bind(&::match_user, _1, username, ip));
 			if (pl != players_.end()) {
 				*out << std::endl << player_status(pl);
 			} else {

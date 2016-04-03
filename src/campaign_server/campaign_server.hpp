@@ -19,7 +19,7 @@
 #include "network.hpp"
 #include "server/input_stream.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include <boost/scoped_ptr.hpp>
 #include <boost/unordered_map.hpp>
 
@@ -78,7 +78,7 @@ private:
 		{}
 	};
 
-	typedef boost::function<void (server*, const request& req)> request_handler;
+	typedef std::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
 	config cfg_;
@@ -161,7 +161,7 @@ private:
 	 * @param cmd  The request command, corresponding to the name of the [tag}
 	 *             with the request body (e.g. "handle_request_terms").
 	 * @param func The request function. This should be a class method passed
-	 *             as a @a boost::bind function object that takes a single
+	 *             as a @a std::bind function object that takes a single
 	 *             parameter of type @a request.
 	 */
 	void register_handler(const std::string& cmd, const request_handler& func);

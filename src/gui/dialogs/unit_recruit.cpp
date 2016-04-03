@@ -36,7 +36,7 @@
 #include "units/types.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -61,9 +61,9 @@ void tunit_recruit::pre_show(twindow& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-		boost::bind(&tunit_recruit::list_item_clicked,
+		std::bind(&tunit_recruit::list_item_clicked,
 		*this,
-		boost::ref(window)));
+		std::ref(window)));
 #else
 	list.set_callback_value_change(
 		dialog_callback<tunit_recruit, &tunit_recruit::list_item_clicked>);
@@ -71,7 +71,7 @@ void tunit_recruit::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "show_help", false),
-		boost::bind(&tunit_recruit::show_help, this, boost::ref(window)));
+		std::bind(&tunit_recruit::show_help, this, std::ref(window)));
 
 	for(const auto& recruit : recruit_list_)
 	{

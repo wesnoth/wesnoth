@@ -50,7 +50,7 @@
 #include "video.hpp"
 #include "game_config_manager.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -691,8 +691,8 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		if(preferences::new_lobby()) {
 			gui2::tlobby_main dlg(game_config, li, video);
 			dlg.set_preferences_callback(
-				boost::bind(do_preferences_dialog,
-					boost::ref(video), boost::ref(game_config)));
+				std::bind(do_preferences_dialog,
+					std::ref(video), std::ref(game_config)));
 			dlg.show(video);
 			//ugly kludge for launching other dialogs like the old lobby
 			switch (dlg.get_legacy_result()) {

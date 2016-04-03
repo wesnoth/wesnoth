@@ -23,7 +23,7 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -121,24 +121,24 @@ tmouse_motion::tmouse_motion(twidget& owner,
 	, signal_handler_sdl_mouse_motion_entered_(false)
 {
 	owner.connect_signal<event::SDL_MOUSE_MOTION>(
-			boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion,
+			std::bind(&tmouse_motion::signal_handler_sdl_mouse_motion,
 						this,
 						_2,
 						_3,
 						_5),
 			queue_position);
 
-	owner_.connect_signal<event::SDL_WHEEL_UP>(boost::bind(
+	owner_.connect_signal<event::SDL_WHEEL_UP>(std::bind(
 			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
-	owner_.connect_signal<event::SDL_WHEEL_DOWN>(boost::bind(
+	owner_.connect_signal<event::SDL_WHEEL_DOWN>(std::bind(
 			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
-	owner_.connect_signal<event::SDL_WHEEL_LEFT>(boost::bind(
+	owner_.connect_signal<event::SDL_WHEEL_LEFT>(std::bind(
 			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
-	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(boost::bind(
+	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(std::bind(
 			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 
 	owner.connect_signal<event::SHOW_HELPTIP>(
-			boost::bind(&tmouse_motion::signal_handler_show_helptip,
+			std::bind(&tmouse_motion::signal_handler_show_helptip,
 						this,
 						_2,
 						_3,
@@ -329,7 +329,7 @@ void tmouse_motion::start_hover_timer(twidget* widget, const tpoint& coordinate)
 			  << "' at address " << widget << ".\n";
 
 	hover_timer_
-			= add_timer(50, boost::bind(&tmouse_motion::show_tooltip, this));
+			= add_timer(50, std::bind(&tmouse_motion::show_tooltip, this));
 
 	if(hover_timer_) {
 		hover_widget_ = widget;
@@ -389,7 +389,7 @@ tmouse_button<sdl_button_down,
 	, signal_handler_sdl_button_up_entered_(false)
 {
 	owner_.connect_signal<sdl_button_down>(
-			boost::bind(&tmouse_button<sdl_button_down,
+			std::bind(&tmouse_button<sdl_button_down,
 									   sdl_button_up,
 									   button_down,
 									   button_up,
@@ -402,7 +402,7 @@ tmouse_button<sdl_button_down,
 						_5),
 			queue_position);
 	owner_.connect_signal<sdl_button_up>(
-			boost::bind(&tmouse_button<sdl_button_down,
+			std::bind(&tmouse_button<sdl_button_down,
 									   sdl_button_up,
 									   button_down,
 									   button_up,
@@ -624,10 +624,10 @@ tdistributor::tdistributor(twidget& owner,
 		}
 	}
 
-	owner_.connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	owner_.connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tdistributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
-	owner_.connect_signal<event::NOTIFY_REMOVAL>(boost::bind(
+	owner_.connect_signal<event::NOTIFY_REMOVAL>(std::bind(
 			&tdistributor::signal_handler_notify_removal, this, _1, _2));
 
 	initialize_state();
@@ -635,10 +635,10 @@ tdistributor::tdistributor(twidget& owner,
 
 tdistributor::~tdistributor()
 {
-	owner_.disconnect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	owner_.disconnect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tdistributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
-	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(boost::bind(
+	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(std::bind(
 			&tdistributor::signal_handler_notify_removal, this, _1, _2));
 }
 

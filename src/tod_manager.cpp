@@ -33,7 +33,7 @@
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/lambda/bind.hpp>
 #include <boost/lambda/lambda.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -93,7 +93,7 @@ void tod_manager::resolve_random(random_new::rng& r)
 	//comma-separated string of integers >= 1 referring to the times_ array indices
 	std::vector<int> output;
 	boost::copy( utils::split(random_tod_.str())
-		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
+		| boost::adaptors::transformed(std::bind(lexical_cast_default<int, std::string>, _1 , 0))
 		| boost::adaptors::filtered(greater<int>(0))
 		, std::back_inserter(output) );
 

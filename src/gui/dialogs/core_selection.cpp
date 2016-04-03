@@ -30,7 +30,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -89,9 +89,9 @@ void tcore_selection::pre_show(twindow& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			list,
-			boost::bind(&tcore_selection::core_selected,
+			std::bind(&tcore_selection::core_selected,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<tcore_selection,

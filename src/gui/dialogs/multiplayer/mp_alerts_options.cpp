@@ -29,7 +29,7 @@
 #include "preferences.hpp"
 #include "formula/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "gettext.hpp"
 
@@ -75,7 +75,7 @@ static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool de
 	//Needed to disambiguate overloaded function
 	void (*set) (const std::string &, bool) = &preferences::set;
 
-	connect_signal_mouse_left_click(*b, boost::bind(set, id, boost::bind(&ttoggle_button::get_value_bool, b)));
+	connect_signal_mouse_left_click(*b, std::bind(set, id, std::bind(&ttoggle_button::get_value_bool, b)));
 
 	return b;
 }
@@ -149,7 +149,7 @@ void tmp_alerts_options::pre_show(twindow& window)
 
 	tbutton * defaults;
 	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
-	connect_signal_mouse_left_click(*defaults, boost::bind(&revert_to_default_pref_values, boost::ref(window)));
+	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 }
 
 void tmp_alerts_options::post_show(twindow& /*window*/)

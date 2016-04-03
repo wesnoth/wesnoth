@@ -27,7 +27,7 @@
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "key.hpp"
 
@@ -364,7 +364,7 @@ void add_hotkey(const hotkey_ptr item)
 	if (!hotkeys_.empty()) {
 		hotkeys_.erase(
 				std::remove_if(hotkeys_.begin(), hotkeys_.end(),
-						boost::bind(&hotkey_base::bindings_equal, _1, (item))),
+						std::bind(&hotkey_base::bindings_equal, _1, (item))),
 				hotkeys_.end());
 	}
 

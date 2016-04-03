@@ -29,7 +29,7 @@
 #include "scripting/plugins/context.hpp"
 #include "wml_separators.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_mp_connect("mp/connect");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect)
@@ -434,9 +434,9 @@ connect::connect(CVideo& v, const std::string& game_name,
 	plugins_context_.reset(new plugins_context("Multiplayer Connect"));
 
 	//These structure initializers create a lobby::process_data_event
-	plugins_context_->set_callback("launch", 	boost::bind(&connect::plugin_event_helper, this, process_event_data (true, false)));
-	plugins_context_->set_callback("quit", 		boost::bind(&connect::plugin_event_helper, this, process_event_data (false, true)));
-	plugins_context_->set_callback("chat",		boost::bind(&connect::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("launch", 	std::bind(&connect::plugin_event_helper, this, process_event_data (true, false)));
+	plugins_context_->set_callback("quit", 		std::bind(&connect::plugin_event_helper, this, process_event_data (false, true)));
+	plugins_context_->set_callback("chat",		std::bind(&connect::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
 }
 
 connect::~connect()

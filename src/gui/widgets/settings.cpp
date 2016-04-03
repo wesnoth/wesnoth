@@ -83,7 +83,7 @@ static std::vector<std::string>& registered_window_types()
 }
 
 typedef std::map<std::string,
-				 boost::function<void(tgui_definition&,
+				 std::function<void(tgui_definition&,
 									  const std::string&,
 									  const config&,
 									  const char* key)> >
@@ -556,7 +556,7 @@ tstate_definition::tstate_definition(const config& cfg) : canvas()
 }
 
 void register_widget(const std::string& id,
-					 boost::function<void(tgui_definition& gui_definition,
+					 std::function<void(tgui_definition& gui_definition,
 										  const std::string& definition_type,
 										  const config& cfg,
 										  const char* key)> functor)

@@ -65,7 +65,7 @@ namespace wb {
 
 #include "overlay.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include <boost/weak_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <deque>
@@ -376,7 +376,7 @@ public:
 	void redraw_everything();
 
 	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
-	void add_redraw_observer(boost::function<void(display&)> f);
+	void add_redraw_observer(std::function<void(display&)> f);
 
 	/** Clear the redraw observers */
 	void clear_redraw_observers();
@@ -1148,7 +1148,7 @@ private:
 
 	surface map_screenshot_surf_;
 
-	std::vector<boost::function<void(display&)> > redraw_observers_;
+	std::vector<std::function<void(display&)> > redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
 	bool draw_coordinates_;

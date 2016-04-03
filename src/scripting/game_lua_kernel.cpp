@@ -108,7 +108,7 @@
 #include "variable_info.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>               // for bind_t, bind
+#include "utils/functional.hpp"               // for bind_t, bind
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/optional.hpp>
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
@@ -4145,7 +4145,7 @@ int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
 int game_lua_kernel::impl_theme_items_get(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
-	lua_cpp::push_closure(L, boost::bind(&game_lua_kernel::impl_theme_item, this, _1, std::string(m)), 0);
+	lua_cpp::push_closure(L, std::bind(&game_lua_kernel::impl_theme_item, this, _1, std::string(m)), 0);
 	lua_pushvalue(L, 2);
 	lua_pushvalue(L, -2);
 	lua_rawset(L, 1);
@@ -4622,7 +4622,7 @@ void game_lua_kernel::initialize(const config& level)
 	lua_rawget(L, -2);
 	lua_createtable(L, 0, 0);
 
-	if (!protected_call(1, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!protected_call(1, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 		cmd_log_ << "Failed to compute wesnoth.sides\n";
 	} else {
 		lua_setfield(L, -2, "sides");

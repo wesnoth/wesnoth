@@ -16,7 +16,6 @@
 
 #include "log.hpp"
 
-#include <boost/function.hpp>
 #include <sstream>
 #include <string>
 
@@ -102,7 +101,7 @@ void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions)
 
 static int intf_closure_dispatcher( lua_State* L )
 {
-	lua_function * f = static_cast< lua_function *> (luaL_checkudata(L, lua_upvalueindex(1), cpp_function)); //assume the boost::function is the first upvalue
+	lua_function * f = static_cast< lua_function *> (luaL_checkudata(L, lua_upvalueindex(1), cpp_function)); //assume the std::function is the first upvalue
 	return (*f)(L);
 }
 

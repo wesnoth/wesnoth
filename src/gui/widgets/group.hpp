@@ -20,7 +20,7 @@
 #include "utils/iterable_pair.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -44,7 +44,7 @@ public:
 	{
 		members_.push_back(std::make_pair(widget, value));
 
-		dynamic_cast<twidget*>(widget)->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+		dynamic_cast<twidget*>(widget)->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&tgroup::group_operator, this), event::tdispatcher::front_child);
 	}
 

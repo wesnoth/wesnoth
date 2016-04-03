@@ -33,7 +33,7 @@
 
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -540,7 +540,7 @@ void tlistbox::finalize(tbuilder_grid_const_ptr header,
 	tgrid& p = find_widget<tgrid>(this, "_header_grid", false);
 	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
 		if(tselectable_* selectable = find_widget<tselectable_>(&p, "sort_" +  std::to_string(i), false, false)) {
-			selectable->set_callback_state_change(boost::bind(&tlistbox::order_by_column, this, i, _1));
+			selectable->set_callback_state_change(std::bind(&tlistbox::order_by_column, this, i, _1));
 			if(orders_.size() < max ) {
 				orders_.resize(max);
 			}

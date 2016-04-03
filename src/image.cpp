@@ -42,7 +42,7 @@
 
 #include <SDL_image.h>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/functional/hash.hpp>
 
 #include <list>
@@ -173,7 +173,7 @@ int zoom = tile_size;
 int cached_zoom = 0;
 
 /** Algorithm choices */
-//typedef boost::function<surface(const surface &, int, int)> scaling_function;
+//typedef std::function<surface(const surface &, int, int)> scaling_function;
 typedef surface(*scaling_function)(const surface &, int, int);
 scaling_function scale_to_zoom_func;
 scaling_function scale_to_hex_func;

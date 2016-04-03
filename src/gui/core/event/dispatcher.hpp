@@ -22,7 +22,7 @@
 
 #include <SDL_events.h>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -47,7 +47,7 @@ struct tmessage;
  *
  * This function is used for the callbacks in tset_event.
  */
-typedef boost::function<void(
+typedef std::function<void(
 		tdispatcher& dispatcher, const tevent event, bool& handled, bool& halt)>
 tsignal_function;
 
@@ -56,7 +56,7 @@ tsignal_function;
  *
  * This function is used for the callbacks in tset_event_mouse.
  */
-typedef boost::function<void(tdispatcher& dispatcher,
+typedef std::function<void(tdispatcher& dispatcher,
 							 const tevent event,
 							 bool& handled,
 							 bool& halt,
@@ -67,7 +67,7 @@ typedef boost::function<void(tdispatcher& dispatcher,
  *
  * This function is used for the callbacks in tset_event_keyboard.
  */
-typedef boost::function<void(tdispatcher& dispatcher,
+typedef std::function<void(tdispatcher& dispatcher,
 							 const tevent event,
 							 bool& handled,
 							 bool& halt,
@@ -83,7 +83,7 @@ tsignal_keyboard_function;
  * Added the dummy void* parameter which will be nullptr to get a different
  * signature as tsignal_function's callback.
  */
-typedef boost::function<void(tdispatcher& dispatcher,
+typedef std::function<void(tdispatcher& dispatcher,
 							 const tevent event,
 							 bool& handled,
 							 bool& halt,
@@ -94,14 +94,14 @@ typedef boost::function<void(tdispatcher& dispatcher,
  *
  * This function is used for the callbacks in tset_message_notification.
  */
-typedef boost::function<void(tdispatcher& dispatcher,
+typedef std::function<void(tdispatcher& dispatcher,
 							 const tevent event,
 							 bool& handled,
 							 bool& halt,
 							 tmessage& message)> tsignal_message_function;
 
 /** Hotkey function handler signature. */
-typedef boost::function<bool(tdispatcher& dispatcher,
+typedef std::function<bool(tdispatcher& dispatcher,
 							 hotkey::HOTKEY_COMMAND id)> thotkey_function;
 
 /**
@@ -261,7 +261,7 @@ public:
 	 * The function uses some boost magic to avoid registering the wrong
 	 * function, but the common way to use this function is:
 	 * widget->connect_signal<EVENT_ID>(
-	 * boost::bind(&tmy_dialog::my_member, this));
+	 * std::bind(&tmy_dialog::my_member, this));
 	 * This allows simply adding a member of a dialog to be used as a callback
 	 * for widget without a lot of magic. Note most widgets probably will get a
 	 * callback like

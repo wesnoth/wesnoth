@@ -16,7 +16,7 @@
 #include "label_settings.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include "gettext.hpp"
 #include "game_display.hpp"
 #include "map/label.hpp"
@@ -99,7 +99,7 @@ void tlabel_settings::pre_show(twindow& window) {
 		tgrid* grid = cats_listbox.get_row_grid(cats_listbox.get_item_count() - 1);
 		ttoggle_button& status = find_widget<ttoggle_button>(grid, "cat_status", false);
 		status.set_value(visible);
-		status.set_callback_state_change(boost::bind(&tlabel_settings::toggle_category, this, _1, category));
+		status.set_callback_state_change(std::bind(&tlabel_settings::toggle_category, this, _1, category));
 
 		if(category.substr(0,5) == "side:") {
 			tlabel& label = find_widget<tlabel>(grid, "cat_name", false);

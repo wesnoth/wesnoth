@@ -42,7 +42,7 @@
 #include "team.hpp"
 #include "units/types.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static std::string last_chosen_type_id = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
@@ -111,15 +111,15 @@ void tunit_create::pre_show(twindow& window)
 			= find_widget<ttext_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			boost::bind(&tunit_create::filter_text_changed, this, _1, _2));
+			std::bind(&tunit_create::filter_text_changed, this, _1, _2));
 
 	window.keyboard_capture(filter);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-								   boost::bind(&tunit_create::list_item_clicked,
+								   std::bind(&tunit_create::list_item_clicked,
 											   *this,
-											   boost::ref(window)));
+											   std::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<tunit_create, &tunit_create::list_item_clicked>);
@@ -159,11 +159,11 @@ void tunit_create::pre_show(twindow& window)
 	}
 
 	std::vector<tgenerator_::torder_func> order_funcs(2);
-	order_funcs[0] = boost::bind(&tunit_create::compare_race, this, _1, _2);
-	order_funcs[1] = boost::bind(&tunit_create::compare_race_rev, this, _1, _2);
+	order_funcs[0] = std::bind(&tunit_create::compare_race, this, _1, _2);
+	order_funcs[1] = std::bind(&tunit_create::compare_race_rev, this, _1, _2);
 	list.set_column_order(0, order_funcs);
-	order_funcs[0] = boost::bind(&tunit_create::compare_type, this, _1, _2);
-	order_funcs[1] = boost::bind(&tunit_create::compare_type_rev, this, _1, _2);
+	order_funcs[0] = std::bind(&tunit_create::compare_type, this, _1, _2);
+	order_funcs[1] = std::bind(&tunit_create::compare_type_rev, this, _1, _2);
 	list.set_column_order(1, order_funcs);
 
 	list_item_clicked(window);

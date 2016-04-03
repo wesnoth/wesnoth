@@ -23,7 +23,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -55,49 +55,49 @@ void tlobby_player_info::pre_show(twindow& window)
 	relation_ = find_widget<tlabel>(&window, "relation_info", false, true);
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "start_whisper", false),
-			boost::bind(&tlobby_player_info::start_whisper_button_callback,
+			std::bind(&tlobby_player_info::start_whisper_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	add_to_friends_ = &find_widget<tbutton>(&window, "add_to_friends", false);
 	connect_signal_mouse_left_click(
 			*add_to_friends_,
-			boost::bind(&tlobby_player_info::add_to_friends_button_callback,
+			std::bind(&tlobby_player_info::add_to_friends_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	add_to_ignores_ = &find_widget<tbutton>(&window, "add_to_ignores", false);
 	connect_signal_mouse_left_click(
 			*add_to_ignores_,
-			boost::bind(&tlobby_player_info::add_to_ignores_button_callback,
+			std::bind(&tlobby_player_info::add_to_ignores_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	remove_from_list_
 			= &find_widget<tbutton>(&window, "remove_from_list", false);
 	connect_signal_mouse_left_click(
 			*remove_from_list_,
-			boost::bind(&tlobby_player_info::remove_from_list_button_callback,
+			std::bind(&tlobby_player_info::remove_from_list_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "check_status", false),
-			boost::bind(&tlobby_player_info::check_status_button_callback,
+			std::bind(&tlobby_player_info::check_status_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "kick", false),
-			boost::bind(&tlobby_player_info::kick_button_callback,
+			std::bind(&tlobby_player_info::kick_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "kick_ban", false),
-			boost::bind(&tlobby_player_info::kick_ban_button_callback,
+			std::bind(&tlobby_player_info::kick_ban_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	find_widget<tlabel>(&window, "player_name", false).set_label(info_.name);
 

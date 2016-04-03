@@ -25,7 +25,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -45,10 +45,10 @@ tslider::tslider()
 	, maximum_value_label_()
 	, value_labels_()
 {
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			boost::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
 }
 
 tpoint tslider::calculate_best_size() const
@@ -296,8 +296,8 @@ static t_string default_value_label_generator(const std::vector<t_string>& value
 
 void tslider::set_value_labels(const std::vector<t_string>& value_labels)
 {
-	//dont use boost::ref becasue we want to store value_labels in the cloasure.
-	set_value_labels(boost::bind(&default_value_label_generator, value_labels, _1, _2));
+	//dont use std::ref becasue we want to store value_labels in the cloasure.
+	set_value_labels(std::bind(&default_value_label_generator, value_labels, _1, _2));
 }
 
 // }---------- DEFINITION ---------{

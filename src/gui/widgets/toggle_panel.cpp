@@ -25,7 +25,7 @@
 #include "sound.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -47,32 +47,32 @@ ttoggle_panel::ttoggle_panel()
 {
 	set_wants_mouse_left_double_click();
 
-	connect_signal<event::MOUSE_ENTER>(boost::bind(
+	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&ttoggle_panel::signal_handler_mouse_enter, this, _2, _3));
-	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+	connect_signal<event::MOUSE_LEAVE>(std::bind(
 			&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
 #if 0
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-			boost::bind(&ttoggle_panel::signal_handler_pre_left_button_click,
+			std::bind(&ttoggle_panel::signal_handler_pre_left_button_click,
 						this,
 						_2),
 			event::tdispatcher::back_pre_child);
 #endif
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&ttoggle_panel::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-			boost::bind(&ttoggle_panel::signal_handler_left_button_click,
+			std::bind(&ttoggle_panel::signal_handler_left_button_click,
 						this,
 						_2,
 						_3),
 			event::tdispatcher::back_post_child);
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
-			boost::bind(&ttoggle_panel::signal_handler_left_button_double_click,
+			std::bind(&ttoggle_panel::signal_handler_left_button_double_click,
 						this,
 						_2,
 						_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
-			boost::bind(&ttoggle_panel::signal_handler_left_button_double_click,
+			std::bind(&ttoggle_panel::signal_handler_left_button_double_click,
 						this,
 						_2,
 						_3),

@@ -34,7 +34,7 @@
 #include "settings.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #endif
 
 namespace gui2

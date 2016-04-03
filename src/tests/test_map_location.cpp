@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/assign/list_of.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/test/unit_test.hpp>
 
 #include "map/location.hpp"

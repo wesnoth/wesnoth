@@ -21,7 +21,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -39,18 +39,18 @@ ttext_::ttext_()
 {
 #ifdef __unix__
 	// pastes on UNIX systems.
-	connect_signal<event::MIDDLE_BUTTON_CLICK>(boost::bind(
+	connect_signal<event::MIDDLE_BUTTON_CLICK>(std::bind(
 			&ttext_::signal_handler_middle_button_click, this, _2, _3));
 
 #endif
 
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
 
-	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(boost::bind(
+	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&ttext_::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
-			boost::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
+			std::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
 }
 
 void ttext_::set_active(const bool active)

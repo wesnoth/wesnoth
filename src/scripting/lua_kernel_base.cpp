@@ -37,7 +37,7 @@
 
 #include "version.hpp"                  // for do_version_check, etc
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/scoped_ptr.hpp>
 
 #include <cstring>
@@ -288,10 +288,10 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 /*
 	lua_cpp::Reg const cpp_callbacks[] = {
-		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
-		{ "require", 		boost::bind(&lua_kernel_base::intf_require, this, _1)},
-		{ "show_dialog",	boost::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
-		{ "show_lua_console",	boost::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
+		{ "dofile", 		std::bind(&lua_kernel_base::intf_dofile, this, _1)},
+		{ "require", 		std::bind(&lua_kernel_base::intf_require, this, _1)},
+		{ "show_dialog",	std::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
+		{ "show_lua_console",	std::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
 	};
 */
 
@@ -358,7 +358,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
-		if (!protected_call(0,0, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+		if (!protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 			cmd_log_ << "Failed to activate strict mode.\n";
 		} else {
 			cmd_log_ << "Activated strict mode.\n";
@@ -388,13 +388,13 @@ void lua_kernel_base::throw_exception(char const * msg, char const * context)
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets)
 {
-	error_handler eh = boost::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
 	return protected_call(nArgs, nRets, eh);
 }
 
 bool lua_kernel_base::load_string(char const * prog)
 {
-	error_handler eh = boost::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
 	return load_string(prog, eh);
 }
 
@@ -480,7 +480,7 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 //
 void lua_kernel_base::throwing_run(const char * prog) {
 	cmd_log_ << "$ " << prog << "\n";
-	error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
 	load_string(prog, eh);
 	protected_call(0, 0, eh);
 }
@@ -501,7 +501,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	experiment += prog;
 	experiment += ")";
 
-	error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
 
 	try {
 		// Try to load the experiment without syntax errors
@@ -524,7 +524,7 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 
-	error_handler eh = boost::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
 	protected_call(0, LUA_MULTRET, eh);
 	return lua_gettop(L);
 }
@@ -559,7 +559,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 	// stack is now [packagename] [wesnoth] [package] [chunk]
 	DBG_LUA << "require: loaded a file, now calling it\n";
 
-	if (!protected_call(L, 0, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) return 0;
+	if (!protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) return 0;
 	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 	// stack is now [packagename] [wesnoth] [package] [results]
 

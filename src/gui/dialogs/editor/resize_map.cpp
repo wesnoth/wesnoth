@@ -21,7 +21,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -109,16 +109,16 @@ void teditor_resize_map::pre_show(twindow& window)
 	tslider& height = find_widget<tslider>(&window, "height", false);
 	connect_signal_notify_modified(
 			height,
-			boost::bind(&teditor_resize_map::update_expand_direction,
+			std::bind(&teditor_resize_map::update_expand_direction,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tslider& width = find_widget<tslider>(&window, "width", false);
 	connect_signal_notify_modified(
 			width,
-			boost::bind(&teditor_resize_map::update_expand_direction,
+			std::bind(&teditor_resize_map::update_expand_direction,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	std::string name_prefix = "expand";
 	for(int i = 0; i < 9; ++i) {

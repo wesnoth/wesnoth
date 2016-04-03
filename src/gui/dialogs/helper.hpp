@@ -17,7 +17,7 @@
 
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -37,7 +37,7 @@ void dialog_callback(twidget& caller)
 	(dialog->*fptr)(*window);
 }
 
-typedef boost::function<void(twindow &)> dialog_member_func_type;
+typedef std::function<void(twindow &)> dialog_member_func_type;
 
 inline void make_dialog_callback_helper(const dialog_member_func_type & t, 
 		twidget & caller)
@@ -47,10 +47,10 @@ inline void make_dialog_callback_helper(const dialog_member_func_type & t,
 	t(*window);
 }
 
-inline boost::function<void(twidget &)> make_dialog_callback(
+inline std::function<void(twidget &)> make_dialog_callback(
 		dialog_member_func_type func)
 {
-	return boost::bind(make_dialog_callback_helper, func, _1);
+	return std::bind(make_dialog_callback_helper, func, _1);
 }
 
 } // namespace gui2

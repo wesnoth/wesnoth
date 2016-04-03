@@ -27,7 +27,7 @@
 #include "preferences.hpp"
 #include "game_config.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2 {
 REGISTER_DIALOG(select_orb_colors);
@@ -50,9 +50,9 @@ void tselect_orb_colors::pre_show(twindow& window)
 	setup_orb_group("enemy", show_enemy_, preferences::enemy_color(), window);
 	
 	tbutton& reset = find_widget<tbutton>(&window, "orb_defaults", false);
-	connect_signal_mouse_left_click(reset, boost::bind(
+	connect_signal_mouse_left_click(reset, std::bind(
 		&tselect_orb_colors::handle_reset_click,
-		this, boost::ref(window)
+		this, std::ref(window)
 	));
 }
 
@@ -79,10 +79,10 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 	ttoggle_button& toggle = find_widget<ttoggle_button>(&window, prefix + "show", false);
 	toggle.set_value_bool(shown);
 	if(connect) {
-		connect_signal_mouse_left_click(toggle, boost::bind(
+		connect_signal_mouse_left_click(toggle, std::bind(
 			&tselect_orb_colors::handle_toggle_click,
 			this,
-			boost::ref(shown)
+			std::ref(shown)
 		));
 	}
 

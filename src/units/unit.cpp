@@ -48,7 +48,7 @@
 #include "units/map.hpp"      // for unit_map, etc
 #include "variable.hpp"                 // for vconfig, etc
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/function_output_iterator.hpp>
 #include <boost/range/begin.hpp>

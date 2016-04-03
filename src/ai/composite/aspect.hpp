@@ -28,7 +28,7 @@
 #include "log.hpp"
 #include "util.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/pointer_cast.hpp>
 
 #ifdef _MSC_VER
@@ -78,8 +78,8 @@ public:
 	{
 		invalidate();
 	}
-	
-	
+
+
 	virtual bool active() const;
 
 	virtual std::string get_name() const
@@ -96,7 +96,7 @@ public:
 protected:
 	std::string time_of_day_;
 	std::string turns_;
-	
+
 	mutable bool valid_;
 	mutable bool valid_variant_;
 	mutable bool valid_lua_;
@@ -283,8 +283,8 @@ public:
 			}
 		}
 
-		boost::function2<void, typename aspect_type<T>::typesafe_ptr_vector&, const config&> factory_facets =
-                        boost::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
+		std::function<void(typename aspect_type<T>::typesafe_ptr_vector&, const config&)> factory_facets =
+                        std::bind(&ai::composite_aspect<T>::create_facet,*this,_1,_2);
 
 		register_facets_property(this->property_handlers(),"facet",facets_,default_, factory_facets);
 
@@ -398,7 +398,7 @@ public:
 	}
 
 };
-	
+
 class lua_aspect_visitor : public boost::static_visitor<std::string> {
 	static std::string quote_string(const std::string& s);
 public:

@@ -34,7 +34,7 @@
 #include "team.hpp"
 #include "units/types.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -60,7 +60,7 @@ void tunit_preview_pane::finalize_setup()
 
 	if(button_profile_) {
 		connect_signal_mouse_left_click(*button_profile_,
-			boost::bind(&tunit_preview_pane::profile_button_callback, this));
+			std::bind(&tunit_preview_pane::profile_button_callback, this));
 	}
 }
 

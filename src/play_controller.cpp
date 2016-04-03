@@ -65,6 +65,7 @@
 #include "wml_exception.hpp"
 
 #include <boost/make_shared.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -303,8 +304,8 @@ void play_controller::init(CVideo& video, const config& level)
 		gamestate().lua_kernel_->initialize(level);
 
 		plugins_context_.reset(new plugins_context("Game"));
-		plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
-		plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
+		plugins_context_->set_callback("save_game", std::bind(&play_controller::save_game_auto, this, std::bind(get_str, std::placeholders::_1, "filename" )), true);
+		plugins_context_->set_callback("save_replay", std::bind(&play_controller::save_replay_auto, this, std::bind(get_str, std::placeholders::_1, "filename" )), true);
 		plugins_context_->set_callback("quit", throw_end_level(), false);
 	});
 	//Do this after the loadingscreen, so that ita happens in the main thread.

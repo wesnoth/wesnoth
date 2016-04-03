@@ -23,7 +23,7 @@
 #include "units/map.hpp"
 #include "units/id.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 
 /*

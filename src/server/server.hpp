@@ -25,7 +25,6 @@
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
 
-#include "utils/boost_function_guarded.hpp"
 #include <boost/scoped_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 class server
@@ -186,7 +185,7 @@ private:
 
 	void setup_handlers();
 
-	typedef boost::function5<void, server*, const std::string&, const std::string&, std::string&, std::ostringstream *> cmd_handler;
+	typedef std::function<void(server*, const std::string&, const std::string&, std::string&, std::ostringstream *)> cmd_handler;
 	std::map<std::string, cmd_handler> cmd_handlers_;
 
 	void shut_down_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);

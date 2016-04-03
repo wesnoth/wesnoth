@@ -42,7 +42,7 @@
 			tregister_helper()                                                 \
 			{                                                                  \
 				register_widget(#id,                                           \
-								boost::bind(load_widget_definitions<type>,     \
+								std::bind(load_widget_definitions<type>,       \
 											_1,                                \
 											_2,                                \
 											_3,                                \
@@ -50,7 +50,7 @@
                                                                                \
 				register_builder_widget(                                       \
 						#id,                                                   \
-						boost::bind(                                           \
+						std::bind(                                             \
 								build_widget<implementation::tbuilder_##id>,   \
 								_1));                                          \
 			}                                                                  \

@@ -29,7 +29,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "gettext.hpp"
 
@@ -96,7 +96,7 @@ void tgame_cache_options::pre_show(twindow& window)
 
 	tbutton& copy = find_widget<tbutton>(&window, "copy", false);
 	connect_signal_mouse_left_click(copy,
-									boost::bind(&tgame_cache_options::copy_to_clipboard_callback,
+									std::bind(&tgame_cache_options::copy_to_clipboard_callback,
 												this));
 	if (!desktop::clipboard::available()) {
 		copy.set_active(false);
@@ -105,18 +105,18 @@ void tgame_cache_options::pre_show(twindow& window)
 
 	tbutton& browse = find_widget<tbutton>(&window, "browse", false);
 	connect_signal_mouse_left_click(browse,
-									boost::bind(&tgame_cache_options::browse_cache_callback,
+									std::bind(&tgame_cache_options::browse_cache_callback,
 												this));
 
 	connect_signal_mouse_left_click(*clean_button_,
-									boost::bind(&tgame_cache_options::clean_cache_callback,
+									std::bind(&tgame_cache_options::clean_cache_callback,
 												this,
-												boost::ref(window.video())));
+												std::ref(window.video())));
 
 	connect_signal_mouse_left_click(*purge_button_,
-									boost::bind(&tgame_cache_options::purge_cache_callback,
+									std::bind(&tgame_cache_options::purge_cache_callback,
 												this,
-												boost::ref(window.video())));
+												std::ref(window.video())));
 }
 
 void tgame_cache_options::post_show(twindow& /*window*/)

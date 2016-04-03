@@ -66,7 +66,7 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(boost::function<void(twidget&)> callback)
+	void set_callback_state_change(std::function<void(twidget&)> callback)
 	{
 		callback_state_change_ = callback;
 	}
@@ -119,7 +119,7 @@ private:
 	int retval_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_change_;
+	std::function<void(twidget&)> callback_state_change_;
 
 	/**
 	 * The toggle button can contain an icon next to the text.

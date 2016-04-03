@@ -50,7 +50,7 @@
 
 #include "config.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <sstream>
 
 namespace gui2
@@ -223,22 +223,22 @@ void taddon_list::register_sort_button(twindow& window, const std::string& id, c
 {
 	tselectable_& selectable = find_widget<tselectable_>(&window, id, true);
 	orders_.push_back(&selectable);
-	selectable.set_callback_state_change(boost::bind(&taddon_list::on_order_button_click, this, boost::ref(window), up, down, _1));
+	selectable.set_callback_state_change(std::bind(&taddon_list::on_order_button_click, this, std::ref(window), up, down, _1));
 }
 
 void taddon_list::register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id)
 {
 	register_sort_button(window, id,
-		boost::bind(&str_up,   &cfg_, prop_id, _1, _2),
-		boost::bind(&str_down, &cfg_, prop_id, _1, _2)
+		std::bind(&str_up,   &cfg_, prop_id, _1, _2),
+		std::bind(&str_down, &cfg_, prop_id, _1, _2)
 	);
 }
 
 void taddon_list::register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id)
 {
 	register_sort_button(window, id,
-		boost::bind(&num_up,   &cfg_, prop_id, _1, _2),
-		boost::bind(&num_down, &cfg_, prop_id, _1, _2)
+		std::bind(&num_up,   &cfg_, prop_id, _1, _2),
+		std::bind(&num_down, &cfg_, prop_id, _1, _2)
 	);
 }
 
@@ -422,13 +422,13 @@ void taddon_list::pre_show(twindow& window)
 	register_sort_button_numeric(window, "sort_size", "size");
 
 	find_widget<ttext_box>(&window, "filter", false).set_text_changed_callback(
-		boost::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
+		std::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-			boost::bind(&taddon_list::on_addon_select,
+			std::bind(&taddon_list::on_addon_select,
 			*this,
-			boost::ref(window)));
+			std::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<taddon_list, &taddon_list::on_addon_select>);
@@ -453,11 +453,11 @@ void taddon_list::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			url_go_button,
-			boost::bind(&taddon_list::browse_url_callback, this, boost::ref(url_textbox)));
+			std::bind(&taddon_list::browse_url_callback, this, std::ref(url_textbox)));
 
 	connect_signal_mouse_left_click(
 			url_copy_button,
-			boost::bind(&taddon_list::copy_url_callback, this, boost::ref(url_textbox)));
+			std::bind(&taddon_list::copy_url_callback, this, std::ref(url_textbox)));
 
 	on_addon_select(window);
 }

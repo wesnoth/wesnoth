@@ -24,7 +24,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <ctime>
 
@@ -103,7 +103,7 @@ void tdebug_clock::pre_show(twindow& window)
 
 	window_ = &window;
 
-	signal_ = boost::bind(&tdebug_clock::update_time, this, false);
+	signal_ = std::bind(&tdebug_clock::update_time, this, false);
 	window.connect_signal<event::DRAW>(signal_,
 									   event::tdispatcher::front_child);
 

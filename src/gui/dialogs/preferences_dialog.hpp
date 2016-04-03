@@ -109,12 +109,12 @@ private:
 	void setup_single_toggle(
 		const std::string& widget_id,
 		const bool start_value,
-		boost::function<void(bool)> callback,
+		std::function<void(bool)> callback,
 		twidget& find_in,
 		const bool inverted = false);
 
 	void single_toggle_callback(const ttoggle_button& widget,
-		boost::function<void(bool)> setter,
+		std::function<void(bool)> setter,
 		const bool inverted);
 
 	/**
@@ -127,12 +127,12 @@ private:
 		const std::string& slider_widget,
 		const bool toggle_start_value,
 		const int slider_state_value,
-		boost::function<void(bool)> toggle_callback,
-		boost::function<void(int)> slider_callback,
+		std::function<void(bool)> toggle_callback,
+		std::function<void(int)> slider_callback,
 		twidget& find_in);
 
 	void toggle_slider_pair_callback(const ttoggle_button& toggle_widget,
-		tslider& slider_widget, boost::function<void(bool)> setter);
+		tslider& slider_widget, std::function<void(bool)> setter);
 
 	/**
 	 * Sets the initial state and callback for a standalone slider
@@ -141,11 +141,11 @@ private:
 	void setup_single_slider(
 		const std::string& widget_id,
 		const int start_value,
-		boost::function<void(int)> slider_callback,
+		std::function<void(int)> slider_callback,
 		twidget& find_in);
 
 	void single_slider_callback(const tslider& widget,
-		boost::function<void(int)> setter);
+		std::function<void(int)> setter);
 
 	typedef std::pair<std::vector<std::string>, std::vector<std::string> > combo_data;
 
@@ -156,11 +156,11 @@ private:
 		const std::string& widget_id,
 		const combo_data& options,
 		const unsigned start_value,
-		boost::function<void(std::string)> callback,
+		std::function<void(std::string)> callback,
 		twidget& find_in);
 
 	void simple_combobox_callback(const tcombobox& widget,
-		boost::function<void(std::string)> setter, std::vector<std::string>& vec);
+		std::function<void(std::string)> setter, std::vector<std::string>& vec);
 
 	/**
 	 * Sets the a radio button group
@@ -176,13 +176,13 @@ private:
 		const T& enum_value,
 		const int start_value,
 		tgroup<T>& group,
-		boost::function<void(int)> callback,
+		std::function<void(int)> callback,
 		twindow& window);
 
 	template <typename T>
 	void toggle_radio_callback(
 		tgroup<T>& group,
-		boost::function<void(int)> setter);
+		std::function<void(int)> setter);
 
 	/**
 	 * Sets up a label that always displays the value of another widget.

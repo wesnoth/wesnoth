@@ -23,7 +23,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "help/help.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -73,9 +73,9 @@ void taddon_connect::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "show_help", false),
-			boost::bind(&taddon_connect::help_button_callback,
+			std::bind(&taddon_connect::help_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 }
 
 void taddon_connect::post_show(twindow& window)

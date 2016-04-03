@@ -20,7 +20,7 @@
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include "config.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -81,7 +81,7 @@ class tunit_test_access_only
  * @param functor                 The function to load the definitions.
  */
 void register_widget(const std::string& id,
-					 boost::function<void(tgui_definition& gui_definition,
+					 std::function<void(tgui_definition& gui_definition,
 										  const std::string& definition_type,
 										  const config& cfg,
 										  const char* key)> functor);

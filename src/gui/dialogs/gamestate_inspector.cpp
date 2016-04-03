@@ -44,7 +44,7 @@
 #include "filter_context.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/shared_ptr.hpp>
 
 namespace
@@ -830,13 +830,13 @@ public:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				*model_.stuff_list,
-				boost::bind(&tgamestate_inspector::view::
+				std::bind(&tgamestate_inspector::view::
 									 handle_stuff_list_item_clicked,
 							this));
 
 		connect_signal_notify_modified(
 				*model_.stuff_types_list,
-				boost::bind(&tgamestate_inspector::view::
+				std::bind(&tgamestate_inspector::view::
 									 handle_stuff_list_item_clicked,
 							this));
 
@@ -856,15 +856,15 @@ public:
 
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
-				boost::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
+				std::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		connect_signal_mouse_left_click(
 				*model_.lua_button,
-				boost::bind(&tgamestate_inspector::view::handle_lua_button_clicked,
+				std::bind(&tgamestate_inspector::view::handle_lua_button_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		if (!desktop::clipboard::available()) {
 			model_.copy_button->set_active(false);

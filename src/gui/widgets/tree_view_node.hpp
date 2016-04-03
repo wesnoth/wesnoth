@@ -200,7 +200,7 @@ public:
 	 *                   2 : on folded to unfolded
 	*/
 	void set_callback_state_change(
-			const int scope, boost::function<void(twidget&)> callback)
+			const int scope, std::function<void(twidget&)> callback)
 	{
 		switch (scope) {
 			case 0:
@@ -307,13 +307,13 @@ private:
 									int y_offset) override;
 									
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_change_;
+	std::function<void(twidget&)> callback_state_change_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_to_folded_;
+	std::function<void(twidget&)> callback_state_to_folded_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_to_unfolded_;
+	std::function<void(twidget&)> callback_state_to_unfolded_;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::tevent event);

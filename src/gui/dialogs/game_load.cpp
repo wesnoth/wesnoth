@@ -44,7 +44,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <cctype>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -114,16 +114,16 @@ void tgame_load::pre_show(twindow& window)
 			= find_widget<ttext_box>(&window, "txtFilter", false, true);
 
 	filter->set_text_changed_callback(
-			boost::bind(&tgame_load::filter_text_changed, this, _1, _2));
+			std::bind(&tgame_load::filter_text_changed, this, _1, _2));
 
 	tlistbox* list
 			= find_widget<tlistbox>(&window, "savegame_list", false, true);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-								   boost::bind(&tgame_load::list_item_clicked,
+								   std::bind(&tgame_load::list_item_clicked,
 											   *this,
-											   boost::ref(window)));
+											   std::ref(window)));
 #else
 	list->set_callback_value_change(
 			dialog_callback<tgame_load, &tgame_load::list_item_clicked>);
@@ -138,9 +138,9 @@ void tgame_load::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "delete", false),
-			boost::bind(&tgame_load::delete_button_callback,
+			std::bind(&tgame_load::delete_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	display_savegame(window);
 }
@@ -187,11 +187,11 @@ void tgame_load::fill_game_list(twindow& window,
 		list.add_row(data);
 	}
 	std::vector<tgenerator_::torder_func> order_funcs(2);
-	order_funcs[0] = boost::bind(&tgame_load::compare_name, this, _1, _2);
-	order_funcs[1] = boost::bind(&tgame_load::compare_name_rev, this, _1, _2);
+	order_funcs[0] = std::bind(&tgame_load::compare_name, this, _1, _2);
+	order_funcs[1] = std::bind(&tgame_load::compare_name_rev, this, _1, _2);
 	list.set_column_order(0, order_funcs);
-	order_funcs[0] = boost::bind(&tgame_load::compare_date, this, _1, _2);
-	order_funcs[1] = boost::bind(&tgame_load::compare_date_rev, this, _1, _2);
+	order_funcs[0] = std::bind(&tgame_load::compare_date, this, _1, _2);
+	order_funcs[1] = std::bind(&tgame_load::compare_date_rev, this, _1, _2);
 	list.set_column_order(1, order_funcs);
 }
 

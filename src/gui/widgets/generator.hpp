@@ -167,7 +167,7 @@ public:
 	virtual tgrid& create_item(const int index,
 							   tbuilder_grid_const_ptr list_builder,
 							   const string_map& item_data,
-							   const boost::function<void(twidget&)>& callback)
+							   const std::function<void(twidget&)>& callback)
 			= 0;
 
 	/**
@@ -191,7 +191,7 @@ public:
 	create_item(const int index,
 				tbuilder_grid_const_ptr list_builder,
 				const std::map<std::string /* widget id */, string_map>& data,
-				const boost::function<void(twidget&)>& callback) = 0;
+				const std::function<void(twidget&)>& callback) = 0;
 
 	/**
 	 * Creates one or more new item(s).
@@ -211,7 +211,7 @@ public:
 	virtual void create_items(const int index,
 							  tbuilder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
-							  const boost::function<void(twidget&)>& callback)
+							  const std::function<void(twidget&)>& callback)
 			= 0;
 
 	/**
@@ -234,9 +234,9 @@ public:
 			tbuilder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
-			const boost::function<void(twidget&)>& callback) = 0;
+			const std::function<void(twidget&)>& callback) = 0;
 
-	typedef boost::function<bool (unsigned, unsigned)> torder_func;
+	typedef std::function<bool (unsigned, unsigned)> torder_func;
 	virtual void set_order(const torder_func& order) = 0;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/

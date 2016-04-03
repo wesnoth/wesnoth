@@ -28,7 +28,7 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace
 {
@@ -165,8 +165,8 @@ void taddon_filter_options::toggle_all_displayed_types_button_callback(
 			= displayed_types_fields_.end()
 			  == std::find_if(displayed_types_fields_.begin(),
 							  displayed_types_fields_.end(),
-							  boost::bind(&unchecked_bool_field_finder,
-										  boost::ref(window),
+							  std::bind(&unchecked_bool_field_finder,
+										  std::ref(window),
 										  _1));
 
 	for(const auto field : displayed_types_fields_)
@@ -204,10 +204,10 @@ void taddon_filter_options::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "toggle_all_displayed_types", false),
-			boost::bind(&taddon_filter_options::
+			std::bind(&taddon_filter_options::
 								 toggle_all_displayed_types_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	sort_tgroup_.clear();
 	register_sort_toggle(window, "by_name", SORT_NAMES);
@@ -232,7 +232,7 @@ void taddon_filter_options::register_sort_toggle(twindow& window,
 
 	connect_signal_mouse_left_click(
 			*b,
-			boost::bind(&taddon_filter_options::toggle_sort_callback, this));
+			std::bind(&taddon_filter_options::toggle_sort_callback, this));
 }
 
 void taddon_filter_options::register_dir_toggle(twindow& window,
@@ -248,7 +248,7 @@ void taddon_filter_options::register_dir_toggle(twindow& window,
 
 	connect_signal_mouse_left_click(
 			*b,
-			boost::bind(&taddon_filter_options::toggle_dir_callback, this));
+			std::bind(&taddon_filter_options::toggle_dir_callback, this));
 }
 
 void taddon_filter_options::post_show(twindow& window)

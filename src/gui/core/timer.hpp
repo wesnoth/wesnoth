@@ -23,14 +23,14 @@
  *   sense since the timer has expired, but not what the user wants.)
  *
  * With these functions it's possible to remove the event between pushing in
- * the queue and the actual execution. Since the callback is a boost::function
+ * the queue and the actual execution. Since the callback is a std::function
  * object it's possible to make the callback as fancy as wanted.
  */
 
 #ifndef GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include <SDL_types.h>
 
@@ -51,7 +51,7 @@ namespace gui2
  * @retval [0]                    Failed to create a timer.
  */
 size_t add_timer(const Uint32 interval,
-				 const boost::function<void(size_t id)>& callback,
+				 const std::function<void(size_t id)>& callback,
 				 const bool repeat = false);
 
 /**

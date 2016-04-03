@@ -1803,10 +1803,10 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	for (config lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
-	boost::function2<void, std::vector<boost::shared_ptr<recruit_job> >&, const config&> factory_jobs =
-		boost::bind(&recruitment_aspect::create_job,*this,_1,_2);
-	boost::function2<void, std::vector<boost::shared_ptr<recruit_limit> >&, const config&> factory_limits =
-		boost::bind(&recruitment_aspect::create_limit,*this,_1,_2);
+	std::function<void(std::vector<boost::shared_ptr<recruit_job> >&, const config&)> factory_jobs =
+		std::bind(&recruitment_aspect::create_job,*this,_1,_2);
+	std::function<void(std::vector<boost::shared_ptr<recruit_limit> >&, const config&)> factory_limits =
+		std::bind(&recruitment_aspect::create_limit,*this,_1,_2);
 	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
 	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
 }

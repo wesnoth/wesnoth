@@ -24,7 +24,7 @@
 #include "gui/core/event/message.hpp"
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER "tpane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -116,7 +116,7 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, placer_(tplacer_::build(tplacer_::tgrow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
+			std::bind(
 					&tpane::signal_handler_request_placement, this, _1, _2, _3),
 			event::tdispatcher::back_pre_child);
 }
@@ -129,7 +129,7 @@ tpane::tpane(const implementation::tbuilder_pane& builder)
 	, placer_(tplacer_::build(builder.grow_direction, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
+			std::bind(
 					&tpane::signal_handler_request_placement, this, _1, _2, _3),
 			event::tdispatcher::back_pre_child);
 }

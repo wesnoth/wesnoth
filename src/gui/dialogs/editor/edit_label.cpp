@@ -19,7 +19,7 @@
 #include "gui/widgets/settings.hpp"
 
 #include <SDL_video.h>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -82,8 +82,8 @@ teditor_edit_label::teditor_edit_label(std::string& text,
 
 void teditor_edit_label::register_color_component(std::string widget_id, Uint8 SDL_Color::* component) {
 	register_integer(widget_id, true,
-					 boost::bind(&teditor_edit_label::load_color_component, this, component),
-					 boost::bind(&teditor_edit_label::save_color_component, this, component, _1));
+					 std::bind(&teditor_edit_label::load_color_component, this, component),
+					 std::bind(&teditor_edit_label::save_color_component, this, component, _1));
 }
 
 int teditor_edit_label::load_color_component(Uint8 SDL_Color::* component) {

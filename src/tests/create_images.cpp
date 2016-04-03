@@ -23,7 +23,7 @@
 
 #include <SDL_image.h>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <iostream>
 
@@ -91,7 +91,7 @@ create_image_blend(const surface& src, const std::string& root)
 {
 	blend_image(
 			  src
-			, boost::bind(&create_image_blend_functor, _1, root, _2, _3));
+			, std::bind(&create_image_blend_functor, _1, root, _2, _3));
 }
 
 typedef void (*tfunctor) (const surface&, const std::string&);

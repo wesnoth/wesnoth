@@ -26,7 +26,7 @@
 #include "gui/dialogs/drop_down_list.hpp"
 #include "sound.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -49,15 +49,15 @@ tcombobox::tcombobox()
 	values_.push_back(this->label());
 
 	connect_signal<event::MOUSE_ENTER>(
-			boost::bind(&tcombobox::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&tcombobox::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			boost::bind(&tcombobox::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&tcombobox::signal_handler_mouse_leave, this, _2, _3));
 
-	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
 			&tcombobox::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			boost::bind(&tcombobox::signal_handler_left_button_up, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+			std::bind(&tcombobox::signal_handler_left_button_up, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&tcombobox::signal_handler_left_button_click, this, _2, _3));
 }
 

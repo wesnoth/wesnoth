@@ -21,7 +21,7 @@
 
 #include <string>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -85,7 +85,7 @@ public:
 
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
-			boost::function<void(ttext_* textbox, const std::string text)> cb)
+			std::function<void(ttext_* textbox, const std::string text)> cb)
 	{
 		text_changed_callback_ = cb;
 	}
@@ -434,7 +434,7 @@ private:
 	 * - The widget invoking the callback
 	 * - The new text of the textbox.
 	 */
-	boost::function<void(ttext_* textbox, const std::string text)>
+	std::function<void(ttext_* textbox, const std::string text)>
 	text_changed_callback_;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

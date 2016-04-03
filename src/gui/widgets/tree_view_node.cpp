@@ -23,7 +23,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER                                                       \
 	get_control_type() + " [" + tree_view().id() + "] " + __func__
@@ -65,11 +65,11 @@ ttree_view_node::ttree_view_node(
 
 				if(toggle_) {
 					toggle_widget->set_visible(twidget::tvisible::hidden);
-					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2));
-					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2), event::tdispatcher::back_post_child);
@@ -91,7 +91,7 @@ ttree_view_node::ttree_view_node(
 				label_ = dynamic_cast<tselectable_*>(widget);
 				if(label_) {
 					widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-							boost::bind(
+							std::bind(
 									&ttree_view_node::
 											 signal_handler_label_left_button_click,
 									this,
@@ -100,7 +100,7 @@ ttree_view_node::ttree_view_node(
 									_4),
 							event::tdispatcher::front_child);
 					widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-							boost::bind(
+							std::bind(
 									&ttree_view_node::
 											 signal_handler_label_left_button_click,
 									this,

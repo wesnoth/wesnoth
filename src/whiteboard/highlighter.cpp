@@ -20,7 +20,7 @@
 #include <iterator>
 #include <boost/range/adaptor/reversed.hpp>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "highlighter.hpp"
 

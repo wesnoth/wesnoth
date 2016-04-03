@@ -17,7 +17,7 @@
 #include <map>
 #include <exception>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 class config;
 
@@ -30,7 +30,7 @@ class synced_command {
 			TODO: remove the second argument because it isn't used.
 
 		*/
-		typedef boost::function2<void, const std::string&, bool> error_handler_function;
+		typedef std::function<void(const std::string&, bool)> error_handler_function;
 		/*
 			returns: true if the action succeeded correclty,
 

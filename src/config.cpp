@@ -31,7 +31,7 @@
 #include <deque>
 #include <istream>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
 #include <boost/variant/static_visitor.hpp>
@@ -421,7 +421,7 @@ bool config::attribute_value::equals(const std::string &str) const
 	return *this == v;
 	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" beeing false
 	// because a["a"] is '1' and not '"1"'.
-	// return boost::apply_visitor(boost::bind( equality_visitor(), _1, boost::cref(str) ), value_);
+	// return boost::apply_visitor(std::bind( equality_visitor(), _1, boost::cref(str) ), value_);
 	// that's why we don't use it.
 }
 

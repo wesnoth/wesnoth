@@ -14,15 +14,15 @@
 
 /**
  * This namespace makes the possibility to push not just C style functions,
- * but CPP style functions to lua, if they are cast as a boost::function.
- * Using this, for example, C++ method functions may be boost::bind'ed and
+ * but CPP style functions to lua, if they are cast as a std::function.
+ * Using this, for example, C++ method functions may be std::bind'ed and
  * then pushed into the lua environment and called like usual.
  *
  * They are represented as user data with a call operator, which uses a
  * dispatcher implemented as a C-style function to retrieve the boost
  * function and execute it. Thus effectively all that we have to provide
  * is a "value type" user data (full userdata, not light userdata) in lua
- * which wraps the boost::function type and implements a garbage collector.
+ * which wraps the std::function type and implements a garbage collector.
  *
  *
  * -- Why? --
@@ -108,7 +108,7 @@
  * Essentially, we provide C++ versions of the lua library calls 'lua_pushcfunction',
  * 'lua_setfuncs', 'lua_pushcclosure'.
  *
- * - They are "C++" versions in that they take boost::function<int (lua_State*)> rather
+ * - They are "C++" versions in that they take std::function<int (lua_State*)> rather
  * than int(lua_State*).
  * - While for lua, "lua_pushcfunction(L, f)" is essentially the same as
  * "lua_pushcclosure(L, f, 0)", for the functions below that is not the case.
@@ -125,14 +125,15 @@
 #ifndef LUA_CPP_FUNCTION_HPP_INCLUDED
 #define LUA_CPP_FUNCTION_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/functional.hpp"
+
 #include <vector>
 
 struct lua_State;
 
 namespace lua_cpp {
 
-typedef boost::function<int(lua_State*)> lua_function;
+typedef std::function<int(lua_State*)> lua_function;
 
 typedef struct {
 	const char * name;
@@ -142,7 +143,7 @@ typedef struct {
 void register_metatable ( lua_State* L );
 
 /**
- * Pushes a boost::function wrapper object onto the stack. It does
+ * Pushes a std::function wrapper object onto the stack. It does
  * not support up-values. If you need that use push_closure (a little slower).
  *
  * NOTE: This object has type userdata, not function. Its metatable has a call operator.
@@ -176,7 +177,7 @@ void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N])
 }
 
 /**
- * Pushes a closure which retains a boost::function object as its first up-value.
+ * Pushes a closure which retains a std::function object as its first up-value.
  * Note that this is *NOT* strictly compatible with the lua c function push_closure --
  * if you request additional upvalues they will be indexed starting at 2 rather than 1.
  *

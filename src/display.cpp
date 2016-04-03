@@ -2676,14 +2676,14 @@ void display::redraw_everything()
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
-	for (boost::function<void(display&)> f : redraw_observers_) {
+	for (std::function<void(display&)> f : redraw_observers_) {
 		f(*this);
 	}
 
 	complete_redraw_event_.notify_observers();
 }
 
-void display::add_redraw_observer(boost::function<void(display&)> f)
+void display::add_redraw_observer(std::function<void(display&)> f)
 {
 	redraw_observers_.push_back(f);
 }

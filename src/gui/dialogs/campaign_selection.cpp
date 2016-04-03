@@ -36,7 +36,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -127,9 +127,9 @@ void tcampaign_selection::pre_show(twindow& window)
 				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
 		tree.set_selection_change_callback(
-				boost::bind(&tcampaign_selection::campaign_selected,
+				std::bind(&tcampaign_selection::campaign_selected,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		window.keyboard_capture(&tree);
 
@@ -196,7 +196,7 @@ void tcampaign_selection::pre_show(twindow& window)
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
 				checkbox->set_label(mod->name);
-				checkbox->set_callback_state_change(boost::bind(&tcampaign_selection::mod_toggled, this, id, _1));
+				checkbox->set_callback_state_change(std::bind(&tcampaign_selection::mod_toggled, this, id, _1));
 				++id;
 			}
 		}
@@ -213,9 +213,9 @@ void tcampaign_selection::pre_show(twindow& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				list,
-				boost::bind(&tcampaign_selection::campaign_selected,
+				std::bind(&tcampaign_selection::campaign_selected,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 #else
 		list.set_callback_value_change(
 				dialog_callback<tcampaign_selection,
@@ -272,7 +272,7 @@ void tcampaign_selection::pre_show(twindow& window)
 			find_widget<tbutton>(&window, "advanced_settings", false, false);
 	if(advanced_settings_button) {
 		advanced_settings_button->connect_click_handler(
-			boost::bind(&tcampaign_selection::show_settings, this, boost::ref(window.video())));
+			std::bind(&tcampaign_selection::show_settings, this, std::ref(window.video())));
 	}
 }
 

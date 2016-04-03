@@ -23,7 +23,7 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -38,14 +38,14 @@ REGISTER_WIDGET(repeating_button)
 trepeating_button::trepeating_button()
 	: tcontrol(COUNT), tclickable_(), state_(ENABLED), repeat_timer_(0)
 {
-	connect_signal<event::MOUSE_ENTER>(boost::bind(
+	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&trepeating_button::signal_handler_mouse_enter, this, _2, _3));
-	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+	connect_signal<event::MOUSE_LEAVE>(std::bind(
 			&trepeating_button::signal_handler_mouse_leave, this, _2, _3));
 
-	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
 			&trepeating_button::signal_handler_left_button_down, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_UP>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
 			&trepeating_button::signal_handler_left_button_up, this, _2, _3));
 }
 
@@ -137,11 +137,9 @@ trepeating_button::signal_handler_left_button_down(const event::tevent event,
 		twindow* window = get_window();
 		if(window) {
 			repeat_timer_ = add_timer(settings::repeat_button_repeat_time,
-									  boost::bind(&tdispatcher::fire,
-												  window,
-												  event::LEFT_BUTTON_DOWN,
-												  boost::ref(*this)),
-									  true);
+									  [this, window](unsigned int) { 
+											window->fire(event::LEFT_BUTTON_DOWN, *this); 
+									  },true);
 
 			window->mouse_capture();
 		}

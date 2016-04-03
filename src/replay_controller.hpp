@@ -34,7 +34,7 @@ public:
 		virtual ~replay_stop_condition(){}
 	};
 	static void nop() {};
-	replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const boost::function<void()>& on_end_replay = nop);
+	replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop);
 	~replay_controller();
 
 	// void reset_replay();
@@ -93,7 +93,7 @@ private:
 	};
 	boost::optional<REPLAY_VISION> vision_;
 	boost::shared_ptr<config> reset_state_;
-	boost::function<void()> on_end_replay_;
+	std::function<void()> on_end_replay_;
 	bool return_to_play_side_;
 };
 

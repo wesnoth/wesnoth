@@ -32,7 +32,7 @@
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 #include <SDL_timer.h>

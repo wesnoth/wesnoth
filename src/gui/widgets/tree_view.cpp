@@ -25,7 +25,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -51,7 +51,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	, selection_change_callback_()
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			boost::bind(&ttree_view::signal_handler_left_button_down, this, _2),
+			std::bind(&ttree_view::signal_handler_left_button_down, this, _2),
 			event::tdispatcher::back_pre_child);
 }
 

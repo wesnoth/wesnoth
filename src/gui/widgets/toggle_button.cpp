@@ -24,7 +24,7 @@
 #include "sound.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -44,14 +44,14 @@ ttoggle_button::ttoggle_button()
 	, callback_state_change_()
 	, icon_name_()
 {
-	connect_signal<event::MOUSE_ENTER>(boost::bind(
+	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&ttoggle_button::signal_handler_mouse_enter, this, _2, _3));
-	connect_signal<event::MOUSE_LEAVE>(boost::bind(
+	connect_signal<event::MOUSE_LEAVE>(std::bind(
 			&ttoggle_button::signal_handler_mouse_leave, this, _2, _3));
 
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&ttoggle_button::signal_handler_left_button_click, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
 			&ttoggle_button::signal_handler_left_button_double_click,
 			this,
 			_2,

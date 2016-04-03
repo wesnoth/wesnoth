@@ -22,7 +22,7 @@
 #include <vector>
 #include <deque>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include "typedefs.hpp"
 
@@ -112,7 +112,7 @@ bool has_actions();
  *
  * The argument is the team to consider.
  */
-typedef boost::function<bool(team&)> team_filter;
+typedef std::function<bool(team&)> team_filter;
 
 /** Returns whether a given team's plan is visible. */
 bool team_has_visible_plan(team&);
@@ -126,7 +126,7 @@ bool team_has_visible_plan(team&);
  * @param function the function to execute.
  * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  */
-void for_each_action(boost::function<void(action_ptr)> function,
+void for_each_action(std::function<void(action_ptr)> function,
                      team_filter team_filter = team_has_visible_plan);
 
 /**

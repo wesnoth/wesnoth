@@ -34,7 +34,7 @@ struct ttimer
 
 	SDL_TimerID sdl_id;
 	Uint32 interval;
-	boost::function<void(size_t id)> callback;
+	std::function<void(size_t id)> callback;
 };
 
 /** Ids for the timers. */
@@ -112,7 +112,7 @@ static Uint32 timer_callback(Uint32, void* id)
 } // extern "C"
 
 size_t add_timer(const Uint32 interval,
-				 const boost::function<void(size_t id)>& callback,
+				 const std::function<void(size_t id)>& callback,
 				 const bool repeat)
 {
 	BOOST_STATIC_ASSERT(sizeof(size_t) == sizeof(void*));

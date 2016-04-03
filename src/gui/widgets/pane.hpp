@@ -19,7 +19,7 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/core/placer.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include <list>
 
@@ -51,9 +51,9 @@ public:
 		tgrid* grid;
 	};
 
-	typedef boost::function<bool(const titem&, const titem&)> tcompare_functor;
+	typedef std::function<bool(const titem&, const titem&)> tcompare_functor;
 
-	typedef boost::function<bool(const titem&)> tfilter_functor;
+	typedef std::function<bool(const titem&)> tfilter_functor;
 
 	/** @deprecated Use the second overload. */
 	explicit tpane(const tbuilder_grid_ptr item_builder);

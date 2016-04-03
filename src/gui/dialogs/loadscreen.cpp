@@ -29,7 +29,7 @@
 #include "cursor.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/thread.hpp>
 
 static lg::log_domain log_loadscreen("loadscreen");
@@ -63,7 +63,7 @@ namespace gui2
 
 REGISTER_DIALOG(loadscreen)
 
-tloadscreen::tloadscreen(boost::function<void()> f)
+tloadscreen::tloadscreen(std::function<void()> f)
 	: window_(nullptr)
 	, timer_id_(0)
 	, animation_counter_(0)
@@ -93,7 +93,7 @@ twindow* tloadscreen::build_window(CVideo& video) const
 void tloadscreen::pre_show(twindow& window)
 {
 	worker_.reset(new boost::thread(work_));
-	timer_id_ = add_timer(100, boost::bind(&tloadscreen::timer_callback, this, boost::ref(window)), true);
+	timer_id_ = add_timer(100, std::bind(&tloadscreen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
 	animation_label_ = &find_widget<tlabel>(&window, "test_animation", false);
@@ -162,7 +162,7 @@ tloadscreen::~tloadscreen()
 	current_load = nullptr;
 }
 
-void tloadscreen::display(CVideo& video, boost::function<void()> f)
+void tloadscreen::display(CVideo& video, std::function<void()> f)
 {
 	if (current_load || video.faked()) {
 		f();

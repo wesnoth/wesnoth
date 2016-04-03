@@ -24,7 +24,7 @@
 #include "gui/widgets/window.hpp"
 #include "formula/debugger.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -135,30 +135,30 @@ void tformula_debugger::pre_show(twindow& window)
 	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
 	connect_signal_mouse_left_click(
 			step_button,
-			boost::bind(&tformula_debugger::callback_step_button,
+			std::bind(&tformula_debugger::callback_step_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
 	connect_signal_mouse_left_click(
 			stepout_button,
-			boost::bind(&tformula_debugger::callback_stepout_button,
+			std::bind(&tformula_debugger::callback_stepout_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
 	connect_signal_mouse_left_click(
 			next_button,
-			boost::bind(&tformula_debugger::callback_next_button,
+			std::bind(&tformula_debugger::callback_next_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
 	connect_signal_mouse_left_click(
 			continue_button,
-			boost::bind(&tformula_debugger::callback_continue_button,
+			std::bind(&tformula_debugger::callback_continue_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	if(is_end) {
 		step_button.set_active(false);

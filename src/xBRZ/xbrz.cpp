@@ -41,8 +41,7 @@
 #include <cmath>
 #include <algorithm>
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
+#include "utils/functional.hpp"
 
 #if defined(__GNUC__) && !defined(__clang__) && !defined(__WIN32__) // We only want this for gcc, not clang or tdm-gcc
 #if __GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ <= 8 )

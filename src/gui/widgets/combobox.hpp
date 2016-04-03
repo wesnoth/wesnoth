@@ -66,7 +66,7 @@ public:
 	void set_selected(int selected);
 	
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_change_;
+	std::function<void(twidget&)> callback_state_change_;
 
 	/** Inherited from tselectable_ */
 	virtual unsigned get_value() const override { return selected_; }
@@ -78,7 +78,7 @@ public:
 	virtual unsigned num_states() const override { return values_.size(); }
 
 	/** Inherited from tselectable_ */
-	virtual void set_callback_state_change(boost::function<void(twidget&)> callback)
+	virtual void set_callback_state_change(std::function<void(twidget&)> callback)
 	{
 		selected_callback_ = callback;
 	}
@@ -123,7 +123,7 @@ private:
 	 */
 	int selected_;
 
-	boost::function<void(twidget&)> selected_callback_;
+	std::function<void(twidget&)> selected_callback_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;

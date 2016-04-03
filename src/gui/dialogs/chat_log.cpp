@@ -38,7 +38,7 @@
 #include "gettext.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_chat_log("chat_log");
@@ -389,30 +389,30 @@ public:
 				= &find_widget<tslider>(&window, "page_number", false);
 		connect_signal_notify_modified(
 				*model_.page_number,
-				boost::bind(&view::handle_page_number_changed,
+				std::bind(&view::handle_page_number_changed,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		model_.previous_page
 				= &find_widget<tbutton>(&window, "previous_page", false);
 		model_.previous_page->connect_click_handler(
-				boost::bind(&view::previous_page, this, boost::ref(window)));
+				std::bind(&view::previous_page, this, std::ref(window)));
 
 		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
 		model_.next_page->connect_click_handler(
-				boost::bind(&view::next_page, this, boost::ref(window)));
+				std::bind(&view::next_page, this, std::ref(window)));
 
 		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
 		model_.filter->set_text_changed_callback(
-				boost::bind(&view::filter, this, boost::ref(window)));
+				std::bind(&view::filter, this, std::ref(window)));
 		window.keyboard_capture(model_.filter);
 
 		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
-				boost::bind(&view::handle_copy_button_clicked,
+				std::bind(&view::handle_copy_button_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 		if (!desktop::clipboard::available()) {
 			model_.copy_button->set_active(false);
 			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));

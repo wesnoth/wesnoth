@@ -18,7 +18,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include <boost/cstdint.hpp>
 
 struct lua_State;
@@ -52,7 +52,7 @@ public:
 	virtual void log_error(char const* msg, char const* context = "Lua error");
 	virtual void throw_exception(char const* msg, char const* context = "Lua error"); //throws game::lua_error
 
-	typedef boost::function<void(char const*, char const*)> error_handler;
+	typedef std::function<void(char const*, char const*)> error_handler;
 
 	void set_video(CVideo * ptr) { video_ = ptr; }
 

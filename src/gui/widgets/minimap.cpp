@@ -26,7 +26,7 @@
 #include "terrain/type_data.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/make_shared.hpp>
 
 #include <algorithm>

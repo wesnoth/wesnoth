@@ -23,7 +23,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/textbox.hpp"
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_mp_create_options("mp/create/options");
 #define DBG_MP LOG_STREAM(debug, log_mp_create_options)

@@ -30,8 +30,7 @@
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <cassert>
 
@@ -554,7 +553,7 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 			executor->get_video().set_fullscreen(!preferences::fullscreen());
 			break;
 		case HOTKEY_SCREENSHOT:
-			make_screenshot(_("Screenshot"), executor->get_video(), boost::bind(&::screenshot, _1, boost::ref(executor->get_video())));
+			make_screenshot(_("Screenshot"), executor->get_video(), std::bind(&::screenshot, _1, std::ref(executor->get_video())));
 			break;
 		case HOTKEY_ANIMATE_MAP:
 			preferences::set_animate_map(!preferences::animate_map());
@@ -690,6 +689,6 @@ void command_executor_default::zoom_default()
 }
 void command_executor_default::map_screenshot()
 {
-	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
+	make_screenshot(_("Map-Screenshot"), get_video(), std::bind(&display::screenshot, &get_display(), _1, true));
 }
 }

@@ -47,7 +47,7 @@
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <map>
 #include <utility>
@@ -579,7 +579,7 @@ int intf_set_dialog_callback(lua_State *L)
 
 	if (gui2::tclickable_ *c = dynamic_cast<gui2::tclickable_ *>(w)) {
 		static tdialog_callback_wrapper wrapper;
-		c->connect_click_handler(boost::bind(
+		c->connect_click_handler(std::bind(
 									  &tdialog_callback_wrapper::forward
 									, wrapper
 									, w));
@@ -590,7 +590,7 @@ int intf_set_dialog_callback(lua_State *L)
 	else if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w)) {
 		static tdialog_callback_wrapper wrapper;
 		connect_signal_notify_modified(*l
-				, boost::bind(
+				, std::bind(
 					  &tdialog_callback_wrapper::forward
 					, wrapper
 					, w));

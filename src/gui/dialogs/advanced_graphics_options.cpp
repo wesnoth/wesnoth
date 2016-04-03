@@ -29,7 +29,7 @@
 #include "preferences.hpp"
 #include "formula/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "gettext.hpp"
 
@@ -87,7 +87,7 @@ void tadvanced_graphics_options::pre_show(twindow& window)
 	/*
 	tbutton * defaults;
 	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
-	connect_signal_mouse_left_click(*defaults, boost::bind(&revert_to_default_pref_values, boost::ref(window)));
+	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 	*/
 }
 

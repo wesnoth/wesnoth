@@ -33,7 +33,6 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "utils/boost_function_guarded.hpp"
 
 class CVideo;
 
@@ -670,15 +669,6 @@ private:
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
-
-	/**
-	 * Inherited from tpanel.
-	 *
-	 * Don't call this function it's only asserts.
-	 */
-	void draw(surface& surface,
-			  const bool force = false,
-			  const bool invalidate_background = false);
 
 	/**
 	 * The list with dirty items in the window.

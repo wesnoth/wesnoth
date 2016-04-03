@@ -165,7 +165,7 @@ bool team_has_visible_plan(team &t)
 	return !t.get_side_actions()->hidden();
 }
 
-void for_each_action(boost::function<void(action_ptr)> function, team_filter team_filter)
+void for_each_action(std::function<void(action_ptr)> function, team_filter team_filter)
 {
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {

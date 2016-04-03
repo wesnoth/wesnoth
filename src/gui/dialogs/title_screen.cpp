@@ -39,7 +39,7 @@
 #include "gui/widgets/window.hpp"
 #include "video.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <algorithm>
 
@@ -159,75 +159,75 @@ void ttitle_screen::post_build(twindow& window)
 	/** @todo Should become a title screen hotkey. */
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__RELOAD_WML,
-			boost::bind(&hotkey, boost::ref(window), RELOAD_GAME_DATA));
+			std::bind(&hotkey, std::ref(window), RELOAD_GAME_DATA));
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-			boost::bind(fullscreen, boost::ref(window.video())));
+			std::bind(fullscreen, std::ref(window.video())));
 
 	window.register_hotkey(
 			hotkey::HOTKEY_LANGUAGE,
-			boost::bind(&hotkey, boost::ref(window), CHANGE_LANGUAGE));
+			std::bind(&hotkey, std::ref(window), CHANGE_LANGUAGE));
 
 	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME,
-						   boost::bind(&hotkey, boost::ref(window), LOAD_GAME));
+						   std::bind(&hotkey, std::ref(window), LOAD_GAME));
 
 	window.register_hotkey(hotkey::HOTKEY_HELP,
-						   boost::bind(&hotkey, boost::ref(window), SHOW_HELP));
+						   std::bind(&hotkey, std::ref(window), SHOW_HELP));
 
 	window.register_hotkey(
 			hotkey::HOTKEY_PREFERENCES,
-			boost::bind(&hotkey, boost::ref(window), EDIT_PREFERENCES));
+			std::bind(&hotkey, std::ref(window), EDIT_PREFERENCES));
 
-	boost::function<void()> next_tip_wrapper = boost::bind(
-			&ttitle_screen::update_tip, this, boost::ref(window), true);
+	std::function<void()> next_tip_wrapper = std::bind(
+			&ttitle_screen::update_tip, this, std::ref(window), true);
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__NEXT_TIP,
-			boost::bind(function_wrapper<bool, boost::function<void()> >,
+			std::bind(function_wrapper<bool, std::function<void()> >,
 						true,
 						next_tip_wrapper));
 
-	boost::function<void()> previous_tip_wrapper = boost::bind(
-			&ttitle_screen::update_tip, this, boost::ref(window), false);
+	std::function<void()> previous_tip_wrapper = std::bind(
+			&ttitle_screen::update_tip, this, std::ref(window), false);
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__PREVIOUS_TIP,
-			boost::bind(function_wrapper<bool, boost::function<void()> >,
+			std::bind(function_wrapper<bool, std::function<void()> >,
 						true,
 						previous_tip_wrapper));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL,
-						   boost::bind(&hotkey, boost::ref(window), TUTORIAL));
+						   std::bind(&hotkey, std::ref(window), TUTORIAL));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__CAMPAIGN,
-			boost::bind(&hotkey, boost::ref(window), NEW_CAMPAIGN));
+			std::bind(&hotkey, std::ref(window), NEW_CAMPAIGN));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__MULTIPLAYER,
-			boost::bind(&hotkey, boost::ref(window), MULTIPLAYER));
+			std::bind(&hotkey, std::ref(window), MULTIPLAYER));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__ADDONS,
-			boost::bind(&hotkey, boost::ref(window), GET_ADDONS));
+			std::bind(&hotkey, std::ref(window), GET_ADDONS));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__CORES,
-						   boost::bind(&hotkey, boost::ref(window), CORES));
+						   std::bind(&hotkey, std::ref(window), CORES));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__EDITOR,
-			boost::bind(&hotkey, boost::ref(window), START_MAP_EDITOR));
+			std::bind(&hotkey, std::ref(window), START_MAP_EDITOR));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__CREDITS,
-			boost::bind(&hotkey, boost::ref(window), SHOW_ABOUT));
+			std::bind(&hotkey, std::ref(window), SHOW_ABOUT));
 
 	window.register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP,
-						   boost::bind(&hotkey, boost::ref(window), QUIT_GAME));
+						   std::bind(&hotkey, std::ref(window), QUIT_GAME));
 
 	window.register_hotkey(
 			hotkey::LUA_CONSOLE,
-			boost::bind(&launch_lua_console, boost::ref(window)));
+			std::bind(&launch_lua_console, std::ref(window)));
 }
 
 #ifdef DEBUG_TOOLTIP
@@ -265,7 +265,7 @@ void ttitle_screen::pre_show(twindow& window)
 
 #ifdef DEBUG_TOOLTIP
 	window.connect_signal<event::SDL_MOUSE_MOTION>(
-			boost::bind(debug_tooltip, boost::ref(window), _3, _5),
+			std::bind(debug_tooltip, std::ref(window), _3, _5),
 			event::tdispatcher::front_child);
 #endif
 
@@ -308,16 +308,16 @@ void ttitle_screen::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "next_tip", false),
-			boost::bind(&ttitle_screen::update_tip,
+			std::bind(&ttitle_screen::update_tip,
 						this,
-						boost::ref(window),
+						std::ref(window),
 						true));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "previous_tip", false),
-			boost::bind(&ttitle_screen::update_tip,
+			std::bind(&ttitle_screen::update_tip,
 						this,
-						boost::ref(window),
+						std::ref(window),
 						false));
 
 	if(game_config::images::game_title.empty()) {
@@ -342,7 +342,7 @@ void ttitle_screen::pre_show(twindow& window)
 	tbutton& about = find_widget<tbutton>(&window, "about", false);
 	connect_signal_mouse_left_click(
 			about,
-			boost::bind(&tgame_version::display, boost::ref(window.video())));
+			std::bind(&tgame_version::display, std::ref(window.video())));
 
 	/***** Set the clock button. *****/
 	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
@@ -351,9 +351,9 @@ void ttitle_screen::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			clock,
-			boost::bind(&ttitle_screen::show_debug_clock_window,
+			std::bind(&ttitle_screen::show_debug_clock_window,
 						this,
-						boost::ref(window.video())));
+						std::ref(window.video())));
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)

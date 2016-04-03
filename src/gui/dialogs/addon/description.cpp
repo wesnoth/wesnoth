@@ -29,7 +29,7 @@
 #include "preferences.hpp"
 #include "strftime.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace
 {
@@ -380,11 +380,11 @@ void taddon_description::pre_show(twindow& window)
 
 		connect_signal_mouse_left_click(
 				url_go_button,
-				boost::bind(&taddon_description::browse_url_callback, this));
+				std::bind(&taddon_description::browse_url_callback, this));
 
 		connect_signal_mouse_left_click(
 				url_copy_button,
-				boost::bind(&taddon_description::copy_url_callback, this));
+				std::bind(&taddon_description::copy_url_callback, this));
 
 		if (!desktop::clipboard::available()) {
 			url_copy_button.set_active(false);

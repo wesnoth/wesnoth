@@ -29,7 +29,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "generators/map_generator.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
@@ -132,14 +132,14 @@ void teditor_generate_map::pre_show(twindow& window)
 	}
 
 	list.set_callback_item_change(
-			boost::bind(&teditor_generate_map::do_generator_selected, this, boost::ref(window)));
+			std::bind(&teditor_generate_map::do_generator_selected, this, std::ref(window)));
 
 	tbutton& settings_button = find_widget<tbutton>(&window, "settings", false);
 	connect_signal_mouse_left_click(
 			settings_button,
-			boost::bind(&teditor_generate_map::do_settings,
+			std::bind(&teditor_generate_map::do_settings,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 }
 
 boost::optional<boost::uint32_t> teditor_generate_map::get_seed()

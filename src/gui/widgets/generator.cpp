@@ -656,7 +656,7 @@ void tselect::select(tgrid& grid, const bool select)
 void
 tselect::init(tgrid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const boost::function<void(twidget&)>& callback)
+			  const std::function<void(twidget&)>& callback)
 {
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
@@ -694,7 +694,7 @@ tselect::init(tgrid* grid,
 
 void tshow::init(tgrid* grid,
 				 const std::map<std::string /* widget id */, string_map>& data,
-				 const boost::function<void(twidget&)>& callback)
+				 const std::function<void(twidget&)>& callback)
 {
 	assert(!callback);
 

@@ -42,7 +42,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/scoped_ptr.hpp>
 
 #ifdef HAVE_HISTORY
@@ -433,27 +433,27 @@ void tlua_interpreter::controller::bind(twindow& window)
 
 	text_entry = &find_widget<ttext_box>(&window, "text_entry", false);
 	//text_entry->set_text_changed_callback(
-	//		boost::bind(&view::filter, this, boost::ref(window)));
+	//		std::bind(&view::filter, this, std::ref(window)));
 	window.keyboard_capture(text_entry);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
 
 	connect_signal_pre_key_press(
 			*text_entry,
-			boost::bind(&tlua_interpreter::controller::input_keypress_callback,
+			std::bind(&tlua_interpreter::controller::input_keypress_callback,
 						this,
 						_3,
 						_4,
 						_5,
-						boost::ref(window)));
+						std::ref(window)));
 
 
 	copy_button = &find_widget<tbutton>(&window, "copy", false);
 	connect_signal_mouse_left_click(
 			*copy_button,
-			boost::bind(&tlua_interpreter::controller::handle_copy_button_clicked,
+			std::bind(&tlua_interpreter::controller::handle_copy_button_clicked,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	if (!desktop::clipboard::available()) {
 		copy_button->set_active(false);

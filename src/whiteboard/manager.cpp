@@ -51,7 +51,7 @@
 #include "units/udisplay.hpp"
 
 #include <boost/lexical_cast.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <sstream>
 
@@ -515,7 +515,7 @@ void manager::pre_draw()
 {
 	if (can_modify_game_state() && has_actions()) {
 		move_owners_finder move_finder;
-		for_each_action(boost::ref(move_finder));
+		for_each_action(std::ref(move_finder));
 		units_owning_moves_ = move_finder.get_units_owning_moves();
 
 		for (size_t unit_id : units_owning_moves_) {
@@ -549,7 +549,7 @@ void manager::draw_hex(const map_location& hex)
 	if (!wait_for_side_init_ && has_actions())
 	{
 		//call draw() for all actions
-		for_each_action(boost::bind(&action::draw_hex, _1, hex));
+		for_each_action(std::bind(&action::draw_hex, std::placeholders::_1, hex));
 
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;

@@ -14,7 +14,7 @@
 #ifndef SYNCED_CONTEXT_H_INCLUDED
 #define SYNCED_CONTEXT_H_INCLUDED
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include "synced_commands.hpp"
 #include "synced_checkup.hpp"
 #include "replay.hpp"

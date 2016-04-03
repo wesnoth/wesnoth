@@ -47,7 +47,7 @@
 #include "playmp_controller.hpp"
 #include "mp_ui_alerts.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -80,7 +80,7 @@ void tsub_player_list::init(gui2::twindow& w, const std::string& id)
 			= find_widget<ttoggle_button>(&w, id + "_show_toggle", false, true);
 	show_toggle->set_icon_name("lobby/group-expanded.png");
 	show_toggle->set_callback_state_change(
-			boost::bind(&tsub_player_list::show_toggle_callback, this, _1));
+			std::bind(&tsub_player_list::show_toggle_callback, this, _1));
 	count = find_widget<tlabel>(&w, id + "_count", false, true);
 	label = find_widget<tlabel>(&w, id + "_label", false, true);
 
@@ -384,7 +384,7 @@ struct lobby_delay_gamelist_update_guard
 	tlobby_main& l;
 };
 
-void tlobby_main::set_preferences_callback(boost::function<void()> cb)
+void tlobby_main::set_preferences_callback(std::function<void()> cb)
 {
 	preferences_callback_ = cb;
 }
@@ -408,17 +408,17 @@ void tlobby_main::post_build(twindow& window)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-			boost::bind(fullscreen, boost::ref(window.video())));
+			std::bind(fullscreen, std::ref(window.video())));
 
 	/*** Local hotkeys. ***/
 	preferences_wrapper_
-			= boost::bind(&tlobby_main::show_preferences_button_callback,
+			= std::bind(&tlobby_main::show_preferences_button_callback,
 						  this,
-						  boost::ref(window));
+						  std::ref(window));
 
 	window.register_hotkey(
 			hotkey::HOTKEY_PREFERENCES,
-			boost::bind(function_wrapper<bool, boost::function<void()> >,
+			std::bind(function_wrapper<bool, std::function<void()> >,
 						true,
 						boost::cref(preferences_wrapper_)));
 }
@@ -706,7 +706,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	ttoggle_panel& row_panel = find_widget<ttoggle_panel>(grid, "panel", false);
 
 	row_panel.set_callback_mouse_left_double_click(
-			boost::bind(&tlobby_main::join_or_observe, this, idx));
+			std::bind(&tlobby_main::join_or_observe, this, idx));
 
 	set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
 	set_visible_if_exists(grid, "vision_fog", game.fog);
@@ -726,9 +726,9 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	if(join_button) {
 		connect_signal_mouse_left_click(
 				*join_button,
-				boost::bind(&tlobby_main::join_button_callback,
+				std::bind(&tlobby_main::join_button_callback,
 							this,
-							boost::ref(*window_)));
+							std::ref(*window_)));
 		join_button->set_active(game.can_join());
 	}
 	tbutton* observe_button
@@ -736,9 +736,9 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	if(observe_button) {
 		connect_signal_mouse_left_click(
 				*observe_button,
-				boost::bind(&tlobby_main::observe_button_callback,
+				std::bind(&tlobby_main::observe_button_callback,
 							this,
-							boost::ref(*window_)));
+							std::ref(*window_)));
 		observe_button->set_active(game.can_observe());
 	}
 	tminimap* minimap = dynamic_cast<tminimap*>(grid->find("minimap", false));
@@ -868,7 +868,7 @@ void tlobby_main::update_playerlist()
 				= target_list->tree->add_child("player", tree_group_item);
 
 		find_widget<ttoggle_panel>(&player, "tree_view_node_label", false)
-				.set_callback_mouse_left_double_click(boost::bind(
+				.set_callback_mouse_left_double_click(std::bind(
 						 &tlobby_main::user_dialog_callback, this, userptr));
 	}
 	player_list_.active_game.auto_hide();
@@ -906,9 +906,9 @@ void tlobby_main::pre_show(twindow& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			*roomlistbox_,
-			boost::bind(&tlobby_main::room_switch_callback,
+			std::bind(&tlobby_main::room_switch_callback,
 						*this,
-						boost::ref(window)));
+						std::ref(window)));
 #else
 	roomlistbox_->set_callback_value_change(
 			dialog_callback<tlobby_main, &tlobby_main::room_switch_callback>);
@@ -918,9 +918,9 @@ void tlobby_main::pre_show(twindow& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			*gamelistbox_,
-			boost::bind(&tlobby_main::gamelist_change_callback,
+			std::bind(&tlobby_main::gamelist_change_callback,
 						*this,
-						boost::ref(window)));
+						std::ref(window)));
 #else
 	gamelistbox_->set_callback_value_change(
 			dialog_callback<tlobby_main,
@@ -935,9 +935,9 @@ void tlobby_main::pre_show(twindow& window)
 	player_list_.update_sort_icons();
 
 	player_list_.sort_by_name->set_callback_state_change(
-			boost::bind(&tlobby_main::player_filter_callback, this, _1));
+			std::bind(&tlobby_main::player_filter_callback, this, _1));
 	player_list_.sort_by_relation->set_callback_state_change(
-			boost::bind(&tlobby_main::player_filter_callback, this, _1));
+			std::bind(&tlobby_main::player_filter_callback, this, _1));
 
 	chat_log_container_ = find_widget<tmulti_page>(
 			&window, "chat_log_container", false, true);
@@ -950,50 +950,50 @@ void tlobby_main::pre_show(twindow& window)
 	assert(chat_input_);
 	connect_signal_pre_key_press(
 			*chat_input_,
-			boost::bind(&tlobby_main::chat_input_keypress_callback,
+			std::bind(&tlobby_main::chat_input_keypress_callback,
 						this,
 						_3,
 						_4,
 						_5,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "create", false),
-			boost::bind(&tlobby_main::create_button_callback,
+			std::bind(&tlobby_main::create_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "refresh", false),
-			boost::bind(&tlobby_main::refresh_button_callback,
+			std::bind(&tlobby_main::refresh_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "show_preferences", false),
-			boost::bind(&tlobby_main::show_preferences_button_callback,
+			std::bind(&tlobby_main::show_preferences_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "join_global", false),
-			boost::bind(&tlobby_main::join_global_button_callback,
+			std::bind(&tlobby_main::join_global_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 	find_widget<tbutton>(&window, "join_global", false).set_active(false);
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "observe_global", false),
-			boost::bind(&tlobby_main::observe_global_button_callback,
+			std::bind(&tlobby_main::observe_global_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 	find_widget<tbutton>(&window, "observe_global", false).set_active(false);
 
 	ttoggle_button& skip_replay
 			= find_widget<ttoggle_button>(&window, "skip_replay", false);
 	skip_replay.set_value(preferences::skip_mp_replay());
 	skip_replay.set_callback_state_change(
-			boost::bind(&tlobby_main::skip_replay_changed_callback, this, _1));
+			std::bind(&tlobby_main::skip_replay_changed_callback, this, _1));
 
 	filter_friends_ = find_widget<ttoggle_button>(
 			&window, "filter_with_friends", false, true);
@@ -1006,16 +1006,16 @@ void tlobby_main::pre_show(twindow& window)
 	filter_text_ = find_widget<ttext_box>(&window, "filter_text", false, true);
 
 	filter_friends_->set_callback_state_change(
-			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_ignored_->set_callback_state_change(
-			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_slots_->set_callback_state_change(
-			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_invert_->set_callback_state_change(
-			boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	connect_signal_pre_key_press(
 			*filter_text_,
-			boost::bind(&tlobby_main::game_filter_keypress_callback, this, _5));
+			std::bind(&tlobby_main::game_filter_keypress_callback, this, _5));
 
 	room_window_open("lobby", true);
 	active_window_changed();
@@ -1025,7 +1025,7 @@ void tlobby_main::pre_show(twindow& window)
 	tlobby_main::network_handler();
 	lobby_update_timer_
 			= add_timer(game_config::lobby_network_timer,
-						boost::bind(&tlobby_main::network_handler, this),
+						std::bind(&tlobby_main::network_handler, this),
 						true);
 }
 
@@ -1091,7 +1091,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 		const int row_index = roomlistbox_->get_item_count() - 1;
 		tbutton& close_button = find_widget<tbutton>(roomlistbox_->get_row_grid(row_index), "close_window", false);
 		connect_signal_mouse_left_click(close_button,
-			boost::bind(&tlobby_main::close_window_button_callback,
+			std::bind(&tlobby_main::close_window_button_callback,
 					this, row_index));
 
 		if(name == "lobby") {

@@ -17,7 +17,7 @@
 
 #include "gui/auxiliary/field-fwd.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include <string>
 #include <vector>
@@ -196,12 +196,12 @@ protected:
 	tfield_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
-				  const boost::function<bool()>& callback_load_value
-				  = boost::function<bool()>(),
-				  const boost::function<void(const bool)>& callback_save_value
-				  = boost::function<void(const bool)>(),
-				  const boost::function<void(twidget&)>& callback_change
-				  = boost::function<void(twidget&)>());
+				  const std::function<bool()>& callback_load_value
+				  = std::function<bool()>(),
+				  const std::function<void(const bool)>& callback_save_value
+				  = std::function<void(const bool)>(),
+				  const std::function<void(twidget&)>& callback_change
+				  = std::function<void(twidget&)>());
 
 	/**
 	 * Creates a new boolean field.
@@ -222,8 +222,8 @@ protected:
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  bool& linked_variable,
-				  const boost::function<void(twidget&)>& callback_change
-				  = boost::function<void(twidget&)>());
+				  const std::function<void(twidget&)>& callback_change
+				  = std::function<void(twidget&)>());
 
 	/**
 	 * Creates a new integer field.
@@ -233,10 +233,10 @@ protected:
 	tfield_integer*
 	register_integer(const std::string& id,
 					 const bool mandatory,
-					 const boost::function<int()>& callback_load_value
-					 = boost::function<int()>(),
-					 const boost::function<void(const int)>& callback_save_value
-					 = boost::function<void(const int)>());
+					 const std::function<int()>& callback_load_value
+					 = std::function<int()>(),
+					 const std::function<void(const int)>& callback_save_value
+					 = std::function<void(const int)>());
 
 	/**
 	 * Creates a new integer field.
@@ -254,10 +254,10 @@ protected:
 	tfield_text* register_text(
 			const std::string& id,
 			const bool mandatory,
-			const boost::function<std::string()>& callback_load_value
-			= boost::function<std::string()>(),
-			const boost::function<void(const std::string&)>& callback_save_value
-			= boost::function<void(const std::string&)>(),
+			const std::function<std::string()>& callback_load_value
+			= std::function<std::string()>(),
+			const std::function<void(const std::string&)>& callback_save_value
+			= std::function<void(const std::string&)>(),
 			const bool capture_focus = false);
 
 	/**

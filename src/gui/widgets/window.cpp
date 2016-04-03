@@ -63,7 +63,7 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace game_logic { class function_symbol_table; }
 namespace gui2 { class tbutton; }
@@ -351,16 +351,16 @@ twindow::twindow(CVideo& video,
 
 	connect();
 
-	connect_signal<event::DRAW>(boost::bind(&twindow::draw, this));
+	connect_signal<event::DRAW>(std::bind(&twindow::draw, this));
 
-	connect_signal<event::SDL_VIDEO_RESIZE>(boost::bind(
+	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
 			&twindow::signal_handler_sdl_video_resize, this, _2, _3, _5));
 
-	connect_signal<event::SDL_ACTIVATE>(boost::bind(
+	connect_signal<event::SDL_ACTIVATE>(std::bind(
 			&event::tdistributor::initialize_state, event_distributor_));
 
 	connect_signal<event::SDL_LEFT_BUTTON_UP>(
-			boost::bind(&twindow::signal_handler_click_dismiss,
+			std::bind(&twindow::signal_handler_click_dismiss,
 						this,
 						_2,
 						_3,
@@ -368,7 +368,7 @@ twindow::twindow(CVideo& video,
 						SDL_BUTTON_LMASK),
 			event::tdispatcher::front_child);
 	connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
-			boost::bind(&twindow::signal_handler_click_dismiss,
+			std::bind(&twindow::signal_handler_click_dismiss,
 						this,
 						_2,
 						_3,
@@ -376,7 +376,7 @@ twindow::twindow(CVideo& video,
 						SDL_BUTTON_MMASK),
 			event::tdispatcher::front_child);
 	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
-			boost::bind(&twindow::signal_handler_click_dismiss,
+			std::bind(&twindow::signal_handler_click_dismiss,
 						this,
 						_2,
 						_3,
@@ -385,14 +385,14 @@ twindow::twindow(CVideo& video,
 			event::tdispatcher::front_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(
-			boost::bind(
+			std::bind(
 					&twindow::signal_handler_sdl_key_down, this, _2, _3, _5),
 			event::tdispatcher::back_pre_child);
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&twindow::signal_handler_sdl_key_down, this, _2, _3, _5));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
-			boost::bind(&twindow::signal_handler_message_show_tooltip,
+			std::bind(&twindow::signal_handler_message_show_tooltip,
 						this,
 						_2,
 						_3,
@@ -400,7 +400,7 @@ twindow::twindow(CVideo& video,
 			event::tdispatcher::back_pre_child);
 
 	connect_signal<event::MESSAGE_SHOW_HELPTIP>(
-			boost::bind(&twindow::signal_handler_message_show_helptip,
+			std::bind(&twindow::signal_handler_message_show_helptip,
 						this,
 						_2,
 						_3,
@@ -408,11 +408,11 @@ twindow::twindow(CVideo& video,
 			event::tdispatcher::back_pre_child);
 
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
+			std::bind(
 					&twindow::signal_handler_request_placement, this, _2, _3),
 			event::tdispatcher::back_pre_child);
 
-	register_hotkey(hotkey::GLOBAL__HELPTIP, boost::bind(gui2::helptip));
+	register_hotkey(hotkey::GLOBAL__HELPTIP, std::bind(gui2::helptip));
 }
 
 twindow::~twindow()
@@ -1090,7 +1090,7 @@ void twindow::layout()
 
 		connect_signal_mouse_left_click(
 				*click_dismiss_button,
-				boost::bind(&twindow::set_retval, this, OK, true));
+				std::bind(&twindow::set_retval, this, OK, true));
 
 		layout_initialise(true);
 		generate_dot_file("layout_initialise", LAYOUT);
@@ -1254,13 +1254,6 @@ const std::string& twindow::get_control_type() const
 {
 	static const std::string type = "window";
 	return type;
-}
-
-void twindow::draw(surface& /*surf*/,
-				   const bool /*force*/,
-				   const bool /*invalidate_background*/)
-{
-	assert(false);
 }
 
 namespace

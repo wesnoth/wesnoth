@@ -38,7 +38,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -267,17 +267,17 @@ void tunit_attack::pre_show(twindow& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "attacker_profile", false),
-			boost::bind(&tunit_attack::profile_button_callback, this, boost::ref(window),
+			std::bind(&tunit_attack::profile_button_callback, this, std::ref(window),
 			(*attacker_itor_).type_id()));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "defender_profile", false),
-			boost::bind(&tunit_attack::profile_button_callback, this,  boost::ref(window),
+			std::bind(&tunit_attack::profile_button_callback, this,  std::ref(window),
 			(*defender_itor_).type_id()));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "damage_calculation", false),
-			boost::bind(&tunit_attack::damage_calc_callback, this, boost::ref(window)));
+			std::bind(&tunit_attack::damage_calc_callback, this, std::ref(window)));
 
 	set_attacker_info(window, *attacker_itor_);
 	set_defender_info(window, *defender_itor_);

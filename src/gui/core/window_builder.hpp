@@ -19,7 +19,7 @@
 #include "gui/widgets/grid.hpp"
 #include "reference_counted_object.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 class config;
 class CVideo;
@@ -87,7 +87,7 @@ typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
  */
 void
 register_builder_widget(const std::string& id,
-						boost::function<tbuilder_widget_ptr(config)> functor);
+						std::function<tbuilder_widget_ptr(config)> functor);
 
 
 /**

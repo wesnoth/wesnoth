@@ -45,15 +45,15 @@
 #include "formula/string_utils.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
 
-static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >&
+static std::map<std::string, std::function<tbuilder_widget_ptr(config)> >&
 builder_widget_lookup()
 {
-	static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >
+	static std::map<std::string, std::function<tbuilder_widget_ptr(config)> >
 	result;
 	return result;
 }
@@ -147,7 +147,7 @@ tbuilder_widget::tbuilder_widget(const config& cfg)
 
 void
 register_builder_widget(const std::string& id,
-						boost::function<tbuilder_widget_ptr(config)> functor)
+						std::function<tbuilder_widget_ptr(config)> functor)
 {
 	builder_widget_lookup().insert(std::make_pair(id, functor));
 }

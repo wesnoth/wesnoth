@@ -667,13 +667,13 @@ side_actions::iterator side_actions::safe_erase(iterator const& itor)
 }
 side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(boost::make_shared<move>(team_index(), hidden_, boost::ref(mover), route, arrow, fake_unit));
+	move_ptr new_move(boost::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, fake_unit));
 	return queue_action(turn, new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(boost::make_shared<attack>(team_index(), hidden_, boost::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
+	attack_ptr new_attack(boost::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(turn, new_attack);
 }
 
@@ -691,7 +691,7 @@ side_actions::iterator side_actions::queue_recall(size_t turn, const unit& unit,
 
 side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, map_location const& loc)
 {
-	suppose_dead_ptr new_suppose_dead(boost::make_shared<suppose_dead>(team_index(), hidden_, boost::ref(curr_unit), loc));
+	suppose_dead_ptr new_suppose_dead(boost::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
 	return queue_action(turn, new_suppose_dead);
 }
 

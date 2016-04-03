@@ -22,7 +22,7 @@
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {

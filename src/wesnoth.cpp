@@ -73,7 +73,7 @@
 #endif // _MSC_VER
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/iostreams/categories.hpp>  // for input, output
 #include <boost/iostreams/copy.hpp>     // for copy
 #include <boost/iostreams/filter/bzip2.hpp>  // for bzip2_compressor, etc
@@ -660,7 +660,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		gui2::tloadscreen::progress("refresh addons");
 		refresh_addon_version_info_cache();
 	});
-	
+
 	if(res == false) {
 		return 1;
 	}
@@ -672,15 +672,15 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins_manager plugins_man(new application_lua_kernel(&game->video()));
 
 	plugins_context::Reg const callbacks[] = {
-		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
+		{ "play_multiplayer",		std::bind(&game_launcher::play_multiplayer, game.get())},
 	};
 	plugins_context::aReg const accessors[] = {
-		{ "command_line",		boost::bind(&commandline_options::to_config, &cmdline_opts)},
+		{ "command_line",		std::bind(&commandline_options::to_config, &cmdline_opts)},
 	};
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
 
-	plugins.set_callback("exit", boost::bind(&safe_exit, boost::bind(get_int, _1, "code", 0)), false);
+	plugins.set_callback("exit", std::bind(&safe_exit, std::bind(get_int, std::placeholders::_1, "code", 0)), false);
 
 	for (;;)
 	{

@@ -19,7 +19,7 @@
 #include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {

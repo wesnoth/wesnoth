@@ -37,7 +37,7 @@
 #include "team.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
@@ -352,17 +352,17 @@ public:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				*model_.sides_list,
-				boost::bind(&tmp_change_control::view::
+				std::bind(&tmp_change_control::view::
 									 handle_sides_list_item_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		connect_signal_notify_modified(
 				*model_.nicks_list,
-				boost::bind(&tmp_change_control::view::
+				std::bind(&tmp_change_control::view::
 									 handle_nicks_list_item_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 #else
 		model_.sides_list->set_callback_value_change(
 				dialog_view_callback<tmp_change_control,
