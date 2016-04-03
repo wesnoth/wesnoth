@@ -450,7 +450,9 @@ public:
 	template<int N>
 	config &child(const char(&key)[N], int n = 0)
 	{ return child_impl(key, N - 1, n); }
+private:
 	config &child_impl(const char* key, int len, int n = 0);
+public:
 #endif
 	/**
 	 * Returns the nth child with the given @a key, or
@@ -564,6 +566,12 @@ public:
 
 	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);
+	template<typename... T>
+	void remove_attributes(T... keys) {
+		for(const std::string& key : {keys...}) {
+			remove_attribute(key);
+		}
+	}
 
 	const_attr_itors attribute_range() const;
 
@@ -579,6 +587,12 @@ public:
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
 	void clear_children(const std::string& key);
+	template<typename... T>
+	void clear_children(T... keys) {
+		for(std::string key : {keys...}) {
+			clear_children(key);
+		}
+	}
 
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
@@ -660,7 +674,7 @@ public:
 	 * A function to get the differences between this object,
 	 * and 'c', as another config object.
 	 * I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2))
-	 * will make cfg1 identical to cfg2.
+	 * will make cfg2 identical to cfg1.
 	 */
 	config get_diff(const config& c) const;
 	void get_diff(const config& c, config& res) const;

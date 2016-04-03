@@ -563,8 +563,7 @@ public:
 			config c = resources::teams
 							   ? resources::teams->at(side_ - 1).to_config()
 							   : config();
-			c.clear_children("ai");
-			c.clear_children("village");
+			c.clear_children("ai", "village");
 			model_.set_inspect_window_text(config_to_string(c));
 			return;
 		}

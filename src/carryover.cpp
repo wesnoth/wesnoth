@@ -34,11 +34,7 @@ carryover::carryover(const config& side)
 	for(const config& u : side.child_range("unit")) {
 		recall_list_.push_back(u);
 		config& u_back = recall_list_.back();
-		u_back.remove_attribute("side");
-		u_back.remove_attribute("goto_x");
-		u_back.remove_attribute("goto_y");
-		u_back.remove_attribute("x");
-		u_back.remove_attribute("y");
+		u_back.remove_attributes("side", "goto_x", "goto_y", "x", "y");
 	}
 }
 

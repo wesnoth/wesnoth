@@ -1786,12 +1786,11 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 		parsed_cfg["pattern"] = true;
 		parsed_cfg.add_child("recruit", pattern);
 	}
-	parsed_cfg.clear_children("pattern");
 	for (config total : parsed_cfg.child_range("total")) {
 		parsed_cfg["total"] = true;
 		parsed_cfg.add_child("recruit", total);
 	}
-	parsed_cfg.clear_children("total");
+	parsed_cfg.clear_children("pattern", "total");
 	// Then, if there's no [recruit], add one.
 	if (!parsed_cfg.has_child("recruit")) {
 		parsed_cfg.add_child("recruit", config_of("importance", 0));
