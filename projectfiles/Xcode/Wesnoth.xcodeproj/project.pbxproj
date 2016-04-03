@@ -1555,6 +1555,7 @@
 		912DCA6A1CA6F65A0019A6F9 /* manual.en.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = manual.en.html; path = manual/manual.en.html; sourceTree = "<group>"; };
 		9130A45E1C73BB6100852782 /* select_orb_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = select_orb_colors.cpp; sourceTree = "<group>"; };
 		9130A45F1C73BB6100852782 /* select_orb_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = select_orb_colors.hpp; sourceTree = "<group>"; };
+		918056BE1CB1E4C0001A7F35 /* functional.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = functional.hpp; sourceTree = "<group>"; };
 		9190B73A1CA0554900B0EF66 /* lua_pathfind_cost_calculator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_pathfind_cost_calculator.hpp; sourceTree = "<group>"; };
 		9190B73B1CA0564700B0EF66 /* register_widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = register_widget.hpp; sourceTree = "<group>"; };
 		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
@@ -1699,7 +1700,6 @@
 		91E3562D1CACA6E600774252 /* visitor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = visitor.cpp; sourceTree = "<group>"; };
 		91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_creator.cpp; sourceTree = "<group>"; };
 		91ECD5D11BA11A5200B25CF1 /* unit_creator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_creator.hpp; sourceTree = "<group>"; };
-		91EF6BFB1C9E22E400E2A733 /* boost_function_guarded.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = boost_function_guarded.hpp; sourceTree = "<group>"; };
 		91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = const_clone.hpp; sourceTree = "<group>"; };
 		91EF6BFF1C9E22E400E2A733 /* iterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iterator.hpp; sourceTree = "<group>"; };
 		91EF6C001C9E22E400E2A733 /* reference_counter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = reference_counter.hpp; sourceTree = "<group>"; };
@@ -1713,9 +1713,9 @@
 		91F462871C7115C50050A9C9 /* combobox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = combobox.hpp; sourceTree = "<group>"; };
 		91F462921C7117400050A9C9 /* drop_down_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drop_down_list.cpp; sourceTree = "<group>"; };
 		91F462931C7117400050A9C9 /* drop_down_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drop_down_list.hpp; sourceTree = "<group>"; };
-		91FAC70B1C80168600DAB2C3 /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
 		91FAC7081C7F931900DAB2C3 /* lua_formula_bridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_formula_bridge.hpp; sourceTree = "<group>"; };
 		91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_formula_bridge.cpp; sourceTree = "<group>"; };
+		91FAC70B1C80168600DAB2C3 /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
 		B504B94B1284C06B00261FE9 /* tips.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tips.hpp; sourceTree = "<group>"; };
 		B508D13E10013BF900B12852 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = lib/Growl.framework; sourceTree = "<group>"; };
@@ -3566,8 +3566,8 @@
 		91EF6BF01C9E217C00E2A733 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				91EF6BFB1C9E22E400E2A733 /* boost_function_guarded.hpp */,
 				91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */,
+				918056BE1CB1E4C0001A7F35 /* functional.hpp */,
 				911F471B1CAE5A7E00F47035 /* iterable_pair.hpp */,
 				91EF6BFF1C9E22E400E2A733 /* iterator.hpp */,
 				EC53B04D1B23BB0E002F758F /* make_enum.cpp */,
