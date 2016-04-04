@@ -1787,3 +1787,110 @@ wml_actions.teleport = function(cfg)
 	end
 	wesnoth.teleport(unit, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
+
+function wml_actions.set_variable(cfg)
+	local name = cfg.name or helper.wml_error "trying to set a variable with an empty name"
+	local var = wesnoth.get_variable(name)
+
+	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
+		wesnoth.set_variable(name, cfg.__shallow_parsed.value)
+	elseif cfg.literal ~= nil then
+		wesnoth.set_variable(name, cfg.__shallow_literal.literal)
+	elseif cfg.to_variable then
+		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
+	elseif cfg.add then
+		wesnoth.set_variable(name, (tonumber(var) or 0) + (tonumber(cfg.add) or 0))
+	elseif cfg.sub then
+		wesnoth.set_variable(name, (tonumber(var) or 0) - (tonumber(cfg.sub) or 0))
+	elseif cfg.multiply then
+		wesnoth.set_variable(name, (tonumber(var) or 0) * (tonumber(cfg.multiply) or 0))
+	elseif cfg.divide then
+		local divide = tonumber(cfg.divide) or 0
+		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
+		wesnoth.set_variable(name, (tonumber(var) or 0) / divide)
+	elseif cfg.modulo then
+		local modulo = tonumber(cfg.modulo) or 0
+		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
+		wesnoth.set_variable(name, (tonumber(var) or 0) % modulo)
+	elseif cfg.round then
+		local round_val = cfg.round
+		if round_val == "ceil" then
+			wesnoth.set_variable(name, math.ceil(tonumber(var) or 0))
+		elseif round_val == "floor" then
+			wesnoth.set_variable(name, math.floor(tonumber(var) or 0))
+		else
+			local decimals, discarded = math.modf(tonumber(round_val) or 0)
+			local value = (tonumber(var) or 0) * (10 ^ decimals)
+			value = helper.round(value)
+			value = value * (10 ^ -decimals)
+			wesnoth.set_variable(name, value)
+		end
+	-- unlike the other math operations, ipart and fpart do not act on
+	-- the value already contained in the variable
+	-- but on the value assigned to the respective key
+	elseif cfg.ipart then
+		local ivalue, fvalue = math.modf(tonumber(cfg.ipart) or 0)
+		wesnoth.set_variable(name, ivalue)
+	elseif cfg.fpart then
+		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
+		wesnoth.set_variable(name, fvalue)
+	elseif cfg.string_length ~= nil then
+		wesnoth.set_variable(name, string.len(tostring(cfg.string_length)))
+	elseif cfg.time then
+		if cfg.time == "stamp" then
+			wesnoth.set_variable(name, wesnoth.get_time_stamp())
+		end
+	elseif cfg.rand then
+		local random_string = cfg.rand
+		local choices = {}
+
+		-- split on commas
+		for word in random_string:gmatch("[^,]+") do
+			-- does the word contain two dots? If yes, that's a range
+			local dots_start, dots_end = word:find("%.%.")
+			if dots_start then
+				-- split on the dots if so and cast as numbers
+				local low = tonumber(word:sub(1, dots_start-1))
+				local high = tonumber(word:sub(dots_end+1))
+				-- perhaps someone passed a string as part of the range, intercept the issue
+				if not (low and high) then
+					wesnoth.message("<WML>","Malformed range: rand " .. cfg.rand)
+					table.insert(choices, word)
+				else
+					if low > high then
+						-- low is greater than high, swap them
+						low, high = high, low
+					end
+
+					-- insert all the values in range into choices (both ends included)
+					for value = low, high do
+						table.insert(choices, value)
+					end
+				end
+			else
+				-- handle as a string
+				table.insert(choices, word)
+			end
+		end
+
+		local idx = wesnoth.random(1, #choices)
+		wesnoth.set_variable(name, choices[idx])
+	else
+		local join_child = helper.get_child(cfg, "join")
+		if not join_child then return end
+		local array_name = join_child.variable or helper.wml_error "missing variable= attribute in [join]"
+		local separator = join_child.separator
+		local key_name = join_child.key or "value"
+		local remove_empty = join_child.remove_empty
+
+		local string_to_join = {}
+
+		for i, element in ipairs(helper.get_variable_array(array_name)) do
+			if element[key_name] ~= nil or (not remove_empty) then
+				table.insert(string_to_join, tostring(element[key_name]))
+			end
+		end
+
+		wesnoth.set_variable(name, table.concat(string_to_join, separator))
+	end
+end
