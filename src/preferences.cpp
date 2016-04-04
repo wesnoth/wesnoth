@@ -353,7 +353,7 @@ int min_allowed_width()
 
 int min_allowed_height()
 {
-	return 480;
+	return 600;
 }
 
 std::pair<int,int> resolution()
