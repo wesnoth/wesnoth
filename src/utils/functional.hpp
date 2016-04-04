@@ -56,37 +56,37 @@ namespace detail {
 	
 	template<typename Ret, typename... P>
 	struct function_base<Ret(P...)> {
-		using type = Ret(P...);
+		typedef Ret type(P...);
 	};
 	
 	template<typename Ret, typename... P>
 	struct function_base<Ret(*)(P...)> {
-		using type = Ret(P...);
+		typedef Ret type(P...);
 	};
 	
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)> {
-		using type = Ret(Class,P...);
+		typedef Ret type(Class,P...);
 	};
 	
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)const> {
-		using type = Ret(const Class,P...);
+		typedef Ret type(const Class,P...);
 	};
 	
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)volatile > {
-		using type = Ret(volatile Class,P...);
+		typedef Ret type(volatile Class,P...);
 	};
 	
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)const volatile> {
-		using type = Ret(const volatile Class,P...);
+		typedef Ret type(const volatile Class,P...);
 	};
 	
 	template<typename Ret, typename... P>
 	struct function_base<std::function<Ret(P...)>> {
-		using type = Ret(P...);
+		typedef Ret type(P...);
 	};
 }
 
