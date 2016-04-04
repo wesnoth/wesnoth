@@ -27,8 +27,10 @@
 // Instead, we specialize std::is_placeholder for the Boost placeholders,
 // so that Boost placeholders can be passed to std::bind.
 
-template<int N>
-struct std::is_placeholder<boost::arg<N>> : public std::integral_constant<int, N> {};
+namespace std { // Some compilers can't handle it being specialized in the global scope
+	template<int N>
+	struct is_placeholder<boost::arg<N>> : public integral_constant<int, N> {};
+}
 
 namespace detail {
 	template<typename Ret, typename... T>
