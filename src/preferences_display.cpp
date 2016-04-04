@@ -192,10 +192,9 @@ void show_wesnothd_server_search(CVideo& video)
 			, &symbols);
 
 	int res = dialogs::show_file_chooser_dialog(video, path, title, false, filename);
-	if (res == 0)
-		return path;
-	else
-		return "";
+	if (res == 0) {
+		preferences::set_mp_server_program_name(path);
+	}
 }
 
 } // end namespace preferences
