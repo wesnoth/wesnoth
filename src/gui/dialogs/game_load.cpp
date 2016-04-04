@@ -200,7 +200,7 @@ void tgame_load::list_item_clicked(twindow& window)
 	display_savegame(window);
 }
 
-bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
+void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 {
 	twindow& window = *textbox->get_window();
 
@@ -209,7 +209,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 	const std::vector<std::string> words = utils::split(text, ' ');
 
 	if(words == last_words_)
-		return false;
+		return;
 	last_words_ = words;
 
 	std::vector<bool> show_items(list.get_item_count(), true);
@@ -243,8 +243,6 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 	}
 
 	list.set_row_shown(show_items);
-
-	return false;
 }
 
 void tgame_load::post_show(twindow& window)

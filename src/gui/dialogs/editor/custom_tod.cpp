@@ -320,9 +320,12 @@ void tcustom_tod::pre_show(twindow& window)
 			delete_button,
 			std::bind(&tcustom_tod::do_delete_tod, this, std::ref(window)));
 
+	// FIXME: This doesn't work (it does nothing at all)
+	/*
 	tbutton& save_button = find_widget<tbutton>(&window, "save", false);
 	connect_signal_mouse_left_click(
 			save_button, std::bind(&tcustom_tod::do_save_schedule, this));
+	*/
 
 	connect_signal_notify_modified(
 			*(lawful_bonus_field_->widget()),

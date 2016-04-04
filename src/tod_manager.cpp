@@ -91,7 +91,7 @@ void tod_manager::resolve_random(random_new::rng& r)
 	//comma-separated string of integers >= 1 referring to the times_ array indices
 	std::vector<int> output;
 	boost::copy( utils::split(random_tod_.str())
-		| boost::adaptors::transformed(std::bind(lexical_cast_default<int, std::string>, _1 , 0))
+		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
 		| boost::adaptors::filtered(greater<int>(0))
 		, std::back_inserter(output) );
 

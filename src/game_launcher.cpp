@@ -883,14 +883,11 @@ bool game_launcher::play_multiplayer()
 				start_wesnothd();
 			} catch(game::mp_server_error&)
 			{
-				std::string path = preferences::show_wesnothd_server_search(video());
-
-				if (!path.empty())
-				{
-					preferences::set_mp_server_program_name(path);
+				preferences::show_wesnothd_server_search(video());
+				
+				try {
 					start_wesnothd();
-				}
-				else
+				} catch(game::mp_server_error&)
 				{
 					return false;
 				}

@@ -58,7 +58,7 @@ void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
 	const std::string ext = ".bmp";
 #endif
 	filename = filesystem::get_next_filename(filename, ext);
-	const bool res = func(filename);
+	const bool res = func(filename, video);
 	if (res) {
 		gui2::tscreenshot_notification::display(filename, video);
 	} else {
@@ -553,7 +553,7 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 			executor->get_video().set_fullscreen(!preferences::fullscreen());
 			break;
 		case HOTKEY_SCREENSHOT:
-			make_screenshot(_("Screenshot"), executor->get_video(), std::bind(&::screenshot, _1, std::ref(executor->get_video())));
+			make_screenshot(_("Screenshot"), executor->get_video(), &::screenshot);
 			break;
 		case HOTKEY_ANIMATE_MAP:
 			preferences::set_animate_map(!preferences::animate_map());
@@ -689,6 +689,6 @@ void command_executor_default::zoom_default()
 }
 void command_executor_default::map_screenshot()
 {
-	make_screenshot(_("Map-Screenshot"), get_video(), std::bind(&display::screenshot, &get_display(), _1, true));
+	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
 }
 }
