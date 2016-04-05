@@ -1,4 +1,6 @@
-
+local helper = wesnoth.require "lua/helper.lua"
+local utils = wesnoth.require "lua/wml-utils.lua"
+local wml_actions = wesnoth.wml_actions
 
 function wml_actions.modify_unit(cfg)
 	local unit_variable = "LUA_modify_unit"

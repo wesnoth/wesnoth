@@ -1,6 +1,7 @@
+local helper = wesnoth.require "lua/helper.lua"
+local utils = wesnoth.require "lua/wml-utils.lua"
 
-
-function wml_actions.find_path(cfg)
+function wesnoth.wml_actions.find_path(cfg)
 	local filter_unit = helper.get_child(cfg, "traveler") or helper.wml_error("[find_path] missing required [traveler] tag")
 	-- only the first unit matching
 	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")

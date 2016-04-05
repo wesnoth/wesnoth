@@ -1,4 +1,6 @@
-
+local helper = wesnoth.require "lua/helper.lua"
+local utils = wesnoth.require "lua/wml-utils.lua"
+local wml_actions = wesnoth.wml_actions
 
 function wml_actions.command(cfg)
 	utils.handle_event_commands(cfg, "plain")

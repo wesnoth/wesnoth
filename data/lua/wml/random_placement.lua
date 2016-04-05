@@ -1,4 +1,5 @@
-
+local helper = wesnoth.require "lua/helper.lua"
+local utils = wesnoth.require "lua/wml-utils.lua"
 
 wesnoth.wml_actions.random_placement = function(cfg)
 	local dist_le = nil
