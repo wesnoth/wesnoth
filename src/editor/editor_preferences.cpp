@@ -51,51 +51,6 @@ namespace editor {
 	}
 
 	namespace {
-		void normalize_editor_rgb(int rval)
-		{
-			if (rval < -255) {
-				rval = -255;
-			}
-			else if (rval > 255) {
-				rval = 255;
-			}
-		}
-	}
-
-	void set_tod_r(int value)
-	{
-		normalize_editor_rgb(value);
-		preferences::set("editor_r",std::to_string(value));
-	}
-
-	void set_tod_g(int value)
-	{
-		normalize_editor_rgb(value);
-		preferences::set("editor_g",std::to_string(value));
-	}
-
-	void set_tod_b(int value)
-	{
-		normalize_editor_rgb(value);
-		preferences::set("editor_b",std::to_string(value));
-	}
-
-	int tod_r()
-	{
-		return lexical_cast_in_range<int>(preferences::get("editor_r"), 0, -255, 255);
-	}
-
-	int tod_g()
-	{
-		return lexical_cast_in_range<int>(preferences::get("editor_g"), 0, -255, 255);
-	}
-
-	int tod_b()
-	{
-		return lexical_cast_in_range<int>(preferences::get("editor_b"), 0, -255, 255);
-	}
-
-	namespace {
 		size_t editor_mru_limit()
 		{
 			return std::max(size_t(1), lexical_cast_default<size_t>(
