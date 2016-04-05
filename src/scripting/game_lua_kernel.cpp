@@ -71,7 +71,6 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
-#include "resources.hpp"
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -2918,8 +2917,8 @@ int game_lua_kernel::intf_deselect_hex(lua_State*)
 int game_lua_kernel::intf_is_skipping_messages(lua_State *L)
 {
 	bool skipping = play_controller_.is_skipping_replay();
-	if (!skipping && resources::game_events) {
-		skipping = resources::game_events->pump().context_skip_messages();
+	if (!skipping) {
+		skipping = game_state_.events_manager_->pump().context_skip_messages();
 	}
 	lua_pushboolean(L, skipping);
 	return 1;
@@ -2935,7 +2934,7 @@ int game_lua_kernel::intf_skip_messages(lua_State *L)
 	if (!lua_isnone(L, 1)) {
 		skip = luaW_toboolean(L, 1);
 	}
-	resources::game_events->pump().context_skip_messages(skip);
+	game_state_.events_manager_->pump().context_skip_messages(skip);
 	return 0;
 }
 
@@ -4047,7 +4046,7 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 	size_t area_i;
 	if (lua_isstring(L, 2)) {
 		area_id = lua_tostring(L, 1);
-		std::vector<std::string> area_ids = resources::tod_manager->get_area_ids();
+		std::vector<std::string> area_ids = tod_man().get_area_ids();
 		area_i = std::find(area_ids.begin(), area_ids.end(), area_id) - area_ids.begin();
 		if(area_i >= area_ids.size()) {
 			return luaL_argerror(L, 1, "invalid time area ID");
@@ -4056,8 +4055,8 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 	int is_num = false;
 	int new_time = lua_tonumberx(L, 1, &is_num) - 1;
 	const std::vector<time_of_day>& times = area_id.empty()
-		? game_display_->get_tod_man().times()
-		: game_display_->get_tod_man().times(area_i);
+		? tod_man().times()
+		: tod_man().times(area_i);
 	int num_times = times.size();
 	if(!is_num) {
 		std::string time_id = luaL_checkstring(L, 1);
@@ -4077,9 +4076,9 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 	}
 	
 	if(area_id.empty()) {
-		resources::tod_manager->set_current_time(new_time);
+		tod_man().set_current_time(new_time);
 	} else {
-		resources::tod_manager->set_current_time(new_time, area_i);
+		tod_man().set_current_time(new_time, area_i);
 	}
 	return 0;
 }
@@ -4191,11 +4190,11 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	bool clear_shroud = luaW_toboolean(L, 4);
 	bool animate = luaW_toboolean(L, 5);
 
-	if (dst == u->get_location() || !resources::gameboard->map().on_board(dst)) {
+	if (dst == u->get_location() || !map().on_board(dst)) {
 		return 0;
 	}
 	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, check_passability ? u.get() : nullptr);
-	if (!resources::gameboard->map().on_board(vacant_dst)) {
+	if (!map().on_board(vacant_dst)) {
 		return 0;
 	}
 	// Clear the destination hex before the move (so the animation can be seen).
@@ -4211,10 +4210,10 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	teleport_path.push_back(vacant_dst);
 	unit_display::move_unit(teleport_path, u, animate);
 
-	resources::units->move(src_loc, vacant_dst);
+	units().move(src_loc, vacant_dst);
 	unit::clear_status_caches();
 
-	u = &*resources::units->find(vacant_dst);
+	u = &*units().find(vacant_dst);
 	u->anim_comp().set_standing();
 
 	if ( clear_shroud ) {
@@ -4222,12 +4221,12 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 		clearer.clear_unit(vacant_dst, *u);
 	}
 
-	if (resources::gameboard->map().is_village(vacant_dst)) {
+	if (map().is_village(vacant_dst)) {
 		actions::get_village(vacant_dst, u->side());
 	}
 
-	resources::screen->invalidate_unit_after_move(src_loc, vacant_dst);
-	resources::screen->draw();
+	game_display_->invalidate_unit_after_move(src_loc, vacant_dst);
+	game_display_->draw();
 
 	// Sighted events.
 	clearer.fire_events();
