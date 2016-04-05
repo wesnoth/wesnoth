@@ -321,7 +321,7 @@ public:
 #ifdef HAVE_HISTORY
 		// Do history expansions
 		char * cmd_cstr = new char [cmd.length()+1];
-		std::strcpy (cmd_cstr, cmd.c_str());
+		strcpy (cmd_cstr, cmd.c_str());
 
 		char * expansion;
 
