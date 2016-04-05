@@ -631,7 +631,7 @@ for name in os.listdir(MINGWPATH):
 for name in os.listdir(GTKPATH + '/bin'):
   if any(s in name for s in ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
          'pixman', 'libgobject', 'libglib', 'libintl', 'pthread', 'libpango',
-         'gmodule']):
+         'gmodule', 'libiconv', 'libffi', 'libjpeg']):
      print('.. ' + name)
      shutil.copyfile(GTKPATH + '/bin/' + name, ROOT + '/' + name)
 
