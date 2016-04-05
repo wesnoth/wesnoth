@@ -205,70 +205,7 @@ namespace { // Support functions
 		}
 		return path;
 	}
-
-	/**
-	 * Implements the lifting and resetting of fog via WML.
-	 * Keeping affect_normal_fog as false causes only the fog override to be affected.
-	 * Otherwise, fog lifting will be implemented similar to normal sight (cannot be
-	 * individually reset and ends at the end of the turn), and fog resetting will, in
-	 * addition to removing overrides, extend the specified teams' normal fog to all
-	 * hexes.
-	 */
-	void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_normal_fog=false)
-	{
-		// Filter the sides.
-		const vconfig &ssf = cfg.child("filter_side");
-		const side_filter s_filter(ssf.null() ? vconfig::empty_vconfig() : ssf, resources::filter_con);
-		const std::vector<int> sides = s_filter.get_teams();
-
-		// Filter the locations.
-		std::set<map_location> locs;
-		const terrain_filter t_filter(cfg, resources::filter_con);
-		t_filter.get_locations(locs, true);
-
-		// Loop through sides.
-		for (const int &side_num : sides)
-		{
-			team &t = (*resources::teams)[side_num-1];
-			if ( !clear )
-			{
-				// Extend fog.
-				t.remove_fog_override(locs);
-				if ( affect_normal_fog )
-					t.refog();
-			}
-			else if ( !affect_normal_fog )
-				// Force the locations clear of fog.
-				t.add_fog_override(locs);
-			else
-				// Simply clear fog from the locations.
-				for (const map_location &hex : locs) {
-					t.clear_fog(hex);
-				}
-		}
-
-		// Flag a screen update.
-		resources::screen->recalculate_minimap();
-		resources::screen->invalidate_all();
-	}
 } // end anonymous namespace (support functions)
-
-void handle_deprecated_message(const config& cfg)
-{
-	// Note: no need to translate the string, since only used for deprecated things.
-	const std::string& message = cfg["message"];
-	lg::wml_error() << message << '\n';
-}
-
-void handle_wml_log_message(const config& cfg)
-{
-	const std::string& logger = cfg["logger"];
-	const std::string& msg = cfg["message"];
-	bool in_chat = cfg["to_chat"].to_bool(true);
-
-	resources::game_events->pump().put_wml_message(logger,msg,in_chat);
-}
-
 
 /**
  * Using this constructor for a static object outside action_wml.cpp
@@ -322,11 +259,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 {
 	if (!resources::controller->is_replay())
 		verify_and_clear_global_variable(pcfg);
-}
-
-WML_HANDLER_FUNCTION(deprecated_message,, cfg)
-{
-	handle_deprecated_message( cfg.get_parsed_config() );
 }
 
 static void on_replay_error(const std::string& message, bool /*b*/)
@@ -383,11 +315,6 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 WML_HANDLER_FUNCTION(get_global_variable,,pcfg)
 {
 	verify_and_get_global_variable(pcfg);
-}
-
-WML_HANDLER_FUNCTION(lift_fog,, cfg)
-{
-	toggle_fog(true, cfg, !cfg["multiturn"].to_bool(false));
 }
 
 WML_HANDLER_FUNCTION(modify_turns,, cfg)
@@ -573,10 +500,6 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	LOG_WML << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
-WML_HANDLER_FUNCTION(remove_sound_source,, cfg)
-{
-	resources::soundsources->remove(cfg["id"]);
-}
 namespace {
 	struct map_choice : public mp_sync::user_choice
 	{
@@ -616,6 +539,7 @@ namespace {
 
 	};
 }
+
 /// Experimental map replace
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(replace_map,, cfg)
@@ -674,11 +598,6 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	resources::screen->reload_map();
 	resources::screen->needs_rebuild(true);
 	ai::manager::raise_map_changed();
-}
-
-WML_HANDLER_FUNCTION(reset_fog,, cfg)
-{
-	toggle_fog(false, cfg, cfg["reset_view"].to_bool(false));
 }
 
 /// Experimental data persistence
@@ -1029,19 +948,6 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(sound_source,, cfg)
-{
-	config parsed = cfg.get_parsed_config();
-	try {
-		soundsource::sourcespec spec(parsed);
-		resources::soundsources->add(spec);
-	} catch (bad_lexical_cast &) {
-		ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
-		ERR_NG << "sound_source config was: " << parsed.debug() << std::endl;
-		ERR_NG << "Skipping this sound source..." << std::endl;
-	}
-}
-
 /// Store the relative direction from one hex to another in a WML variable.
 /// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
@@ -1272,11 +1178,6 @@ WML_HANDLER_FUNCTION(volume,, cfg)
 		sound::set_sound_volume(vol);
 	}
 
-}
-
-WML_HANDLER_FUNCTION(wml_message,, cfg)
-{
-	handle_wml_log_message( cfg.get_parsed_config() );
 }
 
 WML_HANDLER_FUNCTION(on_undo,, cfg)

@@ -5,10 +5,7 @@ local location_set = wesnoth.require "lua/location_set.lua"
 local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
-	wesnoth.wml_actions.wml_message({
-		message = msg,
-		logger = level,
-	})
+	wesnoth.log(level, msg, true)
 end
 
 local function get_image(cfg, speaker)

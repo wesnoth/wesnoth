@@ -120,6 +120,13 @@ Version 1.13.4+dev:
      of the time in the overall schedule (eg, 1 would be dawn in the default
      schedule). Optional second argument takes a time area ID, to set
      local instead of global time.
+   * New wesnoth.add_fog and wesnoth.remove_fog functions allow changing fog
+     on the map. The [lift_fog] and [clear_fog] tags now use this.
+   * New wesnoth.add_sound_source, wesnoth.remove_sound_source, and
+     wesnoth.get_sound_source functions to allow manipulation of sound
+     sources. The [sound_source] and [remove_sound_source] now use these.
+   * New wesnoth.log function for printing log messages. The [wml_message]
+     and [deprecated_message] tags now use this.
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string

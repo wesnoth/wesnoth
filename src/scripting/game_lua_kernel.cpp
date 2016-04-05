@@ -85,6 +85,7 @@
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
+#include "soundsource.hpp"
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
@@ -121,6 +122,7 @@
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
+#include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL_timer.h>                  // for SDL_GetTicks
 #include <SDL_video.h>                  // for SDL_Color, SDL_Surface
@@ -4233,6 +4235,139 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	return 0;
 }
 
+/**
+ * Removes a sound source by its ID
+ * Arg 1: sound source ID
+ */
+int game_lua_kernel::intf_remove_sound_source(lua_State *L)
+{
+	soundsource::manager* man = play_controller_.get_soundsource_man();
+	std::string id = luaL_checkstring(L, 1);
+	man->remove(id);
+	return 0;
+}
+
+/**
+ * Add a new sound source
+ * Arg 1: Table containing keyword arguments
+ */
+int game_lua_kernel::intf_add_sound_source(lua_State *L)
+{
+	soundsource::manager* man = play_controller_.get_soundsource_man();
+	config cfg = luaW_checkconfig(L, 1);
+	try {
+		soundsource::sourcespec spec(cfg);
+		man->add(spec);
+	} catch (bad_lexical_cast &) {
+		ERR_LUA << "Error when parsing sound_source config: invalid parameter." << std::endl;
+		ERR_LUA << "sound_source config was: " << cfg.debug() << std::endl;
+		ERR_LUA << "Skipping this sound source..." << std::endl;
+	}
+	return 0;
+}
+
+/**
+ * Get an existing sound source
+ * Arg 1: The sound source ID
+ * Return: Config of sound source info, or nil if it didn't exist
+ * This is a copy of the sound source info, so you need to call
+ * add_sound_source again after changing it.
+ */
+int game_lua_kernel::intf_get_sound_source(lua_State *L)
+{
+	soundsource::manager* man = play_controller_.get_soundsource_man();
+	std::string id = luaL_checkstring(L, 1);
+	config cfg = man->get(id);
+	if(cfg.empty()) {
+		return 0;
+	}
+	// Sound sources do not know their own string ID
+	// Thus, we need to add this manually
+	cfg["id"] = id;
+	luaW_pushconfig(L, cfg);
+	return 1;
+}
+
+/**
+ * Logs a message
+ * Arg 1: (optional) Logger; "wml" for WML errors or deprecations
+ * Arg 2: Message
+ * Arg 3: Whether to print to chat (always true if arg 1 is "wml")
+ */
+int game_lua_kernel::intf_log(lua_State *L)
+{
+	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
+	const std::string& msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
+	
+	if(logger == "wml" || logger == "WML") {
+		lg::wml_error() << msg << '\n';
+	} else {
+		bool in_chat = luaW_toboolean(L, -1);
+		game_state_.events_manager_->pump().put_wml_message(logger,msg,in_chat);
+	}
+	return 0;
+}
+
+/**
+ * Implements the lifting and resetting of fog via WML.
+ * Keeping affect_normal_fog as false causes only the fog override to be affected.
+ * Otherwise, fog lifting will be implemented similar to normal sight (cannot be
+ * individually reset and ends at the end of the turn), and fog resetting will, in
+ * addition to removing overrides, extend the specified teams' normal fog to all
+ * hexes.
+ *
+ * Arg 1: (optional) Side number, or list of side numbers
+ * Arg 2: List of locations; each is a two-element array or a table with x and y keys
+ * Arg 3: (optional) boolean
+ */
+int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
+{
+	bool affect_normal_fog = false;
+	if(lua_isboolean(L, -1)) {
+		affect_normal_fog = luaW_toboolean(L, -1);
+	}
+	std::set<int> sides;
+	if(lua_isnumber(L, 1)) {
+		sides.insert(lua_tonumber(L, 1));
+	} else if(lua_istable(L, 2)) {
+		const auto& v = lua_check<std::vector<int>>(L, 1);
+		sides.insert(v.begin(), v.end());
+	} else {
+		for(const team& t : teams()) {
+			sides.insert(t.side()+1);
+		}
+	}
+	const auto& v_locs = lua_check<std::vector<map_location>>(L, lua_istable(L, 2) ? 2 : 1);
+	std::set<map_location> locs(v_locs.begin(), v_locs.end());
+
+	for(const int &side_num : sides) {
+		if(side_num < 1 || static_cast<size_t>(side_num) > teams().size()) {
+			continue;
+		}
+		team &t = teams()[side_num-1];
+		if(!clear) {
+			// Extend fog.
+			t.remove_fog_override(locs);
+			if(affect_normal_fog) {
+				t.refog();
+			}
+		} else if(!affect_normal_fog) {
+			// Force the locations clear of fog.
+			t.add_fog_override(locs);
+		} else {
+			// Simply clear fog from the locations.
+			for(const map_location &hex : locs) {
+				t.clear_fog(hex);
+			}
+		}
+	}
+	
+	// Flag a screen update.
+	game_display_->recalculate_minimap();
+	game_display_->invalidate_all();
+	return 0;
+}
+
 // END CALLBACK IMPLEMENTATION
 
 game_board & game_lua_kernel::board() {
@@ -4325,8 +4460,10 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "unit_resistance",          &intf_unit_resistance          },
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
+		{ "add_fog",                   &dispatch2<&game_lua_kernel::intf_toggle_fog, true          >        },
 		{ "add_tile_overlay",          &dispatch<&game_lua_kernel::intf_add_tile_overlay           >        },
 		{ "add_time_area",             &dispatch<&game_lua_kernel::intf_add_time_area              >        },
+		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "animate_unit",              &dispatch<&game_lua_kernel::intf_animate_unit               >        },
@@ -4354,6 +4491,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "get_recall_units",          &dispatch<&game_lua_kernel::intf_get_recall_units           >        },
 		{ "get_selected_tile",         &dispatch<&game_lua_kernel::intf_get_selected_tile          >        },
 		{ "get_sides",                 &dispatch<&game_lua_kernel::intf_get_sides                  >        },
+		{ "get_sound_source",          &dispatch<&game_lua_kernel::intf_get_sound_source           >        },
 		{ "get_starting_location",     &dispatch<&game_lua_kernel::intf_get_starting_location      >        },
 		{ "get_terrain",               &dispatch<&game_lua_kernel::intf_get_terrain                >        },
 		{ "get_terrain_info",          &dispatch<&game_lua_kernel::intf_get_terrain_info           >        },
@@ -4371,6 +4509,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "kill",                      &dispatch<&game_lua_kernel::intf_kill                       >        },
 		{ "label",                     &dispatch<&game_lua_kernel::intf_label                      >        },
 		{ "lock_view",                 &dispatch<&game_lua_kernel::intf_lock_view                  >        },
+		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "match_location",            &dispatch<&game_lua_kernel::intf_match_location             >        },
 		{ "match_side",                &dispatch<&game_lua_kernel::intf_match_side                 >        },
 		{ "match_unit",                &dispatch<&game_lua_kernel::intf_match_unit                 >        },
@@ -4385,8 +4524,10 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "random",                    &dispatch<&game_lua_kernel::intf_random                     >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
+		{ "remove_fog",                &dispatch2<&game_lua_kernel::intf_toggle_fog, false         >        },
 		{ "remove_tile_overlay",       &dispatch<&game_lua_kernel::intf_remove_tile_overlay        >        },
 		{ "remove_time_area",          &dispatch<&game_lua_kernel::intf_remove_time_area           >        },
+		{ "remove_sound_source",       &dispatch<&game_lua_kernel::intf_remove_sound_source        >        },
 		{ "replace_schedule",          &dispatch<&game_lua_kernel::intf_replace_schedule           >        },
 		{ "scroll",                    &dispatch<&game_lua_kernel::intf_scroll                     >        },
 		{ "scroll_to_tile",            &dispatch<&game_lua_kernel::intf_scroll_to_tile             >        },

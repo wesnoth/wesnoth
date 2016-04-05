@@ -72,11 +72,6 @@ namespace game_events
 	 */
 	void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	                    terrain_type_data::tmerge_mode mode, bool replace_if_failed);
-
-	/** Used for [deprecated_message]. */
-	void handle_deprecated_message(const config& cfg);
-	/** Used for [wml_message]. */
-	void handle_wml_log_message(const config& cfg);
 }
 
 #endif // GAME_EVENTS_ACTION_WML_H_INCLUDED

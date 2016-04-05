@@ -26,8 +26,9 @@
 #include "asserts.hpp"
 #include "variable.hpp"
 
-#include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
@@ -129,13 +130,13 @@ void controller::resolve_wml(const vconfig& cfg)
 		// [deprecated_message]
 		else if(key == "deprecated_message") {
 			// Won't appear until the scenario start event finishes.
-			game_events::handle_deprecated_message(node.get_parsed_config());
+			lg::wml_error() << node["message"] << '\n';
 		}
 		// [wml_message]
 		else if(key == "wml_message") {
-			// Pass to game events handler. As with [deprecated_message],
+			// As with [deprecated_message],
 			// it won't appear until the scenario start event is complete.
-			game_events::handle_wml_log_message(node.get_parsed_config());
+			resources::game_events->pump().put_wml_message(node["logger"],node["message"],node["in_chat"]);
 		}
 	}
 }

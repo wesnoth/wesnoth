@@ -67,6 +67,16 @@ void manager::add(const sourcespec &spec)
 	}
 }
 
+config manager::get(const std::string &id)
+{
+	config cfg;
+	positional_source_iterator it = sources_.find(id);
+	if(it != sources_.end()) {
+		it->second->write_config(cfg);
+	}
+	return cfg;
+}
+
 void manager::remove(const std::string &id)
 {
 	positional_source_iterator it;

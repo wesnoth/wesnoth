@@ -1003,3 +1003,39 @@ wml_actions.teleport = function(cfg)
 	end
 	wesnoth.teleport(unit, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
+
+function wml_actions.remove_sound_source(cfg)
+	wesnoth.remove_sound_source(cfg.id)
+end
+
+function wml_actions.sound_source(cfg)
+	wesnoth.add_sound_source(cfg)
+end
+
+function wml_actions.deprecated_message(cfg)
+	wesnoth.log('wml', cfg.message)
+end
+
+function wml_actions.wml_message(cfg)
+	local logger = logger_aliases[cfg.logger] or ''
+	wesnoth.log(cfg.logger or 'warn', cfg.message. cfg.to_chat)
+end
+
+local function parse_fog_cfg(cfg)
+	-- Side filter
+	local ssf = helper.child(cfg, "filter_side")
+	local sides = wesnoth.get_sides(ssf or {})
+	-- Location filter
+	local locs = wesnoth.get_locations(cfg)
+	return locs, sides
+end
+
+function wml_actions.lift_fog(cfg)
+	local locs, sides = parse_fog_cfg(cfg)
+	wesnoth.remove_fog(sides, locs, not cfg.multiturn)
+end
+
+function wml_actions.reset_fog(cfg)
+	local locs, sides = parse_fog_cfg(cfg)
+	wesnoth.add_fog(sides, locs, cfg.reset_view)
+end

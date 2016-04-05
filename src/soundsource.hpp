@@ -93,6 +93,7 @@ public:
 	// add or replace a soundsource
 	void add(const sourcespec &source);
 	void remove(const std::string &id);
+	config get(const std::string &id);
 	void update();
 
 	// checks which sound sources are visible
