@@ -308,7 +308,7 @@ function wml_actions.test_condition(cfg)
 				if tag == "variable" then
 					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wesnoth.get_variable(this_cfg.name)))
 				end
-				wesnoth.wml_actions.wml_message{message = explanation, logger = logger}
+				wesnoth.log(logger, explanation, true)
 				return true
 			end
 		end
@@ -1018,7 +1018,7 @@ end
 
 function wml_actions.wml_message(cfg)
 	local logger = cfg.logger or ''
-	wesnoth.log(cfg.logger, cfg.message. cfg.to_chat)
+	wesnoth.log(cfg.logger, cfg.message, cfg.to_chat)
 end
 
 local function parse_fog_cfg(cfg)

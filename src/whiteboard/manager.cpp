@@ -480,7 +480,7 @@ namespace
 	public:
 		move_owners_finder(): move_owners_() { }
 
-		void operator()(action_ptr action) {
+		void operator()(action* action) {
 			action->accept(*this);
 		}
 

@@ -126,7 +126,7 @@ bool team_has_visible_plan(team&);
  * @param function the function to execute.
  * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  */
-void for_each_action(std::function<void(action_ptr)> function,
+void for_each_action(std::function<void(action*)> function,
                      team_filter team_filter = team_has_visible_plan);
 
 /**
