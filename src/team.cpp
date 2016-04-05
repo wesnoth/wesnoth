@@ -276,7 +276,6 @@ void team::team_info::write(config& cfg) const
 }
 
 team::team() :
-	savegame_config(),
 	gold_(0),
 	villages_(),
 	shroud_(),

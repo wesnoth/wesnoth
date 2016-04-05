@@ -37,7 +37,6 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 tod_manager::tod_manager(const config& scenario_cfg):
-	savegame_config(),
 	currentTime_(0),
 	times_(),
 	areas_(),

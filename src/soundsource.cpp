@@ -32,7 +32,6 @@ unsigned int positional_source::last_id = 0;
 
 manager::manager(const display &disp) :
 	observer(),
-	savegame_config(),
 	sources_(),
 	disp_(disp)
 {
@@ -116,13 +115,6 @@ void manager::write_sourcespecs(config& cfg) const
 		child["id"] = i->first;
 		i->second->write_config(child);
 	}
-}
-
-config manager::to_config() const
-{
-	config cfg;
-	write_sourcespecs(cfg);
-	return cfg.child("sound_source");
 }
 
 positional_source::positional_source(const sourcespec &spec) :
