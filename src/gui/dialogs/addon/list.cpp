@@ -52,6 +52,7 @@
 
 #include "utils/functional.hpp"
 #include <sstream>
+#include <stdexcept>
 
 namespace gui2
 {

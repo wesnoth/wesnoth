@@ -1017,8 +1017,8 @@ function wml_actions.deprecated_message(cfg)
 end
 
 function wml_actions.wml_message(cfg)
-	local logger = logger_aliases[cfg.logger] or ''
-	wesnoth.log(cfg.logger or 'warn', cfg.message. cfg.to_chat)
+	local logger = cfg.logger or ''
+	wesnoth.log(cfg.logger, cfg.message. cfg.to_chat)
 end
 
 local function parse_fog_cfg(cfg)
