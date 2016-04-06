@@ -104,5 +104,20 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 	       matches_unit(un_it);
 }
 
+unit_const_ptr entity_location::get_unit() const
+{
+	if(resources::units == nullptr) {
+		return nullptr;
+	}
+	if(id_ == 0) {
+		auto un_it = resources::units->find(*this);
+		if(un_it.valid()) {
+			return un_it.get_shared_ptr();
+		}
+		return nullptr;
+	}
+	return resources::units->find(id_).get_shared_ptr();
+}
+
 } // end namespace game_events
 

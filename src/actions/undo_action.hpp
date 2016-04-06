@@ -4,14 +4,23 @@
 #include "map/location.hpp"
 #include "units/ptr.hpp"
 #include "synced_context.hpp"
+#include "game_events/pump.hpp" // for queued_event
+#include "config.hpp"
 
 #include <boost/noncopyable.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/optional.hpp>
+
 namespace actions {
 	class undo_list;
-}
-namespace actions {
+	
+	struct undo_event {
+		config commands, data;
+		map_location loc1, loc2, filter_loc1, filter_loc2;
+		size_t uid1, uid2;
+		std::string id1, id2;
+		undo_event(const config& cmds, const game_events::queued_event& ctx);
+		undo_event(const config& first, const config& second, const config& weapons, const config& cmds);
+	};
 
 	/// Records information to be able to undo an action.
 	/// Each type of action gets its own derived type.
@@ -40,38 +49,13 @@ namespace actions {
 		/// Default constructor.
 		/// It is assumed that undo actions are contructed after the action is performed
 		/// so that the unit id diff does not change after this contructor.
-		undo_action()
-			: undo_action_base()
-			, replay_data()
-			, unit_id_diff(synced_context::get_unit_id_diff())
-			, umc_commands_undo()
-			, umc_commands_redo()
-		{
-			umc_commands_undo.swap(synced_context::get_undo_commands());
-			umc_commands_redo.swap(synced_context::get_redo_commands());
-		}
-		undo_action(const config& cfg)
-			: undo_action_base()
-			, replay_data(cfg.child_or_empty("replay_data"))
-			, unit_id_diff(cfg["unit_id_diff"])
-			, umc_commands_undo()
-			, umc_commands_redo()
-		{
-			read_tconfig_vector(umc_commands_undo, cfg, "undo_actions");
-			read_tconfig_vector(umc_commands_redo, cfg, "redo_actions");
-		}
+		undo_action();
+		undo_action(const config& cfg);
 		// Virtual destructor to support derived classes.
 		virtual ~undo_action() {}
 
 		/// Writes this into the provided config.
-		virtual void write(config & cfg) const
-		{
-			cfg.add_child("replay_data", replay_data);
-			cfg["unit_id_diff"] = unit_id_diff;
-			write_tconfig_vector(umc_commands_undo, cfg, "undo_actions");
-			write_tconfig_vector(umc_commands_redo, cfg, "redo_actions");
-			undo_action_base::write(cfg);
-		}
+		virtual void write(config & cfg) const;
 
 		/// Undoes this action.
 		/// @return true on success; false on an error.
@@ -87,14 +71,14 @@ namespace actions {
 		/// TODO: does it really make sense to allow undoing if the unit id counter has changed?
 		int unit_id_diff;
 		/// actions wml (specified by wml) that should be executed when undoing this command.
-		typedef boost::ptr_vector<config> tconfig_vector;
-		tconfig_vector umc_commands_undo;
-		tconfig_vector umc_commands_redo;
+		typedef std::vector<undo_event> event_vector;
+		event_vector umc_commands_undo;
+		event_vector umc_commands_redo;
 		void execute_undo_umc_wml();
 		void execute_redo_umc_wml();
 
-		static void read_tconfig_vector(tconfig_vector& vec, const config& cfg, const std::string& tag);
-		static void write_tconfig_vector(const tconfig_vector& vec, config& cfg, const std::string& tag);
+		static void read_event_vector(event_vector& vec, const config& cfg, const std::string& tag);
+		static void write_event_vector(const event_vector& vec, config& cfg, const std::string& tag);
 	};
 
 	/// entry for player actions that do not need any special code to be performed when undoing such as right-click menu items.

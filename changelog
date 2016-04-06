@@ -16,6 +16,11 @@ Version 1.13.4+dev:
    * New ~SCALE_INTO_SHARP(w,h) IPF which preserves aspect ratio, using
      nearest neighbor scaling.
    * Support delayed_variable_substitution= in [on_undo], [on_redo]
+     Note that this means $unit.x and $unit.y may not reflect the unit's
+     true location, so using [unstore_unit] on $unit may have unexpected effects.
+     This applies to $second_unit too. The $x1, $y1, $x2, $y2 variables work fine
+     though, so in most cases they can be used instead. Anything else in $unit
+     or $second_unit is also fine.
    * formula= in SUF can now reference $other_unit via the formula variable "other"
    * formula= now supported in location, side, and weapon filters
    * Weapon filters now support number, parry, accuracy, and movement_used

@@ -1180,21 +1180,21 @@ WML_HANDLER_FUNCTION(volume,, cfg)
 
 }
 
-WML_HANDLER_FUNCTION(on_undo,, cfg)
+WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
 {
 	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_undo_commands(cfg.get_config());
+		synced_context::add_undo_commands(cfg.get_config(), event_info);
 	} else {
-		synced_context::add_undo_commands(cfg.get_parsed_config());
+		synced_context::add_undo_commands(cfg.get_parsed_config(), event_info);
 	}
 }
 
-WML_HANDLER_FUNCTION(on_redo,, cfg)
+WML_HANDLER_FUNCTION(on_redo, event_info, cfg)
 {
 	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_redo_commands(cfg.get_config());
+		synced_context::add_redo_commands(cfg.get_config(), event_info);
 	} else {
-		synced_context::add_redo_commands(cfg.get_parsed_config());
+		synced_context::add_redo_commands(cfg.get_parsed_config(), event_info);
 	}
 }
 
