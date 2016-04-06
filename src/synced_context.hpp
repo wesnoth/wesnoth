@@ -20,6 +20,7 @@
 #include "replay.hpp"
 #include "random_new.hpp"
 #include "random_new_synced.hpp"
+#include "game_events/pump.hpp" // for queued_event
 #include "generic_event.hpp"
 #include "mouse_handler_base.hpp"
 #include <boost/shared_ptr.hpp>
@@ -27,10 +28,6 @@
 #include <deque>
 
 class config;
-
-namespace game_events {
-	struct queued_event;
-}
 
 //only static methods.
 class synced_context
