@@ -17,8 +17,6 @@
 #include "events.hpp"
 #include "gui/core/log.hpp"
 
-#include <boost/static_assert.hpp>
-
 #include <SDL_timer.h>
 
 #include <map>
@@ -115,7 +113,7 @@ size_t add_timer(const Uint32 interval,
 				 const std::function<void(size_t id)>& callback,
 				 const bool repeat)
 {
-	BOOST_STATIC_ASSERT(sizeof(size_t) == sizeof(void*));
+	static_assert(sizeof(size_t) == sizeof(void*), "Pointer and size_t are not the same size");
 
 	DBG_GUI_E << "Adding timer.\n";
 

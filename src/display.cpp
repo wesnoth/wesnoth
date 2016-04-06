@@ -1300,7 +1300,7 @@ inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, 
 		SHIFT_Y              = BITS_FOR_X_PARITY + SHIFT_X_PARITY,
 		SHIFT_LAYER_GROUP    = BITS_FOR_Y + SHIFT_Y
 	};
-	BOOST_STATIC_ASSERT(SHIFT_LAYER_GROUP + BITS_FOR_LAYER_GROUP == sizeof(key_) * 8);
+	static_assert(SHIFT_LAYER_GROUP + BITS_FOR_LAYER_GROUP == sizeof(key_) * 8, "Bit field too small");
 
 	// the parity of x must be more significant than the layer but less significant than y.
 	// Thus basically every row is split in two: First the row containing all the odd x
