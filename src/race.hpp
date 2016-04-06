@@ -17,8 +17,7 @@
 
 #include "config.hpp"
 #include "serialization/unicode_types.hpp"
-
-
+#include "utils/context_free_grammar_generator.hpp"
 
 typedef std::map<ucs4::string, ucs4::string > markov_prefix_map;
 
@@ -63,6 +62,7 @@ private:
 	unsigned int ntraits_;
 	markov_prefix_map next_[NUM_GENDERS];
 	int chain_size_;
+	context_free_grammar_generator name_generator_[NUM_GENDERS];
 
 	config::const_child_itors traits_;
 	config::const_child_itors topics_;
