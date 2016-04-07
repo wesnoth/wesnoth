@@ -16,21 +16,23 @@
 
 #include "gui/widgets/pane.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/const_clone.tpp"
-#include "gui/auxiliary/window_builder/pane.hpp"
-#include "gui/auxiliary/event/message.hpp"
+#include "utils/const_clone.hpp"
+#include "gui/core/event/message.hpp"
+#include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER "tpane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -56,11 +58,11 @@ struct tpane_implementation
 		 * First test whether the mouse is at the pane.
 		 */
 		if(pane->twidget::find_at(coordinate, must_be_active) != pane) {
-			return NULL;
+			return nullptr;
 		}
 
 		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
-		BOOST_FOREACH(thack item, pane->items_)
+		for(thack item : pane->items_)
 		{
 
 			if(item.grid->get_visible() == twidget::tvisible::invisible) {
@@ -80,7 +82,7 @@ struct tpane_implementation
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 	/**
@@ -94,7 +96,7 @@ struct tpane_implementation
 	grid(W pane, const unsigned id)
 	{
 		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
-		BOOST_FOREACH(thack item, pane->items_)
+		for(thack item : pane->items_)
 		{
 
 			if(item.id == id) {
@@ -102,7 +104,7 @@ struct tpane_implementation
 			}
 		}
 
-		return NULL;
+		return nullptr;
 	}
 };
 
@@ -111,10 +113,10 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(tplacer_::vertical, 1))
+	, placer_(tplacer_::build(tplacer_::tgrow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
+			std::bind(
 					&tpane::signal_handler_request_placement, this, _1, _2, _3),
 			event::tdispatcher::back_pre_child);
 }
@@ -127,7 +129,7 @@ tpane::tpane(const implementation::tbuilder_pane& builder)
 	, placer_(tplacer_::build(builder.grow_direction, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
-			boost::bind(
+			std::bind(
 					&tpane::signal_handler_request_placement, this, _1, _2, _3),
 			event::tdispatcher::back_pre_child);
 }
@@ -144,7 +146,7 @@ unsigned tpane::create_item(const std::map<std::string, string_map>& item_data,
 
 	item.grid->set_parent(this);
 
-	FOREACH(const AUTO & data, item_data)
+	for(const auto & data : item_data)
 	{
 		tcontrol* control
 				= find_widget<tcontrol>(item.grid, data.first, false, false);
@@ -179,7 +181,7 @@ void tpane::layout_initialise(const bool full_initialisation)
 
 	twidget::layout_initialise(full_initialisation);
 
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		if(item.grid->get_visible() != twidget::tvisible::invisible) {
 			item.grid->layout_initialise(full_initialisation);
@@ -192,7 +194,7 @@ tpane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		if(item.grid->get_visible() != twidget::tvisible::invisible) {
 			item.grid->draw_children(frame_buffer, x_offset, y_offset);
@@ -203,7 +205,7 @@ tpane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 void tpane::child_populate_dirty_list(twindow& caller,
 									  const std::vector<twidget*>& call_stack)
 {
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		std::vector<twidget*> child_call_stack = call_stack;
 		item.grid->populate_dirty_list(caller, child_call_stack);
@@ -219,7 +221,7 @@ void tpane::sort(const tcompare_functor& compare_functor)
 
 void tpane::filter(const tfilter_functor& filter_functor)
 {
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		item.grid->set_visible(filter_functor(item)
 									   ? twidget::tvisible::visible
@@ -260,7 +262,7 @@ iterator::twalker_* tpane::create_walker()
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
 
 tgrid* tpane::grid(const unsigned id)
@@ -277,7 +279,7 @@ void tpane::place_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
@@ -293,7 +295,7 @@ void tpane::set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
@@ -309,7 +311,7 @@ void tpane::place_or_set_origin_children()
 {
 	prepare_placement();
 	unsigned index = 0;
-	FOREACH(AUTO & item, items_)
+	for(auto & item : items_)
 	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
@@ -330,7 +332,7 @@ void tpane::prepare_placement() const
 	assert(placer_.get());
 	placer_->initialise();
 
-	FOREACH(const AUTO & item, items_)
+	for(const auto & item : items_)
 	{
 		if(item.grid->get_visible() == twidget::tvisible::invisible) {
 			continue;
@@ -348,7 +350,7 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 
 	twidget* widget = dynamic_cast<twidget*>(&dispatcher);
 	if(widget) {
-		FOREACH(AUTO & item, items_)
+		for(auto & item : items_)
 		{
 			if(item.grid->has_widget(*widget)) {
 				if(item.grid->get_visible() != twidget::tvisible::invisible) {
@@ -381,5 +383,68 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 	assert(false);
 	handled = false;
 }
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{pane_description}
+ *
+ *        A pane is a container where new members can be added and removed
+ *        during run-time.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_viewport
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="pane"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Label ==
+ *
+ * @macro = viewport_description
+ *
+ * List with the label specific variables:
+ * @begin{table}{config}
+ *     grow_direction & grow_direction & &
+ *                                The direction in which new items grow. $
+ *     parallel_items & unsigned & &
+ *                                The number of items that are growing in
+ *                                parallel. $
+ *     item_definition & section & &
+ *                                The definition of a new item. $
+ * @end{table}
+ *
+ * @begin{tag}{name="item_definition"}{min=1}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="item_definition"}
+ * @end{tag}{name="pane"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_pane::tbuilder_pane(const config& cfg)
+	: tbuilder_widget(cfg)
+	, grow_direction(
+			  lexical_cast<tplacer_::tgrow_direction>(cfg["grow_direction"]))
+	, parallel_items(cfg["parallel_items"])
+	, item_definition(new tbuilder_grid(cfg.child("item_definition", "[pane]")))
+{
+	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
+}
+
+twidget* tbuilder_pane::build() const
+{
+	return build(treplacements());
+}
+
+twidget* tbuilder_pane::build(const treplacements& /*replacements*/) const
+{
+	return tpane::build(*this);
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

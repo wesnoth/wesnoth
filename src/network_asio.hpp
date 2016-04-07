@@ -31,7 +31,8 @@
 #include <boost/asio.hpp>
 #include <boost/optional.hpp>
 #include "exceptions.hpp"
-#include "config.hpp"
+
+class config;
 
 namespace network_asio {
 

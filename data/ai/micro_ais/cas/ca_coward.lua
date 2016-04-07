@@ -2,7 +2,7 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_coward(cfg)
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local coward = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", filter }
@@ -13,17 +13,17 @@ end
 
 local ca_coward = {}
 
-function ca_coward:evaluation(ai, cfg)
+function ca_coward:evaluation(cfg)
     if get_coward(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_coward:execution(ai, cfg)
+function ca_coward:execution(cfg)
     local coward = get_coward(cfg)
     local reach = wesnoth.find_reach(coward)
 
     local filter_second =
-        cfg.filter_second
+        H.get_child(cfg, "filter_second")
         or { { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } } }
     local enemies = wesnoth.get_units {
         { "and", filter_second },

@@ -66,7 +66,7 @@ public:
 		}
 	}
 
-	std::vector<gui::widget>* get_widgets() { return NULL; }
+	std::vector<gui::widget>* get_widgets() { return nullptr; }
 
 	//group
 	virtual void set_group(size_t /*index*/) {}

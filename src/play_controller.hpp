@@ -24,7 +24,7 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
 
@@ -53,10 +53,6 @@ namespace game_events {
 	class wml_menu_item;
 } // namespace game_events
 
-namespace preferences {
-	struct display_manager;
-}
-
 namespace soundsource {
 	class manager;
 } // namespace soundsource
@@ -80,7 +76,7 @@ namespace wb {
 // Holds gamestate related objects
 class game_state;
 
-class play_controller : public controller_base, public events::observer, public savegame::savegame_config
+class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
 	play_controller(const config& level, saved_game& state_of_game,
@@ -140,7 +136,7 @@ public:
 		gamestate().end_level_data_ = boost::none;
 	}
 	bool is_regular_game_end() const {
-		return gamestate().end_level_data_.get_ptr() != NULL;
+		return gamestate().end_level_data_.get_ptr() != nullptr;
 	}
 	const end_level_data& get_end_level_data_const() const {
 		return *gamestate().end_level_data_;
@@ -218,7 +214,7 @@ public:
 
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
-	bool is_browsing() const OVERRIDE;
+	bool is_browsing() const override;
 	bool is_lingering() const { return linger_; }
 
 	class hotkey_handler;
@@ -285,10 +281,10 @@ protected:
 
 	void init_managers();
 	///preload events cannot be synced
-	void fire_preload(const config& level);
+	void fire_preload();
 	void fire_prestart();
 	void fire_start();
-	void start_game(const config& level);
+	void start_game();
 	virtual void init_gui();
 	void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
@@ -313,7 +309,6 @@ protected:
 	saved_game& saved_game_;
 
 	//managers
-	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
 
 	//whiteboard manager
@@ -365,8 +360,8 @@ private:
 	hotkey::scope_changer scope_;
 
 protected:
+	mutable bool ignore_replay_errors_;
 	bool player_type_changed_;
-
 	virtual void sync_end_turn() {};
 	virtual void check_time_over();
 	virtual void update_viewing_player() = 0;

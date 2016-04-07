@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include <boost/assign/list_of.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "savegame.hpp"
@@ -21,9 +20,9 @@
 #include "save_index.hpp"
 #include "carryover.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
-#include "formula_string_utils.hpp"
+#include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
@@ -36,8 +35,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_label.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
 #include "persist_manager.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -45,11 +44,9 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
-//#include "unit.hpp"
-#include "unit_id.hpp"
+//#include "units/unit.hpp"
+#include "units/id.hpp"
 #include "version.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
@@ -94,6 +91,7 @@ loadgame::loadgame(CVideo& video, const config& game_config, saved_game& gamesta
 	, show_replay_(false)
 	, cancel_orders_(false)
 	, select_difficulty_(false)
+	, summary_()
 {}
 
 void loadgame::show_dialog()
@@ -115,23 +113,20 @@ void loadgame::show_dialog()
 		filename_ = load_dialog.filename();
 		show_replay_ = load_dialog.show_replay();
 		cancel_orders_ = load_dialog.cancel_orders();
+
+		summary_ = load_dialog.summary();
 	}
 }
 
 void loadgame::show_difficulty_dialog()
 {
-	create_save_info creator;
-	save_info info = creator(filename_);
-	const config& cfg_summary = info.summary();
-
-	if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
-		|| (!cfg_summary["turn"].empty()) ) {
+	if(summary_["corrupt"].to_bool() || (is_replay_save(summary_)) || (!summary_["turn"].empty())) {
 		return;
 	}
 
-	std::string campaign_id = cfg_summary["campaign"];
+	std::string campaign_id = summary_["campaign"];
 
-	BOOST_FOREACH(const config &campaign, game_config_.child_range("campaign"))
+	for(const config &campaign : game_config_.child_range("campaign"))
 	{
 		if(campaign["id"] != campaign_id) {
 			continue;
@@ -316,6 +311,11 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
+	if(is_replay_save(summary_)) {
+		gui2::show_transient_message(video_, _("Load Game"), _("Replays are not supported in multiplayer mode."));
+		return false;
+	}
+
 	if(gamestate_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		gui2::show_transient_error_message(video_, _("This is not a multiplayer save."));
 		return false;
@@ -463,7 +463,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		before_save();
 
 		write_game_to_disk(filename_);
-		if (resources::persist != NULL) {
+		if (resources::persist != nullptr) {
 			resources::persist->end_transaction();
 			resources::persist ->start_transaction();
 		}
@@ -471,12 +471,12 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
 
-		if (video != NULL && show_confirmation_)
+		if (video != nullptr && show_confirmation_)
 			gui2::show_transient_message(*video, _("Saved"), _("The game has been saved."));
 		return true;
 	} catch(game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message << std::endl;
-		if (video != NULL){
+		if (video != nullptr){
 			gui2::show_error_message(*video, error_message_ + e.message);
 			//do not bother retrying, since the user can just try to save the game again
 			//maybe show a yes-no dialog for "disable autosaves now"?
@@ -561,13 +561,7 @@ replay_savegame::replay_savegame(saved_game &gamestate, const compression::forma
 
 void replay_savegame::create_filename()
 {
-	std::stringstream stream;
-
-	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
-			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("replay");
-
-	set_filename(stream.str());
+	set_filename((formatter() << gamestate().classification().label << " " << _("replay")).str());
 }
 
 void replay_savegame::write_game(config_writer &out) {
@@ -610,19 +604,19 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui)
+oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, bool& ignore)
 	: ingame_savegame(gamestate, gui, preferences::save_compression_format())
+	, ignore_(ignore)
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
 {
-	static bool ignore_all = false;
 	int res = 0;
 
 	std::string filename = this->filename();
 
-	if (!ignore_all){
-		gui2::tgame_save_oos dlg(ignore_all, filename, title(), message);
+	if (!ignore_){
+		gui2::tgame_save_oos dlg(ignore_, filename, title(), message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
@@ -645,14 +639,9 @@ ingame_savegame::ingame_savegame(saved_game &gamestate,
 
 void ingame_savegame::create_filename()
 {
-	std::stringstream stream;
-
-	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
-			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"];
-	set_filename(stream.str());
+	set_filename((formatter() << gamestate().classification().label
+		<< " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"]).str());
 }
-
 
 void ingame_savegame::write_game(config_writer &out) {
 	log_scope("write_game");
@@ -683,7 +672,7 @@ static void convert_old_saves_1_11_0(config& cfg)
 		//copy rng and menu items from toplevel to new carryover_sides
 		carryover["random_seed"] = cfg["random_seed"];
 		carryover["random_calls"] = cfg["random_calls"];
-		BOOST_FOREACH(const config& menu_item, cfg.child_range("menu_item")){
+		for(const config& menu_item : cfg.child_range("menu_item")) {
 			carryover.add_child("menu_item", menu_item);
 		}
 		carryover["difficulty"] = cfg["difficulty"];
@@ -695,28 +684,28 @@ static void convert_old_saves_1_11_0(config& cfg)
 
 		//copy sides from either snapshot or replay_start to new carryover_sides
 		if(!snapshot.empty()){
-			BOOST_FOREACH(const config& side, snapshot.child_range("side")){
+			for(const config& side : snapshot.child_range("side")) {
 				carryover.add_child("side", side);
 			}
 			//for compatibility with old savegames that use player instead of side
-			BOOST_FOREACH(const config& side, snapshot.child_range("player")){
+			for(const config& side : snapshot.child_range("player")) {
 				carryover.add_child("side", side);
 			}
 			//save the sides from replay_start in carryover_sides_start
-			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+			for(const config& side : replay_start.child_range("side")) {
 				carryover_start.add_child("side", side);
 			}
 			//for compatibility with old savegames that use player instead of side
-			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+			for(const config& side : replay_start.child_range("player")) {
 				carryover_start.add_child("side", side);
 			}
 		} else if (!replay_start.empty()){
-			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+			for(const config& side : replay_start.child_range("side")) {
 				carryover.add_child("side", side);
 				carryover_start.add_child("side", side);
 			}
 			//for compatibility with old savegames that use player instead of side
-			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+			for(const config& side : replay_start.child_range("player")) {
 				carryover.add_child("side", side);
 				carryover_start.add_child("side", side);
 			}
@@ -821,13 +810,13 @@ static void convert_old_saves_1_13_1(config& cfg)
 	//This currently only fixes start-of-scenario saves.
 	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
 	{
-		BOOST_FOREACH(config& side, carryover_sides_start.child_range("side"))
+		for(config& side : carryover_sides_start.child_range("side"))
 		{
-			BOOST_FOREACH(config& unit, side.child_range("unit"))
+			for(config& unit : side.child_range("unit"))
 			{
 				if(config& modifications = unit.child("modifications"))
 				{
-					BOOST_FOREACH(config& advancement, modifications.child_range("advance"))
+					for(config& advancement : modifications.child_range("advance"))
 					{
 						modifications.add_child("advancement", advancement);
 					}
@@ -836,10 +825,10 @@ static void convert_old_saves_1_13_1(config& cfg)
 			}
 		}
 	}
-	BOOST_FOREACH(config& snapshot, cfg.child_range("snapshot")) {
+	for(config& snapshot : cfg.child_range("snapshot")) {
 		if (snapshot.has_attribute("used_items")) {
 			config used_items;
-			BOOST_FOREACH(const std::string& item, utils::split(snapshot["used_items"])) {
+			for(const std::string& item : utils::split(snapshot["used_items"])) {
 				used_items[item] = true;
 			}
 			snapshot.remove_attribute("used_items");

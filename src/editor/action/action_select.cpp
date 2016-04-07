@@ -21,8 +21,6 @@
 #include "editor/action/action_select.hpp"
 #include "editor/map/map_context.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace editor {
 
 editor_action_select* editor_action_select::clone() const
@@ -32,7 +30,7 @@ editor_action_select* editor_action_select::clone() const
 
 void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
-	BOOST_FOREACH(const map_location& loc, locs) {
+	for (const map_location& loc : locs) {
 		LOG_ED << "Extending by " << loc << "\n";
 		area_.insert(loc);
 	}
@@ -41,7 +39,7 @@ void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_
 editor_action* editor_action_select::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	BOOST_FOREACH(const map_location& loc, area_) {
+	for (const map_location& loc : area_) {
 		undo_locs.insert(loc);
 		mc.add_changed_location(loc);
 	}
@@ -51,7 +49,7 @@ editor_action* editor_action_select::perform(map_context& mc) const
 
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
-	BOOST_FOREACH(const map_location& loc, area_) {
+	for (const map_location& loc : area_) {
 
 		mc.get_map().add_to_selection(loc);
 		mc.add_changed_location(loc);
@@ -65,7 +63,7 @@ editor_action_deselect* editor_action_deselect::clone() const
 
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	BOOST_FOREACH(const map_location& loc, locs) {
+	for (const map_location& loc : locs) {
 		LOG_ED << "Checking " << loc << "\n";
 		if (!map.in_selection(loc)) {
 			LOG_ED << "Extending by " << loc << "\n";
@@ -77,7 +75,7 @@ void editor_action_deselect::extend(const editor_map& map, const std::set<map_lo
 editor_action* editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	BOOST_FOREACH(const map_location& loc, area_) {
+	for (const map_location& loc : area_) {
 		if (mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
@@ -89,7 +87,7 @@ editor_action* editor_action_deselect::perform(map_context& mc) const
 
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
-	BOOST_FOREACH(const map_location& loc, area_) {
+	for (const map_location& loc : area_) {
 		mc.get_map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}

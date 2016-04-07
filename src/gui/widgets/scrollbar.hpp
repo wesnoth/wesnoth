@@ -15,10 +15,10 @@
 #ifndef GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 #define GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 
-#include "gui/auxiliary/notifier.hpp"
+#include "gui/core/notifier.hpp"
 #include "gui/widgets/control.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -98,18 +98,18 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -169,7 +169,7 @@ protected:
 	 *
 	 * After a recalculation the canvasses also need to be updated.
 	 */
-	virtual void update_canvas() OVERRIDE;
+	virtual void update_canvas() override;
 
 	/**
 	 * Callback for subclasses to get notified about positioner movement.
@@ -302,6 +302,16 @@ private:
 	 * @retval 1                  Coordinate is on the bar after the positioner.
 	 */
 	virtual int on_bar(const tpoint& coordinate) const = 0;
+
+	/**
+	 * Is the coordinate in the bar's orthogonal range?
+	 *
+	 * @param coordinate          Coordinate to test whether it's in-range.
+	 *
+	 * @returns                   Whether the location is in the bar's.
+	 *                            orthogonal range.
+	 */
+	virtual bool in_orthogonal_range(const tpoint& coordinate) const = 0;
 
 	/**
 	 * Gets the relevant difference in between the two positions.

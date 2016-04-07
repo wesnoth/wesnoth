@@ -109,7 +109,7 @@ static void add_widget(gui2::tgrid& grid
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(NULL));
+	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
@@ -269,7 +269,7 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 	cache.add_define("EDITOR");
 	cache.add_define("MULTIPLAYER");
 
-	lg::set_log_domain_severity("gui/iterator", lg::debug);
+	lg::set_log_domain_severity("gui/iterator", lg::debug());
 	lg::timestamps(false);
 
 	std::stringstream sstr;

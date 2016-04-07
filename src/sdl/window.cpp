@@ -14,7 +14,6 @@
 
 #include "sdl/window.hpp"
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 
 #include "sdl/exception.hpp"
 #include "sdl/image.hpp"
@@ -56,6 +55,8 @@ twindow::twindow(const std::string& title,
 	pixel_format_ = info.texture_formats[0];
 
 	fill(0,0,0);
+
+	render();
 }
 
 twindow::~twindow()
@@ -141,4 +142,3 @@ twindow::operator SDL_Renderer*()
 
 } // namespace sdl
 
-#endif

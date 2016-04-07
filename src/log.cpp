@@ -24,7 +24,6 @@
 
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/date_time.hpp>
 
 #include <map>
@@ -48,7 +47,7 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 
 static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
-static std::ostream *output_stream = NULL;
+static std::ostream *output_stream = nullptr;
 
 static std::ostream& output()
 {
@@ -77,11 +76,38 @@ static int strict_level_ = -1;
 void timestamps(bool t) { timestamp = t; }
 void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
-logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
-log_domain general("general");
+logger& err()
+{
+	static logger lg("error", 0);
+	return lg;
+}
+
+logger& warn()
+{
+	static logger lg("warning", 1);
+	return lg;
+}
+
+logger& info()
+{
+	static logger lg("info", 2);
+	return lg;
+}
+
+logger& debug()
+{
+	static logger lg("debug", 3);
+	return lg;
+}
+
+log_domain& general()
+{
+	static log_domain dom("general");
+	return dom;
+}
 
 log_domain::log_domain(char const *name)
-	: domain_(NULL)
+	: domain_(nullptr)
 {
 	// Indirection to prevent initialization depending on link order.
 	if (!domains) domains = new domain_map;
@@ -92,11 +118,11 @@ bool set_log_domain_severity(std::string const &name, int severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
-		BOOST_FOREACH(logd &l, *domains) {
+		for(logd &l : *domains) {
 			l.second = severity;
 		}
 	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
-		BOOST_FOREACH(logd &l, *domains) {
+		for(logd &l : *domains) {
 			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
 				l.second = severity;
 		}
@@ -115,7 +141,7 @@ bool set_log_domain_severity(std::string const &name, const logger &lg) {
 std::string list_logdomains(const std::string& filter)
 {
 	std::ostringstream res;
-	BOOST_FOREACH(logd &l, *domains) {
+	for(logd &l : *domains) {
 		if(l.first.find(filter) != std::string::npos)
 			res << l.first << "\n";
 	}
@@ -190,7 +216,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 			if(precise_timestamp) {
 				print_precise_timestamp(stream);
 			} else {
-				stream << get_timestamp(time(NULL));
+				stream << get_timestamp(time(nullptr));
 			}
 		}
 		if (show_names) {
@@ -202,7 +228,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 
 void scope_logger::do_log_entry(log_domain const &domain, const std::string& str)
 {
-	output_ = &debug(domain, false, true);
+	output_ = &debug()(domain, false, true);
 	str_ = str;
 	ticks_ = boost::posix_time::microsec_clock::local_time();
 	(*output_) << "{ BEGIN: " << str_ << "\n";
@@ -214,7 +240,7 @@ void scope_logger::do_log_exit()
 	const long ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
 	--indent;
 	do_indent();
-	if (timestamp) (*output_) << get_timestamp(time(NULL));
+	if (timestamp) (*output_) << get_timestamp(time(nullptr));
 	(*output_) << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 
@@ -224,7 +250,11 @@ void scope_logger::do_indent() const
 		(*output_) << "  ";
 }
 
-std::stringstream wml_error;
+std::stringstream& wml_error()
+{
+	static std::stringstream lg;
+	return lg;
+}
 
 } // end namespace lg
 

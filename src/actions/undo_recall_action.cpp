@@ -1,14 +1,14 @@
 #include "undo_recall_action.hpp"
 #include "create.hpp"
 
-#include "../construct_dialog.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../replay.hpp"
-#include "../unit_map.hpp"
-#include "../statistics.hpp"
-#include "../log.hpp"
-#include "../game_display.hpp"
+#include "gui/dialogs/transient_message.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "replay.hpp"
+#include "units/map.hpp"
+#include "statistics.hpp"
+#include "log.hpp"
+#include "game_display.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -107,7 +107,7 @@ bool recall_action::redo(int side)
 		}
 		sync.do_final_checkup();
 	} else {
-		gui::dialog(gui.video(), "", msg, gui::OK_ONLY).show();
+		gui2::show_transient_message(gui.video(), "", msg);
 		return false;
 	}
 

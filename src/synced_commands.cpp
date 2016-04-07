@@ -16,9 +16,9 @@
 
 #include "log.hpp"
 #include "resources.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 #include "game_data.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "team.hpp"
 #include "play_controller.hpp"
 #include "actions/create.hpp"
@@ -29,16 +29,13 @@
 #include "game_preferences.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "dialogs.hpp"
-#include "unit_helper.hpp"
+#include "units/helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "formula_string_utils.hpp"
-#include "unit_types.hpp"
-#include "unit_display.hpp"
-
-#include <boost/foreach.hpp>
+#include "formula/string_utils.hpp"
+#include "units/types.hpp"
+#include "units/udisplay.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
@@ -313,7 +310,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	{
 		show_move = show_move && preferences::show_ai_moves();
 	}
-	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, skip_sighted, skip_ally_sighted, show_move);
+	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : nullptr, skip_sighted, skip_ally_sighted, show_move);
 
 	return true;
 }
@@ -426,7 +423,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		i->write(cfg);
 		resources::units->erase(loc);
 		config& statuses = cfg.child_or_add("status");
-		BOOST_FOREACH(std::string status, utils::split(value)) {
+		for (std::string status : utils::split(value)) {
 			bool add = true;
 			if (status.length() >= 1 && status[0] == '-') {
 				add = false;
@@ -550,7 +547,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 
 	debug_notification(":turn debug command was used during turn of $player");
 
-	resources::tod_manager->set_turn(child["turn"].to_int(1), *resources::gamedata);
+	resources::tod_manager->set_turn(child["turn"].to_int(1), resources::gamedata);
 
 	resources::screen->new_turn();
 	resources::screen->redraw_everything();

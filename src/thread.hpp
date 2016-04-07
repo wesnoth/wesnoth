@@ -64,8 +64,8 @@ public:
 	// \param f the function at which the thread should start executing
 	// \param data passed to f
 	//
-	// \pre f != NULL
-	explicit thread(int (*f)(void*), void* data=NULL);
+	// \pre f != nullptr
+	explicit thread(int (*f)(void*), void* data=nullptr);
 
 	// Destroy the thread object. This is done by waiting on the
 	// thread with the join() operation, thus blocking until the

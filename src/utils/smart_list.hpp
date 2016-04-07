@@ -51,15 +51,15 @@ class  smart_list
 	struct node_t
 	{
 		/// Default constructor. This is for creating the root of a list.
-		node_t() : dat_ptr(NULL), ref_count(1), next(this), prev(this)
+		node_t() : dat_ptr(nullptr), ref_count(1), next(this), prev(this)
 		{}
 		/// Initialized constructor. This is for creating a node in a list.
-		explicit node_t(const Data & d) : dat_ptr(new Data(d)), ref_count(1), next(NULL), prev(NULL)
+		explicit node_t(const Data & d) : dat_ptr(new Data(d)), ref_count(1), next(nullptr), prev(nullptr)
 		{}
 		/// Destructor.
 		~node_t();
 
-		/// The data of the node. This is NULL for a list's root.
+		/// The data of the node. This is nullptr for a list's root.
 		Data * const dat_ptr;
 		/// ref_count counts 1 for the list and 2 for each iterator pointing to
 		/// this node. (So nodes are flagged for deletion when ref_count is even.)
@@ -91,11 +91,11 @@ class  smart_list
 		typedef value_type *                    pointer;
 		typedef value_type &                    reference;
 		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef ptrdiff_t                       difference_type; // Needed to use this with BOOST_FOREACH
+		typedef ptrdiff_t                       difference_type;
 
 	protected: // Construct this via derived classes.
 		/// Default constructor
-		iterator_base() : ptr_(NULL) {}
+		iterator_base() : ptr_(nullptr) {}
 		/// Initialized constructor
 		explicit iterator_base(node_t * ptr) : ptr_(ptr)
 		{ skip_flagged(); refer(); }
@@ -638,7 +638,7 @@ inline typename smart_list<Data>::node_t * smart_list<Data>::check_erase
 {
 	// Sanity check.
 	if ( !iterator::derefable(pos) )
-		return NULL;
+		return nullptr;
 
 	// Remember our successor.
 	node_t * ret_val = pos->next;
@@ -688,8 +688,8 @@ inline void smart_list<Data>::unlink(node_t & begin_unlink, node_t & end_unlink)
 	end_unlink.next->prev = begin_unlink.prev;
 
 	// Disconnect the nodes from the list. This leaves the nodes in limbo.
-	end_unlink.next = NULL;
-	begin_unlink.prev = NULL;
+	end_unlink.next = nullptr;
+	begin_unlink.prev = nullptr;
 }
 
 /**
@@ -755,12 +755,12 @@ template <class Data>
 inline smart_list<Data>::node_t::~node_t()
 {
 	// Some safety checks.
-	if ( dat_ptr == NULL )
+	if ( dat_ptr == nullptr )
 		// Root node: make sure there are no lingering iterators to the list.
 		assert(next == this);
 	else {
 		// Normal node: make sure we are not still in a list.
-		assert(next == NULL  &&  prev == NULL);
+		assert(next == nullptr  &&  prev == nullptr);
 		// Make sure no iterators point to us.
 		assert(ref_count == 0);
 	}

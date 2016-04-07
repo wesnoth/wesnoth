@@ -11,13 +11,14 @@ compiler:
 env:
     - BUILD="-O0"
     - BUILD="-O2"
-    - BUILD="C++11 -O0"
     - BUILD="translations"
 
 matrix:
   exclude:
     - compiler: gcc
       env: BUILD="-O2"
+    - compiler: gcc
+      env: BUILD="C++14 -O2"
     - compiler: gcc
       env: BUILD="translations"
 
@@ -32,17 +33,23 @@ before_install:
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=20
     - export NLS=false
-    - export CXX11=false
+    - export CXXSTD=11
+
+    - if [ "$CXX" == "g++" ]; then export CXX=g++-4.7; fi
 
     - if [ "$BUILD" == "-O2" ]; then export STRICT_COMPILATION=false; fi
     - if [ "$BUILD" == "-O2" ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$BUILD" == "-O2" ]; then export WML_TEST_TIME=15; fi
 
-    - if [ "$BUILD" == "C++11 -O0" ]; then export CXX11=true; fi
-    - if [ "$BUILD" == "C++11 -O0" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
-    - if [[ "$BUILD" == "C++11 -O0" ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
-    - if [ "$BUILD" == "C++11 -O0" ]; then export PLAY_TEST=false; fi
-    - if [ "$BUILD" == "C++11 -O0" ]; then export MP_TEST=false; fi
+    - if [ "$BUILD" == "C++14 -O2" ]; then export STRICT_COMPILATION=false; fi
+    - if [ "$BUILD" == "C++14 -O2" ]; then export EXTRA_FLAGS_RELEASE=""; fi
+    - if [ "$BUILD" == "C++14 -O2" ]; then export WML_TEST_TIME=15; fi
+    - if [ "$BUILD" == "C++14 -O2" ]; then export CXXSTD="1y"; fi
+
+    - if [ "$BUILD" == "-O0" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-deprecated-declarations"; fi
+    - if [[ "$BUILD" == "-O0" ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
+    - if [ "$BUILD" == "-O0" ]; then export PLAY_TEST=false; fi
+    - if [ "$BUILD" == "-O0" ]; then export MP_TEST=false; fi
 
     - if [ "$BUILD" == "translations" ]; then export NLS=true; fi
     - if [ "$BUILD" == "translations" ]; then export TARGETS="translations"; fi
@@ -53,14 +60,14 @@ before_install:
 
 install:
     - travis_wait sudo apt-get update -qq
-    - travis_wait sudo apt-get install -qq libboost-filesystem-dev libboost-iostreams-dev libboost-random-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libboost-locale-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev gdb moreutils scons xvfb
+    - travis_wait sudo apt-get install -qq libboost-filesystem-dev libboost-iostreams-dev libboost-random-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libboost-locale-dev libboost-thread-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev gdb moreutils scons xvfb g++-4.7
 
 script: 
     - ./utils/travis/check_utf8.sh
     - ./utils/travis/utf8_bom_dog.sh
     - $CXX --version
-    - echo "*Params* --- " "cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2"
-    - scons cxxtool=$CXX --debug=time build=release extra_flags_config="$EXTRA_FLAGS_ALL" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2
+    - echo "*Params* --- " "cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx_std=$CXXSTD nls=$NLS jobs=2"
+    - scons cxxtool=$CXX --debug=time build=release extra_flags_config="$EXTRA_FLAGS_ALL" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx_std=$CXXSTD nls=$NLS jobs=2
     - "export DISPLAY=:99.0"
     - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24"
     - if [ "$CPP_TESTS" = true ]; then ./utils/travis/test_wrapper.sh; fi

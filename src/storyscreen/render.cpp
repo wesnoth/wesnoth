@@ -25,14 +25,13 @@
 #include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
 
-#include "display.hpp"
 #include "image.hpp"
 #include "language.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "text.hpp"
 #include "video.hpp"
-
-#include <boost/foreach.hpp>
+#include "widgets/button.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
@@ -86,12 +85,11 @@ namespace {
 
 namespace storyscreen {
 
-part_ui::part_ui(part &p, display &disp, gui::button &next_button,
+part_ui::part_ui(part &p, CVideo& video, gui::button &next_button,
 	gui::button &back_button, gui::button&play_button)
 	: events::sdl_handler(false)
 	, p_(p)
-	, disp_(disp)
-	, video_(disp.video())
+	, video_(video)
 	, keys_()
 	, next_button_(next_button)
 	, back_button_(back_button)
@@ -105,7 +103,7 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	, background_images_()
 	, background_positions_()
 #else
-	, background_(NULL)
+	, background_(nullptr)
 #endif
 	, imgs_()
 	, has_background_(false)
@@ -125,7 +123,7 @@ void part_ui::prepare_background()
 	has_background_ = false;
 	bool no_base_yet = true;
 
-	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
+	for (const background_layer& bl : p_.get_background_layers()) {
 		sdl::timage layer;
 
 		if (!bl.file().empty()) {
@@ -194,7 +192,7 @@ void part_ui::prepare_background()
 	bool no_base_yet = true;
 
 	// Build background surface
-	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
+	for (const background_layer& bl : p_.get_background_layers()) {
 		surface layer;
 
 		if(bl.file().empty() != true) {
@@ -256,7 +254,7 @@ void part_ui::prepare_background()
 		}
 
 		blit_surface(layer, &srect, background_, &drect);
-		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got NULL");
+		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got nullptr");
 
 		if (bl.is_base_layer() || no_base_yet) {
 			x_scale_factor_ = x_scale_factor;
@@ -298,46 +296,25 @@ void part_ui::prepare_geometry()
 	back_button_.set_location(buttons_x_, buttons_y_ - 30);
 	next_button_.set_location(buttons_x_ + play_button_.width() - next_button_.width(), buttons_y_ - 30);
 	play_button_.set_location(buttons_x_, buttons_y_);
-
-	next_button_.set_volatile(true);
-	play_button_.set_volatile(true);
-	back_button_.set_volatile(true);
 }
 
 void part_ui::prepare_floating_images()
 {
 	// Build floating image surfaces
-	BOOST_FOREACH(const floating_image& fi, p_.get_floating_images()) {
+	for (const floating_image& fi : p_.get_floating_images()) {
 		imgs_.push_back( fi.get_render_input(x_scale_factor_, y_scale_factor_, base_rect_) );
 	}
 }
 
 void part_ui::render_background()
 {
-#if SDL_VERSION_ATLEAST(2,0,0)
 	sdl::draw_solid_tinted_rectangle(
 			0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 			video_.getSurface()
 	);
-	sdl_blit(background_, NULL, video_.getSurface(), NULL);
-#else
-#ifdef SDL_GPU
-	GPU_Target *target = get_render_target();
-	GPU_Clear(target);
-	for (size_t i = 0; i<background_images_.size(); i++) {
-		const int x = background_positions_[i].first;
-		const int y = background_positions_[i].second;
-
-		background_images_[i].draw(video_, x, y);
-	}
-#else
-	sdl::draw_solid_tinted_rectangle(
-		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
-		video_.getSurface()
-	);
-	sdl_blit(background_, NULL, video_.getSurface(), NULL);
-#endif
-#endif
+	sdl_blit(background_, nullptr, video_.getSurface(), nullptr);
+	// Render the titlebox over the background
+	render_title_box();
 }
 
 bool part_ui::render_floating_images()
@@ -347,7 +324,7 @@ bool part_ui::render_floating_images()
 	last_key_ = true;
 
 	size_t fi_n = 0;
-	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
+	for (floating_image::render_input& ri : imgs_) {
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
@@ -372,18 +349,22 @@ bool part_ui::render_floating_images()
 	return true;
 #else
 	events::raise_draw_event();
-	update_whole_screen();
 
 	skip_ = false;
 	last_key_ = true;
 
 	size_t fi_n = 0;
-	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
+	for (floating_image::render_input& ri : imgs_) {
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
-			sdl_blit(ri.image, NULL, video_.getSurface(), &ri.rect);
-			update_rect(ri.rect);
+			render_background();
+			for (size_t i = 0; i <= fi_n; i++)
+			{
+				floating_image::render_input& old_ri = imgs_[i];
+				sdl_blit(old_ri.image, nullptr, video_.getSurface(), &old_ri.rect);
+				update_rect(old_ri.rect);
+			}
 		}
 
 		if (!skip_)
@@ -517,6 +498,12 @@ void part_ui::render_title_box()
 		break; // already set before
 	}
 
+	update_locker locker(video_);
+
+	next_button_.hide();
+	back_button_.hide();
+	play_button_.hide();
+
 	sdl::draw_solid_tinted_rectangle(
 		base_rect_.x + titlebox_x - titleshadow_padding,
 		base_rect_.y + titlebox_y - titleshadow_padding,
@@ -535,6 +522,11 @@ void part_ui::render_title_box()
 		static_cast<size_t>(std::max(0, titlebox_w)),
 		static_cast<size_t>(std::max(0, titlebox_h))
 	);
+
+	next_button_.hide(false);
+	back_button_.hide(false);
+	play_button_.hide(false);
+
 #endif
 }
 
@@ -586,8 +578,8 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 
 	if(has_background_) {
-		surface border_top = NULL;
-		surface border_bottom = NULL;
+		surface border_top = nullptr;
+		surface border_bottom = nullptr;
 
 		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
 			border_top = image::get_image(storybox_top_border_path);
@@ -762,7 +754,6 @@ void part_ui::render_story_box()
 
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
-		update_whole_screen();
 		wait_for_input();
 		return;
 	}
@@ -870,9 +861,7 @@ void part_ui::render_story_box()
 		}
 
 		if (dirty_ || first) {
-			if(imgs_.empty()) {
-				update_whole_screen();
-			} else if(update_area.h > 0) {
+			if(!imgs_.empty() && update_area.h > 0) {
 				update_rect(update_area);
 			}
 		}
@@ -968,7 +957,7 @@ bool part_ui::handle_interface()
 	events::pump();
 	events::raise_process_event();
 	events::raise_draw_event();
-	disp_.flip();
+	video_.flip();
 
 	return result;
 }
@@ -1002,7 +991,16 @@ part_ui::RESULT part_ui::show()
 
 void part_ui::handle_event(const SDL_Event &event)
 {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
+	if (event.type == DRAW_ALL_EVENT) {
+		dirty_ = true;
+		draw();
+	}
+
+}
+
+void part_ui::handle_window_event(const SDL_Event &event)
+{
+
 	if (event.type == SDL_WINDOWEVENT &&
 			(event.window.event == SDL_WINDOWEVENT_MAXIMIZED ||
 					event.window.event == SDL_WINDOWEVENT_RESIZED ||
@@ -1016,9 +1014,6 @@ void part_ui::handle_event(const SDL_Event &event)
 		this->prepare_floating_images();
 		dirty_ = true;
 	}
-#else
-	UNUSED(event);
-#endif
 }
 
 

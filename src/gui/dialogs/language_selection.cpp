@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/language_selection.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -26,7 +26,6 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
-#include "utils/foreach.tpp"
 
 namespace gui2
 {
@@ -59,14 +58,14 @@ namespace gui2
 
 REGISTER_DIALOG(language_selection)
 
-void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
+void tlanguage_selection::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "language_list", false);
 	window.keyboard_capture(&list);
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
-	FOREACH(const AUTO & lang, languages)
+	for(const auto & lang : languages)
 	{
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));

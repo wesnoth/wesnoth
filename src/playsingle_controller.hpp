@@ -29,8 +29,9 @@ class team;
 
 struct reset_gamestate_exception
 {
-	reset_gamestate_exception(boost::shared_ptr<config> l) : level(l) {}
+	reset_gamestate_exception(boost::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}
 	boost::shared_ptr<config> level;
+	bool start_replay;
 };
 
 class playsingle_controller : public play_controller
@@ -41,7 +42,7 @@ public:
 	virtual ~playsingle_controller();
 
 	LEVEL_RESULT play_scenario(const config& level);
-	void play_scenario_init(const config& level);
+	void play_scenario_init();
 	void play_scenario_main_loop();
 
 	virtual void handle_generic_event(const std::string& name);
@@ -59,8 +60,8 @@ public:
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
 	virtual bool should_return_to_play_side();
-	replay_controller * get_replay_controller()
-	{ return mp_replay_.get(); }
+	replay_controller * get_replay_controller() { return replay_.get(); }
+	bool is_replay() { return get_replay_controller() != nullptr; }
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
 protected:
@@ -96,7 +97,7 @@ protected:
 	};
 	END_TURN_STATE end_turn_;
 	bool skip_next_turn_;
-	boost::scoped_ptr<replay_controller> mp_replay_;
+	boost::scoped_ptr<replay_controller> replay_;
 	void linger();
 	void sync_end_turn();
 	void update_viewing_player();

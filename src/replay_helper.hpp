@@ -14,9 +14,9 @@
 #ifndef REPLAY_HELPER_H_INCLUDED
 #define REPLAY_HELPER_H_INCLUDED
 
-
-#include "config.hpp"
+#include <vector>
 #include <string>
+class config;
 struct map_location;
 struct time_of_day;
 

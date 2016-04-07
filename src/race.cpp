@@ -175,10 +175,10 @@ unit_race::unit_race(const config& cfg) :
 
 {
 	if (id_.empty()) {
-		lg::wml_error << "[race] '" << cfg["name"] << "' is missing an id field.";
+		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing an id field.";
 	}
 	if (plural_name_.empty()) {
-		lg::wml_error << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
+		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
 	}
 	// use "name" if "male_name" or "female_name" aren't available

@@ -23,8 +23,8 @@
 #include <map>
 #include <vector>
 
-#include "../mt_rng.hpp"
-#include "../make_enum.hpp"
+#include "mt_rng.hpp"
+#include "utils/make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 //class player;
@@ -40,7 +40,6 @@ public:
 	MAKE_ENUM(CONTROLLER,
 		(HUMAN, "human")
 		(AI, "ai")
-		/* NULL is alreaddy the name of a standart c++ macro */
 		(EMPTY, "null")
 	)
 
@@ -193,8 +192,8 @@ public:
 		send_server_message_to_all(message.c_str(), exclude);
 	}
 
-	void send_server_message(const char* message, socket_ptr sock=socket_ptr(), simple_wml::document* doc=NULL) const;
-	void send_server_message(const std::string& message, socket_ptr sock=socket_ptr(), simple_wml::document* doc=NULL) const
+	void send_server_message(const char* message, socket_ptr sock=socket_ptr(), simple_wml::document* doc=nullptr) const;
+	void send_server_message(const std::string& message, socket_ptr sock=socket_ptr(), simple_wml::document* doc=nullptr) const
 	{
 		send_server_message(message.c_str(), sock, doc);
 	}

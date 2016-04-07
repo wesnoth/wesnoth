@@ -22,7 +22,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "map_generator.hpp"// mapgen_esxeption
 #include "default_map_generator_job.hpp"
 #include "pathfind/pathfind.hpp"
@@ -30,10 +30,9 @@
 #include "race.hpp"
 #include "util.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
-#include "SDL.h"
+#include "formula/string_utils.hpp"
+#include <SDL.h>
 
-#include <boost/foreach.hpp>
 #include "seed_rng.hpp"
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
@@ -611,13 +610,13 @@ std::string default_map_generator_job::generate_name(const unit_race& name_gener
 		LOG_NG << "calling name generator...\n";
 		const std::string& name = name_generator.generate_name(unit_race::MALE);
 		LOG_NG << "name generator returned '" << name << "'\n";
-		if(base_name != NULL) {
+		if(base_name != nullptr) {
 			*base_name = name;
 		}
 
 		LOG_NG << "assigned base name..\n";
 		utils::string_map  table;
-		if(additional_symbols == NULL) {
+		if(additional_symbols == nullptr) {
 			additional_symbols = &table;
 		}
 
@@ -783,7 +782,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 	config naming = cfg.child_or_empty("naming");
 	// If the [naming] child is empty, we cannot provide good names.
-	std::map<map_location,std::string>* misc_labels = naming.empty() ? NULL : labels;
+	std::map<map_location,std::string>* misc_labels = naming.empty() ? nullptr : labels;
 	// HACK: dummy names to satisfy unit_race requirements
 	naming["id"] = "village_naming";
 	naming["plural_name"] = "villages";
@@ -793,7 +792,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 	std::vector<terrain_height_mapper> height_conversion;
 
-	BOOST_FOREACH(const config &h, cfg.child_range("height")) {
+	for(const config &h : cfg.child_range("height")) {
 		height_conversion.push_back(terrain_height_mapper(h));
 	}
 
@@ -842,7 +841,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 				std::vector<location> river = generate_river(heights,
 					terrain, x, y, cfg["river_frequency"]);
 
-				if(river.empty() == false && misc_labels != NULL) {
+				if(river.empty() == false && misc_labels != nullptr) {
 					std::string base_name;
 					LOG_NG << "generating name for river...\n";
 					const std::string& name = generate_name(name_generator,"river_name",&base_name);
@@ -865,7 +864,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 				LOG_NG << "generating lake...\n";
 				std::set<location> locs;
 				bool res = generate_lake(terrain, x, y, cfg["lake_size"], locs);
-				if(res && misc_labels != NULL) {
+				if(res && misc_labels != nullptr) {
 					bool touches_other_lake = false;
 
 					std::string base_name;
@@ -928,7 +927,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
-	BOOST_FOREACH(const config &cv, cfg.child_range("convert")) {
+	for(const config &cv : cfg.child_range("convert")) {
 		converters.push_back(terrain_converter(cv));
 	}
 
@@ -1145,7 +1144,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 						direction = 2;
 					}
 
-					if(misc_labels != NULL && on_bridge == false) {
+					if(misc_labels != nullptr && on_bridge == false) {
 						on_bridge = true;
 						std::string bridge_base_name;
 						const std::string& name = generate_name(name_generator, "bridge_name", &bridge_base_name);
@@ -1172,7 +1171,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 				if(convert_to.empty() == false) {
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
-					if(misc_labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
+					if(misc_labels != nullptr && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
 						misc_labels->insert(std::pair<map_location,std::string>(map_location(x-width/3,y-height/3),name));
 						name_count = 0;
 					}
@@ -1211,7 +1210,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		}
 
 		// Remove all labels under the castle tiles
-		if(labels != NULL) {
+		if(labels != nullptr) {
 		  labels->erase(location(x-width/3,y-height/3));
 		  for (size_t i = 0; i < castle_size - 1; i++) {
 		    labels->erase(location(x+castles[i][0]-width/3,
@@ -1229,7 +1228,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	 *we name these now that everything else is placed (as e.g., placing
 	 * roads could split a forest)
 	 */
-	if ( misc_labels != NULL ) {
+	if ( misc_labels != nullptr ) {
 		for (x = width / 3; x < (width / 3)*2; x++) {
 			for (y = height / 3; y < (height / 3) * 2;y++) {
 				//check the terrain of the tile
@@ -1279,7 +1278,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	{
 		config naming_cfg = cfg.child_or_empty("village_naming");
 		// If the [village_naming] child is empty, we cannot provide good names.
-		std::map<map_location,std::string>* village_labels = naming_cfg.empty() ? NULL : labels;
+		std::map<map_location,std::string>* village_labels = naming_cfg.empty() ? nullptr : labels;
 		// HACK: dummy names to satisfy unit_race requirements
 		naming_cfg["id"] = "village_naming";
 		naming_cfg["plural_name"] = "villages";
@@ -1331,7 +1330,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 							villages.insert(res);
 
-							if ( village_labels != NULL ) {
+							if ( village_labels != nullptr ) {
 								const map_location loc(res.x-width/3,res.y-height/3);
 
 								map_location adj[6];
@@ -1428,7 +1427,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 								std::string name;
 								for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-									name = generate_name(village_names_generator,name_type,NULL,&symbols);
+									name = generate_name(village_names_generator,name_type,nullptr,&symbols);
 								}
 
 								used_names.insert(name);

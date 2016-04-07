@@ -73,16 +73,16 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	/* Initialize and do basic error checking */
 	if (!dst)
 	{
-		SDL_SetError("Argument 2 to SDL_SavePNG_RW can't be NULL, expecting SDL_RWops*\n");
+		SDL_SetError("Argument 2 to SDL_SavePNG_RW can't be nullptr, expecting SDL_RWops*\n");
 		return (SAVEPNG_ERROR);
 	}
 	if (!surface)
 	{
-		SDL_SetError("Argument 1 to SDL_SavePNG_RW can't be NULL, expecting SDL_Surface*\n");
+		SDL_SetError("Argument 1 to SDL_SavePNG_RW can't be nullptr, expecting SDL_Surface*\n");
 		if (freedst) SDL_RWclose(dst);
 		return (SAVEPNG_ERROR);
 	}
-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, png_error_SDL, NULL); /* err_ptr, err_fn, warn_fn */
+	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, nullptr, png_error_SDL, nullptr); /* err_ptr, err_fn, warn_fn */
 	if (!png_ptr)
 	{
 		SDL_SetError("Unable to png_create_write_struct on %s\n", PNG_LIBPNG_VER_STRING);
@@ -93,7 +93,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	if (!info_ptr)
 	{
 		SDL_SetError("Unable to png_create_info_struct\n");
-		png_destroy_write_struct(&png_ptr, NULL);
+		png_destroy_write_struct(&png_ptr, nullptr);
 		if (freedst) SDL_RWclose(dst);
 		return (SAVEPNG_ERROR);
 	}
@@ -105,7 +105,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	}
 
 	/* Setup our RWops writer */
-	png_set_write_fn(png_ptr, dst, png_write_SDL, NULL); /* w_ptr, write_fn, flush_fn */
+	png_set_write_fn(png_ptr, dst, png_write_SDL, nullptr); /* w_ptr, write_fn, flush_fn */
 
 	/* Prepare chunks */
 	colortype = PNG_COLOR_MASK_COLOR;

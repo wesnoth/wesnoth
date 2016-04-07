@@ -26,9 +26,8 @@
 #include "serialization/string_utils.hpp"
 
 #include <boost/cstdint.hpp>
-#include <boost/foreach.hpp>
-#include "SDL_timer.h"
-#include "SDL_video.h"
+#include <SDL_timer.h>
+#include <SDL_video.h>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -205,7 +204,7 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 		}
 	}
 
-	BOOST_FOREACH(const chat_message &cm, chat_messages_) {
+	for(const chat_message &cm : chat_messages_) {
 		font::move_floating_label(cm.speaker_handle, 0, - movement);
 		font::move_floating_label(cm.handle, 0, - movement);
 	}

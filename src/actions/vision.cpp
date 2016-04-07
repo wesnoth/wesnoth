@@ -21,21 +21,19 @@
 
 #include "move.hpp"
 
-#include "../config.hpp"
-#include "../game_display.hpp"
+#include "config.hpp"
+#include "game_display.hpp"
 #include "game_events/manager.hpp"
-#include "../game_events/pump.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../map_label.hpp"
-#include "../map_location.hpp"
-#include "../pathfind/pathfind.hpp"
-#include "../play_controller.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-
-#include <boost/foreach.hpp>
+#include "game_events/pump.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
+#include "map/location.hpp"
+#include "pathfind/pathfind.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "units/unit.hpp"
 
 class unit_animation;
 
@@ -57,13 +55,13 @@ static void create_jamming_map(std::map<map_location, int> & jamming,
 	jamming.clear();
 
 	// Build the map.
-	BOOST_FOREACH (const unit &u, *resources::units)
+	for (const unit &u : *resources::units)
 	{
 		if ( u.jamming() < 1  ||  !view_team.is_enemy(u.side()) )
 			continue;
 
 		pathfind::jamming_path jam_path(u, u.get_location());
-		BOOST_FOREACH(const pathfind::paths::step& st, jam_path.destinations) {
+		for (const pathfind::paths::step& st : jam_path.destinations) {
 			if ( jamming[st.curr] < st.move_left )
 				jamming[st.curr] = st.move_left;
 		}
@@ -75,15 +73,15 @@ static void create_jamming_map(std::map<map_location, int> & jamming,
  * Determines if @a loc is within @a viewer's visual range.
  * This is a moderately expensive function (vision is recalculated
  * with each call), so avoid using it heavily.
- * If @a jamming is left as NULL, the jamming map is also calculated
+ * If @a jamming is left as nullptr, the jamming map is also calculated
  * with each invocation.
  */
 static bool can_see(const unit & viewer, const map_location & loc,
-                    const std::map<map_location, int> * jamming = NULL)
+                    const std::map<map_location, int> * jamming = nullptr)
 {
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
-	if ( jamming == NULL ) {
+	if ( jamming == nullptr ) {
 		create_jamming_map(local_jamming, (*resources::teams)[viewer.side()-1]);
 		jamming = &local_jamming;
 	}
@@ -169,7 +167,7 @@ inline void shroud_clearer::record_sighting(
 /**
  * Default constructor.
  */
-shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(NULL)
+shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(nullptr)
 {}
 
 
@@ -189,7 +187,7 @@ shroud_clearer::~shroud_clearer()
  * Causes this object's "jamming" map to be recalculated.
  * This gets called as needed, and can also be manually invoked
  * via cache_units().
- * @param[in] new_team  The team whose vision will be used. If NULL, the
+ * @param[in] new_team  The team whose vision will be used. If nullptr, the
  *                      jamming map will be cleared.
  */
 void shroud_clearer::calculate_jamming(const team * new_team)
@@ -198,7 +196,7 @@ void shroud_clearer::calculate_jamming(const team * new_team)
 	jamming_.clear();
 	view_team_ = new_team;
 
-	if ( view_team_ == NULL )
+	if ( view_team_ == nullptr )
 		return;
 
 	// Build the map.
@@ -345,9 +343,9 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
 	size_t enemies=0, friends=0;
-	if ( enemy_count == NULL )
+	if ( enemy_count == nullptr )
 		enemy_count = &enemies;
-	if ( friend_count == NULL )
+	if ( friend_count == nullptr )
 		friend_count = &friends;
 
 	// Make sure the jamming map is up-to-date.
@@ -365,14 +363,14 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 		resources::screen->draw(true);
 
 	// Clear the fog.
-	BOOST_FOREACH (const pathfind::paths::step &dest, sight.destinations) {
+	for (const pathfind::paths::step &dest : sight.destinations) {
 		bool known = known_units  &&  known_units->count(dest.curr) != 0;
 		if ( clear_loc(view_team, dest.curr, view_loc, real_loc, viewer_id, !known,
 		               *enemy_count, *friend_count, spectator) )
 			cleared_something = true;
 	}
 	//TODO guard with game_config option
-	BOOST_FOREACH (const map_location &dest, sight.edges) {
+	for (const map_location &dest : sight.edges) {
 		bool known = known_units  &&  known_units->count(dest) != 0;
 		if ( clear_loc(view_team, dest, view_loc, real_loc, viewer_id, !known,
 		               *enemy_count, *friend_count, spectator) )
@@ -441,7 +439,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 
 	return clear_unit(view_loc, view_team, viewer.underlying_id,
 	                  viewer.sight_range, viewer.slowed, viewer.costs,
-	                  real_loc, NULL, NULL, NULL, NULL, instant);
+	                  real_loc, nullptr, nullptr, nullptr, nullptr, instant);
 }
 
 
@@ -558,7 +556,7 @@ bool shroud_clearer::fire_events()
 	std::vector<sight_data> sight_list;
 	sight_list.swap(sightings_);
 
-	BOOST_FOREACH (const sight_data & event, sight_list) {
+	for (const sight_data & event : sight_list) {
 		// Try to locate the sighting unit.
 		unit_map::const_iterator find_it = units.find(event.sighter_id);
 		const map_location & sight_loc =
@@ -613,7 +611,7 @@ std::vector<int> get_sides_not_seeing(const unit & target)
 /**
  * Fires sighted events for the sides that can see @a target.
  * If @a cache is supplied, only those sides might get events.
- * If @a cache is NULL, all sides might get events.
+ * If @a cache is nullptr, all sides might get events.
  * This function is for the sighting *of* units that clear the shroud; it is
  * the complement of shroud_clearer::fire_events(), which handles sighting *by*
  * units that clear the shroud.
@@ -638,10 +636,10 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	const map_location & target_loc = target.get_location();
 
 	// Determine the teams that (probably) should get events.
-	std::vector<bool> needs_event(teams_size, cache == NULL);
-	if ( cache != NULL ) {
+	std::vector<bool> needs_event(teams_size, cache == nullptr);
+	if ( cache != nullptr ) {
 		// Flag just the sides in the cache as needing events.
-		BOOST_FOREACH (int side, *cache)
+		for (int side : *cache)
 			needs_event[side-1] = true;
 	}
 	// Exclude the target's own team.
@@ -657,9 +655,9 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 			create_jamming_map(jamming_cache[i], teams[i]);
 
 	// Look for units that can be used as the second unit in sighted events.
-	std::vector<const unit *> second_units(teams_size, NULL);
+	std::vector<const unit *> second_units(teams_size, nullptr);
 	std::vector<size_t> distances(teams_size, UINT_MAX);
-	BOOST_FOREACH (const unit & viewer, *resources::units) {
+	for (const unit & viewer : *resources::units) {
 		const size_t index = viewer.side() - 1;
 		// Does viewer belong to a team for which we still need a unit?
 		if ( needs_event[index]  &&  distances[index] != 0 ) {
@@ -683,7 +681,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	// Raise events for the appropriate teams.
 	const game_events::entity_location target_entity(target);
 	for ( size_t i = 0; i != teams_size; ++i )
-		if ( second_units[i] != NULL ) {
+		if ( second_units[i] != nullptr ) {
 			resources::game_events->pump().raise(sighted_str, target_entity, game_events::entity_location(*second_units[i]));
 		}
 
@@ -713,7 +711,7 @@ void recalculate_fog(int side)
 
 	// Exclude currently seen units from sighted events.
 	std::set<map_location> visible_locs;
-	BOOST_FOREACH (const unit &u, *resources::units) {
+	for (const unit &u : *resources::units) {
 		const map_location & u_location = u.get_location();
 
 		if ( !tm.fogged(u_location) )
@@ -726,7 +724,7 @@ void recalculate_fog(int side)
 	resources::screen->invalidate_all();
 
 	shroud_clearer clearer;
-	BOOST_FOREACH(const unit &u, *resources::units)
+	for (const unit &u : *resources::units)
 	{
 		if ( u.side() == side )
 			clearer.clear_unit(u.get_location(), u, tm, &visible_locs);
@@ -762,7 +760,7 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 	bool result = false;
 
 	shroud_clearer clearer;
-	BOOST_FOREACH(const unit &u, *resources::units)
+	for (const unit &u : *resources::units)
 	{
 		if ( u.side() == side )
 			result |= clearer.clear_unit(u.get_location(), u, tm);

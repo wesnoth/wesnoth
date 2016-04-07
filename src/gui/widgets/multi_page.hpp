@@ -18,8 +18,13 @@
 
 #include "gui/widgets/container.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -122,10 +127,10 @@ public:
 	/***** ***** ***** inherited ***** ****** *****/
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -157,14 +162,56 @@ private:
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	virtual void set_self_active(const bool active) override;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tmulti_page_definition : public tcontrol_definition
+{
+	explicit tmulti_page_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_multi_page : public tbuilder_control
+{
+	explicit tbuilder_multi_page(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tbuilder_grid_ptr builder;
+
+	/**
+	 * Multi page data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string, t_string> > data;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

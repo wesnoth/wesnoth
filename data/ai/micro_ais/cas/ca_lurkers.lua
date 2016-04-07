@@ -6,19 +6,19 @@ local function get_lurker(cfg)
     -- We simply pick the first of the lurkers, they have no strategy
     local lurker = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }[1]
     return lurker
 end
 
 local ca_lurkers = {}
 
-function ca_lurkers:evaluation(ai, cfg)
+function ca_lurkers:evaluation(cfg)
     if get_lurker(cfg) then return cfg.ca_score end
     return 0
 end
 
-function ca_lurkers:execution(ai, cfg)
+function ca_lurkers:execution(cfg)
     local lurker = get_lurker(cfg)
     local targets = AH.get_live_units {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
@@ -28,10 +28,11 @@ function ca_lurkers:execution(ai, cfg)
     table.sort(targets, function(a, b) return (a.hitpoints < b.hitpoints) end)
 
     local reach = LS.of_pairs(wesnoth.find_reach(lurker.x, lurker.y))
+    local lurk_area = H.get_child(cfg, "filter_location")
     local reachable_attack_terrain =
          LS.of_pairs(wesnoth.get_locations  {
             { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-            { "and", cfg.filter_location }
+            { "and", lurk_area }
         })
     reachable_attack_terrain:inter(reach)
 
@@ -72,7 +73,7 @@ function ca_lurkers:execution(ai, cfg)
         local reachable_wander_terrain =
             LS.of_pairs( wesnoth.get_locations {
                 { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
-                { "and", (cfg.filter_location_wander or cfg.filter_location) }
+                { "and", H.get_child(cfg, "filter_location_wander") or lurk_area }
             })
         reachable_wander_terrain:inter(reach)
 

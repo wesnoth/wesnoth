@@ -16,16 +16,14 @@
 #ifndef HOTKEY_ITEM_HPP_INCLUDED
 #define HOTKEY_ITEM_HPP_INCLUDED
 
-#include "config.hpp"
-#include "SDL_events.h"
-#include "SDL.h"
+#include <SDL_events.h>
+#include <SDL.h>
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-#include "sdl/keyboard.hpp"
-#endif
 
+class config;
+class CVideo;
 namespace hotkey {
 
 /* forward declarations */
@@ -48,7 +46,7 @@ public:
 	/**
 	 * Initialises a new empty hotkey that will be disabled
 	 */
-	hotkey_base() : command_("null"), is_default_(true), mod_(0)
+	hotkey_base() : command_("null"), is_default_(true), is_disabled_(false), mod_(0)
 	{}
 
 	void set_command(const std::string& command)
@@ -109,6 +107,19 @@ public:
 		is_default_ = false;
 	}
 
+	bool is_disabled() const
+	{
+		return is_disabled_;
+	}
+	void disable()
+	{
+		is_disabled_ = true;
+	}
+	void enable()
+	{
+		is_disabled_ = false;
+	}
+
 	/**
 	 * Unbind this hotkey by linking it to the null-command
 	 */
@@ -160,9 +171,9 @@ public:
 	 * 1. The hotkey is valid in the current scope.
 	 * 2. The Keyboard modifiers and SDL_Event mathes this hotkey.
 	 *
-	 * @param event The @SDL_Event that has triggered and is being evaluated.
+	 * @param event The SDL_Event that has triggered and is being evaluated.
 	 */
-	bool matches(const SDL_Event &event) const;
+	bool matches(const SDL_Event& event) const;
 
 	/**
 	 * Checks whether the hotkey bindings and scope are equal.
@@ -202,12 +213,21 @@ protected:
 	std::string command_;
 
 	/**
-	 *
+	 * is_default_ is true if the hot-key is part of the default hot-key list defined in data/core/hotkeys.cfg.
+	 * is_default_ is false if it is not, in which case it would be defined in the user's preferences file.
 	 */
 	bool is_default_;
+
+	/*
+	 * The original design of using a "null" command to indicate a disabled hot-key is ambiguous with regards
+	 * to when to save a user hot-key to preferences as well as when a default hot-key should be flagged as
+	 * disabled. So introduce a separate disabled flag to resolve the ambiguity.
+	 * Where the flag is true, the hot-key should not be written to preferences unless it is a default hot-key.
+	 */
+	bool is_disabled_;
+
 	/*
 	 * Keyboard modifiers. Treat as opaque, only do comparisons.
-	 *
 	 */
 	unsigned int mod_;
 };
@@ -387,7 +407,8 @@ const hotkey_list& get_hotkeys();
 
 /**
  * Unset the command bindings for all hotkeys matching the command.
- * @command The binding to be unset
+ *
+ * @param command The binding to be unset
  */
 void clear_hotkeys(const std::string& command);
 
@@ -408,6 +429,8 @@ std::string get_names(std::string id);
  * @param cfg The config to save to.
  */
 void save_hotkeys(config& cfg);
+
+hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id);
 
 }
 

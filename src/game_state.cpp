@@ -18,9 +18,8 @@
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "game_events/manager.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
@@ -29,11 +28,11 @@
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "teambuilder.hpp"
-#include "unit.hpp"
+#include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 #include <SDL_timer.h>
@@ -73,7 +72,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	tod_manager_(level),
 	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
-	lua_kernel_(new game_lua_kernel(NULL, *this, pc, *reports_)),
+	lua_kernel_(new game_lua_kernel(nullptr, *this, pc, *reports_)),
 	events_manager_(new game_events::manager()),
 	player_number_(level["playing_team"].to_int() + 1),
 	end_level_data_(),
@@ -135,7 +134,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 	int num_pos = board_.map().num_valid_starting_positions();
 
 	int side_num = 1;
-	BOOST_FOREACH(const config &side, level.child_range("side"))
+	for(const config &side : level.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = board_.map().starting_position(p);
@@ -166,25 +165,25 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 void game_state::init(const config& level, play_controller & pc)
 {
 	events_manager_->read_scenario(level);
+	gui2::tloadscreen::progress("init teams");
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);
 	}
 
 	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
-	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
+	for (const config &t : level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
-	//loadscreen::start_stage("init teams");
 
 	board_.teams_.resize(level.child_count("side"));
 
 	std::vector<team_builder_ptr> team_builders;
 
 	int team_num = 0;
-	BOOST_FOREACH(const config &side, level.child_range("side"))
+	for (const config &side : level.child_range("side"))
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
@@ -204,14 +203,14 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*random_new::generator);
 
-		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
+		for(team_builder_ptr tb_ptr : team_builders)
 		{
 			build_team_stage_two(tb_ptr);
 		}
 		for(size_t i = 0; i < board_.teams_.size(); i++) {
 			// Labels from players in your ignore list default to hidden
 			if(preferences::is_ignored(board_.teams_[i].current_player())) {
-				std::string label_cat = "side:" + str_cast(i + 1);
+				std::string label_cat = "side:" + std::to_string(i + 1);
 				board_.hidden_label_categories_ref().push_back(label_cat);
 			}
 		}
@@ -219,12 +218,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 	pathfind_manager_.reset(new pathfind::manager(level));
 
-	lua_kernel_.reset(new game_lua_kernel(NULL, *this, pc, *reports_));
-}
-
-void game_state::bind(wb::manager *, game_display * gd)
-{
-	set_game_display(gd);
+	lua_kernel_.reset(new game_lua_kernel(nullptr, *this, pc, *reports_));
 }
 
 void game_state::set_game_display(game_display * gd)
@@ -260,7 +254,7 @@ void game_state::write(config& cfg) const
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
-	if(end_level_data_.get_ptr() != NULL) {
+	if(end_level_data_.get_ptr() != nullptr) {
 		end_level_data_->write(cfg.add_child("end_level_data"));
 	}
 }
@@ -314,7 +308,7 @@ bool game_state::can_recruit_from(const map_location& leader_loc, int side) cons
  		return false;
 	}
 
-	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
+	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, nullptr,
 	                                  &(board_.teams())[side-1])
 	       != map_location::null_location();
 }

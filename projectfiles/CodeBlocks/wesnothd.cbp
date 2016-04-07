@@ -29,12 +29,15 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
 			<Add option="-fopenmp" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-D_WIN32_IE=0x0501" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Linker>
@@ -72,7 +75,6 @@
 		<Unit filename="../../src/global.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/loadscreen.hpp" />
-		<Unit filename="../../src/loadscreen_empty.cpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />

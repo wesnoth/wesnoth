@@ -15,11 +15,9 @@
 #ifndef EDITOR_PALETTES_H_INCLUDED
 #define EDITOR_PALETTES_H_INCLUDED
 
-#include "../editor_display.hpp"
+#include "editor/editor_display.hpp"
 #include "common_palette.hpp"
 #include "tristate_button.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -135,7 +133,7 @@ private:
 		if (!hidden)
 			help_handle_ = gui_.video().set_help_string(get_help_string());
 		else gui_.video().clear_help_string(help_handle_);
-		BOOST_FOREACH(gui::widget& w, buttons_) {
+		for (gui::widget& w : buttons_) {
 			w.hide(hidden);
 		}
 	}

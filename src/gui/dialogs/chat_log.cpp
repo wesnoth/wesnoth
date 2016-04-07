@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/chat_log.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -28,19 +28,17 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/slider.hpp"
-#include "utils/foreach.tpp"
 
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
-#include "../../game_preferences.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../replay.hpp"
+#include "game_preferences.hpp"
+#include "log.hpp"
+#include "resources.hpp"
+#include "replay.hpp"
 #include "gettext.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_chat_log("chat_log");
@@ -72,7 +70,7 @@ class tchat_log::model
 public:
 	model(const vconfig& c, replay* r)
 		: cfg(c)
-		, msg_label(NULL)
+		, msg_label(nullptr)
 		, chat_log_history(r->build_chat_log())
 		, page(0)
 		, page_number()
@@ -122,7 +120,7 @@ public:
 		const std::string& lcfilter = utf8::lowercase(filter->get_value());
 		LOG_CHAT_LOG << "entering tchat_log::model::stream_log\n";
 
-		FOREACH(const AUTO & t, make_pair(chat_log_history.begin() + first,
+		for(const auto & t : make_pair(chat_log_history.begin() + first,
 										  chat_log_history.begin() + last))
 		{
 			const std::string& timestamp
@@ -346,7 +344,7 @@ public:
 	{
 	}
 
-	void pre_show(CVideo& /*video*/, twindow& window)
+	void pre_show(twindow& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
 		controller_.update_view_from_model(true);
@@ -391,30 +389,30 @@ public:
 				= &find_widget<tslider>(&window, "page_number", false);
 		connect_signal_notify_modified(
 				*model_.page_number,
-				boost::bind(&view::handle_page_number_changed,
+				std::bind(&view::handle_page_number_changed,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		model_.previous_page
 				= &find_widget<tbutton>(&window, "previous_page", false);
 		model_.previous_page->connect_click_handler(
-				boost::bind(&view::previous_page, this, boost::ref(window)));
+				std::bind(&view::previous_page, this, std::ref(window)));
 
 		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
 		model_.next_page->connect_click_handler(
-				boost::bind(&view::next_page, this, boost::ref(window)));
+				std::bind(&view::next_page, this, std::ref(window)));
 
 		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
 		model_.filter->set_text_changed_callback(
-				boost::bind(&view::filter, this, boost::ref(window)));
+				std::bind(&view::filter, this, std::ref(window)));
 		window.keyboard_capture(model_.filter);
 
 		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
-				boost::bind(&view::handle_copy_button_clicked,
+				std::bind(&view::handle_copy_button_clicked,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 		if (!desktop::clipboard::available()) {
 			model_.copy_button->set_active(false);
 			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
@@ -448,11 +446,11 @@ twindow* tchat_log::build_window(CVideo& video)
 	return build(video, window_id());
 }
 
-void tchat_log::pre_show(CVideo& video, twindow& window)
+void tchat_log::pre_show(twindow& window)
 {
 	LOG_CHAT_LOG << "Entering tchat_log::pre_show" << std::endl;
 	view_->bind(window);
-	view_->pre_show(video, window);
+	view_->pre_show(window);
 	LOG_CHAT_LOG << "Exiting tchat_log::pre_show" << std::endl;
 }
 

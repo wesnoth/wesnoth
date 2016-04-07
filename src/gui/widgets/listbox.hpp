@@ -20,8 +20,14 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
+
 class tselectable_;
 namespace implementation
 {
@@ -177,7 +183,7 @@ public:
 	void list_item_clicked(twidget& caller);
 
 	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	virtual void set_self_active(const bool active) override;
 
 	/**
 	 * Request to update the size of the content after changing the content.
@@ -198,25 +204,25 @@ public:
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	virtual void layout_children() override;
 
 	/** See @ref twidget::child_populate_dirty_list. */
 	virtual void
 	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+							  const std::vector<twidget*>& call_stack) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	void
-	set_callback_item_change(const boost::function<void(size_t)>& callback)
+	set_callback_item_change(const std::function<void(size_t)>& callback)
 	{
 		callback_item_changed_ = callback;
 	}
 
 	void
-	set_callback_value_change(const boost::function<void(twidget&)>& callback)
+	set_callback_value_change(const std::function<void(twidget&)>& callback)
 	{
 		callback_value_changed_ = callback;
 	}
@@ -279,6 +285,8 @@ private:
 	 */
 	tgenerator_* generator_;
 
+	const bool is_horizonal_;
+
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr list_builder_;
 
@@ -287,7 +295,7 @@ private:
 	 *
 	 * The function is passed the index of the toggled item.
 	 */
-	boost::function<void(size_t)> callback_item_changed_;
+	std::function<void(size_t)> callback_item_changed_;
 
 	/**
 	 * This callback is called when the value in the listbox changes.
@@ -296,7 +304,7 @@ private:
 	 * there might be too many calls. That might happen if an arrow up didn't
 	 * change the selected item.
 	 */
-	boost::function<void(twidget&)> callback_value_changed_;
+	std::function<void(twidget&)> callback_value_changed_;
 
 	bool need_layout_;
 
@@ -318,7 +326,9 @@ private:
 	 *                            * positive values increase height.
 	 */
 	void resize_content(const int width_modification,
-						const int height_modification);
+						const int height_modification,
+						const int width__modification_pos = -1,
+						const int height_modification_pos = -1);
 
 	/**
 	 * Resizes the content.
@@ -336,10 +346,83 @@ private:
 	virtual void set_content_size(const tpoint& origin, const tpoint& size);
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	void order_by_column(unsigned column, twidget& widget);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tlistbox_definition : public tcontrol_definition
+{
+
+	explicit tlistbox_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_listbox : public tbuilder_control
+{
+	explicit tbuilder_listbox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr header;
+	tbuilder_grid_ptr footer;
+
+	tbuilder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<string_map> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+struct tbuilder_horizontal_listbox : public tbuilder_control
+{
+	explicit tbuilder_horizontal_listbox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<string_map> list_data;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

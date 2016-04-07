@@ -20,7 +20,7 @@
 #include "addon/manager.hpp"
 #include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/settings.hpp"
@@ -29,7 +29,7 @@
 
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace
 {
@@ -50,7 +50,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 	const std::string& addons_path = filesystem::get_addons_dir();
 	std::vector<std::string> files(files_original);
 
-	BOOST_FOREACH(std::string & file, files)
+	for(std::string & file : files)
 	{
 		std::string base;
 		std::string filename = filesystem::base_name(file);
@@ -176,6 +176,8 @@ twml_error::twml_error(const std::string& summary,
 	, have_post_summary_(!post_summary.empty())
 	, report_()
 {
+	set_restore(true);
+
 	const std::string& file_list_text = format_file_list(files);
 
 	report_ = summary;
@@ -201,7 +203,7 @@ twml_error::twml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void twml_error::pre_show(CVideo& /*video*/, twindow& window)
+void twml_error::pre_show(twindow& window)
 {
 	if(!have_files_) {
 		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
@@ -217,7 +219,7 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 	tbutton& copy_button = find_widget<tbutton>(&window, "copy", false);
 
 	connect_signal_mouse_left_click(
-			copy_button, boost::bind(&twml_error::copy_report_callback, this));
+			copy_button, std::bind(&twml_error::copy_report_callback, this));
 
 	if (!desktop::clipboard::available()) {
 		copy_button.set_active(false);

@@ -17,7 +17,7 @@
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "log.hpp"
@@ -37,8 +37,8 @@ addons_client::addons_client(CVideo& v, const std::string& address)
 	, addr_(address)
 	, host_()
 	, port_()
-	, conn_(NULL)
-	, stat_(NULL)
+	, conn_(nullptr)
+	, stat_(nullptr)
 	, last_error_()
 {
 	const std::vector<std::string>& address_components =
@@ -51,7 +51,7 @@ addons_client::addons_client(CVideo& v, const std::string& address)
 	// FIXME: this parsing will break IPv6 numeric addresses! */
 	host_ = address_components[0];
 	port_ = address_components.size() == 2 ?
-		address_components[1] : str_cast(default_campaignd_port);
+		address_components[1] : std::to_string(default_campaignd_port);
 }
 
 void addons_client::connect()
@@ -272,8 +272,8 @@ bool addons_client::update_last_error(config& response_cfg)
 
 void addons_client::check_connected() const
 {
-	assert(conn_ != NULL);
-	if(conn_ == NULL) {
+	assert(conn_ != nullptr);
+	if(conn_ == nullptr) {
 		ERR_ADDONS << "not connected to server" << std::endl;
 		throw not_connected_to_server();
 	}

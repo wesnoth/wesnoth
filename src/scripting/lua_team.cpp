@@ -17,7 +17,6 @@
 #include "scripting/lua_common.hpp"
 #include "team.hpp"
 
-#include <boost/foreach.hpp>
 #include <string>
 
 #include "lua/lua.h"
@@ -83,7 +82,7 @@ static int impl_side_get(lua_State *L)
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
-		BOOST_FOREACH(std::string const &r, t.recruits()) {
+		for (std::string const &r : t.recruits()) {
 			lua_pushstring(L, r.c_str());
 			lua_rawseti(L, -2, i++);
 		}
@@ -158,7 +157,7 @@ namespace lua_team {
 		static luaL_Reg const callbacks[] = {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
-			{ NULL, NULL }
+			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, callbacks, 0);
 

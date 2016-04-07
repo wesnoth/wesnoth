@@ -21,7 +21,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <sstream>
 
@@ -39,15 +39,15 @@ void connect_queue(
 		, gui2::twidget& widget)
 {
 	widget.connect_signal<E>(
-			  boost::bind(print, boost::ref(sstr), "pre", widget.id())
+			  std::bind(print, std::ref(sstr), "pre", widget.id())
 			, gui2::event::tdispatcher::back_pre_child);
 
 	widget.connect_signal<E>(
-			  boost::bind(print, boost::ref(sstr), "child", widget.id())
+			  std::bind(print, std::ref(sstr), "child", widget.id())
 			, gui2::event::tdispatcher::back_child);
 
 	widget.connect_signal<E>(
-			  boost::bind(print, boost::ref(sstr), "post", widget.id())
+			  std::bind(print, std::ref(sstr), "post", widget.id())
 			, gui2::event::tdispatcher::back_post_child);
 }
 
@@ -80,7 +80,7 @@ static void add_widget(gui2::tgrid& grid
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(NULL));
+	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget

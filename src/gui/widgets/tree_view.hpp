@@ -16,10 +16,23 @@
 #define GUI_WIDGETS_TREE_VIEW_HPP_INCLUDED
 
 #include "gui/widgets/scrollbar_container.hpp"
-#include "gui/auxiliary/window_builder/tree_view.hpp"
 
 namespace gui2
 {
+
+namespace implementation {
+	struct tbuilder_tree_view;
+	struct ttree_node
+	{
+		explicit ttree_node(const config& cfg);
+
+		std::string id;
+		bool unfolded;
+		tbuilder_grid_ptr builder;
+	};
+}
+
+// ------------ WIDGET -----------{
 
 class ttree_view_node;
 
@@ -29,7 +42,7 @@ class ttree_view : public tscrollbar_container
 	friend class ttree_view_node;
 
 public:
-	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
+	typedef implementation::ttree_node tnode_definition;
 
 	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
 
@@ -49,15 +62,15 @@ public:
 	/** See @ref twidget::child_populate_dirty_list. */
 	virtual void
 	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+							  const std::vector<twidget*>& call_stack) override;
 
 	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	virtual void set_self_active(const bool active) override;
 
 	bool empty() const;
 
 	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	virtual void layout_children() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -76,14 +89,13 @@ public:
 		return selected_item_;
 	}
 
-	void set_selection_change_callback(boost::function<void(twidget&)> callback)
+	void set_selection_change_callback(std::function<void(twidget&)> callback)
 	{
 		selection_change_callback_ = callback;
 	}
 
 protected:
 /***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
-#if 0
 	/** Inherited from tscrollbar_container. */
 	void handle_key_up_arrow(SDLMod modifier, bool& handled);
 
@@ -95,7 +107,6 @@ protected:
 
 	/** Inherited from tscrollbar_container. */
 	void handle_key_right_arrow(SDLMod modifier, bool& handled);
-#endif
 private:
 	/**
 	 * @todo evaluate which way the dependancy should go.
@@ -113,7 +124,7 @@ private:
 
 	ttree_view_node* selected_item_;
 
-	boost::function<void(twidget&)> selection_change_callback_;
+	std::function<void(twidget&)> selection_change_callback_;
 
 	/**
 	 * Resizes the content.
@@ -131,7 +142,9 @@ private:
 	 *                            * positive values increase height.
 	 */
 	void resize_content(const int width_modification,
-						const int height_modification);
+						const int height_modification,
+						const int width__modification_pos = -1,
+						const int height_modification_pos = -1);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
@@ -140,12 +153,71 @@ private:
 	virtual void finalize_setup();
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_left_button_down(const event::tevent event);
+
+	template<ttree_view_node* (ttree_view_node::*func) ()>
+	ttree_view_node* get_next_node();
+	
+	template<ttree_view_node* (ttree_view_node::*func) ()>
+	bool handle_up_down_arrow();
 };
+
+// }---------- DEFINITION ---------{
+
+struct ttree_view_definition : public tcontrol_definition
+{
+
+	explicit ttree_view_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_tree_view : public tbuilder_control
+{
+	explicit tbuilder_tree_view(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	unsigned indention_step_size;
+
+	/**
+	 * The types of nodes in the tree view.
+	 *
+	 * Since we expect the amount of nodes to remain low it's stored in a
+	 * vector and not in a map.
+	 */
+	std::vector<ttree_node> nodes;
+
+	/*
+	 * NOTE this class doesn't have a data section, so it can only be filled
+	 * with data by the engine. I think this poses no limit on the usage since
+	 * I don't foresee that somebody wants to pre-fill a tree view. If the need
+	 * arises the data part can be added.
+	 */
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

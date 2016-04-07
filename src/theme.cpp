@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "theme.hpp"
-#include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 #include "sdl/rect.hpp"
 
@@ -174,7 +173,7 @@ namespace {
  */
 static config get_resolution(const config& resolutions, const std::string& id)
 {
-	FOREACH(const AUTO& resolution, resolutions.child_range("resolution")) {
+	for(const auto& resolution : resolutions.child_range("resolution")) {
 		if(resolution["id"] == id) {
 			return resolution;
 		}
@@ -199,16 +198,16 @@ static config expand_partialresolution(const config& theme)
 	config result;
 
 	// Add all the resolutions
-	FOREACH(const AUTO& resolution, theme.child_range("resolution")) {
+	for(const auto& resolution : theme.child_range("resolution")) {
 		result.add_child("resolution", resolution);
 	}
 
 	// Resolve all the partialresolutions
-	FOREACH(const AUTO& part, theme.child_range("partialresolution")) {
+	for(const auto& part : theme.child_range("partialresolution")) {
 		config resolution = get_resolution(result, part["inherits"]);
 		resolution.merge_attributes(part);
 
-		FOREACH(const AUTO& remove, part.child_range("remove")) {
+		for(const auto& remove : part.child_range("remove")) {
 			VALIDATE(!remove["id"].empty()
 					, missing_mandatory_wml_key(
 						  "[theme][partialresolution][remove]"
@@ -217,7 +216,7 @@ static config expand_partialresolution(const config& theme)
 			find_ref(remove["id"], resolution, true);
 		}
 
-		FOREACH(const AUTO& change, part.child_range("change")) {
+		for(const auto& change : part.child_range("change")) {
 			VALIDATE(!change["id"].empty()
 					, missing_mandatory_wml_key(
 						  "[theme][partialresolution][change]"
@@ -228,8 +227,8 @@ static config expand_partialresolution(const config& theme)
 		}
 
 		// cannot add [status] sub-elements, but who cares
-		FOREACH(const AUTO& add, part.child_range("add")) {
-			FOREACH(const AUTO& child, add.all_children_range()) {
+		for(const auto& add : part.child_range("add")) {
+			for(const auto& child : add.all_children_range()) {
 				resolution.add_child(child.key, child.cfg);
 			}
 		}
@@ -240,10 +239,10 @@ static config expand_partialresolution(const config& theme)
 	return result;
 }
 
-static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
+static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = nullptr) {
 
 		// recursively resolve children
-		BOOST_FOREACH(const config::any_child &value, cfg.all_children_range()) {
+	for(const config::any_child &value : cfg.all_children_range()) {
 			config &childcfg = resolved_config.add_child(value.key);
 			do_resolve_rects(value.cfg, childcfg,
 				value.key == "resolution" ? &childcfg : resol_cfg);
@@ -254,7 +253,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {
-			if (resol_cfg == NULL) {
+			if (resol_cfg == nullptr) {
 				ERR_DP << "Use of ref= outside a [resolution] block" << std::endl;
 			} else {
 				//DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
@@ -636,8 +635,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	bool result = false;
 
 	int current_rating = 1000000;
-	const config *current = NULL;
-	BOOST_FOREACH(const config &i, cfg_.child_range("resolution"))
+	const config *current = nullptr;
+	for(const config &i : cfg_.child_range("resolution"))
 	{
 		int width = i["width"];
 		int height = i["height"];
@@ -717,7 +716,7 @@ void theme::add_object(const config& cfg)
 
 	if (const config &status_cfg = cfg.child("status"))
 	{
-		BOOST_FOREACH(const config::any_child &i, status_cfg.all_children_range()) {
+		for(const config::any_child &i : status_cfg.all_children_range()) {
 			status_.insert(std::pair<std::string, status_item>(i.key, status_item(i.cfg)));
 		}
 		if (const config &unit_image_cfg = status_cfg.child("unit_image")) {
@@ -727,19 +726,19 @@ void theme::add_object(const config& cfg)
 		}
 	}
 
-	BOOST_FOREACH(const config &p, cfg.child_range("panel")) {
+	for(const config &p : cfg.child_range("panel")) {
 		panel new_panel(p);
 		set_object_location(new_panel, p["rect"], p["ref"]);
 		panels_.push_back(new_panel);
 	}
 
-	BOOST_FOREACH(const config &lb, cfg.child_range("label")) {
+	for(const config &lb : cfg.child_range("label")) {
 		label new_label(lb);
 		set_object_location(new_label, lb["rect"], lb["ref"]);
 		labels_.push_back(new_label);
 	}
 
-	BOOST_FOREACH(const config &m, cfg.child_range("menu"))
+	for(const config &m : cfg.child_range("menu"))
 	{
 		menu new_menu(m);
 		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
@@ -753,7 +752,7 @@ void theme::add_object(const config& cfg)
 		DBG_DP << "done adding menu...\n";
 	}
 
-	BOOST_FOREACH(const config &a, cfg.child_range("action"))
+	for(const config &a : cfg.child_range("action"))
 	{
 			action new_action(a);
 			DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context") << "\n";
@@ -767,7 +766,7 @@ void theme::add_object(const config& cfg)
 			DBG_DP << "done adding action...\n";
 	}
 
-	BOOST_FOREACH(const config &s, cfg.child_range("slider"))
+	for(const config &s : cfg.child_range("slider"))
 	{
 			slider new_slider(s);
 			DBG_DP << "adding slider\n";
@@ -847,7 +846,7 @@ void theme::modify(const config &cfg)
 	}
 
 	// Change existing theme objects.
-	BOOST_FOREACH(const config &c, cfg.child_range("change"))
+	for(const config &c : cfg.child_range("change"))
 	{
 		std::string id = c["id"];
 		std::string ref_id = c["ref"];
@@ -857,12 +856,12 @@ void theme::modify(const config &cfg)
 	}
 
 	// Add new theme objects.
-	BOOST_FOREACH(const config &c, cfg.child_range("add")) {
+	for(const config &c : cfg.child_range("add")) {
 		add_object(c);
 	}
 
 	// Remove existent theme objects.
-	BOOST_FOREACH(const config &c, cfg.child_range("remove")) {
+	for(const config &c : cfg.child_range("remove")) {
 		remove_object(c["id"]);
 	}
 
@@ -904,7 +903,7 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 	if(i != status_.end())
 		return &i->second;
 	else
-		return NULL;
+		return nullptr;
 }
 
 typedef std::map<std::string, config> known_themes_map;
@@ -916,7 +915,7 @@ void theme::set_known_themes(const config* cfg)
 	if (!cfg)
 		return;
 
-	BOOST_FOREACH(const config &thm, cfg->child_range("theme"))
+	for(const config &thm : cfg->child_range("theme"))
 	{
 		std::string thm_id = thm["id"];
 
@@ -945,23 +944,23 @@ std::vector<theme_info> theme::get_known_themes()
 
 const theme::menu *theme::get_menu_item(const std::string &key) const
 {
-	BOOST_FOREACH(const theme::menu &m, menus_) {
+	for(const theme::menu &m : menus_) {
 		if (m.get_id() == key) return &m;
 	}
-	return NULL;
+	return nullptr;
 }
 
 const theme::action *theme::get_action_item(const std::string &key) const
 {
-	BOOST_FOREACH(const theme::action &a, actions_) {
+	for(const theme::action &a : actions_) {
 		if (a.get_id() == key) return &a;
 	}
-	return NULL;
+	return nullptr;
 }
 
 theme::object* theme::refresh_title(const std::string& id, const std::string& new_title){
 
-	theme::object* res = NULL;
+	theme::object* res = nullptr;
 
 	for (std::vector<theme::action>::iterator a = actions_.begin(); a != actions_.end(); ++a){
 		if (a->get_id() == id) {

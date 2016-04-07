@@ -25,7 +25,6 @@
 #include "saved_game.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/assign.hpp>
 
@@ -44,7 +43,7 @@ public:
 class test_connect_engine : public ng::connect_engine {
 public:
 	test_connect_engine(saved_game& gamestate) :
-		ng::connect_engine(gamestate, true, NULL)
+		ng::connect_engine(gamestate, true, nullptr)
 		{}
 };
 
@@ -82,7 +81,7 @@ struct mp_connect_fixture {
 		state->mp_settings().saved_game = false;
 
 		state->set_scenario(config_manager->
-			game_config().find_child(lexical_cast<std::string>(game_classification::CAMPAIGN_TYPE::MULTIPLAYER), "id", state->mp_settings().name));
+			game_config().find_child("multiplayer", "id", state->mp_settings().name));
 
 		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
 

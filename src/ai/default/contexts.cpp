@@ -18,16 +18,16 @@
  * @file
  */
 
-#include "contexts.hpp"
+#include "ai/default/contexts.hpp"
 
-#include "../../game_board.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../resources.hpp"
-#include "../../team.hpp"
-#include "../../unit.hpp"
-#include "../composite/goal.hpp"
-#include "../../pathfind/pathfind.hpp"
+#include "game_board.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "units/unit.hpp"
+#include "ai/composite/goal.hpp"
+#include "pathfind/pathfind.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)
@@ -172,7 +172,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 #endif
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
-				targets.push_back(target(*i,value,target::THREAT));
+				targets.push_back(target(*i,value,target::TYPE::THREAT));
 			}
 		}
 	}
@@ -209,7 +209,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 						enemy *= 1.7;
 						double our = power_projection(*t, friends_dstsrc);
 						double value = village_value * our / enemy;
-						add_target(target(*t, value, target::SUPPORT));
+						add_target(target(*t, value, target::TYPE::SUPPORT));
 					}
 				}
 			}
@@ -220,7 +220,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 				LOG_AI << "found village target... " << *t
 					<< " with value: " << value
 					<< " distance: " << leader_distance << '\n';
-				targets.push_back(target(*t,value,target::VILLAGE));
+				targets.push_back(target(*t,value,target::TYPE::VILLAGE));
 			}
 		}
 	}
@@ -236,7 +236,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			    && !u->invisible(u->get_location())) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
-				targets.push_back(target(u->get_location(), get_leader_value(), target::LEADER));
+				targets.push_back(target(u->get_location(), get_leader_value(), target::TYPE::LEADER));
 			}
 		}
 

@@ -21,7 +21,7 @@
 #ifndef AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
 #define AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
 
-#include "../default/contexts.hpp"
+#include "ai/default/contexts.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

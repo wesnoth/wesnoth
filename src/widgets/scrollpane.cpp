@@ -70,7 +70,7 @@ void scrollpane::hide(bool value)
 
 void scrollpane::add_widget(widget* w, int x, int y, int z_order)
 {
-	if (w == NULL)
+	if (w == nullptr)
 		return;
 
 	widget_map::iterator itor = std::find_if(content_.begin(), content_.end(), widget_finder(w));

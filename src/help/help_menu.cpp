@@ -30,12 +30,12 @@ class CVideo;  // lines 56-56
 namespace help {
 
 help_menu::help_menu(CVideo &video, section const &toplevel, int max_height) :
-	gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::bluebg_style),
+	gui::menu(video, empty_string_vector, true, max_height, -1, nullptr, &gui::menu::bluebg_style),
 	visible_items_(),
 	toplevel_(toplevel),
 	expanded_(),
 	restorer_(),
-	chosen_topic_(NULL),
+	chosen_topic_(nullptr),
 	selected_item_(&toplevel, "")
 {
 	silent_ = true; //silence the default menu sounds
@@ -166,7 +166,7 @@ int help_menu::process()
 
 		selected_item_ = visible_items_[res];
 		const section* sec = selected_item_.sec;
-		if (sec != NULL) {
+		if (sec != nullptr) {
 			// Check how we click on the section
 			int x = mousex - menu::location().x;
 
@@ -186,7 +186,7 @@ int help_menu::process()
 				// click on title open the topic associated to this section
 				chosen_topic_ = find_topic(toplevel, ".."+sec->id );
 			}
-		} else if (selected_item_.t != NULL) {
+		} else if (selected_item_.t != nullptr) {
 			/// Choose a topic if it is clicked.
 			chosen_topic_ = selected_item_.t;
 		}
@@ -197,7 +197,7 @@ int help_menu::process()
 const topic *help_menu::chosen_topic()
 {
 	const topic *ret = chosen_topic_;
-	chosen_topic_ = NULL;
+	chosen_topic_ = nullptr;
 	return ret;
 }
 
@@ -215,19 +215,19 @@ void help_menu::display_visible_items()
 }
 
 help_menu::visible_item::visible_item(const section *_sec, const std::string &vis_string) :
-	t(NULL), sec(_sec), visible_string(vis_string) {}
+	t(nullptr), sec(_sec), visible_string(vis_string) {}
 
 help_menu::visible_item::visible_item(const topic *_t, const std::string &vis_string) :
-	t(_t), sec(NULL), visible_string(vis_string) {}
+	t(_t), sec(nullptr), visible_string(vis_string) {}
 
 bool help_menu::visible_item::operator==(const section &_sec) const
 {
-	return sec != NULL && *sec == _sec;
+	return sec != nullptr && *sec == _sec;
 }
 
 bool help_menu::visible_item::operator==(const topic &_t) const
 {
-	return t != NULL && *t == _t;
+	return t != nullptr && *t == _t;
 }
 
 bool help_menu::visible_item::operator==(const visible_item &vis_item) const

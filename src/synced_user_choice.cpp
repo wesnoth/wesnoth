@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,12 +25,11 @@
 #include "synced_context.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "gui/dialogs/synced_choice_wait.hpp"
-#include <boost/foreach.hpp>
+#include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
 #include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
@@ -120,7 +119,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 		for empty sides we want to use random choice instead.
 	*/
 	std::set<int> empty_sides;
-	BOOST_FOREACH(int side, sides)
+	for(int side : sides)
 	{
 		assert(1 <= side && side <= max_side);
 		if( (*resources::teams)[side-1].is_empty())
@@ -129,14 +128,14 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 		}
 	}
 
-	BOOST_FOREACH(int side, empty_sides)
+	for(int side : empty_sides)
 	{
 		sides.erase(side);
 	}
 
 	std::map<int,config> retv =  user_choice_manager::get_user_choice_internal(name, uch, sides);
 
-	BOOST_FOREACH(int side, empty_sides)
+	for(int side : empty_sides)
 	{
 		retv[side] = uch.random_choice(side);
 	}
@@ -238,7 +237,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 	update_local_choice();
 	const int max_side  = static_cast<int>(resources::teams->size());
 
-	BOOST_FOREACH(int side, required_)
+	for(int side : required_)
 	{
 		assert(1 <= side && side <= max_side);
 		const team& t = (*resources::teams)[side-1];
@@ -285,11 +284,11 @@ void user_choice_manager::search_in_replay()
 		}
 		if(required_.find(from_side) == required_.end())
 		{
-			replay::process_error("MP synchronization: we got an answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] which is not was we expected\n");
+			replay::process_error("MP synchronization: we got an answer from side " + std::to_string(from_side) + "for [" + tagname_ + "] which is not was we expected\n");
 		}
 		if(res_.find(from_side) != res_.end())
 		{
-			replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
+			replay::process_error("MP synchronization: we got already our answer from side " + std::to_string(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
 		}
 		res_[from_side] = action->child(tagname_);
 		changed_event_.notify_observers();
@@ -312,13 +311,13 @@ void user_choice_manager::update_local_choice()
 	local_choice_ = 0;
 	//if for any side from which we need an answer
 	std::string sides_str;
-	BOOST_FOREACH(int side, required_)
+	for(int side : required_)
 	{
 		//and we havent already received our answer from that side
 		if(res_.find(side) == res_.end())
 		{
 			sides_str += " ";
-			sides_str += lexical_cast<std::string>(side);
+			sides_str += std::to_string(side);
 			//and it is local
 			if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
 			{
@@ -366,7 +365,7 @@ void user_choice_manager::fix_oos()
 {
 	assert(oos_);
 	ERR_REPLAY << "A sync error appeared while waiting for a synced user choice of type '" << uch_.description() << "' ([" + tagname_ + "]), doing the choice locally\n";
-	BOOST_FOREACH(int side, required_)
+	for(int side : required_)
 	{
 		if(res_.find(side) == res_.end())
 		{

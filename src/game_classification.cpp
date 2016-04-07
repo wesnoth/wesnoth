@@ -15,6 +15,7 @@
 #include "global.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
+#include "config.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "log.hpp"
@@ -29,7 +30,6 @@ static lg::log_domain log_engine("engine");
 const std::string DEFAULT_DIFFICULTY("NORMAL");
 
 game_classification::game_classification():
-	savegame_config(),
 	label(),
 	version(),
 	campaign_type(),
@@ -49,7 +49,6 @@ game_classification::game_classification():
 	{}
 
 game_classification::game_classification(const config& cfg):
-	savegame_config(),
 	label(cfg["label"]),
 	version(cfg["version"]),
 	campaign_type(cfg["campaign_type"].to_enum<game_classification::CAMPAIGN_TYPE>(game_classification::CAMPAIGN_TYPE::SCENARIO)),
@@ -69,7 +68,6 @@ game_classification::game_classification(const config& cfg):
 	{}
 
 game_classification::game_classification(const game_classification& gc):
-	savegame_config(),
 	label(gc.label),
 	version(gc.version),
 	campaign_type(gc.campaign_type),
@@ -95,7 +93,7 @@ config game_classification::to_config() const
 
 	cfg["label"] = label;
 	cfg["version"] = game_config::version;
-	cfg["campaign_type"] = lexical_cast<std::string> (campaign_type);
+	cfg["campaign_type"] = campaign_type.to_string();
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["scenario_define"] = scenario_define;
@@ -105,7 +103,7 @@ config game_classification::to_config() const
 	cfg["abbrev"] = abbrev;
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
+	cfg["end_text_duration"] = std::to_string(end_text_duration);
 	cfg["difficulty"] = difficulty;
 	cfg["random_mode"] = random_mode;
 	cfg["oos_debug"] = oos_debug;

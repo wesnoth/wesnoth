@@ -17,8 +17,6 @@
 
 #include "util.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace editor {
 
 map_fragment::map_fragment()
@@ -44,7 +42,7 @@ void map_fragment::add_tile(const gamemap& map, const map_location& loc)
 
 void map_fragment::add_tiles(const gamemap& map, const std::set<map_location>& locs)
 {
-	BOOST_FOREACH(const map_location& loc, locs) {
+	for (const map_location& loc : locs) {
 		add_tile(map, loc);
 	}
 }
@@ -57,7 +55,7 @@ std::set<map_location> map_fragment::get_area() const
 std::set<map_location> map_fragment::get_offset_area(const map_location& loc) const
 {
 	std::set<map_location> result;
-	BOOST_FOREACH(const tile_info& i, items_) {
+	for (const tile_info& i : items_) {
 		result.insert(i.offset.vector_sum(loc));
 	}
 	return result;
@@ -65,14 +63,14 @@ std::set<map_location> map_fragment::get_offset_area(const map_location& loc) co
 
 void map_fragment::paste_into(gamemap& map, const map_location& loc) const
 {
-	BOOST_FOREACH(const tile_info& i, items_) {
+	for (const tile_info& i : items_) {
 		map.set_terrain(i.offset.vector_sum(loc), i.terrain);
 	}
 }
 
 void map_fragment::shift(const map_location& offset)
 {
-	BOOST_FOREACH(tile_info& ti, items_) {
+	for (tile_info& ti : items_) {
 		ti.offset.vector_sum_assign(offset);
 	}
 }
@@ -80,7 +78,7 @@ void map_fragment::shift(const map_location& offset)
 map_location map_fragment::center_of_mass() const
 {
 	map_location sum(0, 0);
-	BOOST_FOREACH(const tile_info& ti, items_) {
+	for (const tile_info& ti : items_) {
 		sum.vector_sum_assign(ti.offset);
 	}
 	if (items_.size() > 0) {
@@ -94,7 +92,7 @@ void map_fragment::center_by_mass()
 {
 	shift(center_of_mass().vector_negation());
 	area_.clear();
-	BOOST_FOREACH(tile_info& ti, items_) {
+	for (tile_info& ti : items_) {
 		area_.insert(ti.offset);
 	}
 }
@@ -102,7 +100,7 @@ void map_fragment::center_by_mass()
 void map_fragment::rotate_60_cw()
 {
 	area_.clear();
-	BOOST_FOREACH(tile_info& ti, items_) {
+	for (tile_info& ti : items_) {
 		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
@@ -122,7 +120,7 @@ void map_fragment::rotate_60_cw()
 void map_fragment::rotate_60_ccw()
 {
 	area_.clear();
-	BOOST_FOREACH(tile_info& ti, items_) {
+	for (tile_info& ti : items_) {
 		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
@@ -141,7 +139,7 @@ void map_fragment::rotate_60_ccw()
 
 void map_fragment::flip_horizontal()
 {
-	BOOST_FOREACH(tile_info& ti, items_) {
+	for (tile_info& ti : items_) {
 		ti.offset.x = -ti.offset.x;
 	}
 	center_by_mass();
@@ -149,7 +147,7 @@ void map_fragment::flip_horizontal()
 
 void map_fragment::flip_vertical()
 {
-	BOOST_FOREACH(tile_info& ti, items_) {
+	for (tile_info& ti : items_) {
 		ti.offset.y = -ti.offset.y;
 		if (ti.offset.x % 2) {
 			ti.offset.y--;
@@ -168,11 +166,11 @@ std::string map_fragment::dump() const
 {
 	std::stringstream ss;
 	ss << "MF: ";
-	BOOST_FOREACH(const tile_info& ti, items_) {
+	for (const tile_info& ti : items_) {
 		ss << "(" << ti.offset << ")";
 	}
 	ss << " -- ";
-	BOOST_FOREACH(const map_location& loc, area_) {
+	for (const map_location& loc : area_) {
 		ss << "(" << loc << ")";
 	}
 	return ss.str();

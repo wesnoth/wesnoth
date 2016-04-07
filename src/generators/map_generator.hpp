@@ -21,7 +21,7 @@ class config;
 class CVideo;
 
 #include "exceptions.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 #include <boost/optional.hpp>
 #include <boost/cstdint.hpp>

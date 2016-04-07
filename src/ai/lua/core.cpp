@@ -21,24 +21,26 @@
 #include <cassert>
 #include <cstring>
 
-#include "core.hpp"
-#include "../../scripting/game_lua_kernel.hpp"
-#include "../../scripting/lua_api.hpp"
+#include "ai/lua/core.hpp"
+#include "ai/composite/aspect.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "scripting/lua_api.hpp"
+#include "scripting/push_check.hpp"
 #include "lua_object.hpp" // (Nephro)
 
-#include "../../attack_prediction.hpp"
-#include "../../game_display.hpp"
-#include "../../log.hpp"
-#include "../../map.hpp"
-#include "../../pathfind/pathfind.hpp"
-#include "../../play_controller.hpp"
-#include "../../resources.hpp"
-#include "../../terrain_translation.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../unit.hpp"
-#include "../actions.hpp"
-#include "../composite/engine_lua.hpp"
-#include "../composite/contexts.hpp"
+#include "attack_prediction.hpp"
+#include "game_display.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "pathfind/pathfind.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "terrain/translation.hpp"
+#include "terrain/filter.hpp"
+#include "units/unit.hpp"
+#include "ai/actions.hpp"
+#include "ai/lua/engine_lua.hpp"
+#include "ai/composite/contexts.hpp"
 
 #include "lua/lualib.h"
 #include "lua/lauxlib.h"
@@ -52,8 +54,7 @@ static char const aisKey     = 0;
 
 namespace ai {
 
-static void push_map_location(lua_State *L, const map_location& ml);
-static void push_attack_analysis(lua_State *L, attack_analysis&);
+static void push_attack_analysis(lua_State *L, const attack_analysis&);
 
 void lua_ai_context::init(lua_State *L)
 {
@@ -61,6 +62,34 @@ void lua_ai_context::init(lua_State *L)
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_newtable(L);
 	lua_rawset(L, LUA_REGISTRYINDEX);
+}
+
+void lua_ai_context::get_arguments(config &cfg) const
+{
+	int top = lua_gettop(L);
+
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num_);
+
+	lua_getfield(L, -1, "params");
+	luaW_toconfig(L, -1, cfg);
+
+	lua_settop(L, top);
+}
+
+void lua_ai_context::set_arguments(const config &cfg)
+{
+	int top = lua_gettop(L);
+
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num_);
+
+	luaW_pushconfig(L, cfg);
+	lua_setfield(L, -2, "params");
+
+	lua_settop(L, top);
 }
 
 void lua_ai_context::get_persistent_data(config &cfg) const
@@ -90,6 +119,7 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 
 	lua_settop(L, top);
 }
+
 static ai::engine_lua &get_engine(lua_State *L)
 {
 	return *(static_cast<ai::engine_lua*>(
@@ -101,6 +131,21 @@ static ai::readonly_context &get_readonly_context(lua_State *L)
 	return get_engine(L).get_readonly_context();
 }
 
+void lua_ai_context::push_ai_table()
+{
+	lua_ai_load ctx(*this, false);
+}
+
+static void push_location_key(lua_State* L, const map_location& loc)
+{
+	// This should be factored out. The same function is defined in data/lua/location_set.lua
+	// At this point, it is not clear, where this(hashing) function can be placed
+	// Implemented it this way, to test the new version of the data structure
+	// as requested from the users of LuaAI <Nephro>
+	int hashed_index = (loc.x + 1) * 16384 + (loc.y + 1) + 2000;
+	lua_pushinteger(L, hashed_index);
+}
+
 static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
 {
 	lua_newtable(L);
@@ -110,29 +155,9 @@ static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result
 	lua_setfield(L, -2, "gamestate_changed");
 	lua_pushinteger(L,action_result->get_status());
 	lua_setfield(L, -2, "status");
+	lua_pushstring(L, actions::get_error_name(action_result->get_status()).c_str());
+	lua_setfield(L, -2, "result");
 	return 1;
-}
-
-static bool to_map_location(lua_State *L, int &index, map_location &res)
-{
-	if (lua_isuserdata(L, index))
-	{
-		const unit* u = luaW_tounit(L, index);
-		if (!u) return false;
-		res = u->get_location();
-		++index;
-	}
-	else
-	{
-		if (!lua_isnumber(L, index)) return false;
-		res.x = lua_tointeger(L, index) - 1;
-		++index;
-		if (!lua_isnumber(L, index)) return false;
-		res.y = lua_tointeger(L, index) - 1;
-		++index;
-	}
-
-	return true;
 }
 
 static int cfun_ai_get_suitable_keep(lua_State *L)
@@ -140,7 +165,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 	int index = 1;
 
 	ai::readonly_context &context = get_readonly_context(L);
-	unit* leader = NULL;
+	unit* leader = nullptr;
 	if (lua_isuserdata(L, index))
 	{
 		leader = luaW_tounit(L, index);
@@ -162,19 +187,12 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 
 static int ai_move(lua_State *L, bool exec, bool remove_movement)
 {
-	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
-
 	int side = get_readonly_context(L).get_side();
-	map_location from, to;
-	if (!to_map_location(L, index, from)) goto error_call_destructors;
-	if (!to_map_location(L, index, to)) goto error_call_destructors;
+	map_location from = luaW_checklocation(L, 1);
+	map_location to = luaW_checklocation(L, 2);
 	bool unreach_is_ok = false;
-	if (lua_isboolean(L, index)) {
-		unreach_is_ok = luaW_toboolean(L, index);
+	if (lua_isboolean(L, 3)) {
+		unreach_is_ok = luaW_toboolean(L, 3);
 	}
 	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,exec,from,to,remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);
@@ -197,24 +215,17 @@ static int cfun_ai_check_move(lua_State *L)
 
 static int ai_attack(lua_State *L, bool exec)
 {
-	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
-
 	ai::readonly_context &context = get_readonly_context(L);
 
 	int side = context.get_side();
-	map_location attacker, defender;
-	if (!to_map_location(L, index, attacker)) goto error_call_destructors;
-	if (!to_map_location(L, index, defender)) goto error_call_destructors;
+	map_location attacker = luaW_checklocation(L, 1);
+	map_location defender = luaW_checklocation(L, 2);
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = context.get_aggression();//use the aggression from the context
 
-	if (!lua_isnoneornil(L, index)) {
-		attacker_weapon = lua_tointeger(L, index);
+	if (!lua_isnoneornil(L, 3)) {
+		attacker_weapon = lua_tointeger(L, 3);
 		if (attacker_weapon != -1) {
 			attacker_weapon--;	// Done for consistency of the Lua style
 		}
@@ -224,8 +235,8 @@ static int ai_attack(lua_State *L, bool exec)
 	// If a decision is made to expand the function that determines the weapon, this block must be refactored
 	// to parse aggression if a single int is on the stack, or create a table of parameters, if a table is on the
 	// stack.
-	if (!lua_isnoneornil(L, index + 1) && lua_isnumber(L,index + 1)) {
-		aggression = lua_tonumber(L, index + 1);
+	if (!lua_isnoneornil(L, 4) && lua_isnumber(L,4)) {
+		aggression = lua_tonumber(L, 4);
 	}
 
 	unit_advancements_aspect advancements = context.get_advancements();
@@ -245,15 +256,8 @@ static int cfun_ai_check_attack(lua_State *L)
 
 static int ai_stopunit_select(lua_State *L, bool exec, bool remove_movement, bool remove_attacks)
 {
-	int index = 1;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, index, "location (unit/integers)");
-	}
-
 	int side = get_readonly_context(L).get_side();
-	map_location loc;
-	if (!to_map_location(L, index, loc)) goto error_call_destructors;
+	map_location loc = luaW_checklocation(L, 1);
 
 	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,exec,loc,remove_movement,remove_attacks);
 	return transform_ai_action(L,stopunit_result);
@@ -372,11 +376,11 @@ static int cfun_ai_get_targets(lua_State *L)
 
 
 		lua_pushstring(L, "type");
-		lua_pushnumber(L, it->type);
+		lua_pushstring(L, it->type.to_string().c_str());
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "loc");
-		push_map_location(L, it->loc);
+		luaW_pushlocation(L, it->loc);
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "value");
@@ -406,11 +410,11 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 
 static int cfun_ai_get_attacks(lua_State *L)
 {
-	ai::attacks_vector attacks = get_readonly_context(L).get_attacks();
+	const ai::attacks_vector& attacks = get_readonly_context(L).get_attacks();
 	lua_createtable(L, attacks.size(), 0);
 	int table_index = lua_gettop(L);
 
-	ai::attacks_vector::iterator it = attacks.begin();
+	ai::attacks_vector::const_iterator it = attacks.begin();
 	for (int i = 1; it != attacks.end(); ++it, ++i)
 	{
 		push_attack_analysis(L, *it);
@@ -425,30 +429,7 @@ static int cfun_ai_get_avoid(lua_State *L)
 	std::set<map_location> locs;
 	terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs);
-
-	int sz = locs.size();
-	lua_createtable(L, sz, 0); // create a table that we'll use as an array
-
-	std::set<map_location>::iterator it = locs.begin();
-	for (int i = 0; it != locs.end(); ++it, ++i)
-	{
-		lua_pushinteger(L, i + 1); // Index for the map location
-
-		push_map_location(L, *it);
-
-		// Deprecated
-		//lua_createtable(L, 2, 0); // Table for a single map location
-
-		//lua_pushstring(L, "x");
-		//lua_pushinteger(L, it->x + 1);
-		//lua_settable(L, -3);
-
-		//lua_pushstring(L, "y");
-		//lua_pushinteger(L, it->y + 1);
-		//lua_settable(L, -3);
-
-		lua_settable(L, -3);
-	}
+	lua_push(L, locs);
 
 	return 1;
 }
@@ -509,27 +490,6 @@ static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 	return 1;
 }
 
-static int cfun_ai_get_number_of_possible_recruits_to_force_recruit(lua_State *L)
-{
-	double noprtfr = get_readonly_context(L).get_number_of_possible_recruits_to_force_recruit(); // @note: abbreviation
-	lua_pushnumber(L, noprtfr);
-	return 1;
-}
-
-static int cfun_ai_get_recruitment_ignore_bad_combat(lua_State *L)
-{
-	bool recruitment_ignore_bad_combat = get_readonly_context(L).get_recruitment_ignore_bad_combat();
-	lua_pushboolean(L, recruitment_ignore_bad_combat);
-	return 1;
-}
-
-static int cfun_ai_get_recruitment_ignore_bad_movement(lua_State *L)
-{
-	bool recruitment_ignore_bad_movement = get_readonly_context(L).get_recruitment_ignore_bad_movement();
-	lua_pushboolean(L, recruitment_ignore_bad_movement);
-	return 1;
-}
-
 static int cfun_ai_get_recruitment_pattern(lua_State *L)
 {
 	std::vector<std::string> recruiting = get_readonly_context(L).get_recruitment_pattern();
@@ -586,7 +546,7 @@ static int cfun_attack_rating(lua_State *L)
 	// the attack_analysis table should be on top of the stack
 	lua_getfield(L, -1, "att_ptr"); // [-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 	// now the pointer to our attack_analysis C++ object is on top
-	attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1));
+	const attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1));
 
 	//[-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 
@@ -613,11 +573,11 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 		lua_createtable(L, 2, 0); // Creating a table for a pair of map_location's
 
 		lua_pushstring(L, "src");
-		push_map_location(L, move->first);
+		luaW_pushlocation(L, move->first);
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "dst");
-		push_map_location(L, move->second);
+		luaW_pushlocation(L, move->second);
 		lua_rawset(L, -3);
 
 		lua_rawseti(L, table_index, i); // setting  the pair as an element of the movements table
@@ -626,13 +586,13 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 
 }
 
-static void push_attack_analysis(lua_State *L, attack_analysis& aa)
+static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
 {
 	lua_newtable(L);
 
 	// Pushing a pointer to the current object
 	lua_pushstring(L, "att_ptr");
-	lua_pushlightuserdata(L, &aa);
+	lua_pushlightuserdata(L, const_cast<attack_analysis*>(&aa));
 	lua_rawset(L, -3);
 
 	// Registering callback function for the rating method
@@ -646,7 +606,7 @@ static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "target");
-	push_map_location(L, aa.target);
+	luaW_pushlocation(L, aa.target);
 	lua_rawset(L, -3);
 
 	lua_pushstring(L, "target_value");
@@ -706,19 +666,6 @@ static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 	lua_rawset(L, -3);
 }
 
-static void push_map_location(lua_State *L, const map_location& ml)
-{
-	lua_createtable(L, 2, 0);
-
-	lua_pushstring(L, "x");
-	lua_pushinteger(L, ml.x + 1);
-	lua_rawset(L, -3);
-
-	lua_pushstring(L, "y");
-	lua_pushinteger(L, ml.y + 1);
-	lua_rawset(L, -3);
-}
-
 static void push_move_map(lua_State *L, const move_map& m)
 {
 	lua_createtable(L, 0, 0); // the main table
@@ -737,21 +684,13 @@ static void push_move_map(lua_State *L, const move_map& m)
 	do
 	{
 		map_location key = it->first;
-
-		//push_map_location(L, key); // deprecated
-
-		// This should be factored out. The same function is defined in data/lua/location_set.lua
-		// At this point, it is not clear, where this(hashing) function can be placed
-		// Implemented it this way, to test the new version of the data structure
-		// as requested from the users of LuaAI <Nephro>
-		int hashed_index = (key.x + 1) * 16384 + (key.y + 1) + 2000;
-		lua_pushinteger(L, hashed_index);
+		push_location_key(L, key);
 
 		lua_createtable(L, 0, 0);
 
 		while (key == it->first) {
 
-			push_map_location(L, it->second);
+			luaW_pushlocation(L, it->second);
 			lua_rawseti(L, -2, index);
 
 			++index;
@@ -838,13 +777,94 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 	return 1;
 }
 
-static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
-	//push data table here
-	lua_newtable(L);
-	lua_pushinteger(L, engine->get_readonly_context().get_side());
-	lua_setfield(L, -2, "side"); //stack size is 2 [- 1: new table; -2 ai as string]
+template<typename T>
+typesafe_aspect<T>* try_aspect_as(aspect_ptr p)
+{
+	return boost::dynamic_pointer_cast<typesafe_aspect<T> >(p).get();
+}
+
+static int impl_ai_aspect_get(lua_State* L)
+{
+	const aspect_map& aspects = get_engine(L).get_readonly_context().get_aspects();
+	aspect_map::const_iterator iter = aspects.find(luaL_checkstring(L, 2));
+	if(iter == aspects.end()) {
+		return 0;
+	}
+	
+	// For attacks, just fall back to existing function
+	if(iter->first == "attacks") {
+		lua_pushlightuserdata(L, &get_engine(L));
+		lua_pushcclosure(L, &cfun_ai_get_attacks, 1);
+		lua_call(L, 0, 1);
+		return 1;
+	}
+	
+	typedef std::vector<std::string> string_list;
+	if(typesafe_aspect<bool>* aspect = try_aspect_as<bool>(iter->second)) {
+		lua_pushboolean(L, aspect->get());
+	} else if(typesafe_aspect<int>* aspect = try_aspect_as<int>(iter->second)) {
+		lua_pushinteger(L, aspect->get());
+	} else if(typesafe_aspect<double>* aspect = try_aspect_as<double>(iter->second)) {
+		lua_pushnumber(L, aspect->get());
+	} else if(typesafe_aspect<config>* aspect = try_aspect_as<config>(iter->second)) {
+		luaW_pushconfig(L, aspect->get());
+	} else if(typesafe_aspect<string_list>* aspect = try_aspect_as<string_list>(iter->second)) {
+		lua_push(L, aspect->get());
+	} else if(typesafe_aspect<terrain_filter>* aspect = try_aspect_as<terrain_filter>(iter->second)) {
+		std::set<map_location> result;
+		aspect->get().get_locations(result);
+		lua_push(L, result);
+	} else if(typesafe_aspect<attacks_vector>* aspect = try_aspect_as<attacks_vector>(iter->second)) {
+		// This case is caught separately above, but should the get_* aspect functions ever be
+		// deprecated, this is the place to move the code of cfun_ai_get_attacks to.
+		(void) aspect;
+	} else if(typesafe_aspect<unit_advancements_aspect>* aspect = try_aspect_as<unit_advancements_aspect>(iter->second)) {
+		const unit_advancements_aspect& val = aspect->get();
+		int my_side = luaW_getglobal(L, "ai", "side") - 1;
+		lua_newtable(L);
+		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+			if (!u.valid() || u->side() != my_side) {
+				continue;
+			}
+			push_location_key(L, u->get_location());
+			lua_push(L, val.get_advancements(u));
+			lua_settable(L, -3);
+		}
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+static int impl_ai_aspect_set(lua_State* L)
+{
+	lua_pushstring(L, "attempted to write to the ai.aspects table, which is read-only");
+	return lua_error(L);
+}
+
+static int impl_ai_get(lua_State* L)
+{
+	if(!lua_isstring(L,2)) {
+		return 0;
+	}
+	ai::engine_lua& engine = get_engine(L);
+	std::string m = lua_tostring(L,2);
+	if(m == "side") {
+		lua_pushinteger(L, engine.get_readonly_context().get_side());
+		return 1;
+	}
+	if(m == "aspects") {
+		lua_newtable(L); // [-1: Aspects table]
+		lua_newtable(L); // [-1: Aspects metatable  -2: Aspects table]
+		lua_pushlightuserdata(L, &engine); // [-1: Engine  -2: Aspects mt  -3: Aspects table]
+		lua_pushcclosure(L, &impl_ai_aspect_get, 1); // [-1: Metafunction  -2: Aspects mt  -3: Aspects table]
+		lua_setfield(L, -2, "__index"); // [-1: Aspects metatable  -2: Aspects table]
+		lua_pushcfunction(L, &impl_ai_aspect_set); // [-1: Metafunction  -2: Aspects mt  -3: Aspects table]
+		lua_setfield(L, -2, "__newindex"); // [-1: Aspects metatable  -2: Aspects table]
+		lua_setmetatable(L, -2); // [-1: Aspects table]
+		return 1;
+	}
 	static luaL_Reg const callbacks[] = {
-			{ "attack", &cfun_ai_execute_attack },
 			// Move maps
 			{ "get_new_dst_src", &cfun_ai_get_dstsrc },
 			{ "get_new_src_dst", &cfun_ai_get_srcdst },
@@ -867,11 +887,8 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			{ "get_leader_goal", &cfun_ai_get_leader_goal },
 			{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep },
 			{ "get_leader_value", &cfun_ai_get_leader_value },
-			{ "get_number_of_possible_recruits_to_force_recruit", &cfun_ai_get_number_of_possible_recruits_to_force_recruit },
 			{ "get_passive_leader", &cfun_ai_get_passive_leader },
 			{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
-			{ "get_recruitment_ignore_bad_combat", &cfun_ai_get_recruitment_ignore_bad_combat },
-			{ "get_recruitment_ignore_bad_movement", &cfun_ai_get_recruitment_ignore_bad_movement },
 			{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
 			{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
 			{ "get_simple_targeting", &cfun_ai_get_simple_targeting },
@@ -885,14 +902,6 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			{ "is_src_dst_valid", &cfun_ai_is_src_dst_valid },
 			{ "is_enemy_src_dst_valid", &cfun_ai_is_src_dst_enemy_valid },
 			// End of validation functions
-			{ "move", &cfun_ai_execute_move_partial },
-			{ "move_full", &cfun_ai_execute_move_full },
-			{ "recall", &cfun_ai_execute_recall },
-			{ "recruit", &cfun_ai_execute_recruit },
-			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
-			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
-			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
-			{ "synced_command", &cfun_ai_execute_synced_command },
 			{ "suitable_keep", &cfun_ai_get_suitable_keep },
 			{ "check_recall", &cfun_ai_check_recall },
 			{ "check_move", &cfun_ai_check_move },
@@ -902,42 +911,112 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			{ "check_recruit", &cfun_ai_check_recruit },
 			//{ "",},
 			//{ "",},
-			{ NULL, NULL } };
+			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = callbacks; p->name; ++p) {
-		lua_pushlightuserdata(L, engine);
-		lua_pushcclosure(L, p->func, 1);
-		lua_setfield(L, -2, p->name);
+		if(m == p->name) {
+			lua_pushlightuserdata(L, &engine); // [-1: engine  ...]
+			lua_pushcclosure(L, p->func, 1); // [-1: function  ...]
+			// Store the function so that __index doesn't need to be called next time
+			lua_pushstring(L, p->name); // [-1: name  -2: function  ...]
+			lua_pushvalue(L, -2); // [-1: function  -2: name  -3: function ...]
+			lua_rawset(L, 1); // [-1: function  ...]
+			return 1;
+		}
 	}
+	lua_pushstring(L, "read_only");
+	lua_rawget(L, 1);
+	bool read_only = luaW_toboolean(L, -1);
+	lua_pop(L, 1);
+	if(read_only) {
+		return 0;
+	}
+	static luaL_Reg const mutating_callbacks[] = {
+			{ "attack", &cfun_ai_execute_attack },
+			{ "move", &cfun_ai_execute_move_partial },
+			{ "move_full", &cfun_ai_execute_move_full },
+			{ "recall", &cfun_ai_execute_recall },
+			{ "recruit", &cfun_ai_execute_recruit },
+			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
+			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
+			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
+			{ "synced_command", &cfun_ai_execute_synced_command },
+			{ nullptr, nullptr } };
+	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
+		if(m == p->name) {
+			lua_pushlightuserdata(L, &engine);
+			lua_pushcclosure(L, p->func, 1);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
+	//push data table here
+	lua_newtable(L); // [-1: ai table]
+	lua_newtable(L); // [-1: metatable  -2: ai table]
+	lua_pushlightuserdata(L, engine); // [-1: engine  -2: metatable  -3: ai table]
+	lua_pushcclosure(L, &impl_ai_get, 1); // [-1: metafunc  -2: metatable  -3: ai table]
+	lua_setfield(L, -2, "__index"); // [-1: metatable  -2: ai table]
+	lua_setmetatable(L, -2); // [-1: ai table]
+}
+
+static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
+{
+	// Retrieve the ai elements table from the registry.
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
+	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AIs registry table]
+	size_t length_ai = lua_rawlen(L, -1); // length of table
+	lua_newtable(L); // [-1: AI state table  -2: AIs registry table]
+	generate_and_push_ai_table(L, engine); // [-1: AI routines  -2: AI state  -3: AIs registry]
+	lua_setfield(L, -2, "ai"); // [-1: AI state  -2: AIs registry]
+	lua_pushvalue(L, -1); // [-1: AI state  -2: AI state  -3: AIs registry]
+	lua_rawseti(L, -3, length_ai + 1); // [-1: AI state  -2: AIs registry]
+	lua_remove(L, -2); // [-1: AI state table]
+	return length_ai + 1;
 }
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
-	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
-	if (res_ai)
+	int res_ai = luaL_loadstring(L, code); // [-1: AI code]
+	if (res_ai != 0)
 	{
 
 		char const *m = lua_tostring(L, -1);
 		ERR_LUA << "error while initializing ai:  " <<m << '\n';
 		lua_pop(L, 2);//return with stack size 0 []
-		return NULL;
+		return nullptr;
 	}
 	//push data table here
-	generate_and_push_ai_table(L, engine);
-
-	//compile the ai as a closure
-	if (!luaW_pcall(L, 1, 1, true)) {
-		return NULL;//return with stack size 0 []
-	}
-
-	// Retrieve the ai elements table from the registry.
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
-	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
-	// Push the function in the table so that it is not collected.
-	size_t length_ai = lua_rawlen(L, -1);//length of ais_table
-	lua_pushvalue(L, -2); //stack size is now 3: [-1: ai_context  -2: ais_table  -3: ai_context]
-	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
+	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
+	lua_pushvalue(L, -2); // [-1: AI code  -2: AI state  -3: AI code]
+	lua_setfield(L, -2, "update_self"); // [-1: AI state  -2: AI code]
+	lua_pushlightuserdata(L, engine);
+	lua_setfield(L, -2, "engine"); // [-1: AI state  -2: AI code]
 	lua_pop(L, 2);
-	return new lua_ai_context(L, length_ai + 1, engine->get_readonly_context().get_side());
+	return new lua_ai_context(L, idx, engine->get_readonly_context().get_side());
+}
+
+void lua_ai_context::update_state()
+{
+	lua_ai_load ctx(*this, true); // [-1: AI state table]
+	
+	// Load the AI code and arguments
+	lua_getfield(L, -1, "update_self"); // [-1: AI code  -2: AI state]
+	lua_getfield(L, -2, "params"); // [-1: Arguments  -2: AI code  -3: AI state]
+	lua_getfield(L, -3, "data"); // [-1: Persistent data  -2: Arguments  -3: AI code  -4: AI state]
+	
+	// Call the function
+	if (!luaW_pcall(L, 2, 1, true)) { // [-1: Result  -2: AI state]
+		lua_pop(L, 2); // (The result in this case is an error message.)
+		return; // return with stack size 0 []
+	}
+	
+	// Store the state for use by components
+	lua_setfield(L, -2, "self"); // [-1: AI state]
+	
+	// And return with empty stack.
+	lua_pop(L, 1);
 }
 
 lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *code, lua_ai_context &context)
@@ -948,9 +1027,8 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 		char const *m = lua_tostring(L, -1);
 		ERR_LUA << "error while creating ai function:  " <<m << '\n';
 		lua_pop(L, 2);//return with stack size 0 []
-		return NULL;
+		return nullptr;
 	}
-
 
 	// Retrieve the ai elements table from the registry.
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
@@ -966,19 +1044,53 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 }
 
 
-void lua_ai_context::load()
+int lua_ai_load::refcount = 0;
+
+lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L), was_readonly(false)
 {
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));//stack size is now 1 [-1: ais_table key]
-	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
-	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_context -2: ais_table]
-	lua_remove(L,-2);
+	refcount++;
+	// Check if the AI table is already loaded. If so, we have less work to do.
+	lua_getglobal(L, "ai");
+	if(!lua_isnoneornil(L, -1)) {
+		// Save the previous read-only state
+		lua_getfield(L, -1, "read_only");
+		was_readonly = luaW_toboolean(L, -1);
+		lua_pop(L, 1);
+		// Update the read-only state
+		lua_pushstring(L, "read_only");
+		lua_pushboolean(L, read_only);
+		lua_rawset(L, -3);
+		return; // Leave the AI table on the stack, as requested
+	}
+	lua_pop(L, 1); // Pop the nil value off the stack
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey))); // [-1: key]
+	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AI registry]
+	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
+	lua_remove(L,-2); // [-1: AI state]
+	
+	// Load the AI functions table into global scope
+	lua_getfield(L, -1, "ai"); // [-1: AI functions  -2: AI state]
+	lua_pushstring(L, "read_only"); // [-1: key  -2: AI functions  -3: AI state]
+	lua_pushboolean(L, read_only); // [-1: value  -2: key  -3: AI functions  -4: AI state]
+	lua_rawset(L, -3); // [-1: AI functions  -2: AI state]
+	lua_setglobal(L, "ai"); // [-1: AI state]
 }
 
-void lua_ai_context::load_and_inject_ai_table(ai::engine_lua* engine)
+lua_ai_load::~lua_ai_load()
 {
-	load(); //stack size is 1 [-1: ai_context]
-	generate_and_push_ai_table(L, engine); //stack size is 2 [-1: ai_table -2: ai_context]
-	lua_setfield(L, -2, "ai"); //stack size is 1 [-1: ai_context]
+	refcount--;
+	if (refcount == 0) {
+		// Remove the AI functions from the global scope
+		lua_pushnil(L);
+		lua_setglobal(L, "ai");
+	} else {
+		// Restore the read-only state
+		lua_getglobal(L, "ai");
+		lua_pushstring(L, "read_only");
+		lua_pushboolean(L, was_readonly);
+		lua_rawset(L, -3);
+		lua_pop(L, 1);
+	}
 }
 
 lua_ai_context::~lua_ai_context()
@@ -991,26 +1103,29 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l_obj)
+void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object_ptr l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
+	
+	// Load the context
+	lua_ai_load ctx(context_, read_only); // [-1: AI state table]
 
 	// Load the user function from the registry.
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));//stack size is now 1 [-1: ais_table key]
-	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
-	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_action  -2: ais_table]
-	lua_remove(L, -2);//stack size is 1 [-1: ai_action]
-	//load the lua ai context as a parameter
-	context_.load();//stack size is 2 [-1: ai_context -2: ai_action]
-
-	if (!configOut)
-	{
-		luaW_pushconfig(L, cfg);
-		luaW_pcall(L, 2, 0, true);
-	}
-	else if (luaW_pcall(L, 1, 5, true)) // @note for Crab: how much nrets should we actually have here
-	{				    // there were 2 initially, but aspects like recruitment pattern
-		l_obj->store(L, initial_top + 1); // return a lot of results
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey))); // [-1: key  -2: AI state]
+	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AI registry  -2: AI state]
+	lua_rawgeti(L, -1, num_); // [-1: AI action  -2: AI registry  -3: AI state]
+	lua_remove(L, -2); // [-1: AI action  -2: AI state]
+	
+	// Load the arguments
+	int iState = lua_absindex(L, -2);
+	lua_getfield(L, iState, "self");
+	luaW_pushconfig(L, cfg);
+	lua_getfield(L, iState, "data");
+	
+	// Call the function
+	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
+	if (l_obj) {
+		l_obj->store(L, -1);
 	}
 
 	lua_settop(L, initial_top);//empty stack

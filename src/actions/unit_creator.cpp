@@ -21,26 +21,25 @@
 
 #include "move.hpp" //for actions::get_village
 
-#include "../config.hpp"
-#include "../filter_context.hpp"
-#include "../game_board.hpp"
-#include "../game_events/manager.hpp"
-#include "../game_events/pump.hpp"
-#include "../game_preferences.hpp"
-#include "../game_data.hpp" // for resources::gamedata conversion variable_set
-#include "../gettext.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../pathfind/pathfind.hpp"
-#include "../resources.hpp" // for resources::screen, resources::gamedata
-#include "../team.hpp" //for team
-#include "../unit.hpp" // for unit
-#include "../unit_display.hpp" // for unit_display
-#include "../variable.hpp" // for vconfig
+#include "config.hpp"
+#include "filter_context.hpp"
+#include "game_board.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
+#include "game_preferences.hpp"
+#include "game_data.hpp" // for resources::gamedata conversion variable_set
+#include "gettext.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "pathfind/pathfind.hpp"
+#include "resources.hpp" // for resources::screen, resources::gamedata
+#include "team.hpp" //for team
+#include "units/unit.hpp" // for unit
+#include "units/udisplay.hpp" // for unit_display
+#include "variable.hpp" // for vconfig
 
-#include "../game_display.hpp" // for resources::screen
+#include "game_display.hpp" // for resources::screen
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -113,7 +112,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	BOOST_FOREACH(const std::string& place, placements)
+	for (const std::string& place : placements)
 	{
 		map_location loc;
 
@@ -140,7 +139,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
-				                       pass ? pass_check : NULL, NULL, board_);
+				                       pass ? pass_check : nullptr, nullptr, board_);
 			}
 			if(loc.valid() && board_->map().on_board(loc)) {
 				return loc;
@@ -157,8 +156,6 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 {
 	config temp_cfg(cfg);
 	temp_cfg["side"] = team_.side();
-	temp_cfg.remove_attribute("player_id");
-	temp_cfg.remove_attribute("faction_from_recruit");
 
 	const std::string& id =(cfg)["id"];
 	bool animate = temp_cfg["animate"].to_bool();
@@ -207,7 +204,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		preferences::encountered_units().insert(new_unit.type_id());
 	}
 
-	bool show = show_ && (resources::screen !=NULL) && !resources::screen->fogged(loc);
+	bool show = show_ && (resources::screen !=nullptr) && !resources::screen->fogged(loc);
 	bool animate = show && anim;
 
 	if (get_village_) {
@@ -217,9 +214,12 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		}
 	}
 
-	resources::game_events->pump().fire("unit placed", loc);
+	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
+	if (resources::lua_kernel != nullptr) {
+		resources::game_events->pump().fire("unit placed", loc);
+	}
 
-	if (resources::screen!=NULL) {
+	if (resources::screen!=nullptr) {
 
 		if (invalidate_ ) {
 			resources::screen->invalidate(loc);

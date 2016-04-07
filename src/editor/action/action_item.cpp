@@ -35,7 +35,7 @@ editor_action_item* editor_action_item::clone() const
 
 editor_action* editor_action_item::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo(new editor_action_item_delete(loc_));
+	std::unique_ptr<editor_action> undo(new editor_action_item_delete(loc_));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -60,13 +60,13 @@ editor_action* editor_action_item_delete::perform(map_context& /*mc*/) const
 //	item_map& items = mc.get_items();
 //	item_map::const_item_iterator item_it = items.find(loc_);
 //
-//	std::auto_ptr<editor_action> undo;
+//	std::unique_ptr<editor_action> undo;
 //	if (item_it != items.end()) {
 //		undo.reset(new editor_action_item(loc_, *item_it));
 //		perform_without_undo(mc);
 //		return undo.release();
 //	}
-	return NULL;
+	return nullptr;
 }
 
 void editor_action_item_delete::perform_without_undo(map_context& /*mc*/) const
@@ -87,7 +87,7 @@ editor_action_item_replace* editor_action_item_replace::clone() const
 
 editor_action* editor_action_item_replace::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo(new editor_action_item_replace(new_loc_, loc_));
+	std::unique_ptr<editor_action> undo(new editor_action_item_replace(new_loc_, loc_));
 
 	perform_without_undo(mc);
 	return undo.release();
@@ -125,7 +125,7 @@ editor_action_item_facing* editor_action_item_facing::clone() const
 
 editor_action* editor_action_item_facing::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo(new editor_action_item_facing(loc_, old_direction_, new_direction_));
+	std::unique_ptr<editor_action> undo(new editor_action_item_facing(loc_, old_direction_, new_direction_));
 	perform_without_undo(mc);
 	return undo.release();
 }

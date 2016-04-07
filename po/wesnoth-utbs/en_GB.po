@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
-"PO-Revision-Date: 2015-12-11 22:36+1100\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"PO-Revision-Date: 2016-01-23 13:22+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1571,12 +1571,12 @@ msgstr ""
 msgid "Elyssa"
 msgstr "Elyssa"
 
-#. [event]
+#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1094
 msgid "Go’hag"
 msgstr "Go’hag"
 
-#. [event]
+#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1095
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1097
@@ -1589,7 +1589,7 @@ msgstr "Undead Raider"
 msgid "Back, you fiends! Or I’ll kill you a second time!"
 msgstr "Back, you fiends! Or I’ll kill you a second time!"
 
-#. [message]: role=Go'hag
+#. [message]: speaker=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1117
 msgid ""
 "You have defied our master for the last time. Now you shall die! And I shall "
@@ -1600,7 +1600,7 @@ msgstr ""
 "personally make it slow and painful, to thank you for that scorching you "
 "gave me."
 
-#. [message]: role=Go'hag
+#. [message]: speaker=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1124
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr "You have defied our master for the last time. Now you shall die!"
@@ -15573,29 +15573,20 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Monsters"
+msgstr "Monster Crab"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Crab Men are part crab, part humanoid, and are certainly one of the "
-#| "most twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-#| "creation of some twisted mage, these monstrosities have spread into the "
-#| "wild and prefer to live around coastal waters, preying on both humans and "
-#| "animals."
 msgid ""
 "The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
 "many twisted monsters recorded by the sages of Wesnoth and probably the "
 "creation of some twisted mage. These monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"The Crab Men are part crab, part humanoid, and are certainly one of the most "
-"twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-"creation of some twisted mage, these monstrosities have spread into the wild "
+"The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
+"many twisted monsters recorded by the sages of Wesnoth and probably the "
+"creation of some twisted mage. These monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 
 #. [attack]: type=blade

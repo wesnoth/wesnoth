@@ -15,7 +15,7 @@
 
 #include "sdl/image.hpp"
 
-#include "SDL_image.h"
+#include <SDL_image.h>
 #include "sdl/exception.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
@@ -28,7 +28,7 @@
 namespace sdl
 {
 timage::timage(Uint16 w, Uint16 h)
-	: image_(NULL)
+	: image_(nullptr)
 	, rotation_(0)
 	, hscale_(1)
 	, vscale_(1)
@@ -43,7 +43,7 @@ timage::timage(Uint16 w, Uint16 h)
 {
 	clip_ = create_gpu_rect(0, 0, w, h);
 	image_ = GPU_CreateImage(w, h, GPU_FORMAT_RGBA);
-	if (image_ == NULL) {
+	if (image_ == nullptr) {
 		throw tgpu_exception("Failed to construct timage object.", true);
 	} else {
 		image_->refcount = 1;
@@ -66,7 +66,7 @@ timage::timage(const std::string &file)
 	, vwrap_(GPU_WRAP_NONE)
 	, effects_(0)
 {
-	if (image_ == NULL) {
+	if (image_ == nullptr) {
 		throw tgpu_exception("Failed to construct timage object.", true);
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
@@ -92,8 +92,8 @@ timage::timage(const surface &source)
 	, submerge_(0)
 	, effects_(0)
 {
-	if (image_ == NULL) {
-		if (!source.null()) {
+	if (image_ == nullptr) {
+		if (!source.nullptr()) {
 			throw tgpu_exception("Failed to construct timage object.", true);
 		}
 	} else {
@@ -120,8 +120,8 @@ timage::timage(SDL_Surface *source)
 	, submerge_(0)
 	, effects_(0)
 {
-	if (image_ == NULL) {
-		if (source != NULL) {
+	if (image_ == nullptr) {
+		if (source != nullptr) {
 			throw tgpu_exception("Failed to construct timage object.", true);
 		}
 	} else {
@@ -133,7 +133,7 @@ timage::timage(SDL_Surface *source)
 }
 
 timage::timage()
-	: image_(NULL)
+	: image_(nullptr)
 	, rotation_(0)
 	, hscale_(1)
 	, vscale_(1)
@@ -152,7 +152,7 @@ timage::timage()
 
 sdl::timage::~timage()
 {
-	if (image_ != NULL) {
+	if (image_ != nullptr) {
 		image_->refcount -= 1;
 		if (image_->refcount == 0) {
 			GPU_FreeImage(image_);
@@ -176,7 +176,7 @@ timage::timage(const timage &texture)
 	, submerge_(texture.submerge_)
 	, effects_(texture.effects_)
 {
-	if (image_ != NULL) {
+	if (image_ != nullptr) {
 		image_->refcount += 1;
 	}
 }
@@ -365,9 +365,9 @@ int timage::effects() const
 	return effects_;
 }
 
-bool timage::null() const
+bool timage::nullptr() const
 {
-	return image_ == NULL;
+	return image_ == nullptr;
 }
 
 timage timage::clone() const

@@ -15,12 +15,11 @@
 
 #include "editor/action/action.hpp"
 #include "editor/toolkit/brush.hpp"
-#include "../../editor_display.hpp"
+#include "editor/editor_display.hpp"
 #include "mouse_action.hpp"
 
-#include "construct_dialog.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/editor_set_starting_position.hpp"
+#include "gui/dialogs/editor/set_starting_position.hpp"
 #include "editor/palette/terrain_palettes.hpp"
 
 namespace editor {
@@ -54,37 +53,37 @@ std::set<map_location> mouse_action::affected_hexes(
 editor_action* mouse_action::drag_left(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action::drag_right(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action::drag_end_left(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action::drag_end_right(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action::up_right(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action::up_left(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action::key_event(
@@ -98,17 +97,17 @@ editor_action* mouse_action::key_event(
 				disp.scroll_to_tile(pos, display::WARP);
 			}
 		}
-		return NULL;
+		return nullptr;
 	}
 	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
-		return NULL;
+		return nullptr;
 	}
-	editor_action* a = NULL;
+	editor_action* a = nullptr;
 	if ((has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9'))
 	|| event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
-		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_) + 1;
+		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_);
 		if (res == 0 && player_starting_at_hex != -1) {
 			a = new editor_action_starting_position(map_location(), player_starting_at_hex);
 		} else if (res > 0 && res != player_starting_at_hex) {
@@ -120,7 +119,7 @@ editor_action* mouse_action::key_event(
 
 void mouse_action::set_mouse_overlay(editor_display& disp)
 {
-	disp.set_mouseover_hex_overlay(NULL);
+	disp.set_mouseover_hex_overlay(nullptr);
 }
 
 bool mouse_action::has_alt_modifier() const
@@ -148,9 +147,9 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	surface image_fg(image::get_image(disp.get_map().get_terrain_info(fg).editor_image()));
 	surface image_bg(image::get_image(disp.get_map().get_terrain_info(bg).editor_image()));
 
-	if (image_fg == NULL || image_bg == NULL) {
+	if (image_fg == nullptr || image_bg == nullptr) {
 		ERR_ED << "Missing terrain icon" << std::endl;
-		disp.set_mouseover_hex_overlay(NULL);
+		disp.set_mouseover_hex_overlay(nullptr);
 		return;
 	}
 
@@ -173,12 +172,12 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
 	SDL_Rect rcDestLeft = sdl::create_rect(offset, quarter_size, 0, 0);
-	blit_surface ( image_fg, NULL, image, &rcDestLeft );
+	blit_surface ( image_fg, nullptr, image, &rcDestLeft );
 
 	// Blit right side
 	image_bg = scale_surface(image_bg, new_size, new_size);
 	SDL_Rect rcDestRight = sdl::create_rect(half_size, quarter_size, 0, 0);
-	blit_surface ( image_bg, NULL, image, &rcDestRight );
+	blit_surface ( image_bg, nullptr, image, &rcDestRight );
 
 	//apply mask so the overlay is contained within the mouseover hex
 	image = mask_surface(image, image::get_hexmask());
@@ -231,7 +230,7 @@ editor_action* brush_drag_mouse_action::drag_right(editor_display& disp,
 editor_action* brush_drag_mouse_action::drag_end(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<map_location>&)>
@@ -247,7 +246,7 @@ editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x
 		previous_drag_hex_ = hex;
 		return a;
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -264,7 +263,7 @@ editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y
 	if (has_ctrl_modifier()) {
 		map_location hex = disp.hex_clicked_on(x, y);
 		terrain_palette_.select_fg_item(disp.map().get_terrain(hex));
-		return NULL;
+		return nullptr;
 	} else {
 		return brush_drag_mouse_action::click_left(disp, x, y);
 	}
@@ -275,7 +274,7 @@ editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int 
 	if (has_ctrl_modifier()) {
 		map_location hex = disp.hex_clicked_on(x, y);
 		terrain_palette_.select_bg_item(disp.map().get_terrain(hex));
-		return NULL;
+		return nullptr;
 	} else {
 		return brush_drag_mouse_action::click_right(disp, x, y);
 	}
@@ -284,7 +283,7 @@ editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int 
 editor_action* mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
-	if (has_ctrl_modifier()) return NULL;
+	if (has_ctrl_modifier()) return nullptr;
 	return new editor_action_chain(new editor_action_paint_area(
 			hexes, terrain_palette_.selected_fg_item(), has_shift_modifier()));
 }
@@ -292,7 +291,7 @@ editor_action* mouse_action_paint::click_perform_left(
 editor_action* mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
-	if (has_ctrl_modifier()) return NULL;
+	if (has_ctrl_modifier()) return nullptr;
 	return new editor_action_chain(new editor_action_paint_area(
 			hexes, terrain_palette_.selected_bg_item(), has_shift_modifier()));
 }
@@ -327,7 +326,7 @@ editor_action* mouse_action_paste::click_left(editor_display& disp, int x, int y
 
 editor_action* mouse_action_paste::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 void mouse_action_paste::set_mouse_overlay(editor_display& disp)
@@ -338,7 +337,7 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	surface image = create_neutral_surface(72,72);
 
 	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
-	blit_surface(image60, NULL, image, &r);
+	blit_surface(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;
 	int size = image->w;
@@ -360,7 +359,7 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
 		terrain_palette_.select_fg_item(disp.map().get_terrain(hex));
-		return NULL;
+		return nullptr;
 	} else {
 		/** @todo only take the base terrain into account when searching for contiguous terrain when painting base only */
 		//or use a different key modifier for that
@@ -375,7 +374,7 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
 		terrain_palette_.select_bg_item(disp.map().get_terrain(hex));
-		return NULL;
+		return nullptr;
 	} else {
 		/** @todo only take the base terrain into account when searching for contiguous terrain when painting base only */
 		//or use a different key modifier for that
@@ -393,15 +392,14 @@ void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 
 editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
 {
-	if (!click_) return NULL;
+	if (!click_) return nullptr;
 	click_ = false;
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.map().on_board(hex)) {
-		return NULL;
+		return nullptr;
 	}
 
-	const unsigned player_starting_at_hex =
-		static_cast<unsigned>(disp.map().is_starting_position(hex) + 1); // 1st player = 1
+	const unsigned player_starting_at_hex = disp.map().is_starting_position(hex);
 
 	std::vector<map_location> starting_positions;
 
@@ -414,7 +412,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	dlg.show(disp.video());
 
 	unsigned new_player_at_hex = dlg.result(); // 1st player = 1
-	editor_action* a = NULL;
+	editor_action* a = nullptr;
 
 	if(new_player_at_hex != player_starting_at_hex) {
 		if(!new_player_at_hex) {
@@ -434,23 +432,23 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 editor_action* mouse_action_starting_position::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	click_ = true;
-	return NULL;
+	return nullptr;
 }
 
 editor_action* mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
+	int player_starting_at_hex = disp.map().is_starting_position(hex);
 	if (player_starting_at_hex != -1) {
 		return new editor_action_starting_position(map_location(), player_starting_at_hex);
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
 editor_action* mouse_action_starting_position::click_right(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
-	return NULL;
+	return nullptr;
 }
 
 void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
@@ -461,7 +459,7 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	surface image = create_neutral_surface(72,72);
 
 	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
-	blit_surface(image60, NULL, image, &r);
+	blit_surface(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;
 	int size = image->w;

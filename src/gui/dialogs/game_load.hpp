@@ -16,13 +16,14 @@
 #define GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/text.hpp"
 #include "save_index.hpp"
 #include "tstring.hpp"
 
 namespace gui2
 {
+
+class tlistbox;
+class ttext_;
 
 class tgame_load : public tdialog
 {
@@ -45,10 +46,14 @@ public:
 	{
 		return cancel_orders_;
 	}
+	const config& summary()
+	{
+		return summary_;
+	}
 
 protected:
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
@@ -57,7 +62,7 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	bool filter_text_changed(ttext_* textbox, const std::string& text);
+	void filter_text_changed(ttext_* textbox, const std::string& text);
 	void list_item_clicked(twindow& window);
 	void delete_button_callback(twindow& window);
 
@@ -87,6 +92,8 @@ private:
 	const config& cache_config_;
 
 	std::vector<std::string> last_words_;
+
+	config summary_;
 };
 }
 

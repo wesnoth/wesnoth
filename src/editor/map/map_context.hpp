@@ -17,13 +17,13 @@
 
 #include "editor_map.hpp"
 #include "game_classification.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "mp_game_settings.hpp"
 #include "sound_music_track.hpp"
 #include "tod_manager.hpp"
-#include "unit_map.hpp"
+#include "units/map.hpp"
 #include "overlay.hpp"
-#include "../../display_context.hpp"
+#include "display_context.hpp"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -341,10 +341,10 @@ public:
 	/** @return true when redo can be performed, false otherwise */
 	bool can_redo() const;
 
-	/** @return a pointer to the last undo action or NULL if the undo stack is empty */
+	/** @return a pointer to the last undo action or nullptr if the undo stack is empty */
 	editor_action* last_undo_action();
 
-	/** @return a pointer to the last redo action or NULL if the undo stack is empty */
+	/** @return a pointer to the last redo action or nullptr if the undo stack is empty */
 	editor_action* last_redo_action();
 
 	/** const version of last_undo_action */

@@ -38,11 +38,9 @@
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
-#include "unit.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/unit.hpp"
 
 namespace wb
 {
@@ -290,7 +288,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 					main_number = index;
 				}
 
-				BOOST_FOREACH(weak_action_ptr action, hlighter->get_secondary_highlights()) {
+				for(weak_action_ptr action : hlighter->get_secondary_highlights()) {
 					if(action.lock() == *it) {
 						secondary_numbers.insert(index);
 					}
@@ -377,7 +375,7 @@ void side_actions::hide()
 
 	hidden_ = true;
 
-	BOOST_FOREACH(action_ptr act, *this) {
+	for(action_ptr act : *this) {
 		act->hide();
 	}
 }
@@ -389,7 +387,7 @@ void side_actions::show()
 
 	hidden_ = false;
 
-	BOOST_FOREACH(action_ptr act, *this) {
+	for(action_ptr act : *this) {
 		act->show();
 	}
 }
@@ -669,13 +667,13 @@ side_actions::iterator side_actions::safe_erase(iterator const& itor)
 }
 side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(boost::make_shared<move>(team_index(), hidden_, boost::ref(mover), route, arrow, fake_unit));
+	move_ptr new_move(boost::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, fake_unit));
 	return queue_action(turn, new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(boost::make_shared<attack>(team_index(), hidden_, boost::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
+	attack_ptr new_attack(boost::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(turn, new_attack);
 }
 
@@ -693,7 +691,7 @@ side_actions::iterator side_actions::queue_recall(size_t turn, const unit& unit,
 
 side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, map_location const& loc)
 {
-	suppose_dead_ptr new_suppose_dead(boost::make_shared<suppose_dead>(team_index(), hidden_, boost::ref(curr_unit), loc));
+	suppose_dead_ptr new_suppose_dead(boost::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
 	return queue_action(turn, new_suppose_dead);
 }
 
@@ -787,7 +785,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	} else if(type=="refresh") {
 		LOG_WB << "Command received: refresh\n";
 		clear();
-		BOOST_FOREACH(net_cmd const& sub_cmd, cmd.child_range("net_cmd"))
+		for(net_cmd const& sub_cmd : cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);
 	} else {
 		ERR_WB << "side_actions::execute_network_command(): received invalid type!" << std::endl;
@@ -862,7 +860,7 @@ void side_actions::raw_turn_shift()
 {
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
 	std::set<unit_const_ptr> lazy_units;
-	BOOST_FOREACH(action_ptr const& act, iter_turn(0)) {
+	for(action_ptr const& act : iter_turn(0)) {
 		unit_const_ptr u = act->get_unit();
 		if(u) {
 			lazy_units.insert(u);

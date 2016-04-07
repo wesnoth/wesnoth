@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "game_info.hpp"
+#include "ai/game_info.hpp"
 
 namespace ai {
 // =======================================================================

@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "../../variable.hpp"
+#include "variable.hpp"
 
 #include <boost/shared_ptr.hpp>
 
@@ -37,7 +37,7 @@ public:
 	twindow* build_window(CVideo& video);
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	boost::shared_ptr<view> get_view();
 

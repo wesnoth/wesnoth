@@ -23,11 +23,7 @@
 #include <SDL_version.h>
 #include "utils.hpp"
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 #include <SDL_rect.h>
-#else
-#include <SDL_video.h>
-#endif
 
 #ifdef SDL_GPU
 #include "gpu.hpp"

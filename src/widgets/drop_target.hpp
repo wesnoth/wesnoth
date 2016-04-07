@@ -14,7 +14,7 @@
 #ifndef DROP_TARGET_H_INCLUDED
 #define DROP_TARGET_H_INCLUDED
 
-#include "SDL.h"
+#include <SDL.h>
 
 #include <map>
 

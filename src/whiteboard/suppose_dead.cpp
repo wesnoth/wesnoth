@@ -31,10 +31,9 @@
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "team.hpp"
-#include "unit.hpp"
-#include "unit_display.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
 
 namespace wb
 {

@@ -29,8 +29,8 @@
 #include "editor/action/action.hpp"
 #include "overlay.hpp"
 
-//#include "../../item_types.hpp"
-//#include "../../item.hpp"
+//#include "item_types.hpp"
+//#include "item.hpp"
 
 
 namespace editor {

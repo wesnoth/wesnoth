@@ -16,9 +16,9 @@
 #ifndef MOUSE_HANDLER_BASE_H_INCLUDED
 #define MOUSE_HANDLER_BASE_H_INCLUDED
 
-#include "map_location.hpp"
-#include "SDL_events.h"
-#include "SDL_version.h"
+#include "map/location.hpp"
+#include <SDL_events.h>
+#include <SDL_version.h>
 
 class display;
 
@@ -81,12 +81,10 @@ public:
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 	/**
 	 * Called when scrolling with the mouse wheel.
 	 */
 	virtual void mouse_wheel(int xscroll, int yscroll, bool browse);
-#endif
 
 	/**
 	 * Derived classes can override this to disable mousewheel scrolling under

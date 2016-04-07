@@ -16,15 +16,19 @@
 
 #include "gui/widgets/button.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/button.hpp"
-#include "gui/auxiliary/window_builder/button.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/core/log.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/core/window_builder/helper.hpp"
+
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
 #include "sound.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -32,20 +36,22 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 REGISTER_WIDGET(button)
 
 tbutton::tbutton() : tcontrol(COUNT), tclickable_(), state_(ENABLED), retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
-			boost::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			boost::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
 
-	connect_signal<event::LEFT_BUTTON_DOWN>(boost::bind(
+	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
 			&tbutton::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			boost::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
+			std::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&tbutton::signal_handler_left_button_click, this, _2, _3));
 }
 
@@ -139,5 +145,121 @@ void tbutton::signal_handler_left_button_click(const event::tevent event,
 
 	handled = true;
 }
+
+// }---------- DEFINITION ---------{
+
+tbutton_definition::tbutton_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing button " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_button
+ *
+ * == Button ==
+ *
+ * @macro = button_description
+ *
+ * The following states exist:
+ * * state_enabled, the button is enabled.
+ * * state_disabled, the button is disabled.
+ * * state_pressed, the left mouse button is down.
+ * * state_focused, the mouse is over the button.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="state_pressed"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_pressed"}
+ * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_focused"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="button_definition"}
+ * @end{parent}{name="gui/"}
+ */
+tbutton_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
+	// Note the order should be the same as the enum tstate in button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_pressed")));
+	state.push_back(tstate_definition(cfg.child("state_focused")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{button_description}
+ *
+ *        A button is a control that can be pushed to start an action or close
+ *        a dialog.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_button
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="button"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == Button ==
+ *
+ * @macro = button_description
+ *
+ * Instance of a button. When a button has a return value it sets the
+ * return value for the window. Normally this closes the window and returns
+ * this value to the caller. The return value can either be defined by the
+ * user or determined from the id of the button. The return value has a
+ * higher precedence as the one defined by the id. (Of course it's weird to
+ * give a button an id and then override its return value.)
+ *
+ * When the button doesn't have a standard id, but you still want to use the
+ * return value of that id, use return_value_id instead. This has a higher
+ * precedence as return_value.
+ *
+ * List with the button specific variables:
+ * @begin{table}{config}
+ *     return_value_id & string & "" &   The return value id. $
+ *     return_value & int & 0 &          The return value. $
+ *
+ * @end{table}
+ * @end{tag}{name="button"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_button::tbuilder_button(const config& cfg)
+	: tbuilder_control(cfg)
+	, retval_id_(cfg["return_value_id"])
+	, retval_(cfg["return_value"])
+{
+}
+
+twidget* tbuilder_button::build() const
+{
+	tbutton* widget = new tbutton();
+
+	init_control(widget);
+
+	widget->set_retval(get_retval(retval_id_, retval_, id));
+
+	DBG_GUI_G << "Window builder: placed button '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

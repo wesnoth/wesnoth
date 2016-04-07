@@ -2,6 +2,7 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
+local best_attack
 
 local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     -- Returns the first unit on or next to the path of the messenger
@@ -49,17 +50,17 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
     if (not enemy_in_way) then return end
 
 
-    local filter = cfg.filter or { id = cfg.id }
+    local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local units = AH.get_units_with_attacks {
         side = wesnoth.current.side,
         { "not", filter },
-        { "and", cfg.filter_second }
+        { "and", H.get_child(cfg, "filter_second") }
     }
     if (not units[1]) then return end
 
     local attacks = AH.get_attacks(units, { simulate_combat = true })
 
-    local max_rating, best_attack = -9e99
+    local max_rating = -9e99
     for _,attack in ipairs(attacks) do
         if (attack.target.x == enemy_in_way.x) and (attack.target.y == enemy_in_way.y) then
 
@@ -96,7 +97,7 @@ end
 
 local ca_messenger_attack = {}
 
-function ca_messenger_attack:evaluation(ai, cfg, self)
+function ca_messenger_attack:evaluation(cfg)
     -- Attack units in the path of the messengers
 
     local messenger, x, y = messenger_next_waypoint(cfg)
@@ -105,23 +106,22 @@ function ca_messenger_attack:evaluation(ai, cfg, self)
     local attack = messenger_find_clearing_attack(messenger, x, y, cfg)
 
     if attack then
-        self.data.ME_best_attack = attack
         return cfg.ca_score
     end
 
     return 0
 end
 
-function ca_messenger_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.ME_best_attack.src.x, self.data.ME_best_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.ME_best_attack.target.x, self.data.ME_best_attack.target.y)
+function ca_messenger_attack:execution(cfg)
+    local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
+    local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
 
-    AH.movefull_stopunit(ai, attacker, self.data.ME_best_attack.dst.x, self.data.ME_best_attack.dst.y)
+    AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
 
     AH.checked_attack(ai, attacker, defender)
-    self.data.ME_best_attack = nil
+    best_attack = nil
 end
 
 return ca_messenger_attack

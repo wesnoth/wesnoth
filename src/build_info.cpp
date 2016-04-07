@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -71,7 +71,7 @@ version_table_manager::version_table_manager()
 	, features()
 {
 	SDL_version sdl_version;
-	const SDL_version* sdl_rt_version = NULL;
+	const SDL_version* sdl_rt_version = nullptr;
 
 
 	//
@@ -81,15 +81,8 @@ version_table_manager::version_table_manager()
 	SDL_VERSION(&sdl_version);
 	compiled[LIB_SDL] = format_version(sdl_version);
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 	SDL_GetVersion(&sdl_version);
 	linked[LIB_SDL] = format_version(sdl_version);
-#else
-	sdl_rt_version = SDL_Linked_Version();
-	if(sdl_rt_version) {
-		linked[LIB_SDL] = format_version(*sdl_rt_version);
-	}
-#endif
 
 	names[LIB_SDL] = "SDL";
 
@@ -179,7 +172,7 @@ version_table_manager::version_table_manager()
 
 #ifdef HAVE_LIBPNG
 	compiled[LIB_PNG] = PNG_LIBPNG_VER_STRING;
-	linked[LIB_PNG] = png_get_libpng_ver(NULL);
+	linked[LIB_PNG] = png_get_libpng_ver(nullptr);
 	names[LIB_PNG] = "libpng";
 #endif
 

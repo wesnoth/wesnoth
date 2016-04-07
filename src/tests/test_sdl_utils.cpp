@@ -18,7 +18,7 @@
 //
 //#include "image.hpp"
 //
-//#include <boost/bind.hpp>
+//#include "utils/functional.hpp"
 //#include <boost/test/auto_unit_test.hpp>
 //
 //#include <iomanip>
@@ -101,6 +101,6 @@
 //
 //	const surface base = image::get_image(root + "/base.png");
 //
-//	blend_image(base, boost::bind(&test_blend, _1, _2, _3));
+//	blend_image(base, std::bind(&test_blend, _1, _2, _3));
 //}
 

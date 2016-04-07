@@ -27,7 +27,7 @@
 #define EDITOR_ACTION_HPP
 
 #include "editor/action/action_base.hpp"
-#include "../map/map_fragment.hpp"
+#include "editor/map/map_fragment.hpp"
 
 namespace editor {
 

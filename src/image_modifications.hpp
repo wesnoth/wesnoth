@@ -185,19 +185,20 @@ class rotate_modification : public modification
 public:
 	/**
 	 * Constructor.
-	 * @pre @zoom >= @offset   Otherwise the result will have empty pixels.
-     * @pre @offset > 0        Otherwise the procedure will not return.
+	 *
+	 * @pre zoom >= offset   Otherwise the result will have empty pixels.
+     * @pre offset > 0       Otherwise the procedure will not return.
 	 *
 	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.
 	 * @param zoom    The zoom level to calculate the rotation from.
 	 *                Greater values result in better results and increased runtime.
-	 *                This parameter will be ignored if @degrees is a multiple of 90.
+	 *                This parameter will be ignored if @a degrees is a multiple of 90.
 	 * @param offset  Determines the step size of the scanning of the zoomed source.
 	 *                Different offsets can produce better results, try them out.
 	 *                Greater values result in decreased runtime.
-	 *                This parameter will be ignored if @degrees is a multiple of 90.
-	 *                If @offset is greater than @zoom the result will have empty pixels.
+	 *                This parameter will be ignored if @a degrees is a multiple of 90.
+	 *                If @a offset is greater than @a zoom the result will have empty pixels.
 	 */
 	rotate_modification(int degrees = 90, int zoom = 16, int offset = 8)
 		: degrees_(degrees), zoom_(zoom), offset_(offset)
@@ -367,39 +368,50 @@ private:
 };
 
 /**
- * Scale (SCALE) modification. (Uses bilinear interpolation.)
+ * Scaling modifications base class.
  */
 class scale_modification : public modification
 {
 public:
-	scale_modification(int width, int height)
-		: w_(width), h_(height)
+	scale_modification(int width, int height, std::string fn, bool use_nn)
+		: w_(width), h_(height), nn_(use_nn), fn_(fn)
 	{}
 	virtual surface operator()(const surface& src) const;
+	virtual std::pair<int,int> calculate_size(const surface& src) const = 0;
 	int get_w() const;
 	int get_h() const;
 
 private:
 	int w_, h_;
+	bool nn_;
+protected:
+	const std::string fn_;
 };
 
 /**
- * Scale sharp (SCALE_SHARP) modification. (Uses nearest neighbor.)
+ * Scale exact modification. (SCALE, SCALE_SHARP)
  */
-class scale_sharp_modification : public modification
+class scale_exact_modification : public scale_modification
 {
 public:
-	scale_sharp_modification(int width, int height)
-		: w_(width), h_(height)
+	scale_exact_modification(int width, int height, std::string fn, bool use_nn)
+		: scale_modification(width, height, fn, use_nn)
 	{}
-	virtual surface operator()(const surface& src) const;
-	int get_w() const;
-	int get_h() const;
-
-private:
-	int w_, h_;
+	virtual std::pair<int,int> calculate_size(const surface& src) const;
 };
 
+/**
+ * Scale into (SCALE_INTO) modification. (SCALE_INTO, SCALE_INTO_SHARP)
+ * Preserves aspect ratio.
+ */
+class scale_into_modification : public scale_modification
+{
+public:
+	scale_into_modification(int width, int height, std::string fn, bool use_nn)
+		: scale_modification(width, height, fn, use_nn)
+	{}
+	virtual std::pair<int,int> calculate_size(const surface& src) const;
+};
 
 /**
  * xBRZ scale (xBRZ) modification

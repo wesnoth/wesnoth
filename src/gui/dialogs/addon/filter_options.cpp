@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/addon/filter_options.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -28,7 +28,7 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace
 {
@@ -165,51 +165,27 @@ void taddon_filter_options::toggle_all_displayed_types_button_callback(
 			= displayed_types_fields_.end()
 			  == std::find_if(displayed_types_fields_.begin(),
 							  displayed_types_fields_.end(),
-							  boost::bind(&unchecked_bool_field_finder,
-										  boost::ref(window),
+							  std::bind(&unchecked_bool_field_finder,
+										  std::ref(window),
 										  _1));
 
-	FOREACH(const AUTO field, displayed_types_fields_)
+	for(const auto field : displayed_types_fields_)
 	{
 		field->set_widget_value(window, !have_any_unchecked);
 	}
 }
 
-void taddon_filter_options::toggle_sort_callback(ttoggle_button* active)
+void taddon_filter_options::toggle_sort_callback()
 {
-	FOREACH(const AUTO & e, sort_tgroup_)
-	{
-		ttoggle_button* const b = e.first;
-		if(b == NULL) {
-			continue;
-		} else if(b == active && !b->get_value()) {
-			b->set_value(true);
-		} else if(b == active) {
-			sort_ = e.second;
-		} else if(b != active && b->get_value()) {
-			b->set_value(false);
-		}
-	}
+	sort_ = sort_tgroup_.get_active_member_value();
 }
 
-void taddon_filter_options::toggle_dir_callback(ttoggle_button* active)
+void taddon_filter_options::toggle_dir_callback()
 {
-	FOREACH(const AUTO & e, dir_tgroup_)
-	{
-		ttoggle_button* const b = e.first;
-		if(b == NULL) {
-			continue;
-		} else if(b == active && !b->get_value()) {
-			b->set_value(true);
-		} else if(b == active) {
-			dir_ = e.second;
-		} else if(b != active && b->get_value()) {
-			b->set_value(false);
-		}
-	}
+	dir_ = dir_tgroup_.get_active_member_value();
 }
 
-void taddon_filter_options::pre_show(CVideo& /*video*/, twindow& window)
+void taddon_filter_options::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "statuses_list", false);
 	window.keyboard_capture(&list);
@@ -228,10 +204,10 @@ void taddon_filter_options::pre_show(CVideo& /*video*/, twindow& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "toggle_all_displayed_types", false),
-			boost::bind(&taddon_filter_options::
+			std::bind(&taddon_filter_options::
 								 toggle_all_displayed_types_button_callback,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	sort_tgroup_.clear();
 	register_sort_toggle(window, "by_name", SORT_NAMES);
@@ -251,11 +227,12 @@ void taddon_filter_options::register_sort_toggle(twindow& window,
 			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == sort_);
+
+	sort_tgroup_.add_member(b, value);
+
 	connect_signal_mouse_left_click(
 			*b,
-			boost::bind(&taddon_filter_options::toggle_sort_callback, this, b));
-
-	sort_tgroup_.push_back(std::make_pair(b, value));
+			std::bind(&taddon_filter_options::toggle_sort_callback, this));
 }
 
 void taddon_filter_options::register_dir_toggle(twindow& window,
@@ -266,11 +243,12 @@ void taddon_filter_options::register_dir_toggle(twindow& window,
 			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == dir_);
+
+	dir_tgroup_.add_member(b, value);
+
 	connect_signal_mouse_left_click(
 			*b,
-			boost::bind(&taddon_filter_options::toggle_dir_callback, this, b));
-
-	dir_tgroup_.push_back(std::make_pair(b, value));
+			std::bind(&taddon_filter_options::toggle_dir_callback, this));
 }
 
 void taddon_filter_options::post_show(twindow& window)

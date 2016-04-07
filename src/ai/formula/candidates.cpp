@@ -17,69 +17,16 @@
  * Defines formula ai candidate actions
  * */
 
-#include "ai.hpp"
-#include "candidates.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-
-#include <boost/foreach.hpp>
+#include "ai/formula/ai.hpp"
+#include "ai/formula/candidates.hpp"
+#include "log.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
 
 namespace game_logic {
-
-void candidate_action_manager::load_config(const config& cfg, ai::formula_ai* ai, function_symbol_table* function_table)
-{
-	// register candidate actions
-	BOOST_FOREACH(const config &rc_action, cfg.child_range("register_candidate_action"))
-	{
-		candidate_action_ptr new_ca = load_candidate_action_from_config(rc_action,ai,function_table);
-
-		if (new_ca) {
-			candidate_actions_.push_back(new_ca);
-		}
-
-	}
-}
-
-candidate_action_ptr candidate_action_manager::load_candidate_action_from_config(const config& rc_action, ai::formula_ai* ai, function_symbol_table* function_table)
-{
-	candidate_action_ptr new_ca;
-	const t_string &name = rc_action["name"];
-	try {
-		const t_string &type = rc_action["type"];
-
-		if( type == "movement") {
-			new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
-		} else if( type == "attack") {
-			new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
-		} else {
-			ERR_AI << "Unknown candidate action type: " << type << std::endl;
-		}
-	} catch(formula_error& e) {
-		ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
-	}
-	return new_ca;
-}
-
-bool candidate_action_manager::evaluate_candidate_actions(ai::formula_ai* ai, unit_map& units)
-{
-	evaluated_candidate_actions_.clear();
-
-	BOOST_FOREACH(candidate_action_ptr cm, candidate_actions_)
-	{
-		cm->evaluate(ai, units);
-		evaluated_candidate_actions_.insert(cm);
-	}
-
-	if( evaluated_candidate_actions_.empty() ||
-		(*evaluated_candidate_actions_.begin())->get_score() <= 0 ) //@note ai::candidate_action::BAD_SCORE )
-		return false;
-
-	return true;
-}
 
 base_candidate_action::base_candidate_action(const std::string& name,
 		const std::string& type, const config& cfg,
@@ -117,7 +64,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 	const config & filter_params = cfg.child("filter");
 
 	if( filter_params ) {
-		BOOST_FOREACH( const config::attribute filter_param, filter_params.attribute_range() )
+		for(const config::attribute filter_param : filter_params.attribute_range())
 		{
 			game_logic::const_formula_ptr filter_formula(
 					new game_logic::formula(filter_param.second, function_table));
@@ -258,7 +205,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i) {
 		const unit_callable* u_callable = dynamic_cast<const unit_callable*>( (*i).as_callable() );
-		if(u_callable == NULL) {
+		if(u_callable == nullptr) {
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
 		}
@@ -267,7 +214,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i) {
 		const unit_callable* u_callable = dynamic_cast<const unit_callable*>( (*i).as_callable() );
-		if(u_callable == NULL) {
+		if(u_callable == nullptr) {
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
 		}

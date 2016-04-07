@@ -15,13 +15,10 @@
 #ifndef RANDOM_NEW_SYNCED_H_INCLUDED
 #define RANDOM_NEW_SYNCED_H_INCLUDED
 
-
-
 #include "random_new.hpp"
 #include "mt_rng.hpp"
 
-#include "utils/boost_function_guarded.hpp"
-
+#include "utils/functional.hpp"
 
 /*
 todo: use a boost::random based solution.
@@ -31,7 +28,7 @@ namespace random_new
 	class synced_rng : public random_new::rng
 	{
 	public:
-		synced_rng(boost::function0<std::string> seed_generator);
+		synced_rng(std::function<std::string()> seed_generator);
 		virtual ~synced_rng();
 
 	protected:
@@ -39,7 +36,7 @@ namespace random_new
 	private:
 		void initialize();
 		bool has_valid_seed_;
-		boost::function0<std::string> seed_generator_;
+		std::function<std::string()> seed_generator_;
 		rand_rng::mt_rng gen_;
 	};
 }

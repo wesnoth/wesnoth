@@ -22,7 +22,7 @@
 #include <string>
 
 #include "action.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 namespace wb
 {

@@ -16,7 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE( test_create_drop_targets )
 	int id_counter = 0;
 
 	std::for_each(locations.begin(), locations.end(),
-			boost::bind(create_drop_targets,_1, group, boost::ref(targets), boost::ref(id_counter)));
+			std::bind(create_drop_targets,_1, group, std::ref(targets), std::ref(id_counter)));
 
 	BOOST_CHECK_EQUAL(targets.size(), locations.size());
 
@@ -144,10 +144,10 @@ BOOST_AUTO_TEST_CASE( test_multiple_drop_groups )
 	int id_counter = 0;
 
 	std::for_each(locations.begin(), locations.end(),
-			boost::bind(create_drop_targets,_1, group, boost::ref(targets), boost::ref(id_counter)));
+			std::bind(create_drop_targets,_1, group, std::ref(targets), std::ref(id_counter)));
 	id_counter = 0;
 	std::for_each(locations2.begin(), locations2.end(),
-			boost::bind(create_drop_targets,_1, group2, boost::ref(targets2), boost::ref(id_counter)));
+			std::bind(create_drop_targets,_1, group2, std::ref(targets2), std::ref(id_counter)));
 
 	BOOST_CHECK_EQUAL(targets.size(), locations.size());
 	BOOST_CHECK_EQUAL(targets2.size(), locations2.size());

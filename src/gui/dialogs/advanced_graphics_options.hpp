@@ -16,7 +16,8 @@
 #define GUI_DIALOGS_ADVANCED_GRAPHICS_OPTIONS_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "make_enum.hpp"
+#include "gui/widgets/group.hpp"
+#include "utils/make_enum.hpp"
 
 namespace gui2
 {
@@ -55,14 +56,16 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
 	void setup_scale_case(const std::string &, twindow &);
-	void setup_scale_button(const std::string &, SCALING_ALGORITHM, twindow &);
-	void scale_button_callback(std::string, SCALING_ALGORITHM, twindow &);
+	void update_scale_case(const std::string &);
+	SCALING_ALGORITHM get_scale_pref(const std::string& pref_id);
+	
+	std::map<std::string,tgroup<SCALING_ALGORITHM> > groups_;
 };
 
 } // end namespace gui2

@@ -18,8 +18,6 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace preferences {
 
 namespace editor {
@@ -29,7 +27,7 @@ namespace editor {
 	}
 
 	void set_auto_update_transitions(int value) {
-		preferences::set("editor_auto_update_transitions", lexical_cast<std::string>(value));
+		preferences::set("editor_auto_update_transitions", std::to_string(value));
 	}
 
 	std::string default_dir() {
@@ -50,51 +48,6 @@ namespace editor {
 
 	void set_draw_hex_coordinates(bool value) {
 		preferences::set("editor_draw_hex_coordinates", value);
-	}
-
-	namespace {
-		void normalize_editor_rgb(int rval)
-		{
-			if (rval < -255) {
-				rval = -255;
-			}
-			else if (rval > 255) {
-				rval = 255;
-			}
-		}
-	}
-
-	void set_tod_r(int value)
-	{
-		normalize_editor_rgb(value);
-		preferences::set("editor_r",lexical_cast<std::string>(value));
-	}
-
-	void set_tod_g(int value)
-	{
-		normalize_editor_rgb(value);
-		preferences::set("editor_g",lexical_cast<std::string>(value));
-	}
-
-	void set_tod_b(int value)
-	{
-		normalize_editor_rgb(value);
-		preferences::set("editor_b",lexical_cast<std::string>(value));
-	}
-
-	int tod_r()
-	{
-		return lexical_cast_in_range<int>(preferences::get("editor_r"), 0, -255, 255);
-	}
-
-	int tod_g()
-	{
-		return lexical_cast_in_range<int>(preferences::get("editor_g"), 0, -255, 255);
-	}
-
-	int tod_b()
-	{
-		return lexical_cast_in_range<int>(preferences::get("editor_b"), 0, -255, 255);
 	}
 
 	namespace {
@@ -119,7 +72,7 @@ namespace editor {
 				return mru;
 			}
 
-			BOOST_FOREACH(const config& child, cfg.child_range("entry"))
+			for(const config& child : cfg.child_range("entry"))
 			{
 				const std::string& entry = child["path"].str();
 				if(!entry.empty()) {
@@ -137,7 +90,7 @@ namespace editor {
 			config cfg;
 			unsigned n = 0;
 
-			BOOST_FOREACH(const std::string& entry, mru)
+			for(const std::string& entry : mru)
 			{
 				if(entry.empty()) {
 					continue;

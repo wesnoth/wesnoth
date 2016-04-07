@@ -22,7 +22,7 @@
 #include <vector>
 #include <deque>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include "typedefs.hpp"
 
@@ -45,22 +45,22 @@ side_actions_ptr current_side_actions();
 
 /**
  * For a given leader on a keep, find another leader on another keep in the same castle.
- * @retval NULL if no such leader has been found
+ * @retval nullptr if no such leader has been found
  */
 unit_const_ptr find_backup_leader(unit const& leader);
 
 /**
  * @return a leader from the specified team who can recruit on the specified hex
- * @retval NULL if no such leader has been found
+ * @retval nullptr if no such leader has been found
  */
 unit* find_recruiter(size_t team_index, map_location const&);
 
 /// Applies the future unit map and @return a pointer to the unit at hex
-/// @retval NULL if none is visible to the specified viewer side
+/// @retval nullptr if none is visible to the specified viewer side
 unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side());
 
 /// Applies the future unit map and @return a pointer to the unit at hex
-/// @retval NULL if none is visible to the specified viewer side
+/// @retval nullptr if none is visible to the specified viewer side
 /// @param on_side Only search for units of this side.
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
 
@@ -87,14 +87,14 @@ public:
 	{}
 	~variable_finalizer()
 	{
-		if(variable_ != NULL) {
+		if(variable_ != nullptr) {
 			*variable_ = value_;
 		}
 	}
 	/** Stop tracking the variable, i.e. this object won't do anything on destruction. */
 	void clear()
 	{
-		variable_ = NULL;
+		variable_ = nullptr;
 	}
 private:
 	T * variable_;
@@ -112,7 +112,7 @@ bool has_actions();
  *
  * The argument is the team to consider.
  */
-typedef boost::function<bool(team&)> team_filter;
+typedef std::function<bool(team&)> team_filter;
 
 /** Returns whether a given team's plan is visible. */
 bool team_has_visible_plan(team&);
@@ -126,7 +126,7 @@ bool team_has_visible_plan(team&);
  * @param function the function to execute.
  * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  */
-void for_each_action(boost::function<void(action_ptr)> function,
+void for_each_action(std::function<void(action*)> function,
                      team_filter team_filter = team_has_visible_plan);
 
 /**

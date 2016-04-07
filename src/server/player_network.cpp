@@ -14,7 +14,7 @@
 */
 
 #include "player_network.hpp"
-#include "../log.hpp"
+#include "log.hpp"
 #include "serialization/unicode.hpp"
 
 lg::log_domain log_config_pn("config");

@@ -17,8 +17,13 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 class tlabel;
 class tspacer;
@@ -40,24 +45,27 @@ class tscroll_label : public tscrollbar_container
 	friend struct implementation::tbuilder_scroll_label;
 
 public:
-	tscroll_label();
+	tscroll_label(bool wrap);
 
 	/** See @ref tcontrol::set_label. */
-	virtual void set_label(const t_string& label) OVERRIDE;
+	virtual void set_label(const t_string& label) override;
 
 	/** See @ref tcontrol::set_use_markup. */
-	virtual void set_use_markup(bool use_markup) OVERRIDE;
+	virtual void set_use_markup(bool use_markup) override;
 
 	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	virtual void set_self_active(const bool active) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
+	
+	bool can_wrap() const;
+	void set_can_wrap(bool can_wrap);
 
 private:
 	/**
@@ -81,18 +89,55 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
+	bool wrap_on;
 
 	void finalize_subclass();
 
 	/***** ***** ***** inherited ****** *****/
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_left_button_down(const event::tevent event);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tscroll_label_definition : public tcontrol_definition
+{
+	explicit tscroll_label_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_scroll_label : public tbuilder_control
+{
+	explicit tbuilder_scroll_label(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	bool wrap_on;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

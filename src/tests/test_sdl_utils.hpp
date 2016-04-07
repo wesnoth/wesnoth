@@ -17,9 +17,9 @@
 
 #include "sdl/utils.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
-typedef boost::function<
+typedef std::function<
 		void(const surface&, const double, const Uint32)>
 		tblend_functor;
 

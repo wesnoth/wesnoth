@@ -23,21 +23,21 @@
 #include "filesystem.hpp"
 #include "game_preferences.hpp"
 #include "lobby_preferences.hpp"
-#include "map_exception.hpp"
+#include "map/exception.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/message.hpp" // for gui2::show_message
-#include "gui/dialogs/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/widgets/window.hpp" // for gui2::twindow::OK
 #include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
-#include "terrain_type_data.hpp"
+#include "formula/string_utils.hpp"
+#include "terrain/type_data.hpp"
 #include "version.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
@@ -45,8 +45,7 @@
 
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
@@ -64,7 +63,7 @@ std::vector<std::string> empty_string_vector;
 
 namespace mp {
 gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
-	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
+	menu(video, empty_string_vector, false, -1, -1, nullptr, &menu::bluebg_style),
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
 	map_size_icon_locator_("misc/map.png"),
@@ -128,7 +127,7 @@ void gamebrowser::draw()
 		return;
 	if(dirty()) {
 		bg_restore();
-		util::scoped_ptr<clip_rect_setter> clipper(NULL);
+		util::scoped_ptr<clip_rect_setter> clipper(nullptr);
 		if(clip_rect())
 			clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect()));
 		draw_contents();
@@ -155,7 +154,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	int ypos = item_rect.y + margin_;
 	std::string no_era_string = "";
 	// Draw minimaps
-	if (game.mini_map != NULL) {
+	if (game.mini_map != nullptr) {
 		int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
 		int minimap_y = ypos + (minimap_size_ - game.mini_map->h)/2;
 		video().blit_surface(minimap_x, minimap_y, game.mini_map);
@@ -485,8 +484,7 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 				if (map_hashes_ && !item.reloaded) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					BOOST_FOREACH(const config::attribute& i,
-						map_hashes_.attribute_range()) {
+					for (const config::attribute& i : map_hashes_.attribute_range()) {
 
 						if (i.first == game["mp_scenario"] &&
 							i.second == hash) {
@@ -547,7 +545,7 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 			//TODO: use difficulties instead of difficulty_descriptions if
 			//difficulty_descriptions is not available
 			assert(difficulties.size() == difficulty_options.size());
-			BOOST_FOREACH(const std::string& difficulty, difficulties) {
+			for (const std::string& difficulty : difficulties) {
 				if (difficulty == game["difficulty_define"]) {
 					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
 					item.map_info += " — ";
@@ -620,8 +618,8 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 				// Parsing the map and generating the minimap are both cpu expensive
 				gamemap map(boost::make_shared<terrain_type_data>(game_config), item.map_data);
 				item.mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
-				item.map_info_size = str_cast(map.w()) + utils::unicode_multiplication_sign
-					+ str_cast(map.h());
+				item.map_info_size = std::to_string(map.w()) + utils::unicode_multiplication_sign
+					+ std::to_string(map.h());
 			}
 		} catch (incorrect_map_format_error &e) {
 			ERR_CF << "illegal map: " << e.message << '\n';
@@ -728,7 +726,7 @@ void gamebrowser::populate_game_item_mod_info(gamebrowser::game_item & item, con
 		item.era_and_mod_info += _("Modifications:");
 		item.era_and_mod_info += " ";
 
-		BOOST_FOREACH (const config& m, game.child_range("modification")) {
+		for (const config& m : game.child_range("modification")) {
 			const config& mod_cfg = game_config.find_child("modification", "id", m["id"]);
 			if (mod_cfg) {
 				item.era_and_mod_info += mod_cfg["name"].str();
@@ -754,7 +752,7 @@ void gamebrowser::populate_game_item_mod_info(gamebrowser::game_item & item, con
 // Do this before populating eras and mods, to get reports of missing add-ons in the most sensible order.
 void gamebrowser::populate_game_item_addons_installed(gamebrowser::game_item & item, const config & game, const std::vector<std::string> & installed_addons)
 {
-	BOOST_FOREACH(const config & addon, game.child_range("addon")) {
+	for (const config & addon : game.child_range("addon")) {
 		if (addon.has_attribute("id")) {
 			if (std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
 				required_addon r;
@@ -864,7 +862,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config, c
 
 	games_.clear();
 
-	BOOST_FOREACH(const config &game, cfg.child("gamelist").child_range("game"))
+	for (const config &game : cfg.child("gamelist").child_range("game"))
 	{
 		games_.push_back(game_item());
 		populate_game_item(games_.back(), game, game_config, installed_addons);
@@ -926,7 +924,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 	}
 	if(preferences::fi_friends_in_game()) {
 		bool found_friend = false;
-		BOOST_FOREACH(const config &user, cfg.child_range("user")) {
+		for (const config &user : cfg.child_range("user")) {
 			if(preferences::is_friend(user["name"]) && user["game_id"] == i.id) {
 				found_friend = true;
 				break;
@@ -939,7 +937,7 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 
 	if(!preferences::fi_text().empty()) {
 		bool found_match = true;
-		BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
+		for (const std::string& search_string : utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
 
 			if(!boost::contains(i.map_info, search_string, chars_equal_insensitive) &&
 			   !boost::contains(i.name, search_string, chars_equal_insensitive) &&
@@ -1097,15 +1095,15 @@ lobby::lobby(CVideo& v, const config& cfg, chat& c, config& gamelist, const std:
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
 	//These structure initializers create a lobby::process_data_event
-	plugins_context_->set_callback("join", 		boost::bind(&lobby::plugin_event_helper, this, process_event_data (true, false, false, false)));
-	plugins_context_->set_callback("observe", 	boost::bind(&lobby::plugin_event_helper, this, process_event_data (false, true, false, false)));
-	plugins_context_->set_callback("create", 	boost::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, true, false)));
-	plugins_context_->set_callback("quit", 		boost::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, false, true)));
-	plugins_context_->set_callback("chat",		boost::bind(&lobby::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
-	plugins_context_->set_callback("select_game",	boost::bind(&gamebrowser::select_game, &(this->games_menu_), boost::bind(get_str, _1, "id")),	true);
+	plugins_context_->set_callback("join", 		std::bind(&lobby::plugin_event_helper, this, process_event_data (true, false, false, false)));
+	plugins_context_->set_callback("observe", 	std::bind(&lobby::plugin_event_helper, this, process_event_data (false, true, false, false)));
+	plugins_context_->set_callback("create", 	std::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, true, false)));
+	plugins_context_->set_callback("quit", 		std::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, false, true)));
+	plugins_context_->set_callback("chat",		std::bind(&lobby::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("select_game",	std::bind(&gamebrowser::select_game, &(this->games_menu_), std::bind(get_str, _1, "id")),	true);
 
-	plugins_context_->set_accessor("game_list",	boost::bind(&lobby::gamelist, this));
-	plugins_context_->set_accessor("game_config",	boost::bind(&lobby::game_config, this));
+	plugins_context_->set_accessor("game_list",	std::bind(&lobby::gamelist, this));
+	plugins_context_->set_accessor("game_config",	std::bind(&lobby::game_config, this));
 }
 
 void lobby::hide_children(bool hide)
@@ -1200,7 +1198,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		err_msg += _("Details:");
 		err_msg += "\n";
 
-		BOOST_FOREACH(const required_addon & a, reqs) {
+		for (const required_addon & a : reqs) {
 			if (a.outcome == CANNOT_SATISFY) {
 				err_msg += a.message;
 				err_msg += "\n";
@@ -1216,7 +1214,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		err_msg += "\n";
 
 		std::vector<std::string> needs_download;
-		BOOST_FOREACH(const required_addon & a, reqs) {
+		for (const required_addon & a : reqs) {
 			if (a.outcome == NEED_DOWNLOAD) {
 				err_msg += a.message;
 				err_msg += "\n";

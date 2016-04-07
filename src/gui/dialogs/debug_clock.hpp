@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/popup.hpp"
 
-#include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/core/event/dispatcher.hpp"
 
 namespace gui2
 {
@@ -33,15 +33,15 @@ class tdebug_clock : public tpopup
 public:
 	tdebug_clock()
 		: tpopup()
-		, hour_percentage_(NULL)
-		, minute_percentage_(NULL)
-		, second_percentage_(NULL)
-		, hour_(NULL)
-		, minute_(NULL)
-		, second_(NULL)
-		, pane_(NULL)
-		, clock_(NULL)
-		, window_(NULL)
+		, hour_percentage_(nullptr)
+		, minute_percentage_(nullptr)
+		, second_percentage_(nullptr)
+		, hour_(nullptr)
+		, minute_(nullptr)
+		, second_(nullptr)
+		, pane_(nullptr)
+		, clock_(nullptr)
+		, window_(nullptr)
 		, signal_()
 		, time_()
 	{
@@ -128,7 +128,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(CVideo& video);

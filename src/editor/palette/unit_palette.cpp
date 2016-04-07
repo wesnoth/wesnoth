@@ -20,11 +20,9 @@
 
 #include "unit_palette.hpp"
 
-#include "../../gettext.hpp"
+#include "gettext.hpp"
 
-#include "../../unit_types.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/types.hpp"
 
 namespace editor {
 
@@ -34,7 +32,7 @@ std::string unit_palette::get_help_string() {
 
 void unit_palette::setup(const config& /*cfg*/)
 {
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
 	{
 		if (i.second.do_not_list())
 			continue;
@@ -52,7 +50,7 @@ void unit_palette::setup(const config& /*cfg*/)
 		}
 	}
 
-	BOOST_FOREACH(const race_map::value_type &i, unit_types.races())
+	for (const race_map::value_type &i : unit_types.races())
 	{
 		if (group_map_[i.second.id()].empty())
 			continue;
@@ -86,11 +84,11 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
 
 	image = image::get_image(filename.str());
-	if(image == NULL) {
+	if(image == nullptr) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for unit type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == NULL) {
+		if (image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}

@@ -18,8 +18,8 @@
 #include "config_assign.hpp"
 #include "recall_list_manager.hpp"
 #include "tests/utils/game_config_manager.hpp"
-#include "unit.hpp"
-#include "unit_ptr.hpp"
+#include "units/unit.hpp"
+#include "units/ptr.hpp"
 
 BOOST_AUTO_TEST_SUITE( recall_list_suite )
 

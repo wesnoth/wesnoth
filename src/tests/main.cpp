@@ -17,6 +17,10 @@
 
 #define BOOST_TEST_MODULE wesnoth unit tests master suite
 
+#ifndef BOOST_TEST_DYN_LINK
+#error Compiler misconfiguration - must define BOOST_TEST_DYN_LINK
+#endif
+
 #include <boost/version.hpp>
 
 #include <boost/test/unit_test.hpp>
@@ -31,12 +35,12 @@
 
 #include <fstream>
 
-#include "SDL.h"
+#include <SDL.h>
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
-#include "gui/auxiliary/event/handler.hpp"
+#include "gui/core/event/handler.hpp"
 #include "gui/widgets/helper.hpp"
 #include "network.hpp"
 #include "config.hpp"
@@ -74,7 +78,7 @@ struct wesnoth_global_fixture {
 		assert( reporter.is_open() );
 
 		boost::unit_test::results_reporter::set_stream(reporter);
-//		lg::set_log_domain_severity("all",lg::debug);
+//		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
 
 

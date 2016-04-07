@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca_ES@valencia\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2008-02-25 20:51+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: Valencià <mavorte1@yahoo.es>\n"
@@ -95,24 +95,24 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:65
+#: data/multiplayer/eras.lua:921
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:937
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:937
 msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:947
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
@@ -935,104 +935,58 @@ msgstr ""
 "transcurs del joc, el terreny canviarà basant-se en efectes meteorològics "
 "aleatoris."
 
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:371
-msgid ""
-"The screams and pleas for mercy are finally silenced, as you remove your "
-"blood soaked blade from the last of the rebels. There will be no more "
-"resistance from the local scum. Your reign has finally earned stability."
-msgstr ""
-"Els crits i les súpliques de misericòrdia són silenciats finalment, mentres "
-"traus de l'últim dels rebels la fulla amerada en sanc. No hi haurà més "
-"resistència de l'escòria local. El teu regnat ha conseguit estabilitat per "
-"fi."
-
-#. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:703
-msgid ""
-"The last and most powerful of these creatures are almost upon us. I feel "
-"that if we can finish them off in time, we shall be victorious."
-msgstr ""
-"Les últimes i més poderoses d'estes criatures esten casi sobre nosatres. "
-"Sent que si podem acabar ab elles a temps, vencerem."
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:870
-msgid "Heavy Snowfall"
-msgstr "Fortes nevades"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:880
-msgid "Snowfall"
-msgstr "Nevada"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:896
-msgid "Heavy Rains"
-msgstr "Fortes Plujes"
-
-#. [case]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:906
-msgid "Drought"
-msgstr "Sequia"
-
-#. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:915
-msgid "Clear Weather"
-msgstr "Clar"
-
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1042
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:19
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:32
 #, fuzzy
 msgid "teamname^Revolt"
 msgstr "Oest"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1061
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1078
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:51
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:68
 #, fuzzy
 msgid "teamname^Human"
 msgstr "Est"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1233
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
 #, fuzzy
 msgid "Death of your leader"
 msgstr "Mort dels líders de l'equip."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1234
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:101
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1237
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
 #, fuzzy
 msgid "Death of both of your team’s leaders"
 msgstr "Mort dels líders de l'equip."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1238
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1259
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:126
 #, fuzzy
 msgid "Survive and defeat all enemy waves"
 msgstr "Sobreviu a tots els atacs enemics."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1279
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Pronòstic Obscur - un escenari de supervivència aleatori."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1284
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
 #, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
@@ -1082,13 +1036,13 @@ msgstr ""
 "- implementació WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1304
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:171
 #, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Aixina que esta és la vall malaïda - una terra que és per a nosatres."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1308
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:175
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1099,7 +1053,7 @@ msgstr ""
 "sorpreses d'esta terra."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1312
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:179
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1108,7 +1062,7 @@ msgstr ""
 "nostra demanda."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1349
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:198
 #, fuzzy
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
@@ -1118,7 +1072,7 @@ msgstr ""
 "m'han abandonat..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1363
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1127,7 +1081,7 @@ msgstr ""
 "mort... el seu goig ompli els teus últims moments ab pur odi."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1385
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:234
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2293,6 +2247,38 @@ msgid ""
 msgstr ""
 "Una prova de rendiment de wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_scroll --exit-at-end."
+
+#~ msgid ""
+#~ "The screams and pleas for mercy are finally silenced, as you remove your "
+#~ "blood soaked blade from the last of the rebels. There will be no more "
+#~ "resistance from the local scum. Your reign has finally earned stability."
+#~ msgstr ""
+#~ "Els crits i les súpliques de misericòrdia són silenciats finalment, "
+#~ "mentres traus de l'últim dels rebels la fulla amerada en sanc. No hi "
+#~ "haurà més resistència de l'escòria local. El teu regnat ha conseguit "
+#~ "estabilitat per fi."
+
+#~ msgid ""
+#~ "The last and most powerful of these creatures are almost upon us. I feel "
+#~ "that if we can finish them off in time, we shall be victorious."
+#~ msgstr ""
+#~ "Les últimes i més poderoses d'estes criatures esten casi sobre nosatres. "
+#~ "Sent que si podem acabar ab elles a temps, vencerem."
+
+#~ msgid "Heavy Snowfall"
+#~ msgstr "Fortes nevades"
+
+#~ msgid "Snowfall"
+#~ msgstr "Nevada"
+
+#~ msgid "Heavy Rains"
+#~ msgstr "Fortes Plujes"
+
+#~ msgid "Drought"
+#~ msgstr "Sequia"
+
+#~ msgid "Clear Weather"
+#~ msgstr "Clar"
 
 #, fuzzy
 #~| msgid "Random map"

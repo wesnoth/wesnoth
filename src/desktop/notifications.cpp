@@ -20,11 +20,7 @@
 
 #include "sdl/compat.hpp"
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 #include "video.hpp" //SDL_GetAppState()
-#else
-#include "SDL_active.h"
-#endif
 
 #ifdef HAVE_LIBDBUS
 #include "dbus_notification.hpp"

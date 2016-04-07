@@ -19,7 +19,7 @@
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
-#include "terrain_translation.hpp"
+#include "terrain/translation.hpp"
 
 #include <set>
 #include <boost/optional.hpp>

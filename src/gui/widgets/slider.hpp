@@ -18,8 +18,13 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /** A slider. */
 class tslider : public tscrollbar_, public tinteger_selector_
@@ -31,7 +36,7 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -63,7 +68,7 @@ public:
 	{
 		return minimum_value_ + get_item_count() - 1;
 	}
-
+	typedef std::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length)
@@ -82,7 +87,9 @@ public:
 		maximum_value_label_ = maximum_value_label;
 	}
 
-	void set_value_labels(const std::vector<t_string>& value_labels)
+	void set_value_labels(const std::vector<t_string>& value_labels);
+
+	void set_value_labels(const tlabel_creator& value_labels)
 	{
 		value_labels_ = value_labels;
 	}
@@ -137,6 +144,9 @@ private:
 	int on_bar(const tpoint& coordinate) const;
 
 	/** Inherited from tscrollbar. */
+	bool in_orthogonal_range(const tpoint& coordinate) const;
+
+	/** Inherited from tscrollbar. */
 	int get_length_difference(const tpoint& original, const tpoint& current)
 			const
 	{
@@ -144,7 +154,7 @@ private:
 	}
 
 	/** See @ref tcontrol::update_canvas. */
-	virtual void update_canvas() OVERRIDE;
+	virtual void update_canvas() override;
 
 	/**
 	 * When the slider shows the minimum value can show a special text.
@@ -164,10 +174,10 @@ private:
 	 * sliders. When set these texts are shown instead of the values. It also
 	 * overrides minimum_value_label_ and maximum_value_label_.
 	 */
-	std::vector<t_string> value_labels_;
+	tlabel_creator value_labels_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/**
 	 * Handlers for keyboard input
@@ -187,6 +197,54 @@ private:
 	void signal_handler_left_button_up(const event::tevent event,
 									   bool& handled);
 };
+
+// }---------- DEFINITION ---------{
+
+struct tslider_definition : public tcontrol_definition
+{
+	explicit tslider_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
+
+		unsigned left_offset;
+		unsigned right_offset;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_slider : public tbuilder_control
+{
+	explicit tbuilder_slider(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+private:
+	unsigned best_slider_length_;
+	int minimum_value_;
+	int maximum_value_;
+	unsigned step_size_;
+	int value_;
+
+	t_string minimum_value_label_;
+	t_string maximum_value_label_;
+
+	std::vector<t_string> value_labels_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

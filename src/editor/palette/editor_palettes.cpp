@@ -21,13 +21,11 @@
 #include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
 
 #include "wml_separators.hpp"
-
-#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -35,7 +33,7 @@ template<class Item>
 sdl_handler_vector editor_palette<Item>::handler_members()
 {
 	sdl_handler_vector h;
-	BOOST_FOREACH(gui::widget& b, buttons_) {
+	for (gui::widget& b : buttons_) {
 		h.push_back(&b);
 	}
 	return h;
@@ -169,7 +167,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	assert(!id.empty());
 
 	bool found = false;
-	BOOST_FOREACH(const item_group& group, groups_) {
+	for (const item_group& group : groups_) {
 		if (group.id == id) {
 			found = true;
 			gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
@@ -248,7 +246,9 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 		static_cast<unsigned> (space_for_items / item_space_) *
 		item_width_;
 	nitems_ = std::min<int>(items_fitting, nmax_items_);
-	buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
+	if (buttons_.size() != nitems_) {
+		buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
+	}
 	set_location(target);
 	set_dirty(true);
 	gui_.video().clear_help_string(help_handle_);
@@ -373,7 +373,7 @@ void editor_palette<Item>::draw_contents()
 		//typedef std::map<std::string, Item> item_map_wurscht;
 		typename item_map::iterator item = item_map_.find(item_id);
 
-		surface item_image(NULL);
+		surface item_image(nullptr);
 		std::stringstream tooltip_text;
 		draw_item((*item).second, item_image, tooltip_text);
 

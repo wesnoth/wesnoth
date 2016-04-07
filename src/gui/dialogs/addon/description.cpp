@@ -18,9 +18,9 @@
 
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -28,9 +28,10 @@
 #include "language.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
-#include "utils/foreach.tpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
+
+#include <stdexcept>
 
 namespace
 {
@@ -54,7 +55,7 @@ std::string format_addon_time(time_t time)
 
 std::string langcode_to_string(const std::string& lcode)
 {
-	FOREACH(const AUTO & ld, get_languages())
+	for(const auto & ld : get_languages())
 	{
 		if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
 			return ld.language;
@@ -191,7 +192,7 @@ std::string make_display_dependencies(const std::string& addon_id,
 
 	const std::set<std::string>& deps = addon.resolve_dependencies(addons_list);
 
-	FOREACH(const AUTO & dep_id, deps)
+	for(const auto & dep_id : deps)
 	{
 		addon_info dep;
 		addon_tracking_info depstate;
@@ -320,7 +321,7 @@ taddon_description::taddon_description(const std::string& addon_id,
 	register_label("author", true, addon.author);
 	register_label("type", true, addon.display_type());
 	register_label("size", true, size_display_string(addon.size));
-	register_label("downloads", true, str_cast(addon.downloads));
+	register_label("downloads", true, std::to_string(addon.downloads));
 	register_label("created", true, created_text);
 	register_label("updated", true, updated_text);
 	if(!addon.description.empty()) {
@@ -338,7 +339,7 @@ taddon_description::taddon_description(const std::string& addon_id,
 
 	std::string languages;
 
-	FOREACH(const AUTO & lc, addon.locales)
+	for(const auto & lc : addon.locales)
 	{
 		const std::string& langlabel = langcode_to_string(lc);
 		if(!langlabel.empty()) {
@@ -366,7 +367,7 @@ void taddon_description::copy_url_callback()
 	desktop::clipboard::copy_to_clipboard(feedback_url_, false);
 }
 
-void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
+void taddon_description::pre_show(twindow& window)
 {
 	tcontrol& url_none = find_widget<tcontrol>(&window, "url_none", false);
 	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
@@ -381,11 +382,11 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 
 		connect_signal_mouse_left_click(
 				url_go_button,
-				boost::bind(&taddon_description::browse_url_callback, this));
+				std::bind(&taddon_description::browse_url_callback, this));
 
 		connect_signal_mouse_left_click(
 				url_copy_button,
-				boost::bind(&taddon_description::copy_url_callback, this));
+				std::bind(&taddon_description::copy_url_callback, this));
 
 		if (!desktop::clipboard::available()) {
 			url_copy_button.set_active(false);

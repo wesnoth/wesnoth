@@ -88,7 +88,7 @@ DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 	}
 
 	uint32_t id;
-	dbus_message_get_args(buf, NULL,
+	dbus_message_get_args(buf, nullptr,
 		DBUS_TYPE_UINT32, &id,
 		DBUS_TYPE_INVALID);
 
@@ -101,7 +101,7 @@ DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 DBusConnection *get_dbus_connection()
 {
 	static bool initted = false;
-	static DBusConnection *connection = NULL;
+	static DBusConnection *connection = nullptr;
 
 	if (!initted)
 	{
@@ -116,9 +116,9 @@ DBusConnection *get_dbus_connection()
 		if (!connection) {
 			ERR_DU << "Failed to open DBus session: " << err.message << '\n';
 			dbus_error_free(&err);
-			return NULL;
+			return nullptr;
 		}
-		dbus_connection_add_filter(connection, filter_dbus_signal, NULL, NULL);
+		dbus_connection_add_filter(connection, filter_dbus_signal, nullptr, nullptr);
 	}
 	if (connection) {
 		dbus_connection_read_write(connection, 0);
@@ -159,7 +159,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 	const char *app_icon = app_icon_.c_str();
 	const char *summary = owner.c_str();
 	const char *body = message.c_str();
-	const char **actions = NULL;
+	const char **actions = nullptr;
 	dbus_message_append_args(buf,
 		DBUS_TYPE_STRING, &app_icon,
 		DBUS_TYPE_STRING, &summary,
@@ -189,7 +189,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 		return 0;
 	}
 	uint32_t id;
-	dbus_message_get_args(ret, NULL,
+	dbus_message_get_args(ret, nullptr,
 		DBUS_TYPE_UINT32, &id,
 		DBUS_TYPE_INVALID);
 	dbus_message_unref(ret);

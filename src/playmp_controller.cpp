@@ -21,7 +21,7 @@
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
-#include "hotkey_handler_mp.hpp"
+#include "hotkey/hotkey_handler_mp.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
@@ -30,14 +30,12 @@
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "formula_string_utils.hpp"
-#include "unit_animation.hpp"
+#include "formula/string_utils.hpp"
+#include "units/animation.hpp"
 #include "whiteboard/manager.hpp"
 #include "countdown_clock.hpp"
 #include "synced_context.hpp"
 #include "replay_helper.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -375,7 +373,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		temp_buf << " \n";
 	}
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::oos_savegame save(saved_game_, *gui_);
+	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
 	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
 }
 
@@ -407,7 +405,7 @@ bool playmp_controller::is_host() const
 
 void playmp_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(time(NULL), "", 0,
+	gui_->get_chat_manager().add_chat_message(time(nullptr), "", 0,
 		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
@@ -416,8 +414,9 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty()) {
-		if(!is_host()) {
+	if (!get_end_level_data_const().transient.linger_mode || gamestate().board_.teams().empty() || gui_->video().faked()) {
+		const bool has_next_scenario = !gamestate().gamedata_.next_scenario().empty() && gamestate().gamedata_.next_scenario() != "null";
+		if(!is_host() && has_next_scenario) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario
 			// before we attempt to download it.

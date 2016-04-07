@@ -71,8 +71,8 @@ void progress_bar::draw_contents()
 		//remove 50% of color to simulate a shadow effect
 		sdl::fill_rect(surf,&lightning,SDL_MapRGB(surf->format,fcr/2,fcg/2,fcb/2));
 
-		const std::string text = text_.empty() ? str_cast(progress_) + "%" :
-		                         text_ + " (" + str_cast(progress_) + "%)";
+		const std::string text = text_.empty() ? std::to_string(progress_) + "%" :
+		                         text_ + " (" + std::to_string(progress_) + "%)";
 		SDL_Rect text_area = font::text_area(text,font::SIZE_NORMAL);
 
 		text_area.x = area.x + area.w/2 - text_area.w/2;

@@ -21,7 +21,7 @@ class config;
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "tod_manager.hpp"
-#include "unit_id.hpp"
+#include "units/id.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -52,7 +52,7 @@ public:
 	boost::scoped_ptr<reports> reports_;
 	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
-	/// undo_stack_ is never NULL. It is implemented as a pointer so that
+	/// undo_stack_ is never nullptr. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
@@ -70,6 +70,7 @@ public:
 	game_events::wmi_container& get_wml_menu_items();
 	const game_events::wmi_container& get_wml_menu_items() const;
 	int first_human_team_; //needed to initialize the viewpoint during setup
+	bool has_human_sides() const { return first_human_team_ != -1; }
 
 	game_state(const config & level, play_controller &, const tdata_cache & tdata);
 	/// The third parameter is an optimisation.
@@ -80,8 +81,6 @@ public:
 	void place_sides_in_preferred_locations(const config& level);
 
 	void init(const config& level, play_controller &);
-
-	void bind(wb::manager *, game_display *);
 
 	void set_game_display(game_display *);
 

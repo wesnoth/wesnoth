@@ -21,16 +21,16 @@
 #ifndef LUA_OBJECT_HPP_INCLUDED
 #define LUA_OBJECT_HPP_INCLUDED
 
-#include "../../config.hpp"
-#include "../../lua/lua.h"
-#include "../../map_location.hpp"
-#include "../../resources.hpp"
-#include "../../scripting/lua_api.hpp"
-#include "../../scripting/lua_common.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../variable.hpp"
-#include "../default/contexts.hpp"
-#include "unit_advancements_aspect.hpp"
+#include "config.hpp"
+#include "lua/lua.h"
+#include "map/location.hpp"
+#include "resources.hpp"
+#include "scripting/lua_api.hpp"
+#include "scripting/lua_common.hpp"
+#include "terrain/filter.hpp"
+#include "variable.hpp"
+#include "ai/default/contexts.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
 #include <boost/shared_ptr.hpp>
 #include <iterator>
@@ -69,7 +69,7 @@ public:
 
 	void store(lua_State* L, int n)
 	{
-		this->value_ = boost::shared_ptr<T>(to_type(L, n));
+		this->value_ = boost::shared_ptr<T>(to_type(L, lua_absindex(L, n)));
 	}
 
 protected:
@@ -135,11 +135,13 @@ inline boost::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n
 template <>
 inline boost::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
 {
-	// To Crab_: Is this part ok? I tested it, works fine
 	boost::shared_ptr<config> cfg = boost::shared_ptr<config>(new config());
 	boost::shared_ptr<vconfig> vcfg = boost::shared_ptr<vconfig>(new vconfig(*cfg));
-	luaW_tovconfig(L, n, *vcfg);
-	boost::shared_ptr<terrain_filter> tf = boost::shared_ptr<terrain_filter>(new terrain_filter(*vcfg, resources::filter_con));
+	if (!luaW_tovconfig(L, n, *vcfg)) {
+		cfg->add_child("not");
+	}
+	vcfg->make_safe();
+	boost::shared_ptr<terrain_filter> tf(new terrain_filter(*vcfg, resources::filter_con));
 	return tf;
 }
 
@@ -170,7 +172,12 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		target::TYPE type = static_cast<target::TYPE>(lua_tointeger(L, -1));  // st n + 2
+		target::TYPE type = target::TYPE::EXPLICIT;
+		if(lua_isnumber(L, -1)) {
+			type = target::TYPE::from_int(lua_tointeger(L, -1));  // st n + 2
+		} else if(lua_isstring(L, -1)) {
+			type = target::TYPE::string_to_enum(lua_tostring(L, -1));  // st n + 2
+		}
 		lua_pop(L, 1); // st n + 1
 
 
@@ -193,6 +200,11 @@ inline boost::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_
 	boost::shared_ptr<unit_advancements_aspect> uaa = boost::shared_ptr<unit_advancements_aspect>(new unit_advancements_aspect(L, n));
 	return uaa;
 }
+
+// This one is too complex to define in the header.
+struct aspect_attacks_lua_filter;
+template <>
+boost::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n);
 } // end of namespace ai
 
 

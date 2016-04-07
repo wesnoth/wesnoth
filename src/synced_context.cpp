@@ -36,7 +36,7 @@
 #include "game_end_exceptions.hpp"
 #include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
-#include "unit_id.hpp"
+#include "units/id.hpp"
 #include "whiteboard/manager.hpp"
 #include <boost/lexical_cast.hpp>
 
@@ -53,8 +53,8 @@ static lg::log_domain log_replay("replay");
 
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 int synced_context::last_unit_id_ = 0;
-synced_context::tconfig_vector synced_context::undo_commands_ = synced_context::tconfig_vector();
-synced_context::tconfig_vector synced_context::redo_commands_ = synced_context::tconfig_vector();
+synced_context::event_list synced_context::undo_commands_;
+synced_context::event_list synced_context::redo_commands_;
 bool synced_context::is_simultaneously_ = false;
 
 bool synced_context::run(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
@@ -91,6 +91,12 @@ bool synced_context::run(const std::string& commandname, const config& data, boo
 
 bool synced_context::run_and_store(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
+	if(resources::controller->is_replay())
+	{
+		ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
+		return false;
+	}
+
 	assert(resources::recorder->at_end());
 	resources::recorder->add_synced_command(commandname, data);
 	bool success = run(commandname, data, use_undo, show, error_handler);
@@ -117,11 +123,6 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	{
 	case(synced_context::UNSYNCED):
 	{
-		if(resources::controller->is_replay())
-		{
-			ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
-			return false;
-		}
 		return run_and_throw(commandname, data, use_undo, show, error_handler);
 	}
 	case(synced_context::LOCAL_CHOICE):
@@ -382,14 +383,24 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	}
 }
 
-void synced_context::add_undo_commands(const config& commands)
+void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
 {
-	undo_commands_.insert(undo_commands_.begin(), new config(commands));
+	undo_commands_.emplace_front(commands, ctx);
 }
 
-void synced_context::add_redo_commands(const config& commands)
+void synced_context::add_redo_commands(const config& commands, const game_events::queued_event& ctx)
 {
-	redo_commands_.insert(redo_commands_.begin(), new config(commands));
+	redo_commands_.emplace_front(commands, ctx);
+}
+
+void synced_context::reset_undo_commands()
+{
+	undo_commands_.clear();
+}
+
+void synced_context::reset_redo_commands()
+{
+	redo_commands_.clear();
 }
 
 set_scontext_synced_base::set_scontext_synced_base()
@@ -424,7 +435,7 @@ set_scontext_synced::set_scontext_synced()
 
 set_scontext_synced::set_scontext_synced(int number)
 	: set_scontext_synced_base()
-	, new_checkup_(generate_checkup("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
+	, new_checkup_(generate_checkup("checkup" + std::to_string(number))), disabler_()
 {
 	init();
 }
@@ -528,7 +539,7 @@ leave_synced_context::~leave_synced_context()
 }
 
 set_scontext_unsynced::set_scontext_unsynced()
-	: leaver_(synced_context::is_synced() ? new leave_synced_context() : NULL)
+	: leaver_(synced_context::is_synced() ? new leave_synced_context() : nullptr)
 {
 
 }

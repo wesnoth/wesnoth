@@ -17,8 +17,8 @@
 #include "display.hpp"
 #include "fake_unit_ptr.hpp"
 #include "log.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

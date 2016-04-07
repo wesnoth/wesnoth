@@ -27,12 +27,12 @@
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
 #include "synced_context.hpp"
-#include "unit.hpp"
-#include "unit_filter.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/filter.hpp"
+#include "units/map.hpp"
 #include "variable.hpp"
-
-#include <boost/foreach.hpp>
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
 
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
@@ -46,7 +46,7 @@ side_filter::side_filter()
 	: cfg_(vconfig::unconstructed_vconfig())
 	, flat_()
 	, side_string_()
-	, fc_(NULL)
+	, fc_(nullptr)
 {
 	assert(false);
 }
@@ -73,7 +73,7 @@ std::vector<int> side_filter::get_teams() const
 	assert(fc_);
 	//@todo: replace with better implementation
 	std::vector<int> result;
-	BOOST_FOREACH(const team &t, fc_->get_disp_context().teams()) {
+	for(const team &t : fc_->get_disp_context().teams()) {
 		if (match(t)) {
 			result.push_back(t.side());
 		}
@@ -126,7 +126,7 @@ bool side_filter::match_internal(const team &t) const
 		else {
 			const std::vector<std::string>& these_team_names = utils::split(this_team_name);
 			bool search_futile = true;
-			BOOST_FOREACH(const std::string& this_single_team_name, these_team_names) {
+			for(const std::string& this_single_team_name : these_team_names) {
 				if(this_single_team_name == that_team_name) {
 					search_futile = false;
 					break;
@@ -142,7 +142,7 @@ bool side_filter::match_internal(const team &t) const
 		if (!ufilter_)
 			ufilter_.reset(new unit_filter(ufilt_cfg, fc_, flat_));
 		bool found = false;
-		BOOST_FOREACH(const unit &u, fc_->get_disp_context().units()) {
+		for(const unit &u : fc_->get_disp_context().units()) {
 			if (u.side() != t.side()) {
 				continue;
 			}
@@ -152,7 +152,7 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
-			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
+			for(const unit_const_ptr & u : t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
 				if(ufilter_->matches(*u)) {
 					found = true;
@@ -171,7 +171,7 @@ bool side_filter::match_internal(const team &t) const
 			enemy_filter_.reset(new side_filter(enemy_of, fc_));
 		const std::vector<int>& teams = enemy_filter_->get_teams();
 		if(teams.empty()) return false;
-		BOOST_FOREACH(const int side, teams) {
+		for(const int side : teams) {
 			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
 				return false;
 		}
@@ -183,7 +183,7 @@ bool side_filter::match_internal(const team &t) const
 			allied_filter_.reset(new side_filter(allied_with, fc_));
 		const std::vector<int>& teams = allied_filter_->get_teams();
 		if(teams.empty()) return false;
-		BOOST_FOREACH(const int side, teams) {
+		for(const int side : teams) {
 			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
 				return false;
 		}
@@ -195,7 +195,7 @@ bool side_filter::match_internal(const team &t) const
 			has_enemy_filter_.reset(new side_filter(has_enemy, fc_));
 		const std::vector<int>& teams = has_enemy_filter_->get_teams();
 		bool found = false;
-		BOOST_FOREACH(const int side, teams) {
+		for(const int side : teams) {
 			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
 			{
 				found = true;
@@ -211,7 +211,7 @@ bool side_filter::match_internal(const team &t) const
 			has_ally_filter_.reset(new side_filter(has_ally, fc_));
 		const std::vector<int>& teams = has_ally_filter_->get_teams();
 		bool found = false;
-		BOOST_FOREACH(const int side, teams) {
+		for(const int side : teams) {
 			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
 			{
 				found = true;
@@ -230,7 +230,7 @@ bool side_filter::match_internal(const team &t) const
 		}
 		else {
 			bool found = false;
-			BOOST_FOREACH(const std::string& controller, utils::split(cfg_controller))
+			for(const std::string& controller : utils::split(cfg_controller))
 			{
 				if(t.controller().to_string() == controller) {
 					found = true;
@@ -239,6 +239,21 @@ bool side_filter::match_internal(const team &t) const
 			if(!found) {
 				return false;
 			}
+		}
+	}
+	
+	if (cfg_.has_attribute("formula")) {
+		try {
+			const team_callable callable(t);
+			const game_logic::formula form(cfg_["formula"]);
+			if(!form.evaluate(callable).as_bool()) {
+				return false;
+			}
+			return true;
+		} catch(game_logic::formula_error& e) {
+			lg::wml_error() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+			// Formulae with syntax errors match nothing
+			return false;
 		}
 	}
 

@@ -15,6 +15,7 @@ textdomain stuff in here is therefore only useful to CampGen, as that does
 not allow composed strings like above.
 """
 
+from __future__ import print_function
 import re, sys
 import wmlparser
 import codecs
@@ -38,7 +39,9 @@ class Data:
         pos = indent * "  "
         result = pos + "\ " + magenta + self.name + off + " (" + self.__class__.__name__ + ")"
         if show_contents:
-            result += "'" + self.get_value() + "'"
+            if self.is_translatable() == True:
+                result += " _"
+            result += " '" + self.get_value() + "'"
         if write:
             # The input usually is utf8, but it also may be not - for example
             # if a .png image is transmitted over WML. As this is only for
@@ -60,6 +63,9 @@ class Data:
 
     def get_value(self):
         return ""
+
+    def is_translatable(self):
+        return False
 
     def get_type(self):
         return self.__class__.__name__
@@ -86,6 +92,9 @@ class DataText(Data):
 
     def set_value(self, data):
         self.data = data
+
+    def is_translatable(self):
+        return self.translatable
 
 class DataBinary(Data):
     """A binary chunk of WML."""
@@ -149,7 +158,7 @@ class WMLException(Exception):
     def __init__(self, text):
         super( WMLException, self ).__init__()
         self.text = text
-        print text
+        print(text)
     def __str__(self):
         return self.text
 
@@ -174,7 +183,7 @@ class DataSub(Data):
                 item.clean_empty_ifdefs()
         while rem:
             item = rem.pop()
-            print "Removing empty #ifdef %s" % item.name
+            print("Removing empty #ifdef %s" % item.name)
             self.remove(item)
 
     def write_file(self, f, indent=0, textdomain=""):

@@ -63,7 +63,7 @@ file_dialog::file_dialog(CVideo& video, const std::string& file_path,
 		bool show_directory_buttons) :
 	gui::dialog(video, title, file_path, gui::OK_CANCEL),
 	show_directory_buttons_(show_directory_buttons),
-	files_list_(NULL),
+	files_list_(nullptr),
 	last_selection_(-1),
 	last_textbox_text_(),
 	chosen_file_(".."),

@@ -33,7 +33,7 @@ namespace {
 	{
 	public:
 		rng_default()
-			: gen_(time(NULL))
+			: gen_(time(nullptr))
 		{
 		}
 	protected:

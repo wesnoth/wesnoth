@@ -19,20 +19,19 @@
 
 #include "heal.hpp"
 
-#include "../game_board.hpp"
-#include "../game_display.hpp"
-#include "../gettext.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../play_controller.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../unit_abilities.hpp"
-#include "../unit_display.hpp"
-#include "../unit_map.hpp"
+#include "game_board.hpp"
+#include "game_display.hpp"
+#include "gettext.hpp"
+#include "log.hpp"
+#include "map/map.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "units/unit.hpp"
+#include "units/abilities.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
 
-#include <boost/foreach.hpp>
 #include <list>
 #include <vector>
 
@@ -98,8 +97,7 @@ namespace {
 				return POISON_CURE;
 
 			// Regeneration?
-			BOOST_FOREACH (const unit_ability & regen,
-			               patient.get_abilities("regenerate"))
+			for (const unit_ability & regen : patient.get_abilities("regenerate"))
 			{
 				curing = std::max(curing, poison_status((*regen.first)["poison"]));
 				if ( curing == POISON_CURE )
@@ -111,7 +109,7 @@ namespace {
 		// Look through the healers to find a curer.
 		unit_map::iterator curer = units.end();
 		// Assumed: curing is not POISON_CURE at the start of any iteration.
-		BOOST_FOREACH (const unit_ability & heal, patient.get_abilities("heals"))
+		for (const unit_ability & heal : patient.get_abilities("heals"))
 		{
 			POISON_STATUS this_cure = poison_status((*heal.first)["poison"]);
 			if ( this_cure <= curing )
@@ -219,7 +217,7 @@ namespace {
 		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
 		{
 			// Collect the healers involved.
-			BOOST_FOREACH (const unit_abilities::individual_effect & heal, heal_effect)
+			for (const unit_abilities::individual_effect & heal : heal_effect)
 				healers.push_back(&*units.find(heal.loc));
 
 			if ( !healers.empty() ) {
@@ -300,7 +298,7 @@ void calculate_healing(int side, bool update_display)
 	std::list<heal_unit> unit_list;
 
 	// We look for all allied units, then we see if our healer is near them.
-	BOOST_FOREACH(unit &patient, *resources::units) {
+	for (unit &patient : *resources::units) {
 
 		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
 			if ( patient.side() == side )

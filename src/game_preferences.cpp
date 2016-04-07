@@ -21,16 +21,15 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "network.hpp" // ping_timeout
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "settings.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/foreach.hpp>
 #include <cassert>
 #ifdef _WIN32
 #include <boost/range/iterator_range.hpp>
@@ -63,8 +62,6 @@ std::set<t_translation::t_terrain> encountered_terrains_set;
 std::map<std::string, std::vector<std::string> > history_map;
 
 std::map<std::string, preferences::acquaintance> acquaintances;
-
-bool acquaintances_initialized = false;
 
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
@@ -137,11 +134,11 @@ manager::manager() :
 		[/campaign]
 	[/completed_campaigns]
 	*/
-	BOOST_FOREACH(const std::string &c, utils::split(preferences::get("completed_campaigns"))) {
+	for (const std::string &c : utils::split(preferences::get("completed_campaigns"))) {
 		completed_campaigns[c]; // create the elements
 	}
 	if (const config &ccc = preferences::get_child("completed_campaigns")) {
-		BOOST_FOREACH(const config &cc, ccc.child_range("campaign")) {
+		for (const config &cc : ccc.child_range("campaign")) {
 			std::set<std::string> &d = completed_campaigns[cc["name"]];
 			std::vector<std::string> nd = utils::split(cc["difficulty_levels"]);
 			std::copy(nd.begin(), nd.end(), std::inserter(d, d.begin()));
@@ -163,9 +160,9 @@ manager::manager() :
 				message = foobar
 			[/line]
 */
-		BOOST_FOREACH(const config::any_child &h, history.all_children_range())
+		for (const config::any_child &h : history.all_children_range())
 		{
-			BOOST_FOREACH(const config &l, h.cfg.child_range("line")) {
+			for (const config &l : h.cfg.child_range("line")) {
 				history_map[h.key].push_back(l["message"]);
 			}
 		}
@@ -178,7 +175,7 @@ manager::~manager()
 {
 	config campaigns;
 	typedef const std::pair<std::string, std::set<std::string> > cc_elem;
-	BOOST_FOREACH(cc_elem &elem, completed_campaigns) {
+	for (cc_elem &elem : completed_campaigns) {
 		config cmp;
 		cmp["name"] = elem.first;
 		cmp["difficulty_levels"] = utils::join(elem.second);
@@ -199,10 +196,10 @@ manager::~manager()
 */
 	config history;
 	typedef std::pair<std::string, std::vector<std::string> > hack;
-	BOOST_FOREACH(const hack& history_id, history_map) {
+	for (const hack& history_id : history_map) {
 
 		config history_id_cfg; // [history_id]
-		BOOST_FOREACH(const std::string& line, history_id.second) {
+		for (const std::string& line : history_id.second) {
 			config cfg; // [line]
 
 			cfg["message"] = line;
@@ -241,9 +238,8 @@ admin_authentication_reset::~admin_authentication_reset()
 }
 
 static void load_acquaintances() {
-	if(!acquaintances_initialized) {
-		acquaintances.clear();
-		BOOST_FOREACH(const config &acfg, preferences::get_prefs()->child_range("acquaintance")) {
+	if(acquaintances.empty()) {
+		for (const config &acfg : preferences::get_prefs()->child_range("acquaintance")) {
 			acquaintance ac = acquaintance(acfg);
 			acquaintances[ac.get_nick()] = ac;
 		}
@@ -297,7 +293,7 @@ bool add_ignore(const std::string& nick, const std::string& reason) {
 	return true;
 }
 
-void remove_acquaintance(const std::string& nick) {
+bool remove_acquaintance(const std::string& nick) {
 	std::map<std::string, acquaintance>::iterator i = acquaintances.find(nick);
 
 	//nick might include the notes, depending on how we're removing
@@ -309,10 +305,14 @@ void remove_acquaintance(const std::string& nick) {
 		}
 	}
 
-	if(i != acquaintances.end()) {
-		acquaintances.erase(i);
-		save_acquaintances();
+	if(i == acquaintances.end()) {
+		return false;
 	}
+
+	acquaintances.erase(i);
+	save_acquaintances();
+
+	return true;
 }
 
 bool is_friend(const std::string& nick)
@@ -407,7 +407,7 @@ const std::vector<game_config::server_info>& server_list()
 		std::vector<game_config::server_info> &game_servers = game_config::server_list;
 		VALIDATE(!game_servers.empty(), _("No server has been defined."));
 		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
-		BOOST_FOREACH(const config &server, get_prefs()->child_range("server")) {
+		for(const config &server : get_prefs()->child_range("server")) {
 			game_config::server_info sinf;
 			sinf.name = server["name"].str();
 			sinf.address = server["address"].str();
@@ -816,7 +816,7 @@ int village_support()
 
 void set_village_support(int value)
 {
-	preferences::set("mp_village_support", lexical_cast<std::string>(value));
+	preferences::set("mp_village_support", std::to_string(value));
 }
 
 int xp_modifier()
@@ -1006,16 +1006,6 @@ void set_show_haloes(bool value)
 	preferences::set("show_haloes", value);
 }
 
-bool flip_time()
-{
-	return preferences::get("flip_time", false);
-}
-
-void set_flip_time(bool value)
-{
-	preferences::set("flip_time", value);
-}
-
 compression::format save_compression_format()
 {
 	const std::string& choice =
@@ -1037,18 +1027,13 @@ compression::format save_compression_format()
 	return compression::GZIP;
 }
 
-bool startup_effect()
-{
-	return preferences::get("startup_effect", false);
-}
-
 std::string get_chat_timestamp(const time_t& t) {
 	if (chat_timestamping()) {
 		if(preferences::use_twelve_hour_clock_format() == false) {
-			return lg::get_timestamp(t, _("%H:%M")) + " ";
+			return lg::get_timestamp(t, _("[%H:%M]")) + " ";
 		}
 		else {
-			return lg::get_timestamp(t, _("%I:%M %p")) + " ";
+			return lg::get_timestamp(t, _("[%I:%M %p]")) + " ";
 		}
 	}
 	return "";
@@ -1164,8 +1149,8 @@ void encounter_start_units(const unit_map& units){
 }
 
 static void encounter_recallable_units(const std::vector<team>& teams){
-	BOOST_FOREACH(const team& t, teams) {
-		BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
+	for (const team& t : teams) {
+		for (const unit_const_ptr & u : t.recall_list()) {
 			encountered_units_set.insert(u->type_id());
 		}
 	}

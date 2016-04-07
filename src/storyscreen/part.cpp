@@ -25,8 +25,9 @@
 
 #include "config.hpp"
 #include "game_data.hpp"
-#include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
@@ -92,7 +93,7 @@ floating_image::render_input floating_image::get_render_input(double xscale, dou
 #else
 	render_input ri = {
 		{0,0,0,0},
-		file_.empty() ? NULL : image::get_image(file_)
+		file_.empty() ? nullptr : image::get_image(file_)
 	};
 
 	if(!ri.image.null()) {
@@ -349,13 +350,13 @@ void part::resolve_wml(const vconfig &cfg)
 		// [deprecated_message]
 		else if(key == "deprecated_message") {
 			// Won't appear until the scenario start event finishes.
-			game_events::handle_deprecated_message(node.get_parsed_config());
+			lg::wml_error() << node["message"] << '\n';
 		}
 		// [wml_message]
 		else if(key == "wml_message") {
-			// Pass to game events handler. As with [deprecated_message],
+			// As with [deprecated_message],
 			// it won't appear until the scenario start event is complete.
-			game_events::handle_wml_log_message(node.get_parsed_config());
+			resources::game_events->pump().put_wml_message(node["logger"],node["message"],node["in_chat"]);
 		}
 	}
 }

@@ -21,8 +21,8 @@
 #ifndef AI_COMPOSITE_ENGINE_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_HPP_INCLUDED
 
-#include "component.hpp"
-#include "../contexts.hpp"
+#include "ai/composite/component.hpp"
+#include "ai/contexts.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -116,6 +116,7 @@ protected:
 class engine_factory;
 
 class engine_factory{
+	bool is_duplicate(const std::string &name);
 public:
 	typedef boost::shared_ptr< engine_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
@@ -123,7 +124,7 @@ public:
 
 	static factory_map& get_list() {
 		static factory_map *engine_factories;
-		if (engine_factories==NULL) {
+		if (engine_factories==nullptr) {
 			engine_factories = new factory_map;
 		}
 		return *engine_factories;
@@ -134,6 +135,9 @@ public:
 
 	engine_factory( const std::string &name )
 	{
+		if (is_duplicate(name)) {
+			return;
+		}
 		factory_ptr ptr_to_this(this);
 		get_list().insert(make_pair(name,ptr_to_this));
 	}

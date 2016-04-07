@@ -40,11 +40,10 @@
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
 
-#include "SDL_image.h"
+#include <SDL_image.h>
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/functional/hash.hpp>
-#include <boost/foreach.hpp>
 
 #include <list>
 #include <set>
@@ -174,7 +173,7 @@ int zoom = tile_size;
 int cached_zoom = 0;
 
 /** Algorithm choices */
-//typedef boost::function<surface(const surface &, int, int)> scaling_function;
+//typedef std::function<surface(const surface &, int, int)> scaling_function;
 typedef surface(*scaling_function)(const surface &, int, int);
 scaling_function scale_to_zoom_func;
 scaling_function scale_to_hex_func;
@@ -407,7 +406,7 @@ static bool localized_file_uptodate (const std::string& loc_file)
 		std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
 		std::string contents = filesystem::read_file(trackpath);
 		std::vector<std::string> lines = utils::split(contents, '\n');
-		BOOST_FOREACH(const std::string &line, lines) {
+		for (const std::string &line : lines) {
 			size_t p1 = line.find(fsep);
 			if (p1 == std::string::npos)
 				continue;
@@ -454,7 +453,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 	// add en_US with lowest priority, since the message above will
 	// not have it when translated.
 	langs.push_back("en_US");
-	BOOST_FOREACH(const std::string &lang, langs) {
+	for (const std::string &lang : langs) {
 		std::string loc_file = dir + "/" + "l10n" + "/" + lang + "/" + loc_base;
 		if (filesystem::file_exists(loc_file) && localized_file_uptodate(loc_file)) {
 			return loc_file;
@@ -517,8 +516,8 @@ static surface load_image_file(const image::locator &loc)
 static surface load_image_sub_file(const image::locator &loc)
 {
 	surface surf = get_image(loc.get_filename(), UNSCALED);
-	if(surf == NULL)
-		return NULL;
+	if(surf == nullptr)
+		return nullptr;
 
 	modification_queue mods = modification::decode(loc.get_modifications());
 
@@ -558,7 +557,7 @@ static surface load_image_sub_file(const image::locator &loc)
 			// Safe because those images are only used by terrain rendering
 			// and it filters them out.
 			// A safer and more general way would be to keep only one copy of it
-			surf = NULL;
+			surf = nullptr;
 		}
 		loc.add_to_cache(is_empty_hex_, is_empty);
 	}
@@ -591,7 +590,7 @@ static surface apply_light(surface surf, const light_string& ls){
 	}
 
 	// check if the lightmap is already cached or need to be generated
-	surface lightmap = NULL;
+	surface lightmap = nullptr;
 	lit_variants::iterator i = lightmaps_.find(ls);
 	if(i != lightmaps_.end()) {
 		lightmap = i->second;
@@ -612,11 +611,11 @@ static surface apply_light(surface surf, const light_string& ls){
 			//note that we avoid infinite recursion by using only atomic operation
 			surface lts = image::get_lighted_image(lm_img[sls[0]], sls, HEXED);
 			//first image will be the base where we blit the others
-			if(lightmap == NULL) {
+			if(lightmap == nullptr) {
 				//copy the cached image to avoid modifying the cache
 				lightmap = make_neutral_surface(lts);
 			} else{
-				blit_surface(lts, NULL, lightmap, NULL);
+				blit_surface(lts, nullptr, lightmap, nullptr);
 			}
 		}
 		//cache the result
@@ -639,7 +638,7 @@ surface load_from_disk(const locator &loc)
 		case locator::SUB_FILE:
 			return load_image_sub_file(loc);
 		default:
-			return surface(NULL);
+			return surface(nullptr);
 	}
 }
 
@@ -666,7 +665,7 @@ static SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)
 {
-	assert(format != NULL);
+	assert(format != nullptr);
 
 	SDL_PixelFormat &f = *format;
 	SDL_PixelFormat &l = last_pixel_format;
@@ -688,10 +687,6 @@ void set_pixel_format(SDL_PixelFormat* format)
 			|| f.Gshift != l.Gshift
 			|| f.Bshift != l.Bshift
 //			|| f.Ashift != l.Ashift This field in not checked, not sure why.
-#if !SDL_VERSION_ATLEAST(2,0,0)
-			|| f.colorkey != l.colorkey
-			|| f.alpha != l.alpha
-#endif
 			)
 	{
 		LOG_DP << "detected a new display format\n";
@@ -726,7 +721,7 @@ void color_adjustment_resetter::reset()
 
 void set_team_colors(const std::vector<std::string>* colors)
 {
-	if (colors == NULL)
+	if (colors == nullptr)
 		team_colors.clear();
 	else {
 		team_colors = *colors;
@@ -815,7 +810,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 	if (!img.null()) {
 		return scale_to_hex_func(img, zoom, zoom);
 	} else {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 }
 
@@ -835,7 +830,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	if(!res.null()) {
 		return scale_to_zoom_func(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
 	} else {
-		return surface(NULL);
+		return surface(nullptr);
 	}
 }
 
@@ -1169,8 +1164,8 @@ bool is_empty_hex(const locator& i_locator)
 
 surface reverse_image(const surface& surf)
 {
-	if(surf == NULL) {
-		return surface(NULL);
+	if(surf == nullptr) {
+		return surface(nullptr);
 	}
 
 	const std::map<surface,surface>::iterator itor = reversed_images_.find(surf);
@@ -1180,8 +1175,8 @@ surface reverse_image(const surface& surf)
 	}
 
 	const surface rev(flip_surface(surf));
-	if(rev == NULL) {
-		return surface(NULL);
+	if(rev == nullptr) {
+		return surface(nullptr);
 	}
 
 	reversed_images_.insert(std::pair<surface,surface>(surf,rev));
@@ -1278,16 +1273,17 @@ bool save_image(const surface & surf, const std::string & filename)
 
 bool update_from_preferences()
 {
-	gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
+	typedef gui2::tadvanced_graphics_options::SCALING_ALGORITHM SCALING_ALGORITHM;
+	SCALING_ALGORITHM algo = SCALING_ALGORITHM::LINEAR;
 	try {
-		algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
+		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_hex_func = select_algorithm(algo);
 
-	algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
+	algo = SCALING_ALGORITHM::LINEAR;
 	try {
-		algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
+		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_zoom_func = select_algorithm(algo);

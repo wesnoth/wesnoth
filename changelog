@@ -1,4 +1,315 @@
-Version 1.13.2+dev:
+Version 1.13.4+dev:
+ * Language and i18n:
+   * Updated translations:
+ * Removed support for SDL 1.2. SDL 2 is now the only supported version.
+ * Terrains:
+   * Changed terrain code of Desert Mountains from Mdy to Mdd.
+ * WML engine:
+   * Fix some issues with [foreach]
+   * Fix some issues with backstab-like weapon specials
+   * Support [effect]times=<integer>
+   * Add highlight=yes|no to [scroll_to], [scroll_to_unit], [message]
+     Defaults to no in the first two cases, yes in the third
+     If yes, the target hex is outlined.
+   * New ~SCALE_INTO(w,h) IPF which preserves aspect ratio, using bilinear
+     interpolation scaling.
+   * New ~SCALE_INTO_SHARP(w,h) IPF which preserves aspect ratio, using
+     nearest neighbor scaling.
+   * Support delayed_variable_substitution= in [on_undo], [on_redo]
+     Note that this means $unit.x and $unit.y may not reflect the unit's
+     true location, so using [unstore_unit] on $unit may have unexpected effects.
+     This applies to $second_unit too. The $x1, $y1, $x2, $y2 variables work fine
+     though, so in most cases they can be used instead. Anything else in $unit
+     or $second_unit is also fine.
+   * formula= in SUF can now reference $other_unit via the formula variable "other"
+   * formula= now supported in location, side, and weapon filters
+   * Weapon filters now support number, parry, accuracy, and movement_used
+   * New [has_attack] in standard unit filters; supercedes has_weapon= and
+     uses full weapon filter.
+   * lua_function=var.member now works in SUF; however, 'var' still needs to
+     be a global variable.
+   * AiWML:
+     * Simplified aspect syntax which works for all aspects, present and future:
+       * All aspects with simple values can be specified as key=value
+       * Except attacks, all aspects with complex values have a simple tag form
+         containing only the aspect value (e.g. [avoid])
+       * All aspects, simple and complex, can be specified using a tag named by
+         the aspect, whose contents is the same as a corresponding [facet]
+       * The full [aspect] and [facet] syntax also still works
+     * [ai] configs no longer recognize the version= key
+     * ai_algorithm key now selects a preset AI; possible values include
+       "ai_default_rca", "experimental_ai", and "idle_ai", but custom AIs
+       defined by eras or modifications with an [ai] tag can also be used
+     * [leader_goal] now automatically sets facet ID for auto_remove
+       (Only if using simplified syntax; in full syntax, the ID must still be
+       specified in two places.)
+     * The AI config in the gamestate inspector is now split into multiple
+       sections according to the type of component.
+     * The following deprecated components have been removed:
+       * recruitment stage (name=ai_default::recruitment)
+       * old recruitment candidate action
+         (name=ai_default_rca::aspect_recruitment_phase)
+       * old simple move-to-targets candidate action
+         (name=ai_default_rca::simple_move_and_targeting_phase)
+       * number_of_possible_recruits_to_force_recruit aspect
+       * recruitment_ignore_bad_combat aspect
+       * recruitment_ignore_bad_movement aspect
+       * The recruitment aspect has been removed from the engine; however,
+         "recruitment" is now accepted as a synonym for
+         "recruitment_instructions". Old code should work without changes.
+       * [goal]name=protect_my_unit
+     * The following experimental components have been removed:
+       (Most of these were broken or non-functional)
+       * Experimental recruitment candidate action
+         This worked, but was worse than the default recruitment.
+       * Global fallback candidate action
+       * Akihara recruitment candidate action
+       * Fallback stage (functional but useless)
+       * Strategy Formulation with RCA stage
+         This worked, but was slow and unmaintained. If a maintainer
+         steps up, it may be restored later.
+       * Several of the development AIs available in debug mode in the
+         multiplayer setup menu
+     * The "Strong AI" has been renamed to "Default AI (RCA) with Alternate
+       Recruiting" and is now only available in debug mode.
+     * Lua components (goals, aspects, stages, and candidate actions)
+       now support an [args] subtag, which passes any sort of WML data
+       to the Lua code - this works similarly to [args] in a [lua] tag,
+       though not quite identically.
+     * Aspect syntax with [aspect] tag has been fully generalized so that
+       [aspect], [facet], and [default] are all exactly the same in terms of
+       what contents they expect. (Except that [facet] additionally takes
+       turns= and time_of_day=.) The most useful consequences of this:
+       * You can nest a [facet] inside another [facet] if the outer one has
+         name=composite_aspect
+       * You can define a [facet] with the Lua engine
+     * invalidate_on_tod_change= has been implemented for aspects. It applies
+       when the bonus resulting from time of day modifiers (excluding any
+       illumination abilities) changes at any location on the map. Thus, it
+       occurs on average less often than invalidate_on_turn_start and may
+       be best combined with an explicit invalidate_on_turn_start=no.
+     * Minor shorthands have been introduced in the recruitment_instructions
+       aspect:
+       * [pattern] tag is like [recruit] with pattern=yes
+       * [total] tag is like [recruit] with total=yes
+       * If no [recruit] tag is present, a default is added with importance=0.
+         This means recruitment will happen even with only [limit] tags.
+     * Extensions to [modify_ai]:
+       * [modify_ai]action=change works on aspects, using path=aspect[id].
+         Useful if you need to change all the facets at once, but note that
+         it also wipes the [default] facet.
+       * The [default] facet can be referenced as facet[default_facet].
+         This should rarely be needed, but is there in case it is.
+         It also makes them easily identifiable in the inspector.
+       * Automatically copy over the id= with action=change, if the
+         new component did not specify one.
+       * It can add, remove, and change jobs and limits in the
+         recruitment_instructions aspect. The path to use for this is
+         aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
+         (For a limit, replace "recruit" with "limit".)
+         The [recruit] and [limit] tags now support id keys for this.
+ * Lua API:
+   * wesnoth.match_unit can now take a location (rather than a unit) as
+     the optional third parameter. This will cause the filter to consider
+     the unit to be on that location instead of its actual location.
+     This even works for units on a recall list.
+   * wesnoth.highlight_hex is no longer deprecated, but its effect is
+     slightly different from the old one. It outlines a hex, nothing more.
+   * wesnoth.select_hex is now deprecated in favour of the new
+     wesnoth.select_unit (or u:select_unit). The effect is almost the same
+     (with the exception that it does not outline the hex if true is
+     passed as the second argument), but this name change was done to
+     emphasize that it acts on a unit, more than a location.
+   * New wesnoth.set_time_of_day function which sets the current time
+     of day, taken either as the time ID (eg "second_watch") or the index
+     of the time in the overall schedule (eg, 1 would be dawn in the default
+     schedule). Optional second argument takes a time area ID, to set
+     local instead of global time.
+   * New wesnoth.add_fog and wesnoth.remove_fog functions allow changing fog
+     on the map. The [lift_fog] and [clear_fog] tags now use this.
+   * New wesnoth.add_sound_source, wesnoth.remove_sound_source, and
+     wesnoth.get_sound_source functions to allow manipulation of sound
+     sources. The [sound_source] and [remove_sound_source] now use these.
+   * New wesnoth.log function for printing log messages. The [wml_message]
+     and [deprecated_message] tags now use this.
+   * WML tables defined in Lua now accept string keys with array values
+     (where "array" is a table whose keys are all integers). This joins
+     the elements of the array with commas and produces a single string
+     value. eg {x = {1,2,3}} is equivalent to {x = "1,2,3"}.
+   * wesnoth.effects table can now be used to alter the behaviour of
+     built-in effects - for example, to add a new feature to
+     [effect]apply_to=attack. It also now supports effect descriptions,
+     for use by the [trait] tag.
+   * Additional fields in unit proxy:
+     * usage, cost - self-explanatory
+     * traits - list of the IDs of all traits
+     * abilities - list of the IDs of all abilities
+   * Additional fields in table returned by wesnoth.get_terrain_info:
+     * icon, editor_image, light
+   * Additional fields in unit type proxu:
+     * race, id, alignment
+     * attacks, which returns the same thing as unit.attacks
+     * abilities, same as unit.abilities
+   * LuaAI:
+     * The table returned by check_*() now has a "result" field which
+       gives a description of the action's result; similar to "status"
+       but more descriptive.
+     * Target tables now use a descriptive name for "type", instead of
+       an integer. This applies to the elements of the table returned by
+       ai.get_targets() and also to the elements of tables returned by
+       Lua goals. (However, Lua goals that used integers will continue
+       to work for now.)
+     * There are some compatibility-breaking changes to Lua candidate
+       actions - see the release notes or the wiki for full details.
+     * Lua AI code can now access the AI routines through the global ai
+       object. This object is only accessible to AI code; it does not exist
+       in the general Lua global scope.
+     * When executing Lua goals, aspects, or candidate action evaluations,
+       the ai is in "read-only" mode - the read_only key is set to true,
+       and functions that change the gamestate, such as ai.attack(), are
+       missing from the table. (ai.check_*() functions are still present.)
+     * The ai.aspects table provides access to every aspect known by the
+       engine, including several that previously did not have corresponding
+       ai.get_*() functions. You access them as ai.aspects.avoid, for example.
+       The table is read-only and raises an error if you attempt to write to it.
+     * The way to create Lua candidate actions has changed a little. Old code
+       will require minor changes.
+     * New wesnoth.micro_ais table contains the loaders for all Micro AIs.
+       New loaders can easily be installed by add-ons. See any built-in
+       micro AI (in ai/micro_ais/mai-defs/) for an example of how to do this.
+     * The attacks aspect can now be defined as a Lua aspect. The code
+       should return a table with keys "own" and "enemy", each of which may
+       be either a unit filter table or a function which takes a unit as a
+       parameter and returns true or false.
+ * Wesnoth formula engine:
+   * Formulas in unit filters can now access nearly all unit attributes
+     The following attributes were renamed (old names still work, for now):
+     leader -> canrecruit
+     total_movement -> max_moves
+     movement_left -> moves
+     states -> status
+   * Nearly all unit type, side, weapon, and terrain attributes available
+     to Lua code are now also exposed to WFL. The exceptions are mainly
+     translatable strings.
+   * Unit and side WML variables are now accessible under "wml_vars".
+     Since WML variables don't easily translate to formula variables, the
+     special attributes __all_children, __children, and __attributes provide
+     specialized views of the variables config as a list, string-list map,
+     and string-value map, respectively.
+   * The 'special' attribute of weapons was renamed to 'specials', and it now
+     contains the special IDs rather than their translateable names.
+   * New syntax features:
+     * String interpolation syntax. Within a formula string (enclosed in
+       'single quotes'), the syntax [some_formula] interpolates the result
+       of the inner formula into the string. (The simplest use case is
+       interpolating the values of variables.)
+     * String can now escape special characters:
+       ['] single quote, [(] open square bracket, [)] close square bracket
+     * New 'in' operator which tests if a list contains an item or if a map
+       contains a key.
+     * New concatenation operator a..b which works on strings and lists
+     * New range operator a~b which produces a list of consecutive integers
+       This can also be used for "list slicing" - eg my_list[3~5] returns
+       a new list containing elements 3 through 5 of my_list.
+     * Lists can be used as an index for a list. This is "selection indexing"
+       and returns a new list with only the elements specified by the indexing
+       list.
+     * Function definitions (using the def keyword) are now supported in all
+       formula contexts, which means that they can be used outside FormulaAI.
+       However, non-FormulaAI functions are currently local to the formula
+       that declares them.
+     * Maps containing string keys that are valid identifiers can now be
+       indexed with the dot operator instead of the indexing operator.
+     * Strings can now be indexed via 'string'.char[n]. Also supported are
+       'string'.word[n] and 'string'.item[n] (the latter splits on commas)
+   * Changes to core functions:
+     * head() takes an optional argument - if present, a sublist is returned.
+     * abs(), max(), min() now work on decimal numbers
+     * reduce() function can specify an optional initial accumulator
+       This will be returned for an empty list instead of null.
+     * substring() function can now accept a negative size parameter
+       This counts backwards from the specified offset
+       A size of -1 is the same as 1.
+     * if() can take two arguments; returns null if the condition is false
+     * tolist() will now invert the effect of tomap()
+     * debug_print() now shows in console if debug mode is on
+   * New core functions:
+     * Trig functions tan, acos, asin, atan have been added. (Sin and cos
+       existed since at least 1.9 but were undocumented until very recently.)
+     * Other common math functions - root(), sqrt(), cbrt(), log(), exp()
+     * hypot(x,y) function calculates sqrt(x*x+y*y) with minimal error
+     * pi() returning the circle ratio
+     * tail() - opposite of head()
+     * reverse() function for strings and lists
+     * zip() function - converts [[1,2,3],[4,5,6]] to [[1,4],[2,5],[3,6]]
+     * take_while() function returns items from a list until the first one
+       that fails a condition
+     * find_string() locates a substring within a string
+     * replace() replaces a sequence within a string
+     * type() function checks the type of a formula result
+     * distance_between() - this was promoted from FormulaAI to core
+     * pair() function that produces a key-value pair suitable for
+       passing to tomap() - this also means key-value pairs are now
+       serializable (relevant in FormulaAI)
+   * Bugfixes:
+     * Dice operator is now synced (where possible)
+     * Modulus (%) operator now works on decimal numbers
+     * Exponentiation (^) operator is now right-associative
+     * Fix several math operations returning a very large negative number when
+       the operation was invalid (for example, (-2) ^ 0.5).
+       Now they return null instead.
+   * Formula debugger (accessed with the debug() function):
+     * Now works again, but is skipped unless in debug mode
+     * No longer explodes on formulas using less-than
+     * Some better information and formatting in the execution trace
+     * You can now step through "where" variable assignments
+   * FormulaAI no longer starts recruiting if a formula evaluates to the
+     string 'recruit'.
+   * Deprecated:
+     * The fai/faiend keywords are deprecated as part of a move to clearly
+       define the difference between "Wesnoth Formula Language", the language,
+       and "FormulaAI", the AI engine that uses the language. For now they
+       still work, but any future code should use wfl/wflend instead.
+       Use of the .fai file extension is still fine for FormulaAI code;
+       for other formula code in a separate file, .wfl is recommended instead.
+ * Miscellaneous and bug fixes:
+   * Resolve translated logo images not being used (bug #24357)
+   * Ported the "hexometer" tool from Bash to Python 3
+
+Version 1.13.4:
+ * Language and i18n:
+   * Updated translations: British English, Russian
+ * Graphics:
+   * Improved or new terrain graphics: Mine Walls (replaces Hewn Cave Walls).
+ * User interface:
+   * Fix vertical alignment of individual attacks listed in the Attack Unit
+     dialog.
+   * Removed extra padding below unit stats in the Attack Unit dialog.
+ * Miscellaneous and bug fixes:
+   * Fix non-deterministic crashes in the Attack Unit dialog resulting from
+     invalid memory references (regression introduced in 1.13.3).
+   * Fix uninitialized variable in event handling code (bug #24498).
+
+Version 1.13.3:
+ * Greatly improved SDL 2 support. SDL 2 is now used by default build when
+   building. This fixes the following bugs, among others:
+   * Bug #18112: Color cursors cause slow mouse movement at menus
+   * Bug #19666: When I resize windows during dialog I lose the menu buttons
+   * Bug #20332: Cursor not mapping correctly on Retina display when in Windowed mode
+   * Bug #23820: SDL 2 alpha blending issues
+   * Bug #23821: Text input is broken in GUI1 under SDL 2
+   * Bug #23908: SDL 2 SDL_BlitSurface causes crashes
+   * Bug #23918: UI graphics garbled on OS X 10.11 El Capitan
+   * Bug #23934: Resize actions are laggy
+   * Bug #24138: SDL 2 crash on resize after starting a game and returning to the title screen
+   * Bug #24209: Screen becomes black upon minimise and restore
+   * bug #24212: SDL 2 build handled input incorrectly once window focus is lost when menus are open
+   * Bug #24213: SDL 2 build leaves menu items stuck if window dimensions change while open
+   * Bug #24214: SDL 2 build handles fullscreen toggle badly
+   * Bug #24260: Menu and Action buttons disappear on resize
+   * Bug #24261: Area under Objectives not redrawn on resize
+   * Bug #24294: Doubled-up GUI1 dialogs don't redraw the secondary in SDL2
+   * Bug #24477: Segfault when launching Credits
  * Campaigns:
    * Liberty:
      * Added some animations for the Rogue Mage line.
@@ -12,39 +323,62 @@ Version 1.13.2+dev:
      * Updated sprites for Naga Hunter, Naga Guardian line, Crab Man.
      * Crab Man changed to Monster Crab.
  * Graphics:
-   * Improved terrain graphics: Stones with Sand Drifts, Igloo Village.
+   * Improved or new terrain graphics: Stones with Sand Drifts, Igloo Village,
+     Adobe Village.
+   * Added option for toggling off water animations to Preferences -> Display.
  * Language and i18n:
-   * Updated translations: British English, Russian, Swedish
+   * New translation: Asturian
+   * Updated translations: British English, Galician, Russian, Swedish
  * Sound effects:
    * Fixed various subtle timing problems with attack sounds.
+ * Terrains:
+   * New terrain: Desert Mountains (Mdy), Impassable Desert Mountains (Mdy^Xm),
+     Ruined Adobe Village (^Vdr).
  * User Interface:
+   * GUI1 comboboxes now use the thinner menu frame style.
    * Implemented a new GUI2 Attack dialog
+   * Added gui2 comboboxes.
+   * Removed prompt when purging the WML cache from Preferences.
+   * Implemented a new GUI2 Preferences dialog
+   * Implemented a new font scaling option on the Display panel.
+   * Selecting an entry in the friend/ignore list panel now copies it to the
+     input field; this makes it easier to edit friend/ignore notes.
  * WML engine:
    * Added new event "unit placed", which triggers when (and regardless of how)
      a unit appears on the map.
    * Added support for color= in [unstore_unit] and [print]
+   * removed network and network_ai controlles, whether a side is networked is
+     now stored in the is_local attribute.
+   * Eventnames (received in wesnoth.game_events.on_event) now have all their
+     spaces replaced with underscores.
+   * lua can now read/write the 'persistent' attribute of sides.
+   * lua can now read/write the 'alignment' attribute of units.
+   * Added {CURRENT_FILE} and {CURRENT_DIRECTORY} macros.
+   * add support for relative dirs in wesnoth.dofile/require
+   * Added name= and write_name= attributes in [item]
+   * Added description_alignment= key to [campaign]
+   * Fixed [put_to_recall_list] not working correctly (bug #24390)
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
      relocate the log file to a path with Unicode characters (bug #22897,
      definitely fixed this time).
+   * Decreased high memory consumption caused by the animated water.
    * Fix bug #23108: exclude aborted attacks from statistics
    * imgcheck now runs on Python 3
    * Fix bug #15259: Secondary click uses control-click instead of command-click in OS X
    * New hi-res icon using new logo for OS X
- * Greatly improved SDL2 support. SDL2 is now the default build.
-   * Fix bug #18112: Color cursor causes slow mouse movement at menus
-   * Fix bug #20332: Cursor not mapping correctly on Retina display when in Windowed mode
-   * Fix bug #24138: SDL2 crash on resize after starting a game and returning to title screen
-   * Fix bug #23908: SDL2 SDL_BlitSurface Causes Crashes
-   * Fix bug #23821: Text input is broken in GUI1 under SDL2
-   * Fix bug #23820: SDL 2 alpha blending issues
-   * Fix bug #23918: UI Graphics in OS X 10.11 El Capitan
-   * Fix bug #18112: Color cursor causes slow mouse movement at menus
-   * Fix bug #24214: SDL2 build handles fullscreen toggle badly
-   * Fix bug #23934: Resize actions are laggy
-   * Fix bug #24209: Screen becomes black upon minimise and restore
-   * Fix bug #24213: SDL2 build leaves menu items stuck if window dimensions change when open
+   * Removed the "wmlmove" Python tool
+   * Fixed [event] in [unit_type].
+   * Fixed oos caused by mp replay turn feature.
+   * Fixed oos bugs caused by plattform dependent rounding from double to int in lua.
+   * Fixed custom (lua-defined) scenario tags beeing removed from [replay_start]
+   * Fixed savefile bloat caused by unit variations (walking corpses)
+   * Fixed preferences file bloat caused by null-command hot-keys (bug #21969)
+   * Fixed clearing of default hot-keys not working (bugs #21983/#22218/#23981)
+   * Fix [for] not correctly handling the case when the array length changes
+     during iteration
+   * Fix variables in [message][command] (bug #24288)
 
 Version 1.13.2:
  * Add-ons client:
@@ -158,7 +492,7 @@ Version 1.13.2:
  * WML engine:
    * controller= in side filters can now be used in mp games for unsynced code
    * Added [effect] apply_to=max_expereince set=<value>
-   * Added enable_if= to mod and era events 
+   * Added enable_if= to mod and era events
    * Added $varname?default_value| in variable substitution
    * Fixed side_for= parameter in [message]s with input
    * New actionwml tag [on_undo] contains actionswml that is executed when the

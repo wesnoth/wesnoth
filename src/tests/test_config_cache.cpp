@@ -25,7 +25,7 @@
 
 #include "tests/utils/game_config_manager.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 
 static preproc_map setup_test_preproc_map()

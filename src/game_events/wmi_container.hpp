@@ -20,7 +20,7 @@
 #ifndef GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
 #define GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
 
-#include "../utils/iterator.hpp"
+#include "utils/iterator.hpp"
 
 #include <boost/shared_ptr.hpp>
 

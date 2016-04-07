@@ -16,12 +16,12 @@
 #include "label_settings.hpp"
 
 #include <vector>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include "gettext.hpp"
 #include "game_display.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "resources.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/control.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -32,7 +32,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/label.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 namespace gui2 {
 REGISTER_DIALOG(label_settings);
@@ -54,12 +54,12 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 	}
 	for(size_t i = 0; i < dc.teams().size(); i++) {
 		const team& team = dc.teams()[i];
-		const std::string label_cat_key = "side:" + str_cast(i + 1);
+		const std::string label_cat_key = "side:" + std::to_string(i + 1);
 		if(team.hidden()) {
 			labels_display[label_cat_key] = "";
 			continue;
 		}
-		std::string team_name = team.current_player();
+		std::string team_name = team.side_name();
 		if(team_name.empty()) {
 			team_name = team.user_team_name();
 		}
@@ -67,16 +67,16 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 			team_name = _("Unknown");
 		}
 		string_map subst;
-		subst["side_number"] = str_cast(i + 1);
+		subst["side_number"] = std::to_string(i + 1);
 		subst["name"] = team_name;
 		labels_display[label_cat_key] = vgettext("Side $side_number ($name)", subst);
 	}
 }
 
-void tlabel_settings::pre_show(CVideo& /*video*/, twindow& window) {
+void tlabel_settings::pre_show(twindow& window) {
 	std::map<std::string, string_map> list_data;
 	tlistbox& cats_listbox = find_widget<tlistbox>(&window, "label_types", false);
-	FOREACH(const AUTO & label_entry, all_labels) {
+	for(const auto & label_entry : all_labels) {
 		const std::string& category = label_entry.first;
 		const bool& visible = label_entry.second;
 
@@ -99,7 +99,7 @@ void tlabel_settings::pre_show(CVideo& /*video*/, twindow& window) {
 		tgrid* grid = cats_listbox.get_row_grid(cats_listbox.get_item_count() - 1);
 		ttoggle_button& status = find_widget<ttoggle_button>(grid, "cat_status", false);
 		status.set_value(visible);
-		status.set_callback_state_change(boost::bind(&tlabel_settings::toggle_category, this, _1, category));
+		status.set_callback_state_change(std::bind(&tlabel_settings::toggle_category, this, _1, category));
 
 		if(category.substr(0,5) == "side:") {
 			tlabel& label = find_widget<tlabel>(grid, "cat_name", false);
@@ -112,8 +112,7 @@ bool tlabel_settings::execute(display_context& dc, CVideo& video) {
 	tlabel_settings window(dc);
 	if(!window.show(video)) return false;
 	std::vector<std::string> hidden_categories;
-	typedef std::map<std::string,bool>::value_type value_type;
-	BOOST_FOREACH(value_type lbl, window.all_labels) {
+	for(auto lbl : window.all_labels) {
 		if(lbl.second == false) {
 			hidden_categories.push_back(lbl.first);
 		}

@@ -18,19 +18,18 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "aspect.hpp"
-#include "engine.hpp"
-#include "goal.hpp"
-#include "property_handler.hpp"
-#include "stage.hpp"
-#include "../manager.hpp"
-#include "../../actions/attack.hpp"
-#include "../../log.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/aspect.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/goal.hpp"
+#include "ai/composite/property_handler.hpp"
+#include "ai/composite/stage.hpp"
+#include "ai/configuration.hpp"
+#include "ai/manager.hpp"
+#include "actions/attack.hpp"
+#include "log.hpp"
 
-#include <boost/bind.hpp>
-#include "utils/boost_function_guarded.hpp"
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 namespace ai {
 
@@ -59,7 +58,7 @@ void ai_composite::on_create()
 		cfg_["id"]<<"]"<<std::endl;
 
 	// init the composite ai stages
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("stage")){
+	for (const config &cfg_element : cfg_.child_range("stage")) {
 		add_stage(cfg_element);
 	}
 
@@ -70,19 +69,22 @@ void ai_composite::on_create()
 		e_ptr->set_ai_context(this);
 	}
 
-	boost::function2<void, std::vector<engine_ptr>&, const config&> factory_engines =
-		boost::bind(&ai::ai_composite::create_engine,*this,_1,_2);
+	std::function<void(std::vector<engine_ptr>&, const config&)> factory_engines =
+		std::bind(&ai::ai_composite::create_engine,*this,_1,_2);
 
-	boost::function2<void, std::vector<goal_ptr>&, const config&> factory_goals =
-		boost::bind(&ai::ai_composite::create_goal,*this,_1,_2);
+	std::function<void(std::vector<goal_ptr>&, const config&)> factory_goals =
+		std::bind(&ai::ai_composite::create_goal,*this,_1,_2);
 
-	boost::function2<void, std::vector<stage_ptr>&, const config&> factory_stages =
-		boost::bind(&ai::ai_composite::create_stage,*this,_1,_2);
+	std::function<void(std::vector<stage_ptr>&, const config&)> factory_stages =
+		std::bind(&ai::ai_composite::create_stage,*this,_1,_2);
+
+	std::function<void(std::map<std::string,aspect_ptr>&, const config&, std::string)> factory_aspects =
+		std::bind(&ai::ai_composite::replace_aspect,*this,_1,_2,_3);
 
 	register_vector_property(property_handlers(),"engine",get_engines(), factory_engines);
 	register_vector_property(property_handlers(),"goal",get_goals(), factory_goals);
 	register_vector_property(property_handlers(),"stage",stages_, factory_stages);
-	register_aspect_property(property_handlers(),"aspect",get_aspects());
+	register_aspect_property(property_handlers(),"aspect",get_aspects(), factory_aspects);
 
 }
 
@@ -104,6 +106,14 @@ void ai_composite::create_engine(std::vector<engine_ptr> &engines, const config 
 	engine::parse_engine_from_config(*this,cfg,std::back_inserter(engines));
 }
 
+
+void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id)
+{
+	std::vector<aspect_ptr> temp_aspects;
+	engine::parse_aspect_from_config(*this,cfg,id,std::back_inserter(temp_aspects));
+	aspects[id] = temp_aspects.back();
+}
+
 ai_composite::~ai_composite()
 {
 }
@@ -114,7 +124,7 @@ bool ai_composite::add_stage(const config &cfg)
 	std::vector< stage_ptr > stages;
 	create_stage(stages,cfg);
 	int j=0;
-	BOOST_FOREACH(stage_ptr b, stages ){
+	for (stage_ptr b : stages) {
 		stages_.push_back(b);
 		j++;
 	}
@@ -127,7 +137,7 @@ bool ai_composite::add_goal(const config &cfg)
 	std::vector< goal_ptr > goals;
 	create_goal(goals,cfg);
 	int j=0;
-	BOOST_FOREACH(goal_ptr b, goals ){
+	for (goal_ptr b : goals) {
 		get_goals().push_back(b);
 		j++;
 	}
@@ -136,7 +146,7 @@ bool ai_composite::add_goal(const config &cfg)
 
 
 void ai_composite::play_turn(){
-	BOOST_FOREACH(stage_ptr &s, stages_){
+	for (stage_ptr &s : stages_) {
 		s->play_stage();
 	}
 }
@@ -167,7 +177,8 @@ std::string ai_composite::evaluate(const std::string& str)
 	cfg["engine"] = "fai";///@todo 1.9 : consider allowing other engines to evaluate
 	engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (!e_ptr) {
-		return interface::evaluate(str);
+		// This should be unreachable, but not entirely sure...
+		return "engine not found for evaluate command";
 	}
 	return e_ptr->evaluate(str);
 }
@@ -205,11 +216,19 @@ config ai_composite::to_config() const
 	config cfg;
 
 	//serialize the composite ai stages
-	BOOST_FOREACH(const stage_ptr &s, stages_){
+	for (const stage_ptr &s : stages_) {
 		cfg.add_child("stage",s->to_config());
 	}
 
 	return cfg;
+}
+
+config ai_composite::preparse_cfg(ai_context& ctx, const config& cfg)
+{
+	config temp_cfg, parsed_cfg;
+	temp_cfg.add_child("ai", cfg);
+	configuration::parse_side_config(ctx.get_side(), temp_cfg, parsed_cfg);
+	return parsed_cfg;
 }
 
 } //end of namespace ai

@@ -30,18 +30,18 @@
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
-#include "gui/dialogs/mp_host_game_prompt.hpp" //for host game prompt
-#include "gui/dialogs/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets
 #include "gui/widgets/window.hpp"       // for twindow, etc
 #include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
-#include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
-#include "map_exception.hpp"
+#include "map/exception.hpp"
 #include "game_initialization/multiplayer.hpp"              // for start_client, etc
 #include "game_initialization/create_engine.hpp"
 #include "network.hpp"
@@ -56,22 +56,21 @@
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
-#include "video.hpp"                    // for CVideo, resize_monitor
+#include "video.hpp"                    // for CVideo
 #include "wml_exception.hpp"            // for twml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/optional.hpp>           // for optional
 #include <boost/tuple/tuple.hpp>        // for tuple
-#include <cstdlib>                     // for NULL, system
+#include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
-#include "SDL.h"                        // for SDL_INIT_JOYSTICK, etc
-#include "SDL_events.h"                 // for SDL_ENABLE
-#include "SDL_joystick.h"               // for SDL_JoystickEventState, etc
-#include "SDL_timer.h"                  // for SDL_Delay
-#include "SDL_version.h"                // for SDL_VERSION_ATLEAST
-#include "SDL_video.h"                  // for SDL_WM_SetCaption, etc
+#include <SDL.h>                        // for SDL_INIT_JOYSTICK, etc
+#include <SDL_events.h>                 // for SDL_ENABLE
+#include <SDL_joystick.h>               // for SDL_JoystickEventState, etc
+#include <SDL_timer.h>                  // for SDL_Delay
+#include <SDL_version.h>                // for SDL_VERSION_ATLEAST
+#include <SDL_video.h>                  // for SDL_WM_SetCaption, etc
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -92,9 +91,9 @@ static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
-#define LOG_GENERAL LOG_STREAM(info, lg::general)
-#define WRN_GENERAL LOG_STREAM(warn, lg::general)
-#define DBG_GENERAL LOG_STREAM(debug, lg::general)
+#define LOG_GENERAL LOG_STREAM(info, lg::general())
+#define WRN_GENERAL LOG_STREAM(warn, lg::general())
+#define DBG_GENERAL LOG_STREAM(debug, lg::general())
 
 static lg::log_domain log_mp_create("mp/create");
 #define DBG_MP LOG_STREAM(debug, log_mp_create)
@@ -115,7 +114,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	main_event_context_(),
 	hotkey_manager_(),
 	music_thinker_(),
-	resize_monitor_(new resize_monitor()),
 	test_scenario_("test"),
 	screenshot_map_(),
 	screenshot_filename_(),
@@ -347,7 +345,7 @@ bool game_launcher::init_language()
 	language_def locale;
 	if(cmdline_opts_.language) {
 		std::vector<language_def> langs = get_languages();
-		BOOST_FOREACH(const language_def & def, langs) {
+		for(const language_def & def : langs) {
 			if(def.localename == *cmdline_opts_.language) {
 				locale = def;
 				break;
@@ -365,7 +363,6 @@ bool game_launcher::init_language()
 	return true;
 }
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 bool game_launcher::init_video()
 {
 	// Handle special commandline launch flags
@@ -387,73 +384,13 @@ bool game_launcher::init_video()
 
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
-	if(icon != NULL) {
+	if(icon != nullptr) {
 
 		video().set_window_icon(icon);
 	}
 #endif
 	return true;
 }
-#else
-bool game_launcher::init_video()
-{
-	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
-		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test) ) {
-			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
-			return false;
-		}
-		video().make_fake();
-		game_config::no_delay = true;
-		return true;
-	}
-
-	SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
-
-#if !(defined(__APPLE__))
-	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
-	if(icon != NULL) {
-		///must be called after SDL_Init() and before setting video mode
-		SDL_WM_SetIcon(icon,NULL);
-	}
-#endif
-
-	std::pair<int,int> resolution;
-	int bpp = 0;
-	int video_flags = 0;
-
-	bool found_matching = video().detect_video_settings(resolution, bpp, video_flags);
-
-	if (cmdline_opts_.screenshot) {
-		bpp = CVideo::DefaultBpp;
-	}
-
-	if(!found_matching && (video_flags & SDL_FULLSCREEN)) {
-		video_flags ^= SDL_FULLSCREEN;
-		found_matching = video().detect_video_settings(resolution, bpp, video_flags);
-		if (found_matching) {
-			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
-		}
-	}
-
-	if(!found_matching) {
-		std::cerr << "Video mode " << resolution.first << 'x'
-			<< resolution.second << 'x' << bpp
-			<< " is not supported.\n";
-
-		return false;
-	}
-
-	std::cerr << "Setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
-	const int res = video().setMode(resolution.first,resolution.second,bpp,video_flags);
-	video().setBpp(bpp);
-	if(res == 0) {
-		std::cerr << "Required video mode, " << resolution.first << "x"
-		          << resolution.second << "x" << bpp << " is not supported\n";
-		return false;
-	}
-	return true;
-}
-#endif
 
 bool game_launcher::init_lua_script()
 {
@@ -780,7 +717,6 @@ bool game_launcher::load_game()
 
 	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		state_.unify_controllers();
-		gui2::show_message(video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the <b>Multiplayer</b> → <b>Load Game</b> dialog instead."), "", true, true);
 	}
 
 	if (load.cancel_orders()) {
@@ -805,7 +741,7 @@ void game_launcher::set_tutorial()
 
 void game_launcher::mark_completed_campaigns(std::vector<config> &campaigns)
 {
-	BOOST_FOREACH(config &campaign, campaigns) {
+	for (config &campaign : campaigns) {
 		campaign["completed"] = preferences::is_campaign_completed(campaign["id"]);
 	}
 }
@@ -947,14 +883,11 @@ bool game_launcher::play_multiplayer()
 				start_wesnothd();
 			} catch(game::mp_server_error&)
 			{
-				std::string path = preferences::show_wesnothd_server_search(video());
-
-				if (!path.empty())
-				{
-					preferences::set_mp_server_program_name(path);
+				preferences::show_wesnothd_server_search(video());
+				
+				try {
 					start_wesnothd();
-				}
-				else
+				} catch(game::mp_server_error&)
 				{
 					return false;
 				}
@@ -1054,11 +987,7 @@ bool game_launcher::change_language()
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		video().set_window_title(game_config::get_default_title_string());
-#else
-		SDL_WM_SetCaption(game_config::get_default_title_string().c_str(), NULL);
-#endif
 	}
 
 	return true;
@@ -1068,8 +997,6 @@ void game_launcher::show_preferences()
 {
 	preferences::show_preferences_dialog(video(),
 	    game_config_manager::get()->game_config());
-
-	video().flip();
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
@@ -1080,16 +1007,18 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(video());
-	loadscreen::start_stage("load data");
-	if(reload == RELOAD_DATA) {
-		try {
-			game_config_manager::get()->
-				load_game_config_for_game(state_.classification());
-		} catch(config::error&) {
-			return;
+	gui2::tloadscreen::display(video(), [this, reload]() {
+
+		gui2::tloadscreen::progress("load data");
+		if(reload == RELOAD_DATA) {
+			try {
+				game_config_manager::get()->
+					load_game_config_for_game(state_.classification());
+			} catch(config::error&) {
+				return;
+			}
 		}
-	}
+	});
 
 	try {
 		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());

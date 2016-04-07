@@ -15,9 +15,9 @@
 #include "scripting/lua_unit_type.hpp"
 
 #include "scripting/lua_common.hpp"
-#include "unit_types.hpp"
+#include "scripting/push_check.hpp"
+#include "units/types.hpp"
 
-#include <boost/foreach.hpp>
 #include <string>
 
 #include "lua/lua.h"
@@ -47,6 +47,9 @@ static int impl_unit_type_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_tstring_attrib("name", ut.type_name());
+	return_string_attrib("id", ut.id());
+	return_string_attrib("alignment", ut.alignment().to_string());
+	return_string_attrib("race", ut.race_id());
 	return_int_attrib("max_hitpoints", ut.hitpoints());
 	return_int_attrib("max_moves", ut.movement());
 	return_int_attrib("max_experience", ut.experience_needed());
@@ -56,12 +59,26 @@ static int impl_unit_type_get(lua_State *L)
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	if (strcmp(m, "traits") == 0) {
 		lua_newtable(L);
-		BOOST_FOREACH(const config& trait, ut.possible_traits()) {
+		for (const config& trait : ut.possible_traits()) {
 			const std::string& id = trait["id"];
 			lua_pushlstring(L, id.c_str(), id.length());
 			luaW_pushconfig(L, trait);
 			lua_rawset(L, -3);
 		}
+		return 1;
+	}
+	if (strcmp(m, "abilities") == 0) {
+		lua_push(L, ut.get_ability_list());
+		return 1;
+	}
+	if (strcmp(m, "attacks") == 0) {
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, 1);
+		// hack: store the unit_type at -1 because we want positive indices to refer to the attacks.
+		lua_rawseti(L, -2, -1);
+		lua_pushlightuserdata(L, uattacksKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
 		return 1;
 	}
 	return 0;

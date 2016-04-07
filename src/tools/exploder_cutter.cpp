@@ -18,9 +18,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
-#include "SDL_image.h"
-
-#include <boost/foreach.hpp>
+#include <SDL_image.h>
 
 #include <iostream>
 
@@ -49,7 +47,7 @@ const config cutter::load_config(const std::string &filename)
 
 void cutter::load_masks(const config& conf)
 {
-	BOOST_FOREACH(const config &m, conf.child_range("mask"))
+	for(const config &m : conf.child_range("mask"))
 	{
 		const std::string name = m["name"];
 		const std::string image = get_mask_dir() + "/" + std::string(m["image"]);
@@ -79,13 +77,13 @@ void cutter::load_masks(const config& conf)
 			cur_mask.cut = cut;
 			cur_mask.filename = image;
 			surface tmp(IMG_Load(image.c_str()));
-			if(tmp == NULL)
+			if(tmp == nullptr)
 				throw exploder_failure("Unable to load mask image " + image);
 
 			cur_mask.image = make_neutral_surface(tmp);
 		}
 
-		if(masks_[name].image == NULL)
+		if(masks_[name].image == nullptr)
 			throw exploder_failure("Unable to load mask image " + image);
 	}
 }
@@ -95,7 +93,7 @@ cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 {
 	surface_map res;
 
-	BOOST_FOREACH(const config &part, conf.child_range("part")) {
+	for(const config &part : conf.child_range("part")) {
 		add_sub_image(surf, res, &part);
 	}
 
@@ -147,7 +145,7 @@ void cutter::add_sub_image(const surface &surf, surface_map &map, const config* 
 
 	positioned_surface ps;
 	ps.image = ::cut_surface(surf, cut);
-	if(ps.image == NULL)
+	if(ps.image == nullptr)
 		throw exploder_failure("Unable to cut surface!");
 	ps.name = name;
 	ps.mask = mask;

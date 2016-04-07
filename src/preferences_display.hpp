@@ -22,14 +22,9 @@ class CVideo;
 
 namespace preferences {
 
-    // FIXME: this box should be vertically centered on the screen, but is not
-	static const int height = 400;
-	static const int width = 465;
-
-	struct display_manager
-	{
-		display_manager(display* disp);
-		~display_manager();
+	enum DIALOG_OPEN_TO {
+		VIEW_DEFAULT,
+		VIEW_FRIENDS
 	};
 
 	void set_scroll_to_action(bool ison);
@@ -44,17 +39,10 @@ namespace preferences {
 	void set_idle_anim(bool ison);
 	void set_idle_anim_rate(int rate);
 
-	std::string show_wesnothd_server_search(CVideo&);
-	void show_preferences_dialog(CVideo& disp, const config& game_cfg);
-	bool show_video_mode_dialog(CVideo& disp);
+	void show_wesnothd_server_search(CVideo&);
+	void show_preferences_dialog(CVideo& disp, const config& game_cfg,
+		const DIALOG_OPEN_TO initial_view = VIEW_DEFAULT);
 	bool show_theme_dialog(CVideo& disp);
-	void show_paths_dialog(CVideo& disp);
-	void show_mp_alerts_dialog(CVideo& disp);
-	void show_advanced_graphics_dialog(CVideo& disp);
-
-	// If prefs is non-null, save the hotkeys in that config
-	// instead of the default.
-	void show_hotkeys_preferences_dialog(CVideo & disp);
 } // end namespace preferences
 
 #endif

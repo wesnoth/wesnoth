@@ -30,6 +30,8 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 class tpassword_box : public ttext_box
 {
 
@@ -83,8 +85,32 @@ private:
 	std::string real_value_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 };
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+// copy & paste from tbuilder_text_box...
+// does it make more sense to inherit from it?
+struct tbuilder_password_box : public tbuilder_control
+{
+public:
+	explicit tbuilder_password_box(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+private:
+	std::string history_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

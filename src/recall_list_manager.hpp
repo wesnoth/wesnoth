@@ -17,7 +17,7 @@
 #ifndef RECALL_LIST_MGR_HPP
 #define RECALL_LIST_MGR_HPP
 
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 
 #include <string>
 #include <vector>

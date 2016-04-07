@@ -17,14 +17,13 @@
 #include "gui/dialogs/message.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "utils/foreach.tpp"
 
 namespace gui2
 {
@@ -63,7 +62,7 @@ struct tmessage_implementation
 	}
 };
 
-void tmessage::pre_show(CVideo& /*video*/, twindow& window)
+void tmessage::pre_show(twindow& window)
 {
 	// ***** Validate the required buttons ***** ***** ***** *****
 	tmessage_implementation::init_button(window, buttons_[left_1], "left_side");
@@ -101,9 +100,9 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmessage::post_show(twindow& /*window*/)
 {
-	FOREACH(AUTO & button_status, buttons_)
+	for(auto & button_status : buttons_)
 	{
-		button_status.button = NULL;
+		button_status.button = nullptr;
 	}
 }
 
@@ -134,7 +133,7 @@ void tmessage::set_button_retval(const tbutton_id button, const int retval)
 }
 
 tmessage::tbutton_status::tbutton_status()
-	: button(NULL)
+	: button(nullptr)
 	, caption()
 	, visible(twidget::tvisible::invisible)
 	, retval(twindow::NONE)
@@ -200,7 +199,7 @@ void show_error_message(CVideo& video,
 						const std::string& message,
 						bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general) << message << '\n';
+	LOG_STREAM(err, lg::general()) << message << '\n';
 	show_message(video,
 				 _("Error"),
 				 message,

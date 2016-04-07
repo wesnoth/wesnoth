@@ -67,7 +67,7 @@ class CVideo;
 
 #define FAIL(message)                                                     \
 	do {                                                                  \
-		wml_exception(NULL, __FILE__, __LINE__, __func__, message);       \
+		wml_exception(nullptr, __FILE__, __LINE__, __func__, message);       \
 		/* wml_exception never returns. */                                \
 		/* Help the compiler to figure that out */                        \
 		throw 42;                                                         \
@@ -75,7 +75,7 @@ class CVideo;
 
 #define FAIL_WITH_DEV_MESSAGE(message, dev_message)                       \
 	do {                                                                  \
-		wml_exception(NULL                                                \
+		wml_exception(nullptr                                                \
 				, __FILE__                                                \
 				, __LINE__                                                \
 				, __func__                                                \
@@ -130,9 +130,10 @@ struct twml_exception
 
 	/**
 	 * Shows the error in a dialog.
-	 *  @param disp         The display object to show the message on.
+	 *
+	 * @param video          Target for rendering the UI message.
 	 */
-	void show(CVideo &video);
+	void show(CVideo& video);
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
 };

@@ -14,14 +14,12 @@
 #include "flg_manager.hpp"
 
 #include "config.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "mt_rng.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "wml_separators.hpp"
 #include "log.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
@@ -61,12 +59,12 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	choosable_factions_(),
 	choosable_leaders_(),
 	choosable_genders_(),
-	current_faction_(NULL),
+	current_faction_(nullptr),
 	current_leader_("null"),
 	current_gender_("null"),
 	default_leader_type_(side_["type"]),
 	default_leader_gender_(side_["gender"]),
-	default_leader_cfg_(NULL)
+	default_leader_cfg_(nullptr)
 {
 	const std::string& leader_id = side_["id"];
 	if (!leader_id.empty()) {
@@ -76,11 +74,11 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 			default_leader_type_ = (*default_leader_cfg_)["type"].str();
 			default_leader_gender_ = (*default_leader_cfg_)["gender"].str();
 		} else {
-			default_leader_cfg_ = NULL;
+			default_leader_cfg_ = nullptr;
 		}
 	} else if (default_leader_type_.empty()) {
 		// Find a unit which can recruit.
-		BOOST_FOREACH(const config& side_unit, side_.child_range("unit")) {
+		for (const config& side_unit : side_.child_range("unit")) {
 			if (side_unit["canrecruit"].to_bool()) {
 				default_leader_type_ = side_unit["type"].str();
 				default_leader_gender_ = side_unit["gender"].str();
@@ -91,10 +89,10 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	}
 	if (!default_leader_type_.empty() && default_leader_type_ != "random") {
 		const unit_type* unit = unit_types.find(default_leader_type_);
-		if (unit == NULL) {
+		if (unit == nullptr) {
 			default_leader_type_.clear();
 			default_leader_gender_.clear();
-			default_leader_cfg_ = NULL;
+			default_leader_cfg_ = nullptr;
 		}
 	}
 
@@ -119,7 +117,7 @@ void flg_manager::set_current_faction(const unsigned index)
 void flg_manager::set_current_faction(const std::string& id)
 {
 	unsigned index = 0;
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
+	for (const config* faction : choosable_factions_) {
 		if ((*faction)["id"] == id) {
 			set_current_faction(index);
 			return;
@@ -148,7 +146,7 @@ void flg_manager::set_current_gender(const unsigned index)
 void flg_manager::reset_leader_combo(gui::combo& combo_leader, const std::string& color) const
 {
 	std::vector<std::string> leaders;
-	BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
+	for (const std::string& leader : choosable_leaders_) {
 		const unit_type* unit = unit_types.find(leader);
 		if (unit) {
 			leaders.push_back(IMAGE_PREFIX + unit->image() +
@@ -175,7 +173,7 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender, const std::string
 	const unit_type* unit = unit_types.find(current_leader_);
 
 	std::vector<std::string> genders;
-	BOOST_FOREACH(const std::string& gender, choosable_genders_) {
+	for (const std::string& gender : choosable_genders_) {
 		if (gender == unit_race::s_female || gender == unit_race::s_male) {
 			if (unit) {
 				const unit_type& gender_unit =
@@ -236,7 +234,7 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 		std::vector<int> nonrandom_sides;
 		std::vector<int> fallback_nonrandom_sides;
 		int num = -1;
-		BOOST_FOREACH(const config* i, available_factions_) {
+		for (const config* i : available_factions_) {
 			++num;
 			if (!(*i)["random_faction"].to_bool()) {
 				const std::string& faction_id = (*i)["id"];
@@ -285,7 +283,7 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 		std::vector<std::string> nonrandom_leaders =
 			utils::split((*current_faction_)["random_leader"]);
 		if (nonrandom_leaders.empty()) {
-			BOOST_FOREACH(const std::string& leader, available_leaders_) {
+			for (const std::string& leader : available_leaders_) {
 				if (leader != "random") {
 					nonrandom_leaders.push_back(leader);
 				}
@@ -312,7 +310,7 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 		const unit_type *ut = unit_types.find(current_leader_);
 		if (ut) {
 			std::vector<std::string> nonrandom_genders;
-			BOOST_FOREACH(const std::string& gender, available_genders_) {
+			for (const std::string& gender : available_genders_) {
 				if (gender != "random") {
 					nonrandom_genders.push_back(gender);
 				}
@@ -332,10 +330,10 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 
 void flg_manager::update_available_factions()
 {
-	const config* custom_faction = NULL;
+	const config* custom_faction = nullptr;
 	const bool show_custom_faction = side_["faction"] == "Custom" || !has_no_recruits_ || faction_lock_;
 
-	BOOST_FOREACH(const config* faction, era_factions_) {
+	for (const config* faction : era_factions_) {
 		if ((*faction)["id"] == "Custom" && !show_custom_faction) {
 
 			// "Custom" faction should not be available if both
@@ -378,7 +376,7 @@ void flg_manager::update_available_leaders()
 			if (!is_random_faction()) {
 				if ((*current_faction_)["id"] == "Custom") {
 					// Allow user to choose a leader from any faction.
-					BOOST_FOREACH(const config* f, available_factions_) {
+					for (const config* f : available_factions_) {
 						if ((*f)["id"] != "Random") {
 							append_leaders_from_faction(f);
 						}
@@ -422,7 +420,7 @@ void flg_manager::update_available_genders()
 
 	if (saved_game_) {
 		std::string gender;
-		BOOST_FOREACH(const config& side_unit, side_.child_range("unit")) {
+		for (const config& side_unit : side_.child_range("unit")) {
 			if (current_leader_ == side_unit["type"] &&
 				side_unit["canrecruit"].to_bool()) {
 
@@ -440,7 +438,7 @@ void flg_manager::update_available_genders()
 				available_genders_.push_back("random");
 			}
 
-			BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+			for (unit_race::GENDER gender : unit->genders()) {
 				std::string gender_str;
 				if (gender == unit_race::FEMALE) {
 					gender_str = unit_race::s_female;
@@ -538,13 +536,13 @@ int flg_manager::find_suitable_faction() const
 	}
 
 	int res = -1, index = 0, best_score = 0;
-	BOOST_FOREACH(const config *faction, choosable_factions_)
+	for (const config *faction : choosable_factions_)
 	{
 		int faction_score = 0;
 		std::vector<std::string> recruit =
 			utils::split((*faction)[search_field]);
-		BOOST_FOREACH(const std::string &search, find) {
-			BOOST_FOREACH(const std::string &r, recruit) {
+		for (const std::string &search : find) {
+			for (const std::string &r : recruit) {
 				if (r == search) {
 					++faction_score;
 					break;

@@ -20,29 +20,28 @@
 #include "undo.hpp"
 #include "global.hpp"
 
-#include "../construct_dialog.hpp"
-#include "../game_board.hpp"               // for game_board
-#include "../game_display.hpp"          // for game_display
-#include "../log.hpp"                   // for LOG_STREAM, logger, etc
-#include "../map.hpp"                      // for gamemap
-#include "../map_location.hpp"  // for map_location, operator<<, etc
-#include "../mouse_handler_base.hpp"       // for command_disabler
-#include "../recall_list_manager.hpp"   // for recall_list_manager
-#include "../replay.hpp"                // for recorder, replay
-#include "../replay_helper.hpp"         // for replay_helper
-#include "../resources.hpp"             // for screen, teams, units, etc
-#include "../statistics.hpp"               // for un_recall_unit, etc
-#include "../synced_context.hpp"        // for set_scontext_synced
-#include "../team.hpp"                  // for team
-#include "../unit.hpp"                  // for unit
-#include "../unit_animation_component.hpp"
-#include "../unit_display.hpp"          // for move_unit
-#include "../unit_id.hpp"
-#include "../unit_map.hpp"              // for unit_map, etc
-#include "../unit_ptr.hpp"      // for unit_const_ptr, unit_ptr
-#include "../unit_types.hpp"               // for unit_type, unit_type_data, etc
-#include "../util.hpp"                     // for bad_lexical_cast (ptr only), etc
-#include "../whiteboard/manager.hpp"    // for manager
+#include "game_board.hpp"               // for game_board
+#include "game_display.hpp"          // for game_display
+#include "log.hpp"                   // for LOG_STREAM, logger, etc
+#include "map/map.hpp"                      // for gamemap
+#include "map/location.hpp"  // for map_location, operator<<, etc
+#include "mouse_handler_base.hpp"       // for command_disabler
+#include "recall_list_manager.hpp"   // for recall_list_manager
+#include "replay.hpp"                // for recorder, replay
+#include "replay_helper.hpp"         // for replay_helper
+#include "resources.hpp"             // for screen, teams, units, etc
+#include "statistics.hpp"               // for un_recall_unit, etc
+#include "synced_context.hpp"        // for set_scontext_synced
+#include "team.hpp"                  // for team
+#include "units/unit.hpp"                  // for unit
+#include "units/animation_component.hpp"
+#include "units/udisplay.hpp"          // for move_unit
+#include "units/id.hpp"
+#include "units/map.hpp"              // for unit_map, etc
+#include "units/ptr.hpp"      // for unit_const_ptr, unit_ptr
+#include "units/types.hpp"               // for unit_type, unit_type_data, etc
+#include "util.hpp"                     // for bad_lexical_cast (ptr only), etc
+#include "whiteboard/manager.hpp"    // for manager
 
 #include "create.hpp"                   // for find_recall_location, etc
 #include "move.hpp"                   // for get_village
@@ -55,14 +54,12 @@
 #include "undo_update_shroud_action.hpp"
 
 #include <algorithm>                    // for reverse
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/ptr_container/detail/static_move_ptr.hpp>
 #include <boost/ptr_container/detail/void_ptr_iterator.hpp>
 #include <boost/ptr_container/ptr_sequence_adapter.hpp>
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
-#include <cstddef>                     // for NULL
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <set>                          // for set
 
@@ -77,12 +74,12 @@ namespace actions {
 
 /**
  * Creates an undo_action based on a config.
- * @return a pointer that must be deleted, or NULL if the @a cfg could not be parsed.
+ * @return a pointer that must be deleted, or nullptr if the @a cfg could not be parsed.
  */
 undo_action_base * undo_list::create_action(const config & cfg)
 {
 	const std::string str = cfg["type"];
-	undo_action_base * res = NULL;
+	undo_action_base * res = nullptr;
 	// The general division of labor in this function is that the various
 	// constructors will parse the "unit" child config, while this function
 	// parses everything else.
@@ -102,13 +99,13 @@ undo_action_base * undo_list::create_action(const config & cfg)
 			// Bad data.
 			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type '"
 			       << child["type"] << "' was not found.\n";
-			return NULL;
+			return nullptr;
 		}
-		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), NULL));
+		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), nullptr));
 	}
 
 	else if ( str == "recall" )
-		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), NULL));
+		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
 
 	else if ( str == "dismiss" )
 		res =  new undo::dismiss_action(cfg, cfg.child("unit"));
@@ -122,7 +119,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 	{
 		// Unrecognized type.
 		ERR_NG << "Unrecognized undo action type: " << str << "." << std::endl;
-		return NULL;
+		return nullptr;
 	}
 	return res;
 }
@@ -301,7 +298,7 @@ void undo_list::read(const config & cfg)
 	committed_actions_ = committed_actions_ || cfg["committed"].to_bool();
 
 	// Build the undo stack.
-	BOOST_FOREACH( const config & child, cfg.child_range("undo") ) {
+	for (const config & child : cfg.child_range("undo")) {
 		try {
 			undo_action_base * action = create_action(child);
 			if ( action ) {
@@ -319,7 +316,7 @@ void undo_list::read(const config & cfg)
 	}
 
 	// Build the redo stack.
-	BOOST_FOREACH( const config & child, cfg.child_range("redo") ) {
+	for (const config & child : cfg.child_range("redo")) {
 		try {
 			undo_action_base * action = create_action(child);
 			if ( undo_action* undoable_action = dynamic_cast<undo_action*>(action)) {
@@ -457,8 +454,6 @@ bool undo_list::apply_shroud_changes() const
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
 		return false;
 	}
-	// If we clear fog or shroud outside a synced context we get OOS
-	assert(synced_context::is_synced());
 	shroud_clearer clearer;
 	bool cleared_shroud = false;
 	const size_t list_size = undos_.size();
@@ -482,9 +477,16 @@ bool undo_list::apply_shroud_changes() const
 		}
 	}
 
+
 	if (!cleared_shroud) {
 		return false;
 	}
+	// If we clear fog or shroud outside a synced context we get OOS
+	// Note that it can happen that we call this function from ouside a synced context
+	// when we reload  a game and want to prevent undoing. But in this case this is
+	// preceeded by a manual update_shroud call so that cleared_shroud is false.
+	assert(synced_context::is_synced());
+
 	// The entire stack needs to be cleared in order to preserve replays.
 	// (The events that fired might depend on current unit positions.)
 	// (Also the events that did not fire might depend on unit positions (they whould have fired if the unit would have standed on different positions, for example this can happen if they have a [have_unit] in [filter_condition]))

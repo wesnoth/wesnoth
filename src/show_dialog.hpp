@@ -16,14 +16,13 @@
 #define SHOW_DIALOG_HPP_INCLUDED
 
 class config;
-class CVideo;
 class display;
 
 #include "cursor.hpp"
 #include "floating_label.hpp"
 #include "font.hpp"
 #include "tooltips.hpp"
-
+#include "video.hpp"
 #include "widgets/menu.hpp"
 
 namespace gui
@@ -52,7 +51,7 @@ private:
 	bool reset_to;
 };
 
-class dialog_frame :public events::sdl_handler {
+class dialog_frame :public video2::draw_layering {
 public:
 	struct dimension_measurements {
 		dimension_measurements();
@@ -74,8 +73,8 @@ public:
 
 	dialog_frame(CVideo &video, const std::string& title="",
 		const style& dialog_style=default_style,
-		bool auto_restore=true, std::vector<button*>* buttons=NULL,
-		button* help_button=NULL);
+		bool auto_restore=true, std::vector<button*>* buttons=nullptr,
+		button* help_button=nullptr);
 	~dialog_frame();
 
 	dimension_measurements layout(int x, int y, int w, int h);
@@ -97,7 +96,8 @@ public:
 
 	void set_dirty(bool dirty = true);
 
-	virtual void handle_event(const SDL_Event& event);
+	virtual void handle_event(const SDL_Event&);
+	void handle_window_event(const SDL_Event& event);
 
 private:
 	void clear_background();
@@ -119,7 +119,7 @@ private:
 	bool dirty_;
 };
 
-//frame_measurements draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
+//frame_measurements draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=nullptr, surface_restorer* restorer=nullptr);
 
 //SDL_Rect draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& dialog_style);
 
@@ -137,11 +137,11 @@ private:
 //if 'restorer' is present, it will be set to a restorer that will reset the screen area
 //to its original state after the dialog is drawn.
 //void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
- //                const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
- //                surface_restorer* restorer=NULL, button* help_button=NULL, label** label_widget);
+ //                const std::string* dialog_style=nullptr, std::vector<button*>* buttons=nullptr,
+ //                surface_restorer* restorer=nullptr, button* help_button=nullptr, label** label_widget);
 //void draw_dialog(frame_measurements &fm, CVideo &video, const std::string& title,
- //                const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
- //                surface_restorer* restorer=NULL, button* help_button=NULL, label** label_widget);
+ //                const std::string* dialog_style=nullptr, std::vector<button*>* buttons=nullptr,
+ //                surface_restorer* restorer=nullptr, button* help_button=nullptr, label** label_widget);
 
 class dialog_button_action
 {
@@ -189,18 +189,18 @@ public:
 int show_dialog(CVideo& video, surface image,
 				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type=MESSAGE,
-				const std::vector<std::string>* menu_items=NULL,
-				const std::vector<preview_pane*>* preview_panes=NULL,
+				const std::vector<std::string>* menu_items=nullptr,
+				const std::vector<preview_pane*>* preview_panes=nullptr,
 				const std::string& text_widget_label="",
-				std::string* text_widget_text=NULL,
+				std::string* text_widget_text=nullptr,
 				const int text_widget_max_chars = 256,
-				std::vector<check_item>* options=NULL,
+				std::vector<check_item>* options=nullptr,
 				int xloc=-1,
 				int yloc=-1,
-				const dialog_frame::style* dialog_style=NULL,
-				std::vector<dialog_button_info>* buttons=NULL,
-				const menu::sorter* sorter=NULL,
-				menu::style* menu_style=NULL
+				const dialog_frame::style* dialog_style=nullptr,
+				std::vector<dialog_button_info>* buttons=nullptr,
+				const menu::sorter* sorter=nullptr,
+				menu::style* menu_style=nullptr
 			 );
 
 void check_quit(CVideo &video);

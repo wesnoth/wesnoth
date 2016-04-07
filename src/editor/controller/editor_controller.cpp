@@ -41,18 +41,19 @@
 #include "reports.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "../../game_preferences.hpp"
-#include "../../gettext.hpp"
-#include "../../leader_scroll_dialog.hpp"
-#include "../../preferences_display.hpp"
-#include "../../sound.hpp"
-#include "../../unit.hpp"
-#include "../../unit_animation_component.hpp"
+#include "game_preferences.hpp"
+#include "gettext.hpp"
+#include "leader_scroll_dialog.hpp"
+#include "preferences_display.hpp"
+#include "sound.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
+
+#include "quit_confirmation.hpp"
 
 #include "halo.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 namespace {
 static std::vector<std::string> saved_windows_;
@@ -63,16 +64,16 @@ namespace editor {
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(game_config, video)
 	, mouse_handler_base()
+	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
 	, gui_(new editor_display(editor::get_dummy_display_context(), video, *reports_, controller_base::get_theme(game_config, "editor"), config()))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
-	, toolkit_(NULL)
-	, prefs_disp_manager_(NULL)
+	, toolkit_(nullptr)
 	, tooltip_manager_(video)
-	, floating_label_manager_(NULL)
-	, help_manager_(NULL)
+	, floating_label_manager_(nullptr)
+	, help_manager_(nullptr)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_()
@@ -80,13 +81,13 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config));
-	context_manager_->switch_context(0);
+	context_manager_->switch_context(0, true);
 	init_tods(game_config);
 	init_music(game_config);
 	context_manager_->get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
-	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 
+	gui().create_buttons();
 	gui().redraw_everything();
     events::raise_draw_event();
 }
@@ -95,8 +96,7 @@ void editor_controller::init_gui()
 {
 	gui_->change_display_context(&context_manager_->get_map_context());
 	gui_->set_grid(preferences::grid());
-	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
-	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
+	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
@@ -110,7 +110,7 @@ void editor_controller::init_gui()
 
 void editor_controller::init_tods(const config& game_config)
 {
-	BOOST_FOREACH(const config &schedule, game_config.child_range("editor_times")) {
+	for (const config &schedule : game_config.child_range("editor_times")) {
 
 		const std::string& schedule_id = schedule["id"];
 		const std::string& schedule_name = schedule["name"];
@@ -130,7 +130,7 @@ void editor_controller::init_tods(const config& game_config)
 			continue;
 		}
 
-		BOOST_FOREACH(const config &time, schedule.child_range("time")) {
+		for (const config &time : schedule.child_range("time")) {
 			times->second.second.push_back(time_of_day(time));
 		}
 
@@ -147,8 +147,8 @@ void editor_controller::init_music(const config& game_config)
 	if (!game_config.has_child(tag_name))
 		ERR_ED << "No editor music defined" << std::endl;
 	else {
-		BOOST_FOREACH(const config& editor_music, game_config.child_range(tag_name)) {
-			BOOST_FOREACH(const config& music, editor_music.child_range("music")) {
+		for (const config& editor_music : game_config.child_range(tag_name)) {
+			for (const config& music : editor_music.child_range("music")) {
 				sound::music_track track(music);
 				if (track.file_path().empty())
 					WRN_ED << "Music track " << track.id() << " not found." << std::endl;
@@ -161,12 +161,12 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
-	resources::units = NULL;
-	resources::tod_manager = NULL;
-	resources::teams = NULL;
+	resources::units = nullptr;
+	resources::tod_manager = nullptr;
+	resources::teams = nullptr;
 
-	resources::classification = NULL;
-	resources::mp_settings = NULL;
+	resources::classification = nullptr;
+	resources::mp_settings = nullptr;
 }
 
 EXIT_STATUS editor_controller::main_loop()
@@ -199,7 +199,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 	}
 }
 
-void editor_controller::quit_confirm(EXIT_STATUS mode)
+bool editor_controller::quit_confirm()
 {
 	std::string modified;
 	size_t amount = context_manager_->modified_maps(modified);
@@ -208,16 +208,12 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 	if (amount == 0) {
 		message = _("Do you really want to quit?");
 	} else if (amount == 1) {
-		message = _("Do you really want to quit? Changes in the map since the last save will be lost.");
+		message = _("Do you really want to quit? Changes to this map since the last save will be lost.");
 	} else {
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
-		message += modified;
+		message += "\n" + modified;
 	}
-	const int res = gui2::show_message(gui().video(), _("Quit"), message, gui2::tmessage::yes_no_buttons);
-	if(res != gui2::twindow::CANCEL) {
-		do_quit_ = true;
-		quit_mode_ = mode;
-	}
+	return quit_confirmation::show_prompt(message);
 }
 
 void editor_controller::custom_tods_dialog()
@@ -720,10 +716,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 
 		case HOTKEY_QUIT_GAME:
-			quit_confirm(EXIT_NORMAL);
+			if(quit_confirmation::quit()) {
+				do_quit_ = true;
+				quit_mode_ = EXIT_NORMAL;
+			}
 			return true;
 		case HOTKEY_QUIT_TO_DESKTOP:
-			quit_confirm(EXIT_QUIT_TO_DESKTOP);
+			quit_confirmation::quit_to_desktop();
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
 			context_manager_->save_all_maps(true);
@@ -737,7 +736,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			toolkit_->get_palette_manager()->active_palette().swap();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			if (dynamic_cast<const editor_action_chain*>(context_manager_->get_map_context().last_undo_action()) != NULL) {
+			if (dynamic_cast<const editor_action_chain*>(context_manager_->get_map_context().last_undo_action()) != nullptr) {
 				context_manager_->get_map_context().partial_undo();
 				context_manager_->refresh_after_action();
 			} else {
@@ -1041,7 +1040,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	if (!items.empty() && items.front() == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
-		BOOST_FOREACH(const sound::music_track& track, music_tracks_) {
+		for (const sound::music_track& track : music_tracks_) {
 			items.push_back(track.title().empty() ? track.id() : track.title());
 		}
 	}
@@ -1227,20 +1226,20 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (context_manager_->get_map().on_board_with_border(drag_from_hex_) && is_dragging()) {
-		editor_action* a = NULL;
+		editor_action* a = nullptr;
 		bool partial = false;
 		editor_action* last_undo = context_manager_->get_map_context().last_undo_action();
-		if (dragging_left_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(1)) != 0) {
+		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
 			a = toolkit_->get_mouse_action()->drag_left(*gui_, x, y, partial, last_undo);
-		} else if (dragging_right_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(3)) != 0) {
+		} else if (dragging_right_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(3)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
 			a = toolkit_->get_mouse_action()->drag_right(*gui_, x, y, partial, last_undo);
 		}
 		//Partial means that the mouse action has modified the
 		//last undo action and the controller shouldn't add
 		//anything to the undo stack (hence a different perform_ call)
-		if (a != NULL) {
+		if (a != nullptr) {
 			boost::scoped_ptr<editor_action> aa(a);
 			if (partial) {
 				context_manager_->get_map_context().perform_partial_action(*a);

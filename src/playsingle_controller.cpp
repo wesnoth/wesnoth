@@ -33,9 +33,9 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "hotkey_handler_sp.hpp"
+#include "hotkey/hotkey_handler_sp.hpp"
 #include "log.hpp"
-#include "map_label.hpp"
+#include "map/label.hpp"
 #include "marked-up_text.hpp"
 #include "playturn.hpp"
 #include "random_new_deterministic.hpp"
@@ -44,20 +44,18 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "events.hpp"
 #include "save_blocker.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
 #include "storyscreen/interface.hpp"
-#include "unit.hpp"
-#include "unit_animation.hpp"
+#include "units/unit.hpp"
+#include "units/animation.hpp"
 #include "util.hpp"
 #include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -82,7 +80,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)
-	, mp_replay_()
+	, replay_()
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
@@ -94,8 +92,8 @@ playsingle_controller::playsingle_controller(const config& level,
 	ai::manager::set_ai_info(ai_info);
 	ai::manager::add_observer(this) ;
 
-	plugins_context_->set_accessor_string("level_result", boost::bind(&playsingle_controller::describe_result, this));
-	plugins_context_->set_accessor_int("turn", boost::bind(&play_controller::turn, this));
+	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
+	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
 }
 
 std::string playsingle_controller::describe_result() const
@@ -133,12 +131,13 @@ void playsingle_controller::init_gui(){
 }
 
 
-void playsingle_controller::play_scenario_init(const config& level) {
+void playsingle_controller::play_scenario_init()
+{
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-	start_game(level);
+	start_game();
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
@@ -167,20 +166,31 @@ void playsingle_controller::play_scenario_main_loop()
 		try {
 			play_turn();
 			if (is_regular_game_end()) {
+				turn_data_.send_data();
 				return;
 			}
 			gamestate_->player_number_ = 1;
 		}
 		catch(const reset_gamestate_exception& ex) {
-			/**
-				@TODO: The mp replay feature still doesnt work properly (casues OOS) becasue:
-					1) The undo stack is not reset along with the gamestate (fixed).
-					2) The server_request_number_ is not reset along with the gamestate (fixed).
-					3) chat and other unsynced actions are inserted in the middle of the replay bringing the replay_pos in unorder (fixed).
-					4) untracked changes in side controllers are lost when resetting gamestate. (fixed)
-					5) The game should have a stricter check for whether the loaded game is actually a parent of this game.
-					6) If an action was undone after a game was saved it can casue if teh undone action is in the snapshot of the saved game. (luckyli this is never the case for autosaves)
-			*/
+			//
+			// TODO:
+			//
+			// The MP replay feature still doesn't work properly (causes OOS)
+			// because:
+			//
+			// 1) The undo stack is not reset along with the gamestate (fixed).
+			// 2) The server_request_number_ is not reset along with the
+			//    gamestate (fixed).
+			// 3) chat and other unsynced actions are inserted in the middle of
+			//    the replay bringing the replay_pos in unorder (fixed).
+			// 4) untracked changes in side controllers are lost when resetting
+			//    gamestate (fixed).
+			// 5) The game should have a stricter check for whether the loaded
+			//    game is actually a parent of this game.
+			// 6) If an action was undone after a game was saved it can cause
+			//    OOS if the undone action is in the snapshot of the saved
+			//    game (luckily this is never the case for autosaves).
+			//
 			std::vector<bool> local_players(gamestate().board_.teams().size(), true);
 			//Preserve side controllers, becasue we won't get the side controoller updates again when replaying.
 			for(size_t i = 0; i < local_players.size(); ++i) {
@@ -190,9 +200,11 @@ void playsingle_controller::play_scenario_main_loop()
 			for(size_t i = 0; i < local_players.size(); ++i) {
 				(*resources::teams)[i].set_local(local_players[i]);
 			}
-			play_scenario_init(*ex.level);
-			mp_replay_.reset(new replay_controller(*this, false, ex.level));
-			mp_replay_->play_replay();
+			play_scenario_init();
+			replay_.reset(new replay_controller(*this, false, ex.level));
+			if(ex.start_replay) {
+				replay_->play_replay();
+			}
 		}
 	} //end for loop
 }
@@ -202,19 +214,19 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
 	// Start music.
-	BOOST_FOREACH(const config &m, level.child_range("music")) {
+	for(const config &m : level.child_range("music")) {
 		sound::play_music_config(m);
 	}
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		show_story(*gui_, get_scenario_name(), level.child_range("story"));
+		show_story(gui_->video(), get_scenario_name(), level.child_range("story"));
 	}
 	gui_->labels().read(level);
 
 	// Read sound sources
-	assert(soundsources_manager_ != NULL);
-	BOOST_FOREACH(const config &s, level.child_range("sound_source")) {
+	assert(soundsources_manager_ != nullptr);
+	for (const config &s : level.child_range("sound_source")) {
 		try {
 			soundsource::sourcespec spec(s);
 			soundsources_manager_->add(spec);
@@ -226,7 +238,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	}
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks()) << "\n";
 	try {
-		play_scenario_init(level);
+		play_scenario_init();
 		// clears level config;
 		this->saved_game_.remove_snapshot();
 
@@ -347,13 +359,13 @@ void playsingle_controller::play_side_impl()
 	if (!skip_next_turn_) {
 		end_turn_ = END_TURN_NONE;
 	}
-	if(mp_replay_.get() != NULL) {
-		REPLAY_RETURN res = mp_replay_->play_side_impl();
+	if(replay_.get() != nullptr) {
+		REPLAY_RETURN res = replay_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
 			end_turn_ = END_TURN_SYNCED;
 		}
 		if (player_type_changed_) {
-			mp_replay_.reset();
+			replay_.reset();
 		}
 	} else if((current_team().is_local_human() && current_team().is_proxy_human())) {
 		LOG_NG << "is human...\n";
@@ -416,7 +428,7 @@ void playsingle_controller::show_turn_dialog(){
 		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
-		symbols["name"] = gamestate().board_.teams()[current_side() - 1].current_player();
+		symbols["name"] = gamestate().board_.teams()[current_side() - 1].side_name();
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_transient_message(gui_->video(), "", message);
 	}
@@ -505,7 +517,7 @@ void playsingle_controller::end_turn_enable(bool enable)
 void playsingle_controller::after_human_turn()
 {
 	// Clear moves from the GUI.
-	gui_->set_route(NULL);
+	gui_->set_route(nullptr);
 	gui_->unhighlight_reach();
 }
 
@@ -562,7 +574,7 @@ void playsingle_controller::play_ai_turn()
  */
 void playsingle_controller::do_idle_notification()
 {
-	gui_->get_chat_manager().add_chat_message(time(NULL), "Wesnoth", 0,
+	gui_->get_chat_manager().add_chat_message(time(nullptr), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
@@ -635,8 +647,8 @@ void playsingle_controller::sync_end_turn()
 
 void playsingle_controller::update_viewing_player()
 {
-	if(mp_replay_ && mp_replay_->is_controlling_view()) {
-		mp_replay_->update_viewing_player();
+	if(replay_ && replay_->is_controlling_view()) {
+		replay_->update_viewing_player();
 	}
 	//Update viewing team in case it has changed during the loop.
 	else if(int side_num = play_controller::find_last_visible_team()) {
@@ -648,9 +660,9 @@ void playsingle_controller::update_viewing_player()
 
 void playsingle_controller::reset_replay()
 {
-	if(mp_replay_ && mp_replay_->allow_reset_replay()) {
-		mp_replay_->stop_replay();
-		throw reset_gamestate_exception(mp_replay_->get_reset_state());
+	if(replay_ && replay_->allow_reset_replay()) {
+		replay_->stop_replay();
+		throw reset_gamestate_exception(replay_->get_reset_state(), false);
 	}
 	else {
 		ERR_NG << "recieved invalid reset replay\n";
@@ -659,9 +671,9 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	mp_replay_.reset(new replay_controller(*this, true, boost::shared_ptr<config>( new config(saved_game_.replay_start())), boost::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
-		mp_replay_->play_replay();
+		replay_->play_replay();
 	}
 }
 
@@ -670,7 +682,7 @@ bool playsingle_controller::should_return_to_play_side()
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;
 	}
-	else if (end_turn_ == END_TURN_NONE || mp_replay_.get() != 0 || current_team().is_network()) {
+	else if (end_turn_ == END_TURN_NONE || replay_.get() != 0 || current_team().is_network()) {
 		return false;
 	}
 	else {
@@ -681,7 +693,7 @@ bool playsingle_controller::should_return_to_play_side()
 void playsingle_controller::on_replay_end(bool is_unit_test)
 {
 	if(is_unit_test) {
-		mp_replay_->return_to_play_side();
+		replay_->return_to_play_side();
 		if(!is_regular_game_end()) {
 			end_level_data e;
 			e.proceed_to_next_level = false;

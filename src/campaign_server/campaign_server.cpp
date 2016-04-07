@@ -40,7 +40,6 @@
 #include <csignal>
 #include <ctime>
 
-#include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>
@@ -101,7 +100,7 @@ time_t monotonic_clock()
 	return ts.tv_sec;
 #else
 	#warning monotonic_clock() is not truly monotonic!
-	return time(NULL);
+	return time(nullptr);
 #endif
 }
 
@@ -163,7 +162,7 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
-		BOOST_FOREACH(config& campaign, campaigns().child_range("campaign")) {
+		for(config& campaign : campaigns().child_range("campaign")) {
 			// Campaign already has a hashed password
 			if (campaign["passphrase"].empty()) {
 				continue;
@@ -297,7 +296,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 		// We are the child process. Execute the script. We run as a
 		// separate thread sharing stdout/stderr, which will make the
 		// log look ugly.
-		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(NULL));
+		execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(nullptr));
 
 		// exec() and family never return; if they do, we have a problem
 		std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
@@ -447,7 +446,7 @@ void server::run()
 			network::connection err_sock = 0;
 			network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
 
-			if(err_connection != NULL) {
+			if(err_connection != nullptr) {
 				err_sock = *err_connection;
 			}
 
@@ -489,7 +488,7 @@ void server::handle_request_campaign_list(const server::request& req)
 {
 	LOG_CS << "sending campaign list to " << req.addr << " using gzip";
 
-	time_t epoch = time(NULL);
+	time_t epoch = time(nullptr);
 	config campaign_list;
 
 	campaign_list["timestamp"] = epoch;
@@ -514,7 +513,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
 
-	BOOST_FOREACH(const config& i, campaigns().child_range("campaign"))
+	for(const config& i : campaigns().child_range("campaign"))
 	{
 		if(!name.empty() && name != i["name"]) {
 			continue;
@@ -532,7 +531,7 @@ void server::handle_request_campaign_list(const server::request& req)
 		if(!lang.empty()) {
 			bool found = false;
 
-			BOOST_FOREACH(const config& j, i.child_range("translation"))
+			for(const config& j : i.child_range("translation"))
 			{
 				if(j["language"] == lang) {
 					found = true;
@@ -548,7 +547,7 @@ void server::handle_request_campaign_list(const server::request& req)
 		campaign_list.add_child("campaign", i);
 	}
 
-	BOOST_FOREACH(config& j, campaign_list.child_range("campaign"))
+	for(config& j : campaign_list.child_range("campaign"))
 	{
 		j["passphrase"] = "";
 		j["passhash"] = "";
@@ -627,7 +626,7 @@ void server::handle_upload(const server::request& req)
 	config data = upload.child("data");
 
 	const std::string& name = upload["name"];
-	config *campaign = NULL;
+	config *campaign = nullptr;
 
 	bool passed_name_utf8_check = false;
 
@@ -635,7 +634,7 @@ void server::handle_upload(const server::request& req)
 		const std::string& lc_name = utf8::lowercase(name);
 		passed_name_utf8_check = true;
 
-		BOOST_FOREACH(config& c, campaigns().child_range("campaign"))
+		for(config& c : campaigns().child_range("campaign"))
 		{
 			if(utf8::lowercase(c["name"]) == lc_name) {
 				campaign = &c;
@@ -698,7 +697,7 @@ void server::handle_upload(const server::request& req)
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
 	} else {
-		const time_t upload_ts = time(NULL);
+		const time_t upload_ts = time(nullptr);
 
 		LOG_CS << "Upload is owner upload.\n";
 
@@ -721,11 +720,11 @@ void server::handle_upload(const server::request& req)
 			return;
 		}
 
-		const bool existing_upload = campaign != NULL;
+		const bool existing_upload = campaign != nullptr;
 
 		std::string message = "Add-on accepted.";
 
-		if(campaign == NULL) {
+		if(campaign == nullptr) {
 			campaign = &campaigns().add_child("campaign");
 			(*campaign)["original_timestamp"] = upload_ts;
 		}
@@ -875,7 +874,7 @@ int main(int argc, char**argv)
 {
 	game_config::path = filesystem::get_cwd();
 
-	lg::set_log_domain_severity("campaignd", lg::info);
+	lg::set_log_domain_severity("campaignd", lg::info());
 	lg::timestamps(true);
 
 	try {
@@ -897,7 +896,7 @@ int main(int argc, char**argv)
 	} catch(network::error& e) {
 		std::cerr << "Aborted with network error: " << e.message << '\n';
 		return 3;
-	} catch(boost::bad_function_call& /*e*/) {
+	} catch(std::bad_function_call& /*e*/) {
 		std::cerr << "Bad request handler function call\n";
 		return 4;
 	}

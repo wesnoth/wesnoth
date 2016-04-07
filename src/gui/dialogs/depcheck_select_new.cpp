@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/depcheck_select_new.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -87,11 +87,11 @@ tdepcheck_select_new::tdepcheck_select_new(
 	register_label("message", false, message);
 }
 
-void tdepcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
+void tdepcheck_select_new::pre_show(twindow& window)
 {
 	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 
-	FOREACH(const AUTO & item, items_)
+	for(const auto & item : items_)
 	{
 		string_map current;
 		current.insert(std::make_pair("label", item));

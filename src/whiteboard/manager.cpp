@@ -34,7 +34,7 @@
 #include "chat_events.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "game_state.hpp"
@@ -46,13 +46,12 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-#include "unit_display.hpp"
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
+#include "units/udisplay.hpp"
 
 #include <boost/lexical_cast.hpp>
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 #include <sstream>
 
@@ -97,7 +96,7 @@ manager::~manager()
 #if 0
 static void print_to_chat(const std::string& title, const std::string& message)
 {
-	resources::screen->add_chat_message(time(NULL), title, 0, message,
+	resources::screen->add_chat_message(time(nullptr), title, 0, message,
 			events::chat_handler::MESSAGE_PRIVATE, false);
 }
 #endif
@@ -145,7 +144,7 @@ void manager::print_help_once()
 bool manager::can_modify_game_state() const
 {
 	if(wait_for_side_init_
-					|| resources::teams == NULL
+					|| resources::teams == nullptr
 					|| executing_actions_
 					|| resources::gameboard->is_observer()
 					|| resources::controller->is_linger_mode())
@@ -277,7 +276,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	}
 
 	//Look for planned recruits that depend on this leader
-	BOOST_FOREACH(action_const_ptr action, *viewer_actions())
+	for(action_const_ptr action : *viewer_actions())
 	{
 		recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action);
 		recall_const_ptr recall = boost::dynamic_pointer_cast<class recall const>(action);
@@ -345,8 +344,9 @@ void manager::post_delete_action(action_ptr action)
 
 static void hide_all_plans()
 {
-	BOOST_FOREACH(team& t, *resources::teams)
+	for(team& t : *resources::teams){
 		t.get_side_actions()->hide();
+	}
 }
 
 /* private */
@@ -357,7 +357,7 @@ void manager::update_plan_hiding(size_t team_index)
 		hide_all_plans();
 	else // normal circumstance
 	{
-		BOOST_FOREACH(team& t, *resources::teams)
+		for(team& t : *resources::teams)
 		{
 			//make sure only appropriate teams are hidden
 			if(!t.is_network_human())
@@ -452,7 +452,7 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 	{
 		int number = numbers_to_draw[i];
 
-		std::string number_text = boost::lexical_cast<std::string>(number);
+		std::string number_text = std::to_string(number);
 		size_t font_size;
 		if (int(i) == main_number) font_size = 19;
 		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
@@ -480,7 +480,7 @@ namespace
 	public:
 		move_owners_finder(): move_owners_() { }
 
-		void operator()(action_ptr action) {
+		void operator()(action* action) {
 			action->accept(*this);
 		}
 
@@ -515,10 +515,10 @@ void manager::pre_draw()
 {
 	if (can_modify_game_state() && has_actions()) {
 		move_owners_finder move_finder;
-		for_each_action(boost::ref(move_finder));
+		for_each_action(std::ref(move_finder));
 		units_owning_moves_ = move_finder.get_units_owning_moves();
 
-		BOOST_FOREACH(size_t unit_id, units_owning_moves_) {
+		for (size_t unit_id : units_owning_moves_) {
 			unit_map::iterator unit_iter = resources::units->find(unit_id);
 			assert(unit_iter.valid());
 			ghost_owner_unit(&*unit_iter);
@@ -528,7 +528,7 @@ void manager::pre_draw()
 
 void manager::post_draw()
 {
-	BOOST_FOREACH(size_t unit_id, units_owning_moves_)
+	for (size_t unit_id : units_owning_moves_)
 	{
 		unit_map::iterator unit_iter = resources::units->find(unit_id);
 		if (unit_iter.valid()) {
@@ -549,11 +549,11 @@ void manager::draw_hex(const map_location& hex)
 	if (!wait_for_side_init_ && has_actions())
 	{
 		//call draw() for all actions
-		for_each_action(boost::bind(&action::draw_hex, _1, hex));
+		for_each_action(std::bind(&action::draw_hex, std::placeholders::_1, hex));
 
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;
-		BOOST_FOREACH(team& t, *resources::teams)
+		for (team& t : *resources::teams)
 		{
 			side_actions& sa = *t.get_side_actions();
 			if(!sa.hidden())
@@ -628,7 +628,7 @@ void manager::process_network_data(config const& cfg)
 		LOG_WB << "Received wb data (" << count << ").\n";
 
 		team& team_from = resources::teams->at(wb_cfg["side"]-1);
-		BOOST_FOREACH(side_actions::net_cmd const& cmd, wb_cfg.child_range("net_cmd"))
+		for(side_actions::net_cmd const& cmd : wb_cfg.child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
 }
@@ -744,7 +744,7 @@ void manager::create_temp_move()
 void manager::erase_temp_move()
 {
 	move_arrows_.clear();
-	BOOST_FOREACH(fake_unit_ptr const& tmp, fake_units_) {
+	for(fake_unit_ptr const& tmp : fake_units_) {
 		if(tmp) {
 			tmp->anim_comp().invalidate(*game_display::get_singleton());
 		}
@@ -1056,7 +1056,7 @@ bool manager::has_actions() const
 
 bool manager::unit_has_actions(unit const* unit) const
 {
-	assert(unit != NULL);
+	assert(unit != nullptr);
 	assert(resources::teams);
 	return viewer_actions()->unit_has_actions(*unit);
 }
@@ -1083,7 +1083,7 @@ void manager::options_dlg()
 	options.push_back(_("HIDE ALL allies’ plans"));
 
 	//populate list of networked allies
-	BOOST_FOREACH(team &t, *resources::teams)
+	for(team &t : *resources::teams)
 	{
 		//Exclude enemies, AIs, and local players
 		if(t.is_enemy(v_side) || !t.is_network())
@@ -1109,12 +1109,14 @@ void manager::options_dlg()
 	switch(selection)
 	{
 	case 0:
-		BOOST_FOREACH(team* t, allies)
+		for(team* t : allies) {
 			team_plans_hidden_[t->side()-1]=false;
+		}
 		break;
 	case 1:
-		BOOST_FOREACH(team* t, allies)
+		for(team* t : allies) {
 			team_plans_hidden_[t->side()-1]=true;
+		}
 		break;
 	default:
 		if(selection > 1)

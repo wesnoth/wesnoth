@@ -22,11 +22,10 @@
 
 #include "events.hpp"
 #include "interface.hpp"
-#include "video.hpp" //for resize_lock
 
 #include <boost/shared_ptr.hpp>
 
-class display;
+class CVideo;
 class vconfig;
 
 namespace storyscreen {
@@ -44,7 +43,7 @@ class floating_image;
 class controller
 {
 public:
-	controller(display& disp, const vconfig& data, const std::string& scenario_name,
+	controller(CVideo& video, const vconfig& data, const std::string& scenario_name,
 		   int segment_index);
 
 	/**
@@ -59,8 +58,7 @@ private:
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
 
-	display& disp_;
-	const resize_lock disp_resize_lock_;
+	CVideo& video_;
 	const events::event_context evt_context_;
 
 	std::string scenario_name_;

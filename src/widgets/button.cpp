@@ -32,6 +32,8 @@
 #include "text.hpp"
 #include "wml_separators.hpp"
 
+#include <boost/algorithm/string/predicate.hpp>
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
@@ -53,9 +55,9 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  overlayImage_(), overlayPressedImage_(), overlayActiveImage_(),
 #else
 	  label_text_(label),
-	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
-	  disabledImage_(NULL), pressedDisabledImage_(NULL),
-	  overlayImage_(NULL), overlayPressedImage_(NULL), overlayActiveImage_(NULL),
+	  image_(nullptr), pressedImage_(nullptr), activeImage_(nullptr), pressedActiveImage_(nullptr),
+	  disabledImage_(nullptr), pressedDisabledImage_(nullptr),
+	  overlayImage_(nullptr), overlayPressedImage_(nullptr), overlayActiveImage_(nullptr),
 #endif
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
@@ -104,6 +106,7 @@ void button::load_images() {
 		default:
 			break;
 	}
+
 #ifdef SDL_GPU
 	sdl::timage button_image(image::get_texture(button_image_name_ + ".png" + button_image_path_suffix_));
 	sdl::timage pressed_image(image::get_texture(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
@@ -193,6 +196,12 @@ void button::load_images() {
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	if (!button_overlay_image_name_.empty()) {
+
+		if (button_overlay_image_name_.length() > size_postfix.length() &&
+				boost::algorithm::ends_with(button_overlay_image_name_, size_postfix)) {
+			button_overlay_image_name_.resize(button_overlay_image_name_.length() - size_postfix.length());
+		}
+
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_));
 
@@ -209,10 +218,10 @@ void button::load_images() {
 		if (overlayPressedDisabledImage_.null())
 			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
 	} else {
-		overlayImage_.assign(NULL);
+		overlayImage_.assign(nullptr);
 	}
 
-	if (disabled_image == NULL) {
+	if (disabled_image == nullptr) {
 		disabled_image = image::get_image(button_image_name_ + ".png~GS()" + button_image_path_suffix_);
 	}
 
@@ -303,7 +312,7 @@ void button::calculate_size()
 			int fs = font_size;
 			int style = TTF_STYLE_NORMAL;
 			std::string::const_iterator i_beg = label_text_.begin(), i_end = label_text_.end(),
-				i = font::parse_markup(i_beg, i_end, &fs, NULL, &style);
+				i = font::parse_markup(i_beg, i_end, &fs, nullptr, &style);
 			if (i != i_end) {
 				std::string tmp(i, i_end);
 				label_text_.erase(i - i_beg, i_end - i_beg);
@@ -313,12 +322,16 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::draw_text(NULL, screen_area(), font_size,
+		textRect_ = font::draw_text(nullptr, screen_area(), font_size,
 									font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
+	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
+	// The proper fix should possibly be in the draw_contents() function.
+#if 0
 	if (!change_size)
 		return;
+#endif
 
 	set_height(std::max(textRect_.h+vertical_padding,base_height_));
 	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
@@ -542,7 +555,7 @@ void button::draw_contents()
 		}
 
 		surface nimage = make_neutral_surface(image);
-		blit_surface(noverlay, NULL, nimage, NULL);
+		blit_surface(noverlay, nullptr, nimage, nullptr);
 		image = nimage;
 	}
 
@@ -564,17 +577,25 @@ bool button::hit(int x, int y) const
 	return sdl::point_in_rect(x,y,location());
 }
 
-static bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
+static bool is_valid_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
 
 void button::set_image(const std::string& image_file)
 {
-	button_image_name_ = image_file;
+	if(!is_valid_image(image_file)) {
+		return;
+	}
+
+	button_image_name_ = "buttons/" + image_file;
 	load_images();
 	set_dirty();
 }
 
 void button::set_overlay(const std::string& image_file)
 {
+	if(!is_valid_image(image_file)) {
+		return;
+	}
+
 	button_overlay_image_name_ = image_file;
 	load_images();
 	set_dirty();
@@ -587,7 +608,7 @@ void button::set_label(const std::string& val)
 	//if we have a list of items, use the first one that isn't an image
 	if (std::find(label_text_.begin(), label_text_.end(), COLUMN_SEPARATOR) != label_text_.end()) {
 		const std::vector<std::string>& items = utils::split(label_text_, COLUMN_SEPARATOR);
-		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),not_image);
+		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),is_valid_image);
 		if(i != items.end()) {
 			label_text_ = *i;
 		}

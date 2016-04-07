@@ -17,9 +17,7 @@
 #include "serialization/string_utils.hpp"
 #include "wesmage/exit.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 #include <iostream>
 
@@ -35,7 +33,7 @@ struct tfilter
 	 *                            supplied on the command line. So it should
 	 *                            be validated.
 	 */
-	typedef boost::function<void(
+	typedef std::function<void(
 				  surface& surf
 				, const std::string& parameters
 			)>
@@ -102,7 +100,7 @@ struct tregister_filter
 #define REGISTER(name, description)                                           \
 	tregister_filter register_filter_##name(std::make_pair(                   \
 			  #name                                                           \
-			, tfilter(#name, #name description, boost::bind(name, _1, _2))));
+			, tfilter(#name, #name description, std::bind(name, _1, _2))));
 
 static void
 scale(surface& surf, const std::string& parameters)
@@ -242,7 +240,7 @@ filter_list()
 {
 	std::vector<tfilter_description> result;
 	typedef std::pair<std::string, tfilter> thack;
-	BOOST_FOREACH(const thack& filter, filters) {
+	for(const thack& filter : filters) {
 		result.push_back(filter.second.description);
 	}
 	return result;

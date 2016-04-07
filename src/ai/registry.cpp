@@ -17,34 +17,27 @@
  * @file
  */
 
-#include "registry.hpp"
+#include "ai/registry.hpp"
 #include "global.hpp"
 
-#include "../config.hpp"             // for config, operator<<
-#include "../terrain_filter.hpp"  // for terrain_filter
+#include "config.hpp"             // for config, operator<<
+#include "terrain/filter.hpp"  // for terrain_filter
 #include "ai/composite/engine.hpp"      // for register_engine_factory
 #include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
 #include "ai/composite/rca.hpp"
 #include "ai/game_info.hpp"             // for attacks_vector
-#include "ai/interface.hpp"  // for register_ai_factory
-#include "akihara/recruitment.hpp"      // for recruitment
-#include "composite/ai.hpp"             // for ai_composite
-#include "composite/aspect.hpp"         // for composite_aspect, etc
-#include "composite/engine_default.hpp"  // for engine_cpp
-#include "composite/engine_fai.hpp"     // for engine_fai
-#include "composite/engine_lua.hpp"     // for engine_lua
-#include "composite/goal.hpp"           // for register_goal_factory, etc
-#include "default/ai.hpp"
-#include "lua/unit_advancements_aspect.hpp"
-#include "recruitment/recruitment.hpp"  // for recruitment
-#include "testing/aspect_attacks.hpp"   // for aspect_attacks
-#include "testing/ca.hpp"               // for leader_shares_keep_phase, etc
-#include "testing/ca_global_fallback.hpp"  // for global_fallback_phase
-#include "testing/ca_testing_move_to_targets.hpp"
-#include "testing/ca_testing_recruitment.hpp"
-#include "testing/stage_sf_with_rca.hpp"
-#include "testing/stage_fallback.hpp"   // for fallback_to_other_ai
-#include "testing/stage_rca.hpp"
+#include "ai/composite/ai.hpp"             // for ai_composite
+#include "ai/composite/aspect.hpp"         // for composite_aspect, etc
+#include "ai/default/engine_cpp.hpp"  // for engine_cpp
+#include "ai/formula/engine_fai.hpp"     // for engine_fai
+#include "ai/lua/engine_lua.hpp"     // for engine_lua
+#include "ai/composite/goal.hpp"           // for register_goal_factory, etc
+#include "ai/lua/aspect_advancements.hpp"
+#include "ai/default/recruitment.hpp"  // for recruitment
+#include "ai/default/aspect_attacks.hpp"   // for aspect_attacks
+#include "ai/default/ca.hpp"               // for leader_shares_keep_phase, etc
+#include "ai/default/ca_move_to_targets.hpp"
+#include "ai/default/stage_rca.hpp"
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr, etc
 #include <string>                       // for string
@@ -52,16 +45,6 @@
 
 
 namespace ai {
-// =======================================================================
-// AIs
-// =======================================================================
-
-static register_ai_factory<ai_composite> ai_factory_default("");
-static register_ai_factory<ai_composite> ai_default_ai_factory("default_ai");
-static register_ai_factory<idle_ai> ai_idle_ai_factory("idle_ai");
-static register_ai_factory<ai_composite> ai_composite_ai_factory("composite_ai");
-
-
 // =======================================================================
 // Engines
 // =======================================================================
@@ -79,132 +62,90 @@ static register_engine_factory<engine_lua>
 // Stages
 // =======================================================================
 
-static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
+static register_stage_factory<ai_default_rca::candidate_action_evaluation_loop>
 	candidate_action_evaluation_loop_factory("ai_default_rca::candidate_action_evaluation_loop");
-
-static register_stage_factory<testing_ai_default::strategy_formulation_with_rca>
-	strategy_formulation_with_rca_factory("testing_ai_default::strategy_formulation_with_rca");
-
-static register_stage_factory<testing_ai_default::fallback_to_other_ai>
-	fallback_to_other_ai_factory("testing_ai_default::fallback");
-
-static register_stage_factory<ai_default_recruitment_stage>
-	ai_default_recruitment_stage_factory("ai_default::recruitment");
 
 static register_stage_factory<idle_stage>
 	ai_idle_stage_factory("empty");
 
 // === Also keep the old syntax ===
-static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
+static register_stage_factory<ai_default_rca::candidate_action_evaluation_loop>
 	old_candidate_action_evaluation_loop_factory("testing_ai_default::candidate_action_evaluation_loop");
 
 // =======================================================================
 // Candidate actions
 // =======================================================================
 
-static register_candidate_action_factory<testing_ai_default::goto_phase>
+static register_candidate_action_factory<ai_default_rca::goto_phase>
 	goto_phase_factory("ai_default_rca::goto_phase");
 
-static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
-	aspect_recruitment_phase_factory("ai_default_rca::aspect_recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::recruitment_phase>
-	recruitment_phase_factory("ai_default_rca::recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::combat_phase>
+static register_candidate_action_factory<ai_default_rca::combat_phase>
 	combat_phase_factory("ai_default_rca::combat_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_goals_phase>
 	move_leader_to_goals_phase_factory("ai_default_rca::move_leader_to_goals_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_keep_phase>
 	move_leader_to_keep_phase_factory("ai_default_rca::move_leader_to_keep_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_villages_phase>
+static register_candidate_action_factory<ai_default_rca::get_villages_phase>
 	get_villages_phase_factory("ai_default_rca::get_villages_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_healing_phase>
+static register_candidate_action_factory<ai_default_rca::get_healing_phase>
 	get_healing_phase_factory("ai_default_rca::get_healing_phase");
 
-static register_candidate_action_factory<testing_ai_default::retreat_phase>
+static register_candidate_action_factory<ai_default_rca::retreat_phase>
 	retreat_phase_factory("ai_default_rca::retreat_phase");
 
-static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
-	simple_move_and_targeting_phase_factory("ai_default_rca::simple_move_and_targeting_phase");
-
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+static register_candidate_action_factory<ai_default_rca::move_to_targets_phase>
 	default_move_to_targets_phase_factory("ai_default_rca::move_to_targets_phase");
 
-static register_candidate_action_factory<testing_ai_default::leader_control_phase>
+static register_candidate_action_factory<ai_default_rca::leader_control_phase>
 	leader_control_phase_factory("ai_default_rca::leader_control_phase");
 
-static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
-	testing_recruitment_phase_factory("ai_default_rca::testing_recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	leader_shares_keep_phase_factory("ai_default_rca::leader_shares_keep_phase");
 
 //Also keep passive_leader_shares_keep_phase for backward compatibility
-static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	passive_leader_shares_keep_phase_factory("ai_default_rca::passive_leader_shares_keep_phase");
-
-static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
-	global_fallback_phase_factory("ai_default_rca::global_fallback_phase");
-
-static register_candidate_action_factory<akihara_recruitment::recruitment>
-	recruitment_factory("akihara_recruitment::recruitment");
 
 static register_candidate_action_factory<default_recruitment::recruitment>
 	default_recruitment_factory("default_recruitment::recruitment");
 
 // === Also keep the old syntax ===
-static register_candidate_action_factory<testing_ai_default::goto_phase>
+static register_candidate_action_factory<ai_default_rca::goto_phase>
 	old_goto_phase_factory("testing_ai_default::goto_phase");
 
-static register_candidate_action_factory<testing_ai_default::aspect_recruitment_phase>
-	old_aspect_recruitment_phase_factory("testing_ai_default::aspect_recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::recruitment_phase>
-	old_recruitment_phase_factory("testing_ai_default::recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::combat_phase>
+static register_candidate_action_factory<ai_default_rca::combat_phase>
 	old_combat_phase_factory("testing_ai_default::combat_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_goals_phase>
 	old_move_leader_to_goals_phase_factory("testing_ai_default::move_leader_to_goals_phase");
 
-static register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
+static register_candidate_action_factory<ai_default_rca::move_leader_to_keep_phase>
 	old_move_leader_to_keep_phase_factory("testing_ai_default::move_leader_to_keep_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_villages_phase>
+static register_candidate_action_factory<ai_default_rca::get_villages_phase>
 	old_get_villages_phase_factory("testing_ai_default::get_villages_phase");
 
-static register_candidate_action_factory<testing_ai_default::get_healing_phase>
+static register_candidate_action_factory<ai_default_rca::get_healing_phase>
 	old_get_healing_phase_factory("testing_ai_default::get_healing_phase");
 
-static register_candidate_action_factory<testing_ai_default::retreat_phase>
+static register_candidate_action_factory<ai_default_rca::retreat_phase>
 	old_retreat_phase_factory("testing_ai_default::retreat_phase");
 
-static register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
-	old_simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
-
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+static register_candidate_action_factory<ai_default_rca::move_to_targets_phase>
 	old_default_move_to_targets_phase_factory("testing_ai_default::default_move_to_targets_phase");
 
-static register_candidate_action_factory<testing_ai_default::testing_move_to_targets_phase>
+static register_candidate_action_factory<ai_default_rca::move_to_targets_phase>
 	old_testing_move_to_targets_phase_factory("testing_ai_default::testing_move_to_targets_phase");
 
-static register_candidate_action_factory<testing_ai_default::leader_control_phase>
+static register_candidate_action_factory<ai_default_rca::leader_control_phase>
 	old_leader_control_phase_factory("testing_ai_default::leader_control_phase");
 
-static register_candidate_action_factory<testing_ai_default::testing_recruitment_phase>
-	old_testing_recruitment_phase_factory("testing_ai_default::testing_recruitment_phase");
-
-static register_candidate_action_factory<testing_ai_default::leader_shares_keep_phase>
+static register_candidate_action_factory<ai_default_rca::leader_shares_keep_phase>
 	old_passive_leader_shares_keep_phase_factory("testing_ai_default::passive_leader_shares_keep_phase");
-
-static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
-	old_global_fallback_phase_factory("testing_ai_default::global_fallback_phase");
 
 // =======================================================================
 // Goals
@@ -218,20 +159,16 @@ static register_goal_factory<target_unit_goal>
 	goal_factory_target("target");
 
 
+static register_goal_factory<target_unit_goal>
+	goal_factory_target_unit("target_unit");
+
+
 static register_goal_factory<target_location_goal>
 	goal_factory_target_location("target_location");
 
 
 static register_goal_factory<protect_location_goal>
-	goal_factory_protect("protect");
-
-
-static register_goal_factory<protect_location_goal>
 	goal_factory_protect_location("protect_location");
-
-
-static register_goal_factory<protect_my_unit_goal>
-	goal_factory_protect_my_unit("protect_my_unit");
 
 
 static register_goal_factory<protect_unit_goal>
@@ -280,26 +217,14 @@ static register_aspect_factory< composite_aspect<bool> >
 static register_aspect_factory< composite_aspect<double> >
 	leader_value__composite_aspect_factory("leader_value*composite_aspect");
 
-static register_aspect_factory< composite_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__composite_aspect_factory("number_of_possible_recruits_to_force_recruit*composite_aspect");
-
 static register_aspect_factory< composite_aspect<bool> >
 	passive_leader__composite_aspect_factory("passive_leader*composite_aspect");
 
 static register_aspect_factory< composite_aspect<bool> >
 	passive_leader_shares_keep__composite_aspect_factory("passive_leader_shares_keep*composite_aspect");
 
-static register_aspect_factory< composite_aspect<ministage> >
-	recruitment__composite_aspect_factory("recruitment*composite_aspect");
-
 static register_aspect_factory< composite_aspect<double> >
 	recruitment_diversity__composite_aspect_factory("recruitment_diversity*composite_aspect");
-
-static register_aspect_factory< composite_aspect<bool> >
-	recruitment_ignore_bad_combat__composite_aspect_factory("recruitment_ignore_bad_combat*composite_aspect");
-
-static register_aspect_factory< composite_aspect<bool> >
-	recruitment_ignore_bad_movement__composite_aspect_factory("recruitment_ignore_bad_movement*composite_aspect");
 
 static register_aspect_factory< composite_aspect<config> >
 	recruitment_instructions__composite_aspect_factory("recruitment_instructions*composite_aspect");
@@ -342,7 +267,7 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory("attack_depth*standard_aspect");
 
-static register_aspect_factory< testing_ai_default::aspect_attacks >
+static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory("attacks*ai_default_rca::aspect_attacks");
 
 static register_aspect_factory< standard_aspect< terrain_filter > >
@@ -366,28 +291,16 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<double> >
 	leader_value__standard_aspect_factory("leader_value*standard_aspect");
 
-static register_aspect_factory< standard_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__standard_aspect_factory("number_of_possible_recruits_to_force_recruit*standard_aspect");
-
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader__standard_aspect_factory("passive_leader*standard_aspect");
 
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory("passive_leader_shares_keep*standard_aspect");
 
-static register_aspect_factory< standard_aspect<ministage> >
-	recruitment__standard_aspect_factory("recruitment*standard_aspect");
-
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory("recruitment_diversity*standard_aspect");
 
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_combat__standard_aspect_factory("recruitment_ignore_bad_combat*standard_aspect");
-
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_movement__standard_aspect_factory("recruitment_ignore_bad_movement*standard_aspect");
-
-static register_aspect_factory< standard_aspect<config> >
+static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment_instructions__standard_aspect_factory("recruitment_instructions*standard_aspect");
 
 static register_aspect_factory< standard_aspect< std::vector<std::string> > >
@@ -419,7 +332,7 @@ static register_aspect_factory< standard_aspect<int> >
 
 
 // Also keep the old syntax
-static register_aspect_factory< testing_ai_default::aspect_attacks >
+static register_aspect_factory< ai_default_rca::aspect_attacks >
 	old_attacks__testing_ai_default_aspect_attacks_factory("attacks*testing_ai_default::aspect_attacks");
 
 //name = default
@@ -432,7 +345,7 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory2("attack_depth*");
 
-static register_aspect_factory< testing_ai_default::aspect_attacks >
+static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory2("attacks*");
 
 static register_aspect_factory< standard_aspect< terrain_filter > >
@@ -456,28 +369,16 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<double> >
 	leader_value__standard_aspect_factory2("leader_value*");
 
-static register_aspect_factory< standard_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__standard_aspect_factory2("number_of_possible_recruits_to_force_recruit*");
-
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader__standard_aspect_factory2("passive_leader*");
 
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory2("passive_leader_shares_keep*");
 
-static register_aspect_factory< standard_aspect<ministage> >
-	recruitment__standard_aspect_factory2("recruitment*");
-
 static register_aspect_factory< standard_aspect<double> >
 	recruitment_diversity__standard_aspect_factory2("recruitment_diversity*");
 
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_combat__standard_aspect_factory2("recruitment_ignore_bad_combat*");
-
-static register_aspect_factory< standard_aspect<bool> >
-	recruitment_ignore_bad_movement__standard_aspect_factory2("recruitment_ignore_bad_movement*");
-
-static register_aspect_factory< standard_aspect<config> >
+static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment_instructions__standard_aspect_factory2("recruitment_instructions*");
 
 static register_aspect_factory< standard_aspect< std::vector<std::string> > >
@@ -518,6 +419,9 @@ static register_lua_aspect_factory< lua_aspect<double> >
 static register_lua_aspect_factory< lua_aspect<int> >
 	attack_depth__lua_aspect_factory("attack_depth*lua_aspect");
 
+static register_lua_aspect_factory< aspect_attacks_lua >
+	attacks__lua_aspect_factory("attacks*lua_aspect");
+
 static register_lua_aspect_factory< lua_aspect<terrain_filter> >
 	avoid__lua_aspect_factory("avoid*lua_aspect");
 
@@ -539,20 +443,11 @@ static register_lua_aspect_factory< lua_aspect<bool> >
 static register_lua_aspect_factory< lua_aspect<double> >
 	leader_value__lua_aspect_factory("leader_value*lua_aspect");
 
-static register_lua_aspect_factory< lua_aspect<double> >
-	number_of_possible_recruits_to_force_recruit__lua_aspect_factory("number_of_possible_recruits_to_force_recruit*lua_aspect");
-
 static register_lua_aspect_factory< lua_aspect<bool> >
 	passive_leader__lua_aspect_factory("passive_leader*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<bool> >
 	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
-
-static register_lua_aspect_factory< lua_aspect<bool> >
-	recruitment_ignore_bad_combat__lua_aspect_factory("recruitment_ignore_bad_combat*lua_aspect");
-
-static register_lua_aspect_factory< lua_aspect<bool> >
-	recruitment_ignore_bad_movement__lua_aspect_factory("recruitment_ignore_bad_movement*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double> >
 	scout_village_targeting__lua_aspect_factory("scout_village_targeting*lua_aspect");
@@ -571,6 +466,18 @@ static register_lua_aspect_factory< lua_aspect<int> >
 
 static register_lua_aspect_factory< lua_aspect< std::vector<std::string> > >
 	recruitment_pattern__lua_aspect_factory("recruitment_pattern*lua_aspect");
+
+
+// Some compatibility - recruitment is a removed aspect, but its syntax
+// is compatible with recruitment_instructions
+static register_aspect_factory< composite_aspect<config> >
+	recruitments__composite_aspect_factory("recruitment*composite_aspect");
+
+static register_aspect_factory< default_recruitment::recruitment_aspect >
+	recruitment__standard_aspect_factory("recruitment*standard_aspect");
+
+static register_aspect_factory< default_recruitment::recruitment_aspect >
+	recruitment__standard_aspect_factory2("recruitment*");
 
 void registry::init()
 {

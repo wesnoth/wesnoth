@@ -22,8 +22,6 @@
 #include "editor/action/mouse/mouse_action_item.hpp"
 #include "editor/action/mouse/mouse_action_select.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace editor {
 
 editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
@@ -31,9 +29,9 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	: gui_(gui)
 	, key_(key)
 	, palette_manager_()
-	, mouse_action_(NULL)
+	, mouse_action_(nullptr)
 	, mouse_actions_()
-	, brush_(NULL)
+	, brush_(nullptr)
 	, brushes_()
 {
 	init_brushes(game_config);
@@ -44,7 +42,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 editor_toolkit::~editor_toolkit()
 {
 	//TODO ask someone about that
-	//BOOST_FOREACH(const mouse_action_map::value_type a, mouse_actions_) {
+	//for (const mouse_action_map::value_type a : mouse_actions_) {
 	//	delete a.second;
 	//}
 	//delete palette_manager_.get();
@@ -52,7 +50,7 @@ editor_toolkit::~editor_toolkit()
 
 void editor_toolkit::init_brushes(const config& game_config)
 {
-	BOOST_FOREACH(const config &i, game_config.child_range("brush")) {
+	for (const config &i : game_config.child_range("brush")) {
 		brushes_.push_back(brush(i));
 	}
 	if (brushes_.empty()) {
@@ -89,7 +87,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_ITEM,
 			new mouse_action_item(key_, *palette_manager_->item_palette_.get())));
 
-	BOOST_FOREACH(const theme::menu& menu, gui_.get_theme().menus()) {
+	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
 			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
@@ -152,7 +150,7 @@ void editor_toolkit::clear_mouseover_overlay()
 
 void editor_toolkit::set_brush(std::string id) {
 
-	BOOST_FOREACH(brush& i, brushes_) {
+	for (brush& i : brushes_) {
 		if (i.id() == id) {
 			brush_ = &i;
 		}

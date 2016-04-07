@@ -12,21 +12,19 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "../game_config.hpp" // game_config::observer_team_name
-#include "../log.hpp"
 #include "filesystem.hpp"
+#include "game_config.hpp" // game_config::observer_team_name
+#include "log.hpp"
 
 #include "game.hpp"
 #include "player_network.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#include "utils/foreach.tpp"
 
 #include <sstream>
 #include <iomanip>
-#include <boost/foreach.hpp>
 
 #include <cstdio>
 
@@ -96,7 +94,7 @@ game::game(PlayerConnections& player_connections, socket_ptr host,
 	started_(false),
 	level_(),
 	history_(),
-	description_(NULL),
+	description_(nullptr),
 	end_turn_(0),
 	num_turns_(0),
 	all_observers_muted_(false),
@@ -196,7 +194,7 @@ std::string game::list_users(user_vector users, const std::string& func) const
 {
 	std::string list;
 
-	BOOST_FOREACH(const user_vector::value_type& user, users) {
+	for(const user_vector::value_type& user : users) {
 		const PlayerConnections::iterator iter = player_connections_.find(user);
 		if (iter != player_connections_.end()) {
 			if (!list.empty()) list += ", ";
@@ -600,7 +598,7 @@ void game::notify_new_host(){
 }
 
 bool game::describe_slots() {
-	if(started_ || description_ == NULL)
+	if(started_ || description_ == nullptr)
 		return false;
 
 	int available_slots = 0;
@@ -895,12 +893,13 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 	const simple_wml::node::child_list& commands = turn->children("command");
 	simple_wml::node::child_list::const_iterator command;
 	for (command = commands.begin(); command != commands.end(); ++command) {
+		DBG_GAME << "game " << id_ << " recieved ["  << (**command).first_child() << "] from player '" << username(user) << "'(" << user << ") during turn " << end_turn_ << "\n";
 		if (!is_legal_command(**command, user)) {
 			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " ((("
 				<< simple_wml::node_to_string(**command) << ")))\n";
 			std::stringstream msg;
 			msg << "Removing illegal command '" << (**command).first_child().to_string()
-				<< "' from: " << player_connections_.find(user)->info().name()
+				<< "' from: " << username(user)
 				<< ". Current player is: "
 				<< username(current_player())
 				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").";
@@ -955,7 +954,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 	}
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		simple_wml::node* const speak = (**command).child("speak");
-		if (speak == NULL) {
+		if (speak == nullptr) {
 			simple_wml::document* mdata = new simple_wml::document;
 			simple_wml::node& turn = mdata->root().add_child("turn");
 			(**command).copy_into(turn.add_child("command"));
@@ -970,7 +969,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 			continue;
 		}
 
-		std::auto_ptr<simple_wml::document> message(new simple_wml::document);
+		std::unique_ptr<simple_wml::document> message(new simple_wml::document);
 		simple_wml::node& turn = message->root().add_child("turn");
 		simple_wml::node& command = turn.add_child("command");
 		speak->copy_into(command.add_child("speak"));
@@ -1148,7 +1147,7 @@ bool game::end_turn() {
 	}
 	if (!turn_ended) return false;
 
-	if (description_ == NULL) {
+	if (description_ == nullptr) {
 		return false;
 	}
 
@@ -1316,7 +1315,7 @@ bool game::remove_player(const socket_ptr player, const bool disconnect, const b
 void game::send_user_list(const socket_ptr exclude) const {
 	//if the game hasn't started yet, then send all players a list
 	//of the users in the game
-	if (started_ || description_ == NULL) return;
+	if (started_ || description_ == nullptr) return;
 	/** @todo Should be renamed to userlist. */
 	simple_wml::document cfg;
 	cfg.root().add_child("gamelist");
@@ -1365,7 +1364,7 @@ void game::load_next_scenario(const socket_ptr user) {
 	simple_wml::document doc_controllers;
 	simple_wml::node & cfg_controllers = doc_controllers.root().add_child("controllers");
 
-	FOREACH(const AUTO& side_user, sides_) {
+	for (const auto& side_user : sides_) {
 		simple_wml::node & cfg_controller = cfg_controllers.add_child("controller");
 		cfg_controller.set_attr("is_local", side_user == user ? "yes" : "no");
 	}
@@ -1414,7 +1413,7 @@ void game::send_data_sides(simple_wml::document& data,
 
 bool game::controls_side(const std::vector<int>& sides, const socket_ptr player) const
 {
-	BOOST_FOREACH(int side, sides)
+	for (int side : sides)
 	{
 		size_t side_index = side - 1;
 		if(side_index < sides_.size() && sides_[side_index] == player) {
@@ -1519,7 +1518,7 @@ void game::save_replay() {
 		//level_.set_attr_dup("label", name.str().c_str());
 		//TODO: comment where mp_game_title= is used.
 		level_.set_attr_dup("mp_game_title", name_.c_str());
-		const bool has_old_replay = level_.child("replay") != NULL;
+		const bool has_old_replay = level_.child("replay") != nullptr;
 		//If there is already a replay in the level_, which means this is a reloaded game,
 		//then we dont need to add the [start] in the replay.
 		replay_data << level_.output()
@@ -1663,7 +1662,7 @@ void game::send_server_message_to_all(const char* message, socket_ptr exclude) c
 void game::send_server_message(const char* message, socket_ptr sock, simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
-	if(docptr == NULL) {
+	if(docptr == nullptr) {
 		docptr = &docbuf;
 	}
 

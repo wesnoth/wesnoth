@@ -15,8 +15,8 @@
 
 #include "editor_display.hpp"
 #include "reports.hpp"
-#include "terrain_builder.hpp"
-#include "unit_map.hpp"
+#include "terrain/builder.hpp"
+#include "units/map.hpp"
 
 #include <boost/shared_ptr.hpp>
 
@@ -122,10 +122,6 @@ void editor_display::draw_hex(const map_location& loc)
 			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 					image::get_texture(brush, image::SCALED_TO_HEX));
 		}
-		if (map().on_board(loc) && loc == mouseoverHex_) {
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex.png", image::SCALED_TO_HEX));
-		}
 #else
 		if (map().in_selection(loc)) {
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
@@ -136,10 +132,6 @@ void editor_display::draw_hex(const map_location& loc)
 			static const image::locator brush(game_config::images::editor_brush);
 			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 					image::get_image(brush, image::SCALED_TO_HEX));
-		}
-		if (map().on_board(loc) && loc == mouseoverHex_) {
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_image("misc/hover-hex.png", image::SCALED_TO_HEX));
 		}
 #endif
 	}
@@ -159,7 +151,7 @@ void editor_display::draw_sidebar()
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
 		refresh_report("terrain_info");
-		text = str_cast(mouseoverHex_);
+		text = lexical_cast<std::string>(mouseoverHex_);
 		refresh_report("position", &element);
 	}
 

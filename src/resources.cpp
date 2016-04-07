@@ -17,24 +17,24 @@
 
 namespace resources
 {
-	game_board           *gameboard = NULL;
-	play_controller      *controller = NULL;
-	game_data            *gamedata = NULL;
-	filter_context	     *filter_con = NULL;
-	game_events::manager *game_events = NULL;
-	game_lua_kernel            *lua_kernel = NULL;
-	persist_manager      *persist = NULL;
-	game_display         *screen = NULL;
-	soundsource::manager *soundsources = NULL;
-	std::vector<team>    *teams = NULL;
-	replay               *recorder = NULL;
-	::tod_manager        *tod_manager = NULL;
-	fake_unit_manager    *fake_units = NULL;
-	pathfind::manager    *tunnels = NULL;
-	actions::undo_list   *undo_stack = NULL;
-	unit_map             *units = NULL;
+	game_board           *gameboard = nullptr;
+	play_controller      *controller = nullptr;
+	game_data            *gamedata = nullptr;
+	filter_context	     *filter_con = nullptr;
+	game_events::manager *game_events = nullptr;
+	game_lua_kernel            *lua_kernel = nullptr;
+	persist_manager      *persist = nullptr;
+	game_display         *screen = nullptr;
+	soundsource::manager *soundsources = nullptr;
+	std::vector<team>    *teams = nullptr;
+	replay               *recorder = nullptr;
+	::tod_manager        *tod_manager = nullptr;
+	fake_unit_manager    *fake_units = nullptr;
+	pathfind::manager    *tunnels = nullptr;
+	actions::undo_list   *undo_stack = nullptr;
+	unit_map             *units = nullptr;
 	boost::shared_ptr<wb::manager> whiteboard = boost::shared_ptr<wb::manager>();
-	game_classification  *classification = NULL;
-	const mp_game_settings *mp_settings = NULL;
+	game_classification  *classification = nullptr;
+	const mp_game_settings *mp_settings = nullptr;
 	bool                 simulation_ = false;
 }

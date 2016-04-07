@@ -15,7 +15,7 @@
 #ifdef HAVE_MYSQLPP
 
 #include "forum_user_handler.hpp"
-#include "../hash.hpp"
+#include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"
 
@@ -40,9 +40,9 @@ fuh::fuh(const config& c)
 	, db_password_(c["db_password"].str())
 	, db_users_table_(c["db_users_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
-	, conn(mysql_init(NULL))
+	, conn(mysql_init(nullptr))
 {
-	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, NULL, 0)) {
+	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 		ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 	}
 }
@@ -108,7 +108,7 @@ std::string fuh::create_pepper(const std::string& name) {
 }
 
 void fuh::user_logged_in(const std::string& name) {
-	set_lastlogin(name, time(NULL));
+	set_lastlogin(name, time(nullptr));
 }
 
 bool fuh::user_exists(const std::string& name) {
@@ -259,7 +259,7 @@ fuh::mysql_result fuh::db_query(const std::string& sql) {
 	if(mysql_query(conn, sql.c_str())) {
 		WRN_UH << "not connected to database, reconnecting..." << std::endl;
 		//Try to reconnect and execute query again
-		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, NULL, 0)
+		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)
 				|| mysql_query(conn, sql.c_str())) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 			throw error("Error querying database.");

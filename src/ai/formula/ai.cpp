@@ -17,34 +17,34 @@
  * Defines formula ai candidate actions - headers
  */
 
-#include "ai.hpp"
+#include "ai/formula/ai.hpp"
 #include "global.hpp"
 
-#include "../../callable_objects.hpp"   // for unit_callable, etc
-#include "../../chat_events.hpp"              // for chat_handler, etc
-#include "../../display_chat_manager.hpp"
-#include "../../formula_function.hpp"         // for formula_expression
-#include "../../game_board.hpp"         // for game_board
-#include "../../game_display.hpp"       // for game_display
-#include "../../log.hpp"                // for LOG_STREAM, logger, etc
-#include "../../map.hpp"                      // for gamemap
-#include "../../menu_events.hpp"
-#include "../../pathfind/pathfind.hpp"  // for plain_route, etc
-#include "../../pathfind/teleport.hpp"  // for get_teleport_locations, etc
-#include "../../recall_list_manager.hpp"      // for recall_list_manager
-#include "../../resources.hpp"          // for gameboard, teams, units, etc
-#include "../../serialization/string_utils.hpp"  // for split
-#include "../../team.hpp"                     // for team
-#include "../../terrain_filter.hpp"     // for terrain_filter
-#include "../../time_of_day.hpp"              // for time_of_day
-#include "../../tod_manager.hpp"        // for tod_manager
-#include "../../tstring.hpp"                  // for t_string, operator+
-#include "../../unit.hpp"               // for unit
-#include "../../unit_formula_manager.hpp"  // for unit_formula_manager
-#include "../../unit_ptr.hpp"                 // for unit_ptr
-#include "../../unit_types.hpp"
-#include "../../formula.hpp"  // for formula_error, formula, etc
-#include "../../map_location.hpp"  // for map_location, etc
+#include "ai/formula/callable_objects.hpp"   // for unit_callable, etc
+#include "chat_events.hpp"              // for chat_handler, etc
+#include "display_chat_manager.hpp"
+#include "formula/function.hpp"         // for formula_expression
+#include "game_board.hpp"         // for game_board
+#include "game_display.hpp"       // for game_display
+#include "log.hpp"                // for LOG_STREAM, logger, etc
+#include "map/map.hpp"                      // for gamemap
+#include "menu_events.hpp"
+#include "pathfind/pathfind.hpp"  // for plain_route, etc
+#include "pathfind/teleport.hpp"  // for get_teleport_locations, etc
+#include "recall_list_manager.hpp"      // for recall_list_manager
+#include "resources.hpp"          // for gameboard, teams, units, etc
+#include "serialization/string_utils.hpp"  // for split
+#include "team.hpp"                     // for team
+#include "terrain/filter.hpp"     // for terrain_filter
+#include "time_of_day.hpp"              // for time_of_day
+#include "tod_manager.hpp"        // for tod_manager
+#include "tstring.hpp"                  // for t_string, operator+
+#include "units/unit.hpp"               // for unit
+#include "units/formula_manager.hpp"  // for unit_formula_manager
+#include "units/ptr.hpp"                 // for unit_ptr
+#include "units/types.hpp"
+#include "formula/formula.hpp"  // for formula_error, formula, etc
+#include "map/location.hpp"  // for map_location, etc
 #include "ai/actions.hpp"               // for recall_result, etc
 #include "ai/manager.hpp"               // for manager
 #include "ai/composite/contexts.hpp"
@@ -52,17 +52,13 @@
 #include "ai/default/contexts.hpp"  // for attack_analysis
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
-#include "ai/interface.hpp"  // for interface
-#include "callable_objects.hpp"         // for safe_call_result, etc
 #include "candidates.hpp"               // for base_candidate_action, etc
 
-
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/lexical_cast.hpp>       // for lexical_cast
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
-#include <ctime>                       // for NULL, time
+#include <ctime>                       // for time
 #include <map>                          // for multimap<>::const_iterator, etc
 #include <sstream>                      // for operator<<, basic_ostream, etc
 #include <stack>                        // for stack
@@ -79,9 +75,26 @@ using namespace game_logic;
 
 namespace ai {
 
-game_logic::candidate_action_ptr formula_ai::load_candidate_action_from_config(const config& cfg)
+using ca_ptr = game_logic::candidate_action_ptr;
+
+ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 {
-	return candidate_action_manager_.load_candidate_action_from_config(cfg,this,&function_table_);
+	ca_ptr new_ca;
+	const t_string &name = rc_action["name"];
+	try {
+		const t_string &type = rc_action["type"];
+
+		if( type == "movement") {
+			new_ca = ca_ptr(new move_candidate_action(name, type, rc_action, &function_table_));
+		} else if( type == "attack") {
+			new_ca = ca_ptr(new attack_candidate_action(name, type, rc_action, &function_table_));
+		} else {
+			ERR_AI << "Unknown candidate action type: " << type << std::endl;
+		}
+	} catch(formula_error& e) {
+		handle_exception(e, "Error while registering candidate action '" + name + "'");
+	}
+	return new_ca;
 }
 
 int formula_ai::get_recursion_count() const{
@@ -93,14 +106,13 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	:
 	readonly_context_proxy(),
 	game_logic::formula_callable(),
-	ai_ptr_(NULL),
+	ai_ptr_(nullptr),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	keeps_cache_(),
 	infinite_loop_guardian_(),
 	vars_(),
-	function_table_(*this),
-	candidate_action_manager_()
+	function_table_(*this)
 {
 	add_ref();
 	init_readonly_context_proxy(context);
@@ -119,7 +131,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 	//if line number = 0, don't display info about filename and line number
 	if (e.line != 0) {
 		LOG_AI << e.type << " in " << e.filename << ":" << e.line << std::endl;
-		display_message(e.type + " in " + e.filename + ":" + boost::lexical_cast<std::string>(e.line));
+		display_message(e.type + " in " + e.filename + ":" + std::to_string(e.line));
 	} else {
 		LOG_AI << e.type << std::endl;
 		display_message(e.type);
@@ -128,7 +140,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 
 void formula_ai::display_message(const std::string& msg) const
 {
-	resources::screen->get_chat_manager().add_chat_message(time(NULL), "fai", get_side(), msg,
+	resources::screen->get_chat_manager().add_chat_message(time(nullptr), "wfl", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 
 }
@@ -160,7 +172,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		callable.add_ref();
 
 		//formula_debugger fdb;
-		const variant v = f.evaluate(callable,NULL);
+		const variant v = f.evaluate(callable,nullptr);
 
 		if (ai_ptr_) {
 			variant var = execute_variant(v, *ai_ptr_, true );
@@ -489,13 +501,6 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 									status));
 			}
 
-		} else if( action.is_string() && action.as_string() == "recruit") {
-			stage_ptr r = get_recruitment(ai_);
-			if (r) {
-				if (r->play_stage()) {
-					made_moves.push_back(action);
-				}
-			}
 		} else if( action.is_string() && action.as_string() == "continue") {
 			if( infinite_loop_guardian_.continue_check() ) {
 				made_moves.push_back(action);
@@ -504,24 +509,14 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				ERR_AI << "ERROR #" << 5001 << " while executing 'continue' formula keyword" << std::endl;
 
 				if( safe_call )
-					error = variant(new safe_call_result(NULL, 5001));
+					error = variant(new safe_call_result(nullptr, 5001));
 			}
 		} else if( action.is_string() && (action.as_string() == "end_turn" || action.as_string() == "end" )  ) {
 			return variant();
 		} else if(fallback_command) {
 			if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
-				if(fallback_command->key() == "human")
-				{
-					//we want give control of the side to human for the rest of this turn
-					throw fallback_ai_to_human_exception();
-				} else
-				{
-					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					ai_ptr fallback( manager::create_transient_ai(fallback_command->key(), config(), &ai_));
-					if(fallback) {
-						fallback->play_turn();
-					}
-				}
+				//we want give control of the side to human for the rest of this turn
+				throw fallback_ai_to_human_exception();
 			}
 			return variant();
 		} else {
@@ -566,15 +561,16 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	function_table_.add_formula_function(name,formula,precondition,args);
+	formula_function_ptr fcn(new user_formula_function(name,formula,precondition,args));
+	function_table_.add_function(name, fcn);
 }
 
 namespace {
 template<typename Container>
 variant villages_from_set(const Container& villages,
-				          const std::set<map_location>* exclude=NULL) {
+				          const std::set<map_location>* exclude=nullptr) {
 	std::vector<variant> vars;
-	BOOST_FOREACH(const map_location& loc, villages) {
+	for(const map_location& loc : villages) {
 		if(exclude && exclude->count(loc)) {
 			continue;
 		}
@@ -623,10 +619,6 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return variant(get_leader_value()*1000,variant::DECIMAL_VARIANT);
 
-	} else if(key == "number_of_possible_recruits_to_force_recruit")
-	{
-		return variant(get_number_of_possible_recruits_to_force_recruit()*1000,variant::DECIMAL_VARIANT);
-
 	} else if(key == "passive_leader")
 	{
 		return variant(get_passive_leader());
@@ -635,19 +627,11 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		return variant(get_passive_leader_shares_keep());
 
-	} else if(key == "recruitment_ignore_bad_movement")
-	{
-		return variant(get_recruitment_ignore_bad_movement());
-
-	} else if(key == "recruitment_ignore_bad_combat")
-	{
-		return variant(get_recruitment_ignore_bad_combat());
-
 	} else if(key == "recruitment_pattern")
 	{
 		const std::vector<std::string> &rp = get_recruitment_pattern();
 		std::vector<variant> vars;
-		BOOST_FOREACH(const std::string &i, rp) {
+		for(const std::string &i : rp) {
 			vars.push_back(variant(i));
 		}
 		return variant(&vars);
@@ -781,7 +765,7 @@ variant formula_ai::get_value(const std::string& key) const
 			std::vector<variant> v;
 			tmp.push_back( v );
 		}
-		BOOST_FOREACH(const unit &u, units) {
+		for(const unit &u : units) {
 			tmp[u.side() - 1].push_back(variant(new unit_callable(u)));
 		}
 		for( size_t i = 0; i<tmp.size(); ++i)
@@ -954,7 +938,7 @@ void formula_ai::on_create(){
 	//make sure we don't run out of refcount
 	vars_.add_ref();
 
-	BOOST_FOREACH(const config &func, cfg_.child_range("function"))
+	for(const config &func : cfg_.child_range("function"))
 	{
 		const t_string &name = func["name"];
 		const t_string &inputs = func["inputs"];
@@ -977,7 +961,7 @@ void formula_ai::on_create(){
 	if (const config &ai_vars = cfg_.child("vars"))
 	{
 		variant var;
-		BOOST_FOREACH(const config::attribute &i, ai_vars.attribute_range()) {
+		for(const config::attribute &i : ai_vars.attribute_range()) {
 			var.serialize_from_string(i.second);
 			vars_.add(i.first, var);
 		}
@@ -987,13 +971,13 @@ void formula_ai::on_create(){
 }
 
 
-void formula_ai::evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca)
+void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 {
 	fai_ca->evaluate(this,*resources::units);
 
 }
 
-bool formula_ai::execute_candidate_action(game_logic::candidate_action_ptr fai_ca)
+bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();

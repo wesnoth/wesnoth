@@ -33,8 +33,6 @@
 #include "util.hpp"
 #include "version.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <stdexcept>
 
 static lg::log_domain log_preprocessor("preprocessor");
@@ -45,6 +43,8 @@ static lg::log_domain log_preprocessor("preprocessor");
 
 using std::streambuf;
 
+static std::string current_file_str = "CURRENT_FILE";
+static std::string current_dir_str = "CURRENT_DIRECTORY";
 
 // map associating each filename encountered to a number
 typedef std::map<std::string, int> t_file_number_map;
@@ -64,7 +64,7 @@ static std::string get_filename(const std::string& file_code){
 	int n = 0;
 	s >> std::hex >> n;
 
-	BOOST_FOREACH(const t_file_number_map::value_type& p, file_number_map){
+	for(const t_file_number_map::value_type& p : file_number_map) {
 		if(p.second == n)
 			return p.first;
 	}
@@ -107,6 +107,7 @@ static std::string get_location(const std::string& loc)
 	return res;
 }
 
+
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
@@ -139,11 +140,12 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("name", name);
 	writer.write_key_val("value", value);
 	writer.write_key_val("textdomain", textdomain);
-	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
+	writer.write_key_val("linenum", std::to_string(linenum));
 	writer.write_key_val("location", get_location(location));
 
-	BOOST_FOREACH(const std::string &arg, arguments)
+	for(const std::string &arg : arguments) {
 		write_argument(writer, arg);
+	}
 
 	writer.close_child(key);
 }
@@ -160,8 +162,9 @@ void preproc_define::read(const config& cfg)
 	linenum = cfg["linenum"];
 	location = cfg["location"].str();
 
-	BOOST_FOREACH(const config &arg, cfg.child_range("argument"))
+	for(const config &arg : cfg.child_range("argument")) {
 		read_argument(arg);
+	}
 }
 
 preproc_map::value_type preproc_define::read_pair(const config &cfg)
@@ -204,7 +207,10 @@ public:
 	 * Preprocesses and sends some text to the #target_ buffer.
 	 * @return false when the input has no data left.
 	 */
+	preprocessor * get_old_preprocessor() { return old_preprocessor_; }
 	virtual bool get_chunk() = 0;
+	///retruns 1 if this parses a macro, -1 if this doesnt parse text (if this is no preprocessor_data). 0 otherwise (this parses a file).
+	virtual int is_macro() { return -1; }
 	virtual ~preprocessor();
 };
 
@@ -235,16 +241,38 @@ class preprocessor_streambuf: public streambuf
 	friend struct preprocessor_deleter;
 	preprocessor_streambuf(preprocessor_streambuf const &);
 public:
+	std::string get_current_file();
 	preprocessor_streambuf(preproc_map *);
 	void error(const std::string &, int);
 	void warning(const std::string &, int);
 };
 
+// decode the filenames placed in a location
+std::string preprocessor_streambuf::get_current_file()
+{
+	unsigned nested_level = 0;
+	preprocessor* pre = current_;
+	while(pre && pre->is_macro()) {
+		if(pre->is_macro() == 1) {
+			++nested_level;
+		}
+		pre = pre->get_old_preprocessor();
+	}
+	std::string res;
+	std::vector< std::string > pos = utils::quoted_split(location_, ' ');
+	if(pos.size() <= 2*nested_level) {
+		return res;
+	}
+	else {
+		return get_filename(pos[2*nested_level]);
+	}
+}
+
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
 	streambuf(),
 	out_buffer_(""),
 	buffer_(),
-	current_(NULL),
+	current_(nullptr),
 	defines_(def),
 	default_defines_(),
 	textdomain_(PACKAGE),
@@ -259,7 +287,7 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	streambuf(),
 	out_buffer_(""),
 	buffer_(),
-	current_(NULL),
+	current_(nullptr),
 	defines_(t.defines_),
 	default_defines_(),
 	textdomain_(PACKAGE),
@@ -482,6 +510,8 @@ class preprocessor_data: preprocessor
 	 */
 	int skipping_;
 	int linenum_;
+	///true iff we are currently parsing a macros content, otherwise false.
+	bool is_define_;
 
 	std::string read_word();
 	std::string read_line();
@@ -500,10 +530,10 @@ public:
 	                  std::string const &history,
 	                  std::string const &name, int line,
 	                  std::string const &dir, std::string const &domain,
-	                  std::map<std::string, std::string> *defines);
+	                  std::map<std::string, std::string> *defines, bool is_define = false);
 	~preprocessor_data();
 	virtual bool get_chunk();
-
+	virtual int is_macro() { return is_define_ ? 1 : 0; }
 	friend bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char);
 	friend bool operator==(char, preprocessor_data::token_desc::TOKEN_TYPE);
 	friend bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE, char);
@@ -526,9 +556,9 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 {
 	if (filesystem::is_directory(name)) {
 
-		filesystem::get_files_in_dir(name, &files_, NULL, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
+		filesystem::get_files_in_dir(name, &files_, nullptr, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
-		BOOST_FOREACH(std::string fname, files_) {
+		for(std::string fname : files_) {
 			size_t cpos = fname.rfind(" ");
 			if (cpos != std::string::npos && cpos >= symbol_index) {
 				std::stringstream ss;
@@ -547,7 +577,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 		}
 		else
 			new preprocessor_data(t, file_stream, "", filesystem::get_short_wml_path(name),
-				1, filesystem::directory_name(name), t.textdomain_, NULL);
+				1, filesystem::directory_name(name), t.textdomain_, nullptr);
 	}
 	pos_ = files_.begin();
 	end_ = files_.end();
@@ -576,7 +606,7 @@ bool preprocessor_file::get_chunk()
 preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	std::istream *i, std::string const &history, std::string const &name, int linenum,
 	std::string const &directory, std::string const &domain,
-	std::map<std::string, std::string> *defines) :
+	std::map<std::string, std::string> *defines, bool is_define) :
 	preprocessor(t),
 	in_scope_(i),
 	in_(*i),
@@ -586,7 +616,8 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	tokens_(),
 	slowpath_(0),
 	skipping_(0),
-	linenum_(linenum)
+	linenum_(linenum),
+	is_define_(is_define)
 {
 	std::ostringstream s;
 
@@ -1068,7 +1099,15 @@ bool preprocessor_data::get_chunk()
 			preproc_map::const_iterator macro;
 			// If this is a known pre-processing symbol, then we insert it,
 			// otherwise we assume it's a file name to load.
-			if (local_defines_ &&
+			if(symbol == current_file_str && strings_.size() - token.stack_pos == 1) {
+				pop_token();
+				put(target_.get_current_file());
+			}
+			else if(symbol == current_dir_str && strings_.size() - token.stack_pos == 1) {
+				pop_token();
+				put(filesystem::directory_name(target_.get_current_file()));
+			}
+			else if (local_defines_ &&
 			    (arg = local_defines_->find(symbol)) != local_defines_->end())
 			{
 				if (strings_.size() - token.stack_pos != 1)
@@ -1109,7 +1148,7 @@ bool preprocessor_data::get_chunk()
 				if (!slowpath_) {
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
-					                      val.linenum, dir, val.textdomain, defines);
+					                      val.linenum, dir, val.textdomain, defines, true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 					std::ostringstream res;
@@ -1120,7 +1159,7 @@ bool preprocessor_data::get_chunk()
 					buf->textdomain_ = target_.textdomain_;
 					{	std::istream in(buf);
 						new preprocessor_data(*buf, buffer, val.location, "",
-						                      val.linenum, dir, val.textdomain, defines);
+						                      val.linenum, dir, val.textdomain, defines, true);
 						res << in.rdbuf(); }
 					delete buf;
 					put(res.str());
@@ -1191,7 +1230,7 @@ preprocessor_deleter::~preprocessor_deleter()
 {
 	clear(std::ios_base::goodbit);
 	exceptions(std::ios_base::goodbit);
-	rdbuf(NULL);
+	rdbuf(nullptr);
 	delete buf_;
 	delete defines_;
 }
@@ -1199,7 +1238,7 @@ preprocessor_deleter::~preprocessor_deleter()
 std::istream *preprocess_file(std::string const &fname, preproc_map *defines)
 {
 	log_scope("preprocessing file " + fname + " ...");
-	preproc_map *owned_defines = NULL;
+	preproc_map *owned_defines = nullptr;
 	if (!defines) {
 		// If no preproc_map has been given, create a new one,
 		// and ensure it is destroyed when the stream is
@@ -1224,14 +1263,14 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
 		// subdirectories
-		BOOST_FOREACH(const std::string& dir, dirs)
+		for(const std::string& dir : dirs)
 		{
 			LOG_PREPROC << "processing sub-dir: " << dir << '\n';
 			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, target_directory);
 		}
 
 		// files in current directory
-		BOOST_FOREACH(const std::string& file, files)
+		for(const std::string& file : files)
 		{
 			preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, target_directory);
 		}

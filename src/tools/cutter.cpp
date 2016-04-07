@@ -17,10 +17,10 @@
  * Standalone-Utility for images / tiles
  */
 
-#include "../game_config.hpp"
+#include "game_config.hpp"
 #include "exploder_composer.hpp"
 
-#include "SDL_image.h"
+#include <SDL_image.h>
 
 #include <iostream>
 
@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
 		cut.load_masks(conf);
 
 		const surface src_surface(make_neutral_surface(IMG_Load(src.c_str())));
-		if(src_surface == NULL)
+		if(src_surface == nullptr)
 			throw exploder_failure("Unable to load the source image " + src);
 
 		const cutter::surface_map surfaces = cut.cut_surface(src_surface, conf);

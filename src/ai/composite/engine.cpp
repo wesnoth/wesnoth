@@ -17,10 +17,10 @@
  * @file
  */
 
-#include "engine.hpp"
-#include "contexts.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/contexts.hpp"
 
-#include "../../log.hpp"
+#include "log.hpp"
 
 namespace ai {
 
@@ -31,7 +31,7 @@ static lg::log_domain log_ai_engine("ai/engine");
 
 engine::engine( readonly_context &context, const config &cfg )
 	: ai_(context)
-	, ai_context_(NULL)
+	, ai_context_(nullptr)
 	, engine_(cfg["engine"])
 	, id_(cfg["id"])
 	, name_(cfg["name"])
@@ -146,6 +146,16 @@ config engine::to_config() const
 readonly_context& engine::get_readonly_context()
 {
 	return ai_;
+}
+	
+// This is defined in the source file so that it can easily access the logger
+bool engine_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_ENGINE << "Error: Attempt to double-register engine " << name << std::endl;
+		return true;
+	}
+	return false;
 }
 
 

@@ -20,9 +20,9 @@
 class config;
 class display;
 
-#include "terrain_translation.hpp"
+#include "terrain/translation.hpp"
 
-#include "SDL.h"
+#include <SDL.h>
 
 #include <utility>
 
@@ -49,6 +49,7 @@ namespace preferences {
 	void set_child(const std::string& key, const config& val);
 	const config &get_child(const std::string &key);
 	std::string get(const std::string& key);
+	std::string get(const std::string& key, const std::string& def);
 	bool get(const std::string &key, bool def);
 	void erase(const std::string& key);
 	bool have_setting(const std::string& key);
@@ -80,6 +81,10 @@ namespace preferences {
 
 	double turbo_speed();
 	void save_turbo_speed(const double speed);
+	
+	int font_scaling();
+	void set_font_scaling(int scale);
+	int font_scaled(int size);
 
 	bool idle_anim();
 	void _set_idle_anim(const bool ison);
@@ -216,6 +221,9 @@ namespace preferences {
 
 	bool animate_map();
 	void set_animate_map(bool value);
+
+	bool animate_water();
+	void set_animate_water(bool value);
 
 	bool minimap_movement_coding();
 	void toggle_minimap_movement_coding();

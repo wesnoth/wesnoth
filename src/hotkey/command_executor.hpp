@@ -113,8 +113,6 @@ public:
 	virtual void zoom_out() {}
 	virtual void zoom_default() {}
 	virtual void map_screenshot() {}
-	virtual void quit_to_desktop();
-	virtual void quit_to_main_menu() {}
 
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}
@@ -150,13 +148,12 @@ public:
 	void zoom_out();
 	void zoom_default();
 	void map_screenshot();
-	void quit_to_desktop();
 	void quit_to_main_menu();
 };
 /* Functions to be called every time a event is intercepted.
- * Will call the relevant function in executor if the event is not NULL.
+ * Will call the relevant function in executor if the event is not nullptr.
  * Also handles some events in the function itself,
- * and so is still meaningful to call with executor=NULL
+ * and so is still meaningful to call with executor=nullptr
  */
 void jbutton_event(const SDL_Event& event, command_executor* executor);
 void jhat_event(const SDL_Event& event, command_executor* executor);
@@ -175,6 +172,8 @@ public:
 	basic_handler(command_executor* exec);
 
 	void handle_event(const SDL_Event& event);
+	void handle_window_event(const SDL_Event&) {}
+
 private:
 	command_executor* exec_;
 };

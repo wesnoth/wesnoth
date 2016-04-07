@@ -65,7 +65,7 @@ namespace wb {
 
 #include "overlay.hpp"
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 #include <boost/weak_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <deque>
@@ -74,14 +74,14 @@ namespace wb {
 
 class gamemap;
 
-class display : public filter_context
+class display : public filter_context, public video2::draw_layering
 {
 public:
 	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const config& theme_cfg, const config& level);
+			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
-	/// Returns the display object if a display object exists. Otherwise it returns NULL.
+	/// Returns the display object if a display object exists. Otherwise it returns nullptr.
 	/// the display object represents the game gui which handles themewml and drawing the map.
 	/// A display object only exists during a game or while the mapeditor is running.
 	static display* get_singleton() { return singleton_ ;}
@@ -147,7 +147,7 @@ public:
 	 * One tile may have multiple overlays.
 	 */
 	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",
+		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
 		bool visible_under_fog = true);
 
 	/** remove_overlay will remove all overlays on a tile. */
@@ -155,13 +155,6 @@ public:
 
 	/** remove_single_overlay will remove a single overlay from a tile */
 	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
-
-
-
-
-
-
-
 
 	/**
 	 * Updates internals that cache map size. This should be called when the map
@@ -172,8 +165,8 @@ public:
 	void change_display_context(const display_context * dc);
 	const display_context & get_disp_context() const { return *dc_; }
 	virtual const tod_manager & get_tod_man() const; //!< This is implemented properly in game_display. The display:: impl could be pure virtual here but we decide not to.
-	virtual const game_data * get_game_data() const { return NULL; }
-	virtual game_lua_kernel * get_lua_kernel() const { return NULL; } //!< TODO: display should not work as a filter context, this was only done for expedience so that the unit animation code can have a convenient and correct filter context readily available. a more correct solution is most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to store filter contexts with animations, because animations are cached across scenarios.) Note that after these lines which return NULL, unit filters used in animations will not be able to make use of wml variables or lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the script.)
+	virtual const game_data * get_game_data() const { return nullptr; }
+	virtual game_lua_kernel * get_lua_kernel() const { return nullptr; } //!< TODO: display should not work as a filter context, this was only done for expedience so that the unit animation code can have a convenient and correct filter context readily available. a more correct solution is most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to store filter contexts with animations, because animations are cached across scenarios.) Note that after these lines which return nullptr, unit filters used in animations will not be able to make use of wml variables or lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the script.)
 
 	void reset_halo_manager();
 	void reset_halo_manager(halo::manager & hm);
@@ -383,7 +376,7 @@ public:
 	void redraw_everything();
 
 	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
-	void add_redraw_observer(boost::function<void(display&)> f);
+	void add_redraw_observer(std::function<void(display&)> f);
 
 	/** Clear the redraw observers */
 	void clear_redraw_observers();
@@ -393,7 +386,7 @@ public:
 	/**
 	 * Retrieves a pointer to a theme UI button.
 	 *
-	 * @note The returned pointer may either be NULL, meaning the button
+	 * @note The returned pointer may either be nullptr, meaning the button
 	 *       isn't defined by the current theme, or point to a valid
 	 *       gui::button object. However, the objects retrieved will be
 	 *       destroyed and recreated by draw() method calls. Do *NOT* store
@@ -406,12 +399,14 @@ public:
 
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
-#ifdef SDL_GPU
+
+	void layout_buttons();
+
 	void render_buttons();
-#endif
+
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(std::string const &report_name, const config * new_cfg=NULL);
+	void refresh_report(std::string const &report_name, const config * new_cfg=nullptr);
 
 	void draw_minimap_units();
 
@@ -463,7 +458,7 @@ public:
 		{ mouseover_hex_overlay_ = image; }
 
 	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_ = NULL; }
+		{ mouseover_hex_overlay_ = nullptr; }
 #endif
 
 	/**
@@ -607,7 +602,11 @@ public:
 	 * Not virtual, since it gathers common actions. Calls various protected
 	 * virtuals (further below) to allow specialized behavior in derived classes.
 	 */
-	void draw(bool update=true, bool force=false);
+	virtual void draw();
+
+	void draw(bool update);
+
+	void draw(bool update, bool force);
 
 	map_labels& labels();
 	const map_labels& labels() const;
@@ -620,7 +619,7 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; }
+	void recalculate_minimap() {minimap_ = nullptr; redrawMinimap_ = true; }
 
 	/**
 	 * Schedule the minimap to be redrawn.
@@ -636,6 +635,10 @@ public:
 	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
+
+	virtual void handle_event(const SDL_Event& );
+	virtual void handle_window_event(const SDL_Event& event);
+
 private:
 	void read(const config& cfg);
 
@@ -834,8 +837,8 @@ protected:
 	/** Local cache for preferences::animate_map, since it is constantly queried. */
 	bool animate_map_;
 
-	/** Local cache for preferences "local_tod_lighting" */
-	bool local_tod_light_;
+	/** Local version of preferences::animate_water, used to detect when it's changed. */
+	bool animate_water_;
 
 private:
 
@@ -1094,7 +1097,7 @@ protected:
 	void draw_all_panels();
 
 #ifdef SDL_GPU
-	void draw_panel_image(SDL_Rect *clip = NULL);
+	void draw_panel_image(SDL_Rect *clip = nullptr);
 #endif
 
 	/**
@@ -1145,7 +1148,7 @@ private:
 
 	surface map_screenshot_surf_;
 
-	std::vector<boost::function<void(display&)> > redraw_observers_;
+	std::vector<std::function<void(display&)> > redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
 	bool draw_coordinates_;
@@ -1159,15 +1162,13 @@ private:
 
 	tod_color color_adjust_;
 
+	bool dirty_;
+
 #ifdef SDL_GPU
 	bool update_panel_image_;
 	sdl::timage panel_image_;
 #endif
 
-#if defined(__GLIBC__) && !SDL_VERSION_ATLEAST(2,0,0)
-	/** Flag for bug #17573 - this is set in the constructor **/
-	bool do_reverse_memcpy_workaround_;
-#endif
 
 public:
 	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }

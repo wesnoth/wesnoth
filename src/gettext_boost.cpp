@@ -19,13 +19,14 @@
 #include <iostream>
 #include <locale>
 #include <boost/locale.hpp>
-#include <boost/foreach.hpp>
+// including boost/thread fixes linking of boost locale for msvc on boost 1.60
+#include <boost/thread.hpp>
 #include <set>
 
-#define DBG_G LOG_STREAM(debug, lg::general)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define WRN_G LOG_STREAM(warn, lg::general)
-#define ERR_G LOG_STREAM(err, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define WRN_G LOG_STREAM(warn, lg::general())
+#define ERR_G LOG_STREAM(err, lg::general())
 
 namespace bl = boost::locale;
 namespace
@@ -76,13 +77,13 @@ namespace
 			, is_dirty_(true)
 		{
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
-			BOOST_FOREACH(const std::string& name, g_mgr.get_all_backends())
+			for(const std::string& name : g_mgr.get_all_backends())
 			{
 				LOG_G << "Found boost locale backend: '" << name << "'\n";
 			}
 
 			generator_.use_ansi_encoding(false);
-			generator_.categories(bl::message_facet | bl::information_facet);
+			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet);
 			generator_.characters(bl::char_facet);
 			//we cannot have current_locale_ beeing a non boost gerenerated locale since it might not suppy
 			//the boost::locale::info facet. as soon as we add message paths update_locale_internal might fail
@@ -223,7 +224,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 	std::string msgval = dgettext (domainname, msgid);
 	if (msgval == msgid) {
 		const char* firsthat = std::strrchr (msgid, '^');
-		if (firsthat == NULL)
+		if (firsthat == nullptr)
 			msgval = msgid;
 		else
 			msgval = firsthat + 1;
@@ -236,7 +237,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	std::string msgval = boost::locale::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
 		const char* firsthat = std::strrchr (singular, '^');
-		if (firsthat == NULL)
+		if (firsthat == nullptr)
 			msgval = singular;
 		else
 			msgval = firsthat + 1;
@@ -265,6 +266,10 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "' \n";
 	get_manager().set_language(language);
+}
+int compare(const std::string& s1, const std::string& s2)
+{
+	return std::use_facet<std::collate<char> >(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
 }
 
 void init()

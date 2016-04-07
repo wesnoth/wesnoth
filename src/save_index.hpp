@@ -54,7 +54,7 @@ struct save_info_less_time {
 	bool operator()(const save_info& a, const save_info& b) const;
 };
 
-std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
+std::vector<save_info> get_saves_list(const std::string* dir = nullptr, const std::string* filter = nullptr);
 
 /** Read the complete config information out of a savefile. */
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
@@ -68,7 +68,7 @@ void delete_game(const std::string& name);
 
 class create_save_info {
 public:
-	create_save_info(const std::string* d = NULL) ;
+	create_save_info(const std::string* d = nullptr) ;
 	save_info operator()(const std::string& filename) const ;
 	const std::string dir;
 };

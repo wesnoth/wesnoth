@@ -16,16 +16,15 @@
 
 #include "gui/dialogs/debug_clock.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
-#include "utils/foreach.tpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <ctime>
 
@@ -76,7 +75,7 @@ namespace gui2
 
 REGISTER_DIALOG(debug_clock)
 
-void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
+void tdebug_clock::pre_show(twindow& window)
 {
 	hour_percentage_ = find_widget<tprogress_bar>(
 			&window, "hour_percentage", false, false);
@@ -104,7 +103,7 @@ void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
 
 	window_ = &window;
 
-	signal_ = boost::bind(&tdebug_clock::update_time, this, false);
+	signal_ = std::bind(&tdebug_clock::update_time, this, false);
 	window.connect_signal<event::DRAW>(signal_,
 									   event::tdispatcher::front_child);
 
@@ -148,7 +147,7 @@ void tdebug_clock::update_time(const bool force)
 	}
 
 	if(clock_) {
-		FOREACH(AUTO & canvas, clock_->canvas())
+		for(auto & canvas : clock_->canvas())
 		{
 			canvas.set_variable("hour", variant(hour_stamp));
 			canvas.set_variable("minute", variant(minute_stamp));
@@ -161,7 +160,7 @@ void tdebug_clock::update_time(const bool force)
 	std::map<std::string, string_map> item_data;
 	string_map item;
 
-	item["label"] = str_cast(second_stamp);
+	item["label"] = std::to_string(second_stamp);
 	item_data.insert(std::make_pair("time", item));
 
 	if(pane_) {
@@ -175,7 +174,7 @@ tdebug_clock::ttime::ttime() : hour(0), minute(0), second(0), millisecond(0)
 
 void tdebug_clock::ttime::set_current_time()
 {
-	time_t now = time(NULL);
+	time_t now = time(nullptr);
 	tm* stamp = localtime(&now);
 
 	hour = stamp->tm_hour;

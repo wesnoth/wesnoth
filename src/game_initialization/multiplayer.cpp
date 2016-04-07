@@ -14,17 +14,18 @@
 #include "multiplayer.hpp"
 
 #include "addon/manager.hpp" // for get_installed_addons
+#include "config_assign.hpp"
 #include "dialogs.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/lobby_main.hpp"
+#include "gui/dialogs/lobby/lobby.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/mp_connect.hpp"
-#include "gui/dialogs/mp_create_game.hpp"
-#include "gui/dialogs/mp_login.hpp"
+#include "gui/dialogs/multiplayer/mp_connect.hpp"
+#include "gui/dialogs/multiplayer/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
@@ -45,12 +46,11 @@
 #include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
-#include "unit_id.hpp"
+#include "units/id.hpp"
 #include "video.hpp"
 #include "game_config_manager.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -413,7 +413,7 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 
 				// Somewhat hacky...
 				// If we broke out of the do-while loop above error
-				// is still going to be NULL
+				// is still going to be nullptr
 				if(!*error) break;
 			} // end login loop
 		}
@@ -669,7 +669,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 	while (true) {
 		const config &cfg = game_config.child("lobby_music");
 		if (cfg) {
-			BOOST_FOREACH(const config &i, cfg.child_range("music")) {
+			for (const config &i : cfg.child_range("music")) {
 				sound::play_music_config(i);
 			}
 			sound::commit_music_changes();
@@ -686,13 +686,13 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 				, 0
 				, SDL_ALPHA_OPAQUE);
 
-		sdl::fill_rect(video.getSurface(), NULL, color);
+		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
 			gui2::tlobby_main dlg(game_config, li, video);
 			dlg.set_preferences_callback(
-				boost::bind(do_preferences_dialog,
-					boost::ref(video), boost::ref(game_config)));
+				std::bind(do_preferences_dialog,
+					std::ref(video), std::ref(game_config)));
 			dlg.show(video);
 			//ugly kludge for launching other dialogs like the old lobby
 			switch (dlg.get_legacy_result()) {
@@ -803,74 +803,36 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
 	// In particular, we do not want to use the preferences values.
 
-	// scope for config objects that will become invalid after reload
-	{
-		// Override era, faction (side) and scenario if set on the commandline
-		if (cmdline_opts.multiplayer_era)
-			parameters.mp_era = *cmdline_opts.multiplayer_era;
-		const config& era_cfg_preload = game_config.find_child("era", "id", parameters.mp_era);
-		if (!era_cfg_preload) {
-			std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
-			return;
-		}
-
-		if (cmdline_opts.multiplayer_scenario)
-			parameters.name = *cmdline_opts.multiplayer_scenario;
-		const config &level_preload = game_config.find_child("multiplayer", "id", parameters.name);
-		if (!level_preload) {
-			std::cerr << "Could not find scenario '" << parameters.name << "'\n";
-			return;
-		}
-
-		game_classification classification;
-		classification.campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-		classification.scenario_define = level_preload["define"].str();
-		classification.era_define = era_cfg_preload["define"].str();
-		game_config_manager::get()->load_game_config_for_game(classification);
+	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	//[era] define.
+	if (cmdline_opts.multiplayer_era) {
+		parameters.mp_era = *cmdline_opts.multiplayer_era;
 	}
-
-	const config& era_cfg = game_config_manager::get()->game_config().find_child("era", "id", parameters.mp_era);
-	const config& level = game_config_manager::get()->game_config().find_child("multiplayer", "id", parameters.name);
-
-	if (cmdline_opts.multiplayer_side) {
-		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
-			it=cmdline_opts.multiplayer_side->begin(); it!=cmdline_opts.multiplayer_side->end(); ++it)
-		{
-			const config *faction = &era_cfg.find_child("multiplayer_side", "id", it->get<1>());
-			if (!*faction) {
-				std::cerr << "Could not find faction '" << it->get<1>() << "'\n";
-				return;
-			}
-		}
+	if (const config& cfg_era = game_config.find_child("era", "id", parameters.mp_era)) {
+		state.classification().era_define = cfg_era["define"].str();
 	}
-
-
-	// Should the map be randomly generated?
-	if (level["map_generation"].empty()) {
-		DBG_MP << "using scenario map" << std::endl;
-		state.set_scenario(level);
-	} else {
-		DBG_MP << "generating random map" << std::endl;
-		util::scoped_ptr<map_generator> generator(NULL);
-		generator.assign(create_map_generator(level["map_generation"], level.child("generator")));
-		state.set_scenario(generator->create_scenario());
-
-		// Set the scenario to have placing of sides
-		// based on the terrain they prefer
-		state.get_starting_pos()["modify_placing"] = "true";
-
-		util::unique_ptr<gamemap> map;
-		const int map_positions = level.child("generator")["players"];
-		DBG_MP << "map positions: " << map_positions << std::endl;
-
-		for (int pos = state.get_starting_pos().child_count("side"); pos < map_positions; ++pos) {
-			config& side = state.get_starting_pos().add_child("side");
-			side["side"] = pos + 1;
-			side["team_name"] = pos + 1;
-			side["canrecruit"] = true;
-			side["controller"] = "human";
-		}
+	else {
+		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
+		return;
 	}
+	//[multiplayer] define.
+	if (cmdline_opts.multiplayer_scenario) {
+		parameters.name = *cmdline_opts.multiplayer_scenario;
+	}
+	if (const config& cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
+		state.classification().scenario_define = cfg_multiplayer["define"].str();
+	}
+	else {
+		std::cerr << "Could not find [multiplayer] '" << parameters.name << "'\n";
+		return;
+	}
+	game_config_manager::get()->load_game_config_for_game(state.classification());
+	state.set_carryover_sides_start(
+		config_of("next_scenario", parameters.name)
+	);
+	state.expand_random_scenario();
+	state.expand_mp_events();
+	state.expand_mp_options();
 
 	// Should number of turns be determined from scenario data?
 	if (parameters.use_map_settings && state.get_starting_pos()["turns"]) {
@@ -883,7 +845,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, NULL));
+		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, nullptr));
 		mp::connect ui(video, parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 

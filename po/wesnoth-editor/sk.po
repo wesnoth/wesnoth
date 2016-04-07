@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
 "PO-Revision-Date: 2015-11-07 11:04+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -274,21 +274,25 @@ msgstr "Cena:"
 msgid "Recruit: "
 msgstr "Verbovanie:"
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:183
 msgid "Fatal error"
 msgstr "Fatálna chyba"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:213
 msgid "Do you really want to quit?"
 msgstr "Naozaj chcete skončiť?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:215
+#, fuzzy
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
 msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
+"Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr "Naozaj chcete skončiť? Stratíte zmeny od posledného uloženia mapy."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -296,107 +300,103 @@ msgstr ""
 "Naozaj chcete skončiť? Nasledujúce mapy boli zmenené, a všetky zmeny od "
 "posledného uloženia sa stratia:"
 
-#: src/editor/controller/editor_controller.cpp:216
-msgid "Quit"
-msgstr "Koniec"
-
 #: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "Nenašiel sa rozvrh dňa pre editor."
 
-#: src/editor/controller/editor_controller.cpp:1113
+#: src/editor/controller/editor_controller.cpp:1116
 msgid "Change Unit ID"
 msgstr "Zmeň ID jednotky"
 
-#: src/editor/controller/editor_controller.cpp:1114
+#: src/editor/controller/editor_controller.cpp:1117
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1130
+#: src/editor/controller/editor_controller.cpp:1133
 msgid "Rename Unit"
 msgstr "Premenovať jednotku"
 
-#: src/editor/controller/editor_controller.cpp:1131
+#: src/editor/controller/editor_controller.cpp:1134
 msgid "Name:"
 msgstr "Meno:"
 
 #: src/editor/map/context_manager.cpp:128
-#: src/editor/map/context_manager.cpp:306
+#: src/editor/map/context_manager.cpp:308
 msgid "(New Map)"
 msgstr "(Nová mapa)"
 
-#: src/editor/map/context_manager.cpp:193
+#: src/editor/map/context_manager.cpp:195
 msgid "Choose a File to Open"
 msgstr "Vyberte si mapu na nahranie"
 
-#: src/editor/map/context_manager.cpp:308
+#: src/editor/map/context_manager.cpp:310
 msgid "(New Scenario)"
 msgstr "(Nová mapa)"
 
-#: src/editor/map/context_manager.cpp:335
+#: src/editor/map/context_manager.cpp:337
 msgid "No Recent Files"
 msgstr "Žiadne naposledy použité súbory"
 
-#: src/editor/map/context_manager.cpp:372
+#: src/editor/map/context_manager.cpp:374
 msgid "(Unnamed Area)"
 msgstr "(Nepomenovaná plocha)"
 
-#: src/editor/map/context_manager.cpp:401
+#: src/editor/map/context_manager.cpp:403
 msgid "(New Side)"
 msgstr "(Nová strana)"
 
-#: src/editor/map/context_manager.cpp:467
+#: src/editor/map/context_manager.cpp:469
 msgid "Choose a Mask to Apply"
 msgstr "Vyberte si masku, ktorá sa má použiť"
 
-#: src/editor/map/context_manager.cpp:474
+#: src/editor/map/context_manager.cpp:476
 msgid "Error loading mask"
 msgstr "Chyba pri čítaní masky"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Identifier:"
 msgstr "Identifikátor"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:495
 msgid "Rename Area"
 msgstr "Premenovať plochu"
 
-#: src/editor/map/context_manager.cpp:504
+#: src/editor/map/context_manager.cpp:506
 msgid "Choose Target Map"
 msgstr "Vyberte si cieľovú mapu"
 
-#: src/editor/map/context_manager.cpp:511
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:950
 msgid "Error loading map"
 msgstr "Chyba pri načítavaní mapy"
 
-#: src/editor/map/context_manager.cpp:628
+#: src/editor/map/context_manager.cpp:630
 msgid "Save the Map As"
 msgstr "Ulož mapu ako"
 
-#: src/editor/map/context_manager.cpp:632
-#: src/editor/map/context_manager.cpp:660
+#: src/editor/map/context_manager.cpp:634
+#: src/editor/map/context_manager.cpp:662
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Takýto súbor už existuje. Chcete ho prepísať?"
 
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:658
 msgid "Save the Scenario As"
 msgstr "Ulož mapu ako"
 
-#: src/editor/map/context_manager.cpp:695
+#: src/editor/map/context_manager.cpp:697
 msgid "No random map generators found."
 msgstr "Nenašiel sa náhodný generátor mapy."
 
-#: src/editor/map/context_manager.cpp:709
-#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:710
+#: src/editor/map/context_manager.cpp:714
 msgid "Map creation failed."
 msgstr "Nepodarilo sa vytvoriť mapu."
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:728
 msgid "Unsaved Changes"
 msgstr "Neuložené zmeny"
 
-#: src/editor/map/context_manager.cpp:728
+#: src/editor/map/context_manager.cpp:729
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -404,33 +404,33 @@ msgstr "Neuložené zmeny"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Chcete zrušiť všetky zmeny v mape od posledného uloženia?"
 
-#: src/editor/map/context_manager.cpp:827
+#: src/editor/map/context_manager.cpp:828
 msgid "This scenario is already open."
 msgstr "Táto mapa je už otvorená."
 
-#: src/editor/map/context_manager.cpp:849
-#: src/editor/map/context_manager.cpp:904
+#: src/editor/map/context_manager.cpp:850
+#: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
 msgstr "Táto mapa je už otvorená."
 
-#: src/editor/map/context_manager.cpp:870
+#: src/editor/map/context_manager.cpp:871
 msgid "Scenario saved."
 msgstr "Mapa uložená."
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:885
 msgid "Map saved."
 msgstr "Mapa uložená."
 
-#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:928
 msgid "Loaded embedded map data"
 msgstr "Načítali sa vložené dáta mapy"
 
-#: src/editor/map/context_manager.cpp:930
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:943
 msgid "Map loaded from scenario"
 msgstr "Mapa načítaná zo scény"
 
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:939
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -438,13 +438,13 @@ msgstr ""
 "Načítal sa odkazovaný súbor mapy:\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nová mapa)"
 
-#: src/editor/map/context_manager.cpp:1026
+#: src/editor/map/context_manager.cpp:1028
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -491,11 +491,11 @@ msgstr "Neviem uložiť mapu: $msg"
 msgid "(Unknown Group)"
 msgstr "(Neznáma skupina)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:386
 msgid "(non-core)"
 msgstr "(nie je súčasťou jadra)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:387
 msgid "Will not work in game without extra care."
 msgstr "Nebude fungovať v hre bez ďalšej práce."
 
@@ -507,7 +507,7 @@ msgstr "Pred: "
 msgid "BG: "
 msgstr "Za: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:129
+#: src/gui/dialogs/editor/custom_tod.cpp:128
 msgid "Choose File"
 msgstr "Vyberte súbor s mapou"
 
@@ -518,6 +518,9 @@ msgstr "Žiaden"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Hráč $player_number"
+
+#~ msgid "Quit"
+#~ msgstr "Koniec"
 
 #, fuzzy
 #~| msgid "Battle for Wesnoth Map Editor"

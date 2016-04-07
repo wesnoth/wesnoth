@@ -22,8 +22,7 @@
 
 #include "ban.hpp"
 
-#include <boost/foreach.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace wesnothd {
 
@@ -236,7 +235,7 @@ static lg::log_domain log_server("server");
 		{
 			return "permanent";
 		}
-		return lg::get_timespan(end_time_ - time(NULL));
+		return lg::get_timespan(end_time_ - time(nullptr));
 	}
 
 	bool banned::operator>(const banned& b) const
@@ -267,7 +266,7 @@ static lg::log_domain log_server("server");
 		//filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
 		//read_gz(cfg, *ban_file);
 
-		BOOST_FOREACH(const config &b, cfg.child_range("ban"))
+		for (const config &b : cfg.child_range("ban"))
 		{
 			try {
 				banned_ptr new_ban(new banned(b));
@@ -283,7 +282,7 @@ static lg::log_domain log_server("server");
 		// load deleted too
 		if (const config &cfg_del = cfg.child("deleted"))
 		{
-			BOOST_FOREACH(const config &b, cfg_del.child_range("ban"))
+			for (const config &b : cfg_del.child_range("ban"))
 			{
 				try {
 					banned_ptr new_ban(new banned(b));
@@ -550,7 +549,7 @@ static lg::log_domain log_server("server");
 	{
 		ban_set temp;
 		std::insert_iterator<ban_set> temp_inserter(temp, temp.begin());
-		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, boost::bind(&banned::match_group,boost::bind(&banned_ptr::get,_1),group));
+		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, std::bind(&banned::match_group,std::bind(&banned_ptr::get,_1),group));
 
 		os << "Removed " << (bans_.size() - temp.size()) << " bans";
 		bans_.swap(temp);
@@ -646,7 +645,7 @@ static lg::log_domain log_server("server");
 
 			out << *groups.begin();
 			std::ostream& (*fn)(std::ostream&,const std::string&) = &std::operator<<;
-			std::for_each( ++groups.begin(), groups.end(), boost::bind(fn,boost::bind(fn,boost::ref(out),std::string(", ")),_1));
+			std::for_each( ++groups.begin(), groups.end(), std::bind(fn,std::bind(fn,std::ref(out),std::string(", ")),_1));
 		}
 
 	}
@@ -660,7 +659,7 @@ static lg::log_domain log_server("server");
 		} catch (banned::error&) {
 			return "";
 		}
-		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), pair));
+		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), std::bind(&banned::match_ip, std::bind(&banned_ptr::get, _1), pair));
 		if (ban == bans_.end()) return "";
 		const std::string& nick = (*ban)->get_nick();
 		return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (" + (*ban)->get_human_time_span() + ")";
@@ -696,7 +695,7 @@ static lg::log_domain log_server("server");
 	void ban_manager::load_config(const config& cfg)
 	{
 		ban_times_.clear();
-		BOOST_FOREACH(const config &bt, cfg.child_range("ban_time")) {
+		for (const config &bt : cfg.child_range("ban_time")) {
 			time_t duration = 0;
 			if (parse_time(bt["time"], &duration)) {
 				ban_times_.insert(default_ban_times::value_type(bt["name"], duration));

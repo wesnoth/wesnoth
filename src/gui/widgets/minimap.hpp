@@ -17,10 +17,15 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 class config;
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * The basic minimap class.
@@ -31,23 +36,23 @@ namespace gui2
 class tminimap : public tcontrol
 {
 public:
-	tminimap() : tcontrol(1), map_data_(), terrain_(NULL)
+	tminimap() : tcontrol(1), map_data_(), terrain_(nullptr)
 	{
 	}
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -91,18 +96,48 @@ private:
 	 * @param w                   The wanted width of the image.
 	 * @param h                   The wanted height of the image.
 	 *
-	 * @returns                   The image, NULL upon error.
+	 * @returns                   The image, nullptr upon error.
 	 */
 	const surface get_image(const int w, const int h) const;
 
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tminimap_definition : public tcontrol_definition
+{
+	explicit tminimap_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_minimap : public tbuilder_control
+{
+	explicit tbuilder_minimap(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

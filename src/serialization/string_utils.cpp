@@ -31,7 +31,7 @@
 #include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_engine("engine");
-#define ERR_GENERAL LOG_STREAM(err, lg::general)
+#define ERR_GENERAL LOG_STREAM(err, lg::general())
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace utils {
@@ -231,7 +231,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
 						for (int k=begin; k!=end; k+=increment) {
-							std::string pb = boost::lexical_cast<std::string>(k);
+							std::string pb = std::to_string(k);
 							for (size_t p=pb.size(); p<=padding; p++)
 								pb = std::string("0") + pb;
 							square_expansion.push_back(pb);

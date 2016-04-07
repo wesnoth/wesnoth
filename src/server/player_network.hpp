@@ -19,8 +19,8 @@
 #include "player.hpp"
 #include "simple_wml.hpp"
 
-#include "utils/boost_function_guarded.hpp"
-#include "../log.hpp"
+#include "utils/functional.hpp"
+#include "log.hpp"
 
 extern lg::log_domain log_config_pn;
 namespace wesnothd {

@@ -27,21 +27,21 @@
 #include <iostream>
 
 namespace {
-	const std::string scrollbar_top = "buttons/scrolltop.png";
-	const std::string scrollbar_bottom = "buttons/scrollbottom.png";
-	const std::string scrollbar_mid = "buttons/scrollmid.png";
+	const std::string scrollbar_top = "buttons/scrollbars/scrolltop.png";
+	const std::string scrollbar_bottom = "buttons/scrollbars/scrollbottom.png";
+	const std::string scrollbar_mid = "buttons/scrollbars/scrollmid.png";
 
-	const std::string scrollbar_top_hl = "buttons/scrolltop-active.png";
-	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
-	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
+	const std::string scrollbar_top_hl = "buttons/scrollbars/scrolltop-active.png";
+	const std::string scrollbar_bottom_hl = "buttons/scrollbars/scrollbottom-active.png";
+	const std::string scrollbar_mid_hl = "buttons/scrollbars/scrollmid-active.png";
 
-	const std::string scrollbar_top_pressed = "buttons/scrolltop-pressed.png";
-	const std::string scrollbar_bottom_pressed = "buttons/scrollbottom-pressed.png";
-	const std::string scrollbar_mid_pressed = "buttons/scrollmid-pressed.png";
+	const std::string scrollbar_top_pressed = "buttons/scrollbars/scrolltop-pressed.png";
+	const std::string scrollbar_bottom_pressed = "buttons/scrollbars/scrollbottom-pressed.png";
+	const std::string scrollbar_mid_pressed = "buttons/scrollbars/scrollmid-pressed.png";
 
-	const std::string groove_top = "buttons/scrollgroove-top.png";
-	const std::string groove_mid = "buttons/scrollgroove-mid.png";
-	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
+	const std::string groove_top = "buttons/scrollbars/scrollgroove-top.png";
+	const std::string groove_mid = "buttons/scrollbars/scrollgroove-mid.png";
+	const std::string groove_bottom = "buttons/scrollbars/scrollgroove-bottom.png";
 
 }
 
@@ -49,8 +49,8 @@ namespace gui {
 
 scrollbar::scrollbar(CVideo &video)
 	: widget(video)
-	, mid_scaled_(NULL)
-	, groove_scaled_(NULL)
+	, mid_scaled_(nullptr)
+	, groove_scaled_(nullptr)
 	, uparrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
 			, gui::button::DEFAULT_SPACE, true,"icons/arrows/arrows_ornate_up_25")
 	, downarrow_(video, "", button::TYPE_TURBO, "button_square/button_square_25"
@@ -68,7 +68,7 @@ scrollbar::scrollbar(CVideo &video)
 
 	static const surface img(image::get_image(scrollbar_mid));
 
-	if (img != NULL) {
+	if (img != nullptr) {
 		set_width(img->w);
 		// this is a bit rough maybe
 		minimum_grip_height_ = 2 * img->h;
@@ -267,8 +267,8 @@ void scrollbar::draw_contents()
 	const surface mid_grv(image::get_image(groove_mid));
 	const surface bottom_grv(image::get_image(groove_bottom));
 
-	if (mid_img == NULL || bottom_img == NULL || top_img == NULL
-	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL) {
+	if (mid_img == nullptr || bottom_img == nullptr || top_img == nullptr
+	 || top_grv == nullptr || bottom_grv == nullptr || mid_grv == nullptr) {
 		std::cerr << "Failure to load scrollbar image.\n";
 		return;
 	}
@@ -344,13 +344,6 @@ void scrollbar::handle_event(const SDL_Event& event)
 		SDL_MouseButtonEvent const &e = event.button;
 		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 		bool on_groove = sdl::point_in_rect(e.x, e.y, groove);
-#if !SDL_VERSION_ATLEAST(2,0,0)
-		if (on_groove && e.button == SDL_BUTTON_WHEELDOWN) {
-			move_position(scroll_rate_);
-		} else if (on_groove && e.button == SDL_BUTTON_WHEELUP) {
-			move_position(-scroll_rate_);
-		} else
-#endif
 		if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
@@ -379,7 +372,6 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
-#if SDL_VERSION_ATLEAST(2,0,0)
 	case SDL_MOUSEWHEEL:
 	{
 		const SDL_MouseWheelEvent& e = event.wheel;
@@ -393,7 +385,6 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
-#endif
 	default:
 		break;
 	}
@@ -401,7 +392,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 
 	if (new_state != state_) {
 		set_dirty();
-		mid_scaled_.assign(NULL);
+		mid_scaled_.assign(nullptr);
 		state_ = new_state;
 	}
 }

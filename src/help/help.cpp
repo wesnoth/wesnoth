@@ -34,14 +34,13 @@
 #include "log.hpp"                      // for LOG_STREAM, log_domain
 #include "sdl/utils.hpp"                // for surface
 #include "show_dialog.hpp"              // for dialog_frame, etc
-#include "terrain.hpp"                  // for terrain_type
-#include "unit.hpp"                     // for unit
-#include "unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "terrain/terrain.hpp"                  // for terrain_type
+#include "units/unit.hpp"                     // for unit
+#include "units/types.hpp"               // for unit_type, unit_type_data, etc
 #include "video.hpp"                    // for CVideo, resize_lock
 #include "widgets/button.hpp"           // for button
 
 #include <assert.h>                     // for assert
-#include <stddef.h>                     // for NULL
 #include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
@@ -90,16 +89,18 @@ void show_unit_description(CVideo& video, const unit_type &t)
 		help::show_unit_help(video, t.id(), t.show_variations_in_help(), hide_help);
 }
 
+extern config dummy_cfg;
+
 help_manager::help_manager(const config *cfg) //, gamemap *_map)
 {
-	game_cfg = cfg == NULL ? &dummy_cfg : cfg;
+	game_cfg = cfg == nullptr ? &dummy_cfg : cfg;
 //	map = _map;
 }
 
 help_manager::~help_manager()
 {
-	game_cfg = NULL;
-//	map = NULL;
+	game_cfg = nullptr;
+//	map = nullptr;
 	toplevel.clear();
 	hidden_sections.clear();
     // These last numbers must be reset so that the content is regenerated.
@@ -116,7 +117,6 @@ help_manager::~help_manager()
 void show_help(CVideo& video, const std::string& show_topic, int xloc, int yloc)
 {
 	show_help(video, toplevel, show_topic, xloc, yloc);
-	video.flip();
 }
 
 /**
@@ -128,7 +128,6 @@ void show_unit_help(CVideo& video, const std::string& show_topic, bool has_varia
 {
 	show_help(video, toplevel,
 			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
-	video.flip();
 }
 
 /**
@@ -139,7 +138,6 @@ void show_unit_help(CVideo& video, const std::string& show_topic, bool has_varia
 void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
 	show_help(video, toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
-	video.flip();
 }
 
 
@@ -150,7 +148,6 @@ void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden
 void show_variation_help(CVideo& video, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
 {
 	show_help(video, toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
-	video.flip();
 }
 
 /**
@@ -165,12 +162,11 @@ void show_help(CVideo& video, const section &toplevel_sec,
 {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
-	const resize_lock prevent_resizing;
 
 	CVideo& screen = video;
 	const surface& scr = screen.getSurface();
 
-	const int width  = std::min<int>(font::relative_size(1250), scr->w - font::relative_size(20));
+	const int width  = std::min<int>(font::relative_size(1200), scr->w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), scr->h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
@@ -219,7 +215,6 @@ void show_help(CVideo& video, const section &toplevel_sec,
 		}
 		hb.set_dirty(true);
 		events::raise_draw_event();
-		video.flip();
 		CKey key;
 		for (;;) {
 			events::pump();

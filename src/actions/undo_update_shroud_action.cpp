@@ -1,7 +1,6 @@
 #include "undo_update_shroud_action.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../replay.hpp"
+#include "resources.hpp"
+#include "replay.hpp"
 
 namespace actions
 {

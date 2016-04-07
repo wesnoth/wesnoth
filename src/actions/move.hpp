@@ -24,7 +24,7 @@ struct map_location;
 class  replay;
 class  unit;
 
-#include "../unit_map.hpp"
+#include "units/map.hpp"
 
 #include <vector>
 
@@ -97,7 +97,7 @@ private:
  * Returns true if getting the village triggered a mutating event.
  * side can be 0 to make teh village uncaptured.
  */
-bool get_village(const map_location& loc, int side, bool *time_bonus = NULL, bool fire_event = true);
+bool get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 
 /// Moves a unit across the board.
 /// And enters the synced context.
@@ -105,8 +105,8 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
                  bool continued_move = false,
 				 bool show_move = true,
-                 bool* interrupted = NULL,
-                 move_unit_spectator* move_spectator = NULL);
+                 bool* interrupted = nullptr,
+                 move_unit_spectator* move_spectator = nullptr);
 
 /// Moves a unit across the board.
 /// to be called from replay when we are already in the synced context.

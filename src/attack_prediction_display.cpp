@@ -24,8 +24,8 @@
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "sdl/alpha.hpp"
-#include "unit.hpp"
-#include "unit_abilities.hpp"
+#include "units/unit.hpp"
+#include "units/abilities.hpp"
 
 // Conversion routine for both unscathed and damage change percentage.
 static void format_prob(char str_buf[10], double prob)
@@ -151,7 +151,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 	char str_buf[10];
 
 	// With a weapon.
-	if(stats.weapon != NULL) {
+	if(stats.weapon != nullptr) {
 
 		// Set specials context (for safety, it should not have changed normally).
 		const attack_type *weapon = stats.weapon;
@@ -162,7 +162,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), stats.backstab_pos);
 
 		// Get the SET damage modifier, if any.
-		const unit_abilities::individual_effect *set_dmg_effect = NULL;
+		const unit_abilities::individual_effect *set_dmg_effect = nullptr;
 		unit_abilities::effect::const_iterator i;
 		for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 			if(i->type == unit_abilities::SET) {
@@ -172,7 +172,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		}
 
 		// Either user the SET modifier or the base weapon damage.
-		if(set_dmg_effect == NULL) {
+		if(set_dmg_effect == nullptr) {
 			left_strings.push_back(weapon->name());
 			str.str("");
 			str << weapon->damage();
@@ -504,7 +504,6 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 		int bar_len = std::max<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 		SDL_Rect bar_rect_1 = sdl::create_rect(hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8);
 		sdl::fill_rect(surf, &bar_rect_1, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.a, 100));
 
@@ -516,19 +515,6 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 		SDL_Rect bar_rect_4 = sdl::create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
 		sdl::fill_rect(surf, &bar_rect_4, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.a, 0));
-#else
-		SDL_Rect bar_rect_1 = sdl::create_rect(hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8);
-		sdl::fill_rect(surf, &bar_rect_1, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 100));
-
-		SDL_Rect bar_rect_2 = sdl::create_rect(hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6);
-		sdl::fill_rect(surf, &bar_rect_2, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 66));
-
-		SDL_Rect bar_rect_3 = sdl::create_rect(hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4);
-		sdl::fill_rect(surf, &bar_rect_3, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 33));
-
-		SDL_Rect bar_rect_4 = sdl::create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
-		sdl::fill_rect(surf, &bar_rect_4, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 0));
-#endif
 
 		// Draw probability percentage, aligned right.
 		format_prob(str_buf, prob);
@@ -548,7 +534,7 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
 
-		gui::show_dialog(resources::screen->video(), NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
+		gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
 	}
 
 	return gui::CONTINUE_DIALOG;

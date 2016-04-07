@@ -16,20 +16,23 @@
 
 #include "gui/widgets/matrix.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/matrix.hpp"
-#include "gui/auxiliary/window_builder/matrix.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/core/window_builder/helper.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(matrix)
 
@@ -55,7 +58,7 @@ unsigned tstate_default::get_state() const
 }
 
 tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
-	: tbase(builder, get_control_type()), content_(), pane_(NULL)
+	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
 	boost::intrusive_ptr<const tmatrix_definition::tresolution>
 	cfg = boost::dynamic_pointer_cast<const tmatrix_definition::tresolution>(
@@ -179,7 +182,7 @@ iterator::twalker_* tmatrix::create_walker()
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
 
 const std::string& tmatrix::get_control_type() const
@@ -187,5 +190,125 @@ const std::string& tmatrix::get_control_type() const
 	static const std::string type = "matrix";
 	return type;
 }
+
+// }---------- DEFINITION ---------{
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_matrix
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="matrix_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * == Listbox ==
+ *
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
+ *
+ *
+ * @begin{tag}{name="state_enabled"}{min=1}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @begin{tag}{name="state_disabled"}{min=1}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_disabled"}
+ * @begin{tag}{name="content"}{min=1}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="content"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="matrix_definition"}
+ * @end{parent}{name="gui/"}
+ */
+
+tmatrix_definition::tmatrix_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing matrix " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+tmatrix_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, content(new tbuilder_grid(cfg.child("content", "[matrix_definition]")))
+{
+	// Note the order should be the same as the enum tstate in matrix.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_matrix
+ *
+ * == Listbox ==
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="matrix"}{min=0}{max=-1}{super="generic/widget_instance"}
+ *
+ *
+ * List with the matrix specific variables:
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ * @end{table}
+ *
+ *
+ * @begin{tag}{name="top"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="top"}
+ * @begin{tag}{name="bottom"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="bottom"}
+ *
+ * @begin{tag}{name="left"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="left"}
+ * @begin{tag}{name="right"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="right"}
+ *
+ * @begin{tag}{name="main"}{min="1"}{max="1"}{super="gui/window/resolution/grid/row/column"}
+ * @end{tag}{name="main"}
+ * @end{tag}{name="matrix"}
+ *
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_matrix::tbuilder_matrix(const config& cfg)
+	: tbuilder_control(cfg)
+	, vertical_scrollbar_mode(
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, builder_top(nullptr)
+	, builder_bottom(nullptr)
+	, builder_left(nullptr)
+	, builder_right(nullptr)
+	, builder_main(create_builder_widget(cfg.child("main", "[matrix]")))
+{
+	if(const config& top = cfg.child("top")) {
+		builder_top = new tbuilder_grid(top);
+	}
+
+	if(const config& bottom = cfg.child("bottom")) {
+		builder_bottom = new tbuilder_grid(bottom);
+	}
+
+	if(const config& left = cfg.child("left")) {
+		builder_left = new tbuilder_grid(left);
+	}
+
+	if(const config& right = cfg.child("right")) {
+		builder_right = new tbuilder_grid(right);
+	}
+}
+
+twidget* tbuilder_matrix::build() const
+{
+	return tmatrix::build(*this);
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

@@ -18,7 +18,7 @@
  * @file
  */
 
-#include "contexts.hpp"
+#include "ai/composite/contexts.hpp"
 
 // =======================================================================
 namespace ai {

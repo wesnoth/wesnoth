@@ -29,15 +29,13 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
-#include "terrain_filter.hpp"
-#include "unit.hpp"
-#include "unit_filter.hpp"
-#include "unit_map.hpp"
-#include "unit_types.hpp"
+#include "terrain/filter.hpp"
+#include "units/unit.hpp"
+#include "units/filter.hpp"
+#include "units/map.hpp"
 #include "util.hpp"
 #include "variable.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -67,13 +65,13 @@ namespace { // Support functions
 		// then check for that.
 		const vconfig::child_list& have_unit = cond.get_children("have_unit");
 		for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
-			if(resources::units == NULL)
+			if(resources::units == nullptr)
 				return false;
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			int match_count = 0;
 			const unit_filter ufilt(*u, resources::filter_con);
-			BOOST_FOREACH(const unit &i, *resources::units)
+			for (const unit &i : *resources::units)
 			{
 				if ( i.hitpoints() > 0  &&  ufilt(i) ) {
 					++match_count;
@@ -126,7 +124,7 @@ namespace { // Support functions
 		// to see if the variable matches the conditions or not.
 		const vconfig::child_list& variables = cond.get_children("variable");
 
-		BOOST_FOREACH(const vconfig &values, variables)
+		for (const vconfig &values : variables)
 		{
 			const std::string name = values["name"];
 			config::attribute_value value = resources::gamedata->get_variable_const(name);

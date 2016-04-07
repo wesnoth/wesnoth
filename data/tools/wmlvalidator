@@ -7,13 +7,14 @@ Use --help to see usage.
 #TODO:
 #-define verbosity levels better
 
+from __future__ import print_function
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 import wesnoth.wmlgrammar as wmlgrammar
 import re
 
 def print_indent(string, depth, char=' '):
-    print "%s%s" % (depth * char, string)
+    print("%s%s" % (depth * char, string))
 
 class Validator:
     """
@@ -22,6 +23,22 @@ class Validator:
     def __init__(self, schema, verbosity=0):
         self.schema = wmlgrammar.Grammar(schema)
         self.verbosity = verbosity
+        self.validate_result = {}
+
+    def validate_result_add(self, from_file, line, origin, message):
+        if not from_file in self.validate_result:
+            self.validate_result[from_file] = []
+
+        self.validate_result[from_file].append({'line': line, 'origin': origin, 'message': message})
+
+    def validate_result_print(self):
+        normal = '\033[0m'
+        bold = '\033[1m'
+        underline = '\033[4m'
+        for k, v in self.validate_result.iteritems():
+            print("%s%s%s" % (bold, k, normal))
+            for i in v:
+                print("%s#%d: %s%s %s" % (underline, i['line'], i['origin'], normal, i['message']))
 
     def validate(self, node, depth=0, name=None):
         """
@@ -41,47 +58,126 @@ class Validator:
         try:
             schema = self.schema.get_element(name)
         except KeyError:
-            print "No valid schema found for %s" % verbosename
+            print("No valid schema found for %s" % verbosename)
             return
-
-
-        # TODO: the blocks below probably need to be rewritten
 
         # Validate the attributes
         for attribute in schema.get_attributes():
             matches = node.get_texts(attribute.name)
+
+            # Check frequency
             nummatches = len(matches)
             if attribute.freq == wmlgrammar.REQUIRED and nummatches != 1:
-                print "(%s:%d) Attribute '[%s] %s' should appear exactly once, not %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
+                self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should appear exactly once, not %d times" % nummatches)
             elif attribute.freq == wmlgrammar.OPTIONAL and nummatches > 1:
-                print "(%s:%d) Attribute '[%s] %s' should appear at most once, not %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
+                self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should appear at most once, not %d times" % nummatches)
             elif attribute.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
-                print "(%s:%d) Attribute '[%s] %s' should not appear. It appears %d times" % (node.file, node.line, verbosename, attribute.name, nummatches)
+                self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Should not appear. It appears %d times" % nummatches)
+
+            # Check use
             for match in matches:
-                if not attribute.validate(match.data):
-                    print "(%s:%d) Attribute '[%s] %s's value should be %s, found: %s" % (node.file, node.line, verbosename, attribute.name, attribute.type, match.data)
+                if 'translatable' in attribute.optionals and match.is_translatable() == False:
+                    self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value is translatable, but haven't _ at the beginning")
+                elif 'translatable' not in attribute.optionals and 'optional-translatable' not in attribute.optionals and match.is_translatable() == True:
+                    self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Value isn't translatable, but have a _ at the beginning")
+
+                def check_attribute_value(value, pos=None):
+                    def gerate_message_with_pos():
+                        if pos is None:
+                            return ""
+                        else:
+                            return " (At position %d)" % pos
+
+                    if not attribute.validate(value):
+                        self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value should be %s, found: %s" % (attribute.type, value))
+
+                    regex_limit = re.compile(ur'^limit\((\d+.\d+|\d+),(\d+.\d+|\d+)\)$')
+                    check_limit = [i for i in attribute.optionals if regex_limit.search(i)]
+                    if len(check_limit):
+                        check_limit = check_limit[0]
+                        number_min, number_max = regex_limit.search(check_limit).groups()
+
+                        if float(value) > float(number_max) or float(value) < float(number_min):
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value must be between %s and %s, found : %s" % (number_min, number_max, value))
+
+                    regex_limit_lower = re.compile(ur'^limit-lower\((\d+.\d+|\d+)\)$')
+                    check_limit_lower = [i for i in attribute.optionals if regex_limit_lower.search(i)]
+                    if len(check_limit_lower):
+                        check_limit_lower = check_limit_lower[0]
+                        number = regex_limit_lower.search(check_limit_lower).group(1)
+
+                        if float(value) < float(number):
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value needs to be at least %s, found : %s" % (number, value))
+
+                    regex_limit_max = re.compile(ur'^limit-max\((\d+.\d+|\d+)\)$')
+                    check_limit_max = [i for i in attribute.optionals if regex_limit_max.search(i)]
+                    if len(check_limit_max):
+                        check_limit_max = check_limit_max[0]
+                        number = regex_limit_max.search(check_limit_max).group(1)
+
+                        if float(value) > float(number):
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "Value needs to be at max %s, found : %s" % (number, value))
+
+                    regex_file_exist = re.compile(ur'^need-file-in\(([\w.\-\/]+)\)$')
+                    check_file_exist = [i for i in attribute.optionals if regex_file_exist.search(i)]
+                    if len(check_file_exist):
+                        check_file_exist = check_file_exist[0]
+                        directory = regex_file_exist.search(check_file_exist).group(1)
+
+                        value_directory, value_file = re.search(re.compile(ur'(?:(.*)?\/)?(.+)'), value).groups()
+
+                        import glob
+                        if directory == '.':
+                            sub_directory = os.path.dirname(node.file) + '/'
+                        else:
+                            sub_directory = os.path.dirname(node.file) + '/' + directory + '/'
+
+                        if not value_directory is None:
+                            sub_directory += value_directory + '/'
+
+                        files_from_sub_directory = glob.glob(sub_directory + '*')
+
+                        # We just want the names of the files from directory, but...
+                        if os.path.splitext(value_file)[1] == '':
+                            # ... if without extension in the value_file, then it is implied. In this case, we do want extensions
+                            files_from_sub_directory = [re.sub(re.compile(r'^.*\/(.*)\..*'), r'\1', i) for i in files_from_sub_directory]
+                        else:
+                            files_from_sub_directory = [re.sub(re.compile(r'^.*\/(.*)'), r'\1', i) for i in files_from_sub_directory]
+
+                        if not value_file in files_from_sub_directory:
+                            self.validate_result_add(node.file, node.line, "Attribute [%s] %s%s" % (verbosename, attribute.name, gerate_message_with_pos()), "The file %s not exist in directory %s" % (value_file, sub_directory))
+
+                if 'list' in attribute.optionals:
+                    pos = 1
+                    for i in match.data.split(","):
+                        if i[0] == ' ': i = i[1:]
+                        check_attribute_value(i, pos=pos)
+                        pos += 1
+                else:
+                    check_attribute_value(match.data)
                 node.remove(match) # Get rid of these so we can see what's left
         for attribute in node.get_all_text():
-            print "(%s:%d) Attribute '[%s] %s' found, which has no meaning there" % (node.file, node.line, verbosename, attribute.name)
+            self.validate_result_add(node.file, node.line, "Attribute [%s] %s" % (verbosename, attribute.name), "Found, which has no meaning there")
 
         # Validate the elements
         for element in schema.get_elements():
             matches = node.get_subs(element.name)
+
+            # Check frequency
             nummatches = len(matches)
             if element.freq == wmlgrammar.REQUIRED and nummatches != 1:
-                print "(%s:%d) Element '[%s] [%s]' should appear exactly once, not %d times" % (node.file, node.line, verbosename, element.name, nummatches)
+                self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear exactly once, not %d times" % nummatches)
             elif element.freq == wmlgrammar.OPTIONAL and nummatches > 1:
-                print "(%s:%d) Element '[%s] [%s]' should appear at most once, not %d times" % (node.file, node.line, verbosename, element.name, nummatches)
+                self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should appear at most once, not %d times" % nummatches)
+            elif element.freq == wmlgrammar.FORBIDDEN and nummatches > 0:
+                self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Should not appear. It appears %d times" % nummatches)
+
+            # Check sub
             for match in matches:
                 self.validate(match, depth+1, element.subname)
                 node.remove(match)
-
         for element in node.get_all_subs():
-            print "(%s:%d) Element '[%s] [%s]' found, which has no meaning there" % (node.file, node.line, verbosename, element.name)
-            # Do we want to do this?
-            if False:
-                print "Attempting to validate [%s] anyway" % element.name
-                self.validate(element, depth+1)
+            self.validate_result_add(node.file, node.line, "Element [%s] [%s]" % (verbosename, element.name), "Found, which has no meaning there")
 
 if __name__ == '__main__':
     import argparse, subprocess, os, codecs, sys
@@ -112,8 +208,14 @@ if __name__ == '__main__':
         help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
     ap.add_argument("filename",
         nargs = "*",
-        help = "Files to validate")
+        help = "Files to validate or directory. If it is a directory, get all the cfg files from directory")
     args = ap.parse_args()
+    if args.path:
+        args.path = os.path.expanduser(args.path)
+    if args.userpath:
+        args.userpath = os.path.expanduser(args.userpath)
+    if args.filename:
+        args.filename = [os.path.expanduser(i) for i in args.filename]
 
     if not args.path:
         try:
@@ -125,11 +227,21 @@ if __name__ == '__main__':
             args.path = '.'
             sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (args.path, ) )
 
+    list_files_analyze = []
     if len(args.filename) < 1:
-        args.filename.append(os.path.join(args.path, '_main.cfg'))
+        list_files_analyze.append(os.path.join(args.path, '_main.cfg'))
+
+    for i in args.filename:
+        if os.path.isdir(i):
+            if i[-1] != '/':
+                i += '/'
+            cfg_from_dir = [i + cfg for cfg in os.listdir(i) if cfg[-3:] == 'cfg']
+            list_files_analyze += cfg_from_dir
+        else:
+            list_files_analyze.append(i)
 
     if args.verbose > 1:
-        print "Args: %s\n"% (args, )
+        print("Args: %s\n"% (args, ))
 
     if not args.schema:
         args.schema = os.path.join(args.path, 'schema.cfg')
@@ -155,7 +267,7 @@ if __name__ == '__main__':
 
     if args.userpath:
         parser.parse_text("{~add-ons}")
-    for file in args.filename:
+    for file in list_files_analyze:
         parser.parse_file(file)
     for macro in args.defines:
         parser.parse_text("#define %s \n#enddef" % (macro, ) )
@@ -165,5 +277,6 @@ if __name__ == '__main__':
 
     # Validate
     validator.validate(data)
+    validator.validate_result_print()
 
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:

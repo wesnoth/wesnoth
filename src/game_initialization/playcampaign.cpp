@@ -34,7 +34,7 @@
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "log.hpp"
-#include "map_exception.hpp"
+#include "map/exception.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer.hpp"
 #include "connect_engine.hpp"
@@ -44,11 +44,9 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
-
-#include <boost/foreach.hpp>
+#include "formula/string_utils.hpp"
 
 #define LOG_G LOG_STREAM(info, lg::general)
 
@@ -150,7 +148,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 	//We need to write the carryover amount to the team thats why we need non const
 	std::vector<team>& teams = *resources::teams;
 	int persistent_teams = 0;
-	BOOST_FOREACH(const team &t, teams) {
+	for (const team &t : teams) {
 		if (t.persistent()){
 			++persistent_teams;
 		}
@@ -162,7 +160,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 		gamemap map = playcontroller.get_map_const();
 		tod_manager tod = playcontroller.get_tod_manager_const();
 		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
-		BOOST_FOREACH(team &t, teams)
+		for (team &t : teams)
 		{
 			if (!t.persistent() || t.lost())
 			{
@@ -176,7 +174,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 				continue;
 			}
 			if (persistent_teams > 1) {
-				report << "\n<b>" << t.current_player() << "</b>\n";
+				report << "\n<b>" << t.side_name() << "</b>\n";
 			}
 
 			report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);
@@ -243,10 +241,7 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 		//(we want to see that message before entering the linger mode)
 		show_carryover_message(playcontroller, end_level, res);
 	}
-	if(!video_.faked())
-	{
-		playcontroller.maybe_linger();
-	}
+	playcontroller.maybe_linger();
 	playcontroller.update_savegame_snapshot();
 	if(mp_info_) {
 		mp_info_->connected_players = playcontroller.all_players();
@@ -284,7 +279,7 @@ LEVEL_RESULT campaign_controller::play_game()
 			state_.expand_mp_options();
 
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
-			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER || is_replay_) {
 				res = playsingle_scenario(end_level);
 				if(is_replay_) {
 					return res;
@@ -344,9 +339,8 @@ LEVEL_RESULT campaign_controller::play_game()
 		{
 			return res;
 		}
-		else if(res == LEVEL_RESULT::OBSERVER_END)
+		else if(res == LEVEL_RESULT::OBSERVER_END && mp_info_ && !mp_info_->is_host)
 		{
-			// TODO: does it make sense to ask this question if we are currently the host?
 			const int dlg_res = gui2::show_message(video_, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);
@@ -373,9 +367,10 @@ LEVEL_RESULT campaign_controller::play_game()
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = state_.get_starting_pos();
 
+				const bool is_mp = state_.classification().is_normal_mp_game();
 				state_.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				state_.mp_settings().saved_game = false;
-				state_.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
+				state_.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool(!is_mp);
 
 				ng::connect_engine_ptr connect_engine(new ng::connect_engine(state_, false, mp_info_));
 

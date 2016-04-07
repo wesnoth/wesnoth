@@ -57,10 +57,11 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 join(domain, domain + ".cpp.pot"),
                 sources,
                 """xgettext --force-po --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
-                --from-code=UTF-8 --sort-by-file --keyword=sgettext \
-                --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
+                --from-code=UTF-8 --sort-by-file \
+                --keyword=_ --keyword=N_ --keyword=sgettext --keyword=vgettext --keyword=VGETTEXT \
+                --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
                 --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
-                --keyword=_ --keyword=N_ --output=$TARGET \
+                --output=$TARGET \
                 ; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
                 """ % (domain, join("po", domain, "POTFILES.in"))
                 )
@@ -86,9 +87,9 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 ]
             )
         elif cfgs:
-            env.Command(new_pot, wml_pot, Move("$TARGET", "$SOURCE"))
+            env.Command(new_pot, wml_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(wml_pot)])
         else:
-            env.Command(new_pot, source_pot, Move("$TARGET", "$SOURCE"))
+            env.Command(new_pot, source_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(source_pot)])
         env.Command(pot, new_pot, Action(update_pot))
 
     env.Alias("pot-update", "../translations")

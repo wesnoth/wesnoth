@@ -23,10 +23,8 @@
 #include "sound_music_track.hpp"
 #include "util.hpp"
 
-#include "SDL_mixer.h"
-#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
-
-#include <boost/foreach.hpp>
+#include <SDL_mixer.h>
+#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
 
 #include <list>
 #include <string>
@@ -97,7 +95,7 @@ static void increment_chunk_usage(Mix_Chunk* mcp) {
 }
 
 static void decrement_chunk_usage(Mix_Chunk* mcp) {
-	if(mcp == NULL) return;
+	if(mcp == nullptr) return;
 	std::map< Mix_Chunk*, int >::iterator this_usage = chunk_usage.find(mcp);
 	assert(this_usage != chunk_usage.end());
 	if(--(this_usage->second) == 0) {
@@ -110,7 +108,7 @@ namespace {
 
 class sound_cache_chunk {
 public:
-	sound_cache_chunk(const std::string& f) : group(sound::NULL_CHANNEL), file(f), data_(NULL) {}
+	sound_cache_chunk(const std::string& f) : group(sound::NULL_CHANNEL), file(f), data_(nullptr) {}
 	sound_cache_chunk(const sound_cache_chunk& scc)
 		: group(scc.group), file(scc.file), data_(scc.data_)
 	{
@@ -309,7 +307,7 @@ namespace sound {
 // Removes channel-chunk and channel-id mapping
 static void channel_finished_hook(int channel)
 {
-	channel_chunks[channel] = NULL;
+	channel_chunks[channel] = nullptr;
 	channel_ids[channel] = -1;
 }
 
@@ -331,7 +329,7 @@ bool init_sound() {
 		Mix_ReserveChannels(n_reserved_channels);
 
 		channel_chunks.clear();
-		channel_chunks.resize(n_of_channels, NULL);
+		channel_chunks.resize(n_of_channels, nullptr);
 		channel_ids.resize(n_of_channels, -1);
 
 		Mix_GroupChannel(bell_channel, SOUND_BELL);
@@ -510,7 +508,7 @@ static void play_new_music()
 		SDL_RWops *rwops = filesystem::load_RWops(filename);
 		Mix_Music* const music = Mix_LoadMUSType_RW(rwops, MUS_NONE, true); // SDL takes ownership of rwops
 
-		if(music == NULL) {
+		if(music == nullptr) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
 					  << Mix_GetError() << "\n";
 			return;
@@ -629,7 +627,7 @@ void commit_music_changes()
 		return;
 
 	// If current track no longer on playlist, change it.
-	BOOST_FOREACH(const music_track &m, current_track_list) {
+	for (const music_track &m : current_track_list) {
 		if (current_track == m)
 			return;
 	}
@@ -647,7 +645,7 @@ void write_music_play_list(config& snapshot)
 {
 	// First entry clears playlist, others append to it.
 	bool append = false;
-	BOOST_FOREACH(music_track &m, current_track_list) {
+	for (music_track &m : current_track_list) {
 		m.write(snapshot, append);
 		append = true;
 	}
@@ -740,7 +738,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 			throw chunk_load_exception();
 		}
 
-		if (temp_chunk.get_data() == NULL) {
+		if (temp_chunk.get_data() == nullptr) {
 			ERR_AUDIO << "Could not load sound file '" << filename << "': "
 				<< Mix_GetError() << "\n";
 			throw chunk_load_exception();

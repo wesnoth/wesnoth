@@ -6,7 +6,7 @@ local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lu
 
 local ca_wolves_multipacks_wander = {}
 
-function ca_wolves_multipacks_wander:evaluation(ai, cfg)
+function ca_wolves_multipacks_wander:evaluation(cfg)
     -- When there's nothing to attack, the wolves wander and regroup into their packs
 
     local wolves = AH.get_units_with_moves {
@@ -18,7 +18,7 @@ function ca_wolves_multipacks_wander:evaluation(ai, cfg)
     return 0
 end
 
-function ca_wolves_multipacks_wander:execution(ai, cfg)
+function ca_wolves_multipacks_wander:execution(cfg)
     local packs = WMPF.assign_packs(cfg)
 
     for pack_number,pack in pairs(packs) do

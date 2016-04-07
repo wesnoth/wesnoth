@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -67,7 +67,7 @@ bool on_wine()
 		return false;
 	}
 
-	return GetProcAddress(ntdll, "wine_get_version") != NULL;
+	return GetProcAddress(ntdll, "wine_get_version") != nullptr;
 }
 #endif
 
@@ -77,7 +77,7 @@ bool on_wine()
  */
 struct posix_pipe_release_policy
 {
-	void operator()(std::FILE* f) const { if(f != NULL) { pclose(f); } }
+	void operator()(std::FILE* f) const { if(f != nullptr) { pclose(f); } }
 };
 
 /**

@@ -16,17 +16,17 @@
 
 #include "gui/widgets/minimap.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/minimap.hpp"
-#include "gui/auxiliary/window_builder/minimap.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/core/log.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
-#include "map.hpp"
-#include "map_exception.hpp"
-#include "terrain_type_data.hpp"
-#include "../../minimap.hpp"
+#include "map/map.hpp"
+#include "map/exception.hpp"
+#include "terrain/type_data.hpp"
+#include "../../minimap.hpp" // We want the file in src/
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/make_shared.hpp>
 
 #include <algorithm>
@@ -42,6 +42,8 @@ static lg::log_domain log_config("config");
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 REGISTER_WIDGET(minimap)
 
@@ -130,7 +132,7 @@ static const size_t cache_max_size = 100;
  * normally doesn't happen a lot so the clearing of the cache is rather
  * unusual.
  */
-static const ::config* terrain = NULL;
+static const ::config* terrain = nullptr;
 
 /** The cache. */
 typedef std::map<tkey, tvalue> tcache;
@@ -183,7 +185,7 @@ bool tminimap::disable_click_dismiss() const
 const surface tminimap::get_image(const int w, const int h) const
 {
 	if(!terrain_) {
-		return NULL;
+		return nullptr;
 	}
 
 	if(terrain_ != terrain) {
@@ -214,7 +216,7 @@ const surface tminimap::get_image(const int w, const int h) const
 	try
 	{
 		const gamemap map(boost::make_shared<terrain_type_data>(*terrain_), map_data_);
-		const surface surf = image::getMinimap(w, h, map, NULL);
+		const surface surf = image::getMinimap(w, h, map, nullptr);
 		cache.insert(std::make_pair(key, tvalue(surf)));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';
@@ -228,7 +230,7 @@ const surface tminimap::get_image(const int w, const int h) const
 		std::cerr << 'X';
 #endif
 	}
-	return NULL;
+	return nullptr;
 }
 
 void tminimap::impl_draw_background(surface& frame_buffer,
@@ -251,7 +253,7 @@ void tminimap::impl_draw_background(surface& frame_buffer,
 
 	const ::surface surf = get_image(rect.w, rect.h);
 	if(surf) {
-		sdl_blit(surf, NULL, frame_buffer, &rect);
+		sdl_blit(surf, nullptr, frame_buffer, &rect);
 	}
 }
 
@@ -260,5 +262,90 @@ const std::string& tminimap::get_control_type() const
 	static const std::string type = "minimap";
 	return type;
 }
+
+// }---------- DEFINITION ---------{
+
+tminimap_definition::tminimap_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing minimap " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_minimap
+ *
+ * == Minimap ==
+ *
+ * @macro = minimap_description
+ *
+ * The following states exist:
+ * * state_enabled, the minimap is enabled.
+ * @begin{parent}{name="gui/"}
+ * @begin{tag}{name="minimap_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
+ * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
+ * @end{tag}{name="state_enabled"}
+ * @end{tag}{name="resolution"}
+ * @end{tag}{name="minimap_definition"}
+ * @end{parent}{name="gui/"}
+ */
+tminimap_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
+	// Note the order should be the same as the enum tstate in minimap.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+}
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{minimap_description}
+ *
+ *        A minimap to show the gamemap, this only shows the map and has no
+ *        interaction options. This version is used for map previews, there
+ *        will be a another version which allows interaction.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_minimap
+ *
+ * == Minimap ==
+ *
+ * @macro = minimap_description
+ *
+ * A minimap has no extra fields.
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="minimap"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @end{tag}{name="minimap"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_minimap::tbuilder_minimap(const config& cfg) : tbuilder_control(cfg)
+{
+}
+
+twidget* tbuilder_minimap::build() const
+{
+	tminimap* widget = new tminimap();
+
+	init_control(widget);
+
+	DBG_GUI_G << "Window builder: placed minimap '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	return widget;
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

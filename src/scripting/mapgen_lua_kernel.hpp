@@ -18,6 +18,7 @@
 #include "scripting/lua_kernel_base.hpp"
 #include <boost/optional.hpp>
 #include <boost/cstdint.hpp>
+#include <boost/random/mersenne_twister.hpp>
 
 class config;
 
@@ -34,9 +35,11 @@ public:
 	config create_scenario(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed); // throws game::lua_error
 
 	virtual boost::uint32_t get_random_seed();
+	boost::mt19937& get_default_rng();
 private:
 	void run_generator(const char * prog, const config & generator);
 	boost::optional<boost::uint32_t> random_seed_;
+	boost::optional<boost::mt19937> default_rng_;
 };
 
 #endif

@@ -18,8 +18,6 @@
 
 #include "addon/validation.hpp"
 
-#include <boost/foreach.hpp>
-
 BOOST_AUTO_TEST_SUITE( addons )
 
 BOOST_AUTO_TEST_CASE( validation )
@@ -78,7 +76,7 @@ BOOST_AUTO_TEST_CASE( encoding )
 	// There is no test for \x00 here because \x00 really shouldn't occur in
 	// a string -- otherwise things get weird.
 	//
-	BOOST_FOREACH(const char c, raw)
+	for(const char c : raw)
 	{
 		if(c == bin_escape || bin_special.find(c) != std::string::npos) {
 			encoded += bin_escape;

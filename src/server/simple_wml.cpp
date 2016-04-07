@@ -25,7 +25,7 @@
 
 #include "simple_wml.hpp"
 
-#include "../log.hpp"
+#include "log.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
@@ -238,7 +238,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if(s[1] == '/') {
 				output_cache_ = string_span(begin, s - begin);
 				s = strchr(s, ']');
-				if(s == NULL) {
+				if(s == nullptr) {
 					throw error("end element unterminated");
 				}
 
@@ -248,7 +248,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			++s;
 			const char* end = strchr(s, ']');
-			if(end == NULL) {
+			if(end == nullptr) {
 				throw error("unterminated element");
 			}
 
@@ -270,13 +270,13 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			break;
 		case '#':
 			s = strchr(s, '\n');
-			if(s == NULL) {
+			if(s == nullptr) {
 				throw error("did not find newline after '#'");
 			}
 			break;
 		default: {
 			const char* end = strchr(s, '=');
-			if(end == NULL) {
+			if(end == nullptr) {
 				ERR_SWML << "attribute: " << s << std::endl;
 				throw error("did not find '=' after attribute");
 			}
@@ -285,7 +285,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			s = end + 1;
 			if(*s == '_') {
 				s = strchr(s, '"');
-				if(s == NULL) {
+				if(s == nullptr) {
 					throw error("did not find '\"' after '_'");
 				}
 			}
@@ -310,7 +310,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 #endif
 					++end;
 				}
-				if(end == NULL)
+				if(end == nullptr)
 					throw error("did not find end of attribute");
 
 				// Stop if newline.
@@ -613,7 +613,7 @@ node* node::child(const char* name)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const node* node::child(const char* name) const
@@ -621,14 +621,14 @@ const node* node::child(const char* name) const
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
 			if(i->second.empty()) {
-				return NULL;
+				return nullptr;
 			} else {
 				return i->second.front();
 			}
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const node::child_list& node::children(const char* name) const
@@ -828,7 +828,7 @@ void node::apply_diff(const node& diff)
 {
 	set_dirty();
 	const node* inserts = diff.child("insert");
-	if(inserts != NULL) {
+	if(inserts != nullptr) {
 		for(attribute_list::const_iterator i = inserts->attr_.begin(); i != inserts->attr_.end(); ++i) {
 			char* name = i->first.duplicate();
 			char* value = i->second.duplicate();
@@ -839,7 +839,7 @@ void node::apply_diff(const node& diff)
 	}
 
 	const node* deletes = diff.child("delete");
-	if(deletes != NULL) {
+	if(deletes != nullptr) {
 		for(attribute_list::const_iterator i = deletes->attr_.begin(); i != deletes->attr_.end(); ++i) {
 			std::pair<attribute_list::iterator,
 	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->first, string_span_pair_comparer());
@@ -930,18 +930,18 @@ int node::nattributes_recursive() const
 
 void node::set_dirty()
 {
-	for(node* n = this; n != NULL && n->output_cache_.is_null() == false; n = n->parent_) {
+	for(node* n = this; n != nullptr && n->output_cache_.is_null() == false; n = n->parent_) {
 		n->output_cache_ = string_span();
 	}
 }
 
 document::document() :
 	compressed_buf_(),
-	output_(NULL),
+	output_(nullptr),
 	buffers_(),
-	root_(new node(*this, NULL)),
-	prev_(NULL),
-	next_(NULL)
+	root_(new node(*this, nullptr)),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	attach_list();
 }
@@ -950,15 +950,15 @@ document::document(char* buf, INIT_BUFFER_CONTROL control) :
 	compressed_buf_(),
 	output_(buf),
 	buffers_(),
-	root_(NULL),
-	prev_(NULL),
-	next_(NULL)
+	root_(nullptr),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	if(control == INIT_TAKE_OWNERSHIP) {
 		buffers_.push_back(buf);
 	}
 	const char* cbuf = buf;
-	root_ = new node(*this, NULL, &cbuf);
+	root_ = new node(*this, nullptr, &cbuf);
 
 	attach_list();
 }
@@ -967,15 +967,15 @@ document::document(const char* buf, INIT_STATE state) :
 	compressed_buf_(),
 	output_(buf),
 	buffers_(),
-	root_(NULL),
-	prev_(NULL),
-	next_(NULL)
+	root_(nullptr),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	if(state == INIT_COMPRESSED) {
 		output_compressed();
-		output_ = NULL;
+		output_ = nullptr;
 	} else {
-		root_ = new node(*this, NULL, &buf);
+		root_ = new node(*this, nullptr, &buf);
 	}
 
 	attach_list();
@@ -983,18 +983,18 @@ document::document(const char* buf, INIT_STATE state) :
 
 document::document(string_span compressed_buf) :
 	compressed_buf_(compressed_buf),
-	output_(NULL),
+	output_(nullptr),
 	buffers_(),
-	root_(NULL),
-	prev_(NULL),
-	next_(NULL)
+	root_(nullptr),
+	prev_(nullptr),
+	next_(nullptr)
 {
 	string_span uncompressed_buf;
 	buffers_.push_back(uncompress_buffer(compressed_buf, &uncompressed_buf));
 	output_ = uncompressed_buf.begin();
 	const char* cbuf = output_;
 	try {
-		root_ = new node(*this, NULL, &cbuf);
+		root_ = new node(*this, nullptr, &cbuf);
 	} catch(...) {
 		delete [] buffers_.front();
 		buffers_.clear();
@@ -1072,7 +1072,7 @@ const char* document::output()
 string_span document::output_compressed(bool bzip2)
 {
 	if(compressed_buf_.empty() == false &&
-	   (root_ == NULL || root_->is_dirty() == false)) {
+	   (root_ == nullptr || root_->is_dirty() == false)) {
 		assert(*compressed_buf_.begin() == (bzip2 ? 'B' : 31));
 		return compressed_buf_;
 	}
@@ -1087,8 +1087,8 @@ void document::compress()
 {
 	output_compressed();
 	debug_delete(root_);
-	root_ = NULL;
-	output_ = NULL;
+	root_ = nullptr;
+	output_ = nullptr;
 	std::vector<char*> new_buffers;
 	for(std::vector<char*>::iterator i = buffers_.begin(); i != buffers_.end(); ++i) {
 		if(*i != compressed_buf_.begin()) {
@@ -1104,16 +1104,16 @@ void document::compress()
 
 void document::generate_root()
 {
-	if(output_ == NULL) {
+	if(output_ == nullptr) {
 		assert(compressed_buf_.empty() == false);
 		string_span uncompressed_buf;
 		buffers_.push_back(uncompress_buffer(compressed_buf_, &uncompressed_buf));
 		output_ = uncompressed_buf.begin();
 	}
 
-	assert(root_ == NULL);
+	assert(root_ == nullptr);
 	const char* cbuf = output_;
-	root_ = new node(*this, NULL, &cbuf);
+	root_ = new node(*this, nullptr, &cbuf);
 }
 
 document* document::clone()
@@ -1137,9 +1137,9 @@ void document::swap(document& o)
 void document::clear()
 {
 	compressed_buf_ = string_span();
-	output_ = NULL;
+	output_ = nullptr;
 	debug_delete(root_);
-	root_ = new node(*this, NULL);
+	root_ = new node(*this, nullptr);
 	for(std::vector<char*>::iterator i = buffers_.begin(); i != buffers_.end(); ++i) {
 		delete [] *i;
 	}
@@ -1148,12 +1148,12 @@ void document::clear()
 }
 
 namespace {
-document* head_doc = NULL;
+document* head_doc = nullptr;
 }
 
 void document::attach_list()
 {
-	prev_ = NULL;
+	prev_ = nullptr;
 	next_ = head_doc;
 
 	if(next_) {
@@ -1175,7 +1175,7 @@ void document::detach_list()
 	if(prev_) {
 		prev_->next_ = next_;
 	}
-	next_ = prev_ = NULL;
+	next_ = prev_ = nullptr;
 }
 
 std::string document::stats()
@@ -1190,7 +1190,7 @@ std::string document::stats()
 	int nnodes = 0;
 	int ndirty = 0;
 	int nattributes = 0;
-	for(document* d = head_doc; d != NULL; d = d->next_) {
+	for(document* d = head_doc; d != nullptr; d = d->next_) {
 		ndocs++;
 		nbuffers += d->buffers_.size();
 

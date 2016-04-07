@@ -15,8 +15,8 @@
 #ifndef EXPLODER_CUTTER_HPP_INCLUDED
 #define EXPLODER_CUTTER_HPP_INCLUDED
 
-#include "../sdl/utils.hpp"
-#include "../config.hpp"
+#include "sdl/utils.hpp"
+#include "config.hpp"
 #include "exploder_utils.hpp"
 
 class cutter
@@ -26,7 +26,7 @@ public:
 	{
 		mask()
 			: name()
-			, image(NULL)
+			, image(nullptr)
 			, filename()
 			, shift()
 			, cut()
@@ -45,7 +45,7 @@ public:
 		positioned_surface()
 			: name()
 			, pos()
-			, image(NULL)
+			, image(nullptr)
 			, mask()
 		{
 		}

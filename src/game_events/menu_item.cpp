@@ -19,27 +19,27 @@
 
 #include "menu_item.hpp"
 
-#include "../global.hpp"
+#include "global.hpp"
 
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
 #include "manager.hpp"
 #include "pump.hpp"
 
-#include "../actions/undo.hpp"
-#include "../game_config.hpp"
-#include "../game_data.hpp"
-#include "../log.hpp"
-#include "../mouse_handler_base.hpp"
+#include "actions/undo.hpp"
+#include "game_config.hpp"
+#include "game_data.hpp"
+#include "log.hpp"
+#include "mouse_handler_base.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "hotkey_handler.hpp"
+#include "hotkey/hotkey_handler.hpp"
 #include "play_controller.hpp"
-#include "../preferences.hpp"
-#include "../replay.hpp"
-#include "../replay_helper.hpp"
-#include "../resources.hpp"
-#include "../synced_context.hpp"
-#include "../terrain_filter.hpp"
+#include "preferences.hpp"
+#include "replay.hpp"
+#include "replay_helper.hpp"
+#include "resources.hpp"
+#include "synced_context.hpp"
+#include "terrain/filter.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -206,7 +206,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	{
 		//It is possible to for example show a help menu during a [delay] of a synced event.
 		set_scontext_unsynced leave_synced_context;
-		assert(resources::game_events != NULL);
+		assert(resources::game_events != nullptr);
 		resources::game_events->pump().fire(event_name_, event_hex);
 		return;
 	}
@@ -223,7 +223,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	}
 	else
 	{
-		synced_context::run_in_synced_context_if_not_already("fire_event",  replay_helper::get_event(event_name_, event_hex, NULL));
+		synced_context::run_in_synced_context_if_not_already("fire_event",  replay_helper::get_event(event_name_, event_hex, nullptr));
 	}
 }
 

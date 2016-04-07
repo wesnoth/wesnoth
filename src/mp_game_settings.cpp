@@ -20,9 +20,7 @@
 
 #include "log.hpp"
 #include "mp_game_settings.hpp"
-#include "formula_string_utils.hpp"
-
-#include <boost/foreach.hpp>
+#include "formula/string_utils.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -31,7 +29,6 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 mp_game_settings::mp_game_settings() :
-	savegame_config(),
 	name(),
 	password(),
 	hash(),
@@ -64,8 +61,7 @@ mp_game_settings::mp_game_settings() :
 {}
 
 mp_game_settings::mp_game_settings(const config& cfg)
-	: savegame_config()
-	, name(cfg["scenario"].str())
+	: name(cfg["scenario"].str())
 	, password()
 	, hash(cfg["hash"].str())
 	, mp_era(cfg["mp_era"].str())
@@ -95,7 +91,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, options(cfg.child_or_empty("options"))
 	, addons()
 {
-	BOOST_FOREACH(const config & a, cfg.child_range("addon")) {
+	for (const config & a : cfg.child_range("addon")) {
 		if (!a["id"].empty()) {
 			addons.insert(std::make_pair(a["id"].str(), addon_version_info(a)));
 		}
@@ -135,7 +131,7 @@ config mp_game_settings::to_config() const
 	cfg.add_child("options", options);
 
 	typedef std::map<std::string,addon_version_info>::value_type ttt;
-	BOOST_FOREACH(const ttt & p, addons) {
+	for (const ttt & p : addons) {
 		config & c = cfg.add_child("addon");
 		p.second.write(c);
 		c["id"] = p.first;

@@ -21,49 +21,27 @@ include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
-if(ENABLE_SDL2)
-	include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
-	set(sdl-lib ${SDL2_LIBRARY})
-	set(sdlmain-lib ${SDL2MAIN_LIBRARY})
-	#optional dependencies
-	if(SDL2IMAGE_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR} )
-		set(sdl_image-lib ${SDL2_IMAGE_LIBRARY})
-	endif()
-	if(SDL2MIXER_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
-		set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
-	endif()
-	if(SDL2NET_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDL2NET_INCLUDE_DIR} )
-		set(sdl_net-lib ${SDL2_NET_LIBRARY})
-	endif()
-	if(SDL2TTF_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDL2TTF_INCLUDE_DIR} )
-		set(sdl_ttf-lib ${SDL2_TTF_LIBRARY})
-	endif()
-else(ENABLE_SDL2)
-	include_directories(SYSTEM ${SDL_INCLUDE_DIR} )
-	set(sdl-lib ${SDL_LIBRARY})
-	set(sdlmain-lib ${SDLMAIN_LIBRARY})
-	#optional dependencies
-	if(SDLIMAGE_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDLIMAGE_INCLUDE_DIR} )
-		set(sdl_image-lib ${SDLIMAGE_LIBRARY})
-	endif()
-	if(SDLMIXER_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDLMIXER_INCLUDE_DIR} )
-		set(sdl_mixer-lib ${SDLMIXER_LIBRARY})
-	endif()
-	if(SDLNET_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDLNET_INCLUDE_DIR} )
-		set(sdl_net-lib ${SDLNET_LIBRARY})
-	endif()
-	if(SDLTTF_INCLUDE_DIR)
-		include_directories(SYSTEM ${SDLTTF_INCLUDE_DIR} )
-		set(sdl_ttf-lib ${SDLTTF_LIBRARY})
-	endif()
-endif(ENABLE_SDL2)
+
+include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
+set(sdl-lib ${SDL2_LIBRARY})
+set(sdlmain-lib ${SDL2MAIN_LIBRARY})
+#optional dependencies
+if(SDL2IMAGE_INCLUDE_DIR)
+	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR} )
+	set(sdl_image-lib ${SDL2_IMAGE_LIBRARY})
+endif()
+if(SDL2MIXER_INCLUDE_DIR)
+	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
+	set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
+endif()
+if(SDL2NET_INCLUDE_DIR)
+	include_directories(SYSTEM ${SDL2NET_INCLUDE_DIR} )
+	set(sdl_net-lib ${SDL2_NET_LIBRARY})
+endif()
+if(SDL2TTF_INCLUDE_DIR)
+	include_directories(SYSTEM ${SDL2TTF_INCLUDE_DIR} )
+	set(sdl_ttf-lib ${SDL2_TTF_LIBRARY})
+endif()
 
 if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
@@ -131,6 +109,7 @@ set(game-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
+	${Boost_THREAD_LIBRARY}
 	${sdl_image-lib}
 	${sdl_mixer-lib}
 	${sdl_ttf-lib}
@@ -216,9 +195,9 @@ if(MSVC)
 	SOURCE_GROUP("src editor map" REGULAR_EXPRESSION "editor/map/.*")
 	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
 	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
-	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/auxiliary/event/.*")
-	SOURCE_GROUP("src gui auxiliary widget_definition" REGULAR_EXPRESSION "gui/auxiliary/widget_definition/.*")
-	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/auxiliary/window_builder/.*")
+	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/core/event/.*")
+	SOURCE_GROUP("src gui auxiliary widget_definition" REGULAR_EXPRESSION "gui/core/widget_definition/.*")
+	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/core/window_builder/.*")
 	SOURCE_GROUP("src gui dialogs" REGULAR_EXPRESSION "gui/dialogs/.*")
 	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/lobby/.*")
 	SOURCE_GROUP("src lua" REGULAR_EXPRESSION "lua/.*")
@@ -450,7 +429,6 @@ set(wesnoth-sdl_SRC
 	sdl/window.cpp
 	sdl/utils.cpp
 	sdl/shader.cpp
-	sdl/keyboard.cpp
 	xBRZ/xbrz.cpp
 )
 
@@ -485,7 +463,7 @@ target_link_libraries(wesnoth-sdl
 # - Public Enumerates
 # - Small structs
 set(wesnoth-gui_types_SRC
-	gui/lib/types/point.cpp
+	gui/core/point.cpp
 )
 
 add_library(wesnoth-gui_types
@@ -500,9 +478,9 @@ add_library(wesnoth-gui_types
 # converts the SDL events to internal events and allows other code to
 # connect to the events based on slots.
 set(wesnoth-gui_event_SRC
-	gui/auxiliary/event/dispatcher.cpp
-	gui/auxiliary/event/distributor.cpp
-	gui/auxiliary/event/handler.cpp
+	gui/core/event/dispatcher.cpp
+	gui/core/event/distributor.cpp
+	gui/core/event/handler.cpp
 )
 
 add_library(wesnoth-gui_event
@@ -534,9 +512,9 @@ add_library(wesnoth-gui_iterator
 # This library contains the basic placer for the gui library.
 # The placer is used is some widgets to determine how to place its content.
 set(wesnoth-gui_placer_SRC
-	gui/auxiliary/placer.cpp
-	gui/auxiliary/placer/horizontal_list.cpp
-	gui/auxiliary/placer/vertical_list.cpp
+	gui/core/placer.cpp
+	gui/core/placer/horizontal_list.cpp
+	gui/core/placer/vertical_list.cpp
 )
 
 add_library(wesnoth-gui_placer
@@ -550,7 +528,7 @@ add_library(wesnoth-gui_placer
 
 # This library contains the tooltip handling code.
 set(wesnoth-gui_tooltip_SRC
-	gui/auxiliary/tips.cpp
+	gui/core/tips.cpp
 	gui/dialogs/tip.cpp
 )
 
@@ -569,6 +547,7 @@ add_library(wesnoth-gui_tooltip
 # for the widgets since the code has inter dependencies.
 set(wesnoth-gui_widget_SRC
 	gui/widgets/button.cpp
+	gui/widgets/combobox.cpp
 	gui/widgets/container.cpp
 	gui/widgets/control.cpp
 	gui/widgets/debug.cpp
@@ -603,40 +582,14 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/toggle_panel.cpp
 	gui/widgets/tree_view.cpp
 	gui/widgets/tree_view_node.cpp
+	gui/widgets/unit_preview_pane.cpp
 	gui/widgets/vertical_scrollbar.cpp
 	gui/widgets/viewport.cpp
 	gui/widgets/widget.cpp
 	gui/widgets/window.cpp
-	gui/auxiliary/window_builder.cpp
-	gui/auxiliary/window_builder/button.cpp
-	gui/auxiliary/window_builder/control.cpp
-	gui/auxiliary/window_builder/drawing.cpp
-	gui/auxiliary/window_builder/helper.cpp
-	gui/auxiliary/window_builder/horizontal_listbox.cpp
-	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
-	gui/auxiliary/window_builder/instance.cpp
-	gui/auxiliary/window_builder/image.cpp
-	gui/auxiliary/window_builder/label.cpp
-	gui/auxiliary/window_builder/listbox.cpp
-	gui/auxiliary/window_builder/matrix.cpp
-	gui/auxiliary/window_builder/minimap.cpp
-	gui/auxiliary/window_builder/multi_page.cpp
-	gui/auxiliary/window_builder/pane.cpp
-	gui/auxiliary/window_builder/panel.cpp
-	gui/auxiliary/window_builder/password_box.cpp
-	gui/auxiliary/window_builder/progress_bar.cpp
-	gui/auxiliary/window_builder/repeating_button.cpp
-	gui/auxiliary/window_builder/scroll_label.cpp
-	gui/auxiliary/window_builder/scrollbar_panel.cpp
-	gui/auxiliary/window_builder/slider.cpp
-	gui/auxiliary/window_builder/spacer.cpp
-	gui/auxiliary/window_builder/stacked_widget.cpp
-	gui/auxiliary/window_builder/text_box.cpp
-	gui/auxiliary/window_builder/toggle_button.cpp
-	gui/auxiliary/window_builder/toggle_panel.cpp
-	gui/auxiliary/window_builder/tree_view.cpp
-	gui/auxiliary/window_builder/vertical_scrollbar.cpp
-	gui/auxiliary/window_builder/viewport.cpp
+	gui/core/window_builder.cpp
+	gui/core/window_builder/helper.cpp
+	gui/core/window_builder/instance.cpp
 )
 
 add_library(wesnoth-gui_widget
@@ -660,30 +613,7 @@ target_link_libraries(wesnoth-gui_widget
 # The widget definitions serialise the widget definition WML code into
 # its own structures. The definitions define the looks of the widgets.
 set(wesnoth-gui_widget_definition_SRC
-	gui/auxiliary/widget_definition.cpp
-	gui/auxiliary/widget_definition/button.cpp
-	gui/auxiliary/widget_definition/drawing.cpp
-	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
-	gui/auxiliary/widget_definition/image.cpp
-	gui/auxiliary/widget_definition/label.cpp
-	gui/auxiliary/widget_definition/listbox.cpp
-	gui/auxiliary/widget_definition/matrix.cpp
-	gui/auxiliary/widget_definition/minimap.cpp
-	gui/auxiliary/widget_definition/multi_page.cpp
-	gui/auxiliary/widget_definition/panel.cpp
-	gui/auxiliary/widget_definition/progress_bar.cpp
-	gui/auxiliary/widget_definition/repeating_button.cpp
-	gui/auxiliary/widget_definition/scroll_label.cpp
-	gui/auxiliary/widget_definition/scrollbar_panel.cpp
-	gui/auxiliary/widget_definition/slider.cpp
-	gui/auxiliary/widget_definition/spacer.cpp
-	gui/auxiliary/widget_definition/stacked_widget.cpp
-	gui/auxiliary/widget_definition/text_box.cpp
-	gui/auxiliary/widget_definition/toggle_button.cpp
-	gui/auxiliary/widget_definition/toggle_panel.cpp
-	gui/auxiliary/widget_definition/tree_view.cpp
-	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
-	gui/auxiliary/widget_definition/window.cpp
+	gui/core/widget_definition.cpp
 )
 
 add_library(wesnoth-gui_widget_definition
@@ -756,53 +686,45 @@ set(wesnoth-main_SRC
 	addon/state.cpp
 	addon/validation.cpp
 	ai/actions.cpp
-	ai/akihara/recruitment.cpp
 	ai/composite/ai.cpp
 	ai/composite/aspect.cpp
 	ai/composite/component.cpp
 	ai/composite/contexts.cpp
 	ai/composite/engine.cpp
-	ai/composite/engine_default.cpp
-	ai/composite/engine_fai.cpp
-	ai/composite/engine_lua.cpp
 	ai/composite/goal.cpp
 	ai/composite/rca.cpp
 	ai/composite/stage.cpp
 	ai/configuration.cpp
 	ai/contexts.cpp
-	ai/default/ai.cpp
+	ai/default/aspect_attacks.cpp
 	ai/default/attack.cpp
+	ai/default/ca.cpp
+	ai/default/ca_move_to_targets.cpp
 	ai/default/contexts.cpp
+	ai/default/engine_cpp.cpp
+	ai/default/recruitment.cpp
+	ai/default/stage_rca.cpp
 	ai/formula/ai.cpp
 	ai/formula/callable_objects.cpp
 	ai/formula/candidates.cpp
+	ai/formula/engine_fai.cpp
 	ai/formula/function_table.cpp
 	ai/formula/stage_side_formulas.cpp
 	ai/formula/stage_unit_formulas.cpp
 	ai/game_info.cpp
 	ai/gamestate_observer.cpp
-	ai/interface.cpp
 	ai/lua/core.cpp
+	ai/lua/engine_lua.cpp
 	ai/lua/lua_object.cpp
-	ai/lua/unit_advancements_aspect.cpp
+	ai/lua/aspect_advancements.cpp
 	ai/manager.cpp
-	ai/recruitment/recruitment.cpp
 	ai/registry.cpp
 	ai/simulated_actions.cpp
 	ai/testing.cpp
-	ai/testing/aspect_attacks.cpp
-	ai/testing/ca.cpp
-	ai/testing/ca_global_fallback.cpp
-	ai/testing/ca_testing_move_to_targets.cpp
-	ai/testing/ca_testing_recruitment.cpp
-	ai/testing/stage_fallback.cpp
-	ai/testing/stage_rca.cpp
-	ai/testing/stage_sf_with_rca.cpp
 	animated_game.cpp
 	attack_prediction.cpp
 	attack_prediction_display.cpp
 	build_info.cpp
-	callable_objects.cpp
 	carryover.cpp
 	commandline_options.cpp
 	config_cache.cpp
@@ -850,12 +772,14 @@ set(wesnoth-main_SRC
 	filechooser.cpp
 	game_initialization/flg_manager.cpp
 	floating_textbox.cpp
-	formula.cpp
-	formula_debugger.cpp
-	formula_debugger_fwd.cpp
-	formula_function.cpp
-	formula_string_utils.cpp
-	formula_tokenizer.cpp
+	formula/callable_objects.cpp
+	formula/formula.cpp
+	formula/debugger.cpp
+	formula/debugger_fwd.cpp
+	formula/function.cpp
+	formula/string_utils.cpp
+	formula/tokenizer.cpp
+	formula/variant.cpp
 	game_board.cpp
 	game_classification.cpp
 	game_config_manager.cpp
@@ -873,38 +797,37 @@ set(wesnoth-main_SRC
 	game_events/wmi_container.cpp
 	game_launcher.cpp
 	game_preferences.cpp
-	game_preferences_display.cpp
 	game_state.cpp
 	generic_event.cpp
-	gui/auxiliary/canvas.cpp
-	gui/auxiliary/log.cpp
+	gui/core/canvas.cpp
+	gui/core/log.cpp
 	gui/auxiliary/old_markup.cpp
-	gui/auxiliary/timer.cpp
+	gui/core/timer.cpp
 	gui/dialogs/addon/description.cpp
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp
-	gui/dialogs/addon_connect.cpp
-	gui/dialogs/addon_list.cpp
+	gui/dialogs/addon/connect.cpp
+	gui/dialogs/addon/list.cpp
 	gui/dialogs/advanced_graphics_options.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
 	gui/dialogs/campaign_settings.cpp
 	gui/dialogs/core_selection.cpp
 	gui/dialogs/chat_log.cpp
-	gui/dialogs/data_manage.cpp
 	gui/dialogs/debug_clock.cpp
 	gui/dialogs/depcheck_confirm_change.cpp
 	gui/dialogs/depcheck_select_new.cpp
 	gui/dialogs/dialog.cpp
+	gui/dialogs/drop_down_list.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
-	gui/dialogs/editor/editor_edit_label.cpp
-	gui/dialogs/editor/editor_edit_side.cpp
-	gui/dialogs/editor/editor_edit_scenario.cpp
-	gui/dialogs/editor_generate_map.cpp
-	gui/dialogs/editor_new_map.cpp
-	gui/dialogs/editor_resize_map.cpp
-	gui/dialogs/editor_set_starting_position.cpp
+	gui/dialogs/editor/edit_label.cpp
+	gui/dialogs/editor/edit_side.cpp
+	gui/dialogs/editor/edit_scenario.cpp
+	gui/dialogs/editor/generate_map.cpp
+	gui/dialogs/editor/new_map.cpp
+	gui/dialogs/editor/resize_map.cpp
+	gui/dialogs/editor/set_starting_position.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_cache_options.cpp
@@ -915,33 +838,37 @@ set(wesnoth-main_SRC
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
-	gui/dialogs/lobby/lobby_data.cpp
-	gui/dialogs/lobby/lobby_info.cpp
-	gui/dialogs/lobby_main.cpp
-	gui/dialogs/lobby_player_info.cpp
+	gui/dialogs/loadscreen.cpp
+	gui/dialogs/lobby/data.cpp
+	gui/dialogs/lobby/info.cpp
+	gui/dialogs/lobby/lobby.cpp
+	gui/dialogs/lobby/player_info.cpp
 	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
-	gui/dialogs/mp_alerts_options.cpp
-	gui/dialogs/mp_change_control.cpp
-	gui/dialogs/mp_cmd_wrapper.cpp
-	gui/dialogs/mp_connect.cpp
-	gui/dialogs/mp_create_game.cpp
-	gui/dialogs/mp_create_game_set_password.cpp
-	gui/dialogs/mp_host_game_prompt.cpp
-	gui/dialogs/mp_join_game_password_prompt.cpp
-	gui/dialogs/mp_login.cpp
-	gui/dialogs/mp_method_selection.cpp
+	gui/dialogs/multiplayer/mp_alerts_options.cpp
+	gui/dialogs/multiplayer/mp_change_control.cpp
+	gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
+	gui/dialogs/multiplayer/mp_connect.cpp
+	gui/dialogs/multiplayer/mp_create_game.cpp
+	gui/dialogs/multiplayer/mp_create_game_set_password.cpp
+	gui/dialogs/multiplayer/mp_host_game_prompt.cpp
+	gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
+	gui/dialogs/multiplayer/mp_login.cpp
+	gui/dialogs/multiplayer/mp_method_selection.cpp
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
+	gui/dialogs/preferences_dialog.cpp
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp
+	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
-	gui/dialogs/synced_choice_wait.cpp
+	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
+	gui/dialogs/unit_recruit.cpp
 	gui/dialogs/wml_error.cpp
 	gui/dialogs/wml_message.cpp
 	halo.cpp
@@ -953,20 +880,18 @@ set(wesnoth-main_SRC
 	help/help_text_area.cpp
 	help/help_topic_generators.cpp
 	hotkey/hotkey_preferences_display.cpp
-	hotkey_handler.cpp
-	hotkey_handler_sp.cpp
-	hotkey_handler_mp.cpp
-	hotkey_handler_replay.cpp
+	hotkey/hotkey_handler.cpp
+	hotkey/hotkey_handler_sp.cpp
+	hotkey/hotkey_handler_mp.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp
-	map.cpp
-	map_location.cpp
+	map/map.cpp
+	map/location.cpp
 	menu_events.cpp
 	mouse_events.cpp
 	mouse_handler_base.cpp
 	movetype.cpp
 	mp_game_settings.cpp
-	mp_replay_controller.cpp
 	game_initialization/mp_game_utils.cpp
 	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp
@@ -989,7 +914,6 @@ set(wesnoth-main_SRC
 	playsingle_controller.cpp
 	playturn.cpp
 	playturn_network_adapter.cpp
-	portrait.cpp
 	random_new.cpp
 	random_new_deterministic.cpp
 	random_new_synced.cpp
@@ -1010,6 +934,7 @@ set(wesnoth-main_SRC
 	scripting/lua_common.cpp
 	scripting/lua_cpp_function.cpp
 	scripting/lua_fileops.cpp
+	scripting/lua_formula_bridge.cpp
 	scripting/lua_gui2.cpp
 	scripting/lua_kernel_base.cpp
 	scripting/lua_map_location_ops.cpp
@@ -1038,28 +963,27 @@ set(wesnoth-main_SRC
 	syncmp_handler.cpp
 	team.cpp
 	teambuilder.cpp
-	terrain_type_data.cpp
-	terrain_filter.cpp
+	terrain/type_data.cpp
+	terrain/filter.cpp
 	tod_manager.cpp
 	tooltips.cpp
-	unit.cpp
-	unit_abilities.cpp
-	unit_animation.cpp
-	unit_animation_component.cpp
-	unit_attack_type.cpp
-	unit_display.cpp
-	unit_drawer.cpp
-	unit_filter.cpp
-	unit_formula_manager.cpp
-	unit_frame.cpp
-	unit_helper.cpp
-	unit_id.cpp
-	unit_map.cpp
-	unit_types.cpp
+	units/unit.cpp
+	units/abilities.cpp
+	units/animation.cpp
+	units/animation_component.cpp
+	units/attack_type.cpp
+	units/udisplay.cpp
+	units/drawer.cpp
+	units/filter.cpp
+	units/formula_manager.cpp
+	units/frame.cpp
+	units/helper.cpp
+	units/id.cpp
+	units/map.cpp
+	units/types.cpp
 	utils/sha1.cpp
 	variable.cpp
 	variable_info.cpp
-	variant.cpp
 	whiteboard/action.cpp
 	whiteboard/attack.cpp
 	whiteboard/highlighter.cpp
@@ -1105,10 +1029,9 @@ set(libwesnoth-game_STAT_SRC
 	game_end_exceptions.cpp
 	key.cpp
 	language.cpp
-	loadscreen.cpp
 	lobby_preferences.cpp
-	make_enum.cpp
-	map_label.cpp
+	utils/make_enum.cpp
+	map/label.cpp
 	marked-up_text.cpp
 	minimap.cpp
 	pathfind/astarsearch.cpp
@@ -1119,13 +1042,12 @@ set(libwesnoth-game_STAT_SRC
 	quit_confirmation.cpp
 	reports.cpp
 	show_dialog.cpp
-	simple_rng.cpp
 	sound.cpp
 	soundsource.cpp
 	sound_music_track.cpp
-	terrain.cpp
-	terrain_builder.cpp
-	terrain_translation.cpp
+	terrain/terrain.cpp
+	terrain/builder.cpp
+	terrain/translation.cpp
 	text.cpp
 	time_of_day.cpp
 	tracer.cpp
@@ -1257,7 +1179,6 @@ set(wesnothd_SRC
 	server/forum_user_handler.cpp
 	server/sample_user_handler.cpp
 	${network_implementation_files}
-	loadscreen_empty.cpp
 )
 
 add_executable(wesnothd WIN32
@@ -1282,7 +1203,6 @@ set(campaignd_SRC
 	campaign_server/campaign_server.cpp
 	server/input_stream.cpp
 	${network_implementation_files}
-	loadscreen_empty.cpp
 )
 
 check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
@@ -1316,7 +1236,6 @@ set(exploder_SRC
 	tools/dummy_video.cpp
 	sdl/utils.cpp
 	tracer.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(exploder ${exploder_SRC})
@@ -1337,7 +1256,6 @@ set(cutter_SRC
 	tools/dummy_video.cpp
 	sdl/utils.cpp
 	tracer.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(cutter ${cutter_SRC})
@@ -1359,7 +1277,6 @@ set(schema_generator_SRC
 	tools/schema/tag.cpp
 	filesystem_boost.cpp
 	filesystem_common.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(schema_generator ${schema_generator_SRC})
@@ -1383,7 +1300,6 @@ set(schema_validator_SRC
 	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(schema_validator ${schema_validator_SRC})
@@ -1408,7 +1324,6 @@ set(wesmage_SRC
 	tools/exploder_utils.cpp
 	sdl/utils.cpp
 	tracer.cpp
-	loadscreen_empty.cpp
 )
 
 add_executable(wesmage ${wesmage_SRC})
@@ -1474,6 +1389,7 @@ if(ENABLE_TESTS)
 		tests/test_config_cache.cpp
 		tests/test_filesystem.cpp
 		tests/test_formula_ai.cpp
+		tests/test_formula_core.cpp
 		tests/test_formula_function.cpp
 		tests/test_image_modifications.cpp
 		tests/test_lexical_cast.cpp
@@ -1561,7 +1477,6 @@ if(ENABLE_TESTS)
 			tools/exploder_utils.cpp
 			sdl/utils.cpp
 			tracer.cpp
-			loadscreen_empty.cpp
 		)
 
 		add_executable(create_images ${create_images_SRC})

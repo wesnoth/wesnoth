@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-tpopup::tpopup() : window_(NULL)
+tpopup::tpopup() : window_(nullptr)
 {
 }
 
@@ -43,9 +43,9 @@ void tpopup::show(CVideo& video,
 
 	window_ = build_window(video);
 
-	post_build(video, *window_);
+	post_build(*window_);
 
-	pre_show(video, *window_);
+	pre_show(*window_);
 
 	if(allow_interaction) {
 		window_->show_non_modal();
@@ -59,7 +59,7 @@ void tpopup::hide()
 	if(window_) {
 		window_->undraw();
 		delete window_;
-		window_ = NULL;
+		window_ = nullptr;
 	}
 }
 
@@ -68,12 +68,12 @@ twindow* tpopup::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-void tpopup::post_build(CVideo& /*video*/, twindow& /*window*/)
+void tpopup::post_build(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tpopup::pre_show(CVideo& /*video*/, twindow& /*window*/)
+void tpopup::pre_show(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }

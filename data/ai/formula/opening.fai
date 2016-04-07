@@ -8,7 +8,7 @@ def opening(ai*)
 		move(loc(11,23), loc(14,22)) ],
 	if(turn = 2, [ 
 		move(loc(11,21),loc(13,17)),
-		if(unit_at(loc(11,22)).total_movement = 6,
+		if(unit_at(loc(11,22)).max_moves = 6,
 		move(loc(11,22),loc(13,18)),
 		move(loc(11,22),loc(15,19))),
 		move(loc(10,22),loc(7,19)),
@@ -75,7 +75,7 @@ def rate_village_capture(ai*,src,dst) village_value(ai);
 def rate_village_proximity(ai*, unit, dst) 
 	if(distance = 1, 
 		0, 
-	village_value(ai)/(distance/unit.total_movement + 1))
+	village_value(ai)/(distance/unit.max_moves + 1))
 		where distance = distance_to_nearest_unowned_village(dst); 
 
 def rate_move(ai*,src,dst) 

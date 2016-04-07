@@ -23,7 +23,6 @@
 #include "play_controller.hpp"
 #include "synced_user_choice.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 #include "util.hpp"
 #include "variable.hpp"
 

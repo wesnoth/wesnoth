@@ -42,7 +42,7 @@ struct plugin {
 	std::vector<plugins_manager::event> queue;
 };
 
-static plugins_manager * singleton = NULL;
+static plugins_manager * singleton = nullptr;
 
 plugins_manager::plugins_manager(application_lua_kernel * kernel)
 	: plugins_()
@@ -183,7 +183,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 			plugins_[idx].queue = std::vector<event>();
 
 			//application_lua_kernel::requests_list requests =
-			std::vector<boost::function<bool(void)> > requests =
+			std::vector<std::function<bool(void)> > requests =
 				plugins_[idx].thread->run_script(ctxt, input);
 
 			DBG_PLG << "thread returned " << requests.size() << " requests\n";

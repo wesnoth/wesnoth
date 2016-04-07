@@ -16,15 +16,15 @@
 
 #include "gui/dialogs/formula_debugger.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "../../formula_debugger.hpp"
-#include "utils/foreach.tpp"
+#include "formula/debugger.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -65,57 +65,58 @@ namespace gui2
 
 REGISTER_DIALOG(formula_debugger)
 
-void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
+void tformula_debugger::pre_show(twindow& window)
 {
 	// stack label
-	tcontrol* stack_label
-			= find_widget<tcontrol>(&window, "stack", false, true);
+	tscroll_label* stack_label
+			= find_widget<tscroll_label>(&window, "stack", false, true);
 
 	std::stringstream stack_text;
 	std::string indent = "  ";
 	int c = 0;
-	FOREACH(const AUTO & i, fdb_.get_call_stack())
+	for(const auto & i : fdb_.get_call_stack())
 	{
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
 		stack_text << "#<span color=\"green\">" << i.counter()
-				   << "</span>: \"<span color=\"green\">" << i.name()
-				   << "</span>\": '" << i.str() << "' " << std::endl;
+				   << "</span>: \"<span color=\"green\">" << font::escape_text(i.name())
+				   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		++c;
 	}
 
 	stack_label->set_use_markup(true);
 	stack_label->set_label(stack_text.str());
+	stack_label->scroll_vertical_scrollbar(tscrollbar_::END);
 	window.keyboard_capture(stack_label);
 
 	// execution trace label
-	tcontrol* execution_label
-			= find_widget<tcontrol>(&window, "execution", false, true);
+	tscroll_label* execution_label
+			= find_widget<tscroll_label>(&window, "execution", false, true);
 
 	std::stringstream execution_text;
-	FOREACH(const AUTO & i, fdb_.get_execution_trace())
+	for(const auto & i : fdb_.get_execution_trace())
 	{
 		for(int d = 0; d < i.level(); ++d) {
 			execution_text << indent;
 		}
 		if(!i.evaluated()) {
 			execution_text << "#<span color=\"green\">" << i.counter()
-						   << "</span>: \"<span color=\"green\">" << i.name()
-						   << "</span>\": '" << i.str() << "' " << std::endl;
+						   << "</span>: \"<span color=\"green\">" << font::escape_text(i.name())
+						   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		} else {
 			execution_text << "#<span color=\"yellow\">" << i.counter()
-						   << "</span>: \"<span color=\"yellow\">" << i.name()
-						   << "</span>\": '" << i.str() << "' = "
-						   << "<span color=\"red\">"
-						   << i.value().to_debug_string(NULL, false)
+						   << "</span>: \"<span color=\"yellow\">" << font::escape_text(i.name())
+						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
+						   << "<span color=\"orange\">"
+						   << font::escape_text(i.value().to_debug_string(nullptr, false))
 						   << "</span>" << std::endl;
 		}
 	}
 
 	execution_label->set_use_markup(true);
 	execution_label->set_label(execution_text.str());
-
+	execution_label->scroll_vertical_scrollbar(tscrollbar_::END);
 	// state
 	std::string state_str;
 	bool is_end = false;
@@ -134,30 +135,30 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
 	connect_signal_mouse_left_click(
 			step_button,
-			boost::bind(&tformula_debugger::callback_step_button,
+			std::bind(&tformula_debugger::callback_step_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
 	connect_signal_mouse_left_click(
 			stepout_button,
-			boost::bind(&tformula_debugger::callback_stepout_button,
+			std::bind(&tformula_debugger::callback_stepout_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
 	connect_signal_mouse_left_click(
 			next_button,
-			boost::bind(&tformula_debugger::callback_next_button,
+			std::bind(&tformula_debugger::callback_next_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
 	connect_signal_mouse_left_click(
 			continue_button,
-			boost::bind(&tformula_debugger::callback_continue_button,
+			std::bind(&tformula_debugger::callback_continue_button,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 
 	if(is_end) {
 		step_button.set_active(false);

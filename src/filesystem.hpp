@@ -51,7 +51,7 @@ enum file_reorder_option { DONT_REORDER, DO_REORDER };
 /**
  * Populates 'files' with all the files and
  * 'dirs' with all the directories in dir.
- * If files or dirs are NULL they will not be used.
+ * If files or dirs are nullptr they will not be used.
  *
  * mode: determines whether the entire path or just the filename is retrieved.
  * filter: determines if we skip images and sounds directories
@@ -60,11 +60,11 @@ enum file_reorder_option { DONT_REORDER, DO_REORDER };
  */
 void get_files_in_dir(const std::string &dir,
                       std::vector<std::string>* files,
-                      std::vector<std::string>* dirs=NULL,
+                      std::vector<std::string>* dirs=nullptr,
                       file_name_option mode = FILE_NAME_ONLY,
                       file_filter_option filter = NO_FILTER,
                       file_reorder_option reorder = DONT_REORDER,
-                      file_tree_checksum* checksum = NULL);
+                      file_tree_checksum* checksum = nullptr);
 
 std::string get_dir(const std::string &dir);
 
@@ -103,7 +103,7 @@ bool looks_like_pbl(const std::string& file);
 /** Basic disk I/O - read file. */
 std::string read_file(const std::string &fname);
 std::istream *istream_file(const std::string &fname, bool treat_failure_as_error = true);
-std::ostream *ostream_file(std::string const &fname);
+std::ostream *ostream_file(std::string const &fname, bool create_directory = true);
 /** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);
 

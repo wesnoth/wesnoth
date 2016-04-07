@@ -241,7 +241,7 @@ public:
 private:
 	hk_scopes prev_scope_active_;
 };
-
+typedef boost::ptr_vector<hotkey_command> t_hotkey_command_list;
 /// returns a container that contains all currently active hotkey_commands.
 /// everything that wants a hotkey, must be in this container.
 const boost::ptr_vector<hotkey_command>& get_hotkey_commands();

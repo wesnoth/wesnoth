@@ -13,7 +13,7 @@
 */
 
 #include <deque>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 #include <boost/ref.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/version.hpp>
@@ -47,7 +47,7 @@ connection::connection(const std::string& host, const std::string& service)
 {
 	resolver_.async_resolve(
 		boost::asio::ip::tcp::resolver::query(host, service),
-		boost::bind(&connection::handle_resolve, this, _1, _2)
+		std::bind(&connection::handle_resolve, this, _1, _2)
 		);
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
@@ -65,7 +65,7 @@ void connection::handle_resolve(
 
 void connection::connect(resolver::iterator iterator)
 {
-	socket_.async_connect(*iterator, boost::bind(
+	socket_.async_connect(*iterator, std::bind(
 		&connection::handle_connect, this, _1, iterator)
 		);
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
@@ -97,11 +97,11 @@ void connection::handshake()
 	static const boost::uint32_t handshake = 0;
 	boost::asio::async_write(socket_,
 		boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
-		boost::bind(&connection::handle_write, this, _1, _2)
+		std::bind(&connection::handle_write, this, _1, _2)
 		);
 	boost::asio::async_read(socket_,
 		boost::asio::buffer(&handshake_response_.binary, 4),
-		boost::bind(&connection::handle_handshake, this, _1)
+		std::bind(&connection::handle_handshake, this, _1)
 		);
 }
 
@@ -128,12 +128,12 @@ void connection::transfer(const config& request, config& response)
 	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 	boost::asio::async_write(socket_, bufs,
-		boost::bind(&connection::is_write_complete, this, _1, _2),
-		boost::bind(&connection::handle_write, this, _1, _2)
+		std::bind(&connection::is_write_complete, this, _1, _2),
+		std::bind(&connection::handle_write, this, _1, _2)
 		);
 	boost::asio::async_read(socket_, read_buf_,
-		boost::bind(&connection::is_read_complete, this, _1, _2),
-		boost::bind(&connection::handle_read, this, _1, _2, boost::ref(response))
+		std::bind(&connection::is_read_complete, this, _1, _2),
+		std::bind(&connection::handle_read, this, _1, _2, std::ref(response))
 		);
 }
 

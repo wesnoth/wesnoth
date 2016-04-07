@@ -133,5 +133,7 @@ private:
 
 };
 
+#include "animated.tpp"
+
 #endif
 

@@ -16,11 +16,10 @@
 
 #include "color_range.hpp"
 #include "game_config.hpp"
-#include "make_enum.hpp"
-#include "map_location.hpp"
+#include "utils/make_enum.hpp"
+#include "map/location.hpp"
 #include "recall_list_manager.hpp"
-#include "savegame_config.hpp"
-#include "unit_ptr.hpp"
+#include "units/ptr.hpp"
 #include "util.hpp"
 #include "config.hpp"
 
@@ -48,7 +47,7 @@ namespace wb {
  * This class stores all the data for a single 'side' (in game nomenclature).
  * E.g., there is only one leader unit per team.
  */
-class team : public savegame::savegame_config
+class team
 {
 public:
 
@@ -117,6 +116,7 @@ private:
 		std::set<std::string> can_recruit;
 		std::string team_name;
 		t_string user_team_name;
+		t_string side_name;
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
@@ -126,7 +126,7 @@ private:
 		std::string flag;
 		std::string flag_icon;
 
-		std::string description;
+		std::string id;
 
 		bool scroll_to_leader;
 
@@ -181,7 +181,7 @@ public:
 
 	void write(config& cfg) const;
 
-	bool get_village(const map_location&, const int owner_side, game_data * fire_event); //!< Acquires a village from owner_side. Pointer fire_event should be the game_data for the game if it is desired to fire an event -- a "capture" event with owner_side variable scoped in will be fired. For no event, pass it NULL. Default is the resources::gamedata pointer
+	bool get_village(const map_location&, const int owner_side, game_data * fire_event); //!< Acquires a village from owner_side. Pointer fire_event should be the game_data for the game if it is desired to fire an event -- a "capture" event with owner_side variable scoped in will be fired. For no event, pass it nullptr. Default is the resources::gamedata pointer
 	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
 	const std::set<map_location>& villages() const { return villages_; }
@@ -302,6 +302,7 @@ public:
 	void set_flag(const std::string& flag) { info_.flag = flag; }
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
+	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name.str(); }
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
 	bool shrouded(const map_location& loc) const;

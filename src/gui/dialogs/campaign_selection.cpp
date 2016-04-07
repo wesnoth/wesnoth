@@ -17,7 +17,7 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "game_preferences.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/widgets/button.hpp"
@@ -34,10 +34,10 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
+#include "video.hpp"
 
 namespace gui2
 {
@@ -93,13 +93,15 @@ void tcampaign_selection::campaign_selected(twindow& window)
 		}
 
 		assert(tree.selected_item());
-		const unsigned choice
+		if(tree.selected_item()->id() != "") {
+			const unsigned choice
 				= lexical_cast<unsigned>(tree.selected_item()->id());
 
-		tmulti_page& multi_page
+			tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
-		multi_page.select_page(choice);
-		engine_.set_current_level(choice);
+			multi_page.select_page(choice);
+			engine_.set_current_level(choice);
+		}
 	} else {
 		const int selected_row
 				= find_widget<tlistbox>(&window, "campaign_list", false)
@@ -118,7 +120,7 @@ void tcampaign_selection::show_settings(CVideo& video) {
 	settings_dlg.show(video);
 }
 
-void tcampaign_selection::pre_show(CVideo& video, twindow& window)
+void tcampaign_selection::pre_show(twindow& window)
 {
 	if(new_widgets || true) {
 		/***** Setup campaign tree. *****/
@@ -126,9 +128,9 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
 		tree.set_selection_change_callback(
-				boost::bind(&tcampaign_selection::campaign_selected,
+				std::bind(&tcampaign_selection::campaign_selected,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 
 		window.keyboard_capture(&tree);
 
@@ -139,7 +141,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		unsigned id = 0;
-		FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
+		for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
 		{
 			const config& campaign = level->data();
 
@@ -153,7 +155,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			tree_group_field["label"] = campaign["completed"].to_bool() ? "misc/laurel.png" : "misc/blank-hex.png";
 			tree_group_item["victory"] = tree_group_field;
 
-			tree.add_node("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
+			tree.add_node("campaign", tree_group_item).set_id(std::to_string(id++));
 
 			/*** Add detail item ***/
 			string_map detail_item;
@@ -161,6 +163,11 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 
 			detail_item["label"] = campaign["description"];
 			detail_item["use_markup"] = "true";
+
+			if(!campaign["description_alignment"].empty()) {
+				detail_item["text_alignment"] = campaign["description_alignment"];
+			}
+
 			detail_page.insert(std::make_pair("description", detail_item));
 
 			detail_item["label"] = campaign["image"];
@@ -178,7 +185,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 
 			id = 0;
 			tree_group_item.clear();
-			FOREACH(const AUTO& mod, engine_.get_const_extras_by_type(ng::create_engine::MOD))
+			for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD))
 			{
 				bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 				/*** Add tree item ***/
@@ -190,7 +197,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
 				checkbox->set_label(mod->name);
-				checkbox->set_callback_state_change(boost::bind(&tcampaign_selection::mod_toggled, this, id, _1));
+				checkbox->set_callback_state_change(std::bind(&tcampaign_selection::mod_toggled, this, id, _1));
 				++id;
 			}
 		}
@@ -207,9 +214,9 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				list,
-				boost::bind(&tcampaign_selection::campaign_selected,
+				std::bind(&tcampaign_selection::campaign_selected,
 							this,
-							boost::ref(window)));
+							std::ref(window)));
 #else
 		list.set_callback_value_change(
 				dialog_callback<tcampaign_selection,
@@ -221,7 +228,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
-		FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
+		for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
 		{
 			const config& campaign = level->data();
 
@@ -266,7 +273,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			find_widget<tbutton>(&window, "advanced_settings", false, false);
 	if(advanced_settings_button) {
 		advanced_settings_button->connect_click_handler(
-			boost::bind(&tcampaign_selection::show_settings, this, boost::ref(video)));
+			std::bind(&tcampaign_selection::show_settings, this, std::ref(window.video())));
 	}
 }
 
@@ -281,7 +288,9 @@ void tcampaign_selection::post_show(twindow& window)
 		}
 
 		assert(tree.selected_item());
-		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
+		if(tree.selected_item()->id() != "") {
+			choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
+		}
 		deterministic_ = find_widget<ttoggle_button>(&window,
 													 "checkbox_deterministic",
 													 false).get_value_bool();

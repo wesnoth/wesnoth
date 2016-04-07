@@ -16,11 +16,11 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
 #include "gui/dialogs/campaign_difficulty.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/old_markup.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -29,7 +29,6 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
 
 #include "log.hpp"
 
@@ -79,6 +78,8 @@ tcampaign_difficulty::tcampaign_difficulty(
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_()
 {
+	set_restore(true);
+
 	// Populate local config with difficulty children
 	difficulties_.append_children(campaign, "difficulty");
 
@@ -110,19 +111,19 @@ tcampaign_difficulty::tcampaign_difficulty(
 	}
 }
 
-void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
+void tcampaign_difficulty::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
 	std::map<std::string, string_map> data;
 
-	BOOST_FOREACH(const config &d, difficulties_.child_range("difficulty"))
+	for (const config &d : difficulties_.child_range("difficulty"))
 	{
 		data["icon"]["label"] = d["image"];
 		data["label"]["label"] = d["label"];
 		data["label"]["use_markup"] = "true";
-		data["description"]["label"] = d["old_markup"].to_bool() ? d["description"]
+		data["description"]["label"] = d["old_markup"].to_bool() || d["description"].empty() ? d["description"]
 			: std::string("(") + d["description"] + std::string(")");
 		data["description"]["use_markup"] = "true";
 

@@ -27,14 +27,12 @@
 
 #include "actions/create.hpp"
 #include "game_display.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
 
 namespace wb {
 
@@ -80,14 +78,14 @@ unit_const_ptr find_backup_leader(const unit & leader)
 unit* find_recruiter(size_t team_index, map_location const& hex)
 {
 	if ( !resources::gameboard->map().is_castle(hex) )
-		return NULL;
+		return nullptr;
 
-	BOOST_FOREACH(unit& u, *resources::units)
+	for(unit& u : *resources::units)
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
 				&& dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(u, hex))
 			return &u;
-	return NULL;
+	return nullptr;
 }
 
 unit* future_visible_unit(map_location hex, int viewer_side)
@@ -96,7 +94,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 	if(!resources::whiteboard->has_planned_unit_map())
 	{
 		ERR_WB << "future_visible_unit cannot find unit, future unit map failed to build." << std::endl;
-		return NULL;
+		return nullptr;
 	}
 	//use global method get_visible_unit
 	return resources::gameboard->get_visible_unit(hex, resources::teams->at(viewer_side - 1), false);
@@ -108,7 +106,7 @@ unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
 	if (unit && unit->side() == on_side)
 		return unit;
 	else
-		return NULL;
+		return nullptr;
 }
 
 int path_cost(std::vector<map_location> const& path, unit const& u)
@@ -124,8 +122,9 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 
 	int result = 0;
 	gamemap const& map = resources::gameboard->map();
-	BOOST_FOREACH(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
+	for(map_location const& loc : std::make_pair(path.begin()+1,path.end())) {
 		result += u.movement_cost(map[loc]);
+	}
 	return result;
 }
 
@@ -153,9 +152,10 @@ void unghost_owner_unit(unit* unit)
 
 bool has_actions()
 {
-	BOOST_FOREACH(team& t, *resources::teams)
+	for (team& t : *resources::teams) {
 		if (!t.get_side_actions()->empty())
 			return true;
+	}
 
 	return false;
 }
@@ -165,15 +165,17 @@ bool team_has_visible_plan(team &t)
 	return !t.get_side_actions()->hidden();
 }
 
-void for_each_action(boost::function<void(action_ptr)> function, team_filter team_filter)
+void for_each_action(std::function<void(action*)> function, team_filter team_filter)
 {
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
 		end = true;
-		BOOST_FOREACH(team &side, *resources::teams) {
+		for(team &side : *resources::teams) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_filter(side)) {
-				std::for_each(actions.turn_begin(turn), actions.turn_end(turn), function);
+				for(auto iter = actions.turn_begin(turn); iter != actions.turn_end(turn); ++iter) {
+					function(iter->get());
+				}
 				end = false;
 			}
 		}
@@ -185,7 +187,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 	action_ptr result;
 	size_t result_turn = std::numeric_limits<size_t>::max();
 
-	BOOST_FOREACH(team &side, *resources::teams) {
+	for(team &side : *resources::teams) {
 		side_actions &actions = *side.get_side_actions();
 		if(team_filter(side)) {
 			side_actions::iterator chall = actions.find_first_action_at(hex);

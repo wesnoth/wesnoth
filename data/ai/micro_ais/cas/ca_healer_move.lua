@@ -3,19 +3,19 @@ local LS = wesnoth.require "lua/location_set.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
-local ca_healer_move = {}
+local ca_healer_move, best_healer, best_hex = {}
 
-function ca_healer_move:evaluation(ai, cfg, self)
+function ca_healer_move:evaluation(cfg, data)
     -- Should happen with higher priority than attacks, except at beginning of turn,
     -- when we want attacks (by other units) done first
     -- This is done so that it is possible for healers to attack, if they do not
     -- find an appropriate hex to back up other units
-    local score = self.data.HS_healer_move_score or 105000
+    local score = data.HS_healer_move_score or 105000
 
     local all_healers = wesnoth.get_units {
         side = wesnoth.current.side,
         ability = "healing",
-        { "and", cfg.filter }
+        { "and", H.get_child(cfg, "filter") }
     }
 
     local healers, healers_noMP = {}, {}
@@ -30,7 +30,7 @@ function ca_healer_move:evaluation(ai, cfg, self)
 
     local all_healees = wesnoth.get_units {
         side = wesnoth.current.side,
-        { "and", cfg.filter_second }
+        { "and", H.get_child(cfg, "filter_second") }
     }
 
     local healees, healees_MP = {}, {}
@@ -65,7 +65,7 @@ function ca_healer_move:evaluation(ai, cfg, self)
 
     local avoid_map = LS.of_pairs(ai.get_avoid())
 
-    local max_rating, best_healer, best_hex = -9e99
+    local max_rating = -9e99
     for _,healer in ipairs(healers) do
         local reach = wesnoth.find_reach(healer)
 
@@ -119,16 +119,15 @@ function ca_healer_move:evaluation(ai, cfg, self)
     end
 
     if best_healer then
-        self.data.HS_unit, self.data.HS_hex = best_healer, best_hex
         return score
     end
 
     return 0
 end
 
-function ca_healer_move:execution(ai, cfg, self)
-    AH.movefull_outofway_stopunit(ai, self.data.HS_unit, self.data.HS_hex)
-    self.data.HS_unit, self.data.HS_hex = nil, nil
+function ca_healer_move:execution(cfg)
+    AH.movefull_outofway_stopunit(ai, best_healer, best_hex)
+    best_healer, best_hex = nil, nil
 end
 
 return ca_healer_move

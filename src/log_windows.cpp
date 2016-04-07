@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+// For some reason, it became necessary to include this before the header
+// after switching to c++11
+#include <cstdio>
+
 #include "log_windows.hpp"
 
 #include "filesystem.hpp"
@@ -19,11 +23,9 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
-#include <cstdio>
 #include <ctime>
 
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/foreach.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 
@@ -108,7 +110,7 @@ std::string unique_log_filename()
 
 	o << log_file_prefix;
 
-	const time_t cur = time(NULL);
+	const time_t cur = time(nullptr);
 	const tm* const lt = localtime(&cur);
 
 	if(lt) {
@@ -147,7 +149,7 @@ void log_init_panic(const std::string& msg)
 
 	// It may not be useful to write to stderr at this point, so warn the user
 	// in a failsafe fashion via Windows UI API.
-	MessageBox(NULL,
+	MessageBox(nullptr,
 			   unicode_cast<std::wstring>(full_msg).c_str(),
 			   L"Battle for Wesnoth",
 			   MB_ICONEXCLAMATION | MB_OK);
@@ -316,7 +318,6 @@ log_file_manager::~log_file_manager()
 		return;
 	}
 
-	DBG_LS << "Closing log file...\n";
 	fclose(stdout);
 	fclose(stderr);
 }
@@ -384,7 +385,7 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 		throw libc_error();
 	}
 
-	//setbuf(crts, NULL);
+	//setbuf(crts, nullptr);
 
 	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]\n";
 }
@@ -396,7 +397,7 @@ bool log_file_manager::console_enabled() const
 
 bool log_file_manager::console_attached() const
 {
-	return GetConsoleWindow() != NULL;
+	return GetConsoleWindow() != nullptr;
 }
 
 void log_file_manager::enable_native_console_output()

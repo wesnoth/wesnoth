@@ -22,15 +22,14 @@
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
-#include "map_location.hpp"             // for map_location
+#include "map/location.hpp"             // for map_location
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "tstring.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 #include "variable.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/variant/static_visitor.hpp>
 #include <map>                          // for map<>::key_type
 #include <new>                          // for operator new
@@ -49,7 +48,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 void chat_message(std::string const &caption, std::string const &msg)
 {
 	if (!resources::screen) return;
-	resources::screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg,
+	resources::screen->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg,
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
@@ -77,17 +76,17 @@ bool luaW_pcall(lua_State *L
 	{
 		/*
 		 * When an exception is thrown which doesn't derive from
-		 * std::exception m will be NULL pointer.
+		 * std::exception m will be nullptr pointer.
 		 */
 		char const *m = lua_tostring(L, -1);
 		if(m) {
 			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
 				m += 5;
 				char const *e = strstr(m, "stack traceback");
-				lg::wml_error << std::string(m, e ? e - m : strlen(m));
+				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
 			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
 				m += 5;
-				char const *e = NULL, *em = m;
+				char const *e = nullptr, *em = m;
 				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
 #ifdef _MSC_VER
 #pragma warning (pop)
@@ -123,7 +122,7 @@ unit* lua_unit::get()
 		return (*resources::teams)[side - 1].recall_list().find_if_matches_underlying_id(uid).get();
 	}
 	unit_map::unit_iterator ui = resources::units->find(uid);
-	if (!ui.valid()) return NULL;
+	if (!ui.valid()) return nullptr;
 	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
 unit_ptr lua_unit::get_shared()
@@ -183,12 +182,26 @@ bool lua_unit::put_map(const map_location &loc)
 
 unit* luaW_tounit(lua_State *L, int index, bool only_on_map)
 {
-	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
+	if (!luaW_hasmetatable(L, index, getunitKey)) return nullptr;
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
-	if (only_on_map && !lu->on_map()) return NULL;
+	if (only_on_map && !lu->on_map()) return nullptr;
 	return lu->get();
 }
 
+unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map)
+{
+	if (!luaW_hasmetatable(L, index, getunitKey)) return unit_ptr();
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
+	if (only_on_map && !lu->on_map()) return unit_ptr();
+	return lu->get_shared();
+}
+
+unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map)
+{
+	unit_ptr u = luaW_tounit(L, index, only_on_map);
+	if (!u) luaL_typerror(L, index, "unit");
+	return u;
+}
 unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 {
 	unit* u = luaW_tounit(L, index, only_on_map);
@@ -196,7 +209,7 @@ unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 	return *u;
 }
 
-lua_unit* LuaW_pushlocalunit(lua_State *L, unit& u)
+lua_unit* luaW_pushlocalunit(lua_State *L, unit& u)
 {
 	lua_unit* res = new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L, getunitKey);

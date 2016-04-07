@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
 #include "player.hpp"
 #include "serialization/string_utils.hpp"
@@ -80,7 +80,7 @@ void wesnothd::player::mark_registered(bool registered)
 
 bool wesnothd::player::is_message_flooding()
 {
-	const time_t now = time(NULL);
+	const time_t now = time(nullptr);
 	if (flood_start_ == 0) {
 		flood_start_ = now;
 		return false;

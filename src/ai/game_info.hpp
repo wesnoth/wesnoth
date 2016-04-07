@@ -21,7 +21,7 @@
 #define AI_GAME_INFO_HPP_INCLUDED
 
 #include <boost/shared_ptr.hpp>
-#include "../map_location.hpp"
+#include "map/location.hpp"
 namespace pathfind {
     struct paths;
 }
@@ -49,9 +49,9 @@ typedef std::multimap<map_location,map_location> move_map;
 /** The standard way in which a map of possible movement routes to location is recorded*/
 typedef std::map<map_location,pathfind::paths> moves_map;
 
-class interface;
+class ai_composite;
 
-typedef boost::shared_ptr< interface > ai_ptr;
+typedef boost::shared_ptr<ai_composite> ai_ptr;
 
 class attack_analysis;
 typedef std::vector<attack_analysis> attacks_vector;
@@ -66,7 +66,6 @@ class candidate_action;
 class engine;
 class goal;
 class known_aspect;
-class ministage;
 class stage;
 
 template<typename T>
@@ -110,7 +109,6 @@ typedef boost::shared_ptr< candidate_action > candidate_action_ptr;
 typedef boost::shared_ptr< engine > engine_ptr;
 typedef boost::shared_ptr< goal > goal_ptr;
 typedef boost::shared_ptr< known_aspect > known_aspect_ptr;
-typedef boost::shared_ptr< ministage > ministage_ptr;
 typedef boost::shared_ptr< stage > stage_ptr;
 
 typedef std::map<std::string, aspect_ptr > aspect_map;

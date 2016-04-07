@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/core_selection.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -28,10 +28,9 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -83,16 +82,16 @@ void tcore_selection::core_selected(twindow& window)
 	multi_page.select_page(selected_row);
 }
 
-void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
+void tcore_selection::pre_show(twindow& window)
 {
 	/***** Setup core list. *****/
 	tlistbox& list = find_widget<tlistbox>(&window, "core_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			list,
-			boost::bind(&tcore_selection::core_selected,
+			std::bind(&tcore_selection::core_selected,
 						this,
-						boost::ref(window)));
+						std::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<tcore_selection,
@@ -104,7 +103,7 @@ void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
 	tmulti_page& multi_page
 			= find_widget<tmulti_page>(&window, "core_details", false);
 
-	FOREACH(const AUTO & core, cores_)
+	for(const auto & core : cores_)
 	{
 		/*** Add list item ***/
 		string_map list_item;

@@ -117,19 +117,19 @@ public:
 
 /**
 * A helper policy for scoped_ptr.
-* It will call the delete operator on a pointer, and assign the pointer to NULL
+* It will call the delete operator on a pointer, and assign the pointer to nullptr
 */
 struct delete_item {
 	template<typename T>
-	void operator()(T*& p) const { delete p; p = NULL; }
+	void operator()(T*& p) const { delete p; p = nullptr; }
 };
 /**
 * A helper policy for scoped_array.
-* It will call the delete[] operator on a pointer, and assign the pointer to NULL
+* It will call the delete[] operator on a pointer, and assign the pointer to nullptr
 */
 struct delete_array {
 	template<typename T>
-	void operator()(T*& p) const { delete [] p; p = NULL; }
+	void operator()(T*& p) const { delete [] p; p = nullptr; }
 };
 
 /**
@@ -185,7 +185,7 @@ struct scoped_array : public scoped_resource<T*,delete_array>
  */
 struct close_FILE
 {
-	void operator()(std::FILE* f) const { if(f != NULL) { std::fclose(f); } }
+	void operator()(std::FILE* f) const { if(f != nullptr) { std::fclose(f); } }
 };
 typedef scoped_resource<std::FILE*,close_FILE> scoped_FILE;
 

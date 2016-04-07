@@ -14,15 +14,15 @@
 
 /**
  * This namespace makes the possibility to push not just C style functions,
- * but CPP style functions to lua, if they are cast as a boost::function.
- * Using this, for example, C++ method functions may be boost::bind'ed and
+ * but CPP style functions to lua, if they are cast as a std::function.
+ * Using this, for example, C++ method functions may be std::bind'ed and
  * then pushed into the lua environment and called like usual.
  *
  * They are represented as user data with a call operator, which uses a
  * dispatcher implemented as a C-style function to retrieve the boost
  * function and execute it. Thus effectively all that we have to provide
  * is a "value type" user data (full userdata, not light userdata) in lua
- * which wraps the boost::function type and implements a garbage collector.
+ * which wraps the std::function type and implements a garbage collector.
  *
  *
  * -- Why? --
@@ -108,7 +108,7 @@
  * Essentially, we provide C++ versions of the lua library calls 'lua_pushcfunction',
  * 'lua_setfuncs', 'lua_pushcclosure'.
  *
- * - They are "C++" versions in that they take boost::function<int (lua_State*)> rather
+ * - They are "C++" versions in that they take std::function<int (lua_State*)> rather
  * than int(lua_State*).
  * - While for lua, "lua_pushcfunction(L, f)" is essentially the same as
  * "lua_pushcclosure(L, f, 0)", for the functions below that is not the case.
@@ -125,13 +125,15 @@
 #ifndef LUA_CPP_FUNCTION_HPP_INCLUDED
 #define LUA_CPP_FUNCTION_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/functional.hpp"
+
+#include <vector>
 
 struct lua_State;
 
 namespace lua_cpp {
 
-typedef boost::function<int(lua_State*)> lua_function;
+typedef std::function<int(lua_State*)> lua_function;
 
 typedef struct {
 	const char * name;
@@ -141,7 +143,7 @@ typedef struct {
 void register_metatable ( lua_State* L );
 
 /**
- * Pushes a boost::function wrapper object onto the stack. It does
+ * Pushes a std::function wrapper object onto the stack. It does
  * not support up-values. If you need that use push_closure (a little slower).
  *
  * NOTE: This object has type userdata, not function. Its metatable has a call operator.
@@ -155,10 +157,27 @@ void push_function( lua_State* L, const lua_function & f );
  *
  * The note above applies.
  */
-void set_functions( lua_State* L, const lua_cpp::Reg * l);
+void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions);
 
 /**
- * Pushes a closure which retains a boost::function object as its first up-value.
+ * Analogous to lua_setfuncs, it registers a collection of function wrapper
+ * objects into a table, using push_function.
+ *
+ * The note above applies.
+ */
+template<int N>
+void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N])
+{
+	std::vector<lua_cpp::Reg> l;
+	l.reserve(N);
+	for(int i = 0; i < N; i++) {
+		l.push_back(functions[i]);
+	}
+	set_functions(L, l);
+}
+
+/**
+ * Pushes a closure which retains a std::function object as its first up-value.
  * Note that this is *NOT* strictly compatible with the lua c function push_closure --
  * if you request additional upvalues they will be indexed starting at 2 rather than 1.
  *
@@ -173,7 +192,24 @@ void push_closure( lua_State* L, const lua_function & f, int nup);
  * NOTE: set_functions(L, l, 0) is NOT the same as set_functions(L, l), as
  * the latter produces userdata and the former doesn't.
  */
-void set_functions( lua_State* L, const lua_cpp::Reg * l, int nup);
+void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions, int nup);
+
+/**
+ * Analogous to lua_setfuncs and set_functions above, but pushes closures.
+ *
+ * NOTE: set_functions(L, l, 0) is NOT the same as set_functions(L, l), as
+ * the latter produces userdata and the former doesn't.
+ */
+template<int N>
+void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N], int nup)
+{
+	std::vector<lua_cpp::Reg> l;
+	l.reserve(N);
+	for(int i = 0; i < N; i++) {
+		l.push_back(functions[i]);
+	}
+	set_functions(L, l, nup);
+}
 
 } // end namespace lua_cpp_func
 

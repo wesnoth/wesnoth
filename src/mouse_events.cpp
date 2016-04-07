@@ -34,37 +34,34 @@
 #include "gui/widgets/window.hpp"     // for enum
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "map.hpp"                      // for gamemap
+#include "map/map.hpp"                      // for gamemap
 #include "marked-up_text.hpp"           // for color2markup, BOLD_TEXT, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"		// for playing_side, set_button_state
 #include "replay_helper.hpp"
 #include "sdl/utils.hpp"                // for int_to_color
 #include "serialization/string_utils.hpp"  // for unicode_em_dash
-#include "show_dialog.hpp"              // for dialog_button_info, etc
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"                     // for team
 #include "tod_manager.hpp"
 #include "tstring.hpp"                  // for t_string
-#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref
-#include "unit_animation_component.hpp"
-#include "unit_ptr.hpp"                 // for unit_const_ptr
-#include "unit_types.hpp"    // for attack_type
+#include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref
+#include "units/animation_component.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "units/ptr.hpp"                 // for unit_const_ptr
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
 #include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
-#include <cstddef>                     // for NULL
 #include <new>                          // for bad_alloc
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, operator<<, etc
-#include "SDL_mouse.h"                  // for SDL_GetMouseState
-#include "SDL_video.h"                  // for SDL_Color
+#include <SDL_mouse.h>                  // for SDL_GetMouseState
+#include <SDL_video.h>                  // for SDL_Color
 
 namespace gui { class slider; }
 
@@ -97,7 +94,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller & pc) :
 
 mouse_handler::~mouse_handler()
 {
-	singleton_ = NULL;
+	singleton_ = nullptr;
 }
 
 void mouse_handler::set_side(int side_number)
@@ -127,6 +124,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		new_hex = gui().hex_clicked_on(x,y);
 
 	if(new_hex != last_hex_) {
+		if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+			lk->mouse_over_hex_callback(new_hex);
+		}
 		update = true;
 		if ( pc_.get_map_const().on_board(last_hex_) ) {
 			// we store the previous hexes used to propose attack direction
@@ -166,7 +166,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// we do it before cursor selection, because it uses current_paths_
 	if( !pc_.get_map_const().on_board(new_hex) ) {
 		current_route_.steps.clear();
-		gui().set_route(NULL);
+		gui().set_route(nullptr);
 		pc_.get_whiteboard()->erase_temp_move();
 	}
 
@@ -177,7 +177,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	} else if(over_route_) {
 		over_route_ = false;
 		current_route_.steps.clear();
-		gui().set_route(NULL);
+		gui().set_route(nullptr);
 		pc_.get_whiteboard()->erase_temp_move();
 	}
 
@@ -255,7 +255,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 		if(dest == selected_hex_ || dest_un) {
 			current_route_.steps.clear();
-			gui().set_route(NULL);
+			gui().set_route(nullptr);
 			pc_.get_whiteboard()->erase_temp_move();
 		}
 		else if (!current_paths_.destinations.empty() &&
@@ -287,7 +287,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			}
 		} else if (!selected_unit) {
 			current_route_.steps.clear();
-			gui().set_route(NULL);
+			gui().set_route(nullptr);
 			pc_.get_whiteboard()->erase_temp_move();
 		}
 
@@ -556,7 +556,9 @@ void mouse_handler::move_action(bool browse)
 	//		deselect_hex();
 	//		return false;
 	//	}
-
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
 	unit_map::iterator u;
 	unit_map::iterator clicked_u;
 	map_location src;
@@ -691,7 +693,7 @@ void mouse_handler::move_action(bool browse)
 				selected_hex_ = map_location();
 				gui().select_hex(map_location());
 				gui().clear_attack_indicator();
-				gui().set_route(NULL);
+				gui().set_route(nullptr);
 				show_partial_move_ = false;
 				gui().unhighlight_reach();
 				current_paths_ = pathfind::paths();
@@ -723,10 +725,13 @@ void mouse_handler::move_action(bool browse)
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
 
 	selected_hex_ = hex;
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
 
 	gui().select_hex(selected_hex_);
 	gui().clear_attack_indicator();
-	gui().set_route(NULL);
+	gui().set_route(nullptr);
 	show_partial_move_ = false;
 
 	wb::future_map_if_active planned_unit_map; //lasts for whole method
@@ -747,7 +752,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		// the highlight now comes from selection
 		// and not from the mouseover on an enemy
 		unselected_paths_ = false;
-		gui().set_route(NULL);
+		gui().set_route(nullptr);
 
 		// selection have impact only if we are not observing and it's our unit
 		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && u->side() == gui().viewing_side()) {
@@ -820,7 +825,7 @@ bool mouse_handler::move_unit_along_current_route()
 	const std::vector<map_location> steps = current_route_.steps;
 
 	// do not show footsteps during movement
-	gui().set_route(NULL);
+	gui().set_route(nullptr);
 	gui().unhighlight_reach();
 
 	// do not keep the hex highlighted that we started from
@@ -920,7 +925,7 @@ void mouse_handler::save_whiteboard_attack(const map_location& attacker_loc, con
 		gui().clear_attack_indicator();
 
 		// remove footsteps if any - useless for whiteboard as of now
-		gui().set_route(NULL);
+		gui().set_route(nullptr);
 
 		// do not keep the hex that we started from highlighted
 		selected_hex_ = map_location();
@@ -979,8 +984,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			  attacker
 			, defender
 			, bc_vector
-			, best
-			, gui_);
+			, best);
 
 	dlg.show(gui_->video());
 
@@ -996,7 +1000,7 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 	try {
 		attack_enemy_(attacker_loc, defender_loc, choice);
 	} catch(std::bad_alloc) {
-		lg::wml_error << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+		lg::wml_error() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
 	}
 }
 
@@ -1009,9 +1013,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	// the data of the caller)
 	const map_location attacker_loc = att_loc;
 	const map_location defender_loc = def_loc;
-
-	//may fire event and modify things
-	pc_.get_undo_stack().clear();
 
 	unit_map::iterator attacker = find_unit(attacker_loc);
 	if(!attacker
@@ -1066,7 +1067,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 
 	map_location adj[6];
 	get_adjacent_tiles(loc, adj);
-	BOOST_FOREACH(const map_location &aloc, adj) {
+	for(const map_location &aloc : adj) {
 		unit_map::const_iterator i = find_unit(aloc);
 		if (i && uteam.is_enemy(i->side()))
 			res.insert(aloc);
@@ -1093,7 +1094,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 	// Check each adjacent hex.
 	map_location adj[6];
 	get_adjacent_tiles(u->get_location(), adj);
-	BOOST_FOREACH(const map_location &loc, adj)
+	for(const map_location &loc : adj)
 	{
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)
@@ -1168,7 +1169,7 @@ void mouse_handler::set_current_paths(const pathfind::paths & new_paths) {
 	gui().unhighlight_reach();
 	current_paths_ = new_paths;
 	current_route_.steps.clear();
-	gui().set_route(NULL);
+	gui().set_route(nullptr);
 	pc_.get_whiteboard()->erase_temp_move();
 }
 
@@ -1184,5 +1185,5 @@ team & mouse_handler::current_team() {
 	return pc_.gamestate().board_.teams_[side_num_ - 1];
 }
 
-mouse_handler *mouse_handler::singleton_ = NULL;
+mouse_handler *mouse_handler::singleton_ = nullptr;
 }

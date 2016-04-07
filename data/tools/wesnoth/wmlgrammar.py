@@ -1,6 +1,7 @@
 """
 wmlgrammar -- parses a given schema into a more usable form
 """
+from __future__ import print_function
 import collections
 import re
 
@@ -13,14 +14,7 @@ FORBIDDEN = 4
 class Grammar(object):
     def __init__(self, schema):
         schema = schema.get_first("schema")
-        self.datatypes = {
-            "boolean": re.compile("^(yes|no|true|false|on|off)$"),
-            # "character" : re.compile("^.$"),
-            "float": re.compile("^(\\+|-)?[0-9]+(\.[0-9]*)?$"),
-            "integer": re.compile("^(\\+|-)?[0-9]+$"),
-            "string": re.compile(".*"),
-            "tstring": re.compile(".*"),
-        }
+        self.datatypes = {}
         self.elements = {}
         self.categories = collections.defaultdict(list)
         for type in schema.get_all_text():
@@ -61,7 +55,7 @@ class Node(object):
                 self.attributes.add(Attribute(item, datatypes))
         for item in schema.get_all_subs():
             if item.name == "element":
-                print "[element] found in schema, not parsing yet"
+                print("[element] found in schema, not parsing yet")
                 # self.ext_elements...
             elif item.name == "description":
                 self.description = item.get_text("text")
@@ -113,13 +107,14 @@ class ExtElement(Element):
 
 class Attribute(object):
     def __init__(self, schema, datatypes):
-        first, second = schema.data.split(" ", 1)
-        if second not in datatypes:
-            raise Exception("Unknown datatype '%s'" % second)
+        parts = schema.data.split(" ")
+        if parts[1] not in datatypes:
+            raise Exception("Unknown datatype '%s'" % parts[1])
         self.name = schema.name
-        self.freq = parse_frequency(first)
-        self.type = second
-        self.re = datatypes[second]
+        self.freq = parse_frequency(parts[0])
+        self.type = parts[1]
+        self.optionals = parts[2:]
+        self.re = datatypes[parts[1]]
 
     def match(self, name):
         return self.name == name

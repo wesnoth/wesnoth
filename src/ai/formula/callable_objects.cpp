@@ -12,11 +12,11 @@
    See the COPYING file for more details.
 */
 
-#include "ai.hpp"
-#include "../../attack_prediction.hpp"
-#include "../../game_board.hpp"
-#include "callable_objects.hpp"
-#include "../../resources.hpp"
+#include "ai/formula/ai.hpp"
+#include "attack_prediction.hpp"
+#include "game_board.hpp"
+#include "ai/formula/callable_objects.hpp"
+#include "resources.hpp"
 
 
 namespace game_logic {
@@ -50,7 +50,7 @@ void move_map_callable::get_inputs(std::vector<game_logic::formula_input>* input
 int move_callable::do_compare(const formula_callable* callable) const
 {
 	const move_callable* mv_callable = dynamic_cast<const move_callable*>(callable);
-	if(mv_callable == NULL) {
+	if(mv_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
 
@@ -67,7 +67,7 @@ int move_callable::do_compare(const formula_callable* callable) const
 int move_partial_callable::do_compare(const formula_callable* callable) const
 {
 	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(callable);
-	if(mv_callable == NULL) {
+	if(mv_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
 
@@ -115,7 +115,7 @@ void outcome_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 attack_callable::attack_callable(const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
-	bc_(*resources::units, src, dst, weapon, -1, 1.0, NULL,
+	bc_(*resources::units, src, dst, weapon, -1, 1.0, nullptr,
 		&*resources::units->find(move_from))
 {
       type_ = ATTACK_C;
@@ -143,7 +143,7 @@ void attack_callable::get_inputs(std::vector<game_logic::formula_input>* inputs)
 int attack_callable::do_compare(const game_logic::formula_callable* callable)
 	const {
 	const attack_callable* a_callable = dynamic_cast<const attack_callable*>(callable);
-	if(a_callable == NULL) {
+	if(a_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
 
@@ -305,7 +305,7 @@ variant safe_call_result::get_value(const std::string& key) const {
 		return variant(status_);
 
 	if(key == "object") {
-		if( failed_callable_ != NULL)
+		if( failed_callable_ != nullptr)
 			return variant(failed_callable_);
 		else
 			return variant();

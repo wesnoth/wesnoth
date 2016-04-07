@@ -25,7 +25,6 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
-#include "loadscreen.hpp"
 #include "wesconfig.h"
 #include "serialization/preprocessor.hpp"
 #include "serialization/tokenizer.hpp"
@@ -35,7 +34,6 @@
 #include <stack>
 
 #include <boost/algorithm/string/replace.hpp>
-#include <boost/foreach.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -56,7 +54,7 @@ class parser
 	parser& operator=(const parser&);
 public:
 	parser(config& cfg, std::istream& in,
-		   abstract_validator * validator = NULL);
+		   abstract_validator * validator = nullptr);
 	~parser();
 	void operator()();
 
@@ -136,7 +134,6 @@ void parser::operator()()
 		case token::END:
 			break;
 		}
-		loadscreen::increment_progress();
 	} while (tok_.current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.
@@ -157,7 +154,7 @@ void parser::parse_element()
 {
 	tok_.next_token();
 	std::string elname;
-	config* current_element = NULL;
+	config* current_element = nullptr;
 	switch(tok_.current_token().type) {
 	case token::STRING: // [element]
 		elname = tok_.current_token().value;
@@ -363,7 +360,7 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols,
 		result += '\n' + debug_string;
 	}
 
-	BOOST_FOREACH(utils::string_map::value_type& var, i18n_symbols)
+	for(utils::string_map::value_type& var : i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	return result;
 }
@@ -580,7 +577,7 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 	if (tab > max_recursion_levels)
 		throw config::error("Too many recursion levels in config write");
 
-	BOOST_FOREACH(const config::attribute &i, cfg.attribute_range()) {
+	for (const config::attribute &i : cfg.attribute_range()) {
 		if (!config::valid_id(i.first)) {
 			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...\n";
 			continue;
@@ -588,7 +585,7 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
-	BOOST_FOREACH(const config::any_child &item, cfg.all_children_range())
+	for (const config::any_child &item : cfg.all_children_range())
 	{
 		if (!config::valid_id(item.key)) {
 			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...\n";

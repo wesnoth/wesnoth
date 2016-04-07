@@ -19,7 +19,6 @@
 
 #include "tooltips.hpp"
 #include "editor/action/mouse/mouse_action.hpp"
-#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -144,7 +143,7 @@ void palette_manager::draw_contents()
 sdl_handler_vector palette_manager::handler_members()
 {
 	//handler_vector h;
-//	BOOST_FOREACH(gui::widget& b, active_palette().get_widgets()) {
+//	for (gui::widget& b : active_palette().get_widgets()) {
 //		h.push_back(&b);
 //	}
 	//return h;
@@ -169,27 +168,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 
 	const SDL_MouseButtonEvent &mouse_button_event = event.button;
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
-		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
-			scroll_up();
-		}
-		if (mouse_button_event.button == SDL_BUTTON_WHEELDOWN) {
-			scroll_down();
-		}
-		if (mouse_button_event.button == SDL_BUTTON_WHEELLEFT) {
-			active_palette().prev_group();
-			scroll_top();
-		}
-		if (mouse_button_event.button == SDL_BUTTON_WHEELRIGHT) {
-			active_palette().next_group();
-			scroll_top();
-		}
-		//set_dirty(true);
-	}
-#endif
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 	if (event.type == SDL_MOUSEWHEEL) {
 		if (event.wheel.y > 0) {
 			scroll_up();
@@ -205,7 +184,6 @@ void palette_manager::handle_event(const SDL_Event& event) {
 			scroll_top();
 		}
 	}
-#endif
 
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
 		//set_dirty(true);

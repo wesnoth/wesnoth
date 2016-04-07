@@ -26,8 +26,6 @@
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 
-#include <boost/foreach.hpp>
-
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
@@ -105,27 +103,9 @@ void controller_base::handle_event(const SDL_Event& event)
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-	case SDL_ACTIVEEVENT:
-		if (event.active.state == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
-			if (get_mouse_handler_base().is_dragging()) {
-				//simulate mouse button up when the app has lost mouse focus
-				//this should be a general fix for the issue when the mouse
-				//is dragged out of the game window and then the button is released
-				int x, y;
-				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
-				if ((mouse_flags & SDL_BUTTON_LEFT) == 0) {
-					get_mouse_handler_base().mouse_press(event.button, is_browsing());
-				}
-			}
-		}
-		break;
-#endif
-#if SDL_VERSION_ATLEAST(2,0,0)
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
 		break;
-#endif
 	default:
 		break;
 	}
@@ -157,7 +137,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	int dx = 0, dy = 0;
 	int scroll_threshold = (preferences::mouse_scroll_enabled())
 		? preferences::mouse_scroll_threshold() : 0;
-	BOOST_FOREACH(const theme::menu& m, get_display().get_theme().menus()) {
+	for (const theme::menu& m : get_display().get_theme().menus()) {
 		if (sdl::point_in_rect(mousex, mousey, m.get_location())) {
 			scroll_threshold = 0;
 		}
@@ -229,14 +209,14 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 
 	const theme::menu* const m = get_display().menu_pressed();
-	if(m != NULL) {
+	if(m != nullptr) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
 		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false, get_display());
 
 		return;
 	}
 	const theme::action* const a = get_display().action_pressed();
-	if(a != NULL) {
+	if(a != nullptr) {
 		const SDL_Rect& action_loc = a->location(get_display().screen_area());
 		execute_action(a->items(), action_loc.x+1, action_loc.y + action_loc.h + 1,false);
 
@@ -325,7 +305,7 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 	}
 
 	std::vector<std::string> items;
-	BOOST_FOREACH(const std::string& item, items_arg) {
+	for (const std::string& item : items_arg) {
 
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
 		if(cmd_exec->can_execute_command(command))

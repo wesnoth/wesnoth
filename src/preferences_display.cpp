@@ -23,38 +23,38 @@
 #include "preferences_display.hpp"
 
 #include "display.hpp"
+#include "filechooser.hpp"
+#include "filesystem.hpp"
 #include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/math/common_factor_rt.hpp>
 
 namespace preferences {
 
-static display* disp = NULL;
-
-display_manager::display_manager(display* d)
+void show_preferences_dialog(CVideo& video, const config& game_cfg, const DIALOG_OPEN_TO initial_view)
 {
-	disp = d;
+	gui2::tpreferences dlg(video, game_cfg);
 
-	load_hotkeys();
+	switch (initial_view) {
+		case VIEW_DEFAULT:
+			// Default value (0,0) already set in tpreferences
+			break;
+		case VIEW_FRIENDS: {
+			dlg.set_selected_index(std::make_pair(4, 1));
+			break;
+		}
+	}
 
-	set_grid(grid());
-	set_turbo(turbo());
-	set_turbo_speed(turbo_speed());
-	set_scroll_to_action(scroll_to_action());
-	set_color_cursors(preferences::get("color_cursors", false));
-}
-
-display_manager::~display_manager()
-{
-	disp = NULL;
+	dlg.show(video);
 }
 
 void set_scroll_to_action(bool ison)
@@ -66,8 +66,8 @@ void set_turbo(bool ison)
 {
 	_set_turbo(ison);
 
-	if(disp != NULL) {
-		disp->set_turbo(ison);
+	if(display::get_singleton()) {
+		display::get_singleton()->set_turbo(ison);
 	}
 }
 
@@ -75,8 +75,8 @@ void set_turbo_speed(double speed)
 {
 	save_turbo_speed(speed);
 
-	if(disp != NULL) {
-		disp->set_turbo_speed(speed);
+	if(display::get_singleton()) {
+		display::get_singleton()->set_turbo_speed(speed);
 	}
 }
 
@@ -89,8 +89,8 @@ void set_grid(bool ison)
 {
 	_set_grid(ison);
 
-	if(disp != NULL) {
-		disp->set_grid(ison);
+	if(display::get_singleton()) {
+		display::get_singleton()->set_grid(ison);
 	}
 }
 
@@ -103,67 +103,98 @@ void set_color_cursors(bool value)
 
 void set_idle_anim(bool ison) {
 	_set_idle_anim(ison);
-	if(disp != NULL) {
-		disp->set_idle_anim(ison);
+
+	if(display::get_singleton()) {
+		display::get_singleton()->set_idle_anim(ison);
 	}
 }
 
 void set_idle_anim_rate(int rate) {
 	_set_idle_anim_rate(rate);
-	if(disp != NULL) {
-		disp->set_idle_anim_rate(rate);
+
+	if(display::get_singleton()) {
+		display::get_singleton()->set_idle_anim_rate(rate);
 	}
 }
 
-
-bool show_video_mode_dialog(CVideo& video)
+bool show_theme_dialog(CVideo& video)
 {
-	const resize_lock prevent_resizing;
-	const events::event_context dialog_events_context;
+	std::vector<theme_info> themes = theme::get_known_themes();
 
-	std::vector<std::pair<int,int> > resolutions
-			= video.get_available_resolutions();
-
-	if(resolutions.empty()) {
-		gui2::show_transient_message(
-				video
-				, ""
-				, _("There are no alternative video modes available"));
+	if (themes.empty()) {
+		gui2::show_transient_message(video, "",
+			_("No known themes. Try changing from within an existing game."));
 
 		return false;
 	}
 
-	std::vector<std::string> options;
-	unsigned current_choice = 0;
+	gui2::ttheme_list dlg(themes);
 
-	for(size_t k = 0; k < resolutions.size(); ++k) {
-		std::pair<int, int> const& res = resolutions[k];
-
-		if (res == video.current_resolution())
-			current_choice = static_cast<unsigned>(k);
-
-		std::ostringstream option;
-		option << res.first << utils::unicode_multiplication_sign << res.second;
-		const int div = boost::math::gcd(res.first, res.second);
-		const int ratio[2] = {res.first/div, res.second/div};
-		if (ratio[0] <= 10 || ratio[1] <= 10)
-			option << " (" << ratio[0] << ':' << ratio[1] << ')';
-		options.push_back(option.str());
+	for (size_t k = 0; k < themes.size(); ++k) {
+		if(themes[k].id == preferences::theme()) {
+			dlg.set_selected_index(static_cast<int>(k));
+		}
 	}
 
-	gui2::tsimple_item_selector dlg(_("Choose Resolution"), "", options);
-	dlg.set_selected_index(current_choice);
 	dlg.show(video);
+	const int action = dlg.selected_index();
 
-	int choice = dlg.selected_index();
+	if (action >= 0) {
+		// FIXME: it would be preferable for the new theme to take effect
+		//        immediately.
+		preferences::set_theme(themes[action].id);
 
-	if(choice == -1 || resolutions[static_cast<size_t>(choice)] == video.current_resolution()) {
-		return false;
+		return true;
 	}
 
-	video.set_resolution(resolutions[static_cast<size_t>(choice)]);
+	return false;
+}
 
-	return true;
+void show_wesnothd_server_search(CVideo& video)
+{
+	// Showing file_chooser so user can search the wesnothd
+	std::string old_path = preferences::get_mp_server_program_name();
+	size_t offset = old_path.rfind("/");
+	if (offset != std::string::npos)
+	{
+		old_path = old_path.substr(0, offset);
+	}
+	else
+	{
+		old_path.clear();
+	}
+#ifndef _WIN32
+
+#ifndef WESNOTH_PREFIX
+#define WESNOTH_PREFIX "/usr"
+#endif
+	const std::string filename = "wesnothd";
+	std::string path = WESNOTH_PREFIX + std::string("/bin");
+	if (!filesystem::is_directory(path))
+		path = filesystem::get_cwd();
+
+#else
+	const std::string filename = "wesnothd.exe";
+	std::string path = filesystem::get_cwd();
+#endif
+	if (!old_path.empty()
+			&& filesystem::is_directory(old_path))
+	{
+		path = old_path;
+	}
+
+	utils::string_map symbols;
+
+	symbols["filename"] = filename;
+
+	const std::string title = utils::interpolate_variables_into_string(
+			  _("Find $filename server binary")
+			, &symbols);
+
+	int res = dialogs::show_file_chooser_dialog(video, path, title, false, filename);
+	if (res == 0) {
+		preferences::set_mp_server_program_name(path);
+	}
 }
 
 } // end namespace preferences

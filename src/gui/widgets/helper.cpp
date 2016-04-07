@@ -16,13 +16,15 @@
 
 #include "gui/widgets/helper.hpp"
 
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
+#include "gui/core/point.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
+#include "formula/callable.hpp"
+#include "formula/string_utils.hpp"
+#include "tstring.hpp"
 
-#include "formula_string_utils.hpp"
-
-#include "SDL_ttf.h"
+#include <SDL_ttf.h>
 
 namespace gui2
 {

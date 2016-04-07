@@ -16,14 +16,11 @@
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "recall_list_manager.hpp"
-#include "terrain_type_data.hpp"
-#include "unit.hpp"
+#include "terrain/type_data.hpp"
+#include "units/unit.hpp"
 
-#include "utils/foreach.tpp"
-
-#include <boost/foreach.hpp>
 #include <set>
 #include <vector>
 
@@ -70,7 +67,7 @@ game_board & game_board::operator= (game_board other)
 }
 
 void game_board::new_turn(int player_num) {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		if (i.side() == player_num) {
 			i.new_turn();
 		}
@@ -78,7 +75,7 @@ void game_board::new_turn(int player_num) {
 }
 
 void game_board::end_turn(int player_num) {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		if (i.side() == player_num) {
 			i.end_turn();
 		}
@@ -86,7 +83,7 @@ void game_board::end_turn(int player_num) {
 }
 
 void game_board::set_all_units_user_end_turn() {
-	BOOST_FOREACH (unit & i, units_) {
+	for (unit & i : units_) {
 		i.set_user_end_turn(true);
 	}
 }
@@ -110,11 +107,11 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 
 	not_defeated = std::set<unsigned>();
 
-	BOOST_FOREACH( const unit & i , units())
+	for (const unit & i : units())
 	{
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
 		const team& tm = teams()[i.side()-1];
-		DBG_EE << "That team's defeat condition is: " << lexical_cast<std::string> (tm.defeat_condition()) << std::endl;
+		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
 		if (i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
 			not_defeated.insert(i.side());
 		} else if (tm.defeat_condition() == team::DEFEAT_CONDITION::NO_UNITS) {
@@ -122,7 +119,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 		}
 	}
 
-	BOOST_FOREACH(team& tm, teams_)
+	for (team& tm : teams_)
 	{
 		if(tm.defeat_condition() == team::DEFEAT_CONDITION::NEVER)
 		{
@@ -196,7 +193,7 @@ unit* game_board::get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all)
 {
 	unit_map::iterator ui = find_visible_unit(loc, current_team, see_all);
-	if (ui == units_.end()) return NULL;
+	if (ui == units_.end()) return nullptr;
 	return &*ui;
 }
 
@@ -207,10 +204,10 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	tm.change_proxy(proxy);
 	tm.set_local(true);
 
-	tm.set_current_player(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+	tm.set_current_player(ctrl.to_string() + std::to_string(side_num));
 
 	unit_map::iterator leader = units_.find_leader(side_num);
-	if (leader.valid()) leader->rename(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+	if (leader.valid()) leader->rename(ctrl.to_string() + std::to_string(side_num));
 }
 
 void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
@@ -239,7 +236,7 @@ bool game_board::team_is_defeated(const team& t) const
 	case team::DEFEAT_CONDITION::NO_LEADER:
 		return !units_.find_leader(t.side()).valid();
 	case team::DEFEAT_CONDITION::NO_UNITS:
-		BOOST_FOREACH(const unit& u, units_)
+		for (const unit& u : units_)
 		{
 			if(u.side() == t.side())
 				return false;
@@ -263,7 +260,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
-	FOREACH(const AUTO& village, map_->villages()) {
+	for(const auto& village : map_->villages()) {
 		const int owner = village_owner(village);
 		if(owner != -1) {
 			villages[village] = owner;
@@ -282,7 +279,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	}
 
 	/* Disown villages that are no longer villages. */
-	FOREACH(const AUTO& village, villages) {
+	for(const auto& village : villages) {
 		if(!newmap.is_village(village.first)) {
 			teams_[village.second].lose_village(village.first);
 		}
@@ -334,7 +331,7 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 
 	map_->set_terrain(loc, new_t);
 
-	BOOST_FOREACH(const t_translation::t_terrain &ut, map_->underlying_union_terrain(loc)) {
+	for(const t_translation::t_terrain &ut : map_->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
 	}
 	return true;
@@ -349,11 +346,11 @@ void game_board::write_config(config & cfg) const
 		config& side = cfg.add_child("side");
 		t->write(side);
 		side["no_leader"] = true;
-		side["side"] = str_cast(side_num);
+		side["side"] = std::to_string(side_num);
 
 		//current units
 		{
-			BOOST_FOREACH(const unit & i, units_) {
+			for (const unit & i : units_) {
 				if (i.side() == side_num) {
 					config& u = side.add_child("unit");
 					i.get_location().write(u);
@@ -363,7 +360,7 @@ void game_board::write_config(config & cfg) const
 		}
 		//recall list
 		{
-			BOOST_FOREACH(const unit_const_ptr & j, t->recall_list()) {
+			for (const unit_const_ptr & j : t->recall_list()) {
 				config& u = side.add_child("unit");
 				j->write(u);
 			}

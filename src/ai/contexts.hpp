@@ -25,11 +25,11 @@
 
 #include "global.hpp"
 
-#include "../config.hpp"                // for config
-#include "../game_errors.hpp"
-#include "../generic_event.hpp"         // for observer
-#include "../unit_ptr.hpp"              // for unit_ptr
-#include "../map_location.hpp"       // for map_location
+#include "config.hpp"                // for config
+#include "game_errors.hpp"
+#include "generic_event.hpp"         // for observer
+#include "units/ptr.hpp"              // for unit_ptr
+#include "map/location.hpp"       // for map_location
 
 #include <map>                          // for map, map<>::value_compare
 #include <set>                          // for set
@@ -44,7 +44,6 @@ class unit_map;
 class unit_type;  // lines 46-46
 class variant;  // lines 42-42
 namespace ai { class ai_context; }  // lines 51-51
-namespace ai { class ministage; }
 namespace ai { class unit_advancements_aspect; }
 namespace ai { template <typename T> class typesafe_aspect; }
 namespace boost { template <class T> class shared_ptr; }
@@ -200,11 +199,11 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const = 0;
+		const terrain_filter* remove_destinations=nullptr) const = 0;
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const = 0;
 
 	virtual const game_info& get_info() const = 0;
@@ -295,9 +294,6 @@ public:
 	virtual double get_leader_value() const = 0;
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const = 0;
-
-
 	virtual bool get_passive_leader() const = 0;
 
 
@@ -310,16 +306,7 @@ public:
 	virtual const std::vector<unit_ptr>& get_recall_list() const = 0;
 
 
-	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
-
-
 	virtual double get_recruitment_diversity() const = 0;
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const = 0;
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const = 0;
 
 
 	virtual const config get_recruitment_instructions() const = 0;
@@ -478,7 +465,7 @@ public:
 class side_context_proxy : public virtual side_context {
 public:
 	side_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -525,7 +512,7 @@ private:
 class readonly_context_proxy : public virtual readonly_context, public virtual side_context_proxy {
 public:
 	readonly_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -601,7 +588,7 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const
+		const terrain_filter* remove_destinations=nullptr) const
 	{
 		target_->calculate_possible_moves(possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations);
 	}
@@ -609,7 +596,7 @@ public:
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const
 	{
 		target_->calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
@@ -798,12 +785,6 @@ public:
 	}
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const
-	{
-		return target_->get_number_of_possible_recruits_to_force_recruit();
-	}
-
-
 	virtual bool get_passive_leader() const
 	{
 		return target_->get_passive_leader();
@@ -834,27 +815,9 @@ public:
 	}
 
 
-	virtual stage_ptr get_recruitment(ai_context &context) const
-	{
-		return target_->get_recruitment(context);
-	}
-
-
 	virtual double get_recruitment_diversity() const
 	{
 		return target_->get_recruitment_diversity();
-	}
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const
-	{
-		return target_->get_recruitment_ignore_bad_combat();
-	}
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const
-	{
-		return target_->get_recruitment_ignore_bad_movement();
 	}
 
 
@@ -1043,7 +1006,7 @@ private:
 class readwrite_context_proxy : public virtual readwrite_context, public virtual readonly_context_proxy {
 public:
 	readwrite_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 
@@ -1317,7 +1280,7 @@ public:
 	void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL) const;
+		const terrain_filter* remove_destinations=nullptr) const;
 
  	/**
 	 * A more fundamental version of calculate_possible_moves which allows the
@@ -1329,7 +1292,7 @@ public:
 	void calculate_moves(const unit_map& units,
 		std::map<map_location,pathfind::paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const terrain_filter* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=nullptr,
 		bool see_all=false) const;
 
 
@@ -1412,9 +1375,6 @@ public:
 	virtual std::vector<goal_ptr>& get_goals();
 
 
-	virtual double get_number_of_possible_recruits_to_force_recruit() const;
-
-
 	virtual double get_leader_aggression() const;
 
 
@@ -1439,16 +1399,7 @@ public:
 	virtual const std::vector<unit_ptr>& get_recall_list() const;
 
 
-	virtual stage_ptr get_recruitment(ai_context &context) const;
-
-
 	virtual double get_recruitment_diversity() const;
-
-
-	virtual bool get_recruitment_ignore_bad_combat() const;
-
-
-	virtual bool get_recruitment_ignore_bad_movement() const;
 
 
 	virtual const config get_recruitment_instructions() const;
@@ -1583,14 +1534,10 @@ private:
 	mutable bool dst_src_enemy_valid_lua_;
 	mutable bool src_dst_valid_lua_;
 	mutable bool src_dst_enemy_valid_lua_;
-	aspect_type<double>::typesafe_ptr number_of_possible_recruits_to_force_recruit_;
 	aspect_type<bool>::typesafe_ptr passive_leader_;
 	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
-	aspect_type< ministage >::typesafe_ptr recruitment_;
 	aspect_type< double >::typesafe_ptr recruitment_diversity_;
-	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_combat_;
-	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;
 	aspect_type< config >::typesafe_ptr recruitment_instructions_;
 	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_more_;
 	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;

@@ -20,7 +20,6 @@
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 
-#include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
 #include <string>
 #include <vector>
@@ -34,7 +33,7 @@ public:
 
 	virtual std::string my_name() { return "Application Lua Kernel"; }
 
-	typedef std::vector<boost::function<bool(void)> > request_list;
+	typedef std::vector<std::function<bool(void)> > request_list;
 
 	class thread : private boost::noncopyable {
 		lua_State * T_;

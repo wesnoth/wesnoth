@@ -21,7 +21,7 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 
-#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
+#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
 
 namespace soundsource {
 
@@ -32,7 +32,6 @@ unsigned int positional_source::last_id = 0;
 
 manager::manager(const display &disp) :
 	observer(),
-	savegame_config(),
 	sources_(),
 	disp_(disp)
 {
@@ -65,6 +64,16 @@ void manager::add(const sourcespec &spec)
 		delete (*it).second;
 		(*it).second = new positional_source(spec);
 	}
+}
+
+config manager::get(const std::string &id)
+{
+	config cfg;
+	positional_source_iterator it = sources_.find(id);
+	if(it != sources_.end()) {
+		it->second->write_config(cfg);
+	}
+	return cfg;
 }
 
 void manager::remove(const std::string &id)
@@ -106,13 +115,6 @@ void manager::write_sourcespecs(config& cfg) const
 		child["id"] = i->first;
 		i->second->write_config(child);
 	}
-}
-
-config manager::to_config() const
-{
-	config cfg;
-	write_sourcespecs(cfg);
-	return cfg.child("sound_source");
 }
 
 positional_source::positional_source(const sourcespec &spec) :

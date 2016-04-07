@@ -25,15 +25,14 @@
 #include "marked-up_text.hpp"
 #include "text.hpp"
 #include "tooltips.hpp"
-#include "video.hpp"
 #include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "preferences.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 
 #include <list>
@@ -257,7 +256,7 @@ static TTF_Font* open_font_impl(const std::string & fname, int size) {
 				name = fname;
 				if(!filesystem::file_exists(name)) {
 					ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
-					return NULL;
+					return nullptr;
 				}
 			}
 		}
@@ -267,7 +266,7 @@ static TTF_Font* open_font_impl(const std::string & fname, int size) {
 		if(!filesystem::file_exists(name)) {
 			if(!filesystem::file_exists(fname)) {
 				ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
-				return NULL;
+				return nullptr;
 			}
 			name = fname;
 		}
@@ -275,10 +274,10 @@ static TTF_Font* open_font_impl(const std::string & fname, int size) {
 
 	SDL_RWops *rwops = filesystem::load_RWops(name);
 	TTF_Font* font = TTF_OpenFontRW(rwops, true, size); // SDL takes ownership of rwops
-	if(font == NULL) {
+	if(font == nullptr) {
 		ERR_FT << "Failed opening font: '" <<  fname << "'\n";
 		ERR_FT << "TTF_OpenFont: " << TTF_GetError() << std::endl;
-		return NULL;
+		return nullptr;
 	}
 
 	DBG_FT << "Opened a font: " << fname << std::endl;
@@ -297,7 +296,7 @@ static TTF_Font* get_font(font_id id)
 {
 	const std::map<font_id, ttf_record>::iterator it = font_table.find(id);
 	if(it != font_table.end()) {
-		if (it->second.font != NULL) {
+		if (it->second.font != nullptr) {
 			// If we found a valid record, use SDL_TTF to add in the difference
 			// between its intrinsic style and the desired style.
 			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
@@ -308,7 +307,7 @@ static TTF_Font* get_font(font_id id)
 	// There's no record, so we need to try to find a solution for this font
 	// and make a record of it. If the indices are out of bounds don't bother though.
 	if(id.subset < 0 || size_t(id.subset) >= font_names.size()) {
-		return NULL;
+		return nullptr;
 	}
 
 	// Favor to use the shipped Italic font over bold if both are present and are needed.
@@ -339,9 +338,9 @@ static TTF_Font* get_font(font_id id)
 	}
 
 	// Failed to find a font.
-	ttf_record rec = {NULL, TTF_STYLE_NORMAL};
+	ttf_record rec = {nullptr, TTF_STYLE_NORMAL};
 	font_table.insert(std::make_pair(id, rec));
-	return NULL;
+	return nullptr;
 }
 
 static void clear_fonts()
@@ -413,16 +412,16 @@ void manager::init() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
+	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path)) {
-			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
+			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
 		}
-		BOOST_FOREACH(const std::string& file, files) {
+		for(const std::string& file : files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
-				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
+				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, nullptr);
 			}
 		}
 	}
@@ -436,15 +435,15 @@ void manager::deinit() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
+	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path))
-			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
-		BOOST_FOREACH(const std::string& file, files) {
+			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+		for(const std::string& file : files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
-				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
+				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, nullptr);
 			}
 		}
 	}
@@ -487,7 +486,7 @@ font::subset_descriptor::subset_descriptor(const config & font)
 
 	std::vector<std::string> ranges = utils::split(font["codepoints"]);
 
-	BOOST_FOREACH(const std::string & i, ranges) {
+	for (const std::string & i : ranges) {
 		std::vector<std::string> r = utils::split(i, '-');
 		if(r.size() == 1) {
 			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
@@ -546,7 +545,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 			italic_names.push_back("");
 		}
 
-		BOOST_FOREACH(const subset_descriptor::range &cp_range, itor->present_codepoints) {
+		for (const subset_descriptor::range &cp_range : itor->present_codepoints) {
 			char_blocks.insert(cp_range.first, cp_range.second, subset);
 		}
 	}
@@ -630,7 +629,7 @@ void text_surface::bidi_cvt()
 
 
 	n = fribidi_charset_to_unicode(FRIBIDI_CHAR_SET_UTF8, c_str, len, bidi_logical);
-	fribidi_log2vis(bidi_logical, n, &base_dir, bidi_visual, NULL, NULL, NULL);
+	fribidi_log2vis(bidi_logical, n, &base_dir, bidi_visual, nullptr, nullptr, nullptr);
 
 	fribidi_unicode_to_charset(FRIBIDI_CHAR_SET_UTF8, bidi_visual, n, utf8str);
 	is_rtl_ = base_dir == FRIBIDI_TYPE_RTL;
@@ -705,10 +704,10 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 
-	BOOST_FOREACH(text_chunk const &chunk, chunks_)
+	for(text_chunk const &chunk : chunks_)
 	{
 		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
-		if(ttfont == NULL) {
+		if(ttfont == nullptr) {
 			continue;
 		}
 
@@ -751,7 +750,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	BOOST_FOREACH(text_chunk const &chunk, chunks_)
+	for(text_chunk const &chunk : chunks_)
 	{
 		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
 
@@ -825,7 +824,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 		int text_style = style;
 
 		std::string::const_iterator after_markup = use_markup ?
-			parse_markup(ln->begin(), ln->end(), &sz, NULL, &text_style) : ln->begin();
+			parse_markup(ln->begin(), ln->end(), &sz, nullptr, &text_style) : ln->begin();
 		text_surface txt_surf(sz, color, text_style);
 
 		if (after_markup == ln->end() && (ln+1 != ln_end || lines.begin()+1 == ln_end)) {
@@ -872,7 +871,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 					j_end = i->end(); j != j_end; ++j) {
 				SDL_SetAlpha(*j, 0, 0); // direct blit without alpha blending
 				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
-				sdl_blit(*j, NULL, res, &dstrect);
+				sdl_blit(*j, nullptr, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
 			}
@@ -894,6 +893,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& color, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
+	size = preferences::font_scaled(size);
 	if (gui_surface.null()) {
 		text_surface const &u = text_cache::find(text_surface(text, size, color, style));
 		return sdl::create_rect(0, 0, u.width(), u.height());
@@ -907,7 +907,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 
 	// for the main current use, we already parsed markup
 	surface surface(render_text(etext,size,color,style,false));
-	if(surface == NULL) {
+	if(surface == nullptr) {
 		return sdl::create_rect(0, 0, 0, 0);
 	}
 
@@ -916,7 +916,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		dest.x = x;
 #ifdef	HAVE_FRIBIDI
 		// Oron -- Conditional, until all draw_text_line calls have fixed area parameter
-		if(getenv("NO_RTL") == NULL) {
+		if(getenv("NO_RTL") == nullptr) {
 			bool is_rtl = text_cache::find(text_surface(text, size, color, style)).is_rtl();
 			if(is_rtl)
 				dest.x = area.x + area.w - surface->w - (x - area.x);
@@ -943,7 +943,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 		dest.h = area.y + area.h - dest.y;
 	}
 
-	if(gui_surface != NULL) {
+	if(gui_surface != nullptr) {
 		SDL_Rect src = dest;
 		src.x = 0;
 		src.y = 0;
@@ -961,7 +961,7 @@ int get_max_height(int size)
 {
 	// Only returns the maximal size of the first font
 	TTF_Font* const font = get_font(font_id(0, size));
-	if(font == NULL)
+	if(font == nullptr)
 		return 0;
 	return TTF_FontHeight(font);
 }
@@ -1070,7 +1070,7 @@ bool load_font_config()
 		return false;
 
 	std::set<std::string> known_fonts;
-	BOOST_FOREACH(const config &font, fonts_config.child_range("font")) {
+	for (const config &font : fonts_config.child_range("font")) {
 		known_fonts.insert(font["name"]);
 		if (font.has_attribute("bold_name")) {
 			known_fonts.insert(font["bold_name"]);

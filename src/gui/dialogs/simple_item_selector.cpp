@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/simple_item_selector.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -26,7 +26,6 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "utils/foreach.tpp"
 
 namespace gui2
 {
@@ -79,12 +78,12 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title,
 	register_label("message", true, message, message_uses_markup);
 }
 
-void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
+void tsimple_item_selector::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
-	FOREACH(const AUTO & it, items_)
+	for(const auto & it : items_)
 	{
 		std::map<std::string, string_map> data;
 		string_map column;

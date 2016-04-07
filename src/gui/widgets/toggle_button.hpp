@@ -21,6 +21,8 @@
 namespace gui2
 {
 
+// ------------ WIDGET -----------{
+
 /**
  * Class for a toggle button.
  *
@@ -38,24 +40,24 @@ public:
 	void set_members(const string_map& data);
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/** Inherited from tcontrol. */
 	void update_canvas();
 
 	/** Inherited from tselectable_ */
-	unsigned get_value() const OVERRIDE
+	unsigned get_value() const override
 	{
 		return state_num_;
 	}
 	/** Inherited from tselectable_ */
-	unsigned num_states() const OVERRIDE;
+	unsigned num_states() const override;
 	/** Inherited from tselectable_ */
 	void set_value(const unsigned selected);
 
@@ -64,7 +66,7 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(boost::function<void(twidget&)> callback)
+	void set_callback_state_change(std::function<void(twidget&)> callback)
 	{
 		callback_state_change_ = callback;
 	}
@@ -117,7 +119,7 @@ private:
 	int retval_;
 
 	/** See tselectable_::set_callback_state_change. */
-	boost::function<void(twidget&)> callback_state_change_;
+	std::function<void(twidget&)> callback_state_change_;
 
 	/**
 	 * The toggle button can contain an icon next to the text.
@@ -126,7 +128,7 @@ private:
 	std::string icon_name_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
@@ -140,6 +142,41 @@ private:
 	void signal_handler_left_button_double_click(const event::tevent event,
 												 bool& handled);
 };
+
+// }---------- DEFINITION ---------{
+
+struct ttoggle_button_definition : public tcontrol_definition
+{
+	explicit ttoggle_button_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_toggle_button : public tbuilder_control
+{
+	explicit tbuilder_toggle_button(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+private:
+	std::string icon_name_;
+	std::string retval_id_;
+	int retval_;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

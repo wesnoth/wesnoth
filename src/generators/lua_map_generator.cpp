@@ -20,8 +20,6 @@
 
 #include <string>
 
-#include <boost/foreach.hpp>
-
 lua_map_generator::lua_map_generator(const config & cfg)
 	: id_(cfg["id"])
 	, config_name_(cfg["config_name"])
@@ -32,7 +30,7 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	, generator_data_(cfg)
 {
 	const char* required[] = {"id", "config_name", "create_map"};
-	BOOST_FOREACH(std::string req, required) {
+	for (std::string req : required) {
 		if (!cfg.has_attribute(req)) {
 			std::string msg = "Error when constructing a lua map generator -- missing a required attribute '";
 			msg += req + "'\n";

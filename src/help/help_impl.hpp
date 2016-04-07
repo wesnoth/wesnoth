@@ -32,10 +32,10 @@
 #ifndef HELP_IMPL_INCLUDED
 #define HELP_IMPL_INCLUDED
 
-#include "config.hpp"                   // for config
 #include "exceptions.hpp"               // for error
 #include "font.hpp"                     // for line_width, relative_size
 
+#include <cstring>
 #include <list>                         // for list
 #include <ostream>                      // for operator<<, stringstream, etc
 #include <string>                       // for string, allocator, etc
@@ -44,6 +44,7 @@
 #include <boost/shared_ptr.hpp>
 #include <SDL.h>                  // for SDL_Color, SDL_Surface
 
+class config;
 class unit_type;
 class terrain_type_data;
 typedef boost::shared_ptr<terrain_type_data> tdata_cache;
@@ -85,7 +86,7 @@ public:
 	~topic_text();
 	topic_text():
 		parsed_text_(),
-		generator_(NULL)
+		generator_(nullptr)
 	{
 	}
 
@@ -176,7 +177,7 @@ public:
 	has_id(const std::string &id) : id_(id) {}
 	bool operator()(const topic &t) { return t.id == id_; }
 	bool operator()(const section &s) { return s.id == id_; }
-	bool operator()(const section *s) { return s != NULL && s->id == id_; }
+	bool operator()(const section *s) { return s != nullptr && s->id == id_; }
 private:
 	const std::string id_;
 };
@@ -261,7 +262,7 @@ std::vector<topic> generate_faction_topics(const config &, const bool);
 std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
 
 /// Parse a help config, return the top level section. Return an empty
-/// section if cfg is NULL.
+/// section if cfg is nullptr.
 section parse_config(const config *cfg);
 /// Recursive function used by parse_config.
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
@@ -275,12 +276,12 @@ bool section_is_referenced(const std::string &section_id, const config &cfg);
 bool topic_is_referenced(const std::string &topic_id, const config &cfg);
 
 /// Search for the topic with the specified identifier in the section
-/// and its subsections. Return the found topic, or NULL if none could
+/// and its subsections. Return the found topic, or nullptr if none could
 /// be found.
 const topic *find_topic(const section &sec, const std::string &id);
 
 /// Search for the section with the specified identifier in the section
-/// and its subsections. Return the found section or NULL if none could
+/// and its subsections. Return the found section or nullptr if none could
 /// be found.
 const section *find_section(const section &sec, const std::string &id);
 
@@ -322,7 +323,6 @@ extern int last_num_encountered_units;
 extern int last_num_encountered_terrains;
 extern bool last_debug_state;
 
-extern config dummy_cfg;
 extern std::vector<std::string> empty_string_vector;
 extern const int max_section_level;
 extern const int title_size;

@@ -20,10 +20,10 @@
 #ifndef REPLAY_H_INCLUDED
 #define REPLAY_H_INCLUDED
 
-#include "config.hpp"
-#include "map_location.hpp"
+#include "map/location.hpp"
 
 #include <deque>
+#include <iterator>
 #include <map>
 #include <set>
 class replay_recorder_base;
@@ -31,6 +31,7 @@ class game_display;
 class terrain_label;
 class unit_map;
 class play_controller;
+class config;
 struct time_of_day;
 
 class chat_msg {
@@ -156,6 +157,7 @@ enum REPLAY_RETURN
 	REPLAY_RETURN_AT_END,
 	REPLAY_FOUND_DEPENDENT,
 	REPLAY_FOUND_END_TURN,
+	REPLAY_FOUND_INIT_TURN,
 	REPLAY_FOUND_END_MOVE,
 	REPLAY_FOUND_END_LEVEL
 };

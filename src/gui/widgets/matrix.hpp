@@ -17,9 +17,15 @@
 
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/pane.hpp"
+#include "gui/widgets/scrollbar_container.hpp"
+
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -71,19 +77,19 @@ public:
 	}
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE
+	virtual void set_active(const bool active) override
 	{
 		STATE::set_active(active);
 	}
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE
+	virtual bool get_active() const override
 	{
 		return STATE::get_active();
 	}
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE
+	virtual unsigned get_state() const override
 	{
 		return STATE::get_state();
 	}
@@ -111,41 +117,41 @@ public:
 	/***** ***** ***** ***** Inherited operations. ***** ***** ****** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/** See @ref twidget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
+	virtual void layout_initialise(const bool full_initialisation) override;
 
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
-									int y_offset) OVERRIDE;
+									int y_offset) override;
 
 	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	virtual void layout_children() override;
 
 	/** See @ref twidget::child_populate_dirty_list. */
 	virtual void
 	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+							  const std::vector<twidget*>& call_stack) override;
 
 	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	twidget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref twidget::find. */
 	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+						const bool must_be_active) const override;
 
 	/***** ***** ***** ***** Forwarded to pane_. ***** ***** ****** *****/
 	/**
@@ -176,14 +182,14 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	/** See @ref twidget::create_walker. */
-	virtual iterator::twalker_* create_walker() OVERRIDE;
+	virtual iterator::twalker_* create_walker() override;
 
 	/**
 	 * Returns a grid in the pane.
@@ -193,7 +199,7 @@ public:
 	 *                            @ref create_item().
 	 *
 	 * @returns                   The wanted grid.
-	 * @retval NULL               The id isn't associated with an item.
+	 * @retval nullptr               The id isn't associated with an item.
 	 */
 	tgrid* grid(const unsigned id);
 
@@ -205,7 +211,7 @@ public:
 	 *                            @ref create_item().
 	 *
 	 * @returns                   The wanted grid.
-	 * @retval NULL               The id isn't associated with an item.
+	 * @retval nullptr               The id isn't associated with an item.
 	 */
 	const tgrid* grid(const unsigned id) const;
 
@@ -221,8 +227,52 @@ private:
 	tpane* pane_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tmatrix_definition : public tcontrol_definition
+{
+
+	explicit tmatrix_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr content;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_matrix : public tbuilder_control
+{
+	explicit tbuilder_matrix(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr builder_top;
+	tbuilder_grid_ptr builder_bottom;
+
+	tbuilder_grid_ptr builder_left;
+	tbuilder_grid_ptr builder_right;
+
+	tbuilder_widget_ptr builder_main;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

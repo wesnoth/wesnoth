@@ -18,8 +18,13 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/clickable.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 class trepeating_button : public tcontrol, public tclickable_
 {
@@ -49,13 +54,13 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
 	void connect_click_handler(const event::tsignal_function& signal)
@@ -96,7 +101,7 @@ private:
 	size_t repeat_timer_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
@@ -111,6 +116,36 @@ private:
 									   bool& handled);
 };
 
+// }---------- DEFINITION ---------{
+
+struct trepeating_button_definition : public tcontrol_definition
+{
+	explicit trepeating_button_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_repeating_button : public tbuilder_control
+{
+public:
+	explicit tbuilder_repeating_button(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

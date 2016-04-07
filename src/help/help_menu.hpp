@@ -39,7 +39,7 @@ public:
 	void select_topic(const topic &t);
 
 	/// If a topic has been chosen, return that topic, otherwise
-	/// NULL. If one topic is returned, it will not be returned again,
+	/// nullptr. If one topic is returned, it will not be returned again,
 	/// if it is not re-chosen.
 	const topic *chosen_topic();
 
@@ -48,7 +48,7 @@ private:
 	struct visible_item {
 		visible_item(const section *_sec, const std::string &visible_string);
 		visible_item(const topic *_t, const std::string &visible_string);
-		// Invariant, one if these should be NULL. The constructors
+		// Invariant, one if these should be nullptr. The constructors
 		// enforce it.
 		const topic *t;
 		const section *sec;

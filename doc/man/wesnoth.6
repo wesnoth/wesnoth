@@ -43,30 +43,42 @@ campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP
-.BI --bpp \ number
-sets BitsPerPixel value. Example:
-.B --bpp 32
+.BI --bunzip \ infile.gz
+decompresses a file which should be in bzip2 format and stores it
+without the .bz2 suffix. The
+.I infile.bz2
+will be removed.
 .TP
-.B -c, --campaign \ [<id_campaign>]
-goes directly to the campaign with id <id_campaign>. A selection menu will appear if no id was specified.
-.B Note:
-When using this switch please ensure that you specify the data directory path as the final argument as well, otherwise the game will take the campaign/scenario id as the data dir.
+.BI --bzip \ infile
+compresses a file in bzip2 format, stores it as
+.IR infile .bz2
+and removes
+.IR infile .
 .TP
-.B --campaign-difficulty [<difficulty>]
-The difficulty of the specified campaign (1 to max). If none specified, the campaign difficulty selection widget will appear.
+.BI -c,\ --campaign\ [ id_campaign ]
+goes directly to the campaign with id <id_campaign>. A selection menu will
+appear if no id was specified.
 .TP
-.B --campaign-scenario <id_scenario>
+.BI --core \ id_core
+overrides the loaded core with the one whose id is specified.
+.TP
+.BI --campaign-difficulty\ [ difficulty ]
+The difficulty of the specified campaign (1 to max). If none specified,
+the campaign difficulty selection widget will appear.
+.TP
+.BI --campaign-scenario \ id_scenario
 The id of the scenario from the specified campaign. The default is the first scenario.
 .TP
-.B --data-dir <directory>
+.BI --data-dir \ directory
 overrides the data directory with the one specified
 .TP
 .B --data-path
-path the path of the data directory and exits.
+print the path of the data directory and exits.
 .TP
 .B -d, --debug
 enables additional command mode options in-game
-(see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more information about command mode).
+(see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more
+information about command mode).
 .TP
 .BI -e,\ --editor \ file
 start the in-game map editor directly. If
@@ -108,6 +120,13 @@ option is used as well, starts the editor with the map from
 .I file
 open. If it is a directory, the editor will start with a load map dialog opened there.
 .TP
+.BI -L,\ --language \ lang
+uses language
+.I lang
+(symbol) this session.
+Example:
+.B --language ang_GB@latin
+.TP
 .BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
 .B all
@@ -117,12 +136,21 @@ By default the
 .B error
 level is used.
 .TP
-.B --logdomains\ [filter]
+.B --log-precise
+shows the timestamps in the logfile with more precision.
+.TP
+.B --log-strict
+sets the strict level of the logger. Any messages sent to log domains
+of this level or more severe will cause the unit test to fail regardless
+of the victory result. Only relevant when used with
+.BR -u .
+.TP
+.BI --logdomains\ [ filter ]
 lists defined log domains (only the ones containing
 .B filter
 if used) and exits
 .TP
-.B --max-fps
+.BI --max-fps \ fps
 the number of frames per second the game can show, the value should be between
 the 1 and 1000, the default is
 .BR 50 .
@@ -131,26 +159,42 @@ the 1 and 1000, the default is
 runs a multiplayer game. There are additional options that can be used
 together with
 .B --multiplayer
-as explained below. Only these additional options can follow
-.BR --multiplayer .
+as explained below.
+.TP
+.B --mp-test
+load the test mp scenarios.
 .TP
 .B --no-delay
-runs the game without any delays for graphic benchmarking. This is automatically enabled by
+runs the game without any delays for graphic benchmarking.
+This is automatically enabled by
 .BR --nogui .
+.TP
+.B --noaddons
+disables loading of user addons.
 .TP
 .B --nocache
 disables caching of game data.
 .TP
+.B --nogui
+runs the game without the GUI.
+.TP
 .B --nomusic
 runs the game without music.
+.TP
+.B --noreplaycheck
+don't try to validate replay of unit test. Only relevant when used with
+.BR -u .
 .TP
 .B --nosound
 runs the game without sounds and music.
 .TP
+.BI --password \ password
+uses <password> when connecting to a server, ignoring other preferences. Unsafe.
+.TP
 .B --path
 prints the name of the game data directory and exits.
 .TP
-.B -p, --preprocess <source file/folder> <target directory>
+.BI -p,\ --preprocess \ source-file/folder \  target-directory
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed
  .cfg file will be written in specified target directory. If a folder is specified, it will
 be preprocessed recursively based on the known preprocessor rules. The common macroses
@@ -161,40 +205,58 @@ For details regarding the preprocessor visit:
 http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
 
 .TP
-.B --preprocess-defines=DEFINE1,DEFINE2,etc
+.BI --preprocess-defines= DEFINE1 , DEFINE2 , etc
 comma separated list of defines to be used by the '--preprocess' command. If
 .B SKIP_CORE
 is in the define list the "data/core" directory won't be preprocessed.
 .TP
-.B --preprocess-input-macros <source file>
+.BI --preprocess-input-macros \ source-file
 used only by the '--preprocess' command.
 Specifies a file that contains [preproc_define]s to be included before preprocessing.
 .TP
-.B --preprocess-output-macros [<target file>]
+.BI --preprocess-output-macros\ [ target-file ]
 used only by the '--preprocess' command.
 Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
+The output file can be passed to
+.BR --preprocess-input-macros
 This switch should be typed before the --preprocess command.
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
 .B -r 800x600
 .TP
-.BI -s,\ --server\ [host]
+.BI --render-image \ image \  output
+takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file.
+.TP
+.BI --rng-seed \ seed
+seeds the random number generator with number <arg>.
+Example:
+.B --rng-seed 0
+.TP
+.BI --screenshot \ map \  output
+saves a screenshot of <map> to <output> without initializing a screen.
+.TP
+.BI -s,\ --server\ [ host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
 .B --server server.wesnoth.org
 .TP
-.BI --username <username>
-uses <username> when connecting to a server, ignoring other preferences.
-.TP
-.BI --password <password>
-uses <password> when connecting to a server, ignoring other preferences. Unsafe.
+.B --showgui
+runs the game with the GUI, overriding any implicit
+.B --nogui.
 .TP
 .B --strict-validation
 validation errors are treated as fatal errors.
 .TP
-.B -t, --test
-runs the game in a small test scenario.
+.BI -t,\ --test\ [ scenario_id ]
+runs the game in a small test scenario. The scenario should be one defined with a
+.B [test]
+WML tag. The default is "test". Implies
+.B --nogui.
+.TP
+.BI -u,\ --unit \ scenario-id
+runs the specified test scenario as a unit test. Implies
+.B --nogui.
 .TP
 .BI --userconfig-dir \ name
 sets the user configuration directory to
@@ -218,6 +280,9 @@ You can also specify an absolute path for the userdata directory outside
 the $HOME or "My Documents\\My Games". On Windows it is also possible to
 specify a directory relative to the process working directory by using path
 starting with ".\\" or "..\\".
+.TP
+.BI --username \ username
+uses <username> when connecting to a server, ignoring other preferences.
 .TP
 .B --userdata-path
 prints the path of the userdata directory and exits.
@@ -244,23 +309,26 @@ The side-specific multiplayer options are marked with
 has to be replaced by a side number. It usually is 1 or 2 but depends on
 the number of players possible in the chosen scenario.
 .TP
-.BI --ai_config number = value
+.BI --ai_config \ number : value
 selects a configuration file to load for the AI controller for this side.
 .TP
-.BI --algorithm number = value
+.BI --algorithm \ number : value
 selects a non-standard algorithm to be used by the AI controller for
-this side. Available values:
+this side. The algorithm is defined by an
+.B [ai]
+tag, which can be a core one either in "data/ai/ais" or "data/ai/dev"
+or an algorithm defined by an addon. Available values include:
 .B idle_ai
 and
-.BR sample_ai .
+.BR experimental_ai .
 .TP
-.BI --controller number = value
+.BI --controller \ number : value
 selects the controller for this side. Available values:
 .B human
 and
 .BR ai .
 .TP
-.BI --era= value
+.BI --era \ value
 use this option to play in the selected era instead of the
 .B Default
 era. The era is chosen by an id. Eras are described in the
@@ -274,19 +342,14 @@ This is also used for scriptable benchmarking.
 .B --ignore-map-settings
 do not use map settings, use default values instead.
 .TP
-.BI --multiplayer-repeat= value
+.BI --multiplayer-repeat \ value
 repeats a multiplayer game
 .I value
 times. Best to use with
 .B --nogui
 for scriptable benchmarking.
 .TP
-.B --nogui
-runs the game without the GUI. Must appear before
-.B --multiplayer
-to have the desired effect.
-.TP
-.BI --parm number = name : value
+.BI --parm \ number : name : value
 sets additional parameters for this side. This parameter depends on the
 options used with
 .B --controller
@@ -295,22 +358,38 @@ and
 It should only be useful for people designing their own AI. (not yet
 documented completely)
 .TP
-.BI --scenario= value
+.BI --scenario \ value
 selects a multiplayer scenario by id. The default scenario id is
 .BR multiplayer_The_Freelands .
 .TP
-.BI --side number = value
+.BI --side \ number : value
 selects a faction of the current era for this side. The faction is
 chosen by an id. Factions are described in the data/multiplayer.cfg
 file.
 .TP
-.BI --turns= value
+.BI --turns \ value
 sets the number of turns for the chosen scenario. The default is
 .BR 50 .
 .
 .SH EXIT STATUS
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video, fonts, etc) initialization error. An exit status of 2 indicates an error with the command line options.
+Normal exit status is 0.
+An exit status of 1 indicates an (SDL, video, fonts, etc) initialization error.
+An exit status of 2 indicates an error with the command line options.
+.br
+When running unit tests
+.RB (with \ -u ),
+the exit status is different.
+An exit status of 0 indicates that the test passed,
+and 1 indicates that the test failed.
+An exit status of 3 indicates that the test passed, but produced an invalid replay file.
+An exit status of 4 indicates that the test passed, but the replay produced errors.
+These latter two are only returned if
+.B --noreplaycheck
+is not passed.
+An exit status of 2 indicates that the test timed out, when used with the deprecated
+.B --timeout
+option.
 .
 .SH AUTHOR
 .

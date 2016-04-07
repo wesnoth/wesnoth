@@ -13,19 +13,18 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "../action/action_base.hpp"
+#include "editor/action/action_base.hpp"
 #include "editor_map.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 
-#include "../../display.hpp"
-#include "../../gettext.hpp"
-#include "../../map_exception.hpp"
-#include "../../map_label.hpp"
-#include "../../wml_exception.hpp"
+#include "display.hpp"
+#include "gettext.hpp"
+#include "map/exception.hpp"
+#include "map/label.hpp"
+#include "wml_exception.hpp"
 
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -113,7 +112,7 @@ void editor_map::sanity_check()
 			++errors;
 		}
 	}
-	BOOST_FOREACH(const map_location& loc, selection_) {
+	for (const map_location& loc : selection_) {
 		if (!on_board_with_border(loc)) {
 			ERR_ED << "Off-map tile in selection: " << loc << std::endl;
 		}
@@ -151,10 +150,10 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 	std::set<map_location> label_locs;
 	std::string label = _("Player");
 	label += " ";
-	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
-		if (startingPositions_[i].valid()) {
-			disp.labels().set_label(startingPositions_[i], label + lexical_cast<std::string>(i));
-			label_locs.insert(startingPositions_[i]);
+	for (int i = 0, size = starting_positions_.size(); i < size; ++i) {
+		if (starting_positions_[i].valid()) {
+			disp.labels().set_label(starting_positions_[i], label + std::to_string(i + 1));
+			label_locs.insert(starting_positions_[i]);
 		}
 	}
 	return label_locs;
@@ -173,7 +172,7 @@ bool editor_map::add_to_selection(const map_location& loc)
 bool editor_map::set_selection(const std::set<map_location>& area)
 {
 	clear_selection();
-	BOOST_FOREACH(const map_location& loc, area) {
+	for (const map_location& loc : area) {
 		if (!add_to_selection(loc))
 			return false;
 	}
@@ -253,10 +252,10 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 
 	// fix the starting positions
 	if(x_offset || y_offset) {
-		for(size_t i = 0; i < MAX_PLAYERS+1; ++i) {
-			if(startingPositions_[i] != map_location()) {
-				startingPositions_[i].x -= x_offset;
-				startingPositions_[i].y -= y_offset;
+		for(size_t i = 0; i < starting_positions_.size(); ++i) {
+			if(starting_positions_[i] != map_location()) {
+				starting_positions_[i].x -= x_offset;
+				starting_positions_[i].y -= y_offset;
 			}
 		}
 	}

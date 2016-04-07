@@ -19,7 +19,7 @@
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "reports.hpp"
@@ -29,7 +29,6 @@
 #include "soundsource.hpp"
 #include "util.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/unordered_map.hpp>
 #include <iostream>
 
@@ -46,11 +45,11 @@ namespace game_events {
 
 	void t_event_handlers::log_handlers()
 	{
-		if(lg::debug.dont_log("event_handler")) return;
+		if(lg::debug().dont_log("event_handler")) return;
 
 		std::stringstream ss;
 
-		BOOST_FOREACH( const handler_ptr & h, active_ ) {
+		for (const handler_ptr & h : active_) {
 			if ( !h )
 				continue;
 			const config& cfg = h->get_config();
@@ -132,7 +131,7 @@ namespace game_events {
 			dynamic_.push_back(new_handler);
 		else {
 			std::vector<std::string> name_list = utils::split(name);
-			BOOST_FOREACH( const std::string & single_name, name_list )
+			for (const std::string & single_name : name_list)
 				by_name_[standardize_name(single_name)].push_back(new_handler);
 		}
 		// File by ID.

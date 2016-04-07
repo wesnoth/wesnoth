@@ -16,7 +16,7 @@ min(	map(
 	)
 ) +
 #leader is always a good target! #
-if( target.leader, 50, 0 ) +
+if( target.canrecruit, 50, 0 ) +
 # consider target abilities if needed #
 if( target.abilities,
 	if( index_of('regenerates', target.abilities) != -1, -10, 0 ) +

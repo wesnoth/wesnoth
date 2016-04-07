@@ -22,7 +22,7 @@ static lg::log_domain log_random("random");
 
 namespace random_new
 {
-	synced_rng::synced_rng(boost::function0<std::string> seed_generator)
+	synced_rng::synced_rng(std::function<std::string()> seed_generator)
 		: has_valid_seed_(false), seed_generator_(seed_generator), gen_()
 	{
 	}

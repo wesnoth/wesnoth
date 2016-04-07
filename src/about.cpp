@@ -38,18 +38,11 @@
 #include "widgets/button.hpp"           // for button
 
 #include <algorithm>                    // for max
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
-#include <cstddef>                     // for NULL
 #include <map>                          // for map, map<>::mapped_type
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-#include "SDL_keysym.h"                 // for ::SDLK_ESCAPE, ::SDLK_DOWN, etc
-#include "SDL_video.h"                  // for SDL_Rect, SDL_Surface, etc
-#else
 #include "sdl/alpha.hpp"
-#endif
 
 /**
  * @namespace about
@@ -77,7 +70,7 @@ static void add_lines(std::vector<std::string> &res, config const &c, bool split
 			// get slight scrolling glitches in the credits screen.
 			const std::vector<std::string>& lines = utils::split(c["title"], '\n');
 			bool first = true;
-			BOOST_FOREACH(const std::string& line, lines) {
+			for(const std::string& line : lines) {
 				if(first) {
 					res.push_back("+" + line);
 					first = false;
@@ -93,7 +86,7 @@ static void add_lines(std::vector<std::string> &res, config const &c, bool split
 	}
 
 	std::vector<std::string> lines = utils::split(c["text"], '\n');
-	BOOST_FOREACH(std::string &line, lines)
+	for(std::string &line : lines)
 	{
 		if (line.size() > 1 && line[0] == '+')
 			line = "+  " + line.substr(1);
@@ -108,7 +101,7 @@ static void add_lines(std::vector<std::string> &res, config const &c, bool split
 		}
 	}
 
-	BOOST_FOREACH(const config &entry, c.child_range("entry")) {
+	for (const config &entry : c.child_range("entry")) {
 		res.push_back("-  "+ entry["name"].str());
 	}
 }
@@ -121,7 +114,7 @@ std::vector<std::string> get_text(const std::string &campaign, bool split_multil
 	config::child_itors about_entries = about_list.child_range("about");
 
 	if (!campaign.empty()) {
-		BOOST_FOREACH(const config &about, about_entries) {
+		for (const config &about : about_entries) {
 			// just finished a particular campaign
 			if (campaign == about["id"]) {
 				add_lines(res, about, split_multiline_headers);
@@ -129,7 +122,7 @@ std::vector<std::string> get_text(const std::string &campaign, bool split_multil
 		}
 	}
 
-	BOOST_FOREACH(const config &about, about_entries) {
+	for (const config &about : about_entries) {
 		add_lines(res, about, split_multiline_headers);
 	}
 
@@ -142,7 +135,7 @@ void set_about(const config &cfg)
 	images.clear();
 	images_default = "";
 
-	BOOST_FOREACH(const config &about, cfg.child_range("about"))
+	for (const config &about : cfg.child_range("about"))
 	{
 		about_list.add_child("about", about);
 		const std::string &im = about["images"];
@@ -155,7 +148,7 @@ void set_about(const config &cfg)
 		}
 	}
 
-	BOOST_FOREACH(const config &campaign, cfg.child_range("campaign"))
+	for (const config &campaign : cfg.child_range("campaign"))
 	{
 		config::const_child_itors abouts = campaign.child_range("about");
 		if (abouts.first == abouts.second) continue;
@@ -167,7 +160,7 @@ void set_about(const config &cfg)
 		temp["id"] = id;
 		std::string campaign_images;
 
-		BOOST_FOREACH(const config &about, abouts)
+		for (const config &about : abouts)
 		{
 			const std::string &subtitle = about["title"];
 			if (!subtitle.empty())
@@ -180,12 +173,12 @@ void set_about(const config &cfg)
 				text << '\n';
 			}
 
-			BOOST_FOREACH(const std::string &line, utils::split(about["text"], '\n'))
+			for (const std::string &line : utils::split(about["text"], '\n'))
 			{
 				text << "    " << line << '\n';
 			}
 
-			BOOST_FOREACH(const config &entry, about.child_range("entry"))
+			for (const config &entry : about.child_range("entry"))
 			{
 				text << "    " << entry["name"] << '\n';
 			}
@@ -216,7 +209,7 @@ void show_about(CVideo &video, const std::string &campaign)
 {
 	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
 	surface& screen = video.getSurface();
-	if (screen == NULL) return;
+	if (screen == nullptr) return;
 
 	// If the title is multi-line, we need to split it accordingly or we
 	// get slight scrolling glitches in the credits screen.
@@ -355,14 +348,14 @@ void show_about(CVideo &video, const std::string &campaign)
 
 		if (redraw_mapimage) {
 			// draw map to screen, thus erasing all text
-			sdl_blit(map_image_scaled, NULL, screen, NULL);
+			sdl_blit(map_image_scaled, nullptr, screen, nullptr);
 			update_rect(screen_rect);
 
 			// redraw the dialog
 			f.draw_background();
 			f.draw_border();
 			// cache the dialog background (alpha blending + blurred map)
-			sdl_blit(screen, &text_rect, text_surf, NULL);
+			sdl_blit(screen, &text_rect, text_surf, nullptr);
 			redraw_mapimage = false;
 		} else {
 			// redraw the saved part of the dialog where text scrolled
@@ -390,7 +383,7 @@ void show_about(CVideo &video, const std::string &campaign)
 				// since the real drawing on screen is clipped,
 				// we do a dummy one to get the height of the not clipped line.
 				// (each time because special format characters may change it)
-				const int line_height = font::draw_text(NULL, text_rect, def_size, def_color,
+				const int line_height = font::draw_text(nullptr, text_rect, def_size, def_color,
 										text[line], 0,0).h;
 
 				if(is_new_line) {

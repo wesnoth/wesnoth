@@ -274,6 +274,19 @@ shift $(($OPTIND - 1))
 
 extra_opts+="$*"
 
+# Make sure the binary exists
+if [ "$DebugMode" -eq 1 ]; then
+  if [ ! -x "$BinPath/wesnoth-debug" ]; then
+    echo "Wesnoth binary not found at $BinPath/wesnoth-debug"
+    exit 1
+  fi
+else
+  if [ ! -x "$BinPath/wesnoth" ]; then
+    echo "Wesnoth binary not found at $BinPath/wesnoth"
+    exit 1
+  fi
+fi
+
 if [ "$Verbose" -ge 2 ]; then
   if [ "${#extra_opts}" -ge 0 ]; then
     echo "Found additional arguments to wesnoth: " "$extra_opts" 

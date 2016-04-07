@@ -31,6 +31,9 @@
 // Disable warning about deprecated functions.
 #pragma warning(disable: 4996)
 
+// Disable warning when using time_t in snprintf.
+#pragma warning(disable: 4477)
+
 // Disable some MSVC warnings which are useless according to mordante
 #pragma warning(disable: 4244)
 #pragma warning(disable: 4345)
@@ -40,34 +43,10 @@
 
 #endif //_MSC_VER
 
-/**
- * Enable C++11 support in some parts of the code.
- *
- * These parts \em must  also work without C++11, since Wesnoth still uses C++98
- * as the official C++ version.
- *
- * @note Older versions of GCC don't define the proper version for
- * @c __cplusplus,  but have their own test macro. That test is omitted since
- * the amount of support for these compilers depends a lot on the exact
- * compiler version. If you want to enable it for these compilers simply define
- * the macro manually.
- */
-#if (__cplusplus >= 201103L)
-#define HAVE_CXX11
-#endif
-
-#ifdef HAVE_CXX11
-#define FINAL final
-#define OVERRIDE override
-#else
-#define FINAL
-#define OVERRIDE
-#endif
-
 #ifdef NDEBUG
 /*
  * Wesnoth uses asserts to avoid undefined behaviour. For example, to make sure
- * pointers are not NULL before deferring them, or collections are not empty
+ * pointers are not nullptr before deferring them, or collections are not empty
  * before accessing their elements. Therefore Wesnoth should not be compiled
  * with assertions disabled.
  */
@@ -75,5 +54,10 @@
 #endif
 
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
+
+// To allow using some optional C++14 features
+#if __cplusplus >= 201402L
+#define HAVE_CXX14
+#endif
 
 #endif //GLOBAL_HPP_INCLUDED

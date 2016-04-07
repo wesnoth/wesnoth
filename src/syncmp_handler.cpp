@@ -16,8 +16,6 @@
 #include <cassert>
 #include <algorithm>
 
-#include <boost/foreach.hpp>
-
 syncmp_handler::syncmp_handler()
 {
 	syncmp_registry::add_handler(this);
@@ -51,7 +49,7 @@ void syncmp_registry::add_handler(syncmp_handler* handler)
 
 void syncmp_registry::pull_remote_choice()
 {
-	BOOST_FOREACH(syncmp_handler* phandler, handlers())
+	for(syncmp_handler* phandler : handlers())
 	{
 		phandler->pull_remote_choice();
 	}
@@ -59,7 +57,7 @@ void syncmp_registry::pull_remote_choice()
 
 void syncmp_registry::send_user_choice()
 {
-	BOOST_FOREACH(syncmp_handler* phandler, handlers())
+	for(syncmp_handler* phandler : handlers())
 	{
 		phandler->send_user_choice();
 	}

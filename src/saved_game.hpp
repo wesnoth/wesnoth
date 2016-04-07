@@ -1,3 +1,15 @@
+/*
+   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 
 #ifndef SAVED_GAME_HPP_INCLUDED
 #define SAVED_GAME_HPP_INCLUDED
@@ -99,7 +111,7 @@ public:
 	void cancel_orders();
 	/* removes network_ai and network controller types*/
 	void unify_controllers();
-
+	/** does some post loading stuff must be used before passing the data to connect_engine */
 	void set_defaults();
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }

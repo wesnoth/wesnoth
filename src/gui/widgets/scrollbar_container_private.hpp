@@ -17,7 +17,7 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-#include "utils/const_clone.tpp"
+#include "utils/const_clone.hpp"
 
 /**
  * @file

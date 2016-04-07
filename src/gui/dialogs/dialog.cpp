@@ -16,9 +16,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
-#include "utils/foreach.tpp"
 #include "video.hpp"
 
 namespace gui2
@@ -26,7 +25,7 @@ namespace gui2
 
 tdialog::~tdialog()
 {
-	FOREACH(AUTO field, fields_)
+	for(auto field : fields_)
 	{
 		delete field;
 	}
@@ -38,16 +37,16 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 		return false;
 	}
 
-	std::auto_ptr<twindow> window(build_window(video));
+	std::unique_ptr<twindow> window(build_window(video));
 	assert(window.get());
 
-	post_build(video, *window);
+	post_build(*window);
 
 	window->set_owner(this);
 
 	init_fields(*window);
 
-	pre_show(video, *window);
+	pre_show(*window);
 
 	retval_ = window->show(restore_, auto_close_time);
 
@@ -75,9 +74,9 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 tfield_bool* tdialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
-		const boost::function<bool()>& callback_load_value,
-		const boost::function<void(const bool)>& callback_save_value,
-		const boost::function<void(twidget&)>& callback_change)
+		const std::function<bool()>& callback_load_value,
+		const std::function<void(const bool)>& callback_save_value,
+		const std::function<void(twidget&)>& callback_change)
 {
 	tfield_bool* field = new tfield_bool(id,
 										 mandatory,
@@ -93,7 +92,7 @@ tfield_bool*
 tdialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const boost::function<void(twidget&)>& callback_change)
+					   const std::function<void(twidget&)>& callback_change)
 {
 	tfield_bool* field
 			= new tfield_bool(id, mandatory, linked_variable, callback_change);
@@ -105,8 +104,8 @@ tdialog::register_bool(const std::string& id,
 tfield_integer* tdialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
-		const boost::function<int()>& callback_load_value,
-		const boost::function<void(const int)>& callback_save_value)
+		const std::function<int()>& callback_load_value,
+		const std::function<void(const int)>& callback_save_value)
 {
 	tfield_integer* field = new tfield_integer(
 			id, mandatory, callback_load_value, callback_save_value);
@@ -128,8 +127,8 @@ tfield_integer* tdialog::register_integer(const std::string& id,
 tfield_text* tdialog::register_text(
 		const std::string& id,
 		const bool mandatory,
-		const boost::function<std::string()>& callback_load_value,
-		const boost::function<void(const std::string&)>& callback_save_value,
+		const std::function<std::string()>& callback_load_value,
+		const std::function<void(const std::string&)>& callback_save_value,
 		const bool capture_focus)
 {
 	tfield_text* field = new tfield_text(
@@ -174,12 +173,12 @@ twindow* tdialog::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-void tdialog::post_build(CVideo& /*video*/, twindow& /*window*/)
+void tdialog::post_build(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::pre_show(CVideo& /*video*/, twindow& /*window*/)
+void tdialog::pre_show(twindow& /*window*/)
 {
 	/* DO NOTHING */
 }
@@ -191,7 +190,7 @@ void tdialog::post_show(twindow& /*window*/)
 
 void tdialog::init_fields(twindow& window)
 {
-	FOREACH(AUTO field, fields_)
+	for(auto field : fields_)
 	{
 		field->attach_to_window(window);
 		field->widget_init(window);
@@ -206,7 +205,7 @@ void tdialog::init_fields(twindow& window)
 
 void tdialog::finalize_fields(twindow& window, const bool save_fields)
 {
-	FOREACH(AUTO field, fields_)
+	for(auto field : fields_)
 	{
 		if(save_fields) {
 			field->widget_finalize(window);

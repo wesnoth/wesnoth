@@ -13,7 +13,7 @@
 */
 
 #include "user_handler.hpp"
-#include "../config.hpp"
+#include "config.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <ctime>
@@ -38,7 +38,7 @@ void user_handler::init_mailer(const config &) {
 }
 
 std::string user_handler::create_salt(int length) {
-	srand(static_cast<unsigned>(time(NULL)));
+	srand(static_cast<unsigned>(time(nullptr)));
 
 	std::stringstream ss;
 

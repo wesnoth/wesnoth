@@ -22,8 +22,6 @@
 #include "wesmage/filter.hpp"
 #include "wesmage/options.hpp"
 
-#include <boost/foreach.hpp>
-
 #include <SDL_image.h>
 
 #include <ctime>
@@ -83,7 +81,7 @@ main(int argc, char* argv[])
 		const clock_t begin = options.time ? get_begin_time() : 0;
 
 		for(int i = 0; i < options.count; ++i) {
-			BOOST_FOREACH(const std::string& filter, options.filters) {
+			for(const std::string& filter : options.filters) {
 				filter_apply(surfaces[i], filter);
 			}
 		}

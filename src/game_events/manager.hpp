@@ -18,7 +18,6 @@
 #include "game_events/handlers.hpp"
 #include "game_events/wmi_container.hpp"
 
-#include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>

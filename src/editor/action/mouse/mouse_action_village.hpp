@@ -37,7 +37,7 @@ public:
 	/**
 	 * No action.
 	 */
-	editor_action* click_left(editor_display& /*disp*/, int /*x*/, int /*y*/) {return NULL;}
+	editor_action* click_left(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
 
 	/**
 	 * If clicked on a village hex field, assigns the ownership of it to the current side.
@@ -47,7 +47,7 @@ public:
 	/**
 	 * No action.
 	 */
-	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {return NULL;}
+	editor_action* click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) {return nullptr;}
 
 	/**
 	 * If clicked on a village hex field, unassigns it's ownership.

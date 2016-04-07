@@ -20,7 +20,7 @@
 
 #include <assert.h>
 #include <utility>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 plugins_context::plugins_context(const std::string & name)
 	: callbacks_()
@@ -28,16 +28,25 @@ plugins_context::plugins_context(const std::string & name)
 	, name_(name)
 {}
 
-plugins_context::plugins_context(const std::string & name, const Reg * l, const aReg * r)
+plugins_context::plugins_context(const std::string& name, const std::vector<Reg>& l, const std::vector<aReg>& r)
 	: callbacks_()
 	, accessors_()
 	, name_(name)
 {
-	for (; l->name != NULL; l++) {  /* fill the table with given functions */
-		callbacks_.insert(std::make_pair(l->name, l->func));
+	initialize(l, r);
+}
+
+void plugins_context::initialize(const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors)
+{
+	for (const Reg& l : callbacks) {  /* fill the table with given functions */
+		if (l.name != nullptr) {
+			callbacks_.insert(std::make_pair(l.name, l.func));
+		}
 	}
-	for (; r->name != NULL; r++) {  /* fill the table with given functions */
-		accessors_.insert(std::make_pair(r->name, r->func));
+	for (const aReg& r : accessors) {  /* fill the table with given functions */
+		if (r.name != nullptr) {
+			accessors_.insert(std::make_pair(r.name, r.func));
+		}
 	}
 }
 
@@ -69,14 +78,14 @@ static config make_config(const std::string & name, const T & val)
 	return config_of(name, val);
 }
 
-void plugins_context::set_accessor_string(const std::string & name, boost::function<std::string(config)> func)
+void plugins_context::set_accessor_string(const std::string & name, std::function<std::string(config)> func)
 {
-	set_accessor(name, boost::bind(&make_config<std::string>, name, boost::bind(func, _1)));
+	set_accessor(name, std::bind(&make_config<std::string>, name, std::bind(func, _1)));
 }
 
-void plugins_context::set_accessor_int(const std::string & name, boost::function<int(config)> func)
+void plugins_context::set_accessor_int(const std::string & name, std::function<int(config)> func)
 {
-	set_accessor(name, boost::bind(&make_config<int>, name, boost::bind(func, _1)));
+	set_accessor(name, std::bind(&make_config<int>, name, std::bind(func, _1)));
 }
 
 
@@ -98,27 +107,27 @@ void plugins_context::play_slice()
 	plugins_manager::get()->play_slice(*this);
 }
 
-static bool shim(config cfg, boost::function<void(config)> func, bool return_value)
+static bool shim(config cfg, std::function<void(config)> func, bool return_value)
 {
 	func(cfg);
 	return return_value;
 }
 
-void plugins_context::set_callback(const std::string & name, boost::function<void(config)> func, bool preserves_context)
+void plugins_context::set_callback(const std::string & name, std::function<void(config)> func, bool preserves_context)
 {
-	set_callback(name, boost::bind(shim, _1, func, preserves_context));
+	set_callback(name, std::bind(shim, _1, func, preserves_context));
 }
 
-const boost::function< std::string ( const config & , const std::string & ) > get_str =
-	boost::bind(&config::attribute_value::str,
-		boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2));
+const std::function< std::string ( const config & , const std::string & ) > get_str =
+	std::bind(&config::attribute_value::str,
+		std::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2));
 
-const boost::function< int ( const config & , const std::string &, int ) > get_int =
-	boost::bind(&config::attribute_value::to_int,
-		boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
+const std::function< int ( const config & , const std::string &, int ) > get_int =
+	std::bind(&config::attribute_value::to_int,
+		std::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
 		, _3);
 
-const boost::function< size_t ( const config & , const std::string &, size_t ) > get_size_t =
-	boost::bind(&config::attribute_value::to_size_t,
-		boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
+const std::function< size_t ( const config & , const std::string &, size_t ) > get_size_t =
+	std::bind(&config::attribute_value::to_size_t,
+		std::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
 		, _3);

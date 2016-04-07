@@ -14,9 +14,9 @@
 
 #include "lua_gui2.hpp"
 
-#include "gui/auxiliary/canvas.hpp"     // for tcanvas
-#include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/auxiliary/old_markup.hpp"
+#include "gui/core/canvas.hpp"     // for tcanvas
+#include "gui/core/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -47,7 +47,7 @@
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <map>
 #include <utility>
@@ -79,7 +79,7 @@ namespace {
 		scoped_dialog(const scoped_dialog &); // not implemented; not allowed.
 	};
 
-	scoped_dialog *scoped_dialog::current = NULL;
+	scoped_dialog *scoped_dialog::current = nullptr;
 
 	scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
 		: L(l), prev(current), window(w), callbacks()
@@ -118,7 +118,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 		luaL_typerror(L, i, "string");
 		error_call_destructors_3:
 		luaL_argerror(L, i, "widget not found");
-		return NULL;
+		return nullptr;
 	}
 
 	gui2::twidget *w = scoped_dialog::current->window;
@@ -273,13 +273,20 @@ int show_message_dialog(lua_State *L, CVideo & video)
 				// for the deprecated syntax, this branch should still be retained
 				// when the deprecated syntax is removed, as a simpler method
 				// of specifying options when only a single string is needed.
-				gui2::tlegacy_menu_item item(short_opt);
+				const std::string& opt_str = short_opt;
+				gui2::tlegacy_menu_item item(opt_str);
 				opt["image"] = item.icon();
 				opt["label"] = item.label();
 				opt["description"] = item.description();
 				opt["default"] = item.is_default();
 				if(!opt["image"].blank() || !opt["description"].blank() || !opt["default"].blank()) {
-					ERR_LUA << "The &image=col1=col2 syntax is deprecated, use new DescriptionWML instead.\n";
+					// The exact error message depends on whether & or = was actually present
+					if(opt_str.find_first_of('=') == std::string::npos) {
+						// They just used a simple message, so the other error would be misleading
+						ERR_LUA << "[option]message= is deprecated, use label= instead.\n";
+					} else {
+						ERR_LUA << "The &image=col1=col2 syntax is deprecated, use new DescriptionWML instead.\n";
+					}
 				}
 			} else if(!luaW_toconfig(L, -1, opt)) {
 				std::ostringstream error;
@@ -383,7 +390,12 @@ int intf_set_dialog_value(lua_State *L)
 	}
 	else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w))
 	{
-		s->set_value(luaW_toboolean(L, 1));
+		if(s->num_states() == 2) {
+			s->set_value_bool(luaW_toboolean(L, 1));
+		}
+		else {
+			s->set_value(luaL_checkinteger(L, 1) -1);
+		}
 	}
 	else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w))
 	{
@@ -438,7 +450,13 @@ int intf_get_dialog_value(lua_State *L)
 	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
 		lua_pushinteger(L, l->get_selected_page() + 1);
 	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
-		lua_pushboolean(L, s->get_value());
+
+		if(s->num_states() == 2) {
+			lua_pushboolean(L, s->get_value_bool());
+		}
+		else {
+			lua_pushinteger(L, s->get_value() + 1);
+		}
 	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 		lua_pushstring(L, t->get_value().c_str());
 	} else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w)) {
@@ -561,7 +579,7 @@ int intf_set_dialog_callback(lua_State *L)
 
 	if (gui2::tclickable_ *c = dynamic_cast<gui2::tclickable_ *>(w)) {
 		static tdialog_callback_wrapper wrapper;
-		c->connect_click_handler(boost::bind(
+		c->connect_click_handler(std::bind(
 									  &tdialog_callback_wrapper::forward
 									, wrapper
 									, w));
@@ -572,7 +590,7 @@ int intf_set_dialog_callback(lua_State *L)
 	else if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w)) {
 		static tdialog_callback_wrapper wrapper;
 		connect_signal_notify_modified(*l
-				, boost::bind(
+				, std::bind(
 					  &tdialog_callback_wrapper::forward
 					, wrapper
 					, w));
@@ -635,6 +653,7 @@ int intf_set_dialog_canvas(lua_State *L)
 
 	config cfg = luaW_checkconfig(L, 2);
 	cv[i - 1].set_cfg(cfg);
+	c->set_is_dirty(true);
 	return 0;
 }
 

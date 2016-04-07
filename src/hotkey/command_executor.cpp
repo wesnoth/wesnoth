@@ -15,8 +15,6 @@
 #include "command_executor.hpp"
 #include "hotkey_item.hpp"
 
-#include <boost/foreach.hpp>
-
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
@@ -30,17 +28,17 @@
 #include "preferences.hpp"
 #include "game_end_exceptions.hpp"
 #include "display.hpp"
+#include "quit_confirmation.hpp"
 
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include <cassert>
 
 static lg::log_domain log_config("config");
-#define ERR_G  LOG_STREAM(err,   lg::general)
-#define WRN_G  LOG_STREAM(warn,   lg::general)
-#define LOG_G  LOG_STREAM(info,  lg::general)
-#define DBG_G  LOG_STREAM(debug, lg::general)
+#define ERR_G  LOG_STREAM(err,   lg::general())
+#define WRN_G  LOG_STREAM(warn,   lg::general())
+#define LOG_G  LOG_STREAM(info,  lg::general())
+#define DBG_G  LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err,   log_config)
 
 namespace {
@@ -60,7 +58,7 @@ void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
 	const std::string ext = ".bmp";
 #endif
 	filename = filesystem::get_next_filename(filename, ext);
-	const bool res = func(filename);
+	const bool res = func(filename, video);
 	if (res) {
 		gui2::tscreenshot_notification::display(filename, video);
 	} else {
@@ -312,10 +310,10 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			map_screenshot();
 			break;
 		case HOTKEY_QUIT_TO_DESKTOP:
-			quit_to_desktop();
+			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
-			quit_to_main_menu();
+			quit_confirmation::quit_to_title();
 			break;
 		default:
 			return false;
@@ -467,21 +465,21 @@ void basic_handler::handle_event(const SDL_Event& event)
 		// If we're not in a dialog we can call the regular key event handler.
 		if (!gui::in_dialog()) {
 			key_event(event,exec_);
-		} else if (exec_ != NULL) {
+		} else if (exec_ != nullptr) {
 			event_execute(event,exec_);
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
 		if (!gui::in_dialog()) {
 			jbutton_event(event,exec_);
-		} else if (exec_ != NULL) {
+		} else if (exec_ != nullptr) {
 			event_execute(event,exec_);
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!gui::in_dialog()) {
 			mbutton_event(event,exec_);
-		} else if (exec_ != NULL) {
+		} else if (exec_ != nullptr) {
 			event_execute(event,exec_);
 		}
 		break;
@@ -513,7 +511,7 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
 	const hotkey_ptr hk = get_hotkey(event);
-	if (!hk->active()) {
+	if (!hk->active() || hk->is_disabled()) {
 		return;
 	}
 
@@ -523,7 +521,7 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 
 void execute_command(const hotkey_command& command, command_executor* executor, int index)
 {
-	if (executor != NULL) {
+	if (executor != nullptr) {
 		if (!executor->can_execute_command(command, index)
 				|| executor->execute_command(command, index)) {
 			return;
@@ -555,7 +553,7 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 			executor->get_video().set_fullscreen(!preferences::fullscreen());
 			break;
 		case HOTKEY_SCREENSHOT:
-			make_screenshot(_("Screenshot"), executor->get_video(), boost::bind(&::screenshot, _1, boost::ref(executor->get_video())));
+			make_screenshot(_("Screenshot"), executor->get_video(), &::screenshot);
 			break;
 		case HOTKEY_ANIMATE_MAP:
 			preferences::set_animate_map(!preferences::animate_map());
@@ -596,12 +594,12 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 void command_executor_default::set_button_state()
 {
 	display& disp = get_display();
-	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
+	for (const theme::menu& menu : disp.get_theme().menus()) {
 
 		gui::button* button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
-		BOOST_FOREACH(const std::string& command, menu.items()) {
+		for (const std::string& command : menu.items()) {
 
 			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			bool can_execute = can_execute_command(command_obj);
@@ -613,13 +611,13 @@ void command_executor_default::set_button_state()
 		button->enable(enabled);
 	}
 
-	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
+	for (const theme::action& action : disp.get_theme().actions()) {
 
 		gui::button* button = disp.find_action_button(action.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		int i = 0;
-		BOOST_FOREACH(const std::string& command, action.items()) {
+		for (const std::string& command : action.items()) {
 
 			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			std::string tooltip = action.tooltip(i);
@@ -667,8 +665,6 @@ void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
 		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::GAME);
-		//WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
-		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::APP);
 	} else {
 		command_executor::lua_console();
 	}
@@ -694,21 +690,5 @@ void command_executor_default::zoom_default()
 void command_executor_default::map_screenshot()
 {
 	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
-}
-void command_executor_default::quit_to_desktop()
-{
-	if(gui2::show_message(get_video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL) {
-		throw CVideo::quit();
-	}
-}
-void command_executor::quit_to_desktop()
-{
-	throw CVideo::quit();
-}
-void command_executor_default::quit_to_main_menu()
-{
-	if(gui2::show_message(get_video(), _("Quit"), _("Do you really want to quit?"), gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL) {
-		throw_quit_game_exception();
-	}
 }
 }

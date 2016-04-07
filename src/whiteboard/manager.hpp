@@ -21,7 +21,7 @@
 
 #include "side_actions.hpp"
 
-#include "../unit_map.hpp"
+#include "units/map.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -260,7 +260,7 @@ struct future_map_if
 	*/
 	boost::scoped_ptr<future_map> future_map_;
 	future_map_if(bool cond)
-		: future_map_(cond ? new future_map() : NULL)
+		: future_map_(cond ? new future_map() : nullptr)
 	{}
 };
 

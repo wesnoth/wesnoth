@@ -30,7 +30,7 @@
 #include "ai/composite/goal.hpp"           // for goal
 #include "ai/composite/stage.hpp"       // for ministage
 #include "ai/game_info.hpp"             // for aspect_type<>::typesafe_ptr, etc
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 #include "ai/manager.hpp"                  // for manager
 
 #include "chat_events.hpp"              // for chat_handler, etc
@@ -41,28 +41,27 @@
 #include "game_display.hpp"          // for game_display
 #include "game_errors.hpp"		// for throw
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
-#include "map.hpp"                   // for gamemap
+#include "map/map.hpp"                   // for gamemap
 #include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc
 #include "recall_list_manager.hpp"   // for recall_list_manager
 #include "resources.hpp"             // for units, gameboard, etc
 #include "serialization/string_utils.hpp"  // for split, etc
 #include "team.hpp"                     // for team
-#include "terrain_filter.hpp"  // for terrain_filter
-#include "terrain_translation.hpp"      // for t_terrain
+#include "terrain/filter.hpp"  // for terrain_filter
+#include "terrain/translation.hpp"      // for t_terrain
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
-#include "unit.hpp"                  // for unit, intrusive_ptr_release, etc
-#include "unit_map.hpp"  // for unit_map::iterator_base, etc
-#include "unit_ptr.hpp"                 // for unit_ptr
-#include "unit_types.hpp"  // for attack_type, unit_type, etc
-#include "variant.hpp"                  // for variant
+#include "units/unit.hpp"                  // for unit, intrusive_ptr_release, etc
+#include "units/map.hpp"  // for unit_map::iterator_base, etc
+#include "units/ptr.hpp"                 // for unit_ptr
+#include "units/types.hpp"  // for attack_type, unit_type, etc
+#include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
 #include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
-#include <cstdlib>                     // for NULL, abs
+#include <cstdlib>                     // for abs
 #include <ctime>                       // for time
 #include <iterator>                     // for back_inserter
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -214,14 +213,10 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		dst_src_enemy_valid_lua_(false),
 		src_dst_valid_lua_(false),
 		src_dst_enemy_valid_lua_(false),
-		number_of_possible_recruits_to_force_recruit_(),
 		passive_leader_(),
 		passive_leader_shares_keep_(),
 		possible_moves_(),
-		recruitment_(),
 		recruitment_diversity_(),
-		recruitment_ignore_bad_combat_(),
-		recruitment_ignore_bad_movement_(),
 		recruitment_instructions_(),
 		recruitment_more_(),
 		recruitment_pattern_(),
@@ -250,13 +245,9 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("leader_goal",leader_goal_);
 		add_known_aspect("leader_ignores_keep",leader_ignores_keep_);
 		add_known_aspect("leader_value",leader_value_);
-		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
 		add_known_aspect("passive_leader",passive_leader_);
 		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
-		add_known_aspect("recruitment",recruitment_);
 		add_known_aspect("recruitment_diversity",recruitment_diversity_);
-		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
-		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
 		add_known_aspect("recruitment_instructions",recruitment_instructions_);
 		add_known_aspect("recruitment_more",recruitment_more_);
 		add_known_aspect("recruitment_pattern",recruitment_pattern_);
@@ -273,19 +264,19 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 void readonly_context_impl::on_readonly_context_create() {
 	//init the composite ai engines
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("engine")){
+	for(const config &cfg_element : cfg_.child_range("engine")) {
 		engine::parse_engine_from_config(*this,cfg_element,std::back_inserter(engines_));
 	}
 
 	// init the composite ai aspects
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("aspect")){
+	for(const config &cfg_element : cfg_.child_range("aspect")) {
 		std::vector<aspect_ptr> aspects;
 		engine::parse_aspect_from_config(*this,cfg_element,cfg_element["id"],std::back_inserter(aspects));
 		add_aspects(aspects);
 	}
 
 	// init the composite ai goals
-	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("goal")){
+	for(const config &cfg_element : cfg_.child_range("goal")) {
 		engine::parse_goal_from_config(*this,cfg_element,std::back_inserter(get_goals()));
 	}
 }
@@ -305,13 +296,13 @@ config readwrite_context_impl::to_readwrite_context_config() const
 config readonly_context_impl::to_readonly_context_config() const
 {
 	config cfg;
-	BOOST_FOREACH(const engine_ptr e, engines_) {
+	for(const engine_ptr e : engines_) {
 		cfg.add_child("engine",e->to_config());
 	}
-	BOOST_FOREACH(const aspect_map::value_type a, aspects_) {
+	for(const aspect_map::value_type a : aspects_) {
 		cfg.add_child("aspect",a.second->to_config());
 	}
-	BOOST_FOREACH(const goal_ptr g, goals_) {
+	for(const goal_ptr g : goals_) {
 		cfg.add_child("goal",g->to_config());
 	}
 	return cfg;
@@ -354,7 +345,7 @@ const team& readonly_context_impl::current_team() const
 void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), "ai", get_side(), msg,
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "ai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
@@ -423,16 +414,16 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
 	static const config only_not_tag("not");
 	if(remove_destinations && remove_destinations->to_config() == only_not_tag) {
-		remove_destinations = NULL;
+		remove_destinations = nullptr;
 	}
 
 	for(std::map<map_location,pathfind::paths>::iterator m = res.begin(); m != res.end(); ++m) {
-		BOOST_FOREACH(const pathfind::paths::step &dest, m->second.destinations)
+		for(const pathfind::paths::step &dest : m->second.destinations)
 		{
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
 
-			if(remove_destinations != NULL && remove_destinations->match(dst)) {
+			if(remove_destinations != nullptr && remove_destinations->match(dst)) {
 				continue;
 			}
 
@@ -467,7 +458,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 {
-	BOOST_FOREACH(aspect_ptr a, aspects) {
+	for(aspect_ptr a : aspects) {
 		const std::string id = a->get_id();
 		known_aspect_map::iterator i = known_aspects_.find(id);
 		if (i != known_aspects_.end()) {
@@ -608,7 +599,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 	}
 	config cfg;
 	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg),resources::filter_con);
+	static terrain_filter tf(vconfig(cfg, true), resources::filter_con);
 	return tf;
 }
 
@@ -764,15 +755,6 @@ double readonly_context_impl::get_leader_value() const
 }
 
 
-double readonly_context_impl::get_number_of_possible_recruits_to_force_recruit() const
-{
-	if (number_of_possible_recruits_to_force_recruit_) {
-		return number_of_possible_recruits_to_force_recruit_->get();
-	}
-	return 0;
-}
-
-
 bool readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
@@ -806,17 +788,6 @@ const std::vector<unit_ptr>& readonly_context_impl::get_recall_list() const
 	return current_team().recall_list().recall_list_; //TODO: Refactor ai so that friend of ai context is not required of recall_list_manager at this line
 }
 
-stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const
-{
-	if (recruitment_) {
-		ministage_ptr m = recruitment_->get_ptr();
-		if (m) {
-			return m->get_stage_ptr(context);
-		}
-	}
-	return stage_ptr();
-}
-
 
 double readonly_context_impl::get_recruitment_diversity() const
 {
@@ -824,24 +795,6 @@ double readonly_context_impl::get_recruitment_diversity() const
 		return recruitment_diversity_->get();
 	}
 	return 0.;
-}
-
-
-bool readonly_context_impl::get_recruitment_ignore_bad_combat() const
-{
-	if (recruitment_ignore_bad_combat_) {
-		return recruitment_ignore_bad_combat_->get();
-	}
-	return false;
-}
-
-
-bool readonly_context_impl::get_recruitment_ignore_bad_movement() const
-{
-	if (recruitment_ignore_bad_movement_) {
-		return recruitment_ignore_bad_movement_->get();
-	}
-	return false;
 }
 
 
@@ -1002,7 +955,7 @@ const std::set<map_location>& readonly_context_impl::keeps() const
 
 
 keeps_cache::keeps_cache()
-	: map_(NULL)
+	: map_(nullptr)
 	, keeps_()
 {
 	ai::manager::add_turn_started_observer(this);
@@ -1086,14 +1039,14 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 		return dummy;
 	}
 
-	const map_location* res = NULL;
+	const map_location* res = nullptr;
 	int closest = -1;
 	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
 		if (avoided_locations.find(*i)!=avoided_locations.end()) {
 			continue;
 		}
 		const int distance = distance_between(*i,loc);
-		if(res == NULL || distance < closest) {
+		if(res == nullptr || distance < closest) {
 			closest = distance;
 			res = &*i;
 		}
@@ -1176,7 +1129,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
 			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int most_damage = 0;
-			BOOST_FOREACH(const attack_type &att, un.attacks())
+			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
 				if (damage > most_damage) {
@@ -1291,7 +1244,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 	map_location const* best_occupied_keep = &map_location::null_location();
 	double move_left_at_best_occupied_keep = 0.0;
 
-	BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations)
+	for(const pathfind::paths::step &dest : leader_paths.destinations)
 	{
 		const map_location &loc = dest.curr;
 		if (keeps().find(loc)!=keeps().end()){

@@ -15,8 +15,8 @@
 #ifndef GUI_WIDGETS_WIDGET_HPP_INCLUDED
 #define GUI_WIDGETS_WIDGET_HPP_INCLUDED
 
-#include "gui/auxiliary/event/dispatcher.hpp"
-#include "gui/lib/types/point.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "gui/core/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 
 #include "sdl/utils.hpp"
@@ -24,6 +24,8 @@
 #include <boost/noncopyable.hpp>
 
 #include <string>
+
+typedef std::map<std::string, t_string> string_map;
 
 namespace gui2
 {
@@ -156,7 +158,7 @@ public:
 	 */
 	explicit twidget(const tbuilder_widget& builder);
 
-	virtual ~twidget() OVERRIDE;
+	virtual ~twidget() override;
 
 
 	/***** ***** ***** ***** ID functions. ***** ***** ***** *****/
@@ -188,7 +190,7 @@ public:
 	 * Get the parent window.
 	 *
 	 * @returns                   Pointer to parent window.
-	 * @retval NULL               No parent window found.
+	 * @retval nullptr               No parent window found.
 	 */
 	twindow* get_window();
 
@@ -206,7 +208,7 @@ public:
 	 * function will be removed.
 	 *
 	 * @returns                   The top-level dialogue.
-	 * @retval NULL               No top-level window or the top-level window is
+	 * @retval nullptr               No top-level window or the top-level window is
 	 *                            not owned by a dialogue.
 	 */
 	tdialog* dialog();
@@ -223,7 +225,7 @@ private:
 	 * The parent widget.
 	 *
 	 * If the widget has a parent it contains a pointer to the parent, else it
-	 * is set to @c NULL.
+	 * is set to @c nullptr.
 	 */
 	twidget* parent_;
 
@@ -341,6 +343,10 @@ private:
 	virtual tpoint calculate_best_size() const = 0;
 
 public:
+	/**
+	 * Whether the mouse move/click event go 'through' this widget.
+	 */
+	virtual bool can_mouse_focus() const { return true; }
 	/**
 	 * Can the widget wrap.
 	 *
@@ -749,7 +755,7 @@ public:
 	 *                            flag.
 	 *
 	 * @returns                   The widget with the id.
-	 * @retval NULL               No widget at the wanted coordinate found (or
+	 * @retval nullptr               No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
 	virtual twidget* find_at(const tpoint& coordinate,
@@ -771,7 +777,7 @@ public:
 	 *                            flag.
 	 *
 	 * @returns                   The widget with the id.
-	 * @retval NULL               No widget with the id found (or not active if
+	 * @retval nullptr               No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
 	virtual twidget* find(const std::string& id, const bool must_be_active);
@@ -795,7 +801,7 @@ public:
 
 private:
 	/** See @ref event::tdispatcher::is_at. */
-	virtual bool is_at(const tpoint& coordinate) const OVERRIDE;
+	virtual bool is_at(const tpoint& coordinate) const override;
 
 	/**
 	 * Is the coordinate inside our area.

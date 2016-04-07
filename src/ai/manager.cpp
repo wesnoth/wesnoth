@@ -17,37 +17,35 @@
  * @file
  */
 
-#include "manager.hpp"
+#include "ai/manager.hpp"
 
-#include "../config.hpp"             // for config, etc
+#include "config.hpp"             // for config, etc
 #include "game_events/manager.hpp"
-#include "../game_events/pump.hpp"
-#include "../generic_event.hpp"      // for generic_event, etc
-#include "../log.hpp"
-#include "../map_location.hpp"       // for map_location
-#include "../resources.hpp"
-#include "../serialization/string_utils.hpp"
+#include "game_events/pump.hpp"
+#include "generic_event.hpp"      // for generic_event, etc
+#include "log.hpp"
+#include "map/location.hpp"       // for map_location
+#include "resources.hpp"
+#include "serialization/string_utils.hpp"
+#include "tod_manager.hpp"
 
-#include "composite/ai.hpp"             // for ai_composite
-#include "composite/component.hpp"      // for component_manager
-#include "composite/engine.hpp"         // for engine
-#include "configuration.hpp"            // for configuration
-#include "contexts.hpp"                 // for readonly_context, etc
-#include "default/contexts.hpp"  // for default_ai_context, etc
+#include "ai/composite/ai.hpp"             // for ai_composite
+#include "ai/composite/component.hpp"      // for component_manager
+#include "ai/composite/engine.hpp"         // for engine
+#include "ai/configuration.hpp"            // for configuration
+#include "ai/contexts.hpp"                 // for readonly_context, etc
+#include "ai/default/contexts.hpp"  // for default_ai_context, etc
 #include "game_end_exceptions.hpp" // for ai_end_turn_exception
 #include "game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
 #include "game_errors.hpp"              // for game_error
-#include "interface.hpp"  // for ai_factory, etc
-#include "lua/unit_advancements_aspect.hpp"
-#include "registry.hpp"                 // for init
+#include "ai/lua/aspect_advancements.hpp"
+#include "ai/registry.hpp"                 // for init
 #include "util.hpp"                     // for lexical_cast
 
 
 #include <algorithm>                    // for min
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <cassert>                     // for assert
-#include <cstddef>                     // for NULL
 #include <iterator>                     // for reverse_iterator, etc
 #include <map>                          // for _Rb_tree_iterator, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -56,7 +54,7 @@
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, allocator, etc
 
-#include "SDL_timer.h"
+#include <SDL_timer.h>
 
 namespace ai {
 
@@ -79,7 +77,7 @@ static lg::log_domain log_ai_mod("ai/mod");
 #define ERR_AI_MOD LOG_STREAM(err, log_ai_mod)
 
 holder::holder( side_number side, const config &cfg )
-	: ai_(), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), side_(side), cfg_(cfg)
+	: ai_(), side_context_(nullptr), readonly_context_(nullptr), readwrite_context_(nullptr), default_ai_context_(nullptr), side_(side), cfg_(cfg)
 {
 	DBG_AI_MANAGER << describe_ai() << "Preparing new AI holder" << std::endl;
 }
@@ -87,19 +85,19 @@ holder::holder( side_number side, const config &cfg )
 
 void holder::init( side_number side )
 {
-	if (side_context_ == NULL) {
+	if (side_context_ == nullptr) {
 		side_context_ = new side_context_impl(side,cfg_);
 	} else {
 		side_context_->set_side(side);
 	}
-	if (readonly_context_ == NULL){
+	if (readonly_context_ == nullptr){
 		readonly_context_ = new readonly_context_impl(*side_context_,cfg_);
 		readonly_context_->on_readonly_context_create();
 	}
-	if (readwrite_context_ == NULL){
+	if (readwrite_context_ == nullptr){
 		readwrite_context_ = new readwrite_context_impl(*readonly_context_,cfg_);
 	}
-	if (default_ai_context_ == NULL){
+	if (default_ai_context_ == nullptr){
 		default_ai_context_ = new default_ai_context_impl(*readwrite_context_,cfg_);
 	}
 	if (!this->ai_){
@@ -108,7 +106,7 @@ void holder::init( side_number side )
 
 	if (this->ai_) {
 		ai_->on_create();
-		BOOST_FOREACH(config &mod_ai, cfg_.child_range("modify_ai")) {
+		for (config &mod_ai : cfg_.child_range("modify_ai")) {
 			if (!mod_ai.has_attribute("side")) {
 				mod_ai["side"] = side;
 			}
@@ -142,7 +140,7 @@ holder::~holder()
 }
 
 
-interface& holder::get_ai_ref()
+ai_composite& holder::get_ai_ref()
 {
 	if (!this->ai_) {
 		this->init(this->side_);
@@ -153,25 +151,25 @@ interface& holder::get_ai_ref()
 }
 
 
-void holder::modify_ai_config_old( const config::const_child_itors &ai_parameters)
+void holder::modify_side_ai_config(config cfg)
 {
 	// only handle aspects
 	// transform ai_parameters to new-style config
 
-	config cfg;
-	configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(this->side_,ai_parameters,cfg);
+	configuration::expand_simplified_aspects(this->side_, cfg);
 	//at this point we have a single config which contains [aspect][facet] tags
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
-	if (this->readonly_context_ == NULL) {
+	// TODO: Also add [goal] tags. And what about [stage] or [engine] tags? (Maybe they're not important.)
+	if (this->readonly_context_ == nullptr) {
 		// if not initialized, append that config to the bottom of base cfg
 		// then, merge aspects with the same id
 		cfg_.merge_with(cfg);
 		cfg_.merge_children_by_attribute("aspect","id");
 	} else {
 		// else run 'add_facet' command on each [aspect][facet]
-		BOOST_FOREACH(const config &cfg_a, cfg.child_range("aspect")) {
-			BOOST_FOREACH(const config &cfg_f, cfg_a.child_range("facet")) {
+		for (const config &cfg_a : cfg.child_range("aspect")) {
+			for (const config &cfg_f : cfg_a.child_range("facet")) {
 				readonly_context_->add_facet(cfg_a["id"],cfg_f);
 			}
 		}
@@ -221,16 +219,16 @@ config holder::to_config() const
 	} else {
 		config cfg = ai_->to_config();
 		cfg["version"] = "10703";
-		if (this->side_context_!=NULL) {
+		if (this->side_context_!=nullptr) {
 			cfg.merge_with(this->side_context_->to_side_context_config());
 		}
-		if (this->readonly_context_!=NULL) {
+		if (this->readonly_context_!=nullptr) {
 			cfg.merge_with(this->readonly_context_->to_readonly_context_config());
 		}
-		if (this->readwrite_context_!=NULL) {
+		if (this->readwrite_context_!=nullptr) {
 			cfg.merge_with(this->readwrite_context_->to_readwrite_context_config());
 		}
-		if (this->default_ai_context_!=NULL) {
+		if (this->default_ai_context_!=nullptr) {
 			cfg.merge_with(this->default_ai_context_->to_default_ai_context_config());
 		}
 
@@ -242,9 +240,9 @@ config holder::to_config() const
 
 const std::string holder::describe_ai()
 {
-	std::string sidestr = lexical_cast<std::string>(this->side_);
+	std::string sidestr = std::to_string(this->side_);
 
-	if (this->ai_!=NULL) {
+	if (this->ai_!=nullptr) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
 	} else {
 		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
@@ -266,12 +264,9 @@ const std::string holder::get_ai_overview()
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
 	s << "leader_ignores_keep:  " << this->ai_->get_leader_ignores_keep() << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
 	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
 	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
-	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
-	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
 	s << "recruitment_more:  " << utils::join(this->ai_->get_recruitment_more()) << std::endl;
@@ -307,10 +302,10 @@ const std::string holder::get_ai_identifier() const
 component* holder::get_component(component *root, const std::string &path) {
 	if (!game_config::debug) // Debug guard
 	{
-		return NULL;
+		return nullptr;
 	}
 
-	if (root == NULL) // Return root component(ai_)
+	if (root == nullptr) // Return root component(ai_)
 	{
 		if (!this->ai_) {
 			this->init(this->side_);
@@ -332,6 +327,7 @@ manager::AI_map_of_stacks manager::ai_map_;
 game_info *manager::ai_info_;
 events::generic_event manager::user_interact_("ai_user_interact");
 events::generic_event manager::sync_network_("ai_sync_network");
+events::generic_event manager::tod_changed_("ai_tod_changed");
 events::generic_event manager::gamestate_changed_("ai_gamestate_changed");
 events::generic_event manager::turn_started_("ai_turn_started");
 events::generic_event manager::recruit_list_changed_("ai_recruit_list_changed");
@@ -342,7 +338,7 @@ int manager::num_interact_ = 0;
 
 void manager::set_ai_info(const game_info& i)
 {
-	if (ai_info_!=NULL){
+	if (ai_info_!=nullptr){
 		clear_ai_info();
 	}
 	ai_info_ = new game_info(i);
@@ -352,7 +348,7 @@ void manager::set_ai_info(const game_info& i)
 
 void manager::clear_ai_info(){
 	delete ai_info_;
-	ai_info_ = NULL;
+	ai_info_ = nullptr;
 }
 
 
@@ -383,6 +379,16 @@ void manager::remove_gamestate_observer(events::observer* event_observer){
 	gamestate_changed_.detach_handler(event_observer);
 	turn_started_.detach_handler(event_observer);
 	map_changed_.detach_handler(event_observer);
+}
+
+
+void manager::add_tod_changed_observer( events::observer* event_observer){
+	tod_changed_.attach_handler(event_observer);
+}
+
+
+void manager::remove_tod_changed_observer(events::observer* event_observer){
+	tod_changed_.detach_handler(event_observer);
 }
 
 
@@ -450,6 +456,11 @@ void manager::raise_gamestate_changed() {
 }
 
 
+void manager::raise_tod_changed() {
+	tod_changed_.notify_observers();
+}
+
+
 void manager::raise_turn_started() {
 	turn_started_.notify_observers();
 }
@@ -481,7 +492,7 @@ const std::string manager::evaluate_command( side_number side, const std::string
 	}
 
 	if (!should_intercept(str)){
-		interface& ai = get_active_ai_for_side(side);
+		ai_composite& ai = get_active_ai_for_side(side);
 		raise_gamestate_changed();
 		return ai.evaluate(str);
 	}
@@ -562,9 +573,9 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,false)){
-				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			} else {
-				return std::string("AI MANAGER: failed attempt to add AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+				return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			}
 		}
 		//!replace_ai side file
@@ -572,9 +583,9 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,true)){
-					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			} else {
-					return std::string("AI MANAGER: failed attempt to add AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+					return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
 			}
 		}
 
@@ -583,7 +594,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		if (cmd.at(0)=="!remove_ai"){
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			remove_ai_for_side(side);
-			return std::string("AI MANAGER: made an attempt to remove AI for side ")+lexical_cast<std::string>(side);
+			return std::string("AI MANAGER: made an attempt to remove AI for side ")+std::to_string(side);
 		}
 		if (cmd.at(0)=="!"){
 			//this command should not be recorded in history
@@ -667,24 +678,6 @@ bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm
 }
 
 
-ai_ptr manager::create_transient_ai(const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context )
-{
-	assert(ai_context!=NULL);
-
-	//to add your own ai, register it in registry,cpp
-	ai_factory::factory_map::iterator aii = ai_factory::get_list().find(ai_algorithm_type);
-	if (aii == ai_factory::get_list().end()){
-		aii = ai_factory::get_list().find("");
-		if (aii == ai_factory::get_list().end()){
-			throw game::game_error("no default ai set!");
-		}
-	}
-	LOG_AI_MANAGER << "Creating new AI of type [" << ai_algorithm_type << "]"<< std::endl;
-	ai_ptr new_ai = aii->second->get_new_instance(*ai_context,cfg);
-	return new_ai;
-}
-
-
 // =======================================================================
 // REMOVE
 // =======================================================================
@@ -720,13 +713,15 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
 {
-	get_active_ai_holder_for_side(side).modify_ai_config_old(ai_parameters);
+	for (const config& cfg : ai_parameters) {
+		get_active_ai_holder_for_side(side).modify_side_ai_config(cfg);
+	}
 }
 
 
 void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 {
-	if (ai_info_==NULL) {
+	if (ai_info_==nullptr) {
 		//replay ?
 		return;
 	}
@@ -789,9 +784,12 @@ void manager::play_turn( side_number side ){
 	const int turn_start_time = SDL_GetTicks();
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
-	interface& ai_obj = get_active_ai_for_side(side);
+	ai_composite& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai turn");
 	raise_turn_started();
+	if (resources::tod_manager->has_tod_bonus_changed()) {
+		raise_tod_changed();
+	}
 	ai_obj.new_turn();
 	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();
@@ -836,7 +834,7 @@ holder& manager::get_active_ai_holder_for_side( side_number side )
 // AI POINTERS
 // =======================================================================
 
-interface& manager::get_active_ai_for_side( side_number side )
+ai_composite& manager::get_active_ai_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_ref();
 }

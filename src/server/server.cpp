@@ -19,20 +19,19 @@
 
 #include "server.hpp"
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "../config.hpp"
-#include "../game_config.hpp"
-#include "../log.hpp"
-#include "../map.hpp" // gamemap::MAX_PLAYERS
-#include "../multiplayer_error_codes.hpp"
-#include "../serialization/preprocessor.hpp"
-#include "../serialization/parser.hpp"
-#include "../serialization/string_utils.hpp"
-#include "../serialization/unicode.hpp"
-#include "../filesystem.hpp"
-#include "../util.hpp"
-#include "utils/foreach.tpp"
+#include "config.hpp"
+#include "game_config.hpp"
+#include "log.hpp"
+#include "map/map.hpp" // gamemap::MAX_PLAYERS
+#include "filesystem.hpp"
+#include "multiplayer_error_codes.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
+#include "util.hpp"
 
 #include "game.hpp"
 #include "metrics.hpp"
@@ -48,10 +47,10 @@
 #include "forum_user_handler.hpp"
 #endif
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/utility.hpp>
 #include <algorithm>
@@ -368,7 +367,7 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	ban_manager_(),
 	ip_log_(),
 	failed_logins_(),
-	user_handler_(NULL),
+	user_handler_(nullptr),
 	input_(io_service_),
 	input_path_(),
 	config_file_(config_file),
@@ -383,8 +382,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	default_time_period_(0),
 	concurrent_connections_(0),
 	graceful_restart(false),
-	lan_server_(time(NULL)),
-	last_user_seen_time_(time(NULL)),
+	lan_server_(time(nullptr)),
+	last_user_seen_time_(time(nullptr)),
 	restart_command(),
 	max_ip_log_size_(0),
 	uh_name_(),
@@ -401,7 +400,7 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
 	metrics_(),
-	last_ping_(time(NULL)),
+	last_ping_(time(nullptr)),
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_),
 	cmd_handlers_(),
@@ -649,15 +648,15 @@ void server::load_config() {
 	}
 
 	redirected_versions_.clear();
-	BOOST_FOREACH(const config &redirect, cfg_.child_range("redirect")) {
-		BOOST_FOREACH(const std::string &version, utils::split(redirect["version"])) {
+	for(const config &redirect : cfg_.child_range("redirect")) {
+		for(const std::string &version : utils::split(redirect["version"])) {
 			redirected_versions_[version] = redirect;
 		}
 	}
 
 	proxy_versions_.clear();
-	BOOST_FOREACH(const config &proxy, cfg_.child_range("proxy")) {
-		BOOST_FOREACH(const std::string &version, utils::split(proxy["version"])) {
+	for(const config &proxy : cfg_.child_range("proxy")) {
+		for(const std::string &version : utils::split(proxy["version"])) {
 			proxy_versions_[version] = proxy;
 		}
 	}
@@ -665,8 +664,8 @@ void server::load_config() {
 
 	// If there is a [user_handler] tag in the config file
 	// allow nick registration, otherwise we set user_handler_
-	// to NULL. Thus we must check user_handler_ for not being
-	// NULL everytime we want to use it.
+	// to nullptr. Thus we must check user_handler_ for not being
+	// nullptr everytime we want to use it.
 	user_handler_.reset();
 
 	if (const config &user_handler = cfg_.child("user_handler")) {
@@ -802,14 +801,14 @@ void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 		simple_wml::document response;
 
 		// Check if it is a redirected version
-		FOREACH(const AUTO& redirect_version, redirected_versions_) {
+		for(const auto& redirect_version : redirected_versions_) {
 			if(utils::wildcard_string_match(version_str, redirect_version.first)) {
 				LOG_SERVER << client_address(socket)
 					<< "\tplayer joined using version " << version_str
 					<< ":\tredirecting them to " << redirect_version.second["host"]
 					<< ":" << redirect_version.second["port"] << "\n";
 				simple_wml::node& redirect = response.root().add_child("redirect");
-				FOREACH(const AUTO& attr, redirect_version.second.attribute_range()) {
+				for(const auto& attr : redirect_version.second.attribute_range()) {
 					redirect.set_attr(attr.first.c_str(), attr.second.str().c_str());
 				}
 				send_to_player(socket, response);
@@ -1424,7 +1423,7 @@ void server::handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_w
 		}
 
 		const simple_wml::node::child_list& mlist = data.children("modification");
-		BOOST_FOREACH (const simple_wml::node* m, mlist) {
+		for(const simple_wml::node* m : mlist) {
 			desc.add_child_at("modification", 0);
 			desc.child("modification")->set_attr_dup("id", m->attr("id"));
 			if (m->attr("require_modification").to_bool(false))
@@ -1751,14 +1750,14 @@ void server::remove_player(socket_ptr socket)
 
 void server::send_to_lobby(simple_wml::document& data, socket_ptr exclude) const
 {
-	FOREACH(const AUTO& player, player_connections_.get<game_t>().equal_range(0))
+	for(const auto& player : player_connections_.get<game_t>().equal_range(0))
 		if(player.socket() != exclude)
 			send_to_player(player.socket(), data);
 }
 
 void server::send_server_message_to_lobby(const std::string& message, socket_ptr exclude) const
 {
-	FOREACH(const AUTO& player, player_connections_.get<game_t>().equal_range(0)) {
+	for(const auto& player : player_connections_.get<game_t>().equal_range(0)) {
 		if(player.socket() != exclude)
 			send_server_message(player.socket(), message);
 	}
@@ -1766,7 +1765,7 @@ void server::send_server_message_to_lobby(const std::string& message, socket_ptr
 
 void server::send_server_message_to_all(const std::string& message, socket_ptr exclude) const
 {
-	FOREACH(const AUTO& player, player_connections_) {
+	for(const auto& player: player_connections_) {
 		if(player.socket() != exclude)
 			send_server_message(player.socket(), message);
 	}
@@ -2112,10 +2111,10 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		const cmd_handler &handler = handler_itor->second;
 		try {
 			handler(this, issuer_name, query, parameters, &out);
-		} catch (boost::bad_function_call & ex) {
-			ERR_SERVER << "While handling a command '" << command << "', caught a boost::bad_function_call exception.\n";
+		} catch (std::bad_function_call & ex) {
+			ERR_SERVER << "While handling a command '" << command << "', caught a std::bad_function_call exception.\n";
 			ERR_SERVER << ex.what() << std::endl;
-			out << "An internal server error occurred (boost::bad_function_call) while executing '" << command << "'\n";
+			out << "An internal server error occurred (std::bad_function_call) while executing '" << command << "'\n";
 		}
 	}
 
@@ -2314,7 +2313,7 @@ void server::pm_handler(const std::string& issuer_name, const std::string& /*que
 }
 
 void server::msg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-	assert(out != NULL);
+	assert(out != nullptr);
 
 	if (parameters == "") {
 		*out << "You must type a message.";
@@ -2331,7 +2330,7 @@ void server::msg_handler(const std::string& /*issuer_name*/, const std::string& 
 }
 
 void server::lobbymsg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-	assert(out != NULL);
+	assert(out != nullptr);
 
 	if (parameters == "") {
 		*out << "You must type a message.";
@@ -2404,7 +2403,7 @@ void server::clones_handler(const std::string& /*issuer_name*/, const std::strin
 }
 
 void server::bans_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
-	assert(out != NULL);
+	assert(out != nullptr);
 
 	try
 	{
@@ -2888,7 +2887,7 @@ void server::delete_game(int gameid) {
 	const boost::shared_ptr<game>& game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
 
 	// Set the availability status for all quitting users.
-	FOREACH(const AUTO& user, player_connections_.get<game_t>().equal_range(gameid)) {
+	for(const auto& user : player_connections_.get<game_t>().equal_range(gameid)) {
 		user.info().mark_available();
 		simple_wml::document udiff;
 		if(make_change_diff(games_and_users_list_.root(), NULL,
@@ -2928,7 +2927,7 @@ int main(int argc, char** argv) {
 	size_t min_threads = 5;
 	size_t max_threads = 0;
 
-	srand(static_cast<unsigned>(time(NULL)));
+	srand(static_cast<unsigned>(time(nullptr)));
 
 	std::string config_file;
 
@@ -2936,7 +2935,7 @@ int main(int argc, char** argv) {
 	game_config::path = filesystem::get_cwd();
 
 	// show 'info' by default
-	lg::set_log_domain_severity("server", lg::info);
+	lg::set_log_domain_severity("server", lg::info());
 	lg::timestamps(true);
 
 	for (int arg = 1; arg != argc; ++arg) {
@@ -2948,7 +2947,7 @@ int main(int argc, char** argv) {
 		if ((val == "--config" || val == "-c") && arg+1 != argc) {
 			config_file = argv[++arg];
 		} else if (val == "--verbose" || val == "-v") {
-			lg::set_log_domain_severity("all", lg::debug);
+			lg::set_log_domain_severity("all", lg::debug());
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
@@ -2957,10 +2956,10 @@ int main(int argc, char** argv) {
 			}
 			std::string s = val.substr(6, p - 6);
 			int severity;
-			if (s == "error") severity = lg::err.get_severity();
-			else if (s == "warning") severity = lg::warn.get_severity();
-			else if (s == "info") severity = lg::info.get_severity();
-			else if (s == "debug") severity = lg::debug.get_severity();
+			if (s == "error") severity = lg::err().get_severity();
+			else if (s == "warning") severity = lg::warn().get_severity();
+			else if (s == "info") severity = lg::info().get_severity();
+			else if (s == "debug") severity = lg::debug().get_severity();
 			else {
 				std::cerr << "unknown debug level: " << s << '\n';
 				return 2;

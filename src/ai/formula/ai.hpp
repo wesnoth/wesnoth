@@ -23,20 +23,22 @@
 
 #include "ai/contexts.hpp"
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
-#include "callable_objects.hpp"         // for position_callable, etc
-#include "candidates.hpp"               // for candidate_action_ptr, etc
+#include "ai/formula/callable_objects.hpp"         // for position_callable, etc
+#include "ai/formula/candidates.hpp"               // for candidate_action_ptr, etc
 #include "config.hpp"                   // for config
-#include "formula_callable.hpp"         // for formula_callable, etc
-#include "formula_fwd.hpp"              // for const_formula_ptr, etc
+#include "formula/callable.hpp"         // for formula_callable, etc
+#include "formula/formula_fwd.hpp"              // for const_formula_ptr, etc
 #include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
-#include "unit_map.hpp"
-#include "variant.hpp"                  // for variant
+#include "units/map.hpp"
 #include <boost/noncopyable.hpp>        // for noncopyable
 #include <set>                          // for multiset
 #include <string>                       // for string
 #include <utility>                      // for pair
 #include <vector>                       // for vector
+
+class variant;
+
 namespace ai { class ai_context; }
 namespace game_logic { struct formula_error; }
 namespace pathfind { struct plain_route; }  // lines 57-57
@@ -161,7 +163,6 @@ private:
 	gamestate_change_observer infinite_loop_guardian_;
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table_;
-	game_logic::candidate_action_manager candidate_action_manager_;
 
 	friend class ai_default;
 };

@@ -17,8 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * A widget to draw upon.
@@ -37,22 +42,22 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -77,9 +82,47 @@ private:
 	tpoint best_size_;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 };
 
+// }---------- DEFINITION ---------{
+
+struct tdrawing_definition : public tcontrol_definition
+{
+	explicit tdrawing_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_drawing : public tbuilder_control
+{
+	explicit tbuilder_drawing(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	/** The width of the widget. */
+	tformula<unsigned> width;
+
+	/** The height of the widget. */
+	tformula<unsigned> height;
+
+	/** Config containing what to draw on the widgets canvas. */
+	config draw;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

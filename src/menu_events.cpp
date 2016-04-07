@@ -32,8 +32,9 @@
 #include "display_chat_manager.hpp"
 #include "filechooser.hpp"
 #include "formatter.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_board.hpp"
+#include "game_config_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
@@ -46,17 +47,17 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
-#include "gui/dialogs/mp_change_control.hpp"
-#include "gui/dialogs/data_manage.hpp"
+#include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_label.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
@@ -73,14 +74,13 @@
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
 #include "synced_context.hpp"
-#include "terrain_builder.hpp"
-#include "unit.hpp"
-#include "unit_display.hpp"
+#include "terrain/builder.hpp"
+#include "units/unit.hpp"
+#include "units/udisplay.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 #include "widgets/combo.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/range/algorithm/find_if.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -140,7 +140,7 @@ void menu_handler::objectives(int side_num)
 	}
 
 	config cfg;
-	cfg["side"] = str_cast(side_num);
+	cfg["side"] = std::to_string(side_num);
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()));
@@ -153,7 +153,7 @@ void menu_handler::show_statistics(int side_num)
 {
 	team &current_team = teams()[side_num - 1];
 	// Current Player name
-	const std::string &player = current_team.current_player();
+	const std::string &player = current_team.side_name();
 	//add player's name to title of dialog
 	std::stringstream title_str;
 	title_str <<  _("Statistics") << " (" << player << ")";
@@ -271,7 +271,7 @@ void menu_handler::status_table(int selected)
 			}
 
 			if (pc_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)
-				leader_name = teams()[n].current_player();
+				leader_name = teams()[n].side_name();
 
 		} else {
 			leader_bools.push_back(false);
@@ -392,7 +392,7 @@ void menu_handler::scenario_settings_table(int selected)
 		}
 
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			<< teams()[n].current_player() << COLUMN_SEPARATOR
+			<< teams()[n].side_name() << COLUMN_SEPARATOR
 			<< n + 1 << COLUMN_SEPARATOR
 			<< teams()[n].start_gold() << COLUMN_SEPARATOR
 			<< teams()[n].base_income() << COLUMN_SEPARATOR
@@ -477,7 +477,7 @@ void menu_handler::show_chat_log()
 	gui2::tchat_log chat_log_dialog(vconfig(c), resources::recorder);
 	chat_log_dialog.show(gui_->video());
 	//std::string text = resources::recorder->build_chat_log();
-	//gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
+	//gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
 }
 
 void menu_handler::show_help()
@@ -521,59 +521,33 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location &last_hex)
 {
-	team &current_team = teams()[side_num - 1];
-
 	std::vector<const unit_type*> sample_units;
 
 	gui_->draw(); //clear the old menu
-	std::vector<std::string> item_keys;
-	std::vector<std::string> items;
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
-		const unit_type *type = unit_types.find(*it);
+		const unit_type* type = unit_types.find(*it);
 		if (!type) {
 			ERR_NG << "could not find unit '" << *it << "'" << std::endl;
 			return;
 		}
 
-		item_keys.push_back(*it);
-
-		char prefix;
-		int wb_gold = 0;
-
-		if (const boost::shared_ptr<wb::manager> & whiteb = pc_.get_whiteboard())
-		{ wb::future_map future; // so gold takes into account planned spending
-			wb_gold = whiteb->get_spent_gold_for(side_num);
-			//display units that we can't afford to recruit in red
-		} // end planned unit map scope
-
-		prefix = (type->cost() > current_team.gold() - wb_gold
-				? font::BAD_TEXT : font::NULL_MARKUP);
-
-		std::stringstream description;
-		description << font::IMAGE << type->image();
-#ifndef LOW_MEM
-		description << "~RC(" << type->flag_rgb() << '>'
-			<< team::get_side_color_index(side_num) << ')';
-#endif
-		description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->type_name() << "\n"
-				<< prefix << type->cost() << " " << translation::sngettext("unit^Gold", "Gold", type->cost());
-
-		items.push_back(description.str());
 		sample_units.push_back(type);
 	}
 
 	if(sample_units.empty()) {
-		gui2::show_transient_message(gui_->video(),"",_("You have no units available to recruit."));
+		gui2::show_transient_message(gui_->video(), "", _("You have no units available to recruit."));
 		return;
 	}
 
-	int recruit_res = dialogs::recruit_dialog(*gui_, sample_units, items, side_num, get_title_suffix(side_num));
+	gui2::tunit_recruit dlg(sample_units, teams()[side_num - 1]);
 
-	if(recruit_res != -1) {
-		do_recruit(item_keys[recruit_res], side_num, last_hex);
+	dlg.show(gui_->video());
+
+	if(dlg.get_retval() == gui2::twindow::OK) {
+		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
 	}
 }
 
@@ -647,7 +621,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	BOOST_FOREACH(const unit_const_ptr & unit, *recall_list_team)
+	for(const unit_const_ptr & unit : *recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}
@@ -680,7 +654,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
 	if (current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(unit_cost);
+		i18n_symbols["cost"] = std::to_string(unit_cost);
 		std::string msg = vngettext(
 			"You must have at least 1 gold piece to recall a unit",
 			"You must have at least $cost gold pieces to recall this unit",
@@ -806,7 +780,7 @@ namespace { // Helpers for menu_handler::end_turn()
 bool menu_handler::end_turn(int side_num)
 {
 	if(!gamedata().allow_end_turn()) {
-		gui2::show_message((*gui_).video(), "", _("You cannot end your turn yet!"), gui2::tmessage::ok_button);
+		gui2::show_transient_message((*gui_).video(), "", _("You cannot end your turn yet!"));
 		return false;
 	}
 
@@ -919,7 +893,7 @@ namespace { // Helpers for create_unit()
 	 * (Intended for use when a unit is created in debug mode via hotkey or
 	 * context menu.)
 	 * @returns the selected type and gender. If this is canceled, the
-	 *          returned type is NULL.
+	 *          returned type is nullptr.
 	 */
 	type_and_gender choose_unit(game_display& gui)
 	{
@@ -927,20 +901,18 @@ namespace { // Helpers for create_unit()
 		// The unit creation dialog makes sure unit types
 		// are properly cached.
 		//
-		gui2::tunit_create create_dlg(&gui);
+		gui2::tunit_create create_dlg;
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
-			// the static cast fixes http://connect.microsoft.com/VisualStudio/feedback/details/520043/
-			// c++11's nullptr would be a better solution as soon as we support it.
-			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
+			return type_and_gender(nullptr, unit_race::NUM_GENDERS);
 		}
 
 		const std::string& ut_id = create_dlg.choice();
 		const unit_type *utp = unit_types.find(ut_id);
 		if (!utp) {
 			ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'." << std::endl;
-			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
+			return type_and_gender(static_cast<const unit_type *>(nullptr), unit_race::NUM_GENDERS);
 		}
 		const unit_type &ut = *utp;
 
@@ -977,11 +949,11 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	// Save the current mouse location before popping up the choice menu (which
 	// gives time for the mouse to move, changing the location).
 	const map_location destination = mousehandler.get_last_hex();
-	assert(gui_ != NULL);
+	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
 	type_and_gender selection = choose_unit(*gui_);
-	if ( selection.first != NULL )
+	if ( selection.first != nullptr )
 		// Make it so.
 		create_and_place(*gui_, map(), units(), destination,
 		                 *selection.first, selection.second);
@@ -1073,9 +1045,8 @@ void menu_handler::clear_labels()
 }
 
 void menu_handler::label_settings() {
-	// TODO: I think redraw_everything might be a bit too much? It causes a flicker.
 	if(gui2::tlabel_settings::execute(board(), gui_->video()))
-		gui_->redraw_everything();
+		gui_->labels().recalculate_labels();
 }
 
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
@@ -1108,7 +1079,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back() << "\n";
 		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
 	}
-	gui_->set_route(NULL);
+	gui_->set_route(nullptr);
 	gui_->invalidate_game_status();
 }
 
@@ -1197,7 +1168,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 	} while(change && blocked_unit);
 
 	// erase the footsteps after movement
-	gui_->set_route(NULL);
+	gui_->set_route(nullptr);
 	gui_->invalidate_game_status();
 }
 
@@ -1262,7 +1233,7 @@ void menu_handler::search()
 void menu_handler::do_speak(){
 	//None of the two parameters really needs to be passed since the information belong to members of the class.
 	//But since it makes the called method more generic, it is done anyway.
-	chat_handler::do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
+	chat_handler::do_speak(textbox_info_.box()->text(),textbox_info_.check() != nullptr ? textbox_info_.check()->checked() : false);
 }
 
 
@@ -1446,7 +1417,7 @@ class map_command_handler
 		std::vector<std::string> get_commands_list() const
 		{
 			std::vector<std::string> res;
-			BOOST_FOREACH(typename command_map::value_type i, command_map_) {
+			for(typename command_map::value_type i : command_map_) {
 				res.push_back(i.first);
 			}
 			return res;
@@ -1506,7 +1477,7 @@ class map_command_handler
 		void command_failed_need_arg(int argn)
 		{
 			utils::string_map symbols;
-			symbols["arg_id"] = lexical_cast<std::string>(argn);
+			symbols["arg_id"] = std::to_string(argn);
 			command_failed(VGETTEXT("Missing argument $arg_id", symbols));
 		}
 		void print_usage()
@@ -1537,7 +1508,7 @@ class map_command_handler
 			}
 			std::stringstream ss;
 			bool show_unavail = show_unavailable_ || get_arg(1) == "all";
-			BOOST_FOREACH(typename command_map::value_type i, command_map_) {
+			for(typename command_map::value_type i : command_map_) {
 				if (show_unavail || is_enabled(i.second)) {
 					ss << i.first;
 					//if (!i.second.usage.empty()) {
@@ -1622,7 +1593,7 @@ class map_command_handler
 		{
 			std::vector<std::string> aliases;
 			typedef command_alias_map::value_type p;
-			BOOST_FOREACH(p i, command_alias_map_) {
+			for(p i : command_alias_map_) {
 				if (i.second == cmd) {
 					aliases.push_back(i.first);
 				}
@@ -1719,7 +1690,7 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 
 		void print(const std::string& title, const std::string& message)
 		{
-			chat_handler_.add_chat_message(time(NULL), title, 0, message);
+			chat_handler_.add_chat_message(time(nullptr), title, 0, message);
 		}
 		void init_map()
 		{
@@ -1771,9 +1742,6 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 				_("Add a nickname to your friends list."), _("<nickname>"));
 			register_command("remove", &chat_command_handler::do_remove,
 				_("Remove a nickname from your ignores or friends list."), _("<nickname>"));
-			register_command("list", &chat_command_handler::do_display,
-				_("Show your ignores and friends list."));
-			register_alias("list", "display");
 			register_command("version", &chat_command_handler::do_version,
 				_("Display version information."));
 			register_command("register", &chat_command_handler::do_register,
@@ -1888,7 +1856,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_show_var();
 		void do_inspect();
 		void do_control_dialog();
-		void do_manage();
 		void do_unit();
 		// void do_buff();
 		// void do_unbuff();
@@ -1926,7 +1893,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		}
 		void print(const std::string& title, const std::string& message)
 		{
-			menu_handler_.add_chat_message(time(NULL), title, 0, message);
+			menu_handler_.add_chat_message(time(nullptr), title, 0, message);
 		}
 		void init_map()
 		{
@@ -1935,7 +1902,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			chmap::get_command("version")->flags = ""; //clear network-only flag
 			chmap::get_command("ignore")->flags = ""; //clear network-only flag
 			chmap::get_command("friend")->flags = ""; //clear network-only flag
-			chmap::get_command("list")->flags = ""; //clear network-only flag
 			chmap::get_command("remove")->flags = ""; //clear network-only flag
 			chmap::set_cmd_prefix(":");
 			register_command("refresh", &console_handler::do_refresh,
@@ -1998,8 +1964,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 					, "N");
 			register_command("inspect", &console_handler::do_inspect,
 				_("Launch the gamestate inspector"), "", "D");
-			register_command("manage", &console_handler::do_manage,
-				_("Manage persistence data"), "", "D");
 			register_command("alias", &console_handler::do_set_alias,
 				_("Set or show alias to a command"), _("<name>[=<command>]"));
 			register_command("set_var", &console_handler::do_set_var,
@@ -2043,7 +2007,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 			if (const config &alias_list = preferences::get_alias())
 			{
-				BOOST_FOREACH(const config::attribute &a, alias_list.attribute_range()) {
+				for(const config::attribute &a : alias_list.attribute_range()) {
 					register_alias(a.second, a.first);
 				}
 			}
@@ -2073,17 +2037,17 @@ void chat_handler::change_logging(const std::string& data) {
 	const std::string level(data.begin(),j);
 	const std::string domain(j+1,data.end());
 	int severity;
-	if (level == "error") severity = lg::err.get_severity();
-	else if (level == "warning") severity = lg::warn.get_severity();
-	else if (level == "info") severity = lg::info.get_severity();
-	else if (level == "debug") severity = lg::debug.get_severity();
+	if (level == "error") severity = lg::err().get_severity();
+	else if (level == "warning") severity = lg::warn().get_severity();
+	else if (level == "info") severity = lg::info().get_severity();
+	else if (level == "debug") severity = lg::debug().get_severity();
 	else {
 		utils::string_map symbols;
 		symbols["level"] = level;
 		const std::string& msg =
 				vgettext("Unknown debug level: '$level'.", symbols);
 		ERR_NG << msg << std::endl;
-		add_chat_message(time(NULL), _("error"), 0, msg);
+		add_chat_message(time(nullptr), _("error"), 0, msg);
 		return;
 	}
 	if (!lg::set_log_domain_severity(domain, severity)) {
@@ -2092,7 +2056,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 				vgettext("Unknown debug domain: '$domain'.", symbols);
 		ERR_NG << msg << std::endl;
-		add_chat_message(time(NULL), _("error"), 0, msg);
+		add_chat_message(time(nullptr), _("error"), 0, msg);
 		return;
 	} else {
 		utils::string_map symbols;
@@ -2101,7 +2065,7 @@ void chat_handler::change_logging(const std::string& data) {
 		const std::string& msg =
 				vgettext("Switched domain: '$domain' to level: '$level'.", symbols);
 		LOG_NG << msg << "\n";
-		add_chat_message(time(NULL), "log", 0, msg);
+		add_chat_message(time(nullptr), "log", 0, msg);
 	}
 }
 
@@ -2115,7 +2079,7 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	|| cmd == "mute" || cmd == "unmute") {
 		data.add_child(cmd)["username"] = args;
 	} else if (cmd == "ping") {
-		data[cmd] = lexical_cast<std::string>(time(NULL));
+		data[cmd] = std::to_string(time(nullptr));
 	} else if (cmd == "green") {
 		data.add_child("query")["type"] = "lobbymsg @" + args;
 	} else if (cmd == "red") {
@@ -2170,14 +2134,14 @@ void chat_handler::add_whisper_sent(const std::string& receiver, const std::stri
 {
 	utils::string_map symbols;
 	symbols["receiver"] = receiver;
-	add_chat_message(time(NULL), VGETTEXT("whisper to $receiver", symbols), 0, message);
+	add_chat_message(time(nullptr), VGETTEXT("whisper to $receiver", symbols), 0, message);
 }
 
 void chat_handler::add_whisper_received(const std::string& sender, const std::string& message)
 {
 	utils::string_map symbols;
 	symbols["sender"] = sender;
-	add_chat_message(time(NULL), VGETTEXT("whisper: $sender", symbols), 0, message);
+	add_chat_message(time(nullptr), VGETTEXT("whisper: $sender", symbols), 0, message);
 }
 
 void chat_handler::send_chat_room_message(const std::string& room,
@@ -2199,7 +2163,7 @@ void chat_handler::add_chat_room_message_sent(const std::string &room, const std
 void chat_handler::add_chat_room_message_received(const std::string &room,
 	const std::string &speaker, const std::string &message)
 {
-	add_chat_message(time(NULL), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
+	add_chat_message(time(nullptr), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
 }
 
 
@@ -2272,8 +2236,7 @@ void chat_command_handler::do_log()
 void chat_command_handler::do_ignore()
 {
 	if (get_arg(1).empty()) {
-		const std::map<std::string, std::string>& tmp = preferences::get_acquaintances_nice("ignore");
-		print(_("ignores list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, ")\n", " (") + ")");
+		do_display();
 	} else {
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
@@ -2290,8 +2253,7 @@ void chat_command_handler::do_ignore()
 void chat_command_handler::do_friend()
 {
 	if (get_arg(1).empty()) {
-		const std::map<std::string, std::string>& tmp = preferences::get_acquaintances_nice("friend");
-		print(_("friends list"), tmp.empty() ? _("(empty)") : utils::join_map(tmp, ")\n", " (") + ")");
+		do_display();
 	} else {
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
@@ -2318,20 +2280,9 @@ void chat_command_handler::do_remove()
 
 void chat_command_handler::do_display()
 {
-	const std::map<std::string, std::string>& friends = preferences::get_acquaintances_nice("friend");
-	const std::map<std::string, std::string>& ignores = preferences::get_acquaintances_nice("ignore");
-
-	if (!friends.empty()) {
-		print(_("friends list"), utils::join_map(friends, ")\n", " (") + ")");
-	}
-
-	if (!ignores.empty()) {
-		print(_("ignores list"), utils::join_map(ignores, ")\n", " (") + ")");
-	}
-
-	if (friends.empty() && ignores.empty()) {
-		print(_("friends and ignores list"), _("There are no players on your friends or ignore list."));
-	}
+	// TODO: add video and game config argument to chat_command_handler?
+	preferences::show_preferences_dialog(CVideo::get_singleton(), 
+		game_config_manager::get()->game_config(), preferences::VIEW_FRIENDS);
 }
 
 void chat_command_handler::do_version() {
@@ -2420,7 +2371,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	config cfg;
 	cfg["id"] = preferences::login();
 	cfg["message"] = message;
-	const time_t time = ::time(NULL);
+	const time_t time = ::time(nullptr);
 	std::stringstream ss;
 	ss << time;
 	cfg["time"] = ss.str();
@@ -2543,6 +2494,9 @@ std::vector<std::string> menu_handler::get_commands_list()
 
 void console_handler::do_refresh() {
 	image::flush_cache();
+
+	menu_handler_.gui_->create_buttons();
+
 	menu_handler_.gui_->redraw_everything();
 }
 
@@ -2561,7 +2515,7 @@ void console_handler::do_droid() {
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_network()) {
 		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
+		symbols["side"] = std::to_string(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_local_human()) {
@@ -2576,7 +2530,7 @@ void console_handler::do_droid() {
 		}
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 //		menu_handler_.teams()[side - 1].make_human();
-//		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+//		menu_handler_.change_controller(std::to_string(side),"human");
 
 		utils::string_map symbols;
 		symbols["side"] = side_s;
@@ -2600,12 +2554,12 @@ void console_handler::do_idle() {
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_network()) {
 		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
+		symbols["side"] = std::to_string(side);
 		command_failed(vgettext("Can't idle networked side: '$side'.", symbols));
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 		utils::string_map symbols;
-		symbols["side"] = lexical_cast<std::string>(side);
+		symbols["side"] = std::to_string(side);
 		command_failed(vgettext("Can't idle local ai side: '$side'.", symbols));
 		return;
 	} else if (menu_handler_.teams()[side - 1].is_local_human()) {
@@ -2741,7 +2695,7 @@ void console_handler::do_layers() {
 	tile->rebuild_cache(tod_id, &tile_logs);
 
 	int order = 1;
-	BOOST_FOREACH(const terrain_builder::tile::log_details det, tile_logs) {
+	for(const terrain_builder::tile::log_details det : tile_logs) {
 		const terrain_builder::tile::rule_image_rand& ri = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
 
@@ -2845,7 +2799,7 @@ void console_handler::do_next_level()
 void console_handler::do_choose_level() {
 	std::vector<std::string> options;
 	int next = 0, nb = 0;
-	BOOST_FOREACH(const config &sc, menu_handler_.game_config_.child_range("scenario"))
+	for(const config &sc : menu_handler_.game_config_.child_range("scenario"))
 	{
 		const std::string &id = sc["id"];
 		options.push_back(id);
@@ -2856,7 +2810,7 @@ void console_handler::do_choose_level() {
 	// find scenarios of multiplayer campaigns
 	// (assumes that scenarios are ordered properly in the game_config)
 	std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
-	BOOST_FOREACH(const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
+	for(const config &mp : menu_handler_.game_config_.child_range("multiplayer"))
 	{
 		if (mp["id"] == scenario)
 		{
@@ -2997,12 +2951,6 @@ void console_handler::do_control_dialog()
 	mp_change_control.show(menu_handler_.gui_->video());
 }
 
-void console_handler::do_manage() {
-	config cfg;
-	gui2::tdata_manage manager;
-	manager.show(menu_handler_.gui_->video());
-}
-
 void console_handler::do_unit() {
 	// prevent SIGSEGV due to attempt to set HP during a fight
 	if (events::commands_disabled > 0)
@@ -3031,7 +2979,7 @@ void console_handler::do_unit() {
 }
 
 void console_handler::do_discover() {
-	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
+	for(const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		preferences::encountered_units().insert(i.second.id());
 	}
 }
@@ -3106,9 +3054,10 @@ void menu_handler::do_ai_formula(const std::string& str,
 	int side_num, mouse_handler& /*mousehandler*/)
 {
 	try {
-		add_chat_message(time(NULL), _("ai"), 0, ai::manager::evaluate_command(side_num, str));
+		add_chat_message(time(nullptr), _("wfl"), 0, ai::manager::evaluate_command(side_num, str));
+	} catch(game_logic::formula_error&) {
 	} catch(...) {
-		//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
+		add_chat_message(time(nullptr), _("wfl"), 0, "UNKNOWN ERROR IN FORMULA");
 	}
 }
 
@@ -3119,7 +3068,7 @@ void menu_handler::user_command()
 
 void menu_handler::request_control_change ( int side_num, const std::string& player )
 {
-	std::string side = str_cast(side_num);
+	std::string side = std::to_string(side_num);
 	if (teams()[side_num - 1].is_local_human() && player == preferences::login()) {
 		//this is already our side.
 		return;

@@ -73,14 +73,14 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
  *
  * The above special characters can be quoted using a C-style backslash.
  *
- * A bounding rectangle of the text is returned. If dst is NULL, then the
+ * A bounding rectangle of the text is returned. If dst is nullptr, then the
  * text will not be drawn, and a bounding rectangle only will be returned.
  */
 SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
-/** wrapper of the previous function, gui can also be NULL */
+/** wrapper of the previous function, gui can also be nullptr */
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);

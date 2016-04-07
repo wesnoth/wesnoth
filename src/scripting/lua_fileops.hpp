@@ -25,6 +25,7 @@ struct lua_State;
 namespace lua_fileops {
 
 int intf_have_file(lua_State*);
+int intf_read_file(lua_State*);
 int load_file(lua_State*);
 
 } // end namespace lua_fileops

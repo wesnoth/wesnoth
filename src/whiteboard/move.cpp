@@ -34,12 +34,10 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-#include "unit_display.hpp"
-#include "unit_map.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/unit.hpp"
+#include "units/animation_component.hpp"
+#include "units/udisplay.hpp"
+#include "units/map.hpp"
 
 namespace wb {
 
@@ -110,10 +108,10 @@ move::move(config const& cfg, bool hidden)
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
-	BOOST_FOREACH(config const& loc_cfg, route_cfg.child_range("step")) {
+	for(config const& loc_cfg : route_cfg.child_range("step")) {
 		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"]));
 	}
-	BOOST_FOREACH(config const& mark_cfg, route_cfg.child_range("mark")) {
+	for(config const& mark_cfg : route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
 			= pathfind::marked_route::mark(mark_cfg["turns"],
 				mark_cfg["zoc"].to_bool(),
@@ -148,7 +146,7 @@ void move::init()
 	// As per Bug #18637, this should be fixed so that planning moves on planned recruits work properly.
 	// The alternative is to disable movement on planned recruits altogether,
 	// possibly in select_or_action() where the fake unit is selected in the first place.
-	if (get_unit() == NULL)
+	if (get_unit() == nullptr)
 		return;
 
 	assert(get_unit());
@@ -367,7 +365,7 @@ void move::remove_temp_modifier(unit_map&)
 		return; //zero-hex move, probably used by attack subclass
 
 	// Debug movement points
-	if ( !lg::debug.dont_log(log_whiteboard) )
+	if ( !lg::debug().dont_log(log_whiteboard) )
 	{
 		unit* unit;
 		{
@@ -471,7 +469,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != nullptr) {
 		return LOCATION_OCCUPIED;
 	}
 
@@ -504,7 +502,7 @@ config move::to_config() const
 	//Serialize route_
 	config route_cfg;
 	route_cfg["move_cost"]=route_->move_cost;
-	BOOST_FOREACH(map_location const& loc, route_->steps)
+	for(map_location const& loc : route_->steps)
 	{
 		config loc_cfg;
 		loc_cfg["x"]=loc.x;
@@ -512,7 +510,7 @@ config move::to_config() const
 		route_cfg.add_child("step",loc_cfg);
 	}
 	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
-	BOOST_FOREACH(pair_loc_mark const& item, route_->marks)
+	for(pair_loc_mark const& item : route_->marks)
 	{
 		config mark_cfg;
 		mark_cfg["x"]=item.first.x;

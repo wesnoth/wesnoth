@@ -36,6 +36,7 @@ namespace gui2
 
 class tlabel;
 class timage;
+class tslider;
 class ttext_box;
 
 class tcustom_tod : public tdialog
@@ -61,18 +62,15 @@ private:
 
 	void do_new_tod(twindow& window);
 	void do_delete_tod(twindow& window);
-	const std::vector<time_of_day>& do_save_schedule() const;
 
 	void select_file(const std::string& filename,
-					 const std::string& dir,
-					 const std::string& vector_attrib,
+					 const std::string& default_dir,
+					 const std::string& attribute,
 					 twindow& window);
 
 	void update_tod_display(twindow& window);
 
 	void update_lawful_bonus(twindow& window);
-
-	void slider_update_callback(twindow& window);
 
 	void set_selected_tod(time_of_day tod);
 	const time_of_day& get_selected_tod() const;
@@ -83,7 +81,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
@@ -104,14 +102,14 @@ private:
 	tlabel* current_tod_number_;
 
 	tfield_integer* lawful_bonus_field_;
-	tfield_integer* tod_red_field_;
-	tfield_integer* tod_green_field_;
-	tfield_integer* tod_blue_field_;
+	tslider* tod_red_field_;
+	tslider* tod_green_field_;
+	tslider* tod_blue_field_;
 
 	/**
 	 * The display to update when the ToD changes.
 	 *
-	 * The pointer may be NULL, in the unit tests, but normally it should be a
+	 * The pointer may be nullptr, in the unit tests, but normally it should be a
 	 * pointer to a valid object.
 	 */
 	editor::editor_display* display_;

@@ -42,6 +42,7 @@ class tod_manager;
 class play_controller;
 class reports;
 
+struct map_location;
 typedef int (*lua_CFunction) (lua_State *L);
 
 class game_lua_kernel : public lua_kernel_base
@@ -131,6 +132,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
 	int intf_select_hex(lua_State *L);
+	int intf_select_unit(lua_State *L);
 	int intf_deselect_hex(lua_State *L);
 	int intf_is_skipping_messages(lua_State *L);
 	int intf_skip_messages(lua_State *L);
@@ -151,14 +153,22 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_label(lua_State *L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
+	int intf_set_time_of_day(lua_State *L);
 	int intf_scroll(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
 	int impl_theme_item(lua_State *L, std::string name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
+	int cfun_builtin_effect(lua_State *L);
 	int cfun_wml_action(lua_State *L);
 	int intf_fire_event(lua_State *L);
 	int intf_fire_wml_menu_item(lua_State *L);
+	int intf_teleport(lua_State *L);
+	int intf_remove_sound_source(lua_State *L);
+	int intf_add_sound_source(lua_State *L);
+	int intf_get_sound_source(lua_State *L);
+	int intf_log(lua_State *L);
+	int intf_toggle_fog(lua_State *L, const bool clear);
 
 	//private helpers
 	std::string synced_state();
@@ -167,17 +177,27 @@ class game_lua_kernel : public lua_kernel_base
 
 public:
 	std::vector<team> & teams();
+	/**
+		A value != 0 means that the shouldn't remove any units from the map, usually because
+		we are currently operating on a unit& and removing it might cause memory corruptions
+		note that we don't check for the dtor of lua owned units because we assume that
+		we operate on such a unit that the lua function that invoked the operation on that unit
+		(like wesnoth.add_modification, wesnoth.match_unit ..) have a local copy of that
+		lua_unit* userdata in its stack that prevents it from beeing collected.
+	*/
+	int map_locked_;
 	game_lua_kernel(CVideo *, game_state &, play_controller &, reports &);
 
 	void set_game_display(game_display * gd);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
-	void apply_effect(const std::string& name, unit& u, const config& cfg);
+	std::string apply_effect(const std::string& name, unit& u, const config& cfg, bool need_apply);
 	void initialize(const config& level);
 	void save_game(config & level);
 	void load_game(const config& level);
 	bool run_event(game_events::queued_event const &);
+	void push_builtin_effect();
 	void set_wml_action(std::string const &, game_events::wml_action::handler);
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);
@@ -189,6 +209,9 @@ public:
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
 	int return_unit_method(lua_State *L, char const *m);
+
+	void mouse_over_hex_callback(const map_location& loc);
+	void select_hex_callback(const map_location& loc);
 };
 
 #endif

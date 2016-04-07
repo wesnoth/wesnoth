@@ -171,12 +171,6 @@ float lexical_cast_default<float, const std::string&>(const std::string& a, floa
 template<>
 float lexical_cast_default<float, const char*>(const char* a, float def);
 
-template<typename From>
-std::string str_cast(From a)
-{
-	return lexical_cast<std::string,From>(a);
-}
-
 template<typename To, typename From>
 To lexical_cast_in_range(From a, To def, To min, To max)
 {
@@ -443,10 +437,10 @@ class unique_ptr
 	unique_ptr(const unique_ptr &);
 	unique_ptr &operator=(const unique_ptr &);
 public:
-	unique_ptr(T *p = NULL): ptr_(p) {}
+	unique_ptr(T *p = nullptr): ptr_(p) {}
 	~unique_ptr() { delete ptr_; }
 
-	void reset(T *p = NULL)
+	void reset(T *p = nullptr)
 	{
 		delete ptr_;
 		ptr_ = p;
@@ -455,7 +449,7 @@ public:
 	T *release()
 	{
 		T *p = ptr_;
-		ptr_ = NULL;
+		ptr_ = nullptr;
 		return p;
 	}
 

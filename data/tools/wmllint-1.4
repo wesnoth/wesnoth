@@ -2281,10 +2281,9 @@ if __name__ == '__main__':
             # FIXME: We should make some effort to rename mask files.
             if not revert and not diffs:
                 if not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
-                    mover = vcmove(fn, fn + ".map")
-                    print(mover)
+                    print('wmllint: renaming "%s" to "%s"' % (fn, fn + ".map"))
                     if not dryrun:
-                        os.system(mover)
+                        os.rename(fn, fn + ".map")
                 elif fn in is_main and os.path.isdir(fn.replace('.cfg', '')):
                     main = fn.replace('.cfg', '/_main.cfg')
                     if os.path.exists(main):

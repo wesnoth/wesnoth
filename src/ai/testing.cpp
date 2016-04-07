@@ -16,16 +16,16 @@
  * Gather statistics important for AI testing and output them
  * @file
  */
-#include "manager.hpp"
-#include "testing.hpp"
-#include "../log.hpp"
-#include "../game_board.hpp"
-#include "../replay.hpp"
-#include "../util.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../tod_manager.hpp"
+#include "ai/manager.hpp"
+#include "ai/testing.hpp"
+#include "log.hpp"
+#include "game_board.hpp"
+#include "replay.hpp"
+#include "util.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "units/unit.hpp"
+#include "tod_manager.hpp"
 
 static lg::log_domain log_ai_testing("ai/testing");
 #define DBG_AI_TESTING LOG_STREAM(debug, log_ai_testing)
@@ -83,7 +83,7 @@ void ai_testing::log_victory(std::set<unsigned int> winners)
 	resources::recorder->add_log_data("ai_log","result","victory");
 	for(std::set<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {
 		LOG_AI_TESTING << "WINNER: "<< *w <<std::endl;
-		resources::recorder->add_log_data("ai_log","winner",str_cast(*w));
+		resources::recorder->add_log_data("ai_log","winner",std::to_string(*w));
 	}
 }
 
@@ -93,7 +93,7 @@ void ai_testing::log_game_start()
 		int side = tm-resources::teams->begin()+1;
 		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
 		LOG_AI_TESTING << "TEAM"<<side<<": " << tm->side() << std::endl;
-		resources::recorder->add_log_data("ai_log","ai_id"+str_cast(side),ai::manager::get_active_ai_identifier_for_side(side));
+		resources::recorder->add_log_data("ai_log","ai_id"+std::to_string(side),ai::manager::get_active_ai_identifier_for_side(side));
 		///@todo 1.9: add information about ai_config
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
@@ -104,10 +104,10 @@ void ai_testing::log_game_end()
 {
 	LOG_AI_TESTING << "GAME_END_TURN: "<< resources::tod_manager->turn() <<std::endl;
 	resources::recorder->add_log_data("ai_log","end_turn",
-		str_cast(resources::tod_manager->turn()));
+		std::to_string(resources::tod_manager->turn()));
 	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
 		int side = tm-resources::teams->begin()+1;
-		resources::recorder->add_log_data("ai_log","end_gold"+str_cast(side),str_cast(tm->gold()));
-		resources::recorder->add_log_data("ai_log","end_units"+str_cast(side),str_cast(resources::gameboard->side_units(side)));
+		resources::recorder->add_log_data("ai_log","end_gold"+std::to_string(side),std::to_string(tm->gold()));
+		resources::recorder->add_log_data("ai_log","end_units"+std::to_string(side),std::to_string(resources::gameboard->side_units(side)));
 	}
 }

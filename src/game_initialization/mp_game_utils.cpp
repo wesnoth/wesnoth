@@ -16,7 +16,7 @@
 #include "carryover.hpp"
 #include "config.hpp"
 #include "dialogs.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "saved_game.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
@@ -24,9 +24,7 @@
 #include "log.hpp"
 #include "mp_options.hpp"
 #include "savegame.hpp"
-#include "unit_id.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/id.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)

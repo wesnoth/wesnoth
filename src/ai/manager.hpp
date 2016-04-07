@@ -22,9 +22,9 @@
 #ifndef AI_MANAGER_HPP_INCLUDED
 #define AI_MANAGER_HPP_INCLUDED
 
-#include "../config.hpp"                // for config, etc
-#include "../global.hpp"
-#include "game_info.hpp"                // for side_number, ai_ptr
+#include "config.hpp"                // for config, etc
+#include "global.hpp"
+#include "ai/game_info.hpp"                // for side_number, ai_ptr
 
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <deque>                        // for deque
@@ -36,7 +36,6 @@ namespace ai { class ai_composite; }  // lines 45-45
 namespace ai { class ai_context; }  // lines 42-42
 namespace ai { class component; }  // lines 43-43
 namespace ai { class default_ai_context; }  // lines 41-41
-namespace ai { class interface; }  // lines 36-36
 namespace ai { class readonly_context; }  // lines 39-39
 namespace ai { class readwrite_context; }  // lines 40-40
 namespace ai { class side_context; }  // lines 38-38
@@ -59,15 +58,14 @@ public:
 
 	virtual ~holder();
 
-	interface& get_ai_ref();
+	ai_composite& get_ai_ref();
 
 	const std::string describe_ai();
-
-	void modify_ai_config_old( const config::const_child_itors &ai_parameters );
 
 	config to_config() const;
 
 	void modify_ai(const config& cfg);
+	void modify_side_ai_config(config cfg);
 
 
 	const std::string get_ai_overview();
@@ -204,6 +202,12 @@ public:
 
 
 	/**
+	 * Notifies all observers of 'ai_tod_changed' event.
+	 */
+	static void raise_tod_changed();
+
+
+	/**
 	 * Notifies all observers of 'ai_recruit_list_changed' event.
 	 */
 	static void raise_recruit_list_changed();
@@ -240,6 +244,12 @@ public:
 
 
 	/**
+	 * Adds an observer of 'ai_tod_changed' event.
+	 */
+	static void add_tod_changed_observer( events::observer* event_observer );
+
+
+	/**
 	 * Deletes an observer of 'ai_map_changed' event.
 	 */
 	static void remove_map_changed_observer( events::observer* event_observer );
@@ -256,6 +266,12 @@ public:
 	 * Deletes an observer of 'ai_turn_started' event.
 	 */
 	static void remove_turn_started_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'ai_tod_changed' event.
+	 */
+	static void remove_tod_changed_observer( events::observer* event_observer );
 
 
 private:
@@ -319,16 +335,6 @@ public:
 	 * @return true if successful.
 	 */
 	static bool add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace = true);
-
-
-	/**
-	 * Returns a smart pointer to a new AI.
-	 * @param ai_algorithm_type type of AI algorithm to create
-	 * @param cfg a config of the ai
-	 * @param ai_context context in which this ai is created
-	 * @return the reference to the created AI
-	 */
-	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context);
 
 
 	// =======================================================================
@@ -468,6 +474,7 @@ private:
 	static events::generic_event recruit_list_changed_;
 	static events::generic_event user_interact_;
 	static events::generic_event sync_network_;
+	static events::generic_event tod_changed_;
 	static events::generic_event gamestate_changed_;
 	static events::generic_event turn_started_;
 	static int last_interact_;
@@ -527,7 +534,7 @@ private:
 	 * @return a reference to the active AI.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static interface& get_active_ai_for_side( side_number side );
+	static ai_composite& get_active_ai_for_side( side_number side );
 
 
 };

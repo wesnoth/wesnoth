@@ -18,7 +18,7 @@
 #include <list>                         // for list
 #include <string>                       // for string
 #include <utility>                      // for pair
-#include "SDL_video.h"                  // for SDL_Color (ptr only), etc
+#include <SDL_video.h>                  // for SDL_Color (ptr only), etc
 #include "font.hpp"                     // for NORMAL_COLOR
 #include "sdl/utils.hpp"                // for surface
 #include "widgets/scrollarea.hpp"       // for scrollarea

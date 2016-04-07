@@ -20,22 +20,21 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "terrain_builder.hpp"
-#include "terrain_type_data.hpp"
-#include "unit_types.hpp"
+#include "terrain/builder.hpp"
+#include "terrain/type_data.hpp"
+#include "units/types.hpp"
 #include "version.hpp"
 #include "theme.hpp"
 #include "image.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
@@ -71,7 +70,7 @@ game_config_manager::game_config_manager(
 game_config_manager::~game_config_manager()
 {
 	assert(singleton);
-	singleton = NULL;
+	singleton = nullptr;
 }
 
 game_config_manager * game_config_manager::get() {
@@ -89,7 +88,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
-	load_game_config(force_reload);
+	load_game_config_with_loadscreen(force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
 
@@ -108,7 +107,7 @@ namespace {
 /// returns true if every define in special is also defined in general
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
-	BOOST_FOREACH(const preproc_map::value_type& pair, special)
+	for (const preproc_map::value_type& pair : special)
 	{
 		preproc_map::const_iterator it = general.find(pair.first);
 		if (it == general.end() || it->second != pair.second) {
@@ -119,27 +118,33 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 }
 } // end anonymous namespace
 
-void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
+void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
-	// Make sure that 'debug mode' symbol is set
-	// if command line parameter is selected
-	// also if we're in multiplayer and actual debug mode is disabled.
 	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
-	    game_config::debug || game_config::mp_debug);
+		game_config::debug || game_config::mp_debug);
 
 	// Game_config already holds requested config in memory.
-	if(!game_config_.empty()) {
-		if((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
+	if (!game_config_.empty()) {
+		if ((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
 			return;
 		}
-		if((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+		if ((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
 			return;
 		}
 	}
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(video_);
-	cursor::setter cur(cursor::WAIT);
+	gui2::tloadscreen::display(video_, [this, force_reload, classification]() {
+		load_game_config(force_reload, classification);
+	});
+}
+
+void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
+	game_classification const* classification)
+{
+		// Make sure that 'debug mode' symbol is set
+	// if command line parameter is selected
+	// also if we're in multiplayer and actual debug mode is disabled.
 
 	// The loadscreen will erase the titlescreen.
 	// NOTE: even without loadscreen, needed after MP lobby.
@@ -151,9 +156,9 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
-		loadscreen::start_stage("verify cache");
+		gui2::tloadscreen::progress("verify cache");
 		filesystem::data_tree_checksum();
-		loadscreen::start_stage("create cache");
+		gui2::tloadscreen::progress("create cache");
 
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
@@ -170,7 +175,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
 					filesystem::ENTIRE_FILE_PATH);
 		}
-		BOOST_FOREACH(const std::string& umc, user_dirs) {
+		for (const std::string& umc : user_dirs) {
 			const std::string cores_file = umc + "/cores.cfg";
 			if (filesystem::file_exists(cores_file)) {
 				config cores;
@@ -183,7 +188,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		config valid_cores;
 		bool current_core_valid = false;
 		std::string wml_tree_root;
-		BOOST_FOREACH(const config& core, cores_cfg.child_range("core")) {
+		for (const config& core : cores_cfg.child_range("core")) {
 
 			const std::string& id = core["id"];
 			if (id.empty()) {
@@ -264,16 +269,14 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// If multiplayer campaign is being loaded, [scenario] tags should
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
-		if (classification != NULL) {
+		if (classification != nullptr) {
 			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
 			{
 				const bool require_campaign = campaign["require_campaign"].to_bool(true);
-				BOOST_FOREACH(config& scenario, game_config_.child_range("scenario"))
+				for (config& scenario : game_config_.child_range("scenario"))
 				{
 					scenario["require_scenario"] = require_campaign;
-					// make force_lock_settings default to true for [scenario]
-					scenario["force_lock_settings"] = scenario["force_lock_settings"].to_bool(true);
-					BOOST_FOREACH(config& side, scenario.child_range("side"))
+					for (config& side : scenario.child_range("side"))
 					{
 						side["no_leader"] = side["no_leader"].to_bool(true);
 					}
@@ -348,7 +351,7 @@ void game_config_manager::load_addons_cfg()
 	std::vector<std::string> error_log;
 
 	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
-	BOOST_FOREACH(const std::string& uc, user_files) {
+	for(const std::string& uc : user_files) {
 		const std::string file = uc;
 		const int size_minus_extension = file.size() - 4;
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
@@ -371,7 +374,7 @@ void game_config_manager::load_addons_cfg()
 		filesystem::FILE_NAME_ONLY);
 
 	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
-	BOOST_FOREACH(const std::string& uc, user_dirs) {
+	for (const std::string& uc : user_dirs) {
 		const std::string addon_id = uc;
 		const std::string addon_dir = user_campaign_dir + "/" + uc;
 
@@ -404,18 +407,18 @@ void game_config_manager::load_addons_cfg()
 	}
 
 	// Load the addons.
-	BOOST_FOREACH(const addon_source & addon, addons_to_load) {
+	for (const addon_source & addon : addons_to_load) {
 		try {
 			// Load this addon from the cache, to a config
 			config umc_cfg;
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", NULL };
+			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", nullptr };
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{
-				BOOST_FOREACH(config & cfg, umc_cfg.child_range(*type)) {
+				for (config & cfg : umc_cfg.child_range(*type)) {
 					cfg["addon_id"] = addon.addon_id;
 					// Note that this may reformat the string in a canonical form.
 					cfg["addon_version"] = addon.version.str();
@@ -459,7 +462,7 @@ void game_config_manager::load_addons_cfg()
 void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");
-	BOOST_FOREACH(const config &ch, game_config_.child_range("multiplayer")) {
+	for (const config &ch : game_config_.child_range("multiplayer")) {
 		hashes[ch["id"]] = ch.hash();
 	}
 }
@@ -475,7 +478,7 @@ void game_config_manager::set_color_info()
 void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
-	loadscreen::start_stage("load unit types");
+	gui2::tloadscreen::progress("load unit types");
 	if(config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}
@@ -496,7 +499,7 @@ void game_config_manager::reload_changed_game_config()
 void game_config_manager::load_game_config_for_editor()
 {
 	game_config::scoped_preproc_define editor("EDITOR");
-	load_game_config(NO_FORCE_RELOAD);
+	load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 }
 
 void game_config_manager::load_game_config_for_game(
@@ -517,34 +520,29 @@ void game_config_manager::load_game_config_for_game(
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
 	std::deque<define> extra_defines;
-	BOOST_FOREACH(const std::string& extra_define,
-		classification.campaign_xtra_defines) {
-		define new_define
-			(new game_config::scoped_preproc_define(extra_define));
+	for (const std::string& extra_define : classification.campaign_xtra_defines) {
+		define new_define(new game_config::scoped_preproc_define(extra_define));
 		extra_defines.push_back(new_define);
 	}
 	std::deque<define> modification_defines;
-	BOOST_FOREACH(const std::string& mod_define,
-		classification.mod_defines) {
-		define new_define
-			(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
+	for (const std::string& mod_define : classification.mod_defines) {
+		define new_define(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
 		modification_defines.push_back(new_define);
 	}
 
 	try{
-		load_game_config(NO_FORCE_RELOAD, &classification);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification);
 	}
 	catch(game::error&) {
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
-		BOOST_FOREACH(const preproc_map::value_type& preproc, old_defines_map_) {
-			define new_define
-				(new game_config::scoped_preproc_define(preproc.first));
+		for (const preproc_map::value_type& preproc : old_defines_map_) {
+			define new_define(new game_config::scoped_preproc_define(preproc.first));
 			previous_defines.push_back(new_define);
 		}
 
-		load_game_config(NO_FORCE_RELOAD);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 
 		throw;
 	}
@@ -558,19 +556,18 @@ void game_config_manager::load_game_config_for_create(bool is_mp)
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
 	try{
-		load_game_config(NO_INCLUDE_RELOAD);
+		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
 	}
 	catch(game::error&) {
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
-		BOOST_FOREACH(const preproc_map::value_type& preproc, old_defines_map_) {
-			define new_define
-				(new game_config::scoped_preproc_define(preproc.first));
+		for (const preproc_map::value_type& preproc : old_defines_map_) {
+			define new_define(new game_config::scoped_preproc_define(preproc.first));
 			previous_defines.push_back(new_define);
 		}
 
-		load_game_config(NO_FORCE_RELOAD);
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
 
 		throw;
 	}

@@ -15,14 +15,15 @@
 #ifndef GUI_WIDGETS_CONTROL_HPP_INCLUDED
 #define GUI_WIDGETS_CONTROL_HPP_INCLUDED
 
-#include "gui/auxiliary/widget_definition.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
-#include "../../text.hpp"
-
-typedef std::map<std::string, t_string> string_map;
+#include "../../text.hpp" // We want the file in src/
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -96,17 +97,17 @@ public:
 	 * The default behavior is that a widget blocks easy close, if not it
 	 * should override this function.
 	 */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	/** See @ref twidget::create_walker. */
-	virtual iterator::twalker_* create_walker() OVERRIDE;
+	virtual iterator::twalker_* create_walker() override;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/**
 	 * Gets the minimum size as defined in the config.
 	 *
-	 * @pre                       config_ !=  NULL
+	 * @pre                       config_ !=  nullptr
 	 *
 	 * @returns                   The size.
 	 */
@@ -115,7 +116,7 @@ public:
 	/**
 	 * Gets the default size as defined in the config.
 	 *
-	 * @pre                       config_ !=  NULL
+	 * @pre                       config_ !=  nullptr
 	 *
 	 * @returns                   The size.
 	 */
@@ -124,7 +125,7 @@ public:
 	/**
 	 * Gets the best size as defined in the config.
 	 *
-	 * @pre                       config_ !=  NULL
+	 * @pre                       config_ !=  nullptr
 	 *
 	 * @returns                   The size.
 	 */
@@ -170,18 +171,18 @@ public:
 	 * @todo Also handle the tooltip state.
 	 * Handle if shrunken_ && use_tooltip_on_label_overflow_.
 	 */
-	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
+	virtual void layout_initialise(const bool full_initialisation) override;
 
 	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 protected:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -210,18 +211,18 @@ private:
 public:
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	twidget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref twidget::find. */
 	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+						const bool must_be_active) const override;
 
 	/**
 	 * Sets the definition.
@@ -431,12 +432,12 @@ protected:
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
 	/** See @ref twidget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
-									  int y_offset) OVERRIDE;
+									  int y_offset) override;
 
 	/** Exposes font::ttext::get_token, for the text label of this control */
 	std::string get_label_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
@@ -505,6 +506,37 @@ private:
 	void signal_handler_notify_remove_tooltip(const event::tevent event,
 											  bool& handled);
 };
+
+// }---------- BUILDER -----------{
+
+class tcontrol;
+
+namespace implementation
+{
+
+struct tbuilder_control : public tbuilder_widget
+{
+public:
+	tbuilder_control(const config& cfg);
+
+	using tbuilder_widget::build;
+
+	virtual twidget* build(const treplacements& replacements) const override;
+
+	/** @deprecated The control can initialize itself. */
+	void init_control(tcontrol* control) const;
+
+	/** Parameters for the control. */
+	std::string definition;
+	t_string label;
+	t_string tooltip;
+	t_string help;
+	bool use_tooltip_on_label_overflow;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

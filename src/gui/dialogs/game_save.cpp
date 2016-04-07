@@ -20,7 +20,7 @@
 #include "gui/dialogs/game_save.hpp"
 
 #include "gettext.hpp"
-#include "gui/dialogs/field.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -61,6 +61,8 @@ tgame_save_message::tgame_save_message(std::string& filename,
 									   const std::string& title,
 									   const std::string& message)
 {
+	set_restore(true);
+
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
 	register_label("lblMessage", true, message);

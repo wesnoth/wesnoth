@@ -18,7 +18,7 @@
 
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "tod_manager.hpp"
 #include "reports.hpp"
 

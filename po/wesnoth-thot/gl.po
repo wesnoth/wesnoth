@@ -5,13 +5,13 @@
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2012, 2013, 2015.
+# Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2012, 2013, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
-"PO-Revision-Date: 2015-06-29 10:11+0100\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-02-06 20:47+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -39,10 +39,8 @@ msgstr "MD"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(fácil)"
+msgstr "Fácil"
 
 # loitador FIXADO
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -52,10 +50,8 @@ msgstr "Loitador"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(normal)"
+msgstr "Normal"
 
 # Steelclad=acoirazado FIXADO
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -65,10 +61,8 @@ msgstr "Acoirazado"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(esixente)"
+msgstr "Esixente"
 
 # Lord=Señor FIXADO
 #. [campaign]: id=The_Hammer_of_Thursagan
@@ -1103,12 +1097,6 @@ msgstr ""
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
-#, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send one of our "
-#| "senior apprentices with you to the east. It has come time for him to be "
-#| "journeyman... and I sense something being born to the east that I do not "
-#| "like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send one of our senior "
 "apprentices with you to the east. It has come time for him to be a "
@@ -2590,16 +2578,19 @@ msgstr ""
 "menor ou igual nivel."
 
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:42
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:82
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
 msgid "inspire"
 msgstr "inspira"
 
 #. [leadership]: id=inspire
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:43
-#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:83
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
+#, fuzzy
+#| msgid "inspire"
+msgid "female^inspire"
+msgstr "inspira"
+
+#. [leadership]: id=inspire
+#: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "

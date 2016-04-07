@@ -49,6 +49,27 @@
 
 #include "exceptions.hpp"
 #include "tstring.hpp"
+#include "utils/iterable_pair.hpp"
+
+#ifdef HAVE_CXX14
+#	ifdef __clang__ // Check this first, because clang also defines __GNUC__
+#		ifdef __apple_build_version__ // Apple clang
+#			if (__clang_major__ == 5 && __clang_minor__ >= 1) || __clang_major__ > 5 // Apple clang 5.1+
+#				define USE_HETEROGENOUS_LOOKUPS
+#			endif
+#		else // Non-Apple clang
+#			if (__clang_major__ == 3 && __clang_minor__ >= 4) || __clang_major__ > 3 // clang 3.4+
+#				define USE_HETEROGENOUS_LOOKUPS
+#			endif
+#		endif
+#	elif defined(__GNUC__) && __GNUC__ >= 5 // GCC 5.0+
+#		define USE_HETEROGENOUS_LOOKUPS
+#	endif
+#endif
+
+#if defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
+#	define USE_HETEROGENOUS_LOOKUPS
+#endif
 
 class config;
 class enum_tag;
@@ -75,16 +96,6 @@ class config
 	 */
 	void check_valid(const config &cfg) const;
 
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/**
-	 * Used as the return type of the conversion operator for boolean contexts.
-	 * Needed, since the compiler would otherwise consider the following
-	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
-	 */
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
 public:
 	// Create an empty node.
 	config();
@@ -92,10 +103,8 @@ public:
 	config(const config &);
 	config &operator=(const config &);
 
-#ifdef HAVE_CXX11
 	config(config &&);
 	config &operator=(config &&);
-#endif
 
 	/**
 	 * Creates a config object with an empty child of name @a child.
@@ -105,18 +114,17 @@ public:
 	~config();
 
 	// Verifies that the string can be used as an attribute or tag name
-	static bool valid_id(std::string);
+	static bool valid_id(const std::string& id);
 
-#ifdef HAVE_CXX11
 	explicit operator bool() const
 	{ return this != &invalid; }
-#else
-	operator safe_bool() const
-	{ return this != &invalid ? &safe_bool_impl::nonnull : NULL; }
-#endif
 
 	typedef std::vector<config*> child_list;
-	typedef std::map<std::string,child_list> child_map;
+	typedef std::map<std::string, child_list
+#ifdef USE_HETEROGENOUS_LOOKUPS
+		, std::less<>
+#endif
+	> child_map;
 
 	struct const_child_iterator;
 
@@ -368,12 +376,19 @@ public:
 		typename V::result_type apply_visitor(const V & visitor) const
 		{ return boost::apply_visitor(visitor, value_); }
 
+	private:
 		// Special strings.
 		static const std::string s_yes, s_no;
 		static const std::string s_true, s_false;
 	};
 
-	typedef std::map<std::string, attribute_value> attribute_map;
+	typedef std::map<
+		std::string
+		, attribute_value
+#ifdef USE_HETEROGENOUS_LOOKUPS
+		, std::less<>
+#endif
+	> attribute_map;
 	typedef attribute_map::value_type attribute;
 
 	struct const_attribute_iterator
@@ -405,6 +420,9 @@ public:
 	const_child_itors child_range(const std::string& key) const;
 	unsigned child_count(const std::string &key) const;
 	unsigned all_children_count() const;
+	/** Note: this function also counts the 'blank' attributes, so it might return more than one might expect */
+	unsigned attribute_count() const
+	{ return values.size(); }
 
 	/**
 	 * Determine whether a config has a child or not.
@@ -428,6 +446,14 @@ public:
 	 */
 	config &child(const std::string& key, int n = 0);
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	template<int N>
+	config &child(const char(&key)[N], int n = 0)
+	{ return child_impl(key, N - 1, n); }
+private:
+	config &child_impl(const char* key, int len, int n = 0);
+public:
+#endif
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
@@ -437,6 +463,11 @@ public:
 	const config &child(const std::string& key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	template<int N>
+	const config &child(const char(&key)[N], int n = 0) const
+	{ return const_cast<config *>(this)->child_impl(key, N- 1, n); }
+#endif
 	/**
 	 * Returns a mandatory child node.
 	 *
@@ -475,9 +506,7 @@ public:
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string &key, const config &val, unsigned index);
 
-#ifdef HAVE_CXX11
 	config &add_child(const std::string &key, config &&val);
-#endif
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.
@@ -491,9 +520,27 @@ public:
 	 */
 	const attribute_value &operator[](const std::string &key) const;
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	/**
+	 * Returns a reference to the attribute with the given @a key
+	 * or to a dummy empty attribute if it does not exist.
+	 */
+	template<int N>
+	inline const attribute_value &operator[](const char (&key)[N]) const
+	{
+		//-1 for the terminating null character.
+		return get_attribute(key, N - 1);
+	}
+
+	template<int N>
+	inline attribute_value& operator[](const char (&key)[N])
+	{
+		return (*this)[std::string(key)];
+	}
+#endif
 	/**
 	 * Returns a pointer to the attribute with the given @a key
-	 * or NULL if it does not exist.
+	 * or nullptr if it does not exist.
 	 */
 	const attribute_value *get(const std::string &key) const;
 
@@ -519,6 +566,12 @@ public:
 
 	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);
+	template<typename... T>
+	void remove_attributes(T... keys) {
+		for(const std::string& key : {keys...}) {
+			remove_attribute(key);
+		}
+	}
 
 	const_attr_itors attribute_range() const;
 
@@ -534,6 +587,12 @@ public:
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
 	void clear_children(const std::string& key);
+	template<typename... T>
+	void clear_children(T... keys) {
+		for(std::string key : {keys...}) {
+			clear_children(key);
+		}
+	}
 
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
@@ -615,7 +674,7 @@ public:
 	 * A function to get the differences between this object,
 	 * and 'c', as another config object.
 	 * I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2))
-	 * will make cfg1 identical to cfg2.
+	 * will make cfg2 identical to cfg1.
 	 */
 	config get_diff(const config& c) const;
 	void get_diff(const config& c, config& res) const;
@@ -675,6 +734,11 @@ public:
 	void append_children(const config &cfg, const std::string& key);
 
 	/**
+	 * Adds attributes from @a cfg.
+	 */
+	void append_attributes(const config &cfg);
+
+	/**
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
@@ -691,6 +755,9 @@ public:
 	void swap(config& cfg);
 
 private:
+#ifdef USE_HETEROGENOUS_LOOKUPS
+	const attribute_value& get_attribute(const char* key, int len) const;
+#endif
 	/**
 	 * Removes the child at position @a pos of @a l.
 	 */

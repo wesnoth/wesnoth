@@ -91,15 +91,15 @@ namespace
 		virtual ~checkup_choice()
 		{
 		}
-		virtual config random_choice(int /*side*/) const OVERRIDE
+		virtual config random_choice(int /*side*/) const override
 		{
 			throw "not implemented";
 		}
-		virtual bool is_visible() const OVERRIDE
+		virtual bool is_visible() const override
 		{
 			return false;
 		}
-		virtual config query_user(int /*side*/) const OVERRIDE
+		virtual config query_user(int /*side*/) const override
 		{
 			return cfg_;
 		}

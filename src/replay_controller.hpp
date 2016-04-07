@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public:
 		virtual ~replay_stop_condition(){}
 	};
 	static void nop() {};
-	replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const boost::function<void()>& on_end_replay = nop);
+	replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop);
 	~replay_controller();
 
 	// void reset_replay();
@@ -49,7 +49,7 @@ public:
 	bool should_stop() const { return stop_condition_->should_stop(); }
 	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
 	bool is_controlling_view() const { return vision_.is_initialized(); }
-	bool allow_reset_replay() const { return reset_state_.get() != NULL; }
+	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
 	const boost::shared_ptr<config>& get_reset_state() { return reset_state_; };
 	void return_to_play_side(bool r = true) { return_to_play_side_ = r; }
 	void replay_show_everything();
@@ -62,7 +62,7 @@ private:
 	void init();
 	void update_gui();
 	void rebuild_replay_theme();
-	void handle_generic_event(const std::string& name) OVERRIDE;
+	void handle_generic_event(const std::string& name) override;
 
 	void reset_replay_ui();
 	void update_replay_ui();
@@ -93,7 +93,7 @@ private:
 	};
 	boost::optional<REPLAY_VISION> vision_;
 	boost::shared_ptr<config> reset_state_;
-	boost::function<void()> on_end_replay_;
+	std::function<void()> on_end_replay_;
 	bool return_to_play_side_;
 };
 

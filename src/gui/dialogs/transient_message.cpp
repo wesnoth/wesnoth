@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/transient_message.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -40,7 +40,7 @@ ttransient_message::ttransient_message(const std::string& title,
 	register_image("image", true, image);
 }
 
-void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
+void ttransient_message::pre_show(twindow& window)
 {
 	if(hide_title_) {
 		twidget& title = find_widget<twidget>(&window, "title", false);
@@ -58,11 +58,13 @@ void show_transient_message(CVideo& video,
 							const std::string& message,
 							const std::string& image,
 							const bool message_use_markup,
-							const bool title_use_markup)
+							const bool title_use_markup,
+							const bool restore_background)
 {
 	ttransient_message dlg(
 			title, title_use_markup, message, message_use_markup, image);
 
+	dlg.set_restore(restore_background);
 	dlg.show(video);
 }
 
@@ -71,7 +73,7 @@ void show_transient_error_message(CVideo& video,
 								  const std::string& image,
 								  const bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general) << message << '\n';
+	LOG_STREAM(err, lg::general()) << message << '\n';
 	show_transient_message(
 			video, _("Error"), message, image, message_use_markup);
 }

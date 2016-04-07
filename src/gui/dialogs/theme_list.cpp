@@ -14,7 +14,7 @@
 
 #include "gui/dialogs/theme_list.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -23,7 +23,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"
-#include "utils/foreach.tpp"
 
 namespace gui2
 {
@@ -57,12 +56,12 @@ ttheme_list::ttheme_list(const std::vector<theme_info>& themes, int selection)
 {
 }
 
-void ttheme_list::pre_show(CVideo& /*video*/, twindow& window)
+void ttheme_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
 	window.keyboard_capture(&list);
 
-	FOREACH(const AUTO & t, themes_)
+	for(const auto & t : themes_)
 	{
 		std::map<std::string, string_map> data;
 		string_map column;

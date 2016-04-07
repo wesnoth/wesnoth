@@ -22,7 +22,6 @@
 
 #include <SDL_version.h>
 
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 
 #include "sdl/utils.hpp"
 
@@ -183,6 +182,5 @@ private:
 
 } // namespace sdl
 
-#endif
 
 #endif

@@ -4,21 +4,22 @@
 # Proxecto Trasno <http://trasno.net>
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2012, 2013, 2014.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2012, 2013, 2014, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
-"PO-Revision-Date: 2014-10-26 09:36+0100\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"PO-Revision-Date: 2016-02-06 20:02+0100\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -60,17 +61,13 @@ msgstr "Cazador do deserto"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(normal)"
+msgstr "Normal"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(esixente)"
+msgstr "Esixente"
 
 # sentinela do deserto FIXADO
 #. [campaign]: id=Under_the_Burning_Suns
@@ -90,10 +87,8 @@ msgstr "Roldador do deserto"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(pesadelo)"
+msgstr "Pesadelo"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:29
@@ -1586,12 +1581,12 @@ msgstr "Non sei quen sodes, nin me importa. Tremede ante o poder da Man Negra!"
 msgid "Elyssa"
 msgstr "Elisa"
 
-#. [event]
+#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1094
 msgid "Go’hag"
 msgstr "Golei"
 
-#. [event]
+#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1095
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1097
@@ -1604,7 +1599,7 @@ msgstr "Saqueador non morto"
 msgid "Back, you fiends! Or I’ll kill you a second time!"
 msgstr "Atrás, malvados! Ou matareivos outra vez!"
 
-#. [message]: role=Go'hag
+#. [message]: speaker=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1117
 msgid ""
 "You have defied our master for the last time. Now you shall die! And I shall "
@@ -1615,7 +1610,7 @@ msgstr ""
 "persoalmente de que sexa unha morte lenta e dolorosa, en agradecemento polas "
 "queimaduras."
 
-#. [message]: role=Go'hag
+#. [message]: speaker=Go'hag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1124
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr "Desafiaches ao noso mestre por última vez. Agora morrerás!"
@@ -6520,11 +6515,6 @@ msgstr ""
 
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:556
-#, fuzzy
-#| msgid ""
-#| "And now I think you should be off as soon as possible. The trolls have "
-#| "retreated back into their holes for the present, but who knows when they "
-#| "will strike again."
 msgid ""
 "And now I think you should be off as soon as possible. The trolls have "
 "retreated into their holes for the present, but who knows when they will "
@@ -11307,10 +11297,6 @@ msgstr "O que hai que ver, xusto cando as cousas empezaban a calmarse."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2321
-#, fuzzy
-#| msgid ""
-#| "Our people are scattered and exhausted, where will we go now Kaleh? Shall "
-#| "we retreat back into the dunes?"
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat into the dunes?"
@@ -15757,31 +15743,22 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Monstros"
+msgstr "Monstro caranguexo"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Crab Men are part crab, part humanoid, and are certainly one of the "
-#| "most twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-#| "creation of some twisted mage, these monstrosities have spread into the "
-#| "wild and prefer to live around coastal waters, preying on both humans and "
-#| "animals."
 msgid ""
 "The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
 "many twisted monsters recorded by the sages of Wesnoth and probably the "
 "creation of some twisted mage. These monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"O home caranguexo é parte caranguexo e parte humano, e é certamente un dos "
-"monstros máis retorcidos dos que se ten constancia nas sagas do Noroeste. "
-"Estras monstruosidades, que probabelmente sexan a obra dun mago moi "
-"retorcido, estendéronse por zonas salvaxes e prefiren vivir nas zonas "
-"costeiras, onde se alimentan tanto de humanos como de animais."
+"O monstro caranguexo é un caranguexo semi-consciente do tamaño dun cabalo. É "
+"un dos moitos monstros estraños dos que se ten constancia nas sagas do "
+"Noroeste, e probabelmente obra dun mago moi retorcido. Estas monstrosidades "
+"estendéronse por zonas salvaxes e prefiren vivir nas zonas costeiras, onde "
+"se alimentan tanto de humanos como de animais."
 
 # poutas FIXADO
 #. [attack]: type=blade
@@ -16246,7 +16223,7 @@ msgstr ""
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
 msgid "teaching"
-msgstr ""
+msgstr "instrución"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
@@ -16255,6 +16232,9 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
+"No comezo de cada rolda, esta unidade redistribúe os seus puntos de "
+"experiencia entre as unidades aliadas adxacentes. Se non hai ningunha "
+"unidade aliada adxacente, a súa experiencia simplemente volve a cero."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -16361,7 +16341,7 @@ msgstr "refrescado"
 #. [lua]: id=teacher.id } } }
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
-msgstr ""
+msgstr "+%d Exp."
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:28

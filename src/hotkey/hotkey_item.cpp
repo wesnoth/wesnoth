@@ -16,6 +16,7 @@
 #include "log.hpp"
 #include "hotkey_item.hpp"
 #include "hotkey_command.hpp"
+#include "config.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
@@ -23,24 +24,20 @@
 #include "serialization/unicode.hpp"
 #include "sdl/utils.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "key.hpp"
 
-#include "SDL.h"
+#include <SDL.h>
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/keyboard.hpp"
-#endif
 
 static lg::log_domain log_config("config");
-#define ERR_G  LOG_STREAM(err,   lg::general)
-#define LOG_G  LOG_STREAM(info,  lg::general)
-#define DBG_G  LOG_STREAM(debug, lg::general)
+#define ERR_G  LOG_STREAM(err,   lg::general())
+#define LOG_G  LOG_STREAM(info,  lg::general())
+#define DBG_G  LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err,   log_config)
 
 namespace hotkey {
@@ -67,13 +64,8 @@ static unsigned int sdl_get_mods()
 	if (mods & KMOD_ALT)
 		mods |= KMOD_ALT;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
 	if (mods & KMOD_GUI)
 	mods |= KMOD_GUI;
-#else
-	if (mods & KMOD_META)
-		mods |= KMOD_META;
-#endif
 
 	return mods;
 }
@@ -100,11 +92,7 @@ const std::string hotkey_base::get_name() const
 	ret +=
 			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
 					"+" : "");
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	if (mod_ & KMOD_GUI)
-#else
-	if (mod_ & KMOD_META)
-#endif
 #ifdef __APPLE__
 		ret += "cmd";
 #else
@@ -143,7 +131,7 @@ bool hotkey_base::matches(const SDL_Event &event) const
 	unsigned int mods = sdl_get_mods();
 
 	if (!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) ||
-			!active()) {
+			!active() || is_disabled()) {
 		return false;
 	}
 
@@ -157,14 +145,11 @@ bool hotkey_base::matches(const SDL_Event &event) const
 void hotkey_base::save(config& item) const
 {
 	item["command"] = get_command();
+	item["disabled"] = is_disabled();
 
 	item["shift"] = !!(mod_ & KMOD_SHIFT);
 	item["ctrl"] = !!(mod_ & KMOD_CTRL);
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 	item["cmd"] = !!(mod_ & KMOD_GUI);
-#else
-	item["cmd"] = !!(mod_ & KMOD_META);
-#endif
 	item["alt"] = !!(mod_ & KMOD_ALT);
 
 	save_helper(item);
@@ -180,11 +165,7 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
 		SDL_Scancode code;
-#if  SDL_VERSION_ATLEAST(2, 0, 0)
 		code = event.key.keysym.scancode;
-#else
-		code = SDL_GetScancodeFromKey(event.key.keysym.sym);
-#endif
 		keyboard->set_scancode(code);
 		break;
 	}
@@ -258,16 +239,14 @@ hotkey_ptr load_from_config(const config& cfg)
 	if (cfg["ctrl"].to_bool())
 		mods |= KMOD_CTRL;
 	if (cfg["cmd"].to_bool())
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		mods |= KMOD_GUI;
-#else
-		mods |= KMOD_META;
-#endif
 	if (cfg["alt"].to_bool())
 		mods |= KMOD_ALT;
 
 	base->set_mods(mods);
 	base->set_command(cfg["command"].str());
+
+	cfg["disabled"].to_bool() ? base->disable() : base->enable();
 
 	return base;
 }
@@ -287,7 +266,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 
 const std::string hotkey_mouse::get_name_helper() const
 {
-	return "mouse " + lexical_cast<std::string>(button_);
+	return "mouse " + std::to_string(button_);
 }
 
 void hotkey_mouse::save_helper(config &item) const
@@ -316,11 +295,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 	}
 
 	SDL_Scancode code;
-#if  SDL_VERSION_ATLEAST(2, 0, 0)
 	code = event.key.keysym.scancode;
-#else
-	code = SDL_GetScancodeFromKey(event.key.keysym.sym);
-#endif
 
 	if (code != scancode_) {
 		return false;
@@ -349,7 +324,7 @@ void hotkey_keyboard::save_helper(config &item) const
 
 bool has_hotkey_item(const std::string& command)
 {
-	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
+	for (hotkey_ptr item : hotkeys_) {
 		if (item->get_command() == command) {
 			return true;
 		}
@@ -389,7 +364,7 @@ void add_hotkey(const hotkey_ptr item)
 	if (!hotkeys_.empty()) {
 		hotkeys_.erase(
 				std::remove_if(hotkeys_.begin(), hotkeys_.end(),
-						boost::bind(&hotkey_base::bindings_equal, _1, (item))),
+						std::bind(&hotkey_base::bindings_equal, _1, (item))),
 				hotkeys_.end());
 	}
 
@@ -399,9 +374,13 @@ void add_hotkey(const hotkey_ptr item)
 
 void clear_hotkeys(const std::string& command)
 {
-	BOOST_FOREACH(hotkey::hotkey_ptr item, hotkeys_) {
-		if (item->get_command() == command) {
-			item->clear();
+	for (hotkey::hotkey_ptr item : hotkeys_) {
+		if (item->get_command() == command)
+		{
+			if (item->is_default())
+				item->disable();
+			else
+				item->clear();
 		}
 	}
 }
@@ -413,7 +392,7 @@ void clear_hotkeys()
 
 const hotkey_ptr get_hotkey(const SDL_Event &event)
 {
-	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
+	for (hotkey_ptr item : hotkeys_) {
 		if (item->matches(event)) {
 			return item;
 		}
@@ -423,7 +402,7 @@ const hotkey_ptr get_hotkey(const SDL_Event &event)
 
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
-	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey")) {
+	for (const config &hk : cfg.child_range("hotkey")) {
 
 		hotkey_ptr item = load_from_config(hk);
 		if (!set_as_default) {
@@ -460,8 +439,9 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	BOOST_FOREACH(hotkey_ptr item, hotkeys_) {
-		if (!item->is_default()) {
+	for (hotkey_ptr item : hotkeys_) {
+		if ((!item->is_default() && item->active()) ||
+			(item->is_default() && item->is_disabled())) {
 			item->save(cfg.add_child("hotkey"));
 		}
 	}
@@ -469,10 +449,10 @@ void save_hotkeys(config& cfg)
 
 std::string get_names(std::string id)
 {
-
+	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
-	BOOST_FOREACH(const hotkey::hotkey_ptr item, hotkeys_) {
-		if (item->get_command() == id && (!item->null())) {
+	for (const hotkey::hotkey_ptr item : hotkeys_) {
+		if (item->get_command() == id && !item->null() && !item->is_disabled()) {
 			names.push_back(item->get_name());
 		}
 	}

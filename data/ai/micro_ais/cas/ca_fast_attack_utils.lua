@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
+local T = H.set_wml_tag_metatable{}
 
 -- Functions to perform fast evaluation of attacks and attack combinations.
 -- The emphasis with all of this is on speed, not elegance.
@@ -19,31 +20,156 @@ function ca_fast_attack_utils.get_avoid_map(cfg)
     -- Get map of locations to be avoided.
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
     -- If neither is given, return an empty location set.
-    -- Note that ai.get_avoid() cannot be used as it always returns an array,
-    -- even when the aspect is not set, and an empty array could also mean that
-    -- no hexes match the filter
 
-    local avoid_tag
+    local avoid_tag = H.get_child(cfg, "avoid")
 
-    if cfg.avoid then
-        avoid_tag = cfg.avoid
+    if not avoid_tag then
+        return LS.of_pairs(ai.aspects.avoid)
+    end
+
+    return LS.of_pairs(wesnoth.get_locations(avoid_tag))
+end
+
+local function attack_filter(which, filter, is_leader)
+    if (which == 'leader') then
+        which = 'own'
+        is_leader = true
+    end
+    if (which == 'own') then
+        return {
+            side = wesnoth.current.side,
+            canrecruit = is_leader,
+            { "and", filter or {} }
+        }
+    elseif (which == 'enemy') then
+        return {
+            T.filter_side { T.enemy_of { side = wesnoth.current.side } },
+            { "not", filter or {} }
+        }
     else
+        return filter
+    end
+end
+
+ca_fast_attack_utils.build_attack_filter = attack_filter
+
+local function get_attack_filter_from_aspect(aspect, which, data, is_leader)
+    if (aspect.name == "composite_aspect") then
+        --print("Found composite aspect")
+        for facet in H.child_range(aspect, 'facet') do
+            local active = true
+            if facet.turns then
+                active = false
+                local turns = AH.split(facet.turns)
+                local current_turn = tostring(wesnoth.current.turn)
+                --print("Found facet with turns requirement (current turn is '" .. current_turn .. "')")
+                for i,v in ipairs(turns) do
+                    if current_turn == v then
+                        --print("  Matched with '" .. v .. "'")
+                        active = true
+                        break
+                    end
+                end
+            end
+            if facet.time_of_day then
+                active = false
+                local times = AH.split(facet.time_of_day)
+                local current_time = wesnoth.get_time_of_day().id
+                --print("Found facet with time requirement (current time is '" .. current_time .. "')")
+                for i,v in ipairs(times) do
+                    if current_time == v then
+                        --print("  Matched with '" .. v .. "'")
+                        active = true
+                        break
+                    end
+                end
+            end
+            if active then
+                return get_attack_filter_from_aspect(facet, which, data, is_leader)
+            end
+        end
+    elseif (aspect.name == "lua_aspect") then
+        --print("Found lua aspect")
+        local filter = loadstring(aspect.code)(nil, H.get_child(aspect, 'args'), data)
+        if (type(filter[which]) == 'function') then
+            temporary_attacks_filter_fcn = filter[which]
+            local units = wesnoth.get_units(attack_filter(which, {
+                lua_function = 'temporary_attacks_filter_fcn'
+            }, is_leader))
+            temporary_attacks_filter_fcn = nil
+            return units
+        else
+            return wesnoth.get_units(attack_filter(which, filter[which], is_leader))
+        end
+    else -- Standard attacks aspect (though not name=standard_aspect)
+        --print("Found standard aspect")
+        return wesnoth.get_units(attack_filter(which,
+            H.get_child(aspect, 'filter_' .. which), is_leader))
+    end
+    return wesnoth.get_units(attack_filter(which, {}, is_leader))
+end
+
+function ca_fast_attack_utils.get_attackers(data, which)
+    local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+    for aspect in H.child_range(ai_tag, 'aspect') do
+        if (aspect.id == 'attacks') then
+            if (which == 'leader') then
+                return get_attack_filter_from_aspect(aspect, 'own', data, true)
+            else
+                return get_attack_filter_from_aspect(aspect, which, data)
+            end
+        end
+    end
+    return {}
+end
+
+--[[
+This is a benchmarking function to compare the old, incorrect method of
+fetching the attacks aspect to the new method and the standard method.
+It's meant to be called from the Lua console.
+
+Example usage:
+$ my_ai = wesnoth.debug_ai(1).ai
+$ FAU = wesnoth.dofile "ai/micro_ais/cas/ca_fast_attack_utils.lua"
+$ FAU.test_attacks(my_ai, 2000)
+]]
+function ca_fast_attack_utils.test_attacks(my_ai, times)
+    local t1, t2 = os.clock()
+    for i = 1,times do
+        my_ai.get_attacks()
+    end
+    t2 = os.clock()
+    print("get_attacks() executed in average time " .. (os.difftime(t2,t1) / times))
+    t1 = os.clock()
+    for i = 1,times do
         local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
         for aspect in H.child_range(ai_tag, 'aspect') do
-            if (aspect.id == 'avoid') then
+            if (aspect.id == 'attacks') then
                 local facet = H.get_child(aspect, 'facet')
                 if facet then
-                    avoid_tag = H.get_child(facet, 'value')
+                    wesnoth.get_units{
+                        side = wesnoth.current.side,
+                        canrecruit = false,
+                        { "and", H.get_child(facet, 'filter_own') }
+                    }
+                    wesnoth.get_units{
+                        side = wesnoth.current.side,
+                        canrecruit = false,
+                        { "and", H.get_child(facet, 'filter_enemy') }
+                    }
                 end
             end
         end
     end
-
-    if avoid_tag then
-        return LS.of_pairs(wesnoth.get_locations(avoid_tag))
-    else
-        return LS.create()
+    t2 = os.clock()
+    print("original sloppy method executed in time " .. (os.difftime(t2,t1) / times))
+    t1 = os.clock()
+    for i = 1,times do
+        ca_fast_attack_utils.get_attackers(nil, "own", false)
+        ca_fast_attack_utils.get_attackers(nil, "enemy", false)
     end
+    t2 = os.clock()
+    print("new method executed in time " .. (os.difftime(t2,t1) / times))
 end
 
 function ca_fast_attack_utils.gamedata_setup()

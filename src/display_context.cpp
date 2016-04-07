@@ -14,13 +14,11 @@
 
 #include "display_context.hpp"
 
-#include "map.hpp"
-#include "map_location.hpp"
+#include "map/map.hpp"
+#include "map/location.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
-
-#include <boost/foreach.hpp>
+#include "units/unit.hpp"
+#include "units/map.hpp"
 
 std::vector<std::string>& display_context::hidden_label_categories_ref() {
 	return const_cast<std::vector<std::string>&>(this->hidden_label_categories());
@@ -31,7 +29,7 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 	map_location adjs[6];
 	get_adjacent_tiles(loc,adjs);
 
-	BOOST_FOREACH(const map_location &u_loc, adjs)
+	for (const map_location &u_loc : adjs)
 	{
 		unit_map::const_iterator u_it = units().find(u_loc);
 		if (!u_it.valid()) {
@@ -54,10 +52,10 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 
 const unit * display_context::get_visible_unit(const map_location & loc, const team &current_team, bool see_all) const
 {
-	if (!map().on_board(loc)) return NULL;
+	if (!map().on_board(loc)) return nullptr;
 	const unit_map::const_iterator u = units().find(loc);
 	if (!u.valid() || !u->is_visible_to_team(current_team, map(), see_all)) {
-		return NULL;
+		return nullptr;
 	}
 	return &*u;
 }
@@ -119,7 +117,7 @@ int display_context::village_owner(const map_location& loc) const
  */
 bool display_context::is_observer() const
 {
-	BOOST_FOREACH(const team &t, teams()) {
+	for (const team &t : teams()) {
 		if (t.is_local())
 			return false;
 	}
@@ -132,7 +130,7 @@ bool display_context::is_observer() const
 int display_context::side_units(int side) const
 {
 	int res = 0;
-	BOOST_FOREACH(const unit &u, units()) {
+	for (const unit &u : units()) {
 		if (u.side() == side) ++res;
 	}
 	return res;
@@ -141,7 +139,7 @@ int display_context::side_units(int side) const
 int display_context::side_units_cost(int side) const
 {
 	int res = 0;
-	BOOST_FOREACH(const unit &u, units()) {
+	for (const unit &u : units()) {
 		if (u.side() == side) res += u.cost();
 	}
 	return res;
@@ -150,7 +148,7 @@ int display_context::side_units_cost(int side) const
 int display_context::side_upkeep(int side) const
 {
 	int res = 0;
-	BOOST_FOREACH(const unit &u, units()) {
+	for (const unit &u : units()) {
 		if (u.side() == side) res += u.upkeep();
 	}
 	return res;

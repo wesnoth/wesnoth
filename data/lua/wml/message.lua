@@ -5,24 +5,41 @@ local location_set = wesnoth.require "lua/location_set.lua"
 local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
-	wesnoth.wml_actions.wml_message({
-		message = msg,
-		logger = level,
-	})
+	wesnoth.log(level, msg, true)
 end
 
 local function get_image(cfg, speaker)
 	local image = cfg.image
+	local left_side = true
+	
+	if image == "~RIGHT()" then
+		image = nil
+		left_side = false
+	end
 
-	if speaker and image == nil then
+	if speaker and (image == nil or image == "") then
 		image = speaker.portrait
 	end
 
 	if image == "none" or image == nil then
-		return ""
+		return "", true
 	end
 
-	return image
+	if image:find("~RIGHT%(%)") then
+		left_side = false
+		-- The percent signs escape the parentheses for a literal match
+		image = image:gsub("~RIGHT%(%)", "")
+	end
+
+	if image:find("~LEFT%(%)") then
+		-- This currently overrides ~RIGHT()
+		-- Use if a portrait defaults to ~RIGHT(),
+		-- or in [unit_type] to force it to left.
+		left_side = true
+		image = image:gsub("~LEFT%(%)", "")
+	end
+
+	return image, left_side
 end
 
 local function get_caption(cfg, speaker)
@@ -53,16 +70,8 @@ local function get_speaker(cfg)
 end
 
 local function message_user_choice(cfg, speaker, options, text_input)
-	local image = get_image(cfg, speaker)
+	local image, left_side = get_image(cfg, speaker)
 	local caption = get_caption(cfg, speaker)
-
-	local left_side = true
-	-- If this doesn't work, might need tostring()
-	if image:find("~RIGHT()") then
-		left_side = false
-		-- The percent signs escape the parentheses for a literal match
-		image = image:gsub("~RIGHT%(%)", "")
-	end
 
 	local msg_cfg = {
 		left_side = left_side,
@@ -142,7 +151,8 @@ function wesnoth.wml_actions.message(cfg)
 			if option.message and not option.image and not option.label then
 				local message = tostring(option.message)
 				if message:find("&") or message:find("=") or message:find("*") == 1 then
-					wesnoth.wml_actions.deprecated_message{message = '[option]message="&image=col1=col2" is deprecated, use new DescriptionWML instead (default, image, label, description)'}
+					-- Perhaps someday this should be promoted from "debug" to "warning", but for now, we're keeping it quiet.
+					log('[option]message="&image=col1=col2" is deprecated, use new DescriptionWML instead (default, image, label, description)', "debug")
 				end
 				-- Legacy format
 				table.insert(options, option.message)
@@ -205,6 +215,8 @@ function wesnoth.wml_actions.message(cfg)
 		-- No matching unit found, continue onto the next message
 		log("No speaker found for [message]", "debug")
 		return
+	elseif cfg.highlight == false then
+		-- Nothing to do here
 	elseif speaker == "narrator" then
 		-- Narrator, so deselect units
 		wesnoth.deselect_hex()
@@ -216,7 +228,7 @@ function wesnoth.wml_actions.message(cfg)
 			wesnoth.scroll_to_tile(speaker.x, speaker.y)
 		end
 
-		wesnoth.select_hex(speaker.x, speaker.y, true)
+		wesnoth.highlight_hex(speaker.x, speaker.y)
 		wesnoth.fire("redraw")
 	end
 

@@ -21,8 +21,6 @@
 
 #include "config.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace schema_validation{
 
 /*WIKI
@@ -82,15 +80,15 @@ class_tag::class_tag(const config & cfg)
 		if (cfg.has_attribute("super")){
 			super_ = cfg["super"].str();
 		}
-		BOOST_FOREACH(const config &child, cfg.child_range("tag")) {
+		for (const config &child : cfg.child_range("tag")) {
 			class_tag child_tag (child);
 			add_tag(child_tag);
 		}
-		BOOST_FOREACH(const config &child, cfg.child_range("key")) {
+		for (const config &child : cfg.child_range("key")) {
 			class_key child_key (child);
 			add_key(child_key);
 		}
-		BOOST_FOREACH(const config &link, cfg.child_range("link")) {
+		for (const config &link : cfg.child_range("link")) {
 			std::string link_name = link["name"].str();
 			add_link(link_name);
 		}
@@ -112,7 +110,7 @@ const class_key * class_tag::find_key(const std::string &name) const{
 	if ( it_keys!= keys_.end() ){
 		return &(it_keys->second);
 	}
-	return NULL;
+	return nullptr;
 }
 
 const std::string * class_tag::find_link(const std::string &name) const{
@@ -120,12 +118,12 @@ const std::string * class_tag::find_link(const std::string &name) const{
 	if ( it_links!= links_.end() ){
 		return &(it_links->second);
 	}
-	return NULL;
+	return nullptr;
 }
 
 const class_tag * class_tag::find_tag(const std::string &fullpath,
 									   const class_tag &root) const{
-	 if (fullpath.empty()) return NULL;
+	 if (fullpath.empty()) return nullptr;
 	 std::string::size_type pos = fullpath.find('/');
 	 std::string name;
 	 std::string next_path;
@@ -147,7 +145,7 @@ const class_tag * class_tag::find_tag(const std::string &fullpath,
 	 if (it_links != links_.end()){
 		 return root.find_tag(it_links->second + "/" +next_path,root);
 	 }
-	 return NULL;
+	 return nullptr;
 
  }
 
@@ -228,7 +226,7 @@ void class_tag::printl(std::ostream &os,int level, int step){
 
  class_tag * class_tag::find_tag(const std::string &fullpath,
 									   class_tag &root) {
-	 if (fullpath.empty()) return NULL;
+	 if (fullpath.empty()) return nullptr;
 	 std::string::size_type pos = fullpath.find('/');
 	 std::string name;
 	 std::string next_path;
@@ -251,7 +249,7 @@ void class_tag::printl(std::ostream &os,int level, int step){
 	 if (it_links != links_.end()){
 		 return root.find_tag(it_links->second +"/" +next_path,root);
 	 }
-	 return NULL;
+	 return nullptr;
 
  }
 // class_tag & class_tag::operator= (class_tag const& t){

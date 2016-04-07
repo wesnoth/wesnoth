@@ -17,8 +17,13 @@
 
 #include "gui/widgets/container.hpp"
 
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 namespace implementation
 {
@@ -38,13 +43,13 @@ public:
 	/***** ***** ***** inherited ***** ****** *****/
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	virtual void layout_children() override;
 
 	/**
 	 * Gets the current visible layer number.
@@ -67,6 +72,8 @@ public:
 	 * Gets the total number of layers.
 	 */
 	unsigned int get_layer_count() const;
+
+	tgrid* get_layer_grid(unsigned int i);
 
 private:
 	/**
@@ -97,11 +104,46 @@ private:
 	void select_layer_internal(const unsigned int layer, const bool select) const;
 
 	/** See @ref tcontrol::get_control_type. */
-	virtual const std::string& get_control_type() const OVERRIDE;
+	virtual const std::string& get_control_type() const override;
 
 	/** See @ref tcontainer_::set_self_active. */
-	virtual void set_self_active(const bool active) OVERRIDE;
+	virtual void set_self_active(const bool active) override;
 };
+
+// }---------- DEFINITION ---------{
+
+struct tstacked_widget_definition : public tcontrol_definition
+{
+	explicit tstacked_widget_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		explicit tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
+// }---------- BUILDER -----------{
+
+namespace implementation
+{
+
+struct tbuilder_stacked_widget : public tbuilder_control
+{
+	explicit tbuilder_stacked_widget(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	/** The builders for all layers of the stack .*/
+	std::vector<tbuilder_grid_const_ptr> stack;
+};
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2
 

@@ -21,8 +21,8 @@ struct overlay
 {
 
 	overlay(const std::string& img, const std::string& halo_img,
-			halo::handle handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
-					team_name(overlay_team_name), halo_handle(handle) , visible_in_fog(fogged)
+			halo::handle handle, const std::string& overlay_team_name, const std::string& item_id, const bool fogged) : image(img), halo(halo_img),
+					team_name(overlay_team_name), id(item_id), halo_handle(handle) , visible_in_fog(fogged)
 	{}
 
 

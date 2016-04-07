@@ -41,7 +41,6 @@ void the_end(CVideo &video, std::string text, unsigned int duration)
 	SDL_Rect area = screen_area();
 	sdl::fill_rect(video.getSurface(),&area,0);
 
-	update_whole_screen();
 	video.flip();
 
 	const size_t font_size = font::SIZE_XLARGE;
@@ -54,7 +53,7 @@ void the_end(CVideo &video, std::string text, unsigned int duration)
 		if(n)
 			sdl::fill_rect(video.getSurface(),&area,0);
 
-		const SDL_Color col = create_color(n, n, n, n);
+		const SDL_Color col = create_color(uint8_t(n), uint8_t(n), uint8_t(n), uint8_t(n));
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
 

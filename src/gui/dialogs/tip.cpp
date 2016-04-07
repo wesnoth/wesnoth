@@ -17,7 +17,7 @@
 #include "gui/dialogs/tip.hpp"
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/popup.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -101,10 +101,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tpopup. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 };
 
-void ttip::pre_show(CVideo& /*video*/, twindow& window)
+void ttip::pre_show(twindow& window)
 {
 	find_widget<tcontrol>(&window, "label", false).set_label(message_);
 

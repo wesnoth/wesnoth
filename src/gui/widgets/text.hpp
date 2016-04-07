@@ -15,13 +15,13 @@
 #ifndef GUI_WIDGETS_TEXT_HPP_INCLUDED
 #define GUI_WIDGETS_TEXT_HPP_INCLUDED
 
-//#include "gui/auxiliary/event/dispatcher.hpp"
+//#include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/control.hpp"
-#include "../../text.hpp"
+#include "../../text.hpp" // We want the file in src/
 
 #include <string>
 
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
 
 namespace gui2
 {
@@ -47,13 +47,13 @@ public:
 	ttext_();
 
 	/** See @ref tcontrol::set_active. */
-	virtual void set_active(const bool active) OVERRIDE;
+	virtual void set_active(const bool active) override;
 
 	/** See @ref tcontrol::get_active. */
-	virtual bool get_active() const OVERRIDE;
+	virtual bool get_active() const override;
 
 	/** See @ref tcontrol::get_state. */
-	virtual unsigned get_state() const OVERRIDE;
+	virtual unsigned get_state() const override;
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
@@ -85,7 +85,7 @@ public:
 
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
-			boost::function<void(ttext_* textbox, const std::string text)> cb)
+			std::function<void(ttext_* textbox, const std::string text)> cb)
 	{
 		text_changed_callback_ = cb;
 	}
@@ -434,7 +434,7 @@ private:
 	 * - The widget invoking the callback
 	 * - The new text of the textbox.
 	 */
-	boost::function<void(ttext_* textbox, const std::string text)>
+	std::function<void(ttext_* textbox, const std::string text)>
 	text_changed_callback_;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

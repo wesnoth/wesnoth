@@ -19,15 +19,15 @@
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for add_chat_message, add_observer, etc
-#include "formula_string_utils.hpp"     // for vgettext
+#include "formula/string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"             // for game_display
 #include "game_end_exceptions.hpp"      // for end_level_exception, etc
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "make_enum.hpp"                // for bad_enum_cast
-#include "map_label.hpp"
+#include "utils/make_enum.hpp"                // for bad_enum_cast
+#include "map/label.hpp"
 #include "network.hpp"                  // for error
 #include "play_controller.hpp"          // for play_controller
 #include "playturn_network_adapter.hpp"  // for playturn_network_adapter
@@ -41,11 +41,10 @@
 #include "whiteboard/manager.hpp"       // for manager
 #include "widgets/button.hpp"           // for button
 
-#include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
 #include <cstdlib>                     // for atoi
-#include <ctime>                        // for time, NULL
+#include <ctime>                        // for time
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector
 
@@ -105,7 +104,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t)
 
 void turn_info::do_save()
 {
-	if (resources::controller != NULL) {
+	if (resources::controller != nullptr) {
 		resources::controller->do_autosave();
 	}
 }
@@ -139,13 +138,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &msg = cfg.child("message"))
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), msg["sender"], msg["side"],
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), msg["sender"], msg["side"],
 				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + msg["sender"].str(), 0,
 				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
@@ -257,7 +256,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
-			BOOST_FOREACH(const std::string &ob, resources::screen->observers())
+			for (const std::string &ob : resources::screen->observers())
 			{
 				t_vars["player"] = ob;
 				options.push_back(vgettext("Replace with $player", t_vars));
@@ -267,7 +266,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			const team &tm = resources::gameboard->teams()[index];
 
 			//get all allies in as options to transfer control
-			BOOST_FOREACH(const team &t, resources::gameboard->teams())
+			for (const team &t : resources::gameboard->teams())
 			{
 				if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())

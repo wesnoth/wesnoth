@@ -51,11 +51,10 @@ todo co resto da comunidade.
 Establece a cantidade de bits por píxel. Por exemplo: \fB\-\-bpp 32\fP.
 .TP 
 \fB\-c, \-\-campaign \ [<identificador da campaña>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-as well, otherwise the game will take the campaign/scenario id as the data
-dir.
+Ir directamente á campaña indicada co identificador indicado. Se non se
+indica un identificador, aparecerá un menú de escolla. \fBNota:\fP ao empregar
+esta opción asegúrese tamén de indicar o directorio dos datos como argumento
+final, ou asumirase que o identificador é dito directorio.
 .TP 
 \fB\-\-campaign\-difficulty [<dificultade>]\fP
 A dificultade da campaña indicada (do 1 ao máximo). Se non se especificase,
@@ -127,6 +126,9 @@ abaixo. \fB\-\-multiplayer\fP só pode ir seguido destas opcións adicionais.
 Executa o xogo sen atrasos para probas de rendemento gráfico. Isto actívase
 automaticamente con \fB\-\-nogui\fP.
 .TP 
+\fB\-\-noaddons\fP
+disables loading of user addons.
+.TP 
 \fB\-\-nocache\fP
 Desactiva a caché de datos do xogo.
 .TP 
@@ -186,24 +188,27 @@ Os erros de corrección trátanse coma erros graves.
 \fB\-t, \-\-test\fP
 Executa o xogo nun pequeno escenario de proba.
 .TP 
+\fB\-u <scenario id>\fP
+runs the specified test scenario as a unit test.
+.TP 
 \fB\-\-userconfig\-dir\fP\fI\ nome\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+Define \fInome\fP coma o nome do cartafol da configuración do usuario no seu
+directorio persoal («$HOME») ou «Os meus documentos\eOs meus xogos» en
+Windows. Tamén podes indicar unha ruta absoluta para o directorio da
+configuración fóra dos antes mencionados. En Windows tamén podes prefixar a
+ruta con ".\e" or "..\e " para indicar un cartafol relativo ao cartafol de
+traballo do proceso. En X11 o cartafol predeterminado é «$XDG_CONFIG_HOME»
+ou «$HOME/.config/wesnoth», noutros sistemas é a ruta de datos do usuario.
 .TP 
 \fB\-\-userconfig\-path\fP
 Devolve a ruta do directorio da configuración do usuario.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nome\fP
-sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
-Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games". On Windows it is
-also possible to specify a directory relative to the process working
-directory by using path starting with ".\e" or "..\e".
+Define \fInome\fP coma o nome do cartafol dos datos do usuario no seu cartafol
+persoal («$HOME») ou «Os meus documentos\eOs meus xogos» en Windows. Tamén
+podes indicar unha ruta absoluta para o cartafol dos datos fóra dos antes
+mencionados. En Windows tamén podes prefixar a ruta con ".\e" or "..\e "
+para indicar un cartafol relativo ao cartafol de traballo do proceso.
 .TP 
 \fB\-\-userdata\-path\fP
 Devolve a ruta do directorio dos datos do usuario.
@@ -300,7 +305,7 @@ Visite o sitio web oficial: http://www.wesnoth.org/
 .
 .SH "DEREITOS DE AUTOR"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2016, David White <davidnwhite@verizon.net>
 .br
 Isto é software libre. Este software está protexido polos termos da versión
 2 da licenza GNU GPL, tal e como foi publicada pola Free Software

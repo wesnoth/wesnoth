@@ -41,7 +41,7 @@ widget::widget(const widget &o)
 }
 
 widget::widget(CVideo& video, const bool auto_join)
-	: sdl_handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
+	: events::sdl_handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
 	  clip_rect_(EmptyRect), volatile_(false), help_string_(0), mouse_lock_local_(false)
 {
@@ -103,7 +103,7 @@ void widget::update_location(SDL_Rect const &rect)
 
 const SDL_Rect* widget::clip_rect() const
 {
-	return clip_ ? &clip_rect_ : NULL;
+	return clip_ ? &clip_rect_ : nullptr;
 }
 
 void widget::bg_register(SDL_Rect const &rect)
@@ -343,13 +343,22 @@ void widget::process_tooltip_string(int mousex, int mousey)
 }
 
 void widget::handle_event(SDL_Event const &event) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	if (event.type == SDL_WINDOWEVENT) {
+	if (event.type == DRAW_ALL_EVENT) {
 		set_dirty();
+		draw();
 	}
-#else
-	UNUSED(event);
-#endif
+}
+
+void widget::handle_window_event(SDL_Event const &event) {
+	if (event.type == SDL_WINDOWEVENT) {
+		switch (event.window.event) {
+		case SDL_WINDOWEVENT_RESIZED:
+		case SDL_WINDOWEVENT_RESTORED:
+		case SDL_WINDOWEVENT_SHOWN:
+		case SDL_WINDOWEVENT_EXPOSED:
+			set_dirty();
+		}
+	}
 }
 
 

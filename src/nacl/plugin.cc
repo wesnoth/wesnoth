@@ -64,7 +64,7 @@ class PluginInstance : public pp::Instance {
 
   ~PluginInstance() {
     if (sdl_main_thread_) {
-      pthread_join(sdl_main_thread_, NULL);
+      pthread_join(sdl_main_thread_, nullptr);
     }
   }
 
@@ -85,7 +85,7 @@ class PluginInstance : public pp::Instance {
       // Perhaps it must be called from the main thread?
       int lval = SDL_Init(SDL_INIT_AUDIO);
       assert(lval >= 0);
-      if (0 == pthread_create(&sdl_main_thread_, NULL, sdl_thread_static, this)) {
+      if (0 == pthread_create(&sdl_main_thread_, nullptr, sdl_thread_static, this)) {
         sdl_thread_started_ = true;
       }
     }
@@ -182,10 +182,10 @@ class PluginInstance : public pp::Instance {
     // Finally, launch the game.
     char res_s[100];
     snprintf(res_s, sizeof(res_s), "%dx%d", width_, height_);
-    static char const * argv[] = {"wesnoth", "-r", res_s, NULL};
+    static char const * argv[] = {"wesnoth", "-r", res_s, nullptr};
     printf("starting game thread: %s\n", res_s);
     wesnoth_main(sizeof(argv) / sizeof(*argv) - 1, (char**)argv);
-    return NULL;
+    return nullptr;
   }
 
   class ProgressHandler : public HTTP2ProgressHandler {

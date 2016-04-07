@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include "config_assign.hpp"
 #include "playsingle_controller.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -42,48 +41,33 @@ struct replay_play_nostop : public replay_controller::replay_stop_condition
 	virtual bool should_stop() { return false; }
 };
 
-struct replay_play_moves_base : public replay_controller::replay_stop_condition
+struct replay_play_moves : public replay_controller::replay_stop_condition
 {
 	int moves_todo_;
-	bool started_;
-	replay_play_moves_base(int moves_todo, bool started = true) : moves_todo_(moves_todo), started_(started) {}
-	virtual void move_done() { if(started_) { --moves_todo_; } }
+	replay_play_moves(int moves_todo) : moves_todo_(moves_todo) {}
+	virtual void move_done() { --moves_todo_; }
 	virtual bool should_stop() { return moves_todo_ == 0; }
-	void start() { started_ = true; }
 };
 
-struct replay_play_moves : public replay_play_moves_base
-{
-	replay_play_moves(int moves_todo) : replay_play_moves_base(moves_todo, true) {}
-};
-
-struct replay_play_turn : public replay_play_moves_base
+struct replay_play_turn : public replay_controller::replay_stop_condition
 {
 	int turn_begin_;
-	replay_play_turn(int turn_begin) : replay_play_moves_base(1, false), turn_begin_(turn_begin) {}
-	virtual void new_side_turn(int , int turn)
-	{
-		if (turn != turn_begin_) {
-			start();
-		}
-	}
+	int turn_current_;
+	replay_play_turn(int turn_begin) : turn_begin_(turn_begin), turn_current_(turn_begin) {}
+	virtual void new_side_turn(int , int turn) { turn_current_ = turn; }
+	virtual bool should_stop() { return turn_begin_ != turn_current_; }
 };
 
-struct replay_play_side : public replay_play_moves_base
+struct replay_play_side : public replay_controller::replay_stop_condition
 {
-	int turn_begin_;
-	int side_begin_;
-	replay_play_side(int turn_begin, int side_begin) : replay_play_moves_base(1, false), turn_begin_(turn_begin), side_begin_(side_begin) {}
-	virtual void new_side_turn(int side , int turn)
-	{
-		if (turn != turn_begin_ || side != side_begin_) {
-			start();
-		}
-	}
+	bool next_side_;
+	replay_play_side() : next_side_(false) {}
+	virtual void new_side_turn(int , int) { next_side_ = true; }
+	virtual bool should_stop() { return next_side_; }
 };
 }
 
-replay_controller::replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const boost::function<void()>& on_end_replay)
+replay_controller::replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay)
 	: controller_(controller)
 	, stop_condition_(new replay_stop_condition())
 	, disabler_()
@@ -96,6 +80,7 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 		vision_ = HUMAN_TEAM;
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
+	controller_.get_display().create_buttons();
 	controller_.get_display().redraw_everything();
 }
 replay_controller::~replay_controller()
@@ -104,6 +89,7 @@ replay_controller::~replay_controller()
 		controller_.toggle_skipping_replay();
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
+	controller_.get_display().create_buttons();
 	controller_.get_display().redraw_everything();
 }
 void replay_controller::add_replay_theme()
@@ -265,7 +251,7 @@ void replay_controller::replay_next_turn()
 
 void replay_controller::replay_next_side()
 {
-	stop_condition_.reset(new replay_play_side(controller_.gamestate().tod_manager_.turn(), controller_.current_side()));
+	stop_condition_.reset(new replay_play_side());
 }
 
 void replay_controller::replay_next_move()
@@ -308,7 +294,6 @@ bool replay_controller::recorder_at_end() const
 
 REPLAY_RETURN replay_controller::play_side_impl()
 {
-	stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());
 	while(!return_to_play_side_ && !static_cast<playsingle_controller&>(controller_).get_player_type_changed())
 	{
 		if(!stop_condition_->should_stop())
@@ -326,7 +311,11 @@ REPLAY_RETURN replay_controller::play_side_impl()
 					return res;
 				}
 				if(res == REPLAY_RETURN_AT_END) {
-					new replay_stop_condition();
+					stop_replay();
+				}
+				if(res == REPLAY_FOUND_INIT_TURN)
+				{
+					stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());
 				}
 			}
 			controller_.play_slice(false);

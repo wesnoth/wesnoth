@@ -20,8 +20,8 @@
 #include <map>
 #include <vector>
 
-#include "SDL.h"
-#include "../sdl/utils.hpp"
+#include <SDL.h>
+#include "sdl/utils.hpp"
 #include "scrollarea.hpp"
 
 namespace gui {

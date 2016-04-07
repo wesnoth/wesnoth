@@ -23,8 +23,7 @@
 
 #include <SDL_image.h>
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 #include <iostream>
 
@@ -92,7 +91,7 @@ create_image_blend(const surface& src, const std::string& root)
 {
 	blend_image(
 			  src
-			, boost::bind(&create_image_blend_functor, _1, root, _2, _3));
+			, std::bind(&create_image_blend_functor, _1, root, _2, _3));
 }
 
 typedef void (*tfunctor) (const surface&, const std::string&);
@@ -129,7 +128,7 @@ main(int argc, char* argv[])
 		}
 	}
 
-	BOOST_FOREACH(const tcreator& creator, creators) {
+	for(const tcreator& creator : creators) {
 		if(!filesystem::make_directory(root + creator.first)) {
 			std::cerr << "";
 			return EXIT_FAILURE;
@@ -139,7 +138,7 @@ main(int argc, char* argv[])
 	try {
 		const surface base_image = create_image_base(root + "/base.png");
 
-		BOOST_FOREACH(const tcreator& creator, creators) {
+		for(const tcreator& creator : creators) {
 			creator.second(base_image, root + creator.first);
 		}
 

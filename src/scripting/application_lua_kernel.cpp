@@ -48,8 +48,7 @@
 #include <string>
 #include <utility>
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 #include <boost/make_shared.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/range/adaptors.hpp>
@@ -181,7 +180,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 
 		throw game::lua_error(msg, context);
 	}
-	if (!lua_kernel_base::protected_call(T, 0, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 		throw game::lua_error("Error when executing a script to make a lua thread.");
 	}
 	if (!lua_isfunction(T, -1)) {
@@ -198,7 +197,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_file(c
 
 	lua_pushstring(T, file.c_str());
 	lua_fileops::load_file(T);
-	if (!lua_kernel_base::protected_call(T, 0, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+	if (!lua_kernel_base::protected_call(T, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 		throw game::lua_error("Error when executing a file to make a lua thread.");
 	}
 	if (!lua_isfunction(T, -1)) {
@@ -271,9 +270,9 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	// Now we have to create the context object. It is arranged as a table of boost functions.
 	boost::shared_ptr<lua_context_backend> this_context_backend = boost::make_shared<lua_context_backend> (lua_context_backend());
 	lua_newtable(T_); // this will be the context table
-	BOOST_FOREACH( const std::string & key, ctxt.callbacks_ | boost::adaptors::map_keys ) {
+	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());
-		lua_cpp::push_function(T_, boost::bind(&impl_context_backend, _1, this_context_backend, key));
+		lua_cpp::push_function(T_, std::bind(&impl_context_backend, _1, this_context_backend, key));
 		lua_settable(T_, -3);
 	}
 
@@ -282,16 +281,16 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	lua_pushstring(T_, "name");
 	lua_pushstring(T_, ctxt.name_.c_str());
 	lua_settable(T_, -3);
-	BOOST_FOREACH( const plugins_context::accessor_list::value_type & v, ctxt.accessors_) {
+	for (const plugins_context::accessor_list::value_type & v : ctxt.accessors_) {
 		const std::string & key = v.first;
 		const plugins_context::accessor_function & func = v.second;
 		lua_pushstring(T_, key.c_str());
-		lua_cpp::push_function(T_, boost::bind(&impl_context_accessor, _1, this_context_backend, func));
+		lua_cpp::push_function(T_, std::bind(&impl_context_accessor, _1, this_context_backend, func));
 		lua_settable(T_, -3);
 	}
 
 	// Now we resume the function, calling the coroutine with the three arguments (events, context, info).
-	lua_resume(T_, NULL, 3);
+	lua_resume(T_, nullptr, 3);
 
 	started_ = true;
 
@@ -323,8 +322,8 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	application_lua_kernel::request_list results;
 
-	BOOST_FOREACH( const plugins_manager::event & req, this_context_backend->requests) {
-		results.push_back(boost::bind(ctxt.callbacks_.find(req.name)->second, req.data));
+	for (const plugins_manager::event & req : this_context_backend->requests) {
+		results.push_back(std::bind(ctxt.callbacks_.find(req.name)->second, req.data));
 		//results.push_back(std::make_pair(ctxt.callbacks_.find(req.name)->second, req.data));
 	}
 	return results;

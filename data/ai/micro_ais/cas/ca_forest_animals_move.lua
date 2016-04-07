@@ -32,12 +32,12 @@ end
 
 local ca_forest_animals_move = {}
 
-function ca_forest_animals_move:evaluation(ai, cfg)
+function ca_forest_animals_move:evaluation(cfg)
     if get_forest_animals(cfg)[1] then return cfg.ca_score end
     return 0
 end
 
-function ca_forest_animals_move:execution(ai, cfg)
+function ca_forest_animals_move:execution(cfg)
     -- These animals run from any enemy
     local forest_animals = get_forest_animals(cfg)
     local enemies = wesnoth.get_units { { "filter_side", { { "enemy_of", {side = wesnoth.current.side } } } } }
@@ -73,7 +73,7 @@ function ca_forest_animals_move:execution(ai, cfg)
         end
 
         -- If no close enemies, do a random move
-        local wander_terrain = cfg.filter_location or {}
+        local wander_terrain = H.get_child(cfg, "filter_location") or {}
         if (not close_enemies[1]) then
             local reach = AH.get_reachable_unocc(unit)
             local width, height = wesnoth.get_map_size()
@@ -156,7 +156,7 @@ function ca_forest_animals_move:execution(ai, cfg)
             if unit and unit.valid
                 and (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2])
             then
-                local command =  "wesnoth.put_unit(x1, y1)"
+                local command =  "wesnoth.erase_unit(x1, y1)"
                 ai.synced_command(command, farthest_hex[1], farthest_hex[2])
             end
         end

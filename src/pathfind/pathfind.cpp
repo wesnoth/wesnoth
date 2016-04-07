@@ -27,14 +27,12 @@
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "units/unit.hpp"
+#include "units/map.hpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
 
 #include <iostream>
 #include <vector>
@@ -78,7 +76,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 		std::set<map_location> tiles_checking;
 		tiles_checking.swap(pending_tiles_to_check);
 		//Iterate over all the hexes we need to check
-		BOOST_FOREACH(const map_location &loc, tiles_checking)
+		for (const map_location &loc : tiles_checking)
 		{
 			// Skip shrouded locations.
 			if ( do_shroud  &&  shroud_check->shrouded(loc) )
@@ -98,7 +96,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 			if (units.find(loc) == units.end() && !pass_check_and_unreachable) return loc;
 			map_location adjs[6];
 			get_adjacent_tiles(loc,adjs);
-			BOOST_FOREACH(const map_location &loc, adjs)
+			for (const map_location &loc : adjs)
 			{
 				if (!map.on_board(loc)) continue;
 				// Add the tile to be checked if it hasn't already been and
@@ -123,7 +121,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 map_location find_vacant_castle(const unit & leader)
 {
 	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
-	                        NULL, &(*resources::teams)[leader.side()-1]);
+	                        nullptr, &(*resources::teams)[leader.side()-1]);
 }
 
 
@@ -244,24 +242,24 @@ namespace {
  *                           destinations. (It is permissible for this to contain
  *                           some hexes that are also in destinations.)
  *
- * @param[in]  teleporter    If not NULL, teleportaion will be considered, using
+ * @param[in]  teleporter    If not nullptr, teleportaion will be considered, using
  *                           this unit's abilities.
- * @param[in]  current_team  If not NULL, enemies of this team can obstruct routes
+ * @param[in]  current_team  If not nullptr, enemies of this team can obstruct routes
  *                           both by occupying hexes and by exerting zones of control.
  *                           In addition, the presence of units can affect
  *                           teleportation options.
- * @param[in]  skirmisher    If not NULL, use this to determine where ZoC can and
+ * @param[in]  skirmisher    If not nullptr, use this to determine where ZoC can and
  *                           cannot be ignored (due to this unit having or not
  *                           having the skirmisher ability).
- *                           If NULL, then ignore all zones of control.
- *                           (No effect if current_team is NULL).
- * @param[in]  viewing_team  If not NULL, use this team's vision when detecting
+ *                           If nullptr, then ignore all zones of control.
+ *                           (No effect if current_team is nullptr).
+ * @param[in]  viewing_team  If not nullptr, use this team's vision when detecting
  *                           enemy units and teleport destinations.
- *                           If NULL, then "see all".
- *                           (No effect if teleporter and current_team are both NULL.)
+ *                           If nullptr, then "see all".
+ *                           (No effect if teleporter and current_team are both nullptr.)
  * @param[in]  jamming_map   The relevant "jamming" of the costs being used
  *                           (currently only used with vision costs).
- * @param[out] full_cost_map If not NULL, build a cost_map instead of destinations.
+ * @param[out] full_cost_map If not nullptr, build a cost_map instead of destinations.
  *                           Destinations is ignored.
  *                           full_cost_map is a vector of pairs. The first entry is the
  *                           cost itself, the second how many units already visited this hex
@@ -272,20 +270,20 @@ static void find_routes(
 		paths::dest_vect & destinations, std::set<map_location> * edges,
 		const unit * teleporter, const team * current_team,
 		const unit * skirmisher, const team * viewing_team,
-		const std::map<map_location, int> * jamming_map=NULL,
-		std::vector<std::pair<int, int> > * full_cost_map=NULL)
+		const std::map<map_location, int> * jamming_map=nullptr,
+		std::vector<std::pair<int, int> > * full_cost_map=nullptr)
 {
 	const gamemap& map = resources::gameboard->map();
 
-	const bool see_all =  viewing_team == NULL;
+	const bool see_all =  viewing_team == nullptr;
 	// When see_all is true, the viewing team never matters, but we still
 	// need to supply one to some functions.
-	if ( viewing_team == NULL )
+	if ( viewing_team == nullptr )
 		viewing_team = &resources::teams->front();
 
 	// Build a teleport map, if needed.
 	const teleport_map teleports = teleporter ?
-			get_teleport_locations(*teleporter, *viewing_team, see_all, current_team == NULL) :
+			get_teleport_locations(*teleporter, *viewing_team, see_all, current_team == nullptr) :
 			teleport_map();
 
 	// Since this is called so often, keep memory reserved for the node list.
@@ -307,7 +305,7 @@ static void find_routes(
 	// If not, ignore it. If yes, initialize the start position.
 	if ( full_cost_map ) {
 		if ( full_cost_map->size() != static_cast<unsigned>(map.w() * map.h()) )
-			full_cost_map = NULL;
+			full_cost_map = nullptr;
 		else {
 			if ( (*full_cost_map)[index(origin)].second == 0 )
 				(*full_cost_map)[index(origin)].first = 0;
@@ -350,7 +348,7 @@ static void find_routes(
 			const int next_index = index(next_hex);
 			if ( next_index < 0 ) {
 				// Off the map.
-				if ( edges != NULL )
+				if ( edges != nullptr )
 					edges->insert(next_hex);
 				continue;
 			}
@@ -386,7 +384,7 @@ static void find_routes(
 			}
 			if ( next.moves_left < 0 || next.turns_left < 0 ) {
 				// Either can never enter this hex or out of turns.
-				if ( edges != NULL )
+				if ( edges != nullptr )
 					edges->insert(next_hex);
 				continue;
 			}
@@ -396,7 +394,7 @@ static void find_routes(
 				const unit *v = resources::gameboard->get_visible_unit(next_hex, *viewing_team, see_all);
 				if ( v && current_team->is_enemy(v->side()) ) {
 					// Cannot enter enemy hexes.
-					if ( edges != NULL )
+					if ( edges != nullptr )
 						edges->insert(next_hex);
 					continue;
 				}
@@ -539,11 +537,11 @@ paths::paths(const unit& u, bool force_ignore_zoc,
 
 	find_routes(u.get_location(), u.movement_type().get_movement(),
 	            u.get_state(unit::STATE_SLOWED), u.movement_left(),
-	            u.total_movement(), additional_turns, destinations, NULL,
-	            allow_teleport ? &u : NULL,
-	            ignore_units ? NULL : &teams[u.side()-1],
-	            force_ignore_zoc ? NULL : &u,
-	            see_all ? NULL : &viewing_team);
+	            u.total_movement(), additional_turns, destinations, nullptr,
+	            allow_teleport ? &u : nullptr,
+	            ignore_units ? nullptr : &teams[u.side()-1],
+	            force_ignore_zoc ? nullptr : &u,
+	            see_all ? nullptr : &viewing_team);
 }
 
 /**
@@ -570,11 +568,11 @@ vision_path::vision_path(const unit& viewer, map_location const &loc,
 {
 	const int sight_range = viewer.vision();
 
-	// The four NULL parameters indicate (in order): no teleports,
+	// The four nullptr parameters indicate (in order): no teleports,
 	// ignore units, ignore ZoC (no effect), and see all (no effect).
 	find_routes(loc, viewer.movement_type().get_vision(),
 	            viewer.get_state(unit::STATE_SLOWED), sight_range, sight_range,
-	            0, destinations, &edges, NULL, NULL, NULL, NULL, &jamming_map);
+	            0, destinations, &edges, nullptr, nullptr, nullptr, nullptr, &jamming_map);
 }
 
 /**
@@ -593,10 +591,10 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
                          const std::map<map_location, int>& jamming_map)
 	: paths(), edges()
 {
-	// The four NULL parameters indicate (in order): no teleports,
+	// The four nullptr parameters indicate (in order): no teleports,
 	// ignore units, ignore ZoC (no effect), and see all (no effect).
 	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
-	            destinations, &edges, NULL, NULL, NULL, NULL, &jamming_map);
+	            destinations, &edges, nullptr, nullptr, nullptr, nullptr, &jamming_map);
 }
 
 /// Default destructor
@@ -619,11 +617,11 @@ jamming_path::jamming_path(const unit& jammer, map_location const &loc)
 {
 	const int jamming_range = jammer.jamming();
 
-	// The five NULL parameters indicate (in order): no edges, no teleports,
+	// The five nullptr parameters indicate (in order): no edges, no teleports,
 	// ignore units, ignore ZoC (no effect), and see all (no effect).
 	find_routes(loc, jammer.movement_type().get_jamming(),
 	            jammer.get_state(unit::STATE_SLOWED), jamming_range, jamming_range,
-	            0, destinations, NULL, NULL, NULL, NULL, NULL);
+	            0, destinations, nullptr, nullptr, nullptr, nullptr, nullptr);
 }
 
 /// Default destructor
@@ -891,12 +889,12 @@ void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 		find_routes(u.get_location(), u.movement_type().get_movement(),
 		            u.get_state(unit::STATE_SLOWED),
 		            (use_max_moves) ? u.total_movement() : u.movement_left(),
-		            u.total_movement(), 99, dummy, NULL,
-		            allow_teleport_ ? &u : NULL,
-		            ignore_units_ ? NULL : &teams[u.side()-1],
-		            force_ignore_zoc_ ? NULL : &u,
-		            see_all_ ? NULL : &viewing_team_,
-		            NULL, &cost_map);
+		            u.total_movement(), 99, dummy, nullptr,
+		            allow_teleport_ ? &u : nullptr,
+		            ignore_units_ ? nullptr : &teams[u.side()-1],
+		            force_ignore_zoc_ ? nullptr : &u,
+		            see_all_ ? nullptr : &viewing_team_,
+		            nullptr, &cost_map);
 }
 
 /**

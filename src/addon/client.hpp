@@ -39,7 +39,7 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param disp    Display object on which to display a status dialog.
+	 * @param v       Target for UI rendering for the progress dialog.
 	 * @param address Add-ons server host address (i.e. localhost:15999).
 	 */
 	addons_client(CVideo& v, const std::string& address);

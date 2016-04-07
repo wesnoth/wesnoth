@@ -162,7 +162,7 @@ local function generate_objectives(cfg)
 	end
 	local note = cfg.note
 	if note then
-		objectives = objectives .. "\n" .. note
+		objectives = objectives .. "\n" .. note .. "\n"
 	end
 
 	return string.sub(tostring(objectives), 1, -2)

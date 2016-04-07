@@ -16,15 +16,17 @@
 
 #include "gui/widgets/viewport.hpp"
 
-#include "gui/auxiliary/log.hpp"
-#include "utils/const_clone.tpp"
-#include "gui/auxiliary/window_builder/viewport.hpp"
+#include "gui/core/log.hpp"
+#include "config.hpp"
+#include "utils/const_clone.hpp"
 
 #define LOG_SCOPE_HEADER "tviewport [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
 {
+
+// ------------ WIDGET -----------{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -50,7 +52,7 @@ struct tviewport_implementation
 		 * First test whether the mouse is at the pane.
 		 */
 		if(viewport->twidget::find_at(coordinate, must_be_active) != viewport) {
-			return NULL;
+			return nullptr;
 		}
 
 		/*
@@ -181,7 +183,59 @@ iterator::twalker_* tviewport::create_walker()
 	/**
 	 * @todo Implement properly.
 	 */
-	return NULL;
+	return nullptr;
 }
+
+// }---------- BUILDER -----------{
+
+/*WIKI_MACRO
+ * @begin{macro}{viewport_description}
+ *
+ *        A viewport is an special widget used to view only a part of the
+ *        widget it `holds'.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_viewport
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="viewport"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * @begin{tag}{name="widget"}{min="1"}{max="1"}{super="gui/window/resolution/grid/row/column"}
+ * == Label ==
+ *
+ * @macro = viewport_description
+ *
+ * List with the label specific variables:
+ * @begin{table}{config}
+ *     widget & section & &       Holds a single widget like a grid cell.$
+ * @end{table}
+ * @end{tag}{name="widget"}
+ * @end{tag}{name="viewport"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+namespace implementation
+{
+
+tbuilder_viewport::tbuilder_viewport(const config& cfg)
+	: tbuilder_widget(cfg)
+	, widget(create_builder_widget(cfg.child("widget", "[viewport]")))
+{
+}
+
+twidget* tbuilder_viewport::build() const
+{
+	return build(treplacements());
+}
+
+twidget* tbuilder_viewport::build(const treplacements& replacements) const
+{
+	return tviewport::build(*this, replacements);
+}
+
+} // namespace implementation
+
+// }------------ END --------------
 
 } // namespace gui2

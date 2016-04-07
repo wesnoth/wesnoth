@@ -17,7 +17,7 @@
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 
 class CVideo;
 class config;
@@ -57,7 +57,10 @@ private:
 	void operator=(const game_config_manager&);
 
 	void load_game_config(FORCE_RELOAD_CONFIG force_reload,
-		game_classification const* classification = NULL);
+		game_classification const* classification = nullptr);
+
+	void load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG force_reload,
+		game_classification const* classification = nullptr);
 
 	// load_game_config() helper functions.
 	void load_addons_cfg();

@@ -136,12 +136,12 @@ public:
 	 *
 	 * returns                    The widget which got removed (the parent of
 	 *                            the widget is cleared). If no widget found
-	 *                            and thus not replace NULL will returned.
+	 *                            and thus not replace nullptr will returned.
 	 */
 	twidget* swap_child(const std::string& id,
 						twidget* widget,
 						const bool recurse,
-						twidget* new_parent = NULL);
+						twidget* new_parent = nullptr);
 
 	/**
 	 * Removes and frees a widget in a cell.
@@ -184,10 +184,11 @@ public:
 		return child(row, col).widget();
 	}
 
+	virtual bool can_mouse_focus() const override { return false; }
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
+	virtual void layout_initialise(const bool full_initialisation) override;
 
 	/**
 	 * Tries to reduce the width of a container.
@@ -199,10 +200,10 @@ public:
 	void reduce_width(const unsigned maximum_width);
 
 	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
+	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/** See @ref twidget::demand_reduce_width. */
-	virtual void demand_reduce_width(const unsigned maximum_width) OVERRIDE;
+	virtual void demand_reduce_width(const unsigned maximum_width) override;
 
 	/**
 	 * Tries to reduce the height of a container.
@@ -214,10 +215,10 @@ public:
 	void reduce_height(const unsigned maximum_height);
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) OVERRIDE;
+	virtual void request_reduce_height(const unsigned maximum_height) override;
 
 	/** See @ref twidget::demand_reduce_height. */
-	virtual void demand_reduce_height(const unsigned maximum_height) OVERRIDE;
+	virtual void demand_reduce_height(const unsigned maximum_height) override;
 
 	/**
 	 * Recalculates the best size.
@@ -231,55 +232,55 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE;
+	virtual tpoint calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::can_wrap. */
-	virtual bool can_wrap() const OVERRIDE;
+	virtual bool can_wrap() const override;
 
 public:
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
+	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) OVERRIDE;
+	virtual void set_origin(const tpoint& origin) override;
 
 	/** See @ref twidget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref twidget::layout_children. */
-	virtual void layout_children() OVERRIDE;
+	virtual void layout_children() override;
 
 	/** See @ref twidget::child_populate_dirty_list. */
 	virtual void
 	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE;
+							  const std::vector<twidget*>& call_stack) override;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE;
+							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE;
+								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
+	twidget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref twidget::find. */
 	const twidget* find(const std::string& id,
-						const bool must_be_active) const OVERRIDE;
+						const bool must_be_active) const override;
 
 	/** See @ref twidget::has_widget. */
-	virtual bool has_widget(const twidget& widget) const OVERRIDE;
+	virtual bool has_widget(const twidget& widget) const override;
 
 	/** See @ref twidget::disable_click_dismiss. */
-	bool disable_click_dismiss() const OVERRIDE;
+	bool disable_click_dismiss() const override;
 
 	/** See @ref twidget::create_walker. */
-	virtual iterator::twalker_* create_walker() OVERRIDE;
+	virtual iterator::twalker_* create_walker() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -310,7 +311,7 @@ private:
 		friend struct tgrid_implementation;
 
 	public:
-		tchild() : flags_(0), border_size_(0), widget_(NULL)
+		tchild() : flags_(0), border_size_(0), widget_(nullptr)
 
 		// Fixme make a class where we can store some properties in the cache
 		// regarding size etc.
@@ -488,7 +489,7 @@ private:
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
-									int y_offset) OVERRIDE;
+									int y_offset) override;
 };
 
 /**

@@ -40,7 +40,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Callback for toggling a checkbox state. */
 	void toggle_category(twidget& box, std::string category);

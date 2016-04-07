@@ -19,28 +19,27 @@
 
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "formula_debugger.hpp"
+#include "formula/debugger.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
 #include "generators/map_create.hpp"
-#include "gui/auxiliary/layout_exception.hpp"
-#include "gui/dialogs/addon_connect.hpp"
-#include "gui/dialogs/addon_list.hpp"
+#include "gui/core/layout_exception.hpp"
+#include "gui/dialogs/addon/connect.hpp"
+#include "gui/dialogs/addon/list.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/dialogs/chat_log.hpp"
-#include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
-#include "gui/dialogs/editor_generate_map.hpp"
-#include "gui/dialogs/editor_new_map.hpp"
-#include "gui/dialogs/editor_resize_map.hpp"
-#include "gui/dialogs/editor_set_starting_position.hpp"
+#include "gui/dialogs/editor/generate_map.hpp"
+#include "gui/dialogs/editor/new_map.hpp"
+#include "gui/dialogs/editor/resize_map.hpp"
+#include "gui/dialogs/editor/set_starting_position.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
@@ -51,29 +50,32 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
-#include "gui/dialogs/lobby_main.hpp"
-#include "gui/dialogs/lobby_player_info.hpp"
+#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/lobby/lobby.hpp"
+#include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/mp_alerts_options.hpp"
-#include "gui/dialogs/mp_change_control.hpp"
-#include "gui/dialogs/mp_cmd_wrapper.hpp"
-#include "gui/dialogs/mp_connect.hpp"
-#include "gui/dialogs/mp_create_game.hpp"
-#include "gui/dialogs/mp_create_game_set_password.hpp"
-#include "gui/dialogs/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
+#include "gui/dialogs/multiplayer/mp_change_control.hpp"
+#include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
+#include "gui/dialogs/multiplayer/mp_connect.hpp"
+#include "gui/dialogs/multiplayer/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/mp_create_game_set_password.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
-#include "gui/dialogs/mp_login.hpp"
-#include "gui/dialogs/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_attack.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_recruit.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -86,9 +88,7 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/assign/list_of.hpp>
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 #include <memory>
 
@@ -157,7 +157,7 @@ namespace {
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
-		BOOST_FOREACH(const tresolution& resolution, resolutions) {
+		for(const tresolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			boost::scoped_ptr<gui2::tdialog> dlg(twrapper<T>::create());
@@ -195,7 +195,7 @@ namespace {
 	{
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
-			BOOST_FOREACH(const tresolution& resolution, resolutions) {
+			for(const tresolution& resolution : resolutions) {
 				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 				boost::scoped_ptr<gui2::tpopup> dlg(twrapper<T>::create());
@@ -207,7 +207,7 @@ namespace {
 				try {
 					dlg->show(video, interact);
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
-					BOOST_REQUIRE_NE(window, static_cast<void*>(NULL));
+					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
 				} catch(gui2::tlayout_exception_width_modified&) {
 					exception = "gui2::tlayout_exception_width_modified";
@@ -241,7 +241,7 @@ namespace {
 	void test_tip_resolutions(const tresolution_list& resolutions
 			, const std::string& id)
 	{
-		BOOST_FOREACH(const tresolution& resolution, resolutions) {
+		for(const tresolution& resolution : resolutions) {
 			
 			//CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
@@ -289,15 +289,6 @@ namespace {
 #pragma warning(pop)
 #endif
 
-const tresolution_list& get_small_gui_resolutions()
-{
-	static tresolution_list result;
-	if(result.empty()) {
-		result.push_back(std::make_pair(800, 480));
-	}
-	return result;
-}
-
 const tresolution_list& get_gui_resolutions()
 {
 	static tresolution_list result;
@@ -317,7 +308,6 @@ void test()
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		test_resolutions<T>(get_small_gui_resolutions());
 		test_resolutions<T>(get_gui_resolutions());
 
 		break; // FIXME: New widgets break
@@ -332,7 +322,6 @@ void test_popup()
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		test_popup_resolutions<T>(get_small_gui_resolutions());
 		test_popup_resolutions<T>(get_gui_resolutions());
 
 		gui2::new_widgets = true;
@@ -345,7 +334,6 @@ void test_tip(const std::string& id)
 
 	for(size_t i = 0; i < 2; ++i) {
 
-		test_tip_resolutions(get_small_gui_resolutions(), id);
 		test_tip_resolutions(get_gui_resolutions(), id);
 
 		gui2::new_widgets = true;
@@ -373,12 +361,11 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/* The tdialog classes. */
 	test<gui2::taddon_connect>();
-	test<gui2::taddon_list>();
+	//test<gui2::taddon_list>();
 	test<gui2::tcampaign_difficulty>();
 	test<gui2::tcampaign_selection>();
 	test<gui2::tcampaign_settings>();
 //	test<gui2::tchat_log>(); /** @todo ENABLE */
-	test<gui2::tdata_manage>();
 	test<gui2::tedit_label>();
 	test<gui2::tedit_text>();
 	test<gui2::teditor_generate_map>();
@@ -396,6 +383,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_save_oos>();
 	test<gui2::tgamestate_inspector>();
 	test<gui2::tlanguage_selection>();
+	// test<gui2::tloadscreen>(); TODO: enable
 	test<gui2::tlobby_main>();
 	test<gui2::tlobby_player_info>();
 	test<gui2::tmessage>();
@@ -412,11 +400,13 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_server_list>();
 	test<gui2::tsimple_item_selector>();
 	test<gui2::tscreenshot_notification>();
+	test<gui2::tselect_orb_colors>();
 	test<gui2::ttheme_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
-//	test<gui2::tunit_attack>(); /** @todo ENABLE */
+	//test<gui2::tunit_attack>();
 	test<gui2::tunit_create>();
+	//test<gui2::tunit_recruit>();
 	test<gui2::twml_error>();
 	test<gui2::twml_message_left>();
 	test<gui2::twml_message_right>();
@@ -435,14 +425,14 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/*
 	 * The unit attack unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
+	 * don't allow 'nullptr's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
 			, list.end());
 	/*
 	 * The chat log unit test are disabled for now, they calling parameters
-	 * don't allow 'NULL's needs to be fixed.
+	 * don't allow 'nullptr's needs to be fixed.
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "chat_log")
@@ -470,12 +460,17 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "addon_description"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "addon_filter_options"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "addon_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "loadscreen"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "drop_down_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "preferences"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "unit_recruit"), list.end());
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
-	BOOST_FOREACH(const std::string& id, list) {
+	for(const std::string& id : list) {
 		std::cerr << "Window '" << id << "' registered but not tested.\n";
 	}
 }
@@ -562,16 +557,7 @@ struct twrapper<gui2::tchat_log>
 		static config cfg;
 		static vconfig vcfg(cfg);
 
-		return new gui2::tchat_log(vcfg, NULL);
-	}
-};
-
-template<>
-struct twrapper<gui2::tdata_manage>
-{
-	static gui2::tdata_manage* create()
-	{
-		return new gui2::tdata_manage();
+		return new gui2::tchat_log(vcfg, nullptr);
 	}
 };
 
@@ -729,7 +715,7 @@ struct twrapper<gui2::tmp_change_control>
 {
 	static gui2::tmp_change_control* create()
 	{
-		return new gui2::tmp_change_control(NULL);
+		return new gui2::tmp_change_control(nullptr);
 	}
 };
 
@@ -776,7 +762,7 @@ struct twrapper<gui2::tdepcheck_confirm_change>
 {
 	static gui2::tdepcheck_confirm_change* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
+		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_confirm_change(true, mods, "requester");
 	}
 };
@@ -786,7 +772,7 @@ struct twrapper<gui2::tdepcheck_select_new>
 {
 	static gui2::tdepcheck_select_new* create()
 	{
-		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
+		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_select_new(ng::depcheck::MODIFICATION, mods);
 	}
 };
@@ -823,6 +809,15 @@ struct twrapper<gui2::tscreenshot_notification>
 };
 
 template<>
+struct twrapper<gui2::tselect_orb_colors>
+{
+	static gui2::tselect_orb_colors* create()
+	{
+		return new gui2::tselect_orb_colors();
+	}
+};
+
+template<>
 struct twrapper<gui2::ttheme_list>
 {
 	static theme_info make_theme(std::string name)
@@ -835,8 +830,8 @@ struct twrapper<gui2::ttheme_list>
 	}
 	static gui2::ttheme_list* create()
 	{
-		static std::vector<theme_info> themes = boost::assign::list_of(make_theme("classic"))
-		(make_theme("new"))(make_theme("more"))(make_theme("themes"));
+		static std::vector<theme_info> themes = {make_theme("classic"),
+		make_theme("new"), make_theme("more"), make_theme("themes")};
 		return new gui2::ttheme_list(themes, 0);
 	}
 };
@@ -850,7 +845,7 @@ struct twrapper<gui2::teditor_generate_map>
 		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
 
 		std::vector<map_generator*> map_generators;
-		BOOST_FOREACH(const config &i, main_config.child_range("multiplayer")) {
+		for(const config &i : main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {
@@ -860,9 +855,6 @@ struct twrapper<gui2::teditor_generate_map>
 			}
 		}
 		result->set_map_generators(map_generators);
-
-		result->set_gui(
-				static_cast<display*>(&test_utils::get_fake_display(-1, -1)));
 
 		return result;
 	}
@@ -941,7 +933,7 @@ struct twrapper<gui2::twml_error>
 {
 	static gui2::twml_error* create()
 	{
-		static std::vector<std::string> files = boost::assign::list_of("some")("files")("here");
+		static std::vector<std::string> files = {"some", "files", "here"};
 		return new gui2::twml_error("Summary", "Post summary", files, "Details");
 	}
 };

@@ -19,14 +19,12 @@
 #include "hotkey_item.hpp"
 #include "config.hpp"
 #include "preferences.hpp"
-
-#include <boost/foreach.hpp>
 #include "log.hpp"
 
 static lg::log_domain log_config("config");
-#define ERR_G  LOG_STREAM(err,   lg::general)
-#define LOG_G  LOG_STREAM(info,  lg::general)
-#define DBG_G  LOG_STREAM(debug, lg::general)
+#define ERR_G  LOG_STREAM(err,   lg::general())
+#define LOG_G  LOG_STREAM(info,  lg::general())
+#define DBG_G  LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err,   log_config)
 
 
@@ -442,7 +440,7 @@ bool hotkey_command::null() const
 
 const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
 {
-	BOOST_FOREACH(hotkey_command& cmd, known_hotkeys)
+	for(hotkey_command& cmd : known_hotkeys)
 	{
 		if(cmd.id == command)
 			return cmd;
@@ -488,7 +486,7 @@ void init_hotkey_commands()  {
 	known_hotkeys = known_hotkeys_temp;
 
 	size_t i = 0;
-	BOOST_FOREACH(hotkey_command_temp& cmd, hotkey_list_)
+	for(hotkey_command_temp& cmd : hotkey_list_)
 	{
 		known_hotkeys.push_back( new hotkey_command(cmd.id, cmd.command, t_string(cmd.description, "wesnoth-lib"), cmd.hidden, cmd.scope, t_string(cmd.tooltip, "wesnoth-lib")));
 		command_map_[cmd.command] = i;

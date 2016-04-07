@@ -39,14 +39,14 @@ class movetype
 		struct parameters;
 
 		explicit terrain_info(const parameters & params,
-		                      const terrain_info * fallback=NULL,
-		                      const terrain_info * cascade=NULL);
+		                      const terrain_info * fallback=nullptr,
+		                      const terrain_info * cascade=nullptr);
 		terrain_info(const config & cfg, const parameters & params,
-		             const terrain_info * fallback=NULL,
-		             const terrain_info * cascade=NULL);
+		             const terrain_info * fallback=nullptr,
+		             const terrain_info * cascade=nullptr);
 		terrain_info(const terrain_info & that,
-		             const terrain_info * fallback=NULL,
-		             const terrain_info * cascade=NULL);
+		             const terrain_info * fallback=nullptr,
+		             const terrain_info * cascade=nullptr);
 		~terrain_info();
 
 		terrain_info & operator=(const terrain_info & that);
@@ -72,7 +72,7 @@ class movetype
 		void make_unique_fallback() const;
 
 	private:
-		boost::shared_ptr<data> data_;                 /// Never NULL
+		boost::shared_ptr<data> data_;                 /// Never nullptr
 		mutable boost::shared_ptr<data> merged_data_;  /// Created as needed.
 		const terrain_info * const fallback_;
 		const terrain_info * const cascade_;
@@ -89,18 +89,18 @@ public:
 	{
 		static const parameters params_;
 	public:
-		explicit terrain_costs(const terrain_costs * fallback=NULL,
-		                       const terrain_costs * cascade=NULL) :
+		explicit terrain_costs(const terrain_costs * fallback=nullptr,
+		                       const terrain_costs * cascade=nullptr) :
 			terrain_info(params_, fallback, cascade)
 		{}
 		explicit terrain_costs(const config & cfg,
-		                       const terrain_costs * fallback=NULL,
-		                       const terrain_costs * cascade=NULL) :
+		                       const terrain_costs * fallback=nullptr,
+		                       const terrain_costs * cascade=nullptr) :
 			terrain_info(cfg, params_, fallback, cascade)
 		{}
 		terrain_costs(const terrain_costs & that,
-		              const terrain_costs * fallback=NULL,
-		              const terrain_costs * cascade=NULL) :
+		              const terrain_costs * fallback=nullptr,
+		              const terrain_costs * cascade=nullptr) :
 			terrain_info(that, fallback, cascade)
 		{}
 

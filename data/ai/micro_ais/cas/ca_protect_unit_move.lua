@@ -5,20 +5,20 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
 local function get_protected_units(cfg)
     local units = {}
-    for _,id in ipairs(cfg.id) do
-        table.insert(units, AH.get_units_with_moves { id = id }[1])
+    for u in H.child_range(cfg, "unit") do
+        table.insert(units, AH.get_units_with_moves { id = u.id }[1])
     end
     return units
 end
 
 local ca_protect_unit_move = {}
 
-function ca_protect_unit_move:evaluation(ai, cfg, self)
+function ca_protect_unit_move:evaluation(cfg)
     if get_protected_units(cfg)[1] then return 94999 end
     return 0
 end
 
-function ca_protect_unit_move:execution(ai, cfg, self)
+function ca_protect_unit_move:execution(cfg, data)
     -- Find and execute best (safest) move toward goal
     local protected_units = get_protected_units(cfg)
 
@@ -40,8 +40,8 @@ function ca_protect_unit_move:execution(ai, cfg, self)
     -- We move the weakest (fewest HP unit) first
     local unit = AH.choose(protected_units, function(u) return - u.hitpoints end)
     local goal = {}
-    for i,id in ipairs(cfg.id) do
-        if (unit.id == id) then goal = { cfg.goal_x[i], cfg.goal_y[i] } end
+    for u in H.child_range(cfg, "unit") do
+        if (unit.id == u.id) then goal = { u.goal_x, u.goal_y } end
     end
 
     local reach_map = AH.get_reachable_unocc(unit)
@@ -58,10 +58,10 @@ function ca_protect_unit_move:execution(ai, cfg, self)
     end)
 
     -- Configuration parameters (no option to change these enabled at the moment)
-    local enemy_weight = self.data.PU_enemy_weight or 100.
-    local my_unit_weight = self.data.PU_my_unit_weight or 1.
-    local distance_weight = self.data.PU_distance_weight or 3.
-    local terrain_weight = self.data.PU_terrain_weight or 0.1
+    local enemy_weight = data.PU_enemy_weight or 100.
+    local my_unit_weight = data.PU_my_unit_weight or 1.
+    local distance_weight = data.PU_distance_weight or 3.
+    local terrain_weight = data.PU_terrain_weight or 0.1
 
     -- If there are no enemies left, only distance to goal matters
     -- This is to avoid rare situations where moving toward goal rating is canceled by rating for moving away from own units

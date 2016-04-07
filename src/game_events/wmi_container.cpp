@@ -17,19 +17,17 @@
  * Definitions for a container for wml_menu_item.
  */
 
-#include "../global.hpp"
+#include "global.hpp"
 #include "wmi_container.hpp"
 #include "handlers.hpp"
 #include "menu_item.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
 
-#include "../config.hpp"
-#include "../game_data.hpp"
-#include "../log.hpp"
-#include "../map_location.hpp"
-
-#include <boost/foreach.hpp>
+#include "config.hpp"
+#include "game_data.hpp"
+#include "log.hpp"
+#include "map/location.hpp"
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -104,8 +102,9 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 /**
  * Returns the menu items that can be shown for the given location.
  * Should be used with a wmi_pager to limit the number of items displayed at once.
+ *
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
- * @param[out] descriptions Menu item text will be pushed onto @descriptions (in the same order as @a items).
+ * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
  */
 std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
 	game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const
@@ -121,7 +120,7 @@ std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
 
 	// Check each menu item.
-	BOOST_FOREACH( const item_ptr & item, std::make_pair (start, finish) )
+	for (const item_ptr & item : std::make_pair (start, finish))
 	{
 		// Can this item be shown?
 		if ( item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu()) && item->can_show(hex, gamedata, fc) )
@@ -150,7 +149,7 @@ void wmi_container::init_handlers() const
 	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
-	BOOST_FOREACH( const item_ptr & wmi, *this ) {
+	for (const item_ptr & wmi : *this) {
 		// If this menu item has a [command], add a handler for it.
 		wmi->init_handler();
 		// Count the menu items (for the diagnostic message).
@@ -166,7 +165,7 @@ void wmi_container::init_handlers() const
 void wmi_container::to_config(config& cfg) const
 {
 	// Loop through our items.
-	BOOST_FOREACH( const item_ptr & item, *this )
+	for (const item_ptr & item : *this)
 	{
 		// Add this item as a child of cfg.
 		item->to_config(cfg.add_child("menu_item"));
@@ -197,7 +196,7 @@ void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 void wmi_container::set_menu_items(const config& cfg)
 {
 	wml_menu_items_.clear();
-	BOOST_FOREACH(const config &item, cfg.child_range("menu_item"))
+	for (const config &item : cfg.child_range("menu_item"))
 	{
 		if(!item.has_attribute("id")){ continue; }
 

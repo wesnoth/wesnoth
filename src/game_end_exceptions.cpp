@@ -49,3 +49,10 @@ void end_level_data::read(const config& cfg)
 	proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
 	is_victory = cfg["is_victory"].to_bool(true);
 }
+
+config end_level_data::to_config() const
+{
+	config r;
+	write(r);
+	return r;
+}

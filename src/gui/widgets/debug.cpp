@@ -57,8 +57,8 @@ std::string get_child_id(const std::string& parent_id,
 	// instead.
 
 	// return (formatter() << parent_id << "_C_" << row << '_' << col).c_str();
-	std::string result = parent_id + "_C_" + lexical_cast<std::string>(row)
-						 + '_' + lexical_cast<std::string>(col);
+	std::string result = parent_id + "_C_" + std::to_string(row)
+						 + '_' + std::to_string(col);
 
 	return result;
 }
@@ -83,7 +83,7 @@ std::string get_child_widget_id(const std::string& parent_id,
 std::string get_base_filename()
 {
 	char buf[17] = { 0 };
-	time_t t = time(NULL);
+	time_t t = time(nullptr);
 	tm* lt = localtime(&t);
 	if(lt) {
 		strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", lt);
@@ -122,7 +122,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 
 	std::vector<std::string> params = utils::split(level);
 
-	FOREACH(const AUTO & param, params)
+	for(const auto & param : params)
 	{
 		if(param == "all") {
 			level_ = ALL;
@@ -150,7 +150,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 
 	std::vector<std::string> params = utils::split(domain);
 
-	FOREACH(const AUTO & param, params)
+	for(const auto & param : params)
 	{
 		if(param == "all") {
 			domain_ = ALL;
@@ -181,7 +181,7 @@ void tdebug_layout_graph::generate_dot_file(const std::string& generator,
 		id += '_';
 	}
 	const std::string filename = filename_base_ + id
-								 + lexical_cast<std::string>(++sequence_number_)
+								 + std::to_string(++sequence_number_)
 								 + "-" + generator + ".dot";
 
 	std::ofstream file(filename.c_str());
@@ -251,7 +251,7 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 			for(size_t i = 0; i < generator->get_item_count(); ++i) {
 
 				const std::string child_id = id + "_I_"
-											 + lexical_cast<std::string>(i);
+											 + std::to_string(i);
 
 				widget_generate_info(out, &generator->item(i), child_id, true);
 

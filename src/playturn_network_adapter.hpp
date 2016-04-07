@@ -5,8 +5,7 @@
 
 #include "config.hpp"
 #include <list>
-#include "utils/boost_function_guarded.hpp"
-
+#include "utils/functional.hpp"
 /*
 	The purpose if this class is to preprocess incoming network data, and provide a steam that always returns just one command/action at a time.
 	Especially we want each replay command in his own [turn].
@@ -14,7 +13,7 @@
 class playturn_network_adapter
 {
 public:
-	typedef boost::function1<bool, config&> source_type;
+	typedef std::function<bool(config&)> source_type;
 
 	playturn_network_adapter(source_type source = read_network);
 	~playturn_network_adapter();

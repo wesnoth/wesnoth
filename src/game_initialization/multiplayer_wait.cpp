@@ -29,14 +29,13 @@
 #include "mp_ui_alerts.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sdl/rect.hpp"
-#include "unit_types.hpp"
+#include "units/types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "video.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -143,7 +142,7 @@ void wait::leader_preview_pane::draw_contents()
 	if (!unit_image.null()) {
 		image_rect.w = unit_image->w;
 		image_rect.h = unit_image->h;
-		sdl_blit(unit_image, NULL, screen, &image_rect);
+		sdl_blit(unit_image, nullptr, screen, &image_rect);
 	}
 
 	font::draw_text(&video(), area, font::SIZE_PLUS, font::NORMAL_COLOR,
@@ -199,7 +198,7 @@ wait::wait(CVideo& v, const config& cfg, saved_game& state,
 	ui(v, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(video(), first_scenario ? _("Cancel") : _("Quit")),
 	start_label_(video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
-	game_menu_(video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
+	game_menu_(video(), std::vector<std::string>(), false, -1, -1, nullptr, &gui::menu::bluebg_style),
 	level_(),
 	state_(state),
 	first_scenario_(first_scenario),
@@ -211,8 +210,8 @@ wait::wait(CVideo& v, const config& cfg, saved_game& state,
 	plugins_context_.reset(new plugins_context("Multiplayer Wait"));
 
 	//These structure initializers create a lobby::process_data_event
-	plugins_context_->set_callback("quit", 		boost::bind(&wait::process_event_impl, this, true), 						false);
-	plugins_context_->set_callback("chat",		boost::bind(&wait::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("quit", 		std::bind(&wait::process_event_impl, this, true), 						false);
+	plugins_context_->set_callback("chat",		std::bind(&wait::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
 }
 
 wait::~wait()
@@ -269,9 +268,9 @@ void wait::join_game(bool observe)
 		//(i.e. we're loading from a saved game), then prefer to get the side
 		//with the same description as our login. Otherwise just choose the first
 		//available side.
-		const config *side_choice = NULL;
+		const config *side_choice = nullptr;
 		int side_num = -1, nb_sides = 0;
-		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
+		for (const config &sd : get_scenario().child_range("side"))
 		{
 			DBG_MP << "*** side " << nb_sides << "***\n" << sd.debug() << "***\n";
 
@@ -331,12 +330,13 @@ void wait::join_game(bool observe)
 			const std::string color = (*side_choice)["color"].str();
 
 			std::vector<const config*> era_factions;
-			BOOST_FOREACH(const config &side, possible_sides) {
+			for (const config &side : possible_sides) {
 				era_factions.push_back(&side);
 			}
 
+			const bool is_mp = state_.classification().is_normal_mp_game();
 			const bool lock_settings =
-				get_scenario()["force_lock_settings"].to_bool();
+				get_scenario()["force_lock_settings"].to_bool(!is_mp);
 			const bool use_map_settings =
 				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
 			const bool saved_game =
@@ -346,7 +346,7 @@ void wait::join_game(bool observe)
 				saved_game);
 
 			std::vector<std::string> choices;
-			BOOST_FOREACH(const config *s, flg.choosable_factions())
+			for (const config *s : flg.choosable_factions())
 			{
 				const config &side = *s;
 				const std::string &name = side["name"];
@@ -369,9 +369,9 @@ void wait::join_game(bool observe)
 			leader_preview_pane leader_selector(video(), flg, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int faction_choice = gui::show_dialog(video(), NULL,
+			const int faction_choice = gui::show_dialog(video(), nullptr,
 				_("Choose your faction:"), _("Starting position: ") +
-				lexical_cast<std::string>(side_num + 1), gui::OK_CANCEL,
+				std::to_string(side_num + 1), gui::OK_CANCEL,
 				&choices, &preview_panes);
 			if(faction_choice < 0) {
 				set_result(QUIT);
@@ -519,7 +519,7 @@ void wait::generate_menu()
 	std::vector<std::string> details;
 	std::set<std::string> playerlist;
 
-	BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
+	for (const config &sd : get_scenario().child_range("side"))
 	{
 		if (!sd["allow_player"].to_bool(true)) {
 			continue;
@@ -534,7 +534,7 @@ void wait::generate_menu()
 		// Hack: if there is a unit which can recruit, use it as a
 		// leader. Necessary to display leader information when loading
 		// saves.
-		BOOST_FOREACH(const config &side_unit, sd.child_range("unit"))
+		for (const config &side_unit : sd.child_range("unit"))
 		{
 			if (side_unit["canrecruit"].to_bool()) {
 				leader_type = side_unit["type"].str();
@@ -646,7 +646,7 @@ bool wait::download_level_data()
 		}
 		else if(config& controllers = revc.child("controllers")) {
 			int index = 0;
-			BOOST_FOREACH(const config& controller, controllers.child_range("controller")) {
+			for (const config& controller : controllers.child_range("controller")) {
 				if(config& side = get_scenario().child("side", index)) {
 					side["is_local"] = controller["is_local"];
 				}

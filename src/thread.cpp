@@ -19,11 +19,11 @@
 #include "log.hpp"
 #include "thread.hpp"
 
-#include "SDL_mutex.h"
-#include "SDL_thread.h"
-#include "SDL_version.h"
+#include <SDL_mutex.h>
+#include <SDL_thread.h>
+#include <SDL_version.h>
 
-#define ERR_G LOG_STREAM(err, lg::general)
+#define ERR_G LOG_STREAM(err, lg::general())
 
 boost::uint32_t threading::thread::get_id() { return SDL_GetThreadID(thread_); }
 
@@ -51,16 +51,12 @@ namespace threading {
 manager::~manager()
 {
 	for(std::vector<SDL_Thread*>::iterator i = detached_threads.begin(); i != detached_threads.end(); ++i) {
-		SDL_WaitThread(*i,NULL);
+		SDL_WaitThread(*i,nullptr);
 	}
 }
 
 thread::thread(int (*f)(void*), void* data)
-#if SDL_VERSION_ATLEAST(2,0,0)
 	: thread_(SDL_CreateThread(f, "", data))
-#else
-	: thread_(SDL_CreateThread(f, data))
-#endif
 {
 }
 
@@ -71,16 +67,16 @@ thread::~thread()
 
 void thread::join()
 {
-	if(thread_ != NULL) {
-		SDL_WaitThread(thread_,NULL);
-		thread_ = NULL;
+	if(thread_ != nullptr) {
+		SDL_WaitThread(thread_,nullptr);
+		thread_ = nullptr;
 	}
 }
 
 void thread::detach()
 {
 	detached_threads.push_back(thread_);
-	thread_ = NULL;
+	thread_ = nullptr;
 }
 
 mutex::mutex() : m_(SDL_CreateMutex())

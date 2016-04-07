@@ -24,7 +24,6 @@
 #include "util.hpp"                     // for lexical_cast, etc
 #include "video.hpp"                    // for update_rect, CVideo
 
-#include <stddef.h>                     // for NULL
 #include <algorithm>                    // for max, min, find_if
 #include <ostream>                      // for operator<<, stringstream, etc
 #include <vector>                       // for vector, etc
@@ -40,7 +39,7 @@ help_text_area::help_text_area(CVideo &video, const section &toplevel) :
 	items_(),
 	last_row_(),
 	toplevel_(toplevel),
-	shown_topic_(NULL),
+	shown_topic_(nullptr),
 	title_spacing_(16),
 	curr_loc_(0, 0),
 	min_row_height_(font::get_max_height(normal_font_size)),
@@ -108,7 +107,7 @@ void help_text_area::set_items()
 		font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
 	surface surf(font::get_rendered_text(show_title, title_size,
 					     font::NORMAL_COLOR, TTF_STYLE_BOLD));
-	if (surf != NULL) {
+	if (surf != nullptr) {
 		add_item(item(surf, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;
 		contents_height_ = title_spacing_;
@@ -172,7 +171,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 		throw parse_error(msg.str());
 	}
 
-	if (find_topic(toplevel_, dst) == NULL && !force) {
+	if (find_topic(toplevel_, dst) == nullptr && !force) {
 		// detect the broken link but quietly silence the hyperlink for normal user
 		add_text_item(text, game_config::debug ? dst : "", true);
 
@@ -537,7 +536,7 @@ void help_text_area::draw_contents()
 					++dst.y;
 				}
 			}
-			sdl_blit(it->surf, NULL, screen, &dst);
+			sdl_blit(it->surf, nullptr, screen, &dst);
 		}
 	}
 	update_rect(loc);

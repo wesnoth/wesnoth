@@ -19,13 +19,13 @@
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #include "gettext.hpp"
 
@@ -79,7 +79,7 @@ tscreenshot_notification::tscreenshot_notification(const std::string& path)
 				   false);
 }
 
-void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
+void tscreenshot_notification::pre_show(twindow& window)
 {
 	ttext_box& path_box = find_widget<ttext_box>(&window, "path", false);
 	path_box.set_value(filesystem::base_name(path_));
@@ -87,7 +87,7 @@ void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& copy_b = find_widget<tbutton>(&window, "copy", false);
 	connect_signal_mouse_left_click(
-			copy_b, boost::bind(&desktop::clipboard::copy_to_clipboard, boost::ref(path_), false));
+			copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_), false));
 
 	if (!desktop::clipboard::available()) {
 		copy_b.set_active(false);
@@ -96,12 +96,12 @@ void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
 
 	tbutton& open_b = find_widget<tbutton>(&window, "open", false);
 	connect_signal_mouse_left_click(
-			open_b, boost::bind(&desktop::open_object, boost::ref(path_)));
+			open_b, bind_void(&desktop::open_object, std::ref(path_)));
 
 	tbutton& bdir_b = find_widget<tbutton>(&window, "browse_dir", false);
 	connect_signal_mouse_left_click(
 			bdir_b,
-			boost::bind(&desktop::open_object,
-						boost::ref(screenshots_dir_path_)));
+			bind_void(&desktop::open_object,
+						std::ref(screenshots_dir_path_)));
 }
 }

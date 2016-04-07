@@ -17,11 +17,11 @@
 #include "gui/widgets/text.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "gui/auxiliary/log.hpp"
+#include "gui/core/log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
-#include <boost/bind.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -39,18 +39,18 @@ ttext_::ttext_()
 {
 #ifdef __unix__
 	// pastes on UNIX systems.
-	connect_signal<event::MIDDLE_BUTTON_CLICK>(boost::bind(
+	connect_signal<event::MIDDLE_BUTTON_CLICK>(std::bind(
 			&ttext_::signal_handler_middle_button_click, this, _2, _3));
 
 #endif
 
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
 
-	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(boost::bind(
+	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&ttext_::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
-			boost::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
+			std::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
 }
 
 void ttext_::set_active(const bool active)
@@ -72,6 +72,10 @@ unsigned ttext_::get_state() const
 
 void ttext_::set_maximum_length(const size_t maximum_length)
 {
+	if(maximum_length == 0) {
+		return;
+	}
+
 	const bool need_update = text_.get_length() > maximum_length;
 
 	text_.set_maximum_length(maximum_length);
@@ -174,7 +178,7 @@ void ttext_::paste_selection(const bool mouse)
 
 	update_canvas();
 	set_is_dirty(true);
-	fire(event::NOTIFY_MODIFIED, *this, NULL);
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void ttext_::set_selection_start(const size_t selection_start)
@@ -259,7 +263,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	} else if(selection_start_) {
 		delete_char(true);
 	}
-	fire(event::NOTIFY_MODIFIED, *this, NULL);
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
@@ -272,7 +276,7 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
 	}
-	fire(event::NOTIFY_MODIFIED, *this, NULL);
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void ttext_::handle_key_default(bool& handled,
@@ -285,7 +289,7 @@ void ttext_::handle_key_default(bool& handled,
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		insert_char(unicode);
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 

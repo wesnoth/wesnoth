@@ -20,8 +20,8 @@
 #ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
 #define GUI_AUXILIARY_FILTER_HPP_INCLUDED
 
+#include "global.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "map_utils.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
@@ -36,11 +36,11 @@ inline bool sort(const tpane::titem& lhs,
 				 const bool ascending)
 {
 	if(ascending) {
-		return lexical_cast<T>(at(lhs.tags, tag))
-			   < lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(lhs.tags.at(tag))
+			   < lexical_cast<T>(rhs.tags.at(tag));
 	} else {
-		return lexical_cast<T>(at(lhs.tags, tag))
-			   > lexical_cast<T>(at(rhs.tags, tag));
+		return lexical_cast<T>(lhs.tags.at(tag))
+			   > lexical_cast<T>(rhs.tags.at(tag));
 	}
 }
 
@@ -67,7 +67,7 @@ inline bool contains(const tpane::titem& item,
 					 const std::string& tag,
 					 const ttext_box& text_box)
 {
-	return at(item.tags, tag).find(utf8::lowercase(text_box.text()))
+	return item.tags.at(tag).find(utf8::lowercase(text_box.text()))
 		   != std::string::npos;
 }
 

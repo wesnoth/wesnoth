@@ -17,18 +17,16 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/list.hpp"
+#include "gui/widgets/listbox.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
-#include "gui/auxiliary/log.hpp"
-#include "gui/auxiliary/widget_definition/listbox.hpp"
-#include "gui/auxiliary/window_builder/listbox.hpp"
-#include "gui/widgets/detail/register.tpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/log.hpp"
+#include "gui/widgets/detail/register.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -47,7 +45,7 @@ tlist::tlist(const bool has_minimum,
 			 const tbuilder_grid_const_ptr list_builder)
 	: tcontainer_(2) // FIXME magic number
 	, state_(ENABLED)
-	, generator_(NULL)
+	, generator_(nullptr)
 	, list_builder_(list_builder)
 	, need_layout_(false)
 {
@@ -58,14 +56,14 @@ tlist::tlist(const bool has_minimum,
 	assert(generator_);
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			boost::bind(&tlist::signal_handler_left_button_down, this, _2),
+			std::bind(&tlist::signal_handler_left_button_down, this, _2),
 			event::tdispatcher::back_pre_child);
 
-	connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tlist::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
 
 	connect_signal<event::SDL_KEY_DOWN>(
-			boost::bind(
+			std::bind(
 					&tlist::signal_handler_sdl_key_down, this, _2, _3, _5, _6),
 			event::tdispatcher::back_pre_child);
 }
@@ -83,7 +81,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 			   const int index)
 {
 	assert(generator_);
-	tgrid& grid = generator_->create_item(index, list_builder_, data, NULL);
+	tgrid& grid = generator_->create_item(index, list_builder_, data, nullptr);
 
 	tselectable_* selectable
 			= find_widget<tselectable_>(&grid, "_toggle", false, false);
@@ -91,7 +89,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 	if(selectable) {
 		dynamic_cast<twidget&>(*selectable)
 				.connect_signal<event::LEFT_BUTTON_CLICK>(
-						 boost::bind(
+						 std::bind(
 								 &tlist::signal_handler_pre_child_left_button_click,
 								 this,
 								 &grid,
@@ -103,7 +101,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 		// Post widget for panel.
 		dynamic_cast<twidget&>(*selectable)
 				.connect_signal<event::LEFT_BUTTON_CLICK>(
-						 boost::bind(&tlist::signal_handler_left_button_click,
+						 std::bind(&tlist::signal_handler_left_button_click,
 									 this,
 									 &grid,
 									 _2),
@@ -112,7 +110,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 		// Post widget for button and widgets on the panel.
 		dynamic_cast<twidget&>(*selectable)
 				.connect_signal<event::LEFT_BUTTON_CLICK>(
-						 boost::bind(&tlist::signal_handler_left_button_click,
+						 std::bind(&tlist::signal_handler_left_button_click,
 									 this,
 									 &grid,
 									 _2),
@@ -122,7 +120,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 
 void tlist::append_rows(const std::vector<string_map>& items)
 {
-	BOOST_FOREACH(const string_map & item, items)
+	for(const string_map & item : items)
 	{
 		add_row(item);
 	}
@@ -199,7 +197,7 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 	}
 
 	if(selected_row != get_selected_row()) {
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -233,7 +231,7 @@ void tlist::set_row_shown(const std::vector<bool>& shown)
 	}
 
 	if(selected_row != get_selected_row()) {
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -439,7 +437,7 @@ void tlist::signal_handler_left_button_click(tgrid* grid,
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(&generator_->item(i) == grid) {
 			generator_->select_item(i);
-			fire(event::NOTIFY_MODIFIED, *this, NULL);
+			fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		}
 	}
 }
@@ -473,7 +471,7 @@ void tlist::signal_handler_sdl_key_down(const event::tevent event,
 			/* Do nothing. */
 	}
 	if(handled) {
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 

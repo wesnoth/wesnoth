@@ -24,7 +24,7 @@
 
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -150,7 +150,7 @@ const config::attribute_value& get_renamed_config_attribute(
 
 	result = cfg.get(deprecated_key);
 	if(result) {
-		lg::wml_error
+		lg::wml_error()
 			<< deprecated_renamed_wml_key_warning(
 				  deprecated_key
 				, key

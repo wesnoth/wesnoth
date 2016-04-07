@@ -15,11 +15,11 @@
 #ifndef FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 #define	FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 
-#include "../game_info.hpp"
-#include "../../actions/attack.hpp"
-#include "../../callable_objects.hpp"
-#include "../../formula.hpp"
-#include "../../formula_callable.hpp"
+#include "ai/game_info.hpp"
+#include "actions/attack.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
+#include "formula/callable.hpp"
 
 namespace ai {
 	class formula_ai;
@@ -195,13 +195,10 @@ public:
 };
 
 class fallback_callable : public formula_callable {
-	std::string key_;
 	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
-	explicit fallback_callable(const std::string& key) : key_(key) {
+	explicit fallback_callable() {
 	}
-
-	const std::string& key() const { return key_; }
 };
 
 class safe_call_callable : public formula_callable {

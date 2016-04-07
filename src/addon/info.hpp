@@ -15,14 +15,15 @@
 #ifndef ADDON_INFO_HPP_INCLUDED
 #define ADDON_INFO_HPP_INCLUDED
 
-#include "config.hpp"
 #include "version.hpp"
 
 #include "addon/validation.hpp"
 
 #include <set>
+#include <map>
 
 struct addon_info;
+class config;
 typedef std::map<std::string, addon_info> addons_list;
 
 struct addon_info

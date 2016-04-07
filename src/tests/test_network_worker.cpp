@@ -111,7 +111,7 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 }
 
-void try_send_random_seed ( const std::string seed_str, const unsigned int random_calls)
+static void try_send_random_seed ( const std::string seed_str, const unsigned int random_calls)
 {
 	config cfg_send;
 	config& child = cfg_send.add_child("command");

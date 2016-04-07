@@ -25,7 +25,6 @@
 #include <stdexcept>
 #include <clocale>
 #include <boost/scoped_array.hpp>
-#include <boost/foreach.hpp>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -38,10 +37,10 @@ extern "C" int _putenv(const char*);
 #include <cerrno>
 #endif
 
-#define DBG_G LOG_STREAM(debug, lg::general)
-#define LOG_G LOG_STREAM(info, lg::general)
-#define WRN_G LOG_STREAM(warn, lg::general)
-#define ERR_G LOG_STREAM(err, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define WRN_G LOG_STREAM(warn, lg::general())
+#define ERR_G LOG_STREAM(err, lg::general())
 
 namespace {
 	language_def current_language;
@@ -106,7 +105,7 @@ bool load_language_list()
 	known_languages.push_back(
 		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
 
-	BOOST_FOREACH(const config &lang, cfg.child_range("locale"))
+	for (const config &lang : cfg.child_range("locale"))
 	{
 		known_languages.push_back(
 			language_def(lang["locale"], lang["name"], lang["dir"],
@@ -157,7 +156,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	locale = win_locale;
 #endif
 
-	char *res = NULL;
+	char *res = nullptr;
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 
@@ -205,8 +204,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 	done:
-	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
-	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
+	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr) << '\n';
+	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr) << '\n';
 }
 
 void set_language(const language_def& locale)
@@ -236,9 +235,9 @@ bool load_strings(bool complain)
 		std::cerr << "No [language] block found\n";
 		return false;
 	}
-	BOOST_FOREACH(const config &lang, languages_) {
+	for (const config &lang : languages_) {
 		DBG_G << "[language]\n";
-		BOOST_FOREACH(const config::attribute &j, lang.attribute_range()) {
+		for (const config::attribute &j : lang.attribute_range()) {
 			DBG_G << j.first << "=\"" << j.second << "\"\n";
 			strings_[j.first] = j.second;
 		}
@@ -259,7 +258,7 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
-		translation::set_language(prefs_locale, NULL);
+		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)
@@ -276,7 +275,7 @@ const language_def& get_locale()
 		#include "language_win32.ii"
 		return win_locale;
 	#endif
-	if(locale != NULL && strlen(locale) >= 2) {
+	if(locale != nullptr && strlen(locale) >= 2) {
 		//we can't pass pointers into the string to the std::string
 		//constructor because some STL implementations don't support
 		//it (*cough* MSVC++6)
@@ -293,7 +292,7 @@ const language_def& get_locale()
 
 void init_textdomains(const config& cfg)
 {
-	BOOST_FOREACH(const config &t, cfg.child_range("textdomain"))
+	for (const config &t : cfg.child_range("textdomain"))
 	{
 		const std::string &name = t["name"];
 		const std::string &path = t["path"];
@@ -317,7 +316,7 @@ void init_textdomains(const config& cfg)
 bool init_strings(const config& cfg)
 {
 	languages_.clear();
-	BOOST_FOREACH(const config &l, cfg.child_range("language")) {
+	for (const config &l : cfg.child_range("language")) {
 		languages_.push_back(l);
 	}
 	return load_strings(true);

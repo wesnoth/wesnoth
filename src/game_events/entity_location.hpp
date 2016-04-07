@@ -20,8 +20,8 @@
 #ifndef GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
 #define GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
 
-#include "../map_location.hpp"
-#include "../unit_map.hpp"
+#include "map/location.hpp"
+#include "units/map.hpp"
 
 class unit;
 class vconfig;
@@ -41,6 +41,7 @@ namespace game_events
 		bool matches_unit(const unit_map::const_iterator & un_it) const;
 		bool matches_unit_filter(const unit_map::const_iterator & un_it,
 		                         const vconfig & filter) const;
+		unit_const_ptr get_unit() const;
 
 		static const entity_location null_entity;
 

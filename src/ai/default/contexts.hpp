@@ -20,8 +20,9 @@
 #ifndef AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 #define AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 
-#include "../contexts.hpp"
-#include "formula_callable.hpp"
+#include "ai/contexts.hpp"
+#include "formula/callable.hpp"
+#include "utils/make_enum.hpp"
 
 #ifdef _MSC_VER
 #if _MSC_VER < 1600
@@ -38,9 +39,17 @@ namespace ai {
 
 
 struct target {
-	enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
+	MAKE_ENUM(TYPE,
+		(VILLAGE, "village")
+		(LEADER, "leader")
+		(EXPLICIT, "explicit")
+		(THREAT, "threat")
+		(BATTLE_AID, "battle aid")
+		(MASS, "mass")
+		(SUPPORT, "support")
+	);
 
-	target(const map_location& pos, double val, TYPE target_type=VILLAGE) : loc(pos), value(val), type(target_type)
+	target(const map_location& pos, double val, TYPE target_type=TYPE::VILLAGE) : loc(pos), value(val), type(target_type)
 	{}
 	map_location loc;
 	double value;
@@ -186,7 +195,7 @@ public:
 
 
 	default_ai_context_proxy()
-		: target_(NULL)
+		: target_(nullptr)
 	{
 	}
 

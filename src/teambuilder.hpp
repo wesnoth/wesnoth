@@ -17,12 +17,12 @@
 #ifndef TEAMBUILDER_HPP_INCLUDED
 #define TEAMBUILDER_HPP_INCLUDED
 
-#include "team.hpp"
 #include <vector>
 #include <boost/shared_ptr.hpp>
 
 class config;
 class gamemap;
+class team;
 class team_builder;
 class game_board;
 typedef boost::shared_ptr<team_builder> team_builder_ptr;

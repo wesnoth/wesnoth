@@ -16,9 +16,9 @@
  * @file
  */
 
-#include "aspect.hpp"
-#include "../manager.hpp"
-#include "../../log.hpp"
+#include "ai/composite/aspect.hpp"
+#include "ai/manager.hpp"
+#include "log.hpp"
 
 namespace ai {
 
@@ -29,6 +29,7 @@ static lg::log_domain log_ai_aspect("ai/aspect");
 #define ERR_AI_ASPECT LOG_STREAM(err, log_ai_aspect)
 
 aspect::aspect(readonly_context &context, const config &cfg, const std::string &id):
+	time_of_day_(cfg["time_of_day"]),turns_(cfg["turns"]),
 	valid_(false), valid_variant_(false), valid_lua_(false), cfg_(cfg),
 	invalidate_on_turn_start_(cfg["invalidate_on_turn_start"].to_bool(true)),
 	invalidate_on_tod_change_(cfg["invalidate_on_tod_change"].to_bool(true)),
@@ -39,6 +40,7 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 		init_readonly_context_proxy(context);
 		redeploy(cfg,id);
+		DBG_AI_ASPECT << "aspect has time_of_day=["<<time_of_day_<<"], turns=["<<turns_<<"]" << std::endl;
 	}
 
 
@@ -48,8 +50,7 @@ aspect::~aspect()
 			manager::remove_turn_started_observer(this);
 		}
 		if (invalidate_on_tod_change_) {
-			///@todo 1.9 add tod_changed_observer
-			//manager::remove_tod_changed_observer(this);
+			manager::remove_tod_changed_observer(this);
 		}
 		if (invalidate_on_gamestate_change_) {
 			manager::remove_gamestate_observer(this);
@@ -75,8 +76,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 		manager::remove_turn_started_observer(this);
 	}
 	if (invalidate_on_tod_change_) {
-		///@todo 1.9 add tod_changed_observer
-		//manager::remove_tod_changed_observer(this);
+		manager::remove_tod_changed_observer(this);
 	}
 	if (invalidate_on_gamestate_change_) {
 		manager::remove_gamestate_observer(this);
@@ -102,8 +102,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 		manager::add_turn_started_observer(this);
 	}
 	if (invalidate_on_tod_change_) {
-		///@todo 1.9 add tod_changed_observer
-		//manager::add_tod_changed_observer(this);
+		manager::add_tod_changed_observer(this);
 	}
 	if (invalidate_on_gamestate_change_) {
 		manager::add_gamestate_observer(this);
@@ -122,12 +121,22 @@ config aspect::to_config() const
 	cfg["invalidate_on_tod_change"] = invalidate_on_tod_change_;
 	cfg["invalidate_on_gamestate_change"] = invalidate_on_gamestate_change_;
 	cfg["invalidate_on_minor_gamestate_change"] = invalidate_on_minor_gamestate_change_;
+	if (!time_of_day_.empty()) {
+		cfg["time_of_day"] = time_of_day_;
+	}
+	if (!turns_.empty()) {
+		cfg["turns"] = turns_;
+	}
 	cfg["engine"] = engine_;
 	cfg["name"] = name_;
 	cfg["id"] = id_;
 	return cfg;
 }
 
+bool aspect::active() const
+{
+	return this->is_active(time_of_day_,turns_);
+}
 
 bool aspect::delete_all_facets()
 {
@@ -146,6 +155,27 @@ const std::string& known_aspect::get_name() const
 
 known_aspect::~known_aspect()
 {
+}
+
+std::string lua_aspect_visitor::quote_string(const std::string& s)
+{
+	if (s.find_first_of('"') == std::string::npos) {
+		return '"' + s + '"';
+	} else if (s.find_first_of("'") == std::string::npos) {
+		return "'" + s + "'";
+	} else {
+		return "[=====[" + s + "]=====]";
+	}
+}
+
+// This is defined in the source file so that it can easily access the logger
+bool aspect_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_ASPECT << "Error: Attempt to double-register aspect " << name << std::endl;
+		return true;
+	}
+	return false;
 }
 
 } //end of namespace ai

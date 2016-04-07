@@ -15,9 +15,8 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <cassert>
-#include <cstring> // Needed for NULL.
 
-tlua_jailbreak_exception *tlua_jailbreak_exception::jailbreak_exception = NULL;
+tlua_jailbreak_exception *tlua_jailbreak_exception::jailbreak_exception = nullptr;
 
 void tlua_jailbreak_exception::store() const throw()
 {
@@ -58,6 +57,6 @@ void tlua_jailbreak_exception::rethrow()
 void tlua_jailbreak_exception::clear() throw()
 {
 	delete jailbreak_exception;
-	jailbreak_exception = NULL;
+	jailbreak_exception = nullptr;
 }
 

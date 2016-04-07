@@ -82,11 +82,11 @@ struct ttracer
 #ifdef __GNUC__
 #define TRACER_ENTRY(interval)                                               \
 	static ttracer tracer(__PRETTY_FUNCTION__);                              \
-	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : NULL)
+	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : nullptr)
 #else
 #define TRACER_ENTRY(interval)                                               \
 	static ttracer tracer(__FUNCTION__);                                     \
-	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : NULL)
+	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : nullptr)
 #endif
 
 /**

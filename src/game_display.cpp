@@ -32,20 +32,19 @@
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_label.hpp"
+#include "map/map.hpp"
+#include "map/label.hpp"
 #include "marked-up_text.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
-#include "terrain_type_data.hpp"
-#include "unit.hpp"
-#include "unit_drawer.hpp"
+#include "terrain/type_data.hpp"
+#include "units/unit.hpp"
+#include "units/drawer.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
 static lg::log_domain log_display("display");
@@ -72,8 +71,10 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
 		reports & reports_object,
 		const tod_manager& tod,
-		const config& theme_cfg, const config& level) :
-		display(&board, video, wb, reports_object, theme_cfg, level),
+		const config& theme_cfg,
+		const config& level,
+		bool) :
+		display(&board, video, wb, reports_object, theme_cfg, level, false),
 		overlay_map_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -99,7 +100,7 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static tod_manager dummy_tod(dummy_cfg);
 	static reports rep_;
 	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), rep_, dummy_tod,
-			dummy_cfg, dummy_cfg);
+			dummy_cfg, dummy_cfg, true);
 }
 
 game_display::~game_display()
@@ -128,22 +129,22 @@ void game_display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 #ifdef SDL_GPU
-				if(old_mask != NULL) {
+				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					tod_hex_mask1 = sdl::timage(adjust_surface_alpha(old_mask,proportion));
 				}
 
-				if(new_mask != NULL) {
+				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
 					tod_hex_mask2 = sdl::timage(adjust_surface_alpha(new_mask,proportion));
 				}
 #else
-				if(old_mask != NULL) {
+				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					tod_hex_mask1.assign(adjust_surface_alpha(old_mask,proportion));
 				}
 
-				if(new_mask != NULL) {
+				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
 					tod_hex_mask2.assign(adjust_surface_alpha(new_mask,proportion));
 				}
@@ -164,8 +165,8 @@ void game_display::new_turn()
 		tod_hex_mask1 = sdl::timage();
 		tod_hex_mask2 = sdl::timage();
 #else
-		tod_hex_mask1.assign(NULL);
-		tod_hex_mask2.assign(NULL);
+		tod_hex_mask1.assign(nullptr);
+		tod_hex_mask2.assign(nullptr);
 #endif
 	}
 
@@ -273,7 +274,7 @@ void game_display::draw_invalidated()
 
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
-	BOOST_FOREACH(const unit* temp_unit, *fake_unit_man_) {
+	for (const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
@@ -307,11 +308,11 @@ void game_display::draw_hex(const map_location& loc)
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
-		if( u != NULL ) {
+		if( u != nullptr ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
 #ifdef SDL_GPU
-		if(u == NULL) {
+		if(u == nullptr) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
@@ -333,7 +334,7 @@ void game_display::draw_hex(const map_location& loc)
 					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 		}
 #else
-		if(u == NULL) {
+		if(u == nullptr) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
@@ -444,7 +445,7 @@ void game_display::draw_hex(const map_location& loc)
 	if(game_config::debug) {
 		int debugH = debugHighlights_[loc];
 		if (debugH) {
-			std::string txt = lexical_cast<std::string>(debugH);
+			std::string txt = std::to_string(debugH);
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
 		}
 	}
@@ -475,7 +476,7 @@ void game_display::draw_sidebar()
 
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		BOOST_FOREACH(const std::string &name, reports_object_->report_list()) {
+		for (const std::string &name : reports_object_->report_list()) {
 			refresh_report(name);
 		}
 		invalidateGameStatus_ = false;
@@ -583,7 +584,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	if (!reach_map_.empty()) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
-			const std::string num = lexical_cast<std::string>(reach->second);
+			const std::string num = std::to_string(reach->second);
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
 		}
 	}
@@ -627,7 +628,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 #ifdef SDL_GPU
 	sdl::timage teleport;
 #else
-	surface teleport = NULL;
+	surface teleport = nullptr;
 #endif
 
 	// We draw 2 half-hex (with possibly different directions),
@@ -675,7 +676,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 #ifdef SDL_GPU
 	if (!teleport.null()) res.push_back(teleport);
 #else
-	if (teleport != NULL) res.push_back(teleport);
+	if (teleport != nullptr) res.push_back(teleport);
 #endif
 
 	return res;
@@ -692,7 +693,7 @@ void game_display::highlight_reach(const pathfind::paths &paths_list)
 void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 {
 	// Fold endpoints of routes into reachability map.
-	BOOST_FOREACH(const pathfind::paths::step &dest, paths_list.destinations) {
+	for (const pathfind::paths::step &dest : paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;
@@ -718,7 +719,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 {
 	invalidate_route();
 
-	if(route != NULL) {
+	if(route != nullptr) {
 		route_ = *route;
 	} else {
 		route_.steps.clear();

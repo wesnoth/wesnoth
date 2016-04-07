@@ -51,7 +51,7 @@ protected:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog */
-	virtual void pre_show(CVideo& video, twindow& window);
+	virtual void pre_show(twindow& window);
 
 	/** Inherited from tdialog */
 	virtual void post_show(twindow& window);

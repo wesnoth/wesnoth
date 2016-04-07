@@ -26,8 +26,8 @@
 #include "events.hpp"
 // #include "widgets/button.hpp"
 
-class display;
 class CVideo;
+class display;
 
 namespace gui { class button; }
 
@@ -56,7 +56,7 @@ public:
 	 * @param disp Display.
 	 * @param next_button Next button. Shouldn't be destroyed before the part_ui object.
 	 */
-	part_ui(part &p, display &disp, gui::button &next_button,
+	part_ui(part &p, CVideo& video, gui::button &next_button,
 		gui::button &back_button, gui::button& play_button);
 
 	/**
@@ -64,12 +64,13 @@ public:
 	 */
 	RESULT show();
 
-	virtual void handle_event(const SDL_Event& event);
+	virtual void handle_event(const SDL_Event&);
+
+	virtual void handle_window_event(const SDL_Event& event);
 
 private:
 	part& p_;
-	display& disp_;
-	CVideo& video_; // convenience, it's currently obtained from disp_
+	CVideo& video_;
 	CKey keys_;     // convenience
 
 	gui::button& next_button_;

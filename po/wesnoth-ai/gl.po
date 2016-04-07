@@ -4,15 +4,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Automatically generated, 2013.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2013, 2014, 2015.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-12-10 19:01-0300\n"
-"PO-Revision-Date: 2015-04-06 11:00+0200\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"PO-Revision-Date: 2016-02-06 20:31+0100\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -47,7 +48,7 @@ msgstr "IA de desenvolvemento: predeterminada co sistema vello de recrutamento"
 msgid "Multiplayer_AI^Dev AI: Strategy formulation with RCA "
 msgstr "IA de desenvolvemento: formulación de estratexia con RCA "
 
-#. [ai]: id=ai_akihara
+#. [ai]: id=ai_dev_akihara
 #: data/ai/dev/akihara_recruitment.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
 msgstr ""
@@ -772,7 +773,7 @@ msgstr "Marcho de aquí."
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Rápida"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/fast.cfg:64
@@ -786,6 +787,15 @@ msgid ""
 "There is nothing to do here, just watch or use this scenario as a template "
 "or for your own tests."
 msgstr ""
+"Este escenario presenta unha situación con tantas unidades no mapa que se "
+"produce un atraso importante, duns segundos, en cada un dos movementos da "
+"intelixencia artificial predeterminada. Pola contra, o atraso da micro "
+"intelixencia artificial rápida é moito menor. Para demostrar a diferenza, o "
+"bando 1 contrólao a micro intelixencia artificial rápida, mentres que o "
+"bando 2 contrólao a intelixencia artificial predeterminada (RCA).\n"
+"\n"
+"Non ten que facer nada, simplemente observe ou use o escenario como modelo "
+"para realizar as súas propias probas."
 
 #. [event]
 #. [test]: id=goto
@@ -2449,7 +2459,7 @@ msgstr "Ataque simple"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:92
 msgid "Fast AI"
-msgstr ""
+msgstr "IA rápida"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:99
@@ -2768,10 +2778,8 @@ msgstr ""
 #. [set_menu_item]: id=m16_fast
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:340
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:349
-#, fuzzy
-#| msgid "Patrol Micro AI demo"
 msgid "Fast Micro AI demo"
-msgstr "Demostración da micro IA de patrulla"
+msgstr "Demostración da micro IA rápida"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:349
@@ -2779,6 +2787,9 @@ msgid ""
 "A simple demonstration of the calculation time advantage of the Fast Micro "
 "AI over the default AI in scenarios with many units."
 msgstr ""
+"Unha demostración sinxela da vantaxe no tempo de cálculo da micro "
+"intelixencia artificial rápida fronte á intelixencia artificial "
+"predeterminada en escenarios con moitas unidades."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:359

@@ -2,8 +2,6 @@
 #include "replay_recorder_base.hpp"
 #include "serialization/binary_or_text.hpp"
 
-#include <boost/foreach.hpp>
-
 replay_recorder_base::replay_recorder_base(void)
 	: upload_log_()
 	, commands_()
@@ -89,7 +87,7 @@ void replay_recorder_base::append_config(const config& data)
 	{
 		upload_log_ = upload_log;
 	}
-	BOOST_FOREACH(const config& command, data.child_range("command"))
+	for(const config& command : data.child_range("command"))
 	{
 		commands_.push_back(new config(command));
 	}
@@ -101,7 +99,7 @@ void replay_recorder_base::append_config(config& data)
 	{
 		upload_log_.swap(upload_log);
 	}
-	BOOST_FOREACH(config& command, data.child_range("command"))
+	for(config& command : data.child_range("command"))
 	{
 		config* new_config = new config();
 		new_config->swap(command);

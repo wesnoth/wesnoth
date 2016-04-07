@@ -22,13 +22,12 @@
 #include "global.hpp"
 
 #include "desktop/notifications.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <string>
 #include <vector>
 
@@ -54,7 +53,7 @@ bool notif_pref(std::string id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items = boost::assign::list_of("player_joins")("player_leaves")("private_message")("friend_message")("public_message")("server_message")("ready_for_start")("game_has_begun")("turn_changed");
+const std::vector<std::string> items = {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed"};
 
 void player_joins(bool is_lobby)
 {

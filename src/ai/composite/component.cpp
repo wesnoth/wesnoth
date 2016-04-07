@@ -17,18 +17,17 @@
  * @file
  */
 
-#include "component.hpp"
-#include "engine.hpp"
-#include "property_handler.hpp"
-#include "../../config.hpp"
-#include "../../log.hpp"
-#include "../../unit.hpp"
+#include "ai/composite/component.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/property_handler.hpp"
+#include "config.hpp"
+#include "log.hpp"
+#include "units/unit.hpp"
 
-#include "../formula/ai.hpp"
+#include "ai/formula/ai.hpp"
 
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
-#include <boost/foreach.hpp>
 
 namespace pathfind {
 
@@ -76,7 +75,7 @@ component* component::get_child(const path_element &child)
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_get(child);
 	}
-	return NULL;
+	return nullptr;
 }
 
 
@@ -124,7 +123,7 @@ std::vector<component*> component::get_children(const std::string &type)
 std::vector<std::string> component::get_children_types()
 {
 	std::vector<std::string> types;
-	BOOST_FOREACH(property_handler_map::value_type &ph, property_handlers_) {
+	for (property_handler_map::value_type &ph : property_handlers_) {
 		types.push_back(ph.first);
 	}
 	return types;
@@ -138,8 +137,8 @@ property_handler_map& component::property_handlers()
 
 static component *find_component(component *root, const std::string &path, path_element &tail)
 {
-	if (root==NULL) {
-		return NULL;
+	if (root==nullptr) {
+		return nullptr;
 	}
 
 	//match path elements in [modify_ai] tag
@@ -170,15 +169,15 @@ static component *find_component(component *root, const std::string &path, path_
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {
-		return NULL;
+		return nullptr;
 	}
 
 	std::vector< path_element >::iterator k_max = elements.end()-1;
 	for (std::vector< path_element >::iterator k = elements.begin(); k!=k_max; ++k) {
 		//not last
 		c = c->get_child(*k);
-		if (c==NULL) {
-			return NULL;
+		if (c==nullptr) {
+			return nullptr;
 		}
 	}
 
@@ -192,7 +191,7 @@ bool component_manager::add_component(component *root, const std::string &path, 
 {
 	path_element tail;
 	component *c = find_component(root,path,tail);
-	if (c==NULL) {
+	if (c==nullptr) {
 		return false;
 	}
 	const config &ch = cfg.child(tail.property);
@@ -207,7 +206,7 @@ bool component_manager::change_component(component *root, const std::string &pat
 {
 	path_element tail;
 	component *c = find_component(root,path,tail);
-	if (c==NULL) {
+	if (c==nullptr) {
 		return false;
 	}
 	const config &ch = cfg.child(tail.property);
@@ -221,7 +220,7 @@ bool component_manager::delete_component(component *root, const std::string &pat
 {
 	path_element tail;
 	component *c = find_component(root,path,tail);
-	if (c==NULL) {
+	if (c==nullptr) {
 		return false;
 	}
 	return c->delete_child(tail);
@@ -240,9 +239,9 @@ static void print_component(component *root, const std::string &type, std::strin
 
 	s << offset_str << type<<"["<<root->get_id() <<"] "<<root->get_engine()<<" "<<root->get_name()<< std::endl;
 
-	BOOST_FOREACH(std::string t, t_list) {
+	for (std::string t : t_list) {
 		std::vector<component*> c_list = root->get_children(t);
-		BOOST_FOREACH(component *c, c_list) {
+		for (component *c : c_list) {
 			print_component(c,t,s,offset+1);
 		}
 	}
@@ -254,7 +253,7 @@ std::string component_manager::print_component_tree(component *root, const std::
 	component *c;
 	if (!path.empty()) {
 		c = find_component(root,path,tail);
-		if (c==NULL) {
+		if (c==nullptr) {
 			ERR_AI_COMPONENT << "unable to find component" <<std::endl;
 			return "";
 		}
@@ -272,7 +271,7 @@ component* component_manager::get_component(component *root, const std::string &
 		path_element tail;
 		return find_component(root, path, tail);
 	}
-	return NULL;
+	return nullptr;
 }
 
 } //end of namespace ai

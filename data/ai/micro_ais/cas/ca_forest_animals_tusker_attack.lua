@@ -19,7 +19,7 @@ end
 
 local ca_forest_animals_tusker_attack = {}
 
-function ca_forest_animals_tusker_attack:evaluation(ai, cfg)
+function ca_forest_animals_tusker_attack:evaluation(cfg)
     -- Check whether there is an enemy next to a tusklet and attack it ("protective parents" AI)
 
     if (not cfg.tusker_type) or (not cfg.tusklet_type) then return 0 end
@@ -28,7 +28,7 @@ function ca_forest_animals_tusker_attack:evaluation(ai, cfg)
     return cfg.ca_score
 end
 
-function ca_forest_animals_tusker_attack:execution(ai, cfg)
+function ca_forest_animals_tusker_attack:execution(cfg)
     local tuskers = get_tuskers(cfg)
     local adjacent_enemies = get_adjacent_enemies(cfg)
 

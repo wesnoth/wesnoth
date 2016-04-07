@@ -15,7 +15,7 @@
 #ifndef SYNCED_CHECKUP_H_INCLUDED
 #define SYNCED_CHECKUP_H_INCLUDED
 
-#include "config.hpp"
+class config;
 struct map_location;
 /**
 	A class to check whether the results that were calculated in the replay match the results calculated during the original game.

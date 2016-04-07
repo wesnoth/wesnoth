@@ -21,7 +21,7 @@
 #define INCLUDED_PLUGINS_MANAGER_HPP_
 
 #include "config.hpp"
-#include "make_enum.hpp"
+#include "utils/make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/scoped_ptr.hpp>

@@ -21,7 +21,6 @@
 #include "ucs4_convert_impl.hpp"
 #include "unicode_cast.hpp"
 
-#include <boost/static_assert.hpp>
 #include <string>
 #include <vector>
 

@@ -21,8 +21,8 @@ class config;
 class unit_race;
 
 #include "util.hpp"
-#include "map_location.hpp"
-#include "terrain_translation.hpp"
+#include "map/location.hpp"
+#include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/random.hpp>
@@ -60,8 +60,8 @@ private:
 	bool generate_lake(t_translation::t_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
 	std::string generate_name(const unit_race& name_generator, const std::string& id,
-		std::string* base_name=NULL,
-		utils::string_map* additional_symbols=NULL);
+		std::string* base_name=nullptr,
+		utils::string_map* additional_symbols=nullptr);
 
 	boost::random::mt19937 rng_;
 

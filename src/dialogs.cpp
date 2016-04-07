@@ -33,8 +33,8 @@
 #include "help/help_button.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "map.hpp"
-#include "map_exception.hpp"
+#include "map/map.hpp"
+#include "map/exception.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
@@ -47,21 +47,20 @@
 #include "save_index.hpp"
 #include "strftime.hpp"
 #include "synced_context.hpp"
-#include "terrain_type_data.hpp"
+#include "terrain/type_data.hpp"
 #include "thread.hpp"
-#include "unit.hpp"
-#include "unit_animation.hpp"
-#include "unit_helper.hpp"
-#include "unit_types.hpp"
+#include "units/unit.hpp"
+#include "units/animation.hpp"
+#include "units/helper.hpp"
+#include "units/types.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/lua/aspect_advancements.hpp"
 
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -107,7 +106,7 @@ template<typename T> void dump(const T & units)
 
 	LOG_DP << "size: " << units.size() << "\n";
 	size_t idx = 0;
-	BOOST_FOREACH(const unit_const_ptr & u_ptr, units) {
+	for (const unit_const_ptr & u_ptr : units) {
 		LOG_DP << "unit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
 	}
 }
@@ -194,7 +193,7 @@ int advance_unit_dialog(const map_location &loc)
 	}
 
 	bool always_display = false;
-	BOOST_FOREACH(const config &mod, u->get_modification_advances())
+	for (const config &mod : u->get_modification_advances())
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units->push_back(::get_amla_unit(*u, mod));
@@ -433,7 +432,7 @@ void show_objectives(const std::string &scenarioname, const std::string &objecti
 int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const std::vector< std::string >& items, int side, const std::string& title_suffix)
 {
 	dialogs::unit_types_preview_pane unit_preview(
-		units, NULL, side);
+		units, nullptr, side);
 	std::vector<gui::preview_pane*> preview_panes;
 	preview_panes.push_back(&unit_preview);
 
@@ -483,7 +482,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const unit_const_ptr & u, *units)
+	for (const unit_const_ptr & u : *units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -499,7 +498,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 			option << "~BLIT(" << unit::leader_crown() << ")";
 		}
 
-		BOOST_FOREACH(const std::string& overlay, u->overlays())
+		for(const std::string& overlay : u->overlays())
 		{
 			option << "~BLIT(" << overlay << ")";
 		}
@@ -545,7 +544,7 @@ int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const
 		option_to_filter << u->type_name() << " " << name << " " << u->level();
 
 		option << COLUMN_SEPARATOR;
-		BOOST_FOREACH(const t_string& trait, u->trait_names()) {
+		for(const t_string& trait : u->trait_names()) {
 			option << trait << '\n';
 			option_to_filter << " " << trait;
 		}
@@ -711,7 +710,7 @@ void unit_preview_pane::draw_contents()
 		image_rect = rect;
 
 		if(!det.overlays.empty()) {
-			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+			for(const std::string& overlay : det.overlays) {
 				sdl::timage oi = image::get_texture(overlay);
 
 				if(!oi.null()) {
@@ -843,7 +842,7 @@ void unit_preview_pane::draw_contents()
 
 	SDL_Rect image_rect = sdl::create_rect(area.x, area.y, 0, 0);
 
-	if(unit_image != NULL) {
+	if(unit_image != nullptr) {
 		SDL_Rect rect = sdl::create_rect(
 				  right_align
 					? area.x
@@ -852,11 +851,11 @@ void unit_preview_pane::draw_contents()
 				, unit_image->w
 				, unit_image->h);
 
-		sdl_blit(unit_image,NULL,screen,&rect);
+		sdl_blit(unit_image,nullptr,screen,&rect);
 		image_rect = rect;
 
 		if(!det.overlays.empty()) {
-			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+			for(const std::string& overlay : det.overlays) {
 				surface os = image::get_image(overlay);
 
 				if(!os) {
@@ -867,7 +866,7 @@ void unit_preview_pane::draw_contents()
 					os = scale_surface(os, rect.w, rect.h, false);
 				}
 
-				sdl_blit(os, NULL, screen, &rect);
+				sdl_blit(os, nullptr, screen, &rect);
 			}
 		}
 	}
@@ -881,6 +880,7 @@ void unit_preview_pane::draw_contents()
 			, details_button_.location().w
 			, details_button_.location().h);
 	details_button_.set_location(button_loc);
+	details_button_.set_dirty(true);
 
 	SDL_Rect description_rect = sdl::create_rect(image_rect.x
 			, image_rect.y + image_rect.h + details_button_.location().h
@@ -979,7 +979,7 @@ void unit_preview_pane::draw_contents()
 
 
 units_list_preview_pane::units_list_preview_pane(unit_const_ptr u, TYPE type, bool on_left_side) :
-	unit_preview_pane(NULL, type, on_left_side),
+	unit_preview_pane(nullptr, type, on_left_side),
 	units_(boost::make_shared<const std::vector<unit_const_ptr> >(1, u))
 {
 }
@@ -1048,7 +1048,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 		det.overlays.push_back(unit::leader_crown());
 	};
 
-	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
+	for(const std::string& overlay : u.overlays()) {
 		det.overlays.push_back(overlay);
 	}
 
@@ -1072,7 +1072,7 @@ unit_types_preview_pane::unit_types_preview_pane(
 
 size_t unit_types_preview_pane::size() const
 {
-	return (unit_types_!=NULL) ? unit_types_->size() : 0;
+	return (unit_types_!=nullptr) ? unit_types_->size() : 0;
 }
 
 const unit_types_preview_pane::details unit_types_preview_pane::get_details() const
@@ -1080,7 +1080,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	const unit_type* t = (*unit_types_)[index_];
 	details det;
 
-	if (t==NULL)
+	if (t==nullptr)
 		return det;
 
 	// Make sure the unit type is built with enough data for our needs.
@@ -1096,7 +1096,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.race = t->race()->name(t->genders().front());
 
 	//FIXME: This probably must be move into a unit_type function
-	BOOST_FOREACH(const config &tr, t->possible_traits())
+	for (const config &tr : t->possible_traits())
 	{
 		if (tr["availability"] != "musthave") continue;
 
@@ -1127,7 +1127,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	// Check if AMLA color is needed
 	// FIXME: not sure if it's fully accurate (but not very important for unit_type)
 	// xp_color also need a simpler function for doing this
-	BOOST_FOREACH(const config &adv, t->modification_advancements())
+	for (const config &adv : t->modification_advancements())
 	{
 		if (!adv["strict_amla"].to_bool() || !t->can_advance()) {
 			det.xp_color = "<170,0,255>"; // from unit::xp_color()
@@ -1147,7 +1147,7 @@ void unit_types_preview_pane::process_event()
 	assert(resources::screen);
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
-		if (type != NULL)
+		if (type != nullptr)
 			help::show_unit_description(resources::screen->video(), *type);
 	}
 }

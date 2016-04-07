@@ -29,6 +29,7 @@
 #include "serialization/unicode.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
+#include "preferences.hpp"
 
 namespace font {
 
@@ -155,7 +156,7 @@ std::string del_tags(const std::string& text){
 	for(line = lines.begin(); line != lines.end(); ++line) {
 		std::string::const_iterator i1 = line->begin(),
 			i2 = line->end();
-		*line = std::string(parse_markup(i1,i2,NULL,NULL,NULL),i2);
+		*line = std::string(parse_markup(i1,i2,nullptr,nullptr,nullptr),i2);
 	}
 	return utils::join(lines, "\n");
 }
@@ -187,7 +188,7 @@ std::string span_color(const SDL_Color &color)
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};
-	return draw_text(NULL, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
+	return draw_text(nullptr, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 
 SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
@@ -241,9 +242,9 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	surface null_surf = surface(NULL);
+	surface null_surf = surface(nullptr);
 
-	return draw_text(gui != NULL ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
+	return draw_text(gui != nullptr ? gui->getSurface() : null_surf, area, size, color, txt, x, y, use_tooltips, style);
 }
 
 bool is_format_char(char c)
@@ -323,6 +324,7 @@ static void cut_word(std::string& line, std::string& word, int font_size, int st
 	std::string tmp = line;
 	utf8::iterator tc(word);
 	bool first = true;
+	font_size = preferences::font_scaled(font_size);
 
 	for(;tc != utf8::iterator::end(word); ++tc) {
 		tmp.append(tc.substr().first, tc.substr().second);
@@ -509,7 +511,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 			start_of_line = true;
 		} else {
 
-			const size_t word_width = line_size(current_word, font_sz, style).w;
+			const size_t word_width = line_size(current_word, preferences::font_scaled(font_sz), style).w;
 
 			line_width += word_width;
 
@@ -528,7 +530,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 		}
 
 		if(line_break || (current_word.empty() && ch == end)) {
-			SDL_Rect size = line_size(current_line, font_sz, style);
+			SDL_Rect size = line_size(current_line, preferences::font_scaled(font_sz), style);
 			if(max_height > 0 && current_height + size.h >= size_t(max_height)) {
 				return wrapped_text;
 			}
@@ -569,7 +571,7 @@ sdl::timage draw_text_to_texture(const SDL_Rect &area, int size, const SDL_Color
 										0x00ff0000,
 										0x0000ff00,
 										0x000000ff);
-	SDL_FillRect(surf, NULL, 0x000000ff);
+	SDL_FillRect(surf, nullptr, 0x000000ff);
 	draw_text(surf, area, size, color, text, 0, 0, use_tooltips, style);
 
 	return sdl::timage(surf);

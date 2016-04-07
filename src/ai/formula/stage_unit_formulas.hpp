@@ -21,7 +21,7 @@
 #ifndef AI_FORMULA_STAGE_UNIT_FORMULAS_HPP_INCLUDED
 #define AI_FORMULA_STAGE_UNIT_FORMULAS_HPP_INCLUDED
 
-#include "../composite/stage.hpp"
+#include "ai/composite/stage.hpp"
 
 
 #ifdef _MSC_VER

@@ -15,7 +15,7 @@
 #define MINIMAP_HPP_INCLUDED
 
 #include <cstddef>
-#include "map.hpp"
+#include "map/map.hpp"
 
 class gamemap;
 struct surface;
@@ -31,9 +31,9 @@ namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
 #ifdef SDL_GPU
-	SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw = NULL, const std::map<map_location,unsigned int> *reach_map = NULL);
+	SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr);
 #endif
-	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = NULL, const std::map<map_location,unsigned int> *reach_map = NULL);
+	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr);
 }
 
 #endif

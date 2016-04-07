@@ -2,16 +2,16 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
-local ca_protect_unit_attack = {}
+local ca_protect_unit_attack, best_attack = {}
 
-function ca_protect_unit_attack:evaluation(ai, cfg, self)
+function ca_protect_unit_attack:evaluation(cfg)
     -- Find possible attacks for the units
     -- This is set up very conservatively: if a unit can die in the attack
     -- or the counter attack on the enemy turn, it does not attack, even if that's really unlikely
 
     local units = {}
-    for _,id in ipairs(cfg.id) do
-        table.insert(units, AH.get_units_with_attacks { id = id }[1])
+    for u in H.child_range(cfg, "unit") do
+        table.insert(units, AH.get_units_with_attacks { id = u.id }[1])
     end
     if (not units[1]) then return 0 end
 
@@ -32,7 +32,7 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
     -- Set up a counter attack damage table, as many pairs of attacks will be the same
     local counter_damage_table = {}
 
-    local max_rating, best_attack = -9e99
+    local max_rating = -9e99
     for _,attack in pairs(attacks) do
         -- Only consider attack if there is no chance to die or to be poisoned or slowed
         if (attack.att_stats.hp_chance[0] == 0)
@@ -96,22 +96,21 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
     end
 
     if best_attack then
-        self.data.PU_best_attack = best_attack
         return 95000
     end
     return 0
 end
 
-function ca_protect_unit_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.PU_best_attack.src.x, self.data.PU_best_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.PU_best_attack.target.x, self.data.PU_best_attack.target.y)
+function ca_protect_unit_attack:execution(cfg)
+    local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
+    local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
 
-    AH.movefull_stopunit(ai, attacker, self.data.PU_best_attack.dst.x, self.data.PU_best_attack.dst.y)
+    AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
 
     AH.checked_attack(ai, attacker, defender)
-    self.data.PU_best_attack = nil
+    best_attack = nil
 end
 
 return ca_protect_unit_attack

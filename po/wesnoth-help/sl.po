@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -49,14 +49,14 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:478
+#: data/core/macros/abilities.cfg:470
 #, fuzzy
 msgid "magical"
 msgstr "čaroben"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:479
+#: data/core/macros/abilities.cfg:471
 #, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -67,14 +67,14 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:523
+#: data/core/macros/abilities.cfg:515
 #, fuzzy
 msgid "first strike"
 msgstr "prvi napad"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:524
+#: data/core/macros/abilities.cfg:516
 #, fuzzy
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
@@ -630,8 +630,8 @@ msgstr "Veličastno drevo"
 #: data/core/encyclopedia/geography.cfg:33
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
-"and all rivers eventually flow to it. Far to the west in the the Great Ocean "
-"is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
+"and all rivers eventually flow to it. Far to the west in the Great Ocean is "
+"a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
 
 #. [topic]: id=morogor
@@ -935,7 +935,7 @@ msgstr "Igra"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:393
+#: data/core/help.cfg:29 data/core/help.cfg:398
 #, fuzzy
 msgid "Traits"
 msgstr "Značilnosti"
@@ -968,19 +968,19 @@ msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:72 data/core/help.cfg:530
+#: data/core/help.cfg:72 data/core/help.cfg:535
 msgid "Terrains"
 msgstr "Vrste terena"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:80 data/core/help.cfg:583
+#: data/core/help.cfg:80 data/core/help.cfg:588
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:86 data/core/help.cfg:650
+#: data/core/help.cfg:86 data/core/help.cfg:655
 msgid "Commands"
 msgstr "Ukazi"
 
@@ -1557,10 +1557,10 @@ msgid ""
 "\n"
 "\n"
 "Another thing to keep in mind while moving is <italic>text='zones of "
-"control'</italic>. Each unit generates a zone of control in the hexes "
-"immediately surrounding it, and any enemy unit entering those hexes "
-"immediately ends its movement. Learning how to use zones of control to your "
-"advantage is an important part of Wesnoth, as only "
+"control'</italic>. Each unit — except for level 0 units — generates a zone "
+"of control in the hexes immediately surrounding it, and any enemy unit "
+"entering those hexes immediately ends its movement. Learning how to use "
+"zones of control to your advantage is an important part of Wesnoth, as only "
 "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones of "
 "control."
 msgstr ""
@@ -2038,7 +2038,7 @@ msgstr "Zdravljenje"
 msgid ""
 "\n"
 "\n"
-"<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor is "
+"• <bold>text='Resting'</bold>: A unit which neither moves, attacks, nor is "
 "attacked will heal 2 HP in its next turn."
 msgstr ""
 "\n"
@@ -2048,27 +2048,20 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:360
-#, fuzzy
 msgid ""
-"In combat, your units will inevitably take damage. When a unit "
-"<ref>dst='advancement' text='advances'</ref>, it will heal fully. This can "
-"happen as you finish fighting an enemy, whether it is your turn or not. "
-"Wesnoth offers several other ways for your units to heal, all of which take "
-"place at the beginning of your turn, before you take action."
+"In combat, your units will inevitably take damage. There are several ways to "
+"heal your units. However, with the exception of resting, these do not stack; "
+"only one can occur per turn."
 msgstr ""
-"V boju bodo vaše enote slej ko prej utrpele poškodbe. Ko enota "
-"<ref>dst=experience_and_advancement text=napreduje</ref>, se bo popolnoma "
-"pozdravila. To se lahko zgodi po boju s sovražnikom, ne glede na to čigava "
-"poteza je. Wesnoth omogoča več drugih načinov zdravljenja vaših enot, od "
-"katerih se vsi zgodijo na začetku vaše poteze, preden karkoli ukrenete."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:362
 #, fuzzy
 msgid ""
 "\n"
-"<italic>text='Villages'</italic>: A unit which starts a turn in a village "
-"will heal 8HP."
+"• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
+"oasis will heal 8HP. If the unit is poisoned, the poison will be cured "
+"instead."
 msgstr ""
 "\n"
 "Vasi: enota, ki bo začela potezo v vasi, se bo pozdravila za 8 HP."
@@ -2078,8 +2071,9 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-"(such as trolls) will automatically heal 8HP every turn."
+"• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
+"(such as trolls) will automatically heal 8HP every turn. If the unit is "
+"poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneracija</ref>: Določene enote (na "
@@ -2090,11 +2084,10 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"<italic>text='Healing units'</italic>: Units with the "
-"<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each allied "
-"adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</ref> or "
-"<ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent Poison "
-"from causing that unit damage."
+"• <bold>text='Healing units'</bold>: Units with the <ref>dst='ability_heals "
+"+4' text='Heals'</ref> ability will heal each allied adjacent unit, usually "
+"<ref>dst='ability_heals +4' text='4HP'</ref> or <ref>dst='ability_heals +8' "
+"text='8HP'</ref> per turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
 "Ranocelniki: Enote s sposobnostjo <ref>dst=ability_heals text='Ranocelnik "
@@ -2106,10 +2099,9 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"<italic>text='Curing units'</italic>: Units with the "
-"<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in all "
-"allied adjacent units (in preference to healing, if it has that ability as "
-"well)."
+"• <bold>text='Curing units'</bold>: Units with the <ref>dst='ability_cures' "
+"text='cures'</ref> ability will cure Poison in all allied adjacent units (in "
+"preference to healing, if it has that ability as well)."
 msgstr ""
 "\n"
 "\n"
@@ -2119,6 +2111,15 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:366
+msgid ""
+"\n"
+"• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
+"text='advances'</ref>, it will heal fully. This can happen as soon as your "
+"unit gains enough experience, whether it is your turn or not."
+msgstr ""
+
+#. [topic]: id=healing
+#: data/core/help.cfg:367
 #, fuzzy
 msgid ""
 "\n"
@@ -2133,13 +2134,33 @@ msgstr ""
 "regeneracije in zdravljenja se ne seštevajo: uporabljena bo najboljša "
 "možnost. Poleg tega se vse enote med scenariji popolnoma pozdravijo."
 
+#. [topic]: id=healing
+#: data/core/help.cfg:369
+msgid ""
+"\n"
+"\n"
+"<bold>text='Advanced'</bold>"
+msgstr ""
+
+#. [topic]: id=healing
+#: data/core/help.cfg:371
+msgid ""
+"\n"
+"\n"
+"Unlike other forms of healing, the heals ability will not take effect on the "
+"healed unit’s turn, but on the healer’s turn. This means that while a unit "
+"surrounded by several healers on the same side will only receive healing "
+"from one healer per turn, a unit surrounded by healers from several allied "
+"sides will be healed once on each of said allied sides’ turns."
+msgstr ""
+
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:374
+#: data/core/help.cfg:379
 msgid "Wrap Up"
 msgstr "Zaključek"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:375
+#: data/core/help.cfg:380
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -2156,17 +2177,17 @@ msgstr ""
 
 # Preveri!
 #. [topic]: id=about
-#: data/core/help.cfg:380
+#: data/core/help.cfg:385
 msgid "ingame_help_item^Contributors"
 msgstr "Sodelujoči"
 
 #. [topic]: id=license
-#: data/core/help.cfg:386
+#: data/core/help.cfg:391
 msgid "License"
 msgstr "Licenca"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:395
+#: data/core/help.cfg:400
 #, fuzzy
 msgid ""
 "\n"
@@ -2181,7 +2202,7 @@ msgstr ""
 "naključno, ob nastanku."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:395
+#: data/core/help.cfg:400
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2190,7 +2211,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:397
+#: data/core/help.cfg:402
 #, fuzzy
 msgid ""
 "\n"
@@ -2208,7 +2229,7 @@ msgstr ""
 "<ref>dst=traits_strong text=močan</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:399
+#: data/core/help.cfg:404
 #, fuzzy
 msgid ""
 "\n"
@@ -2228,12 +2249,12 @@ msgstr ""
 "text=nemrtev</ref>."
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:409
+#: data/core/help.cfg:414
 msgid "Intelligent"
 msgstr "Inteligenten"
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:410
+#: data/core/help.cfg:415
 #, fuzzy
 msgid ""
 "\n"
@@ -2254,7 +2275,7 @@ msgstr ""
 "dokončno razvitih enot, prikličite tako z boljšimi značilnostmi."
 
 #. [topic]: id=traits_intelligent
-#: data/core/help.cfg:410
+#: data/core/help.cfg:415
 #, fuzzy
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
@@ -2262,12 +2283,12 @@ msgstr ""
 "izkustveni nivo."
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:417
+#: data/core/help.cfg:422
 msgid "Quick"
 msgstr "Hiter"
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:418
+#: data/core/help.cfg:423
 #, fuzzy
 msgid ""
 "\n"
@@ -2288,7 +2309,7 @@ msgstr ""
 "tako dobre za držanje položajev."
 
 #. [topic]: id=traits_quick
-#: data/core/help.cfg:418
+#: data/core/help.cfg:423
 #, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
@@ -2298,12 +2319,12 @@ msgstr ""
 "manj HP."
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:425
+#: data/core/help.cfg:430
 msgid "Resilient"
 msgstr "Odporen"
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:426
+#: data/core/help.cfg:431
 #, fuzzy
 msgid ""
 "\n"
@@ -2322,7 +2343,7 @@ msgstr ""
 "držanje pomembnih položajev."
 
 #. [topic]: id=traits_resilient
-#: data/core/help.cfg:426
+#: data/core/help.cfg:431
 #, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
@@ -2330,12 +2351,12 @@ msgid ""
 msgstr "Odporne enote imajo 10% +3 več HP kot ponavadi."
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:433
+#: data/core/help.cfg:438
 msgid "Strong"
 msgstr "Močan"
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:434
+#: data/core/help.cfg:439
 #, fuzzy
 msgid ""
 "\n"
@@ -2353,7 +2374,7 @@ msgstr ""
 "smrtonosnega."
 
 #. [topic]: id=traits_strong
-#: data/core/help.cfg:434
+#: data/core/help.cfg:439
 #, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
@@ -2363,23 +2384,23 @@ msgstr ""
 "imajo 1 HP več."
 
 #. [topic]: id=traits_fearless
-#: data/core/help.cfg:441
+#: data/core/help.cfg:446
 msgid "Fearless"
 msgstr "Neustrašen"
 
 #. [topic]: id=traits_fearless
-#: data/core/help.cfg:442
+#: data/core/help.cfg:447
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
 #. [topic]: id=traits_feral
-#: data/core/help.cfg:447
+#: data/core/help.cfg:452
 #, fuzzy
 msgid "Feral"
 msgstr "Jamska stena"
 
 #. [topic]: id=traits_feral
-#: data/core/help.cfg:448
+#: data/core/help.cfg:453
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -2388,12 +2409,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:453
+#: data/core/help.cfg:458
 msgid "Loyal"
 msgstr "Zvest"
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:454
+#: data/core/help.cfg:459
 #, fuzzy
 msgid ""
 "\n"
@@ -2413,7 +2434,7 @@ msgstr ""
 "rajši ne odpravite in jih poskušajte ohraniti pri življenju."
 
 #. [topic]: id=traits_loyal
-#: data/core/help.cfg:454
+#: data/core/help.cfg:459
 #, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
@@ -2424,12 +2445,12 @@ msgstr ""
 "koncu vsake poteze v višini njihovega nivoja."
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:461
+#: data/core/help.cfg:466
 msgid "trait^Undead"
 msgstr "Nemrtev"
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:462
+#: data/core/help.cfg:467
 #, fuzzy
 msgid ""
 "\n"
@@ -2446,19 +2467,19 @@ msgstr ""
 "neprecenljive v boju s sovražniki, ki uporabljajo zastrupljena orožja."
 
 #. [topic]: id=traits_undead
-#: data/core/help.cfg:462
+#: data/core/help.cfg:467
 #, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr "Nemrtve enote so imune na strup."
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:469
+#: data/core/help.cfg:474
 msgid "trait^Mechanical"
 msgstr ""
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:470
+#: data/core/help.cfg:475
 msgid ""
 "\n"
 "\n"
@@ -2468,7 +2489,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_mechanical
-#: data/core/help.cfg:470
+#: data/core/help.cfg:475
 #, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
@@ -2476,13 +2497,13 @@ msgid ""
 msgstr "Nemrtve enote so imune na strup."
 
 #. [topic]: id=traits_elemental
-#: data/core/help.cfg:477
+#: data/core/help.cfg:482
 #, fuzzy
 msgid "trait^Elemental"
 msgstr "Tabor"
 
 #. [topic]: id=traits_elemental
-#: data/core/help.cfg:478
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -2492,7 +2513,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_elemental
-#: data/core/help.cfg:478
+#: data/core/help.cfg:483
 #, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
@@ -2500,12 +2521,12 @@ msgid ""
 msgstr "Nemrtve enote so imune na strup."
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:485
+#: data/core/help.cfg:490
 msgid "Dextrous"
 msgstr "Spreten"
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:486
+#: data/core/help.cfg:491
 #, fuzzy
 msgid ""
 "\n"
@@ -2523,7 +2544,7 @@ msgstr ""
 "napravijo dodatno točko škode."
 
 #. [topic]: id=traits_dextrous
-#: data/core/help.cfg:486
+#: data/core/help.cfg:491
 #, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
@@ -2531,12 +2552,12 @@ msgid ""
 msgstr "Spretne enote naredijo z vsakim zadetkom na daleč 1 točko škode več."
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:493
+#: data/core/help.cfg:498
 msgid "Healthy"
 msgstr ""
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:494
+#: data/core/help.cfg:499
 msgid ""
 "\n"
 "\n"
@@ -2546,19 +2567,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_healthy
-#: data/core/help.cfg:494
+#: data/core/help.cfg:499
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
 msgstr ""
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:501
+#: data/core/help.cfg:506
 msgid "Dim"
 msgstr "Omejen"
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:502
+#: data/core/help.cfg:507
 msgid ""
 "\n"
 "\n"
@@ -2567,19 +2588,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_dim
-#: data/core/help.cfg:502
+#: data/core/help.cfg:507
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:509
+#: data/core/help.cfg:514
 msgid "Slow"
 msgstr "Počasen"
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:510
+#: data/core/help.cfg:515
 msgid ""
 "\n"
 "\n"
@@ -2589,7 +2610,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=traits_slow
-#: data/core/help.cfg:510
+#: data/core/help.cfg:515
 #, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
@@ -2599,12 +2620,12 @@ msgstr ""
 "manj HP."
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:517
+#: data/core/help.cfg:522
 msgid "Weak"
 msgstr "Šibek"
 
 #. [topic]: id=traits_weak
-#: data/core/help.cfg:518
+#: data/core/help.cfg:523
 #, fuzzy
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
@@ -2612,21 +2633,21 @@ msgid ""
 msgstr "Nemrtve enote so imune na strup."
 
 #. [topic]: id=traits_aged
-#: data/core/help.cfg:523
+#: data/core/help.cfg:528
 #, fuzzy
 #| msgid "trait^Undead"
 msgid "trait^Aged"
 msgstr "Nemrtev"
 
 #. [topic]: id=traits_aged
-#: data/core/help.cfg:524
+#: data/core/help.cfg:529
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:531
+#: data/core/help.cfg:536
 msgid ""
 "\n"
 "\n"
@@ -2635,14 +2656,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:531
+#: data/core/help.cfg:536
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:533
+#: data/core/help.cfg:538
 #, fuzzy
 msgid ""
 "\n"
@@ -2654,7 +2675,7 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:535
+#: data/core/help.cfg:540
 msgid ""
 "\n"
 "\n"
@@ -2665,7 +2686,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:539
+#: data/core/help.cfg:544
 msgid ""
 "\n"
 "\n"
@@ -2675,7 +2696,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:541
+#: data/core/help.cfg:546
 #, fuzzy
 msgid ""
 "\n"
@@ -2687,7 +2708,7 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:543
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "\n"
@@ -2701,7 +2722,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "\n"
@@ -2716,7 +2737,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:551
+#: data/core/help.cfg:556
 msgid ""
 "\n"
 "\n"
@@ -2727,7 +2748,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:555
+#: data/core/help.cfg:560
 msgid ""
 "\n"
 "\n"
@@ -2738,7 +2759,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:559
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "\n"
@@ -2748,7 +2769,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
+#: data/core/help.cfg:566
 msgid ""
 "\n"
 "\n"
@@ -2759,7 +2780,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563
+#: data/core/help.cfg:568
 #, fuzzy
 msgid ""
 "\n"
@@ -2771,7 +2792,7 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:565
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "\n"
@@ -2781,7 +2802,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:567
+#: data/core/help.cfg:572
 msgid ""
 "\n"
 "\n"
@@ -2792,7 +2813,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:569
+#: data/core/help.cfg:574
 msgid ""
 "\n"
 "\n"
@@ -2801,7 +2822,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:571
+#: data/core/help.cfg:576
 #, fuzzy
 msgid ""
 "\n"
@@ -2814,7 +2835,7 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:584
+#: data/core/help.cfg:589
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2823,12 +2844,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:594
+#: data/core/help.cfg:599
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:595
+#: data/core/help.cfg:600
 #, fuzzy
 msgid ""
 "\n"
@@ -2840,14 +2861,14 @@ msgstr ""
 "<header>text=Škoda</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:595
+#: data/core/help.cfg:600
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:597
+#: data/core/help.cfg:602
 msgid ""
 "\n"
 "\n"
@@ -2858,7 +2879,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:599
+#: data/core/help.cfg:604
 #, fuzzy
 msgid ""
 "\n"
@@ -2870,7 +2891,7 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:601
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "\n"
@@ -2880,7 +2901,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:603
+#: data/core/help.cfg:608
 #, fuzzy
 msgid ""
 "\n"
@@ -2892,7 +2913,7 @@ msgstr ""
 "<header>text='Vrstni red in število udarcev'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:605
+#: data/core/help.cfg:610
 msgid ""
 "\n"
 "\n"
@@ -2907,7 +2928,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:609
+#: data/core/help.cfg:614
 msgid ""
 "\n"
 "\n"
@@ -2916,7 +2937,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:611
+#: data/core/help.cfg:616
 #, fuzzy
 msgid ""
 "\n"
@@ -2928,7 +2949,7 @@ msgstr ""
 "<header>text='Vrstni red in število udarcev'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:613
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "\n"
@@ -2939,7 +2960,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:615
+#: data/core/help.cfg:620
 #, fuzzy
 msgid ""
 "\n"
@@ -2951,7 +2972,7 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:617
+#: data/core/help.cfg:622
 msgid ""
 "\n"
 "\n"
@@ -2963,12 +2984,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:626
+#: data/core/help.cfg:631
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:627
+#: data/core/help.cfg:632
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -2994,12 +3015,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:640
+#: data/core/help.cfg:645
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:641
+#: data/core/help.cfg:646
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3013,7 +3034,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:656
+#: data/core/help.cfg:661
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3022,7 +3043,7 @@ msgstr "Splošni ukazi"
 #. [topic]: id=debug_commands
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:658 data/core/help.cfg:701 data/core/help.cfg:739
+#: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3031,7 +3052,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:660
+#: data/core/help.cfg:665
 #, fuzzy
 msgid ""
 "\n"
@@ -3043,7 +3064,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:663
+#: data/core/help.cfg:668
 #, fuzzy
 msgid ""
 "\n"
@@ -3057,7 +3078,7 @@ msgstr ""
 "izhodom iz igre."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:667
+#: data/core/help.cfg:672
 #, fuzzy
 msgid ""
 "\n"
@@ -3074,7 +3095,7 @@ msgstr ""
 "uporabljena '1'."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:670
+#: data/core/help.cfg:675
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3082,7 +3103,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:673
+#: data/core/help.cfg:678
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3090,7 +3111,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:676
+#: data/core/help.cfg:681
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3098,7 +3119,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:679
+#: data/core/help.cfg:684
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3106,7 +3127,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:682
+#: data/core/help.cfg:687
 #, fuzzy
 msgid ""
 "\n"
@@ -3117,7 +3138,7 @@ msgstr ""
 "Prikaži meni za izbiranje teme."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:685
+#: data/core/help.cfg:690
 #, fuzzy
 msgid ""
 "\n"
@@ -3128,7 +3149,7 @@ msgstr ""
 "Končaj igro (brez vprašanj)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:688
+#: data/core/help.cfg:693
 #, fuzzy
 msgid ""
 "\n"
@@ -3139,7 +3160,7 @@ msgstr ""
 "Shrani igro (brez vprašanj)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:691
+#: data/core/help.cfg:696
 #, fuzzy
 msgid ""
 "\n"
@@ -3149,14 +3170,14 @@ msgstr ""
 "Shrani in končaj igro (brez vprašanj)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:700
+#: data/core/help.cfg:705
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Večigralski ukazi"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:703
+#: data/core/help.cfg:708
 #, fuzzy
 msgid ""
 "\n"
@@ -3169,7 +3190,7 @@ msgstr ""
 "Brcni uporabnika v večigralstvu in mu (IP) prepovej ponovni vstop."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:711
 #, fuzzy
 msgid ""
 "\n"
@@ -3185,7 +3206,7 @@ msgstr ""
 "Spremeni upravljalca strani (številka strani) v uporabnika (ime uporabnika)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:709
+#: data/core/help.cfg:714
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3194,7 +3215,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:712
+#: data/core/help.cfg:717
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3203,7 +3224,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:715
+#: data/core/help.cfg:720
 #, fuzzy
 msgid ""
 "\n"
@@ -3217,7 +3238,7 @@ msgstr ""
 "splošno je to prijazen način za odstranitev nekoga s težavami s povezavo."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:718
+#: data/core/help.cfg:723
 #, fuzzy
 msgid ""
 "\n"
@@ -3230,7 +3251,7 @@ msgstr ""
 "[igralec] [sporočilo]"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:721
+#: data/core/help.cfg:726
 #, fuzzy
 msgid ""
 "\n"
@@ -3243,7 +3264,7 @@ msgstr ""
 "imen."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:724
+#: data/core/help.cfg:729
 #, fuzzy
 msgid ""
 "\n"
@@ -3254,7 +3275,7 @@ msgstr ""
 "Preklopi utišanje vseh opazovalcev."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:727
+#: data/core/help.cfg:732
 #, fuzzy
 msgid ""
 "\n"
@@ -3266,7 +3287,7 @@ msgstr ""
 "Brcni uporabnika v večigralstvu in mu (IP) prepovej ponovni vstop."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:730
+#: data/core/help.cfg:735
 #, fuzzy
 msgid ""
 "\n"
@@ -3278,13 +3299,13 @@ msgstr ""
 "imen."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:743
 #, fuzzy
 msgid "Debug Mode Commands"
 msgstr "Splošni ukazi"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:746
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3293,7 +3314,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:749
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3304,7 +3325,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:747
+#: data/core/help.cfg:752
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3312,7 +3333,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:755
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3320,7 +3341,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:753
+#: data/core/help.cfg:758
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3331,7 +3352,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:756
+#: data/core/help.cfg:761
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3339,7 +3360,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:759
+#: data/core/help.cfg:764
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3347,7 +3368,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:762
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3355,7 +3376,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:765
+#: data/core/help.cfg:770
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3364,7 +3385,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:768
+#: data/core/help.cfg:773
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3701,13 +3722,13 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:423 data/core/macros/abilities.cfg:434
+#: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:426
 #, fuzzy
 msgid "plague"
 msgstr "kuga"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:424
+#: data/core/macros/abilities.cfg:416
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3720,7 +3741,7 @@ msgstr ""
 "v vaseh.)"
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:435
+#: data/core/macros/abilities.cfg:427
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3733,13 +3754,13 @@ msgstr ""
 "v vaseh.)"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:445
+#: data/core/macros/abilities.cfg:437
 #, fuzzy
 msgid "slows"
 msgstr "upočasni"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:446
+#: data/core/macros/abilities.cfg:438
 #, fuzzy
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3753,13 +3774,13 @@ msgstr ""
 "polovično škodo."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:455
+#: data/core/macros/abilities.cfg:447
 #, fuzzy
 msgid "petrifies"
 msgstr "Udarci"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:456
+#: data/core/macros/abilities.cfg:448
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3770,13 +3791,13 @@ msgstr ""
 "napadati."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:465
+#: data/core/macros/abilities.cfg:457
 #, fuzzy
 msgid "marksman"
 msgstr "ostrostrelec"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:466
+#: data/core/macros/abilities.cfg:458
 #, fuzzy
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3785,13 +3806,13 @@ msgstr ""
 "V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:490
+#: data/core/macros/abilities.cfg:482
 #, fuzzy
 msgid "swarm"
 msgstr "mrgolenje"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:483
 #, fuzzy
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3805,13 +3826,13 @@ msgstr ""
 "maximalnega števila napadov."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:500
+#: data/core/macros/abilities.cfg:492
 #, fuzzy
 msgid "charge"
 msgstr "naskok"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:493
 #, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
@@ -3822,13 +3843,13 @@ msgstr ""
 "prejme dvojno škodo."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:505
 #, fuzzy
 msgid "drains"
 msgstr "črpa"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:514
+#: data/core/macros/abilities.cfg:506
 #, fuzzy
 msgid ""
 "This unit drains health from living units, healing itself for half the "
@@ -3839,12 +3860,12 @@ msgstr ""
 "storjene škode (zaokroženo navzdol)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:533
+#: data/core/macros/abilities.cfg:525
 msgid "poison"
 msgstr "strup"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:534
+#: data/core/macros/abilities.cfg:526
 #, fuzzy
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -5076,7 +5097,7 @@ msgid ""
 "travels long or lives in groups smaller than half a dozen.\n"
 "\n"
 "<header>text='Society'</header>\n"
-"Almost every orc are a member of a tribe or a clan. Relations between "
+"Almost every orc is a member of a tribe or a clan. Relations between "
 "neighboring tribes are usually violent, except in cases of a mutual enemy "
 "threatens their existence or prospects of great plunder override mutual "
 "animosity. Occasionally, a single strong chieftain may emerge to lead "
@@ -5165,7 +5186,7 @@ msgid ""
 "Trolls are seen by many as being little more than yet another race of savage "
 "monsters. This common misconception is in part perpetuated by orcs to "
 "persuade trolls to join their armies. Because they are rather simple and do "
-"not understand the ways of other races or sometimes can even tell them "
+"not understand the ways of other races or sometimes cannot even tell them "
 "apart, it is usually easy for an orcish band to convince a group of trolls "
 "that by joining them they get to exact revenge on those that have before "
 "hunted them. These new recruits are then directed to attack whoever the orcs "
@@ -5294,19 +5315,34 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:187
+#: src/help/help.cpp:185
 msgid "Close"
 msgstr "Zapri"
 
-#: src/help/help.cpp:190
+#: src/help/help.cpp:188
 #, fuzzy
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za igro Bitka za Wesnoth"
 
-#: src/help/help.cpp:246
+#: src/help/help.cpp:243
 #, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Napaka med razčlenjevanjem pomoči: "
+
+#, fuzzy
+#~ msgid ""
+#~ "In combat, your units will inevitably take damage. When a unit "
+#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
+#~ "can happen as you finish fighting an enemy, whether it is your turn or "
+#~ "not. Wesnoth offers several other ways for your units to heal, all of "
+#~ "which take place at the beginning of your turn, before you take action."
+#~ msgstr ""
+#~ "V boju bodo vaše enote slej ko prej utrpele poškodbe. Ko enota "
+#~ "<ref>dst=experience_and_advancement text=napreduje</ref>, se bo popolnoma "
+#~ "pozdravila. To se lahko zgodi po boju s sovražnikom, ne glede na to "
+#~ "čigava poteza je. Wesnoth omogoča več drugih načinov zdravljenja vaših "
+#~ "enot, od katerih se vsi zgodijo na začetku vaše poteze, preden karkoli "
+#~ "ukrenete."
 
 #~ msgid "Factions"
 #~ msgstr "Frakcije"

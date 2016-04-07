@@ -56,10 +56,10 @@ public:
 		, mirror_(mirror)
 		, has_input_(false)
 		, input_caption_("")
-		, input_text_(NULL)
+		, input_text_(nullptr)
 		, input_maximum_length_(0)
 		, option_list_()
-		, chosen_option_(NULL)
+		, chosen_option_(nullptr)
 	{
 	}
 
@@ -123,7 +123,7 @@ private:
 	int* chosen_option_;
 
 	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
+	void pre_show(twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);

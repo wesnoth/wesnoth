@@ -16,9 +16,9 @@
 
 #include "gui/dialogs/network_transmission.hpp"
 
-#include "formula_string_utils.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
@@ -73,6 +73,7 @@ tnetwork_transmission::tnetwork_transmission(
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
+	set_restore(true);
 }
 
 void tnetwork_transmission::set_subtitle(const std::string& subtitle)
@@ -80,7 +81,7 @@ void tnetwork_transmission::set_subtitle(const std::string& subtitle)
 	subtitle_ = subtitle;
 }
 
-void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
+void tnetwork_transmission::pre_show(twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {

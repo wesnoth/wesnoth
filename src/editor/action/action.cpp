@@ -25,8 +25,6 @@
 
 #include "resources.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace editor {
 
 int editor_action::next_id_ = 1;
@@ -77,25 +75,25 @@ void editor_action_whole_map::perform_without_undo(map_context& mc) const {
 editor_action_chain::editor_action_chain(const editor::editor_action_chain &other)
 	: editor_action(), actions_()
 {
-	BOOST_FOREACH(editor_action* a, other.actions_) {
+	for (editor_action* a : other.actions_) {
 		actions_.push_back(a->clone());
 	}
 }
 editor_action_chain& editor_action_chain::operator=(const editor_action_chain& other)
 {
 	if (this == &other) return *this;
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for (editor_action* a : actions_) {
 		delete a;
 	}
 	actions_.clear();
-	BOOST_FOREACH(editor_action* a, other.actions_) {
+	for (editor_action* a : other.actions_) {
 		actions_.push_back(a->clone());
 	}
 	return *this;
 }
 editor_action_chain::~editor_action_chain()
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
+	for (editor_action* a : actions_) {
 		delete a;
 	}
 }
@@ -105,7 +103,7 @@ editor_action_chain* editor_action_chain::clone() const
 }
 int editor_action_chain::action_count() const {
 	int count = 0;
-	BOOST_FOREACH(const editor_action* a, actions_) {
+	for (const editor_action* a : actions_) {
 		if (a) {
 			count += a->action_count();
 		}
@@ -135,8 +133,8 @@ editor_action* editor_action_chain::pop_first_action() {
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	util::unique_ptr<editor_action_chain> undo(new editor_action_chain());
-	BOOST_FOREACH(editor_action* a, actions_) {
-		if (a != NULL) {
+	for (editor_action* a : actions_) {
+		if (a != nullptr) {
 			undo->append_action(a->perform(mc));
 		}
 	}
@@ -145,8 +143,8 @@ editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
-	BOOST_FOREACH(editor_action* a, actions_) {
-		if (a != NULL) {
+	for (editor_action* a : actions_) {
+		if (a != nullptr) {
 			a->perform_without_undo(mc);
 		}
 	}
@@ -223,7 +221,7 @@ editor_action_starting_position* editor_action_starting_position::clone() const
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
 	util::unique_ptr<editor_action> undo;
-	int old_player = mc.get_map().is_starting_position(loc_) + 1;
+	int old_player = mc.get_map().is_starting_position(loc_);
 	map_location old_loc = mc.get_map().starting_position(player_);
 	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
 	if (old_player != -1) {
@@ -244,9 +242,9 @@ editor_action* editor_action_starting_position::perform(map_context& mc) const
 }
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {
-	int old_player = mc.get_map().is_starting_position(loc_);
+	int old_player = mc.get_map().is_starting_position(loc_) - 1;
 	if (old_player != -1) {
-		mc.get_map().set_starting_position(old_player, map_location());
+		mc.get_map().set_starting_position(old_player - 1, map_location());
 	}
 	mc.get_map().set_starting_position(player_, loc_);
 	mc.set_needs_labels_reset();

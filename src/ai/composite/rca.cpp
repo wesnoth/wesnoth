@@ -17,10 +17,10 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "engine.hpp"
-#include "rca.hpp"
-#include "../../log.hpp"
+#include "ai/composite/ai.hpp"
+#include "ai/composite/engine.hpp"
+#include "ai/composite/rca.hpp"
+#include "log.hpp"
 
 namespace ai {
 
@@ -108,13 +108,21 @@ bool candidate_action::to_be_removed()
 	return to_be_removed_;
 }
 
+// This is defined in the source file so that it can easily access the logger
+bool candidate_action_factory::is_duplicate(const std::string& name)
+{
+	if (get_list().find(name) != get_list().end()) {
+		ERR_AI_STAGE_RCA << "Error: Attempt to double-register candidate action " << name << std::endl;
+		return true;
+	}
+	return false;
+}
+
 //============================================================================
-
-} // of namespace ai
-
 
 std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca) {
 	s << "candidate action with name ["<< ca.get_name() <<"]";
 	return s;
 }
 
+} // of namespace ai

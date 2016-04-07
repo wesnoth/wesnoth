@@ -17,7 +17,7 @@
 
 #include <vector>
 #include "sdl/utils.hpp"
-#include "map.hpp"
+#include "map/map.hpp"
 
 class joystick_manager {
 

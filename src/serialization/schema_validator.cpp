@@ -21,8 +21,6 @@
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace schema_validation{
 
 static lg::log_domain log_validation("validation");
@@ -149,14 +147,14 @@ bool schema_validator::read_config_file(const std::string &filename){
 		ERR_VL << "Failed to read file "<< filename << ":\n" << e.what() << "\n";
 		return false;
 	}
-	BOOST_FOREACH(const config &g, cfg.child_range("wml_schema")) {
-		BOOST_FOREACH(const config &schema, g.child_range("tag")) {
+	for(const config &g : cfg.child_range("wml_schema")) {
+		for(const config &schema : g.child_range("tag")) {
 			if (schema["name"].str() == "root"){
 				//@NOTE Don't know, maybe merging of roots needed.
 				root_ = class_tag (schema);
 			}
 		}
-		BOOST_FOREACH(const config &type, g.child_range("type")) {
+		for(const config &type : g.child_range("type")) {
 			try{
 				types_[type["name"].str()] = boost::regex( type["value"].str());
 			}
@@ -179,7 +177,7 @@ void schema_validator::open_tag(const std::string & name,
 								const std::string &file,
 								bool addittion){
 	if (! stack_.empty()){
-		const class_tag * tag = NULL;
+		const class_tag * tag = nullptr;
 		if (stack_.top()){
 			tag = stack_.top()->find_tag(name,root_);
 			if (! tag){
@@ -194,7 +192,7 @@ void schema_validator::open_tag(const std::string & name,
 		}
 		stack_.push(tag);
 	}else{
-		stack_.push(NULL);
+		stack_.push(nullptr);
 	}
 	counter_.push(cnt_map());
 	cache_.push(message_map());
@@ -249,7 +247,7 @@ void schema_validator::validate(const config & cfg, const std::string & name,
 		for (class_tag::const_key_iterator key = k.first;
 			 key != k.second ; ++key){
 			if (key->second.is_mandatory()){
-				if (cfg.get(key->first) == NULL){
+				if (cfg.get(key->first) == nullptr){
 					cache_.top()[&cfg].push_back(
 							message_info(MISSING_KEY,file,start_line,0,
 										 name,key->first ));

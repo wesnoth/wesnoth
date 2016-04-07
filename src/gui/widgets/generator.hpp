@@ -167,7 +167,7 @@ public:
 	virtual tgrid& create_item(const int index,
 							   tbuilder_grid_const_ptr list_builder,
 							   const string_map& item_data,
-							   const boost::function<void(twidget&)>& callback)
+							   const std::function<void(twidget&)>& callback)
 			= 0;
 
 	/**
@@ -191,7 +191,7 @@ public:
 	create_item(const int index,
 				tbuilder_grid_const_ptr list_builder,
 				const std::map<std::string /* widget id */, string_map>& data,
-				const boost::function<void(twidget&)>& callback) = 0;
+				const std::function<void(twidget&)>& callback) = 0;
 
 	/**
 	 * Creates one or more new item(s).
@@ -211,7 +211,7 @@ public:
 	virtual void create_items(const int index,
 							  tbuilder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
-							  const boost::function<void(twidget&)>& callback)
+							  const std::function<void(twidget&)>& callback)
 			= 0;
 
 	/**
@@ -234,9 +234,9 @@ public:
 			tbuilder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
-			const boost::function<void(twidget&)>& callback) = 0;
+			const std::function<void(twidget&)>& callback) = 0;
 
-	typedef boost::function<bool (unsigned, unsigned)> torder_func;
+	typedef std::function<bool (unsigned, unsigned)> torder_func;
 	virtual void set_order(const torder_func& order) = 0;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -247,48 +247,48 @@ public:
 	 */
 
 	/** See @ref twidget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) OVERRIDE = 0;
+	virtual void layout_initialise(const bool full_initialisation) override = 0;
 
 	/** See @ref twidget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE
+	virtual void request_reduce_width(const unsigned maximum_width) override
 			= 0;
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) OVERRIDE
+	virtual void request_reduce_height(const unsigned maximum_height) override
 			= 0;
 
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const OVERRIDE = 0;
+	virtual tpoint calculate_best_size() const override = 0;
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE = 0;
+	virtual void place(const tpoint& origin, const tpoint& size) override = 0;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) OVERRIDE = 0;
+	virtual void set_origin(const tpoint& origin) override = 0;
 
 	/** See @ref twidget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE = 0;
+	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
 
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
-									int y_offset) OVERRIDE = 0;
+									int y_offset) override = 0;
 
 protected:
 	/** See @ref twidget::child_populate_dirty_list. */
 	virtual void
 	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) OVERRIDE
+							  const std::vector<twidget*>& call_stack) override
 			= 0;
 
 public:
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
-							 const bool must_be_active) OVERRIDE = 0;
+							 const bool must_be_active) override = 0;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& coordinate,
-								   const bool must_be_active) const OVERRIDE
+								   const bool must_be_active) const override
 			= 0;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/

@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/wml_message.hpp"
 
-#include "gui/auxiliary/find_widget.tpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -59,8 +59,10 @@ void twml_message_::set_option_list(const std::vector<twml_message_option>& opti
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
+void twml_message_::pre_show(twindow& window)
 {
+	set_restore(true);
+
 	window.canvas(1).set_variable("portrait_image", variant(portrait_));
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
@@ -99,7 +101,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
-		BOOST_FOREACH(const twml_message_option& item, option_list_) {
+		for(const twml_message_option& item : option_list_) {
 			// Add the data.
 			data["icon"]["label"] = item.image();
 			data["label"]["label"] = item.label();

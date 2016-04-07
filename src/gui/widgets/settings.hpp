@@ -20,11 +20,11 @@
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
-#include "gui/auxiliary/widget_definition/window.hpp"
-
-#include "utils/foreach.tpp"
-
-#include "utils/boost_function_guarded.hpp"
+#include "utils/functional.hpp"
+#include "config.hpp"
+#include "gui/core/widget_definition.hpp"
+#include "gui/core/window_builder.hpp"
+#include "tstring.hpp"
 
 #include <string>
 #include <vector>
@@ -81,7 +81,7 @@ class tunit_test_access_only
  * @param functor                 The function to load the definitions.
  */
 void register_widget(const std::string& id,
-					 boost::function<void(tgui_definition& gui_definition,
+					 std::function<void(tgui_definition& gui_definition,
 										  const std::string& definition_type,
 										  const config& cfg,
 										  const char* key)> functor);
@@ -124,7 +124,7 @@ void load_widget_definitions(tgui_definition& gui_definition,
 {
 	std::vector<tcontrol_definition_ptr> definitions;
 
-	FOREACH(const AUTO & definition,
+	for (const auto & definition :
 			cfg.child_range(key ? key : definition_type + "_definition"))
 	{
 

@@ -20,10 +20,8 @@
 
 #include "terrain_palettes.hpp"
 
-#include "../../gettext.hpp"
-#include "../../formula_string_utils.hpp"
-
-#include <boost/foreach.hpp>
+#include "gettext.hpp"
+#include "formula/string_utils.hpp"
 
 namespace {
 	static t_translation::t_terrain fg_terrain;
@@ -79,7 +77,7 @@ void terrain_palette::setup(const config& cfg)
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
-	BOOST_FOREACH(const config &group, cfg.child_range("editor_group"))
+	for (const config &group : cfg.child_range("editor_group"))
 	{
 		if (group_names.find(group["id"]) == group_names.end()) {
 
@@ -96,12 +94,12 @@ void terrain_palette::setup(const config& cfg)
 	}
 
 	std::map<std::string, item_group*> id_to_group;
-	BOOST_FOREACH(item_group& group, groups_) {
+	for (item_group& group : groups_) {
 		id_to_group.insert(std::make_pair(group.id, &group));
 	}
 
 	// add the groups for all terrains to the map
-	BOOST_FOREACH(const t_translation::t_terrain& t, items) {
+	for (const t_translation::t_terrain& t : items) {
 
 		const terrain_type& t_info = map().get_terrain_info(t);
 		DBG_ED << "Palette: processing terrain " << t_info.name()
@@ -120,7 +118,7 @@ void terrain_palette::setup(const config& cfg)
 
 		item_map_[get_id(t)] = t;
 
-		BOOST_FOREACH(const std::string& k, keys) {
+		for (const std::string& k : keys) {
 			group_map_[k].push_back(get_id(t));
 			nmax_items_ = std::max(nmax_items_, group_map_[k].size());
 			std::map<std::string, item_group*>::iterator i = id_to_group.find(k);
@@ -166,11 +164,11 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 		const std::string base_filename = map().get_terrain_info(base_terrain).editor_image();
 		surface base_image(image::get_image(base_filename));
 
-		if(base_image == NULL) {
+		if(base_image == nullptr) {
 			tooltip_text << "BASE IMAGE NOT FOUND\n";
 			ERR_ED << "image for terrain : '" << base_filename << "' not found" << std::endl;
 			base_image = image::get_image(game_config::images::missing);
-			if (base_image == NULL) {
+			if (base_image == nullptr) {
 				ERR_ED << "Placeholder image not found" << std::endl;
 				return;
 			}
@@ -184,11 +182,11 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 
 	const std::string filename = map().get_terrain_info(terrain).editor_image();
 	image = image::get_image(filename);
-	if(image == NULL) {
+	if(image == nullptr) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for terrain: '" << filename << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == NULL) {
+		if (image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
