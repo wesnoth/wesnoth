@@ -718,6 +718,8 @@
 		91F462881C7115C50050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* combobox.cpp */; };
 		91F462941C7117400050A9C9 /* drop_down_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462921C7117400050A9C9 /* drop_down_list.cpp */; };
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
+		91FBBAD61CB6AF8900470BFE /* player_connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD41CB6AF8900470BFE /* player_connection.cpp */; };
+		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		B504B94C1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B508D13F10013BF900B12852 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B508D13E10013BF900B12852 /* Growl.framework */; };
 		B508D14B10013E4700B12852 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = B508D14A10013E4700B12852 /* Growl Registration Ticket.growlRegDict */; };
@@ -758,8 +760,6 @@
 		B52EE9AD1213640400CFBDAB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE9A91213640400CFBDAB /* manager.cpp */; };
 		B52EE9AE1213640400CFBDAB /* validation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE9AB1213640400CFBDAB /* validation.cpp */; };
 		B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6790FEA9C4A006F6FBD /* player_network.cpp */; };
-		B54AC6810FEA9C4A006F6FBD /* room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC67B0FEA9C4A006F6FBD /* room.cpp */; };
-		B54AC6820FEA9C4A006F6FBD /* room_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC67D0FEA9C4A006F6FBD /* room_manager.cpp */; };
 		B54AC69C0FEA9E8F006F6FBD /* actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC68D0FEA9E8F006F6FBD /* actions.cpp */; };
 		B54AC69D0FEA9E8F006F6FBD /* configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC68F0FEA9E8F006F6FBD /* configuration.cpp */; };
 		B54AC69F0FEA9E8F006F6FBD /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6930FEA9E8F006F6FBD /* manager.cpp */; };
@@ -995,16 +995,11 @@
 		B5BB6B830F893E7500444FBF /* user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6E0F893E7500444FBF /* user_handler.cpp */; };
 		B5BB6B840F893E7500444FBF /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B710F893E7500444FBF /* server.cpp */; };
 		B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B720F893E7500444FBF /* sample_user_handler.cpp */; };
-		B5BB6B860F893E7500444FBF /* proxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B730F893E7500444FBF /* proxy.cpp */; };
 		B5BB6B870F893E7500444FBF /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B740F893E7500444FBF /* player.cpp */; };
 		B5BB6B880F893E7500444FBF /* metrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B750F893E7500444FBF /* metrics.cpp */; };
 		B5BB6B8A0F893E7500444FBF /* forum_user_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B7B0F893E7500444FBF /* forum_user_handler.cpp */; };
 		B5BB6B8B0F893E7500444FBF /* ban.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B7C0F893E7500444FBF /* ban.cpp */; };
 		B5BB6B8D0F893F2300444FBF /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA80EC62181008DD061 /* config.cpp */; };
-		B5BB6BC60F89406100444FBF /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DA0EC62181008DD061 /* network.cpp */; };
-		B5BB6BC80F89407D00444FBF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55998F70EC61EA5008DD061 /* SDL2.framework */; };
-		B5BB6BCB0F89408500444FBF /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999230EC61F59008DD061 /* SDL2_net.framework */; };
-		B5BB6BCD0F8940A000444FBF /* network_worker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999D60EC62181008DD061 /* network_worker.cpp */; };
 		B5BB6C670F8940FF00444FBF /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998B0EC62181008DD061 /* thread.cpp */; };
 		B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
 		B5BB6C710F8941F000444FBF /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
@@ -1716,6 +1711,9 @@
 		91FAC7081C7F931900DAB2C3 /* lua_formula_bridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_formula_bridge.hpp; sourceTree = "<group>"; };
 		91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_formula_bridge.cpp; sourceTree = "<group>"; };
 		91FAC70B1C80168600DAB2C3 /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
+		91FBBAD41CB6AF8900470BFE /* player_connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player_connection.cpp; sourceTree = "<group>"; };
+		91FBBAD51CB6AF8900470BFE /* player_connection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_connection.hpp; sourceTree = "<group>"; };
+		91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_sdl.cpp; sourceTree = "<group>"; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
 		B504B94B1284C06B00261FE9 /* tips.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tips.hpp; sourceTree = "<group>"; };
 		B508D13E10013BF900B12852 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = lib/Growl.framework; sourceTree = "<group>"; };
@@ -2306,7 +2304,6 @@
 		B5BB6B5B0F893E7500444FBF /* input_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_stream.cpp; sourceTree = "<group>"; };
 		B5BB6B690F893E7500444FBF /* metrics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = metrics.hpp; sourceTree = "<group>"; };
 		B5BB6B6A0F893E7500444FBF /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
-		B5BB6B6B0F893E7500444FBF /* proxy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = proxy.hpp; sourceTree = "<group>"; };
 		B5BB6B6C0F893E7500444FBF /* sample_user_handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sample_user_handler.hpp; sourceTree = "<group>"; };
 		B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_wml.cpp; sourceTree = "<group>"; };
 		B5BB6B6E0F893E7500444FBF /* user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_handler.cpp; sourceTree = "<group>"; };
@@ -2314,7 +2311,6 @@
 		B5BB6B700F893E7500444FBF /* simple_wml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = simple_wml.hpp; sourceTree = "<group>"; };
 		B5BB6B710F893E7500444FBF /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
 		B5BB6B720F893E7500444FBF /* sample_user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample_user_handler.cpp; sourceTree = "<group>"; };
-		B5BB6B730F893E7500444FBF /* proxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = proxy.cpp; sourceTree = "<group>"; };
 		B5BB6B740F893E7500444FBF /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		B5BB6B750F893E7500444FBF /* metrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metrics.cpp; sourceTree = "<group>"; };
 		B5BB6B770F893E7500444FBF /* input_stream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = input_stream.hpp; sourceTree = "<group>"; };
@@ -2743,8 +2739,6 @@
 				EC64D7681A085F4A0092EF75 /* libboost_randomw.dylib in Frameworks */,
 				ECF9D44219F4050E00E6C9D9 /* libboost_systemw.dylib in Frameworks */,
 				EC225C9718EF0ABC00025EC4 /* libintl.8.dylib in Frameworks */,
-				B5BB6BCB0F89408500444FBF /* SDL2_net.framework in Frameworks */,
-				B5BB6BC80F89407D00444FBF /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2876,6 +2870,7 @@
 				91B621A91B76A94D00B00E0F /* filesystem.hpp */,
 				ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */,
 				EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */,
+				91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */,
 				91B621831B76701200B00E0F /* filter_context.hpp */,
 				EC45DEE01AD1CEF600BD760C /* floating_label.cpp */,
 				91B621841B76701900B00E0F /* floating_label.hpp */,
@@ -4455,10 +4450,10 @@
 				B5BB6B690F893E7500444FBF /* metrics.hpp */,
 				B5BB6B740F893E7500444FBF /* player.cpp */,
 				B5BB6B6A0F893E7500444FBF /* player.hpp */,
+				91FBBAD41CB6AF8900470BFE /* player_connection.cpp */,
+				91FBBAD51CB6AF8900470BFE /* player_connection.hpp */,
 				B54AC6790FEA9C4A006F6FBD /* player_network.cpp */,
 				B54AC67A0FEA9C4A006F6FBD /* player_network.hpp */,
-				B5BB6B730F893E7500444FBF /* proxy.cpp */,
-				B5BB6B6B0F893E7500444FBF /* proxy.hpp */,
 				B54AC67B0FEA9C4A006F6FBD /* room.cpp */,
 				B54AC67C0FEA9C4A006F6FBD /* room.hpp */,
 				B54AC67D0FEA9C4A006F6FBD /* room_manager.cpp */,
@@ -5186,6 +5181,7 @@
 				91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */,
 				9122417C1CAAB7B7008B347F /* loadscreen.cpp in Sources */,
 				91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */,
+				91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5770,15 +5766,10 @@
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
 				B5BB6B880F893E7500444FBF /* metrics.cpp in Sources */,
 				EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */,
-				B5BB6BCD0F8940A000444FBF /* network_worker.cpp in Sources */,
-				B5BB6BC60F89406100444FBF /* network.cpp in Sources */,
 				B5BB6C8F0F89448000444FBF /* parser.cpp in Sources */,
 				B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */,
 				B5BB6B870F893E7500444FBF /* player.cpp in Sources */,
 				B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */,
-				B5BB6B860F893E7500444FBF /* proxy.cpp in Sources */,
-				B54AC6820FEA9C4A006F6FBD /* room_manager.cpp in Sources */,
-				B54AC6810FEA9C4A006F6FBD /* room.cpp in Sources */,
 				B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */,
 				EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */,
 				B5BB6CD90F89470B00444FBF /* server_main.m in Sources */,
@@ -5792,6 +5783,7 @@
 				ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */,
 				B5BB6B830F893E7500444FBF /* user_handler.cpp in Sources */,
 				B5BB6C790F89426400444FBF /* version.cpp in Sources */,
+				91FBBAD61CB6AF8900470BFE /* player_connection.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

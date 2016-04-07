@@ -118,7 +118,7 @@ std::string client_address(socket_ptr socket)
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
 
-bool check_error(const boost::system::error_code& error, socket_ptr socket)
+static bool check_error(const boost::system::error_code& error, socket_ptr socket)
 {
 	if(error) {
 		ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
@@ -177,7 +177,7 @@ void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handle
 	}
 }
 
-void null_handler(socket_ptr)
+static void null_handler(socket_ptr)
 {
 }
 
@@ -187,7 +187,7 @@ void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handle
 	async_send_doc(socket, doc, handler, null_handler);
 }
 
-void async_send_doc(socket_ptr socket, simple_wml::document& doc)
+static void async_send_doc(socket_ptr socket, simple_wml::document& doc)
 {
 	async_send_doc(socket, doc, null_handler, null_handler);
 }
@@ -241,7 +241,7 @@ void async_receive_doc(socket_ptr socket, Handler handler)
 	async_receive_doc(socket, handler, null_handler);
 }
 
-void make_add_diff(const simple_wml::node& src, const char* gamelist,
+static void make_add_diff(const simple_wml::node& src, const char* gamelist,
                    const char* type,
                    simple_wml::document& out, int index=-1)
 {
@@ -268,7 +268,7 @@ void make_add_diff(const simple_wml::node& src, const char* gamelist,
 	children[index]->copy_into(insert.add_child(type));
 }
 
-bool make_delete_diff(const simple_wml::node& src,
+static bool make_delete_diff(const simple_wml::node& src,
                       const char* gamelist,
                       const char* type,
                       const simple_wml::node* remove,
@@ -298,7 +298,7 @@ bool make_delete_diff(const simple_wml::node& src,
 	return true;
 }
 
-bool make_change_diff(const simple_wml::node& src,
+static bool make_change_diff(const simple_wml::node& src,
                       const char* gamelist,
                       const char* type,
 					  const simple_wml::node* item,
@@ -548,7 +548,7 @@ void async_send_error(socket_ptr socket, const std::string& msg, const char* err
 	async_send_doc(socket, doc);
 }
 
-void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code)
+static void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
