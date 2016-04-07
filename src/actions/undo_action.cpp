@@ -92,7 +92,7 @@ namespace {
 		x1 = e.filter_loc1.x + 1; y1 = e.filter_loc1.y + 1;
 		x2 = e.filter_loc2.x + 1; y2 = e.filter_loc2.y + 1;
 
-		int realx1, realy1, realx2, realy2;
+		int realx1 = 0, realy1 = 0, realx2 = 0, realy2 = 0;
 		boost::scoped_ptr<scoped_xy_unit> u1, u2;
 		if(unit_ptr who = get_unit(e.uid1, e.id1)) {
 			realx1 = who->get_location().x;
