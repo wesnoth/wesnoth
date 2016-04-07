@@ -69,7 +69,6 @@
 #include <SDL_events.h>                 // for SDL_ENABLE
 #include <SDL_joystick.h>               // for SDL_JoystickEventState, etc
 #include <SDL_timer.h>                  // for SDL_Delay
-#include <SDL_version.h>                // for SDL_VERSION_ATLEAST
 #include <SDL_video.h>                  // for SDL_WM_SetCaption, etc
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
