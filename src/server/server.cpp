@@ -1069,7 +1069,7 @@ void server::read_from_player(socket_ptr socket)
 void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
 {
 	read_from_player(socket);
-	std::cout << doc->output() << std::endl;
+	DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
 	if(doc->child("refresh_lobby")) {
 		send_to_player(socket, games_and_users_list_);
 	}
