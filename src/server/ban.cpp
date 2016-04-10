@@ -14,6 +14,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
+#include "filesystem.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
@@ -259,12 +260,12 @@ static lg::log_domain log_server("server");
 
 	void ban_manager::read()
 	{
-		//if (filename_.empty() || !filesystem::file_exists(filename_))
+		if (filename_.empty() || !filesystem::file_exists(filename_))
 			return;
 		LOG_SERVER << "Reading bans from " <<  filename_ << "\n";
 		config cfg;
-		//filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
-		//read_gz(cfg, *ban_file);
+		filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
+		read_gz(cfg, *ban_file);
 
 		for (const config &b : cfg.child_range("ban"))
 		{
