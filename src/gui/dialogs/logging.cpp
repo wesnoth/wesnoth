@@ -32,10 +32,10 @@ REGISTER_DIALOG(logging)
 tlogging::tlogging()
 {
 	//list of names must match those in logging.cfg
-	widget_id.push_back_("err");
-	widget_id.push_back_("warn");
-	widget_id.push_back_("info");
-	widget_id.push_back_("debug");
+	widget_id_.push_back("err");
+	widget_id_.push_back("warn");
+	widget_id_.push_back("info");
+	widget_id_.push_back("debug");
 
 	domain_list_end_ = "the end";
 
