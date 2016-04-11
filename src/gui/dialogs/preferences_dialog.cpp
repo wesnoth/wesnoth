@@ -35,6 +35,7 @@
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/logging.hpp"
 
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -1041,6 +1042,8 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 			gui2::tadvanced_graphics_options::display(window.video());
 		} else if (selected_field == "orb_color") {
 			gui2::tselect_orb_colors::display(window.video());
+		} else if (selected_field == "logging") {
+			gui2::tlogging::display(window.video());
 		} else {
 			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << selected_field << "\n";
 		}
