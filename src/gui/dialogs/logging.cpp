@@ -41,7 +41,7 @@ tlogging::tlogging()
 
 	//empty string is the filter (in other words, this grabs the whole list of domains)
 	std::string temp_string = lg::list_logdomains("");
-	//std::cout<<temp_string;//use to print the full log domain list
+	//std::cout<<temp_string; //use to print the full log domain list
 	std::string one_domain;
 
 	std::istringstream iss(temp_string, std::istringstream::in);
@@ -54,7 +54,7 @@ tlogging::tlogging()
 
 void tlogging::pre_show(twindow& window)
 {
-	set_restore(true);//why is this done manually?
+	set_restore(true); //why is this done manually?
 
 	tlistbox& logger_box = find_widget<tlistbox>(&window, "logger_listbox", false);
 
@@ -105,14 +105,11 @@ void tlogging::set_logger(const std::string log_domain)
 
 	if(active_value == widget_id[1]){ //default value, level1: warning
 		lg::set_log_domain_severity(log_domain, lg::warn());
-	}
-	else if(active_value == widget_id[3]){ //level3: debug
+	} else if(active_value == widget_id[3]){ //level3: debug
 		lg::set_log_domain_severity(log_domain, lg::debug());
-	}
-	else if(active_value == widget_id[2]){ //level2: info
+	} else if(active_value == widget_id[2]){ //level2: info
 		lg::set_log_domain_severity(log_domain, lg::info());
-	}
-	else if(active_value == widget_id[0]){ //level0: error
+	} else if(active_value == widget_id[0]){ //level0: error
 		lg::set_log_domain_severity(log_domain, lg::err());
 	}
 }
