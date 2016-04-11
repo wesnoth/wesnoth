@@ -66,7 +66,7 @@ void tlogging::pre_show(twindow& window)
 		for(unsigned int iter = 3; iter < 4; iter--){
 			//counting down so that order matches logging.cfg
 			item["toggle_button"] = widget_id[iter]; // id?
-			data.insert(std::make_pair(widget_id[iter], item));
+			data["toggle_button"] = item;
 		}
 
 		/*to prevent all the individual toggles copying the label,
@@ -74,7 +74,7 @@ void tlogging::pre_show(twindow& window)
 		 *this widget MUST come last... I have no clue why
 		 */
 		item["label"] = this_domain;
-		data.insert(std::make_pair("title_name", item));
+		data["label"] = item;
 
 		logger_box.add_row(data);
 		tgroup<std::string>& group = groups_[this_domain];
