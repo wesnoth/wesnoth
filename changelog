@@ -23,6 +23,9 @@ Version 1.13.4+dev:
      uses full weapon filter.
    * lua_function=var.member now works in SUF; however, 'var' still needs to
      be a global variable.
+   * Added new keys name_generator, male_name_generator and female_name_generator
+     for the [race] tag to declare a context-free grammar to describe how names
+     are derived
    * AiWML:
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
