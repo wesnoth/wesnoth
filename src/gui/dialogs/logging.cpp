@@ -32,12 +32,12 @@ REGISTER_DIALOG(logging)
 tlogging::tlogging()
 {
 	//list of names must match those in logging.cfg
-	widget_id.push_back("err");
-	widget_id.push_back("warn");
-	widget_id.push_back("info");
-	widget_id.push_back("debug");
+	widget_id.push_back_("err");
+	widget_id.push_back_("warn");
+	widget_id.push_back_("info");
+	widget_id.push_back_("debug");
 
-	domain_list_end = "the end";
+	domain_list_end_ = "the end";
 
 	//empty string is the filter (in other words, this grabs the whole list of domains)
 	std::string temp_string = lg::list_logdomains("");
@@ -47,9 +47,9 @@ tlogging::tlogging()
 	std::istringstream iss(temp_string, std::istringstream::in);
 
 	while(iss >> one_domain){
-		domain_list.push_back(one_domain);
+		domain_list_.push_back(one_domain);
 	}
-	domain_list.push_back(domain_list_end);
+	domain_list_.push_back(domain_list_end_);
 }
 
 void tlogging::pre_show(twindow& window)
@@ -58,14 +58,14 @@ void tlogging::pre_show(twindow& window)
 
 	tlistbox& logger_box = find_widget<tlistbox>(&window, "logger_listbox", false);
 
-	for(unsigned int counter = 0; domain_list[counter] != domain_list_end; counter++){
-		std::string this_domain = domain_list[counter];
+	for(unsigned int counter = 0; domain_list_[counter] != domain_list_end_; counter++){
+		std::string this_domain = domain_list_[counter];
 		std::map<std::string, string_map> data;
 		string_map item;
 
 		for(unsigned int iter = 3; iter < 4; iter--){
 			//counting down so that order matches logging.cfg
-			item["toggle_button"] = widget_id[iter]; // id?
+			item["toggle_button"] = widget_id_[iter]; // id?
 			data["toggle_button"] = item;
 		}
 
@@ -81,21 +81,21 @@ void tlogging::pre_show(twindow& window)
 
 		tgrid* this_grid = logger_box.get_row_grid(counter);
 		for(unsigned int iter = 0; iter < 4; iter++){
-			twidget* this_widget = this_grid->find(widget_id[iter], false);
+			twidget* this_widget = this_grid->find(widget_id_[iter], false);
 			ttoggle_button* button = dynamic_cast<ttoggle_button*>(this_widget);
 			if(button != nullptr) {
-				group.add_member(button, widget_id[iter]);
+				group.add_member(button, widget_id_[iter]);
 			}
 		}
 		//default value is always level 1: "warn"
-		group.set_member_states(widget_id[1]);
+		group.set_member_states(widget_id_[1]);
 	}
 }
 
 void tlogging::post_show(twindow& /*window*/)
 {
-	for(unsigned int counter = 0; domain_list[counter] != domain_list_end; counter++){
-		set_logger(domain_list[counter]);
+	for(unsigned int counter = 0; domain_list_[counter] != domain_list_end_; counter++){
+		set_logger(domain_list_[counter]);
 	}
 }
 
@@ -103,13 +103,13 @@ void tlogging::set_logger(const std::string log_domain)
 {
 	std::string active_value = groups_[log_domain].get_active_member_value();
 
-	if(active_value == widget_id[1]){ //default value, level1: warning
+	if(active_value == widget_id_[1]){ //default value, level1: warning
 		lg::set_log_domain_severity(log_domain, lg::warn());
-	} else if(active_value == widget_id[3]){ //level3: debug
+	} else if(active_value == widget_id_[3]){ //level3: debug
 		lg::set_log_domain_severity(log_domain, lg::debug());
-	} else if(active_value == widget_id[2]){ //level2: info
+	} else if(active_value == widget_id_[2]){ //level2: info
 		lg::set_log_domain_severity(log_domain, lg::info());
-	} else if(active_value == widget_id[0]){ //level0: error
+	} else if(active_value == widget_id_[0]){ //level0: error
 		lg::set_log_domain_severity(log_domain, lg::err());
 	}
 }
