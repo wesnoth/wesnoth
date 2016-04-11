@@ -72,9 +72,45 @@ namespace hotkey {
 
 static void event_execute(const SDL_Event& event, command_executor* executor);
 
-bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/)
+bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/, bool press)
 {
+	// hotkey release handling
+	if (!press) {
+		switch(cmd.id) {
+			// release a scroll key, un-apply scrolling in the given direction
+			case HOTKEY_SCROLL_UP:
+				scroll_up(false);
+				break;
+			case HOTKEY_SCROLL_DOWN:
+				scroll_down(false);
+				break;
+			case HOTKEY_SCROLL_LEFT:
+				scroll_left(false);
+				break;
+			case HOTKEY_SCROLL_RIGHT:
+				scroll_right(false);
+				break;
+			default:
+				return false; // nothing else handles a hotkey release
+		}
+
+		return true;
+	}
+
+	// hotkey press handling
 	switch(cmd.id) {
+		case HOTKEY_SCROLL_UP:
+			scroll_up(true);
+			break;
+		case HOTKEY_SCROLL_DOWN:
+			scroll_down(true);
+			break;
+		case HOTKEY_SCROLL_LEFT:
+			scroll_left(true);
+			break;
+		case HOTKEY_SCROLL_RIGHT:
+			scroll_right(true);
+			break;
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
 			break;
@@ -460,6 +496,7 @@ void basic_handler::handle_event(const SDL_Event& event)
 
 	switch (event.type) {
 	case SDL_KEYDOWN:
+	case SDL_KEYUP:
 		// If we're in a dialog we only want to handle items that are explicitly
 		// handled by the executor.
 		// If we're not in a dialog we can call the regular key event handler.
@@ -470,6 +507,7 @@ void basic_handler::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_JOYBUTTONDOWN:
+	case SDL_JOYBUTTONUP:
 		if (!gui::in_dialog()) {
 			jbutton_event(event,exec_);
 		} else if (exec_ != nullptr) {
@@ -477,6 +515,7 @@ void basic_handler::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
+	case SDL_MOUSEBUTTONUP:
 		if (!gui::in_dialog()) {
 			mbutton_event(event,exec_);
 		} else if (exec_ != nullptr) {
@@ -515,18 +554,25 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 		return;
 	}
 
-	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor);
+	bool press = event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN;
+
+	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, press);
 	executor->set_button_state();
 }
 
-void execute_command(const hotkey_command& command, command_executor* executor, int index)
+void execute_command(const hotkey_command& command, command_executor* executor, int index, bool press)
 {
 	if (executor != nullptr) {
 		if (!executor->can_execute_command(command, index)
-				|| executor->execute_command(command, index)) {
+				|| executor->execute_command(command, index, press)) {
 			return;
 		}
 	}
+
+	if (!press) {
+		return; // none of the commands here respond to a key release
+    }
+
 	switch (command.id) {
 
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:

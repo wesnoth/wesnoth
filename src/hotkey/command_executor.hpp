@@ -108,6 +108,10 @@ public:
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
 	virtual void toggle_accelerated_speed() {}
+	virtual void scroll_up(bool /*on*/) {}
+	virtual void scroll_down(bool /*on*/) {}
+	virtual void scroll_left(bool /*on*/) {}
+	virtual void scroll_right(bool /*on*/) {}
 	virtual void lua_console();
 	virtual void zoom_in() {}
 	virtual void zoom_out() {}
@@ -132,7 +136,7 @@ public:
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
-	virtual bool execute_command(const hotkey_command& command, int index=-1);
+	virtual bool execute_command(const hotkey_command& command, int index=-1, bool press=true);
 };
 class command_executor_default : public command_executor
 {
@@ -162,7 +166,7 @@ void mbutton_event(const SDL_Event& event, command_executor* executor);
 
 
 //TODO
-void execute_command(const hotkey_command& command, command_executor* executor, int index=-1);
+void execute_command(const hotkey_command& command, command_executor* executor, int index=-1, bool press=true);
 
 // Object which will ensure that basic keyboard events like escape
 // are handled properly for the duration of its lifetime.

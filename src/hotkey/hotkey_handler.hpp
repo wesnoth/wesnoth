@@ -117,6 +117,10 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 	virtual void toggle_accelerated_speed();
+	virtual void scroll_up(bool on);
+	virtual void scroll_down(bool on);
+	virtual void scroll_left(bool on);
+	virtual void scroll_right(bool on);
 	virtual void replay_skip_animation() override
 	{ return play_controller_.toggle_skipping_replay(); }
 
@@ -125,7 +129,7 @@ public:
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1);
+	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true);
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 
 	/**
