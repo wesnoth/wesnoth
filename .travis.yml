@@ -15,11 +15,11 @@ env:
 
 matrix:
   exclude:
-    - compiler: gcc
+    - compiler: clang
       env: BUILD="-O2"
-    - compiler: gcc
+    - compiler: clang
       env: BUILD="C++14 -O2"
-    - compiler: gcc
+    - compiler: clang
       env: BUILD="translations"
 
 before_install:
