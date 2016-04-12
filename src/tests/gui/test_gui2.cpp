@@ -53,6 +53,7 @@
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/lobby/lobby.hpp"
 #include "gui/dialogs/lobby/player_info.hpp"
+#include "gui/dialogs/logging.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
@@ -386,6 +387,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	// test<gui2::tloadscreen>(); TODO: enable
 	test<gui2::tlobby_main>();
 	test<gui2::tlobby_player_info>();
+	test<gui2::tlogging>();
 	test<gui2::tmessage>();
 	test<gui2::tmp_change_control>();
 	test<gui2::tmp_cmd_wrapper>();
@@ -698,6 +700,15 @@ struct twrapper<gui2::tlobby_player_info>
 		static user_info ui(c);
 		static lobby_info li(c);
 		return new gui2::tlobby_player_info(ch, ui, li);
+	}
+};
+
+template<>
+struct twrapper<gui2::tlogging>
+{
+	static gui2::tlogging* create()
+	{
+		return new gui2::tlogging();
 	}
 };
 
