@@ -63,7 +63,8 @@ void tlogging::pre_show(twindow& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		for(unsigned int iter = (widget_id_.size()-1); iter < widget_id_.size(); iter--){
+		unsigned int id_size = widget_id_.size();
+		for(unsigned int iter = (id_size-1); iter < id_size; iter--){
 			//counting down so that order matches logging.cfg
 			item["toggle_button"] = widget_id_[iter]; // id?
 			data["toggle_button"] = item;
@@ -80,7 +81,7 @@ void tlogging::pre_show(twindow& window)
 		tgroup<std::string>& group = groups_[this_domain];
 
 		tgrid* this_grid = logger_box.get_row_grid(counter);
-		for(unsigned int iter = 0; iter < widget_id_.size(); iter++){
+		for(unsigned int iter = 0; iter < id_size; iter++){
 			twidget* this_widget = this_grid->find(widget_id_[iter], false);
 			ttoggle_button* button = dynamic_cast<ttoggle_button*>(this_widget);
 			if(button != nullptr) {
