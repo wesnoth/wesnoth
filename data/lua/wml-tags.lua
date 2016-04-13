@@ -1794,25 +1794,40 @@ function wml_actions.set_variable(cfg)
 
 	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
 		wesnoth.set_variable(name, cfg.value)
-	elseif cfg.literal ~= nil then
+	end
+
+	if cfg.literal ~= nil then
 		wesnoth.set_variable(name, helper.shallow_literal(cfg).literal)
-	elseif cfg.to_variable then
+	end
+
+	if cfg.to_variable then
 		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
-	elseif cfg.add then
+	end
+
+	if cfg.add then
 		wesnoth.set_variable(name, (tonumber(var) or 0) + (tonumber(cfg.add) or 0))
-	elseif cfg.sub then
+	end
+
+	if cfg.sub then
 		wesnoth.set_variable(name, (tonumber(var) or 0) - (tonumber(cfg.sub) or 0))
-	elseif cfg.multiply then
+	end
+
+	if cfg.multiply then
 		wesnoth.set_variable(name, (tonumber(var) or 0) * (tonumber(cfg.multiply) or 0))
-	elseif cfg.divide then
+	end
+
+	if cfg.divide then
 		local divide = tonumber(cfg.divide) or 0
 		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
 		wesnoth.set_variable(name, (tonumber(var) or 0) / divide)
-	elseif cfg.modulo then
+	end
+
+	if cfg.modulo then
 		local modulo = tonumber(cfg.modulo) or 0
 		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
 		wesnoth.set_variable(name, (tonumber(var) or 0) % modulo)
-	elseif cfg.round then
+
+	if cfg.round then
 		local round_val = cfg.round
 		if round_val == "ceil" then
 			wesnoth.set_variable(name, math.ceil(tonumber(var) or 0))
@@ -1825,22 +1840,32 @@ function wml_actions.set_variable(cfg)
 			value = value * (10 ^ -decimals)
 			wesnoth.set_variable(name, value)
 		end
+	end
+
 	-- unlike the other math operations, ipart and fpart do not act on
 	-- the value already contained in the variable
 	-- but on the value assigned to the respective key
-	elseif cfg.ipart then
+	if cfg.ipart then
 		local ivalue, fvalue = math.modf(tonumber(cfg.ipart) or 0)
 		wesnoth.set_variable(name, ivalue)
-	elseif cfg.fpart then
+	end
+
+	if cfg.fpart then
 		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
 		wesnoth.set_variable(name, fvalue)
-	elseif cfg.string_length ~= nil then
+	end
+
+	if cfg.string_length ~= nil then
 		wesnoth.set_variable(name, string.len(tostring(cfg.string_length)))
-	elseif cfg.time then
+	end
+
+	if cfg.time then
 		if cfg.time == "stamp" then
 			wesnoth.set_variable(name, wesnoth.get_time_stamp())
 		end
-	elseif cfg.rand then
+	end
+
+	if cfg.rand then
 		local random_string = cfg.rand
 		local choices = {}
 
@@ -1875,9 +1900,10 @@ function wml_actions.set_variable(cfg)
 
 		local idx = wesnoth.random(1, #choices)
 		wesnoth.set_variable(name, choices[idx])
-	else
-		local join_child = helper.get_child(cfg, "join")
-		if not join_child then return end
+	end
+
+	local join_child = helper.get_child(cfg, "join")
+	if join_child then
 		local array_name = join_child.variable or helper.wml_error "missing variable= attribute in [join]"
 		local separator = join_child.separator
 		local key_name = join_child.key or "value"
