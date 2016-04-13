@@ -1042,7 +1042,6 @@ end
 
 function wml_actions.set_variable(cfg)
 	local name = cfg.name or helper.wml_error "trying to set a variable with an empty name"
-	local var = wesnoth.get_variable(name)
 
 	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
 		wesnoth.set_variable(name, cfg.value)
@@ -1057,38 +1056,39 @@ function wml_actions.set_variable(cfg)
 	end
 
 	if cfg.add then
-		wesnoth.set_variable(name, (tonumber(var) or 0) + (tonumber(cfg.add) or 0))
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) + (tonumber(cfg.add) or 0))
 	end
 
 	if cfg.sub then
-		wesnoth.set_variable(name, (tonumber(var) or 0) - (tonumber(cfg.sub) or 0))
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) - (tonumber(cfg.sub) or 0))
 	end
 
 	if cfg.multiply then
-		wesnoth.set_variable(name, (tonumber(var) or 0) * (tonumber(cfg.multiply) or 0))
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) * (tonumber(cfg.multiply) or 0))
 	end
 
 	if cfg.divide then
 		local divide = tonumber(cfg.divide) or 0
 		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(var) or 0) / divide)
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) / divide)
 	end
 
 	if cfg.modulo then
 		local modulo = tonumber(cfg.modulo) or 0
 		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(var) or 0) % modulo)
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) % modulo)
 	end
 
 	if cfg.round then
+		local var = tonumber(wesnoth.get_variable(name) or 0)
 		local round_val = cfg.round
 		if round_val == "ceil" then
-			wesnoth.set_variable(name, math.ceil(tonumber(var) or 0))
+			wesnoth.set_variable(name, math.ceil(var))
 		elseif round_val == "floor" then
-			wesnoth.set_variable(name, math.floor(tonumber(var) or 0))
+			wesnoth.set_variable(name, math.floor(var))
 		else
 			local decimals, discarded = math.modf(tonumber(round_val) or 0)
-			local value = (tonumber(var) or 0) * (10 ^ decimals)
+			local value = var * (10 ^ decimals)
 			value = helper.round(value)
 			value = value * (10 ^ -decimals)
 			wesnoth.set_variable(name, value)
