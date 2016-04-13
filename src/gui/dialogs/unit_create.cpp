@@ -226,7 +226,7 @@ void tunit_create::list_item_clicked(twindow& window)
 		.set_displayed_type(units_[selected_row]);
 }
 
-bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
+void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 {
 	twindow& window = *textbox->get_window();
 
@@ -235,7 +235,7 @@ bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 	const std::vector<std::string> words = utils::split(text, ' ');
 
 	if(words == last_words_)
-		return false;
+		return;
 	last_words_ = words;
 
 	std::vector<bool> show_items(list.get_item_count(), true);
@@ -269,8 +269,6 @@ bool tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 	}
 
 	list.set_row_shown(show_items);
-
-	return false;
 }
 
 void tunit_create::gender_toggle_callback(twindow&)

@@ -1295,7 +1295,7 @@ void server::process_query(const network::connection sock,
 	// Commands a player may issue.
 	if (command == "status") {
 		response << process_command(command + " " + pl->second.name(), pl->second.name());
-	} else if (command.find("adminmsg") == 0
+	} else if (command.find("adminmsg") == 0 || command.find("report") == 0
 			|| command == "games"
 			|| command == "metrics"
 			|| command == "motd"

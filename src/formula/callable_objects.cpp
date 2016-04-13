@@ -528,7 +528,7 @@ void config_callable::get_inputs(std::vector<game_logic::formula_input>* inputs)
 int config_callable::do_compare(const game_logic::formula_callable* callable) const
 {
 	const config_callable* cfg_callable = dynamic_cast<const config_callable*>(callable);
-	if(cfg_callable == NULL) {
+	if(cfg_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
 	

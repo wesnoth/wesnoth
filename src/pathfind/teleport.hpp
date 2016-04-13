@@ -16,8 +16,6 @@
 
 #include "config.hpp"
 #include "map/location.hpp"
-#include "savegame_config.hpp"
-
 
 class team;
 class unit;
@@ -32,7 +30,8 @@ typedef std::pair<std::set<map_location>, std::set<map_location> >
 /*
  * Represents the tunnel wml tag.
  */
-class teleport_group: public savegame::savegame_config {
+class teleport_group
+{
 public:
 	/*
 	 * Constructs the object from a saved file.
@@ -141,7 +140,8 @@ private:
 const teleport_map get_teleport_locations(const unit &u, const team &viewing_team,
 		bool see_all = false, bool ignore_units = false);
 
-class manager: public savegame::savegame_config {
+class manager
+{
 public:
 	manager(const config &cfg);
 

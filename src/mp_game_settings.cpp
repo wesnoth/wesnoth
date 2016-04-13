@@ -29,7 +29,6 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 mp_game_settings::mp_game_settings() :
-	savegame_config(),
 	name(),
 	password(),
 	hash(),
@@ -62,8 +61,7 @@ mp_game_settings::mp_game_settings() :
 {}
 
 mp_game_settings::mp_game_settings(const config& cfg)
-	: savegame_config()
-	, name(cfg["scenario"].str())
+	: name(cfg["scenario"].str())
 	, password()
 	, hash(cfg["hash"].str())
 	, mp_era(cfg["mp_era"].str())

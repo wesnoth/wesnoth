@@ -31,6 +31,8 @@
 
 #include "utils/functional.hpp"
 
+#include <stdexcept>
+
 namespace
 {
 std::string format_addon_time(time_t time)

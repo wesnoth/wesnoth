@@ -34,7 +34,6 @@
 #include "gui/auxiliary/formula.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 
-#include <boost/static_assert.hpp>
 #include <boost/regex.hpp>
 
 static lg::log_domain log_config("config");
@@ -830,7 +829,7 @@ MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
 
 std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
 {
-	BOOST_STATIC_ASSERT(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count);
+	static_assert(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count, "ALIGNMENT_FEMALE_VARIATION and ALIGNMENT do not have the same number of values");
 	assert(align.valid());
 	std::string str = std::string();
 	if (gender == unit_race::FEMALE) {

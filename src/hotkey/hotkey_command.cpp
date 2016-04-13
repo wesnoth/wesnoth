@@ -35,6 +35,10 @@ namespace {
 	hotkey::hk_scopes scope_main(1 << hotkey::SCOPE_MAIN_MENU);
 // this contains all static hotkeys
 hotkey::hotkey_command_temp hotkey_list_[] = {
+	{ hotkey::HOTKEY_SCROLL_UP, "scroll-up", N_("Scroll Up"), false, scope_game | scope_editor, "" },
+	{ hotkey::HOTKEY_SCROLL_DOWN, "scroll-down", N_("Scroll Down"), false, scope_game | scope_editor, "" },
+	{ hotkey::HOTKEY_SCROLL_LEFT, "scroll-left", N_("Scroll Left"), false, scope_game | scope_editor, "" },
+	{ hotkey::HOTKEY_SCROLL_RIGHT, "scroll-right", N_("Scroll Right"), false, scope_game | scope_editor, "" },
 
 	{ hotkey::HOTKEY_CANCEL, N_("cancel"), N_("Cancel"), false, scope_game | scope_editor | scope_main, "" },
 	{ hotkey::HOTKEY_SELECT_HEX, "selecthex", N_("Select Hex"), false, scope_game, "" },

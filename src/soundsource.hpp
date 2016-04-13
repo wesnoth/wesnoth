@@ -18,7 +18,6 @@
 
 #include "generic_event.hpp"
 #include "map/location.hpp"
-#include "savegame_config.hpp"
 
 class config;
 class display;
@@ -74,7 +73,8 @@ public:
 	void write_config(config& cfg) const;
 };
 
-class manager : public events::observer, public savegame::savegame_config {
+class manager : public events::observer
+{
 
 	typedef std::map<std::string, positional_source *> positional_source_map;
 	typedef positional_source_map::iterator            positional_source_iterator;
@@ -93,6 +93,7 @@ public:
 	// add or replace a soundsource
 	void add(const sourcespec &source);
 	void remove(const std::string &id);
+	config get(const std::string &id);
 	void update();
 
 	// checks which sound sources are visible
@@ -103,8 +104,6 @@ public:
 	 * "sound_source", appended to existing content.
 	 */
 	void write_sourcespecs(config& cfg) const;
-
-	config to_config() const;
 };
 
 /**

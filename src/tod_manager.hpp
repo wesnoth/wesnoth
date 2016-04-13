@@ -17,7 +17,6 @@
 #include "map/location.hpp"
 #include "config.hpp"
 #include "time_of_day.hpp"
-#include "savegame_config.hpp"
 
 #include <boost/optional.hpp>
 
@@ -31,7 +30,7 @@ namespace random_new
 }
 
 //time of day and turn functionality
-class tod_manager : public savegame::savegame_config
+class tod_manager
 {
 	public:
 	explicit tod_manager(const config& scenario_cfg = config());

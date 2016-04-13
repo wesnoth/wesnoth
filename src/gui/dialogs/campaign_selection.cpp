@@ -37,6 +37,7 @@
 #include "serialization/string_utils.hpp"
 
 #include "utils/functional.hpp"
+#include "video.hpp"
 
 namespace gui2
 {

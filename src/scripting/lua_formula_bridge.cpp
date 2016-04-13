@@ -77,7 +77,7 @@ public:
 	}
 	int do_compare(const formula_callable* other) const {
 		const lua_callable* lua = dynamic_cast<const lua_callable*>(other);
-		if(lua == NULL) {
+		if(lua == nullptr) {
 			return formula_callable::do_compare(other);
 		}
 		if(mState == lua->mState) { // Which should always be the case, but let's be safe here

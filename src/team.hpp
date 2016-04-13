@@ -19,7 +19,6 @@
 #include "utils/make_enum.hpp"
 #include "map/location.hpp"
 #include "recall_list_manager.hpp"
-#include "savegame_config.hpp"
 #include "units/ptr.hpp"
 #include "util.hpp"
 #include "config.hpp"
@@ -48,7 +47,7 @@ namespace wb {
  * This class stores all the data for a single 'side' (in game nomenclature).
  * E.g., there is only one leader unit per team.
  */
-class team : public savegame::savegame_config
+class team
 {
 public:
 

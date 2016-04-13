@@ -24,8 +24,6 @@
 #include "util.hpp"
 #include "tstring.hpp"
 
-#include <boost/static_assert.hpp>
-
 #include <cassert>
 
 namespace gui2
@@ -235,7 +233,7 @@ tformula<T>::execute(const game_logic::map_formula_callable& /*variables*/
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
-	BOOST_STATIC_ASSERT(sizeof(T) == 0);
+	static_assert(sizeof(T) == 0, "tformula: Missing execute specialization");
 	return T();
 }
 

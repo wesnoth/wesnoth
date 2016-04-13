@@ -96,42 +96,32 @@ tcustom_tod::tcustom_tod(editor::editor_display* display,
 	, current_tod_sound_(nullptr)
 	, current_tod_number_(nullptr)
 	, lawful_bonus_field_(register_integer("lawful_bonus", true))
-	, tod_red_field_(register_integer("tod_red",
-									  true,
-									  &preferences::editor::tod_r,
-									  &preferences::editor::set_tod_r))
-	, tod_green_field_(register_integer("tod_green",
-										true,
-										&preferences::editor::tod_g,
-										&preferences::editor::set_tod_g))
-	, tod_blue_field_(register_integer("tod_blue",
-									   true,
-									   &preferences::editor::tod_b,
-									   &preferences::editor::set_tod_b))
+	, tod_red_field_(nullptr)
+	, tod_green_field_(nullptr)
+	, tod_blue_field_(nullptr)
 	, display_(display)
 {
 }
 
 void tcustom_tod::select_file(const std::string& filename,
-							  const std::string& dir,
-							  const std::string& vector_attrib,
+							  const std::string& default_dir,
+							  const std::string& attribute,
 							  twindow& window)
 {
-	std::string va = vector_attrib;
 	std::string fn = filesystem::base_name(filename);
 	std::string dn = filesystem::directory_name(fn);
 	if(dn.empty()) {
-		dn = dir;
+		dn = default_dir;
 	}
 
 	int res = dialogs::show_file_chooser_dialog(
 			display_->video(), dn, _("Choose File"));
 	if(res == 0) {
-		if(va == "image") {
+		if(attribute == "image") {
 			tods_[current_tod_].image = dn;
-		} else if(va == "mask") {
+		} else if(attribute == "mask") {
 			tods_[current_tod_].image_mask = dn;
-		} else if(va == "sound") {
+		} else if(attribute == "sound") {
 			tods_[current_tod_].sounds = dn;
 		}
 	}
@@ -171,11 +161,6 @@ void tcustom_tod::do_delete_tod(twindow& window)
 	update_selected_tod_info(window);
 }
 
-const std::vector<time_of_day>& tcustom_tod::do_save_schedule() const
-{
-	return tods_;
-}
-
 const time_of_day& tcustom_tod::get_selected_tod() const
 {
 	assert(static_cast<size_t>(current_tod_) < tods_.size());
@@ -184,14 +169,13 @@ const time_of_day& tcustom_tod::get_selected_tod() const
 
 void tcustom_tod::update_tod_display(twindow& window)
 {
-	image::set_color_adjustment(tod_red_field_->get_widget_value(window),
-								tod_green_field_->get_widget_value(window),
-								tod_blue_field_->get_widget_value(window));
+	image::set_color_adjustment(tod_red_field_->get_value(),
+								tod_green_field_->get_value(),
+								tod_blue_field_->get_value());
 
 	if(!display_) {
 		return;
 	}
-
 
 	// Prevent a floating slice of window appearing alone over the
 	// theme UI sidebar after redrawing tiles and before we have a
@@ -209,6 +193,7 @@ void tcustom_tod::update_tod_display(twindow& window)
 
 	// invalidate all tiles so they are redrawn with the new ToD tint next
 	display_->invalidate_all();
+
 	// redraw tiles
 	display_->draw(false);
 
@@ -221,11 +206,6 @@ void tcustom_tod::update_lawful_bonus(twindow& window)
 			= lawful_bonus_field_->get_widget_value(window);
 }
 
-void tcustom_tod::slider_update_callback(twindow& window)
-{
-	update_tod_display(window);
-}
-
 void tcustom_tod::update_selected_tod_info(twindow& window)
 {
 	current_tod_name_->set_value(get_selected_tod().name);
@@ -235,23 +215,31 @@ void tcustom_tod::update_selected_tod_info(twindow& window)
 	current_tod_sound_->set_label(get_selected_tod().sounds);
 
 	std::stringstream ss;
-	ss << (current_tod_ + 1);
-	ss << "/" << tods_.size();
+	ss << (current_tod_ + 1) << "/" << tods_.size();
 	current_tod_number_->set_label(ss.str());
 
 	lawful_bonus_field_->set_widget_value(window,
 										  get_selected_tod().lawful_bonus);
-	tod_red_field_->set_widget_value(window, get_selected_tod().color.r);
-	tod_green_field_->set_widget_value(window, get_selected_tod().color.g);
-	tod_blue_field_->set_widget_value(window, get_selected_tod().color.b);
+	tod_red_field_->set_value(get_selected_tod().color.r);
+	tod_green_field_->set_value(get_selected_tod().color.g);
+	tod_blue_field_->set_value(get_selected_tod().color.b);
 
 	update_tod_display(window);
-	window.invalidate_layout();
 }
 
 void tcustom_tod::pre_show(twindow& window)
 {
 	assert(!tods_.empty());
+
+	tod_red_field_
+			= find_widget<tslider>(&window, "tod_red", false, true);
+
+	tod_green_field_
+			= find_widget<tslider>(&window, "tod_green", false, true);
+
+	tod_blue_field_
+			= find_widget<tslider>(&window, "tod_blue", false, true);
+
 	current_tod_name_
 			= find_widget<ttext_box>(&window, "tod_name", false, true);
 
@@ -269,91 +257,75 @@ void tcustom_tod::pre_show(twindow& window)
 	current_tod_number_
 			= find_widget<tlabel>(&window, "tod_number", false, true);
 
-	tbutton& image_button
-			= find_widget<tbutton>(&window, "image_button", false);
-	connect_signal_mouse_left_click(image_button,
-									std::bind(&tcustom_tod::select_file,
-												this,
-												get_selected_tod().image,
-												"data/core/images/misc",
-												"image",
-												std::ref(window)));
+	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "image_button", false),
+			std::bind(&tcustom_tod::select_file,
+					this,
+					get_selected_tod().image,
+					"data/core/images/misc",
+					"image",
+					std::ref(window)));
 
-	tbutton& mask_button = find_widget<tbutton>(&window, "mask_button", false);
-	;
-	connect_signal_mouse_left_click(mask_button,
-									std::bind(&tcustom_tod::select_file,
-												this,
-												get_selected_tod().image_mask,
-												"data/core/images",
-												"mask",
-												std::ref(window)));
+	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "mask_button", false),
+			std::bind(&tcustom_tod::select_file,
+					this,
+					get_selected_tod().image_mask,
+					"data/core/images",
+					"mask",
+					std::ref(window)));
 
-	tbutton& sound_button
-			= find_widget<tbutton>(&window, "sound_button", false);
-	connect_signal_mouse_left_click(sound_button,
-									std::bind(&tcustom_tod::select_file,
-												this,
-												get_selected_tod().sounds,
-												"data/core/sounds/ambient",
-												"sound",
-												std::ref(window)));
+	connect_signal_mouse_left_click(find_widget<tbutton>(&window, "sound_button", false),
+			std::bind(&tcustom_tod::select_file,
+					this,
+					get_selected_tod().sounds,
+					"data/core/sounds/ambient",
+					"sound",
+					std::ref(window)));
 
-	tbutton& next_tod_button = find_widget<tbutton>(&window, "next_tod", false);
 	connect_signal_mouse_left_click(
-			next_tod_button,
+			find_widget<tbutton>(&window, "next_tod", false),
 			std::bind(&tcustom_tod::do_next_tod, this, std::ref(window)));
 
-	tbutton& prev_tod_button
-			= find_widget<tbutton>(&window, "previous_tod", false);
 	connect_signal_mouse_left_click(
-			prev_tod_button,
+			find_widget<tbutton>(&window, "previous_tod", false),
 			std::bind(&tcustom_tod::do_prev_tod, this, std::ref(window)));
 
-	tbutton& new_button = find_widget<tbutton>(&window, "new", false);
 	connect_signal_mouse_left_click(
-			new_button,
+			find_widget<tbutton>(&window, "new", false),
 			std::bind(&tcustom_tod::do_new_tod, this, std::ref(window)));
 
-	tbutton& delete_button = find_widget<tbutton>(&window, "delete", false);
 	connect_signal_mouse_left_click(
-			delete_button,
+			find_widget<tbutton>(&window, "delete", false),
 			std::bind(&tcustom_tod::do_delete_tod, this, std::ref(window)));
-
-	tbutton& save_button = find_widget<tbutton>(&window, "save", false);
-	connect_signal_mouse_left_click(
-			save_button, std::bind(&tcustom_tod::do_save_schedule, this));
 
 	connect_signal_notify_modified(
 			*(lawful_bonus_field_->widget()),
 			std::bind(&tcustom_tod::update_lawful_bonus,
-						this,
-						std::ref(window)));
+					this,
+					std::ref(window)));
 
 	connect_signal_notify_modified(
-			*(tod_red_field_->widget()),
-			std::bind(&tcustom_tod::slider_update_callback,
-						this,
-						std::ref(window)));
+			*tod_red_field_,
+			std::bind(&tcustom_tod::update_tod_display,
+					this,
+					std::ref(window)));
 
 	connect_signal_notify_modified(
-			*(tod_green_field_->widget()),
-			std::bind(&tcustom_tod::slider_update_callback,
-						this,
-						std::ref(window)));
+			*tod_green_field_,
+			std::bind(&tcustom_tod::update_tod_display,
+					this,
+					std::ref(window)));
 
 	connect_signal_notify_modified(
-			*(tod_blue_field_->widget()),
-			std::bind(&tcustom_tod::slider_update_callback,
-						this,
-						std::ref(window)));
+			*tod_blue_field_,
+			std::bind(&tcustom_tod::update_tod_display,
+					this,
+					std::ref(window)));
 
 	for(size_t i = 0; i < tods_.size(); ++i) {
-
 		time_of_day& tod = tods_[i];
-		const int r = tod_red_field_->get_widget_value(window);
-		const int g = tod_green_field_->get_widget_value(window);
-		const int b = tod_blue_field_->get_widget_value(window);
+		const int r = tod_red_field_->get_value();
+		const int g = tod_green_field_->get_value();
+		const int b = tod_blue_field_->get_value();
 		if(tod.color.r == r && tod.color.g == g && tod.color.b == b) {
 			current_tod_ = i;
 			update_selected_tod_info(window);
@@ -367,6 +339,10 @@ void tcustom_tod::pre_show(twindow& window)
 void tcustom_tod::post_show(twindow& window)
 {
 	update_tod_display(window);
+	
+	if(get_retval() == twindow::OK) {
+		// TODO: save ToD
+	}
 }
 
 } // namespace gui2

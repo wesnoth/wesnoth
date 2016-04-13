@@ -28,6 +28,7 @@
 #include "gui/widgets/settings.hpp"
 
 #include "utils/functional.hpp"
+#include "video.hpp"
 
 namespace gui2
 {

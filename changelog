@@ -4,6 +4,10 @@ Version 1.13.4+dev:
  * Removed support for SDL 1.2. SDL 2 is now the only supported version.
  * Terrains:
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
+ * User Interface:
+   * Various design improvements to GUI2 widgets
+   * New simpler GUI2 loading screen
+   * New colored cursor graphics
  * WML engine:
    * Fix some issues with [foreach]
    * Fix some issues with backstab-like weapon specials
@@ -16,6 +20,11 @@ Version 1.13.4+dev:
    * New ~SCALE_INTO_SHARP(w,h) IPF which preserves aspect ratio, using
      nearest neighbor scaling.
    * Support delayed_variable_substitution= in [on_undo], [on_redo]
+     Note that this means $unit.x and $unit.y may not reflect the unit's
+     true location, so using [unstore_unit] on $unit may have unexpected effects.
+     This applies to $second_unit too. The $x1, $y1, $x2, $y2 variables work fine
+     though, so in most cases they can be used instead. Anything else in $unit
+     or $second_unit is also fine.
    * formula= in SUF can now reference $other_unit via the formula variable "other"
    * formula= now supported in location, side, and weapon filters
    * Weapon filters now support number, parry, accuracy, and movement_used
@@ -23,6 +32,9 @@ Version 1.13.4+dev:
      uses full weapon filter.
    * lua_function=var.member now works in SUF; however, 'var' still needs to
      be a global variable.
+   * Added new keys name_generator, male_name_generator and female_name_generator
+     for the [race] tag to declare a context-free grammar to describe how names
+     are derived
    * AiWML:
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
@@ -120,6 +132,13 @@ Version 1.13.4+dev:
      of the time in the overall schedule (eg, 1 would be dawn in the default
      schedule). Optional second argument takes a time area ID, to set
      local instead of global time.
+   * New wesnoth.add_fog and wesnoth.remove_fog functions allow changing fog
+     on the map. The [lift_fog] and [clear_fog] tags now use this.
+   * New wesnoth.add_sound_source, wesnoth.remove_sound_source, and
+     wesnoth.get_sound_source functions to allow manipulation of sound
+     sources. The [sound_source] and [remove_sound_source] now use these.
+   * New wesnoth.log function for printing log messages. The [wml_message]
+     and [deprecated_message] tags now use this.
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string
@@ -263,6 +282,8 @@ Version 1.13.4+dev:
  * Miscellaneous and bug fixes:
    * Resolve translated logo images not being used (bug #24357)
    * Ported the "hexometer" tool from Bash to Python 3
+   * Recognize hotkey release events
+   * Allow changing keybindings for scrolling the map.
 
 Version 1.13.4:
  * Language and i18n:

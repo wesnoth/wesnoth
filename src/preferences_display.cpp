@@ -150,7 +150,7 @@ bool show_theme_dialog(CVideo& video)
 	return false;
 }
 
-std::string show_wesnothd_server_search(CVideo& video)
+void show_wesnothd_server_search(CVideo& video)
 {
 	// Showing file_chooser so user can search the wesnothd
 	std::string old_path = preferences::get_mp_server_program_name();
@@ -192,10 +192,9 @@ std::string show_wesnothd_server_search(CVideo& video)
 			, &symbols);
 
 	int res = dialogs::show_file_chooser_dialog(video, path, title, false, filename);
-	if (res == 0)
-		return path;
-	else
-		return "";
+	if (res == 0) {
+		preferences::set_mp_server_program_name(path);
+	}
 }
 
 } // end namespace preferences

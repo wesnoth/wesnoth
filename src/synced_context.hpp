@@ -20,11 +20,12 @@
 #include "replay.hpp"
 #include "random_new.hpp"
 #include "random_new_synced.hpp"
+#include "game_events/pump.hpp" // for queued_event
 #include "generic_event.hpp"
 #include "mouse_handler_base.hpp"
 #include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <deque>
 
 class config;
 
@@ -147,13 +148,13 @@ public:
 	*/
 	static config ask_server_choice(const server_choice&);
 
-	typedef boost::ptr_vector<config> tconfig_vector;
-	static tconfig_vector& get_undo_commands() { return undo_commands_; }
-	static tconfig_vector& get_redo_commands() { return redo_commands_; }
-	static void add_undo_commands(const config& commands);
-	static void add_redo_commands(const config& commands);
-	static void reset_undo_commands() { undo_commands_ = tconfig_vector(); }
-	static void reset_redo_commands() { redo_commands_ = tconfig_vector(); }
+	typedef std::deque<std::pair<config,game_events::queued_event>> event_list;
+	static event_list& get_undo_commands() { return undo_commands_; }
+	static event_list& get_redo_commands() { return redo_commands_; }
+	static void add_undo_commands(const config& commands, const game_events::queued_event& ctx);
+	static void add_redo_commands(const config& commands, const game_events::queued_event& ctx);
+	static void reset_undo_commands();
+	static void reset_redo_commands();
 private:
 	/*
 		weather we are in a synced move, in a user_choice, or none of them
@@ -175,11 +176,11 @@ private:
 	/**
 		Actions wml to be executed when the current actio is undone.
 	*/
-	static tconfig_vector undo_commands_;
+	static event_list undo_commands_;
 	/**
 		Actions wml to be executed when the current actio is redone.
 	*/
-	static tconfig_vector redo_commands_;
+	static event_list redo_commands_;
 };
 
 

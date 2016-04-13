@@ -5,10 +5,7 @@ local location_set = wesnoth.require "lua/location_set.lua"
 local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
-	wesnoth.wml_actions.wml_message({
-		message = msg,
-		logger = level,
-	})
+	wesnoth.log(level, msg, true)
 end
 
 local function get_image(cfg, speaker)
@@ -24,6 +21,10 @@ local function get_image(cfg, speaker)
 		image = speaker.portrait
 	end
 
+	if image == "none" or image == nil then
+		return "", true
+	end
+
 	if image:find("~RIGHT%(%)") then
 		left_side = false
 		-- The percent signs escape the parentheses for a literal match
@@ -36,10 +37,6 @@ local function get_image(cfg, speaker)
 		-- or in [unit_type] to force it to left.
 		left_side = true
 		image = image:gsub("~LEFT%(%)", "")
-	end
-
-	if image == "none" or image == nil then
-		return "", true
 	end
 
 	return image, left_side

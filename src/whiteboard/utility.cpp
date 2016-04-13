@@ -165,7 +165,7 @@ bool team_has_visible_plan(team &t)
 	return !t.get_side_actions()->hidden();
 }
 
-void for_each_action(std::function<void(action_ptr)> function, team_filter team_filter)
+void for_each_action(std::function<void(action*)> function, team_filter team_filter)
 {
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
@@ -173,7 +173,9 @@ void for_each_action(std::function<void(action_ptr)> function, team_filter team_
 		for(team &side : *resources::teams) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_filter(side)) {
-				std::for_each(actions.turn_begin(turn), actions.turn_end(turn), function);
+				for(auto iter = actions.turn_begin(turn); iter != actions.turn_end(turn); ++iter) {
+					function(iter->get());
+				}
 				end = false;
 			}
 		}

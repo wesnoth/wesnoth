@@ -603,7 +603,7 @@ void tpreferences::initialize_members(twindow& window)
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "choose_theme", false),
-			std::bind(&show_theme_dialog,
+			bind_void(&show_theme_dialog,
 			std::ref(window.video())));
 
 
@@ -614,22 +614,22 @@ void tpreferences::initialize_members(twindow& window)
 	/* SOUND FX */
 	setup_toggle_slider_pair("sound_toggle_sfx", "sound_volume_sfx",
 		sound_on(), sound_volume(),
-		set_sound, set_sound_volume, window);
+		bind_void(set_sound, _1), set_sound_volume, window);
 
 	/* MUSIC */
 	setup_toggle_slider_pair("sound_toggle_music", "sound_volume_music",
 		music_on(), music_volume(),
-		set_music, set_music_volume, window);
+		bind_void(set_music, _1), set_music_volume, window);
 
 	/* TURN BELL */
 	setup_toggle_slider_pair("sound_toggle_bell", "sound_volume_bell",
 		turn_bell(), bell_volume(),
-		set_turn_bell, set_bell_volume, window);
+		bind_void(set_turn_bell, _1), set_bell_volume, window);
 
 	/* UI FX */
 	setup_toggle_slider_pair("sound_toggle_uisfx", "sound_volume_uisfx",
 		UI_sound_on(), UI_volume(),
-		set_UI_sound, set_UI_volume, window);
+		bind_void(set_UI_sound, _1), set_UI_volume, window);
 
 
 	//

@@ -982,6 +982,7 @@ set(wesnoth-main_SRC
 	units/map.cpp
 	units/types.cpp
 	utils/sha1.cpp
+	utils/context_free_grammar_generator.cpp
 	variable.cpp
 	variable_info.cpp
 	whiteboard/action.cpp

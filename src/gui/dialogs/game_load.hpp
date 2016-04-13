@@ -62,7 +62,7 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	bool filter_text_changed(ttext_* textbox, const std::string& text);
+	void filter_text_changed(ttext_* textbox, const std::string& text);
 	void list_item_clicked(twindow& window);
 	void delete_button_callback(twindow& window);
 

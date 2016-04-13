@@ -78,7 +78,7 @@ private:
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);
-	bool filter_text_changed(ttext_* textbox, const std::string& text);
+	void filter_text_changed(ttext_* textbox, const std::string& text);
 	void gender_toggle_callback(twindow& window);
 
 	tgroup<unit_race::GENDER> gender_toggle;

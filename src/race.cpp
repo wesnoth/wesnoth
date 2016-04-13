@@ -191,6 +191,21 @@ unit_race::unit_race(const config& cfg) :
 		name_[FEMALE] = (cfg["name"]);
 	}
 
+	if (cfg.has_attribute("male_name_generator")) {
+		name_generator_[MALE].constructFromString(cfg["male_name_generator"]);
+	}
+	if (cfg.has_attribute("female_name_generator")) {
+		name_generator_[FEMALE].constructFromString(cfg["female_name_generator"]);
+	}
+	if (cfg.has_attribute("name_generator")) {
+		if (!name_generator_[MALE].is_initialized()) {
+			name_generator_[MALE].constructFromString(cfg["name_generator"]);
+		}
+		if (!name_generator_[FEMALE].is_initialized()) {
+			name_generator_[FEMALE].constructFromString(cfg["name_generator"]);
+		}
+	}
+
 	if(chain_size_ <= 0)
 		chain_size_ = 2;
 
@@ -202,6 +217,9 @@ unit_race::unit_race(const config& cfg) :
 std::string unit_race::generate_name(
 		unit_race::GENDER gender) const
 {
+    if (name_generator_[gender].is_initialized()) {
+        return name_generator_[gender].generate();
+    }
 	return unicode_cast<utf8::string>(
 		markov_generate_name(next_[gender], chain_size_, 12));
 }

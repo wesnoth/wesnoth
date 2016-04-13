@@ -52,6 +52,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
+#include "whiteboard/manager.hpp"
 
 namespace ai {
 
@@ -286,6 +287,7 @@ void attack_result::do_execute()
 	//FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
 	if(!synced_context::is_synced()) //RAII block for set_scontext_synced
 	{
+		wb::real_map rm;
 		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
 		resources::recorder->add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
 			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
