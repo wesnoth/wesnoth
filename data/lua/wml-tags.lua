@@ -1078,6 +1078,7 @@ function wml_actions.set_variable(cfg)
 		local modulo = tonumber(cfg.modulo) or 0
 		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
 		wesnoth.set_variable(name, (tonumber(var) or 0) % modulo)
+	end
 
 	if cfg.round then
 		local round_val = cfg.round
@@ -1171,5 +1172,4 @@ function wml_actions.set_variable(cfg)
 
 		wesnoth.set_variable(name, table.concat(string_to_join, separator))
 	end
-end
 end
