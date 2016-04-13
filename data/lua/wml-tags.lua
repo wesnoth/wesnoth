@@ -1793,9 +1793,9 @@ function wml_actions.set_variable(cfg)
 	local var = wesnoth.get_variable(name)
 
 	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
-		wesnoth.set_variable(name, cfg.__shallow_parsed.value)
+		wesnoth.set_variable(name, cfg.value)
 	elseif cfg.literal ~= nil then
-		wesnoth.set_variable(name, cfg.__shallow_literal.literal)
+		wesnoth.set_variable(name, helper.shallow_literal(cfg).literal)
 	elseif cfg.to_variable then
 		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
 	elseif cfg.add then
