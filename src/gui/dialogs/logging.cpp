@@ -37,7 +37,6 @@ tlogging::tlogging()
 	widget_id_.push_back("info");
 	widget_id_.push_back("debug");
 
-	domain_list_end_ = "the end";
 
 	//empty string is the filter (in other words, this grabs the whole list of domains)
 	std::string temp_string = lg::list_logdomains("");
@@ -58,15 +57,15 @@ void tlogging::pre_show(twindow& window)
 
 	tlistbox& logger_box = find_widget<tlistbox>(&window, "logger_listbox", false);
 
-	for(unsigned int counter = 0; domain_list_[counter] != domain_list_end_; counter++){
-		std::string this_domain = domain_list_[counter];
+	for(unsigned int i = 0; i < domain_list_.size(); i++){
+		std::string this_domain = domain_list_[i];
 		std::map<std::string, string_map> data;
 		string_map item;
 
 		unsigned int id_size = widget_id_.size();
-		for(unsigned int iter = (id_size-1); iter < id_size; iter--){
+		for(int j = (id_size-1); j >= 0; j--){
 			//counting down so that order matches logging.cfg
-			item["toggle_button"] = widget_id_[iter]; // id?
+			item["toggle_button"] = widget_id_[j]; // id?
 			data["toggle_button"] = item;
 		}
 
@@ -80,12 +79,12 @@ void tlogging::pre_show(twindow& window)
 		logger_box.add_row(data);
 		tgroup<std::string>& group = groups_[this_domain];
 
-		tgrid* this_grid = logger_box.get_row_grid(counter);
-		for(unsigned int iter = 0; iter < id_size; iter++){
-			twidget* this_widget = this_grid->find(widget_id_[iter], false);
+		tgrid* this_grid = logger_box.get_row_grid(i);
+		for(std::string this_id : widget_id_){
+			twidget* this_widget = this_grid->find(this_id, false);
 			ttoggle_button* button = dynamic_cast<ttoggle_button*>(this_widget);
 			if(button != nullptr) {
-				group.add_member(button, widget_id_[iter]);
+				group.add_member(button, this_id);
 			}
 		}
 		//default value is always level 1: "warn"
@@ -95,8 +94,8 @@ void tlogging::pre_show(twindow& window)
 
 void tlogging::post_show(twindow& /*window*/)
 {
-	for(unsigned int counter = 0; domain_list_[counter] != domain_list_end_; counter++){
-		set_logger(domain_list_[counter]);
+	for(std::string this_domain : domain_list_){
+		set_logger(this_domain);
 	}
 }
 
