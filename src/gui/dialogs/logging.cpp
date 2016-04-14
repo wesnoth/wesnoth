@@ -48,7 +48,6 @@ tlogging::tlogging()
 	while(iss >> one_domain){
 		domain_list_.push_back(one_domain);
 	}
-	domain_list_.push_back(domain_list_end_);
 }
 
 void tlogging::pre_show(twindow& window)
