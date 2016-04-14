@@ -45,7 +45,6 @@ private:
 
 	std::map<std::string, tgroup<std::string> > groups_;
 	std::vector<std::string> domain_list_, widget_id_;
-	std::string domain_list_end_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
