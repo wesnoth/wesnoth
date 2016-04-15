@@ -29,7 +29,7 @@ private:
 	struct nonterminal {
 		nonterminal() : last_(1) {}
 		std::vector<std::vector<std::string> > possibilities_;
-		unsigned int last_;
+		mutable unsigned int last_;
 	};
 
 	std::map<std::string, nonterminal> nonterminals_;

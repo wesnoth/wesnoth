@@ -142,7 +142,7 @@ std::string context_free_grammar_generator::print_nonterminal(const std::string&
 		picked = seed[seed_pos++] % got.possibilities_.size();
 		if (seed_pos >= seed_size) seed_pos = 0;
 	}
-	const_cast<unsigned int&>(got.last_) = picked; /* The variable last_ can change, the rest must stay const */
+	got.last_ = picked;
 	const std::vector<std::string>& used = got.possibilities_[picked];
 	for (unsigned int i = 0; i < used.size(); i++) {
 		if (used[i][0] == '{') result += print_nonterminal(used[i].substr(1), seed, seed_pos);
