@@ -40,11 +40,13 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 
 	while (*reading != 0) {
 		if (*reading == '=') {
-			current = &nonterminals_[buf];
+			// Leading and trailing whitespace is not significant, but internal whitespace is
+			current = &nonterminals_[utils::strip(buf)];
 			current->possibilities_.push_back(std::vector<std::string>());
 			filled = &current->possibilities_.back();
 			buf.clear();
 		} else if (*reading == '\n') {
+			// All whitespace is significant after the =
 			if (filled) filled->push_back(buf);
 			filled = nullptr;
 			current = nullptr;
@@ -73,12 +75,12 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 				filled->push_back(buf);
 				buf.clear();
 			}
-			if (*reading == '}') {
+			else if (*reading == '}') {
 				if (!filled) {
 					lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced } symbol";
 					return;
 				}
-				filled->push_back(buf);
+				filled->push_back('{' + utils::strip(buf));
 				buf.clear();
 			} else buf.push_back(*reading);
 		}
