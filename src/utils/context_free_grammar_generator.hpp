@@ -15,19 +15,21 @@
 #ifndef CONTEXT_FREE_GRAMMAR_GENERATOR_INCLUDED
 #define CONTEXT_FREE_GRAMMAR_GENERATOR_INCLUDED
 
+#include "utils/name_generator.hpp"
+
 #include <string>
 #include <map>
 #include <list>
 #include <vector>
 
-class context_free_grammar_generator
+class context_free_grammar_generator : public name_generator
 {
 private:
 
 	struct nonterminal {
 		nonterminal() : last_(1) {}
 		std::vector<std::vector<std::string> > possibilities_;
-		unsigned int last_;
+		mutable unsigned int last_;
 	};
 
 	std::map<std::string, nonterminal> nonterminals_;
@@ -36,26 +38,27 @@ private:
 	static const short unsigned int seed_size = 20;
 
 public:
-	/** Default constructor */
-	context_free_grammar_generator();
-
 	/** Initialisation
 	 * @param source the definition of the context-free grammar to use
-	 * @returns if the operation was successful
 	 */
-	bool constructFromString(const std::string& source);
+	context_free_grammar_generator(const std::string& source);
+	
+	/** Initialisation
+	 * @param source A map of nonterminals to lists of possibilities
+	 */
+	context_free_grammar_generator(const std::map<std::string, std::vector<std::string>>& source);
 
 	/** Generates a possible word in the grammar set before
-	 * @returns the word
+	 * @return the word
 	 */
-	std::string generate() const;
+	std::string generate() const override;
 
 	~context_free_grammar_generator();
 
 	/** Checks if the object is initialized
-	 * @returns if it is initialized
+	 * @return if it is initialized
 	 */
-	bool is_initialized() const {return initialized_; }
+	bool is_valid() const override {return initialized_; }
 };
 
 #endif

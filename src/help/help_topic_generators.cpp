@@ -20,7 +20,7 @@
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "movetype.hpp"                 // for movetype, movetype::effects, etc
-#include "race.hpp"                     // for unit_race, etc
+#include "units/race.hpp"                     // for unit_race, etc
 #include "terrain/terrain.hpp"                  // for terrain_type
 #include "terrain/translation.hpp"      // for operator==, t_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc

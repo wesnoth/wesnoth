@@ -980,9 +980,11 @@ set(wesnoth-main_SRC
 	units/helper.cpp
 	units/id.cpp
 	units/map.cpp
+	units/race.cpp
 	units/types.cpp
 	utils/sha1.cpp
 	utils/context_free_grammar_generator.cpp
+	utils/markov_generator.cpp
 	variable.cpp
 	variable_info.cpp
 	whiteboard/action.cpp
@@ -1039,7 +1041,6 @@ set(libwesnoth-game_STAT_SRC
 	pathutils.cpp
 	preferences.cpp
 	preferences_display.cpp
-	race.cpp
 	quit_confirmation.cpp
 	reports.cpp
 	show_dialog.cpp

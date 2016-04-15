@@ -19,21 +19,20 @@
  */
 
 #include "context_free_grammar_generator.hpp"
-#include "../log.hpp"
-#include "../random_new.hpp"
 
-context_free_grammar_generator::context_free_grammar_generator() :
-	initialized_(false)
-{
+#include "log.hpp"
+#include "random_new.hpp"
+#include "serialization/string_utils.hpp"
 
-}
+#include <algorithm>
 
 context_free_grammar_generator::~context_free_grammar_generator()
 {
-
 }
 
-bool context_free_grammar_generator::constructFromString(const std::string &source) {
+context_free_grammar_generator::context_free_grammar_generator(const std::string& source) :
+	initialized_(false)
+{
 	const char* reading = source.c_str();
 	nonterminal* current = nullptr;
 	std::vector<std::string>* filled = nullptr;
@@ -41,11 +40,13 @@ bool context_free_grammar_generator::constructFromString(const std::string &sour
 
 	while (*reading != 0) {
 		if (*reading == '=') {
-			current = &nonterminals_[buf];
+			// Leading and trailing whitespace is not significant, but internal whitespace is
+			current = &nonterminals_[utils::strip(buf)];
 			current->possibilities_.push_back(std::vector<std::string>());
 			filled = &current->possibilities_.back();
 			buf.clear();
 		} else if (*reading == '\n') {
+			// All whitespace is significant after the =
 			if (filled) filled->push_back(buf);
 			filled = nullptr;
 			current = nullptr;
@@ -53,7 +54,7 @@ bool context_free_grammar_generator::constructFromString(const std::string &sour
 		} else if (*reading == '|') {
 			if (!filled || !current) {
 				lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced | symbol";
-				return false;
+				return;
 			}
 			filled->push_back(buf);
 			current->possibilities_.push_back(std::vector<std::string>());
@@ -69,17 +70,17 @@ bool context_free_grammar_generator::constructFromString(const std::string &sour
 			if (*reading == '{') {
 				if (!filled) {
 					lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced { symbol";
-					return false;
+					return;
 				}
 				filled->push_back(buf);
 				buf.clear();
 			}
-			if (*reading == '}') {
+			else if (*reading == '}') {
 				if (!filled) {
 					lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced } symbol";
-					return false;
+					return;
 				}
-				filled->push_back(buf);
+				filled->push_back('{' + utils::strip(buf));
 				buf.clear();
 			} else buf.push_back(*reading);
 		}
@@ -88,7 +89,43 @@ bool context_free_grammar_generator::constructFromString(const std::string &sour
 	if (filled) filled->push_back(buf);
 
 	initialized_ = true;
-	return true;
+}
+
+context_free_grammar_generator::context_free_grammar_generator(const std::map<std::string, std::vector<std::string>>& source) :
+	initialized_(false)
+{
+	for(auto rule : source) {
+		std::string key = rule.first; // Need to do this because utils::strip is mutating
+		key = utils::strip(key);
+		std::string buf;
+		for(std::string str : rule.second) {
+			nonterminals_[key].possibilities_.emplace_back();
+			std::vector<std::string>* filled = &nonterminals_[key].possibilities_.back();
+			// A little code duplication here...
+			for(char c : str) {
+				if (c == '{') {
+					if (!filled) {
+						lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced { symbol";
+						return;
+					}
+					filled->push_back(buf);
+					buf.clear();
+				}
+				else if (c == '}') {
+					if (!filled) {
+						lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced } symbol";
+						return;
+					}
+					filled->push_back('{' + utils::strip(buf));
+					buf.clear();
+				} else buf.push_back(c);
+			}
+			if(!buf.empty()) {
+				filled->push_back(buf);
+			}
+		}
+	}
+	initialized_ = true;
 }
 
 std::string context_free_grammar_generator::print_nonterminal(const std::string& name, uint32_t* seed, short seed_pos) const {
@@ -105,7 +142,7 @@ std::string context_free_grammar_generator::print_nonterminal(const std::string&
 		picked = seed[seed_pos++] % got.possibilities_.size();
 		if (seed_pos >= seed_size) seed_pos = 0;
 	}
-	const_cast<unsigned int&>(got.last_) = picked; /* The variable last_ can change, the rest must stay const */
+	got.last_ = picked;
 	const std::vector<std::string>& used = got.possibilities_[picked];
 	for (unsigned int i = 0; i < used.size(); i++) {
 		if (used[i][0] == '{') result += print_nonterminal(used[i].substr(1), seed, seed_pos);

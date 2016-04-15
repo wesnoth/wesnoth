@@ -139,6 +139,9 @@ Version 1.13.4+dev:
      sources. The [sound_source] and [remove_sound_source] now use these.
    * New wesnoth.log function for printing log messages. The [wml_message]
      and [deprecated_message] tags now use this.
+   * New wesnoth.name_generator function builds a name generator and returns
+     it as a callable userdata. Both the original Markov chain generator
+     and the new context free gramamr generator are supported
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string

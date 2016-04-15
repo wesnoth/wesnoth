@@ -27,10 +27,11 @@
 #include "default_map_generator_job.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
-#include "race.hpp"
 #include "util.hpp"
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
+#include "utils/context_free_grammar_generator.hpp"
+#include "utils/markov_generator.hpp"
 #include <SDL.h>
 
 #include "seed_rng.hpp"
@@ -601,14 +602,14 @@ static map_location place_village(const t_translation::t_map& map,
 	return best_loc;
 }
 
-std::string default_map_generator_job::generate_name(const unit_race& name_generator, const std::string& id,
+std::string default_map_generator_job::generate_name(boost::shared_ptr<name_generator>& name_generator, const std::string& id,
 		std::string* base_name, utils::string_map* additional_symbols)
 {
 	const std::vector<std::string>& options = utils::split(string_table[id].str());
 	if(options.empty() == false) {
 		const size_t choice = rng_()%options.size();
 		LOG_NG << "calling name generator...\n";
-		const std::string& name = name_generator.generate_name(unit_race::MALE);
+		const std::string& name = name_generator->generate();
 		LOG_NG << "name generator returned '" << name << "'\n";
 		if(base_name != nullptr) {
 			*base_name = name;
@@ -783,12 +784,19 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	config naming = cfg.child_or_empty("naming");
 	// If the [naming] child is empty, we cannot provide good names.
 	std::map<map_location,std::string>* misc_labels = naming.empty() ? nullptr : labels;
-	// HACK: dummy names to satisfy unit_race requirements
-	naming["id"] = "village_naming";
-	naming["plural_name"] = "villages";
 
-	// Make a dummy race for generating names
-	const unit_race name_generator(naming);
+	boost::shared_ptr<name_generator> name_generator;
+	if(naming.has_attribute("name_generator")) {
+		name_generator.reset(new context_free_grammar_generator(naming["name_generator"]));
+		if(!name_generator->is_valid()) {
+			name_generator.reset();
+		}
+	}
+	config::attribute_value markov_list = naming.get_old_attribute("names", "male_names",
+		"[naming]male_names is deprecated, use names instead");
+	if(!markov_list.blank()) {
+		name_generator.reset(new markov_generator(utils::split(markov_list), naming["markov_chain_size"], 12));
+	}
 
 	std::vector<terrain_height_mapper> height_conversion;
 
@@ -1279,11 +1287,20 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		config naming_cfg = cfg.child_or_empty("village_naming");
 		// If the [village_naming] child is empty, we cannot provide good names.
 		std::map<map_location,std::string>* village_labels = naming_cfg.empty() ? nullptr : labels;
-		// HACK: dummy names to satisfy unit_race requirements
-		naming_cfg["id"] = "village_naming";
-		naming_cfg["plural_name"] = "villages";
-
-		const unit_race village_names_generator(naming_cfg);
+		
+		// Specify "class" here because we also have a local variable with the same name
+		boost::shared_ptr<class name_generator> village_names_generator;
+		if(naming_cfg.has_attribute("name_generator")) {
+			village_names_generator.reset(new context_free_grammar_generator(naming["name_generator"]));
+			if(!village_names_generator->is_valid()) {
+				village_names_generator.reset();
+			}
+		}
+		config::attribute_value markov_list = naming_cfg.get_old_attribute("names", "male_names",
+			"[village_naming]male_names is deprecated, use names instead");
+		if(!markov_list.blank()) {
+			village_names_generator.reset(new markov_generator(utils::split(markov_list), naming["markov_chain_size"], 12));
+		}
 
 		// First we work out the size of the x and y distance between villages
 		const size_t tiles_per_village = ((width*height)/9)/nvillages;
