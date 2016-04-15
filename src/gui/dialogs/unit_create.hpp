@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "race.hpp"
+#include "units/race.hpp"
 
 #include <string>
 #include <vector>

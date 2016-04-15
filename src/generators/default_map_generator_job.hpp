@@ -24,11 +24,12 @@ class unit_race;
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/name_generator.hpp"
 
 #include <boost/random.hpp>
 #include <boost/cstdint.hpp>
+#include <boost/smart_ptr/shared_ptr.hpp>
 #include <map>
-
 
 class default_map_generator_job
 {
@@ -59,7 +60,7 @@ private:
 
 	bool generate_lake(t_translation::t_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
-	std::string generate_name(const unit_race& name_generator, const std::string& id,
+	std::string generate_name(boost::shared_ptr<name_generator>& name_generator, const std::string& id,
 		std::string* base_name=nullptr,
 		utils::string_map* additional_symbols=nullptr);
 

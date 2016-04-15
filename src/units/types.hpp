@@ -18,7 +18,7 @@
 #include "utils/make_enum.hpp"
 #include "map/location.hpp"
 #include "movetype.hpp"
-#include "race.hpp"
+#include "units/race.hpp"
 #include "units/attack_type.hpp"
 #include "util.hpp"
 
