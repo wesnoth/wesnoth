@@ -483,6 +483,11 @@ BOOSTPATH = (LOOT + toolspec['boost']['path']).replace('\\', '/')
 BOOSTLIBS = BOOSTPATH + '/stage/lib'
 BOOSTLOG  = ROOT + '/boot.boost.log'
 BZIP2PATH = LOOT + toolspec['bzip2']['path']
+
+# if False, use Boost threads
+# https://github.com/wesnoth/wesnoth/pull/616#issuecomment-210383337
+PTHREAD = False
+
 toolpath = BOOSTPATH + '/_b2'
 if exists(toolpath):
   print('. (skip) building Boost.Build ({} already exists)'.format(toolpath))
@@ -498,7 +503,8 @@ else:
   res = run('echo ---[installing boost.build]--- >> ' + BOOSTLOG)
   print('. installing Boost.Build to {} ({})'.format(
     toolpath, os.path.basename(BOOSTLOG)))
-  res = run('b2 --prefix={} install toolset=gcc >> {}'.format(toolpath, BOOSTLOG))
+  b2cmd = 'b2 --prefix={} install toolset=gcc'.format(toolpath)
+  res = run(b2cmd + ' >> ' + BOOSTLOG)
   os.chdir(ROOT)
 
 print('. adding b2 to PATH')
@@ -548,6 +554,8 @@ if True:
   # exclude libs that don't require building (leavine asio here gives an error on Windows)
   names.remove('asio')
   cmdline = 'b2 toolset=gcc --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
+  if not PTHREAD:
+    cmdline += ' threadapi=win32'
   # BZip2 is needed for Iostreams
   cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
   print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
@@ -624,14 +632,19 @@ GTKPATH = LOOT + toolspec['gtk']['path']
 #     distribution
 # 
 #     mingw32/i686-w64-mingw32/lib/libstdc++-6.dll
+gcclist = ['libstd', 'libgcc']
+gtklist = ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
+  'pixman', 'libgobject', 'libglib', 'libintl', 'libpango',
+  'gmodule', 'libiconv', 'libffi', 'libjpeg']
+if PTHREAD:
+  gcclist.append('winpthread')
+  gtklist.append('pthread')
 for name in os.listdir(MINGWPATH):
-  if 'libstd' in name or 'libgcc' in name or 'winpthread' in name:
+  if any(s in name for s in gcclist):
      print('.. ' + name)
      shutil.copyfile(MINGWPATH + '/' + name, ROOT + '/' + name)
 for name in os.listdir(GTKPATH + '/bin'):
-  if any(s in name for s in ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
-         'pixman', 'libgobject', 'libglib', 'libintl', 'pthread', 'libpango',
-         'gmodule', 'libiconv', 'libffi', 'libjpeg']):
+  if any(s in name for s in gtklist):
      print('.. ' + name)
      shutil.copyfile(GTKPATH + '/bin/' + name, ROOT + '/' + name)
 
