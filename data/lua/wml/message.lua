@@ -52,6 +52,29 @@ local function get_caption(cfg, speaker)
 	return caption
 end
 
+-- add formatting
+local function add_formatting(cfg)
+	-- span tag
+	local formatting = "<span"  
+	
+	-- if no message, do nothing
+	if cfg.message == nil then
+		return nil
+	end
+  
+	-- add color
+	if cfg.color ~= nil then
+		formatting = formatting .. " color='" .. cfg.color .. "'"
+	end
+	
+	-- wrap in span tags and return if a color was added
+	if formatting ~= "<span" then
+		return formatting .. ">" .. cfg.message .. "</span>"
+	end
+	-- or return unmodified message
+	return cfg.message
+end
+
 local function get_speaker(cfg)
 	local speaker
 	local context = wesnoth.current.event_context
@@ -87,7 +110,10 @@ local function message_user_choice(cfg, speaker, options, text_input)
 			msg_cfg.message = cfg.female_message
 		end
 	end
-
+	
+	-- add formatting
+	msg_cfg.message = add_formatting(cfg)
+	
 	-- Parse input text, if not available all fields are empty
 	if text_input then
 		local input_max_size = tonumber(text_input.max_length) or 256
