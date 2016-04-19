@@ -53,26 +53,25 @@ local function get_caption(cfg, speaker)
 end
 
 -- add formatting
-local function add_formatting(cfg)
+local function add_formatting(cfg, text)
 	-- span tag
 	local formatting = "<span"  
 	
-	-- if no message, do nothing
-	if cfg.message == nil then
-		return nil
-	end
-  
-	-- add color
-	if cfg.color ~= nil then
-		formatting = formatting .. " color='" .. cfg.color .. "'"
+	-- if message text, add formatting
+	if text then
+		-- add color
+		if cfg.color then
+			formatting = formatting .. " color='" .. cfg.color .. "'"
+		end
+		
+		-- wrap in span tags and return if a color was added
+		if formatting ~= "<span" then
+			return formatting .. ">" .. text .. "</span>"
+		end
 	end
 	
-	-- wrap in span tags and return if a color was added
-	if formatting ~= "<span" then
-		return formatting .. ">" .. cfg.message .. "</span>"
-	end
 	-- or return unmodified message
-	return cfg.message
+	return text
 end
 
 local function get_speaker(cfg)
@@ -112,7 +111,7 @@ local function message_user_choice(cfg, speaker, options, text_input)
 	end
 	
 	-- add formatting
-	msg_cfg.message = add_formatting(cfg)
+	msg_cfg.message = add_formatting(cfg, cfg.message)
 	
 	-- Parse input text, if not available all fields are empty
 	if text_input then
