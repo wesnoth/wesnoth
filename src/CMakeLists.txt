@@ -393,6 +393,7 @@ set_source_files_properties(
 	desktop/notifications.cpp
 	network.cpp
 	network_worker.cpp
+	tests/test_lua.cpp
 	PROPERTIES
 		COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
 )
