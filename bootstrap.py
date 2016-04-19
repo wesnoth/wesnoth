@@ -635,7 +635,7 @@ GTKPATH = LOOT + toolspec['gtk']['path']
 gcclist = ['libstd', 'libgcc', 'libgomp-1']
 gtklist = ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
   'pixman', 'libgobject', 'libglib', 'libintl', 'libpango',
-  'gmodule', 'libiconv', 'libffi', 'libjpeg']
+  'gmodule', 'libiconv', 'libffi', 'libjpeg', 'libtiff']
 if PTHREAD:
   gcclist.append('winpthread')
   gtklist.append('pthread')
