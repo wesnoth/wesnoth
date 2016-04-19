@@ -712,7 +712,7 @@ set PATH={path};%PATH%
 """.format(
   path=os.pathsep.join(paths),
   python=sys.executable,
-  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons'),
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons 2> scons_log.txt'),
 )
 
 open(ROOT + '/compile.bat', 'wb').write(batfile)
