@@ -92,6 +92,15 @@ filespec = [
     check='gtk',
   ),
 
+  dict( # readline for lua console history support
+    name='readline',
+    filename='readline-5.0-1-bin.zip',
+    url='https://sourceforge.net/projects/gnuwin32/files/readline/5.0-1/readline-5.0-1-bin.zip',
+    hashsize='77b4e6784a8b7a160d08a020206d61204522233e 443791',
+    unpackto='readline-5.0',
+    check='readline-5.0',
+  ),
+
   # libraries needed to compile wesnoth
   dict(  # Libs: Boost (need to build it separately)
     filename='boost_1_57_0.7z',
@@ -626,7 +635,13 @@ for libname in ('SDL2_net', 'SDL2_ttf', 'SDL2_mixer', 'SDL2_image'):
         shutil.copyfile(dllpath + name, ROOT + '/' + name)
 
 GTKPATH = LOOT + toolspec['gtk']['path']
-
+# copy only the readline files needed for lua console history support
+READLINEPATH = LOOT + toolspec['readline']['path']
+print('copy readline lua console history files to gtk directory..')
+shutil.copyfile(READLINEPATH + '/lib/libhistory.dll.a', GTKPATH + '/lib/libhistory.dll.a')
+shutil.rmtree(GTKPATH + '/include/readline', ignore_errors=True)
+shutil.copytree(READLINEPATH + '/include/readline', GTKPATH + '/include/readline')
+shutil.copyfile(READLINEPATH + '/bin/history5.dll', GTKPATH + '/bin/history5.dll')
 
 # [x] copy varions .dll from .locally into dir that will be packed for
 #     distribution
@@ -634,7 +649,7 @@ GTKPATH = LOOT + toolspec['gtk']['path']
 #     mingw32/i686-w64-mingw32/lib/libstdc++-6.dll
 gcclist = ['libstd', 'libgcc', 'libgomp-1']
 gtklist = ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
-  'pixman', 'libgobject', 'libglib', 'libintl', 'libpango',
+  'pixman', 'libgobject', 'libglib', 'libintl', 'libpango', 'history',
   'gmodule', 'libiconv', 'libffi', 'libjpeg', 'libpng16-16', 'libtiff']
 if PTHREAD:
   gcclist.append('winpthread')
