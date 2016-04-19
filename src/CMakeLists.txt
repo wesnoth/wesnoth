@@ -547,6 +547,7 @@ add_library(wesnoth-gui_tooltip
 # behavior of the widgets. It also contains the builder code
 # for the widgets since the code has inter dependencies.
 set(wesnoth-gui_widget_SRC
+	gui/dialogs/drop_down_list.cpp
 	gui/widgets/button.cpp
 	gui/widgets/combobox.cpp
 	gui/widgets/container.cpp
@@ -819,7 +820,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/depcheck_confirm_change.cpp
 	gui/dialogs/depcheck_select_new.cpp
 	gui/dialogs/dialog.cpp
-	gui/dialogs/drop_down_list.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
 	gui/dialogs/editor/edit_label.cpp
