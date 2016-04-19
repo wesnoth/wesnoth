@@ -632,7 +632,7 @@ GTKPATH = LOOT + toolspec['gtk']['path']
 #     distribution
 # 
 #     mingw32/i686-w64-mingw32/lib/libstdc++-6.dll
-gcclist = ['libstd', 'libgcc']
+gcclist = ['libstd', 'libgcc', 'libgomp-1']
 gtklist = ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
   'pixman', 'libgobject', 'libglib', 'libintl', 'libpango',
   'gmodule', 'libiconv', 'libffi', 'libjpeg']
@@ -676,6 +676,7 @@ boostlibdir = '{libdir}'
 boost_suffix = '{suffix}'
 gtkdir = '{gtkdir}'
 sdldir = '{sdldir}'
+openmp = True
 """.format(**boostinfo)
    
 with open(os.path.join(ROOT, ".scons-option-cache"), 'w') as sconsoptcache:
