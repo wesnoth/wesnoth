@@ -58,7 +58,7 @@ local function add_formatting(cfg, text)
 	local formatting = "<span"  
 	
 	-- if message text, add formatting
-	if text then
+	if text and cfg then
 		-- add color
 		if cfg.color then
 			formatting = formatting .. " color='" .. cfg.color .. "'"
