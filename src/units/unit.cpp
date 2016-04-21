@@ -2247,12 +2247,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 void unit::add_trait_description(const config& trait, const t_string& description)
 {
 	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
-	t_string const &gender_specific_name = trait[gender_string];
+	const auto& gender_specific_name = trait[gender_string];
 
-	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries
-	// choke on the case where both gender_specific_name and trait["name"] are empty.
-	const t_string name = gender_specific_name.empty() ?
-		 trait["name"] : gender_specific_name;
+	const t_string name = gender_specific_name.empty() ? trait["name"] : gender_specific_name;
 
 	if(!name.empty()) {
 		trait_names_.push_back(name);
