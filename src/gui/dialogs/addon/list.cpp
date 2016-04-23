@@ -14,6 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "global.hpp"
 #include "gui/dialogs/addon/list.hpp"
 
 #include "addon/info.hpp"
@@ -480,11 +481,11 @@ void taddon_list::pre_show(twindow& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "options", false),
-			std::bind(&options_button_callback, this, std::ref(window)));
+			std::bind(&taddon_list::options_button_callback, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "show_help", false),
-			std::bind(&show_help, this, std::ref(window)));
+			std::bind(&taddon_list::show_help, this, std::ref(window)));
 
 	on_addon_select(window);
 }
@@ -500,6 +501,7 @@ void taddon_list::options_button_callback(twindow& window)
 	//dlg.set_direction(f_.direction);
 
 	//dlg.show(window.video());
+	UNUSED(window); // Remove this once the code works.
 }
 
 void taddon_list::show_help(twindow& window)
