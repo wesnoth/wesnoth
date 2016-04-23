@@ -70,6 +70,8 @@ private:
 	
 	void browse_url_callback(ttext_box& url_box);
 	void copy_url_callback(ttext_box& url_box);
+	void options_button_callback(twindow& window);
+	void show_help(twindow& window);
 };
 
 } // namespace gui2

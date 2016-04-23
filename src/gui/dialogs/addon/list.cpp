@@ -22,6 +22,7 @@
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 
+#include "help/help.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -41,12 +42,14 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/dialogs/addon/filter_options.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "marked-up_text.hpp"
 #include "font.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
+#include "video.hpp"
 
 #include "config.hpp"
 
@@ -414,6 +417,21 @@ void taddon_list::pre_show(twindow& window)
 		data.insert(std::make_pair("type", item));
 
 		list.add_row(data);
+
+		tgrid* row_grid = list.get_row_grid(list.get_item_count() - 1);
+
+		tstacked_widget& install_update_stack = find_widget<tstacked_widget>(row_grid, "install_update_stack", false);
+
+		const bool is_updatable = tracking_info_[info.id].state == ADDON_INSTALLED_UPGRADABLE;
+		const bool is_installed = tracking_info_[info.id].state == ADDON_INSTALLED;
+
+		install_update_stack.select_layer(is_updatable);
+
+		if(!is_updatable) {
+			find_widget<tbutton>(row_grid, "single_install", false).set_active(!is_installed);
+		}
+
+		find_widget<tbutton>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
 
 	register_sort_button_alphabetical(window, "sort_name", "name");
@@ -460,7 +478,33 @@ void taddon_list::pre_show(twindow& window)
 			url_copy_button,
 			std::bind(&taddon_list::copy_url_callback, this, std::ref(url_textbox)));
 
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "options", false),
+			std::bind(&options_button_callback, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "show_help", false),
+			std::bind(&show_help, this, std::ref(window)));
+
 	on_addon_select(window);
+}
+
+void taddon_list::options_button_callback(twindow& window)
+{
+	// TODO
+	//gui2::taddon_filter_options dlg;
+
+	//dlg.set_displayed_status(f_.status);
+	//dlg.set_displayed_types(f_.types);
+	//dlg.set_sort(f_.sort);
+	//dlg.set_direction(f_.direction);
+
+	//dlg.show(window.video());
+}
+
+void taddon_list::show_help(twindow& window)
+{
+	help::show_help(window.video(), "installing_addons");
 }
 
 void taddon_list::browse_url_callback(ttext_box& url_box)
