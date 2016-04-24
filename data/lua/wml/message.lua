@@ -54,7 +54,7 @@ end
 
 -- add formatting
 local function add_formatting(cfg, text)
-	-- span tag
+  -- span tag
 	local formatting = "<span"  
 	
 	-- if message text, add formatting
@@ -68,8 +68,8 @@ local function add_formatting(cfg, text)
 		if formatting ~= "<span" then
 			return formatting .. ">" .. text .. "</span>"
 		end
-	end
-	
+ 	end
+ 	
 	-- or return unmodified message
 	return text
 end
