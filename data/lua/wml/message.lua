@@ -61,7 +61,21 @@ local function add_formatting(cfg, text)
 	if text and cfg then
 		-- add color
 		if cfg.color then
-			formatting = formatting .. " color='" .. cfg.color .. "'"
+			local pango_color = "#"
+			
+			-- if a hex color was passed in
+			-- or if a color string was passed in - contains no non-letter characters
+			-- just use that
+			if string.sub(cfg.color, 1, 1) == "#" or not string.match(cfg.color, "%A+") then
+				pango_color = cfg.color
+			-- decimal color was passed in, convert to hex color for pango
+			else
+				for s in string.gmatch(cfg.color, "%d+") do
+					pango_color = pango_color .. tonumber(s, 16)
+				end
+			end
+		  
+			formatting = formatting .. " color='" .. pango_color .. "'"
 		end
 		
 		-- wrap in span tags and return if a color was added
