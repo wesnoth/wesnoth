@@ -52,30 +52,119 @@ local function get_caption(cfg, speaker)
 	return caption
 end
 
+local function get_pango_color(color)
+	local pango_color = "#"
+	
+	-- if a hex color was passed in
+	-- or if a color string was passed in - contains no non-letter characters
+	-- just use that
+	if string.sub(color, 1, 1) == "#" or not string.match(color, "%A+") then
+		pango_color = color
+	-- decimal color was passed in, convert to hex color for pango
+	else
+		for s in string.gmatch(color, "%d+") do
+			pango_color = pango_color .. tonumber(s, 16)
+		end
+	end
+	
+	return pango_color
+end
+
 -- add formatting
 local function add_formatting(cfg, text)
-  -- span tag
+	-- span tag
 	local formatting = "<span"  
 	
 	-- if message text, add formatting
 	if text and cfg then
+		-- add font
+		if cfg.font then
+			formatting = formatting .. " font='" .. cfg.font .. "'"
+		end
+		
+		-- add font_family
+		if cfg.font_family then
+			formatting = formatting .. " font_family='" .. cfg.font_family .. "'"
+		end
+		
+		-- add font_size
+		if cfg.font_size then
+			formatting = formatting .. " font_size='" .. cfg.font_size .. "'"
+		end
+		
+		-- font_style
+		if cfg.font_style then
+			formatting = formatting .. " font_style='" .. cfg.font_style .. "'"
+		end
+		
+		-- font_weight
+		if cfg.font_weight then
+			formatting = formatting .. " font_weight='" .. cfg.font_weight .. "'"
+		end
+		
+		-- font_variant
+		if cfg.font_variant then
+			formatting = formatting .. " font_variant='" .. cfg.font_variant .. "'"
+		end
+		
+		-- font_stretch
+		if cfg.font_stretch then
+			formatting = formatting .. " font_stretch='" .. cfg.font_stretch .. "'"
+		end
+		
 		-- add color
 		if cfg.color then
-			local pango_color = "#"
-			
-			-- if a hex color was passed in
-			-- or if a color string was passed in - contains no non-letter characters
-			-- just use that
-			if string.sub(cfg.color, 1, 1) == "#" or not string.match(cfg.color, "%A+") then
-				pango_color = cfg.color
-			-- decimal color was passed in, convert to hex color for pango
-			else
-				for s in string.gmatch(cfg.color, "%d+") do
-					pango_color = pango_color .. tonumber(s, 16)
-				end
-			end
-		  
-			formatting = formatting .. " color='" .. pango_color .. "'"
+			formatting = formatting .. " color='" .. get_pango_color(cfg.color) .. "'"
+		end
+		
+		-- bgcolor
+		if cfg.bgcolor then
+			formatting = formatting .. " bgcolor='" .. get_pango_color(cfg.bgcolor) .. "'"
+		end
+		
+		-- underline
+		if cfg.underline then
+			formatting = formatting .. " underline='" .. cfg.underline .. "'"
+		end
+		
+		-- underline_color
+		if cfg.underline_color then
+			formatting = formatting .. " underline_color='" .. get_pango_color(cfg.underline_color) .. "'"
+		end
+		
+		-- rise
+		if cfg.rise then
+			formatting = formatting .. " rise='" .. cfg.rise .. "'"
+		end
+		
+		-- strikethrough
+		if cfg.strikethrough then
+			formatting = formatting .. " strikethrough='" .. cfg.strikethrough .. "'"
+		end
+		
+		-- strikethrough_color
+		if cfg.strikethrough_color then
+			formatting = formatting .. " strikethrough_color='" .. get_pango_color(cfg.strikethrough_color) .. "'"
+		end
+		
+		-- fallback
+		if cfg.fallback then
+			formatting = formatting .. " fallback='" .. cfg.fallback .. "'"
+		end
+		
+		-- letter_spacing
+		if cfg.letter_spacing then
+			formatting = formatting .. " letter_spacing='" .. cfg.letter_spacing .. "'"
+		end
+		
+		-- gravity
+		if cfg.gravity then
+			formatting = formatting .. " gravity='" .. cfg.gravity .. "'"
+		end
+		
+		-- gravity_hint
+		if cfg.gravity_hint then
+			formatting = formatting .. " gravity_hint='" .. cfg.gravity_hint .. "'"
 		end
 		
 		-- wrap in span tags and return if a color was added
