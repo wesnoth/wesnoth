@@ -2157,7 +2157,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				times --;
 
 				bool was_poisoned = get_state(STATE_POISONED);
-				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
+				if (apply_to == "variation" || apply_to == "type") {
 					// Apply unit type/variation changes last to avoid double applying effects on advance.
 					set_poisoned = false;
 					last_effect = effect;
