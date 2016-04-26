@@ -1463,7 +1463,7 @@ void game::send_observerquit(const socket_ptr observer) const {
 	send_data(observer_quit, observer);
 }
 
-void game::send_history(const socket_ptr /*sock*/) const
+void game::send_history(const socket_ptr socket) const
 {
 	if(history_.empty()) {
 		return;
@@ -1479,9 +1479,7 @@ void game::send_history(const socket_ptr /*sock*/) const
 
 	try {
 		simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
-		//const simple_wml::string_span& data = doc->output_compressed();
-		doc->compress();
-		// PORT: network::send_raw_data(data.begin(), data.size(), sock,"game_history");
+		send_to_player(socket, *doc);
 		history_.clear();
 		history_.push_back(doc);
 	} catch (simple_wml::error& e) {
