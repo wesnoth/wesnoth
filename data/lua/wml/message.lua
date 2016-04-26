@@ -139,7 +139,7 @@ local function add_formatting(cfg, text)
 		
 		-- strikethrough
 		if cfg.strikethrough then
-			formatting = formatting .. " strikethrough='" .. cfg.strikethrough .. "'"
+			formatting = formatting .. " strikethrough='" .. tostring(cfg.strikethrough) .. "'"
 		end
 		
 		-- strikethrough_color
@@ -149,7 +149,7 @@ local function add_formatting(cfg, text)
 		
 		-- fallback
 		if cfg.fallback then
-			formatting = formatting .. " fallback='" .. cfg.fallback .. "'"
+			formatting = formatting .. " fallback='" .. tostring(cfg.fallback) .. "'"
 		end
 		
 		-- letter_spacing
