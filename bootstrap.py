@@ -103,10 +103,10 @@ filespec = [
 
   # libraries needed to compile wesnoth
   dict(  # Libs: Boost (need to build it separately)
-    filename='boost_1_57_0.7z',
-    hashsize='cc08224035b6aa642599bbf28c76ee5ec8061c10 56927689',
-    url='http://downloads.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.7z',
-    check='boost_1_57_0',
+    filename='boost_1_59_0.7z',
+    hashsize='ea34e49d9e31d6e493620776e30f2cfe31e89b85 65488392',
+    url='http://downloads.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.7z',
+    check='boost_1_59_0',
     name='boost',
   ),
 
