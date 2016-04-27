@@ -76,9 +76,9 @@ filespec = [
 
   # GCC MinGW-W64 32bit, using http://qt-project.org/wiki/MinGW
   dict(
-    filename='i686-5.3.0-release-posix-dwarf-rt_v4-rev0.7z',
-    hashsize='d4f21d25f3454f8efdada50e5ad799a0a9e07c6a 43539891',
-    url='http://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/5.3.0/threads-posix/dwarf/i686-5.3.0-release-posix-dwarf-rt_v4-rev0.7z',
+    filename='i686-5.3.0-release-posix-sjlj-rt_v4-rev0.7z',
+    hashsize='91b10f23917b59d6e2b9e88233d26854f58b9ea2 46715047',
+    url='https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/5.3.0/threads-posix/sjlj/i686-5.3.0-release-posix-sjlj-rt_v4-rev0.7z',
     check='mingw32',
     name='mingw',
   ),
