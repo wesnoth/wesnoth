@@ -494,10 +494,6 @@ BOOSTLIBS = BOOSTPATH + '/stage/lib'
 BOOSTLOG  = ROOT + '/boot.boost.log'
 BZIP2PATH = LOOT + toolspec['bzip2']['path']
 
-# if False, use Boost threads
-# https://github.com/wesnoth/wesnoth/pull/616#issuecomment-210383337
-PTHREAD = False
-
 toolpath = BOOSTPATH + '/_b2'
 if exists(toolpath):
   print('. (skip) building Boost.Build ({} already exists)'.format(toolpath))
@@ -563,9 +559,7 @@ if True:
   #run('b2 --show-libraries')  # show libraries that require building
   # exclude libs that don't require building (leavine asio here gives an error on Windows)
   names.remove('asio')
-  cmdline = 'b2 toolset=gcc --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
-  if not PTHREAD:
-    cmdline += ' threadapi=win32'
+  cmdline = 'b2 toolset=gcc threadapi=win32 --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
   # BZip2 is needed for Iostreams
   cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
   print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
@@ -648,13 +642,10 @@ shutil.copyfile(READLINEPATH + '/bin/history5.dll', GTKPATH + '/bin/history5.dll
 #     distribution
 # 
 #     mingw32/i686-w64-mingw32/lib/libstdc++-6.dll
-gcclist = ['libstd', 'libgcc', 'libgomp-1']
-gtklist = ['libcairo-2', 'fontconfig', 'libxml2', 'lzma',
+gcclist = ['libstd', 'libgcc', 'libgomp-1', 'winpthread']
+gtklist = ['libcairo-2', 'fontconfig', 'libxml2', 'lzma', 'pthread',
   'pixman', 'libgobject', 'libglib', 'libintl', 'libpango', 'history',
   'gmodule', 'libiconv', 'libffi', 'libjpeg', 'libpng16-16', 'libtiff']
-if PTHREAD:
-  gcclist.append('winpthread')
-  gtklist.append('pthread')
 for name in os.listdir(MINGWPATH):
   if any(s in name for s in gcclist):
      print('.. ' + name)
