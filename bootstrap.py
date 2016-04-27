@@ -704,9 +704,37 @@ set PATH={path};%PATH%
 """.format(
   path=os.pathsep.join(paths),
   python=sys.executable,
-  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons 2> scons_log.txt'),
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release 2> scons_log.txt'),
 )
 
 open(ROOT + '/compile.bat', 'wb').write(batfile)
+
+print('---[ writing compile(debug-build).bat ]---')
+batfiledebug = """\
+@echo off
+set PATH={path};%PATH%
+"{python}" {scons} %*
+""".format(
+  path=os.pathsep.join(paths),
+  python=sys.executable,
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug 2> scons_log.txt'),
+)
+
+open(ROOT + '/compile(debug-build).bat', 'wb').write(batfiledebug)
+
+print('---[ writing debugger_launcher.bat ]---')
+batfilegdb = """\
+@echo off
+if exist wesnoth-debug.exe (
+  "{gdbpath}" wesnoth-debug.exe
+)  else (
+   echo "You need a debug build to run the debugger. Create it by running compile(debug-build).bat"
+   pause
+)
+""".format(
+  gdbpath=os.path.normpath(MINGWPATH + '/gdb.exe'),
+)
+
+open(ROOT + '/debugger_launcher.bat', 'wb').write(batfilegdb)
 
 print('Done. Run compile.bat to build Wesnoth.')
