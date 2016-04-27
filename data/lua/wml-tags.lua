@@ -1120,7 +1120,8 @@ function wml_actions.set_variable(cfg)
 
 	if cfg.rand then
 		local random_string = cfg.rand
-		local choices = {}
+		local num_choices = 0
+		local items = {}
 
 		-- split on commas
 		for word in random_string:gmatch("[^,]+") do
@@ -1133,26 +1134,54 @@ function wml_actions.set_variable(cfg)
 				-- perhaps someone passed a string as part of the range, intercept the issue
 				if not (low and high) then
 					wesnoth.message("<WML>","Malformed range: rand " .. cfg.rand)
-					table.insert(choices, word)
+					table.insert(items, word)
+					num_choices = num_choices + 1
 				else
 					if low > high then
 						-- low is greater than high, swap them
 						low, high = high, low
 					end
 
-					-- insert all the values in range into choices (both ends included)
-					for value = low, high do
-						table.insert(choices, value)
+					-- if both ends represent the same number, then just use that number
+					if low == high then
+						table.insert(items, low)
+						num_choices = num_choices + 1
+					else
+						-- insert a table representing the range
+						table.insert(items, {low, high})
+						-- how many items does the range contain? Increase difference by 1 because we include both ends
+						num_choices = num_choices + (high - low) + 1
 					end
 				end
 			else
 				-- handle as a string
-				table.insert(choices, word)
+				table.insert(items, word)
+				num_choices = num_choices + 1
 			end
 		end
 
-		local idx = wesnoth.random(1, #choices)
-		wesnoth.set_variable(name, choices[idx])
+		local idx = wesnoth.random(1, num_choices)
+		local done = false
+
+		for i, item in ipairs(items) do
+			if type(item) == "table" then -- that's a range
+				for j = item[1], item[2] do
+					idx = idx - 1
+					if idx == 0 then
+						wesnoth.set_variable(name, j)
+						done = true
+						break
+					end
+				end
+			else -- that's a single element
+				idx = idx - 1
+				if idx == 0 then
+					wesnoth.set_variable(name, item)
+					done = true
+				end
+			end
+			if done then break end
+		end
 	end
 
 	local join_child = helper.get_child(cfg, "join")
