@@ -79,26 +79,27 @@ filespec = [
     filename='i686-5.3.0-release-posix-sjlj-rt_v4-rev0.7z',
     hashsize='91b10f23917b59d6e2b9e88233d26854f58b9ea2 46715047',
     url='https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/5.3.0/threads-posix/sjlj/i686-5.3.0-release-posix-sjlj-rt_v4-rev0.7z',
-    check='mingw32',
+    check='mingw-5.3.0-posix-sjlj',
     name='mingw',
+    unpackto='mingw-5.3.0-posix-sjlj',
   ),
 
   dict( # get Gtk+ (pkg-config, pango + cairo, fontconfig)
-    name='gtk',
     filename='gtk+-bundle_3.10.4-20131202_win32.zip',
     url='http://win32builder.gnome.org/gtk+-bundle_3.10.4-20131202_win32.zip',
     hashsize='54e4c809c51150f839efcf4a526ce8ff005fc081 28660469',
-    unpackto='gtk',
-    check='gtk',
+    check='gtk+-bundle_3.10.4_win32',
+    name='gtk',
+    unpackto='gtk+-bundle_3.10.4_win32',
   ),
 
   dict( # readline for lua console history support
-    name='readline',
     filename='readline-5.0-1-bin.zip',
     url='https://sourceforge.net/projects/gnuwin32/files/readline/5.0-1/readline-5.0-1-bin.zip',
     hashsize='77b4e6784a8b7a160d08a020206d61204522233e 443791',
-    unpackto='readline-5.0',
-    check='readline-5.0',
+    check='readline-5.0-1',
+    name='readline',
+    unpackto='readline-5.0-1',
   ),
 
   # libraries needed to compile wesnoth
@@ -473,7 +474,7 @@ for entry in filespec:
 
 print('---[ prepare and process dependencies ]---')
 print('Add GCC to PATH..')
-MINGWPATH = LOOT + '/mingw32/bin'
+MINGWPATH = LOOT + toolspec['mingw']['path'] + '/mingw32/bin'
 PATH = os.environ['PATH'] + os.pathsep + MINGWPATH
 os.environ['PATH'] = PATH
 
