@@ -697,13 +697,14 @@ paths.append(os.path.normpath(MINGWPATH))          # g++
 paths.append(os.path.normpath(GTKPATH + '/bin'))   # pkg-config
 paths.append(os.path.normpath(LOOT + toolspec['nsis']['path']))  # NSIS
 
+
 batfile = """\
 @echo off
 set PATH={path};%PATH%
 "{python}" {scons} %*
 """.format(
   path=os.pathsep.join(paths),
-  python=sys.executable,
+  python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
   scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release 2> scons_log.txt'),
 )
 
@@ -716,7 +717,7 @@ set PATH={path};%PATH%
 "{python}" {scons} %*
 """.format(
   path=os.pathsep.join(paths),
-  python=sys.executable,
+  python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
   scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug 2> scons_log.txt'),
 )
 
