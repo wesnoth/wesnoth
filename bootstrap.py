@@ -743,3 +743,4 @@ if exist wesnoth-debug.exe (
 open(ROOT + '/debugger_launcher.bat', 'wb').write(batfilegdb)
 
 print('Done. Run compile.bat to build Wesnoth.')
+raw_input("Press Enter to continue.")
