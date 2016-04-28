@@ -419,6 +419,8 @@ def run_capture_limited(command, maxlines=20000):
 # ---[ /utilities ]---
 
 
+corecount = raw_input("Enter number of cores to build boost and wesnoth with: ")
+
 print('---[ download dependencies ]---')
 
 getsecure(LOOT, filespec)
@@ -559,7 +561,7 @@ if True:
   #run('b2 --show-libraries')  # show libraries that require building
   # exclude libs that don't require building (leavine asio here gives an error on Windows)
   names.remove('asio')
-  cmdline = 'b2 toolset=gcc threadapi=win32 --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
+  cmdline = 'b2 toolset=gcc threadapi=win32 -j ' + corecount + ' --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
   # BZip2 is needed for Iostreams
   cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
   print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
@@ -675,6 +677,7 @@ boostinfo = dict(
   suffix = get_boost_suffix(),  # something like '-mgw49-mt-1_57'
   gtkdir = GTKPATH.replace('\\', '/'),
   sdldir = SDLPATH.replace('\\', '/'),
+  jobs = corecount,
 )
 
 cachecontent = """\
@@ -684,6 +687,7 @@ boost_suffix = '{suffix}'
 gtkdir = '{gtkdir}'
 sdldir = '{sdldir}'
 openmp = True
+jobs = {jobs}
 """.format(**boostinfo)
    
 with open(os.path.join(ROOT, ".scons-option-cache"), 'w') as sconsoptcache:
