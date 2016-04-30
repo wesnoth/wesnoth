@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-08-26 03:39+0200\n"
 "Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
 "Language-Team: Mistic\n"
@@ -123,7 +123,7 @@ msgstr "Úpravy a čistění kódu pro oficiální vydání "
 msgid "Artwork"
 msgstr "Art"
 
-#. [lua]
+#. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -242,8 +242,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Nemrtvá vojska"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -471,10 +471,10 @@ msgstr "(rozdílný bonus při splnění)"
 msgid "Defeat all enemy leaders"
 msgstr "Poraz všechny nepřátelské vůdce"
 
-#. [side]
-#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
+#. [side]: type=Death Knight, id=Dead Knight
+#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
@@ -945,23 +945,23 @@ msgstr "Vím, co to je. Je to trojzubec bouře. Zřejmě umožnuje sesílat bles
 msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgstr "Trojzubec - útok na dálku 14-2, magický, <i>ohnivé</i> poškození"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:829
 msgid "That sounds great! I’ll take it."
 msgstr "To zní skvěle! Vezmu si ho."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
 msgid "That sounds frightening. Let someone else have it."
 msgstr "To zní děsivě. Ať si ho vezme někdo jiný."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Dovol mi vzít ten trojzubec. Chci sesílat blesky!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
 msgid "I’ll just leave that trident where it is."
 msgstr "Prostě nechám ten trojzubec tam, kde je."
@@ -1527,7 +1527,7 @@ msgstr ""
 "Máte to mít. Jdem s váma skoncovat jednou provždy."
 
 #. [message]: speaker=Kai Krellis
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:654
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:667
 msgid "Now maybe we can head west undisturbed."
@@ -1538,7 +1538,7 @@ msgstr "Teď snad můžeme nerušeně pokračovat na západ."
 msgid "We have destroyed the undead."
 msgstr "Zničili jsme nemrtvé."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:676
 msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
@@ -2166,8 +2166,8 @@ msgstr ""
 "Je to dobré místo pro velkou kolonii, takže předpokládám, že brzy uvidíme "
 "další."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2614,22 +2614,22 @@ msgstr "Nepůjdu s vámi. Někdo z vašich lidí by měl vzít meč."
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgstr "Tento meč má <i>ohnivý</i> magický útok 8-4"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:962
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Ponesu tento meč a budu ničit nemrtvé ohnivými útoky."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Tento meč není pro mě to pravé. Ať ho nese někdo jiný."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1006
 msgid "I’ll carry the sword."
 msgstr "Ponesu ten meč."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1015
 msgid "Let someone else have it."
 msgstr "Ať ho nese někdo jiný."
@@ -2918,18 +2918,18 @@ msgstr ""
 "Přívěsek se symbolem života poskytuje 70% odolnost vůči <i>nezemskému</i> "
 "útoku."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:838
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr ""
 "Nevypadá to, že ta věc svému předchozímu držiteli nějak pomohla. Nechci ji."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:875
 msgid "I would like my life force protected."
 msgstr "Chtěl bych víc ochránit svou životní sílu."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid "My life force feels fine as it is."
 msgstr "Má životní síla je v pořádku tak, jak je."
@@ -3091,15 +3091,15 @@ msgstr "pěst"
 msgid "tail"
 msgstr "ocas"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:106
 #: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "v omráčení"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:107
 #: data/campaigns/Dead_Water/units/Brawler.cfg:159
 msgid "female^stunned"
@@ -3284,12 +3284,12 @@ msgid ""
 msgstr ""
 "Prsten síly zvyšuje sílu všech nositelových útoků o jedna a přidává 3 životy."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr "Měli bysme nechat prsten netopýrovi. Bude s ním víc užitečný."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 #, fuzzy
 #| msgid "Someone take that off of him before he hurts himself."
@@ -3306,12 +3306,12 @@ msgstr "Zkusím ten prsten."
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "Cítím se zvláštně a všechna má výzbroj jako by byla lehčí!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr "Vezmu si ten prsten. Budete se moct spolehnout na mou sílu."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "Mám z té věci závratě. Ať si ji vezme někdo jiný."

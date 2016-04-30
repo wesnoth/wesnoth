@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:01 UTC\n"
 "PO-Revision-Date: 2014-10-21 20:49+0100\n"
 "Last-Translator: Josep Miralles i Belenguer <info@softwarevalencia.com>\n"
 "Language-Team: Software Valencià\n"
@@ -67,9 +67,9 @@ msgstr "Els elfos sitiats"
 msgid "Konrad"
 msgstr "Konrad"
 
+#. [side]: type=Spearman, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:46
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:152
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:172
@@ -86,10 +86,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -328,8 +328,8 @@ msgstr ""
 "un perill els uns per als atres i s'ignoren mútuament, demostrant el gran "
 "autocontrol que té un gos pastor ben entrenat."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -372,8 +372,8 @@ msgstr "Aranyes"
 msgid "Yetis"
 msgstr "Yetis"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -386,11 +386,11 @@ msgstr "Llops"
 msgid "Whelps"
 msgstr "Cries"
 
-#. [event]
 #. [set_menu_item]: id=m01_end_animals
+#. [event]
+#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
-#. [set_menu_item]: id=m04_end_animals
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
@@ -484,12 +484,12 @@ msgstr ""
 "color='#00A000'>pàgina de la wiki de micro IAs</span> en http://wiki.wesnoth."
 "org/micro_ais per a més informació sobre el tema."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:361
 msgid "<span font='16'>I'll just watch the animals.</span>"
 msgstr "<span font='16'>Solament vaig a observar als animals.</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:379
 #: data/ai/micro_ais/scenarios/wolves.cfg:224
 msgid "<span font='16'>I want to have control of Side 1.</span>"
@@ -545,21 +545,19 @@ msgstr "Defensa de coll de botella"
 msgid "Big Bad Orc"
 msgstr "Gran orco roïn"
 
-#. [event]: (id=Big Bad Orc) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:85
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Val, compares. Cal parar-los els peus ad eixos orcos."
 
-#. [event]: (id=Big Bad Orc) profile profile}
-#. [event]: id=Kraa profile profile}
-#. [event]: id=Vanak profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 #: data/ai/micro_ais/scenarios/guardians.cfg:511
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
 msgid "They there!  We them get!"
 msgstr "¡Allí estan! ¡Els tenim!"
 
-#. [event]: (id=Big Bad Orc) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:90
 msgid ""
 "We need to hold that pass for as long as we can. Let's put our strongest "
@@ -597,12 +595,12 @@ msgstr ""
 "tant de temps com siga possible. ¿Vol jugar del costat orco o deixar que la "
 "IA predeterminada (RCA) ho faça?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:102
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
 msgstr "<span font='16'>Voré com s'enfronten les dos IAs.</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:105
 msgid "<span font='16'>I'll play the orcs.</span>"
 msgstr "<span font='16'>Controlaré el costat dels orcos.</span>"
@@ -635,8 +633,8 @@ msgstr ""
 "¡Pot ser que yo haja caigut, pero continuarem defenent el pas fins a l'últim "
 "home!"
 
-#. [event]
 #. [test]: id=dragon
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -662,12 +660,12 @@ msgstr "Casa de Rowck"
 msgid "Rowck"
 msgstr "Rowck"
 
-#. [event]: (id=Dreadful Bat) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:81
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
 msgstr "Mantin-te alluntat del camí d'eixe dragó. És realment roïn."
 
-#. [event]: (id=Dreadful Bat) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
@@ -754,8 +752,8 @@ msgid ""
 "or for your own tests."
 msgstr ""
 
-#. [event]
 #. [test]: id=goto
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -786,22 +784,22 @@ msgstr "Animals"
 msgid "team_name^Ghosts"
 msgstr "Fantasmes"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:185
 msgid "General Minry"
 msgstr "General Minry"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:186
 msgid "Lieutenant Gadoc"
 msgstr "Tinent Gadoc"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:187
 msgid "Lieutenant Senvan"
 msgstr "Tinent Senvan"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:188
 msgid "Sergeant Aethubry"
 msgstr "Sargent Aethubry"
@@ -911,17 +909,17 @@ msgstr ""
 "comportaments es configuren en una sola etiqueta [micro_ai], un en "
 "«unique_goals=yes», i l'atre sense res."
 
-#. [event]: id=ghost1}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:475
 msgid "Aaiiieeeeeee !!!"
 msgstr "¡Uuuuuuuuuu!"
 
-#. [event]: id=ghost1}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:476
 msgid "O no, a ghost!"
 msgstr "¡Oh no, un fantasma!"
 
-#. [event]: id=ghost1}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:477
 msgid ""
 "Don't worry, those are really shy ghosts.  Nobody knows why, but they always "
@@ -1073,8 +1071,8 @@ msgstr "Ya hem aplegat tots als cantons, tornem a juntar-nos de nou."
 msgid "We're back together, let's head out to the corners again."
 msgstr "Ya tornem a estar junts, dirigim-nos als cantons de nou."
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1393,12 +1391,12 @@ msgstr ""
 "- En un atre cas, atacarà a qualsevol enemic que entre en la zona enemiga i, "
 "quan no queden enemics, tornarà a patrullar la seua zona guardada."
 
-#. [event]: id=Kraa profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:510
 msgid "Kraahhh!!!!"
 msgstr "Kraahhh!"
 
-#. [event]: id=Kraa profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:513
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
@@ -1729,8 +1727,6 @@ msgstr ""
 "codificat en WML (costat 5, gris) i IA Formula (costat 6, marró)."
 
 #. [event]
-#. [event]: id=Konrad profile profile}
-#. [event]: id=Vanak profile profile}
 #: data/ai/micro_ais/scenarios/lurkers.cfg:448
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
@@ -1808,9 +1804,9 @@ msgstr "Escolta al mensager"
 msgid "Vanak"
 msgstr "Vanak"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1837,7 +1833,7 @@ msgstr "Localisació 3 per al mensager"
 msgid "AI moves Messenger here"
 msgstr "La IA mou al mensager ací"
 
-#. [event]: id=Vanak profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:137
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
@@ -1846,7 +1842,7 @@ msgstr ""
 "Hòmens, necessite alcançar aquell poste indicador del nort, per a portar el "
 "mensage al nostre líder. Marchem tan ràpit com pugam."
 
-#. [event]: id=Vanak profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
@@ -1910,8 +1906,8 @@ msgstr "¡Ho vaig conseguir! Ara la nostra gent estarà fòra de perill."
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "¡Nooo! Tot s'ha perdut. ¡Ya mai podrem detindre als orcos!"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1982,7 +1978,7 @@ msgstr "Localisació 4 per a la patrulla"
 msgid "Urudin retreats here"
 msgstr "Urudin es retira cap a ací"
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:204
 msgid ""
 "Hello!  I'm a Konrad impostor. We are going to demonstrate the Patrol AI to "
@@ -2007,7 +2003,7 @@ msgstr ""
 "\n"
 "Tot açò ha segut configurat en l'us de l'etiqueta [micro_ai] de patrulla."
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 msgid ""
 "By contrast, I am a zone guardian patrolling, in a way, the southernmost "
@@ -2023,7 +2019,7 @@ msgstr ""
 "IAs de guàrdia, ya hi ha un atre escenari diferent que s'especialisa en este "
 "tema."
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:212
 msgid ""
 "And I am Urudin. I will attack my enemies for a few turns, but will retreat "
@@ -2038,7 +2034,7 @@ msgstr ""
 "\n"
 "Esta és una atra IA a part de les patrulles del costat 2."
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
 msgid ""
 "You, as the player, are in charge of Gertburt's bandits in this scenario. "
@@ -2122,8 +2118,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Anem a casa, compares."
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2158,12 +2154,12 @@ msgstr "Koorzhar"
 msgid "Move Rossauba here"
 msgstr "Moga ací a Rossauba"
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:127
 msgid "There's that traitor wizard. Let's get him."
 msgstr "Allí està eixe enchiser traïdor. Atrapem-li."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:129
 msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
@@ -2172,12 +2168,12 @@ msgstr ""
 "Hòmens, ya coneixeu el tracte. Devem protegir a Rossauba baix qualsevol "
 "circumstància. La meua pròpia supervivència no és tan important."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:130
 msgid "That's very kind of you, but ..."
 msgstr "Això és molt amable per la teua banda, pero..."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:131
 msgid ""
 "No buts!  You stay behind the lines and do not engage in battle unless there "
@@ -2215,12 +2211,12 @@ msgstr ""
 "color='#00A000'>pàgina de la wiki de micro IAs</span> en http://wiki.wesnoth."
 "org/Micro_AIs per a més informació sobre el tema."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:143
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr "<span font='16'>Observaré com les dos IAs lluiten entre elles</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:146
 msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
@@ -2229,7 +2225,7 @@ msgstr ""
 "<span font='16'>Controlaré el costat de Langzhar (per a vore com les unitats "
 "de Koorzhar van a per Rossauba)</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:155
 msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
@@ -2243,8 +2239,8 @@ msgstr ""
 msgid "Protect Rossauba while moving him to the signpost"
 msgstr "Protegixca a Rossauba mentres el mou fins al poste indicador"
 
-#. [objective]: condition=lose
 #. [objective]: condition=win
+#. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:169
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:189
 msgid "Rossauba makes it to the signpost"
@@ -2285,14 +2281,14 @@ msgstr "Els vaig retindre tant com vaig poder."
 msgid "I made it"
 msgstr "Ho vaig fer"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
 msgstr "Reclutant"
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:85
 msgid ""
 "This is a very simple scenario that can be used to test out different "
@@ -2301,7 +2297,7 @@ msgstr ""
 "Este és un escenari molt senzill que pot ser usat per a provar diferents "
 "plantilles de reclutament."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:88
 msgid ""
 "Just watch the recruiting of both sides and see if it is what you would "
@@ -2312,7 +2308,7 @@ msgstr ""
 "haguera esperat. La llista de reclutament comprén unitats des de nivell 0 "
 "fins a nivell 2, per a que les diferències siguen més evidents."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
 #, fuzzy
 #| msgid ""
@@ -3071,7 +3067,7 @@ msgstr ""
 "wiki de micro IAs</span> en http://wiki.wesnoth.org/Micro_AIs per a més "
 "informació sobre el tema."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/wolves.cfg:206
 msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
 msgstr ""
@@ -3197,17 +3193,17 @@ msgstr "Sur"
 msgid "Which AI do you wish to use, O Mighty AI Developer?"
 msgstr "¿Quina IA desijaria usar, oh poderós Desenrollador de IA?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
 msgstr "Estic satisfet en l'actual IA de l'equip 2, [$test_path_to_ai]"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
 msgid "My AI is the RCA AI (the current default)."
 msgstr ""
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
 msgid ""
 "I am the king of FORMULA AI, and I will use its vast powers for world "
@@ -3216,13 +3212,13 @@ msgstr ""
 "Soc el rei de la IA Formula, i usaré els seus vasts poders per a dominar el "
 "món."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:199
 msgid "I want to test formulaAI-based poisoning improvements"
 msgstr ""
 "Desige testejar les millores per a enverinament basades en la IA Formula"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:208
 msgid "I've come with my own AI, and I am ready to test its strength"
 msgstr ""

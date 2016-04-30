@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2010-10-01 19:05-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: none\n"
@@ -703,32 +703,32 @@ msgstr "T’baran"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg, line: 190
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg, line: 224
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg, line: 82
-#. [modify_side]
-#. [side]
-#. [side]: id=Hraurg, type=Saurian Ambusher
 #. [side]: id=Tbaran, type=Orcish Warrior
 #. [side]: id=Wrulf, type=Orcish Warrior
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Orcish Warrior, id=Qumseh
+#. [side]: type=Orcish Warrior, id=Graur-Tan
+#. [modify_side]
+#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
+#. [side]
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
 #. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
+#. [side]: type=Saurian Ambusher, id=Shurm
+#. [side]: type=Saurian Ambusher, id=Trigr
+#. [side]: id=Hraurg, type=Saurian Ambusher
+#. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
+#. [side]: type=Troll Warrior, id=Traur
 #. [side]: type=Orcish Warlord, id=Kior-Pur
 #. [side]: type=Orcish Warlord, id=Mbiran
 #. [side]: type=Orcish Warlord, id=Tan-Durr
-#. [side]: type=Orcish Warlord, id=Urug-Tar
-#. [side]: type=Orcish Warrior, id=Graur-Tan
-#. [side]: type=Orcish Warrior, id=Qumseh
-#. [side]: type=Saurian Ambusher, id=Shurm
-#. [side]: type=Saurian Ambusher, id=Spahr
-#. [side]: type=Saurian Ambusher, id=Trigr
-#. [side]: type=Saurian Flanker, id=Hgyr
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Oracle, id=Shhar
-#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Troll Warrior, id=Trigrul
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:205
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:243
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:279
@@ -789,8 +789,8 @@ msgstr "Qumseh"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg, line: 155
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg, line: 306
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg, line: 155
-#. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Orcish Warrior, id=Graur-Tan
+#. [side]: type=Orcish Warlord, id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:321
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:176
 msgid "Graur-Tan"
@@ -1225,11 +1225,11 @@ msgstr ""
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 8
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 117
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 140
-#. [modify_side]
-#. [side]
 #. [side]: type=Dwarvish Steelclad
-#. [side]: type=Elvish Captain, id=East
+#. [modify_side]
 #. [side]: type=Elvish Ranger, id=Antaril
+#. [side]: type=Elvish Captain, id=East
+#. [side]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:109
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:168
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:128
@@ -2261,8 +2261,8 @@ msgstr "Hraurg"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg, line: 125
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg, line: 171
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg, line: 125
-#. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Ambusher, id=Spahr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:185
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:124
 msgid "Spahr"
@@ -3119,8 +3119,8 @@ msgstr ""
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg, line: 29
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg, line: 54
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 23
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:589
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:42
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:52
@@ -3185,8 +3185,8 @@ msgstr "Kalenz"
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg, line: 81
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg, line: 60
 # File: data/campaigns/Legend_of_Wesmere/utils/characters.cfg, line: 41
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:595
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:62
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:82
@@ -6270,7 +6270,7 @@ msgstr ""
 #
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg, line: 299
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg, line: 299
-#. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
+#. [event]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:676
 msgid "Crelanu’s philter affecting Kalenz"
 msgstr "Poção de Crelanu afetando Kalenz"
@@ -6278,7 +6278,7 @@ msgstr "Poção de Crelanu afetando Kalenz"
 #
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg, line: 309
 # File: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg, line: 309
-#. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
+#. [event]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:686
 msgid "Crelanu’s philter affecting Landar"
 msgstr "Poção de Crelanu afetando Landar"

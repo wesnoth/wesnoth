@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-10-19 21:36+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -284,9 +284,9 @@ msgid "The light fills me!"
 msgstr "¡Me llena la luz!"
 
 #. [message]: speaker=First Oracle
-#. [message]: speaker=Fourth Oracle
 #. [message]: speaker=Second Oracle
 #. [message]: speaker=Third Oracle
+#. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:179
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:183
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:187
@@ -500,8 +500,8 @@ msgstr ""
 msgid "The Road to Weldyn"
 msgstr "El camino a Weldyn"
 
-#. [side]
 #. [side]: type=Journeyman Mage
+#. [side]
 #. [side]: type=King of Wesnoth, id=Garard
 #. [side]: type=King of Wesnoth, id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:24
@@ -523,11 +523,11 @@ msgid "Urthaka-Tan"
 msgstr "Urthaka-Tan"
 
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
-#. [side]: type=Bandit, id=Harold
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
 #. [side]: type=Rogue, id=Garrath
+#. [side]: type=Bandit, id=Harold
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:62
@@ -658,8 +658,8 @@ msgstr ""
 "Estas tierras no son seguras para un viajero solitario, y tal vez "
 "averigüemos que llevó a los orcos tan al sur."
 
-#. [scenario]: id=04_Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
+#. [scenario]: id=04_Leollyn
 #. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:69
@@ -1085,7 +1085,7 @@ msgstr ""
 "¡Felicidades extranjeros! Este pantano es peligroso... Si quieren cruzarlo, "
 "necesitarán protección y ¡Sólo les costará $fee oro!"
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:135
 msgid "Thanks very much. Here’s the gold..."
 msgstr "Muchas gracias. Aquí está el oro..."
@@ -1110,7 +1110,7 @@ msgstr "¡Ja ja ja! ¡Necios!"
 msgid "Well, at least we only have to deal with one of them now..."
 msgstr "Bueno, al menos ahora sólo tenemos que lidiar con uno de ellos..."
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:183
 msgid "No thanks — we’ll manage by ourselves..."
 msgstr "No gracias, podemos valernos solos..."
@@ -1219,8 +1219,8 @@ msgstr ""
 "¡Espero no volver a vivir una noche como esta! Dejemos este lugar lo antes "
 "posible, quiero que estemos fuera de Illuven antes del ocaso."
 
-#. [scenario]: id=08_Ur-Thorodor
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
+#. [scenario]: id=08_Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:42
 msgid "Ur-Thorodor"
@@ -1435,7 +1435,7 @@ msgstr "<i>Capum</i>!"
 msgid "Do you serve Iliah-Malal, living man?"
 msgstr "¿Sirves a Iliah-Malal, humano viviente?"
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
 msgid "Yes, I serve him."
 msgstr "Si, le sirvo."
@@ -1446,7 +1446,7 @@ msgid "Then you will not mind if we kill you! Hahahahah!"
 msgstr "¡Entonces no te importará si te matamos! ¡Ja ja ja!"
 
 # Perseo --> Me parece que queda más natural que "no, no lo hago"
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
 msgid "No, I do not."
 msgstr "No, yo no sirvo a Iliah-Malal."
@@ -1870,9 +1870,9 @@ msgstr ""
 msgid "The Gate Between Worlds"
 msgstr "La puerta entre los mundos"
 
-#. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Iliah-Malal
 #. [unit]: id=Iliah-Malal, type=Lich
+#. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:28
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:150
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:60
@@ -3652,8 +3652,8 @@ msgstr ""
 "Creo que nuestro joven e inexperto amigo sobrestima el poder del enemigo. "
 "Estoy convencido de que no serán rival para las tropas Wesnothianas."
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:42
 msgid "Sagus"
@@ -4506,8 +4506,8 @@ msgstr ""
 "El mal ha sido derrotado en este día. Puede que esta victoria nos "
 "proporcione paz duradera."
 
-#. [message]: speaker=Admirer5
 #. [message]: speaker=Kalenz
+#. [message]: speaker=Admirer5
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:531
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:541
 msgid ""

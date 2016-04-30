@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2013-01-27 23:00+0100\n"
 "Last-Translator: Alessandro Barbazza <alexbarbazza@yahoo.it>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -29,8 +29,8 @@ msgstr ""
 msgid "Who do you want to play?"
 msgstr "Con chi preferisci giocare?"
 
-#. [lua]: wml_actions.select_character
 #. [side]: type=Fighter, id=student
+#. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:68
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
@@ -399,7 +399,6 @@ msgid ""
 msgstr ""
 
 #. [event]
-#. [event]: (id=Delfador) 14 8}, (id=Delfador) facing nw}
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:464
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
@@ -906,24 +905,24 @@ msgstr ""
 "qualsiasi momento selezionando <b>Fine scenario</b> dal menù contestuale "
 "(richiamabile facendo clic col tasto destro del mouse)."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
 msgid "Yes, I’m still figuring it out."
 msgstr "Sì, sto ancora cercando di capire."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
 #, fuzzy
 #| msgid "Yes, I’m still figuring it out."
 msgid "female^Yes, I’m still figuring it out."
 msgstr "Sì, sto ancora cercando di capire."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
 msgid "No, I think I’ve got it."
 msgstr "No, penso di aver capito."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:965
 #, fuzzy
 #| msgid "No, I think I’ve got it."
@@ -1181,7 +1180,6 @@ msgstr ""
 "dove noi combattiamo al meglio."
 
 #. [message]: speaker=student
-#. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:179
 msgid "Let’s go! Attack!"
 msgstr ""
@@ -1528,7 +1526,6 @@ msgstr ""
 "prima che i cavalcatori di lupi riescano a raggiungerla."
 
 #. [message]: speaker=student
-#. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
 #, fuzzy
 #| msgid "Can’t our units just move around him?"

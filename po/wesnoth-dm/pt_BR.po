@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2013-05-16 15:21+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: none\n"
@@ -409,9 +409,9 @@ msgstr "A luz me cega!"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg, line: 189
 # File: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg, line: 193
 #. [message]: speaker=First Oracle
-#. [message]: speaker=Fourth Oracle
 #. [message]: speaker=Second Oracle
 #. [message]: speaker=Third Oracle
+#. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:179
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:183
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:187
@@ -744,8 +744,8 @@ msgstr "A Estrada para Weldyn"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg, line: 31
 # File: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg, line: 40
 # File: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg, line: 55
-#. [side]
 #. [side]: type=Journeyman Mage
+#. [side]
 #. [side]: type=King of Wesnoth, id=Garard
 #. [side]: type=King of Wesnoth, id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:24
@@ -783,11 +783,11 @@ msgstr "Urthaka-Tan"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg, line: 74
 # File: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg, line: 47
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
-#. [side]: type=Bandit, id=Harold
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
 #. [side]: type=Rogue, id=Garrath
+#. [side]: type=Bandit, id=Harold
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:62
@@ -970,8 +970,8 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg, line: 3
 # File: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg, line: 73
 # File: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg, line: 56
-#. [scenario]: id=04_Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
+#. [scenario]: id=04_Leollyn
 #. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:69
@@ -1542,7 +1542,7 @@ msgstr ""
 #
 # File: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg, line: 142
 # File: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg, line: 142
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:135
 msgid "Thanks very much. Here’s the gold..."
 msgstr "Muito obrigado. Aqui está o ouro..."
@@ -1582,7 +1582,7 @@ msgstr "Bem, pelo menos só precisaremos acabar com um deles agora..."
 #
 # File: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg, line: 190
 # File: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg, line: 190
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:183
 msgid "No thanks — we’ll manage by ourselves..."
 msgstr "Não, obrigado. Nós conseguiremos sozinhos..."
@@ -1740,8 +1740,8 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg, line: 49
 # File: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg, line: 3
 # File: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg, line: 49
-#. [scenario]: id=08_Ur-Thorodor
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
+#. [scenario]: id=08_Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:42
 msgid "Ur-Thorodor"
@@ -2031,7 +2031,7 @@ msgstr "Você serve a Iliah-Malal, vivente?"
 #
 # File: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg, line: 61
 # File: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg, line: 61
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
 msgid "Yes, I serve him."
 msgstr "Sim, eu sirvo a ele."
@@ -2047,7 +2047,7 @@ msgstr "Então você não se importa se o matarmos! Hahahahah!"
 #
 # File: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg, line: 70
 # File: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg, line: 70
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
 msgid "No, I do not."
 msgstr "Não, não me importo."
@@ -2618,9 +2618,9 @@ msgstr "O Portão Entre os Mundos"
 # File: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg, line: 28
 # File: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg, line: 144
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 64
-#. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Iliah-Malal
 #. [unit]: id=Iliah-Malal, type=Lich
+#. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:28
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:150
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:60
@@ -5166,8 +5166,8 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg, line: 42
 # File: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg, line: 55
 # File: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg, line: 42
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:42
 msgid "Sagus"
@@ -6338,8 +6338,8 @@ msgstr ""
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 489
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 479
 # File: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg, line: 489
-#. [message]: speaker=Admirer5
 #. [message]: speaker=Kalenz
+#. [message]: speaker=Admirer5
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:531
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:541
 msgid ""

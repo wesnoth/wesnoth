@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2013-10-25 16:21+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -32,32 +32,32 @@ msgstr "명령어"
 msgid "Compress saved games"
 msgstr "세이브 파일을 압축함"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
 msgstr ""
@@ -309,24 +309,24 @@ msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: set_status
 #. [unstore_unit]
+#. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "poisoned"
 msgstr "중독"
 
-#. [lua]: generate_objectives
 #. [objectives]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:205
-#: data/lua/wml/objectives.lua:14853
+#: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
 msgstr "자금 이월:"
 
-#. [lua]: generate_objectives
 #. [note]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:216
-#: data/lua/wml/objectives.lua:14854
+#: data/lua/wml/objectives.lua:53
 msgid "Notes:"
 msgstr ""
 
@@ -1279,9 +1279,9 @@ msgstr ""
 "이번 시나리오에서 당신은 동맹 진영에 속한 유닛을 오른쪽 클릭하여 해당 진영에 "
 "지시를 내릴 수 있습니다."
 
-#. [literal]
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
+#. [literal]
 #: data/core/macros/ai_controller.cfg:117
 #: data/core/macros/ai_controller.cfg:124
 #: data/core/macros/ai_controller.cfg:131
@@ -1339,8 +1339,8 @@ msgstr ""
 "$ai_controller.side_$ally_side|_current_settings.focus_on_enemy."
 "side_description| 격파에 주력한다."
 
-#. [else]
 #. [then]
+#. [else]
 #: data/core/macros/ai_controller.cfg:236
 #: data/core/macros/ai_controller.cfg:240
 #: data/core/macros/ai_controller.cfg:371
@@ -1388,7 +1388,7 @@ msgstr ""
 "$ai_controller.side_$ally_side|_current_settings.protect.side_description| 호"
 "위에 주력한다."
 
-#. [option]: type=objective
+#. [option]
 #: data/core/macros/ai_controller.cfg:451
 msgid "Defend a location..."
 msgstr "특정 지점을 지킨다..."
@@ -1418,8 +1418,8 @@ msgstr "지역 설정 취소"
 msgid "Clear objective orders"
 msgstr "목표 지령 소거"
 
-#. [revoke_behavior_orders]
 #. [revoke_objective_orders]
+#. [revoke_behavior_orders]
 #. [then]
 #: data/core/macros/ai_controller.cfg:549
 #: data/core/macros/ai_controller.cfg:562
@@ -1501,17 +1501,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(조기 종료 보너스)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:14915
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
 msgstr "조기 종료 보너스 있음."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:14917
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:116
 msgid "No early finish bonus."
 msgstr "조기 종료 보너스 없음."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:14925
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:124
 msgid "No gold carried over to the next scenario."
 msgstr "자금은 다음 시나리오로 이월되지 않습니다."
 
@@ -1544,7 +1544,7 @@ msgstr ""
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "소원의 우물입니다. 무엇을 빌어볼까요?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:24
 msgid "A swift victory"
 msgstr "신속한 승리"
@@ -1556,7 +1556,7 @@ msgid ""
 "victory."
 msgstr "이 금화로 이 전투가 빠르고 안전한 승리로 끝나길 빌겠어."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:38
 msgid "Lots of gold"
 msgstr "많은 돈"
@@ -1566,7 +1566,7 @@ msgstr "많은 돈"
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "이 금화 하나가 나에게 열배로 돌아오기를 빌겠어."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth의 평화"
@@ -1576,7 +1576,7 @@ msgstr "Wesnoth의 평화"
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "내가 바라는 것은 오직 이 땅의 평화 뿐이야."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:66
 msgid "Don’t make a wish."
 msgstr "소원을 빌지 않는다."
@@ -2696,8 +2696,8 @@ msgstr ""
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
-#. [color_range]: id=1
 #. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:230
 msgid "Red"
 msgstr ""
@@ -2712,8 +2712,8 @@ msgstr ""
 msgid "Dark Red"
 msgstr ""
 
-#. [color_range]: id=2
 #. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:236
 msgid "Blue"
 msgstr ""
@@ -2723,8 +2723,8 @@ msgstr ""
 msgid "Light blue"
 msgstr ""
 
-#. [color_range]: id=3
 #. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:242
 msgid "Green"
 msgstr ""
@@ -2734,26 +2734,26 @@ msgstr ""
 msgid "Bright green"
 msgstr ""
 
-#. [color_range]: id=4
 #. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:248
 msgid "Purple"
 msgstr ""
 
-#. [color_range]: id=5
 #. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:260
 msgid "Black"
 msgstr ""
 
-#. [color_range]: id=6
 #. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:272
 msgid "Brown"
 msgstr ""
 
-#. [color_range]: id=7
 #. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:254
 msgid "Orange"
 msgstr ""
@@ -2763,14 +2763,14 @@ msgstr ""
 msgid "Bright orange"
 msgstr ""
 
-#. [color_range]: id=8
 #. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:86 data/core/team-colors.cfg:266
 msgid "White"
 msgstr ""
 
-#. [color_range]: id=9
 #. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:92 data/core/team-colors.cfg:278
 msgid "Teal"
 msgstr ""
@@ -3207,7 +3207,6 @@ msgstr "기본"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:112 data/scenario-test.cfg:1031
 #: src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:89
@@ -3216,7 +3215,6 @@ msgstr "확인"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:123 data/scenario-test.cfg:1032
 #: src/dialogs.cpp:1165 src/dialogs.cpp:1271
 #: src/game_initialization/multiplayer_connect.cpp:388
@@ -3246,69 +3244,68 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "female^poisoned"
 msgstr "중독"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "female^slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "female^petrified"
 msgstr "석화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "petrified"
 msgstr "석화"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 #, fuzzy
 msgid "female^unhealable"
 msgstr "언데드"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14851
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:71
 msgid "Victory:"
 msgstr "승리조건:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14852
+#: data/lua/wml/objectives.lua:51
 msgid "Defeat:"
 msgstr "패배조건:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14872
+#: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
 msgstr "(%d 턴 남음)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14874
+#: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
 msgstr "(마지막 턴)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14927
+#: data/lua/wml/objectives.lua:126
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "총 자금의 %d%% 가 다음 시나리오로 이월됩니다."
 
@@ -3324,10 +3321,12 @@ msgid ""
 "mainline campaign 'Heir to the Throne'"
 msgstr ""
 
+#. [language]
 #: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr ""
 
+#. [language]
 #: data/scenario-test.cfg:4005
 #, fuzzy
 msgid "electrical"
@@ -3514,22 +3513,22 @@ msgstr "유지비"
 msgid "income"
 msgstr "수입"
 
-#. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
+#. [selected_unit_level]: id=selected-unit-level
 #: data/themes/classic.cfg:432 data/themes/widescreen.cfg:491
 #: data/themes/widescreen.cfg:617
 msgid "statuspanel^level"
 msgstr "레벨"
 
-#. [selected_unit_moves]: id=selected-unit-moves
 #. [unit_moves]: id=unit-moves
+#. [selected_unit_moves]: id=selected-unit-moves
 #: data/themes/classic.cfg:462 data/themes/widescreen.cfg:521
 #: data/themes/widescreen.cfg:647
 msgid "statuspanel^moves"
 msgstr "이동력"
 
-#. [selected_unit_defense]: id=selected-unit-defense
 #. [unit_defense]: id=unit-defense
+#. [selected_unit_defense]: id=selected-unit-defense
 #: data/themes/classic.cfg:471 data/themes/widescreen.cfg:530
 #: data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."

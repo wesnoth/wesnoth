@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2016-04-05 22:38+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
@@ -33,32 +33,32 @@ msgstr "カスタム"
 msgid "Compress saved games"
 msgstr "セーブデータの圧縮"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
 msgstr "Gzip"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
 msgstr "標準の圧縮形式、高速"
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
 msgstr "Bzip2"
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
 msgstr "最高の圧縮、低速"
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
 msgstr "圧縮無し"
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
 msgstr "プレーンテキストファイル、サイズは大きい"
@@ -307,24 +307,24 @@ msgid "Joystick: deadzone of the thruster"
 msgstr "ジョイスティック：スラスター無効範囲"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: set_status
 #. [unstore_unit]
+#. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "poisoned"
 msgstr "毒を受けた"
 
-#. [lua]: generate_objectives
 #. [objectives]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:205
-#: data/lua/wml/objectives.lua:14853
+#: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
 msgstr "ゴールドの引き継ぎ:"
 
-#. [lua]: generate_objectives
 #. [note]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:216
-#: data/lua/wml/objectives.lua:14854
+#: data/lua/wml/objectives.lua:53
 msgid "Notes:"
 msgstr "メモ:"
 
@@ -1248,9 +1248,9 @@ msgstr ""
 "このシナリオでは、右クリックのコンテキストメニューを使って、同盟軍へ指示する"
 "ことができます。"
 
-#. [literal]
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
+#. [literal]
 #: data/core/macros/ai_controller.cfg:117
 #: data/core/macros/ai_controller.cfg:124
 #: data/core/macros/ai_controller.cfg:131
@@ -1307,8 +1307,8 @@ msgstr ""
 " $ai_controller.side_$ally_side|_current_settings.focus_on_enemy."
 "side_description|を攻撃。"
 
-#. [else]
 #. [then]
+#. [else]
 #: data/core/macros/ai_controller.cfg:236
 #: data/core/macros/ai_controller.cfg:240
 #: data/core/macros/ai_controller.cfg:371
@@ -1352,7 +1352,7 @@ msgstr ""
 "$ai_controller.side_$ally_side|_current_settings.protect.side_description|を"
 "護衛。"
 
-#. [option]: type=objective
+#. [option]
 #: data/core/macros/ai_controller.cfg:451
 msgid "Defend a location..."
 msgstr "指定した場所を防衛…"
@@ -1382,8 +1382,8 @@ msgstr "位置選択は取り消されました"
 msgid "Clear objective orders"
 msgstr "目標命令を消去"
 
-#. [revoke_behavior_orders]
 #. [revoke_objective_orders]
+#. [revoke_behavior_orders]
 #. [then]
 #: data/core/macros/ai_controller.cfg:549
 #: data/core/macros/ai_controller.cfg:562
@@ -1467,17 +1467,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>（早期終了ボーナス）</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:14915
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
 msgstr "早期終了ボーナス。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:14917
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:116
 msgid "No early finish bonus."
 msgstr "早期終了ボーナスなし。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:14925
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:124
 msgid "No gold carried over to the next scenario."
 msgstr "ゴールドは次のシナリオに引き継がれません。"
 
@@ -1510,7 +1510,7 @@ msgstr ""
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "願かけ井戸に遭遇しました。何を願いたいですか？"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:24
 msgid "A swift victory"
 msgstr "あっという間の勝利"
@@ -1522,7 +1522,7 @@ msgid ""
 "victory."
 msgstr "このゴールドで、私は即座に安全な勝利でこの戦闘が終わることを願います。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:38
 msgid "Lots of gold"
 msgstr "大量の金"
@@ -1532,7 +1532,7 @@ msgstr "大量の金"
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "私はこの一枚のゴールドが10倍になって返ってくる事を願います。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth 全体の平和"
@@ -1542,7 +1542,7 @@ msgstr "Wesnoth 全体の平和"
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "この国家全体に広がる平和のみが祈るだけの価値があります。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:66
 msgid "Don’t make a wish."
 msgstr "願い事はしません。"
@@ -2663,8 +2663,8 @@ msgstr ""
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "$amount_gold枚のゴールドを手にいれました。"
 
-#. [color_range]: id=1
 #. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:230
 msgid "Red"
 msgstr "赤"
@@ -2679,8 +2679,8 @@ msgstr "ライトレッド"
 msgid "Dark Red"
 msgstr "ダークレッド"
 
-#. [color_range]: id=2
 #. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:236
 msgid "Blue"
 msgstr "青"
@@ -2690,8 +2690,8 @@ msgstr "青"
 msgid "Light blue"
 msgstr "ライトブルー"
 
-#. [color_range]: id=3
 #. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:242
 msgid "Green"
 msgstr "緑"
@@ -2701,26 +2701,26 @@ msgstr "緑"
 msgid "Bright green"
 msgstr "ブライトグリーン"
 
-#. [color_range]: id=4
 #. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:248
 msgid "Purple"
 msgstr "紫"
 
-#. [color_range]: id=5
 #. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:260
 msgid "Black"
 msgstr "黒"
 
-#. [color_range]: id=6
 #. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:272
 msgid "Brown"
 msgstr "茶"
 
-#. [color_range]: id=7
 #. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:254
 msgid "Orange"
 msgstr "橙"
@@ -2730,14 +2730,14 @@ msgstr "橙"
 msgid "Bright orange"
 msgstr "ブライトオレンジ"
 
-#. [color_range]: id=8
 #. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:86 data/core/team-colors.cfg:266
 msgid "White"
 msgstr "白"
 
-#. [color_range]: id=9
 #. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:92 data/core/team-colors.cfg:278
 msgid "Teal"
 msgstr "青緑"
@@ -3179,7 +3179,6 @@ msgstr "デフォルト"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:112 data/scenario-test.cfg:1031
 #: src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:89
@@ -3188,7 +3187,6 @@ msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:123 data/scenario-test.cfg:1032
 #: src/dialogs.cpp:1165 src/dialogs.cpp:1271
 #: src/game_initialization/multiplayer_connect.cpp:388
@@ -3218,68 +3216,67 @@ msgstr "DejaVu Sans Mono"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "female^poisoned"
 msgstr "毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "female^slowed"
 msgstr "遅化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "slowed"
 msgstr "遅化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "petrified"
 msgstr "石化"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "female^unhealable"
 msgstr "回復不能"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr "回復不能"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14851
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:71
 msgid "Victory:"
 msgstr "勝利条件:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14852
+#: data/lua/wml/objectives.lua:51
 msgid "Defeat:"
 msgstr "敗北条件:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14872
+#: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
 msgstr "（残り %d ターン）"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14874
+#: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
 msgstr "（このターンまで）"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14927
+#: data/lua/wml/objectives.lua:126
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "次のシナリオに %d%% のゴールドを引き継ぎます。"
 
@@ -3297,10 +3294,12 @@ msgstr ""
 "サンプルのluaマップジェネレーターです。「王位継承者」のシナリオ17のような洞窟"
 "を生成します。"
 
+#. [language]
 #: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr "とても長い"
 
+#. [language]
 #: data/scenario-test.cfg:4005
 msgid "electrical"
 msgstr "機械"
@@ -3482,22 +3481,22 @@ msgstr "維持"
 msgid "income"
 msgstr "収入"
 
-#. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
+#. [selected_unit_level]: id=selected-unit-level
 #: data/themes/classic.cfg:432 data/themes/widescreen.cfg:491
 #: data/themes/widescreen.cfg:617
 msgid "statuspanel^level"
 msgstr "レベル"
 
-#. [selected_unit_moves]: id=selected-unit-moves
 #. [unit_moves]: id=unit-moves
+#. [selected_unit_moves]: id=selected-unit-moves
 #: data/themes/classic.cfg:462 data/themes/widescreen.cfg:521
 #: data/themes/widescreen.cfg:647
 msgid "statuspanel^moves"
 msgstr "移動"
 
-#. [selected_unit_defense]: id=selected-unit-defense
 #. [unit_defense]: id=unit-defense
+#. [selected_unit_defense]: id=selected-unit-defense
 #: data/themes/classic.cfg:471 data/themes/widescreen.cfg:530
 #: data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."

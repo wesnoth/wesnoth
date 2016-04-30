@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-04-19 01:43-0300\n"
 "Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
 "Language-Team: none\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]: id=The_Rise_of_Wesnoth
 #. [scenario]: id=22_The_Rise_of_Wesnoth
+#. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:10
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:4
 msgid "The Rise of Wesnoth"
@@ -232,10 +232,10 @@ msgstr "... com os problemas de um outro príncipe na mesma Ilha..."
 msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
 msgstr "Pois esta é a história de Haldric I, e da fundação de Wesnoth..."
 
-#. [side]: id=Prince Haldric, type=Noble Commander
+#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #. [side]: type=Noble Commander, id=Prince Haldric
 #. [side]: type=Noble Fighter, id=Prince Haldric
-#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:77
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:27
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:21
@@ -545,29 +545,29 @@ msgstr ""
 msgid "Tan-Rarbag"
 msgstr "Tan-Rarbag"
 
-#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #. [side]: type=Orcish Warlord, id=Tan-Bok
+#. [side]: type=Orcish Warlord, id=Tan-Hogar
+#. [side]: type=Orcish Warlord, id=Tan-Gralg
+#. [side]: type=Orcish Warlord, id=Tan-Rugar
+#. [side]: type=Orcish Warlord, id=Tan-Vragar
 #. [side]: type=Orcish Warlord, id=Tan-Burg
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
+#. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Harak
+#. [side]: type=Orcish Warlord, id=Tan-Hork
+#. [side]: type=Orcish Warlord, id=Tan-Gulo
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
-#. [side]: type=Orcish Warlord, id=Tan-Gralg
-#. [side]: type=Orcish Warlord, id=Tan-Gulo
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Harak
-#. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Orcish Warlord, id=Tan-Hork
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
-#. [side]: type=Orcish Warlord, id=Tan-Pulk
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Rugar
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-Vragar
-#. [side]: type=Orcish Warlord, id=Tan-Vrodis
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Troll Warrior, id=Thruf
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -599,17 +599,17 @@ msgstr "Orcs"
 msgid "Tan-Erang"
 msgstr "Tan-Erang"
 
-#. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:155
 msgid "Thegwyn"
 msgstr "Thegwyn"
 
-#. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:156
 msgid "Galdred"
 msgstr "Galdred"
 
-#. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:157
 msgid "Tromas"
 msgstr "Tromas"
@@ -708,7 +708,7 @@ msgstr "Haldric, o que você acha disto?"
 msgid "Hmm... after some thought..."
 msgstr "Hmmm... pensando bem..."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:294
 msgid "I think that your skills may be useful. You may join us."
 msgstr ""
@@ -729,14 +729,14 @@ msgstr "Então do que eu devo chamá-la?"
 msgid "The Lady Outlaw will do."
 msgstr "Pode me chamar de Senhora Fora-da-Lei."
 
-#. [command]: (id=Lady Outlaw)}
 #. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [command]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:365
 msgid "Lady Outlaw"
 msgstr "Senhora Fora-da-Lei."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:346
 msgid "Your word can’t be trusted. Prepare to meet your gods!"
 msgstr ""
@@ -808,9 +808,9 @@ msgstr "Não olhe para trás! Iremos para o sul."
 msgid "A Harrowing Escape"
 msgstr "Uma Fuga Tortuosa"
 
-#. [side]: id=Prince Haldric, type=Noble Commander
-#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
 #. [side]: type=Noble Commander, id=Prince Haldric
+#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:42
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:42
@@ -1017,7 +1017,7 @@ msgstr ""
 "que mesmo os orcs iriam para lá. As terras médias já foram boas, mas quem "
 "sabe o que está ocorrendo por lá agora."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:279
 msgid "I think I’ll take the river road..."
 msgstr "Acho que vou pela Estrada do Rio..."
@@ -1038,7 +1038,7 @@ msgstr ""
 "<i>Pântano</i>?! Eu tenho menos de um metro e meio, e não bóio! Mas que "
 "seja, vamos fazer do seu jeito."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:301
 msgid "We’ll go through the Midlands..."
 msgstr "Nós iremos pelas Terras Médias. . ."
@@ -1141,8 +1141,8 @@ msgid "Cleon"
 msgstr "Cleon"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Clurka
 #. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:63
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:90
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:118
@@ -1378,8 +1378,8 @@ msgstr ""
 "Que ótimo, agora uma floresta... Eu deveria ter ficado em casa e lutado "
 "contra os Orcs sozinho!"
 
-#. [message]: speaker=Sir Ladoc
 #. [message]: speaker=Sir Ruddry
+#. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:628
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:417
 msgid "Sir, if you don’t mind, I’ll go with you."
@@ -1979,8 +1979,8 @@ msgstr "O Templo Nas Profundezas"
 msgid "Lich-Lord Lenvan"
 msgstr "Lorde-Lich Lenvan"
 
-#. [side]: type=Lich, id=Lich-Lord Caror
 #. [side]: type=Lich, id=Lich-Lord Lenvan
+#. [side]: type=Lich, id=Lich-Lord Caror
 #. [side]: type=Spectre, id=Isorfilad
 #. [side]: type=Spectre, id=Tinoldor
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:44
@@ -2115,9 +2115,9 @@ msgstr "Voltando para Oldwood"
 msgid "Talodulborentan"
 msgstr ""
 
-#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
-#. [side]: type=Wose, id=Gullatendronnorbum
 #. [side]: type=Wose, id=Talodulborentan
+#. [side]: type=Wose, id=Gullatendronnorbum
+#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:38
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:48
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:59
@@ -2412,10 +2412,10 @@ msgstr "Finalmente, estamos saindo desta floresta!"
 msgid "Clearwater Port"
 msgstr "Porto de Clearwater"
 
-#. [side]: id=Prince Haldric, type=Noble Commander
+#. [side]: type=Noble Commander, id=Prince Haldric
 #. [side]: type=Grand Knight, id=King Addroran IX
 #. [side]: type=Lieutenant, id=Commander Aethyr
-#. [side]: type=Noble Commander, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:27
@@ -3022,7 +3022,7 @@ msgstr ""
 "terminar a magia, um nobre da linhagem dos Reis precisa declamar as "
 "seguintes palavras..."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:359
 msgid "I think I’ll say that magic phrase."
 msgstr "Acho que vou recitar essa frase mágica."
@@ -3053,7 +3053,7 @@ msgstr "Livre, estou livre! E eu sinto o Rubi de Fogo! Ele será meu."
 msgid "No you won’t, you soldier of darkness!"
 msgstr "Não, não será, seu soldado da escuridão!"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:396
 msgid "I think I’ll wait a while before uttering any magic phrases."
 msgstr ""
@@ -3121,8 +3121,8 @@ msgid "Rarlg — argh, a raul-rarlg!"
 msgstr "Rarlg — argh, um raul-rarlg!"
 
 #. [message]: speaker=Prince Haldric
-#. [message]: speaker=Tan-Pulk
 #. [message]: speaker=Ut'Tan-Grilg
+#. [message]: speaker=Tan-Pulk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:548
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:553
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:557
@@ -3706,8 +3706,8 @@ msgstr ""
 msgid "Orcs sighted! They’ve seized the frontier! To arms! To arms!"
 msgstr "Orcs à vista! Eles tomaram a fronteira! Ao combate! Ao combate!"
 
-#. [message]: speaker=King Addroran IX
 #. [message]: speaker=Sir Ladoc
+#. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:338
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:766
 msgid "For the glory of Southbay!"
@@ -3775,10 +3775,10 @@ msgid "Under the same terms?"
 msgstr "Nos mesmos termos de antes?"
 
 #. [message]: speaker=Lady Dionli
-#. [message]: speaker=Lady Jessene
 #. [message]: speaker=Lord Aryad
 #. [message]: speaker=Lord El’Isomithir
 #. [message]: speaker=Lord Logalmier
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:389
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:422
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:426
@@ -4040,8 +4040,8 @@ msgstr ""
 msgid "Kegrid"
 msgstr "Kegrid"
 
-#. [side]: type=Drake Flameheart, id=Gerrick
 #. [side]: type=Drake Flameheart, id=Kegrid
+#. [side]: type=Drake Flameheart, id=Gerrick
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:54
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:77
@@ -4182,16 +4182,16 @@ msgstr ""
 msgid "Rough Landing"
 msgstr "Uma Dura Chegada"
 
-#. [event]
 #. [side]: type=Naga Warrior, id=Abraxas
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1298
 msgid "Abraxas"
 msgstr "Abraxas"
 
 #. [side]: type=Naga Warrior, id=Abraxas
-#. [side]: type=Naga Warrior, id=Gaxmail
 #. [side]: type=Naga Warrior, id=Xamalia
+#. [side]: type=Naga Warrior, id=Gaxmail
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:74
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:101
@@ -4335,9 +4335,9 @@ msgstr ""
 msgid "Glimir"
 msgstr "Glimir"
 
+#. [side]: type=Elvish Marshal, id=Glimir
 #. [side]: type=Dwarvish Lord, id=Dursil
 #. [side]: type=Elvish Champion, id=Eowarar
-#. [side]: type=Elvish Marshal, id=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:51
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:136
@@ -4503,8 +4503,8 @@ msgid "I bet this wasn’t the welcome you were expecting."
 msgstr ""
 "Eu aposto que estas não foram as boas vindas que você estava esperando."
 
-#. [event]
 #. [side]: type=Autumn Shyde, id=Lady Dionli
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:374
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:34
@@ -4694,7 +4694,7 @@ msgstr "Lorde Aryad"
 msgid "Lord El’Isomithir"
 msgstr "Lorde El'lsomithir"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:146
 msgid "I think I’ll fight the dragon!"
 msgstr "Acho que lutarei com o Dragão!"
@@ -4704,7 +4704,7 @@ msgstr "Acho que lutarei com o Dragão!"
 msgid "Lord Logalmier, I shall defeat your dragon."
 msgstr "Lorde Logalmier, eu derrotarei o dragão para você."
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:175
 msgid "Let’s get those saurians and nagas on that beach!"
 msgstr "Vamos pegar os Lagartos e Nagas na praia!"
@@ -4714,7 +4714,7 @@ msgstr "Vamos pegar os Lagartos e Nagas na praia!"
 msgid "Those cold blooded monsters will feel my wrath!"
 msgstr "Aqueles monstros de sangue frio sentirão a minha fúria!"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:204
 msgid "Let’s clear out that troll hole!"
 msgstr "Vamos fazer a limpa na caverna do Troll!"
@@ -4724,7 +4724,7 @@ msgstr "Vamos fazer a limpa na caverna do Troll!"
 msgid "So what exactly is a troll?"
 msgstr "Então, que história é essa de Troll?"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:232
 msgid "Let’s put those souls to rest on the cursed isle!"
 msgstr "Vamos colocar essas almas para descansar na ilha amaldiçoada!"
@@ -5059,10 +5059,10 @@ msgstr "O Dragão"
 msgid "Irix"
 msgstr "Irix"
 
-#. [side]: type=Saurian Flanker, id=Axiz
 #. [side]: type=Saurian Flanker, id=Irix
-#. [side]: type=Saurian Flanker, id=Satras
 #. [side]: type=Saurian Flanker, id=Vriss
+#. [side]: type=Saurian Flanker, id=Axiz
+#. [side]: type=Saurian Flanker, id=Satras
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:79
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:113
@@ -5187,12 +5187,12 @@ msgstr "Não!"
 msgid "We’ve slain the dragon: "
 msgstr "Nós derrotamos o Dragão: "
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:497
 msgid "Let’s get out of here!"
 msgstr "Vamos cair fora daqui!"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:509
 msgid "Let’s finish off the rest of these monsters!"
 msgstr "Vamos terminar com o resto dos monstros!"
@@ -5212,8 +5212,8 @@ msgstr "Praia dos Lagartos"
 msgid "Tirasch"
 msgstr "Tirasch"
 
-#. [side]: type=Saurian Flanker, id=Ssirk
 #. [side]: type=Saurian Flanker, id=Tirasch
+#. [side]: type=Saurian Flanker, id=Ssirk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:68
 msgid "Monsters"
@@ -5293,9 +5293,9 @@ msgid "Erart"
 msgstr "Erart"
 
 #. [side]: type=Troll Warrior, id=Erart
-#. [side]: type=Troll Warrior, id=Gulg
 #. [side]: type=Troll Warrior, id=Raol
 #. [side]: type=Troll Warrior, id=Rilg
+#. [side]: type=Troll Warrior, id=Gulg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:86
@@ -6299,10 +6299,10 @@ msgstr ""
 "encontro a uma 'morte honrada'?"
 
 #. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
-#. [side]: type=Orcish Warlord, id=Tan-Erinak
-#. [side]: type=Orcish Warlord, id=Tan-Prodash
 #. [side]: type=Orcish Warlord, id=Tan-Vragish
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Grorag
+#. [side]: type=Orcish Warlord, id=Tan-Erinak
+#. [side]: type=Orcish Warlord, id=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:51
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:88
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:125
@@ -6964,8 +6964,8 @@ msgstr ""
 "nosso conhecimento. Andarei entre o povo espalhando a sabedoria antiga, e "
 "estou pensando em estabelecer uma nova ordem de magos nesta terra."
 
-#. [message]: speaker=Sir Ladoc
 #. [message]: speaker=Sir Ruddry
+#. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:254
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:258
 msgid ""
@@ -7383,7 +7383,7 @@ msgstr "Que os Deuses da Luz protejam a todos nós."
 msgid "Without him the bottoms of our ships will be completely vulnerable..."
 msgstr "Sem ele o fundo de nossos navios ficarão completamente vulneráveis..."
 
-#. [unit]
+#. [unit]: type=Walking Corpse
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:84
 msgid "A Former Friend"
 msgstr "Um Antigo Amigo"

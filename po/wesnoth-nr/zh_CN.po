@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2015-02-07 13:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -696,15 +696,15 @@ msgstr ""
 "在兽人的手下毁灭，或者在纳尔迦隧道中遭遇未知的命运，泰林选择了后者。人们快速"
 "集合起来，收集了尽可能多的食品和武器，进入了黑暗的洞穴。"
 
-#. [side]: type=Troll Warrior, id=Bor
-#. [side]: type=Troll Warrior, id=Glu
-#. [side]: type=Troll Warrior, id=Oof
-#. [side]: type=Troll Warrior, id=Thung
-#. [side]: type=Troll Warrior, id=Tor
-#. [side]: type=Troll, id=Franik
-#. [side]: type=Troll, id=Henie
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Thung
+#. [side]: type=Troll, id=Franik
+#. [side]: type=Troll, id=Henie
+#. [side]: type=Troll Warrior, id=Tor
+#. [side]: type=Troll Warrior, id=Bor
+#. [side]: type=Troll Warrior, id=Oof
+#. [side]: type=Troll Warrior, id=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:141
@@ -738,19 +738,19 @@ msgstr "克洛格"
 msgid "Hamel"
 msgstr "哈默尔"
 
-#. [side]: type=Ancient Lich, id=Malifor
-#. [side]: type=Death Knight, id=Antrasis
-#. [side]: type=Death Knight, id=Author
-#. [side]: type=Death Knight, id=Boblin
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
 #. [side]: type=Death Knight, id=Mal Tath
-#. [side]: type=Death Knight, id=Tervor
+#. [side]: type=Ancient Lich, id=Malifor
+#. [side]: type=Draug, id=Thorin
+#. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Draug, id=Herlin
-#. [side]: type=Draug, id=Thorin
+#. [side]: type=Death Knight, id=Hettel
+#. [side]: type=Death Knight, id=Tervor
+#. [side]: type=Death Knight, id=Author
+#. [side]: type=Death Knight, id=Boblin
+#. [side]: type=Death Knight, id=Antrasis
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:126
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:156
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:173
@@ -1106,10 +1106,10 @@ msgstr ""
 "呀，纳尔迦的矮人们自己也过得非常艰难呢。但是我们没有忘记过去的盟约。欢迎来到"
 "矮人的营地。来吧，和我们的首领哈默尔领主谈谈吧。"
 
-#. [message]: speaker=Father Morvin
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2231
@@ -1591,11 +1591,11 @@ msgstr "清理矿脉"
 msgid "When the party finally reached the mines, they were not disappointed."
 msgstr "队伍到了矿脉以后，他们并没有失望。"
 
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]
+#. [side]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Drake Burner, id=Krash
 #. [side]: type=Dwarvish Lord, id=Hamel
-#. [side]: type=Elvish Avenger, id=Sisal
-#. [side]: type=Lieutenant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:162
@@ -1615,8 +1615,8 @@ msgstr "队伍到了矿脉以后，他们并没有失望。"
 msgid "Alliance"
 msgstr "盟友"
 
-#. [side]: type=Ancient Lich, id=Malifor
 #. [unit]: type=Ancient Lich, id=Malifor
+#. [side]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:49
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:53
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:249
@@ -1978,7 +1978,7 @@ msgstr "好的。你们可以随时离开，也欢迎回来。保护好那个年
 msgid "Thank you, Lord Hamel."
 msgstr "谢谢，哈默尔领主。"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:5
 msgid "The Pursuit"
 msgstr "追踪"
@@ -2584,32 +2584,32 @@ msgstr "入侵者！抓住他们！"
 msgid "Bring it on!"
 msgstr "来吧！"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1237
 #, fuzzy
 #| msgid "Wow! There is at least 1,000 gold in here!"
 msgid "There are at least several hundred gold coins in here!"
 msgstr "噢！这里至少有1000个金币！"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1239
 msgid "I don’t think the undead will be be needing this anyway."
 msgstr ""
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1241
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
 msgstr ""
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1243
 #, fuzzy
 #| msgid "800 gold! We’re rich!!"
 msgid "We’re rich!"
 msgstr "800个金币！我们发财了！！"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1245
 msgid "Why do these skeletons have so much gold just sitting around?"
 msgstr ""
@@ -2688,7 +2688,7 @@ msgid ""
 "jewels glitter across its surface, and it exudes a great aura of power."
 msgstr ""
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1332
 msgid "rod of justice^Take it"
 msgstr "拿起（公正之杖）"
@@ -2778,7 +2778,7 @@ msgstr ""
 msgid "rod of justice"
 msgstr "公正之杖"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1450
 msgid "rod of justice^Leave it"
 msgstr "放下（公正之杖）"
@@ -3230,7 +3230,7 @@ msgid ""
 "ready for this?"
 msgstr "看来就是这里了。这是通向莫利弗书房的门，大家做好准备了吗？"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2196
 #, fuzzy
 #| msgid "Yeah, open those doors!"
@@ -3244,7 +3244,7 @@ msgstr "好的，打开这扇门！"
 msgid "Let’s go!"
 msgstr "太好了，我们走！"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2227
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2404
@@ -3268,7 +3268,7 @@ msgstr "有你搞不定的事吗？"
 msgid "Nope. Should I open it?"
 msgstr "没有。我来打开它吗？"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2266
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2345
 msgid "Go for it!"
@@ -3457,8 +3457,8 @@ msgstr ""
 "你，你这该死的泰林！你悲惨的生命将充满不幸！你的人民将永远得不到自由！你所亲"
 "近和珍爱的都将远离你！我诅咒雷电劈在你的头顶！我诅咒......"
 
-#. [message]: speaker=Sister Thera
 #. [message]: speaker=Tallin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2653
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3474,8 +3474,8 @@ msgstr ""
 "大地将裂开，然后吞噬你！你所有的牙齿都会掉光！你会变成一个虚弱的皮包骨头的老"
 "男人！你......"
 
-#. [message]: speaker=Father Morvin
 #. [message]: speaker=second_unit
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2673
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -3798,9 +3798,9 @@ msgstr ""
 "工作了，他们可怕的主人要召见他。经过一个血腥可怕的仪式，莫利弗给了他操纵尸体"
 "的力量。随后，他被派往一个遥远的坑道网络去消灭在那里定居的巨魔群。"
 
+#. [side]: type=Peasant, id=Tallin
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Dark Adept, id=Deory
-#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:44
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:75
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:62
@@ -3873,8 +3873,8 @@ msgstr ""
 "穴。"
 
 #. [side]
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Great Mage, id=Camerin
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
@@ -3885,19 +3885,19 @@ msgid "Knalgans"
 msgstr "纳尔迦人"
 
 #. [side]
-#. [side]: type=Orcish Sovereign, id=Rakshas
-#. [side]: type=Orcish Warlord, id=Al'Mar
-#. [side]: type=Orcish Warlord, id=Ar'Muff
-#. [side]: type=Orcish Warlord, id=Atul
-#. [side]: type=Orcish Warlord, id=Calter
-#. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Ha'Tang
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]: type=Orcish Warlord, id=Halter
 #. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Orcish Warlord, id=Atul
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #. [side]: type=Troll Warrior, id=Gore
+#. [side]: type=Orcish Warlord, id=Carron
+#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Orcish Warlord, id=Al'Mar
+#. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Sovereign, id=Rakshas
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Halter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:87
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:109
@@ -4061,8 +4061,8 @@ msgstr "还没完呢，我的朋友们。将军们，派出预备队！"
 msgid "Oh yeah!"
 msgstr "噢耶！"
 
-#. [message]: id=Poul
 #. [message]: speaker=Malifor
+#. [message]: id=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:382
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:294
 msgid "HAHAHA!"
@@ -4270,8 +4270,8 @@ msgstr ""
 msgid "Destroy the Invaders"
 msgstr "消灭入侵者"
 
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Peasant, id=Tallin
+#. [side]: type=Lieutenant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:68
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:139
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:28
@@ -4387,15 +4387,11 @@ msgid "As the battle raged on, Tallin again made council with Hamel."
 msgstr "随着战事的发展，泰林和哈默尔再次开会商讨。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:33
 msgid "How did ye fare?"
 msgstr "现在进展如何？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:35
 msgid ""
 "It was fierce and bloody. We fought them for three days and nights with no "
@@ -4406,8 +4402,6 @@ msgstr ""
 "人，就会有两个或更多的兽人涌上来。如果情况还是如此，此战我们必输无疑。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:37
 msgid ""
 "So you withdrew. Rightly done, me lad. Our prepared defenses will be able to "
@@ -4418,8 +4412,6 @@ msgstr ""
 "且和在开阔地作战相比，我们的损失会更小。看来我对你的训练还是有效果的。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:39
 msgid ""
 "And I am grateful — but what should we do from here? The number of humans "
@@ -4429,8 +4421,6 @@ msgstr ""
 "是无穷的。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:41
 msgid ""
 "Aye. But we must utterly crush this orcish host if we are to ha’ anything "
@@ -4438,8 +4428,6 @@ msgid ""
 msgstr "是的。但我们必须完全摧毁这个兽人集团，否则我们只能获得片刻的安宁。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:43
 msgid ""
 "Orcs are fickle; if we negotiated a treaty with them — assuming they would "
@@ -4450,8 +4438,6 @@ msgstr ""
 "后，和约也还是会被撕毁的。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:45
 msgid ""
 "Then what shall we do? Can we assassinate this Rakshas fellow and throw them "
@@ -4473,15 +4459,11 @@ msgstr ""
 "时之困。另一个强势的头领很快又会被选出来，到时候我们又会陷入同样的困境。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:51
 msgid "Well, back to the drawing board. What should we do?"
 msgstr "好吧，回到开始的讨论，我们现在该做什么？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:53
 msgid ""
 "I think we should try to gather more allies. That way we can engage them on "
@@ -4492,16 +4474,12 @@ msgstr ""
 "阻断他们的后援。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:55
 msgid ""
 "Wise words, but who is there in these wild Northlands that might aid us?"
 msgstr "好建议，但是在这茫茫北国谁可以助我们一臂之力？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:57
 msgid ""
 "You can count the Elves out. They are a selfish lot, only interested in "
@@ -4512,8 +4490,6 @@ msgstr ""
 "们的帮助。请求韦诺帮助怎样？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:59
 msgid ""
 "Wesnoth is too far away, and we have no idea what political state they are "
@@ -4521,8 +4497,6 @@ msgid ""
 msgstr "韦诺国离我们太远了，我们也不知道那里现在的政治情况。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:61
 msgid ""
 "The last news we heard of them was years ago when Prince Konrad passed "
@@ -4533,8 +4507,6 @@ msgstr ""
 "是邪恶的艾斯威勒王后的统治时期，有消息说她和兽人结盟了。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:63
 msgid ""
 "And then that Princess Li’sar was in hot pursuit of Konrad as well. I wonder "
@@ -4542,8 +4514,6 @@ msgid ""
 msgstr "那时莉莎公主也正在紧紧地追捕着科纳德。我不知道他们后来怎么样了。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:65
 msgid ""
 "The last time any dwarf set eyes on Konrad was when he set out to the "
@@ -4554,8 +4524,6 @@ msgstr ""
 "个来证明自己王者的地位。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:67
 msgid ""
 "Geez, what a fool’s quest. Everyone in these Northlands knows that the "
@@ -4564,16 +4532,12 @@ msgstr ""
 "天哪，真是个不靠谱的想法。每个北方大地上的人都知道，权杖已经丢失很久了。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:69
 msgid ""
 "But we’re meandering. Where can we find allies in these wild Northlands?"
 msgstr "我们真是不走运啊。在这北方的蛮荒之地，我们到哪里去找盟友啊？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:71
 msgid ""
 "Tallin, before I was captured by Malifor, I used to be in contact with a "
@@ -4583,22 +4547,16 @@ msgstr ""
 "来往。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:73
 msgid "Ro’Arthian, bah! Don’t utter that cursed name!"
 msgstr "若·艾瑟恩，呸！别提这个可恶的名字！"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:75
 msgid "Why not, Hamel, have you a grievance with him?"
 msgstr "怎么了，哈默尔，为何对他如此不满？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:77
 msgid ""
 "I have heard all about him from my good friend Stalrag. He is — or was "
@@ -4609,15 +4567,11 @@ msgstr ""
 "已经多年没有他的消息了——高溪谷一带村子的首领。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:79
 msgid "Those foul mages have long terrorized Stalrag and his people."
 msgstr "那些可恶的法师长期恐吓威胁斯托莱格和他的子民。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:81
 msgid ""
 "Remember, Hamel, there are often two sides to a story like this. Perhaps the "
@@ -4629,24 +4583,18 @@ msgstr ""
 "果精灵决定来把纳尔迦推平，在上面种植另一片大森林，你会怎么想呢？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:83
 msgid "Those filthy elves! I’ll..."
 msgstr "那些丑恶的精灵！我会......"
 
 #. [message]: speaker=Sister Thera
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:85
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:636
 msgid "See?"
 msgstr "你明白了吗？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:87
 msgid ""
 "What were you doing keeping contact with mages such as those anyway? Trying "
@@ -4654,31 +4602,23 @@ msgid ""
 msgstr "你们为什么要和那些法师来往？拯救他们的灵魂？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:89
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "（<b>咯咯笑</b>）差不多吧。"
 
 #. [message]: speaker=Tallin
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
 msgstr "（<b>转眼珠</b>）"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:93
 msgid "Father Morvin, what are you trying to say?"
 msgstr "莫文神父，你有什么想说的吗？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:95
 msgid ""
 "I propose that we go to Highbrook Pass and see how matters stand for "
@@ -4690,15 +4630,11 @@ msgstr ""
 "当然，如果斯托莱格还在，我们也可以请他帮忙。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:97
 msgid "I don’t see how just two mages could help us very much, Father."
 msgstr "神父，我不明白，区区两个法师能帮到我们什么。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:99
 msgid ""
 "They are not just any two mages. They have fine control over many creatures "
@@ -4709,15 +4645,11 @@ msgstr ""
 "魔！让他们加入我们的队伍也不是坏事。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:101
 msgid "That sounds really good. What do you think, Hamel?"
 msgstr "听起来不错。你怎么想，哈默尔？"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:104
 msgid ""
 "Hrmph. These are desperate times. If those lunatics of mages will agree to "
@@ -4727,8 +4659,6 @@ msgstr ""
 "能接受了。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:106
 msgid ""
 "Hey, we have had experiences with crazy mages ourselves. Believe me, they "
@@ -4738,8 +4668,6 @@ msgstr ""
 "是一伙的，你会觉得很不错。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:108
 msgid ""
 "Ye’ll need to travel light to reach Highbrook Pass before the orcs mount "
@@ -4752,8 +4680,6 @@ msgstr ""
 "线。"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:110
 msgid "So it shall be. Now how exactly do we get to this mountain pass?"
 msgstr "就这样吧。我们具体该怎样到达那个山口？"
@@ -4763,8 +4689,8 @@ msgstr "就这样吧。我们具体该怎样到达那个山口？"
 msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr "随后泰林和他的部队出发去寻求法师的帮助。"
 
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [unit]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:107
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
@@ -4776,8 +4702,8 @@ msgstr "斯托莱格"
 msgid "Liches"
 msgstr ""
 
-#. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:218
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:121
 msgid "Ro’Arthian"
@@ -5244,10 +5170,10 @@ msgid ""
 "these wretched mages?!"
 msgstr "等一等，泰林。你是说要把我们的家园送给这些可恶的法师？！"
 
-#. [message]: id=Ro'Sothian
-#. [message]: speaker=Eryssa
 #. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Eryssa
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:826
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1024
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:509
@@ -6218,10 +6144,10 @@ msgstr "那我们必须找到这个法杖。带路吧，朋友。"
 msgid "Machador"
 msgstr "玛崔德"
 
-#. [side]: type=Blood Bat, id={ID}
-#. [side]: type=Drake Flare, id=Kishmish
 #. [side]: type=Fire Dragon, id=Machador
+#. [side]: type=Blood Bat, id={ID}
 #. [side]: type=Troll Warrior, id=Gurk
+#. [side]: type=Drake Flare, id=Kishmish
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:170
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:208
@@ -7626,8 +7552,8 @@ msgstr "耶耶耶！我喜欢！"
 msgid "Resist for as long as you can"
 msgstr "坚持尽可能久的时间"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:402
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:929
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:464
@@ -7801,7 +7727,7 @@ msgstr "不！那些勇猛的精灵也加入到人类的队伍当中了！我们
 msgid "Hmmm, should we let the trolls run away or should we finish them now?"
 msgstr "嗯，是让巨魔逃跑还是现在就解决他们？"
 
-#. [option]: speaker=Tallin
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:773
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:919
 msgid "Hey! Stand your ground, you cowards!"
@@ -7817,7 +7743,7 @@ msgstr "你太傻了，人类！我们完全能够摧毁你们！"
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "帮助泰林打败敌军首领"
 
-#. [option]: speaker=Tallin
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:807
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:955
 msgid "Haha! Look at them run!"
@@ -9022,8 +8948,8 @@ msgstr "这句话引发了所有人的欢呼雀跃。他们经历的痛苦折磨
 msgid "(<i>Small voice lost in the uproar</i>) Awww, is it over already?"
 msgstr "（<b>喧嚣中有个微弱的声音</b>）噢，一切都结束了吗？"
 
-#. [message]: id=Hamel
 #. [message]: speaker=Father Morvin
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:938
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:496
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:508
@@ -9825,8 +9751,8 @@ msgstr "（<b>咯咯笑</b>）谢谢你，亲爱的。"
 msgid "Thank the Lords of Light, not me!"
 msgstr "谢谢光明之神吧，别谢我！"
 
-#. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:387
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:587
 msgid "Ouch! That hurts. Let’s try not to do that again, shall we?"
@@ -9987,8 +9913,8 @@ msgstr "席拉，难道你不觉得现在不是说这个的时候吗？"
 msgid "(<i>Giggle</i>) Sorry!"
 msgstr "（<b>咯咯笑</b>）对不起！"
 
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:731
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:763
 msgid "I have had enough! Come on brother, let’s get outta here."

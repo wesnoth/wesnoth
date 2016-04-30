@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:01 UTC\n"
 "PO-Revision-Date: 2014-06-24 22:26+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -66,9 +66,9 @@ msgstr "Thần tiên bị bao vây"
 msgid "Konrad"
 msgstr "Konrad"
 
+#. [side]: type=Spearman, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:46
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:152
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:172
@@ -85,10 +85,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -342,8 +342,8 @@ msgstr ""
 "của nhau và để yên lẫn nhau, minh họa khả năng tự kiểm soát của một con chó "
 "chăn cừu được huấn luyện tốt."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -386,8 +386,8 @@ msgstr "Nhện"
 msgid "Yetis"
 msgstr "Người tuyết"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -400,11 +400,11 @@ msgstr "Chó sói"
 msgid "Whelps"
 msgstr "Bé con"
 
-#. [event]
 #. [set_menu_item]: id=m01_end_animals
+#. [event]
+#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
-#. [set_menu_item]: id=m04_end_animals
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
@@ -497,12 +497,12 @@ msgstr ""
 "<span color='#00A000'>trang wiki tiểu trí tuệ nhân tạo</span> ở http://wiki."
 "wesnoth.org/Micro_AIs để biết thêm thông tin."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:361
 msgid "<span font='16'>I'll just watch the animals.</span>"
 msgstr "<span font='16'>Tôi sẽ chỉ xem các động vật.</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:379
 #: data/ai/micro_ais/scenarios/wolves.cfg:224
 msgid "<span font='16'>I want to have control of Side 1.</span>"
@@ -556,21 +556,19 @@ msgstr "Phòng thủ thắt cổ chai"
 msgid "Big Bad Orc"
 msgstr "Đại ca người thú"
 
-#. [event]: (id=Big Bad Orc) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:85
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Được rồi, bọn bay. Lũ người thú đó phải bị ngăn chặn."
 
-#. [event]: (id=Big Bad Orc) profile profile}
-#. [event]: id=Kraa profile profile}
-#. [event]: id=Vanak profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 #: data/ai/micro_ais/scenarios/guardians.cfg:511
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
 msgid "They there!  We them get!"
 msgstr "Chúng kìa! Thanh toán chúng!"
 
-#. [event]: (id=Big Bad Orc) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:90
 msgid ""
 "We need to hold that pass for as long as we can. Let's put our strongest "
@@ -607,12 +605,12 @@ msgstr ""
 "càng tốt. Bạn muốn chơi phe người thú hay để trí tuệ nhân tạo mặc định (RCA) "
 "làm điều đó?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:102
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
 msgstr "<span font='16'>Tôi sẽ xem trận đấu của hai trí tuệ nhân tạo.</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:105
 msgid "<span font='16'>I'll play the orcs.</span>"
 msgstr "<span font='16'>Tôi sẽ điều khiển người thú.</span>"
@@ -645,8 +643,8 @@ msgstr ""
 "Ta đã thất bại, nhưng bọn ta vẫn tiếp tục bảo vệ lối ra vào đến người cuối "
 "cùng!"
 
-#. [event]
 #. [test]: id=dragon
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
@@ -672,14 +670,14 @@ msgstr "Nhà của Rowck"
 msgid "Rowck"
 msgstr "Rowck"
 
-#. [event]: (id=Dreadful Bat) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:81
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
 msgstr ""
 "Cẩn thận, tránh xa đường đi của con rồng đó. Hắn ta là một kẻ khủng khiếp "
 "đấy."
 
-#. [event]: (id=Dreadful Bat) profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
@@ -767,8 +765,8 @@ msgid ""
 "or for your own tests."
 msgstr ""
 
-#. [event]
 #. [test]: id=goto
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -799,22 +797,22 @@ msgstr "Động vật"
 msgid "team_name^Ghosts"
 msgstr "Ma"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:185
 msgid "General Minry"
 msgstr "Tướng Minry"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:186
 msgid "Lieutenant Gadoc"
 msgstr "Trung úy Gadoc"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:187
 msgid "Lieutenant Senvan"
 msgstr "Trung úy Senvan"
 
-#. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:188
 msgid "Sergeant Aethubry"
 msgstr "Trung sĩ Aethubry"
@@ -919,17 +917,17 @@ msgstr ""
 "khác nhau) và trở lại thành một nhóm ở đây. Cả hai ứng xử đều được thiết lập "
 "bằng một thẻ [micro_ai] duy nhất, một với 'unique_goals=yes', một không có."
 
-#. [event]: id=ghost1}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:475
 msgid "Aaiiieeeeeee !!!"
 msgstr "Aaiiieeeeeee !!!"
 
-#. [event]: id=ghost1}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:476
 msgid "O no, a ghost!"
 msgstr "Ôi không, một con ma!"
 
-#. [event]: id=ghost1}
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:477
 msgid ""
 "Don't worry, those are really shy ghosts.  Nobody knows why, but they always "
@@ -1082,8 +1080,8 @@ msgstr "Tất cả chúng tôi đã đến các góc, hãy tập hợp trở l�
 msgid "We're back together, let's head out to the corners again."
 msgstr "Chúng ta đã tập hợp trở lại, hãy tiến ra các góc một lần nữa."
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1402,12 +1400,12 @@ msgstr ""
 "- Ngược lại, nó tấn công bất kỳ kẻ thù nào vào vùng kẻ thù và khi không còn "
 "kẻ thù nữa, nó trở về tuần tra trong vùng cơ bản của nó."
 
-#. [event]: id=Kraa profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:510
 msgid "Kraahhh!!!!"
 msgstr "Kraahhh!!!!"
 
-#. [event]: id=Kraa profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:513
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
@@ -1737,8 +1735,6 @@ msgstr ""
 "WML (phe 5, xám) và trí tuệ nhân tạo công thức (phe 6, nâu)."
 
 #. [event]
-#. [event]: id=Konrad profile profile}
-#. [event]: id=Vanak profile profile}
 #: data/ai/micro_ais/scenarios/lurkers.cfg:448
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
@@ -1814,9 +1810,9 @@ msgstr "Hộ tống sứ giả"
 msgid "Vanak"
 msgstr "Vanak"
 
-#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1843,7 +1839,7 @@ msgstr "Điểm định vị sứ giả 3"
 msgid "AI moves Messenger here"
 msgstr "Trí tuệ nhân tạo di chuyển sứ giả đến đây"
 
-#. [event]: id=Vanak profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:137
 msgid ""
 "Men, I need to get to that signpost in the north, to get the message to our "
@@ -1852,7 +1848,7 @@ msgstr ""
 "Mọi người, tôi cần đến được biển chỉ đường ở phía bắc kia, để đưa tin cho "
 "chỉ huy của chúng ta. Hãy thẳng tiến đến đó càng nhanh càng tốt."
 
-#. [event]: id=Vanak profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
 msgid ""
 "The Messenger Escort AI will try to move the dragoon messenger to the "
@@ -1916,8 +1912,8 @@ msgstr ""
 "Khôôông! Tất cả thế là hết. Chúng ta sẽ chẳng bao giờ ngăn chặn được bọn "
 "người thú!"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1988,7 +1984,7 @@ msgstr "Điểm định vị tuần tra 4"
 msgid "Urudin retreats here"
 msgstr "Urudin rút lui về đây"
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:204
 msgid ""
 "Hello!  I'm a Konrad impostor. We are going to demonstrate the Patrol AI to "
@@ -2012,7 +2008,7 @@ msgstr ""
 "\n"
 "Tất cả những thứ này được cài đặt bằng cách sử dụng thẻ [micro_ai] Patrol."
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 msgid ""
 "By contrast, I am a zone guardian patrolling, in a way, the southernmost "
@@ -2027,7 +2023,7 @@ msgstr ""
 "Để biết chi tiết hơn về các kiểu trí tuệ nhân tạo hộ vệ khác nhau, có một "
 "màn chơi kiểm tra riêng chuyên cho các kiểu này."
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:212
 msgid ""
 "And I am Urudin. I will attack my enemies for a few turns, but will retreat "
@@ -2043,7 +2039,7 @@ msgstr ""
 "Đây là một trí tuệ nhân tạo tách biệt so với trí tuệ nhân tạo Tuần tra của "
 "phe 2."
 
-#. [event]: id=Konrad profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
 msgid ""
 "You, as the player, are in charge of Gertburt's bandits in this scenario. "
@@ -2124,8 +2120,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Về nhà thôi, bọn bay."
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2160,12 +2156,12 @@ msgstr "Koorzhar"
 msgid "Move Rossauba here"
 msgstr "Di chuyển Rossauba đến đây"
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:127
 msgid "There's that traitor wizard. Let's get him."
 msgstr "Đó là tên phù thủy phản bội. Thanh toán hắn."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:129
 msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
@@ -2174,12 +2170,12 @@ msgstr ""
 "Mọi người, các bạn biết rồi đấy. Chúng ta phải bảo vệ Rossauba trong mọi "
 "tình huống. Kể cả sự sống sót của tôi cũng không quan trọng bằng."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:130
 msgid "That's very kind of you, but ..."
 msgstr "Anh thật là tốt, nhưng..."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:131
 msgid ""
 "No buts!  You stay behind the lines and do not engage in battle unless there "
@@ -2216,12 +2212,12 @@ msgstr ""
 "<span color='#00A000'>trang wiki tiểu trí tuệ nhân tạo</span> ở http://wiki."
 "wesnoth.org/Micro_AIs để biết thêm thông tin."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:143
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr "<span font='16'>Tôi sẽ xem trận đấu của hai trí tuệ nhân tạo</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:146
 msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
@@ -2230,7 +2226,7 @@ msgstr ""
 "<span font='16'>Tôi sẽ điều khiển phe Langzhar (để xem cách các đơn vị của "
 "Koorzhar nhắm vào Rossauba)</span>"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:155
 msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
@@ -2244,8 +2240,8 @@ msgstr ""
 msgid "Protect Rossauba while moving him to the signpost"
 msgstr "Bảo vệ Rossauba đồng thời di chuyển anh ta đến biển chỉ đường"
 
-#. [objective]: condition=lose
 #. [objective]: condition=win
+#. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:169
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:189
 msgid "Rossauba makes it to the signpost"
@@ -2286,14 +2282,14 @@ msgstr "Tôi đã cầm cự lâu hết mức có thể."
 msgid "I made it"
 msgstr "Tôi đã làm được"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
 msgstr "Tuyển quân"
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:85
 msgid ""
 "This is a very simple scenario that can be used to test out different "
@@ -2302,7 +2298,7 @@ msgstr ""
 "Đây là một màn chơi rất đơn giản có thể được sử dụng để kiểm tra các mẫu "
 "tuyển quân khác nhau."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:88
 msgid ""
 "Just watch the recruiting of both sides and see if it is what you would "
@@ -2313,7 +2309,7 @@ msgstr ""
 "mong đợi không. Danh sách tuyển quân bao gồm các đơn vị từ cấp độ 0 đến cấp "
 "độ 2, để làm sự khác biệt trở nên rõ ràng hơn."
 
-#. [event]: id=Koorzhar profile profile}
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
 #, fuzzy
 #| msgid ""
@@ -3056,7 +3052,7 @@ msgstr ""
 "<span color='#00A000'>trang wiki tiểu trí tuệ nhân tạo</span> ở http://wiki."
 "wesnoth.org/Micro_AIs để biết thêm thông tin."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/micro_ais/scenarios/wolves.cfg:206
 msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
 msgstr "<span font='16'>Tôi sẽ chỉ xem hai phe chó sói.</span>"
@@ -3181,18 +3177,18 @@ msgstr ""
 "Bạn muốn sử dụng trí tuệ nhân tạo nào, hỡi nhà phát triển trí tuệ nhân tạo "
 "hùng mạnh?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
 msgstr ""
 "Tôi hài lòng với trí tuệ nhân tạo hiện thời của đội 2, [$test_path_to_ai]"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
 msgid "My AI is the RCA AI (the current default)."
 msgstr ""
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
 msgid ""
 "I am the king of FORMULA AI, and I will use its vast powers for world "
@@ -3201,13 +3197,13 @@ msgstr ""
 "Tôi là vua của TRÍ TUỆ NHÂN TẠO CÔNG THỨC, tôi sẽ sử dụng sức mạnh to lớn "
 "của nó để thống trị thế giới."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:199
 msgid "I want to test formulaAI-based poisoning improvements"
 msgstr ""
 "Tôi muốn kiểm tra các cải tiến đầu độc dựa trên trí tuệ nhân tạo công thức"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:208
 msgid "I've come with my own AI, and I am ready to test its strength"
 msgstr ""

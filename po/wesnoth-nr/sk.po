@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-08-02 11:38+0100\n"
 "Last-Translator: PaulP <paulp@hotmail.sk>\n"
 "Language-Team: none <>\n"
@@ -744,15 +744,15 @@ msgstr ""
 "rýchlo zhromaždili a priniesli všetko jedlo a zbrane, ktoré našli. Takto "
 "vystrojení sa vnorili do útrob jaskýň."
 
-#. [side]: type=Troll Warrior, id=Bor
-#. [side]: type=Troll Warrior, id=Glu
-#. [side]: type=Troll Warrior, id=Oof
-#. [side]: type=Troll Warrior, id=Thung
-#. [side]: type=Troll Warrior, id=Tor
-#. [side]: type=Troll, id=Franik
-#. [side]: type=Troll, id=Henie
 #. [side]: type=Troll, id=Knash
 #. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Thung
+#. [side]: type=Troll, id=Franik
+#. [side]: type=Troll, id=Henie
+#. [side]: type=Troll Warrior, id=Tor
+#. [side]: type=Troll Warrior, id=Bor
+#. [side]: type=Troll Warrior, id=Oof
+#. [side]: type=Troll Warrior, id=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:141
@@ -786,19 +786,19 @@ msgstr "Krog"
 msgid "Hamel"
 msgstr "Hamel"
 
-#. [side]: type=Ancient Lich, id=Malifor
-#. [side]: type=Death Knight, id=Antrasis
-#. [side]: type=Death Knight, id=Author
-#. [side]: type=Death Knight, id=Boblin
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
 #. [side]: type=Death Knight, id=Mal Tath
-#. [side]: type=Death Knight, id=Tervor
+#. [side]: type=Ancient Lich, id=Malifor
+#. [side]: type=Draug, id=Thorin
+#. [side]: type=Draug, id=Herlin
 #. [side]: type=Draug, id=Fervin
 #. [side]: type=Draug, id=Hellian
-#. [side]: type=Draug, id=Herlin
-#. [side]: type=Draug, id=Thorin
+#. [side]: type=Death Knight, id=Hettel
+#. [side]: type=Death Knight, id=Tervor
+#. [side]: type=Death Knight, id=Author
+#. [side]: type=Death Knight, id=Boblin
+#. [side]: type=Death Knight, id=Antrasis
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:126
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:156
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:173
@@ -1177,10 +1177,10 @@ msgstr ""
 "však na staré priateľstvá. Vitajte v našej pevnosti. Hej, a zájdi za naším "
 "náčelníkom, lordom Hamelom."
 
-#. [message]: speaker=Father Morvin
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2231
@@ -1700,11 +1700,11 @@ msgstr "Čistenie baní"
 msgid "When the party finally reached the mines, they were not disappointed."
 msgstr "Keď skupina konečne dosiahla bane, neboli sklamaní."
 
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]
+#. [side]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Drake Burner, id=Krash
 #. [side]: type=Dwarvish Lord, id=Hamel
-#. [side]: type=Elvish Avenger, id=Sisal
-#. [side]: type=Lieutenant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:162
@@ -1724,8 +1724,8 @@ msgstr "Keď skupina konečne dosiahla bane, neboli sklamaní."
 msgid "Alliance"
 msgstr "Spojenectvo"
 
-#. [side]: type=Ancient Lich, id=Malifor
 #. [unit]: type=Ancient Lich, id=Malifor
+#. [side]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:49
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:53
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:249
@@ -2114,7 +2114,7 @@ msgstr ""
 msgid "Thank you, Lord Hamel."
 msgstr "Ďakujeme Vám, lord Hamel."
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:5
 msgid "The Pursuit"
 msgstr "Prenasledovanie"
@@ -2753,32 +2753,32 @@ msgstr "Votrelci! Dostaňte ich!"
 msgid "Bring it on!"
 msgstr "No len poď!"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1237
 #, fuzzy
 #| msgid "Wow! There is at least 1,000 gold in here!"
 msgid "There are at least several hundred gold coins in here!"
 msgstr "Wau! Je tu aspoň 1000 zlatých!"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1239
 msgid "I don’t think the undead will be be needing this anyway."
 msgstr ""
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1241
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
 msgstr ""
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1243
 #, fuzzy
 #| msgid "800 gold! We’re rich!!"
 msgid "We’re rich!"
 msgstr "800 zlatých! Sme bohatí!!!"
 
-#. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
+#. [scenario]: id=05a_01_The_Pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1245
 msgid "Why do these skeletons have so much gold just sitting around?"
 msgstr ""
@@ -2865,7 +2865,7 @@ msgid ""
 "jewels glitter across its surface, and it exudes a great aura of power."
 msgstr ""
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1332
 msgid "rod of justice^Take it"
 msgstr "Vezmi ho"
@@ -2959,7 +2959,7 @@ msgstr ""
 msgid "rod of justice"
 msgstr "Žezlo spravodlivosti"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1450
 msgid "rod of justice^Leave it"
 msgstr "Nechaj ho tak"
@@ -3435,7 +3435,7 @@ msgstr ""
 "Zdá sa, že sme na mieste. Toto sú dvere do Maliforovej študovne. Sme všetci "
 "pripravení?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2196
 #, fuzzy
 #| msgid "Yeah, open those doors!"
@@ -3449,7 +3449,7 @@ msgstr "Jasné, otvor tie dvere!"
 msgid "Let’s go!"
 msgstr "To je skvelé, tak vyrazme!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2227
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2404
@@ -3473,7 +3473,7 @@ msgstr "Dokážeš si s tým poradiť?"
 msgid "Nope. Should I open it?"
 msgstr "Jasné. Mám ich otvoriť?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2266
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2345
 msgid "Go for it!"
@@ -3667,8 +3667,8 @@ msgstr ""
 "VAŠE ÚBOHÉ ŽIVOTY PLNÉ UTRPENIA! NECH TVOJI ĽUDIA NIKDY NIE SÚ SLOBODNÍ! "
 "NECH ŤA OPUSTIA VŠETCI DRAHÍ A BLÍZKI! NECH ŤA DO HLAVY TRAFÍ BLESK! NECH..."
 
-#. [message]: speaker=Sister Thera
 #. [message]: speaker=Tallin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2653
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3684,8 +3684,8 @@ msgstr ""
 "NECH SA POD TEBOU OTVORÍ ZEM A ZHLTNE ŤA! NECH TI VYPADNÚ VŠETKY ZUBY! NECH "
 "SA STANEŠ SLABÝM A CHUDÝM STARCOM! NECH........"
 
-#. [message]: speaker=Father Morvin
 #. [message]: speaker=second_unit
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2673
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -4033,9 +4033,9 @@ msgstr ""
 "mŕtvoly. Potom ho poslali do vzdialenej siete tunelov, aby odtiaľ odstránil "
 "skupinu trolov, ktorí sa tam usídlili."
 
+#. [side]: type=Peasant, id=Tallin
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Dark Adept, id=Deory
-#. [side]: type=Peasant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:44
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:75
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:62
@@ -4112,8 +4112,8 @@ msgstr ""
 "zatiaľ čo Hamelovi trpaslíci budú istiť ich prípadný ústup späť do jaskýň."
 
 #. [side]
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Great Mage, id=Camerin
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
@@ -4124,19 +4124,19 @@ msgid "Knalgans"
 msgstr "Knalgania"
 
 #. [side]
-#. [side]: type=Orcish Sovereign, id=Rakshas
-#. [side]: type=Orcish Warlord, id=Al'Mar
-#. [side]: type=Orcish Warlord, id=Ar'Muff
-#. [side]: type=Orcish Warlord, id=Atul
-#. [side]: type=Orcish Warlord, id=Calter
-#. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Drung
-#. [side]: type=Orcish Warlord, id=Ha'Tang
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
-#. [side]: type=Orcish Warlord, id=Halter
 #. [side]: type=Orcish Warlord, id=Poul
-#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Orcish Warlord, id=Atul
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #. [side]: type=Troll Warrior, id=Gore
+#. [side]: type=Orcish Warlord, id=Carron
+#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Orcish Warlord, id=Al'Mar
+#. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Sovereign, id=Rakshas
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Halter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:57
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:87
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:109
@@ -4312,8 +4312,8 @@ msgstr "A to nie je všetko, priatelia. GENERÁLI, POVOLAJTE ZÁLOHY!"
 msgid "Oh yeah!"
 msgstr "S radosťou!"
 
-#. [message]: id=Poul
 #. [message]: speaker=Malifor
+#. [message]: id=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:382
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:294
 msgid "HAHAHA!"
@@ -4536,8 +4536,8 @@ msgstr ""
 msgid "Destroy the Invaders"
 msgstr "Zničíš votrelcov"
 
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Peasant, id=Tallin
+#. [side]: type=Lieutenant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:68
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:139
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:28
@@ -4659,15 +4659,11 @@ msgid "As the battle raged on, Tallin again made council with Hamel."
 msgstr "Zatiaľ čo bitka pokračovala, Tallin sa opäť stretol s Hamelom."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:33
 msgid "How did ye fare?"
 msgstr "Tak ako sa vám vodilo?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:35
 msgid ""
 "It was fierce and bloody. We fought them for three days and nights with no "
@@ -4679,8 +4675,6 @@ msgstr ""
 "prišli dvaja ďalší. Je mi jasné, že takýmto spôsobom vyhrať nemôžeme."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:37
 msgid ""
 "So you withdrew. Rightly done, me lad. Our prepared defenses will be able to "
@@ -4692,8 +4686,6 @@ msgstr ""
 "poli. Vidím, že moja snaha niečo ťa naučiť o velení nevyšla navnivoč."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:39
 msgid ""
 "And I am grateful — but what should we do from here? The number of humans "
@@ -4703,8 +4695,6 @@ msgstr ""
 "nie je nekonečno."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:41
 msgid ""
 "Aye. But we must utterly crush this orcish host if we are to ha’ anything "
@@ -4714,8 +4704,6 @@ msgstr ""
 "krátke obdobie slobody, budeme musieť orkov úplne zničiť."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:43
 msgid ""
 "Orcs are fickle; if we negotiated a treaty with them — assuming they would "
@@ -4727,8 +4715,6 @@ msgstr ""
 "náčelník."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:45
 msgid ""
 "Then what shall we do? Can we assassinate this Rakshas fellow and throw them "
@@ -4753,15 +4739,11 @@ msgstr ""
 "teraz."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:51
 msgid "Well, back to the drawing board. What should we do?"
 msgstr "Tak potom naspäť k plánovaniu. Čo spravíme?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:53
 msgid ""
 "I think we should try to gather more allies. That way we can engage them on "
@@ -4773,16 +4755,12 @@ msgstr ""
 "odrezať od zásob. Možností je neobmedzene."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:55
 msgid ""
 "Wise words, but who is there in these wild Northlands that might aid us?"
 msgstr "Múdre slová, ale kto nám na tomto divokom Severe môže pomôcť?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:57
 msgid ""
 "You can count the Elves out. They are a selfish lot, only interested in "
@@ -4794,8 +4772,6 @@ msgstr ""
 "potrebovali by našu pomoc. Čo Wesnoth?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:59
 msgid ""
 "Wesnoth is too far away, and we have no idea what political state they are "
@@ -4805,8 +4781,6 @@ msgstr ""
 "situácia."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:61
 msgid ""
 "The last news we heard of them was years ago when Prince Konrad passed "
@@ -4818,8 +4792,6 @@ msgstr ""
 "spriahla s orkami."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:63
 msgid ""
 "And then that Princess Li’sar was in hot pursuit of Konrad as well. I wonder "
@@ -4829,8 +4801,6 @@ msgstr ""
 "by ma, ako to s nimi dopadlo."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:65
 msgid ""
 "The last time any dwarf set eyes on Konrad was when he set out to the "
@@ -4841,8 +4811,6 @@ msgstr ""
 "Ohnivé Žezlo, ktoré by potvrdilo Konrádov nárok na trón."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:67
 msgid ""
 "Geez, what a fool’s quest. Everyone in these Northlands knows that the "
@@ -4852,16 +4820,12 @@ msgstr ""
 "je už dávno preč."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:69
 msgid ""
 "But we’re meandering. Where can we find allies in these wild Northlands?"
 msgstr "Ale to odbiehame od témy. Kde tu teda môžeme nájsť nejakých spojencov?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:71
 msgid ""
 "Tallin, before I was captured by Malifor, I used to be in contact with a "
@@ -4871,22 +4835,16 @@ msgstr ""
 "mágom zvaným Ro'Arthian a jeho bratom Ro'Sothianom."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:73
 msgid "Ro’Arthian, bah! Don’t utter that cursed name!"
 msgstr "Ro'Arthian, pche! Nechcem počuť to prekliate meno!"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:75
 msgid "Why not, Hamel, have you a grievance with him?"
 msgstr "Prečo nie, Hamel, máš s ním nejaký rozpor?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:77
 msgid ""
 "I have heard all about him from my good friend Stalrag. He is — or was "
@@ -4898,15 +4856,11 @@ msgstr ""
 "ležia pozdĺž priesmyku Prudkých Bystrín."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:79
 msgid "Those foul mages have long terrorized Stalrag and his people."
 msgstr "Títo hnusní mágovia už dlho terorizujú Stalraga a jeho ľudí."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:81
 msgid ""
 "Remember, Hamel, there are often two sides to a story like this. Perhaps the "
@@ -4920,24 +4874,18 @@ msgstr ""
 "jej mieste mohli vypestovať ďalší veľký les?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:83
 msgid "Those filthy elves! I’ll..."
 msgstr "Tí špinaví elfovia! Ja ich..."
 
 #. [message]: speaker=Sister Thera
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:85
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:636
 msgid "See?"
 msgstr "Vidíš?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:87
 msgid ""
 "What were you doing keeping contact with mages such as those anyway? Trying "
@@ -4946,31 +4894,23 @@ msgstr ""
 "A prečo si sa s tými mágmi vlastne stýkal? Chcel si zachrániť ich duše?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:89
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "(<i>Zachichoce sa</i>) Niečo také."
 
 #. [message]: speaker=Tallin
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
 msgstr "(<i>Prevracia očami</i>)"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:93
 msgid "Father Morvin, what are you trying to say?"
 msgstr "Otec Morvin, čo ste sa pokúšali povedať?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:95
 msgid ""
 "I propose that we go to Highbrook Pass and see how matters stand for "
@@ -4984,15 +4924,11 @@ msgstr ""
 "Stalrag, mohol by nám pomôcť tiež."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:97
 msgid "I don’t see how just two mages could help us very much, Father."
 msgstr "Nemyslím si, že dvaja mágovia by nám veľmi pomohli, Otče."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:99
 msgid ""
 "They are not just any two mages. They have fine control over many creatures "
@@ -5004,15 +4940,11 @@ msgstr ""
 "Tých by nebolo zlé mať raz pre zmenu na svojej strane."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:101
 msgid "That sounds really good. What do you think, Hamel?"
 msgstr "To znie vskutku dobre. Čo si o tom myslíte, Hamel?"
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:104
 msgid ""
 "Hrmph. These are desperate times. If those lunatics of mages will agree to "
@@ -5022,8 +4954,6 @@ msgstr ""
 "mať na výber iné než to akceptovať."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:106
 msgid ""
 "Hey, we have had experiences with crazy mages ourselves. Believe me, they "
@@ -5034,8 +4964,6 @@ msgstr ""
 "budete cítiť lepšie."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:108
 msgid ""
 "Ye’ll need to travel light to reach Highbrook Pass before the orcs mount "
@@ -5050,8 +4978,6 @@ msgstr ""
 "prelomili naše pozície."
 
 #. [story]
-#. "coil" meant, in Middle and Early Modern English, a difficulty
-#. or problem.
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:110
 msgid "So it shall be. Now how exactly do we get to this mountain pass?"
 msgstr ""
@@ -5065,8 +4991,8 @@ msgstr ""
 "A tak sa Tallin a jeho družina vybrali na cestu, aby získali mágov na svoju "
 "stranu."
 
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [unit]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:107
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
@@ -5078,8 +5004,8 @@ msgstr "Stalrag"
 msgid "Liches"
 msgstr ""
 
-#. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:218
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:121
 msgid "Ro’Arthian"
@@ -5574,10 +5500,10 @@ msgstr ""
 "Počkaj chvíľu, Tallin. Hovoríš, že my máme prenechať svoju domovinu týmto "
 "prekliatym mágom!?"
 
-#. [message]: id=Ro'Sothian
-#. [message]: speaker=Eryssa
 #. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Eryssa
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:826
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1024
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:509
@@ -6641,10 +6567,10 @@ msgstr "Tak potom to žezlo musíme nájsť. Veď ma, priateľ môj."
 msgid "Machador"
 msgstr "Machador"
 
-#. [side]: type=Blood Bat, id={ID}
-#. [side]: type=Drake Flare, id=Kishmish
 #. [side]: type=Fire Dragon, id=Machador
+#. [side]: type=Blood Bat, id={ID}
 #. [side]: type=Troll Warrior, id=Gurk
+#. [side]: type=Drake Flare, id=Kishmish
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:170
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:208
@@ -8169,8 +8095,8 @@ msgstr "Áno! Tak sa mi to páči!"
 msgid "Resist for as long as you can"
 msgstr "vydržíš čo najdlhšie"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:402
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:929
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:464
@@ -8351,7 +8277,7 @@ msgstr ""
 msgid "Hmmm, should we let the trolls run away or should we finish them now?"
 msgstr "Hmmm, necháme trolov ujsť alebo ich všetkých dorazíme?"
 
-#. [option]: speaker=Tallin
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:773
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:919
 msgid "Hey! Stand your ground, you cowards!"
@@ -8367,7 +8293,7 @@ msgstr "Si hlupák, človeče! Nám čeliť dlho nevydržíte!"
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "Pomôžeš Tallinovi poraziť nepriateľských vodcov"
 
-#. [option]: speaker=Tallin
+#. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:807
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:955
 msgid "Haha! Look at them run!"
@@ -9673,8 +9599,8 @@ msgstr ""
 msgid "(<i>Small voice lost in the uproar</i>) Awww, is it over already?"
 msgstr "(<i>V hluku sa ozýva tichý hlas</i>) Ooo, skutočne sa to už skončilo?"
 
-#. [message]: id=Hamel
 #. [message]: speaker=Father Morvin
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:938
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:496
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:508
@@ -10539,8 +10465,8 @@ msgstr "(<i>Zachichoce sa</i>) Vďaka, zlatko."
 msgid "Thank the Lords of Light, not me!"
 msgstr "Ďakuj Bohom Svetla, nie mne!"
 
-#. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:387
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:587
 msgid "Ouch! That hurts. Let’s try not to do that again, shall we?"
@@ -10711,8 +10637,8 @@ msgstr "Thera, nemyslíš, že teraz nie je práve vhodná chvíľa na takéto t
 msgid "(<i>Giggle</i>) Sorry!"
 msgstr "(<i>Zachichoce sa</i>) Prepáč!"
 
-#. [message]: speaker=Ro'Arthian
 #. [message]: speaker=Ro'Sothian
+#. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:731
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:763
 msgid "I have had enough! Come on brother, let’s get outta here."

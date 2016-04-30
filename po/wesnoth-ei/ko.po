@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-03-10 16:06+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -104,14 +104,14 @@ msgid "Artwork and Graphics Design"
 msgstr "미술과 그래픽 디자인 담당"
 
 #. [lua]: wml_actions.bandit_village_capture
-#: data/campaigns/Eastern_Invasion/lua/bandits.lua:181
+#: data/campaigns/Eastern_Invasion/lua/bandits.lua:83
 #, fuzzy
 #| msgid "They’re here!"
 msgid "They're here!"
 msgstr "놈들이 여기 있다!"
 
 #. [lua]: wml_actions.bandit_village_capture
-#: data/campaigns/Eastern_Invasion/lua/bandits.lua:188
+#: data/campaigns/Eastern_Invasion/lua/bandits.lua:90
 msgid "No outlaws in this village."
 msgstr "이 마을에는 무법자가 없다."
 
@@ -226,15 +226,15 @@ msgstr ""
 "고, Gweddry의 부하들은 점점 긴장이 풀어지기 시작했다. 그리고 어느날 새벽, "
 "Gweddry와 부하들은 야간 보초의 놀란 비명소리에 깨어났다..."
 
+#. [side]: type=Lieutenant, id=Gweddry
 #. [side]
 #. [side]: type=Dwarvish Steelclad, id=Knutan
-#. [side]: type=General, id=Gweddry
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
-#. [side]: type=General, id=Konrad II
-#. [side]: type=Great Mage, id=Kaldor
-#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
@@ -270,17 +270,23 @@ msgstr ""
 msgid "Wesnothians"
 msgstr "Wesnoth인"
 
-#. [side]
-#. [side]: type=Bone Knight, id=Garnad
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Death Knight, id=Ravanal-Guard
 #. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
@@ -288,16 +294,10 @@ msgstr "Wesnoth인"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#. [side]: type=Lich, id=Mal-Grekulak
-#. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Lich, id=Mal-Uldhar
-#. [side]: type=Lich, id=Mal-Xakralan
-#. [side]: type=Necromancer, id=Mal-un-Darak
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#. [side]: type=Necromancer, id=Mal-un-Xadrux
-#. [side]: type=Necromancer, id=Mal-un-Zanrad
-#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Bone Knight, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -512,11 +512,11 @@ msgstr "나를 따르라, 제군들! "
 msgid "The Escape Tunnel"
 msgstr "탈출 통로"
 
+#. [side]: type=Troll, id=Kabak
 #. [side]
-#. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]: type=Troll Warrior, id=Darg
-#. [side]: type=Troll, id=Kabak
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
@@ -779,7 +779,7 @@ msgstr "안돼! 너희는 날 무찔렀으니, 다시 Wesnoth로 갈 수 있겠�
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr "너희가 내 형제를 죽였지만, 내가 널 따라가서 널 죽이겠다!"
 
-#. [scenario]: id=04a_An_Elven_Alliance, (id=Nafga) (side=2) 100 ()}
+#. [scenario]: id=04a_An_Elven_Alliance
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:5
 msgid "An Elven Alliance"
 msgstr "엘프 동맹군"
@@ -812,10 +812,10 @@ msgstr "동맹"
 msgid "Volas"
 msgstr "Volas"
 
-#. [side]: type=Orcish Nightblade, id=Bagork
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
-#. [side]: type=Orcish Warlord, id=Prok-Bak
 #. [side]: type=Orcish Warrior, id=Gruga-Har
+#. [side]: type=Orcish Nightblade, id=Bagork
+#. [side]: type=Orcish Warlord, id=Prok-Bak
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
@@ -1116,7 +1116,7 @@ msgstr ""
 msgid "Hmm..."
 msgstr "흐음..."
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:200
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr "악이 더 퍼지기 전에 끝장내고 싶군요. 동쪽으로 갑시다!"
@@ -1133,7 +1133,7 @@ msgstr "좋은 결정이라고는 못하겠네만, 나도 따라가지."
 msgid "Noo!! I can’t be promoted if they run away!"
 msgstr "안돼!! 놈들이 달아나면 승진할 수가 없어!"
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:223
 #, fuzzy
 #| msgid ""
@@ -1616,13 +1616,13 @@ msgstr ""
 msgid "Two Paths"
 msgstr "두 길"
 
-#. [side]
+#. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
 #. [side]: type=Orcish Ruler, id=Draka-Kura
-#. [side]: type=Orcish Warlord, id=Ran-Lar
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
-#. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Troll Warrior, id=Unhk
+#. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
@@ -2290,8 +2290,8 @@ msgstr ""
 msgid "Lake Vrug"
 msgstr "Vrug 호수"
 
-#. [side]: type=General, id=Gweddry
 #. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:28
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:27
@@ -2526,7 +2526,7 @@ msgstr ""
 msgid "There's strange noises coming from those pits. I don't like this."
 msgstr ""
 
-#. [message]: side,race=2,bat
+#. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "Neep! Neep!"
 msgstr ""
@@ -2842,7 +2842,7 @@ msgstr ""
 msgid "So, d’ya want me to blow up der bridge yet, Cap’n?"
 msgstr "그럼, 이제 다리를 날리버릴까요, 대장?"
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:249
 msgid "Yes, blow it up."
 msgstr "그래, 날려버리게."
@@ -2863,7 +2863,7 @@ msgid ""
 "Good, we have escaped from the orcs. Now we must return to save Wesnoth."
 msgstr ""
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:317
 msgid "No, wait until later."
 msgstr "아니, 조금 기다리게."
@@ -2937,8 +2937,8 @@ msgstr "수몰된 평원"
 msgid "Defeat Khrakrahs"
 msgstr "Khrakrahs를 격파하라"
 
-#. [message]
 #. [unit]: type=Skeletal Dragon, id=Khrakrahs
+#. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:385
 msgid "Khrakrahs"
@@ -3461,7 +3461,7 @@ msgstr ""
 msgid "I have. I think we should..."
 msgstr ""
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:306
 msgid "challenge Mal-Ravanal to a duel."
 msgstr ""
@@ -3471,7 +3471,7 @@ msgstr ""
 msgid "I will send the message at once."
 msgstr ""
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:320
 msgid "try to isolate Mal-Ravanal in battle."
 msgstr ""
@@ -3486,10 +3486,10 @@ msgstr ""
 msgid "The Duel"
 msgstr "결투"
 
-#. [event]
-#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [event]
 #. [variable]
+#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:226
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:280

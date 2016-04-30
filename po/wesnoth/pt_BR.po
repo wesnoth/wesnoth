@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -43,32 +43,32 @@ msgstr "Comando:"
 msgid "Compress saved games"
 msgstr "Comprimir Jogos Salvo"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
 msgstr ""
@@ -497,10 +497,10 @@ msgstr "Controle: Deadzone do Acelerador (Thruster)"
 # File: data/lua/wml-tags.lua, line: 1116
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: set_status
 #. [unstore_unit]
+#. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -508,10 +508,10 @@ msgstr "envenenado"
 # File: data/lua/wml/objectives.lua, line: 11916
 # File: data/lua/wml/objectives.lua, line: 1475
 # File: data/lua/wml/objectives.lua, line: 1475
-#. [lua]: generate_objectives
 #. [objectives]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:205
-#: data/lua/wml/objectives.lua:14853
+#: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
 msgstr "Transferência de ouro:"
 
@@ -519,10 +519,10 @@ msgstr "Transferência de ouro:"
 # File: data/lua/wml/objectives.lua, line: 11917
 # File: data/lua/wml/objectives.lua, line: 1476
 # File: data/lua/wml/objectives.lua, line: 1476
-#. [lua]: generate_objectives
 #. [note]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:216
-#: data/lua/wml/objectives.lua:14854
+#: data/lua/wml/objectives.lua:53
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -1864,9 +1864,9 @@ msgstr ""
 # File: data/core/macros/ai_controller.cfg, line: 19
 # File: data/core/macros/ai_controller.cfg, line: 26
 # File: data/core/macros/ai_controller.cfg, line: 33
-#. [literal]
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
+#. [literal]
 #: data/core/macros/ai_controller.cfg:117
 #: data/core/macros/ai_controller.cfg:124
 #: data/core/macros/ai_controller.cfg:131
@@ -1963,8 +1963,8 @@ msgstr ""
 # File: data/core/macros/ai_controller.cfg, line: 278
 # File: data/core/macros/ai_controller.cfg, line: 143
 # File: data/core/macros/ai_controller.cfg, line: 278
-#. [else]
 #. [then]
+#. [else]
 #: data/core/macros/ai_controller.cfg:236
 #: data/core/macros/ai_controller.cfg:240
 #: data/core/macros/ai_controller.cfg:371
@@ -2051,7 +2051,7 @@ msgstr ""
 # File: data/core/macros/ai_controller.cfg, line: 352
 # File: data/core/macros/ai_controller.cfg, line: 352
 # File: data/core/macros/ai_controller.cfg, line: 352
-#. [option]: type=objective
+#. [option]
 #: data/core/macros/ai_controller.cfg:451
 msgid "Defend a location..."
 msgstr "Defenda o local..."
@@ -2108,8 +2108,8 @@ msgstr "Cancelar ordens de objetivo"
 # File: data/core/macros/ai_controller.cfg, line: 602
 # File: data/core/macros/ai_controller.cfg, line: 591
 # File: data/core/macros/ai_controller.cfg, line: 602
-#. [revoke_behavior_orders]
 #. [revoke_objective_orders]
+#. [revoke_behavior_orders]
 #. [then]
 #: data/core/macros/ai_controller.cfg:549
 #: data/core/macros/ai_controller.cfg:562
@@ -2256,7 +2256,7 @@ msgstr "<small>(bônus por fim prematuro)</small>"
 # File: data/core/macros/objective-utils.cfg, line: 14
 # File: data/lua/wml/objectives.lua, line: 1537
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:14915
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
 msgstr "Bônus por fim prematuro."
 
@@ -2268,7 +2268,7 @@ msgstr "Bônus por fim prematuro."
 # File: data/core/macros/objective-utils.cfg, line: 17
 # File: data/lua/wml/objectives.lua, line: 1539
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:14917
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:116
 msgid "No early finish bonus."
 msgstr "Sem bônus por fim prematuro."
 
@@ -2280,7 +2280,7 @@ msgstr "Sem bônus por fim prematuro."
 # File: data/core/macros/objective-utils.cfg, line: 29
 # File: data/lua/wml/objectives.lua, line: 1547
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:14925
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:124
 msgid "No gold carried over to the next scenario."
 msgstr "Nenhum ouro transferido ao próximo cenário."
 
@@ -2333,7 +2333,7 @@ msgstr "Você encontrou um poço dos desejos. O que você gostaria de pedir?"
 # File: data/core/macros/items.cfg, line: 24
 # File: data/core/macros/items.cfg, line: 24
 # File: data/core/macros/items.cfg, line: 24
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:24
 msgid "A swift victory"
 msgstr "Uma rápida vitória"
@@ -2355,7 +2355,7 @@ msgstr ""
 # File: data/core/macros/items.cfg, line: 38
 # File: data/core/macros/items.cfg, line: 38
 # File: data/core/macros/items.cfg, line: 38
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:38
 msgid "Lots of gold"
 msgstr "Um monte de ouro"
@@ -2374,7 +2374,7 @@ msgstr ""
 # File: data/core/macros/items.cfg, line: 52
 # File: data/core/macros/items.cfg, line: 52
 # File: data/core/macros/items.cfg, line: 52
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
 msgstr "Paz em toda Wesnoth."
@@ -2392,7 +2392,7 @@ msgstr "A única coisa que vale a pena pedir é paz pelo país."
 # File: data/core/macros/items.cfg, line: 66
 # File: data/core/macros/items.cfg, line: 66
 # File: data/core/macros/items.cfg, line: 66
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:66
 msgid "Don’t make a wish."
 msgstr "Não pedir nada."
@@ -3660,8 +3660,8 @@ msgstr ""
 # File: data/core/team-colors.cfg, line: 83
 # File: data/core/team-colors.cfg, line: 14
 # File: data/core/team-colors.cfg, line: 83
-#. [color_range]: id=1
 #. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:230
 msgid "Red"
 msgstr "Vermelho"
@@ -3691,8 +3691,8 @@ msgstr "Vermelho Escuro"
 # File: data/core/team-colors.cfg, line: 89
 # File: data/core/team-colors.cfg, line: 32
 # File: data/core/team-colors.cfg, line: 89
-#. [color_range]: id=2
 #. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:236
 msgid "Blue"
 msgstr "Azul"
@@ -3715,8 +3715,8 @@ msgstr "Vermelho Claro"
 # File: data/core/team-colors.cfg, line: 95
 # File: data/core/team-colors.cfg, line: 38
 # File: data/core/team-colors.cfg, line: 95
-#. [color_range]: id=3
 #. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:242
 msgid "Green"
 msgstr "Verde"
@@ -3733,8 +3733,8 @@ msgstr ""
 # File: data/core/team-colors.cfg, line: 101
 # File: data/core/team-colors.cfg, line: 44
 # File: data/core/team-colors.cfg, line: 101
-#. [color_range]: id=4
 #. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:248
 msgid "Purple"
 msgstr "Roxo"
@@ -3746,8 +3746,8 @@ msgstr "Roxo"
 # File: data/core/team-colors.cfg, line: 113
 # File: data/core/team-colors.cfg, line: 50
 # File: data/core/team-colors.cfg, line: 113
-#. [color_range]: id=5
 #. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:260
 msgid "Black"
 msgstr "Negro"
@@ -3759,8 +3759,8 @@ msgstr "Negro"
 # File: data/core/team-colors.cfg, line: 125
 # File: data/core/team-colors.cfg, line: 56
 # File: data/core/team-colors.cfg, line: 125
-#. [color_range]: id=6
 #. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:272
 msgid "Brown"
 msgstr "Marrom"
@@ -3772,8 +3772,8 @@ msgstr "Marrom"
 # File: data/core/team-colors.cfg, line: 107
 # File: data/core/team-colors.cfg, line: 62
 # File: data/core/team-colors.cfg, line: 107
-#. [color_range]: id=7
 #. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:254
 msgid "Orange"
 msgstr "Laranja"
@@ -3790,8 +3790,8 @@ msgstr ""
 # File: data/core/team-colors.cfg, line: 119
 # File: data/core/team-colors.cfg, line: 68
 # File: data/core/team-colors.cfg, line: 119
-#. [color_range]: id=8
 #. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:86 data/core/team-colors.cfg:266
 msgid "White"
 msgstr "Branco"
@@ -3803,8 +3803,8 @@ msgstr "Branco"
 # File: data/core/team-colors.cfg, line: 131
 # File: data/core/team-colors.cfg, line: 74
 # File: data/core/team-colors.cfg, line: 131
-#. [color_range]: id=9
 #. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:92 data/core/team-colors.cfg:278
 msgid "Teal"
 msgstr "Anil"
@@ -4461,7 +4461,6 @@ msgstr ""
 # File: src/multiplayer_create.cpp, line: 101
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:112 data/scenario-test.cfg:1031
 #: src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:89
@@ -4495,7 +4494,6 @@ msgstr "OK"
 # File: src/multiplayer_wait.cpp, line: 179
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:123 data/scenario-test.cfg:1032
 #: src/dialogs.cpp:1165 src/dialogs.cpp:1271
 #: src/game_initialization/multiplayer_connect.cpp:388
@@ -4536,7 +4534,7 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -4549,7 +4547,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -4562,7 +4560,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "slowed"
 msgstr "lento"
 
@@ -4575,7 +4573,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -4588,7 +4586,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "petrified"
 msgstr "petrificado"
 
@@ -4597,7 +4595,7 @@ msgstr "petrificado"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "female^unhealable"
 msgstr "incurável"
 
@@ -4606,7 +4604,7 @@ msgstr "incurável"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr "incurável"
 
@@ -4619,8 +4617,7 @@ msgstr "incurável"
 # File: src/multiplayer_connect.cpp, line: 1855
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14851
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:71
 msgid "Victory:"
 msgstr "Vitória:"
 
@@ -4629,7 +4626,7 @@ msgstr "Vitória:"
 # File: data/lua/wml/objectives.lua, line: 1474
 # File: data/lua/wml/objectives.lua, line: 1474
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14852
+#: data/lua/wml/objectives.lua:51
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -4638,7 +4635,7 @@ msgstr "Derrota:"
 # File: data/lua/wml/objectives.lua, line: 1494
 # File: data/lua/wml/objectives.lua, line: 1494
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14872
+#: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
 msgstr "(%d turnos restando)"
 
@@ -4647,7 +4644,7 @@ msgstr "(%d turnos restando)"
 # File: data/lua/wml/objectives.lua, line: 1496
 # File: data/lua/wml/objectives.lua, line: 1496
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14874
+#: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
 msgstr "(resta um turno)"
 
@@ -4656,7 +4653,7 @@ msgstr "(resta um turno)"
 # File: data/lua/wml/objectives.lua, line: 1549
 # File: data/lua/wml/objectives.lua, line: 1549
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14927
+#: data/lua/wml/objectives.lua:126
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% de ouro transferido ao próximo cenário."
 
@@ -4676,6 +4673,7 @@ msgstr ""
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
+#. [language]
 #: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr "muito longe"
@@ -4684,6 +4682,7 @@ msgstr "muito longe"
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
+#. [language]
 #: data/scenario-test.cfg:4005
 msgid "electrical"
 msgstr "elétrico"
@@ -5117,8 +5116,8 @@ msgstr "receita"
 # File: data/themes/experimental.cfg, line: 367
 # File: data/themes/widescreen.cfg, line: 491
 # File: data/themes/widescreen.cfg, line: 617
-#. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
+#. [selected_unit_level]: id=selected-unit-level
 #: data/themes/classic.cfg:432 data/themes/widescreen.cfg:491
 #: data/themes/widescreen.cfg:617
 msgid "statuspanel^level"
@@ -5137,8 +5136,8 @@ msgstr "nível"
 # File: data/themes/experimental.cfg, line: 397
 # File: data/themes/widescreen.cfg, line: 521
 # File: data/themes/widescreen.cfg, line: 647
-#. [selected_unit_moves]: id=selected-unit-moves
 #. [unit_moves]: id=unit-moves
+#. [selected_unit_moves]: id=selected-unit-moves
 #: data/themes/classic.cfg:462 data/themes/widescreen.cfg:521
 #: data/themes/widescreen.cfg:647
 msgid "statuspanel^moves"
@@ -5157,8 +5156,8 @@ msgstr "movimentos"
 # File: data/themes/experimental.cfg, line: 406
 # File: data/themes/widescreen.cfg, line: 530
 # File: data/themes/widescreen.cfg, line: 656
-#. [selected_unit_defense]: id=selected-unit-defense
 #. [unit_defense]: id=unit-defense
+#. [selected_unit_defense]: id=selected-unit-defense
 #: data/themes/classic.cfg:471 data/themes/widescreen.cfg:530
 #: data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2015-02-07 13:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Generator: Poedit 1.7.4\n"
 
-#. [campaign]: id=The_Rise_of_Wesnoth
 #. [scenario]: id=22_The_Rise_of_Wesnoth
+#. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:10
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:4
 msgid "The Rise of Wesnoth"
@@ -221,10 +221,10 @@ msgstr "...与此时同，在岛的另一边，另一位王子正遭遇危机...
 msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
 msgstr "这就是哈德里克一世和韦诺崛起的故事..."
 
-#. [side]: id=Prince Haldric, type=Noble Commander
+#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #. [side]: type=Noble Commander, id=Prince Haldric
 #. [side]: type=Noble Fighter, id=Prince Haldric
-#. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:77
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:27
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:21
@@ -516,29 +516,29 @@ msgstr "风暴谷"
 msgid "Tan-Rarbag"
 msgstr "坦-拉贝格"
 
-#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Rarbag
+#. [side]: type=Orcish Warrior, id=Tan-Erang
+#. [side]: type=Orcish Warlord, id=Tan-Schmog
+#. [side]: type=Orcish Warlord, id=Tan-NauVong
+#. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #. [side]: type=Orcish Warlord, id=Tan-Bok
+#. [side]: type=Orcish Warlord, id=Tan-Hogar
+#. [side]: type=Orcish Warlord, id=Tan-Gralg
+#. [side]: type=Orcish Warlord, id=Tan-Rugar
+#. [side]: type=Orcish Warlord, id=Tan-Vragar
 #. [side]: type=Orcish Warlord, id=Tan-Burg
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
+#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
+#. [side]: type=Orcish Warlord, id=Tan-Pulk
+#. [side]: type=Orcish Warlord, id=Tan-Harak
+#. [side]: type=Orcish Warlord, id=Tan-Hork
+#. [side]: type=Orcish Warlord, id=Tan-Gulo
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
-#. [side]: type=Orcish Warlord, id=Tan-Gralg
-#. [side]: type=Orcish Warlord, id=Tan-Gulo
-#. [side]: type=Orcish Warlord, id=Tan-Halg
-#. [side]: type=Orcish Warlord, id=Tan-Harak
-#. [side]: type=Orcish Warlord, id=Tan-Hogar
-#. [side]: type=Orcish Warlord, id=Tan-Hork
-#. [side]: type=Orcish Warlord, id=Tan-NauVong
-#. [side]: type=Orcish Warlord, id=Tan-Pulk
-#. [side]: type=Orcish Warlord, id=Tan-Rarbag
-#. [side]: type=Orcish Warlord, id=Tan-Rinak
-#. [side]: type=Orcish Warlord, id=Tan-Rugar
-#. [side]: type=Orcish Warlord, id=Tan-Schmog
-#. [side]: type=Orcish Warlord, id=Tan-Vragar
-#. [side]: type=Orcish Warlord, id=Tan-Vrodis
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
-#. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
-#. [side]: type=Orcish Warrior, id=Tan-Erang
 #. [side]: type=Troll Warrior, id=Thruf
+#. [side]: type=Draug, id=General Heravan
+#. [side]: type=Orcish Warlord, id=Tan-Halg
+#. [side]: type=Orcish Warlord, id=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:41
@@ -570,17 +570,17 @@ msgstr "兽人"
 msgid "Tan-Erang"
 msgstr "坦-艾朗"
 
-#. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:155
 msgid "Thegwyn"
 msgstr "赛格文"
 
-#. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:156
 msgid "Galdred"
 msgstr "格尔德"
 
-#. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:157
 msgid "Tromas"
 msgstr "托马斯"
@@ -672,7 +672,7 @@ msgstr "哈德里克，你觉得怎样？"
 msgid "Hmm... after some thought..."
 msgstr "嗯...让我想一下..."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:294
 msgid "I think that your skills may be useful. You may join us."
 msgstr "我想你们的能力会有用的。你可以加入我们。"
@@ -692,14 +692,14 @@ msgstr "那我该怎么称呼你？"
 msgid "The Lady Outlaw will do."
 msgstr "你可以叫我亡命小姐。"
 
-#. [command]: (id=Lady Outlaw)}
 #. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [command]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:365
 msgid "Lady Outlaw"
 msgstr "亡命小姐"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:346
 msgid "Your word can’t be trusted. Prepare to meet your gods!"
 msgstr "你的话不可信。准备去见你的上帝吧！"
@@ -765,9 +765,9 @@ msgstr "不能回头了！我们要去南方。"
 msgid "A Harrowing Escape"
 msgstr "悲伤撤离"
 
-#. [side]: id=Prince Haldric, type=Noble Commander
-#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
 #. [side]: type=Noble Commander, id=Prince Haldric
+#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:42
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:42
@@ -963,7 +963,7 @@ msgstr ""
 "接下来，我该沿着河路到东南边呢还是穿过中原到西南去呢？河路会经过艾森沼泽，我"
 "不知道兽人是否会去那。中原那儿路不错，但谁知道那儿现在情况如何。"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:279
 msgid "I think I’ll take the river road..."
 msgstr "我想我会走河路..."
@@ -980,7 +980,7 @@ msgid ""
 "it your way."
 msgstr "沼泽？！我还不到五英尺高，并且我还不会游泳！啊，你自己去吧。"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:301
 msgid "We’ll go through the Midlands..."
 msgstr "我们将穿过中原..."
@@ -1078,8 +1078,8 @@ msgid "Cleon"
 msgstr "克里昂"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Clurka
 #. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:63
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:90
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:118
@@ -1299,8 +1299,8 @@ msgid ""
 "with the orcs!"
 msgstr "啊太“好”了，现在要去森林...我真应该留在家里，还能找兽人比划比划！"
 
-#. [message]: speaker=Sir Ladoc
 #. [message]: speaker=Sir Ruddry
+#. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:628
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:417
 msgid "Sir, if you don’t mind, I’ll go with you."
@@ -1854,8 +1854,8 @@ msgstr "地底神庙"
 msgid "Lich-Lord Lenvan"
 msgstr "巫妖王蓝温"
 
-#. [side]: type=Lich, id=Lich-Lord Caror
 #. [side]: type=Lich, id=Lich-Lord Lenvan
+#. [side]: type=Lich, id=Lich-Lord Caror
 #. [side]: type=Spectre, id=Isorfilad
 #. [side]: type=Spectre, id=Tinoldor
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:44
@@ -1984,9 +1984,9 @@ msgstr "重返古老森林"
 msgid "Talodulborentan"
 msgstr "塔尔多博伦坦"
 
-#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
-#. [side]: type=Wose, id=Gullatendronnorbum
 #. [side]: type=Wose, id=Talodulborentan
+#. [side]: type=Wose, id=Gullatendronnorbum
+#. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:38
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:48
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:59
@@ -2259,10 +2259,10 @@ msgstr "太好了，我们总算要走出这片森林了！"
 msgid "Clearwater Port"
 msgstr "清水港"
 
-#. [side]: id=Prince Haldric, type=Noble Commander
+#. [side]: type=Noble Commander, id=Prince Haldric
 #. [side]: type=Grand Knight, id=King Addroran IX
 #. [side]: type=Lieutenant, id=Commander Aethyr
-#. [side]: type=Noble Commander, id=Prince Haldric
+#. [side]: id=Prince Haldric, type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:27
@@ -2828,7 +2828,7 @@ msgstr ""
 "铭文:这块石碑由我，xxx(名字被削去)，绿岛虔诚之民的第一个魔法师所竖立。借助它"
 "的力量巫妖将被困在石中。如果要解除这个咒语，必须由具有王室血统者念诵如下..."
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:359
 msgid "I think I’ll say that magic phrase."
 msgstr "我决定来念这些咒语。"
@@ -2857,7 +2857,7 @@ msgstr "自由了，我自由了，我还感觉到了火焰宝石就在附近！
 msgid "No you won’t, you soldier of darkness!"
 msgstr "你不会得逞，你这个黑暗的走卒！"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:396
 msgid "I think I’ll wait a while before uttering any magic phrases."
 msgstr "我想还是等一会再念咒语。"
@@ -2923,8 +2923,8 @@ msgid "Rarlg — argh, a raul-rarlg!"
 msgstr "劳格——啊，劳尔——劳格！"
 
 #. [message]: speaker=Prince Haldric
-#. [message]: speaker=Tan-Pulk
 #. [message]: speaker=Ut'Tan-Grilg
+#. [message]: speaker=Tan-Pulk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:548
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:553
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:557
@@ -3467,8 +3467,8 @@ msgstr "哼。一个男孩的愚蠢差点把我们都给烧了。人类啊，总
 msgid "Orcs sighted! They’ve seized the frontier! To arms! To arms!"
 msgstr "兽人出现了！他们已经攻占了边境！准备战斗！准备战斗！"
 
-#. [message]: speaker=King Addroran IX
 #. [message]: speaker=Sir Ladoc
+#. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:338
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:766
 msgid "For the glory of Southbay!"
@@ -3531,10 +3531,10 @@ msgid "Under the same terms?"
 msgstr "条件不变？"
 
 #. [message]: speaker=Lady Dionli
-#. [message]: speaker=Lady Jessene
 #. [message]: speaker=Lord Aryad
 #. [message]: speaker=Lord El’Isomithir
 #. [message]: speaker=Lord Logalmier
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:389
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:422
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:426
@@ -3779,8 +3779,8 @@ msgstr ""
 msgid "Kegrid"
 msgstr "凯格瑞德"
 
-#. [side]: type=Drake Flameheart, id=Gerrick
 #. [side]: type=Drake Flameheart, id=Kegrid
+#. [side]: type=Drake Flameheart, id=Gerrick
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:54
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:77
@@ -3910,16 +3910,16 @@ msgstr "舰队断粮了，夺下这座岛之前我们就会饿死！"
 msgid "Rough Landing"
 msgstr "艰难登陆"
 
-#. [event]
 #. [side]: type=Naga Warrior, id=Abraxas
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1298
 msgid "Abraxas"
 msgstr "埃布莱克斯"
 
 #. [side]: type=Naga Warrior, id=Abraxas
-#. [side]: type=Naga Warrior, id=Gaxmail
 #. [side]: type=Naga Warrior, id=Xamalia
+#. [side]: type=Naga Warrior, id=Gaxmail
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:74
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:101
@@ -4060,9 +4060,9 @@ msgstr ""
 msgid "Glimir"
 msgstr "格力米尔"
 
+#. [side]: type=Elvish Marshal, id=Glimir
 #. [side]: type=Dwarvish Lord, id=Dursil
 #. [side]: type=Elvish Champion, id=Eowarar
-#. [side]: type=Elvish Marshal, id=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:51
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:136
@@ -4208,8 +4208,8 @@ msgstr ""
 msgid "I bet this wasn’t the welcome you were expecting."
 msgstr "我打赌这不是你所希望的欢迎！"
 
-#. [event]
 #. [side]: type=Autumn Shyde, id=Lady Dionli
+#. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:374
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:34
@@ -4380,7 +4380,7 @@ msgstr "阿雅德阁下"
 msgid "Lord El’Isomithir"
 msgstr "艾尔•伊莎米亚阁下"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:146
 msgid "I think I’ll fight the dragon!"
 msgstr "我想与那头龙战斗！"
@@ -4390,7 +4390,7 @@ msgstr "我想与那头龙战斗！"
 msgid "Lord Logalmier, I shall defeat your dragon."
 msgstr "罗格米亚阁下，我将打败你说的那头龙。"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:175
 msgid "Let’s get those saurians and nagas on that beach!"
 msgstr "让我们去消灭海岸上的蜥蜴人和娜迦！"
@@ -4400,7 +4400,7 @@ msgstr "让我们去消灭海岸上的蜥蜴人和娜迦！"
 msgid "Those cold blooded monsters will feel my wrath!"
 msgstr "这些冷血的怪物将承受我的愤怒！"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:204
 msgid "Let’s clear out that troll hole!"
 msgstr "让我们去清理巨魔洞穴！"
@@ -4410,7 +4410,7 @@ msgstr "让我们去清理巨魔洞穴！"
 msgid "So what exactly is a troll?"
 msgstr "那么巨魔倒底长什么样？"
 
-#. [option]: id=16_The_Kalian
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:232
 msgid "Let’s put those souls to rest on the cursed isle!"
 msgstr "我们来让诅咒之岛上的灵魂得到安息！"
@@ -4715,10 +4715,10 @@ msgstr "巨龙"
 msgid "Irix"
 msgstr "伊里克斯"
 
-#. [side]: type=Saurian Flanker, id=Axiz
 #. [side]: type=Saurian Flanker, id=Irix
-#. [side]: type=Saurian Flanker, id=Satras
 #. [side]: type=Saurian Flanker, id=Vriss
+#. [side]: type=Saurian Flanker, id=Axiz
+#. [side]: type=Saurian Flanker, id=Satras
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:79
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:113
@@ -4841,12 +4841,12 @@ msgstr "不！"
 msgid "We’ve slain the dragon: "
 msgstr "我们已经屠龙成功:"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:497
 msgid "Let’s get out of here!"
 msgstr "让我们离开这里！"
 
-#. [option]: speaker=Prince Haldric
+#. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:509
 msgid "Let’s finish off the rest of these monsters!"
 msgstr "让我们解决剩下的怪物！"
@@ -4866,8 +4866,8 @@ msgstr "蜥蜴海滩"
 msgid "Tirasch"
 msgstr "提拉斯奇"
 
-#. [side]: type=Saurian Flanker, id=Ssirk
 #. [side]: type=Saurian Flanker, id=Tirasch
+#. [side]: type=Saurian Flanker, id=Ssirk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:68
 msgid "Monsters"
@@ -4944,9 +4944,9 @@ msgid "Erart"
 msgstr "伊莱特"
 
 #. [side]: type=Troll Warrior, id=Erart
-#. [side]: type=Troll Warrior, id=Gulg
 #. [side]: type=Troll Warrior, id=Raol
 #. [side]: type=Troll Warrior, id=Rilg
+#. [side]: type=Troll Warrior, id=Gulg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:86
@@ -5885,10 +5885,10 @@ msgstr ""
 "为什么你们这么醉心于追求“光荣的死亡”呢？"
 
 #. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
-#. [side]: type=Orcish Warlord, id=Tan-Erinak
-#. [side]: type=Orcish Warlord, id=Tan-Prodash
 #. [side]: type=Orcish Warlord, id=Tan-Vragish
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Grorag
+#. [side]: type=Orcish Warlord, id=Tan-Erinak
+#. [side]: type=Orcish Warlord, id=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:51
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:88
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:125
@@ -6499,8 +6499,8 @@ msgstr ""
 "在过去的几个月中我们损失很大，但是我们不能让我们的知识失传。我要到人民中去传"
 "播智慧，并要亲眼看到在这块新的土地上建立的魔法新秩序。"
 
-#. [message]: speaker=Sir Ladoc
 #. [message]: speaker=Sir Ruddry
+#. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:254
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:258
 msgid ""
@@ -6893,7 +6893,7 @@ msgstr "原光明之神保佑我们。"
 msgid "Without him the bottoms of our ships will be completely vulnerable..."
 msgstr "失去了他，我们的船底会轻易遭到敌人的攻击..."
 
-#. [unit]
+#. [unit]: type=Walking Corpse
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:84
 msgid "A Former Friend"
 msgstr "故友"

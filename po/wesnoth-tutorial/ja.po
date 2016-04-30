@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2016-04-11 00:45+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
@@ -33,8 +33,8 @@ msgstr "キャラクター選択"
 msgid "Who do you want to play?"
 msgstr "どのキャラクターでプレイしますか？"
 
-#. [lua]: wml_actions.select_character
 #. [side]: type=Fighter, id=student
+#. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:68
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
@@ -380,7 +380,6 @@ msgstr ""
 "ン制限を確認できるぞ。"
 
 #. [event]
-#. [event]: (id=Delfador) 14 8}, (id=Delfador) facing nw}
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:464
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
@@ -794,24 +793,24 @@ msgstr ""
 "まだ練習を続けますか？このシナリオはコンテキストメニューの<b>シナリオ終了</b>"
 "からいつでも次の訓練に移ることができます。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
 msgid "Yes, I’m still figuring it out."
 msgstr "はい、まだ習得している途中です。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
 #, fuzzy
 #| msgid "Yes, I’m still figuring it out."
 msgid "female^Yes, I’m still figuring it out."
 msgstr "はい、まだ習得している途中です。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
 msgid "No, I think I’ve got it."
 msgstr "いいえ、もう習得しました。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:965
 #, fuzzy
 #| msgid "No, I think I’ve got it."
@@ -1046,7 +1045,6 @@ msgstr ""
 "その中にいれば私たちはとてもうまく戦うことができます。"
 
 #. [message]: speaker=student
-#. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:179
 msgid "Let’s go! Attack!"
 msgstr "行こう！攻撃だ！"
@@ -1443,7 +1441,6 @@ msgid "We must occupy that island before the Wolf Riders reach it!"
 msgstr "ウルフライダーが来る前に、島に移動しましょう！"
 
 #. [message]: speaker=student
-#. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
 msgid "Can’t we just move around the orcs?"
 msgstr "オークの近くを移動してはだめでしょうか？"

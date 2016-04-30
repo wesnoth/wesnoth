@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2015-11-07 11:03+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -31,32 +31,32 @@ msgstr "Príkazy"
 msgid "Compress saved games"
 msgstr "Komprimovať uložené hry"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
 msgstr "Gzip"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
 msgstr "Základná kompresia, rýchlejšia"
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
 msgstr "Bzip2"
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
 msgstr "Najlepšia kompresia, pomalšia"
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
 msgstr "Žiadna"
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
 msgstr "Veľké textové súbory"
@@ -309,24 +309,24 @@ msgid "Joystick: deadzone of the thruster"
 msgstr "Joystick: mŕtva zóna pre ovládač tlaku"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: set_status
 #. [unstore_unit]
+#. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "poisoned"
 msgstr "otrávený"
 
-#. [lua]: generate_objectives
 #. [objectives]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:205
-#: data/lua/wml/objectives.lua:14853
+#: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
 msgstr "Prenos zlata:"
 
-#. [lua]: generate_objectives
 #. [note]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:216
-#: data/lua/wml/objectives.lua:14854
+#: data/lua/wml/objectives.lua:53
 msgid "Notes:"
 msgstr "Poznámky:"
 
@@ -1253,9 +1253,9 @@ msgstr ""
 "V tejto scéne môžeš vydávať jednoduché rozkazy spojencom pomocou "
 "kontextového menu (pravé tlačidlo myši) na jednotke."
 
-#. [literal]
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
+#. [literal]
 #: data/core/macros/ai_controller.cfg:117
 #: data/core/macros/ai_controller.cfg:124
 #: data/core/macros/ai_controller.cfg:131
@@ -1312,8 +1312,8 @@ msgstr ""
 "sústreďujem sa na porazenie $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 
-#. [else]
 #. [then]
+#. [else]
 #: data/core/macros/ai_controller.cfg:236
 #: data/core/macros/ai_controller.cfg:240
 #: data/core/macros/ai_controller.cfg:371
@@ -1357,7 +1357,7 @@ msgstr ""
 "sústreďujem sa na ochránenie $ai_controller.side_$ally_side|"
 "_current_settings.protect.side_description|."
 
-#. [option]: type=objective
+#. [option]
 #: data/core/macros/ai_controller.cfg:451
 msgid "Defend a location..."
 msgstr "Bráň pozíciu"
@@ -1387,8 +1387,8 @@ msgstr "Výber pozície zrušený"
 msgid "Clear objective orders"
 msgstr "Vymaž rozkazy o cieľoch"
 
-#. [revoke_behavior_orders]
 #. [revoke_objective_orders]
+#. [revoke_behavior_orders]
 #. [then]
 #: data/core/macros/ai_controller.cfg:549
 #: data/core/macros/ai_controller.cfg:562
@@ -1472,17 +1472,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonus za rýchly koniec)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:14915
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
 msgstr "Bonus za rýchly koniec."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:14917
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:116
 msgid "No early finish bonus."
 msgstr "Žiadny bonus za rýchly koniec."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:14925
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:124
 msgid "No gold carried over to the next scenario."
 msgstr "Žiadne zlato sa neprenáša do ďalšej scény."
 
@@ -1515,7 +1515,7 @@ msgstr ""
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "Prišiel si k studni, ktorá plní želania. Čo si budeš želať?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:24
 msgid "A swift victory"
 msgstr "Rýchle víťazstvo"
@@ -1528,7 +1528,7 @@ msgid ""
 msgstr ""
 "Dávam zlatú mincu, aby sa tento boj skončil rýchlym a bezpečným víťazstvom."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:38
 msgid "Lots of gold"
 msgstr "Veľa zlata"
@@ -1538,7 +1538,7 @@ msgstr "Veľa zlata"
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Dávam túto zlatú mincu, aby sa mi vrátila desaťnásobne."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
 msgstr "Mier vo Wesnothe."
@@ -1548,7 +1548,7 @@ msgstr "Mier vo Wesnothe."
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Jediná dôležitá vec je mier pre celú túto krajinu."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:66
 msgid "Don’t make a wish."
 msgstr "Nemám žiadne želanie."
@@ -2670,8 +2670,8 @@ msgstr ""
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Získal si $amount_gold zlatiek."
 
-#. [color_range]: id=1
 #. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:230
 msgid "Red"
 msgstr "Červená"
@@ -2686,8 +2686,8 @@ msgstr "Svetločervená"
 msgid "Dark Red"
 msgstr "Tmavočervená"
 
-#. [color_range]: id=2
 #. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:236
 msgid "Blue"
 msgstr "Modrá"
@@ -2697,8 +2697,8 @@ msgstr "Modrá"
 msgid "Light blue"
 msgstr "Svetlomodrá"
 
-#. [color_range]: id=3
 #. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:242
 msgid "Green"
 msgstr "Zelená"
@@ -2708,26 +2708,26 @@ msgstr "Zelená"
 msgid "Bright green"
 msgstr "Svetlozelená"
 
-#. [color_range]: id=4
 #. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:248
 msgid "Purple"
 msgstr "Fialová"
 
-#. [color_range]: id=5
 #. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:260
 msgid "Black"
 msgstr "Čierna"
 
-#. [color_range]: id=6
 #. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:272
 msgid "Brown"
 msgstr "Hnedá"
 
-#. [color_range]: id=7
 #. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:254
 msgid "Orange"
 msgstr "Oranžová"
@@ -2737,14 +2737,14 @@ msgstr "Oranžová"
 msgid "Bright orange"
 msgstr "Svetlooranžová"
 
-#. [color_range]: id=8
 #. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:86 data/core/team-colors.cfg:266
 msgid "White"
 msgstr "Biela"
 
-#. [color_range]: id=9
 #. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:92 data/core/team-colors.cfg:278
 msgid "Teal"
 msgstr "Tyrkysová"
@@ -3195,7 +3195,6 @@ msgstr "Štandardná UI"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:112 data/scenario-test.cfg:1031
 #: src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:89
@@ -3204,7 +3203,6 @@ msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:123 data/scenario-test.cfg:1032
 #: src/dialogs.cpp:1165 src/dialogs.cpp:1271
 #: src/game_initialization/multiplayer_connect.cpp:388
@@ -3234,68 +3232,67 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "female^slowed"
 msgstr "spomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "slowed"
 msgstr "spomalený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "female^petrified"
 msgstr "skamenená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "petrified"
 msgstr "skamenený"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "female^unhealable"
 msgstr "neliečiteľná"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr "neliečiteľný"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14851
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:71
 msgid "Victory:"
 msgstr "Vyhráš, ak:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14852
+#: data/lua/wml/objectives.lua:51
 msgid "Defeat:"
 msgstr "Prehráš, ak:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14872
+#: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
 msgstr "(%d kôl zostáva)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14874
+#: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
 msgstr "(toto kolo zostáva)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14927
+#: data/lua/wml/objectives.lua:126
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% zlata sa prenáša do ďalšej scény."
 
@@ -3311,10 +3308,12 @@ msgid ""
 "mainline campaign 'Heir to the Throne'"
 msgstr ""
 
+#. [language]
 #: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr "veľmi dlhé"
 
+#. [language]
 #: data/scenario-test.cfg:4005
 msgid "electrical"
 msgstr "elektrický"
@@ -3498,22 +3497,22 @@ msgstr "žold"
 msgid "income"
 msgstr "príjem"
 
-#. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
+#. [selected_unit_level]: id=selected-unit-level
 #: data/themes/classic.cfg:432 data/themes/widescreen.cfg:491
 #: data/themes/widescreen.cfg:617
 msgid "statuspanel^level"
 msgstr "úroveň"
 
-#. [selected_unit_moves]: id=selected-unit-moves
 #. [unit_moves]: id=unit-moves
+#. [selected_unit_moves]: id=selected-unit-moves
 #: data/themes/classic.cfg:462 data/themes/widescreen.cfg:521
 #: data/themes/widescreen.cfg:647
 msgid "statuspanel^moves"
 msgstr "pohyby"
 
-#. [selected_unit_defense]: id=selected-unit-defense
 #. [unit_defense]: id=unit-defense
+#. [selected_unit_defense]: id=selected-unit-defense
 #: data/themes/classic.cfg:471 data/themes/widescreen.cfg:530
 #: data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."

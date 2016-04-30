@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2015-02-07 15:52+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -269,9 +269,9 @@ msgid "The light fills me!"
 msgstr "光明充满了我的身躯！"
 
 #. [message]: speaker=First Oracle
-#. [message]: speaker=Fourth Oracle
 #. [message]: speaker=Second Oracle
 #. [message]: speaker=Third Oracle
+#. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:179
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:183
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:187
@@ -461,8 +461,8 @@ msgstr ""
 msgid "The Road to Weldyn"
 msgstr "韦林之路"
 
-#. [side]
 #. [side]: type=Journeyman Mage
+#. [side]
 #. [side]: type=King of Wesnoth, id=Garard
 #. [side]: type=King of Wesnoth, id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:24
@@ -484,11 +484,11 @@ msgid "Urthaka-Tan"
 msgstr "乌萨卡-坦"
 
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
-#. [side]: type=Bandit, id=Harold
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
 #. [side]: type=Rogue, id=Garrath
+#. [side]: type=Bandit, id=Harold
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:62
@@ -605,8 +605,8 @@ msgstr ""
 "也许最好让我们的一些青年跟随你去韦林。这些地方对孤独的游历者来说不安全，而且"
 "我们想知道是哪门子把兽人招来南方的。"
 
-#. [scenario]: id=04_Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
+#. [scenario]: id=04_Leollyn
 #. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:69
@@ -991,7 +991,7 @@ msgstr ""
 "陌生人，你好啊！这沼泽很危险……你们想过去，就需要保护——我们只收你 $fee 金币的"
 "保护费！"
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:135
 msgid "Thanks very much. Here’s the gold..."
 msgstr "谢谢。给你钱……"
@@ -1016,7 +1016,7 @@ msgstr "嚯 嚯 嚯！傻瓜！"
 msgid "Well, at least we only have to deal with one of them now..."
 msgstr "还好，至少我们现在只需要应付其中一边了……"
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:183
 msgid "No thanks — we’ll manage by ourselves..."
 msgstr "谢谢你的好意，不用——我们会自己解决的……"
@@ -1114,8 +1114,8 @@ msgstr ""
 "我再也不想度过那样的夜晚了！我们尽快离开这万恶的地方吧——我想在黄昏前离开伊卢"
 "汶。"
 
-#. [scenario]: id=08_Ur-Thorodor
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
+#. [scenario]: id=08_Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:42
 msgid "Ur-Thorodor"
@@ -1308,7 +1308,7 @@ msgstr "<b>砰</b>！"
 msgid "Do you serve Iliah-Malal, living man?"
 msgstr "大活人，你为伊利亚-玛拉做事吗？"
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
 msgid "Yes, I serve him."
 msgstr "是啊。"
@@ -1318,7 +1318,7 @@ msgstr "是啊。"
 msgid "Then you will not mind if we kill you! Hahahahah!"
 msgstr "那么你不会介意我们杀掉你吧！哈哈哈哈！"
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
 msgid "No, I do not."
 msgstr "不是。"
@@ -1698,9 +1698,9 @@ msgstr ""
 msgid "The Gate Between Worlds"
 msgstr "两界之门"
 
-#. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Iliah-Malal
 #. [unit]: id=Iliah-Malal, type=Lich
+#. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:28
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:150
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:60
@@ -3311,8 +3311,8 @@ msgstr ""
 "我想我们年轻又缺乏经验的朋友高估了敌人的力量。我觉得他们根本不是韦诺军队的对"
 "手。"
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:42
 msgid "Sagus"
@@ -4070,8 +4070,8 @@ msgid ""
 "Evil has been vanquished on this day. May this victory bring lasting peace."
 msgstr "邪恶今天被打败了。希望胜利能带来长久的和平。"
 
-#. [message]: speaker=Admirer5
 #. [message]: speaker=Kalenz
+#. [message]: speaker=Admirer5
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:531
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:541
 msgid ""

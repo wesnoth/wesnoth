@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2015-02-07 13:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -33,8 +33,8 @@ msgstr ""
 msgid "Who do you want to play?"
 msgstr "你打算扮演谁？"
 
-#. [lua]: wml_actions.select_character
 #. [side]: type=Fighter, id=student
+#. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:68
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
@@ -393,7 +393,6 @@ msgid ""
 msgstr ""
 
 #. [event]
-#. [event]: (id=Delfador) 14 8}, (id=Delfador) facing nw}
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:464
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
@@ -858,24 +857,24 @@ msgstr ""
 "你还想继续练习吗？你随时可以通过点击上下文菜单中的<b>结束场景</b>来结束这一幕"
 "场景。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
 msgid "Yes, I’m still figuring it out."
 msgstr "是，我还在摸索呢。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
 #, fuzzy
 #| msgid "Yes, I’m still figuring it out."
 msgid "female^Yes, I’m still figuring it out."
 msgstr "是，我还在摸索呢。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
 msgid "No, I think I’ve got it."
 msgstr "不，我想我已经弄明白了。"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:965
 #, fuzzy
 #| msgid "No, I think I’ve got it."
@@ -1116,7 +1115,6 @@ msgstr ""
 "治疗受伤的单位，而岛上的森林会让我们如鱼得水。"
 
 #. [message]: speaker=student
-#. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:179
 msgid "Let’s go! Attack!"
 msgstr ""
@@ -1457,7 +1455,6 @@ msgid "We must occupy that island before the Wolf Riders reach it!"
 msgstr "那个兽人步兵堵住了桥！我们必须在狼骑兵到达前占领那个岛。"
 
 #. [message]: speaker=student
-#. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
 #, fuzzy
 #| msgid "Can’t our units just move around him?"

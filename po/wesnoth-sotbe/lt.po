@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -136,11 +136,11 @@ msgstr "Nugalėkite Alberą"
 msgid "Death of Kapou’e"
 msgstr "Kapou’e mirtis"
 
-#. [side]
-#. [side]: id=Grüü, type=Great Troll
 #. [side]: id=Kapou'e, type=Orcish Leader
+#. [side]: id=Grüü, type=Great Troll
 #. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
@@ -177,11 +177,11 @@ msgstr "Kapou’e"
 msgid "Alber"
 msgstr "Alberas"
 
+#. [side]: type=General, id=Lanbec'h
+#. [side]: type=Lieutenant, id=Alber
+#. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
-#. [side]: type=General, id=Slowhand
-#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Hmmm..."
 msgstr "Hmmm..."
 
-#. [option]: speaker=Kapou'e
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:231
 msgid ""
 "If what you say is true, then there is no way our tribe can face such an "
@@ -377,7 +377,7 @@ msgid ""
 "Move it! We leave within the hour. If you’re not ready by then, stay and die."
 msgstr ""
 
-#. [option]: speaker=Kapou'e
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:268
 msgid "Bah, humans? No better than goblins. We’ll break them!"
 msgstr ""
@@ -455,8 +455,8 @@ msgid ""
 "attention to my supporters before. But what should we do now?"
 msgstr ""
 
-#. [message]: role=Helper
 #. [message]: speaker=Vrag
+#. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:152
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:158
 msgid "We must flee! There is no way we can stand up against such a force."
@@ -571,8 +571,8 @@ msgstr "Haago kalnų link"
 msgid "Move Kapou’e to the end of the mountains"
 msgstr "Nuveskite Kapou’e iki kalnų pabaigos"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:319
 msgid "Defeat the enemy leader"
@@ -891,12 +891,12 @@ msgstr ""
 msgid "Etheliel"
 msgstr "Etelielis"
 
+#. [side]: type=Elvish Shyde, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
-#. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Etheliel
 #. [side]: type=Elvish Marshal, id=Hida'tul
+#. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Shyde, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:68
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:118
@@ -927,21 +927,18 @@ msgid "Sammual"
 msgstr "Samualas"
 
 #. [event]
-#. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:191
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1138
 msgid "Pirk"
 msgstr "Pirkas"
 
 #. [event]
-#. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:193
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1139
 msgid "Gork"
 msgstr "Gorkas"
 
 #. [event]
-#. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:195
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1140
 msgid "Vraurk"
@@ -1095,8 +1092,8 @@ msgstr "Eisime ir užmušime juos visus. Ką jūs manote?"
 msgid "..."
 msgstr "..."
 
-#. [message]: speaker=narrator
 #. [unit]: id=Jetto, type=Orcish Assassin
+#. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:471
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:585
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:601
@@ -1223,8 +1220,8 @@ msgstr "Į Tirigazo uostą"
 msgid "Na-Mana"
 msgstr "Na-Mana"
 
-#. [side]: type=Death Knight, id=Ma-Rana
 #. [side]: type=Lich, id=Na-Mana
+#. [side]: type=Death Knight, id=Ma-Rana
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:83
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:112
 msgid "Undead"
@@ -1552,20 +1549,20 @@ msgstr "Pasiekite oazę"
 msgid "Ar-Dant"
 msgstr "Ar-Dantas"
 
-#. [side]
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Arthain
-#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=Bandit, id=Sagmar
+#. [side]: type=General, id=Telthys
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
-#. [side]: type=General, id=Telthys
-#. [side]: type=Giant Scorpion
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]: type=Giant Scorpion
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2066,8 +2063,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr ""
 
-#. [message]: role=cannonfodder
 #. [message]: speaker=Grüü
+#. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:112
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:293
 msgid "Why?"
@@ -2240,8 +2237,8 @@ msgstr ""
 msgid "Whoever detonates the bridge will die."
 msgstr ""
 
-#. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2390,7 +2387,7 @@ msgstr ""
 msgid "I’m ready, Chief!"
 msgstr "Aš čia, vade!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:470
 msgid "Let her blow!"
 msgstr ""
@@ -2415,7 +2412,7 @@ msgstr "Ne, palauk!"
 msgid "Aaaaaaaargh!"
 msgstr "Aaaaaaaa!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:524
 msgid "Wait a moment."
 msgstr "Palauk truputį."
@@ -2444,9 +2441,9 @@ msgstr ""
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr ""
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:655
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:88
@@ -3250,10 +3247,10 @@ msgid "Braga"
 msgstr "Braga"
 
 #. [side]: type=Orcish Warlord, id=Braga
-#. [side]: type=Orcish Warlord, id=Kergai
 #. [side]: type=Orcish Warlord, id=Meato
-#. [side]: type=Orcish Warlord, id=Orga
 #. [side]: type=Orcish Warlord, id=Ragvan
+#. [side]: type=Orcish Warlord, id=Kergai
+#. [side]: type=Orcish Warlord, id=Orga
 #. [side]: type=Orcish Warrior, id=Knorgh
 #. [side]: type=Orcish Warrior, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
@@ -3353,8 +3350,8 @@ msgid ""
 "pike! Right?"
 msgstr ""
 
-#. [message]: speaker=Kergai
 #. [message]: speaker=Ragvan
+#. [message]: speaker=Kergai
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:211
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:216
 msgid "Right!"
@@ -3663,8 +3660,8 @@ msgstr "Atvykome, mano valdove."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Aaa, puiku, dar vienas pastiprinimas."
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

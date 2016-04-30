@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-02-24 21:01+0100\n"
 "Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
 "Language-Team: none\n"
@@ -269,9 +269,9 @@ msgid "The light fills me!"
 msgstr "Naplnilo ma svetlo!"
 
 #. [message]: speaker=First Oracle
-#. [message]: speaker=Fourth Oracle
 #. [message]: speaker=Second Oracle
 #. [message]: speaker=Third Oracle
+#. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:179
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:183
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:187
@@ -474,8 +474,8 @@ msgstr ""
 msgid "The Road to Weldyn"
 msgstr "Cesta do Weldynu"
 
-#. [side]
 #. [side]: type=Journeyman Mage
+#. [side]
 #. [side]: type=King of Wesnoth, id=Garard
 #. [side]: type=King of Wesnoth, id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:24
@@ -497,11 +497,11 @@ msgid "Urthaka-Tan"
 msgstr "Urthaka-Tan"
 
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
-#. [side]: type=Bandit, id=Harold
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
 #. [side]: type=Rogue, id=Garrath
+#. [side]: type=Bandit, id=Harold
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:62
@@ -626,8 +626,8 @@ msgstr ""
 "Tieto krajiny už nie sú pre osamelého cestovateľa bezpečné a chceme sa "
 "dozvedieť, ako mohli orkovia preniknúť tak ďaleko na juh."
 
-#. [scenario]: id=04_Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
+#. [scenario]: id=04_Leollyn
 #. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:69
@@ -1039,7 +1039,7 @@ msgstr ""
 "Zdravím vás, pútnici! Tento močiar je nebezpečný. Ak cez neho chcete prejsť, "
 "budete potrebovať ochranku — pre vás to bude len za $fee zlatiek!"
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:135
 msgid "Thanks very much. Here’s the gold..."
 msgstr "Ďakujem veľmi pekne. Tu je zlato..."
@@ -1064,7 +1064,7 @@ msgstr "Ha ha ha! Hlupáci!"
 msgid "Well, at least we only have to deal with one of them now..."
 msgstr "Aspoň tu máme o jedného menej..."
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:183
 msgid "No thanks — we’ll manage by ourselves..."
 msgstr "Nie ďakujem, ochranku si zariadime sami..."
@@ -1172,8 +1172,8 @@ msgstr ""
 "miesto tak rýchlo, ako to bude možné. Chcel by som byť z tohto močiara vonku "
 "najneskôr na súmraku."
 
-#. [scenario]: id=08_Ur-Thorodor
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
+#. [scenario]: id=08_Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:42
 msgid "Ur-Thorodor"
@@ -1384,7 +1384,7 @@ msgstr "<i>Bum!</i>!"
 msgid "Do you serve Iliah-Malal, living man?"
 msgstr "Slúžiš Iliah-Malalovi, živý muž?"
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
 msgid "Yes, I serve him."
 msgstr "Áno, som jeho služobníkom."
@@ -1394,7 +1394,7 @@ msgstr "Áno, som jeho služobníkom."
 msgid "Then you will not mind if we kill you! Hahahahah!"
 msgstr "Tak potom sa nič nestane, ak ťa zabijeme! Hahahahahaha!\""
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
 msgid "No, I do not."
 msgstr "Nie, neslúžim."
@@ -1796,9 +1796,9 @@ msgstr ""
 msgid "The Gate Between Worlds"
 msgstr "Brána medzi svetmi"
 
-#. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Iliah-Malal
 #. [unit]: id=Iliah-Malal, type=Lich
+#. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:28
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:150
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:60
@@ -3513,8 +3513,8 @@ msgstr ""
 "Myslím si, že náš mladý a neskúsený priateľ preceňuje silu nášho nepriateľa. "
 "Tí nemŕtvi sa nemôžu rovnať našej armáde."
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:42
 msgid "Sagus"
@@ -4332,8 +4332,8 @@ msgid ""
 "Evil has been vanquished on this day. May this victory bring lasting peace."
 msgstr "Zlo bolo porazené. Tento deň môže priniesť končené víťazstvo a mier."
 
-#. [message]: speaker=Admirer5
 #. [message]: speaker=Kalenz
+#. [message]: speaker=Admirer5
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:531
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:541
 msgid ""

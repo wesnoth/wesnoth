@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-11-09 16:57+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -49,8 +49,8 @@ msgstr ""
 msgid "(Expert level, 10 scenarios.)"
 msgstr "(Einstufung: Schwierig, 10 Szenarien)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Hunter, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
 msgid "Desert Hunter"
@@ -70,15 +70,15 @@ msgstr "(Normal)"
 msgid "Challenging"
 msgstr "(Herausfordernd)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
 msgid "Desert Sentinel"
 msgstr "Wüstenwache"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
 msgid "Desert Prowler"
@@ -144,8 +144,8 @@ msgstr ""
 msgid "The Morning After"
 msgstr "Der Morgen danach"
 
-#. [side]
 #. [side]: id=Kaleh, type=Desert Fighter
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:41
@@ -173,10 +173,10 @@ msgstr "Quenoth-Elfen"
 msgid "Monsters"
 msgstr "Monster"
 
-#. [side]
 #. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
 #. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
 #. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:74
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:102
@@ -463,8 +463,8 @@ msgstr "Eranor"
 msgid "Seela"
 msgstr "Seela"
 
-#. [message]: speaker=Garak
 #. [message]: speaker=Vecnu
+#. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:348
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:542
 msgid "Kaleh, Nym, help us!"
@@ -479,8 +479,8 @@ msgstr "Kaleh, Nym, helft uns!"
 msgid "What in Uria’s name is that?"
 msgstr "Was in Urias Namen ist das?"
 
-#. [message]: speaker=Garak
 #. [message]: speaker=Vecnu
+#. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:358
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:552
 msgid ""
@@ -1445,7 +1445,7 @@ msgstr ""
 msgid "Should I take this ring?"
 msgstr "Soll ich diesen Ring an mich nehmen?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:485
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1628
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:641
@@ -1464,7 +1464,7 @@ msgstr "Ring des Wanderers"
 msgid "At the end of each turn, this unit takes no damage from the desert."
 msgstr "Diese Einheit nimmt keinen Schaden durch die Hitze der Wüste."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:523
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:674
 msgid "No, I think someone else should wear it."
@@ -1510,8 +1510,8 @@ msgstr ""
 "sie umgehen willst, würde ich vorschlagen, uns geradeaus Richtung Norden zu "
 "halten und darauf zu hoffen, dass wir dort eine Oase finden."
 
-#. [message]: type=Ogre
 #. [message]: type=Ogre, role=Hunting Ogre
+#. [message]: type=Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:626
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:664
 msgid "Fresh meat!"
@@ -1638,12 +1638,12 @@ msgstr ""
 msgid "Elyssa"
 msgstr "Elyssa"
 
-#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1094
 msgid "Go’hag"
 msgstr "Go’hag"
 
-#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1095
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1097
@@ -1980,7 +1980,7 @@ msgstr ""
 "Dieses Wasser macht Nahkampfwaffen der Einheit <i>arkan</i> und damit "
 "besonders wirksam gegen Untote."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1657
 msgid "No, I think someone else should take it."
 msgstr "Nein, ich denke, jemand anderes sollte es verwenden."
@@ -2520,8 +2520,8 @@ msgstr ""
 "Nein! Dieser Wettkampf ist noch nicht vorüber, Azkotep. Ich werde euch jetzt "
 "eine Kostprobe meiner wahren Macht geben."
 
-#. [event]
 #. [then]
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:921
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:977
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1060
@@ -2624,8 +2624,8 @@ msgstr ""
 "es wolle. Und ich habe nicht vor, diesem Ding zu erlauben, die Kontrolle "
 "über den Körper unseres Freundes zu behalten."
 
-#. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
+#. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:998
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1081
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1203
@@ -3588,7 +3588,7 @@ msgstr ""
 "ergeht es dir!«</i> Es sieht wie eine gutes Schwert aus, aber soll ich das "
 "Risiko eingehen?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:819
 msgid "I fear no creature, I will take the blade!"
 msgstr "Ich fürchte kein Ungeheuer und werde das Schwert nehmen!"
@@ -3637,7 +3637,7 @@ msgstr ""
 msgid "The voices say I have no choice, I must attack!"
 msgstr "Die Stimmen sagen, dass ich keine Wahl habe. Ich muss angreifen!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:869
 msgid "I don’t like the sound of this. I’m out of here."
 msgstr "Mir gefällt das gar nicht. Ich geh’ hier raus."
@@ -3658,8 +3658,8 @@ msgstr ""
 "daraus Gutes erwachsen mag."
 
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:930
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2386
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2335
@@ -3771,16 +3771,16 @@ msgstr ""
 msgid "A Subterranean Struggle"
 msgstr "Streit im Untergrund"
 
-#. [modify_side]
 #. [side]
+#. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:49
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:93
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1400
 msgid "team_name^Trolls"
 msgstr "Trolle"
 
-#. [modify_side]
 #. [side]
+#. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:139
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:184
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1333
@@ -4060,8 +4060,8 @@ msgstr "Spinnen sind keine Insekten."
 msgid "Thanks for the clarification."
 msgstr "Vielen Dank für die Klarstellung."
 
-#. [event]
 #. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:685
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:627
 msgid "Wounded Dwarf"
@@ -4268,8 +4268,8 @@ msgstr ""
 "Es klingt so, als ob wir hier noch nicht fertig sind. Wie auch immer, "
 "sammelt euch, wir müssen Zurg folgen."
 
-#. [event]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:947
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:270
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1672
@@ -4368,7 +4368,7 @@ msgstr ""
 "Das klingt so, als wäre unsere Arbeit noch nicht getan. Nun gut, sammelt "
 "euch, wir müssen Grimnir folgen."
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1084
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1085
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1086
@@ -4385,7 +4385,7 @@ msgstr ""
 msgid "Dwarf Defender"
 msgstr "Zwergenverteidiger"
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1089
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1104
@@ -4401,12 +4401,12 @@ msgstr "Zwergenverteidiger"
 msgid "Troll Defender"
 msgstr "Trollverteidiger"
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1097
 msgid "Dwarf Leader"
 msgstr "Zwergenanführer"
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1117
 msgid "Troll Leader"
 msgstr "Trollanführer"
@@ -4554,7 +4554,7 @@ msgid "But they both look evenly matched. Who should we ally with?"
 msgstr ""
 "Sie sehen aber beide gleich stark aus. Mit wem sollen wir uns verbünden?"
 
-#. [option]: speaker=$explorer.id
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1322
 msgid "Let’s aid the dwarves."
 msgstr "Lasst uns den Zwergen helfen!"
@@ -4583,7 +4583,7 @@ msgstr "Fundin fällt in der Schlacht"
 msgid "Death of Nori"
 msgstr "Nori fällt in der Schlacht"
 
-#. [option]: speaker=$explorer.id
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1389
 msgid "Let’s aid the trolls."
 msgstr "Lasst uns den Trollen helfen!"
@@ -4623,8 +4623,8 @@ msgstr ""
 "wir uns den Weg bis dorthin freikämpfen können, sollte es uns möglich sein, "
 "unsere Kämpfer zu versammeln, um bei der Schlacht zu helfen."
 
-#. [modify_unit]
 #. [then]
+#. [modify_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1481
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1483
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1484
@@ -4976,8 +4976,8 @@ msgstr "Tötet den Anführer der Trolle"
 msgid "Troll Interrogator"
 msgstr "Trollfolterknecht"
 
-#. [unit]: type=Troll Whelp
 #. [unit]: type=Troll Whelp, id=Troll Assistant
+#. [unit]: type=Troll Whelp
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:302
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:332
 msgid "Troll Assistant"
@@ -5126,8 +5126,8 @@ msgstr "Eindringlinge! Tötet sie alle!"
 msgid "Tell us where your leader is hiding!"
 msgstr "Sag uns, wo sich euer Anführer versteckt!"
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=Wounded Dwarf
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:641
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:582
 msgid "Never!"
@@ -5628,7 +5628,7 @@ msgstr ""
 "Ich denke, dieser Fund könnte uns noch von Nutzen sein, ehe unsere Reise "
 "vorbei ist."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1905
 msgid "It might be useful, I’ll take it."
 msgstr "Könnte nützlich sein, also nehme ich ihn."
@@ -5653,7 +5653,7 @@ msgid "This wand makes this unit’s melee attacks deal poison damage."
 msgstr ""
 "Dieser Zauberstab belegt die Nahkampfwaffen der Einheit mit Gift-Schaden."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1938
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1714
 msgid "On second thought, it’s better to leave the dead in peace."
@@ -5675,10 +5675,10 @@ msgstr "Im Reich der Zwerge"
 msgid "Enemies"
 msgstr "Feinde"
 
-#. [side]
 #. [side]: id=Great Leader Darmog, type=Great Troll
-#. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]: id=Melusand, type=Mermaid Diviner
+#. [side]: id=King Thurongar, type=Dwarvish Lord
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:77
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:54
@@ -5696,8 +5696,8 @@ msgstr "Zwergenhäuptling"
 msgid "Kill Dwarf Chieftain"
 msgstr "Tötet den Zwergenhäuptling"
 
-#. [event]
 #. [unit]: type=Dwarvish Steelclad, id=Dwarf Sergeant
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:292
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:459
 msgid "Dwarf Sergeant"
@@ -5771,11 +5771,11 @@ msgstr ""
 msgid "Once you done moving into position, Zurg will destroy wall."
 msgstr "Sobald ihr seid in Position, Zurg zerstört Wand."
 
-#. [event]
-#. [unit]: type=Dwarvish Berserker
-#. [unit]: type=Dwarvish Dragonguard
 #. [unit]: type=Dwarvish Sentinel
 #. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Berserker
+#. [unit]: type=Dwarvish Dragonguard
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:463
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:464
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:466
@@ -6304,7 +6304,7 @@ msgstr ""
 "bezahlt, aber dieser Gürtel sieht aus, als hätte er magische Eigenschaften "
 "und der frühere Besitzer wird ihn kaum vermissen."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1670
 msgid "I fear no ghosts, I’ll take it."
 msgstr "Ich fürchte mich nicht vor Geistern, ich werden den Gürtel nehmen."
@@ -6787,7 +6787,7 @@ msgstr ""
 "Die Trolle haben sich für den Augenblick in ihre Löcher zurückgezogen, aber "
 "keiner weiß, wann sie einen neuen Angriff starten."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:651
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:639
 msgid "No, I think someone else should wield it."
@@ -6808,8 +6808,8 @@ msgstr "Großer Anführer Darmog"
 msgid "Nog"
 msgstr "Nog"
 
-#. [unit]: type=Troll Shaman
 #. [unit]: type=Troll Shaman, id=Spiritual Advisor
+#. [unit]: type=Troll Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:212
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:227
 msgid "Spiritual Advisor"
@@ -7217,8 +7217,8 @@ msgstr ""
 "Es ist mir wie eine entfernte Erschütterung vorgekommen. Und was ist das für "
 "ein Getöse?"
 
-#. [unit]: type=Troll Shaman, role=avenger
 #. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Shaman, role=avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:535
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:556
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:577
@@ -7237,8 +7237,8 @@ msgstr ""
 "nur, wir gemeinsam sterben!"
 
 #. [unit]: type=Dwarvish Fighter
-#. [unit]: type=Dwarvish Pathfinder, role=avenger
 #. [unit]: type=Dwarvish Thunderer
+#. [unit]: type=Dwarvish Pathfinder, role=avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:606
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:627
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:648
@@ -8022,7 +8022,7 @@ msgstr ""
 "für Konsequenzen das haben würde. Ich weiß nicht, ob ich es gerne hätte, "
 "wenn mich etwas mit einer derartigen Stärke angreift."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1972
 msgid "Break the circle"
 msgstr "Brich den Kreis!"
@@ -8077,7 +8077,7 @@ msgstr ""
 "Es wäre nicht meine erste Wahl gewesen, aber es könnte sich als nützlich "
 "erweisen. Ich frage mich, was es wohl gerne frisst?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2037
 msgid "Leave that thing alone."
 msgstr "Lass den Kreis!"
@@ -8211,7 +8211,7 @@ msgstr ""
 "betätigen. Ich weiß nicht, was er bewirkt, aber langsam gehen uns die "
 "Möglichkeiten aus."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2192
 msgid "Pull the lever."
 msgstr "Betätigt den Hebel."
@@ -8261,7 +8261,7 @@ msgstr ""
 "Genau, es ist die östliche Passage. Ich weiß nicht, wohin sie führt, aber "
 "mit dem steigenden Wasser ist bald jeder Ort besser als dieser."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2256
 msgid "Leave it alone."
 msgstr "Berühre ihn nicht!"
@@ -8814,8 +8814,8 @@ msgstr ""
 "Aber wie kommst du jetzt zurück zu deinen Leuten, wo doch die Tunnel "
 "überflutet sind?"
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2819
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2840
 msgid ""
@@ -8828,8 +8828,8 @@ msgstr ""
 "Gefahren und Hindernisse gemeistert, um zu entkommen. In all meinen Jahren "
 "habe ich selten solch Mut und Tapferkeit erlebt."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2824
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2845
 msgid ""
@@ -8842,8 +8842,8 @@ msgstr ""
 "so weiß ich nicht, wo ich danach suchen müsste. Hier über der Erde kenne ich "
 "das Land genauso wenig wie ihr."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2829
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2850
 msgid ""
@@ -8953,8 +8953,8 @@ msgstr ""
 "nicht, was es ist."
 
 #. [event]
-#. [side]
 #. [unit]: type=Divine Avatar, id=Eloh
+#. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3055
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1704
@@ -9006,8 +9006,8 @@ msgstr ""
 "Zweifelst du an meiner Macht? Du bist aus der Dunkelheit entflohen, und ich "
 "bin dir erschienen, um dir zu gratulieren."
 
-#. [message]: speaker=Zhul
 #. [message]: speaker=unit
+#. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3128
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3145
 msgid "Kaleh, who are you talking to?"
@@ -9145,8 +9145,8 @@ msgstr ""
 "Natürlich bin ich das. Oh, wie wenig du verstehst. Mach dir keine Gedanken "
 "über all diese Kleinigkeiten. Komm zu mir, und alles wird klar werden."
 
-#. [event]
 #. [unit]: type=Human Commander, id=Sergeant Durstrag
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3256
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3390
 msgid "Sergeant Durstrag"
@@ -9414,8 +9414,8 @@ msgstr ""
 "Nog auch keine Menschen mögen. Menschen gemein sein. Aber machen gute "
 "Geräusche wenn zerquetschen."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3460
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3466
 msgid ""
@@ -10115,10 +10115,10 @@ msgstr "Blut ist dicker als Wasser"
 msgid "Darius"
 msgstr "Darius"
 
-#. [side]
 #. [side]: type=Human Commander, id=Darius
-#. [side]: type=Javelineer, id=Alastra
+#. [side]
 #. [side]: type=Shock Trooper, id=Zelgant
+#. [side]: type=Javelineer, id=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:82
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:143
@@ -10210,8 +10210,8 @@ msgstr ""
 "Bäume sehen groß und stark aus, wie Trolle. Und dunkel. Nog müde sein, immer "
 "unter heißer Sonne laufen."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:416
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:422
 msgid ""
@@ -10949,8 +10949,8 @@ msgstr ""
 "Die stinkenden Elfen haben einige der Meeresbewohner befreit. Und sie "
 "kämpfen noch immer. Führt Plan B aus, und tötet alle Meeresbewohner!"
 
-#. [message]: speaker=Alastra
 #. [message]: speaker=Darius
+#. [message]: speaker=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1520
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1627
 msgid "I must go report to the Iron Council. Keep fighting!"
@@ -11330,8 +11330,8 @@ msgstr ""
 "Großer Anführer sagte Nog Euch dienen, und Nog folgen Euren Befehlen. Aber "
 "andere Elfen auf anderer Insel. Wie erreichen durch tiefes Wasser?"
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1844
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1850
 msgid ""
@@ -11812,8 +11812,8 @@ msgstr ""
 "Nog fürchtet sich vor Wasser und vor heller Sonne. Aber Nog wird Großen "
 "Führer nicht enttäuschen. Großer Führer sagt, folge Kaleh, und Nog tut es."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2372
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2378
 msgid ""
@@ -12103,10 +12103,10 @@ msgstr "Eine Unterhaltung mit den Fischen"
 msgid "Melusand"
 msgstr "Melusand"
 
-#. [unit]: type=Merman Entangler
+#. [unit]: type=Merman Warrior
 #. [unit]: type=Merman Hoplite
 #. [unit]: type=Merman Spearman
-#. [unit]: type=Merman Warrior
+#. [unit]: type=Merman Entangler
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:90
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:98
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:106
@@ -12195,8 +12195,8 @@ msgstr ""
 "dass deine kürzlichen Taten und schon allein deine Anwesenheit bei diesen "
 "edlen Elfen ein Lob für dein ganzes Volk ist."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:205
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:216
 msgid "Thank you for your kindness."
@@ -12710,8 +12710,8 @@ msgstr ""
 "Nog nicht sicher ob Fischfrau vertrauen. Was wenn sie nur will, dass Elfen "
 "ihren Krieg für sie kämpfen?"
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:433
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:439
 msgid ""
@@ -12918,8 +12918,8 @@ msgstr ""
 "sicher, Großer Anführer senden ganze Armee von Trollen. Aber ich fürchte, "
 "ihr nur habt Nog. Doch Nog alles tun was er kann, um sie zu vernichten."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:539
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:545
 msgid ""
@@ -13401,10 +13401,10 @@ msgstr "Die Schlacht um die Insel Zocthanol"
 msgid "Boyicht"
 msgstr "Boyicht"
 
-#. [side]
+#. [side]: type=Saurian Oracle, id=Boyicht
 #. [side]: type=Draug, id=Kelur
 #. [side]: type=Orcish Sovereign, id=Graghht
-#. [side]: type=Saurian Oracle, id=Boyicht
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:94
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:131
@@ -14093,8 +14093,8 @@ msgstr ""
 "wie Nog. Andere Elfen haben Angst, aber Nog fürchtet nicht dunklen Ort. Nog "
 "nur hofft noch etwas übrig zu zermalmen wenn er ankommt."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1410
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1416
 msgid ""
@@ -14499,8 +14499,8 @@ msgstr ""
 "Igitt. Nog voller Blut, Gedärme, grässlicher blauer Schleim. Und was auch "
 "immer für Kreatur war, riecht tot nicht besser als lebendig."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1439
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1445
 msgid ""
@@ -15974,8 +15974,8 @@ msgstr ""
 "Sie sind wunderschöne Gestalten, mit Libellen-artigen Flügeln auf dem "
 "Rücken. Sie können unbehindert über fast jedes Gelände schweben."
 
-#. [unit_type]: id=Desert Shyde, race=elf
 #. [unit_type]: id=Desert Star
+#. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg:25
 msgid "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
@@ -16031,8 +16031,8 @@ msgstr ""
 "wenige haben das Glück, solche Verkörperungen von Macht und Perfektion zu "
 "erblicken."
 
-#. [attack]: type=arcane
 #. [attack]: type=impact
+#. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:15
@@ -16188,8 +16188,8 @@ msgid "Desert Youth"
 msgstr "Wüsten-Jüngling"
 
 #. [unit_type]: id=Nym Hunter
-#. [unit_type]: id=Nym Prowler
 #. [unit_type]: id=Nym Sentinel
+#. [unit_type]: id=Nym Prowler
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:76
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:97
@@ -16890,7 +16890,6 @@ msgstr "Durst"
 msgid "refreshed"
 msgstr "erfrischt"
 
-#. [lua]: id=teacher.id } } }
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
 msgstr ""

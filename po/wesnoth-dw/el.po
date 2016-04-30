@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-07-12 13:10+0100\n"
 "Last-Translator: nikos\n"
 "Language-Team: none\n"
@@ -109,7 +109,7 @@ msgstr "Καθάρισμα και επιμέλεια διαλόγου"
 msgid "Artwork"
 msgstr "Γραφικά"
 
-#. [lua]
+#. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -224,8 +224,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Απέθαντοι"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -455,10 +455,10 @@ msgstr "(Διαφορετικό μπόνους για το καθένα)"
 msgid "Defeat all enemy leaders"
 msgstr "Νίκησε όλους τους αντίπαλους αρχηγούς"
 
-#. [side]
-#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
+#. [side]: type=Death Knight, id=Dead Knight
+#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
@@ -954,23 +954,23 @@ msgstr ""
 msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgstr "Η τρίαινα είναι 14-2, μαγικό, εξ αποστάσεως και με τύπο <i>φωτιά</i>."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:829
 msgid "That sounds great! I’ll take it."
 msgstr "Ακούγεται υπέροχο! Θα το κρατήσω!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Ακούγεται τρομερό. Ας το πάρει κάποιος άλλος."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Αφήστε εμένα να πάρω την τρίαινα. Θέλω να ελέγχω τους κεραυνούς!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
 msgid "I’ll just leave that trident where it is."
 msgstr "Καλύτερα να το αφήσω εκεί που το βρήκα..."
@@ -1548,7 +1548,7 @@ msgstr ""
 "βάλουμε τέλος σε αυτή την ιστορία μια για πάντα."
 
 #. [message]: speaker=Kai Krellis
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:654
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:667
 msgid "Now maybe we can head west undisturbed."
@@ -1559,7 +1559,7 @@ msgstr "Τώρα ίσως να μπορούμε να κατευθυνθούμε 
 msgid "We have destroyed the undead."
 msgstr "Καταστρέψαμε τους απέθαντους."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:676
 msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
@@ -2205,8 +2205,8 @@ msgstr ""
 "Αυτό το μέρος ενδείκνυται για μια μεγάλη αποικία, οπότε φαντάζομαι ότι θα "
 "δούμε κι άλλες σύντομα."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2662,22 +2662,22 @@ msgstr ""
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgstr "Το σπαθί χτυπάει 8-4, είναι μαγικό και τύπου φωτιάς."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:962
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Θα πάρω το σπαθί, και θα καταστρέψω απέθαντους σε εκρήξεις φωτιάς."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Αυτό το σπαθί δεν είναι για εμένα. Ας το πάρει κάποιος άλλος."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1006
 msgid "I’ll carry the sword."
 msgstr "Θα πάρω το σπαθί."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1015
 msgid "Let someone else have it."
 msgstr "Ας το πάρει κάποος άλλος."
@@ -2965,17 +2965,17 @@ msgstr ""
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr "Το φυλαχτό προσφέρει 70% αντίσταση σε μυστηριακές επιθέσεις."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:838
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "Δεν φαίνεται να βοήθησε αυτόν τον τύπο και τόσο πολύ. Δεν το θέλω."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:875
 msgid "I would like my life force protected."
 msgstr "Θα ήθελα να προστατέψω την δύναμη της ζωής μέσα μου."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid "My life force feels fine as it is."
 msgstr "Η ζωή μου μού φαίνεται αρκετά δυνατή, ευχαριστώ πολύ."
@@ -3150,15 +3150,15 @@ msgstr "γροθιά"
 msgid "tail"
 msgstr "ουρά"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:106
 #: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "ζαλισμένος"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:107
 #: data/campaigns/Dead_Water/units/Brawler.cfg:159
 #, fuzzy
@@ -3351,13 +3351,13 @@ msgstr ""
 "Το Δαχτυλίδι της Δύναμης κάνει τις επιθέσεις του κατόχου του δυνατότερες "
 "κατά 1 πόντο, και προσθέτει τρεις πόντους υγείας."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr ""
 "Ας αφήσουμε την νυχτερίδα να κρατήσει το δαχτυλίδι. Θα την κάνει δυνατότερη."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 #, fuzzy
 #| msgid "Someone take that off of him before he hurts himself."
@@ -3374,12 +3374,12 @@ msgstr "Θα δοκιμάσω το δαχτυλίδι."
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "Αισθάνομαι διαφορετικά, και όλα μου τα όπλα είναι πιο ελαφριά!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr "Θα φορέσω το δαχτυλίδι, και μπορείτε να βασιστείτε στην δύναμή μου."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "Ζαλίζομαι... Ας πάρει το δαχτυλίδι κάποιος άλλος..."

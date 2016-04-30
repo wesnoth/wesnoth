@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -36,32 +36,32 @@ msgstr "naredba:"
 msgid "Compress saved games"
 msgstr "Kompresovane pozicije"
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
 msgstr ""
 
-#. [option]: type=combo
+#. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
 msgstr ""
@@ -317,24 +317,24 @@ msgid "Joystick: deadzone of the thruster"
 msgstr "Džojstik: mrtva zona ručke potiska"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [lua]: set_status
 #. [unstore_unit]
+#. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "poisoned"
 msgstr "otrovan"
 
-#. [lua]: generate_objectives
 #. [objectives]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:205
-#: data/lua/wml/objectives.lua:14853
+#: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
 msgstr "Preneseno zlato:"
 
-#. [lua]: generate_objectives
 #. [note]
+#. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:216
-#: data/lua/wml/objectives.lua:14854
+#: data/lua/wml/objectives.lua:53
 msgid "Notes:"
 msgstr "Beleške:"
 
@@ -1305,9 +1305,9 @@ msgstr ""
 "U ovom scenariju možete izdavati upute savezničkoj strani, tako što kliknete "
 "desnim na jedinicu koja joj pripada."
 
-#. [literal]
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
+#. [literal]
 #: data/core/macros/ai_controller.cfg:117
 #: data/core/macros/ai_controller.cfg:124
 #: data/core/macros/ai_controller.cfg:131
@@ -1364,8 +1364,8 @@ msgstr ""
 "gleda da porazi $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 
-#. [else]
 #. [then]
+#. [else]
 #: data/core/macros/ai_controller.cfg:236
 #: data/core/macros/ai_controller.cfg:240
 #: data/core/macros/ai_controller.cfg:371
@@ -1413,7 +1413,7 @@ msgstr ""
 "gleda da zaštiti $ai_controller.side_$ally_side|_current_settings.protect."
 "side_description|."
 
-#. [option]: type=objective
+#. [option]
 #: data/core/macros/ai_controller.cfg:451
 msgid "Defend a location..."
 msgstr "Brani položaj..."
@@ -1443,8 +1443,8 @@ msgstr "Biranje položaja otkazano"
 msgid "Clear objective orders"
 msgstr "Očisti naređenja o ciljevima"
 
-#. [revoke_behavior_orders]
 #. [revoke_objective_orders]
+#. [revoke_behavior_orders]
 #. [then]
 #: data/core/macros/ai_controller.cfg:549
 #: data/core/macros/ai_controller.cfg:562
@@ -1528,17 +1528,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonus za rani završetak)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:14915
+#: data/core/macros/deprecated-utils.cfg:40 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
 msgstr "Bonus za rani završetak."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:14917
+#: data/core/macros/deprecated-utils.cfg:43 data/lua/wml/objectives.lua:116
 msgid "No early finish bonus."
 msgstr "Bez bonusa za rani završetak."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:14925
+#: data/core/macros/deprecated-utils.cfg:46 data/lua/wml/objectives.lua:124
 msgid "No gold carried over to the next scenario."
 msgstr "Zlato se ne prenosi u sledeći scenario."
 
@@ -1571,7 +1571,7 @@ msgstr ""
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr "Nabasa na bunar želja. Koja ti je želja?"
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:24
 msgid "A swift victory"
 msgstr "Brza pobeda"
@@ -1584,7 +1584,7 @@ msgid ""
 msgstr ""
 "Ovim zlatnim novčićem, želim da se bitka okonča brzom i sigurnom pobedom."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:38
 msgid "Lots of gold"
 msgstr "Brdo zlata"
@@ -1594,7 +1594,7 @@ msgstr "Brdo zlata"
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Želim da mi se ovaj jedan zlatni novčić vrati desetostruko."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
 msgstr "Mir u celom Vesnotu."
@@ -1604,7 +1604,7 @@ msgstr "Mir u celom Vesnotu."
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Jedino vredno želje jeste mir u čitavoj zemlji."
 
-#. [option]: speaker=narrator
+#. [option]
 #: data/core/macros/items.cfg:66
 msgid "Don’t make a wish."
 msgstr "Ne poželi ništa."
@@ -2734,8 +2734,8 @@ msgstr ""
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
-#. [color_range]: id=1
 #. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:230
 msgid "Red"
 msgstr "crvena"
@@ -2750,8 +2750,8 @@ msgstr "svetlocrvena"
 msgid "Dark Red"
 msgstr "tamnocrvena"
 
-#. [color_range]: id=2
 #. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:236
 msgid "Blue"
 msgstr "plava"
@@ -2763,8 +2763,8 @@ msgstr "plava"
 msgid "Light blue"
 msgstr "svetlocrvena"
 
-#. [color_range]: id=3
 #. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:242
 msgid "Green"
 msgstr "zelena"
@@ -2774,26 +2774,26 @@ msgstr "zelena"
 msgid "Bright green"
 msgstr ""
 
-#. [color_range]: id=4
 #. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:248
 msgid "Purple"
 msgstr "ljubičasta"
 
-#. [color_range]: id=5
 #. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:260
 msgid "Black"
 msgstr "crna"
 
-#. [color_range]: id=6
 #. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:272
 msgid "Brown"
 msgstr "smeđa"
 
-#. [color_range]: id=7
 #. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:254
 msgid "Orange"
 msgstr "narandžasta"
@@ -2803,14 +2803,14 @@ msgstr "narandžasta"
 msgid "Bright orange"
 msgstr ""
 
-#. [color_range]: id=8
 #. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:86 data/core/team-colors.cfg:266
 msgid "White"
 msgstr "bela"
 
-#. [color_range]: id=9
 #. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:92 data/core/team-colors.cfg:278
 msgid "Teal"
 msgstr "petrolej"
@@ -3262,7 +3262,6 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:112 data/scenario-test.cfg:1031
 #: src/game_initialization/depcheck.cpp:488
 #: src/game_initialization/multiplayer_configure.cpp:89
@@ -3271,7 +3270,6 @@ msgstr "U redu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
 #: data/gui/window/select_orb_colors.cfg:123 data/scenario-test.cfg:1032
 #: src/dialogs.cpp:1165 src/dialogs.cpp:1271
 #: src/game_initialization/multiplayer_connect.cpp:388
@@ -3301,68 +3299,67 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14168 src/actions/attack.cpp:946
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:946
 msgid "female^poisoned"
 msgstr "otrovana"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "female^slowed"
 msgstr "usporena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14170 src/actions/attack.cpp:953
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:953
 msgid "slowed"
 msgstr "usporen"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "female^petrified"
 msgstr "okamenjena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14171 src/actions/attack.cpp:960
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:960
 msgid "petrified"
 msgstr "okamenjen"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "female^unhealable"
 msgstr "neisceljiva"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:14172
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr "neisceljiv"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14851
-#: src/game_initialization/mp_game_utils.cpp:71
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:71
 msgid "Victory:"
 msgstr "pobeda:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14852
+#: data/lua/wml/objectives.lua:51
 msgid "Defeat:"
 msgstr "poraz:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14872
+#: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
 msgstr "(još %d poteza)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14874
+#: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
 msgstr "(poslednji potez)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:14927
+#: data/lua/wml/objectives.lua:126
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% zlata se prenosi u sledeći scenario."
 
@@ -3378,10 +3375,12 @@ msgid ""
 "mainline campaign 'Heir to the Throne'"
 msgstr ""
 
+#. [language]
 #: data/scenario-test.cfg:4004
 msgid "very long"
 msgstr "vrlo dugačak"
 
+#. [language]
 #: data/scenario-test.cfg:4005
 msgid "electrical"
 msgstr "električni"
@@ -3571,23 +3570,23 @@ msgstr "izdaci"
 msgid "income"
 msgstr "prihodi"
 
-#. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
+#. [selected_unit_level]: id=selected-unit-level
 #: data/themes/classic.cfg:432 data/themes/widescreen.cfg:491
 #: data/themes/widescreen.cfg:617
 msgid "statuspanel^level"
 msgstr "nivo"
 
-#. [selected_unit_moves]: id=selected-unit-moves
 #. [unit_moves]: id=unit-moves
+#. [selected_unit_moves]: id=selected-unit-moves
 #: data/themes/classic.cfg:462 data/themes/widescreen.cfg:521
 #: data/themes/widescreen.cfg:647
 msgid "statuspanel^moves"
 msgstr "kretnji"
 
 # well-spelled: одб
-#. [selected_unit_defense]: id=selected-unit-defense
 #. [unit_defense]: id=unit-defense
+#. [selected_unit_defense]: id=selected-unit-defense
 #: data/themes/classic.cfg:471 data/themes/widescreen.cfg:530
 #: data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."

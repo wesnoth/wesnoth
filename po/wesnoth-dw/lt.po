@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Artwork"
 msgstr "Grafija"
 
-#. [lua]
+#. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -192,8 +192,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Nemirėlių pajėgos"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -385,10 +385,10 @@ msgstr ""
 msgid "Defeat all enemy leaders"
 msgstr "Nugalėkite visus priešų vadus"
 
-#. [side]
-#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
+#. [side]: type=Death Knight, id=Dead Knight
+#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
@@ -821,23 +821,23 @@ msgstr "Žinau kas tai. Tai trišakis audronaša. Jis leidžia valdyti žaibus."
 msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgstr "Trišakis yra 14-2, magiškas, šaudo <i>ugnimi</i>."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:829
 msgid "That sounds great! I’ll take it."
 msgstr "Skamba puikiai! Aš jį paimsiu."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Skamba bauginančiai. Tegul kas nors kitas jį paima."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Duokš jį man. Noriu valdyti žaibus!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
 msgid "I’ll just leave that trident where it is."
 msgstr "Gal tiesiog paliksiu šitą trišakį kur radau."
@@ -1335,7 +1335,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:654
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:667
 msgid "Now maybe we can head west undisturbed."
@@ -1346,7 +1346,7 @@ msgstr "Gal dabar galėsime netrukdomi traukti į vakarus."
 msgid "We have destroyed the undead."
 msgstr "Sunaikinome nemirėlius."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:676
 msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
@@ -1907,8 +1907,8 @@ msgstr ""
 "Čia tinkama vieta dideliam jų būriui, tad nesunku patikėti, kad greitai "
 "rasim jų ir daugiau."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2296,22 +2296,22 @@ msgstr "Aš su jumis nevyksiu. Kalaviją turėtų paimti kas nors iš jūsiški�
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgstr "Kalavijas yra 8-4. magiškas, deginantis <i>ugnimi</i>."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:962
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Aš paimsiu kalaviją ir ugnies pliūpsniais naikinsiu nemirėlius."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Šis kalavijas man netinka. Tegul jį ima kas nors kitas."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1006
 msgid "I’ll carry the sword."
 msgstr "Aš paimsiu kalaviją."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1015
 msgid "Let someone else have it."
 msgstr "Tegul kas nors kitas jį paima."
@@ -2562,17 +2562,17 @@ msgstr ""
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr ""
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:838
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "Nepanašu, kad ankstesniam šeimininkui padėjo. Man tokio nereikia."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:875
 msgid "I would like my life force protected."
 msgstr "Norėčiau, kad mano gyvastis būtų saugoma."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid "My life force feels fine as it is."
 msgstr "Aš gyvastim ir taip nesiskundžiu."
@@ -2697,15 +2697,15 @@ msgstr "kumštis"
 msgid "tail"
 msgstr "uodega"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:106
 #: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "pritrenktas"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:107
 #: data/campaigns/Dead_Water/units/Brawler.cfg:159
 msgid "female^stunned"
@@ -2868,12 +2868,12 @@ msgid ""
 "and adds three hitpoints."
 msgstr ""
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr "Palikime žiedą šikšnosparniui. Su juo jis bus naudingesnis."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 #, fuzzy
 #| msgid "Someone take that off of him before he hurts himself."
@@ -2890,12 +2890,12 @@ msgstr "Išbandysiu žiedą."
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "Jaučiuosi kitoks, o visi ginklai mažiau sveria!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr "Aš paimsiu žiedą ir galėsite pasikliauti mano jėga."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "Jaučiuosi nuo jo apdujęs. Tegul paima kas kitas."

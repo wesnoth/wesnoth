@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-02-28 16:59+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -96,8 +96,8 @@ msgstr "미술과 그래픽 디자인"
 msgid "Born to the Banner"
 msgstr "기수로 태어난 자"
 
-#. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:31
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:36
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:33
@@ -115,11 +115,11 @@ msgstr "기수로 태어난 자"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]
-#. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
 #. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:36
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:40
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -145,12 +145,12 @@ msgstr "남부 경비대"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]
-#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]
 #. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:58
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:62
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:99
@@ -1228,14 +1228,14 @@ msgstr "눈물의 계곡"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]
-#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Groth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:122
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
@@ -1407,8 +1407,8 @@ msgstr "이 빌어먹을 언데드 속에 들어가고 싶지 않아! 날 깊이
 msgid "You shall not die in vain! My bodyguard will avenge you!"
 msgstr "그대는 죽음은 헛되지 않을 것이다! 내 경호원들이 복수해 줄 것이다!"
 
-#. [message]: speaker=Deoran
 #. [message]: speaker=Sir Gerrick
+#. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:335
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:340
 msgid "You have a bodyguard?!"
@@ -1457,8 +1457,8 @@ msgstr "최소한 네놈은 더이상 우릴 괴롭히지 못하겠지!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! 계세요? 당신의 도움이 필요해서 왔습니다!"
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:557
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:568
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:378
@@ -1629,8 +1629,8 @@ msgstr "좋아. 이 강과 그 비밀을 파헤쳐 보도록 하지."
 msgid "Investigate the areas to the south of the Black River"
 msgstr "검은 강 남쪽 지역을 조사할 것"
 
-#. [message]: speaker=Sir Gerrick
 #. [message]: speaker=second_unit
+#. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:304
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:311
 msgid "The master of the undead is defeated!"
@@ -1777,7 +1777,7 @@ msgstr ""
 "흐음... 이건 생각을 좀 해 봐야겠어... 엘프들과 함께하면 도적들과 싸워야 하지"
 "만 도적들을 받아들이면 엘프들을 적으로 돌리게 되겠지..."
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:520
 msgid ""
 "Your crimes are too great. You will fall with the rest of the foul undead!"
@@ -1807,7 +1807,7 @@ msgstr "언데드의 근원을 찾아내어 파괴하라"
 msgid "Defeat Urza Afalas"
 msgstr "Urza Afalas를 격파하라"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:586
 msgid "Very well. All men must unite against the undead."
 msgstr "좋아. 모든 인간은 언데드에 대항해서 뭉쳐야 한다."
@@ -2018,7 +2018,6 @@ msgstr ""
 "가보겠습니다, Deoran! Kerlath 지방에서 당신이 돌아오시길 기다리겠습니다."
 
 #. [scenario]: id=06a_Tidings_Good_and_Ill
-#. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:5
 msgid "Tidings, Good and Ill"
 msgstr "좋은 소식, 나쁜 소식"
@@ -2219,6 +2218,7 @@ msgid "Hss... Who will watch over my brood now? Hss..."
 msgstr "히스슷... 이제 누가 내 새끼들을 돌보나? 히스슷..."
 
 #. [message]: speaker=Kramak
+#. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:365
 msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
 msgstr "호! 나 엘프 보인다. 엘프 맛있나? 나 엘프 잡아서 먹어본다."
@@ -2601,7 +2601,7 @@ msgstr "여기 와서 번갯불에 불을 붙이면 리치의 둥지로 가는 �
 msgid "What should we offer them for their help?"
 msgstr "저들의 도움의 댓가로 뭘 제시해야 할까?"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:457
 msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
@@ -2625,7 +2625,7 @@ msgid ""
 "help"
 msgstr "트롤 지도자를 만나서 $troll_help_cost 원을 주고 그들의 도움을 얻는다"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:518
 msgid "We will offer you freedom and a place in our lands."
 msgstr "그대들에게 자유를 주고 우리의 땅에서 살아갈 수 있게 해주겠소."
@@ -2663,12 +2663,12 @@ msgstr ""
 msgid "Ha, you can afford troll help this time?"
 msgstr ""
 
-#. [option]: speaker=Grek
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:614
 msgid "Here’s $troll_help_cost for your help against the undead."
 msgstr ""
 
-#. [option]: speaker=Grek
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:622
 msgid "No, sorry."
 msgstr ""
@@ -2825,7 +2825,7 @@ msgstr ""
 "안돼-! 이럴 순 없어. 내가 한때 이끌었던 엘프들이 나를 끝장내다니. 나의 희생에"
 "도 불구하고 결국에는 죽는구나..."
 
-#. [scenario]: id=07b_Pebbles_in_the_Flood, id=Mal M'Brin
+#. [scenario]: id=07b_Pebbles_in_the_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:5
 msgid "Pebbles in the Flood"
 msgstr ""
@@ -3128,8 +3128,8 @@ msgstr ""
 msgid "I have summoned the great Council of Westin!"
 msgstr ""
 
-#. [else]
 #. [then]
+#. [else]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:363
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:377
 msgid "Minister Mefel"

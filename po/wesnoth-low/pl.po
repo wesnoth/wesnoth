@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-06-01 20:42+0200\n"
 "Last-Translator: <nazwa.ekranowa@gmail.com>\n"
 "Language-Team: polski\n"
@@ -396,32 +396,32 @@ msgstr "Velon"
 msgid "T’baran"
 msgstr "T’baran"
 
-#. [modify_side]
-#. [side]
-#. [side]: id=Hraurg, type=Saurian Ambusher
 #. [side]: id=Tbaran, type=Orcish Warrior
 #. [side]: id=Wrulf, type=Orcish Warrior
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Orcish Warrior, id=Qumseh
+#. [side]: type=Orcish Warrior, id=Graur-Tan
+#. [modify_side]
+#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
+#. [side]
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
 #. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
+#. [side]: type=Saurian Ambusher, id=Shurm
+#. [side]: type=Saurian Ambusher, id=Trigr
+#. [side]: id=Hraurg, type=Saurian Ambusher
+#. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
+#. [side]: type=Troll Warrior, id=Traur
 #. [side]: type=Orcish Warlord, id=Kior-Pur
 #. [side]: type=Orcish Warlord, id=Mbiran
 #. [side]: type=Orcish Warlord, id=Tan-Durr
-#. [side]: type=Orcish Warlord, id=Urug-Tar
-#. [side]: type=Orcish Warrior, id=Graur-Tan
-#. [side]: type=Orcish Warrior, id=Qumseh
-#. [side]: type=Saurian Ambusher, id=Shurm
-#. [side]: type=Saurian Ambusher, id=Spahr
-#. [side]: type=Saurian Ambusher, id=Trigr
-#. [side]: type=Saurian Flanker, id=Hgyr
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Oracle, id=Shhar
-#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Troll Warrior, id=Trigrul
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:205
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:243
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:279
@@ -471,8 +471,8 @@ msgstr "Wrulf"
 msgid "Qumseh"
 msgstr "Qumseh"
 
-#. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Orcish Warrior, id=Graur-Tan
+#. [side]: type=Orcish Warlord, id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:321
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:176
 msgid "Graur-Tan"
@@ -690,11 +690,11 @@ msgstr ""
 "orków na południe. Kalenz nie miał wyboru - musiał poprowadzić swój oddział "
 "okrężną drogą, przez ziemie, których elfy wolały unikać..."
 
-#. [modify_side]
-#. [side]
 #. [side]: type=Dwarvish Steelclad
-#. [side]: type=Elvish Captain, id=East
+#. [modify_side]
 #. [side]: type=Elvish Ranger, id=Antaril
+#. [side]: type=Elvish Captain, id=East
+#. [side]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:109
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:168
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:128
@@ -1387,8 +1387,8 @@ msgstr ""
 msgid "Hraurg"
 msgstr "Hraurg"
 
-#. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Ambusher, id=Spahr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:185
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:124
 msgid "Spahr"
@@ -1953,8 +1953,8 @@ msgstr ""
 " składa odzyskane złoto w skarbcu elfów. Rozpoczniesz następny scenariusz z "
 "ustaloną ilością złota."
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:589
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:42
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:52
@@ -1996,8 +1996,8 @@ msgstr ""
 msgid "Kalenz"
 msgstr "Kalenz"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:595
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:62
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:82
@@ -4116,12 +4116,12 @@ msgstr ""
 "Musimy zabić Wielkiego Wodza i uciec, nim przeminie działanie eliksiru. Pora "
 "go wypić!"
 
-#. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
+#. [event]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:676
 msgid "Crelanu’s philter affecting Kalenz"
 msgstr "Kalenz jest pod wpływem eliksiru Crelanu"
 
-#. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
+#. [event]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:686
 msgid "Crelanu’s philter affecting Landar"
 msgstr "Landar jest pod wpływem eliksiru Crelanu"

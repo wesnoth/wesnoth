@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-11-25 15:34+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -110,7 +110,7 @@ msgstr "Pembetulan-naskah dan pembersihan arus utama"
 msgid "Artwork"
 msgstr "Karya seni"
 
-#. [lua]
+#. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -232,8 +232,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Pasukan Mayat Hidup"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -470,10 +470,10 @@ msgstr "(bonus yang berbeda untuk masing-masing)"
 msgid "Defeat all enemy leaders"
 msgstr "Kalahkan semua pemimpin musuh"
 
-#. [side]
-#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
+#. [side]: type=Death Knight, id=Dead Knight
+#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
@@ -977,23 +977,23 @@ msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgstr ""
 "Trisula ini 14-2, magis, serangan jarak jauh, dengan kerusakan <i>api</i>."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:829
 msgid "That sounds great! I’ll take it."
 msgstr "Itu kedengarannya bagus! Aku akan mengambilnya."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Kedengarannya menakutkan. Biarkan orang lain memilikinya."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Biarkan aku memiliki trisula itu. Saya ingin mengendalikan kilat!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
 msgid "I’ll just leave that trident where it is."
 msgstr "Aku hanya akan meninggalkan trisula itu di mana itu berasal."
@@ -1583,7 +1583,7 @@ msgstr ""
 "baik? Sudah cukup. Kami akan mengakhiri kalian sekali dan untuk selamanya."
 
 #. [message]: speaker=Kai Krellis
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:654
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:667
 msgid "Now maybe we can head west undisturbed."
@@ -1594,7 +1594,7 @@ msgstr "Sekarang mungkin kita bisa menuju ke barat tanpa terganggu."
 msgid "We have destroyed the undead."
 msgstr "Kami telah menghancurkan mayat hidup."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:676
 msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
@@ -2249,8 +2249,8 @@ msgstr ""
 "Ini adalah sebuah tempat yang baik untuk sebuah koloni yang besar, jadi saya "
 "kira kita akan melihat lebih banyak lagi segera."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2718,25 +2718,25 @@ msgstr ""
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgstr "Pedang ini adalah 8-4, magis, dengan kerusakan <i>api</i> ."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:962
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr ""
 "Aku akan membawa pedang ini dan menghancurkan mayat hidup dengan ledakan-"
 "ledakan api."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
 msgid "This sword is not right for me. Let someone else have it."
 msgstr ""
 "Pedang ini tidak cocok bagi saya. Biarkanlah orang lain yang memilikinya."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1006
 msgid "I’ll carry the sword."
 msgstr "Aku akan membawa pedang ini."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1015
 msgid "Let someone else have it."
 msgstr "Biarkanlah orang lain yang memilikinya."
@@ -3033,18 +3033,18 @@ msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr ""
 "Kalung ankh memberikan 70% daya tahan terhadap kerusakan <i>misterius</i>."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:838
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr ""
 "Ini tampaknya tidak membantu pemilik sebelumnya. Aku tidak menginginkannya."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:875
 msgid "I would like my life force protected."
 msgstr "Saya ingin kekuatan hidup saya dilindungi."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid "My life force feels fine as it is."
 msgstr "Kekuatan hidup saya terasa enak seperti dipengaruhinya."
@@ -3224,15 +3224,15 @@ msgstr "tinju"
 msgid "tail"
 msgstr "ekor"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:106
 #: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "membingungkan"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:107
 #: data/campaigns/Dead_Water/units/Brawler.cfg:159
 msgid "female^stunned"
@@ -3426,14 +3426,14 @@ msgstr ""
 "Kekuatan cincin menambah satu kerusakan dari semua serangan pemiliknya, dan "
 "menambah tiga hitpoint."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr ""
 "Kita akan membiarkan kelelawar itu memiliki cincinnya. Ini akan membuatnya "
 "lebih bermanfaat."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 #, fuzzy
 #| msgid "Someone take that off of him before he hurts himself."
@@ -3450,13 +3450,13 @@ msgstr "Saya akan mencoba memakai cincinnya."
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "Saya merasa berbeda, dan semua senjata-senjata saya lebih ringan!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr ""
 "Saya akan menggunakan cincin ini, dan anda dapat mengandalkan kekuatan saya."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "Benda ini membuat saya pusing. Orang lain bisa memilikinya."

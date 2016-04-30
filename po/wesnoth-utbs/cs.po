@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-08-23 02:21+0200\n"
 "Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
 "Language-Team: Mistic\n"
@@ -55,8 +55,8 @@ msgstr ""
 msgid "(Expert level, 10 scenarios.)"
 msgstr "(Obtížnost: expert, 10 scénářů.)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Hunter, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
 msgid "Desert Hunter"
@@ -76,15 +76,15 @@ msgstr "(normální)"
 msgid "Challenging"
 msgstr "(nelehká)"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
 msgid "Desert Sentinel"
 msgstr "Pouštní hlídka"
 
-#. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
 msgid "Desert Prowler"
@@ -149,8 +149,8 @@ msgstr ""
 msgid "The Morning After"
 msgstr "Ráno poté"
 
-#. [side]
 #. [side]: id=Kaleh, type=Desert Fighter
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:41
@@ -178,10 +178,10 @@ msgstr "Elfové z Quenoth"
 msgid "Monsters"
 msgstr "Monstra"
 
-#. [side]
 #. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
 #. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
 #. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:74
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:102
@@ -463,8 +463,8 @@ msgstr "Eranor"
 msgid "Seela"
 msgstr "Seela"
 
-#. [message]: speaker=Garak
 #. [message]: speaker=Vecnu
+#. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:348
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:542
 msgid "Kaleh, Nym, help us!"
@@ -479,8 +479,8 @@ msgstr "Kalehu, Nym, pomozte nám!"
 msgid "What in Uria’s name is that?"
 msgstr "Co u Urie je tohle?"
 
-#. [message]: speaker=Garak
 #. [message]: speaker=Vecnu
+#. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:358
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:552
 msgid ""
@@ -1382,7 +1382,7 @@ msgstr ""
 msgid "Should I take this ring?"
 msgstr "Mám si vzít tento prsten?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:485
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1628
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:641
@@ -1401,7 +1401,7 @@ msgstr "Prsten cestovatele"
 msgid "At the end of each turn, this unit takes no damage from the desert."
 msgstr "Tato jednotka není na konci tahu zraňována pouštním horkem."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:523
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:674
 msgid "No, I think someone else should wear it."
@@ -1445,8 +1445,8 @@ msgstr ""
 "Museli bychom ujít další kus cesty v nepříjemném terénu. Pokud se jim chceme "
 "vyhnout, bylo by nejlepší jít přímo na sever hledat další oázu."
 
-#. [message]: type=Ogre
 #. [message]: type=Ogre, role=Hunting Ogre
+#. [message]: type=Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:626
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:664
 msgid "Fresh meat!"
@@ -1566,12 +1566,12 @@ msgstr ""
 msgid "Elyssa"
 msgstr "Elyssa"
 
-#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1094
 msgid "Go’hag"
 msgstr "Go’hag"
 
-#. [event]: id=Go'hag, id=Go'hag, id=Go'hag
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1095
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1097
@@ -1884,7 +1884,7 @@ msgstr ""
 "Tato voda učiní tvé ruční zbraně <i>nezemskými</i>, tudíž velmi účinnými "
 "proti nemrtvým."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1657
 msgid "No, I think someone else should take it."
 msgstr "Ne, myslím, že by si jej měl vzít někdo jiný."
@@ -2401,8 +2401,8 @@ msgstr ""
 "Ne! Tato soutěž ještě neskončila, Azkotepe. Předvedu ti ukázku mé opravdové "
 "moci."
 
-#. [event]
 #. [then]
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:921
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:977
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1060
@@ -2499,8 +2499,8 @@ msgstr ""
 "neukončíme. Musíme zničit jedno zlo z těch dvou za jakoukoliv cenu. Nehodlám "
 "nechat tu... tu věc ovládat tělo mého přítele."
 
-#. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
+#. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:998
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1081
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1203
@@ -3409,7 +3409,7 @@ msgstr ""
 "„<i>Pokud se odvážíš zvednout tuto čepel, zjeví se ti to, čeho se nejvíce "
 "obáváš</i>“. Meč nevypadá špatně, ale odvážím se vzít jej?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:819
 msgid "I fear no creature, I will take the blade!"
 msgstr "Nebojím se ničeho, jdu si vzít ten meč!"
@@ -3457,7 +3457,7 @@ msgstr "Už jsem za svůj život viděl ledacos, ale tohle je prostě nechutné.
 msgid "The voices say I have no choice, I must attack!"
 msgstr "Hlasy mi nedávají volbu, musím útočit!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:869
 msgid "I don’t like the sound of this. I’m out of here."
 msgstr "Nelíbí se mi to. Pryč odtud!"
@@ -3476,8 +3476,8 @@ msgstr ""
 "by to mohlo být k něčemu dobré."
 
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
-#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:930
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2386
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2335
@@ -3585,16 +3585,16 @@ msgstr ""
 msgid "A Subterranean Struggle"
 msgstr "Podzemní šarvátka"
 
-#. [modify_side]
 #. [side]
+#. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:49
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:93
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1400
 msgid "team_name^Trolls"
 msgstr "Trólové"
 
-#. [modify_side]
 #. [side]
+#. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:139
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:184
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1333
@@ -3858,8 +3858,8 @@ msgstr "Pavouci nejsou hmyz."
 msgid "Thanks for the clarification."
 msgstr "Díky za vysvětlení."
 
-#. [event]
 #. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:685
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:627
 msgid "Wounded Dwarf"
@@ -4059,8 +4059,8 @@ msgstr ""
 "Zdá se, že naše dílo tady ještě neskončilo. Dobrá, shromážděte se, musíme "
 "jít za Zurgem."
 
-#. [event]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:947
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:270
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1672
@@ -4152,7 +4152,7 @@ msgstr ""
 "Zdá se, že naše dílo tady ještě neskončilo. Dobrá, shromážděte se, musíme "
 "jít za Grimnirem."
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1084
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1085
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1086
@@ -4169,7 +4169,7 @@ msgstr ""
 msgid "Dwarf Defender"
 msgstr "Trpaslík obránce"
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1089
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1104
@@ -4185,12 +4185,12 @@ msgstr "Trpaslík obránce"
 msgid "Troll Defender"
 msgstr "Troll obránce"
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1097
 msgid "Dwarf Leader"
 msgstr "Vůdce trpaslíků"
 
-#. [event]: (role=Dwarf Defender)}, (role=Dwarf Defender)}
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1117
 msgid "Troll Leader"
 msgstr "Vůdce trollů"
@@ -4329,7 +4329,7 @@ msgstr ""
 msgid "But they both look evenly matched. Who should we ally with?"
 msgstr "Ale zdá se, že ani jedni nemají velkou převahu. S kým se spojíme?"
 
-#. [option]: speaker=$explorer.id
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1322
 msgid "Let’s aid the dwarves."
 msgstr "Pomozme trpaslíkům."
@@ -4360,7 +4360,7 @@ msgstr "Fundin zemře"
 msgid "Death of Nori"
 msgstr "Nori zemře"
 
-#. [option]: speaker=$explorer.id
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1389
 msgid "Let’s aid the trolls."
 msgstr "Pomozme trollům."
@@ -4403,8 +4403,8 @@ msgstr ""
 "probojujeme ke tvrzi, měli bychom být schopní odtamtud začít přivolávat naše "
 "bojovníky na pomoc v bitvě."
 
-#. [modify_unit]
 #. [then]
+#. [modify_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1481
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1483
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1484
@@ -4752,8 +4752,8 @@ msgstr "Zabij vůdce trollů"
 msgid "Troll Interrogator"
 msgstr "Troll mučitel"
 
-#. [unit]: type=Troll Whelp
 #. [unit]: type=Troll Whelp, id=Troll Assistant
+#. [unit]: type=Troll Whelp
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:302
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:332
 msgid "Troll Assistant"
@@ -4895,8 +4895,8 @@ msgstr "Narušitelé! Zabte je!"
 msgid "Tell us where your leader is hiding!"
 msgstr "Řekni nám, kde se skrývá váš velitel!"
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=Wounded Dwarf
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:641
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:582
 msgid "Never!"
@@ -5376,7 +5376,7 @@ msgstr ""
 "výjimečných opatřeních; navíc mám pocit, že se nám ještě může hodit, než "
 "tato cesta skončí."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1905
 msgid "It might be useful, I’ll take it."
 msgstr "Může se hodit, vezmu si ji."
@@ -5400,7 +5400,7 @@ msgstr "Smaragdová hůlka jedu"
 msgid "This wand makes this unit’s melee attacks deal poison damage."
 msgstr "Tato hůlka změní útoky nablízko této jednotky na jedovaté."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1938
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1714
 msgid "On second thought, it’s better to leave the dead in peace."
@@ -5420,10 +5420,10 @@ msgstr "V državách trpaslíků"
 msgid "Enemies"
 msgstr "Nepřátelé"
 
-#. [side]
 #. [side]: id=Great Leader Darmog, type=Great Troll
-#. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]: id=Melusand, type=Mermaid Diviner
+#. [side]: id=King Thurongar, type=Dwarvish Lord
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:77
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:54
@@ -5441,8 +5441,8 @@ msgstr "Náčelník trpaslíků"
 msgid "Kill Dwarf Chieftain"
 msgstr "Zabij náčelníka trpaslíků"
 
-#. [event]
 #. [unit]: type=Dwarvish Steelclad, id=Dwarf Sergeant
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:292
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:459
 msgid "Dwarf Sergeant"
@@ -5514,11 +5514,11 @@ msgstr ""
 msgid "Once you done moving into position, Zurg will destroy wall."
 msgstr "Jakmile dokončíš přesun do pozice, Zurg zničí stěnu."
 
-#. [event]
-#. [unit]: type=Dwarvish Berserker
-#. [unit]: type=Dwarvish Dragonguard
 #. [unit]: type=Dwarvish Sentinel
 #. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Berserker
+#. [unit]: type=Dwarvish Dragonguard
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:463
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:464
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:466
@@ -6033,7 +6033,7 @@ msgstr ""
 "dobrého, ale ten opasek vypadá jako kouzelný a jeho dřívější majitel jej "
 "určitě nebude postrádat."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1670
 msgid "I fear no ghosts, I’ll take it."
 msgstr "Nebojím se žádných duchů, vezmu si jej."
@@ -6485,7 +6485,7 @@ msgstr ""
 "A teď, myslím, že byste se měli vydat na cestu co nejdříve. Pro teď se "
 "trollové stáhli do svých děr, ale kdoví kdy opět zaútočí."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:651
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:639
 msgid "No, I think someone else should wield it."
@@ -6506,8 +6506,8 @@ msgstr "Velký vůdce Darmog"
 msgid "Nog"
 msgstr "Nog"
 
-#. [unit]: type=Troll Shaman
 #. [unit]: type=Troll Shaman, id=Spiritual Advisor
+#. [unit]: type=Troll Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:212
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:227
 msgid "Spiritual Advisor"
@@ -6892,8 +6892,8 @@ msgstr "Co?"
 msgid "It felt like a distant rumbling. And what’s that roaring sound?"
 msgstr "Připadlo mi to jako vzdálený rachot. A co je to za hřmění?"
 
-#. [unit]: type=Troll Shaman, role=avenger
 #. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Shaman, role=avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:535
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:556
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:577
@@ -6913,8 +6913,8 @@ msgstr ""
 "námi!"
 
 #. [unit]: type=Dwarvish Fighter
-#. [unit]: type=Dwarvish Pathfinder, role=avenger
 #. [unit]: type=Dwarvish Thunderer
+#. [unit]: type=Dwarvish Pathfinder, role=avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:606
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:627
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:648
@@ -7654,7 +7654,7 @@ msgstr ""
 "by mohly být následky. Docela určitě nechci, aby na mě něco s takovou silou "
 "zaútočilo."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1972
 msgid "Break the circle"
 msgstr "Prolom kruh"
@@ -7707,7 +7707,7 @@ msgid ""
 msgstr ""
 "Nebyla by to moje první volba. Ale může se ukázat užitečný. Copak asi jí?"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2037
 msgid "Leave that thing alone."
 msgstr "Nech tu věc být."
@@ -7827,7 +7827,7 @@ msgstr ""
 "rezavě, ale s trochou námahy za ni určitě zatáhnu. Nevím, co to udělá, ale "
 "moc možností nám nezbývá."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2192
 msgid "Pull the lever."
 msgstr "Použij páku."
@@ -7875,7 +7875,7 @@ msgstr ""
 "Tak, je to ta východní chodba. Nemám představu kam vede, ale jak voda "
 "stoupá, bude brzo lepší být kdekoliv jinde než tady."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2256
 msgid "Leave it alone."
 msgstr "Nech to být."
@@ -8399,8 +8399,8 @@ msgstr ""
 "tvé pomoci bychom nikdy nenašli cestu. Jenže, teď když jsou tunely zatopené, "
 "jak najdeš cestu zpět ke svému lidu?"
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2819
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2840
 msgid ""
@@ -8412,8 +8412,8 @@ msgstr ""
 "jsi to ty a tví společníci, kdo porazil mnohá nebezpečí a překážky na cestě "
 "k záchraně. Málokdy jsem byl za svůj život svědkem takové odvahy a hrdinství."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2824
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2845
 msgid ""
@@ -8425,8 +8425,8 @@ msgstr ""
 "tunely které vedou zpět dolů do mé domoviny, nevím, kde je hledat. Vím o té "
 "zemi nad námi tak málo jako vy."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2829
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2850
 msgid ""
@@ -8527,8 +8527,8 @@ msgstr ""
 "blýská, ale nevím, co to je."
 
 #. [event]
-#. [side]
 #. [unit]: type=Divine Avatar, id=Eloh
+#. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3055
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1704
@@ -8579,8 +8579,8 @@ msgstr ""
 "Snad nepochybuješ o mé moci? Vyšel jsi z temnot, a já se ti zjevuji, abych "
 "ti gratulovala."
 
-#. [message]: speaker=Zhul
 #. [message]: speaker=unit
+#. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3128
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3145
 msgid "Kaleh, who are you talking to?"
@@ -8712,8 +8712,8 @@ msgstr ""
 "Ovšemže jsem. Ach, jak málo toho chápeš. Nestarej se o všechny ty zbytečné "
 "otázky. Přijď za mnou a vše bude hned jasné."
 
-#. [event]
 #. [unit]: type=Human Commander, id=Sergeant Durstrag
+#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3256
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3390
 msgid "Sergeant Durstrag"
@@ -8967,8 +8967,8 @@ msgstr ""
 "Nog taky nemá rád lidi. Jsou skoupí. Ale dělají skvělé zvuky když se "
 "rozmačkávají."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3460
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3466
 msgid ""
@@ -9624,10 +9624,10 @@ msgstr "Krev není voda"
 msgid "Darius"
 msgstr "Darius"
 
-#. [side]
 #. [side]: type=Human Commander, id=Darius
-#. [side]: type=Javelineer, id=Alastra
+#. [side]
 #. [side]: type=Shock Trooper, id=Zelgant
+#. [side]: type=Javelineer, id=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:82
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:143
@@ -9718,8 +9718,8 @@ msgstr ""
 "Stromy vypadají velké a silné, jako trollové. A taky tmavé. Nog unavený "
 "chozením pod horkým sluncem."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:416
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:422
 msgid ""
@@ -10407,8 +10407,8 @@ msgstr ""
 "Ti smradlaví elfové osvobodili některé mořské lidi. A pokračují v boji! "
 "Provést plán B! A zabte ty mořské lidi!"
 
-#. [message]: speaker=Alastra
 #. [message]: speaker=Darius
+#. [message]: speaker=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1520
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1627
 msgid "I must go report to the Iron Council. Keep fighting!"
@@ -10768,8 +10768,8 @@ msgstr ""
 "rozkazy. Ale druzí elfové musí být na dalším ostrově. Jak překročíme "
 "hlubokou vodu?"
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1844
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1850
 msgid ""
@@ -11219,8 +11219,8 @@ msgstr ""
 "Nog bojí velké vody a ostrého slunce, ale Nog nezahanbí Velkého vůdce. Velký "
 "vůdce řekl jdi s Kalehem, a Nog to udělá."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2372
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2378
 msgid ""
@@ -11483,10 +11483,10 @@ msgstr "Rozhovor s rybami"
 msgid "Melusand"
 msgstr "Melusand"
 
-#. [unit]: type=Merman Entangler
+#. [unit]: type=Merman Warrior
 #. [unit]: type=Merman Hoplite
 #. [unit]: type=Merman Spearman
-#. [unit]: type=Merman Warrior
+#. [unit]: type=Merman Entangler
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:90
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:98
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:106
@@ -11573,8 +11573,8 @@ msgstr ""
 "společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt si u mne "
 "dobrou pověst."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:205
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:216
 msgid "Thank you for your kindness."
@@ -12049,8 +12049,8 @@ msgstr ""
 "Nog neví jestli věří rybí paní. Co když chce aby elfové bojovali za ni v "
 "její válce?"
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:433
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:439
 msgid ""
@@ -12241,8 +12241,8 @@ msgstr ""
 "armádu trollů, ale teď je tu jenom Nog. I tak Nog udělá všechno aby ji "
 "zničil."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:539
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:545
 msgid ""
@@ -12687,10 +12687,10 @@ msgstr "Bitva o ostrov Zocthanol"
 msgid "Boyicht"
 msgstr "Boyicht"
 
-#. [side]
+#. [side]: type=Saurian Oracle, id=Boyicht
 #. [side]: type=Draug, id=Kelur
 #. [side]: type=Orcish Sovereign, id=Graghht
-#. [side]: type=Saurian Oracle, id=Boyicht
+#. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:94
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:131
@@ -13334,8 +13334,8 @@ msgstr ""
 "bojovníka jako Nog. Ostatní malí elfové se můžou bát, ale Nog nebojí žádného "
 "tmavého místa. Nog doufá že na něj zbude něco k bití až tam dojde."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1410
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1416
 msgid ""
@@ -13727,8 +13727,8 @@ msgstr ""
 "Uh. Nog je pokrytý krví a zbytky a hnusnou modrou břečkou. Nog neví, jaká "
 "potvora to byla, ale mrtvá smrdí stejně hnusně jako když byla živá."
 
-#. [message]: speaker=Jarl
 #. [message]: speaker=Rogrimir
+#. [message]: speaker=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1439
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1445
 msgid ""
@@ -15095,8 +15095,8 @@ msgstr ""
 "křídla ne nepodobná vážčím, která je proměňují v nádherná stvoření. Dokáží "
 "díky nim bez problémů přelétat přes téměř jakýkoliv terén."
 
-#. [unit_type]: id=Desert Shyde, race=elf
 #. [unit_type]: id=Desert Star
+#. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Star.cfg:25
 msgid "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
@@ -15148,8 +15148,8 @@ msgstr ""
 "samotných bohů, učiněné na čas v tomto světě skutečnými. Blahoslavení ti, "
 "kdo mají to štěstí patřit na takové podoby síly a dokonalosti."
 
-#. [attack]: type=arcane
 #. [attack]: type=impact
+#. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:15
@@ -15302,8 +15302,8 @@ msgid "Desert Youth"
 msgstr "Pouštní mladík"
 
 #. [unit_type]: id=Nym Hunter
-#. [unit_type]: id=Nym Prowler
 #. [unit_type]: id=Nym Sentinel
+#. [unit_type]: id=Nym Prowler
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:76
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:97
@@ -15979,7 +15979,6 @@ msgstr "žízeň"
 msgid "refreshed"
 msgstr "osvěžený"
 
-#. [lua]: id=teacher.id } } }
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
 msgstr ""

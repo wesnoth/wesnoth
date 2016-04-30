@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-11-25 13:06+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -96,8 +96,8 @@ msgstr "Seni dan Desain Grafis"
 msgid "Born to the Banner"
 msgstr "Terlahir untuk Bendera"
 
-#. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:31
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:36
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:33
@@ -115,11 +115,11 @@ msgstr "Terlahir untuk Bendera"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]
-#. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
 #. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:36
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:40
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -145,12 +145,12 @@ msgstr "Penjaga Selatan"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]
-#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]
 #. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:58
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:62
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:99
@@ -1288,14 +1288,14 @@ msgstr "Lembah Air Mata"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]
-#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Groth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:122
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
@@ -1477,8 +1477,8 @@ msgstr ""
 msgid "You shall not die in vain! My bodyguard will avenge you!"
 msgstr "Anda tidak akan mati sia-sia! Pengawalku akan membalaskan kematianmu!"
 
-#. [message]: speaker=Deoran
 #. [message]: speaker=Sir Gerrick
+#. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:335
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:340
 msgid "You have a bodyguard?!"
@@ -1527,8 +1527,8 @@ msgstr "Anda, setidaknya, tidak akan mengganggu kami lagi!"
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Apakah kau disana? Kami datang untuk memohon bantuan mu!"
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:557
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:568
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:378
@@ -1706,8 +1706,8 @@ msgstr "Baiklah. Kita akan mencoba sungai dan menyelidiki rahasianya."
 msgid "Investigate the areas to the south of the Black River"
 msgstr "Memeriksa daerah di sebelah selatan  Sungai  Hitam"
 
-#. [message]: speaker=Sir Gerrick
 #. [message]: speaker=second_unit
+#. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:304
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:311
 msgid "The master of the undead is defeated!"
@@ -1863,7 +1863,7 @@ msgstr ""
 "elf, saya harus melawan para bandit, tetapi jika aku bersekutu dengan para "
 "bandit aku akan bermusuhan dengan para elf..."
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:520
 msgid ""
 "Your crimes are too great. You will fall with the rest of the foul undead!"
@@ -1895,7 +1895,7 @@ msgstr "Menemukan sumber mayat hidup dan menghancurkannya"
 msgid "Defeat Urza Afalas"
 msgstr "Kalahkan Urza Afalas"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:586
 msgid "Very well. All men must unite against the undead."
 msgstr "Baiklah. Semua pihak harus bersatu melawan mayat hidup."
@@ -2149,7 +2149,6 @@ msgstr ""
 "anda kembali ke Propinsi Kerlath."
 
 #. [scenario]: id=06a_Tidings_Good_and_Ill
-#. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:5
 msgid "Tidings, Good and Ill"
 msgstr "Kabar, Baik dan Buruk"
@@ -2359,6 +2358,7 @@ msgid "Hss... Who will watch over my brood now? Hss..."
 msgstr "Hss... Siapa yang akan menjaga anak-anak saya sekarang? Hss..."
 
 #. [message]: speaker=Kramak
+#. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:365
 msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
 msgstr "Ho! Saya melihat elf. Elf lezat? Saya ingin elf untuk dimakan."
@@ -2781,7 +2781,7 @@ msgstr ""
 msgid "What should we offer them for their help?"
 msgstr "Apa yang harus kita tawarkan pada mereka untuk bantuan mereka?"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:457
 msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
@@ -2809,7 +2809,7 @@ msgstr ""
 "Bertemu dan membayar pemimpin troll $troll_help_cost emas untuk  menerima  "
 "bantuan  mereka"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:518
 msgid "We will offer you freedom and a place in our lands."
 msgstr "Kami akan menawarkan anda kebebasan dan tempat di wilayah kami."
@@ -2850,12 +2850,12 @@ msgstr ""
 msgid "Ha, you can afford troll help this time?"
 msgstr "Ha, anda mampu mendapatkan bantuan troll kali ini?"
 
-#. [option]: speaker=Grek
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:614
 msgid "Here’s $troll_help_cost for your help against the undead."
 msgstr "Ini $troll_help_cost untuk bantuan anda melawan mayat hidup."
 
-#. [option]: speaker=Grek
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:622
 msgid "No, sorry."
 msgstr "Tidak, maaf."
@@ -3016,7 +3016,7 @@ msgstr ""
 "Tidaaak! Ini tidak mungkin terjadi. Para elf yang pernah ku pimpin telah "
 "menghancurkan ku. Setelah semua yang telah saya korbankan, Saya tetap mati..."
 
-#. [scenario]: id=07b_Pebbles_in_the_Flood, id=Mal M'Brin
+#. [scenario]: id=07b_Pebbles_in_the_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:5
 msgid "Pebbles in the Flood"
 msgstr "Kerikil dalam Air Bah"
@@ -3364,8 +3364,8 @@ msgstr "Memang, Tuan, kami siap untuk mempertahankan rumah kami!"
 msgid "I have summoned the great Council of Westin!"
 msgstr "Saya telah memanggil Dewan besar Westin!"
 
-#. [else]
 #. [then]
+#. [else]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:363
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:377
 msgid "Minister Mefel"

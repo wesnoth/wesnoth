@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2013-03-10 19:43+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -113,7 +113,7 @@ msgstr "Correzione testi e adattamento alle campagne ufficiali"
 msgid "Artwork"
 msgstr "Progettazione grafica"
 
-#. [lua]
+#. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -237,8 +237,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "Le armate dei non-morti"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -471,10 +471,10 @@ msgstr "(bonus differenti per ognuno di loro)"
 msgid "Defeat all enemy leaders"
 msgstr "Sconfiggi tutti i condottieri nemici"
 
-#. [side]
-#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
+#. [side]: type=Death Knight, id=Dead Knight
+#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
@@ -962,23 +962,23 @@ msgstr ""
 "Questo tridente causa un danno 14-2, magico, a distanza, di elemento "
 "<i>fuoco</i>."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:829
 msgid "That sounds great! I’ll take it."
 msgstr "È fantastico! Lo prenderò."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
 msgid "That sounds frightening. Let someone else have it."
 msgstr "Sembra spaventoso. Lasciamolo prendere a qualcun altro."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "Lasciami prendere quel tridente. Voglio controllare i fulmini!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
 msgid "I’ll just leave that trident where it is."
 msgstr "Lascerò quel tridente dov’è."
@@ -1553,7 +1553,7 @@ msgstr ""
 "essere gentili? Così sia. Vi stermineremo una volta per tutte."
 
 #. [message]: speaker=Kai Krellis
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:654
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:667
 msgid "Now maybe we can head west undisturbed."
@@ -1564,7 +1564,7 @@ msgstr "Forse ora possiamo dirigerci verso ovest indisturbati."
 msgid "We have destroyed the undead."
 msgstr "Abbiamo sconfitto i non-morti."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:676
 msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
@@ -2197,8 +2197,8 @@ msgstr ""
 "Questo è un buon posto per una grande colonia, immagino ne vedremo altri "
 "presto."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2652,22 +2652,22 @@ msgstr ""
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgstr "Questa spada causa un danno di <i>fuoco</i> 8-4, magico."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:962
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Io porterò questa spada e distruggerò i non morti con colpi infuocati."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Questa spada non è adatta per me. Falla avere a qualcun altro."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1006
 msgid "I’ll carry the sword."
 msgstr "Porterò io la spada."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1015
 msgid "Let someone else have it."
 msgstr "Lasciamolo prendere a qualcun altro."
@@ -2957,17 +2957,17 @@ msgstr "Certamente. È un ankh, e quel pendente aumenterà la tua forza vitale."
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr "L’ankh fornisce una resistenza al danno <i>arcano</i> del 70%."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:838
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "Non sembra abbia aiutato il suo precedente possessore. Non la voglio."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:875
 msgid "I would like my life force protected."
 msgstr "Voglio la mia forza vitale protetta."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid "My life force feels fine as it is."
 msgstr "La mia forza vitale sta bene così."
@@ -3135,15 +3135,15 @@ msgstr "pugno"
 msgid "tail"
 msgstr "coda"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:106
 #: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "stordito"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:107
 #: data/campaigns/Dead_Water/units/Brawler.cfg:159
 msgid "female^stunned"
@@ -3333,13 +3333,13 @@ msgstr ""
 "L’anello del potere aumenta il danno di tutti gli attacchi del suo "
 "possessore di un punto, e aggiunge tre punti vita."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr ""
 "Lasceremo l’anello al pipistrello. Lo farà diventare ancora più di aiuto."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 #, fuzzy
 #| msgid "Someone take that off of him before he hurts himself."
@@ -3357,12 +3357,12 @@ msgstr "Proverò l’anello."
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "Mi sento differente, tutte le mie armi sono più leggere!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr "Prenderò questo anello, e potrai contare sulla mia forza."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "Questo anello mi fa girare la testa. Lo lascerò a qualcun altro."

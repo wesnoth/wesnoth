@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:50+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2016-03-05 14:02+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -148,12 +148,12 @@ msgstr "Editor Brush"
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
-#. [topic]: id=editor_starting_positions_in_general
-#. [topic]: id=editor_time_schedule
-#. [topic]: id=editor_tool_item
 #. [topic]: id=editor_tool_label
-#. [topic]: id=editor_tool_unit
+#. [topic]: id=editor_tool_item
 #. [topic]: id=editor_tool_village
+#. [topic]: id=editor_tool_unit
+#. [topic]: id=editor_time_schedule
+#. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:14 data/core/editor/help.cfg:22
 #: data/core/editor/help.cfg:79 data/core/editor/help.cfg:87
 #: data/core/editor/help.cfg:105 data/core/editor/help.cfg:113
@@ -690,11 +690,6 @@ msgstr ""
 #: data/core/editor/help.cfg:281
 msgid "Scenario Format"
 msgstr "Scenario Format"
-
-#. [topic]: id=scenario_format
-#: data/core/editor/help.cfg:282
-msgid " "
-msgstr " "
 
 #. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:289
@@ -3583,9 +3578,9 @@ msgstr ""
 msgid "General Commands"
 msgstr "General Commands"
 
-#. [topic]: id=debug_commands
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -4872,9 +4867,9 @@ msgstr "undead"
 msgid "female^undead"
 msgstr "undead"
 
-#. [trait]: id=elemental
-#. [trait]: id=mechanical
 #. [trait]: id=undead
+#. [trait]: id=mechanical
+#. [trait]: id=elemental
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
 #: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
@@ -6240,6 +6235,9 @@ msgstr "The Battle for Wesnoth Help"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Parse error when parsing help text: "
+
+#~ msgid " "
+#~ msgstr " "
 
 #~ msgid ""
 #~ "In combat, your units will inevitably take damage. When a unit "

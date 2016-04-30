@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-03-02 18:20+0100\n"
 "Last-Translator: Nils Kneuper (Ivanovic) <crazy-ivanovic@gmx.net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -101,8 +101,8 @@ msgstr "Grafik"
 msgid "Born to the Banner"
 msgstr "Mit Fahne und Panier"
 
-#. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:31
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:36
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:33
@@ -120,11 +120,11 @@ msgstr "Mit Fahne und Panier"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]
-#. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
 #. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:36
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:40
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -150,12 +150,12 @@ msgstr "Die Südwacht"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]
-#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
 #. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]
 #. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:58
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:62
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:99
@@ -1285,14 +1285,14 @@ msgstr "Das Tal der Tränen"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]
-#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Outlaw, id=Jera Ilras
-#. [side]: type=Soulless, id=Groth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:122
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
@@ -1465,8 +1465,8 @@ msgstr "Überlasst mich nicht den Untoten, Feunde. Begrabt mich tief…"
 msgid "You shall not die in vain! My bodyguard will avenge you!"
 msgstr "Euer Tod soll nicht ungestraft bleiben! Leibwache! Herbei!"
 
-#. [message]: speaker=Deoran
 #. [message]: speaker=Sir Gerrick
+#. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:335
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:340
 msgid "You have a bodyguard?!"
@@ -1515,8 +1515,8 @@ msgstr "Zumindest werdet ihr uns keine Schwierigkeiten mehr bereiten."
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin? Seid ihr hier? Wir sind hier, um eure Hilfe zu erbitten."
 
-#. [message]: speaker=Kramak
 #. [message]: speaker=narrator
+#. [message]: speaker=Kramak
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:557
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:568
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:378
@@ -1692,8 +1692,8 @@ msgstr "In Ordnung. Suchen wir diesen Fluss und entringen ihm sein Geheimnis!"
 msgid "Investigate the areas to the south of the Black River"
 msgstr "Untersucht das Gebiet jenseits des Schwarzen Flusses."
 
-#. [message]: speaker=Sir Gerrick
 #. [message]: speaker=second_unit
+#. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:304
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:311
 msgid "The master of the undead is defeated!"
@@ -1847,7 +1847,7 @@ msgstr ""
 "ich die Banditen bekämpfen. Mache ich gemeinsame Sache mit den Banditen, "
 "habe ich die Elfen als Feinde…"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:520
 msgid ""
 "Your crimes are too great. You will fall with the rest of the foul undead!"
@@ -1877,7 +1877,7 @@ msgstr "Findet den Ursprung der Untoten und vernichtet diesen"
 msgid "Defeat Urza Afalas"
 msgstr "Besiegt Urza Afalas"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:586
 msgid "Very well. All men must unite against the undead."
 msgstr ""
@@ -2131,7 +2131,6 @@ msgstr ""
 "Kerlath zurückkehrt."
 
 #. [scenario]: id=06a_Tidings_Good_and_Ill
-#. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:5
 msgid "Tidings, Good and Ill"
 msgstr "Von guten und schlechten Nachrichten"
@@ -2336,6 +2335,7 @@ msgid "Hss... Who will watch over my brood now? Hss..."
 msgstr "Hss… Wer wird szich nun um mein Brut kümmern? Hss…"
 
 #. [message]: speaker=Kramak
+#. The ogre purposely has very bad grammar, because he is very stupid.
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:365
 msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
 msgstr "Ho! Ich sehen Elfen. Schmecken Elfen? Ich werden tun Elfen essen."
@@ -2754,7 +2754,7 @@ msgstr ""
 msgid "What should we offer them for their help?"
 msgstr "Was soll ich ihnen für ihre Hilfe geben?"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:457
 msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
@@ -2782,7 +2782,7 @@ msgstr ""
 "Trefft euch mit dem Anführer der Trolle und übergebt ihm $troll_help_cost "
 "Goldstücke"
 
-#. [option]: speaker=Deoran
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:518
 msgid "We will offer you freedom and a place in our lands."
 msgstr "Wir bieten euch Frieden und einen Platz in unseren Landen."
@@ -2822,14 +2822,14 @@ msgstr ""
 msgid "Ha, you can afford troll help this time?"
 msgstr "Ihr nun könnt bezahlen uns?"
 
-#. [option]: speaker=Grek
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:614
 msgid "Here’s $troll_help_cost for your help against the undead."
 msgstr ""
 "Hier habt ihr die $troll_help_cost Goldstücke für eure Hilfe gegen die "
 "Untoten."
 
-#. [option]: speaker=Grek
+#. [option]
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:622
 msgid "No, sorry."
 msgstr "Nein, leider nicht."
@@ -2988,7 +2988,7 @@ msgstr ""
 "Neeein! Das kann nicht sein. Die Elfen, die ich einst führte, wandten sich "
 "gegen mich. Trotz all meiner Opfer, muss ich trotzdem sterben…"
 
-#. [scenario]: id=07b_Pebbles_in_the_Flood, id=Mal M'Brin
+#. [scenario]: id=07b_Pebbles_in_the_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:5
 msgid "Pebbles in the Flood"
 msgstr "Wie Kieselsteine im Strom"
@@ -3334,8 +3334,8 @@ msgstr "Ja, Herr — wir sind bereit, unsere Heimat zu verteidigen."
 msgid "I have summoned the great Council of Westin!"
 msgstr "Ich habe den großen Rat von Westin einberufen!"
 
-#. [else]
 #. [then]
+#. [else]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:363
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:377
 msgid "Minister Mefel"
