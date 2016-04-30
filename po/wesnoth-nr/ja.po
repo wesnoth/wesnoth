@@ -8,16 +8,17 @@
 # Masaharu IWAI <iwaim.sub@gmail.com>, 2011
 # OOTA, Masato <ooyooxei+tr@gmail.com>, 2015
 # <P2295417919104729@hotmail.co.jp>, 2010
+# RatArmy <broadbarredfirefish@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
-"PO-Revision-Date: 2015-08-16 14:18+0000\n"
-"Last-Translator: OOTA, Masato <ooyooxei+tr@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-04-16 15:14+0000\n"
+"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,10 +36,8 @@ msgstr "NR"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑戦的）"
+msgstr "挑戦的"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
@@ -47,10 +46,8 @@ msgstr "槍兵"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "（難しい）"
+msgstr "難しい"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
@@ -59,15 +56,11 @@ msgstr "剣士"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "（悪夢）"
+msgstr "悪夢"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
-#, fuzzy
-#| msgid "Royal Guard"
 msgid "Royal Guard"
 msgstr "親衛隊"
 
@@ -114,10 +107,8 @@ msgstr "コードと翻訳支援"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:62
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign Maintenance"
-msgstr "キャンペーンデザイン"
+msgstr "キャンペーンメンテナンス"
 
 #. [scenario]: id=01_Breaking_the_Chains
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:5
@@ -346,7 +337,7 @@ msgstr "Zlex"
 #. [side]: type=Orcish Warlord, id=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:130
 msgid "Al'Tar"
-msgstr ""
+msgstr "Al'Tar"
 
 #. [side]: type=Orcish Warlord, id=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:135
@@ -398,6 +389,10 @@ msgid ""
 "them hack at each other, we can use this as our chance to get rid of this "
 "scum once and for all. Who's with me?"
 msgstr ""
+"あの挑戦者のおかげでオークの監視が緩くなっている。収納部屋に忍びこんで鍵を盗"
+"もうと思う。みんなも来いよ、武器を奪うんだ！奴らが同士討ちしている間に、この"
+"チャンスを掴んであのクソッタレどもを排除するんだ。誰か付いてくる者はいないの"
+"か？"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:241
@@ -407,51 +402,37 @@ msgid ""
 "armor, no training. Are we supposed to beat them with bad breath and "
 "colorful language?"
 msgstr ""
+"Tallin、お前は勇敢だ。だが、それは月に触ろうとするようなこと、つまり無理だ。"
+"あそこには武器なんて無い、鍬と狩猟用の弓があるだけだ。鎧も無ければ、俺達は訓"
+"練もしていない。貧弱な体と巧みな言葉だけで奴らを倒せると思うのか？"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:246
-#, fuzzy
-#| msgid ""
-#| "There’s nothing wrong with pitchforks, I’ll give these orcish weapons to "
-#| "any man among you who wants to take ’em and fight with a pitchfork "
-#| "myself. We easily outnumber the orcs, not to speak of the fact that they "
-#| "are killing each other."
 msgid ""
 "Well, those things will certainly get their attention, and there’s nothing "
 "wrong with pitchforks. We easily outnumber the orcs, not to speak of the "
 "fact that they are killing each other."
 msgstr ""
-"熊手でも悪くはないさ、オークをぶちのめしたい者にはここにある奴らの武器をくれ"
-"てやるよ。俺は熊手で戦う。奴らが互いに殺しあっていることを除いてさえ、こっち"
-"は数で遥かに勝っているんだ。"
+"ああ、確かに行動を起こせば奴らの注意を引くだろうし、収納部屋には鍬以外は何も"
+"無い。だが、俺達はオークに数で勝っているし、奴らはお互いに殺し合っている。"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:251
-#, fuzzy
-#| msgid ""
-#| "But their wolves run faster than we can walk, and their swords are "
-#| "sharper than our farm tools."
 msgid ""
 "But their wolves run faster than we can walk, and their swords are sharper "
 "than these farm tools."
 msgstr ""
-"でも奴らの狼は俺達より速いし、奴らの剣は俺達の農具なんかよりよっぽど鋭いぞ。"
+"しかし、奴らの狼は俺達より速いぞ。それに、当然農具よりも奴らの剣の方が鋭い。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:256
-#, fuzzy
-#| msgid ""
-#| "We must use our strength of numbers. Stay shoulder-to shoulder with the "
-#| "man next to you; never get isolated, especially not on open ground. Swarm "
-#| "them — surround them, five or six to one, and they will go down."
 msgid ""
 "Our numbers are our strength. Stay shoulder-to shoulder with the man next to "
 "you; never get isolated, especially not on open ground. Swarm them — "
 "surround them, five or six to one, and they will go down."
 msgstr ""
-"数の優位を利用しなければならない。隣の奴と肩を並べて立つんだ。決して孤立する"
-"な、特に開けた場所ではな。群がって取り囲み、敵 1 体に 5、6 人で当たれ。そうす"
-"れば倒せる。"
+"数こそが俺達の強さだ。お互いに離れないように密着して、開けた土地では孤立しな"
+"いようにするんだ。奴らを取り囲んで、倒してやるのさ。"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:261
@@ -460,16 +441,12 @@ msgstr "だが、しかし Tallin、それじゃ虐殺になってしまう。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:266
-#, fuzzy
-#| msgid ""
-#| "(<i>Sigh</i>) Yes, well I know it. But would you rather live as slaves to "
-#| "the orcs forever?"
 msgid ""
 "But, but, but... Are you full of nothing but doubts? (<i>Sigh</i>) Yes, it "
 "will be a massacre. But would you rather live as slaves to the orcs forever?"
 msgstr ""
-"(<i>ため息をついて</i>) そうだ、それは良く分かっているさ。だがお前は永遠は"
-"オークの奴隷として生きていたいのか？"
+"だが、しかい、いや...お前はそれしか言えないのか？（<i>ため息</i>）そうさ、虐"
+"殺をするのさ。そうでもしなきゃ、一生オークの奴隷だ。"
 
 #. [message]: speaker=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:271
@@ -481,64 +458,50 @@ msgstr "嫌だ！ 死んだ方がましだ！"
 msgid ""
 "Then what choice do we have? This may be the only chance we ever get, it’s "
 "time to fight!"
-msgstr ""
+msgstr "じゃあ他に選択肢はあるか？チャンスは今しかない、戦いの時だ！"
 
 #. [message]: speaker=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:281
-#, fuzzy
-#| msgid "You clod of dung! How dare you step onto my land!"
 msgid ""
 "You dare greatly, you miserable excuse for an orc! How dare you step onto my "
 "land!"
-msgstr "バカなクソ野郎どもめ！ よくも俺様の土地に入ってきやがったな！"
+msgstr ""
+"やれるものならやってみな、哀れなオークよ！俺様の土地に足を踏み入れることがで"
+"きるかな！"
 
 #. [message]: speaker=Garrugch
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:287
-#, fuzzy
-#| msgid ""
-#| "You puny weakling, this land now belongs to my master! Surrender now and "
-#| "he might let you be his slave."
 msgid ""
 "Idle threats. Time as a slavemaster has made you weak. You have the strength "
 "of a goblin, and the brains to match. This land now belongs to my master. "
 "Surrender now and he might let you be (<i>his</i>) slave."
 msgstr ""
-"虫ケラめ、この土地は俺達の主人のものだ！ さっさと降伏すれば主人が奴隷にしてく"
-"れるかもしれんぞ。"
+"虚しい脅しだな。奴隷主としての暮らしが、おまえを弱くしたのだ。お前の強さはも"
+"はやゴブリン並だ、いや、脳味噌もそうか。この土地は我が主人のものとなるのだ。"
+"投稿すれば、主人はおまえを<i>奴隷にする</i>だろう。"
 
 #. [message]: speaker=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:293
-#, fuzzy
-#| msgid ""
-#| "Pah! Grunts, attack! Whoever brings me the head of Garrugch will get five "
-#| "villages!"
 msgid ""
 "Pah! Grunts, attack! Whoever brings me the head of Garrugch will be rewarded "
 "in gold!"
 msgstr ""
-"ケッ！ 兵卒ども、かかれ！ Garrugch の首を持ってきたものには村を 5 つやるぞ！"
+"ハッ！攻撃しろ、兵卒ども！Garrugchの首を取ってきた奴にはゴールドをくれてや"
+"る！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:309
-#, fuzzy
-#| msgid ""
-#| "Ack! These bloody slaves are always getting in the way. Let’s give them a "
-#| "beating!"
 msgid "Ack! These bloody slaves are always getting in the way. Cut them down!"
-msgstr "アッ！ 忌々しい奴隷どもが邪魔ばかりしやがる。鞭打ちの刑だ！"
+msgstr "うぐ！血に飢えた奴隷どもめ、いつも邪魔しやがって。殺してしまえ！"
 
 #. [message]: speaker=Garrugch
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:314
-#, fuzzy
-#| msgid ""
-#| "Haha! Look boys, that weakling Al’Tar can’t even keep his slaves under "
-#| "control."
 msgid ""
 "Look at that, the weakling Al’Tar can’t even keep his slaves under control. "
 "This will prove easier than I thought!"
 msgstr ""
-"ハハ！ お前ら見てみろ、かの弱々しき Al'Tar は自分の奴隷すら支配できないでいる"
-"のだ。"
+"見ろ、貧弱なAl’Tarは自分の奴隷すらも管理できんのだ。思ったよりも楽にことが進"
+"みそうだな！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:330
@@ -576,17 +539,12 @@ msgstr "主人は狼のためにもっと肉がいる。農奴、いい肉。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:414
-#, fuzzy
-#| msgid ""
-#| "I die now, you orcish scum, but I die free! More will come after me. We "
-#| "will rise again and again until we work a fitting vengeance on you!"
 msgid ""
 "I die now, you orcish scum, but I die free! More will come after me. We will "
 "rise again until our vengeance has wiped your stain from our land!"
 msgstr ""
-"俺はここで果てるが、オークのクズどもめ、俺は自由になって死ぬんだ！ 俺の意思を"
-"継ぐ者がもっと出てくるはずだ。お前らが相応しい報いを受けるまで、俺達は何度で"
-"も何度でも立ち上がるぞ！"
+"俺は死ぬのか、オークのクソッタレめ。だが、自由になったぞ！より多くの者たちが"
+"俺に続くだろう。俺達の復讐はお前たちをこの土地から一掃するだろう！"
 
 #. [message]: speaker=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:426
@@ -595,10 +553,8 @@ msgstr "フン！ 兵卒ども、残りの農奴共を鎖に繋げ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:442
-#, fuzzy
-#| msgid "What the...? (<i>Gurgle</i>) Hey! Look... a slave... uprising!"
 msgid "What the...? (<i>Gurgle</i>) Killed... by... slaves?"
-msgstr "な…… (<i>ゴボッ</i>) おい！ 見……奴隷が……反逆を！"
+msgstr "何だと...？（<i>ゴボッ</i>）殺られる...奴隷...ごときに？"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:447
@@ -808,7 +764,7 @@ msgstr "アンデッド軍"
 #. [side]: type=Death Knight, id=Mal Barath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:131
 msgid "Mal Barath"
-msgstr ""
+msgstr "Mal Barath"
 
 #. [side]: type=Troll Warrior, id=Thung
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:145
@@ -818,25 +774,21 @@ msgstr "Thung"
 #. [side]: type=Death Knight, id=Delzath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:161
 msgid "Delzath"
-msgstr ""
+msgstr "Delzath"
 
 #. [side]: type=Death Knight, id=Mal Tath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:178
 msgid "Mal Tath"
-msgstr ""
+msgstr "Mal Tath"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:196
-#, fuzzy
-#| msgid "Find the Dwarves"
 msgid "Find the dwarves"
-msgstr "ドワーフを見つける"
+msgstr "ドワーフ族を見つける"
 
 #. [objectives]
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:199
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:659
-#, fuzzy
-#| msgid "Clear the Caves"
 msgid "Clear the caves"
 msgstr "洞窟を一掃する"
 
@@ -1069,12 +1021,12 @@ msgstr "……了解。"
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:515
 msgid "The old door crumbles away, revealing an old tunnel on the other side."
-msgstr ""
+msgstr "その古い扉は粉々になり、古いトンネルが露わになりました。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:582
 msgid "A large section of wall crumbles away."
-msgstr ""
+msgstr "壁の大部分が崩れ落ちました。"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:592
@@ -1178,10 +1130,8 @@ msgstr "よし。"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:656
-#, fuzzy
-#| msgid "Death of Hamel"
 msgid "Speak with Hamel"
-msgstr "Hamel の死"
+msgstr "Hamelと話す"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:689
@@ -1190,30 +1140,23 @@ msgstr "よく来た、Tallin よ。Al'Tar に勝利したことは部下から�
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:694
-#, fuzzy
-#| msgid "Thank you and well-met indeed, Lord Hamel."
 msgid ""
 "Thank you and well-met indeed, Lord Hamel. I must say, this place is "
 "interesting."
-msgstr "お会いできて実にありがたい、Hamel 卿。"
+msgstr "お会いできて光栄だ、Hamel卿。ここは面白い場所だな。"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:699
-#, fuzzy
-#| msgid ""
-#| "This is how we get our food, me lad. Since we are a tad close to the "
-#| "surface here, some sunlight shines down through the cracks in the roof. "
-#| "If we baby the plants, we can usually get enough. They taste unco’ foul "
-#| "but that’s how we ha’ survived all these long years."
 msgid ""
 "This is how we get our food, me lad. Since we are a tad close to the surface "
 "here, some sunlight shines down through the cracks in the roof. If we baby "
 "the plants, we can usually get enough. They taste unco’ foul but that’s how "
 "we ha’ survived all these long years. But come, let us talk!"
 msgstr ""
-"こうやって食料を得ているのだ、ぬしよ。わしらは地上にとても近い場所にいるか"
-"ら、天井の裂け目から日光が射してくるのだ。丁寧に育ててやれば、通常十分な植物"
-"が得られる。味は悪いが、それでわしらは長い間生き延びてきたのだ。"
+"ここでわしらの食料を調達しているのだ。わしらが地上から離れてからというもの、"
+"日光が裂け目から差し込むこのような場所は貴重なのだ。植物を植えれば、十分に育"
+"つ。味は不味いが、これによって長年生き延びてきたのだ。まあ、そのことはこのぐ"
+"らいにして、こちらに来て話そうではないか！"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:704
@@ -1327,32 +1270,24 @@ msgstr ""
 
 #. [scenario]: id=02_02_Meeting_With_Dwarves
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:5
-#, fuzzy
-#| msgid "Find the Dwarves"
 msgid "Meeting With Dwarves"
-msgstr "ドワーフを見つける"
+msgstr "ドワーフとの会談"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:17
-#, fuzzy
-#| msgid ""
-#| "After reaching the dwarvish keep and tending to their wounded the humans "
-#| "led by Tallin and the dwarves led by Lord Hamel made council."
 msgid ""
 "After reaching the dwarvish keep and tending to their wounded, the humans "
 "led by Tallin and the dwarves led by Lord Hamel hurried deeper into the "
 "caverns for a hasty council."
 msgstr ""
-"ドワーフの城に着いて負傷者を介抱した後、Tallin に率いられた人間達と Hamel 卿"
-"に率いられたドワーフ達で会議が開かれた。"
+"ドワーフの拠点にたどり着き、負傷者を手当してから、Tallinが率いる人間とHamel卿"
+"が率いるドワーフたちは議会を開くために洞窟の奥へと急ぎました。"
 
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:42
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:50
-#, fuzzy
-#| msgid "Find the Dwarves"
 msgid "Dwarves"
-msgstr "ドワーフを見つける"
+msgstr "ドワーフ達"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:80
@@ -1373,21 +1308,17 @@ msgstr ""
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:90
 msgid "And I, don't forget me!"
-msgstr ""
+msgstr "我輩もいるぞ！忘れるなよ。"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:95
-#, fuzzy
-#| msgid ""
-#| "Thank you, human. It is likewise a great relief to see that our allies of "
-#| "old have managed to break their bonds, and live as free men once again."
 msgid ""
 "Thank you, human. And you, Camerin. It is likewise a great relief to see "
 "that our allies of old have managed to break their bonds, and live as free "
 "men once again."
 msgstr ""
-"ありがとう、人間よ。古い盟友がなんとか束縛を解いて、再び自由の身になっている"
-"のを見てこちらも大いに安心した。"
+"感謝するぞ、人間よ。そして、Camerinもご苦労であった。かつて失われた同盟が蘇る"
+"のは喜ばしいことだ。また自由のために生きようではないか。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:100
@@ -1570,7 +1501,7 @@ msgstr ""
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_02_Meeting_With_Dwarves.cfg:170
 msgid "Ahahahaha! Yes, smash the skeletons! Smash them!"
-msgstr ""
+msgstr "ワハハハ！そうだ、スケルトンを潰そう！叩き潰せ！"
 
 #. [message]: role=Supporter
 #. [message]: speaker=Tallin
@@ -1597,10 +1528,8 @@ msgstr ""
 
 #. [side]: type=Direwolf Rider, id=Pruol
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:61
-#, fuzzy
-#| msgid "Boblin"
 msgid "Goblins"
-msgstr "Boblin"
+msgstr "ゴブリン"
 
 #. [side]: type=Direwolf Rider, id=Pruol
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:66
@@ -1609,15 +1538,13 @@ msgstr "Pruol"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:90
-#, fuzzy
-#| msgid "Clear the mines"
 msgid "Enter the mines"
-msgstr "鉱山を一掃する"
+msgstr "鉱山に入る"
 
 #. [objectives]
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:93
 msgid "Eliminate the wolf riders"
-msgstr ""
+msgstr "ウルフライダーを排除する"
 
 #. [message]: speaker=Pruol
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:117
@@ -1666,10 +1593,8 @@ msgstr "鉱山の掃除"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:18
-#, fuzzy
-#| msgid "When the party finally reached the mines they were not disappointed."
 msgid "When the party finally reached the mines, they were not disappointed."
-msgstr "一行がついに鉱山に着いても、失望するようなことはなかった。"
+msgstr "一行が鉱山に着いたころには、失望はしていませんでした。"
 
 #. [side]
 #. [side]: type=Drake Burner, id=Krash
@@ -1856,10 +1781,8 @@ msgstr "だ、だが――ここには何があるか分かるか？ ――Talli
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:329
-#, fuzzy
-#| msgid "He knows your name, Tallin. I don’t like the looks of this."
 msgid "He knows your name, Tallin. I don’t like the sound of this."
-msgstr "奴はお前の名を知っているぞ、Tallin。気味が悪い。"
+msgstr "奴はお前の名前をしっているぞ、Tallin。気に入らないな。"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:334
@@ -1928,16 +1851,11 @@ msgstr "あぁ、その通り。お前のことだ。"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:501
-#, fuzzy
-#| msgid ""
-#| "These little vermin are making progress! This is unacceptable. Rise my "
-#| "minions — gorge on the flesh of these scurrying little rats!"
 msgid ""
 "These little vermin are making progress! This is unacceptable. Rise, my "
 "minions — gorge on the flesh of these scurrying little rats!"
 msgstr ""
-"ちっぽけな害虫どもが進行してきている！ 許しがたいことだ。立ち上がれ、我がしも"
-"べよ――この走り回る小鼠どもの肉を喰らえ！"
+"愚か者どもめ！交渉決裂だ。軍勢よ、蘇れ。小さなネズミたちの肉を食い荒らせ！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:515
@@ -1960,21 +1878,15 @@ msgstr "光明の主にかけて、あれはなんというおぞましい種の
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:555
-#, fuzzy
-#| msgid ""
-#| "Out of all of a necromancer’s creations, I must say those things are the "
-#| "most tortured and vilest. They have an insatiable hunger for flesh and "
-#| "mindlessly shrug of all manner of damage to get it. Even my fire bolts "
-#| "have a slightly lesser effect on them."
 msgid ""
 "Out of all of a necromancer’s creations, I must say those things are the "
 "most tortured and vile. They have an insatiable hunger for flesh and "
 "mindlessly shrug off all manner of damage to get it. Even my fire bolts have "
 "a slightly lesser effect on them."
 msgstr ""
-"ネクロマンサーの創造の結果生み出されたもののうち、最もおぞましく邪悪なものと"
-"言わざるを得ない。満たされることなく飢えており、どんな種類のダメージを与えて"
-"も平然としている。我輩の炎でさえ少々効果が薄いのだ。"
+"ネクロマンサーたちの創造物の中でも、なんとおぞましいことか。いくら肉を食らっ"
+"ても満たされることなく、思考が無いので痛みを感じぬのだ。私の炎も少し効き目が"
+"薄いようですぞ。"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:560
@@ -2083,15 +1995,10 @@ msgstr "追跡"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Leaving most of the dwarves behind, Tallin and the rest of his party set "
-#| "off to pursue the Sorcerer."
 msgid ""
 "Leaving most of the dwarves behind, Tallin and his party set off in pursuit "
 "of Malifor."
-msgstr ""
-"ドワーフ族のほとんどを後に残して、Tallin と残りの一行は魔術師を追い始めた。"
+msgstr "多くのドワーフを後に残し、Tallinと仲間たちはMaliforを追跡しました。"
 
 #. [side]: type=Death Knight, id=Hettel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:114
@@ -2186,7 +2093,7 @@ msgstr "Malifor を探して倒す"
 #. [note]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:430
 msgid "Be sure to explore"
-msgstr ""
+msgstr "探索を行う"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:457
@@ -2200,15 +2107,13 @@ msgstr "哀れな人たちだ！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:467
-#, fuzzy
-#| msgid "We won’t leave them in Malifor's chains!"
 msgid "We won’t leave them in Malifor’s chains!"
-msgstr "Maliforに捕まったままにするつもりはないぞ！"
+msgstr "Maliforに囚われたままにはしておけない！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:486
 msgid "Intruders! Stop them before they free the prisoners!"
-msgstr ""
+msgstr "侵入者だ！囚人を逃させるな！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:491
@@ -2264,21 +2169,15 @@ msgstr "あなたは何者だ？ どうしてこんなところまで下りて�
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:582
-#, fuzzy
-#| msgid ""
-#| "I am called Father Morvin. My wife, Thera and I were advisers and healers "
-#| "for the dwarvish nobles. We could not shield them from the wrath of Khazg "
-#| "Black-Tusk, but we survived the orcs and trolls — only to be captured by "
-#| "these skeletons."
 msgid ""
 "My name is Morvin. My wife, Thera and I were advisers and healers for the "
 "dwarvish nobles. We could not shield them from the wrath of Khazg Black-"
 "Tusk, but we survived the orcs and trolls — only to be captured by these "
 "skeletons."
 msgstr ""
-"私は神父の Morvin という者です。妻 Thera と私はドワーフの貴族達の助言者にして"
-"治療師でした。黒い牙の Khazg の怒りから彼らを守ることはできませんでしたが、"
-"オークとトロルから逃げ延びることはできました――スケルトンに囚われることで。"
+"私の名前はMorvinだ。妻のTheraと私はドワーフの貴族にアドバイザー兼癒し手として"
+"仕えていた。私達は黒い牙のKhazgの復讐を防ぐことができなかったが、オークとトロ"
+"ルから生き延びていた。だが、スケルトンたちに捕まってしまった。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:587
@@ -2355,10 +2254,8 @@ msgstr "(<i>くすくす笑って</i>)"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:659
-#, fuzzy
-#| msgid "Freedom at last. Thank you, Lord Tallin."
 msgid "Freedom at last! Thank you, Lord Tallin."
-msgstr "やっと自由になれました。感謝します、Tallin 卿。"
+msgstr "自由だわ！感謝します、Tallin卿。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:664
@@ -2371,22 +2268,15 @@ msgstr ""
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:712
-#, fuzzy
-#| msgid ""
-#| "I am called Sister Thera. My husband Morvin and I were advisers and "
-#| "healers for the dwarvish nobles of Knalga. We could not save them from "
-#| "Khazg Black-Tusk’s troops, but we survived the orcs and trolls only to be "
-#| "captured when these skeletons appeared."
 msgid ""
 "My name is Thera. My husband Morvin and I were advisers and healers for the "
 "dwarvish nobles of Knalga. We could not save them from Khazg Black-Tusk’s "
 "troops, but we survived the orcs and trolls only to be captured when these "
 "skeletons appeared."
 msgstr ""
-"私はシスターの Thera という者です。夫 Morvin と私は Knalga のドワーフの貴族達"
-"の助言者にして治療師でした。黒い牙の Khazg の軍隊から彼らを守ることはできませ"
-"んでしたが、スケルトンが現れたときに捕虜となることでオークとトロルから逃げ延"
-"びることはできました。"
+"私はThera。夫のMorvinと私はドワーフの貴族にアドバイザー兼癒し手として仕えてい"
+"ました。私達は黒い牙のKhazgの復讐を防ぐことはできなかったけれど、オークとトロ"
+"ルから生き延びました。ですが、スケルトンたちに捕まってしまいました。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:717
@@ -2421,47 +2311,36 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:737
 msgid "Very well, you are most welcome to join us."
-msgstr "よいだろう。参加は大歓迎だ。"
+msgstr "いいぞ。参加は大歓迎だ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:755
-#, fuzzy
-#| msgid ""
-#| "And look at this, there is some sort of opening in the back of his cell..."
 msgid "Look at this. There’s some sort of opening in the wall..."
-msgstr "あれを見てくれ、彼の独房の後ろが開きそうだ……"
+msgstr "見ろ。壁が開いているようだ..."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:760
-#, fuzzy
-#| msgid ""
-#| "It’s an escape tunnel. The hole wasn’t big enough for me to go through "
-#| "but one of you little guys might fit."
 msgid ""
 "It was there when I was thrown down here. The hole wasn’t big enough for me "
 "to go through, but perhaps one of you might enlarge it?"
 msgstr ""
-"脱出用の坑道だ。私が通り抜けられるほど大きくはないが、小さいお前達ならちょう"
-"どいいだろう。"
+"ここに投獄される前に見た場所だわ。ホールは私が通れるほど広く無かったけれど、"
+"あなたたちが広げてくれたの？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:765
-#, fuzzy
-#| msgid "Er... let’s go..."
 msgid "Hmmm, let’s see..."
-msgstr "アー…… じゃあ行きましょうか……"
+msgstr "ふむ、これは..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:797
-#, fuzzy
-#| msgid "There we go. Now let’s see where this tunnel leads to."
 msgid "There we go. Now let’s see where this tunnel leads."
-msgstr "よし！ この坑道がどこに続いているのか見に行こう。"
+msgstr "行こう。トンネルの先に進もうじゃないか。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:828
 msgid "She’s not in good shape..."
-msgstr ""
+msgstr "彼女は体調が良くないようだ..."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:840
@@ -2471,7 +2350,7 @@ msgstr "診せてください。"
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:854
 msgid "This should help."
-msgstr ""
+msgstr "少しは良くなったはず。"
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:875
@@ -2509,16 +2388,12 @@ msgstr "はい、あなたの……仲間にしてください…… Tallin 卿�
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:900
-#, fuzzy
-#| msgid ""
-#| "Just Tallin; I am no lord. But gee, that sure is some powerful spell you "
-#| "used on her, Sister. She is looking better already."
 msgid ""
 "Just Tallin; I am no lord. But gee, that sure is some powerful spell you "
 "used on her, Thera. She’s looking better already."
 msgstr ""
-"ただの Tallin だ。俺は貴族じゃない。しかしすごいな、彼女に使ったのはさぞかし"
-"強力な呪文なんだろうな、シスター。もう良くなっているようだ。"
+"ただのTallinだ。しかし、先ほどのEleniaにかけたのは強力な呪文のようだな。すで"
+"に元気を取り戻しつつある。"
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:905
@@ -2529,11 +2404,8 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:911
-#, fuzzy
-#| msgid ""
-#| "I wish we had some healers with us. Just try to help her the best you can."
 msgid "I wish we had some healers with us; I’ll try to help her as best I can."
-msgstr "治療師が欲しいと思っていたところだ。可能な限り助けてみてくれ。"
+msgstr "我々にはヒーラーがいるし、彼女を救うために全力を尽くそう。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:925
@@ -2675,16 +2547,10 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1126
-#, fuzzy
-#| msgid ""
-#| "(<i>Sigh</i>) Great. More water. And there doesn’t seem to be anything "
-#| "down this tunnel, either friend or foe."
 msgid ""
 "(<i>Sigh</i>) There doesn’t seem to be anything down this tunnel, either "
 "friend or foe."
-msgstr ""
-"(<i>ため息をついて</i>) すごい。水量が増えている。それにこの坑道の先には敵も"
-"味方もいないようだ。"
+msgstr "（<i>ふう</i>）このトンネルには、敵も味方もいないようだ。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1150
@@ -2708,33 +2574,29 @@ msgstr "かかってこい！"
 
 #. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1237
-#, fuzzy
-#| msgid "Wow! There is at least 1,000 gold in here!"
 msgid "There are at least several hundred gold coins in here!"
-msgstr "ワォ！ ここに少なくとも 1000 ゴールドはあるぞ！"
+msgstr "少なくとも100以上のゴールドがあるぞ！"
 
 #. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1239
 msgid "I don’t think the undead will be be needing this anyway."
-msgstr ""
+msgstr "アンデッドにゴールドは不要だろう。"
 
 #. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1241
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
-msgstr ""
+msgstr "このゴールドがあれば我々の民の生活が10倍良くなるぞ。"
 
 #. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1243
-#, fuzzy
-#| msgid "800 gold! We’re rich!!"
 msgid "We’re rich!"
-msgstr "800 ゴールドだ！ リッチになった！！！"
+msgstr "金持ちだ！"
 
 #. [scenario]: id=05a_01_The_Pursuit, )(id=Malifor) 0 (
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1245
 msgid "Why do these skeletons have so much gold just sitting around?"
-msgstr ""
+msgstr "なぜスケルトンどもはこんなにゴールドを持っているのだ？"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1271
@@ -2812,6 +2674,8 @@ msgid ""
 "An elegantly carved sceptre rests at the bottom of the chest. Precious "
 "jewels glitter across its surface, and it exudes a great aura of power."
 msgstr ""
+"宝箱を開けると、上品に彫り込まれた杖が姿を表しました。高級な宝石が輝き、強力"
+"な力を放っています。"
 
 #. [option]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1332
@@ -2820,14 +2684,12 @@ msgstr "拾う"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1336
-#, fuzzy
-#| msgid ""
-#| "I wonder what such a powerful artifact is doing hidden all the way back "
-#| "here..."
 msgid ""
 "This thing is... incredible! What is such a powerful artifact doing hidden "
 "all the way back here?"
-msgstr "こんな強力な代物がこんなところな隠れていたなんて……"
+msgstr ""
+"これは...すばらしい！何故このような場所に強力なアーティファクトが隠されている"
+"のだ？"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1346
@@ -2878,15 +2740,6 @@ msgstr "裁きの杖"
 
 #. [object]: id=justice_rod
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1387
-#, fuzzy
-#| msgid ""
-#| "This is a magical staff of tremendous power and unknown origin. Although "
-#| "the full extent of its power has not been fathomed, there are a few "
-#| "features about it that will be obvious to any master of lore. The wielder "
-#| "of this staff gains a dramatic increase in strength, speed and "
-#| "intelligence, and is granted the ability to fire devastating lightning "
-#| "bolts at at his opponents. Only a person who is good at heart and who is "
-#| "willing to sacrifice his life on the path of justice can wield this staff."
 msgid ""
 "A magical staff of tremendous power and unknown origin. Although the full "
 "extent of its power has not been fathomed, there are a few features about it "
@@ -2896,11 +2749,10 @@ msgid ""
 "who is good at heart and who is willing to sacrifice his life on the path of "
 "justice can wield this staff."
 msgstr ""
-"これは恐るべき力を持った来歴不詳の魔法の杖です。その力の限界は計り知れません"
-"が、明らかに何らかの知識の達人のものと推察できる特徴が散見されます。この杖の"
-"使い手は力、速さ、知力が劇的に向上し、また敵に破壊的な稲妻を放つ能力が得られ"
-"ます。この杖を扱えるのは、心の底から善良で正義の道のために自分の命を犠牲にで"
-"きる者だけです。"
+"強力な力を誇る魔法の杖で、その歴史については不明です。杖の力は推し量れるもの"
+"ではありませんが、伝承を知る者にはその力は明らかです。この杖を身につけた者"
+"は、筋力・素早さ・知性が増し、炎の矢を放つことができるようになります。良い心"
+"を持ち、正義のために己を犠牲にできる者だけが身につけることができます。"
 
 #. [effect]: type=fire
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1396
@@ -2925,7 +2777,7 @@ msgstr "「大空洞」？ うむむむ、なんだろう。"
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1499
 msgid "Halt! You’re not allowed to be here! Authorized undead only!"
-msgstr ""
+msgstr "待て！ここへの立ち入りは禁止だ！アンデッド以外はな！"
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatas
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1522
@@ -3016,21 +2868,15 @@ msgstr "いくぞ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1663
-#, fuzzy
-#| msgid ""
-#| "So this is the Great Chamber eh? Doesn’t look like there is much to see "
-#| "here."
 msgid ""
 "So this is the Great Chamber, eh? Doesn’t look like there is much to see "
 "here."
-msgstr "ここが大空洞？ えー。何も見るところが無いな。"
+msgstr "ここが大空洞か？あまり良く見えないな。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1671
-#, fuzzy
-#| msgid "Hey, an underground lake."
 msgid "The ground shakes."
-msgstr "おい、地下湖だ。"
+msgstr "地面が揺れている。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1676
@@ -3040,7 +2886,7 @@ msgstr "そうでもなかったようだ……"
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1693
 msgid "What is this? Out retreat is cut off!"
-msgstr ""
+msgstr "何だと？退路がなくなったぞ！"
 
 #. [message]: type=Giant Spider
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1732
@@ -3070,15 +2916,12 @@ msgstr "主人の研究所に攻撃してくるぞ！ 止めろ！ 予備隊を�
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1810
-#, fuzzy
-#| msgid ""
-#| "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
-#| "risk of your life."
 msgid ""
 "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
 "risk of your unlife."
 msgstr ""
-"警告！ トンネル内浸水及び水棲モンスター出没。立ち入りには生命の危険あり。"
+"注意！トンネルに水が満ちて、水棲の怪物たちが現れました。気をつけて入ってくだ"
+"さい。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1815
@@ -3090,12 +2933,12 @@ msgstr "面白い。誰かさんは坑道を進んでいって欲しくないよ
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1833
 msgid "Intruders? Capture them and throw them in with the toxic waste!"
-msgstr ""
+msgstr "侵入者か？捕まえて毒性廃棄物と一緒に捨ててしまえ！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1865
 msgid "A section of wall slides away."
-msgstr ""
+msgstr "壁の一部が動く。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1874
@@ -3116,10 +2959,8 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1893
-#, fuzzy
-#| msgid "(<i>Rolls eyes</i>) Oh, the hazardous life of a skeleton."
 msgid "(<i>rolls eyes</i>) Oh, the hazardous life of a skeleton."
-msgstr "(<i>目を回して</i>) おぉ、スケルトンには危険だ。"
+msgstr "（<i>目を回して</i>）あー、スケルトンも大変だな。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1908
@@ -3174,14 +3015,12 @@ msgstr "Abhai"
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1985
 msgid "AH! A ghost!"
-msgstr ""
+msgstr "アア！幽霊だ！"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1990
-#, fuzzy
-#| msgid "Who are you? How did you end up down here?"
 msgid "Who are you that dares to venture down these tunnels?"
-msgstr "あなたは何者だ？ どうしてこんなところまで下りてくる羽目に？"
+msgstr "何者だ？このようなトンネルを冒険しているとは。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1995
@@ -3196,7 +3035,7 @@ msgstr "Tallin とは？"
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2005
 msgid "That would be me."
-msgstr ""
+msgstr "俺だ。"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2010
@@ -3205,10 +3044,8 @@ msgstr "何の目的でここに来た？"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2015
-#, fuzzy
-#| msgid "We seek the lich Malifor."
 msgid "We seek the destruction of the lich Malifor."
-msgstr "Malifor というリッチを探して。"
+msgstr "リッチMaliforを破壊しに来た。"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2020
@@ -3216,6 +3053,7 @@ msgid ""
 "(<i>pales if possible</i>) Malifor...! Finally someone here in force to deal "
 "with that menace!"
 msgstr ""
+"（<i>青ざめた様子で</i>）Malifor...！あの脅威と戦う者がついに現れたか！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2025
@@ -3223,23 +3061,21 @@ msgid ""
 "Can you tell us where he is? And, if I may ask, who are — or rather, were — "
 "you?"
 msgstr ""
+"奴がどこにいるか知らないか？あと、良かったら...あー、あなたが誰だったのかを教"
+"えてくれないか？"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2030
-#, fuzzy
-#| msgid ""
-#| "I grew old and died as all men do and entered the land of the dead. I "
-#| "don’t know how long I dwelt there, I was wrenched from my peace and "
-#| "forced into this ectoplasmic body by a terrible power."
 msgid ""
 "I am Lord Abhai, the ruler... once... of a great kingdom far to the west. In "
 "time, as all men do, I grew old and passed to the Land of the Dead. I know "
 "not how long I dwelt there, before I was wrenched from my peace and drawn "
 "into this realm by a terrible power."
 msgstr ""
-"私はあらゆる人間と同じように、年老いて死に、死者の国に行った。どれだけ長くそ"
-"こに居たのかは判らないが、恐るべき力によって平穏から叩き起こされて無理矢理こ"
-"のような霊体にされたのだ。"
+"私はAbhai卿、かつては...遥か西にある大国の支配者だった。ある時、全ての人がそ"
+"うであるように、歳を取り、死の国へと渡った。どれだけの間死の国にいたのかは分"
+"からないが、私は恐るべき力でこの場所に引きずり込まれ、長い平穏は破られたの"
+"だ。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2035
@@ -3261,6 +3097,14 @@ msgid ""
 "Malifor’s minions greatly fear lives in these waters; they do not molest me "
 "here."
 msgstr ""
+"そうだ。Maliforはかつて偉大な魔術師だったが、富と力に飢えていた。それを満たす"
+"ために、Maliforはリッチ君主たちと同盟を結び、彼らから技術を学んだのだ。オーク"
+"の脅威が大陸に迫りWesfolkが東に逃げた時、Maliforはリッチ君主たちのもとを去っ"
+"た。その後のMaliforの運命は定かではないが、Maliforはリッチになろうとしたのだ"
+"ろう。Maliforはゴールドを愛していたし、その後にこの鉱山に住み着いていてもおか"
+"しくはない。Maliforは私を憎んでいて、私を意思の無い奴隷に変えてしまおうとした"
+"が、私はその力に耐えて逃げ出した。それからというもの、水浸しのトンネルに隠れ"
+"ていたのだ。Maliforの部下の一部は水を嫌うから、私を追うことも無かった。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2045
@@ -3270,11 +3114,15 @@ msgid ""
 "this land that we now call the Great Continent and destroyed the Lich-Lord "
 "Jevyan before founding the Kingdom of Wesnoth. That was centuries ago."
 msgstr ""
+"おそらく、かなりの時間が経過しているのでは。俺達の最初の王、Haldric一世は"
+"Wesfolkと共に緑の島から移り住んできた。その時にオークのオマケも付いて来ちまっ"
+"たが。Haldric王がこの大陸にたどり着いた時、Wesnoth王国を建国する前にリッチ君"
+"主Jevyanを滅ぼしたんだ。それは何世紀も前のことだ。"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2050
 msgid "So... much time has passed indeed."
-msgstr ""
+msgstr "そうか...確かに、かなりの時が流れていったようだ。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2055
@@ -3283,15 +3131,12 @@ msgstr "あの邪悪な生物を倒すために手を貸してもらえるかな
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2061
-#, fuzzy
-#| msgid ""
-#| "Wouldn’t miss it. Maybe after he is destroyed me and my kind can live... "
-#| "er... be dead peacefully."
 msgid ""
 "Wouldn’t miss it. Maybe after he is destroyed my kind and I can live... "
 "er... be dead peacefully."
 msgstr ""
-"願ってもない話だ。彼を倒した後はきっと安らかに生きてい……いや……死んでいける。"
+"もちろんだ。我々がMaliforを滅ぼした暁には、ようやく平和に暮らし...あー..い"
+"や、安らかに眠ることができる。"
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2066
@@ -3303,62 +3148,46 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2071
-#, fuzzy
-#| msgid "Great! Forward, men!"
 msgid "Great. Forward, men!"
-msgstr "すばらしい！ 総員、前進だ！"
+msgstr "よし。行くぞ、みんな！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2086
 msgid "Ugh, a corpse. And it — (<i>gags</i>) — reeks!"
-msgstr ""
+msgstr "うー、死体だ。それと、（<i>ウエッ</i>）なんて悪臭だ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2099
-#, fuzzy
-#| msgid ""
-#| "Gee, what’s with all these bodies floating around? Is this river some "
-#| "sort of body disposal?"
 msgid ""
 "Gee, what’s with these bodies floating around? Is this river some sort of "
 "body disposal?"
 msgstr ""
-"はぁ、この辺に死体が浮かんでいるのはどういうことだ？ 死体を捨てるような川なの"
+"うお、そこらに浮かんでいる死体はなんだ？この川は死体処理にでも使われているの"
 "か？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2113
-#, fuzzy
-#| msgid ""
-#| "Just great, I am cold, wet, and tired and what have we here? Another dead "
-#| "end. This place is starting to get on my nerves!"
 msgid ""
 "Just great, I am cold, wet, and tired and what have we here? Another dead "
 "body. This place is starting to get on my nerves!"
 msgstr ""
-"大したところだ、寒いし、濡れるし、疲れるし、こんなところに何があるんだ？ また"
-"行き止まりだ。癪にさわる場所だ！"
+"そりゃあいいな。ここは寒いし、湿ってるし、疲れた上に何が待ってる？また死体だ"
+"よ。もううんざりだね。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2129
-#, fuzzy
-#| msgid "Hold it, people, there is something just ahead!"
 msgid "Hold it, people, there’s something just ahead!"
-msgstr "待て、みんな、前方に何かいるぞ！"
+msgstr "みんな、気を引き締めろ。前方に何かある！"
 
 #. [message]: type=Naga Warrior
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2150
-#, fuzzy
-#| msgid "(<i>Sniff</i>) I smell humans."
 msgid "(<i>sniff</i>) I smell humans."
-msgstr "(<i>くんくん</i>) 人間のにおいがする。"
+msgstr "（<i>クンクン</i>）人間の匂いだ。"
 
 #. [message]: type=Naga Fighter
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2155
-#, fuzzy
-#| msgid "You are just plain deaf. I heard them coming from a mile off."
 msgid "You are just plain deaf. I heard them coming a mile off."
-msgstr "耳が悪いな。私には１マイル先から来るのが聞こえていた。"
+msgstr "耳が遠いんじゃないのか？物音は以前からはっきり聞こえているぞ。"
 
 #. [message]: type=Naga Warrior
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2160
@@ -3374,17 +3203,13 @@ msgstr "これだな。Malifor の研究所の扉がある。みんな準備は�
 
 #. [option]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2196
-#, fuzzy
-#| msgid "Yeah, open those doors!"
 msgid "Get those doors open!"
-msgstr "イェィ！ 開けちまえ！"
+msgstr "扉を開けろ！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2216
-#, fuzzy
-#| msgid "Awesome, let’s go!"
 msgid "Let’s go!"
-msgstr "すばらしい、行こう！"
+msgstr "行くぞ！"
 
 #. [option]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2227
@@ -3398,7 +3223,7 @@ msgstr "ちょっと待て。"
 msgid ""
 "Hmmm. The wall appears weak here. I think there might be something on the "
 "other side."
-msgstr ""
+msgstr "ふむ。この壁は老朽化している。向こう側に何かあるはずだ。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2259
@@ -3431,7 +3256,7 @@ msgstr "おい、見てくれ、レバーのようなものがある。"
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2338
 msgid "Throw it and see what it does."
-msgstr ""
+msgstr "動かしてみてくれ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2343
@@ -3503,46 +3328,39 @@ msgstr "ハハハハハハ、私に死は効かないのだ愚か者どもめ！
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2541
-#, fuzzy
-#| msgid "Well, obviously clubs and arrows won’t work."
 msgid "Well, blades don’t work."
-msgstr "うむ、棍棒と弓矢は明らかに効いていない。"
+msgstr "うーん、斬撃は効かないようだ。"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2551
 msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
-msgstr "ハハハハハ、お前達の愚かさを大いに楽しませてもらっているよ！"
+msgstr "<b>ハハハハハ、お前達の愚かさを大いに楽しませてもらっているよ</b>！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2556
-#, fuzzy
-#| msgid "Geez, how are we going to kill him?"
 msgid "Geez, how are we going to kill him? This weapon is ineffective!"
-msgstr "ちっ、どうすれば奴を殺せるんだ？"
+msgstr "くそ、どうやったら奴を倒せる？この武器じゃ歯が立たない！"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2566
 msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
-msgstr "ちっぽけな定命のものよ、お前達はすぐに私に仕えるようになるのだ！"
+msgstr ""
+"<b>ちっぽけな定命のものよ、お前達はすぐに私に仕えるようになるのだ</b>！"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2571
-#, fuzzy
-#| msgid "That blasted skeleton! Even fire has no affect on him!"
 msgid "That blasted skeleton! Even fire has no effect on him!"
-msgstr "忌々しいスケルトンめ！ 炎すら効果が無いとは！"
+msgstr "いまいましい骨だ！炎ですらも効かないようですぞ！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2576
 msgid "Let’s try using something different on him."
-msgstr ""
+msgstr "何か別の方法を考えるとするか。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2591
-#, fuzzy
-#| msgid "AHHHH!"
 msgid "AAAAAAHHHHHH!"
-msgstr "アァァァァァァァァァ！"
+msgstr "<b>アアアァーー！</b>"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2596
@@ -3582,7 +3400,7 @@ msgstr "(<i>くすくす笑って</i>) ごめんね。"
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2638
 msgid "AHHHH! YOU BLASTED MAGE!"
-msgstr "アァァァァァァ！ 忌々しい魔術師め！"
+msgstr "<b>アァァァァァァ！ 忌々しい魔術師め！</b>"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2643
@@ -3598,9 +3416,9 @@ msgid ""
 "YOUR NEAR AND DEAR DESERT YOU! MAY A THUNDERBOLT HIT YOUR HEAD! MAY—"
 msgstr ""
 "忌々しき魔術師よ呪われてあれ、忌々しきドワーフよ呪われてあれ、忌々しき人間よ"
-"呪われてあれ、忌々しき Tallin よ呪われてあれ！ 貴様のみじめな生に苦しみの満ち"
-"たらんことを！ 貴様の民の解き放たれること決して無からんことを！ 一族郎党貴様"
-"を見放さんことを！ 雷鳴の頭の撃ち抜かんことを！ ……"
+"呪われてあれ、<b>忌々しき Tallin よ呪われてあれ！ 貴様のみじめな生に苦しみの"
+"満ちたらんことを！ 貴様の民の解き放たれること決して無からんことを！ 一族郎党"
+"貴様を見放さんことを！ 雷鳴の頭の撃ち抜かんことを！ ……</b>"
 
 #. [message]: speaker=Sister Thera
 #. [message]: speaker=Tallin
@@ -3616,8 +3434,8 @@ msgid ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
 msgstr ""
-"大地の開きて貴様の飲み込まれんことを！ 並めての歯の抜け落ちんことを！ 弱々し"
-"い骨と皮だけのジジイとならんことを！ ……"
+"<b>大地の開きて貴様の飲み込まれんことを！ 並めての歯の抜け落ちんことを！ 弱々"
+"しい骨と皮だけのジジイとならんことを！ ……</b>"
 
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=second_unit
@@ -3647,34 +3465,20 @@ msgstr "ドワーフ族のところへ戻って武器を鍛えるのがどこま
 #. [scenario]: id=05a_02_Dealings
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:5
 msgid "Dealings"
-msgstr ""
+msgstr "取り引き"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Laden with gold, and filled with an elation at their victory that was "
-#| "tempered with sadness at the death of their friends, Tallin and his "
-#| "people made their way back to the mines."
 msgid ""
 "Laden with gold and filled with an elation at their victory that was "
 "tempered with sadness at the death of their friends, Tallin and his people "
 "made their way back to the mines."
 msgstr ""
-"金を背負い、仲間の死の悲しみを和らげる勝利に意気揚々として、Tallin と仲間達は"
-"鉱山への道を戻っていった。"
+"積まれたゴールドと勝利の喜びが仲間たちの死による悲しみを和らげた。そして、"
+"Tallinと民衆は炭鉱へと戻って行った。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:21
-#, fuzzy
-#| msgid ""
-#| "As they approached they were met with a most welcome sight: New "
-#| "fortifications, looking very much like the legendary impenetrable "
-#| "dwarvish defenses of old, had sprung up everywhere. All of them were "
-#| "manned by alert and well-armed dwarves who hailed them boisterously. The "
-#| "mines were belching smoke from the furiously working forges. New weapons "
-#| "and armor for humans and dwarves alike lay neatly stacked, and the "
-#| "deafening clang of hammers and picks from the dwarves promised more."
 msgid ""
 "As they approached they were met with a most welcome sight: new "
 "fortifications, looking very much like the legendary impenetrable dwarvish "
@@ -3684,28 +3488,22 @@ msgid ""
 "and dwarves alike lay neatly stacked, and the deafening clang of hammers and "
 "picks from the dwarves promised more."
 msgstr ""
-"彼らが到着すると、最大限の歓待の光景と出くわした。昔の伝説的な不可侵のドワー"
-"フの防壁にも等しく思える新しい城砦がそこかしこに林立していた。それらの全てに"
-"警戒中の重武装のドワーフが配置され、彼らを大騒ぎで呼び迎えていたのだ。鉱山は"
-"猛烈に動く鍛冶場から煙を噴き出し続けていた。人間達のための、そして同じくド"
-"ワーフ族のための新しい武器と防具とが綺麗に積み重ねられており、ドワーフ達の耳"
-"をつんざくようなハンマーとピックの鳴る音から、さらにそれ以上作られることは確"
-"実だった。"
+"やがて、古代の伝説に出てくる強固なドワーフ要塞のような、新しい要塞が彼らを迎"
+"えた。要塞には監視役や重装備のドワーフが配備されており、彼らは騒がしくTallin"
+"たちを歓迎した。炭鉱からは、忙しなく働く鍛冶場からの煙が吹き出していた。人間"
+"とドワーフのための新しい装備が綺麗に積み重ねてあり、ハンマーとピッケルの音が"
+"さらなる装備ができることを知らせていた。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:24
-#, fuzzy
-#| msgid ""
-#| "They found Hamel in a forge hammering away at a new axe. He greeted them "
-#| "warmly and arrangements were quickly made for all their food and "
-#| "accommodations, as wall as care for the sick and wounded."
 msgid ""
 "They found Hamel in a forge hammering away at a new axe. He greeted them "
 "warmly and arrangements were quickly made for all their food and "
 "accommodations, as well as care for the sick and wounded."
 msgstr ""
-"一行は鍛冶場で新しい斧を繰り返し叩いている Hamel を見つけた。Hamel は彼らを暖"
-"かく迎え、即座に全員の食料と寝床が、同様に傷病者の手当てが用意された。"
+"せっせと新たな斧を作っている鍛冶場でTallinたちはHamelを見つけた。Hamelは暖か"
+"くTallinたちを迎え入れ、食料とを手配し、道を案内してくれた。そして、負傷者や"
+"病人の手当をした。"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:27
@@ -3717,7 +3515,7 @@ msgstr "Tallin 一行が旅の垢を落とした後、人間とドワーフ達�
 #. [unit]: type=Dwarvish Steelclad, id=Galim
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:68
 msgid "Galim"
-msgstr ""
+msgstr "Galim"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:119
@@ -3736,33 +3534,24 @@ msgstr ""
 
 #. [message]: speaker=Galim
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:129
-#, fuzzy
-#| msgid ""
-#| "It is slow and dangerous work, mostly due to the trolls. But it ha’ been "
-#| "made easier by Malifor’s ending."
 msgid ""
 "We have cleared the connecting tunnels to here and to the old keep as well "
 "as other parts o’ Knalga. It is slow and dangerous work, mostly due to the "
 "trolls. But it ha’ been made easier by Malifor’s ending."
 msgstr ""
-"主にトロルのせいだが、遅々として進まない危険な仕事だ。だが Malifor が潰えたお"
-"かげでやりやすくなった。"
+"我々は繋がっているトンネルを整理し、昔のKnalgaの一部であった拠点にも繋げてい"
+"る。だいたいはトロルのせいで、作業は危険な上に進捗も遅い。だが、Maliforが滅ん"
+"だおかげではかどっているぞ。"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:134
-#, fuzzy
-#| msgid ""
-#| "The lich’s skeletons were fighting the trolls, but when you destroyed "
-#| "him, they all just fell apart. So, there are many tunnels that are now "
-#| "infested with nothing but piles of old bones."
 msgid ""
 "Indeed. The lich’s skeletons were fighting the trolls, but when you "
 "destroyed him, they all just fell apart. So, there are many tunnels that are "
 "now infested with nothing but piles of old bones."
 msgstr ""
-"あのリッチのスケルトンどもはトロルと戦っていたが、そなたらが奴を倒した時、全"
-"てそのままバラバラに崩れ落ちた。だから、今では古びた骨の山があるだけで、多く"
-"の坑道では何も出没しやせん。"
+"確かにそうだな。あのリッチのスケルトンたちはトロルと戦っていたが、主人の後を"
+"追って崩壊した。少なくとも、トンネルが古びた骨に占拠されることは無い。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:139
@@ -3771,32 +3560,24 @@ msgstr "素晴らしいじゃないか！ 武器と防具についてはどう�
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:144
-#, fuzzy
-#| msgid ""
-#| "What’s more, some of the dwarves who are expert with the sword, mace and "
-#| "bow, as well as some of yer own men who have grown skilled by experience, "
-#| "can teach others how to wield them."
 msgid ""
 "As you can see, Tallin, there are muckle heaps of them, all ready to be "
 "borne into battle. What’s more, some of the dwarves who are expert with the "
 "sword, mace and bow, as well as some of yer own men who have grown skilled "
 "by experience, can teach others how to wield them."
 msgstr ""
-"さらに、そなたの部下の中に経験を積んで習熟した者がいるように、ドワーフ族の中"
-"にも剣、鎚、弓に熟練した者がおり、その扱い方を教えることができるのだ。"
+"見ての通りだ、Tallin。かなりの量が揃っているし、戦場で使う準備もできている。"
+"更に言えば、我々の中でも剣や槌、弓の達人たちが、おぬしの熟練兵たちとお互いに"
+"指導しあうことができるはずだ。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:149
-#, fuzzy
-#| msgid ""
-#| "I didn’t know that you dwarves knew swordplay. I thought you all fought "
-#| "with axes, hammers or those thunder weapons."
 msgid ""
 "I didn’t know you dwarves knew swordplay. I thought you all fought with "
 "axes, hammers or those thunder weapons."
 msgstr ""
-"あなた方ドワーフが剣技を心得ているとは知らなかった。全員斧とハンマーと、あの"
-"雷の武器で戦うものと思っていたが。"
+"ドワーフも剣を使うのか。みんな斧かハンマーか、雷を吐く武器を使うのかと思って"
+"いたよ。"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:155
@@ -3810,18 +3591,13 @@ msgstr ""
 
 #. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:160
-#, fuzzy
-#| msgid ""
-#| "There are some dwarves out there that are bonny fighters wi’ a sword as "
-#| "any ye are like to meet. Belike with bows, maces and any other weapons we "
-#| "fashion."
 msgid ""
 "There are some dwarves out there that are bonny fighters wi’ a sword as any "
 "ye are like to meet. Belike with bows, maces and any other weapons we "
 "fashion. In fact, Galim here is quite skilled in the art."
 msgstr ""
-"向こうにそなたらと同じように剣で巧みに戦うドワーフの戦士がいる。弓や鎚、その"
-"他のわしらの作る武器についてもそうだろう。"
+"あそこにいるドワーフたちがぬしに会いたいそうだ、奴らは素晴らしい剣士だぞ。弓"
+"や、槌などの武器もわしらは装備しておる。ここにいるGalimもその道の達人だ。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:165
@@ -4180,10 +3956,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:249
-#, fuzzy
-#| msgid "Resist till the end of turns"
 msgid "Resist until the end of turns"
-msgstr "ターンが尽きるまで抵抗する。"
+msgstr "ターンが尽きるまで耐える"
 
 #. [objectives]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:254
@@ -4266,16 +4040,11 @@ msgstr "アァグッ！ やられた！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:422
-#, fuzzy
-#| msgid ""
-#| "Killed him! Got his gold too. Lets see, hmmm, about 500 gold pieces. Not "
-#| "bad."
 msgid ""
 "Killed him! Got his gold too. Let’s see, hmmm, about 500 gold pieces. Not "
 "bad."
 msgstr ""
-"倒したぞ！ こいつの金も手に入った。見てみよう、フムムム、500 ゴールドぐらい"
-"だ。悪くない。"
+"奴を倒したぞ！ゴールドも頂いておこう。どれどれ、500ゴールドか。悪くないな。"
 
 #. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:432
@@ -4359,12 +4128,8 @@ msgstr ""
 
 #. [message]: id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:529
-#, fuzzy
-#| msgid ""
-#| "I propose that we retreat back into the caves and consult with the "
-#| "dwarves."
 msgid "I propose that we retreat into the caves and consult with the dwarves."
-msgstr "洞窟に退却してドワーフ達と相談することを提案します。"
+msgstr "一度洞窟に撤退して、ドワーフと話し合ってはどうでしょう？"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:534
@@ -4990,7 +4755,7 @@ msgstr "Stalrag"
 #. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:213
 msgid "Liches"
-msgstr ""
+msgstr "リッチ"
 
 #. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
@@ -5014,10 +4779,8 @@ msgstr "Ro'Sothian から Stalrag を救う。"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:328
-#, fuzzy
-#| msgid "Death of Tallin"
 msgid "Death of Tallin."
-msgstr "Tallin の死"
+msgstr "Tallinの死。"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:332
@@ -5346,18 +5109,13 @@ msgstr "うむ……まず<i>お前が</i>望むことを言ってもらおう�
 
 #. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:743
-#, fuzzy
-#| msgid ""
-#| "What do <i>I</i> want? I’ll tell you what I want! I want the stinking "
-#| "carcasses of you, all your henchmen and those dwarvish vermin off of my "
-#| "land! And <i>stay</i> off!"
 msgid ""
 "What do <i>I</i> want? I’ll tell you what I want! I want the stinking "
 "carcasses of you, all your henchmen and those dwarvish vermin off my land! "
 "And <i>stay</i> off!"
 msgstr ""
-"<i>私が</i>望むことだと？ では望みを言ってやろう！ 貴様とその取り巻きと私の領"
-"土から駆除したドワーフの害虫どもの腐った死体が望みだ！ <i>立ち入るな</i>！ "
+"<i>私</i>の望みだと？なら教えてやる！お前たちの悪臭が嫌なのだ、お前の部下とド"
+"ワーフの虫けらどもをこの地から撤収させろ！<i>二度と来るな</i>！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:748
@@ -5611,10 +5369,10 @@ msgid ""
 "had bolted himself up in his study. Bound by the will of their master, "
 "Tallin and his minions took up positions outside Malifor’s study door."
 msgstr ""
-"Tallin は心の中ではMalifor のピンチを喜んでいたが、心に掛かった魔術のギアスは"
-"主人の支援に行くよう強制した。彼が到着した時には、外の防衛は壊滅していた。そ"
-"して既にMalifor 自身が研究所から逃走していることが分かった。主人の意志に縛ら"
-"れて、Tallin と彼の手先は研究所のドア前に陣取った。"
+"Tallinは心の中ではMaliforのピンチを喜んでいたが、心に掛かった魔術のギアスは主"
+"人の支援に行くよう強制した。彼が到着した時には、外の防衛は壊滅していた。そし"
+"て既にMalifor自身が研究所から逃走していることが分かった。主人の意志に縛られ"
+"て、Tallinと彼の手先は研究所のドア前に陣取った。"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:38
@@ -6137,7 +5895,7 @@ msgstr "Ro'Sothian の死"
 #. [note]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:283
 msgid "Even if your rescue fails, you will still advance to the next scenario"
-msgstr ""
+msgstr "救出に失敗したとしても、次のシナリオに進むことはできます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:294
@@ -6608,19 +6366,14 @@ msgstr "絶対ダメだ！ 俺は呪われた呪文を口にすることは拒�
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:430
-#, fuzzy
-#| msgid ""
-#| "No art in itself is ever evil, my boy; evil or good is in is the use to "
-#| "which it is put. But now is not the time to argue; see how the arms of "
-#| "this creature reach for us! Quickly, we must defeat this creature!"
 msgid ""
 "No art in itself is ever evil, my boy; evil or good is in the use to which "
 "it is put. But now is not the time to argue; see how the arms of this "
 "creature reach for us! Quickly, we must defeat this creature!"
 msgstr ""
-"秘術はそれだけでは決して悪いものではないぞ、マイボーイ。悪か善かはそれを何に"
-"使うかということだ。 だが、今は議論している場合ではない。この生物の腕がどのよ"
-"うに手を伸ばすか見ておくんだ！ 我々はこの生物を手速く倒さなくてはならない！"
+"それ自体が邪悪なものなど無いのだ、マイボーイ。邪悪か善かは使い手で決まる。だ"
+"が議論している場合ではない、この生き物の腕が近づいている！急げ、これを倒さね"
+"ば！"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:436
@@ -7241,19 +6994,13 @@ msgstr "それでそれが私に何の関係があるの？"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:289
-#, fuzzy
-#| msgid ""
-#| "There is a large elvish force not far from here who — we believe anyway — "
-#| "has been sent to free you. We were hoping if we could secure your release "
-#| "you guys would help us crush the orcish host."
 msgid ""
 "There is a large elvish force not far from here who — we believe anyway — "
 "has been sent to free you. We were hoping if we could secure your release "
 "you would help us crush the orcish host."
 msgstr ""
-"君を解放するために派遣された――と俺達は信じているが――エルフの大軍勢がここから"
-"遠くない位置に来ている。君を解放すれば連中はオークの軍勢を破る手助けをしてく"
-"れるかと思ってな。"
+"ここからさほど遠くない位置に、あなたを開放するためにエルフの大軍勢が集まって"
+"いる。俺達はあなたを助ける代わりに、共にオークと戦って欲しかったんだ。"
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:295
@@ -7391,10 +7138,8 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:456
-#, fuzzy
-#| msgid "I can see the dwarvish defenses just ahead. Lets go!"
 msgid "I can see the dwarvish defenses just ahead. Let’s go!"
-msgstr "すぐ先にドワーフの防壁が見える。行こう！"
+msgstr "ドワーフの防衛戦が見えるぞ。急ごう！"
 
 #. [scenario]: id=09b_Judgment
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:4
@@ -7553,12 +7298,12 @@ msgid ""
 "boyhood up till your enslavement by Malifor was dedicated to this task, and "
 "this task is still incomplete."
 msgstr ""
-"言葉を返すようだが、Tallin。 真実として、あなたには Malifor の邪悪な召還を拒"
-"否する力を持っておらず、とてもあなたに責任を負わすことはできません。 あなたの"
-"前世でこんな試練のための用意ができ得たでしょうか？ そして、他方であなたはオー"
-"クの隷属から人々を解放するための用意で全生涯を過ごしました。 あなたは、すべて"
-"の言葉、すべての思考、 少年時代からつい最近のMalifor の隷属までのすべての行動"
-"をこの仕事に捧げてきました。そしてこの仕事はまだ不完全です。"
+"言葉を返すようだが、Tallin。 真実として、あなたは Malifor の邪悪な召還を拒否"
+"する力を持っておらず、とてもあなたに責任を負わすことはできません。 あなたの前"
+"世でこんな試練のための用意ができ得たでしょうか？ そして、他方であなたはオーク"
+"の隷属から人々を解放するための用意で全生涯を過ごしました。 あなたは、すべての"
+"言葉、すべての思考、 少年時代からつい最近のMalifor の隷属までのすべての行動を"
+"この仕事に捧げてきました。そしてこの仕事はまだ不完全です。"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:194
@@ -7603,13 +7348,6 @@ msgstr "それは、邪悪な降霊術を練習し続けるべきだという意
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:214
-#, fuzzy
-#| msgid ""
-#| "Even the foulest of weapons can be put to good use, Tallin. Poison "
-#| "generally kills, but it can also be used to heal. In the same way, "
-#| "although this art is usually practiced by the most power-hungry and "
-#| "corrupt, it may still may turned to the ends of good by one with the "
-#| "strength of will and soul-depth you have gained through your suffering."
 msgid ""
 "Even the foulest of weapons can be put to good use, Tallin. Poison generally "
 "kills, but it can also be used to heal. In the same way, although this art "
@@ -7617,10 +7355,10 @@ msgid ""
 "turned to the ends of good by one with the strength of will and soul-depth "
 "you have gained through your suffering."
 msgstr ""
-"Tallin。最も酷い武器さえ、有益な使い方があります。一般的に毒は薬にもなりま"
-"す。 同様にして、この秘術が通常最も権力に飢えていて、そして堕ちた人によって練"
-"習されるけれど、そう、あなたのように、苦悩することを通じ、意志の強さと精神の"
-"深さを向上させた者がそうすれば、善を目標に向かえるかもしれません。"
+"降霊術が最も愚かな戦術だとしても、良い目的に使うことは可能だよ、Tallin。毒は"
+"人を殺すけど、医術にも使うことができる。同じように、降霊術は力に飢えて堕落し"
+"た者が訓練することが多いだけで、強い意思を持つ者であれば良いことにも使えるん"
+"だ。この苦痛によってそれを手にするんだ。  "
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgment.cfg:219
@@ -7708,18 +7446,13 @@ msgstr ""
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:50
-#, fuzzy
-#| msgid ""
-#| "It was a ploy. Nae sooner ha’ we thinned the ranks of the northern "
-#| "defenders then a small, hardened group of trolls smashed through the "
-#| "defenses and made their way straight for your gold."
 msgid ""
 "It was a ploy. Nae sooner than we ha’ thinned the ranks of the northern "
 "defenders, a small, hardened group of trolls smashed through the defenses "
 "and made their way straight for your gold."
 msgstr ""
-"それが狙いだったのだ。北方の守備隊の隊列を薄くした直後に、小規模なトロルの精"
-"鋭部隊が防衛線を突破して一直線に資金へと向かった。"
+"それは策略であった。我々が北の防御兵を疎らにしてからすぐに、少数の強靭なトロ"
+"ルの集団が攻撃をしかけてきて、ゴールドへの道を突破したのだ。"
 
 #. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:52
@@ -9275,16 +9008,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:636
-#, fuzzy
-#| msgid ""
-#| "Ro’Arthian’s brother, Ro’Sothian went south with another crew of trolls, "
-#| "ogres and mages. Tallin himself led the western group."
 msgid ""
 "Ro’Arthian’s brother, Ro’Sothian, went south with another crew of trolls, "
 "ogres and mages. Tallin himself led the western group."
 msgstr ""
-"Ro'Arthian の弟、Ro'Sothian はもう一方のトロル、オーガ、魔術師の一団と共に南"
-"へ向かった。Tallin 自身は西の部隊を率いた。"
+"Ro’Arthianの弟、Ro’Sothianは別のトロルとオーガ、魔術師の集団を率いて南に向"
+"かった。Tallinは西の集団を率いて行った。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:663
@@ -9820,15 +9549,12 @@ msgstr ""
 
 #. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:256
-#, fuzzy
-#| msgid ""
-#| "Knowing you and your spirit of adventure, Elenia, I am certain that you "
-#| "are gonna be back sooner or later."
 msgid ""
 "Knowing you and your spirit of adventure, Elenia, I am certain that you will "
 "be back sooner or later."
 msgstr ""
-"あなたの冒険心は知っているから、Elenia、遅かれ早かれ戻ってくるのは確実ね。"
+"Elenia、あなたの好奇心の強さはよく分かっているわ。まあ、いつかは戻ってきてく"
+"れるでしょ？"
 
 #. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:260
@@ -9851,14 +9577,10 @@ msgstr "Krash？"
 
 #. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:285
-#, fuzzy
-#| msgid ""
-#| "I am sorry, Tallin but me and my friends had better be getting back to "
-#| "our people."
 msgid ""
 "I’m sorry, Tallin, but me and my friends better be getting back to our "
 "people."
-msgstr "すまない、Tallin 我々は仲間のところへ戻った方がよい。"
+msgstr "すまない、Tallin。俺達はドレーク族のもとへ戻る。"
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:289
@@ -9935,16 +9657,12 @@ msgstr ""
 
 #. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:334
-#, fuzzy
-#| msgid ""
-#| "Thank you father, and thank you again, Tallin for all that you have done, "
-#| "both for the world of the living and the dead."
 msgid ""
 "Thank you, Father, and thank you again, Tallin, for all that you have done, "
 "both for the world of the living and the dead."
 msgstr ""
-"ありがとう神父、そしてありがとう Tallin、生者と死者の世界双方にお前が為したこ"
-"と全てに感謝する。"
+"ありがとう、神父よ、そしてもう一度礼を言わせてくれ、Tallin。生と死の世界にお"
+"いて、君がしたことは忘れない。"
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:338
@@ -10562,7 +10280,7 @@ msgstr "あなたの仇は必ず取る、勇敢なる Stalrag。オーク族に�
 #. [message]: role=Shinsplitter
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:835
 msgid "DIE, YOU FOUL SCUM!!"
-msgstr "死ね、汚らしいクズめ！！"
+msgstr "<b>死ね、汚らしいクズめ！！</b>"
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:852
@@ -10586,347 +10304,8 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:873
 msgid "You wretches are going to pay for this! FORWARD, MEN!"
-msgstr "クズどもがこの報いを受けるがいい！ 全軍、前進！"
+msgstr "クズども、この報いを受けるがいい！ 全軍、前進！"
 
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:67
 msgid "Arthian"
 msgstr "Arthian"
-
-#~ msgid "HAHAHA, FOOLS, YOU THINK YOU CAN KILL ME?"
-#~ msgstr "ハハハハハ、愚か者どもめ、私を殺せるとでも？"
-
-#~ msgid "HAHAHAHA!"
-#~ msgstr "ハハハハハ！"
-
-#~ msgid "What the...!"
-#~ msgstr "何……！"
-
-#~ msgid "How can it be?! Our axes and hammers are failing."
-#~ msgstr "こんなことが？！ 斧とハンマーが効かない。"
-
-#~ msgid ""
-#~ "Blast it! Now where did he go? Let’s find him and try something else!"
-#~ msgstr "くそっ！ 奴はどこへ行った！ 奴を探して他の手段を試してみよう！"
-
-#~ msgid "HAHAHA, I CAN NEVER BE DESTROYED!"
-#~ msgstr "ハハハハハ、私は決して滅ぼされない！"
-
-#~ msgid "Oh yes you will! But... how?"
-#~ msgstr "おぉっ、奴の言う通りのようだ！ だが……どうやって？"
-
-#~ msgid "Well, it sure isn’t gonna be done with a blade."
-#~ msgstr "うむ、武器が効いていないのは確かだ。"
-
-#~ msgid "And look, he’s gone. Now we gotta find him all over again!"
-#~ msgstr "見ろ、消えてしまった。もう一度奴を探し出すぞ！"
-
-#~ msgid "COME AND GET ME!"
-#~ msgstr "捕まえてみろ！"
-
-#~ msgid "Oh darn, he disappeared. Let’s find him and try a different weapon."
-#~ msgstr "あぁくそっ、消えやがった。奴を探して違う武器を試してみよう！"
-
-#~ msgid "HAHAHAHA, I AM IMMORTAL!"
-#~ msgstr "ハハハハハハ、私は不滅だ！"
-
-#~ msgid ""
-#~ "Look, he disappeared again. Let’s find him and try using a different "
-#~ "weapon on him."
-#~ msgstr "見ろ、また消えたぞ。奴を探して違う武器を使ってみよう！"
-
-#~ msgid "What the—"
-#~ msgstr "何――"
-
-#~ msgid "(Normal)"
-#~ msgstr "（普通）"
-
-#~ msgid "Peasant"
-#~ msgstr "農民"
-
-#~ msgid ""
-#~ "The orcs have gotten careless — look how easily I stole these weapons and "
-#~ "this bright gold from them. Now they’re killing each other. This might be "
-#~ "the only chance we got to get rid of this scum once and for all. Let’s "
-#~ "give it to ’em!"
-#~ msgstr ""
-#~ "オークの注意が疎かになった――こんなに簡単に武器と眩い金を盗みだせるくらい"
-#~ "だ。オークは今や互いに殺しあっている。こんな境遇から逃れられる唯一の機会か"
-#~ "もしれない。さあ、皆でやっつけてやろうぜ！"
-
-#~ msgid ""
-#~ "Brave words, Tallin, but moon-touched crazy ones. You have weapons for "
-#~ "fewer than a dozen men. None of us has any armor, or any training. What "
-#~ "are the rest of us going to fight them with, pitchforks?!"
-#~ msgstr ""
-#~ "威勢のいい言葉だがな、Talin、気が触れたとしか思えん。武器はあるが頭数には"
-#~ "足りない。誰一人防具を持っていないし、訓練もしていない。残りの人間は何で戦"
-#~ "えというんだ？ 熊手か！？"
-
-#~ msgid "Then it’s time to fight!"
-#~ msgstr "なら今は戦う時だ！"
-
-#~ msgid "(<i>Smash</i>)"
-#~ msgstr "(<i>ドゴッ</i>)"
-
-#~ msgid "Wow, this place is interesting."
-#~ msgstr "ワォ、ここは面白い場所だな。"
-
-#~ msgid "Move Tallin to a Dwarvish castle keep or..."
-#~ msgstr "Tallin をドワーフの城まで移動させる、または"
-
-#~ msgid "Clear the caves (Bonus)"
-#~ msgstr "洞窟を一掃する(ボーナス)"
-
-#~ msgid "Get into the mines or..."
-#~ msgstr "鉱山に到達する、または"
-
-#~ msgid "Just kill the annoying little puppies"
-#~ msgstr "邪魔な仔犬を倒す。"
-
-#~ msgid "Samlan"
-#~ msgstr "Samlan"
-
-#~ msgid "They are trying to free the prisoners! Stop them!"
-#~ msgstr "捕虜を解き放とうとしているぞ！ 止めろ！"
-
-#~ msgid "Oh my, she is almost dead!"
-#~ msgstr "な、ほとんど死にかけだ！"
-
-#~ msgid "Was that a teleport you just did? Wow, you guys are good!"
-#~ msgstr "瞬間移動したのか？ ワォ、なんて奴らだ！"
-
-#~ msgid "(<i>Wink... wink.</i>)"
-#~ msgstr "(<i>ウインク……ウインク</i>)"
-
-#~ msgid "Here, this will help her."
-#~ msgstr "これで彼女は助かるでしょう。"
-
-#~ msgid "Here, I hope that helps."
-#~ msgstr "さて、助かるといいが。"
-
-#~ msgid "Hmmm, it is pretty small, let’s see if we can make it bigger."
-#~ msgstr "フムムム、かなり小さいな、拡げられるか見てみよう。"
-
-#~ msgid "Holy Gods of Light! 500 gold!"
-#~ msgstr "清らかなる光明の神々にかけて！ 500 ゴールドだ！"
-
-#~ msgid "What a hoard! 2,000 gold!"
-#~ msgstr "すごい蓄えだ！ 2,000 ゴールドだ！"
-
-#~ msgid "500 gold! Not bad!"
-#~ msgstr "500 ゴールドだ！ 悪くない！"
-
-#~ msgid "10,000 gold! Wow! Where is that bag of bones getting all this?"
-#~ msgstr ""
-#~ "10,000 ゴールド！ ワォ！ あの骨袋はどこからこんなものを手に入れたんだろ"
-#~ "う？"
-
-#~ msgid "(<i>Rumble</i>)"
-#~ msgstr "(<i>ガラガラガラ</i>)"
-
-#~ msgid "(<i>Crash</i>)"
-#~ msgstr "(<i>ガガーン</i>)"
-
-#~ msgid ""
-#~ "What was that? Oh, woe — two big slabs of rock cutting off our retreat!"
-#~ msgstr "あれは何だ？ なんてこった――大きな石の板で退路を断たれてしまった！"
-
-#~ msgid "This doesn’t look good."
-#~ msgstr "まずい。"
-
-#~ msgid "Should I pick up the Rod of Justice?"
-#~ msgstr "裁きの杖を拾うべきだろうか？"
-
-#~ msgid "Wow! This thing is... incredible!"
-#~ msgstr "ワォ！ これは……信じられない！"
-
-#~ msgid "Ha ha, for skeletons anyway."
-#~ msgstr "ハハ、少なくともスケルトンにとってはそうだ。"
-
-#~ msgid "A door, and a big, big lock, hmmm..."
-#~ msgstr "扉だ、とても大きな錠だ、ウムムムムム……"
-
-#~ msgid "Sorry folks, this is just too tempting."
-#~ msgstr "みんなすまないが、あまりにもそそられるものでな。"
-
-#~ msgid ""
-#~ "Hmmm, this door sure is locked up pretty tight. I wonder what’s behind it."
-#~ msgstr ""
-#~ "ウムムムム、この扉は実にしっかりと施錠されている。この奥には何があるんだろ"
-#~ "う。"
-
-#~ msgid "Oh yeah, holy water!"
-#~ msgstr "やった、聖水だ！"
-
-#~ msgid "‘The master’s study’ eh? I bet we’ll find Malifor there!"
-#~ msgstr ""
-#~ "えっ、「主人の研究所」だって？ こっちで Malifor が見つかる方に賭けてみる"
-#~ "か！"
-
-#~ msgid "Hmm, what is this thing?"
-#~ msgstr "フムム、あれは何だ？"
-
-#~ msgid "EEEEEE!"
-#~ msgstr "イイイイイイ！"
-
-#~ msgid "... Wait a second, who are you?"
-#~ msgstr "……ちょっと待て、お前は何者だ？"
-
-#~ msgid ""
-#~ "Malifor...! (<i>Goes a bit paler (if possible)</i>) What business do you "
-#~ "have with him?"
-#~ msgstr "Malifor！ (<i>少し青ざめた様子？で</i>) お前は彼と何の関係が？"
-
-#~ msgid "We seek to crush and destroy him."
-#~ msgstr "奴を打ち砕いて滅ぼすために探している。"
-
-#~ msgid ""
-#~ "Oh, thank the Gods of Light! Finally there is someone here in force to "
-#~ "deal with that menace. You must have been sent by the High Kalian of "
-#~ "Hiera’Shirsha?"
-#~ msgstr ""
-#~ "おぉ、光明の神々よ感謝いたします！ ついにあの脅威を始末する者がやってき"
-#~ "た。 お前は Hiera'Shirsha の High Kalian から遣わされてきたのだろう？"
-
-#~ msgid "The what?"
-#~ msgstr "は！？"
-
-#~ msgid "Err, I think we might be in different... uh... time zones, here."
-#~ msgstr "アー、何かがかみ合っていない気がするぞ……ウン……時間帯が。"
-
-#~ msgid "I beg your pardon. Say, what year is it anyway?"
-#~ msgstr "失礼した。それで、今は一体何年なんだ？"
-
-#~ msgid "Uh... 534..."
-#~ msgstr "ン……534年……"
-
-#~ msgid "Huh?! Can’t be, the last year I remember it was 14,318!"
-#~ msgstr "ハァ！？ 有り得ん、私が最後に記憶していたのは 14,318年だ！"
-
-#~ msgid "?"
-#~ msgstr "？"
-
-#~ msgid "Different calendars, folks."
-#~ msgstr "暦が違うようだな。"
-
-#~ msgid "I see, but say, who are you?"
-#~ msgstr "なるほど、だがあなたは一体何者なんだ？"
-
-#~ msgid "What? How can you not know who I am?"
-#~ msgstr "何？ 私を知らないだと？"
-
-#~ msgid "The times have changed, my friend."
-#~ msgstr "時代は変わったのだ、友よ。"
-
-#~ msgid ""
-#~ "Right... sorry about that. My name is Lord Abhai and I am... or was... "
-#~ "the ruler of the great kingdom of Garet-Desh."
-#~ msgstr ""
-#~ "そうだったな……すまん。私の名は Abhai 王、Garet-Desh 大王国の支配者である……"
-#~ "いや……支配者であったものだ。"
-
-#~ msgid "What happened to you? Why are you a ghost?"
-#~ msgstr "何があったんだ？ どうして幽霊に？"
-
-#~ msgid ""
-#~ "Indeed. He tried to break my spirit into mindless slavery, but I resisted "
-#~ "his power and fled. I have been hiding in these flooded tunnels ever "
-#~ "since. Some monster that Malifor’s minions greatly fear lives in these "
-#~ "waters; they do not molest me here."
-#~ msgstr ""
-#~ "然り。彼は私の精神を破壊して心無き奴隷にしようとしたが、私はその力に抵抗し"
-#~ "て逃げた。それ以来この水浸しの坑道に隠れているというわけだ。この水域には "
-#~ "Malifor の手先が大変恐れるモンスターが棲んでいるのだ。そのモンスターが私に"
-#~ "手を出すことはない。"
-
-#~ msgid "Ugh, a dead body!"
-#~ msgstr "ウッ、死体だ！"
-
-#~ msgid "Here’s another body."
-#~ msgstr "また死体だ。"
-
-#~ msgid "And another..."
-#~ msgstr "まただ……"
-
-#~ msgid "Ssssh! I hear something."
-#~ msgstr "シーーーッ！ 何か聞こえる。"
-
-#~ msgid "ROOOAAARRR!"
-#~ msgstr "グオオアアアァァァ！"
-
-#~ msgid "Hmmm, another door. Boy, is this one sure locked up."
-#~ msgstr "フムムム、別の扉だ。おや、しっかりと施錠されているのか。"
-
-#~ msgid "Probably for that door right there."
-#~ msgstr "おそらくその扉のものだろう。"
-
-#~ msgid "Here we go!"
-#~ msgstr "いくぞ！"
-
-#~ msgid "(<i>Creak...</i>)"
-#~ msgstr "(<i>ギギィ……</i>)"
-
-#~ msgid "(<i>Bang</i>)"
-#~ msgstr "(<i>ガシャーン</i>)"
-
-#~ msgid "(<i>Boom</i>)"
-#~ msgstr "(<i>ゴゴゴ……</i>)"
-
-#~ msgid "(<i>Crash!</i>)"
-#~ msgstr "(<i>ガガーン！</i>)"
-
-#~ msgid ""
-#~ "We have cleared the connecting tunnels to here and to the old keep as "
-#~ "well as other parts o’ Knalga."
-#~ msgstr ""
-#~ "こことかつての主城を結ぶ坑道を一掃したぞ、Knalga の他の部分も同様にな。"
-
-#~ msgid ""
-#~ "As you can see, Tallin, there are muckle heaps of them, all ready to be "
-#~ "borne into battle."
-#~ msgstr ""
-#~ "そなたも見たように、Tallin よ、武器と防具の山が沢山あって、すぐ戦闘に持ち"
-#~ "込めるようにしてある。"
-
-#~ msgid "Or resist till the end of turns"
-#~ msgstr "またはターンが尽きるまで抵抗する"
-
-#~ msgid "Death of Tallin or Stalrag."
-#~ msgstr "Tallin または Stalrag の死"
-
-#~ msgid "Turns run out"
-#~ msgstr "時間切れ"
-
-#~ msgid "It couldna’ been more than a day now."
-#~ msgstr "1 日も経っていないだろう。"
-
-#~ msgid ""
-#~ "Then we shall pursue them. Even if we don’t catch them, we might be able "
-#~ "to hit Rakshas before he has had a chance to put all that gold to good "
-#~ "use."
-#~ msgstr ""
-#~ "では俺達が追跡しよう。たとえ取り戻せなかったとしても、資金を使い切る前に "
-#~ "Rakshas を叩けるかもしれない。"
-
-#~ msgid ""
-#~ "Hamel, rally the dwarves and prepare to mount an all-out offensive "
-#~ "against the orcs. It’s time to give them some of their own."
-#~ msgstr ""
-#~ "Hamel、ドワーフ族を集めてオーク族に全力で攻勢をかける準備をしておいてく"
-#~ "れ。奴らに責任を取らせる時が来た。"
-
-#~ msgid ""
-#~ "We tried, Tallin, but with the orcs still pressing our southern defenses "
-#~ "and other groups of trolls trying to break through everywhere, we simply "
-#~ "didna’ ha’ the manpower."
-#~ msgstr ""
-#~ "試してはみたが、Tallin よ、オークがまだ南方の守備を圧してきていて他のトロ"
-#~ "ルの集団が機を見て突破しようと狙っている、絶対的に手駒が足りないのだ。"
-
-#~ msgid ""
-#~ "It is well thought. The axes and hammers of every dwarf thirst for the "
-#~ "blood of the orcs!"
-#~ msgstr "良い考えだ。全ドワーフの斧とハンマーがオーク族の血に飢えているぞ！"
-
-#~ msgid "Defeat the enemy leaders or"
-#~ msgstr "敵のリーダーを倒す、または"

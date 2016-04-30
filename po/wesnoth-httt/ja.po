@@ -6,18 +6,18 @@
 # Translators:
 # Automatically generated, 2005
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
 # Takanobu Hirai <airhead@users.sourceforge.jp>, 2006
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2015-10-22 10:53+0000\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-04-11 01:00+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,10 +50,8 @@ msgstr "（初心者レベル、23 シナリオ）"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "（初心者）"
+msgstr "初心者"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
@@ -68,17 +66,13 @@ msgstr "ヒーロー"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:22
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "ノーマル"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑戦的）"
+msgstr "挑戦的"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
@@ -557,7 +551,7 @@ msgstr "振り返っている時間は無い。急がねば！"
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
 msgid "scenario name^Blackwater Port"
-msgstr "Blackwater 港"
+msgstr "黒水港"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:21
@@ -587,7 +581,7 @@ msgstr "Kaylan 卿 の死"
 #. [label]
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:56
 msgid "Blackwater Port"
-msgstr "Blackwater 港"
+msgstr "黒水港"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:77
@@ -617,9 +611,9 @@ msgid ""
 "of the king desperately hold the port, as it is one of the only places where "
 "they can ship supplies and weapons."
 msgstr ""
-"Blackwater 港で船に乗る事ができるはずじゃが、オークもそこに向かっておるよう"
-"じゃ。Asheviere を嫌悪し、王を偲ぶ忠実な反乱軍の兵士たちが必死になって港を"
-"守っておる。ここは物資と兵器を輸送する事ができる唯一の場所なのじゃ。"
+"黒水港で船に乗る事ができるはずじゃが、オークもそこに向かっておるようじゃ。"
+"Asheviere を嫌悪し、王を偲ぶ忠実な反乱軍の兵士たちが必死になって港を守ってお"
+"る。ここは物資と兵器を輸送する事ができる唯一の場所なのじゃ。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:167
@@ -1027,8 +1021,8 @@ msgid ""
 "We have come from fighting her forces at Blackwater. Where else has she "
 "attacked?"
 msgstr ""
-"わしらは Blackwater で女王の軍と戦ってからここに参ったのじゃ。 他に女王はどこ"
-"を攻撃しておるのじゃ？"
+"わしらは黒水港で女王の軍と戦ってからここに参ったのじゃ。 他に女王はどこを攻撃"
+"しておるのじゃ？"
 
 #. [message]: speaker=Seimus
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:311
@@ -2462,7 +2456,7 @@ msgid ""
 "SE — Fort Tahn"
 msgstr ""
 "北東 - Dan'Tonk\n"
-"南東 - Fort Tahn"
+"南東 - Tahn砦"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:510
@@ -2861,9 +2855,9 @@ msgid ""
 "able to ford the river in winter!"
 msgstr ""
 "閣下、あなたは卑劣な女王の支配下から逃れなければなりません。北東方向に針路を"
-"取り、グリフォンの山を超えれば、Abez で Great River を渡る事ができるでしょ"
-"う。しかし急がなければいけません。冬になれば川を渡る事はできなくなってしまう"
-"でしょう！"
+"取り、グリフォンの山を超えれば、Abez で大いなる川を渡る事ができるでしょう。し"
+"かし急がなければいけません。冬になれば川を渡る事はできなくなってしまうでしょ"
+"う！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:399
@@ -2912,8 +2906,7 @@ msgid ""
 "us go quickly!"
 msgstr ""
 "Wesnoth の地は安全ではありません。女王軍が隅々まで支配しています。我々は急い"
-"で Great River を渡り、北部地方に向かわなければなりません。すぐ出立しましょ"
-"う！"
+"で大いなる川を渡り、北部地方に向かわなければなりません。すぐ出立しましょう！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:437
@@ -3037,8 +3030,8 @@ msgid ""
 "continue toward the land of the dwarves. Hurry, let us go!"
 msgstr ""
 "更に北に進まざるを得ん。冬の訪れ前に安全な Elensefar や Alduin に戻るには遅す"
-"ぎる。したがって、わしらは大河を渡ってドワーフ族の地に向かわねばならんの"
-"じゃ。急げ、さあ参ろう！"
+"ぎる。したがって、わしらは大いなる川を渡ってドワーフ族の地に向かわねばならん"
+"のじゃ。急げ、さあ参ろう！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:254
@@ -3382,7 +3375,7 @@ msgid ""
 "If we are to have any hope of penetrating into Knalga, we must continue "
 "north to seek help from the Dwarves of the Heart Mountains in the north."
 msgstr ""
-"Knalga に侵入できる望みがあるならば、引き続き北へ向かって北の深い山々にいるド"
+"Knalga に侵入できる望みがあるならば、引き続き北へ向かって北の中心山脈にいるド"
 "ワーフ族の助けを求めねばならん。"
 
 #. [message]: speaker=Li'sar
@@ -5147,8 +5140,8 @@ msgid ""
 "your life."
 msgstr ""
 "いいえ、私は考えていました……私はどうしてもそなたを殺したいというわけではない"
-"のです。私は欲しかった物を手に入れたわ。だから Great River の南側に来ないと約"
-"束してくれたら、そなたの命を助けます。"
+"のです。私は欲しかった物を手に入れたわ。だから大いなる川の南側に来ないと約束"
+"してくれたら、そなたの命を助けます。"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:222
@@ -6115,10 +6108,8 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:402
-#, fuzzy
-#| msgid "But we can not go back. We are on an important mission."
 msgid "But we cannot go back. We are on an important mission."
-msgstr "じゃがわしらは戻る事はできん。重要な任務の最中なのじゃ。"
+msgstr "しかし引き返すことはできん。重要なミッションの途中だからの。"
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:406
@@ -6462,10 +6453,8 @@ msgstr "森に到着する前に時間切れになる"
 
 #. [note]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:52
-#, fuzzy
-#| msgid "Note: your encampment will be dismantled after the first turn."
 msgid "Your encampment will be dismantled after the first turn."
-msgstr "注意: あなたの宿営地は最初のターンが終わると取り壊されます。"
+msgstr "野営地は開始ターンの後、解体されます。"
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Elvish Lady, id=Parandra
@@ -8344,7 +8333,7 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
-"多くの軍隊の高貴なリーダーである君主は、格闘戦においては特に強力であり、その"
+"多くの軍隊の高貴なリーダーである君主は、近接戦においては特に強力であり、その"
 "上、弓の技能も保有しています。司令官と同様に、君主も統率の技能を所有してお"
 "り、すべての隣接した低レベルのユニットの戦闘能力を改善します。"
 
@@ -8385,7 +8374,7 @@ msgid ""
 msgstr ""
 "シーオークは、しばしば陸上での生活を好む同族よりも劣っているとみられていま"
 "す。しかし、水のある環境に適応しており、それはゴブリン族の大いなる繁栄を示す"
-"ものでもあります。彼らは曲がった剣を装備した優秀な戦士です。しかし、投射攻撃"
+"ものでもあります。彼らは曲がった剣を装備した優秀な戦士です。しかし、遠隔攻撃"
 "はできず、陸上での防御も下手という戦略的な弱さを持ちます。"
 
 #. [unit_type]: id=Sleeping Gryphon, race=gryphon
@@ -8414,7 +8403,7 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
-"隣接する味方ユニットの全員が格闘戦闘で先制攻撃を行うようになります。防御時で"
+"隣接する味方ユニットの全員が近接戦闘で先制攻撃を行うようになります。防御時で"
 "もそうなります。"
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
@@ -8566,7 +8555,7 @@ msgid ""
 "A symbol of the kingship of Wesnoth, the Sceptre has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"この古代の笏は深い山々に住む偉大なドワーフによって鍛えられた。Wesnoth の王位"
+"この古代の笏は中心山脈に住む偉大なドワーフによって鍛えられた。Wesnoth の王位"
 "の象徴である笏は、その所有者の敵に対してファイアボールを撃つ力がある。"
 
 #. [object]: id=object_scepter
@@ -8757,6 +8746,3 @@ msgstr ""
 "Delfador は南西部の Wesnoth の国境を越えて Aethenwood の森へと逃げ、エルフ族"
 "の守護の下で幼い Konrad を育てました。地上に Asheviere の恐怖の支配が始まった"
 "のを悲しげに見つめながら……"
-
-#~ msgid "No gold carried over to the next scenario."
-#~ msgstr "次のシナリオに持ち越すゴールドは無し。"

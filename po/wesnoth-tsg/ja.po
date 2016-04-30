@@ -5,20 +5,19 @@
 #
 # Translators:
 # Automatically generated, 2006
-# Luciano Montanaro <mikelima@cirulla.net>, 2006-2007
 # Nobuhito Okada <okyada@gmail.com>, 2006
 # OOTA, Masato <ooyooxei+tr@gmail.com>, 2015
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2015-10-30 11:42+0000\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-04-17 04:07+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,10 +53,8 @@ msgstr "（初心者レベル、9 シナリオ）"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:21
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "（初心者）"
+msgstr "初心者"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:21
@@ -66,10 +63,8 @@ msgstr "一般市民"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "（易しい）"
+msgstr "易しい"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -78,10 +73,8 @@ msgstr "新人の兵士"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "ノーマル"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
@@ -384,8 +377,8 @@ msgid ""
 "that lack a ranged attack, like Thieves and Thugs. They also carry a sword "
 "and can defend themselves against melee attacks."
 msgstr ""
-"弓兵は強力な投射攻撃が可能であり、盗賊や悪党のような投射攻撃を持たないユニッ"
-"トに対してとても効果的です。彼らは剣も持っていて、格闘攻撃に対しても反撃する"
+"弓兵は強力な遠隔攻撃が可能であり、盗賊や悪党のような遠隔攻撃を持たないユニッ"
+"トに対してとても効果的です。彼らは剣も持っていて、近接攻撃に対しても反撃する"
 "ことができます。"
 
 #. [message]: speaker=narrator
@@ -395,8 +388,8 @@ msgid ""
 "They also have a weak ranged attack. They form the backbone of the South "
 "Guard."
 msgstr ""
-"槍兵は強力な格闘攻撃が可能であり、ほとんどのユニットに対して効果的です。威力"
-"は低いものの投射攻撃も可能です。彼らは南部防衛隊の主力です。"
+"槍兵は強力な近接攻撃が可能であり、ほとんどのユニットに対して効果的です。威力"
+"は低いものの遠隔攻撃も可能です。彼らは南部防衛隊の主力です。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:343
@@ -463,18 +456,14 @@ msgstr "Ylla"
 
 #. [message]: speaker=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:456
-#, fuzzy
-#| msgid ""
-#| "Your people have been allies of our lord, King Typhon. We will help you "
-#| "drive these bandits from your land if you allow us to live here in peace."
 msgid ""
 "Your people have been our allies in the past, ever since the days of Lord "
 "Typhon. We will help you drive these bandits from your land if you allow us "
 "to live here in peace."
 msgstr ""
-"あなた方の民族は我々の王 Typhon と同盟を結んでいました。我々がここで平和に暮"
-"らすことを認めてくれるならば、あなたたちの土地から山賊を追い出すことに協力し"
-"ましょう。"
+"あなた方の民族はTyphon王の時代から私達と同盟を結んでいました。我々がここで平"
+"和に暮らすことを認めてくれるならば、あなたたちの土地から山賊を追い出すことに"
+"協力しましょう。"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:461
@@ -541,8 +530,8 @@ msgid ""
 "Aleron is a Longbowman, stronger and better trained than regular bowmen. His "
 "arrows are deadly to enemies without a ranged attack."
 msgstr ""
-"Aleron は大弓兵です。普通の弓兵よりも強く、より訓練されています。彼の放つ矢は"
-"投射攻撃を持たない敵には致命的です。"
+"Aleronは大弓兵です。普通の弓兵よりも強く、より訓練されています。彼の放つ矢は"
+"遠隔攻撃を持たない敵には致命的です。"
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:541
@@ -610,9 +599,9 @@ msgid ""
 "Archers will be especially effective against him, because he has no ranged "
 "attack. Surround him, and kill him!"
 msgstr ""
-"覚えておいてください。あなたの使命は Urza Mathin を倒すことです。彼はあなたに"
-"とって重要な標的になるでしょう。彼に対抗するには弓兵が特に効果的です。彼は投"
-"射攻撃を持っていないからです。彼を取り囲み、殺しなさい！"
+"覚えておいてください。あなたの使命はUrza Mathinを倒すことです。彼はあなたに"
+"とって重要な標的になるでしょう。彼に対抗するには弓兵が特に効果的です。彼は遠"
+"隔攻撃を持っていないからです。彼を取り囲み、殺しなさい！"
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:647
@@ -1111,10 +1100,6 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:271
-#, fuzzy
-#| msgid ""
-#| "I hope that’s the last of the bandits! How many more of these foul undead "
-#| "must we fight?"
 msgid ""
 "I hope that’s the last of the bandits! How many more of these foul creatures "
 "must we fight?"
@@ -1634,19 +1619,14 @@ msgstr "なぜここに留まって野営したのですか？"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:231
-#, fuzzy
-#| msgid ""
-#| "The Black River is before us. No elf, still living, has crossed it. If "
-#| "the undead come from across the river, then we must search for them "
-#| "carefully, for I know not the way."
 msgid ""
 "The Black River is before us. Few elves have crossed it, and fewer still "
 "have lingered there long. If the undead come from across the river, then we "
 "must search for them carefully, for I know not the way."
 msgstr ""
-"私たちの前方には暗黒の川があるわ。エルフも、生きている者は誰もその川を渡った"
-"ことはないの。もしアンデッドが川を渡ってきたら、私たちは注意深く彼らを捜さな"
-"ければならないわ。その方法はわからないのだけれど。"
+"私達の前方には黒の川があるわ。それを渡ったエルフはほとんどいないし、今も生き"
+"ながらえている者はもっと少ないわ。もしアンデッドが川を渡ってきたら、私たちは"
+"注意深く彼らを捜さなければならないわ。その方法はわからないのだけれど。"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:236
@@ -1664,7 +1644,7 @@ msgstr "すばらしい。川を探索し、その秘密を探ろう。"
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:247
 msgid "Investigate the areas to the south of the Black River"
-msgstr "暗黒の川の南側の地域を調査する"
+msgstr "黒の川の南側の地域を調査する"
 
 #. [message]: speaker=Sir Gerrick
 #. [message]: speaker=second_unit
@@ -2279,10 +2259,6 @@ msgstr "ここにはナーガの群れが住んでいる……彼らが友好的
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:336
-#, fuzzy
-#| msgid ""
-#| "if they are hostile to us, they could endanger Deoran and Ethiliel as "
-#| "well. Perhaps their leader can be reasoned with."
 msgid ""
 "If they are hostile to us, they could endanger Deoran and Ethiliel as well. "
 "Perhaps their leader can be reasoned with."
@@ -3591,7 +3567,7 @@ msgid ""
 msgstr ""
 "「カニの目」という名前には明らかな理由があります。この植物のような生き物は彼"
 "らに気がついていない犠牲者に対してにらみを利かせることで、その犠牲者から生命"
-"エネルギーを取り出し、自分自身の生命エネルギーを満たします。格闘攻撃にはほと"
+"エネルギーを取り出し、自分自身の生命エネルギーを満たします。近接攻撃にはほと"
 "んど無防備ですが、遠くからの致命的なにらみは軽視できません。"
 
 #. [attack]: type=impact
@@ -3731,9 +3707,9 @@ msgid ""
 "strike fear into their hearts! Like all of the bandit units, they are much "
 "more dangerous at night."
 msgstr ""
-"悪党は山賊軍の主力です。彼らは<i>投射</i>攻撃を持っていないので、弓兵には弱い"
-"です。Deoran のランスは彼らの心に恐怖心を抱かせるでしょう！ すべての山賊ユ"
-"ニットと同じように、彼らは夜間にはより危険です。"
+"悪党は山賊軍の主力です。彼らは<i>遠隔</i>攻撃を持っていないので、弓兵には弱い"
+"です。Deoranのランスは彼らの心に恐怖心を抱かせるでしょう！ すべての山賊ユニッ"
+"トと同じように、彼らは夜間にはより危険です。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:56
@@ -3746,8 +3722,8 @@ msgid ""
 msgstr ""
 "盗賊は悪党よりも器用です。彼らはあなたのユニットを取り囲み、背後から奇襲しよ"
 "うとします。彼らの同盟者がユニットのちょうど反対側にいるとき、近くにいる盗賊"
-"に攻撃の機会を与えないように注意してください。そうなると、彼らは 2 倍のダメー"
-"ジを与えます！ 悪党と同じように、盗賊は弓兵の投射攻撃に弱いです。"
+"に攻撃の機会を与えないように注意してください。そうなると、彼らは2倍のダメージ"
+"を与えます！ 悪党と同じように、盗賊は弓兵の遠隔攻撃に弱いです。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:83
@@ -3757,7 +3733,7 @@ msgid ""
 "is very strong, however, and your spearmen will make quick work of them "
 "during the day."
 msgstr ""
-"追いはぎは盗賊軍の偵察部隊です。彼らは素早く、<i>格闘</i>攻撃と<i>投射</i>攻"
+"追いはぎは盗賊軍の偵察部隊です。彼らは素早く、<i>近接</i>攻撃と<i>遠隔</i>攻"
 "撃の両方を持っています。しかしながら、どちらの攻撃もそれほど強力ではありませ"
 "ん。日中には槍兵が彼らを簡単に片付けるでしょう。"
 
@@ -3833,21 +3809,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
-#, fuzzy
-#| msgid ""
-#| "King Haldric summoned a young, undistinguished but promising cavalry "
-#| "officer named Deoran. Deoran was the son of Haldiel, who had fought with "
-#| "distinction alongside Konrad I in the wars against the orcs. The King had "
-#| "a mission for Haldiel’s son."
 msgid ""
 "King Haldric summoned a young, undistinguished but promising cavalry officer "
 "named Deoran. Deoran was the grandson of Haldiel, who had fought with "
 "distinction alongside Konrad I in the war to reclaim the throne. The King "
 "had a mission for him."
 msgstr ""
-"Haldric 王は、Deoran という名の若く平凡だが前途有望な騎馬隊の将校を呼び出しま"
-"した。彼は、オーク族との戦いで Konrad I 世とともに戦い、手柄を立てた Haldiel "
-"の息子でした。王は彼に任務を与えるつもりだったのです。"
+"Haldric王は、Deoranという名の若く平凡だが前途有望な騎馬隊の将校を呼び出しまし"
+"た。彼は、Konrad一世とともに王位継承の戦いに参加し、手柄を立てたHaldielの孫で"
+"した。王は彼に任務を与えるつもりだったのです。\""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:37
@@ -3919,8 +3889,8 @@ msgid ""
 "Finally Ethiliel told the men to halt and pitch camp — they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
 msgstr ""
-"ようやく、Ethiliel は兵士たちに立ち止まって野営するように言いました。彼らは暗"
-"黒の川に到着したのです。エルフも人間も喜んで越えることはないその川に。"
+"ようやく、Ethiliel は兵士たちに立ち止まって野営するように言いました。彼らは黒"
+"の川に到着したのです。エルフも人間も喜んで越えることはないその川に。"
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:86
@@ -3930,7 +3900,7 @@ msgid ""
 "winter."
 msgstr ""
 "Mal M’brin が倒れた後、Deoran の部隊とエルフ族の同盟軍は北へ、故郷へと向かい"
-"ました。暗黒の川を再び横切る頃には、秋は遠ざかり、冬になろうとしていました。"
+"ました。黒の川を再び横切る頃には、秋は遠ざかり、冬になろうとしていました。"
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:92
@@ -4016,19 +3986,14 @@ msgstr ""
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:173
-#, fuzzy
-#| msgid ""
-#| "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
-#| "King Haldric himself. Storm clouds were brewing throughout the realm, and "
-#| "every commander would be needed to weather the storm..."
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself. Dark clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the storm..."
 msgstr ""
-"Wesnoth の騎士 Deoran 卿は Haldric 王その人とともに評議会へ参加するために "
-"Weldyn に招集されました。王国に嵐の雲が吹き荒れ、嵐を乗り切るためにすべての司"
-"令官が必要だったのです……"
+"Wesnothの騎士Deoran卿はHaldric王その人とともに評議会へ参加するためにWeldynに"
+"招集されました。王国に暗雲が立ち込んでおり、嵐を乗り切るためにすべての司令官"
+"が必要だったのです..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
@@ -4105,15 +4070,3 @@ msgstr ""
 "頃、粉々になった多くの城壁の再建は終わっていました。ようやく、雪が溶け、彼ら"
 "の荷物が道を通ることができるようになった頃、Haldric 王のもとから使者がやって"
 "きました。"
-
-#~ msgid ""
-#~ "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
-#~ "King Haldric himself. Storm clouds were brewing throughout the realm, and "
-#~ "every commander would be needed to weather the onslaught..."
-#~ msgstr ""
-#~ "Wesnoth の騎士 Deoran 卿は Haldric 王その人とともに評議会へ参加するために "
-#~ "Weldyn に招集されました。王国に嵐の雲が吹き荒れ、猛攻撃を乗り切るためにす"
-#~ "べての司令官が必要だったのです……"
-
-#~ msgid "No gold carried over to the next scenario."
-#~ msgstr "次のシナリオに持ち越すゴールドは無し。"

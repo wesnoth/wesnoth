@@ -8,18 +8,18 @@
 # BlueStar, 2006
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010
 # Nobuhito Okada <okyada@gmail.com>, 2006
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
 # Takanobu Hirai <airhead@users.sourceforge.jp>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2015-09-27 12:12+0000\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-04-01 23:02+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,17 +64,13 @@ msgstr "砂漠のハンター"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "ノーマル"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑戦的）"
+msgstr "挑戦的"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
@@ -92,10 +88,8 @@ msgstr "砂漠の徘徊者"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "（悪夢）"
+msgstr "悪夢"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:29
@@ -1292,10 +1286,10 @@ msgid ""
 msgstr ""
 "日中（夜明け、午前、真昼、午後、夕暮）に砂漠や道、瓦礫、砂丘のヘクス上にいる"
 "全てのユニットは、あなたのターンの開始ごとに乾きに苦しめられる。各ターンごと"
-"に 脱水症状 としてユニットの攻撃力は減衰し、ヒットポイント $dehydration_loss "
-"が奪われる。呪術師やドルイド僧などは脱水症状の悪化を止められるが、回復はでき"
-"ない。ターン開始をオアシス（水ヘクス）で迎えることでのみ、ユニットの攻撃力を"
-"すべて取り戻すことができる。"
+"に 脱水症状 としてユニットの攻撃力は減衰し、 $dehydration_loss HPが奪われる。"
+"呪術師やドルイド僧などは脱水症状の悪化を止められるが、回復はできない。ターン"
+"開始をオアシス（水ヘクス）で迎えることでのみ、ユニットの攻撃力をすべて取り戻"
+"すことができる。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:307
@@ -1885,7 +1879,7 @@ msgid ""
 "This water will make your melee weapons <i>arcane</i>, and thus especially "
 "powerful against the undead."
 msgstr ""
-"この水で打撃兵器を<i>清め</i>れば、とりわけアンデッドに対して威力を発揮するよ"
+"この水で近接武器を<i>清め</i>れば、とりわけアンデッドに対して威力を発揮するよ"
 "うになる。"
 
 #. [option]: speaker=unit
@@ -3436,7 +3430,7 @@ msgstr "冷たい刃"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:835
 msgid ""
 "The unit who wields this blade will deal cold damage with its melee attack."
-msgstr "この刀を装備するユニットは 格闘攻撃で冷気のダメージを与える。"
+msgstr "この刀を装備するユニットは近接攻撃で冷気のダメージを与える。"
 
 #. [command]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:844
@@ -5046,9 +5040,9 @@ msgid ""
 "the unit leaves this pool, it will suffer the standard $heat_damage damage "
 "each turn from the heat."
 msgstr ""
-"各ターンの開始時にこの水溜り内にいるユニットは 10 ヒットポイント回復し、洞窟"
-"内の熱気の影響を受けない。もちろんこのユニットも水溜りを離れると、熱気により"
-"ターンごとに $heat_damage ダメージを受けることになる。"
+"各ターンの開始時にこの水溜り内にいるユニットは 10 ポイント回復し、洞窟内の熱"
+"気の影響を受けない。もちろんこのユニットも水溜りを離れると、熱気によりターン"
+"ごとに $heat_damage ダメージを受けることになる。"
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1073
@@ -5411,7 +5405,7 @@ msgstr "エメラルドの毒杖"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1924
 msgid "This wand makes this unit’s melee attacks deal poison damage."
 msgstr ""
-"この杖により、全ての格闘攻撃で 毒のダメージを与えることができるようになる。"
+"この杖により、全ての近接攻撃で毒のダメージを与えることができるようになる。"
 
 #. [option]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1938
@@ -6438,18 +6432,11 @@ msgstr ""
 
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:556
-#, fuzzy
-#| msgid ""
-#| "And now I think you should be off as soon as possible. The trolls have "
-#| "retreated back into their holes for the present, but who knows when they "
-#| "will strike again."
 msgid ""
 "And now I think you should be off as soon as possible. The trolls have "
 "retreated into their holes for the present, but who knows when they will "
 "strike again."
 msgstr ""
-"さて、君たちはできるだけ早く出発したほうが良いだろう。今のところトロルは奴ら"
-"の穴倉へと退却しているが、いつまた攻撃してくるかわからない。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:561
@@ -6479,7 +6466,7 @@ msgstr "炎の剣"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:600
 msgid "This sword will make all your melee attacks do fire damage."
 msgstr ""
-"この剣により、全ての格闘攻撃で 火炎のダメージを与えることができるようになる。"
+"この剣により、全ての近接攻撃で火炎のダメージを与えることができるようになる。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:621
@@ -11164,16 +11151,10 @@ msgstr "えっ、ちょうど事態が落ち着き始めた時に！"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2321
-#, fuzzy
-#| msgid ""
-#| "Our people are scattered and exhausted, where will we go now Kaleh? Shall "
-#| "we retreat back into the dunes?"
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat into the dunes?"
 msgstr ""
-"Kaleh、我らの民は即座に進軍しようとするには、散らばっているし疲れきっているの"
-"ではありませんか？ 砂丘へと退いた方が良いのでは？"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2325
@@ -14791,9 +14772,9 @@ msgid ""
 "level 1 units on adjacent hexes. Desert Captains prefer engaging the enemy "
 "in melee combat, but are trained in archery as well."
 msgstr ""
-"砂漠の指揮官(Desert Captain)は、他のエルフを指揮する技能でもって隣接するLv1ユ"
-"ニットに戦闘ボーナスを与えます。砂漠の指揮官は格闘戦を好みますが、弓も同じ位"
-"訓練されています。"
+"砂漠の指揮官（Desert Captain）は、他のエルフを指揮する技能でもって隣接するLv1"
+"ユニットに戦闘ボーナスを与えます。砂漠の指揮官は近接戦を好みますが、弓も同じ"
+"位訓練されています。"
 
 #. [unit_type]: id=Desert Champion, race=elf
 #. [variation]
@@ -14944,9 +14925,9 @@ msgid ""
 "skill. This great skill with the bow compensates for their lack of skill in "
 "melee combat."
 msgstr ""
-"砂漠の狙撃兵(Desert Marksman)は弓の達人です。彼らの扱う弓も矢も祖先の物に比べ"
-"ると劣りますが彼らはその技術を磨き続けました。この偉大な弓術は近接戦闘の不得"
-"手を補って余りあります。"
+"砂漠の狙撃兵（Desert Marksman）は弓の達人です。彼らの扱う弓も矢も祖先の物に比"
+"べると劣りますが彼らはその技術を磨き続けました。この偉大な弓術は近接戦闘の不"
+"得手を補って余りあります。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marksman.cfg:32
@@ -14974,9 +14955,9 @@ msgid ""
 "skill. Desert Marshals prefer engaging the enemy in melee combat, but are "
 "trained in archery as well."
 msgstr ""
-"砂漠の元帥(Desert Marshal)は熟練した指揮官です。隣接するLv1,Lv2ユニットを鼓舞"
-"し、彼らの戦闘技能を向上させます。砂漠の元帥は近接戦闘を好みますが、弓も同様"
-"に扱えます。"
+"砂漠の元帥（Desert Marshal）は熟練した指揮官です。隣接するLv1,Lv2ユニットを鼓"
+"舞し、彼らの戦闘技能を向上させます。砂漠の元帥は近接戦闘を好みますが、弓も同"
+"様に扱えます。"
 
 #. [unit_type]: id=Desert Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Outrider.cfg:4
@@ -15046,8 +15027,8 @@ msgid ""
 "Swift riders, Desert Riders are fast in the open desert. They can use a bow "
 "from horseback, but prefer to engage in melee combat when necessary."
 msgstr ""
-"迅速な乗り手である砂漠の騎手(Desert Rider)は開けた砂漠を高速に駆け抜けます。"
-"必要であれば馬の背で巧みに弓を使えますが近接戦闘の方を好みます。"
+"迅速な乗り手である砂漠の騎手（Desert Rider）は開けた砂漠を高速に駆け抜けま"
+"す。必要であれば馬の背で巧みに弓を使えますが近接戦闘の方を好みます。"
 
 #. [unit_type]: id=Desert Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Scout.cfg:5
@@ -15240,7 +15221,7 @@ msgstr "弓の狙撃術（精密 技能修得）"
 
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:200
 msgid "gain +20% resistance under the sun"
-msgstr "太陽の下で抵抗+20%"
+msgstr "太陽の下で耐性+20%"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:208
@@ -15253,12 +15234,12 @@ msgid ""
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
 msgstr ""
-"このユニットは日中の防御・攻撃時に抵抗値が20%上昇する。脆弱性は影響を受けませ"
+"このユニットは日中の防御・攻撃時に耐性が20%上昇する。脆弱性は影響を受けませ"
 "ん。"
 
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:231
 msgid "gain +10% resistance to blade, pierce and impact"
-msgstr "斬撃・打撃・刺突への抵抗+10%"
+msgstr "斬撃・打撃・刺突への耐性+10%"
 
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:248
 msgid "gain a stunning attack that disrupts enemy ZOC"
@@ -15447,29 +15428,17 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "モンスター"
+msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Crab Men are part crab, part humanoid, and are certainly one of the "
-#| "most twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-#| "creation of some twisted mage, these monstrosities have spread into the "
-#| "wild and prefer to live around coastal waters, preying on both humans and "
-#| "animals."
 msgid ""
 "The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
 "many twisted monsters recorded by the sages of Wesnoth and probably the "
 "creation of some twisted mage. These monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"カニ人間(The Crab Men)はカニと人間のあいのこのようで、Wesnoth の賢人達の記録"
-"の中でも最も気色の悪いモンスターです。おそらくは気のふれた魔術師の産物で野生"
-"に還ったものが、海岸周辺に住み着いたものでしょう、人や動物を餌食にして。"
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:22
@@ -16029,9 +15998,9 @@ msgstr ""
 "ルフの特性値や昼夜のサイクルのようないくつかの Wesnoth の標準設定が変更されて"
 "います。このキャンペーンではロールプレイングの要素が強調され、目標が変更され"
 "ることで、より長いシナリオになる傾向があります。これらの理由より、シナリオ途"
-"中に何度もゲームをセーブすることを強くお勧めします。そうすれば、はまってし"
-"まって最初からやり直さなければならなくなった時に、進行を全て失わずにすむで"
-"しょう。"
+"中に何度もゲームを保存することを強くお勧めします。そうすれば、はまってしまっ"
+"て最初からやり直さなければならなくなった時に、進行を全て失わずにすむでしょ"
+"う。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
@@ -16947,26 +16916,3 @@ msgstr "幻の城"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
 msgid "Phantom Keep"
 msgstr "幻の城の主塔"
-
-#~ msgid "Aaaargh! Fresh meat!"
-#~ msgstr "アアアア！ 新鮮な肉だ！"
-
-#~ msgid "Gaaaggghhh! Kill!"
-#~ msgstr "ガァアアアア！！ 殺せ！"
-
-#~ msgid "Crab Man"
-#~ msgstr "カニ人間"
-
-#~ msgid ""
-#~ "The heavy fighters are the elite guards of the naga. They are slower and "
-#~ "more heavily armored than most naga and wield huge maces which they use "
-#~ "to crush their enemies. They mostly guard naga outposts, but occasionally "
-#~ "participate in offensive raids."
-#~ msgstr ""
-#~ "これらの重装備の戦士(Naga Sentinel)はナーガの精鋭の衛兵です。 彼らはより遅"
-#~ "いのですが、より重武装しています。そして敵を押しつぶすために使う巨大なメイ"
-#~ "スを振るいます。 彼らは主にナーガ前哨基地を警護しますが、時折攻撃的な襲撃"
-#~ "に参加します。"
-
-#~ msgid "Epilogue:"
-#~ msgstr "エピローグ:"

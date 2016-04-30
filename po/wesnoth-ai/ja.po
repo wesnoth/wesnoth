@@ -8,14 +8,14 @@
 # RatArmy <broadbarredfirefish@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2015-10-30 10:50+0000\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-03-01 04:44+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,10 +43,8 @@ msgstr "Dev AI: Default + Old Recruitment"
 
 #. [ai]: id=ai_sf_with_rca
 #: data/ai/dev/ai_sf_with_rca.cfg:9
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgid "Multiplayer_AI^Dev AI: Strategy formulation with RCA "
-msgstr "Dev AI: Default + Poisoning (Formula AI)"
+msgstr ""
 
 #. [ai]: id=ai_dev_akihara
 #: data/ai/dev/akihara_recruitment.cfg:9
@@ -76,14 +74,14 @@ msgstr "Dev AI: Default + Experimental Recruitment (C++)"
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "包囲されたエルフ族"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:93
 msgid "Konrad"
-msgstr ""
+msgstr "Konrad"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
@@ -92,17 +90,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:154
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:174
 msgid "Rebels"
-msgstr ""
+msgstr "反乱軍"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:88
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "Urug-Telfar"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
@@ -118,22 +116,22 @@ msgstr "オーク"
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:107
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "Knafa-Tan"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:125
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "Maga-Knafa"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:144
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:161
 msgid "Chantal"
-msgstr ""
+msgstr "Chantal"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:211
@@ -141,11 +139,13 @@ msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
 msgstr ""
+"Delfador 師匠、見てください。オークがあちこちから向かってきます！ どうしま"
+"しょう？"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:215
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr ""
+msgstr "戦うには敵が多すぎる。本当に多すぎる。わしらは逃げざるを得ない！"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
@@ -171,6 +171,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:240
 msgid "Very well, we have made it this far! But where do we go next?"
 msgstr ""
+"よし、こんなに遠くまで来る事ができました！ でも、次はどこに行くのですか？"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:245
@@ -182,38 +183,40 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:270
 msgid "I... I don’t think I can make it anymore."
-msgstr ""
+msgstr "私は……私はこれ以上何もできそうにない。"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:274
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "王子……おぬしは戦い続けなければならんのじゃ！ いっ、いかーん！！"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:278
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "終わりです。私の命運は尽きました……。"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:292
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
 msgstr ""
+"私は……私は王子を守るという義務を果たす事ができなかった！ 私は敗れてしまった。"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:296
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "死なないで、Delfador！ お願いです、あなたには生き続けてもらわないと！"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:300
 msgid "Ugh!"
-msgstr ""
+msgstr "うっ！"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:311
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr ""
+"ああっ、いかん！ 時間切れじゃ。あやつらが援軍を引き連れて到着してしまった……。"
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -298,7 +301,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:109
 #: data/ai/micro_ais/scenarios/wolves.cfg:26
 msgid "Humans"
-msgstr ""
+msgstr "人間"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:62
@@ -654,7 +657,7 @@ msgstr ""
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:75
 msgid "Saurians"
-msgstr ""
+msgstr "トカゲ"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:124
@@ -803,7 +806,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:566
 msgid "I told you so!"
-msgstr ""
+msgstr "だからそう言ったでやすよ！"
 
 #. [message]: speaker=leader5
 #: data/ai/micro_ais/scenarios/goto.cfg:576
@@ -837,7 +840,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:623
 msgid "Yes, sir."
-msgstr ""
+msgstr "はい、教官殿。"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:631
@@ -1571,7 +1574,7 @@ msgstr ""
 #. [side]: id=Gertburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/patrols.cfg:26
 msgid "Bandits"
-msgstr ""
+msgstr "ならず者集団"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:40
@@ -1586,7 +1589,7 @@ msgstr ""
 #. [unit]: type=Orcish Slayer, id=Urudin
 #: data/ai/micro_ais/scenarios/patrols.cfg:115
 msgid "Urudin"
-msgstr ""
+msgstr "Urudin"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:181
@@ -1865,7 +1868,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:77
 msgid "Recruiting"
-msgstr ""
+msgstr "雇用"
 
 #. [event]: id=Koorzhar profile profile}
 #: data/ai/micro_ais/scenarios/recruiting.cfg:81
@@ -1919,7 +1922,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:50
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
-msgstr ""
+msgstr "群れ"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:59
@@ -2561,7 +2564,7 @@ msgstr ""
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:124
 msgid "North"
-msgstr ""
+msgstr "北"
 
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:131
@@ -2571,7 +2574,7 @@ msgstr ""
 #. [side]: id=champ-ai, type=Dark Adept
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:136
 msgid "South"
-msgstr ""
+msgstr "南"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:175

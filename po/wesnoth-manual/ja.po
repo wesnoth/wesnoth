@@ -5,17 +5,17 @@
 # Translators:
 # Automatically generated, 2007
 # Masaharu IWAI <iwaim.sub@gmail.com>, 2010
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
 # yma <yma9yma@gmail.com>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
-"POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2015-10-30 11:41+0000\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
+"POT-Creation-Date: 2016-03-01 19:49-0300\n"
+"PO-Revision-Date: 2016-04-02 10:45+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -127,9 +127,9 @@ msgid ""
 "lawless; the kingdom of Wesnoth and its occasional principality, Elensefar; "
 "and the domain of the Southwest Elves in the Aethenwood and beyond."
 msgstr ""
-"Wesnoth のある大陸は大きく 3 つの地域に分けられます。それは、法の及ばない北部"
-"地域と Wesnoth 王国とその周辺の Elensefar などと、エルフの住む南西の "
-"Aethenwood の大森林およびその向こう側です。"
+"Wesnoth のある大陸は大きく3つの地域に分けられます。それは、法の及ばない北の大"
+"地と Wesnoth王国とその周辺の Elensefarなどと、エルフの住む南西のAethenwoodの"
+"大森林およびその向こう側です。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:47
@@ -156,7 +156,7 @@ msgid ""
 "and east lies the forest of Lintanir, where the great kingdom of the North-"
 "Elves keeps to its own mysterious affairs."
 msgstr ""
-"北部地域は大いなる川の北側に広がる未開の地域です。オーク、ドワーフ、野蛮人、"
+"北の大地は大いなる川の北側に広がる未開の地域です。オーク、ドワーフ、野蛮人、"
 "そしてエルフが住んでいます。その北から西には Lintanir の大森林が広がってお"
 "り、北部エルフ族が謎の大王国を作っています。"
 
@@ -356,11 +356,10 @@ msgid ""
 "you can check the Replay check box. The loaded game will make all the moves "
 "from the beginning while you watch."
 msgstr ""
-"前に保存したゲームを再開するためのボタンです。次の画面で、保存されているゲー"
-"ムの一覧が表示されるので、再開したいゲームを選択してダブルクリックすればその"
-"ゲームが読み込まれて再開します。もし、あなたがゲームを完了した後でそのリプレ"
-"イを見たければ、それも保存されているので再開すれば最初から動きを追うことがで"
-"きます。"
+"セーブデータを再開するためのボタンです。次の画面で、セーブデータの一覧が表示"
+"されるので、再開したいゲームを選択してダブルクリックすればそのゲームが読み込"
+"まれて再開します。もし、あなたがゲームを完了した後でそのリプレイを見たけれ"
+"ば、それも保存されているので再開すれば最初から動きを追うことができます。"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:163
@@ -874,8 +873,8 @@ msgid ""
 "Current hex position (x-coordinate, y-coordinate), defense and movement of "
 "the currently selected unit on the marked hex"
 msgstr ""
-"選択したヘクス上の座標（x軸、y軸）、マークされたヘクス上のユニットの防御と移"
-"動コスト"
+"選択したヘクス上の座標（x軸、y軸）、マークされたヘクス上のユニットの回避率と"
+"移動コスト"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:464
@@ -2005,13 +2004,13 @@ msgid ""
 "abilities, that are described in more detail below."
 msgstr ""
 "全てのユニットはヒットポイント(HP)・残り移動可能ポイント・使用可能武器と与え"
-"るダメージ・時刻属性を持ちます。加えて、ユニットはその他の特殊能力を持つ可能"
-"性があります。その詳細はこの項目で説明されます。"
+"るダメージ・アラインメントを持ちます。加えて、ユニットはその他の特殊能力を持"
+"つ可能性があります。その詳細はこの項目で説明されます。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:1370
 msgid "Alignment"
-msgstr "時刻属性"
+msgstr "アラインメント"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:1371
@@ -2022,12 +2021,12 @@ msgid ""
 "and less at night. Chaotic units do more damage at night and less during the "
 "day. Liminal units do less damage during both night and daytime."
 msgstr ""
-"全てのユニットは秩序・中立・混沌・薄明の中からどれか一つ時刻属性を持ちます。"
-"時刻属性はそのユニットがゲーム内の時刻によって受ける影響のことです。中立ユ"
-"ニットは時刻によって影響されません。秩序ユニットは敵に与えるダメージが昼間は"
-"大きく夜間は小さくなります。逆に混沌ユニットは敵に与えるダメージが昼間は小さ"
-"く夜間は大きくなります。黄昏ユニットは敵に与えるダメージが昼夜ともに小さく本"
-"来の力を発揮できるのは夜明けと夕方だけです。"
+"全てのユニットは秩序・中立・混沌・薄明の中からどれか一つのアラインメントを持"
+"ちます。アラインメントはそのユニットがゲーム内の時刻によって受ける影響のこと"
+"です。中立ユニットは時刻によって影響されません。秩序ユニットは敵に与えるダ"
+"メージが昼間は大きく夜間は小さくなります。逆に混沌ユニットは敵に与えるダメー"
+"ジが昼間は小さく夜間は大きくなります。黄昏ユニットは敵に与えるダメージが昼夜"
+"ともに小さく本来の力を発揮できるのは夜明けと夕方だけです。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:1376
@@ -2416,9 +2415,9 @@ msgid ""
 "resistances. Resilient units are especially useful for holding strategic "
 "positions against opponents."
 msgstr ""
-"頑強なユニットは最大 HP が 4 ＋レベルあたり 1 追加されます。\n"
+"頑強なユニットは最大HPが4＋レベルあたり1追加されます。\n"
 "頑強なユニットはキャンペーンの全ての段階において便利であり、全てのユニットに"
-"とって便利な特性です。少ないヒットポイントで良い防御力や高い耐性の組み合わせ"
+"とって便利な特性です。少ないヒットポイントで良い回避率や高い耐性の組み合わせ"
 "をもつようなユニットには、回復力は特性としてしばしば非常に助けとなります。頑"
 "強なユニットは、敵に対して戦略的な拠点を保持する上で、特に便利となります。"
 
@@ -2436,9 +2435,9 @@ msgid ""
 "Fighter. Strong units can be very useful when a tiny bit of extra damage is "
 "all that is needed to turn a damaging stroke into a killing blow."
 msgstr ""
-"強力なユニットは格闘攻撃で命中あたり 1 の追加ダメージを与える上に、最大 HP "
+"強力なユニットは近接攻撃で命中あたり 1 の追加ダメージを与える上に、最大 HP "
 "も 1 追加されます。\n"
-"全ての接近戦ユニットに便利な一方で、「強力」は、エルフの戦士のような高い攻撃"
+"全ての近接戦ユニットに便利な一方で、「強力」は、エルフの戦士のような高い攻撃"
 "回数をもつユニットにとって、最も効果があります。わずかな追加ダメージによっ"
 "て、傷つけるだけの攻撃を最後の一撃へと変えるような場合、強力なユニットは大変"
 "便利です。"
@@ -2562,8 +2561,8 @@ msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on."
 msgstr ""
-"野生特性を持つユニットは村において50%しか防御を得ることができません。村のベー"
-"ス地形が何であっても同様です。"
+"野生特性を持つユニットは村において50%しか回避率を得ることができません。村の"
+"ベース地形が何であっても同様です。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:1767
@@ -2650,7 +2649,7 @@ msgid ""
 "Units may have the Weak trait, receiving a -1 increment in hitpoints and "
 "melee damage."
 msgstr ""
-"非力の特性を持つユニットは、HPが1少なくなると同時に、格闘攻撃で与えるダメージ"
+"非力の特性を持つユニットは、HPが1少なくなると同時に、近接攻撃で与えるダメージ"
 "が1少なくなります。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -2662,7 +2661,7 @@ msgstr "特殊武器"
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:1834
 msgid "Certain units have special attacks. These are listed below:"
 msgstr ""
-"ある種のユニットは特殊な攻撃を持っています。これらはこの項目で一覧表示されま"
+"ある種のユニットは特殊攻撃を持っています。これらはこの項目で一覧表示されま"
 "す。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -3046,8 +3045,8 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾー"
-"ンを無視できます。"
+"このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配領域"
+"を無視できます。"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2126
@@ -3127,11 +3126,11 @@ msgid ""
 "a battle without killing their opponents are awarded 1 experience point per "
 "level of the enemy. In other words:"
 msgstr ""
-"ユニットは戦闘に参加すると経験値を与えられます。十分な経験値を獲得すると、ユ"
-"ニットはレベルアップして、より強力になります。得られる経験値は敵のレベルと戦"
-"闘結果によります。つまり、敵ユニットに最後の一撃を与えた時、敵レベルあたり 8 "
-"経験値（レベル 0 の敵からは 4 経験値）を受け取ります。あなたも敵も生き残った"
-"ら敵レベルあたり 1 経験値を受け取ります。言い換えると："
+"ユニットは戦闘に参加すると経験値（XP）を与えられます。十分なXPを獲得すると、"
+"ユニットはレベルアップして、より強力になります。得られるXPは敵のレベルと戦闘"
+"結果によります。つまり、敵ユニットに最後の一撃を与えた時、敵レベルあたり 8 "
+"XP（レベル 0 の敵からは 4 XP）を受け取ります。あなたも敵も生き残ったら敵レベ"
+"ルあたり 1 XPを受け取ります。言い換えると："
 
 #. type: Content of: <book><chapter><section><section><table><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2185
@@ -3199,8 +3198,8 @@ msgid ""
 msgstr ""
 "あなたがシナリオを終わらせた時、全ての生き残り味方ユニットは次のシナリオで召"
 "還可能になります。あなたが雇用・召還したターンではそのユニットは移動も攻撃も"
-"できません。召還されたユニットは以前のレベル・経験値・ときには獲得した魔法の"
-"品物を維持していますが、ヒットポイントだけは最大値で召還されます。"
+"できません。召還されたユニットは以前のレベル・XP・獲得した魔法の品物を維持し"
+"ていますが、HPだけは最大値で召還されます。"
 
 #. type: Content of: <book><chapter><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2295
@@ -3231,9 +3230,9 @@ msgstr ""
 "でのターン数が表示されます。この状態で移動の実行を止めたくなったら他のユニッ"
 "トをクリックするか、<literal>n</literal>キー（大文字・小文字を区別しません）"
 "を押すか、マップ上のどの部分でも右クリック（Macでは Command＋クリック）するか"
-"です。体力表示棒の上についている<link linkend=\"orbs\">宝珠</link>によってあ"
-"なたのどのユニットが移動終了済か現在のターン内でさらに移動できるかを素早く知"
-"ることができます。"
+"です。HPバーの上についている<link linkend=\"orbs\">宝珠</link>によってあなた"
+"のどのユニットが移動終了済か現在のターン内でさらに移動できるかを素早く知るこ"
+"とができます。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2309
@@ -3281,7 +3280,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2325
 msgid "Zone of Control"
-msgstr "支配領域(ZOC=Zone Of Control)"
+msgstr "支配領域（ZOC：Zone Of Control）"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2326
@@ -3293,12 +3292,12 @@ msgid ""
 "units are considered too feeble to generate a zone of control and all units "
 "are able to move through the hexes around an enemy level 0 unit freely."
 msgstr ""
-"ユニットの支配領域(ZOC)は隣接する 6 ヘックスに広がっています。また、敵ユニッ"
-"トの支配領域(ZOC)に移動したユニットは強制的に停止させられます。散兵能力を持つ"
-"ユニットは敵の支配領域(ZOC)を無視できますし、強制的に停止させられることなく自"
-"由に移動できます。レベル 0 のユニットは支配領域(ZOC)を形成できないので、全て"
-"のユニットは敵レベル 0 ユニットの周囲を移動できることについて考慮してくださ"
-"い。"
+"ユニットの支配領域（ZOC）は隣接する 6 ヘックスに広がっています。また、敵ユ"
+"ニットの支配領域（ZOC）に移動したユニットは強制的に停止させられます。散兵能力"
+"を持つユニットは敵の支配領域（ZOC）を無視できますし、強制的に停止させられるこ"
+"となく自由に移動できます。レベル 0 のユニットは支配領域（ZOC）を形成できない"
+"ので、全てのユニットは敵レベル 0 ユニットの周囲を移動できることについて考慮し"
+"てください。"
 
 #. type: Content of: <book><chapter><section><section><table><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2335
@@ -3311,7 +3310,7 @@ msgstr "宝珠"
 msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
-msgstr "各ユニットの隣に示される体力表示棒の上にあるのは宝珠です。この宝珠は、"
+msgstr "各ユニットの隣に示されるHPバーの上にあるのは宝珠です。この宝珠は、"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2350
@@ -3417,27 +3416,20 @@ msgstr "あなた自身は操作できない同盟軍のユニット"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2431
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-none.jpg\"/> </imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-none.jpg\"/> </imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2434
-#, fuzzy
-#| msgid "Yellow orb"
 msgid "No orb"
-msgstr "黄の宝珠"
+msgstr "宝珠無し"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2438
-#, fuzzy
-#| msgid "Enemy units have a red orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "敵ユニット"
+msgstr "敵ユニットの場合、HPバーの上に宝珠は表示されません。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2446
@@ -3478,9 +3470,9 @@ msgid ""
 msgstr ""
 "いくつかのキャンペーンではリーダーや英雄を示すために星型の足場を使用します。"
 "ここで英雄とは何か特別な存在（例えばシナリオ途中で死亡してはならないなど）で"
-"す。他のキャンペーンでは体力表示棒の上に英雄ユニットには銀色の王冠を表示しま"
-"す。さらに別のキャンペーンでは英雄を示すものが全くない場合もあります。それは"
-"キャンペーン製作者のデザイン上の選択によります。"
+"す。他のキャンペーンではHPバーの上に英雄ユニットには銀色の王冠を表示します。"
+"さらに別のキャンペーンでは英雄を示すものが全くない場合もあります。それはキャ"
+"ンペーン製作者のデザイン上の選択によります。"
 
 #. type: Content of: <book><chapter><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2463
@@ -3501,7 +3493,7 @@ msgstr ""
 "たのユニットをクリックしてから狙いの敵ユニットにマウスカーソルを移して再度ク"
 "リックすれば攻撃できます。こうすると戦闘方法についてのオプションを選択できる"
 "小窓が開きます。各ユニットは複数の武器を持っている可能性があります。剣のよう"
-"な武器は格闘攻撃用ですし、弓のような武器は投射攻撃用です。"
+"な武器は近接攻撃用ですし、弓のような武器は遠隔攻撃用です。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2470
@@ -3512,10 +3504,10 @@ msgid ""
 "not have a weapon of the same type as the one you attack with, they will be "
 "unable to strike back and do any damage to you in that fight."
 msgstr ""
-"もし、あなたが格闘用武器で攻撃したなら、敵も格闘用武器を使って反撃してきま"
-"す。もし、あなたが投射用武器で攻撃したなら、敵も投射用武器を使って反撃してき"
-"ます。もし、敵ユニットが同種の武器を持っていなければ、反撃することはできず、"
-"その戦闘中にあなたはいかなるダメージも受けません。"
+"もし、あなたが近接武器で攻撃したなら、敵も近接武器を使って反撃してきます。も"
+"し、あなたが遠隔武器で攻撃したなら、敵も遠隔武器を使って反撃してきます。も"
+"し、敵ユニットが同種の武器を持っていなければ、反撃することはできず、その戦闘"
+"中にあなたはいかなるダメージも受けません。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2476
@@ -3526,11 +3518,10 @@ msgid ""
 "strike 4 blows with the sword in one exchange. This is written as 5–4, "
 "meaning 5 damage per hit, and 4 strikes."
 msgstr ""
-"異なる種類の攻撃はそれぞれ異なるダメージを与えるので、それぞれの武器は敵に与"
-"えられるダメージが異なります。簡単に言うと、エルフの戦士は剣が命中すると 5 ダ"
-"メージを与え、一連の戦闘で剣を振り下ろすのは 4 回ということです。これは 5-4 "
-"と表記されます。この意味は命中すると 5 ダメージ、攻撃可能回数は 4 回というこ"
-"とです。"
+"攻撃型が異なるとそれぞれ異なるダメージも変わるので、それぞれの武器は敵に与え"
+"られるダメージが異なります。簡単に言うと、エルフの戦士は剣が命中すると5ダメー"
+"ジを与え、一連の戦闘で剣を振り下ろすのは4回ということです。これは5-4と表記さ"
+"れます。この意味は命中すると5ダメージ、攻撃可能回数は4回ということです。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2481
@@ -3564,7 +3555,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2492
 msgid "Attack types"
-msgstr "攻撃の種類"
+msgstr "攻撃型"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2496
@@ -3642,10 +3633,10 @@ msgid ""
 "unit will suffer less damages from the attack type. A negative resistance "
 "figure indicates that the unit is especially vulnerable to this attack type."
 msgstr ""
-"それぞれのユニットは異なる攻撃方法に対して傷つきやすさに強弱があります。ユ"
-"ニットの解説では6個の数字によって六個の攻撃方法に対する強弱が示されています。"
-"よい耐性を示す数字はその攻撃方法ではあまりダメージを受けないことを意味しま"
-"す。逆に悪い耐性を示す数字はその攻撃方法で大きく傷つくことを意味します。"
+"それぞれのユニットは異なるダメージ型に対して傷つきやすさに強弱があります。ユ"
+"ニットの解説では6個の数字によって6つのダメージ型に対する強弱が示されていま"
+"す。よい耐性を示す数字はその攻撃型ではあまりダメージを受けないことを意味しま"
+"す。逆に悪い耐性を示す数字はそのダメージ型で大きく傷つくことを意味します。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2543
@@ -3656,10 +3647,10 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
-"例：ドレークのうろこはほとんどの攻撃方法に対して強靭ですが、刺突と冷気による"
-"武器には弱点を持ちます。人間の騎兵は一般的によく防御されていますが、例外的に"
-"刺突攻撃に弱く、それが彼らの弱点になっています。（スケルトン系）アンデッドは"
-"斬撃や刺突には非常に強いのですが、打撃や秘術による攻撃に対して非常に弱いで"
+"例：ドレークのうろこはほとんどのダメージ型に対して強靭ですが、刺突と冷気によ"
+"る武器には弱点を持ちます。人間の騎兵は一般的によく防御されていますが、例外的"
+"に刺突攻撃に弱く、それが彼らの弱点になっています。（スケルトン系）アンデッド"
+"は斬撃や刺突には非常に強いのですが、打撃や秘術による攻撃に対して非常に弱いで"
 "す。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3668,8 +3659,8 @@ msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
 msgstr ""
-"最良の攻撃方法を敵ユニットに対して使用することは、あなたがそれらを倒すチャン"
-"スを十分に増大させます。"
+"最良のダメージ型を敵ユニットに対して使用することは、あなたがそれらを倒すチャ"
+"ンスを十分に増大させます。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2553
@@ -3868,10 +3859,10 @@ msgstr ""
 "これには現実的な理由があります。重傷を負っているユニットは攻撃にも防御にもあ"
 "まり役に立ちません。なぜなら、攻撃と同時に発生する反撃によって、それはしばし"
 "ば消滅してしまうからです。さらに、それを確実な死に向けて送り出してしまうこと"
-"で、それが今までに集めた経験値は失われてしまいます。リーダーが雇用可能地点に"
-"いないか基金がなくなっているかで交代要員の雇用は不可能である場合がほとんどで"
-"す。もし交代要員を雇用できたとしても、大抵の場合、前線からは遠く離れていま"
-"す。よってユニットを無意味に消耗させないでください。"
+"で、それが今までに集めたXPは失われてしまいます。リーダーが雇用可能地点にいな"
+"いか基金がなくなっているかで交代要員の雇用は不可能である場合がほとんどです。"
+"もし交代要員を雇用できたとしても、大抵の場合、前線からは遠く離れています。"
+"よってユニットを無意味に消耗させないでください。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2664
@@ -3996,7 +3987,7 @@ msgstr ""
 "す。このような角の位置では敵は3方向から攻撃できます。この状況は防衛線が短すぎ"
 "る時の両端でも発生します。高ヒットポイントかつ適切な地形効果（または敵に対す"
 "る耐性）を持つユニットを配置すべきです。このユニットは倒されやすいので、でき"
-"れば経験値を持たないか少ないユニットをこの用途に使いたいものです。"
+"ればXPを持たないか少ないユニットをこの用途に使いたいものです。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2709
@@ -4048,9 +4039,9 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the "
 "enemy&#8217;s counterstrikes will be less likely to do damage."
 msgstr ""
-"あなたの軍隊が高い防御効果を得られ敵が低い防御効果しか得られない地形を占領で"
-"きるように努力してください。そうすることで敵の反撃によるダメージを最小限に減"
-"らせます。"
+"あなたの軍隊が高い回避率を得られ敵が低い回避率しか得られない地形を占領できる"
+"ように努力してください。そうすることで敵の反撃によるダメージを最小限に減らせ"
+"ます。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2727
@@ -4060,7 +4051,7 @@ msgid ""
 "forest defenses."
 msgstr ""
 "例えば、エルフが森の端に配置されていれば、攻撃してくるオークは草原にいてエル"
-"フは森の高防御力を享受（きょうじゅ）することを強制することができます。"
+"フは森の高回避を享受することを強制することができます。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2732
@@ -4106,10 +4097,10 @@ msgid ""
 "enemy may exploit."
 msgstr ""
 "先制攻撃は敵にどのユニットを向かわせるか選択できるため有利です。敵の弱点に応"
-"じた有利を得るべきです。例えば、あなたの投射攻撃ユニットを投射可能な武器を持"
-"たない敵にぶつけたりします。また、刺突攻撃に対して脆弱性を持つ敵騎兵のような"
-"弱点を有効活用すべきです。ただし、敵ターンでは彼らも同じ戦術を逆用してくるこ"
-"とを忘れないでください。"
+"じた有利を得るべきです。例えば、あなたの遠隔攻撃ユニットを遠隔武器を持たない"
+"敵にぶつけましょう。また、刺突攻撃に対して脆弱性を持つ敵騎兵のような弱点を有"
+"効活用すべきです。ただし、敵ターンでは彼らも同じ戦術を逆用してくることを忘れ"
+"ないでください。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2749
@@ -4150,10 +4141,9 @@ msgid ""
 "deal, so using it will often result in your units taking more damage than "
 "necessary."
 msgstr ""
-"敵が投射攻撃を持たないため、あなたは投射武器を使うべき特別な場合があります。"
-"コンピューターの第一選択はあなたが敵に与えることのできるだろうダメージだけを"
-"基準にしているので、そのままでは必要以上のダメージを受けることになりかねませ"
-"ん。"
+"敵が遠隔攻撃を持たない時、あなたは遠隔武器を使うべきです。コンピューターの第"
+"一選択はあなたが敵に与えることのできるだろうダメージだけを基準にしているの"
+"で、そのままでは必要以上のダメージを受けることになりかねません。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2766
@@ -4208,9 +4198,9 @@ msgid ""
 "of the XP. Healers in particular are often weak in combat and often need to "
 "<emphasis>steal</emphasis> kills in this way to advance levels."
 msgstr ""
-"あなたのユニットは敵に最後の一撃を与えることによって最大の経験値を獲得しま"
-"す。それは、具体的に倒した敵のレベルあたり 8 経験値です。というわけで、上級ユ"
-"ニットが敵を弱体化した後で、より経験値を必要とするユニットに最後の一撃を譲る"
+"あなたのユニットは敵に最後の一撃を与えることによって最大のXP（経験値）を獲得"
+"します。それは、具体的に倒した敵のレベルあたり 8 XPです。というわけで、高レベ"
+"ルユニットが敵を弱体化した後で、よりXPを必要とするユニットに最後の一撃を譲る"
 "ことが意味を持ちます。特に回復ユニットはしばしば戦闘能力が低いため、この方法"
 "で最後の一撃を<emphasis>盗む</emphasis>ことがレベルを上げる手段になります。"
 
@@ -4221,10 +4211,10 @@ msgid ""
 "most kills to a small handful of your units. This will fast-track them to "
 "becoming Level 2 units, and they can then shepherd others."
 msgstr ""
-"キャンペーン開始時（おそらくあなたは上級ユニットを全く持っていない）、少数の"
-"ユニットに集中して敵に最後の一撃を与えることを試してください。これはレベル 2 "
-"のユニットを得るための早道です。その後で彼らは他ユニットの経験値獲得を支援す"
-"ることができるでしょう。"
+"キャンペーン開始時（おそらくあなたは高レベルユニットを全く持っていない）、少"
+"数のユニットに集中して敵に最後の一撃を与えることを試してください。これはレベ"
+"ル 2 のユニットを得るための早道です。その後で彼らは他ユニットの経験値獲得を支"
+"援することができるでしょう。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2791
@@ -4283,13 +4273,13 @@ msgid ""
 "protect your White Mage instead, and balance risks! That is part of the "
 "strategy."
 msgstr ""
-"ゲームのセーブ機能を使いすぎないでください。大昔に Wesnoth はシナリオ終了時に"
-"のみセーブを許可していました。シナリオ途中でセーブする機能が追加されたのはプ"
-"レイヤーが別の日にゲームを再開する必要に迫られた時に便宜を図るためとプログラ"
-"ムのクラッシュから最低限の防御をするためでした。例えば、あなたの白魔術師が死"
-"んだからといってセーブゲームを繰り返しロードすることは我々としてはお勧めでき"
-"ません。それよりも、あなたの白魔術師を敵の攻撃から保護するか、または危険に置"
-"いた結果を受け入れる判断をするべきです！ それは戦略の一部なのです。"
+"ゲームの保存機能を使いすぎないでください。大昔に Wesnoth はシナリオ終了時にの"
+"み保存を許可していました。シナリオ途中で保存する機能が追加されたのはプレイ"
+"ヤーが別の日にゲームを再開する必要に迫られた時に便宜を図るためとプログラムの"
+"クラッシュから最低限の防御をするためでした。例えば、あなたの白魔術師が死んだ"
+"からといってセーブデータを繰り返し読み込むことは我々としてはお勧めできませ"
+"ん。それよりも、あなたの白魔術師を敵の攻撃から保護するか、または危険に置いた"
+"結果を受け入れる判断をするべきです！ それは戦略の一部なのです。"
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2827
@@ -4298,9 +4288,9 @@ msgid ""
 "scenario, so that you choose a new strategy that works, rather than simply "
 "finding random numbers that favor you."
 msgstr ""
-"もし、あなたがセーブゲームをロードしなければならなくなったら、我々としてはシ"
+"もし、あなたがセーブデータを読み込まなければならなくなったら、我々としてはシ"
 "ナリオ開始時からやり直すことをお勧めします。なぜなら、ただ乱数が幸運をもたら"
-"すまで繰り返すのではなく、あなたは機能する新しい戦略を選ぶことができるからで"
+"すまで繰り返すのではなく、あなたは有効な新しい戦略を選ぶことができるからで"
 "す。"
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
@@ -4313,9 +4303,9 @@ msgid ""
 msgstr ""
 "しかし、忘れないでください、目的は面白さを味わうことです！ あなたが開発者と違"
 "う感覚の持ち主であれば、そうすることが一番楽しいのです！ もし、あなたが失敗す"
-"るたびにセーブゲームをロードすることに何の苦痛も感じないならば、<emphasis>完"
-"全</emphasis>ゲーム（ユニットを全く失わない）を実現することも可能でしょう。ど"
-"うぞ、どんな手段を使ってでも突き進んでください！"
+"るたびにセーブゲームを読み込むことに何の苦痛も感じないならば、<emphasis>完全"
+"</emphasis>ゲーム（ユニットを全く失わない）を実現することも可能でしょう。どう"
+"ぞ、どんな手段を使ってでも突き進んでください！"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2842
@@ -4351,8 +4341,8 @@ msgid ""
 "quickly conquer villages."
 msgstr ""
 "それから、ユニットの雇用を開始します。安価なユニットは敵軍の第一波に真正面か"
-"ら対抗させるのに有益です。その時、上級ユニットは支援に回ります。高速ユニット"
-"はマップを探検し素早く村を獲得する斥候として使うことができます。"
+"ら対抗させるのに有益です。その時、高レベルユニットは支援に回ります。高速ユ"
+"ニットはマップを探検し素早く村を獲得する斥候として使うことができます。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2868
@@ -4396,8 +4386,8 @@ msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. E.g. you "
 "can use them to block enemies reaching your important units."
 msgstr ""
-"あなたは下級ユニットを捨て駒として使うこともできます。敵の動きを遅くするため"
-"や、あなたの重要なユニットに敵が到達するのを妨害することもできます。"
+"あなたは低レベルユニットを捨て駒として使うこともできます。敵の動きを遅くする"
+"ためや、あなたの重要なユニットに敵が到達するのを妨害することもできます。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2898
@@ -4406,9 +4396,9 @@ msgid ""
 "with lower level units — to give them more experience (and finally make them "
 "advance to next level)."
 msgstr ""
-"あなたは敵に対して上級ユニットでダメージを与え最後のトドメを下級ユニットにさ"
-"せることができます。そうすることで下級ユニットにより大きな経験値を与えること"
-"ができ、最終的には次のレベルに昇格させられます。"
+"あなたは敵に対して高レベルユニットでダメージを与え最後のトドメを低レベルユ"
+"ニットにさせることができます。そうすることで低レベルユニットにより大きな経験"
+"値を与えることができ、最終的には次のレベルに昇格させられます。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2905
@@ -4417,15 +4407,16 @@ msgid ""
 "Shaman), put it in the middle of a circle of units to heal them as they move "
 "across the map (Shamans can do this too, but not as well)."
 msgstr ""
-"あなたが白魔術師（魔術師から昇格できます）またはドルイド僧（呪術師から昇格で"
-"きます）を保有している時は、それらを味方ユニットによる円陣の中央に配置すれ"
-"ば、それらがマップのどの場所に移動しても回復効果が得られます。（エルフの呪術"
-"師にもこれと同じ方法をさせられますが、うまくはできません）"
+"あなたが白魔術師（魔術師からレベルアップできます）またはドルイド僧（呪術師か"
+"らレベルアップできます）を保有している時は、それらを味方ユニットによる円陣の"
+"中央に配置すれば、それらがマップのどの場所に移動しても回復効果が得られます。"
+"（エルフの呪術師にもこれと同じ方法をさせられますが、うまくはできません）"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2912
 msgid "Losing units is expected, even advanced units."
-msgstr "ユニットを失うことは覚悟しておくべきです、たとえ上級ユニットでさえも。"
+msgstr ""
+"ユニットを失うことは覚悟しておくべきです、たとえ高レベルユニットでさえも。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2917
@@ -4462,11 +4453,11 @@ msgid ""
 "\"Unit Description\", then select \"Resistance\". It will show you how "
 "resistant a unit is to different types of attacks."
 msgstr ""
-"それぞれのユニットは違う種類の攻撃に対して耐性もしくは弱点があります。乗馬ユ"
-"ニットは刺突攻撃が弱点です。火炎や秘術による攻撃はアンデッドを破壊します。攻"
-"撃の種類ごとの耐性がどの程度か見るには、ユニットを右クリックして「ユニットの"
-"説明」それから「耐性」を選択してください。そこでは攻撃の種類ごとの耐性が表示"
-"されます。"
+"それぞれのユニットは違う種類の攻撃（ダメージ型）に対して耐性もしくは弱点があ"
+"ります。乗馬ユニットは刺突攻撃が弱点です。火炎や秘術による攻撃はアンデッドを"
+"破壊します。攻撃の種類ごとの耐性がどの程度か見るには、ユニットを右クリックし"
+"て「ユニットの説明」それから「耐性」を選択してください。そこでは攻撃の種類ご"
+"との耐性が表示されます。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2953
@@ -4494,8 +4485,8 @@ msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
 msgstr ""
-"上級ユニットが素早く敵指揮官を倒すことで味方ユニットの損失を最小限に抑えるこ"
-"とができます。"
+"高レベルユニットが素早く敵指揮官を倒すことで味方ユニットの損失を最小限に抑え"
+"ることができます。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2970
@@ -4527,8 +4518,8 @@ msgid ""
 "gold and experience (advanced units)."
 msgstr ""
 "虐殺シナリオ（あなたが大いに苦労する場所）の次には大抵「息抜き」シナリオが配"
-"置されており、そこであなたはやや楽にゴールドや経験値（そして上級ユニット）を"
-"獲得することができます。"
+"置されており、そこであなたはやや楽にゴールドや経験値（そして高レベルユニッ"
+"ト）を獲得することができます。"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-master/doc/manual/manual.en.xml:2994
@@ -4536,16 +4527,5 @@ msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr ""
-"上級ユニットには下級ユニットより高額な維持費（レベルあたり 1 ゴールド）が必要"
-"となります。忠義特性のあるユニットはこの例外です。"
-
-#~ msgid "Black"
-#~ msgstr "黒"
-
-#~ msgid ""
-#~ "<imageobject> <imagedata fileref=\"images/orb-black.jpg\"/> </imageobject>"
-#~ msgstr ""
-#~ "<imageobject> <imagedata fileref=\"images/orb-black.jpg\"/> </imageobject>"
-
-#~ msgid "Black orb"
-#~ msgstr "黒の宝珠"
+"高レベルユニットには低レベルユニットより高額な維持費（レベルあたり 1 ゴール"
+"ド）が必要となります。忠義特性のあるユニットはこの例外です。"

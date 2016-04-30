@@ -9,16 +9,17 @@
 # mishan <mishanhideaki88@gmail.com>, 2011
 # Nobuhito Okada <okyada@gmail.com>, 2006
 # <P2295417919104729@hotmail.co.jp>, 2010
+# RatArmy <broadbarredfirefish@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2015-08-03 20:46+0000\n"
+"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"PO-Revision-Date: 2016-03-06 20:45+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,10 +53,8 @@ msgstr "（初心者レベル、7 シナリオ）"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "（初心者）"
+msgstr "初心者"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
@@ -69,22 +68,18 @@ msgstr "貴族"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:21
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "ノーマル"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑戦的）"
+msgstr "挑戦的"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
 msgid "High Lord"
-msgstr "高級貴族"
+msgstr "大貴族"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:36
@@ -225,18 +220,12 @@ msgstr "Erlornas の死"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:130
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Elves can move quickly and safely among the trees. Pick off the enemy "
-#| "grunts with your archers from the safety of the forest."
 msgid ""
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
 msgstr ""
-"ヒント：\n"
-"エルフ族は森の中では素早く安全に移動できます。安全な森の中から弓兵で敵の兵卒"
-"を狙い撃ちましょう。"
+"エルフは木々の間を素早く安全に移動することができます。安全な森から敵兵を弓兵"
+"で攻撃しましょう。"
 
 #. [message]: speaker=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:140
@@ -423,21 +412,13 @@ msgstr "Gharlsa を倒す"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:116
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Assassins are hard to hit, and their poison is insidious. Stay close to "
-#| "the villages, where poisoning can be cured, and force your enemies to "
-#| "attack you from the river."
 msgid ""
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
 "from the river."
 msgstr ""
-"ヒント:\n"
-"暗殺者は攻撃を命中させにくく、しかも油断のならない毒を持っています。村で毒を"
-"治療できるので、村に届く位置に陣取り、そして敵が攻撃を仕掛ける際に川の中に入"
-"るよう誘導しましょう。"
+"暗殺者は回避率が高く、厄介な毒攻撃を持っています。すぐに解毒できるように村の"
+"近くに留まり、敵を川におびき寄せましょう。"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:130
@@ -586,19 +567,12 @@ msgstr "Gnargha を倒す"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:104
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "There are no villages in this scenario — you must use healers instead. "
-#| "Use hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgid ""
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgstr ""
-"ヒント：\n"
-"このシナリオには村がありません――その代わりに治療ができるユニットを起用しなけ"
-"ればなりません。治療手段を持たない敵ユニットを弱らせるために、一撃離脱を心掛"
-"けましょう。"
+"このシナリオでは村が存在しません。代わりにヒーラーを使いましょう。ヒットアン"
+"ドラン戦法で回復手段の無い敵を追い詰めていきましょう。"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:122
@@ -840,18 +814,12 @@ msgstr "全てのリーダーを倒せ"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:171
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Trolls are poor fighters when not on rugged terrain and fare even worse "
-#| "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgid ""
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgstr ""
-"ヒント：\n"
-"トロルは荒れた地形にいなければ貧弱な戦士であり、昼間はさらにその傾向が強まり"
-"ます。丘から誘い出して昼間に攻撃しましょう。"
+"トロルはでこぼこした土地以外では貧弱な戦士であり、日中はさらに弱体化します。"
+"日中の内に彼らを丘の外におびき出して攻撃しましょう。"
 
 #. [message]: role=advisor
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:185
@@ -1090,7 +1058,7 @@ msgstr "Krughnar"
 #. [side]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:90
 msgid "Mages"
-msgstr ""
+msgstr "魔術師"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:108
@@ -1105,18 +1073,11 @@ msgstr "Linaera の死"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:128
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-"
-#| "run attacks."
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
 msgstr ""
-"ヒント：\n"
-"エルフの斥候と Linaera の瞬間移動の能力で一撃離脱の攻撃を仕掛けるとよいでしょ"
-"う。"
+"斥候やLinaeraの瞬間移動の力を使ってヒットアンドラン攻撃を仕掛けましょう。"
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:142
@@ -1314,7 +1275,7 @@ msgstr "沼地を通って回り道"
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:46
 msgid "Undead"
-msgstr ""
+msgstr "アンデッド"
 
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:51
@@ -1328,18 +1289,12 @@ msgstr "Keremal を倒す"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Undead are resistant to physical attack. Use mages to attack the undead, "
-#| "and elves to protect and support the mages."
 msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
-"ヒント：\n"
-"アンデッドは物理的攻撃に抵抗力があります。魔術師を使ってアンデッドを攻撃し、"
-"エルフは魔術師の防御と支援に徹しましょう。"
+"アンデッドは物理攻撃に耐性を持ちます。魔術師にアンデッドを攻撃させ、エルフで"
+"魔術師を護衛しましょう。"
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:117
@@ -1392,38 +1347,32 @@ msgstr "Rualsha を倒す"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:103
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Your enemy is well-defended against attacks from the south. Use rangers "
-#| "to sneak through the forest and mount a surprise attack from the north."
 msgid ""
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
-"ヒント：\n"
-"南側からの攻撃では敵に上手く防がれてしまいます。レンジャーを使って森をこっそ"
-"り通り抜け、北側から奇襲攻撃を仕掛けましょう。"
+"敵は南の方向への防備を固めています。レンジャーを森に忍ばせて、北から奇襲攻撃"
+"を仕掛けましょう。"
 
 #. [unit]: type=Elvish Ranger, id=Celodith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:140
 msgid "Celodith"
-msgstr ""
+msgstr "Celodith"
 
 #. [unit]: type=Elvish Ranger, id=Earanduil
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:160
 msgid "Earanduil"
-msgstr ""
+msgstr "Earanduil"
 
 #. [unit]: type=Elvish Ranger, id=Elvyniel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:180
 msgid "Elvyniel"
-msgstr ""
+msgstr "Elvyniel"
 
 #. [unit]: type=Elvish Ranger, id=Delorfilith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:200
 msgid "Delorfilith"
-msgstr ""
+msgstr "Delorfilith"
 
 #. [message]: speaker=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:213
@@ -1522,20 +1471,12 @@ msgstr "ああ、Erlornas閣下、お役に立てませんでした…"
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
-#, fuzzy
-#| msgid ""
-#| "All is lost! Without Linaera’s help, I cannot hope to defeat these "
-#| "horrifying apparitions!"
 msgid ""
 "All is lost! Without Linaera’s help, I cannot hope to defeat these "
 "abominations!"
 msgstr ""
-"もうおしまいだ！ Linaera の助けが無くては、あの恐るべき亡霊を破ることは望めな"
-"い！"
+"なんということだ！Linaeraの助け無くして、この怪物たちを倒すことはできない！"
 
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
-
-#~ msgid "Wizards"
-#~ msgstr "魔術師軍"
+msgstr "ヒント："
