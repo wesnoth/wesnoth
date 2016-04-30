@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"POT-Creation-Date: 2016-04-30 15:50+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -28,14 +28,14 @@ msgid "Underground"
 msgstr "podzemlje"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
+#: data/core/macros/abilities.cfg:429
 msgid "berserk"
 msgstr "bezglavost"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:655
-#: data/core/macros/abilities.cfg:392
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
+#: data/core/macros/abilities.cfg:430
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -51,14 +51,14 @@ msgstr ""
 "upetljana jedinica ne nastrada, ili prođe 30 rundi napada."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
+#: data/core/macros/abilities.cfg:516
 msgid "magical"
 msgstr "magičnost"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
+#: data/core/macros/abilities.cfg:517
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -73,16 +73,16 @@ msgstr ""
 "napadnute jedinice."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:515
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
+#: data/core/macros/abilities.cfg:561
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "prvi udar"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
+#: data/core/macros/abilities.cfg:562
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -4397,12 +4397,12 @@ msgid "+1 max HP"
 msgstr "+1 maks. UP"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:440
 msgid "backstab"
 msgstr "nož u leđa"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:441
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4421,12 +4421,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:426
+#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
 msgid "plague"
 msgstr "kuga"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:462
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4444,7 +4444,7 @@ msgstr ""
 "jedinicama u selu."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:473
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4462,12 +4462,12 @@ msgstr ""
 "selu."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:437
+#: data/core/macros/abilities.cfg:483
 msgid "slows"
 msgstr "usporavanje"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:438
+#: data/core/macros/abilities.cfg:484
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4487,12 +4487,12 @@ msgstr ""
 "Usporena jedinica nosiće ikonu puža u podacima sa strane kada se izabere."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:493
 msgid "petrifies"
 msgstr "okamenjivanje"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:494
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4507,12 +4507,12 @@ msgstr ""
 "napadati."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:503
 msgid "marksman"
 msgstr "oštrookost"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:504
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4525,12 +4525,12 @@ msgstr ""
 "Pri napadu, uvijek postoji barem 60% izgleda da dođe do pogotka."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:528
 msgid "swarm"
 msgstr "roj"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:529
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4550,12 +4550,12 @@ msgstr ""
 "imati. Na primjer, jedinica sa 3/4 punih UP imaće 3/4 udara pri napadu."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:492
+#: data/core/macros/abilities.cfg:538
 msgid "charge"
 msgstr "juriš"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:539
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4571,12 +4571,12 @@ msgstr ""
 "dovodi do dvostrukog oštećenja ukoliko ciljana jedinica udari u protivnapadu."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:505
+#: data/core/macros/abilities.cfg:551
 msgid "drains"
 msgstr "crpljenje"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:506
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4591,12 +4591,12 @@ msgstr ""
 "štete koju nanese (zaokruženo nadole)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:571
 msgid "poison"
 msgstr "otrov"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:572
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -6590,15 +6590,15 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:185
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/help/help.cpp:188
+#: src/help/help.cpp:186
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoć „Boja za Vesnot“"
 
-#: src/help/help.cpp:243
+#: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Greška pri raščlanjivanju teksta pomoći: "
 

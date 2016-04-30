@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2010-08-23 17:35+0800\n"
 "Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -1055,6 +1055,55 @@ msgid ""
 msgstr ""
 "敵人的歡呼聲，像從地面上升起的黑暗薄霧一樣，將你完全吞噬。如同鬼魂一般的輕"
 "煙，吸走了你的意志，你明白了，自己在這片土地上的時間已經結束了。"
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"這些怪物裡，最後也是最強一隻就要出現了。我想如果我們能在時限內解決他們的話，"
+"那我們就贏了！"
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"當您把浴血的劍刃，從最後一個反抗者身上拔出來時，尖叫聲和求饒聲最終都消散了。"
+"再也不會有來自本地敗類的阻力，您的統治終於得到了穩定。"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "晴天"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "乾旱"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "大雨"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "降雪"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "大雪"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2173,36 +2222,6 @@ msgid ""
 msgstr ""
 "這是韋諾之戰標準圖，命令行參數為：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "當您把浴血的劍刃，從最後一個反抗者身上拔出來時，尖叫聲和求饒聲最終都消散"
-#~ "了。再也不會有來自本地敗類的阻力，您的統治終於得到了穩定。"
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "這些怪物裡，最後也是最強一隻就要出現了。我想如果我們能在時限內解決他們的"
-#~ "話，那我們就贏了！"
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "大雪"
-
-#~ msgid "Snowfall"
-#~ msgstr "降雪"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "大雨"
-
-#~ msgid "Drought"
-#~ msgstr "乾旱"
-
-#~ msgid "Clear Weather"
-#~ msgstr "晴天"
 
 #, fuzzy
 #~| msgid "Random map"

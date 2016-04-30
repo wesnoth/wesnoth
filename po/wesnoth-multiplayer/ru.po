@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2014-11-11 12:48+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1129,6 +1129,56 @@ msgstr ""
 "Враги ликуют, глядя, как чёрный туман, поднимаясь от земли, охватывает вас. "
 "Когда призрачные шёпоты истончают вашу волю, вы понимаете, что ваше время на "
 "этой земле закончилось."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Последние, самые могучие из этих тварей идут на нас. Думаю, если мы с ними "
+"расправимся, то победим окончательно."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Крики и мольбы о пощаде наконец стихают, когда вы выдёргиваете залитый "
+"кровью клинок из последнего повстанца. Более местные отбросы не решатся "
+"восставать. Ваше правление наконец стало стабильным."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Ясная погода"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Засуха"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Сильный дождь"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Снегопад"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Сильный снегопад"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2291,37 +2341,6 @@ msgid ""
 msgstr ""
 "Тестирование Веснота, использует --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Крики и мольбы о пощаде наконец стихают, когда вы выдёргиваете залитый "
-#~ "кровью клинок из последнего повстанца. Более местные отбросы не решатся "
-#~ "восставать. Ваше правление наконец стало стабильным."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Последние, самые могучие из этих тварей идут на нас. Думаю, если мы с "
-#~ "ними расправимся, то победим окончательно."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Сильный снегопад"
-
-#~ msgid "Snowfall"
-#~ msgstr "Снегопад"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Сильный дождь"
-
-#~ msgid "Drought"
-#~ msgstr "Засуха"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Ясная погода"
 
 #, fuzzy
 #~| msgid "Random map"

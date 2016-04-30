@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2014-10-25 13:24+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -1175,6 +1175,57 @@ msgstr ""
 "El enemigo se exalta mientras una oscura niebla se levanta de la tierra, "
 "envolviéndote. Mientras espirales fantasmales absorben tu voluntad, te das "
 "cuenta de que tu tiempo en esta tierra ha terminado."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Las últimas y más poderosas de estas criaturas están casi sobre nosotros. "
+"Siento que si podemos acabar con ellas a tiempo, venceremos."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Los gritos y las súplicas de misericordia son por último silenciados, "
+"mientras sacas del último de los rebeldes la hoja empapada en sangre. No "
+"habrá más resistencia de la escoria local. Tu reinado ha conseguido "
+"estabilidad, finalmente."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Despejado"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Sequía"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Fuertes lluvias"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Nevada"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Fuerte nevada"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2348,38 +2399,6 @@ msgid ""
 msgstr ""
 "Una prueba de rendimiento de wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Los gritos y las súplicas de misericordia son por último silenciados, "
-#~ "mientras sacas del último de los rebeldes la hoja empapada en sangre. No "
-#~ "habrá más resistencia de la escoria local. Tu reinado ha conseguido "
-#~ "estabilidad, finalmente."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Las últimas y más poderosas de estas criaturas están casi sobre nosotros. "
-#~ "Siento que si podemos acabar con ellas a tiempo, venceremos."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Fuerte nevada"
-
-#~ msgid "Snowfall"
-#~ msgstr "Nevada"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Fuertes lluvias"
-
-#~ msgid "Drought"
-#~ msgstr "Sequía"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Despejado"
 
 #~ msgid "Random map by YAMG"
 #~ msgstr "Mapa aleatorio por YAMG"

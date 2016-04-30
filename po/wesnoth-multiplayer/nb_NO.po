@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2009-02-27 21:27+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -979,6 +979,56 @@ msgstr ""
 "Fienden gleder seg idet mørke tåker stiger fra jorden, og omslutter deg. "
 "Spøkelsesaktig hvisking tærer på viljen din, og du innser at tiden du fikk i "
 "dette landet er ute."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"De siste og mektigste av disse vesnene er snart over oss. Jeg har på "
+"følelsen at vi vil seire, hvis vi kan gjøre en ende på dem i tide."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Skrikene og bønnene om nåde stilner omsider, idet du rykker det blodstenkte "
+"sverdet ut av den siste rebellens døde kropp. Oppstanden blandt det lokale "
+"avskummet er til ende. Endelig er styreforholdene igjen stabile."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Klart vær"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Tørke"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Tunge regnbyger"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Snøfall"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Tungt snøfall"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2118,38 +2168,6 @@ msgid ""
 msgstr ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Skrikene og bønnene om nåde stilner omsider, idet du rykker det "
-#~ "blodstenkte sverdet ut av den siste rebellens døde kropp. Oppstanden "
-#~ "blandt det lokale avskummet er til ende. Endelig er styreforholdene igjen "
-#~ "stabile."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "De siste og mektigste av disse vesnene er snart over oss. Jeg har på "
-#~ "følelsen at vi vil seire, hvis vi kan gjøre en ende på dem i tide."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Tungt snøfall"
-
-#~ msgid "Snowfall"
-#~ msgstr "Snøfall"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Tunge regnbyger"
-
-#~ msgid "Drought"
-#~ msgstr "Tørke"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Klart vær"
 
 #, fuzzy
 #~| msgid "Random map"

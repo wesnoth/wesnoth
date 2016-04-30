@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2014-03-01 13:18+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -1120,6 +1120,56 @@ msgstr ""
 "Nepriateľ sa raduje, zatiaľ čo z krajiny stúpa temná hmla a pohlcuje ťa. "
 "Prízračné kúdoly ti odčerpávajú vôľu a ty si uvedomíš, že tvoj čas v tomto "
 "kraji sa skončil."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Posledné a najsilnejšie príšery sú takmer pri nás. Cítim, že ak sa nám "
+"podarí ich doraziť včas, zvíťazíme."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Výkriky a prosby o milosť sú konečne umlčané, keď vytiahneš svoju krvou "
+"nasiaknutú čepeľ z posledného rebela. Miestna zberba už nebude klásť ďalší "
+"odpor. Tvoja vláda konečne získala stabilitu."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Jasné počasie"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Sucho"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Silný dážď"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Sneženie"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Silné sneženie"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2270,37 +2320,6 @@ msgid ""
 msgstr ""
 "Testovanie výkonu, použi --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Výkriky a prosby o milosť sú konečne umlčané, keď vytiahneš svoju krvou "
-#~ "nasiaknutú čepeľ z posledného rebela. Miestna zberba už nebude klásť "
-#~ "ďalší odpor. Tvoja vláda konečne získala stabilitu."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Posledné a najsilnejšie príšery sú takmer pri nás. Cítim, že ak sa nám "
-#~ "podarí ich doraziť včas, zvíťazíme."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Silné sneženie"
-
-#~ msgid "Snowfall"
-#~ msgstr "Sneženie"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Silný dážď"
-
-#~ msgid "Drought"
-#~ msgstr "Sucho"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Jasné počasie"
 
 #~ msgid "Random map by YAMG"
 #~ msgstr "Náhodná mapa od YAMG"

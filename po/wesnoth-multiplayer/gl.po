@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2015-04-18 06:34+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -1218,6 +1218,57 @@ msgstr ""
 "rodeándote. A medida que as nubes fantasmais acaban coa túa vontade, daraste "
 "de conta de que o teu tempo nesta terra está a rematar."
 
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"As últimas e máis poderosas destas criaturas veñen contra nós. Presinto que "
+"se podemos acabar con elas a tempo, conseguiremos a vitoria."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Os gritos e rogos de compaixón son finalmente silenciados cando sacas a túa "
+"folla completamente ensanguentada do derradeiro rebelde. Non haberá máis "
+"resistencia por parte da escoura local. O teu reino conseguiu por fin a "
+"estabilidade."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Bo tempo"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Seca"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Chuvascada"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Nevada"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Gran nevada"
+
 # “Oni” é a palabra xaponesa para demo.
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2403,38 +2454,6 @@ msgid ""
 msgstr ""
 "Unha proba de rendemento do xogo, emprega --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Os gritos e rogos de compaixón son finalmente silenciados cando sacas a "
-#~ "túa folla completamente ensanguentada do derradeiro rebelde. Non haberá "
-#~ "máis resistencia por parte da escoura local. O teu reino conseguiu por "
-#~ "fin a estabilidade."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "As últimas e máis poderosas destas criaturas veñen contra nós. Presinto "
-#~ "que se podemos acabar con elas a tempo, conseguiremos a vitoria."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Gran nevada"
-
-#~ msgid "Snowfall"
-#~ msgstr "Nevada"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Chuvascada"
-
-#~ msgid "Drought"
-#~ msgstr "Seca"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Bo tempo"
 
 #~ msgid "Random map by YAMG"
 #~ msgstr "Mapa ao chou de YAMG"

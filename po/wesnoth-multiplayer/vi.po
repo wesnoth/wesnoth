@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2014-06-05 18:06+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -1139,6 +1139,58 @@ msgstr ""
 "Kẻ thù reo hò khi màn sương mịt mù nổi lên từ vùng đất, nhấn chìm ngươi. Khi "
 "những làn khói ma quái bòn rút hết ý chí của ngươi, ngươi nhận ra rằng giây "
 "phút của mình trên vùng đất này đã đến hồi kết thúc."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Những sinh vật cuối cùng và mạnh nhất này đang chống lại chúng ta. Tôi cảm "
+"thấy rằng nếu chúng ta có thể kết liễu chúng đúng lúc, chúng ta sẽ chiến "
+"thắng."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Những tiếng kêu thất thanh và những lời cầu xin lòng thương xót cuối cùng "
+"cũng im lặng, khi bạn rút lưỡi kiếm vấy máu khỏi xác tên phiến loạn cuối "
+"cùng. Sẽ không còn sự chống đối từ bọn cặn bã địa phương nữa. Triều đại của "
+"bạn cuối cùng đã giành được ổn định."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Thời tiết sáng sủa"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Hạn hán"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Mưa lớn"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Tuyết rơi"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Tuyết rơi nhiều"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2301,39 +2353,6 @@ msgid ""
 msgstr ""
 "Kiểm nghiệm wesnoth, sử dụng --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Những tiếng kêu thất thanh và những lời cầu xin lòng thương xót cuối cùng "
-#~ "cũng im lặng, khi bạn rút lưỡi kiếm vấy máu khỏi xác tên phiến loạn cuối "
-#~ "cùng. Sẽ không còn sự chống đối từ bọn cặn bã địa phương nữa. Triều đại "
-#~ "của bạn cuối cùng đã giành được ổn định."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Những sinh vật cuối cùng và mạnh nhất này đang chống lại chúng ta. Tôi "
-#~ "cảm thấy rằng nếu chúng ta có thể kết liễu chúng đúng lúc, chúng ta sẽ "
-#~ "chiến thắng."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Tuyết rơi nhiều"
-
-#~ msgid "Snowfall"
-#~ msgstr "Tuyết rơi"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Mưa lớn"
-
-#~ msgid "Drought"
-#~ msgstr "Hạn hán"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Thời tiết sáng sủa"
 
 #~ msgid "Random map by YAMG"
 #~ msgstr "Bản đồ ngẫu nhiên của YAMG"

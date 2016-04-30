@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"POT-Creation-Date: 2016-04-30 15:50+0300\n"
 "PO-Revision-Date: 2012-04-02 21:52+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -31,14 +31,14 @@ msgid "Underground"
 msgstr "Maa all"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
+#: data/core/macros/abilities.cfg:429
 msgid "berserk"
 msgstr "segane"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:655
-#: data/core/macros/abilities.cfg:392
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
+#: data/core/macros/abilities.cfg:430
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -54,14 +54,14 @@ msgstr ""
 "surmani."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
+#: data/core/macros/abilities.cfg:516
 msgid "magical"
 msgstr "võluväeline"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
+#: data/core/macros/abilities.cfg:517
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -76,16 +76,16 @@ msgstr ""
 "kaitsevõimest."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:515
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
+#: data/core/macros/abilities.cfg:561
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "alustav"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
+#: data/core/macros/abilities.cfg:562
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -4355,12 +4355,12 @@ msgid "+1 max HP"
 msgstr "+1 maks. EP"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:440
 msgid "backstab"
 msgstr "pussitav"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:441
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4378,12 +4378,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:426
+#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
 msgid "plague"
 msgstr "nakatav"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:462
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4401,7 +4401,7 @@ msgstr ""
 "üksuse puhul."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:473
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4418,12 +4418,12 @@ msgstr ""
 "kuuluva kõndiva laibaga. See ei toimi kooljate või külas asuva üksuse puhul."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:437
+#: data/core/macros/abilities.cfg:483
 msgid "slows"
 msgstr "aeglustav"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:438
+#: data/core/macros/abilities.cfg:484
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4443,12 +4443,12 @@ msgstr ""
 "väikest teo kujutist."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:493
 msgid "petrifies"
 msgstr "kivistav"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:494
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4463,12 +4463,12 @@ msgstr ""
 "rünnata."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:503
 msgid "marksman"
 msgstr "täpsuskütt"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:504
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4481,12 +4481,12 @@ msgstr ""
 "Rünnakul on selle üksuse tabamistõenäosus alati vähemalt 60%."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:528
 msgid "swarm"
 msgstr "rabav"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:529
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4506,12 +4506,12 @@ msgstr ""
 "rünnakukordade arvust."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:492
+#: data/core/macros/abilities.cfg:538
 msgid "charge"
 msgstr "tormakas"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:539
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4527,12 +4527,12 @@ msgstr ""
 "vastase vasturünnakutest."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:505
+#: data/core/macros/abilities.cfg:551
 msgid "drains"
 msgstr "kurnav"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:506
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4547,12 +4547,12 @@ msgstr ""
 "tekitatud kahjust (allapoole ümardatuna) enda ravimiseks."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:571
 msgid "poison"
 msgstr "mürgitav"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:572
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -6496,15 +6496,15 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:185
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "Sulge"
 
-#: src/help/help.cpp:188
+#: src/help/help.cpp:186
 msgid "The Battle for Wesnoth Help"
 msgstr "Wesnothi Lahingu käsiraamat"
 
-#: src/help/help.cpp:243
+#: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Abiteksti avamise viga: "
 

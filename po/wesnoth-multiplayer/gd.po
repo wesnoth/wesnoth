@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2014-02-19 10:53-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -1123,6 +1123,58 @@ msgstr ""
 "is ’gad chuairteachadh. Fhad ’s a tha sionnachain thaibhseach a’ tarraing do "
 "thoil air falbh, tha e a’ tighinn a-steach ort gun do dh’fhalbh d’ àm san "
 "tìr seo."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Tha an fheadhainn mu dheireadh is as cumhachdaiche dhe na creutairean seo "
+"cha mhòr air tighinn thugainn. Saoilidh mi ma gheibh sinn cuidhteas dhiubh "
+"ri àm gun tèid an latha leinn."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Chaidh sgreuchail is tagraidhean airson truais a shèimheachadh mu dheireadh "
+"thall fhad ’s a tharraing thu do lann làn fhala bhon aramaiche mu dheireadh. "
+"Cha bhi comhaireachd leis a’ ghràisg ionadail ann tuilleadh. Tha d’ "
+"ùghdarras seasmhach air a cheann thall."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Turadh"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Tart"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Uisge trom"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Sneachd"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Sneachd trom"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2307,39 +2359,6 @@ msgid ""
 msgstr ""
 "Deuchainn-luathais Bheasnaid, cleachd --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Chaidh sgreuchail is tagraidhean airson truais a shèimheachadh mu "
-#~ "dheireadh thall fhad ’s a tharraing thu do lann làn fhala bhon aramaiche "
-#~ "mu dheireadh. Cha bhi comhaireachd leis a’ ghràisg ionadail ann "
-#~ "tuilleadh. Tha d’ ùghdarras seasmhach air a cheann thall."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Tha an fheadhainn mu dheireadh is as cumhachdaiche dhe na creutairean seo "
-#~ "cha mhòr air tighinn thugainn. Saoilidh mi ma gheibh sinn cuidhteas "
-#~ "dhiubh ri àm gun tèid an latha leinn."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Sneachd trom"
-
-#~ msgid "Snowfall"
-#~ msgstr "Sneachd"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Uisge trom"
-
-#~ msgid "Drought"
-#~ msgstr "Tart"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Turadh"
 
 #~ msgid "Random map by YAMG"
 #~ msgstr "Mapa air thuaiream le YAMG"

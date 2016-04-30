@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2011-12-26 13:33+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1119,6 +1119,56 @@ msgstr ""
 "Непријатељ кличе док се мрачна измаглица диже над земљом, обузимајући те. "
 "Док ти сабласни снопови црпе вољу, схваташ да је твоје вријеме у овој земљи "
 "истекло."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Пристижу посљедња и најмоћнија међ' овим створењима. Осјећам, докрајчимо ли "
+"их на вријеме, побједа је наша."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Крици и молбе за милост напокон су угушени, док уклањаш крвљу натопљено "
+"сјечиво из посљедњег побуњеника. Неће се више опирати ова мјесна багра. "
+"Владавина твоја напокон је зарадила стабилност."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "чисто небо"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "суша"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "тежак пљусак"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "мећава"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "тешка мећава"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2286,37 +2336,6 @@ msgid ""
 msgstr ""
 "Проба перформанси, употријебите: --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Крици и молбе за милост напокон су угушени, док уклањаш крвљу натопљено "
-#~ "сјечиво из посљедњег побуњеника. Неће се више опирати ова мјесна багра. "
-#~ "Владавина твоја напокон је зарадила стабилност."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Пристижу посљедња и најмоћнија међ' овим створењима. Осјећам, докрајчимо "
-#~ "ли их на вријеме, побједа је наша."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "тешка мећава"
-
-#~ msgid "Snowfall"
-#~ msgstr "мећава"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "тежак пљусак"
-
-#~ msgid "Drought"
-#~ msgstr "суша"
-
-#~ msgid "Clear Weather"
-#~ msgstr "чисто небо"
 
 #, fuzzy
 #~| msgid "Random map"

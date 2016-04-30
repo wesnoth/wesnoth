@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2014-05-09 00:09+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -1172,6 +1172,56 @@ msgstr ""
 "Az ellenség üdvrivalgásban tör ki, amint sötét köd emelkedik fel a földből, "
 "és körülvesz téged. Ahogy kísérteties árnyak szívják ki életerődet, rájössz, "
 "hogy időd ezennel lejárt e földön."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"E lények legutolsó, legerősebb túlélői nemsoká farkasszemet fognak nézni "
+"velünk. Úgy érzem, ha időben végezni tudunk velük, miénk lesz a győzelem. "
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"A kegyelemért könyörgő jajkiáltások végül elhallgatnak, amint véráztatta "
+"pengédet kihúzod az utolsó lázadóból. A helyi népség többé már nem fog "
+"ellenállni. Uralmad végre biztos alapokon áll."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Tiszta idő"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Aszály"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Heves esőzés"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Havazás"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Sűrű havazás"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2364,37 +2414,6 @@ msgid ""
 msgstr ""
 "Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "A kegyelemért könyörgő jajkiáltások végül elhallgatnak, amint véráztatta "
-#~ "pengédet kihúzod az utolsó lázadóból. A helyi népség többé már nem fog "
-#~ "ellenállni. Uralmad végre biztos alapokon áll."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "E lények legutolsó, legerősebb túlélői nemsoká farkasszemet fognak nézni "
-#~ "velünk. Úgy érzem, ha időben végezni tudunk velük, miénk lesz a győzelem. "
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Sűrű havazás"
-
-#~ msgid "Snowfall"
-#~ msgstr "Havazás"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Heves esőzés"
-
-#~ msgid "Drought"
-#~ msgstr "Aszály"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Tiszta idő"
 
 #~ msgid "Random map by YAMG"
 #~ msgstr "Véletlenszerű pályakialakítás (YAMG)"

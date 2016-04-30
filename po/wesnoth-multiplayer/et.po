@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2011-12-30 18:33+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -1092,6 +1092,56 @@ msgstr ""
 "Vaenlaste rõõmukisa saatel kerkib maast sinu ümber tihe udu. Kui "
 "kummituslikud olendid su elujõu ära joovad, saad  aru, et sinu aeg siin maal "
 "on läbi."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Viimane ja vägevaim neist olenditest on peaaegu meie juures. Ma usun, et kui "
+"me neile õigel ajal lõpu teeme, saavutame võidu."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Karjed ja armupalumised on viimaks vaikinud, kui su verine tera viimase "
+"mässaja maha niidab.  Kohalik rämps ei pane enam vastu, su võim püsib nüüd "
+"kindlalt."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Selge ilm"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Põud"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Tugev vihm"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Lumesadu"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Tugev lumesadu"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2237,37 +2287,6 @@ msgid ""
 msgstr ""
 "Kasutatavad käivitusvõtmed --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Karjed ja armupalumised on viimaks vaikinud, kui su verine tera viimase "
-#~ "mässaja maha niidab.  Kohalik rämps ei pane enam vastu, su võim püsib "
-#~ "nüüd kindlalt."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Viimane ja vägevaim neist olenditest on peaaegu meie juures. Ma usun, et "
-#~ "kui me neile õigel ajal lõpu teeme, saavutame võidu."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Tugev lumesadu"
-
-#~ msgid "Snowfall"
-#~ msgstr "Lumesadu"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Tugev vihm"
-
-#~ msgid "Drought"
-#~ msgstr "Põud"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Selge ilm"
 
 #, fuzzy
 #~| msgid "Random map"

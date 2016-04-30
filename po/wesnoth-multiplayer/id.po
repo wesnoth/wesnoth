@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 15:51+0300\n"
 "PO-Revision-Date: 2012-01-27 22:42+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1135,6 +1135,58 @@ msgstr ""
 "Sorakan musuh sepert suatu kabut gelap naik dari daratan, meliputi anda. "
 "Seperti gumpalan hantu yang akan menghisap semangat anda, Anda menyadari "
 "bahwa waktu Anda di dunia ini selesai."
+
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Yang terakhir dan paling kuat dari makhluk-makhluk ini adalah yang ada "
+"dihadapan kita. Aku merasa bahwa jika kita dapat menyelesaikannya pada "
+"waktunya, kita akan menang."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Jeritan dan permohonan ampun akhirnya dibungkam, seperti Anda menghapus "
+"darah basah di pisau Anda dari dari pemberontak terakhir . Tidak akan ada "
+"perlawanan lagi dari sampah lokal. pemerintahan Anda akhirnya mendapatkan "
+"stabilitas."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Air Jernih"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Musim Kering"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Hujan Lebat"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Hujan salju"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Hujan salju yang lebat"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -2298,39 +2350,6 @@ msgid ""
 msgstr ""
 "Sebuah benchmark Wesnoth, gunakan --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Jeritan dan permohonan ampun akhirnya dibungkam, seperti Anda menghapus "
-#~ "darah basah di pisau Anda dari dari pemberontak terakhir . Tidak akan ada "
-#~ "perlawanan lagi dari sampah lokal. pemerintahan Anda akhirnya mendapatkan "
-#~ "stabilitas."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Yang terakhir dan paling kuat dari makhluk-makhluk ini adalah yang ada "
-#~ "dihadapan kita. Aku merasa bahwa jika kita dapat menyelesaikannya pada "
-#~ "waktunya, kita akan menang."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Hujan salju yang lebat"
-
-#~ msgid "Snowfall"
-#~ msgstr "Hujan salju"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Hujan Lebat"
-
-#~ msgid "Drought"
-#~ msgstr "Musim Kering"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Air Jernih"
 
 #, fuzzy
 #~| msgid "Random map"

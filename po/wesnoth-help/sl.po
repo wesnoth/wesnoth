@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"POT-Creation-Date: 2016-04-30 15:50+0300\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -29,15 +29,15 @@ msgid "Underground"
 msgstr "Podzemlje"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
+#: data/core/macros/abilities.cfg:429
 #, fuzzy
 msgid "berserk"
 msgstr "berzerk"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:655
-#: data/core/macros/abilities.cfg:392
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
+#: data/core/macros/abilities.cfg:430
 #, fuzzy
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -48,15 +48,15 @@ msgstr ""
 "ne umre ali mine 30 rund."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
+#: data/core/macros/abilities.cfg:516
 #, fuzzy
 msgid "magical"
 msgstr "čaroben"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
+#: data/core/macros/abilities.cfg:517
 #, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -66,15 +66,15 @@ msgstr ""
 "Ta napad ima vedno 70% možnosti da zadane."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:515
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
+#: data/core/macros/abilities.cfg:561
 #, fuzzy
 msgid "first strike"
 msgstr "prvi napad"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
+#: data/core/macros/abilities.cfg:562
 #, fuzzy
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
@@ -3703,13 +3703,13 @@ msgid "+1 max HP"
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:440
 #, fuzzy
 msgid "backstab"
 msgstr "vbod v hrbet"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:441
 #, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3722,13 +3722,13 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:426
+#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
 #, fuzzy
 msgid "plague"
 msgstr "kuga"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:462
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3741,7 +3741,7 @@ msgstr ""
 "v vaseh.)"
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:473
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3754,13 +3754,13 @@ msgstr ""
 "v vaseh.)"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:437
+#: data/core/macros/abilities.cfg:483
 #, fuzzy
 msgid "slows"
 msgstr "upočasni"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:438
+#: data/core/macros/abilities.cfg:484
 #, fuzzy
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3774,13 +3774,13 @@ msgstr ""
 "polovično škodo."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:493
 #, fuzzy
 msgid "petrifies"
 msgstr "Udarci"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:494
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3791,13 +3791,13 @@ msgstr ""
 "napadati."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:503
 #, fuzzy
 msgid "marksman"
 msgstr "ostrostrelec"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:504
 #, fuzzy
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3806,13 +3806,13 @@ msgstr ""
 "V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:528
 #, fuzzy
 msgid "swarm"
 msgstr "mrgolenje"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:529
 #, fuzzy
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3826,13 +3826,13 @@ msgstr ""
 "maximalnega števila napadov."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:492
+#: data/core/macros/abilities.cfg:538
 #, fuzzy
 msgid "charge"
 msgstr "naskok"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:539
 #, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
@@ -3843,13 +3843,13 @@ msgstr ""
 "prejme dvojno škodo."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:505
+#: data/core/macros/abilities.cfg:551
 #, fuzzy
 msgid "drains"
 msgstr "črpa"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:506
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 msgid ""
 "This unit drains health from living units, healing itself for half the "
@@ -3860,12 +3860,12 @@ msgstr ""
 "storjene škode (zaokroženo navzdol)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:571
 msgid "poison"
 msgstr "strup"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:572
 #, fuzzy
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -5315,16 +5315,16 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:185
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "Zapri"
 
-#: src/help/help.cpp:188
+#: src/help/help.cpp:186
 #, fuzzy
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za igro Bitka za Wesnoth"
 
-#: src/help/help.cpp:243
+#: src/help/help.cpp:241
 #, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Napaka med razčlenjevanjem pomoči: "

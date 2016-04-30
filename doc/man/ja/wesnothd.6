@@ -41,8 +41,7 @@ http://www.wesnoth.org/wiki/ServerAdministration を参照。
 .
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
-wesnothd が使用する設定ファイルがどこにあるかを伝える。文法については後述の \fBサーバー設定\fP の章を参照。サーバープロセスに SIGHUP
-を送ることによって設定をリロードすることができる。
+wesnothdが使用する設定ファイルがどこにあるかを伝える。文法については後述の\fBサーバー設定\fPの章を参照。サーバープロセスにSIGHUPを送ることによって設定を再読み込みすることができる。
 .TP 
 \fB\-d, \-\-daemon\fP
 wesnothd をデーモンとして実行する。
@@ -91,7 +90,7 @@ wesnothd をデーモンとして実行する。
 /query での遠隔停止を許容する。
 .TP 
 \fBban_save_file\fP
-サーバが読み書きする(gzip 圧縮の)ファイルへの完全パスまたは相対パス。 ban はこのファイルへ保存され、サーバ開始時に再度読み込まれる。
+サーバーが読み書きする（gzip 圧縮の）ファイルへの完全パスまたは相対パス。 ban はこのファイルへ保存され、サーバ開始時に再度読み込まれる。
 .TP 
 \fBcompress_stored_rooms\fP
 部屋ファイルが圧縮形式で読み書きされるか決定する。既定値は \fByes\fP。
@@ -198,12 +197,12 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 (user_handler=forum のとき) このユーザのパスワード
 .TP  
 \fBdb_users_table\fP
-(user_handler=forum のとき) あなたの phpbb フォーラムがユーザデータを保存するテーブル名。最もありそうなのは
+(user_handler=forum のとき) あなたの phpbb フォーラムがユーザーデータを保存するテーブル名。最もありそうなのは
 <table\-prefix>_users (例えば phpbb3_users)。
 .TP  
 \fBdb_extra_table\fP
 (user_handler=forum のとき) wesnothd
-がユーザについてのデータを保存するテーブル名。このテーブルは手動で作成しなければならない。例: \fBCREATE TABLE
+がユーザーについてのデータを保存するテーブル名。このテーブルは手動で作成しなければならない。例: \fBCREATE TABLE
 <table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
