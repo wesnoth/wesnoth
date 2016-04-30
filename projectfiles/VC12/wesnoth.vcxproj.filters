@@ -152,14 +152,14 @@
     <Filter Include="Formula">
       <UniqueIdentifier>{a08223d8-5001-464a-a3e7-0789f732d8f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{ae9e9e4b-1ccd-432c-b610-d18ceb00b31d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Terrain">
       <UniqueIdentifier>{452ce2e5-1944-414f-aee6-7ccd188a496c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Units">
       <UniqueIdentifier>{b8e3886b-4e28-4452-b4e3-31822f7fd043}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Map">
-      <UniqueIdentifier>{ae9e9e4b-1ccd-432c-b610-d18ceb00b31d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -806,6 +806,9 @@
     <ClCompile Include="..\..\src\scripting\lua_fileops.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_formula_bridge.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_gui2.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
@@ -932,7 +935,13 @@
     <ClCompile Include="..\..\src\widgets\widget.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\utils\context_free_grammar_generator.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\utils\make_enum.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\markov_generator.cpp">
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\utils\sha1.cpp">
@@ -1169,6 +1178,9 @@
     <ClCompile Include="..\..\src\SDL_SavePNG\savepng.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\shader.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\sdl\utils.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1334,6 +1346,9 @@
     <ClCompile Include="..\..\src\units\map.cpp">
       <Filter>Units</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\units\race.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\units\types.cpp">
       <Filter>Units</Filter>
     </ClCompile>
@@ -1423,7 +1438,6 @@
     <ClCompile Include="..\..\src\preferences.cpp" />
     <ClCompile Include="..\..\src\preferences_display.cpp" />
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
-    <ClCompile Include="..\..\src\race.cpp" />
     <ClCompile Include="..\..\src\random_new.cpp" />
     <ClCompile Include="..\..\src\random_new_deterministic.cpp" />
     <ClCompile Include="..\..\src\random_new_synced.cpp" />
@@ -2180,6 +2194,9 @@
     <ClInclude Include="..\..\src\scripting\lua_fileops.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_formula_bridge.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_gui2.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
@@ -2321,6 +2338,12 @@
     <ClInclude Include="..\..\src\utils\const_clone.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\functional.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2328,6 +2351,12 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\make_enum.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\markov_generator.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\name_generator.hpp">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\reference_counter.hpp">
@@ -2472,6 +2501,9 @@
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\SDL_SavePNG\savepng.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\shader.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\sdl\utils.hpp">
@@ -2657,6 +2689,9 @@
     <ClInclude Include="..\..\src\units\ptr.hpp">
       <Filter>Units</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\units\race.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\units\types.hpp">
       <Filter>Units</Filter>
     </ClInclude>
@@ -2764,7 +2799,6 @@
     <ClInclude Include="..\..\src\preferences.hpp" />
     <ClInclude Include="..\..\src\preferences_display.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
-    <ClInclude Include="..\..\src\race.hpp" />
     <ClInclude Include="..\..\src\random_new.hpp" />
     <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
     <ClInclude Include="..\..\src\random_new_synced.hpp" />

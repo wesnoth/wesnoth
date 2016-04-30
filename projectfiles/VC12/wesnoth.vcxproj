@@ -2609,9 +2609,30 @@
     <ClCompile Include="..\..\src\leader_scroll_dialog.cpp" />
     <ClCompile Include="..\..\src\lobby_preferences.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
-    <ClCompile Include="..\..\src\map\label.cpp" />
-    <ClCompile Include="..\..\src\map\location.cpp" />
-    <ClCompile Include="..\..\src\map\map.cpp" />
+    <ClCompile Include="..\..\src\map\label.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Map\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\map\location.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Map\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\map\map.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Map\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Map\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\marked-up_text.cpp" />
     <ClCompile Include="..\..\src\md5.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
@@ -2661,7 +2682,6 @@
     <ClCompile Include="..\..\src\preferences.cpp" />
     <ClCompile Include="..\..\src\preferences_display.cpp" />
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
-    <ClCompile Include="..\..\src\race.cpp" />
     <ClCompile Include="..\..\src\random_new.cpp" />
     <ClCompile Include="..\..\src\random_new_deterministic.cpp" />
     <ClCompile Include="..\..\src\random_new_synced.cpp" />
@@ -2730,6 +2750,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_formula_bridge.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_gui2.cpp">
@@ -2850,6 +2878,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\shader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\sdl\utils.cpp">
@@ -3367,7 +3403,14 @@
     <ClCompile Include="..\..\src\theme.cpp" />
     <ClCompile Include="..\..\src\time_of_day.cpp" />
     <ClCompile Include="..\..\src\tod_manager.cpp" />
-    <ClCompile Include="..\..\src\tools\schema\tag.cpp" />
+    <ClCompile Include="..\..\src\tools\schema\tag.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Tools\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Tools\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Tools\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Tools\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Tools\Schema\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Tools\Schema\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\tooltips.cpp" />
     <ClCompile Include="..\..\src\units\abilities.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Units\</ObjectFileName>
@@ -3457,6 +3500,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Units\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Units\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\units\race.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Units\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\units\types.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Units\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Units\</ObjectFileName>
@@ -3482,12 +3533,28 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Units\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\util.cpp" />
+    <ClCompile Include="..\..\src\utils\context_free_grammar_generator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\utils\make_enum.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\markov_generator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)utils\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\utils\sha1.cpp">
@@ -4128,7 +4195,6 @@
     <ClInclude Include="..\..\src\preferences.hpp" />
     <ClInclude Include="..\..\src\preferences_display.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
-    <ClInclude Include="..\..\src\race.hpp" />
     <ClInclude Include="..\..\src\random_new.hpp" />
     <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
     <ClInclude Include="..\..\src\random_new_synced.hpp" />
@@ -4152,6 +4218,7 @@
     <ClInclude Include="..\..\src\scripting\lua_common.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_cpp_function.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_fileops.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_formula_bridge.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_gui2.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_kernel_base.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_map_location_ops.hpp" />
@@ -4171,6 +4238,7 @@
     <ClInclude Include="..\..\src\sdl\gpu.hpp" />
     <ClInclude Include="..\..\src\sdl\image.hpp" />
     <ClInclude Include="..\..\src\sdl\rect.hpp" />
+    <ClInclude Include="..\..\src\sdl\shader.hpp" />
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
     <ClInclude Include="..\..\src\SDL_SavePNG\savepng.hpp" />
@@ -4262,15 +4330,20 @@
     <ClInclude Include="..\..\src\units\id.hpp" />
     <ClInclude Include="..\..\src\units\map.hpp" />
     <ClInclude Include="..\..\src\units\ptr.hpp" />
+    <ClInclude Include="..\..\src\units\race.hpp" />
     <ClInclude Include="..\..\src\units\types.hpp" />
     <ClInclude Include="..\..\src\units\udisplay.hpp" />
     <ClInclude Include="..\..\src\units\unit.hpp" />
     <ClInclude Include="..\..\src\util.hpp" />
     <ClInclude Include="..\..\src\utils\boost_function_guarded.hpp" />
     <ClInclude Include="..\..\src\utils\const_clone.hpp" />
+    <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp" />
+    <ClInclude Include="..\..\src\utils\functional.hpp" />
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp" />
     <ClInclude Include="..\..\src\utils\iterator.hpp" />
     <ClInclude Include="..\..\src\utils\make_enum.hpp" />
+    <ClInclude Include="..\..\src\utils\markov_generator.hpp" />
+    <ClInclude Include="..\..\src\utils\name_generator.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
     <ClInclude Include="..\..\src\utils\sha1.hpp" />
     <ClInclude Include="..\..\src\utils\shared_object.hpp" />
