@@ -1,0 +1,2842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Others">
+      <UniqueIdentifier>{5bc75616-2d9e-4f5b-b005-f51c5cfe870f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Addon">
+      <UniqueIdentifier>{65086279-fddf-4649-97e6-459cbb8e3ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{60751cc4-3904-4e2f-bbca-9e52d0304c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\composite">
+      <UniqueIdentifier>{6b807832-2ee4-4787-931f-216149430a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\default">
+      <UniqueIdentifier>{8f424c0d-d13e-4e0c-a9ab-1475df055564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\formula">
+      <UniqueIdentifier>{60c2a51d-73ec-4411-b303-b2ba61890697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\lua">
+      <UniqueIdentifier>{4876907c-b406-48ae-9645-2a5b7c2231b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{60facd44-6bd7-4322-a9aa-00cb66602013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Action">
+      <UniqueIdentifier>{bace6656-fc93-4c26-b632-1a8b891fe0e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Action\Mouse">
+      <UniqueIdentifier>{05ce3cdd-cbeb-4031-bcbb-1c2ab5c1186a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Palette">
+      <UniqueIdentifier>{7a06663e-4f35-4e42-a3d6-42a47bb6b142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Map">
+      <UniqueIdentifier>{0a73de8f-dcb7-4573-8104-e681593733ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Toolkit">
+      <UniqueIdentifier>{85c96790-88fd-4219-a5e1-635e9add543f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Controller">
+      <UniqueIdentifier>{ad5fb77b-a97a-4147-94dc-038bbc133d7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{ffebaed4-26cd-484b-a35e-a72dd8617f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Widgets">
+      <UniqueIdentifier>{0d261e2c-08c4-4e42-a6fc-9980fac076aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Dialogs">
+      <UniqueIdentifier>{006b82d3-7b2b-41ef-bfd8-8f98867cab7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Dialogs\Lobby">
+      <UniqueIdentifier>{7c98108b-ad5b-4712-8824-40ac9b734ff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Dialogs\Addon">
+      <UniqueIdentifier>{994675eb-e9db-4699-a08a-d29248d169e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Dialogs\Editor">
+      <UniqueIdentifier>{05bbc254-2f84-4980-abf4-8532d7f50e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Dialogs\Multiplayer">
+      <UniqueIdentifier>{20b434e4-97af-4f8a-859d-7fcdc1b8a49b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Auxiliary">
+      <UniqueIdentifier>{fa68ad1b-b8d0-4283-a19a-70161c6566b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Auxiliary\Iterator">
+      <UniqueIdentifier>{75251445-952a-46bd-80e8-2f6c70e270da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Core">
+      <UniqueIdentifier>{8759e13f-230e-4c54-ae07-422e3769781a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Core\Event">
+      <UniqueIdentifier>{00be9260-c50d-482e-aa57-51094a0a0815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Core\Placer">
+      <UniqueIdentifier>{d456620a-4318-4016-9207-ea1063c89053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Core\Window_Builder">
+      <UniqueIdentifier>{8c4c2a7a-1463-42c4-ba90-4c20ffc2e1e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pathfind">
+      <UniqueIdentifier>{39a22192-c84d-4dc1-9c97-f04014a0ef76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting">
+      <UniqueIdentifier>{19bbe43e-9121-4967-a577-f86104f79dbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting\Plugins">
+      <UniqueIdentifier>{3bcf72b3-a8f8-40e9-9b59-dc0a1aca00dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Storyscreen">
+      <UniqueIdentifier>{25899c1a-5d0e-4563-b110-41c4c7aff02e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Whiteboard">
+      <UniqueIdentifier>{88339068-7f62-47ef-b061-579a268b9941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widgets">
+      <UniqueIdentifier>{6ca1d8d5-bafa-4e1c-a13c-aae7d5b33b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{23b03f49-f123-4efc-9a5d-4434fb3ee9cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{85d76662-28d2-49ef-a576-a70eca88e5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\schema">
+      <UniqueIdentifier>{6434b92d-5101-4e6a-8e78-dfb7eaac992c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{e220d025-af4f-4012-9895-ed91e90434b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Gui">
+      <UniqueIdentifier>{40352cdb-d635-4ae3-a2c0-4581efe52072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Utils">
+      <UniqueIdentifier>{dd6417d8-266f-4e59-b5a5-a4a03b7f7ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actions">
+      <UniqueIdentifier>{624aae9c-a1fc-4c7c-ae8f-a9ec99a3fdb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generators">
+      <UniqueIdentifier>{1e09350f-0dd9-40c8-935f-0e7bfd458f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game_Events">
+      <UniqueIdentifier>{c90c3406-e96e-4f3f-bd69-a4235bed3f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hotkeys">
+      <UniqueIdentifier>{cb243234-5c4f-4232-b452-ebe6ac3c1625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDL">
+      <UniqueIdentifier>{5170f2b8-0200-477b-819a-58003d92c966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game_Initialization">
+      <UniqueIdentifier>{16b5b067-7f62-4c9f-9ef3-0ce6229cdc93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Xbrz">
+      <UniqueIdentifier>{3038e456-c4b3-4512-a03c-c6f102161bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desktop">
+      <UniqueIdentifier>{ffdceb6c-8c83-4d5f-8bce-a2b63d591b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Help">
+      <UniqueIdentifier>{e516ff14-a6bd-4547-a9f7-bf2a25bd8b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Formula">
+      <UniqueIdentifier>{a08223d8-5001-464a-a3e7-0789f732d8f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain">
+      <UniqueIdentifier>{452ce2e5-1944-414f-aee6-7ccd188a496c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Units">
+      <UniqueIdentifier>{b8e3886b-4e28-4452-b4e3-31822f7fd043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{ae9e9e4b-1ccd-432c-b610-d18ceb00b31d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\packaging\windows\wesnoth.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\animated.tpp">
+      <Filter>Others</Filter>
+    </None>
+    <None Include="..\..\src\filesystem_win32.ii">
+      <Filter>Others</Filter>
+    </None>
+    <None Include="..\..\src\language_win32.ii">
+      <Filter>Others</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\addon\client.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\addon\info.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\addon\manager.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\addon\manager_ui.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\addon\state.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\addon\validation.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\actions.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\configuration.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\contexts.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\game_info.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\gamestate_observer.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\manager.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\registry.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\simulated_actions.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\testing.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\ai.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\aspect.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\component.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\contexts.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\engine.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\goal.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\rca.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\composite\stage.cpp">
+      <Filter>AI\composite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\aspect_attacks.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\attack.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\ca.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\ca_move_to_targets.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\contexts.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\engine_cpp.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\recruitment.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\default\stage_rca.cpp">
+      <Filter>AI\default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\ai.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\callable_objects.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\candidates.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\engine_fai.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\function_table.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\stage_side_formulas.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\formula\stage_unit_formulas.cpp">
+      <Filter>AI\formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\lua\aspect_advancements.cpp">
+      <Filter>AI\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\lua\core.cpp">
+      <Filter>AI\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\lua\engine_lua.cpp">
+      <Filter>AI\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ai\lua\lua_object.cpp">
+      <Filter>AI\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\editor_display.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\editor_main.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\editor_preferences.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\action.cpp">
+      <Filter>Editor\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\action_item.cpp">
+      <Filter>Editor\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\action_label.cpp">
+      <Filter>Editor\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\action_select.cpp">
+      <Filter>Editor\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\action_unit.cpp">
+      <Filter>Editor\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\action_village.cpp">
+      <Filter>Editor\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\mouse\mouse_action.cpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\mouse\mouse_action_item.cpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\mouse\mouse_action_map_label.cpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\mouse\mouse_action_select.cpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\mouse\mouse_action_unit.cpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\action\mouse\mouse_action_village.cpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\editor_palettes.cpp">
+      <Filter>Editor\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\item_palette.cpp">
+      <Filter>Editor\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\palette_manager.cpp">
+      <Filter>Editor\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\terrain_palettes.cpp">
+      <Filter>Editor\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\tristate_button.cpp">
+      <Filter>Editor\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\unit_palette.cpp">
+      <Filter>Editor\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\map\context_manager.cpp">
+      <Filter>Editor\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\map\editor_map.cpp">
+      <Filter>Editor\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\map\map_context.cpp">
+      <Filter>Editor\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\map\map_fragment.cpp">
+      <Filter>Editor\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\toolkit\brush.cpp">
+      <Filter>Editor\Toolkit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\toolkit\editor_toolkit.cpp">
+      <Filter>Editor\Toolkit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\editor\controller\editor_controller.cpp">
+      <Filter>Editor\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\button.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\combobox.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\container.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\control.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\debug.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\drawing.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\generator.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\grid.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\helper.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\horizontal_scrollbar.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\image.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\label.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\list.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\listbox.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\matrix.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\minimap.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\multi_page.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\pane.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\panel.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\password_box.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\progress_bar.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\repeating_button.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\scroll_label.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\scrollbar.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\scrollbar_container.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\scrollbar_panel.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\settings.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\slider.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\spacer.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\stacked_widget.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\text.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\text_box.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\toggle_button.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\toggle_panel.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\tree_view.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\tree_view_node.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\unit_preview_pane.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\vertical_scrollbar.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\viewport.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\widget.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\window.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\advanced_graphics_options.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\campaign_difficulty.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\campaign_selection.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\campaign_settings.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\chat_log.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\core_selection.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\debug_clock.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\depcheck_confirm_change.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\depcheck_select_new.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\drop_down_list.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\edit_label.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\edit_text.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\formula_debugger.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_cache_options.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_delete.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_load.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_save.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\label_settings.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\language_selection.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\loadscreen.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\lua_interpreter.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\message.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\network_transmission.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\popup.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\preferences_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\screenshot_notification.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\select_orb_colors.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\simple_item_selector.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\theme_list.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\tip.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\title_screen.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\transient_message.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_attack.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_create.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_recruit.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\wml_error.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\wml_message.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\lobby\data.cpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\lobby\info.cpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\lobby\lobby.cpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\lobby\player_info.cpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\connect.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\description.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\filter_options.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\list.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\uninstall_list.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\custom_tod.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\edit_label.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\edit_scenario.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\edit_side.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\generate_map.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\new_map.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\resize_map.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\set_starting_position.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_connect.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_create_game.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_login.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_method_selection.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\old_markup.cpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\iterator\iterator.cpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_grid.cpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_widget.cpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\canvas.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\log.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\placer.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\point.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\timer.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\tips.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\widget_definition.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\window_builder.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\event\dispatcher.cpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\event\distributor.cpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\event\handler.cpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\placer\horizontal_list.cpp">
+      <Filter>Gui\Core\Placer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\placer\vertical_list.cpp">
+      <Filter>Gui\Core\Placer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\window_builder\helper.cpp">
+      <Filter>Gui\Core\Window_Builder</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\window_builder\instance.cpp">
+      <Filter>Gui\Core\Window_Builder</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\pathfind\astarsearch.cpp">
+      <Filter>Pathfind</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\pathfind\pathfind.cpp">
+      <Filter>Pathfind</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\pathfind\teleport.cpp">
+      <Filter>Pathfind</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\application_lua_kernel.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\debug_lua.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\game_lua_kernel.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_api.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_common.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_cpp_function.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_fileops.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_gui2.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_kernel_base.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_map_location_ops.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_race.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_rng.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_team.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_types.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_unit_type.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\mapgen_lua_kernel.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\plugins\context.cpp">
+      <Filter>Scripting\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\plugins\manager.cpp">
+      <Filter>Scripting\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\storyscreen\controller.cpp">
+      <Filter>Storyscreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\storyscreen\interface.cpp">
+      <Filter>Storyscreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\storyscreen\part.cpp">
+      <Filter>Storyscreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\storyscreen\render.cpp">
+      <Filter>Storyscreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\action.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\attack.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\highlighter.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\manager.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\mapbuilder.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\move.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\recall.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\recruit.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\side_actions.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\suppose_dead.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\whiteboard\utility.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\button.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\combo.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\combo_drag.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\drop_target.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\file_menu.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\label.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\menu.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\menu_style.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\multimenu.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\progressbar.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\scrollarea.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\scrollbar.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\scrollpane.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\slider.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\textbox.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\widgets\widget.cpp">
+      <Filter>Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\make_enum.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\sha1.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tools\schema\tag.cpp">
+      <Filter>tools\schema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\floating_point_emulation.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\main.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_addons.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_commandline_options.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_config.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_config_cache.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_filesystem.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_formula_ai.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_formula_function.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_image_modifications.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_lexical_cast.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_make_enum.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_map_location.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_mp_connect.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_network_worker.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_recall_list.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_rng.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_sdl_utils.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_serialization.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_team.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_unit_map.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_util.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_version.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_whiteboard_side_actions.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\gui\fire_event.cpp">
+      <Filter>Tests\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\gui\iterator.cpp">
+      <Filter>Tests\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\gui\test_drop_target.cpp">
+      <Filter>Tests\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\gui\test_gui2.cpp">
+      <Filter>Tests\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\gui\test_save_dialog.cpp">
+      <Filter>Tests\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\gui\visitor.cpp">
+      <Filter>Tests\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\utils\fake_display.cpp">
+      <Filter>Tests\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\utils\fake_event_source.cpp">
+      <Filter>Tests\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\utils\game_config_manager.cpp">
+      <Filter>Tests\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\utils\play_scenario.cpp">
+      <Filter>Tests\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\attack.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\create.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\heal.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\move.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\shroud_clearing_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo_dismiss_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo_move_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo_recall_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo_recruit_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\undo_update_shroud_action.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\unit_creator.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\vision.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\generators\cave_map_generator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\generators\default_map_generator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\generators\default_map_generator_job.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\generators\lua_map_generator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\generators\map_create.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\generators\map_generator.cpp">
+      <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\action_wml.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\conditional_wml.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\entity_location.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\handlers.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\manager.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\manager_impl.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\menu_item.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\pump.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\wmi_container.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\command_executor.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_command.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_handler.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_handler_mp.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_handler_sp.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_item.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_manager.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hotkey\hotkey_preferences_display.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\alpha.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\exception.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\image.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\rect.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\SDL_SavePNG\savepng.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\utils.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\sdl\window.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\configure_engine.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\connect_engine.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\create_engine.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\depcheck.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\flg_manager.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\mp_game_utils.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\mp_options.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer_configure.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer_connect.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer_create.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer_lobby.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer_ui.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\multiplayer_wait.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\playcampaign.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\singleplayer.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xBRZ\xbrz.cpp">
+      <Filter>Xbrz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\clipboard.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\notifications.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\open.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\version.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\desktop\windows_tray_notification.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_browser.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_button.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_impl.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_menu.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_text_area.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\help\help_topic_generators.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\callable_objects.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\debugger.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\debugger_fwd.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\formula.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\function.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\string_utils.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\tokenizer.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\formula\variant.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\terrain\builder.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\terrain\filter.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\terrain\terrain.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\terrain\translation.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\terrain\type_data.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\abilities.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\animation.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\animation_component.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\attack_type.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\drawer.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\filter.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\formula_manager.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\frame.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\helper.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\id.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\map.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\types.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\udisplay.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\unit.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\map\label.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\map\location.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\map\map.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\about.cpp" />
+    <ClCompile Include="..\..\src\animated_game.cpp" />
+    <ClCompile Include="..\..\src\arrow.cpp" />
+    <ClCompile Include="..\..\src\attack_prediction.cpp" />
+    <ClCompile Include="..\..\src\attack_prediction_display.cpp" />
+    <ClCompile Include="..\..\src\boilerplate-header.cpp" />
+    <ClCompile Include="..\..\src\build_info.cpp" />
+    <ClCompile Include="..\..\src\carryover.cpp" />
+    <ClCompile Include="..\..\src\commandline_options.cpp" />
+    <ClCompile Include="..\..\src\config_cache.cpp" />
+    <ClCompile Include="..\..\src\construct_dialog.cpp" />
+    <ClCompile Include="..\..\src\controller_base.cpp" />
+    <ClCompile Include="..\..\src\countdown_clock.cpp" />
+    <ClCompile Include="..\..\src\cursor.cpp" />
+    <ClCompile Include="..\..\src\dialogs.cpp" />
+    <ClCompile Include="..\..\src\display.cpp" />
+    <ClCompile Include="..\..\src\display_chat_manager.cpp" />
+    <ClCompile Include="..\..\src\display_context.cpp" />
+    <ClCompile Include="..\..\src\events.cpp" />
+    <ClCompile Include="..\..\src\fake_unit_manager.cpp" />
+    <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
+    <ClCompile Include="..\..\src\filechooser.cpp" />
+    <ClCompile Include="..\..\src\floating_label.cpp" />
+    <ClCompile Include="..\..\src\floating_textbox.cpp" />
+    <ClCompile Include="..\..\src\font.cpp" />
+    <ClCompile Include="..\..\src\format_time_summary.cpp" />
+    <ClCompile Include="..\..\src\game_board.cpp" />
+    <ClCompile Include="..\..\src\game_classification.cpp" />
+    <ClCompile Include="..\..\src\game_config_manager.cpp" />
+    <ClCompile Include="..\..\src\game_data.cpp" />
+    <ClCompile Include="..\..\src\game_display.cpp" />
+    <ClCompile Include="..\..\src\game_end_exceptions.cpp" />
+    <ClCompile Include="..\..\src\game_errors.cpp" />
+    <ClCompile Include="..\..\src\game_launcher.cpp" />
+    <ClCompile Include="..\..\src\game_preferences.cpp" />
+    <ClCompile Include="..\..\src\game_state.cpp" />
+    <ClCompile Include="..\..\src\generic_event.cpp" />
+    <ClCompile Include="..\..\src\halo.cpp" />
+    <ClCompile Include="..\..\src\hash.cpp" />
+    <ClCompile Include="..\..\src\image.cpp" />
+    <ClCompile Include="..\..\src\image_modifications.cpp" />
+    <ClCompile Include="..\..\src\intro.cpp" />
+    <ClCompile Include="..\..\src\joystick.cpp" />
+    <ClCompile Include="..\..\src\key.cpp" />
+    <ClCompile Include="..\..\src\language.cpp" />
+    <ClCompile Include="..\..\src\leader_scroll_dialog.cpp" />
+    <ClCompile Include="..\..\src\lobby_preferences.cpp" />
+    <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
+    <ClCompile Include="..\..\src\marked-up_text.cpp" />
+    <ClCompile Include="..\..\src\md5.cpp" />
+    <ClCompile Include="..\..\src\menu_events.cpp" />
+    <ClCompile Include="..\..\src\minimap.cpp" />
+    <ClCompile Include="..\..\src\mouse_events.cpp" />
+    <ClCompile Include="..\..\src\mouse_handler_base.cpp" />
+    <ClCompile Include="..\..\src\movetype.cpp" />
+    <ClCompile Include="..\..\src\mp_game_settings.cpp" />
+    <ClCompile Include="..\..\src\mp_ui_alerts.cpp" />
+    <ClCompile Include="..\..\src\mt_rng.cpp" />
+    <ClCompile Include="..\..\src\network_asio.cpp" />
+    <ClCompile Include="..\..\src\pathutils.cpp" />
+    <ClCompile Include="..\..\src\persist_context.cpp" />
+    <ClCompile Include="..\..\src\persist_manager.cpp" />
+    <ClCompile Include="..\..\src\persist_var.cpp" />
+    <ClCompile Include="..\..\src\play_controller.cpp" />
+    <ClCompile Include="..\..\src\playmp_controller.cpp" />
+    <ClCompile Include="..\..\src\playsingle_controller.cpp" />
+    <ClCompile Include="..\..\src\playturn.cpp" />
+    <ClCompile Include="..\..\src\playturn_network_adapter.cpp" />
+    <ClCompile Include="..\..\src\preferences.cpp" />
+    <ClCompile Include="..\..\src\preferences_display.cpp" />
+    <ClCompile Include="..\..\src\quit_confirmation.cpp" />
+    <ClCompile Include="..\..\src\race.cpp" />
+    <ClCompile Include="..\..\src\random_new.cpp" />
+    <ClCompile Include="..\..\src\random_new_deterministic.cpp" />
+    <ClCompile Include="..\..\src\random_new_synced.cpp" />
+    <ClCompile Include="..\..\src\recall_list_manager.cpp" />
+    <ClCompile Include="..\..\src\replay.cpp" />
+    <ClCompile Include="..\..\src\replay_controller.cpp" />
+    <ClCompile Include="..\..\src\replay_helper.cpp" />
+    <ClCompile Include="..\..\src\replay_recorder_base.cpp" />
+    <ClCompile Include="..\..\src\reports.cpp" />
+    <ClCompile Include="..\..\src\resources.cpp" />
+    <ClCompile Include="..\..\src\save_blocker.cpp" />
+    <ClCompile Include="..\..\src\save_index.cpp" />
+    <ClCompile Include="..\..\src\saved_game.cpp" />
+    <ClCompile Include="..\..\src\savegame.cpp" />
+    <ClCompile Include="..\..\src\seed_rng.cpp" />
+    <ClCompile Include="..\..\src\settings.cpp" />
+    <ClCompile Include="..\..\src\show_dialog.cpp" />
+    <ClCompile Include="..\..\src\side_filter.cpp" />
+    <ClCompile Include="..\..\src\sound.cpp" />
+    <ClCompile Include="..\..\src\sound_music_track.cpp" />
+    <ClCompile Include="..\..\src\soundsource.cpp" />
+    <ClCompile Include="..\..\src\statistics.cpp" />
+    <ClCompile Include="..\..\src\statistics_dialog.cpp" />
+    <ClCompile Include="..\..\src\strftime.cpp" />
+    <ClCompile Include="..\..\src\synced_checkup.cpp" />
+    <ClCompile Include="..\..\src\synced_commands.cpp" />
+    <ClCompile Include="..\..\src\synced_context.cpp" />
+    <ClCompile Include="..\..\src\synced_user_choice.cpp" />
+    <ClCompile Include="..\..\src\syncmp_handler.cpp" />
+    <ClCompile Include="..\..\src\team.cpp" />
+    <ClCompile Include="..\..\src\teambuilder.cpp" />
+    <ClCompile Include="..\..\src\text.cpp" />
+    <ClCompile Include="..\..\src\theme.cpp" />
+    <ClCompile Include="..\..\src\time_of_day.cpp" />
+    <ClCompile Include="..\..\src\tod_manager.cpp" />
+    <ClCompile Include="..\..\src\tooltips.cpp" />
+    <ClCompile Include="..\..\src\util.cpp" />
+    <ClCompile Include="..\..\src\variable.cpp" />
+    <ClCompile Include="..\..\src\variable_info.cpp" />
+    <ClCompile Include="..\..\src\video.cpp" />
+    <ClCompile Include="..\..\src\wesnoth.cpp" />
+    <ClCompile Include="..\..\src\wmi_pager.cpp" />
+    <ClCompile Include="..\..\src\wml_exception.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\addon\client.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\addon\info.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\addon\manager.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\addon\manager_ui.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\addon\state.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\addon\validation.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\actions.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\configuration.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\contexts.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\game_info.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\gamestate_observer.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\manager.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\registry.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\simulated_actions.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\testing.hpp">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\ai.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\aspect.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\component.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\contexts.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\engine.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\goal.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\property_handler.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\rca.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\stage.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\composite\value_translator.hpp">
+      <Filter>AI\composite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\aspect_attacks.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\ca.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\ca_move_to_targets.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\contexts.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\engine_cpp.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\recruitment.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\default\stage_rca.hpp">
+      <Filter>AI\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\ai.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\callable_objects.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\candidates.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\engine_fai.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\function_table.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\stage_side_formulas.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\formula\stage_unit_formulas.hpp">
+      <Filter>AI\formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\lua\aspect_advancements.hpp">
+      <Filter>AI\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\lua\core.hpp">
+      <Filter>AI\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\lua\engine_lua.hpp">
+      <Filter>AI\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ai\lua\lua_object.hpp">
+      <Filter>AI\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\editor_common.hpp">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\editor_display.hpp">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\editor_main.hpp">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\editor_preferences.hpp">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action_base.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action_item.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action_label.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action_select.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action_unit.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\action_village.hpp">
+      <Filter>Editor\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\mouse\mouse_action.hpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\mouse\mouse_action_item.hpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\mouse\mouse_action_map_label.hpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\mouse\mouse_action_select.hpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\mouse\mouse_action_unit.hpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\action\mouse\mouse_action_village.hpp">
+      <Filter>Editor\Action\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\common_palette.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\editor_palettes.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\item_palette.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\palette_manager.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\terrain_palettes.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\tristate_button.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\palette\unit_palette.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\map\context_manager.hpp">
+      <Filter>Editor\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\map\editor_map.hpp">
+      <Filter>Editor\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\map\map_context.hpp">
+      <Filter>Editor\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\map\map_fragment.hpp">
+      <Filter>Editor\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\toolkit\brush.hpp">
+      <Filter>Editor\Toolkit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\toolkit\editor_toolkit.hpp">
+      <Filter>Editor\Toolkit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\editor\controller\editor_controller.hpp">
+      <Filter>Editor\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\button.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\clickable.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\combobox.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\container.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\control.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\debug.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\drawing.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\event_executor.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\generator.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\generator_private.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\grid.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\grid_private.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\group.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\helper.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\horizontal_scrollbar.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\image.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\integer_selector.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\label.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\list.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\listbox.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\matrix.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\minimap.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\multi_page.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\pane.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\panel.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\password_box.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\progress_bar.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\repeating_button.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\scroll_label.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\scrollbar.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\scrollbar_container.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\scrollbar_container_private.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\scrollbar_panel.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\selectable.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\settings.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\slider.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\spacer.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\stacked_widget.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\text.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\text_box.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\toggle_button.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\toggle_panel.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\tree_view.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\tree_view_node.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\unit_preview_pane.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\vertical_scrollbar.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\viewport.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\widget.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\window.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\window_private.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\advanced_graphics_options.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\campaign_difficulty.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\campaign_selection.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\campaign_settings.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\chat_log.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\core_selection.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\debug_clock.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\depcheck_confirm_change.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\depcheck_select_new.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\drop_down_list.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\edit_label.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\edit_text.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\formula_debugger.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_cache_options.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_delete.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_load.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_save.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\helper.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\language_selection.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\loadscreen.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\lua_interpreter.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\message.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\popup.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\preferences_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\screenshot_notification.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\select_orb_colors.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\simple_item_selector.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\theme_list.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\tip.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\title_screen.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\transient_message.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_attack.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_create.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_recruit.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\wml_error.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\wml_message.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\lobby\data.hpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\lobby\info.hpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\lobby\lobby.hpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\lobby\player_info.hpp">
+      <Filter>Gui\Dialogs\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\connect.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\description.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\filter_options.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\list.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\custom_tod.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\edit_label.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\edit_scenario.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\edit_side.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\generate_map.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\new_map.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\resize_map.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\set_starting_position.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_connect.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_login.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_method_selection.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\field-fwd.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\field.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\filter.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\find_widget.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\formula.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\old_markup.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\exception.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\iterator.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\policy_order.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\policy_visit.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_grid.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_widget.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\canvas.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\layout_exception.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\log.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\notifiee.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\notifier.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\placer.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\point.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\register_widget.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\timer.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\tips.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\widget_definition.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\window_builder.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\event\dispatcher.hpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\event\dispatcher_private.hpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\event\distributor.hpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\event\handler.hpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\event\message.hpp">
+      <Filter>Gui\Core\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\placer\horizontal_list.hpp">
+      <Filter>Gui\Core\Placer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\placer\vertical_list.hpp">
+      <Filter>Gui\Core\Placer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\window_builder\helper.hpp">
+      <Filter>Gui\Core\Window_Builder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\window_builder\instance.hpp">
+      <Filter>Gui\Core\Window_Builder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pathfind\pathfind.hpp">
+      <Filter>Pathfind</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pathfind\teleport.hpp">
+      <Filter>Pathfind</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\application_lua_kernel.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\debug_lua.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_api.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_common.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_cpp_function.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_fileops.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_gui2.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_kernel_base.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_map_location_ops.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_pathfind_cost_calculator.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_race.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_rng.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_team.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_types.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_unit_type.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\mapgen_lua_kernel.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\push_check.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\plugins\context.hpp">
+      <Filter>Scripting\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\plugins\manager.hpp">
+      <Filter>Scripting\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\storyscreen\controller.hpp">
+      <Filter>Storyscreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\storyscreen\interface.hpp">
+      <Filter>Storyscreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\storyscreen\part.hpp">
+      <Filter>Storyscreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\storyscreen\render.hpp">
+      <Filter>Storyscreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\action.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\attack.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\highlighter.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\manager.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\mapbuilder.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\move.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\recall.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\recruit.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\side_actions.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\suppose_dead.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\typedefs.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\utility.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\whiteboard\visitor.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\button.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\combo.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\combo_drag.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\drop_target.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\file_menu.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\label.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\menu.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\multimenu.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\progressbar.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\scrollarea.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\scrollbar.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\scrollpane.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\slider.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\textbox.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\widgets\widget.hpp">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\boost_function_guarded.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\const_clone.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\iterable_pair.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\iterator.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\make_enum.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\reference_counter.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\sha1.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\shared_object.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\smart_list.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\schema\tag.hpp">
+      <Filter>tools\schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\attack.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\create.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\heal.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\move.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\shroud_clearing_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo_dismiss_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo_move_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo_recall_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo_recruit_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\undo_update_shroud_action.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\unit_creator.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\vision.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\generators\cave_map_generator.hpp">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\generators\default_map_generator.hpp">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\generators\default_map_generator_job.hpp">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\generators\lua_map_generator.hpp">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\generators\map_create.hpp">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\generators\map_generator.hpp">
+      <Filter>Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\action_wml.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\conditional_wml.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\entity_location.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\handlers.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\manager.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\manager_impl.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\menu_item.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\pump.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\wmi_container.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\command_executor.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\hotkey_command.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\hotkey_handler.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\hotkey_handler_mp.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\hotkey_handler_sp.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\hotkey_item.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\alpha.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\compat.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\exception.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\gpu.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\image.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\rect.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\SDL_SavePNG\savepng.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\utils.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\window.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\configure_engine.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\connect_engine.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\create_engine.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\depcheck.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\flg_manager.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\lobby_reload_request_exception.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\mp_game_utils.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\mp_options.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer_configure.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer_connect.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer_create.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer_lobby.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer_ui.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\multiplayer_wait.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\playcampaign.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\singleplayer.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xBRZ\config.hpp">
+      <Filter>Xbrz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xBRZ\xbrz.hpp">
+      <Filter>Xbrz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\clipboard.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\notifications.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\open.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\version.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_browser.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_button.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_impl.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_menu.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_text_area.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\help\help_topic_generators.hpp">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\callable.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\callable_fwd.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\callable_objects.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\debugger.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\debugger_fwd.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\formula.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\formula_fwd.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\function.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\string_utils.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\tokenizer.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\formula\variant.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\builder.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\filter.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\terrain.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\translation.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\terrain\type_data.hpp">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\abilities.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\animation.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\animation_component.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\attack_type.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\drawer.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\filter.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\formula_manager.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\frame.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\helper.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\id.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\map.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\ptr.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\types.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\udisplay.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\unit.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\map\exception.hpp">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\map\label.hpp">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\map\location.hpp">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\map\map.hpp">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\about.hpp" />
+    <ClInclude Include="..\..\src\animated.hpp" />
+    <ClInclude Include="..\..\src\array.hpp" />
+    <ClInclude Include="..\..\src\arrow.hpp" />
+    <ClInclude Include="..\..\src\asserts.hpp" />
+    <ClInclude Include="..\..\src\attack_prediction.hpp" />
+    <ClInclude Include="..\..\src\attack_prediction_display.hpp" />
+    <ClInclude Include="..\..\src\build_info.hpp" />
+    <ClInclude Include="..\..\src\carryover.hpp" />
+    <ClInclude Include="..\..\src\chat_events.hpp" />
+    <ClInclude Include="..\..\src\commandline_options.hpp" />
+    <ClInclude Include="..\..\src\config.hpp" />
+    <ClInclude Include="..\..\src\config_cache.hpp" />
+    <ClInclude Include="..\..\src\construct_dialog.hpp" />
+    <ClInclude Include="..\..\src\controller_base.hpp" />
+    <ClInclude Include="..\..\src\countdown_clock.hpp" />
+    <ClInclude Include="..\..\src\cursor.hpp" />
+    <ClInclude Include="..\..\src\dialogs.hpp" />
+    <ClInclude Include="..\..\src\display.hpp" />
+    <ClInclude Include="..\..\src\display_chat_manager.hpp" />
+    <ClInclude Include="..\..\src\display_context.hpp" />
+    <ClInclude Include="..\..\src\events.hpp" />
+    <ClInclude Include="..\..\src\exceptions.hpp" />
+    <ClInclude Include="..\..\src\fake_unit_manager.hpp" />
+    <ClInclude Include="..\..\src\fake_unit_ptr.hpp" />
+    <ClInclude Include="..\..\src\filechooser.hpp" />
+    <ClInclude Include="..\..\src\filesystem.hpp" />
+    <ClInclude Include="..\..\src\floating_label.hpp" />
+    <ClInclude Include="..\..\src\floating_point_emulation.hpp" />
+    <ClInclude Include="..\..\src\floating_textbox.hpp" />
+    <ClInclude Include="..\..\src\font.hpp" />
+    <ClInclude Include="..\..\src\format_time_summary.hpp" />
+    <ClInclude Include="..\..\src\formatter.hpp" />
+    <ClInclude Include="..\..\src\game_board.hpp" />
+    <ClInclude Include="..\..\src\game_classification.hpp" />
+    <ClInclude Include="..\..\src\game_config.hpp" />
+    <ClInclude Include="..\..\src\game_config_manager.hpp" />
+    <ClInclude Include="..\..\src\game_data.hpp" />
+    <ClInclude Include="..\..\src\game_display.hpp" />
+    <ClInclude Include="..\..\src\game_end_exceptions.hpp" />
+    <ClInclude Include="..\..\src\game_errors.hpp" />
+    <ClInclude Include="..\..\src\game_launcher.hpp" />
+    <ClInclude Include="..\..\src\game_preferences.hpp" />
+    <ClInclude Include="..\..\src\game_state.hpp" />
+    <ClInclude Include="..\..\src\generic_event.hpp" />
+    <ClInclude Include="..\..\src\gettext.hpp" />
+    <ClInclude Include="..\..\src\global.hpp" />
+    <ClInclude Include="..\..\src\halo.hpp" />
+    <ClInclude Include="..\..\src\hash.hpp" />
+    <ClInclude Include="..\..\src\image.hpp" />
+    <ClInclude Include="..\..\src\image_modifications.hpp" />
+    <ClInclude Include="..\..\src\intro.hpp" />
+    <ClInclude Include="..\..\src\joystick.hpp" />
+    <ClInclude Include="..\..\src\key.hpp" />
+    <ClInclude Include="..\..\src\language.hpp" />
+    <ClInclude Include="..\..\src\leader_scroll_dialog.hpp" />
+    <ClInclude Include="..\..\src\lobby_preferences.hpp" />
+    <ClInclude Include="..\..\src\log.hpp" />
+    <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
+    <ClInclude Include="..\..\src\marked-up_text.hpp" />
+    <ClInclude Include="..\..\src\md5.hpp" />
+    <ClInclude Include="..\..\src\menu_events.hpp" />
+    <ClInclude Include="..\..\src\minimap.hpp" />
+    <ClInclude Include="..\..\src\mouse_events.hpp" />
+    <ClInclude Include="..\..\src\mouse_handler_base.hpp" />
+    <ClInclude Include="..\..\src\movetype.hpp" />
+    <ClInclude Include="..\..\src\mp_game_settings.hpp" />
+    <ClInclude Include="..\..\src\mp_ui_alerts.hpp" />
+    <ClInclude Include="..\..\src\mt_rng.hpp" />
+    <ClInclude Include="..\..\src\multiplayer_error_codes.hpp" />
+    <ClInclude Include="..\..\src\network.hpp" />
+    <ClInclude Include="..\..\src\network_asio.hpp" />
+    <ClInclude Include="..\..\src\network_worker.hpp" />
+    <ClInclude Include="..\..\src\overlay.hpp" />
+    <ClInclude Include="..\..\src\pathutils.hpp" />
+    <ClInclude Include="..\..\src\persist_context.hpp" />
+    <ClInclude Include="..\..\src\persist_manager.hpp" />
+    <ClInclude Include="..\..\src\persist_var.hpp" />
+    <ClInclude Include="..\..\src\play_controller.hpp" />
+    <ClInclude Include="..\..\src\playmp_controller.hpp" />
+    <ClInclude Include="..\..\src\playsingle_controller.hpp" />
+    <ClInclude Include="..\..\src\playturn.hpp" />
+    <ClInclude Include="..\..\src\playturn_network_adapter.hpp" />
+    <ClInclude Include="..\..\src\preferences.hpp" />
+    <ClInclude Include="..\..\src\preferences_display.hpp" />
+    <ClInclude Include="..\..\src\quit_confirmation.hpp" />
+    <ClInclude Include="..\..\src\race.hpp" />
+    <ClInclude Include="..\..\src\random_new.hpp" />
+    <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
+    <ClInclude Include="..\..\src\random_new_synced.hpp" />
+    <ClInclude Include="..\..\src\recall_list_manager.hpp" />
+    <ClInclude Include="..\..\src\replay.hpp" />
+    <ClInclude Include="..\..\src\replay_controller.hpp" />
+    <ClInclude Include="..\..\src\replay_helper.hpp" />
+    <ClInclude Include="..\..\src\replay_recorder_base.hpp" />
+    <ClInclude Include="..\..\src\reports.hpp" />
+    <ClInclude Include="..\..\src\resources.hpp" />
+    <ClInclude Include="..\..\src\save_blocker.hpp" />
+    <ClInclude Include="..\..\src\save_index.hpp" />
+    <ClInclude Include="..\..\src\saved_game.hpp" />
+    <ClInclude Include="..\..\src\savegame.hpp" />
+    <ClInclude Include="..\..\src\savegame_config.hpp" />
+    <ClInclude Include="..\..\src\scoped_resource.hpp" />
+    <ClInclude Include="..\..\src\seed_rng.hpp" />
+    <ClInclude Include="..\..\src\settings.hpp" />
+    <ClInclude Include="..\..\src\show_dialog.hpp" />
+    <ClInclude Include="..\..\src\side_filter.hpp" />
+    <ClInclude Include="..\..\src\sound.hpp" />
+    <ClInclude Include="..\..\src\sound_music_track.hpp" />
+    <ClInclude Include="..\..\src\soundsource.hpp" />
+    <ClInclude Include="..\..\src\statistics.hpp" />
+    <ClInclude Include="..\..\src\statistics_dialog.hpp" />
+    <ClInclude Include="..\..\src\strftime.hpp" />
+    <ClInclude Include="..\..\src\synced_checkup.hpp" />
+    <ClInclude Include="..\..\src\synced_commands.hpp" />
+    <ClInclude Include="..\..\src\synced_context.hpp" />
+    <ClInclude Include="..\..\src\synced_user_choice.hpp" />
+    <ClInclude Include="..\..\src\syncmp_handler.hpp" />
+    <ClInclude Include="..\..\src\team.hpp" />
+    <ClInclude Include="..\..\src\teambuilder.hpp" />
+    <ClInclude Include="..\..\src\text.hpp" />
+    <ClInclude Include="..\..\src\theme.hpp" />
+    <ClInclude Include="..\..\src\thread.hpp" />
+    <ClInclude Include="..\..\src\time_of_day.hpp" />
+    <ClInclude Include="..\..\src\tod_manager.hpp" />
+    <ClInclude Include="..\..\src\tooltips.hpp" />
+    <ClInclude Include="..\..\src\tstring.hpp" />
+    <ClInclude Include="..\..\src\util.hpp" />
+    <ClInclude Include="..\..\src\variable.hpp" />
+    <ClInclude Include="..\..\src\variable_info.hpp" />
+    <ClInclude Include="..\..\src\variable_info_detail.hpp" />
+    <ClInclude Include="..\..\src\version.hpp" />
+    <ClInclude Include="..\..\src\video.hpp" />
+    <ClInclude Include="..\..\src\wesconfig.h" />
+    <ClInclude Include="..\..\src\wmi_pager.hpp" />
+    <ClInclude Include="..\..\src\wml_exception.hpp" />
+    <ClInclude Include="..\..\src\wml_separators.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
+      <Filter>Tests</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\tests\utils\auto_parameterized.hpp">
+      <Filter>Tests\Utils</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\tests\utils\fake_display.hpp">
+      <Filter>Tests\Utils</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\tests\utils\fake_event_source.hpp">
+      <Filter>Tests\Utils</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\tests\utils\game_config_manager.hpp">
+      <Filter>Tests\Utils</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\tests\utils\play_scenario.hpp">
+      <Filter>Tests\Utils</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\src\tests\utils\predicate.hpp">
+      <Filter>Tests\Utils</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -31,7 +31,6 @@ PACKAGE.vcproj
 ZERO_CHECK.vcproj
 uninstall.vcproj
 projectfiles/VC*/*.user
-projectfiles/VC[12]*
 src/**/*.vcproj
 /WindowsTimeout.ilk
 /WindowsTimeout.pdb
@@ -54,6 +53,15 @@ projectfiles/**/*.depend
 projectfiles/**/*.layout
 projectfiles/**/*_build_log.html
 projectfiles/**/*objs*
+
+# Visual Studio
+projectfiles/VC*/*sdf
+projectfiles/VC*/*.user
+projectfiles/VC*/*.suo
+projectfiles/VC*/*.aps
+projectfiles/VC*/*.aps
+projectfiles/VC*/Debug/
+projectfiles/VC*/Release/
 
 # eclipse
 .settings
