@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:01 UTC\n"
-"PO-Revision-Date: 2015-12-11 21:41+1100\n"
+"PO-Revision-Date: 2016-05-02 18:40+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -31,10 +31,8 @@ msgstr "Experimental AI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Dev AI: Default + Old Recruitment"
+msgstr "Dev AI: Default AI (RCA) with Alternate Recruiting"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -2273,21 +2271,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
-#, fuzzy
-#| msgid ""
-#| "If you have not changed anything in the scenario code, Side 1 uses the "
-#| "Random Recruitment Micro AI, with swordsmen and peasants having been "
-#| "given higher probability than the other units. This is not meant as a "
-#| "good recruitment pattern, it simply serves as a demonstration how to use "
-#| "the AI.\n"
-#| "\n"
-#| "Side 2 uses the Rush Recruitment Micro AI (which is also used in the "
-#| "Experimental AI).\n"
-#| "\n"
-#| "A Micro AI can be added and adapted to the need of a scenario easily "
-#| "using only WML and the [micro_ai] tag. Check out the <span "
-#| "color='#00A000'>Micro AI wiki page</span> at http://wiki.wesnoth.org/"
-#| "Micro_AIs for more information."
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2305,8 +2288,9 @@ msgid ""
 msgstr ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
-"higher probability than the other units. This is not meant as a good "
-"recruitment pattern, it simply serves as a demonstration how to use the AI.\n"
+"higher probability than the other units, and mages a middling probability. "
+"This is not meant as a good recruitment pattern, it simply serves as a "
+"demonstration how to use the AI.\n"
 "\n"
 "Side 2 uses the Rush Recruitment Micro AI (which is also used in the "
 "Experimental AI).\n"
@@ -3128,7 +3112,7 @@ msgstr "I am happy with the current AI of team 2, [$test_path_to_ai]"
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
 msgid "My AI is the RCA AI (the current default)."
-msgstr ""
+msgstr "My AI is the RCA AI (the current default)."
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
@@ -3151,10 +3135,8 @@ msgstr "I've come with my own AI, and I am ready to test its strength"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
-#, fuzzy
-#| msgid "and where is it located (path follows the usual WML convention)"
 msgid "And where is it located (path follows the usual WML convention)"
-msgstr "and where is it located (path follows the usual WML convention)"
+msgstr "And where is it located (path follows the usual WML convention)"
 
 #. [text_input]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:215
@@ -3163,21 +3145,18 @@ msgstr "AI Location:"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:316
-#, fuzzy
-#| msgid ""
-#| "and so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgid "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
-msgstr "and so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
+msgstr "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 
 #. [test]: id=lua_ai
 #: data/ai/scenarios/scenario-lua_ai.cfg:4
 msgid "Lua AI Test scenario"
-msgstr ""
+msgstr "Lua AI Test scenario"
 
 #. [test]: id=lua_ai_old_syntax
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:5
 msgid "Lua AI Test scenario (old syntax)"
-msgstr ""
+msgstr "Lua AI Test scenario (old syntax)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 20:00+0300\n"
-"PO-Revision-Date: 2016-03-05 13:54+1100\n"
+"PO-Revision-Date: 2016-05-02 18:43+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -755,10 +755,8 @@ msgstr "Natural Cave Wall"
 
 #. [terrain_type]: id=minewall
 #: data/core/terrain.cfg:1084 data/core/terrain.cfg:1085
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Mine Rail"
+msgstr "Mine Wall"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1096
@@ -3065,10 +3063,8 @@ msgstr "Choose your preferred language:"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:150
-#, fuzzy
-#| msgid "Waiting..."
 msgid "Loading..."
-msgstr "Waiting..."
+msgstr "Loading..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:123
@@ -3196,10 +3192,8 @@ msgstr "Invert filter"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:683
-#, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "Zoom Out"
+msgstr "Log Out"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4438,10 +4432,8 @@ msgstr "Female"
 
 #. [label]
 #: data/gui/window/unit_recruit.cfg:138
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruit Unit"
-msgstr "Recruit"
+msgstr "Recruit Unit"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -4529,16 +4521,12 @@ msgid "player"
 msgstr "player"
 
 #: src/game_preferences.cpp:1033
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]"
 
 #: src/game_preferences.cpp:1036
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/generators/default_map_generator.cpp:113
 msgid "Map Generator"
@@ -4732,28 +4720,20 @@ msgid "addons_view^All Add-ons"
 msgstr "All Add-ons"
 
 #: src/gui/dialogs/addon/list.cpp:301
-#, fuzzy
-#| msgid "addon_state^Installed, broken"
 msgid "addon_state^Installed, upgradable"
-msgstr "Installed, broken"
+msgstr "Installed, upgradable"
 
 #: src/gui/dialogs/addon/list.cpp:301
-#, fuzzy
-#| msgid "addon_state^Published, broken"
 msgid "addon_state^Published, upgradable"
-msgstr "Published, broken"
+msgstr "Published, upgradable"
 
 #: src/gui/dialogs/addon/list.cpp:305
-#, fuzzy
-#| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, outdated on server"
-msgstr "Installed ($local_version|), outdated on server"
+msgstr "Installed, outdated on server"
 
 #: src/gui/dialogs/addon/list.cpp:305
-#, fuzzy
-#| msgid "addon_state^Published, not installed"
 msgid "addon_state^Published, outdated on server"
-msgstr "Published, not installed"
+msgstr "Published, outdated on server"
 
 #: src/gui/dialogs/campaign_settings.cpp:121
 msgid ""
@@ -4912,73 +4892,63 @@ msgstr "Side $side_number ($name)"
 
 #: src/gui/dialogs/loadscreen.cpp:43
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Building terrain rules"
 
 #: src/gui/dialogs/loadscreen.cpp:44
 msgid "Reading files and creating cache"
-msgstr ""
+msgstr "Reading files and creating cache"
 
 #: src/gui/dialogs/loadscreen.cpp:45 src/gui/dialogs/loadscreen.cpp:48
 msgid "Initializing display"
-msgstr ""
+msgstr "Initializing display"
 
 #: src/gui/dialogs/loadscreen.cpp:46
 msgid "Reinitialize fonts for the current language"
-msgstr ""
+msgstr "Reinitialize fonts for the current language"
 
 #: src/gui/dialogs/loadscreen.cpp:47
 msgid "Initializing teams"
-msgstr ""
+msgstr "Initializing teams"
 
 #: src/gui/dialogs/loadscreen.cpp:49
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Loading game configuration"
-msgstr "Configuration:"
+msgstr "Loading game configuration"
 
 #: src/gui/dialogs/loadscreen.cpp:50
-#, fuzzy
-#| msgid "Flowering Water Lilies"
 msgid "Loading data files"
-msgstr "Flowering Water Lilies"
+msgstr "Loading data files"
 
 #: src/gui/dialogs/loadscreen.cpp:51
 msgid "Loading level"
-msgstr ""
+msgstr "Loading level"
 
 #: src/gui/dialogs/loadscreen.cpp:52
 msgid "Initializing scripting engine"
-msgstr ""
+msgstr "Initializing scripting engine"
 
 #: src/gui/dialogs/loadscreen.cpp:53
-#, fuzzy
-#| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
-msgstr "Enable planning mode on start"
+msgstr "Initializing planning mode"
 
 #: src/gui/dialogs/loadscreen.cpp:54
 msgid "Reading unit files"
-msgstr ""
+msgstr "Reading unit files"
 
 #: src/gui/dialogs/loadscreen.cpp:55
 msgid "Loading units"
-msgstr ""
+msgstr "Loading units"
 
 #: src/gui/dialogs/loadscreen.cpp:56
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "Searching for installed add-ons"
-msgstr "Uninstall Add-ons"
+msgstr "Searching for installed add-ons"
 
 #: src/gui/dialogs/loadscreen.cpp:57
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Starting game"
-msgstr "Random starting time"
+msgstr "Starting game"
 
 #: src/gui/dialogs/loadscreen.cpp:58
 msgid "Verifying cache"
-msgstr ""
+msgstr "Verifying cache"
 
 #: src/gui/dialogs/lobby/lobby.cpp:209
 msgid "whisper to $receiver"
@@ -5005,10 +4975,8 @@ msgstr ""
 "from this user, type /ignore $name\n"
 
 #: src/gui/dialogs/lobby/lobby.cpp:1083
-#, fuzzy
-#| msgid "Room $name joined"
 msgid "<i>Room $name joined</i>"
-msgstr "Room $name joined"
+msgstr "<i>Room $name joined</i>"
 
 #: src/gui/dialogs/lobby/lobby.cpp:1397
 msgid "$player has entered the room"
@@ -5068,7 +5036,7 @@ msgstr "Not on friends or ignore lists"
 
 #: src/gui/dialogs/preferences_dialog.cpp:936
 msgid "&#10003;"
-msgstr ""
+msgstr "&#10003;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:997
 msgid ""
@@ -5224,7 +5192,7 @@ msgstr "Unknown builder id for tree view node."
 
 #: src/gui/widgets/unit_preview_pane.cpp:93
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "Lvl $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:121
 msgid "MP: "
@@ -5232,17 +5200,15 @@ msgstr "MP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:150
 msgid "Traits"
-msgstr ""
+msgstr "Traits"
 
 #: src/gui/widgets/unit_preview_pane.cpp:157
 msgid "Abilities"
-msgstr ""
+msgstr "Abilities"
 
 #: src/gui/widgets/unit_preview_pane.cpp:169
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacks"
-msgstr "Attack"
+msgstr "Attacks"
 
 #: src/gui/widgets/window.cpp:1056
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -5254,26 +5220,20 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Failed to show a dialog, which doesn't fit on the screen."
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
-msgstr "Scroll speed:"
+msgstr "Scroll Up"
 
 #: src/hotkey/hotkey_command.cpp:39
 msgid "Scroll Down"
-msgstr ""
+msgstr "Scroll Down"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Scroll Palette Left"
 msgid "Scroll Left"
-msgstr "Scroll Palette Left"
+msgstr "Scroll Left"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Scroll Palette Right"
 msgid "Scroll Right"
-msgstr "Scroll Palette Right"
+msgstr "Scroll Right"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "cancel"
