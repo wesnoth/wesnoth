@@ -1408,7 +1408,9 @@ void game::send_data_sides(simple_wml::document& data,
 {
 	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl());
 	DBG_GAME << __func__ << "...\n";
-	send_to_players(data, players_, /*controls_side_helper(*this, sides_vec),*/ exclude);
+	decltype(players_) filtered_players;
+	std::copy_if(players_.begin(), players_.end(), filtered_players.begin(), controls_side_helper(*this, sides_vec));
+	send_to_players(data, filtered_players, exclude);
 }
 
 bool game::controls_side(const std::vector<int>& sides, const socket_ptr player) const
