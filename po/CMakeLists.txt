@@ -79,7 +79,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				--domain=${DOMAIN} 
 				`cd ${PROJECT_SOURCE_DIR} && 
 					sh ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG`
-					> ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
+					-o ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update [${DOMAIN}]: Generated wml pot file."
