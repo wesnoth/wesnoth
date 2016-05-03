@@ -561,19 +561,18 @@ os.chdir(BOOSTPATH)
 # commenting check below, because Boost caches built files itself
 #if exists(BOOSTPATH + '/stage'):  # libs are built in stage dir
 #  print('. (skip) building Boost (%s already exists)' % (BOOSTPATH + '/stage'))
-if True:
-  #run('b2 --show-libraries')  # show libraries that require building
-  # exclude libs that don't require building (leavine asio here gives an error on Windows)
-  names.remove('asio')
-  cmdline = 'b2 toolset=gcc threadapi=win32 -j ' + corecount + ' --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
-  # BZip2 is needed for Iostreams
-  cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
-  print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
-  res = run('echo ---[building libs]--- >> ' + BOOSTLOG)
-  print('.. ' + cmdline)
-  res = run(cmdline + ' >> {}'.format(BOOSTLOG))
-  if res.retcode != 0:
-    print('.   build failed - check {}'.format(BOOSTLOG))
+#run('b2 --show-libraries')  # show libraries that require building
+# exclude libs that don't require building (leaving asio here gives an error on Windows)
+names.remove('asio')
+cmdline = 'b2 toolset=gcc threadapi=win32 -j ' + corecount + ' --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
+# BZip2 is needed for Iostreams
+cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
+print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
+res = run('echo ---[building libs]--- >> ' + BOOSTLOG)
+print('.. ' + cmdline)
+res = run(cmdline + ' >> {}'.format(BOOSTLOG))
+if res.retcode != 0:
+  print('.   build failed - check {}'.format(BOOSTLOG))
 os.chdir(ROOT)
 
 
