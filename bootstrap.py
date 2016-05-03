@@ -709,7 +709,7 @@ set PATH={path};%PATH%
 """.format(
   path=os.pathsep.join(paths),
   python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
-  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release 2> scons_log.txt'),
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release 2> buildlog.txt'),
 )
 
 open(ROOT + '/compile.bat', 'wb').write(batfile)
@@ -722,7 +722,7 @@ set PATH={path};%PATH%
 """.format(
   path=os.pathsep.join(paths),
   python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
-  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug 2> scons_log.txt'),
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug 2> buildlog.txt'),
 )
 
 open(ROOT + '/compile(debug-build).bat', 'wb').write(batfiledebug)
