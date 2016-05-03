@@ -419,6 +419,10 @@ def run_capture_limited(command, maxlines=20000):
 # ---[ /utilities ]---
 
 
+import platform
+if platform.system() != 'Windows':
+  sys.exit('Error: This script only works on a Windows OS')
+
 corecount = raw_input("Enter number of cores to build boost and wesnoth with: ")
 
 print('---[ download dependencies ]---')
