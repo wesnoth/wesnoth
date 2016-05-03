@@ -112,6 +112,7 @@ game_stringfixes = {
 "wesnoth-tutorial" : (
 # conversion added in 1.11.0-dev
 ("$unit.type", "$unit.language_name"),
+("I’ll tell them to use the one that does the most damage!", "I’ll tell them to use the one that does more damage!"),
 ),
 
 "wesnoth-units" : (
@@ -132,6 +133,11 @@ game_stringfixes = {
 ),
 
 }
+
+"wesnoth-multiplayer" : (
+# 1.13.4+dev
+("Changes the gold worth of the enemy spawns by a certain perentage", "Changes the gold worth of the enemy spawns by a certain percentage"),
+),
 
 website_stringfixes = {
 
