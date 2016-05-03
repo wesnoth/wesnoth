@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: utf-8 -*-
+# encoding: utf-8
 
 """
 A script that autogenerates some information about campaigns for the

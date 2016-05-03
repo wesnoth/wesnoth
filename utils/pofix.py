@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# encoding: utf-8
 
 # pofix - perform string fixups on incoming .po files.
 #
@@ -175,7 +175,7 @@ except ImportError:
     parallel_map = map
 
 def process_file(path):
-    before = io.open(path, "r", encoding="utf8").read()
+    before = io.open(path, "r", encoding="utf-8").read()
     decommented = re.sub("#.*", "", before)
     lines = before.split('\n')
     if website_mode:
@@ -209,7 +209,7 @@ def process_file(path):
         # Save a backup
         os.rename(path, path + "-bak")
         # Write out transformed version
-        ofp = io.open(path, "w", encoding="utf8")
+        ofp = io.open(path, "w", encoding="utf-8")
         ofp.write(after)
         ofp.close()
         return 1

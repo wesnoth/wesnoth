@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# encoding: utf8
+# encoding: utf-8
 
 """
 This parser uses the --preprocess option of wesnoth so a working

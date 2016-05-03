@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# encoding: utf8
+# encoding: utf-8
 import wmldata, os, glob, sys
 import re
 

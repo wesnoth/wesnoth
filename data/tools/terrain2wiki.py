@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding:utf-8 -*-
+# encoding: utf-8
 
 """
 A script to create the "Terrain Table" on the TerrainCodeTableWML wiki page.

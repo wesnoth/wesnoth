@@ -1,4 +1,4 @@
-# encoding: utf8
+# encoding: utf-8
 import time, os, glob, sys, re
 from subprocess import Popen
 

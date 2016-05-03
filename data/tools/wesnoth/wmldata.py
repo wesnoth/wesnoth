@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# encoding: utf8
+# encoding: utf-8
 
 """
 NOTE: You should use wmlparser2.py instead which uses the C++

@@ -1,4 +1,4 @@
-#encoding: utf8
+# encoding: utf-8
 
 import os, gettext, time, copy, sys, re
 import traceback
