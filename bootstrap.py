@@ -695,7 +695,7 @@ with open(os.path.join(ROOT, ".scons-option-cache"), 'w') as sconsoptcache:
 print(cachecontent)
 
 
-print('---[ writing compile.bat ]---')
+print('---[ writing compile.cmd ]---')
 paths = []
 paths.append(os.path.normpath(MINGWPATH))          # g++
 paths.append(os.path.normpath(GTKPATH + '/bin'))   # pkg-config
@@ -712,9 +712,9 @@ set PATH={path};%PATH%
   scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release 2> buildlog.txt'),
 )
 
-open(ROOT + '/compile.bat', 'wb').write(batfile)
+open(ROOT + '/compile.cmd', 'wb').write(batfile)
 
-print('---[ writing compile(debug-build).bat ]---')
+print('---[ writing compile(debug-build).cmd ]---')
 batfiledebug = """\
 @echo off
 set PATH={path};%PATH%
@@ -725,22 +725,22 @@ set PATH={path};%PATH%
   scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug 2> buildlog.txt'),
 )
 
-open(ROOT + '/compile(debug-build).bat', 'wb').write(batfiledebug)
+open(ROOT + '/compile(debug-build).cmd', 'wb').write(batfiledebug)
 
-print('---[ writing debugger_launcher.bat ]---')
+print('---[ writing debugger_launcher.cmd ]---')
 batfilegdb = """\
 @echo off
 if exist wesnoth-debug.exe (
   "{gdbpath}" wesnoth-debug.exe
 )  else (
-   echo "You need a debug build to run the debugger. Create it by running compile(debug-build).bat"
+   echo "You need a debug build to run the debugger. Create it by running compile(debug-build).cmd"
    pause
 )
 """.format(
   gdbpath=os.path.normpath(MINGWPATH + '/gdb.exe'),
 )
 
-open(ROOT + '/debugger_launcher.bat', 'wb').write(batfilegdb)
+open(ROOT + '/debugger_launcher.cmd', 'wb').write(batfilegdb)
 
-print('Done. Run compile.bat to build Wesnoth.')
+print('Done. Run compile.cmd to build Wesnoth.')
 raw_input("Press Enter to continue.")
