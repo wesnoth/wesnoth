@@ -116,13 +116,7 @@ private:
 	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<long int,std::string> seeds_;
 
-	/** std::map<network::connection,player>. */
-	//wesnothd::player_map players_;
-	//std::set<network::connection> ghost_players_;
-
 	PlayerConnections player_connections_;
-
-	//std::set<network::connection> not_logged_in_;
 
 	/** server socket/fifo. */
 #ifndef _WIN32
