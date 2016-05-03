@@ -1140,7 +1140,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 	// Commands a player may issue.
 	if (command == "status") {
 		response << process_command(command + " " + player.name(), player.name());
-	} else if (command.find("adminmsg") == 0
+	} else if (command.find("adminmsg") == 0 || command.find("report") == 0
 			|| command == "games"
 			|| command == "metrics"
 			|| command == "motd"

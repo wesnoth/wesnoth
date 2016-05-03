@@ -8,22 +8,21 @@
 # BlueStar, 2006
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010
 # Masaharu IWAI <iwaim.sub@gmail.com>, 2011
-# Masaharu IWAI <iwaim.sub@gmail.com>, 2011
 # Nobuhito Okada <okyada@gmail.com>, 2006
 # OOTA, Masato(oo), 2015
 # Q <quel_ro@excite.co.jp>, 2005
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
 # Toshiharu Kudoh <toshi.kd2@gmail.com>, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-05 05:00+0300\n"
-"PO-Revision-Date: 2015-10-30 11:13+0000\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"PO-Revision-Date: 2016-04-17 02:00+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,8 +30,6 @@ msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
-#, fuzzy
-#| msgid "The Eastern Invasion"
 msgid "Eastern Invasion"
 msgstr "東部侵略"
 
@@ -43,10 +40,8 @@ msgstr "EI"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "（易しい）"
+msgstr "易しい"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
@@ -55,10 +50,8 @@ msgstr "槍兵"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "ノーマル"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
@@ -67,10 +60,8 @@ msgstr "剣士"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑戦的）"
+msgstr "挑戦的"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
@@ -120,14 +111,12 @@ msgid "Artwork and Graphics Design"
 msgstr "美術デザイン"
 
 #. [lua]: wml_actions.bandit_village_capture
-#: data/campaigns/Eastern_Invasion/lua/bandits.lua:181
-#, fuzzy
-#| msgid "They’re here!"
+#: data/campaigns/Eastern_Invasion/lua/bandits.lua:83
 msgid "They're here!"
 msgstr "奴らはここだ！"
 
 #. [lua]: wml_actions.bandit_village_capture
-#: data/campaigns/Eastern_Invasion/lua/bandits.lua:188
+#: data/campaigns/Eastern_Invasion/lua/bandits.lua:90
 msgid "No outlaws in this village."
 msgstr "この村には無法者はいません。"
 
@@ -142,7 +131,7 @@ msgid ""
 "It was the thirteenth year of Konrad II’s reign when the strange occurrences "
 "in the Estmark Hills on the eastern border of Wesnoth began."
 msgstr ""
-"Wesnothの東国境にあるEstmarkの丘において奇怪な事件が発生したのは、Konrad 2世"
+"Wesnothの東国境にあるEstmark丘陵において奇怪な事件が発生したのは、Konrad 2世"
 "の治世の13年目だった。"
 
 #. [part]
@@ -194,8 +183,8 @@ msgid ""
 msgstr ""
 "Garard 1世の時代、山賊とオークの襲撃者達が、EstmarkからWesnothへ侵入するのを"
 "阻止する為、Weldynの堤防の側と、Soradocの南に沿って、二つの拠点が築かれた。し"
-"かし後年、Estmarkに入植者達が広がり、オークがGreat Riverの北へと後退させられ"
-"た時、川の警備基地は放棄された。"
+"かし後年、Estmarkに入植者達が広がり、オークが大いなる川の北へと後退させられた"
+"時、川の警備基地は放棄された。"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:44
@@ -232,22 +221,22 @@ msgstr ""
 "下達は気が緩みはじめた。そうしたある日の明け方、Gweddryとその部下達は、哨兵の"
 "悲鳴によって叩き起こされたのである……。"
 
+#. [side]: type=Lieutenant, id=Gweddry
 #. [side]
 #. [side]: type=Dwarvish Steelclad, id=Knutan
-#. [side]: type=General, id=Gweddry
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
-#. [side]: type=General, id=Konrad II
-#. [side]: type=Great Mage, id=Kaldor
-#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:24
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:26
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:33
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:132
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:131
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:23
@@ -276,17 +265,23 @@ msgstr ""
 msgid "Wesnothians"
 msgstr "Wesnoth人"
 
-#. [side]
-#. [side]: type=Bone Knight, id=Garnad
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Death Knight, id=Ravanal-Guard
 #. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
@@ -294,16 +289,10 @@ msgstr "Wesnoth人"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#. [side]: type=Lich, id=Mal-Grekulak
-#. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Lich, id=Mal-Uldhar
-#. [side]: type=Lich, id=Mal-Xakralan
-#. [side]: type=Necromancer, id=Mal-un-Darak
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#. [side]: type=Necromancer, id=Mal-un-Xadrux
-#. [side]: type=Necromancer, id=Mal-un-Zanrad
-#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Bone Knight, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -316,7 +305,7 @@ msgstr "Wesnoth人"
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:47
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:87
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:111
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:44
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:44
@@ -365,7 +354,7 @@ msgstr "前哨基地を守る"
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:107
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:160
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:159
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:138
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:111
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:108
@@ -373,8 +362,8 @@ msgstr "前哨基地を守る"
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:81
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:96
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1037
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1063
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:154
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:140
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:167
@@ -391,7 +380,7 @@ msgstr "Gweddryの死"
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:111
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:142
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:115
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:112
@@ -399,8 +388,8 @@ msgstr "Gweddryの死"
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:85
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:100
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1041
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:161
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1067
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:158
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:144
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:136
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:171
@@ -524,11 +513,11 @@ msgstr "皆の者、続け！ 落し戸を抜けるぞ！"
 msgid "The Escape Tunnel"
 msgstr "脱出路"
 
+#. [side]: type=Troll, id=Kabak
 #. [side]
-#. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]: type=Troll Warrior, id=Darg
-#. [side]: type=Troll, id=Kabak
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
@@ -556,7 +545,7 @@ msgstr "Gweddryをトンネルの出口に移動させる"
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:163
 msgid "Get moving quickly."
-msgstr ""
+msgstr "素早く移動しましょう。"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:178
@@ -651,7 +640,7 @@ msgstr "分かりました。戦闘での幸運を祈っています。"
 msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
-msgstr ""
+msgstr "トロルがゴールドを隠していたようだ。50ゴールドある！"
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:331
@@ -773,7 +762,7 @@ msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr ""
 "貴様は我が同胞を倒したが、俺はどこまでも追いかけてやる、そして貴様を殺す！"
 
-#. [scenario]: id=04a_An_Elven_Alliance, (id=Nafga) (side=2) 100 ()}
+#. [scenario]: id=04a_An_Elven_Alliance
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:5
 msgid "An Elven Alliance"
 msgstr "エルフ同盟"
@@ -785,7 +774,7 @@ msgid ""
 "They marched out of the foothills of the Estmarks into an unknown forest..."
 msgstr ""
 "だがGweddryとDacynは、Wesnothの国内に入っても休息はできなかった。彼らは"
-"Estmarkの丘の麓から出て、見知らぬ森へと進んだ……。"
+"Estmark丘陵の麓から出て、見知らぬ森へと進んだ……。"
 
 #. [side]
 #. [side]: type=Elvish Ranger, id=Volas
@@ -799,14 +788,14 @@ msgstr "同盟者"
 msgid "Volas"
 msgstr "Volas"
 
-#. [side]: type=Orcish Nightblade, id=Bagork
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
-#. [side]: type=Orcish Warlord, id=Prok-Bak
 #. [side]: type=Orcish Warrior, id=Gruga-Har
+#. [side]: type=Orcish Nightblade, id=Bagork
+#. [side]: type=Orcish Warlord, id=Prok-Bak
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:72
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:71
 msgid "Orcs"
 msgstr "オーク"
 
@@ -1067,11 +1056,11 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:198
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:250
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:247
 msgid "Hmm..."
 msgstr "ふむむ……"
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:200
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr "悪が広まる前に滅ぼしたい。東に向かう！"
@@ -1086,7 +1075,7 @@ msgstr "これが良い決定であるとは言えませんが、私はあなた
 msgid "Noo!! I can’t be promoted if they run away!"
 msgstr "だめだ！！ 奴らに逃げられては、俺は昇進できない！"
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:223
 msgid "You are right. It is foolish to go onward — we will turn back."
 msgstr "そうだ。前進するのは愚かだ――引き返すつもりだ。"
@@ -1144,26 +1133,26 @@ msgid "Rava-Krodaz"
 msgstr "Rava-Krodaz"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:156
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:155
 msgid "Escape by defeating one of the dark sorcerers"
 msgstr "黒魔術師の1人を倒して脱出する"
 
 #. [unit]: type=Paladin, id=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:223
 msgid "Terraent"
 msgstr "Terraent"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:260
 msgid ""
 "The Bitter Swamp’s ill reputation is, it seems, well merited. Mal-Ravanal’s "
 "capital lies before us!"
 msgstr ""
-"どうやら、Bitter Swampの不吉な評判は、よく当たっていたようだ。Mal-Ravanalの本"
-"拠地が我々の目の前にあるぞ！"
+"どうやら、苦痛の湿地の不吉な評判は、よく当たっていたようだ。Mal-Ravanalの本拠"
+"地が我々の目の前にあるぞ！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:266
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:265
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before "
 "we cannot kill Mal-Ravanal. It was foolish to come this far; we must turn "
@@ -1174,7 +1163,7 @@ msgstr ""
 "くまで来たのは愚かでした。引き返すしかありません！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:271
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:270
 msgid ""
 "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
 "us. But, perhaps we can kill this Mal-Ravanal. I might wish to try."
@@ -1184,14 +1173,14 @@ msgstr ""
 "しれない。やってみたいのだ。"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:276
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:275
 msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr ""
 "この人間どもは愚かにも、あえて我が領域深くへと入り込んできた。 叩き潰せ！"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:331
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:330
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of us knights is let free!"
@@ -1200,12 +1189,12 @@ msgstr ""
 "騎士団の一人が解放されます！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:335
 msgid "Why? Are you the undead’s prisoners?"
 msgstr "なぜですか？ あなた方はアンデッドの捕虜ですか？"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:340
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game — whenever one of their warriors dies, one of "
@@ -1216,7 +1205,7 @@ msgstr ""
 "我らの一人が殺されるというふざけたゲームをしています。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:346
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:345
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
 "we escape from here."
@@ -1225,7 +1214,7 @@ msgstr ""
 "りませんか。"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:351
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:350
 msgid ""
 "Five of my comrades are still imprisoned. We will gladly enter your service "
 "in appreciation for our freedom."
@@ -1234,7 +1223,7 @@ msgstr ""
 "ることでしょう。"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:482
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:481
 msgid ""
 "Wait! I recognize that magic! Dacyn, have you come to surrender to me? Or "
 "perhaps you wish to finish the duel we started so long ago?"
@@ -1243,7 +1232,7 @@ msgstr ""
 "あんな昔に始めた決闘をやり遂げたいのかな？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:487
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:486
 msgid ""
 "If I have one regret, it is that mercy slowed my hand thirty three years "
 "ago. Stop this madness and I will release you from your torment."
@@ -1252,7 +1241,7 @@ msgstr ""
 "違い沙汰は終わりにするんだ。そうすればお前をその苦痛から解放してやろう。"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:492
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:491
 msgid ""
 "Torment?! You have no idea... but you soon will. Kill them all and bring "
 "Dacyn to me!"
@@ -1261,12 +1250,12 @@ msgstr ""
 "ところへ連れて来い！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:497
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:496
 msgid "You know this lich?"
 msgstr "このリッチを知っているのか？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:502
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:501
 msgid ""
 "Yes... We studied together many years ago. He was most powerful then, but "
 "the dark power I sense today is far greater. We must escape immediately!"
@@ -1276,27 +1265,27 @@ msgstr ""
 "べきです！"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:518
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:517
 msgid "Ah, so you’ve decided to fight me."
 msgstr "ああ、では私と戦うことにしたのだな。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:523
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:522
 msgid "I will atone for my failure thirty three years ago."
 msgstr "33年前の失敗を償うつもりだ。"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:536
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:535
 msgid "Enough! You cannot possibly defeat me!"
 msgstr "もういい！ お前たちに私を倒すことなど到底できるわけがないのだ！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:551
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:550
 msgid "Is he... dead?"
 msgstr "彼は……死んだ？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:556
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:555
 msgid ""
 "Merely departed. He will return once he has recovered; we would best be away "
 "from here by then."
@@ -1305,14 +1294,14 @@ msgstr ""
 "が一番でしょう。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:593
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:592
 msgid ""
 "Gweddry’s men retreated swiftly from the Bitter Swamp, fleeing north and "
 "west as if their heels were winged. Finding a low pass through the northern "
 "Estmarks, they were greatly relieved to see the valley of the Weldyn open "
 "before them on the other side."
 msgstr ""
-"Gweddryの兵士たちは、まるで足に羽が生えたかのように素早くBitter Swampから後退"
+"Gweddryの兵士たちは、まるで足に羽が生えたかのように素早く苦痛の湿地から後退"
 "し、北へ西へと逃れた。北Estmarkを通る低い道を見つけ、反対側にWeldynの谷が彼ら"
 "の前に開けているのを見て、彼らは大いに安堵した。"
 
@@ -1328,17 +1317,13 @@ msgstr "Lanar-Skal"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
-#, fuzzy
-#| msgid "Find the outlaw leader and defeat him"
 msgid "Find the outlaw leader"
-msgstr "無法者のリーダーを見つけて倒す"
+msgstr "無法者のリーダーを探す"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:117
-#, fuzzy
-#| msgid "Shodrano"
 msgid "Kill Shodrano"
-msgstr "Shodrano"
+msgstr "Shodranoを殺す"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:128
@@ -1353,8 +1338,8 @@ msgstr "アンデッドのリーダーを倒す"
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:181
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:104
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1045
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:165
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1071
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:162
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:148
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:140
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:175
@@ -1530,19 +1515,19 @@ msgstr ""
 msgid "Two Paths"
 msgstr "岐路"
 
-#. [side]
+#. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
 #. [side]: type=Orcish Ruler, id=Draka-Kura
-#. [side]: type=Orcish Warlord, id=Ran-Lar
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
-#. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Troll Warrior, id=Unhk
+#. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:49
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:72
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:95
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:71
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:37
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:45
 msgid "Evil"
@@ -1572,10 +1557,10 @@ msgid ""
 "a time, before we reach another river crossing north of Glyn’s Forest. If we "
 "travel west we will not have to fight orcs immediately."
 msgstr ""
-"現在我々は、我が氏族の領内にいて、私には詳しい土地鑑がある。北の道はGreat "
-"Riverへと直接通じている。その向こうには、北の大地のオークの本拠地がある。西の"
-"道は、Glynの森の北にある別の交差点へ着くまでのしばらくの間、Wesnothの領内を"
-"通っている。西に行けば、我々はすぐにはオークと戦う必要は無い。"
+"現在我々は、我が氏族の領内にいて、私には詳しい土地鑑がある。北の道は大いなる"
+"川へと直接通じている。その向こうには、北の大地のオークの本拠地がある。西の道"
+"は、Glynの森の北にある別の交差点へ着くまでのしばらくの間、Wesnothの領内を通っ"
+"ている。西に行けば、我々はすぐにはオークと戦う必要は無い。"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:155
@@ -1674,23 +1659,18 @@ msgstr "GweddryとOwaecの川越え"
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:145
 msgid ""
 "We have come to the Great River. Should we cross here, or try to find a ford?"
-msgstr "Great Riverに辿り着いたな。ここで渡るべきか、あるいは浅瀬を探そうか？"
+msgstr "大いなる川に辿り着いたな。ここで渡るべきか、あるいは浅瀬を探そうか？"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:149
-#, fuzzy
-#| msgid ""
-#| "We must cross here. The undead are chasing us, and their hordes are much "
-#| "too great for us to defeat. Reinforcements for the undead will arrive "
-#| "soon. We must be across the river before that happens."
 msgid ""
 "We must cross here. The undead are chasing us, and their hordes are much too "
 "great for us to defeat. We've haven't faced even a small part of their force "
 "yet. We need to cross the river before the bulk of their army arrives!"
 msgstr ""
 "ここで渡るしかありません。手に負えないほどのアンデッドの大群が追いかけてきて"
-"います。さらに奴らの援軍もまもなく到着するでしょう。その前にこの川を渡らねば"
-"なりません。"
+"います。やつらの一部隊とも接触してはなりません。増援が来る前に、川を渡る必要"
+"があります！"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:153
@@ -1734,12 +1714,12 @@ msgstr ""
 #. [message]: speaker=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:204
 msgid "We have you now, mortals!"
-msgstr ""
+msgstr "死すべき者たちよ、捉えたぞ！"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:208
 msgid "They're closing in on us! We must get moving quickly."
-msgstr ""
+msgstr "やつらが近づいています！もっと速く移動しないと。"
 
 #. [unit]: type=Ancient Lich, id=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:223
@@ -1752,6 +1732,8 @@ msgid ""
 "I see, this is where the scared dogs ran to. Don't think you can get away "
 "<b>this</b> easily."
 msgstr ""
+"なるほど、怯えた犬はここに逃げ込んでいたか。<b>これ</b>からそうやすやすとは逃"
+"れられんぞ。"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:245
@@ -1845,7 +1827,7 @@ msgstr ""
 #. [message]: speaker=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
 msgid "Creatures from the deep, I summon thee to destroy this foe!"
-msgstr ""
+msgstr "深淵の生物よ、現れいでて敵を滅ぼせ！"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:224
@@ -1859,24 +1841,24 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:265
 msgid "I failed my Master..."
-msgstr ""
+msgstr "ああ、主よ、失敗しました..."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:284
 msgid "<i>HISS!</i>"
-msgstr ""
+msgstr "<i>シューー！</i>"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:294
 msgid "The sea creatures are gone!"
-msgstr ""
+msgstr "海の怪物だ！"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:303
 msgid ""
 "We have no time to lose! Let's get moving quickly before the rest of their "
 "army catches up with us."
-msgstr ""
+msgstr "時間がありません！増援が私達を捉える前に、移動しましょう。"
 
 #. [scenario]: id=08_Training_the_Ogres
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
@@ -2012,12 +1994,12 @@ msgstr "Pelathsil"
 #. [side]: type=Dwarvish Lord, id=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:43
 msgid "Dwarves"
-msgstr ""
+msgstr "ドワーフ達"
 
 #. [side]: type=Orcish Nightblade, id=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
 msgid "Bagork"
-msgstr ""
+msgstr "Bagork"
 
 #. [side]: type=Elvish Avenger, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:97
@@ -2027,7 +2009,7 @@ msgstr "Elandin"
 #. [side]: type=Elvish Avenger, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:102
 msgid "Elves"
-msgstr ""
+msgstr "エルフ軍"
 
 #. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
@@ -2133,12 +2115,12 @@ msgstr ""
 #. [message]: speaker=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:270
 msgid "I will kill all of you!"
-msgstr ""
+msgstr "てめえら全員皆殺しだ！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
 msgid "Not very likely."
-msgstr ""
+msgstr "それはどうかな。"
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:296
@@ -2180,8 +2162,8 @@ msgstr "呪われたエルフめ！ 人間と同盟しておくべきだった�
 msgid "Lake Vrug"
 msgstr "Vrug湖"
 
-#. [side]: type=General, id=Gweddry
 #. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:28
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:27
@@ -2294,22 +2276,22 @@ msgid "Some time later..."
 msgstr "しばらくして……"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:299
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:300
 msgid "Alright, now we should be safe while Dacyn is researching."
 msgstr "承知した。さてDacynが調査をしている間は危険を遠ざけておかなければ。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:351
 msgid "I have found an answer! We must return to Wesnoth immediately! ..."
 msgstr "答えを見つけました！ 即座にWesnothへ戻らなければなりません！ ……"
 
 #. [unit]: type=Troll Warrior, id=Groog
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:361
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:362
 msgid "Groog"
 msgstr "Groog"
 
 #. [message]: speaker=Groog
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:393
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:394
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "それは早すぎるぞ。お前達は俺たちと一緒に来い。"
 
@@ -2343,41 +2325,41 @@ msgid "King Dra-Nak"
 msgstr "Dra-Nak 王"
 
 #. [side]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:80
 msgid "Prisoners"
 msgstr "囚人たち"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:385
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:411
 msgid ""
 "Several of Gweddry's men find themselves locked away in a crude orcish cell."
 msgstr ""
 "Gweddryの部下の何人かは、粗末なオークの部屋に閉じ込められたことを理解した。"
 
 #. [message]: role=escapee sidekick 1
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:391
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:417
 msgid "We've got to get out of here!"
 msgstr "ここから出なければ！"
 
 #. [message]: role=escapee sidekick 2
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:396
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:422
 msgid "I'm sure the commander will come and save us!"
 msgstr "指揮官が来て助けてくれるに違いない！"
 
 #. [message]: role=escapee sidekick 1
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:401
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:427
 msgid "What? Didn't you see those huge trolls drag them away? It's hopeless!"
 msgstr ""
 "何だって？ あのでかいトロルが彼らを引きずって行ったのを見なかったのか？ あれ"
 "はもうだめだな！"
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:406
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:432
 msgid "Be quiet, you two! There's something back here..."
 msgstr "静かにしろ、2人とも！ この後ろに何かあるぞ……。"
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:413
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:439
 msgid ""
 "Look! There's a gap in the wall over here. I think I can slip through if I "
 "clear away some of these rocks..."
@@ -2386,58 +2368,58 @@ msgstr ""
 "う……。"
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:449
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:475
 msgid "Come on! This way!"
 msgstr "来い！ こっちだ！"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:457
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:483
 msgid "Find Gweddry, Dacyn and Owaec"
 msgstr "GweddryとDacyn、Owaecを見つける"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:461
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:487
 msgid "Release the other prisoners"
 msgstr "他の囚人たちを解放する"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:465
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:491
 msgid "Death of the escapees"
 msgstr "逃亡者の死"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:482
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:508
 msgid "The door won't open from this side."
 msgstr "こっちから扉は開かない。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:500
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:526
 msgid "There's strange noises coming from those pits. I don't like this."
 msgstr "あの穴からは奇妙な物音がする。やな感じだ。"
 
-#. [message]: side,race=2,bat
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:511
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
 msgid "Neep! Neep!"
 msgstr "ニィィ！ ニィィ！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:542
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:568
 msgid "Ack! Get away from me!"
 msgstr "アウッ! あっち行け！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:557
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:583
 msgid "This tunnel seems to go deeper into the caves. We can't go that way."
 msgstr ""
 "このトンネルは洞窟のさらに奥へ向かっているようだ。こっちへは行けないな。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:572
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:598
 msgid "There's a pile of orcish gear and trash here. The stench is wretched."
 msgstr "ここにオークの装備とガラクタの山がある。悪臭でひどいことになってる。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:598
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:624
 msgid ""
 "The other prison cells should be to the north of that chamber. If we can get "
 "past those trolls we could free our comrades."
@@ -2446,37 +2428,37 @@ msgstr ""
 "を解放できるぞ。"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:606
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:632
 msgid "But there's too many of them!"
 msgstr "でも奴らは多すぎる！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:611
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:637
 msgid "Hmm... I have an idea."
 msgstr "うーん……考えがある。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:626
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:652
 msgid "After a while..."
 msgstr "しばらくすると……"
 
 #. [message]: id=$unit.id
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:657
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:683
 msgid "So, how do I look?"
 msgstr "ほら、どうかな？"
 
 #. [message]: id=$unit.id
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:662
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:688
 msgid "I'll try to slip past the trolls. You wait here."
 msgstr "トロルのところを通り抜けてみる。ここで待っていてくれ。"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:699
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:725
 msgid "Ha-ha! These humans will make excellent slaves in my mines!"
 msgstr "ハハ！ この人間たちは俺の鉱山で優秀な奴隷となるぞ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:704
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:730
 msgid ""
 "Opening the cells should confuse the guards for a moment. But I better not "
 "get too close to them..."
@@ -2485,57 +2467,57 @@ msgstr ""
 "な……。"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:772
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:798
 msgid "Eh?"
 msgstr "エッ？"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:784
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:810
 msgid "Hey! Who are you? Get her!"
 msgstr "おい！ お前は何者だ？ 奴を捕まえろ！"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:791
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:817
 msgid "Hey! Who are you? Get him!"
 msgstr "おい！ お前は何者だ？ 奴を捕まえろ！"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:798
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:824
 msgid "Uh oh!"
 msgstr "おっと！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:829
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:855
 msgid "Here's one of the prison cells! Let me open it..."
 msgstr "ここに牢屋が1つある！ 開けさせてくれ……。"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:888
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:914
 msgid "Finally, we're rescued!"
 msgstr "ついに、救出された！"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:910
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:936
 msgid "At last!"
 msgstr "やっとだ！"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:932
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:958
 msgid "Now let's get out of here!"
 msgstr "さあここから出よう！"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:945
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:971
 msgid "What? Who's there? Get them!"
 msgstr "何だ？ あそこにいるのは何者だ？ 奴らを捕まえろ！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:983
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1009
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "番人は混乱している！ 今こそ逃げ出す時だ！"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:988
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1014
 msgid ""
 "The eastern entrance is teeming with orcs. We have to find another way to "
 "exit to the west!"
@@ -2543,7 +2525,7 @@ msgstr ""
 "東の入り口はオークでいっぱいだ。西の出口へ続く別の道を見つけなければならん！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1000
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1026
 msgid ""
 "We have to get our gold back first! It must have been taken to their "
 "treasury."
@@ -2551,22 +2533,22 @@ msgstr ""
 "最初にゴールドを取り戻さねば！ 奴らの宝物庫へ持って行かれたに違いない。"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1014
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1040
 msgid "Gweddry reaches the western exit"
 msgstr "Gweddryが西の出口に到着する"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1018
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1044
 msgid "Retrieve the stolen gold"
 msgstr "盗まれたゴールドを取り戻す"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1028
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1054
 msgid "Release the remaining prisoners"
 msgstr "残りの囚人たちを解放する"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1115
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1141
 msgid ""
 "They have reinforcements pouring in from the eastern entrance! We have to "
 "get out of here quickly!"
@@ -2574,27 +2556,27 @@ msgstr ""
 "奴らの援軍が東の入り口から雪崩れ込んで来るぞ！ 早くここから出なければ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1168
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1194
 msgid "All the gold the orcs took is in this chest!"
 msgstr "オークが奪ったゴールドは全部この箱の中にある！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1179
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1205
 msgid "You've regained $stored_player_gold gold!"
 msgstr "あなたは$stored_player_gold|ゴールド取り戻しました！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1212
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1238
 msgid "Phew! I made it."
 msgstr "フーッ！ うまくいった。"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1220
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1246
 msgid "Where are you going?! Come back!"
 msgstr "どこへ行くつもりだ？！ 戻ってこい！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1239
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1265
 msgid "Good! We have escaped these accursed caves!"
 msgstr "よし、この忌々しい洞窟から脱出できたぞ！"
 
@@ -2618,40 +2600,34 @@ msgid "Varrak-Klar"
 msgstr "Varrak-Klar"
 
 #. [side]: type=Troll Warrior, id=Unhk
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:64
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:63
 msgid "Unhk"
 msgstr "Unhk"
 
 #. [side]: type=Orcish Warlord, id=Ran-Lar
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:86
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:84
 msgid "Ran-Lar"
 msgstr "Ran-Lar"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:150
 msgid "Destroy the bridge OR defeat all enemies"
 msgstr "橋を破壊するか、*あるいは*、全ての敵を倒す"
 
 #. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:177
-#, fuzzy
-#| msgid ""
-#| "Note: every unit not south of the bridge when it is destroyed will be "
-#| "lost (including non-recalled units)"
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:174
 msgid ""
 "Every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
-msgstr ""
-"注意：橋が爆破された時、橋の南側にいない全てのユニットが失われます。(召喚され"
-"ていないユニットを含む)"
+msgstr "橋の南側にいないユニット（召還されていないユニットも含む）は失われます"
 
 #. [unit]: id=Engineer, type=Red Mage
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:187
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:184
 msgid "Engineer"
 msgstr "技術者"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:200
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:197
 msgid ""
 "We have to get out of the Northlands as quickly as possible! Run for your — "
 "what the...?! Who are you?"
@@ -2661,7 +2637,7 @@ msgstr ""
 
 #. [message]: speaker=Engineer
 #. This is thickly accented English
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:205
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:202
 msgid ""
 "I’m an enginea’. I s’pect you’ll have a need of me services. I bet you’re "
 "gonna want me to blow up that bridge ov’r theah."
@@ -2670,12 +2646,12 @@ msgstr ""
 "いって頼むってしゃべるに違いねだんず。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:206
 msgid "Why would we want to do that?!"
 msgstr "何故我々が橋を爆破したいなどと？！"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:210
 msgid ""
 "Well, I see those orcs are chasin’ you, and if I blow up the bridge, they "
 "can’t get across. It’ll help you to escape."
@@ -2684,12 +2660,12 @@ msgstr ""
 "させれば、奴らだば渡るごどができん。 逃げ切れるだびょん。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:217
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:214
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "なるほど……。彼を雇うのは良い考えだと思います。いくらになりますか？"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:221
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:218
 msgid ""
 "I ain’t charging gold — I wants protecshun! Everywhere I go, I see orcs, "
 "undead. ’T’ain’t safe ’round ’ere!"
@@ -2698,7 +2674,7 @@ msgstr ""
 "オークにアンデッドだ。わにだば心落ち着けるような場所がね！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:225
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:222
 msgid ""
 "Very well, we’ll protect you from the undead. But we can’t help you until we "
 "get off this island. Now let’s go!"
@@ -2707,7 +2683,7 @@ msgstr ""
 "貴方を助けることはできませんが。さあ、行きましょう！"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:229
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:226
 msgid ""
 "Deal. I c’n blow’er up once I get to that signpost ov’r dere. That’s where "
 "my eq’pment is. But ev’ryone not ov’r theah on that side when it blows w’ll "
@@ -2718,50 +2694,50 @@ msgstr ""
 "違いねぐオークさかかって殺さいるびょん！"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:246
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:243
 msgid "So, d’ya want me to blow up der bridge yet, Cap’n?"
 msgstr "やあ、そろそろ橋ば爆破すべが？　隊長？"
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:252
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:249
 msgid "Yes, blow it up."
 msgstr "よし、爆破してくれ。"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:253
 msgid "All right! Blast’n time!"
 msgstr "ええだな！ 爆破すっぞ！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:266
 msgid "<big><i>BOOM!!</i></big>"
 msgstr "<big><i>ドカーン！！</i></big>"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:308
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:305
 msgid ""
 "Good, we have escaped from the orcs. Now we must return to save Wesnoth."
 msgstr "よし、オークどもから逃げ切った。さあ、Wesnothを救いに戻らねばならん。"
 
-#. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:320
+#. [option]
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:317
 msgid "No, wait until later."
 msgstr "いや、もう少し待て"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:324
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:321
 msgid "Neh? A’right then, we’ll wait fa’ later, eh?"
 msgstr "ん？ わがったんず。もうわんつか待ちんずや。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:337
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:334
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr ""
 "時間内に橋を落とすことができませんでした！ オークどもは私たちを殲滅するでしょ"
 "う！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:345
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:342
 msgid ""
 "Well, we didn’t have to blow up the bridge after all. Now we must return to "
 "save Wesnoth."
@@ -2769,12 +2745,12 @@ msgstr ""
 "さて、結局橋を爆破する必要はなかったな。さあ、Wesnothを救いに戻らねばならん。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:359
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:356
 msgid "How do you propose to do that?"
 msgstr "どうやって救おうとしているんだ？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:364
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:361
 msgid ""
 "We head south. My research revealed that the dragon Khrakrahs is in "
 "possession of a Null Stone; with it I will be able to block Mal-Ravanal’s "
@@ -2791,7 +2767,7 @@ msgstr ""
 "はMal-Ravanalの弱点を知っています。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:368
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:365
 msgid ""
 "Very well, we will head south. Let us hope we reach Weldyn before Mal-"
 "Ravanal."
@@ -2800,7 +2776,7 @@ msgstr ""
 "はないか。"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:372
+#: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:369
 msgid ""
 "I’ll be followin’ yah from now on. Hope yah can get to Weld’n an’ all so I "
 "c’n stop runnin’..."
@@ -2818,8 +2794,8 @@ msgstr "水没平野"
 msgid "Defeat Khrakrahs"
 msgstr "Khrakrahsを倒す"
 
-#. [message]
 #. [unit]: type=Skeletal Dragon, id=Khrakrahs
+#. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:385
 msgid "Khrakrahs"
@@ -2837,8 +2813,8 @@ msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
 "may be able to help us find—"
 msgstr ""
-"今、我々は馬の平原へ、仲間たちの美しい故国へ着いた。彼らは我々が見つけるのを"
-"助けてくれるかもしれない――"
+"今、我々は馬平原へ、仲間たちの美しい故国へ着いた。彼らは我々が見つけるのを助"
+"けてくれるかもしれない――"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:371
@@ -3313,7 +3289,7 @@ msgstr "Gweddry、余等の行動計画に関して決断をしたのか？"
 msgid "I have. I think we should..."
 msgstr "しました。我々がすべきなのは……"
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:306
 msgid "challenge Mal-Ravanal to a duel."
 msgstr "Mal-Ravanalに決闘を申し込むことです。"
@@ -3323,7 +3299,7 @@ msgstr "Mal-Ravanalに決闘を申し込むことです。"
 msgid "I will send the message at once."
 msgstr "直ちに言付けを送ります。"
 
-#. [option]: speaker=Gweddry
+#. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:320
 msgid "try to isolate Mal-Ravanal in battle."
 msgstr "戦闘中にMal-Ravanalを孤立させてみます。"
@@ -3338,10 +3314,10 @@ msgstr "我等が部隊の準備を始める。"
 msgid "The Duel"
 msgstr "決闘"
 
-#. [event]
-#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [event]
 #. [variable]
+#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:226
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:280
@@ -3657,7 +3633,7 @@ msgid ""
 "We wish to offer you a new home in the Estmark Hills along with Our thanks."
 msgstr ""
 "Grug、Gweddryは余に、そなたとその部族が卿らの仲間に与えてくれた援助のことを教"
-"えてくれた。余の感謝と共にEstmarkの丘沿いに新しい故郷を提供したい。"
+"えてくれた。余の感謝と共にEstmark丘陵沿いに新しい故郷を提供したい。"
 
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:164
@@ -3754,10 +3730,8 @@ msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Mounted Fighter"
 msgid "Bone Knight"
-msgstr "乗馬戦士"
+msgstr "骸骨の騎士"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:27
@@ -3766,17 +3740,19 @@ msgid ""
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"かつて平野を駆け巡った偉大な戦士、骸骨の馬の上の騎士は、恐怖と破壊を撒き散ら"
+"すために不浄な魔法によって大地から蘇りました。"
 
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:31
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:41
 msgid "axe"
-msgstr ""
+msgstr "斧"
 
 #. [attack]: type=impact
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:40
 msgid "trample"
-msgstr ""
+msgstr "踏みつけ"
 
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
@@ -3854,7 +3830,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
-msgstr ""
+msgstr "スケルトンライダー"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:34
@@ -3863,6 +3839,8 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"かつて平野を雷鳴のように駆け巡った偉大な戦士、骸骨の馬の上の騎士は、恐怖と破"
+"壊を撒き散らすために不浄な魔法によって墓地から蘇りました。"
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
@@ -4034,14 +4012,3 @@ msgstr "このアイテムは私には適しません。他の人にあげてく
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "聖なるお守り"
-
-#~ msgid ""
-#~ "There is a great fortune in this chest of treasure! I can count two "
-#~ "hundred pieces of gold."
-#~ msgstr "宝箱内にすばらしい財宝が！ ゴールドが200枚もあるぞ！"
-
-#~ msgid "I summon from the depths of the river beasts to destroy you!"
-#~ msgstr "お前らを滅ぼすために、川の深層から獣を召喚してやろう！"
-
-#~ msgid "Argh! I’m dead! Well, dwarves are still the best!"
-#~ msgstr "ゴファ！ 死ぬのか！ ドワーフ族万歳！"

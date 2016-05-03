@@ -513,7 +513,7 @@ namespace
 
 void manager::pre_draw()
 {
-	if (can_modify_game_state() && has_actions()) {
+	if (can_modify_game_state() && has_actions() && unit_map_lock_.unique()) {
 		move_owners_finder move_finder;
 		for_each_action(std::ref(move_finder));
 		units_owning_moves_ = move_finder.get_units_owning_moves();

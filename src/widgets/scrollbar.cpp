@@ -27,21 +27,21 @@
 #include <iostream>
 
 namespace {
-	const std::string scrollbar_top = "buttons/scrollbars/scrolltop.png";
-	const std::string scrollbar_bottom = "buttons/scrollbars/scrollbottom.png";
-	const std::string scrollbar_mid = "buttons/scrollbars/scrollmid.png";
+	const std::string scrollbar_top = "buttons/scrollbars_large/scrolltop.png";
+	const std::string scrollbar_bottom = "buttons/scrollbars_large/scrollbottom.png";
+	const std::string scrollbar_mid = "buttons/scrollbars_large/scrollmid.png";
 
-	const std::string scrollbar_top_hl = "buttons/scrollbars/scrolltop-active.png";
-	const std::string scrollbar_bottom_hl = "buttons/scrollbars/scrollbottom-active.png";
-	const std::string scrollbar_mid_hl = "buttons/scrollbars/scrollmid-active.png";
+	const std::string scrollbar_top_hl = "buttons/scrollbars_large/scrolltop-active.png";
+	const std::string scrollbar_bottom_hl = "buttons/scrollbars_large/scrollbottom-active.png";
+	const std::string scrollbar_mid_hl = "buttons/scrollbars_large/scrollmid-active.png";
 
-	const std::string scrollbar_top_pressed = "buttons/scrollbars/scrolltop-pressed.png";
-	const std::string scrollbar_bottom_pressed = "buttons/scrollbars/scrollbottom-pressed.png";
-	const std::string scrollbar_mid_pressed = "buttons/scrollbars/scrollmid-pressed.png";
+	const std::string scrollbar_top_pressed = "buttons/scrollbars_large/scrolltop-pressed.png";
+	const std::string scrollbar_bottom_pressed = "buttons/scrollbars_large/scrollbottom-pressed.png";
+	const std::string scrollbar_mid_pressed = "buttons/scrollbars_large/scrollmid-pressed.png";
 
-	const std::string groove_top = "buttons/scrollbars/scrollgroove-top.png";
-	const std::string groove_mid = "buttons/scrollbars/scrollgroove-mid.png";
-	const std::string groove_bottom = "buttons/scrollbars/scrollgroove-bottom.png";
+	const std::string groove_top = "buttons/scrollbars_large/scrollgroove-top.png";
+	const std::string groove_mid = "buttons/scrollbars_large/scrollgroove-mid.png";
+	const std::string groove_bottom = "buttons/scrollbars_large/scrollgroove-bottom.png";
 
 }
 

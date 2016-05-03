@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-multiplayer)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-10-28 12:33-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -107,12 +107,12 @@ msgstr ""
 "sugestão ou problema que tiveres."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:921
+#: data/multiplayer/eras.lua:65
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Equipa %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -121,12 +121,12 @@ msgstr ""
 "= %d  Pontuação de Unidades = %d  Gold = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid "Grand total: <b>%d</b>"
 msgstr "Total geral: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:947
+#: data/multiplayer/eras.lua:91
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>Equipa %d</span> tem a vantagem."
 
@@ -1182,6 +1182,58 @@ msgstr ""
 "Enquanto sussurros fantasmagóricos drenam a tua força de vontade, "
 "compreendes que o teu tempo nesta terra acabou."
 
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"As últimas e mais poderosas das criaturas estão quase a chegar à nós. "
+"Acredito que se pudéssemos derrotar-as, a vitória será nossa."
+
+#
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Os gritos de dor e piedade finalmente se calam enquanto removes a tua lâmina "
+"ensanguentada do corpo do último dos rebeldes. Não haverá mais resistência "
+"da escumalha local. O teu reino finalmente atingiu a estabilidade."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Tempo Claro"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Seca"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Temporal"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Nevada"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Nevada Pesada"
+
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
@@ -1655,19 +1707,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3j — O Pântano de Alirok"
 
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2302,8 +2354,8 @@ msgstr ""
 "(norte contra sudeste contra sudoeste). Há poucas aldeias por jogador "
 "portanto 3 ouro por cada é recomendado."
 
-#. [multiplayer]: id=multiplayer_Random_Map
 #. [scenario]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
@@ -2319,8 +2371,8 @@ msgstr ""
 "Um mapa gerado aleatoriamente. Nota: mapas aleatórios não são frequentemente "
 "balanceados, mas, se tiver tempo, podes gerar novos até obteres um bom mapa."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #. [scenario]: id=multiplayer_Random_Map_Desert
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
@@ -2338,8 +2390,8 @@ msgstr ""
 "não são frequentemente balanceados, mas, se tiver tempo, podes gerar novos "
 "até obteres um bom mapa."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #. [scenario]: id=multiplayer_Random_Map_Marsh
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
@@ -2357,8 +2409,8 @@ msgstr ""
 "não são frequentemente balanceados, mas se tiver tempo, podes gerar novos "
 "até obteres um bom mapa."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #. [scenario]: id=multiplayer_Random_Map_Winter
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
@@ -2421,40 +2473,6 @@ msgid ""
 msgstr ""
 "Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
-
-#
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Os gritos de dor e piedade finalmente se calam enquanto removes a tua "
-#~ "lâmina ensanguentada do corpo do último dos rebeldes. Não haverá mais "
-#~ "resistência da escumalha local. O teu reino finalmente atingiu a "
-#~ "estabilidade."
-
-#
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "As últimas e mais poderosas das criaturas estão quase a chegar à nós. "
-#~ "Acredito que se pudéssemos derrotar-as, a vitória será nossa."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Nevada Pesada"
-
-#~ msgid "Snowfall"
-#~ msgstr "Nevada"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Temporal"
-
-#~ msgid "Drought"
-#~ msgstr "Seca"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Tempo Claro"
 
 #
 # EAOMA = E Ainda Outro Mapa Aleatorio

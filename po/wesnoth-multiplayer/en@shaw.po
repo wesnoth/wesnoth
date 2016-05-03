@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -91,24 +91,24 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:921
+#: data/multiplayer/eras.lua:65
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:947
+#: data/multiplayer/eras.lua:91
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
@@ -1082,6 +1082,56 @@ msgstr ""
 "𐑞 𐑧𐑯𐑩𐑥𐑦 𐑗𐑽𐑟 𐑨𐑟 𐑩 𐑛𐑸𐑒 𐑥𐑦𐑕𐑑 𐑮𐑲𐑟𐑩𐑟 𐑓𐑮𐑪𐑥 𐑞 𐑤𐑨𐑯𐑛, 𐑦𐑯𐑜𐑩𐑤𐑓𐑦𐑙 𐑿. 𐑨𐑟 𐑜𐑴𐑕𐑑𐑤𐑰 𐑢𐑦𐑕𐑐𐑕 "
 "𐑛𐑮𐑱𐑯 𐑩𐑢𐑱 𐑿𐑼 𐑢𐑦𐑤, 𐑿 𐑮𐑾𐑤𐑲𐑟 𐑞𐑨𐑑 𐑿𐑼 𐑑𐑲𐑥 𐑦𐑯 𐑞𐑦𐑕 𐑤𐑨𐑯𐑛 𐑦𐑟 𐑴𐑝𐑼."
 
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"𐑞 𐑤𐑭𐑕𐑑 𐑯 𐑥𐑴𐑕𐑑 𐑐𐑬𐑼𐑓𐑩𐑤 𐑝 𐑞𐑰𐑟 𐑒𐑮𐑰𐑗𐑼𐑟 𐑸 𐑷𐑤𐑥𐑴𐑕𐑑 𐑩𐑐𐑪𐑯 𐑳𐑕. 𐑲 𐑓𐑰𐑤 𐑞𐑨𐑑 𐑦𐑓 𐑢𐑰 𐑒𐑨𐑯 "
+"𐑓𐑦𐑯𐑦𐑖 𐑞𐑧𐑥 𐑪𐑓 𐑦𐑯 𐑑𐑲𐑥, 𐑢𐑰 𐑖𐑨𐑤 𐑚𐑰 𐑝𐑦𐑒𐑑𐑹𐑦𐑩𐑕."
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"𐑞 𐑕𐑒𐑮𐑰𐑥𐑟 𐑯 𐑐𐑤𐑰𐑟 𐑓𐑹 𐑥𐑻𐑕𐑦 𐑸 𐑓𐑲𐑯𐑩𐑤𐑦 𐑕𐑲𐑤𐑩𐑯𐑕𐑑, 𐑨𐑟 𐑿 𐑮𐑰𐑥𐑵𐑝 𐑿𐑼 𐑚𐑤𐑳𐑛 𐑕𐑴𐑒𐑑 𐑚𐑤𐑱𐑛 𐑓𐑮𐑪𐑥 "
+"𐑞 𐑤𐑭𐑕𐑑 𐑝 𐑞 𐑮𐑧𐑚𐑩𐑤𐑟. 𐑞𐑺 𐑢𐑦𐑤 𐑚𐑰 𐑯𐑴 𐑥𐑹 𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕 𐑓𐑮𐑪𐑥 𐑞 𐑤𐑴𐑒𐑩𐑤 𐑕𐑒𐑩𐑥. 𐑿𐑼 𐑮𐑱𐑯 𐑣𐑨𐑟 "
+"𐑓𐑲𐑯𐑩𐑤𐑦 𐑻𐑯𐑛 𐑕𐑑𐑩𐑚𐑦𐑤𐑦𐑑𐑰."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "𐑒𐑤𐑽 𐑢𐑧𐑞𐑼"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "𐑛𐑮𐑬𐑑"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "𐑣𐑧𐑝𐑦 𐑮𐑱𐑯𐑟"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "𐑕𐑯𐑴𐑓𐑭𐑤"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "𐑣𐑧𐑝𐑦 𐑕𐑯𐑴𐑓𐑭𐑤"
+
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 #, fuzzy
@@ -1531,19 +1581,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirok 𐑥𐑸𐑖"
 
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2151,8 +2201,8 @@ msgstr ""
 "𐑝𐑻𐑕𐑩𐑟. 𐑕𐑬𐑔𐑢𐑧𐑕𐑑). 𐑞𐑺 𐑸 𐑝𐑧𐑮𐑦 𐑓𐑿 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 𐑐𐑻 𐑐𐑤𐑱𐑻, 𐑕𐑴 3 𐑜𐑴𐑤𐑛 𐑐𐑻 𐑝𐑦𐑤𐑦𐑡𐑦𐑟 𐑦𐑟 "
 "𐑮𐑧𐑒𐑩𐑥𐑧𐑯𐑛𐑩𐑛."
 
-#. [multiplayer]: id=multiplayer_Random_Map
 #. [scenario]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
@@ -2167,8 +2217,8 @@ msgstr ""
 "𐑮𐑨𐑯𐑛𐑩𐑥𐑤𐑦 𐑡𐑧𐑯𐑼𐑱𐑑𐑩𐑛 𐑥𐑨𐑐. 𐑯𐑴𐑑: 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, 𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, "
 "𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #. [scenario]: id=multiplayer_Random_Map_Desert
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
@@ -2184,8 +2234,8 @@ msgstr ""
 "𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑢𐑦𐑞 𐑕𐑭𐑯𐑛 𐑨𐑟 𐑞 𐑐𐑮𐑲𐑥𐑩𐑮𐑦 𐑑𐑻𐑱𐑯. 𐑯𐑴𐑑: 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, "
 "𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, 𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #. [scenario]: id=multiplayer_Random_Map_Marsh
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
@@ -2201,8 +2251,8 @@ msgstr ""
 "𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑢𐑦𐑞 𐑕𐑢𐑭𐑥𐑐 𐑨𐑟 𐑞 𐑐𐑮𐑲𐑥𐑩𐑮𐑦 𐑑𐑻𐑱𐑯. 𐑯𐑴𐑑: 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, "
 "𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, 𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #. [scenario]: id=multiplayer_Random_Map_Winter
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
@@ -2260,37 +2310,6 @@ msgid ""
 msgstr ""
 "𐑩 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚𐑧𐑯𐑗𐑥𐑸𐑒, 𐑿𐑟 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "𐑞 𐑕𐑒𐑮𐑰𐑥𐑟 𐑯 𐑐𐑤𐑰𐑟 𐑓𐑹 𐑥𐑻𐑕𐑦 𐑸 𐑓𐑲𐑯𐑩𐑤𐑦 𐑕𐑲𐑤𐑩𐑯𐑕𐑑, 𐑨𐑟 𐑿 𐑮𐑰𐑥𐑵𐑝 𐑿𐑼 𐑚𐑤𐑳𐑛 𐑕𐑴𐑒𐑑 𐑚𐑤𐑱𐑛 "
-#~ "𐑓𐑮𐑪𐑥 𐑞 𐑤𐑭𐑕𐑑 𐑝 𐑞 𐑮𐑧𐑚𐑩𐑤𐑟. 𐑞𐑺 𐑢𐑦𐑤 𐑚𐑰 𐑯𐑴 𐑥𐑹 𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕 𐑓𐑮𐑪𐑥 𐑞 𐑤𐑴𐑒𐑩𐑤 𐑕𐑒𐑩𐑥. 𐑿𐑼 "
-#~ "𐑮𐑱𐑯 𐑣𐑨𐑟 𐑓𐑲𐑯𐑩𐑤𐑦 𐑻𐑯𐑛 𐑕𐑑𐑩𐑚𐑦𐑤𐑦𐑑𐑰."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "𐑞 𐑤𐑭𐑕𐑑 𐑯 𐑥𐑴𐑕𐑑 𐑐𐑬𐑼𐑓𐑩𐑤 𐑝 𐑞𐑰𐑟 𐑒𐑮𐑰𐑗𐑼𐑟 𐑸 𐑷𐑤𐑥𐑴𐑕𐑑 𐑩𐑐𐑪𐑯 𐑳𐑕. 𐑲 𐑓𐑰𐑤 𐑞𐑨𐑑 𐑦𐑓 𐑢𐑰 𐑒𐑨𐑯 "
-#~ "𐑓𐑦𐑯𐑦𐑖 𐑞𐑧𐑥 𐑪𐑓 𐑦𐑯 𐑑𐑲𐑥, 𐑢𐑰 𐑖𐑨𐑤 𐑚𐑰 𐑝𐑦𐑒𐑑𐑹𐑦𐑩𐑕."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "𐑣𐑧𐑝𐑦 𐑕𐑯𐑴𐑓𐑭𐑤"
-
-#~ msgid "Snowfall"
-#~ msgstr "𐑕𐑯𐑴𐑓𐑭𐑤"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "𐑣𐑧𐑝𐑦 𐑮𐑱𐑯𐑟"
-
-#~ msgid "Drought"
-#~ msgstr "𐑛𐑮𐑬𐑑"
-
-#~ msgid "Clear Weather"
-#~ msgstr "𐑒𐑤𐑽 𐑢𐑧𐑞𐑼"
 
 #, fuzzy
 #~| msgid "Random map"

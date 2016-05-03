@@ -6,17 +6,17 @@
 # Translators:
 # Automatically generated, 2005
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005
-# RatArmy <broadbarredfirefish@gmail.com>, 2015
+# RatArmy <broadbarredfirefish@gmail.com>, 2015-2016
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth1.12\n"
+"Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
-"PO-Revision-Date: 2015-08-18 08:14+0000\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"PO-Revision-Date: 2016-04-17 01:45+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
-"Language-Team: Japanese (Japan) (http://www.transifex.com/wesnoth-jp/"
-"wesnoth112/language/ja_JP/)\n"
-"Language: ja_JP\n"
+"Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
+"japanese/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -75,8 +75,9 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
-"デフォルトの時代の6つの党派に、さらにもう1つの党派を付け加えたものです。カリ"
-"フェイトは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦います。\n"
+"標準の時代（Default Era）の6つの党派に、さらにもう1つの党派を付け加えたもので"
+"す。カリフェイトは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦いま"
+"す。\n"
 "\n"
 "この時代はまだ開発中であり、何か問題があれば報告してください。"
 
@@ -101,12 +102,12 @@ msgstr ""
 "この時代はまだ開発中であり、何か問題があれば報告してください。"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:921
+#: data/multiplayer/eras.lua:65
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>陣営 %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -115,12 +116,12 @@ msgstr ""
 "コア = %d  ゴールド = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid "Grand total: <b>%d</b>"
 msgstr "合計: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:947
+#: data/multiplayer/eras.lua:91
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>陣営 %d</span>が有利です。"
 
@@ -142,6 +143,12 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
+"<bold>text='ドレーク'</bold>はドラゴンのような<ref>text='ドレーク' dst='.."
+"race_drake'</ref>と<ref>text='トカゲ' dst='..race_lizard'</ref>の連合軍です。"
+"ドレークはドラゴンの末裔ですが、サイズはそれほど大きくありません。トカゲはド"
+"レークより小さく、祖先は異なります。ドレークは高い機動力を持ちますが回避率は"
+"低いため、<ref>text='標準の時代（Default Era）' dst='..era_era_default'</ref>"
+"の陣営の中でも変わった戦術が必要となるでしょう。"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
@@ -161,6 +168,11 @@ msgid ""
 "be more expensive than those of the Loyalist faction, they make up for this "
 "with high mobility — especially on hilly terrains."
 msgstr ""
+"<bold>text='カリフェイト'</bold>は南の砂漠や丘から来た人間の党派です。魔法は"
+"持ちませんが、地形の特徴を活かし、夕暮れや夜明けでの攻撃に適しています。秩序"
+"と薄明ユニットに分かれており、回復ユニットや精密な近接攻撃、馬上弓兵などを有"
+"しています。カリフェイトのユニットは忠誠軍よりも効果ですが、高い機動力を持"
+"ち、特に丘地形に適しています。"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -181,6 +193,12 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
+"<bold>text='ナルガン同盟（Knalgan Alliance）'</bold> は<ref>text='ドワーフ' "
+"dst='..race_dwarf'</ref>と<ref>text='人間' dst='..race_human'</ref>の連合軍で"
+"す。ドワーフは地下に住む頑強な古代の種族で、戦士でもあります。無法者は人間の"
+"社会に適応できなかった者たちで、共通の敵と戦うためにドワーフと共闘していま"
+"す、。特定の地形においては頑強で守備的なドワーフを、他の地形での戦闘をこなせ"
+"る人間がカバーします。"
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
@@ -198,6 +216,10 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"<bold>text='忠誠軍（Loyalists）'</bold>はWesnoth国に忠誠を誓う<ref>text='人"
+"間' dst='..race_human'</ref>の党派です。人間は様々な分野に進出するほど多芸な"
+"種族です。忠誠軍は多彩な近接攻撃と、弓兵と魔術師による遠隔攻撃のサポートを"
+"持っています。"
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
@@ -218,6 +240,12 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"<bold>text='北方部族（Northerners）'</bold>は<ref>text='オーク' dst='.."
+"race_orc'</ref>と大陸の北に住むオークの同盟者たちの連合軍です。北方部族はオー"
+"クの戦士と、奴隷の<ref>text='ゴブリン' dst='..race_goblin'</ref>、オークに騙"
+"されて戦闘に参加している<ref>text='トロル' dst='..race_troll'</ref>、蛇のよう"
+"な<ref>text='ナーガ' dst='..race_naga'</ref>で構成されています。北方部族はユ"
+"ニットのコストの低さと高いHPが武器です。"
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -241,6 +269,15 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"<bold>text='反乱軍（Rebels）'</bold>は<ref>text='エルフ' dst='..race_elf'</"
+"ref>と様々な森の住人たちの同盟軍です。「反乱軍」の呼び名は、「王位継承者」の"
+"時代に邪悪な女王Asheviereに反乱を起こしたため、人間から呼ばれていたものです。"
+"エルフは魔法生物であり、弓術を極め、人間より長い時を生きます。自然との調和か"
+"ら、エルフは<ref>text='人間' dst='..race_human'</ref>の魔術師や"
+"<ref>text='マーフォーク' dst='..race_merman'</ref>、<ref>text='ウーズ' "
+"dst='..race_wose'</ref>と呼ばれる木に似た生き物を味方に付けています。反乱軍の"
+"利点は、森での高い回避率と強力な遠隔攻撃、エルフの中立アラインメントでしょ"
+"う。"
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -261,6 +298,12 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"<bold>text='アンデッド（Undead）'</bold>は<ref>text='アンデッド' dst='.."
+"race_undead'</ref>と<ref>text='人間' dst='..race_human'</ref>の黒魔術師の軍勢"
+"です。「暗黒僧」はしばしば凄まじいダメージを与えますが、邪悪な魔術にエネル"
+"ギーを蝕まれているため貧弱で、近接攻撃を持ちません。アンデッドは非常に攻撃的"
+"な党派であり、夜間であれば<ref>text='標準の時代' dst='..era_era_default'</"
+"ref>の中でも最高の力を発揮します。"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
@@ -427,15 +470,17 @@ msgid ""
 msgstr ""
 "遠い昔、Haldricの時代よりも遥かな過去、Lintanirの森の東端の遥か向こうで、恐ろ"
 "しい大戦争があった。記録によると、優れた戦術家でもあり秘術を身につけた強力な"
-"バトルメイジがおり、部下たちから「Dauntless」と呼ばれていた。アーケンクレーブ"
-"の戦いにおいて、Dauntlessとその軍勢はKah Ruukとして知られる魔術を操る残忍な悪"
-"魔族と戦った。何万ものKah Ruukに囲まれたため、Dauntlessは魔術によって強力な大"
-"地の精霊（何故かはわからないが、Dauntlessに借りがあったようだ）を呼び出した。"
-"精霊は巨大な岩石を大地の底から持ち上げ、変形させ、一瞬の内に巨大な要塞となっ"
-"た。何千ものKah Ruukがアーケンクレーブの要塞を越えようとして倒れ、Dauntlessの"
-"軍勢は勝利した。その後、この土地は軍の要塞となった。大魔術師Dauntlessの勢力が"
-"遺したアーティファクトや遺物があると噂されており、それらが花崗岩や黒曜石の壁"
-"の中に隠されているらしい。 Designed by Doc Paterson."
+"バトルメイジがおり、部下たちから「Dauntless（恐れ知らず）」と呼ばれていた。"
+"アーケンクレーブの戦いにおいて、Dauntlessとその軍勢はKah Ruukとして知られる魔"
+"術を操る残忍な悪魔族と戦った。何万ものKah Ruukに囲まれたため、Dauntlessは魔術"
+"によって強力な大地の精霊（何故かはわからないが、Dauntlessに借りがあったよう"
+"だ）を呼び出した。精霊は巨大な岩石を大地の底から持ち上げ、変形させ、一瞬の内"
+"に巨大な要塞となった。何千ものKah Ruukがアーケンクレーブの要塞を越えようとし"
+"て倒れ、Dauntlessの軍勢は勝利した。その千年以上後、戦士の女王Cynsaun一世が降"
+"霊術士の一団をアーケンクレーブの廃墟から追い払い、その後数年かけて軍事要塞へ"
+"と改装した。ここには大魔術師Dauntlessの勢力が遺したアーティファクトや遺物があ"
+"ると噂されており、それらは花崗岩や黒曜石の壁の中に隠されているらしい。 "
+"Designed by Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -1110,6 +1155,51 @@ msgstr ""
 "た群れがあなたの精神力を消耗させると、あなたはこの地におけるあなたの時間が終"
 "わったことに気がついた。"
 
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr ""
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
@@ -1533,19 +1623,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3p — Alirok の沼地"
 
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2138,8 +2228,8 @@ msgstr ""
 "ヤーあたりの村の数が非常に少ないので、村ひとつあたりの収入を 3 ゴールドにする"
 "ことを推奨。"
 
-#. [multiplayer]: id=multiplayer_Random_Map
 #. [scenario]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
@@ -2154,8 +2244,8 @@ msgstr ""
 "ランダムに作成されたマップ。注意：ランダムマップはバランスが悪いことがよくあ"
 "りますが、時間をかけて良いものができるまで作り直してもよいでしょう。"
 
-#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #. [scenario]: id=multiplayer_Random_Map_Desert
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
@@ -2171,8 +2261,8 @@ msgstr ""
 "主要な地形が砂のランダムマップ。注意：ランダムマップはバランスが悪いことがよ"
 "くありますが、時間をかけて良いものができるまで作り直してもよいでしょう。"
 
-#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #. [scenario]: id=multiplayer_Random_Map_Marsh
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
@@ -2188,8 +2278,8 @@ msgstr ""
 "主要な地形が沼地のランダムマップ。注意：ランダムマップはバランスが悪いことが"
 "よくありますが、時間をかけて良いものができるまで作り直してもよいでしょう。"
 
-#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #. [scenario]: id=multiplayer_Random_Map_Winter
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
@@ -2247,37 +2337,3 @@ msgid ""
 msgstr ""
 "Wesnoth のベンチマークです。以下のオプションを使用します。--no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end"
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "最後の反逆者から血のしたたる剣を抜くと、叫び声と慈悲を求める嘆願が止み、静"
-#~ "寂が訪れた。この地方のくずどもにはもう抵抗する者はいないだろう。あなたの治"
-#~ "世はようやく安定したのだ。"
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "最後の最も強力な生き物たちがまさに我々に襲いかかろうとしている。彼らを時間"
-#~ "内に倒すことができれば、勝利することができるだろう。"
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "豪雪"
-
-#~ msgid "Snowfall"
-#~ msgstr "雪"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "大雨"
-
-#~ msgid "Drought"
-#~ msgstr "干ばつ"
-
-#~ msgid "Clear Weather"
-#~ msgstr "晴天"
-
-#~ msgid "Custom"
-#~ msgstr "カスタム"

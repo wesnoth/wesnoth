@@ -120,7 +120,6 @@ libwesnoth_sources = Split("""
     pathutils.cpp
     preferences.cpp
     quit_confirmation.cpp
-    race.cpp
     reports.cpp
     show_dialog.cpp
     sound_music_track.cpp
@@ -553,10 +552,13 @@ wesnoth_sources = Split("""
     units/helper.cpp
     units/id.cpp
     units/map.cpp
+    units/race.cpp
     units/types.cpp
     units/udisplay.cpp
     units/unit.cpp
     utils/sha1.cpp
+    utils/context_free_grammar_generator.cpp
+    utils/markov_generator.cpp
     variable_info.cpp
     variable.cpp
     whiteboard/action.cpp

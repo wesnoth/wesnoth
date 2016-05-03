@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2009-04-26 12:38-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -163,11 +163,11 @@ msgstr "Álfar"
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
+#. [side]: type=Orcish Warrior, id=Urugha
 #. [side]: type=Orcish Slayer, id=Gharlsa
-#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:89
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:60
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:67
@@ -188,7 +188,7 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:118
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:104
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:103
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:92
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:159
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:112
@@ -350,12 +350,12 @@ msgid "Gharlsa"
 msgstr "Gharlsa"
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:100
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:99
 msgid "Defeat Gharlsa"
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:116
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:115
 msgid ""
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
@@ -363,19 +363,19 @@ msgid ""
 msgstr ""
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:130
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:129
 msgid "The trail leads straight to this place, my lord."
 msgstr ""
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:135
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:134
 msgid ""
 "There is a keep ahead of us. How comes it that we know nothing of it? I "
 "thought our borders were watched more carefully."
 msgstr ""
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:140
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:139
 msgid ""
 "I... I know not, my lord. For ages there was no one in these lands that "
 "could build such a thing save us. I fear we have fallen prey a false sense "
@@ -383,49 +383,49 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:145
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:144
 msgid "When the fighting ends, I’ll have some answers. But for now—"
 msgstr ""
 
 #. [message]: speaker=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:150
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:149
 msgid "Gharlsa sees elves... yes... Fresh meat for wolves. Yes, yes..."
 msgstr ""
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:155
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:154
 msgid "— let’s focus on the task at hand."
 msgstr ""
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:160
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:159
 msgid "Does that demented creature truly believe he can kill us?"
 msgstr ""
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:165
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:164
 msgid "Appearances can be deceiving. Tell the men to be cautious."
 msgstr ""
 
 #. [message]: speaker=Gharlsa
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:177
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:176
 msgid "Yes... yes... Slay them!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:189
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:188
 msgid "Hurts... failed... Rualsha gonna be angry..."
 msgstr ""
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:201
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:200
 msgid ""
 "This... ‘Rualsha’ again. We need to forge ahead; the answers we seek are not "
 "here. Perhaps we will find them further north."
 msgstr ""
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:206
+#: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:205
 msgid ""
 "Destroy this place and let the forest take the ruins. We don’t want any more "
 "undesirables to use it."

@@ -393,6 +393,7 @@ set_source_files_properties(
 	desktop/notifications.cpp
 	network.cpp
 	network_worker.cpp
+	tests/test_lua.cpp
 	PROPERTIES
 		COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
 )
@@ -546,6 +547,7 @@ add_library(wesnoth-gui_tooltip
 # behavior of the widgets. It also contains the builder code
 # for the widgets since the code has inter dependencies.
 set(wesnoth-gui_widget_SRC
+	gui/dialogs/drop_down_list.cpp
 	gui/widgets/button.cpp
 	gui/widgets/combobox.cpp
 	gui/widgets/container.cpp
@@ -818,7 +820,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/depcheck_confirm_change.cpp
 	gui/dialogs/depcheck_select_new.cpp
 	gui/dialogs/dialog.cpp
-	gui/dialogs/drop_down_list.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
 	gui/dialogs/editor/edit_label.cpp
@@ -980,8 +981,11 @@ set(wesnoth-main_SRC
 	units/helper.cpp
 	units/id.cpp
 	units/map.cpp
+	units/race.cpp
 	units/types.cpp
 	utils/sha1.cpp
+	utils/context_free_grammar_generator.cpp
+	utils/markov_generator.cpp
 	variable.cpp
 	variable_info.cpp
 	whiteboard/action.cpp
@@ -1038,7 +1042,6 @@ set(libwesnoth-game_STAT_SRC
 	pathutils.cpp
 	preferences.cpp
 	preferences_display.cpp
-	race.cpp
 	quit_confirmation.cpp
 	reports.cpp
 	show_dialog.cpp

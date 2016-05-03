@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-12-04 21:12+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -272,9 +272,9 @@ msgid "The light fills me!"
 msgstr "Cahaya mengisi diriku!"
 
 #. [message]: speaker=First Oracle
-#. [message]: speaker=Fourth Oracle
 #. [message]: speaker=Second Oracle
 #. [message]: speaker=Third Oracle
+#. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:179
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:183
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:187
@@ -485,8 +485,8 @@ msgstr ""
 msgid "The Road to Weldyn"
 msgstr "Jalan ke Weldyn"
 
-#. [side]
 #. [side]: type=Journeyman Mage
+#. [side]
 #. [side]: type=King of Wesnoth, id=Garard
 #. [side]: type=King of Wesnoth, id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:24
@@ -508,11 +508,11 @@ msgid "Urthaka-Tan"
 msgstr "Urthaka-Tan"
 
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
-#. [side]: type=Bandit, id=Harold
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #. [side]: type=Orcish Warrior, id=Urthaka-Tan
 #. [side]: type=Rogue, id=Garrath
+#. [side]: type=Bandit, id=Harold
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:62
@@ -640,8 +640,8 @@ msgstr ""
 "Weldyn. Wilayah ini tidak aman untuk seorang pengembara sendirian, dan kita "
 "dapat mengetahui apa yang menyebabkan para orc begitu jauh ke selatan."
 
-#. [scenario]: id=04_Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
+#. [scenario]: id=04_Leollyn
 #. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:69
@@ -1071,7 +1071,7 @@ msgstr ""
 "Salam, orang-orang asing! Rawa ini berbahaya... anda ingin menyeberanginya, "
 "anda akan membutuhkan perlindungan — biayanya hanya $fee emas!"
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:135
 msgid "Thanks very much. Here’s the gold..."
 msgstr "Terima kasih banyak. Ini emasnya..."
@@ -1098,7 +1098,7 @@ msgstr ""
 "Yah, setidaknya kita hanya harus berhadapan dengan salah satu dari mereka "
 "sekarang..."
 
-#. [option]: speaker=Garrath
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:183
 msgid "No thanks — we’ll manage by ourselves..."
 msgstr "Tidak, terimakasih — kami akan mengurus diri sendiri..."
@@ -1207,8 +1207,8 @@ msgstr ""
 "tinggalkan tempat jahat ini secepat mungkin — saya ingin membawa kita keluar "
 "dari Illuven sebelum senja."
 
-#. [scenario]: id=08_Ur-Thorodor
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
+#. [scenario]: id=08_Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:42
 msgid "Ur-Thorodor"
@@ -1425,7 +1425,7 @@ msgstr "<i>Buk</i>!"
 msgid "Do you serve Iliah-Malal, living man?"
 msgstr "Apakah anda mengabdi kepada Iliah-Malal, makhluk hidup?"
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
 msgid "Yes, I serve him."
 msgstr "Ya, saya mengabdi kepadanya."
@@ -1435,7 +1435,7 @@ msgstr "Ya, saya mengabdi kepadanya."
 msgid "Then you will not mind if we kill you! Hahahahah!"
 msgstr "Maka anda tidak akan keberatan jika kami membunuhmu! Hahahahah!"
 
-#. [option]: speaker={STRING}
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
 msgid "No, I do not."
 msgstr "Tidak, saya tidak keberatan."
@@ -1853,9 +1853,9 @@ msgstr ""
 msgid "The Gate Between Worlds"
 msgstr "Gerbang Antara Dua Dunia "
 
-#. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Iliah-Malal
 #. [unit]: id=Iliah-Malal, type=Lich
+#. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:28
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:150
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:60
@@ -2473,7 +2473,7 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:657
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:183
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:180
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:147
 msgid "Defeat all enemies"
 msgstr "Kalahkan seluruh musuh"
@@ -2831,22 +2831,22 @@ msgid "Knafa-ord"
 msgstr "Knafa-ord"
 
 #. [side]: type=Orcish Warlord, id=Tan-drul
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:99
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:98
 msgid "Tan-drul"
 msgstr "Tan-drul"
 
 #. [side]: type=Orcish Warlord, id=Krardul
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:134
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:132
 msgid "Krardul"
 msgstr "Krardul"
 
 #. [side]: type=Elvish Captain, id=Clartakis
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:169
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:166
 msgid "Clartakis"
 msgstr "Clartakis"
 
 #. [objective]: condition=lose
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:187
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:184
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:123
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:330
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:185
@@ -2858,7 +2858,7 @@ msgid "Death of Kalenz"
 msgstr "Kematian Kalenz"
 
 #. [message]: id=Tan-drul
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:204
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:201
 msgid ""
 "Kill these filthy elves! All warlords will then accept our leader, Zorlan, "
 "as king and he will reward you all!"
@@ -2867,14 +2867,14 @@ msgstr ""
 "pemimpin kami, Zorlan, sebagai raja dan ia akan menghadiahi kalian semua!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:208
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:205
 msgid "This is what we have been training for! Now we drive these beasts back!"
 msgstr ""
 "Untuk keadaan seperti inilah kita latihan! Sekarang kita usir hewan-hewan "
 "buas ini kembali!."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:220
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:217
 msgid ""
 "The orcs are retreating! And... what is this? A shyde flying towards us as "
 "if hell were on her heels..."
@@ -2883,7 +2883,7 @@ msgstr ""
 "seolah-olah neraka berada di tumitnya..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:226
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:223
 msgid ""
 "The orcs are retreating! And... what is this? A druid running to meet us as "
 "though hell were on her heels..."
@@ -2892,12 +2892,12 @@ msgstr ""
 "kita seolah-olah neraka berada di tumitnya..."
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:244
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:241
 msgid "My lord Kalenz, at last I have found you!"
 msgstr "Tuanku Kalenz, akhirnya saya telah menemukan anda!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:248
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:245
 msgid ""
 "Chantal! Granddaughter! What are you doing here? You were not attacked, I "
 "hope."
@@ -2905,7 +2905,7 @@ msgstr ""
 "Chantal! Cucuku! Apa yang anda lakukan di sini? Kau tidak diserang, ku harap."
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:252
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:249
 msgid ""
 "We were, but the enemy was vanquished. There are much more serious matters "
 "that require your attention."
@@ -2914,7 +2914,7 @@ msgstr ""
 "memerlukan perhatian anda."
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:256
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:253
 msgid ""
 "A paramount chief of all the Orcs has arisen, and he is setting a trap for "
 "the humans at the Ford of Abez. I think we must aid the humans, lest we be "
@@ -2926,7 +2926,7 @@ msgstr ""
 "setelah mereka hancur."
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:260
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:257
 msgid ""
 "There is more ill news. Evil has been unleashed. A portal has been opened "
 "from the Land of the Dead. An army of undead is being raised as we speak."
@@ -2936,12 +2936,12 @@ msgstr ""
 "kita berbicara."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:264
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:261
 msgid "This is very serious. Have you informed the elvish settlements?"
 msgstr "Hal ini sangat serius. Apakah anda memberitahu perkampungan elf?"
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:268
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:265
 msgid ""
 "Yes. And I have prepared holy water for our warriors. They should be able to "
 "hold against the undead in our forests, at least for now."
@@ -2950,7 +2950,7 @@ msgstr ""
 "bertahan melawan mayat hidup di hutan kita, setidaknya untuk saat ini."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:272
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:269
 msgid ""
 "Holy water? What is this? Have you been dabbling where you should not, in "
 "the Book of Crelanu?"
@@ -2959,7 +2959,7 @@ msgstr ""
 "di dalam Kitab Crelanu?"
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:276
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:273
 msgid ""
 "No. But Cleodil gave some of the Book’s least dangerous secrets to her "
 "daughters, and so I had them from my mother. And I think I have found the "
@@ -2972,7 +2972,7 @@ msgstr ""
 "Cleodil menerima perwalian Kitab. Kau tahu apa yang  saya bicarakan."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:280
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:277
 msgid ""
 "I never thought to see such a human, not even in all the years I have lived. "
 "Who is this person?"
@@ -2981,7 +2981,7 @@ msgstr ""
 "seluruh tahun kehidupan saya. Siapakah orang ini?"
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:284
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:281
 msgid ""
 "Delfador, a mage trusted of their King. He has survived a passage through "
 "the Land of the Dead not merely alive but uncorrupted. He helped us defeat "
@@ -2997,19 +2997,19 @@ msgstr ""
 "jadi saya bisa membawanya kepadanya."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:288
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:285
 msgid "He is uncorrupted? You are sure of this?"
 msgstr "Dia tidak terusak? Anda yakin akan hal ini?"
 
 #. [message]: id=Chantal
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:292
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:289
 msgid "I have bent my healing senses upon him. I am as sure as I can be."
 msgstr ""
 "Aku telah mengarahkan indra penyembuhanku kepadanya. Saya yakin seyakin-"
 "yakinnya."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:297
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:294
 msgid ""
 "Then we must aid him, and I must meet him. The King of Wesnoth is just a "
 "king; it is inner strength such as you describe that will turn back the "
@@ -3654,8 +3654,8 @@ msgstr ""
 "Saya pikir teman muda dan kurang berpengalaman kita menaksir terlalu tinggi "
 "kekuatan musuh. Aku yakin mereka bukan tandingan bagi pasukan Wesnothian."
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:57
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:42
 msgid "Sagus"
@@ -4517,8 +4517,8 @@ msgstr ""
 "Kejahatan telah dikalahkan pada hari ini. Semoga kemenangan ini membawa "
 "perdamaian abadi."
 
-#. [message]: speaker=Admirer5
 #. [message]: speaker=Kalenz
+#. [message]: speaker=Admirer5
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:531
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:541
 msgid ""

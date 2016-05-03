@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-05 05:00+0300\n"
+"POT-Creation-Date: 2016-04-30 20:00+0300\n"
 "PO-Revision-Date: 2011-01-01 01:34+0100\n"
 "Last-Translator: Floris Kint <floris.kint@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -25,14 +25,14 @@ msgid "Underground"
 msgstr "Ondergronds"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
+#: data/core/macros/abilities.cfg:429
 msgid "berserk"
 msgstr "razernij"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:655
-#: data/core/macros/abilities.cfg:392
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
+#: data/core/macros/abilities.cfg:430
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -49,14 +49,14 @@ msgstr ""
 "gevechtsrondes)."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
+#: data/core/macros/abilities.cfg:516
 msgid "magical"
 msgstr "magisch"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
+#: data/core/macros/abilities.cfg:517
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -71,16 +71,16 @@ msgstr ""
 "aan te vallen eenheid."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:515
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
+#: data/core/macros/abilities.cfg:561
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "initiatief"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
+#: data/core/macros/abilities.cfg:562
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -189,12 +189,12 @@ msgstr ""
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
-#. [topic]: id=editor_starting_positions_in_general
-#. [topic]: id=editor_time_schedule
-#. [topic]: id=editor_tool_item
 #. [topic]: id=editor_tool_label
-#. [topic]: id=editor_tool_unit
+#. [topic]: id=editor_tool_item
 #. [topic]: id=editor_tool_village
+#. [topic]: id=editor_tool_unit
+#. [topic]: id=editor_time_schedule
+#. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:14 data/core/editor/help.cfg:22
 #: data/core/editor/help.cfg:79 data/core/editor/help.cfg:87
 #: data/core/editor/help.cfg:105 data/core/editor/help.cfg:113
@@ -604,11 +604,6 @@ msgstr ""
 #. [topic]: id=scenario_format
 #: data/core/editor/help.cfg:281
 msgid "Scenario Format"
-msgstr ""
-
-#. [topic]: id=scenario_format
-#: data/core/editor/help.cfg:282
-msgid " "
 msgstr ""
 
 #. [topic]: id=editor_starting_positions_in_general
@@ -3403,9 +3398,9 @@ msgstr ""
 msgid "General Commands"
 msgstr "Algemene commando's"
 
-#. [topic]: id=debug_commands
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -4186,12 +4181,12 @@ msgid "+1 max HP"
 msgstr "+1 max HP"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:440
 msgid "backstab"
 msgstr "ruggesteek"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:441
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4211,12 +4206,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:426
+#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
 msgid "plague"
 msgstr "pest"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:462
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4234,7 +4229,7 @@ msgstr ""
 "op bij ondoden en eenheden in dorpen."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:427
+#: data/core/macros/abilities.cfg:473
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4252,12 +4247,12 @@ msgstr ""
 "op bij ondoden en eenheden in dorpen."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:437
+#: data/core/macros/abilities.cfg:483
 msgid "slows"
 msgstr "vertraagt"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:438
+#: data/core/macros/abilities.cfg:484
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4278,12 +4273,12 @@ msgstr ""
 "slakicoon in zijn informatie staan."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:493
 msgid "petrifies"
 msgstr "versteent"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:494
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4298,12 +4293,12 @@ msgstr ""
 "kunnen bewegen noch aanvallen."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:503
 msgid "marksman"
 msgstr "precisieschutter"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:504
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4317,12 +4312,12 @@ msgstr ""
 "60%."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:482
+#: data/core/macros/abilities.cfg:528
 msgid "swarm"
 msgstr "zwerm"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:529
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4343,12 +4338,12 @@ msgstr ""
 "maximale HP heeft krijgt het 3/4 van zijn aantal aanvallen."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:492
+#: data/core/macros/abilities.cfg:538
 msgid "charge"
 msgstr "stormloop"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:539
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4365,12 +4360,12 @@ msgstr ""
 "tegenaanval."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:505
+#: data/core/macros/abilities.cfg:551
 msgid "drains"
 msgstr "bloedzuiger"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:506
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4385,12 +4380,12 @@ msgstr ""
 "helft van de schade die hij toebrengt (naar beneden afgerond)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:571
 msgid "poison"
 msgstr "gif"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:572
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -4901,9 +4896,9 @@ msgstr "ondood"
 msgid "female^undead"
 msgstr "ondood"
 
-#. [trait]: id=elemental
-#. [trait]: id=mechanical
 #. [trait]: id=undead
+#. [trait]: id=mechanical
+#. [trait]: id=elemental
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
 #: data/core/macros/traits.cfg:70
 msgid "Immune to drain, poison, and plague"
@@ -6033,15 +6028,15 @@ msgid ""
 "home."
 msgstr ""
 
-#: src/help/help.cpp:185
+#: src/help/help.cpp:183
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/help/help.cpp:188
+#: src/help/help.cpp:186
 msgid "The Battle for Wesnoth Help"
 msgstr "Strijd om Wesnoth Help"
 
-#: src/help/help.cpp:243
+#: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Fout bij het verwerken van de helptekst: "
 

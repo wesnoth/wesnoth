@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Serialization">
+      <UniqueIdentifier>{6dc90a51-9e0e-481d-aecb-1504d6f9a21b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\parser.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\preprocessor.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema_validator.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\string_utils.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\tokenizer.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\unicode.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\validator.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\color_range.cpp" />
+    <ClCompile Include="..\..\src\config.cpp" />
+    <ClCompile Include="..\..\src\filesystem_boost.cpp" />
+    <ClCompile Include="..\..\src\filesystem_common.cpp" />
+    <ClCompile Include="..\..\src\game_config.cpp" />
+    <ClCompile Include="..\..\src\gettext_boost.cpp" />
+    <ClCompile Include="..\..\src\log.cpp" />
+    <ClCompile Include="..\..\src\log_windows.cpp" />
+    <ClCompile Include="..\..\src\network.cpp" />
+    <ClCompile Include="..\..\src\network_worker.cpp" />
+    <ClCompile Include="..\..\src\thread.cpp" />
+    <ClCompile Include="..\..\src\tstring.cpp" />
+    <ClCompile Include="..\..\src\version.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\parser.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\preprocessor.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema_validator.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\string_utils.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\tokenizer.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\unicode.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\validator.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\about.hpp" />
+    <ClInclude Include="..\..\src\config.hpp" />
+    <ClInclude Include="..\..\src\config_assign.hpp" />
+    <ClInclude Include="..\..\src\filesystem.hpp" />
+    <ClInclude Include="..\..\src\game_config.hpp" />
+    <ClInclude Include="..\..\src\gettext.hpp" />
+    <ClInclude Include="..\..\src\global.hpp" />
+    <ClInclude Include="..\..\src\libc_error.hpp" />
+    <ClInclude Include="..\..\src\log.hpp" />
+    <ClInclude Include="..\..\src\log_windows.hpp" />
+    <ClInclude Include="..\..\src\network.hpp" />
+    <ClInclude Include="..\..\src\network_worker.hpp" />
+    <ClInclude Include="..\..\src\scoped_resource.hpp" />
+    <ClInclude Include="..\..\src\thread.hpp" />
+    <ClInclude Include="..\..\src\tstring.hpp" />
+    <ClInclude Include="..\..\src\version.hpp" />
+    <ClInclude Include="..\..\src\wesconfig.h" />
+  </ItemGroup>
+</Project>

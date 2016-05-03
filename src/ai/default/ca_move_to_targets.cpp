@@ -28,6 +28,7 @@
 #include "units/unit.hpp"
 #include "terrain/filter.hpp"
 #include "pathfind/pathfind.hpp"
+#include "pathfind/teleport.hpp"
 
 #include <deque>
 
@@ -336,7 +337,8 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		// to it seeming futile. Be very cautious about changing this value,
 		// as it can cause the AI to give up on searches and just do nothing.
 		const double locStopValue = 500.0;
-		pathfind::plain_route real_route = a_star_search(u->get_location(), tg.loc, locStopValue, &cost_calc, map_.w(), map_.h());
+		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
+		pathfind::plain_route real_route = a_star_search(u->get_location(), tg.loc, locStopValue, &cost_calc, map_.w(), map_.h(), &allowed_teleports);
 
 		if(real_route.steps.empty()) {
 			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating << "\n";
@@ -402,7 +404,8 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			//const double locStopValue = std::min(best_target->value / best_rating, (double) 100.0);
 
 			const double locStopValue = 500.0;
-			pathfind::plain_route cur_route = pathfind::a_star_search(u->get_location(), best_target->loc, locStopValue, &calc, map_.w(), map_.h());
+			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
+			pathfind::plain_route cur_route = pathfind::a_star_search(u->get_location(), best_target->loc, locStopValue, &calc, map_.w(), map_.h(), &allowed_teleports);
 
 			if(cur_route.steps.empty()) {
 				continue;
@@ -634,7 +637,8 @@ void move_to_targets_phase::access_points(const move_map& srcdst, const map_loca
 		const map_location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->total_movement()) {
 			pathfind::shortest_path_calculator calc(*u_it, current_team(), *resources::teams, map_);
-			pathfind::plain_route rt = a_star_search(loc, dst, u_it->total_movement(), &calc, map_.w(), map_.h());
+			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u_it, current_team());
+			pathfind::plain_route rt = a_star_search(loc, dst, u_it->total_movement(), &calc, map_.w(), map_.h(), &allowed_teleports);
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}

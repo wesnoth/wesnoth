@@ -218,7 +218,27 @@ void play_controller::hotkey_handler::toggle_accelerated_speed()
 	}
 }
 
-bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index)
+void play_controller::hotkey_handler::scroll_up(bool on)
+{
+	play_controller_.set_scroll_up(on);
+}
+
+void play_controller::hotkey_handler::scroll_down(bool on)
+{
+	play_controller_.set_scroll_down(on);
+}
+
+void play_controller::hotkey_handler::scroll_left(bool on)
+{
+	play_controller_.set_scroll_left(on);
+}
+
+void play_controller::hotkey_handler::scroll_right(bool on)
+{
+	play_controller_.set_scroll_right(on);
+}
+
+bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
 {
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	if(index >= 0) {
@@ -245,7 +265,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
 		/// @todo Shouldn't the function return at this point?
 	}
-	return command_executor::execute_command(cmd, index);
+	return command_executor::execute_command(cmd, index, press);
 }
 
 bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
@@ -302,6 +322,10 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_SAVE_REPLAY:
 	case hotkey::HOTKEY_LABEL_SETTINGS:
 	case hotkey::LUA_CONSOLE:
+	case hotkey::HOTKEY_SCROLL_UP:
+	case hotkey::HOTKEY_SCROLL_DOWN:
+	case hotkey::HOTKEY_SCROLL_LEFT:
+	case hotkey::HOTKEY_SCROLL_RIGHT:
 		return true;
 
 	// Commands that have some preconditions:

@@ -22,6 +22,7 @@
 
 #include <map>
 #include <vector>
+#include <mutex>
 
 #include "tstring.hpp"
 #include "gettext.hpp"
@@ -528,21 +529,24 @@ typedef boost::multi_index_container<
 > hash_map;
 
 typedef typename hash_map::template nth_index<0>::type hash_index;
+
 };
 
 static types<t_string_base>::hash_map& map() { static types<t_string_base>::hash_map* map = new types<t_string_base>::hash_map; return *map; }
 static types<t_string_base>::hash_index& index() { return map().get<0>(); }
-
+static std::mutex& mutex() { static std::mutex* m = new std::mutex(); return *m; }
 typedef shared_node<t_string_base> node;
 
 template<>
 const node* shared_object<t_string_base>::insert_into_index(const node & n)
 {
+	std::lock_guard<std::mutex> lock(mutex());
 	return &*index().insert(n).first;
 }
 
 template<>
 void shared_object<t_string_base>::erase_from_index(const node * ptr)
 {
+	std::lock_guard<std::mutex> lock(mutex());
 	index().erase(index().find(ptr->val));
 }

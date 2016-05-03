@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2014-11-11 12:06+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,11 +156,11 @@ msgstr "Победите Альбера"
 msgid "Death of Kapou’e"
 msgstr "Смерть Капу'е"
 
-#. [side]
-#. [side]: id=Grüü, type=Great Troll
 #. [side]: id=Kapou'e, type=Orcish Leader
+#. [side]: id=Grüü, type=Great Troll
 #. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]
 #. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
@@ -197,11 +197,11 @@ msgstr "Капу'е"
 msgid "Alber"
 msgstr "Альбер"
 
+#. [side]: type=General, id=Lanbec'h
+#. [side]: type=Lieutenant, id=Alber
+#. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
-#. [side]: type=General, id=Slowhand
-#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -402,7 +402,7 @@ msgstr ""
 msgid "Hmmm..."
 msgstr "Хммм..."
 
-#. [option]: speaker=Kapou'e
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:231
 msgid ""
 "If what you say is true, then there is no way our tribe can face such an "
@@ -456,7 +456,7 @@ msgstr ""
 "Пошевеливайтесь! Отбываем через час. Кто не успеет собраться, останется "
 "здесь и умрёт."
 
-#. [option]: speaker=Kapou'e
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:268
 msgid "Bah, humans? No better than goblins. We’ll break them!"
 msgstr "Ба, людишки? Да они не лучше гоблинов. Мы разобьём их!"
@@ -547,8 +547,8 @@ msgstr ""
 "Наглец! Но ты всё-таки прав. Мне стоило прислушаться к своим помощникам. Что "
 "будем делать?"
 
-#. [message]: role=Helper
 #. [message]: speaker=Vrag
+#. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:152
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:158
 msgid "We must flee! There is no way we can stand up against such a force."
@@ -667,8 +667,8 @@ msgstr "К Горам Хааг"
 msgid "Move Kapou’e to the end of the mountains"
 msgstr "Приведите Капу'е туда, где кончаются горы или"
 
-#. [objective]: condition=win
 #. [objectives]
+#. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:319
 msgid "Defeat the enemy leader"
@@ -1025,12 +1025,12 @@ msgstr ""
 msgid "Etheliel"
 msgstr "Этелиель"
 
+#. [side]: type=Elvish Shyde, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
-#. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Etheliel
 #. [side]: type=Elvish Marshal, id=Hida'tul
+#. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Shyde, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:68
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:118
@@ -1061,21 +1061,18 @@ msgid "Sammual"
 msgstr "Саммуал"
 
 #. [event]
-#. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:191
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1138
 msgid "Pirk"
 msgstr "Пирк"
 
 #. [event]
-#. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:193
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1139
 msgid "Gork"
 msgstr "Горк"
 
 #. [event]
-#. [event]: role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord1}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordeprops}, role=greathordewarlord2}
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:195
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1140
 msgid "Vraurk"
@@ -1091,7 +1088,7 @@ msgstr ""
 "зрелище."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:263
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:267
 msgid ""
 "What the—! Barag Gór is besieged by elves! The wose-born weaklings have "
 "always been jealous of our power, but what reason do they have to attack the "
@@ -1101,22 +1098,22 @@ msgstr ""
 "нашей силе, но зачем им нападать на город?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:268
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:273
 msgid "What can you expect, Chief? They’re elves after all."
 msgstr "А чего от них ждать, вождь? Это же эльфы."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:273
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:278
 msgid "Hmmm. $scout.name, go find out what they are up to."
 msgstr "Хм-м-м. $scout.name, иди узнай, что они собираются делать."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:278
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:283
 msgid "Sure."
 msgstr "Конечно."
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:308
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:313
 msgid ""
 "One more step and you are dead, flea-bag. Better run if you value your life."
 msgstr ""
@@ -1124,7 +1121,7 @@ msgstr ""
 "жизнью."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:313
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:318
 msgid ""
 "Quit your boasting, mule-ears. The chief wants to know why you’re here, "
 "instead of cowering in your dung-spattered forests."
@@ -1133,7 +1130,7 @@ msgstr ""
 "сидите и дрожите в ваших удобренных навозом лесах."
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:318
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:323
 msgid ""
 "Watch your mouth around your betters, goblin! And you can tell your chief to "
 "hand the shamans over to us if he wants to be alive by sundown."
@@ -1142,17 +1139,17 @@ msgstr ""
 "что если он хочет дожить до захода солнца, пусть отдаст нам своих шаманов."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:323
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:328
 msgid "What business do you high-and-mighty elves have with our shamans?"
 msgstr "Чего вам, возвышенным-и-могущественным эльфам, надо от наших шаманов?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:328
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:333
 msgid "Our business with them is none of your concern."
 msgstr "То, что нам от них нужно, тебя не касается."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:333
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:338
 msgid ""
 "Oh, yes, it is. The shamans keep our ancient knowledge and our sacred "
 "things; they are not for the likes of you. Why do you want them anyway?"
@@ -1161,56 +1158,56 @@ msgstr ""
 "для таких, как вы. Да и зачем они вам вообще?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:338
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:343
 msgid "Well... the humans want to... meet with them."
 msgstr "Скажем... люди хотят... с ними встретиться."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:343
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:348
 msgid "Oh, so they paid you to come and get them, have they?"
 msgstr "А, так люди вам заплатили, чтобы вы их привели?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:348
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:353
 msgid "Well..."
 msgstr "Ну..."
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:353
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:358
 msgid ""
 "So the ‘great and mighty’ elves are now nothing but a bunch of mercenaries."
 msgstr ""
 "Так значит, «великие и могущественные» эльфы — теперь просто шайка наёмников?"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:358
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:363
 msgid "KILL HIM!!"
 msgstr "УБЕЙТЕ ЕГО!!!"
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:381
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:386
 msgid "Hahaha! If you can!"
 msgstr "Ха-ха-ха! Если сможешь!"
 
 #. [message]: speaker=Ammon
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:411
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:416
 msgid "Blast it, he got away."
 msgstr "Проклятье, он сбежал."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:416
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:421
 msgid "So, what news do you bring, $scout.name?"
 msgstr "Итак, какие новости принёс, $scout.name?"
 
 #. [message]: role=Scout
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:421
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:426
 msgid ""
 "The elves have been bribed by the humans to capture and deliver the shamans "
 "to them."
 msgstr "Люди подкупили эльфов, чтобы те схватили и привели наших шаманов."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:426
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:431
 msgid ""
 "Over my dead body! The shamans of the Great Council are the only people who "
 "can call up the Great Horde. If they are captured then all the orcs on this "
@@ -1220,36 +1217,36 @@ msgstr ""
 "Если их схватят, то все орки на этом континенте обречены."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:431
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:436
 msgid "I have a subtle plan, Chief."
 msgstr "У меня есть хитроумный план, Вождь."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:436
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:441
 msgid "Go on, Grüü."
 msgstr "Давай, Груу."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:441
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:446
 msgid "We go and we kill all of them. What do you think?"
 msgstr "Мы пойдём и убьём их всех. Как ты думаешь?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:446
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:451
 msgid "..."
 msgstr "..."
 
-#. [message]: speaker=narrator
 #. [unit]: id=Jetto, type=Orcish Assassin
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:466
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:580
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:596
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:616
+#. [message]: speaker=narrator
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:471
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:585
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:601
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:621
 msgid "Jetto"
 msgstr "Джетто"
 
 #. [message]: speaker=Jetto
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:486
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:491
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I’m Jetto, master of assassins, "
 "now you can count on the assassins’ guild to help you in your quest!"
@@ -1258,12 +1255,12 @@ msgstr ""
 "можешь рассчитывать на помощь гильдии убийц!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:491
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:496
 msgid "Jetto, how did you get captured by the likes of these?"
 msgstr "Джетто, как они смогли тебя схватить?"
 
 #. [message]: speaker=Jetto
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:496
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:501
 msgid ""
 "The Barag Gór council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured. But now I am free and the elves shall feel my "
@@ -1273,12 +1270,12 @@ msgstr ""
 "попался. Но теперь я свободен, и эльфы узнают мой гнев!"
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:507
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:512
 msgid "At last! The siege has been broken."
 msgstr "Наконец-то! Осада снята."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:512
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:517
 msgid ""
 "Thank you, Son of the Black-Eye. If you hadn’t arrived when you did, I don’t "
 "know what would have happened to us."
@@ -1287,17 +1284,17 @@ msgstr ""
 "что бы с нами случилось."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:517
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:522
 msgid "No problem! It was fun, wasn’t it, Grüü?"
 msgstr "Нет проблем! Весело было, правда, Груу?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:522
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:527
 msgid "Hahaha! Yeah!"
 msgstr "Хахаха! Точно!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:527
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:532
 msgid ""
 "But, actually, we have come all the way from our lands to get your help."
 msgstr ""
@@ -1305,12 +1302,12 @@ msgstr ""
 "вашу помощь."
 
 #. [message]: speaker=Vraurk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:532
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:537
 msgid "Why? What’s wrong?"
 msgstr "Зачем? Что случилось?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:537
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:542
 msgid ""
 "Those insolent humans have massed a huge army and attacked us. We defeated "
 "their vanguard but in the end we were forced to retreat."
@@ -1319,7 +1316,7 @@ msgstr ""
 "авангард, но под конец были вынуждены отступить."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:542
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:547
 msgid ""
 "Hmmmm, this situation is very serious. As you know by now, they have also "
 "hired these elves to attack us here."
@@ -1328,12 +1325,12 @@ msgstr ""
 "чтобы те напали на нас."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:547
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:552
 msgid "Yes. It seems to me that the humans are declaring all-out war on us."
 msgstr "Да. Сдаётся мне, люди объявили нам всеобщую войну."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:552
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:557
 msgid ""
 "We must give this matter careful consideration. Come inside the city, and "
 "we’ll discuss it."
@@ -1341,7 +1338,7 @@ msgstr ""
 "Нам следует тщательно над этим поразмыслить. Входите в город, мы всё обсудим."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:582
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:587
 msgid ""
 "Son of the Black-Eye! Could I ask for my release from this blighted cage?"
 msgstr ""
@@ -1349,12 +1346,12 @@ msgstr ""
 "клетки?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:587
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:592
 msgid "How did you get captured by the likes of these?"
 msgstr "Как им удалось тебя схватить?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:598
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:603
 msgid ""
 "The Barag Gór council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured."
@@ -1363,12 +1360,12 @@ msgstr ""
 "попался."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:603
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:608
 msgid "Fine, someone go release him."
 msgstr "Хорошо, освободите его."
 
 #. [message]: speaker=Jetto
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:636
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:641
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I’m Jetto, master of assassins, "
 "now you can count on my assassins to help you in your quest!"
@@ -1386,8 +1383,8 @@ msgstr "В Гавань Тиригаз"
 msgid "Na-Mana"
 msgstr "На-Мана"
 
-#. [side]: type=Death Knight, id=Ma-Rana
 #. [side]: type=Lich, id=Na-Mana
+#. [side]: type=Death Knight, id=Ma-Rana
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:83
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:112
 msgid "Undead"
@@ -1754,20 +1751,20 @@ msgstr "Достичь оазиса"
 msgid "Ar-Dant"
 msgstr "Ар-Дант"
 
-#. [side]
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Arthain
-#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=Bandit, id=Sagmar
+#. [side]: type=General, id=Telthys
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
-#. [side]: type=General, id=Telthys
-#. [side]: type=Giant Scorpion
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]: type=Giant Scorpion
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2325,8 +2322,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "Вот и Траурные Холмы! Теперь нам остаётся только надеяться на лучшее."
 
-#. [message]: role=cannonfodder
 #. [message]: speaker=Grüü
+#. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:112
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:293
 msgid "Why?"
@@ -2532,8 +2529,8 @@ msgstr ""
 msgid "Whoever detonates the bridge will die."
 msgstr "Примечание: тот, кто взорвёт мост, погибнет."
 
-#. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2703,7 +2700,7 @@ msgstr ""
 msgid "I’m ready, Chief!"
 msgstr "Я готов, вождь!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:470
 msgid "Let her blow!"
 msgstr "Взрывайте!"
@@ -2728,7 +2725,7 @@ msgstr "Нет, подождите!"
 msgid "Aaaaaaaargh!"
 msgstr "Аааааааааа!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:524
 msgid "Wait a moment."
 msgstr "Подожди."
@@ -2761,9 +2758,9 @@ msgstr ""
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "Никто не скажет, что эльфы смелее нас! В атаку!"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:655
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:88
@@ -3687,10 +3684,10 @@ msgid "Braga"
 msgstr "Брага"
 
 #. [side]: type=Orcish Warlord, id=Braga
-#. [side]: type=Orcish Warlord, id=Kergai
 #. [side]: type=Orcish Warlord, id=Meato
-#. [side]: type=Orcish Warlord, id=Orga
 #. [side]: type=Orcish Warlord, id=Ragvan
+#. [side]: type=Orcish Warlord, id=Kergai
+#. [side]: type=Orcish Warlord, id=Orga
 #. [side]: type=Orcish Warrior, id=Knorgh
 #. [side]: type=Orcish Warrior, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:73
@@ -3820,8 +3817,8 @@ msgstr ""
 "Развернись и иди туда, откуда пришёл! Или ты найдёшь свою голову на копье! "
 "Правильно?"
 
-#. [message]: speaker=Kergai
 #. [message]: speaker=Ragvan
+#. [message]: speaker=Kergai
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:211
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:216
 msgid "Right!"
@@ -4189,8 +4186,8 @@ msgstr "Мы пришли, милорд."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "А, отлично, ещё больше подкреплений."
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

@@ -71,8 +71,19 @@ tloadscreen::tloadscreen(std::function<void()> f)
 	, worker_()
 	, cursor_setter_()
 	, current_stage_(nullptr)
-	, current_visible_stage_(stages.end())
+	, visible_stages_()
+	, animation_stages_()
+	, current_visible_stage_()
 {
+	for (const auto& pair : stages) {
+		visible_stages_[pair.first] = t_string(pair.second, "wesnoth-lib") + "...";
+	}
+	for (int i = 0; i != 20; ++i) {
+		std::string s(20, ' ');
+		s[i] = '.';
+		animation_stages_.push_back(s);
+	}
+	current_visible_stage_ = visible_stages_.end();
 	current_load = this;
 }
 
@@ -137,22 +148,19 @@ void tloadscreen::timer_callback(twindow& window)
 #else
 		.load(std::memory_order_acquire);
 #endif
-	if (stage && (current_visible_stage_ == stages.end() || stage != current_visible_stage_->first))
+	if (stage && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first))
 	{
-		auto iter = stages.find(stage);
-		if(iter == stages.end()) {
+		auto iter = visible_stages_.find(stage);
+		if(iter == visible_stages_.end()) {
 			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
 			return;
 		}
 		current_visible_stage_ = iter;
-		progress_stage_label_->set_label(t_string(iter->second, "wesnoth-lib") + "...");
+		progress_stage_label_->set_label(iter->second);
 	}
 	++animation_counter_;
 	if (animation_counter_ % 2 == 0) {
-		int animation_state = (animation_counter_ / 2) % 20;
-		std::string s(20, ' ');
-		s[animation_state] = '.';
-		animation_label_->set_label(s);
+		animation_label_->set_label(animation_stages_[(animation_counter_ / 2) % animation_stages_.size()]);
 	}
 }
 

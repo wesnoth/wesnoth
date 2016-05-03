@@ -136,7 +136,7 @@ void controller::resolve_wml(const vconfig& cfg)
 		else if(key == "wml_message") {
 			// As with [deprecated_message],
 			// it won't appear until the scenario start event is complete.
-			resources::game_events->pump().put_wml_message(node["logger"],node["message"],node["in_chat"]);
+			resources::game_events->pump().put_wml_message(node["logger"], node["message"], node["in_chat"].to_bool(false));
 		}
 	}
 }

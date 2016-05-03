@@ -37,8 +37,8 @@
 #include "attack_prediction.hpp"
 
 #include "actions/attack.hpp"
-#include "array.hpp"
 #include "game_config.hpp"
+#include <array>
 
 #if defined(BENCHMARK) || defined(CHECK)
 #include <time.h>
@@ -207,11 +207,11 @@ private:
 
 private: // data
 	const unsigned int rows_, cols_;
-	util::array<double *, NUM_PLANES> plane_;
+	std::array<double *, NUM_PLANES> plane_;
 
 	// For optimization, we keep track of the rows and columns with data.
 	// (The matrices are likely going to be rather sparse, with data on a grid.)
-	util::array<std::set<unsigned>, NUM_PLANES> used_rows_, used_cols_;
+	std::array<std::set<unsigned>, NUM_PLANES> used_rows_, used_cols_;
 };
 
 

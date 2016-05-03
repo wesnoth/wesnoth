@@ -28,7 +28,7 @@
 #include "utils/make_enum.hpp"                // for operator<<
 #include "map/map.hpp"                      // for gamemap
 #include "marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
-#include "race.hpp"                     // for unit_race, etc
+#include "units/race.hpp"                     // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc

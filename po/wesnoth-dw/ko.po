@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2013-10-25 15:48+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -108,7 +108,7 @@ msgstr "본편 적용을 위한 대사 정비"
 msgid "Artwork"
 msgstr "미술"
 
-#. [lua]
+#. [lua]: wesnoth.theme_items.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:86
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
@@ -219,8 +219,8 @@ msgstr ""
 msgid "Undead Forces"
 msgstr "언데드 군세"
 
-#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #. [side]: type=Lich, id=Mal-Kevek
+#. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:89
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:116
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
@@ -443,10 +443,10 @@ msgstr "(각각 다른 보너스)"
 msgid "Defeat all enemy leaders"
 msgstr "모든 적 지휘관 격파"
 
-#. [side]
-#. [side]: type=Death Knight, id=Dead Knight
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
+#. [side]: type=Death Knight, id=Dead Knight
+#. [side]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:111
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:135
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:154
@@ -927,23 +927,23 @@ msgstr ""
 msgid "The trident is 14-2, magical, ranged, with <i>fire</i> damage."
 msgstr "이 삼지창은 14-2의 마법, 원격이며 <b>불</b> 피해를 줍니다."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:829
 msgid "That sounds great! I’ll take it."
 msgstr "괜찮은데! 내가 가지겠어."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:315
 msgid "That sounds frightening. Let someone else have it."
 msgstr "좀 무서운걸. 다른 사람에게 줘야겠어."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:353
 msgid "Let me have that trident. I want to control lightning!"
 msgstr "내가 이 삼지창을 가지겠어. 번개를 다뤄보고 싶어!"
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:362
 msgid "I’ll just leave that trident where it is."
 msgstr "그냥 이 삼지창을 그 자리에 놔둬야겠어."
@@ -1500,7 +1500,7 @@ msgstr ""
 "어. 너희들을 완전히 끝내주지."
 
 #. [message]: speaker=Kai Krellis
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:654
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:667
 msgid "Now maybe we can head west undisturbed."
@@ -1511,7 +1511,7 @@ msgstr "이제 방해받지 않고 서쪽으로 갈 수 있겠군."
 msgid "We have destroyed the undead."
 msgstr "언데드들을 무찔렀다."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:676
 msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
@@ -2131,8 +2131,8 @@ msgid ""
 "This is a good place for a large colony, so I imagine we will see more soon."
 msgstr "여긴 대규모 서식지로 안성맞춤인걸. 더 많이 나올거 같아."
 
-#. [side]: id=Caladon
 #. [unit]: type=Silver Mage, id=Caladon
+#. [side]: id=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:378
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
@@ -2225,20 +2225,20 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:482
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1083
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1080
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:134
 msgid "Cylanna! I need you!"
 msgstr "Cylanna! 당신은 죽으면 안되오!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1087
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1084
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tyegëa는 나를 용서하지 않을거야. 우린 졌어."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:500
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1101
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1098
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:148
 msgid "We are lost without our king!"
 msgstr "우리의 왕이 없으니 이젠 끝장이야!"
@@ -2271,31 +2271,31 @@ msgid "Villagers"
 msgstr "마을 사람들"
 
 #. [objective]: condition=win
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:187
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:660
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:184
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:657
 msgid "Pry the flaming sword from the dead hand of its owner"
 msgstr "불타는 검의 소유자를 죽이고 그 검을 빼내라"
 
 #. [objective]: condition=lose
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:191
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:188
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:277
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:115
 msgid "Death of Kai Krellis"
 msgstr "Kai Krellis의 사망"
 
 #. [objective]: condition=lose
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:195
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:192
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:119
 msgid "Death of Cylanna"
 msgstr "Cylanna의 사망"
 
 #. [objective]: condition=lose
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:199
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:196
 msgid "Death of Caladon"
 msgstr "Caladon의 사망"
 
 #. [message]: speaker=$spy_unit.id
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:266
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:263
 msgid ""
 "(whisper) Kai, I heard Caladon muttering about the sword. I think he may try "
 "to take it for himself."
@@ -2304,7 +2304,7 @@ msgstr ""
 "앗으려 할지 모르겠군요."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:270
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:267
 msgid ""
 "Thank you, $spy_unit.name|. I will keep that in mind, but it may be hard for "
 "us to stop him with that teleporting trick he has."
@@ -2313,7 +2313,7 @@ msgstr ""
 "으로 미루어 볼때 그를 막는 것은 어려운 일이 될 것 같네."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:279
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:276
 msgid ""
 "Here we are. There’s a castle up ahead in the fog. That’s where Agnovon has "
 "the sword."
@@ -2321,12 +2321,12 @@ msgstr ""
 "다 왔소. 저기 안개 너머로 성채가 있지. 저곳에 검을 가진 Agnovon이 있소."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:283
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:280
 msgid "The lich is Agnovon?"
 msgstr "그 리치가 Agnovon인가?"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:287
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:284
 msgid ""
 "Well, he calls himself Mal-Govon now, but yes. He called this land the "
 "KINGDOM of Agnovon. He was its first king. And its last, and every one in "
@@ -2343,7 +2343,7 @@ msgstr ""
 "놈을 깨울 수 있지. <b>잘</b> 보라고!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:291
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:288
 msgid ""
 "Suddenly, Caladon’s strident voice shrieked out louder than seemed possible, "
 "as if there were dozens of men shouting at once."
@@ -2352,7 +2352,7 @@ msgstr ""
 "치 열두 명의 사람이 한꺼번에 외치는 것 같았다."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:296
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:293
 msgid ""
 "AGNOVON, I’VE COME FOR YOUR SWORD! TODAY YOU WILL REMEMBER FEAR! Heh heh. "
 "Nice trick, huh?"
@@ -2361,7 +2361,7 @@ msgstr ""
 "될 것이다!</b> 헤 헤. 멋진 수법이지, 응?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:301
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:298
 msgid ""
 "A voice came back like wind moaning through dry leaves. Though it was only "
 "whispered, all heard it better than they wanted."
@@ -2370,7 +2370,7 @@ msgstr ""
 "지만, 생각보다는 잘 들렸다."
 
 #. [message]: speaker=Mal-Govon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:306
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:303
 msgid ""
 "What I remember, you old fool, is you leaving behind the smoldering bodies "
 "of the orcs you had hired to steal my sword. Now, you bring mermen. When "
@@ -2383,12 +2383,12 @@ msgstr ""
 "라."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:310
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:307
 msgid "We are here of our own accord, and we will take that sword."
 msgstr "우리는 여기 스스로 온 것이다. 우리는 그 검을 가져갈 것이다."
 
 #. [message]: speaker=Mal-Govon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:314
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:311
 msgid ""
 "The merman speaks. Tell it to go away, Caladon, if it doesn’t want to get "
 "hurt."
@@ -2396,12 +2396,12 @@ msgstr ""
 "인어가 말하는군. 저리 가버리라고 전해라, Caladon, 다치고 싶지 않으면 말이야."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:318
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:315
 msgid "That does it. Attack!"
 msgstr "더는 못 참겠군. 공격!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:327
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:324
 msgid ""
 "A word of warning, young Kai. I carry a staff of righteous FLAME. If you let "
 "me die, I will take YOU all with me!"
@@ -2410,19 +2410,19 @@ msgstr ""
 "당신이 나를 죽게 놔두면, 난 당신들 <b>전부를</b> 저승길 동무로 데려갈거요!"
 
 #. [unit]: type=Outlaw, id=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:349
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:346
 msgid "Howyrth"
 msgstr "Howyrth"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:363
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:360
 msgid ""
 "Hello there! Who are you? Were you the ones shouting about taking a sword?"
 msgstr ""
 "안녕하시오! 당신들은 누구요? 당신들이 검을 가져가겠다고 외치던 그 사람들이오?"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:368
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:365
 msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
 "sword. Will you to join us in battle against a common enemy?"
@@ -2431,7 +2431,7 @@ msgstr ""
 "소. 공동의 적을 향해 함께 싸우지 않겠소?"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:373
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:370
 msgid ""
 "I don’t know if that creature really is our enemy. He has never bothered us, "
 "and I should stay at my post anyway. However, I’m sure many townsfolk would "
@@ -2444,7 +2444,7 @@ msgstr ""
 "있다면 기쁘긴 할 것 같군."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:377
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:374
 msgid ""
 "You can now recruit human villagers, but you will not be able to recall them "
 "in future scenarios."
@@ -2453,7 +2453,7 @@ msgstr ""
 "재소집할 수는 없다."
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:426
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:423
 msgid ""
 "Kai Krellis! What are you doing here? I thought you were traveling south "
 "when I met you."
@@ -2462,17 +2462,17 @@ msgstr ""
 "같은데."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:430
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:427
 msgid "Friend Siddry!"
 msgstr "친구 Siddry로군!"
 
 #. [message]: speaker=Howyrth
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:434
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:431
 msgid "You know each other?!"
 msgstr "서로 아는 사이인가?!"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:438
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:435
 msgid ""
 "Kai Krellis is the one who saved me from slavery, Howyrth. I told him I "
 "would repay him if I could, and here is my chance. My friends and I will "
@@ -2484,29 +2484,29 @@ msgstr ""
 "들과 나는 당신의 싸움에 가담하겠소. 당신의 지휘에 따르겠소. 돈은 필요없소."
 
 #. [message]: speaker=Dorcyn
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:499
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:496
 msgid "I’ll join you right now! That monster is just unnatural."
 msgstr "당신들을 따르지! 저 괴물은 정말 비정상적이야."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:573
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:570
 msgid ""
 "The mermen clapped their hands over their ears as a terrible wail echoed off "
 "the castle walls."
 msgstr "성벽 너머로 끔찍한 호곡성이 울려퍼지자 인어들은 양손으로 귀를 막았다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:598
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:595
 msgid "Now we have the sword!"
 msgstr "이제 검은 우리 것이다!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:603
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:600
 msgid "Correction. Now I have the sword!"
 msgstr "정정하지. 이제 검은 내 것이다!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:689
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:686
 msgid ""
 "It’s MINE! The Flaming Sword of Agnovon IS ALL MINE! I can feel warmth "
 "SPREADING through me!"
@@ -2515,12 +2515,12 @@ msgstr ""
 "안에 <b>퍼져나가는</b> 게 느껴진다!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:714
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:711
 msgid "What? We won that sword!"
 msgstr "뭐야? 우리가 그 검을 얻은 거다!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:719
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:716
 msgid ""
 "Well, it’s true that you helped, so I won’t kill you. But I don’t trust you, "
 "so leave my realm. Go on. I will grant you some time. The benevolence of "
@@ -2531,12 +2531,12 @@ msgstr ""
 "설</b>이 될 것이다! 헤 헤, 하!"
 
 #. [message]: speaker=$staff_tip_off
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:724
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:721
 msgid "Kai! He dropped his staff! We can attack him whenever we want now!"
 msgstr "Kai! 그가 지팡이를 놨습니다! 이제 언제든 놈을 공격할 수 있습니다!"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:728
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:725
 msgid ""
 "We can pretend we are going to leave though. That would buy me some time to "
 "heal the wounded."
@@ -2545,7 +2545,7 @@ msgstr ""
 "니."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:764
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:761
 msgid ""
 "You DARE attack ME! You will regret that. Witness the POWER of the Flaming "
 "Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
@@ -2554,7 +2554,7 @@ msgstr ""
 "똑히 봐라! <b>불의 정령이여 내 명에 따라라</b>!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:831
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:828
 msgid ""
 "You haven’t left yet? My patience is at an END! Witness the POWER of the "
 "Flaming Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
@@ -2563,42 +2563,42 @@ msgstr ""
 "라! <b>불의 정령이여 내 명에 따라라</b>!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:913
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:910
 msgid "Now we can finally grab that sword."
 msgstr "이제 드디어 검을 손에 넣게 되었군."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:931
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:928
 msgid "I am not going with you. One of your people should take the sword."
 msgstr "나는 여러분과 가지 않소. 당신의 백성들 중 하나가 검을 가지시오."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:958
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:955
 msgid "This sword is 8-4, magical, with <i>fire</i> damage."
 msgstr "이 검은 8-4의 마법, <b>화염</b> 피해를 가합니다."
 
-#. [option]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:965
+#. [option]
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:962
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "내가 이 검을 가지고 타오르는 불길로 언데드를 분쇄하겠어."
 
-#. [option]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:974
+#. [option]
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:971
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "이 검은 나에게 맞지 않아. 다른 사람이 갖게 하자."
 
-#. [option]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1009
+#. [option]
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1006
 msgid "I’ll carry the sword."
 msgstr "내가 검을 갖겠다."
 
-#. [option]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1018
+#. [option]
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1015
 msgid "Let someone else have it."
 msgstr "다른 이에게 주겠다."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1056
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1053
 msgid ""
 "We thank all you humans for your help, and release you from any farther "
 "obligations. Where we are going, you cannot easily follow."
@@ -2607,17 +2607,17 @@ msgstr ""
 "가는 곳은 여러분이 따라오기 어려운 곳이오."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1117
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1114
 msgid "CURSE you mermen!"
 msgstr "<b>빌어먹을</b> 인어들!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1132
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1129
 msgid "Aghh! Die!"
 msgstr "아아아아! 죽는다!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1137
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1134
 msgid "He has that staff of..."
 msgstr "그는 저 지팡이를..."
 
@@ -2871,17 +2871,17 @@ msgstr "그렇군. 그건 앙크라는 거다. 그 펜던트를 쓰면 생명력
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr "이 앙크 목걸이는 <i>신령</i> 공격에 70% 저항력을 부여합니다."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:838
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "이건 전 소유주에게는 별로 도움이 안되었던 모양이군. 필요없어."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:875
 msgid "I would like my life force protected."
 msgstr "내 생명력을 보호하고 싶군."
 
-#. [option]: speaker=$unit.id
+#. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid "My life force feels fine as it is."
 msgstr "내 생명력은 이대로 괜찮은 것 같다."
@@ -3042,15 +3042,15 @@ msgstr "주먹"
 msgid "tail"
 msgstr "꼬리"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:106
 #: data/campaigns/Dead_Water/units/Brawler.cfg:166
 msgid "stunned"
 msgstr "마비됨"
 
-#. [set_variable]
 #. [unstore_unit]
+#. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:107
 #: data/campaigns/Dead_Water/units/Brawler.cfg:159
 msgid "female^stunned"
@@ -3231,12 +3231,12 @@ msgid ""
 "and adds three hitpoints."
 msgstr "힘의 반지는 소유자의 모든 공격력을 1 늘려주며, 추가로 HP를 3 늘려준다."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr "박쥐에게 반지를 주자. 좀 더 도움이 될거야."
 
-#. [option]: speaker=Kai Krellis
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 #, fuzzy
 #| msgid "Someone take that off of him before he hurts himself."
@@ -3253,12 +3253,12 @@ msgstr "내가 반지를 껴 보겠어."
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "뭔가 새로운 느낌이 들어, 내 무기들이 전부 가볍게 느껴져!"
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr "내가 이 반지를 갖겠어, 내 힘을 기대해봐도 좋아."
 
-#. [option]: speaker=unit
+#. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "이거 왠지 어지러워. 다른 사람에게 줘야겠어."

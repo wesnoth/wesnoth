@@ -14,9 +14,10 @@
 
 #include "scripting/lua_race.hpp"
 
-#include "race.hpp"
+#include "units/race.hpp"
 #include "scripting/lua_common.hpp"
 #include "units/types.hpp"
+#include "utils/name_generator.hpp"
 
 #include <string>
 #include <string.h>
@@ -31,6 +32,7 @@
 
 // Registry key
 static const char * Race = "race";
+static const char * Gen = "name generator";
 
 /**
  * Gets some data on a race (__index metamethod).
@@ -72,7 +74,35 @@ static int impl_race_get(lua_State* L)
 		}
 		return 1;
 	}
+	if (strcmp(m, "male_name_gen") == 0) {
+		new(lua_newuserdata(L, sizeof(proxy_name_generator)))
+			proxy_name_generator(race.generator(unit_race::MALE));
+		luaL_getmetatable(L, Gen);
+		lua_setmetatable(L, -2);
+		return 1;
+	}
+	if (strcmp(m, "female_name_gen") == 0) {
+		new(lua_newuserdata(L, sizeof(proxy_name_generator)))
+			proxy_name_generator(race.generator(unit_race::FEMALE));
+		luaL_getmetatable(L, Gen);
+		lua_setmetatable(L, -2);
+		return 1;
+	}
 
+	return 0;
+}
+
+static int impl_name_generator_call(lua_State *L)
+{
+	name_generator* gen = static_cast<name_generator*>(lua_touserdata(L, 1));
+	lua_pushstring(L, gen->generate().c_str());
+	return 1;
+}
+
+static int impl_name_generator_collect(lua_State *L)
+{
+	name_generator* gen = static_cast<name_generator*>(lua_touserdata(L, 1));
+	gen->~name_generator();
 	return 0;
 }
 
@@ -90,6 +120,14 @@ namespace lua_race {
 
 		lua_pushstring(L, "race");
 		lua_setfield(L, -2, "__metatable");
+		
+		luaL_newmetatable(L, Gen);
+		static luaL_Reg const generator[] = {
+			{ "__call", &impl_name_generator_call},
+			{ "__gc", &impl_name_generator_collect},
+			{ nullptr, nullptr}
+		};
+		luaL_setfuncs(L, generator, 0);
 
 		return "Adding getrace metatable...\n";
 	}

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-03-01 19:50-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2015-03-29 14:36+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -97,12 +97,12 @@ msgstr ""
 "problēmām."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:921
+#: data/multiplayer/eras.lua:65
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Puse %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -111,12 +111,12 @@ msgstr ""
 "Vienības punkti = %d  Zelts = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:937
+#: data/multiplayer/eras.lua:81
 msgid "Grand total: <b>%d</b>"
 msgstr "Summa: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:947
+#: data/multiplayer/eras.lua:91
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>Pusei %d</span> ir priekšrocība."
 
@@ -1081,6 +1081,55 @@ msgstr ""
 "Ienaidnieks gavilē Tev tieši sejā, un Tu saproti ka tavas gaitas šajā saulē "
 "jau ir beigušās..."
 
+#. [slider]: id=enemey_gold_factor
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
+msgid "Changes the gold worth of the enemy spawns by a certain perentage"
+msgstr ""
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+msgid ""
+"The last and most powerful of these creatures are almost upon us. I feel "
+"that if we can finish them off in time, we shall be victorious."
+msgstr ""
+"Mums tuvojas pēdējais vilnis! Ja mēs salauzīsim viņus - uzvara būs Mūsu!"
+
+#. [lua]: final_spawn
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+msgid ""
+"The screams and pleas for mercy are finally silenced, as you remove your "
+"blood soaked blade from the last of the rebels. There will be no more "
+"resistance from the local scum. Your reign has finally earned stability."
+msgstr ""
+"Kliedzieni un vaidi beidzot apklusa, tiklīdz tu izvilki savu asiņaino asmeni "
+"no dumpinieka kakla. Vairs neviens 'atkritums' neuzdrošinās buntoties. Tavā "
+"pārvaldījumā beidzot ir kārtība."
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+msgid "Clear Weather"
+msgstr "Skaidras debesis"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+msgid "Drought"
+msgstr "Sausums"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+msgid "Heavy Rains"
+msgstr "Spēcīgi līst"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+msgid "Snowfall"
+msgstr "Snieg"
+
+#. [lua]: weather_map
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+msgid "Heavy Snowfall"
+msgstr "Sniegputenis"
+
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
@@ -1497,19 +1546,19 @@ msgstr "Vesnotas dižajās kaujās šis apgabals spēlēja apgādes ceļa lomu."
 msgid "3p — Alirok Marsh"
 msgstr "3s — Aliroka slīknājs"
 
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2071,8 +2120,8 @@ msgstr ""
 "Te ir samērā maz ciematu, tāpēc būtu ieteicams uzlikt 3 zelta gabalus par "
 "ciemu."
 
-#. [multiplayer]: id=multiplayer_Random_Map
 #. [scenario]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
@@ -2087,8 +2136,8 @@ msgstr ""
 "Nejauši ģenerētām kartēm nav sabalansēta apvida, bet tu vari mēģināt ģenerēt "
 "vēlreiz - kamēr esi apmierināts ar iznākumu."
 
-#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #. [scenario]: id=multiplayer_Random_Map_Desert
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
@@ -2105,8 +2154,8 @@ msgstr ""
 "vēlreiz - kamēr esi apmierināts ar iznākumu. (Šeit lielāko daļu kartes "
 "aizņems smiltis)"
 
-#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #. [scenario]: id=multiplayer_Random_Map_Marsh
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
@@ -2123,8 +2172,8 @@ msgstr ""
 "vēlreiz - kamēr esi apmierināts ar iznākumu. (Lielākā daļa kartes būs "
 "purvaina)"
 
-#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #. [scenario]: id=multiplayer_Random_Map_Winter
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
@@ -2182,36 +2231,6 @@ msgid ""
 msgstr ""
 "Vesnotas izejas punkts izmanto --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Kliedzieni un vaidi beidzot apklusa, tiklīdz tu izvilki savu asiņaino "
-#~ "asmeni no dumpinieka kakla. Vairs neviens 'atkritums' neuzdrošinās "
-#~ "buntoties. Tavā pārvaldījumā beidzot ir kārtība."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "Mums tuvojas pēdējais vilnis! Ja mēs salauzīsim viņus - uzvara būs Mūsu!"
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Sniegputenis"
-
-#~ msgid "Snowfall"
-#~ msgstr "Snieg"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Spēcīgi līst"
-
-#~ msgid "Drought"
-#~ msgstr "Sausums"
-
-#~ msgid "Clear Weather"
-#~ msgstr "Skaidras debesis"
 
 #~ msgid "Custom"
 #~ msgstr "pēc izvēles"

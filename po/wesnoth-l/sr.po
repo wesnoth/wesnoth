@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-l\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2012-01-07 13:20+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -22,17 +22,11 @@ msgstr ""
 "X-Wrapping: fine\n"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Слобода"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 #, fuzzy
 #| msgid "(Easy)"
@@ -40,15 +34,11 @@ msgid "Easy"
 msgstr "(лако)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 msgid "Peasant"
 msgstr "сељак"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
 #, fuzzy
 #| msgid "(Normal)"
@@ -56,15 +46,11 @@ msgid "Normal"
 msgstr "(нормално)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
 msgid "Outlaw"
 msgstr "одметник"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
 #, fuzzy
 #| msgid "(Difficult)"
@@ -72,8 +58,6 @@ msgid "Difficult"
 msgstr "(тешко)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "Fugitive"
 msgstr "бегунац"
@@ -96,8 +80,6 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "(Intermediate level, 8 scenarios.)"
 msgstr "(Средњи ниво, 8 сценарија.)"
@@ -512,14 +494,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Грађанска непослушност"
 
+#. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]: type=General, id=Lord Maddock
-#. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Shadow Lord, id=Helicrom
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -542,13 +524,13 @@ msgstr "Побуњеници"
 msgid "Tarwen"
 msgstr "Тарвен"
 
-#. [side]
 #. [side]: type=Cavalier, id=Tarwen
-#. [side]: type=General, id=Dommel
 #. [side]: type=General, id=Kestrel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Master Bowman, id=Quentin
+#. [side]
 #. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
@@ -705,9 +687,9 @@ msgstr "Релана"
 msgid "Urk Delek"
 msgstr "Урк Делек"
 
-#. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Necromancer, id=Mal-Jarrof
 #. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:89
@@ -1573,7 +1555,7 @@ msgstr ""
 msgid "I leave it to you to decide."
 msgstr "Биће како ти одлучиш."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Узећу злато. Како звучи пет стотина?"
@@ -1583,7 +1565,7 @@ msgstr "Узећу злато. Како звучи пет стотина?"
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Договорено. Са срећом и збогом, господару Балдрасе."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:375
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
@@ -1598,7 +1580,7 @@ msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr ""
 "Учињено. На располагању су ти моји најбољи магови и лопови. Користи их мудро."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:394
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr "Рад сам да нам се придружиш у борби против краљичиних снага."
@@ -1732,7 +1714,7 @@ msgstr ""
 "коначиште његовим непријатељима."
 
 # |, no-check-spell
-#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
+#. [event]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:155
 msgid "Pitcher"
 msgstr "Пичер"
@@ -2051,8 +2033,8 @@ msgstr ""
 "Онда... можемо избити потпоре и тако урушити Халстед. Да ли би то заиста "
 "успело?"
 
-#. [message]: speaker=Baldras
 #. [message]: speaker=Helicrom
+#. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:483
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:509
 msgid ""

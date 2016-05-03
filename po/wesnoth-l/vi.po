@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2013-08-22 20:28+0800\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -22,17 +22,11 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Tự do"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 #, fuzzy
 #| msgid "(Easy)"
@@ -40,15 +34,11 @@ msgid "Easy"
 msgstr "(Dễ)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 msgid "Peasant"
 msgstr "Nông dân"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
 #, fuzzy
 #| msgid "(Normal)"
@@ -56,15 +46,11 @@ msgid "Normal"
 msgstr "(Bình thường)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
 msgid "Outlaw"
 msgstr "Kẻ phạm pháp"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
 #, fuzzy
 #| msgid "(Difficult)"
@@ -72,8 +58,6 @@ msgid "Difficult"
 msgstr "(Khó)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "Fugitive"
 msgstr "Kẻ trốn tránh"
@@ -97,8 +81,6 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "(Intermediate level, 8 scenarios.)"
 msgstr "(Mức độ trung bình, 8 màn chơi)"
@@ -505,14 +487,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Bất tuân luật pháp"
 
+#. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]: type=General, id=Lord Maddock
-#. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Shadow Lord, id=Helicrom
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -535,13 +517,13 @@ msgstr "Người nổi loạn"
 msgid "Tarwen"
 msgstr "Tarwen"
 
-#. [side]
 #. [side]: type=Cavalier, id=Tarwen
-#. [side]: type=General, id=Dommel
 #. [side]: type=General, id=Kestrel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Master Bowman, id=Quentin
+#. [side]
 #. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
@@ -702,9 +684,9 @@ msgstr "Relana"
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
-#. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Necromancer, id=Mal-Jarrof
 #. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:89
@@ -1591,7 +1573,7 @@ msgstr ""
 msgid "I leave it to you to decide."
 msgstr "Tôi sẽ để cho anh quyết định."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Tôi sẽ lấy vàng. 500 đồng vàng có được không?"
@@ -1601,7 +1583,7 @@ msgstr "Tôi sẽ lấy vàng. 500 đồng vàng có được không?"
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Đồng ý. Chúc may mắn và tạm biệt anh, ngài Baldras."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:375
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
@@ -1617,7 +1599,7 @@ msgstr ""
 "Xong. Các pháp sư và kẻ trộm tài giỏi nhất của tôi do anh tùy ý sử dụng. Hãy "
 "sử dụng họ hợp lý."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:394
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr ""
@@ -1751,7 +1733,7 @@ msgstr ""
 "của Wesnoth. Ta không bao giờ tưởng tượng được bây giờ chúng lại chứa những "
 "kẻ thù đó."
 
-#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
+#. [event]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:155
 msgid "Pitcher"
 msgstr "Pitcher"
@@ -2082,8 +2064,8 @@ msgstr ""
 "Vậy... chúng ta có thể phá đổ các cột chống và đánh sập thành trì Halstead. "
 "Như thế sẽ thực sự có tác dụng chứ?"
 
-#. [message]: speaker=Baldras
 #. [message]: speaker=Helicrom
+#. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:483
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:509
 msgid ""

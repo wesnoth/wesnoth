@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-01-16 20:58-0300\n"
+"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
 "PO-Revision-Date: 2008-12-27 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -18,17 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Frihed"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 #, fuzzy
 #| msgid "(Easy)"
@@ -36,15 +30,11 @@ msgid "Easy"
 msgstr "(Nem)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 msgid "Peasant"
 msgstr "Bonde"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
 #, fuzzy
 #| msgid "(Normal)"
@@ -52,15 +42,11 @@ msgid "Normal"
 msgstr "(Normal)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:19
 msgid "Outlaw"
 msgstr "Fredløs"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
 #, fuzzy
 #| msgid "(Difficult)"
@@ -68,8 +54,6 @@ msgid "Difficult"
 msgstr "(Svær)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "Fugitive"
 msgstr "Flygtning"
@@ -94,8 +78,6 @@ msgstr ""
 "(Mellemniveau, 9 scenarier)"
 
 #. [campaign]: id=Liberty
-#. Yes, that is "marchlanders", not "marshlanders".
-#. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "(Intermediate level, 8 scenarios.)"
 msgstr ""
@@ -501,14 +483,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Civil ulydighed"
 
+#. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]: type=General, id=Lord Maddock
-#. [side]: type=Highwayman, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Shadow Lord, id=Helicrom
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -531,13 +513,13 @@ msgstr "Oprører"
 msgid "Tarwen"
 msgstr "Tarwen"
 
-#. [side]
 #. [side]: type=Cavalier, id=Tarwen
-#. [side]: type=General, id=Dommel
 #. [side]: type=General, id=Kestrel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Master Bowman, id=Quentin
+#. [side]
 #. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
@@ -695,9 +677,9 @@ msgstr ""
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
-#. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Necromancer, id=Mal-Jarrof
 #. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:89
@@ -1570,7 +1552,7 @@ msgstr ""
 msgid "I leave it to you to decide."
 msgstr "Jeg overlader beslutningen til dig."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:350
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Jeg tager guldet. Hvad siger du til 500?"
@@ -1580,7 +1562,7 @@ msgstr "Jeg tager guldet. Hvad siger du til 500?"
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Enig. Held og lykke samt farvel Herre Baldras."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:375
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
@@ -1596,7 +1578,7 @@ msgstr ""
 "Færdig. Mine bedste troldmænd og tyve er til din rådighed. Brug dem med "
 "omtanke."
 
-#. [option]: speaker=Helicrom
+#. [option]
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:394
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr "Jeg ønsker at du slutter dig til os i kampen med dronningens styrker."
@@ -1731,7 +1713,7 @@ msgstr ""
 "fjender; jeg havde aldrig forestillet mig at de skulle være hjemsted for "
 "Wesnoths fjender."
 
-#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
+#. [event]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:155
 msgid "Pitcher"
 msgstr "Kaster"
@@ -2054,8 +2036,8 @@ msgstr ""
 "Så... vi kan knuse støtteanordningerne og få fæstningsværket til at falde "
 "sammen. Vil det virkelig virke?"
 
-#. [message]: speaker=Baldras
 #. [message]: speaker=Helicrom
+#. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:483
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:509
 msgid ""

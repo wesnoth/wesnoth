@@ -15,9 +15,12 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/label.hpp"
+#include "tstring.hpp"
+
 
 #include <boost/scoped_ptr.hpp>
 #include <map>
+#include <vector>
 #include <atomic>
 
 class CVideo;
@@ -84,7 +87,9 @@ private:
 #else
 	std::atomic<const char*> current_stage_;
 #endif
-	std::map<std::string,std::string>::const_iterator current_visible_stage_;
+	std::map<std::string, t_string> visible_stages_;
+	std::vector<t_string> animation_stages_;
+	std::map<std::string, t_string>::const_iterator current_visible_stage_;
 };
 
 } // namespace gui2
