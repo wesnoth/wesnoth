@@ -1,0 +1,24 @@
+The bootstrap.py file can be used to build wesnoth on Windows OS.
+
+Steps:
+
+1. Install python 2.7. The default path is recommended, but if you must change it, make sure there are no space in the path.
+2. Run the script by double-clicking it.
+3. Choose the number of cores (processors) you wish to build boost and wesnoth with. It is recommended to have at least 500-700 megabytes of RAM free per core used.
+4. When the script finishes, double-click on compile.cmd to build wesnoth.
+
+This is all that is needed to build wesnoth.
+
+
+There are two other .cmd files made by the bootstrap script. They are compile(debug-build) and debugger_launcher. These are used to make a backtrace. Backtraces can be useful in bug reports that involve wesnoth crashing. Otherwise, these files do not need to be run.
+
+If a backtrace is needed, the files are used as follows:
+1. Run compile(debug-build). This makes a debug build (wesnoth-debug.exe). The resulting .exe is approximately 1GB in size.
+2. Run debugger_launcher.
+3. When it's done reading symbols from wesnoth-debug.exe, type 'run'.
+4. When wesnoth starts, take the steps needed to reproduce the crash.
+5. when wesnoth stops responding, go back to the debugger window and type 'bt'.
+6. Output will appear. wesnoth may still be running, so continue by typing 'cont'.
+7. Repeat steps 5 & 6 until typing 'bt' gets the result of 'no stack'.
+8. Right-click the command window, select 'Select All' and hit enter.
+9. The contents of the command window are now in the clipboard, and can be pasted where needed.
