@@ -2682,18 +2682,22 @@ void server::kick_handler(const std::string& /*issuer_name*/, const std::string&
 	bool kicked = false;
 	// if we find a '.' consider it an ip mask
 	const bool match_ip = (std::count(kick_mask.begin(), kick_mask.end(), '.') >= 1);
+	std::vector<socket_ptr> users_to_kick;
 	for (PlayerConnections::iterator it = player_connections_.begin(); it != player_connections_.end(); ++it)
 	{
 		if ((match_ip && utils::wildcard_string_match(client_address(it->socket()), kick_mask))
 		|| (!match_ip && utils::wildcard_string_match(it->info().name(), kick_mask))) {
+			users_to_kick.push_back(it->socket());
+		}
+	}
+	for(const auto& socket : users_to_kick) {
 			if (kicked) *out << "\n";
 			else kicked = true;
-			*out << "Kicked " << it->info().name() << " ("
-				<< client_address(it->socket()) << "). '"
+			*out << "Kicked " << player_connections_.find(socket)->name() << " ("
+			    << client_address(socket) << "). '"
 				<< kick_message << "'";
-			async_send_error(it->socket(), kick_message);
-			remove_player(it->socket());
-		}
+			async_send_error(socket, kick_message);
+			remove_player(socket);
 	}
 	if (!kicked) *out << "No user matched '" << kick_mask << "'.";
 }
