@@ -611,7 +611,7 @@ for libname in ('SDL2_net', 'SDL2_ttf', 'SDL2_mixer', 'SDL2_image'):
     #print('..   copy SDL2_mixer dependencies..')
     dllpath = libpath + '/bin/'
     for name in os.listdir(dllpath):
-      if 'vorbis' in name or 'ogg' in name:
+      if 'vorbis' in name and not 'LICENSE' in name or 'ogg' in name and not 'LICENSE' in name:
         print('..     ' + name)
         shutil.copyfile(dllpath + name, SDLPATH + '/lib/' + name)
         shutil.copyfile(dllpath + name, ROOT + '/' + name)
@@ -622,14 +622,14 @@ for libname in ('SDL2_net', 'SDL2_ttf', 'SDL2_mixer', 'SDL2_image'):
   if libname == 'SDL2_image':
     dllpath = libpath + '/bin/'
     for name in os.listdir(dllpath):
-      if 'png' in name:
+      if 'png' in name and not 'LICENSE' in name:
         print('..     ' + name)
         shutil.copyfile(dllpath + name, SDLPATH + '/lib/' + name)
         shutil.copyfile(dllpath + name, ROOT + '/' + name)
   if libname == 'SDL2_ttf':
     dllpath = libpath + '/bin/'
     for name in os.listdir(dllpath):
-      if 'zlib' in name or 'freetype' in name:
+      if 'zlib' in name and not 'LICENSE' in name or 'freetype' in name and not 'LICENSE' in name:
         print('..     ' + name)
         shutil.copyfile(dllpath + name, SDLPATH + '/lib/' + name)
         shutil.copyfile(dllpath + name, ROOT + '/' + name)
