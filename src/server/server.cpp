@@ -1006,6 +1006,15 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 		);
 		LOG_SERVER << client_address(socket) << "\t" << username
 			<< "\thas logged on" << (registered ? " to a registered account" : "") << "\n";
+
+		if(user_handler_ && user_handler_->user_is_moderator(username)) {
+			LOG_SERVER << "Admin automatically recognized: IP: "
+			    << client_address(socket) << "\tnick: "
+			    << username << std::endl;
+			// This string is parsed by the client!
+			send_server_message(socket, "You are now recognized as an administrator. "
+			        "If you no longer want to be automatically authenticated use '/query signout'.");
+		}
 	} else {
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
 	}
