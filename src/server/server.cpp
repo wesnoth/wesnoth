@@ -335,19 +335,19 @@ static bool make_change_diff(const simple_wml::node& src,
 	return true;
 }
 
-/*std::string player_status(wesnothd::player_map::const_iterator pl) {
+std::string player_status(const wesnothd::PlayerRecord& player) {
 	std::ostringstream out;
-	const network::connection_stats& stats = network::get_connection_stats(pl->first);
-	const int time_connected = stats.time_connected / 1000;
-	const int seconds = time_connected % 60;
-	const int minutes = (time_connected / 60) % 60;
-	const int hours = time_connected / (60 * 60);
-	out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
-		<< " connected for " << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":" << std::setw(2) << seconds
-		<< " sent " << stats.bytes_sent << " bytes, received "
-		<< stats.bytes_received << " bytes";
+	//const network::connection_stats& stats = network::get_connection_stats(pl->first);
+	//const int time_connected = stats.time_connected / 1000;
+	//const int seconds = time_connected % 60;
+	//const int minutes = (time_connected / 60) % 60;
+	//const int hours = time_connected / (60 * 60);
+	out << "'" << player.name() << "' @ " << client_address(player.socket());
+//		<< " connected for " << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":" << std::setw(2) << seconds
+//		<< " sent " << stats.bytes_sent << " bytes, received "
+//		<< stats.bytes_received << " bytes";
 	return out.str();
-}*/
+}
 
 	const std::string denied_msg = "You're not allowed to execute this command.";
 	const std::string help_msg = "Available commands are: adminmsg <msg>,"
@@ -1014,6 +1014,14 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 			// This string is parsed by the client!
 			send_server_message(socket, "You are now recognized as an administrator. "
 			        "If you no longer want to be automatically authenticated use '/query signout'.");
+		}
+
+		// Log the IP
+		connection_log ip_name = connection_log(username, client_address(socket), 0);
+		if (std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
+			ip_log_.push_back(ip_name);
+			// Remove the oldest entry if the size of the IP log exceeds the maximum size
+			if(ip_log_.size() > max_ip_log_size_) ip_log_.pop_front();
 		}
 	} else {
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
@@ -1750,6 +1758,13 @@ void server::remove_player(socket_ptr socket)
 
 	LOG_SERVER << ip << "\t" << iter->info().name()
 		<< "\twas logged off" << "\n";
+
+	// Find the matching nick-ip pair in the log and update the sign off time
+	connection_log ip_name = connection_log(iter->info().name(), ip, 0);
+	std::deque<connection_log>::iterator i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
+	if(i != ip_log_.end()) {
+		i->log_off = time(nullptr);
+	}
 
 	player_connections_.erase(iter);
 
@@ -2741,22 +2756,22 @@ void server::searchlog_handler(const std::string& /*issuer_name*/, const std::st
 
 	// If this looks like an IP look up which nicks have been connected from it
 	// Otherwise look for the last IP the nick used to connect
-	//const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
-	/*for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
+	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	for (std::deque<connection_log>::const_iterator i = ip_log_.begin();
 			i != ip_log_.end(); ++i) {
 		const std::string& username = i->nick;
 		const std::string& ip = i->ip;
 		if ((match_ip && utils::wildcard_string_match(ip, parameters))
 		|| (!match_ip && utils::wildcard_string_match(username, parameters))) {
 			found_something = true;
-			wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_user, _1, username, ip));
-			if (pl != players_.end()) {
-				*out << std::endl << player_status(pl);
+			auto player = player_connections_.get<name_t>().find(username);
+			if (player != player_connections_.get<name_t>().end() && client_address(player->socket()) == ip) {
+				*out << std::endl << player_status(*player);
 			} else {
 				*out << "\n'" << username << "' @ " << ip << " last seen: " << lg::get_timestamp(i->log_off, "%H:%M:%S %d.%m.%Y");
 			}
 		}
-	}*/
+	}
 	if (!found_something) *out << "\nNo match found.";
 }
 
