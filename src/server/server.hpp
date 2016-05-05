@@ -66,6 +66,7 @@ private:
 	void handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
+	void handle_nickserv(socket_ptr socket, simple_wml::node& nickserv);
 	void handle_message(socket_ptr socket, simple_wml::node& message);
 	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
 	void create_game(PlayerRecord& host, simple_wml::node& create_game);
