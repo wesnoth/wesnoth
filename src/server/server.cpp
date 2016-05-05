@@ -693,7 +693,7 @@ std::string server::is_ip_banned(const std::string& ip) const {
 void server::dump_stats(const time_t& now) {
 	last_stats_ = now;
 	LOG_SERVER << "Statistics:"
-//		<< "\tnumber_of_games = " << games_.size()
+	    << "\tnumber_of_games = " << games().size()
 		<< "\tnumber_of_users = " << player_connections_.size() << "\n";
 }
 
@@ -2220,8 +2220,8 @@ void server::help_handler(const std::string& /*issuer_name*/, const std::string&
 void server::stats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {
 	assert(out != NULL);
 
-	*out // << "Number of games = " << games_.size()
-		<< "\nTotal number of users = " << player_connections_.size() << "\n";
+	*out << "Number of games = " << games().size()
+	    << "\nTotal number of users = " << player_connections_.size() << "\n";
 }
 
 void server::metrics_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream *out) {

@@ -117,6 +117,13 @@ private:
 	std::map<long int,std::string> seeds_;
 
 	PlayerConnections player_connections_;
+	std::vector<boost::shared_ptr<game>> games() {
+		std::vector<boost::shared_ptr<game>> result;
+		for(const auto& iter : player_connections_.get<game_t>())
+			if(result.empty() || iter.get_game() != result.back())
+				result.push_back(iter.get_game());
+		return result;
+	}
 
 	/** server socket/fifo. */
 #ifndef _WIN32
