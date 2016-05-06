@@ -8,6 +8,9 @@ Version 1.12.5+dev:
      on non-US keyboard layouts, where characters are in different key
      locations (bug #24186).
    * Fix the move-to-targets candidate action of the default AI ignoring tunnels
+   * Fixed possible assertion failues in mp.
+   * Fixed false positive OOS messages in replay when replaying games from an older
+     wesnoth version..
 
 Version 1.12.5:
  * Campaigns:
