@@ -927,6 +927,7 @@ void playsingle_controller::play_ai_turn(){
 		// to record this change for the replay though.
 		synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(true));
 	}
+	undo_stack_->clear();
 
 	turn_info turn_data(player_number_, replay_sender_, network_reader_);
 
