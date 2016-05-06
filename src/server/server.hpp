@@ -144,7 +144,6 @@ private:
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
 	std::string admin_passwd_;
-	//std::set<network::connection> admins_;
 	std::string motd_;
 	size_t default_max_messages_;
 	size_t default_time_period_;
