@@ -34,7 +34,7 @@ namespace wesnothd
 
 typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
 
-class PlayerRecord
+class player_record
 {
 	const socket_ptr socket_;
 	mutable player player_;
@@ -48,10 +48,10 @@ class PlayerRecord
 	const boost::shared_ptr<game> get_game() const;
 	boost::shared_ptr<game>& get_game();
 	int game_id() const;
-	static void set_game(PlayerRecord&, boost::shared_ptr<game>);
-	static void enter_lobby(PlayerRecord&);
+	static void set_game(player_record&, boost::shared_ptr<game>);
+	static void enter_lobby(player_record&);
 
-	PlayerRecord(const socket_ptr socket, const player& player) : socket_(socket), player_(player) {}
+	player_record(const socket_ptr socket, const player& player) : socket_(socket), player_(player) {}
 };
 
 struct socket_t{};
@@ -61,16 +61,16 @@ struct game_t{};
 using namespace boost::multi_index;
 
 typedef multi_index_container<
-	PlayerRecord,
+    player_record,
 	indexed_by<
 		ordered_unique<
-			tag<socket_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(PlayerRecord,const socket_ptr,socket)>,
+            tag<socket_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(player_record,const socket_ptr,socket)>,
 		hashed_unique<
-			tag<name_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(PlayerRecord,const std::string&,name)>,
+            tag<name_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(player_record,const std::string&,name)>,
 		ordered_non_unique<
-			tag<game_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(PlayerRecord,int,game_id)>
+            tag<game_t>, BOOST_MULTI_INDEX_CONST_MEM_FUN(player_record,int,game_id)>
 	>
-> PlayerConnections;
+> player_connections;
 
 void send_to_player(socket_ptr socket, simple_wml::document& doc);
 

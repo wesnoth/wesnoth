@@ -77,7 +77,7 @@ void game::missing_user(socket_ptr /*socket*/, const std::string& func) const
 		<< ") in player_info_ in game:\t\"" << name_ << "\" (" << id_ << ")\n";
 }
 
-game::game(PlayerConnections& player_connections, socket_ptr host,
+game::game(player_connections& player_connections, socket_ptr host,
 		const std::string& name, bool save_replays,
 		const std::string& replay_save_path) :
 	player_connections_(player_connections),
@@ -107,7 +107,7 @@ game::game(PlayerConnections& player_connections, socket_ptr host,
 {
 	assert(owner_);
 	players_.push_back(owner_);
-	const PlayerConnections::iterator iter = player_connections_.find(owner_);
+	const player_connections::iterator iter = player_connections_.find(owner_);
 	if (iter == player_connections_.end()) {
 		missing_user(owner_, __func__);
 		return;
@@ -182,7 +182,7 @@ std::string describe_turns(int turn, int num_turns)
 
 std::string game::username(const socket_ptr player) const
 {
-	const PlayerConnections::iterator iter = player_connections_.find(player);
+	const auto iter = player_connections_.find(player);
 	if(iter != player_connections_.end()) {
 		return iter->info().name();
 	}
@@ -195,7 +195,7 @@ std::string game::list_users(user_vector users, const std::string& func) const
 	std::string list;
 
 	for(const user_vector::value_type& user : users) {
-		const PlayerConnections::iterator iter = player_connections_.find(user);
+		const auto iter = player_connections_.find(user);
 		if (iter != player_connections_.end()) {
 			if (!list.empty()) list += ", ";
 			list += iter->info().name();
@@ -225,7 +225,7 @@ void game::perform_controller_tweaks() {
 				send_and_record_server_message(msg.str());
 			}
 
-			const PlayerConnections::iterator user = player_connections_.find(sides_[side_index]);
+			const auto user = player_connections_.find(sides_[side_index]);
 			std::string user_name = "null (server missing user)";
 			if (user == player_connections_.end()) {
 				missing_user(user->socket(), __func__);
@@ -415,7 +415,7 @@ void game::update_side_data()
 	// * Find the username.
 	// * Find the side this username corresponds to.
 	for (user_vector::const_iterator user = users.begin(); user != users.end(); ++user) {
-		PlayerConnections::iterator iter = player_connections_.find(*user);
+		auto iter = player_connections_.find(*user);
 		if (iter == player_connections_.end()) {
 			missing_user(*user, __func__);
 			continue;
@@ -481,7 +481,7 @@ void game::transfer_side_control(const socket_ptr sock, const simple_wml::node& 
 
 	const simple_wml::string_span& newplayer_name = cfg["player"];
 	const socket_ptr old_player = sides_[side_num - 1];
-	const PlayerConnections::iterator oldplayer = player_connections_.find(old_player);
+	const auto oldplayer = player_connections_.find(old_player);
 	if (oldplayer == player_connections_.end()) missing_user(old_player, __func__);
 	const std::string old_player_name = username(old_player);
 
@@ -1321,7 +1321,7 @@ void game::send_user_list(const socket_ptr exclude) const {
 	cfg.root().add_child("gamelist");
 	user_vector users = all_game_users();
 	for(user_vector::const_iterator p = users.begin(); p != users.end(); ++p) {
-		const PlayerConnections::const_iterator pl = player_connections_.find(*p);
+		const auto pl = player_connections_.find(*p);
 		if (pl != player_connections_.end()) {
 			//don't need to duplicate pl->second.name().c_str() because the
 			//document will be destroyed by the end of the function
@@ -1431,7 +1431,7 @@ std::string game::has_same_ip(socket_ptr user, bool observer) const {
 	std::string clones;
 	for (user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if (ip == client_address(*i) && user != *i) {
-			const PlayerConnections::const_iterator pl = player_connections_.find(*i);
+			const auto pl = player_connections_.find(*i);
 			if (pl != player_connections_.end()) {
 				clones += (clones.empty() ? "" : ", ") + pl->info().name();
 			}
@@ -1592,7 +1592,7 @@ std::string game::debug_player_info() const {
 	result << "game id: " << id_ << "\n";
 //	result << "players_.size: " << players_.size() << "\n";
 	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); ++p){
-		const PlayerConnections::const_iterator user = player_connections_.find(*p);
+		const auto user = player_connections_.find(*p);
 		if (user != player_connections_.end()){
 			result << "player: " << user->info().name().c_str() << "\n";
 		}
@@ -1602,7 +1602,7 @@ std::string game::debug_player_info() const {
 	}
 //	result << "observers_.size: " << observers_.size() << "\n";
 	for (user_vector::const_iterator o = observers_.begin(); o != observers_.end(); ++o){
-		const PlayerConnections::const_iterator user = player_connections_.find(*o);
+		const auto user = player_connections_.find(*o);
 		if (user != player_connections_.end()){
 			result << "observer: " << user->info().name().c_str() << "\n";
 		}
@@ -1636,7 +1636,7 @@ std::string game::debug_sides_info() const {
 
 socket_ptr game::find_user(const simple_wml::string_span& name)
 {
-	const PlayerConnections::index<name_t>::type::iterator iter = player_connections_.get<name_t>().find(name.to_string());
+	const auto iter = player_connections_.get<name_t>().find(name.to_string());
 	if(iter != player_connections_.get<name_t>().end())
 		return iter->socket();
 	else

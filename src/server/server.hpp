@@ -69,7 +69,7 @@ private:
 	void handle_nickserv(socket_ptr socket, simple_wml::node& nickserv);
 	void handle_message(socket_ptr socket, simple_wml::node& message);
 	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
-	void create_game(PlayerRecord& host, simple_wml::node& create_game);
+	void create_game(player_record& host, simple_wml::node& create_game);
 	void cleanup_game(game*); // deleter for shared_ptr
 	void handle_join_game(socket_ptr socket, simple_wml::node& join);
 	void remove_player(socket_ptr socket);
@@ -117,7 +117,7 @@ private:
 	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<long int,std::string> seeds_;
 
-	PlayerConnections player_connections_;
+	player_connections player_connections_;
 	std::vector<boost::shared_ptr<game>> games() {
 		std::vector<boost::shared_ptr<game>> result;
 		for(const auto& iter : player_connections_.get<game_t>())

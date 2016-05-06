@@ -18,27 +18,27 @@
 namespace wesnothd
 {
 
-const boost::shared_ptr<game> PlayerRecord::get_game() const
+const boost::shared_ptr<game> player_record::get_game() const
 {
 	return game_;
 }
 
-boost::shared_ptr<game>& PlayerRecord::get_game()
+boost::shared_ptr<game>& player_record::get_game()
 {
 	return game_;
 }
 
-int PlayerRecord::game_id() const
+int player_record::game_id() const
 {
 	return game_ ? game_->id() : 0;
 }
 
-void PlayerRecord::set_game(PlayerRecord& record, boost::shared_ptr<game> new_game)
+void player_record::set_game(player_record& record, boost::shared_ptr<game> new_game)
 {
 	record.game_ = new_game;
 }
 
-void PlayerRecord::enter_lobby(PlayerRecord& record)
+void player_record::enter_lobby(player_record& record)
 {
 	record.game_.reset();
 }
