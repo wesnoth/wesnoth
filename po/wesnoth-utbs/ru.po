@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2016-01-01 12:44+0300\n"
+"PO-Revision-Date: 2016-05-03 17:36+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -61,17 +61,13 @@ msgstr "Ловец пустыни"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Нормально)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Посложнее)"
+msgstr "(Сложно)"
 
 #. [unit_type]: id=Desert Sentinel, race=elf
 #. [campaign]: id=Under_the_Burning_Suns
@@ -89,8 +85,6 @@ msgstr "Скиталец пустыни"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
 msgstr "(Очень сложно)"
 
@@ -15339,31 +15333,22 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Монстры"
+msgstr "Краб-монстр"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Crab Men are part crab, part humanoid, and are certainly one of the "
-#| "most twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-#| "creation of some twisted mage, these monstrosities have spread into the "
-#| "wild and prefer to live around coastal waters, preying on both humans and "
-#| "animals."
 msgid ""
 "The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
 "many twisted monsters recorded by the sages of Wesnoth and probably the "
 "creation of some twisted mage. These monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"Человек-краб — частично краб, частично человекообразно существо, и уж точно "
-"— одно из самых странных чудищ, о которых упоминали веснотские мудрецы. Эти "
-"чудовища, созданные не иначе, как извращённой волей какого-то мага, "
-"расползлись по диким землям, предпочитая жить в прибрежных водах, нападая "
-"как на людей, так и на животных."
+"Краб-монстр — частично краб, частично человекообразно существо размером с "
+"лощадь, и уж точно — одно из самых странных чудищ, о которых упоминали "
+"веснотские мудрецы. Эти чудовища, созданные не иначе, как извращённой волей "
+"какого-то мага, расползлись по диким землям, предпочитая жить в прибрежных "
+"водах, нападая как на людей, так и на животных."
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:22
@@ -15542,7 +15527,7 @@ msgstr "Страж"
 #. [unit_type]: id=Dark Assassin1, race=orc
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:4
 msgid "Dark Assassin"
-msgstr "Темный убийца"
+msgstr "Темный ассасин"
 
 #. [unit_type]: id=Dark Assassin1, race=orc
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:20
@@ -15551,9 +15536,9 @@ msgid ""
 "where he came from or why he acts the way he does, but the trail of death he "
 "leaves in his wake is unmistakeable."
 msgstr ""
-"Тёмный убийца появляется и исчезает в одно мгновенье. Никто не знает, откуда "
-"он взялся, и зачем он делает то, что делает, но след смерти, который он "
-"остваляет за собой, ни с чем не спутаешь."
+"Тёмный ассасин появляется и исчезает в одно мгновенье. Никто не знает, "
+"откуда он взялся, и зачем он делает то, что делает, но след смерти, который "
+"он остваляет за собой, ни с чем не спутаешь."
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:37
@@ -15786,7 +15771,7 @@ msgstr ""
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
 msgid "teaching"
-msgstr ""
+msgstr "Обучение"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
@@ -15795,6 +15780,9 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
+"В начале каждого хода этот боец распределяет свой опыт всем соседним "
+"дружественным бойцам. Если рядом нет дружественных бойцов, опыт просто "
+"падает до нуля."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"

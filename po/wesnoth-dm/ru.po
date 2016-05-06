@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2015-12-30 00:14+0300\n"
+"PO-Revision-Date: 2016-05-03 15:14+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -33,15 +33,11 @@ msgstr "Ученик"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Нормальный)"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "(Сложный)"
 
@@ -52,8 +48,6 @@ msgstr "Маг"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
 msgstr "(Очень сложный)"
 
@@ -1100,8 +1094,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:94
-#, fuzzy
-#| msgid "Survive until daybreak."
 msgid "Survive until daybreak"
 msgstr "Выживите до рассвета."
 
@@ -4104,6 +4096,7 @@ msgstr "Алдерот"
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:163
 msgid "Loss of all Undead veterans before Iliah-Malal is defeated"
 msgstr ""
+"Уничтожение всех мертвецов-ветеранов до того, как Илиа-Малал будет повержен"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:182
@@ -4111,7 +4104,7 @@ msgid ""
 "The killing blow against Iliah-Malal can only be struck by one of your "
 "Undead veterans"
 msgstr ""
-"Смертельный удар Илиа-Малалу может нанести лишь один из ваших неживых "
+"Смертельный удар Илиа-Малалу может нанести лишь один из ваших мертвецов-"
 "ветеранов."
 
 #. [note]
@@ -4215,6 +4208,8 @@ msgid ""
 "Alas! Without any undead to strike the killing blow, we will never be able "
 "to defeat Iliah-Malal!"
 msgstr ""
+"Увы! Без единого мертвеца для нанесения смертельного удара мы не сможем "
+"поразить Илиа-Малала!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:388
@@ -4855,7 +4850,7 @@ msgstr "Веха"
 #. [unit_type]: id=Journeyman Mage
 #: data/campaigns/Delfadors_Memoirs/units/Journeyman_Mage.cfg:7
 msgid "Journeyman Mage"
-msgstr "Маг подмастерье"
+msgstr "Начинающий маг"
 
 #. [unit_type]: id=Journeyman Mage
 #: data/campaigns/Delfadors_Memoirs/units/Journeyman_Mage.cfg:13
@@ -4863,8 +4858,8 @@ msgid ""
 "A mage who has just finished his apprenticeship is known as a journeyman. "
 "Journeyman mages travel far in search of employment and experience."
 msgstr ""
-"Маг, который только что закончил ученичество называется подмастерьем. Эти "
-"маги путешествуют в поисках работы и опыта."
+"Маг, который только что закончил ученичество, считается еще 'зеленым' "
+"новичком в своем деле. Такие маги путешествуют в поисках работы и опыта."
 
 #. [unit_type]: id=King of Wesnoth
 #: data/campaigns/Delfadors_Memoirs/units/King_of_Wesnoth.cfg:7
@@ -4910,7 +4905,7 @@ msgstr "посох"
 #. [unit_type]: id=Mage Leader
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:7
 msgid "Mage Leader"
-msgstr "Лидер Магов"
+msgstr "Опытный Маг"
 
 #. [unit_type]: id=Mage Leader
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:15
@@ -4924,7 +4919,7 @@ msgstr ""
 #. [unit_type]: id=Mage Magister
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:7
 msgid "Mage Magister"
-msgstr "Великий Магистр Магов"
+msgstr "Магистр"
 
 #. [unit_type]: id=Mage Magister
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:19
@@ -4932,8 +4927,8 @@ msgid ""
 "A Mage Magister, though equivalent in degree to a Great Mage, has special "
 "abilities of command and healing derived from extensive experience of battle."
 msgstr ""
-"Великий Магистр Магов по званию равен Великому Магу, но при том во многих "
-"битвах отточил командирские и лекарские умения."
+"Магистр по званию равен Великому Магу, но при том во многих битвах отточил "
+"командирские и лекарские умения."
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:4

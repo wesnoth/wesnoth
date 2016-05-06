@@ -5,16 +5,16 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2014-12-03 12:29+0300\n"
+"PO-Revision-Date: 2016-05-03 17:07+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.4.1, po-mode 2.22+0.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -23,8 +23,6 @@ msgstr "Освобождение"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:18
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
 msgstr "(Легкий)"
 
@@ -35,8 +33,6 @@ msgstr "Крестьянин"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:19
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Нормальный)"
 
@@ -47,8 +43,6 @@ msgstr "Изгнанник"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
 msgstr "(Трудный)"
 
@@ -2421,7 +2415,7 @@ msgid ""
 "ground. In a panic, they raced through the forest to Delwyn. It was likewise "
 "devastated. However, they did find one clue as to what happened..."
 msgstr ""
-"Ставшие-преступниками-крестьяне добрались, наконец, до Даллбена. Он был "
+"Крестьяне-ставшие-преступниками добрались, наконец, до Даллбена. Он был "
 "сожжён до основания. В панике они помчались через лес к Делвин. Но и он было "
 "аналогично опустошён. Однако, они нашли один ключ к происшедшему..."
 
@@ -2508,7 +2502,7 @@ msgstr "меч"
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
-msgstr "Запрещённый маг"
+msgstr "Маг-изгой"
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:19
@@ -2520,10 +2514,10 @@ msgid ""
 "while their banditry has resulted in moderate skill with the short sword."
 msgstr ""
 "Некоторые маги были исключены из гильдии магов за то, что практиковали "
-"запрещённые искусства. Будучи сейчас совершенно вне закона, эти запрещённые "
-"маги делают всё, что им необходимо, для своих занятий тёмной магией. Хотя "
-"они не имеют тех навыков, что маги с более формальным образованием, их магия "
-"вполне может быть губительной, а их жизнь вне закона привела к тому, что они "
+"запрещённые искусства. Оказавшись совершенно вне закона, эти маги-изгои "
+"готовы идти на все, чтобы продолжить свои занятия тёмной магией. Хотя они не "
+"имеют тех навыков, что маги с более формальным образованием, их магия вполне "
+"может быть губительной, а их жизнь вне закона привела к тому, что они "
 "неплохо владеют и коротким мечом."
 
 #. [attack]: type=blade
@@ -2600,7 +2594,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
-msgstr "Скелет всадник"
+msgstr "Скелет-всадник"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:34
@@ -2615,7 +2609,7 @@ msgstr ""
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20
 msgid "Villager"
-msgstr "Поселенец"
+msgstr "Деревенщина"
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:23
@@ -2624,12 +2618,12 @@ msgid ""
 "countryside."
 msgstr ""
 "Крестьяне живут в маленьких деревнях, рассеянных по сельской местности "
-"Веснот."
+"Веснота."
 
 #. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:36
 msgid "Village Elder"
-msgstr "Деревенский старейшина"
+msgstr "Деревенский старожила"
 
 #. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:39
@@ -2639,13 +2633,13 @@ msgid ""
 "experienced residents."
 msgstr ""
 "Каждая из деревень, рассеянных по сельской местности Веснота, обычно "
-"управляется группой старейшин, которые являются самыми мудрыми и самыми "
+"управляется группой старожил, которые являются самыми мудрыми и самыми "
 "опытными жителями деревни."
 
 #. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:53
 msgid "Senior Village Elder"
-msgstr "Главный деревенский старейшина"
+msgstr "Старейшина деревни"
 
 #. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:57
@@ -2655,15 +2649,15 @@ msgid ""
 "their shoulders. Provincial officials tend to choose senior village elders "
 "as magistrates so that legal and customary authority will coincide."
 msgstr ""
-"Вся деревня обращается к нему за наставлением. Сильные и мудрые, главные "
+"Вся деревня обращается к Старейшине за наставлением. Сильные и мудрые, "
 "старейшины несут на себе ответственность за благополучие сообщества. Власти "
-"провинции стремятся избирать главных старейшин в магистрат, чтобы их "
-"неформальная и формальная власть совпадали."
+"провинции стремятся избирать старейшин в магистрат, чтобы их неформальная и "
+"формальная власть совпадали."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:59
 msgid "female^Senior Village Elder"
-msgstr "Главная деревенская старейшина"
+msgstr "Старейшина деревни"
 
 #. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:92
@@ -2756,14 +2750,14 @@ msgid ""
 "Their hunting experience makes them most valuable at night and in forests "
 "and swamps."
 msgstr ""
-"Звероловы —- квалифицированные охотники, которые поставляют пищу и меха для "
+"Звероловы — квалифицированные охотники, которые поставляют пищу и меха для "
 "нескольких деревень. Их охотничий опыт делает их наиболее ценными ночью, в "
 "лесах и болотах."
 
 #. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:196
 msgid "Peasant Huntsman"
-msgstr "Крестьянин-охотник"
+msgstr "Крестьянин-ловчий"
 
 #. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:201
@@ -2772,7 +2766,7 @@ msgid ""
 "wilderness homes. They can bullseye ferocious swamp rats and track anything "
 "that moves in their territory."
 msgstr ""
-"Охотники провели свои жизни, живя на болотах и задворках своих глухих домов. "
+"Ловчие провели свои жизни, живя на болотах и задворках своих глухих домов. "
 "Они могут легко подстрелить жестоких болотных тварей и отследить всё, что "
 "двигается на их территории."
 
@@ -2823,12 +2817,6 @@ msgstr "Как это может быть? Мы проиграли."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/utils/utils.cfg:164
-#, fuzzy
-#| msgid ""
-#| "They returned to their village to find it destroyed, with those who "
-#| "fought left dead and the few survivors borne away to unguessable fates. "
-#| "It was a bitter doom, but as Asheviere’s grip tightened they would live "
-#| "to see worse."
 msgid ""
 "They returned to their village to find it destroyed, with those who fought "
 "left dead and the few survivors borne away to unknown fates. It was a bitter "

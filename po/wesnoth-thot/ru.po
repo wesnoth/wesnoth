@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: ru-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2014-11-11 12:05+0300\n"
+"PO-Revision-Date: 2016-05-03 15:41+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -30,8 +30,6 @@ msgstr "МТ"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
 msgstr "(Лёгкий)"
 
@@ -42,8 +40,6 @@ msgstr "Ополченец"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Средний)"
 
@@ -54,8 +50,6 @@ msgstr "Латник"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "(Сложный)"
 
@@ -108,7 +102,7 @@ msgstr "Мозговой штурм, проверка игры и супруже
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:54
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Поддержка кампании"
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -117,15 +111,6 @@ msgstr "У Восточных Врат"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:26
-#, fuzzy
-#| msgid ""
-#| "In the first few years after the founding of the Northern Alliance, the "
-#| "dwarves of Knalga and the human population of Dwarven Doors were fully "
-#| "preoccupied with rebuilding what had been broken by the long orcish "
-#| "occupation. But soon enough they prospered once again. The dwarves begin "
-#| "mining their past for inspiration in ways to rebuild Knalga so it would "
-#| "be even greater than before, and began also reaching out for contact with "
-#| "their scattered kinfolk."
 msgid ""
 "In the first few years after the founding of the Northern Alliance, the "
 "dwarves of Knalga and the human population of Dwarven Doors were fully "
@@ -495,8 +480,6 @@ msgstr "Да, милорд Хамель."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:207
-#, fuzzy
-#| msgid "The Order thanks you, Lord Hamel"
 msgid "The Order thanks you, Lord Hamel."
 msgstr "Орден благодарит вас, Лорд Хамель"
 
@@ -1086,16 +1069,10 @@ msgid ""
 msgstr ""
 "Мы очень благодарны за вашу помощь. Я бы хотел послать пару своих старших "
 "помощников с вами на восток. Пришло их время стать странниками. И я "
-"чувствую, что родилось что-то на востоке, что мне не нравится."
+"чувствую, что на востоке  родилось нечто, что мне не нравится."
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
-#, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send one of our "
-#| "senior apprentices with you to the east. It has come time for him to be "
-#| "journeyman... and I sense something being born to the east that I do not "
-#| "like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send one of our senior "
 "apprentices with you to the east. It has come time for him to be a "
@@ -1104,7 +1081,7 @@ msgid ""
 msgstr ""
 "Мы очень благодарны за вашу помощь. Я бы хотел послать одного из своих "
 "старших помощников с вами на восток. Пришло его время стать странником. И я "
-"чувствую, что родилось что-то на востоке, что мне не нравится."
+"чувствую, что на востоке  родилось нечто, что мне не нравится."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:205
@@ -1222,10 +1199,8 @@ msgstr "Гном в маске"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:171
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:207
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:286
-#, fuzzy
-#| msgid "Masked Dwarf"
 msgid "Masked Dwarves"
-msgstr "Гном в маске"
+msgstr "Гномы в масках"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:106
@@ -1381,10 +1356,8 @@ msgstr "Получи в память о моей семье, убийца!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:350
-#, fuzzy
-#| msgid "They are defeated"
 msgid "They are defeated!"
-msgstr "Они побеждены"
+msgstr "Они побеждены!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:355
@@ -1879,7 +1852,7 @@ msgstr "Нижние подземелья"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:244
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:263
 msgid "Undead"
-msgstr ""
+msgstr "Мертвецы"
 
 #. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:249
@@ -1985,11 +1958,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:541
-#, fuzzy
-#| msgid ""
-#| "I sense these bindings to be the work of common sorcery, not the power of "
-#| "the Hammer. Usually to each such locking spell there is some sort of key. "
-#| "If we can but find the key, we will able to open these doors."
 msgid ""
 "I sense these bindings to be the work of common sorcery, not the power of "
 "the Hammer. Usually to each such locking spell there is some sort of key. If "
@@ -2124,10 +2092,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:870
-#, fuzzy
-#| msgid ""
-#| "Freeing these prisoners is more of a blow to Karrag then we thought, for "
-#| "now he is unable to continue his foul sorcery."
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag than we thought, for now "
 "he is unable to continue his foul sorcery."
@@ -2326,7 +2290,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:167
 msgid "I am he. Speak your message."
-msgstr "Это я. Говори своё послание?"
+msgstr "Это я. Говори своё послание."
 
 #. [message]: speaker=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:173
@@ -2350,8 +2314,8 @@ msgid ""
 "you return to Knalga as soon as convenient, for your investiture."
 msgstr ""
 "Айглондур, Лорд-Протектор дарует тебе звание Лорда-Компаньона Альянса. Он "
-"надеется, что ты вернёшься в Кналга, как только сможешь, чтобы быть введён в "
-"должность."
+"надеется, что ты вернёшься в Кналга, как только сможешь, чтобы провести "
+"церемонию назначения."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:183
@@ -2445,22 +2409,22 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:4
 msgid "Dwarvish Masked Dragonguard"
-msgstr "Драконий страж в маске"
+msgstr "Драконоборец в маске"
 
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:4
 msgid "Dwarvish Masked Fighter"
-msgstr "Ополченец в маске"
+msgstr "Ратник в маске"
 
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:4
 msgid "Dwarvish Masked Guardsman"
-msgstr "Стражник в маске"
+msgstr "Щитоносец в маске"
 
 #. [unit_type]: id=Dwarvish Masked Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:4
 msgid "Dwarvish Masked Lord"
-msgstr "Богатырь в маске"
+msgstr "Конунг в маске"
 
 #. [unit_type]: id=Dwarvish Masked Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:18
@@ -2473,7 +2437,7 @@ msgid ""
 "several paces. Though slow on their feet, these dwarves are a testament to "
 "the prowess of their kind."
 msgstr ""
-"Богатыри, что скрывают своё лицо — ужас гномьих легенд, ведь они используют "
+"Конунги, что скрывают своё лицо — ужас гномьих легенд, ведь они используют "
 "грозную силу своего народа, но не отвечают перед своими собратьями и "
 "Хранителями гномьих знаний за те тёмные и кровавые дела, что они совершат "
 "своим оружием. Как и их честные собратья, они в совершенстве владеют топором "
@@ -2483,17 +2447,17 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:4
 msgid "Dwarvish Masked Sentinel"
-msgstr "Часовой в маске"
+msgstr "Ратоборец в маске"
 
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:4
 msgid "Dwarvish Masked Stalwart"
-msgstr "Хранитель в маске"
+msgstr "Защитник в маске"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:4
 msgid "Dwarvish Masked Steelclad"
-msgstr "Латник в маске"
+msgstr "Дружинник в маске"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:18
@@ -2502,19 +2466,19 @@ msgid ""
 "for which they are rightly famous. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""
-"Более опытные ополченцы одеты в тяжелую кольчугу и пластинчатые доспехи, "
-"которые снискали им заслуженную славу. Те же, кто скрывает свои лица за "
-"клепаной маской -- самый страшный кошмар гномов."
+"Более опытные ратники одеты в тяжелую кольчугу и пластинчатые доспехи "
+"дружинников, которые снискали им заслуженную славу. Те же, кто скрывает свои "
+"лица за клепаной маской -- самый страшный кошмар гномов."
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:4
 msgid "Dwarvish Masked Thunderer"
-msgstr "Громовержец в маске"
+msgstr "Громобой в маске"
 
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:4
 msgid "Dwarvish Masked Thunderguard"
-msgstr "Громовой страж в маске"
+msgstr "Громовержец в маске"
 
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
@@ -2554,26 +2518,19 @@ msgstr "вдохновляет"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
-#, fuzzy
-#| msgid "inspire"
 msgid "female^inspire"
 msgstr "вдохновляет"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
-#, fuzzy
-#| msgid ""
-#| "This unit can inspire own L0 or L1 units that are next to it, making them "
-#| "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
-#| "will do 50% more."
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
-"Этот боец вдохновляет соседних бойцов уровней 0 и 1 сражаться лучше. "
-"Ближайшие бойцы уровня 1 будут наносить на 25% больше урона, уровня 0 — на "
-"50% больше урона."
+"Этот боец вдохновляет соседних дружественных бойцов сражаться лучше. "
+"Ближайшие бойцы такого же уровня или ниже будут наносить на 25% больше "
+"урона, плюс по 25% на каждый уровень разницы между ними и вдохновителем."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"
@@ -2646,10 +2603,8 @@ msgstr ""
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:50
-#, fuzzy
-#| msgid "Only mages can wield the Staff."
 msgid "Only a mage may wield this Staff."
-msgstr "Только маги могут владеть посохом."
+msgstr "Только маги могут владеть этим посохом."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:75

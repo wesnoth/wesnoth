@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2016-01-01 12:03+0300\n"
+"PO-Revision-Date: 2016-05-03 14:38+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -44,8 +44,6 @@ msgstr "(Средний уровень, 18 сценариев)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
 msgstr "(Лёгкий)"
 
@@ -61,15 +59,13 @@ msgstr "Лорд"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:54
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Нормальный)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
 msgid "Challenging"
-msgstr ""
+msgstr "(Сложный)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -268,10 +264,6 @@ msgstr "Глава первая: Беги и Бейся"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:30
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter One"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter One"
@@ -281,16 +273,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and Fight</i>"
 msgid ""
 "Chapter One\n"
 "<i>Flight and Fight</i>"
 msgstr ""
 "Глава первая,\n"
-"<i>Беги и Бейся</i>"
+"<i>Беги и Бейся</i"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:38
@@ -1141,10 +1129,6 @@ msgstr "Глава вторая: Сокровищница"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Two"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Two"
@@ -1154,10 +1138,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Two,\n"
-#| "<i>The Treasury</i>"
 msgid ""
 "Chapter Two\n"
 "<i>The Treasury</i>"
@@ -1374,8 +1354,6 @@ msgstr "Спахр"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:211
-#, fuzzy
-#| msgid "Enter the Saurian Treasury and leave with the gold"
 msgid "Enter the Saurian Treasury with a horse and leave with the gold"
 msgstr "Войдите в Сокровищницу ящеров и заберите золото"
 
@@ -1543,7 +1521,7 @@ msgstr "Трор"
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:267
 msgid "Try to save leveled dwarf units"
-msgstr ""
+msgstr "Попытайтесь сохранить продвинутых гномов-бойцов"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:277
@@ -1702,10 +1680,6 @@ msgstr "Труугл"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:318
-#, fuzzy
-#| msgid ""
-#| "You must own the field and be capable of overwhelming your opponents. "
-#| "(Player(s) own more than 25 units while the foes’ numbers fell below 15)"
 msgid ""
 "You must own the field and be capable of overwhelming your opponents. "
 "(Player(s) own more than 25 units while the foes’ numbers fall below 15.)"
@@ -1736,10 +1710,6 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:408
-#, fuzzy
-#| msgid ""
-#| "She is right. Don’t let them lure you away from the Ka’lian, preparations "
-#| "for when more of them arrive return must be made."
 msgid ""
 "She is right. Don’t let them lure you away from the Ka’lian, preparations "
 "for when more of them arrive must be made."
@@ -1901,18 +1871,12 @@ msgstr "И мы принесли с собой остатки эльфийско
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:583
-#, fuzzy
-#| msgid "Perhaps the gold will our word weight with the council."
 msgid "Perhaps the gold will give our words more weight with the council."
 msgstr "Быть может, совет внемлет золоту и нашему слову."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:589
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:595
-#, fuzzy
-#| msgid ""
-#| " has left the recovered gold into the elvish treasury. You will start the "
-#| "next scenario with a preset amount."
 msgid ""
 " has returned any remaining gold into the elvish treasury. You will start "
 "the next scenario with a preset amount."
@@ -2278,10 +2242,6 @@ msgstr "Глава третья: Книга Крелану"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:28
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Three"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Three"
@@ -2291,10 +2251,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Chapter Three,\n"
-#| "<i>The Book of Crelanu</i>"
 msgid ""
 "Chapter Three\n"
 "<i>The Book of Crelanu</i>"
@@ -2413,11 +2369,6 @@ msgstr ""
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:482
-#, fuzzy
-#| msgid ""
-#| "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends "
-#| "about it. May be they are but children’s tales... Still, be very careful "
-#| "when you cross it."
 msgid ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
 "it. Maybe they are but children’s tales... Still, be very careful when you "
@@ -3358,10 +3309,6 @@ msgstr "Союз с людьми"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Four"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Four"
@@ -3371,10 +3318,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Four,\n"
-#| "<i>The Alliance</i>"
 msgid ""
 "Chapter Four\n"
 "<i>The Alliance</i>"
@@ -3677,14 +3620,6 @@ msgstr "Молчать! Как смеешь ты так разговариват
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:42
-#, fuzzy
-#| msgid ""
-#| "Calm down, Aldar! The elf is right to reproach us. My father did not help "
-#| "when the orcs attacked you. But my father is dead. There are a lot of "
-#| "things my father did that I can not understand; he grew suspicious and "
-#| "strange in his last days. But <i>I</i> am the King of Wesnoth now, not my "
-#| "father! And it is my intention to renew our alliance by signing a new "
-#| "treaty here, with you."
 msgid ""
 "Calm down, Aldar! The elf is right to reproach us. My father did not help "
 "when the orcs attacked you. But my father is dead. There are a lot of things "
@@ -4342,10 +4277,6 @@ msgstr "Глава пятая: Гражданская война"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:35
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Five"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Five"
@@ -4355,10 +4286,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:40
-#, fuzzy
-#| msgid ""
-#| "Chapter Five,\n"
-#| "<i>Civil War</i>"
 msgid ""
 "Chapter Five\n"
 "<i>Civil War</i>"
@@ -4434,10 +4361,6 @@ msgstr "Убейте всех врагов и разрушьте все дере
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:249
-#, fuzzy
-#| msgid ""
-#| "We have finally reached Saurgrath, their capitol. Remember whose side "
-#| "they have taken in the war against us."
 msgid ""
 "We have finally reached Saurgrath, their capital. Remember whose side they "
 "have taken in the war against us."
@@ -4531,8 +4454,6 @@ msgstr "Их месть ужасна! Я боюсь за наш род."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:394
-#, fuzzy
-#| msgid "Don’t flee. We cannot abandon our capitol."
 msgid "Don’t flee. We cannot abandon our capital."
 msgstr "Стой. Мы не может бросить нашу столицу."
 
@@ -5097,10 +5018,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/Great_Ogre.cfg:6
-#, fuzzy
-#| msgid "Creatures"
 msgid "Great Ogre"
-msgstr "Твари"
+msgstr "Великий Огр"
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/Great_Ogre.cfg:35
@@ -5110,21 +5029,27 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Великие Огры - гигантские создания, обычно живущие в глуши поодиночке; они "
+"удивительно похожи на людей, но большие и уродливые. Их очень просто "
+"обмануть или убежать от них, но силу огров не стоит недооценивать."
 
 #. [attack]: type=blade
 #: data/campaigns/Legend_of_Wesmere/units/Great_Ogre.cfg:40
 msgid "cleaver"
-msgstr ""
+msgstr "тесак"
 
 #. [unit_type]: id=Elvish Horse Archer
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:13
 msgid "This is a stub!"
-msgstr "Это заглушка!"
+msgstr ""
+"Некоторые эльфийские наездники специализируются на стрельбе из лука на "
+"полном скаку. Для человека такая точность и скорострельность стрельбы в "
+"седле может показаться просто сверхъестественной."
 
 #. [unit_type]: id=Elvish Horse Archer
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:18
 msgid "Elvish Horse Archer"
-msgstr "Всадник-лучник"
+msgstr "Наездник-лучник"
 
 #. [attack]: type=blade
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:22

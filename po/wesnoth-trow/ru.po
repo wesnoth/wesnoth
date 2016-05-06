@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: ru-trow\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2015-12-30 01:41+0300\n"
+"PO-Revision-Date: 2016-05-03 16:34+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -44,8 +44,6 @@ msgstr "НЗВ"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
 msgstr "(Лёгкий)"
 
@@ -61,15 +59,11 @@ msgstr "Военачальник"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:19
-#, fuzzy
-#| msgid "Normal:"
 msgid "Normal"
-msgstr "Остальным:"
+msgstr "(Нормальный)"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:20
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "(Сложный)"
 
@@ -86,9 +80,9 @@ msgid ""
 "with Lich-Lord Jevyan awaits...\n"
 "\n"
 msgstr ""
-"Проведите принца Хальдрика по разрушенному Зелёному острову, через океан, и "
-"помогите основать не что-нибудь, а само королевство Веснот. Вас ждёт "
-"противостояние с Жевьяном, Владыкой-личем...\n"
+"Проведите принца Хальдрика по разрушенному Зелёному острову и далее через "
+"океан, и помогите основать не что-нибудь, а само королевство Веснот. Вас "
+"ждёт противостояние с Жевьяном, Владыкой-личем...\n"
 "\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
@@ -3753,7 +3747,7 @@ msgstr "Поторопись. Мы должны обезопасить гран�
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:253
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:4
 msgid "Familiar"
-msgstr "Спутник"
+msgstr "Фамилиар"
 
 #. [event]
 #. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
@@ -6980,7 +6974,7 @@ msgstr "укус"
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
-msgstr "Знатный военачальник"
+msgstr "Принц-командир"
 
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
@@ -6991,10 +6985,10 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"Обязанности военачальника — возглавлять боевые группы в бою. Умелый лидер, "
-"он помогает соседним бойцам низшего уровня лучше действовать в битве. "
-"Военачальники владеют мечом, а при необходимости могут использовать и лук. "
-"Гибель командира означает проигрыш в битве."
+"Обязанности командира — возглавлять боевые группы в бою. Умелый воин и "
+"военачальник, он помогает соседним бойцам низшего уровня лучше действовать в "
+"битве. Принц-командир прекрасно владеет мечом, а при необходимости может "
+"использовать и лук. "
 
 #. [attack]: type=blade
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:26
@@ -7012,7 +7006,7 @@ msgstr "лук"
 #. [unit_type]: id=Noble Fighter, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
-msgstr "Знатный ополченец"
+msgstr "Принц-воин"
 
 #. [unit_type]: id=Noble Fighter, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
@@ -7021,13 +7015,14 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
-"Молодые и дерзкие, ополченцы дерутся мечом и уязвимы вражеским атакам с "
-"расстояния. Тем не менее, однажды они могут стать великими военачальниками."
+"Молодой и дерзкий принц-воин сражается только мечом и уязвим к вражеским "
+"атакам с расстояния. Тем не менее, однажды он может стать великим воином и "
+"военачальником."
 
 #. [unit_type]: id=Noble Lord, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
-msgstr "Знатный лорд"
+msgstr "Великий принц"
 
 #. [unit_type]: id=Noble Lord, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
@@ -7037,15 +7032,15 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
-"Благородные предводители солдат, лорды особенно сильны в рукопашной схватке "
-"и также владеют навыками обращения с луком. Как и военачальники, лорды имеют "
-"навыки лидерства и повышают боеспособность всех соседних бойцов низших "
+"Благородные предводители солдат, Великие Принцы особенно сильны в рукопашной "
+"схватке и неплохо стреляют из лука. Великий Принц имеет высокие навыки "
+"лидерства и значительно повышает боеспособность всех соседних бойцов низших "
 "уровней."
 
 #. [unit_type]: id=Noble Youth, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
-msgstr "Знатный юноша"
+msgstr "Юный принц"
 
 #. [unit_type]: id=Noble Youth, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
@@ -7053,8 +7048,8 @@ msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord — to join the elite of humanity."
 msgstr ""
-"Сегодня он — юноша, преданный короне, желающий стать лордом, чтобы "
-"присоединиться к лучшим представителям человечества."
+"Сегодня он — лишь юный принц без боевого опыта, размахивающий тренировочным "
+"мечом."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:22
@@ -7246,7 +7241,7 @@ msgstr "Бывший друг"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:13
 msgid "I still think I should be called ‘Dragonbane’."
-msgstr "Я всё же думаю, что смогу называться «Драконобойцем»."
+msgstr "Я всё же думаю, что смогу называться «Драконоборцем»."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:17
