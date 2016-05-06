@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-11-05 21:31-0300\n"
-"PO-Revision-Date: 2016-01-01 12:44+0300\n"
+"PO-Revision-Date: 2016-05-03 17:36+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -36,6 +36,8 @@ msgstr "ППС"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:19
+#, fuzzy
+#| msgid "Normal"
 msgid "(Normal)"
 msgstr "(Нормально)"
 
@@ -48,8 +50,10 @@ msgstr "Ловец пустыни"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:20
+#, fuzzy
+#| msgid "Challenging"
 msgid "(Challenging)"
-msgstr "(Посложнее)"
+msgstr "(Сложно)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [unit_type]: id=Desert Sentinel, race=elf
@@ -60,6 +64,8 @@ msgstr "Страж пустыни"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
+#, fuzzy
+#| msgid "Nightmare"
 msgid "(Nightmare)"
 msgstr "(Очень сложно)"
 
@@ -11029,6 +11035,10 @@ msgstr "О боги, только всё начало успокаиваться
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2332
+#, fuzzy
+#| msgid ""
+#| "Our people are scattered and exhausted, where will we go now Kaleh? Shall "
+#| "we retreat back into the dunes?"
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat back into the dunes?"
@@ -15317,17 +15327,24 @@ msgstr "Человек-краб"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
+#, fuzzy
+#| msgid ""
+#| "The Monster Crab is a semi-sentient crab the size of a horse. It is one "
+#| "of many twisted monsters recorded by the sages of Wesnoth and probably "
+#| "the creation of some twisted mage. These monstrosities have spread into "
+#| "the wild and prefer to live around coastal waters, preying on both humans "
+#| "and animals."
 msgid ""
 "The Crab Men are part crab, part humanoid, and are certainly one of the most "
 "twisted monsters ever recorded by the sages of Wesnoth. Probably the "
 "creation of some twisted mage, these monstrosities have spread into the wild "
 "and prefer to live around coastal waters, preying on both humans and animals."
 msgstr ""
-"Человек-краб — частично краб, частично человекообразно существо, и уж точно "
-"— одно из самых странных чудищ, о которых упоминали веснотские мудрецы. Эти "
-"чудовища, созданные не иначе, как извращённой волей какого-то мага, "
-"расползлись по диким землям, предпочитая жить в прибрежных водах, нападая "
-"как на людей, так и на животных."
+"Краб-монстр — частично краб, частично человекообразно существо размером с "
+"лощадь, и уж точно — одно из самых странных чудищ, о которых упоминали "
+"веснотские мудрецы. Эти чудовища, созданные не иначе, как извращённой волей "
+"какого-то мага, расползлись по диким землям, предпочитая жить в прибрежных "
+"водах, нападая как на людей, так и на животных."
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:21
@@ -15517,7 +15534,7 @@ msgstr "Страж"
 #. [unit_type]: id=Dark Assassin1, race=orc
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:4
 msgid "Dark Assassin"
-msgstr "Темный убийца"
+msgstr "Темный ассасин"
 
 #. [unit_type]: id=Dark Assassin1, race=orc
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:20
@@ -15526,9 +15543,9 @@ msgid ""
 "where he came from or why he acts the way he does, but the trail of death he "
 "leaves in his wake is unmistakeable."
 msgstr ""
-"Тёмный убийца появляется и исчезает в одно мгновенье. Никто не знает, откуда "
-"он взялся, и зачем он делает то, что делает, но след смерти, который он "
-"остваляет за собой, ни с чем не спутаешь."
+"Тёмный ассасин появляется и исчезает в одно мгновенье. Никто не знает, "
+"откуда он взялся, и зачем он делает то, что делает, но след смерти, который "
+"он остваляет за собой, ни с чем не спутаешь."
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/orcs/Dark_Assassin1.cfg:37
@@ -16836,3 +16853,31 @@ msgstr "Фантомный замок"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
 msgid "Phantom Keep"
 msgstr "Лагерь-призрак"
+
+#, fuzzy
+#~| msgid ""
+#~| "And now I think you should be off as soon as possible. The trolls have "
+#~| "retreated back into their holes for the present, but who knows when they "
+#~| "will strike again."
+#~ msgid ""
+#~ "And now I think you should be off as soon as possible. The trolls have "
+#~ "retreated into their holes for the present, but who knows when they will "
+#~ "strike again."
+#~ msgstr ""
+#~ "А теперь, полагаю, вам следует выступать как можно быстрее. Сейчас тролли "
+#~ "попрятались в свои норы, но кто знает, когда они нанесут следующий удар."
+
+#~ msgid "Monster Crab"
+#~ msgstr "Краб-монстр"
+
+#~ msgid "teaching"
+#~ msgstr "Обучение"
+
+#~ msgid ""
+#~ "At the start of every turn, this unit redistributes its experience points "
+#~ "to all the units of the same side adjacent to it. If no suitable unit is "
+#~ "adjacent, its experience just goes back to zero."
+#~ msgstr ""
+#~ "В начале каждого хода этот боец распределяет свой опыт всем соседним "
+#~ "дружественным бойцам. Если рядом нет дружественных бойцов, опыт просто "
+#~ "падает до нуля."

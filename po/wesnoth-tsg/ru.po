@@ -5,20 +5,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
-"PO-Revision-Date: 2014-11-15 12:03+0300\n"
+"POT-Creation-Date: 2015-11-05 21:31-0300\n"
+"PO-Revision-Date: 2016-05-03 18:28+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.4.1, po-mode 2.22+0.4\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Bookmarks: -1,139,-1,-1,-1,-1,-1,-1,-1,-1\n"
-"X-Poedit-Language: Russian\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=The_South_Guard
@@ -51,6 +49,8 @@ msgstr "(Для начинающих, 9 сценариев.)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
+#, fuzzy
+#| msgid "Beginner"
 msgid "(Beginner)"
 msgstr "(Новичок)"
 
@@ -61,6 +61,8 @@ msgstr "Гражданский"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
+#, fuzzy
+#| msgid "Easy"
 msgid "(Easy)"
 msgstr "(Легкий)"
 
@@ -71,6 +73,8 @@ msgstr "Новобранец"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
+#, fuzzy
+#| msgid "Normal"
 msgid "(Normal)"
 msgstr "(Нормальный)"
 
@@ -454,12 +458,18 @@ msgstr "Илла"
 
 #. [message]: speaker=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:454
+#, fuzzy
+#| msgid ""
+#| "Your people have been our allies in the past, ever since the days of Lord "
+#| "Typhon. We will help you drive these bandits from your land if you allow "
+#| "us to live here in peace."
 msgid ""
 "Your people have been allies of our lord, King Typhon. We will help you "
 "drive these bandits from your land if you allow us to live here in peace."
 msgstr ""
-"Ваши люди были союзниками нашего правителя, короля Тайфона. Мы поможем вам "
-"изгнать этих бандитов с ваших земель, если позволите нам жить здесь в мире."
+"Ваши люди в прошлом были союзниками нашего правителя, короля Тайфона. Мы "
+"поможем вам изгнать этих бандитов с ваших земель, если позволите нам жить "
+"здесь в мире."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:459
@@ -1091,11 +1101,15 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:270
+#, fuzzy
+#| msgid ""
+#| "I hope that’s the last of the bandits! How many more of these foul "
+#| "creatures must we fight?"
 msgid ""
 "I hope that’s the last of the bandits! How many more of these foul undead "
 "must we fight?"
 msgstr ""
-"Надеюсь, это последний из бандитов! Сколько ещё этих грязных мертвецов нам "
+"Надеюсь, это последний из бандитов! Сколько ещё этих мерзких созданий нам "
 "придётся сразить?"
 
 #. [message]: speaker=Deoran
@@ -1605,6 +1619,11 @@ msgstr "Почему мы остановились и разбили лагер�
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:230
+#, fuzzy
+#| msgid ""
+#| "The Black River is before us. No elf, still living, has crossed it. If "
+#| "the undead come from across the river, then we must search for them "
+#| "carefully, for I know not the way."
 msgid ""
 "The Black River is before us. No elf, still living, has crossed it. If the "
 "undead come from across the river, then we must search for them carefully, "
@@ -2234,6 +2253,10 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:329
+#, fuzzy
+#| msgid ""
+#| "if they are hostile to us, they could endanger Deoran and Ethiliel as "
+#| "well. Perhaps their leader can be reasoned with."
 msgid ""
 "if they are hostile to us, they could endanger Deoran and Ethiliel as well. "
 "Perhaps their leader can be reasoned with."
@@ -3548,7 +3571,7 @@ msgstr "взгляд"
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
-msgstr "Конный командир"
+msgstr "Конный лейтенант"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:26
@@ -3557,7 +3580,7 @@ msgid ""
 "ride and fight, but to lead. They command the garrisons that keep peace in "
 "the provinces of Wesnoth."
 msgstr ""
-"Конные Командиры, предводители пограничной стражи, обучены не только ездить "
+"Конные Лейтенанты, предводители пограничной стражи, обучены не только ездить "
 "верхом и сражаться, но и руководить. Они командуют гарнизонами, которые "
 "охраняют спокойствие веснотских провинций."
 
@@ -3576,7 +3599,7 @@ msgstr "булава"
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
-msgstr "Командир Пехоты"
+msgstr "Пехотный генерал"
 
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:27
@@ -3584,7 +3607,7 @@ msgid ""
 "Veteran commanders have faced battle many times and led their men with "
 "steady hands and calm determination."
 msgstr ""
-"Опытные командиры много видели битв и вели на них своих людей твёрдой рукой "
+"Пехотные генералы видели много битв и вели на них своих людей твёрдой рукой "
 "и с холодной решимостью."
 
 #. [attack]: type=blade
@@ -3611,14 +3634,14 @@ msgid ""
 "veteran soldiers, not nobility, and all have shown leadership and courage in "
 "battle."
 msgstr ""
-"Командиры веснотской пехоты отвечают за гарнизон и за оборону приграничных "
+"Лейтенанты веснотской пехоты отвечают за гарнизон и за оборону приграничных "
 "городов и деревень. Их выбирают из опытных солдат, незнатного рода, но "
 "проявивших в битвах отвагу и умение вести людей."
 
 #. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:4
 msgid "Junior Commander"
-msgstr "Молодой командир"
+msgstr "Конный Командир"
 
 #. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:26
@@ -3628,8 +3651,8 @@ msgid ""
 "enough for the task became the commanders of the armies of Wesnoth."
 msgstr ""
 "Сыновья рыцарей и лордов, едва им исполнялось 17 или 18 лет, получали коней "
-"и мечи, и им поручали руководить людьми. Проявивших достаточно сильный "
-"характер делали командирами армий Веснота."
+"и мечи, и им поручали руководить людьми. Проявившим достаточно сильный "
+"характер давали командовать армиями Веснота."
 
 #. [attack]: type=pierce
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
@@ -3648,9 +3671,10 @@ msgid ""
 "trained not only to ride and fight, but to lead. They command the garrisons "
 "that keep peace in the provinces of Wesnoth."
 msgstr ""
-"Конные Генералы, наиболее способные среди предводителей пограничной стражи, "
-"обучены не только ездить верхом и сражаться, но и руководить. Они командуют "
-"гарнизонами, которые охраняют спокойствие веснотских провинций."
+"Конные Генералы, наиболее способные и опытные среди предводителей "
+"пограничной стражи, являются мастерами верховой езды и ближнего боя, а также "
+"прекрасные военачальники. Они командуют армиями, которые охраняют "
+"спокойствие веснотских провинций."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:35
@@ -3772,6 +3796,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
+#, fuzzy
+#| msgid ""
+#| "King Haldric summoned a young, undistinguished but promising cavalry "
+#| "officer named Deoran. Deoran was the grandson of Haldiel, who had fought "
+#| "with distinction alongside Konrad I in the war to reclaim the throne. The "
+#| "King had a mission for him."
 msgid ""
 "King Haldric summoned a young, undistinguished but promising cavalry officer "
 "named Deoran. Deoran was the son of Haldiel, who had fought with distinction "
@@ -3779,9 +3809,9 @@ msgid ""
 "Haldiel’s son."
 msgstr ""
 "Выбор пал на молодого кавалерийского офицера по имени Деоран. Он пока что не "
-"имел особых заслуг, но подавал большие надежды. Отец Деорана, Галдиэль, "
+"имел особых заслуг, но подавал большие надежды. Дед Деорана, Галдиэль, "
 "отличился в битвах с орками под началом Конрада I. Теперь у Короля было "
-"задание для его сына."
+"задание для его внука."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:37
@@ -3953,6 +3983,11 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
+#, fuzzy
+#| msgid ""
+#| "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
+#| "King Haldric himself. Dark clouds were brewing throughout the realm, and "
+#| "every commander would be needed to weather the storm..."
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "

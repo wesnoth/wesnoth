@@ -17,23 +17,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-10-30 01:45-0300\n"
-"PO-Revision-Date: 2014-11-15 12:05+0300\n"
+"POT-Creation-Date: 2015-11-05 21:31-0300\n"
+"PO-Revision-Date: 2016-05-03 15:54+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.4.1, po-mode 2.22+0.4\n"
-"X-Poedit-Language: Russian\n"
-"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
+#, fuzzy
+#| msgid "Eastern Invasion"
 msgid "The Eastern Invasion"
 msgstr "Вторжение с Востока"
 
@@ -44,6 +44,8 @@ msgstr "ВсВ"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
+#, fuzzy
+#| msgid "Easy"
 msgid "(Easy)"
 msgstr "(Лёгкий)"
 
@@ -54,6 +56,8 @@ msgstr "Копейщик"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
+#, fuzzy
+#| msgid "Normal"
 msgid "(Normal)"
 msgstr "(Нормальный)"
 
@@ -64,6 +68,8 @@ msgstr "Мечник"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
+#, fuzzy
+#| msgid "Challenging"
 msgid "(Challenging)"
 msgstr "(Сложный)"
 
@@ -1423,8 +1429,10 @@ msgstr "Злодеи"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:98
+#, fuzzy
+#| msgid "Find the outlaw leader"
 msgid "Find the outlaw leader and defeat him"
-msgstr "Найдите лидера бандитов и убейте его"
+msgstr "Найдите лидера бандитов"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:102
@@ -1555,6 +1563,8 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:295
+#, fuzzy
+#| msgid "They're here!"
 msgid "They’re here!"
 msgstr "Они здесь!"
 
@@ -1758,6 +1768,12 @@ msgstr "Мы подошли к Великой реке. Переправимся
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:138
+#, fuzzy
+#| msgid ""
+#| "We must cross here. The undead are chasing us, and their hordes are much "
+#| "too great for us to defeat. We've haven't faced even a small part of "
+#| "their force yet. We need to cross the river before the bulk of their army "
+#| "arrives!"
 msgid ""
 "We must cross here. The undead are chasing us, and their hordes are much too "
 "great for us to defeat. Reinforcements for the undead will arrive soon. We "
@@ -2289,7 +2305,7 @@ msgstr "Отлично; начинаю работать."
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:281
 msgid "Some time later..."
-msgstr ""
+msgstr "Некоторое время спустя..."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:301
@@ -2634,6 +2650,10 @@ msgstr "Уничтожить мост ИЛИ победить всех прот�
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:178
+#, fuzzy
+#| msgid ""
+#| "Every unit not south of the bridge when it is destroyed will be lost "
+#| "(including non-recalled units)"
 msgid ""
 "Note: every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
@@ -3732,7 +3752,7 @@ msgstr ""
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
-msgstr "Лорд-наездник"
+msgstr "Лорд Равнин"
 
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
@@ -3741,9 +3761,9 @@ msgid ""
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
-"Лучшие из людей равнин, Лорды-наездники возглавляют свой род и уважаемы "
-"всеми, друзьями или врагами. Их меч убивает всех простых противников, а "
-"моргенштерн крушит тех, кто покрепче."
+"Лучшие из своих людей, Лорды Равнин возглавляют свой род и уважаемы всеми, "
+"друзьями или врагами. Их меч убивает всех простых противников, а моргенштерн "
+"крушит тех, кто покрепче."
 
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
@@ -3766,7 +3786,7 @@ msgstr "Повелитель личей"
 #. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
 msgid "Mounted Fighter"
-msgstr "Конный боец"
+msgstr "Конный воин"
 
 #. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
@@ -3788,7 +3808,7 @@ msgstr "меч"
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
-msgstr "Конный воин"
+msgstr "Воитель Равнин"
 
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
@@ -3798,9 +3818,9 @@ msgid ""
 "battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
 msgstr ""
-"Хозяева равнин — конные воины — используют меч и моргенштерн. На лошадях они "
-"способны передвигаться по полю битвы с большой скоростью и предоставлять "
-"необходимую помощь на различных фронтах."
+"Воители Равнин используют мечи и моргенштерны, удары последних способны "
+"шокировать врагов. На лошадях они могут передвигаться по полю битвы с "
+"большой скоростью и предоставлять необходимую поддержку на разных фронтах."
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
@@ -3937,3 +3957,91 @@ msgstr "Что?!... Я... не могу... проиграть..."
 #: data/campaigns/Eastern_Invasion/utils/final_battle.cfg:176
 msgid "I wasn’t able to prevent his escape from here. Now Wesnoth is doomed..."
 msgstr "Я не смог помешать его побегу. Теперь Веснот обречен..."
+
+#~ msgid "Get moving quickly."
+#~ msgstr "Двигайтесь быстро."
+
+#~ msgid ""
+#~ "It seems these trolls were hiding some gold. I think I can count fifty "
+#~ "gold pieces!"
+#~ msgstr ""
+#~ "Похоже, эти тролли прятали здесь золото. Кажется, я вижу здесь 50 золотых "
+#~ "монет!"
+
+#~ msgid "Kill Shodrano"
+#~ msgstr "Убейте Шодрано"
+
+#~ msgid "We have you now, mortals!"
+#~ msgstr "Мы добрались до вас, смертные!"
+
+#~ msgid "They're closing in on us! We must get moving quickly."
+#~ msgstr "Они настигают нас! Мы должны двигаться быстрее."
+
+#~ msgid ""
+#~ "I see, this is where the scared dogs ran to. Don't think you can get away "
+#~ "<b>this</b> easily."
+#~ msgstr ""
+#~ "Вот куда убежали эти испуганные собачонки. Не думайте, что вы можете "
+#~ "спастись <b>так</b> просто."
+
+#~ msgid "Creatures from the deep, I summon thee to destroy this foe!"
+#~ msgstr "Твари глубин, я призываю вас уничтожить этих врагов!"
+
+#~ msgid "I failed my Master..."
+#~ msgstr "Я подвел моего Хозяина..."
+
+#~ msgid "<i>HISS!</i>"
+#~ msgstr "<i>Шшшш!</i>"
+
+#~ msgid "The sea creatures are gone!"
+#~ msgstr "Морские твари исчезли!"
+
+#~ msgid ""
+#~ "We have no time to lose! Let's get moving quickly before the rest of "
+#~ "their army catches up with us."
+#~ msgstr ""
+#~ "У нас нет времени! Давайте двигаться быстро, пока остальная их армия не "
+#~ "настигла нас."
+
+#~ msgid "Dwarves"
+#~ msgstr "Гномы"
+
+#~ msgid "Bagork"
+#~ msgstr "Багорк"
+
+#~ msgid "Elves"
+#~ msgstr "Эльфы"
+
+#~ msgid "I will kill all of you!"
+#~ msgstr "Я убью всех вас!"
+
+#~ msgid "Not very likely."
+#~ msgstr "Это вряд ли."
+
+#~ msgid "Bone Knight"
+#~ msgstr "Костяной рыцарь"
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the ground by unholy magic to spread "
+#~ "fear and destruction."
+#~ msgstr ""
+#~ "Некогда великие воины равнин, эти всадники на своих костяных лошадях были "
+#~ "подняты из мертвых черной магией, чтобы сеять страх и разрушение."
+
+#~ msgid "axe"
+#~ msgstr "топор"
+
+#~ msgid "trample"
+#~ msgstr "топтание"
+
+#~ msgid "Skeleton Rider"
+#~ msgstr "Скелет-всадник"
+
+#~ msgid ""
+#~ "Once great warriors thundering across the plains, these mounted riders "
+#~ "atop their skeletal horses were raised from the grave by unholy magic to "
+#~ "spread fear and destruction."
+#~ msgstr ""
+#~ "Некогда великие воины равнин, эти всадники на своих костяных лошадях были "
+#~ "подняты из мертвых черной магией, чтобы сеять страх и разрушение."
