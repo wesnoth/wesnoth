@@ -240,45 +240,50 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		int action = 0;
 		int first_observer_option_idx = 0;
+		int control_change_options = 0;
+		bool has_next_scenario = !resources::gamedata->next_scenario().empty() && resources::gamedata->next_scenario() != "null";
 
 		std::vector<std::string> observers;
 		std::vector<const team *> allies;
 		std::vector<std::string> options;
 
+		const team &tm = resources::gameboard->teams()[index];
+
+		for (const team &t : resources::gameboard->teams()) {
+			if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
+				&& t.current_player() != tm.current_player()) {
+				allies.push_back(&t);
+			}
+		}
+
 		// We want to give host chance to decide what to do for side
-		{
+		if (!resources::controller->is_linger_mode() || has_next_scenario) {
 			utils::string_map t_vars;
-			options.push_back(_("Replace with AI"));
-			options.push_back(_("Replace with local player"));
-			options.push_back(_("Set side to idle"));
-			options.push_back(_("Save and abort game"));
+
+			//get all allies in as options to transfer control
+			for (const team *t : allies) {
+				//if this is an ally of the dropping side and it is not us (choose local player
+				//if you want that) and not ai or empty and if it is not the dropping side itself,
+				//get this team in as well
+				t_vars["player"] = t->current_player();
+				options.push_back(vgettext("Give control to their ally $player", t_vars));
+				control_change_options++;
+			}
 
 			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
-			for (const std::string &ob : resources::screen->observers())
-			{
+			for (const std::string &ob : resources::screen->observers()) {
 				t_vars["player"] = ob;
-				options.push_back(vgettext("Replace with $player", t_vars));
+				options.push_back(vgettext("Give control to observer $player", t_vars));
 				observers.push_back(ob);
+				control_change_options++;
 			}
 
-			const team &tm = resources::gameboard->teams()[index];
-
-			//get all allies in as options to transfer control
-			for (const team &t : resources::gameboard->teams())
-			{
-				if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
-					&& t.current_player() != tm.current_player())
-				{
-					//if this is an ally of the dropping side and it is not us (choose local player
-					//if you want that) and not ai or empty and if it is not the dropping side itself,
-					//get this team in as well
-					t_vars["player"] = t.current_player();
-					options.push_back(vgettext("Replace with $player", t_vars));
-					allies.push_back(&t);
-				}
-			}
+			options.push_back(_("Replace with AI"));
+			options.push_back(_("Replace with local player"));
+			options.push_back(_("Set side to idle"));
+			options.push_back(_("Save and abort game"));
 
 			t_vars["player"] = tm.current_player();
 			const std::string msg =  vgettext("$player has left the game. What do you want to do?", t_vars);
@@ -286,55 +291,59 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			dlg.set_single_button(true);
 			dlg.show(resources::screen->video());
 			action = dlg.selected_index();
+		} else {
+			// In linger mode, always set leaving side to idle
+			action = 2;
 		}
 
-		//make the player an AI, and redo this turn, in case
-		//it was the current player's team who has just changed into
-		//an AI.
-		switch(action) {
-			case 0:
-				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
-
-				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
-
-			case 1:
-				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_HUMAN);
-
-				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
-			case 2:
+		if (action < control_change_options) {
+			// Grant control to selected ally
+			
+			{
+				// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);
+			}
 
-				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+			if (action < first_observer_option_idx) {
+				change_side_controller(side_drop, allies[action]->current_player());
+			} else {
+				change_side_controller(side_drop, observers[action - first_observer_option_idx]);
+			}
 
-			case 3:
-				//The user pressed "end game". Don't throw a network error here or he will get
-				//thrown back to the title screen.
-				do_save();
-				throw_quit_game_exception();
-			default:
-				if (action > 3) {
+			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
+		} else {
+			action -= control_change_options;
 
-					{
-						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-						resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);
-					}
+			//make the player an AI, and redo this turn, in case
+			//it was the current player's team who has just changed into
+			//an AI.
+			switch(action) {
+				case 0:
+					resources::controller->on_not_observer();
+					resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_AI);
 
-					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
-					if (index < observers.size()) {
-						change_side_controller(side_drop, observers[index]);
-					} else if (index < options.size() - 1) {
-						size_t i = index - observers.size();
-						change_side_controller(side_drop, allies[i]->current_player());
-					} else {
-						//This shouldnt be possible.
-						assert(false);
-					}
-					return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
-				}
-				break;
+					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+
+				case 1:
+					resources::controller->on_not_observer();
+					resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_HUMAN);
+
+					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+				case 2:
+					resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);
+
+					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+
+				case 3:
+					//The user pressed "end game". Don't throw a network error here or he will get
+					//thrown back to the title screen.
+					do_save();
+					throw_quit_game_exception();
+				default:
+					break;
+			}
 		}
+
 		//Lua code currently catches this exception if this function was called from lua code
 		// in that case network::error doesn't end the game.
 		// but at least he sees this error message.
