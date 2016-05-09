@@ -131,6 +131,7 @@ void tgame_cache_options::update_cache_size_display()
 		return;
 	}
 
+	const cursor::setter cs(cursor::WAIT);
 	const int size = filesystem::dir_size(cache_path_);
 
 	if(size < 0) {
