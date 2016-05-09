@@ -260,6 +260,9 @@ namespace preferences {
 	bool disable_auto_moves();
 	void set_disable_auto_moves(bool value);
 
+	bool disable_loadingscreen_animation();
+	void set_disable_loadingscreen_animation(bool value);
+
 } // end namespace preferences
 
 #endif

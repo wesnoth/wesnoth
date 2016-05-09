@@ -29,6 +29,7 @@
 #include "cursor.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "preferences.hpp"
 #include "utils/functional.hpp"
 #include <boost/thread.hpp>
 
@@ -103,7 +104,9 @@ twindow* tloadscreen::build_window(CVideo& video) const
 
 void tloadscreen::pre_show(twindow& window)
 {
-	worker_.reset(new boost::thread(work_));
+	if (work_) {
+		worker_.reset(new boost::thread(work_));
+	}
 	timer_id_ = add_timer(100, std::bind(&tloadscreen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
@@ -139,8 +142,11 @@ tloadscreen* tloadscreen::current_load = nullptr;
 
 void tloadscreen::timer_callback(twindow& window)
 {
-	if (!worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
+	if (!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		window.close();
+	}
+	if (!work_) {
+		return;
 	}
 	const char* stage = current_stage_
 #if defined(_MSC_VER) && _MSC_VER < 1900
@@ -172,11 +178,16 @@ tloadscreen::~tloadscreen()
 
 void tloadscreen::display(CVideo& video, std::function<void()> f)
 {
+	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
 	if (current_load || video.faked()) {
 		f();
 	}
-	else {
+	else if(use_loadingscreen_animation) {
 		tloadscreen(f).show(video);
+	}
+	else {
+		tloadscreen(std::function<void()>()).show(video);
+		f();
 	}
 }
 
