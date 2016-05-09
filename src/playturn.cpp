@@ -296,7 +296,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			action = 2;
 		}
 
-		if (action < control_change_options) {
+		if (action > -1 && action < control_change_options) {
 			// Grant control to selected ally
 			
 			{
