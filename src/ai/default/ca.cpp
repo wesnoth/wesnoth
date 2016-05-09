@@ -113,7 +113,7 @@ double goto_phase::evaluate()
 			if(closest_distance != -1) {
 				move_ = check_move_action(ui->get_location(), closest_move.first);
 			} else {
-				return BAD_SCORE;
+				continue;
 			}
 		}
 
@@ -134,6 +134,15 @@ void goto_phase::execute()
 	move_->execute();
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+	}
+
+	// In some situations, a theoretically possible path is blocked by allies,
+	// resulting in the unit not moving. In this case, we remove all remaining
+	// movement from the unit in order to prevent blacklisting of the CA.
+	if (!move_->is_gamestate_changed()){
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute did not move unit; removing moves instead" << std::endl;
+		stopunit_result_ptr stopunit = check_stopunit_action(move_->get_unit_location(), true, false);
+		stopunit->execute();
 	}
 }
 
