@@ -10,6 +10,8 @@ Version 1.12.5+dev:
      on non-US keyboard layouts, where characters are in different key
      locations (bug #24186).
    * Fix the move-to-targets candidate action of the default AI ignoring tunnels
+   * Fix two rare bugs in the goto candidate action that resulted in goto moves
+     by other units being skipped after a unit could not get to its goal.
    * Fixed possible assertion failues in mp.
    * Fixed false positive OOS messages in replay when replaying games from an older
      wesnoth version..
