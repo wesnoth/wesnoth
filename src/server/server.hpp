@@ -118,11 +118,13 @@ private:
 	std::map<long int,std::string> seeds_;
 
 	player_connections player_connections_;
-	std::vector<boost::shared_ptr<game>> games() {
-		std::vector<boost::shared_ptr<game>> result;
+	std::deque<boost::shared_ptr<game>> games() {
+		std::deque<boost::shared_ptr<game>> result;
 		for(const auto& iter : player_connections_.get<game_t>())
 			if(result.empty() || iter.get_game() != result.back())
 				result.push_back(iter.get_game());
+		if(!result.empty() && result.front() == 0)
+			result.pop_front();
 		return result;
 	}
 

@@ -452,8 +452,13 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 {
 	assert(!error);
 
-	// TODO: shutdown only if no games exist
-	throw server_shutdown("graceful shutdown timeout");
+	if(games().empty()) {
+		process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
+		throw server_shutdown("graceful shutdown timeout");
+	} else {
+		timer_.expires_from_now(boost::posix_time::seconds(1));
+		timer_.async_wait(boost::bind(&server::handle_graceful_timeout, this, _1));
+	}
 }
 
 void server::setup_fifo() {
