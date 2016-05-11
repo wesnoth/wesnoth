@@ -1013,6 +1013,7 @@ function wml_actions.sound_source(cfg)
 end
 
 function wml_actions.deprecated_message(cfg)
+	if not wesnoth.game_config.debug then return end
 	wesnoth.log('wml', cfg.message)
 end
 
