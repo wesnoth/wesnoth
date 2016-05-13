@@ -291,12 +291,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			dlg.set_single_button(true);
 			dlg.show(resources::screen->video());
 			action = dlg.selected_index();
+
+			// If esc was pressed, default to replace with local player
+			if (action == -1) {
+				action = control_change_options + 1;
+			}
 		} else {
-			// In linger mode, always set leaving side to idle
+			// Always set leaving side to idle if in linger mode and there is no next scenario
 			action = 2;
 		}
 
-		if (action > -1 && action < control_change_options) {
+		if (action < control_change_options) {
 			// Grant control to selected ally
 			
 			{
@@ -343,11 +348,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					break;
 			}
 		}
-
-		//Lua code currently catches this exception if this function was called from lua code
-		// in that case network::error doesn't end the game.
-		// but at least he sees this error message.
-		throw network::error("Network Error: A player left and you pressed Escape.");
 	}
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
