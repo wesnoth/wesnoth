@@ -1,13 +1,13 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2007.
 # Brivido <brivido(at)gmail.com>, 2007.
-# Antonio Rosella <arosella@yahoo.com>, 2011-2014
+# Antonio Rosella <arosella@yahoo.com>, 2011-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2014-02-25 23:45-0000\n"
+"PO-Revision-Date: 2016-05-13 17:58+0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [scenario]: id=11_Descent_into_Darkness
 #. [campaign]: id=Descent_into_Darkness
@@ -27,7 +27,7 @@ msgstr "Discesa nell’oscurità"
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:13
 msgid "DiD"
-msgstr "DnO"
+msgstr "Dno"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
@@ -36,17 +36,13 @@ msgstr "Neofita"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normale)"
+msgstr "Normale"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Impegnativo)"
+msgstr "Impegnativo"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
@@ -55,10 +51,8 @@ msgstr "Evocatore"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:19
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Difficile)"
+msgstr "Difficile"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:19
@@ -570,7 +564,7 @@ msgstr "Malin Keshar"
 #. [side]: type=Goblin Knight, id=T'shar Lggi
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:64
 msgid "Goblins"
-msgstr ""
+msgstr "Goblin"
 
 #. [side]: type=Goblin Knight, id=T'shar Lggi
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:69
@@ -1002,7 +996,7 @@ msgstr "Il ghiaccio qui non sembra molto spesso..."
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:199
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:247
@@ -1210,10 +1204,8 @@ msgstr "Guardia del forte sul fiume"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:165
-#, fuzzy
-#| msgid "Kill the orc leaders"
 msgid "Kill the orc leader"
-msgstr "Uccidi i comandanti degli orchi"
+msgstr "Uccidi il comandante degli orchi"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:179
@@ -1227,22 +1219,16 @@ msgstr "Uccidi una persona di Parthyn tranne Drogan"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:229
-#, fuzzy
-#| msgid "I bring word of a great victory against the orcs, Drogan."
 msgid "I bring word of a great victory against the orcs, Drogan!"
-msgstr "Porto la notizia di una grande vittoria contro gli orchi, Drogan."
+msgstr "Porto la notizia di una grande vittoria contro gli orchi, Drogan!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:240
-#, fuzzy
-#| msgid ""
-#| "I had hoped you would never return, Malin. You have been banished, and "
-#| "now return. You give me no choice but to order my soldiers to attack you."
 msgid ""
 "I had hoped never to see you again, Malin. You have been banished, and now "
 "return. You give me no choice but to order my soldiers to attack you."
 msgstr ""
-"Speravo che non saresti tornato, Malin. Sei stato messo al bando e ora sei "
+"Malin, speravo di non vederti mai più. Sei stato messo al bando e ora sei "
 "tornato. Non mi dai altra scelta che ordinare ai miei soldati di attaccarti."
 
 #. [message]: role=advisor
@@ -1261,15 +1247,11 @@ msgstr "Sta’ zitto."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:255
-#, fuzzy
-#| msgid ""
-#| "I have eliminated two orc chieftains. I doubt that we will see any orc "
-#| "raids this summer. The beasts will be too busy trying to regroup."
 msgid ""
 "I have eliminated two orc chieftains! I doubt that we will see any orc raids "
 "this summer. The beasts will be too busy trying to regroup."
 msgstr ""
-"Ho eliminato due capitani degli orchi. Dubito che vedremo altre incursioni "
+"Ho eliminato due capitani degli orchi! Dubito che vedremo altre incursioni "
 "di orchi questa estate. Quelle bestie saranno troppo impegnate a riunirsi."
 
 #. [message]: speaker=Drogan
@@ -1278,6 +1260,8 @@ msgid ""
 "I had not thought to see you again, Malin. But what is this foul creature "
 "that stands by your side?"
 msgstr ""
+"Non avrei mai pensato di rivederti, Malin. E cos’è' quell’oscena creatura "
+"che si erge al tuo fianco?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:266
@@ -1285,36 +1269,31 @@ msgid ""
 "A spirit I raised with the arts taught to me by Darken Volk. With his help, "
 "I have slain two orcish chieftains!"
 msgstr ""
+"Uno spirito che ho evocato grazie alle arti che mi ha insegnato Darken Volk. "
+"Con il suo aiuto, ho ucciso due capitani degli orchi!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Aye, better that than to even dabble in dark magic. People would have "
-#| "rebuilt the town, just as they always have in the past. Would that the "
-#| "mages had taught you more sense."
 msgid ""
 "You allowed yourself to be corrupted by the foul taint of the necromancer? "
 "Better to face the orcish menace than even dabble in dark magic! People "
 "would have rebuilt the town, just as they always have in the past. Your "
 "father would be ashamed to see the end to which you’ve come."
 msgstr ""
-"Sissignore, sarebbe stato meglio che trafficare con la magia nera. La gente "
-"avrebbe ricostruito la città come hanno sempre fatto in passato. I maghi "
-"avrebbero dovuto insegnarti più buon senso."
+"Hai permesso che il tuo essere venisse corrotto del folle marchio del "
+"negromante? Meglio affrontare la minaccia degli orchi che trafficare con la "
+"magia nera! La gente avrebbe ricostruito la città come hanno sempre fatto in "
+"passato. Tuo padre si vergognerebbe se potesse vedere come ti sei ridotto."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:276
-#, fuzzy
-#| msgid ""
-#| "I have eliminated two orc chieftains. I doubt that we will see any orc "
-#| "raids this summer. The beasts will be too busy trying to regroup."
 msgid ""
 "I doubt that we will see any orc raids this summer. The beasts will be too "
 "busy trying to regroup! Is this how you repay me?"
 msgstr ""
-"Ho eliminato due capitani degli orchi. Dubito che vedremo altre incursioni "
-"di orchi questa estate. Quelle bestie saranno troppo impegnate a riunirsi."
+"Dubito che vedremo altre incursioni di orchi questa estate. Quelle bestie "
+"saranno troppo impegnate a riunirsi! Questa è la moneta con la quale mi "
+"ripagate?"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:283
@@ -1370,6 +1349,8 @@ msgid ""
 "Behold, Drogan! I have slain the last orc chieftain. Do you trust my word "
 "now?"
 msgstr ""
+"Guarda, Dorogan! Ho sconfitto l’ultimo capitano degli orchi. Ora credi alla "
+"mia parola?"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:342
@@ -1377,6 +1358,8 @@ msgid ""
 "You have saved us the trouble of killing those worthless orcs ourselves; for "
 "that I thank you. But you cannot return to Parthyn, Malin."
 msgstr ""
+"Ci hai risparmiato il fastidio di eliminare questi insulsi orchi da soli: "
+"per questo te ne rendiamo grazie. Ma non puoi fare ritorno a Parthyn, Malin. "
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:347
@@ -1385,6 +1368,10 @@ msgid ""
 "the true threat. The orcs will not be gone forever, and without me, how will "
 "the town stand? You jeopardize its very safety. Attack him!"
 msgstr ""
+"Cosa?!  Ancora non credi alle mie parole? Bene, forse hai perso di vista "
+"quale sia la vera minaccia. GLi orchi non staranno lontani per sempre, e "
+"senza di me, come farà la città a resistere? Stai mettendo a rischio la sua "
+"incolumità'. Attaccatelo!"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:373
@@ -1433,16 +1420,12 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:446
-#, fuzzy
-#| msgid ""
-#| "Even with my new power, I cannot fight the entire town as well as the "
-#| "orcs. I must flee to the west to find Darken Volk!"
 msgid ""
 "Even with my new power, I cannot fight the entire town. I must flee to the "
 "west to find Darken Volk!"
 msgstr ""
-"Anche con i miei nuovi poteri, non posso combattere un’intera città e al "
-"tempo stesso gli orchi. Devo fuggire a ovest e cercare Darken Volk."
+"Anche con i miei nuovi poteri, non posso combattere un’intera città. Devo "
+"fuggire a ovest e cercare Darken Volk!"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:457
@@ -1461,17 +1444,13 @@ msgstr ""
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:504
-#, fuzzy
-#| msgid ""
-#| "While our forces must stay here to fight off your pet orcs, when we are "
-#| "done I shall come after you. You are my brother no longer."
 msgid ""
 "While our forces must stay here and make sure the orcs are routed, when we "
 "are done I shall come after you. You are my brother no longer."
 msgstr ""
-"Adesso le nostre forze devono rimanere qui per combattere i tuoi orchi "
-"domestici, ma quando avremo finito ti darò la caccia. Non sei più mio "
-"fratello."
+"Adesso le nostre forze devono rimanere qui per assicurarci che gli orchi "
+"siano ben indirizzati, ma quando avremo finito ti darò la caccia. Non sei "
+"più mio fratello."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:512
@@ -1607,8 +1586,6 @@ msgstr "Cittadino"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:268
-#, fuzzy
-#| msgid "Malin and Darken Volk enter the Mage Lord’s manor"
 msgid "Move Malin and Darken Volk into the Mage Lord’s manor"
 msgstr "Malin e Darken Volk entrano nel maniero del signore mago"
 
@@ -1735,9 +1712,6 @@ msgstr "Segui il corridoio a nord-ovest che conduce alla sala principale."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:411
-#, fuzzy
-#| msgid ""
-#| "I think I have found the passage to the great hall. Follow me quickly!"
 msgid "I think I found the passage to the great hall. Follow me quickly!"
 msgstr ""
 "Credo di aver trovato il passaggio per la sala principale. Seguitemi, presto!"
@@ -2060,8 +2034,6 @@ msgstr "Con il mio ultimo respiro ti maledico, Malin il dannato!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:644
-#, fuzzy
-#| msgid "Now I’ve just got to get that book out of the battleground!"
 msgid "Now I’ve just got to get that book off the battlefield!"
 msgstr "Ora devo solo portare via dal campo di battaglia questo libro!"
 
@@ -2081,15 +2053,11 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:712
-#, fuzzy
-#| msgid "I have the book."
 msgid "I have the book!"
-msgstr "Ho preso il libro."
+msgstr "Ho preso il libro!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:732
-#, fuzzy
-#| msgid "I am sorry master, that is too heavy for me."
 msgid "I am sorry, master, but that is too heavy for me."
 msgstr "Mi spiace, padrone, è troppo pesante per me."
 
@@ -2322,16 +2290,12 @@ msgstr "Spazza via i troll dalla tua nuova casa"
 
 #. [message]: speaker=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:718
-#, fuzzy
-#| msgid ""
-#| "Who has awoken me from my slumber? Undead? I shall not suffer the "
-#| "existence of such foul creatures."
 msgid ""
 "Who has awoken me from my slumber? Undead? I shall not suffer the existence "
 "of such foul creatures!"
 msgstr ""
 "Chi mi ha risvegliato dal mio riposo? Non-morto? Io non tollererò "
-"l’esistenza di creature così infami."
+"l’esistenza di creature così infami!"
 
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:737
@@ -2682,186 +2646,3 @@ msgid ""
 msgstr ""
 "All’alba, le guardie della città si fanno strada nel maniero e catturano i "
 "due negromanti."
-
-#~ msgid "Any zombies out there?"
-#~ msgstr "Ci sono zombi qua fuori?"
-
-#~ msgid "Don’t say that!"
-#~ msgstr "Non dirlo!"
-
-#~ msgid "What?"
-#~ msgstr "Cosa?"
-
-#~ msgid "That!"
-#~ msgstr "Quello!"
-
-#~ msgid "The ‘zee’ word. Don’t say it!"
-#~ msgstr "La parola che comincia per «z». Non dirla!"
-
-#~ msgid "Why not?"
-#~ msgstr "Perché no?"
-
-#~ msgid "Because it’s ridiculous!"
-#~ msgstr "Perché è ridicolo!"
-
-#~ msgid "Well... are there any?"
-#~ msgstr "Be’... ce ne sono?"
-
-#~ msgid "I don’t see any. Maybe it’s not as bad as all that."
-#~ msgstr "Non ne vedo. Forse non è così brutto dopo tutto."
-
-#~ msgid "Oh, no, wait, there they are."
-#~ msgstr "Oh no, aspetta, eccoli là."
-
-#~ msgid "Descent Into Darkness"
-#~ msgstr "Discesa nell’oscurità"
-
-#~ msgid "Phew! Let’s get out of here"
-#~ msgstr "Uff! Usciamo di qua."
-
-#~ msgid "Door"
-#~ msgstr "Porta"
-
-#~ msgid "Time runs out"
-#~ msgstr "Fine dei turni"
-
-#~ msgid "Become a Lich"
-#~ msgstr "Diventa un lich"
-
-#~ msgid "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
-#~ msgstr "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
-
-#~ msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
-#~ msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!..."
-
-#~ msgid "Ghast"
-#~ msgstr "Ghast"
-
-#~ msgid ""
-#~ "The ghast is a creature taken from humankind’s most primal nightmares. "
-#~ "Unlike their lesser cousins, ghouls and necrophages, ghasts are not "
-#~ "patient enough to wait for their victim to die from poison before "
-#~ "consuming the body. They attack directly with their enormous mouths, "
-#~ "trying to rip the flesh straight from their foes. Once their enemy is "
-#~ "defeated, they eat the rest of the body, gaining strength in the process."
-#~ msgstr ""
-#~ "Il ghast è una creatura proveniente dai sogni primordiali dell’umanità. A "
-#~ "differenza dei suoi parenti minori, ghoul e necrofagi, i ghast non sono "
-#~ "abbastanza pazienti dall’aspettare che la loro vittima muoia per il "
-#~ "veleno prima di divorare il corpo. Attaccano direttamente con le loro "
-#~ "enormi fauci, cercando di strappare brandelli di carne direttamente dai "
-#~ "loro nemici. Quando il loro nemico è sconfitto, divorano il resto del "
-#~ "corpo aumentando la loro forza.\n"
-#~ "\n"
-#~ "Nota speciale: Questa unità aggiunge 1 punto ferita al suo massimo ogni "
-#~ "volta che uccide un essere vivente."
-
-#~ msgid "bite"
-#~ msgstr "morso"
-
-#~ msgid "Giant Rat"
-#~ msgstr "Ratto gigante"
-
-#~ msgid ""
-#~ "Given an adequate supply of food, some rats can grow to truly impressive "
-#~ "sizes. They can also grow quite aggressive."
-#~ msgstr ""
-#~ "Con cibo a sufficienza, alcuni topi possono raggiungere dimensioni "
-#~ "impressionanti. Possono diventare anche molto aggressivi."
-
-#, fuzzy
-#~ msgid "Night Watcman"
-#~ msgstr "Sentinella notturna"
-
-#~ msgid "Early finish bonus."
-#~ msgstr "Bonus conclusione anticipata."
-
-#~ msgid "Kerith"
-#~ msgstr "Kerith"
-
-#~ msgid "Owain"
-#~ msgstr "Owain"
-
-#~ msgid "Aethun"
-#~ msgstr "Aethun"
-
-#~ msgid "Yran"
-#~ msgstr "Yran"
-
-#~ msgid "Luddy"
-#~ msgstr "Luddy"
-
-#~ msgid "Gwilam"
-#~ msgstr "Gwilam"
-
-#~ msgid "No early finish bonus."
-#~ msgstr "Nessun bonus conclusione anticipata"
-
-#, fuzzy
-#~ msgid "theycallmerooster"
-#~ msgstr "theycallmerooster"
-
-#~ msgid "makeshift altar"
-#~ msgstr "altare di fortuna"
-
-#~ msgid "Forever and Ever, Amen"
-#~ msgstr "Ora e sempre, amen"
-
-#~ msgid "A slab of rock. It vaguely resembles an altar."
-#~ msgstr "Una lastra di pietra. Sembra vagamente a un altare."
-
-#~ msgid "reflect"
-#~ msgstr "riflesso"
-
-#~ msgid "Troll Shaman"
-#~ msgstr "Sciamano troll"
-
-#~ msgid ""
-#~ "Troll shamans are the mystical leaders of the trolls. Though not as "
-#~ "strong or tough as other trolls, their true power lies in their fire "
-#~ "magic, which they use to blast enemies with gouts of fire."
-#~ msgstr ""
-#~ "Gli sciamani troll sono le guide mistiche dei troll. Sebbene non siano "
-#~ "forti e robusti come altri troll, il loro potere risiede nella loro magia "
-#~ "del fuoco, che usano per bombardare i nemici con piogge di fuoco."
-
-#~ msgid "fist"
-#~ msgstr "pugno"
-
-#~ msgid "flame blast"
-#~ msgstr "vento di fuoco"
-
-#~ msgid "+1 max HP"
-#~ msgstr "+1 max HP"
-
-#~ msgid "Mirror"
-#~ msgstr "Specchio"
-
-#~ msgid "Cave Bat"
-#~ msgstr "Pipistrello delle caverne"
-
-#~ msgid ""
-#~ "Although cave bats are much larger and more agressive than their harmless "
-#~ "cousins, they are still little more than a nuisance for a trained warrior."
-#~ msgstr ""
-#~ "Sebbene i pipistrelli delle caverne siano molto più grossi e aggressivi "
-#~ "dei loro innocui cugini, sono solo un leggero fastidio per un guerriero "
-#~ "allenato."
-
-#~ msgid "fangs"
-#~ msgstr "zanne"
-
-#~ msgid "growth"
-#~ msgstr "crescita"
-
-#~ msgid ""
-#~ "Growth:\n"
-#~ "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#~ "living unit."
-#~ msgstr ""
-#~ "Crescita:\n"
-#~ "Questa unità riceve un punto ferita al suo totale ogni volta che uccide "
-#~ "un’unità vivente."
-
-#~ msgid "Destruction of Mal Keshar."
-#~ msgstr "Distruzione di Mal Keshar"

@@ -2,13 +2,13 @@
 # Luciano Montanaro <mikelima@cirulla.net>, 2005, 2006, 2007, 2011.
 # Silvia Montanaro, 2006.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2014.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2014-02-25 23:29-0000\n"
+"PO-Revision-Date: 2016-05-13 11:51+0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -57,17 +57,13 @@ msgstr "Cacciatore del deserto"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normale)"
+msgstr "Normale"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Impegnativo)"
+msgstr "Impegnativo"
 
 #. [unit_type]: id=Desert Sentinel, race=elf
 #. [campaign]: id=Under_the_Burning_Suns
@@ -85,10 +81,8 @@ msgstr "Nomade del deserto"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(Incubo)"
+msgstr "Incubo"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:29
@@ -6555,11 +6549,6 @@ msgstr ""
 
 #. [message]: speaker=King Thurongar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:556
-#, fuzzy
-#| msgid ""
-#| "And now I think you should be off as soon as possible. The trolls have "
-#| "retreated back into their holes for the present, but who knows when they "
-#| "will strike again."
 msgid ""
 "And now I think you should be off as soon as possible. The trolls have "
 "retreated into their holes for the present, but who knows when they will "
@@ -11397,10 +11386,6 @@ msgstr "Ah! Proprio quando la situazione cominciava a calmarsi un po’."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2321
-#, fuzzy
-#| msgid ""
-#| "Our people are scattered and exhausted, where will we go now Kaleh? Shall "
-#| "we retreat back into the dunes?"
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat into the dunes?"
@@ -15861,20 +15846,11 @@ msgstr ""
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
-#, fuzzy
-#| msgid "Monsters"
 msgid "Monster Crab"
-msgstr "Mostri"
+msgstr "Uomo Granchio"
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Crab Men are part crab, part humanoid, and are certainly one of the "
-#| "most twisted monsters ever recorded by the sages of Wesnoth. Probably the "
-#| "creation of some twisted mage, these monstrosities have spread into the "
-#| "wild and prefer to live around coastal waters, preying on both humans and "
-#| "animals."
 msgid ""
 "The Monster Crab is a semi-sentient crab the size of a horse. It is one of "
 "many twisted monsters recorded by the sages of Wesnoth and probably the "
@@ -15883,9 +15859,9 @@ msgid ""
 msgstr ""
 "Gli uomini granchio sono in parte granchio e in parte umanoidi, e sono "
 "sicuramente uno dei mostri più bizzarri descritti dai saggi di Wesnoth. "
-"Probabilmente creati da qualche contorto mago, queste mostruosità si sono "
-"diffuse in natura e preferiscono vivere vicino alle acque costiere, "
-"cibandosi di animali ed anche di uomini."
+"Probabilmente creati da qualche mago mentalmente disturbato, queste "
+"mostruosità si sono diffuse in natura e preferiscono vivere vicino alle "
+"acque costiere, cibandosi sia di animali che di uomini."
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:22
@@ -16323,7 +16299,7 @@ msgstr ""
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
 msgid "teaching"
-msgstr ""
+msgstr "insegnamento"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:76
@@ -16332,6 +16308,9 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
+"All’inizio di ongi turno, questa unità ridistribuisce i suoi punti "
+"esperienza a tutte le unità della stessa fazione a lei adiacenti. Se non ce "
+"ne sono, la sua esperienza semplicemente si azzera."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -16437,7 +16416,7 @@ msgstr "rinfrescato"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:57
 msgid "+%d XP"
-msgstr ""
+msgstr "+%d PE"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:28
@@ -17432,355 +17411,3 @@ msgstr "Castello fantasma"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
 msgid "Phantom Keep"
 msgstr "Fortezza fantasma"
-
-#~ msgid "Aaaargh! Fresh meat!"
-#~ msgstr "Aaargh! Carne fresca!"
-
-#~ msgid "Gaaaggghhh! Kill!"
-#~ msgstr "Gaaaggghhh! Uccideteli!"
-
-#~ msgid "Crab Man"
-#~ msgstr "Uomo granchio"
-
-#~ msgid ""
-#~ "The heavy fighters are the elite guards of the naga. They are slower and "
-#~ "more heavily armored than most naga and wield huge maces which they use "
-#~ "to crush their enemies. They mostly guard naga outposts, but occasionally "
-#~ "participate in offensive raids."
-#~ msgstr ""
-#~ "Questi combattenti corazzati sono le guardie d’elite dei naga. Sono più "
-#~ "lenti e armati più pesantemente della maggior parte dei naga e "
-#~ "brandiscono pesanti mazza che usano per abbattere i nemici. Normalmente "
-#~ "sono a guardia degli avamposti, ma a volte partecipano a scorribande in "
-#~ "attacco."
-
-#~ msgid "Epilogue:"
-#~ msgstr "Epilogo:"
-
-#~ msgid "mud glob"
-#~ msgstr "palla di fango"
-
-#~ msgid "First Dawn"
-#~ msgstr "Prima alba"
-
-#~ msgid "Second Dawn"
-#~ msgstr "Seconda alba"
-
-#~ msgid "First Morning"
-#~ msgstr "Prima mattina"
-
-#~ msgid "Second Morning"
-#~ msgstr "Seconda mattina"
-
-#~ msgid "First Midday"
-#~ msgstr "Primo mezzodì"
-
-#~ msgid "Second Midday"
-#~ msgstr "Secondo mezzodì"
-
-#~ msgid "First Afternoon"
-#~ msgstr "Primo pomeriggio"
-
-#~ msgid "Second Afternoon"
-#~ msgstr "Secondo pomeriggio"
-
-#~ msgid "First Dusk"
-#~ msgstr "Primo crepuscolo"
-
-#~ msgid "Second Dusk"
-#~ msgstr "Secondo crepuscolo"
-
-#~ msgid "The Short Dark"
-#~ msgstr "La breve oscurità"
-
-#~ msgid "The Long Dark (1)"
-#~ msgstr "La lunga oscurità (1)"
-
-#~ msgid "The Long Dark (2)"
-#~ msgstr "La lunga oscurità (2)"
-
-#~ msgid "The Long Dark (3)"
-#~ msgstr "La lunga oscurità (3)"
-
-#~ msgid "The Long Dark (4)"
-#~ msgstr "La lunga oscurità (4)"
-
-#~ msgid "Elf Ally"
-#~ msgstr "Alleato elfo"
-
-#~ msgid ""
-#~ "So you destroyed Zur... Come, mortal, let us cross our blades... It’s "
-#~ "time for you to take his place..."
-#~ msgstr ""
-#~ "Così hai distrutto Zur... Vieni, mortale, incrociamo le spade... è tempo "
-#~ "che tu prenda il suo posto..."
-
-#~ msgid ""
-#~ "Hahaha! Your puny friend is no more. With his body I shall crush you all. "
-#~ "Arise again, my minions and feast on the slaughter!"
-#~ msgstr ""
-#~ "Ah! Ah! Ah! Il vostro debole amico non c’è più. Con il suo corpo vi "
-#~ "schiaccerò tutti. Sorgete, miei seguaci, e banchettate della carneficina!"
-
-#~ msgid "Eloh protect us, what has she done?"
-#~ msgstr "Che Eloh ci protegga, che cosa ha fatto?"
-
-#~ msgid "No fool! Stop!"
-#~ msgstr "No, pazzo! Fermati!"
-
-#~ msgid "Trolls"
-#~ msgstr "Troll"
-
-#~ msgid "Dwarves"
-#~ msgstr "Nani"
-
-#~ msgid "What in Moradin’s name are they?"
-#~ msgstr "Che cosa sono, nel nome di Moradin?"
-
-#~ msgid "Ow!"
-#~ msgstr "Ah!"
-
-#~ msgid "Test"
-#~ msgstr "Prova"
-
-#~ msgid "The user feels much better."
-#~ msgstr "L’utilizzatore si sente molto meglio."
-
-#~ msgid "The rune is gone. I guess the magic only had limited uses"
-#~ msgstr ""
-#~ "La runa è sparita. Probabilmente la magia aveva un numero di utilizzi "
-#~ "limitati."
-
-#~ msgid "Bloated Corpse"
-#~ msgstr "Cadavere gonfio"
-
-#~ msgid ""
-#~ "Kromph is outside, but everything looks strange. What does mistress want "
-#~ "Kromph to do?"
-#~ msgstr ""
-#~ "Kromph è fuori, ma tutto sembra strano. Che cosa vuole che faccia Kromph, "
-#~ "la signora?"
-
-#~ msgid "Just stay where you are, I’ll come up there myself"
-#~ msgstr "Resta dove sei, vengo su io."
-
-#~ msgid ""
-#~ "We’ve reached what looks like the citadel, but it is surrounded by a huge "
-#~ "perfectly smooth obsidian wall. I can’t find any entrances or exits."
-#~ msgstr ""
-#~ "Abbiamo raggiunto quella che sembra una cittadella, ma è circondata da "
-#~ "una cupola di ossidiana perfettamente liscia. Non riesco a trovare né "
-#~ "entrate né uscite."
-
-#~ msgid "Confused Ant"
-#~ msgstr "Formica confusa"
-
-#~ msgid ""
-#~ "Giant Ants are common in almost any environment, from caverns deep under "
-#~ "the earth to the tops of tall mountains. Though normally not hostile, "
-#~ "they can bite at close range. When they don’t have a Queen Ant to lead "
-#~ "them, they can often become confused."
-#~ msgstr ""
-#~ "Le formiche giganti sono comuni in quasi tutti gli habitat, dalle caverne "
-#~ "nelle profondità della terra alla cima delle più alte montagne. Sebbene "
-#~ "normalmente non siano ostili, possono mordere se avvicinate. Se non hanno "
-#~ "una formica regina a guidarle, possono spesso diventare confuse."
-
-#~ msgid "Campfire"
-#~ msgstr "Fuoco da campo"
-
-#~ msgid "Inner Summoning Circle"
-#~ msgstr "Cerchio di evocazione interno"
-
-#~ msgid "Outer Summoning Circle"
-#~ msgstr "Cerchio di evocazione esterno"
-
-#~ msgid "Dummy Unit1"
-#~ msgstr "Unità fantoccio1"
-
-#~ msgid "Dummy Unit2"
-#~ msgstr "Unità fantoccio2"
-
-#~ msgid "Dummy Unit3"
-#~ msgstr "Unità fantoccio3"
-
-#~ msgid "Dummy Unit4"
-#~ msgstr "Unità fantoccio4"
-
-#~ msgid "Dummy Unit5"
-#~ msgstr "Unità fantoccio5"
-
-#~ msgid "Dummy Unit6"
-#~ msgstr "Unità fantoccio6"
-
-#~ msgid "By Moradin, I have fallen!"
-#~ msgstr "Per Moradin, sono perduto!"
-
-#~ msgid ""
-#~ "Desert Shamans focus on less violent ways to hinder the enemy. Their "
-#~ "entangling attack slows enemies down and reduces by one the number of "
-#~ "times they may attack. Shamans also possess basic healing abilities."
-#~ msgstr ""
-#~ "Le sciamane del deserto si specializzano in modi meno violenti di "
-#~ "ostacolare i nemici. I loro attacchi di intrappolamento rallentano i "
-#~ "nemici e riducono di uno il numero di volte che questi possono attaccare. "
-#~ "Le sciamane possiedono anche semplici capacità curative."
-
-#~ msgid "Death of Kaleh, Nym or Zhul"
-#~ msgstr "Morte di Kaleh, Nym o Zhul"
-
-#~ msgid "Ruined Desert Castle"
-#~ msgstr "Castello del deserto in rovina"
-
-#~ msgid "Death of Dwarf Ally"
-#~ msgstr "Morte dell’alleato nano"
-
-#~ msgid "Death of Troll Ally"
-#~ msgstr "Morte dell’alleato troll"
-
-#~ msgid "Nym, Zhul, $intl_ally_name|, you shouldn’t have."
-#~ msgstr "Nym, Zhul, $intl_ally_name|, non avreste dovuto."
-
-#~ msgid "Death of Kaleh, Nym, Garak or Zhul"
-#~ msgstr "Morte di Kaleh, Nym, Garak o Zhul"
-
-#~ msgid "Death of Kaleh, Nym, Zhul, or Dwarf Ally"
-#~ msgstr "Morte di Kaleh, Nym Zhul, o dell’alleato nano"
-
-#~ msgid "Death of Kaleh, Nym, or Zhul"
-#~ msgstr "Morte di Kaleh, Nym o Zhul"
-
-#~ msgid "Death of Kaleh, Nym, Zhul"
-#~ msgstr "Morte di Kaleh, Nym, Zhul"
-
-#~ msgid ""
-#~ "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#~ "where they come from, but they are occasionally summoned by powerful "
-#~ "mages. When not being ordered around, they like to frolic in pools of "
-#~ "lava and take great delight in burning anything they can reach."
-#~ msgstr ""
-#~ "I guardiani di fuoco sono spiriti di fumo e fiamme. Nessuno sa di sicuro "
-#~ "da dove vengano, ma sono a volte evocati dai maghi più potenti. Quando "
-#~ "non sono inviati in missione, amano rosolarsi in pozze di lava e provano "
-#~ "un incommensurabile piacere nel bruciare tutto quello che incontrano."
-
-#~ msgid "fire claws"
-#~ msgstr "artigli infuocati"
-
-#~ msgid "fire breath"
-#~ msgstr "alito di fuoco"
-
-#~ msgid ""
-#~ "Small Mudcrawlers are beings of soil and water. They attack by spraying "
-#~ "boiling water on their foes, or by punching with their fists."
-#~ msgstr ""
-#~ "I piccoli mostri di fango sono creature fatte di terra e di acqua. "
-#~ "Attaccano spruzzando acqua bollente sui nemici, o colpendoli coi pugni."
-
-#~ msgid ""
-#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
-#~ "it is advantageous. They can cripple opponents with their bolas and are "
-#~ "deadly with their swords.\n"
-#~ "\n"
-#~ "The skirmish ability allows the rogue to ignore enemy units’ zones of "
-#~ "control and thus move unhindered around them."
-#~ msgstr ""
-#~ "Le sentinelle del deserto pattugliano le sabbie e sono addestrate ad "
-#~ "evitare i nemici quando è vantaggioso. Possono impastoiare gli avversari "
-#~ "con le bolas e sono micidiali con la spada.\n"
-#~ "\n"
-#~ "L’abilità di incursore permette a queste unità di ignorare la zona di "
-#~ "controllo delle unità nemiche e di muoversi a piacimento intorno a loro."
-
-#~ msgid "Hahaha!.."
-#~ msgstr "Ah, ah, ah!..."
-
-#~ msgid "Aaaauuugggghhhh!"
-#~ msgstr "Aaaauuugggghhhh!"
-
-#~ msgid "No!!!"
-#~ msgstr "No!!!"
-
-#~ msgid "Gaggghhh!"
-#~ msgstr "Gaggghhh!"
-
-#~ msgid "Yes Sir."
-#~ msgstr "Sì, signore."
-
-#~ msgid "Grawww!"
-#~ msgstr "Grawww!"
-
-#~ msgid "What?!?"
-#~ msgstr "Cosa?!?"
-
-#~ msgid ""
-#~ " Your loyalty is a credit to your people. I am glad indeed to have you "
-#~ "fighting by my side."
-#~ msgstr ""
-#~ "La tua lealtà è un vanto per la tua gente. Sono felice davvero di averti "
-#~ "al mio fianco."
-
-#~ msgid "Aaaauuurrrggghhhh!!!"
-#~ msgstr "Aaaauuurrrggghhhh!!!"
-
-#~ msgid "Aaauurrrgghhh!!!"
-#~ msgstr "Aaauurrrgghhh!!!"
-
-#~ msgid "Dark Tiles"
-#~ msgstr "Tessere scure"
-
-#~ msgid "THE END"
-#~ msgstr "FINE"
-
-#~ msgid "Dwarvish Explorer"
-#~ msgstr "Nano esploratore"
-
-#~ msgid ""
-#~ "Dwarven Explorers often travel alone through unknown lands, slaying "
-#~ "enemies and scouting out new deposits of ore and other precious minerals. "
-#~ "They are strong enough to wear thicker armor, giving them added "
-#~ "protection against physical attacks. They are powerful fighters, second "
-#~ "only to the Dwarven lords, and their amazing maneuverability makes them "
-#~ "dangerous indeed."
-#~ msgstr ""
-#~ "I nani esploratori viaggiano spesso da soli in terre sconosciute, "
-#~ "massacrando nemici e cercando nuovi depositi di metalli od altri preziosi "
-#~ "minerali. Sono forti abbastanza da indossare un’armatura spessa, che li "
-#~ "protegge egregiamente dagli attacchi fisici. Sono combattenti "
-#~ "formidabili, secondi solo ai signori dei nani, e la loro inaspettata "
-#~ "agilità li rende veramente pericolosi."
-
-#~ msgid "battle axe"
-#~ msgstr "ascia da guerra"
-
-#~ msgid "Dwarvish Pathfinder"
-#~ msgstr "Nano cercasentieri"
-
-#~ msgid ""
-#~ "Dwarvish Pathfinders are faster, stronger and even deadlier with their "
-#~ "axes than normal dwarvish scouts. They often race ahead of the main "
-#~ "force, scouting out unfamiliar terrain and securing villages and "
-#~ "chokepoints."
-#~ msgstr ""
-#~ "I nani cercasentieri sono più veloci, più forti e anche più pericolosi "
-#~ "con l’ascia dei nani esploratori. Spesso corrono davanti al grosso della "
-#~ "forza per esplorare i terreni poco familiari e rendere sicuri i villaggi "
-#~ "e le strettoie."
-
-#~ msgid "Dwarvish Scout"
-#~ msgstr "Nano cercatore"
-
-#~ msgid ""
-#~ "Moving faster than other dwarves Dwarvish Scouts love to explore both "
-#~ "above and below ground. They are adept at both fighting hand to hand with "
-#~ "their axes and throwing them."
-#~ msgstr ""
-#~ "Muovendosi più velocemente degli altri nani, i nani cercatori amano "
-#~ "esplorare sia sopra che sotto terra. Sono abili nel combattimento corpo a "
-#~ "corpo con le loro asce che sanno anche lanciare con precisione."
-
-#~ msgid "slowed"
-#~ msgstr "rallentata"
-
-#~ msgid "You Control Less Than 6 Villages"
-#~ msgstr "Tu controlli meno di 6 villaggi"
