@@ -24,17 +24,6 @@ CMakeCache.txt
 .sconf_temp
 buildlog.txt
 
-# win32/MSVC:
-ALL_BUILD.vcproj
-INSTALL.vcproj
-PACKAGE.vcproj
-ZERO_CHECK.vcproj
-uninstall.vcproj
-projectfiles/VC*/*.user
-src/**/*.vcproj
-/WindowsTimeout.ilk
-/WindowsTimeout.pdb
-
 # XCode
 projectfiles/Xcode/**/build
 projectfiles/Xcode/**/Headers
@@ -56,14 +45,21 @@ projectfiles/**/*objs*
 
 # Visual Studio
 projectfiles/VC*
-!projectfiles/VC12*
-projectfiles/VC*/*sdf
-projectfiles/VC*/*.user
+!projectfiles/VC12
+projectfiles/VC*/.vs/
+projectfiles/VC*/*.vc.*db
+projectfiles/VC*/*.sdf
 projectfiles/VC*/*.suo
 projectfiles/VC*/*.aps
-projectfiles/VC*/*.aps
-projectfiles/VC*/Debug/
-projectfiles/VC*/Release/
+ALL_BUILD.vcproj
+INSTALL.vcproj
+PACKAGE.vcproj
+ZERO_CHECK.vcproj
+uninstall.vcproj
+*.vcproj.*.user
+src/**/*.vcproj
+/WindowsTimeout.ilk
+/WindowsTimeout.pdb
 
 # eclipse
 .settings
