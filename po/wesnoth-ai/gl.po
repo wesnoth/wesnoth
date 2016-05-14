@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 17:01 UTC\n"
-"PO-Revision-Date: 2016-02-06 20:31+0100\n"
+"PO-Revision-Date: 2016-05-13 06:31+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -35,10 +35,10 @@ msgstr "IA experimental"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
-#| msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "IA de desenvolvemento: predeterminada co sistema vello de recrutamento"
+msgstr ""
+"IA de desenvolvemento: IA predeterminada (RCA) cun sistema de recrutamento "
+"alternativo"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
@@ -2345,21 +2345,6 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
-#, fuzzy
-#| msgid ""
-#| "If you have not changed anything in the scenario code, Side 1 uses the "
-#| "Random Recruitment Micro AI, with swordsmen and peasants having been "
-#| "given higher probability than the other units. This is not meant as a "
-#| "good recruitment pattern, it simply serves as a demonstration how to use "
-#| "the AI.\n"
-#| "\n"
-#| "Side 2 uses the Rush Recruitment Micro AI (which is also used in the "
-#| "Experimental AI).\n"
-#| "\n"
-#| "A Micro AI can be added and adapted to the need of a scenario easily "
-#| "using only WML and the [micro_ai] tag. Check out the <span "
-#| "color='#00A000'>Micro AI wiki page</span> at http://wiki.wesnoth.org/"
-#| "Micro_AIs for more information."
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2377,9 +2362,10 @@ msgid ""
 msgstr ""
 "Se non cambiaches nada no código do escenario, o bando 1 usa a intelixencia "
 "artificial de recrutamento aleatorio, cunha probabilidade superior de "
-"recrutar espadachíns e campesiños. Non se trata dun bo patrón de "
-"recrutamento, esa non é a intención, simplemente se trata dunha demostración "
-"de como se pode empregar a intelixencia artificial.\n"
+"recrutar espadachíns e campesiños, e unha probabilidade media de recrutar "
+"magos. Non se trata dun bo patrón de recrutamento, esa non é a intención, "
+"simplemente se trata dunha demostración de como se pode empregar a "
+"intelixencia artificial.\n"
 "\n"
 "O bando 2 emprega a intelixencia artificial de recrutamento apurado (usada "
 "tamén na intelixencia artificial experimental).\n"
@@ -3240,6 +3226,7 @@ msgstr ""
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181
 msgid "My AI is the RCA AI (the current default)."
 msgstr ""
+"A miña intelixencia artificial é a IA RCA (a predeterminada, actualmente)."
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:190
@@ -3266,8 +3253,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:213
-#, fuzzy
-#| msgid "and where is it located (path follows the usual WML convention)"
 msgid "And where is it located (path follows the usual WML convention)"
 msgstr ""
 "E onde está esa intelixencia artificial túa? (a ruta debe seguir as "
@@ -3280,9 +3265,6 @@ msgstr "Lugar da IA:"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:316
-#, fuzzy
-#| msgid ""
-#| "and so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgid "And so, the AI for team 2 was redeployed from file '$test_path_to_ai'"
 msgstr ""
 "E así foi como se recolocou a intelixencia artificial do equipo 2 desde o "
@@ -3291,12 +3273,14 @@ msgstr ""
 #. [test]: id=lua_ai
 #: data/ai/scenarios/scenario-lua_ai.cfg:4
 msgid "Lua AI Test scenario"
-msgstr ""
+msgstr "Escenario de probas de intelixencias artificiais escritas en Lua"
 
 #. [test]: id=lua_ai_old_syntax
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:5
 msgid "Lua AI Test scenario (old syntax)"
 msgstr ""
+"Escenario de probas de intelixencias artificiais escritas en Lua (sintaxe "
+"vella)"
 
 #. [unit]: type=Skeletal Dragon, id=Kiressh
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87

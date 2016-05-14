@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 20:00+0300\n"
-"PO-Revision-Date: 2016-02-06 20:14+0100\n"
+"PO-Revision-Date: 2016-05-13 06:58+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -215,12 +215,12 @@ msgstr "Usar punteiros de cores."
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:175
 msgid "Graphics scaling options"
-msgstr ""
+msgstr "Opcións de cambio de dimensións dos gráficos"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:181
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Personalizar as cores das esferas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:188
@@ -402,10 +402,8 @@ msgstr "Tradución ao árabe"
 
 #. [about]
 #: data/core/about.cfg:1529
-#, fuzzy
-#| msgid "Estonian Translation"
 msgid "Asturian Translation"
-msgstr "Tradución ao estoniano"
+msgstr "Tradución ao asturiano"
 
 #. [about]
 #: data/core/about.cfg:1535
@@ -3268,38 +3266,32 @@ msgstr "Servidor alternativo"
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:79
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "Escoller as cores as esferas e do mapa"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:83
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
-msgstr "Mostrar os movementos do inimigo"
+msgstr "Mostrar a esfera de ausencia de movemento."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
 msgid "Show partial moved orb"
-msgstr ""
+msgstr "Mostrar a esfera de movemento parcial."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show moved orb"
-msgstr "Mostrar os movementos do inimigo"
+msgstr "Mostrar a esfera de movemento completo."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 msgid "Show ally orb"
-msgstr ""
+msgstr "Mostrar a esfera de aliado."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
-msgstr "Mostrar os movementos do inimigo"
+msgstr "Mostrar a esfera de inimigo.7"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=orb_defaults
@@ -3338,7 +3330,7 @@ msgstr ""
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "Lato"
-msgstr ""
+msgstr "Lato"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:12
@@ -3416,7 +3408,7 @@ msgstr "Conservarase un %d%% do ouro para o seguinte escenario."
 #. [multiplayer]: id=lua_cavegen
 #: data/multiplayer/scenarios/Random_Scenario_Lua_Cave.cfg:4
 msgid "Cave Generator"
-msgstr ""
+msgstr "Xerador de covas"
 
 #. [multiplayer]: id=lua_cavegen
 #: data/multiplayer/scenarios/Random_Scenario_Lua_Cave.cfg:5
@@ -3424,6 +3416,8 @@ msgid ""
 "A sample lua map generator that generates caves like in scenario 17 of the "
 "mainline campaign 'Heir to the Throne'"
 msgstr ""
+"Un xerador de mapas de exemplo escrito en Lua que xera covas como a do "
+"escenario 17 da campaña principal, «O herdeiro ao trono»."
 
 # Fai referencia á distancia de alcance.
 #. [language]
@@ -3455,7 +3449,7 @@ msgstr "Deter"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:475
 msgid "pause after current move"
-msgstr ""
+msgstr "Deter despois do movemento actual"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:490 data/themes/_initial.cfg:647
@@ -5180,7 +5174,7 @@ msgstr "Estado"
 
 #: src/dialogs.cpp:302 src/dialogs.cpp:474
 msgid "Level^Lvl."
-msgstr "Nvl."
+msgstr "Nivel"
 
 #: src/dialogs.cpp:304
 msgid "unit list^Traits"
@@ -7657,10 +7651,8 @@ msgid "Invalid location"
 msgstr "Lugar incorrecto."
 
 #: src/menu_events.cpp:3057 src/menu_events.cpp:3060
-#, fuzzy
-#| msgid "lawful"
 msgid "wfl"
-msgstr "legal"
+msgstr "wfl"
 
 #: src/menu_events.cpp:3066 src/menu_events.cpp:3094
 msgid "prompt^Command:"
@@ -8084,8 +8076,6 @@ msgid "No Saved Games"
 msgstr "Non hai partidas gardadas"
 
 #: src/savegame.cpp:101
-#, fuzzy
-#| msgid "There are no savefiles to load"
 msgid "There are no save files to load"
 msgstr "Non hai partidas para cargar."
 
@@ -8116,10 +8106,8 @@ msgid "Load Game"
 msgstr "Cargar unha partida"
 
 #: src/savegame.cpp:315
-#, fuzzy
-#| msgid "Factions are only used in multiplayer"
 msgid "Replays are not supported in multiplayer mode."
-msgstr "As faccións só se utilizan no modo multixogador"
+msgstr "Non se admiten repeticións no modo de varios xogadores."
 
 #: src/savegame.cpp:320
 msgid "This is not a multiplayer save."
@@ -8654,11 +8642,9 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description|."
 
 #: src/units/unit.cpp:1757
-#, fuzzy
-#| msgid "moves"
 msgid "move"
 msgid_plural "moves"
-msgstr[0] "movementos"
+msgstr[0] "movemento"
 msgstr[1] "movementos"
 
 #: src/units/unit.cpp:1763
