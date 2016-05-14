@@ -614,7 +614,7 @@ void server::handle_request_terms(const server::request& req)
 	}
 
 	LOG_CS << "sending terms " << req.addr << "\n";
-	send_message("All content within add-ons uploaded to this server not otherwise explicitly licensed must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right a) to place all content not otherwise explicitly licensed under the conditions of the GPL and b) to release all explicitly licensed content for download on this server, and that you choose to do so.", req.sock);
+	send_message("All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of artwork and audio explicitly denoted as released under a Creative Commons license. By uploading content to this server, you certify that you have the right a) to release all included art and audio explicitly denoted with a Creative Commons license under that license, and b) to release all other included content under the terms of the GPL; and that you choose to do so.", req.sock);
 	LOG_CS << " Done\n";
 }
 
