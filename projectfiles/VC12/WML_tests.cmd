@@ -20,7 +20,7 @@ set tSTART=%time%
 :: %%G contains whether the test should pass (0), timeout (2) or fail (1,4)
 :: %%H is the name of the WML unit test to be executed
 for /f "eol=# tokens=1,2 delims= " %%G in (%LoadFile%) do (
-    WindowsTimeout.exe "%binary% %opt% -u %%H" 20000
+    WindowsTimeout.exe "%binary% %opt% -u%%H" 20000
     if !ERRORLEVEL! neq %%G (
         if !ERRORLEVEL! equ 2 (
             echo(
