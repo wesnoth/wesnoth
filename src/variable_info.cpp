@@ -285,6 +285,17 @@ namespace
 /// range_based operations
 namespace {
 
+	/// TConfig is eigher 'config' or 'const config'
+	template<typename TConfig>
+	auto get_child_range(TConfig& cfg, const std::string& key, int start, int count) -> decltype(cfg.child_range(key))
+	{
+		auto res = cfg.child_range(key);
+		std::advance(res.first, start);
+		res.second = res.first;
+		std::advance(res.second, count);
+		return res;
+	}
+
 	// as_range_visitor_base wants to partially specialize from_indexed but nothing else
 	// so we put everything else in this base class which is common for both as_range_visitor_base versions.
 	template<const variable_info_type vit, typename THandler>
@@ -313,6 +324,8 @@ namespace {
 
 		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
 		{
+			//NOTE: This currently doesnt work:
+			// if we do areplace
 			//Ensure we have a config at the given explicit position.
 			if(state.index_ > 0) {
 				get_child_at<vit>(*state.child_, state.key_, state.index_ - 1);
@@ -349,11 +362,7 @@ namespace {
 
 		result_type operator()(typename maybe_const<vit, config>::type& child, const std::string& key, int startindex, int endindex) const
 		{
-			result_type r = child.child_range(key);
-			std::advance(r.first, startindex);
-			r.second = r.first;
-			std::advance(r.second, endindex - startindex);
-			return r;
+			return get_child_range(child, key, startindex, endindex - startindex);
 		}
 	};
 
@@ -384,9 +393,7 @@ namespace {
 			{
 				child.child(key, startindex + index).swap(datasource_[index]);
 			}
-			/// variable_as_array_h only uses the template argument (vit_throw_if_not_existent here)
-			/// to determine constness which is always false here
-			return variable_as_array_h<vit_throw_if_not_existent>()(child, key, startindex, startindex + datasource_.size());
+			return get_child_range(child, key, startindex, datasource_.size());
 		}
 	private:
 		std::vector<config>& datasource_;
