@@ -318,9 +318,9 @@ static lg::log_domain log_server("server");
 			(*itor)->write(child);
 		}
 
-		/*filesystem::scoped_ostream ban_file = filesystem::ostream_file(filename_);
+		filesystem::scoped_ostream ban_file = filesystem::ostream_file(filename_);
 		config_writer writer(*ban_file, true);
-		writer.write(cfg);*/
+		writer.write(cfg);
 	}
 
 	bool ban_manager::parse_time(const std::string& duration, time_t* time) const
