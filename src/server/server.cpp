@@ -2670,6 +2670,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 		}
 
 		std::string dummy_group;
+		std::vector<socket_ptr> users_to_kick;
 
 		// if we find a '.' consider it an ip mask
 		/** @todo  FIXME: make a proper check for valid IPs. */
@@ -2681,10 +2682,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 			for (const auto& player : player_connections_)
 			{
 				if (utils::wildcard_string_match(client_address(player.socket()), target)) {
-					*out << "\nKicked " << player.info().name() << " ("
-					    << client_address(player.socket()) << ").";
-					async_send_error(player.socket(), "You have been banned. Reason: " + reason);
-					remove_player(player.socket());
+					users_to_kick.push_back(player.socket());
 				}
 			}
 		} else {
@@ -2694,10 +2692,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 					if (banned) *out << "\n";
 					else banned = true;
 					const std::string ip = client_address(player.socket());
-					*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
-					*out << "\nKicked " << player.info().name() << " (" << ip << ").";
-					async_send_error(player.socket(), "You have been banned. Reason: " + reason);
-					remove_player(player.socket());
+					users_to_kick.push_back(player.socket());
 				}
 			}
 			if (!banned) {
@@ -2718,6 +2713,13 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 					*out << "Nickname mask '" << target << "' did not match, no bans set.";
 				}
 			}
+		}
+
+		for(const auto& user : users_to_kick) {
+			*out << "\nKicked " << player_connections_.find(user)->info().name() << " ("
+			    << client_address(user) << ").";
+			async_send_error(user, "You have been banned. Reason: " + reason);
+			remove_player(user);
 		}
 	}
 
