@@ -29,6 +29,17 @@ using namespace variable_info_detail;
 /// general helpers
 namespace
 {
+	/// TConfig is eigher 'config' or 'const config'
+	template<typename TConfig>
+	auto get_child_range(TConfig& cfg, const std::string& key, int start, int count) -> decltype(cfg.child_range(key))
+	{
+		auto res = cfg.child_range(key);
+		std::advance(res.first, start);
+		res.second = res.first;
+		std::advance(res.second, count);
+		return res;
+	}
+
 	void resolve_negative_value(int size, int& val)
 	{
 		if(val < 0)
@@ -59,6 +70,8 @@ namespace
 
 	//helper variable for get_child_at<vit_const>
 	const config empty_const_cfg;
+	const config non_empty_const_cfg = config_of("_", config());
+
 	template<>
 	const config& get_child_at<vit_const>(const config& cfg, const std::string& key, int index)
 	{
@@ -281,89 +294,72 @@ namespace
 			return get_child_at<vit>(*state.child_, state.key_, state.index_);
 		}
 	};
+
+	// This currently isn't implemented as a range based operation because doing it on something like range
+	// 2-5 on vit_const if child_ has only 4 elements would be too hard to implement.
+	template<const variable_info_type vit>
+	class as_array_visitor
+		: public variable_info_visitor_const<vit, typename maybe_const<vit, config::child_itors>::type>
+	{
+	public:
+		typename as_array_visitor::result_type from_named(typename as_array_visitor::param_type state) const
+		{
+			return get_child_range(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
+		}
+		typename as_array_visitor::result_type from_indexed(typename as_array_visitor::param_type state) const;
+	};
+	template<>
+	config::const_child_itors as_array_visitor<vit_const>::from_indexed(as_array_visitor::param_type state) const
+	{
+		if (int(state.child_->child_count(state.key_)) <= state.index_)
+		{
+			return get_child_range(non_empty_const_cfg, "_", 0, 1);
+		}
+		else
+		{
+			return get_child_range(*state.child_, state.key_, state.index_, state.index_ + 1);
+		}
+	}
+	template<>
+	config::child_itors as_array_visitor<vit_create_if_not_existent>::from_indexed(as_array_visitor::param_type state) const
+	{
+		//Ensure we have a config at the given explicit position.
+		get_child_at<vit_create_if_not_existent>(*state.child_, state.key_, state.index_);
+		return get_child_range(*state.child_, state.key_, state.index_, state.index_ + 1);
+	}
+	template<>
+	config::child_itors as_array_visitor<vit_throw_if_not_existent>::from_indexed(as_array_visitor::param_type state) const
+	{
+		//Ensure we have a config at the given explicit position.
+		get_child_at<vit_throw_if_not_existent>(*state.child_, state.key_, state.index_);
+		return get_child_range(*state.child_, state.key_, state.index_, state.index_ + 1);
+	}
 }
 /// range_based operations
 namespace {
 
-	/// TConfig is eigher 'config' or 'const config'
-	template<typename TConfig>
-	auto get_child_range(TConfig& cfg, const std::string& key, int start, int count) -> decltype(cfg.child_range(key))
-	{
-		auto res = cfg.child_range(key);
-		std::advance(res.first, start);
-		res.second = res.first;
-		std::advance(res.second, count);
-		return res;
-	}
-
-	// as_range_visitor_base wants to partially specialize from_indexed but nothing else
-	// so we put everything else in this base class which is common for both as_range_visitor_base versions.
+	/// @tparam THandler a function
+	///        (config& cfg, const std::string& name, int range_begin, int range_end) -> THandler::result_type
+	///        that does the actual work on the range of children of cfg with name name.
+	/// Note that currently this is only used by the insert/append/replace/merge operations
+	/// so vit is always vit_create_if_not_existent
 	template<const variable_info_type vit, typename THandler>
-	class as_range_visitor_base2
+	class as_range_visitor_base
 		: public variable_info_visitor_const<vit, typename THandler::result_type>
 	{
 	public:
-		as_range_visitor_base2(const THandler& handler) : handler_(handler) {}
-		typename as_range_visitor_base2::result_type from_named(typename as_range_visitor_base2::param_type state) const
+		as_range_visitor_base(const THandler& handler) : handler_(handler) {}
+		typename as_range_visitor_base::result_type from_named(typename as_range_visitor_base::param_type state) const
 		{
 			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
 		}
+		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
+		{
+			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
+		}
+
 	protected:
 		const THandler& handler_;
-	};
-
-	/// @tparam THandler a function
-	///        ( (const-) config& cfg, const std::string& name, int range_begin, int range_end) -> THandler::result_type
-	///        that does the actual work on the range of children of cfg with name name.
-	template<const variable_info_type vit, typename THandler>
-	class as_range_visitor_base
-		: public as_range_visitor_base2<vit, THandler>
-	{
-	public:
-		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit, THandler>(handler) {}
-
-		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
-		{
-			//NOTE: This currently doesnt work:
-			// if we do areplace
-			//Ensure we have a config at the given explicit position.
-			if(state.index_ > 0) {
-				get_child_at<vit>(*state.child_, state.key_, state.index_ - 1);
-			}
-			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
-		}
-	};
-
-	const config non_empty_const_cfg = config_of("_", config());
-
-	template<typename THandler>
-	class as_range_visitor_base<vit_const, THandler>
-		: public as_range_visitor_base2<vit_const, THandler>
-	{
-	public:
-		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit_const, THandler>(handler) {}
-
-		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
-		{
-			//calling get_child_at<vit>(*state.child_, state.key_, state.index_) like above would have no effect
-			if(int(state.child_->child_count(state.key_)) <= state.index_)
-			{
-				return this->handler_(non_empty_const_cfg, "_", 0, 1);
-			}
-			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
-		}
-	};
-
-	template<const variable_info_type vit>
-	class variable_as_array_h
-	{
-	public:
-		typedef typename maybe_const<vit, config::child_itors>::type result_type;
-
-		result_type operator()(typename maybe_const<vit, config>::type& child, const std::string& key, int startindex, int endindex) const
-		{
-			return get_child_range(child, key, startindex, endindex - startindex);
-		}
 	};
 
 	/**
@@ -377,6 +373,14 @@ namespace {
 		replace_range_h(std::vector<config>& source) : datasource_(source) { }
 		result_type operator()(config& child, const std::string& key, int startindex, int endindex) const
 		{
+			assert(startindex <= endindex);
+			if (endindex > 0)
+			{
+				//NOTE: currently this is nonly called from as_range_visitor_base<vit_create_if_not_existent>
+				//based on that assumption we use get_child_at<vit_create_if_not_existent> here
+				//instead of making this a template<typename vit> function/type
+				get_child_at<vit_create_if_not_existent>(child, key, endindex - 1);
+			}
 			int size_diff = datasource_.size() - (endindex - startindex);
 			//remove configs first
 			while(size_diff < 0)
@@ -589,7 +593,7 @@ template<const variable_info_type vit>
 typename maybe_const<vit, config::child_itors>::type variable_info<vit>::as_array() const
 {
 	throw_on_invalid();
-	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit> >(variable_as_array_h<vit>()), this->state_);
+	return apply_visitor(as_array_visitor<vit>(), this->state_);
 }
 
 template<const variable_info_type vit>
