@@ -102,7 +102,21 @@ void button::load_images() {
 		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png")));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
+	const std::string original_size_postfix = size_postfix;
+
 	if (!button_overlay_image_name_.empty()) {
+		const size_t postfix_len = size_postfix.length();
+		const size_t stem_len = button_overlay_image_name_.length();
+		if (stem_len >= postfix_len &&
+			button_overlay_image_name_.substr(stem_len - postfix_len) == size_postfix)
+		{
+			// Don't duplicate the size postfix if already part of the image path stem.
+			// This is needed to address a bug with UI button overlays disappearing in
+			// 1.12 due to inconsistent image path conventions in themes, without
+			// breaking backwards compatibility with broken mainline and UMC themes.
+			size_postfix.clear();
+		}
+
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
 
@@ -121,6 +135,8 @@ void button::load_images() {
 	} else {
 		overlayImage_.assign(NULL);
 	}
+
+	size_postfix = original_size_postfix;
 
 	if (disabled_image == NULL) {
 		disabled_image = image::get_image(button_image_name_ + ".png~GS()");
@@ -395,6 +411,11 @@ void button::set_overlay(const std::string& image_file)
 	button_overlay_image_name_ = image_file;
 	load_images();
 	set_dirty();
+}
+
+const std::string& button::overlay() const
+{
+	return button_overlay_image_name_;
 }
 
 void button::set_label(const std::string& val)

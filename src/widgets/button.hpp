@@ -47,6 +47,7 @@ public:
 	void set_label(const std::string& val);
 	void set_image(const std::string& image_file_base);
 	void set_overlay(const std::string& image_file_base);
+	const std::string& overlay() const;
 
 	bool pressed();
 	bool hit(int x, int y) const;

@@ -965,7 +965,13 @@ void display::create_buttons()
 		}
 
 		gui::button* b_prev = find_menu_button(b.id());
-		if(b_prev) b.enable(b_prev->enabled());
+		if(b_prev) {
+			b.enable(b_prev->enabled());
+			const std::string& ov = b_prev->overlay();
+			if(!ov.empty()) {
+				b.set_overlay(ov);
+			}
+		}
 
 		menu_work.push_back(b);
 	}
@@ -987,7 +993,14 @@ void display::create_buttons()
 		}
 
 		gui::button* b_prev = find_action_button(b.id());
-		if(b_prev) b.enable(b_prev->enabled());
+		if(b_prev) {
+			b.enable(b_prev->enabled());
+			b.set_check(b_prev->checked());
+			const std::string& ov = b_prev->overlay();
+			if(!ov.empty()) {
+				b.set_overlay(ov);
+			}
+		}
 
 		action_work.push_back(b);
 	}
