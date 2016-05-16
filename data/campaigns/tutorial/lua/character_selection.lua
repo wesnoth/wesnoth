@@ -55,7 +55,7 @@ function wml_actions.select_character()
 								border = "all",
 								border_size = 5,
 								T.image {
-									label = "units/human-princess.png"
+									label = "units/human-princess.png~TC(1,magenta)"
 								}
 							}
 						},
