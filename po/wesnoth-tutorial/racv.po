@@ -1,42 +1,38 @@
-#
-# Valencian translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
-# This file is distributed under the same license as the Battle for
-# Wesnoth package.
-#
-# Daniel López (Azazelo) <dani@darlinx.com>, 2006.
-# Jose Gordillo <kilder@hotmail.com>, 2006.
-#
+# Valencian (RACV) translations for Battle for Wesnoth package.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Mavorte <mavorte1@yahoo.es>
+# Software Valencià <info@softwarevalencia.com>, 2016.
 msgid ""
 msgstr ""
-"Project-Id-Version: va\n"
+"Project-Id-Version: racv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-05-24 20:08+0200\n"
-"PO-Revision-Date: 2008-09-22 10:34+0100\n"
-"Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
-"Language-Team: Valencià\n"
-"Language: \n"
+"POT-Creation-Date: 2016-05-09 21:24-0300\n"
+"PO-Revision-Date: 2014-10-19 21:37+0100\n"
+"Last-Translator: Software Valencià <info@softwarevalencia.com>\n"
+"Language-Team: Valencian (RACV) Team\n"
+"Language: racv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Pulsa el botó esquerre o qualsevol tecla per a continuar..."
+"<big>Pulsa el ratolí o la barra espayadora per a continuar...</big>"
 
 #. [tutorial]: id=tutorial
 #. Hello, translators! The tutorial is meant to be a bit funny at the start,
 #. welcoming new players. Please keep the friendly fun feeling!
 #. If you have any questions, ask in the forums or in the #wesnoth-dev channel on the Freenode IRC network.
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
-#, fuzzy
 msgid "Wesnoth Tutorial Part I"
-msgstr "Tutorial: Segona Part"
+msgstr "Tutorial de Wesnoth part I"
 
 #. [command]
 #. [option]: speaker=narrator
@@ -57,7 +53,6 @@ msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:181
-#, fuzzy
 msgid ""
 "You will learn the basics of:\n"
 "Movement\n"
@@ -65,26 +60,26 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
-"Deprendràs l'us bàsic de:\n"
-" el moviment\n"
-" l'atac\n"
-" la curació\n"
-" el reclutament"
+"Deprendràs els conceptes bàsics de:\n"
+"Moviment\n"
+"Atac\n"
+"Sanació\n"
+"Reclutament"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:187
 msgid "Destroy a fierce enemy"
-msgstr "Destruïu a un enemic feroç"
+msgstr "Destruïx a un enemic feroç"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
 msgid "Get yourself killed"
-msgstr "Suicida't"
+msgstr "Conseguir que et maten"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
 msgid "Who would you like to play?"
-msgstr "¿Quí t'agradaria ser?"
+msgstr "¿En quin personage t'agradaria jugar?"
 
 #. [command]
 #. [option]: speaker=narrator
@@ -98,27 +93,30 @@ msgstr "Li’sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:243
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:249
-#, fuzzy
 msgid "Welcome to Wesnoth!"
-msgstr "*¡Benvingut a Wesnoth!"
+msgstr "¡Benvingut a Wesnoth!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:244
-#, fuzzy
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
-msgstr "Estàs en la torre i el teu mestre Delfador està al costat est del riu."
+msgstr ""
+"Per a este tutorial estàs jugant en Konrad.\n"
+"Estàs ocupant el torrelló, i el teu mentor Delfador està en el costat est "
+"del riu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
-#, fuzzy
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
-msgstr "Estàs en la torre i el teu mestre Delfador està al costat est del riu."
+msgstr ""
+"Per a este tutorial estàs jugant en Li’sar.\n"
+"Estàs ocupant el torrelló, i el teu mentor Delfador està en el costat est "
+"del riu."
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -127,7 +125,7 @@ msgstr "Estàs en la torre i el teu mestre Delfador està al costat est del riu.
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 msgid "Left click on Konrad"
-msgstr "Fes clic esquerre sobre Konrad"
+msgstr "Pulsa el botó esquerre sobre Konrad"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -136,90 +134,89 @@ msgstr "Fes clic esquerre sobre Konrad"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:451
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid "Left click on Li’sar"
-msgstr "Fes clic esquerre sobre Li'sar"
+msgstr "Pulsa el botó esquerre sobre Li’sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:274
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Has escollit ser Konrad.\n"
-"Els llocs a on es pot moure estan allumenats."
+"<big>Has seleccionat a Konrad.</big>\n"
+"Els llocs a on pot moure's estan allumenats."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:281
-#, fuzzy
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Has escollit ser Li'sar.\n"
-"Els llocs a on es pot moure estan allumenats."
+"<big>Has seleccionat a Li’sar.</big>\n"
+"Els llocs a on pot moure's estan allumenats."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:287
 msgid "Here"
-msgstr ""
+msgstr "Ací"
 
+# Creo que casilla es la mejor traducción de "tile"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:293
-#, fuzzy
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr "Mou a Konrad al costat de Delfador fent clic on diu \"ACÍ\"."
+msgstr ""
+"Mou a Konrad al costat de Delfador pulsant en la casella marcada en <b>Ací</"
+"b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:297
-#, fuzzy
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr "Mou a Li'sar al costat de Delfador fent clic on diu \"ACÍ\"."
+msgstr ""
+"Mou a Li’sar al costat de Delfador, pulsant en la casella marcada en <b>Ací</"
+"b>."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:302
-#, fuzzy
 msgid "Left click on tile labeled <b>Here</b>"
-msgstr "Fes clic esquerre a la casella ab l'etiqueta \"ACÍ\""
+msgstr "Pulsa en el botó esquerre en la casella marcada en <b>Ací</b>"
 
+# Esto puede ser un tanto conflictivo pues cada país tiene sus propias exclamaciones onomatopéyicas. Escojo la recogida por la RAE:
+# ¡Epa!: Exclamación usada tras haber hecho algo con torpeza.
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:327
+#, fuzzy
 msgid "Oops!"
-msgstr ""
+msgstr "¡Epa!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:329
-#, fuzzy
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
 msgstr ""
-"*¡Ups!\n"
-"¡T'has mogut al lloc equivocat! Després d'este mensage pots pulsar 'u' per a "
-"desfer l'acció i tornar a intentar-ho.\n"
-"*Pulsa el botó esquerre o qualsevol tecla per a continuar..."
+"¡T'has mogut al lloc equivocat! Despuix d'este mensage pots pulsar la tecla "
+"<b>u</b> per a desfer, després pots intentar-ho de nou."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:351
-#, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr "¡Bon dia Delfador! ¿És hora d'atacar?"
+msgstr "¡Bon dia, Delfador! ¿Ya és hora d'atacar coses?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:355
 msgid "Um, well..."
-msgstr "Mmm, be..."
+msgstr "Uhm, bo..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr "¿Has trobat algun orc ab el que yo puga lluitar? ¿Tal volta un trol?"
+msgstr "¿Has trobat un orco per a que lluite en ell, eh? ¿Un trol?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:363
 msgid "Quiet! I will summon an enemy for you..."
-msgstr "¡Tranquil! Invocaré a un enemic per a tu..."
+msgstr "¡Calla! Invocaré un enemic per a tu..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
@@ -233,217 +230,199 @@ msgstr "Estaferm"
 msgid "... this quintain!"
 msgstr "... est estaferm!"
 
+# Estafermo o o muñeco giratorio, esa es la cuestión
+# Prefiero muñeco giratorio por ser más comunmente usado aunque el significado difiera más
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:408
-#, fuzzy
 msgid "A quintain? You want me to fight a dummy?"
-msgstr "¿Un estaferm? ¿¿Voleu que lluite contra un ninot??"
+msgstr "¿Un estaferm? ¿Pretens que lluite contra un ninot?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:415
-#, fuzzy
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr ""
-"Chicot, tens 32 punts d'impacte i una espasa. Estic casi segur de que "
+"Jovenet, tens 32 punts de vida i una espasa. Estic prou segur de que "
 "guanyaràs."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:420
-#, fuzzy
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
 msgstr ""
-"Chicot, tens 32 punts d'impacte i una espasa. Estic casi segur de que "
+"Joveneta, tens 32 punts de vida i una espasa. Estic prou segur de que "
 "guanyaràs."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:434
 msgid "Attacking"
-msgstr ""
+msgstr "Atacant"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:430
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
-"Per a atacar l'estaferm, primer hauràs de seleccionar l'atacant (Konrad) i "
-"després la víctima (l'estaferm). Voràs una descripció detallada de l'atac. "
-"Quan faces clic en \"Acceptar\", Konrad atacarà."
+"Per a atacar a l'estaferm, primer selecciona a l'atacant (Konrad) i després "
+"a l'objectiu (l'estaferm). Voràs una descripció dels detalls de l'atac. Quan "
+"pulses <b>Acceptar</b>, Konrad atacarà."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:435
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
-"Per a atacar l'estaferm, primer hauràs de seleccionar l'atacant (Li'sar) i "
-"després la víctima (l'estaferm). Voràs una descripció detallada de l'atac. "
-"Quan faces clic en \"Acceptar\", Li'sar atacarà."
+"Per a atacar a l'estaferm, primer selecciona a l'atacant (Li’sar) i després "
+"a l'objectiu (l'estaferm). Voràs una descripció dels detalls de l'atac. Quan "
+"pulses <b>Acceptar</b>, Li’sar atacarà."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:446
 msgid "Click on the quintain to attack it"
-msgstr "Fes clic en l'estaferm per a atacar-lo"
+msgstr "Pulsa en l'estaferm per a atacar-li"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
 msgid "Hey! This quintain fights back!"
-msgstr "¡Recollins! ¡Est estaferm es torna contra mi!"
+msgstr "¡Eh! ¡Est estafermo es defén!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
-#, fuzzy
 msgid "Hmm, perhaps we should have started with a doll."
-msgstr "Hmmm, potser hauríem d'haver començat per una nineta."
+msgstr "Umm, tal volta deuríem haver començat en una nina."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:490
 msgid "Should I retreat?"
-msgstr "¿Deuria abandonar?"
+msgstr "¿Deuria retirar-me?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 msgid "Good idea!"
-msgstr "¡Ben pensat!"
+msgstr "¡Bona idea!"
 
+# Interpreto el significado más obvio a falta de saber su uso exacto.
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:503
 msgid "Crowns"
-msgstr ""
+msgstr "Corones"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:500
-#, fuzzy
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
-"Nota: l'escut blau chicotet al costat de Delfador indica que perdràs la "
-"partida si ell és assessinat. També perdràs la partida si el teu líder "
-"(Konrad) mor."
+"La menuda corona metàlica sobre Delfador significa que perdràs la partida si "
+"ell mor. També perdràs la partida si el teu líder (Konrad) mor."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:504
-#, fuzzy
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
-"Nota: l'escut blau chicotet al costat de Delfador indica que perdràs la "
-"partida si ell és assessinat. També perdràs la partida si la teua líder "
-"(Li'sar) mor."
+"La menuda corona metàlica sobre Delfador significa que perdràs la partida si "
+"ell mor. També perdràs la partida si el teu líder (Li’sar) mor."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:516
-#, fuzzy
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr ""
-"Malauradament, has agotat la teua tanda atacant a l'estaferm. Ara és la "
-"tanda de l'estaferm."
+"Per desgràcia, has gastat la teua tanda atacant a l'estaferm. Ara l'estaferm "
+"atacarà."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:521
-#, fuzzy
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
 msgstr ""
-"Malauradament, has agotat la teua tanda atacant a l'estaferm. Ara és la "
-"tanda de l'estaferm."
+"Per desgràcia, has gastat la teua tanda atacant a l'estaferm. Ara l'estaferm "
+"atacarà."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
-#, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "¿Este NINOT DE FALLA també juga una tanda?"
+msgstr "¿El <i>ninot</i> tindrà una tanda?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:532
-#, fuzzy
 msgid ""
 "Yes. It’s a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
 "every time, you’ll drop from $student_hp to $future_hp hit points. Brace "
 "yourself!"
 msgstr ""
-"Sí: és un estaferm màgic.\n"
-"¿Veus el 3-5 en la seua descripció? El primer número te diu que fa tres "
-"punts de mal quan pega. El segon te diu que té cinc oportunitats per a "
-"colpejar-te en cada assalt del combat.\n"
-"Si encerta totes les voltes, passaràs de $student_hp a $future_hp  punts de "
-"vida. ¡Arromanga't les mànegues!"
+"Sí, és un estaferm màgic.\n"
+"Ara, est estafermo té 5 oportunitats de colpejar-te per 3 punts de dany "
+"cadascuna. Si et colpeja totes les voltes, baixaràs de $student_hp a "
+"$future_hp punts de vida. ¡Prepara't!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:536
-#, fuzzy
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
-msgstr "Pulsa el botó 'Fi de la Tanda', baix a la dreta."
+msgstr ""
+"Pulsa en el botó <b>Finalisar tanda</b> en la part inferior dreta de la "
+"pantalla"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:557
-#, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr ""
-"¡Ai! ¡Necessite curar-me! ¡Només em queden $student_hp punts d'impacte!"
+msgstr "¡Ay! ¡Necessite sanar-me! ¡Només em queden $student_hp punts de vida!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:486
 msgid "Village"
-msgstr "Aldea"
+msgstr "Llogaret"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:564
-#, fuzzy
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
-"Hi ha una aldea a l'atra vora del riu. Visitar les aldees és una bona idea i "
-"acabant una tanda en una d'elles recuperaràs punts de vida: hauries de "
-"retirar-te allà."
+"Hi ha un llogaret a l'atre costat del riu. Visitar llogarets és una bona "
+"idea i permanéixer en un et sanarà al començ de la teua següent tanda. ¡Cap "
+"al llogaret!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
-"Hi ha una aldea a l'atra vora del riu. Visitar les aldees és una bona idea i "
-"acabant una tanda en una d'elles recuperaràs punts de vida: hauries de "
-"retirar-te allà."
+"Hi ha un llogaret a l'atre costat del riu. Visitar llogarets és una bona "
+"idea i permanéixer en un et sanarà al començ de la teua següent tanda. ¡Cap "
+"al llogaret!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:582
 msgid "Click on the village to move Konrad"
-msgstr "Fes clic en l'aldea per a moure a Konrad"
+msgstr "Pulsa en el llogaret per a moure a Konrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:583
 msgid "Click on the village to move Li’sar"
-msgstr "Fes clic en l'aldea per a moure a Li'sar"
+msgstr "Pulsa en el llogaret per a moure a Li’sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
-#, fuzzy
 msgid "Villages"
-msgstr "Aldea"
+msgstr "Llogarets"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
-#, fuzzy
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
 "your total village count. (The house icon at the top of the screen shows how "
@@ -451,11 +430,11 @@ msgid ""
 "recruit units. Each turn, you gain two gold plus one for every village you "
 "own."
 msgstr ""
-"Ara \"posseïxes\" esta aldea: pots vore com porta la teua bandera i en "
-"seguida voràs que apareix un '1' al costat de l'icon de la casa en la part "
-"superior de la pantalla. Les aldees te donaran or: cada tanda conseguiràs "
-"dos peces d'or més una per cada aldea que posseïxques.\n"
-"*Fes clic esquerre o qualsevol tecla per a continuar..."
+"¡Has capturat un llogaret! Ara pots vore que la teua bandera oneja en ell i "
+"ha segut afegit al teu conte total de llogarets. (L'icon de la casa en la "
+"part superior de la pantalla mostra quants llogarets controles actualment). "
+"Els llogarets donen l'or necessari per a reclutar unitats. Cada tanda, "
+"guanyes dos peces d'or més atra per cada llogaret que controls."
 
 #. [else]
 #. [event]
@@ -465,138 +444,130 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:772
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:912
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
-#, fuzzy
 msgid "Click on the <b>End Turn</b> button"
-msgstr "Pulsa el botó \"Fi de la tanda\""
+msgstr "Pulsa en el botó de <b>Finalisar tanda</b>"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:643
-#, fuzzy
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
 msgstr ""
-"Estàs a punt de recuperar 8 punts de vida, pero crec que necessitaràs alguna "
-"ajuda ab est estaferm."
+"Vas a ser sanat $hp_difference punts de dany, pero és hora de demanar alguna "
+"ajuda contra eixe estaferm."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
-#, fuzzy
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
 msgstr ""
-"Estàs a punt de recuperar 8 punts de vida, pero crec que necessitaràs alguna "
-"ajuda ab est estaferm."
+"Vas a ser sanada $hp_difference punts de colp, pero és hora de demanar "
+"alguna ajuda contra eixe estaferm."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
 msgid "I’ll recruit some elves!"
-msgstr "¡Reclutaré alguns elfs!"
+msgstr "¡Reclutaré alguns elfos!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1010
 msgid "Keep"
-msgstr "Torre"
+msgstr "Torrelló"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:661
-#, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
 msgstr ""
-"És una esplèndida idea. Si tornes a la teua torre podràs reclutar dos "
-"unitats. Tens or més que suficient. "
+"Una idea esplèndida. Podràs reclutar dos unitats si tornes al teu torrelló. "
+"Tens prou d'or per ad això."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:666
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
 msgstr ""
-"És una esplèndida idea. Si tornes a la teua torre podràs reclutar dos "
-"unitats. Tens or més que suficient. "
+"Una idea esplèndida. Podràs reclutar dos unitats si tornes al teu torrelló. "
+"Tens prou d'or per ad això."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:672
 msgid "Move Konrad to the keep"
-msgstr "Mou a Konrad a la torre"
+msgstr "Mou a Konrad al torrelló"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
 msgid "Move Li’sar to the keep"
-msgstr "Mou a Li'sar a la torre"
+msgstr "Mou a Li’sar al torrelló"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:690
 msgid "Recruiting"
-msgstr ""
+msgstr "Reclutant"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:692
-#, fuzzy
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
 "you will only be given one type of unit to choose: the Elvish Fighter."
 msgstr ""
-"Sempre que estigues en una torre podràs reclutar en les caselles del castell "
-"fent clic dret i seleccionant \"Reclutar\". Esta vegada només podràs "
-"reclutar un tipo d'unitat: selecciona-la.\n"
-"*Fes clic esquerre o qualsevol tecla per a continuar..."
+"Quan estigues en <un <i>torrelló</i>, pots <i>reclutar</i> en les caselles "
+"de castell que hi haja al voltant pulsant en el botó dret i seleccionant "
+"<b>Reclutar</b>. Esta volta només tindràs un tipo d'unitat per a elegir: el "
+"lluitador elfo."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
-#, fuzzy
 msgid "Right click on a castle tile and select <b>Recruit</b>"
-msgstr "Fes clic dret a la casella del castell i selecciona \"Reclutar\""
+msgstr ""
+"Pulsa en el botó dret en una casella del castell i selecciona <b>Reclutar</b>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 msgid "New Recruits"
-msgstr ""
+msgstr "Nous reclutes"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
-#, fuzzy
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
 "next turn.\n"
 "After this dialog, you can move the mouse over a unit to see a summary of "
 "its abilities on the right of the screen."
 msgstr ""
-"Les noves unitats no poden actuar en esta tanda: Les controlaràs en la "
-"pròxima tanda.\n"
-"Nota: després d'este diàlec podràs moure el ratolí sobre una unitat per a "
-"vore una descripció a la dreta de la pantalla.\n"
-"*Fes clic esquerre o qualsevol tecla per a continuar..."
+"Les unitats recent reclutades no poden actuar esta tanda; les controlaràs la "
+"següent tanda.\n"
+"Despuix d'este diàlec podràs moure el ratolí sobre una unitat per a vore una "
+"descripció de la mateixa a la dreta de la pantalla."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:777
-#, fuzzy
 msgid "Right click on the other castle tile and recruit another unit"
-msgstr "Fes clic dret en l'atra casella del castell i recluta una atra unitat"
+msgstr ""
+"Pulsa en el botó dret del ratolí en l'atra casella del castell i recluta una "
+"atra unitat"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
-#, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
-"Ei, ¡l'estaferm només ha recuperat dos punts d'impacte! ¡Millor si l'ataque "
-"en seguida!"
+"¡Hey! ¡L'estaferm acaba de recuperar dos punts de vida! ¡Serà millor que "
+"l'ataque com més pronte millor!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:803
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr ""
+msgstr "Sí, si una unitat no fa res durant una tanda, se sanarà llentament."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
@@ -604,43 +575,41 @@ msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
+"Havent sobrevixcut l'estaferm al teu assalt, ha recuperat dos punts de colp. "
+"Sí, si una unitat no fa res durant una tanda, se sanarà una miqueta."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:823
-#, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Sí, si una unitat no fa res durant una tanda, recuperarà punts lentament.\n"
-"Pero abans de que envies als teus lluitadors contra ell, deuries saber que "
-"tenen dos tipos d'atacs..."
+"Pero abans d'enviar als teus guerrers contra l'estaferm, deuries saber que "
+"tenen dos tipos d'atac..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:827
-#, fuzzy
 msgid "I’ll tell them to use the one that does the most damage!"
-msgstr "¡Els ordenaré que usen l'atac que més ferixca!"
+msgstr "¡Els diré que usen el que faça més dany!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:831
-#, fuzzy
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
 msgstr ""
-"¿I quin seria? ¿L'espasa (5-4) o l'arc (3-3)? Suponc que ho descobriràs..."
+"¿I quin seria eixe? ¿L'espasa (5-4) o l'arc (3-3)? Suponc que ho "
+"descobriràs..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:833
 msgid "Left click on an Elvish Fighter"
-msgstr "Fes clic esquerre en un lluitador elf"
+msgstr "Pulsa en el botó esquerre sobre un lluitador elfo"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:834
-#, fuzzy
 msgid "End your turn and attack again."
-msgstr "Finalisa la teua tanda i ataca de nou."
+msgstr "Acaba la teua tanda i despuix ataca de nou."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:852
@@ -649,40 +618,40 @@ msgid ""
 "now would you?\n"
 "Use the fighters you recruited first; they’ll be a lot of help."
 msgstr ""
+"¿No faràs res estúpit com atacar a l'estaferm tu mateixa de nou, no?\n"
+"Usa als lluitadors que vares reclutar primer; seran de gran ajuda."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:864
-#, fuzzy
 msgid "Left click on the quintain to attack it."
-msgstr "Fes clic esquerre en l'estaferm per a atacar-lo."
+msgstr "Pulsa en el botó esquerre sobre l'estaferm per a atacar-lo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:908
 msgid " The ranged attack would have been safer."
-msgstr ""
+msgstr " L'atac a distància haguera segut més segur."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:908
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
 "attack. The quintain defended with its melee attack (3–5)."
 msgstr ""
-"El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un atac "
-"cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos (3-5). "
-"L'atac a distància era més segur."
+"El teu elfo va usar una espasa (5-4, o 5 de dany, 4 atacs), que és un atac "
+"<i>cos a cos</i>. L'estaferm es va defendre en el seu atac cos a cos (3-5)."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:908
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
-#, fuzzy
 msgid ""
 "\n"
 "End your turn, then attack again."
-msgstr "Finalisa la teua tanda i ataca de nou."
+msgstr ""
+"\n"
+"Acaba la teua tanda i despuix ataca de nou."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
@@ -690,95 +659,89 @@ msgid ""
 "\n"
 "You should tell the other elf to use the bow."
 msgstr ""
+"\n"
+"Deuries dir-li a l'atre elfo que utilise l'arc."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:924
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:973
-#, fuzzy
 msgid "Attack with the other elf"
-msgstr "Ataca ab l'atre elf"
+msgstr "Ataca en l'atre elfo"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:953
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
-#, fuzzy
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
-"El teu elf ha usat l'arc, que és un atac a distància (3-3, o 3 de dany i 3 "
-"atacs). L'estaferm no té atac a distància, només un cos a cos, aixina que no "
-"ha pogut defendre's."
+"El teu elfo ha usat un arc, que és un atac a <i>distància</i> (3-3, o 3 de "
+"dany, 3 atacs). L'estaferm no té atac a distància, només cos a cos, aixina "
+"que no va poder defendre's."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:992
-#, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
-msgstr "¡Seguix atacant ab els dos elfs fins que elimines l'estaferm!"
+msgstr "¡Seguix atacant en els elfos fins que l'estaferm estiga acabat!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 msgid "Maybe you should recruit another elf?"
-msgstr "¿Potser deuries reclutar a un atre elf?"
+msgstr "¿Tal volta deuries reclutar un atre elfo?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Unit Descriptions"
-msgstr ""
+msgstr "Descripcions de les unitats"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
-#, fuzzy
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"Nota:\n"
-"Pots fer clic dret en una unitat per a vore una descripció detallada de "
-"l'unitat."
+"Pots pulsar en el botó dret del ratolí sobre qualsevol unitat per a vore una "
+"<b>Descripció d'unitat</b> detallada."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1033
 msgid "Protect Your Troops"
-msgstr ""
+msgstr "Protegix les teues tropes"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1035
-#, fuzzy
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
 "(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
-"Nota:\n"
-"Recorda retirar les unitats ferides a les aldees i reclutar-ne més si cal. "
-"Tin especial recapte de les unitats ab més punts d'experiència (XP)."
+"Recorda retirar les teues unitats ferides als llogarets i reclutar més si ho "
+"necessites. Vigila especialment les unitats en molts <i>punts d'experiència "
+"(PX)</i> per a que puguen guanyar nivells i fer-se més poderoses."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
 msgid "Support"
-msgstr ""
+msgstr "Manteniment"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
-#, fuzzy
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
 msgstr ""
-"Nota:\n"
-"Cada aldea pot mantindre una unitat debades. A partir d'ahí, cada unitat te "
-"costarà una moneda d'or per tanda."
+"Cada llogaret que posseïxes podrà <i>mantindre</i> a una unitat sense cost "
+"per a tu. A partir d'ahí, cada unitat adicional costa una peça d'or per "
+"tanda en concepte de manteniment."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1069
 msgid "Advancement"
-msgstr ""
+msgstr "Alvanç"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1071
-#, fuzzy
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
@@ -786,21 +749,19 @@ msgid ""
 "to choose which one you want. However, second level units cost twice as much "
 "to support as first level units."
 msgstr ""
-"Nota:\n"
-"Quan una unitat guanye prou experiència (la barra d'experiència és la més "
-"chicoteta a la dreta), pujarà de nivell. Els lluitadors elfs tenen dos "
-"opcions, i podràs triar la que vullgues. Tin en conte que les unitats de "
-"nivell 2 costen de mantindre el doble que les de nivell 1."
+"Quan una unitat adquirix prou d'experiència (la <i>barra d'experiència</i>, "
+"d'estar present, està a la <b>dreta</b> de <la <i>barra de vida</i>), puja "
+"de nivell. Els lluitadors elfos tenen dos opcions d'alvanç, i podràs triar "
+"quina de les dos vols. No obstant, a les unitats de nivell 2 costa el doble "
+"mantindre-les que a les unitats de nivell 1."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1086
-#, fuzzy
 msgid "Defenses"
-msgstr "Defén ací"
+msgstr "Defenses"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1089
-#, fuzzy
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -809,63 +770,62 @@ msgid ""
 "rivers. However, these quintains use a <i>magical</i> attack, which always "
 "has a 70% chance of hitting no matter what terrain its target occupies."
 msgstr ""
-"Nota:\n"
-"Quan selecciones una unitat, voràs diferents percentages segons el lloc: un "
-"percentage més alt implica millor defensa. Per eixemple, la defensa és bona "
-"dins de castells i aldees, roïn dins dels rius. Els atacs dels ninots són "
-"màgics, no obstant, i sempre tenen un 70% de possibilitats d'encertar dona "
-"igual on estigues."
+"Una volta que selecciones una unitat, voràs percentages variats segons mous "
+"el teu ratolí pel mapa. Mentres més alt siga el percentage, més <i>defensa</"
+"i> tindrà l'unitat en eixe terreny. Per eixemple, les unitats solen tindre "
+"bones defenses en castells i llogarets, pero roïnes defenses en els rius. No "
+"obstant, el ninot usa un atac <i>màgic</i>, que té sempre un 70% de "
+"possibilitats d'impactar sense importar quin terreny ocupe el seu objectiu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1114
-#, fuzzy
 msgid "The quintain is destroyed, and I have gained more experience!"
-msgstr "L'estaferm està mort, senyors, ¡he guanyat més experiència!"
+msgstr "¡L'estaferm està destruït, i he guanyat més experiència!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1120
-#, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Sí, guanyes més experiència per mig de la batalla, especialment quan mates a "
-"un rival: guanya prou experiència i te faràs més poderós."
+"Sí, guanyes experiència durant la batalla, especialment matant a un oponent. "
+"Guanya suficient experiència i et faràs més poderós.\n"
+"Ara, Konrad, ¡Vaig a deixar-te més ninots per a que practiques en ells! "
+"Despuix d'això, tenim treball de veres que fer..."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1124
-#, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Sí, guanyes més experiència per mig de la batalla, especialment quan mates a "
-"un rival: guanya prou experiència i te faràs més poderós."
+"Sí, guanyes més experiència durant la batalla, especialment matant a un "
+"oponent. Guanya suficient experiència i et faràs més poderós.\n"
+"Ara, Li’sar, ¡Vaig a deixar-te més ninots per a que practiques en ells! "
+"Despuix d'això, tenim treball de veres que fer..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1192
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1194
-#, fuzzy
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
-"Nota:\n"
-"Estos ninots només ataquen si estàs a només una casella de distància. Ab "
-"cautela, deuries poder matar-los ú a ú."
+"Estos ninots només ataquen si estàs a una casella de distància. En una "
+"miqueta de conte, deuries ser capaç d'acabar en ells d'un en un."
 
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1202
 msgid "End Scenario"
-msgstr ""
+msgstr "Finalisar escenari"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1215
@@ -873,25 +833,26 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"¿Desiges seguir practicant? Pots acabar este escenari en qualsevol moment "
+"usant l'opció <b>Finalisar escenari</b> del menú contextual."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1217
 msgid "Yes, I’m still figuring it out."
-msgstr "Sí, encara necessite més pràctica."
+msgstr "Sí, encara m'estic fent una idea."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1220
 msgid "No, I think I’ve got it."
-msgstr "No, crec que ya capte l'idea."
+msgstr "No, crec que ya ho entenc."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1261
 msgid "Victory"
-msgstr ""
+msgstr "Victòria"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1262
-#, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will still be able to examine the final positions "
@@ -899,65 +860,63 @@ msgid ""
 "mode</i>. When you’re finished, click the <b>End Scenario</b> button to go "
 "on the next scenario in the campaign."
 msgstr ""
-"Després de la victòria, el mapa se farà gris per a indicar que l'escenari ya "
-"s'ha conclòs, pero podràs examinar les posicions finals i l'estat de les "
-"teues tropes abans de pulsar 'Fi de l'escenari' per a passar al pròxim "
-"escenari."
+"Despuix de la notificació de la teua victòria, el mapa es tornarà de color "
+"gris per a indicar que l'escenari està finalisat, pero podràs examinar les "
+"posicions finals i l'estat de les teues tropes i qualsevol enemic que hi "
+"haja sobrevixcut. Açò es diu <i>modo demora</i>. Quan hages acabat, pulsa el "
+"botó <b>Finalisar escenari</b> per a passar al següent escenari de la "
+"campanya."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:31
 msgid "Undo"
-msgstr ""
+msgstr "Desfer"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:32
-#, fuzzy
 msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things; useful for "
 "correcting mistakes."
 msgstr ""
-"*Recorda:\n"
-"Pots pulsar \"u\" per a desfer la majoria d'accions: útil per a corregir "
-"erros."
+"No ho oblides, pots pulsar <b>u</b> per a desfer la majoria de les coses; "
+"útil per a corregir errors."
 
 #. [then]
 #. This string used as follows: "<unit name>', your new recruit, has two traits...'"
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:79
-#, fuzzy
 msgid ""
 ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
 "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
 "less experience to advance a level."
 msgstr ""
-", el teu nou recluta té dos traces: força i sabuderia. Força significa que "
-"l'unitat causa més dany, i sabuderia que requerix menys experiència per a "
-"pujar de nivell."
+", el teu nou recluta, té dos traces: <i>fort</i> i <i>inteligent</i>. «Fort» "
+"vol dir que fa més mal, i «inteligent» significa que requerix menys "
+"experiència per a alvançar un nivell."
 
 #. [then]
 #. This string used as follows: "<unit name>' has two traits: <i>quick</i> and ...'"
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:94
-#, fuzzy
 msgid ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
 "move one tile further each turn, and ‘resilient’ means it has more hitpoints."
 msgstr ""
-" té dos traces: rapidea i resistència. Rapidea vol dir que l'unitat es pot "
-"moure una casella més per tanda, i resistència que té més punts de vida."
+" té dos traces: <i>ràpit</i> i <i>resistent</i>. «Ràpit» vol dir que pot "
+"moure's una casella més per cada tanda, i «resistent» significa que té més "
+"punts de vida."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
 msgid "Patch of forest"
-msgstr "Zona boscosa"
+msgstr "Menut bosc"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
-#, fuzzy
 msgid ""
 "Now put an unwounded unit, preferably a Fighter, in that patch of forest on "
 "the south-east of the island; a nice, defensible spot."
 msgstr ""
-"Ara situa una unitat sana, preferiblement un lluitador, en aquella casella "
-"de bosc al surest de l'illa: un bon lloc defensiu."
+"Ara posa una unitat no ferida, preferiblement un lluitador, en eixe menut "
+"bosc al surest de l'illa; un punt bo i defendible."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
@@ -966,31 +925,28 @@ msgstr "¿Pot una unitat sobreviure contra tots eixos enemics?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-#, fuzzy
 msgid ""
 "With a little help, yes. If you move your Shaman next to the defending unit, "
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
-"Ab un poc d'ajuda, sí. Si mous la chaman prop de l'unitat defenedora, la "
-"sanarà 4 punts. Això sí, tingues recapte de no expondre a la chaman, és molt "
-"dèbil per sí mateixa."
+"En una miqueta d'ajuda, sí. Si mous el teu chaman junt a l'unitat defensora, "
+"la sanarà en 4 punts de vida per cada tanda. Solament vés en conte de no "
+"expondre al chaman a l'atac ya que és prou dèbil per sí mateixa."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
-#, fuzzy
 msgid "Move a unit (a Fighter if possible) to the patch of forest"
-msgstr "Mou una unitat (a ser possible un lluitador) a la zona boscosa"
+msgstr "Mou una unitat (un lluitador a ser possible) a la zona boscosa"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
-#, fuzzy
 msgid ""
 "Advance other units onto the island or to capture villages, then <b>End "
 "Turn</b>"
 msgstr ""
-"Alvança les atres unitats cap a l'illa o per a capturar aldees i, després "
-"finalisa la tanda."
+"Alvança atres unitats a l'illa o a capturar llogarets, després pulsa "
+"<b>Finalisar tanda</b>"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:234
@@ -998,42 +954,38 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
-"¡Ad esta unitat li falta aproximadament una víctima més  (8 punts "
-"d'experiència) per a pujar de nivell! ¡No deixes que muiga!"
+"¡A eixa unitat només li falta una víctima (8 punts d'experiència) per a "
+"pujar de nivell! ¡No la deixes morir!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:287
-#, fuzzy
 msgid "I hope I have a chance to retreat after this!"
-msgstr "¡Espere que puga retirar-me després d'açò!"
+msgstr "¡Espere poder retirar-me despuix d'açò!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:298
-#, fuzzy
 msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "¡Només un soldat orc que tinga sort atacant-me i estic acabat!"
+msgstr "¡Un atac en sòrt d'un soldat orco i estic acabat!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:309
-#, fuzzy
 msgid "Ouch! I could make use of some healing in a village."
-msgstr "¡Ai! M'aniria be curar-me dins d'una aldea."
+msgstr "¡Ay! Podria sanar-me una miqueta en un llogaret."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
-#, fuzzy
 msgid "I have $side.gold gold; enough to recruit!"
-msgstr "Tinc $gold monedes: ¡prou per a reclutar!"
+msgstr "Tinc $side.gold peces d'or; ¡Prou com per a reclutar!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:337
 msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr "Sí, seguix reclutat unitats: ¡crec que les necessitaràs!"
+msgstr "Sí, continua reclutant més unitats: ¡Crec que les necessitaràs!"
 
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:347
 msgid "Wesnoth Tutorial Part II"
-msgstr "Tutorial: Segona Part"
+msgstr "Tutorial de Wesnoth part II"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:369
@@ -1043,7 +995,7 @@ msgstr "Thrag"
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:399
 msgid "Defeat the Orc Leader"
-msgstr "Derrota al líder orc"
+msgstr "Derrota al líder orco"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:409
@@ -1053,7 +1005,7 @@ msgstr "Mort de Konrad"
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid "Death of Li’sar"
-msgstr "Mort de Li'sar"
+msgstr "Mort de Li’sar"
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
@@ -1062,37 +1014,35 @@ msgstr "Galdrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:455
-#, fuzzy
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
 msgstr ""
-"¡Hola Galdrad! ¿Ha invocat Delfador alguna cosa més en la que batir-me? "
-"¿Potser un atropoll d'espantapardals?"
+"¡Eh Galdrad! ¿Ha invocat Delfador alguna una atra cosa en la qual derrotar-"
+"me? ¿Tal volta un surrat d'espantapardals?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:457
 msgid "This is no game, Konrad! "
-msgstr "¡Açò no és cap joc, Konrad!"
+msgstr "¡Açò no és un joc Konrad! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:459
-#, fuzzy
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
 "to enter here. We Elves are fast and hard to hit in forests. You must defeat "
 "their leader so they never threaten us again. I will advise you."
 msgstr ""
-"Els orcs han acampat a l'atre costat del riu. Açò és territori elf: nosatres "
-"els elfs som ràpits i esquius dins el bosc. Són uns borinots només per "
-"entrar ací. Deus derrotar al seu líder per a que no nos molesten mai més. Yo "
-"t'aconsellaré."
+"Els orcos han acampat a l'atre costat del riu. Açò és territori elfo; són "
+"idiotes en entrar ací. Els elfos nos movem ràpidament i som difícils de "
+"colpejar en els boscs. Deus derrotar al seu líder per a que no tornen a "
+"molestar-nos mai. Yo t'aconsellaré."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
 msgid "This is no game, Li’sar! "
-msgstr "¡Açò no és cap joc, Li'sar!"
+msgstr "¡Açò no és un joc Li’sar! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:461
@@ -1105,19 +1055,19 @@ msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
 msgstr ""
-"Primer, cal ocupar-nos d'aquell soldat ras orc colocat en mig del riu. No "
-"deuria donar-nos massa problemes."
+"Primer tenim que desfer-nos del soldat ras orco situat en la mitat del riu. "
+"No deuria ser massa problema."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:467
-#, fuzzy
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
 msgstr ""
-"Per a llavors, el seu líder haurà reclutat unes quantes unitats per a enviar-"
-"les contra nosatres i començarà la verdadera lluita."
+"Per a llavors, el seu líder haurà reclutat més unitats per a enviar-les "
+"contra nosatros i començarà la verdadera lluita."
 
+# Traduzco por someras al deducir que el sujeto es "aguas"
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:468
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:469
@@ -1125,79 +1075,76 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:471
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:472
 msgid "Shallow"
-msgstr ""
+msgstr "Someres"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:473
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:474
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:475
 msgid "Deep water"
-msgstr ""
+msgstr "Aigües profundes"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:477
-#, fuzzy
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
 "the east; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"Vejau esta aigua blava fosca, és massa fonda com per a creuar-la. Podrien "
-"creuar lentament a través d'aquella estreta banda d'aigua baixa de color més "
-"clar a l'est, pero nosatres els esperaríem en la vora i es vorien obligats a "
-"combatre des de l'aigua on estaran exposts i nosatres estarem protegits pel "
+"¿Veus esta aigua blava obscura? És massa profunda per a que qualsevol unitat "
+"puga creuar-la. Ells podrien intentar passar llentament a través del guau "
+"d'eixa menuda banda d'aigua somera d'un blau més clar en l'est; pero "
+"nosatros podríem situar-nos en la vora i obligar-los a lluitar contra "
+"nosatros des de l'aigua, a on ells estan exposts i nosatros protegits pel "
 "bosc."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:487
-#, fuzzy
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
 "the key: it has a village for healing injured units and forests in which we "
 "fight so well."
 msgstr ""
-"Llavors, la ruta d'atac més provable és creuant el pont. Aquella chicoteta "
-"illa en mig és la clau, té una aldea on sanar les unitats ferides, i un bosc "
-"des d'on lluitem tan be."
+"L'atac més provable, per lo tant, és a través del pont. Eixa illa del mig és "
+"la clau: té un llogaret per a sanar unitats ferides i boscs en els que "
+"lluitem tan be."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
-#, fuzzy
 msgid ""
 "To start, we will need some units:\n"
 "two Elvish Fighters\n"
 "two Elvish Archers\n"
 "one Elvish Shaman"
 msgstr ""
-"Per a començar, necessitarem:\n"
-"Dos lluitadors\n"
-"Dos arquers\n"
-"Una chaman"
+"Per a començar necessitarem algunes unitats:\n"
+"dos lluitadors elfos\n"
+"dos arquers elfos\n"
+"una chaman elfa"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:568
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should <i>recall</i> them now so they can "
 "gain more experience, rather than recruiting new Fighters."
 msgstr ""
-"Durant el tutorial, $recall_name1 guanyà $recall_xp1 punts d'experiència, i "
-"$recall_name2 guanyà $recall_xp2.  Deuries reincorporar-los ara per a que "
-"guanyen més experiència, millor que reclutar nous guerrers."
+"Durant el teu tutorial, $recall_name1 i $recall_name2 varen guanyar "
+"$recall_xp1 punts d'experiència. Deuries <i>reincorporar</i> eixes unitats "
+"ara per a que guanyen més experiència, en lloc de reclutar nous lluitadors."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:571
-#, fuzzy
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
 "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
 "they can gain more experience, rather than recruiting new Fighters."
 msgstr ""
-"Durant el tutorial, $recall_name1 guanyà $recall_xp1 punts d'experiència, i "
-"$recall_name2 guanyà $recall_xp2.  Deuries reincorporar-los ara per a que "
-"guanyen més experiència, millor que reclutar nous guerrers."
+"Durant el teu tutorial, $recall_name1 va guanyar $recall_xp1 punts "
+"d'experiència, i $recall_name2 va guanyar $recall_xp2. Deuries "
+"<i>reincorporar</i> ara eixes unitats per a que guanyen més experiència, en "
+"lloc de reclutar nous lluitadors."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:577
@@ -1206,110 +1153,110 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
-"Durant el tutorial, en $recall_name1 guanyà $recall_xp1 punts d'experiència. "
-"Deuries reincorporar-lo ara i reclutar un segon guerrer (que de totes "
-"maneres és més barat que reincorporar)."
+"Durant el teu tutorial, $recall_name1 va guanyar $recall_xp1 punts "
+"d'experiència. Deuries reincorporar eixa unitat ara, i reclutar una segona "
+"(lo que és més barat que reincorporar, de totes maneres)."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:580
 msgid "RECALL $recall_name1"
-msgstr "REINCORPORAR a $recall_name1"
+msgstr "REINCORPORA a $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:581
-#, fuzzy
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
 msgstr ""
-"Fes clic dret en la casella al norest de tu i reincorpora a $recall_name2"
+"Pulsa en el botó dret en la casella al nort-est d'a on et trobes i "
+"<i>reincorpora</i>a $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:590
-#, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would "
 "<i>recall</i> them to the current battlefield. However, your veterans gained "
 "no experience so it’s cheaper to recruit new units instead. Recruit an "
 "Elvish Fighter."
 msgstr ""
-"Si algun dels lluitadors elfs de l'anterior batalla tinguera experiència, "
-"els reincorporaríem; com no ne tenen, és més barat reclutar uns nous. Aixina "
-"puix, recluta un lluitador elf."
+"Si algun lluitador elfo de la teua última batalla haguera guanyat "
+"experiència, l'hauríem <i>reincorporat</i>. No obstant, abdós unitats tenen "
+"molt poca experiència per lo que és més barat reclutar nous. Recluta un "
+"lluitador elfo."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "If you had any experienced units alive from your last battle we would "
 "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
 msgstr ""
-"Si haguera sobrevixcut alguna unitat de l'anterior batalla, les "
-"reincorporaríem; no obstant, ara hem de reclutar un nou lluitador elf."
+"Si haguera sobrevixcut alguna unitat en experiència de la teua anterior "
+"batalla l'haguérem <i>reincorporat</i>. En lloc d'això devem reclutar alguns "
+"lluitadors elfos nous."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:596
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:849
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:891
 msgid "Elvish Fighter"
-msgstr "Lluitador Elf"
+msgstr "Lluitador elfo"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Fes clic dret en la casella al norest de tu i recluta a un Lluitador Elf"
+"Pulsa en el botó dret la casella al nort-est d'a on et trobes i recluta un "
+"lluitador elfo"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
-#, fuzzy
 msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
-msgstr "¡No! ¡Havia dit que reclutares a una CHAMAN! Torna-ho a intentar..."
+msgstr ""
+"¡No! ¡Vaig dir que reclutares una <i>chaman</i> elfa! Ara intenta-ho de "
+"nou..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:646
-#, fuzzy
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
 "friendly units around her. She also has a special attack which <i>slows</i> "
 "enemies, halving the damage they do."
 msgstr ""
-"La chaman és una unitat prou dèbil, pero té l'habilitat de sanar les unitats "
-"al seu voltant. També té un atac especial que alentix als enemics, dividint "
-"entre dos el dany que causen."
+"La chaman és una unitat prou dèbil, pero té la capacitat de <i>sanar</i> a "
+"les unitats al seu voltant. Ademés té un atac especial que <i>ralentisa</i> "
+"als enemics, reduint a la mitat el mal que fan."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:647
 msgid "So, should I end my turn now?"
-msgstr "Llavors, ¿ara deuria finalisar la meua tanda?"
+msgstr "Llavors, ¿deuria acabar ara la meua tanda?"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
-#, fuzzy
 msgid ""
 "While none of your recruited units can move, you still can. Your five units "
 "cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
 "income."
 msgstr ""
-"És veritat, cap de les teues unitats reclutades pot moure's, pero tu encara "
-"pots. Les teues cinc unitats te costen 5 monedes, deixant-te ab 3 monedes "
-"menys per tanda. Necessites més ingressos."
+"Encara que cap de les teues unitats reclutades pot moure's, tu encara sí que "
+"pots. Les teues cinc unitats et costen 5 peces d'or, deixant-te 3 peces d'or "
+"més pobre per cada tanda. Necessites més ingressos."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:651
 msgid "Move Konrad to capture a village"
-msgstr "Mou a Konrad a una aldea."
+msgstr "Mou a Konrad per a capturar un llogaret"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:652
 msgid "Move Li’sar to capture a village"
-msgstr "Mou a Li'sar per a capturar una aldea"
+msgstr "Mou a Li’sar per a capturar un llogaret"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:669
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:707
-#, fuzzy
 msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
-msgstr "¡No! ¡Havia dit que reclutares a una CHAMAN! Torna-ho a intentar..."
+msgstr ""
+"¡No! ¡Vaig dir que reclutares un <i>arquer</i> elfo! Ara intenta-ho de nou..."
 
 #. [else]
 #. [unit]: id=Eowynial, type=Elvish Archer
@@ -1326,7 +1273,7 @@ msgstr "Chaman"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:691
 msgid "Recruit an Elvish Shaman to your north"
-msgstr "Recluta a una chaman elfa al nort teu"
+msgstr "Recluta una chaman elfa al nort d'a on et trobes"
 
 #. [else]
 #. [unit]: id=Elriend, type=Elvish Archer
@@ -1337,36 +1284,35 @@ msgstr "Elriend"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:746
-#, fuzzy
 msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
 msgstr ""
-"¡No! ¡Havia dit que REINCORPORARES a $recall_name|! Torna-ho a intentar..."
+"¡No! ¡Vaig dir que <i>reincorporares</i> a $recall_name2|! Ara intenta-ho de "
+"nou..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:755
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:791
 msgid "Archer #1"
-msgstr "Arquer #1"
+msgstr "Arquer nº 1"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:756
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:792
 msgid "Archer #2"
-msgstr "Arquer #2"
+msgstr "Arquer nº 2"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:758
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:794
-#, fuzzy
 msgid "Recruit two Elvish Archers in the tiles to your west"
-msgstr "Recluta a dos arquers elfs en les caselles a l'oest teu"
+msgstr "Recluta dos arquers élfics en les caselles a l'oest d'a on et trobes"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:771
-#, fuzzy
 msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
 msgstr ""
-"¡No! ¡Havia dit que reclutares un LLUITADOR elf! Torna-ho a intentar..."
+"¡No! ¡Vaig dir que reclutares un <i>lluitador</i> elfo! Ara intenta-ho de "
+"nou..."
 
 #. [else]
 #. [unit]: id=Golir, type=Elvish Fighter
@@ -1379,24 +1325,25 @@ msgstr "Golir"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:825
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
-"¡No! ¡Havia dit que reincorporares a $recall_name1, no a $recall_name2|! "
-"Torna-ho a intentar..."
+"¡No! ¡Vaig dir que reincorporares a $recall_name1, no a $recall_name2|! Ara "
+"intenta-ho de nou..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:829
-#, fuzzy
 msgid ""
 "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
 "new $recruit.language_name|! Now try again..."
 msgstr ""
-"¡No! ¡Havia dit que reincorporares a $recall_name1, no que reclutares a un "
-"nou $recruit.language_name|! Torna-ho a intentar..."
+"¡No! ¡Vaig dir que <i>reincorporares</i> a $recall_name1 de l'última "
+"batalla, no que reclutares un nou $recruit.language_name|! Ara intenta-ho de "
+"nou..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
-"Fes clic dret en la casella a l'est de tu i reincorpora a $recall_name2"
+"Pulsa en el botó dret en la casella a l'est d'a on et trobes i reincorpora a "
+"$recall_name2"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:846
@@ -1407,17 +1354,18 @@ msgstr "REINCORPORA a $recall_name2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:850
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:892
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr "Fes clic dret en la casella a l'est de tu i recluta un Lluitador Elf"
+msgstr ""
+"Pulsa en el botó dret la casella a l'est d'a on et trobes i recluta un "
+"lluitador elfo"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:873
-#, fuzzy
 msgid ""
 "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
 "Now try again..."
 msgstr ""
-"¿$recruit.language_name|? ¡Havia dit que recluteu un LLUITADOR. Torna-ho a "
-"intentar..."
+"¿$recruit.language_name|? Vaig dir que <i>reclutares</i> un nou <i>lluitador "
+"elfo</i>. Ara intenta-ho de nou..."
 
 #. [else]
 #. [unit]: id=Elindel, type=Elvish Fighter
@@ -1434,25 +1382,24 @@ msgstr "¡Has deprés be, Konrad! "
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:920
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:922
-#, fuzzy
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
 "gold per turn now."
 msgstr ""
-"L'aldea manté una unitat i te paga una moneda per tanda: ara només perts 1 "
-"moneda per tanda."
+"El llogaret manté a una unitat, i paga una peça d'or per tanda. Ara només "
+"estàs perdent 1 peça d'or per tanda."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
 msgid "You’ve learned well, Li’sar! "
-msgstr "¡Has deprés be, Li'sar! "
+msgstr "¡Has deprés be, Li’sar! "
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:924
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1052
 msgid "End your turn"
-msgstr "Finalisar la tanda"
+msgstr "Acaba la teua tanda"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:930
@@ -1460,45 +1407,41 @@ msgid ""
 "You’ve captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
-"Has capturat totes les aldees prop del castell, pero permaneix prop per a "
-"poder reclutar més unitats."
+"Has capturat tots els llogarets al voltant del torrelló, pero mantin-te prop "
+"per a que pugues reclutar més unitats."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Konrad to capture. He needs "
 "to stay nearby to recruit more units anyway."
 msgstr ""
-"Deuries abandonar les aldees prop del castell per a que les capture Konrad, "
-"ya que de totes formes necessita permanéixer prop per a reclutar noves "
-"unitats."
+"Deuries deixar els llogarets propencs al teu torrelló per a que Konrad els "
+"capture. Necessita permanéixer prop per a reclutar més unitats de totes "
+"maneres."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Li’sar to capture. She "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Deuries abandonar les aldees prop del castell per a que les capture Konrad, "
-"ya que de totes maneres necessita permanéixer prop per a reclutar noves "
-"unitats."
+"Deuries deixar els llogarets propencs al teu torrelló per a que Li’sar els "
+"capture, puix necessita permanéixer prop per a reclutar més unitats de totes "
+"maneres."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:952
-#, fuzzy
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr ""
-"Els orcs no tenen atac a distància, aixina que ampra els teus arquers contra "
-"ell."
+"Els soldats orcos carixen d'atac a distància, aixina que usa als teus "
+"arquers contra ells."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1079
-#, fuzzy
 msgid "Attack the orc with an Archer"
-msgstr "Ataca a l'orc ab un arquer"
+msgstr "Ataca a l'orco en un arquer"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
@@ -1506,78 +1449,75 @@ msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
+"Per a revisar les habilitats de qualsevol unitat — incloent una enemiga — "
+"desplace el ratolí damunt d'ella, i vorà una resenya de l'unitat a la dreta "
+"de la pantalla"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
 msgid "Unit Summaries"
-msgstr ""
+msgstr "Resenya de l'unitat"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:963
-#, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
 "of hitting an Elvish Archer in that tile."
 msgstr ""
-"¡Excelent! Els elfs estan molt ben protegits dins del bosc: només hi ha un "
-"30% de possibilitats d'encertar a un arquer elf quan està en el bosc."
+"Excelent. Els elfos es troben ben protegits en el bosc. Només hi ha un 30% "
+"de possibilitats de colpejar a un arquer elfo que es troba en el bosc."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:972
-#, fuzzy
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit when the enemy counter-attacks! "
 "Cancel!"
 msgstr ""
-"¡És molt perillós permanéixer dins l'aigua quan hi ha enemics prop! ¡El "
-"contraatac de l'orc tindria un 80% de possibilitats d'encertar a la teua "
-"unitat! ¡Cancela el moviment!"
+"¡És molt perillós permanéixer en l'aigua quan hi ha enemics prop! ¡La teua "
+"unitat tindria un 80% de possibilitats de ser colpejada quan l'enemic "
+"contraataque! ¡Cancela!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
-#, fuzzy
 msgid "Attack the orc with the other Archer"
-msgstr "Ataca a l'orc ab l'atre arquer"
+msgstr "Ataca a l'orco en l'atre arquer"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:990
-#, fuzzy
 msgid "Fighter to HERE"
-msgstr "Lluitador cap ací"
+msgstr "Lluitador a ACÍ"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
-#, fuzzy
 msgid ""
 "Your other units cannot reach the orc this turn. Send a Fighter to the "
 "village in the far east of the map. It will take two turns to reach it."
 msgstr ""
-"Les atres unitats no poden arribar a l'orc en esta tanda. Envia a un "
-"lluitador elf cap a aquella aldea en l'extrem est del mapa: tardarà unes dos "
-"tandes en arribar."
+"Les teues atres unitats no poden alcançar a l'orco en esta tanda. Envia a un "
+"lluitador ad eixe llogaret en l'extrem est del mapa. Li portarà dos tandes "
+"aplegar ahí."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
 msgid "Long-distance Movement"
-msgstr ""
+msgstr "Moviment a llarga distància"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"Pots fer que una unitat continue movent-se durant múltiples tandes: "
-"selecciona l'unitat i després fes clic en l'objectiu. Voràs un (2) si tarda "
-"dos tandes en arribar."
+"Pots fer que una unitat es moga durant vàries tandes seleccionant l'unitat i "
+"pulsant en el destí. Un número t'indicarà quàntes tandes li portarà alcançar "
+"eixa casella."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:993
 msgid "Tell a Fighter to move to the far east village"
-msgstr "Envia a un lluitador que vaja cap a l'aldea de l'est"
+msgstr "Dis-li a un lluitador que es moga al llogaret en l'extrem est"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1011
@@ -1585,27 +1525,25 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
-"¡Envia als atres lluitadors i a la chaman cap al sur per a que puguen atacar "
-"en la pròxima tanda, després torna cap a la torre i recluta més unitats!"
+"Envia a l'atre lluitador i a la chaman al sur per a que puguen atacar en la "
+"següent tanda, ¡després retorna al torrelló per a reclutar més unitats!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1012
-#, fuzzy
 msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
 msgstr ""
-"Mou al lluitador i a la chaman cap al sur, després torna a Konrad a la torre"
+"Mou al lluitador i a la chaman al sur, després torna en Konrad al torrelló"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1013
-#, fuzzy
 msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
 msgstr ""
-"Mou al lluitador i a la chaman cap al sur, després torna a Konrad a la torre"
+"Mou al lluitador i a la chaman al sur, després torna en Li’sar al torrelló"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1023
 msgid "Recruit another Archer and a Fighter"
-msgstr "Recluta a un arquer i a un lluitador"
+msgstr "Recluta un atre arquer i un lluitador"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1038
@@ -1614,34 +1552,33 @@ msgstr "¡No tinc més diners per a reclutar!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
-#, fuzzy
 msgid "That is often a problem, which is why owning villages is important."
-msgstr "És un problema comú i és per això que és tan important posseir aldees."
+msgstr ""
+"Açò és a sovint un problema, i per això és important posseir llogarets."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1040
 msgid "Move Konrad to another (unowned) village"
-msgstr "Mou a Konrad a una atra aldea (que no controles)"
+msgstr "Mou a Konrad a un atre llogaret (desocupat)"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
 msgid "Move Li’sar to another (unowned) village"
-msgstr "Mou a Li'sar a una atra aldea (que no controles)"
+msgstr "Mou a Li’sar a un atre llogaret (desocupat)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1066
-#, fuzzy
 msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
 "Wolf Riders reach it."
 msgstr ""
-"¡L'orc està bloquejant el pont! Hem d'ocupar aquella illa abans de que "
-"arriben els ginets llop."
+"¡Eixe soldat ras està bloquejant el pont! Devem ocupar eixa illa abans de "
+"que els ginets de llops apleguen ad ella."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1067
 msgid "Can’t our units just move around him?"
-msgstr "¿Les nostres unitats no poden voltejar-lo?"
+msgstr "¿No poden nostres unitats moure's simplement al voltant d'ell?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1070
@@ -1655,67 +1592,64 @@ msgstr "ZdC"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
-#, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn.\n"
 "To move your troops onto that island without wading slowly through the "
 "water, you’ll have to kill the Grunt."
 msgstr ""
-"No, una vegada te meneges prop d'una unitat enemiga, entres dins de la "
-"nomenada 'Zona de Control', i no es pot menejar més en esta tanda.\n"
-"Si vols que les teues unitats arriben ad aquella illa sense anar lentament "
-"per l'aigua hauràs de matar-lo."
+"No. Una volta que et mous prop d'una unitat enemiga, estàs en la seua "
+"<i>Zona de Control</i>, i no pots moure't més en eixa tanda.\n"
+"Per a moure a les teues tropes ad eixa illa sense passar llentament per un "
+"guau l'aigua, tindràs que matar al soldat orco."
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1109
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1133
-#, fuzzy
 msgid "Advance other units and capture villages, then <b>End Turn</b>"
-msgstr "Alvança les atres unitats i captura aldees, després finalisa la tanda"
+msgstr ""
+"Alvança atres unitats i captura llogarets, després pulsa <b>Finalisar tanda</"
+"b>"
 
 #. [then]
 #. The unit with unit type $unit.language_name is male.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1119
-#, fuzzy
 msgid ""
 "No other units can reach that orc. I hope my $unit.language_name survives "
 "its counter-attack! I’d better grab more villages and move everyone closer "
 "for next turn."
 msgstr ""
-"Cap atra unitat pot arribar a on està l'orc: ¡espere que el meu arquer "
-"sobrevixca el seu contraatac! Millor continuaré capturant més aldees i mouré "
-"a tots més prop de l'orc per a la tanda vinent."
+"Cap atra unitat pot alcançar ad eixe orco. ¡Espere que la meua $unit."
+"language_name sobrevixca al seu contraatac! És millor que capture més "
+"llogarets, i moga a tots més prop per a la pròxima tanda."
 
 #. [else]
 #. The unit with unit type $unit.language_name is female.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1123
-#, fuzzy
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
 "survives its counter-attack! I’d better grab more villages and move everyone "
 "closer for next turn."
 msgstr ""
-"Cap atra unitat pot arribar a on està l'orc: ¡espere que el meu arquer "
-"sobrevixca el seu contraatac! Millor continuaré capturant més aldees i mouré "
-"a tots més prop de l'orc per a la tanda vinent."
+"Cap atra unitat pot alcançar ad eixe orco. ¡Espere que la meua $unit."
+"language_name sobrevixca al seu contraatac! És millor que capture més "
+"llogarets, i moga a tots més prop per a la pròxima tanda."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1126
-#, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, she will "
 "heal it at the beginning of the next turn."
 msgstr ""
-"Sí. Si la vostra chaman permaneix justament darrere d'aquella unitat del "
-"pont, també la sanarà alguns punts al començament de la tanda vinent."
+"Sí. Si la teua chaman permaneix just darrere d'eixa unitat en el pont, la "
+"sanarà al principi de la pròxima tanda."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1127
-#, fuzzy
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
-msgstr "Mou a la chaman al pont per a que estiga darrere de l'unitat"
+msgstr ""
+"Mou a la chaman al pont per a que permaneixca darrere de la teua atra unitat"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
@@ -1723,45 +1657,43 @@ msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
 msgstr ""
-"Posa atenció: ¡si te quedes en el pont estàs expost a l'atac des de vàries "
-"direccions!"
+"Vés en conte: ¡si permaneixes damunt del pont t'expons a que t'ataquen des "
+"de múltiples direccions!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1186
-#, fuzzy
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
 "attack you!"
 msgstr ""
-"¡És molt perillós permanéixer dins l'aigua quan hi ha enemics prop! ¡El "
-"contraatac de l'orc tindria un 80% de possibilitats d'encertar a la teua "
-"unitat! ¡Cancela el moviment i espera a que ells t'ataquen!"
+"¡És molt perillós permanéixer en l'aigua quan hi ha enemics prop! ¡La teua "
+"unitat tindria un 80% de possibilitats de ser colpejada! ¡Cancela, i espera "
+"a que ells t'ataquen!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1196
-#, fuzzy
 msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
 "last village near the channel."
 msgstr ""
-"No t'oblides del lluitador a l'est: pots menejar-lo cap al sur per a "
-"capturar aquella última aldea prop del canal."
+"No oblides al teu lluitador en l'est; pots moure'l al sur ad eixe últim "
+"llogaret prop del canal."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1201
-#, fuzzy
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
 "a unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Hem de prendre aquella aldea, ¡si no la prendran ells la tanda vinent! Mou "
-"la teua unitat ferida allà per a que es cure, ¡després mata a aquell orc!"
+"¡Necessitem prendre eixe llogaret, ¡en cas contrari ells el prendran en la "
+"pròxima tanda! Mou una al llogaret per a evitar que els orcos el capturen. "
+"Qualsevol que siga l'unitat que elegixques també es beneficiarà de la "
+"curació del llogaret."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1213
-#, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1769,38 +1701,38 @@ msgid ""
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
 "day."
 msgstr ""
-"¡Atenció! S'ha fet de nit. Els orcs són caòtics: els seus atacs són un 25% "
-"més forts de nit, un 25% més dèbils de dia. Tu eres llegal: més fort de dia. "
-"Els elfs són neutrals: no es veuen afectats per este cicle."
+"¡Espai! Ara és de nit. Els orcos són <i>caòtics</i>, lo que significa que "
+"els seus atacs són un 25% més forts. De dia, els seus atac són un 25% més "
+"dèbils, lo que és una diferència notable. Tu eres <i>llegal</i>: fort de dia "
+"i dèbil de nit. Els teus guerrers elfos són <i>neutrals</i>: no els afecta "
+"ni el dia ni la nit."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"Després d'este diàlec, mou el ratolí per damunt de l'image baix del mapa a "
-"la dreta per a vore una descripció de l'hora del dia."
+"Despuix d'este diàlec, mantín la busca del ratolí sobre el paisage davall "
+"del minimapa de la dreta. Açò t'oferirà una descripció de l'hora del dia, "
+"mostrant quí té ventaja."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
 msgid "Time of Day"
-msgstr "*¡Benvingut a Wesnoth!"
+msgstr "Hora del dia"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1221
-#, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum healing for any "
 "unit)."
 msgstr ""
-"Recorda retirar les teues tropes ferides a les aldees. Les chamans només "
-"poden curar 4 punts de vida per tanda, les aldees curen 8 (màxim per a "
-"qualsevol unitat)."
+"Recorda retirar a les teues unitats ferides als llogarets. Els sanadors "
+"només poden sanar 4 punts de vida al mateix temps, mentres que els llogarets "
+"poden sanar 8 (la cura màxima per a qualsevol unitat)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1228
@@ -1809,22 +1741,21 @@ msgstr "Defén ací"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1229
-#, fuzzy
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
 msgstr ""
-"¡Vigila a aquells orcs que estan creuant el riu! ¡Si arriben al bosc nos "
-"costarà eliminar-los!"
+"¡Vés en conte en eixos orcos que creuen el riu! ¡Si entren en el bosc serà "
+"difícil expulsar-los!"
 
+# ¿A qué se refiere?
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
 msgid "Tracking Unused Units"
-msgstr ""
+msgstr "Seguiment d'unitats sense usar"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1832,10 +1763,11 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"Pots assegurar-te d'haver usat totes les teues unitats en esta tanda: pulsa "
-"'n' per a seleccionar l'unitat següent, BARRA D'ESPAI per a indicar que ha "
-"acabat.\n"
-"Quan la 'n' ya no seleccione unitats noves, pots finalisar la tanda."
+"Pots assegurar-te que has usat totes les unitats en esta tanda pulsant <b>n</"
+"b> per a passar d'una unitat a una atra. Si pressiones la <b>barra "
+"espayadora</b> pots marcar que l'unitat seleccionada ha finalisat la seua "
+"tanda, açò evitarà que més tart la mogues per accident. Quan <b>n</b> no "
+"seleccione una nova unitat, és segur finalisar la teua tanda."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
@@ -1844,57 +1776,56 @@ msgid ""
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
+"En este escenari, solament deu derrotar al líder orco per a véncer. (Les "
+"condicions per a la victòria d'un escenari es proporcionen en <b>Objectius "
+"de l'escenari</b> en <el <b>Menu Principal</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
 msgid "Victory Conditions"
-msgstr ""
+msgstr "Condicions per a la victòria"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
 msgid "Recruit the Right Unit Types"
-msgstr ""
+msgstr "Reclutar el Tipo d'Unitat Correcte"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"Recorda reclutar més tropes segons les vages necessitant: els arquers són "
-"particularment efectius contra els soldats rasos, els ginets llop i el seu "
-"líder."
+"Recorda reclutar tropes útils per a la situació. Els arquers són "
+"particularment efectius contra els soldats rasos orcos, els ginets de llop i "
+"contra el líder orco."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
 "doubt the orc leader will let you use his!"
 msgstr ""
-"Queda't prop del castell: necessites estar en la torre per a reclutar més "
-"unitats, ¡i dubte que el líder orc te 'preste' la seua!"
+"¡Permaneix prop del torrelló! ¡Necessitaràs estar en un torrelló per a "
+"reclutar més unitats, i dubte que el líder orco et permeta usar el seu!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1277
-#, fuzzy
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
-"¡El seu líder s'ha traslladat a aquella aldea! No és tan estúpit com "
-"pensava: cada tanda es cura i dona bona defensa."
+"¡El seu líder s'ha mogut ad eixe llogaret! No és tan estúpit com vaig "
+"pensar. El llogaret el sana cada tanda i li proporciona una bona defensa."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1288
-#, fuzzy
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"¡Aquella unitat ha capturat una de les nostres aldees! Seria molt "
-"recomanable traure-la: cada tanda la cura i li dona bona defensa."
+"¡Eixa unitat ha capturat el nostre llogaret! Serà millor que el tragues "
+"d'ahí; li sana per cada tanda i li proporciona una bona defensa."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1300
@@ -1902,178 +1833,167 @@ msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
-"¡Usar-me per a atacar és arriscat! Puc alentir a l'enemic ab el meu atac a "
-"distància, pero espere que tingues un plan B si falle."
+"¡Usar-me per a atacar és arriscat! ¡Puc ralentisar a l'adversari en el meu "
+"atac a distància, pero espere que tingues un pla si falle!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1336
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1352
-#, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
 "carefully!"
 msgstr ""
-"¡Estàs a punt de matar al seu líder! L'unitat que el mate guanyarà 16 punts "
-"d'experiència, ya que ell és de nivell 2. ¡Tria cuidadosament l'unitat!"
+"¡Estàs prop de matar al seu líder! L'unitat que acabe en ell guanyarà 16 "
+"punts d'experiència perque ell és de nivell 2. ¡Elegix a la teua unitat "
+"cuidadosadament!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1401
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
 msgstr ""
-"Trobarem a faltar a $deadguy.user_description|, que tenia $deadguy."
-"experience punts d'experiència, és dir, hauria ascendit pronte al nivell 2."
+"Trobarem a faltar a $deadguy.name| perque tenia $deadguy.experience punts "
+"d'experiència. Podria haver pujat al segon nivell pronte."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1404
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
 msgstr ""
-"Trobarem a faltar a $deadguy.user_description|, que tenia $deadguy."
-"experience punts d'experiència, és dir, hauria ascendit pronte al nivell 2."
+"Trobarem a faltar a $deadguy.name| perque tenia $deadguy.experience punts "
+"d'experiència, hauria pogut pujar al segon nivell pronte."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr ""
-"Trobarem a faltar a $deadguy.user_description|, pero ¡millor no perdre a les "
-"tropes experimentades!"
+"Trobarem a faltar a $deadguy.name|, ¡pero per lo manco no era una de les "
+"nostres unitats en experiència!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1424
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr ""
-"Trobarem a faltar a $deadguy.user_description|, pero ¡millor no perdre a les "
-"tropes experimentades!"
+"Trobarem a faltar a $deadguy.name|, ¡pero per lo manco no era una de les "
+"nostres unitats més experimentades!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1439
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
-"¡Perdre un sanador danya tot l'eixèrcit! ¡Mantin-los alluntats de l'alcanç "
-"de l'enemic!"
+"¡Perdre a un sanador danya a tota la tropa! ¡Mantín-los llunt de l'alcanç "
+"enemic!"
 
+# Más de lo mismo
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
 msgid "Tracking Enemy Movement"
-msgstr ""
+msgstr "Seguiment del moviment enemic"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"Pots vore fins a on pot arribar un enemic passant el cursor per damunt "
-"d'ell. També pots vore tots els possibles moviments enemics d'una ullada ab "
-"'Mostrar moviments enemics' del menú 'Accions'."
+"Pots vore fins a on pot aplegar un enemic movent el ratolí per damunt d'ell. "
+"Pots vore tots els possibles moviments de l'enemic al mateix temps usant "
+"<b>Mostrar moviments de l'enemic</b> des del menú <b>Accions</b>."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1444
-#, fuzzy
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
 "name|."
 msgstr ""
 "¡Les unitats de nivell 2 són poderoses, pero no invulnerables! Adeu, "
-"$deadguy.user_description|."
+"$deadguy.name|."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1459
-#, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
-"Espai ab el líder: ¡pot causar 36 punts de dany de nit! Ataca'l ab moltes "
-"unitats al mateix temps durant el dia."
+"Vés en conte en el líder orco: ¡pot fer 36 punts de mal de nit! Ataca-li en "
+"moltes unitats al mateix temps durant el dia."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1479
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"¡Pujar de nivell m'ha curat totalment!\n"
-"Sempre tinc un 60% de possibilitats d'encertar ab el meu arc, i 9 punts de "
-"dany en cadascun dels quatre atacs. Usa'm per a eliminar unitats esquives."
+"¡Pujar un nivell m'ha sanat per complet!\n"
+"Sempre tinc un 60% de possibilitats de colpejar usant la meua habilitat de "
+"<i>tirador</i>, i faig 9 punts de mal per cadascun dels 4 atacs. Usa'm per a "
+"derrotar les unitats difícils de colpejar."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1488
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"¡Pujar de nivell m'ha curat totalment!\n"
-"Sempre tinc un 60% de possibilitats d'encertar ab el meu arc, i 9 punts de "
-"dany en cadascun dels quatre atacs. Usa'm per a eliminar unitats esquives."
+"¡Pujar un nivell m'ha sanat per complet!\n"
+"Sempre tinc un 60% de possibilitats de colpejar usant la meua habilitat de "
+"<i>tirador</i>, i faig 9 punts de mal per cadascun dels 4 atacs. Usa'm per a "
+"derrotar les unitats difícils de colpejar."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1504
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: <i>Ambush</"
 "i>. I can hide in forests where enemies can only see me if they are right "
 "next to me."
 msgstr ""
-"¡Pujar de nivell m'ha curat totalment!\n"
-"Soc hàbil ab l'espasa i l'arc, pero tinc una habilitat especial: emboscar. "
-"Puc amagar-me dins del bosc, i llavors els enemics només poden vore'm si "
-"estan al meu costat."
+"¡Pujar un nivell m'ha sanat per complet!\n"
+"Soc bo tant en l'arc com en l'espasa, i tinc una habilitat especial: "
+"<i>Emboscar</i>. Puc amagar-me en els boscs i els enemics només podran "
+"vore'm si estan just al meu costat."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1518
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: "
 "<i>Leadership</i>. First level units around me do 25% more damage, so "
 "position me carefully."
 msgstr ""
-"¡Pujar de nivell m'ha curat totalment!\n"
-"Soc hàbil ab l'espasa i l'arc, pero tinc una habilitat especial: liderage. "
-"Les unitats de nivell 1 al meu voltant causen un 25% més dany, aixina que "
-"ubica'm ab recapte."
+"¡Pujar un nivell m'ha sanat per complet!\n"
+"Soc bo tant en l'arc com en l'espasa, i tinc una habilitat especial: "
+"<i>Liderage</i>. Les unitats de nivell 1 al meu entorn fan un 25% més de "
+"mal, aixina que posiciona'm cuidadosadament."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1533
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
 msgstr ""
-"¡Pujar de nivell m'ha curat totalment!\n"
-"Soc particularment hàbil ab l'espasa: quatre atacs que causen cadascun 8 de "
-"dany."
+"¡Pujar un nivell m'ha sanat per complet!\n"
+"Soc especialment bo en l'espasa, faig 8 punts de mal per cadascun dels 4 "
+"atacs."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1702
-#, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
-msgstr "¡Has tardat massa, mai nos lliurarem d'estos orcs!"
+msgstr "¡Has tardat massa! ¡Mai nos desfarem d'estos orcos!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1725
-#, fuzzy
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
@@ -2081,11 +2001,11 @@ msgid ""
 "was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
 "Delfador are characters from <i>Heir to the Throne</i>."
 msgstr ""
-"Has eixit victoriós contra els Orcs. Ara potser vullgues provar alguna de "
-"les campanyes ab un nivell Principiant, com 'La Guàrdia del Sur', 'Una "
-"Història de Dos Germans' o 'Hereu al Tro'. 'La Guàrdia del Sur' ha segut "
-"específicament dissenyada com una campanya per a principiants. D'atra banda, "
-"Konrad, Li'sar i Delfador són personages de la campanya 'Hereu al Tro'."
+"¡Has vençut! Ara, potser vullgues provar una de les campanyes de nivell "
+"principiant, com: <i>La guàrdia del sur</i>, <i>Una incursió orca</i>, <i>Un "
+"conte sobre dos germans</i> o <i>Hereu al tro</i>. <i>La guàrdia del sur</i> "
+"va ser dissenyada específicament com una campanya per a principiants. "
+"Konrad, Li’sar i Delfador són personages de <i>Hereu al tro</i>."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -2096,15 +2016,14 @@ msgstr "Lluitador"
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
-#, fuzzy
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Jóvens i descarats, els lluitadors lluiten ab l'espasa, i són vulnerables "
-"als atacs enemics. No obstant, tenen el potencial per a convertir-se algun "
-"dia en grans lluitadors."
+"Jòvens i inexperts, els lluitadors són habilidosos en espases i són "
+"vulnerables als atacs enemics. No obstant, tenen el potencial per a "
+"convertir-se en grans guerrers algun dia."
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighter.cfg:23
@@ -2114,11 +2033,10 @@ msgstr "espasa"
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
-msgstr "Guerrera"
+msgstr "Lluitadora"
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:24
-#, fuzzy
 msgid "saber"
 msgstr "sabre"
 
@@ -2128,176 +2046,13 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
-"Els estaferms s'utilisen per a practicar esgrima i justes. Seria "
-"extremadament rar ser atacat per un."
+"Els estaferms s'usen per a practicar esgrima i justar. Seria extremadament "
+"inusual ser atacat per un."
 
 #. [attack]: type=impact
 #: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
-msgstr "mall (maça ab cadenes)"
+msgstr "mangual"
 
 #~ msgid "Do you want to keep practicing?"
-#~ msgstr "¿Vols continuar practicant?"
-
-#~ msgid "Wesnoth Tutorial"
-#~ msgstr "Tutorial de Wesnoth"
-
-#~ msgid ""
-#~ "\n"
-#~ "For this tutorial, you are playing Konrad. "
-#~ msgstr ""
-#~ "\n"
-#~ "En este tutorial seràs Konrad. "
-
-#~ msgid ""
-#~ "\n"
-#~ "For this tutorial, you are playing Li’sar. "
-#~ msgstr ""
-#~ "\n"
-#~ "En este tutorial seràs Li'sar. "
-
-#~ msgid "HERE"
-#~ msgstr "ACÍ"
-
-#~ msgid "Click on the End Turn button"
-#~ msgstr "Pulsa el botó \"Fi de la tanda\""
-
-#, fuzzy
-#~ msgid ""
-#~ " Now, Konrad, I will leave you with more dummies to practice on! After "
-#~ "that, we have real work to do..."
-#~ msgstr ""
-#~ "Ara, Konrad, ¡et deixe ab més ninots per a que practiques! Després d'açò, "
-#~ "tindrem faena de veres..."
-
-#, fuzzy
-#~ msgid ""
-#~ " Now, Li’sar, I will leave you with more dummies to practice on! After "
-#~ "that, we have real work to do..."
-#~ msgstr ""
-#~ "Ara, Li'sar, ¡et deixe ab més ninots per a que practiques! Després d'açò, "
-#~ "tindrem faena de veres..."
-
-#~ msgid "SHALLOW"
-#~ msgstr "AIGÜES BAIXES"
-
-#~ msgid "DEEP"
-#~ msgstr "AIGÜES FONDES"
-
-#, fuzzy
-#~ msgid ""
-#~ "Attack the orc with an Archer\n"
-#~ "(move mouse over units to see description on right)"
-#~ msgstr ""
-#~ "Ataca a l'orc ab un arquer (meneja el ratolí per damunt de les unitats "
-#~ "per a vore la descripció a la dreta)"
-
-#, fuzzy
-#~ msgid ""
-#~ "You only need to defeat the leader to win (see <b>Main Menu</b>-"
-#~ "><b>Objectives</b>)."
-#~ msgstr ""
-#~ "Només cal que destruïxques al líder per a véncer: veges el Menú principal-"
-#~ ">Objectius."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3–5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un "
-#~ "atac cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos "
-#~ "(3-5). L'atac a distància era més segur.\n"
-#~ "Finalisa la teua tanda i torna a atacar."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3–5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "El teu elf ha usat una espasa (5-4, o 5 de dany i 4 atacs), que és un "
-#~ "atac cos a cos, aixina que l'estaferm s'ha defés ab el seu atac cos a cos "
-#~ "(3-5).\n"
-#~ "Deuries ordenar a l'atre elf que use l'arc."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "El teu elf ha usat l'arc, que és un atac a distància (3-3, o 3 de dany i "
-#~ "3 atacs). L'estaferm no té atac a distància, només un cos a cos, aixina "
-#~ "que no ha pogut defendre's.\n"
-#~ "Finalisa la teua tanda i torna a atacar."
-
-#~ msgid "Turns run out"
-#~ msgstr "Fi de les tandes"
-
-#~ msgid "No! I said recruit an Elvish ARCHER! Now try again..."
-#~ msgstr ""
-#~ "¡No! ¡Havia dit que reclutares a un ARQUER elf! Torna-ho a intentar..."
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Galdrad"
-
-#~ msgid ""
-#~ "Hello translators! Tutorial is meant to be a little funny at the start, "
-#~ "welcoming new players. Please keep friendly fun feeling! Any questions "
-#~ "email rusty@rustcorp.com.au!"
-#~ msgstr ""
-#~ "¡Hola traductors! El tutorial està pensat per a ser divertit per als que "
-#~ "comencen, donant aixina la benvinguda als nous jugadors. ¡Per favor, "
-#~ "mantingau el to distés i divertit! ¡Per a qualsevol pregunta escriviu-me "
-#~ "a \"rusty@rustcorp.com.au\"!"
-
-#~ msgid "*Galdrad"
-#~ msgstr "*Galdrad"
-
-#~ msgid "Elder Mage"
-#~ msgstr "Mac ancià"
-
-#, fuzzy
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power diminished from wearying "
-#~ "years of battle. Nevertheless, they remain feared on the battlefield for "
-#~ "their powerful lightning bolts."
-#~ msgstr ""
-#~ "Abans un dels grans, el mac ancià ha vist els seus poders minvats del "
-#~ "desgast d'anys de batalles. No obstant, seguixen sent temuts en el camp "
-#~ "de batalla pels seus potents rellamps."
-
-#~ msgid "staff"
-#~ msgstr "bastó"
-
-#~ msgid "lightning"
-#~ msgstr "rellamp"
-
-#~ msgid ""
-#~ "\n"
-#~ "*Left click to continue..."
-#~ msgstr ""
-#~ "\n"
-#~ "*Pulsa el botó esquerre o qualsevol tecla per a continuar..."
-
-#, fuzzy
-#~ msgid "Recruit two Elvish Archers in tiles to your east"
-#~ msgstr "Recluta a dos arquers elfs en les caselles a l'oest teu"
-
-#~ msgid "Right click on the tile south of you and recall $recall_name1"
-#~ msgstr ""
-#~ "Fes clic dret en la casella al sur de tu i reincorpora a $recall_name1"
-
-#~ msgid "impact"
-#~ msgstr "impacta"
-
-#~ msgid "fire"
-#~ msgstr "foc"
-
-#~ msgid "blade"
-#~ msgstr "talla"
+#~ msgstr "¿Quieres seguir practicando?"
