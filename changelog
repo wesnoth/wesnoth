@@ -13,6 +13,8 @@ Version 1.12.5+dev:
      1.11.16 and 1.12.3.
    * Fixed MP lobby games list coming up empty when Invert is checked while
      Apply Filter is not (bug #23117).
+   * Fixed Observers icon appearing behind other top bar items in MP games on
+     horizontal UI resolutions < 1024 (bug #24455).
  * Miscellaneous and bug fixes:
    * Revert all updates to hot-key handling which broke letter-based short-cuts
      on non-US keyboard layouts, where characters are in different key
