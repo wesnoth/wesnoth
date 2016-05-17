@@ -18,6 +18,11 @@ Version 1.12.5+dev:
    * Fixed Observers icon appearing behind other top bar items in MP games on
      horizontal UI resolutions < 1024 (bug #24455).
 
+ * Miscellaneous and bug fixes:
+   * Revert all updates to hot-key handling which broke letter-based short-cuts
+     on non-US keyboard layouts, where characters are in different key
+     locations (bug #24186).
+
 
 Version 1.12.5:
  * Campaigns:
