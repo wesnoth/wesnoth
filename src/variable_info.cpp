@@ -373,7 +373,7 @@ namespace {
 		replace_range_h(std::vector<config>& source) : datasource_(source) { }
 		result_type operator()(config& child, const std::string& key, int startindex, int endindex) const
 		{
-			assert(startindex <= endindex);
+			assert(endindex - startindex >= 0);
 			if (endindex > 0)
 			{
 				//NOTE: currently this is nonly called from as_range_visitor_base<vit_create_if_not_existent>
