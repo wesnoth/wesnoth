@@ -32,8 +32,8 @@ Version 1.12.5+dev:
    * Fixed possible assertion failures in multiplayer.
    * Fixed false positive OOS messages in replay when replaying games from an older
      Wesnoth version.
+   * Fixed saving the game during a replay creating corrupt saves (bug #23310).
    * Fixed unit test compilation against Boost 1.60 and later (bug #24234).
-   * Fix bug #23310 Saving game in replay at turn begin creates corrupt saves
 
 Version 1.12.5:
  * Campaigns:
