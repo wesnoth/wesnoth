@@ -40,9 +40,15 @@ function wml_actions.modify_unit(cfg)
 			if current_tag == "filter" then
 				-- nothing
 			elseif current_tag == "object" or current_tag == "trait" or current_tag == "advancement" then
+				local mod = current_table[2]
+				if mod.delayed_variable_substitution then
+					mod = helper.literal(mod)
+				else
+					mod = helper.parsed(mod)
+				end
 				local unit = wesnoth.get_variable(unit_path)
 				unit = wesnoth.create_unit(unit)
-				wesnoth.add_modification(unit, current_tag, current_table[2])
+				wesnoth.add_modification(unit, current_tag, mod)
 				unit = unit.__cfg;
 				wesnoth.set_variable(unit_path, unit)
 			else
