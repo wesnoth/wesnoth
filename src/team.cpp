@@ -83,6 +83,7 @@ team::team_info::team_info() :
 	team_name(),
 	user_team_name(),
 	side_name(),
+	faction_name(),
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -122,6 +123,7 @@ void team::team_info::read(const config &cfg)
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
+	faction_name = cfg["faction_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -239,6 +241,7 @@ void team::team_info::write(config& cfg) const
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
 	cfg["side_name"] = side_name;
+	cfg["faction_name"] = faction_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
@@ -539,6 +542,11 @@ void team::change_team(const std::string &name, const t_string &user_name)
 	}
 
 	clear_caches();
+}
+
+void team::set_faction_name(const t_string &faction_name)
+{
+        info_.faction_name = faction_name;
 }
 
 void team::clear_caches(){

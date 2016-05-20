@@ -68,6 +68,7 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("flag_icon", t.flag_icon());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+        return_tstring_attrib("faction_name", t.faction_name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
@@ -125,6 +126,7 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
 	modify_bool_attrib("lost", t.set_lost(value));
 	modify_bool_attrib("persistent", t.set_persistent(value));
+        modify_tstring_attrib("faction_name", t.set_faction_name(value));
 
 	if (strcmp(m, "carryover_bonus") == 0) {
 		t.set_carryover_bonus(luaL_checknumber(L, 3));

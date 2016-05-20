@@ -117,6 +117,7 @@ private:
 		std::string team_name;
 		t_string user_team_name;
 		t_string side_name;
+		t_string faction_name;
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
@@ -295,6 +296,9 @@ public:
 	const std::string& team_name() const { return info_.team_name; }
 	const t_string &user_team_name() const { return info_.user_team_name; }
 	void change_team(const std::string &name, const t_string &user_name);
+
+	const t_string &faction_name() const { return info_.faction_name; }
+	void  set_faction_name(const t_string &faction_name);
 
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }
