@@ -292,9 +292,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			dlg.show(resources::screen->video());
 			action = dlg.selected_index();
 
-			// If esc was pressed, default to replace with local player
+			// If esc was pressed, default to setting side to idle
 			if (action == -1) {
-				action = control_change_options + 1;
+				action = control_change_options + 2;
 			}
 		} else {
 			// Always set leaving side to idle if in linger mode and there is no next scenario
