@@ -68,6 +68,8 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("flag_icon", t.flag_icon());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+    return_string_attrib("faction", t.faction());
+    return_tstring_attrib("faction_name", t.faction_name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
@@ -108,7 +110,7 @@ static int impl_side_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
-	//maybe add a setterf for save_id too?
+	//maybe add a setter for save_id too?
 	modify_int_attrib("village_gold", t.set_village_gold(value));
 	modify_int_attrib("village_support", t.set_village_support(value));
 	modify_int_attrib("recall_cost", t.set_recall_cost(value));

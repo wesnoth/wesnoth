@@ -83,6 +83,8 @@ team::team_info::team_info() :
 	team_name(),
 	user_team_name(),
 	side_name(),
+    faction(),
+    faction_name(),
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -122,6 +124,8 @@ void team::team_info::read(const config &cfg)
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
+	faction = cfg["faction"].str();
+	faction_name = cfg["faction_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -147,6 +151,7 @@ void team::team_info::read(const config &cfg)
 	carryover_gold = cfg["carryover_gold"].to_int(0);
 	variables = cfg.child_or_empty("variables");
 	is_local = cfg["is_local"].to_bool(true);
+
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
@@ -239,6 +244,8 @@ void team::team_info::write(config& cfg) const
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
 	cfg["side_name"] = side_name;
+	cfg["faction"] = faction;
+	cfg["faction_name"] = faction_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
