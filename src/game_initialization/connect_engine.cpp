@@ -988,7 +988,15 @@ config side_engine::new_config() const
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
 		res["faction_name"] = faction["name"];
+<<<<<<< HEAD
+<<<<<<< HEAD
 		res["faction_id"] = faction["id"];
+=======
+		res["faction"] = faction["id"];
+>>>>>>> f43692f... Make the multiplayer faction accessible via Lua and simplified Hornshark
+=======
+		res["faction_id"] = faction["id"];
+>>>>>>> a8ceb2e... Whoops, forgot the fixed file ...
 		faction.remove_attributes("id", "name", "image", "gender", "type");
 		res.append(faction);
 	}

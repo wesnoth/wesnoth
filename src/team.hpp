@@ -117,8 +117,18 @@ private:
 		std::string team_name;
 		t_string user_team_name;
 		t_string side_name;
+<<<<<<< HEAD
+<<<<<<< HEAD
 		std::string faction;
 		t_string faction_name;
+=======
+        std::string faction;
+        t_string faction_name;
+>>>>>>> f43692f... Make the multiplayer faction accessible via Lua and simplified Hornshark
+=======
+		std::string faction;
+		t_string faction_name;
+>>>>>>> 7910af6... fixed indention
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
@@ -305,8 +315,18 @@ public:
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
 	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name.str(); }
+<<<<<<< HEAD
+<<<<<<< HEAD
 	const std::string& faction() const { return info_.faction; }
 	const t_string& faction_name() const { return info_.faction_name; }
+=======
+    const std::string& faction() const { return info_.faction; }
+    const t_string& faction_name() const { return info_.faction_name; }
+>>>>>>> f43692f... Make the multiplayer faction accessible via Lua and simplified Hornshark
+=======
+	const std::string& faction() const { return info_.faction; }
+	const t_string& faction_name() const { return info_.faction_name; }
+>>>>>>> 7910af6... fixed indention
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
 	bool shrouded(const map_location& loc) const;
