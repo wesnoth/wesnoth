@@ -124,7 +124,7 @@ void team::team_info::read(const config &cfg)
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
-	faction = cfg["faction"].str();
+	faction = cfg["faction_id"].str();
 	faction_name = cfg["faction_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
@@ -244,7 +244,7 @@ void team::team_info::write(config& cfg) const
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
 	cfg["side_name"] = side_name;
-	cfg["faction"] = faction;
+	cfg["faction_id"] = faction;
 	cfg["faction_name"] = faction_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
