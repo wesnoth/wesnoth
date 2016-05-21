@@ -991,7 +991,7 @@ config side_engine::new_config() const
 		res["faction_id"] = faction["id"];
 		faction.remove_attributes("id", "name", "image", "gender", "type");
 		res.append(faction);
-}
+	}
 
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;

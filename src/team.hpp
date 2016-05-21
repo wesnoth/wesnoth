@@ -117,8 +117,8 @@ private:
 		std::string team_name;
 		t_string user_team_name;
 		t_string side_name;
-        std::string faction;
-        t_string faction_name;
+		std::string faction;
+		t_string faction_name;
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
@@ -305,8 +305,8 @@ public:
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
 	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name.str(); }
-    const std::string& faction() const { return info_.faction; }
-    const t_string& faction_name() const { return info_.faction_name; }
+	const std::string& faction() const { return info_.faction; }
+	const t_string& faction_name() const { return info_.faction_name; }
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
 	bool shrouded(const map_location& loc) const;

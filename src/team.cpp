@@ -83,8 +83,8 @@ team::team_info::team_info() :
 	team_name(),
 	user_team_name(),
 	side_name(),
-    faction(),
-    faction_name(),
+	faction(),
+	faction_name(),
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -151,7 +151,6 @@ void team::team_info::read(const config &cfg)
 	carryover_gold = cfg["carryover_gold"].to_int(0);
 	variables = cfg.child_or_empty("variables");
 	is_local = cfg["is_local"].to_bool(true);
-
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
