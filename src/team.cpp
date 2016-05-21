@@ -83,6 +83,18 @@ team::team_info::team_info() :
 	team_name(),
 	user_team_name(),
 	side_name(),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	faction(),
+	faction_name(),
+=======
+    faction(),
+    faction_name(),
+>>>>>>> f43692f... Make the multiplayer faction accessible via Lua and simplified Hornshark
+=======
+	faction(),
+	faction_name(),
+>>>>>>> 7910af6... fixed indention
 	save_id(),
 	current_player(),
 	countdown_time(),
@@ -122,6 +134,16 @@ void team::team_info::read(const config &cfg)
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	faction = cfg["faction_id"].str();
+=======
+	faction = cfg["faction"].str();
+>>>>>>> f43692f... Make the multiplayer faction accessible via Lua and simplified Hornshark
+=======
+	faction = cfg["faction_id"].str();
+>>>>>>> a8ceb2e... Whoops, forgot the fixed file ...
+	faction_name = cfg["faction_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -239,6 +261,16 @@ void team::team_info::write(config& cfg) const
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
 	cfg["side_name"] = side_name;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cfg["faction_id"] = faction;
+=======
+	cfg["faction"] = faction;
+>>>>>>> f43692f... Make the multiplayer faction accessible via Lua and simplified Hornshark
+=======
+	cfg["faction_id"] = faction;
+>>>>>>> a8ceb2e... Whoops, forgot the fixed file ...
+	cfg["faction_name"] = faction_name;
 	cfg["save_id"] = save_id;
 	cfg["current_player"] = current_player;
 	cfg["flag"] = flag;
