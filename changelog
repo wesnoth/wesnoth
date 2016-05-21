@@ -170,10 +170,12 @@ Version 1.13.4+dev:
      * abilities - list of the IDs of all abilities
    * Additional fields in table returned by wesnoth.get_terrain_info:
      * icon, editor_image, light
-   * Additional fields in unit type proxu:
+   * Additional fields in unit type proxy:
      * race, id, alignment
      * attacks, which returns the same thing as unit.attacks
      * abilities, same as unit.abilities
+   * Additional field in side proxy:
+     * faction (read-only), faction_name (read-only)
    * LuaAI:
      * The table returned by check_*() now has a "result" field which
        gives a description of the action's result; similar to "status"
@@ -706,6 +708,7 @@ Version 1.13.1:
    * MP campaigns now behave more like single-player campaigns.
    * Various fixes in the MP game setup screens (bugs #23641, #23509, #23496,
      #23462).
+   * Hornshark Island: simplified multiplayer faction determination
  * Units:
    * Fixed the Shuja not having the default AMLA.
  * User interface:

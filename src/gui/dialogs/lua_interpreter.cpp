@@ -40,7 +40,7 @@
 #include "text.hpp"
 
 #include <sstream>
-#include <string>
+#include <cstring>
 #include <vector>
 #include "utils/functional.hpp"
 #include <boost/scoped_ptr.hpp>
