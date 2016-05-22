@@ -21,6 +21,7 @@
 #include "editor/action/action_village.hpp"
 
 #include "editor/map/map_context.hpp"
+#include "team.hpp"
 
 namespace editor {
 

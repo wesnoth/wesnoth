@@ -18,12 +18,11 @@
 #include "map/location.hpp"
 #include "font.hpp"
 #include "tstring.hpp"
-#include "team.hpp"
 
 class config;
 class display;
 class display_context;
-//class team;
+class team;
 class terrain_label;
 
 

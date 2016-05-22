@@ -20,6 +20,7 @@
 #include "map/label.hpp"
 #include "mp_game_settings.hpp"
 #include "sound_music_track.hpp"
+#include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/map.hpp"
 #include "overlay.hpp"
