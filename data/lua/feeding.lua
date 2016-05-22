@@ -2,25 +2,7 @@
 local helper = wesnoth.require("lua/helper.lua")
 local _ = wesnoth.textdomain 'wesnoth-help'
 local T = helper.set_wml_tag_metatable {}
-
--- Code taken form 2p_dark_forecast.lua
--- TODO: maybe put it in a place where everyone can use it?
-local event_handlers = {}
-local old_on_event = wesnoth.game_events.on_event or function(eventname) end
-wesnoth.game_events.on_event = function(eventname)
-	for k,v in pairs(event_handlers[eventname] or {}) do
-		v()
-	end
-	old_on_event(eventname)
-end
-
-local function on_event(eventname, handler)
-	eventname = string.gsub(eventname, " ", "_")
-	event_handlers[eventname] = event_handlers[eventname] or {}
-	table.insert(event_handlers[eventname], handler)
-end
--- end code taken from dark forecast.
-
+local on_event = wesnoth.require("lua/on_event.lua")
 
 -- The feeding event code
 on_event("die", function()

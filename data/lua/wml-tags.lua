@@ -11,7 +11,6 @@ function wesnoth.game_events.on_save()
 	return {}
 end
 
-wesnoth.require "lua/feeding.lua"
 wesnoth.require "lua/wml-flow.lua"
 wesnoth.require "lua/wml/objectives.lua"
 wesnoth.require "lua/wml/items.lua"
