@@ -1165,13 +1165,13 @@ function wml_actions.set_variable(cfg)
 
 		for i, item in ipairs(items) do
 			if type(item) == "table" then -- that's a range
-				for j = item[1], item[2] do
-					idx = idx - 1
-					if idx == 0 then
-						wesnoth.set_variable(name, j)
-						done = true
-						break
-					end
+				local elems = item[2] - item[1] + 1 -- amount of elements in the range, both ends included
+				if elems >= idx then
+					wesnoth.set_variable(name, item[1] + elems - idx)
+					done = true
+					break
+				else
+					idx = idx - elems
 				end
 			else -- that's a single element
 				idx = idx - 1
