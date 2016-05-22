@@ -1001,7 +1001,7 @@ wml_actions.teleport = function(cfg)
 		-- No error if no unit matches.
 		return
 	end
-	wesnoth.teleport(unit, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
+	wesnoth.teleport(unit, cfg.x, cfg.y, cfg.check_passability == false, cfg.clear_shroud ~= false, cfg.animate)
 end
 
 function wml_actions.remove_sound_source(cfg)
