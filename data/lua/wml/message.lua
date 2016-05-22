@@ -78,92 +78,92 @@ local function add_formatting(cfg, text)
 	-- if message text, add formatting
 	if text and cfg then
 		-- add font
-		if cfg.font then
+		if cfg.font and cfg.font ~= '' then
 			formatting = formatting .. " font='" .. cfg.font .. "'"
 		end
 		
 		-- add font_family
-		if cfg.font_family then
+		if cfg.font_family and cfg.font_family ~= '' then
 			formatting = formatting .. " font_family='" .. cfg.font_family .. "'"
 		end
 		
 		-- add font_size
-		if cfg.font_size then
+		if cfg.font_size and cfg.font_size ~= '' then
 			formatting = formatting .. " font_size='" .. cfg.font_size .. "'"
 		end
 		
 		-- font_style
-		if cfg.font_style then
+		if cfg.font_style and cfg.font_style ~= '' then
 			formatting = formatting .. " font_style='" .. cfg.font_style .. "'"
 		end
 		
 		-- font_weight
-		if cfg.font_weight then
+		if cfg.font_weight and cfg.font_weight ~= '' then
 			formatting = formatting .. " font_weight='" .. cfg.font_weight .. "'"
 		end
 		
 		-- font_variant
-		if cfg.font_variant then
+		if cfg.font_variant and cfg.font_variant ~= '' then
 			formatting = formatting .. " font_variant='" .. cfg.font_variant .. "'"
 		end
 		
 		-- font_stretch
-		if cfg.font_stretch then
+		if cfg.font_stretch and cfg.font_stretch ~= '' then
 			formatting = formatting .. " font_stretch='" .. cfg.font_stretch .. "'"
 		end
 		
 		-- add color
-		if cfg.color then
+		if cfg.color and cfg.color ~= '' then
 			formatting = formatting .. " color='" .. get_pango_color(cfg.color) .. "'"
 		end
 		
 		-- bgcolor
-		if cfg.bgcolor then
+		if cfg.bgcolor and cfg.bgcolor ~= '' then
 			formatting = formatting .. " bgcolor='" .. get_pango_color(cfg.bgcolor) .. "'"
 		end
 		
 		-- underline
-		if cfg.underline then
+		if cfg.underline and cfg.underline ~= '' then
 			formatting = formatting .. " underline='" .. cfg.underline .. "'"
 		end
 		
 		-- underline_color
-		if cfg.underline_color then
+		if cfg.underline_color and cfg.underline_color ~= '' then
 			formatting = formatting .. " underline_color='" .. get_pango_color(cfg.underline_color) .. "'"
 		end
 		
 		-- rise
-		if cfg.rise then
+		if cfg.rise and cfg.rise ~= '' then
 			formatting = formatting .. " rise='" .. cfg.rise .. "'"
 		end
 		
 		-- strikethrough
-		if cfg.strikethrough then
+		if cfg.strikethrough and tostring(cfg.strikethrough) ~= '' then
 			formatting = formatting .. " strikethrough='" .. tostring(cfg.strikethrough) .. "'"
 		end
 		
 		-- strikethrough_color
-		if cfg.strikethrough_color then
+		if cfg.strikethrough_color and cfg.strikethrough_color ~= '' then
 			formatting = formatting .. " strikethrough_color='" .. get_pango_color(cfg.strikethrough_color) .. "'"
 		end
 		
 		-- fallback
-		if cfg.fallback then
+		if cfg.fallback and tostring(cfg.fallback) ~= '' then
 			formatting = formatting .. " fallback='" .. tostring(cfg.fallback) .. "'"
 		end
 		
 		-- letter_spacing
-		if cfg.letter_spacing then
+		if cfg.letter_spacing and cfg.letter_spacing ~= '' then
 			formatting = formatting .. " letter_spacing='" .. cfg.letter_spacing .. "'"
 		end
 		
 		-- gravity
-		if cfg.gravity then
+		if cfg.gravity and cfg.gravity ~= '' then
 			formatting = formatting .. " gravity='" .. cfg.gravity .. "'"
 		end
 		
 		-- gravity_hint
-		if cfg.gravity_hint then
+		if cfg.gravity_hint and cfg.gravity_hint ~= '' then
 			formatting = formatting .. " gravity_hint='" .. cfg.gravity_hint .. "'"
 		end
 		
