@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 20:00+0300\n"
-"PO-Revision-Date: 2016-05-11 11:56+0000\n"
-"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
+"PO-Revision-Date: 2016-05-17 11:27+0000\n"
+"Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -3260,7 +3260,7 @@ msgstr ""
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "Lato"
-msgstr ""
+msgstr "Lato"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:12
@@ -4621,10 +4621,8 @@ msgid "addon_type^MP modification"
 msgstr "Modifica MG"
 
 #: src/addon/info.cpp:176
-#, fuzzy
-#| msgid "addon_type^Resources"
 msgid "addon_type^Core"
-msgstr "Dati core"
+msgstr "Nucleo"
 
 #: src/addon/info.cpp:178
 msgid "addon_type^Resources"
@@ -5471,7 +5469,6 @@ msgstr ""
 
 # verificare assolutamente
 #: src/game_initialization/multiplayer.cpp:209
-#, fuzzy
 msgid "Server-side redirect loop"
 msgstr "Loop di reindirizzamento lato server"
 
@@ -6137,10 +6134,8 @@ msgstr ""
 
 # ricontrolla, perché non me lo ricordo più...
 #: src/game_initialization/multiplayer_lobby.cpp:1194
-#, fuzzy
-#| msgid "No compatible eras found."
 msgid "Incompatible user-made content."
-msgstr "Incompatibilità di contenuti creati da altri utenti."
+msgstr "Contenuti creati da altri utenti incompatibili."
 
 #: src/game_initialization/multiplayer_lobby.cpp:1195
 msgid ""
@@ -6521,15 +6516,11 @@ msgstr "<header>text='Unità appartenenti a questa razza'</header>"
 msgid "corrupted original file"
 msgstr "file originale corrotto"
 
-# dove si trova?
 #: src/help/help_topic_generators.cpp:46
-#, fuzzy
 msgid "Best of"
 msgstr "Il meglio"
 
-# anche questa, dove si trova?
 #: src/help/help_topic_generators.cpp:46
-#, fuzzy
 msgid "Worst of"
 msgstr "Il peggio"
 
@@ -7216,7 +7207,6 @@ msgstr "<fazione>"
 
 # verificare assolutamente
 #: src/menu_events.cpp:1917
-#, fuzzy
 msgid "Query the controller status of a side."
 msgstr "Interroga lo stato controllore di una fazione."
 
@@ -7596,7 +7586,7 @@ msgstr "Posizione non valida"
 
 #: src/menu_events.cpp:3057 src/menu_events.cpp:3060
 msgid "wfl"
-msgstr ""
+msgstr "wfl"
 
 #: src/menu_events.cpp:3066 src/menu_events.cpp:3094
 msgid "prompt^Command:"
@@ -8577,11 +8567,9 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1757
-#, fuzzy
-#| msgid "moves"
 msgid "move"
 msgid_plural "moves"
-msgstr[0] "mosse"
+msgstr[0] "mossa"
 msgstr[1] "mosse"
 
 #: src/units/unit.cpp:1763
