@@ -17,7 +17,7 @@
 
 #include "config.hpp"
 #include "utils/name_generator.hpp"
-#include <boost/smart_ptr/shared_ptr.hpp>
+#include <memory>
 
 class unit_race
 {
@@ -59,7 +59,7 @@ private:
 	t_string plural_name_;
 	t_string description_;
 	unsigned int ntraits_;
-	boost::shared_ptr<name_generator> name_generator_[NUM_GENDERS];
+	std::shared_ptr<name_generator> name_generator_[NUM_GENDERS];
 
 	config::const_child_itors traits_;
 	config::const_child_itors topics_;

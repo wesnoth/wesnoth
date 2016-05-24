@@ -130,6 +130,13 @@ markov_generator::markov_generator(const std::vector<std::string>& items, size_t
 {
 }
 
+std::string markov_generator::generate(const std::map<std::string,std::string>& variables) const
+{
+	//variables are not supported in the markov-based generator
+	UNUSED(variables);
+	return generate();
+}
+
 std::string markov_generator::generate() const
 {
 	ucs4::string name = markov_generate_name(prefixes_, chain_size_, max_len_);

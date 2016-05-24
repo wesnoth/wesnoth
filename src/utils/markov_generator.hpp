@@ -17,7 +17,6 @@
 
 #include "serialization/unicode_types.hpp"
 #include "utils/name_generator.hpp"
-#include <map>
 
 typedef std::map<ucs4::string, ucs4::string> markov_prefix_map;
 
@@ -27,6 +26,7 @@ class markov_generator : public name_generator {
 public:
 	markov_generator(const std::vector<std::string>& items, size_t chain_size, size_t max_len);
 	std::string generate() const override;
+	std::string generate(const std::map<std::string,std::string>& variables) const override;
 };
 
 #endif

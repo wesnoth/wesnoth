@@ -986,6 +986,7 @@ set(wesnoth-main_SRC
 	utils/sha1.cpp
 	utils/context_free_grammar_generator.cpp
 	utils/markov_generator.cpp
+	utils/name_generator_factory.cpp
 	variable.cpp
 	variable_info.cpp
 	whiteboard/action.cpp
