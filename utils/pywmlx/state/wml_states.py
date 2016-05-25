@@ -135,21 +135,37 @@ class WmlStr02:
         self.iffail = 'wml_tag'
     
     def run(self, xline, lineno, match):
+        # if will ever happen 'wmlstr02 assertion error' than you could
+        # turn 'mydebug' to 'True' to inspect what exactly happened.
+        # However this should be never necessary
+        mydebug = False
         _nextstate = 'wml_idle'
         loc_translatable = True
         loc_multiline = False
         loc_string = None
-        if match.group(1):
+        # match group(1) exists, so it is a single line string
+        # (group(2) will not exist, than)
+        if match.group(1) is not None:
             loc_multiline = False
             loc_string = match.group(1)
             xline = xline [ match.end(): ]
-        elif match.group(2):
+        # match.group(2) exists, so it is a multi-line string
+        # (group(1) will not exist, than)
+        elif match.group(2) is not None:
             loc_multiline = True
             loc_string = match.group(2)
             _nextstate = 'wml_str20'
             xline = None
         else:
-            wmlerr('wmlxgettext python sources', 'wmlstr02 assertion error\n'
+            if mydebug:
+                err_message = ("wmlstr02 assertion error (DEBUGGING)\n" +
+                               'g1: ' + str(match.group(1)) + '\n' +
+                               'g2: ' + str(match.group(2)) )
+                finfo = pywmlx.nodemanip.fileref + ":" + str(lineno)
+                wmlerr(finfo, err_message)
+            else:
+                wmlerr('wmlxgettext python sources', 
+                   'wmlstr02 assertion error\n'
                    'please report a bug if you encounter this error message')    
         pywmlx.state.machine._pending_wmlstring = (
             pywmlx.state.machine.PendingWmlString( 
