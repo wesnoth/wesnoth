@@ -89,7 +89,7 @@ void tunit_recruit::pre_show(twindow& window)
 			}
 		}
 
-		const bool can_afford = recruit->cost() < team_.gold() - wb_gold;
+		const bool can_afford = recruit->cost() <= team_.gold() - wb_gold;
 
 		const std::string cost_string = std::to_string(recruit->cost());
 
