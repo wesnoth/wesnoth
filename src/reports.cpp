@@ -1082,9 +1082,9 @@ REPORT_GENERATOR(tod_stats, rc)
 	int current = rc.tod().get_current_time(hex);
 	int i = 0;
 	for (const time_of_day& tod : schedule) {
-		if (i == current) tooltip << "<b>";
+		if (i == current) tooltip << "<big><b>";
 		tooltip << tod.name << "\n";
-		if (i == current) tooltip << "</b>";
+		if (i == current) tooltip << "</b></big>";
 		i++;
 	}
 
