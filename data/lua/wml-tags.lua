@@ -646,7 +646,7 @@ function wml_actions.transform_unit(cfg)
 			local status = helper.get_child( unit.__cfg, "status" )
 
 			unit.experience = unit.max_experience
-			wml_actions.advance_unit(unit, false, false)
+			wesnoth.advance_unit(unit, false, false)
 
 			unit.hitpoints = hitpoints
 			unit.experience = experience
