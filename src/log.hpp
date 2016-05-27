@@ -100,6 +100,7 @@ public:
 
 bool set_log_domain_severity(std::string const &name, int severity);
 bool set_log_domain_severity(std::string const &name, const logger &lg);
+bool get_log_domain_severity(std::string const &name, int &severity);
 std::string list_logdomains(const std::string& filter);
 
 void set_strict_severity(int severity);

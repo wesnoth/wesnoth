@@ -140,6 +140,15 @@ bool set_log_domain_severity(std::string const &name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());
 }
 
+bool get_log_domain_severity(std::string const &name, int &severity)
+{
+	domain_map::iterator it = domains->find(name);
+	if (it == domains->end())
+		return false;
+	severity = it->second;
+	return true;
+}
+
 std::string list_logdomains(const std::string& filter)
 {
 	std::ostringstream res;

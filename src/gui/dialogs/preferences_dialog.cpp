@@ -33,6 +33,7 @@
 // Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
+#include "gui/dialogs/logging.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
 
@@ -1039,6 +1040,8 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
 		if (selected_field == "advanced_graphic_options") {
 			gui2::tadvanced_graphics_options::display(window.video());
+		} else if (selected_field == "logging") {
+			gui2::tlogging::display(window.video());
 		} else if (selected_field == "orb_color") {
 			gui2::tselect_orb_colors::display(window.video());
 		} else {

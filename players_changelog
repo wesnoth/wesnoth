@@ -18,6 +18,10 @@ Version 1.13.4+dev:
      horizontal UI resolutions < 1024 (bug #24455).
    * Fixed ToD schedule progress indicator appearing behind other top bar items
      on vertical UI resolutions < 600.
+   * Added a gui method to activate loggers (Preferences -> Advanced -> Logging)
+     loggers activated in the gui print just like loggers activated in the 
+     command line (i.e. messages appear in the console)
+
 
  * Miscellaneous and bug fixes:
    * Allow changing keybindings for scrolling the map.
