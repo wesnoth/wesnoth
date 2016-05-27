@@ -1024,7 +1024,7 @@ end
 
 local function parse_fog_cfg(cfg)
 	-- Side filter
-	local ssf = helper.child(cfg, "filter_side")
+	local ssf = helper.get_child(cfg, "filter_side")
 	local sides = wesnoth.get_sides(ssf or {})
 	-- Location filter
 	local locs = wesnoth.get_locations(cfg)
@@ -1033,10 +1033,14 @@ end
 
 function wml_actions.lift_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
-	wesnoth.remove_fog(sides, locs, not cfg.multiturn)
+	for i = 1, #sides do
+		wesnoth.remove_fog(sides[i].side, locs, not cfg.multiturn)
+	end
 end
 
 function wml_actions.reset_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
-	wesnoth.add_fog(sides, locs, cfg.reset_view)
+	for i = 1, #sides do
+		wesnoth.add_fog(sides[i].side, locs, cfg.reset_view)
+	end
 end
