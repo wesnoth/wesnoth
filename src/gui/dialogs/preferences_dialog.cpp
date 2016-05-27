@@ -933,7 +933,7 @@ void tpreferences::setup_hotkey_list(twindow& window)
 	hotkey_list.clear();
 	visible_hotkeys_.clear();
 
-	std::string text_feature_on =  "<span color='#0f0'>" + _("&#10003;") + "</span>";
+	std::string text_feature_on =  "<span color='#0f0'>" + _("&#9679;") + "</span>";
 
 	for(const auto& hotkey_item : hotkey::get_hotkey_commands())
 	{

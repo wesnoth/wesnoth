@@ -50,8 +50,8 @@
 namespace
 {
 
-const std::string text_feature_on =  "<span color='#0f0'>&#10003;</span>";
-const std::string text_feature_off = "<span color='#f00'>&#10005;</span>";
+const std::string text_feature_on =  "<span color='#0f0'>&#9679;</span>";
+const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
 
 } // end anonymous namespace
 
