@@ -1066,7 +1066,11 @@ namespace { // Helpers for create_unit()
 	                      unit_race::GENDER gender = unit_race::NUM_GENDERS)
 	{
 		// Create the unit.
-		unit created(u_type, 1, true, gender);
+
+		const int side_num = resources::controller
+				? resources::controller->current_side() : 1;
+
+		unit created(u_type, side_num, true, gender);
 		created.new_turn();
 
 		// Add the unit to the board.
