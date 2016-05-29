@@ -466,8 +466,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 		error_handler("Invalid unit type", true);
 		return false;
 	}
+
+	const int side_num = resources::controller
+			? resources::controller->current_side() : 1;
+
 	// Create the unit.
-	unit created(*u_type, 1, true, gender);
+	unit created(*u_type, side_num, true, gender);
 	created.new_turn();
 
 	// Add the unit to the board.

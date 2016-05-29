@@ -313,6 +313,8 @@ Version 1.13.4+dev:
      by other units being skipped after a unit could not get to its goal.
    * Replace wmlxgettext tool with new python3 implementation by Nobun:
      https://github.com/AncientLich/wmlxgettext-unoff/
+   * Debug commands that create units now do so for the currently controlled
+     side instead of always side 1.
 
 Version 1.13.4:
  * Language and i18n:
