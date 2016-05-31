@@ -41,35 +41,4 @@ void truncate_message(const simple_wml::string_span& str, simple_wml::node& mess
 
 } // end chat_message namespace
 
-bool send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type)
-{
-	if (packet_type.empty())
-		packet_type = data.root().first_child().to_string();
-	try {
-		simple_wml::string_span s = data.output_compressed();
-		network::send_raw_data(s.begin(), s.size(), sock, packet_type);
-	} catch (simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
-		return false;
-	}
-	return true;
-}
-
-void send_to_many(simple_wml::document& data, const connection_vector& vec,
-				  const network::connection exclude, std::string packet_type)
-{
-	if (packet_type.empty())
-		packet_type = data.root().first_child().to_string();
-	try {
-		simple_wml::string_span s = data.output_compressed();
-		for(connection_vector::const_iterator i = vec.begin(); i != vec.end(); ++i) {
-			if (*i != exclude) {
-				network::send_raw_data(s.begin(), s.size(), *i, packet_type);
-			}
-		}
-	} catch (simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
-	}
-}
-
 } //end namespace wesnothd

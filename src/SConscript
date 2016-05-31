@@ -6,7 +6,7 @@ from glob import glob
 
 Import("*")
 
-for env in [test_env, client_env, env]:
+for env in [test_env, campaignd_env, client_env, env]:
     env.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
 #color_range.cpp should be removed, but game_config depends on it.
@@ -40,10 +40,10 @@ libwesnoth_core_sources = Split("""
     version.cpp
     """)
 
-libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
+libwesnoth_core_sources.extend(campaignd_env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
 
-game_config_env = env.Clone()
-filesystem_env = env.Clone()
+game_config_env = campaignd_env.Clone()
+filesystem_env = campaignd_env.Clone()
 if env["PLATFORM"] != "win32":
     game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
     if env['localedirname']:
@@ -83,7 +83,7 @@ else:
         filesystem_env.Object("gettext_boost.cpp")
     ])
 
-libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
+libwesnoth_core = [campaignd_env.Library("wesnoth_core", libwesnoth_core_sources)]
 
 libwesnoth_sources = Split("""
     arrow.cpp
@@ -151,10 +151,10 @@ libwesnoth_sources = Split("""
 
 libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
 
-libwesnothd_sources = Split("""
+dummy_video_sources = Split("""
     tools/dummy_video.cpp
     """)
-libwesnothd = env.Library("wesnothd", libwesnothd_sources)
+libdummy_video = campaignd_env.Library("dummy_video", dummy_video_sources)
 
 libcampaignd_sources = Split("""
     addon/validation.cpp
@@ -287,6 +287,7 @@ wesnoth_sources = Split("""
     fake_unit_manager.cpp
     fake_unit_ptr.cpp
     filechooser.cpp
+    filesystem_sdl.cpp
     floating_textbox.cpp
     formula/callable_objects.cpp
     formula/debugger_fwd.cpp
@@ -614,7 +615,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
     locals()[target] = bin
     Export(target)
 
-for env in [test_env, client_env, env]:
+for env in [test_env, campaignd_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 wesnoth_objects = ["wesnoth.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
@@ -630,46 +631,43 @@ campaignd_sources = Split("""
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
+campaignd_sources.extend(campaignd_env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
+campaignd_env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libdummy_video, libcampaignd], have_server_prereqs)
 
 wesnothd_sources = Split("""
     server/ban.cpp
     server/forum_user_handler.cpp
     server/game.cpp
-    server/input_stream.cpp
     server/metrics.cpp
-    server/player_network.cpp
     server/player.cpp
-    server/proxy.cpp
-    server/room_manager.cpp
-    server/room.cpp
+    server/player_connection.cpp
+    server/player_network.cpp
     server/sample_user_handler.cpp
     server/simple_wml.cpp
     server/user_handler.cpp
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd, env["wesnothd_res"]], have_server_prereqs)
+env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libdummy_video, env["wesnothd_res"]], have_server_prereqs)
 
 cutter_sources = Split("""
     tools/cutter.cpp
     """)
-client_env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
+client_env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libdummy_video, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
 exploder_sources = Split("""
     tools/exploder_composer.cpp
     tools/exploder.cpp
     """)
-client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
+client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libdummy_video, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
 schema_generator_sources = Split("""
     tools/schema/error_container.cpp
     tools/schema/schema_generator.cpp
     tools/schema/sourceparser.cpp
     """)
-client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libwesnothd], have_client_prereqs)
+client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libdummy_video], have_client_prereqs)
 
 test_utils_sources = Split("""
     tests/utils/fake_display.cpp

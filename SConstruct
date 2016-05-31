@@ -371,11 +371,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL(require_version = SDL2_version) & \
             conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
-
 
     if env["libintl"]:
         def have_i18n_prereqs():
@@ -386,7 +384,6 @@ if env["prereqs"]:
 
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "3.3") & \
-        have_sdl_net() & \
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
@@ -399,7 +396,13 @@ if env["prereqs"]:
             or Warning("WARN: Base prerequisites are not met")
 
     env = conf.Finish()
-    client_env = env.Clone()
+
+    campaignd_env = env.Clone()
+    conf = campaignd_env.Configure(**configure_args)
+    have_sdl_net()
+    campaignd_env = conf.Finish()
+
+    client_env = campaignd_env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
         conf.CheckLib("vorbisfile") & \
@@ -490,7 +493,7 @@ if not env['nls']:
 #
 print "---[applying configuration]---"
 
-for env in [test_env, client_env, env]:
+for env in [test_env, campaignd_env, client_env, env]:
     build_root="#/"
     if os.path.isabs(env["build_dir"]):
         build_root = ""
@@ -550,7 +553,7 @@ try:
 except:
     pass
 
-Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env campaignd_env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
@@ -564,7 +567,7 @@ builds = {
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
 
-for env in [test_env, client_env, env]:
+for env in [test_env, campaignd_env, client_env, env]:
     env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
     env.AppendUnique(**builds[build])
     env.Append(CXXFLAGS = Split(os.environ.get('CXXFLAGS', [])), LINKFLAGS = Split(os.environ.get('LDFLAGS', [])))

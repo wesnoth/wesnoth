@@ -772,6 +772,7 @@ set(wesnoth-main_SRC
 	fake_unit_manager.cpp
 	fake_unit_ptr.cpp
 	filechooser.cpp
+	filesystem_sdl.cpp
 	game_initialization/flg_manager.cpp
 	floating_textbox.cpp
 	formula/callable_objects.cpp
@@ -1172,10 +1173,8 @@ set(wesnothd_SRC
 	server/input_stream.cpp
 	server/metrics.cpp
 	server/player.cpp
+	server/player_connection.cpp
 	server/player_network.cpp
-	server/proxy.cpp
-	server/room.cpp
-	server/room_manager.cpp
 	server/server.cpp
 	server/simple_wml.cpp
 	server/user_handler.cpp

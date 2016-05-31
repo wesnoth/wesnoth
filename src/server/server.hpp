@@ -17,42 +17,70 @@
 
 #include "config.hpp"
 #include "user_handler.hpp"
-#include "input_stream.hpp"
 #include "metrics.hpp"
-#include "network.hpp"
 #include "ban.hpp"
 #include "player.hpp"
-#include "room_manager.hpp"
 #include "simple_wml.hpp"
+#include "player_connection.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_array.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+
+#include <boost/asio/signal_set.hpp>
+
+namespace wesnothd
+{
+
 class server
 {
 public:
-	server(int port, const std::string& config_file, size_t min_threads,size_t max_threads);
+	server(int port, bool keep_alive, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
-	void send_error(network::connection sock, const char* msg, const char* error_code ="") const;
-	void send_error(network::connection sock, const std::string &msg, const char* error_code = "") const
-	{
-		send_error(sock, msg.c_str(), error_code);
+	boost::asio::io_service io_service_;
+	boost::asio::ip::tcp::acceptor acceptor_;
+	void serve();
+	void accept_connection(const boost::system::error_code& error, socket_ptr socket);
+
+	union {
+		boost::uint32_t connection_num;
+		char buf[4];
+	} handshake_response_;
+	void serverside_handshake(socket_ptr socket);
+	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<unsigned char> buf);
+
+	void request_version(const boost::system::error_code& error, socket_ptr socket);
+	void handle_version(socket_ptr socket);
+	void read_version(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+
+	void login(socket_ptr socket);
+	void handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void send_password_request(socket_ptr socket, const std::string& msg,
+		const std::string& user, const char* error_code = "", bool force_confirmation = false);
+	
+	void add_player(socket_ptr socket, const wesnothd::player&);
+	void read_from_player(socket_ptr socket);
+	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_lobby(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
+	void handle_query(socket_ptr socket, simple_wml::node& query);
+	void handle_nickserv(socket_ptr socket, simple_wml::node& nickserv);
+	void handle_message(socket_ptr socket, simple_wml::node& message);
+	void handle_create_game(socket_ptr socket, simple_wml::node& create_game);
+	void create_game(player_record& host, simple_wml::node& create_game);
+	void cleanup_game(game*); // deleter for shared_ptr
+	void handle_join_game(socket_ptr socket, simple_wml::node& join);
+	void remove_player(socket_ptr socket);
+
+	void send_to_lobby(simple_wml::document& data, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message_to_lobby(const std::string& message, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr()) const;
+	bool player_is_in_game(socket_ptr socket) const {
+		return bool(player_connections_.find(socket)->get_game());
 	}
 
-	void send_warning(network::connection sock, const char* msg, const char* warning_code ="") const;
-	void send_warning(network::connection sock, const std::string &msg, const char* warning_code = "") const
-	{
-		send_warning(sock, msg.c_str(), warning_code);
-	}
-
-	// The same as send_error(), we just add an extra child to the response
-	// telling the client the chosen username requires a password.
-	void send_password_request(network::connection sock, const std::string& msg,
-			const std::string& user, const char* error_code ="",
-			bool force_confirmation = false);
-
-	const network::manager net_manager_;
-	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
 
 	struct connection_log {
@@ -87,20 +115,23 @@ private:
 	std::deque<login_log> failed_logins_;
 
 	boost::scoped_ptr<user_handler> user_handler_;
-	std::map<network::connection,std::string> seeds_;
+	std::map<long int,std::string> seeds_;
 
-	/** std::map<network::connection,player>. */
-	wesnothd::player_map players_;
-	std::set<network::connection> ghost_players_;
-
-	typedef boost::ptr_vector<wesnothd::game> t_games;
-	t_games games_;
-	std::set<network::connection> not_logged_in_;
-
-	wesnothd::room_manager rooms_;
+	player_connections player_connections_;
+	std::deque<boost::shared_ptr<game>> games() {
+		std::deque<boost::shared_ptr<game>> result;
+		for(const auto& iter : player_connections_.get<game_t>())
+			if(result.empty() || iter.get_game() != result.back())
+				result.push_back(iter.get_game());
+		if(!result.empty() && result.front() == 0)
+			result.pop_front();
+		return result;
+	}
 
 	/** server socket/fifo. */
-	boost::scoped_ptr<input_stream> input_;
+#ifndef _WIN32
+	boost::asio::posix::stream_descriptor input_;
+#endif
 	std::string input_path_;
 
 	const std::string config_file_;
@@ -115,7 +146,6 @@ private:
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
 	std::string admin_passwd_;
-	std::set<network::connection> admins_;
 	std::string motd_;
 	size_t default_max_messages_;
 	size_t default_time_period_;
@@ -155,34 +185,21 @@ private:
 	time_t last_uh_clean_;
 	void clean_user_handler(const time_t& now);
 
-	void process_data(const network::connection sock,
-	                  simple_wml::document& data);
-	void process_login(const network::connection sock,
-	                   simple_wml::document& data);
-
-	/** Handle queries from clients. */
-	void process_query(const network::connection sock,
-	                   simple_wml::node& query);
-
 	/** Process commands from admins and users. */
 	std::string process_command(std::string cmd, std::string issuer_name);
 
-	/** Handle private messages between players. */
-	void process_whisper(const network::connection sock,
-	                     simple_wml::node& whisper) const;
+	void delete_game(int);
 
-	/** Handle nickname registration related requests from clients. */
-	void process_nickserv(const network::connection sock, simple_wml::node& data);
-	void process_data_lobby(const network::connection sock,
-	                        simple_wml::document& data);
-	void process_data_game(const network::connection sock,
-	                       simple_wml::document& data);
-	void delete_game(t_games::iterator game_it);
-
-	void update_game_in_lobby(const wesnothd::game& g, network::connection exclude=0);
+	void update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude=socket_ptr());
 
 	void start_new_server();
 
+	void setup_fifo();
+#ifndef _WIN32
+	void read_from_fifo();
+	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
+	boost::asio::streambuf admin_cmd_;
+#endif
 	void setup_handlers();
 
 	typedef std::function<void(server*, const std::string&, const std::string&, std::string&, std::ostringstream *)> cmd_handler;
@@ -214,6 +231,16 @@ private:
 	void motd_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void searchlog_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+
+	boost::asio::signal_set sighup_;
+	void handle_sighup(const boost::system::error_code& error, int signal_number);
+	boost::asio::signal_set sigs_;
+	void handle_termination(const boost::system::error_code& error, int signal_number);
+
+	boost::asio::deadline_timer timer_;
+	void handle_graceful_timeout(const boost::system::error_code& error);
 };
+
+}
 
 #endif

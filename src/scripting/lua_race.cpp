@@ -20,6 +20,7 @@
 #include "utils/name_generator.hpp"
 
 #include <string>
+#include <string.h>
 
 #include "lua/lua.h"
 #include "lua/lauxlib.h"
