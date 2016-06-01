@@ -27,6 +27,7 @@ class display;
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #endif
+class twesnothd_connection;
 namespace gui2
 {
 
@@ -84,7 +85,7 @@ struct tplayer_list
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info, CVideo& video);
+	tlobby_main(const config& game_config, lobby_info& info, CVideo& video, twesnothd_connection &wesnothd_connection);
 
 	~tlobby_main();
 
@@ -416,6 +417,8 @@ private:
 	bool gamelist_diff_update_;
 
 	CVideo& video_;
+
+	twesnothd_connection &wesnothd_connection_;
 
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;

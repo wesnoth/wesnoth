@@ -582,11 +582,6 @@ void connect::process_network_data(const config& data)
 	}
 }
 
-void connect::process_network_error(network::error& error)
-{
-	engine_.process_network_error(error);
-}
-
 void connect::update_playerlist_state(bool silent)
 {
 	DBG_MP << "updating player list state" << std::endl;

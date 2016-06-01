@@ -28,7 +28,6 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for bad_enum_cast
 #include "map/label.hpp"
-#include "network.hpp"                  // for error
 #include "play_controller.hpp"          // for play_controller
 #include "playturn_network_adapter.hpp"  // for playturn_network_adapter
 #include "preferences.hpp"              // for message_bell
@@ -38,6 +37,7 @@
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "tstring.hpp"                  // for operator==
 #include "util.hpp"                     // for lexical_cast
+#include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"       // for manager
 #include "widgets/button.hpp"           // for button
 
@@ -155,7 +155,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		resources::screen->get_chat_manager().remove_observer(ob["name"]);
 	}
 	else if (cfg.child("leave_game")) {
-		throw network::error("");
+		throw ingame_wesnothd_error("");
 	}
 	else if (const config &turn = cfg.child("turn"))
 	{
@@ -217,13 +217,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (index >= resources::teams->size()) {
 			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
-			throw network::error("");
+			throw ingame_wesnothd_error("");
 		}
 
 		team::CONTROLLER ctrl;
 		if(!ctrl.parse(side_drop_c["controller"])) {
 			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
-			throw network::error("");
+			throw ingame_wesnothd_error("");
 		}
 		
 		if (ctrl == team::CONTROLLER::AI) {
@@ -233,7 +233,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//null controlled side cannot be dropped becasue they aren't controlled by anyone.
 		else if (ctrl != team::CONTROLLER::HUMAN) {
 			ERR_NW << "unknown controller type issued from server on side drop: " << ctrl.to_cstring() << std::endl;
-			throw network::error("");
+			throw ingame_wesnothd_error("");
 		}
 
 		int action = 0;

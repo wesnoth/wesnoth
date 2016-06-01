@@ -17,7 +17,6 @@
 #include "chat_events.hpp"
 #include "floating_label.hpp"
 #include "hotkey/command_executor.hpp"
-#include "network.hpp"
 #include "preferences_display.hpp"
 #include "scripting/plugins/context.hpp"
 #include "widgets/combo.hpp"
@@ -148,12 +147,6 @@ protected:
 	 * behavior for network.
 	 */
 	virtual void process_network_data(const config& data);
-
-	/**
-	 * Processes any pending network error. Called by the public
-	 * process_network() method. Overridden by subclasses.
-	 */
-	virtual void process_network_error(network::error& error);
 
 	/**
 	 * Hides or shows all gui::widget children of this widget. Should be

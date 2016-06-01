@@ -1049,9 +1049,6 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
 		gui2::show_error_message(v, _("Network communication error."));
-	} catch(const network::error& e) {
-		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(v, _("Remote host disconnected."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
 		gui2::show_error_message(v, _("Remote host disconnected."));
@@ -1262,9 +1259,6 @@ bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
 		gui2::show_error_message(v, _("Network communication error."));
-	} catch(const network::error& e) {
-		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(v, _("Remote host disconnected."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
 		gui2::show_error_message(v, _("Remote host disconnected."));

@@ -217,12 +217,8 @@ ui::ui(CVideo& video, twesnothd_connection* wesnothd_connection, const std::stri
 void ui::process_network()
 {
 	config data;
-	try {
-		if(receive_from_server(data)) {
-			process_network_data(data);
-		}
-	} catch(network::error& e) {
-		process_network_error(e);
+	if(receive_from_server(data)) {
+		process_network_data(data);
 	}
 
 	//apply diffs at a set interval
@@ -517,7 +513,7 @@ void ui::process_message(const config& msg, const bool whisper) {
 void ui::process_network_data(const config& data)
 {
 	if (const config &c = data.child("error")) {
-		throw network::error(c["message"]);
+		throw wesnothd_error(c["message"]);
 	} else if (const config &c = data.child("message")) {
 		process_message(c);
 	} else if (const config &c = data.child("whisper")) {
@@ -578,14 +574,6 @@ void ui::process_network_data(const config& data)
 			chat_.update_textbox(chat_textbox_);
 		}
 	}
-}
-
-void ui::process_network_error(network::error& error)
-{
-	ERR_NW << "Caught networking error: " << error.message << std::endl;
-
-	// Default behavior is to re-throw the error. May be overridden.
-	throw error;
 }
 
 void ui::hide_children(bool hide)

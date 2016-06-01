@@ -110,7 +110,6 @@ protected:
 	virtual void hide_children(bool hide = true);
 
 	virtual void process_network_data(const config& data);
-	virtual void process_network_error(network::error& error);
 
 private:
 	connect(const connect&);

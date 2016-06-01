@@ -22,7 +22,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "network.hpp" // ping_timeout
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "settings.hpp"
@@ -168,7 +167,7 @@ manager::manager() :
 		}
 	}
 
-	network::ping_timeout = get_ping_timeout();
+	//network::ping_timeout = get_ping_timeout();
 }
 
 manager::~manager()

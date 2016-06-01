@@ -18,12 +18,11 @@
 #include "game_preferences.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "network.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "wml_exception.hpp"
-
+#include "wesnothd_connection.hpp"
 #include <iterator>
 
 static lg::log_domain log_config("config");
@@ -39,7 +38,7 @@ static lg::log_domain log_lobby("lobby");
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
-lobby_info::lobby_info(const config& game_config)
+lobby_info::lobby_info(const config& game_config, twesnothd_connection& wesnothd_connection)
 	: game_config_(game_config)
 	, gamelist_()
 	, gamelist_initialized_(false)
@@ -53,6 +52,7 @@ lobby_info::lobby_info(const config& game_config)
 	, game_filter_()
 	, game_filter_invert_(false)
 	, games_visibility_()
+	, wesnothd_connection_(wesnothd_connection)
 {
 }
 
@@ -131,7 +131,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	{
 		ERR_LB << "Error while applying the gamelist diff: '" << e.message
 			   << "' Getting a new gamelist.\n";
-		network::send_data(config("refresh_lobby"), 0);
+		wesnothd_connection_.send_data(config("refresh_lobby"));
 		return false;
 	}
 	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
@@ -144,7 +144,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		int game_id = c["id"];
 		if(game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config" << std::endl;
-			network::send_data(config("refresh_lobby"), 0);
+			wesnothd_connection_.send_data(config("refresh_lobby"));
 			return false;
 		}
 		game_info_map::iterator current_i = games_by_id_.find(game_id);
@@ -183,7 +183,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	{
 		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message
 			   << "' Getting a new gamelist.\n";
-		network::send_data(config("refresh_lobby"), 0);
+		wesnothd_connection_.send_data(config("refresh_lobby"));
 		return false;
 	}
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));

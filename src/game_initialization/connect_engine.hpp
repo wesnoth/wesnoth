@@ -75,7 +75,6 @@ public:
 	// Return pair first element specifies whether to leave the game
 	// and second element whether to silently update UI.
 	std::pair<bool, bool> process_network_data(const config& data);
-	void process_network_error(network::error& error);
 
 	// Returns the side which is taken by a given user,
 	// or -1 if none was found.
