@@ -750,19 +750,19 @@ void server::accept_connection(const boost::system::error_code& error, socket_pt
 
 void server::serverside_handshake(socket_ptr socket)
 {
-	boost::shared_array<unsigned char> handshake(new unsigned char[4]);
+	boost::shared_array<char> handshake(new char[4]);
 	async_read(
 		*socket, boost::asio::buffer(handshake.get(), 4),
 		boost::bind(&server::handle_handshake, this, _1, socket, handshake)
 	);
 }
 
-void server::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<unsigned char> handshake)
+void server::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> handshake)
 {
 	if(check_error(error, socket))
 		return;
 
-	if(strcmp((const char*)handshake.get(), "\0\0\0\0") != 0) {
+	if(strcmp(handshake.get(), "\0\0\0\0") != 0) {
 		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
 		return;
 	}
@@ -934,16 +934,16 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 
 				// A password (or hashed password) was provided, however
 				// there is no seed
-				if(seeds_[(long int)socket.get()].empty()) {
+				if(seeds_[reinterpret_cast<long int>(socket.get())].empty()) {
 					send_password_request(socket, "Please try again.", username, MP_NO_SEED_ERROR);
 					return;
 				}
 				// This name is registered and an incorrect password provided
-				else if(!(user_handler_->login(username, password, seeds_[(unsigned long)socket.get()]))) {
+				else if(!(user_handler_->login(username, password, seeds_[reinterpret_cast<unsigned long>(socket.get())]))) {
 					const time_t now = time(NULL);
 
 					// Reset the random seed
-					seeds_.erase((unsigned long)socket.get());
+					seeds_.erase(reinterpret_cast<unsigned long>(socket.get()));
 
 					login_log login_ip = login_log(client_address(socket), 0, now);
 					std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
@@ -982,7 +982,7 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 			// This name exists and the password was neither empty nor incorrect
 			registered = true;
 			// Reset the random seed
-			seeds_.erase((long int)socket.get());
+			seeds_.erase(reinterpret_cast<long int>(socket.get()));
 			user_handler_->user_logged_in(username);
 			}
 		}
@@ -1051,7 +1051,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 		return;
 	}
 
-	seeds_[(long int)(socket.get())] = salt;
+	seeds_[reinterpret_cast<long int>(socket.get())] = salt;
 
 	simple_wml::document doc;
 	simple_wml::node& e = doc.root().add_child("error");

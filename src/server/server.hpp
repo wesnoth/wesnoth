@@ -48,7 +48,7 @@ private:
 		char buf[4];
 	} handshake_response_;
 	void serverside_handshake(socket_ptr socket);
-	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<unsigned char> buf);
+	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> buf);
 
 	void request_version(const boost::system::error_code& error, socket_ptr socket);
 	void handle_version(socket_ptr socket);

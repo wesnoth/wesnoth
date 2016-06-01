@@ -398,7 +398,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 			}
 
 #ifdef USE_POLL
-			struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT, 0 };
+			struct pollfd fd = { (reinterpret_cast<_TCPsocket*>(sock))->channel, POLLOUT, 0 };
 			int poll_res;
 			do {
 				poll_res = poll(&fd, 1, 60000);
@@ -780,7 +780,7 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 		for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 			const threading::lock lock(*shard_mutexes[shard]);
 			for(size_t n = 0; n != p_min_threads; ++n) {
-				threading::thread * tmp = new threading::thread(process_queue,(void*)(shard));
+				threading::thread * tmp = new threading::thread(process_queue,reinterpret_cast<void*>(shard));
 				threads[shard][tmp->get_id()] = tmp;
 			}
 		}

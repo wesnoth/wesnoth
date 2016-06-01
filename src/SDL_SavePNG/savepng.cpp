@@ -35,7 +35,7 @@ static void png_error_SDL(png_structp /*ctx*/, png_const_charp str)
 }
 static void png_write_SDL(png_structp png_ptr, png_bytep data, png_size_t length)
 {
-	SDL_RWops *rw = (SDL_RWops*)png_get_io_ptr(png_ptr);
+	SDL_RWops *rw = static_cast<SDL_RWops*>(png_get_io_ptr(png_ptr));
 	SDL_RWwrite(rw, data, sizeof(png_byte), length);
 }
 
@@ -114,7 +114,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	&& (pal = surface->format->palette))
 	{
 		colortype |= PNG_COLOR_MASK_PALETTE;
-		pal_ptr = (png_colorp)malloc(pal->ncolors * sizeof(png_color));
+		pal_ptr = static_cast<png_colorp>(malloc(pal->ncolors * sizeof(png_color)));
 		for (i = 0; i < pal->ncolors; i++) {
 			pal_ptr[i].red   = pal->colors[i].r;
 			pal_ptr[i].green = pal->colors[i].g;
@@ -140,9 +140,9 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	/* Write everything */
 	png_write_info(png_ptr, info_ptr);
 #ifdef USE_ROW_POINTERS
-	row_pointers = (png_bytep*) malloc(sizeof(png_bytep)*surface->h);
+	row_pointers = static_cast<png_bytep*> (malloc(sizeof(png_bytep)*surface->h));
 	for (i = 0; i < surface->h; i++)
-		row_pointers[i] = (png_bytep)(Uint8*)surface->pixels + i * surface->pitch;
+		row_pointers[i] = static_cast<png_bytep>(static_cast<Uint8*>(surface->pixels)) + i * surface->pitch;
 	png_write_image(png_ptr, row_pointers);
 	free(row_pointers);
 #else
