@@ -511,7 +511,7 @@ for env in [test_env, campaignd_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 
         if env['strict']:
-            env.AppendUnique(CCFLAGS = Split("-Werror $(-Wno-unused-local-typedefs$)"))
+            env.AppendUnique(CCFLAGS = Split("-Werror -Wold-style-cast $(-Wno-unused-local-typedefs$)"))
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
