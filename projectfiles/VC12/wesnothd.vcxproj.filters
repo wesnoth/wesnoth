@@ -42,10 +42,10 @@
     <ClCompile Include="..\..\src\server\player.cpp">
       <Filter>Server</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\player_network.cpp">
+    <ClCompile Include="..\..\src\server\player_connection.cpp">
       <Filter>Server</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\proxy.cpp">
+    <ClCompile Include="..\..\src\server\player_network.cpp">
       <Filter>Server</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\server\room.cpp">
@@ -79,9 +79,6 @@
     <ClInclude Include="..\..\src\server\game.hpp">
       <Filter>Server</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\global.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\server\input_stream.hpp">
       <Filter>Server</Filter>
     </ClInclude>
@@ -91,10 +88,10 @@
     <ClInclude Include="..\..\src\server\player.hpp">
       <Filter>Server</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\server\player_network.hpp">
+    <ClInclude Include="..\..\src\server\player_connection.hpp">
       <Filter>Server</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\server\proxy.hpp">
+    <ClInclude Include="..\..\src\server\player_network.hpp">
       <Filter>Server</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\server\room.hpp">
