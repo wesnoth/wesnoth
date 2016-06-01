@@ -239,7 +239,7 @@ void menu_handler::status_table(int selected)
 		}
 		status_table_empty=false;
 
-		const bool known = viewing_team.knows_about_team(n, network::nconnections() > 0);
+		const bool known = viewing_team.knows_about_team(n);
 		const bool enemy = viewing_team.is_enemy(n+1);
 
 		std::stringstream str;
@@ -376,7 +376,7 @@ void menu_handler::scenario_settings_table(int selected)
 			// Add leader image. If it's fogged
 			// show only a random leader image.
 			fogged=viewing_team.fogged(leader->get_location());
-			if (!fogged || viewing_team.knows_about_team(n, network::nconnections() > 0) || game_config::debug) {
+			if (!fogged || viewing_team.knows_about_team(n)) {
 				str << IMAGE_PREFIX << leader->absolute_image();
 				leader_bools.push_back(true);
 			} else {

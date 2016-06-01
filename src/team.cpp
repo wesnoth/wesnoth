@@ -613,7 +613,7 @@ const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<tea
 	return ally_fog_;
 }
 
-bool team::knows_about_team(size_t index, bool is_multiplayer) const
+bool team::knows_about_team(size_t index) const
 {
 	const team& t = (*teams)[index];
 
@@ -626,8 +626,8 @@ bool team::knows_about_team(size_t index, bool is_multiplayer) const
 	// We don't know about enemies
 	if(is_enemy(index+1)) return false;
 
-	// We know our allies in multiplayer
-	if (is_multiplayer) return true;
+	// We know our human allies.
+	if (t.is_human()) return true;
 
 	// We know about allies we're sharing maps with
 	if(share_maps() && t.uses_shroud()) return true;
