@@ -34,7 +34,7 @@ class configure : public mp::ui
 public:
 	///gives the user the option to adjust the passed saved_game
 	///Call get_parameters to finalize;
-	configure(CVideo& v, const config& game_config, chat& c, config& gamelist, saved_game& game, bool local_players_only);
+	configure(CVideo& v, twesnothd_connection* wesnothd_connection, const config& game_config, chat& c, config& gamelist, saved_game& game, bool local_players_only);
 	~configure();
 
 	void get_parameters();

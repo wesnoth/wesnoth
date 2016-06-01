@@ -22,7 +22,7 @@ class unit;
 class unit_map;
 class unit_type;
 class terrain_type;
-
+class twesnothd_connection;
 #include "map/location.hpp"
 #include "construct_dialog.hpp"
 #include "network.hpp"
@@ -137,8 +137,8 @@ private:
 	int side_;
 };
 
-network::connection network_receive_dialog(CVideo& video, const std::string& msg, config& cfg, network::connection connection_num=0);
-network::connection network_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
+bool network_receive_dialog(CVideo& video, const std::string& msg, config& cfg, twesnothd_connection& wesnothd_connection);
+std::unique_ptr<twesnothd_connection> network_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
 
 } //end namespace dialogs
 

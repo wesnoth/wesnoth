@@ -363,10 +363,10 @@ void connect::side::update_controller_ui()
 	}
 }
 
-connect::connect(CVideo& v, const std::string& game_name,
+connect::connect(CVideo& v, twesnothd_connection* wesnothd_connection, const std::string& game_name,
 	const config& game_config, chat& c, config& gamelist,
 	ng::connect_engine& engine) :
-	mp::ui(v, _("Game Lobby: ") + game_name, game_config, c, gamelist),
+	mp::ui(v, wesnothd_connection, _("Game Lobby: ") + game_name, game_config, c, gamelist),
 	ai_algorithms_(),
 	sides_(),
 	engine_(engine),
@@ -470,10 +470,10 @@ void connect::process_event_impl(const process_event_data & data)
 	}
 
 	if (data.quit) {
-		if (network::nconnections() > 0) {
+		if (wesnothd_connection_) {
 			config cfg;
 			cfg.add_child("leave_game");
-			network::send_data(cfg, 0);
+			send_to_server(cfg);
 		}
 
 		set_result(QUIT);
@@ -560,13 +560,12 @@ void connect::layout_children(const SDL_Rect& rect)
 	scroll_pane_.set_location(scroll_pane_rect);
 }
 
-void connect::process_network_data(const config& data,
-	const network::connection sock)
+void connect::process_network_data(const config& data)
 {
-	ui::process_network_data(data, sock);
+	ui::process_network_data(data);
 
 	bool was_able_to_start = engine_.can_start_game();
-	std::pair<bool, bool> result = engine_.process_network_data(data, sock);
+	std::pair<bool, bool> result = engine_.process_network_data(data);
 
 	if (result.first) {
 		set_result(QUIT);

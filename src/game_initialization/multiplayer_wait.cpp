@@ -193,9 +193,9 @@ sdl_handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(CVideo& v, const config& cfg, saved_game& state,
+wait::wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state,
 	mp::chat& c, config& gamelist, const bool first_scenario) :
-	ui(v, _("Game Lobby"), cfg, c, gamelist),
+	ui(v, wesnothd_connection, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(video(), first_scenario ? _("Cancel") : _("Quit")),
 	start_label_(video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
 	game_menu_(video(), std::vector<std::string>(), false, -1, -1, nullptr, &gui::menu::bluebg_style),
@@ -385,7 +385,7 @@ void wait::join_game(bool observe)
 			change["faction"] = flg.current_faction()["id"];
 			change["leader"] = flg.current_leader();
 			change["gender"] = flg.current_gender();
-			network::send_data(faction, 0);
+			send_to_server(faction);
 		}
 
 	}
@@ -429,9 +429,9 @@ void wait::hide_children(bool hide)
 	game_menu_.hide(hide);
 }
 
-void wait::process_network_data(const config& data, const network::connection sock)
+void wait::process_network_data(const config& data)
 {
-	ui::process_network_data(data, sock);
+	ui::process_network_data(data);
 
 	if(!data["message"].empty()) {
 		gui2::show_transient_message(video()
@@ -618,16 +618,17 @@ void wait::generate_menu()
 
 bool wait::download_level_data()
 {
+	assert(wesnothd_connection_);
 	DBG_MP << "download_level_data()\n";
 	if (!first_scenario_) {
 		// Ask for the next scenario data.
-		network::send_data(config("load_next_scenario"), 0);
+		send_to_server(config("load_next_scenario"));
 	}
 	bool has_scenario_and_controllers = false;
 	while (!has_scenario_and_controllers) {
 		config revc;
-		network::connection data_res = dialogs::network_receive_dialog(
-			video(), _("Getting game data..."), revc);
+		bool data_res = dialogs::network_receive_dialog(
+			video(), _("Getting game data..."), revc, *wesnothd_connection_);
 
 		if (!data_res) {
 			DBG_MP << "download_level_data bad results\n";
@@ -654,6 +655,7 @@ bool wait::download_level_data()
 			}
 			has_scenario_and_controllers = true;
 		}
+		
 	}
 
 	DBG_MP << "download_level_data() success.\n";

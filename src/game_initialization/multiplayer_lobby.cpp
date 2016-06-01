@@ -1023,8 +1023,8 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 	return basic_sorter::less(column,row1,row2);
 }
 
-lobby::lobby(CVideo& v, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
-	mp::ui(v, _("Game Lobby"), cfg, c, gamelist),
+lobby::lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
+	mp::ui(v, wesnothd_connection, _("Game Lobby"), cfg, c, gamelist),
 
 	current_turn(0),
 	game_vacant_slots_(),
@@ -1296,7 +1296,7 @@ void lobby::process_event_impl(const process_event_data & data)
 			if(!password.empty()) {
 				join["password"] = password;
 			}
-			network::send_data(response, 0);
+			send_to_server(response);
 
 			if(observe) {
 				this->current_turn = game.current_turn;
@@ -1372,9 +1372,9 @@ bool lobby::plugin_event_helper(const process_event_data & data)
 	return get_result() == mp::ui::CONTINUE;
 }
 
-void lobby::process_network_data(const config& data, const network::connection sock)
+void lobby::process_network_data(const config& data)
 {
-	ui::process_network_data(data, sock);
+	ui::process_network_data(data);
 
 	// Invalidate game selection for the player list
 	last_selected_game_ = -1;

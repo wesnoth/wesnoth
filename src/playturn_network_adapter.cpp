@@ -123,6 +123,7 @@ playturn_network_adapter::playturn_network_adapter(source_type source)
 
 }
 
+
 playturn_network_adapter::~playturn_network_adapter()
 {
 	try {
@@ -156,9 +157,4 @@ static bool read_config(config& src, config& dst)
 playturn_network_adapter::source_type playturn_network_adapter::get_source_from_config(config& cfg)
 {
 	return std::bind(read_config, std::ref(cfg), _1);
-}
-
-bool playturn_network_adapter::read_network(config& cfg)
-{
-	return network::receive_data(cfg) != network::null_connection;
 }

@@ -902,7 +902,7 @@ void replay_network_sender::commit_and_sync()
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
 
 		if(data.empty() == false) {
-			resources::controller->send_to_wesnothd(data);
+			resources::controller->send_to_wesnothd(cfg);
 		}
 
 		upto_ = obj_.ncommands();

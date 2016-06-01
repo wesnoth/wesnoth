@@ -34,14 +34,15 @@ typedef boost::shared_ptr<terrain_type_data> tdata_cache;
 
 class config;
 
+class twesnothd_connection;
 struct mp_campaign_info
 {
-	mp_campaign_info()
+	mp_campaign_info(twesnothd_connection& wdc)
 		: connected_players()
 		, is_host()
 		, skip_replay_until_turn(0)
 		, skip_replay_blindfolded(false)
-		, is_connected(true)
+		, wesnothd_connection(wdc)
 	{
 
 	}
@@ -50,7 +51,7 @@ struct mp_campaign_info
 	bool is_host;
 	int skip_replay_until_turn;
 	bool skip_replay_blindfolded;
-	bool is_connected;
+	twesnothd_connection& wesnothd_connection;
 };
 
 class campaign_controller

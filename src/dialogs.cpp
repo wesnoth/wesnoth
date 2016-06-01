@@ -14,7 +14,7 @@
 
 /**
  * @file
- * Various dialogs: advance_unit, show_objectives, save+load game, network::connection.
+ * Various dialogs: advance_unit, show_objectives, save+load game
  */
 
 #include "global.hpp"
@@ -59,8 +59,9 @@
 #include "formula/string_utils.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/network_transmission.hpp"
 #include "ai/lua/aspect_advancements.hpp"
-
+#include "wesnothd_connection.hpp"
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -1153,123 +1154,40 @@ void unit_types_preview_pane::process_event()
 }
 
 
-
-network::connection network_receive_dialog(CVideo& video, const std::string& msg, config& cfg, network::connection connection_num)
+struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
 {
-	const size_t width = 300;
-	const size_t height = 80;
-	const size_t border = 20;
-	const int left = video.getx()/2 - width/2;
-	const int top  = video.gety()/2 - height/2;
-
-	const events::event_context dialog_events_context;
-
-	gui::button cancel_button(video, _("Cancel"));
-	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
-
-	gui::dialog_frame frame(video, msg, gui::dialog_frame::default_style, true, &buttons_ptr);
-	SDL_Rect centered_layout = frame.layout(left,top,width,height).interior;
-	centered_layout.x = video.getx() / 2 - centered_layout.w / 2;
-	centered_layout.y = video.gety() / 2 - centered_layout.h / 2;
-	// HACK: otherwise we get an empty useless space in the dialog below the progressbar
-	centered_layout.h = height;
-	frame.layout(centered_layout);
-	frame.draw();
-
-	const SDL_Rect progress_rect = sdl::create_rect(centered_layout.x + border
-			, centered_layout.y + border
-			, centered_layout.w - border * 2
-			, centered_layout.h - border * 2);
-
-	gui::progress_bar progress(video);
-	progress.set_location(progress_rect);
-
-	events::raise_draw_event();
-	video.flip();
-
-	network::statistics old_stats = network::get_receive_stats(connection_num);
-
-	cfg.clear();
-	for(;;) {
-		const network::connection res = network::receive_data(cfg,connection_num,100);
-		const network::statistics stats = network::get_receive_stats(connection_num);
-		if(stats.current_max != 0 && stats != old_stats) {
-			old_stats = stats;
-			progress.set_progress_percent((stats.current*100)/stats.current_max);
-			std::ostringstream stream;
-			stream << utils::si_string(stats.current, true, _("unit_byte^B")) << "/" << utils::si_string(stats.current_max, true, _("unit_byte^B"));
-			progress.set_text(stream.str());
-		}
-
-		events::raise_draw_event();
-		video.flip();
-		events::pump();
-
-		if(res != 0) {
-			return res;
-		}
-
-
-		if(cancel_button.pressed()) {
-			return res;
-		}
-	}
-}
-
-} // end namespace dialogs
-
-namespace {
-
-class connect_waiter : public threading::waiter
-{
-public:
-	connect_waiter(CVideo& v, gui::button& button) : v_(v), button_(button)
-	{}
-	ACTION process();
-
-private:
-	CVideo& v_;
-	gui::button& button_;
+	read_wesnothd_connection_data(twesnothd_connection& conn) : conn_(conn) {}
+	size_t total() override { return conn_.bytes_to_read(); }
+	virtual size_t current()  override { return conn_.bytes_read(); }
+	virtual bool finished() override { return conn_.has_data_received(); }
+	virtual void cancel() override { }
+	virtual void poll() override { conn_.poll(); }
+	twesnothd_connection& conn_;
 };
 
-connect_waiter::ACTION connect_waiter::process()
+bool network_receive_dialog(CVideo& video, const std::string& msg, config& cfg, twesnothd_connection& wesnothd_connection)
 {
-	events::raise_draw_event();
-	v_.flip();
-	events::pump();
-	if(button_.pressed()) {
-		return ABORT;
-	} else {
-		return WAIT;
-	}
+	read_wesnothd_connection_data gui_data(wesnothd_connection);
+	gui2::tnetwork_transmission(gui_data, msg, _("Waiting")).show(video);
+	return wesnothd_connection.receive_data(cfg);
 }
 
-}
-
-namespace dialogs
+struct connect_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
 {
+	connect_wesnothd_connection_data(twesnothd_connection& conn) : conn_(conn) {}
+	virtual bool finished() override { return conn_.handshake_finished(); }
+	virtual void cancel() override { }
+	virtual void poll() override { conn_.poll(); }
+	twesnothd_connection& conn_;
+};
 
-network::connection network_connect_dialog(CVideo& v, const std::string& msg, const std::string& hostname, int port)
+std::unique_ptr<twesnothd_connection> network_connect_dialog(CVideo& v, const std::string& msg, const std::string& hostname, int port)
 {
-	const size_t width = 250;
-	const size_t height = 20;
-	const int left = v.getx()/2 - width/2;
-	const int top  = v.gety()/2 - height/2;
+	std::unique_ptr<twesnothd_connection> res(new twesnothd_connection(hostname, std::to_string(port)));
+	connect_wesnothd_connection_data gui_data(*res);
+	gui2::tnetwork_transmission(gui_data, msg, _("Connecting")).show(v);
+	return std::move(res);
 
-	const events::event_context dialog_events_context;
-
-	gui::button cancel_button(v,_("Cancel"));
-	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
-
-	gui::dialog_frame frame(v, msg, gui::dialog_frame::default_style, true, &buttons_ptr);
-	frame.layout(left,top,width,height);
-	frame.draw();
-
-	events::raise_draw_event();
-	v.flip();
-
-	connect_waiter waiter(v,cancel_button);
-	return network::connect(hostname,port,waiter);
 }
 
 } // end namespace dialogs

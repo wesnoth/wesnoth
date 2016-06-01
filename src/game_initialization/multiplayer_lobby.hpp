@@ -186,7 +186,7 @@ private:
 class lobby : public ui
 {
 public:
-	lobby(CVideo& v, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
+	lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
 
 	virtual void process_event();
 
@@ -194,7 +194,7 @@ public:
 protected:
 	virtual void hide_children(bool hide=true);
 	virtual void layout_children(const SDL_Rect& rect);
-	virtual void process_network_data(const config& data, const network::connection sock);
+	virtual void process_network_data(const config& data);
 
 	virtual void gamelist_updated(bool silent=true);
 private:

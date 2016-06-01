@@ -15,7 +15,7 @@ class playturn_network_adapter
 public:
 	typedef std::function<bool(config&)> source_type;
 
-	playturn_network_adapter(source_type source = read_network);
+	playturn_network_adapter(source_type source);
 	~playturn_network_adapter();
 
 	//returns true on success.
@@ -27,8 +27,6 @@ public:
 	void set_source(source_type source);
 	//returns a function to be passed to set_source.
 	static source_type get_source_from_config(config& src);
-	//a function to be passed to set_source.
-	static bool read_network(config& dst);
 private:
 	//reads data from the network stream.
 	void read_from_network();

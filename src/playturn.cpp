@@ -66,7 +66,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 {
 	//there should be nothing left on the replay and we should get turn_info::PROCESS_CONTINUE back.
 	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
-	if(network::nconnections() > 0) {
+	if(resources::controller->is_networked_mp()) {
 
 		//receive data first, and then send data. When we sent the end of
 		//the AI's turn, we don't want there to be any chance where we
@@ -126,9 +126,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader()
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg)
 {
-	// we cannot be connected to multiple peers anymore because
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
-	assert(network::nconnections() <= 1);
 	assert(cfg.all_children_count() == 1);
 	assert(cfg.attribute_range().first == cfg.attribute_range().second);
 	if(!resources::recorder->at_end())

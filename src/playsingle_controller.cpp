@@ -69,14 +69,14 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level,
-		saved_game& state_of_game,
-		const config& game_config, const tdata_cache & tdata,
-		CVideo& video, bool skip_replay)
+	saved_game& state_of_game,
+	const config& game_config, const tdata_cache & tdata,
+	CVideo& video, bool skip_replay)
 	: play_controller(level, state_of_game, game_config, tdata, video, skip_replay)
 	, cursor_setter(cursor::NORMAL)
 	, textbox_info_()
 	, replay_sender_(*resources::recorder)
-	, network_reader_()
+	, network_reader_([this](config& cfg) {return recieve_from_wesnothd(cfg);})
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)

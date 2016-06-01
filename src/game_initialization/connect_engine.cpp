@@ -26,6 +26,8 @@
 #include "playcampaign.hpp"
 #include "tod_manager.hpp"
 #include "multiplayer_ui.hpp" // For get_color_string
+#include "wesnothd_connection.hpp"
+
 #include <boost/assign.hpp>
 #include <stdlib.h>
 #include <ctime>
@@ -199,7 +201,7 @@ connect_engine::connect_engine(saved_game& state,
 	update_level();
 
 	// If we are connected, send data to the connected host.
-	send_level_data(0);
+	send_level_data();
 }
 
 connect_engine::~connect_engine()
@@ -308,7 +310,7 @@ void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 	if (!diff.empty()) {
 		config scenario_diff;
 		scenario_diff.add_child("scenario_diff", diff);
-		network::send_data(scenario_diff, 0);
+		send_to_server(scenario_diff);
 	}
 }
 
@@ -345,6 +347,24 @@ bool connect_engine::can_start_game() const
 
 	return false;
 }
+
+void connect_engine::send_to_server(const config& cfg) const
+{
+	if (campaign_info_) {
+		campaign_info_->wesnothd_connection.send_data(cfg);
+	}
+}
+
+bool connect_engine::receive_from_server(config& dst) const
+{
+	if (campaign_info_) {
+		return campaign_info_->wesnothd_connection.receive_data(dst);
+	}
+	else {
+		return false;
+	}
+}
+
 
 std::vector<std::string> side_engine::get_children_to_swap()
 {
@@ -459,7 +479,7 @@ void connect_engine::start_game()
 
 	// Make other clients not show the results of resolve_random().
 	config lock("stop_updates");
-	network::send_data(lock, 0);
+	send_to_server(lock);
 
 	update_and_send_diff(true);
 
@@ -468,7 +488,7 @@ void connect_engine::start_game()
 	// Build the gamestate object after updating the level.
 	mp::level_to_gamestate(level_, state_);
 
-	network::send_data(config("start_game"), 0);
+	send_to_server(config("start_game"));
 }
 
 void connect_engine::start_game_commandline(
@@ -587,11 +607,10 @@ void connect_engine::start_game_commandline(
 
 	// Build the gamestate object after updating the level
 	mp::level_to_gamestate(level_, state_);
-	network::send_data(config("start_game"), 0);
+	send_to_server(config("start_game"));
 }
 
-std::pair<bool, bool> connect_engine::process_network_data(const config& data,
-	const network::connection sock)
+std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 {
 	std::pair<bool, bool> result(std::make_pair(false, true));
 
@@ -628,7 +647,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 		if (name.empty()) {
 			config response;
 			response["failed"] = true;
-			network::send_data(response, sock);
+			send_to_server(response);
 
 			ERR_CF << "ERROR: No username provided with the side." << std::endl;
 
@@ -643,7 +662,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 				response["failed"] = true;
 				response["message"] = "The nickname '" + name +
 					"' is already in use.";
-				network::send_data(response, sock);
+				send_to_server(response);
 
 				return result;
 			} else {
@@ -651,7 +670,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 				update_side_controller_options();
 				config observer_quit;
 				observer_quit.add_child("observer_quit")["name"] = name;
-				network::send_data(observer_quit, 0);
+				send_to_server(observer_quit);
 			}
 		}
 
@@ -672,12 +691,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 				if (side_taken >= side_engines_.size()) {
 					config response;
 					response["failed"] = true;
-					network::send_data(response, sock);
+					send_to_server(response);
 
 					config res;
 					config& kick = res.add_child("kick");
 					kick["username"] = data["name"];
-					network::send_data(res, 0);
+					send_to_server(res);
 
 					update_and_send_diff();
 
@@ -707,7 +726,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			config response;
 			response["failed"] = true;
-			network::send_data(response, sock);
+			send_to_server(response);
 		}
 	}
 
@@ -745,7 +764,6 @@ void connect_engine::process_network_error(network::error& error)
 {
 	// The problem isn't related to any specific connection and
 	// it's a general error. So we should just re-throw the error.
-	error.disconnect();
 	throw network::error(error.message);
 }
 
@@ -767,22 +785,22 @@ int connect_engine::find_user_side_index_by_id(const std::string& id) const
 	return i;
 }
 
-void connect_engine::send_level_data(const network::connection sock) const
+void connect_engine::send_level_data() const
 {
 	// Send initial information.
 	if (first_scenario_) {
-		network::send_data(config_of
+		send_to_server(config_of
 			("create_game", config_of
 				("name", params_.name)
 				("password", params_.password)
 			)
 		);
-		network::send_data(level_, sock);
+		send_to_server(level_);
 	} else {
-		network::send_data(config_of("update_game", config()), 0);
+		send_to_server(config_of("update_game", config()));
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
-		network::send_data(next_level, sock);
+		send_to_server(next_level);
 	}
 }
 

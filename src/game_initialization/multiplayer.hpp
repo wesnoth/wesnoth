@@ -21,7 +21,7 @@
 
 class config;
 class CVideo;
-
+class twesnothd_connection;
 namespace mp {
 
 // max. length of a player name
@@ -63,14 +63,13 @@ void start_client(CVideo& video, const config& game_config,
  * changes made.
  */
 mp::ui::result goto_mp_connect(CVideo& video, ng::connect_engine& engine,
-	const config& game_config, const std::string& game_name);
+	const config& game_config, twesnothd_connection* wesnothd_connection, const std::string& game_name);
 
 /**
  * Opens mp::wait screen and sets game state according to the
  * changes made.
  */
-mp::ui::result goto_mp_wait(saved_game& state, CVideo& video,
-	const config& game_config, bool observe);
+mp::ui::result goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, twesnothd_connection* wesnothd_connection, bool observe);
 
 }
 #endif

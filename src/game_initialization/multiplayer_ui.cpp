@@ -35,6 +35,7 @@
 #include "team.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
+#include "wesnothd_connection.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -178,9 +179,10 @@ SDL_Color chat::color_message(const msg& message) {
 	return c;
 }
 
-ui::ui(CVideo& video, const std::string& title, const config& cfg, chat& c, config& gamelist) :
+ui::ui(CVideo& video, twesnothd_connection* wesnothd_connection, const std::string& title, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(video),
 	video_(video),
+	wesnothd_connection_(wesnothd_connection),
 	initialized_(false),
 	gamelist_initialized_(false),
 
@@ -216,10 +218,8 @@ void ui::process_network()
 {
 	config data;
 	try {
-		const network::connection sock = network::receive_data(data);
-
-		if(sock) {
-			process_network_data(data, sock);
+		if(receive_from_server(data)) {
+			process_network_data(data);
 		}
 	} catch(network::error& e) {
 		process_network_error(e);
@@ -369,7 +369,7 @@ void ui::handle_event(const SDL_Event& event)
 			//if the dialog has been open for a long time, refresh the lobby
 			config request;
 			request.add_child("refresh_lobby");
-			network::send_data(request, 0);
+			send_to_server(request);
 		}
 	}
 	if(users_menu_.selection() > 0 // -1 indicates an invalid selection
@@ -393,7 +393,7 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 	data.add_child("message", msg);
 
 	add_chat_message(time(nullptr), preferences::login(),0, message);	//local echo
-	network::send_data(data, 0);
+	send_to_server(data);
 }
 
 void ui::handle_key_event(const SDL_KeyboardEvent& event)
@@ -514,7 +514,7 @@ void ui::process_message(const config& msg, const bool whisper) {
 	plugins_manager::get()->notify_event("chat", temp); //notify plugins of the network message
 }
 
-void ui::process_network_data(const config& data, const network::connection /*sock*/)
+void ui::process_network_data(const config& data)
 {
 	if (const config &c = data.child("error")) {
 		throw network::error(c["message"]);
@@ -536,7 +536,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			} catch(config::error& e) {
 				ERR_CF << "Error while applying the gamelist diff: '"
 					<< e.message << "' Getting a new gamelist.\n";
-				network::send_data(config("refresh_lobby"), 0);
+				send_to_server(config("refresh_lobby"));
 			}
 			gamelist_refresh_ = true;
 		}
@@ -789,13 +789,21 @@ const gui::label& ui::title() const
 	return title_;
 }
 
-plugins_context * ui::get_plugins_context() {
+plugins_context * ui::get_plugins_context()
+{
 	return plugins_context_.get();
 }
 
 void ui::send_to_server(const config& cfg)
 {
-	network::send_data(cfg, 0);
+	if (wesnothd_connection_) {
+		wesnothd_connection_->send_data(cfg);
+	}
+}
+
+bool ui::receive_from_server(config& cfg)
+{
+	return wesnothd_connection_ && wesnothd_connection_->receive_data(cfg);
 }
 
 }// namespace mp
