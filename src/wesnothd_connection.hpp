@@ -33,7 +33,7 @@
 #include <list>
 #include "exceptions.hpp"
 #include "wesnothd_connection_error.hpp"
-
+#include "configr_assign.hpp"
 class config;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
@@ -50,7 +50,7 @@ public:
 	 */
 	twesnothd_connection(const std::string& host, const std::string& service);
 
-	void send_data(const config& request);
+	void send_data(const configr_of& request);
 
 	bool receive_data(config& result);
 
