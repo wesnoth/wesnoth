@@ -249,12 +249,6 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 	}
 }
 
-struct result_deleter {
-	void operator()(MYSQL_RES *result) {
-		mysql_free_result(result);
-	}
-};
-
 fuh::mysql_result fuh::db_query(const std::string& sql) {
 	if(mysql_query(conn, sql.c_str())) {
 		WRN_UH << "not connected to database, reconnecting..." << std::endl;
@@ -265,7 +259,7 @@ fuh::mysql_result fuh::db_query(const std::string& sql) {
 			throw error("Error querying database.");
 		}
 	}
-	return mysql_result(mysql_store_result(conn), result_deleter());
+	return mysql_result(mysql_store_result(conn), mysql_free_result);
 }
 
 std::string fuh::db_query_to_string(const std::string& sql) {
