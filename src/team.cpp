@@ -68,7 +68,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("countdown_time")("disallow_observers")("faction")
 	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
 	("leader")("random_leader")("team_lock")("terrain_liked")
-	("user_description")("default_recruit")("controller_lock")("chose_random")
+	("user_description")("controller_lock")("chose_random")
 	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
 
 team::team_info::team_info() :

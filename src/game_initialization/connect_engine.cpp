@@ -879,6 +879,15 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	waiting_to_choose_faction_(allow_changes_),
 	custom_color_()
 {
+	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
+	// initialized by flg_manager when the new side config is sent over network.
+	cfg_.add_child("default_faction", config_of
+		("type", cfg_["type"])
+		("gender", cfg_["gender"])
+		("faction", cfg_["faction"])
+		("recruit", cfg_["recruit"])
+	);
+
 	// Check if this side should give its control to some other side.
 	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
 	if (side_cntr_index < parent_.side_engines().size()) {
@@ -977,14 +986,6 @@ std::string side_engine::user_description() const
 config side_engine::new_config() const
 {
 	config res = cfg_;
-
-	// Save default "recruit" so that correct faction lists would be
-	// initialized by flg_manager when the new side config is sent over network.
-	// In case recruit list was empty, set a flag to indicate that.
-	res["default_recruit"] = cfg_["recruit"].str();
-	if (res["default_recruit"].empty()) {
-		res["no_recruit"] = true;
-	}
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.

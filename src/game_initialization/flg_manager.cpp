@@ -331,20 +331,20 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 void flg_manager::update_available_factions()
 {
 	const config* custom_faction = nullptr;
-	const bool show_custom_faction = side_["faction"] == "Custom" || !has_no_recruits_ || faction_lock_;
+	const bool show_custom_faction = get_default_faction(side_)["faction"] == "Custom" || !has_no_recruits_ || faction_lock_;
 
 	for (const config* faction : era_factions_) {
 		if ((*faction)["id"] == "Custom" && !show_custom_faction) {
 
 			// "Custom" faction should not be available if both
-			// "default_recruit" and "previous_recruits" lists are empty.
+			// "recruit" and "previous_recruits" lists are empty.
 			// However, it should be available if it was explicitly stated so.
 			custom_faction = faction;
 			continue;
 		}
 
 		// Add default faction to the top of the list.
-		if (side_["faction"] == (*faction)["id"]) {
+		if (get_default_faction(side_)["faction"] == (*faction)["id"]) {
 			available_factions_.insert(available_factions_.begin(), faction);
 		} else {
 			available_factions_.push_back(faction);
@@ -518,7 +518,7 @@ int flg_manager::find_suitable_faction() const
 	std::vector<std::string> find;
 	std::string search_field;
 
-	if (const config::attribute_value *f = side_.get("faction")) {
+	if (const config::attribute_value *f = get_default_faction(side_).get("faction")) {
 		// Choose based on faction.
 		find.push_back(f->str());
 		search_field = "id";
@@ -623,15 +623,18 @@ void flg_manager::set_current_gender(const std::string& gender)
 
 std::vector<std::string> flg_manager::get_original_recruits(const config& cfg)
 {
-	if (cfg["no_recruit"].to_bool()) {
-		return std::vector<std::string>();
-	}
-	const config::attribute_value& cfg_default_recruit = cfg["default_recruit"];
-	if (!cfg_default_recruit.empty()) {
-		return utils::split(cfg_default_recruit.str());
+	return utils::split(get_default_faction(cfg)["recruit"].str());
+}
+
+const config& flg_manager::get_default_faction(const config& cfg)
+{
+	const config& df = cfg.child("default_faction");
+	if (df) {
+		return df;
 	}
 	else {
-		return utils::split(cfg["recruit"].str());
+		return cfg;
 	}
 }
+
 } // end namespace ng
