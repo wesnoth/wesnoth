@@ -49,6 +49,7 @@
 			<Add library="SDL2" />
 			<Add library="SDL2_net" />
 			<Add library="ws2_32" />
+			<Add library="wsock32" />
 			<Add library="libboost_iostreams-mgw51-mt-1_58.a" />
 			<Add library="libboost_bzip2-mgw51-mt-1_58.a" />
 			<Add library="libboost_filesystem-mgw51-mt-1_58.a" />
@@ -67,6 +68,7 @@
 		<Unit filename="../../src/filesystem.hpp" />
 		<Unit filename="../../src/filesystem_boost.cpp" />
 		<Unit filename="../../src/filesystem_common.cpp" />
+		<Unit filename="../../src/filesystem_sdl.cpp" />
 		<Unit filename="../../src/filesystem_win32.ii" />
 		<Unit filename="../../src/game_config.cpp" />
 		<Unit filename="../../src/game_config.hpp" />
@@ -74,12 +76,10 @@
 		<Unit filename="../../src/gettext_boost.cpp" />
 		<Unit filename="../../src/global.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
-		<Unit filename="../../src/loadscreen.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />
 		<Unit filename="../../src/log_windows.hpp" />
-		<Unit filename="../../src/map.hpp" />
 		<Unit filename="../../src/mt_rng.cpp" />
 		<Unit filename="../../src/mt_rng.hpp" />
 		<Unit filename="../../src/network.cpp" />
@@ -113,13 +113,11 @@
 		<Unit filename="../../src/server/metrics.hpp" />
 		<Unit filename="../../src/server/player.cpp" />
 		<Unit filename="../../src/server/player.hpp" />
+		<Unit filename="../../src/server/player_connection.cpp" />
+		<Unit filename="../../src/server/player_connection.hpp" />
 		<Unit filename="../../src/server/player_network.cpp" />
 		<Unit filename="../../src/server/player_network.hpp" />
-		<Unit filename="../../src/server/proxy.cpp" />
-		<Unit filename="../../src/server/proxy.hpp" />
-		<Unit filename="../../src/server/room.cpp" />
 		<Unit filename="../../src/server/room.hpp" />
-		<Unit filename="../../src/server/room_manager.cpp" />
 		<Unit filename="../../src/server/room_manager.hpp" />
 		<Unit filename="../../src/server/sample_user_handler.cpp" />
 		<Unit filename="../../src/server/sample_user_handler.hpp" />
