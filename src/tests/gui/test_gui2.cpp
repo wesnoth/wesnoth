@@ -86,6 +86,7 @@
 #include "saved_game.hpp"
 //#include "scripting/lua_kernel_base.hpp"
 #include "video.hpp"
+#include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
@@ -668,16 +669,34 @@ struct twrapper<gui2::tgamestate_inspector>
 	}
 
 };
+struct twesnothd_connection_init
+{
+	twesnothd_connection_init(twesnothd_connection& conn)
+	{
+		//Swallow the 'cannot connect' execption so that the wesnothd_connection object doesn't throw while we test the dialog.
+		try 
+		{
+			while (true) {
+				conn.poll();
+			}
+		}
+		catch (...) 
+		{
 
+		}
+	}
+};
 template<>
 struct twrapper<gui2::tlobby_main>
 {
 	static gui2::tlobby_main* create()
 	{
 		static config game_config;
-		static lobby_info li(game_config);
+		static twesnothd_connection wesnothd_connection("", "");
+		static twesnothd_connection_init wesnothd_connection_init(wesnothd_connection);
+		static lobby_info li(game_config, wesnothd_connection);
 		return new gui2::tlobby_main(game_config, li,
-			static_cast<display*>(&test_utils::get_fake_display(-1, -1))->video());
+			static_cast<display*>(&test_utils::get_fake_display(-1, -1))->video(), wesnothd_connection);
 	}
 };
 
@@ -686,6 +705,7 @@ class fake_chat_handler : public events::chat_handler {
 		const std::string&, int, const std::string&,
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
+	void send_to_server(const config&) {}
 };
 
 template<>
@@ -696,7 +716,9 @@ struct twrapper<gui2::tlobby_player_info>
 		static config c;
 		static fake_chat_handler ch;
 		static user_info ui(c);
-		static lobby_info li(c);
+		static twesnothd_connection wesnothd_connection("", "");
+		static twesnothd_connection_init wesnothd_connection_init(wesnothd_connection);
+		static lobby_info li(c, wesnothd_connection);
 		return new gui2::tlobby_player_info(ch, ui, li);
 	}
 };
