@@ -1152,7 +1152,9 @@ void unit_types_preview_pane::process_event()
 	}
 }
 
-static network::connection network_data_dialog(CVideo& video, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
+
+
+network::connection network_receive_dialog(CVideo& video, const std::string& msg, config& cfg, network::connection connection_num)
 {
 	const size_t width = 300;
 	const size_t height = 80;
@@ -1185,12 +1187,12 @@ static network::connection network_data_dialog(CVideo& video, const std::string&
 	events::raise_draw_event();
 	video.flip();
 
-	network::statistics old_stats = get_stats(connection_num);
+	network::statistics old_stats = network::get_receive_stats(connection_num);
 
 	cfg.clear();
 	for(;;) {
 		const network::connection res = network::receive_data(cfg,connection_num,100);
-		const network::statistics stats = get_stats(connection_num);
+		const network::statistics stats = network::get_receive_stats(connection_num);
 		if(stats.current_max != 0 && stats != old_stats) {
 			old_stats = stats;
 			progress.set_progress_percent((stats.current*100)/stats.current_max);
@@ -1212,18 +1214,6 @@ static network::connection network_data_dialog(CVideo& video, const std::string&
 			return res;
 		}
 	}
-}
-
-network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
-{
-	return network_data_dialog(disp.video(), msg, cfg, connection_num,
-							   network::get_send_stats);
-}
-
-network::connection network_receive_dialog(CVideo& v, const std::string& msg, config& cfg, network::connection connection_num)
-{
-	return network_data_dialog(v, msg, cfg, connection_num,
-							   network::get_receive_stats);
 }
 
 } // end namespace dialogs
