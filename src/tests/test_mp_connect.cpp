@@ -112,6 +112,7 @@ static ng::side_engine* create_side_engine(const config& defaults,
 {
 	config side_cfg = connect_engine->current_config()->child("side");
 	side_cfg.remove_attributes("faction");
+	side_cfg.clear_children("default_faction");
 	side_cfg.append(defaults);
 
 	return new ng::side_engine(side_cfg, *connect_engine, 0);
