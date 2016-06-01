@@ -41,7 +41,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "key.hpp"
-#include "network.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -613,7 +612,7 @@ void manager::send_network_data()
 
 		buf_cfg = config();
 
-		network::send_data(packet,0,"whiteboard");
+		resources::controller->send_to_wesnothd(packet, "whiteboard");
 
 		size_t count = wb_cfg.child_count("net_cmd");
 		LOG_WB << "Side " << (team_index+1) << " sent wb data (" << count << " cmds).\n";

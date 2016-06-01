@@ -95,6 +95,8 @@ public:
 
 	void update_gamelist();
 
+	void send_to_server(const config& cfg) override;
+
 protected:
 	void update_gamelist_header();
 

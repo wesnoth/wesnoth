@@ -379,7 +379,7 @@ void turn_info::change_side_controller(int side, const std::string& player)
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["player"] = player;
-	network::send_data(cfg, 0);
+	resources::controller->send_to_wesnothd(cfg);
 }
 
 turn_info::PROCESS_DATA_RESULT turn_info::replay_to_process_data_result(REPLAY_RETURN replayreturn)

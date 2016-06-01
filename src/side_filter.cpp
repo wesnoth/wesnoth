@@ -25,7 +25,8 @@
 #include "variable.hpp"
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
-#include "network.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
 #include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
@@ -225,7 +226,7 @@ bool side_filter::match_internal(const team &t) const
 	const config::attribute_value cfg_controller = cfg_["controller"];
 	if (!cfg_controller.blank())
 	{
-		if (network::nconnections() > 0 && synced_context::is_synced()) {
+		if (resources::controller->is_networked_mp() && synced_context::is_synced()) {
 			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors" << std::endl;
 		}
 		else {

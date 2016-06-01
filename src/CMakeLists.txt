@@ -728,6 +728,8 @@ set(wesnoth-main_SRC
 	attack_prediction_display.cpp
 	build_info.cpp
 	carryover.cpp
+	chat_command_handler.cpp
+	chat_events.cpp
 	commandline_options.cpp
 	config_cache.cpp
 	game_initialization/configure_engine.cpp

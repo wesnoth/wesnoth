@@ -26,7 +26,6 @@
 #include "units/abilities.hpp"
 #include "wml_exception.hpp"
 #include "resources.hpp"
-#include "network.hpp"
 #include "config_assign.hpp"
 
 #include <boost/range/adaptors.hpp>
@@ -403,12 +402,11 @@ void tod_manager::update_server_information() const
 		//NOTE: The current implementation does not guarnateee that the server gets informed
 		// about those changes in 100% of cases. But that is ok because the information is only
 		// used to display the turn limit in the lobby (as opposed to things that cause OOS).
-		network::send_data(config_of
+		resources::controller->send_to_wesnothd(config_of
 			("change_turns_wml", config_of
 				("current", turn_)
 				("max", num_turns_)
-			),
-			0
+			)
 		);
 	}
 }

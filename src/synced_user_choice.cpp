@@ -20,7 +20,6 @@
 #include "game_display.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
-#include "network.hpp"
 #include "play_controller.hpp"
 #include "synced_context.hpp"
 #include "replay.hpp"
@@ -151,7 +150,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 {
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	const bool is_synced = synced_context::is_synced();
-	const bool is_mp_game = network::nconnections() != 0;//Only used in debugging output below
+	const bool is_mp_game = resources::controller->is_networked_mp();//Only used in debugging output below
 	const int max_side  = static_cast<int>(resources::teams->size());
 	bool is_side_null_controlled;
 

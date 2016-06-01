@@ -1409,7 +1409,7 @@ namespace
 			int res = 0;
 			team t = (*resources::teams)[side_num_ - 1];
 			//i wonder how this got included here ?
-			bool is_mp = network::nconnections() != 0;
+			bool is_mp = resources::controller->is_networked_mp();
 			bool is_current_side = resources::controller->current_side() == side_num_;
 			//note, that the advancements for networked sides are also determined on the current playing side.
 

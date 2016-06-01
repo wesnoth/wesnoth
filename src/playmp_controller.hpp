@@ -37,6 +37,9 @@ public:
 	void send_user_choice();
 
 	class hotkey_handler;
+
+	bool is_networked_mp() const override;
+	void send_to_wesnothd(const config& cfg, const std::string& packet_type = "unknown") const override;
 protected:
 	virtual void handle_generic_event(const std::string& name);
 

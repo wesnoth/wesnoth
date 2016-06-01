@@ -1765,5 +1765,9 @@ void tlobby_main::skip_replay_changed_callback(twidget& w)
 	ttoggle_button& tb = dynamic_cast<ttoggle_button&>(w);
 	preferences::set_skip_mp_replay(tb.get_value_bool());
 }
+void tlobby_main::send_to_server(const config& cfg)
+{
+	network::send_data(cfg, 0);
+}
 
 } // namespace gui2

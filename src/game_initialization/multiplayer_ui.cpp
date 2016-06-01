@@ -793,4 +793,9 @@ plugins_context * ui::get_plugins_context() {
 	return plugins_context_.get();
 }
 
+void ui::send_to_server(const config& cfg)
+{
+	network::send_data(cfg, 0);
+}
+
 }// namespace mp
