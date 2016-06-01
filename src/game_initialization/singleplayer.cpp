@@ -136,7 +136,7 @@ bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& 
 		mp::ui::result res;
 
 		{
-			mp::configure ui(video, game_config, gamechat, gamelist, state, local_players_only);
+			mp::configure ui(video, 0, game_config, gamechat, gamelist, state, local_players_only);
 			mp::run_lobby_loop(video, ui);
 			res = ui.get_result();
 			ui.get_parameters();
@@ -163,7 +163,7 @@ bool enter_connect_mode(CVideo& video, const config& game_config,
 		mp::ui::result res;
 		gamelist.clear();
 		{
-			mp::connect ui(video, state.mp_settings().name, game_config, gamechat, gamelist, connect_eng);
+			mp::connect ui(video, 0, state.mp_settings().name, game_config, gamechat, gamelist, connect_eng);
 			mp::run_lobby_loop(video, ui);
 			res = ui.get_result();
 

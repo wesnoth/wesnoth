@@ -92,7 +92,7 @@ public:
 
 	typedef std::vector<side> side_list;
 
-	connect(CVideo& v, const std::string& game_name,
+	connect(CVideo& v, twesnothd_connection* wesnothd_connection, const std::string& game_name,
 		const config& game_config, chat& c, config& gamelist,
 		ng::connect_engine& engine);
 	~connect();
@@ -109,8 +109,7 @@ protected:
 	virtual void layout_children(const SDL_Rect& rect);
 	virtual void hide_children(bool hide = true);
 
-	virtual void process_network_data(const config& data,
-		const network::connection sock);
+	virtual void process_network_data(const config& data);
 	virtual void process_network_error(network::error& error);
 
 private:

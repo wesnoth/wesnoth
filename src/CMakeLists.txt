@@ -991,6 +991,7 @@ set(wesnoth-main_SRC
 	utils/markov_generator.cpp
 	variable.cpp
 	variable_info.cpp
+	wesnothd_connection.cpp
 	whiteboard/action.cpp
 	whiteboard/attack.cpp
 	whiteboard/highlighter.cpp

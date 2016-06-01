@@ -268,6 +268,7 @@ public:
 
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
+	virtual bool recieve_from_wesnothd(config&) const { return false; }
 protected:
 	struct scoped_savegame_snapshot
 	{

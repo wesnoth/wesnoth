@@ -293,16 +293,35 @@ void addons_client::send_simple_request(const std::string& request_string, confi
 	request.add_child(request_string);
 	this->send_request(request, response);
 }
-
+struct read_addon_connection_data : public gui2::tnetwork_transmission::connection_data
+{
+	read_addon_connection_data(network_asio::connection& conn) : conn_(conn) {}
+	size_t total() override { return conn_.bytes_to_read(); }
+	virtual size_t current()  override { return conn_.bytes_read(); }
+	virtual bool finished() override { return conn_.done(); }
+	virtual void cancel() override { return conn_.cancel(); }
+	virtual void poll() override { conn_.poll(); }
+	network_asio::connection& conn_;
+};
+struct write_addon_connection_data : public gui2::tnetwork_transmission::connection_data
+{
+	write_addon_connection_data(network_asio::connection& conn) : conn_(conn) {}
+	size_t total() override { return conn_.bytes_to_write(); }
+	virtual size_t current()  override { return conn_.bytes_written(); }
+	virtual bool finished() override { return conn_.done(); }
+	virtual void cancel() override { return conn_.cancel(); }
+	virtual void poll() override { conn_.poll(); }
+	network_asio::connection& conn_;
+};
 void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
 {
 	check_connected();
-
+	std::unique_ptr<gui2::tnetwork_transmission::connection_data> cd(track_upload ? new write_addon_connection_data{ *conn_ } : new write_addon_connection_data{ *conn_ });
 	if(!stat_) {
-		stat_ = new gui2::tnetwork_transmission(*conn_, _("Add-ons Manager"), status_message);
+		stat_ = new gui2::tnetwork_transmission(*cd, _("Add-ons Manager"), status_message);
 	} else {
 		stat_->set_subtitle(status_message);
-		stat_->set_track_upload(track_upload);
+		stat_->set_connection_data(*cd);
 	}
 
 	if(!stat_->show(v_)) {

@@ -128,7 +128,7 @@ void level_to_gamestate(const config& level, saved_game& state)
 	state.mp_settings().show_connect = show_connect;
 }
 
-void check_response(network::connection res, const config& data)
+void check_response(bool res, const config& data)
 {
 	if (!res) {
 		throw network::error(_("Connection timed out"));

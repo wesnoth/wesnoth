@@ -82,9 +82,8 @@ static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
 	return config_of("index", eng.find_level_by_id(str))("type", eng.find_level_type_by_id(str));
 }
 
-create::create(CVideo& video, const config& cfg, saved_game& state,
-	chat& c, config& gamelist) :
-	ui(video, _("Create Game"), cfg, c, gamelist),
+create::create(CVideo& video, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state, chat& c, config& gamelist) :
+	ui(video, wesnothd_connection, _("Create Game"), cfg, c, gamelist),
 	tooltip_manager_(video),
 	era_selection_(-1),
 	mod_selection_(-1),

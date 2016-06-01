@@ -34,20 +34,15 @@ REGISTER_DIALOG(network_transmission)
 
 void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 {
-	connection_.poll();
+	connection_->poll();
 	if(!window_)
 		return;
-	if(connection_.done()) {
+	if(connection_->finished()) {
 		window_.get().set_retval(twindow::OK);
 	} else {
 		size_t completed, total;
-		if(track_upload_) {
-			completed = connection_.bytes_written();
-			total = connection_.bytes_to_write();
-		} else {
-			completed = connection_.bytes_read();
-			total = connection_.bytes_to_read();
-		}
+			completed = connection_->current();
+			total = connection_->total();
 		if(total) {
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
 					.set_percentage((completed * 100.) / total);
@@ -64,12 +59,11 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 }
 
 tnetwork_transmission::tnetwork_transmission(
-		network_asio::connection& connection,
+		connection_data& connection,
 		const std::string& title,
 		const std::string& subtitle)
-	: connection_(connection)
-	, track_upload_(false)
-	, pump_monitor_(connection, track_upload_)
+	: connection_(&connection)
+	, pump_monitor_(connection_)
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
@@ -97,7 +91,7 @@ void tnetwork_transmission::pre_show(twindow& window)
 void tnetwork_transmission::post_show(twindow& /*window*/)
 {
 	pump_monitor_.window_.reset();
-	connection_.cancel();
+	connection_->cancel();
 }
 
 } // namespace gui2

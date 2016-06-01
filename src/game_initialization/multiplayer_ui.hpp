@@ -33,6 +33,7 @@ class game_display;
 class config;
 class plugins_context;
 
+class twesnothd_connection;
 namespace mp {
 
 std::string get_color_string(int id);
@@ -79,7 +80,7 @@ public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, LOAD_GAME, PREFERENCES,
 		PLAY, QUIT };
 
-	ui(CVideo& v, const std::string& title,
+	ui(CVideo& v, twesnothd_connection* wesnothd_connection, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
 
 	/**
@@ -105,6 +106,7 @@ public:
 	using widget::set_location;
 	const std::vector<std::string>& user_list() const { return user_list_; }
 	void send_to_server(const config& cfg) override;
+	bool receive_from_server(config& dst);
 protected:
 	int xscale(int x) const;
 	int yscale(int y) const;
@@ -114,6 +116,7 @@ protected:
 	SDL_Rect client_area() const;
 
 	CVideo& video_;
+	twesnothd_connection* wesnothd_connection_;
 	CVideo& video() { return video_; }
 
 	/**
@@ -144,7 +147,7 @@ protected:
 	 * process_network() method. Overridden by subclasses who add more
 	 * behavior for network.
 	 */
-	virtual void process_network_data(const config& data, const network::connection sock);
+	virtual void process_network_data(const config& data);
 
 	/**
 	 * Processes any pending network error. Called by the public

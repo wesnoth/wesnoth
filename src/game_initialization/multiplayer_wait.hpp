@@ -24,7 +24,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(CVideo& v, const config& cfg, saved_game& state, chat& c,
+	wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
 	~wait();
 	virtual void process_event();
@@ -36,7 +36,7 @@ public:
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
 	virtual void hide_children(bool hide=true);
-	virtual void process_network_data(const config& data, const network::connection sock);
+	virtual void process_network_data(const config& data);
 
 private:
 	class leader_preview_pane : public gui::preview_pane

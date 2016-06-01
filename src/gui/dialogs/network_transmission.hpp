@@ -24,7 +24,6 @@
 namespace gui2
 {
 
-class tnetwork_transmission;
 
 /**
  * Dialog that tracks network transmissions
@@ -34,19 +33,27 @@ class tnetwork_transmission;
  */
 class tnetwork_transmission : public tdialog
 {
-	network_asio::connection& connection_;
-
-	bool track_upload_;
+public:
+	class connection_data 
+	{
+	public:
+		virtual size_t total() { return 0; }
+		virtual size_t current() { return 0; }
+		virtual bool finished() = 0;
+		virtual void cancel() = 0;
+		virtual void poll() = 0;
+	};
+private:
+	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor
 	{
-		network_asio::connection& connection_;
-		bool& track_upload_;
+	public:
+		connection_data*& connection_;
 		virtual void process(events::pump_info&);
 
-	public:
-		pump_monitor(network_asio::connection& connection, bool& track_upload)
-			: connection_(connection), track_upload_(track_upload), window_()
+		pump_monitor(connection_data*& connection)
+			: connection_(connection), window_()
 		{
 		}
 
@@ -54,14 +61,14 @@ class tnetwork_transmission : public tdialog
 	} pump_monitor_;
 
 public:
-	tnetwork_transmission(network_asio::connection& connection,
+	tnetwork_transmission(connection_data& connection,
 						  const std::string& title,
 						  const std::string& subtitle);
 
 	void set_subtitle(const std::string&);
-	void set_track_upload(bool track_upload)
+	void set_connection_data(connection_data& connection)
 	{
-		track_upload_ = track_upload;
+		connection_ = &connection;
 	}
 
 protected:

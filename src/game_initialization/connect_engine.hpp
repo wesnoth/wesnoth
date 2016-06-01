@@ -49,7 +49,7 @@ class connect_engine
 public:
 	/// @param players the player which are already connected to the current game.
 	///                This is always empty unless we advance form a previous scenario.
-	connect_engine(saved_game& state,
+	connect_engine(saved_game& state, 
 		const bool first_scenario, mp_campaign_info* campaign_info);
 	~connect_engine();
 
@@ -74,8 +74,7 @@ public:
 
 	// Return pair first element specifies whether to leave the game
 	// and second element whether to silently update UI.
-	std::pair<bool, bool> process_network_data(const config& data,
-		const network::connection sock);
+	std::pair<bool, bool> process_network_data(const config& data);
 	void process_network_error(network::error& error);
 
 	// Returns the side which is taken by a given user,
@@ -107,7 +106,7 @@ private:
 	connect_engine(const connect_engine&);
 	void operator=(const connect_engine&);
 
-	void send_level_data(const network::connection sock) const;
+	void send_level_data() const;
 
 	void save_reserved_sides_information();
 	void load_previous_sides_users();
@@ -134,6 +133,8 @@ private:
 	std::vector<std::string> player_teams_;
 
 	std::set<std::string>& connected_users_rw();
+	void send_to_server(const config& cfg) const;
+	bool receive_from_server(config& dst) const;
 };
 
 class side_engine

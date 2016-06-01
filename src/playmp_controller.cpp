@@ -36,6 +36,7 @@
 #include "countdown_clock.hpp"
 #include "synced_context.hpp"
 #include "replay_helper.hpp"
+#include "wesnothd_connection.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -282,10 +283,10 @@ void playmp_controller::wait_for_upload()
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			const network::connection res = dialogs::network_receive_dialog(
-				gui_->video(), _("Waiting for next scenario..."), cfg);
+			const bool  res = dialogs::network_receive_dialog(
+				gui_->video(), _("Waiting for next scenario..."), cfg, mp_info_->wesnothd_connection);
 
-			if(res != network::null_connection) {
+			if(res) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
 					break;
 				}
@@ -296,12 +297,12 @@ void playmp_controller::wait_for_upload()
 			}
 
 		} catch(const quit_game_exception&) {
-			network_reader_.set_source(playturn_network_adapter::read_network);
+			network_reader_.set_source([this](config& cfg) { return recieve_from_wesnothd(cfg);});
 			turn_data_.send_data();
 			throw;
 		}
 	}
-	network_reader_.set_source(playturn_network_adapter::read_network);
+	network_reader_.set_source([this](config& cfg) { return recieve_from_wesnothd(cfg);});
 }
 
 void playmp_controller::after_human_turn(){
@@ -479,10 +480,21 @@ void playmp_controller::process_network_data()
 }
 bool playmp_controller::is_networked_mp() const
 {
-	return network::nconnections() != 0;
+	return mp_info_ != nullptr;
 }
 
-void playmp_controller::send_to_wesnothd(const config& cfg, const std::string& packet_type) const
+void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) const
 {
-	network::send_data(cfg, 0, packet_type);
+	if (mp_info_ != nullptr) {
+		mp_info_->wesnothd_connection.send_data(cfg);
+	}
+}
+bool playmp_controller::recieve_from_wesnothd(config& cfg) const
+{
+	if (mp_info_ != nullptr) {
+		return mp_info_->wesnothd_connection.receive_data(cfg);
+	}
+	else {
+		return false;
+	}
 }
