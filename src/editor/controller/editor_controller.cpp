@@ -43,7 +43,6 @@
 #include "desktop/clipboard.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "leader_scroll_dialog.hpp"
 #include "preferences_display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
@@ -185,7 +184,6 @@ EXIT_STATUS editor_controller::main_loop()
 }
 
 void editor_controller::status_table() {
-	gui::status_table(*gui_, 0);
 }
 
 void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
