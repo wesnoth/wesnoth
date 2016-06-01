@@ -1153,6 +1153,18 @@ void unit_types_preview_pane::process_event()
 	}
 }
 
+static void network_transmission_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg1, const std::string& msg2)
+{
+	if (video.faked()) {
+		while (!conn.finished()) {
+			conn.poll();
+			SDL_Delay(1);
+		}
+	}
+	else {
+		gui2::tnetwork_transmission(conn, msg1, msg2).show(video);
+	}
+}
 
 struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
 {
@@ -1168,7 +1180,7 @@ struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::conne
 bool network_receive_dialog(CVideo& video, const std::string& msg, config& cfg, twesnothd_connection& wesnothd_connection)
 {
 	read_wesnothd_connection_data gui_data(wesnothd_connection);
-	gui2::tnetwork_transmission(gui_data, msg, _("Waiting")).show(video);
+	network_transmission_dialog(video, gui_data, msg, _("Waiting"));
 	return wesnothd_connection.receive_data(cfg);
 }
 
@@ -1181,11 +1193,11 @@ struct connect_wesnothd_connection_data : public gui2::tnetwork_transmission::co
 	twesnothd_connection& conn_;
 };
 
-std::unique_ptr<twesnothd_connection> network_connect_dialog(CVideo& v, const std::string& msg, const std::string& hostname, int port)
+std::unique_ptr<twesnothd_connection> network_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
 {
 	std::unique_ptr<twesnothd_connection> res(new twesnothd_connection(hostname, std::to_string(port)));
 	connect_wesnothd_connection_data gui_data(*res);
-	gui2::tnetwork_transmission(gui_data, msg, _("Connecting")).show(v);
+	network_transmission_dialog(video, gui_data, msg, _("Connecting"));
 	return std::move(res);
 
 }
