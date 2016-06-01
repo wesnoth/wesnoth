@@ -122,17 +122,8 @@ void run_lobby_loop(CVideo& video, mp::ui& ui)
 
 }
 
-namespace {
 
-enum server_type {
-	ABORT_SERVER,
-	WESNOTHD_SERVER,
-	SIMPLE_SERVER
-};
-
-}
-
-static server_type open_connection(CVideo& video, const std::string& original_host)
+static bool open_connection(CVideo& video, const std::string& original_host)
 {
 	DBG_MP << "opening connection" << std::endl;
 	std::string h = original_host;
@@ -144,7 +135,7 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 		if(dlg.get_retval() == gui2::twindow::OK) {
 			h = preferences::network_host();
 		} else {
-			return ABORT_SERVER;
+			return false;
 		}
 	}
 
@@ -174,13 +165,15 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 	do {
 
 		if (!sock) {
-			return ABORT_SERVER;
+			return false;
 		}
 
 		data.clear();
 		network::connection data_res = dialogs::network_receive_dialog(
 				video, _("Reading from Server..."), data);
-		if (!data_res) return ABORT_SERVER;
+		if (!data_res) {
+			return false;
+		}
 		mp::check_response(data_res, data);
 
 		if (data.has_child("reject") || data.has_attribute("version")) {
@@ -277,7 +270,7 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 					warning_msg += _("Do you want to continue?");
 
 					if(gui2::show_message(video, _("Warning"), warning_msg, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
-						return ABORT_SERVER;
+						return false;
 					}
 				}
 
@@ -405,7 +398,8 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 							password_reminder = "yes";
 							break;
 						// Cancel
-						default: return ABORT_SERVER;
+						default:
+							return false;
 					}
 
 				// If we have got a new username we have to start all over again
@@ -423,9 +417,9 @@ static server_type open_connection(CVideo& video, const std::string& original_ho
 		preferences::set_network_host(h);
 
 	if (data.child("join_lobby")) {
-		return WESNOTHD_SERVER;
+		return true;
 	} else {
-		return SIMPLE_SERVER;
+		return false;
 	}
 
 }
@@ -883,10 +877,7 @@ void start_client(CVideo& video, const config& game_config,
 
 	gamechat.clear_history();
 	gamelist.clear();
-	server_type type = open_connection(video, host);
-
-	switch(type) {
-	case WESNOTHD_SERVER:
+	if(open_connection(video, host)) {
 		bool re_enter;
 		do {
 			re_enter = false;
@@ -905,13 +896,6 @@ void start_client(CVideo& video, const config& game_config,
 				network::send_data(config("refresh_lobby"), 0);
 			}
 		} while (re_enter);
-		break;
-	case SIMPLE_SERVER:
-		preferences::set_message_private(false);
-		enter_wait_mode(video, *game_config_ptr, state, false);
-		break;
-	case ABORT_SERVER:
-		break;
 	}
 }
 
