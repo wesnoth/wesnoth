@@ -43,7 +43,6 @@
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
-#include "network.hpp"
 #include "pathfind/teleport.hpp"
 #include "pathfind/pathfind.hpp"
 #include "persist_var.hpp"
