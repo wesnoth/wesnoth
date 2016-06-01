@@ -23,6 +23,7 @@
 #include "global.hpp"
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 #include <limits>
 #include <math.h> // cmath may not provide round()
 #include <vector>
