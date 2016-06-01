@@ -505,7 +505,6 @@ for env in [test_env, campaignd_env, client_env, env]:
         env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
 
         env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
-        env.Append(CPPDEFINES = "HAVE_CXX0X")
 
         if env['openmp']:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])

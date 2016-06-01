@@ -252,10 +252,6 @@ if(NOT MSVC)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-Wall" HAS_COMPILER_FLAG_WALL)
 endif(NOT MSVC)
 
-### Set some extra var for C++11
-add_definitions(-DHAVE_CXX0X)
-
-
 ### Set strict compiler flags.
 
 set(CXX_FLAGS_STRICT_COMPILATION)
