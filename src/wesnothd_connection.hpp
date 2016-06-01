@@ -32,6 +32,7 @@
 #include <deque>
 #include <list>
 #include "exceptions.hpp"
+#include "wesnothd_connection_error.hpp"
 
 class config;
 
@@ -39,11 +40,7 @@ class config;
 class twesnothd_connection : boost::noncopyable
 {
 public:
-
-	struct error : public game::error
-	{
-		error(const boost::system::error_code& error) : game::error(error.message()) {}
-	};
+	using error = wesnothd_connection_error;
 
 	/**
 	 * Constructor.

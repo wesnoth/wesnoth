@@ -19,7 +19,6 @@
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "network.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"

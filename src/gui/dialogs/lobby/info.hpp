@@ -17,7 +17,7 @@
 
 #include "config.hpp"
 #include "gui/dialogs/lobby/data.hpp"
-
+class twesnothd_connection;
 /**
  * This class represents the collective information the client has
  * about the players and games on the server
@@ -25,7 +25,7 @@
 class lobby_info
 {
 public:
-	explicit lobby_info(const config& game_config);
+	explicit lobby_info(const config& game_config, twesnothd_connection&);
 
 	~lobby_info();
 
@@ -113,6 +113,7 @@ private:
 	game_filter_and_stack game_filter_;
 	bool game_filter_invert_;
 	std::vector<bool> games_visibility_;
+	twesnothd_connection& wesnothd_connection_;
 };
 
 #endif

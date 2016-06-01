@@ -25,10 +25,10 @@ class terrain_type;
 class twesnothd_connection;
 #include "map/location.hpp"
 #include "construct_dialog.hpp"
-#include "network.hpp"
 #include "units/ptr.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 
+#include <boost/shared_ptr.hpp>
 namespace dialogs {
 
 

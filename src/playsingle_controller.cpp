@@ -54,6 +54,7 @@
 #include "units/unit.hpp"
 #include "units/animation.hpp"
 #include "util.hpp"
+#include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"
 
@@ -325,20 +326,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			saved_game_ = saved_game();
 		}
 		throw;
-	} catch(network::error& e) {
-		bool disconnect = false;
-		if(e.socket) {
-			e.disconnect();
-			disconnect = true;
-		}
+	} catch(wesnothd_error& e) {
 
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
-		if(disconnect) {
-			throw network::error();
-		} else {
+		if(dynamic_cast<ingame_wesnothd_error*>(&e)) {
 			return LEVEL_RESULT::QUIT;
+		} else {
+			throw;
 		}
 	}
 

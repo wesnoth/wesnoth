@@ -25,6 +25,7 @@
 #include "mp_options.hpp"
 #include "savegame.hpp"
 #include "units/id.hpp"
+#include "wesnothd_connection_error.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -131,11 +132,11 @@ void level_to_gamestate(const config& level, saved_game& state)
 void check_response(bool res, const config& data)
 {
 	if (!res) {
-		throw network::error(_("Connection timed out"));
+		throw wesnothd_error(_("Connection timed out"));
 	}
 
 	if (const config& err = data.child("error")) {
-		throw network::error(err["message"]);
+		throw wesnothd_error(err["message"]);
 	}
 }
 

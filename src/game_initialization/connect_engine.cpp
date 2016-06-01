@@ -760,13 +760,6 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 	return result;
 }
 
-void connect_engine::process_network_error(network::error& error)
-{
-	// The problem isn't related to any specific connection and
-	// it's a general error. So we should just re-throw the error.
-	throw network::error(error.message);
-}
-
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
 	size_t i = 0;

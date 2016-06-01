@@ -28,7 +28,6 @@
 #include "synced_checkup.hpp"
 #include "game_data.hpp"
 #include "game_board.hpp"
-#include "network.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
@@ -246,29 +245,9 @@ int synced_context::get_unit_id_diff()
 	return resources::gameboard->unit_id_manager().get_save_id() - last_unit_id_;
 }
 
-namespace
-{
-	class lua_network_error : public network::error , public tlua_jailbreak_exception
-	{
-	public:
-		lua_network_error(network::error base)
-			: network::error(base), tlua_jailbreak_exception()
-		{}
-	private:
-		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error)
-	};
-}
-
 void synced_context::pull_remote_user_input()
 {
-	try{
-		syncmp_registry::pull_remote_choice();
-	}
-	catch(network::error& err)
-	{
-		throw lua_network_error(err);
-	}
-
+	syncmp_registry::pull_remote_choice();
 }
 
 void synced_context::send_user_choice()

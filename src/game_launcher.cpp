@@ -57,6 +57,7 @@
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
 #include "video.hpp"                    // for CVideo
+#include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp"            // for twml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
@@ -925,14 +926,14 @@ bool game_launcher::play_multiplayer()
 		gui2::show_error_message(video(), _("Error while playing the game: ") + e.message);
 	} catch (mapgen_exception& e) {
 		gui2::show_error_message(video(), std::string(_("Map generator error: ") + e.message));
-	} catch(network::error& e) {
+	} catch(wesnothd_error& e) {
 		if(e.message != "") {
-			ERR_NET << "caught network::error: " << e.message << std::endl;
+			ERR_NET << "caught network error: " << e.message << std::endl;
 			gui2::show_transient_message(video()
 					, ""
 					, translation::gettext(e.message.c_str()));
 		} else {
-			ERR_NET << "caught network::error" << std::endl;
+			ERR_NET << "caught network error" << std::endl;
 		}
 	} catch(config::error& e) {
 		if(e.message != "") {

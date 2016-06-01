@@ -262,7 +262,7 @@ void playmp_controller::linger()
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
 			throw;
-		} catch (network::error&) {
+		} catch (ingame_wesnothd_error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;
 			quit = false;
 		}

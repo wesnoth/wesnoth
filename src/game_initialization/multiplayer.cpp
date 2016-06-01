@@ -168,7 +168,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			i18n_symbols["version1"] = version;
 			i18n_symbols["version2"] = game_config::version;
 			const std::string errorstring = vgettext("The server accepts versions '$version1' while you are using version '$version2'", i18n_symbols);
-			throw network::error(errorstring);
+			throw wesnothd_error(errorstring);
 		}
 
 		// Check for "redirect" messages
@@ -178,7 +178,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			port =redirect["port"].to_int(15000);
 
 			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {
-				throw network::error(_("Server-side redirect loop"));
+				throw wesnothd_error(_("Server-side redirect loop"));
 			}
 			shown_hosts.insert(hostpair(host, port));
 			sock.release();
@@ -284,7 +284,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 								const std::string salt = (*error)["salt"];
 
 								if (salt.length() < 12) {
-									throw network::error(_("Bad data received from server"));
+									throw wesnothd_error(_("Bad data received from server"));
 								}
 
 								sp["password"] = util::create_hash(util::create_hash(password, util::get_salt(salt),
@@ -641,7 +641,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			sound::empty_playlist();
 			sound::stop_music();
 		}
-		lobby_info li(game_config);
+		lobby_info li(game_config, *wesnothd_connection);
 
 		// Force a black background
 		const Uint32 color = SDL_MapRGBA(video.getSurface()->format
@@ -653,7 +653,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
-			gui2::tlobby_main dlg(game_config, li, video);
+			gui2::tlobby_main dlg(game_config, li, video, *wesnothd_connection);
 			dlg.set_preferences_callback(
 				std::bind(do_preferences_dialog,
 					std::ref(video), std::ref(game_config)));

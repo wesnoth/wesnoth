@@ -40,7 +40,6 @@
 #include "help/help.hpp"                     // for help_manager
 #include "image.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
-#include "network.hpp"			// for describe_versions
 #include "preferences.hpp"              // for core_id, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"

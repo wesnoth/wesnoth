@@ -15,7 +15,6 @@
 #define MP_GAME_UTILS_HPP_INCLUDED
 
 #include "mp_game_settings.hpp"
-#include "network.hpp"
 
 class config;
 class saved_game;
