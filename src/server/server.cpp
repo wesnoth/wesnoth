@@ -368,7 +368,9 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	ip_log_(),
 	failed_logins_(),
 	user_handler_(nullptr),
+#ifndef _WIN32
 	input_(io_service_),
+#endif
 	input_path_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -596,7 +598,9 @@ void server::load_config() {
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
 	// Reset (replace) the input stream only if the FIFO path changed.
 	if(fifo_path != input_path_) {
+#ifndef _WIN32
 		input_.close();
+#endif
 		input_path_ = fifo_path;
 		setup_fifo();
 	}
