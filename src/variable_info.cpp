@@ -317,7 +317,7 @@ namespace
 		}
 		else
 		{
-			return get_child_range(*state.child_, state.key_, state.index_, state.index_ + 1);
+			return get_child_range(*state.child_, state.key_, state.index_, 1);
 		}
 	}
 	template<>
@@ -325,14 +325,14 @@ namespace
 	{
 		//Ensure we have a config at the given explicit position.
 		get_child_at<vit_create_if_not_existent>(*state.child_, state.key_, state.index_);
-		return get_child_range(*state.child_, state.key_, state.index_, state.index_ + 1);
+		return get_child_range(*state.child_, state.key_, state.index_, 1);
 	}
 	template<>
 	config::child_itors as_array_visitor<vit_throw_if_not_existent>::from_indexed(as_array_visitor::param_type state) const
 	{
 		//Ensure we have a config at the given explicit position.
 		get_child_at<vit_throw_if_not_existent>(*state.child_, state.key_, state.index_);
-		return get_child_range(*state.child_, state.key_, state.index_, state.index_ + 1);
+		return get_child_range(*state.child_, state.key_, state.index_, 1);
 	}
 }
 /// range_based operations
