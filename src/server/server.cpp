@@ -1076,6 +1076,11 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	assert(inserted);
 
 	send_to_player(socket, games_and_users_list_);
+
+	if (motd_ != "") {
+		send_server_message(socket, motd_);
+	}
+
 	read_from_player(socket);
 
 	// Send other players in the lobby the update that the player has joined
