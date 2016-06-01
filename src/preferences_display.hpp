@@ -27,10 +27,9 @@ namespace preferences {
 		VIEW_FRIENDS
 	};
 
-	void set_scroll_to_action(bool ison);
+	void set_preference_display_settings();
 
 	void set_turbo(bool ison);
-	void set_ellipses(bool ison);
 	void set_grid(bool ison);
 	void set_turbo_speed(double speed);
 	void set_color_cursors(bool value);

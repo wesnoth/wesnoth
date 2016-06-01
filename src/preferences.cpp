@@ -341,7 +341,7 @@ bool scroll_to_action()
 	return get("scroll_to_action", true);
 }
 
-void _set_scroll_to_action(bool ison)
+void set_scroll_to_action(bool ison)
 {
 	prefs["scroll_to_action"] = ison;
 }
@@ -470,7 +470,7 @@ bool ellipses()
 	return get("show_side_colors", false);
 }
 
-void _set_ellipses(bool ison)
+void set_ellipses(bool ison)
 {
 	preferences::set("show_side_colors",  ison);
 }

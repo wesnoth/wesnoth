@@ -62,7 +62,7 @@ namespace preferences {
 	void set_core_id(const std::string& root);
 
 	bool scroll_to_action();
-	void _set_scroll_to_action(bool ison);
+	void set_scroll_to_action(bool ison);
 
 	int min_allowed_width();
 	int min_allowed_height();
@@ -247,7 +247,7 @@ namespace preferences {
 	void set_show_fps(bool value);
 
 	bool ellipses();
-	void _set_ellipses(bool ison);
+	void set_ellipses(bool ison);
 
 	bool grid();
 	void _set_grid(bool ison);

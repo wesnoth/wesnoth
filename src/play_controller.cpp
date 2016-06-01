@@ -350,6 +350,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 void play_controller::init_managers()
 {
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
+	preferences::set_preference_display_settings();
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 

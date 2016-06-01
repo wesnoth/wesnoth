@@ -40,6 +40,14 @@
 
 namespace preferences {
 
+void set_preference_display_settings()
+{
+	set_grid(grid());
+	set_turbo(turbo());
+	set_turbo_speed(turbo_speed());
+	set_color_cursors(preferences::get("color_cursors", true));
+}
+
 void show_preferences_dialog(CVideo& video, const config& game_cfg, const DIALOG_OPEN_TO initial_view)
 {
 	gui2::tpreferences dlg(video, game_cfg);
@@ -55,11 +63,6 @@ void show_preferences_dialog(CVideo& video, const config& game_cfg, const DIALOG
 	}
 
 	dlg.show(video);
-}
-
-void set_scroll_to_action(bool ison)
-{
-	_set_scroll_to_action(ison);
 }
 
 void set_turbo(bool ison)
@@ -78,11 +81,6 @@ void set_turbo_speed(double speed)
 	if(display::get_singleton()) {
 		display::get_singleton()->set_turbo_speed(speed);
 	}
-}
-
-void set_ellipses(bool ison)
-{
-	_set_ellipses(ison);
 }
 
 void set_grid(bool ison)
