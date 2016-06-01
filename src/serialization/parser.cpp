@@ -597,14 +597,35 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 	}
 }
 
-void write(std::ostream &out, config const &cfg, unsigned int level)
+static void write_internal(configr_of const &cfg, std::ostream &out, std::string& textdomain, size_t tab = 0)
+{
+	if (tab > max_recursion_levels)
+		throw config::error("Too many recursion levels in config write");
+	if (cfg.data_) {
+		write_internal(*cfg.data_, out, textdomain, tab);
+	}
+
+	for (const auto &pair: cfg.subtags_)
+	{
+		assert(pair.first && pair.second);
+		if (!config::valid_id(*pair.first)) {
+			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...\n";
+			continue;
+		}
+		write_open_child(out, *pair.first, tab);
+		write_internal(*pair.second, out, textdomain, tab + 1);
+		write_close_child(out, *pair.first, tab);
+	}
+}
+
+void write(std::ostream &out, configr_of const &cfg, unsigned int level)
 {
 	std::string textdomain = PACKAGE;
 	write_internal(cfg, out, textdomain, level);
 }
 
 template <typename compressor>
-void write_compressed(std::ostream &out, config const &cfg)
+void write_compressed(std::ostream &out, configr_of const &cfg)
 {
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter;
 	filter.push(compressor());
@@ -615,12 +636,12 @@ void write_compressed(std::ostream &out, config const &cfg)
 	filter << "\n";
 }
 
-void write_gz(std::ostream &out, config const &cfg)
+void write_gz(std::ostream &out, configr_of const &cfg)
 {
 	write_compressed<boost::iostreams::gzip_compressor>(out, cfg);
 }
 
-void write_bz2(std::ostream &out, config const &cfg)
+void write_bz2(std::ostream &out, configr_of const &cfg)
 {
 	write_compressed<boost::iostreams::bzip2_compressor>(out, cfg);
 }

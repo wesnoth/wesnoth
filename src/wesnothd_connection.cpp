@@ -111,7 +111,7 @@ void twesnothd_connection::handle_handshake(const error_code& ec)
 	recv();
 }
 
-void twesnothd_connection::send_data(const config& request)
+void twesnothd_connection::send_data(const configr_of& request)
 {
 	poll();
 	send_queue_.emplace_back();
