@@ -387,6 +387,7 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
+        CheckAsio(conf) & \
         conf.CheckBoost("random",require_version = "1.40.0") & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
@@ -409,7 +410,6 @@ if env["prereqs"]:
         conf.CheckOgg() & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
-        CheckAsio(conf) & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version="1.35.0") & \
