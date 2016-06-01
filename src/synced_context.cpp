@@ -292,10 +292,12 @@ boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 
 void synced_context::server_choice::send_request() const
 {
-	network::send_data(config_of("request_choice", config_of
-		("request_id", resources::controller->get_server_request_number())
-		(name(), request())
-	));
+	resources::controller->send_to_wesnothd(config_of
+		("request_choice", config_of
+			("request_id", resources::controller->get_server_request_number())
+			(name(), request())
+		)
+	);
 }
 
 
@@ -305,7 +307,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	set_is_simultaneously();
 	resources::controller->increase_server_request_number();
 	assert(is_synced());
-	const bool is_mp_game = network::nconnections() != 0;
+	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
 	DBG_REPLAY << "ask_server for random_seed\n";

@@ -138,7 +138,7 @@ void playsingle_controller::play_scenario_init()
 		saved_game_.replay_start() = to_config();
 	}
 	start_game();
-	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
+	if( saved_game_.classification().random_mode != "" && is_networked_mp()) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
 			gui_->video(),
@@ -299,7 +299,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		}
 		// If we're a player, and the result is victory/defeat, then send
 		// a message to notify the server of the reason for the game ending.
-		network::send_data(config_of
+		send_to_wesnothd(config_of
 			("info", config_of
 				("type", "termination")
 				("condition", "game over")

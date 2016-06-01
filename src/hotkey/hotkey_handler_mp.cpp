@@ -16,7 +16,6 @@
 
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "network.hpp"		//for nconnections (to determine if we are in a networked game)
 #include "playsingle_controller.hpp"
 #include "playmp_controller.hpp"
 
@@ -66,7 +65,7 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 		case hotkey::HOTKEY_SPEAK:
 		case hotkey::HOTKEY_SPEAK_ALLY:
 		case hotkey::HOTKEY_SPEAK_ALL:
-			res = network::nconnections() > 0;
+			res = playmp_controller_.is_networked_mp();
 			break;
 		case hotkey::HOTKEY_START_NETWORK:
 		case hotkey::HOTKEY_STOP_NETWORK:

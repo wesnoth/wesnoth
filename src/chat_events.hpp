@@ -17,7 +17,7 @@
 #define CHAT_EVENTS_H_INCLUDED
 
 #include "global.hpp"
-
+class config;
 #include <ctime>
 #include <string>
 
@@ -32,6 +32,8 @@ public:
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 
 	void send_command(const std::string& cmd, const std::string& args="");
+
+	virtual void send_to_server(const config& cfg) = 0;
 protected:
 	void do_speak(const std::string& message, bool allies_only=false);
 
@@ -39,9 +41,9 @@ protected:
 	virtual void add_chat_message(const time_t& time,
 			const std::string& speaker, int side, const std::string& message,
 			MESSAGE_TYPE type=MESSAGE_PRIVATE)=0;
-
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
 
+	//Why are these virtual?
 	virtual void send_whisper(const std::string& receiver, const std::string& message);
 
 	virtual void add_whisper_sent(const std::string& receiver, const std::string& message);

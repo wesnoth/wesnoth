@@ -265,6 +265,9 @@ public:
 	 * Changes the UI for this client to the passed side index.
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
+
+	virtual bool is_networked_mp() const { return false; }
+	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 protected:
 	struct scoped_savegame_snapshot
 	{

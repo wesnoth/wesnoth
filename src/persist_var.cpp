@@ -16,7 +16,6 @@
 
 #include "game_data.hpp"
 #include "log.hpp"
-#include "network.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "persist_var.hpp"
@@ -137,7 +136,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 		ERR_PERSIST << "[get_global_variable] missing attribute \"namespace\"";
 		valid = false;
 	}
-	if (network::nconnections() != 0) {
+	if (resources::controller->is_networked_mp()) {
 			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
 			config::attribute_value pcfg_side = pcfg["side"];
 			int side = (pcfg_side.str() == "global" || pcfg_side.empty()) ? resources::controller->current_side() : pcfg_side.to_int();
@@ -172,7 +171,7 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 		ERR_PERSIST << "[set_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
-	if (network::nconnections() != 0) {
+	if (resources::controller->is_networked_mp()) {
 		config::attribute_value pcfg_side = pcfg["side"];
 		int side = pcfg_side;
 		//Check side matching only if the side is not "global" or empty.
@@ -211,7 +210,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 		ERR_PERSIST << "[clear_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
-	if (network::nconnections() != 0) {
+	if (resources::controller->is_networked_mp()) {
 		config::attribute_value pcfg_side = pcfg["side"];
 		const int side = pcfg_side.to_int();
 		//Check side matching only if the side is not "global" or empty.

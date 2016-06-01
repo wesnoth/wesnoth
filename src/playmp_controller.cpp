@@ -359,7 +359,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	config& info = cfg.add_child("info");
 	info["type"] = "termination";
 	info["condition"] = "out of sync";
-	network::send_data(cfg, 0);
+	send_to_wesnothd(cfg);
 
 	std::stringstream temp_buf;
 	std::vector<std::string> err_lines = utils::split(err_msg,'\n');
@@ -476,4 +476,13 @@ void playmp_controller::process_network_data()
 	else if (res == turn_info::PROCESS_END_LINGER) {
 		replay::process_error("Received unexpected next_scenario during the game");
 	}
+}
+bool playmp_controller::is_networked_mp() const
+{
+	return network::nconnections() != 0;
+}
+
+void playmp_controller::send_to_wesnothd(const config& cfg, const std::string& packet_type) const
+{
+	network::send_data(cfg, 0, packet_type);
 }

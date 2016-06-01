@@ -103,6 +103,7 @@ public:
 	void do_search(const std::string& new_search);
 	void do_command(const std::string &str);
 	void do_ai_formula(const std::string &str, int side_num, mouse_handler &mousehandler);
+	void send_to_server(const config& cfg) override;
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
@@ -116,7 +117,6 @@ private:
 	//void do_speak(const std::string& message, bool allies_only);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
-	static void change_side_controller(const std::string& side, const std::string& player);
 	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;

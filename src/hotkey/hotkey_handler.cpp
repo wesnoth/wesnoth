@@ -24,7 +24,6 @@
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "network.hpp"		//for nconnections (to determine if we are in a networked game)
 #include "play_controller.hpp"
 #include "preferences_display.hpp"
 #include "savegame.hpp"
@@ -337,7 +336,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 		return !linger() && play_controller_.enemies_visible();
 
 	case hotkey::HOTKEY_LOAD_GAME:
-		return network::nconnections() == 0; // Can only load games if not in a network game
+		return !play_controller_.is_networked_mp(); // Can only load games if not in a network game
 
 	case hotkey::HOTKEY_CHAT_LOG:
 		return true;

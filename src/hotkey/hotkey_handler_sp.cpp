@@ -23,7 +23,6 @@
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
-#include "network.hpp"
 #include "save_index.hpp"
 #include "gui/dialogs/message.hpp"
 #include "resources.hpp"
@@ -298,7 +297,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 
 void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
-	if(network::nconnections() > 0)
+	if(playsingle_controller_.is_networked_mp())
 	{
 		config savegame;
 		std::string error_log;
@@ -321,7 +320,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 
 void playsingle_controller::hotkey_handler::replay_exit()
 {
-	if(network::nconnections() == 0) {
+	if(!playsingle_controller_.is_networked_mp()) {
 		resources::recorder->delete_upcoming_commands();
 	}
 	playsingle_controller_.set_player_type_changed();

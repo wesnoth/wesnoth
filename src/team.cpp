@@ -32,7 +32,6 @@
 #include "units/types.hpp"
 #include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"
-#include "network.hpp"
 #include "config_assign.hpp"
 #include "serialization/string_utils.hpp"
 

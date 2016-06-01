@@ -882,27 +882,27 @@ replay_network_sender::~replay_network_sender()
 
 void replay_network_sender::sync_non_undoable()
 {
-	if(network::nconnections() > 0) {
+	if(resources::controller->is_networked_mp()) {
 		resources::whiteboard->send_network_data();
 
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands(),replay::NON_UNDO_DATA));
 		if(data.empty() == false) {
-			network::send_data(cfg, 0);
+			resources::controller->send_to_wesnothd(cfg);
 		}
 	}
 }
 
 void replay_network_sender::commit_and_sync()
 {
-	if(network::nconnections() > 0) {
+	if(resources::controller->is_networked_mp()) {
 		resources::whiteboard->send_network_data();
 
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
 
 		if(data.empty() == false) {
-			network::send_data(cfg, 0);
+			resources::controller->send_to_wesnothd(data);
 		}
 
 		upto_ = obj_.ncommands();
