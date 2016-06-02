@@ -19,7 +19,9 @@
 #include "simple_wml.hpp"
 #include "player.hpp"
 
+#ifndef _WIN32
 #define  BOOST_ASIO_DISABLE_THREADS
+#endif
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 

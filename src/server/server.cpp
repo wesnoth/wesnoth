@@ -406,7 +406,9 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_),
 	cmd_handlers_(),
+#ifndef _WIN32
 	sighup_(io_service_, SIGHUP),
+#endif
 	sigs_(io_service_, SIGINT, SIGTERM),
 	timer_(io_service_)
 {
@@ -424,10 +426,13 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	load_config();
 	ban_manager_.read();
 
+#ifndef _WIN32
 	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+#endif
 	sigs_.async_wait(boost::bind(&server::handle_termination, this, _1, _2));
 }
 
+#ifndef _WIN32
 void server::handle_sighup(const boost::system::error_code& error, int) {
 	assert(!error);
 
@@ -438,6 +443,7 @@ void server::handle_sighup(const boost::system::error_code& error, int) {
 
 	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
 }
+#endif
 
 void server::handle_termination(const boost::system::error_code& error, int signal_number)
 {
