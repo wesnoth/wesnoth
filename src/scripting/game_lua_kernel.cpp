@@ -4047,7 +4047,7 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 		return 0;
 	}
 	std::string area_id;
-	size_t area_i;
+	size_t area_i = 0;
 	if (lua_isstring(L, 2)) {
 		area_id = lua_tostring(L, 1);
 		std::vector<std::string> area_ids = tod_man().get_area_ids();
