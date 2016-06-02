@@ -361,7 +361,7 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	set_source_files_properties(
 		${libwesnoth-lua_STAT_SRC}
 		PROPERTIES COMPILE_FLAGS
-			"-x c++ -Wno-parentheses-equality"
+			"-x c++ -Wno-parentheses-equality -Wno-conditional-uninitialized"
 	)
 endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
