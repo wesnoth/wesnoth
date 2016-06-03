@@ -56,6 +56,8 @@
 #define SOCKET int
 #endif
 
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
 #define LOG_NW LOG_STREAM(info, log_network)

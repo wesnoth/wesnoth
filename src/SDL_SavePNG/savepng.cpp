@@ -9,6 +9,8 @@
 
 #include "savepng.h"
 
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+
 #define SAVEPNG_SUCCESS 0
 #define SAVEPNG_ERROR -1
 

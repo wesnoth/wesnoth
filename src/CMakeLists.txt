@@ -388,37 +388,6 @@ set_target_properties(wesnoth-lua
 		COMPILE_FLAGS
 			"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
 )
-set_source_files_properties(
-	desktop/clipboard.cpp
-	desktop/notifications.cpp
-	network.cpp
-	network_worker.cpp
-	tests/test_lua.cpp
-	PROPERTIES
-		COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
-)
-set_source_files_properties(
-	desktop/open.cpp
-	text.cpp
-	PROPERTIES
-		COMPILE_FLAGS
-			"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
-)
-if(LIBDBUS_FOUND)
-	set_source_files_properties(
-		desktop/dbus_notification.cpp
-		PROPERTIES
-			COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
-	)
-endif()
-
-if(ENABLE_LIBPNG AND PNG_FOUND)
-	set_source_files_properties(
-		SDL_SavePNG/savepng.cpp
-		PROPERTIES
-			COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
-	)
-endif()
 
 ########### Helper libraries ###############
 
