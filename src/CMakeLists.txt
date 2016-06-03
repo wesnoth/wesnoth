@@ -1124,6 +1124,9 @@ if(ENABLE_GAME)
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
+			wesnoth-core
+			wesnoth-lua
+			wesnoth-game
 			wesnoth-sdl
 		)
 	else(ENABLE_TESTS)

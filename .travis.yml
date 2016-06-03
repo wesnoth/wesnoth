@@ -13,7 +13,7 @@ env:
     - OPT=-O2 CXXSTD=11 NLS=false
     - OPT=-O2 CXXSTD=1y NLS=false
     - NLS=true
-    - OPT=-O0 CXXSTD=11 NLS=false USE_CMAKE=true
+    - CXXSTD=11 NLS=false USE_CMAKE=true
 matrix:
   exclude:
     - compiler: gcc
