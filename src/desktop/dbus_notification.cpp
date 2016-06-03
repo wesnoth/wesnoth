@@ -32,6 +32,8 @@
 #include <stdlib.h>
 #include <string>
 
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+
 using boost::uint32_t;
 
 static lg::log_domain log_desktop("desktop");

@@ -11,6 +11,9 @@ Contents
 1. Prerequisites
 ================
 
+Wesnoth requires a compiler with sufficient C++11 support such as GCC 4.7 and
+later, or Clang 3.3 and later.
+
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
@@ -91,11 +94,6 @@ While Wesnoth may be easily installed system-wide using SCons or CMake, it is
 also possible to run it directly from the source directory after building. This
 may be useful in situations where you don't have root access or need to
 rebuild Wesnoth frequently (i.e. for development and testing).
-
-NOTE: It has been reported that using GCC 3.3.6 and earlier versions with
-optimizations enabled will result in a build that is incapable of using
-multiplayer. See <https://gna.org/bugs/?10326> for further details. We
-recommend using GCC 4.x and later to build Wesnoth.
 
 
 3. SCons Build

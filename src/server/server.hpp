@@ -232,8 +232,10 @@ private:
 	void searchlog_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 
+#ifndef _WIN32
 	boost::asio::signal_set sighup_;
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
+#endif
 	boost::asio::signal_set sigs_;
 	void handle_termination(const boost::system::error_code& error, int signal_number);
 

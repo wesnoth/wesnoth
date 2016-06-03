@@ -23,6 +23,8 @@
 # include <fenv.h>
 #endif
 
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+
 BOOST_AUTO_TEST_SUITE( lua )
 
 static int lua_round(lua_State * L, double d)
