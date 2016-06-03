@@ -79,9 +79,13 @@ bool open_object(const std::string& path_or_url)
 	}
 
 	if(child_status) {
+//Those status check macros seem to trigger old style casts on some compiler versions
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
 		if(WIFEXITED(child_status)) {
 			ERR_DU << "open_object(): " << launcher << " returned "
 			       << WEXITSTATUS(child_status) << '\n';
+#pragma GCC diagnostic pop
 		} else {
 			ERR_DU << "open_object(): " << launcher << " failed" << std::endl;
 		}
