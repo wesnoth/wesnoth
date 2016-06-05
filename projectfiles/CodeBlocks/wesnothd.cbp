@@ -47,7 +47,6 @@
 			<Add library="mingwthrd" />
 			<Add library="SDL2main" />
 			<Add library="SDL2" />
-			<Add library="SDL2_net" />
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
 			<Add library="libboost_iostreams-mgw51-mt-1_58.a" />
@@ -82,10 +81,6 @@
 		<Unit filename="../../src/log_windows.hpp" />
 		<Unit filename="../../src/mt_rng.cpp" />
 		<Unit filename="../../src/mt_rng.hpp" />
-		<Unit filename="../../src/network.cpp" />
-		<Unit filename="../../src/network.hpp" />
-		<Unit filename="../../src/network_worker.cpp" />
-		<Unit filename="../../src/network_worker.hpp" />
 		<Unit filename="../../src/scoped_resource.hpp" />
 		<Unit filename="../../src/seed_rng.cpp" />
 		<Unit filename="../../src/seed_rng.hpp" />

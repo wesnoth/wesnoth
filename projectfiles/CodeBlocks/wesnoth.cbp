@@ -52,7 +52,6 @@
 			<Add library="SDL2main" />
 			<Add library="SDL2" />
 			<Add library="SDL2_image" />
-			<Add library="SDL2_net" />
 			<Add library="SDL2_mixer" />
 			<Add library="SDL2_ttf" />
 			<Add library="freetype" />
@@ -200,7 +199,6 @@
 		<Unit filename="../../src/animated.hpp" />
 		<Unit filename="../../src/animated.tpp" />
 		<Unit filename="../../src/animated_game.cpp" />
-		<Unit filename="../../src/array.hpp" />
 		<Unit filename="../../src/arrow.cpp" />
 		<Unit filename="../../src/arrow.hpp" />
 		<Unit filename="../../src/asserts.hpp" />
@@ -831,12 +829,8 @@
 		<Unit filename="../../src/mt_rng.hpp" />
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/neon.hpp" />
-		<Unit filename="../../src/network.cpp" />
-		<Unit filename="../../src/network.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
-		<Unit filename="../../src/network_worker.cpp" />
-		<Unit filename="../../src/network_worker.hpp" />
 		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />
@@ -867,7 +861,6 @@
 		<Unit filename="../../src/preferences_display.hpp" />
 		<Unit filename="../../src/quit_confirmation.cpp" />
 		<Unit filename="../../src/quit_confirmation.hpp" />
-		<Unit filename="../../src/race.hpp" />
 		<Unit filename="../../src/random_new.cpp" />
 		<Unit filename="../../src/random_new.hpp" />
 		<Unit filename="../../src/random_new_deterministic.cpp" />
