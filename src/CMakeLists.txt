@@ -857,7 +857,6 @@ set(wesnoth-main_SRC
 	hotkey/hotkey_handler_sp.cpp
 	hotkey/hotkey_handler_mp.cpp
 	intro.cpp
-	leader_scroll_dialog.cpp
 	map/map.cpp
 	map/location.cpp
 	menu_events.cpp
