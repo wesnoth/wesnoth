@@ -298,7 +298,8 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 						sp["password_reminder"] = password_reminder;
 
 						// Once again send our request...
-						dialogs::network_receive_dialog(video, "", response, *sock);
+						sock->send_data(response);
+						dialogs::network_receive_dialog(video, "", data, *sock);
 
 
 						error = &data.child("error");
