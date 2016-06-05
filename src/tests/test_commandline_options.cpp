@@ -71,11 +71,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.preprocess_output_macros);
 	BOOST_CHECK(!co.preprocess_path);
 	BOOST_CHECK(!co.preprocess_target);
-	BOOST_CHECK(!co.proxy);
-	BOOST_CHECK(!co.proxy_address);
-	BOOST_CHECK(!co.proxy_password);
-	BOOST_CHECK(!co.proxy_port);
-	BOOST_CHECK(!co.proxy_user);
 	BOOST_CHECK(!co.resolution);
 	BOOST_CHECK(!co.rng_seed);
 	BOOST_CHECK(!co.multiplayer_scenario);
