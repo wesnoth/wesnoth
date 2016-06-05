@@ -156,16 +156,6 @@ public:
 	boost::optional<std::string> preprocess_path;
 	/// Target (output) path that was given to the --preprocess option.
 	boost::optional<std::string> preprocess_target;
-	/// True if --proxy was given on the command line. Enables proxy mode.
-	bool proxy;
-	/// Non-empty if --proxy-address was given on the command line.
-	boost::optional<std::string> proxy_address;
-	/// Non-empty if --proxy-password was given on the command line.
-	boost::optional<std::string> proxy_password;
-	/// Non-empty if --proxy-port was given on the command line.
-	boost::optional<std::string> proxy_port;
-	/// Non-empty if --proxy-user was given on the command line.
-	boost::optional<std::string> proxy_user;
 	/// Pair of AxB values specified after --resolution. Changes Wesnoth resolution.
 	boost::optional<boost::tuple<int,int> > resolution;
 	/// RNG seed specified by --rng-seed option. Initializes RNG with given seed.

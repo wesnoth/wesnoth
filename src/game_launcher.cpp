@@ -44,7 +44,6 @@
 #include "map/exception.hpp"
 #include "game_initialization/multiplayer.hpp"              // for start_client, etc
 #include "game_initialization/create_engine.hpp"
-#include "network.hpp"
 #include "game_initialization/playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
 #include "savegame.hpp"                 // for clean_saves, etc
@@ -214,31 +213,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		no_music = true;
 	if (cmdline_opts_.nosound)
 		no_sound = true;
-	//These commented lines should be used to implement support of connection
-	//through a proxy via command line options.
-	//The ANA network module should implement these methods (while the SDL_net won't.)
-	if (cmdline_opts_.proxy)
-		network::enable_connection_through_proxy();
-	if (cmdline_opts_.proxy_address)
-	{
-		network::enable_connection_through_proxy();
-		network::set_proxy_address(*cmdline_opts_.proxy_address);
-	}
-	if (cmdline_opts_.proxy_password)
-	{
-		network::enable_connection_through_proxy();
-		network::set_proxy_password(*cmdline_opts_.proxy_password);
-	}
-	if (cmdline_opts_.proxy_port)
-	{
-		network::enable_connection_through_proxy();
-		network::set_proxy_port(*cmdline_opts_.proxy_port);
-	}
-	if (cmdline_opts_.proxy_user)
-	{
-		network::enable_connection_through_proxy();
-		network::set_proxy_user(*cmdline_opts_.proxy_user);
-	}
 	if (cmdline_opts_.resolution) {
 		const int xres = cmdline_opts_.resolution->get<0>();
 		const int yres = cmdline_opts_.resolution->get<1>();
@@ -884,7 +858,7 @@ bool game_launcher::play_multiplayer()
 			} catch(game::mp_server_error&)
 			{
 				preferences::show_wesnothd_server_search(video());
-				
+
 				try {
 					start_wesnothd();
 				} catch(game::mp_server_error&)

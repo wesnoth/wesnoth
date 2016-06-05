@@ -118,11 +118,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	preprocess_output_macros(),
 	preprocess_path(),
 	preprocess_target(),
-	proxy(false),
-	proxy_address(),
-	proxy_password(),
-	proxy_port(),
-	proxy_user(),
 	resolution(),
 	rng_seed(),
 	server(),
@@ -417,16 +412,6 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		preprocess_input_macros = vm["preprocess-input-macros"].as<std::string>();
 	if (vm.count("preprocess-output-macros"))
 		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
-	if (vm.count("proxy"))
-		proxy = true;
-	if (vm.count("proxy-address"))
-		proxy_address = vm["proxy-address"].as<std::string>();
-	if (vm.count("proxy-password"))
-		proxy_password = vm["proxy-password"].as<std::string>();
-	if (vm.count("proxy-port"))
-		proxy_port = vm["proxy-port"].as<std::string>();
-	if (vm.count("proxy-user"))
-		proxy_user = vm["proxy-user"].as<std::string>();
 	if (vm.count("resolution"))
 		parse_resolution_(vm["resolution"].as<std::string>());
 	if (vm.count("rng-seed"))

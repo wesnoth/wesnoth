@@ -129,20 +129,6 @@ version_table_manager::version_table_manager()
 	names[LIB_SDL_TTF] = "SDL_ttf";
 
 	//
-	// SDL_net
-	//
-
-	SDL_NET_VERSION(&sdl_version);
-	compiled[LIB_SDL_NET] = format_version(sdl_version);
-
-	sdl_rt_version = SDLNet_Linked_Version();
-	if(sdl_rt_version) {
-		linked[LIB_SDL_NET] = format_version(*sdl_rt_version);
-	}
-
-	names[LIB_SDL_NET] = "SDL_net";
-
-	//
 	// Boost
 	//
 
