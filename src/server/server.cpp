@@ -835,6 +835,10 @@ void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 		LOG_SERVER << client_address(socket)
 				<< "\tplayer joined using unknown version " << version_str
 				<< ":\trejecting them\n";
+
+		// For compatibility with older clients
+		response.set_attr("version", accepted_versions_.begin()->c_str());
+
 		simple_wml::node& reject = response.root().add_child("reject");
 		reject.set_attr("accepted_versions", utils::join(accepted_versions_).c_str());
 		send_to_player(socket, response);
