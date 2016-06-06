@@ -30,8 +30,7 @@
 #include "util.hpp"
 #include "wml_exception.hpp"
 #include "formula/string_utils.hpp"
-#include "utils/context_free_grammar_generator.hpp"
-#include "utils/markov_generator.hpp"
+#include "utils/name_generator_factory.hpp"
 #include <SDL.h>
 
 #include "seed_rng.hpp"
@@ -602,35 +601,6 @@ static map_location place_village(const t_translation::t_map& map,
 	return best_loc;
 }
 
-std::string default_map_generator_job::generate_name(boost::shared_ptr<name_generator>& name_generator, const std::string& id,
-		std::string* base_name, utils::string_map* additional_symbols)
-{
-	const std::vector<std::string>& options = utils::split(string_table[id].str());
-	if(options.empty() == false) {
-		const size_t choice = rng_()%options.size();
-		LOG_NG << "calling name generator...\n";
-		const std::string& name = name_generator->generate();
-		LOG_NG << "name generator returned '" << name << "'\n";
-		if(base_name != nullptr) {
-			*base_name = name;
-		}
-
-		LOG_NG << "assigned base name..\n";
-		utils::string_map  table;
-		if(additional_symbols == nullptr) {
-			additional_symbols = &table;
-		}
-
-		LOG_NG << "got additional symbols\n";
-
-		(*additional_symbols)["name"] = name;
-		LOG_NG << "interpolation variables into '" << options[choice] << "'\n";
-		return utils::interpolate_variables_into_string(options[choice], additional_symbols);
-	}
-
-	return "";
-}
-
 // "flood fill" a tile name to adjacent tiles of certain terrain
 static void flood_name(const map_location& start, const std::string& name, std::map<map_location,std::string>& tile_names,
 	const t_translation::t_match& tile_types, const terrain_map& terrain,
@@ -756,6 +726,13 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	// Odd widths are nasty
 	VALIDATE(is_even(width), _("Random maps with an odd width aren't supported."));
 
+	/** Try to find configuration for castles. */
+	const config &castle_config = cfg.child("castle");
+	if (!castle_config) {
+		LOG_NG << "Could not find castle configuration\n";
+		return std::string();
+	}
+
 	int ticks = SDL_GetTicks();
 
 	// Find out what the 'flatland' on this map is, i.e. grassland.
@@ -785,17 +762,34 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	// If the [naming] child is empty, we cannot provide good names.
 	std::map<map_location,std::string>* misc_labels = naming.empty() ? nullptr : labels;
 
-	boost::shared_ptr<name_generator> name_generator;
-	if(naming.has_attribute("name_generator")) {
-		name_generator.reset(new context_free_grammar_generator(naming["name_generator"]));
-		if(!name_generator->is_valid()) {
-			name_generator.reset();
+	std::shared_ptr<name_generator> base_name_generator;
+	std::shared_ptr<name_generator> river_name_generator;
+	std::shared_ptr<name_generator> lake_name_generator;
+	std::shared_ptr<name_generator> road_name_generator;
+	std::shared_ptr<name_generator> bridge_name_generator;
+	std::shared_ptr<name_generator> mountain_name_generator;
+	std::shared_ptr<name_generator> forest_name_generator;
+	std::shared_ptr<name_generator> swamp_name_generator;
+
+	if(misc_labels != nullptr) {
+		name_generator_factory base_generator_factory{ naming, {"male", "base", "bridge", "road", "river", "forest", "lake", "mountain", "swamp"} };
+		
+		naming.get_old_attribute("base_names", "male_names", "[naming]male_names= is deprecated, use base_names= instead");
+		//Due to the attribute detection feature of the factory we also support male_name_generator= but keep it undocumented.
+
+		if(naming.has_attribute("base_names")) {
+			base_name_generator = base_generator_factory.get_name_generator( (naming.has_attribute("base_names") || naming.has_attribute("base_name_generator")) ? "base" : "male" );
 		}
-	}
-	config::attribute_value markov_list = naming.get_old_attribute("names", "male_names",
-		"[naming]male_names is deprecated, use names instead");
-	if(!markov_list.blank()) {
-		name_generator.reset(new markov_generator(utils::split(markov_list), naming["markov_chain_size"], 12));
+		else {
+			base_name_generator = base_generator_factory.get_name_generator("male");
+		}
+		river_name_generator    = base_generator_factory.get_name_generator("river");
+		lake_name_generator     = base_generator_factory.get_name_generator("lake");
+		road_name_generator     = base_generator_factory.get_name_generator("road");
+		bridge_name_generator   = base_generator_factory.get_name_generator("bridge");
+		mountain_name_generator = base_generator_factory.get_name_generator("montain");
+		forest_name_generator   = base_generator_factory.get_name_generator("forest");
+		swamp_name_generator    = base_generator_factory.get_name_generator("swamp");
 	}
 
 	std::vector<terrain_height_mapper> height_conversion;
@@ -850,9 +844,9 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 					terrain, x, y, cfg["river_frequency"]);
 
 				if(river.empty() == false && misc_labels != nullptr) {
-					std::string base_name;
+					std::string base_name = base_name_generator->generate();
 					LOG_NG << "generating name for river...\n";
-					const std::string& name = generate_name(name_generator,"river_name",&base_name);
+					const std::string& name = river_name_generator->generate({{"base",  base_name}});
 					LOG_NG << "named river '" << name << "'\n";
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
@@ -875,8 +869,8 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 				if(res && misc_labels != nullptr) {
 					bool touches_other_lake = false;
 
-					std::string base_name;
-					const std::string& name = generate_name(name_generator,"lake_name",&base_name);
+					std::string base_name = base_name_generator->generate();
+					const std::string& name = lake_name_generator->generate({{"base",  base_name}});
 
 					std::set<location>::const_iterator i;
 
@@ -967,13 +961,6 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 	std::set<location> villages;
 
 	LOG_NG << "placing castles...\n";
-
-	/** Try to find configuration for castles. */
-	const config &castle_config = cfg.child("castle");
-	if (!castle_config) {
-		LOG_NG << "Could not find castle configuration\n";
-		return std::string();
-	}
 
 	/*
 	 * Castle configuration tag contains a 'valid_terrain' attribute which is a
@@ -1089,8 +1076,8 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		// Search a path out for the road
 		pathfind::plain_route rt = pathfind::a_star_search(src, dst, 10000.0, &calc, width, height);
 
-		std::string road_base_name;
-		const std::string& name = generate_name(name_generator, "road_name", &road_base_name);
+		std::string road_name = base_name_generator->generate();
+		const std::string& name = road_name_generator->generate({{"base", road_name}});
 		const int name_frequency = 20;
 		int name_count = 0;
 
@@ -1154,8 +1141,8 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 					if(misc_labels != nullptr && on_bridge == false) {
 						on_bridge = true;
-						std::string bridge_base_name;
-						const std::string& name = generate_name(name_generator, "bridge_name", &bridge_base_name);
+						std::string bridge_base_name = base_name_generator->generate();
+						const std::string& name = bridge_name_generator->generate({{"base",  bridge_base_name}});
 						const location loc(x - width / 3, y-height/3);
 						misc_labels->insert(std::pair<map_location,std::string>(loc,name));
 						bridge_names.insert(std::pair<location,std::string>(loc, bridge_base_name)); //add to use for village naming
@@ -1186,7 +1173,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 					terrain[x][y] = letter;
 					const location loc(x - width / 3, y - height / 3); //add to use for village naming
-					road_names.insert(std::pair<location,std::string>(loc, road_base_name));
+					road_names.insert(std::pair<location,std::string>(loc, road_name));
 				}
 			}
 		}
@@ -1248,7 +1235,8 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 					//name every 15th mountain
 					if ((rng_()%15) == 0) {
 						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-							name = generate_name(name_generator, "mountain_name", &base_name);
+							base_name = base_name_generator->generate();
+							name = mountain_name_generator->generate({{"base",  base_name}});
 						}
 						misc_labels->insert(std::pair<map_location, std::string>(loc, name));
 						mountain_names.insert(std::pair<location, std::string>(loc, base_name));
@@ -1259,7 +1247,8 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 					const std::map<location, std::string>::const_iterator forest_name = forest_names.find(loc);
 					if(forest_name == forest_names.end()) {
 						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-							name = generate_name(name_generator, "forest_name", &base_name);
+							base_name = base_name_generator->generate();
+							name = forest_name_generator->generate({{"base",  base_name}});
 						}
 						forest_names.insert(std::pair<location, std::string>(loc, base_name));
 						// name all connected forest tiles accordingly
@@ -1271,7 +1260,8 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 					const std::map<location, std::string>::const_iterator swamp_name = swamp_names.find(loc);
 					if(swamp_name == swamp_names.end()) {
 						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-							name = generate_name(name_generator, "swamp_name", &base_name);
+							base_name = base_name_generator->generate();
+							name = swamp_name_generator->generate({{"base",  base_name}});
 						}
 						swamp_names.insert(std::pair<location, std::string>(loc, base_name));
 						// name all connected swamp tiles accordingly
@@ -1284,24 +1274,6 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 	if (nvillages > 0)
 	{
-		config naming_cfg = cfg.child_or_empty("village_naming");
-		// If the [village_naming] child is empty, we cannot provide good names.
-		std::map<map_location,std::string>* village_labels = naming_cfg.empty() ? nullptr : labels;
-		
-		// Specify "class" here because we also have a local variable with the same name
-		boost::shared_ptr<class name_generator> village_names_generator;
-		if(naming_cfg.has_attribute("name_generator")) {
-			village_names_generator.reset(new context_free_grammar_generator(naming["name_generator"]));
-			if(!village_names_generator->is_valid()) {
-				village_names_generator.reset();
-			}
-		}
-		config::attribute_value markov_list = naming_cfg.get_old_attribute("names", "male_names",
-			"[village_naming]male_names is deprecated, use names instead");
-		if(!markov_list.blank()) {
-			village_names_generator.reset(new markov_generator(utils::split(markov_list), naming["markov_chain_size"], 12));
-		}
-
 		// First we work out the size of the x and y distance between villages
 		const size_t tiles_per_village = ((width*height)/9)/nvillages;
 		size_t village_x = 1, village_y = 1;
@@ -1319,6 +1291,10 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 		std::set<std::string> used_names;
 		tcode_list_cache adj_liked_cache;
+
+		config village_naming = cfg.child_or_empty("village_naming");
+		// If the [village_naming] child is empty, we cannot provide good names.
+		std::map<map_location,std::string>* village_labels = village_naming.empty() ? nullptr : labels;
 
 		for(size_t vx = 0; vx < width; vx += village_x) {
 			LOG_NG << "village at " << vx << "\n";
@@ -1348,12 +1324,20 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 							villages.insert(res);
 
 							if ( village_labels != nullptr ) {
+
+								name_generator_factory village_name_generator_factory{ village_naming, {"base", "male", "village", "village_lake", "village_river", "village_bridge", "village_grassland", "village_forest", "village_hill", "village_mountain", "village_mountain_anonymous", "village_road", "village_swamp"} };
+
+								village_naming.get_old_attribute("base_names", "male_names", "[village_naming]male_names= is deprecated, use base_names= instead");
+								//Due to the attribute detection feature of the factory we also support male_name_generator= but keep it undocumented.
+
+								base_name_generator = village_name_generator_factory.get_name_generator( (village_naming.has_attribute("base_names") || village_naming.has_attribute("base_name_generator")) ? "base" : "male" );
+
 								const map_location loc(res.x-width/3,res.y-height/3);
 
 								map_location adj[6];
 								get_adjacent_tiles(loc,adj);
 
-								std::string name_type = "village_name";
+								std::string name_type = "village";
 								const t_translation::t_list
 									field    = t_translation::t_list(1, t_translation::GRASS_LAND),
 									forest   = t_translation::t_list(1, t_translation::FOREST),
@@ -1362,27 +1346,27 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 								size_t field_count = 0, forest_count = 0, mountain_count = 0, hill_count = 0;
 
-								utils::string_map symbols;
+								std::map<std::string,std::string> symbols;
 
 								size_t n;
 								for(n = 0; n != 6; ++n) {
 									const std::map<location,std::string>::const_iterator road_name = road_names.find(adj[n]);
 									if(road_name != road_names.end()) {
 										symbols["road"] = road_name->second;
-										name_type = "village_name_road";
+										name_type = "village_road";
 										break;
 									}
 
 									const std::map<location,std::string>::const_iterator river_name = river_names.find(adj[n]);
 									if(river_name != river_names.end()) {
 										symbols["river"] = river_name->second;
-										name_type = "village_name_river";
+										name_type = "village_river";
 
 										const std::map<location,std::string>::const_iterator bridge_name = bridge_names.find(adj[n]);
 										if(bridge_name != bridge_names.end()) {
 										//we should always end up here, since if there is an adjacent bridge, there has to be an adjacent river too
 										symbols["bridge"] = bridge_name->second;
-										name_type = "village_name_river_bridge";
+										name_type = "village_river_bridge";
 										}
 
 										break;
@@ -1391,28 +1375,28 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 									const std::map<location,std::string>::const_iterator forest_name = forest_names.find(adj[n]);
 									if(forest_name != forest_names.end()) {
 										symbols["forest"] = forest_name->second;
-										name_type = "village_name_forest";
+										name_type = "village_forest";
 										break;
 									}
 
 									const std::map<location,std::string>::const_iterator lake_name = lake_names.find(adj[n]);
 									if(lake_name != lake_names.end()) {
 										symbols["lake"] = lake_name->second;
-										name_type = "village_name_lake";
+										name_type = "village_lake";
 										break;
 									}
 
 									const std::map<location,std::string>::const_iterator mountain_name = mountain_names.find(adj[n]);
 									if(mountain_name != mountain_names.end()) {
 										symbols["mountain"] = mountain_name->second;
-										name_type = "village_name_mountain";
+										name_type = "village_mountain";
 										break;
 									}
 
 									const std::map<location,std::string>::const_iterator swamp_name = swamp_names.find(adj[n]);
 									if(swamp_name != swamp_names.end()) {
 										symbols["swamp"] = swamp_name->second;
-										name_type = "village_name_swamp";
+										name_type = "village_swamp";
 										break;
 									}
 
@@ -1432,19 +1416,23 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 								if(n == 6) {
 									if(field_count == 6) {
-										name_type = "village_name_grassland";
+										name_type = "village_grassland";
 									} else if(forest_count >= 2) {
-										name_type = "village_name_forest";
+										name_type = "village_forest";
 									} else if(mountain_count >= 1) {
 										name_type = "village_name_mountain_anonymous";
 									} else if(hill_count >= 2) {
-										name_type = "village_name_hill";
+										name_type = "village_hill";
 									}
 								}
 
 								std::string name;
+
+								symbols["base"] = base_name_generator->generate();
+								std::shared_ptr<name_generator> village_name_generator = village_name_generator_factory.get_name_generator(name_type);
+
 								for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
-									name = generate_name(village_names_generator,name_type,nullptr,&symbols);
+									name = village_name_generator->generate( symbols );
 								}
 
 								used_names.insert(name);

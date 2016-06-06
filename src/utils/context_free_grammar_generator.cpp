@@ -30,8 +30,7 @@ context_free_grammar_generator::~context_free_grammar_generator()
 {
 }
 
-context_free_grammar_generator::context_free_grammar_generator(const std::string& source) :
-	initialized_(false)
+context_free_grammar_generator::context_free_grammar_generator(const std::string& source)
 {
 	const char* reading = source.c_str();
 	nonterminal* current = nullptr;
@@ -53,8 +52,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 			buf.clear();
 		} else if (*reading == '|') {
 			if (!filled || !current) {
-				lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced | symbol";
-				return;
+				throw  name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced | symbol");
 			}
 			filled->push_back(buf);
 			current->possibilities_.push_back(std::vector<std::string>());
@@ -66,19 +64,21 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 		} else if (*reading == '\\' && reading[1] == 't') {
 			reading++;
 			buf.push_back('\t');
+		} else if (*reading == '$') {
+			if (!current) {
+				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals may not contain the $ symbol");
+			} else buf.push_back(*reading);
 		} else {
 			if (*reading == '{') {
 				if (!filled) {
-					lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced { symbol";
-					return;
+					throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced { symbol");
 				}
 				filled->push_back(buf);
 				buf.clear();
 			}
 			else if (*reading == '}') {
 				if (!filled) {
-					lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced } symbol";
-					return;
+					throw  name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced } symbol");
 				}
 				filled->push_back('{' + utils::strip(buf));
 				buf.clear();
@@ -87,16 +87,16 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 		reading++;
 	}
 	if (filled) filled->push_back(buf);
-
-	initialized_ = true;
 }
 
-context_free_grammar_generator::context_free_grammar_generator(const std::map<std::string, std::vector<std::string>>& source) :
-	initialized_(false)
+context_free_grammar_generator::context_free_grammar_generator(const std::map<std::string, std::vector<std::string>>& source)
 {
 	for(auto rule : source) {
 		std::string key = rule.first; // Need to do this because utils::strip is mutating
 		key = utils::strip(key);
+		if(key.find('$')!=std::string::npos) {
+			throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals may not contain the $ symbol");
+		}
 		std::string buf;
 		for(std::string str : rule.second) {
 			nonterminals_[key].possibilities_.emplace_back();
@@ -105,17 +105,16 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 			for(char c : str) {
 				if (c == '{') {
 					if (!filled) {
-						lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced { symbol";
-						return;
+						throw  name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced { symbol");
 					}
 					filled->push_back(buf);
 					buf.clear();
 				}
 				else if (c == '}') {
 					if (!filled) {
-						lg::wml_error() << "[context_free_grammar_generator] Parsing error: misplaced } symbol";
-						return;
+						throw  name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced } symbol");
 					}
+					
 					filled->push_back('{' + utils::strip(buf));
 					buf.clear();
 				} else buf.push_back(c);
@@ -125,36 +124,60 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 			}
 		}
 	}
-	initialized_ = true;
 }
 
-std::string context_free_grammar_generator::print_nonterminal(const std::string& name, uint32_t* seed, short seed_pos) const {
-	std::string result;
-	std::map<std::string, nonterminal>::const_iterator found = nonterminals_.find(name);
-	if (found == nonterminals_.end()) {
-		lg::wml_error() << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined";
-		return "!" + name;
+std::string context_free_grammar_generator::print_nonterminal(const std::string& name, const std::map<std::string,std::string>* variables, uint32_t* seed, short seed_pos) const {
+	if (name.length() >= 2 && name[0] == '$') {
+		std::string variable = name.substr(1);
+		if (variables != nullptr) {
+			std::map<std::string,std::string>::const_iterator found = variables->find(variable);
+			if (found != variables->end()) {
+				return found->second;
+			}
+		}
+
+		lg::wml_error() << "[context_free_grammar_generator] Warning: needed variable" << variable << " not defined";
+		return "!" + variable;
 	}
-	const context_free_grammar_generator::nonterminal& got = found->second;
-	unsigned int picked = seed[seed_pos++] % got.possibilities_.size();
-	if (seed_pos >= seed_size) seed_pos = 0;
-	if (picked == got.last_) {
-		picked = seed[seed_pos++] % got.possibilities_.size();
+	else {
+		std::string result = "";
+
+		std::map<std::string,nonterminal>::const_iterator found = nonterminals_.find(name);
+		if (found == nonterminals_.end()) {
+			lg::wml_error() << "[context_free_grammar_generator] Warning: needed nonterminal" << name << " not defined";
+			return "!" + name;
+		}
+		const context_free_grammar_generator::nonterminal& got = found->second;
+		unsigned int picked = seed[seed_pos++] % got.possibilities_.size();
 		if (seed_pos >= seed_size) seed_pos = 0;
+		if (picked == got.last_) {
+			picked = seed[seed_pos++] % got.possibilities_.size();
+			if (seed_pos >= seed_size) seed_pos = 0;
+		}
+		got.last_ = picked;
+		const std::vector<std::string>& used = got.possibilities_[picked];
+		for (unsigned int i = 0; i < used.size(); i++) {
+			if (used[i][0] == '{') result += print_nonterminal(used[i].substr(1), variables, seed, seed_pos);
+			else result += used[i];
+		}
+		return result;
 	}
-	got.last_ = picked;
-	const std::vector<std::string>& used = got.possibilities_[picked];
-	for (unsigned int i = 0; i < used.size(); i++) {
-		if (used[i][0] == '{') result += print_nonterminal(used[i].substr(1), seed, seed_pos);
-		else result += used[i];
-	}
-	return result;
+}
+
+std::string context_free_grammar_generator::generate(const std::map<std::string,std::string>& variables) const {
+	uint32_t seed[seed_size];
+	init_seed(seed);
+	return print_nonterminal("main", &variables, seed, 0);
 }
 
 std::string context_free_grammar_generator::generate() const {
 	uint32_t seed[seed_size];
+	init_seed(seed);
+	return print_nonterminal("main", nullptr, seed, 0);
+}
+
+void context_free_grammar_generator::init_seed(uint32_t seed[]) const {
 	for (unsigned short int i = 0; i < seed_size; i++) {
 		seed[i] = random_new::generator->next_random();
 	}
-	return print_nonterminal("main", seed, 0);
 }

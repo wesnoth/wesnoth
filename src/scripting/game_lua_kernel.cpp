@@ -104,6 +104,7 @@
 #include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"    // for unit_type_data, unit_types, etc
 #include "util.hpp"                     // for lexical_cast
+#include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
 #include "variable.hpp"                 // for vconfig, etc
@@ -4374,62 +4375,61 @@ static int intf_name_generator(lua_State *L)
 {
 	std::string type = luaL_checkstring(L, 1);
 	name_generator* gen = nullptr;
-	if(type == "markov" || type == "markov_chain") {
-		std::vector<std::string> input;
-		if(lua_istable(L, 2)) {
-			input = lua_check<std::vector<std::string>>(L, 2);
-		} else {
-			input = utils::parenthetical_split(luaL_checkstring(L, 2));
-		}
-		int chain_sz = luaL_optinteger(L, 3, 2);
-		int max_len = luaL_optinteger(L, 4, 12);
-		gen = new(lua_newuserdata(L, sizeof(markov_generator)))
-			markov_generator(input, chain_sz, max_len);
-		// Ensure the pointer didn't change when cast
-		assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
-	} else if(type == "context_free" || type == "cfg" || type == "CFG") {
-		void* buf = lua_newuserdata(L, sizeof(context_free_grammar_generator));
-		if(lua_istable(L, 2)) {
-			std::map<std::string, std::vector<std::string>> data;
-			for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
-				if(!lua_isstring(L, -2)) {
-					lua_pushstring(L, "CFG generator: invalid nonterminal name (must be a string)");
-					return lua_error(L);
-				}
-				if(lua_isstring(L, -1)) {
-					data[lua_tostring(L,-2)] = utils::split(lua_tostring(L,-1),'|');
-				} else if(lua_istable(L, -1)) {
-					data[lua_tostring(L,-2)] = lua_check<std::vector<std::string>>(L, -1);
-				} else {
-					lua_pushstring(L, "CFG generator: invalid noterminal value (must be a string or list of strings)");
-					return lua_error(L);
-				}
+	try {
+		if(type == "markov" || type == "markov_chain") {
+			std::vector<std::string> input;
+			if(lua_istable(L, 2)) {
+				input = lua_check<std::vector<std::string>>(L, 2);
+			} else {
+				input = utils::parenthetical_split(luaL_checkstring(L, 2));
 			}
-			if(!data.empty()) {
-				gen = new(buf) context_free_grammar_generator(data);
+			int chain_sz = luaL_optinteger(L, 3, 2);
+			int max_len = luaL_optinteger(L, 4, 12);
+			gen = new(lua_newuserdata(L, sizeof(markov_generator)))
+				markov_generator(input, chain_sz, max_len);
+			// Ensure the pointer didn't change when cast
+			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
+		} else if(type == "context_free" || type == "cfg" || type == "CFG") {
+			void* buf = lua_newuserdata(L, sizeof(context_free_grammar_generator));
+			if(lua_istable(L, 2)) {
+				std::map<std::string, std::vector<std::string>> data;
+				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
+					if(!lua_isstring(L, -2)) {
+						lua_pushstring(L, "CFG generator: invalid nonterminal name (must be a string)");
+						return lua_error(L);
+					}
+					if(lua_isstring(L, -1)) {
+						data[lua_tostring(L,-2)] = utils::split(lua_tostring(L,-1),'|');
+					} else if(lua_istable(L, -1)) {
+						data[lua_tostring(L,-2)] = lua_check<std::vector<std::string>>(L, -1);
+					} else {
+						lua_pushstring(L, "CFG generator: invalid noterminal value (must be a string or list of strings)");
+						return lua_error(L);
+					}
+				}
+				if(!data.empty()) {
+					gen = new(buf) context_free_grammar_generator(data);
+				}
+			} else {
+				gen = new(buf) context_free_grammar_generator(luaL_checkstring(L, 2));
+			}
+			if(gen) {
+				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
 			}
 		} else {
-			gen = new(buf) context_free_grammar_generator(luaL_checkstring(L, 2));
+			return luaL_argerror(L, 1, "should be either 'markov_chain' or 'context_free'");
 		}
-		if(gen) {
-			assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
-		}
-	} else {
-		return luaL_argerror(L, 1, "should be either 'markov_chain' or 'context_free'");
 	}
-	static const char*const generic_err = "error initializing name generator";
-	if(!gen) {
-		lua_pushstring(L, generic_err);
-		return lua_error(L);
+	catch (const name_generator_invalid_exception& ex) {
+		lua_pushstring(L, ex.what());
+		return lua_error(L);		
 	}
+
 	// We set the metatable now, even if the generator is invalid, so that it
 	// will be properly collected if it was invalid.
 	luaL_getmetatable(L, "name generator");
 	lua_setmetatable(L, -2);
-	if(!gen->is_valid()) {
-		lua_pushstring(L, generic_err);
-		return lua_error(L);
-	}
+
 	return 1;
 }
 
