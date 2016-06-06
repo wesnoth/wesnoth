@@ -1044,3 +1044,166 @@ function wml_actions.reset_fog(cfg)
 		wesnoth.add_fog(sides[i].side, locs, cfg.reset_view)
 	end
 end
+
+function wml_actions.set_variable(cfg)
+	local name = cfg.name or helper.wml_error "trying to set a variable with an empty name"
+
+	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
+		wesnoth.set_variable(name, cfg.value)
+	end
+
+	if cfg.literal ~= nil then
+		wesnoth.set_variable(name, helper.shallow_literal(cfg).literal)
+	end
+
+	if cfg.to_variable then
+		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
+	end
+
+	if cfg.add then
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) + (tonumber(cfg.add) or 0))
+	end
+
+	if cfg.sub then
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) - (tonumber(cfg.sub) or 0))
+	end
+
+	if cfg.multiply then
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) * (tonumber(cfg.multiply) or 0))
+	end
+
+	if cfg.divide then
+		local divide = tonumber(cfg.divide) or 0
+		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) / divide)
+	end
+
+	if cfg.modulo then
+		local modulo = tonumber(cfg.modulo) or 0
+		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) % modulo)
+	end
+
+	if cfg.round then
+		local var = tonumber(wesnoth.get_variable(name) or 0)
+		local round_val = cfg.round
+		if round_val == "ceil" then
+			wesnoth.set_variable(name, math.ceil(var))
+		elseif round_val == "floor" then
+			wesnoth.set_variable(name, math.floor(var))
+		else
+			local decimals, discarded = math.modf(tonumber(round_val) or 0)
+			local value = var * (10 ^ decimals)
+			value = helper.round(value)
+			value = value * (10 ^ -decimals)
+			wesnoth.set_variable(name, value)
+		end
+	end
+
+	-- unlike the other math operations, ipart and fpart do not act on
+	-- the value already contained in the variable
+	-- but on the value assigned to the respective key
+	if cfg.ipart then
+		local ivalue, fvalue = math.modf(tonumber(cfg.ipart) or 0)
+		wesnoth.set_variable(name, ivalue)
+	end
+
+	if cfg.fpart then
+		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
+		wesnoth.set_variable(name, fvalue)
+	end
+
+	if cfg.string_length ~= nil then
+		wesnoth.set_variable(name, string.len(tostring(cfg.string_length)))
+	end
+
+	if cfg.time then
+		if cfg.time == "stamp" then
+			wesnoth.set_variable(name, wesnoth.get_time_stamp())
+		end
+	end
+
+	if cfg.rand then
+		local random_string = cfg.rand
+		local num_choices = 0
+		local items = {}
+
+		-- split on commas
+		for word in random_string:gmatch("[^,]+") do
+			-- does the word contain two dots? If yes, that's a range
+			local dots_start, dots_end = word:find("%.%.")
+			if dots_start then
+				-- split on the dots if so and cast as numbers
+				local low = tonumber(word:sub(1, dots_start-1))
+				local high = tonumber(word:sub(dots_end+1))
+				-- perhaps someone passed a string as part of the range, intercept the issue
+				if not (low and high) then
+					wesnoth.message("<WML>","Malformed range: rand " .. cfg.rand)
+					table.insert(items, word)
+					num_choices = num_choices + 1
+				else
+					if low > high then
+						-- low is greater than high, swap them
+						low, high = high, low
+					end
+
+					-- if both ends represent the same number, then just use that number
+					if low == high then
+						table.insert(items, low)
+						num_choices = num_choices + 1
+					else
+						-- insert a table representing the range
+						table.insert(items, {low, high})
+						-- how many items does the range contain? Increase difference by 1 because we include both ends
+						num_choices = num_choices + (high - low) + 1
+					end
+				end
+			else
+				-- handle as a string
+				table.insert(items, word)
+				num_choices = num_choices + 1
+			end
+		end
+
+		local idx = wesnoth.random(1, num_choices)
+		local done = false
+
+		for i, item in ipairs(items) do
+			if type(item) == "table" then -- that's a range
+				local elems = item[2] - item[1] + 1 -- amount of elements in the range, both ends included
+				if elems >= idx then
+					wesnoth.set_variable(name, item[1] + elems - idx)
+					done = true
+					break
+				else
+					idx = idx - elems
+				end
+			else -- that's a single element
+				idx = idx - 1
+				if idx == 0 then
+					wesnoth.set_variable(name, item)
+					done = true
+				end
+			end
+			if done then break end
+		end
+	end
+
+	local join_child = helper.get_child(cfg, "join")
+	if join_child then
+		local array_name = join_child.variable or helper.wml_error "missing variable= attribute in [join]"
+		local separator = join_child.separator
+		local key_name = join_child.key or "value"
+		local remove_empty = join_child.remove_empty
+
+		local string_to_join = {}
+
+		for i, element in ipairs(helper.get_variable_array(array_name)) do
+			if element[key_name] ~= nil or (not remove_empty) then
+				table.insert(string_to_join, tostring(element[key_name]))
+			end
+		end
+
+		wesnoth.set_variable(name, table.concat(string_to_join, separator))
+	end
+end
