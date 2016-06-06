@@ -55,6 +55,7 @@ public:
 	bool fog_game() const;
 	bool shroud_game() const;
 	bool allow_observers() const;
+	bool registered_users_only() const;
 	bool shuffle_sides() const;
 	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode() const;
 	const config& options() const;
@@ -75,6 +76,7 @@ public:
 	void set_fog_game(bool val);
 	void set_shroud_game(bool val);
 	void set_allow_observers(bool val);
+	void set_registered_users_only(bool val);
 	void set_oos_debug(bool val);
 	void set_shuffle_sides(bool val);
 	void set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val);
@@ -99,6 +101,7 @@ public:
 	bool fog_game_default() const;
 	bool shroud_game_default() const;
 	bool allow_observers_default() const;
+	bool registered_users_only_default() const;
 	bool shuffle_sides_default() const;
 	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode_default() const;
 	const config& options_default() const;

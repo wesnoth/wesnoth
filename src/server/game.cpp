@@ -146,6 +146,10 @@ bool game::allow_observers() const {
 	return get_multiplayer(level_.root())["observer"].to_bool(true);
 }
 
+bool game::registered_users_only() const {
+	return get_multiplayer(level_.root())["registered_users_only"].to_bool(true);
+}
+
 bool game::is_observer(const socket_ptr player) const {
 	return std::find(observers_.begin(),observers_.end(),player) != observers_.end();
 }

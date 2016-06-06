@@ -81,6 +81,7 @@ private:
 
 	gui::label name_entry_label_;
 	gui::button observers_game_;
+	gui::button registered_users_only_;
 	gui::button oos_debug_;
 	gui::button shuffle_sides_;
 	gui::label random_faction_mode_label_;

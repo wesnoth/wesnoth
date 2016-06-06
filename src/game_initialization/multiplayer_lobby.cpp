@@ -845,6 +845,7 @@ void gamebrowser::populate_game_item(gamebrowser::game_item & item, const config
 		item.time_limit = "";
 	}
 	item.xp = game["experience_modifier"].str() + "%";
+	item.registered_users_only = game["registered_users_only"].to_bool(true);
 	item.observers = game["observer"].to_bool(true);
 	item.shuffle_sides = game["shuffle_sides"].to_bool(true);
 	item.verified = verified;

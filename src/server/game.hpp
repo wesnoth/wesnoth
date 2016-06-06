@@ -55,6 +55,7 @@ public:
 	bool is_member(const socket_ptr player) const
 	{ return is_player(player) || is_observer(player); }
 	bool allow_observers() const;
+	bool registered_users_only() const;
 	bool is_observer(const socket_ptr player) const;
 	bool is_player(const socket_ptr player) const;
 
