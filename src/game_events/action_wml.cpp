@@ -154,8 +154,8 @@ namespace { // Support functions
 		map_location dst;
 		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 			if(i==0){
-				src.x = atoi(xvals[i].c_str())-1;
-				src.y = atoi(yvals[i].c_str())-1;
+				src.x = std::stoi(xvals[i])-1;
+				src.y = std::stoi(yvals[i])-1;
 				if (!game_map->on_board(src)) {
 					ERR_CF << "invalid move_unit_fake source: " << src << '\n';
 					break;
@@ -168,8 +168,8 @@ namespace { // Support functions
 					*resources::teams,
 					*game_map);
 
-			dst.x = atoi(xvals[i].c_str())-1;
-			dst.y = atoi(yvals[i].c_str())-1;
+			dst.x = std::stoi(xvals[i])-1;
+			dst.y = std::stoi(yvals[i])-1;
 			if (!game_map->on_board(dst)) {
 				ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
 				break;

@@ -319,7 +319,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 
 		if(items.size() > 1) {
 			str = items.front();
-			time = atoi(items.back().c_str());
+			time = std::stoi(items.back());
 		} else {
 			str = *itor;
 			time = 100;

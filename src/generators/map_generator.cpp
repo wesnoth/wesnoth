@@ -55,31 +55,31 @@ int main(int argc, char** argv)
 		hill_size = 50, lakes=3,
 	    nvillages = 25, nplayers = 2;
 	if(argc >= 2) {
-		x = atoi(argv[1]);
+		x = std::stoi(argv[1]);
 	}
 
 	if(argc >= 3) {
-		y = atoi(argv[2]);
+		y = std::stoi(argv[2]);
 	}
 
 	if(argc >= 4) {
-		iterations = atoi(argv[3]);
+		iterations = std::stoi(argv[3]);
 	}
 
 	if(argc >= 5) {
-		hill_size = atoi(argv[4]);
+		hill_size = std::stoi(argv[4]);
 	}
 
 	if(argc >= 6) {
-		lakes = atoi(argv[5]);
+		lakes = std::stoi(argv[5]);
 	}
 
 	if(argc >= 7) {
-		nvillages = atoi(argv[6]);
+		nvillages = std::stoi(argv[6]);
 	}
 
 	if(argc >= 8) {
-		nplayers = atoi(argv[7]);
+		nplayers = std::stoi(argv[7]);
 	}
 
 	srand(time(nullptr));

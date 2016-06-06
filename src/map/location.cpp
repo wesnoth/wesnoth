@@ -196,10 +196,10 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 	// The co-ordinates in config files will be 1-based,
 	// while we want them as 0-based.
 	if(xs.empty() == false && xs != "recall")
-		x = atoi(xs.c_str()) - 1;
+		x = std::stoi(xs) - 1;
 
 	if(ys.empty() == false && ys != "recall")
-		y = atoi(ys.c_str()) - 1;
+		y = std::stoi(ys) - 1;
 }
 
 void map_location::write(config& cfg) const
@@ -335,13 +335,13 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 			const std::string beg(xloc.begin(),dash);
 			const std::string end(dash+1,xloc.end());
 
-			const int bot = atoi(beg.c_str()) - 1;
-			const int top = atoi(end.c_str()) - 1;
+			const int bot = std::stoi(beg) - 1;
+			const int top = std::stoi(end) - 1;
 
 			if(x < bot || x > top)
 				return false;
 		} else {
-			const int xval = atoi(xloc.c_str()) - 1;
+			const int xval = std::stoi(xloc) - 1;
 			if(xval != x)
 				return false;
 		}
@@ -354,13 +354,13 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 			const std::string beg(yloc.begin(),dash);
 			const std::string end(dash+1,yloc.end());
 
-			const int bot = atoi(beg.c_str()) - 1;
-			const int top = atoi(end.c_str()) - 1;
+			const int bot = std::stoi(beg) - 1;
+			const int top = std::stoi(end) - 1;
 
 			if(y < bot || y > top)
 				return false;
 		} else {
-			const int yval = atoi(yloc.c_str()) - 1;
+			const int yval = std::stoi(yloc) - 1;
 			if(yval != y)
 				return false;
 		}

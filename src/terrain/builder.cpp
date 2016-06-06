@@ -467,7 +467,7 @@ bool terrain_builder::load_images(building_rule &rule)
 
 						int time = 100;
 						if(items.size() > 1) {
-							time = atoi(items.back().c_str());
+							time = std::stoi(items.back());
 						}
 						image::locator locator;
 						if(ri.global_image) {
@@ -684,8 +684,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		if (const config::attribute_value *base_ = img.get("base")) {
 			std::vector<std::string> base = utils::split(*base_);
 			if(base.size() >= 2) {
-				basex = atoi(base[0].c_str());
-				basey = atoi(base[1].c_str());
+				basex = std::stoi(base[0]);
+				basey = std::stoi(base[1]);
 			}
 		}
 
@@ -693,8 +693,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		if (const config::attribute_value *center_ = img.get("center")) {
 			std::vector<std::string> center = utils::split(*center_);
 			if(center.size() >= 2) {
-				center_x = atoi(center[0].c_str());
-				center_y = atoi(center[1].c_str());
+				center_x = std::stoi(center[0]);
+				center_y = std::stoi(center[1]);
 			}
 		}
 

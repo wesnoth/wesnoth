@@ -362,8 +362,8 @@ std::pair<int,int> resolution()
 
 	if (!x.empty() && !y.empty()) {
 		return std::make_pair(
-			std::max(atoi(x.c_str()), min_allowed_width()),
-			std::max(atoi(y.c_str()), min_allowed_height()));
+			std::max(std::stoi(x), min_allowed_width()),
+			std::max(std::stoi(y), min_allowed_height()));
 	} else {
 		return std::pair<int,int>(1024,768);
 	}

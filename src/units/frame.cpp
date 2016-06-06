@@ -36,7 +36,7 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 				std::vector<std::string> second_pass = utils::split(*tmp,':');
 				if(second_pass.size() > 1) {
-					total_specified_time += atoi(second_pass[1].c_str());
+					total_specified_time += std::stoi(second_pass[1]);
 				}
 			}
 			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
@@ -45,7 +45,7 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
-				data_.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
+				data_.push_back(std::pair<std::string,int>(second_pass[0],std::stoi(second_pass[1])));
 			} else {
 				data_.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
 			}
@@ -75,7 +75,7 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 				std::vector<std::string> second_pass = utils::split(*tmp,':');
 				if(second_pass.size() > 1) {
-					total_specified_time += atoi(second_pass[1].c_str());
+					total_specified_time += std::stoi(second_pass[1]);
 				}
 			}
 			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
@@ -84,7 +84,7 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
-				data_.push_back(std::pair<image::locator,int>(second_pass[0],atoi(second_pass[1].c_str())));
+				data_.push_back(std::pair<image::locator,int>(second_pass[0],std::stoi(second_pass[1])));
 			} else {
 				data_.push_back(std::pair<image::locator,int>(second_pass[0],time_chunk));
 			}
@@ -144,7 +144,7 @@ progressive_<T>::progressive_(const std::string &data, int duration) :
 	std::vector<std::string>::const_iterator com_it = comma_split.begin();
 	for(; com_it != comma_split.end(); ++com_it) {
 		std::vector<std::string> colon_split = utils::split(*com_it,':',split_flag);
-		int time = (colon_split.size() > 1) ? atoi(colon_split[1].c_str()) : time_chunk;
+		int time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
 
 		std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
 		T range0 = lexical_cast<T>(range[0]);
@@ -322,8 +322,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	}
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
 	if (color.size() == 3) {
-		text_color_ = display::rgb(atoi(color[0].c_str()),
-			atoi(color[1].c_str()), atoi(color[2].c_str()));
+		text_color_ = display::rgb(std::stoi(color[0]),
+			std::stoi(color[1]), std::stoi(color[2]));
 	}
 
 	if (const config::attribute_value *v = cfg.get(frame_string + "duration")) {
@@ -341,8 +341,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 
 	color = utils::split(cfg[frame_string + "blend_color"]);
 	if (color.size() == 3) {
-		blend_with_ = display::rgb(atoi(color[0].c_str()),
-			atoi(color[1].c_str()), atoi(color[2].c_str()));
+		blend_with_ = display::rgb(std::stoi(color[0]),
+			std::stoi(color[1]), std::stoi(color[2]));
 	}
 }
 

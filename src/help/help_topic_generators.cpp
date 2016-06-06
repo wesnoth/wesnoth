@@ -578,7 +578,7 @@ std::string unit_topic_generator::operator()() const {
 	for (utils::string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
 		 	dam_it != dam_end; ++dam_it) {
 		std::vector<item> row;
-		int resistance = 100 - atoi((*dam_it).second.c_str());
+		int resistance = 100 - std::stoi((*dam_it).second);
 		char resi[16];
 		snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
 		std::string resist = resi;

@@ -154,16 +154,16 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		if (!xpos.empty()) {
 			const std::vector<std::string>& items = utils::split(xpos, '-');
 			if(items.empty() == false) {
-				min_xpos = atoi(items.front().c_str()) - 1;
-				max_xpos = atoi(items.back().c_str());
+				min_xpos = std::stoi(items.front()) - 1;
+				max_xpos = std::stoi(items.back());
 			}
 		}
 
 		if (!ypos.empty()) {
 			const std::vector<std::string>& items = utils::split(ypos, '-');
 			if(items.empty() == false) {
-				min_ypos = atoi(items.front().c_str()) - 1;
-				max_ypos = atoi(items.back().c_str());
+				min_ypos = std::stoi(items.front()) - 1;
+				max_ypos = std::stoi(items.back());
 			}
 		}
 		const size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));
@@ -297,7 +297,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 {
 	const std::string& chance = p.cfg["chance"];
-	if(chance != "" && int(rng_()%100) < atoi(chance.c_str())) {
+	if(chance != "" && int(rng_()%100) < std::stoi(chance)) {
 		return;
 	}
 

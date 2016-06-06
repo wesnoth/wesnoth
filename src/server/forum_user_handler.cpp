@@ -126,7 +126,7 @@ bool fuh::user_exists(const std::string& name) {
 
 bool fuh::user_is_active(const std::string& name) {
 	try {
-		int user_type = atoi(get_detail_for_user(name, "user_type").c_str());
+		int user_type = std::stoi(get_detail_for_user(name, "user_type"));
 		return user_type != USER_INACTIVE && user_type != USER_IGNORE;
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve user type for user '" << name << "' :" << e.message << std::endl;
@@ -219,7 +219,7 @@ std::string fuh::get_mail(const std::string& user) {
 
 time_t fuh::get_lastlogin(const std::string& user) {
 	try {
-		int time_int = atoi(get_writable_detail_for_user(user, "user_lastvisit").c_str());
+		int time_int = std::stoi(get_writable_detail_for_user(user, "user_lastvisit"));
 		return time_t(time_int);
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve last visit for user '" << user << "' :" << e.message << std::endl;
@@ -229,7 +229,7 @@ time_t fuh::get_lastlogin(const std::string& user) {
 
 time_t fuh::get_registrationdate(const std::string& user) {
 	try {
-		int time_int = atoi(get_detail_for_user(user, "user_regdate").c_str());
+		int time_int = std::stoi(get_detail_for_user(user, "user_regdate"));
 		return time_t(time_int);
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve registration date for user '" << user << "' :" << e.message << std::endl;

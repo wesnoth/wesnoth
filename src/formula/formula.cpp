@@ -1108,14 +1108,14 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				return expression_ptr(new identifier_expression(
 				                 std::string(i1->begin,i1->end)));
 			} else if(i1->type == TOKEN_INTEGER) {
-				int n = atoi(std::string(i1->begin,i1->end).c_str());
+				int n = std::stoi(std::string(i1->begin,i1->end));
 				return expression_ptr(new integer_expression(n));
 			} else if(i1->type == TOKEN_DECIMAL) {
 				iterator dot = i1->begin;
 				while( *dot != '.' )
 					++dot;
 
-				int n = atoi(std::string(i1->begin,dot).c_str());
+				int n = std::stoi(std::string(i1->begin,dot));
 
 				iterator end = i1->end;
 
@@ -1223,7 +1223,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	managing_symbols(symbols == nullptr)
 {
 	using namespace formula_tokenizer;
-	
+
 	if(symbols == nullptr) {
 		symbols_ = new function_symbol_table;
 	}

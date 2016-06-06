@@ -317,7 +317,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 
 		if(items.size() > 1) {
 			str = items.front();
-			time = atoi(items.back().c_str());
+			time = std::stoi(items.back());
 		} else {
 			str = *itor;
 			time = 100;

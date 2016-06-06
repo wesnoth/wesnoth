@@ -204,21 +204,21 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 							s_begin = strip(s_begin);
 							std::string s_end = (*itor).substr(found_asterisk+1);
 							s_end = strip(s_end);
-							for (int ast=atoi(s_end.c_str()); ast>0; --ast)
+							for (int ast=std::stoi(s_end); ast>0; --ast)
 								square_expansion.push_back(s_begin);
 						}
 					}
 					else { //expand number range
 						std::string s_begin = (*itor).substr(0,found_tilde);
 						s_begin = strip(s_begin);
-						int begin = atoi(s_begin.c_str());
+						int begin = std::stoi(s_begin);
 						size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
 						std::string s_end = (*itor).substr(found_tilde+1);
 						s_end = strip(s_end);
-						int end = atoi(s_end.c_str());
+						int end = std::stoi(s_end);
 						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
 							padding_end++;
 						}
@@ -442,7 +442,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 // Modify a number by string representing integer difference, or optionally %
 int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
-	int value = atoi(amount.c_str());
+	int value = std::stoi(amount);
 	if(amount[amount.size()-1] == '%') {
 		value = div100rounded(number * value);
 	}
@@ -828,7 +828,7 @@ std::pair< int, int > parse_range(std::string const &str)
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<int,int> res(atoi(a.c_str()), atoi(b.c_str()));
+	std::pair<int,int> res(std::stoi(a), std::stoi(b));
 	if (res.second < res.first)
 		res.second = res.first;
 
