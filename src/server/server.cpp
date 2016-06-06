@@ -840,7 +840,7 @@ void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 		response.set_attr("version", accepted_versions_.begin()->c_str());
 
 		simple_wml::node& reject = response.root().add_child("reject");
-		reject.set_attr("accepted_versions", utils::join(accepted_versions_).c_str());
+		reject.set_attr_dup("accepted_versions", utils::join(accepted_versions_).c_str());
 		send_to_player(socket, response);
 	} else {
 		LOG_SERVER << client_address(socket)
