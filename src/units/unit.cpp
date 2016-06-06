@@ -63,7 +63,6 @@
 #pragma warning (pop)
 #endif
 #include <cassert>                     // for assert
-#include <cstdlib>                     // for rand
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <new>                          // for operator new

@@ -87,7 +87,6 @@
 #include <cerrno>                       // for ENOMEM
 #include <clocale>                      // for setlocale, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
-#include <cstdlib>                     // for srand, exit
 #include <ctime>                       // for time, ctime, time_t
 #include <exception>                    // for exception
 #include <fstream>                      // for operator<<, basic_ostream, etc

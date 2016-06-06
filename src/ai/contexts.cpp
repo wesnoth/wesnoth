@@ -61,7 +61,6 @@
 #include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
 #include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
-#include <cstdlib>                     // for abs
 #include <ctime>                       // for time
 #include <iterator>                     // for back_inserter
 #include <ostream>                      // for operator<<, basic_ostream, etc

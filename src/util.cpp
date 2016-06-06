@@ -19,7 +19,6 @@
 
 #include "util.hpp"
 
-#include <cstdlib>
 template<>
 size_t lexical_cast<size_t, const std::string&>(const std::string& a)
 {

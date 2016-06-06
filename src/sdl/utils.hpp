@@ -23,7 +23,6 @@
 
 #include <SDL.h>
 
-#include <cstdlib>
 #include <iosfwd>
 #include <map>
 #include <string>

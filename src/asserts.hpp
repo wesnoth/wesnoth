@@ -17,7 +17,6 @@
 #ifndef ASSERTS_HPP_INCLUDED
 #define ASSERTS_HPP_INCLUDED
 
-#include <cstdlib>
 #include <iostream>
 #include <csignal>
 

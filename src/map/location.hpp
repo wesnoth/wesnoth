@@ -21,7 +21,6 @@ class config;
 class variable_set;
 
 #include <cmath>
-#include <cstdlib>
 #include <set>
 #include <string>
 #include <vector>
