@@ -448,6 +448,7 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 	default:
 		break;
 	}
+	wesnothd_connection->send_data(config("leave_game"));
 }
 
 static void enter_create_mode(CVideo& video, const config& game_config, saved_game& state, twesnothd_connection* wesnothd_connection,
@@ -491,15 +492,22 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 		campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
+		if (wesnothd_connection) {
+			wesnothd_connection->send_data(config("leave_game"));
+		}
 		break;
 	}
 	case mp::ui::CREATE:
 		enter_create_mode(video, game_config, state, wesnothd_connection, local_players_only);
+		if (wesnothd_connection) {
+			wesnothd_connection->send_data(config("leave_game"));
+		}
 		break;
 	case mp::ui::QUIT:
 	default:
 		if (wesnothd_connection) {
 			wesnothd_connection->send_data(config("refresh_lobby"));
+			wesnothd_connection->send_data(config("leave_game"));
 		}
 		return false;
 	}
