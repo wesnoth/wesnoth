@@ -584,6 +584,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\loadscreen.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\logging.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\lua_interpreter.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -1375,6 +1378,8 @@
     <ClCompile Include="..\..\src\boilerplate-header.cpp" />
     <ClCompile Include="..\..\src\build_info.cpp" />
     <ClCompile Include="..\..\src\carryover.cpp" />
+    <ClCompile Include="..\..\src\chat_command_handler.cpp" />
+    <ClCompile Include="..\..\src\chat_events.cpp" />
     <ClCompile Include="..\..\src\commandline_options.cpp" />
     <ClCompile Include="..\..\src\config_cache.cpp" />
     <ClCompile Include="..\..\src\construct_dialog.cpp" />
@@ -1415,7 +1420,6 @@
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
-    <ClCompile Include="..\..\src\leader_scroll_dialog.cpp" />
     <ClCompile Include="..\..\src\lobby_preferences.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
     <ClCompile Include="..\..\src\marked-up_text.cpp" />
@@ -1482,6 +1486,7 @@
     <ClCompile Include="..\..\src\variable_info.cpp" />
     <ClCompile Include="..\..\src\video.cpp" />
     <ClCompile Include="..\..\src\wesnoth.cpp" />
+    <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wmi_pager.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
   </ItemGroup>
@@ -1931,6 +1936,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\loadscreen.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\logging.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\lua_interpreter.hpp">
@@ -2718,13 +2726,13 @@
     </ClInclude>
     <ClInclude Include="..\..\src\about.hpp" />
     <ClInclude Include="..\..\src\animated.hpp" />
-    <ClInclude Include="..\..\src\array.hpp" />
     <ClInclude Include="..\..\src\arrow.hpp" />
     <ClInclude Include="..\..\src\asserts.hpp" />
     <ClInclude Include="..\..\src\attack_prediction.hpp" />
     <ClInclude Include="..\..\src\attack_prediction_display.hpp" />
     <ClInclude Include="..\..\src\build_info.hpp" />
     <ClInclude Include="..\..\src\carryover.hpp" />
+    <ClInclude Include="..\..\src\chat_command_handler.hpp" />
     <ClInclude Include="..\..\src\chat_events.hpp" />
     <ClInclude Include="..\..\src\commandline_options.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
@@ -2771,10 +2779,10 @@
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
-    <ClInclude Include="..\..\src\leader_scroll_dialog.hpp" />
     <ClInclude Include="..\..\src\lobby_preferences.hpp" />
     <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
+    <ClInclude Include="..\..\src\map_command_handler.hpp" />
     <ClInclude Include="..\..\src\marked-up_text.hpp" />
     <ClInclude Include="..\..\src\md5.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
@@ -2849,6 +2857,8 @@
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\video.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
+    <ClInclude Include="..\..\src\wesnothd_connection.hpp" />
+    <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wmi_pager.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
