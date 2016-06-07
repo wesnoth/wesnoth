@@ -285,7 +285,7 @@ Version 1.13.4+dev:
      * pair() function that produces a key-value pair suitable for
        passing to tomap() - this also means key-value pairs are now
        serializable (relevant in FormulaAI)
-     * sgn(), int() and frac() functions for decimal numbers
+     * sgn(), trunc() and frac() functions for decimal numbers
    * Bugfixes:
      * Dice operator is now synced (where possible)
      * Modulus (%) operator now works on decimal numbers

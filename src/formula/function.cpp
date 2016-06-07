@@ -1318,10 +1318,10 @@ private:
 	}
 };
 
-class int_function : public function_expression {
+class trunc_function : public function_expression {
 public:
-	explicit int_function(const args_list& args)
-	    : function_expression("int", args, 1, 1)
+	explicit trunc_function(const args_list& args)
+	    : function_expression("trunc", args, 1, 1)
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
@@ -1589,7 +1589,7 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(null);
 		FUNCTION(ceil);
 		FUNCTION(floor);
-		FUNCTION(int);
+		FUNCTION(trunc);
 		FUNCTION(frac);
 		FUNCTION(sgn);
 		FUNCTION(round);
