@@ -148,6 +148,11 @@
 # A comment containing "no spellcheck" disables spellchecking on the
 # line where it occurs.
 #
+# wmllint will also make sure the sides in a scenario are in a continuous
+# numerical sequence. However, if a side is defined in a macro the comment
+# "#wmllint: skip-side" is needed where the macro is used in order to allow
+# wmllint to account for it properly.
+#
 # A comment of the form
 #
 # #wmllint: match {ABILITY_FOO} with {SPECIAL_NOTES_IOO}
