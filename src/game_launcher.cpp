@@ -62,6 +62,7 @@
 #include <algorithm>                    // for copy, max, min, stable_sort
 #include <boost/optional.hpp>           // for optional
 #include <boost/tuple/tuple.hpp>        // for tuple
+#include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
 #include <SDL.h>                        // for SDL_INIT_JOYSTICK, etc

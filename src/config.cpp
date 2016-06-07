@@ -26,6 +26,7 @@
 #include "util.hpp"
 #include "utils/const_clone.hpp"
 
+#include <cstdlib>
 #include <cstring>
 #include <deque>
 #include <istream>

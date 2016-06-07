@@ -14,6 +14,7 @@
 #ifndef RANDOM_NEW_H_INCLUDED
 #define RANDOM_NEW_H_INCLUDED
 
+#include <cstdlib> //needed for RAND_MAX
 #include <boost/cstdint.hpp>
 
 using boost::uint32_t;
