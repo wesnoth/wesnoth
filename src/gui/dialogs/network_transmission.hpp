@@ -42,6 +42,7 @@ public:
 		virtual bool finished() = 0;
 		virtual void cancel() = 0;
 		virtual void poll() = 0;
+		virtual ~connection_data() {}
 	};
 private:
 	connection_data* connection_;
