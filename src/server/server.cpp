@@ -335,7 +335,7 @@ static bool make_change_diff(const simple_wml::node& src,
 	return true;
 }
 
-std::string player_status(const wesnothd::player_record& player) {
+static std::string player_status(const wesnothd::player_record& player) {
 	std::ostringstream out;
 	//const network::connection_stats& stats = network::get_connection_stats(pl->first);
 	//const int time_connected = stats.time_connected / 1000;
