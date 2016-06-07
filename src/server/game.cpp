@@ -1481,6 +1481,7 @@ void game::send_history(const socket_ptr socket) const
 
 	try {
 		simple_wml::document* doc = new simple_wml::document(buf.c_str(), simple_wml::INIT_STATIC);
+		doc->compress();
 		send_to_player(socket, *doc);
 		history_.clear();
 		history_.push_back(doc);
