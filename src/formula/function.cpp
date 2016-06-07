@@ -1318,7 +1318,55 @@ private:
 	}
 };
 
+class int_function : public function_expression {
+public:
+	explicit int_function(const args_list& args)
+	    : function_expression("int", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
 
+		int d = decimal.as_int();
+
+		return variant( d );
+	}
+};
+
+class frac_function : public function_expression {
+public:
+	explicit frac_function(const args_list& args)
+	    : function_expression("frac", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
+
+		int d = decimal.as_decimal();
+
+		d%=1000;
+		return variant( d, variant::DECIMAL_VARIANT );
+	}
+};
+
+class sgn_function : public function_expression {
+public:
+	explicit sgn_function(const args_list& args)
+	    : function_expression("sgn", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
+
+		int d = decimal.as_decimal();
+
+		if( d != 0 ) {
+			d = d>0 ? 1 : -1;
+		}
+
+		return variant( d );
+	}
+};
 
 class as_decimal_function : public function_expression {
 public:
@@ -1541,6 +1589,9 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(null);
 		FUNCTION(ceil);
 		FUNCTION(floor);
+		FUNCTION(int);
+		FUNCTION(frac);
+		FUNCTION(sgn);
 		FUNCTION(round);
 		FUNCTION(as_decimal);
 		FUNCTION(refcount);
