@@ -371,6 +371,7 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
+            conf.CheckSDL(require_version = SDL2_version) & \
             conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
@@ -403,7 +404,7 @@ if env["prereqs"]:
     have_sdl_net()
     campaignd_env = conf.Finish()
 
-    client_env = campaignd_env.Clone()
+    client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
         conf.CheckLib("vorbisfile") & \
@@ -456,7 +457,7 @@ if env["prereqs"]:
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
 
-    have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') \
+    have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') and conf.CheckSDL("SDL2_net", header_file = "SDL_net") \
                             or Warning("WARN: Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
