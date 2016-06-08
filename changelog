@@ -13,6 +13,9 @@ Version 1.13.4+dev:
  * Language and i18n:
    * Updated translations: British English, Galician, German, Italian, Japanese,
      Portuguese, RACV, Russian, Scottish Gaelic, Spanish
+ * Networking:
+   * Reworked the multiplayer server to use asio functions for networking
+     operations instead of SDL_net, thus it no longer depends on SDL_net and SDL.
  * Removed support for SDL 1.2. SDL 2 is now the only supported version.
  * Terrains:
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
