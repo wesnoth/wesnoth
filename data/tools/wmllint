@@ -2626,9 +2626,10 @@ def inner_spellcheck(nav, value, spelldict):
         value = value.replace(old, new)
 
     if '<' in value:
-        value = re.sub("<ref>.*< ref>", "", value)
-        value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
-        value = re.sub("<[0-9,]+>", "", value)
+        # remove HelpWML markup and extract its text content where needed
+        value = re.sub(r"<(ref|format)>.*?text='(.*?)'.*?< \1>", r"\2", value)
+        value = re.sub(r"<(jump|img)>.*?< \1>", "", value)
+        value = re.sub(r"<(italic|bold|header)>text='(.*?)'< \1>", r"\2", value)
     # Fold continued lines
     value = re.sub(r'" *\+\s*_? *"', "", value)
     # It would be nice to use pyenchant's tokenizer here, but we can't
