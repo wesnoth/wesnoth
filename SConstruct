@@ -457,7 +457,7 @@ if env["prereqs"]:
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
 
-    have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') and conf.CheckSDL("SDL2_net", header_file = "SDL_net") \
+    have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') \
                             or Warning("WARN: Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
