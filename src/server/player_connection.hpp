@@ -18,6 +18,7 @@
 
 #include "simple_wml.hpp"
 #include "player.hpp"
+#include "server_base.hpp"
 
 #ifndef _WIN32
 #define  BOOST_ASIO_DISABLE_THREADS
@@ -86,8 +87,6 @@ void send_to_players(simple_wml::document& data, const Container& players, socke
 }
 
 void send_server_message(socket_ptr socket, const std::string& message);
-
-std::string client_address(socket_ptr socket);
 
 } // namespace wesnothd
 

@@ -21,6 +21,7 @@
 #include "ban.hpp"
 #include "player.hpp"
 #include "simple_wml.hpp"
+#include "server_base.hpp"
 #include "player_connection.hpp"
 
 #include <boost/scoped_ptr.hpp>
@@ -32,25 +33,14 @@
 namespace wesnothd
 {
 
-class server
+class server : public server_base
 {
 public:
-	server(int port, bool keep_alive, const std::string& config_file, size_t min_threads,size_t max_threads);
-	void run();
+	server(int port, bool keep_alive, const std::string& config_file, size_t, size_t);
+
 private:
-	boost::asio::io_service io_service_;
-	boost::asio::ip::tcp::acceptor acceptor_;
-	void serve();
-	void accept_connection(const boost::system::error_code& error, socket_ptr socket);
+	void handle_new_client(socket_ptr socket);
 
-	union {
-		boost::uint32_t connection_num;
-		char buf[4];
-	} handshake_response_;
-	void serverside_handshake(socket_ptr socket);
-	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> buf);
-
-	void request_version(const boost::system::error_code& error, socket_ptr socket);
 	void handle_version(socket_ptr socket);
 	void read_version(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 
@@ -58,7 +48,9 @@ private:
 	void handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void send_password_request(socket_ptr socket, const std::string& msg,
 		const std::string& user, const char* error_code = "", bool force_confirmation = false);
-	
+
+	bool accepting_connections() const { return !graceful_restart; }
+
 	void add_player(socket_ptr socket, const wesnothd::player&);
 	void read_from_player(socket_ptr socket);
 	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
@@ -129,9 +121,6 @@ private:
 	}
 
 	/** server socket/fifo. */
-#ifndef _WIN32
-	boost::asio::posix::stream_descriptor input_;
-#endif
 	std::string input_path_;
 
 	const std::string config_file_;
@@ -196,9 +185,7 @@ private:
 
 	void setup_fifo();
 #ifndef _WIN32
-	void read_from_fifo();
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
-	boost::asio::streambuf admin_cmd_;
 #endif
 	void setup_handlers();
 
@@ -233,11 +220,8 @@ private:
 	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 
 #ifndef _WIN32
-	boost::asio::signal_set sighup_;
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
 #endif
-	boost::asio::signal_set sigs_;
-	void handle_termination(const boost::system::error_code& error, int signal_number);
 
 	boost::asio::deadline_timer timer_;
 	void handle_graceful_timeout(const boost::system::error_code& error);

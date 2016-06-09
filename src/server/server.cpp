@@ -85,161 +85,13 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
-//compatibility code for MS compilers
-#ifndef SIGHUP
-#define SIGHUP 20
-#endif
-
-namespace
-{
-
-struct server_shutdown : public game::error
-{
-	server_shutdown(const std::string& msg) : game::error(msg) {}
-};
-
-}
+#include "send_receive_wml_helpers.ipp"
 
 namespace wesnothd
 {
 
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "");
-
-std::string client_address(socket_ptr socket)
-{
-	boost::system::error_code error;
-	std::string result = socket->remote_endpoint(error).address().to_string();
-	if(error)
-		return "<unknown address>";
-	else
-		return result;
-}
-
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
-
-static bool check_error(const boost::system::error_code& error, socket_ptr socket)
-{
-	if(error) {
-		ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
-		return true;
-	}
-	return false;
-}
-
-template<typename Handler, typename ErrorHandler>
-struct handle_doc
-{
-	Handler handler;
-	ErrorHandler error_handler;
-	socket_ptr socket;
-	union DataSize
-	{
-		boost::uint32_t size;
-		char buf[4];
-	};
-	boost::shared_ptr<DataSize> data_size;
-	boost::shared_ptr<simple_wml::document> doc;
-	boost::shared_array<char> buffer;
-	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, boost::shared_ptr<simple_wml::document> doc) :
-		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize), doc(doc)
-	{
-		data_size->size = htonl(size);
-	}
-	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler) :
-		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize)
-	{
-	}
-	void operator()(const boost::system::error_code& error, std::size_t)
-	{
-		if(check_error(error, socket)) {
-			error_handler(socket);
-			return;
-		}
-		handler(socket);
-	}
-};
-
-template<typename Handler, typename ErrorHandler>
-void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler, ErrorHandler error_handler)
-{
-	try {
-		boost::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
-		simple_wml::string_span s = doc_ptr->output_compressed();
-		std::vector<boost::asio::const_buffer> buffers;
-
-		handle_doc<Handler, ErrorHandler> handle_send_doc(socket, handler, error_handler, s.size(), doc_ptr);
-		buffers.push_back(boost::asio::buffer(handle_send_doc.data_size->buf, 4));
-		buffers.push_back(boost::asio::buffer(s.begin(), s.size()));
-		async_write(*socket, buffers, handle_send_doc);
-	} catch (simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
-	}
-}
-
-static void null_handler(socket_ptr)
-{
-}
-
-template<typename Handler>
-void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler)
-{
-	async_send_doc(socket, doc, handler, null_handler);
-}
-
-static void async_send_doc(socket_ptr socket, simple_wml::document& doc)
-{
-	async_send_doc(socket, doc, null_handler, null_handler);
-}
-
-template<typename Handler, typename ErrorHandler>
-struct handle_receive_doc : public handle_doc<Handler, ErrorHandler>
-{
-	std::size_t buf_size;
-	handle_receive_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler) :
-	    handle_doc<Handler, ErrorHandler>(socket, handler, error_handler)
-	{
-	}
-	void operator()(const boost::system::error_code& error, std::size_t size)
-	{
-		if(check_error(error, this->socket)) {
-			this->error_handler(this->socket);
-			return;
-		}
-		if(!this->buffer) {
-			assert(size == 4);
-			buf_size = ntohl(this->data_size->size);
-			this->buffer = boost::shared_array<char>(new char[buf_size]);
-			async_read(*(this->socket), boost::asio::buffer(this->buffer.get(), buf_size), *this);
-		} else {
-			simple_wml::string_span compressed_buf(this->buffer.get(), buf_size);
-			try {
-				this->doc.reset(new simple_wml::document(compressed_buf));
-			} catch (simple_wml::error& e) {
-				ERR_SERVER <<
-					client_address(this->socket) <<
-					"\tsimple_wml error in received data: " << e.message << std::endl;
-				async_send_error(this->socket, "Invalid WML received: " + e.message);
-				this->error_handler(this->socket);
-				return;
-			}
-			this->handler(this->socket, this->doc);
-		}
-	}
-};
-
-template<typename Handler, typename ErrorHandler>
-void async_receive_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler)
-{
-	handle_receive_doc<Handler, ErrorHandler> handle_receive_doc(socket, handler, error_handler);
-	async_read(*socket, boost::asio::buffer(handle_receive_doc.data_size->buf, 4), handle_receive_doc);
-}
-
-template<typename Handler>
-void async_receive_doc(socket_ptr socket, Handler handler)
-{
-	async_receive_doc(socket, handler, null_handler);
-}
 
 static void make_add_diff(const simple_wml::node& src, const char* gamelist,
                    const char* type,
@@ -362,16 +214,12 @@ static std::string player_status(const wesnothd::player_record& player) {
 
 server::server(int port, bool keep_alive, const std::string& config_file, size_t /*min_threads*/,
 		size_t /*max_threads*/) :
-	io_service_(),
-	acceptor_(io_service_),
+    server_base(port, keep_alive),
 	ban_manager_(),
 	ip_log_(),
 	failed_logins_(),
-	user_handler_(nullptr),
-#ifndef _WIN32
-	input_(io_service_),
-#endif
-	input_path_(),
+    user_handler_(nullptr),
+    input_path_(),
 	config_file_(config_file),
 	cfg_(read_config()),
 	accepted_versions_(),
@@ -406,30 +254,11 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_),
 	cmd_handlers_(),
-#ifndef _WIN32
-	sighup_(io_service_, SIGHUP),
-#endif
-	sigs_(io_service_, SIGINT, SIGTERM),
 	timer_(io_service_)
 {
-	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
-	acceptor_.open(endpoint.protocol());
-	acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-	acceptor_.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive));
-	acceptor_.bind(endpoint);
-	acceptor_.listen();
-	serve();
-
-	handshake_response_.connection_num = 42;
-
 	setup_handlers();
 	load_config();
 	ban_manager_.read();
-
-#ifndef _WIN32
-	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
-#endif
-	sigs_.async_wait(boost::bind(&server::handle_termination, this, _1, _2));
 }
 
 #ifndef _WIN32
@@ -444,18 +273,6 @@ void server::handle_sighup(const boost::system::error_code& error, int) {
 	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
 }
 #endif
-
-void server::handle_termination(const boost::system::error_code& error, int signal_number)
-{
-	assert(!error);
-
-	const char* signame;
-	if(signal_number == SIGINT) signame = "SIGINT";
-	else if(signal_number == SIGTERM) signame = "SIGTERM";
-	else signame = lexical_cast<std::string>(signal_number).c_str();
-	LOG_SERVER << signame << " caught, exiting without cleanup immediately.\n";
-	exit(128 + signal_number);
-}
 
 void server::handle_graceful_timeout(const boost::system::error_code& error)
 {
@@ -485,11 +302,6 @@ void server::setup_fifo() {
 }
 
 #ifndef _WIN32
-void server::read_from_fifo() {
-	async_read_until(input_,
-			   admin_cmd_, '\n',
-			   boost::bind(&server::handle_read_from_fifo, this, _1, _2));
-}
 
 void server::handle_read_from_fifo(const boost::system::error_code& error, std::size_t) {
 	if(error) {
@@ -549,28 +361,6 @@ void server::setup_handlers()
 	cmd_handlers_["sl"] = &server::searchlog_handler;
 	cmd_handlers_["dul"] = &server::dul_handler;
 	cmd_handlers_["deny_unregistered_login"] = &server::dul_handler;
-}
-
-void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code)
-{
-	simple_wml::document doc;
-	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
-	if(*error_code != '\0') {
-		doc.child("error")->set_attr("error_code", error_code);
-	}
-
-	async_send_doc(socket, doc);
-}
-
-static void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code)
-{
-	simple_wml::document doc;
-	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
-	if(*warning_code != '\0') {
-		doc.child("warning")->set_attr("warning_code", warning_code);
-	}
-
-	async_send_doc(socket, doc);
 }
 
 config server::read_config() const {
@@ -721,69 +511,8 @@ void server::clean_user_handler(const time_t& now) {
 	user_handler_->clean_up();
 }
 
-void server::serve()
+void server::handle_new_client(socket_ptr socket)
 {
-	socket_ptr socket = boost::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
-	acceptor_.async_accept(*socket, boost::bind(&server::accept_connection, this, _1, socket));
-}
-
-void server::accept_connection(const boost::system::error_code& error, socket_ptr socket)
-{
-	if(!graceful_restart)
-		serve();
-	if(error) {
-		ERR_SERVER << "Accept failed: " << error.message() << "\n";
-		return;
-	}
-
-	const std::string ip = client_address(socket);
-
-	const std::string reason = is_ip_banned(ip);
-	if (!reason.empty()) {
-		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-		async_send_error(socket, "You are banned. Reason: " + reason);
-		return;
-	/*} else if (ip_exceeds_connection_limit(ip)) {
-		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-		async_send_error(socket, "Too many connections from your IP.");
-		return;*/
-	} else {
-		
-		DBG_SERVER << ip << "\tnew connection accepted\n";
-		serverside_handshake(socket);
-	}
-
-}
-
-void server::serverside_handshake(socket_ptr socket)
-{
-	boost::shared_array<char> handshake(new char[4]);
-	async_read(
-		*socket, boost::asio::buffer(handshake.get(), 4),
-		boost::bind(&server::handle_handshake, this, _1, socket, handshake)
-	);
-}
-
-void server::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> handshake)
-{
-	if(check_error(error, socket))
-		return;
-
-	if(strcmp(handshake.get(), "\0\0\0\0") != 0) {
-		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
-		return;
-	}
-	async_write(
-		*socket, boost::asio::buffer(handshake_response_.buf, 4),
-		boost::bind(&server::request_version, this, _1, socket)
-	);
-}
-
-void server::request_version(const boost::system::error_code& error, socket_ptr socket)
-{
-	if(check_error(error, socket))
-		return;
-	
 	async_send_doc(socket, version_query_response_,
 		boost::bind(&server::handle_version, this, _1)
 	);
@@ -1936,15 +1665,7 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 	}
 }
 
-void server::run() {
-	try {
-		io_service_.run();
-		LOG_SERVER << "Server has shut down because event loop is out of work\n";
-	} catch(const server_shutdown& e) {
-		LOG_SERVER << "Server has been shut down: " << e.what() << "\n";
-	}
-
-	/*
+    /*
 	int graceful_counter = 0;
 
 	for (int loop = 0;; ++loop) {
@@ -2227,7 +1948,6 @@ void server::run() {
 		}
 	}
 	*/
-}
 
 void server::start_new_server() {
 	if (restart_command.empty())
