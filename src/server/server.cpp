@@ -449,10 +449,10 @@ void server::handle_termination(const boost::system::error_code& error, int sign
 {
 	assert(!error);
 
-	const char* signame;
+	std::string signame;
 	if(signal_number == SIGINT) signame = "SIGINT";
 	else if(signal_number == SIGTERM) signame = "SIGTERM";
-	else signame = lexical_cast<std::string>(signal_number).c_str();
+	else signame = lexical_cast<std::string>(signal_number);
 	LOG_SERVER << signame << " caught, exiting without cleanup immediately.\n";
 	exit(128 + signal_number);
 }
