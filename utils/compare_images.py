@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 #  Script to compare images pixel-by-pixel to detect corruption due to
 #  problems in tools such as optipng.
