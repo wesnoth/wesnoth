@@ -58,6 +58,7 @@ REGISTER_DIALOG(synced_choice_wait)
 tsynced_choice_wait::tsynced_choice_wait(user_choice_manager& mgr)
 	: mgr_(mgr)
 	, message_()
+	, window_(nullptr)
 {
 	mgr_.changed_event_.attach_handler(this);
 }
