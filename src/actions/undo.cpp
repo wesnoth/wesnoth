@@ -321,6 +321,11 @@ void undo_list::read(const config & cfg)
 			undo_action_base * action = create_action(child);
 			if ( undo_action* undoable_action = dynamic_cast<undo_action*>(action)) {
 				redos_.push_back(undoable_action);
+			} else {
+				delete action;
+				ERR_NG << "Error: redo contained action that is not undoable" << std::endl;
+				ERR_NG << "config was: " << child.debug() << std::endl;
+				ERR_NG << "Skipping this redo action..." << std::endl;
 			}
 		} catch (bad_lexical_cast &) {
 			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
