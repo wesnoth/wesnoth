@@ -1169,9 +1169,9 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if ancestors:
         parent = ancestors[-1]
         ancestors = ancestors[:-1]
-    # Check for things marked translated that aren't strings
+    # Check for things marked translated that aren't strings or name generators
     if "_" in nav.text and not ignored:
-        m = re.search(r'[=(]\s*_\s+("?)', nav.text)
+        m = re.search(r'[=(]\s*_\s+("|<<)?', nav.text)
         if m and not m.group(1):
             print(errlead + 'translatability mark before non-string')
     # Most tags are not allowed with [part]
@@ -1573,6 +1573,7 @@ def global_sanity_check(filename, lines):
     in_unstore = False
     in_not = False
     in_clear = False
+    in_name_generator = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1581,6 +1582,7 @@ def global_sanity_check(filename, lines):
     capitalization_error = re.compile("(?<=[.!?])  +[a-z]")
     markcheck = True
     translation_mark = re.compile(r'_ *"')
+    name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     for i in range(len(lines)):
         if '[' in lines[i]:
             preamble_seen = True
@@ -1695,6 +1697,10 @@ def global_sanity_check(filename, lines):
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
+        elif name_generator_re.search(lines[i]):
+            in_name_generator = True
+        elif in_name_generator and ">>" in lines[i]:
+            in_name_generator = False
         if "wmllint: markcheck off" in lines[i]:
             markcheck = False
         elif "wmllint: markcheck on" in lines[i]:
@@ -1838,6 +1844,8 @@ def global_sanity_check(filename, lines):
             if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
             elif key.startswith("{"):
+                pass
+            elif in_name_generator:
                 pass
             elif key == 'letter': # May be led with _s for void
                 pass
