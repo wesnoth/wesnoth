@@ -26,8 +26,8 @@
 #include "saved_game.hpp"               // for saved_game
 #include "scoped_resource.hpp"          // for scoped_ptr
 #include "sound.hpp"                    // for music_thinker
-#include "thread.hpp"                   // for manager
 
+#include <boost/scoped_ptr.hpp>
 #include <string>                       // for string
 #include <vector>                       // for vector
 
@@ -107,10 +107,6 @@ private:
 	const commandline_options& cmdline_opts_;
 	//Never null.
 	boost::scoped_ptr<CVideo> video_;
-
-	//this should get destroyed *after* the video, since we want
-	//to clean up threads after the display disappears.
-	const threading::manager thread_manager;
 
 	const font::manager font_manager_;
 	const preferences::manager prefs_manager_;

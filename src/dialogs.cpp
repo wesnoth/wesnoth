@@ -48,7 +48,6 @@
 #include "strftime.hpp"
 #include "synced_context.hpp"
 #include "terrain/type_data.hpp"
-#include "thread.hpp"
 #include "units/unit.hpp"
 #include "units/animation.hpp"
 #include "units/helper.hpp"
