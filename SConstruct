@@ -72,7 +72,6 @@ opts.AddVariables(
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
-    BoolVariable('libintl', 'Use lib intl for translations, instead of boost locale', False),
     BoolVariable('png', 'Clear to disable writing png files for screenshots, images', True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
@@ -349,13 +348,6 @@ if env["prereqs"]:
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
-    if env["libintl"]:
-        def have_i18n_prereqs():
-            return conf.CheckGettextLibintl()
-    else:
-        def have_i18n_prereqs():
-            return conf.CheckBoost("locale")
-
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
@@ -366,7 +358,7 @@ if env["prereqs"]:
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
         conf.CheckBoost("filesystem", require_version = boost_version) & \
-        have_i18n_prereqs() \
+        conf.CheckBoost("locale") \
             and Info("Base prerequisites are met")) \
             or Warning("Base prerequisites are not met")
 
@@ -390,10 +382,6 @@ if env["prereqs"]:
     if have_client_prereqs:
         if env["PLATFORM"] != "win32":
             have_X = conf.CheckLib('X11')
-        else:
-            if env["libintl"]:
-                Warning("You cannot use the libintl option when building for windows")
-                have_client_prereqs = False
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
         if env["notifications"]:

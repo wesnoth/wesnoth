@@ -13,7 +13,6 @@
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
-//#include <libintl.h>
 
 #include "tests/utils/game_config_manager.hpp"
 
