@@ -75,14 +75,9 @@ if env["PLATFORM"] == "win32":
         filesystem_env.Object("log_windows.cpp")
     ])
 
-if env["libintl"]:
-    libwesnoth_core_sources.extend([
-        filesystem_env.Object("gettext.cpp")
-    ])
-else:
-    libwesnoth_core_sources.extend([
-        filesystem_env.Object("gettext_boost.cpp")
-    ])
+libwesnoth_core_sources.extend([
+	filesystem_env.Object("gettext_boost.cpp")
+])
 
 libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
 

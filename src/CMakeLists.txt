@@ -18,7 +18,6 @@ endif(MSVC)
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
-include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
 
@@ -78,17 +77,10 @@ set(common-external-libs
 	${Boost_FILESYSTEM_LIBRARY}
 )
 
-if(NOT ENABLE_LIBINTL)
-	set(common-external-libs
-		${common-external-libs}
-		${Boost_LOCALE_LIBRARY}
-	)
-else()
-	set(common-external-libs
-		${common-external-libs}
-		${LIBINTL_LIBRARY}
-	)
-endif()
+set(common-external-libs
+	${common-external-libs}
+	${Boost_LOCALE_LIBRARY}
+)
 
 set(game-external-libs
 	${common-external-libs}
@@ -222,6 +214,7 @@ set(libwesnoth-core_STAT_SRC
 	filesystem_common.cpp
 	font/constants.cpp
 	game_config.cpp
+	gettext_boost.cpp
 	hash.cpp
 	log.cpp
 	md5.cpp
@@ -238,18 +231,6 @@ set(libwesnoth-core_STAT_SRC
 	serialization/unicode.cpp
 	serialization/validator.cpp
 )
-
-if(NOT ENABLE_LIBINTL)
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		gettext_boost.cpp
-	)
-else()
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		gettext.cpp
-	)
-endif()
 
 if(WIN32)
 	set(libwesnoth-core_STAT_SRC
@@ -1184,7 +1165,6 @@ add_executable(campaignd ${campaignd_SRC})
 target_link_libraries(campaignd
 	wesnoth-core
 	${server-external-libs}
-	${LIBINTL_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
 	${LIBRT}
 	)
