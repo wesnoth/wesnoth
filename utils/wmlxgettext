@@ -8,6 +8,7 @@
 #                
 #
 # By Nobun, october 2015
+# Thanks to Elvish Hunter for writing code for coloring text under windows
 #
 #                              PURPOSE
 #
@@ -46,7 +47,7 @@ def commandline(args):
         usage='''wmlxgettext --domain=DOMAIN [--directory=START_PATH]
                    [--recursive] [--initialdomain=INITIALDOMAIN]
                    [--package-version=PACKAGE_VERSION]
-                   [--no-ansi-colors] [--fuzzy] [--warnall] [-o OUTPUT_FILE]
+                   [--no-text-colors] [--fuzzy] [--warnall] [-o OUTPUT_FILE]
                    FILE1 FILE2 ... FILEN'''
     )
     parser.add_argument(
@@ -91,15 +92,12 @@ def commandline(args):
               'help you to save a bit of time')
     )
     parser.add_argument(
-        '--no-ansi-colors',
+        '--no-text-colors',
         action='store_false',
         default=True,
-        dest='ansi_col',
+        dest='text_col',
         help=("By default warnings are displayed with colored text. You can "
-              "disable this feature using this flag.\n"
-              "This option doesn't have any effect on windows, since it "
-              "doesn't support ansi colors (on windows colors are ALWAYS"
-              ' disabled).')
+              "disable this feature using this flag.")
     )
     parser.add_argument(
         '--warnall',
@@ -137,7 +135,8 @@ def commandline(args):
 
 def main():
     args = commandline(sys.argv[1:])
-    pywmlx.ansi_setEnabled(args.ansi_col)
+    pywmlx.ansi_setEnabled(args.text_col)
+    pywmlx.wincol_setEnabled(args.text_col)
     pywmlx.set_warnall(args.warnall)
     startPath = os.path.realpath(os.path.normpath(args.start_path))
     sentlist = dict()
