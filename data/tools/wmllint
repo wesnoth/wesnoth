@@ -1573,6 +1573,10 @@ def global_sanity_check(filename, lines):
     in_unstore = False
     in_not = False
     in_clear = False
+    in_checkbox = False
+    in_combo = False
+    in_entry = False
+    in_slider = False
     in_name_generator = False
     storeid = None
     storevar = None
@@ -1697,6 +1701,23 @@ def global_sanity_check(filename, lines):
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
+        # sub-tags of [options] tag
+        elif "[checkbox]" in lines[i]:
+            in_checkbox = True
+        elif "[/checkbox]" in lines[i]:
+            in_checkbox = False
+        elif "[combo]" in lines[i]:
+            in_combo = True
+        elif "[/combo]" in lines[i]:
+            in_combo = False
+        elif "[entry]" in lines[i]:
+            in_entry = True
+        elif "[/entry]" in lines[i]:
+            in_entry = False
+        elif "[slider]" in lines[i]:
+            in_slider = True
+        elif "[/slider]" in lines[i]:
+            in_slider = False
         elif name_generator_re.search(lines[i]):
             in_name_generator = True
         elif in_name_generator and ">>" in lines[i]:
@@ -1881,7 +1902,13 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value and value[0] in ("$", "{"):
                         continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area and not in_trait:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id \
+                         and not in_object and not in_cfg and not in_facet \
+                         and not in_sound_source and not in_remove_sound_source \
+                         and not in_stage and not in_goal and not in_set_menu_item \
+                         and not in_clear_menu_item and not directly_in_event[-1] \
+                         and not in_time_area and not in_trait and not in_checkbox \
+                         and not in_combo and not in_entry and not in_slider:
                         ids = value.split(",")
                         for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists
