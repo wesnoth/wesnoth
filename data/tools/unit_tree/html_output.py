@@ -23,7 +23,7 @@ html_header = '''
 
 top_bar = '''
 <div class="header">
-<a href="http://www.wesnoth.org">
+<a href="//www.wesnoth.org">
 <img src="%(path)swesnoth-logo.jpg" alt="Wesnoth logo"/>
 </a>
 </div>
@@ -34,8 +34,8 @@ top_bar = '''
 html_footer = '''
 <div id="footer">
 <p>%(generation_note)s</p>
-<p><a href="http://wiki.wesnoth.org/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003&#8211;2016 The Battle for Wesnoth</p>
+<p><a href="//wiki.wesnoth.org/Site_Map">Site map</a></p>
+<p><a href="//wiki.wesnoth.org/Wesnoth:Copyrights">Copyright</a> &copy; 2003&#8211;2016 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
 </div>
 </div>
