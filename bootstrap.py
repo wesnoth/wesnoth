@@ -709,6 +709,7 @@ batfile = """\
 @echo off
 set PATH={path};%PATH%
 "{python}" {scons} %*
+pause
 """.format(
   path=os.pathsep.join(paths),
   python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
@@ -722,6 +723,7 @@ batfiledebug = """\
 @echo off
 set PATH={path};%PATH%
 "{python}" {scons} %*
+pause
 """.format(
   path=os.pathsep.join(paths),
   python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
