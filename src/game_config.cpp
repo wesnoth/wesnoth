@@ -118,11 +118,11 @@ namespace game_config
 	std::string shroud_prefix, fog_prefix;
 
 	std::string flag_rgb;
-	std::vector<Uint32> red_green_scale;
-	std::vector<Uint32> red_green_scale_text;
+	std::vector<uint32_t> red_green_scale;
+	std::vector<uint32_t> red_green_scale_text;
 
-	static std::vector<Uint32> blue_white_scale;
-	static std::vector<Uint32> blue_white_scale_text;
+	static std::vector<uint32_t> blue_white_scale;
+	static std::vector<uint32_t> blue_white_scale_text;
 
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;
@@ -136,7 +136,7 @@ namespace game_config
 	std::map<std::string, color_range > team_rgb_range;
 	std::map<std::string, t_string > team_rgb_name;
 
-	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
+	std::map<std::string, std::vector<uint32_t> > team_rgb_colors;
 
 	const version_info wesnoth_version(VERSION);
 	const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
@@ -341,7 +341,7 @@ namespace game_config
 				continue;
 			}
 			std::string id = *a1;
-			std::vector<Uint32> temp;
+			std::vector<uint32_t> temp;
 			if(!string2rgb(*a2, temp)) {
 				std::stringstream ss;
 				ss << "can't parse color string:\n" << teamC.debug() << "\n";
@@ -353,7 +353,7 @@ namespace game_config
 			LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
 
 			//generate palette of same name;
-			std::vector<Uint32> tp = palette(team_rgb_range[id]);
+			std::vector<uint32_t> tp = palette(team_rgb_range[id]);
 			if (tp.empty()) {
 				continue;
 			}
@@ -364,7 +364,7 @@ namespace game_config
 		{
 			for (const config::attribute &rgb : cp.attribute_range())
 			{
-				std::vector<Uint32> temp;
+				std::vector<uint32_t> temp;
 				if(!string2rgb(rgb.second, temp)) {
 					ERR_NG << "Invalid color palette: " << rgb.second << std::endl;
 				}
@@ -378,7 +378,7 @@ namespace game_config
 	{
 		std::map<std::string, color_range>::const_iterator i = team_rgb_range.find(name);
 		if(i == team_rgb_range.end()) {
-			std::vector<Uint32> temp;
+			std::vector<uint32_t> temp;
 			if(!string2rgb(name, temp)) {
 				throw config::error(_("Invalid color range: ") + name);
 			}
@@ -388,13 +388,13 @@ namespace game_config
 		return i->second;
 	}
 
-	const std::vector<Uint32>& tc_info(const std::string& name)
+	const std::vector<uint32_t>& tc_info(const std::string& name)
 	{
-		std::map<std::string, std::vector<Uint32> >::const_iterator i = team_rgb_colors.find(name);
+		std::map<std::string, std::vector<uint32_t> >::const_iterator i = team_rgb_colors.find(name);
 		if(i == team_rgb_colors.end()) {
-			std::vector<Uint32> temp;
+			std::vector<uint32_t> temp;
 			if(!string2rgb(name, temp)) {
-				static std::vector<Uint32> stv;
+				static std::vector<uint32_t> stv;
 				ERR_NG << "Invalid color palette: " << name << std::endl;
 				return stv;
 			}
@@ -404,16 +404,16 @@ namespace game_config
 		return i->second;
 	}
 
-	Uint32 red_to_green(int val, bool for_text){
-		const std::vector<Uint32>& color_scale =
+	uint32_t red_to_green(int val, bool for_text){
+		const std::vector<uint32_t>& color_scale =
 				for_text ? red_green_scale_text : red_green_scale;
 		val = std::max<int>(0, std::min<int>(val, 100));
 		int lvl = (color_scale.size()-1) * val / 100;
 		return color_scale[lvl];
 	}
 
-	Uint32 blue_to_white(int val, bool for_text){
-		const std::vector<Uint32>& color_scale =
+	uint32_t blue_to_white(int val, bool for_text){
+		const std::vector<uint32_t>& color_scale =
 				for_text ? blue_white_scale_text : blue_white_scale;
 		val = std::max<int>(0, std::min<int>(val, 100));
 		int lvl = (color_scale.size()-1) * val / 100;

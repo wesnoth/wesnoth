@@ -6,7 +6,7 @@ from glob import glob
 
 Import("*")
 
-for env in [test_env, campaignd_env, client_env, env]:
+for env in [test_env, client_env, env]:
     env.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
 #color_range.cpp should be removed, but game_config depends on it.
@@ -22,7 +22,6 @@ libwesnoth_core_sources = Split("""
     map/map.cpp
     md5.cpp
     mt_rng.cpp
-    network.cpp
     seed_rng.cpp
     serialization/binary_or_text.cpp
     serialization/parser.cpp
@@ -33,17 +32,14 @@ libwesnoth_core_sources = Split("""
     serialization/unicode.cpp
     serialization/validator.cpp
     terrain/type_data.cpp
-    thread.cpp
     tools/schema/tag.cpp
     tstring.cpp
     util.cpp
     version.cpp
     """)
 
-libwesnoth_core_sources.extend(campaignd_env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
-
-game_config_env = campaignd_env.Clone()
-filesystem_env = campaignd_env.Clone()
+game_config_env = env.Clone()
+filesystem_env = env.Clone()
 if env["PLATFORM"] != "win32":
     game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
     if env['localedirname']:
@@ -83,7 +79,7 @@ else:
         filesystem_env.Object("gettext_boost.cpp")
     ])
 
-libwesnoth_core = [campaignd_env.Library("wesnoth_core", libwesnoth_core_sources)]
+libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
 
 libwesnoth_sources = Split("""
     arrow.cpp
@@ -154,7 +150,7 @@ libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
 dummy_video_sources = Split("""
     tools/dummy_video.cpp
     """)
-libdummy_video = campaignd_env.Library("dummy_video", dummy_video_sources)
+libdummy_video = test_env.Library("dummy_video", dummy_video_sources)
 
 libcampaignd_sources = Split("""
     addon/validation.cpp
@@ -618,7 +614,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
     locals()[target] = bin
     Export(target)
 
-for env in [test_env, campaignd_env, client_env, env]:
+for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 wesnoth_objects = ["wesnoth.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
@@ -630,13 +626,14 @@ client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 campaignd_sources = Split("""
     campaign_server/addon_utils.cpp
     campaign_server/blacklist.cpp
-    server/input_stream.cpp
+    server/server_base.cpp
+    server/simple_wml.cpp
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(campaignd_env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
+campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-campaignd_env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libdummy_video, libcampaignd], have_server_prereqs)
+env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libcampaignd], have_server_prereqs)
 
 wesnothd_sources = Split("""
     server/ban.cpp
@@ -717,7 +714,6 @@ test_sources = Split("""
     tests/test_make_enum.cpp
     tests/test_map_location.cpp
     tests/test_mp_connect.cpp
-    tests/test_network_worker.cpp
     tests/test_recall_list.cpp
     tests/test_rng.cpp
     tests/test_sdl_utils.cpp

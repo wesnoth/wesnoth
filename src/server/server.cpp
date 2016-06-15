@@ -323,7 +323,6 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 	}
 
 	read_from_fifo();
-
 }
 
 #endif

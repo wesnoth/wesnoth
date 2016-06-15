@@ -15,8 +15,12 @@
 #ifndef SEND_RECEIVE_WML_HELPERS_HPP
 #define SEND_RECEIVE_WML_HELPERS_HPP
 
+#include <sys/sendfile.h>
+
+#include "config.h"
 #include "server_base.hpp"
 #include "simple_wml.hpp"
+#include "filesystem.hpp"
 
 template<typename Handler, typename ErrorHandler>
 struct handle_doc
@@ -72,13 +76,95 @@ static void null_handler(socket_ptr)
 {
 }
 
+#ifdef HAVE_SENDFILE
+
+template <typename Handler, typename ErrorHandler>
+struct sendfile_op
+{
+	socket_ptr sock_;
+	int fd_;
+	Handler handler_;
+	ErrorHandler error_handler_;
+	off_t offset_;
+	std::size_t total_bytes_transferred_;
+
+	// Function call operator meeting WriteHandler requirements.
+	// Used as the handler for the async_write_some operation.
+	void operator()(boost::system::error_code ec, std::size_t)
+	{
+	// Put the underlying socket into non-blocking mode.
+	if (!ec)
+		if (!sock_->native_non_blocking())
+			sock_->native_non_blocking(true, ec);
+
+	if (!ec)
+	{
+		for (;;)
+		{
+			// Try the system call.
+			errno = 0;
+			int n = ::sendfile(sock_->native_handle(), fd_, &offset_, 65536);
+			ec = boost::system::error_code(n < 0 ? errno : 0,
+			boost::asio::error::get_system_category());
+			total_bytes_transferred_ += ec ? 0 : n;
+
+			// Retry operation immediately if interrupted by signal.
+			if (ec == boost::asio::error::interrupted)
+				continue;
+
+			// Check if we need to run the operation again.
+			if (ec == boost::asio::error::would_block
+			|| ec == boost::asio::error::try_again)
+			{
+				// We have to wait for the socket to become ready again.
+				sock_->async_write_some(boost::asio::null_buffers(), *this);
+				return;
+			}
+
+			if (ec || n == 0)
+			{
+				// An error occurred, or we have reached the end of the file.
+				// Either way we must exit the loop so we can call the handler.
+				break;
+			}
+
+			// Loop around to try calling sendfile again.
+		}
+	}
+
+	close(fd_);
+
+	if(ec)
+		error_handler_(sock_);
+	else
+		handler_(sock_);
+  }
+};
+
+template<typename Handler, typename ErrorHandler>
+void async_send_file(socket_ptr socket, const std::string& filename, Handler handler, ErrorHandler error_handler)
+{
+	std::vector<boost::asio::const_buffer> buffers;
+
+	size_t filesize = filesystem::file_size(filename);
+	int in_file(open(filename.c_str(), O_RDONLY));
+
+	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, handler, error_handler, 0, 0 };
+
+	handle_doc<Handler, ErrorHandler> handle_send_doc(socket, handler, error_handler, filesize, nullptr);
+	buffers.push_back(boost::asio::buffer(handle_send_doc.data_size->buf, 4));
+	async_write(*socket, buffers, op);
+}
+
+#endif
+
 template<typename Handler>
-void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler)
+inline void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler)
 {
         async_send_doc(socket, doc, handler, null_handler);
 }
 
-static void async_send_doc(socket_ptr socket, simple_wml::document& doc)
+inline void async_send_doc(socket_ptr socket, simple_wml::document& doc)
 {
         async_send_doc(socket, doc, null_handler, null_handler);
 }
@@ -120,14 +206,14 @@ struct handle_receive_doc : public handle_doc<Handler, ErrorHandler>
 };
 
 template<typename Handler, typename ErrorHandler>
-void async_receive_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler)
+inline void async_receive_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler)
 {
         handle_receive_doc<Handler, ErrorHandler> handle_receive_doc(socket, handler, error_handler);
         async_read(*socket, boost::asio::buffer(handle_receive_doc.data_size->buf, 4), handle_receive_doc);
 }
 
 template<typename Handler>
-void async_receive_doc(socket_ptr socket, Handler handler)
+inline void async_receive_doc(socket_ptr socket, Handler handler)
 {
         async_receive_doc(socket, handler, null_handler);
 }

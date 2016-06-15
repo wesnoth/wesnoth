@@ -186,3 +186,11 @@ void async_send_warning(socket_ptr socket, const std::string& msg, const char* w
 
 	async_send_doc(socket, doc);
 }
+
+void async_send_message(socket_ptr socket, const std::string& msg)
+{
+	simple_wml::document doc;
+	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
+
+	async_send_doc(socket, doc);
+}

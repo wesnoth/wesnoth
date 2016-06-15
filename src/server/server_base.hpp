@@ -76,5 +76,6 @@ bool check_error(const boost::system::error_code& error, socket_ptr socket);
 
 void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "");
 void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code = "");
+void async_send_message(socket_ptr socket, const std::string& msg);
 
 #endif // SERVER_BASE_HPP
