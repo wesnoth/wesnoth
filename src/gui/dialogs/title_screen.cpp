@@ -110,8 +110,8 @@ namespace gui2
  * previous_tip & & button & m &
  *         The button show the previous tip of the day. $
  *
- * logo & & progress_bar & o &
- *         A progress bar to "animate" the Wesnoth logo. $
+ * logo & & image & o &
+ *         The Wesnoth logo. $
  *
  * revision_number & & control & o &
  *         A widget to show the version number when the version number is
@@ -336,7 +336,9 @@ void ttitle_screen::pre_show(twindow& window)
 	}
 
 	/***** Logo *****/
-	find_widget<timage>(&window, "logo", false).set_image("misc/logo.png");
+	find_widget<timage>(&window, "logo-bg", false).set_image(game_config::images::game_logo_background);
+
+	find_widget<timage>(&window, "logo", false).set_image(game_config::images::game_logo);
 
 	/***** About dialog button *****/
 	tbutton& about = find_widget<tbutton>(&window, "about", false);
