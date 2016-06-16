@@ -316,7 +316,11 @@ struct write_addon_connection_data : public gui2::tnetwork_transmission::connect
 void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
 {
 	check_connected();
-	std::unique_ptr<gui2::tnetwork_transmission::connection_data> cd(track_upload ? new write_addon_connection_data{ *conn_ } : new write_addon_connection_data{ *conn_ });
+	std::unique_ptr<gui2::tnetwork_transmission::connection_data> cd;
+	if(track_upload)
+		cd.reset(new write_addon_connection_data{ *conn_ });
+	else
+		cd.reset(new read_addon_connection_data{ *conn_ });
 	if(!stat_) {
 		stat_ = new gui2::tnetwork_transmission(*cd, _("Add-ons Manager"), status_message);
 	} else {
