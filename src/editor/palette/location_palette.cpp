@@ -365,6 +365,8 @@ std::vector<std::string> location_palette::action_pressed() const
 	}
 	return res;
 }
-
+location_palette::~location_palette() 
+{
+}
 
 } // end namespace editor

@@ -72,7 +72,7 @@ public:
 
 	virtual void select_item(const std::string& item_id);
 	virtual std::vector<std::string> action_pressed() const override;
-
+	~location_palette();
 private:
 
 	/** Scroll the editor-palette to the top. */
