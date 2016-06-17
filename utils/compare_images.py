@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 #  Script to compare images pixel-by-pixel to detect corruption due to
 #  problems in tools such as optipng.
@@ -36,7 +36,7 @@ for path1, path2 in zip(list1, list2):
     image1 = PIL.open(path1)
     image2 = PIL.open(path2)
 
-    if image1.tostring() != image2.tostring():
+    if image1.tobytes() != image2.tobytes():
         print (path1 + " and " + path2 + " differ!")
 
 # vim: ts=4:sw=4:expandtab

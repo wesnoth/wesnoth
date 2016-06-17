@@ -831,7 +831,8 @@ bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 		}
 		else
 		{
-			return false;
+			lua_pushnil(L);
+			return true;
 		}
 	}
 	catch (const invalid_variablename_exception&)

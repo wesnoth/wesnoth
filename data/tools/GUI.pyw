@@ -1231,8 +1231,10 @@ Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), a
                               "Do you really want to quit?",
                               icon = WARNING)
             if answer:
+                ICONS.clear()
                 self.parent.destroy()
         else:
+            ICONS.clear()
             self.parent.destroy()
 
 root=Tk()

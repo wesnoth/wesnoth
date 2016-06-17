@@ -49,7 +49,7 @@ opts.AddVariables(
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
-    ('extra_flags_config', 'Extra compiler and linker flags to use for configuration and all builds', ""),
+    ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
@@ -105,6 +105,7 @@ opts.AddVariables(
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     EnumVariable('cxx_std', 'Target c++ std version', '11', ['11', '14', '1y']),
     BoolVariable('openmp', 'Enable openmp use.', False),
+    ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
@@ -507,6 +508,8 @@ for env in [test_env, client_env, env]:
 
         if env['strict']:
             env.AppendUnique(CCFLAGS = Split("-Werror -Wold-style-cast $(-Wno-unused-local-typedefs$)"))
+        if env['sanitize']:
+            env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")

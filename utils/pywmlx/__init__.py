@@ -1,4 +1,5 @@
 from pywmlx.wmlerr import ansi_setEnabled
+from pywmlx.wmlerr import wincol_setEnabled
 from pywmlx.wmlerr import wmlerr
 from pywmlx.wmlerr import wmlwarn
 from pywmlx.wmlerr import set_warnall

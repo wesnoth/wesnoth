@@ -1169,9 +1169,9 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if ancestors:
         parent = ancestors[-1]
         ancestors = ancestors[:-1]
-    # Check for things marked translated that aren't strings
+    # Check for things marked translated that aren't strings or name generators
     if "_" in nav.text and not ignored:
-        m = re.search(r'[=(]\s*_\s+("?)', nav.text)
+        m = re.search(r'[=(]\s*_\s+("|<<)?', nav.text)
         if m and not m.group(1):
             print(errlead + 'translatability mark before non-string')
     # Most tags are not allowed with [part]
@@ -1573,6 +1573,12 @@ def global_sanity_check(filename, lines):
     in_unstore = False
     in_not = False
     in_clear = False
+    in_checkbox = False
+    in_combo = False
+    in_entry = False
+    in_slider = False
+    in_map_generator = False
+    in_name_generator = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -1581,6 +1587,7 @@ def global_sanity_check(filename, lines):
     capitalization_error = re.compile("(?<=[.!?])  +[a-z]")
     markcheck = True
     translation_mark = re.compile(r'_ *"')
+    name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     for i in range(len(lines)):
         if '[' in lines[i]:
             preamble_seen = True
@@ -1695,6 +1702,31 @@ def global_sanity_check(filename, lines):
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
+        # sub-tags of [options] tag
+        elif "[checkbox]" in lines[i]:
+            in_checkbox = True
+        elif "[/checkbox]" in lines[i]:
+            in_checkbox = False
+        elif "[combo]" in lines[i]:
+            in_combo = True
+        elif "[/combo]" in lines[i]:
+            in_combo = False
+        elif "[entry]" in lines[i]:
+            in_entry = True
+        elif "[/entry]" in lines[i]:
+            in_entry = False
+        elif "[slider]" in lines[i]:
+            in_slider = True
+        elif "[/slider]" in lines[i]:
+            in_slider = False
+        elif "[generator]" in lines[i]:
+            in_map_generator = True
+        elif "[/generator]" in lines[i]:
+            in_map_generator = False
+        elif name_generator_re.search(lines[i]):
+            in_name_generator = True
+        elif in_name_generator and ">>" in lines[i]:
+            in_name_generator = False
         if "wmllint: markcheck off" in lines[i]:
             markcheck = False
         elif "wmllint: markcheck on" in lines[i]:
@@ -1839,6 +1871,8 @@ def global_sanity_check(filename, lines):
                 pass
             elif key.startswith("{"):
                 pass
+            elif in_name_generator:
+                pass
             elif key == 'letter': # May be led with _s for void
                 pass
             elif key in ('name', 'male_name', 'female_name', 'value'): # FIXME: check this someday
@@ -1873,7 +1907,14 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value and value[0] in ("$", "{"):
                         continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area and not in_trait:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id \
+                         and not in_object and not in_cfg and not in_facet \
+                         and not in_sound_source and not in_remove_sound_source \
+                         and not in_stage and not in_goal and not in_set_menu_item \
+                         and not in_clear_menu_item and not directly_in_event[-1] \
+                         and not in_time_area and not in_trait and not in_checkbox \
+                         and not in_combo and not in_entry and not in_slider \
+                         and not in_map_generator:
                         ids = value.split(",")
                         for id_ in ids:
                             # removal of leading whitespace of items in comma-separated lists
@@ -2626,9 +2667,10 @@ def inner_spellcheck(nav, value, spelldict):
         value = value.replace(old, new)
 
     if '<' in value:
-        value = re.sub("<ref>.*< ref>", "", value)
-        value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
-        value = re.sub("<[0-9,]+>", "", value)
+        # remove HelpWML markup and extract its text content where needed
+        value = re.sub(r"<(ref|format)>.*?text='(.*?)'.*?< \1>", r"\2", value)
+        value = re.sub(r"<(jump|img)>.*?< \1>", "", value)
+        value = re.sub(r"<(italic|bold|header)>text='(.*?)'< \1>", r"\2", value)
     # Fold continued lines
     value = re.sub(r'" *\+\s*_? *"', "", value)
     # It would be nice to use pyenchant's tokenizer here, but we can't

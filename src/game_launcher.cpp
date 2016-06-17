@@ -106,7 +106,6 @@ static lg::log_domain log_enginerefac("enginerefac");
 game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
 	cmdline_opts_(cmdline_opts),
 	video_(new CVideo()),
-	thread_manager(),
 	font_manager_(),
 	prefs_manager_(),
 	image_manager_(),
