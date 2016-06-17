@@ -21,7 +21,7 @@ Version 1.13.4+dev:
  * Terrains:
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
  * Editor:
-   * Allow to set special locations in the editor which can then read by wml.
+   * Allow to set special locations in the editor which can then be read by wml.
  * User Interface:
    * Various design improvements to GUI2 widgets
    * New simpler GUI2 loading screen
@@ -32,7 +32,7 @@ Version 1.13.4+dev:
      on vertical UI resolutions < 600.
    * Improved the dialog for choosing what to do when a player leaves in
      multiplayer.
-   * The side overwie now also shows allied human sides in sp even if
+   * The side overview now also shows allied human sides in sp even if
      they aren't discovered yet
    * Added an option to disable the loadingscreen animation since it caused
      bugs in some configurations.
@@ -146,7 +146,7 @@ Version 1.13.4+dev:
          aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
          (For a limit, replace "recruit" with "limit".)
          The [recruit] and [limit] tags now support id keys for this.
-   * Added side_name= attribute in [side], it's now no longer posible to
+   * Added side_name= attribute in [side], it's now no longer possible to
      specify the current_player attribute in the [side] wml.  
    * unit filters, specially in wesnoth.get_units now have a limit= attribute
      to limit the number or matched units.
