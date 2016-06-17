@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Usage: TeamColorizer [--color=COLOR] input-filename output-filename
 
@@ -145,7 +145,7 @@ def convert_color(color, hex=False):
                 sys.exit(1)
         else:
             new[c] = color['mid'][c]
-        if new[c] not in xrange(256):
+        if new[c] not in range(256):
             sys.stderr.write("Value %s='%s' is out-of-range! Color values "\
                              "should be in the range [0, 255].\n" % (c, new[c]))
             sys.exit(1)
@@ -212,7 +212,7 @@ if __name__ == '__main__':
     color = default_color
     for (opt, val) in options:
         if opt in ('-?', '-h', '--help'):
-            print __doc__
+            print(__doc__)
             sys.exit(0)
         elif opt in ('-d', '--dryrun'):
             dryrun = True
@@ -236,8 +236,8 @@ if __name__ == '__main__':
             color = val
 
     if len(arguments) != 2:
-        print "Invalid number of arguments: %d (required: 2)" % len(arguments)
-        print __doc__
+        print("Invalid number of arguments: %d (required: 2)" % len(arguments))
+        print(__doc__)
         sys.exit(1)
     else:
         (infilename, outfilename) = arguments
@@ -248,7 +248,7 @@ if __name__ == '__main__':
               [infilename, outfilename]
 
     if verbose:
-        print ' '.join(command)
+        print(' '.join(command))
     if not dryrun:
         ret = subprocess.call(command)
         if ret != 0:
