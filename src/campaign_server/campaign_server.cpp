@@ -113,7 +113,7 @@ server::server(const std::string& cfg_file)
 {
 	load_config();
 
-	LOG_CS << "Port: " << port_ << "  ";
+	LOG_CS << "Port: " << port_ << "\n";
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
@@ -459,7 +459,7 @@ void server::register_handlers()
 
 void server::handle_request_campaign_list(const server::request& req)
 {
-	LOG_CS << "sending campaign list to " << req.addr << " using gzip";
+	LOG_CS << "sending campaign list to " << req.addr << " using gzip\n";
 
 	time_t epoch = time(nullptr);
 	config campaign_list;
@@ -554,7 +554,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip";
+	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
 
 	config& campaign = get_campaign(req.cfg["name"]);
 
