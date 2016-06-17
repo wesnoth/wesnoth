@@ -16,9 +16,12 @@ Version 1.13.4+dev:
  * Networking:
    * Reworked the multiplayer server to use asio functions for networking
      operations instead of SDL_net, thus it no longer depends on SDL_net and SDL.
+   * The client now uses boost::asio for communication with wesnothd too. 
  * Removed support for SDL 1.2. SDL 2 is now the only supported version.
  * Terrains:
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
+ * Editor:
+   * Allow to set special locations in the editor which can then read by wml.
  * User Interface:
    * Various design improvements to GUI2 widgets
    * New simpler GUI2 loading screen
@@ -29,6 +32,10 @@ Version 1.13.4+dev:
      on vertical UI resolutions < 600.
    * Improved the dialog for choosing what to do when a player leaves in
      multiplayer.
+   * The side overwie now also shows allied human sides in sp even if
+     they aren't discovered yet
+   * Added an option to disable the loadingscreen animation since it caused
+     bugs in some configurations.
  * WML engine:
    * Add color= attribute to [message].
    * Fix some issues with [foreach]
@@ -139,6 +146,10 @@ Version 1.13.4+dev:
          aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
          (For a limit, replace "recruit" with "limit".)
          The [recruit] and [limit] tags now support id keys for this.
+   * Added side_name= attribute in [side], it's now no longer posible to
+     specify the current_player attribute in the [side] wml.  
+   * unit filters, specially in wesnoth.get_units now have a limit= attribute
+     to limit the number or matched units.
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -217,6 +228,8 @@ Version 1.13.4+dev:
        should return a table with keys "own" and "enemy", each of which may
        be either a unit filter table or a function which takes a unit as a
        parameter and returns true or false.
+   * Added wesnoth.game_events.on_mouse_move/on_mouse_actions callbacks
+     (fr #22635)
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
  * Wesnoth formula engine:
@@ -407,6 +420,13 @@ Version 1.13.3:
    * Added name= and write_name= attributes in [item]
    * Added description_alignment= key to [campaign]
    * Fixed [put_to_recall_list] not working correctly (bug #24390)
+   * Wesnoth now does a stricter check in variablenames and doesn't allow
+     empty indexes like "a[].b" anymore. 
+ * Lua API:
+   * Added wesnoth.read_file
+   * wesnoth.dofile/require now allow .. in relative paths.
+   * unit.level and unit.upkeep can now be changed via lua unit proxies.
+   * wesnoth.find_path is now available in lua map generators and allows border=yes/no parameter.
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
