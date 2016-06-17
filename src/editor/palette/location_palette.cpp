@@ -21,6 +21,7 @@
 #include "tooltips.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
+#include "gui/dialogs/edit_text.hpp"
 
 #include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
@@ -71,7 +72,10 @@ public:
 			parent_.select_item(id_);
 		}
 		if (e.button == SDL_BUTTON_RIGHT) {
-			//TODO: implement 'jump to item' or 'delete item' here.
+			//TODO: add a context menu with the follwing options:
+			// 1) 'copy it to clipboard'
+			// 2) 'jump to item'
+			// 3) 'delete item'.
 		}
 	}
 
@@ -223,23 +227,32 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	palette_x_ = target.x;
 	palette_y_ = target.y;
 	const int button_height = 30;
-	int bottom = target.y + target.h - button_height;
+	int bottom = target.y + target.h;
 	
 
 	button_add_.reset();
 	button_delete_.reset();
 	button_goto_.reset();
 	
-	button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom, target.w - 10, button_height }, _("Go To"), [this]() {
+	button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
 		//static_cast<mouse_action_starting_position&>(**active_mouse_action_).
 		map_location pos = disp_.get_map().starting_position(std::stoi(selected_item_));
 		if (pos.valid()) {
 			disp_.scroll_to_tile(pos, display::WARP);
 		}
 	}));
+	button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Add"), [this]() {
+		std::string newid;
+		if (gui2::tedit_text::execute(_("New Location Identifer"), "", newid, video())) {
+			items_.push_back(newid);
+			adjust_size(location());
+		}
+	}));
 	button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), nullptr));
-	const size_t space_for_items = bottom - target.x;
-	const unsigned items_fitting = static_cast<unsigned> (space_for_items / item_space_);
+
+
+	const size_t space_for_items = bottom - target.y;
+	const int items_fitting = static_cast<unsigned> (space_for_items / item_space_);
 	nitems_ = std::min<int>(items_fitting, items_.size());
 	if (buttons_.size() != nitems_) {
 		buttons_.resize(nitems_, &location_palette_item(gui_.video(), *this));

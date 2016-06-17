@@ -88,7 +88,7 @@ namespace t_translation {
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler);
+	static t_terrain string_to_number_(std::string str, std::string& start_position, const t_layer filler);
 	static t_terrain string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
@@ -102,7 +102,7 @@ namespace t_translation {
 	 *                              position given it's padded to 4 chars else
 	 *                              padded to 7 chars.
 	 */
-	static std::string number_to_string_(t_terrain terrain, const int start_position = -1);
+	static std::string number_to_string_(t_terrain terrain, const std::string& start_position = "");
 
 	/**
 	 * Converts a terrain string to a number for the builder.
@@ -295,12 +295,12 @@ t_map read_game_map(const std::string& str, tstarting_positions& starting_positi
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
-		int starting_position = -1;
+		std::string starting_position;
 		// The gamemap never has a wildcard
 		const t_terrain tile = string_to_number_(terrain, starting_position, NO_LAYER);
 
 		// Add to the resulting starting position
-		if(starting_position != -1) {
+		if(!starting_position.empty()) {
 			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
 				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
 			}
@@ -387,7 +387,7 @@ std::string write_game_map(const t_map& map, const tstarting_positions& starting
 			// After it's found it can't be found again,
 			// so the location is removed from the map.
 			auto itor = starting_positions.right.find(coordinate(x, y));
-			int starting_position = 0;
+			std::string starting_position;
 			if (itor != starting_positions.right.end()) {
 				starting_position = itor->second;
 			}
@@ -725,11 +725,11 @@ static t_layer string_to_layer_(const char* begin, const char* end)
 }
 
 static t_terrain string_to_number_(const std::string& str, const t_layer filler) {
-	int dummy = -1;
+	std::string dummy;
 	return string_to_number_(str, dummy, filler);
 }
 
-static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler)
+static t_terrain string_to_number_(std::string str, std::string& start_position, const t_layer filler)
 {
 	const char* c_str = str.c_str();
 	size_t begin = 0;
@@ -748,7 +748,7 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 	size_t offset = str.find(' ', begin);
 	if(offset < end) {
 		try {
-			start_position = lexical_cast<int>(str.substr(begin, offset));
+			start_position = str.substr(begin, offset - begin);
 		} catch(bad_lexical_cast&) {
 			return VOID_TERRAIN;
 		}
@@ -774,13 +774,13 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 	return result;
 }
 
-static std::string number_to_string_(t_terrain terrain, const int start_position)
+static std::string number_to_string_(t_terrain terrain, const std::string& start_position)
 {
 	std::string result = "";
 
 	// Insert the start position
-	if(start_position > 0) {
-		result = std::to_string(start_position) + " ";
+	if(!start_position.empty()) {
+		result = start_position + " ";
 	}
 
 	/*

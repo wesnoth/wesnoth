@@ -18,6 +18,7 @@
 #include "formula/string_utils.hpp"
 
 #include "display.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
@@ -148,10 +149,20 @@ std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_locati
 std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 {
 	std::set<map_location> label_locs;
-	std::string label = _("Player");
-	label += " ";
+	std::string label;
+
+
 	for (const auto& pair : starting_positions_.left) {
-		disp.labels().set_label(map_location(pair.second.x, pair.second.y), label + std::to_string(pair.first));
+
+		bool is_number = std::find_if(pair.first.begin(), pair.first.end(), [](char c) { return !std::isdigit(c); }) == pair.first.end();
+		if (is_number) {
+			label = vgettext("Player $side_num", utils::string_map{ { "side_num", pair.first } });
+		}
+		else {
+			label = pair.first;
+		}
+
+		disp.labels().set_label(map_location(pair.second.x, pair.second.y), label);
 		label_locs.insert(map_location(pair.second.x, pair.second.y));
 	}
 	return label_locs;

@@ -984,7 +984,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
 			if (lp) {
-				perform_delete(new editor_action_starting_position(map_location(), std::stoi(lp->selected_item())));
+				perform_delete(new editor_action_starting_position(map_location(), lp->selected_item()));
 			}
 			return true;
 		}

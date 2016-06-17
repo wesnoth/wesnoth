@@ -221,32 +221,31 @@ editor_action_starting_position* editor_action_starting_position::clone() const
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
 	util::unique_ptr<editor_action> undo;
-	int old_player = mc.get_map().is_starting_position(loc_);
-	map_location old_loc = mc.get_map().starting_position(player_);
-	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
-	if (old_player != -1) {
+	const std::string* old_loc_id = mc.get_map().is_starting_position(loc_);
+	map_location old_loc = mc.get_map().special_location(loc_id_);
+	if (old_loc_id != nullptr) {
 		// If another player was starting at the location, we actually perform two actions, so the undo is an action_chain.
 		editor_action_chain* undo_chain = new editor_action_chain();
-		undo_chain->append_action(new editor_action_starting_position(loc_, old_player));
-		undo_chain->append_action(new editor_action_starting_position(old_loc, player_));
+		undo_chain->append_action(new editor_action_starting_position(loc_, *old_loc_id));
+		undo_chain->append_action(new editor_action_starting_position(old_loc, loc_id_));
 		undo.reset(undo_chain);
-		LOG_ED << "ssp actual: " << old_player << " to " << map_location() << "\n";
-		mc.get_map().set_starting_position(old_player, map_location());
+		LOG_ED << "ssp actual: " << *old_loc_id << " to " << map_location() << "\n";
+		mc.get_map().set_special_location(*old_loc_id, map_location());
 	} else {
-		undo.reset(new editor_action_starting_position(old_loc, player_));
+		undo.reset(new editor_action_starting_position(old_loc, loc_id_));
 	}
-	LOG_ED << "ssp actual: " << player_ << " to " << loc_ << "\n";
-	mc.get_map().set_starting_position(player_, loc_);
+	LOG_ED << "ssp actual: " << loc_id_ << " to " << loc_ << "\n";
+	mc.get_map().set_special_location(loc_id_, loc_);
 	mc.set_needs_labels_reset();
 	return undo.release();
 }
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {
-	int old_player = mc.get_map().is_starting_position(loc_) - 1;
-	if (old_player != -1) {
-		mc.get_map().set_starting_position(old_player - 1, map_location());
+	const std::string* old_id = mc.get_map().is_starting_position(loc_);
+	if (old_id != nullptr) {
+		mc.get_map().set_special_location(*old_id, map_location());
 	}
-	mc.get_map().set_starting_position(player_, loc_);
+	mc.get_map().set_special_location(loc_id_, loc_);
 	mc.set_needs_labels_reset();
 }
 

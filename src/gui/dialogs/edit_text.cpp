@@ -39,6 +39,7 @@ namespace gui2
 
 REGISTER_DIALOG(edit_text)
 
+//TODO: add  a way to disallow certain chracters (like spaces or ")
 tedit_text::tedit_text(const std::string& title,
 					   const std::string& label,
 					   std::string& text)

@@ -132,12 +132,17 @@ public:
 
 
 	/** Manipulate starting positions of the different sides. */
+	void set_starting_position(int side, const map_location& loc);
 	map_location starting_position(int side) const;
+
+	void set_special_location(const std::string& id, const map_location& loc);
+	map_location special_location(const std::string& id) const;
+
+
 	/// returns the side number of the side starting at position loc, 0 if no such side exists.
-	int is_starting_position(const map_location& loc) const;
+	const std::string* is_starting_position(const map_location& loc) const;
 	int num_valid_starting_positions() const;
 
-	void set_starting_position(int side, const map_location& loc);
 
 	/**
 	 * Tell if a location is on the map.
@@ -223,9 +228,6 @@ private:
 	 * @param data		          The mapdata to load.
 	 */
 	int read_header(const std::string& data);
-
-	int num_starting_positions() const
-		{ return starting_positions_.size(); }
 
 	/** Allows lookup of terrain at a particular location. */
 	//const t_translation::t_list operator[](int index) const

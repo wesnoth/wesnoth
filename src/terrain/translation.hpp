@@ -202,7 +202,7 @@ namespace t_translation {
 	 */
 	std::string write_list(const t_list& list);
 
-	using tstarting_positions = boost::bimaps::bimap<boost::bimaps::set_of<int>, boost::bimaps::multiset_of<coordinate>>;
+	using tstarting_positions = boost::bimaps::bimap<boost::bimaps::set_of<std::string>, boost::bimaps::multiset_of<coordinate>>;
 	/**
 	 * Reads a gamemap string into a 2D vector
 	 *

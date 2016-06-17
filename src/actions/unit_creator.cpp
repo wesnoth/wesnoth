@@ -134,6 +134,9 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		else if ( place == "map"  ||  place.compare(0, 4, "map_") == 0 ) {
 			loc = map_location(cfg, resources::gamedata);
 		}
+		else {
+			loc = board_->map().special_location(place);
+		}
 
 		if(loc.valid() && board_->map().on_board(loc)) {
 			const bool pass((place == "leader_passable") || (place == "map_passable"));

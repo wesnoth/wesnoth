@@ -1202,7 +1202,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		const int y = c->y;
 		const int player = c - castles.begin() + 1;
 		const struct t_translation::coordinate coord(x, y);
-		starting_positions.insert(t_translation::tstarting_positions::value_type(player, coord));
+		starting_positions.insert(t_translation::tstarting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
 		const int castles[13][2] = {

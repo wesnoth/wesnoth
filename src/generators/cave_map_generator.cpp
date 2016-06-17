@@ -345,7 +345,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		t_translation::coordinate coord(
 				  loc.x + gamemap::default_border
 				, loc.y + gamemap::default_border);
-		starting_positions_.insert(t_translation::tstarting_positions::value_type(starting_position, coord));
+		starting_positions_.insert(t_translation::tstarting_positions::value_type(std::to_string(starting_position), coord));
 	}
 
 	map_location adj[6];

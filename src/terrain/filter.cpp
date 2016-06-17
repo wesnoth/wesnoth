@@ -134,12 +134,12 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//Allow filtering on location ranges
-	if(!ignore_xy) {
-		if(!loc.matches_range(cfg_["x"], cfg_["y"])) {
+	if (!ignore_xy) {
+		if (!loc.matches_range(cfg_["x"], cfg_["y"])) {
 			return false;
 		}
 		//allow filtering by searching a stored variable of locations
-		if(cfg_.has_attribute("find_in")) {
+		if (cfg_.has_attribute("find_in")) {
 			if (const game_data * gd = fc_->get_game_data()) {
 				try
 				{
@@ -154,14 +154,19 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 					}
 					if (!found) return false;
 				}
-				catch(const invalid_variablename_exception&)
+				catch (const invalid_variablename_exception&)
 				{
 					return false;
 				}
 			}
 		}
 	}
-
+	//TODO: move this inside if(!ignore_xy) and ad d check for this in terrain_filter::get_locations
+	if (cfg_.has_attribute("location_id")) {
+		if (loc != fc_->get_disp_context().map().special_location(cfg_["location_id"])) {
+			return false;
+		}
+	}
 	//Allow filtering on unit
 	if(cfg_.has_child("filter")) {
 		const unit_map::const_iterator u = fc_->get_disp_context().units().find(loc);
