@@ -733,6 +733,7 @@ set(wesnoth-main_SRC
 	editor/toolkit/brush.cpp
 	editor/palette/editor_palettes.cpp
 	editor/palette/item_palette.cpp
+	editor/palette/location_palette.cpp
 	editor/palette/terrain_palettes.cpp
 	editor/palette/unit_palette.cpp
 	editor/editor_display.cpp

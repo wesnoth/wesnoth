@@ -32,6 +32,7 @@ palette_manager::palette_manager(editor_display& gui, const config& cfg
 		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
 		  empty_palette_(new empty_palette(gui)),
 		  item_palette_(new item_palette(gui, cfg, active_mouse_action))
+		, location_palette_(new location_palette(gui, cfg, active_mouse_action))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);

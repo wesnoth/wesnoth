@@ -20,6 +20,7 @@
 #include "theme.hpp"
 #include "editor/palette/editor_palettes.hpp"
 #include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/location_palette.hpp"
 #include "editor/palette/empty_palette.hpp"
 
 #include <SDL_video.h>
@@ -367,8 +368,8 @@ protected:
 class mouse_action_starting_position : public mouse_action
 {
 public:
-	mouse_action_starting_position(const CKey& key, empty_palette& palette)
-	: mouse_action(palette, key), click_(false)
+	mouse_action_starting_position(const CKey& key, location_palette& palette)
+	: mouse_action(palette, key), click_(false), location_palette_(palette)
 	{
 	}
 
@@ -392,6 +393,7 @@ public:
 
 private:
 	bool click_;
+	location_palette& location_palette_;
 };
 
 

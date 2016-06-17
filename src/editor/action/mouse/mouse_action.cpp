@@ -400,28 +400,19 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	}
 
 	const unsigned player_starting_at_hex = disp.map().is_starting_position(hex);
-
+	 
 	std::vector<map_location> starting_positions;
 
-	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
-		starting_positions.push_back(disp.map().starting_position(i));
-	}
-
-	gui2::teditor_set_starting_position dlg(
-		player_starting_at_hex, gamemap::MAX_PLAYERS, starting_positions);
-	dlg.show(disp.video());
-
-	unsigned new_player_at_hex = dlg.result(); // 1st player = 1
+	unsigned new_player_at_hex = std::stoi(location_palette_.selected_item());
 	editor_action* a = nullptr;
 
 	if(new_player_at_hex != player_starting_at_hex) {
-		if(!new_player_at_hex) {
-			// Erase current starting position
-			a = new editor_action_starting_position(map_location(), player_starting_at_hex);
-		} else {
-			// Set a starting position
-			a = new editor_action_starting_position(hex, new_player_at_hex);
-		}
+		// Set a starting position
+		a = new editor_action_starting_position(hex, new_player_at_hex);
+	}
+	else {
+		// Erase current starting position
+		a = new editor_action_starting_position(map_location(), player_starting_at_hex);
 	}
 
 	update_brush_highlights(disp, hex);

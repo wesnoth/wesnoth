@@ -75,7 +75,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
 		new mouse_action_select(&brush_, key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
-		new mouse_action_starting_position(key_, *palette_manager_->empty_palette_.get())));
+		new mouse_action_starting_position(key_, *palette_manager_->location_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
 		new mouse_action_map_label(key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,

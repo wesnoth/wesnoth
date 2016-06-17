@@ -25,6 +25,7 @@
 #include "terrain_palettes.hpp"
 #include "unit_palette.hpp"
 #include "item_palette.hpp"
+#include "location_palette.hpp"
 
 namespace editor {
 
@@ -82,6 +83,7 @@ public:
 	boost::scoped_ptr<unit_palette>    unit_palette_;
 	boost::scoped_ptr<empty_palette>   empty_palette_;
 	boost::scoped_ptr<item_palette>    item_palette_;
+	boost::scoped_ptr<location_palette>    location_palette_;
 };
 
 }
