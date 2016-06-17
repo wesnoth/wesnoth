@@ -340,7 +340,7 @@ map_location default_map_generator_job::random_point_at_side(size_t width, size_
 
 /** Function which, given the map will output it in a valid format. */
 static std::string output_map(const terrain_map& terrain,
-		std::map<int, t_translation::coordinate> starting_positions)
+		t_translation::tstarting_positions& starting_positions)
 {
 	// Remember that we only want the middle 1/9th of the map.
 	// All other segments of the map are there only to give
@@ -364,12 +364,9 @@ static std::string output_map(const terrain_map& terrain,
 
 	// Since the map has been resized,
 	// the starting locations also need to be fixed
-	std::map<int, t_translation::coordinate>::iterator itor = starting_positions.begin();
-	for(; itor != starting_positions.end(); ++itor) {
-		itor->second.x -= begin_x;
-		itor->second.y -= begin_y;
+	for (auto it = starting_positions.left.begin(); it != starting_positions.left.end(); ++it) {
+		starting_positions.left.modify_data(it, [=](t_translation::coordinate&  pos) { pos.x -= begin_x; pos.y -= begin_y; });
 	}
-
 	return t_translation::write_game_map(map, starting_positions);
 }
 
@@ -818,7 +815,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		}
 	}
 
-	std::map<int, t_translation::coordinate> starting_positions;
+	t_translation::tstarting_positions starting_positions;
 	LOG_NG << output_map(terrain, starting_positions);
 	LOG_NG << "placed land forms\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
@@ -1205,7 +1202,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		const int y = c->y;
 		const int player = c - castles.begin() + 1;
 		const struct t_translation::coordinate coord(x, y);
-		starting_positions.insert(std::pair<int, t_translation::coordinate>(player, coord));
+		starting_positions.insert(t_translation::tstarting_positions::value_type(player, coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
 		const int castles[13][2] = {

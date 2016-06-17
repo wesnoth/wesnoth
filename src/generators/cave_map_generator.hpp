@@ -81,7 +81,7 @@ private:
 		bool flipx_, flipy_;
 
 		t_translation::t_map map_;
-		std::map<int, t_translation::coordinate> starting_positions_;
+		t_translation::tstarting_positions starting_positions_;
 		std::map<std::string,size_t> chamber_ids_;
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;

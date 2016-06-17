@@ -173,7 +173,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	const std::string& data_only = std::string(data, offset);
 
 	try {
-		tiles_ = t_translation::read_game_map(data_only, starting_positions);
+		tiles_ = t_translation::read_game_map(data_only, starting_positions_);
 
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
@@ -197,10 +197,6 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 
 		// Add to the starting position array
 		max_stating_pos = std::max<int>(max_stating_pos, pair.first);
-	}
-	starting_positions_.resize(max_stating_pos);
-	for(const auto& pair : starting_positions) {
-		starting_positions_[pair.first - 1] =  map_location(pair.second.x - border_size_, pair.second.y - border_size_);
 	}
 	// Post processing on the map
 	total_width_ = tiles_.size();
@@ -268,23 +264,7 @@ int gamemap::read_header(const std::string& data)
 
 std::string gamemap::write() const
 {
-	// Convert the starting positions to a map
-	std::map<int, t_translation::coordinate> starting_positions;
-	
-	for(int i = 0, size = starting_positions_.size(); i < size; ++i) {
-		if(on_board(starting_positions_[i])) {
-			starting_positions[i + 1] = t_translation::coordinate(
-				starting_positions_[i].x + border_size_,
-				starting_positions_[i].y + border_size_
-			);
-		}	
-	}
-
-	// Let the low level converter do the conversion
-	std::ostringstream s;
-	s << t_translation::write_game_map(tiles_, starting_positions)
-		<< "\n";
-	return s.str();
+	return t_translation::write_game_map(tiles_, starting_positions_) + "\n";
 }
 namespace
 {
@@ -365,16 +345,14 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 			else {
 				set_terrain(map_location(x2,y2), t);
+				if (false /*TODO: add overwrite special locs paramter*/) {
+					starting_positions_.right.erase(t_translation::coordinate(x2, y2));
+					for (auto& pair : m.starting_positions_.right.equal_range(t_translation::coordinate(x1, y1))) {
+						starting_positions_.insert(tstarting_positions::value_type(pair.second, t_translation::coordinate(x2, y2)));
+					}
+				}
 			}
 		}
-	}
-	if (m.starting_positions_ > starting_positions_) {
-		starting_positions_.resize(m.starting_positions_.size());
-	}
-	for(int i = 0, size = m.starting_positions_.size(); i < size; ++i) {
-		if(m.starting_positions_[i].valid()) {
-			starting_positions_[i] = m.starting_positions_[i];
-		}	
 	}
 }
 
@@ -446,14 +424,15 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 
 }
 
-const map_location& gamemap::starting_position(int n) const
+map_location gamemap::starting_position(int n) const
 {
-	size_t index = n - 1;
-	if(index < starting_positions_.size()) {
-		return starting_positions_[index];
-	} else {
-		static const map_location null_loc;
-		return null_loc;
+	auto it = starting_positions_.left.find(n);
+	if (it != starting_positions_.left.end()) {
+		auto& coordinate = it->second;
+		return map_location(coordinate.x, coordinate.y);
+	}
+	else {
+		return map_location();
 	}
 }
 
@@ -468,22 +447,19 @@ int gamemap::num_valid_starting_positions() const
 
 int gamemap::is_starting_position(const map_location& loc) const
 {
-	std::vector<map_location>::const_iterator pos = std::find(starting_positions_.begin(), starting_positions_.end(), loc);
-
-	return pos == starting_positions_.end() ? 0 : pos - starting_positions_.begin() + 1;
+	auto it = starting_positions_.right.find(t_translation::coordinate(loc.x, loc.y));
+	return it == starting_positions_.right.end() ? 0 : it->second;
 }
 
 void gamemap::set_starting_position(int side, const map_location& loc)
 {
-	int index = side - 1;
-
-	if(index < 0) {
-		return;
+	auto it_left = starting_positions_.left.find(side);
+	if (it_left != starting_positions_.left.end()) {
+		starting_positions_.left.replace_data(it_left, t_translation::coordinate(loc.x, loc.y));
 	}
-	if(index >= int(starting_positions_.size())) {
-		starting_positions_.resize(index + 1);
+	else {
+		starting_positions_.left.insert(it_left, std::make_pair(side,  t_translation::coordinate(loc.x, loc.y)));
 	}
-	starting_positions_[index] = loc;
 }
 
 bool gamemap::on_board(const map_location& loc) const

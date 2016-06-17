@@ -266,7 +266,7 @@ std::string write_list(const t_list& list)
 	return result.str();
 }
 
-t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_positions)
+t_map read_game_map(const std::string& str, tstarting_positions& starting_positions)
 {
 	t_map result;
 
@@ -297,16 +297,10 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 
 		// Add to the resulting starting position
 		if(starting_position != -1) {
-			if(starting_positions.find(starting_position) != starting_positions.end()) {
-				// Redefine existion position
+			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
 				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
-				starting_positions[starting_position].x = x;
-				starting_positions[starting_position].y = y;
-			} else {
-				// Add new position
-				const struct coordinate coord(x, y);
-				starting_positions.insert(std::pair<int, coordinate>(starting_position, coord));
 			}
+			starting_positions.insert(tstarting_positions::value_type(starting_position, coordinate(x, y)));
 		}
 
 		// Make space for the new item
@@ -377,7 +371,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	return result;
 }
 
-std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions)
+std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions)
 {
 	std::stringstream str;
 
@@ -388,16 +382,11 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			// it needs to be added to the terrain.
 			// After it's found it can't be found again,
 			// so the location is removed from the map.
-			std::map<int, coordinate>::iterator itor = starting_positions.begin();
-			int starting_position = -1;
-			for(; itor != starting_positions.end(); ++itor) {
-				if(itor->second.x == x && itor->second.y == y) {
-					starting_position = itor->first;
-					starting_positions.erase(itor);
-					break;
-				}
+			auto itor = starting_positions.right.find(coordinate(x, y));
+			int starting_position = 0;
+			if (itor != starting_positions.right.end()) {
+				starting_position = itor->second;
 			}
-
 			// Add the separator
 			if(x != 0) {
 				str << ", ";

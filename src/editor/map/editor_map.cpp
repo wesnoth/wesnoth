@@ -150,11 +150,9 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 	std::set<map_location> label_locs;
 	std::string label = _("Player");
 	label += " ";
-	for (int i = 0, size = starting_positions_.size(); i < size; ++i) {
-		if (starting_positions_[i].valid()) {
-			disp.labels().set_label(starting_positions_[i], label + std::to_string(i + 1));
-			label_locs.insert(starting_positions_[i]);
-		}
+	for (const auto& pair : starting_positions_.left) {
+		disp.labels().set_label(map_location(pair.second.x, pair.second.y), label + std::to_string(pair.first));
+		label_locs.insert(map_location(pair.second.x, pair.second.y));
 	}
 	return label_locs;
 }
@@ -252,11 +250,8 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 
 	// fix the starting positions
 	if(x_offset || y_offset) {
-		for(size_t i = 0; i < starting_positions_.size(); ++i) {
-			if(starting_positions_[i] != map_location()) {
-				starting_positions_[i].x -= x_offset;
-				starting_positions_[i].y -= y_offset;
-			}
+		for (auto it = starting_positions_.left.begin(); it != starting_positions_.left.end(); ++it) {
+			starting_positions_.left.modify_data(it, [=](t_translation::coordinate & loc) { loc.x -= x_offset; loc.y -= y_offset;});
 		}
 	}
 	sanity_check();
