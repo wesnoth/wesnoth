@@ -31,7 +31,10 @@
 
 #include "video.hpp"
 
+#pragma warning(push)
+#pragma warning(disable:4068)
 #pragma GCC diagnostic ignored "-Wold-style-cast"
+#pragma warning(pop)
 
 namespace font {
 
