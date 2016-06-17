@@ -255,7 +255,10 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	const int items_fitting = static_cast<unsigned> (space_for_items / item_space_);
 	nitems_ = std::min<int>(items_fitting, items_.size());
 	if (buttons_.size() != nitems_) {
-		buttons_.resize(nitems_, &location_palette_item(gui_.video(), *this));
+		location_palette_item lpi(gui_.video(), *this);
+		//Why does this need a pointer to a non-const as second paraeter?
+		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
+		buttons_.resize(nitems_, &lpi);
 	}
 	set_location(target);
 	set_dirty(true);
