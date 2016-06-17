@@ -129,7 +129,7 @@ def convert_color(color, hex=False):
         if color in team_colors:
             return team_colors[color]
         else:
-            sys.stderr.write("Couldn't find color '%s'.\n" % color)
+            print("Couldn't find color '%s'." % color, file=sys.stderr)
             sys.exit(1)
     new = {}
     base = 10
@@ -139,15 +139,15 @@ def convert_color(color, hex=False):
             try:
                 new[c] = int(color[c], base)
             except ValueError:
-                sys.stderr.write("Couldn't convert color value %s='%s' using "\
-                                 "base %d. Did you forget -x?\n" %\
-                                 (c, color['mid'][c], base))
+                print("Couldn't convert color value %s='%s' using "\
+                      "base %d. Did you forget -x?" %\
+                      (c, color['mid'][c], base), file=sys.stderr)
                 sys.exit(1)
         else:
             new[c] = color['mid'][c]
         if new[c] not in range(256):
-            sys.stderr.write("Value %s='%s' is out-of-range! Color values "\
-                             "should be in the range [0, 255].\n" % (c, new[c]))
+            print("Value %s='%s' is out-of-range! Color values "\
+                  "should be in the range [0, 255]." % (c, new[c]), file=sys.stderr)
             sys.exit(1)
     return { 'mid': new,
              'max': { 'r': 0xff, 'g': 0xff, 'b': 0xff },
@@ -252,8 +252,8 @@ if __name__ == '__main__':
     if not dryrun:
         ret = subprocess.call(command)
         if ret != 0:
-            sys.stderr.write("Error: Conversion command exited with error "\
-                             "code %d.\n" % ret)
+            print("Error: Conversion command exited with error "\
+                  "code %d." % ret, file=sys.stderr)
             sys.exit(ret)
 
 # TeamColorizer ends here.
