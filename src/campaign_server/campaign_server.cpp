@@ -100,7 +100,7 @@ void set_passphrase(config& campaign, std::string passphrase)
 namespace campaignd {
 
 server::server(const std::string& cfg_file)
-    : server_base(load_config(), true)
+    : server_base(default_campaignd_port, true)
     , cfg_()
 	, cfg_file_(cfg_file)
 	, read_only_(false)
@@ -111,6 +111,8 @@ server::server(const std::string& cfg_file)
 	, blacklist_()
 	, blacklist_file_()
 {
+	load_config();
+
 	LOG_CS << "Port: " << port_ << "  ";
 
 	// Ensure all campaigns to use secure hash passphrase storage
@@ -129,6 +131,8 @@ server::server(const std::string& cfg_file)
 	}
 
 	register_handlers();
+
+	start_server();
 }
 
 server::~server()
@@ -136,7 +140,7 @@ server::~server()
 	write_config();
 }
 
-int server::load_config()
+void server::load_config()
 {
 	LOG_CS << "Reading configuration from " << cfg_file_ << "...\n";
 
@@ -191,7 +195,7 @@ int server::load_config()
 	cfg_["compress_level"] = compress_level_;
 
 	// But not the listening port number.
-	return cfg_["port"].to_int(default_campaignd_port);
+	port_ = cfg_["port"].to_int(default_campaignd_port);
 }
 
 void server::handle_new_client(socket_ptr socket)

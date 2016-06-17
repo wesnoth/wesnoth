@@ -36,13 +36,16 @@ struct server_shutdown : public game::error
 class server_base
 {
 public:
-	server_base(int port, bool keep_alive);
+	server_base(unsigned short port, bool keep_alive);
 	virtual ~server_base() {}
 	void run();
 
 protected:
+	unsigned short port_;
+	bool keep_alive_;
 	boost::asio::io_service io_service_;
 	boost::asio::ip::tcp::acceptor acceptor_;
+	void start_server();
 	void serve();
 	void accept_connection(const boost::system::error_code& error, socket_ptr socket);
 

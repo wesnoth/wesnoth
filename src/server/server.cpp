@@ -259,6 +259,8 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	setup_handlers();
 	load_config();
 	ban_manager_.read();
+
+	start_server();
 }
 
 #ifndef _WIN32

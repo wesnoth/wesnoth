@@ -99,10 +99,8 @@ private:
 
 	/**
 	 * Reads the server configuration from WML.
-	 *
-	 * @return The configured listening port number.
 	 */
-	int load_config();
+	void load_config();
 
 	/**
 	 * Writes the server configuration WML back to disk.

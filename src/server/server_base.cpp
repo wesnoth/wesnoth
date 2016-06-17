@@ -32,7 +32,9 @@ static lg::log_domain log_config("config");
 
 #include "send_receive_wml_helpers.ipp"
 
-server_base::server_base(int port, bool keep_alive) :
+server_base::server_base(unsigned short port, bool keep_alive) :
+    port_(port),
+    keep_alive_(keep_alive),
     io_service_(),
     acceptor_(io_service_),
 #ifndef _WIN32
@@ -41,10 +43,14 @@ server_base::server_base(int port, bool keep_alive) :
 #endif
     sigs_(io_service_, SIGINT, SIGTERM)
 {
-	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
+}
+
+void server_base::start_server()
+{
+	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port_);
 	acceptor_.open(endpoint.protocol());
 	acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-	acceptor_.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive));
+	acceptor_.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive_));
 	acceptor_.bind(endpoint);
 	acceptor_.listen();
 	serve();
