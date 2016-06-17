@@ -96,9 +96,9 @@ namespace t_translation {
 	/** TODO: remove this class and use map_location */
 	struct coordinate {
 		coordinate();
-		coordinate(const size_t x_, const size_t y_);
-		size_t x;
-		size_t y;
+		coordinate(const int x_, const int y_);
+		int x;
+		int y;
 		friend bool operator <(const coordinate&l, const coordinate&r) {
 			return l.x < r.x || (l.x == r.x && l.y < r.y);
 		}
@@ -235,7 +235,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	t_map read_game_map(const std::string& str, tstarting_positions& starting_positions);
+	t_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.
@@ -247,7 +247,7 @@ namespace t_translation {
 	 *					For readability the map is padded to groups of 12 chars,
 	 *					followed by a comma and space.
 	 */
-	std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions = tstarting_positions());
+	std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions = tstarting_positions(), coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Tests whether a specific terrain matches a list of expressions.

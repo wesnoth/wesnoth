@@ -172,7 +172,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	const std::string& data_only = std::string(data, offset);
 
 	try {
-		tiles_ = t_translation::read_game_map(data_only, starting_positions_);
+		tiles_ = t_translation::read_game_map(data_only, starting_positions_, t_translation::coordinate{ border_size_, border_size_ });
 
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
@@ -246,7 +246,7 @@ int gamemap::read_header(const std::string& data)
 
 std::string gamemap::write() const
 {
-	return t_translation::write_game_map(tiles_, starting_positions_) + "\n";
+	return t_translation::write_game_map(tiles_, starting_positions_, t_translation::coordinate{ border_size_, border_size_ }) + "\n";
 }
 namespace
 {

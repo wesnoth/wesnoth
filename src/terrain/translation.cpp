@@ -204,7 +204,7 @@ coordinate::coordinate()
 {
 }
 
-coordinate::coordinate(const size_t x_, const size_t y_)
+coordinate::coordinate(const int x_, const int y_)
 	: x(x_)
 	, y(y_)
 {
@@ -270,7 +270,7 @@ std::string write_list(const t_list& list)
 	return result.str();
 }
 
-t_map read_game_map(const std::string& str, tstarting_positions& starting_positions)
+t_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset)
 {
 	t_map result;
 
@@ -304,7 +304,7 @@ t_map read_game_map(const std::string& str, tstarting_positions& starting_positi
 			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
 				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
 			}
-			starting_positions.insert(tstarting_positions::value_type(starting_position, coordinate(x, y)));
+			starting_positions.insert(tstarting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
 		}
 
 		// Make space for the new item
@@ -375,7 +375,7 @@ t_map read_game_map(const std::string& str, tstarting_positions& starting_positi
 	return result;
 }
 
-std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions)
+std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions, coordinate border_offset)
 {
 	std::stringstream str;
 
@@ -386,7 +386,7 @@ std::string write_game_map(const t_map& map, const tstarting_positions& starting
 			// it needs to be added to the terrain.
 			// After it's found it can't be found again,
 			// so the location is removed from the map.
-			auto itor = starting_positions.right.find(coordinate(x, y));
+			auto itor = starting_positions.right.find(coordinate(x - border_offset.x, y - border_offset.y));
 			std::string starting_position;
 			if (itor != starting_positions.right.end()) {
 				starting_position = itor->second;
