@@ -21,6 +21,7 @@
 
 namespace gui {
 
+//This button has 4 states, why it is called tristate?
 class tristate_button : public widget
 {
 
@@ -35,7 +36,7 @@ public:
 	enum PRESSED_STATE { LEFT, RIGHT, BOTH, NONE };
 
 	tristate_button(CVideo& video,
-			editor::common_palette* palette,
+			editor::tristate_palette* palette,
 			std::string button_image="",
 			const bool auto_join=true);
 
@@ -108,7 +109,7 @@ private:
 
 	int base_height_, base_width_;
 
-	editor::common_palette* palette_;
+	editor::tristate_palette* palette_;
 
 	std::string item_id_;
 

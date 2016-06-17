@@ -38,8 +38,6 @@ public:
 	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
 	void rebuild_terrain(const map_location &loc);
 
-	void set_palette_report(const config& palette_report) {palette_report_ = palette_report;}
-
 protected:
 	void pre_draw();
 	/**
@@ -54,8 +52,6 @@ protected:
 
 	std::set<map_location> brush_locations_;
 
-private:
-	config palette_report_;
 };
 
 } //end namespace editor

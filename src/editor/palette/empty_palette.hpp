@@ -40,9 +40,6 @@ public:
 	virtual bool scroll_down() { return false;}
 	virtual bool can_scroll_down() { return false;}
 
-	virtual void select_fg_item(const std::string& /*item_id*/) {}
-	virtual void select_bg_item(const std::string& /*item_id*/) {}
-
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) {}
 	virtual void draw() {}
@@ -72,7 +69,6 @@ public:
 	virtual void set_group(size_t /*index*/) {}
 	virtual void next_group() {}
 	virtual void prev_group() {}
-	virtual const config active_group_report() { return config();}
 	virtual const std::vector<item_group>& get_groups() const { return empty_; }
 
 	/** Menu expanding for palette group list */

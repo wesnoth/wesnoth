@@ -20,15 +20,14 @@
 #include "tristate_button.hpp"
 
 namespace editor {
-
 template<class Item>
-class editor_palette : public common_palette {
+class editor_palette : public tristate_palette {
 
 public:
 
 	editor_palette(editor_display &gui, const config& /*cfg*/
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
-		: common_palette(gui)
+		: tristate_palette(gui)
 		, groups_()
 		, gui_(gui)
 		, item_size_(item_size)
@@ -92,8 +91,6 @@ public:
 	virtual bool can_scroll_up();
 	virtual bool scroll_down();
 	virtual bool can_scroll_down();
-
-	virtual const config active_group_report();
 
 	void swap();
 

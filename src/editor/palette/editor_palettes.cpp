@@ -185,8 +185,6 @@ void editor_palette<Item>::set_group(const std::string& id)
 	if(active_group().empty()) {
 		ERR_ED << "No items found in group with the id: '" << id << "'." << std::endl;
 	}
-
-	gui_.set_palette_report(active_group_report());
 }
 template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
 template void editor_palette<unit_type>::set_group(const std::string& id);
@@ -217,24 +215,6 @@ size_t editor_palette<Item>::active_group_index()
 template size_t editor_palette<t_translation::t_terrain>::active_group_index();
 template size_t editor_palette<unit_type>::active_group_index();
 template size_t editor_palette<overlay>::active_group_index();
-
-template<class Item>
-const config editor_palette<Item>::active_group_report()
-{
-	config cfg;
-	config& report = cfg.add_child("element");
-	for (size_t i = 0 ; i < groups_.size(); i++) {
-		if (groups_[i].id == active_group_) {
-			std::string groupname = groups_[i].name;
-			report["image"] = groups_[i].icon;
-			report["tooltip"] = groupname;
-		}
-	}
-	return cfg;
-}
-template const config editor_palette<t_translation::t_terrain>::active_group_report();
-template const config editor_palette<unit_type>::active_group_report();
-template const config editor_palette<overlay>::active_group_report();
 
 template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)

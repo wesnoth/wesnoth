@@ -110,9 +110,6 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		mouse_action_ = i->second;
 		palette_manager_->adjust_size();
 
-		/** @todo make active_palette() private again. */
-		gui_.set_palette_report(palette_manager_->active_palette().active_group_report());
-
 		set_mouseover_overlay();
 		gui_.invalidate_game_status();
 		palette_manager_->active_palette().hide(false);
