@@ -543,9 +543,9 @@ void server::handle_request_campaign_list(const server::request& req)
 	config response;
 	response.add_child("campaigns", campaign_list);
 
-	std::string wml;
-	std::ostringstream ostr(wml);
+	std::ostringstream ostr;
 	write(ostr, response);
+	std::string wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
