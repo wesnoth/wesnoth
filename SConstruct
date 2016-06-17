@@ -105,6 +105,7 @@ opts.AddVariables(
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     EnumVariable('cxx_std', 'Target c++ std version', '11', ['11', '14', '1y']),
     BoolVariable('openmp', 'Enable openmp use.', False),
+    ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
@@ -512,6 +513,8 @@ for env in [test_env, campaignd_env, client_env, env]:
 
         if env['strict']:
             env.AppendUnique(CCFLAGS = Split("-Werror -Wold-style-cast $(-Wno-unused-local-typedefs$)"))
+        if env['sanitize']:
+            env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
