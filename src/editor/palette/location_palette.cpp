@@ -136,8 +136,10 @@ protected:
 	virtual void mouse_up(const SDL_MouseButtonEvent& e) override
 	{
 		gui::button::mouse_up(e);
-		if (this->pressed()) {
-			callback_();
+		if (callback_) {
+			if (this->pressed()) {
+				callback_();
+			}
 		}
 	}
 	std::function<void (void)> callback_;
@@ -235,13 +237,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 			disp_.scroll_to_tile(pos, display::WARP);
 		}
 	}));
-	/*
-	button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), [this]() {
-		//static_cast<mouse_action_starting_position&>(**active_mouse_action_).
-			//we currently don'T have access to editor_controller::perfm_delete here whcih we need to delete statign positions.
-			// maybe we can all something like fire_hotkey here.
-		}));
-	*/
+	button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), nullptr));
 	const size_t space_for_items = bottom - target.x;
 	const unsigned items_fitting = static_cast<unsigned> (space_for_items / item_space_);
 	nitems_ = std::min<int>(items_fitting, items_.size());
@@ -293,7 +289,15 @@ void location_palette::draw_contents()
 	if (downscroll_button)
 		downscroll_button->enable(ending != num_items());
 
-
+	if (button_goto_) {
+		button_goto_->set_dirty(true);
+	}
+	if (button_add_) {
+		button_add_->set_dirty(true);
+	}
+	if (button_delete_) {
+		button_delete_->set_dirty(true);
+	}
 	unsigned int counter = starting;
 	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
 		//TODO check if the conditions still hold for the counter variable
@@ -340,4 +344,14 @@ void location_palette::hide(bool hidden) {
 		w.hide(hidden);
 	}
 }
+std::vector<std::string> location_palette::action_pressed() const
+{
+	std::vector<std::string> res;
+	if (button_delete_ && button_delete_->pressed()) {
+		res.push_back("editor-remove-location");
+	}
+	return res;
+}
+
+
 } // end namespace editor

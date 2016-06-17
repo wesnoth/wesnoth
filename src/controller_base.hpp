@@ -105,6 +105,8 @@ protected:
 	 */
 	virtual bool have_keyboard_focus();
 
+	virtual std::vector<std::string> additional_actions_pressed() { return std::vector<std::string>(); }
+
 
 	/**
 	 * Handle scrolling by keyboard, joystick and moving mouse near map edges

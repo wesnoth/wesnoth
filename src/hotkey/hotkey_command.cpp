@@ -151,6 +151,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_PALETTE_GROUPS, "editor-palette-groups", N_("Change Palette Group"), false, scope_editor, "" },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_UPSCROLL, "editor-palette-upscroll", N_("Scroll Palette Left"), false, scope_editor, "" },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_DOWNSCROLL, "editor-palette-downscroll", N_("Scroll Palette Right"), false, scope_editor, "" },
+	{ hotkey::HOTKEY_EDITOR_REMOVE_LOCATION, "editor-remove-location", N_("Remove Location"), false, scope_editor, "" },
 
 	{ hotkey::HOTKEY_EDITOR_SIDE_NEW, "editor-side-new", N_("Add New Side"), false, scope_editor, "" },
 

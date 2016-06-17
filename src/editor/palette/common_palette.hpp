@@ -82,6 +82,7 @@ public:
 	virtual bool supports_swap() { return true; }
 	virtual void swap() = 0;
 
+	virtual std::vector<std::string> action_pressed() const { return std::vector<std::string>(); }
 };
 
 // a palette containing tristtate buttons.

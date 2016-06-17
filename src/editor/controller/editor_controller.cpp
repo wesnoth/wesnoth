@@ -24,6 +24,7 @@
 #include "editor_controller.hpp"
 
 #include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/location_palette.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
 
@@ -439,6 +440,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
+		case HOTKEY_EDITOR_REMOVE_LOCATION:
 			return true;
 		case HOTKEY_EDITOR_MAP_ROTATE:
 			return false; //not implemented
@@ -979,6 +981,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
 			gui().invalidate_all();
 			return true;
+		case HOTKEY_EDITOR_REMOVE_LOCATION: {
+			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
+			if (lp) {
+				perform_delete(new editor_action_starting_position(map_location(), std::stoi(lp->selected_item())));
+			}
+			return true;
+		}
 		default:
 			return hotkey::command_executor::execute_command(cmd, index, press);
 	}
@@ -1382,6 +1391,11 @@ void editor_controller::scroll_left(bool on)
 void editor_controller::scroll_right(bool on)
 {
 	controller_base::set_scroll_right(on);
+}
+
+std::vector<std::string> editor_controller::additional_actions_pressed()
+{
+	return toolkit_->get_palette_manager()->active_palette().action_pressed();
 }
 
 } //end namespace editor

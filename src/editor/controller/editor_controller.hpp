@@ -187,6 +187,9 @@ class editor_controller : public controller_base,
 		 */
 		void perform_refresh_delete(editor_action* action, bool drag_part = false);
 
+
+		virtual std::vector<std::string> additional_actions_pressed() override;
+
 	private:
 
 		/** init the display object and general set-up */

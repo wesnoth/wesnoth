@@ -71,6 +71,7 @@ public:
 	const std::string& selected_item() const { return selected_item_; }
 
 	virtual void select_item(const std::string& item_id);
+	virtual std::vector<std::string> action_pressed() const override;
 
 private:
 

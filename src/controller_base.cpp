@@ -231,6 +231,11 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 		return;
 	}
+	auto str_vec = additional_actions_pressed();
+	if (!str_vec.empty()) {
+		execute_action(str_vec, 0, 0, false);
+		return;
+	}
 
 	bool was_scrolling = scrolling_;
 
