@@ -132,7 +132,7 @@ template bool editor_palette<overlay>::can_scroll_up();
 template<class Item>
 bool editor_palette<Item>::can_scroll_down()
 {
-	return (items_start_ + nitems_ + item_width_ <= num_items());
+	return (items_start_ + nitems_ + item_width_ <= size_t(num_items()));
 }
 template bool editor_palette<t_translation::t_terrain>::can_scroll_down();
 template bool editor_palette<unit_type>::can_scroll_down();
@@ -141,7 +141,7 @@ template bool editor_palette<overlay>::can_scroll_down();
 template<class Item>
 bool editor_palette<Item>::scroll_down()
 {
-	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= num_items()));
+	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= size_t(num_items())));
 	bool scrolled = false;
 
 	// move downwards
@@ -149,7 +149,7 @@ bool editor_palette<Item>::scroll_down()
 		items_start_ += item_width_;
 		scrolled = true;
 	}
-	else if (items_start_ + nitems_ + (num_items() % item_width_) <= num_items()) {
+	else if (items_start_ + nitems_ + (num_items() % item_width_) <= size_t(num_items())) {
 		items_start_ += num_items() % item_width_;
 		scrolled = true;
 	}
@@ -279,14 +279,14 @@ template void editor_palette<unit_type>::swap();
 template void editor_palette<overlay>::swap();
 
 template<class Item>
-size_t editor_palette<Item>::num_items()
+int editor_palette<Item>::num_items()
 {
 	const size_t size = group_map_[active_group_].size();
 	return size;
 }
-template size_t editor_palette<t_translation::t_terrain>::num_items();
-template size_t editor_palette<unit_type>::num_items();
-template size_t editor_palette<overlay>::num_items();
+template int editor_palette<t_translation::t_terrain>::num_items();
+template int editor_palette<unit_type>::num_items();
+template int editor_palette<overlay>::num_items();
 
 template<class Item>
 bool editor_palette<Item>::is_selected_fg_item(const std::string& id)
@@ -325,10 +325,7 @@ void editor_palette<Item>::draw_contents()
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
 	unsigned int starting = items_start_;
-	unsigned int ending = starting + nitems_;
-	if(ending > num_items() ){
-		ending = num_items();
-	}
+	unsigned int ending = std::min<unsigned int>(starting + nitems_, num_items());
 
 	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)

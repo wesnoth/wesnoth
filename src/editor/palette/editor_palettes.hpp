@@ -123,7 +123,7 @@ private:
 	virtual bool is_selected_bg_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	size_t num_items();
+	int num_items();
 
 	void hide(bool hidden) {
 		widget::hide(hidden);

@@ -158,8 +158,6 @@ location_palette::location_palette(editor_display &gui, const config& /*cfg*/, m
 		, item_space_(20 + 3)
 		, palette_y_(0)
 		, palette_x_(0)
-		, nitems_(0)
-		, nmax_items_(0)
 		, items_start_(0)
 		, selected_item_()
 		, items_()
@@ -188,7 +186,7 @@ sdl_handler_vector location_palette::handler_members()
 
 bool location_palette::scroll_up()
 {
-	unsigned int decrement = 1;
+	int decrement = 1;
 	if(items_start_ >= decrement) {
 		items_start_ -= decrement;
 		draw();
@@ -203,12 +201,12 @@ bool location_palette::can_scroll_up()
 
 bool location_palette::can_scroll_down()
 {
-	return (items_start_ + nitems_ + 1 <= num_items());
+	return (items_start_ + num_visible_items() + 1 <= num_items());
 }
 
 bool location_palette::scroll_down()
 {
-	bool end_reached = (!(items_start_ + nitems_ + 1 <= num_items()));
+	bool end_reached = (!(items_start_ + num_visible_items() + 1 <= num_items()));
 	bool scrolled = false;
 
 	// move downwards
@@ -220,7 +218,6 @@ bool location_palette::scroll_down()
 	draw();
 	return scrolled;
 }
-
 
 void location_palette::adjust_size(const SDL_Rect& target)
 {
@@ -236,7 +233,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	
 	button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
 		//static_cast<mouse_action_starting_position&>(**active_mouse_action_).
-		map_location pos = disp_.get_map().starting_position(std::stoi(selected_item_));
+		map_location pos = disp_.get_map().special_location(selected_item_);
 		if (pos.valid()) {
 			disp_.scroll_to_tile(pos, display::WARP);
 		}
@@ -244,21 +241,18 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Add"), [this]() {
 		std::string newid;
 		if (gui2::tedit_text::execute(_("New Location Identifer"), "", newid, video())) {
-			items_.push_back(newid);
-			adjust_size(location());
+			add_item(newid);
 		}
 	}));
 	button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), nullptr));
 
-
-	const size_t space_for_items = bottom - target.y;
-	const int items_fitting = static_cast<unsigned> (space_for_items / item_space_);
-	nitems_ = std::min<int>(items_fitting, items_.size());
-	if (buttons_.size() != nitems_) {
+	const int space_for_items = bottom - target.y;
+	const int items_fitting = space_for_items / item_space_;
+	if (num_visible_items() != items_fitting) {
 		location_palette_item lpi(gui_.video(), *this);
 		//Why does this need a pointer to a non-const as second paraeter?
 		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
-		buttons_.resize(nitems_, &lpi);
+		buttons_.resize(items_fitting, &lpi);
 	}
 	set_location(target);
 	set_dirty(true);
@@ -276,9 +270,13 @@ void location_palette::select_item(const std::string& item_id)
 	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
 
-size_t location_palette::num_items()
+int location_palette::num_items()
 {
 	return items_.size();
+}
+int location_palette::num_visible_items()
+{
+	return buttons_.size();
 }
 
 bool location_palette::is_selected_item(const std::string& id)
@@ -290,14 +288,10 @@ void location_palette::draw_contents()
 {
 	if (*active_mouse_action_)
 		(*active_mouse_action_)->set_mouse_overlay(gui_);
-	unsigned int y = palette_y_;
-	const unsigned int x = palette_x_;
-	const unsigned int starting = items_start_;
-	unsigned int ending = starting + nitems_;
-	if(ending > num_items() ){
-		ending = num_items();
-	}
-
+	int y = palette_y_;
+	const int x = palette_x_;
+	const int starting = items_start_;
+	int ending = std::min<int>(starting + num_visible_items(), num_items());
 	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->enable(starting != 0);
@@ -315,9 +309,7 @@ void location_palette::draw_contents()
 		button_delete_->set_dirty(true);
 	}
 	unsigned int counter = starting;
-	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
-		//TODO check if the conditions still hold for the counter variable
-		//for (unsigned int counter = starting; counter < ending; counter++)
+	for (int i = 0, size = num_visible_items(); i < size; i++) {
 
 		location_palette_item & tile = buttons_[i];
 
@@ -368,8 +360,26 @@ std::vector<std::string> location_palette::action_pressed() const
 	}
 	return res;
 }
+
 location_palette::~location_palette() 
 {
+}
+
+void location_palette::add_item(const std::string& id)
+{
+	int pos;
+	const auto itor = std::find(items_.begin(), items_.end(), id);
+	if (itor == items_.end()) {
+		items_.push_back(id);
+		pos = items_.size() - 1;
+	}
+	else {
+		pos = itor - items_.begin();
+	}
+	selected_item_ = id;
+	items_start_ = std::max(pos - num_visible_items() + 1, items_start_);
+	items_start_ = std::min(pos, items_start_);
+	adjust_size(location());
 }
 
 } // end namespace editor

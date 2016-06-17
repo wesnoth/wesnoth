@@ -76,7 +76,7 @@ public:
 	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) {}
 
     //item
-	virtual size_t num_items() {return 0;}
+	virtual int num_items() {return 0;}
 	virtual size_t start_num() {return 0;}
 	virtual void set_start_item(size_t /*index*/) {}
 	virtual bool supports_swap() { return false; }

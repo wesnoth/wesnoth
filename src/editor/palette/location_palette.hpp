@@ -84,10 +84,12 @@ private:
 	virtual bool is_selected_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	size_t num_items();
+	int num_items();
+	/** Return the maximum number of items shown at the same time. */
+	int num_visible_items();
 
 	void hide(bool hidden) override;
-
+	void add_item(const std::string& id);
 protected:
 
 	editor_display &gui_;
@@ -101,12 +103,8 @@ private:
 	unsigned int palette_x_;
 
 protected:
-	//the number of items visible at the same time.
-	size_t nitems_;
-	//
-	size_t nmax_items_;
 	//the current scrolling position
-	size_t items_start_;
+	int items_start_;
 
 private:
 	std::string selected_item_;

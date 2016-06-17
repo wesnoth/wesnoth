@@ -48,6 +48,7 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
+	void resrote_palete_bg(bool scroll_top);
 	void scroll_bottom();
 
 //TODO
