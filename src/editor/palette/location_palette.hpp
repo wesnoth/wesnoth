@@ -72,6 +72,7 @@ public:
 
 	virtual void select_item(const std::string& item_id);
 	virtual std::vector<std::string> action_pressed() const override;
+	void add_item(const std::string& id);
 	~location_palette();
 private:
 
@@ -89,7 +90,6 @@ private:
 	int num_visible_items();
 
 	void hide(bool hidden) override;
-	void add_item(const std::string& id);
 protected:
 
 	editor_display &gui_;

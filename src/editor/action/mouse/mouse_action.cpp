@@ -398,10 +398,14 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	if (!disp.map().on_board(hex)) {
 		return nullptr;
 	}
-
 	auto player_starting_at_hex = disp.map().is_starting_position(hex);
 	 
-	std::vector<map_location> starting_positions;
+	if (has_ctrl_modifier()) {
+		if (player_starting_at_hex) {
+			location_palette_.add_item(*player_starting_at_hex);
+		}
+		return nullptr;
+	}
 
 	std::string new_player_at_hex = location_palette_.selected_item();
 	editor_action* a = nullptr;
