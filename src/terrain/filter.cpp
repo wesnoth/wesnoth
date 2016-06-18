@@ -162,11 +162,10 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 				}
 			}
 		}
-	}
-	//TODO: move this inside if(!ignore_xy) and ad d check for this in terrain_filter::get_locations
-	if (cfg_.has_attribute("location_id")) {
-		if (loc != fc_->get_disp_context().map().special_location(cfg_["location_id"])) {
-			return false;
+		if (cfg_.has_attribute("location_id")) {
+			if (loc != fc_->get_disp_context().map().special_location(cfg_["location_id"])) {
+				return false;
+			}
 		}
 	}
 	//Allow filtering on unit
@@ -433,13 +432,25 @@ public:
 		bool operator()(const map_location&) const { return true; }
 	};
 
-	template<typename T, typename F1, typename F2>
-	static void filter_final(T&& src, location_set& dest, const terrain_filter&, const F1& f1, const F2& f2)
+	template<typename T, typename F1, typename F2, typename F3>
+	static void filter_final(T&& src, location_set& dest, const terrain_filter&, const F1& f1, const F2& f2, const F3& f3)
 	{
 		for (const map_location &loc : src) {
-			if (f1(loc) && f2(loc)) {
+			if (f1(loc) && f2(loc) && f3(loc)) {
 				dest.insert(loc);
 			}
+		}
+	}
+
+	template<typename T, typename F1, typename F2>
+	static void filter_special_loc(T&& src, location_set& dest, const terrain_filter& filter, const F1& f1, const F2& f2)
+	{
+		if (filter.cfg_.has_attribute("location_id")) {
+			map_location loc2 = filter.fc_->get_disp_context().map().special_location(filter.cfg_["location_id"]);
+			filter_final(src, dest, filter, f1, f2, [loc2](const map_location& loc) { return loc == loc2; });
+		}
+		else {
+			filter_final(src, dest, filter, f1, f2, tno_filter());
 		}
 	}
 
@@ -448,10 +459,10 @@ public:
 	{
 		if (filter.cfg_.has_attribute("area")) {
 			const std::set<map_location>& area = filter.fc_->get_tod_man().get_area_by_id(filter.cfg_["area"]);
-			filter_final(src, dest, filter, f1, [&area](const map_location& loc) { return area.find(loc) != area.end(); });
+			filter_special_loc(src, dest, filter, f1, [&area](const map_location& loc) { return area.find(loc) != area.end(); });
 		}
 		else {
-			filter_final(src, dest, filter, f1, tno_filter());
+			filter_special_loc(src, dest, filter, f1, tno_filter());
 		}
 	}
 
@@ -494,7 +505,13 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	}
 	else if (cfg_.has_attribute("area")) {
 		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
-		terrain_filterimpl::filter_final(area, match_set, *this, terrain_filterimpl::tno_filter(), terrain_filterimpl::tno_filter());
+		terrain_filterimpl::filter_special_loc(area, match_set, *this, terrain_filterimpl::tno_filter(), terrain_filterimpl::tno_filter());
+	}
+	else if (cfg_.has_attribute("location_id")) {
+		map_location loc2 = fc_->get_disp_context().map().special_location(cfg_["location_id"]);
+		if (loc2.valid()) {
+			match_set.insert(loc2);
+		}
 	}
 	else {
 		//consider all locations on the map
