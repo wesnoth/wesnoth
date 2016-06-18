@@ -55,7 +55,6 @@ class game_lua_kernel : public lua_kernel_base
 	// Private functions to ease access to parts of game_state
 	game_board & board();
 	unit_map & units();
-	const gamemap & map();
 	game_data & gamedata();
 	tod_manager & tod_man();
 
@@ -177,6 +176,7 @@ class game_lua_kernel : public lua_kernel_base
 
 public:
 	std::vector<team> & teams();
+	const gamemap & map() const;
 	/**
 		A value != 0 means that the shouldn't remove any units from the map, usually because
 		we are currently operating on a unit& and removing it might cause memory corruptions

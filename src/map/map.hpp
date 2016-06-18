@@ -204,7 +204,8 @@ public:
 	std::vector<map_location> parse_location_range(const std::string& xvals,
 	const std::string &yvals, bool with_border = false) const;
 
-
+	using tstarting_positions = t_translation::tstarting_positions;
+	const tstarting_positions& special_locations() const { return starting_positions_; }
 protected:
 	t_translation::t_map tiles_;
 
@@ -212,7 +213,6 @@ protected:
 	 * The size of the starting positions array is MAX_PLAYERS + 1,
 	 * because the positions themselves are numbered from 1.
 	 */
-	using tstarting_positions = t_translation::tstarting_positions;
 	tstarting_positions starting_positions_;
 
 	/**

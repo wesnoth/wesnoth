@@ -209,6 +209,91 @@ std::vector<int> game_lua_kernel::get_sides_vector(const vconfig& cfg)
 }
 
 
+
+static int special_locations_len(lua_State *L)
+{
+	lua_pushnumber(L, lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().size());
+	return 1;
+}
+
+static int special_locations_next(lua_State *L)
+{
+	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
+
+	t_translation::tstarting_positions::left_const_iterator it;
+	const char* id = nullptr;
+	if (lua_isnoneornil(L, 2)) {
+		it = left.begin();
+	}
+	else {
+		it = left.find(luaL_checkstring(L, 2));
+		if (it == left.end()) {
+			return 0;
+		}
+		++it;
+	}
+	if (it == left.end()) {
+		return 0;
+	}
+	lua_pushstring(L, it->first.c_str());
+	lua_createtable(L, 2, 0);
+	lua_pushnumber(L, it->second.x + 1);
+	lua_rawseti(L, -2, 1);
+	lua_pushnumber(L, it->second.y + 1);
+	lua_rawseti(L, -2, 2);
+	return 2;
+}
+
+static int special_locations_pairs(lua_State *L)
+{
+	lua_pushcfunction(L, &special_locations_next);
+	lua_pushvalue(L, -2);
+	lua_pushnil(L);
+	return 3;
+}
+
+static int special_locations_index(lua_State *L)
+{
+	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
+	auto it = left.find(luaL_checkstring(L, 2));
+	if (it == left.end()) {
+		return 0;
+	}
+	else {
+		lua_createtable(L, 2, 0);
+		lua_pushnumber(L, it->second.x + 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushnumber(L, it->second.y + 1);
+		lua_rawseti(L, -2, 2);
+		return 1;
+	}
+}
+
+static int special_locations_newindex(lua_State *L)
+{
+	lua_pushstring(L, "special locations cannot be modified uwing wesnoth.special_locations");
+	return lua_error(L);
+}
+
+static void push_locations_talbe(lua_State *L)
+{
+	lua_newtable(L); // The functor table
+	lua_newtable(L); // The functor metatable
+	lua_pushstring(L, "__len");
+	lua_pushcfunction(L, &special_locations_len);
+	lua_rawset(L, -3);
+	lua_pushstring(L, "__index");
+	lua_pushcfunction(L, &special_locations_index);
+	lua_rawset(L, -3);
+	lua_pushstring(L, "__newindex");
+	lua_pushcfunction(L, &special_locations_newindex);
+	lua_rawset(L, -3);
+	lua_pushstring(L, "__pairs");
+	lua_pushcfunction(L, &special_locations_pairs);
+	lua_rawset(L, -3);
+	lua_setmetatable(L, -2); // Apply the metatable to the functor table
+}
+
 namespace {
 	/**
 	 * Temporary entry to a queued_event stack
@@ -4447,7 +4532,7 @@ std::vector<team> & game_lua_kernel::teams() {
 	return game_state_.board_.teams_;
 }
 
-const gamemap & game_lua_kernel::map() {
+const gamemap & game_lua_kernel::map() const {
 	return game_state_.board_.map();
 }
 
@@ -4781,6 +4866,8 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "game_events");
+	push_locations_talbe(L);
+	lua_setfield(L, -2, "special_locations");
 	lua_pop(L, 1);
 
 	// Create the theme_items table.
@@ -5039,8 +5126,8 @@ int game_lua_kernel::cfun_builtin_effect(lua_State *L)
 }
 
 /**
- * Registers a function for use as an effect handler.
- */
+* Registers a function for use as an effect handler.
+*/
 void game_lua_kernel::push_builtin_effect()
 {
 	lua_State *L = mState;
@@ -5061,6 +5148,7 @@ void game_lua_kernel::push_builtin_effect()
 	lua_rawset(L, -3); // Set the descr "metafunction"
 	lua_setmetatable(L, -2); // Apply the metatable to the functor table
 }
+
 
 /**
  * Executes its upvalue as a wml action.
