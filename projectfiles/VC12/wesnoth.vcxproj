@@ -1063,6 +1063,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\editor\palette\location_palette.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\editor\palette\palette_manager.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\Palette\</ObjectFileName>
@@ -3920,6 +3928,7 @@
     <ClInclude Include="..\..\src\editor\palette\common_palette.hpp" />
     <ClInclude Include="..\..\src\editor\palette\editor_palettes.hpp" />
     <ClInclude Include="..\..\src\editor\palette\item_palette.hpp" />
+    <ClInclude Include="..\..\src\editor\palette\location_palette.hpp" />
     <ClInclude Include="..\..\src\editor\palette\palette_manager.hpp" />
     <ClInclude Include="..\..\src\editor\palette\terrain_palettes.hpp" />
     <ClInclude Include="..\..\src\editor\palette\tristate_button.hpp" />
