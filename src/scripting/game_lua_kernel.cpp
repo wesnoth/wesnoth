@@ -221,7 +221,6 @@ static int special_locations_next(lua_State *L)
 	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
 
 	t_translation::tstarting_positions::left_const_iterator it;
-	const char* id = nullptr;
 	if (lua_isnoneornil(L, 2)) {
 		it = left.begin();
 	}
