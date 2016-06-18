@@ -26,6 +26,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/container/flat_set.hpp>
 
+#include <stdint.h>
+
 class game_data;
 class gamemap;
 #if defined(_MSC_VER) && _MSC_VER <= 1600
@@ -364,9 +366,9 @@ public:
 
 	//function which, when given a 1-based side will return the color used by that side.
 	static const color_range get_side_color_range(int side);
-	static Uint32 get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
-	static Uint32 get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
-	static Uint32 get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
+	static uint32_t get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
+	static uint32_t get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
+	static uint32_t get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
 	static SDL_Color get_side_color(int side);
 	static SDL_Color get_minimap_color(int side);
 	static std::string get_side_color_index(int side);
