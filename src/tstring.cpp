@@ -454,7 +454,7 @@ const std::string& t_string_base::str() const
 	return translated_value_;
 }
 
-t_string::t_string() : super()
+t_string::t_string() : val_(new base())
 {
 }
 
@@ -462,35 +462,36 @@ t_string::~t_string()
 {
 }
 
-t_string::t_string(const t_string &o) : super(o)
+t_string::t_string(const t_string &o) : val_(o.val_)
 {
 }
 
-t_string::t_string(const base &o) : super(o)
+t_string::t_string(const base &o) : val_(new base(o))
 {
 }
 
-t_string::t_string(const char *o) : super(base(o))
+t_string::t_string(const char *o) : val_(new base(o))
 {
 }
 
-t_string::t_string(const std::string &o) : super(base(o))
+t_string::t_string(const std::string &o) : val_(new base(o))
 {
 }
 
-t_string::t_string(const std::string &o, const std::string &textdomain) : super(base(o, textdomain))
+t_string::t_string(const std::string &o, const std::string &textdomain) : val_(new base(o, textdomain))
 {
 }
 
 t_string &t_string::operator=(const t_string &o)
 {
-	super::operator=(o);
+	val_ = o.val_;
 	return *this;
 }
 
 t_string &t_string::operator=(const char *o)
 {
-	super::operator=(base(o));
+	t_string o2(o);
+	swap(o2);
 	return *this;
 }
 
@@ -511,42 +512,4 @@ std::ostream& operator<<(std::ostream& stream, const t_string_base& string)
 {
 	stream << string.str();
 	return stream;
-}
-
-/**
- * shared_object<tstring_base> implementation of hash database
- */
-
-template <typename T, typename node = shared_node<T> >
-struct types {
-typedef boost::multi_index_container<
-	node,
-	boost::multi_index::indexed_by<
-		boost::multi_index::hashed_unique<
-			BOOST_MULTI_INDEX_MEMBER(node, T, val)
-		>
-	>
-> hash_map;
-
-typedef typename hash_map::template nth_index<0>::type hash_index;
-
-};
-
-static types<t_string_base>::hash_map& map() { static types<t_string_base>::hash_map* map = new types<t_string_base>::hash_map; return *map; }
-static types<t_string_base>::hash_index& index() { return map().get<0>(); }
-static std::mutex& mutex() { static std::mutex* m = new std::mutex(); return *m; }
-typedef shared_node<t_string_base> node;
-
-template<>
-const node* shared_object<t_string_base>::insert_into_index(const node & n)
-{
-	std::lock_guard<std::mutex> lock(mutex());
-	return &*index().insert(n).first;
-}
-
-template<>
-void shared_object<t_string_base>::erase_from_index(const node * ptr)
-{
-	std::lock_guard<std::mutex> lock(mutex());
-	index().erase(index().find(ptr->val));
 }

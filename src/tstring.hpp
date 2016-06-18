@@ -15,8 +15,7 @@
 #ifndef TSTRING_H_INCLUDED
 #define TSTRING_H_INCLUDED
 
-#include "utils/shared_object.hpp"
-
+#include <boost/shared_ptr.hpp>
 #include <string>
 
 /**
@@ -111,10 +110,9 @@ private:
 inline size_t hash_value(const t_string_base& str) { return str.hash_value(); }
 std::ostream& operator<<(std::ostream&, const t_string_base&);
 
-class t_string :
-	private shared_object<t_string_base> {
+class t_string
+{
 public:
-	typedef shared_object<t_string_base> super;
 	typedef t_string_base base;
 	typedef t_string_base::walker walker;
 
@@ -142,10 +140,18 @@ public:
 	t_string operator+(const t_string& o) const { return get() + o.get(); }
 	t_string operator+(const std::string& o) const { return get() + o; }
 	t_string operator+(const char* o) const { return get() + o; }
-
-	t_string& operator+=(const t_string& o) { set(base(get()) += o.get()); return *this; }
-	t_string& operator+=(const std::string& o) { set(base(get()) += o); return *this; }
-	t_string& operator+=(const char* o) { set(base(get()) += o); return *this; }
+private:
+	template<typename T>
+	void increase_impl(const T& other)
+	{
+		base * nw = new base(get());
+		*nw += other;
+		val_.reset(nw);
+	}
+public:
+	t_string& operator+=(const t_string& o) { increase_impl(o.get()); return *this; }
+	t_string& operator+=(const std::string& o) { increase_impl(o); return *this; }
+	t_string& operator+=(const char* o) { increase_impl(o); return *this; }
 
 	bool operator==(const t_string& o) const { return get() == o.get(); }
 	bool operator==(const std::string& o) const { return get() == o; }
@@ -170,7 +176,11 @@ public:
 	static void add_textdomain(const std::string &name, const std::string &path);
 	static void reset_translations();
 
-	const t_string_base& get() const { return super::get(); }
+	const t_string_base& get() const { return *val_; }
+	void swap(t_string& other) { val_.swap(other.val_); }
+private:
+	//never null
+	boost::shared_ptr<const t_string_base> val_;
 };
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
 inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }

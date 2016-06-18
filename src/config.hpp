@@ -30,6 +30,7 @@
 
 #include "global.hpp"
 
+#include <climits>
 #include <ctime>
 #include <iosfwd>
 #include <iterator>
