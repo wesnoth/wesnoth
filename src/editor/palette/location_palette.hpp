@@ -74,6 +74,8 @@ public:
 	virtual std::vector<std::string> action_pressed() const override;
 	void add_item(const std::string& id);
 	~location_palette();
+	void hide(bool hidden) override;
+
 private:
 
 	/** Scroll the editor-palette to the top. */
@@ -88,8 +90,6 @@ private:
 	int num_items();
 	/** Return the maximum number of items shown at the same time. */
 	int num_visible_items();
-
-	void hide(bool hidden) override;
 protected:
 
 	editor_display &gui_;

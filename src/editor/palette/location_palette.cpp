@@ -181,7 +181,23 @@ sdl_handler_vector location_palette::handler_members()
 	for (gui::widget& b : buttons_) {
 		h.push_back(&b);
 	}
+	if (button_add_) { h.push_back(button_add_.get()); }
+	if (button_delete_) { h.push_back(button_delete_.get()); }
+	if (button_goto_) { h.push_back(button_goto_.get()); }
 	return h;
+}
+
+void location_palette::hide(bool hidden) {
+	widget::hide(hidden);
+	if (!hidden) {
+		help_handle_ = gui_.video().set_help_string(get_help_string());
+	}
+	else {
+		gui_.video().clear_help_string(help_handle_);
+	}
+	for (auto& w : handler_members()) {
+		static_cast<gui::widget&>(*w).hide(hidden);
+	}
 }
 
 bool location_palette::scroll_up()
@@ -343,15 +359,6 @@ void location_palette::draw_contents()
 	update_rect(location());
 }
 
-void location_palette::hide(bool hidden) {
-	widget::hide(hidden);
-	if (!hidden)
-		help_handle_ = gui_.video().set_help_string(get_help_string());
-	else gui_.video().clear_help_string(help_handle_);
-	for (gui::widget& w : buttons_) {
-		w.hide(hidden);
-	}
-}
 std::vector<std::string> location_palette::action_pressed() const
 {
 	std::vector<std::string> res;
