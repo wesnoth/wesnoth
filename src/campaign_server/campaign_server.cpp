@@ -380,13 +380,17 @@ void server::fire(const std::string& hook, const std::string& addon)
 
 void server::send_message(const std::string& msg, socket_ptr sock)
 {
-	async_send_message(sock, msg);
+	simple_wml::document doc;
+	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
+	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
 void server::send_error(const std::string& msg, socket_ptr sock)
 {
 	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
-	async_send_error(sock, msg);
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
+	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
 /*
