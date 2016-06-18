@@ -110,6 +110,7 @@ server::server(const std::string& cfg_file)
     , feedback_url_format_()
 	, blacklist_()
 	, blacklist_file_()
+    , flush_timer_(io_service_)
 {
 	load_config();
 
@@ -133,6 +134,7 @@ server::server(const std::string& cfg_file)
 	register_handlers();
 
 	start_server();
+	flush_cfg();
 }
 
 server::~server()
@@ -304,6 +306,22 @@ void server::handle_sighup(const boost::system::error_code&, int)
 	LOG_CS << "Reloaded configuration\n";
 
 	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+}
+
+void server::flush_cfg()
+{
+	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.async_wait(boost::bind(&server::handle_flush, this, _1));
+}
+
+void server::handle_flush(const boost::system::error_code& error)
+{
+	if(error) {
+		ERR_CS << "Error from reload timer: " << error.message() << "\n";
+		throw boost::system::system_error(error);
+	}
+	write_config();
+	flush_cfg();
 }
 
 void server::load_blacklist()

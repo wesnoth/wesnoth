@@ -22,6 +22,7 @@
 #include "utils/functional.hpp"
 #include <boost/scoped_ptr.hpp>
 #include <boost/unordered_map.hpp>
+#include <boost/asio/steady_timer.hpp>
 
 namespace campaignd {
 
@@ -96,6 +97,13 @@ private:
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
 
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
+
+	boost::asio::steady_timer flush_timer_;
+	/**
+	 * Starts timer to write config to disk every ten minutes.
+	 */
+	void flush_cfg();
+	void handle_flush(const boost::system::error_code& error);
 
 	/**
 	 * Reads the server configuration from WML.
