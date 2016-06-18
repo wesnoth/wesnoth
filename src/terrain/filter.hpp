@@ -66,6 +66,7 @@ public:
 	void flatten(const bool flat_tod=true) { flat_ = flat_tod; }
 
 	config to_config() const;
+	friend class terrain_filterimpl;
 private:
 	bool match_internal(const map_location& loc, const bool ignore_xy) const;
 
