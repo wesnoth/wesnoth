@@ -478,6 +478,12 @@ public:
 		}
 	}
 };
+//using lambdas with boost transformed gives compile erros on gcc (it works on clang and msvc)
+struct cfg_to_loc
+{
+	map_location operator()(const config& cfg) const { return map_location(cfg, nullptr); }
+	typedef map_location result_type;
+};
 void terrain_filter::get_locations(std::set<map_location>& locs, bool with_border) const
 {
 	std::set<map_location> match_set;
@@ -491,7 +497,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			try
 			{
 				auto ar = gd->get_variable_access_read(cfg_["find_in"]).as_array();
-				terrain_filterimpl::filter_xy(ar | boost::adaptors::transformed([](const config& cfg) { return map_location(cfg, nullptr);}), match_set, *this, with_border);
+				terrain_filterimpl::filter_xy(ar | boost::adaptors::transformed(cfg_to_loc()), match_set, *this, with_border);
 			}
 			catch (const invalid_variablename_exception&)
 			{
