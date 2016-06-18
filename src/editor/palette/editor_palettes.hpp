@@ -125,6 +125,9 @@ private:
 	/** Return the number of items in the palette. */
 	int num_items();
 
+	/** Return the number of items in the palette. */
+	int num_visible_items() { return buttons_.size();  }
+
 	void hide(bool hidden) {
 		widget::hide(hidden);
 		if (!hidden)
@@ -172,7 +175,7 @@ protected:
 
 	typedef std::map<std::string, Item> item_map;
 	item_map item_map_;
-	size_t nitems_, nmax_items_, items_start_;
+	int nitems_, nmax_items_, items_start_;
     std::set<std::string> non_core_items_;
 
 private:

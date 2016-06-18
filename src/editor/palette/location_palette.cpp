@@ -308,20 +308,21 @@ void location_palette::draw_contents()
 	if (button_delete_) {
 		button_delete_->set_dirty(true);
 	}
-	unsigned int counter = starting;
 	for (int i = 0, size = num_visible_items(); i < size; i++) {
 
 		location_palette_item & tile = buttons_[i];
 
 		tile.hide(true);
 
-		if (i >= ending) continue;
+		if (i >= ending) {
+			//We want to hide all follwing buttons to we cannot use break here.
+			continue;
+		}
 
-		const std::string item_id = items_[counter];
+		const std::string item_id = items_[starting + i];
 
 		std::stringstream tooltip_text;
 
-		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
 		dstrect.x = x;
 		dstrect.y = y;
@@ -338,7 +339,6 @@ void location_palette::draw_contents()
 
 		// Adjust location
 		y += item_space_;
-		counter++;
 	}
 	update_rect(location());
 }

@@ -87,8 +87,8 @@ template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<st
 template<class Item>
 bool editor_palette<Item>::scroll_up()
 {
-	unsigned int decrement = item_width_;
-	if (items_start_ + nitems_ == num_items() && num_items() % item_width_ != 0) {
+	int decrement = item_width_;
+	if (items_start_ + num_visible_items() == num_items() && num_items() % item_width_ != 0) {
 		decrement = num_items() % item_width_;
 	}
 	if(items_start_ >= decrement) {
@@ -132,7 +132,7 @@ template bool editor_palette<overlay>::can_scroll_up();
 template<class Item>
 bool editor_palette<Item>::can_scroll_down()
 {
-	return (items_start_ + nitems_ + item_width_ <= size_t(num_items()));
+	return (items_start_ + nitems_ + item_width_ <= num_items());
 }
 template bool editor_palette<t_translation::t_terrain>::can_scroll_down();
 template bool editor_palette<unit_type>::can_scroll_down();
@@ -141,7 +141,7 @@ template bool editor_palette<overlay>::can_scroll_down();
 template<class Item>
 bool editor_palette<Item>::scroll_down()
 {
-	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= size_t(num_items())));
+	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= num_items()));
 	bool scrolled = false;
 
 	// move downwards
@@ -149,7 +149,7 @@ bool editor_palette<Item>::scroll_down()
 		items_start_ += item_width_;
 		scrolled = true;
 	}
-	else if (items_start_ + nitems_ + (num_items() % item_width_) <= size_t(num_items())) {
+	else if (items_start_ + nitems_ + (num_items() % item_width_) <= num_items()) {
 		items_start_ += num_items() % item_width_;
 		scrolled = true;
 	}
@@ -221,12 +221,10 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
 	palette_x_ = target.x;
 	palette_y_ = target.y;
-	const size_t space_for_items = target.h;
-	const unsigned items_fitting =
-		static_cast<unsigned> (space_for_items / item_space_) *
-		item_width_;
-	nitems_ = std::min<int>(items_fitting, nmax_items_);
-	if (buttons_.size() != nitems_) {
+	const int space_for_items = target.h;
+	const int items_fitting = (space_for_items / item_space_) * item_width_;
+	nitems_ = std::min(items_fitting, nmax_items_);
+	if (num_visible_items() != nitems_) {
 		buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
 	}
 	set_location(target);
@@ -281,8 +279,7 @@ template void editor_palette<overlay>::swap();
 template<class Item>
 int editor_palette<Item>::num_items()
 {
-	const size_t size = group_map_[active_group_].size();
-	return size;
+	return group_map_[active_group_].size();
 }
 template int editor_palette<t_translation::t_terrain>::num_items();
 template int editor_palette<unit_type>::num_items();
@@ -324,8 +321,8 @@ void editor_palette<Item>::draw_contents()
 
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
-	unsigned int starting = items_start_;
-	unsigned int ending = std::min<unsigned int>(starting + nitems_, num_items());
+	int starting = items_start_;
+	int ending = std::min<int>(starting + nitems_, num_items());
 
 	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
@@ -335,8 +332,8 @@ void editor_palette<Item>::draw_contents()
 		downscroll_button->enable(ending != num_items());
 
 
-	unsigned int counter = starting;
-	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
+	int counter = starting;
+	for (int i = 0, size = num_visible_items(); i < size ; ++i) {
 		//TODO check if the conditions still hold for the counter variable
 		//for (unsigned int counter = starting; counter < ending; counter++)
 

@@ -44,7 +44,7 @@ void item_palette::setup(const config& cfg)
 			if (!group["core"].to_bool(false))
 				non_core_items_.insert(item["id"]);
 		}
-		nmax_items_ = std::max(nmax_items_, group_map_[group["id"]].size());
+		nmax_items_ = std::max<int>(nmax_items_, group_map_[group["id"]].size());
 	}
 
 	select_fg_item("anvil");

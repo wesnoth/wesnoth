@@ -120,7 +120,7 @@ void terrain_palette::setup(const config& cfg)
 
 		for (const std::string& k : keys) {
 			group_map_[k].push_back(get_id(t));
-			nmax_items_ = std::max(nmax_items_, group_map_[k].size());
+			nmax_items_ = std::max<int>(nmax_items_, group_map_[k].size());
 			std::map<std::string, item_group*>::iterator i = id_to_group.find(k);
 			if (i != id_to_group.end()) {
 				if (i->second->core) {
@@ -134,7 +134,7 @@ void terrain_palette::setup(const config& cfg)
 		if (core) {
 		// Add the terrain to the default group
 			group_map_["all"].push_back(get_id(t));
-		nmax_items_ = std::max(nmax_items_, group_map_["all"].size());
+		nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 		} else {
 			non_core_items_.insert(get_id(t));
 		}
