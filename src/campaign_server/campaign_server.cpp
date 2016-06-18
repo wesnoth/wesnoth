@@ -411,56 +411,6 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-/*
-void server::run()
-{
-	network::connection sock = 0;
-
-	time_t last_ts = monotonic_clock();
-
-	for(;;)
-	{
-		try {
-			const time_t cur_ts = monotonic_clock();
-			// Write config to disk every ten minutes.
-			if(force_flush || labs(cur_ts - last_ts) >= 10*60) {
-				write_config();
-				last_ts = cur_ts;
-			}
-
-		} catch(network::error& e) {
-			if(!e.socket) {
-				ERR_CS << "fatal network error: " << e.message << "\n";
-				throw;
-			} else {
-				LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
-				e.disconnect();
-			}
-		} catch(const config::error& e) {
-			network::connection err_sock = 0;
-			network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
-
-			if(err_connection != nullptr) {
-				err_sock = *err_connection;
-			}
-
-			if(err_sock == 0 && sock > 0) {
-				err_sock = sock;
-			}
-
-			if(err_sock) {
-				ERR_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
-				network::disconnect(err_sock);
-			} else {
-				throw;
-			}
-		}
-
-		SDL_Delay(20);
-	}
-}
-*/
-
 void server::register_handler(const std::string& cmd, const request_handler& func)
 {
 	handlers_[cmd] = func;
