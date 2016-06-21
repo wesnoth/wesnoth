@@ -28,6 +28,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "resources.hpp" //for help fetching lua kernel pointers
@@ -636,6 +637,10 @@ void tlua_interpreter::controller::search(int direction)
 
 /** Display a new console, using given video and lua kernel */
 void tlua_interpreter::display(CVideo& video, lua_kernel_base * lk) {
+	if(!game_config::debug) {
+		return;
+	}
+
 	if (!lk) {
 		ERR_LUA << "Tried to open console with a null lua kernel pointer.\n";
 		return;
