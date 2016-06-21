@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 #
 
@@ -13,10 +13,7 @@
 
 import sys, re, glob
 
-import wesnoth.wmlparser2 as wmldata
-
-def output(text):
-    sys.stdout.write(text.encode("utf8"))
+import wesnoth.wmlparser3 as wmldata
 
 if __name__ == "__main__":
     import argparse
@@ -42,13 +39,14 @@ if __name__ == "__main__":
 
     for arg in files:
         sections = []
-        wml_parser = wmldata.Parser(args.wesnoth, None, None, False)
+        wml_parser = wmldata.Parser(args.wesnoth, None, None)
         wml_parser.parse_file(arg)
         wml = wml_parser
         if not wml.get_all(tag="about"):
             wml = wml.get_all(tag="campaign")
             if not wml or not wml[0].get_all(tag="about"):
-                sys.stderr.write("No about section found in %s\n" % arg)
+                print("No about section found in %s\n" % arg,
+                      file=sys.stderr)
                 continue
             wml = wml[0]
         for about in wml.get_all(tag="about"):
@@ -68,7 +66,7 @@ if __name__ == "__main__":
         chapters.append((arg, sections))
 
     # Output.
-    output("""
+    print("""
 {| style="float:right"
 |
 __TOC__
@@ -79,23 +77,22 @@ then, many people have joined the project, contributing in very different ways.
 
 To make any changes to this list, please modify about.cfg in the repo or ask any
 developer to do it for you.
-
 """.lstrip())
     for path, sections in chapters:
         if path == "data/core/about.cfg":
-            output("== Contributors ==\n")
+            print("== Contributors ==")
         else:
             slash1 = path.rfind("/")
             slash2 = path.rfind("/", 0, slash1)
             beautified = path[slash2 + 1:slash1]
             beautified = beautified.replace("_", " ")
             beautified = beautified[0].upper() + beautified[1:]
-            output("== %s ==\n" % beautified)
+            print("== %s ==" % beautified)
         for section in sections:
-            output("=== %s ===\n" % section.title)
+            print("=== %s ===" % section.title)
             for name, comment, wikiuser, email in section.lines:
                 if name == "*":
-                    output("<hr>\n")
+                    print("<hr>")
                     continue
                 if comment:
                     comment = " - " + comment
@@ -118,6 +115,6 @@ developer to do it for you.
                         name = "[mailto:%s %s] (%s" % (email, name, nick)
                     else:
                         name = "[mailto:%s %s]" % (email, name)
-                output("* %s%s\n" % (name, comment))
+                print("* %s%s" % (name, comment))
 
-    output("""[[Category:Generated]]""")
+    print("""[[Category:Generated]]""")
