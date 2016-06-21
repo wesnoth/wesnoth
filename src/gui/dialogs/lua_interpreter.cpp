@@ -637,10 +637,11 @@ void tlua_interpreter::controller::search(int direction)
 
 /** Display a new console, using given video and lua kernel */
 void tlua_interpreter::display(CVideo& video, lua_kernel_base * lk) {
+#ifndef ALWAYS_HAVE_LUA_CONSOLE
 	if(!game_config::debug) {
 		return;
 	}
-
+#endif
 	if (!lk) {
 		ERR_LUA << "Tried to open console with a null lua kernel pointer.\n";
 		return;
