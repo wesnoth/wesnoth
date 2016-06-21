@@ -63,5 +63,5 @@ which generates information about campaigns for the wiki.')
         a = Campaign(campaign)
         output.append(wiki_output(a))
 
-    with open(args.output_path, "w") as wiki_format:
+    with open(args.output_path, "w", encoding="utf8") as wiki_format:
         wiki_format.write(''.join(output))
