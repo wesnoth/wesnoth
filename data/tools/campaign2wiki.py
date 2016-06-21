@@ -26,9 +26,7 @@ class Campaign:
         self.name = self.parser.get_text_val("name")
         self.id = self.parser.get_text_val("id")
         self.description = self.parser.get_text_val("description")
-        # Difficulty levels are separated by commas, so there are
-        # count(',')+1 difficulty levels.
-        self.levels = self.parser.get_text_val("difficulties").count(',') + 1
+        self.levels = len(self.parser.get_all(tag="difficulty"))
         self.credits_link = "http://wiki.wesnoth.org/Credits#" + self.id
         self.units_link = "http://units.wesnoth.org/trunk/mainline/en_US/%s.html" % self.id 
 
