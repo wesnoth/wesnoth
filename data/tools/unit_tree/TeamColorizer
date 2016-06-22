@@ -31,7 +31,8 @@ options are given) is to use red (255, 0, 0). Advanced options include:
     Causes -r, -g, and -b to be ignored. Sets the desired color. Use Wesnoth
     team colors, like 'red' or 'blue'. This method uses a more complex color
     definition but produces results identical to the in-game algorithm. Extra
-    colors available: 'magenta' (which does nothing) and 'pink'.
+    colors available: 'magenta' (which does nothing), 'cyan', 'yellow' and
+    'pink'.
 """
 import sys, getopt, subprocess
 
@@ -61,15 +62,24 @@ team_colors = {
 'blue':     { 'mid': { 'r':0x2e, 'g':0x41, 'b':0x9b },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
               'min': { 'r':0x0f, 'g':0x0f, 'b':0x0f }},
+'lightblue':{ 'mid': { 'r':0x00, 'g':0xa4, 'b':0xff },
+              'max': { 'r':0xff, 'g':0xff, 'b':0xff },
+              'min': { 'r':0x00, 'g':0x0a, 'b':0x21 }},
 'green':    { 'mid': { 'r':0x62, 'g':0xb6, 'b':0x64 },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
               'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+'brightgreen':{ 'mid': { 'r':0x8c, 'g':0xff, 'b':0x00 },
+              'max': { 'r':0xeb, 'g':0xff, 'b':0xbf },
+              'min': { 'r':0x2d, 'g':0x40, 'b':0x01 }},
 'purple':   { 'mid': { 'r':0x93, 'g':0x00, 'b':0x9d },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
               'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
 'orange':   { 'mid': { 'r':0xff, 'g':0x7e, 'b':0x00 },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
               'min': { 'r':0x0f, 'g':0x0f, 'b':0x0f }},
+'brightorange':   { 'mid': { 'r':0xff, 'g':0xc6, 'b':0x00 },
+              'max': { 'r':0xff, 'g':0xf7, 'b':0xe6 },
+              'min': { 'r':0x79, 'g':0x2a, 'b':0x00 }},
 'black':    { 'mid': { 'r':0x5a, 'g':0x5a, 'b':0x5a },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
               'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
@@ -82,9 +92,18 @@ team_colors = {
 'teal':     { 'mid': { 'r':0x30, 'g':0xcb, 'b':0xc0 },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
               'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
-'pink':     { 'mid': { 'r':0xff, 'g':0x77, 'b':0xa0 },
+'gold':     { 'mid': { 'r':0xff, 'g':0xf3, 'b':0x5a },
+              'max': { 'r':0xff, 'g':0xf8, 'b':0xd2 },
+              'min': { 'r':0x99, 'g':0x4f, 'b':0x13 }},
+'cyan':     { 'mid': { 'r':0x00, 'g':0xbe, 'b':0xbe },
+              'max': { 'r':0x00, 'g':0xee, 'b':0xee },
+              'min': { 'r':0x33, 'g':0x33, 'b':0x33 }},
+'yellow':   { 'mid': { 'r':0xee, 'g':0xe0, 'b':0x00 },
               'max': { 'r':0xff, 'g':0xff, 'b':0xff },
-              'min': { 'r':0x00, 'g':0x00, 'b':0x00 }},
+              'min': { 'r':0x10, 'g':0x0f, 'b':0x00 }},
+'pink':     { 'mid': { 'r':0xff, 'g':0xaa, 'b':0xff },
+              'max': { 'r':0xff, 'g':0xee, 'b':0xff },
+              'min': { 'r':0x50, 'g':0x37, 'b':0x50 }},
 }
 
 flag_rgb=((244,154,193),
