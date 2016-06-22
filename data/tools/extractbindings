@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Extract and format a list of bindings from a theme file.
 # Presently this generates a table suitable for wiki inclusion.
@@ -8,7 +8,7 @@ import sys
 def report(binding, command):
     "Reporter suitable for a wiki inclusion"
     tabcolumn=-32
-    print " %*s%s" % (tabcolumn, binding, command)
+    print(" %*s%s" % (tabcolumn, binding, command))
 
 def strip(st):
     if st.startswith('"'):
@@ -49,6 +49,6 @@ for line in sys.stdin:
             try:
                 (key, value) = line.split("=", 1)
             except ValueError:
-                print >>sys.stderr, "Malformed line: %s" % repr(line)
+                print("Malformed line: %s" % line, file=sys.stderr)
                 sys.exit(1)
             entry[key] = value
