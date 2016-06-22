@@ -5,10 +5,10 @@
 
 import sys
 
-def report(binding, description):
+def report(binding, command):
     "Reporter suitable for a wiki inclusion"
     tabcolumn=-32
-    print " %*s%s" % (tabcolumn, binding, description)
+    print " %*s%s" % (tabcolumn, binding, command)
 
 def strip(st):
     if st.startswith('"'):
@@ -29,18 +29,25 @@ for line in sys.stdin:
         in_keydef = True
     elif in_keydef:
         if line == "[/hotkey]":
-            binding = ''
+            binding = []
             # Presently we ignore the Mac command key
             for mod in ("ctrl", "alt", "shift"):
                 if mod in entry and entry[mod] == 'yes':
-                    binding += mod + "-"
-            binding += strip(entry['key'])
-            report(binding, strip(entry['description']))
+                    binding.append(mod)
+            if entry.get("button", None) == "1":
+               binding.append("Left click")
+            elif entry.get("button", None) == "3":
+               binding.append("Right click")
+            if "key" in entry:
+                binding.append(strip(entry['key']))
+            report('-'.join(binding), strip(entry['command']))
             in_keydef = False
-            entry = {}
+            entry.clear()
+        elif line == "{IF_APPLE_CMD_ELSE_CTRL}":
+            entry["ctrl"] = "yes"
         else:
             try:
-                (key, value) = line.split("=")
+                (key, value) = line.split("=", 1)
             except ValueError:
                 print >>sys.stderr, "Malformed line: %s" % repr(line)
                 sys.exit(1)
