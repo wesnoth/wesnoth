@@ -21,6 +21,7 @@
 #include <map>
 #include <list>
 #include <vector>
+#include <cstdint>
 
 class context_free_grammar_generator : public name_generator
 {
