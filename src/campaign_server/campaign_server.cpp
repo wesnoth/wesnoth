@@ -827,6 +827,7 @@ int main()
 	game_config::path = filesystem::get_cwd();
 
 	lg::set_log_domain_severity("campaignd", lg::info());
+	lg::set_log_domain_severity("server", lg::info());
 	lg::timestamps(true);
 
 	try {
