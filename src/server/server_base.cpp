@@ -165,7 +165,10 @@ std::string client_address(socket_ptr socket)
 bool check_error(const boost::system::error_code& error, socket_ptr socket)
 {
 	if(error) {
-		ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
+		if(error == boost::asio::error::eof)
+			LOG_SERVER << client_address(socket) << "\tconnection closed\n";
+		else
+			ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
 		return true;
 	}
 	return false;
