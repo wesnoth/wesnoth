@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 20:00+0300\n"
-"PO-Revision-Date: 2012-01-22 14:16+0100\n"
-"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
-"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
-"Language: \n"
+"PO-Revision-Date: 2016-06-11 12:33+0200\n"
+"Last-Translator: Liam Tailor <liado@wp.pl>\n"
+"Language-Team: z.banach@wsisiz.edu.pl\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [time]: id=underground
@@ -36,19 +36,13 @@ msgstr "berserk"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
 #: data/core/macros/abilities.cfg:430
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Berserk:\n"
-"Ten typ ataku powoduje trwanie walki aż do śmierci jednego z uczestników lub "
-"wymiany 30 ciosów i to zarówno podczas ataku, jak i obrony."
+"Zarówno podczas ataku, jak i obrony, ten typ ataku powoduje walkę aż do "
+"śmierci jednego z uczestników lub wymiany 30 ciosów."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
@@ -59,11 +53,6 @@ msgstr "magiczny"
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
 #: data/core/macros/abilities.cfg:517
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -75,19 +64,12 @@ msgstr ""
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
 #: data/core/macros/abilities.cfg:561
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "pierwszy cios"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
 #: data/core/macros/abilities.cfg:562
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -109,16 +91,6 @@ msgstr "leczy +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -130,10 +102,10 @@ msgstr ""
 "Leczy +4:\n"
 "Jednostka leczy sąsiednie jednostki na początku każdej tury.\n"
 "\n"
-"Jednostka pod opieką leczącego może odzyskać do 4 PŻ na turę lub nie odczuć "
-"efektów działania trucizny.\n"
-"Jednostka lecząca nie może uzdrowić zatrutego - jednostka zatruta musi "
-"szukać opieki w wiosce lub u uzdrowiciela."
+"Jednostka pod opieką leczącego może odzyskać do 4 PŻ na turę lub uchronić "
+"się od efektów działania trucizny.\n"
+"Otruta jednostka nie zostanie wyleczona przez leczącego. Musi szukać opieki "
+"w wiosce lub u uzdrowiciela."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
@@ -150,16 +122,6 @@ msgstr "leczy +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
 #: data/core/macros/abilities.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -173,10 +135,10 @@ msgstr ""
 "Jednostka łączy leki ziołowe z magią, by leczyć jednostki szybciej i lepiej "
 "niż jest to zwykle możliwe w warunkach polowych.\n"
 "\n"
-"Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę lub nie "
-"odczuć efektów działania trucizny.\n"
-"Jednostka zatruta nie zostanie wyleczona przez leczącego, lecz musi szukać "
-"opieki w wiosce lub u uzdrowiciela."
+"Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę lub uchronić "
+"się od efektów działania trucizny.\n"
+"Otruta jednostka nie zostanie wyleczona przez leczącego. Musi szukać opieki "
+"w wiosce lub u uzdrowiciela."
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
@@ -437,7 +399,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -445,7 +407,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:186
@@ -498,7 +460,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -506,7 +468,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:201
@@ -628,7 +590,7 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Encyklopedia"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
@@ -640,12 +602,12 @@ msgstr "<ref>dst='..geography' text='Geografia'</ref>"
 #: data/core/encyclopedia/geography.cfg:12
 #: data/core/encyclopedia/geography.cfg:19
 msgid "Geography"
-msgstr ""
+msgstr "Geografia"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:27
@@ -653,27 +615,45 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Rzeka płynąca z <ref>dst='heart_mountains' text='Gór Środka'</ref>, biegnie "
+"aż na wschód Listry."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
 msgid "Great Ocean"
-msgstr "Wielki Ocena"
+msgstr "Wielki Ocean"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:33
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
+#| "and all rivers eventually flow to it. Far to the west in the the Great "
+#| "Ocean is a huge archipelago called <ref>dst='morogor' text='Morogor'</"
+#| "ref>."
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
 "a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Leży na zachodzie <ref>dst='great_continent' text='kontynentu'</ref>, "
+"wszystkie rzeki kończą w nim swój bieg. Daleko na zachodzie Wielkiego Oceanu "
+"istnieje ogromny archipelag zwany <ref>dst='morogor' text='Morogor'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:38
 msgid "Morogor"
-msgstr ""
+msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:39
+#, fuzzy
+#| msgid ""
+#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
+#| "Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> "
+#| "and east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
+#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
+#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -681,6 +661,12 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Archipelag zlokalizowany gdzieś pośród <ref>dst='great_ocean' "
+"text='Wielkiego Oceanu'</ref> na zachód od <ref>dst='green_isle' "
+"text='Zielonej Wyspy'</ref> i na wschód od <ref>dst='old_continent' "
+"text='Starego Kontynentu'</ref>.\n"
+"Głównie zamieszkały przez <ref>dst='..race_drake' text='smoki'</ref>.\n"
+"Centralna wyspa archipelagu również nazywa się ‘Morogor’."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
@@ -692,11 +678,12 @@ msgstr "Zielona Wyspa"
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Duża wyspa leżąca w <ref>dst='great_ocean' text='Wielkim Oceanie'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
 msgid "Old Continent"
-msgstr ""
+msgstr "Stary Kontynent"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:53
@@ -704,11 +691,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Leży na zachód od <ref>dst='morogor' text='Morogoru'</ref> za "
+"<ref>dst='great_ocean' text='Wielkim Oceanem'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
 msgid "Great Continent"
-msgstr ""
+msgstr "Wielki Kontynent"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:59
@@ -717,11 +706,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Kontynent na któryn leży <ref>dst='kingdom_wesnoth' text='Królestwo "
+"Wenosth'</ref>. Jego zachodnie wybrzeże jest otoczone przez "
+"<ref>dst='great_ocean' text='Wielki Ocean'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
 msgid "Irdya"
-msgstr ""
+msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:65
@@ -731,6 +723,10 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Nazwa krainy w której leży <ref>dst='kingdom_wesnoth' text='Królestwo "
+"Wesnoth'</ref> to \"Irdya\". Aczkolwiek termin ten, rzadko jest używany w "
+"erze przedstawionej na głównej mapie. Ludność zazwyczaj określa ją poprostu "
+"mianem \"świata\" lub - bardziej poetycko - \"szeroki zielony świat\"."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:70
@@ -739,6 +735,64 @@ msgstr "Królestwo Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:71
+#, fuzzy
+#| msgid ""
+#| "The Kingdom of Wesnoth is located in the north-central portion of the "
+#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
+#| "mainline campaigns revolve around it. It is bounded on the map by the "
+#| "Great River to the north, the shore of the Great Ocean to the west, the "
+#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
+#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
+#| "main map).\n"
+#| "\n"
+#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
+#| "region. It is bounded to the south (off-map) by dense woods of which the "
+#| "Aethenwood may be considered a northernmost extension.\n"
+#| "\n"
+#| "    • Notable cities:\n"
+#| "          ◦ Weldyn: The capital of Wesnoth.\n"
+#| "          ◦ Aldril: City lying on the Bay of Pearls.\n"
+#| "          ◦ Blackwater Port: City lying south of the Bay of Pearls.\n"
+#| "          ◦ Carcyn: Located between the Grey Woods and the Great River.\n"
+#| "          ◦ Dan’Tonk: Wesnoth’s largest city, located in the center of "
+#| "the country, just west and north of Weldyn.\n"
+#| "          ◦ Soradoc: The northernmost border outpost of Wesnoth, controls "
+#| "the confluence of the Weldyn River and the Great River.\n"
+#| "          ◦ Fort Tahn: The southernmost border outpost, controls the "
+#| "north/south road crossing the River Aethen.\n"
+#| "          ◦ Tath: Important fort city north of Dan’Tonk, exerts control "
+#| "over the wilderness country around the east of the Brown Hills and north "
+#| "to the Ford of Abez.\n"
+#| "\n"
+#| "    • Notable land features:\n"
+#| "          ◦ Gryphon Mountain: Home of the fabled Gryphons\n"
+#| "          ◦ Ford of Abez: Shallow part of the Great River, it is usually "
+#| "controlled by Wesnothian forces\n"
+#| "          ◦ Weldyn River: It branches from the Great River and goes "
+#| "south\n"
+#| "          ◦ Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and "
+#| "Fort Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+#| "population\n"
+#| "          ◦ Dulatus Hills: These rolling hills bordering the Great "
+#| "Central Plain provide much of Wesnoth’s livestock and agriculture\n"
+#| "          ◦ Brown Hills: Wasteland surrounding Gryphon Mountain that is "
+#| "not well-populated and occasionally very dangerous.\n"
+#| "          ◦ Horse Plains: Region of rolling plains just south of the "
+#| "Great River, bounded by Glyn’s Forest to the west and the River Weldyn to "
+#| "the east; the southern reach merges into the Central Plain. Home of the "
+#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
+#| "          ◦ Estmark Hills: Largish range rising south of the Great River "
+#| "and east of the Weldyn River. The northernmost portion, nearest the River "
+#| "Weldyn, has at various times been settled by Wesnothians, but the "
+#| "Kingdom’s control is tenuous at best and banditry is common.\n"
+#| "          ◦ Glyn’s Forest: Sometimes known as the Royal Forest, named for "
+#| "one of Haldric II’s sons\n"
+#| "          ◦ Gray Woods: Large forest in the heart of the wilds of "
+#| "Wesnoth, located between Carcyn and Aldril and generally considered to be "
+#| "haunted\n"
+#| "          ◦ Green Swamp: Large swamp in the heart of the wilds of "
+#| "Wesnoth, south of Aldril. It receives drainage from the Brown Hills and "
+#| "feeds into the Great River. (Not shown on the main map.)"
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -790,14 +844,87 @@ msgid ""
 "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, located "
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
+"Królestwo Wesnoth leży w północno-centralnej części "
+"<ref>dst='great_continent' text='Wielkiego Kontynentu'</ref>. Większość "
+"głównych kampanii toczy się właśnie tutaj. Granice królestwa wyznacza: "
+"Wielka Rzeka na północy, Wielki Ocean na zachodzie, lasy Aethenwood na "
+"<ref>dst='southwest_elven_lands' text='płudniowym-zachodzie'</ref>, oraz "
+"Bagno Goryczy na południowym-wschodzie.\n"
+"\n"
+"Za rzeką Aethen, na południe od Fortu Tahn, leżą rubieże Wesnoth. Graniczą "
+"na południu z gęstym lasem (poza mapą) którego najbardziej wysuniętą na "
+"półnoć część stanowi Aethenwood.\n"
+"    • Najważniejsze miasta:\n"
+"          ◦ Weldyn: Stolica Wesnoth.\n"
+"          ◦ Aldril: Miasto leżące nad Perłową Zatoką.\n"
+"          ◦ Port Blackwater: Miasto na południe od Perłowej Zatoki .\n"
+"          ◦ Carcyn: Zlokalizowane pomiędzy Szarym Lasem i Wielą Rzeką.\n"
+"          ◦ Dan’Tonk: Największe miasto Wesnoth. Położone w centrum krainy, "
+"zaraz na zachód i północ od Weldyn.\n"
+"          ◦ Soradoc: Najbardziej wysunięta na północ osada, lężąca na samej "
+"granicy Wesnoth. Kontroluje obszar w którym Rzeka Weldyn łączy się z Wielką "
+"Rzeką.\n"
+"          ◦ Fort Tahn: Osada graniczna, najbardziej wysunięta na południe. "
+"Kontroluje bród Rzeki Aethen na osi północ/południe.\n"
+"          ◦ Tath: Miasto warowne Dan’Tonk o dużym znaczeniu. Zapewnia "
+"kontrolę nad dzikimi obszarami krainy, na wschód od Brunatnych Wzgórz oraz "
+"na północ od Brodu Abez.\n"
+"\n"
+"    • Najważniejsze elementy krajobrazu:\n"
+"          ◦ Góra Gryfów (Gryphon Mountain): Dom legendarnych Gryfów.\n"
+"          ◦ Bród Abez (Ford of Abez): Płytsza część Wielkiej Rzeki, "
+"najczęściej kontrolowana przez oddziały Wesnoth.\n"
+"          ◦ Rzeka Weldyn (Weldyn River): Odgałęzienie Wielkiej Rzeki, "
+"biegnie na południe.\n"
+"          ◦ Wielka Równina Centralna (Great Central Plain): Obszar którego "
+"granice wytyczają Weldyn, Dan’Tonk, oraz Fort Tahn, ta równina to spichlerz "
+"całego Wesnoth, jest domem dla większości populacji krainy.\n"
+"          ◦ Wzgórza Dulatus: Obszar graniczący z Wielką Równiną Centralną. "
+"Wzgórza te są dużym ośrodkiem rolniczym, oraz zaopatrują krainę w żywy "
+"inwentarz.\n"
+"          ◦ Brunatne Wzgórza (Brown Hills): Pustkowie otaczające Górę "
+"Gryfów, słabo zamieszkałe i często bardzo niebezpieczne.\n"
+"          ◦ Równiny Jeźdźców (Horse Plains): Równinny region na południe od "
+"Wielkiej Rzeki, na zachodzie graniczący z lasem Glyn, a na wschodzie z Rzeką "
+"Weldyn; południowe rubieża zbiegają się do Równiny Centralnej. To dom "
+"potężnych klanów; hoduje się tu jedne z najlepszych koni w całym Wenosth.\n"
+"          ◦ Wzgórza Estmark: Duży łańcuch biegnący na południu Wielkiej "
+"Rzeki, i na wschód od Rzeki Weldyn. Jego najbardziej wysunięta na północ "
+"część, najbliżej Rzeki Weldyn, była w różnych czasach zamieszkiwana przez "
+"osadników Wesnoth, jednak kontrola królestwa nad tym obszarem jest w "
+"najlepszym przypadku wątła, a w regionie często grasują bandyci.\n"
+"          ◦ Las Glyn: Czasem określany jako Królewski las, nazwany tak ku "
+"czci jednemu z sunów Haldirca II.\n"
+"          ◦ Szary Las (Gray Woods): Duży las w sercu dziczy Wensoth, mieści "
+"się między Carcyn i Aldril, większość uważa że jest nawiedzony.\n"
+"          ◦ Zielone Bagno (Green Swamp): Duże bagno w sercu dziczy Wesnoth, "
+"na południe od Aldril. Obszar zalewany jest prez Brunatne Wzgórza i zasila "
+"wodą Wielką Rzekę (obszar nie ukazany na głównej mapie)."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:101
+#, fuzzy
+#| msgid ""
+#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
+#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
+#| "treaty federation with Wesnoth. Its borders are the Great River to the "
+#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
+#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
+#| "west. More information is found in the historical narrative of Wesnoth.\n"
+#| "\n"
+#| "    • Notable cities:\n"
+#| "          ◦ Elensefar: The capital, located on an island in the "
+#| "<ref>dst='great_river' text='Great River'</ref> delta\n"
+#| "          ◦ Carcyn: City on the Wesnoth–Elensefar border, disputed with "
+#| "Wesnoth\n"
+#| "    • Notable land features:\n"
+#| "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very "
+#| "wide at this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -815,14 +942,70 @@ msgid ""
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
 "this point, and only ships can cross it."
 msgstr ""
+"Elensefar czasami jest traktowany jako prowincja <ref>dst='kingdom_wesnoth' "
+"text='Wesnoth'</ref>, a czasami jako niezależne państwo, a niekiedy jako - "
+"powiązany traktatem - członek federacji Wesnoth. Północną granicę krainy "
+"stanowi Wielka Rzeka, wschodnią - luźnie określona granica z Wesnoth, na "
+"południu Zatoka Pereł, i - na zachodzie - <ref>dst='great_ocean' "
+"text='Wielki Ocean'</ref>. Dalsze informacje uzyskasz rozgrywając kampanie "
+"Wesnoth.\n"
+"\n"
+"    • Najważniejsze miasta:\n"
+"          ◦ Elensefar: Stolica, zbudowana na wyspie u ujścia "
+"<ref>dst='great_river' text='Wielkiej Rzeki'</ref>. \n"
+"          ◦ Carcyn: Miasto graniczne między Wesnoth i Elensefar, Królestwo "
+"Wesnoth rości sobie do niego prawa. \n"
+"    • Ważne elementy krajobrazu:\n"
+"          ◦ <ref>dst='great_river' text='Wielka Rzeka'</ref>: W tym regionie "
+"jest bardzo szeroka, przekroczyć ją można tylko na pokładzie statku."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:113
 msgid "Northlands"
-msgstr ""
+msgstr "Krainy Północy"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:114
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
+#| "\n"
+#| "    • Notable cities:\n"
+#| "          ◦ Glamdrol: An Orcish tribal capital\n"
+#| "          ◦ Wesmere: The location of the Ka’lian — the Elvish Council\n"
+#| "          ◦ Dwarven Doors: A mixed human/dwarven town in the region of "
+#| "Knalga in the southern Heart Mountains. A major trade center.\n"
+#| "          ◦ Dallben and Delwyn: Human villages originally built by "
+#| "settlers who crossed the Great River during Wesnoth’s Golden Age "
+#| "expansion. Now abandoned. The forested area northeast of Elensefar, where "
+#| "these villages were located, was named the Annuvin province by men but "
+#| "was known by the elves as Wesmere.\n"
+#| "\n"
+#| "    • Notable land features:\n"
+#| "          ◦ Heart Mountains: A virtually impassable barrier between the "
+#| "river country and the Northern Plains.\n"
+#| "          ◦ Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "          ◦ Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "          ◦ Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains\n"
+#| "          ◦ Arkan-thoria: The river than comes out of Lake Vrug. This is "
+#| "the elvish name; among humans it is called Longlier.\n"
+#| "          ◦ River Listra: The south-running tributary of the Great River "
+#| "into which the Arkan-thoria empties.\n"
+#| "          ◦ Lintanir Forest: The southernmost portion of the Great "
+#| "Northern Forest, a gigantic wood whose eastern and northern boundaries "
+#| "are known only the elves. Their capitol, Elensiria, has only seldom been "
+#| "visited by humans.\n"
+#| "          ◦ Great River: The origin of this river is somewhere in the "
+#| "east of the northern lands"
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -863,14 +1046,67 @@ msgid ""
 "    • Great River: The origin of this river is somewhere in the east of the "
 "northern lands."
 msgstr ""
+"W Krainach Północy nie istnieje żadna forma rządu. Teren ten zaludniają "
+"różne grupy orków, krasnoludów, ludzkich barbarzyńców, a nawet elfy. Nie "
+"wytyczono oficjalnych granic na północy oraz wschodzie, natomiast południową "
+"granicę wytycza <ref>dst='great_river' text='Wielka Rzeka'</ref>, a "
+"zachodnią — <ref>dst='great_ocean' text='Wielki Ocean'</ref>.\n"
+"\n"
+"    • Najważniejsze miasta:\n"
+"          ◦ Glamdrol: Stolica plemion orków. \n"
+"          ◦ Wesmere: Miejsce urzędowania Ka’lian — Elfiej Rady.\n"
+"          ◦ Krasnoludzkie Wrota (Dwarven Doors): Osada mieszana, ludzi i "
+"krasnoludów, położna w regionie Knalga w południowej części Gór Środka. "
+"Główny ośrodek handlu.\n"
+"          ◦ Dallben i Delwyn: Ludzkie wioski, pierwotnie zbudowane przez "
+"osadników przybyłych zza Wielkiej Rzeki podczas złotej ery ekspansji "
+"Wesnoth. Obecnie niezamieszkałe. Zalesiony obszar na północny-wschód od "
+"Elensefar, gdzie znajdowały się wioski, otrzymał od ludzi nazwę — prowincja "
+"Annuvin, ale elfy nazywają go Wesmere.\n"
+"\n"
+"    • Najważniejsze elementy krajobrazu:\n"
+"          ◦ Góry Środka (Heart Mountains): Stanowią barierę nie do "
+"przebycia, pomiędzy krainą jezior a Północną Równiną.\n"
+"          ◦ Górskie Kły (Heartfangs): Wyjątkowo trudny do przebycia odcinek "
+"górkisch szczytów, położony na południe od Jeziora Vrug i na północ od Lasu "
+"Wesmere. To najbardziej nieprzyjazna i niebezpieczna część Gór Środka; "
+"zmieszkują ją tylko pustelnicy, szaleńcy oraz magowie.\n"
+"          ◦ Bagno Grozy: ogromne bagno leżące pomiędzy Górami Środka i "
+"Wielką Rzeką. Bardzo niebezpieczne dla podróżników.\n"
+"          ◦ Jezioro Vrug: Duże górskie jezioro połączone z rzeką, która - "
+"przez tysiące lat erozji - wyrzeźbiła jedyną drogę wiodącą przez góry "
+"północy.\n"
+"          ◦ Arkan-thoria: Rzeka wypływająca z jeziora Vrug. Jest to nazwa "
+"elficka; Ludzie znają ją jako Longlier.\n"
+"          ◦ Jezioro Listra: Południowy dopływ Wielkiej Rzeki, do którego "
+"wpływa rzeka Arkan-thoria.\n"
+"          ◦ Las Lintanir: Fragment Wielkiego Lasu Północy najbardziej "
+"wysunięty na południe. Gigantyczna knieja, której wschodnią i północną "
+"granicę zbadały tylko elfy. Ich stolica, Elensiria, odwiedzana jest przez "
+"ludzi niezwykle rzadko. \n"
+"          ◦ Wielka Rzeka: Bieg tej rzeki rozpoczyna się gdzieś na wschodzie "
+"krain północnych."
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Południowo-zachodnie krainy Elfów"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:136
+#, fuzzy
+#| msgid ""
+#| "The Wood Elves are separate from those of the north, and have only "
+#| "intermittent relations with them and most other countries. Its borders "
+#| "are the Green Swamp to the northeast, the desert (not shown) to the "
+#| "south, and the <ref>dst='great_ocean' text='Ocean'</ref> to the west.\n"
+#| "\n"
+#| "    • Notable cities\n"
+#| "          ◦ None known\n"
+#| "    • Notable land features:\n"
+#| "          ◦ Aethen Forest: The largest southern forest, it extends far to "
+#| "the southwest—much farther than is charted—and is home to <ref>dst='.."
+#| "race_elf' text='elves'</ref>."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -889,12 +1125,23 @@ msgid ""
 "    • Black Forest: An ancient forest of which very little is known, "
 "abandoned by the elves long ago."
 msgstr ""
+"Elfy Leśne oddzieliły się od swoich pobratymców z północy, i utrzymują tylko "
+"sporadzyczne relacje zarówno z nimi, jak i z innymi krainami. Granice ich "
+"posiadłości wyznaczają: na północnym-wshodzie Zielone Bagna, na południu "
+"piasczysta pustynia (nie widoczna na mapie), oraz <ref>dst='great_ocean' "
+"text='Wielki Ocean'</ref> na zachodzie.\n"
+"\n"
+"    • Najważniesjze miasta \n"
+"          ◦ Nie znane\n"
+"    • Najwazniejsze elementy krajobrazu:\n"
+"          ◦ Las Aethen: Największy las południowy, biegnie daleko na "
+"południowy-zachód - o wiele dalej, niż jest to wyrysowane na mapach - jest "
+"domem <ref>dst='..race_elf' text='elfów'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:148
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "Góry"
+msgstr "Góry Środka"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:149
@@ -903,14 +1150,50 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Bariera praktycznie nie do przebycia, pomiędzy krainą "
+"<ref>dst='arkan_thoria' text='rzeki'</ref> a <ref>dst='far_north' "
+"text='Północnymi Stepami'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:154
 msgid "Far North"
-msgstr ""
+msgstr "Daleka Północ"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:155
+#, fuzzy
+#| msgid ""
+#| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
+#| "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' "
+#| "text='Heart Mountains'</ref>, which the Orcs call the Haggid-Dargor and "
+#| "claim (without merit) as their own. To the east lie the Unaligned Tribes "
+#| "of the Wild Steppe, who fell out of the control of the Clannate, instead "
+#| "roaming with wild human barbarians and clashing with the High Elves of "
+#| "the North Plains (known as North Elves in human lands). The High Elves "
+#| "themselves reside further east, where it is rumored they rule a vast "
+#| "kingdom.\n"
+#| "\n"
+#| "    • Notable cities:\n"
+#| "          ◦ Barag Gor, a city home to the Orcish Council\n"
+#| "          ◦ Bitok\n"
+#| "          ◦ Borstep\n"
+#| "          ◦ Farzi\n"
+#| "          ◦ Lmarig\n"
+#| "          ◦ Melmog\n"
+#| "          ◦ Prestim\n"
+#| "          ◦ Tirigaz\n"
+#| "          ◦ Dorest, the northernmost human city\n"
+#| "    • Notable land features:\n"
+#| "          ◦ Black Marshes\n"
+#| "          ◦ Mountains of Dorth\n"
+#| "          ◦ Mountains of Haag\n"
+#| "          ◦ Greenwood\n"
+#| "          ◦ Silent Forest\n"
+#| "          ◦ Forest of Thelien\n"
+#| "          ◦ River Oumph\n"
+#| "          ◦ River Bork\n"
+#| "          ◦ Frosty Wastes\n"
+#| "          ◦ Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -944,6 +1227,10 @@ msgid ""
 "    • Frosty Wastes\n"
 "    • Barren Plains"
 msgstr ""
+"Zimna, surowa i niedostępna. Daleka Północ to kraina przodków Orkowych "
+"klanów. Leży na północ od <ref>dst='heart_mountains' text='Gór Środka'</"
+"ref>, które Orkowie nazywają Haggid-Dragor, i uważają je (bezprawnie) za "
+"swoje ziemie.  "
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
@@ -1004,7 +1291,7 @@ msgstr "Typy terenu"
 #. [topic]: id=..addons
 #: data/core/help.cfg:80 data/core/help.cfg:588
 msgid "Add-ons"
-msgstr ""
+msgstr "Dodatki"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1087,6 +1374,13 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"W tym dziale znajduje się lista wszystkich jednostek, które odkryjesz "
+"podczas swoich podróży po krainach Wesnoth. Kiedy podczas kampanii lub "
+"pojedynczego scenariusza dostrzeżesz nową jednostkę, zostanie ona dodana do "
+"sekcji odpowiadającej jej stronnictwu. Możesz przeglądać te informacje w "
+"dowolnym czasie. Strona jednostki zawiera opis ogólny, statystyki, ataki, "
+"odporności oraz wartości ruchu i obrony.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:130
@@ -1107,12 +1401,6 @@ msgstr ""
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:141
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1124,7 +1412,8 @@ msgstr ""
 "Niektóre jednostki posiadają zdolności, które albo wpływają bezpośrednio na "
 "inne jednostki, albo mają wpływ na to, jak jednostka oddziałuje z innymi "
 "jednostkami. Zdolności te będą objaśniane w poniższym temacie w miarę ich "
-"pojawiania się w grze.\n"
+"pojawiania się w grze.  Na każdej stronie opisano działanie każdej z "
+"umiejętności (wczesniej poznanych) i jednostki które je posiadają.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -1137,6 +1426,13 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Niektóre z broni posiadają specjalne cechy, które zwiększają ich skuteczność "
+"podczas ataku. Jeżeli podczas rozgrywki zauważysz nową oręż, zostanie ona "
+"dodana do tej listy. Możesz przeglądać te informacje w dowolnej chwili. "
+"Każda strona zawiera opis specjalnych właściwości danej broni (tych "
+"odkrytych) oraz informację, które z jednostek ją dzierżą.\n"
+"\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:159
@@ -2022,9 +2318,15 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:322
+#, fuzzy
+#| msgid ""
+#| " black if it can no longer move or attack, or the user ended the unit’s "
+#| "turn."
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+"czarna, jeżeli nie może się już w danej turze poruszać lub atakować, lub "
+"jeżeli gracz zakończył turę dla danej jednostki."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:323
@@ -2035,9 +2337,9 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:324
 #, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
+#| msgid " Enemy units have a red orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr " Wrogie jednostki nie mają kuli nad swoim paskiem energii."
+msgstr " Wrogie jednostki mają czerwone kule nad swoim paskiem energii."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:331
@@ -2406,14 +2708,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:404
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
@@ -2425,12 +2719,6 @@ msgid ""
 "<ref>dst='traits_undead' text='undead'</ref>.\n"
 "\n"
 msgstr ""
-"\n"
-"\n"
-"Inne cechy, które mogą być przypisane jednostkom, to "
-"<ref>dst='traits_dextrous' text='zręczna'</ref>, <ref>dst='traits_loyal' "
-"text='lojalna'</ref> i <ref>dst='traits_undead' text=nieumarła</ref>.\n"
-"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:414
@@ -2604,6 +2892,10 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
+"Dzikim istotom, o niskiej inteligencji, trudniej jest wykorzystać domostwa "
+"ras inteligentnych dla własnej ochrony. Właśnie dlatego, jednostki "
+"<italic>text='Dzikie'</italic> otrzymują maksymalnie tylko 50% obrony we "
+"wioskach lądowych, niezależnie od terenu."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:458
@@ -2895,19 +3187,13 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:536
-#, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "Na mapach poszczególnych scenariuszy występuje wiele różnych rodzajów "
 "terenu, z których każdy wpływa zarówno na szybkość jednostki, jak i jej "
-"skuteczność w obronie.\n"
-"\n"
+"skuteczność w obronie."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:538
@@ -2915,7 +3201,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2923,7 +3209,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:540
@@ -2952,7 +3238,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2960,7 +3246,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:548
@@ -3040,7 +3326,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3048,7 +3334,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:570
@@ -3086,7 +3372,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3095,7 +3381,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:589
@@ -3105,19 +3391,18 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"Silnik aplikacji Wesnoth jest dostosowany w taki sposób, aby umożliwić "
+"każdej osobie tworzenie własnych scenariuszy, kampanii oraz wielu innych "
+"składników gry, wykraczających poza oficjalną zawartość.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:599
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Korzystanie z Dodatków"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:600
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3125,7 +3410,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Obrażenia</header>"
+"<header>text='Kampanie i Scenariusze'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:600
@@ -3133,6 +3418,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Gra wspiera wiele różnych typów Dodatków, z których cześć nie jest dostępna "
+"w każdym trybie gry."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:602
@@ -3144,16 +3431,23 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"Kampanie dla jednego gracza do kolekcje scenariusze napisanych w taki "
+"sposób, aby opowiadały zwartą historię. Zarówno pojedyncze scenariusze "
+"(dostępne również dla wielu graczy) jak i kampanie, dostępne so z menu "
+"<italic>text='Kampanie'</italic> na ekranie tytułowym."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:604
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr "<header>text='Jednostki posiadające ten atak specjalny'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Kampanie dla wielu graczy, Scenariusze oraz Zestawy Map'</"
+"header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:606
@@ -3164,14 +3458,14 @@ msgid ""
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Gra wieloosobowa'</italic> zawiera oskryptowane scenariusze, "
+"kampanie, oraz zestawy indywidualnych map, zaprojektowane specjalnie do "
+"rozgrywek dla wielu graczy."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:608
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3179,7 +3473,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kolejność i liczba ciosów'</header>"
+"<header>text='Ery i Stronnictwa Gier wieloosobowych'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:610
@@ -3195,6 +3489,16 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"Poszczególne rasy, zamieszkujące Wenosth, współpracują ze sobą w "
+"stronnictwach, które zawierają w sobie zbalansowane zestawy o spójnej "
+"tematyce. Główne stronnictwa występujące w krainach dostępne są w Erze "
+"Standardowej.\n"
+"\n"
+"W <italic>text='Grze Wieloosobowej'</italic> możesz dokonać wyboru "
+"interesującej Cię ery tworząc nową grę. Poszczególni gracze mają dostęp do "
+"odpowiednich stronnictw danej ery podczas ustalania stron i drużyn."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:614
@@ -3207,11 +3511,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:616
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3219,7 +3518,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kolejność i liczba ciosów'</header>"
+"<header>text='Modyfikacje gry wieloosobowej'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:618
@@ -3231,14 +3530,14 @@ msgid ""
 "in various ways. You can choose and configure modifications when creating a "
 "new game."
 msgstr ""
+"\n"
+"\n"
+"Modyfikacje to opcjonalne scenariusze oraz skrypty niezależny od ery, "
+"dobierane do <italic>text='gry wieloosobowej'</italic>  w celu zmiany jej "
+"zasad. Modyfikacje te można konfigurować podczas tworzenia nowej gry."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3246,7 +3545,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Szansa trafienia'</header>"
+"<header>text='Zasoby dla twórców'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:622
@@ -3259,11 +3558,18 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
+"\n"
+"\n"
+"Autorzy mogą korzystać z zestawów zasobów, dostępnych na serwerze dodatków, "
+"aby wzbogacić własną zawartość np. w gotowe obrazy, muzykę oraz kod. Zasoby "
+"te najczęściej nie są dostosowane do bezpośredniego użytku w grze, jednak "
+"inne, grywalne dodatki, mogą być od nich zależne i sugerować ich instalację "
+"podczas pobierania."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:631
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Instalacja Dodatków"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:632
@@ -3290,11 +3596,32 @@ msgid ""
 "about the add-on, such as its full description, installation status, and "
 "available languages."
 msgstr ""
+"Dodatki wykonane przez innych graczy mogą być pobierane i aktualizowane z "
+"poziomu zakładki <italic>text='Dodatki'</italic> w menu głównym. Po "
+"połączeniu się z serwerem (domyślnie: <italic>text='add-ons.wesnoth.org'</"
+"italic>), zaprezentowana zostanie lista dodatków dostępnych do pobrania.\n"
+"\n"
+"Pod każdym wpisem na liście znajduje się informacja, czy dany dodatek jest "
+"już zainstalowany. Dla dodatków dla których dostępna jest aktualizacja i dla "
+"tych, które są nieaktualne, w kolumnie <italic>text='Wersja'</italic> "
+"widnieje informacja o ich aktualnie zainstalowanej oraz najnowszej "
+"opublikowanej wersji.\n"
+"\n"
+"Aby wyszukać dodatek po słowach kluczowych, wpisz odpowiednie wyrazy - w "
+"dowolnej kolejności, oddzielone spacjami - w polu tekstowym "
+"<bold>text='Filtruj'</bold>. Sortowanie dodatków jest również możliwe "
+"poprzez klikanie nagłówków kolumn. Aby wyświetlać dodatki z konkretnych "
+"kategorii, wybierz <bold>text='Opcje'</bold> w prawym górnym rogu.\n"
+"\n"
+"Aby zainstalować dodatek, wybierz go z listy i kliknij <bold>text='OK'</"
+"bold> lub kliknij dwa razy na jego nazwę. Przycisk <bold>text='Opis'</bold> "
+"zawiera dodatkowe informacje odnośnie dodatku, takie jak jego pełen opis, "
+"status instalacji oraz dostępne wersje językowe."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:645
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Usuwanie Dodatków"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:646
@@ -3309,6 +3636,15 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
+"Aby usunąć dodatek, wybierz opcję <bold>text='Usuwanie Dodatków'</bold> w "
+"oknie połączenia z serwerem dodatków. Zaprezentowania zostanie opcja "
+"umożliwiająca usunięcie dowolnej liczby zainstalowanych wcześniej dodatków.\n"
+"\n"
+"Niemożliwym jest usuwanie dodatków, którym przypisano informację "
+"publikacji(<italic>text='.pbl'</italic> files), aby zapobiec ich "
+"przypadkowemu usunięciu. Jeżeli to koniecznie, możesz ręcznie usunąć pliki "
+"publikacji lub same dodatki, używając menadżera plików, dołączonego do "
+"naszej platformy."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:661
@@ -3327,6 +3663,10 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"Komendy te mogą być wykonywane z poziomu linii komend, poprzez użycie "
+"prefiksu \":\" lub za pomocą czatu, używając prefiksu \"/\" (wciśnij \"m\" "
+"aby otworzyć linię czatu).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:665
@@ -3382,6 +3722,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Wyświetl status kontroli stronnictwa.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
@@ -3509,6 +3852,11 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Uruchom okno dialogowe, aby umożliwić hostowi zmianę kontroli stronnictw dla "
+"ludzkich graczy\n"
+"\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:717
@@ -3518,6 +3866,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Zmień stan bezczynności dla stronnictwa. Host może nadać stronnictwu stan "
+"bezczynności po zerwaniu połączenia sieciowego.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:720
@@ -3729,11 +4081,6 @@ msgstr "uzdrawia"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:49
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -3754,11 +4101,6 @@ msgstr "regeneruje się"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -3779,11 +4121,6 @@ msgstr "niezłomna"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -3804,16 +4141,6 @@ msgstr "dowodzenie"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -3844,11 +4171,6 @@ msgstr "harcowniczka"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:172
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -3868,14 +4190,6 @@ msgstr "oświetla"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:187
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3902,11 +4216,6 @@ msgstr "teleportuje się"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:201
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -3927,14 +4236,6 @@ msgstr "zasadzka"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:241 data/core/macros/abilities.cfg:244
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3957,14 +4258,6 @@ msgstr "skradanie się"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:263 data/core/macros/abilities.cfg:268
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3998,7 +4291,6 @@ msgstr "ukrywanie się"
 #: data/core/macros/abilities.cfg:287 data/core/macros/abilities.cfg:292
 #, fuzzy
 #| msgid ""
-#| "Concealment:\n"
 #| "This unit can hide in villages (with the exception of water villages), "
 #| "and remain undetected by its enemies, except by those standing next to "
 #| "it.\n"
@@ -4035,14 +4327,6 @@ msgstr "zanurzenie"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:311 data/core/macros/abilities.cfg:316
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4071,10 +4355,6 @@ msgstr "żerowanie"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:338
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4094,12 +4374,6 @@ msgstr "cios w plecy"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:441
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4118,12 +4392,6 @@ msgstr "zaraza"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:462
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
@@ -4136,12 +4404,6 @@ msgstr ""
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:473
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4159,13 +4421,6 @@ msgstr "spowalnia"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:484
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4185,11 +4440,6 @@ msgstr "zamienia w kamień"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:494
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4205,11 +4455,6 @@ msgstr "strzelec wyborowy"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:504
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
@@ -4224,13 +4469,6 @@ msgstr "rój"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4250,19 +4488,13 @@ msgstr "szarża"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:539
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 "Szarża:\n"
-"Atak szarżą podwójne obrażenia przeciwnikowi, ale również sprawia, że jego "
-"kontratak zadaje podwójne obrażenia."
+"Atak szarżą zadaje podwójne obrażenia przeciwnikowi, ale również sprawia, że "
+"jego kontratak zadaje podwójne obrażenia."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:551
@@ -4271,11 +4503,6 @@ msgstr "wysysa"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:552
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4293,7 +4520,6 @@ msgstr "trucizna"
 #: data/core/macros/abilities.cfg:572
 #, fuzzy
 #| msgid ""
-#| "Poison:\n"
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 #| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
 #| "kill a unit."
@@ -4436,98 +4662,78 @@ msgstr "Pierwsza straż — czwarta godzina"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
 msgstr "Pierwsza straż"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "Druga straż"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
 msgstr "Ranek"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Ranek"
+msgstr "Późny Ranek"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#, fuzzy
-#| msgid "Midday"
 msgid "First Midday"
 msgstr "Południe"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Druga straż"
+msgstr "Późne Południe"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "Popołudnie"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Popołudnie"
+msgstr "Późne Popołudnie"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "pierwszy cios"
+msgstr "Zmierzch"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Druga straż"
+msgstr "Późny Zmierzch"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:572
 msgid "The Short Dark"
-msgstr ""
+msgstr "Krótki Zmrok"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:584
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Długi Zmrok (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:596
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Długi Zmrok (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:610
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Długi Zmrok (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:622
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Długi Zmrok (4)"
 
 #: data/core/macros/special-notes.cfg:3
 msgid ""
@@ -4911,7 +5117,7 @@ msgstr "dzika"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:225
 msgid "Receives only 50% defense in land-based villages"
-msgstr ""
+msgstr "Otrzymuje tylko 50% bonusu do obrony w wioskach na lądzie."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:241
@@ -4977,6 +5183,13 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Nietoperze występują w różnych rozmiarach i kształtach, w większości są "
+"raczej nieszkodliwe dla ludzi; żywią się insektami i innymi małymi "
+"zwierzętami. Większe i bardziej niebezpieczne gatunki stanowią niekiedy "
+"zagrożenie dla ludzi i innych ras, jak również dla bydła, zwłaszcza, jeżeli "
+"spotyka się je w dużych grupach. Prowadzą najczęściej nocny tryb życia i "
+"często są hodowane i oswajane przez te rasy, które również lubują się w "
+"mroku."
 
 #. [race]: id=drake
 #: data/core/units.cfg:55
@@ -4995,6 +5208,75 @@ msgstr "Smoki"
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
+#| "society with an iron fist. Every drake is expected to earn their place in "
+#| "the strict hierarchy, to obey their superiors and command their "
+#| "inferiors. Entry to the ruling elite is only possible through challenging "
+#| "and defeating a superior in single combat, which is the way the hierarchy "
+#| "within the elite itself is established. The use of deception of any kind "
+#| "towards any fellow drake is, without exception, seen as cowardly and "
+#| "unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. The only "
+#| "technology drakes value is armor- and weapon-smithing, and neither know "
+#| "or need other science and culture besides this. However the few "
+#| "implements they do fashion are almost unrivaled in quality, only matched "
+#| "by those produced in the finest Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
+#| "years. Death in battle is the most preferred way for a drake to leave "
+#| "this world. Unlike the elder members of other races, drakes naturally "
+#| "grow more aggressive and reckless towards the ends of their natural "
+#| "lives, perhaps to help ensure their place in the heroic legends of their "
+#| "kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5061,6 +5343,70 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Smoki to duże, uskrzydlone i ziejące ogniem stworzenia, z wyglądu "
+"przypominające smoki. Średnio, dorosły smok mierzy około trzy metry "
+"wysokości i z często waży więcej niż jeździeć wraz z koniem. Ich skóra "
+"składa się z twardych łusek, odpornych na większość ataków fizycznych, z "
+"wyjątkiem ran kłutych i od mrozu. Większość smoków posiada umiejętność "
+"latania, i potrafią niekiedy pokryć duże odległości w bardzo krótkim czasie. "
+"Aczkolwiek, ich duża masa oraz postura ogranicza w pewnym stopniu te "
+"umiejętności, czyniąc je w powietrzu nieco niezdarnymi. Kiedy to możliwe, "
+"używają przeszkód terenowych, takich jak wzgórza, szczyty czy drzewa, jako "
+"startowiska, aby uzyskać jak największą prędkość i wysokość podczas lotu. Na "
+"szczęście dla ich przeciwników, smoki są w walce nieco niezdarne i "
+"zadziwiająco powolne. Cechy te, w połączeniu z ich rozmiarem, czynią je "
+"łatwym celem dla tych, którzy ośmielą sie zaatakować.\n"
+"\n"
+"Smoki to stworzenia magiczne, posiadające tajemniczy, wewnętrzny ogień, "
+"który napędza esencję ich życia. Zjawisko to można łatwo zaobserwować, kiedy "
+"wojowniku tego gatunku padnie w walce; jego wewnętrzny ogień uchodzi z "
+"ciała, paląc wszystko dookoła na popiół. Ogień ten, jest również największą "
+"słabością tej rasy, jako że czyni ich wyjątkowo podatnymi na ataki zimnem. "
+"Pomimo magicznej natury, smoki nie są w stanie kierować magią w kontrolowany "
+"sposób. Magia, zaklęta w ciałach smoków pozwala im na plucie ogniem, i "
+"nadaje im siły witalne, jednak nie mają one nad nią świadomej kontroli.\n"
+"\n"
+"<header>text='Społeczność'</header>\n"
+"Drakes are a relatively warlike race and their societies can be best "
+"described as cultured martial societies. The core of a drake tribe is a "
+"small group of veteran warriors headed by a mutually respected — or simply "
+"feared — <ref>dst='dominant' text='dominant'</ref> who rules the society "
+"with an iron fist. Every drake is expected to earn their place in the strict "
+"hierarchy, to obey their superiors and command their inferiors. Entry to the "
+"ruling elite is only possible through challenging and defeating a superior "
+"in single combat, which is the way the hierarchy within the elite itself is "
+"established. The use of deception of any kind towards any fellow drake is, "
+"without exception, seen as cowardly and unacceptable.\n"
+"\n"
+"While their warlike nature and sense of territory drives them to defend "
+"their territories savagely, drakes rarely invade or trespass on areas "
+"already occupied by the other major races. Instead, they settle in "
+"unpopulated areas to establish their own territory there. They primarily "
+"feed on large game they hunt in the lowlands around their homes, but "
+"hatchlings and lower caste drakes are known to feed also on certain kinds of "
+"moss and fungi they cultivate deep in their caverns. The only technology "
+"drakes value is armor- and weapon-smithing, and neither know or need other "
+"science and culture besides this. However the few implements they do fashion "
+"are almost unrivaled in quality, only matched by those produced in the "
+"finest Dwarvish foundries.\n"
+"\n"
+"Drakes are hatched from eggs and usually live naturally between 20 to 30 "
+"years. Death in battle is the most preferred way for a drake to leave this "
+"world. Unlike the elder members of other races, drakes naturally grow more "
+"aggressive and reckless towards the ends of their natural lives, perhaps to "
+"help ensure their place in the heroic legends of their kind.\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"Drakes originated from an archipelago of volcanic islands called "
+"<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+"text='Great Ocean'</ref>. A combination of population pressure and the "
+"subsidence of many of their home islands has caused colonies of drakes to "
+"spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+"Drakes tend to make their homes in mountain caverns near volcanoes to "
+"protect their eggs, hatchings and forges. While drakes naturally prefer "
+"warmth, their internal fire is more than capable of sustaining them even in "
+"a relatively cold climate, a feature which has allowed them to populate even "
+"some of the mountains of the far north of the Great Continent."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:91
@@ -5227,21 +5573,58 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"W porównaniu do ludzi, elfy są odrobinę wyższe oraz zręczniejsze, ale mniej "
+"zahartowane. Mają lekko spiczaste uszy, bladą cerę i —najczęściej — włosy w "
+"kolorze blond. Niewiele różnic między tymi dwoma rasami jest tak wyraźna, "
+"jak długowieczność elfów — większość z nich, pomijając choroby, wypadki oraz "
+"wojny, żyje przez całe dwa i pół wieku.  Te nieliczne z nich, które "
+"posiadają wyjątkowe talenty magiczne, czasem żyją nawet o całe sto lat "
+"dłużej. Większość z elfów niedołężeje fizycznie dopiero gdzieś pomiędzy "
+"dwieście pięćdziesiątym a trzechsetnym rokiem życia i umiera niedługo "
+"później (około roku lub dwóch).\n"
+"\n"
+"Każdy elf zespojony jest — co najmniej w pewnym, małym stopniu — z magią. "
+"Choć większość z nich nie potrafi bezpośrednio kierować magią, jej ukryty "
+"potencjał nadaje im długowieczność oraz wyostrza zmysły. Wiele z elfów "
+"posiada magicznie wspomagane talenty, takie jaj wyjątkowe zdolności "
+"strzeleckie lub niebywała umiejętność pozostawania w ukryciu, co umożliwia "
+"im osiąganie wyżyn sprawności. Ci osobnicy, którzy potrafią dzierżyć te moce "
+"w bardziej bezpośredni sposób, mają szansę na stanie się potężnymi istotami. "
+"Wielu ukierunkowuje te talenty w stronę magii leczniczej, aby pomagać swym "
+"pobratymcom w potrzebie.\n"
+"\n"
+"Pojedyncze elfy, zapuszczające się głęboko w odmęty magii i mistycyzmu, "
+"stają się wyczulone na obecność zimnego żelaza i mogą nawet doznać oparzeń "
+"od bezpośredniego kontaktu z nim. Elfickie legendy zawierają przesłanki, "
+"które świadczą o tym, że w przeszłości było to dużo częściej występujące "
+"zjawisko.\n"
+"\n"
+"Elfy spędzają wiele czasu ćwicząc swoje talenty i umiejętności. Ci mniej "
+"zaznajomieni ze sztukami magicznymi, najczęściej poświęcają swój czas na "
+"trening fizyczny. Wynikiem tego są niezwykłe umiejętności łucznicze, które "
+"najprawdopodobniej są najważniejszą taktyką wojenną elfów. Wielu z nich "
+"dzierży łuki, których celność i prędkość jest niedościgniona wśród wyrobów "
+"rzemieślników innych ras. Wszystkie elfy posiadają silne zamiłowanie do "
+"natury, przez co często czują się nieswojo na otwartych, nie porośniętych "
+"przestrzeniach. Zamieszkują głównie lasy Wielkiego Kontynentu: na "
+"południowym-zachodzie las Aethenwood, na północnym-zachodzie Wesmere oraz "
+"wielki las północny, którego najdalej wysuniętą na południe częścią jest las "
+"Lintanir."
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
 msgid "race^Falcon"
-msgstr "Człowiek"
+msgstr "Jastrząb"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
 msgid "race+female^Falcon"
-msgstr "Człowiek"
+msgstr "Jastrząb"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
 msgid "race^Falcons"
-msgstr "Ludzie"
+msgstr "Jastrzębie"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -5279,6 +5662,25 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"Gobliny, wbrew swemu wyglądowi, rodzą się jako rodzeństwo orków i należą do "
+"tej samy rasy co one. Większość istot rozumnych najczęściej rodzi dzieci "
+"pojedynczo lub parami, orkowie natomiast, płodzą duże mioty młodych, co "
+"skutkuje szybkim przyrostem ich populacji. W jednym miocie rodzą się "
+"najczęściej jeden lub dwa prawdziwe orki, które urosną do pełnych rozmiarów "
+"i osiągną siłę odpowiednią dla swej rasy, kilka pół-orków, wyraźnie "
+"słabszych od swych braci — najczęściej przydziela się im podczas walki role "
+"wspomagające, na przykład strzeleckie. Reszta miotu, często połowa lub "
+"więcej, to gobliny. Są one niewielkie i raczej słabe, rzadko wyrastają "
+"powyżej rozmiarów ludzkiego dziecka. Gobliny traktowane są niemal jak "
+"niewolnicy, przez swoich większych pobratymców, w bitwie używa się ich jako "
+"mięso armatnie. Pomimo swej tragicznej doli, wiele z nich doskonale "
+"prosperuje w tak niekorzystnych warunkach. Dzieję się tak ponieważ gobliny "
+"są bardzo liczne, a dodatkowo doskonale zdają sobie sprawę z tego, jak "
+"bardzo zależni są od nich więksi pobratymcy.\n"
+"\n"
+"Gobliny wykonują większość prac fizycznych wymaganych przez cywilizację "
+"orków, z wyjątkiem zadań które wymagają brutalnej siły w których lubują się "
+"prawdziwi orkowie, udowadniający za ich pomocą swe męstwo."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:163
@@ -5416,12 +5818,12 @@ msgstr "Człowiek"
 #. [race]: id=khalifate
 #: data/core/units.cfg:205
 msgid "race+plural^Khalifate"
-msgstr "Mechaniczne"
+msgstr "Kalifat"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:206
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Ta rasa nie posiada jeszcze opisu."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:217
@@ -5456,6 +5858,10 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"Termin \"<italic>text='mechaniczne'</italic>\", opisuje artefakty tworzone "
+"przez istoty rozumne, ożywiane ni to za pomocą natury, ni nekromancji. "
+"Większość z nich nie porusza się, ani nie myśli samodzielnie, jednak "
+"niektóre z nich posiadają takie zdolności za sprawą magicznych uroków."
 
 #. [race]: id=merman
 #: data/core/units.cfg:240
@@ -5485,6 +5891,14 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Jako hybrydy ludzi i ryb, mermeni to bardzo enigmatyczna rasa, posiadająca "
+"cechy odziedziczone zarówno od ryb, jak i od ludzi. Posiadają silne ogony, "
+"które używają aby szybko przemieszczać się w środowiskach wodnych, oraz "
+"zręcznie dłonie i inteligentne umysły, umożliwiające im uprawianie rzemiosła "
+"oraz wykonywanie narzędzi. Z natury wodno-lądowe, potrafię oddychać bez "
+"trudu zarówno w wodzie jak i na powietrzu. Najczęściej lękają się jednak "
+"suchego lądu, jako że są na nim dość niezdarne i z trudem poruszają się po "
+"nierównym lub zalesionym terenie."
 
 #. [race]: id=monster
 #: data/core/units.cfg:252
@@ -5508,6 +5922,9 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Termin \"potwory\" odnosi się do wielu odrażających bestii, które "
+"nawiedziają jaskinie, dzicz, głebiny oceany, oraz rejony świata. Spotykane "
+"głównie w podaniach ludowych i koszmarach."
 
 #. [race]: id=naga
 #: data/core/units.cfg:262
@@ -5541,6 +5958,18 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"Wężowate nagi to jedna z najmniej rozumianych ras Wielkiego Kontynentu. "
+"Częściowo, z powody ich ksenofobicznej natury, jak również ze względu na ich "
+"nieprzystępne środowisko. Nagi to jedne z niewielu istot który zachowują "
+"wysoką mobilność w środowisku wodnym, co daje im dostęp do całego świata, "
+"normalnie niedostępnego dla mieszkańców lądu, co jeszcze dalej oddziela je "
+"od nich oddziela. Jednakowoż, nie są one prawdziwymi istotami mórz, a ich "
+"niezdolność do oddychania w wodzie sprawia, że obawiają się one głębin. "
+"Zasiedlają najczęściej obszary nabrzeżne, co daje im możliwość ucieczki od "
+"mieszkańców głębin, jak również od istot lądu. Nagi często są słabe "
+"fizycznie, jednak nadrabiają te braki zwinnością oraz prędkością. Niekiedy "
+"rywalizują z mermenami o terytoria, jednak preferują raczej tereny bagienne "
+"oraz rzeki od otwartych wód."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:273
@@ -5575,6 +6004,21 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Ogry są nieucywilizowaną rasą, która zamieszkuje głównie dzikie tereny "
+"Wielkiego Kontynentu. Fizycznie przypominają ludzi oraz orki, są jednak od "
+"nich większe i silniejsze. Nawet ich młode stanowią nie lada wyzwanie dla "
+"większości dorosłych istot. Ogry nie cieszą się zaufaniem na terenach "
+"zaludnionych, często po prostu omija się je, lub wypędza siłą. Dlatego też "
+"najczęściej spotykane są w górzystych obszarach, na krawędziach cywilizacji, "
+"gdzie głodni ogrzy bandyci stanowią zagrożenie dla podróżników oraz karawan. "
+"Ogry nie są zbyt inteligentne, w ruchach raczej ślamazarne, jednak ich "
+"hardość i ogromna siła fizyczna czyni je cennym elementem armii innych ras. "
+"Najbardziej cenione są przed bezwzględnych dowódców, którym nie przeszkadza "
+"ich brutalność. Niewiele wiadomo o ich cechach biologicznych i strukturach "
+"społecznych, jeżeli w ogóle takowe budują. Według pogłosek, widywano ogry "
+"walczące wspólnie z wilkami i innymi bestiami u boku. Nie wiadomo czy jest "
+"to przejaw współpracy, udomowienia, czy może zwyczajnego obustronnego "
+"oportunizmu."
 
 #. [race]: id=orc
 #: data/core/units.cfg:284
@@ -5914,32 +6358,6 @@ msgstr "Nieumarli"
 
 #. [race]: id=undead
 #: data/core/units.cfg:329
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of it’s master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5967,7 +6385,7 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "Nieumarli nie są w rzeczywistości jedną rasą stworzeń, choć często są tak "
-"traktowani. Dostatecznie biegły w swej sztuce nekromanta potrafi ożywić "
+"traktowani. Nekromanta dostatecznie biegły w swej sztuce, potrafi ożywić "
 "niemal każde martwe stworzenie i przywrócić je światu w widmowej półśmierci. "
 "Nieumarli są w większości tworami nienaturalnymi i bezwolnymi, bezmyślnie i "
 "bez zadawania pytań wykonującymi wolę swojego stwórcy. Większą tajemnicą "
@@ -6059,6 +6477,41 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+"Potężne drzewce zamieszkują najgłębsze ostępy lasów Wesnoth. Dla "
+"niewprawnego oka, wyglądają na nic więcej, jak tylko zwykłe, dziwnie "
+"ukształtowane - aczkolwiek dumne - drzewa. Jako strażnicy lasu, drzewce "
+"dzielą głęboką więź z naturą, silniejszą nawet od elfiej. Pomimo, że są rasą "
+"o pokojowym nastawieniu, wszelkie zakłócenia spokoju starożytnego lasu, "
+"którym się opiekują, wywołają gniew samej natury. Drzewce to powolne "
+"stworzenia, które potrafią spędzić setki lat w bezruchu, nieporuszone "
+"przemijaniem czasu.\n"
+"\n"
+"Mimo, że same nie praktykują magii, dzielą silną więź z magią krain. "
+"Szczątkowe informacje o tej starożytnej rasie pochodzą od elfickich "
+"uczonych, którzy wierzą że mistyczna moc, na której opanowanie "
+"najpotężniejsi z elfów poświęcają swe życia, jest ściśle powiązana z "
+"drzewcami. Mimo podobieństw w wyglądzie, drzewce nie są spokrewnione z "
+"drzewami. Prawdopodobnie są one jednymi z najstarszych istot zamieszkujących "
+"krainy, być może są nawet starsze od lasów które zamieszkują. Niektórzy "
+"wierzą, że magia ziemi nadała tym stworzeniom zadanie wiecznej ochrony "
+"kniei.\n"
+"\n"
+"Drzewce nie prowadzą wojen i są słabo zaznajomione ze sztuką walki. Jednak "
+"na wszelką przemoc wobec lasów odpowiedzą tym samym. Są one powolne i "
+"narażone na taki poza osłoną leśnych terenów. Twarda kora czy je niemal "
+"niewrażliwymi na fizyczne ataki, jednak z tego samego powodu są wrażliwe na "
+"ogień. Ta osłona, w połączeniu z magiczną regeneracją odniesionych ran, "
+"pozwala drzewcom przetrwanie nawet najbardziej zajadłych ataków, na które "
+"odpowiadają druzgocącą siłą skrywaną przez ich pokojową naturę. W swych "
+"leśnych domach, drzewce potrafią wtopić się w naturę i stać się "
+"niewidocznymi nawet dla najlepiej wyszkolonego oka.\n"
+"\n"
+"Długość życia drzewców jest nieznana, chociaż zaobserwowano najstarsze, "
+"kilkusetletnie osobniki, które urosły do ogromnych rozmiarów. Wierzy się, iż "
+"- o ile nie polegną w walce - drzewce nie umierają ze starości. Zadowolone, "
+"kiedy przez setki lat mogą stać na straży w bezruchu, niezainteresowane "
+"losami cywilizowanego świata, drzewce maszerują tylko wtedy, gdy przyrodzie "
+"i lasom, które nazywają swym domem, grozi niebezpieczeństwo."
 
 #: src/help/help.cpp:183
 msgid "Close"
@@ -6071,28 +6524,6 @@ msgstr "System pomocy Bitwy o Wesnoth"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Błąd podczas przetwarzania tekstu pomocy:"
-
-#, fuzzy
-#~| msgid ""
-#~| "In combat, your units will inevitably take damage. When a unit "
-#~| "<ref>dst='experience_and_advancement' text='advances'</ref>, it will "
-#~| "heal fully. This can happen as you finish fighting an enemy, whether it "
-#~| "is your turn or not. Wesnoth offers several other ways for your units to "
-#~| "heal, all of which take place at the beginning of your turn, before you "
-#~| "take action."
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. When a unit "
-#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
-#~ "can happen as you finish fighting an enemy, whether it is your turn or "
-#~ "not. Wesnoth offers several other ways for your units to heal, all of "
-#~ "which take place at the beginning of your turn, before you take action."
-#~ msgstr ""
-#~ "Twoje jednostki nie unikną obrażeń w walce. Gdy jednostka "
-#~ "<ref>dst='experience_and_advancement' text='osiąga kolejny poziom'</ref>, "
-#~ "odzyskuje wszystkie punkty życia. Może stać się to po każdej zakończonej "
-#~ "walce z przeciwnikiem, bez względu na to, czyja przypada tura. Istnieje "
-#~ "też kilka innych możliwości leczenia jednostek. Leczenie odbywa się "
-#~ "zawsze na początku twojej tury, przed wykonaniem jakichkolwiek czynności."
 
 #~ msgid "Factions"
 #~ msgstr "Strony"
@@ -6175,6 +6606,36 @@ msgstr "Błąd podczas przetwarzania tekstu pomocy:"
 #~ msgstr "Doświadczenie i awansowanie"
 
 #~ msgid ""
+#~ "In combat, your units will inevitably take damage. When a unit "
+#~ "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
+#~ "fully. This can happen as you finish fighting an enemy, whether it is "
+#~ "your turn or not. Wesnoth offers several other ways for your units to "
+#~ "heal, all of which take place at the beginning of your turn, before you "
+#~ "take action."
+#~ msgstr ""
+#~ "Twoje jednostki nie unikną obrażeń w walce. Gdy jednostka "
+#~ "<ref>dst='experience_and_advancement' text='osiąga kolejny poziom'</ref>, "
+#~ "odzyskuje wszystkie punkty życia. Może stać się to po każdej zakończonej "
+#~ "walce z przeciwnikiem, bez względu na to, czyja przypada tura. Istnieje "
+#~ "też kilka innych możliwości leczenia jednostek. Leczenie odbywa się "
+#~ "zawsze na początku twojej tury, przed wykonaniem jakichkolwiek czynności."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
+#~ "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
+#~ "<ref>dst='traits_undead' text='undead'</ref>.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Inne cechy, które mogą być przypisane jednostkom, to "
+#~ "<ref>dst='traits_dextrous' text='zręczna'</ref>, <ref>dst='traits_loyal' "
+#~ "text='lojalna'</ref> i <ref>dst='traits_undead' text=nieumarła</ref>.\n"
+#~ "\n"
+
+#~ msgid ""
 #~ "\n"
 #~ "\n"
 #~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
@@ -6212,16 +6673,20 @@ msgstr "Błąd podczas przetwarzania tekstu pomocy:"
 #~ msgid "Factions are only used in multiplayer"
 #~ msgstr "Strony są używane tylko w rozgrywce wieloosobowej"
 
-#, fuzzy
-#~| msgid "Terrain"
 #~ msgid "Base Terrain: "
-#~ msgstr "Teren"
+#~ msgstr "Teren podstawowy:"
 
 #~ msgid "level"
 #~ msgstr "poziom"
 
 #~ msgid "Advances from: "
 #~ msgstr "Awansuje z:"
+
+#~ msgid "Base unit: "
+#~ msgstr "Jednostka podstawowa:"
+
+#~ msgid "Base units: "
+#~ msgstr "Jednostki podstawowe:"
 
 #, fuzzy
 #~| msgid "Factions:"
@@ -6245,6 +6710,9 @@ msgstr "Błąd podczas przetwarzania tekstu pomocy:"
 
 #~ msgid "Moves: "
 #~ msgstr "Ruchy:"
+
+#~ msgid "Vision: "
+#~ msgstr "Zasięg widzenia:"
 
 #~ msgid "Cost: "
 #~ msgstr "Koszt:"

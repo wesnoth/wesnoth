@@ -9,31 +9,31 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 15:51+0300\n"
-"PO-Revision-Date: 2015-03-01 22:13+0100\n"
+"PO-Revision-Date: 2016-02-21 15:53+0100\n"
 "Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: /usr/local/wesnoth\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "Jeden heks"
+msgstr "Pojedynczy heks"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "Heks o promieniu 1"
+msgstr "Heksy w promieniu 1"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "Heks o promieniu 2"
+msgstr "Heksy w promieniu 2"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
@@ -43,9 +43,9 @@ msgstr "Linia NW-SE"
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 #, fuzzy
-#| msgid "Hex Line NW-SE"
+#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Linia NW-SE"
+msgstr "Linia SW-NE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -79,6 +79,7 @@ msgstr "las"
 
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
+#, fuzzy
 msgid "fall"
 msgstr "opadnięte"
 
@@ -174,10 +175,8 @@ msgstr "Po Upadku (PPS)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Wyjście z edytora"
+msgstr "Edytor"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -187,7 +186,7 @@ msgstr "Plik"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Ostatnio używane"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:90
@@ -201,10 +200,8 @@ msgstr ""
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
-#, fuzzy
-#| msgid "Delay transition updates"
 msgid "Transition Update"
-msgstr "Opóźniaj aktualizację przejść"
+msgstr "Aktualizuj przejścia"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:111
@@ -334,30 +331,22 @@ msgid "(New Map)"
 msgstr "(Nowa mapa)"
 
 #: src/editor/map/context_manager.cpp:189
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
 msgstr "Wybierz mapę do załadowania"
 
 #: src/editor/map/context_manager.cpp:304
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Scenario)"
 msgstr "(Nowy Scenariusz)"
 
 #: src/editor/map/context_manager.cpp:331
 msgid "No Recent Files"
-msgstr ""
+msgstr "Brak ostatnio "
 
 #: src/editor/map/context_manager.cpp:368
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(Unnamed Area)"
 msgstr "(Nienazwany Obszar)"
 
 #: src/editor/map/context_manager.cpp:397
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(Nowa Strona)"
 
@@ -388,7 +377,7 @@ msgstr "Błąd ładowania mapy"
 
 #: src/editor/map/context_manager.cpp:624
 msgid "Save the Map As"
-msgstr "Zapisz Mapę Jako"
+msgstr "Zapisz mapę jako"
 
 #: src/editor/map/context_manager.cpp:628
 #: src/editor/map/context_manager.cpp:656
@@ -396,10 +385,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Ten plik już istnieje. Czy chcesz go nadpisać?"
 
 #: src/editor/map/context_manager.cpp:652
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Zapisz Scenariusz Jako"
+msgstr "Zapisz scenariusz jako"
 
 #: src/editor/map/context_manager.cpp:691
 msgid "No random map generators found."
@@ -424,10 +411,8 @@ msgstr ""
 "Czy chcesz odrzucić wszystkie zmiany mapy wprowadzone od ostatniego zapisu?"
 
 #: src/editor/map/context_manager.cpp:822
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Ta mapa jest już otwarta."
+msgstr "Ten scenariusz jest już otwarta."
 
 #: src/editor/map/context_manager.cpp:844
 #: src/editor/map/context_manager.cpp:899
@@ -467,7 +452,7 @@ msgstr "(Nowa mapa)"
 
 #: src/editor/map/context_manager.cpp:1022
 #, fuzzy
-#| msgid "(New Map)"
+#| msgid "(New Scenario)"
 msgid "New Scenario"
 msgstr "(Nowy Scenariusz)"
 
@@ -484,8 +469,6 @@ msgid "File not found"
 msgstr "Nie znaleziono pliku"
 
 #: src/editor/map/map_context.cpp:139
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Pusty plik mapy"
 
@@ -498,10 +481,8 @@ msgstr ""
 "istniejący plik"
 
 #: src/editor/map/map_context.cpp:528
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Zapisanie mapy nie powiodło się: $msg"
+msgstr "Zapisanie scenariusza nie powiodło się: $msg"
 
 #: src/editor/map/map_context.cpp:555
 msgid "Could not save into scenario"
@@ -533,10 +514,8 @@ msgid "BG: "
 msgstr "Tło:"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:118
-#, fuzzy
-#| msgid "Choose player"
 msgid "Choose File"
-msgstr "Wybierz gracza"
+msgstr "Wybierz plik"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:86
 msgid "player^None"

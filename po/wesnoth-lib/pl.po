@@ -8,18 +8,17 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-04-30 20:00+0300\n"
-"PO-Revision-Date: 2012-04-04 19:46+0100\n"
-"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
+"PO-Revision-Date: 2015-10-21 13:02+0100\n"
+"Last-Translator: Liam Tailor <liado@wp.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
-"Language: \n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [terrain_type]: id=deep_water_gray
@@ -102,10 +101,8 @@ msgstr "Szara rafa przybrzeżna"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:110
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "Rafa"
+msgstr "Rafa Przybrzeżna"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:121
@@ -326,10 +323,8 @@ msgstr "Wiatrak"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:425
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Kampania"
+msgstr "Ognisko"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:434
@@ -418,24 +413,18 @@ msgstr "Las tropikalny"
 
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:550
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
-msgstr "Las sosnowy"
+msgstr "Las deszczowy"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:562
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Las sosnowy"
+msgstr "Las palmowy"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:574
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
-msgstr "Las sosnowy"
+msgstr "Gęsty las palmowy"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:586
@@ -1686,17 +1675,13 @@ msgstr "Anuluj"
 
 #. [label]
 #: data/gui/window/addon_description.cfg:88 data/gui/window/addon_list.cfg:604
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Typ"
+msgstr "Typ:"
 
 #. [label]
 #: data/gui/window/addon_description.cfg:115 data/gui/window/addon_list.cfg:664
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Status"
+msgstr "Status:"
 
 #. [label]
 #: data/gui/window/addon_description.cfg:146
@@ -1748,24 +1733,18 @@ msgstr ""
 
 #. [label]: id=url_none
 #: data/gui/window/addon_description.cfg:400 data/gui/window/addon_list.cfg:895
-#, fuzzy
-#| msgid "None"
 msgid "url^None"
-msgstr "Brak"
+msgstr "url^Brak"
 
 #. [button]: id=url_copy
 #: data/gui/window/addon_description.cfg:434 data/gui/window/addon_list.cfg:929
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
-msgstr "Kopiuj"
+msgstr "url^Kopiuj"
 
 #. [button]: id=url_copy
 #: data/gui/window/addon_description.cfg:435 data/gui/window/addon_list.cfg:930
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "Wybierz grę do wczytania"
+msgstr "Skopiuj ten link do schowka"
 
 #. [button]: id=url_go
 #: data/gui/window/addon_description.cfg:448 data/gui/window/addon_list.cfg:943
@@ -1884,10 +1863,8 @@ msgstr "Tłumaczenia:"
 
 #. [label]
 #: data/gui/window/addon_filter_options.cfg:268
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Dodatki"
+msgstr "Dodatki:"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/window/addon_filter_options.cfg:281
@@ -2080,10 +2057,8 @@ msgstr "OK"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:51
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
-msgstr "Zagraj w kampanię"
+msgstr "Rozegraj kampanię"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:498
@@ -2163,10 +2138,8 @@ msgstr "Poprzednia"
 
 #. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:98
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
-msgstr "Poprzednia"
+msgstr "Poprzednia Strona"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
@@ -2372,10 +2345,8 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "Ustawienia edytora"
+msgstr "Ustawienia scenariusz"
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:72
@@ -2384,17 +2355,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
-msgstr "Modyfikator doświadczenia"
+msgstr "Modyfikator doświadczenia:"
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:201
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "Tura"
+msgstr "Tura:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/window/editor_edit_scenario.cfg:241
@@ -2403,17 +2370,13 @@ msgstr ""
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/editor_edit_scenario.cfg:259
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
-msgstr "Losowy pora dnia"
+msgstr "Losowa pora dnia"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
-#, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
-msgstr "Strona $side"
+msgstr "Ustawienia Stronnictw"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -2461,10 +2424,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Złoto na wioskę"
+msgstr "Złoto na wioskę:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:305
@@ -2473,10 +2434,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:333
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "Złoto na wioskę"
+msgstr "Złoto na wioskę:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:363
@@ -2884,7 +2843,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/game_version.cfg:130
 msgid "User data:"
-msgstr "Dane użytkownika:"
+msgstr ""
 
 #. [grid]
 #: data/gui/window/game_version.cfg:132
@@ -3285,9 +3244,9 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 #, fuzzy
-#| msgid "Send a private message"
+#| msgid "whisper to $receiver"
 msgid "When a whisper is received"
-msgstr "Wyślij prywatną wiadomość"
+msgstr "szepnij do $receiver"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
@@ -3303,10 +3262,8 @@ msgstr "Przyjaciele"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
-#, fuzzy
-#| msgid "Send a private message"
 msgid "When a message from a friend is received"
-msgstr "Wyślij prywatną wiadomość"
+msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
@@ -3317,10 +3274,8 @@ msgstr "Wiadomość:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
-#, fuzzy
-#| msgid "Send a private message"
 msgid "When a public message is received"
-msgstr "Wyślij prywatną wiadomość"
+msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
@@ -3331,10 +3286,8 @@ msgstr "Wyślij prywatną wiadomość"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
-#, fuzzy
-#| msgid "Send a private message"
 msgid "When a server message is received"
-msgstr "Wyślij prywatną wiadomość"
+msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
@@ -3873,9 +3826,9 @@ msgstr "Zmień rozdzielczość"
 #. [combobox]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:32
 #, fuzzy
-#| msgid "Change the sample rate"
+#| msgid "Change Resolution"
 msgid "Change the game resolution"
-msgstr "Zmień częstotliwość próbkowania"
+msgstr "Zmień rozdzielczość"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:48
@@ -4062,8 +4015,6 @@ msgstr "Zmień głośność dzwonka"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:101
-#, fuzzy
-#| msgid "Turn menu and button sounds on/off"
 msgid "Turn menu and button sounds on/off"
 msgstr "Włącz/wyłącz dźwięki menu i przycisków"
 
@@ -4074,8 +4025,6 @@ msgstr "Dźwięki interfejsu użytkownika"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:102
-#, fuzzy
-#| msgid "Change the sound volume for button clicks, etc."
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Zmień głośność dźwięków kliknięć itd."
 
@@ -4199,10 +4148,8 @@ msgstr "Zmień ustawienia gry"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:190
-#, fuzzy
-#| msgid "Send a private message"
 msgid "Server Executable"
-msgstr "Wyślij prywatną wiadomość"
+msgstr ""
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:191
@@ -5006,9 +4953,9 @@ msgstr "Odinstaluj dodatki"
 
 #: src/gui/dialogs/loadscreen.cpp:57
 #, fuzzy
-#| msgid "Random start time"
+#| msgid "Random starting time"
 msgid "Starting game"
-msgstr "Losowy pora dnia"
+msgstr "Losowa pora dnia"
 
 #: src/gui/dialogs/loadscreen.cpp:58
 msgid "Verifying cache"
@@ -5168,10 +5115,8 @@ msgid "Prefs section^Advanced"
 msgstr "Ogólne"
 
 #: src/gui/dialogs/screenshot_notification.cpp:74
-#, fuzzy
-#| msgid "Unknown era"
 msgid "file_size^Unknown"
-msgstr "Nieznana era"
+msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:276
 msgid "Version "
@@ -6279,37 +6224,20 @@ msgstr ""
 #~ msgstr "Skopiuj"
 
 #, fuzzy
-#~| msgid "Mouse Scrolling"
-#~ msgid "Map scrolling"
-#~ msgstr "Przewijanie myszą"
+#~| msgid "Animate map"
+#~ msgid "Share map"
+#~ msgstr "Animowana mapa"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Wygeneruj losową mapę"
+
+#~ msgid "Next Generator"
+#~ msgstr "Następny generator"
 
 #, fuzzy
-#~| msgid "Moderation"
-#~ msgid "Mouse emulation"
-#~ msgstr "Moderowanie"
-
-#, fuzzy
-#~| msgid "Hotkey Settings"
-#~ msgid "Joystick Settings"
-#~ msgstr "Skróty"
-
-#, fuzzy
-#~| msgid "Send Private Message"
-#~ msgid "Private message:"
-#~ msgstr "Wyślij wiadomość prywatną"
-
-#, fuzzy
-#~| msgid "Send a private message"
-#~ msgid "When a private message is received"
-#~ msgstr "Wyślij prywatną wiadomość"
-
-#, fuzzy
-#~| msgid "Random start time"
-#~ msgid "Ready to start game:"
-#~ msgstr "Losowy pora dnia"
-
-#~ msgid "Attack enemy"
-#~ msgstr "Zaatakuj wroga"
+#~| msgid "Cave Path"
+#~ msgid "Game Paths"
+#~ msgstr "Ścieżka w jaskini"
 
 #~ msgid "Set Path to wesnothd"
 #~ msgstr "Ustaw ścieżkę do wesnothd"
@@ -6326,47 +6254,14 @@ msgstr ""
 #~ msgid "Add As Ignore"
 #~ msgstr "Dodaj do listy ignorowanych"
 
-#~ msgid "sound^Advanced Options"
-#~ msgstr "Opcje zaawansowane"
-
 #~ msgid "sound^Standard Options"
 #~ msgstr "Opcje standardowe"
-
-#, fuzzy
-#~| msgid "Refresh Display"
-#~ msgid "colors^Display"
-#~ msgstr "Odśwież ekran"
 
 #~ msgid "Custom"
 #~ msgstr "Niestandardowe"
 
 #~ msgid "Apply"
 #~ msgstr "Zastosuj"
-
-#, fuzzy
-#~| msgid "Advanced Mode"
-#~ msgid "Advanced"
-#~ msgstr "Tryb zaawansowany"
-
-#, fuzzy
-#~| msgid "Show Enemy Moves"
-#~ msgid "Show enemy orb"
-#~ msgstr "Pokaż ruchy wroga"
-
-#, fuzzy
-#~| msgid "Show all lobby joins"
-#~ msgid "Show ally orb"
-#~ msgstr "Pokazuj wszystkie dołączenia do poczekalni"
-
-#, fuzzy
-#~| msgid "Show Enemy Moves"
-#~ msgid "Show unmoved orb"
-#~ msgstr "Pokaż ruchy wroga"
-
-#, fuzzy
-#~| msgid "Show team colors"
-#~ msgid "Show moved orb"
-#~ msgstr "Pokaż kolory drużyn"
 
 #~ msgid "Sample rate (Hz):"
 #~ msgstr "Częstotliwość próbkowania (Hz):"
@@ -6408,10 +6303,26 @@ msgstr ""
 #~ msgid "Advanced section^Advanced"
 #~ msgstr "Zaawansowane"
 
+#~ msgid "Password: "
+#~ msgstr "Hasło: "
+
 #, fuzzy
-#~| msgid "Refresh Image Cache"
-#~ msgid "Purge Cache"
-#~ msgstr "Odśwież pamięć podręczną grafik"
+#~| msgid "Start Editor"
+#~ msgid "Quit Editor"
+#~ msgstr "Uruchom edytor"
+
+#~ msgid "Team 1"
+#~ msgstr "Drużyna 1"
+
+#, fuzzy
+#~| msgid "Height:"
+#~ msgid "Right"
+#~ msgstr "Wysokość:"
+
+#, fuzzy
+#~| msgid "Hut"
+#~ msgid "Hat"
+#~ msgstr "Szałas"
 
 #~ msgid "Hotkey Settings"
 #~ msgstr "Skróty"
@@ -6429,22 +6340,6 @@ msgstr ""
 #~ msgid "Binding"
 #~ msgstr "Przypisanie"
 
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Inne tryby graficzne nie są dostępne"
-
-#~ msgid "Choose Resolution"
-#~ msgstr "Wybierz rozdzielczość"
-
-#, fuzzy
-#~| msgid "Height:"
-#~ msgid "Right"
-#~ msgstr "Wysokość:"
-
-#, fuzzy
-#~| msgid "Hut"
-#~ msgid "Hat"
-#~ msgstr "Szałas"
-
 #~ msgid ""
 #~ "The video mode could not be changed. Your window manager must be set to "
 #~ "16 bits per pixel to run the game in windowed mode. Your display must "
@@ -6455,37 +6350,8 @@ msgstr ""
 #~ "bitowego. Do gry w trybie pełnoekranowym wymagana jest rozdzielczość co "
 #~ "najmniej 1024x768x16."
 
-#, fuzzy
-#~| msgid "Animate map"
-#~ msgid "Share map"
-#~ msgstr "Animowana mapa"
-
-#, fuzzy
-#~| msgid "Cave Path"
-#~ msgid "Game Paths"
-#~ msgstr "Ścieżka w jaskini"
-
-#, fuzzy
-#~| msgid "Start Editor"
-#~ msgid "Quit Editor"
-#~ msgstr "Uruchom edytor"
-
-#, fuzzy
-#~| msgid "Actions"
-#~ msgid "Level options"
-#~ msgstr "Działania"
-
-#~ msgid "Generate Random Map"
-#~ msgstr "Wygeneruj losową mapę"
-
-#~ msgid "Next Generator"
-#~ msgstr "Następny generator"
-
-#~ msgid "Team 1"
-#~ msgstr "Drużyna 1"
-
-#~ msgid "Password: "
-#~ msgstr "Hasło: "
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "Inne tryby graficzne nie są dostępne"
 
 #~ msgid "Elvish Castle"
 #~ msgstr "Zamek elfów"
@@ -6520,22 +6386,18 @@ msgstr ""
 #~ msgid "Snowy Mixed Forested Hills"
 #~ msgstr "Wzgórza z ośnieżonym lasem mieszanym"
 
-#, fuzzy
 #~| msgid "Tropical Forest"
 #~ msgid "Tropical Forested Hills"
 #~ msgstr "Las tropikalny"
 
-#, fuzzy
 #~| msgid "Forested Hills"
 #~ msgid "Palm Forested Hills"
 #~ msgstr "Zalesione wzgórza"
 
-#, fuzzy
 #~| msgid "Forested Hills"
 #~ msgid "Dense Palm Forested Hills"
 #~ msgstr "Zalesione wzgórza"
 
-#, fuzzy
 #~| msgid "Forested Hills"
 #~ msgid "Savanna Forested Hills"
 #~ msgstr "Zalesione wzgórza"
@@ -6562,7 +6424,6 @@ msgstr ""
 #~ msgid "Right Mouse Click"
 #~ msgstr "Kliknięcie prawym przyciskiem myszy"
 
-#, fuzzy
 #~| msgid "Switch Map"
 #~ msgid "Switch Area"
 #~ msgstr "Zmień mapę"
@@ -6573,7 +6434,6 @@ msgstr ""
 #~ msgid "Map-Screenshot"
 #~ msgstr "Zrzut obrazu mapy"
 
-#, fuzzy
 #~| msgid "Screenshot done"
 #~ msgid "Screenshot Done"
 #~ msgstr "Zrzut zapisany"
@@ -6581,17 +6441,14 @@ msgstr ""
 #~ msgid " (widescreen)"
 #~ msgstr " (panoramiczna)"
 
-#, fuzzy
 #~| msgid "Multiplayer Options"
 #~ msgid "Filter Options"
 #~ msgstr "Opcje gry wieloosobowej"
 
-#, fuzzy
 #~| msgid "Flip Clipboard Horizontally"
 #~ msgid "Scroll Viewport Horizontally"
 #~ msgstr "Odwróć zawartość schowka w poziomie"
 
-#, fuzzy
 #~| msgid "Flip Clipboard Vertically"
 #~ msgid "Scroll Viewport Vertically"
 #~ msgstr "Odwróć zawartość schowka w pionie"
@@ -6611,7 +6468,6 @@ msgstr ""
 #~ msgid "Add this username to your ignores list"
 #~ msgstr "Dodaj tę nazwę użytkownika do listy ignorowanych"
 
-#, fuzzy
 #~| msgid "Auto-update Terrain Transitions"
 #~ msgid "Auto-update Terrain Transitions: Yes"
 #~ msgstr "Automatycznie aktualizuj przejścia terenu"
@@ -6631,7 +6487,6 @@ msgstr ""
 #~ msgid "Use New Lobby Interface"
 #~ msgstr "Używaj nowego interfejsu poczekalni"
 
-#, fuzzy
 #~| msgid "Default"
 #~ msgid "Reset Defaults"
 #~ msgstr "Domyślna"
@@ -6639,7 +6494,6 @@ msgstr ""
 #~ msgid "Change Hotkey"
 #~ msgstr "Zmień skrót"
 
-#, fuzzy
 #~| msgid "Select All"
 #~ msgid "Reset All"
 #~ msgstr "Zaznacz wszystko"
@@ -6938,6 +6792,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Usuń zapisane gry po zwycięstwie (gra jednoosobowa) lub porażce (gra "
 #~ "jedno/wieloosobowa)"
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Tryb zaawansowany"
 
 #~ msgid "Normal Mode"
 #~ msgstr "Tryb normalny"
