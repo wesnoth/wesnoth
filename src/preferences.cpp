@@ -677,6 +677,16 @@ bool set_music(bool ison) {
 	return true;
 }
 
+bool stop_music_in_background()
+{
+	return get("stop_music_in_background", false);
+}
+
+void set_stop_music_in_background(bool ison)
+{
+	preferences::set("stop_music_in_background", ison);
+}
+
 namespace {
 	double scroll = 0.2;
 }

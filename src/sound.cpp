@@ -626,7 +626,7 @@ music_muter::music_muter() :
 
 void music_muter::handle_window_event(const SDL_Event& event)
 {
-	if (preferences::music_on())
+	if (preferences::stop_music_in_background() && preferences::music_on())
 	{
 		if (event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
 		{
