@@ -7,16 +7,15 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-05-24 20:08+0200\n"
-"PO-Revision-Date: 2012-04-04 19:46+0100\n"
+"PO-Revision-Date: 2016-02-21 15:49+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
-"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
-"Language: \n"
+"Language-Team: z.banach@wsisiz.edu.pl\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: POLAND\n"
-"X-Poedit-Language: Polish\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
@@ -104,7 +103,7 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
-"W tym samouczku będzie grać Konradem.\n"
+"W tym samouczku będziesz grać Konradem.\n"
 "Stoisz w twierdzy, a twój mentor Delfador jest po wschodniej stronie rzeki."
 
 #. [message]: speaker=narrator
@@ -114,7 +113,7 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
-"W tym samouczku będzie grać Li’sar.\n"
+"W tym samouczku będziesz grać Li’sar.\n"
 "Stoisz w twierdzy, a twój mentor Delfador jest po wschodniej stronie rzeki."
 
 #. [event]
@@ -124,7 +123,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 msgid "Left click on Konrad"
-msgstr "Kliknij Konrada lewym przyciskiem"
+msgstr "Kliknij na Konrada lewym przyciskiem"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -133,7 +132,7 @@ msgstr "Kliknij Konrada lewym przyciskiem"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:451
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid "Left click on Li’sar"
-msgstr "Kliknij Li'sar lewym przyciskiem"
+msgstr "Kliknij na Li'sar lewym przyciskiem"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:274
@@ -392,12 +391,12 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:582
 msgid "Click on the village to move Konrad"
-msgstr "Kliknij wioskę, by przesunąć Konrada"
+msgstr "Kliknij na wioskę, by przesunąć Konrada"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:583
 msgid "Click on the village to move Li’sar"
-msgstr "Kliknij wioskę, by przesunąć Li'sar"
+msgstr "Kliknij na wioskę, by przesunąć Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
@@ -604,7 +603,7 @@ msgid ""
 msgstr ""
 "Nie zrobiłbyś przecież znowu czegoś tak głupiego jak samotny atak na tę "
 "atrapę, prawda?\n"
-"Najpierw użyj wojowników, których zarekrutowałeś - będą bardzo pomocni."
+"Najpierw użyj wojowników, których rekrutowałeś - będą bardzo pomocni."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:864
@@ -814,7 +813,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1202
 msgid "End Scenario"
-msgstr ""
+msgstr "Zakończ scenariusz"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1215
@@ -822,6 +821,9 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Czy chcesz kontynuować ćwiczenie? Możesz zakończyć ten scenariusz w dowolnym "
+"momencie, korzystając z elementu <b>Zakończ scenariusz</b> z menu "
+"kontekstowego."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1217
@@ -1022,8 +1024,8 @@ msgid ""
 msgstr ""
 "Orki obozują po drugiej stronie rzeki. To jest kraj elfów: my, elfy, "
 "poruszamy się w lasach szybko i walczymy w nich bardzo skutecznie. Musisz "
-"pokonać ich przywódcę, dzięki czemu nigdy więcej nie będą nam mogli "
-"zagrozić. Będę ci doradzać."
+"pokonać ich przywódcę, aby nigdy więcej nie mogli już nam zagrozić. Będę ci "
+"doradzać."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
@@ -1418,24 +1420,16 @@ msgstr "Zaatakuj orka łucznikiem"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Aby zobaczyć umiejętności dowolnej jednostki (również wrogiej), najedź na "
 "nią kursorem myszy, a z prawej strony ekranu zostanie wyświetlone "
 "podsumowanie jednostki."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
 msgstr "<big>Podsumowania jednostek</big>"
 
@@ -1480,27 +1474,18 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
 msgstr "<big>Poruszanie się na duże odległości</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Możesz sprawić, by jednostka sama się poruszała przez kilka tur — wybierz "
-"ją, a następnie kliknij cel. Zostanie wyświetlona liczba pokazująca liczbę "
+"ją, a następnie kliknij cel. Zostanie wyświetlona liczba pokazująca ilość "
 "tur potrzebnych do osiągnięcia tego miejsca."
 
 #. [event]
@@ -1691,26 +1676,17 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "Po zamknięciu tego okna najedź kursorem myszy na obrazek przedstawiający "
 "krajobraz pod minimapą z prawej strony, a zobaczysz opis pory dnia wraz z "
 "informacją, kto teraz walczy lepiej."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
 msgstr "<big>Pora dnia</big>"
 
@@ -1722,7 +1698,7 @@ msgid ""
 "unit)."
 msgstr ""
 "Pamiętaj o wycofywaniu rannych jednostek do wiosek. Uzdrowiciele mogą "
-"przywrócić tylko 4 punkty życia naraz, a wioski leczą o 8 punktów (co jest "
+"przywrócić tylko 4 punkty życia naraz, a wioski leczą 8 punktów (co jest "
 "maksymalną wartością leczenia)."
 
 #. [event]
@@ -1741,21 +1717,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Śledzenie niewykorzystanych jednostek</big>"
+msgstr "<big>Znajdowanie niewykorzystanych jednostek</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1763,7 +1729,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Możesz upewnić się, że w danej turze wszystkie twoje jednostki otrzymały "
 "rozkazy: naciskaj klawisz <b>n</b>, aby przełączać się na kolejne jednostki. "
 "Naciśnięcie <b>spacji</b> spowoduje wskazanie, że jednostka już skończyła "
@@ -1773,51 +1738,34 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "Do zwycięstwa w tym scenariuszu wystarczy, że pokonasz przywódcę orków. "
 "(Warunki zwycięstwa w scenariuszu zawsze możesz wyświetlić poprzez opcję "
 "<b>Cele misji</b> w <b>Menu głównym</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
 msgstr "<big>Warunki zwycięstwa</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Rekrutuj właściwe typy jednostek</big>"
+msgstr "<big>Rekrutuj odpowiednie typy jednostek</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Pamiętaj o rekrutowaniu żołnierzy najbardziej użytecznych w danej sytuacji. "
 "Łucznicy będą szczególnie skuteczni przeciwko rębaczom, jeźdźcom wilków i "
-"ich przywódcy."
+"przywódcy wroga."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
@@ -1914,25 +1862,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
 msgstr "<big>Śledzenie ruchów wroga</big>"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Możesz sprawdzić, jak daleko dotrze wroga jednostka, umieszczając nad nią "
 "kursor myszy. Możesz też sprawdzić możliwe ruchy wszystkich przeciwników — w "
 "tym celu wybierz <b>Pokaż ruchy wroga</b> z menu <b>Działania</b>."
@@ -2018,8 +1957,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1702
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr ""
-"Zbyt wiele czasu ci to wszystko zabrało, już nigdy nie pozbędziemy się tych "
-"orków!"
+"Bitwa za bardzo się przeciągnęła, już nigdy nie pozbędziemy się tych orków!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1725

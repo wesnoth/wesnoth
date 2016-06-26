@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+dev\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
-"PO-Revision-Date: 2012-02-24 19:47+0100\n"
-"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
+"POT-Creation-Date: 2016-05-17 20:24-0400\n"
+"PO-Revision-Date: 2015-10-21 13:08+0100\n"
+"Last-Translator: Liam Tailor <liado@wp.pl>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 # type: Attribute 'lang' of: <book>
@@ -1017,13 +1018,12 @@ msgstr "Cała mapa, pomniejszona"
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:458
-#, fuzzy
-#| msgid ""
-#| "Defense and movement of the currently selected unit on the marked hex"
 msgid ""
 "Current hex position (x-coordinate, y-coordinate), defense and movement of "
 "the currently selected unit on the marked hex"
-msgstr "Obrona i koszt ruchu aktualnie wybranej jednostki na zaznaczonym polu"
+msgstr ""
+"Pozycja zaznaczonego pola (współrzędna-x, współrzędna-y), obrona i koszt "
+"ruchu aktualnie wybranej jednostki na zaznaczonym polu"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
@@ -2883,7 +2883,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1723
 msgid "Aged"
-msgstr ""
+msgstr "Wiekowa"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1727
@@ -2891,43 +2891,42 @@ msgid ""
 "The oldest units may have the Aged trait, receiving an 8 points HP decrease "
 "and having -1 movement and melee damage."
 msgstr ""
+"Najstarsze jednostki mogą posiadać cechę Wiekowa. Mają one 8 PŻ mniej, oraz "
+"-1 do punktów ruchu i zadawanych obrażeń wręcz."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1734
 msgid "Dim"
-msgstr ""
+msgstr "Tępy"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1738
 msgid "Units with the Dim trait require 20% more experience to advance."
 msgstr ""
+"Jednostka która posiada cechę Tępy potrzebuje 20% więcej doświadczenia aby "
+"awansować"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1744
 msgid "Elemental"
-msgstr ""
+msgstr "Żywiołak"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1748
-#, fuzzy
-#| msgid ""
-#| "Mechanical units aren&#8217;t alive and thus are immune to poison, also "
-#| "drain and plague doesn&#8217;t work on them.  Mechanical units generally "
-#| "have <emphasis>Mechanical</emphasis> as their only trait."
 msgid ""
 "Elemental units aren&#8217;t alive and thus are immune to poison, and drain "
 "and plague don&#8217;t work on them.  Elemental units generally have "
 "<emphasis>Elemental</emphasis> as their only trait."
 msgstr ""
-"Mechaniczne jednostki nie są żywe, a zatem są odporne na truciznę, wysysanie "
-"oraz zarazę. <emphasis>Mechaniczna</emphasis> to generalnie jedyna cecha "
-"jednostek mechanicznych."
+"Żywiołaki jednostki nie są żywe, a zatem są odporne na truciznę, wysysanie "
+"oraz zarazę. <emphasis>Żywiołak</emphasis> to najczęściej jedyna cecha "
+"jednostek żywiołaków."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1756
 msgid "Feral"
-msgstr ""
+msgstr "Dzika"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1760
@@ -2935,6 +2934,8 @@ msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on."
 msgstr ""
+"Jednostki z cechą Dzika otrzymują tylko 50% wartości obrony we wioskach, "
+"niezależnie od tego, na jakim terenie dana wioska się znajduje."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1767
@@ -2972,18 +2973,13 @@ msgstr "Mechaniczne"
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1789
-#, fuzzy
-#| msgid ""
-#| "Mechanical units aren&#8217;t alive and thus are immune to poison, also "
-#| "drain and plague doesn&#8217;t work on them.  Mechanical units generally "
-#| "have <emphasis>Mechanical</emphasis> as their only trait."
 msgid ""
 "Mechanical units aren&#8217;t alive and thus are immune to poison, and drain "
 "and plague don&#8217;t work on them.  Mechanical units generally have "
 "<emphasis>Mechanical</emphasis> as their only trait."
 msgstr ""
 "Mechaniczne jednostki nie są żywe, a zatem są odporne na truciznę, wysysanie "
-"oraz zarazę. <emphasis>Mechaniczna</emphasis> to generalnie jedyna cecha "
+"oraz zarazę. <emphasis>Mechaniczna</emphasis> to zazwyczaj jedyna cecha "
 "jednostek mechanicznych."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -2999,6 +2995,8 @@ msgid ""
 "Large, unwieldy units with the Slow trait have -1 movement and 5% more "
 "hitpoints."
 msgstr ""
+"Duże, nieporadne jednostki posiadają cechę 'Wolny'. Otrzymują one -1 punkt "
+"ruchu i +5% punktów życia."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -3025,7 +3023,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1821
 msgid "Weak"
-msgstr ""
+msgstr "Słaby"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:1825
@@ -3033,6 +3031,8 @@ msgid ""
 "Units may have the Weak trait, receiving a -1 increment in hitpoints and "
 "melee damage."
 msgstr ""
+"Jednostki z cechą Słaby posiadają jeden punkt życia oraz zdawanych obrażeń "
+"wręcz mniej."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
@@ -3321,7 +3321,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2022
 msgid "Feeding"
-msgstr ""
+msgstr "Żerowanie"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2026
@@ -3329,6 +3329,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
+"Maksymalna liczba PŻ tej jednostki zwiększa się o 1 za każdym razem, gdy "
+"zabije ona jednostkę żyjącą."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
@@ -3517,18 +3519,12 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2161
-#, fuzzy
-#| msgid "Poison"
 msgid "Unpoison"
-msgstr "Trucizna"
+msgstr "Odtrucie"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2165
-#, fuzzy
-#| msgid ""
-#| "A unit which can cure an ally of poison, although the ally will receive "
-#| "no additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -3849,7 +3845,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2395
 msgid "Black"
-msgstr ""
+msgstr "Czarna"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
@@ -3865,10 +3861,8 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2402
-#, fuzzy
-#| msgid "Blue orb"
 msgid "Black orb"
-msgstr "Niebieska kula"
+msgstr "Czarna kula"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3929,10 +3923,8 @@ msgstr "Czerwone jabłko"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /home/shadowm/src/wesnoth-1.12/doc/manual/manual.en.xml:2438
-#, fuzzy
-#| msgid "Enemy units have no orb on the top of their energy bar"
 msgid "Enemy units have a red orb on the top of their energy bar"
-msgstr "Wrogie jednostki nie mają kuli nad swoim paskiem energii."
+msgstr "Wrogie jednostki mają czerwoną kulę nad swoim paskiem energii"
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
