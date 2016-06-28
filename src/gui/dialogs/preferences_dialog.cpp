@@ -622,6 +622,11 @@ void tpreferences::initialize_members(twindow& window)
 		music_on(), music_volume(),
 		bind_void(set_music, _1), set_music_volume, window);
 
+	setup_single_toggle("sound_toggle_stop_music_in_background",
+		stop_music_in_background(),
+		set_stop_music_in_background,
+		window);
+
 	/* TURN BELL */
 	setup_toggle_slider_pair("sound_toggle_bell", "sound_volume_bell",
 		turn_bell(), bell_volume(),
