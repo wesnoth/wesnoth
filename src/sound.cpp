@@ -618,6 +618,30 @@ void music_thinker::process(events::pump_info &info) {
 	}
 }
 
+music_muter::music_muter() :
+	events::sdl_handler(false)
+{
+	join_global();
+}
+
+void music_muter::handle_window_event(const SDL_Event& event)
+{
+	if (preferences::music_on())
+	{
+		if (event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
+		{
+			Mix_ResumeMusic();
+		}
+		else if (event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
+		{
+			if (Mix_PlayingMusic())
+			{
+				Mix_PauseMusic();
+			}
+		}
+	}
+}
+
 void commit_music_changes()
 {
 	played_before.clear();

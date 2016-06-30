@@ -114,6 +114,7 @@ private:
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
 	sound::music_thinker music_thinker_;
+	sound::music_muter music_muter_;
 
 	std::string test_scenario_;
 

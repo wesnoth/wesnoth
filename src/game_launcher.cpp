@@ -112,6 +112,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	main_event_context_(),
 	hotkey_manager_(),
 	music_thinker_(),
+	music_muter_(),
 	test_scenario_("test"),
 	screenshot_map_(),
 	screenshot_filename_(),
