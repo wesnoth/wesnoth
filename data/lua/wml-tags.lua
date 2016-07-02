@@ -996,7 +996,7 @@ end
 wml_actions.teleport = function(cfg)
 	local context = wesnoth.current.event_context
 	local filter = helper.get_child(cfg, "filter") or { x = context.x1, y = context.y1 }
-	local unit = wesnoth.get_units(filter)[0]
+	local unit = wesnoth.get_units(filter)[1]
 	if not unit then
 		-- No error if no unit matches.
 		return
