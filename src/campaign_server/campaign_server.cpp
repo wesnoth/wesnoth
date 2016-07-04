@@ -100,17 +100,17 @@ void set_passphrase(config& campaign, std::string passphrase)
 namespace campaignd {
 
 server::server(const std::string& cfg_file)
-    : server_base(default_campaignd_port, true)
-    , cfg_()
+	: server_base(default_campaignd_port, true)
+	, cfg_()
 	, cfg_file_(cfg_file)
 	, read_only_(false)
 	, compress_level_(0)
 	, hooks_()
 	, handlers_()
-    , feedback_url_format_()
+	, feedback_url_format_()
 	, blacklist_()
 	, blacklist_file_()
-    , flush_timer_(io_service_)
+	, flush_timer_(io_service_)
 {
 	load_config();
 
@@ -207,8 +207,8 @@ void server::load_config()
 void server::handle_new_client(socket_ptr socket)
 {
 	async_receive_doc(socket,
-	    boost::bind(&server::handle_request, this, _1, _2)
-	                  );
+					  boost::bind(&server::handle_request, this, _1, _2)
+					  );
 }
 
 void server::handle_request(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
@@ -223,7 +223,7 @@ void server::handle_request(socket_ptr socket, boost::shared_ptr<simple_wml::doc
 		const config::any_child& c = *i;
 
 		request_handlers_table::const_iterator j
-		        = handlers_.find(c.key);
+				= handlers_.find(c.key);
 
 		if(j != handlers_.end()) {
 			// Call the handler.
@@ -395,7 +395,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 
 		// exec() and family never return; if they do, we have a problem
 		std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
-		          << '\n';
+				  << '\n';
 		exit(errno);
 
 	} else {
@@ -552,7 +552,7 @@ void server::handle_request_campaign(const server::request& req)
 
 		std::cerr << " size: " << size/1024 << "KiB\n";
 		async_send_file(req.sock, campaign["filename"],
-		    boost::bind(&server::handle_new_client, this, _1), null_handler);
+				boost::bind(&server::handle_new_client, this, _1), null_handler);
 		// Clients doing upgrades or some other specific thing shouldn't bump
 		// the downloads count. Default to true for compatibility with old
 		// clients that won't tell us what they are trying to do.
@@ -604,11 +604,11 @@ void server::handle_upload(const server::request& req)
 	} catch(const utf8::invalid_utf8_exception&) {
 		if(!passed_name_utf8_check) {
 			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 1, "
-			       << "the add-on pbl info contains invalid UTF-8\n";
+				   << "the add-on pbl info contains invalid UTF-8\n";
 			send_error("Add-on rejected: The add-on name contains an invalid UTF-8 sequence.", req.sock);
 		} else {
 			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 2, "
-			       << "the internal add-ons list contains invalid UTF-8\n";
+				   << "the internal add-ons list contains invalid UTF-8\n";
 			send_error("Server error: The server add-ons list is damaged.", req.sock);
 		}
 
@@ -771,8 +771,8 @@ void server::handle_delete(const server::request& req)
 	}
 
 	if(!authenticate(campaign, erase["passphrase"])
-	   && (campaigns()["master_password"].empty()
-	   || campaigns()["master_password"] != erase["passphrase"]))
+		&& (campaigns()["master_password"].empty()
+		|| campaigns()["master_password"] != erase["passphrase"]))
 	{
 		send_error("The passphrase is incorrect.", req.sock);
 		return;

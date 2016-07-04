@@ -64,11 +64,11 @@ private:
 		 */
 		request(const std::string& reqcmd,
 				const config& reqcfg,
-		        socket_ptr reqsock)
+				socket_ptr reqsock)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
-		    , addr(client_address(sock))
+			, addr(client_address(sock))
 		{}
 	};
 

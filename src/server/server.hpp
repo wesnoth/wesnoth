@@ -47,7 +47,7 @@ private:
 	void login(socket_ptr socket);
 	void handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void send_password_request(socket_ptr socket, const std::string& msg,
-		const std::string& user, const char* error_code = "", bool force_confirmation = false);
+							   const std::string& user, const char* error_code = "", bool force_confirmation = false);
 
 	bool accepting_connections() const { return !graceful_restart; }
 
@@ -77,7 +77,7 @@ private:
 
 	struct connection_log {
 		connection_log(std::string _nick, std::string _ip, time_t _log_off) :
-		nick(_nick), ip(_ip), log_off(_log_off) {}
+			nick(_nick), ip(_ip), log_off(_log_off) {}
 		std::string nick, ip;
 		time_t log_off;
 
@@ -92,7 +92,7 @@ private:
 
 	struct login_log {
 		login_log(std::string _ip, int _attempts, time_t _first_attempt) :
-		ip(_ip), attempts(_attempts), first_attempt(_first_attempt) {}
+			ip(_ip), attempts(_attempts), first_attempt(_first_attempt) {}
 		std::string ip;
 		int attempts;
 		time_t first_attempt;

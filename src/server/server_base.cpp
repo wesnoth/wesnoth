@@ -33,15 +33,15 @@ static lg::log_domain log_config("config");
 #include "send_receive_wml_helpers.ipp"
 
 server_base::server_base(unsigned short port, bool keep_alive) :
-    port_(port),
-    keep_alive_(keep_alive),
-    io_service_(),
-    acceptor_(io_service_),
-#ifndef _WIN32
-    input_(io_service_),
-    sighup_(io_service_, SIGHUP),
-#endif
-    sigs_(io_service_, SIGINT, SIGTERM)
+	port_(port),
+	keep_alive_(keep_alive),
+	io_service_(),
+	acceptor_(io_service_),
+	#ifndef _WIN32
+	input_(io_service_),
+	sighup_(io_service_, SIGHUP),
+	#endif
+	sigs_(io_service_, SIGINT, SIGTERM)
 {
 }
 
@@ -59,8 +59,8 @@ void server_base::start_server()
 
 #ifndef _WIN32
 	sighup_.async_wait(
-	    [=](const boost::system::error_code& error, int sig)
-	        { this->handle_sighup(error, sig); });
+		[=](const boost::system::error_code& error, int sig)
+			{ this->handle_sighup(error, sig); });
 #endif
 	sigs_.async_wait(boost::bind(&server_base::handle_termination, this, _1, _2));
 }
@@ -87,7 +87,7 @@ void server_base::accept_connection(const boost::system::error_code& error, sock
 		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
 		async_send_error(socket, "You are banned. Reason: " + reason);
 		return;
-	/*} else if (ip_exceeds_connection_limit(ip)) {
+		/*} else if (ip_exceeds_connection_limit(ip)) {
 		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
 		async_send_error(socket, "Too many connections from your IP.");
 		return;*/
@@ -103,9 +103,9 @@ void server_base::serverside_handshake(socket_ptr socket)
 {
 	boost::shared_array<char> handshake(new char[4]);
 	async_read(
-	    *socket, boost::asio::buffer(handshake.get(), 4),
-	    boost::bind(&server_base::handle_handshake, this, _1, socket, handshake)
-	);
+				*socket, boost::asio::buffer(handshake.get(), 4),
+				boost::bind(&server_base::handle_handshake, this, _1, socket, handshake)
+				);
 }
 
 void server_base::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> handshake)
@@ -118,17 +118,18 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 		return;
 	}
 	async_write(
-	    *socket, boost::asio::buffer(handshake_response_.buf, 4),
-	    [=](const boost::system::error_code& error, size_t)
-	        { if(!check_error(error, socket)) this->handle_new_client(socket); }
+				*socket, boost::asio::buffer(handshake_response_.buf, 4),
+				[=](const boost::system::error_code& error, size_t)
+					{ if(!check_error(error, socket)) this->handle_new_client(socket); }
 	);
 }
 
 void server_base::read_from_fifo() {
 	async_read_until(input_,
-	           admin_cmd_, '\n',
-	           [=](const boost::system::error_code& error, std::size_t bytes_transferred)
-	              { this->handle_read_from_fifo(error, bytes_transferred); });
+					 admin_cmd_, '\n',
+					 [=](const boost::system::error_code& error, std::size_t bytes_transferred)
+						{ this->handle_read_from_fifo(error, bytes_transferred); }
+	);
 }
 
 void server_base::handle_termination(const boost::system::error_code& error, int signal_number)
