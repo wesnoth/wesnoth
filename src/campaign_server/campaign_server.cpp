@@ -175,14 +175,18 @@ void server::load_config()
 		const std::string& path = cfg_["control_socket"].str();
 
 #ifndef _WIN32
-		const int res = mkfifo(path.c_str(),0660);
-		if(res != 0 && errno != EEXIST) {
-			ERR_CS << "could not make fifo at '" << path << "' (" << strerror(errno) << ")\n";
-		} else {
-			int fifo = open(path.c_str(), O_RDWR|O_NONBLOCK);
-			input_.assign(fifo);
-			LOG_CS << "opened fifo at '" << path << "'. Server commands may be written to this file.\n";
-			read_from_fifo();
+		if(path != fifo_path_) {
+			const int res = mkfifo(path.c_str(),0660);
+			if(res != 0 && errno != EEXIST) {
+				ERR_CS << "could not make fifo at '" << path << "' (" << strerror(errno) << ")\n";
+			} else {
+				input_.close();
+				int fifo = open(path.c_str(), O_RDWR|O_NONBLOCK);
+				input_.assign(fifo);
+				LOG_CS << "opened fifo at '" << path << "'. Server commands may be written to this file.\n";
+				read_from_fifo();
+				fifo_path_ = path;
+			}
 		}
 #endif
 	}
@@ -235,7 +239,10 @@ void server::handle_request(socket_ptr socket, boost::shared_ptr<simple_wml::doc
 void server::handle_read_from_fifo(const boost::system::error_code& error, std::size_t)
 {
 	if(error) {
-		std::cout << error.message() << std::endl;
+		if(error == boost::asio::error::operation_aborted)
+			// This means fifo was closed by load_config() to open another fifo
+			return;
+		ERR_CS << "Error reading from fifo: " << error.message() << '\n';
 		return;
 	}
 

@@ -63,6 +63,7 @@ protected:
 
 #ifndef _WIN32
 	boost::asio::posix::stream_descriptor input_;
+	std::string fifo_path_;
 	void read_from_fifo();
 	virtual void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred) = 0;
 	boost::asio::streambuf admin_cmd_;
