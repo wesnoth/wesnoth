@@ -89,8 +89,6 @@ private:
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
-	int port_;
-
 	void handle_new_client(socket_ptr socket);
 	void handle_request(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 
