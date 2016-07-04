@@ -247,6 +247,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 
 	if(ctl == "shut_down") {
 		LOG_CS << "Shut down requested by admin, shutting down...\n";
+		throw server_shutdown("Shut down via fifo command");
 	} else if(ctl == "readonly") {
 		if(ctl.args_count()) {
 			cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
