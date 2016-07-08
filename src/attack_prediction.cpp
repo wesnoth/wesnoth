@@ -752,11 +752,10 @@ void prob_matrix::dump() const
 
 /**
  * A matrix for calculating the outcome of combat.
- * This class is concerned with translating things that happen in combat
- * to matrix operations that then get passed on to the (private) matrix
- * implementation.
+ * This class specifies the interface and functionality shared between
+ * probability_combat_matrix and monte_carlo_combat_matrix.
  */
-class combat_matrix : private prob_matrix
+class combat_matrix : protected prob_matrix
 {
 public:
 	combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
@@ -769,12 +768,7 @@ public:
 	              int a_drain_percent, int b_drain_percent,
 	              int a_drain_constant, int b_drain_constant);
 
-	~combat_matrix() {}
-
-	// A hits B.
-	void receive_blow_b(double hit_chance);
-	// B hits A.  Why can't they just get along?
-	void receive_blow_a(double hit_chance);
+	virtual ~combat_matrix() {}
 
 	// We lied: actually did less damage, adjust matrix.
 	void remove_petrify_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
@@ -787,19 +781,12 @@ public:
 	void conditional_levelup_b();
 
 	// Its over, and here's the bill.
-	void extract_results(std::vector<double> summary_a[2],
-						 std::vector<double> summary_b[2]);
-
-	/// What is the chance that one of the combatants is dead?
-	double dead_prob() const    { return prob_of_zero(true, true); }
-	/// What is the chance that combatant 'a' is dead?
-	double dead_prob_a() const  { return prob_of_zero(true, false); }
-	/// What is the chance that combatant 'b' is dead?
-	double dead_prob_b() const  { return prob_of_zero(false, true); }
+	virtual void extract_results(std::vector<double> summary_a[2],
+	                             std::vector<double> summary_b[2]) = 0;
 
 	void dump() const { prob_matrix::dump(); }
 
-private:
+protected:
 	unsigned a_max_hp_;
 	bool     a_slows_;
 	unsigned a_damage_;
@@ -847,9 +834,139 @@ combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 {
 }
 
+// We lied: actually did less damage, adjust matrix.
+void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
+                                                unsigned b_hp)
+{
+	for (int p = 0; p < NUM_PLANES; ++p) {
+		if (!plane_used(p))
+			continue;
+
+		// A is slow in planes 1 and 3.
+		unsigned actual_damage = (p & 1) ? slow_damage : damage;
+		if (b_hp > actual_damage)
+			// B was actually petrified, not killed.
+			move_column(p, p, b_hp - actual_damage, 0);
+	}
+}
+
+void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
+                                                unsigned a_hp)
+{
+	for (int p = 0; p < NUM_PLANES; ++p) {
+		if (!plane_used(p))
+			continue;
+
+		// B is slow in planes 2 and 3.
+		unsigned actual_damage = (p & 2) ? slow_damage : damage;
+		if (a_hp > actual_damage)
+			// A was actually petrified, not killed.
+			move_row(p, p, a_hp - actual_damage, 0);
+	}
+}
+
+void combat_matrix::forced_levelup_a()
+{
+	/* Move all the values (except 0hp) of all the planes to the "fully healed"
+	row of the planes unslowed for A. */
+	for (int p = 0; p < NUM_PLANES; ++p) {
+		if (plane_used(p))
+			merge_cols(p & -2, p, a_max_hp_);
+	}
+}
+
+void combat_matrix::forced_levelup_b()
+{
+	/* Move all the values (except 0hp) of all the planes to the "fully healed"
+	column of planes unslowed for B. */
+	for (int p = 0; p < NUM_PLANES; ++p) {
+		if (plane_used(p))
+			merge_rows(p & -3, p, b_max_hp_);
+	}
+}
+
+void combat_matrix::conditional_levelup_a()
+{
+	/* Move the values of the first column (except 0hp) of all the
+	planes to the "fully healed" row of the planes unslowed for A. */
+	for (int p = 0; p < NUM_PLANES; ++p) {
+		if (plane_used(p))
+			merge_col(p & -2, p, 0, a_max_hp_);
+	}
+}
+
+void combat_matrix::conditional_levelup_b()
+{
+	/* Move the values of the first row (except 0hp) of all the
+	planes to the last column of the planes unslowed for B. */
+	for (int p = 0; p < NUM_PLANES; ++p) {
+		if (plane_used(p))
+			merge_row(p & -3, p, 0, b_max_hp_);
+	}
+}
+
+/**
+ * Implementation of combat_matrix that calculates exact probabilities of events.
+ * Fast in "simple" fights (low number of strikes, low HP, and preferably no slow
+ * or snare effect), but can be unusably expensive in extremely complex situations.
+ */
+class probability_combat_matrix : public combat_matrix
+{
+public:
+	probability_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
+	                          unsigned int a_hp, unsigned int b_hp,
+	                          const std::vector<double> a_summary[2],
+	                          const std::vector<double> b_summary[2],
+	                          bool a_slows, bool b_slows,
+	                          unsigned int a_damage, unsigned int b_damage,
+	                          unsigned int a_slow_damage, unsigned int b_slow_damage,
+	                          int a_drain_percent, int b_drain_percent,
+	                          int a_drain_constant, int b_drain_constant);
+
+	// A hits B.
+	void receive_blow_b(double hit_chance);
+	// B hits A.  Why can't they just get along?
+	void receive_blow_a(double hit_chance);
+
+	/// What is the chance that one of the combatants is dead?
+	double dead_prob() const    { return prob_of_zero(true, true); }
+	/// What is the chance that combatant 'a' is dead?
+	double dead_prob_a() const  { return prob_of_zero(true, false); }
+	/// What is the chance that combatant 'b' is dead?
+	double dead_prob_b() const  { return prob_of_zero(false, true); }
+
+	void extract_results(std::vector<double> summary_a[2],
+	                     std::vector<double> summary_b[2]) override;
+};
+
+/**
+ * Constructor.
+ * @param  a_max_hp       The maximum hit points for A.
+ * @param  b_max_hp       The maximum hit points for B.
+ * @param  a_slows        Set to true if A slows B when A hits B.
+ * @param  b_slows        Set to true if B slows A when B hits A.
+ * @param  a_hp           The current hit points for A. (Ignored if a_summary[0] is not empty.)
+ * @param  b_hp           The current hit points for B. (Ignored if b_summary[0] is not empty.)
+ * @param  a_summary      The hit point distribution for A (from previous combats). Element [0] is for normal A. while [1] is for slowed A.
+ * @param  b_summary      The hit point distribution for B (from previous combats). Element [0] is for normal B. while [1] is for slowed B.
+ */
+probability_combat_matrix::probability_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
+	unsigned int a_hp, unsigned int b_hp,
+	const std::vector<double> a_summary[2],
+	const std::vector<double> b_summary[2],
+	bool a_slows, bool b_slows,
+	unsigned int a_damage, unsigned int b_damage,
+	unsigned int a_slow_damage, unsigned int b_slow_damage,
+	int a_drain_percent, int b_drain_percent,
+	int a_drain_constant, int b_drain_constant)
+	: combat_matrix(a_max_hp, b_max_hp, a_hp, b_hp, a_summary, b_summary, a_slows, b_slows,
+	a_damage, b_damage, a_slow_damage, b_slow_damage, a_drain_percent, b_drain_percent, a_drain_constant, b_drain_constant)
+{
+}
+
 // Shift combat_matrix to reflect the probability 'hit_chance' that damage
 // is done to 'b'.
-void combat_matrix::receive_blow_b(double hit_chance)
+void probability_combat_matrix::receive_blow_b(double hit_chance)
 {
 	// Walk backwards so we don't copy already-copied matrix planes.
 	unsigned src = NUM_PLANES;
@@ -869,7 +986,7 @@ void combat_matrix::receive_blow_b(double hit_chance)
 
 // Shift matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'a'.
-void combat_matrix::receive_blow_a(double hit_chance)
+void probability_combat_matrix::receive_blow_a(double hit_chance)
 {
 	// Walk backwards so we don't copy already-copied matrix planes.
 	unsigned src = NUM_PLANES;
@@ -887,79 +1004,8 @@ void combat_matrix::receive_blow_a(double hit_chance)
 	}
 }
 
-// We lied: actually did less damage, adjust matrix.
-void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
-                                                unsigned b_hp)
-{
-	for (int p = 0; p < NUM_PLANES; ++p) {
-		if ( !plane_used(p) )
-			continue;
-
-		// A is slow in planes 1 and 3.
-		unsigned actual_damage = (p & 1) ? slow_damage : damage;
-		if ( b_hp > actual_damage )
-			// B was actually petrified, not killed.
-			move_column(p, p, b_hp - actual_damage, 0);
-	}
-}
-
-void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
-                                                unsigned a_hp)
-{
-	for (int p = 0; p < NUM_PLANES; ++p) {
-		if ( !plane_used(p) )
-			continue;
-
-		// B is slow in planes 2 and 3.
-		unsigned actual_damage = (p & 2) ? slow_damage : damage;
-		if ( a_hp > actual_damage )
-			// A was actually petrified, not killed.
-			move_row(p, p, a_hp - actual_damage, 0);
-	}
-}
-
-void combat_matrix::forced_levelup_a()
-{
-	/* Move all the values (except 0hp) of all the planes to the "fully healed"
-	   row of the planes unslowed for A. */
-	for (int p = 0; p < NUM_PLANES; ++p) {
-		if ( plane_used(p) )
-			merge_cols(p & -2, p, a_max_hp_);
-	}
-}
-
-void combat_matrix::forced_levelup_b()
-{
-	/* Move all the values (except 0hp) of all the planes to the "fully healed"
-	   column of planes unslowed for B. */
-	for (int p = 0; p < NUM_PLANES; ++p) {
-		if ( plane_used(p) )
-			merge_rows(p & -3, p, b_max_hp_);
-	}
-}
-
-void combat_matrix::conditional_levelup_a()
-{
-	/* Move the values of the first column (except 0hp) of all the
-	   planes to the "fully healed" row of the planes unslowed for A. */
-	for (int p = 0; p < NUM_PLANES; ++p) {
-		if ( plane_used(p) )
-			merge_col(p & -2, p, 0, a_max_hp_);
-	}
-}
-
-void combat_matrix::conditional_levelup_b()
-{
-	/* Move the values of the first row (except 0hp) of all the
-	   planes to the last column of the planes unslowed for B. */
-	for (int p = 0; p < NUM_PLANES; ++p) {
-		if ( plane_used(p) )
-			merge_row(p & -3, p, 0, b_max_hp_);
-	}
-}
-
-void combat_matrix::extract_results(std::vector<double> summary_a[2],
-                                    std::vector<double> summary_b[2])
+void probability_combat_matrix::extract_results(std::vector<double> summary_a[2],
+                                                std::vector<double> summary_b[2])
 {
 	// Reset the summaries.
 	summary_a[0] = std::vector<double>(num_rows());
@@ -1367,57 +1413,61 @@ void complex_fight(const battle_context_unit_stats &stats,
 		b_damage = b_slow_damage = stats.max_hp;
 
 	// Prepare the matrix that will do our calculations.
-	combat_matrix m(stats.max_hp, opp_stats.max_hp,
-	                stats.hp, opp_stats.hp, summary, opp_summary,
-	                stats.slows && !opp_stats.is_slowed,
-	                opp_stats.slows && !stats.is_slowed,
-	                a_damage, b_damage, a_slow_damage, b_slow_damage,
-	                stats.drain_percent, opp_stats.drain_percent,
-	                stats.drain_constant, opp_stats.drain_constant);
-	const double hit_chance = stats.chance_to_hit / 100.0;
-	const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
+	std::unique_ptr<combat_matrix> m;
+	{
+		probability_combat_matrix* pm = new probability_combat_matrix(stats.max_hp, opp_stats.max_hp,
+			stats.hp, opp_stats.hp, summary, opp_summary,
+			stats.slows && !opp_stats.is_slowed,
+			opp_stats.slows && !stats.is_slowed,
+			a_damage, b_damage, a_slow_damage, b_slow_damage,
+			stats.drain_percent, opp_stats.drain_percent,
+			stats.drain_constant, opp_stats.drain_constant);
+		m.reset(pm);
+		const double hit_chance = stats.chance_to_hit / 100.0;
+		const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
 
-	do {
-		for (unsigned int i = 0; i < max_attacks; ++i) {
-			if ( i < strikes ) {
-				debug(("A strikes\n"));
-				opp_not_hit *= 1.0 - hit_chance*(1.0-m.dead_prob_a());
-				m.receive_blow_b(hit_chance);
-				m.dump();
+		do {
+			for (unsigned int i = 0; i < max_attacks; ++i) {
+				if (i < strikes) {
+					debug(("A strikes\n"));
+					opp_not_hit *= 1.0 - hit_chance*(1.0 - pm->dead_prob_a());
+					pm->receive_blow_b(hit_chance);
+					pm->dump();
+				}
+				if (i < opp_strikes) {
+					debug(("B strikes\n"));
+					self_not_hit *= 1.0 - opp_hit_chance*(1.0 - pm->dead_prob_b());
+					pm->receive_blow_a(opp_hit_chance);
+					pm->dump();
+				}
 			}
-			if ( i < opp_strikes ) {
-				debug(("B strikes\n"));
-				self_not_hit *= 1.0 - opp_hit_chance*(1.0-m.dead_prob_b());
-				m.receive_blow_a(opp_hit_chance);
-				m.dump();
-			}
-		}
 
-		debug(("Combat ends:\n"));
-		m.dump();
-	} while (--rounds && m.dead_prob() < 0.99);
+			debug(("Combat ends:\n"));
+			pm->dump();
+		} while (--rounds && pm->dead_prob() < 0.99);
+	}
 
 	if (stats.petrifies)
-		m.remove_petrify_distortion_a(stats.damage, stats.slow_damage, opp_stats.hp);
+		m->remove_petrify_distortion_a(stats.damage, stats.slow_damage, opp_stats.hp);
 	if (opp_stats.petrifies)
-		m.remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
+		m->remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
 
 	if (levelup_considered) {
 		if ( stats.experience + opp_stats.level >= stats.max_experience ) {
-			m.forced_levelup_a();
+			m->forced_levelup_a();
 		} else if ( stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience ) {
-			m.conditional_levelup_a();
+			m->conditional_levelup_a();
 		}
 
 		if ( opp_stats.experience + stats.level >= opp_stats.max_experience ) {
-			m.forced_levelup_b();
+			m->forced_levelup_b();
 		} else if ( opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience ) {
-			m.conditional_levelup_b();
+			m->conditional_levelup_b();
 		}
 	}
 
 	// We extract results separately, then combine.
-	m.extract_results(summary, opp_summary);
+	m->extract_results(summary, opp_summary);
 }
 
 
