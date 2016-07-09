@@ -157,6 +157,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	animations_(),
 	build_status_(NOT_BUILT)
 {
+	check_id(id_);
+	check_id(base_id_);
 	gender_types_[0] = nullptr;
 	gender_types_[1] = nullptr;
 }
@@ -1287,6 +1289,28 @@ const unit_race *unit_type_data::find_race(const std::string &key) const
 	return i != races_.end() ? &i->second : nullptr;
 }
 
+void unit_type::check_id(std::string& id)
+{
+	assert(!id.empty());
+	//we don't allow leading whitepaces
+	if (id[0] == ' ') {
+		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
+	}
+	bool gave_wanrning = false;
+	for (size_t pos = 0; pos < id.size(); ++pos) {
+		const char c = id[pos];
+		const bool valid = c == '_' || c == ' ' || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
+		if (!valid) {
+			if (!gave_wanrning) {
+				ERR_UT << "Found unit type id with invalid chracters: \"" << id << "\"\n";
+				gave_wanrning = true;
+			}
+			id[pos] = '_';
+		}
+	}
+
+}
+
 unit_type_data unit_types;
 
 
@@ -1316,3 +1340,4 @@ void adjust_profile(std::string& profile)
 		profile = temp;
 	}
 }
+	static void check_id(std::string& id);

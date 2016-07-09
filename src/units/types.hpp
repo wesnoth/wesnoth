@@ -21,6 +21,7 @@
 #include "units/race.hpp"
 #include "units/attack_type.hpp"
 #include "util.hpp"
+#include "game_errors.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <map>
@@ -38,6 +39,14 @@ typedef std::map<std::string, movetype> movement_type_map;
 class unit_type
 {
 public:
+	class error : public game::game_error
+	{
+	public:
+		error(const std::string& msg)
+			: game::game_error(msg)
+		{
+		}
+	};
 	/**
 	 * Creates a unit type for the given config, but delays its build
 	 * till later.
@@ -53,6 +62,7 @@ public:
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
 	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
+	static void check_id(std::string& id);
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,

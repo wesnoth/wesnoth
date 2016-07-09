@@ -195,11 +195,13 @@ void intrusive_ptr_release(const unit * u)
  */
 static const unit_type &get_unit_type(const std::string &type_id)
 {
-	if ( type_id.empty() )
-		throw game::game_error("creating unit with an empty type field");
-
-	const unit_type *i = unit_types.find(type_id);
-	if (!i) throw game::game_error("unknown unit type: " + type_id);
+	if (type_id.empty()) {
+		throw unit_type::error("creating unit with an empty type field");
+	}
+	std::string new_id = type_id;
+	unit_type::check_id(new_id);
+	const unit_type *i = unit_types.find(new_id);
+	if (!i) throw unit_type::error("unknown unit type: " + type_id);
 	return *i;
 }
 
