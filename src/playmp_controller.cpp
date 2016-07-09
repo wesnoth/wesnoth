@@ -433,7 +433,7 @@ void playmp_controller::pull_remote_choice()
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.sync_network() (which calls turn_data_.send_data()) won't work if the undo stack isn't empty because undoable moves won't be sended
 	// Also undo_stack()clear() must be called synced so we cannot do that here.
-	assert(!undo_stack().can_undo());
+	assert(!current_team().is_local() || !undo_stack().can_undo());
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
