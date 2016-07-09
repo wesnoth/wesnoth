@@ -1124,7 +1124,7 @@ function wml_actions.set_variable(cfg)
 	end
 
 	if cfg.rand then
-		local random_string = cfg.rand
+		local random_string = tostring(cfg.rand)
 		local num_choices = 0
 		local items = {}
 
