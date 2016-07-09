@@ -2385,7 +2385,7 @@ void server::wml_handler(const std::string& /*issuer_name*/, const std::string& 
 	*out << simple_wml::document::stats();
 }
 
-void server::netstats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream */*out*/) {
+void server::netstats_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& /*parameters*/, std::ostringstream* /*out*/) {
 	/*
 	assert(out != NULL);
 
