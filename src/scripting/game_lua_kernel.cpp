@@ -1117,7 +1117,7 @@ int game_lua_kernel::intf_get_side_variable(lua_State *L)
 	if(side_index >= teams().size()) {
 		return luaL_argerror(L, 1, "invalid side number");
 	}
-	char const *m = luaL_checkstring(L, 1);
+	char const *m = luaL_checkstring(L, 2);
 	variable_access_const v(m, teams()[side_index].variables());
 	return luaW_pushvariable(L, v) ? 1 : 0;
 }
@@ -1134,10 +1134,10 @@ int game_lua_kernel::intf_set_side_variable(lua_State *L)
 	if(side_index >= teams().size()) {
 		return luaL_argerror(L, 1, "invalid side number");
 	}
-	char const *m = luaL_checkstring(L, 1);
+	char const *m = luaL_checkstring(L, 2);
 	//TODO: maybe support removing values with an empty arg3.
 	variable_access_create v(m, teams()[side_index].variables());
-	luaW_checkvariable(L, v, 2);
+	luaW_checkvariable(L, v, 3);
 	return 0;
 }
 
