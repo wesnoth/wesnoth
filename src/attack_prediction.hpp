@@ -35,6 +35,9 @@ struct combatant
 	/** Copy constructor */
 	combatant(const combatant &that, const battle_context_unit_stats &u);
 
+	combatant(const combatant &that) = delete;
+	combatant& operator=(const combatant &) = delete;
+
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent, bool levelup_considered=true);
 
@@ -60,13 +63,6 @@ struct combatant
 #endif
 
 private:
-	combatant(const combatant &that);
-	combatant& operator=(const combatant &);
-
-	struct combat_slice;
-	/** Split the combat by number of attacks per combatant (for swarm). */
-	std::vector<combat_slice> split_summary() const;
-
 	const battle_context_unit_stats &u_;
 
 	/** Summary of matrix used to calculate last battle (unslowed & slowed).
