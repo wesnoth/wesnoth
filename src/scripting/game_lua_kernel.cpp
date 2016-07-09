@@ -404,7 +404,7 @@ static int impl_unit_get(lua_State *L)
 		if(boost::get<unit::upkeep_full>(&upkeep) != nullptr){
 			lua_pushstring(L, "full");
 		}
-		if(boost::get<unit::upkeep_loyal>(&upkeep) != nullptr){
+		else if(boost::get<unit::upkeep_loyal>(&upkeep) != nullptr){
 			lua_pushstring(L, "loyal");
 		}
 		else {
