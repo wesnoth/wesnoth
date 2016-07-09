@@ -1340,4 +1340,3 @@ void adjust_profile(std::string& profile)
 		profile = temp;
 	}
 }
-	static void check_id(std::string& id);
