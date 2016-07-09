@@ -540,7 +540,9 @@ void playsingle_controller::play_ai_turn()
 	turn_data_.send_data();
 	try {
 		try {
-			ai::manager::play_turn(current_side());
+			if (!should_return_to_play_side()) {
+				ai::manager::play_turn(current_side());
+			}
 		}
 		catch (return_to_play_side_exception&) {
 		}
