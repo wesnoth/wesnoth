@@ -41,27 +41,6 @@
 namespace events
 {
 
-namespace {
-
-struct context
-{
-	context() :
-		handlers(),
-		focused_handler(-1)
-	{
-	}
-
-	void add_handler(sdl_handler* ptr);
-	bool remove_handler(sdl_handler* ptr);
-	int cycle_focus();
-	void set_focus(const sdl_handler* ptr);
-
-	std::vector<sdl_handler*> handlers;
-	int focused_handler;
-
-	void delete_handler_index(size_t handler);
-};
-
 void context::add_handler(sdl_handler* ptr)
 {
 	handlers.push_back(ptr);
@@ -148,8 +127,6 @@ context global_context;
 
 std::vector<pump_monitor*> pump_monitors;
 
-} //end anon namespace
-
 pump_monitor::pump_monitor() {
 	pump_monitors.push_back(this);
 }
@@ -193,22 +170,43 @@ sdl_handler::~sdl_handler()
 
 }
 
-void sdl_handler::join()
+void sdl_handler::join() {
+	join(event_contexts.back());
+}
+
+void sdl_handler::join(context &c)
 {
 	if(has_joined_) {
 		leave(); // should not be in multiple event contexts
 	}
 	//join self
-	event_contexts.back().add_handler(this);
+	c.add_handler(this);
 	has_joined_ = true;
 
 	//instruct members to join
 	sdl_handler_vector members = handler_members();
 	if(!members.empty()) {
 		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
-			(*i)->join();
+			(*i)->join(c);
 		}
 	}
+}
+
+void sdl_handler::join_same(sdl_handler* parent)
+{
+	if(has_joined_) {
+		leave(); // should not be in multiple event contexts
+	}
+
+	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
+		std::vector<sdl_handler *> &handlers = (*i).handlers;
+		if (std::find(handlers.begin(), handlers.end(), parent) != handlers.end()) {
+			join(*i);
+			return;
+		}
+	}
+	join(global_context);
+
 }
 
 void sdl_handler::leave()

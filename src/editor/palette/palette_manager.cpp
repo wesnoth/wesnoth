@@ -130,13 +130,13 @@ void palette_manager::draw_contents()
 
 	tooltips::clear_tooltips(loc);
 
-	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->hide(false);
-	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->hide(false);
-	gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+	std::shared_ptr<gui::button> palette_menu_button = gui_.find_action_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 

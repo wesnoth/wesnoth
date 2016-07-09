@@ -31,6 +31,27 @@
 namespace events
 {
 
+class sdl_handler;
+
+struct context
+{
+	context() :
+			handlers(),
+			focused_handler(-1)
+	{
+	}
+
+	void add_handler(sdl_handler* ptr);
+	bool remove_handler(sdl_handler* ptr);
+	int cycle_focus();
+	void set_focus(const sdl_handler* ptr);
+
+	std::vector<sdl_handler*> handlers;
+	int focused_handler;
+
+	void delete_handler_index(size_t handler);
+};
+
 //any classes that derive from this class will automatically
 //receive sdl events through the handle function for their lifetime,
 //while the event context they were created in is active.
@@ -55,6 +76,8 @@ public:
 	virtual void process_tooltip_string(int /*mousex*/, int /*mousey*/) {}
 
 	virtual void join(); /*joins the current event context*/
+	virtual void join(context &c); /*joins the specified event context*/
+	virtual void join_same(sdl_handler* parent); /*joins the same event context as the parent is already associated with */
 	virtual void leave(); /*leave the event context*/
 
 	virtual void join_global(); /*join the global event context*/

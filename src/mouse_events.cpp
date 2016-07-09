@@ -478,7 +478,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 
 void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -486,7 +486,7 @@ void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 
 void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -494,7 +494,7 @@ void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 
 void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -502,7 +502,7 @@ void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/
 
 void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -510,7 +510,7 @@ void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/
 
 void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();

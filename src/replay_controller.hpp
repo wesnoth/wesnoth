@@ -70,12 +70,12 @@ private:
 	void replay_ui_playback_should_start();
 	void replay_ui_playback_should_stop();
 
-	gui::button* play_button();
-	gui::button* stop_button();
-	gui::button* reset_button();
-	gui::button* play_turn_button();
-	gui::button* play_side_button();
-	gui::button* play_move_button();
+	std::shared_ptr<gui::button> play_button();
+	std::shared_ptr<gui::button> stop_button();
+	std::shared_ptr<gui::button> reset_button();
+	std::shared_ptr<gui::button> play_turn_button();
+	std::shared_ptr<gui::button> play_side_button();
+	std::shared_ptr<gui::button> play_move_button();
 
 	bool replay_ui_has_all_buttons() {
 		return play_button() && stop_button() && reset_button() &&

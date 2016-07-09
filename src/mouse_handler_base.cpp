@@ -259,7 +259,7 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	int movey = scrolly * preferences::scroll_speed();
 
 	// Don't scroll map and map zoom slider at same time
-	gui::slider* s = gui().find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui().find_slider("map-zoom-slider");
 	if (s && sdl::point_in_rect(x, y, s->location())) {
 		movex = 0; movey = 0;
 	}

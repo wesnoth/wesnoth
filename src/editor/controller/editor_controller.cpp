@@ -656,7 +656,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
 					std::vector<std::string> items;
 					items.push_back("editor-playlist");
-					gui::button* b = gui_->find_menu_button("menu-playlist");
+					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
 				}
@@ -1312,7 +1312,7 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change()) {
 		if (gui_->set_zoom(s->value(), true)) {
 			context_manager_->get_map_context().get_labels().recalculate_labels();

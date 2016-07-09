@@ -308,10 +308,10 @@ void location_palette::draw_contents()
 	const int x = palette_x_;
 	const int starting = items_start_;
 	int ending = std::min<int>(starting + num_visible_items(), num_items());
-	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->enable(starting != 0);
-	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->enable(ending != num_items());
 

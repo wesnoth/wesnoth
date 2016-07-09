@@ -642,7 +642,7 @@ void command_executor_default::set_button_state()
 	display& disp = get_display();
 	for (const theme::menu& menu : disp.get_theme().menus()) {
 
-		gui::button* button = disp.find_menu_button(menu.get_id());
+		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		for (const std::string& command : menu.items()) {
@@ -659,7 +659,7 @@ void command_executor_default::set_button_state()
 
 	for (const theme::action& action : disp.get_theme().actions()) {
 
-		gui::button* button = disp.find_action_button(action.get_id());
+		std::shared_ptr<gui::button> button = disp.find_action_button(action.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		int i = 0;
