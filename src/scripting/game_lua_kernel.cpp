@@ -4949,10 +4949,10 @@ void game_lua_kernel::initialize(const config& level)
 
 	game_config::load_config(game_lua_kernel::preload_config);
 	for (const config &cfg : game_lua_kernel::preload_scripts) {
-		run(cfg["code"].str().c_str());
+		run_lua_tag(cfg);
 	}
 	for (const config &cfg : level_lua_.child_range("lua")) {
-		run(cfg["code"].str().c_str());
+		run_lua_tag(cfg);
 	}
 
 	load_game(level);

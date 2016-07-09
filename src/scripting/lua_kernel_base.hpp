@@ -23,17 +23,21 @@
 
 struct lua_State;
 class CVideo;
+class config;
 
 class lua_kernel_base {
 public:
 	lua_kernel_base(CVideo * ptr);
 	virtual ~lua_kernel_base();
 
+	/** Runs a [lua] tag. Doesn't throw lua_error.*/
+	void run_lua_tag(const config& cfg);
+
 	/** Runs a plain script. Doesn't throw lua_error.*/
-	void run(char const *prog);
+	void run(char const *prog, int nArgs = 0);
 
 	/** Runs a plain script, but reports errors by throwing lua_error.*/
-	void throwing_run(char const * prog);
+	void throwing_run(char const * prog, int nArgs);
 
 	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
 	void interactive_run(char const * prog);

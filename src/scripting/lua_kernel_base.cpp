@@ -476,19 +476,31 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 	return true;
 }
 
+void lua_kernel_base::run_lua_tag(const config& cfg)
+{
+	int nArgs = 0;
+	if (const config& args = cfg.child("args")) {
+		luaW_pushconfig(this->mState, args);
+		++nArgs;
+	}
+	run(cfg["code"].str().c_str(), nArgs);
+}
 // Call load_string and protected call. Make them throw exceptions.
 //
-void lua_kernel_base::throwing_run(const char * prog) {
+void lua_kernel_base::throwing_run(const char * prog, int nArgs)
+{
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
 	load_string(prog, eh);
-	protected_call(0, 0, eh);
+	lua_insert(mState, -nArgs - 1);
+	protected_call(nArgs, 0, eh);
 }
 
 // Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
-void lua_kernel_base::run(const char * prog) {
+void lua_kernel_base::run(const char * prog, int nArgs)
+{
 	try {
-		throwing_run(prog);
+		throwing_run(prog, nArgs);
 	} catch (game::lua_error & e) {
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
@@ -507,7 +519,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 		// Try to load the experiment without syntax errors
 		load_string(experiment.c_str(), eh);
 	} catch (game::lua_error &) {
-		throwing_run(prog);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		throwing_run(prog, 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
 		return;
 	}
 	// experiment succeeded, now run but log normally.
