@@ -42,26 +42,27 @@ documentation and/or software.
 #ifndef MD5_HPP_INCLUDED
 #define MD5_HPP_INCLUDED
 
-#include <boost/cstdint.hpp>
+#include <array>
+#include <cstdint>
 
 class MD5 {
 
 public:
 // methods for controlled operation:
   MD5              ();  // simple initializer
-  void  update     (boost::uint8_t *input, boost::uint32_t input_length);
+  void  update     (const uint8_t* input, const uint32_t input_length);
   void  finalize   ();
 
 // methods to acquire finalized result
-  boost::uint8_t    *raw_digest ();  // digest as a 16-byte binary array
+  std::array<uint8_t, 16> raw_digest ();  // digest as a 16-byte binary array
 
 
 private:
 
 // first, some types:
-  typedef boost::uint32_t uint4;
-  typedef boost::uint16_t uint2;
-  typedef boost::uint8_t  uint1;
+  typedef uint32_t uint4;
+  typedef uint16_t uint2;
+  typedef uint8_t  uint1;
 
 // next, the private data:
   uint4 state[4];
@@ -72,11 +73,11 @@ private:
 
 // last, the private methods, mostly static:
   void init             ();                 // called by all constructors
-  void transform        (uint1 buffer[64]); // does the real update work.  Note
-                                            // that length is implied to be 64.
+  void transform        (const uint1 buffer[64]); // does the real update work.  Note
+                                                  // that length is implied to be 64.
 
   static void encode    (uint1 *dest, uint4 *src, uint4 length);
-  static void decode    (uint4 *dest, uint1 *src, uint4 length);
+  static void decode    (uint4 *dest, const uint1 *src, uint4 length);
 
   static inline uint4  rotate_left (uint4 x, uint4 n);
   static inline uint4  F           (uint4 x, uint4 y, uint4 z);

@@ -15,6 +15,8 @@
 #ifndef HASH_HPP_INCLUDED
 #define HASH_HPP_INCLUDED
 
+#include <array>
+#include <cstdint>
 #include <string>
 
 namespace util {
@@ -26,11 +28,11 @@ namespace util {
  *       the raw MD5 value, not a null-terminated string. Use encode_hash if
  *       you need the text representation instead.
  */
-unsigned char* md5(const std::string& input);
+std::array<uint8_t, 16> md5(const std::string& input);
 int get_iteration_count(const std::string& hash);
 std::string get_salt(const std::string& hash);
 bool is_valid_hash(const std::string& hash);
-std::string encode_hash(unsigned char* input);
+std::string encode_hash(const std::array<uint8_t, 16>& input);
 std::string create_hash(const std::string& password, const std::string& salt, int iteration_count =10);
 
 } // namespace util
