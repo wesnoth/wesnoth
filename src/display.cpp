@@ -2668,8 +2668,9 @@ void display::redraw_everything()
 
 	theme_.set_resolution(screen_area());
 
-	create_buttons();
-	render_buttons();
+	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+		create_buttons();
+	}
 
 	panelsDrawn_ = false;
 	if (!gui::in_dialog()) {
