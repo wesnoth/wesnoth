@@ -939,9 +939,6 @@ function wml_actions.role(cfg)
 		end
 		i = i + 1
 	until #types == 0 or i > #types
-
-	-- no matching unit found, issue a warning
-	wesnoth.message("WML", "No matching units found in [role]")
 end
 
 function wml_actions.unsynced(cfg)
