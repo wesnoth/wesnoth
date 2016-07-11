@@ -32,6 +32,7 @@
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "scripting/game_lua_kernel.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
 
@@ -118,6 +119,13 @@ namespace {
 
 bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
 {
+	std::string lua_function = cfg_["lua_function"];
+	if (!lua_function.empty() && fc_->get_lua_kernel()) {
+		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc)) {
+			return false;
+		}
+	}
+
 	//Filter Areas
 	if (cfg_.has_attribute("area") &&
 		fc_->get_tod_man().get_area_by_id(cfg_["area"]).count(loc) == 0)

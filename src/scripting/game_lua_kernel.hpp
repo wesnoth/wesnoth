@@ -202,6 +202,8 @@ public:
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
+	bool run_filter(char const *name, map_location const &l);
+	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(std::string const &, vconfig const &);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error");

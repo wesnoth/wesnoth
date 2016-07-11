@@ -5230,33 +5230,53 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 
 
 /**
- * Runs a script from a unit filter.
- * The script is an already compiled function given by its name.
- */
+* Runs a script from a unit filter.
+* The script is an already compiled function given by its name.
+*/
+bool game_lua_kernel::run_filter(char const *name, const map_location& l)
+{
+	lua_State *L = mState;
+	lua_pushinteger(mState, l.x + 1);
+	lua_pushinteger(mState, l.y + 1);
+	return run_filter(name, 2);
+}
+/**
+* Runs a script from a unit filter.
+* The script is an already compiled function given by its name.
+*/
 bool game_lua_kernel::run_filter(char const *name, unit const &u)
 {
 	lua_State *L = mState;
-	map_locker(this);
 	unit_map::const_unit_iterator ui = units().find(u.get_location());
 	if (!ui.valid()) return false;
+	// Pass the unit as argument.
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
+	lua_pushlightuserdata(L, getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
 
+	return run_filter(name, 1);
+}
+/**
+* Runs a script from a unit filter.
+* The script is an already compiled function given by its name.
+*/
+bool game_lua_kernel::run_filter(char const *name, int nArgs)
+{
+	map_locker(this);
+	lua_State *L = mState;
 	// Get the user filter by name.
 	const std::vector<std::string>& path = utils::split(name, '.', utils::STRIP_SPACES);
-	if(!luaW_getglobal(L, path))
+	if (!luaW_getglobal(L, path))
 	{
 		std::string message = std::string() + "function " + name + " not found";
 		log_error(message.c_str(), "Lua SUF Error");
 		//we pushed nothing and can safeley return.
 		return false;
 	}
-	// Pass the unit as argument.
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	lua_insert(L, -nArgs - 1);
 
-	if (!luaW_pcall(L, 1, 1)) return false;
+	if (!luaW_pcall(L, nArgs, 1)) return false;
 
 	bool b = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
