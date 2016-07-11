@@ -5235,7 +5235,6 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 */
 bool game_lua_kernel::run_filter(char const *name, const map_location& l)
 {
-	lua_State *L = mState;
 	lua_pushinteger(mState, l.x + 1);
 	lua_pushinteger(mState, l.y + 1);
 	return run_filter(name, 2);
