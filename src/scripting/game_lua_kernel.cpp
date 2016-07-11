@@ -5230,7 +5230,7 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 
 
 /**
-* Runs a script from a unit filter.
+* Runs a script from a location filter.
 * The script is an already compiled function given by its name.
 */
 bool game_lua_kernel::run_filter(char const *name, const map_location& l)
@@ -5257,7 +5257,7 @@ bool game_lua_kernel::run_filter(char const *name, unit const &u)
 	return run_filter(name, 1);
 }
 /**
-* Runs a script from a unit filter.
+* Runs a script from a filter.
 * The script is an already compiled function given by its name.
 */
 bool game_lua_kernel::run_filter(char const *name, int nArgs)
