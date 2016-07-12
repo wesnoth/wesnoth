@@ -292,5 +292,5 @@ std::string lua_formula_bridge::register_metatables(lua_State* L)
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 	
-	return "Adding formula metatable...";
+	return "Adding formula metatable...\n";
 }
