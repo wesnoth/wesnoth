@@ -97,6 +97,7 @@ public:
 		bool fog;
 		bool shroud;
 		bool observers;
+		bool registered_users_only;
 		bool shuffle_sides;
 		bool use_map_settings;
 		bool verified;

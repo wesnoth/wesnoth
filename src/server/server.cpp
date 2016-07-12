@@ -1466,6 +1466,11 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 		return;
 	} else if (player_connections_.find(socket)->info().is_moderator()) {
 		// Admins are always allowed to join.
+	} else if (g->registered_users_only() && !player_connections_.find(socket)->info().registered()) {
+		async_send_doc(socket, leave_game_doc);
+		send_server_message(socket, "Only registered users are allowed to join this game.");
+		async_send_doc(socket, games_and_users_list_);
+		return;
 	} else if (g->player_is_banned(socket)) {
 		DBG_SERVER << client_address(socket) << "\tReject banned player: "
 			<< player_connections_.find(socket)->info().name() << "\tfrom game:\t\"" << g->name()

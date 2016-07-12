@@ -78,6 +78,7 @@ bool configure_engine::random_start_time() const { return parameters_.random_sta
 bool configure_engine::fog_game() const { return parameters_.fog_game; }
 bool configure_engine::shroud_game() const { return parameters_.shroud_game; }
 bool configure_engine::allow_observers() const { return parameters_.allow_observers; }
+bool configure_engine::registered_users_only() const { return parameters_.registered_users_only; }
 bool configure_engine::shuffle_sides() const { return parameters_.shuffle_sides; }
 mp_game_settings::RANDOM_FACTION_MODE configure_engine::random_faction_mode() const { return parameters_.random_faction_mode; }
 const config& configure_engine::options() const { return parameters_.options; }
@@ -97,6 +98,7 @@ void configure_engine::set_random_start_time(bool val) { parameters_.random_star
 void configure_engine::set_fog_game(bool val) { parameters_.fog_game = val; }
 void configure_engine::set_shroud_game(bool val) { parameters_.shroud_game = val; }
 void configure_engine::set_allow_observers(bool val) { parameters_.allow_observers = val; }
+void configure_engine::set_registered_users_only(bool val) { parameters_.registered_users_only = val; }
 void configure_engine::set_oos_debug(bool val) { state_.classification().oos_debug = val; }
 void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides = val; }
 void configure_engine::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val) { parameters_.random_faction_mode = val;}
@@ -179,6 +181,10 @@ bool configure_engine::shroud_game_default() const {
 }
 bool configure_engine::allow_observers_default() const {
 	return preferences::allow_observers();
+}
+bool configure_engine::registered_users_only_default() const
+{
+	return preferences::registered_users_only();
 }
 bool configure_engine::shuffle_sides_default() const {
 	return preferences::shuffle_sides();
