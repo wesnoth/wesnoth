@@ -603,7 +603,7 @@ std::string default_map_generator_job::generate_name(boost::shared_ptr<name_gene
 		std::string* base_name, utils::string_map* additional_symbols)
 {
 	const std::vector<std::string>& options = utils::split(string_table[id].str());
-	if(options.empty() == false) {
+	if(!options.empty() && name_generator != nullptr) {
 		const size_t choice = rng_()%options.size();
 		LOG_NG << "calling name generator...\n";
 		const std::string& name = name_generator->generate();
