@@ -910,35 +910,52 @@ function wml_actions.role(cfg)
 	end
 
 	filter.role, filter.type = nil, nil
+	local search_map, search_recall = true, true
+	if cfg.search_recall_list ~= nil then
+		search_recall = not not cfg.search_recall_list
+	end
 
-	-- first attempt to match units on the map
-	local i = 1
-	repeat
-		-- give precedence based on the order specified in type=
-		if #types > 0 then
-			filter.type = types[i]
-		end
-		local unit = wesnoth.get_units(filter)[1]
-		if unit then
-			unit.role = role
-			return
-		end
-		i = i + 1
-	until #types == 0 or i > #types
+	if search_map then
+		-- first attempt to match units on the map
+		local i = 1
+		repeat
+			-- give precedence based on the order specified in type=
+			if #types > 0 then
+				filter.type = types[i]
+			end
+			local unit = wesnoth.get_units(filter)[1]
+			if unit then
+				unit.role = role
+				return
+			end
+			i = i + 1
+		until #types == 0 or i > #types
+	end
 
-	-- then try to match units on the recall lists
-	i = 1
-	repeat
-		if #types > 0 then
-			filter.type = types[i]
-		end
-		local unit = wesnoth.get_recall_units(filter)[1]
-		if unit then
-			unit.role = role
-			return
-		end
-		i = i + 1
-	until #types == 0 or i > #types
+	if search_recall then
+		-- then try to match units on the recall lists
+		i = 1
+		repeat
+			if #types > 0 then
+				filter.type = types[i]
+			end
+			local unit = wesnoth.get_recall_units(filter)[1]
+			if unit then
+				unit.role = role
+				if cfg.auto_recall then
+					wml_actions.recall{role=role}
+				end
+				return
+			end
+			i = i + 1
+		until #types == 0 or i > #types
+	end
+
+	-- no matching unit found, try the [else] tags
+	for else_child in helper.child_range(cfg, "else") do
+		local action = utils.handle_event_commands(else_child, "conditional")
+		if action ~= "none" then return end
+	end
 end
 
 function wml_actions.unsynced(cfg)
