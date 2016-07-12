@@ -191,7 +191,7 @@ static int intf_name_generator(lua_State *L)
 		if(lua_istable(L, 2)) {
 			input = lua_check<std::vector<std::string>>(L, 2);
 		} else {
-			input = utils::parenthetical_split(luaL_checkstring(L, 2));
+			input = utils::parenthetical_split(luaL_checkstring(L, 2), ',');
 		}
 		int chain_sz = luaL_optinteger(L, 3, 2);
 		int max_len = luaL_optinteger(L, 4, 12);

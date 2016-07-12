@@ -97,10 +97,10 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 	for(auto rule : source) {
 		std::string key = rule.first; // Need to do this because utils::strip is mutating
 		key = utils::strip(key);
-		std::string buf;
 		for(std::string str : rule.second) {
 			nonterminals_[key].possibilities_.emplace_back();
 			std::vector<std::string>* filled = &nonterminals_[key].possibilities_.back();
+			std::string buf;
 			// A little code duplication here...
 			for(char c : str) {
 				if (c == '{') {

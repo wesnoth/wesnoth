@@ -243,6 +243,7 @@ namespace lua_check_impl
 			{
 				lua_rawgeti(L, n, i);
 				res.push_back(lua_check_impl::lua_check<typename remove_constref<typename T::reference>::type>(L, -1));
+				lua_pop(L, 1);
 			}
 			return res;
 		}
