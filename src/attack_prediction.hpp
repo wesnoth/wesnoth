@@ -63,6 +63,8 @@ struct combatant
 #endif
 
 private:
+	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 5000u;
+
 	const battle_context_unit_stats &u_;
 
 	/** Summary of matrix used to calculate last battle (unslowed & slowed).

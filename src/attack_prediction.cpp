@@ -846,7 +846,10 @@ void prob_matrix::record_monte_carlo_result(unsigned int a_hp, unsigned int b_hp
 {
 	assert(a_hp <= rows_);
 	assert(b_hp <= cols_);
-	++val(plane_index(a_slowed, b_slowed), a_hp, b_hp);
+	unsigned int plane = plane_index(a_slowed, b_slowed);
+	++val(plane, a_hp, b_hp);
+	used_rows_[plane].insert(a_hp);
+	used_cols_[plane].insert(b_hp);
 }
 
 /**
@@ -1483,6 +1486,12 @@ combatant::combatant(const combatant &that, const battle_context_unit_stats &u)
 
 namespace {
 
+enum class attack_prediction_mode
+{
+	probability_calculation,
+	monte_carlo_simulation
+};
+
 void forced_levelup(std::vector<double> &hp_dist)
 {
 	/* If we survive the combat, we will level up. So the probability
@@ -1526,6 +1535,26 @@ unsigned min_hp(const std::vector<double> & hp_dist, unsigned def)
 	// Either the distribution is empty or is full of zeros, so
 	// return the default.
 	return def;
+}
+
+/**
+ * Returns a number that approximates the complexity of the fight,
+ * for the purpose of determining if it's faster to calculate exact
+ * probabilities or to run a Monte Carlo simulation.
+ * Ignores the numbers of rounds and strikes because these slow down
+ * both calculation modes.
+ */
+unsigned int fight_complexity(unsigned int num_slices,
+	unsigned int opp_num_slices,
+	const battle_context_unit_stats& stats,
+	const battle_context_unit_stats& opp_stats)
+{
+	return num_slices *
+		opp_num_slices *
+		(stats.slows || opp_stats.is_slowed) ? 2 : 1 *
+		(opp_stats.slows || stats.is_slowed) ? 2 : 1 *
+		stats.max_hp *
+		opp_stats.max_hp;
 }
 
 // Combat without chance of death, berserk, slow or drain is simple.
@@ -1682,13 +1711,20 @@ void one_strike_fight(const battle_context_unit_stats &stats,
 	}
 }
 
-void complex_fight(const battle_context_unit_stats &stats,
+/* The parameters "split", "opp_split", "initially_slowed_chance" and
+"opp_initially_slowed_chance" are ignored in the probability calculation mode. */
+void complex_fight(attack_prediction_mode mode,
+                   const battle_context_unit_stats &stats,
                    const battle_context_unit_stats &opp_stats,
                    unsigned strikes, unsigned opp_strikes,
                    std::vector<double> summary[2],
                    std::vector<double> opp_summary[2],
                    double & self_not_hit, double & opp_not_hit,
-                   bool levelup_considered)
+                   bool levelup_considered,
+                   std::vector<combat_slice> split,
+                   std::vector<combat_slice> opp_split,
+                   double initially_slowed_chance,
+                   double opp_initially_slowed_chance)
 {
 	unsigned int rounds = std::max<unsigned int>(stats.rounds, opp_stats.rounds);
 	unsigned max_attacks = std::max(strikes, opp_strikes);
@@ -1706,9 +1742,15 @@ void complex_fight(const battle_context_unit_stats &stats,
 	if (opp_stats.petrifies)
 		b_damage = b_slow_damage = stats.max_hp;
 
+	const double hit_chance = stats.chance_to_hit / 100.0;
+	const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
+
 	// Prepare the matrix that will do our calculations.
 	std::unique_ptr<combat_matrix> m;
+	if (mode == attack_prediction_mode::probability_calculation)
 	{
+		debug(("Using exact probability calculations.\n"));
+
 		probability_combat_matrix* pm = new probability_combat_matrix(stats.max_hp, opp_stats.max_hp,
 			stats.hp, opp_stats.hp, summary, opp_summary,
 			/* FIXME: due to this stupid optimization (not creating the slowed planes if the
@@ -1723,8 +1765,6 @@ void complex_fight(const battle_context_unit_stats &stats,
 			stats.drain_percent, opp_stats.drain_percent,
 			stats.drain_constant, opp_stats.drain_constant);
 		m.reset(pm);
-		const double hit_chance = stats.chance_to_hit / 100.0;
-		const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
 
 		do {
 			for (unsigned int i = 0; i < max_attacks; ++i) {
@@ -1745,6 +1785,30 @@ void complex_fight(const battle_context_unit_stats &stats,
 			debug(("Combat ends:\n"));
 			pm->dump();
 		} while (--rounds && pm->dead_prob() < 0.99);
+	}
+	else
+	{
+		debug(("Using Monte Carlo simulation.\n"));
+
+		monte_carlo_combat_matrix* mcm = new monte_carlo_combat_matrix(stats.max_hp, opp_stats.max_hp,
+			stats.hp, opp_stats.hp, summary, opp_summary,
+			stats.slows || opp_stats.is_slowed,
+			opp_stats.slows || stats.is_slowed,
+			a_damage, b_damage, a_slow_damage, b_slow_damage,
+			stats.drain_percent, opp_stats.drain_percent,
+			stats.drain_constant, opp_stats.drain_constant,
+			rounds,
+			hit_chance, opp_hit_chance,
+			split, opp_split,
+			initially_slowed_chance,
+			opp_initially_slowed_chance);
+		m.reset(mcm);
+
+		mcm->simulate();
+		debug(("Combat ends:\n"));
+		mcm->dump();
+
+		// TODO: update hit probabilities
 	}
 
 	if (stats.petrifies)
@@ -1800,14 +1864,22 @@ void do_fight(const battle_context_unit_stats &stats,
 			               summary[0], opp_summary[0], self_not_hit, opp_not_hit,
 			               levelup_considered);
 		else
-			complex_fight(stats, opp_stats, strikes, opp_strikes,
+			complex_fight(attack_prediction_mode::probability_calculation,
+			              stats, opp_stats, strikes, opp_strikes,
 			              summary, opp_summary, self_not_hit, opp_not_hit,
-			              levelup_considered);
+			              levelup_considered,
+			              std::vector<combat_slice>(),
+			              std::vector<combat_slice>(),
+			              0.0, 0.0);
 	}
 	else
-		complex_fight(stats, opp_stats, strikes, opp_strikes,
+		complex_fight(attack_prediction_mode::probability_calculation,
+		              stats, opp_stats, strikes, opp_strikes,
 		              summary, opp_summary, self_not_hit, opp_not_hit,
-		              levelup_considered);
+		              levelup_considered,
+		              std::vector<combat_slice>(),
+		              std::vector<combat_slice>(),
+		              0.0, 0.0);
 }
 
 /**
@@ -1890,11 +1962,24 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	const std::vector<combat_slice> split = split_summary(u_, summary);
 	const std::vector<combat_slice> opp_split = split_summary(opp.u_, opp.summary);
 
-	if ( split.size() == 1  &&  opp_split.size() == 1 )
+	if (fight_complexity(split.size(), opp_split.size(), u_, opp.u_) >
+		MONTE_CARLO_SIMULATION_THRESHOLD)
+	{
+		// A very complex fight. Use Monte Carlo simulation instead of exact
+		// probability calculations.
+		complex_fight(attack_prediction_mode::monte_carlo_simulation,
+			u_, opp.u_, u_.num_blows, opp.u_.num_blows,
+			summary, opp.summary, self_not_hit, opp_not_hit,
+			levelup_considered,
+			split, opp_split, slowed, opp.slowed);
+	}
+	else if (split.size() == 1 && opp_split.size() == 1)
+	{
 		// No special treatment due to swarm is needed. Ignore the split.
 		do_fight(u_, opp.u_, u_.num_blows, opp.u_.num_blows,
-		         summary, opp.summary, self_not_hit, opp_not_hit,
-		         levelup_considered);
+			summary, opp.summary, self_not_hit, opp_not_hit,
+			levelup_considered);
+	}
 	else
 	{
 		// Storage for the accumulated hit point distributions.
