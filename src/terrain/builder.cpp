@@ -467,7 +467,11 @@ bool terrain_builder::load_images(building_rule &rule)
 
 						int time = 100;
 						if(items.size() > 1) {
-							time = std::stoi(items.back());
+							try {
+								time = std::stoi(items.back());
+							} catch(std::invalid_argument) {
+								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back() << "\n";
+							}
 						}
 						image::locator locator;
 						if(ri.global_image) {
@@ -684,8 +688,12 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		if (const config::attribute_value *base_ = img.get("base")) {
 			std::vector<std::string> base = utils::split(*base_);
 			if(base.size() >= 2) {
-				basex = std::stoi(base[0]);
-				basey = std::stoi(base[1]);
+				try {
+					basex = std::stoi(base[0]);
+					basey = std::stoi(base[1]);
+				} catch(std::invalid_argument) {
+					ERR_NG << "Invalid 'base' value in terrain image builder: " << base[0] << ", " << base[1] << "\n";
+				}
 			}
 		}
 
@@ -693,8 +701,12 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		if (const config::attribute_value *center_ = img.get("center")) {
 			std::vector<std::string> center = utils::split(*center_);
 			if(center.size() >= 2) {
-				center_x = std::stoi(center[0]);
-				center_y = std::stoi(center[1]);
+				try {
+					center_x = std::stoi(center[0]);
+					center_y = std::stoi(center[1]);
+				} catch(std::invalid_argument) {
+					ERR_NG << "Invalid 'center' value in terrain image builder: " << center[0] << ", " << center[1] << "\n";
+				}
 			}
 		}
 

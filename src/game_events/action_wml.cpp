@@ -154,10 +154,15 @@ namespace { // Support functions
 		map_location dst;
 		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 			if(i==0){
-				src.x = std::stoi(xvals[i])-1;
-				src.y = std::stoi(yvals[i])-1;
+				try {
+					src.x = std::stoi(xvals[i])-1;
+					src.y = std::stoi(yvals[i])-1;
+				} catch(std::invalid_argument) {
+					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i] << '\n';
+					continue;
+				}
 				if (!game_map->on_board(src)) {
-					ERR_CF << "invalid move_unit_fake source: " << src << '\n';
+					ERR_CF << "Invalid move_unit_fake source: " << src << '\n';
 					break;
 				}
 				path.push_back(src);
@@ -168,10 +173,14 @@ namespace { // Support functions
 					*resources::teams,
 					*game_map);
 
-			dst.x = std::stoi(xvals[i])-1;
-			dst.y = std::stoi(yvals[i])-1;
+			try {
+				dst.x = std::stoi(xvals[i])-1;
+				dst.y = std::stoi(yvals[i])-1;
+			} catch(std::invalid_argument) {
+				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i] << '\n';
+			}
 			if (!game_map->on_board(dst)) {
-				ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
+				ERR_CF << "Invalid move_unit_fake destination: " << dst << '\n';
 				break;
 			}
 

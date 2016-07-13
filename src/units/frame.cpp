@@ -18,9 +18,12 @@
 
 #include "game_display.hpp"
 #include "halo.hpp"
+#include "log.hpp"
 #include "sound.hpp"
 #include "units/frame.hpp"
 
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 progressive_string::progressive_string(const std::string & data,int duration) :
 	data_(),
@@ -36,7 +39,11 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 				std::vector<std::string> second_pass = utils::split(*tmp,':');
 				if(second_pass.size() > 1) {
-					total_specified_time += std::stoi(second_pass[1]);
+					try {
+						total_specified_time += std::stoi(second_pass[1]);
+					} catch(std::invalid_argument) {
+						ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
+					}
 				}
 			}
 			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
@@ -45,7 +52,11 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
-				data_.push_back(std::pair<std::string,int>(second_pass[0],std::stoi(second_pass[1])));
+				try {
+					data_.push_back(std::pair<std::string,int>(second_pass[0],std::stoi(second_pass[1])));
+				} catch(std::invalid_argument) {
+					ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
+				}
 			} else {
 				data_.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
 			}
@@ -75,7 +86,11 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 				std::vector<std::string> second_pass = utils::split(*tmp,':');
 				if(second_pass.size() > 1) {
-					total_specified_time += std::stoi(second_pass[1]);
+					try {
+						total_specified_time += std::stoi(second_pass[1]);
+					} catch(std::invalid_argument) {
+						ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
+					}
 				}
 			}
 			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
@@ -84,7 +99,11 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
-				data_.push_back(std::pair<image::locator,int>(second_pass[0],std::stoi(second_pass[1])));
+				try {
+					data_.push_back(std::pair<image::locator,int>(second_pass[0],std::stoi(second_pass[1])));
+				} catch(std::invalid_argument) {
+					ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
+				}
 			} else {
 				data_.push_back(std::pair<image::locator,int>(second_pass[0],time_chunk));
 			}
@@ -144,7 +163,13 @@ progressive_<T>::progressive_(const std::string &data, int duration) :
 	std::vector<std::string>::const_iterator com_it = comma_split.begin();
 	for(; com_it != comma_split.end(); ++com_it) {
 		std::vector<std::string> colon_split = utils::split(*com_it,':',split_flag);
-		int time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
+		int time = 0;
+		
+		try {
+			time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
+		} catch(std::invalid_argument) {
+			ERR_NG << "Invalid time in unit animation: " << colon_split[1] << "\n";
+		}
 
 		std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
 		T range0 = lexical_cast<T>(range[0]);
@@ -322,8 +347,11 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	}
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
 	if (color.size() == 3) {
-		text_color_ = display::rgb(std::stoi(color[0]),
-			std::stoi(color[1]), std::stoi(color[2]));
+		try {
+			text_color_ = display::rgb(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
+		} catch(std::invalid_argument) {
+			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
+		}
 	}
 
 	if (const config::attribute_value *v = cfg.get(frame_string + "duration")) {
@@ -341,8 +369,11 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 
 	color = utils::split(cfg[frame_string + "blend_color"]);
 	if (color.size() == 3) {
-		blend_with_ = display::rgb(std::stoi(color[0]),
-			std::stoi(color[1]), std::stoi(color[2]));
+		try {
+			blend_with_ = display::rgb(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
+		} catch(std::invalid_argument) {
+			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
+		}
 	}
 }
 

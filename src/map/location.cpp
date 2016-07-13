@@ -26,13 +26,13 @@
 #include "config.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "util.hpp"
 
 #include <boost/functional/hash.hpp>
 
-#define ERR_CF LOG_STREAM(err, config)
-#define LOG_G LOG_STREAM(info, general)
-#define DBG_G LOG_STREAM(debug, general)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 std::ostream &operator<<(std::ostream &s, map_location const &l) {
 	s << (l.x + 1) << ',' << (l.y + 1);
@@ -195,11 +195,21 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 	}
 	// The co-ordinates in config files will be 1-based,
 	// while we want them as 0-based.
-	if(xs.empty() == false && xs != "recall")
-		x = std::stoi(xs) - 1;
+	if(xs.empty() == false && xs != "recall") {
+		try {
+			x = std::stoi(xs) - 1;
+		} catch(std::invalid_argument) {
+			ERR_CF << "Invalid map coordinate: " << xs << "\n";
+		}
+	}
 
-	if(ys.empty() == false && ys != "recall")
-		y = std::stoi(ys) - 1;
+	if(ys.empty() == false && ys != "recall") {\
+		try {
+			y = std::stoi(ys) - 1;
+		} catch(std::invalid_argument) {
+			ERR_CF << "Invalid map coordinate: " << ys << "\n";
+		}
+	}
 }
 
 void map_location::write(config& cfg) const
@@ -335,13 +345,26 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 			const std::string beg(xloc.begin(),dash);
 			const std::string end(dash+1,xloc.end());
 
-			const int bot = std::stoi(beg) - 1;
-			const int top = std::stoi(end) - 1;
+			int top = -1, bot = -1;
+
+			try {
+				bot = std::stoi(beg) - 1;
+				top = std::stoi(end) - 1;
+			} catch(std::invalid_argument) {
+				ERR_CF << "Invalid map coordinate: " << end << ", " << beg << "\n";
+			}
 
 			if(x < bot || x > top)
 				return false;
 		} else {
-			const int xval = std::stoi(xloc) - 1;
+			int xval = -1;
+
+			try {
+				xval = std::stoi(xloc) - 1;
+			} catch(std::invalid_argument) {
+				ERR_CF << "Invalid map coordinate: " << xloc << "\n";
+			}
+
 			if(xval != x)
 				return false;
 		}
@@ -354,13 +377,26 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 			const std::string beg(yloc.begin(),dash);
 			const std::string end(dash+1,yloc.end());
 
-			const int bot = std::stoi(beg) - 1;
-			const int top = std::stoi(end) - 1;
+			int top = -1, bot = -1;
+
+			try {
+				bot = std::stoi(beg) - 1;
+				top = std::stoi(end) - 1;
+			} catch(std::invalid_argument) {
+				ERR_CF << "Invalid map coordinate: " << end << ", " << beg << "\n";
+			}
 
 			if(y < bot || y > top)
 				return false;
 		} else {
-			const int yval = std::stoi(yloc) - 1;
+			int yval = -1;
+
+			try {
+				yval = std::stoi(yloc) - 1;
+			} catch(std::invalid_argument) {
+				ERR_CF << "Invalid map coordinate: " << yloc << "\n";
+			}
+
 			if(yval != y)
 				return false;
 		}

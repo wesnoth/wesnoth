@@ -575,10 +575,12 @@ std::string unit_topic_generator::operator()() const {
 	push_header(first_res_row, _("Resistance"));
 	resistance_table.push_back(first_res_row);
 	utils::string_map dam_tab = movement_type.damage_table();
-	for (utils::string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
-		 	dam_it != dam_end; ++dam_it) {
+	for(std::pair<std::string, std::string> dam_it : dam_tab) {
 		std::vector<item> row;
-		int resistance = 100 - std::stoi((*dam_it).second);
+		int resistance = 100;
+		try {
+			resistance -= std::stoi(dam_it.second);
+		} catch(std::invalid_argument) {}
 		char resi[16];
 		snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
 		std::string resist = resi;
@@ -587,7 +589,7 @@ std::string unit_topic_generator::operator()() const {
 			resist.replace(pos, 1, utils::unicode_minus);
 		}
 		std::string color = unit_helper::resistance_color(resistance);
-		std::string lang_weapon = string_table["type_" + dam_it->first];
+		std::string lang_weapon = string_table["type_" + dam_it.first];
 		push_tab_pair(row, lang_weapon);
 		std::stringstream str;
 		str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";

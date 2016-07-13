@@ -154,16 +154,25 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		if (!xpos.empty()) {
 			const std::vector<std::string>& items = utils::split(xpos, '-');
 			if(items.empty() == false) {
-				min_xpos = std::stoi(items.front()) - 1;
-				max_xpos = std::stoi(items.back());
+				try {
+					min_xpos = std::stoi(items.front()) - 1;
+					max_xpos = std::stoi(items.back());
+				} catch(std::invalid_argument) {
+					lg::wml_error() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+					continue;
+				}
 			}
 		}
 
 		if (!ypos.empty()) {
 			const std::vector<std::string>& items = utils::split(ypos, '-');
 			if(items.empty() == false) {
-				min_ypos = std::stoi(items.front()) - 1;
-				max_ypos = std::stoi(items.back());
+				try {
+					min_ypos = std::stoi(items.front()) - 1;
+					max_ypos = std::stoi(items.back());
+				} catch(std::invalid_argument) {
+					lg::wml_error() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+				}
 			}
 		}
 		const size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));

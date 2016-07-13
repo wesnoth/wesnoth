@@ -309,19 +309,21 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	animated<image::locator> temp_anim;
 
 	std::vector<std::string> items = utils::square_parenthetical_split(flag);
-	std::vector<std::string>::const_iterator itor = items.begin();
-	for(; itor != items.end(); ++itor) {
-		const std::vector<std::string>& items = utils::split(*itor, ':');
-		std::string str;
-		int time;
 
-		if(items.size() > 1) {
-			str = items.front();
-			time = std::stoi(items.back());
-		} else {
-			str = *itor;
-			time = 100;
+	for(const std::string& item : items) {
+		const std::vector<std::string>& sub_items = utils::split(item, ':');
+		std::string str = item;
+		int time = 100;
+
+		if(sub_items.size() > 1) {
+			str = sub_items.front();
+			try {
+				time = std::stoi(sub_items.back());
+			} catch(std::invalid_argument) {
+				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
+			}
 		}
+
 		std::stringstream temp;
 		temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
 		image::locator flag_image(temp.str());

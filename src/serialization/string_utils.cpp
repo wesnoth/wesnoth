@@ -442,7 +442,10 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 // Modify a number by string representing integer difference, or optionally %
 int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
-	int value = std::stoi(amount);
+	int value = 0;
+	try {
+		value = std::stoi(amount);
+	} catch(std::invalid_argument) {}
 	if(amount[amount.size()-1] == '%') {
 		value = div100rounded(number * value);
 	}
@@ -828,9 +831,13 @@ std::pair< int, int > parse_range(std::string const &str)
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<int,int> res(std::stoi(a), std::stoi(b));
-	if (res.second < res.first)
-		res.second = res.first;
+	std::pair<int,int> res = {0,0};
+	try {
+		res = std::make_pair(std::stoi(a), std::stoi(b));
+		if (res.second < res.first) {
+			res.second = res.first;
+		}
+	} catch(std::invalid_argument) {}
 
 	return res;
 }

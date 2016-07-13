@@ -23,9 +23,13 @@
 #include "display.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
+#include "log.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <iostream>
+
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 namespace halo
 {
@@ -318,18 +322,19 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 	const int id = halo_id++;
 	animated<image::locator>::anim_description image_vector;
 	std::vector<std::string> items = utils::square_parenthetical_split(image, ',');
-	std::vector<std::string>::const_iterator itor = items.begin();
-	for(; itor != items.end(); ++itor) {
-		const std::vector<std::string>& items = utils::split(*itor, ':');
-		std::string str;
-		int time;
 
-		if(items.size() > 1) {
-			str = items.front();
-			time = std::stoi(items.back());
-		} else {
-			str = *itor;
-			time = 100;
+	for(const std::string& item : items) {
+		const std::vector<std::string>& sub_items = utils::split(item, ':');
+		std::string str = item;
+		int time = 100;
+
+		if(sub_items.size() > 1) {
+			str = sub_items.front();
+			try {
+				time = std::stoi(sub_items.back());
+			} catch(std::invalid_argument) {
+				ERR_DP << "Invalid time value found when constructing halo: " << sub_items.back() << "\n";
+			}
 		}
 		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
 

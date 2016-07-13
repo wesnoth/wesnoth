@@ -363,12 +363,14 @@ std::pair<int,int> resolution()
 	const std::string& x = prefs["xresolution"], y = prefs["yresolution"];
 
 	if (!x.empty() && !y.empty()) {
-		return std::make_pair(
-			std::max(std::stoi(x), min_allowed_width()),
-			std::max(std::stoi(y), min_allowed_height()));
-	} else {
-		return std::pair<int,int>(1024,768);
-	}
+		try {
+			return std::make_pair(
+				std::max(std::stoi(x), min_allowed_width()),
+				std::max(std::stoi(y), min_allowed_height()));
+		} catch(std::invalid_argument) {}
+	} 
+
+	return std::pair<int,int>(1024,768);
 }
 
 bool maximized()
