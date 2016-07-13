@@ -13,6 +13,8 @@
 
    Full algorithm by Yogin.  Original typing and optimization by Rusty.
 
+   Monte Carlo simulation mode implemented by Jyrki Vesterinen.
+
    This code has lots of debugging.  It is there for a reason:
    this code is kinda tricky.  Do not remove it.
 */
@@ -40,6 +42,7 @@
 #include "game_config.hpp"
 #include "random_new.hpp"
 #include <array>
+#include <cmath>
 #include <numeric>
 
 #if defined(BENCHMARK) || defined(CHECK)
@@ -808,16 +811,16 @@ void prob_matrix::merge_rows(unsigned d_plane, unsigned s_plane, unsigned d_col)
  */
 void prob_matrix::clear()
 {
-	if (used_rows_.empty())
-	{
-		// Nothing to do
-		return;
-	}
-
 	for (unsigned int p = 0u; p < NUM_PLANES; ++p)
 	{
 		if (!plane_used(p))
 		{
+			continue;
+		}
+
+		if (used_rows_[p].empty())
+		{
+			// Nothing to do
 			continue;
 		}
 
@@ -1215,18 +1218,18 @@ class monte_carlo_combat_matrix : public combat_matrix
 {
 public:
 	monte_carlo_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
-		                      unsigned int a_hp, unsigned int b_hp,
-		                      const std::vector<double> a_summary[2],
-		                      const std::vector<double> b_summary[2],
+	                          unsigned int a_hp, unsigned int b_hp,
+	                          const std::vector<double> a_summary[2],
+	                          const std::vector<double> b_summary[2],
 	                          bool a_slows, bool b_slows,
 	                          unsigned int a_damage, unsigned int b_damage,
 	                          unsigned int a_slow_damage, unsigned int b_slow_damage,
 	                          int a_drain_percent, int b_drain_percent,
 	                          int a_drain_constant, int b_drain_constant,
-							  unsigned int rounds,
-							  double a_hit_chance, double b_hit_chance,
-							  std::vector<combat_slice> a_split, std::vector<combat_slice> b_split,
-							  double a_initially_slowed_chance, double b_initially_slowed_chance);
+	                          unsigned int rounds,
+	                          double a_hit_chance, double b_hit_chance,
+	                          std::vector<combat_slice> a_split, std::vector<combat_slice> b_split,
+	                          double a_initially_slowed_chance, double b_initially_slowed_chance);
 
 	void simulate();
 
@@ -1415,6 +1418,13 @@ unsigned int monte_carlo_combat_matrix::calc_blows_b(unsigned int b_hp) const
 
 void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double multiplier, unsigned int singular_hp)
 {
+	if (std::isinf(multiplier))
+	{
+		// Happens if the "target" HP distribution vector isn't used,
+		// in which case it's not necessary to scale the probabilities.
+		return;
+	}
+
 	if (source.empty())
 	{
 		target.resize(singular_hp + 1u, 0.0);
@@ -1701,6 +1711,12 @@ void complex_fight(const battle_context_unit_stats &stats,
 	{
 		probability_combat_matrix* pm = new probability_combat_matrix(stats.max_hp, opp_stats.max_hp,
 			stats.hp, opp_stats.hp, summary, opp_summary,
+			/* FIXME: due to this stupid optimization (not creating the slowed planes if the
+			combatant is already slowed), the combatant summary will have a different meaning than
+			usual if the combatant was already slowed (summary[0] will mean the slowed health
+			distribution, and summary[1] will be empty). That, in turn, will break the damage
+			calculation if another battle is later predicted for the same unit using Monte Carlo
+			simulation, since the MC simulation mode requires that summary has its usual meaning. */
 			stats.slows && !opp_stats.is_slowed,
 			opp_stats.slows && !stats.is_slowed,
 			a_damage, b_damage, a_slow_damage, b_slow_damage,
