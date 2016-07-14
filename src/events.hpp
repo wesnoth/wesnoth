@@ -44,6 +44,8 @@ struct context
 	{
 	}
 
+	context(const context&) = delete;
+
 	void add_handler(sdl_handler* ptr);
 	bool remove_handler(sdl_handler* ptr);
 	void cycle_focus();

@@ -97,10 +97,10 @@ void context::cycle_focus()
 	handler_list::const_iterator current = focused_handler;
 	handler_list::const_iterator last = focused_handler;
 
-
 	if (last != handlers.begin()) {
 		--last;
 	}
+
 	if (current == handlers.end()) {
 		current = handlers.begin();
 	} else {
@@ -154,8 +154,7 @@ pump_monitor::~pump_monitor() {
 
 event_context::event_context()
 {
-	event_contexts.push_back(context());
-	event_contexts.back().focused_handler = event_contexts.back().handlers.end();
+	event_contexts.emplace_back();
 }
 
 event_context::~event_context()
