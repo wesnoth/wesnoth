@@ -40,7 +40,7 @@ struct context
 {
 	context() :
 		handlers(),
-		focused_handler()
+		focused_handler(handlers.end())
 	{
 	}
 

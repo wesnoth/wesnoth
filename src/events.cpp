@@ -58,8 +58,8 @@ bool context::remove_handler(sdl_handler* ptr)
 	// The handler is most likely on the back of the events list,
 	// so look there first, otherwise do a complete search.
 	if(handlers.back() == ptr) {
-		if(*focused_handler == ptr) {
-			--focused_handler;
+		if(focused_handler != handlers.end() && *focused_handler == ptr) {
+			focused_handler != handlers.begin() ? --focused_handler : ++focused_handler;
 		}
 
 		handlers.pop_back();
@@ -90,16 +90,34 @@ bool context::remove_handler(sdl_handler* ptr)
 
 void context::cycle_focus()
 {
-	handler_list::const_iterator temp_focused_handler = focused_handler;
+	if (handlers.begin() == handlers.end()) {
+		return;
+	}
 
-	for(++temp_focused_handler; temp_focused_handler != focused_handler; ++temp_focused_handler) {
-		if(temp_focused_handler == handlers.end()) {
-			temp_focused_handler = handlers.begin();
+	handler_list::const_iterator current = focused_handler;
+	handler_list::const_iterator last = focused_handler;
+
+
+	if (last != handlers.begin()) {
+		--last;
+	}
+	if (current == handlers.end()) {
+		current = handlers.begin();
+	} else {
+		++current;
+	}
+
+	while (current != last) {
+
+		if(current != handlers.end() && (*current)->requires_event_focus()) {
+			focused_handler = current;
+			break;
 		}
 
-		if((**temp_focused_handler).requires_event_focus()) {
-			focused_handler = temp_focused_handler;
-			break;
+		if (current == handlers.end()) {
+			current = handlers.begin();
+		} else {
+			++current;
 		}
 	}
 }
@@ -107,7 +125,7 @@ void context::cycle_focus()
 void context::set_focus(const sdl_handler* ptr)
 {
 	const handler_list::const_iterator i = std::find(handlers.begin(),handlers.end(),ptr);
-	if(i != handlers.end() && (**i).requires_event_focus()) {
+	if(i != handlers.end() && (*i)->requires_event_focus()) {
 		focused_handler = i;
 	}
 }
@@ -137,6 +155,7 @@ pump_monitor::~pump_monitor() {
 event_context::event_context()
 {
 	event_contexts.push_back(context());
+	event_contexts.back().focused_handler = event_contexts.back().handlers.end();
 }
 
 event_context::~event_context()
