@@ -46,8 +46,7 @@
 #include <numeric>
 
 #if defined(BENCHMARK) || defined(CHECK)
-#include <time.h>
-#include <sys/time.h>
+#include <chrono>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -826,7 +825,7 @@ void prob_matrix::clear()
 
 		decltype(used_rows_[p].begin()) first_row, last_row;
 		std::tie(first_row, last_row) = std::minmax_element(used_rows_[p].begin(), used_rows_[p].end());
-		for (unsigned int r = *first_row; r < *last_row; ++r)
+		for (unsigned int r = *first_row; r <= *last_row; ++r)
 		{
 			for (unsigned int c = 0u; c < cols_; ++c)
 			{
@@ -1239,6 +1238,9 @@ public:
 	void extract_results(std::vector<double> summary_a[2],
 		std::vector<double> summary_b[2]) override;
 
+	double get_a_hit_probability() const;
+	double get_b_hit_probability() const;
+
 private:
 	static const unsigned int NUM_ITERATIONS = 5000u;
 
@@ -1253,6 +1255,8 @@ private:
 	double b_hit_chance_;
 	double a_initially_slowed_chance_;
 	double b_initially_slowed_chance_;
+	unsigned int iterations_a_hit_ = 0u;
+	unsigned int iterations_b_hit_ = 0u;
 
 	unsigned int calc_blows_a(unsigned int a_hp) const;
 	unsigned int calc_blows_b(unsigned int b_hp) const;
@@ -1291,6 +1295,8 @@ void monte_carlo_combat_matrix::simulate()
 {
 	for (unsigned int i = 0u; i < NUM_ITERATIONS; ++i)
 	{
+		bool a_hit = false;
+		bool b_hit = false;
 		bool a_slowed = random_new::generator->get_random_bool(a_initially_slowed_chance_);
 		bool b_slowed = random_new::generator->get_random_bool(b_initially_slowed_chance_);
 		const std::vector<double>& a_initial = a_slowed ? a_initial_slowed_ : a_initial_;
@@ -1311,6 +1317,7 @@ void monte_carlo_combat_matrix::simulate()
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
 						damage = std::min(damage, b_hp);
+						b_hit = true;
 						b_slowed |= a_slows_;
 
 						int drain_amount = (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
@@ -1333,6 +1340,7 @@ void monte_carlo_combat_matrix::simulate()
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;
 						damage = std::min(damage, a_hp);
+						a_hit = true;
 						a_slowed |= b_slows_;
 
 						int drain_amount = (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
@@ -1349,6 +1357,9 @@ void monte_carlo_combat_matrix::simulate()
 				}
 			}
 		}
+
+		iterations_a_hit_ += a_hit ? 1 : 0;
+		iterations_b_hit_ += b_hit ? 1 : 0;
 
 		record_monte_carlo_result(a_hp, b_hp, a_slowed, b_slowed);
 	}
@@ -1389,6 +1400,16 @@ void monte_carlo_combat_matrix::extract_results(std::vector<double> summary_a[2]
 
 	if (plane_used(B_SLOWED))
 		divide_all_elements(summary_b[1], static_cast<double>(NUM_ITERATIONS));
+}
+
+double monte_carlo_combat_matrix::get_a_hit_probability() const
+{
+	return static_cast<double>(iterations_a_hit_) / static_cast<double>(NUM_ITERATIONS);
+}
+
+double monte_carlo_combat_matrix::get_b_hit_probability() const
+{
+	return static_cast<double>(iterations_b_hit_) / static_cast<double>(NUM_ITERATIONS);
 }
 
 unsigned int monte_carlo_combat_matrix::calc_blows_a(unsigned int a_hp) const
@@ -1808,7 +1829,8 @@ void complex_fight(attack_prediction_mode mode,
 		debug(("Combat ends:\n"));
 		mcm->dump();
 
-		// TODO: update hit probabilities
+		self_not_hit = 1.0 - mcm->get_a_hit_probability();
+		opp_not_hit = 1.0 - mcm->get_b_hit_probability();
 	}
 
 	if (stats.petrifies)
@@ -2101,17 +2123,6 @@ double combatant::average_hp(unsigned int healing) const
 // and test each one against the others.
 #define NUM_UNITS 50
 
-// Stolen from glibc headers sys/time.h
-#define timer_sub(a, b, result)						      \
-  do {									      \
-    (result)->tv_sec = (a)->tv_sec - (b)->tv_sec;			      \
-    (result)->tv_usec = (a)->tv_usec - (b)->tv_usec;			      \
-    if ((result)->tv_usec < 0) {					      \
-      --(result)->tv_sec;						      \
-      (result)->tv_usec += 1000000;					      \
-    }									      \
-  } while (0)
-
 
 #ifdef ATTACK_PREDICTION_DEBUG
 void list_combatant(const battle_context_unit_stats & stats, unsigned fighter)
@@ -2208,11 +2219,14 @@ void combatant::reset()
 
 static void run(unsigned specific_battle)
 {
+	using std::chrono::duration_cast;
+	using std::chrono::microseconds;
+
 	// N^2 battles
 	struct battle_context_unit_stats *stats[NUM_UNITS];
 	struct combatant *u[NUM_UNITS];
 	unsigned int i, j, k, battle = 0;
-	struct timeval start, end, total;
+	std::chrono::high_resolution_clock::time_point start, end;
 
 	for (i = 0; i < NUM_UNITS; ++i) {
 		unsigned alt = i + 74; // To offset some cycles.
@@ -2234,7 +2248,7 @@ static void run(unsigned specific_battle)
 		list_combatant(*stats[i], i+1);
 	}
 
-	gettimeofday(&start, nullptr);
+	start = std::chrono::high_resolution_clock::now();
 	// Go through all fights with two attackers (j and k attacking i).
 	for (i = 0; i < NUM_UNITS; ++i) {
 		for (j = 0; j < NUM_UNITS; ++j) {
@@ -2260,15 +2274,16 @@ static void run(unsigned specific_battle)
 			}
 		}
 	}
-	gettimeofday(&end, nullptr);
+	end = std::chrono::high_resolution_clock::now();
 
-	timer_sub(&end, &start, &total);
+	auto total = end - start;
 
 #ifdef BENCHMARK
-	printf("Total time for %i combats was %lu.%06lu\n",
-	       NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2), total.tv_sec, total.tv_usec);
+	printf("Total time for %i combats was %lf\n",
+	       NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2),
+		   static_cast<double>(duration_cast<microseconds>(total).count()) / 1000000.0);
 	printf("Time per calc = %li us\n",
-	       ((end.tv_sec-start.tv_sec)*1000000 + (end.tv_usec-start.tv_usec))
+	       static_cast<long>(duration_cast<microseconds>(total).count())
 		   / (NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2)));
 #else
 	printf("Total combats: %i\n", NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2));
