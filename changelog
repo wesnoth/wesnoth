@@ -156,6 +156,7 @@ Version 1.13.4+dev:
      to limit the number or matched units.
    * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
      that only registered users should be allowed to join the game
+   * wesnoth now does a stricter check for unit type ids.
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -236,6 +237,11 @@ Version 1.13.4+dev:
        parameter and returns true or false.
    * Added wesnoth.game_events.on_mouse_move/on_mouse_actions callbacks
      (fr #22635)
+   * Added wesnoth.special_locations
+   * [lua] tags now also support the [args] subtag outside events.
+   * added lua_function= attribute in location filters
+   * Added on_event.lua which is an eaiser to use wrapper for 
+     wesnoth.game_events.on_event 
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
    * Added "Registered users only" checkbox to multiplayer configuration dialog which 
