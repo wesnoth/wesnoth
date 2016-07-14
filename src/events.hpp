@@ -18,6 +18,7 @@
 #include <SDL_events.h>
 #include <SDL_version.h>
 #include <vector>
+#include <list>
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
@@ -33,23 +34,23 @@ namespace events
 
 class sdl_handler;
 
+typedef std::list<sdl_handler*> handler_list;
+
 struct context
 {
 	context() :
-			handlers(),
-			focused_handler(-1)
+		handlers(),
+		focused_handler()
 	{
 	}
 
 	void add_handler(sdl_handler* ptr);
 	bool remove_handler(sdl_handler* ptr);
-	int cycle_focus();
+	void cycle_focus();
 	void set_focus(const sdl_handler* ptr);
 
-	std::vector<sdl_handler*> handlers;
-	int focused_handler;
-
-	void delete_handler_index(size_t handler);
+	handler_list handlers;
+	handler_list::const_iterator focused_handler;
 };
 
 //any classes that derive from this class will automatically
@@ -97,7 +98,6 @@ private:
 };
 
 void focus_handler(const sdl_handler* ptr);
-void cycle_focus();
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 
