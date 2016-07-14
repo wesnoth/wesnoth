@@ -1803,6 +1803,15 @@ int game_lua_kernel::intf_clear_messages(lua_State*)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_end_level_data(lua_State* L)
+{
+	if (!play_controller_.is_regular_game_end()) {
+		return 0;
+	}
+	luaW_pushconfig(L, play_controller_.get_end_level_data_const().to_config());
+	return 1;
+}
+
 int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
@@ -4566,6 +4575,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "float_label",               &dispatch<&game_lua_kernel::intf_float_label                >        },
 		{ "gamestate_inspector",       &dispatch<&game_lua_kernel::intf_gamestate_inspector        >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
+		{ "get_end_level_data",        &dispatch<&game_lua_kernel::intf_get_end_level_data         >        },
 		{ "get_locations",             &dispatch<&game_lua_kernel::intf_get_locations              >        },
 		{ "get_map_size",              &dispatch<&game_lua_kernel::intf_get_map_size               >        },
 		{ "get_mouseover_tile",        &dispatch<&game_lua_kernel::intf_get_mouseover_tile         >        },

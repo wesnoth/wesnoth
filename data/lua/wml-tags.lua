@@ -1221,3 +1221,12 @@ function wml_actions.set_variable(cfg)
 		wesnoth.set_variable(name, table.concat(string_to_join, separator))
 	end
 end
+
+function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
+	local endlevel_data = wesnoth.get_end_level_data()
+	if not endlevel_data then
+		return false
+	else
+		return endlevel_data.proceed_to_next_level
+	end
+end
