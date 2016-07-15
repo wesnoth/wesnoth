@@ -11,32 +11,29 @@ end
 local function get_image(cfg, speaker)
 	local image = cfg.image
 	local left_side = true
-	
-	if image == "~RIGHT()" then
-		image = nil
-		left_side = false
-	end
 
 	if speaker and (image == nil or image == "") then
 		image = speaker.portrait
 	end
 
-	if image == "none" or image == nil then
-		return "", true
-	end
-
+	-- Note: This is deprecated except for use to set default alignment in portraits
+	-- (Move it into the above if statement later)
 	if image:find("~RIGHT%(%)") then
 		left_side = false
 		-- The percent signs escape the parentheses for a literal match
 		image = image:gsub("~RIGHT%(%)", "")
 	end
 
-	if image:find("~LEFT%(%)") then
-		-- This currently overrides ~RIGHT()
-		-- Use if a portrait defaults to ~RIGHT(),
-		-- or in [unit_type] to force it to left.
+	if cfg.image_pos == 'left' then
 		left_side = true
-		image = image:gsub("~LEFT%(%)", "")
+	elseif cfg.image_pos == 'right' then
+		left_side = false
+	elseif cfg.image_pos ~= nil then
+		helper.wml_error('Invalid [message]image_pos - should be left or right')
+	end
+
+	if image == "none" or image == nil then
+		return "", true
 	end
 
 	return image, left_side

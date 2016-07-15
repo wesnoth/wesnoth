@@ -79,6 +79,7 @@ Version 1.13.4+dev:
      (This means [advancement], [object], and [trait] tags.)
    * All looping tags now give an error if they contain no [do] tag.
      (They may contain multiple [do] tags, however.)
+   * Add [message]image_pos=left|right, which mostly supercedes ~RIGHT()
    * AiWML:
      * Filters within [micro_ai] can now use $this_unit, which was previously
        impossible due to the config being prematurely parsed.
