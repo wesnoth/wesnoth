@@ -159,6 +159,13 @@ public:
 	std::string get_log() const { return log_.str(); } ///< Get the log string
 	std::string get_name() const { return L_.my_name(); } ///< Get a string describing the name of lua kernel
 
+	/// Clear the console log
+	void clear_log() {
+		L_.clear_log();
+		log_.str("");
+		log_.clear();
+	}
+
 	//* Tab completion: Get list of presently defined global variables */
 	std::vector<std::string> get_globals() { return L_.get_global_var_names(); }
 	//* Tab completion: Get list of attributes for variable corresponding to this path. */
@@ -352,6 +359,7 @@ public:
 class tlua_interpreter::controller {
 private:
 	tbutton* copy_button;
+	tbutton* clear_button;
 
 	ttext_box* text_entry;
 	std::string text_entry_;
@@ -377,6 +385,7 @@ public:
 	void bind(twindow& window);
 
 	void handle_copy_button_clicked(twindow & window);
+	void handle_clear_button_clicked(twindow & window);
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
@@ -448,11 +457,17 @@ void tlua_interpreter::controller::bind(twindow& window)
 						_5,
 						std::ref(window)));
 
-
 	copy_button = &find_widget<tbutton>(&window, "copy", false);
 	connect_signal_mouse_left_click(
 			*copy_button,
 			std::bind(&tlua_interpreter::controller::handle_copy_button_clicked,
+						this,
+						std::ref(window)));
+
+	clear_button = &find_widget<tbutton>(&window, "clear", false);
+	connect_signal_mouse_left_click(
+			*clear_button,
+			std::bind(&tlua_interpreter::controller::handle_clear_button_clicked,
 						this,
 						std::ref(window)));
 
@@ -469,6 +484,15 @@ void tlua_interpreter::controller::handle_copy_button_clicked(twindow & /*window
 {
 	assert(lua_model_);
 	desktop::clipboard::copy_to_clipboard(lua_model_->get_log(), false);
+}
+
+/** Clear the text */
+void tlua_interpreter::controller::handle_clear_button_clicked(twindow & /*window*/)
+{
+	assert(lua_model_);
+	lua_model_->clear_log();
+	assert(view_);
+	view_->update_contents("");
 }
 
 /** Handle return key (execute) or tab key (tab completion) */
