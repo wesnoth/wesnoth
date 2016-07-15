@@ -80,6 +80,8 @@ Version 1.13.4+dev:
    * All looping tags now give an error if they contain no [do] tag.
      (They may contain multiple [do] tags, however.)
    * AiWML:
+     * Filters within [micro_ai] can now use $this_unit, which was previously
+       impossible due to the config being prematurely parsed.
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
        * Except attacks, all aspects with complex values have a simple tag form
