@@ -209,6 +209,8 @@ public:
 	 */
 	std::vector<std::pair<int, int> > get_available_resolutions(const bool include_current = false);
 
+	void lock_flips(bool);
+
 private:
 	static CVideo* singleton_;
 
@@ -242,6 +244,7 @@ private:
 	int help_string_;
 
 	int updatesLocked_;
+	int flip_locked_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

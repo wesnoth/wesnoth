@@ -2721,7 +2721,9 @@ void display::draw(bool update,bool force) {
 
 	if (dirty_) {
 		dirty_ = false;
+		screen_.lock_flips(true);
 		redraw_everything();
+		screen_.lock_flips(false);
 		return;
 	}
 
