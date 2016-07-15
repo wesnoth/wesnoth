@@ -1572,8 +1572,8 @@ unsigned int fight_complexity(unsigned int num_slices,
 {
 	return num_slices *
 		opp_num_slices *
-		(stats.slows || opp_stats.is_slowed) ? 2 : 1 *
-		(opp_stats.slows || stats.is_slowed) ? 2 : 1 *
+		((stats.slows || opp_stats.is_slowed) ? 2 : 1) *
+		((opp_stats.slows || stats.is_slowed) ? 2 : 1) *
 		stats.max_hp *
 		opp_stats.max_hp;
 }
