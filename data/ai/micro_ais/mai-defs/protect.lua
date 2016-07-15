@@ -41,7 +41,7 @@ function wesnoth.micro_ais.protect_unit(cfg)
 			aspect = "attacks",
 			facet = {
 				name = "ai_default_rca::aspect_attacks",
-				ca_id = "dont_attack",
+				id = "dont_attack",
 				invalidate_on_gamestate_change = "yes",
 				{ "filter_own", {
 					{ "not", {
