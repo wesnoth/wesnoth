@@ -1081,10 +1081,10 @@ const std::string& actions::get_error_name(int error_code)
 		error_names_.insert(std::make_pair(move_result::E_NO_UNIT,"move_result::E_NO_UNIT"));
 		error_names_.insert(std::make_pair(move_result::E_NOT_OWN_UNIT,"move_result::E_NOT_OWN_UNIT"));
 		error_names_.insert(std::make_pair(move_result::E_INCAPACITATED_UNIT,"move_result::E_INCAPACITATED_UNIT"));
-		error_names_.insert(std::make_pair(move_result::E_AMBUSHED,"E_AMBUSHED"));
-		error_names_.insert(std::make_pair(move_result::E_FAILED_TELEPORT,"E_FAILED_TELEPORT"));
-		error_names_.insert(std::make_pair(move_result::E_NOT_REACHED_DESTINATION,"E_NOT_REACHED_DESTINATION"));
-		error_names_.insert(std::make_pair(move_result::E_NO_ROUTE,"E_NO_ROUTE"));
+		error_names_.insert(std::make_pair(move_result::E_AMBUSHED,"move_result::E_AMBUSHED"));
+		error_names_.insert(std::make_pair(move_result::E_FAILED_TELEPORT,"move_result::E_FAILED_TELEPORT"));
+		error_names_.insert(std::make_pair(move_result::E_NOT_REACHED_DESTINATION,"move_result::E_NOT_REACHED_DESTINATION"));
+		error_names_.insert(std::make_pair(move_result::E_NO_ROUTE,"move_result::E_NO_ROUTE"));
 
 		error_names_.insert(std::make_pair(recall_result::E_NOT_AVAILABLE_FOR_RECALLING,"recall_result::E_NOT_AVAILABLE_FOR_RECALLING"));
 		error_names_.insert(std::make_pair(recall_result::E_NO_GOLD,"recall_result::E_NO_GOLD"));
