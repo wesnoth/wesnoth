@@ -5,6 +5,10 @@ Version 1.13.4+dev:
      * New sprites for Li'sar.
      * S10: Clarify objectives and change egg image on capture.
      * S19c: Removed the undead and the swamps.
+   * Tutorial
+     * Improve translatability for languages with gender-dependent pronouns
+     * S1: Fix unit being deselected after the select message
+     * S2: Highlight (outline) talked-about locations
    * Legend of Wesmere
      * S3: fix bug which silently disabled Urudin retreat AI
  * Graphics:
@@ -38,6 +42,9 @@ Version 1.13.4+dev:
      they aren't discovered yet
    * Added an option to disable the loadingscreen animation since it caused
      bugs in some configurations.
+   * Added a gui method to activate loggers (Preferences -> Advanced -> Logging)
+     loggers activated in the gui print just like loggers activated in the 
+     command line (i.e. messages appear in the console)
    * Fix bug #24762: Editor actions are out of sync after resizing.
  * WML engine:
    * Add color= attribute to [message].
@@ -70,6 +77,8 @@ Version 1.13.4+dev:
      are derived
    * Modification tags in [modify_unit] now support delayed_variable_substitution
      (This means [advancement], [object], and [trait] tags.)
+   * All looping tags now give an error if they contain no [do] tag.
+     (They may contain multiple [do] tags, however.)
    * AiWML:
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
@@ -165,7 +174,7 @@ Version 1.13.4+dev:
    * wesnoth.highlight_hex is no longer deprecated, but its effect is
      slightly different from the old one. It outlines a hex, nothing more.
    * wesnoth.select_hex is now deprecated in favour of the new
-     wesnoth.select_unit (or u:select_unit). The effect is almost the same
+     wesnoth.select_unit (or u:select). The effect is almost the same
      (with the exception that it does not outline the hex if true is
      passed as the second argument), but this name change was done to
      emphasize that it acts on a unit, more than a location.
@@ -184,6 +193,7 @@ Version 1.13.4+dev:
    * New wesnoth.name_generator function builds a name generator and returns
      it as a callable userdata. Both the original Markov chain generator
      and the new context free gramamr generator are supported
+   * Fix wesnoth.erase_unit failing if the unit was on a recall list.
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string
@@ -297,7 +307,7 @@ Version 1.13.4+dev:
        A size of -1 is the same as 1.
      * if() can take two arguments; returns null if the condition is false
      * tolist() will now invert the effect of tomap()
-     * debug_print() now shows in console if debug mode is on
+     * debug_print() now shows in chat area if debug mode is on
    * New core functions:
      * Trig functions tan, acos, asin, atan have been added. (Sin and cos
        existed since at least 1.9 but were undocumented until very recently.)
@@ -353,6 +363,7 @@ Version 1.13.4+dev:
    * Fixed bug #24696 (Nightstalk ability not working)
    * Ported the following scripts to Python 3: TeamColorizer, about_cfg_to_wiki,
      campaign2wiki, terrain2wiki
+   * Wesnoth now ignores unknown arguments that XCode may pass when testing.
 
 Version 1.13.4:
  * Language and i18n:
