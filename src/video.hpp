@@ -272,6 +272,21 @@ private:
 	bool unlock;
 };
 
+class flip_locker
+{
+public:
+	flip_locker(CVideo &video) : video_(video) {
+		video_.lock_flips(true);
+	}
+	~flip_locker() {
+		video_.lock_flips(false);
+	}
+
+private:
+	CVideo& video_;
+};
+
+
 namespace video2 {
 class draw_layering: public events::sdl_handler {
 protected:

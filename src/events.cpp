@@ -471,7 +471,7 @@ void pump()
 			}
 			case DRAW_ALL_EVENT:
 			{
-				CVideo::get_singleton().lock_flips(true);
+				flip_locker flip_lock(CVideo::get_singleton());
 				/* iterate backwards as the most recent things will be at the top */
 				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
 					const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
@@ -479,8 +479,6 @@ void pump()
 						(*i1)->handle_event(event);
 					}
 				}
-				CVideo::get_singleton().lock_flips(false);
-				//CVideo::get_singleton().flip();
 				continue; //do not do further handling here
 			}
 
