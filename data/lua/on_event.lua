@@ -32,11 +32,12 @@ local function on_event(eventname, arg1, arg2)
 	end
 	eventname = string.gsub(eventname, " ", "_")
 	event_handlers[eventname] = event_handlers[eventname] or {}
-	table.insert(event_handlers[eventname], { h = handler, p = priority})
+	local eh = event_handlers[eventname]
+	table.insert(eh, { h = handler, p = priority})
 	-- sort it.
-	for i = #event_handlers - 1, 1, -1 do
-		if event_handlers[i].p < event_handlers[i + 1].p then
-			event_handlers[i], event_handlers[i + 1] = event_handlers[i + 1], event_handlers[i]
+	for i = #eh - 1, 1, -1 do
+		if eh[i].p < eh[i + 1].p then
+			eh[i], eh[i + 1] = eh[i + 1], eh[i]
 		end
 	end
 end
