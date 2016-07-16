@@ -718,6 +718,7 @@ static int impl_unit_attack_get(lua_State *L)
 			return_int_attrib("movement_used", attack.movement_used());
 			return_int_attrib("parry", attack.parry());
 			return_cfgref_attrib("specials", attack.specials());
+			return_cfgref_attrib("__cfg", attack.to_config());
 			std::string err_msg = "unknown property of attack: ";
 			err_msg += m;
 			return luaL_argerror(L, 2, err_msg.c_str());
