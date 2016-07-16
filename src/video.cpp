@@ -220,7 +220,8 @@ CVideo::CVideo(FAKE_TYPES type) :
 	mode_changed_(false),
 	fake_screen_(false),
 	help_string_(0),
-	updatesLocked_(0)
+	updatesLocked_(0),
+	flip_locked_(0)
 {
 	assert(!singleton_);
 	singleton_ = this;
@@ -495,7 +496,7 @@ void CVideo::delay(unsigned int milliseconds)
 
 void CVideo::flip()
 {
-	if(fake_screen_)
+	if(fake_screen_ || flip_locked_ > 0)
 		return;
 #ifdef SDL_GPU
 	assert(render_target_);
@@ -715,4 +716,12 @@ void CVideo::set_resolution(const unsigned width, const unsigned height)
 	// Change the config values.
 	preferences::_set_resolution(std::make_pair(width, height));
 	preferences::_set_maximized(false);
+}
+
+void CVideo::lock_flips(bool lock) {
+	if (lock) {
+		++flip_locked_;
+	} else {
+		--flip_locked_;
+	}
 }

@@ -2720,6 +2720,7 @@ void display::draw(bool update,bool force) {
 	}
 
 	if (dirty_) {
+		flip_locker flip_lock(screen_);
 		dirty_ = false;
 		redraw_everything();
 		return;
