@@ -4421,7 +4421,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 	std::set<int> sides;
 	if(lua_isnumber(L, 1)) {
 		sides.insert(lua_tonumber(L, 1));
-	} else if(lua_istable(L, 2)) {
+	} else if(lua_istable(L, 1) && lua_istable(L, 2)) {
 		const auto& v = lua_check<std::vector<int>>(L, 1);
 		sides.insert(v.begin(), v.end());
 	} else {
@@ -4550,7 +4550,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "unit_resistance",          &intf_unit_resistance          },
 		{ "unsynced",                 &intf_do_unsynced              },
 		{ "add_event_handler",         &dispatch<&game_lua_kernel::intf_add_event                  >        },
-		{ "add_fog",                   &dispatch2<&game_lua_kernel::intf_toggle_fog, true          >        },
+		{ "add_fog",                   &dispatch2<&game_lua_kernel::intf_toggle_fog, false         >        },
 		{ "add_tile_overlay",          &dispatch<&game_lua_kernel::intf_add_tile_overlay           >        },
 		{ "add_time_area",             &dispatch<&game_lua_kernel::intf_add_time_area              >        },
 		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
@@ -4615,7 +4615,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "random",                    &dispatch<&game_lua_kernel::intf_random                     >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
 		{ "remove_event_handler",      &dispatch<&game_lua_kernel::intf_remove_event               >        },
-		{ "remove_fog",                &dispatch2<&game_lua_kernel::intf_toggle_fog, false         >        },
+		{ "remove_fog",                &dispatch2<&game_lua_kernel::intf_toggle_fog, true          >        },
 		{ "remove_tile_overlay",       &dispatch<&game_lua_kernel::intf_remove_tile_overlay        >        },
 		{ "remove_time_area",          &dispatch<&game_lua_kernel::intf_remove_time_area           >        },
 		{ "remove_sound_source",       &dispatch<&game_lua_kernel::intf_remove_sound_source        >        },
