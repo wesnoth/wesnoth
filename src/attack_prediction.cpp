@@ -398,16 +398,15 @@ prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
 	if ( !b_initial[1].empty() )
 		initialize_plane(B_SLOWED, a_cur, b_cur, a_initial[0], b_initial[1]);
 	if ( !a_initial[1].empty() && !b_initial[1].empty() )
-		// Currently will not happen, but to be complete...
 		initialize_plane(BOTH_SLOWED, a_cur, b_cur, a_initial[1], b_initial[1]);
 
 	// Some debugging messages.
 	if ( !a_initial[0].empty() ) {
-		debug(("A has fought before.\n"));
+		debug(("A has fought before (or is slowed).\n"));
 		dump();
 	}
-	else if ( !b_initial[0].empty() ) {
-		debug(("B has fought before.\n"));
+	if ( !b_initial[0].empty() ) {
+		debug(("B has fought before (or is slowed).\n"));
 		dump();
 	}
 }
@@ -1493,6 +1492,14 @@ combatant::combatant(const battle_context_unit_stats &u, const combatant *prev)
 		untouched = 1.0;
 		poisoned = u.is_poisoned ? 1.0 : 0.0;
 		slowed = u.is_slowed ? 1.0 : 0.0;
+
+		// If we're already slowed, create summary[1] so that probability calculation code
+		// knows that we're slowed.
+		if (u.is_slowed)
+		{
+			summary[0].resize(u.max_hp + 1, 0.0);
+			summary[1] = hp_dist;
+		}
 	}
 }
 
@@ -1774,14 +1781,8 @@ void complex_fight(attack_prediction_mode mode,
 
 		probability_combat_matrix* pm = new probability_combat_matrix(stats.max_hp, opp_stats.max_hp,
 			stats.hp, opp_stats.hp, summary, opp_summary,
-			/* FIXME: due to this stupid optimization (not creating the slowed planes if the
-			combatant is already slowed), the combatant summary will have a different meaning than
-			usual if the combatant was already slowed (summary[0] will mean the slowed health
-			distribution, and summary[1] will be empty). That, in turn, will break the damage
-			calculation if another battle is later predicted for the same unit using Monte Carlo
-			simulation, since the MC simulation mode requires that summary has its usual meaning. */
-			stats.slows && !opp_stats.is_slowed,
-			opp_stats.slows && !stats.is_slowed,
+			stats.slows || opp_stats.is_slowed,
+			opp_stats.slows || stats.is_slowed,
 			a_damage, b_damage, a_slow_damage, b_slow_damage,
 			stats.drain_percent, opp_stats.drain_percent,
 			stats.drain_constant, opp_stats.drain_constant);
