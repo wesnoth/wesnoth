@@ -130,6 +130,7 @@ markov_generator::markov_generator(const std::vector<std::string>& items, size_t
 {
 }
 
+
 std::string markov_generator::generate() const
 {
 	ucs4::string name = markov_generate_name(prefixes_, chain_size_, max_len_);

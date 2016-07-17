@@ -17,7 +17,6 @@
 
 #include "serialization/unicode_types.hpp"
 #include "utils/name_generator.hpp"
-#include <map>
 
 typedef std::map<ucs4::string, ucs4::string> markov_prefix_map;
 
