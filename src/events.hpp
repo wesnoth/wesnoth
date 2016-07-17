@@ -44,6 +44,8 @@ struct context
 	{
 	}
 
+	~context();
+
 	context(const context&) = delete;
 
 	void add_handler(sdl_handler* ptr);
@@ -86,6 +88,8 @@ public:
 	virtual void join_global(); /*join the global event context*/
 	virtual void leave_global(); /*leave the global event context*/
 
+	virtual bool has_joined() { return has_joined_;}
+	virtual bool has_joined_global() { return has_joined_global_;}
 protected:
 	sdl_handler(const bool auto_join=true);
 	virtual ~sdl_handler();

@@ -130,6 +130,16 @@ void context::set_focus(const sdl_handler* ptr)
 	}
 }
 
+context::~context()
+{
+	if (!handlers.empty()) {
+		for (auto handler: handlers) {
+			if (handler->has_joined()) handler->leave();
+			if (handler->has_joined_global()) handler->leave_global();
+		}
+	}
+}
+
 //this object stores all the event handlers. It is a stack of event 'contexts'.
 //a new event context is created when e.g. a modal dialog is opened, and then
 //closed when that dialog is closed. Each context contains a list of the handlers
@@ -315,7 +325,8 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 				focus_handler(thief_hand);
 
 				// Position the previously focused handler to allow stealing back
-				handlers.splice(handlers.end(), handlers, foc);
+				handlers.push_back(*foc);
+				handlers.erase(foc);
 
 				return thief_hand == hand;
 			}
