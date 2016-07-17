@@ -1280,7 +1280,7 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp, unsi
 	: combat_matrix(a_max_hp, b_max_hp, a_hp, b_hp, a_summary, b_summary, a_slows, b_slows,
 	a_damage, b_damage, a_slow_damage, b_slow_damage, a_drain_percent, b_drain_percent, a_drain_constant, b_drain_constant),
 
-	rounds_(rounds), a_hit_chance_(a_hit_chance), b_hit_chance_(b_hit_chance), a_split_(a_split), b_split_(b_split),
+	a_split_(a_split), b_split_(b_split), rounds_(rounds), a_hit_chance_(a_hit_chance), b_hit_chance_(b_hit_chance),
 	a_initially_slowed_chance_(a_initially_slowed_chance), b_initially_slowed_chance_(b_initially_slowed_chance)
 {
 	scale_probabilities(a_summary[0], a_initial_, 1.0 / (1.0 - a_initially_slowed_chance), a_hp);
