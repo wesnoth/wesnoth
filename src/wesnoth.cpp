@@ -1033,6 +1033,9 @@ int main(int argc, char** argv)
 	sigaction(SIGINT, &terminate_handler, nullptr);
 #endif
 
+	//declare this here so that it will always be at the front of the event queue.
+	events::event_context global_context;
+
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		const time_t t = time(nullptr);

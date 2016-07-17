@@ -140,15 +140,14 @@ context::~context()
 	}
 }
 
-//this object stores all the event handlers. It is a stack of event 'contexts'.
-//a new event context is created when e.g. a modal dialog is opened, and then
-//closed when that dialog is closed. Each context contains a list of the handlers
-//in that context. The current context is the one on the top of the stack
+// This object stores all the event handlers. It is a stack of event 'contexts'.
+// a new event context is created when e.g. a modal dialog is opened, and then
+// closed when that dialog is closed. Each context contains a list of the handlers
+// in that context. The current context is the one on the top of the stack.
+// The global context must always be in the first position.
 std::deque<context> event_contexts;
 
-//add a global context for event handlers. Whichever object has joined this will always
-//receive all events, regardless of the current context.
-context global_context;
+
 
 std::vector<pump_monitor*> pump_monitors;
 
@@ -196,6 +195,11 @@ sdl_handler::~sdl_handler()
 }
 
 void sdl_handler::join() {
+
+	// this assert will fire if someone will inadvertedly try to join
+	// an event context but might end up in the global context instead.
+	assert(&event_contexts.back() != &event_contexts.front());
+
 	join(event_contexts.back());
 }
 
@@ -204,6 +208,7 @@ void sdl_handler::join(context &c)
 	if(has_joined_) {
 		leave(); // should not be in multiple event contexts
 	}
+
 	//join self
 	c.add_handler(this);
 	has_joined_ = true;
@@ -231,7 +236,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 		}
 	}
 
-	join(global_context);
+	join(event_contexts.front());
 }
 
 void sdl_handler::leave()
@@ -258,7 +263,7 @@ void sdl_handler::join_global()
 		leave_global(); // should not be in multiple event contexts
 	}
 	//join self
-	global_context.add_handler(this);
+	event_contexts.front().add_handler(this);
 	has_joined_global_ = true;
 
 	//instruct members to join
@@ -279,7 +284,7 @@ void sdl_handler::leave_global()
 		}
 	}
 
-	global_context.remove_handler(this);
+	event_contexts.front().remove_handler(this);
 
 	has_joined_global_ = false;
 }
@@ -455,7 +460,7 @@ void pump()
 							handler->handle_window_event(event);
 						}
 					}
-					const handler_list& event_handlers = global_context.handlers;
+					const handler_list& event_handlers = event_contexts.front().handlers;
 					for(auto handler : event_handlers) {
 						handler->handle_window_event(event);
 					}
@@ -538,7 +543,7 @@ void pump()
 			}
 		}
 
-		const handler_list& event_handlers = global_context.handlers;
+		const handler_list& event_handlers = event_contexts.front().handlers;
 		for(auto handler : event_handlers) {
 			handler->handle_event(event);
 		}
