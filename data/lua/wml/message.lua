@@ -21,7 +21,7 @@ local function get_image(cfg, speaker)
 	end
 
 	-- Note: This is deprecated except for use to set default alignment in portraits
-	-- (Move it into the above if statement later)
+	-- (Move it into the first if statement later, with a nil check)
 	if image:find("~RIGHT%(%)") then
 		left_side = false
 		-- The percent signs escape the parentheses for a literal match
