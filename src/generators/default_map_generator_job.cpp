@@ -782,8 +782,6 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 	if(misc_labels != nullptr) {
 
-		/////TODO
-
 		name_generator_factory base_generator_factory{ naming, {"male", "base", "bridge", "road", "river", "forest", "lake", "mountain", "swamp"} };
 
 		naming.get_old_attribute("base_names", "male_names", "[naming]male_names= is deprecated, use base_names= instead");
