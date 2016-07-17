@@ -133,9 +133,14 @@ void context::set_focus(const sdl_handler* ptr)
 context::~context()
 {
 	if (!handlers.empty()) {
-		for (auto handler: handlers) {
-			if (handler->has_joined()) handler->leave();
-			if (handler->has_joined_global()) handler->leave_global();
+		for (handler_list::iterator it = handlers.begin(); it != handlers.end(); ++it) {
+			if ((*it)->has_joined()) {
+				(*it)->has_joined_ = false;
+			}
+			if ((*it)->has_joined_global()) {
+				(*it)->has_joined_global_ = false;
+			}
+			it = handlers.erase(it);
 		}
 	}
 }
@@ -236,7 +241,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 		}
 	}
 
-	join(event_contexts.front());
+	join(event_contexts.back());
 }
 
 void sdl_handler::leave()

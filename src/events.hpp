@@ -36,8 +36,9 @@ class sdl_handler;
 
 typedef std::list<sdl_handler*> handler_list;
 
-struct context
+class context
 {
+public:
 	context() :
 		handlers(),
 		focused_handler(handlers.end())
@@ -66,6 +67,7 @@ struct context
 //the handler is destroyed.
 class sdl_handler
 {
+friend class context;
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
 	virtual void handle_window_event(const SDL_Event& event) = 0;
