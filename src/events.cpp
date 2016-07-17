@@ -59,7 +59,7 @@ bool context::remove_handler(sdl_handler* ptr)
 	// so look there first, otherwise do a complete search.
 	if(handlers.back() == ptr) {
 		if(focused_handler != handlers.end() && *focused_handler == ptr) {
-			focused_handler != handlers.begin() ? --focused_handler : ++focused_handler;
+			focused_handler = handlers.end();
 		}
 
 		handlers.pop_back();
