@@ -40,7 +40,11 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 	while (*reading != 0) {
 		if (*reading == '=') {
 			// Leading and trailing whitespace is not significant, but internal whitespace is
-			current = &nonterminals_[utils::strip(buf)];
+			std::string key = utils::strip(buf);
+			if(key == "!" || key =="(" || key == ")") {
+				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
+			}
+			current = &nonterminals_[key];
 			current->possibilities_.push_back(std::vector<std::string>());
 			filled = &current->possibilities_.back();
 			buf.clear();
@@ -64,10 +68,6 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 		} else if (*reading == '\\' && reading[1] == 't') {
 			reading++;
 			buf.push_back('\t');
-		} else if (*reading == '$') {
-			if (!current) {
-				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals may not contain the $ symbol");
-			} else buf.push_back(*reading);
 		} else {
 			if (*reading == '{') {
 				if (!filled) {
@@ -95,7 +95,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 		std::string key = rule.first; // Need to do this because utils::strip is mutating
 		key = utils::strip(key);
 		if(key == "!" || key =="(" || key == ")") {
-			throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: Nonterminals (, ! and ) may not be overridden");
+			throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 		}
 		std::string buf;
 		for(std::string str : rule.second) {
