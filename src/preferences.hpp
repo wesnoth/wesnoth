@@ -263,6 +263,9 @@ namespace preferences {
 	bool disable_loadingscreen_animation();
 	void set_disable_loadingscreen_animation(bool value);
 
+	bool damage_prediction_allow_monte_carlo_simulation();
+	void set_damage_prediction_allow_monte_carlo_simulation(bool value);
+
 } // end namespace preferences
 
 #endif

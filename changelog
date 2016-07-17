@@ -49,6 +49,15 @@ Version 1.13.4+dev:
      loggers activated in the gui print just like loggers activated in the 
      command line (i.e. messages appear in the console)
    * Fix bug #24762: Editor actions are out of sync after resizing.
+ * Performance:
+   * Added an advanced preference (Preferences -> Advanced ->
+     Allow damage calculation with Monte Carlo simulation) that, when enabled,
+     allows the damage calculation to operate by simulating a few thousand fights
+     instead of calculating exact probabilities of each outcome (when a heuristic
+     determines that it's probably faster). This method is inexact, but in very
+     complex battles (extremely high HP, drain, slow, berserk, etc.) it's
+     significantly faster than the default damage calculation method, and may be
+     necessary for acceptable performance.
  * WML engine:
    * Add color= attribute to [message].
    * Add [else], search_recall_list=, auto_recall= to [role]

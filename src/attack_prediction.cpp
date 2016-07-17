@@ -40,6 +40,7 @@
 
 #include "actions/attack.hpp"
 #include "game_config.hpp"
+#include "preferences.hpp"
 #include "random_new.hpp"
 #include <array>
 #include <cmath>
@@ -1986,7 +1987,8 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	const std::vector<combat_slice> opp_split = split_summary(opp.u_, opp.summary);
 
 	if (fight_complexity(split.size(), opp_split.size(), u_, opp.u_) >
-		MONTE_CARLO_SIMULATION_THRESHOLD)
+		MONTE_CARLO_SIMULATION_THRESHOLD &&
+		preferences::damage_prediction_allow_monte_carlo_simulation())
 	{
 		// A very complex fight. Use Monte Carlo simulation instead of exact
 		// probability calculations.
