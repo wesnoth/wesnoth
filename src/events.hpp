@@ -54,7 +54,7 @@ struct context
 	void set_focus(const sdl_handler* ptr);
 
 	handler_list handlers;
-	handler_list::const_iterator focused_handler;
+	handler_list::iterator focused_handler;
 };
 
 //any classes that derive from this class will automatically

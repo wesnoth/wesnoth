@@ -94,8 +94,8 @@ void context::cycle_focus()
 		return;
 	}
 
-	handler_list::const_iterator current = focused_handler;
-	handler_list::const_iterator last = focused_handler;
+	handler_list::iterator current = focused_handler;
+	handler_list::iterator last = focused_handler;
 
 	if (last != handlers.begin()) {
 		--last;
@@ -124,7 +124,7 @@ void context::cycle_focus()
 
 void context::set_focus(const sdl_handler* ptr)
 {
-	const handler_list::const_iterator i = std::find(handlers.begin(),handlers.end(),ptr);
+	const handler_list::iterator i = std::find(handlers.begin(),handlers.end(),ptr);
 	if(i != handlers.end() && (*i)->requires_event_focus()) {
 		focused_handler = i;
 	}
@@ -301,7 +301,7 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 		return true;
 	}
 
-	const handler_list::const_iterator foc = event_contexts.back().focused_handler;
+	const handler_list::iterator foc = event_contexts.back().focused_handler;
 	auto& handlers = event_contexts.back().handlers;
 
 	// If no-one has focus at the moment, this handler obviously wants
@@ -499,8 +499,8 @@ void pump()
 			{
 				/* iterate backwards as the most recent things will be at the top */
 				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
-					const handler_list& event_handlers = (*i).handlers;
-					for( handler_list::const_iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
+					handler_list& event_handlers = (*i).handlers;
+					for( handler_list::iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
 						(*i1)->handle_event(event);
 					}
 				}
