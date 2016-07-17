@@ -16,6 +16,10 @@ local function get_image(cfg, speaker)
 		image = speaker.portrait
 	end
 
+	if image == "none" or image == nil then
+		return "", true
+	end
+
 	-- Note: This is deprecated except for use to set default alignment in portraits
 	-- (Move it into the above if statement later)
 	if image:find("~RIGHT%(%)") then
@@ -30,10 +34,6 @@ local function get_image(cfg, speaker)
 		left_side = false
 	elseif cfg.image_pos ~= nil then
 		helper.wml_error('Invalid [message]image_pos - should be left or right')
-	end
-
-	if image == "none" or image == nil then
-		return "", true
 	end
 
 	return image, left_side
