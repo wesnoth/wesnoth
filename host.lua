@@ -28,10 +28,16 @@ local function plugin()
     idle_text("in " .. info.name .. " waiting for titlescreen or lobby")
   until info.name == "titlescreen" or info.name == "Multiplayer Lobby"
 
-  while info.name == "titlescreen" do
+  local tries = 0
+  while info.name == "titlescreen" and tries < 100 do
     context.play_multiplayer({})
+    tries = tries + 1
     log("playing multiplayer...")
     events, context, info = coroutine.yield()
+  end
+  if info.name == "titlescreen" then
+    context.exit({code = 1})
+    coroutine.yield()
   end
 
   repeat
