@@ -16,6 +16,7 @@
 
 #include <cstdlib> //needed for RAND_MAX
 #include <cstdint>
+#include <iterator> //needed for std::distance
 
 namespace random_new
 {
