@@ -27,21 +27,22 @@ static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
 namespace utils {
 
+template <typename T>
 class string_map_variable_set : public variable_set
 {
 public:
-	string_map_variable_set(const string_map& map) : map_(map) {}
+	string_map_variable_set(const std::map<std::string,T>& map) : map_(map) {}
 
 	virtual config::attribute_value get_variable_const(const std::string &key) const
 	{
 		config::attribute_value val;
-		const string_map::const_iterator itor = map_.find(key);
+		const auto itor = map_.find(key);
 		if (itor != map_.end())
 			val = itor->second;
 		return val;
 	}
 private:
-	const string_map& map_;
+	const std::map<std::string,T>& map_;
 
 };
 }
@@ -213,7 +214,13 @@ namespace utils {
 
 std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols)
 {
-	string_map_variable_set set(*symbols);
+	auto set = string_map_variable_set<t_string>(*symbols);
+	return do_interpolation(str, set);
+}
+
+std::string interpolate_variables_into_string(const std::string &str, const std::map<std::string,std::string> * const symbols)
+{
+	auto set = string_map_variable_set<std::string>(*symbols);
 	return do_interpolation(str, set);
 }
 

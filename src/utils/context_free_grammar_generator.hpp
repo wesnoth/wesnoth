@@ -17,8 +17,6 @@
 
 #include "utils/name_generator.hpp"
 
-#include <string>
-#include <map>
 #include <list>
 #include <vector>
 
@@ -32,9 +30,9 @@ private:
 		mutable unsigned int last_;
 	};
 
+	void init_seed(uint32_t seed[]) const;
 	std::map<std::string, nonterminal> nonterminals_;
-	bool initialized_;
-	std::string print_nonterminal(const std::string& name, uint32_t* seed, short int seed_pos) const;
+	std::string print_nonterminal(const std::string& name, uint32_t seed[], short int seed_pos) const;
 	static const short unsigned int seed_size = 20;
 
 public:
@@ -54,11 +52,6 @@ public:
 	std::string generate() const override;
 
 	~context_free_grammar_generator();
-
-	/** Checks if the object is initialized
-	 * @return if it is initialized
-	 */
-	bool is_valid() const override {return initialized_; }
 };
 
 #endif
