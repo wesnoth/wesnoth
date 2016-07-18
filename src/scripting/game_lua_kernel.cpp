@@ -1820,12 +1820,78 @@ int game_lua_kernel::intf_clear_messages(lua_State*)
 	return 0;
 }
 
+static int impl_end_level_data_get(lua_State* L)
+{
+	const end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
+	const char* m = luaL_checkstring(L, 2);
+
+	return_string_attrib("music", data.transient.custom_endlevel_music);
+	return_bool_attrib("linger_mode", data.transient.linger_mode);
+	return_bool_attrib("reveal_map", data.transient.reveal_map);
+	return_bool_attrib("carryover_report", data.transient.carryover_report);
+	return_bool_attrib("prescenario_save", data.prescenario_save);
+	return_bool_attrib("replay_save", data.replay_save);
+	return_bool_attrib("proceed_to_next_level", data.proceed_to_next_level);
+	return_bool_attrib("is_victory", data.is_victory);
+	return_bool_attrib("is_loss", !data.is_victory);
+	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
+	return_cfg_attrib("__cfg", data.to_config_full());
+	
+	return 0;
+}
+
+namespace {
+	struct end_level_committer {
+		end_level_committer(end_level_data& data, play_controller& pc) : data_(data), pc_(pc) {}
+		~end_level_committer() {
+			pc_.set_end_level_data(data_);
+		}
+	private:
+		end_level_data& data_;
+		play_controller& pc_;
+	};
+}
+
+int game_lua_kernel::impl_end_level_data_set(lua_State* L)
+{
+	end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
+	const char* m = luaL_checkstring(L, 2);
+	end_level_committer commit(data, play_controller_);
+	
+	modify_string_attrib("music", data.transient.custom_endlevel_music = value);
+	modify_bool_attrib("linger_mode", data.transient.linger_mode = value);
+	modify_bool_attrib("reveal_map", data.transient.reveal_map = value);
+	modify_bool_attrib("carryover_report", data.transient.carryover_report = value);
+	modify_bool_attrib("prescenario_save", data.prescenario_save = value);
+	modify_bool_attrib("replay_save", data.replay_save = value);
+	
+	return 0;
+}
+
+static int impl_end_level_data_collect(lua_State* L)
+{
+	end_level_data* data = static_cast<end_level_data*>(lua_touserdata(L, 1));
+	data->~end_level_data();
+	return 0;
+}
+
 int game_lua_kernel::intf_get_end_level_data(lua_State* L)
 {
 	if (!play_controller_.is_regular_game_end()) {
 		return 0;
 	}
-	luaW_pushconfig(L, play_controller_.get_end_level_data_const().to_config());
+	auto data = play_controller_.get_end_level_data_const();
+	new(lua_newuserdata(L, sizeof(end_level_data))) end_level_data();
+	if(luaL_newmetatable(L, "end level data")) {
+		static luaL_Reg const callbacks[] = {
+			{ "__index", 	    &impl_end_level_data_get},
+			{ "__newindex",     &dispatch<&game_lua_kernel::impl_end_level_data_set>},
+			{ "__gc",           &impl_end_level_data_collect},
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, callbacks, 0);
+	}
+	lua_setmetatable(L, -2);
 	return 1;
 }
 

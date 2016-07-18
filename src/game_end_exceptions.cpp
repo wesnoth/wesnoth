@@ -56,3 +56,19 @@ config end_level_data::to_config() const
 	write(r);
 	return r;
 }
+
+config end_level_data::to_config_full() const
+{
+	config r;
+	write(r);
+	transient.write(r);
+	return r;
+}
+
+void transient_end_level::write(config& cfg) const
+{
+	cfg["carryover_report"] = carryover_report;
+	cfg["linger_mode"] = linger_mode;
+	cfg["reveal_map"] = reveal_map;
+	cfg["music"] = custom_endlevel_music;
+}
