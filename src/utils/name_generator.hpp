@@ -23,28 +23,28 @@
 typedef std::map< std::string, t_string > string_map;
 
 class name_generator_invalid_exception : public std::exception {
- public:
-  name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage){}
-  const char* what() const throw() { return errMessage_; }
- 
- private:
-  const char* errMessage_;
+public:
+	name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
+	const char* what() const throw() { return errMessage_; }
+
+private:
+	const char* errMessage_;
 };
 
 
 class name_generator {
 public:
 	std::string generate(const std::map<std::string,std::string>& variables) const { return utils::interpolate_variables_into_string(generate(), &variables); };
-	virtual std::string generate() const { return ""; };
-	name_generator() {};
-	virtual ~name_generator() {};
+	virtual std::string generate() const { return ""; }
+	name_generator() {}
+	virtual ~name_generator() {}
 };
 
 class proxy_name_generator : public name_generator {
 	const name_generator& base;
 public:
 	proxy_name_generator(const name_generator& b) : base(b) {}
-	std::string generate() const override { return base.generate(); };
+	std::string generate() const override { return base.generate(); }
 };
 
 #endif
