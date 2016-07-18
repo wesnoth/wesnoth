@@ -42,6 +42,7 @@ inline bool might_contain_variables(const std::string &str)
  * is nullptr, then game event variables will be used instead.
  */
 std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols);
+std::string interpolate_variables_into_string(const std::string &str, const std::map<std::string,std::string> * const symbols);
 std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables);
 
 /**

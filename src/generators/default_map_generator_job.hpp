@@ -28,8 +28,8 @@ class unit_race;
 
 #include <boost/random.hpp>
 #include <boost/cstdint.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
 #include <map>
+#include <memory>
 
 class default_map_generator_job
 {
@@ -44,7 +44,6 @@ public:
 								 bool roads_between_castles, std::map<map_location,std::string>* labels,
 								 const config& cfg);
 private:
-
 	typedef std::vector<std::vector<int> > height_map;
 	typedef t_translation::t_map terrain_map;
 
@@ -60,11 +59,9 @@ private:
 
 	bool generate_lake(t_translation::t_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
-	std::string generate_name(boost::shared_ptr<name_generator>& name_generator, const std::string& id,
-		std::string* base_name=nullptr,
-		utils::string_map* additional_symbols=nullptr);
 
 	boost::random::mt19937 rng_;
+	const config& game_config_;
 
 };
 #endif

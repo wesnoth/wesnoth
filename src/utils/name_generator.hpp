@@ -15,12 +15,27 @@
 #ifndef NAME_GENERATOR_HPP_INCLUDED
 #define NAME_GENERATOR_HPP_INCLUDED
 
+#include "global.hpp"
 #include <string>
+#include <map>
+#include <exception>
+
+class name_generator_invalid_exception : public std::exception {
+public:
+	name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
+	const char* what() const throw() { return errMessage_; }
+
+private:
+	const char* errMessage_;
+};
+
 
 class name_generator {
 public:
-	virtual std::string generate() const = 0;
-	virtual bool is_valid() const {return true;}
+	// Defined in name_generator_factory.cpp
+	std::string generate(const std::map<std::string,std::string>& variables) const;
+	virtual std::string generate() const { return ""; }
+	name_generator() {}
 	virtual ~name_generator() {}
 };
 
@@ -28,8 +43,7 @@ class proxy_name_generator : public name_generator {
 	const name_generator& base;
 public:
 	proxy_name_generator(const name_generator& b) : base(b) {}
-	std::string generate() const override {return base.generate();}
-	bool is_valid() const override {return base.is_valid();}
+	std::string generate() const override { return base.generate(); }
 };
 
 #endif
