@@ -18,6 +18,11 @@
 #include "utils/name_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
 #include "utils/markov_generator.hpp"
+#include "formula/string_utils.hpp"
+
+std::string name_generator::generate(const std::map<std::string,std::string>& variables) const {
+	return utils::interpolate_variables_into_string(generate(), &variables);
+}
 
 name_generator_factory::name_generator_factory(const config& config, std::vector<std::string> ids) : name_generators_() {
 	add_name_generator_from_config(config, "", "");

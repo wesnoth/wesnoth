@@ -17,10 +17,8 @@
 
 #include "global.hpp"
 #include <string>
-#include "formula/string_utils.hpp"
+#include <map>
 #include <exception>
-
-typedef std::map< std::string, t_string > string_map;
 
 class name_generator_invalid_exception : public std::exception {
 public:
@@ -34,7 +32,8 @@ private:
 
 class name_generator {
 public:
-	std::string generate(const std::map<std::string,std::string>& variables) const { return utils::interpolate_variables_into_string(generate(), &variables); };
+	// Defined in name_generator_factory.cpp
+	std::string generate(const std::map<std::string,std::string>& variables) const;
 	virtual std::string generate() const { return ""; }
 	name_generator() {}
 	virtual ~name_generator() {}
