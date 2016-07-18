@@ -1341,7 +1341,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 
 							if ( village_labels != nullptr ) {
 
-								name_generator_factory village_name_generator_factory{ village_naming, {"base", "male", "village", "lake", "river", "bridge", "grassland", "forest", "hill", "mountain", "mountain_anonymous", "road", "swamp"} };
+								name_generator_factory village_name_generator_factory{ village_naming, {"base", "male", "village", "lake", "river", "bridge", "grassland", "forest", "hill", "mountain", "mountain_anon", "road", "swamp"} };
 
 								village_naming.get_old_attribute("base_names", "male_names", "[village_naming]male_names= is deprecated, use base_names= instead");
 								//Due to the attribute detection feature of the factory we also support male_name_generator= but keep it undocumented.
@@ -1436,7 +1436,7 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 									} else if(forest_count >= 2) {
 										name_type = "forest";
 									} else if(mountain_count >= 1) {
-										name_type = "name_mountain_anonymous";
+										name_type = "mountain_anon";
 									} else if(hill_count >= 2) {
 										name_type = "hill";
 									}
