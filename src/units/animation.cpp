@@ -18,7 +18,6 @@
 
 #include "filter_context.hpp"
 #include "game_display.hpp"
-#include "halo.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"

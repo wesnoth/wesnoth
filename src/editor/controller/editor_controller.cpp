@@ -51,8 +51,6 @@
 
 #include "quit_confirmation.hpp"
 
-#include "halo.hpp"
-
 #include "utils/functional.hpp"
 
 namespace {

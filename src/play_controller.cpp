@@ -40,7 +40,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "halo.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "pathfind/teleport.hpp"
