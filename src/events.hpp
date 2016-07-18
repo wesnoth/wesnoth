@@ -18,6 +18,7 @@
 #include <SDL_events.h>
 #include <SDL_version.h>
 #include <vector>
+#include <list>
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
@@ -33,23 +34,28 @@ namespace events
 
 class sdl_handler;
 
-struct context
+typedef std::list<sdl_handler*> handler_list;
+
+class context
 {
+public:
 	context() :
-			handlers(),
-			focused_handler(-1)
+		handlers(),
+		focused_handler(handlers.end())
 	{
 	}
 
+	~context();
+
+	context(const context&) = delete;
+
 	void add_handler(sdl_handler* ptr);
 	bool remove_handler(sdl_handler* ptr);
-	int cycle_focus();
+	void cycle_focus();
 	void set_focus(const sdl_handler* ptr);
 
-	std::vector<sdl_handler*> handlers;
-	int focused_handler;
-
-	void delete_handler_index(size_t handler);
+	handler_list handlers;
+	handler_list::iterator focused_handler;
 };
 
 //any classes that derive from this class will automatically
@@ -61,6 +67,7 @@ struct context
 //the handler is destroyed.
 class sdl_handler
 {
+friend class context;
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
 	virtual void handle_window_event(const SDL_Event& event) = 0;
@@ -83,6 +90,8 @@ public:
 	virtual void join_global(); /*join the global event context*/
 	virtual void leave_global(); /*leave the global event context*/
 
+	virtual bool has_joined() { return has_joined_;}
+	virtual bool has_joined_global() { return has_joined_global_;}
 protected:
 	sdl_handler(const bool auto_join=true);
 	virtual ~sdl_handler();
@@ -97,7 +106,6 @@ private:
 };
 
 void focus_handler(const sdl_handler* ptr);
-void cycle_focus();
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 

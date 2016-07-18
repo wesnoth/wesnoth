@@ -93,6 +93,8 @@ base_manager::base_manager()
 
 base_manager::~base_manager()
 {
+	event_handler_.leave_global();
+
 	try {
 		if (no_preferences_save) return;
 

@@ -46,17 +46,6 @@ void context::add_handler(sdl_handler* ptr)
 	handlers.push_back(ptr);
 }
 
-void context::delete_handler_index(size_t handler)
-{
-	if(focused_handler == static_cast<int>(handler)) {
-		focused_handler = -1;
-	} else if(focused_handler > static_cast<int>(handler)) {
-		--focused_handler;
-	}
-
-	handlers.erase(handlers.begin()+handler);
-}
-
 bool context::remove_handler(sdl_handler* ptr)
 {
 	if(handlers.empty()) {
@@ -66,17 +55,26 @@ bool context::remove_handler(sdl_handler* ptr)
 	static int depth = 0;
 	++depth;
 
-	//the handler is most likely on the back of the events array,
-	//so look there first, otherwise do a complete search.
+	// The handler is most likely on the back of the events list,
+	// so look there first, otherwise do a complete search.
 	if(handlers.back() == ptr) {
-		delete_handler_index(handlers.size()-1);
+		if(focused_handler != handlers.end() && *focused_handler == ptr) {
+			focused_handler = handlers.end();
+		}
+
+		handlers.pop_back();
 	} else {
-		const std::vector<sdl_handler*>::iterator i = std::find(handlers.begin(),handlers.end(),ptr);
-		if(i != handlers.end()) {
-			delete_handler_index(i - handlers.begin());
-		} else {
+		const handler_list::iterator i = std::find(handlers.begin(), handlers.end(), ptr);
+
+		if(i == handlers.end()) {
 			return false;
 		}
+
+		if(i == focused_handler) {
+			focused_handler != handlers.begin() ? --focused_handler : ++focused_handler;
+		}
+
+		handlers.erase(i);
 	}
 
 	--depth;
@@ -84,46 +82,77 @@ bool context::remove_handler(sdl_handler* ptr)
 	if(depth == 0) {
 		cycle_focus();
 	} else {
-		focused_handler = -1;
+		focused_handler = handlers.end();
 	}
 
 	return true;
 }
 
-int context::cycle_focus()
+void context::cycle_focus()
 {
-	int index = focused_handler+1;
-	for(size_t i = 0; i != handlers.size(); ++i) {
-		if(size_t(index) == handlers.size()) {
-			index = 0;
-		}
-
-		if(handlers[size_t(index)]->requires_event_focus()) {
-			focused_handler = index;
-			break;
-		}
+	if (handlers.begin() == handlers.end()) {
+		return;
 	}
 
-	return focused_handler;
+	handler_list::iterator current = focused_handler;
+	handler_list::iterator last = focused_handler;
+
+	if (last != handlers.begin()) {
+		--last;
+	}
+
+	if (current == handlers.end()) {
+		current = handlers.begin();
+	} else {
+		++current;
+	}
+
+	while (current != last) {
+
+		if(current != handlers.end() && (*current)->requires_event_focus()) {
+			focused_handler = current;
+			break;
+		}
+
+		if (current == handlers.end()) {
+			current = handlers.begin();
+		} else {
+			++current;
+		}
+	}
 }
 
 void context::set_focus(const sdl_handler* ptr)
 {
-	const std::vector<sdl_handler*>::const_iterator i = std::find(handlers.begin(),handlers.end(),ptr);
-	if(i != handlers.end() && (**i).requires_event_focus()) {
-		focused_handler = int(i - handlers.begin());
+	const handler_list::iterator i = std::find(handlers.begin(),handlers.end(),ptr);
+	if(i != handlers.end() && (*i)->requires_event_focus()) {
+		focused_handler = i;
 	}
 }
 
-//this object stores all the event handlers. It is a stack of event 'contexts'.
-//a new event context is created when e.g. a modal dialog is opened, and then
-//closed when that dialog is closed. Each context contains a list of the handlers
-//in that context. The current context is the one on the top of the stack
+context::~context()
+{
+	if (!handlers.empty()) {
+		for (handler_list::iterator it = handlers.begin(); it != handlers.end(); ++it) {
+			if ((*it)->has_joined()) {
+				(*it)->has_joined_ = false;
+			}
+			if ((*it)->has_joined_global()) {
+				(*it)->has_joined_global_ = false;
+			}
+			it = handlers.erase(it);
+		}
+	}
+}
+
+// This object stores all the event handlers. It is a stack of event 'contexts'.
+// a new event context is created when e.g. a modal dialog is opened, and then
+// closed when that dialog is closed. Each context contains a list of the handlers
+// in that context. The current context is the one on the top of the stack.
+// The global context must always be in the first position.
 std::deque<context> event_contexts;
 
-//add a global context for event handlers. Whichever object has joined this will always
-//receive all events, regardless of the current context.
-context global_context;
+
 
 std::vector<pump_monitor*> pump_monitors;
 
@@ -139,7 +168,7 @@ pump_monitor::~pump_monitor() {
 
 event_context::event_context()
 {
-	event_contexts.push_back(context());
+	event_contexts.emplace_back();
 }
 
 event_context::~event_context()
@@ -171,6 +200,11 @@ sdl_handler::~sdl_handler()
 }
 
 void sdl_handler::join() {
+
+	// this assert will fire if someone will inadvertedly try to join
+	// an event context but might end up in the global context instead.
+	assert(&event_contexts.back() != &event_contexts.front());
+
 	join(event_contexts.back());
 }
 
@@ -179,6 +213,7 @@ void sdl_handler::join(context &c)
 	if(has_joined_) {
 		leave(); // should not be in multiple event contexts
 	}
+
 	//join self
 	c.add_handler(this);
 	has_joined_ = true;
@@ -199,14 +234,14 @@ void sdl_handler::join_same(sdl_handler* parent)
 	}
 
 	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
-		std::vector<sdl_handler *> &handlers = (*i).handlers;
+		handler_list& handlers = (*i).handlers;
 		if (std::find(handlers.begin(), handlers.end(), parent) != handlers.end()) {
 			join(*i);
 			return;
 		}
 	}
-	join(global_context);
 
+	join(event_contexts.back());
 }
 
 void sdl_handler::leave()
@@ -233,7 +268,7 @@ void sdl_handler::join_global()
 		leave_global(); // should not be in multiple event contexts
 	}
 	//join self
-	global_context.add_handler(this);
+	event_contexts.front().add_handler(this);
 	has_joined_global_ = true;
 
 	//instruct members to join
@@ -254,7 +289,7 @@ void sdl_handler::leave_global()
 		}
 	}
 
-	global_context.remove_handler(this);
+	event_contexts.front().remove_handler(this);
 
 	has_joined_global_ = false;
 }
@@ -276,32 +311,33 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 		return true;
 	}
 
-	const int foc_i = event_contexts.back().focused_handler;
+	const handler_list::iterator foc = event_contexts.back().focused_handler;
+	auto& handlers = event_contexts.back().handlers;
 
-	//if no-one has focus at the moment, this handler obviously wants
-	//focus, so give it to it.
-	if(foc_i == -1) {
+	// If no-one has focus at the moment, this handler obviously wants
+	// focus, so give it to it.
+	if(foc == handlers.end()) {
 		focus_handler(hand);
 		return true;
 	}
 
-	sdl_handler *const foc_hand = event_contexts.back().handlers[foc_i];
+	sdl_handler* const foc_hand = *foc;
 	if(foc_hand == hand){
 		return true;
 	} else if(!foc_hand->requires_event_focus(event)) {
-		//if the currently focused handler doesn't need focus for this event
-		//allow the most recent interested handler to take care of it
-		int back_i = event_contexts.back().handlers.size() - 1;
-		for(int i=back_i; i>=0; --i) {
-			sdl_handler *const thief_hand = event_contexts.back().handlers[i];
-			if(i != foc_i && thief_hand->requires_event_focus(event)) {
-				//steal focus
+		// If the currently focused handler doesn't need focus for this event
+		// allow the most recent interested handler to take care of it
+		for(auto i = handlers.rbegin(); i != handlers.rend(); ++i) {
+			sdl_handler* const thief_hand = *i;
+
+			if(thief_hand != foc_hand && thief_hand->requires_event_focus(event)) {
+				// Steal focus
 				focus_handler(thief_hand);
-				if(foc_i < back_i) {
-					//position the previously focused handler to allow stealing back
-					event_contexts.back().delete_handler_index(foc_i);
-					event_contexts.back().add_handler(foc_hand);
-				}
+
+				// Position the previously focused handler to allow stealing back
+				handlers.push_back(*foc);
+				handlers.erase(foc);
+
 				return thief_hand == hand;
 			}
 		}
@@ -424,14 +460,14 @@ void pump()
 				//make sure this runs in it's own scope.
 				{
 					for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
-						const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
-						for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-							event_handlers[i1]->handle_window_event(event);
+						const handler_list& event_handlers = (*i).handlers;
+						for(auto handler : event_handlers) {
+							handler->handle_window_event(event);
 						}
 					}
-					const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
-					for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-						event_handlers[i1]->handle_window_event(event);
+					const handler_list& event_handlers = event_contexts.front().handlers;
+					for(auto handler : event_handlers) {
+						handler->handle_window_event(event);
 					}
 				}
 
@@ -474,8 +510,8 @@ void pump()
 				flip_locker flip_lock(CVideo::get_singleton());
 				/* iterate backwards as the most recent things will be at the top */
 				for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
-					const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
-					for( std::vector<sdl_handler*>::const_iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
+					handler_list& event_handlers = (*i).handlers;
+					for( handler_list::iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
 						(*i1)->handle_event(event);
 					}
 				}
@@ -513,19 +549,19 @@ void pump()
 			}
 		}
 
-		const std::vector<sdl_handler*>& event_handlers = global_context.handlers;
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->handle_event(event);
+		const handler_list& event_handlers = event_contexts.front().handlers;
+		for(auto handler : event_handlers) {
+			handler->handle_event(event);
 		}
 
 		if(event_contexts.empty() == false) {
 
-			const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
+			const handler_list& event_handlers = event_contexts.back().handlers;
 
 			//events may cause more event handlers to be added and/or removed,
 			//so we must use indexes instead of iterators here.
-			for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-				event_handlers[i1]->handle_event(event);
+			for(auto handler : event_handlers) {
+				handler->handle_event(event);
 			}
 		}
 
@@ -541,12 +577,12 @@ void raise_process_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
+		const handler_list& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->process_event();
+		for(auto handler : event_handlers) {
+			handler->process_event();
 		}
 	}
 }
@@ -559,7 +595,7 @@ void raise_resize_event()
 	event.window.windowID = 0; // We don't check this anyway... I think...
 	event.window.data1 = CVideo::get_singleton().getx();
 	event.window.data2 = CVideo::get_singleton().gety();
-	
+
 	SDL_PushEvent(&event);
 }
 
@@ -567,12 +603,12 @@ void raise_draw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
+		const handler_list& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->draw();
+		for(auto handler : event_handlers) {
+			handler->draw();
 		}
 	}
 }
@@ -580,9 +616,9 @@ void raise_draw_event()
 void raise_draw_all_event()
 {
 	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
-		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->draw();
+		const handler_list& event_handlers = (*i).handlers;
+		for(auto handler : event_handlers) {
+			handler->draw();
 		}
 	}
 }
@@ -591,12 +627,12 @@ void raise_volatile_draw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
+		const handler_list& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->volatile_draw();
+		for(auto handler : event_handlers) {
+			handler->volatile_draw();
 		}
 	}
 }
@@ -604,9 +640,9 @@ void raise_volatile_draw_event()
 void raise_volatile_draw_all_event()
 {
 	for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
-		const std::vector<sdl_handler*>& event_handlers = (*i).handlers;
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->volatile_draw();
+		const handler_list& event_handlers = (*i).handlers;
+		for(auto handler : event_handlers) {
+			handler->volatile_draw();
 		}
 	}
 }
@@ -615,12 +651,12 @@ void raise_volatile_undraw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
+		const handler_list& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->volatile_undraw();
+		for(auto handler : event_handlers) {
+			handler->volatile_undraw();
 		}
 	}
 }
@@ -629,11 +665,11 @@ void raise_help_string_event(int mousex, int mousey)
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<sdl_handler*>& event_handlers = event_contexts.back().handlers;
+		const handler_list& event_handlers = event_contexts.back().handlers;
 
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->process_help_string(mousex,mousey);
-			event_handlers[i1]->process_tooltip_string(mousex,mousey);
+		for(auto handler : event_handlers) {
+			handler->process_help_string(mousex,mousey);
+			handler->process_tooltip_string(mousex,mousey);
 		}
 	}
 }
