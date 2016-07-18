@@ -149,6 +149,22 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 std::vector<config> game_lua_kernel::preload_scripts;
 config game_lua_kernel::preload_config;
 
+// Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
+typedef int (game_lua_kernel::*member_callback)(lua_State *);
+
+template <member_callback method>
+int dispatch(lua_State *L) {
+	return ((lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)).*method)(L);
+}
+
+// Pass a const bool also...
+typedef int (game_lua_kernel::*member_callback2)(lua_State *, bool);
+
+template <member_callback2 method, bool b>
+int dispatch2(lua_State *L) {
+	return ((lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)).*method)(L, b);
+}
+
 struct map_locker
 {
 	map_locker(game_lua_kernel* kernel) : kernel_(kernel)
@@ -4489,22 +4505,6 @@ tod_manager & game_lua_kernel::tod_man() {
 
 const game_events::queued_event & game_lua_kernel::get_event_info() {
 	return *queued_events_.top();
-}
-
-// Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
-typedef int (game_lua_kernel::*member_callback)(lua_State *);
-
-template <member_callback method>
-int dispatch(lua_State *L) {
-	return ((lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)).*method)(L);
-}
-
-// Pass a const bool also...
-typedef int (game_lua_kernel::*member_callback2)(lua_State *, bool);
-
-template <member_callback2 method, bool b>
-int dispatch2(lua_State *L) {
-	return ((lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)).*method)(L, b);
 }
 
 
