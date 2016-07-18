@@ -56,8 +56,10 @@ unit_race::unit_race() :
 		global_traits_(true),
 		undead_variation_()
 {
-		name_[MALE] = "";
-		name_[FEMALE] = "";
+	name_[MALE] = "";
+	name_[FEMALE] = "";
+	name_generator_[MALE].reset(new name_generator());
+	name_generator_[FEMALE].reset(new name_generator());
 }
 
 unit_race::unit_race(const config& cfg) :
