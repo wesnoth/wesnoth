@@ -349,13 +349,13 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	std::vector<std::string>::iterator hit;
 	for(hit=hits_str.begin() ; hit != hits_str.end() ; ++hit) {
 		if(*hit == "yes" || *hit == "hit") {
-			hits_.push_back(HIT);
+			hits_.push_back(hit_type::HIT);
 		}
 		if(*hit == "no" || *hit == "miss") {
-			hits_.push_back(MISS);
+			hits_.push_back(hit_type::MISS);
 		}
 		if(*hit == "yes" || *hit == "kill" ) {
-			hits_.push_back(KILL);
+			hits_.push_back(hit_type::KILL);
 		}
 	}
 	std::vector<std::string> value2_str = utils::split(cfg["value_second"]);
@@ -535,8 +535,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
 		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
-		animations.back().hits_.push_back(HIT);
-		animations.back().hits_.push_back(KILL);
+		animations.back().hits_.push_back(hit_type::HIT);
+		animations.back().hits_.push_back(hit_type::KILL);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
@@ -1102,37 +1102,14 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	outstream << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
 	if (u_animation.hits_.size() > 0) {
-		outstream << "\thits=";
-		bool need_comma = false;
-		for (const unit_animation::hit_type hit_type : u_animation.hits_) {
-			if (need_comma) outstream << ',';
-			need_comma = true;
-			switch (hit_type) {
-				case (unit_animation::HIT)     : outstream << "hit"; break;
-				case (unit_animation::MISS)    : outstream << "miss"; break;
-				case (unit_animation::KILL)    : outstream << "kill"; break;
-				case (unit_animation::INVALID) : outstream << "invalid"; break;
-			}
-		}
-		outstream << '\n';
+		std::vector<std::string> hits;
+		std::transform(u_animation.hits_.begin(), u_animation.hits_.end(), std::back_inserter(hits), unit_animation::hit_type::enum_to_string);
+		outstream << "\thits=" << utils::join(hits) << '\n';
 	}
 	if (u_animation.directions_.size() > 0) {
-		outstream << "\tdirections=";
-		bool need_comma = false;
-		for (const map_location::DIRECTION direction : u_animation.directions_) {
-			if (need_comma) outstream << ',';
-			need_comma = true;
-			switch (direction) {
-				case (map_location::NORTH)     : outstream << "n"; break;
-				case (map_location::NORTH_EAST): outstream << "ne"; break;
-				case (map_location::SOUTH_EAST): outstream << "se"; break;
-				case (map_location::SOUTH)     : outstream << "s"; break;
-				case (map_location::SOUTH_WEST): outstream << "sw"; break;
-				case (map_location::NORTH_WEST): outstream << "nw"; break;
-				default: break;
-			}
-		}
-		outstream << '\n';
+		std::vector<std::string> dirs;
+		std::transform(u_animation.directions_.begin(), u_animation.directions_.end(), std::back_inserter(dirs), map_location::write_direction);
+		outstream << "\tdirections=" << utils::join(dirs) << '\n';
 	}
 	if (u_animation.terrain_types_.size() > 0) {
 		outstream << "\tterrain=" << utils::join(u_animation.terrain_types_) << '\n';
