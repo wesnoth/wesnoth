@@ -1492,6 +1492,9 @@
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wmi_pager.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
+    <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2349,9 +2352,6 @@
     <ClInclude Include="..\..\src\widgets\widget.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utils\boost_function_guarded.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\utils\const_clone.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2868,6 +2868,9 @@
     <ClInclude Include="..\..\src\wmi_pager.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
+    <ClInclude Include="..\..\src\utils\name_generator_factory.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
