@@ -1096,20 +1096,13 @@ std::string unit_animation::debug() const
 
 std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
 {
-	std::cout << "[";
-	bool need_comma = false;
-	for (std::string event : u_animation.event_) {
-		if (need_comma) std::cout << ',';
-		need_comma = true;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	std::cout << "[" << utils::join(u_animation.event_) << "]\n";
 
 	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
 	if (u_animation.hits_.size() > 0) {
 		std::cout << "\thits=";
-		need_comma = false;
+		bool need_comma = false;
 		for (const unit_animation::hit_type hit_type : u_animation.hits_) {
 			if (need_comma) std::cout << ',';
 			need_comma = true;
@@ -1124,7 +1117,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	}
 	if (u_animation.directions_.size() > 0) {
 		std::cout << "\tdirections=";
-		need_comma = false;
+		bool need_comma = false;
 		for (const map_location::DIRECTION direction : u_animation.directions_) {
 			if (need_comma) std::cout << ',';
 			need_comma = true;
@@ -1141,14 +1134,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		std::cout << '\n';
 	}
 	if (u_animation.terrain_types_.size() > 0) {
-		need_comma = false;
-		std::cout << "\tterrain=";
-		for (const t_translation::t_terrain terrain : u_animation.terrain_types_) {
-			if (need_comma) std::cout << ',';
-			need_comma = true;
-			std::cout << terrain;
-		}
-		std::cout << '\n';
+		std::cout << "\tterrain=" << utils::join(u_animation.terrain_types_) << '\n';
 	}
 	if (u_animation.frequency_>0) std::cout << "frequency=" << u_animation.frequency_ << '\n';
 
@@ -1205,14 +1191,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		}
 	}
 
-	std::cout << "[/";
-	need_comma = false;
-	for (std::string event : u_animation.event_) {
-		if (need_comma) std::cout << ',';
-		need_comma = true;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	std::cout << "[/" << utils::join(u_animation.event_) << "]\n";
 	return outstream;
 }
 
