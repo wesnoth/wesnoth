@@ -30,7 +30,7 @@ class unit_animation
 		/** Shouldn't be used so only declared. */
 		unit_animation();
 	public:
-		typedef enum { MATCH_FAIL=-10 , DEFAULT_ANIM=-9} variation_type;
+		enum variation_type { MATCH_FAIL=-10 , DEFAULT_ANIM=-9};
 		MAKE_ENUM(hit_type,
 			(HIT, "hit")
 			(MISS, "miss")
@@ -106,7 +106,7 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			bool need_minimal_update() const;
-			typedef enum { UNSET,CYCLE,NO_CYCLE} cycle_state;
+			enum cycle_state { UNSET,CYCLE,NO_CYCLE};
 			void override(int start_time
 					, int duration
 					, const cycle_state cycles
