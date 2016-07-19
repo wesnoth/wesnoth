@@ -286,9 +286,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			}
 			return LEVEL_RESULT::VICTORY;
 		}
-		pump().fire(is_victory ? "victory" : "defeat");
+		pump().fire(is_victory ? "local_victory" : "local_defeat");
 		{ // Block for set_scontext_synced_base
 			set_scontext_synced_base sync;
+			pump().fire(proceed_to_next_level ? "victory" : "defeat");
 			pump().fire("scenario end");
 		}
 		if(end_level.proceed_to_next_level) {
