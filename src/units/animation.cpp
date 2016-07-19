@@ -1096,7 +1096,8 @@ std::string unit_animation::debug() const
 
 std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
 {
-	std::cout << "[" << utils::join(u_animation.event_) << "]\n";
+	std::string events_string = utils::join(u_animation.event_);
+	std::cout << "[" << events_string << "]\n";
 
 	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
@@ -1191,7 +1192,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		}
 	}
 
-	std::cout << "[/" << utils::join(u_animation.event_) << "]\n";
+	std::cout << "[/" << events_string << "]\n";
 	return outstream;
 }
 
