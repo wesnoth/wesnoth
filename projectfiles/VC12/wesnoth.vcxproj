@@ -3577,6 +3577,9 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)utils\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\utils\sha1.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)utils\</ObjectFileName>
@@ -4358,7 +4361,6 @@
     <ClInclude Include="..\..\src\units\udisplay.hpp" />
     <ClInclude Include="..\..\src\units\unit.hpp" />
     <ClInclude Include="..\..\src\util.hpp" />
-    <ClInclude Include="..\..\src\utils\boost_function_guarded.hpp" />
     <ClInclude Include="..\..\src\utils\const_clone.hpp" />
     <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp" />
     <ClInclude Include="..\..\src\utils\functional.hpp" />
@@ -4367,6 +4369,7 @@
     <ClInclude Include="..\..\src\utils\make_enum.hpp" />
     <ClInclude Include="..\..\src\utils\markov_generator.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator.hpp" />
+    <ClInclude Include="..\..\src\utils\name_generator_factory.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
     <ClInclude Include="..\..\src\utils\sha1.hpp" />
     <ClInclude Include="..\..\src\utils\shared_object.hpp" />
