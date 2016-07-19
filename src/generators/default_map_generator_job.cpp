@@ -1076,8 +1076,9 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 		// Search a path out for the road
 		pathfind::plain_route rt = pathfind::a_star_search(src, dst, 10000.0, &calc, width, height);
 
-		std::string road_name = base_name_generator->generate();
-		const std::string& name = road_name_generator->generate({{"base", road_name}});
+		const std::string& road_name = misc_labels != nullptr
+			? road_name_generator->generate({{"base", base_name_generator->generate()}})
+			: "";
 		const int name_frequency = 20;
 		int name_count = 0;
 
@@ -1166,13 +1167,15 @@ std::string default_map_generator_job::default_generate_map(size_t width, size_t
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
 					if(misc_labels != nullptr && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
-						misc_labels->insert(std::pair<map_location,std::string>(map_location(x-width/3,y-height/3),name));
+						misc_labels->insert(std::pair<map_location,std::string>(map_location(x-width/3,y-height/3),road_name));
 						name_count = 0;
 					}
 
 					terrain[x][y] = letter;
-					const location loc(x - width / 3, y - height / 3); //add to use for village naming
-					road_names.insert(std::pair<location,std::string>(loc, road_name));
+					if(misc_labels != nullptr) {
+						const location loc(x - width / 3, y - height / 3); //add to use for village naming
+						road_names.insert(std::pair<location,std::string>(loc, road_name));
+					}
 				}
 			}
 		}
