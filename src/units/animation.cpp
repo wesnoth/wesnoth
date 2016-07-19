@@ -1144,7 +1144,6 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		for (const config & cfg : u_animation.unit_filter_) {
 			std::cout << cfg.debug();
 		}
-		//std::cout << "TODO: create debugging output for unit filters";
 		std::cout << "[/filter]\n";
 	}
 	if (u_animation.secondary_unit_filter_.size() > 0) {
@@ -1152,7 +1151,6 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		for (const config & cfg : u_animation.secondary_unit_filter_) {
 			std::cout << cfg.debug();
 		}
-		//std::cout << "TODO: create debugging output for unit filters";
 		std::cout << "[/filter_second]\n";
 	}
 	if (u_animation.primary_attack_filter_.size() > 0) {
