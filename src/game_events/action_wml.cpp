@@ -426,6 +426,8 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 }
 
 /// If we should recall units that match a certain description.
+// If you change attributes specific to [recall] (that is, not a Standard Unit Filter)
+// be sure to update data/lua/wml_tag, auto_recall feature for [role] to reflect your changes.
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
 	LOG_NG << "recalling unit...\n";
