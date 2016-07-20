@@ -83,6 +83,8 @@ namespace game_config
 	namespace images {
 	std::string game_title,
 			game_title_background,
+			game_logo,
+			game_logo_background,
 			// orbs and hp/xp bar
 			orb,
 			energy,
@@ -225,6 +227,8 @@ namespace game_config
 			using namespace game_config::images;
 			game_title = i["game_title"].str();
 			game_title_background = i["game_title_background"].str();
+			game_logo = i["game_logo"].str();
+			game_logo_background = i["game_logo_background"].str();
 
 			orb = i["orb"].str();
 			energy = i["energy"].str();
