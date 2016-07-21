@@ -48,6 +48,7 @@ Version 1.13.4+dev:
    * Added a gui method to activate loggers (Preferences -> Advanced -> Logging)
      loggers activated in the gui print just like loggers activated in the 
      command line (i.e. messages appear in the console)
+   * The Lua console screen now has a clear button
    * Fix bug #24762: Editor actions are out of sync after resizing.
  * WML engine:
    * Add color= attribute to [message].
@@ -83,6 +84,7 @@ Version 1.13.4+dev:
    * All looping tags now give an error if they contain no [do] tag.
      (They may contain multiple [do] tags, however.)
    * Add [message]image_pos=left|right, which mostly supercedes ~RIGHT()
+   * For [core] authors: New keys for game logo (game_logo, game_logo_background)
    * AiWML:
      * Filters within [micro_ai] can now use $this_unit, which was previously
        impossible due to the config being prematurely parsed.
@@ -199,6 +201,9 @@ Version 1.13.4+dev:
    * New wesnoth.name_generator function builds a name generator and returns
      it as a callable userdata. Both the original Markov chain generator
      and the new context free grammar generator are supported
+   * New wesnoth.get_end_level_data() function which can be called in a
+     victory, defeat, or scenario_end event to access (or change) how
+     the scenario ends.
    * Fix wesnoth.erase_unit failing if the unit was on a recall list.
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
