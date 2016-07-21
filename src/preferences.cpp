@@ -1043,7 +1043,7 @@ void set_disable_loadingscreen_animation(bool value)
 
 bool damage_prediction_allow_monte_carlo_simulation()
 {
-	return get("damage_prediction_allow_monte_carlo_simulation", false);
+	return get("damage_prediction_allow_monte_carlo_simulation", true);
 }
 
 void set_damage_prediction_allow_monte_carlo_simulation(bool value)
