@@ -31,7 +31,6 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "formula/string_utils.hpp"
-#include "units/animation.hpp"
 #include "whiteboard/manager.hpp"
 #include "countdown_clock.hpp"
 #include "synced_context.hpp"

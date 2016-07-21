@@ -52,7 +52,6 @@
 #include "statistics.hpp"
 #include "storyscreen/interface.hpp"
 #include "units/unit.hpp"
-#include "units/animation.hpp"
 #include "util.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"

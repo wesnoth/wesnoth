@@ -18,7 +18,6 @@
 #include "display.hpp"
 #include "map/map.hpp"
 #include "preferences.hpp"
-#include "units/animation.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
