@@ -132,15 +132,15 @@ void context::set_focus(const sdl_handler* ptr)
 
 context::~context()
 {
-	if (!handlers.empty()) {
-		for (handler_list::iterator it = handlers.begin(); it != handlers.end(); ++it) {
-			if ((*it)->has_joined()) {
-				(*it)->has_joined_ = false;
-			}
-			if ((*it)->has_joined_global()) {
-				(*it)->has_joined_global_ = false;
-			}
-			it = handlers.erase(it);
+	for (sdl_handler* h : handlers)
+	{
+		if (h->has_joined())
+		{
+			h->has_joined_ = false;
+		}
+		if (h->has_joined_global())
+		{
+			h->has_joined_global_ = false;
 		}
 	}
 }
