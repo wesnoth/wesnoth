@@ -17,18 +17,15 @@
 
 #include "game_events/handlers.hpp"
 
-#include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/unordered_map.hpp>
-#include <boost/weak_ptr.hpp>
+#include <memory>
+#include <unordered_map>
 
 namespace game_events {
 
 	//t_event_handlers is essentially the implementation details of the manager
 	class t_event_handlers {
-		typedef boost::unordered_map<std::string, handler_list> map_t;
-		typedef boost::unordered_map<std::string, boost::weak_ptr<event_handler> > id_map_t;
+		typedef std::unordered_map<std::string, handler_list> map_t;
+		typedef std::unordered_map<std::string, std::weak_ptr<event_handler> > id_map_t;
 
 	public:
 		typedef handler_vec::iterator iterator;
@@ -64,6 +61,8 @@ namespace game_events {
 		void add_event_handler(const config & cfg, manager & man, bool is_menu_item=false);
 		/// Removes an event handler, identified by its ID.
 		void remove_event_handler(std::string const & id);
+		/// Gets an event handler, identified by its ID.
+		const handler_ptr get_event_handler_by_id(const std::string & id);
 
 		iterator begin() { return active_.begin(); }
 		const_iterator begin() const { return active_.begin(); }

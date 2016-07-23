@@ -1047,14 +1047,14 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
 
 /**
  * Fires an event.
- * - Arg 1: string containing the event name.
+ * - Arg 1: string containing the event name or id.
  * - Arg 2: optional first location.
  * - Arg 3: optional second location.
  * - Arg 4: optional WML table used as the [weapon] tag.
  * - Arg 5: optional WML table used as the [second_weapon] tag.
  * - Ret 1: boolean indicating whether the event was processed or not.
  */
-int game_lua_kernel::intf_fire_event(lua_State *L)
+int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 {
 	char const *m = luaL_checkstring(L, 1);
 
@@ -1078,10 +1078,18 @@ int game_lua_kernel::intf_fire_event(lua_State *L)
 		data.add_child("second", luaW_checkconfig(L, pos));
 	}
 
-	bool b = play_controller_.pump().fire(m, l1, l2, data);
+	bool b = false;
+
+	if (by_id) {
+	  b = play_controller_.pump().fire("", m, l1, l2, data);
+	}
+	else {
+	  b = play_controller_.pump().fire(m, l1, l2, data);
+	}
 	lua_pushboolean(L, b);
 	return 1;
 }
+
 
 /**
  * Fires a wml menu item.
@@ -1739,6 +1747,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		const game_events::queued_event &ev = get_event_info();
 		config cfg;
 		cfg["name"] = ev.name;
+		cfg["id"]   = ev.id;
 		if (const config &weapon = ev.data.child("first")) {
 			cfg.add_child("weapon", weapon);
 		}
@@ -4584,7 +4593,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	, queued_events_()
 	, map_locked_(0)
 {
-	static game_events::queued_event default_queued_event("_from_lua", map_location(), map_location(), config());
+	static game_events::queued_event default_queued_event("_from_lua", "", map_location(), map_location(), config());
 	queued_events_.push(&default_queued_event);
 
 	lua_State *L = mState;
@@ -4637,7 +4646,9 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "find_path",                 &dispatch<&game_lua_kernel::intf_find_path                  >        },
 		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
 		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
-		{ "fire_event",                &dispatch<&game_lua_kernel::intf_fire_event                 >        },
+		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
+		{ "fire_event_by_name",        &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
+		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 		{ "float_label",               &dispatch<&game_lua_kernel::intf_float_label                >        },
 		{ "gamestate_inspector",       &dispatch<&game_lua_kernel::intf_gamestate_inspector        >        },
