@@ -15,7 +15,7 @@
 #ifndef TSTRING_H_INCLUDED
 #define TSTRING_H_INCLUDED
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <string>
 
 /**
@@ -180,7 +180,7 @@ public:
 	void swap(t_string& other) { val_.swap(other.val_); }
 private:
 	//never null
-	boost::shared_ptr<const t_string_base> val_;
+	std::shared_ptr<const t_string_base> val_;
 };
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
 inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }

@@ -21,8 +21,6 @@
 #include "editor/toolkit/brush.hpp"
 #include "hotkey/hotkey_command.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 class config;
 
 namespace editor {
@@ -87,7 +85,7 @@ private:
 
 	const CKey& key_;
 
-	boost::scoped_ptr<palette_manager> palette_manager_;
+	std::unique_ptr<palette_manager> palette_manager_;
 
 //Tools
 

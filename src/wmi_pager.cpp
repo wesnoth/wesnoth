@@ -23,8 +23,6 @@
 #include "gettext.hpp"
 
 #include <algorithm> //std::transform
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 #include <cassert>
 #include <iterator> //std::advance
 #include <string>
@@ -35,23 +33,23 @@ struct map_location;
 static const char * next_id = "__wml_items_next_page";
 static const char * prev_id = "__wml_items_prev_page";
 
-static void add_next_page_item( std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items,
+static void add_next_page_item( std::vector<std::shared_ptr<const game_events::wml_menu_item> > & items,
                std::vector<std::string> & descriptions)
 {
 	std::string desc = _("More Items");
 	config temp;
 	temp["description"] = desc;
-	items.push_back(boost::make_shared<const game_events::wml_menu_item>(next_id, temp));
+	items.push_back(std::make_shared<const game_events::wml_menu_item>(next_id, temp));
 	descriptions.push_back(desc);
 }
 
-static void add_prev_page_item( std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items,
+static void add_prev_page_item( std::vector<std::shared_ptr<const game_events::wml_menu_item> > & items,
                std::vector<std::string> & descriptions)
 {
 	std::string desc = _("Previous Items");
 	config temp;
 	temp["description"] = desc;
-	items.push_back(boost::make_shared<const game_events::wml_menu_item>(prev_id, temp));
+	items.push_back(std::make_shared<const game_events::wml_menu_item>(prev_id, temp));
 	descriptions.push_back(desc);
 }
 
@@ -67,7 +65,7 @@ bool wmi_pager::capture ( const game_events::wml_menu_item & item )
 	return false;
 }
 
-typedef boost::shared_ptr<const game_events::wml_menu_item> wmi_ptr;
+typedef std::shared_ptr<const game_events::wml_menu_item> wmi_ptr;
 typedef std::pair<wmi_ptr, std::string> wmi_pair;
 typedef std::vector<wmi_pair>::iterator wmi_it;
 

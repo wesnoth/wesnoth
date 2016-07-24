@@ -80,7 +80,6 @@
 #include <boost/iostreams/filtering_stream.hpp>  // for filtering_stream
 #include <boost/optional.hpp>           // for optional
 #include <boost/program_options/errors.hpp>  // for error
-#include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <boost/tuple/tuple.hpp>        // for tuple
 
 #include <algorithm>                    // for transform
@@ -582,7 +581,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return finished;
 	}
 
-	boost::scoped_ptr<game_launcher> game(
+	const std::unique_ptr<game_launcher> game(
 		new game_launcher(cmdline_opts,args[0].c_str()));
 	const int start_ticks = SDL_GetTicks();
 

@@ -39,7 +39,6 @@
 
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_chat_log("chat_log");
 #define DBG_CHAT_LOG LOG_STREAM(debug, log_chat_log)
@@ -432,11 +431,11 @@ private:
 tchat_log::tchat_log(const vconfig& cfg, replay* r) : view_()
 {
 	LOG_CHAT_LOG << "Entering tchat_log::tchat_log" << std::endl;
-	view_ = boost::shared_ptr<view>(new view(cfg, r));
+	view_ = std::shared_ptr<view>(new view(cfg, r));
 	LOG_CHAT_LOG << "Exiting tchat_log::tchat_log" << std::endl;
 }
 
-boost::shared_ptr<tchat_log::view> tchat_log::get_view()
+std::shared_ptr<tchat_log::view> tchat_log::get_view()
 {
 	return view_;
 }

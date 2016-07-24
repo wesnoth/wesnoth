@@ -66,10 +66,10 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		boost::shared_ptr<formula_debugger> fdbp;
+		std::shared_ptr<formula_debugger> fdbp;
 		bool need_wrapper = false;
 		if (fdb==nullptr) {
-			fdbp = boost::shared_ptr<formula_debugger>(new formula_debugger());
+			fdbp = std::shared_ptr<formula_debugger>(new formula_debugger());
 			fdb = &*fdbp;
 			need_wrapper = true;
 
@@ -319,7 +319,7 @@ private:
 			speaker = args()[0]->evaluate(variables, fdb).string_cast();
 			i_value = 1;
 		}
-		
+
 		const variant value = args()[i_value]->evaluate(variables,fdb);
 		long run_time = 0;
 		for(int i = 1; i < 1000; i++) {
@@ -1427,7 +1427,7 @@ public:
 	explicit distance_between_function(const args_list& args)
 	: function_expression("distance_between", args, 2, 2)
 	{}
-	
+
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
@@ -1469,7 +1469,7 @@ void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) 
 		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
 }
 
-	
+
 void key_value_pair::serialize_to_string(std::string& str) const {
 	str += "pair(";
 	key_.serialize_to_string(str);
@@ -1639,7 +1639,7 @@ expression_ptr create_function(const std::string& fn,
 			return res;
 		}
 	}
-	
+
 	expression_ptr res(get_functions_map().create_function(fn, args));
 	if(!res) {
 		throw formula_error("Unknown function: " + fn, "", "", 0);

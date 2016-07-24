@@ -34,8 +34,6 @@
 #include "units/helper.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 #include <cassert>
 #include <ctime>
 
@@ -1563,7 +1561,7 @@ REPORT_GENERATOR(report_countdown, rc)
 
 void reports::register_generator(const std::string &name, reports::generator *g)
 {
-	dynamic_generators_[name] = boost::shared_ptr<reports::generator>(g);
+	dynamic_generators_[name] = std::shared_ptr<reports::generator>(g);
 }
 
 config reports::generate_report(const std::string &name, reports::context & rc, bool only_static)

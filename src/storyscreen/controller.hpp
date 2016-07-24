@@ -23,8 +23,6 @@
 #include "events.hpp"
 #include "interface.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 class CVideo;
 class vconfig;
 
@@ -52,8 +50,8 @@ public:
 	STORY_RESULT show(START_POSITION startpos=START_BEGINNING);
 
 private:
-	typedef boost::shared_ptr< part    > part_pointer_type;
-	typedef boost::shared_ptr< part_ui > render_pointer_type;
+	typedef std::shared_ptr< part    > part_pointer_type;
+	typedef std::shared_ptr< part_ui > render_pointer_type;
 
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);

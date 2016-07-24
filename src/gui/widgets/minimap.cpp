@@ -27,7 +27,6 @@
 #include "../../minimap.hpp" // We want the file in src/
 
 #include "utils/functional.hpp"
-#include <boost/make_shared.hpp>
 
 #include <algorithm>
 

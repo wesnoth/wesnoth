@@ -27,7 +27,6 @@
 #include "scoped_resource.hpp"          // for scoped_ptr
 #include "sound.hpp"                    // for music_thinker
 
-#include <boost/scoped_ptr.hpp>
 #include <string>                       // for string
 #include <vector>                       // for vector
 
@@ -106,7 +105,7 @@ private:
 
 	const commandline_options& cmdline_opts_;
 	//Never null.
-	boost::scoped_ptr<CVideo> video_;
+	const std::unique_ptr<CVideo> video_;
 
 	const font::manager font_manager_;
 	const preferences::manager prefs_manager_;

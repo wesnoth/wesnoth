@@ -23,8 +23,6 @@
 #include "game_events/pump.hpp" // for queued_event
 #include "generic_event.hpp"
 #include "mouse_handler_base.hpp"
-#include <boost/shared_ptr.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <deque>
 
 class config;
@@ -111,7 +109,7 @@ public:
 	/**
 		@return a rng_deterministic if in determinsic mode otherwise a rng_synced.
 	*/
-	static boost::shared_ptr<random_new::rng> get_rng_for_action();
+	static std::shared_ptr<random_new::rng> get_rng_for_action();
 	/**
 		@return whether we already sended data about the current action to other clients. which means we cannot undo it.
 		returns is_simultaneously_
@@ -190,7 +188,7 @@ public:
 	set_scontext_synced_base();
 	~set_scontext_synced_base();
 protected:
-	boost::shared_ptr<random_new::rng> new_rng_;
+	std::shared_ptr<random_new::rng> new_rng_;
 	random_new::rng* old_rng_;
 };
 /*
@@ -212,7 +210,7 @@ private:
 	void init();
 	static checkup* generate_checkup(const std::string& tagname);
 	checkup* old_checkup_;
-	boost::scoped_ptr<checkup> new_checkup_;
+	const std::unique_ptr<checkup> new_checkup_;
 	events::command_disabler disabler_;
 	bool did_final_checkup_;
 };
@@ -240,7 +238,7 @@ class set_scontext_unsynced
 public:
 	set_scontext_unsynced();
 private:
-	boost::scoped_ptr<leave_synced_context> leaver_;
+	const std::unique_ptr<leave_synced_context> leaver_;
 };
 
 #endif

@@ -38,7 +38,6 @@
 
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define ERR_GUI LOG_STREAM(err, log_gui)
@@ -230,7 +229,7 @@ private:
 class tmp_change_control::controller
 {
 public:
-	typedef std::vector<boost::shared_ptr<side_controller> >
+	typedef std::vector<std::shared_ptr<side_controller> >
 	side_controller_ptr_vector;
 	controller(model& m) : model_(m), side_controllers_()
 	{
@@ -251,18 +250,18 @@ public:
 				side_str = font::span_color(team::get_side_color(side))
 						   + side_str + "</span>";
 				model_.add_side(side, side_str);
-				side_controllers_.push_back(boost::shared_ptr<side_controller>(
+				side_controllers_.push_back(std::shared_ptr<side_controller>(
 						new side_controller(side_str, model_, side)));
 			}
 		}
 	}
 
-	boost::shared_ptr<side_controller> get_side_controller()
+	std::shared_ptr<side_controller> get_side_controller()
 	{
 		int selected = model_.sides_list->get_selected_row();
 		if(selected < 0 || selected
 						   >= static_cast<int>(side_controllers_.size()))
-			return boost::shared_ptr<side_controller>(); // null pointer
+			return std::shared_ptr<side_controller>(); // null pointer
 		else
 			return side_controllers_.at(selected);
 	}
@@ -397,7 +396,7 @@ tmp_change_control::tmp_change_control(events::menu_handler* mh)
 {
 }
 
-boost::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
+std::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
 {
 	return view_;
 }

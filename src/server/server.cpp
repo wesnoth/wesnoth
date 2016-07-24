@@ -49,9 +49,6 @@
 
 #include "utils/functional.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/make_shared.hpp>
 #include <boost/utility.hpp>
 #include <algorithm>
 #include <cassert>
@@ -138,10 +135,10 @@ struct handle_doc
 		boost::uint32_t size;
 		char buf[4];
 	};
-	boost::shared_ptr<DataSize> data_size;
-	boost::shared_ptr<simple_wml::document> doc;
+	std::shared_ptr<DataSize> data_size;
+	std::shared_ptr<simple_wml::document> doc;
 	boost::shared_array<char> buffer;
-	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, boost::shared_ptr<simple_wml::document> doc) :
+	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, std::shared_ptr<simple_wml::document> doc) :
 		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize), doc(doc)
 	{
 		data_size->size = htonl(size);
@@ -164,7 +161,7 @@ template<typename Handler, typename ErrorHandler>
 void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler, ErrorHandler error_handler)
 {
 	try {
-		boost::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
+		std::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
 		simple_wml::string_span s = doc_ptr->output_compressed();
 		std::vector<boost::asio::const_buffer> buffers;
 
@@ -723,7 +720,7 @@ void server::clean_user_handler(const time_t& now) {
 
 void server::serve()
 {
-	socket_ptr socket = boost::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
+	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
 	acceptor_.async_accept(*socket, boost::bind(&server::accept_connection, this, _1, socket));
 }
 
@@ -796,7 +793,7 @@ void server::handle_version(socket_ptr socket)
 	);
 }
 
-void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
 	if (const simple_wml::node* const version = doc->child("version")) {
 		const simple_wml::string_span& version_str_span = (*version)["version"];
@@ -855,7 +852,7 @@ void server::login(socket_ptr socket)
 	);
 }
 
-void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
 	if(const simple_wml::node* const login = doc->child("login")) {
 		// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
@@ -1108,7 +1105,7 @@ void server::read_from_player(socket_ptr socket)
 	);
 }
 
-void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+void server::handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
 	read_from_player(socket);
 	//DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
@@ -1133,7 +1130,7 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 
 }
 
-void server::handle_player_in_lobby(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc) {
+void server::handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc) {
 	if(simple_wml::node* message = doc->child("message")) {
 		handle_message(socket, *message);
 	}
@@ -1446,7 +1443,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	int game_id = join["id"].to_int();
 
 	auto g_iter = player_connections_.get<game_t>().find(game_id);
-	const boost::shared_ptr<game> g = g_iter->get_game();
+	const std::shared_ptr<game> g = g_iter->get_game();
 
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	if (g_iter == player_connections_.get<game_t>().end()) {
@@ -1514,7 +1511,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	}
 }
 
-void server::handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc) {
+void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml::document> doc) {
 	DBG_SERVER << "in process_data_game...\n";
 
 	auto p = player_connections_.find(socket);
@@ -1839,7 +1836,7 @@ void server::handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_w
 		<< g.name() << "\" (" << g.id() << ")\n" << data.output();
 }
 
-typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
+typedef std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document> > > SendQueue;
 SendQueue send_queue;
 void handle_send_to_player(socket_ptr socket);
 
@@ -1853,7 +1850,7 @@ void send_to_player(socket_ptr socket, simple_wml::document& doc)
 			handle_send_to_player
 		);
 	} else {
-		send_queue[socket].push_back(boost::shared_ptr<simple_wml::document>(doc.clone()));
+		send_queue[socket].push_back(std::shared_ptr<simple_wml::document>(doc.clone()));
 	}
 }
 
@@ -1887,7 +1884,7 @@ void server::remove_player(socket_ptr socket)
 	if(iter == player_connections_.end())
 		return;
 
-	const boost::shared_ptr<game> g = iter->get_game();
+	const std::shared_ptr<game> g = iter->get_game();
 	if(g)
 		g->remove_player(socket, true, false);
 
@@ -2089,7 +2086,7 @@ void server::run() {
 				char* buf_ptr = new char [buf.size()];
 				memcpy(buf_ptr, &buf[0], buf.size());
 				simple_wml::string_span compressed_buf(buf_ptr, buf.size());
-				boost::scoped_ptr<simple_wml::document> data_ptr;
+				const std::unique_ptr<simple_wml::document> data_ptr;
 				try {
 					data_ptr.reset(new simple_wml::document(compressed_buf)); // might throw a simple_wml::error
 					data_ptr->take_ownership_of_buffer(buf_ptr);
@@ -2941,7 +2938,7 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 }
 
 void server::delete_game(int gameid) {
-	const boost::shared_ptr<game>& game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
+	const std::shared_ptr<game>& game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
 
 	// Set the availability status for all quitting users.
 	for(const auto& user : player_connections_.get<game_t>().equal_range(gameid)) {

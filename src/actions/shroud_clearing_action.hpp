@@ -4,9 +4,6 @@
 #include "map/location.hpp"
 #include "units/ptr.hpp"
 
-#include <boost/noncopyable.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/optional.hpp>
 namespace actions
 {
 /// base class for classes that clear srhoud (move/recruit/recall)

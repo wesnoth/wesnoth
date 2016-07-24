@@ -27,7 +27,6 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
 
 #ifndef UNICODE
 #define UNICODE
@@ -439,7 +438,7 @@ void log_file_manager::enable_native_console_output()
 	LOG_LS << "Console streams handover complete!\n";
 }
 
-boost::scoped_ptr<log_file_manager> lfm;
+std::unique_ptr<log_file_manager> lfm;
 
 } // end anonymous namespace
 

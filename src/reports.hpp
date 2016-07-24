@@ -20,7 +20,6 @@
 #include <vector>
 
 #include <boost/optional.hpp>
-#include <boost/shared_ptr.hpp>
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
@@ -47,7 +46,7 @@ public:
 	class context
 	{
 	public:
-		context(const display_context & dc, display & disp, const tod_manager & tod, boost::shared_ptr<wb::manager> wb, boost::optional<events::mouse_handler &> mhb) : dc_(dc), disp_(disp), tod_(tod), wb_(wb), mhb_(mhb) {}
+		context(const display_context & dc, display & disp, const tod_manager & tod, std::shared_ptr<wb::manager> wb, boost::optional<events::mouse_handler &> mhb) : dc_(dc), disp_(disp), tod_(tod), wb_(wb), mhb_(mhb) {}
 
 		const std::vector<team> & teams() { return dc_.teams(); }
 		const unit_map & units() { return dc_.units(); }
@@ -56,14 +55,14 @@ public:
 		const display_context & dc() { return dc_; }
 		display & screen() { return disp_; }
 		const tod_manager & tod() { return tod_; }
-		boost::shared_ptr<wb::manager> wb() { return wb_; }
+		std::shared_ptr<wb::manager> wb() { return wb_; }
 		boost::optional<events::mouse_handler&> mhb() { return mhb_; }
 
 	private:
 		const display_context & dc_;
 		display & disp_;
 		const tod_manager & tod_;
-		boost::shared_ptr<wb::manager> wb_;
+		std::shared_ptr<wb::manager> wb_;
 		boost::optional<events::mouse_handler&> mhb_;
 	};
 
@@ -81,7 +80,7 @@ public:
 
 
 	typedef config (*generator_function)(reports::context & );
-	typedef std::map<std::string, boost::shared_ptr<reports::generator> > dynamic_report_generators;
+	typedef std::map<std::string, std::shared_ptr<reports::generator> > dynamic_report_generators;
 
 private:
 

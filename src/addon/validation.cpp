@@ -17,6 +17,8 @@
 #include "addon/validation.hpp"
 #include "config.hpp"
 
+#include <algorithm>
+
 const unsigned short default_campaignd_port = 15008;
 
 namespace {

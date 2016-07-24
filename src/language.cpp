@@ -24,7 +24,6 @@
 
 #include <stdexcept>
 #include <clocale>
-#include <boost/scoped_array.hpp>
 
 #ifdef _WIN32
 #include <windows.h>

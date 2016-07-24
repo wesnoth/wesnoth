@@ -63,7 +63,6 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/make_shared.hpp>
 #include "utils/functional.hpp"
 
 static lg::log_domain log_aitesting("aitesting");
@@ -739,7 +738,7 @@ events::mouse_handler& play_controller::get_mouse_handler_base()
 	return mouse_handler_;
 }
 
-boost::shared_ptr<wb::manager> play_controller::get_whiteboard()
+std::shared_ptr<wb::manager> play_controller::get_whiteboard()
 {
 	return whiteboard_manager_;
 }

@@ -27,8 +27,6 @@ class unit_filter;
 class unit_map;
 class team;
 
-#include <boost/scoped_ptr.hpp> //to memoize unit_filter
-
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
 public:
@@ -87,7 +85,7 @@ private:
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
 		std::vector< std::pair<terrain_filter, std::map<map_location,bool> > > adjacent_match_cache;
 
-		boost::scoped_ptr<unit_filter> ufilter_;
+		std::unique_ptr<unit_filter> ufilter_;
 	};
 
 	mutable terrain_filter_cache cache_;

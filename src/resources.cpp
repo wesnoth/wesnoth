@@ -33,7 +33,7 @@ namespace resources
 	pathfind::manager    *tunnels = nullptr;
 	actions::undo_list   *undo_stack = nullptr;
 	unit_map             *units = nullptr;
-	boost::shared_ptr<wb::manager> whiteboard = boost::shared_ptr<wb::manager>();
+	std::shared_ptr<wb::manager> whiteboard = std::shared_ptr<wb::manager>();
 	game_classification  *classification = nullptr;
 	const mp_game_settings *mp_settings = nullptr;
 	bool                 simulation_ = false;

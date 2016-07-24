@@ -8,7 +8,6 @@
 #include "config.hpp"
 
 #include <boost/noncopyable.hpp>
-#include <boost/optional.hpp>
 
 namespace actions {
 	class undo_list;

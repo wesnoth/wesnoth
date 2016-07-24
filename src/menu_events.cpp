@@ -614,7 +614,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	team &current_team = teams()[side_num - 1];
 
-	boost::shared_ptr<std::vector<unit_const_ptr > > recall_list_team = boost::make_shared<std::vector<unit_const_ptr> >();
+	std::shared_ptr<std::vector<unit_const_ptr > > recall_list_team = std::make_shared<std::vector<unit_const_ptr> >();
 	{ wb::future_map future; // ensures recall list has planned recalls removed
 		*recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
@@ -749,7 +749,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	/**
 	 * Returns true if @a side_num has at least one unit that can still move.
 	 */
-	bool partmoved_units(int side_num, const unit_map & units, const game_board & board, const boost::shared_ptr<wb::manager> & whiteb)
+	bool partmoved_units(int side_num, const unit_map & units, const game_board & board, const std::shared_ptr<wb::manager> & whiteb)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
@@ -766,7 +766,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	 * Returns true if @a side_num has at least one unit that (can but) has not
 	 * moved.
 	 */
-	bool unmoved_units(int side_num, const unit_map & units, const game_board & board, const boost::shared_ptr<wb::manager> & whiteb)
+	bool unmoved_units(int side_num, const unit_map & units, const game_board & board, const std::shared_ptr<wb::manager> & whiteb)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
@@ -2158,7 +2158,7 @@ void console_handler::do_toggle_draw_terrain_codes() {
 }
 
 void console_handler::do_toggle_whiteboard() {
-	if (const boost::shared_ptr<wb::manager> & whiteb = menu_handler_.pc_.get_whiteboard()) {
+	if (const std::shared_ptr<wb::manager> & whiteb = menu_handler_.pc_.get_whiteboard()) {
 		whiteb->set_active(!whiteb->is_active());
 		if (whiteb->is_active()) {
 			print(get_cmd(), _("Planning mode activated!"));

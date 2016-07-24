@@ -19,8 +19,6 @@
 
 #include <boost/cstdint.hpp>
 #include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/smart_ptr.hpp>
 
 struct SDL_Thread;
 
@@ -201,7 +199,7 @@ public:
 
 class async_operation;
 
-typedef boost::shared_ptr<async_operation> async_operation_ptr;
+typedef std::shared_ptr<async_operation> async_operation_ptr;
 
 typedef std::list<async_operation_ptr> active_operation_list;
 
@@ -244,7 +242,7 @@ public:
 	bool is_aborted() const { return aborted_; }
 
 private:
-	boost::scoped_ptr<thread> thread_;
+	std::unique_ptr<thread> thread_;
 	bool aborted_;
 	condition finished_;
 	bool finishedVar_;

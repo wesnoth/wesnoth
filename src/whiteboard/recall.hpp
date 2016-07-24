@@ -72,8 +72,8 @@ public:
 
 protected:
 
-	boost::shared_ptr<recall> shared_from_this() {
-		return boost::static_pointer_cast<recall>(action::shared_from_this());
+	std::shared_ptr<recall> shared_from_this() {
+		return std::static_pointer_cast<recall>(action::shared_from_this());
 	}
 
 private:

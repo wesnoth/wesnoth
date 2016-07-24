@@ -17,18 +17,18 @@
 #include <SDL.h>
 
 #include <map>
+#include <memory>
 
-#include <boost/shared_ptr.hpp>
 #include <boost/noncopyable.hpp>
 
 namespace gui {
 
 	class drop_target;
-	typedef boost::shared_ptr<drop_target> drop_target_ptr;
+	typedef std::shared_ptr<drop_target> drop_target_ptr;
 
 	typedef int drop_target_group;
 	class drop_group_manager;
-	typedef boost::shared_ptr<drop_group_manager> drop_group_manager_ptr;
+	typedef std::shared_ptr<drop_group_manager> drop_group_manager_ptr;
 
 	/**
 	 * Handles droping for drag able ui items.

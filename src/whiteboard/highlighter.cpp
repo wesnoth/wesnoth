@@ -288,7 +288,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 void highlighter::highlight_main_visitor::visit(attack_ptr attack)
 {
 	///@todo: highlight the attack indicator
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
@@ -319,7 +319,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 
 void highlighter::highlight_secondary_visitor::visit(attack_ptr attack)
 {
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::unhighlight_visitor::visit(move_ptr move)
@@ -336,7 +336,7 @@ void highlighter::unhighlight_visitor::visit(move_ptr move)
 
 void highlighter::unhighlight_visitor::visit(attack_ptr attack)
 {
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::unhighlight_visitor::visit(recall_ptr recall)

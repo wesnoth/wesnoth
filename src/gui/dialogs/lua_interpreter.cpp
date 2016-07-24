@@ -44,7 +44,6 @@
 #include <string>
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/scoped_ptr.hpp>
 
 #ifdef HAVE_HISTORY
 #include "filesystem.hpp"
@@ -364,9 +363,9 @@ private:
 	ttext_box* text_entry;
 	std::string text_entry_;
 
-	boost::scoped_ptr<tlua_interpreter::lua_model> lua_model_;
-	boost::scoped_ptr<tlua_interpreter::input_model> input_model_;
-	boost::scoped_ptr<tlua_interpreter::view> view_;
+	const std::unique_ptr<tlua_interpreter::lua_model> lua_model_;
+	const std::unique_ptr<tlua_interpreter::input_model> input_model_;
+	const std::unique_ptr<tlua_interpreter::view> view_;
 
 	void execute();
 	void tab();

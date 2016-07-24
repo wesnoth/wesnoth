@@ -18,7 +18,6 @@
 #define UNIT_H_INCLUDED
 
 #include <boost/tuple/tuple.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/variant.hpp>
 
@@ -45,7 +44,7 @@ class vconfig;
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;
 namespace unit_detail {
-	template<typename T> const T& get_or_default(const boost::scoped_ptr<T>& v)
+	template<typename T> const T& get_or_default(const std::unique_ptr<T>& v)
 	{
 		if(v) {
 			return *v;
@@ -291,7 +290,7 @@ public:
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
-	
+
 	struct upkeep_full {};
 	struct upkeep_loyal {};
 	typedef boost::variant<upkeep_full, upkeep_loyal, int> t_upkeep;
@@ -338,7 +337,7 @@ public:
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 	void expire_modifications(const std::string & duration);
-	
+
 	static const std::set<std::string> builtin_effects;
 	void apply_builtin_effect(std::string type, const config& effect);
 	std::string describe_builtin_effect(std::string type, const config& effect);
@@ -471,7 +470,7 @@ private:
 
 	fixed_t alpha_;
 
-	boost::scoped_ptr<unit_formula_manager> formula_man_;
+	std::unique_ptr<unit_formula_manager> formula_man_;
 
 	int movement_;
 	int max_movement_;
@@ -514,7 +513,7 @@ private:
 	friend class unit_animation_component;
 
 private:
-	boost::scoped_ptr<unit_animation_component> anim_comp_;
+	std::unique_ptr<unit_animation_component> anim_comp_;
 
 	bool getsHit_;
 	mutable bool hidden_;
@@ -524,9 +523,9 @@ private:
 	config abilities_;
 	t_advancements advancements_;
 	t_string description_;
-	boost::scoped_ptr<std::string> usage_;
-	boost::scoped_ptr<std::string> halo_;
-	boost::scoped_ptr<std::string> ellipse_;
+	std::unique_ptr<std::string> usage_;
+	std::unique_ptr<std::string> halo_;
+	std::unique_ptr<std::string> ellipse_;
 	bool random_traits_;
 	bool generate_name_;
 	t_upkeep upkeep_;

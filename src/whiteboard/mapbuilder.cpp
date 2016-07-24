@@ -135,7 +135,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	if(erval != action::OK) {
 		// We do not delete obstructed moves, nor invalid actions caused by obstructed moves.
 		if(has_invalid_actions_.find(unit.get()) == has_invalid_actions_.end()) {
-			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && boost::dynamic_pointer_cast<move>(action))) {
+			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && std::dynamic_pointer_cast<move>(action))) {
 				has_invalid_actions_.insert(unit.get());
 				invalid_actions_.push_back(action_it);
 			} else {
@@ -178,7 +178,7 @@ void mapbuilder::post_visit_team(size_t turn)
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
 	for(action_ptr action : boost::adaptors::reverse(applied_actions_this_turn_)) {
-		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
+		move_ptr move = std::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
 			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit().get()) == 0) {

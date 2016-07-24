@@ -1007,7 +1007,7 @@ void context_manager::switch_context(const int index, const bool force)
 
 void context_manager::replace_map_context(map_context* new_mc)
 {
-	boost::scoped_ptr<map_context> del(map_contexts_[current_context_index_]);
+	const std::unique_ptr<map_context> del(map_contexts_[current_context_index_]);
 	map_context_refresher mcr(*this, *new_mc);
 	map_contexts_[current_context_index_] = new_mc;
 

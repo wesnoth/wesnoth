@@ -17,7 +17,6 @@
 
 #include "variable.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <set>
 #include <string>
 #include <vector>
@@ -62,11 +61,11 @@ private:
 
 	const filter_context * fc_; //!< The filter context for this filter. It should be a pointer because otherwise the default ctor doesn't work
 
-	mutable boost::scoped_ptr<unit_filter> ufilter_;
-	mutable boost::scoped_ptr<side_filter> allied_filter_;
-	mutable boost::scoped_ptr<side_filter> enemy_filter_;
-	mutable boost::scoped_ptr<side_filter> has_ally_filter_;
-	mutable boost::scoped_ptr<side_filter> has_enemy_filter_;
+	mutable std::unique_ptr<unit_filter> ufilter_;
+	mutable std::unique_ptr<side_filter> allied_filter_;
+	mutable std::unique_ptr<side_filter> enemy_filter_;
+	mutable std::unique_ptr<side_filter> has_ally_filter_;
+	mutable std::unique_ptr<side_filter> has_enemy_filter_;
 };
 
 #endif

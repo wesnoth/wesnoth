@@ -23,7 +23,6 @@
 #include "util.hpp"
 #include "config.hpp"
 
-#include <boost/shared_ptr.hpp>
 #include <boost/container/flat_set.hpp>
 
 class game_data;
@@ -379,7 +378,7 @@ public:
 	static void clear_caches();
 
 	/** get the whiteboard planned actions for this team */
-	boost::shared_ptr<wb::side_actions> get_side_actions() const { return planned_actions_; }
+	std::shared_ptr<wb::side_actions> get_side_actions() const { return planned_actions_; }
 
 	config to_config() const;
 
@@ -430,7 +429,7 @@ private:
 	/**
 	 * Whiteboard planned actions for this team.
 	 */
-	boost::shared_ptr<wb::side_actions> planned_actions_;
+	std::shared_ptr<wb::side_actions> planned_actions_;
 };
 
 //function which will validate a side. Throws game::game_error

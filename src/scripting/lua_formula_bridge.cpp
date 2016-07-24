@@ -214,7 +214,7 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 		need_delete = true;
 		form = new fwrapper(luaL_checkstring(L, 1));
 	}
-	boost::shared_ptr<formula_callable> context, fallback;
+	std::shared_ptr<formula_callable> context, fallback;
 	if(unit* u = luaW_tounit(L, 2)) {
 		context.reset(new unit_callable(*u));
 	} else if(lua_istable(L, 2)) {

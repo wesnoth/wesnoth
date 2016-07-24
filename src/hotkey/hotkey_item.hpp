@@ -18,9 +18,8 @@
 
 #include <SDL_events.h>
 #include <SDL.h>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <vector>
-
 
 class config;
 class CVideo;
@@ -30,9 +29,9 @@ namespace hotkey {
 class hotkey_base;
 class hotkey_mouse;
 class hotkey_keyboard;
-typedef boost::shared_ptr<hotkey_base> hotkey_ptr;
-typedef boost::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
-typedef boost::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
+typedef std::shared_ptr<hotkey_base> hotkey_ptr;
+typedef std::shared_ptr<hotkey_mouse> hotkey_mouse_ptr;
+typedef std::shared_ptr<hotkey_keyboard> hotkey_keyboard_ptr;
 
 typedef std::vector<hotkey::hotkey_ptr> hotkey_list;
 typedef std::vector<hotkey::hotkey_ptr>::iterator hotkey_list_iter;

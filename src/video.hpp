@@ -18,8 +18,8 @@
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
+#include <memory>
 #include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
 
 #include "sdl/window.hpp"
 
@@ -214,7 +214,7 @@ public:
 private:
 	static CVideo* singleton_;
 
-	boost::scoped_ptr<sdl::twindow> window;
+	std::unique_ptr<sdl::twindow> window;
 	class video_event_handler : public events::sdl_handler {
 	public:
 		virtual void handle_event(const SDL_Event &) {}

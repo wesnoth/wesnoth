@@ -145,14 +145,14 @@ private:
 
 };
 
-typedef boost::shared_ptr<candidate_action> candidate_action_ptr;
+typedef std::shared_ptr<candidate_action> candidate_action_ptr;
 
 class candidate_action_factory;
 
 class candidate_action_factory{
 	bool is_duplicate(const std::string &name);
 public:
-	typedef boost::shared_ptr< candidate_action_factory > factory_ptr;
+	typedef std::shared_ptr< candidate_action_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 

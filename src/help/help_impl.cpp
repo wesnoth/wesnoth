@@ -45,7 +45,6 @@
 
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
-#include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc

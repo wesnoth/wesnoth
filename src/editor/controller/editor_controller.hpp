@@ -226,10 +226,10 @@ class editor_controller : public controller_base,
 		editor::menu_type active_menu_;
 
 		/** Reports object. Must be initialized before the gui_ */
-		boost::scoped_ptr<reports> reports_;
+		const std::unique_ptr<reports> reports_;
 
 		/** The display object used and owned by the editor. */
-		boost::scoped_ptr<editor_display> gui_;
+		const std::unique_ptr<editor_display> gui_;
 
 		/** Pre-defined time of day lighting settings for the settings dialog */
 		typedef std::map<std::string, std::pair<std::string ,std::vector<time_of_day> > > tods_map;
@@ -237,13 +237,13 @@ class editor_controller : public controller_base,
 
 		/* managers */
 	public:
-		boost::scoped_ptr<context_manager> context_manager_;
+		const std::unique_ptr<context_manager> context_manager_;
 	private:
-		boost::scoped_ptr<editor_toolkit> toolkit_;
+		std::unique_ptr<editor_toolkit> toolkit_;
 		tooltips::manager tooltip_manager_;
-		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;
+		std::unique_ptr<font::floating_label_context> floating_label_manager_;
 
-		boost::scoped_ptr<help::help_manager> help_manager_;
+		std::unique_ptr<help::help_manager> help_manager_;
 
 		/** Quit main loop flag */
 		bool do_quit_;

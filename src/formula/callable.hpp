@@ -18,6 +18,8 @@
 #include "reference_counted_object.hpp"
 #include "formula/variant.hpp"
 
+#include <memory>
+
 namespace game_logic
 {
 

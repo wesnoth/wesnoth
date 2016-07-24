@@ -44,7 +44,6 @@
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
-#include <boost/scoped_ptr.hpp>
 
 #include <cstring>
 #include <exception>

@@ -49,7 +49,6 @@
 #include "variable.hpp"                 // for vconfig, etc
 
 #include "utils/functional.hpp"
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/function_output_iterator.hpp>
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
@@ -237,7 +236,7 @@ const std::string& unit::leader_crown()
 }
 namespace {
 	template<typename T>
-	T* copy_or_null(const boost::scoped_ptr<T>& ptr)
+	T* copy_or_null(const std::unique_ptr<T>& ptr)
 	{
 		return ptr ? new T(*ptr) : nullptr;
 	}

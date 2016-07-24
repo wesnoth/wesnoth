@@ -55,7 +55,6 @@
 #include "candidates.hpp"               // for base_candidate_action, etc
 
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
 #include <map>                          // for multimap<>::const_iterator, etc

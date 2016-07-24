@@ -780,7 +780,7 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 template<typename T>
 typesafe_aspect<T>* try_aspect_as(aspect_ptr p)
 {
-	return boost::dynamic_pointer_cast<typesafe_aspect<T> >(p).get();
+	return std::dynamic_pointer_cast<typesafe_aspect<T> >(p).get();
 }
 
 static int impl_ai_aspect_get(lua_State* L)

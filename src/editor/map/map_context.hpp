@@ -27,7 +27,6 @@
 #include "display_context.hpp"
 
 #include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
 
 namespace editor {
 
@@ -486,7 +485,7 @@ private:
 	unit_map units_;
 	std::vector<team> teams_;
 	std::vector<std::string> lbl_categories_;
-	boost::scoped_ptr<tod_manager> tod_manager_;
+	std::unique_ptr<tod_manager> tod_manager_;
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;
 

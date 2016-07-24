@@ -25,7 +25,6 @@
 #include "widgets/textbox.hpp"
 
 #include <deque>
-#include <boost/scoped_ptr.hpp>
 
 class display;
 class game_display;
@@ -256,7 +255,7 @@ private:
 	};
 
 protected:
-	boost::scoped_ptr<plugins_context> plugins_context_;
+	std::unique_ptr<plugins_context> plugins_context_;
 public:
 	plugins_context * get_plugins_context();
 };

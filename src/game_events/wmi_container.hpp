@@ -22,9 +22,8 @@
 
 #include "utils/iterator.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 #include <map>
+#include <memory>
 #include <vector>
 
 class config;
@@ -43,7 +42,7 @@ class wml_menu_item;
 /// A container of wml_menu_item.
 class wmi_container{
 	/// Pointers to our elements.
-	typedef boost::shared_ptr<wml_menu_item> item_ptr;
+	typedef std::shared_ptr<wml_menu_item> item_ptr;
 	/// The underlying storage type.
 	typedef std::map<std::string, item_ptr> map_t;
 	/// The key for interaction with our iterators.
@@ -78,10 +77,10 @@ public:
 	/// Fires the menu item with the given @a id.
 	bool fire_item(const std::string & id, const map_location & hex, game_data & gamedata, filter_context & fc, unit_map & units) const;
 	/// Returns the menu items that can be shown for the given location.
-	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > get_items(const map_location& hex,
+	std::vector<std::pair<std::shared_ptr<const wml_menu_item>, std::string> > get_items(const map_location& hex,
 			game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const;
 	/// Range over all items by default
-	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > get_items(const map_location& hex, game_data & gamedata, filter_context & fc, unit_map & units) const {
+	std::vector<std::pair<std::shared_ptr<const wml_menu_item>, std::string> > get_items(const map_location& hex, game_data & gamedata, filter_context & fc, unit_map & units) const {
 		return get_items(hex, gamedata, fc, units, begin(), end());
 	}
 	/// Initializes the implicit event handlers for inlined [command]s.

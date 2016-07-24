@@ -39,8 +39,6 @@
 #include "formula/formula.hpp"
 
 #include <boost/optional.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include <vector>
 
@@ -73,7 +71,7 @@ bool unit_filter::matches(const unit & u, const unit & u2) const {
 
 
 /// Forward declare the "construct" method which constructs an appropriate filter impl
-static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
+static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
 
 /// Null unit filter is built when the input config is null
 class null_unit_filter_impl : public unit_filter_abstract_impl {
@@ -192,15 +190,15 @@ private:
  *
  */
 
-static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
+static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
 {
 	if (vcfg.empty()) {
-		return boost::make_shared<null_unit_filter_impl> (fc);
+		return std::make_shared<null_unit_filter_impl> (fc);
 	}
 	if (vcfg.get_config().attribute_count() == 1 && vcfg.get_config().all_children_count() == 0 && vcfg.has_attribute("limit")) {
-		return boost::make_shared<null_unit_filter_impl> (fc);
+		return std::make_shared<null_unit_filter_impl> (fc);
 	}
-	return boost::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
+	return std::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
 	//TODO: Add more efficient implementations for special cases
 }
 

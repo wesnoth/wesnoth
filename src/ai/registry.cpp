@@ -39,7 +39,6 @@
 #include "ai/default/ca_move_to_targets.hpp"
 #include "ai/default/stage_rca.hpp"
 
-#include <boost/shared_ptr.hpp>         // for shared_ptr, etc
 #include <string>                       // for string
 #include <vector>                       // for vector
 

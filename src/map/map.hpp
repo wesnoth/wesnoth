@@ -23,8 +23,6 @@ class config;
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 //class terrain_type_data; Can't forward declare because of enum
 
 /**

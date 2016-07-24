@@ -28,8 +28,6 @@
 #include "units/types.hpp" // for attack_type
 
 #include <boost/assign.hpp>
-#include <boost/make_shared.hpp>
-
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -568,7 +566,7 @@ void movetype::terrain_info::write(config & cfg, const std::string & child_name,
 /**
  * Returns a pointer to data the incorporates our fallback.
  */
-const boost::shared_ptr<movetype::terrain_info::data> &
+const std::shared_ptr<movetype::terrain_info::data> &
 	movetype::terrain_info::get_merged() const
 {
 	// Create-on-demand.
@@ -586,7 +584,7 @@ const boost::shared_ptr<movetype::terrain_info::data> &
 			// Need to merge data.
 			config merged;
 			write(merged, "", true);
-			merged_data_ = boost::make_shared<data>(merged, data_->params());
+			merged_data_ = std::make_shared<data>(merged, data_->params());
 		}
 	}
 	return merged_data_;

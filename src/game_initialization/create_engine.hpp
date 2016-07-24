@@ -20,7 +20,6 @@
 #include "mp_game_settings.hpp"
 #include "sdl/utils.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <string>
 #include <utility>
 
@@ -86,7 +85,7 @@ public:
 protected:
 	void set_sides();
 
-	boost::scoped_ptr<gamemap> map_;
+	std::unique_ptr<gamemap> map_;
 
 	surface minimap_img_;
 	std::string map_hash_;
@@ -191,13 +190,13 @@ public:
 		std::string description;
 	};
 
-	typedef boost::shared_ptr<extras_metadata> extras_metadata_ptr;
+	typedef std::shared_ptr<extras_metadata> extras_metadata_ptr;
 
-	typedef boost::shared_ptr<level> level_ptr;
-	typedef boost::shared_ptr<scenario> scenario_ptr;
-	typedef boost::shared_ptr<user_map> user_map_ptr;
-	typedef boost::shared_ptr<random_map> random_map_ptr;
-	typedef boost::shared_ptr<campaign> campaign_ptr;
+	typedef std::shared_ptr<level> level_ptr;
+	typedef std::shared_ptr<scenario> scenario_ptr;
+	typedef std::shared_ptr<user_map> user_map_ptr;
+	typedef std::shared_ptr<random_map> random_map_ptr;
+	typedef std::shared_ptr<campaign> campaign_ptr;
 
 	void init_generated_level_data();
 
@@ -305,9 +304,9 @@ private:
 
 	CVideo& video_;
 	//Never nullptr
-	boost::scoped_ptr<depcheck::manager> dependency_manager_;
+	std::unique_ptr<depcheck::manager> dependency_manager_;
 
-	boost::scoped_ptr<map_generator> generator_;
+	std::unique_ptr<map_generator> generator_;
 };
 
 } // end namespace ng

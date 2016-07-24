@@ -18,6 +18,8 @@
 
 #include "utils/functional.hpp"
 
+#include <algorithm>
+
 namespace gui {
 
 	drop_target::drop_groups drop_target::groups_;

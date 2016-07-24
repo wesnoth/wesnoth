@@ -67,7 +67,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/assign/list_of.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/regex.hpp>
 
 static lg::log_domain log_engine("engine");

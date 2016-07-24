@@ -15,7 +15,6 @@
 #ifndef VARIANT_HPP_INCLUDED
 #define VARIANT_HPP_INCLUDED
 
-#include <boost/shared_ptr.hpp>
 #include <map>
 #include <vector>
 

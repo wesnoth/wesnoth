@@ -28,8 +28,6 @@
 #include "tod_manager.hpp"
 #include "game_state.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <set>
 
 class game_display;
@@ -198,7 +196,7 @@ public:
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
-	boost::shared_ptr<wb::manager> get_whiteboard();
+	std::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
 	const game_classification& get_classification();
 	int get_server_request_number() const { return gamestate().server_request_number_; }
@@ -308,35 +306,35 @@ private:
 protected:
 	//gamestate
 	const tdata_cache& tdata_;
-	boost::scoped_ptr<game_state> gamestate_;
+	std::unique_ptr<game_state> gamestate_;
 	config level_;
 	saved_game& saved_game_;
 
 	//managers
-	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
+	std::unique_ptr<tooltips::manager> tooltips_manager_;
 
 	//whiteboard manager
-	boost::shared_ptr<wb::manager> whiteboard_manager_;
+	std::shared_ptr<wb::manager> whiteboard_manager_;
 
 	//plugins context
-	boost::scoped_ptr<plugins_context> plugins_context_;
+	std::unique_ptr<plugins_context> plugins_context_;
 
 	//more managers
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
-	boost::scoped_ptr<hotkey_handler> hotkey_handler_;
-	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
+	std::unique_ptr<hotkey_handler> hotkey_handler_;
+	std::unique_ptr<soundsource::manager> soundsources_manager_;
 	persist_manager persist_;
 
 	//other objects
-	boost::scoped_ptr<game_display> gui_;
-	boost::scoped_ptr<unit_experience_accelerator> xp_mod_;
-	boost::scoped_ptr<const statistics::scenario_context> statistics_context_;
+	std::unique_ptr<game_display> gui_;
+	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
+	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
 	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; };
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; };
-	boost::scoped_ptr<replay> replay_;
+	std::unique_ptr<replay> replay_;
 
 	bool skip_replay_;
 	bool linger_;

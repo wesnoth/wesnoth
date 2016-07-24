@@ -30,7 +30,6 @@
 #include "video.hpp"                    // fore current_resolution
 
 #include <boost/optional.hpp>  // for optional
-#include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
