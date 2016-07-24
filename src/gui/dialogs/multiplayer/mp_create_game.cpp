@@ -83,9 +83,9 @@ void tmp_create_game::pre_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "map_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-								   boost::bind(&tmp_create_game::update_map,
+								   std::bind(&tmp_create_game::update_map,
 											   *this,
-											   boost::ref(window)));
+											   std::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
