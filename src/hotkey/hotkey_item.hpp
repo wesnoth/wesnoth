@@ -20,6 +20,7 @@
 #include <SDL.h>
 #include <memory>
 #include <vector>
+#include <string>
 
 class config;
 class CVideo;

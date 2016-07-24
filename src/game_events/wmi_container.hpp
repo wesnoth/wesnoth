@@ -25,6 +25,7 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <string>
 
 class config;
 class filter_context;
