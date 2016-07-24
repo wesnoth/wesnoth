@@ -28,7 +28,6 @@
 #include "util.hpp"
 #include <cassert>
 #include <boost/array.hpp>
-#include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general())

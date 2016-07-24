@@ -18,8 +18,6 @@
 #include <iostream>
 #include <string.h>
 
-#include <boost/lexical_cast.hpp>
-
 #include "formatter.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"

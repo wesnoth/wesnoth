@@ -36,7 +36,6 @@
 #include "units/filter.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <set>
 #include <sstream>
 
@@ -134,8 +133,8 @@ void target_unit_goal::on_create()
 	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(*v);
-		} catch (boost::bad_lexical_cast){
+			value_ = lexical_cast<double>(*v);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of goal"<<std::endl;
 			value_ = 0;
 		}
@@ -181,8 +180,8 @@ void target_location_goal::on_create()
 	}
 	if (cfg_.has_attribute("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(cfg_["value"]);
-		} catch (boost::bad_lexical_cast){
+			value_ = lexical_cast<double>(cfg_["value"]);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of goal"<<std::endl;
 			value_ = 0;
 		}
@@ -230,16 +229,16 @@ void protect_goal::on_create()
 	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(*v);
-		} catch (boost::bad_lexical_cast){
+			value_ = lexical_cast<double>(*v);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of protect_goal"<<std::endl;
 			value_ = 0;
 		}
 	}
 	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
 		try {
-			radius_ = boost::lexical_cast<int>(*v);
-		} catch (boost::bad_lexical_cast){
+			radius_ = lexical_cast<int>(*v);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
 			radius_ = 1;
 		}

@@ -37,7 +37,6 @@
 #include "syncmp_handler.hpp"
 #include "units/id.hpp"
 #include "whiteboard/manager.hpp"
-#include <boost/lexical_cast.hpp>
 
 #include <cassert>
 #include <stdlib.h>

@@ -26,7 +26,6 @@
 
 #include "ai/formula/ai.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
 namespace pathfind {
@@ -160,8 +159,8 @@ static component *find_component(component *root, const std::string &path, path_
 			pe.position = -2;
 		} else {
 			try {
-				pe.position = boost::lexical_cast<int>(position);
-			} catch (boost::bad_lexical_cast){
+				pe.position = lexical_cast<int>(position);
+			} catch (bad_lexical_cast){
 				pe.position = -2;
 			}
 		}

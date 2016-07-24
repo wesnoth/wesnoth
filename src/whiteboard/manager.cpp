@@ -49,7 +49,6 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include "utils/functional.hpp"
 
 #include <sstream>

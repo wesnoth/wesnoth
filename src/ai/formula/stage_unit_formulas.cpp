@@ -27,7 +27,6 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
-#include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)

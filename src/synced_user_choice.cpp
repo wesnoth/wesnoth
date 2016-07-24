@@ -25,7 +25,6 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
-#include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
 #include "formula/string_utils.hpp"

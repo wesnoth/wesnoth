@@ -11,7 +11,6 @@
 */
 #include "global.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <iostream>
 #include <set>
 #include <sstream>

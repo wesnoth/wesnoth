@@ -24,7 +24,6 @@
 #include "formula/formula.hpp"
 #include "formula/function.hpp"
 #include "log.hpp"
-#include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_ai("ai/stage/side_formulas");
 #define LOG_AI LOG_STREAM(info, log_ai)
