@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 #include <functional>
-#include <boost/bind.hpp> // Because std::bind is just not flexible enough
+#include <boost/bind.hpp>
 
 // We'd like to just say "using namespace std::placeholders", but unfortunately
 // that clashes with Boost.Bind's placeholders in some cases (even if bind.hpp is not included).
@@ -93,20 +93,8 @@ namespace detail {
 template<typename F, typename... P>
 auto bind_void(F fcn, P... bindings)
 #ifndef HAVE_CXX14
--> decltype(boost::bind(
-	detail::make_apply(std::function<typename detail::function_base<F>::type>(fcn)), bindings...)
-)
-#endif
-{
-	using T = typename detail::function_base<F>::type;
-	return boost::bind(detail::make_apply(std::function<T>(fcn)), bindings...);
-}
-
-template<typename F, typename... P>
-auto bind_void_exact(F fcn, P... bindings)
-#ifndef HAVE_CXX14
 -> decltype(
-	boost::bind(detail::make_apply(std::function<typename detail::function_base<F>::type>(fcn)), bindings...)
+	std::bind(detail::make_apply(std::function<typename detail::function_base<F>::type>(fcn)), bindings...)
 )
 #endif
 {
@@ -123,9 +111,8 @@ It's useful behaviour, as well.
 2. A function that returns a value cannot be bound in a function type that returns void.
 This is also relied upon in several places.
 
-If behaviour #1 is needed, we need to use boost::bind. For behaviour #2, this won't work;
-instead, the bind_void function is provided. (This also provides behaviour #1.
-To get #2 without #1, use bind_void_exact.)
+If behaviour #1 is needed, we can use boost::bind, though a lambda with unused arguments may be better.
+For behaviour #2, the bind_void function is provided.
 */
 
 #endif
