@@ -11,6 +11,7 @@
 */
 #include "global.hpp"
 
+#include <cassert>
 #include <iostream>
 #include <set>
 #include <sstream>

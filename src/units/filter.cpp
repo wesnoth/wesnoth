@@ -567,7 +567,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			const unit_callable main(loc,u);
 			game_logic::map_formula_callable callable(&main);
 			if (u2) {
-				boost::intrusive_ptr<unit_callable> secondary(new unit_callable(*u2));
+				std::shared_ptr<unit_callable> secondary(new unit_callable(*u2));
 				callable.add("other", variant(secondary.get()));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}

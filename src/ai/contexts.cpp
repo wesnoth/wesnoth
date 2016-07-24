@@ -58,7 +58,6 @@
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
-#include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
 #include <cmath>                       // for sqrt
 #include <cstdlib>                     // for abs
 #include <ctime>                       // for time

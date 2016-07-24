@@ -98,7 +98,6 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
 		const formula_callable* callable = var.as_callable();
-		callable->add_ref();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
@@ -767,7 +766,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
@@ -937,7 +935,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
@@ -975,7 +972,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it){
 				self_callable.add(self, *it);
@@ -1011,7 +1007,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
@@ -1117,7 +1112,6 @@ private:
 			++it;
 		}
 		map_formula_callable self_callable;
-		self_callable.add_ref();
 		for(; it != items.end(); ++it) {
 			self_callable.add("a", res);
 			self_callable.add("b", *it);
@@ -1383,18 +1377,6 @@ private:
 	}
 };
 
-
-class refcount_function : public function_expression {
-public:
-	explicit refcount_function(const args_list& args)
-	    : function_expression("refcount", args, 1, 1)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(args()[0]->evaluate(variables,fdb).refcount());
-	}
-};
-
 class loc_function : public function_expression {
 public:
 	explicit loc_function(const args_list& args)
@@ -1594,7 +1576,6 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(sgn);
 		FUNCTION(round);
 		FUNCTION(as_decimal);
-		FUNCTION(refcount);
 		FUNCTION(pair);
 		FUNCTION(loc);
 		FUNCTION(distance_between);

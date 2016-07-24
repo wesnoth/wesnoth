@@ -46,7 +46,6 @@ stage_side_formulas::~stage_side_formulas()
 bool stage_side_formulas::do_play_stage()
 {
 	game_logic::map_formula_callable callable(&fai_);
-	callable.add_ref();
 	try {
 		if (move_formula_) {
 			while( !fai_.make_action(move_formula_,callable).is_empty() ) { }

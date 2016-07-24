@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 
+#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <string.h>
@@ -247,86 +248,20 @@ bool variant_iterator::operator!=(const variant_iterator& that) const
 		return true;
 }
 
-struct variant_list {
-	variant_list()
-		: elements()
-		, refcount(0)
-	{
-	}
-
-	std::vector<variant> elements;
-	int refcount;
-};
-
-struct variant_string {
-	variant_string()
-		: str()
-		, refcount(0)
-	{
-	}
-
-	std::string str;
-	int refcount;
-};
-
-struct variant_map {
-	variant_map()
-		: elements()
-		, refcount(0)
-	{
-	}
-
-	std::map<variant,variant> elements;
-	int refcount;
-};
-
-void variant::increment_refcount()
-{
-	switch(type_) {
-	case TYPE_LIST:
-		++list_->refcount;
-		break;
-	case TYPE_STRING:
-		++string_->refcount;
-		break;
-	case TYPE_MAP:
-		++map_->refcount;
-		break;
-	case TYPE_CALLABLE:
-		intrusive_ptr_add_ref(callable_);
-		break;
-
-	// These are not used here, add them to silence a compiler warning.
-	case TYPE_NULL:
-	case TYPE_DECIMAL:
-	case TYPE_INT :
-		break;
-	}
-}
-
 void variant::release()
 {
 	switch(type_) {
 	case TYPE_LIST:
-		if(--list_->refcount == 0) {
-			delete list_;
-		}
+		delete list_;
 		break;
 	case TYPE_STRING:
-		if(--string_->refcount == 0) {
-			delete string_;
-		}
+		delete string_;
 		break;
 	case TYPE_MAP:
-		if(--map_->refcount == 0) {
-			delete map_;
-		}
+		delete map_;
 		break;
-	case TYPE_CALLABLE:
-		intrusive_ptr_release(callable_);
-		break;
-
 	// These are not used here, add them to silence a compiler warning.
+	case TYPE_CALLABLE:
 	case TYPE_NULL:
 	case TYPE_DECIMAL:
 	case TYPE_INT :
@@ -350,9 +285,9 @@ variant::variant(int n, variant::DECIMAL_VARIANT_TYPE /*type*/) : type_(TYPE_DEC
 variant::variant(double n, variant::DECIMAL_VARIANT_TYPE /*type*/) : type_(TYPE_DECIMAL) {
 	n *= 1000;
 	decimal_value_ = static_cast<int>(n);
-	
+
 	n -= decimal_value_;
-	
+
 	if(n > 0.5)
 		decimal_value_++;
 	else if(n < -0.5)
@@ -363,40 +298,53 @@ variant::variant(const game_logic::formula_callable* callable)
 	: type_(TYPE_CALLABLE), callable_(callable)
 {
 	assert(callable_);
-	increment_refcount();
 }
 
 variant::variant(std::vector<variant>* array)
     : type_(TYPE_LIST)
 {
 	assert(array);
-	list_ = new variant_list;
-	list_->elements.swap(*array);
-	increment_refcount();
+	list_ = new std::vector<variant>(*array);
 }
 
 variant::variant(const std::string& str)
 	: type_(TYPE_STRING)
 {
-	string_ = new variant_string;
-	string_->str = str;
-	increment_refcount();
+	string_ = new std::string(str);
 }
 
 variant::variant(std::map<variant,variant>* map)
     : type_(TYPE_MAP)
 {
 	assert(map);
-	map_ = new variant_map;
-	map_->elements.swap(*map);
-	increment_refcount();
+	map_ = new std::map<variant,variant>(*map);
 }
 
 variant::variant(const variant& v)
     : type_(v.type_)
 {
-	memcpy(this, &v, sizeof(v));
-	increment_refcount();
+	switch(type_) {
+		case TYPE_INT:
+			int_value_ = v.int_value_;
+			break;
+		case TYPE_DECIMAL:
+			decimal_value_ = v.decimal_value_;
+			break;
+		case TYPE_LIST:
+			list_ = new std::vector<variant>(*v.list_);
+			break;
+		case TYPE_STRING:
+			string_ = new std::string(*v.string_);
+			break;
+		case TYPE_MAP:
+			map_ = new std::map<variant,variant>(*v.map_);
+			break;
+		case TYPE_CALLABLE:
+			callable_ = v.callable_;
+			break;
+		case TYPE_NULL:
+			break;
+	}
 }
 
 variant::~variant()
@@ -407,9 +355,8 @@ variant::~variant()
 variant& variant::operator=(const variant& v)
 {
 	if(&v != this) {
-		release();
-		memcpy(this, &v, sizeof(v));
-		increment_refcount();
+		this->~variant();
+		new(this) variant(v);
 	}
 	return *this;
 }
@@ -422,11 +369,11 @@ variant variant::operator[](size_t n) const
 
 	must_be(TYPE_LIST);
 	assert(list_);
-	if(n >= list_->elements.size()) {
+	if(n >= list_->size()) {
 		throw type_error("invalid index");
 	}
 
-	return list_->elements[n];
+	return (*list_)[n];
 }
 
 variant variant::operator[](const variant& v) const
@@ -437,8 +384,8 @@ variant variant::operator[](const variant& v) const
 
 	if(type_ == TYPE_MAP) {
 		assert(map_);
-		std::map<variant,variant>::const_iterator i = map_->elements.find(v);
-		if (i == map_->elements.end())
+		std::map<variant,variant>::const_iterator i = map_->find(v);
+		if (i == map_->end())
 		{
 			static variant null_variant;
 			return null_variant;
@@ -447,7 +394,7 @@ variant variant::operator[](const variant& v) const
 	} else if(type_ == TYPE_LIST) {
 		if(v.is_list()) {
 			std::vector<variant> slice;
-			
+
 			for(size_t i = 0; i < v.num_elements(); ++i) {
 				slice.push_back( (*this)[v[i]] );
 			}
@@ -468,7 +415,7 @@ variant variant::get_keys() const
 	must_be(TYPE_MAP);
 	assert(map_);
 	std::vector<variant> tmp;
-	for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+	for(std::map<variant,variant>::const_iterator i=map_->begin(); i != map_->end(); ++i) {
 			tmp.push_back(i->first);
 	}
 	return variant(&tmp);
@@ -479,7 +426,7 @@ variant variant::get_values() const
 	must_be(TYPE_MAP);
 	assert(map_);
 	std::vector<variant> tmp;
-	for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+	for(std::map<variant,variant>::const_iterator i=map_->begin(); i != map_->end(); ++i) {
 			tmp.push_back(i->second);
 	}
 	return variant(&tmp);
@@ -488,20 +435,20 @@ variant variant::get_values() const
 variant_iterator variant::begin() const
 {
 	if(type_ == TYPE_LIST)
-		return variant_iterator( list_->elements.begin() );
+		return variant_iterator( list_->begin() );
 
 	if(type_ == TYPE_MAP)
-		return variant_iterator( map_->elements.begin() );
+		return variant_iterator( map_->begin() );
 
 	return variant_iterator();
 }
 variant_iterator variant::end() const
 {
 	if(type_ == TYPE_LIST)
-		return variant_iterator( list_->elements.end() );
+		return variant_iterator( list_->end() );
 
 	if(type_ == TYPE_MAP)
-		return variant_iterator( map_->elements.end() );
+		return variant_iterator( map_->end() );
 
 	return variant_iterator();
 }
@@ -512,10 +459,10 @@ bool variant::is_empty() const
 		return true;
 	} else if (type_ == TYPE_LIST) {
 		assert(list_);
-		return list_->elements.empty();
+		return list_->empty();
 	} else if (type_ == TYPE_MAP) {
 		assert(map_);
-		return map_->elements.empty();
+		return map_->empty();
 	}
 
 	return false;
@@ -529,10 +476,10 @@ size_t variant::num_elements() const
 
 	if (type_ == TYPE_LIST) {
 		assert(list_);
-		return list_->elements.size();
+		return list_->size();
 	} else if (type_ == TYPE_MAP) {
 		assert(map_);
-		return map_->elements.size();
+		return map_->size();
 	} else {
 		throw type_error((formatter() << "type error: "
 			<< " expected a list or a map but found " << type_string()
@@ -587,11 +534,11 @@ bool variant::as_bool() const
 	case TYPE_CALLABLE:
 		return callable_ != nullptr;
 	case TYPE_LIST:
-		return !list_->elements.empty();
+		return !list_->empty();
 	case TYPE_MAP:
-		return !map_->elements.empty();
+		return !map_->empty();
 	case TYPE_STRING:
-		return !string_->str.empty();
+		return !string_->empty();
 	default:
 		assert(false);
 		return false;
@@ -602,21 +549,21 @@ const std::string& variant::as_string() const
 {
 	must_be(TYPE_STRING);
 	assert(string_);
-	return string_->str;
+	return *string_;
 }
 
 const std::vector<variant>& variant::as_list() const
 {
 	must_be(TYPE_LIST);
 	assert(list_);
-	return list_->elements;
+	return *list_;
 }
 
 const std::map<variant,variant>& variant::as_map() const
 {
 	must_be(TYPE_MAP);
 	assert(map_);
-	return map_->elements;
+	return *map_;
 }
 
 variant variant::operator+(const variant& v) const
@@ -624,14 +571,14 @@ variant variant::operator+(const variant& v) const
 	if(type_ == TYPE_LIST) {
 		if(v.type_ == TYPE_LIST) {
 			std::vector<variant> res;
-			res.reserve(list_->elements.size() + v.list_->elements.size());
-			for(size_t i = 0; i<list_->elements.size(); ++i) {
-				const variant& var = list_->elements[i];
+			res.reserve(list_->size() + v.list_->size());
+			for(size_t i = 0; i<list_->size(); ++i) {
+				const variant& var = (*list_)[i];
 				res.push_back(var);
 			}
 
-			for(size_t j = 0; j<v.list_->elements.size(); ++j) {
-				const variant& var = v.list_->elements[j];
+			for(size_t j = 0; j<v.list_->size(); ++j) {
+				const variant& var = (*v.list_)[j];
 				res.push_back(var);
 			}
 
@@ -640,9 +587,9 @@ variant variant::operator+(const variant& v) const
 	}
 	if(type_ == TYPE_MAP) {
 		if(v.type_ == TYPE_MAP) {
-			std::map<variant,variant> res(map_->elements);
+			std::map<variant,variant> res(*map_);
 
-			for(std::map<variant,variant>::const_iterator i = v.map_->elements.begin(); i != v.map_->elements.end(); ++i) {
+			for(std::map<variant,variant>::const_iterator i = v.map_->begin(); i != v.map_->end(); ++i) {
 				res[i->first] = i->second;
 			}
 
@@ -729,7 +676,7 @@ variant variant::operator%(const variant& v) const
 		if(denominator == 0) {
 			throw type_error((formatter() << "divide by zero error").str());
 		}
-		
+
 		return variant(numerator%denominator, DECIMAL_VARIANT);
 	} else {
 		const int numerator = as_int();
@@ -748,7 +695,7 @@ variant variant::operator^(const variant& v) const
 	if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
 
 		double res = pow( as_decimal()/1000.0 , v.as_decimal()/1000.0 );
-		
+
 		if(res != res) return variant();
 
 		return variant(res, DECIMAL_VARIANT);
@@ -782,7 +729,7 @@ bool variant::operator==(const variant& v) const
 	}
 
 	case TYPE_STRING: {
-		return string_->str == v.string_->str;
+		return *string_ == *v.string_;
 	}
 
 	case TYPE_INT: {
@@ -808,7 +755,7 @@ bool variant::operator==(const variant& v) const
 	}
 
 	case TYPE_MAP: {
-		return map_->elements == v.map_->elements;
+		return *map_ == *v.map_;
 	}
 
 	case TYPE_CALLABLE: {
@@ -843,7 +790,7 @@ bool variant::operator<=(const variant& v) const
 	}
 
 	case TYPE_STRING: {
-		return string_->str <= v.string_->str;
+		return *string_ <= *v.string_;
 	}
 
 	case TYPE_INT: {
@@ -867,7 +814,7 @@ bool variant::operator<=(const variant& v) const
 	}
 
 	case TYPE_MAP: {
-		return map_->elements <= v.map_->elements;
+		return *map_ <= *v.map_;
 	}
 
 	case TYPE_CALLABLE: {
@@ -970,18 +917,18 @@ variant variant::concatenate(const variant& v) const
 {
 	if(type_ == TYPE_LIST) {
 		v.must_be(TYPE_LIST);
-		
+
 		std::vector< variant > res;
 		res.reserve(num_elements() + v.num_elements());
-		
+
 		for(size_t i = 0; i < num_elements(); ++i) {
 			res.push_back( (*this)[i] );
 		}
-		
+
 		for(size_t i = 0; i < v.num_elements(); ++i) {
 			res.push_back( v[i] );
 		}
-		
+
 		return variant( &res );
 	} else if(type_ == TYPE_STRING) {
 		v.must_be(TYPE_STRING);
@@ -999,17 +946,17 @@ variant variant::concatenate(const variant& v) const
 variant variant::build_range(const variant& v) const {
 	must_be(TYPE_INT);
 	v.must_be(TYPE_INT);
-	
+
 	int lhs = as_int(), rhs = v.as_int();
 	int len = abs(rhs - lhs) + 1;
-	
+
 	std::vector< variant > res;
 	res.reserve(len);
-		
+
 	for(size_t i = lhs; res.size() != res.capacity(); lhs < rhs ? ++i : --i) {
 		res.push_back( variant(i) );
 	}
-	
+
 	return variant( &res );
 }
 
@@ -1021,13 +968,13 @@ bool variant::contains(const variant& v) const {
 			<< variant_type_to_string(type_)
 			<< " (" << to_debug_string() << ")").str());
 	}
-	
+
 	if(type_ == TYPE_LIST) {
 		variant_iterator iter = std::find(begin(), end(), v);
 		return iter != end();
 	} else {
-		std::map<variant,variant>::const_iterator iter = map_->elements.find(v);
-		return iter != map_->elements.end();
+		std::map<variant,variant>::const_iterator iter = map_->find(v);
+		return iter != map_->end();
 	}
 }
 
@@ -1077,8 +1024,8 @@ void variant::serialize_to_string(std::string& str) const
 	case TYPE_LIST: {
 		str += "[";
 		bool first_time = true;
-		for(size_t i=0; i<list_->elements.size(); ++i) {
-			const variant& var = list_->elements[i];
+		for(size_t i=0; i<list_->size(); ++i) {
+			const variant& var = (*list_)[i];
 			if(!first_time) {
 				str += ",";
 			}
@@ -1091,7 +1038,7 @@ void variant::serialize_to_string(std::string& str) const
 	case TYPE_MAP: {
 		str += "[";
 		bool first_time = true;
-		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+		for(std::map<variant,variant>::const_iterator i=map_->begin(); i != map_->end(); ++i) {
 			if(!first_time) {
 				str += ",";
 			}
@@ -1100,7 +1047,7 @@ void variant::serialize_to_string(std::string& str) const
 			str += "->";
 			i->second.serialize_to_string(str);
 		}
-		if(map_->elements.empty()) {
+		if(map_->empty()) {
 			str += "->";
 		}
 		str += "]";
@@ -1108,7 +1055,7 @@ void variant::serialize_to_string(std::string& str) const
 	}
 	case TYPE_STRING:
 		str += "'";
-		for(std::string::iterator it = string_->str.begin(); it < string_->str.end(); ++it) {
+		for(std::string::iterator it = string_->begin(); it < string_->end(); ++it) {
 			switch(*it) {
 			case '\'':
 				str += "[']";
@@ -1137,26 +1084,6 @@ void variant::serialize_from_string(const std::string& str)
 		*this = game_logic::formula(str).evaluate();
 	} catch(...) {
 		*this = variant(str);
-	}
-}
-
-int variant::refcount() const
-{
-	switch(type_) {
-	case TYPE_LIST:
-		return list_->refcount;
-		break;
-	case TYPE_STRING:
-		return string_->refcount;
-		break;
-	case TYPE_MAP:
-		return map_->refcount;
-		break;
-	case TYPE_CALLABLE:
-		return callable_->refcount();
-		break;
-	default:
-		return -1;
 	}
 }
 
@@ -1192,8 +1119,8 @@ std::string variant::string_cast() const
 		return "(object)";
 	case TYPE_LIST: {
 		std::string res = "";
-		for(size_t i=0; i<list_->elements.size(); ++i) {
-			const variant& var = list_->elements[i];
+		for(size_t i=0; i<list_->size(); ++i) {
+			const variant& var = (*list_)[i];
 			if(!res.empty()) {
 				res += ", ";
 			}
@@ -1205,7 +1132,7 @@ std::string variant::string_cast() const
 	}
 	case TYPE_MAP: {
 		std::string res = "";
-		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+		for(std::map<variant,variant>::const_iterator i=map_->begin(); i != map_->end(); ++i) {
 			if(!res.empty()) {
 				res += ",";
 			}
@@ -1217,7 +1144,7 @@ std::string variant::string_cast() const
 	}
 
 	case TYPE_STRING:
-		return string_->str;
+		return *string_;
 	default:
 		assert(false);
 		return "invalid";
@@ -1304,7 +1231,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 	case TYPE_MAP: {
 		s << "[";
 		bool first_time = true;
-		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
+		for(std::map<variant,variant>::const_iterator i=map_->begin(); i != map_->end(); ++i) {
 			if(!first_time) {
 				s << ",";
 			}
@@ -1317,7 +1244,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		break;
 	}
 	case TYPE_STRING: {
-		s << "'" << string_->str << "'";
+		s << "'" << *string_ << "'";
 		break;
 	}
 	}
