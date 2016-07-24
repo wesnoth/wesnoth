@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2009-05-12 18:51-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -278,15 +278,15 @@ msgstr ""
 msgid "Recruit: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Alvarleg villa"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "Ertu viss um að þú viljir hætta?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -298,7 +298,7 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Breytingar á kortinu síðan síðustu vistun "
 "munu glatast."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -306,23 +306,23 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Eftirfarandi kort voru breytt og allar "
 "breytingar síðan síðustu vistum munu glatast."
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Enginn tími dags fundinn."
 
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr ""
 
@@ -471,11 +471,12 @@ msgstr "(Nýtt kort)"
 msgid "New Scenario"
 msgstr "(Nýtt kort)"
 
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "Spilari"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+msgid "Player $side_num"
+msgstr ""
 
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "Stærð miðkortsins er ekki sú sama og núverandi kort"
 
@@ -516,12 +517,28 @@ msgstr "Gat ekki vistað kortið: $msg"
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
 msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:222
@@ -547,6 +564,9 @@ msgstr "Enginn"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr ""
+
+#~ msgid "Player"
+#~ msgstr "Spilari"
 
 #~ msgid "Quit"
 #~ msgstr "Hætta"

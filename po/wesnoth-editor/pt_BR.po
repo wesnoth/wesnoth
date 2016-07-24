@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2011-02-05 22:45-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -424,7 +424,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 170
 # File: src/editor/editor_controller.cpp, line: 175
 # File: src/editor/editor_controller.cpp, line: 175
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Erro fatal"
 
@@ -432,7 +432,7 @@ msgstr "Erro fatal"
 # File: src/editor/editor_controller.cpp, line: 198
 # File: src/editor/editor_controller.cpp, line: 203
 # File: src/editor/editor_controller.cpp, line: 203
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "Você realmente deseja sair?"
 
@@ -440,7 +440,7 @@ msgstr "Você realmente deseja sair?"
 # File: src/editor/editor_controller.cpp, line: 200
 # File: src/editor/editor_controller.cpp, line: 205
 # File: src/editor/editor_controller.cpp, line: 205
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -456,7 +456,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 202
 # File: src/editor/editor_controller.cpp, line: 207
 # File: src/editor/editor_controller.cpp, line: 207
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -468,7 +468,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 216
 # File: src/editor/editor_controller.cpp, line: 221
 # File: src/editor/editor_controller.cpp, line: 221
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Nenhum editor tempo-do-dia encontrado."
 
@@ -476,7 +476,7 @@ msgstr "Nenhum editor tempo-do-dia encontrado."
 # File: src/editor/editor_controller.cpp, line: 906
 # File: src/editor/editor_controller.cpp, line: 949
 # File: src/editor/editor_controller.cpp, line: 949
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr ""
 
@@ -484,7 +484,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 907
 # File: src/editor/editor_controller.cpp, line: 950
 # File: src/editor/editor_controller.cpp, line: 950
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr ""
 
@@ -492,7 +492,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 923
 # File: src/editor/editor_controller.cpp, line: 966
 # File: src/editor/editor_controller.cpp, line: 966
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr ""
 
@@ -500,7 +500,7 @@ msgstr ""
 # File: src/editor/editor_controller.cpp, line: 924
 # File: src/editor/editor_controller.cpp, line: 967
 # File: src/editor/editor_controller.cpp, line: 967
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr ""
 
@@ -767,19 +767,16 @@ msgstr "(Novo Mapa)"
 msgid "New Scenario"
 msgstr "(Novo Mapa)"
 
-#
-# File: src/editor/map/editor_map.cpp, line: 149
-# File: src/editor/map/editor_map.cpp, line: 149
-# File: src/editor/map/editor_map.cpp, line: 149
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "Jogador"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+msgid "Player $side_num"
+msgstr ""
 
 #
 # File: src/editor/map/editor_map.cpp, line: 266
 # File: src/editor/map/editor_map.cpp, line: 266
 # File: src/editor/map/editor_map.cpp, line: 266
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "O tamanho do mapa alvo é diferente do mapa atual"
 
@@ -855,7 +852,7 @@ msgstr ""
 # File: src/editor/palette/editor_palettes.cpp, line: 329
 # File: src/editor/palette/editor_palettes.cpp, line: 340
 # File: src/editor/palette/editor_palettes.cpp, line: 340
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr "(não-central)"
 
@@ -863,9 +860,25 @@ msgstr "(não-central)"
 # File: src/editor/palette/editor_palettes.cpp, line: 330
 # File: src/editor/palette/editor_palettes.cpp, line: 341
 # File: src/editor/palette/editor_palettes.cpp, line: 341
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
 msgstr "Não vai trabalhar no jogo sem cuidado extra."
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
+msgstr ""
 
 #
 # Assim mesmo?
@@ -905,6 +918,13 @@ msgstr "Nenhum"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr ""
+
+#
+# File: src/editor/map/editor_map.cpp, line: 149
+# File: src/editor/map/editor_map.cpp, line: 149
+# File: src/editor/map/editor_map.cpp, line: 149
+#~ msgid "Player"
+#~ msgstr "Jogador"
 
 #
 # File: src/editor/editor_controller.cpp, line: 205

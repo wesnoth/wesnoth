@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2013-06-23 02:19-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -279,15 +279,15 @@ msgstr "Impendium: "
 msgid "Recruit: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Error gravis"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "Itane vis exire?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -297,7 +297,7 @@ msgid ""
 "lost."
 msgstr "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -305,23 +305,23 @@ msgstr ""
 "Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
 "servatumdelebuntur:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Hora pro chartographia non inventa est."
 
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr "Nomen Novum Dare"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr "Nomen:"
 
@@ -469,11 +469,14 @@ msgstr "(Charta Nova)"
 msgid "New Scenario"
 msgstr "(Nova Manus)"
 
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "Lusor"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+#, fuzzy
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "Lusor $player_number"
 
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
@@ -514,13 +517,29 @@ msgstr "Non potest ut charta servetur: $msg"
 msgid "(Unknown Group)"
 msgstr "(Classis Ignota)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr "(innucleum)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
 msgstr "Hae sine cura singulare deerint."
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
+msgstr ""
 
 # Eminentia
 #: src/editor/palette/terrain_palettes.cpp:222
@@ -543,6 +562,9 @@ msgstr "Nemo"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr "Lusor $player_number"
+
+#~ msgid "Player"
+#~ msgstr "Lusor"
 
 #~ msgid "Quit"
 #~ msgstr "Exire"

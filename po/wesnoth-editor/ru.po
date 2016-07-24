@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2014-11-11 12:20+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -289,15 +289,15 @@ msgstr "Цена:"
 msgid "Recruit: "
 msgstr "Найм:"
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Критическая ошибка"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "Действительно хотите выйти?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -309,7 +309,7 @@ msgstr ""
 "Действительно хотите выйти? Вы потеряете все изменения, которые внесли с "
 "последнего сохранения."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -317,23 +317,23 @@ msgstr ""
 "Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
 "них будут утрачены:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr "Сменить ИД бойца"
 
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr "ИД:"
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr "Имя:"
 
@@ -469,11 +469,14 @@ msgstr "(Новая карта)"
 msgid "New Scenario"
 msgstr "(Новый сценарий)"
 
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "Игрок"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+#, fuzzy
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "Игрок $player_number"
 
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
@@ -510,13 +513,29 @@ msgstr "Невозможно сохранить карту: $msg"
 msgid "(Unknown Group)"
 msgstr "(Неизвестная группа)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr "(не-базовые)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
 msgstr "В игре не заработает без дополнительной работы."
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
+msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:222
 msgid "FG: "
@@ -537,6 +556,9 @@ msgstr "Нет"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr "Игрок $player_number"
+
+#~ msgid "Player"
+#~ msgstr "Игрок"
 
 #~ msgid "Quit"
 #~ msgstr "Выйти"

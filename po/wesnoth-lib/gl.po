@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2016-05-13 06:59+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -1785,7 +1785,7 @@ msgstr "Perfil"
 #: data/gui/window/chat_log.cfg:203 data/gui/window/game_version.cfg:600
 #: data/gui/window/gamestate_inspector.cfg:315
 #: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_player_info.cfg:199
-#: data/gui/window/lua_interpreter.cfg:133 data/gui/window/message.cfg:135
+#: data/gui/window/lua_interpreter.cfg:148 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:314 src/construct_dialog.cpp:140
 #: src/generators/default_map_generator.cpp:110
@@ -1811,18 +1811,18 @@ msgstr "Vaise conectar a un servidor de descarga de complementos."
 msgid "Server:"
 msgstr "Servidor:"
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "Eliminar complementos"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Help"
 msgstr "Axuda"
 
@@ -1850,8 +1850,8 @@ msgstr "Conectarse"
 #: data/gui/window/editor_set_starting_position.cfg:175
 #: data/gui/window/folder_create.cfg:133 data/gui/window/game_load.cfg:463
 #: data/gui/window/game_save.cfg:134 data/gui/window/label_settings.cfg:149
-#: data/gui/window/language_selection.cfg:141 data/gui/window/message.cfg:149
-#: data/gui/window/mp_change_control.cfg:160
+#: data/gui/window/language_selection.cfg:141 data/gui/window/logging.cfg:168
+#: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:160
 #: data/gui/window/mp_cmd_wrapper.cfg:477 data/gui/window/mp_connect.cfg:173
 #: data/gui/window/mp_create_game.cfg:559
 #: data/gui/window/mp_create_game_choose_mods.cfg:202
@@ -2093,9 +2093,9 @@ msgstr "Ascendente"
 msgid "sort^Descending"
 msgstr "Descendente"
 
-#. [label]: id=name
-#. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_name
+#. [toggle_button]: id=sort_0
+#. [label]: id=name
 #: data/gui/window/addon_list.cfg:50 data/gui/window/game_load.cfg:245
 #: data/gui/window/mp_server_list.cfg:107
 msgid "Name"
@@ -2122,9 +2122,9 @@ msgstr "Tamaño"
 msgid "Downloads"
 msgstr "Descargas"
 
-#. [toggle_button]: id=sort_1
-#. [label]: id=typename
 #. [toggle_button]: id=sort_type
+#. [label]: id=typename
+#. [toggle_button]: id=sort_1
 #: data/gui/window/addon_list.cfg:121
 #: data/gui/window/gamestate_inspector.cfg:107
 #: data/gui/window/unit_create.cfg:158
@@ -2136,8 +2136,8 @@ msgstr "Tipo"
 msgid "Choose the add-ons you want to remove."
 msgstr "Escolle os elementos que queiras eliminar."
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/mp_cmd_wrapper.cfg:198
 #: data/gui/window/preferences/05_multiplayer.cfg:317
@@ -2222,7 +2222,7 @@ msgstr "Axustado ao hexágono"
 #: data/gui/window/folder_create.cfg:119
 #: data/gui/window/game_cache_options.cfg:247 data/gui/window/game_load.cfg:450
 #: data/gui/window/game_save.cfg:120 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:127
+#: data/gui/window/language_selection.cfg:127 data/gui/window/logging.cfg:158
 #: data/gui/window/mp_change_control.cfg:150
 #: data/gui/window/mp_create_game.cfg:544
 #: data/gui/window/mp_create_game_choose_mods.cfg:188
@@ -2286,8 +2286,8 @@ msgstr "Diálogos adicionais:"
 msgid "Configure sides"
 msgstr "Configurar os bandos"
 
-#. [label]
 #. [label]: id=era_label
+#. [label]
 #: data/gui/window/campaign_settings.cfg:157
 #: data/gui/window/mp_create_game.cfg:185
 msgid "Era:"
@@ -2313,9 +2313,9 @@ msgstr "Páxina:"
 msgid "Last"
 msgstr "Última"
 
+#. [button]: id=previous_page
 #. [button]: id=previous_tod
 #. [button]: id=previous_tip
-#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:97 data/gui/window/custom_tod.cfg:327
 #: data/gui/window/title_screen.cfg:195
 msgid "Previous"
@@ -2326,9 +2326,9 @@ msgstr "Anterior"
 msgid "Previous page"
 msgstr "Páxina anterior"
 
+#. [button]: id=next_page
 #. [button]: id=next_tod
 #. [button]: id=next_tip
-#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/custom_tod.cfg:352
 #: data/gui/window/title_screen.cfg:210
 msgid "Next"
@@ -2644,7 +2644,7 @@ msgstr "Nada"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:210
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:211
 msgid "Generate Map"
 msgstr "Xerar un mapa"
 
@@ -2695,7 +2695,7 @@ msgstr "Crear"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:208
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:209
 msgid "Resize Map"
 msgstr "Cambiar as dimensións"
 
@@ -2806,8 +2806,8 @@ msgstr "Continuar"
 msgid "Execution trace"
 msgstr "Execución paso a paso"
 
-#. [grid]
 #. [button]: id=cancel
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/title_screen.cfg:266
 msgid "Quit"
@@ -2855,15 +2855,15 @@ msgstr "Copiar"
 msgid "Copy this path to clipboard"
 msgstr "Copiar esta ruta no portapapeis."
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Buscar"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2899,8 +2899,8 @@ msgstr "Eliminar a partida"
 msgid "Do you really want to delete this game?"
 msgstr "Está seguro de que quere eliminar a partida?"
 
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -2914,8 +2914,8 @@ msgstr "Non volver mostrar."
 msgid "Load Game"
 msgstr "Cargar unha partida"
 
-#. [label]
 #. [label]: id=lblFilter
+#. [label]
 #: data/gui/window/game_load.cfg:195 data/gui/window/unit_create.cfg:98
 msgid "Filter"
 msgstr "Filtro"
@@ -3083,8 +3083,8 @@ msgstr "Elementos"
 msgid "Contents"
 msgstr "Contido"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:303
 #: data/gui/window/lua_interpreter.cfg:41
 msgid "Lua Console"
@@ -3095,8 +3095,8 @@ msgstr "Consola de Lua"
 msgid "Show or Hide Labels"
 msgstr "Mostrar ou ocultar as etiquetas"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:263
 msgid "Language"
@@ -3247,8 +3247,8 @@ msgstr "Saír"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#. [grid]
 #. [button]: id=show_preferences
+#. [grid]
 #: data/gui/window/lobby_main.cfg:691 data/gui/window/preferences.cfg:209
 #: data/gui/window/title_screen.cfg:264 src/hotkey/hotkey_command.cpp:87
 msgid "Preferences"
@@ -3334,6 +3334,20 @@ msgstr "Tempo de expulsión:"
 #: data/gui/window/lobby_player_info.cfg:187
 msgid "Kick/ban"
 msgstr "Expulsar"
+
+#. [label]
+#: data/gui/window/logging.cfg:85
+#, fuzzy
+#| msgid "Options"
+msgid "Logging Options"
+msgstr "Opcións"
+
+#. [button]: id=clear
+#: data/gui/window/lua_interpreter.cfg:132
+#, fuzzy
+#| msgid "Lua Console"
+msgid "Clear Console"
+msgstr "Consola de Lua"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
@@ -3458,8 +3472,8 @@ msgstr "Cambiou a quenda:"
 msgid "When a new turn has begun"
 msgstr "Cando comeza a súa quenda."
 
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:221
 msgid "Defaults"
@@ -3577,8 +3591,8 @@ msgstr "Tamaño do mapa: "
 msgid "Default"
 msgstr "Predeterminado"
 
-#. [label]: id=title
 #. [button]: id=password
+#. [label]: id=title
 #: data/gui/window/mp_create_game.cfg:226
 #: data/gui/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -3632,8 +3646,8 @@ msgstr "Establecer o contrasinal que debe saber quen queira unirse á partida."
 msgid "Password:"
 msgstr "Contrasinal:"
 
-#. [column]
 #. [label]
+#. [column]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:165
 msgid "Host Networked Game"
@@ -3688,8 +3702,8 @@ msgid "Password Reminder"
 msgstr "Lembrar o contrasinal"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:39
 #: data/gui/window/title_screen.cfg:258 src/gui/dialogs/game_load.cpp:354
 msgid "Multiplayer"
@@ -3940,7 +3954,9 @@ msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:87
-msgid "Available in titlescreen"
+#, fuzzy
+#| msgid "Available in titlescreen"
+msgid "Available at titlescreen"
 msgstr "Dispoñíbel no menú principal"
 
 #. [button]: id=btn_add_hotkey
@@ -4534,7 +4550,7 @@ msgstr "Recrutar"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:204
-#: src/gui/dialogs/preferences_dialog.cpp:381
+#: src/gui/dialogs/preferences_dialog.cpp:382
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Houbo un erro"
@@ -4550,35 +4566,35 @@ msgstr "Detalles:"
 msgid "Copy this report to clipboard"
 msgstr "Copiar este informe ao portapapeis"
 
-#: src/build_info.cpp:183
+#: src/build_info.cpp:168
 msgid "feature^Experimental OpenMP support"
 msgstr "Compatibilidade experimental con OpenMP"
 
-#: src/build_info.cpp:188
+#: src/build_info.cpp:173
 msgid "feature^PNG screenshots"
 msgstr "Capturas de pantalla en formato PNG"
 
-#: src/build_info.cpp:193
+#: src/build_info.cpp:178
 msgid "feature^Lua console completion"
 msgstr "Completamento da consola de Lua"
 
-#: src/build_info.cpp:198
+#: src/build_info.cpp:183
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Renderización bidireccional de versións anteriores"
 
-#: src/build_info.cpp:205
+#: src/build_info.cpp:190
 msgid "feature^D-Bus notifications back end"
 msgstr "Infraestrutura de notificacións de D-Bus"
 
-#: src/build_info.cpp:214
+#: src/build_info.cpp:199
 msgid "feature^Win32 notifications back end"
 msgstr "Infraestrutura de notificacións de Win32"
 
-#: src/build_info.cpp:220
+#: src/build_info.cpp:205
 msgid "feature^Cocoa notifications back end"
 msgstr "Infraestrutura de notificacións de Cocoa"
 
-#: src/build_info.cpp:225
+#: src/build_info.cpp:210
 msgid "feature^Growl notifications back end"
 msgstr "Infraestrutura de notificacións de Growl"
 
@@ -4602,19 +4618,19 @@ msgstr "Non foi posíbel eliminar o ficheiro."
 msgid "Creation of the directory failed."
 msgstr "Non foi posíbel crear o directorio."
 
-#: src/game_preferences.cpp:408
+#: src/game_preferences.cpp:407
 msgid "No server has been defined."
 msgstr "Non se estableceu ningún servidor."
 
-#: src/game_preferences.cpp:507
+#: src/game_preferences.cpp:506
 msgid "player"
 msgstr "xogador"
 
-#: src/game_preferences.cpp:1033
+#: src/game_preferences.cpp:1042
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/game_preferences.cpp:1036
+#: src/game_preferences.cpp:1045
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -4789,7 +4805,7 @@ msgstr "Descoñecido"
 #: src/gui/dialogs/chat_log.cpp:418 src/gui/dialogs/game_cache_options.cpp:104
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:870
-#: src/gui/dialogs/lua_interpreter.cpp:460
+#: src/gui/dialogs/lua_interpreter.cpp:476
 #: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:226
 msgid "Clipboard support not found, contact your packager"
@@ -4881,38 +4897,38 @@ msgstr ""
 "A modificación seleccionada non é compatíbel coa túa configuración.\n"
 "Escolle unha modificación compatíbel."
 
-#: src/gui/dialogs/game_cache_options.cpp:137
+#: src/gui/dialogs/game_cache_options.cpp:138
 msgid "dir_size^Unknown"
 msgstr "Descoñecido"
 
-#: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:56
-#: src/gui/dialogs/network_transmission.cpp:57
+#: src/gui/dialogs/game_cache_options.cpp:140
+#: src/gui/dialogs/network_transmission.cpp:51
+#: src/gui/dialogs/network_transmission.cpp:52
 #: src/gui/dialogs/screenshot_notification.cpp:73
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_cache_options.cpp:162
+#: src/gui/dialogs/game_cache_options.cpp:163
 msgid "Cache Cleaned"
 msgstr "Limpouse a caché"
 
-#: src/gui/dialogs/game_cache_options.cpp:163
+#: src/gui/dialogs/game_cache_options.cpp:164
 msgid "The game data cache has been cleaned."
 msgstr "Limpouse a cachñe de datos do xogo."
 
-#: src/gui/dialogs/game_cache_options.cpp:166
+#: src/gui/dialogs/game_cache_options.cpp:167
 msgid "The game data cache could not be completely cleaned."
 msgstr "Non foi posíbel completar a limpeza da caché de datos do xogo."
 
-#: src/gui/dialogs/game_cache_options.cpp:182
+#: src/gui/dialogs/game_cache_options.cpp:183
 msgid "Cache Purged"
 msgstr "Baleirouse a caché"
 
-#: src/gui/dialogs/game_cache_options.cpp:183
+#: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache has been purged."
 msgstr "Baleirouse a cachñe de datos do xogo."
 
-#: src/gui/dialogs/game_cache_options.cpp:186
+#: src/gui/dialogs/game_cache_options.cpp:187
 msgid "The game data cache could not be purged."
 msgstr "Non foi posíbel baleirar a caché de datos do xogo."
 
@@ -4984,64 +5000,64 @@ msgstr "Descoñecido"
 msgid "Side $side_number ($name)"
 msgstr "Bando $side_number ($name)"
 
-#: src/gui/dialogs/loadscreen.cpp:43
+#: src/gui/dialogs/loadscreen.cpp:44
 msgid "Building terrain rules"
 msgstr "Construíndo as regras do terreo"
 
-#: src/gui/dialogs/loadscreen.cpp:44
+#: src/gui/dialogs/loadscreen.cpp:45
 msgid "Reading files and creating cache"
 msgstr "Lendo os ficheiros e creando a caché"
 
-#: src/gui/dialogs/loadscreen.cpp:45 src/gui/dialogs/loadscreen.cpp:48
+#: src/gui/dialogs/loadscreen.cpp:46 src/gui/dialogs/loadscreen.cpp:49
 msgid "Initializing display"
 msgstr "Preparando a pantalla"
 
-#: src/gui/dialogs/loadscreen.cpp:46
+#: src/gui/dialogs/loadscreen.cpp:47
 msgid "Reinitialize fonts for the current language"
 msgstr "Preparando de novo o tipo de letra para o idioma actual"
 
-#: src/gui/dialogs/loadscreen.cpp:47
+#: src/gui/dialogs/loadscreen.cpp:48
 msgid "Initializing teams"
 msgstr "Preparando os equipos"
 
-#: src/gui/dialogs/loadscreen.cpp:49
+#: src/gui/dialogs/loadscreen.cpp:50
 msgid "Loading game configuration"
 msgstr "Cargando a configuración da partida"
 
-#: src/gui/dialogs/loadscreen.cpp:50
+#: src/gui/dialogs/loadscreen.cpp:51
 msgid "Loading data files"
 msgstr "Cargando os ficheiros de datos"
 
-#: src/gui/dialogs/loadscreen.cpp:51
+#: src/gui/dialogs/loadscreen.cpp:52
 msgid "Loading level"
 msgstr "Cargando o nivel"
 
-#: src/gui/dialogs/loadscreen.cpp:52
+#: src/gui/dialogs/loadscreen.cpp:53
 msgid "Initializing scripting engine"
 msgstr "Preparando o motor de scripting"
 
 # Configuración → Xeral.
-#: src/gui/dialogs/loadscreen.cpp:53
+#: src/gui/dialogs/loadscreen.cpp:54
 msgid "Initializing planning mode"
 msgstr "Preparando o modo de planificación"
 
-#: src/gui/dialogs/loadscreen.cpp:54
+#: src/gui/dialogs/loadscreen.cpp:55
 msgid "Reading unit files"
 msgstr "Lendo os ficheiros das unidades"
 
-#: src/gui/dialogs/loadscreen.cpp:55
+#: src/gui/dialogs/loadscreen.cpp:56
 msgid "Loading units"
 msgstr "Cargando as unidades"
 
-#: src/gui/dialogs/loadscreen.cpp:56
+#: src/gui/dialogs/loadscreen.cpp:57
 msgid "Searching for installed add-ons"
 msgstr "Buscando complementos instalados"
 
-#: src/gui/dialogs/loadscreen.cpp:57
+#: src/gui/dialogs/loadscreen.cpp:58
 msgid "Starting game"
 msgstr "Iniciando a partida"
 
-#: src/gui/dialogs/loadscreen.cpp:58
+#: src/gui/dialogs/loadscreen.cpp:59
 msgid "Verifying cache"
 msgstr "Verificando a caché"
 
@@ -5050,19 +5066,19 @@ msgid "whisper to $receiver"
 msgstr "bisbarlle a $receiver"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
-#: src/gui/dialogs/lobby/lobby.cpp:629
+#: src/gui/dialogs/lobby/lobby.cpp:630
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Listando $num_shown partidas dun total de $num_total|."
 
-#: src/gui/dialogs/lobby/lobby.cpp:673
+#: src/gui/dialogs/lobby/lobby.cpp:674
 msgid "Observers allowed"
 msgstr "Permítense os observadores"
 
-#: src/gui/dialogs/lobby/lobby.cpp:676
+#: src/gui/dialogs/lobby/lobby.cpp:677
 msgid "Observers not allowed"
 msgstr "Non se permiten os observadores"
 
-#: src/gui/dialogs/lobby/lobby.cpp:1076
+#: src/gui/dialogs/lobby/lobby.cpp:1077
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -5071,7 +5087,7 @@ msgstr ""
 "deste usuario, executa a orde «/ignore $name».\n"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
-#: src/gui/dialogs/lobby/lobby.cpp:1083
+#: src/gui/dialogs/lobby/lobby.cpp:1084
 msgid "<i>Room $name joined</i>"
 msgstr "<i>Entrou na sala $name.</i>"
 
@@ -5099,46 +5115,46 @@ msgstr "Bando $side"
 msgid "Load Game..."
 msgstr "Cargar unha partida…"
 
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "no"
 msgstr "non"
 
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "yes"
 msgstr "si"
 
-#: src/gui/dialogs/preferences_dialog.cpp:157
+#: src/gui/dialogs/preferences_dialog.cpp:158
 msgid "infinite"
 msgstr "infinito"
 
-#: src/gui/dialogs/preferences_dialog.cpp:330
+#: src/gui/dialogs/preferences_dialog.cpp:331
 msgid "Empty list"
 msgstr "A lista está baleira."
 
 # «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:339
+#: src/gui/dialogs/preferences_dialog.cpp:340
 msgid "friend"
 msgstr "(amigo)"
 
 # «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:344
+#: src/gui/dialogs/preferences_dialog.cpp:345
 msgid "ignored"
 msgstr "(ignorado)"
 
 # Mensaxe que aparece nunha xanela ao intentar introducir un nome de usuario incorrecto (por exemplo, un baleiro) na lista de amigos e ignorados, accesible dende «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:381
+#: src/gui/dialogs/preferences_dialog.cpp:382
 msgid "Invalid username"
 msgstr "O nome de usuario non é válido."
 
-#: src/gui/dialogs/preferences_dialog.cpp:414
+#: src/gui/dialogs/preferences_dialog.cpp:415
 msgid "Not on friends or ignore lists"
 msgstr "Nin amigo nin ignorado."
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-msgid "&#10003;"
-msgstr "&#10003;"
+#: src/gui/dialogs/preferences_dialog.cpp:937
+msgid "&#9679;"
+msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:997
+#: src/gui/dialogs/preferences_dialog.cpp:998
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -5146,47 +5162,47 @@ msgstr ""
 "«<b>$hotkey_sequence|</b>» emprégase para «<b>$old_hotkey_action|</b>».\n"
 "Queres que pase a estar asignado a «<b>$new_hotkey_action|</b>»?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:1000
 msgid "Reassign Hotkey"
 msgstr "Cambiar a acción do atallo"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1016
+#: src/gui/dialogs/preferences_dialog.cpp:1017
 msgid "All hotkeys have been reset to their default values."
 msgstr "Restablecéronse todos os atallos aos seus valores predeterminados."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1016
+#: src/gui/dialogs/preferences_dialog.cpp:1017
 msgid "Hotkeys Reset"
 msgstr "Restablecemento dos atallos"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1088
+#: src/gui/dialogs/preferences_dialog.cpp:1091
 msgid "Prefs tab^General"
 msgstr "Xeral"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1089
+#: src/gui/dialogs/preferences_dialog.cpp:1092
 msgid "Prefs tab^Friends"
 msgstr "Amigos"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1126
+#: src/gui/dialogs/preferences_dialog.cpp:1129
 msgid "Prefs section^General"
 msgstr "Xeral"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1127
+#: src/gui/dialogs/preferences_dialog.cpp:1130
 msgid "Prefs section^Hotkeys"
 msgstr "Atallos"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1128
+#: src/gui/dialogs/preferences_dialog.cpp:1131
 msgid "Prefs section^Display"
 msgstr "Visualización"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1129
+#: src/gui/dialogs/preferences_dialog.cpp:1132
 msgid "Prefs section^Sound"
 msgstr "Sons"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1130
+#: src/gui/dialogs/preferences_dialog.cpp:1133
 msgid "Prefs section^Multiplayer"
 msgstr "Varios xogadores"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1131
+#: src/gui/dialogs/preferences_dialog.cpp:1134
 msgid "Prefs section^Advanced"
 msgstr "Avanzado"
 
@@ -5323,7 +5339,7 @@ msgstr ""
 "ou «ok» (aceptar)."
 
 #: src/gui/widgets/window.cpp:1081 src/gui/widgets/window.cpp:1118
-#: src/tests/gui/test_gui2.cpp:486
+#: src/tests/gui/test_gui2.cpp:489
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non foi posíbel mostrar un dos diálogos, non collía na pantalla."
 
@@ -5701,19 +5717,25 @@ msgstr "Mover a paleta á esquerda"
 msgid "Scroll Palette Right"
 msgstr "Mover a paleta á dereita"
 
-#: src/hotkey/hotkey_command.cpp:155
+#: src/hotkey/hotkey_command.cpp:154
+#, fuzzy
+#| msgid "Level options"
+msgid "Remove Location"
+msgstr "Opcións de nivel"
+
+#: src/hotkey/hotkey_command.cpp:156
 msgid "Add New Side"
 msgstr "Engadir un bando"
 
-#: src/hotkey/hotkey_command.cpp:157
+#: src/hotkey/hotkey_command.cpp:158
 msgid "Next Tool"
 msgstr "Seguinte ferramenta"
 
-#: src/hotkey/hotkey_command.cpp:159
+#: src/hotkey/hotkey_command.cpp:160
 msgid "Paint Tool"
 msgstr "Ferramenta de pintura"
 
-#: src/hotkey/hotkey_command.cpp:159 src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:160 src/hotkey/hotkey_command.cpp:161
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -5723,11 +5745,11 @@ msgstr ""
 "Premendo «Ctrl» e un dos botóns podes copiar o terreo que estea baixo o "
 "punteiro."
 
-#: src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:161
 msgid "Fill Tool"
 msgstr "Ferramenta de recheo"
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -5736,11 +5758,11 @@ msgstr ""
 "abre un menú de contexto. Mantén premida a tecla Maiús para seleccionar "
 "mediante a vara máxica hexágonos co mesmo tipo de terreo."
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid "Selection Tool"
 msgstr "Ferramenta de selección"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -5751,20 +5773,20 @@ msgstr ""
 "número establece a respectiva posición inicial baixo o punteiro, «Supr» "
 "bórraa."
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid "Starting Positions Tool"
 msgstr "Ferramenta das posicións iniciais"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Label Tool"
 msgstr "Ferramenta de etiquetas"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
 "O botón principal establece ou arrastra a etiqueta, o secundario elimínaa."
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -5773,15 +5795,15 @@ msgstr ""
 "arrastrar e soltar—, o secundario abre un menú de contexto. É necesario ter "
 "un bando definido."
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid "Unit Tool"
 msgstr "Ferramenta de unidades"
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:166
 msgid "Item Tool"
 msgstr "Ferramenta de elementos"
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:166
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
@@ -5789,7 +5811,7 @@ msgstr ""
 "O botón principal establece un novo elemento ou move un existente —arrastrar "
 "e soltar—, o botón secundario sóltao. Aínda non funciona."
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
@@ -5797,11 +5819,11 @@ msgstr ""
 "O botón principal establece ou arrastra a fonte do son, o secundario "
 "elimínaa. Aínda non funciona."
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid "Sound Source Tool"
 msgstr "Ferramenta de orixe de son"
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -5809,338 +5831,338 @@ msgstr ""
 "O botón principal establece a propiedade da vila ao bando actual, o "
 "secundario quita a propiedade. É necesario ter un bando definido."
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid "Village Tool"
 msgstr "Ferramenta de vilas"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:170
 msgid "Can Recruit"
 msgstr "Pode recrutar"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Conmuta o atributo de recrutar dunha unidade."
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Can be Renamed"
 msgstr "Pode renomearse"
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle the unit being renameable."
 msgstr "Conmuta a posibilidade de renomear a unidade."
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Assign Recruit List"
 msgstr "Asignar como lista de recrutamento"
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
 "Asignar o grupo de unidades seleccionado como lista de recrutamento á "
 "unidade."
 
-#: src/hotkey/hotkey_command.cpp:173
+#: src/hotkey/hotkey_command.cpp:174
 msgid "Change Unit ID"
 msgstr "Cambiar o identificador da unidade"
 
-#: src/hotkey/hotkey_command.cpp:174
+#: src/hotkey/hotkey_command.cpp:175
 msgid "Loyal"
 msgstr "Leal"
 
-#: src/hotkey/hotkey_command.cpp:177
+#: src/hotkey/hotkey_command.cpp:178
 msgid "Toggle Minimap Unit Coding"
 msgstr "Cambiar o código de unidades do minimapa"
 
-#: src/hotkey/hotkey_command.cpp:178
+#: src/hotkey/hotkey_command.cpp:179
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Cambiar o código de terreo do minimapa"
 
-#: src/hotkey/hotkey_command.cpp:180
+#: src/hotkey/hotkey_command.cpp:181
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Cambiar o debuxado de unidades do minimapa"
 
-#: src/hotkey/hotkey_command.cpp:181
+#: src/hotkey/hotkey_command.cpp:182
 msgid "Toggle Minimap Village Drawing"
 msgstr "Cambiar o debuxado de vilas do minimapa"
 
-#: src/hotkey/hotkey_command.cpp:182
+#: src/hotkey/hotkey_command.cpp:183
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Cambiar o debuxado de terreo do minimapa"
 
-#: src/hotkey/hotkey_command.cpp:184
+#: src/hotkey/hotkey_command.cpp:185
 msgid "Next Brush"
 msgstr "Seguinte brocha"
 
-#: src/hotkey/hotkey_command.cpp:185
+#: src/hotkey/hotkey_command.cpp:186
 msgid "Default Brush"
 msgstr "Brocha predeterminada"
 
-#: src/hotkey/hotkey_command.cpp:186
+#: src/hotkey/hotkey_command.cpp:187
 msgid "Single Tile"
 msgstr "Un hexágono"
 
-#: src/hotkey/hotkey_command.cpp:187
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Radius One"
 msgstr "Raio 1"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Radius Two"
 msgstr "Raio 2"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Brush NW-SE"
 msgstr "Pincel NO-SL"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Brush SW-NE"
 msgstr "Pincel SO-NL"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "O botón principal pega o contido do portapapeis, o secundario mostra un menú "
 "de contexto."
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Select All"
 msgstr "Seleccionalo todo"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Select Inverse"
 msgstr "Inverter a selección"
 
-#: src/hotkey/hotkey_command.cpp:198
+#: src/hotkey/hotkey_command.cpp:199
 msgid "Select None"
 msgstr "Non seleccionar nada"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rotar o que hai no portarretallos no sentido das agullas do reloxo"
 
-#: src/hotkey/hotkey_command.cpp:200
+#: src/hotkey/hotkey_command.cpp:201
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 "Rotar o que hai no portarretallos no sentido contrario ao das agullas do "
 "reloxo"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Flip Clipboard Horizontally"
 msgstr "Voltear horizontalmente o que hai no portarretallos"
 
-#: src/hotkey/hotkey_command.cpp:202
+#: src/hotkey/hotkey_command.cpp:203
 msgid "Flip Clipboard Vertically"
 msgstr "Voltear verticalmente o que hai no portarretallos"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Rotate Selection"
 msgstr "Rotar a selección"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Flip Selection"
 msgstr "Voltear a selección"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Fill Selection"
 msgstr "Encher a selección"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Generate Tiles in Selection"
 msgstr "Xerar hexágonos na selección"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Randomize Tiles in Selection"
 msgstr "Xerar ao chou os hexágonos da selección"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Rotate Map"
 msgstr "Rotar o mapa"
 
-#: src/hotkey/hotkey_command.cpp:211
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Apply a Mask"
 msgstr "Aplicar unha máscara"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Create Mask"
 msgstr "Crear unha máscara"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Display"
 msgstr "Actualizar a pantalla"
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Update Terrain Transitions"
 msgstr "Actualizar as transicións dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Toggle Terrain Transition Update"
 msgstr "Conmutar a actualización das transicións dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar automaticamente as transicións dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Actualizar automaticamente as transicións dos terreos: non."
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente."
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Refresh Image Cache"
 msgstr "Actualizar a caché das imaxes"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Draw Hex Coordinates"
 msgstr "Mostrar as coordenadas dos hexágonos"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Draw Terrain Codes"
 msgstr "Mostrar os códigos dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Save Selection to Area"
 msgstr "Gardar a selección na zona"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Rename Selected Area"
 msgstr "Renomear a zona seleccionada"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Remove Selected Area"
 msgstr "Eliminar a zona seleccionada"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Add New Area"
 msgstr "Engadir unha zona nova"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Edit Scenario"
 msgstr "Editar o escenario"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Edit Side"
 msgstr "Editar o bando"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Remove Side"
 msgstr "Eliminar o bando"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Delay Shroud Updates"
 msgstr "Retardar as actualizacións do manto do descoñecido"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Update Shroud Now"
 msgstr "Actualizar o manto do descoñecido"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Continue Move"
 msgstr "Continuar o movemento"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Find Label or Unit"
 msgstr "Buscar un elemento ou unidade"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Speak to Ally"
 msgstr "Escribirlles unha mensaxe aos aliados"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Speak to All"
 msgstr "Escribirlle unha mensaxe a todo o mundo"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "View Chat Log"
 msgstr "Ver o rexistro das conversas"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Enter User Command"
 msgstr "Escribir unha orde"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Custom Command"
 msgstr "Orde personalizada"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Run Formula"
 msgstr "Executar o código Formula"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Clear Messages"
 msgstr "Quitar as mensaxes"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Change Language"
 msgstr "Cambiar de lingua"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Refresh WML"
 msgstr "Actualizar o WML"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Next Tip of the Day"
 msgstr "Seguinte consello"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Previous Tip of the Day"
 msgstr "Consello anterior"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Start Tutorial"
 msgstr "Comezar a aprendizaxe"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Start Campaign"
 msgstr "Comezar unha partida individual"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:257
 msgid "Start Multiplayer Game"
 msgstr "Comezar unha partida con varios xogadores"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Manage Add-ons"
 msgstr "Xestionar os complementos"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Manage Cores"
 msgstr "Xestionar os núcleos"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapas"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Show Credits"
 msgstr "Mostrar a lista dos autores"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Show Helptip"
 msgstr "Mostrar a axuda"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Show Lua Console"
 msgstr "Mostrar a consola de Lua"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Unrecognized Command"
 msgstr "Orde descoñecida"
 
@@ -6166,16 +6188,16 @@ msgstr "gl"
 msgid "The maximum text width is less than 1."
 msgstr "O ancho máximo do texto é inferior a 1."
 
-#: src/preferences_display.cpp:126
+#: src/preferences_display.cpp:124
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Non hai temas coñecidos. Proba a cambialos desde unha partida."
 
 # É o título da xanela dende a que se busca o «wesnothd». Accesible dende «Configuración → Varios xogadores → Establecer a ruta ao «wesnothd»».
-#: src/preferences_display.cpp:191
+#: src/preferences_display.cpp:189
 msgid "Find $filename server binary"
 msgstr "Buscar o binario do servidor $filename."
 
-#: src/terrain/translation.cpp:712
+#: src/terrain/translation.cpp:706
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
@@ -6183,7 +6205,7 @@ msgstr ""
 "Atopouse un terreo cunha cadea de máis de 4 caracteres, o terreo en cuestión "
 "é:"
 
-#: src/text.cpp:893
+#: src/text.cpp:897
 msgid "The text contains invalid markup: "
 msgstr "O texto contén etiquetas incorrectas: "
 
@@ -6226,6 +6248,9 @@ msgid ""
 msgstr ""
 "A clave «$deprecated_key|» chámase agora «$key|». «$deprecated_key|» deixará "
 "de poder empregarse a partir da versión $removal_version do xogo."
+
+#~ msgid "&#10003;"
+#~ msgstr "&#10003;"
 
 #~ msgid "Hewn Cave Wall"
 #~ msgstr "Parede de cova cavada"
@@ -6534,9 +6559,6 @@ msgstr ""
 
 #~ msgid "Quit Editor"
 #~ msgstr "Saír do editor"
-
-#~ msgid "Level options"
-#~ msgstr "Opcións de nivel"
 
 #~ msgid "Generate Random Map"
 #~ msgstr "Xerar un mapa ao chou"

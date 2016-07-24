@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2015-02-14 20:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -32,13 +32,13 @@ msgstr "地下"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:348
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:430
+#: data/core/macros/abilities.cfg:349
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -48,13 +48,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:516
+#: data/core/macros/abilities.cfg:435
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:517
+#: data/core/macros/abilities.cfg:436
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -62,13 +62,13 @@ msgstr "本攻击无视被攻击单位的闪避能力，而总是具有70%的命
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:480
 msgid "first strike"
 msgstr "先制"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:562
+#: data/core/macros/abilities.cfg:481
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "本单位每次都能率先攻击，即使是在防御时也不例外。"
@@ -4139,35 +4139,30 @@ msgstr ""
 "敌军单位将立刻丧失其剩余的全部行动点数。"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:335
 msgid "feeding"
 msgstr "食尸"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:336
 msgid "female^feeding"
 msgstr "食尸"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:338
+#: data/core/macros/abilities.cfg:337
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
 " 本单位每杀死一个活体单位就会获得1点额外的最大生命值，生效条件与瘟疫相同。"
 
-#. [unstore_unit]
-#: data/core/macros/abilities.cfg:360
-msgid "+1 max HP"
-msgstr "+1 最大生命值"
-
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:440
+#: data/core/macros/abilities.cfg:359
 msgid "backstab"
 msgstr "背刺"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4178,12 +4173,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
 msgid "plague"
 msgstr "瘟疫"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:381
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
@@ -4193,7 +4188,7 @@ msgstr ""
 "位，并与其属于同一阵营。这对亡灵或在村庄里的单位不起作用。 "
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:392
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4203,12 +4198,12 @@ msgstr ""
 "一阵营。这对亡灵或在村庄中的单位不起作用。"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:402
 msgid "slows"
 msgstr "减速"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:484
+#: data/core/macros/abilities.cfg:403
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4219,35 +4214,35 @@ msgstr ""
 "则加倍。被减速的单位被选中时，其侧边栏信息中会显示一个蜗牛图标。"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:412
 msgid "petrifies"
 msgstr "石化"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:494
+#: data/core/macros/abilities.cfg:413
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr "本攻击将使目标石化，也就是把他变成石头。被石化的单位将不能移动或攻击。"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:422
 msgid "marksman"
 msgstr "精准"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:504
+#: data/core/macros/abilities.cfg:423
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "当用于进攻时，本攻击至少有60%的命中率。"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:447
 msgid "swarm"
 msgstr "群击"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:529
+#: data/core/macros/abilities.cfg:448
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4259,12 +4254,12 @@ msgstr ""
 "峰值的3/4。"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:457
 msgid "charge"
 msgstr "冲锋"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:539
+#: data/core/macros/abilities.cfg:458
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4273,12 +4268,12 @@ msgstr ""
 "害。"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:470
 msgid "drains"
 msgstr "吸血"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:471
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4287,12 +4282,12 @@ msgstr ""
 "入）。"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:571
+#: data/core/macros/abilities.cfg:490
 msgid "poison"
 msgstr "毒素"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:491
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -6107,6 +6102,10 @@ msgstr ""
 "了硕大的身躯。人们猜测树人只会在战斗中殒命，而不会自然的寿终正寝。树人们乐得"
 "像个哨兵那样一动不动的站着，坐看一个个世纪流逝。他们对于文明世界中的事情丝毫"
 "不感兴趣，只有到了需要保卫自然和守护森林家园的时候他们才会参和进来。"
+
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
+msgid "+1 max HP"
+msgstr "+1 最大生命值"
 
 #: src/help/help.cpp:183
 msgid "Close"

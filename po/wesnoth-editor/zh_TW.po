@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2013-02-07 15:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -278,15 +278,15 @@ msgstr ""
 msgid "Recruit: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "您確定要退出嗎？"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -296,29 +296,29 @@ msgid ""
 "lost."
 msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "沒有找到時間編輯器。"
 
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr ""
 
@@ -466,11 +466,14 @@ msgstr "（新地圖）"
 msgid "New Scenario"
 msgstr "（新地圖）"
 
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "玩家"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+#, fuzzy
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "玩家 $player_number"
 
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "目標地圖尺寸與當前地圖不同"
 
@@ -509,13 +512,29 @@ msgstr "無法儲存地圖： $msg"
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
 msgstr "如果不特別注意，在遊戲中就不會正常運作。"
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
+msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:222
 msgid "FG: "
@@ -538,6 +557,9 @@ msgstr "無"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
+
+#~ msgid "Player"
+#~ msgstr "玩家"
 
 #~ msgid "Quit"
 #~ msgstr "離開"

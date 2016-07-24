@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"POT-Creation-Date: 2016-07-24 20:26 UTC\n"
 "PO-Revision-Date: 2015-03-16 19:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -144,11 +144,11 @@ msgid "Death of Kapou’e"
 msgstr "卡破尔阵亡"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
+#. [side]
+#. [side]: type=Orcish Slayer, id=Rugh
 #. [side]: id=Grüü, type=Great Troll
 #. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
-#. [side]
-#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:43
@@ -185,10 +185,10 @@ msgid "Alber"
 msgstr "阿尔伯"
 
 #. [side]: type=General, id=Lanbec'h
-#. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
+#. [side]: type=Lieutenant, id=Alber
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -955,12 +955,12 @@ msgstr "除了萨满，其余灞拉·格的战士不会跟随你参与下一关�
 msgid "Etheliel"
 msgstr "伊希利尔"
 
-#. [side]: type=Elvish Shyde, id=Lucile
-#. [side]: type=Elvish Captain, id=Raceme
 #. [side]: type=Elvish Marshal, id=Etheliel
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
+#. [side]: type=Elvish Shyde, id=Lucile
+#. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:68
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:118
@@ -1650,20 +1650,20 @@ msgstr "到达绿洲"
 msgid "Ar-Dant"
 msgstr "亚单"
 
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
+#. [side]: type=Giant Scorpion
+#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]
 #. [side]: type=Bandit, id=Sagmar
 #. [side]: type=General, id=Telthys
-#. [side]: type=Elvish Champion, id=Thelarion
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
-#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
-#. [side]: type=Giant Scorpion
-#. [side]: type=General, id=Earl Lanbec'h
-#. [side]
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2396,8 +2396,8 @@ msgstr "为了日后招募蜥蜴人，你至少要保证依诺斯和至少四个
 msgid "Whoever detonates the bridge will die."
 msgstr "注意：引爆桥梁的人会死。（译者：噗...）"
 
-#. [unit]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2615,9 +2615,9 @@ msgstr "花的时间太多了。所有的军队出击，送这些混蛋下地狱
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "我们岂能不如精灵勇猛，全体出击！"
 
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
-#. [side]: type=General, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:655
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:88
@@ -2927,20 +2927,20 @@ msgstr ""
 "市德赛，也是兰贝契伯爵撤退的地方。"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:222
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:228
 msgid ""
 "Earl Lanbec’h, you slimy coward, come out and face me if you have the guts!"
 msgstr "兰贝契，你这烂泥巴懦夫，有种的就出来跟我对♂肛！"
 
 #. [message]: speaker=Arthain
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:228
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:234
 msgid ""
 "Sorry there, old chap. You’re deemed too insignificant for the likes of the "
 "Earl to deal with. He’s left that pleasure to me instead."
 msgstr "抱歉，老小伙子。你还不够格让伯爵亲自处理。他把这乐趣留给我了。"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:233
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:239
 msgid ""
 "Foolish human. Attack, men, I want that city to be orcish territory within "
 "the week. Smite, stab, and slay!"
@@ -2948,7 +2948,7 @@ msgstr ""
 "愚蠢的人类。进攻，战士们，我要这城市一周之内成为兽人领土！刺穿，砍翻，杀光！"
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:240
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:246
 #, fuzzy
 msgid ""
 "Easier said than done, Chief. There are many humans in that city. And they "
@@ -2956,7 +2956,7 @@ msgid ""
 msgstr "说的比做得容易，老大。那城里有太多人了，而且武装精良。"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:245
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:251
 msgid "No matter. Horde smash!"
 msgstr "没关系。大部落，冲锋！"
 

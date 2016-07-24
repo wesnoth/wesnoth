@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2016-05-10 16:17+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -274,15 +274,15 @@ msgstr "Cosgais: "
 msgid "Recruit: "
 msgstr "Trus: "
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Mearachd mharbhtach"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -294,7 +294,7 @@ msgstr ""
 "A bheil thu cinnteach gu bheil thu airson fàgail? Thèid na h-atharraichean a "
 "rinn thu air a’ mhapa an dèidh an t-sàbhalaidh mu dheireadh air chall."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -303,23 +303,23 @@ msgstr ""
 "atharrachadh is thèid na h-atharraichean a rinn thu orra an dèidh an t-"
 "sàbhalaidh mu dheireadh air chall."
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Cha deach àm-an-latha deasaiche a lorg."
 
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr "Atharraich ID an aonaid"
 
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr "Thoir ainm ùr air an aonad"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr "Ainm:"
 
@@ -456,11 +456,14 @@ msgstr "(Mapa ùr)"
 msgid "New Scenario"
 msgstr "(Cnàmh-sgeul ùr)"
 
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "Cluicheadair"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+#, fuzzy
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "Cluicheadair $player_number"
 
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "Tha meud a’ mhapa amais eadar-dhealaichte bhon mhapa seo"
 
@@ -497,13 +500,29 @@ msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 msgid "(Unknown Group)"
 msgstr "(Buidheann neo-aithnichte)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr "(neo-eitean)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
 msgstr "Chan obraich seo sa gheama gun chùram a bharrachd."
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
+msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:222
 msgid "FG: "
@@ -524,6 +543,9 @@ msgstr "Gin"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr "Cluicheadair $player_number"
+
+#~ msgid "Player"
+#~ msgstr "Cluicheadair"
 
 #~ msgid "Quit"
 #~ msgstr "Fàg an-seo"

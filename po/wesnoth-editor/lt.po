@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 15:51+0300\n"
+"POT-Creation-Date: 2016-07-24 23:27+0300\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -273,15 +273,15 @@ msgstr "Kaina: "
 msgid "Recruit: "
 msgstr "Samdyti:"
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Kritinė klaida"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:206
 msgid "Do you really want to quit?"
 msgstr "Ar tikrai norite išjungti?"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -293,7 +293,7 @@ msgstr ""
 "Ar tikrai norite išjungti? Pakeitimai, padaryti po paskutinio išsaugojimo, "
 "bus prarasti."
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:210
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -301,23 +301,23 @@ msgstr ""
 "Ar tikrai norite išjungti? Šie žemėlapiai buvo pakeisti ir visi pakeitimai, "
 "padaryti po paskutinio išsaugojimo, bus prarasti:"
 
-#: src/editor/controller/editor_controller.cpp:223
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Nerastas dienos-laiko redaktorius."
 
-#: src/editor/controller/editor_controller.cpp:1122
+#: src/editor/controller/editor_controller.cpp:1127
 msgid "Change Unit ID"
 msgstr "Keisti dalinio ID"
 
-#: src/editor/controller/editor_controller.cpp:1123
+#: src/editor/controller/editor_controller.cpp:1128
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1144
 msgid "Rename Unit"
 msgstr "Pervadinti karį"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Name:"
 msgstr "Vardas:"
 
@@ -453,11 +453,14 @@ msgstr "(Naujas žemėlapis)"
 msgid "New Scenario"
 msgstr "(Naujas scenarijus)"
 
-#: src/editor/map/editor_map.cpp:151
-msgid "Player"
-msgstr "Žaidėjas"
+#: src/editor/map/editor_map.cpp:159
+#: src/editor/palette/location_palette.cpp:111
+#, fuzzy
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "Žaidėjas $player_number"
 
-#: src/editor/map/editor_map.cpp:268
+#: src/editor/map/editor_map.cpp:274
 msgid "The size of the target map is different from the current map"
 msgstr "Pritaikomo žemėlapio dydis skiriasi nuo dabartinio žemėlapio dydžio"
 
@@ -494,13 +497,29 @@ msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 msgid "(Unknown Group)"
 msgstr "(Nežinoma grupė)"
 
-#: src/editor/palette/editor_palettes.cpp:384
+#: src/editor/palette/editor_palettes.cpp:358
 msgid "(non-core)"
 msgstr "(ne visur)"
 
-#: src/editor/palette/editor_palettes.cpp:385
+#: src/editor/palette/editor_palettes.cpp:359
 msgid "Will not work in game without extra care."
 msgstr "Be papildomų pastangų neveiks."
+
+#: src/editor/palette/location_palette.cpp:250
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:259
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:263
+msgid "Delete"
+msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:222
 msgid "FG: "
@@ -521,6 +540,9 @@ msgstr "Joks"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr "Žaidėjas $player_number"
+
+#~ msgid "Player"
+#~ msgstr "Žaidėjas"
 
 #~ msgid "Quit"
 #~ msgstr "Išjungti"

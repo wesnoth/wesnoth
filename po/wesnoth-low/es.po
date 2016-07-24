@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
 "PO-Revision-Date: 2016-05-15 14:55+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -259,13 +259,13 @@ msgstr "Bosque del viento oeste"
 msgid "Southwind Wood"
 msgstr "Bosque del viento sur"
 
-#. [scenario]: id=01_The_Uprooting, type=Elvish Archer
+#. [scenario]: id=01_The_Uprooting
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:3
 msgid "The Uprooting"
 msgstr "El desarraigo"
 
 # No se me ocurre un juego de palabras como parece que lo hay en el original.
-#. [scenario]: id=01_The_Uprooting, type=Elvish Archer
+#. [scenario]: id=01_The_Uprooting
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:9
 msgid "Chapter One: Flight and Fight"
 msgstr "Capítulo Primero: Huida y lucha"
@@ -381,22 +381,22 @@ msgstr ""
 "incipiente Wesnoth de los humanos."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:130
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:128
 msgid "You trifled with the wrong elf!"
 msgstr "¡Te has entrometido con el elfo equivocado!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:140
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:138
 msgid "Take that, you orcish scum!"
 msgstr "¡Toma eso, escoria orca!"
 
 #. [side]: id=Velon, type=Elvish Captain
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:176
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:169
 msgid "Velon"
 msgstr "Velon"
 
 #. [side]: id=Tbaran, type=Orcish Warrior
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:203
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:196
 msgid "T’baran"
 msgstr "T’baran"
 
@@ -407,15 +407,6 @@ msgstr "T’baran"
 #. [modify_side]
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
 #. [side]
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Flanker, id=Hgyr
-#. [side]: type=Elvish Marshal, id=Crintil
-#. [side]: type=Elvish Captain, id=Oblil
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Oracle, id=Shhar
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Troll Warrior, id=Trigrul
 #. [side]: type=Saurian Ambusher, id=Shurm
 #. [side]: type=Saurian Ambusher, id=Trigr
 #. [side]: id=Hraurg, type=Saurian Ambusher
@@ -423,72 +414,81 @@ msgstr "T’baran"
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Troll Warrior, id=Traur
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
 #. [side]: type=Orcish Warlord, id=Kior-Pur
 #. [side]: type=Orcish Warlord, id=Mbiran
 #. [side]: type=Orcish Warlord, id=Tan-Durr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:205
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:243
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:279
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:316
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:146
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:220
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:243
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:428
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:190
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:273
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:310
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:117
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:143
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:163
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:192
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:150
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:181
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:219
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:224
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:138
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:169
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:120
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:127
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:166
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:140
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:106
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:143
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:177
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:131
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:162
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:133
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:276
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:310
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:193
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:227
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:92
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
+#. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Oblil
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:198
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:236
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:272
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:309
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:141
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:215
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:238
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:423
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:173
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:255
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:292
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:112
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:138
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:157
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:186
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:137
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:168
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:206
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:203
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:140
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:171
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:118
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:119
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:158
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:133
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:102
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:139
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:173
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:129
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:160
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:132
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:273
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:307
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:195
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:230
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:90
 msgid "Enemies"
 msgstr "Enemigos"
 
 #. [side]: id=Wrulf, type=Orcish Warrior
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:241
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:234
 msgid "Wrulf"
 msgstr "Wrulf"
 
 #. [side]: type=Orcish Warrior, id=Qumseh
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:284
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:277
 msgid "Qumseh"
 msgstr "Qumseh"
 
 #. [side]: type=Orcish Warrior, id=Graur-Tan
 #. [side]: type=Orcish Warlord, id=Graur-Tan
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:321
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:176
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:314
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:163
 msgid "Graur-Tan"
 msgstr "Graur-Tan"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:353
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:346
 msgid "Orcs are pressing on us from all directions! To arms!"
 msgstr "¡Los orcos nos rodean! ¡A las armas!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:357
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:350
 msgid ""
 "Hold, Kalenz. The Ka’lian council should discuss our response. Maybe we can "
 "reach an agreement with them!"
@@ -497,17 +497,17 @@ msgstr ""
 "¡Podríamos negociar una tregua con ellos!"
 
 #. [message]: id=Qumseh
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:361
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:354
 msgid "Surrender or die, tree-shaggers!"
 msgstr "¡Rendíos o morid, jode-árboles!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:365
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:358
 msgid "They are too many. We have no choice but to submit!"
 msgstr "Son demasiados. ¡No tenemos otra opción salvo rendirnos!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:369
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:362
 msgid ""
 "Elves must never surrender to these foul beasts! Who will fight them beside "
 "me?"
@@ -516,12 +516,12 @@ msgstr ""
 "lucharán a mi lado?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:377
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:370
 msgid "We will follow you, Kalenz — but where can we go?"
 msgstr "Os seguiremos, Kalenz — ¿pero a dónde hemos de ir?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:381
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:374
 msgid ""
 "We must reach the elvish council in Ka’lian and enlist their help to "
 "recapture our home."
@@ -530,12 +530,12 @@ msgstr ""
 "recuperar nuestro hogar."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:385
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:378
 msgid "We are surrounded!"
 msgstr "¡Pero estamos rodeados!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:389
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:382
 msgid ""
 "Then we must storm one of the orcs’ outposts to break the encirclement "
 "before more enemies arrive!"
@@ -544,73 +544,76 @@ msgstr ""
 "romper el cerco antes de que nos alcancen más enemigos!"
 
 #. [message]: id=Anduilas
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:393
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:386
 msgid "Very well, Kalenz — lead us!"
 msgstr "Muy bien, Kalenz — ¡guiadnos!"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:407
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:400
 msgid "Kill any of the orc leaders"
 msgstr "Derrote a cualquier líder orco"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:412
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:405
 msgid "Keep Velon alive"
 msgstr "Mantenga a Velon con vida"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:416
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:516
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:795
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:178
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:216
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:374
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:243
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:326
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:423
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:197
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:221
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:267
+#. [objective]: condition=win
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:409
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:511
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:777
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:173
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:210
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:368
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:230
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:305
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:328
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:195
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:213
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:258
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:264
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:265
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:222
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:366
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:285
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:118
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:258
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:219
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:362
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:288
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:311
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:116
 msgid "Death of Kalenz"
 msgstr "Muerte de Kalenz"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:420
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:520
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:799
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:182
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:220
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:378
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:247
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:330
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:427
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:201
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:225
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:271
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:413
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:515
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:781
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:177
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:214
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:372
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:234
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:309
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:332
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:199
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:217
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:262
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die.cfg:268
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:269
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:226
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:262
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:223
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:315
 msgid "Death of Landar"
 msgstr "Muerte de Landar"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:446
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:439
 msgid "We surrender!"
 msgstr "¡Nos rendimos!"
 
 #. [message]: id=Graur-Tan
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:450
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:443
 msgid "Did I mention that we take no prisoners? Die!"
 msgstr "¿Mencioné que no tomamos prisioneros? ¡Morid!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:455
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:448
 msgid ""
 "Kalenz was right and I was wrong. Go; join Kalenz while yet you can. I and "
 "the remaining elders will cover your retreat as best we may."
@@ -620,12 +623,12 @@ msgstr ""
 "mejor que podamos."
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:473
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:466
 msgid "Flee, Kalenz... find vengeance for us!"
 msgstr "¡Huid, Kalenz... encontrad la forma de vengarnos!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:477
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:470
 msgid ""
 "Velon, I swear on the life of Irdya that I will not let you be forgotten "
 "while elves yet draw breath to sing."
@@ -634,20 +637,20 @@ msgstr ""
 "olvido siempre que los elfos puedan tomar aliento para cantar."
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:486
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:479
 msgid "Swords will aid us more than songs, Kalenz; you saw that before I."
 msgstr ""
 "Las espadas nos ayudarán más que las odas, Kalenz, lo supiste antes que yo."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:490
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:483
 msgid "Swordsmen you shall have, as swiftly as I can find them and return."
 msgstr ""
 "Entonces tendrá espadachines, tan velozmente como pueda encontrarlos y "
 "regresar."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:500
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:493
 msgid ""
 "Velon has fallen. He counseled weakness, but did not deserve such an ugly "
 "death. We shall return with swords to avenge him!"
@@ -656,28 +659,28 @@ msgstr ""
 "desagradable. ¡Volveremos con nuestras espadas para vengarle!"
 
 #. [message]: race=orc
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:518
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:511
 msgid "You won’t get very far! After them!"
 msgstr "¡No llegarán muy lejos! ¡Tras ellos!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:535
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:528
 msgid "Curse you, tree-shaggers! We will feed your young to our wolves!"
 msgstr ""
 "¡Malditos seáis, jode-árboles! ¡Nuestros lobos se alimentarán con vuestros "
 "jóvenes!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:548
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:541
 msgid "What is this? The orc held plunder!"
 msgstr "¡Qué es esto? ¡Este orco guardaba botín!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:591
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:584
 msgid "Flee, Kalenz... Our hopes ride with you..."
 msgstr "Huid, Kalenz... nuestra esperanza cabalga con vos..."
 
-#. [scenario]: id=02_Hostile_Mountains, type=Elvish Archer
+#. [scenario]: id=02_Hostile_Mountains
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:11
 msgid "Hostile Mountains"
 msgstr "Montañas hostiles"
@@ -698,39 +701,31 @@ msgstr ""
 "sur. No había opción salvo tomar un rodeo a través de territorios que los "
 "elfos, de otro modo, hubiesen evitado..."
 
-#. [side]: type=Dwarvish Steelclad
-#. [modify_side]
-#. [side]: type=Elvish Ranger, id=Antaril
-#. [side]: type=Elvish Captain, id=East
 #. [side]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:109
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:168
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:128
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:91
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:208
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:240
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:163
+#. [modify_side]
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:103
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:163
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:4
 msgid "Player"
 msgstr "Jugador"
 
-#. [side]: type=Dwarvish Steelclad
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:112
+#. [side]
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:106
 msgid "Neutrals"
 msgstr "Neutrales"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:133
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:128
 msgid "Those stinking trolls ha’ stepped on <i>our</i> land!"
 msgstr "¡Esos apestosos troles han entrado en <i>nuestra</i> tierra!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:200
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:195
 msgid "Those lying elves have stepped on <i>our</i> land!"
 msgstr "¡Esos embusteros elfos han entrado en <i>nuestra</i> tierra!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:204
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:199
 msgid ""
 "Fight to subdue, and do not kill unless you must. We have foes enough as it "
 "is without making blood enemies of these dwarves."
@@ -740,7 +735,7 @@ msgstr ""
 "éstos enanos."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:348
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:343
 msgid ""
 "It should be rare sport to watch this... Just be sure not to trespass on our "
 "land."
@@ -749,32 +744,32 @@ msgstr ""
 "en nuestro territorio."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:359
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:354
 msgid "Up axes, and death to elves!"
 msgstr "¡Hachas arriba, muerte a los elfos!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:370
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:365
 msgid "Up axes, and death to trolls!"
 msgstr "¡Hachas arriba, muerte a los troles!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:382
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:377
 msgid "Up axes, and kill all the interlopers!"
 msgstr "¡Hachas arriba, muerte a todos los intrusos!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:395
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:390
 msgid "Defend our bounds! Slay all who trespass them!"
 msgstr "¡Proteged nuestras orillas! ¡Degollad a cualquiera que las traspase!"
 
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:425
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:420
 msgid "Grugl"
 msgstr "Grugl"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:470
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:465
 msgid ""
 "I had hoped to avoid these paths... The eastern way is through dwarvish "
 "territory and is shorter. I pray the dwarves will grant us safe passage, "
@@ -786,7 +781,7 @@ msgstr ""
 "en territorio de troles..."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:474
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:469
 msgid ""
 "Not even in yer dreams, elf. These are dwarvish lands, and troubles we want "
 "no part of nip at yer heels. Get out and stay out!"
@@ -796,7 +791,7 @@ msgstr ""
 "manteneos lejos de aquí!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:478
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:473
 msgid ""
 "Our troubles will be yours, too, whether either of us will it or not. The "
 "orcs have come down from the north like a flood; if we squabble among "
@@ -808,7 +803,7 @@ msgstr ""
 "discordia."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:482
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:477
 msgid ""
 "Bah. More smooth words and trickery, by my beard. We know yer kind... and "
 "who needs yer help anyway, weaklings? Leave now, or feel my axe! That same "
@@ -822,12 +817,12 @@ msgstr ""
 "ponga pie en la orilla oriental de este río, deseará no haber nacido jamás!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:486
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:481
 msgid "I cannot see how trolls could be any less friendly."
 msgstr "No me imagino cómo podrían los troles ser menos amigables."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:490
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:485
 msgid ""
 "Hmm... Perhaps the dwarves’ intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do <i>not</i> step on the eastern bank of the "
@@ -837,43 +832,43 @@ msgstr ""
 "propósitos. Adelante, hagan lo que hagan, <i>no</i> pisen la ribera oriental!"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:506
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:501
 msgid "Kalenz or Landar must reach the signpost"
 msgstr "Kalenz o Landar ha de alcanzar la señal"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:512
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:507
 msgid "Defeat Grugl"
 msgstr "Derrotar a Grugl"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:524
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:251
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:435
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:209
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:229
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:275
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:281
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:519
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:238
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:340
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:207
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:221
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:266
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:274
 msgid "Death of Olurf"
 msgstr "Muerte de Olurf"
 
 #. [message]: speaker={SPEAKER_NAME}
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:540
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:535
 msgid "We made it. Onwards to Wesmere!"
 msgstr "Lo conseguimos. ¡Adelante, a Wesmere!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:551
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:546
 msgid "Crazy elves! But at least they felled a few trolls before they left."
 msgstr "¡Locos elfos! Al menos derribaron unos pocos troles antes de marchar."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:557
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:552
 msgid "Crazy elves!"
 msgstr "¡Locos elfos!"
 
 #. [message]: id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:625
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:620
 msgid "Urgh! Grugl tried to eat dwarves, but choked on their sharp nasty axes."
 msgstr ""
 "¡Urgh! Grugl intentó comer enanos, pero se atragantó con sus peligrosas "
@@ -881,7 +876,7 @@ msgstr ""
 
 # Here Grulg mentions elves have (pointy) spears, while their only weapon as such are the arrows. Should we respect that confusion? May we change it to javelins? Maybe (pointy) sticks?
 #. [message]: id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:641
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:636
 msgid ""
 "Urgh! Grugl wanted tasty elf-meat, but choked on their nasty pointy spears!"
 msgstr ""
@@ -894,7 +889,7 @@ msgid "Ka’lian under Attack"
 msgstr "El asedio del Ka’lian"
 
 #. [part]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:67
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:57
 msgid ""
 "Events at the Ka’lian took an ominous turn before Kalenz and his band could "
 "arrive there..."
@@ -903,39 +898,39 @@ msgstr ""
 "suyos pudieran llegar..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:256
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:238
 msgid "Chief, the cursed tree-shaggers are defeating us!"
 msgstr "¡Jefe, los condenados jode-árboles están venciendo!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:346
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:328
 msgid "We die, but more come after us, Orcs will rule all!"
 msgstr ""
 "Morimos, pero más vendrán a tomar nuestro lugar. ¡Los orcos gobernarán a "
 "todos!"
 
 #. [unit]: type=Orcish Slayer, id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:437
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:419
 msgid "Urudin"
 msgstr "Urudin"
 
 #. [unit]: type=Orcish Warlord, id=Murudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:448
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:430
 msgid "Murudin"
 msgstr "Murudin"
 
 #. [unit]: type=Orcish Warlord, id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:457
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:439
 msgid "Mutaf-uru"
 msgstr "Mutaf-uru"
 
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:485
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:467
 msgid "Good, you are returned. What news is there?"
 msgstr "Bien, ha regresado. ¿Qué novedades hay sobre la situación?"
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:489
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:471
 msgid ""
 "The elvish scum refused to surrender, Warlord. We have begun the attack, as "
 "planned."
@@ -944,43 +939,43 @@ msgstr ""
 "acuerdo con el plan."
 
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:493
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:475
 msgid "Were you able to breach their citadel?"
 msgstr "¿Consiguieron asaltar la ciudadela?"
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:501
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:483
 msgid "Yes. We slaughtered them in great numbers."
 msgstr "Sí. Les masacramos, pocos quedan con vida."
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:510
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:492
 msgid "No, our attack was repulsed."
 msgstr "No, nuestro ataqué ha sido repelido."
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:516
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:498
 msgid "They resisted us fiercely; the battle is not yet done."
 msgstr "Se resisten con ferocidad; la batalla aún no está decidida."
 
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:532
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:514
 msgid "Go, report this news to the warlord Grubr."
 msgstr "Vamos, informe de los sucesos al líder de guerra Grubr."
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:536
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:518
 msgid "I obey."
 msgstr "Le obedezco."
 
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:640
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:622
 msgid "These elves are weak, mere meat for my wolves! Get them!"
 msgstr ""
 "¡Estos elfos son endebles, simple carnaza para nuestros lobos! ¡Liquidadlos!"
 
 #. [message]: id=Mutaf-uru
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:665
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:647
 msgid ""
 "Cursed tree-shaggers and their filthy bows! We shall await the main army."
 msgstr ""
@@ -988,26 +983,26 @@ msgstr ""
 "grueso del ejército."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:791
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:322
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:773
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:301
 msgid "Defeat all enemy leaders."
 msgstr "Derrote a todos los líderes enemigos."
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:803
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:875
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:338
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:785
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:857
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:317
 msgid "Death of Galtrid"
 msgstr "Muerte de Galtrid"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:808
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:880
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:790
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:862
 msgid "Death of Eradion"
 msgstr "Muerte de Eradion"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:830
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:812
 msgid ""
 "For days, Kalenz and his small host of followers traveled, moving nearer and "
 "yet nearer to the Ka’lian. Thanks to the dense fog and elvish woodscraft, "
@@ -1022,7 +1017,7 @@ msgstr ""
 "desvelar una vista angustiosa..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:834
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:816
 msgid ""
 "Great hosts of orcs converge on the Ka’lian! But if we fall upon them from "
 "behind as they are fully engaged with the defenders, we and they together "
@@ -1033,14 +1028,14 @@ msgstr ""
 "quizá aún podamos derrotarlos."
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:838
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:820
 msgid "Are you our army’s vanguard? Hurry, for we are sorely pressed here."
 msgstr ""
 "¿Sois la vanguardia de nuestro ejército? ¡Apresuraos, nos presionan con "
 "dureza!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:842
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:824
 msgid ""
 "No, we are fleeing an attack on our home in the Lintanir. Time enough for "
 "talk later; we must defeat these orcs together, or at least hold them off "
@@ -1052,7 +1047,7 @@ msgstr ""
 "nuestro auxilio."
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:846
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:828
 msgid ""
 "Then you have not heard the ill tidings. King Haldric has broken the treaty. "
 "The humans will not come to our aid!"
@@ -1061,12 +1056,12 @@ msgstr ""
 "¡Los humanos no acudirán en nuestra ayuda!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:850
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:832
 msgid "How dare they break the treaty!"
 msgstr "¡Cómo osan ignorar la alianza!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:861
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:843
 msgid ""
 "We have failed to relieve the defenders, and more orcish war-bands are "
 "arriving. All is lost!"
@@ -1075,17 +1070,17 @@ msgstr ""
 "acercan. ¡Todo está perdido!"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:870
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:852
 msgid "Hold on until turns run out."
 msgstr "Defienda hasta el fin de los turnos."
 
 #. [message]: id=guard
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:907
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:889
 msgid "Hist! Someone is sneaking about in the mist."
 msgstr "¡Chsst! ¡Alguien se mueve entre la niebla!"
 
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:911
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:893
 msgid ""
 "Ho, elves! Hand over the stone and we <i>might</i> not destroy your cute "
 "little playhouse, and we <i>might</i> spare you. Or, at the very least, we "
@@ -1096,7 +1091,7 @@ msgstr ""
 "caso, os prometemos una muerte rápida y sin dolor."
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:915
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:897
 msgid ""
 "What ‘stone’, foul and clumsy orc? Your lips are not fit even to name the "
 "citadel of the Ka’lian, for it has stood since before your kind crawled into "
@@ -1110,7 +1105,7 @@ msgstr ""
 # This is rather coplex to clearly translate; he's in the middle of a negotiation, but things have gone terribly wrong (was meant to), so, the orc is still using the "voseo", but using hard words such as pescuezo instead of garganta.
 # Plus, the last bit is an typical english idiom, so, while I preffer not to change its meaning, it does not get completely right.
 #. [message]: id=Urudin
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:929
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:911
 msgid ""
 "We will cram those arrogant words back down your throat before we kill you, "
 "wose-spawned worm of an elf!"
@@ -1119,7 +1114,7 @@ msgstr ""
 "mataros, gusano elfo salido de los árboles!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:980
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:962
 msgid ""
 "To arms, elven-kin! They are many, but our army is returning and surely "
 "close at hand. We have but to hold until it arrives!"
@@ -1128,7 +1123,7 @@ msgstr ""
 "vuelta, seguramente a pocas jornadas. ¡Hemos de resistir hasta entonces!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1065
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1047
 msgid ""
 "You will have a different recall list and amount of starting gold than you "
 "may be expecting at the beginning of this scenario, as you will not start "
@@ -1139,18 +1134,18 @@ msgstr ""
 "comienza con el ejército de Kalenz."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1078
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1064
 msgid "We won! The Ka’lian is safe!"
 msgstr "¡Los hemos derrotado! ¡El Ka’lian está a salvo!"
 
 #. [message]: id=Huraldur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1120
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1106
 msgid "The elvish treasury is under attack! They need help desperately!"
 msgstr ""
 "¡La tesorería élfica está siendo atacada! ¡Necesitan ayuda desesperadamente!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1124
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1110
 msgid ""
 "Galtrid, your men are weary from long combat. Mine are fresher; I’ll go."
 msgstr ""
@@ -1158,25 +1153,25 @@ msgstr ""
 "se encuentran en mejores condiciones; nosotros iremos."
 
 #. [message]: id=Huraldur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1128
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1114
 msgid "Hurry! We were near overwhelmed as I left."
 msgstr ""
 "¡Apresuraros! Cuando dejé la batalla el enemigo nos oprimía con dureza."
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1132
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:1118
 msgid ""
 "Yes, go, Kalenz, I’ll guard the Ka’lian till our army returns from the front."
 msgstr ""
 "Si, iros Kalenz, yo protegeré al Ka’lian hasta que nuestro ejercito regrese "
 "del frente de batalla."
 
-#. [scenario]: id=04_The_Elvish_Treasury, type=Elvish Ranger
+#. [scenario]: id=04_The_Elvish_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:14
 msgid "The Elvish Treasury"
 msgstr "La tesorería élfica"
 
-#. [scenario]: id=04_The_Elvish_Treasury, type=Elvish Ranger
+#. [scenario]: id=04_The_Elvish_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:19
 msgid "Chapter Two: The Treasury"
 msgstr "Capítulo segundo: La tesorería"
@@ -1216,29 +1211,29 @@ msgstr ""
 "tesorería de los elfos..."
 
 #. [side]: type=Saurian Ambusher, id=Shurm
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:112
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:107
 msgid "Shurm"
 msgstr "Shurm"
 
 #. [side]: type=Saurian Ambusher, id=Trigr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:138
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:133
 msgid "Trigr"
 msgstr "Trigr"
 
 #. [objective]: condition=win
 #. [objectives]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:174
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:214
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:372
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:239
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:193
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:261
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:276
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:169
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:208
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:366
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:226
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:191
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:254
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:279
 msgid "Defeat all enemy leaders"
 msgstr "Derrote a los líderes enemigos"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:250
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:244
 msgid ""
 "It seems that we are too late. The Treasury has fallen to the Saurians..."
 msgstr ""
@@ -1246,12 +1241,12 @@ msgstr ""
 "de los saurios..."
 
 #. [message]: id=Huraldur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:254
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:248
 msgid "And I see the remains of the garrison has been taken prisoner."
 msgstr "Y veo que el resto de la guarnición ha sido hecha prisionera."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:264
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:258
 msgid ""
 "We must free them and make these saurians pay. Attack and leave no one alive!"
 msgstr ""
@@ -1259,7 +1254,7 @@ msgstr ""
 "con vida!"
 
 #. [message]: role=liberator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:270
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:264
 msgid ""
 "I will do as you say, sneak in and free them. Wish me good fortune and no "
 "discovery!"
@@ -1268,12 +1263,12 @@ msgstr ""
 "que no me descubran!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:274
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:268
 msgid "Go swiftly and silently."
 msgstr "Vaya sigiloso y con presura."
 
 #. [message]: id=Shurm
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:286
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:280
 msgid ""
 "More elves are coming! Too late, we’ve taken all your gold and we’ll get "
 "more gold from the orcs for helping them out!"
@@ -1282,12 +1277,12 @@ msgstr ""
 "obtendremos más de los orcos por haberlos ayudado!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:290
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:284
 msgid "You will not live to enjoy it!"
 msgstr "¡No viviréis lo suficiente para disfrutarlo!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:335
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:329
 msgid ""
 "We are free! My lord Kalenz, from this day forward I and my men are your "
 "sworn followers. And there is that which you should know about the treasure "
@@ -1299,7 +1294,7 @@ msgstr ""
 
 # Nótese que el femenino se refiere en el texto a "espada" a la que más tarde añade otro tipo de armas, y por tanto, por mantener la concordancia, ha de mantenerse en femenino singular.
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:339
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:333
 msgid ""
 "I accept your service gratefully, for I will need every sword and bow and "
 "spell with which to defeat these invaders. There will be time for talk "
@@ -1310,24 +1305,24 @@ msgstr ""
 "para charlar; ahora, a lidiar."
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:358
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:224
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:382
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:255
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:334
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:431
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:205
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:233
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:279
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:273
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:370
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:289
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:122
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:352
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:218
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:376
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:242
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:313
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:336
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:203
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:225
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:270
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:266
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:366
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:293
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:120
 msgid "Death of Cleodil"
 msgstr "Muerte de Cleodil"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:377
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:375
 msgid ""
 "Without their leaders, the saurians flee in panic. Let us free the "
 "treasury’s garrison before they can find it in them to rally and return."
@@ -1336,7 +1331,7 @@ msgstr ""
 "guarnición antes de que se reagrupen y contraataquen!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:388
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:386
 msgid ""
 "We have defeated the saurians and freed the garrison, and that is no small "
 "thing... but our gold is gone."
@@ -1345,7 +1340,7 @@ msgstr ""
 "pero nuestro oro ha desaparecido."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:393
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:391
 msgid ""
 "The saurians happily carried away the treasury gold, but they had come here "
 "looking for something more specific... some individual object they called "
@@ -1357,7 +1352,7 @@ msgstr ""
 "disculpas, mi señor Kalenz, no pude comprender su habla distorsionada."
 
 #. [message]: race=elf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:397
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:395
 msgid ""
 "The war with the Orcs goes poorly. The Ka’lian will need that gold back to "
 "buy arms and food, to hire artisans, to support its armies."
@@ -1367,7 +1362,7 @@ msgstr ""
 "al ejército."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:401
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:399
 msgid ""
 "We will hunt down those saurians and retrieve our gold. More, we must teach "
 "them that it is lethal folly to raid us, else they will plague us like rats."
@@ -1377,13 +1372,13 @@ msgstr ""
 "nos acosarán como una plaga de ratas."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:412
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:410
 msgid "I am ashamed to die at the hands of tree-shaggers!"
 msgstr "¡Me avergüenza morir en manos de los jode-árboles!"
 
 # Aquí puede dar lugar a malentendidos; el hablante hace referencia a los infiernos, pero al parecer en la culturo wesnothiana hablan del "abismo"; "The Abyss", comprendiendo que la alusión al infierno es natural en ciertas culturas (del mundo real), y de que no estoy seguro de que se especifique algo así en la cultura élfica, lo he cambiado por abismo, lo más parecido a "infierno" que entra en la "cultura" del juego BfW.
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:416
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:414
 msgid ""
 "When you meet your kin in the dry hells, tell them you perished at the hands "
 "of Kalenz’s elves!"
@@ -1412,26 +1407,26 @@ msgstr ""
 "saurios era clara..."
 
 #. [side]: id=Hraurg, type=Saurian Ambusher
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:155
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:149
 msgid "Hraurg"
 msgstr "Hraurg"
 
-#. [side]: type=Saurian Flanker, id=Spahr
 #. [side]: type=Saurian Ambusher, id=Spahr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:185
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:124
+#. [side]: type=Saurian Flanker, id=Spahr
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:179
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:122
 msgid "Spahr"
 msgstr "Spahr"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:211
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:205
 #, fuzzy
 #| msgid "Enter the Saurian Treasury and leave with the gold"
 msgid "Enter the Saurian Treasury with a horse and leave with the gold"
 msgstr "Entrar a la tesorería sauria y recuperar el oro"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:278
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:272
 msgid ""
 "There they are. They have dumped our gold in their own treasury. We must "
 "strike quickly and leave with the gold before they can summon their full "
@@ -1442,7 +1437,7 @@ msgstr ""
 "suyos para darnos la bienvenida."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:282
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:276
 msgid ""
 "Moving so much gold is no light matter. We will need horses to bear it back "
 "home."
@@ -1456,7 +1451,7 @@ msgstr ""
 # PD: Por favor, no eliminar esta nota, pues puede servir de ayuda a furturos traductores.
 #. [message]: id=Hraurg
 #. Saurians often hiss their sibilants; do this in your language.
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:288
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:282
 msgid ""
 "The elves have followed ussss! We must hold the gold until reinforcements "
 "arrive."
@@ -1465,12 +1460,12 @@ msgstr ""
 "oro hasta que lleguen los refuerzos."
 
 #. [object]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:310
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:304
 msgid "Treasure Chest"
 msgstr "Cofre del tesoro"
 
 #. [object]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:311
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:305
 msgid ""
 "The bearer of this chest is slowed in movement and attack by the same effect "
 "as the slow weapon special. Slow halves the damage caused by attacks and the "
@@ -1485,29 +1480,29 @@ msgstr ""
 "seleccionada."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:363
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:357
 msgid "We have reached the treasury. Guard me while I bring the pillage home."
 msgstr ""
 "¡Hemos alcanzado el tesoro! Protéjanme mientras traigo de vuelta el botín."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:369
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:363
 msgid "New Objective: Transport the treasure with a rider to the signpost"
 msgstr "Nuevo objetivo: Transporte el tesoro, con un jinete, a la señal"
 
 # De nuevo nos encontramos frente al mundo real vs mundo wesnoth; se desconoce el nombre del satélite que "en teoría" orbita torno a Irdya (mundo en el que se encuentra Wesnoth). Usando el conocimiento humano, no podemos referirnos más que a "luna" o "selene"; el último es más poético y mucho menos común, por ello lo he elegido... al menos hasta que en la cultura wesnothiana aparezca algún nombre que sustituya a "luna".
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:409
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:403
 msgid "Aargh! I shall never see the bright moon’s face again!"
 msgstr "¡Aargh! Jamás volver a ver la brillante faz selenita!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:453
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:451
 msgid "We have recovered our gold; it is well."
 msgstr "Hemos recuperado nuestro oro, eso está bien."
 
 #. [message]: role=gold_carrier
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:483
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:481
 msgid ""
 "We have recovered much more than our own treasure. These saurians would seem "
 "to have taken up robbery as a vocation!"
@@ -1516,7 +1511,7 @@ msgstr ""
 "han tomado el hurto como vocación!"
 
 #. [message]: id=Spahr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:487
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:485
 msgid ""
 "They took all our treasure! Quickly, place ambushers on all trails from here "
 "to Wesmere. I will give 500 gold to whoever kills their leader. They must "
@@ -1528,7 +1523,7 @@ msgstr ""
 
 #. [message]: id=Kalenz
 #. "fare" is an archaic English verb meaning to travel or move.
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:492
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:490
 msgid ""
 "Turnabout is fair play. Now that we’ve retrieved the gold, let us fare "
 "swiftly back to Wesmere and bring the gold back as Cleodil wishes. The "
@@ -1541,7 +1536,7 @@ msgstr ""
 "nos desviaremos por el norte."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:496
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:494
 msgid ""
 "But Kalenz, this is a boon unlooked for! With the surplus gold we could take "
 "the war immediately to the Orcs. We could come down upon them like thunder "
@@ -1553,7 +1548,7 @@ msgstr ""
 "asalto!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:500
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:498
 msgid ""
 "But the Ka’lian’s gold is the Ka’lian’s. Would you have us divide our "
 "forces, some to return it to them while others attempt your thunder-stroke?"
@@ -1562,7 +1557,7 @@ msgstr ""
 "unos queriéndolo devolver mientras otros intentáis un ataque sorpresa?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:504
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:502
 msgid ""
 "Cleodil’s doubt is wise. Only a foolish commander divides his forces in the "
 "presence of superior numbers; to do so is to invite defeat in detail."
@@ -1576,14 +1571,14 @@ msgstr ""
 # En su defecto, se podría utilizar otra metáfora siempre y cuando sea completa y comprensible.
 # Nótese que más tarde se hablará de la poción que Crelanu les entregará, y que desarrollará buena parte de la trama. Considero que siempre y cuando se pueda respetar ése símil la campaña será más convincente; es más sería un añadido de interés.
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:508
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:506
 msgid "Landar, thoughts that brew in hot blood are seldom well-found."
 msgstr ""
 "Landar, los pensamientos extraídos cuando hierve la sangre raramente son "
 "correctos."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:512
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:510
 msgid "It... is so. Again you speak wisdom. Very well; to the Ka’lian!"
 msgstr ""
 "Es... cierto. De nuevo muestras sabiduría. De acuerdo, hacia el Ka’lian!"
@@ -1604,17 +1599,17 @@ msgstr ""
 "Wesmere desde otra dirección..."
 
 #. [side]: type=Orcish Warlord, id=Urug-Tar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:145
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:132
 msgid "Urug-Tar"
 msgstr "Urug-Tar"
 
 #. [side]: type=Troll Warrior, id=Traur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:205
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:192
 msgid "Traur"
 msgstr "Traur"
 
 #. [note]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:267
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:254
 msgid "Try to save leveled dwarf units"
 msgstr ""
 
@@ -1624,7 +1619,7 @@ msgstr ""
 #
 # Técnicamente, sin coma, está bien escrito, pero de lugar a una interpretación algo diferente respecto a qué nombre hace alusión a cual. No siendo incorrecto, prefiero hacer el cambio.
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:277
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:264
 msgid ""
 "What’s this? It appears the orcs have surrounded a dwarvish enclave. And by "
 "the sound of the bellowing I hear, I think our old friend, Olurf, is here."
@@ -1634,7 +1629,7 @@ msgstr ""
 "encuentra aquí."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:281
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:268
 msgid ""
 "You again? Maybe ye were not completely wrong when ye predicted the orcs "
 "would attack us. We ha’ been forced from our home and are now surrounded."
@@ -1643,12 +1638,12 @@ msgstr ""
 "orcos. N’s han forzado a’bandonar nuestro hogar y ahora estamos rodeados."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:285
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:272
 msgid "Let us give them aid — it’s clear they need it!"
 msgstr "¡Les brindaremos nuestro apoyo — está claro que lo necesitan!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:289
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:276
 msgid ""
 "Help them? They would not even let us pass through their land to avoid the "
 "trolls. You remember, Kalenz?"
@@ -1657,7 +1652,7 @@ msgstr ""
 "los troles. ¿Recuerda eso, Kalenz?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:293
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:280
 msgid ""
 "Our enemy is the orcs, not the dwarves. Besides, the orcs are in our way. "
 "Olurf, we cannot let you have all the fun here!"
@@ -1666,23 +1661,23 @@ msgstr ""
 "nuestro camino. ¡Olurf, no va a ser el único que se divierta con esto!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:297
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:284
 msgid "For an elf, you think like a dwarf! I think I like you! "
 msgstr ""
 "¡Para ser un elfo, pensáis como un enano! ¡Creo que empezáis a gustarme! "
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:297
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:284
 msgid "whisper^—For an elf..."
 msgstr "—Para ser un elfo..."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:307
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:298
 msgid "The orcs ha’ been defeated. My lord, we are in your debt."
 msgstr "Los orcos han si’o derrotados. Mi señor, se lo debemos."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:311
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:302
 msgid ""
 "We must put aside our differences and ally against the orcish menace. Olurf, "
 "join us!"
@@ -1691,7 +1686,7 @@ msgstr ""
 "los orcos. ¡Olurf, uniros a nuestra causa!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:315
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:306
 msgid ""
 "Dwarves, ally with elves? I owe ye a debt, but my kin willna’ be happy at "
 "the thought."
@@ -1700,7 +1695,7 @@ msgstr ""
 "gustar ni pensarlo."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:319
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:310
 msgid ""
 "There will be a big fight with the orcs in Wesmere very soon. If you can "
 "cover our flank to the north, I will pay you 400 gold."
@@ -1709,7 +1704,7 @@ msgstr ""
 "pudieseis cubrir nuestro flanco norte, os pagaría 400 piezas de oro."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:323
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:314
 msgid ""
 "A proper contract for good money? That’s a different matter; I’m sure I can "
 "find some o’ my people willing to fight on those terms!"
@@ -1719,7 +1714,7 @@ msgstr ""
 "luchar bajo ésos términos!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:327
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:318
 msgid ""
 "What? Kalenz, are you out of your mind? Surely you will not throw away 400 "
 "gold on this scheming mercenary!"
@@ -1728,7 +1723,7 @@ msgstr ""
 "piezas de oro en manos de este mercenario traidor!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:331
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:322
 msgid ""
 "Where there’s a contract, our honor is involved. We will be there to cover "
 "your northern flank or else I will return your gold!"
@@ -1737,13 +1732,13 @@ msgstr ""
 "cubrir el flanco norte o de otro modo os devolveremos vuestro dinero!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:335
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:326
 msgid "I sense no falsity behind his speech, my lord."
 msgstr "No hay signos de falsedad tras sus palabras, mi señor."
 
 # Rough por Bruto(s), no es quizá la mejor sustitución; Kalenz busca dulcificar sus palabras. Sin embargo, creo que es muy apropiado.
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:339
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:330
 msgid ""
 "I, too, believe him. Dwarves may be... rough... by our standards, but they "
 "are not liars. I think he knows that if he does not honor his contract, next "
@@ -1770,22 +1765,22 @@ msgstr ""
 "derrotas. Kalenz y su grupo llegaron justo a tiempo..."
 
 #. [unit]: type=Naga Myrmidon, id=Mordrum
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:233
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:212
 msgid "Mordrum"
 msgstr "Mordrum"
 
 #. [unit]: type=Orcish Warlord, id=Urug-Pir
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:251
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:230
 msgid "Urug-Pir"
 msgstr "Urug-Pir"
 
 #. [unit]: type=Great Troll, id=Truugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:280
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:259
 msgid "Truugl"
 msgstr "Truugl"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:318
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:297
 #, fuzzy
 #| msgid ""
 #| "You must own the field and be capable of overwhelming your opponents. "
@@ -1799,17 +1794,17 @@ msgstr ""
 "del enemigo son diezmadas y quedan con menos de 15 unidades)"
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:396
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:375
 msgid "Flee! They have broken us!"
 msgstr "¡Escapemos! ¡Ha dispersado nuestras líneas!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:400
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:379
 msgid "Hunt them down and kill every single one of them!"
 msgstr "¡Cácenles, rematen a todos y cada uno de ellos!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:404
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:383
 msgid ""
 "It is not wise to put a wounded foe in a desperate situation; they will but "
 "fight harder for it. Break their will and let them flee, so they will spread "
@@ -1820,7 +1815,7 @@ msgstr ""
 "los suyos, propagarán su temor hacia nosotros."
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:408
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:387
 #, fuzzy
 #| msgid ""
 #| "She is right. Don’t let them lure you away from the Ka’lian, preparations "
@@ -1833,7 +1828,7 @@ msgstr ""
 "Ka’lian; los preparativos para cuando vuelvan estarán completados."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:421
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:400
 msgid ""
 "The orcs are not defeated, and our troops and supplies are exhausted. This "
 "is the end!"
@@ -1842,7 +1837,7 @@ msgstr ""
 "las tropas, exhaustas. ¡Es el fin!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:432
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:411
 msgid ""
 "The orcs have pushed us back to the Ka’lian. There is no way out. We must "
 "win here!"
@@ -1851,13 +1846,13 @@ msgstr ""
 "¡Debemos vencer aquí!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:436
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:415
 msgid "This is our final stand. If they take the Ka’lian, all is lost!"
 msgstr ""
 "Esta es nuestra última defensa. ¡Si alcanzan al Ka’lian, todo está perdido!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:441
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:420
 msgid ""
 "Galtrid, speak not of defeat. Elvenkind shall rise! Our enemies shall perish "
 "in blood and fire!"
@@ -1866,7 +1861,7 @@ msgstr ""
 "perecerán con sangre y fuego!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:445
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:424
 msgid ""
 "It is a dark day indeed when elves must steel themselves with dreams of "
 "slaughter."
@@ -1875,12 +1870,12 @@ msgstr ""
 "deseos de exterminio."
 
 #. [message]: id=Urug-Pir
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:450
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:429
 msgid "We’ll crush those weak elves and I’ll get da stone!"
 msgstr "¡Machaquemos a estos enclenques elfos, conseguiré lah josha!"
 
 #. [message]: id=El_Isomithir
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:454
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:433
 msgid ""
 "These are hardened orc and troll veterans. Men, prepare for a long, "
 "difficult fight..."
@@ -1889,17 +1884,17 @@ msgstr ""
 "preparaos para una larga y dura reyerta..."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:490
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:469
 msgid "Did ye think we’d let you have all the fun wi’ the orcs by yerselves?"
 msgstr "¿Pensastei’ q’os dejaríamos acapará’ to’a la diversió’ con los orcos?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:495
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:474
 msgid "It’s not much of an army he is bringing with him, though."
 msgstr "Trae consigo un grupo que difícilmente se asemeja a un ejército."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:499
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:478
 msgid ""
 "Not much of an army? These are dwarves with mighty axes, each worth three of "
 "you and your silly plinking bows!"
@@ -1908,14 +1903,14 @@ msgstr ""
 "poderosas hachas, vale por tres de vosotros con esos estúpidos arcos!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:503
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:482
 msgid "Olurf, is that all the dwarves you could find? Was the gold not enough?"
 msgstr ""
 "¿Olurf, son todos los enanos que pudisteis encontrar? ¿Acaso el oro no fue "
 "suficiente?"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:507
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:486
 msgid ""
 "They are no’ fighting for gold, they’re here for the fun. I’d ha’ brought a "
 "lot more if my men ha’ all kept quiet about helping elves! But the rest o’ "
@@ -1926,22 +1921,22 @@ msgstr ""
 "Pero’l resto de mi clan debería llegar ’n unos pocos días."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:511
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:490
 msgid "In a few days? That’s too late! We want our gold back!"
 msgstr "¿En unos pocos días? ¡Eso es demasiado tarde! ¡Devuelve nuestro oro!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:515
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:494
 msgid "Sure, minus expenses."
 msgstr "Seguro, menos extras."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:519
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:498
 msgid "What expenses?"
 msgstr "¿Qué extras?"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:523
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:502
 msgid ""
 "It’s an ancient dwarvish custom to buy the warriors a few drinks before the "
 "battle... So minus expenses that’s about even."
@@ -1951,28 +1946,28 @@ msgstr ""
 "justo."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:527
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:506
 msgid "That explains why they are so reckless in battle..."
 msgstr "Eso explica por qué son tan insensatos durante la batalla..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:531
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:510
 msgid "... Enough, gentlemen, we have a battle to fight!"
 msgstr "... ¡Suficiente, señores, tenemos una batalla que luchar!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:549
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:536
 msgid "At last! The orcs are defeated."
 msgstr "¡Al fin! Los orcos están acabados."
 
 #. [unit]: type=Orcish Warrior, id=Pirorr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:555
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:542
 msgid "Pirorr"
 msgstr "Pirorr"
 
 # Añadiendo un poco de incapacidad lingüística al orco.
 #. [message]: id=Pirorr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:566
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:553
 msgid ""
 "The elves have beaten us and they did not use da stone. Maybe they don’t "
 "have it? Great Chief will not like bad news!"
@@ -1981,26 +1976,26 @@ msgstr ""
 "gran jefe no gustarán malas noticias!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:575
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:562
 msgid "Kalenz, we are again in your debt. You returned just in time."
 msgstr ""
 "Kalenz, estamos de nuevo en deuda con vos. Regresasteis justo a tiempo."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:579
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:566
 msgid "And we have what’s left of the elvish treasury with us!"
 msgstr "¡Y tenemos con nosotros lo que queda de la tesorería élfica!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:583
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:570
 #, fuzzy
 #| msgid "Perhaps the gold will our word weight with the council."
 msgid "Perhaps the gold will give our words more weight with the council."
 msgstr "Quizá el oro dé importancia a nuestras sugerencias ante el consejo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:589
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:595
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:576
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:582
 #, fuzzy
 #| msgid ""
 #| " has left the recovered gold into the elvish treasury. You will start the "
@@ -2012,9 +2007,9 @@ msgstr ""
 " ha entregado el oro recuperado a la tesorería élfica. En el próximo "
 "escenario, comenzará con una cantidad predefinida de oro."
 
-#. [part]
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:589
+#. [part]
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:576
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:42
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:52
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:77
@@ -2051,13 +2046,13 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:66
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:32
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:57
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:28
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:29
 msgid "Kalenz"
 msgstr "Kalenz"
 
-#. [part]
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:595
+#. [part]
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:582
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:62
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:82
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:47
@@ -2067,28 +2062,28 @@ msgstr "Kalenz"
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:32
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:88
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:63
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:73
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:81
 msgid "Landar"
 msgstr "Landar"
 
 #. [message]: id=Truugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:607
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:594
 msgid ""
 "Aargh! I should have stayed in the mountains instead of joining the orcs!"
 msgstr "¡Aargh! Debí quedarme en las montañas en vez de unirme a los orcos!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:618
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:605
 msgid "Orcs, death is all you will find in this forest!"
 msgstr "¡Orcos, solo encontraréis muerte en este bosque!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:629
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:616
 msgid "I die without getting da stone?"
 msgstr "¿Muero sin conseguir lah josha?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:643
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:630
 msgid ""
 "Be grateful, tree-shagger, for I have spared you the pain of seeing your "
 "precious citadel burned and razed."
@@ -2097,7 +2092,7 @@ msgstr ""
 "ciudadela arrasada y en llamas."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:647
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:634
 msgid ""
 "Galtrid, my friend. Do not let my death be in vain. Destroy these foul orcs, "
 "and sing for me in the green woods when we have won."
@@ -2108,22 +2103,22 @@ msgstr ""
 
 # La cantidad "diez" es lo de menor importancia; se podría haber usado "será quintuplicada".
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:651
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:638
 msgid "We shall avenge you tenfold!"
 msgstr "¡Vuestra venganza será diez veces mayor!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:664
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:651
 msgid "Dead he is. Too quick. His screams were sweet."
 msgstr "Muerto ha sido. Breve. Sus gritos fueron dulces."
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:674
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:661
 msgid "Let us pursue the orc who murdered $unit.name|!"
 msgstr "¡Atrapemos al asesino de $unit.name|!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:678
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:665
 msgid ""
 "No, don’t leave your formation. An elf was slain by beast. What does it "
 "matter which beast it was? We must kill them all."
@@ -2167,7 +2162,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:47
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:37
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:291
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:309
 msgid "El’Isomithir"
 msgstr "El’Isomithir"
 
@@ -2285,7 +2280,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/18_Hour_of_Glory.cfg:67
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:51
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:61
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:94
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:109
 msgid "Cleodil"
 msgstr "Cleodil"
 
@@ -2329,7 +2324,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:118
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:27
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:137
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:148
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:163
 msgid "Olurf"
 msgstr "Olurf"
 
@@ -2424,59 +2419,59 @@ msgstr ""
 "peligro se encontraba más cerca de lo que suponían."
 
 #. [side]: type=Saurian Flanker, id=Huurgh
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:131
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:133
 msgid "Huurgh"
 msgstr "Huurgh"
 
 #. [side]: type=Saurian Oracle, id=Shhar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:162
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:164
 msgid "Shhar"
 msgstr "Shhar"
 
 #. [side]
 #. [side]: type=Gryphon, id=Gryphon Leader
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:194
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:154
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:196
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:152
 msgid "Creatures"
 msgstr "Bestias"
 
 #. [set_variable]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:270
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:271
 msgid "some experienced warriors"
 msgstr "algunos guerreros experimentados"
 
 #. [set_variable]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:298
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:299
 msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
 msgstr "$left_behind_{NAME} y $l3_store_{NAME}[$i].name"
 
 #. [set_variable]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:304
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:305
 msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 msgstr "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:419
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:324
 msgid "Kalenz crosses the river"
 msgstr "Kalenz debe cruzar el río"
 
 #. [message]: id=Huurgh
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:450
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:355
 msgid "Yess! It’s the elves who stole our gold! The bounty is mine!"
 msgstr "¡Ssssí! ¡Son los elfos que robaron nuestro oro! La recompensa ser mía!"
 
 #. [message]: id=Shhar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:454
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:359
 msgid "I saw them first, fool! The bounty is all mine."
 msgstr "¡Yo los vi primero, necio! La recompensa me pertenece sólo a mi."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:458
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:363
 msgid "What are they talking about?"
 msgstr "¿De qué hablan?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:462
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:367
 msgid ""
 "It would seem the Saurians put a bounty on our heads for having the "
 "effrontery to take our gold back after they stole it. Are you interested?"
@@ -2485,7 +2480,7 @@ msgstr ""
 "tenido la osadía de recuperar el oro que nos robaron. ¿Os interesa?"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:466
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:371
 msgid ""
 "No, but my axe is interested in some saurian heads! They ha’ been too "
 "friendly with the Orcs for my liking!"
@@ -2494,7 +2489,7 @@ msgstr ""
 "demasia’o amistosos con los orcos pa’ mi gusto!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:470
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:375
 msgid ""
 "Remember, we are here on a mission. We will fight these saurians if we must, "
 "but our mission is to get to Thoria."
@@ -2503,12 +2498,12 @@ msgstr ""
 "necesario, pero nuestra prioridad es llegar a Thoria."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:474
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:379
 msgid "They are far too numerous to risk battle with. Let’s cross the river!"
 msgstr "Son demasiados para arriesgarnos a lidiar con ellos, ¡crucemos el río!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:478
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:383
 msgid ""
 "We can outrun them in the woods and mountains beyond the north shore. But "
 "crossing the river without a bridge? We dwarves know water is a very "
@@ -2519,7 +2514,7 @@ msgstr ""
 "que el agua es una cosa muy peligrosa!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:482
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:387
 #, fuzzy
 #| msgid ""
 #| "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends "
@@ -2535,7 +2530,7 @@ msgstr ""
 "todos modos, crucemos con cautela."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:486
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:391
 msgid ""
 "You speak my thought, Cleodil. Close in behind me; I’ll guard you from harm "
 "myself. Look to your weapons as we cross, all! And be wary."
@@ -2545,7 +2540,7 @@ msgstr ""
 "mientras cruzamos. Sean precavidos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:493
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:398
 msgid ""
 "Before Kalenz left the Ka’lian he had ordered $left_behind_kalenz to stay "
 "and guard it."
@@ -2554,7 +2549,7 @@ msgstr ""
 "atrás y defenderlo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:501
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:406
 msgid ""
 "Before Landar left the Ka’lian he had ordered $left_behind_landar to stay "
 "and guard it."
@@ -2563,24 +2558,24 @@ msgstr ""
 "atrás y defenderlo."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:526
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:431
 msgid "We made it. Onwards to Thoria!"
 msgstr "Lo hicimos. ¡Vamos, hacia Thoria!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:530
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:435
 msgid "At last!"
 msgstr "¡Al fin!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:534
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:439
 msgid "We’ll need to settle things with these saurians once and for all!"
 msgstr ""
 "¡Pronto tendremos que arreglar cuentas con estos saurios de una vez por "
 "todas!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:538
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:443
 msgid ""
 "Hasn’t enough blood been shed? I think we can compose matters with them "
 "after the threat of the orcs has been met."
@@ -2590,42 +2585,42 @@ msgstr ""
 "orca."
 
 #. [unit]: type=Water Serpent, id=Sealurr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:563
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:468
 msgid "Sealurr"
 msgstr "Sealurr"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:574
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:479
 msgid "The legends are true! Sea creatures are upon us!"
 msgstr "¡Las leyendas son ciertas! ¡Las criaturas del mar vienen por nosotros!"
 
 #. [unit]: type=Cuttle Fish, id=Kallub
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:585
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:490
 msgid "Kallub"
 msgstr "Kallub"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:596
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:501
 msgid "They are coming at us from all sides!"
 msgstr "¡Vienen a nosotros por todos los lados!"
 
 #. [unit]: type=Water Serpent, id=Scardeep
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:608
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:513
 msgid "Scardeep"
 msgstr "Scardeep"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:619
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:524
 msgid "Watch for the serpent!"
 msgstr "¡Cuidado con la serpiente!"
 
 #. [unit]: type=Cuttle Fish, id=Kalimar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:630
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:535
 msgid "Kalimar"
 msgstr "Kalimar"
 
 #. [unit]: type=Cuttle Fish, id=Alkamar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:649
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:554
 msgid "Alkamar"
 msgstr "Alkamar"
 
@@ -2644,28 +2639,28 @@ msgstr ""
 "peligrosas montañas de Thoria..."
 
 #. [side]: type=Troll Warrior, id=Tafrul
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:113
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:111
 msgid "Tafrul"
 msgstr "Tafrul"
 
 #. [side]: type=Gryphon, id=Gryphon Leader
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:147
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:145
 msgid "Gryphon Leader"
 msgstr "Líder grifo"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:188
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:186
 msgid "Reach the signpost with Kalenz"
 msgstr "Alcanzar la señal con Kalenz"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:227
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:225
 msgid "I can hardly see with all that mist around, but I can sense danger."
 msgstr ""
 "Apenas puedo ver con esta neblina en derredor, pero puedo sentir el peligro."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:231
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:229
 msgid ""
 "Told ye it would be no picnic excursion, elf-boy. Are ye lily-livered to "
 "continue?"
@@ -2674,7 +2669,7 @@ msgstr ""
 "pa’ continuar?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:235
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:233
 msgid ""
 "Gentlemen, don’t squabble. We cannot go back now. But be watchful; I don’t "
 "like the feel of this country one bit."
@@ -2683,12 +2678,12 @@ msgstr ""
 "cuidado; no me gusta en absoluto el aspecto de estas tierras."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:239
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:237
 msgid "I, too, feel we are in great danger."
 msgstr "Yo también creo que nos encontramos en grave peligro."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:243
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:241
 msgid ""
 "Cleodil, stay close to me. If there is anything real behind this aura of "
 "dread, likely your keen senses will find it first and I will want to know "
@@ -2699,17 +2694,17 @@ msgstr ""
 "inmediatamente, saber qué es."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:272
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:270
 msgid "Onwards!"
 msgstr "¡Adelante!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:276
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:274
 msgid "Yer doing pretty well, elf-boy!"
 msgstr "¡’Táis haciéndolo bastante bien, muchacho!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:292
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:290
 msgid ""
 "There is some greasy-looking smoke rising ahead of us! Kalenz... my lord... "
 "I feel something terribly wrong is happening!"
@@ -2718,24 +2713,24 @@ msgstr ""
 "que algo terriblemente malo está ocurriendo!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:296
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:294
 msgid "Crelanu’s place should be close now, as I remember. Quickly, this way!"
 msgstr ""
 "El hogar de Crelanu debería estar cerca, si mi memoria no me falla. ¡Rápido, "
 "por aquí!"
 
 #. [unit]: type=Yeti, id=Krulg
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:320
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:318
 msgid "Krulg"
 msgstr "Krulg"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:332
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:330
 msgid "Watch out!"
 msgstr "¡Cuidado!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:336
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:334
 msgid "It’s... it’s monstrous!"
 msgstr "¡Es... es monstruosamente enorme!"
 
@@ -2744,7 +2739,7 @@ msgstr "¡Es... es monstruosamente enorme!"
 # "En ello (el yeti)*"
 # *El yeti no es un "objeto".
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:340
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:338
 msgid ""
 "I sense no malice in it; we are the interlopers here. Spare it if you can."
 msgstr ""
@@ -2752,7 +2747,7 @@ msgstr ""
 "vida si es posible."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:344
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:342
 msgid ""
 "Do as Cleodil says. We have enemies sufficient without provoking new ones."
 msgstr ""
@@ -2760,12 +2755,12 @@ msgstr ""
 "nuevos."
 
 #. [unit]: type=Yeti, id=Tralg
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:360
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:358
 msgid "Tralg"
 msgstr "Tralg"
 
 #. [unit]: type=Yeti, id=Drolg
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:379
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:377
 msgid "Drolg"
 msgstr "Drolg"
 
@@ -2780,13 +2775,13 @@ msgid "Quickening their pace, the elves and dwarves raced towards the smoke..."
 msgstr "Acelerando el paso, elfos y enanos se apresuraron hacia el humo..."
 
 #. [side]: type=Arch Mage, id=Aquagar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:121
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:113
 msgid "Aquagar"
 msgstr "Aquagar"
 
-#. [part]
 #. [side]: type=Elder Mage, id=Crelanu
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:135
+#. [part]
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:127
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:22
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:32
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:42
@@ -2812,13 +2807,13 @@ msgid "Crelanu"
 msgstr "Crelanu"
 
 #. [side]: type=Troll Warrior, id=Trigrul
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:155
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:147
 msgid "Trigrul"
 msgstr "Trigrul"
 
 # Hum, trataré a los dracos con respeto; criaturas vs bestias.
 #. [message]: id=Crelanu
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:184
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:176
 msgid ""
 "I sense a presence that is not one of Aquagar’s creatures. Who are you, and "
 "what is your purpose here?"
@@ -2827,7 +2822,7 @@ msgstr ""
 "sois, y qué intenciones os traen aquí?"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:188
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:180
 msgid ""
 "That, I think, must be the mage of which Olurf spoke. But he is not the one "
 "I sensed as we approached this place..."
@@ -2836,7 +2831,7 @@ msgstr ""
 "sido él a quien percibí mientras llegábamos a este lugar..."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:192
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:184
 msgid ""
 "I feel the shadow of destiny on my soul. There is something I am fated to do "
 "here, but I know not what."
@@ -2845,12 +2840,12 @@ msgstr ""
 "algo aquí, no sé el qué."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:196
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:188
 msgid "If you are the mage Crelanu, we have come to seek your help."
 msgstr "Si sois Crelanu, el mago, hemos venido a solicitar su ayuda."
 
 #. [message]: id=Crelanu
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:200
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:192
 msgid ""
 "I am Crelanu... but if you want my help you must begin by helping me, for I "
 "am besieged here and in no state to aid anyone else."
@@ -2859,7 +2854,7 @@ msgstr ""
 "sitiado, incapaz de ayudar a nadie."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:204
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:196
 msgid ""
 "Ahhh. A fight! Perhaps this is my fate. Come, Kalenz, let us make a rescue."
 msgstr ""
@@ -2867,17 +2862,17 @@ msgstr ""
 "rescate."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:217
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:209
 msgid "Defeat Aquagar"
 msgstr "Derrotar a Aquagar"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:237
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:229
 msgid "Death of Crelanu"
 msgstr "Muerte de Crelanu"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:255
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:247
 msgid ""
 "Looks like your mage friend is in trouble. There is a horde of drakes "
 "attacking him!"
@@ -2886,19 +2881,19 @@ msgstr ""
 "está atacando!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:259
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:251
 msgid "Indeed. Before he can aid us, we will have to aid him."
 msgstr ""
 "Cierto. Antes de que él pueda ayudarnos, tendremos que socorrerle nosotros "
 "mismos."
 
 #. [message]: id=Aquagar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:263
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:255
 msgid "Fools! The book will be mine!"
 msgstr "¡Necios! ¡El libro ser mío!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:267
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:259
 msgid ""
 "There... I sense magic emanating from that stone keep east of the lake. That "
 "is where we will find the mage."
@@ -2907,7 +2902,7 @@ msgstr ""
 "lago. Allí encontraremos al mago."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:279
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:271
 msgid ""
 "I die, but I will not go unavenged! Cursed will you be Kalenz! You will "
 "never find lasting peace in all your years. You will lose your dearest. And "
@@ -2922,7 +2917,7 @@ msgstr ""
 "por asesinarme, a mí, Aquagar, gran mago, maestro de dracos, de Morogoth!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:284
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:276
 msgid ""
 "Some scary fellow this Aquagar thinks he is! Come now, I think Crelanu owes "
 "us some drinks."
@@ -2931,7 +2926,7 @@ msgstr ""
 "tragos."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:305
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:297
 msgid "There goes our last hope!"
 msgstr "¡Allí va nuestra última esperanza!"
 
@@ -3389,7 +3384,7 @@ msgstr ""
 "travesía al sur, hacia el Ka’lian..."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:126
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:121
 msgid ""
 "Oh, no, I forgot my dose of Crelanu’s invisibility philter. I’ll go back and "
 "get it. I’ll catch up with you later!"
@@ -3398,17 +3393,17 @@ msgstr ""
 "Regresaré a recuperarla. ¡Os alcanzaré entonces!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:130
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:125
 msgid "Maybe some of my dwarves can escort you..."
 msgstr "Quizás algunos de mis enanos puedan escoltarle..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:134
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:129
 msgid "Go, Landar, but be careful. We need you."
 msgstr "Ve, Landar, pero ten cuidado. Te necesitamos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:148
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:143
 msgid ""
 "Some weeks later, as Kalenz and his companions were working their way "
 "southwards from the high peaks of the Heart Mountains into its foothills..."
@@ -3417,12 +3412,12 @@ msgstr ""
 "los grandes picos de las montañas profundas, por sus laderas, hacia el sur..."
 
 #. [unit]: id=Eonihar, type=Elvish Scout
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:163
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:158
 msgid "Eonihar"
 msgstr "Eonihar"
 
 #. [message]: id=Eonihar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:173
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:168
 msgid ""
 "At last I have found you, alive and well! We need you back at once! The orcs "
 "have attacked the humans."
@@ -3431,12 +3426,12 @@ msgstr ""
 "lo antes posible! Los orcos han atacado a los humanos."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:177
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:172
 msgid "This means we are safe for the time being, no?"
 msgstr "¿Esto quiere decir que estamos seguros por ahora, no?"
 
 #. [message]: id=Eonihar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:181
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:176
 msgid ""
 "What’s more, King Haldric is dead. His successor wants to renew the treaty "
 "of alliance and has asked for our help."
@@ -3446,24 +3441,24 @@ msgstr ""
 
 # No siendo una traducción literal, creo que conserva bien el mensaje.
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:201
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:196
 msgid "How convenient! Now they need our help, they come running!"
 msgstr ""
 "¡Qué irónico! ¡Ahora que ellos necesitan nuestra ayuda se apresuran a "
 "solicitarla!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:205
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:200
 msgid "Landar! You’re back! All is well?"
 msgstr "¡Landar! ¡Has vuelto! ¿Está todo bien?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:209
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:204
 msgid "Yes, I have the philter of invisibility."
 msgstr "Sí, tengo la pócima de invisibilidad."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:213
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:208
 msgid ""
 "We face a difficult choice. I know humans did not help us when the orcs "
 "attacked, but the orcs are everybody’s enemy. When humans fall, we’ll be "
@@ -3474,7 +3469,7 @@ msgstr ""
 "caen, nosotros seremos los siguientes."
 
 #. [message]: id=Eonihar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:217
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:212
 msgid ""
 "The orcish forces are encamped south of the Great River, and have surrounded "
 "the fortified human settlement at Tath. The humans are sending all their "
@@ -3485,7 +3480,7 @@ msgstr ""
 "todas sur fuerzas allí. Hemos de decidir si los ayudaremos o no."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:221
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:216
 msgid ""
 "Go tell the council and the human king that we will be there! Now, let’s "
 "hurry!"
@@ -3534,77 +3529,77 @@ msgstr ""
 
 #. [part]
 #. [unit]: id=Aldar, type=General
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:122
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:115
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:37
 msgid "Aldar"
 msgstr "Aldar"
 
 #. [unit]: type=Orcish Warlord, id=Pirror
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:161
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:153
 msgid "Pirror"
 msgstr "Pirror"
 
 #. [unit]: type=Orcish Warlord, id=Tan-Grub
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:181
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:173
 msgid "Tan-Grub"
 msgstr "Tan-Grub"
 
 #. [unit]: type=Great Troll, id=Grol
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:204
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:196
 msgid "Grol"
 msgstr "Grol"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:262
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:253
 msgid "Last for the end of turns"
 msgstr "Sobrevivir hasta el fin de los turnos"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:283
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:274
 msgid "Death of Aldar"
 msgstr "Muerte de Aldar"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:298
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:289
 msgid "Tremble, orcs! The vengeance of the Elves is upon you!!"
 msgstr "¡Temblad, orcos! ¡¡La venganza de los elfos os espera!!"
 
 #. [message]: id=Aldar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:302
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:293
 msgid "So it is true! The elves have come to our aid!"
 msgstr "¡Así que es verdad! ¡Los elfos han venido en nuestra ayuda!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:306
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:297
 msgid "Hey! Do I look like an elf?"
 msgstr "¡Eh! ¿Tengo pintas de elfo?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:310
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:301
 msgid "I can scarce believe I am fighting besides these betrayers."
 msgstr "Apenas puedo creer que esté luchando junto a estos traidores."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:314
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:305
 msgid "We cannot be choosy about our allies when our need is dire."
 msgstr ""
 "No podemos ser exigentes acerca de con quién nos aliamos cuando la necesidad "
 "aprieta."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:318
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:309
 msgid "Indeed not. Save your anger for our enemies, Landar."
 msgstr "Sin duda que no. Reserva tu ira para nuestros enemigos, Landar."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:322
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:313
 msgid "I shall. But when our need is not so dire, there must be a reckoning..."
 msgstr ""
 "Así lo haré. Pero cuando nuestra necesidad no sea tan acuciante, entonces, "
 "deberemos reconsiderar..."
 
 #. [message]: id=Tan-Grub
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:328
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:319
 msgid ""
 "An elven army to the north? And they have dwarves with them? We must defeat "
 "them in detail before they combine, which means attacking before our "
@@ -3618,17 +3613,17 @@ msgstr ""
 "ciudad como el castillo!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:333
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:324
 msgid "The brazen cry of a war-horn is heard in the distance."
 msgstr "El arrogante clamor de un cuerno de guerra se oye en la distancia."
 
 #. [unit]: id=Aldun, type=Horseman
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:340
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:331
 msgid "Aldun"
 msgstr "Aldun"
 
 #. [message]: id=Aldun
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:352
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:343
 msgid ""
 "General Aldar has received your message. He asks that you engage the orcish "
 "reinforcements from the north, preventing them from joining with their "
@@ -3641,7 +3636,7 @@ msgstr ""
 "deberían llegar en unos pocos días."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:356
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:347
 msgid ""
 "Very well... But have you any word of the elvish troops marching to join us? "
 "We are too few to defeat the enemy without them."
@@ -3650,20 +3645,20 @@ msgstr ""
 "Somos demasiado pocos para vencer al enemigo sin ellos."
 
 #. [message]: id=Aldun
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:360
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:351
 msgid "We have no news from the Ka’lian."
 msgstr "No hemos recibido nueva alguna del Ka’lian."
 
 #. [message]: id=Galtrid
 #. [message]: role=l3_store
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:365
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:539
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:356
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:511
 msgid "Kalenz! We come to fight beside you!"
 msgstr "¡Kalenz! ¡Hemos venido para luchar junto a ustedes!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:369
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:543
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:360
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:515
 msgid ""
 "Where is the rest of the elvish army? They were promised and should be here!"
 msgstr ""
@@ -3672,8 +3667,8 @@ msgstr ""
 
 #. [message]: id=Eradion
 #. [message]: role=l3_store
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:373
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:547
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:364
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:519
 msgid ""
 "The Great Council has decided it was too risky to send troops here. But some "
 "of us dissented and have come to fight beside you."
@@ -3682,8 +3677,8 @@ msgstr ""
 "Pero algunos discrepamos, y hemos acudido para luchar junto a ustedes."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:377
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:551
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:368
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:523
 msgid ""
 "That is well! If the Ka’lian is too fearful or blind to see what is needed, "
 "we must do it ourselves."
@@ -3692,15 +3687,15 @@ msgstr ""
 "necesario hacer, entonces lo haremos nosotros."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:381
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:555
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:372
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:527
 msgid "It is not well that we have become so divided as this."
 msgstr ""
 "No es buena señal que hayamos llegado a estar tan divididos como ahora."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:385
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:559
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:376
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:531
 msgid ""
 "No, it is not. But if we do not defeat these orcs here and now our divisions "
 "will all be moot. I will take every sword-arm I can get and be glad of them."
@@ -3710,39 +3705,39 @@ msgstr ""
 "eso."
 
 #. [unit]: type=Paladin, id=Kulrad
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:576
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:548
 msgid "Kulrad"
 msgstr "Kulrad"
 
 #. [message]: id=Kulrad
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:594
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:566
 msgid "I see foul orcs to be ridden down! Charge!"
 msgstr "¡Diviso orcos pestilentes a los que derribar! ¡A la carga!"
 
 #. [message]: race=orc
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:599
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:571
 msgid "More of the cursed horse-pokers!! Run, let’s get out of here!"
 msgstr "¡Más de esos atiza-caballos! ¡Huid, salgamos de aquí!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:605
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:577
 msgid "The not-at-all-brazen cry of a war-horn is heard in the distance."
 msgstr ""
 "El ya no tan arrogante clamor de un cuerno de guerra se oye en la distancia."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:634
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:606
 msgid "We have thwarted the Orcs once again!"
 msgstr "¡Hemos frustrado las intenciones de los orcos de nuevo!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:638
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:610
 msgid "And we revived the alliance with the Humans, which is no small thing."
 msgstr ""
 "Y hemos reavivado nuestra alianza con los humanos, lo cual no es poca cosa."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:642
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:614
 msgid ""
 "Indeed it is not. As always, Cleodil, you speak with the wisdom and care "
 "that befits a healer. That is a good reminder for those who must walk the "
@@ -3754,7 +3749,7 @@ msgstr ""
 
 # Hum, "make smb's hackles rise" es una expresión algo compleja; prefiero traducirla como "erizan el pelo de rabia". Sin embargo, hackles tiene una connotación algo relacionada con los animales (quizá).
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:646
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:618
 msgid ""
 "A good fight against foul enemies. These orcs make a dwarf’s hackles rise; I "
 "might even fight them for free, next time."
@@ -3764,17 +3759,17 @@ msgstr ""
 "balde, pero la próxima vez."
 
 #. [message]: id=Aldar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:650
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:622
 msgid "The King is here! Hail Haldric II, King of Wesnoth!"
 msgstr "¡El rey está aquí! ¡Saludad a Haldric II, rey de Wesnoth!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:665
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:637
 msgid "Tath will fall! We have failed!"
 msgstr "¡Tath ha caído! ¡Hemos fallado!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:679
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:651
 msgid ""
 "I die? Great Chief never said anything about fighting elves and dwarves!"
 msgstr "¿Yo? ¿Muero? ¡Gran jefe jamás mencionar nada de luchar elfos y enanos!"
@@ -4315,28 +4310,28 @@ msgstr ""
 "sorprendió durante su viaje..."
 
 #. [side]: type=Orcish Warlord, id=Kior-Pur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:110
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:106
 msgid "Kior-Pur"
 msgstr "Kior-Pur"
 
 #. [side]: type=Orcish Warlord, id=Mbiran
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:147
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:143
 msgid "Mbiran"
 msgstr "Mbiran"
 
 #. [side]: type=Orcish Warlord, id=Tan-Durr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:181
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:177
 msgid "Tan-Durr"
 msgstr "Tan-Durr"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:277
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:293
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:270
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:298
 msgid "Death of Uradredia"
 msgstr "Muerte de Uradredia"
 
 #. [message]: id=Kior-Pur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:308
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:301
 msgid ""
 "I see troops coming from the south! It must be that our army has beaten "
 "these elves and humans and will now help us crush these remaining elves!"
@@ -4346,7 +4341,7 @@ msgstr ""
 "elfos restantes!"
 
 #. [message]: id=Uradredia
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:312
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:305
 msgid ""
 "Our defenses are stretched thin. Men, prepare to face another orcish attack!"
 msgstr ""
@@ -4354,17 +4349,17 @@ msgstr ""
 "envestida de orcos!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:316
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:309
 msgid "The North Elves still stand. Prepare for battle!"
 msgstr "Los elfos del Norte siguen con vida. ¡Preparaos para la batalla!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:326
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:319
 msgid "The North Elves are now free!"
 msgstr "¡Los elfos del norte ya son libres!"
 
 #. [message]: id=Uradredia
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:331
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:324
 msgid ""
 "Our thanks to you, Kalenz, son of Kliada. Our troops are at your command."
 msgstr ""
@@ -4372,32 +4367,32 @@ msgstr ""
 "órdenes."
 
 #. [message]: id=Kior-Pur
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:344
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:337
 msgid "The elves are attacking us! Reserves!"
 msgstr "¡Los elfos están atacándonos! ¡Llamen a las reservas!"
 
 #. [unit]: type=Direwolf Rider, id=Zhuk
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:355
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:348
 msgid "Zhuk"
 msgstr "Zhuk"
 
 #. [unit]: type=Direwolf Rider, id=Dran
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:372
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:365
 msgid "Dran"
 msgstr "Dran"
 
 #. [unit]: type=Direwolf Rider, id=Hrugt
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:384
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:377
 msgid "Hrugt"
 msgstr "Hrugt"
 
 #. [unit]: type=Direwolf Rider, id=Orhtib
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:396
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:389
 msgid "Orhtib"
 msgstr "Orhtib"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:414
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/17_Breaking_the_Siege.cfg:407
 msgid ""
 "Before you die, know that you lost in Wesmere, you lost at Tath, you will "
 "lose here and that your Great Chief is dead!"
@@ -4585,31 +4580,31 @@ msgid "We do as we must."
 msgstr "Haremos lo que debemos hacer."
 
 #. [side]: type=Saurian Flanker, id=Hgyr
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:155
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:153
 msgid "Hgyr"
 msgstr "Hgyr"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:204
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:201
 msgid "That was the last. A bitter day’s work, and no memory to be proud of."
 msgstr ""
 "Ése era el último. Amargos días de trabajo, ningún recuerdo del que "
 "enorgullecerse."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:208
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:205
 msgid ""
 "A shame we missed the opportunity to rid the forests of dwarves, as well."
 msgstr ""
 "Una pena que dejásemos pasar la oportunidad de limpiar los bosques de enanos."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:218
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:215
 msgid "Defeat all enemy units, and destroy all villages"
 msgstr "Derrote a todos los líderes enemigos y destruya todas las villas"
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:249
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:246
 #, fuzzy
 #| msgid ""
 #| "We have finally reached Saurgrath, their capitol. Remember whose side "
@@ -4622,17 +4617,17 @@ msgstr ""
 "estado en la guerra contra nuestra gente."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:253
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:250
 msgid "Now is our chance to finish them off..."
 msgstr "Es nuestra oportunidad para terminar con ellos..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:257
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:254
 msgid "I fear this will be a bloodbath..."
 msgstr "Temo que esto se va a convertir en un baño de sangre..."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:261
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:258
 msgid ""
 "Destroy them, root and branch. Burn out their homes. Let none remain alive!"
 msgstr ""
@@ -4640,7 +4635,7 @@ msgstr ""
 "vida!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:267
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:264
 msgid ""
 "Kalenz is not able to recruit or recall shamans or any of their advancements "
 "in this scenario."
@@ -4649,12 +4644,12 @@ msgstr ""
 "avances, durante este escenario."
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:322
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:319
 msgid "These are but eggs and hatchlings."
 msgstr "Esto solo son sus huevos, junto a las crías."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:326
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:323
 msgid ""
 "Do not spare them. They will only foul our forests anew when they get their "
 "growth."
@@ -4663,17 +4658,17 @@ msgstr ""
 "cuando crezcan."
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:335
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:332
 msgid "They even shatter our eggs!"
 msgstr "¡Incluso aplastan nuestros huevos!"
 
 #. [message]: role=Anduilas
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:366
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:363
 msgid "But... to kill their young? Are we to go that far?"
 msgstr "Pero... ¿matar a sus jóvenes? ¿Vamos a ir tan lejos?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:370
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:367
 msgid ""
 "Stay. You need not have the blood of children on your hands, and I shall not."
 msgstr ""
@@ -4681,7 +4676,7 @@ msgstr ""
 "permitiré."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:374
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:371
 msgid ""
 "Perhaps you are too tender-minded to do what must be done, but many of us "
 "are not."
@@ -4690,7 +4685,7 @@ msgstr ""
 "que hemos de hacer; por contra, muchos de nosotros no."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:378
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:375
 msgid ""
 "I will not set elf against elf. But, Landar, I fear you are storing up a "
 "dreadful price for yourself."
@@ -4699,17 +4694,17 @@ msgstr ""
 "Landar, temo que hayas puesto un precio demasiado alto a tu sufrimiento."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:382
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:379
 msgid "Stand aside. I will do what is needful."
 msgstr "Hazte a un lado. Haré lo que hay que hacer."
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:389
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:386
 msgid "Their revenge is terrible! I fear for our kind."
 msgstr "¡Su venganza está siendo horrible! Temo por nuestra especie."
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:394
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:391
 #, fuzzy
 #| msgid "Don’t flee. We cannot abandon our capitol."
 msgid "Don’t flee. We cannot abandon our capital."
@@ -4775,7 +4770,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:42
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:268
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:284
 msgid "Galtrid"
 msgstr "Galtrid"
 
@@ -4798,7 +4793,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:47
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:306
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:325
 msgid "Uradredia"
 msgstr "Uradredia"
 
@@ -4863,7 +4858,7 @@ msgstr ""
 "cada vez más fuerte..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:88
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:87
 msgid ""
 "Kalenz begins this scenario in retirement, and is not able to recall his "
 "veteran troops."
@@ -4872,12 +4867,12 @@ msgstr ""
 "veteranos."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:115
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:114
 msgid "As you command, my lord."
 msgstr "Como ordene, señor."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:119
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:118
 msgid ""
 "You turn on us? I cannot believe it! How has elf come to strive against elf "
 "so bitterly?"
@@ -4886,7 +4881,7 @@ msgstr ""
 "elfo pugne contra otro elfo tan amargamente?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:123
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:122
 msgid ""
 "Evil takes many forms, my love. Today we see another of its faces... and "
 "must defeat it again. Prepare to die, $betrayer|!"
@@ -4896,24 +4891,24 @@ msgstr ""
 "¡Prepárate para morir, $betrayer|!"
 
 #. [message]: role=betrayer
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:127
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:126
 msgid "Only Landar has the will to do what must be done to save the Elves!"
 msgstr ""
 "¡Sólo Landar tiene la iniciativa para realizar lo que ha de hacerse para "
 "proteger a los elfos!"
 
 #. [message]: role=betrayer
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:169
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:168
 msgid "Hold, $unit.name|! Now we fight for Landar!"
 msgstr "¡Tranquilízate, $unit.name|! ¡Nosotros también luchamos por Landar!"
 
 #. [message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:191
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:190
 msgid "Hold your hand, $unit.name|! $second_unit.name| is on our side!"
 msgstr "¡Detén tu mano, $unit.name|! ¡$second_unit.name| está de nuestro lado!"
 
 #. [message]: role=betrayer
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:196
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:195
 msgid ""
 "I will not stand by as Kalenz betrays us to the Humans and Dwarves. We "
 "follow Landar now!"
@@ -4922,33 +4917,33 @@ msgstr ""
 "¡Seguiremos a Landar desde hoy mismo!"
 
 #. [side]: type=Elvish Ranger, id=Antaril
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:211
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:209
 msgid "Antaril"
 msgstr "Antaril"
 
 #. [side]: type=Elvish Marshal, id=Crintil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:279
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:230
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:276
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:233
 msgid "Crintil"
 msgstr "Crintil"
 
 #. [side]: type=Elvish Captain, id=Oblil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:316
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:313
 msgid "Oblil"
 msgstr "Oblil"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:362
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:358
 msgid "Kalenz reaches the signpost"
 msgstr "Kalenz alcanza la señal"
 
 #. [unit]: id=Galenor, type=Elvish Scout
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:397
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:393
 msgid "Galenor"
 msgstr "Galenor"
 
 #. [message]: id=Galenor
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:407
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:403
 msgid ""
 "My lord Kalenz, you are in great danger! You must leave here immediately."
 msgstr ""
@@ -4956,12 +4951,12 @@ msgstr ""
 "inmediato!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:411
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:407
 msgid "What?!"
 msgstr "¡¿Qué?!"
 
 #. [message]: id=Galenor
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:415
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:411
 msgid ""
 "Landar has seized control of the army. He has eliminated the council and "
 "proclaimed himself High Warlord of the Elves. What is worse, there is word "
@@ -4972,12 +4967,12 @@ msgstr ""
 "es que nos han llegado noticias de que ya ha ordenado vuestro asesinato!"
 
 #. [message]: id=Crintil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:419
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:415
 msgid "Too late! All traitors will die!"
 msgstr "¡Demasiado tarde! ¡Todos los traidores morirán!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:423
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:419
 msgid ""
 "Listen to me! We have fought and bled side by side. We must trust in each "
 "other and face the Orcs together!"
@@ -4986,12 +4981,12 @@ msgstr ""
 "confianza entre nosotros y enfrentar a los orcos como una unidad!"
 
 #. [message]: id=Oblil
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:428
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:424
 msgid "Do not listen to this traitor! You have all heard the order!"
 msgstr "¡No escuchéis a este traidor! ¡Todos habéis oído la orden!"
 
 #. [message]: id=Galenor
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:433
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:429
 msgid ""
 "You should try to reach Uradredia and the North Elves. He too, has refused "
 "to join Landar. Word is that some troops still loyal to you are heading "
@@ -5002,7 +4997,7 @@ msgstr ""
 "dirigen hacia allí."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:452
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:448
 msgid "Now we must fare swiftly to the North Elves!"
 msgstr "¡Entonces caminemos con presura hacia los elfos del norte!"
 
@@ -5036,7 +5031,7 @@ msgstr ""
 "bajo el mando de Uradredia. Con prontitud aparecieron los elfos de Landar..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:143
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:146
 msgid ""
 "Kalenz can only recall shamans and their advancements from his former army; "
 "the rest of his men joined Uradredia before he arrived."
@@ -5046,12 +5041,25 @@ msgstr ""
 "llegada."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:280
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:283
 msgid "Survive for six days"
 msgstr "Sobrevivir por seis días"
 
+#. [objective]: condition=lose
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:319
+#, fuzzy
+#| msgid "Survive for six days"
+msgid "Kalenz survives for six days"
+msgstr "Sobrevivir por seis días"
+
+#. [note]
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:330
+msgid ""
+"If you loose you still have a chance to defeat Kalenz in the next scenario."
+msgstr ""
+
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:308
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:339
 msgid ""
 "Landar, listen to me! It does not have to come to this. I know about the "
 "potion. Let us help!"
@@ -5060,7 +5068,7 @@ msgstr ""
 "el brebaje. ¡Permite que te ayudemos!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:312
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:343
 msgid ""
 "Here is Kalenz. There can be no talk with traitors! Leave none of them alive!"
 msgstr ""
@@ -5068,13 +5076,13 @@ msgstr ""
 "cabeza!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:328
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:359
 msgid "Things are not going well! Retreat! We will meet again, traitors!"
 msgstr ""
 "¡Las cosas no van bien! ¡Retirada! ¡Nos encontraremos de nuevo, traidores!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:340
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:376
 msgid ""
 "We have yet to break their defenses! While we are getting weaker, the enemy "
 "is getting stronger! Retreat!"
@@ -5083,7 +5091,7 @@ msgstr ""
 "enemigo se fortalece! ¡Retirada!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:344
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:380
 msgid "We won!"
 msgstr "¡Hemos ganado!"
 
@@ -5112,53 +5120,53 @@ msgstr ""
 "enemigo, Landar, hacia el bosque de Gitamoth..."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:114
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:112
 msgid "Defeat Landar"
 msgstr "Derrotar a Landar"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:139
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:137
 msgid "Landar, let us spill no more elvish blood. Give up. We can help you!"
 msgstr ""
 "Landar, no derramemos más sangre de elfo. Abandona esta lucha inútil. ¡Te "
 "podemos ayudar!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:143
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:141
 msgid "No! It all ends here!"
 msgstr "¡No! ¡Todo terminará aquí!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:162
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:160
 msgid ""
 "Forgive me $unit.name|. I will sing your name in praise under the stars!"
 msgstr ""
 "Perdóname, $unit.name|. ¡Bajo las estrellas, recitaré odas en tu nombre!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:166
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:164
 msgid "We must all pass, $second_unit.name|. Make your song beautiful..."
 msgstr ""
 "Todos hemos de abandonar este mundo, $second_unit.name|. Haga que su canción "
 "sea bella..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:184
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:182
 msgid "Forgive me, $unit.name|, this victory brings me no joy."
 msgstr "Perdóname, $unit.name|, esta victoria no me produce alegría alguna."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:188
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:186
 msgid "Remember me to the trees, $second_unit.name|."
 msgstr "Haga que los árboles recuerden mi nombre, $second_unit.name|."
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:200
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:198
 msgid "I fall. Perhaps now I can rest!"
 msgstr "Fenezco. ¡Quizá ahora pueda descansar!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:204
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:202
 msgid ""
 "I am deeply grieved that it came to this, Landar. You were my best friend. I "
 "was blind to what the potion was doing to you. I was fighting it myself!"
@@ -5168,7 +5176,7 @@ msgstr ""
 "¡La estaba combatiendo yo sólo!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:208
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:206
 msgid ""
 "I know. But you are not at fault, for I did not take just one bottle. I "
 "wanted to make sure we could kill the orcish Great Chief, so I went back for "
@@ -5183,7 +5191,7 @@ msgstr ""
 "de matar a mi amigo. Soy una vergüenza para los elfos."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:212
+#: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:210
 msgid ""
 "It was not all your fault. Maybe the curse of Aquagar struck true, or maybe "
 "yours was the blood-price fate required of us for victory. Rest well, my "
@@ -5317,27 +5325,6 @@ msgstr ""
 msgid "cleaver"
 msgstr ""
 
-# A ver si lo leo - in game- y lo entiendo.
-#. [unit_type]: id=Elvish Horse Archer
-#: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:13
-msgid "This is a stub!"
-msgstr "¡Esto es un tocón!"
-
-#. [unit_type]: id=Elvish Horse Archer
-#: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:18
-msgid "Elvish Horse Archer"
-msgstr "Jinete con arco elfo"
-
-#. [attack]: type=blade
-#: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:22
-msgid "sword"
-msgstr "espada"
-
-#. [attack]: type=pierce
-#: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:31
-msgid "bow"
-msgstr "arco"
-
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
 msgid "elates Kalenz"
@@ -5380,87 +5367,87 @@ msgstr ""
 "recibir sus habilidades curativas. Esto permite a Cleodil otorgar a Kalenz "
 "puntos extra de curación al comienzo del turno."
 
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:47
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:55
 msgid "Huraldur"
 msgstr "Huraldur"
 
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:122
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:137
 msgid "Laril"
 msgstr "Laril"
 
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:135
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:150
 msgid "Tameril-Isimeril"
 msgstr "Tameril-Isimeril"
 
 #. [unit]: id=Bulrod, type=Dwarvish Steelclad
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:166
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:182
 msgid "Bulrod"
 msgstr "Bulrod"
 
 #. [unit]: id=Simclon, type=Dwarvish Thunderer
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:180
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:196
 msgid "Simclon"
 msgstr "Simclon"
 
 #. [unit]: id=Harald, type=Dwarvish Berserker
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:195
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:211
 msgid "Harald"
 msgstr "Harald"
 
 #. [unit]: id=Budrin, type=Dwarvish Berserker
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:210
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:226
 msgid "Budrin"
 msgstr "Budrin"
 
 #. [unit]: id=Dudan, type=Dwarvish Fighter
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:224
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:240
 msgid "Dudan"
 msgstr "Dudan"
 
 #. [unit]: id=Korbun, type=Dwarvish Scout
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:238
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:254
 msgid "Korbun"
 msgstr "Korbun"
 
 #. [unit]: id=Merhun, type=Dwarvish Berserker
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:253
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:269
 msgid "Merhun"
 msgstr "Merhun"
 
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:282
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:299
 msgid "Eradion"
 msgstr "Eradion"
 
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:322
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:340
 msgid "Anduilas"
 msgstr "Anduilas"
 
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:336
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:354
 msgid "Arkildur"
 msgstr "Arkildur"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:356
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:374
 msgid "Prepare to die, elven witch!"
 msgstr "¡Prepárate para tu muerte, bruja elfa!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:360
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:378
 msgid "I will slay any who harms her without mercy."
 msgstr "Degollaré a cualquiera que le haga daño a Cleodil, sin piedad."
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:364
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:382
 msgid "Nor will you find me an easy foe!"
 msgstr "¡Ni seré un enemigo fácil!"
 
 #. [message]: id=Cleodil
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:374
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:392
 msgid "I am wounded!"
 msgstr "¡Me han herido!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:378
+#: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:396
 msgid "Cleodil! No! I will aid you."
 msgstr "¡Cleodil! ¡No! Yo te ayudaré."
 
@@ -5513,19 +5500,32 @@ msgid "I cannot fight the orcs alone! It’s all over!"
 msgstr "¡Sólo no puedo luchar contra los orcos! ¡Este es el fin!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:120
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:125
 msgid "I grieve that I have failed you, my lord Kalenz..."
 msgstr "Lamento haberle fallado Kalenz, mi señor..."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:124
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:129
 msgid "Farewell $unit.name. Your loyal service won’t be forgotten."
 msgstr "Adiós $unit.name|. Vuestro leal servicio jamás será olvidado."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:135
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:140
 msgid "Oh, no! We are too late..."
 msgstr "¡Oh, no! Es demasiado tarde..."
+
+# A ver si lo leo - in game- y lo entiendo.
+#~ msgid "This is a stub!"
+#~ msgstr "¡Esto es un tocón!"
+
+#~ msgid "Elvish Horse Archer"
+#~ msgstr "Jinete con arco elfo"
+
+#~ msgid "sword"
+#~ msgstr "espada"
+
+#~ msgid "bow"
+#~ msgstr "arco"
 
 #~ msgid "(Hard)"
 #~ msgstr "(Difícil)"

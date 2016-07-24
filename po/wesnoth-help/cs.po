@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2014-04-17 01:01+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -35,13 +35,13 @@ msgstr "Podzemí"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:348
 msgid "berserk"
 msgstr "na život a na smrt"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:430
+#: data/core/macros/abilities.cfg:349
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -51,13 +51,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:516
+#: data/core/macros/abilities.cfg:435
 msgid "magical"
 msgstr "magické"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:517
+#: data/core/macros/abilities.cfg:436
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -67,13 +67,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:480
 msgid "first strike"
 msgstr "první úder"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:562
+#: data/core/macros/abilities.cfg:481
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Tato jednotka v souboji vždy udeří první, i když se brání."
@@ -4329,17 +4329,17 @@ msgstr ""
 "první, ztrácí všechny své zbývající body pohybu."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:335
 msgid "feeding"
 msgstr "krmení"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:336
 msgid "female^feeding"
 msgstr "krmení"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:338
+#: data/core/macros/abilities.cfg:337
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4347,18 +4347,13 @@ msgstr ""
 "Vždy, když zabije nepřítele, zvyšuje tato jednotka maximum svých životů o 1, "
 "s vyjímkou nepřátel odolných proti nákaze."
 
-#. [unstore_unit]
-#: data/core/macros/abilities.cfg:360
-msgid "+1 max HP"
-msgstr "+1 max. HP"
-
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:440
+#: data/core/macros/abilities.cfg:359
 msgid "backstab"
 msgstr "zezadu"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4370,12 +4365,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
 msgid "plague"
 msgstr "nákaza"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:381
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
@@ -4386,7 +4381,7 @@ msgstr ""
 "jednotek umístěných ve vesnicích."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:392
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4397,12 +4392,12 @@ msgstr ""
 "či jednotek umístěných ve vesnicích."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:402
 msgid "slows"
 msgstr "zpomalení"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:484
+#: data/core/macros/abilities.cfg:403
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4415,12 +4410,12 @@ msgstr ""
 "jednotky."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:412
 msgid "petrifies"
 msgstr "zkamenění"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:494
+#: data/core/macros/abilities.cfg:413
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4429,23 +4424,23 @@ msgstr ""
 "hýbat ani útočit."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:422
 msgid "marksman"
 msgstr "odstřelovač"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:504
+#: data/core/macros/abilities.cfg:423
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:447
 msgid "swarm"
 msgstr "hejno"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:529
+#: data/core/macros/abilities.cfg:448
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4457,12 +4452,12 @@ msgstr ""
 "maximálních životů bude moci využít pouze 3/4 úderů."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:457
 msgid "charge"
 msgstr "výpad"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:539
+#: data/core/macros/abilities.cfg:458
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4472,12 +4467,12 @@ msgstr ""
 "pouze pro ofenzivní použití."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:470
 msgid "drains"
 msgstr "vysátí"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:471
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4486,12 +4481,12 @@ msgstr ""
 "polovinu poranění, jež útokem způsobila (zaokrouhleno dolů)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:571
+#: data/core/macros/abilities.cfg:490
 msgid "poison"
 msgstr "otrava"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:491
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -6454,6 +6449,10 @@ msgstr ""
 "několik století, bez zájmu o civilizovaný svět, stromový člověk se nechá "
 "vyrušit jen když je potřeba, aby se postavil na obranu přírody a lesů, které "
 "jsou jeho domovem."
+
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
+msgid "+1 max HP"
+msgstr "+1 max. HP"
 
 #: src/help/help.cpp:183
 msgid "Close"

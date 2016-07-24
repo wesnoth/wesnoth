@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -29,13 +29,13 @@ msgstr "podzemlje"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:348
 msgid "berserk"
 msgstr "bezglavost"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:430
+#: data/core/macros/abilities.cfg:349
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -52,13 +52,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:516
+#: data/core/macros/abilities.cfg:435
 msgid "magical"
 msgstr "magičnost"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:517
+#: data/core/macros/abilities.cfg:436
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -74,7 +74,7 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:480
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
@@ -82,7 +82,7 @@ msgstr "prvi udar"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:562
+#: data/core/macros/abilities.cfg:481
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -4364,17 +4364,17 @@ msgstr ""
 "prva otkrije zaronjenu, istog časa gubi svu preostalu pokretnost u potezu."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:335
 msgid "feeding"
 msgstr "hranjenje"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:336
 msgid "female^feeding"
 msgstr "hranjenje"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:338
+#: data/core/macros/abilities.cfg:337
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -4386,18 +4386,13 @@ msgstr ""
 " Ovoj jedinici se dodaje jedan udarpoen na najveći broj kad god ubije živu "
 "jedinicu."
 
-#. [unstore_unit]
-#: data/core/macros/abilities.cfg:360
-msgid "+1 max HP"
-msgstr "+1 maks. UP"
-
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:440
+#: data/core/macros/abilities.cfg:359
 msgid "backstab"
 msgstr "nož u leđa"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:360
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4416,12 +4411,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
 msgid "plague"
 msgstr "kuga"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:381
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4439,7 +4434,7 @@ msgstr ""
 "jedinicama u selu."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:392
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4457,12 +4452,12 @@ msgstr ""
 "selu."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:402
 msgid "slows"
 msgstr "usporavanje"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:484
+#: data/core/macros/abilities.cfg:403
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4482,12 +4477,12 @@ msgstr ""
 "Usporena jedinica nosiće ikonu puža u podacima sa strane kada se izabere."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:412
 msgid "petrifies"
 msgstr "okamenjivanje"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:494
+#: data/core/macros/abilities.cfg:413
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4502,12 +4497,12 @@ msgstr ""
 "napadati."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:422
 msgid "marksman"
 msgstr "oštrookost"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:504
+#: data/core/macros/abilities.cfg:423
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4520,12 +4515,12 @@ msgstr ""
 "Pri napadu, uvijek postoji barem 60% izgleda da dođe do pogotka."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:447
 msgid "swarm"
 msgstr "roj"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:529
+#: data/core/macros/abilities.cfg:448
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4545,12 +4540,12 @@ msgstr ""
 "imati. Na primjer, jedinica sa 3/4 punih UP imaće 3/4 udara pri napadu."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:457
 msgid "charge"
 msgstr "juriš"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:539
+#: data/core/macros/abilities.cfg:458
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4566,12 +4561,12 @@ msgstr ""
 "dovodi do dvostrukog oštećenja ukoliko ciljana jedinica udari u protivnapadu."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:470
 msgid "drains"
 msgstr "crpljenje"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:471
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4586,12 +4581,12 @@ msgstr ""
 "štete koju nanese (zaokruženo nadole)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:571
+#: data/core/macros/abilities.cfg:490
 msgid "poison"
 msgstr "otrov"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:491
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -6584,6 +6579,10 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
+msgid "+1 max HP"
+msgstr "+1 maks. UP"
 
 #: src/help/help.cpp:183
 msgid "Close"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"POT-Creation-Date: 2016-07-24 20:29 UTC\n"
 "PO-Revision-Date: 2016-01-23 13:21+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -709,15 +709,15 @@ msgstr ""
 "together and collected whatever food and weapons they could and plunged into "
 "the darkness of the caves."
 
-#. [side]: type=Troll, id=Knash
-#. [side]: type=Troll, id=Krog
-#. [side]: type=Troll Warrior, id=Thung
 #. [side]: type=Troll, id=Franik
 #. [side]: type=Troll, id=Henie
 #. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll Warrior, id=Bor
 #. [side]: type=Troll Warrior, id=Oof
 #. [side]: type=Troll Warrior, id=Glu
+#. [side]: type=Troll, id=Knash
+#. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Thung
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:141
@@ -751,9 +751,6 @@ msgstr "Krog"
 msgid "Hamel"
 msgstr "Hamel"
 
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
@@ -764,6 +761,9 @@ msgstr "Hamel"
 #. [side]: type=Death Knight, id=Author
 #. [side]: type=Death Knight, id=Boblin
 #. [side]: type=Death Knight, id=Antrasis
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:126
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:156
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:173
@@ -1138,10 +1138,10 @@ msgstr ""
 "havena’ forgotten the old bonds. Be welcome to our keep. Aye, and have "
 "speech with our chieftain, the Lord Hamel."
 
-#. [message]: speaker=Tallin
-#. [message]: speaker=unit
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
+#. [message]: speaker=Tallin
+#. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2231
@@ -1639,10 +1639,10 @@ msgstr "Clearing the Mines"
 msgid "When the party finally reached the mines, they were not disappointed."
 msgstr "When the party finally reached the mines, they were not disappointed."
 
-#. [side]: type=Lieutenant, id=Tallin
 #. [side]
-#. [side]: type=Elvish Avenger, id=Sisal
 #. [side]: type=Drake Burner, id=Krash
+#. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:32
@@ -3511,8 +3511,8 @@ msgstr ""
 "MISERABLE LIVES BE FULL OF TORTURE! MAY YOUR PEOPLE NEVER BE FREE! MAY ALL "
 "YOUR NEAR AND DEAR DESERT YOU! MAY A THUNDERBOLT HIT YOUR HEAD! MAY—"
 
-#. [message]: speaker=Tallin
 #. [message]: speaker=Sister Thera
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2653
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:468
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:677
@@ -3528,8 +3528,8 @@ msgstr ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
 
-#. [message]: speaker=second_unit
 #. [message]: speaker=Father Morvin
+#. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2673
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:692
@@ -3920,8 +3920,8 @@ msgstr ""
 "Hamel’s held open their retreat into the caves."
 
 #. [side]
-#. [side]: type=Great Mage, id=Camerin
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Great Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
@@ -3935,12 +3935,12 @@ msgstr "Knalgans"
 #. [side]: type=Orcish Warlord, id=Drung
 #. [side]: type=Orcish Warlord, id=Poul
 #. [side]: type=Orcish Warlord, id=Atul
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #. [side]: type=Troll Warrior, id=Gore
 #. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Rash
 #. [side]: type=Orcish Warlord, id=Al'Mar
 #. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #. [side]: type=Orcish Sovereign, id=Rakshas
 #. [side]: type=Orcish Warlord, id=Ar'Muff
 #. [side]: type=Orcish Warlord, id=Calter
@@ -4118,8 +4118,8 @@ msgstr "That’s not all, my friends. GENERALS, CALL THE RESERVES!"
 msgid "Oh yeah!"
 msgstr "Oh yeah!"
 
-#. [message]: speaker=Malifor
 #. [message]: id=Poul
+#. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:382
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:294
 msgid "HAHAHA!"
@@ -4703,8 +4703,8 @@ msgstr ""
 msgid "(<i>Giggle</i>) Something like that."
 msgstr "(<i>Giggle</i>) Something like that."
 
-#. [message]: speaker=Tallin
 #. [story]
+#. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
@@ -4790,8 +4790,8 @@ msgstr "So it shall be. Now how exactly do we get to this mountain pass?"
 msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr "And so Tallin and his party set out to secure the help of the mages."
 
-#. [unit]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Dwarvish Lord, id=Stalrag
+#. [unit]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:107
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
@@ -4803,8 +4803,8 @@ msgstr "Stalrag"
 msgid "Liches"
 msgstr "Liches"
 
-#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #. [side]: type=Ancient Lich, id=Ro'Arthian
+#. [unit]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:218
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:121
 msgid "Ro’Arthian"
@@ -5293,9 +5293,9 @@ msgstr ""
 "these wretched mages?!"
 
 #. [message]: speaker=Ro'Arthian
-#. [message]: speaker=Ro'Sothian
 #. [message]: speaker=Eryssa
 #. [message]: id=Ro'Sothian
+#. [message]: speaker=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:826
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1024
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:509
@@ -7886,8 +7886,8 @@ msgstr "Yeeahhh! I like it!"
 msgid "Resist for as long as you can"
 msgstr "Resist for as long as you can"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:402
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:929
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:464
@@ -8009,8 +8009,8 @@ msgstr "Shut your mouth, you coward!"
 msgid "Help Tallin defeat the enemy leaders or"
 msgstr "Help Tallin defeat the enemy leaders or"
 
-#. [unit]: id=Hidel, type=Elvish Marshal
 #. [unit]: type=Elvish Marshal, id=Hidel
+#. [unit]: id=Hidel, type=Elvish Marshal
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:684
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1049
 #: data/campaigns/Northern_Rebirth/scenarios/11a_The_Eastern_Flank.cfg:248

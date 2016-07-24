@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -25,13 +25,13 @@ msgstr "Požemis"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:348
 msgid "berserk"
 msgstr "berserkas"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:430
+#: data/core/macros/abilities.cfg:349
 #, fuzzy
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -43,13 +43,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:516
+#: data/core/macros/abilities.cfg:435
 msgid "magical"
 msgstr "magiška"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:517
+#: data/core/macros/abilities.cfg:436
 #, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -61,13 +61,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:480
 msgid "first strike"
 msgstr "pirmas smūgis"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:562
+#: data/core/macros/abilities.cfg:481
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Su šia ataka karys visuomet turės pirmenybę atakuoti, net kai ginasi."
@@ -3841,17 +3841,17 @@ msgstr ""
 "aptinka šį dalinį iš karto praranda likusį judėjimą."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:335
 msgid "feeding"
 msgstr "maitinasi"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:336
 msgid "female^feeding"
 msgstr "maitinasi"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:338
+#: data/core/macros/abilities.cfg:337
 #, fuzzy
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
@@ -3860,18 +3860,13 @@ msgstr ""
 "Šis dalinys gauna 1 gyvybės tašką pridėtą prie jo maksimalaus, kai jis "
 "nužudo gyvą dalinį."
 
-#. [unstore_unit]
-#: data/core/macros/abilities.cfg:360
-msgid "+1 max HP"
-msgstr "+1 maks. GT"
-
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:440
+#: data/core/macros/abilities.cfg:359
 msgid "backstab"
 msgstr "dūris į nugarą"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -3880,12 +3875,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
 msgid "plague"
 msgstr "maras"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:381
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3898,7 +3893,7 @@ msgstr ""
 "nemirėliais arba kaime esančiais daliniais."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:392
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3911,12 +3906,12 @@ msgstr ""
 "nemirėliais arba kaime esančiais daliniais."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:402
 msgid "slows"
 msgstr "sulėtina"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:484
+#: data/core/macros/abilities.cfg:403
 #, fuzzy
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3931,12 +3926,12 @@ msgstr ""
 "informacijoje, kai jis yra pažymėtas."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:412
 msgid "petrifies"
 msgstr "paverčia akmeniu"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:494
+#: data/core/macros/abilities.cfg:413
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3947,12 +3942,12 @@ msgstr ""
 "negali judėti ar pulti."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:422
 msgid "marksman"
 msgstr "snaiperis"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:504
+#: data/core/macros/abilities.cfg:423
 #, fuzzy
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3961,13 +3956,13 @@ msgstr ""
 "Kai naudojama puolant, ši ataka visada turi bent 60% tikimybę pataikyti."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:447
 #, fuzzy
 msgid "swarm"
 msgstr "pulkas"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:529
+#: data/core/macros/abilities.cfg:448
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -3976,25 +3971,25 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:457
 #, fuzzy
 msgid "charge"
 msgstr "įkrova"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:539
+#: data/core/macros/abilities.cfg:458
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:470
 msgid "drains"
 msgstr "išsiurbia"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:471
 #, fuzzy
 msgid ""
 "This unit drains health from living units, healing itself for half the "
@@ -4005,12 +4000,12 @@ msgstr ""
 "žalos kiekio (suapvalintos žemyn)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:571
+#: data/core/macros/abilities.cfg:490
 msgid "poison"
 msgstr "nuodai"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:491
 #, fuzzy
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -5653,6 +5648,10 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
+msgid "+1 max HP"
+msgstr "+1 maks. GT"
 
 #: src/help/help.cpp:183
 msgid "Close"
