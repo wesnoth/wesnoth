@@ -78,11 +78,19 @@ void tod_manager::resolve_random(random_new::rng& r)
 	std::vector<std::string> output_strings = utils::split(random_tod_.str());
 	std::vector<int> output;
 
-	std::transform(output_strings.begin(), output_strings.end(), std::back_inserter(output),
-		[](const std::string& str)
+	try
 	{
-		return std::stoi(str);
-	});
+		std::transform(output_strings.begin(), output_strings.end(), std::back_inserter(output),
+			[](const std::string& str)
+		{
+			return std::stoi(str);
+		});
+	}
+	catch (std::invalid_argument)
+	{
+		// This happens if the random_start_time string is a boolean.
+		// Simply ignore the exception.
+	}
 
 	// Remove non-positive times
 	output.erase(
