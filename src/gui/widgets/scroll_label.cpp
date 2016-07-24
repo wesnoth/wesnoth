@@ -188,7 +188,7 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -248,9 +248,8 @@ twidget* tbuilder_scroll_label::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	boost::intrusive_ptr<const tscroll_label_definition::tresolution>
-	conf = boost::
-			dynamic_pointer_cast<const tscroll_label_definition::tresolution>(
+	std::shared_ptr<const tscroll_label_definition::tresolution>
+	conf = std::static_pointer_cast<const tscroll_label_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

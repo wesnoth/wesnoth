@@ -161,7 +161,7 @@ public:
 	 *
 	 * @param grid_builder        The builder for the grid.
 	 */
-	void init_grid(const boost::intrusive_ptr<tbuilder_grid>& grid_builder);
+	void init_grid(const std::shared_ptr<tbuilder_grid>& grid_builder);
 
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 

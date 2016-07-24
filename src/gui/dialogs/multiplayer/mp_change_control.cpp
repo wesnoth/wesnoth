@@ -250,8 +250,8 @@ public:
 				side_str = font::span_color(team::get_side_color(side))
 						   + side_str + "</span>";
 				model_.add_side(side, side_str);
-				side_controllers_.push_back(std::shared_ptr<side_controller>(
-						new side_controller(side_str, model_, side)));
+				side_controllers_.push_back(std::make_shared<side_controller>(
+						side_str, model_, side));
 			}
 		}
 	}

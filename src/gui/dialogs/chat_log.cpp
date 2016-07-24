@@ -431,7 +431,7 @@ private:
 tchat_log::tchat_log(const vconfig& cfg, replay* r) : view_()
 {
 	LOG_CHAT_LOG << "Entering tchat_log::tchat_log" << std::endl;
-	view_ = std::shared_ptr<view>(new view(cfg, r));
+	view_ = std::make_shared<view>(cfg, r);
 	LOG_CHAT_LOG << "Exiting tchat_log::tchat_log" << std::endl;
 }
 

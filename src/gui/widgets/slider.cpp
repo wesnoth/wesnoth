@@ -60,8 +60,8 @@ tpoint tslider::calculate_best_size() const
 	if(best_slider_length_ != 0) {
 
 		// Override length.
-		boost::intrusive_ptr<const tslider_definition::tresolution> conf
-				= boost::dynamic_pointer_cast<const tslider_definition::
+		std::shared_ptr<const tslider_definition::tresolution> conf
+				= std::static_pointer_cast<const tslider_definition::
 													  tresolution>(config());
 
 		assert(conf);
@@ -157,8 +157,8 @@ void tslider::child_callback_positioner_moved()
 
 unsigned tslider::minimum_positioner_length() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const tslider_definition::tresolution>
+	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->minimum_positioner_length;
@@ -166,8 +166,8 @@ unsigned tslider::minimum_positioner_length() const
 
 unsigned tslider::maximum_positioner_length() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const tslider_definition::tresolution>
+	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->maximum_positioner_length;
@@ -175,8 +175,8 @@ unsigned tslider::maximum_positioner_length() const
 
 unsigned tslider::offset_before() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const tslider_definition::tresolution>
+	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->left_offset;
@@ -184,8 +184,8 @@ unsigned tslider::offset_before() const
 
 unsigned tslider::offset_after() const
 {
-	boost::intrusive_ptr<const tslider_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const tslider_definition::tresolution>
+	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->right_offset;

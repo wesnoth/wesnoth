@@ -55,7 +55,6 @@
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-#include "reference_counted_object.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 #include "tstring.hpp"
@@ -1014,8 +1013,8 @@ void twindow::layout()
 {
 	/***** Initialize. *****/
 
-	boost::intrusive_ptr<const twindow_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const twindow_definition::tresolution>(
+	std::shared_ptr<const twindow_definition::tresolution>
+	conf = std::static_pointer_cast<const twindow_definition::tresolution>(
 			config());
 	assert(conf);
 
@@ -1298,7 +1297,7 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void twindow::finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid)
+void twindow::finalize(const std::shared_ptr<tbuilder_grid>& content_grid)
 {
 	swap_grid(nullptr, &grid(), content_grid->build(), "_window_content_grid");
 }
@@ -1533,7 +1532,7 @@ twindow_definition::tresolution::tresolution(const config& cfg)
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
-		grid = new tbuilder_grid(child);
+		grid = std::make_shared<tbuilder_grid>(child);
 	}
 }
 

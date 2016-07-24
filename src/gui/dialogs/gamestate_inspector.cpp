@@ -577,17 +577,17 @@ public:
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "engine"));
 		}
-		
+
 		if(selected == 3) {
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "stage"));
 		}
-		
+
 		if(selected == 4) {
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "aspect"));
 		}
-		
+
 		if(selected == 5) {
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "goal"));
@@ -685,25 +685,22 @@ public:
 	sm_controller_ptr_vector;
 	controller(model& m) : model_(m), sm_controllers_()
 	{
-		sm_controllers_.push_back(std::shared_ptr<single_mode_controller>(
-				new variable_mode_controller("variables", model_)));
-		sm_controllers_.push_back(std::shared_ptr<single_mode_controller>(
-				new event_mode_controller(
-						"events", model_, event_mode_controller::EVENT_HANDLER)));
-		sm_controllers_.push_back(std::shared_ptr<single_mode_controller>(
-				new event_mode_controller(
-						"menu items", model_, event_mode_controller::WMI_HANDLER)));
-		sm_controllers_.push_back(std::shared_ptr<single_mode_controller>(
-				new unit_mode_controller("units", model_)));
+		sm_controllers_.push_back(std::make_shared<variable_mode_controller>
+			("variables", model_));
+		sm_controllers_.push_back(std::make_shared<event_mode_controller>
+			("events", model_, event_mode_controller::EVENT_HANDLER));
+		sm_controllers_.push_back(std::make_shared<event_mode_controller>
+			("menu items", model_, event_mode_controller::WMI_HANDLER));
+		sm_controllers_.push_back(std::make_shared<unit_mode_controller>
+			("units", model_));
 		// BOOST_FOREACHteam
 		int sides = resources::teams
 							? static_cast<int>((*resources::teams).size())
 							: 0;
 		for(int side = 1; side <= sides; ++side) {
 			std::string side_str = std::to_string(side);
-			sm_controllers_.push_back(std::shared_ptr<single_mode_controller>(
-					new team_mode_controller(
-							std::string("team ") + side_str, model_, side)));
+			sm_controllers_.push_back(std::make_shared<team_mode_controller>
+				(std::string("team ") + side_str, model_, side));
 		}
 	}
 
