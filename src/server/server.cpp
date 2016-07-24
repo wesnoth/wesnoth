@@ -424,9 +424,9 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	ban_manager_.read();
 
 #ifndef _WIN32
-	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
 #endif
-	sigs_.async_wait(boost::bind(&server::handle_termination, this, _1, _2));
+	sigs_.async_wait(std::bind(&server::handle_termination, this, _1, _2));
 }
 
 #ifndef _WIN32
@@ -438,7 +438,7 @@ void server::handle_sighup(const boost::system::error_code& error, int) {
 	cfg_ = read_config();
 	load_config();
 
-	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
 }
 #endif
 
@@ -463,7 +463,7 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		throw server_shutdown("graceful shutdown timeout");
 	} else {
 		timer_.expires_from_now(boost::posix_time::seconds(1));
-		timer_.async_wait(boost::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
 	}
 }
 
@@ -485,7 +485,7 @@ void server::setup_fifo() {
 void server::read_from_fifo() {
 	async_read_until(input_,
 			   admin_cmd_, '\n',
-			   boost::bind(&server::handle_read_from_fifo, this, _1, _2));
+			   std::bind(&server::handle_read_from_fifo, this, _1, _2));
 }
 
 void server::handle_read_from_fifo(const boost::system::error_code& error, std::size_t) {
@@ -721,7 +721,7 @@ void server::clean_user_handler(const time_t& now) {
 void server::serve()
 {
 	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
-	acceptor_.async_accept(*socket, boost::bind(&server::accept_connection, this, _1, socket));
+	acceptor_.async_accept(*socket, std::bind(&server::accept_connection, this, _1, socket));
 }
 
 void server::accept_connection(const boost::system::error_code& error, socket_ptr socket)
@@ -757,7 +757,7 @@ void server::serverside_handshake(socket_ptr socket)
 	boost::shared_array<char> handshake(new char[4]);
 	async_read(
 		*socket, boost::asio::buffer(handshake.get(), 4),
-		boost::bind(&server::handle_handshake, this, _1, socket, handshake)
+		std::bind(&server::handle_handshake, this, _1, socket, handshake)
 	);
 }
 
@@ -772,7 +772,7 @@ void server::handle_handshake(const boost::system::error_code& error, socket_ptr
 	}
 	async_write(
 		*socket, boost::asio::buffer(handshake_response_.buf, 4),
-		boost::bind(&server::request_version, this, _1, socket)
+		std::bind(&server::request_version, this, _1, socket)
 	);
 }
 
@@ -782,14 +782,14 @@ void server::request_version(const boost::system::error_code& error, socket_ptr 
 		return;
 	
 	async_send_doc(socket, version_query_response_,
-		boost::bind(&server::handle_version, this, _1)
+		std::bind(&server::handle_version, this, _1)
 	);
 }
 
 void server::handle_version(socket_ptr socket)
 {
 	async_receive_doc(socket,
-		boost::bind(&server::read_version, this, _1, _2)
+		std::bind(&server::read_version, this, _1, _2)
 	);
 }
 
@@ -802,12 +802,12 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 		std::vector<std::string>::const_iterator accepted_it;
 		// Check if it is an accepted version.
 		accepted_it = std::find_if(accepted_versions_.begin(), accepted_versions_.end(),
-			boost::bind(&utils::wildcard_string_match, version_str, _1));
+			std::bind(&utils::wildcard_string_match, version_str, _1));
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << client_address(socket)
 				<< "\tplayer joined using accepted version " << version_str
 				<< ":\ttelling them to log in.\n";
-			async_send_doc(socket, login_response_, boost::bind(&server::login, this, _1));
+			async_send_doc(socket, login_response_, std::bind(&server::login, this, _1));
 			return;
 		}
 
@@ -848,7 +848,7 @@ void server::read_version(socket_ptr socket, std::shared_ptr<simple_wml::documen
 void server::login(socket_ptr socket)
 {
 	async_receive_doc(socket,
-		boost::bind(&server::handle_login, this, _1, _2)
+		std::bind(&server::handle_login, this, _1, _2)
 	);
 }
 
@@ -1015,7 +1015,7 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 		async_send_doc(socket, join_lobby_response_,
-			boost::bind(&server::add_player, this, _1,
+			std::bind(&server::add_player, this, _1,
 				wesnothd::player(username, player_cfg, registered,
 				default_max_messages_, default_time_period_, false/*selective_ping*/,
 				user_handler_ && user_handler_->user_is_moderator(username))
@@ -1073,7 +1073,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 	}
 
 	async_send_doc(socket, doc,
-		boost::bind(&server::login, this, _1)
+		std::bind(&server::login, this, _1)
 	);
 }
 
@@ -1100,8 +1100,8 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 void server::read_from_player(socket_ptr socket)
 {
 	async_receive_doc(socket,
-		boost::bind(&server::handle_read_from_player, this, _1, _2),
-		boost::bind(&server::remove_player, this, _1)
+		std::bind(&server::handle_read_from_player, this, _1, _2),
+		std::bind(&server::remove_player, this, _1)
 	);
 }
 
@@ -1376,7 +1376,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 
 	player_connections_.modify(
 		player_connections_.find(socket),
-		boost::bind(&server::create_game, this, _1, boost::ref(create_game))
+		std::bind(&server::create_game, this, _1, boost::ref(create_game))
 	);
 
 	simple_wml::document diff;
@@ -1399,7 +1399,7 @@ void server::create_game(player_record& host_record, simple_wml::node& create_ga
 	// and set the player as the host/owner.
 	host_record.get_game().reset(
 		new wesnothd::game(player_connections_, host_record.socket(), game_name, save_replays_, replay_save_path_),
-		boost::bind(&server::cleanup_game, this, _1));
+		std::bind(&server::cleanup_game, this, _1));
 	wesnothd::game& g = *host_record.get_game();
 	if(game_password.empty() == false) {
 		g.set_password(game_password);
@@ -1497,7 +1497,7 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	}
 	player_connections_.modify(
 		player_connections_.find(socket),
-	    boost::bind(&player_record::set_game, _1, player_connections_.get<game_t>().find(game_id)->get_game()));
+	    std::bind(&player_record::set_game, _1, player_connections_.get<game_t>().find(game_id)->get_game()));
 	g->describe_slots();
 
 	//send notification of changes to the game and user
@@ -2310,7 +2310,7 @@ void server::shut_down_handler(const std::string& issuer_name, const std::string
 		graceful_restart = true;
 		acceptor_.close();
 		timer_.expires_from_now(boost::posix_time::seconds(10));
-		timer_.async_wait(boost::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
 		process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
 		*out << "Server is doing graceful shut down.";
 	}
@@ -2330,7 +2330,7 @@ void server::restart_handler(const std::string& issuer_name, const std::string& 
 		graceful_restart = true;
 		acceptor_.close();
 		timer_.expires_from_now(boost::posix_time::seconds(10));
-		timer_.async_wait(boost::bind(&server::handle_graceful_timeout, this, _1));
+		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, _1));
 		start_new_server();
 		process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
 		*out << "New server started.";
