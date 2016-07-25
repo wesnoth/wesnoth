@@ -83,6 +83,11 @@ game_stringfixes = {
 ("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
 ),
 
+"wesnoth-low" : (
+# added for 1.13.4+dev
+("If you loose you still have a chance to defeat Kalenz in the next scenario.", "If you lose you still have a chance to defeat Kalenz in the next scenario."),
+),
+
 "wesnoth-nr" : (
 # fixes added in 1.12.0+dev
 ("They are stronger then we thought.", "They are stronger than we thought."),
