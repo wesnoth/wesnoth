@@ -49,7 +49,6 @@
 
 #include "utils/functional.hpp"
 
-#include <boost/utility.hpp>
 #include <algorithm>
 #include <cassert>
 #include <cerrno>

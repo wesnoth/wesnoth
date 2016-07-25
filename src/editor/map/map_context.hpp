@@ -26,7 +26,7 @@
 #include "overlay.hpp"
 #include "display_context.hpp"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace editor {
 

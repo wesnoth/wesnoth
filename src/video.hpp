@@ -19,7 +19,7 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <memory>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include "sdl/window.hpp"
 

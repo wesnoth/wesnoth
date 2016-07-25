@@ -55,9 +55,8 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
+#include <type_traits>
 #include <boost/mpl/set.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/utility/enable_if.hpp>
 
 #define DEBUG_THROW(id)
 #endif
@@ -145,8 +144,8 @@ struct tlexical_cast<
 	  std::string
 	, From
 	, void
-	, typename boost::enable_if<boost::is_integral<
-			typename boost::remove_pointer<From>::type> >::type
+	, typename std::enable_if<std::is_integral<
+			typename std::remove_pointer<From>::type>::value >::type
 >
 {
 	std::string operator()(From value)
@@ -171,8 +170,8 @@ struct tlexical_cast<
 	  long long
 	, From
 	, void
-	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From> >::type
+	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From>::value >::type
 	>
 {
 	long long operator()(From value)
@@ -220,9 +219,9 @@ template <class To, class From>
 struct tlexical_cast<
 	  To
 	, From
-	, typename boost::enable_if<boost::is_signed<To> >::type
-	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From> >::type
+	, typename std::enable_if<std::is_signed<To>::value >::type
+	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From>::value >::type
 	>
 {
 	To operator()(From value)
@@ -249,7 +248,7 @@ template <class To>
 struct tlexical_cast<
 	  To
 	, std::string
-	, typename boost::enable_if<boost::is_signed<To> >::type
+	, typename std::enable_if<std::is_signed<To>::value >::type
 	>
 {
 	To operator()(const std::string& value)
@@ -272,8 +271,8 @@ struct tlexical_cast<
 	  unsigned long long
 	, From
 	, void
-	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From> >::type
+	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
+	char*, const char*> , From>::value >::type
 	>
 {
 	long long operator()(From value)
@@ -322,9 +321,9 @@ template <class To, class From>
 struct tlexical_cast<
 	  To
 	, From
-	, typename boost::enable_if<boost::is_unsigned<To> >::type
-	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From> >::type
+	, typename std::enable_if<std::is_unsigned<To>::value >::type
+	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From>::value >::type
 	>
 {
 	To operator()(From value)
@@ -351,7 +350,7 @@ template <class To>
 struct tlexical_cast<
 	  To
 	, std::string
-	, typename boost::enable_if<boost::is_unsigned<To> >::type
+	, typename std::enable_if<std::is_unsigned<To>::value >::type
 	>
 {
 	To operator()(const std::string& value)
