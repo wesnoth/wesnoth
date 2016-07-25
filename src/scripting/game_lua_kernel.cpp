@@ -111,7 +111,6 @@
 #include <boost/optional.hpp>
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
 #include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
-#include <boost/tuple/tuple.hpp>        // for tuple
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
@@ -2164,7 +2163,7 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 		}
 		std::string unit_type = lua_tostring(L, -1);
 
-		boost::tuple<map_location, int, std::string> tuple(src, side, unit_type);
+		std::tuple<map_location, int, std::string> tuple(src, side, unit_type);
 		fake_units.push_back(tuple);
 
 		lua_settop(L, entry - 1);
@@ -2190,7 +2189,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	luaW_tovconfig(L, arg, filter);
 
 	std::vector<const unit*> real_units;
-	typedef std::vector<boost::tuple<map_location, int, std::string> > unit_type_vector;
+	typedef std::vector<std::tuple<map_location, int, std::string> > unit_type_vector;
 	unit_type_vector fake_units;
 
 
@@ -2300,8 +2299,8 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 	for (const unit_type_vector::value_type& fu : fake_units)
 	{
-		const unit_type* ut = unit_types.find(fu.get<2>());
-		cost_map.add_unit(fu.get<0>(), ut, fu.get<1>());
+		const unit_type* ut = unit_types.find(std::get<2>(fu));
+		cost_map.add_unit(std::get<0>(fu), ut, std::get<1>(fu));
 	}
 
 	if (debug)

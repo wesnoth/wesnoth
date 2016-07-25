@@ -17,7 +17,6 @@
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
-#include <boost/tuple/tuple.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/variant.hpp>
 
@@ -385,7 +384,7 @@ public:
 	unit_ability_list get_abilities(const std::string &tag_name) const
 	{ return get_abilities(tag_name, loc_); }
 	/** Tuple of: neutral ability name, gendered ability name, description */
-	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=nullptr) const;
+	std::vector<std::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=nullptr) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 

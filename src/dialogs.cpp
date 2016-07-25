@@ -1023,10 +1023,9 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.traits = utils::join(u.trait_names(), ", ");
 
 	// The triples are base name, male/female name, description.
-	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips();
-	for(std::vector<boost::tuple<t_string,t_string,t_string> >::const_iterator a = abilities.begin();
-		 a != abilities.end(); ++a) {
-		det.abilities.push_back(a->get<1>());
+	const std::vector<std::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips();
+	for(auto a : abilities) {
+		det.abilities.push_back(std::get<1>(a));
 	}
 
 	det.hitpoints = u.hitpoints();

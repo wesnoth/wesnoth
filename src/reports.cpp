@@ -367,14 +367,14 @@ static config unit_abilities(const unit* u)
 	config res;
 
 	std::vector<bool> active;
-	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
+	const std::vector<std::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
 	const size_t abilities_size = abilities.size();
 	for ( size_t i = 0; i != abilities_size; ++i )
 	{
 		// Aliases for readability:
-		const std::string &base_name = abilities[i].get<0>().base_str();
-		const t_string &display_name = abilities[i].get<1>();
-		const t_string &description = abilities[i].get<2>();
+		const std::string &base_name = std::get<0>(abilities[i]).base_str();
+		const t_string &display_name = std::get<1>(abilities[i]);
+		const t_string &description  = std::get<2>(abilities[i]);
 
 		std::ostringstream str, tooltip;
 

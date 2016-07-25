@@ -744,7 +744,7 @@ void server::accept_connection(const boost::system::error_code& error, socket_pt
 		async_send_error(socket, "Too many connections from your IP.");
 		return;*/
 	} else {
-		
+
 		DBG_SERVER << ip << "\tnew connection accepted\n";
 		serverside_handshake(socket);
 	}
@@ -779,7 +779,7 @@ void server::request_version(const boost::system::error_code& error, socket_ptr 
 {
 	if(check_error(error, socket))
 		return;
-	
+
 	async_send_doc(socket, version_query_response_,
 		std::bind(&server::handle_version, this, _1)
 	);
@@ -1079,7 +1079,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
 {
 	bool inserted;
-	boost::tie(boost::tuples::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
+	std::tie(std::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
 	assert(inserted);
 
 	send_to_player(socket, games_and_users_list_);
@@ -2957,7 +2957,7 @@ void server::delete_game(int gameid) {
 	game_ptr->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
 	player_connections::index<game_t>::type::iterator iter, i_end;
-	boost::tie(iter, i_end) = player_connections_.get<game_t>().equal_range(gameid);
+	std::tie(iter, i_end) = player_connections_.get<game_t>().equal_range(gameid);
 	for(;iter != i_end; iter++)
 		player_connections_.get<game_t>().modify(iter, player_record::enter_lobby);
 

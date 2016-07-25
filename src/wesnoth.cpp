@@ -80,7 +80,6 @@
 #include <boost/iostreams/filtering_stream.hpp>  // for filtering_stream
 #include <boost/optional.hpp>           // for optional
 #include <boost/program_options/errors.hpp>  // for error
-#include <boost/tuple/tuple.hpp>        // for tuple
 
 #include <algorithm>                    // for transform
 #include <cerrno>                       // for ENOMEM
@@ -411,10 +410,10 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		return 0;
 	}
 	if(cmdline_opts.log) {
-		for(std::vector<boost::tuple<int, std::string> >::const_iterator it=cmdline_opts.log->begin(); it!=cmdline_opts.log->end(); ++it)
+		for(std::vector<std::pair<int, std::string> >::const_iterator it=cmdline_opts.log->begin(); it!=cmdline_opts.log->end(); ++it)
 		{
-			const std::string log_domain = it->get<1>();
-			const int severity = it->get<0>();
+			const std::string log_domain = it->second;
+			const int severity = it->first;
 			if (!lg::set_log_domain_severity(log_domain, severity))
 			{
 				std::cerr << "unknown log domain: " << log_domain << '\n';

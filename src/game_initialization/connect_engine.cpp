@@ -496,7 +496,7 @@ void connect_engine::start_game_commandline(
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
-	typedef boost::tuple<unsigned int, std::string> mp_option;
+	typedef std::tuple<unsigned int, std::string> mp_option;
 
 	rand_rng::mt_rng rng;
 
@@ -508,14 +508,14 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_side) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_side) {
 
-				if (option.get<0>() == num) {
-					if (std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == option.get<1>(); }) != era_factions_.end()) {
-						DBG_MP << "\tsetting side " << option.get<0>() << "\tfaction: " << option.get<1>() << std::endl;
+				if (std::get<0>(option) == num) {
+					if (std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == std::get<1>(option); }) != era_factions_.end()) {
+						DBG_MP << "\tsetting side " << std::get<0>(option) << "\tfaction: " << std::get<1>(option) << std::endl;
 
-						side->set_faction_commandline(option.get<1>());
+						side->set_faction_commandline(std::get<1>(option));
 					}
 					else {
-						ERR_MP << "failed to set side " << option.get<0>() << " to faction " << option.get<1>() << std::endl;
+						ERR_MP << "failed to set side " << std::get<0>(option) << " to faction " << std::get<1>(option) << std::endl;
 					}
 				}
 			}
@@ -525,11 +525,11 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_controller) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_controller) {
 
-				if (option.get<0>() == num) {
-					DBG_MP << "\tsetting side " << option.get<0>() <<
-						"\tfaction: " << option.get<1>() << std::endl;
+				if (std::get<0>(option) == num) {
+					DBG_MP << "\tsetting side " << std::get<0>(option) <<
+						"\tfaction: " << std::get<1>(option) << std::endl;
 
-					side->set_controller_commandline(option.get<1>());
+					side->set_controller_commandline(std::get<1>(option));
 				}
 			}
 		}
@@ -540,11 +540,11 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_algorithm) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_algorithm) {
 
-				if (option.get<0>() == num) {
-					DBG_MP << "\tsetting side " << option.get<0>() <<
-						"\tfaction: " << option.get<1>() << std::endl;
+				if (std::get<0>(option) == num) {
+					DBG_MP << "\tsetting side " << std::get<0>(option) <<
+						"\tfaction: " << std::get<1>(option) << std::endl;
 
-					side->set_ai_algorithm(option.get<1>());
+					side->set_ai_algorithm(std::get<1>(option));
 				}
 			}
 		}
@@ -568,11 +568,11 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_ai_config) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_ai_config) {
 
-				if (option.get<0>() == side["side"].to_unsigned()) {
+				if (std::get<0>(option) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] <<
-						"\tai_config: " << option.get<1>() << std::endl;
+						"\tai_config: " << std::get<1>(option) << std::endl;
 
-					side["ai_config"] = option.get<1>();
+					side["ai_config"] = std::get<1>(option);
 				}
 			}
 		}
@@ -586,18 +586,18 @@ void connect_engine::start_game_commandline(
 			side["income"] = 1;
 		}
 
-		typedef boost::tuple<unsigned int, std::string, std::string>
+		typedef std::tuple<unsigned int, std::string, std::string>
 			mp_parameter;
 
 		if (cmdline_opts.multiplayer_parm) {
 			for (const mp_parameter& parameter : *cmdline_opts.multiplayer_parm) {
 
-				if (parameter.get<0>() == side["side"].to_unsigned()) {
+				if (std::get<0>(parameter) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] << " " <<
-						parameter.get<1>() << ": " << parameter.get<2>() <<
+						std::get<1>(parameter) << ": " << std::get<2>(parameter) <<
 							std::endl;
 
-					side[parameter.get<1>()] = parameter.get<2>();
+					side[std::get<1>(parameter)] = std::get<2>(parameter);
 				}
 			}
 		}
