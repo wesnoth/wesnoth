@@ -950,6 +950,9 @@
     <ClCompile Include="..\..\src\utils\markov_generator.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\src\utils\name_generator_factory.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\src\utils\sha1.cpp">
       <Filter>utils</Filter>
     </ClCompile>
@@ -2820,6 +2823,7 @@
     <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
     <ClInclude Include="..\..\src\random_new_synced.hpp" />
     <ClInclude Include="..\..\src\recall_list_manager.hpp" />
+    <ClInclude Include="..\..\src\reference_counted_object.hpp" />
     <ClInclude Include="..\..\src\replay.hpp" />
     <ClInclude Include="..\..\src\replay_controller.hpp" />
     <ClInclude Include="..\..\src\replay_helper.hpp" />
@@ -2868,9 +2872,6 @@
     <ClInclude Include="..\..\src\wmi_pager.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
-    <ClInclude Include="..\..\src\utils\name_generator_factory.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
