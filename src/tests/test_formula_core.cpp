@@ -58,12 +58,7 @@ class mock_party : public formula_callable {
 	mutable map_formula_callable i_[3];
 	
 public:
-	mock_party() {
-		c_.add_ref();
-		i_[0].add_ref();
-		i_[1].add_ref();
-		i_[2].add_ref();
-	}
+	mock_party() {}
 };
 
 BOOST_AUTO_TEST_SUITE(formula_core)

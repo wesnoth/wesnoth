@@ -51,8 +51,8 @@ public:
 
 namespace {
 
-const std::unique_ptr<saved_game> state;
-const std::unique_ptr<rand_rng::mt_rng> rng;
+std::unique_ptr<saved_game> state;
+std::unique_ptr<rand_rng::mt_rng> rng;
 
 }
 
@@ -92,7 +92,7 @@ struct mp_connect_fixture {
 	std::vector<std::string> dummy_args;
 	commandline_options cmdline_opts;
 	hotkey::manager hotkey_manager;
-	const std::unique_ptr<game_config_manager> config_manager;
+	std::unique_ptr<game_config_manager> config_manager;
 };
 
 
