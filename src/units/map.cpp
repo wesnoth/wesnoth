@@ -157,7 +157,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 				   << " ("  << loc << ") over " << q->name()
 				   << " - " << q->id() << " - " << q->underlying_id()
 				   << " ("  << q->get_location()
-				   << ").";
+				   << ").\n";
 
 			p->clone(false);
 			ERR_NG << "The new unit was assigned underlying_id="
