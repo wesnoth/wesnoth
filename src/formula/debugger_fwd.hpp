@@ -25,6 +25,7 @@
 #include "global.hpp"
 
 #include <memory>
+#include <string>
 
 class variant;
 

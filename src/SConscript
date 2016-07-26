@@ -697,7 +697,6 @@ client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_c
 libtest_utils = test_env.Library("test_utils", test_utils_sources)
 
 test_sources = Split("""
-    tests/floating_point_emulation.cpp
     tests/gui/fire_event.cpp
     tests/gui/iterator.cpp
     tests/gui/test_drop_target.cpp
