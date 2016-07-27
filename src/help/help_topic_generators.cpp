@@ -239,22 +239,26 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
+	const int screen_width = CVideo::get_singleton().getx();
+
 	ss << "Level " << type_.level();
 	ss << "\n\n";
 
-	// Show the unit's image.
-#ifdef LOW_MEM
-	ss << "<img>src='" << male_type.image() << "~XBRZ(2)' box='no'</img> ";
-#else
-	ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
+	ss << "<img>src='" << male_type.image();
+#ifndef LOW_MEM
+	ss << "~RC(" << male_type.flag_rgb() << ">red)";
 #endif
+	if (screen_width >= 1600) ss << "~XBRZ(2)";
+	ss << "' box='no'</img> ";
+
 
 	if (&female_type != &male_type) {
-#ifdef LOW_MEM
-		ss << "<img>src='" << female_type.image() << "~XBRZ(2)' box='no'</img> ";
-#else
-		ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
+		ss << "<img>src='" << female_type.image();
+#ifndef LOW_MEM
+		ss << "~RC(" << female_type.flag_rgb() << ">red)";
 #endif
+		if (screen_width >= 1600) ss << "~XBRZ(2)";
+		ss << "' box='no'</img> ";
 	}
 
 	const std::string &male_portrait = male_type.small_profile().empty() ?
@@ -262,22 +266,23 @@ std::string unit_topic_generator::operator()() const {
 	const std::string &female_portrait = female_type.small_profile().empty() ?
 		female_type.big_profile() : female_type.small_profile();
 	
-	int sz = 400;
-	int screen_width = CVideo::get_singleton().getx();
-	if (screen_width <= 800) {
-		sz = 200;
-	} else if(screen_width <= 1024) {
-		sz = 300;
+	const bool has_male_portrait = !male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image";
+	const bool has_female_portrait = !female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image";
+
+	int sz = (has_male_portrait && has_female_portrait ? 300 : 400);
+	if (screen_width <= 1366) {
+		sz = (has_male_portrait && has_female_portrait ? 200 : 300);
+	} else if (screen_width >= 1920) {
+		sz = 400;
 	}
 
 	// TODO: figure out why the second checks don't match but the last does
-	if (!male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image") {
+	if (has_male_portrait) {
 		ss << "<img>src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
-	ss << "\n\n";
 
-	if (!female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image") {
+	if (has_female_portrait) {
 		ss << "<img>src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
