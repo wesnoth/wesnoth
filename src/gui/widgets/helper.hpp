@@ -23,15 +23,7 @@
 
 #include <string>
 
-#if defined(_MSC_VER) && _MSC_VER <= 1600
-/*
-	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
-	And will create corrupt binaries without giving a warning / error.
-*/
-#include <SDL_video.h>
-#else
 struct SDL_Rect;
-#endif
 struct surface;
 class t_string;
 

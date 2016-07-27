@@ -57,17 +57,6 @@ static lg::log_domain log_wml("wml");
 static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
-// std::getline might be broken in Visual Studio so show a warning
-#ifdef _MSC_VER
-#if _MSC_VER < 1300
-#ifndef GETLINE_PATCHED
-#pragma message("warning: the std::getline implementation in your compiler might be broken.")
-#pragma message(" http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015")
-#endif
-#endif
-#endif
-
-
 // This file is in the game_events namespace.
 namespace game_events {
 

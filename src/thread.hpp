@@ -21,17 +21,8 @@
 #include <boost/noncopyable.hpp>
 
 struct SDL_Thread;
-
-#if defined(_MSC_VER) && _MSC_VER <= 1600
-/*
-	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
-	And will create corrupt binaries without giving a warning / error.
-*/
-#include <SDL_mutex.h>
-#else
 struct SDL_mutex;
 struct SDL_cond;
-#endif
 
 // Threading primitives wrapper for SDL_Thread.
 //
