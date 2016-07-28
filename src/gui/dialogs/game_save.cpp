@@ -51,6 +51,8 @@ REGISTER_DIALOG(game_save)
 
 tgame_save::tgame_save(std::string& filename, const std::string& title)
 {
+	set_restore(true);
+
 	register_text("txtFilename", false, filename, true);
 	register_label("lblTitle", true, title);
 }
