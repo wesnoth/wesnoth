@@ -427,8 +427,10 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		default:
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type)
-					  << ".\n";
+			          << ".\n";
+#endif
 			break;
 	}
 }
