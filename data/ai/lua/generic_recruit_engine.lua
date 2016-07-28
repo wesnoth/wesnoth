@@ -1,7 +1,5 @@
 return {
     -- init parameters:
-    -- ai: a reference to the ai engine so recruit has access to ai functions
-    --   It is also possible to pass an ai table directly to the execution function, which will then override the value passed here
     -- ai_cas: an object reference to store the CAs and associated data
     --   the CA will use the function names ai_cas:recruit_rushers_eval/exec, so should be referenced by the object name used by the calling AI
     --   ai_cas also has the functions find_best_recruit, find_best_recruit_hex and analyze_enemy_unit added to it
@@ -16,7 +14,7 @@ return {
     --          (default always returns false)
     --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
     --          (default always returns true)
-    init = function(ai, ai_cas, params)
+    init = function(ai_cas, params)
         if not params then
             params = {}
         end

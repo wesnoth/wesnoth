@@ -63,7 +63,7 @@ return {
                 end
             )
         }
-        wesnoth.require("ai/lua/generic_recruit_engine.lua").init(ai, generic_rush, params)
+        wesnoth.require("ai/lua/generic_recruit_engine.lua").init(generic_rush, params)
 
         -------- Castle Switch CA --------------
         local function get_reachable_enemy_leaders(unit)
