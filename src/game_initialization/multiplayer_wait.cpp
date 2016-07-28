@@ -211,7 +211,7 @@ wait::wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& c
 
 	//These structure initializers create a lobby::process_data_event
 	plugins_context_->set_callback("quit", 		std::bind(&wait::process_event_impl, this, true), 						false);
-	plugins_context_->set_callback("chat",		std::bind(&wait::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("chat",		std::bind(&wait::send_chat_message, this, std::bind(get_str, std::placeholders::_1, "message"), false),	true);
 }
 
 wait::~wait()

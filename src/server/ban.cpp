@@ -550,7 +550,7 @@ static lg::log_domain log_server("server");
 	{
 		ban_set temp;
 		std::insert_iterator<ban_set> temp_inserter(temp, temp.begin());
-		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, std::bind(&banned::match_group,std::bind(&banned_ptr::get,_1),group));
+		std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, std::bind(&banned::match_group,std::bind(&banned_ptr::get,std::placeholders::_1),group));
 
 		os << "Removed " << (bans_.size() - temp.size()) << " bans";
 		bans_.swap(temp);
@@ -660,7 +660,7 @@ static lg::log_domain log_server("server");
 		} catch (banned::error&) {
 			return "";
 		}
-		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), std::bind(&banned::match_ip, std::bind(&banned_ptr::get, _1), pair));
+		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), std::bind(&banned::match_ip, std::bind(&banned_ptr::get, std::placeholders::_1), pair));
 		if (ban == bans_.end()) return "";
 		const std::string& nick = (*ban)->get_nick();
 		return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (" + (*ban)->get_human_time_span() + ")";

@@ -101,6 +101,6 @@
 //
 //	const surface base = image::get_image(root + "/base.png");
 //
-//	blend_image(base, std::bind(&test_blend, _1, _2, _3));
+//	blend_image(base, std::bind(&test_blend, std::placeholders::_1, _2, _3));
 //}
 

@@ -238,7 +238,7 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	//These structure initializers create a lobby::process_data_event
 	plugins_context_->set_callback("launch", 	std::bind(&configure::plugin_event_helper, this, process_event_data (true, false)));
 	plugins_context_->set_callback("quit", 		std::bind(&configure::plugin_event_helper, this, process_event_data (false, true)));
-	plugins_context_->set_callback("set_name",	std::bind(&gui::textbox::set_text, &name_entry_, std::bind(get_str, _1, "name"), font::NORMAL_COLOR), true);
+	plugins_context_->set_callback("set_name",	std::bind(&gui::textbox::set_text, &name_entry_, std::bind(get_str, std::placeholders::_1, "name"), font::NORMAL_COLOR), true);
 
 	if(!options_manager_.has_options() && engine_.force_lock_settings() && state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		set_result(CREATE);

@@ -1100,8 +1100,8 @@ lobby::lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config&
 	plugins_context_->set_callback("observe", 	std::bind(&lobby::plugin_event_helper, this, process_event_data (false, true, false, false)));
 	plugins_context_->set_callback("create", 	std::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, true, false)));
 	plugins_context_->set_callback("quit", 		std::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, false, true)));
-	plugins_context_->set_callback("chat",		std::bind(&lobby::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
-	plugins_context_->set_callback("select_game",	std::bind(&gamebrowser::select_game, &(this->games_menu_), std::bind(get_str, _1, "id")),	true);
+	plugins_context_->set_callback("chat",		std::bind(&lobby::send_chat_message, this, std::bind(get_str, std::placeholders::_1, "message"), false),	true);
+	plugins_context_->set_callback("select_game",	std::bind(&gamebrowser::select_game, &(this->games_menu_), std::bind(get_str, std::placeholders::_1, "id")),	true);
 
 	plugins_context_->set_accessor("game_list",	std::bind(&lobby::gamelist, this));
 	plugins_context_->set_accessor("game_config",	std::bind(&lobby::game_config, this));

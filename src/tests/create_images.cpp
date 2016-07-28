@@ -91,7 +91,7 @@ create_image_blend(const surface& src, const std::string& root)
 {
 	blend_image(
 			  src
-			, std::bind(&create_image_blend_functor, _1, root, _2, _3));
+			, std::bind(&create_image_blend_functor, std::placeholders::_1, root, _2, _3));
 }
 
 typedef void (*tfunctor) (const surface&, const std::string&);
