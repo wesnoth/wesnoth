@@ -67,6 +67,7 @@ bool context::remove_handler(sdl_handler* ptr)
 		const handler_list::iterator i = std::find(handlers.begin(), handlers.end(), ptr);
 
 		if(i == handlers.end()) {
+			--depth;
 			return false;
 		}
 
@@ -210,6 +211,10 @@ void sdl_handler::join() {
 
 void sdl_handler::join(context &c)
 {
+	if (has_joined_global_) {
+		leave_global();
+	}
+
 	if(has_joined_) {
 		leave(); // should not be in multiple event contexts
 	}
@@ -264,6 +269,10 @@ void sdl_handler::leave()
 
 void sdl_handler::join_global()
 {
+	if(has_joined_) {
+		leave();
+	}
+
 	if(has_joined_global_) {
 		leave_global(); // should not be in multiple event contexts
 	}
@@ -335,8 +344,7 @@ bool has_focus(const sdl_handler* hand, const SDL_Event* event)
 				focus_handler(thief_hand);
 
 				// Position the previously focused handler to allow stealing back
-				handlers.push_back(*foc);
-				handlers.erase(foc);
+				handlers.splice(handlers.end(), handlers, foc);
 
 				return thief_hand == hand;
 			}
