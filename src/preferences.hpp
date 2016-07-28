@@ -39,6 +39,15 @@ namespace preferences {
 		~base_manager();
 	};
 
+	extern const int min_window_width;
+	extern const int min_window_height;
+
+	extern const int def_window_width;
+	extern const int def_window_height;
+
+	extern const int min_font_scaling;
+	extern const int max_font_scaling;
+
 	void write_preferences();
 
 	void set(const std::string& key, const std::string &value);
@@ -64,9 +73,6 @@ namespace preferences {
 	bool scroll_to_action();
 	void set_scroll_to_action(bool ison);
 
-	int min_allowed_width();
-	int min_allowed_height();
-
 	std::pair<int,int> resolution();
 	void _set_resolution(const std::pair<int,int>& res);
 
@@ -81,7 +87,7 @@ namespace preferences {
 
 	double turbo_speed();
 	void save_turbo_speed(const double speed);
-	
+
 	int font_scaling();
 	void set_font_scaling(int scale);
 	int font_scaled(int size);

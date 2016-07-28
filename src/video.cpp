@@ -415,8 +415,8 @@ bool CVideo::init_window()
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
 	window->set_minimum_size(
-		preferences::min_allowed_width(),
-		preferences::min_allowed_height()
+		preferences::min_window_width,
+		preferences::min_window_height
 	);
 
 	event_handler_.join_global();
@@ -584,7 +584,7 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions(const bool i
 		return result;
 	}
 
-	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
+	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
 
 	SDL_DisplayMode mode;
 	for (int i = 0; i < modes; ++i) {
