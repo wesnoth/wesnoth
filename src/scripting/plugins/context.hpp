@@ -82,9 +82,4 @@ private:
 	std::string name_;
 };
 
-//A shim to assist in retrieving config attribute values
-extern const std::function< std::string ( const config & , const std::string & ) > get_str;
-extern const std::function< int ( const config & , const std::string &, int ) > get_int;
-extern const std::function< size_t ( const config & , const std::string &, size_t ) > get_size_t;
-
 #endif

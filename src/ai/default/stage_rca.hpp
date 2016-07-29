@@ -47,8 +47,6 @@ public:
 
 	rca_context& get_rca_context();
 
-	void create_candidate_action(std::vector<candidate_action_ptr> &candidate_actions, const config &cfg);
-
 	void remove_completed_cas();
 
 private:

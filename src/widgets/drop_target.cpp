@@ -35,16 +35,12 @@ namespace gui {
 		groups_.insert(std::make_pair(group_->get_group_id(), this));
 	}
 
-	bool drop_target::is_this_id(const int id) const
-	{
-		return id_ == id;
-	}
-
 	drop_target::drop_groups::iterator drop_target::find_this() const
 	{
 		return std::find_if(groups_.lower_bound(group_->get_group_id()),
 				groups_.upper_bound(group_->get_group_id()),
-				std::bind(&drop_target::is_this_id,std::bind(&drop_groups::value_type::second,_1),id_));
+			[this](const drop_groups::value_type& val) { return val.second->id_ == id_; }
+			);
 	}
 
 	drop_target::~drop_target()
@@ -63,9 +59,8 @@ namespace gui {
 		drop_target::drop_groups::iterator itor
 			= std::find_if(groups_.lower_bound(group_->get_group_id()),
 					end,
-					std::bind(&drop_target::hit_rect,
-						std::bind(&drop_groups::value_type::second,_1),
-                        std::cref(loc_), id_));
+				[this](const drop_groups::value_type& val) { return val.second->hit_rect(loc_, id_) ; }
+				);
 
 		if (itor == end)
 			return -1;

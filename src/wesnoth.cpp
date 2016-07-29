@@ -679,7 +679,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
 
-	plugins.set_callback("exit", std::bind(&safe_exit, std::bind(get_int, std::placeholders::_1, "code", 0)), false);
+	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	for (;;)
 	{

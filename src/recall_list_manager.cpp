@@ -22,18 +22,13 @@
 
 #include "utils/functional.hpp"
 
-static bool find_if_matches_helper(const unit_ptr & ptr, const std::string & unit_id)
-{
-	return ptr->matches_id(unit_id);
-}
-
 /**
  * Used to find units in vectors by their ID.
  */
 unit_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_helper, _1, unit_id));
+		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -47,7 +42,7 @@ unit_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id)
 unit_const_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id) const
 {
 	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_helper, _1, unit_id));
+		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -61,7 +56,7 @@ unit_const_ptr recall_list_manager::find_if_matches_id(const std::string &unit_i
 void recall_list_manager::erase_if_matches_id(const std::string &unit_id)
 {
 	recall_list_.erase(std::remove_if(recall_list_.begin(), recall_list_.end(),
-	                                  std::bind(&find_if_matches_helper, _1, unit_id)),
+		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); }),
 	                       recall_list_.end());
 }
 
@@ -73,7 +68,7 @@ void recall_list_manager::add (const unit_ptr & ptr)
 size_t recall_list_manager::find_index(const std::string & unit_id) const
 {
 	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_helper, _1, unit_id));
+		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
 
 	return it - recall_list_.begin();
 }
@@ -81,7 +76,7 @@ size_t recall_list_manager::find_index(const std::string & unit_id) const
 unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_helper, _1, unit_id));
+		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
 		recall_list_.erase(it);
@@ -91,15 +86,10 @@ unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id)
 	}
 }
 
-static bool find_if_matches_uid_helper(const unit_ptr & ptr, size_t uid)
-{
-	return ptr->underlying_id() == uid;
-}
-
 unit_ptr recall_list_manager::find_if_matches_underlying_id(size_t uid)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_uid_helper, _1, uid));
+		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; });
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -110,7 +100,7 @@ unit_ptr recall_list_manager::find_if_matches_underlying_id(size_t uid)
 unit_const_ptr recall_list_manager::find_if_matches_underlying_id(size_t uid) const
 {
 	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_uid_helper, _1, uid));
+		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; });
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -121,14 +111,14 @@ unit_const_ptr recall_list_manager::find_if_matches_underlying_id(size_t uid) co
 void recall_list_manager::erase_by_underlying_id(size_t uid)
 {
 	recall_list_.erase(std::remove_if(recall_list_.begin(), recall_list_.end(),
-	                                  std::bind(&find_if_matches_uid_helper, _1, uid)),
+		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; }),
 	                       recall_list_.end());
 }
 
 unit_ptr recall_list_manager::extract_if_matches_underlying_id(size_t uid)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-	                    std::bind(&find_if_matches_uid_helper, _1, uid));
+		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; });
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
 		recall_list_.erase(it);

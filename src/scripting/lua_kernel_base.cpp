@@ -373,15 +373,6 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ nullptr, nullptr }
 	};
 
-/*
-	lua_cpp::Reg const cpp_callbacks[] = {
-		{ "dofile", 		std::bind(&lua_kernel_base::intf_dofile, this, _1)},
-		{ "require", 		std::bind(&lua_kernel_base::intf_require, this, _1)},
-		{ "show_dialog",	std::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
-		{ "show_lua_console",	std::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
-	};
-*/
-
 	lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
 		lua_newtable(L);

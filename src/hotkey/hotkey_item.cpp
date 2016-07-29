@@ -363,9 +363,8 @@ void add_hotkey(const hotkey_ptr item)
 
 	if (!hotkeys_.empty()) {
 		hotkeys_.erase(
-				std::remove_if(hotkeys_.begin(), hotkeys_.end(),
-						std::bind(&hotkey_base::bindings_equal, _1, (item))),
-				hotkeys_.end());
+			std::remove_if(hotkeys_.begin(), hotkeys_.end(), [item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); }),
+			hotkeys_.end());
 	}
 
 	hotkeys_.push_back(item);

@@ -436,7 +436,7 @@ connect::connect(CVideo& v, twesnothd_connection* wesnothd_connection, const std
 	//These structure initializers create a lobby::process_data_event
 	plugins_context_->set_callback("launch", 	std::bind(&connect::plugin_event_helper, this, process_event_data (true, false)));
 	plugins_context_->set_callback("quit", 		std::bind(&connect::plugin_event_helper, this, process_event_data (false, true)));
-	plugins_context_->set_callback("chat",		std::bind(&connect::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
 }
 
 connect::~connect()

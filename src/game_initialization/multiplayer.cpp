@@ -144,11 +144,11 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 
 	config data;
 	sock = dialogs::network_connect_dialog(video, _("Connecting to Server..."), host, port);
-
+	auto aaa = std::tuple<boost::arg<1>, int>(_1, 6);
 	do {
 
 		if (!sock) {
-			return std::move(sock);
+			return sock;
 		}
 
 		data.clear();
