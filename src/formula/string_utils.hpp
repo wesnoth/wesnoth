@@ -54,16 +54,6 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 t_string interpolate_variables_into_tstring(const t_string &str, const variable_set& variables);
 
 }
-/// An alias for boost::assign::map_list_of<std::string, std::string>
-inline boost::assign_detail::generic_list< std::pair
-        <
-            boost::assign_detail::assign_decay<std::string>::type,
-            boost::assign_detail::assign_decay<std::string>::type
-        > >
-string_map_of(const std::string& k, const std::string& v)
-{
-	return boost::assign::map_list_of<std::string, std::string>(k, v);
-}
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */
 std::string vgettext(const char* msgid, const utils::string_map& symbols);

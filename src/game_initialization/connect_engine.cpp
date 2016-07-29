@@ -28,7 +28,6 @@
 #include "multiplayer_ui.hpp" // For get_color_string
 #include "wesnothd_connection.hpp"
 
-#include <boost/assign.hpp>
 #include <stdlib.h>
 #include <ctime>
 
@@ -1024,9 +1023,8 @@ config side_engine::new_config() const
 		res["user_description"] = t_string(desc, "wesnoth");
 		desc = vgettext(
 			"$playername $side",
-			boost::assign::map_list_of
-				("playername", _(desc.c_str()))
-				("side", res["side"].str())
+				{std::make_pair("playername", _(desc.c_str())),
+				std::make_pair("side", res["side"].str())}
 		);
 	} else if (!player_id_.empty()) {
 		desc = player_id_;
