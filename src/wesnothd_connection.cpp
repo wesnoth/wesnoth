@@ -230,7 +230,10 @@ std::size_t twesnothd_connection::poll()
 		return io_service_.poll();
 	}
 	catch (const boost::system::system_error& err) {
-		if (err.code() == boost::asio::error::operation_aborted)
+		if(
+			err.code() == boost::asio::error::operation_aborted ||
+			err.code() == boost::asio::error::eof
+		)
 			return 1;
 		throw error(err.code());
 	}
