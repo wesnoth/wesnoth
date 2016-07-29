@@ -212,9 +212,9 @@ std::vector<std::string> unit::get_ability_list() const
 	std::vector<std::string> res;
 
 	for (const config::any_child &ab : this->abilities_.all_children_range()) {
-		std::string const &id = ab.cfg["id"];
+		std::string id = ab.cfg["id"];
 		if (!id.empty())
-			res.push_back(id);
+			res.push_back(std::move(id));
 	}
 	return res;
 }

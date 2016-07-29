@@ -125,7 +125,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 			if (flags & STRIP_SPACES)
 				strip_end(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(new_val);
+				res.push_back(std::move(new_val));
 			++i2;
 			if (flags & STRIP_SPACES) {
 				while (i2 != val.end() && portable_isspace(*i2))
@@ -142,7 +142,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 	if (flags & STRIP_SPACES)
 		strip_end(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(new_val);
+		res.push_back(std::move(new_val));
 
 	return res;
 }
@@ -430,7 +430,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	if (flags & STRIP_SPACES)
 		strip(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(new_val);
+		res.push_back(std::move(new_val));
 
 	if(!part.empty()){
 			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;;
@@ -804,7 +804,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c, int flag
 			if (flags & STRIP_SPACES)
 				strip(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(new_val);
+				res.push_back(std::move(new_val));
 			++i2;
 			if (flags & STRIP_SPACES) {
 				while(i2 != val.end() && *i2 == ' ')

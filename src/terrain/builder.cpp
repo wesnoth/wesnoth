@@ -485,7 +485,7 @@ bool terrain_builder::load_images(building_rule &rule)
 						break; // no valid images, don't register it
 
 					res.start_animation(0, true);
-					variant.images.push_back(res);
+					variant.images.push_back(std::move(res));
 				}
 				if(variant.images.empty())
 					return false; //no valid images, rule is invalid

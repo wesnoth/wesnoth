@@ -1287,7 +1287,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!tmp.animation) return;
 
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
-	animated_units_.push_back(tmp);
+	animated_units_.push_back(std::move(tmp));
 }
 
 void unit_animator::add_animation(const unit* animated_unit
@@ -1308,7 +1308,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!tmp.animation) return;
 
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
-	animated_units_.push_back(tmp);
+	animated_units_.push_back(std::move(tmp));
 }
 
 void unit_animator::replace_anim_if_invalid(const unit* animated_unit

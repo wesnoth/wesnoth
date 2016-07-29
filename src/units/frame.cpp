@@ -52,12 +52,12 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				try {
-					data_.push_back(std::pair<std::string,int>(second_pass[0],std::stoi(second_pass[1])));
+					data_.push_back(std::pair<std::string,int>(std::move(second_pass[0]),std::stoi(second_pass[1])));
 				} catch(std::invalid_argument) {
 					ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
 				}
 			} else {
-				data_.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
+				data_.push_back(std::pair<std::string,int>(std::move(second_pass[0]),time_chunk));
 			}
 		}
 }
@@ -99,12 +99,12 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				try {
-					data_.push_back(std::pair<image::locator,int>(second_pass[0],std::stoi(second_pass[1])));
+					data_.push_back(std::pair<image::locator,int>(std::move(second_pass[0]),std::stoi(second_pass[1])));
 				} catch(std::invalid_argument) {
 					ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
 				}
 			} else {
-				data_.push_back(std::pair<image::locator,int>(second_pass[0],time_chunk));
+				data_.push_back(std::pair<image::locator,int>(std::move(second_pass[0]),time_chunk));
 			}
 		}
 }
