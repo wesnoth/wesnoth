@@ -27,7 +27,7 @@
 #include "serialization/unicode.hpp"
 #include "util.hpp"
 #include <cassert>
-#include <boost/array.hpp>
+#include <array>
 
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general())
@@ -562,7 +562,7 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 std::string si_string(double input, bool base2, std::string unit) {
 	const double multiplier = base2 ? 1024 : 1000;
 
-	typedef boost::array<std::string, 9> strings9;
+	typedef std::array<std::string, 9> strings9;
 
 	strings9 prefixes;
 	strings9::const_iterator prefix;
