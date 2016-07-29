@@ -32,10 +32,10 @@ class plugins_context {
 
 public:
 	typedef std::function<bool(config)> callback_function;
-	typedef struct { char const * name; callback_function func; } Reg;
+	struct Reg { char const * name; callback_function func; };
 
 	typedef std::function<config(config)> accessor_function;
-	typedef struct { char const * name; accessor_function func; } aReg;
+	struct aReg { char const * name; accessor_function func; };
 
 	plugins_context( const std::string & name );
 	plugins_context( const std::string & name, const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors);

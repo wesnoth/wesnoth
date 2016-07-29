@@ -349,13 +349,13 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	std::vector<std::string>::iterator hit;
 	for(hit=hits_str.begin() ; hit != hits_str.end() ; ++hit) {
 		if(*hit == "yes" || *hit == "hit") {
-			hits_.push_back(HIT);
+			hits_.push_back(hit_type::HIT);
 		}
 		if(*hit == "no" || *hit == "miss") {
-			hits_.push_back(MISS);
+			hits_.push_back(hit_type::MISS);
 		}
 		if(*hit == "yes" || *hit == "kill" ) {
-			hits_.push_back(KILL);
+			hits_.push_back(hit_type::KILL);
 		}
 	}
 	std::vector<std::string> value2_str = utils::split(cfg["value_second"]);
@@ -535,8 +535,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
 		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
-		animations.back().hits_.push_back(HIT);
-		animations.back().hits_.push_back(KILL);
+		animations.back().hits_.push_back(hit_type::HIT);
+		animations.back().hits_.push_back(hit_type::KILL);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
@@ -1096,95 +1096,61 @@ std::string unit_animation::debug() const
 
 std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
 {
-	std::cout << "[";
-	int i=0;
-	for (std::string event : u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	std::string events_string = utils::join(u_animation.event_);
+	outstream << "[" << events_string << "]\n";
 
-	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
+	outstream << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
 	if (u_animation.hits_.size() > 0) {
-		std::cout << "\thits=";
-		i=0;
-		for (const unit_animation::hit_type hit_type : u_animation.hits_) {
-			if (i>0) std::cout << ','; i++;
-			switch (hit_type) {
-				case (unit_animation::HIT)     : std::cout << "hit"; break;
-				case (unit_animation::MISS)    : std::cout << "miss"; break;
-				case (unit_animation::KILL)    : std::cout << "kill"; break;
-				case (unit_animation::INVALID) : std::cout << "invalid"; break;
-			}
-		}
-		std::cout << '\n';
+		std::vector<std::string> hits;
+		std::transform(u_animation.hits_.begin(), u_animation.hits_.end(), std::back_inserter(hits), unit_animation::hit_type::enum_to_string);
+		outstream << "\thits=" << utils::join(hits) << '\n';
 	}
 	if (u_animation.directions_.size() > 0) {
-		std::cout << "\tdirections=";
-		i=0;
-		for (const map_location::DIRECTION direction : u_animation.directions_) {
-			if (i>0) std::cout << ','; i++;
-			switch (direction) {
-				case (map_location::NORTH)     : std::cout << "n"; break;
-				case (map_location::NORTH_EAST): std::cout << "ne"; break;
-				case (map_location::SOUTH_EAST): std::cout << "se"; break;
-				case (map_location::SOUTH)     : std::cout << "s"; break;
-				case (map_location::SOUTH_WEST): std::cout << "sw"; break;
-				case (map_location::NORTH_WEST): std::cout << "nw"; break;
-				default: break;
-			}
-		}
-		std::cout << '\n';
+		std::vector<std::string> dirs;
+		std::transform(u_animation.directions_.begin(), u_animation.directions_.end(), std::back_inserter(dirs), map_location::write_direction);
+		outstream << "\tdirections=" << utils::join(dirs) << '\n';
 	}
 	if (u_animation.terrain_types_.size() > 0) {
-		i=0;
-		std::cout << "\tterrain=";
-		for (const t_translation::t_terrain terrain : u_animation.terrain_types_) {
-			if (i>0) std::cout << ','; i++;
-			std::cout << terrain;
-		}
-		std::cout << '\n';
+		outstream << "\tterrain=" << utils::join(u_animation.terrain_types_) << '\n';
 	}
-	if (u_animation.frequency_>0) std::cout << "frequency=" << u_animation.frequency_ << '\n';
+	if (u_animation.frequency_>0) outstream << "frequency=" << u_animation.frequency_ << '\n';
 
 	if (u_animation.unit_filter_.size() > 0) {
-		std::cout << "[filter]\n";
+		outstream << "[filter]\n";
 		for (const config & cfg : u_animation.unit_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		//std::cout << "TODO: create debugging output for unit filters";
-		std::cout << "[/filter]\n";
+		outstream << "[/filter]\n";
 	}
 	if (u_animation.secondary_unit_filter_.size() > 0) {
-		std::cout << "[filter_second]\n";
+		outstream << "[filter_second]\n";
 		for (const config & cfg : u_animation.secondary_unit_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		//std::cout << "TODO: create debugging output for unit filters";
-		std::cout << "[/filter_second]\n";
+		outstream << "[/filter_second]\n";
 	}
 	if (u_animation.primary_attack_filter_.size() > 0) {
-		std::cout << "[filter_attack]\n";
+		outstream << "[filter_attack]\n";
 		for (const config cfg : u_animation.primary_attack_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		std::cout << "[/filter_attack]\n";
+		outstream << "[/filter_attack]\n";
 	}
 	if (u_animation.secondary_attack_filter_.size() > 0) {
-		std::cout << "[filter_second_attack]\n";
+		outstream << "[filter_second_attack]\n";
 		for (const config cfg : u_animation.secondary_attack_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		std::cout << "[/filter_second_attack]\n";
+		outstream << "[/filter_second_attack]\n";
 	}
 
 	for (size_t i=0; i<u_animation.unit_anim_.get_frames_count(); i++) {
-		std::cout << "\t[frame]\n";
+		outstream << "\t[frame]\n";
 		for (const std::string frame_string : u_animation.unit_anim_.get_frame(i).debug_strings()) {
-			std::cout << "\t\t" << frame_string <<"\n";
+			outstream << "\t\t" << frame_string <<"\n";
 		}
-		std::cout << "\t[/frame]\n";
+		outstream << "\t[/frame]\n";
 	}
 
 	for (std::pair<std::string, unit_animation::particule> p : u_animation.sub_anims_) {
@@ -1192,22 +1158,16 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 			std::string sub_frame_name = p.first;
 			size_t pos = sub_frame_name.find("_frame");
 			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
-			std::cout << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
-			std::cout << "\t[" << p.first << "]\n";
+			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
+			outstream << "\t[" << p.first << "]\n";
 			for (const std::string frame_string : p.second.get_frame(i).debug_strings()) {
-				std::cout << "\t\t" << frame_string << '\n';
+				outstream << "\t\t" << frame_string << '\n';
 			}
-			std::cout << "\t[/" << p.first << "]\n";
+			outstream << "\t[/" << p.first << "]\n";
 		}
 	}
 
-	std::cout << "[/";
-	i=0;
-	for (std::string event : u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	outstream << "[/" << events_string << "]\n";
 	return outstream;
 }
 

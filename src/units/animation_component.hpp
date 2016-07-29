@@ -65,7 +65,7 @@ public:
 			const map_location& loc, const std::string& event,
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,
-			const unit_animation::hit_type hit_type = unit_animation::INVALID,
+			const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID,
 			const attack_type* attack=nullptr,const attack_type* second_attack = nullptr,
 			int swing_num =0);
 
