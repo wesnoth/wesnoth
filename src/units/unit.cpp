@@ -831,7 +831,7 @@ void unit::generate_traits(bool musthaveonly)
 
 	// Calculate the unit's traits
 	config::const_child_itors current_traits = modifications_.child_range("trait");
-	std::vector<config> candidate_traits;
+	std::vector<const config*> candidate_traits;
 
 	for (const config &t : u_type.possible_traits())
 	{
@@ -859,7 +859,7 @@ void unit::generate_traits(bool musthaveonly)
 		// The trait is still available, mark it as a candidate for randomizing.
 		// For leaders, only traits with availability "any" are considered.
 		if (!musthaveonly && (!can_recruit() || avl == "any"))
-			candidate_traits.push_back(t);
+			candidate_traits.push_back(&t);
 	}
 
 	if (musthaveonly) return;
@@ -871,7 +871,7 @@ void unit::generate_traits(bool musthaveonly)
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
 		int num = random_new::generator->get_random_int(0,candidate_traits.size()-1);
-		modifications_.add_child("trait", candidate_traits[num]);
+		modifications_.add_child("trait", *candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}
 
@@ -886,10 +886,9 @@ std::vector<std::string> unit::get_traits_list() const
 
 	for (const config &mod : modifications_.child_range("trait"))
 	{
-			std::string const &id = mod["id"];
 			// Make sure to return empty id trait strings as otherwise
 			// names will not match in length (Bug #21967)
-			res.push_back(id);
+			res.push_back(mod["id"]);
 	}
 	return res;
 }
