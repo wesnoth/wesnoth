@@ -57,9 +57,8 @@ const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 	return dirs;
 }
 
-/** Moved out of inline because of the boost dependency **/
 std::size_t hash_value(map_location  const & a){
-	boost::hash<size_t> h;
+	std::hash<size_t> h;
 	return h( (a.x << 16) ^ a.y );
 }
 
