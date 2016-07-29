@@ -151,7 +151,7 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 	run_generator(prog, generator);
 }
 
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	run_generator(prog, generator);
@@ -166,7 +166,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	run_generator(prog, generator);
@@ -185,9 +185,9 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 	}
 	return result;
 }
-boost::uint32_t mapgen_lua_kernel::get_random_seed()
+uint32_t mapgen_lua_kernel::get_random_seed()
 {
-	if(boost::uint32_t* pint = random_seed_.get_ptr()) {
+	if(uint32_t* pint = random_seed_.get_ptr()) {
 		return (*pint)++;
 	}
 	else {

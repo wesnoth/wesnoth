@@ -15,10 +15,8 @@
 #ifndef MT_RNG_HPP_INCLUDED
 #define MT_RNG_HPP_INCLUDED
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <boost/random/mersenne_twister.hpp>
-
-using boost::uint32_t;
 
 class config;
 
@@ -35,7 +33,7 @@ class mt_rng
 public:
 	mt_rng();
 	explicit mt_rng(const config& cfg);
-	explicit mt_rng(boost::uint32_t seed);
+	explicit mt_rng(uint32_t seed);
 	/** Get a new random number. */
 	uint32_t get_next_random();
 

@@ -42,7 +42,7 @@ private:
 	void accept_connection(const boost::system::error_code& error, socket_ptr socket);
 
 	union {
-		boost::uint32_t connection_num;
+		uint32_t connection_num;
 		char buf[4];
 	} handshake_response_;
 	void serverside_handshake(socket_ptr socket);

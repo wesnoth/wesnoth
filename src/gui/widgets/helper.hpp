@@ -19,7 +19,7 @@
 
 #include <pango/pango-layout.h>
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 #include <string>
 
@@ -64,7 +64,7 @@ SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
  *
  * @returns                       The color.
  */
-boost::uint32_t decode_color(const std::string& color);
+uint32_t decode_color(const std::string& color);
 
 /**
  * Converts a text alignment string to a text alignment.

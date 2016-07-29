@@ -15,9 +15,7 @@
 #define RANDOM_NEW_H_INCLUDED
 
 #include <cstdlib> //needed for RAND_MAX
-#include <boost/cstdint.hpp>
-
-using boost::uint32_t;
+#include <cstdint>
 
 namespace random_new
 {

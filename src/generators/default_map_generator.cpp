@@ -346,15 +346,15 @@ std::string default_map_generator::config_name() const
 	return std::string();
 }
 
-std::string default_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
+std::string default_map_generator::create_map(boost::optional<uint32_t> randomseed)
 {
 	return generate_map(nullptr, randomseed);
 }
 
-std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, boost::optional<boost::uint32_t> randomseed)
+std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, boost::optional<uint32_t> randomseed)
 {
-	boost::uint32_t seed;
-	if(const boost::uint32_t* pseed = randomseed.get_ptr()) {
+	uint32_t seed;
+	if(const uint32_t* pseed = randomseed.get_ptr()) {
 		seed = *pseed;
 	}
 	else {
@@ -427,7 +427,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	return map;
 }
 
-config default_map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
+config default_map_generator::create_scenario(boost::optional<uint32_t> randomseed)
 {
 	DBG_NG << "creating scenario...\n";
 

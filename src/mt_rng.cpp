@@ -37,7 +37,7 @@ mt_rng::mt_rng() :
 }
 
 
-mt_rng::mt_rng(boost::uint32_t seed)
+mt_rng::mt_rng(uint32_t seed)
 	: random_seed_(seed)
 	, mt_(random_seed_)
 	, random_calls_(0)

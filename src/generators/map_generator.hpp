@@ -24,7 +24,7 @@ class CVideo;
 #include "map/location.hpp"
 
 #include <boost/optional.hpp>
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 struct mapgen_exception : public game::error
 {
@@ -67,9 +67,9 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map(boost::optional<boost::uint32_t> randomseed = boost::none) = 0;
+	virtual std::string create_map(boost::optional<uint32_t> randomseed = boost::none) = 0;
 
-	virtual config create_scenario(boost::optional<boost::uint32_t> randomseed = boost::none);
+	virtual config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
 };
 
 #endif

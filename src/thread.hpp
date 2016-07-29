@@ -17,7 +17,7 @@
 
 #include <list>
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <boost/noncopyable.hpp>
 
 struct SDL_Thread;
@@ -68,13 +68,13 @@ public:
 
 	void detach();
 
-	boost::uint32_t get_id();
+	uint32_t get_id();
 private:
 
 	SDL_Thread* thread_;
 };
 
-boost::uint32_t get_current_thread_id();
+uint32_t get_current_thread_id();
 // Binary mutexes.
 //
 // Implements an interface to binary mutexes. This class only defines the

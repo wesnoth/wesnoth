@@ -17,7 +17,7 @@
 
 #include "chat_events.hpp"
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <ctime>
 #include <set>
 #include <string>
@@ -52,7 +52,7 @@ private:
 
 		int speaker_handle;
 		int handle;
-		boost::uint32_t created_at;
+		uint32_t created_at;
 	};
 
 	void prune_chat_messages(bool remove_all=false);
