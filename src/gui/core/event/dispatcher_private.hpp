@@ -60,7 +60,7 @@ struct tdispatcher_implementation
 	 *                            tdispatcher::tsignal<FUNCTION>               \
 	 */                                                                        \
 	template <class F>                                                         \
-	static typename boost::enable_if<boost::is_same<F, FUNCTION>,              \
+	static typename std::enable_if<std::is_same<F, FUNCTION>::value,           \
 									 tdispatcher::tsignal<FUNCTION> >::type&   \
 	event_signal(tdispatcher& dispatcher, const tevent event)                  \
 	{                                                                          \
@@ -81,7 +81,7 @@ struct tdispatcher_implementation
 	 *                            tdispatcher::tsignal<FUNCTION>               \
 	 */                                                                        \
 	template <class K>                                                         \
-	static typename boost::enable_if<boost::mpl::has_key<SET, K>,              \
+	static typename std::enable_if<boost::mpl::has_key<SET, K>::value,         \
 									 tdispatcher::tsignal<FUNCTION> >::type&   \
 	event_signal(tdispatcher& dispatcher, const tevent event)                  \
 	{                                                                          \
@@ -202,7 +202,7 @@ struct find<false>
 			return functor.template oper<item>(event);
 		} else {
 			typedef typename boost::mpl::next<itor>::type titor;
-			return find<boost::is_same<titor, end>::value>::execute(
+			return find<std::is_same<titor, end>::value>::execute(
 					static_cast<titor*>(nullptr),
 					static_cast<end*>(nullptr),
 					event,
@@ -239,7 +239,7 @@ inline bool find(E event, F functor)
 	typedef typename boost::mpl::begin<sequence>::type begin;
 	typedef typename boost::mpl::end<sequence>::type end;
 
-	return implementation::find<boost::is_same<begin, end>::value>::execute(
+	return implementation::find<std::is_same<begin, end>::value>::execute(
 			static_cast<begin*>(nullptr), static_cast<end*>(nullptr), event, functor);
 }
 
