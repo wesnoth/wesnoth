@@ -113,7 +113,7 @@ public:
 	 * Since we need to return true if found we always return true.
 	 */
 	template <class T>
-	bool oper(tevent)
+	bool operator()(tevent)
 	{
 		return true;
 	}

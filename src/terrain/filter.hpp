@@ -31,13 +31,6 @@ class team;
 class terrain_filter : public xy_pred {
 public:
 
-#ifdef _MSC_VER
-	// This constructor is required for MSVC 9 SP1 due to a bug there
-	// see http://social.msdn.microsoft.com/forums/en-US/vcgeneral/thread/34473b8c-0184-4750-a290-08558e4eda4e
-	// other compilers don't need it.
-	 terrain_filter();
-#endif
-
 	terrain_filter(const vconfig& cfg,
 		const filter_context * fc, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);

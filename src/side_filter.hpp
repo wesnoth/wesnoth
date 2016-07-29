@@ -32,12 +32,6 @@ class team;
 class side_filter {
 public:
 
-#ifdef _MSC_VER
-	// This constructor is required for MSVC 9 SP1 due to a bug there
-	// see http://social.msdn.microsoft.com/forums/en-US/vcgeneral/thread/34473b8c-0184-4750-a290-08558e4eda4e
-	// other compilers don't need it.
-	side_filter();
-#endif
 	~side_filter();
 
 	side_filter(const std::string &side_string, const filter_context * fc, bool flat_tod = false);

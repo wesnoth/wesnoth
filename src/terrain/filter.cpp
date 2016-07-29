@@ -44,24 +44,6 @@ terrain_filter::~terrain_filter()
 {
 }
 
-#ifdef _MSC_VER
-// This is a workaround for a VC bug; this constructor is never called
-// and so we don't care about the warnings this quick fix generates
-#pragma warning(push)
-#pragma warning(disable:4413)
-terrain_filter::terrain_filter():
-	cfg_(vconfig::unconstructed_vconfig()),
-	fc_(nullptr),
-	cache_(),
-	max_loop_(),
-	flat_()
-{
-	assert(false);
-}
-#pragma warning(pop)
-#endif
-
-
 terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc,
 		const bool flat_tod, const size_t max_loop) :
 	cfg_(cfg),
