@@ -2552,7 +2552,7 @@ void server::clones_handler(const std::string& /*issuer_name*/, const std::strin
 	for (player_connections::iterator it = player_connections_.begin(); it != player_connections_.end(); ++it) {
 		if (clones.find(client_address(it->socket())) != clones.end()) continue;
 		bool found = false;
-		for (player_connections::iterator clone = boost::next(it); clone != player_connections_.end(); ++clone) {
+		for (player_connections::iterator clone = std::next(it); clone != player_connections_.end(); ++clone) {
 			if (client_address(it->socket()) == client_address(clone->socket())) {
 				if (!found) {
 					found = true;
