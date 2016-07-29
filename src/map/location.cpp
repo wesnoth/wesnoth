@@ -49,8 +49,6 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
 /**
  * Default list of directions
  *
- * Moved out of inline, because boost assign list_of is somewhat expensive...
- *
  **/
 const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 	static const std::vector<map_location::DIRECTION> dirs = {map_location::NORTH,

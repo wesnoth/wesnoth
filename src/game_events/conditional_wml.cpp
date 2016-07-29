@@ -36,8 +36,6 @@
 #include "util.hpp"
 #include "variable.hpp"
 
-#include <boost/assign/list_of.hpp>
-
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
@@ -171,8 +169,8 @@ namespace { // Support functions
 		}
 
 		vconfig::all_children_iterator cond_end = cond.ordered_end();
-		static const boost::container::flat_set<std::string> hard_coded = boost::assign::list_of("true")("false")("have_unit")("have_location")("variable")
-		("then")("else")("elseif")("not")("and")("or")("do").convert_to_container<boost::container::flat_set<std::string> >();
+		static const boost::container::flat_set<std::string> hard_coded =
+			{"true", "false", "have_unit", "have_location", "variable", "then", "else", "elseif", "not", "and", "or", "do"};
 
 		assert(resources::lua_kernel);
 

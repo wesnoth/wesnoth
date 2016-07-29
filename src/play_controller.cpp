@@ -89,25 +89,23 @@ static void copy_persistent(const config& src, config& dst)
 {
 	typedef boost::container::flat_set<std::string> stringset;
 
-	static stringset attrs = boost::assign::list_of
-			("id")
-			("theme")
-			("next_scenario")
-			("description")
-			("name")
-			("defeat_music")
-			("victory_music")
-			("victory_when_enemies_defeated")
-			("remove_from_carryover_on_defeat")
-			("disallow_recall")
-			("experience_modifier")
-			("require_scenario")
-		.convert_to_container<stringset>();
+	static stringset attrs = {
+			"id",
+			"theme",
+			"next_scenario",
+			"description",
+			"name",
+			"defeat_music",
+			"victory_music",
+			"victory_when_enemies_defeated",
+			"remove_from_carryover_on_defeat",
+			"disallow_recall",
+			"experience_modifier",
+			"require_scenario"};
 
-	static stringset tags = boost::assign::list_of
-			("terrain_graphics")
-			("lua")
-		.convert_to_container<stringset>();
+	static stringset tags = {
+			"terrain_graphics",
+			"lua"};
 
 	for (const std::string& attr : attrs)
 	{

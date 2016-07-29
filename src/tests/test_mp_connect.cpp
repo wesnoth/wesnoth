@@ -61,7 +61,7 @@ std::unique_ptr<rand_rng::mt_rng> rng;
 
 struct mp_connect_fixture {
 	mp_connect_fixture() :
-		dummy_args(boost::assign::list_of("wesnoth")("--noaddons").convert_to_container<std::vector<std::string> >()),
+		dummy_args({"wesnoth", "--noaddons"}),
 		cmdline_opts(dummy_args),
 		hotkey_manager(),
 		config_manager()

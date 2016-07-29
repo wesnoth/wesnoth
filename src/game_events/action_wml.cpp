@@ -66,7 +66,6 @@
 #include "wml_exception.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/assign/list_of.hpp>
 #include <boost/regex.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -694,7 +693,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 				for (const config &cfg : data) {
 					merged_children.append(cfg);
 				}
-				data = boost::assign::list_of(merged_children).convert_to_container<std::vector<config> >();
+				data = {merged_children};
 			}
 			dest.merge_array(data);
 		}
