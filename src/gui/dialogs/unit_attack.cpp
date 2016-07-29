@@ -205,9 +205,9 @@ static void set_weapon_info(twindow& window,
 		}
 
 		const std::string& attw_apecials = 
-			!attacker_weapon.weapon_specials().empty() ? "  " + attacker_weapon.weapon_specials() : "";
+			!attacker_weapon.weapon_specials().empty() ? " " + attacker_weapon.weapon_specials() : "";
 		const std::string& defw_specials = 
-			!defender_weapon.weapon_specials().empty() ? "  " + defender_weapon.weapon_specials() : "";
+			!defender_weapon.weapon_specials().empty() ? " " + defender_weapon.weapon_specials() : "";
 
 		std::stringstream attacker_stats, defender_stats;
 
