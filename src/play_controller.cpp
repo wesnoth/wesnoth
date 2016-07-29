@@ -87,9 +87,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
  */
 static void copy_persistent(const config& src, config& dst)
 {
-	typedef boost::container::flat_set<std::string> stringset;
-
-	static stringset attrs = {
+	static const std::set<std::string> attrs = {
 			"id",
 			"theme",
 			"next_scenario",
@@ -103,7 +101,7 @@ static void copy_persistent(const config& src, config& dst)
 			"experience_modifier",
 			"require_scenario"};
 
-	static stringset tags = {
+	static const std::set<std::string> tags = {
 			"terrain_graphics",
 			"lua"};
 

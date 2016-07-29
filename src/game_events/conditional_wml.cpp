@@ -169,7 +169,7 @@ namespace { // Support functions
 		}
 
 		vconfig::all_children_iterator cond_end = cond.ordered_end();
-		static const boost::container::flat_set<std::string> hard_coded =
+		static const std::set<std::string> hard_coded =
 			{"true", "false", "have_unit", "have_location", "variable", "then", "else", "elseif", "not", "and", "or", "do"};
 
 		assert(resources::lua_kernel);
