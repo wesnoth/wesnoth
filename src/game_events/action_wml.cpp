@@ -516,10 +516,10 @@ namespace {
 		{
 			//Do a regex check for the file format to prevent sending aribitary files to other clients.
 			//Note: this allows only the new format.
-			static const std::string s_simple_terrain = "[A-Za-z\\\\\\|\\/]{1,4}";
-			static const std::string s_terrain = s_simple_terrain + "(\\^" + s_simple_terrain + ")?";
+			static const std::string s_simple_terrain = R"""([A-Za-z\\|/]{1,4})""";
+			static const std::string s_terrain = s_simple_terrain + R"""((\^)""" + s_simple_terrain + ")?";
 			static const std::string s_sep = "(, |\\n)";
-			static const std::string s_prefix = "(\\d+ )?";
+			static const std::string s_prefix = R"""((\d+ )?)""";
 			static const std::string s_all = "(" + s_prefix + s_terrain + s_sep + ")+";
 			static const boost::regex r_all(s_all);
 
