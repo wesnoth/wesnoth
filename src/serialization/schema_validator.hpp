@@ -21,12 +21,9 @@
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"
 
-
-
-#include <boost/regex.hpp>
-
 #include <iostream>
 #include <queue>
+#include <regex>
 #include <string>
 #include <stack>
 
@@ -146,7 +143,7 @@ private:
 	/**
 	 * Type validators.
 	 */
-	 std::map<std::string,boost::regex> types_;
+	 std::map<std::string,std::regex> types_;
 };
 }//namespace schema_validation{
 

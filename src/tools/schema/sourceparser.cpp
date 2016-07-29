@@ -18,8 +18,7 @@
 
 #include "tools/schema/sourceparser.hpp"
 
-#include <boost/regex.hpp>
-
+#include <regex>
 #include <stack>
 
 namespace schema_validation{
@@ -429,9 +428,9 @@ bool class_source_parser::parse_keys(){
 			close_opened_tags();
 			return false;
 		}
-		static const boost::regex value (get_key_value() );
-		boost::smatch sub;
-		bool res = boost::regex_match(line,sub,value);
+		static const std::regex value (get_key_value() );
+		std::smatch sub;
+		bool res = std::regex_match(line,sub,value);
 		if (res){
 			std::string type = sub[2];
 			class_key key (sub[1],type,sub[3]);
@@ -447,20 +446,20 @@ bool class_source_parser::parse_keys(){
 
 bool class_source_parser::check_valid(const std::string &s){
 	// s must be like " *" or "*"
-	static const boost::regex valid (get_valid());
-	return boost::regex_search(s,valid);
+	static const std::regex valid (get_valid());
+	return std::regex_search(s,valid);
 }
 
 bool class_source_parser::check_wiki(const std::string& s){
-	boost::regex wiki (get_wiki());
-	return boost::regex_match(s,wiki);
+	std::regex wiki (get_wiki());
+	return std::regex_match(s,wiki);
 }
 
 bool class_source_parser::check_tag_begin(const std::string &s){
 	// read tag;
-	static boost::regex tag (get_tag_begin());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,tag);
+	static std::regex tag (get_tag_begin());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,tag);
 	if (res){
 		std::string link = sub[5];
 		class_tag new_tag;
@@ -479,9 +478,9 @@ bool class_source_parser::check_tag_begin(const std::string &s){
 }
 
 bool class_source_parser::check_tag_end(const std::string &s){
-	static const boost::regex endtag (get_tag_end());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,endtag);
+	static const std::regex endtag (get_tag_end());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,endtag);
 	if (res){
 		std::string name = sub[1];
 		if (current_.empty()){
@@ -505,9 +504,9 @@ bool class_source_parser::check_tag_end(const std::string &s){
 }
 
 bool class_source_parser::check_allow_link(const std::string &s){
-	static const boost::regex allow_link (get_allow_link());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,allow_link);
+	static const std::regex allow_link (get_allow_link());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,allow_link);
 	if (res){
 		if (!current_.empty()){
 			std::string link = sub[1];
@@ -521,21 +520,21 @@ bool class_source_parser::check_allow_link(const std::string &s){
 }
 
 bool class_source_parser::check_allow_global(const std::string &s){
-	static const boost::regex allow_global (get_allow_global());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,allow_global);
+	static const std::regex allow_global (get_allow_global());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,allow_global);
 	if (res){
 		if (!current_.empty()){
-			current_.back().add_link("global/"+sub[1]);
+			current_.back().add_link("global/"+sub[1].str());
 		}
 	}
 	return res;
 }
 
 bool class_source_parser::check_parent_begin(const std::string &s){
-	static const boost::regex parent (get_parent_begin());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,parent);
+	static const std::regex parent (get_parent_begin());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,parent);
 	if (res){
 		std::string name = sub[1];
 		if (!parent_name_.empty()) {
@@ -547,9 +546,9 @@ bool class_source_parser::check_parent_begin(const std::string &s){
 }
 
 bool class_source_parser::check_parent_end(const std::string &s){
-	static const boost::regex parent (get_parent_end());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,parent);
+	static const std::regex parent (get_parent_end());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,parent);
 	if (res){
 		std::string name = sub[1];
 		if (parent_name_ == name) {
@@ -562,26 +561,26 @@ bool class_source_parser::check_parent_end(const std::string &s){
 }
 
 bool class_source_parser::check_keys_begin(const std::string &s){
-	static const boost::regex keys (get_table_key_begin());
-	return boost::regex_match(s,keys);
+	static const std::regex keys (get_table_key_begin());
+	return std::regex_match(s,keys);
 
 }
 
 bool class_source_parser::check_keys_end(const std::string &s){
-	static const boost::regex endkeys (get_table_end());
-	bool res = boost::regex_match(s,endkeys);
+	static const std::regex endkeys (get_table_end());
+	bool res = std::regex_match(s,endkeys);
 	return res;
 }
 
 bool class_source_parser::check_allow_type(const std::string &s){
-	static const boost::regex allow_type (get_allow_type());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,allow_type);
+	static const std::regex allow_type (get_allow_type());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,allow_type);
 	if (res){
 		std::string name = sub[1];
 		std::string value = sub[2];
 		try{
-			boost::regex tmp (value);
+			std::regex tmp (value);
 		}catch(std::exception ){
 			errors_.wrong_type_error(input_,line_,name,value);
 			return true;
@@ -595,9 +594,9 @@ bool class_source_parser::check_allow_type(const std::string &s){
 	return res;
 }
 bool class_source_parser::check_remove_type(const std::string &s){
-	static const boost::regex remove_type (get_remove_type());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,remove_type);
+	static const std::regex remove_type (get_remove_type());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,remove_type);
 	if (res){
 		std::string name = sub[1];
 		types_[name]="";
@@ -607,9 +606,9 @@ bool class_source_parser::check_remove_type(const std::string &s){
 	return res;
 }
 bool class_source_parser::check_remove_key(const std::string &s){
-	static const boost::regex remove_key (get_remove_key());
-	boost::smatch sub;
-	bool res = boost::regex_match(s,sub,remove_key);
+	static const std::regex remove_key (get_remove_key());
+	std::smatch sub;
+	bool res = std::regex_match(s,sub,remove_key);
 	if (res){
 		if (! current_.empty ()){
 			current_.back ().remove_key_by_name(sub[1]);

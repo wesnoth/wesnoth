@@ -34,7 +34,7 @@
 #include "gui/auxiliary/formula.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 
-#include <boost/regex.hpp>
+#include <regex>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -981,7 +981,7 @@ namespace { // Helpers for set_config()
 		ut_cfg.splice_children(variations, "variation");
 	}
 
-	const boost::regex fai_identifier("[a-zA-Z_]+");
+	const std::regex fai_identifier("[a-zA-Z_]+");
 
 	template<typename MoveT>
 	void patch_movetype(MoveT& mt, const std::string& new_key, const std::string& formula_str, int default_val, bool replace) {
@@ -993,8 +993,8 @@ namespace { // Helpers for set_config()
 		}
 		gui2::tformula<int> formula(formula_str);
 		game_logic::map_formula_callable original;
-		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
-		for (const boost::sregex_iterator::value_type& p : std::make_pair(m, boost::sregex_iterator())) {
+		std::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
+		for (const std::sregex_iterator::value_type& p : std::make_pair(m, std::sregex_iterator())) {
 			const std::string var_name = p.str();
 			variant val(original_cfg[var_name].to_int(default_val));
 			original.add(var_name, val);
