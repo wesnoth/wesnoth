@@ -272,7 +272,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	lua_newtable(T_); // this will be the context table
 	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());
-		lua_cpp::push_function(T_, std::bind(&impl_context_backend, std::placeholders::_1, this_context_backend, key));
+		lua_cpp::push_function(T_, std::bind(&impl_context_backend, _1, this_context_backend, key));
 		lua_settable(T_, -3);
 	}
 
@@ -285,7 +285,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 		const std::string & key = v.first;
 		const plugins_context::accessor_function & func = v.second;
 		lua_pushstring(T_, key.c_str());
-		lua_cpp::push_function(T_, std::bind(&impl_context_accessor, std::placeholders::_1, this_context_backend, func));
+		lua_cpp::push_function(T_, std::bind(&impl_context_accessor, _1, this_context_backend, func));
 		lua_settable(T_, -3);
 	}
 

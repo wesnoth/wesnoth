@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE( test_create_drop_targets )
 	int id_counter = 0;
 
 	std::for_each(locations.begin(), locations.end(),
-			std::bind(create_drop_targets,std::placeholders::_1, group, std::ref(targets), std::ref(id_counter)));
+			std::bind(create_drop_targets,_1, group, std::ref(targets), std::ref(id_counter)));
 
 	BOOST_CHECK_EQUAL(targets.size(), locations.size());
 
@@ -144,10 +144,10 @@ BOOST_AUTO_TEST_CASE( test_multiple_drop_groups )
 	int id_counter = 0;
 
 	std::for_each(locations.begin(), locations.end(),
-			std::bind(create_drop_targets,std::placeholders::_1, group, std::ref(targets), std::ref(id_counter)));
+			std::bind(create_drop_targets,_1, group, std::ref(targets), std::ref(id_counter)));
 	id_counter = 0;
 	std::for_each(locations2.begin(), locations2.end(),
-			std::bind(create_drop_targets,std::placeholders::_1, group2, std::ref(targets2), std::ref(id_counter)));
+			std::bind(create_drop_targets,_1, group2, std::ref(targets2), std::ref(id_counter)));
 
 	BOOST_CHECK_EQUAL(targets.size(), locations.size());
 	BOOST_CHECK_EQUAL(targets2.size(), locations2.size());

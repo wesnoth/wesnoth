@@ -294,7 +294,7 @@ int dialog::show()
 			));
 
 			plugins_context pc("Dialog");
-			pc.set_callback("set_result", std::bind(&dialog::set_result, this, std::bind(get_int, std::placeholders::_1, "result", CLOSE_DIALOG)), false);
+			pc.set_callback("set_result", std::bind(&dialog::set_result, this, std::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
 
 			while (pm->any_running() && result() == CONTINUE_DIALOG) {
 				pc.play_slice();
@@ -330,7 +330,7 @@ int dialog::show()
 		));
 
 	plugins_context pc("Dialog");
-	pc.set_callback("set_result", std::bind(&dialog::set_result, this, std::bind(get_int, std::placeholders::_1, "result", CLOSE_DIALOG)), false);
+	pc.set_callback("set_result", std::bind(&dialog::set_result, this, std::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
 
 	dialog_process_info dp_info;
 	do

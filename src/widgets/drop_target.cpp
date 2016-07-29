@@ -44,7 +44,7 @@ namespace gui {
 	{
 		return std::find_if(groups_.lower_bound(group_->get_group_id()),
 				groups_.upper_bound(group_->get_group_id()),
-				std::bind(&drop_target::is_this_id,std::bind(&drop_groups::value_type::second,std::placeholders::_1),id_));
+				std::bind(&drop_target::is_this_id,std::bind(&drop_groups::value_type::second,_1),id_));
 	}
 
 	drop_target::~drop_target()
@@ -64,7 +64,7 @@ namespace gui {
 			= std::find_if(groups_.lower_bound(group_->get_group_id()),
 					end,
 					std::bind(&drop_target::hit_rect,
-						std::bind(&drop_groups::value_type::second,std::placeholders::_1),
+						std::bind(&drop_groups::value_type::second,_1),
                         std::cref(loc_), id_));
 
 		if (itor == end)
