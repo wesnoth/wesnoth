@@ -719,7 +719,7 @@ void server::clean_user_handler(const time_t& now) {
 
 void server::serve()
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
+	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(std::ref(io_service_));
 	acceptor_.async_accept(*socket, std::bind(&server::accept_connection, this, _1, socket));
 }
 
@@ -1375,7 +1375,7 @@ void server::handle_create_game(socket_ptr socket, simple_wml::node& create_game
 
 	player_connections_.modify(
 		player_connections_.find(socket),
-		std::bind(&server::create_game, this, _1, boost::ref(create_game))
+		std::bind(&server::create_game, this, _1, std::ref(create_game))
 	);
 
 	simple_wml::document diff;
