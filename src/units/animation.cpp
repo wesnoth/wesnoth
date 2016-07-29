@@ -1096,21 +1096,16 @@ std::string unit_animation::debug() const
 
 std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
 {
-	std::cout << "[";
-	int i=0;
-	for (std::string event : u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	std::cout << "[" << utils::join(u_animation.event_) << "]\n";
 
 	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
 	if (u_animation.hits_.size() > 0) {
 		std::cout << "\thits=";
-		i=0;
+		bool need_comma = false;
 		for (const unit_animation::hit_type hit_type : u_animation.hits_) {
-			if (i>0) std::cout << ','; i++;
+			if (need_comma) std::cout << ',';
+			need_comma = true;
 			switch (hit_type) {
 				case (unit_animation::HIT)     : std::cout << "hit"; break;
 				case (unit_animation::MISS)    : std::cout << "miss"; break;
@@ -1122,9 +1117,10 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	}
 	if (u_animation.directions_.size() > 0) {
 		std::cout << "\tdirections=";
-		i=0;
+		bool need_comma = false;
 		for (const map_location::DIRECTION direction : u_animation.directions_) {
-			if (i>0) std::cout << ','; i++;
+			if (need_comma) std::cout << ',';
+			need_comma = true;
 			switch (direction) {
 				case (map_location::NORTH)     : std::cout << "n"; break;
 				case (map_location::NORTH_EAST): std::cout << "ne"; break;
@@ -1138,13 +1134,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		std::cout << '\n';
 	}
 	if (u_animation.terrain_types_.size() > 0) {
-		i=0;
-		std::cout << "\tterrain=";
-		for (const t_translation::t_terrain terrain : u_animation.terrain_types_) {
-			if (i>0) std::cout << ','; i++;
-			std::cout << terrain;
-		}
-		std::cout << '\n';
+		std::cout << "\tterrain=" << utils::join(u_animation.terrain_types_) << '\n';
 	}
 	if (u_animation.frequency_>0) std::cout << "frequency=" << u_animation.frequency_ << '\n';
 
@@ -1201,13 +1191,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		}
 	}
 
-	std::cout << "[/";
-	i=0;
-	for (std::string event : u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	std::cout << "[/" << utils::join(u_animation.event_) << "]\n";
 	return outstream;
 }
 
