@@ -1,4 +1,4 @@
-fai 'ai/formula/lib/util.fai'
+wfl 'ai/formula/lib/util.fai'
 
 def sumarize_values( input_map )
 	sum(
@@ -49,4 +49,4 @@ def sumarize_maps_values( map_A, map_B )
 		value + map_A[key]
 	);
 
-faiend
+wflend

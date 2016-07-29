@@ -1,4 +1,4 @@
-fai 'lurker_moves.fai'
+wfl 'lurker_moves.fai'
 # run_file('ai/micro_ais/engines/lurker_moves.fai') #
 
 def is_swamp(map, xx, yy)
@@ -45,4 +45,4 @@ where possible_attacks = reachable_enemies_next_to_swamp( me.loc, my_attacks,map
 
 where swamp_in_reach = reachable_swamp(me.loc,map)
 
-faiend
+wflend

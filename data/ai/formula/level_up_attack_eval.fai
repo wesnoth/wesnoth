@@ -1,4 +1,4 @@
-fai 'level_up_attack_move.fai'
+wfl 'level_up_attack_move.fai'
 
 # Score will be the probability * 100 of attacker unit (me) killing target unit #
 # (target) if attacker can level up and if the highest probable outcome         #
@@ -25,4 +25,4 @@ if(calc_exp(target.level) > (me.max_experience - me.experience),
 	-5)
 where battle_outcome = calculate_outcome(me.loc, get_best_defense_loc(my_moves.moves, me, target), target.loc)
 
-faiend
+wflend

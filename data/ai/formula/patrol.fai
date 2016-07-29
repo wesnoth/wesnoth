@@ -1,4 +1,4 @@
-fai 'patrol.fai'
+wfl 'patrol.fai'
 
 def closest_unit(ai*, me)
 	choose(
@@ -70,4 +70,4 @@ where path_to = if( enemy_units,
 			shortest_path( me.loc, closest_unit(self, me).loc ),
 			[]
 		)
-faiend
+wflend
