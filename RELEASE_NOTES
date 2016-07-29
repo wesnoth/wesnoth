@@ -24,6 +24,17 @@ SDL version 1.2.x has been removed in favour of SDL version 2.0.x. The build sys
 
 [rasection="WML/Lua compatibility changes and deprecations"]
 [list]
+[*] It's no longer possible tp specify current_player= in [side], it's till possible to query current_player in in froma  side though. To specify a sides name use side_name=<name>
+[*]Wesnoth doesnt allow special charactes like ,?;:'" in unit type ids anymore.
+[*] Name generator syntax changes
+[*]wesnoth.select_hex wesnoth.highlight_hex changes 
+[/list]
+[/rasection]
+
+[rasection="New lua/wml features"]
+[list]
+[*] You can now specify special locations in the map editor which can then be queried via wesnoth.special_locations or placement= in [unit]
+[*] [lua] now allows a [args] subtag also outside events.
 [/list]
 [/rasection]
 
