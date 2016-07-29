@@ -964,6 +964,8 @@ bool part_ui::handle_interface()
 
 part_ui::RESULT part_ui::show()
 {
+	update_locker locker(video_);
+
 	this->prepare_background();
 	this->prepare_geometry();
 	this->prepare_floating_images();

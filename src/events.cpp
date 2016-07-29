@@ -467,6 +467,7 @@ void pump()
 				}
 				//make sure this runs in it's own scope.
 				{
+					flip_locker flip_lock(CVideo::get_singleton());
 					for( std::deque<context>::iterator i = event_contexts.begin() ; i != event_contexts.end(); ++i) {
 						const handler_list& event_handlers = (*i).handlers;
 						for(auto handler : event_handlers) {
