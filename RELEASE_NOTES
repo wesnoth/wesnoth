@@ -19,22 +19,22 @@ Example contents.
 [/rasection]
 
 [rasection="Support for SDL 1.2 has been dropped"]
-SDL version 1.2.x has been removed in favour of SDL version 2.0.x. The build systems have been and all code has been removed that utilised verions 1.2.x.
+SDL version 1.2.x has been removed in favour of SDL version 2.0.x. The build systems have been updated and all code has been removed that utilized versions 1.2.x.
 [/rasection]
 
 [rasection="WML/Lua compatibility changes and deprecations"]
 [list]
-[*] It's no longer possible tp specify current_player= in [side], it's till possible to query current_player in in froma  side though. To specify a sides name use side_name=<name>
-[*]Wesnoth doesnt allow special charactes like ,?;:'" in unit type ids anymore.
+[*] It's no longer possible to specify current_player= in [side], but it's still possible to query current_player from a side. To specify a side's name, use side_name=<name>
+[*]Wesnoth doesn't allow special characters like ,?;:'" in unit type ids anymore.
 [*] Name generator syntax changes
-[*]wesnoth.select_hex wesnoth.highlight_hex changes 
+[*]Changes to wesnoth.select_hex and wesnoth.highlight_hex. The former is deprecated, while the latter is no longer deprecated but has different behaviour. To duplicate the behaviour of select_hex, highlight_hex may be used along with the new select_unit function.
 [/list]
 [/rasection]
 
 [rasection="New lua/wml features"]
 [list]
 [*] You can now specify special locations in the map editor which can then be queried via wesnoth.special_locations or placement= in [unit]
-[*] [lua] now allows a [args] subtag also outside events.
+[*][lua] now allows an [args] subtag even outside events.
 [/list]
 [/rasection]
 
@@ -89,7 +89,7 @@ KNOWN BUGS
 [b]General bugs:[/b]
 
 [list]
-[*]Crashes may occur during loadingscree. If those crashes happen to you, you can disable the loadingscreen animation by addding disable_loadingscreen_animation=yes in your preferences file.
+[*]Crashes may occur during the loading screen. If those crashes happen to you, you can disable the loading screen animation by addding disable_loading screen_animation=yes in your preferences file.
 [*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
 [*]Wesnoth does not exist on the panel (bug [bug]24202[/bug]).
 [*]"Name of Game" bleeds onto "Player/Type" label when leaving/entering the app (bug [bug]24437[/bug]).
