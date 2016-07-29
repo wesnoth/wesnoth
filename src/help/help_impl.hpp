@@ -260,6 +260,7 @@ std::vector<topic> generate_weapon_special_topics(const bool);
 void generate_era_sections(const config *help_cfg, section &sec, int level);
 std::vector<topic> generate_faction_topics(const config &, const bool);
 std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
+std::vector<topic> generate_trait_topics(const bool);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is nullptr.
