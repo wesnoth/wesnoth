@@ -1354,7 +1354,6 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
 
 	set(test_SRC
-		tests/floating_point_emulation.cpp
 		tests/gui/iterator.cpp
 		tests/gui/fire_event.cpp
 		tests/gui/test_drop_target.cpp

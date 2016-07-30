@@ -98,7 +98,7 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -146,7 +146,7 @@ tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
 	const config& definition = cfg.child("definition");
 
 	VALIDATE(definition, _("No list defined."));
-	grid = new tbuilder_grid(definition);
+	grid = std::make_shared<tbuilder_grid>(definition);
 	assert(grid);
 }
 
@@ -162,8 +162,8 @@ twidget* tbuilder_scrollbar_panel::build() const
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tscrollbar_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tscrollbar_panel_definition::
+	std::shared_ptr<const tscrollbar_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const tscrollbar_panel_definition::
 												  tresolution>(
 					widget->config());
 	assert(conf);

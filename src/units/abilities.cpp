@@ -258,9 +258,9 @@ namespace {
  *                     one and will indicate whether or not the corresponding
  *                     ability is active.
  */
-std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std::vector<bool> *active_list) const
+std::vector<std::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std::vector<bool> *active_list) const
 {
-	std::vector<boost::tuple<t_string,t_string,t_string> > res;
+	std::vector<std::tuple<t_string,t_string,t_string> > res;
 	if ( active_list )
 		active_list->clear();
 
@@ -272,7 +272,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
-				res.push_back(boost::make_tuple(
+				res.push_back(std::make_tuple(
 						ab.cfg["name"].t_str(),
 						name,
 						ab.cfg["description"].t_str() ));
@@ -290,7 +290,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
-				res.push_back(boost::make_tuple(
+				res.push_back(std::make_tuple(
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
 						default_value(ab.cfg, "description_inactive", "description").t_str() ));

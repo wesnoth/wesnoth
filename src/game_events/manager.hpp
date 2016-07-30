@@ -19,8 +19,6 @@
 #include "game_events/wmi_container.hpp"
 
 #include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <set>
 #include <string>
 
@@ -96,10 +94,10 @@ namespace game_events {
 			game_data * gamedata_;
 		};
 
-		boost::scoped_ptr<t_event_handlers> event_handlers_;
+		const std::unique_ptr<t_event_handlers> event_handlers_;
 		std::set<std::string> unit_wml_ids_;
 
-		boost::scoped_ptr<game_events::t_pump> pump_;
+		const std::unique_ptr<game_events::t_pump> pump_;
 		game_events::wmi_container wml_menu_items_;
 
 	public:

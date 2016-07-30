@@ -20,8 +20,6 @@
 #include "chat_events.hpp"
 #include "gui/dialogs/lobby/info.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 class display;
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

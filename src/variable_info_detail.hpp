@@ -33,7 +33,7 @@ namespace variable_info_detail
 
 	};
 
-	//Special case of boost::enable_if
+	//Special case of std::enable_if
 	template<const variable_info_type vit>
 	struct enable_if_non_const
 	{

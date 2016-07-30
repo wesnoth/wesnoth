@@ -45,8 +45,6 @@
 #include "units/drawer.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/make_shared.hpp>
-
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
@@ -68,7 +66,7 @@ std::vector<sdl::timage> footsteps_images(const map_location& loc, const pathfin
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 #endif
 
-game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
+game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::manager> wb,
 		reports & reports_object,
 		const tod_manager& tod,
 		const config& theme_cfg,
@@ -96,10 +94,10 @@ game_display* game_display::create_dummy_display(CVideo& video)
 {
 	static config dummy_cfg;
 	static config dummy_cfg2;
-	static game_board dummy_board(boost::make_shared<terrain_type_data>(dummy_cfg), dummy_cfg2);
+	static game_board dummy_board(std::make_shared<terrain_type_data>(dummy_cfg), dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
 	static reports rep_;
-	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), rep_, dummy_tod,
+	return new game_display(dummy_board, video, std::shared_ptr<wb::manager>(), rep_, dummy_tod,
 			dummy_cfg, dummy_cfg, true);
 }
 
@@ -249,7 +247,7 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 }
 
 void game_display::pre_draw() {
-	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->pre_draw();
 	}
 	process_reachmap_changes();
@@ -262,7 +260,7 @@ void game_display::pre_draw() {
 
 
 void game_display::post_draw() {
-	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->post_draw();
 	}
 }
@@ -375,7 +373,7 @@ void game_display::draw_hex(const map_location& loc)
 #endif
 	}
 
-	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->draw_hex(loc);
 
 		if (!(w->is_active() && w->has_temp_move()))
@@ -497,7 +495,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	// Search if there is a mark here
 	pathfind::marked_route::mark_map::iterator w = route_.marks.find(loc);
 
-	boost::shared_ptr<wb::manager> wb = wb_.lock();
+	std::shared_ptr<wb::manager> wb = wb_.lock();
 
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.marks.end()

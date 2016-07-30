@@ -109,8 +109,8 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 
 	window->set_click_dismiss(definition->click_dismiss);
 
-	boost::intrusive_ptr<const twindow_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const twindow_definition::tresolution>(
+	std::shared_ptr<const twindow_definition::tresolution>
+	conf = std::static_pointer_cast<const twindow_definition::tresolution>(
 			window->config());
 	assert(conf);
 
@@ -169,19 +169,19 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	}
 
 	if(const config& c = cfg.child("grid")) {
-		return new tbuilder_grid(c);
+		return std::make_shared<tbuilder_grid>(c);
 	}
 
 	if(const config& instance = cfg.child("instance")) {
-		return new implementation::tbuilder_instance(instance);
+		return std::make_shared<implementation::tbuilder_instance>(instance);
 	}
 
 	if(const config& pane = cfg.child("pane")) {
-		return new implementation::tbuilder_pane(pane);
+		return std::make_shared<implementation::tbuilder_pane>(pane);
 	}
 
 	if(const config& viewport = cfg.child("viewport")) {
-		return new implementation::tbuilder_viewport(viewport);
+		return std::make_shared<implementation::tbuilder_viewport>(viewport);
 	}
 
 /*
@@ -204,7 +204,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 #define TRY(name)                                                              \
 	do {                                                                       \
 		if(const config& c = cfg.child(#name)) {                               \
-			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);    \
+			tbuilder_widget_ptr p =                                            \
+				std::make_shared<implementation::tbuilder_##name>(c);          \
 			assert(false);                                                     \
 		}                                                                      \
 	} while(0)
@@ -410,7 +411,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = new tbuilder_grid(c);
+	grid = std::make_shared<tbuilder_grid>(tbuilder_grid(c));
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(),

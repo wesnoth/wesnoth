@@ -25,7 +25,7 @@
 #include <cassert>
 #include <list>
 #include <map>
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
 //#define DEBUG_UNIT_MAP
 
@@ -107,7 +107,7 @@ class unit_map {
 	///iterators pointing to this unit.
 	typedef std::map<size_t, unit_pod> t_umap;
 	///Map of location to umap iterator.
-	typedef boost::unordered_map<map_location, t_umap::iterator> t_lmap;
+	typedef std::unordered_map<map_location, t_umap::iterator> t_lmap;
 
 public:
 

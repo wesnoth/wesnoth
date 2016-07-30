@@ -22,8 +22,6 @@
 #include "tod_manager.hpp"
 #include "reports.hpp"
 
-#include <boost/make_shared.hpp>
-
 namespace wb {
 	class manager;
 }
@@ -67,10 +65,10 @@ namespace test_utils {
 	   	video_(CVideo::FAKE_TEST),
 		dummy_cfg_(),
 		dummy_cfg2_(),
-		dummy_board_(boost::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
+		dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
 		dummy_tod_(dummy_cfg_),
 		main_event_context_(),
-		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_reports, dummy_tod_,
+		disp_(dummy_board_, video_, std::shared_ptr<wb::manager> (), dummy_reports, dummy_tod_,
 				dummy_cfg_, dummy_cfg_)
 	{
 	}

@@ -206,7 +206,7 @@ bool tcontainer_::disable_click_dismiss() const
 }
 
 void
-tcontainer_::init_grid(const boost::intrusive_ptr<tbuilder_grid>& grid_builder)
+tcontainer_::init_grid(const std::shared_ptr<tbuilder_grid>& grid_builder)
 {
 	log_scope2(log_gui_general, LOG_SCOPE_HEADER);
 

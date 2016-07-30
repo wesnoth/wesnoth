@@ -41,7 +41,6 @@
 #include "whiteboard/manager.hpp"
 #include "replay_recorder_base.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
 

@@ -93,15 +93,15 @@ public:
 
 protected:
 
-	boost::shared_ptr<move> shared_from_this() {
-		return boost::static_pointer_cast<move>(action::shared_from_this());
+	std::shared_ptr<move> shared_from_this() {
+		return std::static_pointer_cast<move>(action::shared_from_this());
 	}
 
 	void calculate_move_cost();
 
 	size_t unit_underlying_id_;
 	std::string unit_id_;
-	boost::scoped_ptr<pathfind::marked_route> route_;
+	std::unique_ptr<pathfind::marked_route> route_;
 	int movement_cost_;
 	/// Turn end number to draw if greater than zero. Assigned by the map builder.
 	int turn_number_;
@@ -121,7 +121,7 @@ private:
 
 	void init();
 	void update_arrow_style();
-	boost::scoped_ptr<temporary_unit_mover> mover_;
+	std::unique_ptr<temporary_unit_mover> mover_;
 	bool fake_unit_hidden_;
 };
 

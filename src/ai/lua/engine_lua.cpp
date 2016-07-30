@@ -50,7 +50,7 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #pragma warning(disable:4250)
 #endif
 
-typedef boost::shared_ptr< lua_object<int> > lua_int_obj;
+typedef std::shared_ptr< lua_object<int> > lua_int_obj;
 
 class lua_candidate_action_wrapper_base : public candidate_action {
 
@@ -73,7 +73,7 @@ public:
 			return BAD_SCORE;
 		}
 
-		boost::shared_ptr<int> result = l_obj->get();
+		std::shared_ptr<int> result = l_obj->get();
 
 		return result ? *result : 0.0;
 	}
@@ -93,8 +93,8 @@ public:
 	}
 
 protected:
-	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
-	boost::shared_ptr<lua_ai_action_handler> execution_action_handler_;
+	std::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
+	std::shared_ptr<lua_ai_action_handler> execution_action_handler_;
 	config serialized_evaluation_state_;
 };
 
@@ -104,8 +104,8 @@ public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
 		: lua_candidate_action_wrapper_base(context,cfg),evaluation_(cfg["evaluation"]),execution_(cfg["execution"])
 	{
-		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
-		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
+		evaluation_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
+		execution_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_candidate_action_wrapper() {}
@@ -137,8 +137,8 @@ public:
 		std::string exec_code;
 		generate_code(eval_code, exec_code);
 
-		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(eval_code.c_str(),lua_ai_ctx));
-		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(exec_code.c_str(),lua_ai_ctx));
+		evaluation_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(eval_code.c_str(),lua_ai_ctx));
+		execution_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(exec_code.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_candidate_action_wrapper_external() {}
@@ -211,7 +211,7 @@ public:
 	lua_stage_wrapper( ai_context &context, const config &cfg, lua_ai_context &lua_ai_ctx )
 		: stage(context,cfg),action_handler_(),code_(cfg["code"]),serialized_evaluation_state_(cfg.child_or_empty("args"))
 	{
-		action_handler_ =  boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(),lua_ai_ctx));
+		action_handler_ =  std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_stage_wrapper()
@@ -238,7 +238,7 @@ public:
 		return cfg;
 	}
 private:
-	boost::shared_ptr<lua_ai_action_handler> action_handler_;
+	std::shared_ptr<lua_ai_action_handler> action_handler_;
 	std::string code_;
 	config serialized_evaluation_state_;
 };

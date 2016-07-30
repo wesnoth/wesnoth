@@ -199,7 +199,7 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -236,7 +236,7 @@ tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
 	VALIDATE(s, _("No stack defined."));
 	for(const auto & layer : s.child_range("layer"))
 	{
-		stack.push_back(new tbuilder_grid(layer));
+		stack.push_back(std::make_shared<tbuilder_grid>(layer));
 	}
 }
 
@@ -249,9 +249,8 @@ twidget* tbuilder_stacked_widget::build() const
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tstacked_widget_definition::tresolution>
-	conf = boost::
-			dynamic_pointer_cast<const tstacked_widget_definition::tresolution>(
+	std::shared_ptr<const tstacked_widget_definition::tresolution>
+	conf = std::static_pointer_cast<const tstacked_widget_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

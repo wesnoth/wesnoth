@@ -421,7 +421,7 @@ void tlobby_main::post_build(twindow& window)
 			hotkey::HOTKEY_PREFERENCES,
 			std::bind(function_wrapper<bool, std::function<void()> >,
 						true,
-						boost::cref(preferences_wrapper_)));
+						std::cref(preferences_wrapper_)));
 }
 
 namespace

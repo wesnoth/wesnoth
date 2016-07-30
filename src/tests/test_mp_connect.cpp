@@ -25,7 +25,6 @@
 #include "saved_game.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/assign.hpp>
 
 
@@ -52,8 +51,8 @@ public:
 
 namespace {
 
-boost::scoped_ptr<saved_game> state;
-boost::scoped_ptr<rand_rng::mt_rng> rng;
+std::unique_ptr<saved_game> state;
+std::unique_ptr<rand_rng::mt_rng> rng;
 
 }
 
@@ -62,7 +61,7 @@ boost::scoped_ptr<rand_rng::mt_rng> rng;
 
 struct mp_connect_fixture {
 	mp_connect_fixture() :
-		dummy_args(boost::assign::list_of("wesnoth")("--noaddons").convert_to_container<std::vector<std::string> >()),
+		dummy_args({"wesnoth", "--noaddons"}),
 		cmdline_opts(dummy_args),
 		hotkey_manager(),
 		config_manager()
@@ -93,7 +92,7 @@ struct mp_connect_fixture {
 	std::vector<std::string> dummy_args;
 	commandline_options cmdline_opts;
 	hotkey::manager hotkey_manager;
-	boost::scoped_ptr<game_config_manager> config_manager;
+	std::unique_ptr<game_config_manager> config_manager;
 };
 
 
@@ -130,7 +129,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = false;
-	boost::scoped_ptr<test_connect_engine>
+	std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
@@ -341,7 +340,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
 	state->mp_settings().saved_game = false;
-	boost::scoped_ptr<test_connect_engine>
+	const std::unique_ptr<test_connect_engine>
 		connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;

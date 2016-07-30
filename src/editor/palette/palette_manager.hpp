@@ -80,11 +80,11 @@ private:
 
 public:
 
-	boost::scoped_ptr<terrain_palette> terrain_palette_;
-	boost::scoped_ptr<unit_palette>    unit_palette_;
-	boost::scoped_ptr<empty_palette>   empty_palette_;
-	boost::scoped_ptr<item_palette>    item_palette_;
-	boost::scoped_ptr<location_palette>    location_palette_;
+	const std::unique_ptr<terrain_palette> terrain_palette_;
+	const std::unique_ptr<unit_palette> unit_palette_;
+	const std::unique_ptr<empty_palette> empty_palette_;
+	const std::unique_ptr<item_palette> item_palette_;
+	const std::unique_ptr<location_palette> location_palette_;
 };
 
 }

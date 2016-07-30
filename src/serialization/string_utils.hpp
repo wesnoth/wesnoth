@@ -22,7 +22,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <boost/next_prior.hpp>
 
 class t_string;
 
@@ -132,7 +131,7 @@ std::string join(T const &v, const std::string& s = ",")
         std::stringstream str;
         for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
                 str << *i;
-                if (boost::next(i) != v.end())
+                if (std::next(i) != v.end())
                         str << s;
         }
 
@@ -148,7 +147,7 @@ std::string join_map(
         std::stringstream str;
         for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
                 str << i->first << minor << i->second;
-                if (boost::next(i) != v.end())
+                if (std::next(i) != v.end())
                         str << major;
         }
 

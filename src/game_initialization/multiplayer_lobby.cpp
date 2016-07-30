@@ -46,7 +46,6 @@
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>
 #include "utils/functional.hpp"
-#include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -616,7 +615,7 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 			}
 			if (!found) {
 				// Parsing the map and generating the minimap are both cpu expensive
-				gamemap map(boost::make_shared<terrain_type_data>(game_config), item.map_data);
+				gamemap map(std::make_shared<terrain_type_data>(game_config), item.map_data);
 				item.mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
 				item.map_info_size = std::to_string(map.w()) + utils::unicode_multiplication_sign
 					+ std::to_string(map.h());

@@ -19,8 +19,6 @@
 #include "gui/dialogs/dialog.hpp"
 #include "menu_events.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 namespace gui2
 {
 
@@ -32,7 +30,7 @@ public:
 	class controller;
 
 	explicit tmp_change_control(events::menu_handler* mh);
-	boost::shared_ptr<view> get_view();
+	std::shared_ptr<view> get_view();
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -43,7 +41,7 @@ private:
 	void post_show(twindow& window);
 
 	events::menu_handler* menu_handler_;
-	boost::shared_ptr<view> view_;
+	std::shared_ptr<view> view_;
 };
 }
 

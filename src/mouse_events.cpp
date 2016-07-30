@@ -54,8 +54,6 @@
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
 #include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
 #include <new>                          // for bad_alloc
 #include <ostream>                      // for operator<<, basic_ostream, etc

@@ -22,8 +22,6 @@
 #include <queue>
 #include <ctime>
 
-#include <boost/shared_ptr.hpp>
-
 class config;
 
 namespace wesnothd {
@@ -32,7 +30,7 @@ namespace wesnothd {
 
 	std::ostream& operator<<(std::ostream& o, const banned& n);
 
-	typedef boost::shared_ptr<banned> banned_ptr;
+	typedef std::shared_ptr<banned> banned_ptr;
 
 	/** We want to move the lowest value to the top. */
 	struct banned_compare {

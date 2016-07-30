@@ -26,6 +26,7 @@ class variable_set;
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <utility>
 
 /**
  * Encapsulates the map of the game.
@@ -148,6 +149,17 @@ void write_locations(const std::vector<map_location>& locs, config& cfg);
 std::ostream &operator<<(std::ostream &s, map_location const &l);
 /** Dumps a vector of positions on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
+
+namespace std {
+template<>
+struct hash<map_location> {
+	size_t operator()(const map_location& l) const {
+		// The 2000 bias supposedly ensures that the correct x is recovered for negative y
+		// This implementation copied from the Lua location_set
+		return (l.x + 1) * 16384 + (l.y + 1) + 2000;
+	}
+};
+}
 
 /** Inlined bodies **/
 

@@ -27,9 +27,8 @@
 
 #include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/optional.hpp>
-#include <vector>
 
+#include <vector>
 
 namespace actions {
 

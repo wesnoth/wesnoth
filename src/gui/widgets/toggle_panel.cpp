@@ -141,8 +141,8 @@ unsigned ttoggle_panel::get_state() const
 
 SDL_Rect ttoggle_panel::get_client_rect() const
 {
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
@@ -157,8 +157,8 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 
 tpoint ttoggle_panel::border_space() const
 {
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
@@ -189,8 +189,8 @@ void ttoggle_panel::set_state(const tstate state)
 	state_ = state;
 	set_is_dirty(true);
 
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 }
@@ -416,7 +416,7 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = new tbuilder_grid(c);
+	grid = std::make_shared<tbuilder_grid>(c);
 }
 
 twidget* tbuilder_toggle_panel::build() const

@@ -43,7 +43,7 @@ private:
 	friend class formula_debugger;
 };
 
-typedef boost::shared_ptr<formula_expression> expression_ptr;
+typedef std::shared_ptr<formula_expression> expression_ptr;
 
 class function_expression : public formula_expression {
 public:
@@ -95,7 +95,7 @@ private:
 	int star_arg_;
 };
 
-typedef boost::shared_ptr<function_expression> function_expression_ptr;
+typedef std::shared_ptr<function_expression> function_expression_ptr;
 
 class formula_function {
 protected:
@@ -130,7 +130,7 @@ public:
 	}
 };
 
-typedef boost::shared_ptr<formula_function> formula_function_ptr;
+typedef std::shared_ptr<formula_function> formula_function_ptr;
 typedef std::map<std::string, formula_function_ptr> functions_map;
 
 class function_symbol_table {

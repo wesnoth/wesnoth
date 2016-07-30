@@ -34,12 +34,6 @@ class CVideo;
  *  @param cond         The condition to test, if false and exception is generated.
  *  @param message      The translatable message to show at the user.
  */
-#ifdef _MSC_VER
- #if _MSC_VER < 1300
-  #define __FUNCTION__ "(Unspecified)"
- #endif
-#endif
-
 #ifndef __func__
  #ifdef __FUNCTION__
   #define __func__ __FUNCTION__

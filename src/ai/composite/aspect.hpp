@@ -29,7 +29,6 @@
 #include "util.hpp"
 
 #include "utils/functional.hpp"
-#include <boost/pointer_cast.hpp>
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -56,7 +55,7 @@ public:
 	virtual const variant& get_variant() const = 0;
 
 
-	virtual boost::shared_ptr<variant> get_variant_ptr() const = 0;
+	virtual std::shared_ptr<variant> get_variant_ptr() const = 0;
 
 
 	virtual void recalculate() const = 0;
@@ -139,7 +138,7 @@ public:
 		return *get_variant_ptr();
 	}
 
-	virtual boost::shared_ptr<variant> get_variant_ptr() const
+	virtual std::shared_ptr<variant> get_variant_ptr() const
 	{
 		if (!valid_variant_) {
 			if (!valid_) {
@@ -147,11 +146,11 @@ public:
 			}
 
 			if (!valid_variant_ && valid_ ) {
-				value_variant_ = boost::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_ = std::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true;
 			} else if (!valid_variant_ && valid_lua_) {
 				value_ = value_lua_->get();
-				value_variant_ = boost::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_ = std::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true; // @note: temporary workaround
 			} else {
 				assert(valid_variant_);
@@ -163,7 +162,7 @@ public:
 	virtual void recalculate() const = 0;
 
 
-	virtual boost::shared_ptr<T> get_ptr() const
+	virtual std::shared_ptr<T> get_ptr() const
 	{
 		if (!valid_) {
 			if (!(valid_variant_ || valid_lua_)) {
@@ -172,7 +171,7 @@ public:
 
 			if (!valid_ ) {
 				if (valid_variant_) {
-					value_ = boost::shared_ptr<T>(new T(variant_value_translator<T>::variant_to_value(get_variant())));
+					value_ = std::shared_ptr<T>(new T(variant_value_translator<T>::variant_to_value(get_variant())));
 					valid_ = true;
 				} else if (valid_lua_){
 					value_ = value_lua_->get();
@@ -186,9 +185,9 @@ public:
 	}
 
 protected:
-	mutable boost::shared_ptr<T> value_;
-	mutable boost::shared_ptr<variant> value_variant_;
-	mutable boost::shared_ptr< lua_object<T> > value_lua_;
+	mutable std::shared_ptr<T> value_;
+	mutable std::shared_ptr<variant> value_variant_;
+	mutable std::shared_ptr< lua_object<T> > value_lua_;
 };
 
 
@@ -219,14 +218,14 @@ class composite_aspect;
 template<typename T>
 class typesafe_known_aspect : public known_aspect {
 public:
-	typesafe_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect<T> > &where, aspect_map &aspects)
+	typesafe_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect<T> > &where, aspect_map &aspects)
 	: known_aspect(name), where_(where), aspects_(aspects)
 	{
 	}
 
 	void set(aspect_ptr a)
 	{
-		boost::shared_ptr< typesafe_aspect <T> > c = boost::dynamic_pointer_cast< typesafe_aspect<T> >(a);
+		std::shared_ptr< typesafe_aspect <T> > c = std::dynamic_pointer_cast< typesafe_aspect<T> >(a);
 		if (c) {
 			assert (c->get_id()== this->get_name());
 			where_ = c;
@@ -238,7 +237,7 @@ public:
 
 	virtual void add_facet(const config &cfg)
 	{
-		boost::shared_ptr< composite_aspect <T> > c = boost::dynamic_pointer_cast< composite_aspect<T> >(where_);
+		std::shared_ptr< composite_aspect <T> > c = std::dynamic_pointer_cast< composite_aspect<T> >(where_);
 		if (c) {
 			assert (c->get_id()==this->get_name());
 			c->add_facet(-1, cfg);
@@ -249,7 +248,7 @@ public:
 	}
 
 protected:
-	boost::shared_ptr<typesafe_aspect <T> > &where_;
+	std::shared_ptr<typesafe_aspect <T> > &where_;
 	aspect_map &aspects_;
 
 };
@@ -275,7 +274,7 @@ public:
 			std::vector< aspect_ptr > default_aspects;
 			engine::parse_aspect_from_config(*this,_default,parent_id_,std::back_inserter(default_aspects));
 			if (!default_aspects.empty()) {
-				typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> >(default_aspects.front());
+				typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T> >(default_aspects.front());
 				if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 					c->parent_id_ = parent_id_;
 				}
@@ -296,7 +295,7 @@ public:
 		std::vector<aspect_ptr> facets_base;
 		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets_base));
 		for (aspect_ptr a : facets_base) {
-			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T> > (a);
 			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 				c->parent_id_ = parent_id_;
 			}
@@ -310,13 +309,13 @@ public:
 		///@todo 1.9 optimize in case of an aspect which returns variant
 		for (const typename aspect_type<T>::typesafe_ptr &f : make_pair(facets_.rbegin(),facets_.rend())) {
 			if (f->active()) {
-				this->value_ = boost::shared_ptr<T>(f->get_ptr());
+				this->value_ = std::shared_ptr<T>(f->get_ptr());
 				this->valid_ = true;
 				return;
 			}
 		}
 		if (default_) {
-			this->value_ = boost::shared_ptr<T>(default_->get_ptr());
+			this->value_ = std::shared_ptr<T>(default_->get_ptr());
 			this->valid_ = true;
 		}
 	}
@@ -345,7 +344,7 @@ public:
 		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets));
 		int j=0;
 		for (aspect_ptr a : facets) {
-			typename aspect_type<T>::typesafe_ptr b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T> > (a);
 			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 				c->parent_id_ = parent_id_;
 			}
@@ -377,7 +376,7 @@ public:
 		: typesafe_aspect<T>(context, cfg, id)
 	{
 		this->name_ = "standard_aspect";
-		boost::shared_ptr<T> value(new T(config_value_translator<T>::cfg_to_value(this->cfg_)));
+		std::shared_ptr<T> value(new T(config_value_translator<T>::cfg_to_value(this->cfg_)));
 		this->value_= value;
 		LOG_STREAM(debug, aspect::log()) << "standard aspect has value: "<< std::endl << config_value_translator<T>::value_to_cfg(this->get()) << std::endl;
 	}
@@ -415,7 +414,7 @@ template<typename T>
 class lua_aspect : public typesafe_aspect<T>
 {
 public:
-	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+	lua_aspect(readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
 		: typesafe_aspect<T>(context, cfg, id)
 		, handler_(), code_(), params_(cfg.child_or_empty("args"))
 	{
@@ -433,7 +432,7 @@ public:
 			// error
 			return;
 		}
-		handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+		handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 	}
 
 	void recalculate() const
@@ -454,7 +453,7 @@ public:
 	}
 
 private:
-	boost::shared_ptr<lua_ai_action_handler> handler_;
+	std::shared_ptr<lua_ai_action_handler> handler_;
 	std::string code_;
 	const config params_;
 };
@@ -463,7 +462,7 @@ private:
 class aspect_factory{
 	bool is_duplicate(const std::string &name);
 public:
-	typedef boost::shared_ptr< aspect_factory > factory_ptr;
+	typedef std::shared_ptr< aspect_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 
@@ -500,7 +499,7 @@ public:
 
 	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id)
 	{
-		boost::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id));
+		std::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id));
 		aspect_ptr a = _a;
 		a->on_create();
 		return a;
@@ -509,7 +508,7 @@ public:
 
 class lua_aspect_factory{
 public:
-	typedef boost::shared_ptr< lua_aspect_factory > factory_ptr;
+	typedef std::shared_ptr< lua_aspect_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 
@@ -521,7 +520,7 @@ public:
 		return *aspect_factories;
 	}
 
-	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx) = 0;
+	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx) = 0;
 
 	lua_aspect_factory( const std::string &name )
 	{
@@ -540,9 +539,9 @@ public:
 	{
 	}
 
-	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+	aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
 	{
-		boost::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id,l_ctx));
+		std::shared_ptr<ASPECT> _a(new ASPECT(context,cfg,id,l_ctx));
 		aspect_ptr a = _a;
 		a->on_create();
 		return a;

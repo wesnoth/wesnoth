@@ -23,9 +23,6 @@
 
 #include "play_controller.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-
 namespace events { class menu_handler; }
 namespace events { class mouse_handler; }
 namespace game_events { class wml_menu_item; }
@@ -58,7 +55,7 @@ private:
 	//
 
 	/// A smart pointer used when retrieving menu items.
-	typedef boost::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
+	typedef std::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
 
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<std::string>& items);
@@ -70,7 +67,7 @@ private:
 	 */
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const_item_ptr> wml_commands_;
-	boost::scoped_ptr<wmi_pager> wml_command_pager_;
+	const std::unique_ptr<wmi_pager> wml_command_pager_;
 	int last_context_menu_x_;
 	int last_context_menu_y_;
 

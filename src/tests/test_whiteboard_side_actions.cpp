@@ -30,7 +30,7 @@ struct dummy_action: action{
 	// un-abstraction
 	std::ostream& print(std::ostream& s) const { s<<id_; return s; }
 	void accept(visitor&){}
-	boost::shared_ptr<dummy_action> shared_from_this() { return boost::static_pointer_cast<dummy_action>(action::shared_from_this()); }
+	std::shared_ptr<dummy_action> shared_from_this() { return std::static_pointer_cast<dummy_action>(action::shared_from_this()); }
 	void execute(bool& success, bool& complete){ success=true; complete=true; }
 	void apply_temp_modifier(unit_map&){}
 	void remove_temp_modifier(unit_map&){}
@@ -46,12 +46,12 @@ BOOST_AUTO_TEST_SUITE( whiteboard_side_actions_container )
 BOOST_AUTO_TEST_CASE( test_insertion )
 {
 	side_actions_container sac;
-	boost::shared_ptr<dummy_action> dact;
+	std::shared_ptr<dummy_action> dact;
 
 	// Basic insertions
-	boost::shared_ptr<dummy_action> act1(new dummy_action(0, false, 1));
-	boost::shared_ptr<dummy_action> act2(new dummy_action(0, false, 2));
-	boost::shared_ptr<dummy_action> act3(new dummy_action(0, false, 3));
+	std::shared_ptr<dummy_action> act1(new dummy_action(0, false, 1));
+	std::shared_ptr<dummy_action> act2(new dummy_action(0, false, 2));
+	std::shared_ptr<dummy_action> act3(new dummy_action(0, false, 3));
 
 	sac.queue(0, act2);
 	sac.queue(0, act3);
@@ -62,16 +62,16 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	int tmp=0;
 	for(action_ptr act : sac) {
 		++tmp;
-		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(act));
+		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
 	}
 
 	// Multi-turn insertions
-	boost::shared_ptr<dummy_action> act4(new dummy_action(0, false, 4));
-	boost::shared_ptr<dummy_action> act5(new dummy_action(0, false, 5));
-	boost::shared_ptr<dummy_action> act6(new dummy_action(0, false, 6));
-	boost::shared_ptr<dummy_action> act7(new dummy_action(0, false, 7));
-	boost::shared_ptr<dummy_action> act8(new dummy_action(0, false, 8));
+	std::shared_ptr<dummy_action> act4(new dummy_action(0, false, 4));
+	std::shared_ptr<dummy_action> act5(new dummy_action(0, false, 5));
+	std::shared_ptr<dummy_action> act6(new dummy_action(0, false, 6));
+	std::shared_ptr<dummy_action> act7(new dummy_action(0, false, 7));
+	std::shared_ptr<dummy_action> act8(new dummy_action(0, false, 8));
 	sac.queue(1, act5);
 	sac.queue(2, act8);
 	sac.queue(1, act7);
@@ -83,14 +83,14 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	tmp=0;
 	for(action_ptr act : sac) {
 		++tmp;
-		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(act));
+		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
 	}
 
-	BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(*sac.turn_begin(1)));
+	BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(*sac.turn_begin(1)));
 	BOOST_REQUIRE(dact->id_ == 5);
 
-	BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(*(1+sac.turn_begin(1))));
+	BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(*(1+sac.turn_begin(1))));
 	BOOST_REQUIRE(dact->id_ == 6);
 
 	BOOST_REQUIRE(sac.turn_size(1) == 3);
@@ -100,14 +100,14 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 BOOST_AUTO_TEST_CASE( test_removal )
 {
 	side_actions_container sac;
-	boost::shared_ptr<dummy_action> dact;
+	std::shared_ptr<dummy_action> dact;
 
-	boost::shared_ptr<dummy_action> act1(new dummy_action(0, false, 1));
-	boost::shared_ptr<dummy_action> act2(new dummy_action(0, false, 2));
-	boost::shared_ptr<dummy_action> act3(new dummy_action(0, false, 3));
-	boost::shared_ptr<dummy_action> act4(new dummy_action(0, false, 4));
-	boost::shared_ptr<dummy_action> act5(new dummy_action(0, false, 5));
-	boost::shared_ptr<dummy_action> act6(new dummy_action(0, false, 6));
+	std::shared_ptr<dummy_action> act1(new dummy_action(0, false, 1));
+	std::shared_ptr<dummy_action> act2(new dummy_action(0, false, 2));
+	std::shared_ptr<dummy_action> act3(new dummy_action(0, false, 3));
+	std::shared_ptr<dummy_action> act4(new dummy_action(0, false, 4));
+	std::shared_ptr<dummy_action> act5(new dummy_action(0, false, 5));
+	std::shared_ptr<dummy_action> act6(new dummy_action(0, false, 6));
 
 	sac.queue(0, act1);
 	side_actions::iterator ite2 = sac.queue(0, act2);
@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE( test_removal )
 	BOOST_REQUIRE(sac.num_turns() == 2);
 	side_actions::iterator it = sac.begin();
 	for(int i=1; i<6; i+=2, ++it){
-		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(*it));
+		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(*it));
 		BOOST_REQUIRE(dact->id_ == i);
 	}
 }

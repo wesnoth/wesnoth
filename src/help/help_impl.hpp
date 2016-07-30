@@ -37,17 +37,17 @@
 
 #include <cstring>
 #include <list>                         // for list
+#include <memory>
 #include <ostream>                      // for operator<<, stringstream, etc
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <boost/shared_ptr.hpp>
 #include <SDL.h>                  // for SDL_Color, SDL_Surface
 
 class config;
 class unit_type;
 class terrain_type_data;
-typedef boost::shared_ptr<terrain_type_data> tdata_cache;
+typedef std::shared_ptr<terrain_type_data> tdata_cache;
 namespace help { struct section; }  // lines 51-51
 
 namespace help {
@@ -260,6 +260,7 @@ std::vector<topic> generate_weapon_special_topics(const bool);
 void generate_era_sections(const config *help_cfg, section &sec, int level);
 std::vector<topic> generate_faction_topics(const config &, const bool);
 std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
+std::vector<topic> generate_trait_topics(const bool);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is nullptr.

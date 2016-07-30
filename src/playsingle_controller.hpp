@@ -29,8 +29,8 @@ class team;
 
 struct reset_gamestate_exception
 {
-	reset_gamestate_exception(boost::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}
-	boost::shared_ptr<config> level;
+	reset_gamestate_exception(std::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}
+	std::shared_ptr<config> level;
 	bool start_replay;
 };
 
@@ -97,7 +97,7 @@ protected:
 	};
 	END_TURN_STATE end_turn_;
 	bool skip_next_turn_;
-	boost::scoped_ptr<replay_controller> replay_;
+	std::unique_ptr<replay_controller> replay_;
 	void linger();
 	void sync_end_turn();
 	void update_viewing_player();

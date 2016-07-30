@@ -45,7 +45,6 @@
 
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
-#include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
@@ -270,6 +269,8 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		res = generate_weapon_special_topics(sort_generated);
 	} else if (generator == "time_of_days") {
 		res = generate_time_of_day_topics(sort_generated);
+	} else if (generator == "traits") {
+		res = generate_trait_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
@@ -622,6 +623,65 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
+
+std::vector<topic> generate_trait_topics(const bool sort_generated)
+{
+	std::vector<topic> topics;
+	std::map<t_string, const config> trait_list;
+
+	for (const config & trait : unit_types.traits()) {
+		const std::string trait_id = trait["id"];
+		trait_list.insert(std::make_pair(trait_id, trait));
+	}
+
+
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
+	{
+		const unit_type &type = i.second;
+		if (description_type(type) == FULL_DESCRIPTION) {
+			config::const_child_itors traits = type.possible_traits();
+			if (traits.first != traits.second && type.num_traits() > 0) {
+				for (const config & trait : traits) {
+					const std::string trait_id = trait["id"];
+					trait_list.insert(std::make_pair(trait_id, trait));
+				}
+			}
+			if (const unit_race *r = unit_types.find_race(type.race_id())) {
+				for (const config & trait : r->additional_traits()) {
+					const std::string trait_id = trait["id"];
+					trait_list.insert(std::make_pair(trait_id, trait));
+				}
+			}
+		}
+	}
+
+	for (std::map<t_string, const config>::iterator a = trait_list.begin(); a != trait_list.end(); ++a) {
+		std::string id = "traits_" + a->first;
+		const config trait = a->second;
+		std::stringstream text;
+		if (trait["help_text"].empty()) {
+			text << trait["description"];
+		} else {
+			text << trait["help_text"];
+		}
+		text << "\n\n";
+		if (trait["availability"] == "musthave") {
+			text << _("Availability: ") << _("Must-have") << "\n";
+		} else if (trait["availability"] == "none") {
+			text << _("Availability: ") << _("Unavailable") << "\n";
+		}
+		std::string name = trait["male_name"].str();
+		if (name.empty()) name = trait["female_name"].str();
+		if (name.empty()) name = trait["name"].str();
+
+		topics.push_back( topic(name, id, text.str()) );
+	}
+
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
+	return topics;
+}
+
 
 std::string make_unit_link(const std::string& type_id)
 {

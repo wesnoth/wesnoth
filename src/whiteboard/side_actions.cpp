@@ -273,7 +273,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 	std::vector<size_t>& team_numbers = result.team_numbers;
 	int& main_number = result.main_number;
 	std::set<size_t>& secondary_numbers = result.secondary_numbers;
-	boost::shared_ptr<highlighter> hlighter = resources::whiteboard->get_highlighter().lock();
+	std::shared_ptr<highlighter> hlighter = resources::whiteboard->get_highlighter().lock();
 
 	for(const_iterator it = begin(); it != end(); ++it) {
 		if((*it)->is_numbering_hex(hex)) {
@@ -431,7 +431,7 @@ namespace
 		}
 
 		void visit(attack_ptr first) {
-			visit(boost::static_pointer_cast<move>(first));
+			visit(std::static_pointer_cast<move>(first));
 		}
 
 		void visit(recruit_ptr first) {
@@ -493,7 +493,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 		return end();
 	}
 
-	if(move_ptr second = boost::dynamic_pointer_cast<move>(*position)) {
+	if(move_ptr second = std::dynamic_pointer_cast<move>(*position)) {
 		swapable_with_move check(*this, position, second);
 		(*previous)->accept(check);
 		if(!check.valid()) {
@@ -667,31 +667,31 @@ side_actions::iterator side_actions::safe_erase(iterator const& itor)
 }
 side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(boost::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, fake_unit));
+	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, fake_unit));
 	return queue_action(turn, new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(boost::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
+	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(turn, new_attack);
 }
 
 side_actions::iterator side_actions::queue_recruit(size_t turn, const std::string& unit_name, const map_location& recruit_hex)
 {
-	recruit_ptr new_recruit(boost::make_shared<recruit>(team_index(), hidden_, unit_name, recruit_hex));
+	recruit_ptr new_recruit(std::make_shared<recruit>(team_index(), hidden_, unit_name, recruit_hex));
 	return queue_action(turn, new_recruit);
 }
 
 side_actions::iterator side_actions::queue_recall(size_t turn, const unit& unit, const map_location& recall_hex)
 {
-	recall_ptr new_recall(boost::make_shared<recall>(team_index(), hidden_, unit, recall_hex));
+	recall_ptr new_recall(std::make_shared<recall>(team_index(), hidden_, unit, recall_hex));
 	return queue_action(turn, new_recall);
 }
 
 side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, map_location const& loc)
 {
-	suppose_dead_ptr new_suppose_dead(boost::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
+	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
 	return queue_action(turn, new_suppose_dead);
 }
 

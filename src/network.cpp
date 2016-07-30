@@ -986,7 +986,7 @@ static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_typ
 	return inserted;
 }
 
-typedef boost::shared_ptr<bandwidth_stats> bandwidth_stats_ptr;
+typedef std::shared_ptr<bandwidth_stats> bandwidth_stats_ptr;
 
 
 struct bandwidth_stats_output {

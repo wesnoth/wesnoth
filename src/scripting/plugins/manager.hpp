@@ -24,8 +24,6 @@
 #include "utils/make_enum.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <string>
 
 struct plugin;
@@ -71,8 +69,8 @@ public:
 
 private:
 	boost::ptr_vector<plugin> plugins_;
-	boost::shared_ptr<bool> playing_;
-	boost::scoped_ptr<application_lua_kernel> kernel_;
+	std::shared_ptr<bool> playing_;
+	std::unique_ptr<application_lua_kernel> kernel_;
 };
 
 #endif

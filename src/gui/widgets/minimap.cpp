@@ -27,7 +27,6 @@
 #include "../../minimap.hpp" // We want the file in src/
 
 #include "utils/functional.hpp"
-#include <boost/make_shared.hpp>
 
 #include <algorithm>
 
@@ -215,7 +214,7 @@ const surface tminimap::get_image(const int w, const int h) const
 
 	try
 	{
-		const gamemap map(boost::make_shared<terrain_type_data>(*terrain_), map_data_);
+		const gamemap map(std::make_shared<terrain_type_data>(*terrain_), map_data_);
 		const surface surf = image::getMinimap(w, h, map, nullptr);
 		cache.insert(std::make_pair(key, tvalue(surf)));
 #ifdef DEBUG_MINIMAP_CACHE

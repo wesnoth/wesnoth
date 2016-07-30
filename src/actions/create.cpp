@@ -51,8 +51,6 @@
 #include "variable.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -644,10 +642,10 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			res.get<0>() |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			std::get<0>(res) |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return true;
+			return std::make_tuple(true, 0, false);
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
@@ -665,29 +663,29 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 
 	// Village capturing.
 	if ( resources::gameboard->map().is_village(current_loc) ) {
-		res.get<1>() = resources::gameboard->village_owner(current_loc) + 1;
-		res.get<0>() |= actions::get_village(current_loc, new_unit_itor->side(), &res.get<2>());
+		std::get<1>(res) = resources::gameboard->village_owner(current_loc) + 1;
+		std::get<0>(res) |= actions::get_village(current_loc, new_unit_itor->side(), &std::get<2>(res));
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return true;
+			return std::make_tuple(true, 0, false);
 	}
 
 	// Fog clearing.
 	actions::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
-		res.get<0>() |= clearer.clear_unit(current_loc, *new_unit_itor);
+		std::get<0>(res) |= clearer.clear_unit(current_loc, *new_unit_itor);
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			res.get<0>() |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			std::get<0>(res) |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 	}
 
 	// "sighted" event(s).
-	res.get<0>() |= clearer.fire_events();
+	std::get<0>(res) |= clearer.fire_events();
 	if ( new_unit_itor.valid() )
-		res.get<0>() |= actions::actor_sighted(*new_unit_itor);
+		std::get<0>(res) |= actions::actor_sighted(*new_unit_itor);
 
 	return res;
 }
@@ -710,10 +708,10 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recruit.)
 	if ( use_undo ) {
-		resources::undo_stack->add_recruit(new_unit, loc, from, res.get<1>(), res.get<2>());
+		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
 		// Check for information uncovered or randomness used.
 
-		if ( res.get<0>() || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -759,8 +757,8 @@ bool recall_unit(const std::string & id, team & current_team,
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
-		resources::undo_stack->add_recall(recall, loc, from, res.get<1>(), res.get<2>());
-		if ( res.get<0>() || !synced_context::can_undo()) {
+		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
+		if ( std::get<0>(res) || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}

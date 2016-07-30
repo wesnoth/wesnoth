@@ -118,7 +118,7 @@ void tmessage::set_button_caption(const tbutton_id button,
 }
 
 void tmessage::set_button_visible(const tbutton_id button,
-								  const twidget::tvisible::scoped_enum visible)
+								  const twidget::tvisible visible)
 {
 	buttons_[button].visible = visible;
 	if(buttons_[button].button) {

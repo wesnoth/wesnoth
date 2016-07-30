@@ -34,7 +34,6 @@
 #include "ai/game_info.hpp"
 #include "config.hpp"
 
-#include <boost/shared_ptr.hpp>
 #include <iterator>
 #include <map>
 #include <set>
@@ -65,7 +64,7 @@ public:
 
 
 	virtual void on_create();
-	virtual void on_create(boost::shared_ptr<ai::lua_ai_context>);
+	virtual void on_create(std::shared_ptr<ai::lua_ai_context>);
 
 
 	bool active() const;
@@ -120,7 +119,7 @@ private:
 	{
 		return value_;
 	}
-	boost::shared_ptr<terrain_filter> filter_ptr_;
+	std::shared_ptr<terrain_filter> filter_ptr_;
 	double value_;
 };
 
@@ -142,7 +141,7 @@ private:
 		return value_;
 	}
 
-	boost::shared_ptr<terrain_filter> filter_ptr_;
+	std::shared_ptr<terrain_filter> filter_ptr_;
 	bool protect_unit_;
 	int radius_;
 	double value_;
@@ -170,18 +169,18 @@ class lua_goal : public goal {
 public:
 	lua_goal(readonly_context& context, const config& cfg);
 	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
-	void on_create(boost::shared_ptr<ai::lua_ai_context>);
+	void on_create(std::shared_ptr<ai::lua_ai_context>);
 
 private:
 	std::string code_;
-	boost::shared_ptr<lua_ai_action_handler> handler_;
+	std::shared_ptr<lua_ai_action_handler> handler_;
 };
 
 
 class goal_factory{
 	bool is_duplicate(const std::string &name);
 public:
-	typedef boost::shared_ptr< goal_factory > factory_ptr;
+	typedef std::shared_ptr< goal_factory > factory_ptr;
 	typedef std::map<std::string, factory_ptr> factory_map;
 	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
 

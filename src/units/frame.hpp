@@ -65,7 +65,7 @@ public:
 typedef progressive_<int> progressive_int;
 typedef progressive_<double> progressive_double;
 
-typedef enum tristate {t_false,t_true,t_unset} tristate;
+enum tristate {t_false,t_true,t_unset};
 bool tristate_to_bool(tristate tri, bool def);
 /** All parameters from a frame at a given instant */
 class frame_parameters{

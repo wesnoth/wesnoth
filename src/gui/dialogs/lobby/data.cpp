@@ -26,8 +26,6 @@
 #include "wml_exception.hpp"
 
 #include <iterator>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -243,7 +241,7 @@ game_info::game_info(const config& game, const config& game_config)
 	} else {
 		try
 		{
-			gamemap map(boost::make_shared<terrain_type_data>(game_config), map_data);
+			gamemap map(std::make_shared<terrain_type_data>(game_config), map_data);
 			// mini_map = image::getMinimap(minimap_size_, minimap_size_, map,
 			// 0);
 			std::ostringstream msi;

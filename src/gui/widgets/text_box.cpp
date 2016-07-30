@@ -245,8 +245,8 @@ void ttext_box::update_offsets()
 {
 	assert(config());
 
-	boost::intrusive_ptr<const ttext_box_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const ttext_box_definition::tresolution>(
+	std::shared_ptr<const ttext_box_definition::tresolution>
+	conf = std::static_pointer_cast<const ttext_box_definition::tresolution>(
 			config());
 
 	assert(conf);
@@ -328,8 +328,8 @@ void ttext_box::load_config_extra()
 {
 	assert(config());
 
-	boost::intrusive_ptr<const ttext_box_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const ttext_box_definition::tresolution>(
+	std::shared_ptr<const ttext_box_definition::tresolution>
+	conf = std::static_pointer_cast<const ttext_box_definition::tresolution>(
 			config());
 
 	assert(conf);

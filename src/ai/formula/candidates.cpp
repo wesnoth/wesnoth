@@ -77,7 +77,6 @@ candidate_action_with_filters::candidate_action_with_filters(
 variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, game_logic::const_formula_ptr formula)
 {
 	game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-	callable.add_ref();
 	callable.add("input", input);
 
 	return formula::evaluate(formula, callable);
@@ -123,7 +122,6 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(variant_iterator i = filtered_units.begin() ; i != filtered_units.end() ; ++i)
 	{
 			game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-			callable.add_ref();
 			callable.add("me", *i);
 
 			int res = execute_formula(eval_, callable, ai);
@@ -227,7 +225,6 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 			if( ai->can_reach_unit( my_unit_callalbe->get_location(), enemy_units_flt[enemy_unit]->get_location() )) {
 
 				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-				callable.add_ref();
 				callable.add("me", filtered_my_units[my_unit]);
 				callable.add("target", filtered_enemy_units[enemy_unit]);
 

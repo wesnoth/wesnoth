@@ -119,7 +119,7 @@ private:
 		);
 	union {
 		char binary[4];
-		boost::uint32_t num;
+		uint32_t num;
 	} handshake_response_;
 
 	std::size_t is_write_complete(const boost::system::error_code& error, std::size_t bytes_transferred);
@@ -133,7 +133,7 @@ private:
 	std::list<boost::asio::streambuf> send_queue_;
 	std::list<config> recv_queue_;
 
-	boost::uint32_t payload_size_;
+	uint32_t payload_size_;
 	std::size_t bytes_to_write_;
 	std::size_t bytes_written_;
 	std::size_t bytes_to_read_;

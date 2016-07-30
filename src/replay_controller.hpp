@@ -34,7 +34,7 @@ public:
 		virtual ~replay_stop_condition(){}
 	};
 	static void nop() {};
-	replay_controller(play_controller& controller, bool control_view, const boost::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop);
+	replay_controller(play_controller& controller, bool control_view, const std::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop);
 	~replay_controller();
 
 	// void reset_replay();
@@ -50,7 +50,7 @@ public:
 	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
 	bool is_controlling_view() const { return vision_.is_initialized(); }
 	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
-	const boost::shared_ptr<config>& get_reset_state() { return reset_state_; };
+	const std::shared_ptr<config>& get_reset_state() { return reset_state_; };
 	void return_to_play_side(bool r = true) { return_to_play_side_ = r; }
 	void replay_show_everything();
 	void replay_show_each();
@@ -82,7 +82,7 @@ private:
 		       play_turn_button() && play_side_button();
 	}
 	play_controller& controller_;
-	boost::scoped_ptr<replay_stop_condition> stop_condition_;
+	std::unique_ptr<replay_stop_condition> stop_condition_;
 	events::command_disabler disabler_;
 
 	enum REPLAY_VISION
@@ -92,7 +92,7 @@ private:
 		SHOW_ALL,
 	};
 	boost::optional<REPLAY_VISION> vision_;
-	boost::shared_ptr<config> reset_state_;
+	std::shared_ptr<config> reset_state_;
 	std::function<void()> on_end_replay_;
 	bool return_to_play_side_;
 };

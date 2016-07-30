@@ -54,11 +54,6 @@
 #include "undo_update_shroud_action.hpp"
 
 #include <algorithm>                    // for reverse
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/ptr_container/detail/static_move_ptr.hpp>
-#include <boost/ptr_container/detail/void_ptr_iterator.hpp>
-#include <boost/ptr_container/ptr_sequence_adapter.hpp>
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <set>                          // for set

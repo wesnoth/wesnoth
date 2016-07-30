@@ -26,7 +26,6 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"
 
-#include <boost/optional.hpp>
 #include <iomanip>
 
 #ifdef _MSC_VER
@@ -172,13 +171,13 @@ struct recruit_limit : public component {
 };
 
 class recruitment_aspect : public standard_aspect<config> {
-	std::vector<boost::shared_ptr<recruit_job> > jobs_;
-	std::vector<boost::shared_ptr<recruit_limit> > limits_;
+	std::vector<std::shared_ptr<recruit_job> > jobs_;
+	std::vector<std::shared_ptr<recruit_limit> > limits_;
 public:
 	recruitment_aspect(readonly_context &context, const config &cfg, const std::string &id);
 	void recalculate() const;
-	void create_job(std::vector<boost::shared_ptr<recruit_job> > &jobs, const config &job);
-	void create_limit(std::vector<boost::shared_ptr<recruit_limit> > &limits, const config &lim);
+	void create_job(std::vector<std::shared_ptr<recruit_job> > &jobs, const config &job);
+	void create_limit(std::vector<std::shared_ptr<recruit_limit> > &limits, const config &lim);
 };
 
 typedef std::map<std::string, std::set<cached_combat_value> > table_row;

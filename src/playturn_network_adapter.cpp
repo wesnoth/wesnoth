@@ -114,7 +114,7 @@ bool playturn_network_adapter::read(config& dst)
 }
 
 playturn_network_adapter::playturn_network_adapter(source_type source)
-	: data_(boost::assign::list_of(config()).convert_to_container<std::list<config> >()),
+	: data_({config()}),
 	next_(data_.front().ordered_end()),
 	next_command_num_(0),
 	network_reader_(source)

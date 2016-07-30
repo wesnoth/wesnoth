@@ -71,8 +71,8 @@ public:
 
 protected:
 
-	boost::shared_ptr<suppose_dead> shared_from_this() {
-		return boost::static_pointer_cast<suppose_dead>(action::shared_from_this());
+	std::shared_ptr<suppose_dead> shared_from_this() {
+		return std::static_pointer_cast<suppose_dead>(action::shared_from_this());
 	}
 
 	size_t unit_underlying_id_;

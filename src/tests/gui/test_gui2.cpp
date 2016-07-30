@@ -162,7 +162,7 @@ namespace {
 		for(const tresolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-			boost::scoped_ptr<gui2::tdialog> dlg(twrapper<T>::create());
+			const std::unique_ptr<gui2::tdialog> dlg(twrapper<T>::create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
 			const std::string id = gui2::unit_test_mark_as_tested(*(dlg.get()));
@@ -200,7 +200,7 @@ namespace {
 			for(const tresolution& resolution : resolutions) {
 				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-				boost::scoped_ptr<gui2::tpopup> dlg(twrapper<T>::create());
+				const std::unique_ptr<gui2::tpopup> dlg(twrapper<T>::create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
 				const std::string id = gui2::unit_test_mark_popup_as_tested(*(dlg.get()));

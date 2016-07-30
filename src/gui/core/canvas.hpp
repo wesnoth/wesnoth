@@ -50,7 +50,7 @@ public:
 	 * The other shapes are declared and defined in canvas.cpp, since the
 	 * implementation details are not interesting for users of the canvas.
 	 */
-	class tshape : public reference_counted_object
+	class tshape
 	{
 	public:
 		virtual ~tshape()
@@ -71,8 +71,8 @@ public:
 				= 0;
 	};
 
-	typedef boost::intrusive_ptr<tshape> tshape_ptr;
-	typedef boost::intrusive_ptr<const tshape> const_tshape_ptr;
+	typedef std::shared_ptr<tshape> tshape_ptr;
+	typedef std::shared_ptr<const tshape> const_tshape_ptr;
 
 	tcanvas();
 

@@ -128,7 +128,7 @@ void load_widget_definitions(tgui_definition& gui_definition,
 			cfg.child_range(key ? key : definition_type + "_definition"))
 	{
 
-		definitions.push_back(new T(definition));
+		definitions.push_back(std::make_shared<T>(definition));
 	}
 
 	load_widget_definitions(gui_definition, definition_type, definitions);

@@ -245,7 +245,7 @@ tunit_preview_pane_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -267,8 +267,8 @@ twidget* tbuilder_unit_preview_pane::build() const
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tunit_preview_pane_definition::tresolution> conf
-		= boost::dynamic_pointer_cast<
+	std::shared_ptr<const tunit_preview_pane_definition::tresolution> conf
+		= std::static_pointer_cast<
 			const tunit_preview_pane_definition::tresolution>(widget->config());
 
 	assert(conf);

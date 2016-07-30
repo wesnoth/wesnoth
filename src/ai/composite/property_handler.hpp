@@ -25,6 +25,8 @@
 #include "config.hpp"
 #include "ai/composite/component.hpp"
 
+#include <algorithm>
+
 namespace ai{
 
 template<typename T>
@@ -68,13 +70,13 @@ public:
 	virtual std::vector< component* > handle_get_children() = 0;
 };
 
-typedef boost::shared_ptr< base_property_handler > property_handler_ptr;
+typedef std::shared_ptr< base_property_handler > property_handler_ptr;
 
 template<typename T>
 class vector_property_handler : public base_property_handler {
 public:
-	typedef boost::shared_ptr<T> t_ptr;
-	typedef std::vector< boost::shared_ptr<T> > t_ptr_vector;
+	typedef std::shared_ptr<T> t_ptr;
+	typedef std::vector< std::shared_ptr<T> > t_ptr_vector;
 
 	vector_property_handler(const std::string &property, t_ptr_vector &values, std::function<void(t_ptr_vector&, const config&)> &construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}
@@ -218,7 +220,7 @@ private:
 template<typename T>
 class aspect_property_handler : public base_property_handler {
 public:
-	typedef boost::shared_ptr<T> t_ptr;
+	typedef std::shared_ptr<T> t_ptr;
 	typedef std::map< std::string, t_ptr > aspect_map;
 
 	aspect_property_handler(const std::string &property, aspect_map &aspects, std::function<void(aspect_map&, const config&, std::string)> &construction_factory)
@@ -288,21 +290,21 @@ private:
 
 
 template<typename X>
-static void register_vector_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::vector< boost::shared_ptr<X> > &values, std::function<void(std::vector< boost::shared_ptr<X> >&, const config&)> construction_factory)
+static void register_vector_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::vector< std::shared_ptr<X> > &values, std::function<void(std::vector< std::shared_ptr<X> >&, const config&)> construction_factory)
 {
 	property_handler_ptr handler_ptr = property_handler_ptr(new vector_property_handler<X>(property,values,construction_factory));
 	property_handlers.insert(std::make_pair(property,handler_ptr));
 }
 
 template<typename X>
-static void register_facets_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::vector< boost::shared_ptr<X> > &values, boost::shared_ptr<X>& def, std::function<void(std::vector< boost::shared_ptr<X> >&, const config&)> construction_factory)
+static void register_facets_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::vector< std::shared_ptr<X> > &values, std::shared_ptr<X>& def, std::function<void(std::vector< std::shared_ptr<X> >&, const config&)> construction_factory)
 {
 	property_handler_ptr handler_ptr = property_handler_ptr(new facets_property_handler<X>(property,values,def,construction_factory));
 	property_handlers.insert(std::make_pair(property,handler_ptr));
 }
 
 template<typename X>
-static void register_aspect_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::map< std::string, boost::shared_ptr<X> > &aspects, std::function<void(std::map< std::string, boost::shared_ptr<X> >&, const config&, std::string)> construction_factory)
+static void register_aspect_property(std::map<std::string,property_handler_ptr> &property_handlers, const std::string &property, std::map< std::string, std::shared_ptr<X> > &aspects, std::function<void(std::map< std::string, std::shared_ptr<X> >&, const config&, std::string)> construction_factory)
 {
 	property_handler_ptr handler_ptr = property_handler_ptr(new aspect_property_handler<X>(property,aspects,construction_factory));
 	property_handlers.insert(std::make_pair(property,handler_ptr));

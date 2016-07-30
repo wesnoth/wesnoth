@@ -278,7 +278,7 @@ private:
  * utility methods to create and manipulate them.
  * It also provides an interface to the underlying side_actions_container.
  */
-class side_actions: public boost::enable_shared_from_this<side_actions>
+class side_actions: public std::enable_shared_from_this<side_actions>
 {
 public:
 	typedef side_actions_container container;

@@ -910,9 +910,50 @@ function wml_actions.role(cfg)
 	end
 
 	filter.role, filter.type = nil, nil
-	local search_map, search_recall = true, true
-	if cfg.search_recall_list ~= nil then
+	local search_map, search_recall, reassign = true, true, true
+	if cfg.search_recall_list == "only" then
+		search_map = false
+	elseif cfg.search_recall_list ~= nil then
 		search_recall = not not cfg.search_recall_list
+	end
+	if cfg.reassign ~= nil then
+		reassign = not not cfg.reassign
+	end
+
+	-- pre-build a new [recall] from the [auto_recall]
+	-- copy only recall-specific attributes, no SUF at all
+	-- the SUF will be id= which we will add in a moment
+	-- keep this in sync with the C++ recall function!!!
+	local recall = nil
+	local child = helper.get_child(cfg, "auto_recall")
+	if child ~= nil then
+		if helper.get_nth_child(cfg, "auto_recall", 2) ~= nil then
+			wesnoth.log("debug", "More than one [auto_recall] found within [role]", true)
+		end
+		local original = helper.shallow_literal(child)
+		recall = {}
+		recall.x = original.x
+		recall.y = original.y
+		recall.show = original.show
+		recall.fire_event = original.fire_event
+		recall.check_passability = original.check_passability
+	end
+
+	if not reassign then
+		if search_map then
+			local unit = wesnoth.get_units{role=role}[1]
+			if unit then
+				return
+			end
+		end
+		if recall and search_recall then
+			local unit = wesnoth.get_recall_units{role=role}[1]
+			if unit then
+				recall.id = unit.id
+				wml_actions.recall(recall)
+				return
+			end
+		end
 	end
 
 	if search_map then
@@ -942,8 +983,9 @@ function wml_actions.role(cfg)
 			local unit = wesnoth.get_recall_units(filter)[1]
 			if unit then
 				unit.role = role
-				if cfg.auto_recall then
-					wml_actions.recall{role=role}
+				if recall then
+					recall.id = unit.id
+					wml_actions.recall(recall)
 				end
 				return
 			end

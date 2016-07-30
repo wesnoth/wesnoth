@@ -47,7 +47,7 @@
 
 #else
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 /***** ***** ***** ***** types ***** ***** ***** *****/
 

@@ -23,20 +23,11 @@
 #include "util.hpp"
 #include "config.hpp"
 
-#include <boost/shared_ptr.hpp>
-#include <boost/container/flat_set.hpp>
+#include <set>
 
 class game_data;
 class gamemap;
-#if defined(_MSC_VER) && _MSC_VER <= 1600
-/*
-	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
-	And will create corrupt binaries without giving a warning / error.
-*/
-#include <SDL_video.h>
-#else
 struct SDL_Color;
-#endif
 
 
 namespace wb {
@@ -177,7 +168,7 @@ public:
 
 	/// Stores the attributes recognized by [side]. These should be stripped
 	/// from a side's config before using it to create the side's leader.
-	static const boost::container::flat_set<std::string> attributes;
+	static const std::set<std::string> attributes;
 
 	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
 
@@ -379,7 +370,7 @@ public:
 	static void clear_caches();
 
 	/** get the whiteboard planned actions for this team */
-	boost::shared_ptr<wb::side_actions> get_side_actions() const { return planned_actions_; }
+	std::shared_ptr<wb::side_actions> get_side_actions() const { return planned_actions_; }
 
 	config to_config() const;
 
@@ -430,7 +421,7 @@ private:
 	/**
 	 * Whiteboard planned actions for this team.
 	 */
-	boost::shared_ptr<wb::side_actions> planned_actions_;
+	std::shared_ptr<wb::side_actions> planned_actions_;
 };
 
 //function which will validate a side. Throws game::game_error

@@ -15,19 +15,17 @@
 #ifndef AI_LUA_CORE_HPP
 #define AI_LUA_CORE_HPP
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 struct lua_State;
 class game_lua_kernel;
 class config;
 
-
-
 namespace ai {
 
 class engine_lua;
 class lua_object_base;
-typedef boost::shared_ptr<lua_object_base> lua_object_ptr;
+typedef std::shared_ptr<lua_object_base> lua_object_ptr;
 
 /**
  * Proxy table for the AI context

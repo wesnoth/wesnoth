@@ -1531,15 +1531,15 @@ void tcanvas::parse_cfg(const config& cfg)
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
-			shapes_.push_back(new tline(data));
+			shapes_.push_back(std::make_shared<tline>(data));
 		} else if(type == "rectangle") {
-			shapes_.push_back(new trectangle(data));
+			shapes_.push_back(std::make_shared<trectangle>(data));
 		} else if(type == "circle") {
-			shapes_.push_back(new tcircle(data));
+			shapes_.push_back(std::make_shared<tcircle>(data));
 		} else if(type == "image") {
-			shapes_.push_back(new timage(data));
+			shapes_.push_back(std::make_shared<timage>(data));
 		} else if(type == "text") {
-			shapes_.push_back(new ttext(data));
+			shapes_.push_back(std::make_shared<ttext>(data));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */

@@ -18,8 +18,6 @@
 #include "gui/dialogs/dialog.hpp"
 #include "variable.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 class replay;
 
 namespace gui2
@@ -39,13 +37,13 @@ public:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
-	boost::shared_ptr<view> get_view();
+	std::shared_ptr<view> get_view();
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	boost::shared_ptr<view> view_;
+	std::shared_ptr<view> view_;
 };
 }
 

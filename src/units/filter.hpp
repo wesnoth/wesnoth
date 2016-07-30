@@ -28,7 +28,7 @@
 
 #include "units/ptr.hpp"
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <vector>
 
 class filter_context;
@@ -98,14 +98,14 @@ public:
 	unit_const_ptr first_match_on_map() const {
 		return impl_->first_match_on_map();
 	}
-	
+
 	config to_config() const;
-	
+
 	bool empty() const {
 		return impl_->empty();
 	}
 private:
-	boost::shared_ptr<unit_filter_abstract_impl> impl_;
+	std::shared_ptr<unit_filter_abstract_impl> impl_;
 	unsigned max_matches_;
 };
 

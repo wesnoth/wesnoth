@@ -44,7 +44,6 @@
 #include "wml_exception.hpp"
 #include "config_assign.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <cmath>
 
 static lg::log_domain log_ai_recruitment("ai/recruitment");
@@ -1122,17 +1121,17 @@ void recruitment::simulate_attack(
 	const std::vector<attack_type> attacker_weapons = attacker->attacks();
 	const std::vector<attack_type> defender_weapons = defender->attacks();
 
-	boost::shared_ptr<attack_simulation> best_att_attack;
+	std::shared_ptr<attack_simulation> best_att_attack;
 
 	// Let attacker choose weapon
 	for (const attack_type& att_weapon : attacker_weapons) {
-		boost::shared_ptr<attack_simulation> best_def_response;
+		std::shared_ptr<attack_simulation> best_def_response;
 		// Let defender choose weapon
 		for (const attack_type& def_weapon : defender_weapons) {
 			if (att_weapon.range() != def_weapon.range()) {
 				continue;
 			}
-			boost::shared_ptr<attack_simulation> simulation(new attack_simulation(
+			std::shared_ptr<attack_simulation> simulation(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
 					&att_weapon, &def_weapon, average_lawful_bonus_));
@@ -1802,9 +1801,9 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	for (config lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
-	std::function<void(std::vector<boost::shared_ptr<recruit_job> >&, const config&)> factory_jobs =
+	std::function<void(std::vector<std::shared_ptr<recruit_job> >&, const config&)> factory_jobs =
 		std::bind(&recruitment_aspect::create_job,*this,_1,_2);
-	std::function<void(std::vector<boost::shared_ptr<recruit_limit> >&, const config&)> factory_limits =
+	std::function<void(std::vector<std::shared_ptr<recruit_limit> >&, const config&)> factory_limits =
 		std::bind(&recruitment_aspect::create_limit,*this,_1,_2);
 	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
 	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
@@ -1812,18 +1811,18 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 
 void recruitment_aspect::recalculate() const {
 	config cfg;
-	for (const boost::shared_ptr<recruit_job>& job : jobs_) {
+	for (const std::shared_ptr<recruit_job>& job : jobs_) {
 		cfg.add_child("recruit", job->to_config());
 	}
-	for (const boost::shared_ptr<recruit_limit>& lim : limits_) {
+	for (const std::shared_ptr<recruit_limit>& lim : limits_) {
 		cfg.add_child("limit", lim->to_config());
 	}
 	*this->value_ = cfg;
 	this->valid_ = true;
 }
 
-void recruitment_aspect::create_job(std::vector<boost::shared_ptr<recruit_job> > &jobs, const config &job) {
-	boost::shared_ptr<recruit_job> job_ptr(new recruit_job(
+void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job> > &jobs, const config &job) {
+	std::shared_ptr<recruit_job> job_ptr(new recruit_job(
 		utils::split(job["type"]),
 		job["leader_id"], job["id"],
 		job["number"].to_int(-1), job["importance"].to_int(1),
@@ -1834,8 +1833,8 @@ void recruitment_aspect::create_job(std::vector<boost::shared_ptr<recruit_job> >
 	jobs.push_back(job_ptr);
 }
 
-void recruitment_aspect::create_limit(std::vector<boost::shared_ptr<recruit_limit> > &limits, const config &lim) {
-	boost::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
+void recruitment_aspect::create_limit(std::vector<std::shared_ptr<recruit_limit> > &limits, const config &lim) {
+	std::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
 		utils::split(lim["type"]),
 		lim["id"],
 		lim["max"].to_int(0)

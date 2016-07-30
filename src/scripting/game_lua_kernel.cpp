@@ -108,11 +108,9 @@
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"               // for bind_t, bind
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/optional.hpp>
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
 #include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
-#include <boost/tuple/tuple.hpp>        // for tuple
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
@@ -1836,7 +1834,7 @@ static int impl_end_level_data_get(lua_State* L)
 	return_bool_attrib("is_loss", !data.is_victory);
 	return_cstring_attrib("result", data.is_victory ? "victory" : "loss"); // to match wesnoth.end_level()
 	return_cfg_attrib("__cfg", data.to_config_full());
-	
+
 	return 0;
 }
 
@@ -1857,14 +1855,14 @@ int game_lua_kernel::impl_end_level_data_set(lua_State* L)
 	end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
 	const char* m = luaL_checkstring(L, 2);
 	end_level_committer commit(data, play_controller_);
-	
+
 	modify_string_attrib("music", data.transient.custom_endlevel_music = value);
 	modify_bool_attrib("linger_mode", data.transient.linger_mode = value);
 	modify_bool_attrib("reveal_map", data.transient.reveal_map = value);
 	modify_bool_attrib("carryover_report", data.transient.carryover_report = value);
 	modify_bool_attrib("prescenario_save", data.prescenario_save = value);
 	modify_bool_attrib("replay_save", data.replay_save = value);
-	
+
 	return 0;
 }
 
@@ -2165,7 +2163,7 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 		}
 		std::string unit_type = lua_tostring(L, -1);
 
-		boost::tuple<map_location, int, std::string> tuple(src, side, unit_type);
+		std::tuple<map_location, int, std::string> tuple(src, side, unit_type);
 		fake_units.push_back(tuple);
 
 		lua_settop(L, entry - 1);
@@ -2191,7 +2189,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	luaW_tovconfig(L, arg, filter);
 
 	std::vector<const unit*> real_units;
-	typedef std::vector<boost::tuple<map_location, int, std::string> > unit_type_vector;
+	typedef std::vector<std::tuple<map_location, int, std::string> > unit_type_vector;
 	unit_type_vector fake_units;
 
 
@@ -2301,8 +2299,8 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 	for (const unit_type_vector::value_type& fu : fake_units)
 	{
-		const unit_type* ut = unit_types.find(fu.get<2>());
-		cost_map.add_unit(fu.get<0>(), ut, fu.get<1>());
+		const unit_type* ut = unit_types.find(std::get<2>(fu));
+		cost_map.add_unit(std::get<0>(fu), ut, std::get<1>(fu));
 	}
 
 	if (debug)
@@ -3778,7 +3776,7 @@ namespace { // Types
 		}
 	};
 	recursion_preventer::t_counter recursion_preventer::counter_;
-	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
+	typedef std::unique_ptr<recursion_preventer> recursion_preventer_ptr;
 } // end anonymouse namespace (types)
 
 int game_lua_kernel::intf_kill(lua_State *L)
@@ -4251,7 +4249,7 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 	if(new_time < 0 || new_time >= num_times) {
 		return luaL_argerror(L, 1, "invalid time of day index");
 	}
-	
+
 	if(area_id.empty()) {
 		tod_man().set_current_time(new_time);
 	} else {
@@ -4473,7 +4471,7 @@ int game_lua_kernel::intf_log(lua_State *L)
 {
 	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
 	const std::string& msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
-	
+
 	if(logger == "wml" || logger == "WML") {
 		lg::wml_error() << msg << '\n';
 	} else {
@@ -4536,7 +4534,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 			}
 		}
 	}
-	
+
 	// Flag a screen update.
 	game_display_->recalculate_minimap();
 	game_display_->invalidate_all();

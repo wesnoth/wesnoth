@@ -162,7 +162,7 @@ void move::init()
 	side_actions::iterator action = side_actions->find_last_action_of(*(get_unit()));
 	if (action != side_actions->end())
 	{
-		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
+		if (move_ptr move = std::dynamic_pointer_cast<class move>(*action))
 		{
 			if (move->fake_unit_)
 				move->fake_unit_->anim_comp().set_disabled_ghosted(true);

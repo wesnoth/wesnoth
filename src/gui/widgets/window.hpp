@@ -36,7 +36,6 @@
 
 class CVideo;
 
-namespace boost { template <class T> class intrusive_ptr; }
 namespace gui2 { class twidget; }
 namespace gui2 { namespace event { struct tmessage; } }
 namespace gui2 { struct tpoint; }
@@ -683,7 +682,7 @@ private:
 	 *
 	 * @param content_grid        The new contents for the content grid.
 	 */
-	void finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid);
+	void finalize(const std::shared_ptr<tbuilder_grid>& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	tdebug_layout_graph* debug_layout_;

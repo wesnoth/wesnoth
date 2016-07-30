@@ -995,7 +995,7 @@ void create_engine::init_all_levels()
 			// Note that invalid maps should be displayed in order to
 			// show error messages in the GUI.
 			bool add_map = true;
-			boost::scoped_ptr<gamemap> map;
+			std::unique_ptr<gamemap> map;
 			try {
 				map.reset(new gamemap(game_config_manager::get()->terrain_types(),
 					user_map_data["map_data"]));

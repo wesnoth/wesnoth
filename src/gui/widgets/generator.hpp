@@ -18,15 +18,13 @@
 #include "widget.hpp"
 #include "tstring.hpp"
 
-#include <boost/intrusive_ptr.hpp>
-
 typedef std::map<std::string, t_string> string_map;
 
 namespace gui2
 {
 
 struct tbuilder_grid;
-typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+typedef std::shared_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 
 class tgrid;
 

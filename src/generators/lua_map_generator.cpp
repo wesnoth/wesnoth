@@ -53,7 +53,7 @@ void lua_map_generator::user_config(CVideo & v)
 	}
 }
 
-std::string lua_map_generator::create_map(boost::optional<boost::uint32_t> seed)
+std::string lua_map_generator::create_map(boost::optional<uint32_t> seed)
 {
 	try {
 		return lk_.create_map(create_map_.c_str(), generator_data_, seed);
@@ -65,7 +65,7 @@ std::string lua_map_generator::create_map(boost::optional<boost::uint32_t> seed)
 	}
 }
 
-config lua_map_generator::create_scenario(boost::optional<boost::uint32_t> seed)
+config lua_map_generator::create_scenario(boost::optional<uint32_t> seed)
 {
 	if (!create_scenario_.size()) {
 		return map_generator::create_scenario();
