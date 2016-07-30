@@ -546,8 +546,6 @@ bool t_pump::operator()()
 
 		assert(impl_->my_manager);
 
-		handler_ptr cur_handler;
-
 		resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
 		resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
 		resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
@@ -559,7 +557,9 @@ bool t_pump::operator()()
 			manager::iteration handler_iter(event_name, *impl_->my_manager);
 
 			// While there is a potential handler for this event name.
-			while ( cur_handler = *handler_iter ) {
+			while ( handler_ptr cur_handler = *handler_iter ) {
+				DBG_EH << "processing event " << event_name << " with id="<<
+				cur_handler->get_config()["id"] << "\n";
 				// Let this handler process our event.
 				process_event(cur_handler, ev);
 				// NOTE: cur_handler may be null at this point!
@@ -571,9 +571,11 @@ bool t_pump::operator()()
 		else {
 
 			//Get the handler directly via ID
-			cur_handler = impl_->my_manager->get_event_handler_by_id( event_id );
+			handler_ptr cur_handler = impl_->my_manager->get_event_handler_by_id( event_id );
 
 			if( cur_handler ) {
+				DBG_EH << "processing event " << event_name << " with id="<<
+				cur_handler->get_config()["id"] << "\n";
 				process_event(cur_handler, ev);
 			}
 		}
