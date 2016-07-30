@@ -735,6 +735,10 @@ void command_executor_default::zoom_default()
 }
 void command_executor_default::map_screenshot()
 {
-	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
+	make_screenshot(_("Map-Screenshot"), get_video(),
+		[this](const std::string& filename, const CVideo&)
+	{
+		return get_display().screenshot(filename, true);
+	});
 }
 }

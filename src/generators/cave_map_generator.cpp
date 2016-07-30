@@ -72,19 +72,19 @@ size_t cave_map_generator::cave_map_generator_job::translate_y(size_t y) const
 	return y;
 }
 
-std::string cave_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
+std::string cave_map_generator::create_map(boost::optional<uint32_t> randomseed)
 {
 	const config res = create_scenario(randomseed);
 	return res["map_data"];
 }
 
-config cave_map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
+config cave_map_generator::create_scenario(boost::optional<uint32_t> randomseed)
 {
 	cave_map_generator_job job(*this, randomseed);
 	return job.res_;
 }
 
-cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<boost::uint32_t> randomseed)
+cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<uint32_t> randomseed)
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)

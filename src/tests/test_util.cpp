@@ -18,7 +18,7 @@
 
 #include "util.hpp"
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 BOOST_AUTO_TEST_SUITE( util )
 
@@ -78,15 +78,15 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
 
 BOOST_AUTO_TEST_CASE( test_bit_width )
 {
-	BOOST_CHECK( bit_width<boost::uint8_t>() == 8 );
-	BOOST_CHECK( bit_width<boost::uint16_t>() == 16 );
-	BOOST_CHECK( bit_width<boost::uint32_t>() == 32 );
-	BOOST_CHECK( bit_width<boost::uint64_t>() == 64 );
+	BOOST_CHECK( bit_width<uint8_t>() == 8 );
+	BOOST_CHECK( bit_width<uint16_t>() == 16 );
+	BOOST_CHECK( bit_width<uint32_t>() == 32 );
+	BOOST_CHECK( bit_width<uint64_t>() == 64 );
 
-	BOOST_CHECK( bit_width(static_cast<boost::uint8_t>(0)) == 8 );
-	BOOST_CHECK( bit_width(static_cast<boost::uint16_t>(0)) == 16 );
-	BOOST_CHECK( bit_width(static_cast<boost::uint32_t>(0)) == 32 );
-	BOOST_CHECK( bit_width(static_cast<boost::uint64_t>(0)) == 64 );
+	BOOST_CHECK( bit_width(static_cast<uint8_t>(0)) == 8 );
+	BOOST_CHECK( bit_width(static_cast<uint16_t>(0)) == 16 );
+	BOOST_CHECK( bit_width(static_cast<uint32_t>(0)) == 32 );
+	BOOST_CHECK( bit_width(static_cast<uint64_t>(0)) == 64 );
 }
 
 BOOST_AUTO_TEST_CASE( test_count_ones )
@@ -106,11 +106,11 @@ BOOST_AUTO_TEST_CASE( test_count_ones )
 
 BOOST_AUTO_TEST_CASE( test_count_leading_zeros )
 {
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint8_t>(1)) == 7 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint16_t>(1)) == 15 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint32_t>(1)) == 31 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint64_t>(1)) == 63 );
-	BOOST_CHECK( count_leading_zeros(static_cast<boost::uint8_t>(0xFF)) == 0 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint8_t>(1)) == 7 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint16_t>(1)) == 15 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint32_t>(1)) == 31 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint64_t>(1)) == 63 );
+	BOOST_CHECK( count_leading_zeros(static_cast<uint8_t>(0xFF)) == 0 );
 	BOOST_CHECK( count_leading_zeros(static_cast<unsigned int>(0))
 		== bit_width<unsigned int>() );
 	BOOST_CHECK( count_leading_zeros(static_cast<unsigned long int>(0))
@@ -131,13 +131,13 @@ BOOST_AUTO_TEST_CASE( test_count_leading_ones )
 {
 	BOOST_CHECK( count_leading_ones(0) == 0 );
 	BOOST_CHECK( count_leading_ones(1) == 0 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint8_t>(0xFF)) == 8 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint16_t>(0xFFFF)) == 16 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint32_t>(0xFFFFFFFF)) == 32 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint64_t>(0xFFFFFFFFFFFFFFFF))
+	BOOST_CHECK( count_leading_ones(static_cast<uint8_t>(0xFF)) == 8 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint16_t>(0xFFFF)) == 16 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint32_t>(0xFFFFFFFF)) == 32 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint64_t>(0xFFFFFFFFFFFFFFFF))
 		== 64 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint8_t>(0xF8)) == 5 );
-	BOOST_CHECK( count_leading_ones(static_cast<boost::uint16_t>(54321)) == 2 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint8_t>(0xF8)) == 5 );
+	BOOST_CHECK( count_leading_ones(static_cast<uint16_t>(54321)) == 2 );
 }
 
 /* vim: set ts=4 sw=4: */

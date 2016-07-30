@@ -15,8 +15,9 @@
 #ifndef FORMULA_CALLABLE_HPP_INCLUDED
 #define FORMULA_CALLABLE_HPP_INCLUDED
 
-#include "reference_counted_object.hpp"
 #include "formula/variant.hpp"
+
+#include <memory>
 
 namespace game_logic
 {
@@ -31,7 +32,7 @@ struct formula_input {
 };
 
 //interface for objects that can have formulae run on them
-class formula_callable : public reference_counted_object {
+class formula_callable {
 public:
 	explicit formula_callable(bool has_self=true) : type_(FORMULA_C), has_self_(has_self)
 	{}
@@ -102,14 +103,6 @@ private:
 	bool has_self_;
 };
 
-class formula_callable_no_ref_count : public formula_callable {
-public:
-	formula_callable_no_ref_count() {
-		turn_reference_counting_off();
-	}
-	virtual ~formula_callable_no_ref_count() {}
-};
-
 class formula_callable_with_backup : public formula_callable {
 	const formula_callable& main_;
 	const formula_callable& backup_;
@@ -173,8 +166,8 @@ private:
 	const formula_callable* fallback_;
 };
 
-typedef boost::intrusive_ptr<map_formula_callable> map_formula_callable_ptr;
-typedef boost::intrusive_ptr<const map_formula_callable> const_map_formula_callable_ptr;
+typedef std::shared_ptr<map_formula_callable> map_formula_callable_ptr;
+typedef std::shared_ptr<const map_formula_callable> const_map_formula_callable_ptr;
 
 }
 

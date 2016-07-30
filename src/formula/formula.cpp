@@ -11,7 +11,7 @@
 */
 #include "global.hpp"
 
-#include <boost/lexical_cast.hpp>
+#include <cassert>
 #include <iostream>
 #include <set>
 #include <sstream>
@@ -549,7 +549,7 @@ private:
 };
 
 typedef std::map<std::string,expression_ptr> expr_table;
-typedef boost::shared_ptr<expr_table> expr_table_ptr;
+typedef std::shared_ptr<expr_table> expr_table_ptr;
 typedef std::map<std::string, variant> exp_table_evaluated;
 
 class where_variables: public formula_callable {

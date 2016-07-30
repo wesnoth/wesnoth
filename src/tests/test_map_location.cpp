@@ -14,7 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include <boost/assign/list_of.hpp>
 #include "utils/functional.hpp"
 #include <boost/test/unit_test.hpp>
 
@@ -201,61 +200,62 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test_radial_mode )
 {
-	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
-(std::make_pair(6,	"sw"))
-(std::make_pair(6,	"n"))
-(std::make_pair(12,	"n"))
-(std::make_pair(16,	"s"))
-(std::make_pair(9,	"n"))
-(std::make_pair(7,	"nw"))
-(std::make_pair(7,	"n"))
-(std::make_pair(4,	"n"))
-(std::make_pair(5,	"nw"))
-(std::make_pair(10,	"sw"))
-(std::make_pair(13,	"nw"))
-(std::make_pair(19,	"nw"))
-(std::make_pair(9,	"s"))
-(std::make_pair(16,	"n"))
-(std::make_pair(14,	"nw"))
-(std::make_pair(14,	"nw"))
-(std::make_pair(11,	"nw"))
-(std::make_pair(12,	"nw"))
-(std::make_pair(9,	"n"))
-(std::make_pair(15,	"n"))
-(std::make_pair(13,	"se"))
-(std::make_pair(15,	"n"))
-(std::make_pair(10,	"n"))
-(std::make_pair(11,	"n"))
-(std::make_pair(8,	"n"))
-(std::make_pair(8,	"n"))
-(std::make_pair(6,	"n"))
-(std::make_pair(22,	"s"))
-(std::make_pair(6,	"ne"))
-(std::make_pair(1,	"nw"))
-(std::make_pair(2,	"ne"))
-(std::make_pair(2,	"s"))
-(std::make_pair(1,	"s"))
-(std::make_pair(28,	"s"))
-(std::make_pair(6,	"se"))
-(std::make_pair(5,	"s"))
-(std::make_pair(5,	"se"))
-(std::make_pair(8,	"s"))
-(std::make_pair(7,	"s"))
-(std::make_pair(25,	"n"))
-(std::make_pair(23,	"n"))
-(std::make_pair(23,	"n"))
-(std::make_pair(20,	"n"))
-(std::make_pair(21,	"n"))
-(std::make_pair(6,	"sw"))
-(std::make_pair(4,	"sw"))
-(std::make_pair(7,	"s"))
-(std::make_pair(7,	"s"))
-(std::make_pair(2,	"ne"))
-(std::make_pair(3,	"se"))
-(std::make_pair(2,	"s"))
-(std::make_pair(3,	"s"))
-(std::make_pair(3,	"s"))
-(std::make_pair(1,	"nw")).to_container(generated_answers);
+	std::vector<std::pair<size_t, std::string> > generated_answers = {
+std::make_pair(7,	"se"),
+std::make_pair(6,	"sw"),
+std::make_pair(6,	"n"),
+std::make_pair(12,	"n"),
+std::make_pair(16,	"s"),
+std::make_pair(9,	"n"),
+std::make_pair(7,	"nw"),
+std::make_pair(7,	"n"),
+std::make_pair(4,	"n"),
+std::make_pair(5,	"nw"),
+std::make_pair(10,	"sw"),
+std::make_pair(13,	"nw"),
+std::make_pair(19,	"nw"),
+std::make_pair(9,	"s"),
+std::make_pair(16,	"n"),
+std::make_pair(14,	"nw"),
+std::make_pair(14,	"nw"),
+std::make_pair(11,	"nw"),
+std::make_pair(12,	"nw"),
+std::make_pair(9,	"n"),
+std::make_pair(15,	"n"),
+std::make_pair(13,	"se"),
+std::make_pair(15,	"n"),
+std::make_pair(10,	"n"),
+std::make_pair(11,	"n"),
+std::make_pair(8,	"n"),
+std::make_pair(8,	"n"),
+std::make_pair(6,	"n"),
+std::make_pair(22,	"s"),
+std::make_pair(6,	"ne"),
+std::make_pair(1,	"nw"),
+std::make_pair(2,	"ne"),
+std::make_pair(2,	"s"),
+std::make_pair(1,	"s"),
+std::make_pair(28,	"s"),
+std::make_pair(6,	"se"),
+std::make_pair(5,	"s"),
+std::make_pair(5,	"se"),
+std::make_pair(8,	"s"),
+std::make_pair(7,	"s"),
+std::make_pair(25,	"n"),
+std::make_pair(23,	"n"),
+std::make_pair(23,	"n"),
+std::make_pair(20,	"n"),
+std::make_pair(21,	"n"),
+std::make_pair(6,	"sw"),
+std::make_pair(4,	"sw"),
+std::make_pair(7,	"s"),
+std::make_pair(7,	"s"),
+std::make_pair(2,	"ne"),
+std::make_pair(3,	"se"),
+std::make_pair(2,	"s"),
+std::make_pair(3,	"s"),
+std::make_pair(3,	"s"),
+std::make_pair(1,	"nw")};
 
 	std::vector<size_t> ans1;
 	std::vector<map_location::DIRECTION> ans2;

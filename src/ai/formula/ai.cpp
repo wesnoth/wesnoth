@@ -54,9 +54,6 @@
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "candidates.hpp"               // for base_candidate_action, etc
 
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/lexical_cast.hpp>       // for lexical_cast
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
 #include <map>                          // for multimap<>::const_iterator, etc
@@ -114,7 +111,6 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	vars_(),
 	function_table_(*this)
 {
-	add_ref();
 	init_readonly_context_proxy(context);
 	LOG_AI << "creating new formula ai"<< std::endl;
 }
@@ -169,7 +165,6 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		game_logic::formula f(formula_str, &function_table_);
 
 		game_logic::map_formula_callable callable(this);
-		callable.add_ref();
 
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,nullptr);
@@ -533,7 +528,6 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		     */
 
 			game_logic::map_formula_callable callable(this);
-			callable.add_ref();
 
 			if(error != variant())
 				callable.add("error", error);
@@ -936,7 +930,6 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 
 void formula_ai::on_create(){
 	//make sure we don't run out of refcount
-	vars_.add_ref();
 
 	for(const config &func : cfg_.child_range("function"))
 	{
@@ -980,7 +973,6 @@ void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
 	game_logic::map_formula_callable callable(this);
-	callable.add_ref();
 	fai_ca->update_callable_map( callable );
 	const_formula_ptr move_formula(fai_ca->get_action());
 	return !make_action(move_formula, callable).is_empty();

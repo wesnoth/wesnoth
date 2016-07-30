@@ -22,10 +22,8 @@
    anywhere except for default constructors of prg classes, or similar.
 */
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <string>
-
-using boost::uint32_t;
 
 #ifndef SEED_RNG_HPP_INCLUDED
 #define SEED_RNG_HPP_INCLUDED

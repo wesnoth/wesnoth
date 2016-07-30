@@ -106,10 +106,10 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
  */
-std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
+std::vector<std::pair<std::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
 	game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const
 {
-	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > ret;
+	std::vector<std::pair<std::shared_ptr<const wml_menu_item>, std::string> > ret;
 	if ( empty() ) {
 		// Nothing to do (skip setting game variables).
 		return ret;

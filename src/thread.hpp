@@ -17,23 +17,12 @@
 
 #include <list>
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/smart_ptr.hpp>
 
 struct SDL_Thread;
-
-#if defined(_MSC_VER) && _MSC_VER <= 1600
-/*
-	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
-	And will create corrupt binaries without giving a warning / error.
-*/
-#include <SDL_mutex.h>
-#else
 struct SDL_mutex;
 struct SDL_cond;
-#endif
 
 // Threading primitives wrapper for SDL_Thread.
 //
@@ -79,13 +68,13 @@ public:
 
 	void detach();
 
-	boost::uint32_t get_id();
+	uint32_t get_id();
 private:
 
 	SDL_Thread* thread_;
 };
 
-boost::uint32_t get_current_thread_id();
+uint32_t get_current_thread_id();
 // Binary mutexes.
 //
 // Implements an interface to binary mutexes. This class only defines the
@@ -201,7 +190,7 @@ public:
 
 class async_operation;
 
-typedef boost::shared_ptr<async_operation> async_operation_ptr;
+typedef std::shared_ptr<async_operation> async_operation_ptr;
 
 typedef std::list<async_operation_ptr> active_operation_list;
 
@@ -244,7 +233,7 @@ public:
 	bool is_aborted() const { return aborted_; }
 
 private:
-	boost::scoped_ptr<thread> thread_;
+	std::unique_ptr<thread> thread_;
 	bool aborted_;
 	condition finished_;
 	bool finishedVar_;

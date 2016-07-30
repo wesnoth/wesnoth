@@ -19,9 +19,6 @@
 
 #include "map/location.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-
 class config;
 class terrain_type_data;
 

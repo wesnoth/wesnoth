@@ -58,8 +58,6 @@
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
-#include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
-#include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
 #include <cstdlib>                     // for abs
 #include <ctime>                       // for time
@@ -179,9 +177,9 @@ synced_command_result_ptr readonly_context_impl::check_synced_command_action(con
 
 
 template<typename T>
-void readonly_context_impl::add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> > &where)
+void readonly_context_impl::add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T> > &where)
 {
-	boost::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
+	std::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
 	known_aspects_.insert(make_pair(name,ka_ptr));
 }
 

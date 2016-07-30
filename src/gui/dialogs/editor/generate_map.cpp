@@ -142,10 +142,10 @@ void teditor_generate_map::pre_show(twindow& window)
 						std::ref(window)));
 }
 
-boost::optional<boost::uint32_t> teditor_generate_map::get_seed()
+boost::optional<uint32_t> teditor_generate_map::get_seed()
 {
 	try {
-		return lexical_cast<boost::uint32_t>(random_seed_);
+		return lexical_cast<uint32_t>(random_seed_);
 	}
 	catch(const bad_lexical_cast& ) {
 		return boost::none;

@@ -20,8 +20,6 @@
 #include "halo.hpp"
 #include "units/animation.hpp" //Note: only needed for enum
 
-#include <boost/scoped_ptr.hpp>
-
 class config;
 class unit;
 class unit_drawer;
@@ -112,7 +110,7 @@ public:
 private:
 	const unit & u_; /**< A reference to the unit that owns this object. It does so with a scoped pointer, so this reference should not dangle. */
 
-	boost::scoped_ptr<unit_animation> anim_; /**< The current animation. */
+	std::unique_ptr<unit_animation> anim_; /**< The current animation. */
 	std::vector<unit_animation> animations_; /**< List of registered animations for this unit. */
 
 	STATE state_; //!< animation state

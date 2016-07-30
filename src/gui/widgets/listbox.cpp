@@ -115,7 +115,7 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 				width_reduced += generator_->item(row).get_width();
 			}
 			else {
-				height_reduced += generator_->item(row).get_height();			
+				height_reduced += generator_->item(row).get_height();
 			}
 		}
 		generator_->delete_item(row);
@@ -732,7 +732,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -847,17 +847,17 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
 	if(const config& h = cfg.child("header")) {
-		header = new tbuilder_grid(h);
+		header = std::make_shared<tbuilder_grid>(h);
 	}
 
 	if(const config& f = cfg.child("footer")) {
-		footer = new tbuilder_grid(f);
+		footer = std::make_shared<tbuilder_grid>(f);
 	}
 
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = new tbuilder_grid(l);
+	list_builder = std::make_shared<tbuilder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
@@ -940,8 +940,8 @@ twidget* tbuilder_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tlistbox_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const tlistbox_definition::tresolution>
+	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 
@@ -1024,7 +1024,7 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = new tbuilder_grid(l);
+	list_builder = std::make_shared<tbuilder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
@@ -1078,8 +1078,8 @@ twidget* tbuilder_horizontal_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tlistbox_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const tlistbox_definition::tresolution>
+	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 

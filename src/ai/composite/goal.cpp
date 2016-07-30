@@ -36,7 +36,6 @@
 #include "units/filter.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <set>
 #include <sstream>
 
@@ -60,7 +59,7 @@ void goal::on_create()
 	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]" << std::endl;
 }
 
-void goal::on_create(boost::shared_ptr<ai::lua_ai_context>)
+void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
 {
 	unrecognized();
 }
@@ -134,8 +133,8 @@ void target_unit_goal::on_create()
 	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(*v);
-		} catch (boost::bad_lexical_cast){
+			value_ = lexical_cast<double>(*v);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of goal"<<std::endl;
 			value_ = 0;
 		}
@@ -181,15 +180,15 @@ void target_location_goal::on_create()
 	}
 	if (cfg_.has_attribute("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(cfg_["value"]);
-		} catch (boost::bad_lexical_cast){
+			value_ = lexical_cast<double>(cfg_["value"]);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of goal"<<std::endl;
 			value_ = 0;
 		}
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_ = std::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 }
 
@@ -230,16 +229,16 @@ void protect_goal::on_create()
 	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(*v);
-		} catch (boost::bad_lexical_cast){
+			value_ = lexical_cast<double>(*v);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of protect_goal"<<std::endl;
 			value_ = 0;
 		}
 	}
 	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
 		try {
-			radius_ = boost::lexical_cast<int>(*v);
-		} catch (boost::bad_lexical_cast){
+			radius_ = lexical_cast<int>(*v);
+		} catch (bad_lexical_cast){
 			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
 			radius_ = 1;
 		}
@@ -250,7 +249,7 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_ = std::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 
 
@@ -340,15 +339,15 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	}
 }
 
-void lua_goal::on_create(boost::shared_ptr<ai::lua_ai_context> l_ctx)
+void lua_goal::on_create(std::shared_ptr<ai::lua_ai_context> l_ctx)
 {
-	handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+	handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
 void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
 {
-	boost::shared_ptr< lua_object< std::vector < target > > > l_obj
-		= boost::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
+	std::shared_ptr< lua_object< std::vector < target > > > l_obj
+		= std::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
 	config c(cfg_.child_or_empty("args"));
 	handler_->handle(c, true, l_obj);
 	try {

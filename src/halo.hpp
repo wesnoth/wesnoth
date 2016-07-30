@@ -21,9 +21,8 @@ class display;
 
 #include "map/location.hpp"
 
+#include <memory>
 #include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 namespace halo
 {
@@ -33,7 +32,7 @@ class halo_impl;
 
 class halo_record;
 
-typedef boost::shared_ptr<halo_record> handle;
+typedef std::shared_ptr<halo_record> handle;
 
 enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
 
@@ -72,7 +71,7 @@ public:
 	void render();
 
 private:
-	boost::shared_ptr<halo_impl> impl_;
+	std::shared_ptr<halo_impl> impl_;
 };
 
 /**
@@ -82,7 +81,7 @@ class halo_record : public boost::noncopyable
 {
 public:
 	halo_record();
-	halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager);
+	halo_record(int id, const std::shared_ptr<halo_impl> & my_manager);
 	~halo_record();
 
 	bool valid() const {
@@ -92,7 +91,7 @@ public:
 	friend class manager;
 private:
 	int id_;
-	boost::weak_ptr<halo_impl> my_manager_;
+	std::weak_ptr<halo_impl> my_manager_;
 
 };
 

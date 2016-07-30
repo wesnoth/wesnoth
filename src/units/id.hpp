@@ -18,7 +18,7 @@
 
 #include <ctime>
 
-#include <boost/noncopyable.hpp>
+//#include <boost/noncopyable.hpp>
 
 namespace n_unit {
 

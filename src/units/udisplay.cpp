@@ -805,8 +805,8 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		unit_animation::hit_type hits=  unit_animation::hit_type::INVALID;
 		std::vector<attack_type> attacks = u->attacks();
 		std::vector<attack_type>::iterator itor;
-		boost::scoped_ptr<attack_type> dummy_primary;
-		boost::scoped_ptr<attack_type> dummy_secondary;
+		std::unique_ptr<attack_type> dummy_primary;
+		std::unique_ptr<attack_type> dummy_secondary;
 
 		// death and victory animations are handled here because usually
 		// the code iterates through all the unit's attacks

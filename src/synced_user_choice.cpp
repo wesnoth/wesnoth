@@ -25,7 +25,6 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
-#include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
 #include "formula/string_utils.hpp"
@@ -326,7 +325,7 @@ void user_choice_manager::update_local_choice()
 			}
 		}
 	}
-	wait_message_ = vgettext("waiting for $desc from side(s)$sides", string_map_of("desc", uch_.description())("sides", sides_str));
+	wait_message_ = vgettext("waiting for $desc from side(s)$sides", {std::make_pair("desc", uch_.description()), std::make_pair("sides", sides_str)});
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();
 	}

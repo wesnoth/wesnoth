@@ -39,7 +39,7 @@ class game_display : public display
 {
 public:
 	game_display(game_board& board, CVideo& video,
-			boost::weak_ptr<wb::manager> wb,
+			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
 			const tod_manager& tod_manager,
 			const config& theme_cfg,
@@ -253,7 +253,7 @@ private:
 
 	bool first_turn_, in_game_;
 
-	boost::scoped_ptr<display_chat_manager> chat_man_;
+	const std::unique_ptr<display_chat_manager> chat_man_;
 
 	tgame_mode game_mode_;
 

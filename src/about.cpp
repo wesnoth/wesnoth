@@ -38,7 +38,6 @@
 #include "widgets/button.hpp"           // for button
 
 #include <algorithm>                    // for max
-#include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <map>                          // for map, map<>::mapped_type
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
@@ -207,7 +206,7 @@ void set_about(const config &cfg)
  */
 void show_about(CVideo &video, const std::string &campaign)
 {
-	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
+	std::unique_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
 	surface& screen = video.getSurface();
 	if (screen == nullptr) return;
 

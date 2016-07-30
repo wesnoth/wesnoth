@@ -31,7 +31,7 @@ public:
 		unit_formula_(o.unit_formula_),
 		unit_loop_formula_(o.unit_loop_formula_),
 		unit_priority_formula_(o.unit_priority_formula_),
-		formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_)
+		formula_vars_(o.formula_vars_ ? std::make_shared<game_logic::map_formula_callable>(*o.formula_vars_) : o.formula_vars_)
 	{}
 
 	const game_logic::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }

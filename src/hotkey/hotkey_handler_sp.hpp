@@ -25,15 +25,12 @@
 
 #include "hotkey/hotkey_handler.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-
 class playsingle_controller::hotkey_handler : public play_controller::hotkey_handler {
 
 protected:
 	playsingle_controller & playsingle_controller_;
 
-	boost::shared_ptr<wb::manager> whiteboard_manager_;
+	std::shared_ptr<wb::manager> whiteboard_manager_;
 
 	bool is_observer() const;
 

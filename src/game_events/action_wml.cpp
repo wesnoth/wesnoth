@@ -66,8 +66,6 @@
 #include "wml_exception.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/assign/list_of.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/regex.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -519,10 +517,10 @@ namespace {
 		{
 			//Do a regex check for the file format to prevent sending aribitary files to other clients.
 			//Note: this allows only the new format.
-			static const std::string s_simple_terrain = "[A-Za-z\\\\\\|\\/]{1,4}";
-			static const std::string s_terrain = s_simple_terrain + "(\\^" + s_simple_terrain + ")?";
+			static const std::string s_simple_terrain = R"""([A-Za-z\\|/]{1,4})""";
+			static const std::string s_terrain = s_simple_terrain + R"""((\^)""" + s_simple_terrain + ")?";
 			static const std::string s_sep = "(, |\\n)";
-			static const std::string s_prefix = "(\\d+ )?";
+			static const std::string s_prefix = R"""((\d+ )?)""";
 			static const std::string s_all = "(" + s_prefix + s_terrain + s_sep + ")+";
 			static const boost::regex r_all(s_all);
 
@@ -697,7 +695,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 				for (const config &cfg : data) {
 					merged_children.append(cfg);
 				}
-				data = boost::assign::list_of(merged_children).convert_to_container<std::vector<config> >();
+				data = {merged_children};
 			}
 			dest.merge_array(data);
 		}

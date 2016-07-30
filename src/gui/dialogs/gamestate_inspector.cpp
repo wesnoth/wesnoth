@@ -45,7 +45,6 @@
 
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/shared_ptr.hpp>
 
 namespace
 {
@@ -434,7 +433,7 @@ private:
 	// cycle efficiency. We use a vector of page content pointers/subpage
 	// number pairs matching the UI layout to keep things simple.
 
-	typedef boost::shared_ptr<std::string> shared_string_ptr;
+	typedef std::shared_ptr<std::string> shared_string_ptr;
 	typedef std::pair<shared_string_ptr, unsigned> page_descriptor;
 
 	HANDLER_TYPE handler_type_;
@@ -578,17 +577,17 @@ public:
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "engine"));
 		}
-		
+
 		if(selected == 3) {
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "stage"));
 		}
-		
+
 		if(selected == 4) {
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "aspect"));
 		}
-		
+
 		if(selected == 5) {
 			model_.set_inspect_window_text(
 					config_to_string(ai::manager::to_config(side_), "goal"));
@@ -682,33 +681,30 @@ private:
 class tgamestate_inspector::controller
 {
 public:
-	typedef std::vector<boost::shared_ptr<single_mode_controller> >
+	typedef std::vector<std::shared_ptr<single_mode_controller> >
 	sm_controller_ptr_vector;
 	controller(model& m) : model_(m), sm_controllers_()
 	{
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new variable_mode_controller("variables", model_)));
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new event_mode_controller(
-						"events", model_, event_mode_controller::EVENT_HANDLER)));
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new event_mode_controller(
-						"menu items", model_, event_mode_controller::WMI_HANDLER)));
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new unit_mode_controller("units", model_)));
+		sm_controllers_.push_back(std::make_shared<variable_mode_controller>
+			("variables", model_));
+		sm_controllers_.push_back(std::make_shared<event_mode_controller>
+			("events", model_, event_mode_controller::EVENT_HANDLER));
+		sm_controllers_.push_back(std::make_shared<event_mode_controller>
+			("menu items", model_, event_mode_controller::WMI_HANDLER));
+		sm_controllers_.push_back(std::make_shared<unit_mode_controller>
+			("units", model_));
 		// BOOST_FOREACHteam
 		int sides = resources::teams
 							? static_cast<int>((*resources::teams).size())
 							: 0;
 		for(int side = 1; side <= sides; ++side) {
 			std::string side_str = std::to_string(side);
-			sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-					new team_mode_controller(
-							std::string("team ") + side_str, model_, side)));
+			sm_controllers_.push_back(std::make_shared<team_mode_controller>
+				(std::string("team ") + side_str, model_, side));
 		}
 	}
 
-	boost::shared_ptr<single_mode_controller> get_sm_controller()
+	std::shared_ptr<single_mode_controller> get_sm_controller()
 	{
 		int selected = model_.stuff_types_list->get_selected_row();
 		if(selected == -1) {
@@ -737,7 +733,7 @@ public:
 
 	void update_view_from_model()
 	{
-		boost::shared_ptr<single_mode_controller> c = get_sm_controller();
+		std::shared_ptr<single_mode_controller> c = get_sm_controller();
 
 		show_title();
 		c->update_view_from_model();
@@ -747,7 +743,7 @@ public:
 	void handle_stuff_list_item_clicked()
 	{
 		model_.set_inspect_window_text("");
-		boost::shared_ptr<single_mode_controller> c = get_sm_controller();
+		std::shared_ptr<single_mode_controller> c = get_sm_controller();
 		c->handle_stuff_list_selection();
 	}
 
@@ -756,7 +752,7 @@ public:
 	{
 		model_.clear_stuff_list();
 		model_.set_inspect_window_text("");
-		boost::shared_ptr<single_mode_controller> c = get_sm_controller();
+		std::shared_ptr<single_mode_controller> c = get_sm_controller();
 		c->update_view_from_model(); // TODO: 'activate'
 	}
 
@@ -884,7 +880,7 @@ tgamestate_inspector::tgamestate_inspector(const vconfig& cfg)
 {
 }
 
-boost::shared_ptr<tgamestate_inspector::view> tgamestate_inspector::get_view()
+std::shared_ptr<tgamestate_inspector::view> tgamestate_inspector::get_view()
 {
 	return view_;
 }

@@ -61,7 +61,6 @@
 
 #include <algorithm>                    // for copy, max, min, stable_sort
 #include <boost/optional.hpp>           // for optional
-#include <boost/tuple/tuple.hpp>        // for tuple
 #include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
@@ -213,8 +212,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.nosound)
 		no_sound = true;
 	if (cmdline_opts_.resolution) {
-		const int xres = cmdline_opts_.resolution->get<0>();
-		const int yres = cmdline_opts_.resolution->get<1>();
+		const int xres = std::get<0>(*cmdline_opts_.resolution);
+		const int yres = std::get<1>(*cmdline_opts_.resolution);
 		if(xres > 0 && yres > 0) {
 			preferences::_set_resolution(std::make_pair(xres, yres));
 			preferences::_set_maximized(false);

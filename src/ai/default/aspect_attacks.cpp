@@ -70,14 +70,14 @@ void aspect_attacks_base::recalculate() const
 	this->valid_ = true;
 }
 
-boost::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
+std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 {
 		const move_map& srcdst = get_srcdst();
 		const move_map& dstsrc = get_dstsrc();
 		const move_map& enemy_srcdst = get_enemy_srcdst();
 		const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
-		boost::shared_ptr<attacks_vector> res(new attacks_vector());
+		std::shared_ptr<attacks_vector> res(new attacks_vector());
 		unit_map& units_ = *resources::units;
 
 		std::vector<map_location> unit_locs;
@@ -428,7 +428,7 @@ bool aspect_attacks::is_allowed_enemy(const unit& u) const
 
 } // end of namespace testing_ai_default
 
-aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
 	: aspect_attacks_base(context, cfg, id)
 	, handler_(), code_(), params_(cfg.child_or_empty("args"))
 {
@@ -446,7 +446,7 @@ aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &
 		// error
 		return;
 	}
-	handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+	handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
 void aspect_attacks_lua::recalculate() const

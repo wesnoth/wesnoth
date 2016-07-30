@@ -190,7 +190,7 @@ void ttree_view::signal_handler_left_button_down(const event::tevent event)
 }
 template<ttree_view_node* (ttree_view_node::*func) ()>
 ttree_view_node* ttree_view::get_next_node()
-{	
+{
 	ttree_view_node* selected = selected_item();
 	if(!selected) {
 		return nullptr;
@@ -224,7 +224,7 @@ void ttree_view::handle_key_up_arrow(SDLMod modifier, bool& handled)
 		handled = true;
 	}
 	else {
-		tscrollbar_container::handle_key_up_arrow(modifier, handled);	
+		tscrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
 
@@ -234,7 +234,7 @@ void ttree_view::handle_key_down_arrow(SDLMod modifier, bool& handled)
 		handled = true;
 	}
 	else {
-		tscrollbar_container::handle_key_down_arrow(modifier, handled);	
+		tscrollbar_container::handle_key_down_arrow(modifier, handled);
 	}
 }
 
@@ -306,7 +306,7 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -403,9 +403,8 @@ twidget* tbuilder_tree_view::build() const
 	DBG_GUI_G << "Window builder: placed tree_view '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const ttree_view_definition::tresolution>
-	conf = boost::
-			dynamic_pointer_cast<const ttree_view_definition::tresolution>(
+	std::shared_ptr<const ttree_view_definition::tresolution>
+	conf = std::static_pointer_cast<const ttree_view_definition::tresolution>(
 					widget->config());
 	assert(conf);
 
@@ -429,7 +428,7 @@ ttree_node::ttree_node(const config& cfg)
 
 	VALIDATE(node_definition, _("No node defined."));
 
-	builder = new tbuilder_grid(node_definition);
+	builder = std::make_shared<tbuilder_grid>(node_definition);
 }
 
 } // namespace implementation

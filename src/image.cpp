@@ -71,6 +71,36 @@ struct cache_item
 };
 
 
+namespace std {
+
+template<>
+struct hash<image::locator::value> {
+	size_t operator()(const image::locator::value& val) const {
+		using boost::hash_value;
+		using boost::hash_combine;
+
+		/*
+		 * Boost 1.51.0 seems not longer accept an enumerate value in its hash
+		 * function so cast it to a type it does like.
+		 */
+		size_t hash = hash_value(static_cast<unsigned>(val.type_));
+		if (val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
+			hash_combine(hash, val.filename_);
+		}
+		if (val.type_ == image::locator::SUB_FILE) {
+			hash_combine(hash, val.loc_.x);
+			hash_combine(hash, val.loc_.y);
+			hash_combine(hash, val.center_x_);
+			hash_combine(hash, val.center_y_);
+			hash_combine(hash, val.modifications_);
+		}
+
+		return hash;
+	}
+};
+
+}
+
 
 namespace image {
 
@@ -369,29 +399,6 @@ bool locator::value::operator<(const value& a) const
 	} else {
 		return false;
 	}
-}
-
-size_t hash_value(const locator::value& val) {
-	using boost::hash_value;
-	using boost::hash_combine;
-
-	/*
-	 * Boost 1.51.0 seems not longer accept an enumerate value in its hash
-	 * function so cast it to a type it does like.
-	 */
-	size_t hash = hash_value(static_cast<unsigned>(val.type_));
-	if (val.type_ == locator::FILE || val.type_ == locator::SUB_FILE) {
-		hash_combine(hash, val.filename_);
-	}
-	if (val.type_ == locator::SUB_FILE) {
-		hash_combine(hash, val.loc_.x);
-		hash_combine(hash, val.loc_.y);
-		hash_combine(hash, val.center_x_);
-		hash_combine(hash, val.center_y_);
-		hash_combine(hash, val.modifications_);
-	}
-
-	return hash;
 }
 
 // Check if localized file is up-to-date according to l10n track index.

@@ -64,7 +64,7 @@ namespace game_events
 	class manager;
 
 	class t_pump {
-		boost::scoped_ptr<pump_impl> impl_;
+		const std::unique_ptr<pump_impl> impl_;
 	public:
 		t_pump(manager &);
 		~t_pump();

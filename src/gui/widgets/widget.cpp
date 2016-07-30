@@ -442,7 +442,7 @@ bool twidget::get_is_dirty() const
 	return is_dirty_;
 }
 
-void twidget::set_visible(const tvisible::scoped_enum visible)
+void twidget::set_visible(const tvisible visible)
 {
 	if(visible == visible_) {
 		return;
@@ -468,12 +468,12 @@ void twidget::set_visible(const tvisible::scoped_enum visible)
 	}
 }
 
-twidget::tvisible::scoped_enum twidget::get_visible() const
+twidget::tvisible twidget::get_visible() const
 {
 	return visible_;
 }
 
-twidget::tredraw_action::scoped_enum twidget::get_drawing_action() const
+twidget::tredraw_action twidget::get_drawing_action() const
 {
 	return (width_ == 0 || height_ == 0) ? tredraw_action::none
 										 : redraw_action_;

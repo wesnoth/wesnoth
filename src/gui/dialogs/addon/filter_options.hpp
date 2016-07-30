@@ -21,7 +21,7 @@
 #include "addon/validation.hpp"
 #include "addon/state.hpp"
 
-#include <boost/array.hpp>
+#include <array>
 
 namespace gui2
 {
@@ -76,7 +76,7 @@ public:
 
 private:
 	ADDON_STATUS_FILTER displayed_status_;
-	boost::array<bool, ADDON_TYPES_COUNT> displayed_types_;
+	std::array<bool, ADDON_TYPES_COUNT> displayed_types_;
 	std::vector<tfield_bool*> displayed_types_fields_;
 
 	ADDON_SORT sort_;

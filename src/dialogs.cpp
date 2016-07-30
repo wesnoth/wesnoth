@@ -61,8 +61,6 @@
 #include "gui/dialogs/network_transmission.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 #include "wesnothd_connection.hpp"
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 
 //#ifdef _WIN32
 //#include "locale.h"
@@ -91,13 +89,13 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const boost::shared_ptr<std::vector<unit_const_ptr > >& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::shared_ptr<std::vector<unit_const_ptr > >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	boost::shared_ptr<std::vector<unit_const_ptr > > units_;
+	std::shared_ptr<std::vector<unit_const_ptr > > units_;
 };
 
 template<typename T> void dump(const T & units)
@@ -177,7 +175,7 @@ int advance_unit_dialog(const map_location &loc)
 
 	std::vector<std::string> lang_options;
 
-	boost::shared_ptr<std::vector<unit_const_ptr> > sample_units(boost::make_shared<std::vector<unit_const_ptr> >());
+	std::shared_ptr<std::vector<unit_const_ptr> > sample_units(std::make_shared<std::vector<unit_const_ptr> >());
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units->push_back(::get_advanced_unit(*u, *op));
 		const unit& type = *sample_units->back();
@@ -312,7 +310,7 @@ void show_unit_list(display& gui)
 	items.push_back(heading);
 
 	std::vector<map_location> locations_list;
-	boost::shared_ptr<std::vector<unit_const_ptr> > units_list = boost::make_shared<std::vector<unit_const_ptr> >();
+	std::shared_ptr<std::vector<unit_const_ptr> > units_list = std::make_shared<std::vector<unit_const_ptr> >();
 
 	int selected = 0;
 
@@ -461,9 +459,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const_ptr > > & units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, const std::shared_ptr<std::vector< unit_const_ptr > > & units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, const std::shared_ptr<std::vector< unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -980,11 +978,11 @@ void unit_preview_pane::draw_contents()
 
 units_list_preview_pane::units_list_preview_pane(unit_const_ptr u, TYPE type, bool on_left_side) :
 	unit_preview_pane(nullptr, type, on_left_side),
-	units_(boost::make_shared<const std::vector<unit_const_ptr> >(1, u))
+	units_(std::make_shared<const std::vector<unit_const_ptr> >(1, u))
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const boost::shared_ptr<const std::vector<unit_const_ptr > > &units,
+units_list_preview_pane::units_list_preview_pane(const std::shared_ptr<const std::vector<unit_const_ptr > > &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
@@ -1025,10 +1023,9 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.traits = utils::join(u.trait_names(), ", ");
 
 	// The triples are base name, male/female name, description.
-	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips();
-	for(std::vector<boost::tuple<t_string,t_string,t_string> >::const_iterator a = abilities.begin();
-		 a != abilities.end(); ++a) {
-		det.abilities.push_back(a->get<1>());
+	const std::vector<std::tuple<t_string,t_string,t_string> > &abilities = u.ability_tooltips();
+	for(auto a : abilities) {
+		det.abilities.push_back(std::get<1>(a));
 	}
 
 	det.hitpoints = u.hitpoints();

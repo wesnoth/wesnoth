@@ -37,7 +37,6 @@
 #include "syncmp_handler.hpp"
 #include "units/id.hpp"
 #include "whiteboard/manager.hpp"
-#include <boost/lexical_cast.hpp>
 
 #include <cassert>
 #include <stdlib.h>
@@ -256,16 +255,16 @@ void synced_context::send_user_choice()
 	syncmp_registry::send_user_choice();
 }
 
-boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
+std::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
-		return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
+		return std::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
 	}
 	else
 	{
-		return boost::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
+		return std::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
 	}
 }
 

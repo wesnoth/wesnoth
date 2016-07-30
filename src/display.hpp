@@ -66,8 +66,6 @@ namespace wb {
 #include "overlay.hpp"
 
 #include "utils/functional.hpp"
-#include <boost/weak_ptr.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <deque>
 #include <list>
 #include <map>
@@ -78,7 +76,7 @@ class gamemap;
 class display : public filter_context, public video2::draw_layering
 {
 public:
-	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
+	display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
 			const config& theme_cfg, const config& level, bool auto_join=true);
 	virtual ~display();
@@ -661,8 +659,8 @@ private:
 protected:
 	//TODO sort
 	const display_context * dc_;
-	boost::scoped_ptr<halo::manager> halo_man_;
-	boost::weak_ptr<wb::manager> wb_;
+	std::unique_ptr<halo::manager> halo_man_;
+	std::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
@@ -774,8 +772,8 @@ protected:
 	theme theme_;
 	int zoom_;
 	static int last_zoom_;
-	boost::scoped_ptr<fake_unit_manager> fake_unit_man_;
-	boost::scoped_ptr<terrain_builder> builder_;
+	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
+	const std::unique_ptr<terrain_builder> builder_;
 	surface minimap_;
 	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
@@ -787,7 +785,7 @@ protected:
 	double turbo_speed_;
 	bool turbo_;
 	bool invalidateGameStatus_;
-	boost::scoped_ptr<map_labels> map_labels_;
+	const std::unique_ptr<map_labels> map_labels_;
 	reports * reports_object_;
 
 	/** Event raised when the map is being scrolled */

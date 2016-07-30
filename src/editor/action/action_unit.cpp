@@ -27,8 +27,6 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 namespace editor {
 
 editor_action_unit* editor_action_unit::clone() const

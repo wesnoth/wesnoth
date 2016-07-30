@@ -49,10 +49,7 @@
 #include "variable.hpp"                 // for vconfig, etc
 
 #include "utils/functional.hpp"
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/function_output_iterator.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -122,7 +119,7 @@ namespace {
 	struct t_internalized_attrs_sorter {
 		t_internalized_attrs_sorter()
 		{
-			std::sort(boost::begin(internalized_attrs), boost::end(internalized_attrs));
+			std::sort(std::begin(internalized_attrs), std::end(internalized_attrs));
 		}
 	} internalized_attrs_sorter;
 
@@ -130,8 +127,8 @@ namespace {
 	{
 		config::const_attribute_iterator cur = cfg.first;
 		config::const_attribute_iterator end = cfg.second;
-		const std::string* cur_known = boost::begin(internalized_attrs);
-		const std::string* end_known = boost::end(internalized_attrs);
+		const std::string* cur_known = std::begin(internalized_attrs);
+		const std::string* end_known = std::end(internalized_attrs);
 		while(cur_known != end_known) {
 			if(cur == end) {
 				return;
@@ -237,7 +234,7 @@ const std::string& unit::leader_crown()
 }
 namespace {
 	template<typename T>
-	T* copy_or_null(const boost::scoped_ptr<T>& ptr)
+	T* copy_or_null(const std::unique_ptr<T>& ptr)
 	{
 		return ptr ? new T(*ptr) : nullptr;
 	}

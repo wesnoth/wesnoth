@@ -24,8 +24,6 @@
 #include "units/id.hpp"
 
 #include <boost/optional.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <set>
 #include <vector>
 
@@ -58,7 +56,7 @@ class game_board : public display_context
 	std::vector<team> teams_;
 	std::vector<std::string> labels_;
 
-	boost::scoped_ptr<gamemap> map_;
+	std::unique_ptr<gamemap> map_;
 	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
 

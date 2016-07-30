@@ -52,7 +52,7 @@ void show_unit_list(display& gui);
 
 int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
 
-int recall_dialog(display& disp, const boost::shared_ptr<std::vector<unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost);
+int recall_dialog(display& disp, const std::shared_ptr<std::vector<unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane
@@ -108,7 +108,7 @@ class units_list_preview_pane : public dialogs::unit_preview_pane
 {
 public:
 	units_list_preview_pane(unit_const_ptr u, TYPE type = SHOW_ALL, bool left_side = true);
-	units_list_preview_pane(const boost::shared_ptr<const std::vector<unit_const_ptr > > & units,
+	units_list_preview_pane(const std::shared_ptr<const std::vector<unit_const_ptr > > & units,
 		const gui::filter_textbox *filter = nullptr,
 		TYPE type = SHOW_ALL, bool left_side = true);
 
@@ -117,7 +117,7 @@ private:
 	const details get_details() const;
 	void process_event();
 
-	boost::shared_ptr<const std::vector<unit_const_ptr > > units_;
+	std::shared_ptr<const std::vector<unit_const_ptr > > units_;
 };
 
 

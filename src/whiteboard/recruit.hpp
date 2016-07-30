@@ -77,8 +77,8 @@ public:
 
 protected:
 
-	boost::shared_ptr<recruit> shared_from_this() {
-		return boost::static_pointer_cast<recruit>(action::shared_from_this());
+	std::shared_ptr<recruit> shared_from_this() {
+		return std::static_pointer_cast<recruit>(action::shared_from_this());
 	}
 
 	std::string unit_name_;

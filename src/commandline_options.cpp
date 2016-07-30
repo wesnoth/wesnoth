@@ -33,22 +33,22 @@
 
 namespace po = boost::program_options;
 
-// this class is needed since boost has some templated operators>> declared internally for tuples and we don't want them to interfere. Existence of such operator>> apparently causes program_options to cause the custom class somehow specially... well, the boost::tuple default operator>>  format doesn't suit our needs anyway.
-class two_strings : public boost::tuple<std::string,std::string> {};
+class two_strings : public std::pair<std::string,std::string> {};
 
 static void validate(boost::any& v, const std::vector<std::string>& values,
               two_strings*, int)
 {
-    two_strings ret_val;
-	if (values.size() != 2)
+	two_strings ret_val;
+	if (values.size() != 2) {
 #if BOOST_VERSION >= 104200
 		throw po::validation_error(po::validation_error::invalid_option_value);
 #else
 		throw po::validation_error("Invalid number of strings provided to option requiring exactly two of them.");
 #endif
-    ret_val.get<0>() = values.at(0);
-    ret_val.get<1>() = values.at(1);
-    v = ret_val;
+	}
+	ret_val.first = values.at(0);
+	ret_val.second = values.at(1);
+	v = ret_val;
 }
 
 bad_commandline_resolution::bad_commandline_resolution(const std::string& resolution)
@@ -403,8 +403,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("preprocess"))
 	{
 		preprocess = true;
-		preprocess_path = vm["preprocess"].as<two_strings>().get<0>();
-		preprocess_target = vm["preprocess"].as<two_strings>().get<1>();
+		preprocess_path = vm["preprocess"].as<two_strings>().first;
+		preprocess_target = vm["preprocess"].as<two_strings>().second;
 	}
 	if (vm.count("preprocess-defines"))
 		preprocess_defines = utils::split(vm["preprocess-defines"].as<std::string>(), ',');
@@ -420,14 +420,14 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		multiplayer_scenario = vm["scenario"].as<std::string>();
 	if (vm.count("render-image"))
 	{
-		render_image = vm["render-image"].as<two_strings>().get<0>();
-		render_image_dst = vm["render-image"].as<two_strings>().get<1>();
+		render_image = vm["render-image"].as<two_strings>().first;
+		render_image_dst = vm["render-image"].as<two_strings>().second;
 	}
 	if (vm.count("screenshot"))
 	{
 		screenshot = true;
-		screenshot_map_file = vm["screenshot"].as<two_strings>().get<0>();
-		screenshot_output_file = vm["screenshot"].as<two_strings>().get<1>();
+		screenshot_map_file = vm["screenshot"].as<two_strings>().first;
+		screenshot_output_file = vm["screenshot"].as<two_strings>().second;
 	}
 	if (vm.count("script"))
 		script_file = vm["script"].as<std::string>();
@@ -484,8 +484,8 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 	for (const std::string& domain : domains)
 	{
 		if (!log)
-			log = std::vector<boost::tuple<int, std::string> >();
-		log->push_back(boost::tuple<int, std::string>(severity,domain));
+			log = std::vector<std::pair<int, std::string> >();
+		log->push_back(std::make_pair(severity, domain));
 	}
 }
 
@@ -517,13 +517,12 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 		throw bad_commandline_resolution(resolution_string);
 	}
 
-	resolution = boost::tuple<int,int>(xres,yres);
+	resolution = std::make_pair(xres, yres);
 }
 
-std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
+std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
-	std::vector<boost::tuple<unsigned int,std::string> > vec;
-	boost::tuple<unsigned int,std::string> elem;
+	std::vector<std::pair<unsigned int,std::string> > vec;
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING";
 
@@ -541,17 +540,15 @@ std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		elem.get<0>() = temp;
-		elem.get<1>() = tokens[1];
-		vec.push_back(elem);
+		vec.push_back(std::make_pair(temp, tokens[1]));
 	}
 	return vec;
 }
 
-std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
+std::vector<std::tuple<unsigned int,std::string,std::string> > commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
-	std::vector<boost::tuple<unsigned int,std::string,std::string> > vec;
-	boost::tuple<unsigned int,std::string,std::string> elem;
+	std::vector<std::tuple<unsigned int,std::string,std::string> > vec;
+	std::tuple<unsigned int,std::string,std::string> elem;
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
 
@@ -568,9 +565,9 @@ std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_opt
 		} catch (bad_lexical_cast &) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
-		elem.get<0>() = temp;
-		elem.get<1>() = tokens[1];
-		elem.get<2>() = tokens[2];
+		std::get<0>(elem) = temp;
+		std::get<1>(elem) = tokens[1];
+		std::get<2>(elem) = tokens[2];
 		vec.push_back(elem);
 	}
 	return vec;

@@ -58,50 +58,43 @@ class twidget : private boost::noncopyable,
 
 public:
 	/** Visibility settings done by the user. */
-	class tvisible : private boost::noncopyable
+	enum class tvisible 
 	{
-		friend class tno_such_friend_exists_but_it_makes_the_compiler_happy;
-		tvisible();
+		/**
+		 * The user sets the widget visible, that means:
+		 * * The widget is visible.
+		 * * @ref find_at always 'sees' the widget (the active flag is
+		 *   tested later).
+		 * * The widget (if active) handles events (and sends events to
+		 *   its children).
+		 * * The widget is drawn (and sends the call to
+		 *   @ref populate_dirty_list to children).
+		 */
+		visible,
 
-	public:
-		/** @todo C++11 use a scoped enum. */
-		enum scoped_enum {
-			/**
-			 * The user sets the widget visible, that means:
-			 * * The widget is visible.
-			 * * @ref find_at always 'sees' the widget (the active flag is
-			 *   tested later).
-			 * * The widget (if active) handles events (and sends events to
-			 *   its children).
-			 * * The widget is drawn (and sends the call to
-			 *   @ref populate_dirty_list to children).
-			 */
-			visible,
+		/**
+		 * The user sets the widget hidden, that means:
+		 * * The widget is invisible but keeps its size.
+		 * * @ref find_at 'sees' the widget if active is @c false.
+		 * * The widget doesn't handle events (and doesn't send events to
+		 *   its children).
+		 * * The widget doesn't add itself @ref twindow::dirty_list_ when
+		 *   @ref populate_dirty_list is called (nor does it send the
+		 *   request to its children).
+		 */
+		hidden,
 
-			/**
-			 * The user sets the widget hidden, that means:
-			 * * The widget is invisible but keeps its size.
-			 * * @ref find_at 'sees' the widget if active is @c false.
-			 * * The widget doesn't handle events (and doesn't send events to
-			 *   its children).
-			 * * The widget doesn't add itself @ref twindow::dirty_list_ when
-			 *   @ref populate_dirty_list is called (nor does it send the
-			 *   request to its children).
-			 */
-			hidden,
-
-			/**
-			 * The user set the widget invisible, that means:
-			 * * The widget is invisible and its grid cell has size 0,0.
-			 * * @ref find_at never 'sees' the widget.
-			 * * The widget doesn't handle events (and doesn't send events to
-			 *   its children).
-			 * * The widget doesn't add itself @ref twindow::dirty_list_ when
-			 *   @ref populate_dirty_list is called (nor does it send the
-			 *   request to its children).
-			 */
-			invisible
-		};
+		/**
+		 * The user set the widget invisible, that means:
+		 * * The widget is invisible and its grid cell has size 0,0.
+		 * * @ref find_at never 'sees' the widget.
+		 * * The widget doesn't handle events (and doesn't send events to
+		 *   its children).
+		 * * The widget doesn't add itself @ref twindow::dirty_list_ when
+		 *   @ref populate_dirty_list is called (nor does it send the
+		 *   request to its children).
+		 */
+		invisible
 	};
 
 	/**
@@ -110,37 +103,30 @@ public:
 	 * This state only will be used if @ref visible_ is @ref tvisible::visible
 	 * depending on this state the widget might not be visible after all.
 	 */
-	class tredraw_action : private boost::noncopyable
+	enum class tredraw_action
 	{
-		friend class tno_such_friend_exists_but_it_makes_the_compiler_happy;
-		tredraw_action();
+		/**
+		 * The widget is fully visible.
+		 *
+		 * The widget should be drawn if @ref dirty_ is @c true. The entire
+		 * widget's rectangle should be redrawn.
+		 */
+		full,
 
-	public:
-		/** @todo C++11 use a scoped enum. */
-		enum scoped_enum {
-			/**
-			 * The widget is fully visible.
-			 *
-			 * The widget should be drawn if @ref dirty_ is @c true. The entire
-			 * widget's rectangle should be redrawn.
-			 */
-			full,
+		/**
+		 * The widget is partly visible.
+		 *
+		 * The should be drawn if @ref dirty_ is @c true. The rectangle to
+		 * redraw in determined by @ref clipping_rectangle_
+		 */
+		partly,
 
-			/**
-			 * The widget is partly visible.
-			 *
-			 * The should be drawn if @ref dirty_ is @c true. The rectangle to
-			 * redraw in determined by @ref clipping_rectangle_
-			 */
-			partly,
-
-			/**
-			 * The widget is not visible.
-			 *
-			 * The widget should not be drawn if @ref dirty_ is @c true.
-			 */
-			none
-		};
+		/**
+		 * The widget is not visible.
+		 *
+		 * The widget should not be drawn if @ref dirty_ is @c true.
+		 */
+		none
 	};
 
 
@@ -673,10 +659,10 @@ public:
 	void set_is_dirty(const bool is_dirty);
 	bool get_is_dirty() const;
 
-	void set_visible(const tvisible::scoped_enum visible);
-	tvisible::scoped_enum get_visible() const;
+	void set_visible(const tvisible visible);
+	tvisible get_visible() const;
 
-	tredraw_action::scoped_enum get_drawing_action() const;
+	tredraw_action get_drawing_action() const;
 
 #ifndef LOW_MEM
 
@@ -701,10 +687,10 @@ private:
 	bool is_dirty_;
 
 	/** Field for the status of the visibility. */
-	tvisible::scoped_enum visible_;
+	tvisible visible_;
 
 	/** Field for the action to do on a drawing request. */
-	tredraw_action::scoped_enum redraw_action_;
+	tredraw_action redraw_action_;
 
 	/** The clipping rectangle if a widget is partly visible. */
 	SDL_Rect clipping_rectangle_;

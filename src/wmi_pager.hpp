@@ -32,7 +32,7 @@ namespace game_events { class wmi_container; }
 
 #include "global.hpp"
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -49,7 +49,7 @@ public:
 	/** Adds the currently paged range of menu items to the given lists */
 	void get_items(const map_location& hex, //!< Game hex related to this context menu
 		game_data & gamedata, filter_context & fc, unit_map & units, //!< Data needed to create scoped objects when evaluating wml filters
-               std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items, //!< List of accumulated menu items so far.
+               std::vector<std::shared_ptr<const game_events::wml_menu_item> > & items, //!< List of accumulated menu items so far.
                std::vector<std::string> & descriptions); //!< List of menu item descriptions
 
 	bool capture(const game_events::wml_menu_item & item); //!< Captures a page up / page down event in the case that it is fired.

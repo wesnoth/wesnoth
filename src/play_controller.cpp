@@ -63,7 +63,6 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/make_shared.hpp>
 #include "utils/functional.hpp"
 
 static lg::log_domain log_aitesting("aitesting");
@@ -88,27 +87,23 @@ static lg::log_domain log_engine_enemies("engine/enemies");
  */
 static void copy_persistent(const config& src, config& dst)
 {
-	typedef boost::container::flat_set<std::string> stringset;
+	static const std::set<std::string> attrs = {
+			"id",
+			"theme",
+			"next_scenario",
+			"description",
+			"name",
+			"defeat_music",
+			"victory_music",
+			"victory_when_enemies_defeated",
+			"remove_from_carryover_on_defeat",
+			"disallow_recall",
+			"experience_modifier",
+			"require_scenario"};
 
-	static stringset attrs = boost::assign::list_of
-			("id")
-			("theme")
-			("next_scenario")
-			("description")
-			("name")
-			("defeat_music")
-			("victory_music")
-			("victory_when_enemies_defeated")
-			("remove_from_carryover_on_defeat")
-			("disallow_recall")
-			("experience_modifier")
-			("require_scenario")
-		.convert_to_container<stringset>();
-
-	static stringset tags = boost::assign::list_of
-			("terrain_graphics")
-			("lua")
-		.convert_to_container<stringset>();
+	static const std::set<std::string> tags = {
+			"terrain_graphics",
+			"lua"};
 
 	for (const std::string& attr : attrs)
 	{
@@ -739,7 +734,7 @@ events::mouse_handler& play_controller::get_mouse_handler_base()
 	return mouse_handler_;
 }
 
-boost::shared_ptr<wb::manager> play_controller::get_whiteboard()
+std::shared_ptr<wb::manager> play_controller::get_whiteboard()
 {
 	return whiteboard_manager_;
 }

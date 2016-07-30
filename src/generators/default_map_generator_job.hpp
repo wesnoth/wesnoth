@@ -26,7 +26,7 @@ class config;
 #include "utils/name_generator.hpp"
 
 #include <boost/random.hpp>
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <map>
 #include <memory>
 
@@ -34,7 +34,7 @@ class default_map_generator_job
 {
 public:
 	default_map_generator_job();
-	default_map_generator_job(boost::uint32_t seed);
+	default_map_generator_job(uint32_t seed);
 
 	/** Generate the map. */
 	std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,

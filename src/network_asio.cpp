@@ -15,7 +15,7 @@
 #include <deque>
 #include "utils/functional.hpp"
 #include <boost/ref.hpp>
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <boost/version.hpp>
 #include "log.hpp"
 #include "network_asio.hpp"
@@ -94,7 +94,7 @@ void connection::handle_connect(
 
 void connection::handshake()
 {
-	static const boost::uint32_t handshake = 0;
+	static const uint32_t handshake = 0;
 	boost::asio::async_write(socket_,
 		boost::asio::buffer(reinterpret_cast<const char*>(&handshake), 4),
 		std::bind(&connection::handle_write, this, _1, _2)
@@ -188,7 +188,7 @@ std::size_t connection::is_read_complete(
 	} else {
 		if(!bytes_to_read_) {
 			std::istream is(&read_buf_);
-			union { char binary[4]; boost::uint32_t num; } data_size;
+			union { char binary[4]; uint32_t num; } data_size;
 			is.read(data_size.binary, 4);
 			bytes_to_read_ = ntohl(data_size.num) + 4;
 			//Close immediately if we receive an invalid length

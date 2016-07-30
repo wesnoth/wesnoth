@@ -60,8 +60,8 @@ unsigned tstate_default::get_state() const
 tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
 	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
-	boost::intrusive_ptr<const tmatrix_definition::tresolution>
-	cfg = boost::dynamic_pointer_cast<const tmatrix_definition::tresolution>(
+	std::shared_ptr<const tmatrix_definition::tresolution>
+	cfg = std::static_pointer_cast<const tmatrix_definition::tresolution>(
 			config());
 
 	tbuilder_widget::treplacements replacements;
@@ -286,19 +286,19 @@ tbuilder_matrix::tbuilder_matrix(const config& cfg)
 	, builder_main(create_builder_widget(cfg.child("main", "[matrix]")))
 {
 	if(const config& top = cfg.child("top")) {
-		builder_top = new tbuilder_grid(top);
+		builder_top = std::make_shared<tbuilder_grid>(top);
 	}
 
 	if(const config& bottom = cfg.child("bottom")) {
-		builder_bottom = new tbuilder_grid(bottom);
+		builder_bottom = std::make_shared<tbuilder_grid>(bottom);
 	}
 
 	if(const config& left = cfg.child("left")) {
-		builder_left = new tbuilder_grid(left);
+		builder_left = std::make_shared<tbuilder_grid>(left);
 	}
 
 	if(const config& right = cfg.child("right")) {
-		builder_right = new tbuilder_grid(right);
+		builder_right = std::make_shared<tbuilder_grid>(right);
 	}
 }
 

@@ -18,8 +18,7 @@
 
 #include "sdl/window.hpp"
 #include "serialization/unicode.hpp"
-
-#include <boost/lexical_cast.hpp>
+#include "util.hpp"
 
 static void create(std::string& command, std::string::const_iterator begin)
 {
@@ -33,13 +32,13 @@ static void create(std::string& command, std::string::const_iterator begin)
 		const std::string argument = get_token(command, begin, ' ');
 
 		if(argument.find("x=") == 0) {
-			x = boost::lexical_cast<int>(argument.substr(2));
+			x = lexical_cast<int>(argument.substr(2));
 		} else if(argument.find("y=") == 0) {
-			y = boost::lexical_cast<int>(argument.substr(2));
+			y = lexical_cast<int>(argument.substr(2));
 		} else if(argument.find("w=") == 0) {
-			w = boost::lexical_cast<int>(argument.substr(2));
+			w = lexical_cast<int>(argument.substr(2));
 		} else if(argument.find("h=") == 0) {
-			h = boost::lexical_cast<int>(argument.substr(2));
+			h = lexical_cast<int>(argument.substr(2));
 		} else if(argument.find("title=") == 0) {
 			title = argument.substr(6); /* todo allow spaces. */
 		} else {
@@ -59,7 +58,7 @@ static void create(std::string& command, std::string::const_iterator begin)
 static void modify(std::string& command, std::string::const_iterator begin)
 {
 	std::size_t id
-			= boost::lexical_cast<std::size_t>(get_token(command, begin, ' '));
+			= lexical_cast<std::size_t>(get_token(command, begin, ' '));
 
 	if(id >= windows.size()) {
 		utf8::insert(command, utf8::size(command), " -> ID out of range");
@@ -76,9 +75,9 @@ static void modify(std::string& command, std::string::const_iterator begin)
 			const std::string argument = get_token(command, begin, ' ');
 
 			if(argument.find("w=") == 0) {
-				w = boost::lexical_cast<int>(argument.substr(2));
+				w = lexical_cast<int>(argument.substr(2));
 			} else if(argument.find("h=") == 0) {
-				h = boost::lexical_cast<int>(argument.substr(2));
+				h = lexical_cast<int>(argument.substr(2));
 			} else if(argument.find("title=") == 0) {
 				title = argument.substr(6); /* todo allow spaces. */
 			} else {
@@ -96,7 +95,7 @@ static void modify(std::string& command, std::string::const_iterator begin)
 static void destroy(std::string& command, std::string::const_iterator begin)
 {
 	std::size_t id
-			= boost::lexical_cast<std::size_t>(get_token(command, begin, ' '));
+			= lexical_cast<std::size_t>(get_token(command, begin, ' '));
 
 	if(id >= windows.size()) {
 		utf8::insert(command, utf8::size(command), " -> ID out of range");

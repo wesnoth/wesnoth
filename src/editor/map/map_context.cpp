@@ -141,7 +141,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	}
 
 	// 1.0 Pure map data
-	boost::regex rexpression_map_data("map_data\\s*=\\s*\"(.+?)\"");
+	boost::regex rexpression_map_data(R"""(map_data\s*=\s*"(.+?)")""");
 	boost::smatch matched_map_data;
 	if (!boost::regex_search(file_string, matched_map_data, rexpression_map_data,
 			boost::regex_constants::match_not_dot_null)) {
@@ -154,12 +154,12 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 	// 2.0 Embedded map
 	const std::string& map_data = matched_map_data[1];
-	boost::regex rexpression_macro("\\{(.+?)\\}");
+	boost::regex rexpression_macro(R"""(\{(.+?)\})""");
 	boost::smatch matched_macro;
 	if (!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
 		// We have a map_data string but no macro ---> embedded or scenario
 
-		boost::regex rexpression_scenario("\\[scenario\\]|\\[test\\]|\\[multiplayer\\]");
+		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer)\])""");
 		if (!boost::regex_search(file_string, rexpression_scenario)) {
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
@@ -542,7 +542,7 @@ bool map_context::save_map()
 			filesystem::write_file(get_filename(), map_data);
 		} else {
 			std::string map_string = filesystem::read_file(get_filename());
-			boost::regex rexpression_map_data("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
+			boost::regex rexpression_map_data(R"""((.*map_data\s*=\s*")(.+?)(".*))""");
 			boost::smatch matched_map_data;
 			if (boost::regex_search(map_string, matched_map_data, rexpression_map_data,
 					boost::regex_constants::match_not_dot_null)) {
@@ -692,7 +692,7 @@ void map_context::partial_undo()
 	}
 	//a partial undo performs the first action form the current action's action_chain that would be normally performed
 	//i.e. the *first* one.
-	boost::scoped_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
+	const std::unique_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
 	if (undo_chain->empty()) {
 		actions_since_save_--;
 		delete undo_chain;
@@ -727,7 +727,7 @@ void map_context::clear_stack(action_stack& stack)
 void map_context::perform_action_between_stacks(action_stack& from, action_stack& to)
 {
 	assert(!from.empty());
-	boost::scoped_ptr<editor_action> action(from.back());
+	const std::unique_ptr<editor_action> action(from.back());
 	from.pop_back();
 	editor_action* reverse_action = action->perform(*this);
 	to.push_back(reverse_action);

@@ -19,7 +19,7 @@
 #include <string>
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 struct lua_State;
 class CVideo;
@@ -66,7 +66,7 @@ public:
 		return *static_cast<T*>(get_lua_kernel_base_ptr(L));
 	}
 
-	virtual boost::uint32_t get_random_seed();
+	virtual uint32_t get_random_seed();
 	lua_State * get_state() { return mState; }
 protected:
 	lua_State *mState;

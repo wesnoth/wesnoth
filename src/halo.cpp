@@ -528,7 +528,7 @@ halo_record::halo_record() :
 	my_manager_()
 {}
 
-halo_record::halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager) :
+halo_record::halo_record(int id, const std::shared_ptr<halo_impl> & my_manager) :
 	id_(id),
 	my_manager_(my_manager)
 {}
@@ -537,7 +537,7 @@ halo_record::~halo_record()
 {
 	if (!valid()) return;
 
-	boost::shared_ptr<halo_impl> man = my_manager_.lock();
+	std::shared_ptr<halo_impl> man = my_manager_.lock();
 
 	if (man) {
 		try {

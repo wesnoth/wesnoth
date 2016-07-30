@@ -38,15 +38,11 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <type_traits>
 
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/is_base_of.hpp>
 
 #include "exceptions.hpp"
 #include "tstring.hpp"
@@ -301,7 +297,7 @@ public:
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
 		template<typename T>
-		typename boost::enable_if<boost::is_base_of<enum_tag, T>, attribute_value &>::type operator=(const T &v)
+		typename std::enable_if<std::is_base_of<enum_tag, T>::value, attribute_value &>::type operator=(const T &v)
 		{
 			return operator=(T::enum_to_string(v));
 		}
@@ -321,7 +317,7 @@ public:
 			TODO: Fix this in c++11 using constexpr types.
 		*/
 		template<typename T>
-		typename boost::enable_if<boost::is_base_of<enum_tag, T>, T>::type to_enum(const T &v) const
+		typename std::enable_if<std::is_base_of<enum_tag, T>::value, T>::type to_enum(const T &v) const
 		{
 			return T::string_to_enum(this->str(), v);
 		}
@@ -346,12 +342,12 @@ public:
 		// These function prevent t_string creation in case of c["a"] == "b" comparisons.
 		// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
 		template<typename T>
-		typename boost::enable_if<boost::is_same<const std::string, typename boost::add_const<T>::type>, bool>::type
+		typename std::enable_if<std::is_same<const std::string, typename std::add_const<T>::type>::value, bool>::type
 		friend operator==(const attribute_value &val, const T &str)
 		{ return val.equals(str); }
 
 		template<typename T>
-		typename boost::enable_if<boost::is_same<const char*, T>, bool>::type
+		typename std::enable_if<std::is_same<const char*, T>::value, bool>::type
 		friend operator==(const attribute_value &val, T str)
 		{ return val.equals(std::string(str)); }
 

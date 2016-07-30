@@ -15,8 +15,7 @@
 #ifndef UTILS_CONST_CLONE_HPP_INCLUDED
 #define UTILS_CONST_CLONE_HPP_INCLUDED
 
-#include <boost/type_traits.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 
 namespace utils {
 
@@ -37,7 +36,7 @@ namespace utils {
  *                                a cv-qualifier, although @c volatile has no
  *                                effect.
  * @tparam E                      The enable parameter for
- *                                @ref boost::enable_if.
+ *                                @ref std::enable_if.
  */
 template<
 	  class D
@@ -68,12 +67,12 @@ template<
 struct tconst_clone<
 	  D
 	, S
-	, typename boost::enable_if<
-		boost::is_const<
-			typename boost::remove_pointer<
-				typename boost::remove_reference<S>::type
+	, typename std::enable_if<
+		std::is_const<
+			typename std::remove_pointer<
+				typename std::remove_reference<S>::type
 				>::type
-			>
+			>::value
 		>::type
 	>
 {

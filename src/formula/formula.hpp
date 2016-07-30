@@ -24,7 +24,7 @@ namespace game_logic
 class formula_callable;
 class formula_expression;
 class function_symbol_table;
-typedef boost::shared_ptr<formula_expression> expression_ptr;
+typedef std::shared_ptr<formula_expression> expression_ptr;
 
 class formula {
 public:

@@ -693,7 +693,7 @@ int intf_set_dialog_visible(lua_State *L)
 {
 	typedef gui2::tcontrol::tvisible tvisible;
 
-	tvisible::scoped_enum flag = tvisible::visible;
+	tvisible flag = tvisible::visible;
 
 	switch (lua_type(L, 1)) {
 		case LUA_TBOOLEAN:

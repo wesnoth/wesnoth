@@ -34,7 +34,7 @@ namespace game_logic {
 class base_candidate_action;
 
 typedef std::map< std::string, game_logic::const_formula_ptr > candidate_action_filters;
-typedef boost::shared_ptr<game_logic::base_candidate_action> candidate_action_ptr;
+typedef std::shared_ptr<game_logic::base_candidate_action> candidate_action_ptr;
 
 //every new candidate action type should be derived from this class
 //and should complete evaluate and update_callable_map methods

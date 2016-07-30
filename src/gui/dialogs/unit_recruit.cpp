@@ -83,7 +83,7 @@ void tunit_recruit::pre_show(twindow& window)
 
 		int wb_gold = 0;
 		if(resources::controller) {
-			if(const boost::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
+			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
 				wb::future_map future; // So gold takes into account planned spending
 				wb_gold = whiteb->get_spent_gold_for(team_.side());
 			}

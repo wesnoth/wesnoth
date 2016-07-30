@@ -162,7 +162,7 @@ int show_wml_message(const bool left_side,
 					 const std::vector<twml_message_option>& option_list,
 					 int* chosen_option)
 {
-	boost::shared_ptr<twml_message_> dlg;
+	std::shared_ptr<twml_message_> dlg;
 	if(left_side) {
 		dlg.reset(new twml_message_left(title, message, portrait, mirror));
 	} else {

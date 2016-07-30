@@ -28,7 +28,6 @@ class config;
 #include <string>
 #include <vector>
 
-#include <boost/shared_ptr.hpp>
 #include <boost/exception/error_info.hpp>
 
 namespace threading
@@ -203,7 +202,7 @@ struct bandwidth_in {
 	std::string type_;
 };
 
-typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
+typedef std::shared_ptr<bandwidth_in> bandwidth_in_ptr;
 
 
 /**

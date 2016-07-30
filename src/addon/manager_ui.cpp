@@ -41,8 +41,6 @@
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 #include "addon/client.hpp"
 
 static lg::log_domain log_config("config");
@@ -155,7 +153,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 	result.outcome = SUCCESS;
 	result.wml_changed = false;
 
-	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
 	// TODO: We don't currently check for the need to upgrade. I'll probably
 	// work on that when implementing dependency tiers later.
@@ -609,7 +607,7 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons, ADDON_SORT sort,
 
 void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& addons, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, addons_filter_state& filter)
 {
-	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
 	stay_in_ui = false;
 	filter.changed = false;

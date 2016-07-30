@@ -22,7 +22,7 @@ class CVideo;
 namespace gui {
 
 	class combo_drag;
-	typedef boost::shared_ptr<combo_drag> combo_drag_ptr;
+	typedef std::shared_ptr<combo_drag> combo_drag_ptr;
 
 	class combo_drag : public combo, public drop_target, public events::pump_monitor
 	{

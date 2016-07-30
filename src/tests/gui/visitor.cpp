@@ -47,7 +47,7 @@ static void test_control()
 	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
 
 	T control;
-	boost::scoped_ptr<gui2::iterator::twalker_> visitor(control.create_walker());
+	const std::unique_ptr<gui2::iterator::twalker_> visitor(control.create_walker());
 
 	BOOST_REQUIRE_NE(visitor.get(), static_cast<void*>(nullptr));
 
@@ -101,7 +101,7 @@ static void test_grid()
 	add_widget(grid, new gui2::tlabel(), "(2,1)", 1, 0);
 	add_widget(grid, new gui2::tlabel(), "(2,2)", 1, 1);
 
-	boost::scoped_ptr<gui2::iterator::twalker_> visitor(grid.create_walker());
+	const std::unique_ptr<gui2::iterator::twalker_> visitor(grid.create_walker());
 
 	/***** LABEL 1,1 *****/
 

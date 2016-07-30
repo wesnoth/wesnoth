@@ -25,7 +25,6 @@
 
 #include <dbus/dbus.h>
 
-#include <boost/cstdint.hpp>
 #include <boost/multi_index_container.hpp>
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/member.hpp>
@@ -33,8 +32,6 @@
 #include <string>
 
 #pragma GCC diagnostic ignored "-Wold-style-cast"
-
-using boost::uint32_t;
 
 static lg::log_domain log_desktop("desktop");
 #define ERR_DU LOG_STREAM(err, log_desktop)

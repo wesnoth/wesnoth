@@ -24,7 +24,6 @@
 #include "tooltips.hpp"
 #include "mp_options.hpp"
 #include "configure_engine.hpp"
-#include <boost/scoped_ptr.hpp>
 
 class saved_game;
 namespace mp {
@@ -108,7 +107,7 @@ private:
 	ng::configure_engine engine_;
 	options::manager options_manager_;
 
-	boost::scoped_ptr<nolock_settings> nolock_settings_;
+	const std::unique_ptr<nolock_settings> nolock_settings_;
 	struct process_event_data {
 		bool launch, quit;
 

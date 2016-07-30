@@ -28,8 +28,8 @@
 #include "resources.hpp"
 #include "config_assign.hpp"
 
-#include <boost/range/adaptors.hpp>
-#include <boost/range/algorithm/copy.hpp>
+#include <algorithm>
+#include <iterator>
 #include "utils/functional.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -71,27 +71,34 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	return *this;
 }
 
-template <typename T>
-struct greater
-{
-	greater(T val) : value (val) {}
-	bool operator () (T v2) const
-	{
-		return value < v2;
-	}
-
-	T value;
-};
-
 void tod_manager::resolve_random(random_new::rng& r)
 {
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices
+	std::vector<std::string> output_strings = utils::split(random_tod_.str());
 	std::vector<int> output;
-	boost::copy( utils::split(random_tod_.str())
-		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
-		| boost::adaptors::filtered(greater<int>(0))
-		, std::back_inserter(output) );
+
+	try
+	{
+		std::transform(output_strings.begin(), output_strings.end(), std::back_inserter(output),
+			[](const std::string& str)
+		{
+			return std::stoi(str);
+		});
+	}
+	catch (std::invalid_argument)
+	{
+		// This happens if the random_start_time string is a boolean.
+		// Simply ignore the exception.
+	}
+
+	// Remove non-positive times
+	output.erase(
+		std::remove_if(
+			output.begin(),
+			output.end(),
+			[](int time){ return time <= 0; }),
+		output.end());
 
 	if(!output.empty())
 	{

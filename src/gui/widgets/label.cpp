@@ -138,8 +138,8 @@ void tlabel::load_config_extra()
 {
 	assert(config());
 
-	boost::intrusive_ptr<const tlabel_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tlabel_definition::tresolution>(
+	std::shared_ptr<const tlabel_definition::tresolution>
+	conf = std::static_pointer_cast<const tlabel_definition::tresolution>(
 			config());
 
 	assert(conf);

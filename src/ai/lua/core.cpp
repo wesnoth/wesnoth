@@ -136,16 +136,6 @@ void lua_ai_context::push_ai_table()
 	lua_ai_load ctx(*this, false);
 }
 
-static void push_location_key(lua_State* L, const map_location& loc)
-{
-	// This should be factored out. The same function is defined in data/lua/location_set.lua
-	// At this point, it is not clear, where this(hashing) function can be placed
-	// Implemented it this way, to test the new version of the data structure
-	// as requested from the users of LuaAI <Nephro>
-	int hashed_index = (loc.x + 1) * 16384 + (loc.y + 1) + 2000;
-	lua_pushinteger(L, hashed_index);
-}
-
 static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
 {
 	lua_newtable(L);
@@ -679,12 +669,12 @@ static void push_move_map(lua_State *L, const move_map& m)
 
 	int index = 1;
 
-
+	std::hash<map_location> lhash;
 
 	do
 	{
 		map_location key = it->first;
-		push_location_key(L, key);
+		lua_pushinteger(L, lhash(key));
 
 		lua_createtable(L, 0, 0);
 
@@ -780,7 +770,7 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 template<typename T>
 typesafe_aspect<T>* try_aspect_as(aspect_ptr p)
 {
-	return boost::dynamic_pointer_cast<typesafe_aspect<T> >(p).get();
+	return std::dynamic_pointer_cast<typesafe_aspect<T> >(p).get();
 }
 
 static int impl_ai_aspect_get(lua_State* L)
@@ -822,11 +812,12 @@ static int impl_ai_aspect_get(lua_State* L)
 		const unit_advancements_aspect& val = aspect->get();
 		int my_side = luaW_getglobal(L, "ai", "side") - 1;
 		lua_newtable(L);
+		std::hash<map_location> lhash;
 		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if (!u.valid() || u->side() != my_side) {
 				continue;
 			}
-			push_location_key(L, u->get_location());
+			lua_pushinteger(L, lhash(u->get_location()));
 			lua_push(L, val.get_advancements(u));
 			lua_settable(L, -3);
 		}

@@ -27,7 +27,7 @@ namespace gui2
  *
  * At the moment all states are the same so there is no need to use
  * inheritance. If that is needed at some point the containers should contain
- * pointers and we should inherit from reference_counted_object.
+ * pointers
  */
 struct tstate_definition
 {
@@ -38,7 +38,7 @@ struct tstate_definition
 
 
 /** Base class of a resolution, contains the common keys for a resolution. */
-struct tresolution_definition_ : public reference_counted_object
+struct tresolution_definition_
 {
 	explicit tresolution_definition_(const config& cfg);
 
@@ -63,10 +63,10 @@ struct tresolution_definition_ : public reference_counted_object
 	std::vector<tstate_definition> state;
 };
 
-typedef boost::intrusive_ptr<tresolution_definition_>
+typedef std::shared_ptr<tresolution_definition_>
 tresolution_definition_ptr;
 
-typedef boost::intrusive_ptr<const tresolution_definition_>
+typedef std::shared_ptr<const tresolution_definition_>
 tresolution_definition_const_ptr;
 
 /**
@@ -81,13 +81,12 @@ tresolution_definition_const_ptr;
 template <class T>
 const T& cast(tresolution_definition_const_ptr ptr)
 {
-	boost::intrusive_ptr<const T> conf
-			= boost::dynamic_pointer_cast<const T>(ptr);
+	std::shared_ptr<const T> conf = std::make_shared<const T>(ptr);
 	assert(conf);
 	return *conf;
 }
 
-struct tcontrol_definition : public reference_counted_object
+struct tcontrol_definition
 {
 	explicit tcontrol_definition(const config& cfg);
 
@@ -96,7 +95,7 @@ struct tcontrol_definition : public reference_counted_object
 	{
 		for (const auto & resolution : cfg.child_range("resolution"))
 		{
-			resolutions.push_back(new T(resolution));
+			resolutions.push_back(std::make_shared<T>(resolution));
 		}
 	}
 
@@ -106,7 +105,7 @@ struct tcontrol_definition : public reference_counted_object
 	std::vector<tresolution_definition_ptr> resolutions;
 };
 
-typedef boost::intrusive_ptr<tcontrol_definition> tcontrol_definition_ptr;
+typedef std::shared_ptr<tcontrol_definition> tcontrol_definition_ptr;
 
 } // namespace gui2
 

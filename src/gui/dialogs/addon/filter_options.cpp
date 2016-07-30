@@ -122,7 +122,7 @@ taddon_filter_options::taddon_filter_options()
 	, sort_tgroup_()
 	, dir_tgroup_()
 {
-	displayed_types_.assign(true);
+	displayed_types_.fill(true);
 
 	// This part has to be hardcoded, sadly.
 

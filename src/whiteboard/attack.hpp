@@ -62,8 +62,8 @@ public:
 
 protected:
 
-	boost::shared_ptr<attack> shared_from_this() {
-		return boost::static_pointer_cast<attack>(move::shared_from_this());
+	std::shared_ptr<attack> shared_from_this() {
+		return std::static_pointer_cast<attack>(move::shared_from_this());
 	}
 
 private:

@@ -49,7 +49,6 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include "utils/functional.hpp"
 
 #include <sstream>
@@ -277,8 +276,8 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	//Look for planned recruits that depend on this leader
 	for(action_const_ptr action : *viewer_actions())
 	{
-		recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action);
-		recall_const_ptr recall = boost::dynamic_pointer_cast<class recall const>(action);
+		recruit_const_ptr recruit = std::dynamic_pointer_cast<class recruit const>(action);
+		recall_const_ptr recall = std::dynamic_pointer_cast<class recall const>(action);
 		if(recruit || recall)
 		{
 			map_location const target_hex = recruit?recruit->get_recruit_hex():recall->get_recall_hex();
@@ -333,7 +332,7 @@ void manager::post_delete_action(action_ptr action)
 	if(actor) { // The unit might have died following the execution of an attack
 		side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
 		if(action_it != side_actions->end()) {
-			move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it);
+			move_ptr move = std::dynamic_pointer_cast<class move>(*action_it);
 			if(move && move->get_fake_unit()) {
 				move->get_fake_unit()->anim_comp().set_standing(true);
 			}
@@ -1231,7 +1230,7 @@ future_map_if_active::~future_map_if_active()
 
 real_map::real_map():
 		initial_planned_unit_map_(resources::whiteboard && resources::whiteboard->has_planned_unit_map()),
-		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : boost::shared_ptr<bool>(new bool(false)))
+		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : std::shared_ptr<bool>(new bool(false)))
 {
 	if (!resources::whiteboard)
 		return;

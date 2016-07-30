@@ -30,8 +30,8 @@ REGISTER_WIDGET(vertical_scrollbar)
 
 unsigned tvertical_scrollbar::minimum_positioner_length() const
 {
-	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::
+	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
+			= std::static_pointer_cast<const tvertical_scrollbar_definition::
 												  tresolution>(config());
 	assert(conf);
 	return conf->minimum_positioner_length;
@@ -39,8 +39,8 @@ unsigned tvertical_scrollbar::minimum_positioner_length() const
 
 unsigned tvertical_scrollbar::maximum_positioner_length() const
 {
-	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::
+	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
+			= std::static_pointer_cast<const tvertical_scrollbar_definition::
 												  tresolution>(config());
 	assert(conf);
 	return conf->maximum_positioner_length;
@@ -48,8 +48,8 @@ unsigned tvertical_scrollbar::maximum_positioner_length() const
 
 unsigned tvertical_scrollbar::offset_before() const
 {
-	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::
+	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
+			= std::static_pointer_cast<const tvertical_scrollbar_definition::
 												  tresolution>(config());
 	assert(conf);
 	return conf->top_offset;
@@ -57,8 +57,8 @@ unsigned tvertical_scrollbar::offset_before() const
 
 unsigned tvertical_scrollbar::offset_after() const
 {
-	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::
+	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
+			= std::static_pointer_cast<const tvertical_scrollbar_definition::
 												  tresolution>(config());
 	assert(conf);
 	return conf->bottom_offset;

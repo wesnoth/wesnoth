@@ -49,8 +49,6 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
 /**
  * Default list of directions
  *
- * Moved out of inline, because boost assign list_of is somewhat expensive...
- *
  **/
 const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 	static const std::vector<map_location::DIRECTION> dirs = {map_location::NORTH,
@@ -59,9 +57,8 @@ const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 	return dirs;
 }
 
-/** Moved out of inline because of the boost dependency **/
 std::size_t hash_value(map_location  const & a){
-	boost::hash<size_t> h;
+	std::hash<size_t> h;
 	return h( (a.x << 16) ^ a.y );
 }
 

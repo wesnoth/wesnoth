@@ -167,7 +167,7 @@ public:
 	void contextual_bump_down_action();
 
 	/** Get the highlight visitor instance in use by the manager */
-	boost::weak_ptr<highlighter> get_highlighter() { return highlighter_; }
+	std::weak_ptr<highlighter> get_highlighter() { return highlighter_; }
 
 	/** Checks whether the whiteboard has any planned action on any team */
 	bool has_actions() const;
@@ -221,16 +221,16 @@ private:
 	whiteboard_lock unit_map_lock_;
 
 
-	boost::scoped_ptr<mapbuilder> mapbuilder_;
-	boost::shared_ptr<highlighter> highlighter_;
+	std::unique_ptr<mapbuilder> mapbuilder_;
+	std::shared_ptr<highlighter> highlighter_;
 
-	boost::scoped_ptr<pathfind::marked_route> route_;
+	std::unique_ptr<pathfind::marked_route> route_;
 
 	std::vector<arrow_ptr> move_arrows_;
 	std::vector<fake_unit_ptr> fake_units_;
 	size_t temp_move_unit_underlying_id_;
 
-	boost::scoped_ptr<CKey> key_poller_;
+	const std::unique_ptr<CKey> key_poller_;
 
 	std::vector<map_location> hidden_unit_hexes_;
 
@@ -258,7 +258,7 @@ struct future_map_if
 	/** @param cond: If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
 			No effect if cond == false.
 	*/
-	boost::scoped_ptr<future_map> future_map_;
+	const std::unique_ptr<future_map> future_map_;
 	future_map_if(bool cond)
 		: future_map_(cond ? new future_map() : nullptr)
 	{}
