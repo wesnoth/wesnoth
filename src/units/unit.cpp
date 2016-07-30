@@ -2220,12 +2220,13 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 	const t_string& mod_description = mod["description"];
 	if (!mod_description.empty()) {
-		description = mod_description + " ";
+		description = mod_description;
 	}
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
 	if(effects_description.empty() == false && generate_description == true) {
+		if (!mod_description.empty()) description += "\n";
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
 			if (i->empty()) {
@@ -2591,4 +2592,3 @@ std::string get_checksum(const unit& u) {
 
 	return wcfg.hash();
 }
-
