@@ -5228,10 +5228,8 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 
 
 	if (!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd)) {
-		std::string err_msg = "unknown conditional wml: [";
-		err_msg += cmd;
-		err_msg += "]";
-		luaL_argerror(L, 1, err_msg.c_str());
+		lg::wml_error() << "unknown conditional wml: [" << cmd << "]\n";
+		return true;
 	}
 
 	luaW_pushvconfig(L, cfg);
