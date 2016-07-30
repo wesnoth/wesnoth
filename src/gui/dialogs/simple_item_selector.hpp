@@ -26,7 +26,6 @@ class tsimple_item_selector : public tdialog
 {
 public:
 	typedef std::vector<std::string> list_type;
-	typedef std::string item_type;
 
 	tsimple_item_selector(const std::string& title,
 						  const std::string& message,

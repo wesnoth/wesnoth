@@ -172,7 +172,7 @@ void move::init()
 	this->calculate_move_cost();
 
 	// Initialize arrow_brightness_ and arrow_texture_ using arrow_->style_
-	arrow::STYLE arrow_style = arrow_->get_style();
+	std::string arrow_style = arrow_->get_style();
 	if(arrow_style == arrow::STYLE_STANDARD)
 	{
 		arrow_brightness_ = ARROW_BRIGHTNESS_STANDARD;
