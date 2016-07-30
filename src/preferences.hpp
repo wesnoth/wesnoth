@@ -127,6 +127,9 @@ namespace preferences {
 	int music_volume();
 	void set_music_volume(int vol);
 
+	bool stop_music_in_background();
+	void set_stop_music_in_background(bool ison);
+
 	bool turn_bell();
 	bool set_turn_bell(bool ison);
 
