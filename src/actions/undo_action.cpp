@@ -110,7 +110,7 @@ namespace {
 		scoped_weapon_info w1("weapon", e.data.child("first"));
 		scoped_weapon_info w2("second_weapon", e.data.child("second"));
 
-		game_events::queued_event q(tag, map_location(x1, y1), map_location(x2, y2), e.data);
+		game_events::queued_event q(tag, "", map_location(x1, y1), map_location(x2, y2), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
 
 		if(u1) {

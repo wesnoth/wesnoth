@@ -58,6 +58,11 @@ void manager::remove_event_handler(const std::string & id)
 	event_handlers_->remove_event_handler(id);
 }
 
+/** Gets an event handler by id */
+const handler_ptr manager::get_event_handler_by_id(const std::string & id)
+{
+	return event_handlers_->get_event_handler_by_id(id);
+}
 
 /* ** manager ** */
 

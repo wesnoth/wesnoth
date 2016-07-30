@@ -109,6 +109,8 @@ namespace game_events {
 		void add_event_handler(const config & handler, bool is_menu_item=false);
 		/// Removes an event handler.
 		void remove_event_handler(const std::string & id);
+		/// Gets an event handler by ID
+		const handler_ptr get_event_handler_by_id(const std::string & id);
 
 		void add_events(const config::const_child_itors &cfgs,
 		                const std::string& type = std::string());

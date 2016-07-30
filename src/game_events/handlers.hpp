@@ -27,6 +27,7 @@
 #include "config.hpp"
 #include "utils/smart_list.hpp"
 
+#include <memory>
 #include <set>
 #include <string>
 

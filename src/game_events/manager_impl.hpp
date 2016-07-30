@@ -17,6 +17,7 @@
 
 #include "game_events/handlers.hpp"
 
+#include <memory>
 #include <unordered_map>
 
 namespace game_events {
@@ -60,6 +61,8 @@ namespace game_events {
 		void add_event_handler(const config & cfg, manager & man, bool is_menu_item=false);
 		/// Removes an event handler, identified by its ID.
 		void remove_event_handler(std::string const & id);
+		/// Gets an event handler, identified by its ID.
+		const handler_ptr get_event_handler_by_id(const std::string & id);
 
 		iterator begin() { return active_.begin(); }
 		const_iterator begin() const { return active_.begin(); }

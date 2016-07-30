@@ -267,6 +267,8 @@ namespace { // Support functions
 	 */
 	bool t_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 	{
+		DBG_EH << "processing event " << ev.name << " with id=" << ev.id << "\n";
+
 		// We currently never pass a null pointer to this function, but to
 		// guard against future modifications:
 		if ( !handler_p )
@@ -466,7 +468,18 @@ bool t_pump::fire(const std::string& event,
 	return (*this)();
 }
 
+bool t_pump::fire(const std::string& event,
+		  const std::string&     id,
+          const entity_location& loc1,
+          const entity_location& loc2,
+          const config& data)
+{
+	raise(event,id,loc1,loc2,data);
+	return (*this)();
+}
+
 void t_pump::raise(const std::string& event,
+		   const std::string& id,
            const entity_location& loc1,
            const entity_location& loc2,
            const config& data)
@@ -474,9 +487,9 @@ void t_pump::raise(const std::string& event,
 	if(resources::screen == nullptr)
 		return;
 
-	DBG_EH << "raising event: " << event << "\n";
+	DBG_EH << "raising event name=" << event << ", id=" << id << "\n";
 
-	impl_->events_queue.push_back(queued_event(event, loc1, loc2, data));
+	impl_->events_queue.push_back(queued_event(event, id, loc1, loc2, data));
 }
 
 bool t_pump::operator()()
@@ -497,7 +510,7 @@ bool t_pump::operator()()
 	if(!lg::debug().dont_log("event_handler")) {
 		std::stringstream ss;
 		for(const queued_event& ev : impl_->events_queue) {
-			ss << "name=" << ev.name << "; ";
+			ss << "name=" << ev.name << ", " << "id=" << ev.id << "; ";
 		}
 		DBG_EH << "processing queued events: " << ss.str() << "\n";
 	}
@@ -513,7 +526,12 @@ bool t_pump::operator()()
 	while ( !pump_instance.done() )
 	{
 		queued_event & ev = pump_instance.next();
+
+		if( ev.name.empty() and ev.id.empty() )
+			continue;
+
 		const std::string& event_name = ev.name;
+		const std::string& event_id   = ev.id;
 
 		// Clear the unit cache, since the best clearing time is hard to figure out
 		// due to status changes by WML. Every event will flush the cache.
@@ -525,30 +543,39 @@ bool t_pump::operator()()
 				++impl_->internal_wml_tracking;
 			}
 		}
-		// Initialize an iteration over event handlers matching this event.
+
 		assert(impl_->my_manager);
-		manager::iteration handler_iter(event_name, *impl_->my_manager);
 
-		// If there are any matching event handlers, initialize variables.
-		// Note: Initializing variables all the time would not be
-		//       functionally wrong, merely inefficient. So we do not have
-		//       to cache *handler_iter here.
-		if ( *handler_iter ) {
-			resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
-			resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
-			resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
-			resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+		handler_ptr cur_handler;
+
+		resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
+		resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
+		resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
+		resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+
+		if ( event_id.empty() ) {
+
+			// Initialize an iteration over event handlers matching this event.
+			manager::iteration handler_iter(event_name, *impl_->my_manager);
+
+			// While there is a potential handler for this event name.
+			while ( cur_handler = *handler_iter ) {
+				// Let this handler process our event.
+				process_event(cur_handler, ev);
+				// NOTE: cur_handler may be null at this point!
+
+				++handler_iter;
+			}
+
 		}
+		else {
 
-		// While there is a potential handler for this event name.
-		while ( handler_ptr cur_handler = *handler_iter ) {
-			DBG_EH << "processing event " << event_name << " with id="<<
-			          cur_handler->get_config()["id"] << "\n";
-			// Let this handler process our event.
-			process_event(cur_handler, ev);
-			// NOTE: cur_handler may be null at this point!
+			//Get the handler directly via ID
+			cur_handler = impl_->my_manager->get_event_handler_by_id( event_id );
 
-			++handler_iter;
+			if( cur_handler ) {
+				process_event(cur_handler, ev);
+			}
 		}
 
 		// Flush messages when finished iterating over event_handlers.

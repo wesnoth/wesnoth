@@ -188,6 +188,7 @@ Version 1.13.5:
    * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
      that only registered users should be allowed to join the game
    * wesnoth now does a stricter check for unit type ids.
+   * Added tag id= [fire_event], which allows raising events by id
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -276,7 +277,9 @@ Version 1.13.5:
    * [lua] tags now also support the [args] subtag outside events.
    * added lua_function= attribute in location filters
    * Added on_event.lua which is an eaiser to use wrapper for 
-     wesnoth.game_events.on_event 
+     wesnoth.game_events.on_event
+   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
+     function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
    * Added "Registered users only" checkbox to multiplayer configuration dialog which 

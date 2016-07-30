@@ -33,8 +33,8 @@
 
 #include "config.hpp"
 
-#include<string>
-#include<sstream>
+#include <string>
+#include <sstream>
 
 class game_display;
 class vconfig;
@@ -44,14 +44,15 @@ namespace lg { class logger; }
 namespace game_events
 {
 	struct queued_event {
-		queued_event(const std::string& name, const entity_location& loc1,
+		queued_event(const std::string& name, const std::string& id, const entity_location& loc1,
 		             const entity_location& loc2, const config& data)
-			: name(name), loc1(loc1), loc2(loc2), data(data)
+			: name(name), id(id), loc1(loc1), loc2(loc2), data(data)
 		{
 			std::replace(this->name.begin(), this->name.end(), ' ',  '_');
 		}
 
 		std::string name;
+		std::string id;
 		entity_location loc1;
 		entity_location loc2;
 		config data;
@@ -92,10 +93,24 @@ namespace game_events
 		          const entity_location& loc2=entity_location::null_entity,
 		          const config& data=config());
 
+		bool fire(const std::string& event,
+				  const std::string& id,
+		          const entity_location& loc1=entity_location::null_entity,
+		          const entity_location& loc2=entity_location::null_entity,
+		          const config& data=config());
+
 		void raise(const std::string& event,
+				   const std::string& id,
 		           const entity_location& loc1=entity_location::null_entity,
 		           const entity_location& loc2=entity_location::null_entity,
 		           const config& data=config());
+
+		inline void raise(const std::string& event,
+		           const entity_location& loc1=entity_location::null_entity,
+		           const entity_location& loc2=entity_location::null_entity,
+		           const config& data=config()) {
+			raise(event,"",loc1,loc2,data);
+		}
 
 		bool operator()();
 

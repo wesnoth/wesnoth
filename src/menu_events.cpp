@@ -144,7 +144,7 @@ void menu_handler::objectives(int side_num)
 	config cfg;
 	cfg["side"] = std::to_string(side_num);
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
-		game_events::queued_event("_from_interface", map_location(),
+		game_events::queued_event("_from_interface", "", map_location(),
 			map_location(), config()));
 	team &current_team = teams()[side_num - 1];
 	dialogs::show_objectives(pc_.get_scenario_name(), current_team.objectives());
