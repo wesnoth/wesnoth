@@ -9,6 +9,10 @@ Version 1.13.5+dev:
      - [auto_recall] sub-tag, if assigned to recall list, gives [recall] attributes (no SUF)
      - [else] sub-tag, WML to execute if no unit found for the role
    * New help_text= key for [trait] to set the description displayed in the help.
+   * Added tag id= [fire_event], which allows raising events by id
+ * Lua API:
+   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
+     function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
 
 Version 1.13.5:
  * Campaigns:
@@ -188,7 +192,6 @@ Version 1.13.5:
    * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
      that only registered users should be allowed to join the game
    * wesnoth now does a stricter check for unit type ids.
-   * Added tag id= [fire_event], which allows raising events by id
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -278,8 +281,6 @@ Version 1.13.5:
    * added lua_function= attribute in location filters
    * Added on_event.lua which is an eaiser to use wrapper for 
      wesnoth.game_events.on_event
-   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
-     function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
    * Added "Registered users only" checkbox to multiplayer configuration dialog which 
