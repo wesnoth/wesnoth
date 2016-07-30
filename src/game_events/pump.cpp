@@ -527,7 +527,7 @@ bool t_pump::operator()()
 	{
 		queued_event & ev = pump_instance.next();
 
-		if( ev.name.empty() and ev.id.empty() )
+		if( ev.name.empty() && ev.id.empty() )
 			continue;
 
 		const std::string& event_name = ev.name;
