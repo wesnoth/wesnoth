@@ -18,6 +18,7 @@
 
 #include <string>
 
+class unit;
 class unit_type;
 
 namespace gui2
@@ -40,27 +41,27 @@ class tunit_preview_pane : public tcontainer_
 
 public:
 	tunit_preview_pane()
-        : tcontainer_(1)
+		: tcontainer_(1)
 		, current_type_("")
-		, icon_type_()
-		, icon_race_()
-		, icon_alignment_()
-		, label_name_()
-		, label_level_()
-		, label_details_()
-		, button_profile_()
+		, icon_type_(nullptr)
+		, icon_race_(nullptr)
+		, icon_alignment_(nullptr)
+		, label_name_(nullptr)
+		, label_level_(nullptr)
+		, label_details_(nullptr)
+		, button_profile_(nullptr)
+		, image_facing_("right")
 	{
 	}
 
-	/**
-	 * Initializes the interneral sub-widget pointers.
-	 * Should be called when building the window, so the pointers
-	 * are initilized when set_displayed_type() is called.
-	 */
-	void finalize_setup();
-
 	/** Displays the stats of a specified unit type */
 	void set_displayed_type(const unit_type* type);
+
+	/** Displays the stats of a specific unit */
+	void set_displayed_unit(const unit* unit);
+
+	/** Sets the facing of the unit image */
+	void set_image_facing(const std::string& facing);
 
 	/** Callback for the profile button */
 	void profile_button_callback();
@@ -74,6 +75,14 @@ public:
 	/** See @ref tcontrol::get_state. */
 	virtual unsigned get_state() const override;
 
+protected:
+	/**
+	 * Initializes the interneral sub-widget pointers.
+	 * Should be called when building the window, so the pointers
+	 * are initilized when set_displayed_type() is called.
+	 */
+	void finalize_setup();
+
 private:
 	std::string current_type_;
 
@@ -86,6 +95,8 @@ private:
 	tlabel*  label_details_;
 
 	tbutton* button_profile_;
+
+	std::string image_facing_;
 
 	enum tstate {
 		ENABLED
@@ -121,11 +132,15 @@ namespace implementation
 
 struct tbuilder_unit_preview_pane : public tbuilder_control
 {
+public:
 	explicit tbuilder_unit_preview_pane(const config& cfg);
 
 	using tbuilder_control::build;
 
 	twidget* build() const;
+
+private:
+	std::string image_facing_;
 };
 
 } // namespace implementation
