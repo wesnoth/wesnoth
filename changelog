@@ -1,6 +1,9 @@
 Version 1.13.5+dev:
  * Music and sound effects:
    * Added a preference to pause the music when the game loses focus.
+ * Units:
+   * Changed the sound for the melee attack of the
+     Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
  * User Interface:
    * Trait descriptions in the help are now generated. (This makes user-defined
      traits show up in the help as well.)
@@ -40,7 +43,7 @@ Version 1.13.5:
  * Networking:
    * Reworked the multiplayer server to use asio functions for networking
      operations instead of SDL_net, thus it no longer depends on SDL_net and SDL.
-   * The client now uses boost::asio for communication with wesnothd too. 
+   * The client now uses boost::asio for communication with wesnothd too.
  * Removed support for SDL 1.2. SDL 2 is now the only supported version.
  * Terrains:
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
@@ -64,7 +67,7 @@ Version 1.13.5:
    * Added an option to disable the loadingscreen animation since it caused
      bugs in some configurations.
    * Added a gui method to activate loggers (Preferences -> Advanced -> Logging)
-     loggers activated in the gui print just like loggers activated in the 
+     loggers activated in the gui print just like loggers activated in the
      command line (i.e. messages appear in the console)
    * The Lua console screen now has a clear button
    * Fix bug #24762: Editor actions are out of sync after resizing.
@@ -188,7 +191,7 @@ Version 1.13.5:
          (For a limit, replace "recruit" with "limit".)
          The [recruit] and [limit] tags now support id keys for this.
    * Added side_name= attribute in [side], it's now no longer possible to
-     specify the current_player attribute in the [side] wml.  
+     specify the current_player attribute in the [side] wml.
    * unit filters, specially in wesnoth.get_units now have a limit= attribute
      to limit the number or matched units.
    * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
@@ -281,11 +284,15 @@ Version 1.13.5:
    * Added wesnoth.special_locations
    * [lua] tags now also support the [args] subtag outside events.
    * added lua_function= attribute in location filters
-   * Added on_event.lua which is an eaiser to use wrapper for 
+<<<<<<< HEAD
+   * Added on_event.lua which is an eaiser to use wrapper for
+=======
+   * Added on_event.lua which is an eaiser to use wrapper for
+>>>>>>> Change attack sounds for short swords
      wesnoth.game_events.on_event
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
-   * Added "Registered users only" checkbox to multiplayer configuration dialog which 
+   * Added "Registered users only" checkbox to multiplayer configuration dialog which
      when checked, only allows registered users to join the game
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
@@ -482,7 +489,7 @@ Version 1.13.3:
    * Added description_alignment= key to [campaign]
    * Fixed [put_to_recall_list] not working correctly (bug #24390)
    * Wesnoth now does a stricter check in variablenames and doesn't allow
-     empty indexes like "a[].b" anymore. 
+     empty indexes like "a[].b" anymore.
  * Lua API:
    * Added wesnoth.read_file
    * wesnoth.dofile/require now allow .. in relative paths.
