@@ -50,8 +50,6 @@ void show_objectives(const std::string& scenarioname, const std::string &objecti
 
 void show_unit_list(display& gui);
 
-int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
-
 int recall_dialog(display& disp, const std::shared_ptr<std::vector<unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */

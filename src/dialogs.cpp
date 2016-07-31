@@ -427,37 +427,6 @@ void show_objectives(const std::string &scenarioname, const std::string &objecti
 		(objectives.empty() ? no_objectives : objectives), "", true);
 }
 
-int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const std::vector< std::string >& items, int side, const std::string& title_suffix)
-{
-	dialogs::unit_types_preview_pane unit_preview(
-		units, nullptr, side);
-	std::vector<gui::preview_pane*> preview_panes;
-	preview_panes.push_back(&unit_preview);
-
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(1);
-
-	gui::dialog rmenu(disp.video(), _("Recruit") + title_suffix,
-			  _("Select unit:") + std::string("\n"),
-			  gui::OK_CANCEL,
-			  gui::dialog::default_style);
-	rmenu.add_button(new help::help_button(disp.video(), "recruit_and_recall"),
-		gui::dialog::BUTTON_HELP);
-
-	gui::menu::imgsel_style units_display_style(gui::menu::bluebg_style);
-	units_display_style.scale_images(font::relative_size(72), font::relative_size(72));
-
-	gui::menu* units_menu = new gui::menu(disp.video(), items, false, -1,
-		gui::dialog::max_menu_width, &sorter, &units_display_style, false);
-
-	units_menu->sort_by(1); // otherwise it's unsorted by default
-
-	rmenu.set_menu(units_menu);
-	rmenu.set_panes(preview_panes);
-	return rmenu.show();
-}
-
-
 #ifdef LOW_MEM
 int recall_dialog(display& disp, const std::shared_ptr<std::vector< unit_const_ptr > > & units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
