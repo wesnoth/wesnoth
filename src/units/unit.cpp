@@ -921,7 +921,9 @@ void unit::advance_to(const unit_type &u_type,
 		 set_usage(new_type.usage());
 	}
 	set_image_halo(new_type.halo());
-	set_image_ellipse(new_type.ellipse());
+	if (!new_type.ellipse().empty()) {
+		set_image_ellipse(new_type.ellipse());
+	}
 	generate_name_ &= new_type.generate_name();
 	abilities_ = new_type.abilities_cfg();
 	advancements_.clear();
