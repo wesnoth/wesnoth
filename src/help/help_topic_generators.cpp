@@ -264,7 +264,7 @@ std::string unit_topic_generator::operator()() const {
 		male_type.big_profile() : male_type.small_profile();
 	const std::string &female_portrait = female_type.small_profile().empty() ?
 		female_type.big_profile() : female_type.small_profile();
-	
+
 	const bool has_male_portrait = !male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image";
 	const bool has_female_portrait = !female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image";
 
@@ -296,7 +296,7 @@ std::string unit_topic_generator::operator()() const {
 			std::vector<std::string> adv_units =
 				reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
-			
+
 			for (const std::string &adv : adv_units) {
 				const unit_type *type = unit_types.find(adv, unit_type::HELP_INDEXED);
 				if (!type || type->hide_help()) {
@@ -392,7 +392,7 @@ std::string unit_topic_generator::operator()() const {
 	// Print the possible traits of the unit, cross-reference them
 	// to their respective topics.
 	config::const_child_itors traits = type_.possible_traits();
-	if (traits.first != traits.second && type_.num_traits() > 0) {
+	if (traits.first != traits.second) {
 		std::vector<trait_data> must_have_traits;
 		std::vector<trait_data> random_traits;
 
@@ -404,7 +404,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		bool line1 = !must_have_traits.empty();
-		bool line2 = !random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0;
+		bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
 
 		if (line1) {
 			std::string traits_label = _("Traits");

@@ -209,12 +209,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		}
 	}
 
-	// Insert any traits that are just for this unit type
-	for (const config &trait : cfg_.child_range("trait"))
-	{
-		possible_traits_.add_child("trait", trait);
-	}
-
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
 
 	const config::attribute_value & alpha_blend = cfg_["alpha"];
@@ -340,6 +334,12 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	{
 		possible_traits_.add_child("trait", t);
 	}
+	// Insert any traits that are just for this unit type
+	for (const config &trait : cfg_.child_range("trait"))
+	{
+		possible_traits_.add_child("trait", trait);
+	}
+	
 	for (const config &var_cfg : cfg_.child_range("variation"))
 	{
 		const std::string& var_id = var_cfg["variation_id"].empty() ?
