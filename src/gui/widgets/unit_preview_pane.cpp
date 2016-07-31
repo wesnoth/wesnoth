@@ -211,10 +211,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		// We assume sprites are always drawn facing right
-		if(image_facing_ == "left") {
-			mods += "~FL(horiz)";
-		}
+		mods += image_mods_;
 
 		icon_type_->set_label(unit->absolute_image() + mods);
 	}
@@ -310,13 +307,9 @@ void tunit_preview_pane::profile_button_callback()
 	}
 }
 
-void tunit_preview_pane::set_image_facing(const std::string& facing)
+void tunit_preview_pane::set_image_mods(const std::string& mods)
 {
-	if(facing != "left" && facing != "right") {
-		return;
-	}
-
-	image_facing_ = facing;
+	image_mods_ = mods;
 }
 
 void tunit_preview_pane::set_active(const bool /*active*/)
@@ -374,7 +367,7 @@ namespace implementation
 
 tbuilder_unit_preview_pane::tbuilder_unit_preview_pane(const config& cfg)
 	: tbuilder_control(cfg)
-	, image_facing_(cfg["image_facing"])
+	, image_mods_(cfg["image_mods"])
 {
 }
 
@@ -395,7 +388,7 @@ twidget* tbuilder_unit_preview_pane::build() const
 
 	widget->init_grid(conf->grid);
 	widget->finalize_setup();
-	widget->set_image_facing(image_facing_);
+	widget->set_image_mods(image_mods_);
 
 	return widget;
 }

@@ -42,7 +42,7 @@ class tunit_preview_pane : public tcontainer_
 public:
 	tunit_preview_pane()
 		: tcontainer_(1)
-		, current_type_("")
+		, current_type_()
 		, icon_type_(nullptr)
 		, icon_race_(nullptr)
 		, icon_alignment_(nullptr)
@@ -50,7 +50,7 @@ public:
 		, label_level_(nullptr)
 		, label_details_(nullptr)
 		, button_profile_(nullptr)
-		, image_facing_("right")
+		, image_mods_()
 	{
 	}
 
@@ -61,7 +61,7 @@ public:
 	void set_displayed_unit(const unit* unit);
 
 	/** Sets the facing of the unit image */
-	void set_image_facing(const std::string& facing);
+	void set_image_mods(const std::string& mods);
 
 	/** Callback for the profile button */
 	void profile_button_callback();
@@ -96,7 +96,7 @@ private:
 
 	tbutton* button_profile_;
 
-	std::string image_facing_;
+	std::string image_mods_;
 
 	enum tstate {
 		ENABLED
@@ -140,7 +140,7 @@ public:
 	twidget* build() const;
 
 private:
-	std::string image_facing_;
+	const std::string image_mods_;
 };
 
 } // namespace implementation
