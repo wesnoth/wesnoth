@@ -1050,5 +1050,15 @@ void set_disable_loadingscreen_animation(bool value)
 	set("disable_loadingscreen_animation", value);
 }
 
+bool damage_prediction_allow_monte_carlo_simulation()
+{
+	return get("damage_prediction_allow_monte_carlo_simulation", true);
+}
+
+void set_damage_prediction_allow_monte_carlo_simulation(bool value)
+{
+	set("damage_prediction_allow_monte_carlo_simulation", value);
+}
+
 } // end namespace preferences
 
