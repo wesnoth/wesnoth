@@ -18,6 +18,12 @@ Version 1.13.5+dev:
  * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
      function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
+* Performance:
+   * When a heuristic determines that it's probably faster, the game predicts battle
+     outcome by simulating a few thousand fights instead of calculating exact
+     probabilities. This method is inexact, but in very complex battles (extremely
+     high HP, drain, slow, berserk, etc.) it's significantly faster than the default
+     damage calculation method.
 
 Version 1.13.5:
  * Campaigns:

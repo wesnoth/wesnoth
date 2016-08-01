@@ -41,6 +41,13 @@ Version 1.13.5:
    * Added "Registered users only" checkbox to multiplayer configuration dialog which
      when checked, only allows registered users to join the game
 
+ * Performance:
+   * When a heuristic determines that it's probably faster, the game predicts battle
+     outcome by simulating a few thousand fights instead of calculating exact
+     probabilities. This method is inexact, but in very complex battles (extremely
+     high HP, drain, slow, berserk, etc.) it's significantly faster than the default
+     damage calculation method.
+
 Version 1.13.4:
  * Language and i18n:
    * Updated translations: British English, Russian.
