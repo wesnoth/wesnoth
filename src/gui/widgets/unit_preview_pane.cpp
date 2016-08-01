@@ -25,13 +25,13 @@
 #include "gui/widgets/window.hpp"
 
 #include "formula/string_utils.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "marked-up_text.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
 
@@ -47,14 +47,15 @@ REGISTER_WIDGET(unit_preview_pane)
 void tunit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_      = find_widget<timage>(this, "type_image" , false, false);
-	icon_race_      = find_widget<timage>(this, "type_race" , false, false);
-	icon_alignment_ = find_widget<timage>(this, "type_alignment", false, false);
+	icon_type_              = find_widget<timage>(this, "type_image" , false, false);
+	icon_race_              = find_widget<timage>(this, "type_race" , false, false);
+	icon_alignment_         = find_widget<timage>(this, "type_alignment", false, false);
 
 	// Labels
-	label_name_     = find_widget<tlabel>(this, "type_name" , false, false);
-	label_level_    = find_widget<tlabel>(this, "type_level" , false, false);
-	label_details_  = find_widget<tlabel>(this, "type_details", false, false);
+	label_name_             = find_widget<tlabel>(this, "type_name" , false, false);
+	label_level_            = find_widget<tlabel>(this, "type_level" , false, false);
+	label_details_          = find_widget<tlabel>(this, "type_details", false, false);
+	label_details_minimal_  = find_widget<tlabel>(this, "type_details_minimal", false, false);
 
 	// Profile button
 	button_profile_ = find_widget<tbutton>(this, "type_profile", false, false);
@@ -62,6 +63,33 @@ void tunit_preview_pane::finalize_setup()
 	if(button_profile_) {
 		connect_signal_mouse_left_click(*button_profile_,
 			std::bind(&tunit_preview_pane::profile_button_callback, this));
+	}
+}
+
+/*
+ * Both unit and unit_type use the same format (vector of attack_types) for their
+ * attack data, meaning we can keep this as a helper function.
+ */
+void tunit_preview_pane::print_attack_details(const std::vector<attack_type>& attacks, std::stringstream& str)
+{
+	str << "<b>" << _("Attacks") << "</b>" << "\n";
+
+	for(const auto& a : attacks) {
+		str << "<span color='#f5e6c1'>" << a.damage()
+			<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
+
+		str << "<span color='#a69275'>" << "  " << a.range()
+			<< font::weapon_details_sep << a.type() << "</span>" << "\n";
+
+		const std::string special = a.weapon_specials();
+		if (!special.empty()) {
+			str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
+		}
+
+		const std::string accuracy_parry = a.accuracy_parry_description();
+		if(!accuracy_parry.empty()) {
+			str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
+		}
 	}
 }
 
@@ -122,14 +150,11 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 		str << "<b>" << _("MP: ") << "</b>"
 			<< type->movement() << "\n";
 
-		str << " \n";
+		str << "\n";
 
 		// Print trait details
-		bool has_traits = false;
 		std::stringstream t_str;
-
-		for(const auto& tr : type->possible_traits())
-		{
+		for(const auto& tr : type->possible_traits()) {
 			if(tr["availability"] != "musthave") continue;
 
 			const std::string gender_string =
@@ -143,50 +168,28 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 			if(!name.empty()) {
 				t_str << "  " << name << "\n";
 			}
-
-			has_traits = true;
 		}
 
-		if(has_traits) {
+		if(!t_str.str().empty()) {
 			str << "<b>" << _("Traits") << "</b>" << "\n";
 			str << t_str.str();
-			str << " \n";
+			str << "\n";
 		}
 
 		// Print ability details
 		if(!type->abilities().empty()) {
 			str << "<b>" << _("Abilities") << "</b>" << "\n";
 
-			for(const auto& ab : type->abilities())
-			{
+			for(const auto& ab : type->abilities()) {
 				str << "  " << ab << "\n";
 			}
 
-			str << " \n";
+			str << "\n";
 		}
 
 		// Print attack details
 		if(!type->attacks().empty()) {
-			str << "<b>" << _("Attacks") << "</b>" << "\n";
-
-			for(const auto& a : type->attacks())
-			{
-				str << "<span color='#f5e6c1'>" << a.damage()
-					<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
-
-				str << "<span color='#a69275'>" << "  " << a.range()
-					<< font::weapon_details_sep << a.type() << "</span>" << "\n";
-
-				const std::string special = a.weapon_specials();
-				if (!special.empty()) {
-					str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
-				}
-
-				const std::string accuracy_parry = a.accuracy_parry_description();
-				if(!accuracy_parry.empty()) {
-					str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
-				}
-			}
+			print_attack_details(type->attacks(), str);
 		}
 
 		label_details_->set_label(str.str());
@@ -217,7 +220,14 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 	}
 
 	if(label_name_) {
-		label_name_->set_label("<big>" + unit->type_name() + "</big>");
+		std::string name;
+		if(!unit->name().empty()) {
+			name = "<span size='large'>" + unit->name() + "</span>" + "\n" + "<small><span color='#a69275'>" + unit->type_name() + "</span></small>";
+		} else {
+			name = "<span size='large'>" + unit->type_name() + "</span>\n";
+		}
+
+		label_name_->set_label(name);
 		label_name_->set_use_markup(true);
 	}
 
@@ -245,31 +255,19 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 			unit->gender()));
 	}
 
-	// For this, we want to display certain info in the details label if the corresponding
-	// widgets aren't present in the definiton.
-	if(label_details_) {
+	if(label_details_minimal_) {
 		std::stringstream str;
-		str << "<small>";
 
-		if(!label_name_) {
-			const std::string name = "<span size='large'>" + (!unit->name().empty() ? unit->name() : " ") + "</span>";
-			str << name << "\n";
-		}
+		const std::string name = "<span size='large'>" + (!unit->name().empty() ? unit->name() : " ") + "</span>";
+		str << name << "\n";
 
-		if(!icon_type_) {
-			str << "<span color='#f5e6c1'>" << unit->type_name() << "</span>" << "\n";
-		}
+		str << "<span color='#f5e6c1'>" << unit->type_name() << "</span>" << "\n";
 
-		if(!label_level_) {
-			str << "Lvl " << unit->level() << "\n";
-		}
+		str << "Lvl " << unit->level() << "\n";
 
-		if(!icon_alignment_) {
-			str << unit->alignment() << "\n";
-		}
+		str << unit->alignment() << "\n";
 
 		std::string traits;
-
 		for(const std::string& trait : unit->trait_names()) {
 			traits += (traits.empty() ? "" : ", ") + trait;
 		}
@@ -286,14 +284,50 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 		str << font::span_color(unit->xp_color())
 			<< _("XP: ") << unit->experience() << "/" << unit->max_experience() << "</span>";
 
-		// TODO: enable
-		//str << "\n"
-		//	<< _("MP: ") << unit->movement_left() << "/" << unit->total_movement();
+		label_details_minimal_->set_label(str.str());
+		label_details_minimal_->set_use_markup(true);
+	}
+
+	if(label_details_) {
+		std::stringstream str;
+		str << "<small>";
+
+		str << "<b>" << _("HP: ") << "</b>"
+			<<font::span_color(unit->hp_color()) << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>" << " | ";
+
+		str << "<b>" << _("XP: ") << "</b>"
+			<< font::span_color(unit->xp_color()) << unit->experience() << "/" << unit->max_experience() << "</span>" << " | ";
+
+		str << "<b>" << _("MP: ") << "</b>"
+			<< unit->movement_left() << "/" << unit->total_movement();
 
 		str << "</small>";
+		str << "\n\n";
 
-		// TODO: add abilty and attack printouts. Currently the only usecase of a unit display
-		// (the attack dialog) doesn't need these.
+		// Print trait details
+		if(!unit->trait_names().empty()) {
+			str << "<b>" << _("Traits") << "</b>" << "\n";
+
+			for(const auto& trait : unit->trait_names()) {
+				str << "  " << trait << "\n";
+			}
+
+			str << "\n";
+		}
+
+		if(!unit->get_ability_list().empty()) {
+			str << "<b>" << _("Abilities") << "</b>" << "\n";
+
+			for(const auto& ab : unit->get_ability_list()) {
+				str << "  " << ab << "\n";
+			}
+
+			str << "\n";
+		}
+
+		if(!unit->attacks().empty()) {
+			print_attack_details(unit->attacks(), str);
+		}
 
 		label_details_->set_label(str.str());
 		label_details_->set_use_markup(true);

@@ -18,6 +18,7 @@
 
 #include <string>
 
+class attack_type;
 class unit;
 class unit_type;
 
@@ -49,6 +50,7 @@ public:
 		, label_name_(nullptr)
 		, label_level_(nullptr)
 		, label_details_(nullptr)
+		, label_details_minimal_(nullptr)
 		, button_profile_(nullptr)
 		, image_mods_()
 	{
@@ -86,17 +88,20 @@ protected:
 private:
 	std::string current_type_;
 
-	timage*  icon_type_;
-	timage*  icon_race_;
-	timage*  icon_alignment_;
+	timage* icon_type_;
+	timage* icon_race_;
+	timage* icon_alignment_;
 
-	tlabel*  label_name_;
-	tlabel*  label_level_;
-	tlabel*  label_details_;
+	tlabel* label_name_;
+	tlabel* label_level_;
+	tlabel* label_details_;
+	tlabel* label_details_minimal_;
 
 	tbutton* button_profile_;
 
 	std::string image_mods_;
+
+	void print_attack_details(const std::vector<attack_type>& attacks, std::stringstream& str);
 
 	enum tstate {
 		ENABLED

@@ -843,6 +843,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
+	gui/dialogs/unit_recall.cpp
 	gui/dialogs/unit_recruit.cpp
 	gui/dialogs/wml_error.cpp
 	gui/dialogs/wml_message.cpp

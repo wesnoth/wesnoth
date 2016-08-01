@@ -52,6 +52,7 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_recall.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -640,16 +641,22 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
-	int unit_cost = current_team.recall_cost();
-	if (res < 0) {
+	gui2::tunit_recall dlg(recall_list_team, current_team);
+
+	dlg.show(gui_->video());
+
+	if(dlg.get_retval() != gui2::twindow::OK) {
 		return;
 	}
+
+	int res = dlg.get_selected_index();
+	int unit_cost = current_team.recall_cost();
+
 	// we need to check if unit has a specific recall cost
 	// if it does we use it elsewise we use the team.recall_cost()
 	// the magic number -1 is what it gets set to if the unit doesn't
 	// have a special recall_cost of its own.
-	else if(recall_list_team->at(res)->recall_cost() > -1) {
+	if(recall_list_team->at(res)->recall_cost() > -1) {
 		unit_cost = recall_list_team->at(res)->recall_cost();
 	}
 
@@ -686,8 +693,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			true,
 			synced_context::ignore_error_function);
 
-		if(!success)
-		{
+		if(!success) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list." << std::endl;
 		}
 	}
