@@ -192,18 +192,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	if ( race_ != &unit_race::null_race )
 	{
-		if (!race_->uses_global_traits()) {
-			possible_traits_.clear();
-		}
-		if ( cfg_["ignore_race_traits"].to_bool() ) {
-			possible_traits_.clear();
-		} else {
-			for (const config &t : race_->additional_traits())
-			{
-				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
-					possible_traits_.add_child("trait", t);
-			}
-		}
 		if (undead_variation_.empty()) {
 			undead_variation_ = race_->undead_variation();
 		}
@@ -334,12 +322,30 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	{
 		possible_traits_.add_child("trait", t);
 	}
+	if ( race_ != &unit_race::null_race )
+	{
+		if (!race_->uses_global_traits()) {
+			possible_traits_.clear();
+		}
+		if ( cfg_["ignore_race_traits"].to_bool() ) {
+			possible_traits_.clear();
+		} else {
+			for (const config &t : race_->additional_traits())
+			{
+				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
+					possible_traits_.add_child("trait", t);
+			}
+		}
+		if (undead_variation_.empty()) {
+			undead_variation_ = race_->undead_variation();
+		}
+	}
 	// Insert any traits that are just for this unit type
 	for (const config &trait : cfg_.child_range("trait"))
 	{
 		possible_traits_.add_child("trait", trait);
 	}
-	
+
 	for (const config &var_cfg : cfg_.child_range("variation"))
 	{
 		const std::string& var_id = var_cfg["variation_id"].empty() ?
