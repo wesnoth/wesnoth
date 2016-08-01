@@ -122,7 +122,7 @@ static std::string trait_key(unit_const_ptr u)
 }
 
 template<typename Fnc>
-void tunit_recall::init_sorting_option(std::vector<tgenerator_::torder_func>& order_funcs, Fnc filter_on)
+void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
 {
 	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
 		return filter_on((*recall_list_)[i1]) < filter_on((*recall_list_)[i2]);
@@ -249,7 +249,7 @@ void tunit_recall::pre_show(twindow& window)
 		filter_options_.push_back(filter_text);
 	}
 
-	std::vector<tgenerator_::torder_func> order_funcs(2);
+	generator_sort_array order_funcs;
 
 	init_sorting_option(order_funcs, std::bind(&tstr_key, _1, &unit::type_name));
 	list.set_column_order(0, order_funcs);

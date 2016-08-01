@@ -234,7 +234,7 @@ public:
 
 	void order_by(const tgenerator_::torder_func& func);
 
-	void set_column_order(unsigned col, const std::vector<tgenerator_::torder_func>& func);
+	void set_column_order(unsigned col, const generator_sort_array& func);
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -308,7 +308,7 @@ private:
 
 	bool need_layout_;
 
-	typedef std::vector<std::pair<tselectable_*, std::vector<tgenerator_::torder_func> > > torder_list;
+	typedef std::vector<std::pair<tselectable_*, generator_sort_array > > torder_list;
 	torder_list orders_;
 	/**
 	 * Resizes the content.

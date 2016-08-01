@@ -55,7 +55,7 @@ private:
 	std::vector<std::string> last_words_;
 
 	template<typename T>
-	void init_sorting_option(std::vector<tgenerator_::torder_func>& order_funcs, T filter_on);
+	void init_sorting_option(generator_sort_array& order_funcs, T filter_on);
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);

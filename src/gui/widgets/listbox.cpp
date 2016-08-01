@@ -593,7 +593,7 @@ void tlistbox::order_by(const tgenerator_::torder_func& func)
 	need_layout_ = true;
 }
 
-void tlistbox::set_column_order(unsigned col, const std::vector<tgenerator_::torder_func>& func)
+void tlistbox::set_column_order(unsigned col, const generator_sort_array& func)
 {
 	if(col >= orders_.size()) {
 		orders_.resize(col + 1);

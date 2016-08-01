@@ -878,7 +878,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
 
-	std::vector<tgenerator_::torder_func> order_funcs(2);
+	generator_sort_array order_funcs;
 
 	order_funcs[0] = hotkey_sort_by_desc<false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_desc<true>(visible_hotkeys_);

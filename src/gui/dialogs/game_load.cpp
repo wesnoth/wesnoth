@@ -186,7 +186,7 @@ void tgame_load::fill_game_list(twindow& window,
 
 		list.add_row(data);
 	}
-	std::vector<tgenerator_::torder_func> order_funcs(2);
+	generator_sort_array order_funcs;
 	order_funcs[0] = std::bind(&tgame_load::compare_name, this, _1, _2);
 	order_funcs[1] = std::bind(&tgame_load::compare_name_rev, this, _1, _2);
 	list.set_column_order(0, order_funcs);

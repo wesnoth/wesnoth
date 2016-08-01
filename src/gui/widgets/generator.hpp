@@ -364,6 +364,8 @@ protected:
 	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
 };
 
+using generator_sort_array = std::array<tgenerator_::torder_func, 2>;
+
 } // namespace gui2
 
 #endif

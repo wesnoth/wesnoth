@@ -158,7 +158,7 @@ void tunit_create::pre_show(twindow& window)
 				  << std::endl;
 	}
 
-	std::vector<tgenerator_::torder_func> order_funcs(2);
+	generator_sort_array order_funcs;
 	order_funcs[0] = std::bind(&tunit_create::compare_race, this, _1, _2);
 	order_funcs[1] = std::bind(&tunit_create::compare_race_rev, this, _1, _2);
 	list.set_column_order(0, order_funcs);
