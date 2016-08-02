@@ -317,6 +317,7 @@ public:
 	std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
+	config& get_modifications() { return modifications_; }
 
 	typedef boost::ptr_vector<config> t_advancements;
 	void set_advancements(std::vector<config> advancements);

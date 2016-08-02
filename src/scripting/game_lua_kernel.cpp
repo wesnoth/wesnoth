@@ -3623,6 +3623,32 @@ static int intf_add_modification(lua_State *L)
 }
 
 /**
+ * Removes modifications from a unit
+ * - Arg 1: unit
+ * - Arg 2: table (filter as [filter_wml])
+ * - Arg 3: type of modification (default "object")
+ */
+static int intf_remove_modifications(lua_State *L)
+{
+	unit& u = luaW_checkunit(L, 1);
+	config filter = luaW_checkconfig(L, 2);
+	std::string tag = luaL_optstring(L, 3, "object");
+	config::const_attr_itors ai = filter.attribute_range();
+	config::all_children_itors ci = filter.all_children_range();
+	if(std::distance(ai.first, ai.second) == 1 && std::distance(ci.first, ci.second) == 0 && ai.first->first == "duration") {
+		u.expire_modifications(filter["duration"]);
+	} else {
+		for(config& obj : u.get_modifications().child_range(tag)) {
+			if(obj.matches(filter)) {
+				obj["duration"] = "now";
+			}
+		}
+		u.expire_modifications("now");
+	}
+	return 0;
+}
+
+/**
  * Advances a unit if the unit has enough xp.
  * - Arg 1: unit.
  * - Arg 2: optional boolean whether to animate the advancement.
@@ -4617,6 +4643,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "get_traits",               &intf_get_traits               },
 		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "modify_ai",                &intf_modify_ai                },
+		{ "remove_modifications",     &intf_remove_modifications     },
 		{ "set_music",                &intf_set_music                },
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_ability",             &intf_unit_ability             },
@@ -4985,6 +5012,7 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"extract",               &dispatch<&game_lua_kernel::intf_extract_unit>},
 		{"advance",               intf_advance_unit},
 		{"add_modification",      intf_add_modification},
+		{"remove_modifications",  intf_remove_modifications},
 		{"resistance",            intf_unit_resistance},
 		{"defense",               intf_unit_defense},
 		{"movement",              intf_unit_movement_cost},

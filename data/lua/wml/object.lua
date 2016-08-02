@@ -10,8 +10,10 @@ function wml_actions.object(cfg)
 	local context = wesnoth.current.event_context
 
 	-- If this item has already been used
+	local unique = cfg.take_only_once
+	if unique == nil then unique = true end
 	local obj_id = utils.check_key(cfg.id, "id", "object", true)
-	if obj_id and used_items[obj_id] then return end
+	if obj_id and unique and used_items[obj_id] then return end
 
 	local unit, command_type, text
 
@@ -43,7 +45,7 @@ function wml_actions.object(cfg)
 		wesnoth.highlight_hex(unit.x, unit.y)
 
 		-- Mark this item as used up
-		if obj_id then used_items[obj_id] = true end
+		if obj_id and unique then used_items[obj_id] = true end
 	else
 		text = tostring(cfg.cannot_use_message or "")
 		command_type = "else"
@@ -84,6 +86,13 @@ function wesnoth.game_events.on_save()
 	local cfg = old_on_save()
 	table.insert(cfg, T.used_items(used_items) )
 	return cfg
+end
+
+function wml_actions.remove_object(cfg)
+	local obj_id = cfg.object_id
+	for _,unit in ipairs(wesnoth.get_units(cfg)) do
+		wesnoth.remove_modifications(unit, {id = obj_id})
+	end
 end
 
 function wesnoth.wml_conditionals.found_item(cfg)

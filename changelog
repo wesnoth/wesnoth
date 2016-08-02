@@ -18,9 +18,19 @@ Version 1.13.5+dev:
    * [modify_unit] now understands [effect] tags, which it applies directly.
      This replaces the use of [object] with no_write=yes (which will be removed
      in the next release).
+   * Add [object]take_only_once=yes|no (default yes) - if set to no, automatic
+     tracking is disabled for this object (allowing it to be taken multiple times
+     even if it has an id).
+   * New [remove_object] tag which removes applied [object]s from matched units;
+     it can filter on the entire [object] WML. The most efficient use is to
+     remove all objects with a specific duration value.
  * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
      function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
+   * Added new function wesnoth.remove_modifications, which removes applied
+     modifications of the chosen type from a unit. The most efficient use is to
+     remove all modifications with a specific duration value.
+     Also callable as u:remove_modifications.
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts battle
      outcome by simulating a few thousand fights instead of calculating exact
