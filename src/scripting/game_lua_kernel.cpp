@@ -3613,6 +3613,9 @@ static int intf_add_modification(lua_State *L)
 	if (!lua_isnone(L, 4)) {
 		write_to_mods = luaW_toboolean(L, 4);
 	}
+	if(sm.empty()) {
+		write_to_mods = false;
+	}
 
 	config cfg = luaW_checkconfig(L, 3);
 	u.add_modification(sm, cfg, !write_to_mods);

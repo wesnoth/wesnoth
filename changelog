@@ -15,6 +15,9 @@ Version 1.13.5+dev:
      - [else] sub-tag, WML to execute if no unit found for the role
    * New help_text= key for [trait] to set the description displayed in the help.
    * Added tag id= [fire_event], which allows raising events by id
+   * [modify_unit] now understands [effect] tags, which it applies directly.
+     This replaces the use of [object] with no_write=yes (which will be removed
+     in the next release).
  * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
      function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name

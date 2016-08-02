@@ -51,6 +51,18 @@ function wml_actions.modify_unit(cfg)
 				wesnoth.add_modification(unit, current_tag, mod)
 				unit = unit.__cfg;
 				wesnoth.set_variable(unit_path, unit)
+			elseif current_tag == "effect" then
+				local mod = current_table[2]
+				local apply_to = mod.apply_to
+				if wesnoth.effects[apply_to] then
+					local unit = wesnoth.get_variable(unit_path)
+					unit = wesnoth.create_unit(unit)
+					wesnoth.effects[apply_to](unit, mod)
+					unit = unit.__cfg;
+					wesnoth.set_variable(unit_path, unit)
+				else
+					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
+				end
 			else
 				local tag_index = children_handled[current_tag] or 0
 				handle_child(current_table[2], string.format("%s.%s[%u]",

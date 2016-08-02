@@ -27,6 +27,10 @@ function wml_actions.object(cfg)
 		text = tostring(cfg.description or "")
 		command_type = "then"
 
+		if cfg.no_write ~= nil then
+			wesnoth.log("wml", "[object]no_write=yes is deprecated in favour of placing [effect] tags in [modify_unit]")
+		end
+
 		local dvs = cfg.delayed_variable_substitution
 		local add = cfg.no_write ~= true
 		if dvs then
