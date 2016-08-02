@@ -107,8 +107,8 @@ public:
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
-			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE);
-	void send_chat_message(const std::string& message, bool allies_only=false);
+			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE) override;
+	void send_chat_message(const std::string& message, bool allies_only=false) override;
 private:
 	//console_handler is basically a sliced out part of menu_handler
 	//and as such needs access to menu_handler's privates
