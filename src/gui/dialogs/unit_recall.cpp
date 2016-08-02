@@ -124,11 +124,11 @@ static std::string trait_key(unit_const_ptr u)
 template<typename Fnc>
 void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
 {
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+	order_funcs[0] = [this, &filter_on](unsigned i1, unsigned i2) {
 		return filter_on((*recall_list_)[i1]) < filter_on((*recall_list_)[i2]);
 	};
 
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+	order_funcs[1] = [this, &filter_on](unsigned i1, unsigned i2) {
 		return filter_on((*recall_list_)[i1]) > filter_on((*recall_list_)[i2]);
 	};
 }
