@@ -4895,6 +4895,9 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_newtable(L);
 	lua_setfield(L, -2, "wml_conditionals");
 	lua_pop(L, 1);
+	set_wml_condition("have_unit", &game_events::builtin_conditions::have_unit);
+	set_wml_condition("have_location", &game_events::builtin_conditions::have_location);
+	set_wml_condition("variable", &game_events::builtin_conditions::variable_matches);
 
 	// Create the effects table.
 	cmd_log_ << "Adding effects table...\n";
@@ -5221,6 +5224,38 @@ void game_lua_kernel::set_wml_action(std::string const &cmd, game_events::wml_ac
 	lua_pushstring(L, cmd.c_str());
 	lua_pushlightuserdata(L, reinterpret_cast<void *>(h));
 	lua_pushcclosure(L, &dispatch<&game_lua_kernel::cfun_wml_action>, 1);
+	lua_rawset(L, -3);
+	lua_pop(L, 2);
+}
+
+using wml_conditional_handler = bool(*)(const vconfig&);
+
+/**
+ * Executes its upvalue as a wml condition and returns the result.
+ */
+static int cfun_wml_condition(lua_State *L)
+{
+	wml_conditional_handler h = reinterpret_cast<wml_conditional_handler>
+		(lua_touserdata(L, lua_upvalueindex(1)));
+
+	vconfig vcfg = luaW_checkvconfig(L, 1);
+	lua_pushboolean(L, h(vcfg));
+	return 1;
+}
+
+/**
+ * Registers a function for use as a conditional handler.
+ */
+void game_lua_kernel::set_wml_condition(std::string const &cmd, wml_conditional_handler h)
+{
+	lua_State *L = mState;
+
+	lua_getglobal(L, "wesnoth");
+	lua_pushstring(L, "wml_conditionals");
+	lua_rawget(L, -2);
+	lua_pushstring(L, cmd.c_str());
+	lua_pushlightuserdata(L, reinterpret_cast<void *>(h));
+	lua_pushcclosure(L, &cfun_wml_condition, 1);
 	lua_rawset(L, -3);
 	lua_pop(L, 2);
 }

@@ -43,7 +43,7 @@ static lg::log_domain log_engine("engine");
 // This file is in the game_events namespace.
 namespace game_events {
 
-namespace { // Support functions
+namespace builtin_conditions {
 	std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
 	bool have_unit(const vconfig& cfg)
@@ -143,7 +143,9 @@ namespace { // Support functions
 #undef TEST_BOL_ATTR
 		return true;
 	}
+}
 
+namespace { // Support functions
 	bool internal_conditional_passed(const vconfig& cond)
 	{
 		if(cond.has_child("true")) {
@@ -160,13 +162,7 @@ namespace { // Support functions
 		for(vconfig::all_children_iterator it = cond.ordered_begin(); it != cond_end; ++it) {
 			std::string key = it.get_key();
 			bool result = true;
-			if(key == "have_unit") {
-				result = have_unit(it.get_child());
-			} else if(key == "have_location") {
-				result = have_location(it.get_child());
-			} else if(key == "variable") {
-				result = variable_matches(it.get_child());
-			} else if(std::find(skip.begin(), skip.end(), key) == skip.end()) {
+			if(std::find(skip.begin(), skip.end(), key) == skip.end()) {
 				assert(resources::lua_kernel);
 				result = resources::lua_kernel->run_wml_conditional(key, it.get_child());
 			}

@@ -31,6 +31,9 @@ Version 1.13.5+dev:
      modifications of the chosen type from a unit. The most efficient use is to
      remove all modifications with a specific duration value.
      Also callable as u:remove_modifications.
+   * The built-in conditionals have_unit, have_location, and variable are now
+     present in the wesnoth.wml_conditionals table. This means they can be directly
+     called, extended with new features, or even overridden with custom implementations.
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts battle
      outcome by simulating a few thousand fights instead of calculating exact
