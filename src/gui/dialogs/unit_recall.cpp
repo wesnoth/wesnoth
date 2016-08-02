@@ -170,8 +170,6 @@ void tunit_recall::pre_show(twindow& window)
 	filter->set_text_changed_callback(
 			std::bind(&tunit_recall::filter_text_changed, this, _1, _2));
 
-	window.keyboard_capture(filter);
-
 	tlistbox& list = find_widget<tlistbox>(&window, "recall_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -184,6 +182,9 @@ void tunit_recall::pre_show(twindow& window)
 #endif
 
 	list.clear();
+
+	window.add_to_keyboard_chain(filter);
+	window.add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "dismiss", false),

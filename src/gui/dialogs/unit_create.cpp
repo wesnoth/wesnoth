@@ -113,7 +113,8 @@ void tunit_create::pre_show(twindow& window)
 	filter->set_text_changed_callback(
 			std::bind(&tunit_create::filter_text_changed, this, _1, _2));
 
-	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(filter);
+	window.add_to_keyboard_chain(&list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
