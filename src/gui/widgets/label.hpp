@@ -116,7 +116,7 @@ private:
 	virtual const std::string& get_control_type() const override;
 
 	/** Inherited from tcontrol. */
-	void load_config_extra();
+	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

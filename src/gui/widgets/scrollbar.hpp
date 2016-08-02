@@ -349,7 +349,7 @@ private:
 	void move_positioner(const int distance);
 
 	/** Inherited from tcontrol. */
-	void load_config_extra();
+	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

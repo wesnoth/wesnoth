@@ -40,8 +40,8 @@ protected:
 	//called from do_speak
 	virtual void add_chat_message(const time_t& time,
 			const std::string& speaker, int side, const std::string& message,
-			MESSAGE_TYPE type=MESSAGE_PRIVATE)=0;
-	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
+			MESSAGE_TYPE type=MESSAGE_PRIVATE) = 0;
+	virtual void send_chat_message(const std::string& message, bool allies_only=false) = 0;
 
 	//Why are these virtual?
 	virtual void send_whisper(const std::string& receiver, const std::string& message);

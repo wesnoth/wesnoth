@@ -85,7 +85,7 @@ public:
 
 	//event handler, overridden from observer
 	//there is nothing to handle in this class actually but that might change in the future
-	virtual void handle_generic_event(const std::string& /*name*/) {}
+	virtual void handle_generic_event(const std::string& /*name*/) override {}
 
 	bool can_undo() const;
 	bool can_redo() const;
@@ -193,7 +193,7 @@ public:
 
 	void do_consolesave(const std::string& filename);
 
-	events::mouse_handler& get_mouse_handler_base();
+	events::mouse_handler& get_mouse_handler_base() override;
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
 	std::shared_ptr<wb::manager> get_whiteboard();
@@ -206,9 +206,9 @@ public:
 
 	int get_ticks();
 
-	virtual soundsource::manager* get_soundsource_man();
-	virtual plugins_context* get_plugins_context();
-	hotkey::command_executor* get_hotkey_command_executor();
+	virtual soundsource::manager* get_soundsource_man() override;
+	virtual plugins_context* get_plugins_context() override;
+	hotkey::command_executor* get_hotkey_command_executor() override;
 
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
@@ -256,7 +256,7 @@ public:
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
 	int ticks() const { return ticks_; }
-	game_display& get_display();
+	game_display& get_display() override;
 
 	void update_savegame_snapshot() const;
 	/**
@@ -276,10 +276,10 @@ protected:
 	};
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
-	bool have_keyboard_focus();
-	void process_focus_keydown_event(const SDL_Event& event);
-	void process_keydown_event(const SDL_Event& event);
-	void process_keyup_event(const SDL_Event& event);
+	bool have_keyboard_focus() override;
+	void process_focus_keydown_event(const SDL_Event& event) override;
+	void process_keydown_event(const SDL_Event& event) override;
+	void process_keyup_event(const SDL_Event& event) override;
 
 	void init_managers();
 	///preload events cannot be synced

@@ -239,16 +239,16 @@ protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	void handle_key_up_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	void handle_key_down_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	void handle_key_left_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+	void handle_key_right_arrow(SDLMod modifier, bool& handled) override;
 
 private:
 	/**
@@ -343,7 +343,7 @@ private:
 	void layout_children(const bool force);
 
 	/** Inherited from tscrollbar_container. */
-	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+	virtual void set_content_size(const tpoint& origin, const tpoint& size) override;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
