@@ -18,6 +18,8 @@
 #include "widget.hpp"
 #include "tstring.hpp"
 
+#include <array>
+
 typedef std::map<std::string, t_string> string_map;
 
 namespace gui2
