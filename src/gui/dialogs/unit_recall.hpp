@@ -54,8 +54,8 @@ private:
 	std::vector<std::string> filter_options_;
 	std::vector<std::string> last_words_;
 
-	template<typename T>
-	void init_sorting_option(generator_sort_array& order_funcs, T filter_on);
+	template<typename Ret>
+	void init_sorting_option(generator_sort_array& order_funcs, std::function<Ret(unit_const_ptr)> filter_on);
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);

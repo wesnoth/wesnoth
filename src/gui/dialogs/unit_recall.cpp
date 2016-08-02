@@ -121,14 +121,14 @@ static std::string trait_key(unit_const_ptr u)
     return !u->trait_names().empty() ? u->trait_names().front().str() : "";
 }
 
-template<typename Fnc>
-void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+template<typename Ret>
+void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, std::function<Ret(unit_const_ptr)> filter_on)
 {
-	order_funcs[0] = [this, &filter_on](unsigned i1, unsigned i2) {
+	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
 		return filter_on((*recall_list_)[i1]) < filter_on((*recall_list_)[i2]);
 	};
 
-	order_funcs[1] = [this, &filter_on](unsigned i1, unsigned i2) {
+	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
 		return filter_on((*recall_list_)[i1]) > filter_on((*recall_list_)[i2]);
 	};
 }
@@ -252,19 +252,19 @@ void tunit_recall::pre_show(twindow& window)
 
 	generator_sort_array order_funcs;
 
-	init_sorting_option(order_funcs, std::bind(&tstr_key, _1, &unit::type_name));
+	init_sorting_option<std::string>(order_funcs, std::bind(&tstr_key, _1, &unit::type_name));
 	list.set_column_order(0, order_funcs);
 
-	init_sorting_option(order_funcs, std::bind(&tstr_key, _1, &unit::name));
+	init_sorting_option<std::string>(order_funcs, std::bind(&tstr_key, _1, &unit::name));
 	list.set_column_order(1, order_funcs);
 
-	init_sorting_option(order_funcs, std::bind(&unit::level, _1));
+	init_sorting_option<int>(order_funcs, std::bind(&unit::level, _1));
 	list.set_column_order(2, order_funcs);
 
-	init_sorting_option(order_funcs, std::bind(&unit::experience, _1));
+	init_sorting_option<int>(order_funcs, std::bind(&unit::experience, _1));
 	list.set_column_order(3, order_funcs);
 
-	init_sorting_option(order_funcs, std::bind(&trait_key, _1));
+	init_sorting_option<std::string>(order_funcs, std::bind(&trait_key, _1));
 	list.set_column_order(4, order_funcs);
 
 	list_item_clicked(window);
