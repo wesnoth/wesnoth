@@ -111,8 +111,8 @@ static std::string format_cost_string(int unit_recall_cost, const int team_recal
 	return str.str();
 }
 
-template<typename Fnc>
-void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+template<typename Fcn>
+void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
 {
 	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
 		return filter_on((*recall_list_)[i1]) < filter_on((*recall_list_)[i2]);

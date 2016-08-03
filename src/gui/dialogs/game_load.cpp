@@ -161,16 +161,16 @@ void tgame_load::pre_show(twindow& window)
 	display_savegame(window);
 }
 
-template<typename Fnc>
-void tgame_load::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+template<typename Fcn>
+void tgame_load::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
 {
-    order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-        return filter_on(games_[i1]) < filter_on(games_[i2]);
-    };
+	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on(games_[i1]) < filter_on(games_[i2]);
+	};
 
-    order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-        return filter_on(games_[i1]) > filter_on(games_[i2]);
-    };
+	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on(games_[i1]) > filter_on(games_[i2]);
+	};
 }
 
 void tgame_load::display_savegame(twindow& window)

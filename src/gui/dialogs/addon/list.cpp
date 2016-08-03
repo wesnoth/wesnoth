@@ -314,8 +314,8 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 	return colorify_addon_state_string(s, state);
 }
 
-template<typename Fnc>
-void taddon_list::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+template<typename Fcn>
+void taddon_list::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
 {
 	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
 		return filter_on(addon_at(ids_[i1], addons_)) < filter_on(addon_at(ids_[i2], addons_));

@@ -70,8 +70,8 @@ private:
 	void evaluate_summary_string(std::stringstream& str,
 								 const config& cfg_summary);
 
-	template<typename Fnc>
-	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
+	template<typename Fcn>
+	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	tfield_text* txtFilter_;
 	tfield_bool* chk_change_difficulty_;

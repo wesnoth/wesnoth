@@ -87,16 +87,16 @@ tunit_create::tunit_create()
 {
 }
 
-template<typename Fnc>
-void tunit_create::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+template<typename Fcn>
+void tunit_create::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
 {
-    order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-        return filter_on((*units_[i1])) < filter_on((*units_[i2]));
-    };
+	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on((*units_[i1])) < filter_on((*units_[i2]));
+	};
 
-    order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-        return filter_on((*units_[i1])) > filter_on((*units_[i2]));
-    };
+	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on((*units_[i1])) > filter_on((*units_[i2]));
+	};
 }
 
 void tunit_create::pre_show(twindow& window)

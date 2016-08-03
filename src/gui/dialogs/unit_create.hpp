@@ -69,8 +69,8 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
-	template<typename Fnc>
-	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
+	template<typename Fcn>
+	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
