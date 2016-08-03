@@ -99,15 +99,17 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 	current_type_ = type->id();
 
 	if(icon_type_) {
-		std::string tc;
+		std::string mods;
 
 		if(resources::controller) {
-			tc = "~RC(" + type->flag_rgb() + ">" +
+			mods = "~RC(" + type->flag_rgb() + ">" +
 				 team::get_side_color_index(resources::controller->current_side())
 				 + ")";
 		}
+		
+		mods += image_mods_;
 
-		icon_type_->set_label((type->icon().empty() ? type->image() : type->icon()) + tc);
+		icon_type_->set_label((type->icon().empty() ? type->image() : type->icon()) + mods);
 	}
 
 	if(label_name_) {
@@ -141,6 +143,8 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 
 	if(label_details_) {
 		std::stringstream str;
+		str << "<small>";
+
 		str << "<b>" << _("HP: ") << "</b>"
 			<< "<span color='#21e100'>" << type->hitpoints() << "</span> ";
 
@@ -150,6 +154,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 		str << "<b>" << _("MP: ") << "</b>"
 			<< type->movement() << "\n";
 
+		str << "</small>";
 		str << "\n";
 
 		// Print trait details
