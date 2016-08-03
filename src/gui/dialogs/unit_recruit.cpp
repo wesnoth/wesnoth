@@ -69,6 +69,8 @@ void tunit_recruit::pre_show(twindow& window)
 		dialog_callback<tunit_recruit, &tunit_recruit::list_item_clicked>);
 #endif
 
+	window.keyboard_capture(&list);
+
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "show_help", false),
 		std::bind(&tunit_recruit::show_help, this, std::ref(window)));
