@@ -157,6 +157,7 @@ void holder::modify_side_ai_config(config cfg)
 	// transform ai_parameters to new-style config
 
 	configuration::expand_simplified_aspects(this->side_, cfg);
+	cfg = cfg.child("ai");
 	//at this point we have a single config which contains [aspect][facet] tags
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
@@ -713,9 +714,12 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
 {
+	config cfgs;
 	for (const config& cfg : ai_parameters) {
-		get_active_ai_holder_for_side(side).modify_side_ai_config(cfg);
+		cfgs.add_child("ai", cfg);
 	}
+	cfgs.child_or_add("ai").add_child("stage");
+	get_active_ai_holder_for_side(side).modify_side_ai_config(cfgs);
 }
 
 
