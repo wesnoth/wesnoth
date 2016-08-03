@@ -174,11 +174,6 @@ static void set_weapon_info(twindow& window,
 	weapon_list.select_row(best_weapon);
 }
 
-void tunit_attack::profile_button_callback(twindow& window, const std::string& type)
-{
-	help::show_unit_help(window.video(), type);
-}
-
 void tunit_attack::damage_calc_callback(twindow& window)
 {
 	const int selection
