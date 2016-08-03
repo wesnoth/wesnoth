@@ -39,7 +39,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
-#include "preferences_display.hpp"
 #include "savegame.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -97,7 +96,7 @@ tgame_load::tgame_load(const config& cache_config)
 	, change_difficulty_(false)
 	, show_replay_(false)
 	, cancel_orders_(false)
-	, games_()
+	, games_({savegame::get_saves_list()})
 	, cache_config_(cache_config)
 	, last_words_()
 	, summary_()
@@ -116,55 +115,22 @@ void tgame_load::pre_show(twindow& window)
 	filter->set_text_changed_callback(
 			std::bind(&tgame_load::filter_text_changed, this, _1, _2));
 
-	tlistbox* list
-			= find_widget<tlistbox>(&window, "savegame_list", false, true);
+	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*list,
-								   std::bind(&tgame_load::list_item_clicked,
-											   *this,
-											   std::ref(window)));
+	connect_signal_notify_modified(list,
+			std::bind(&tgame_load::display_savegame, *this, std::ref(window)));
 #else
-	list->set_callback_value_change(
-			dialog_callback<tgame_load, &tgame_load::list_item_clicked>);
+	list.set_callback_value_change(
+			dialog_callback<tgame_load, &tgame_load::display_savegame>);
 #endif
-	window.keyboard_capture(list);
 
-	{
-		cursor::setter cur(cursor::WAIT);
-		games_ = savegame::get_saves_list();
-	}
-	fill_game_list(window, games_);
+	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(&list);
 
-	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "delete", false),
-			std::bind(&tgame_load::delete_button_callback,
-						this,
-						std::ref(window)));
-
-	display_savegame(window);
-}
-
-template<typename Fnc>
-void tgame_load::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
-{
-    order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-        return filter_on(games_[i1]) < filter_on(games_[i2]);
-    };
- 
-    order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-        return filter_on(games_[i1]) > filter_on(games_[i2]);
-    };
-}
-
-void tgame_load::fill_game_list(twindow& window,
-								std::vector<savegame::save_info>& games)
-{
-	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
 	list.clear();
 
-	for(const auto & game : games)
-	{
+	for(const auto& game : games_) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -186,11 +152,71 @@ void tgame_load::fill_game_list(twindow& window,
 
 	init_sorting_option(order_funcs, [](savegame::save_info s) { return s.modified(); });
 	list.set_column_order(1, order_funcs);
+
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "delete", false),
+			std::bind(&tgame_load::delete_button_callback,
+					this, std::ref(window)));
+
+	display_savegame(window);
 }
 
-void tgame_load::list_item_clicked(twindow& window)
+template<typename Fnc>
+void tgame_load::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
 {
-	display_savegame(window);
+    order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+        return filter_on(games_[i1]) < filter_on(games_[i2]);
+    };
+
+    order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+        return filter_on(games_[i1]) > filter_on(games_[i2]);
+    };
+}
+
+void tgame_load::display_savegame(twindow& window)
+{
+	const int selected_row =
+		find_widget<tlistbox>(&window, "savegame_list", false).get_selected_row();
+
+	if(selected_row == -1) {
+		return;
+	}
+
+	savegame::save_info& game = games_[selected_row];
+	filename_ = game.name();
+
+	const config& summary = game.summary();
+
+	find_widget<timage>(&window, "imgLeader", false)
+			.set_label(summary["leader_image"]);
+
+	find_widget<tminimap>(&window, "minimap", false)
+			.set_map_data(summary["map_data"]);
+
+	find_widget<tlabel>(&window, "lblScenario", false)
+			.set_label(summary["label"]);
+
+	std::stringstream str;
+	str << game.format_time_local() << "\n";
+	evaluate_summary_string(str, summary);
+
+	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
+
+	ttoggle_button& replay_toggle =
+			find_widget<ttoggle_button>(&window, "show_replay", false);
+
+	ttoggle_button& cancel_orders_toggle =
+			find_widget<ttoggle_button>(&window, "cancel_orders", false);
+
+	const bool is_replay = savegame::loadgame::is_replay_save(summary);
+	const bool is_scenario_start = summary["turn"].empty();
+
+	// Always toggle show_replay on if the save is a replay
+	replay_toggle.set_value(is_replay);
+	replay_toggle.set_active(!is_replay && !is_scenario_start);
+
+	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves.
+	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
 }
 
 void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
@@ -212,8 +238,7 @@ void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 			tgrid* row = list.get_row_grid(i);
 
 			tgrid::iterator it = row->begin();
-			tlabel& filename_label
-					= find_widget<tlabel>(*it, "filename", false);
+			tlabel& filename_label = find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
 			for(const auto & word : words)
@@ -251,130 +276,74 @@ void tgame_load::post_show(twindow& window)
 	}
 }
 
-void tgame_load::display_savegame(twindow& window)
-{
-	const int selected_row
-			= find_widget<tlistbox>(&window, "savegame_list", false)
-					  .get_selected_row();
-
-	if(selected_row == -1) {
-		return;
-	}
-
-	savegame::save_info& game = games_[selected_row];
-	filename_ = game.name();
-
-	const config& summary = game.summary();
-
-	find_widget<timage>(&window, "imgLeader", false)
-			.set_label(summary["leader_image"]);
-
-	find_widget<tminimap>(&window, "minimap", false)
-			.set_map_data(summary["map_data"]);
-
-	find_widget<tlabel>(&window, "lblScenario", false)
-			.set_label(summary["label"]);
-
-	std::stringstream str;
-	str << game.format_time_local();
-	evaluate_summary_string(str, summary);
-
-	ttoggle_button& replay_toggle =
-			find_widget<ttoggle_button>(&window, "show_replay", false);
-
-	ttoggle_button& cancel_orders_toggle =
-			find_widget<ttoggle_button>(&window, "cancel_orders", false);
-
-	const bool is_replay = savegame::loadgame::is_replay_save(summary);
-	const bool is_scenario_start = summary["turn"].empty();
-
-	// Always toggle show_replay on if the save is a replay
-	replay_toggle.set_value(is_replay);
-	replay_toggle.set_active(!is_replay && !is_scenario_start);
-
-	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves.
-	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
-
-	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
-
-	// TODO: Find a better way to change the label width
-	// window.invalidate_layout();
-}
-
 void tgame_load::evaluate_summary_string(std::stringstream& str,
 										 const config& cfg_summary)
 {
-
-	const std::string& campaign_type = cfg_summary["campaign_type"];
 	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n" << _("#(Invalid)");
-	} else {
-		str << "\n";
 
-		try
-		{
-			game_classification::CAMPAIGN_TYPE ct
-					= lexical_cast<game_classification::CAMPAIGN_TYPE>(
-							campaign_type);
+		return;
+	}
 
-			switch(ct.v) {
-				case game_classification::CAMPAIGN_TYPE::SCENARIO: {
-					const std::string campaign_id = cfg_summary["campaign"];
-					const config* campaign = nullptr;
-					if(!campaign_id.empty()) {
-						if(const config& c = cache_config_.find_child(
-								   "campaign", "id", campaign_id)) {
+	const std::string& campaign_type = cfg_summary["campaign_type"];
 
-							campaign = &c;
-						}
+	try {
+		switch(game_classification::CAMPAIGN_TYPE::string_to_enum(campaign_type).v) {
+			case game_classification::CAMPAIGN_TYPE::SCENARIO: {
+				const std::string campaign_id = cfg_summary["campaign"];
+
+				const config* campaign = nullptr;
+				if(!campaign_id.empty()) {
+					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
+						campaign = &c;
 					}
-					utils::string_map symbols;
-					if(campaign != nullptr) {
-						symbols["campaign_name"] = (*campaign)["name"];
-					} else {
-						// Fallback to nontranslatable campaign id.
-						symbols["campaign_name"] = "(" + campaign_id + ")";
-					}
-					str << vgettext("Campaign: $campaign_name", symbols);
-
-					// Display internal id for debug purposes if we didn't above
-					if(game_config::debug && (campaign != nullptr)) {
-						str << '\n' << "(" << campaign_id << ")";
-					}
-					break;
 				}
-				case game_classification::CAMPAIGN_TYPE::MULTIPLAYER:
-					str << _("Multiplayer");
-					break;
-				case game_classification::CAMPAIGN_TYPE::TUTORIAL:
-					str << _("Tutorial");
-					break;
-				case game_classification::CAMPAIGN_TYPE::TEST:
-					str << _("Test scenario");
-					break;
+
+				utils::string_map symbols;
+				if(campaign != nullptr) {
+					symbols["campaign_name"] = (*campaign)["name"];
+				} else {
+					// Fallback to nontranslatable campaign id.
+					symbols["campaign_name"] = "(" + campaign_id + ")";
+				}
+
+				str << vgettext("Campaign: $campaign_name", symbols);
+
+				// Display internal id for debug purposes if we didn't above
+				if(game_config::debug && (campaign != nullptr)) {
+					str << '\n' << "(" << campaign_id << ")";
+				}
+				break;
 			}
+			case game_classification::CAMPAIGN_TYPE::MULTIPLAYER:
+				str << _("Multiplayer");
+				break;
+			case game_classification::CAMPAIGN_TYPE::TUTORIAL:
+				str << _("Tutorial");
+				break;
+			case game_classification::CAMPAIGN_TYPE::TEST:
+				str << _("Test scenario");
+				break;
 		}
-		catch(bad_lexical_cast&)
-		{
-			str << campaign_type;
-		}
+	} catch(bad_enum_cast&) {
+		str << campaign_type;
+	}
 
-		str << "\n";
+	str << "\n";
 
-		if(savegame::loadgame::is_replay_save(cfg_summary)) {
-			str << _("Replay");
-		} else if(!cfg_summary["turn"].empty()) {
-			str << _("Turn") << " " << cfg_summary["turn"];
-		} else {
-			str << _("Scenario start");
-		}
+	if(savegame::loadgame::is_replay_save(cfg_summary)) {
+		str << _("Replay");
+	} else if(!cfg_summary["turn"].empty()) {
+		str << _("Turn") << " " << cfg_summary["turn"];
+	} else {
+		str << _("Scenario start");
+	}
 
-		str << "\n" << _("Difficulty: ")
-			<< string_table[cfg_summary["difficulty"]];
+	str << "\n" << _("Difficulty: ")
+		<< string_table[cfg_summary["difficulty"]];
 
-		if(!cfg_summary["version"].empty()) {
-			str << "\n" << _("Version: ") << cfg_summary["version"];
-		}
+	if(!cfg_summary["version"].empty()) {
+		str << "\n" << _("Version: ") << cfg_summary["version"];
 	}
 }
 
@@ -397,8 +366,8 @@ void tgame_load::delete_button_callback(twindow& window)
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);
-		list.remove_row(index);
 
+		list.remove_row(index);
 		display_savegame(window);
 	}
 }

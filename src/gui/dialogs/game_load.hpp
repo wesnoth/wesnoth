@@ -64,7 +64,6 @@ private:
 	virtual const std::string& window_id() const;
 
 	void filter_text_changed(ttext_* textbox, const std::string& text);
-	void list_item_clicked(twindow& window);
 	void delete_button_callback(twindow& window);
 
 	void display_savegame(twindow& window);
@@ -73,9 +72,6 @@ private:
 
 	template<typename Fnc>
 	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
-
-	void fill_game_list(twindow& window,
-						std::vector<savegame::save_info>& games);
 
 	tfield_text* txtFilter_;
 	tfield_bool* chk_change_difficulty_;
