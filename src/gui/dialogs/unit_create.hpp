@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/generator.hpp"
 #include "gui/widgets/group.hpp"
 #include "units/race.hpp"
 
@@ -68,10 +69,8 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
-	bool compare_type(unsigned i1, unsigned i2) const;
-	bool compare_race(unsigned i1, unsigned i2) const;
-	bool compare_type_rev(unsigned i1, unsigned i2) const;
-	bool compare_race_rev(unsigned i1, unsigned i2) const;
+	template<typename Fnc>
+	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);

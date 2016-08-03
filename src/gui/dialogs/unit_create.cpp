@@ -87,6 +87,18 @@ tunit_create::tunit_create()
 {
 }
 
+template<typename Fnc>
+void tunit_create::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+{
+    order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+        return filter_on((*units_[i1])) < filter_on((*units_[i2]));
+    };
+
+    order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+        return filter_on((*units_[i1])) > filter_on((*units_[i2]));
+    };
+}
+
 void tunit_create::pre_show(twindow& window)
 {
 	ttoggle_button& male_toggle
@@ -160,34 +172,14 @@ void tunit_create::pre_show(twindow& window)
 	}
 
 	generator_sort_array order_funcs;
-	order_funcs[0] = std::bind(&tunit_create::compare_race, this, _1, _2);
-	order_funcs[1] = std::bind(&tunit_create::compare_race_rev, this, _1, _2);
+
+	init_sorting_option(order_funcs, [](unit_type u) { return u.race()->plural_name().str(); });
 	list.set_column_order(0, order_funcs);
-	order_funcs[0] = std::bind(&tunit_create::compare_type, this, _1, _2);
-	order_funcs[1] = std::bind(&tunit_create::compare_type_rev, this, _1, _2);
+
+	init_sorting_option(order_funcs, [](unit_type u) { return u.type_name().str(); });
 	list.set_column_order(1, order_funcs);
 
 	list_item_clicked(window);
-}
-
-bool tunit_create::compare_type(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->type_name().str() < units_[i2]->type_name().str();
-}
-
-bool tunit_create::compare_race(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->race()->plural_name().str() < units_[i2]->race()->plural_name().str();
-}
-
-bool tunit_create::compare_type_rev(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->type_name().str() > units_[i2]->type_name().str();
-}
-
-bool tunit_create::compare_race_rev(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->race()->plural_name().str() > units_[i2]->race()->plural_name().str();
 }
 
 void tunit_create::post_show(twindow& window)

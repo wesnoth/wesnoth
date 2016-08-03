@@ -94,24 +94,6 @@ namespace gui2
  */
 
 namespace {
-	// TODO: it would be better if we didnt have to parse the config every time.
-	bool str_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].str() < cfg->child("campaign", i2)[prop_id].str();
-	}
-	bool str_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].str() > cfg->child("campaign", i2)[prop_id].str();
-	}
-	bool num_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].to_int() < cfg->child("campaign", i2)[prop_id].to_int();
-	}
-	bool num_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].to_int() > cfg->child("campaign", i2)[prop_id].to_int();
-	}
-
 	struct filter_transform
 	{
 		filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
@@ -142,7 +124,7 @@ namespace {
 		}
 		const std::vector<std::string> filtertext_;
 	};
-	
+
 	/**
 	 * Retrieves an element from the given associative container or dies in some
 	 * way.
@@ -198,53 +180,6 @@ void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text
 		res.push_back(filter(child));
 	}
 	listbox.set_row_shown(res);
-}
-
-void taddon_list::on_order_button_click(twindow& window, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down, twidget& w)
-{
-	tselectable_& selectable = dynamic_cast<tselectable_&>(w);
-	for(auto& other : orders_)
-	{
-		if(other != &selectable) {
-			other->set_value(0);
-		}
-	}
-	tlistbox& listbox = find_widget<tlistbox>(&window, "addons", true);
-	switch(selectable.get_value())
-	{
-	case 0:
-		listbox.order_by(std::less<unsigned>());
-		break;
-	case 1:
-		listbox.order_by(up);
-		break;
-	case 2:
-		listbox.order_by(down);
-		break;
-	}
-}
-
-void taddon_list::register_sort_button(twindow& window, const std::string& id, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down)
-{
-	tselectable_& selectable = find_widget<tselectable_>(&window, id, true);
-	orders_.push_back(&selectable);
-	selectable.set_callback_state_change(std::bind(&taddon_list::on_order_button_click, this, std::ref(window), up, down, _1));
-}
-
-void taddon_list::register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id)
-{
-	register_sort_button(window, id,
-		std::bind(&str_up,   &cfg_, prop_id, _1, _2),
-		std::bind(&str_down, &cfg_, prop_id, _1, _2)
-	);
-}
-
-void taddon_list::register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id)
-{
-	register_sort_button(window, id,
-		std::bind(&num_up,   &cfg_, prop_id, _1, _2),
-		std::bind(&num_down, &cfg_, prop_id, _1, _2)
-	);
 }
 
 static std::string colorify_addon_state_string(const std::string& str,
@@ -379,6 +314,18 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 	return colorify_addon_state_string(s, state);
 }
 
+template<typename Fnc>
+void taddon_list::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
+{
+	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on(addon_at(ids_[i1], addons_)) < filter_on(addon_at(ids_[i2], addons_));
+	};
+
+	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on(addon_at(ids_[i1], addons_)) > filter_on(addon_at(ids_[i2], addons_));
+	};
+}
+
 void taddon_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
@@ -435,11 +382,22 @@ void taddon_list::pre_show(twindow& window)
 		find_widget<tbutton>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
 
-	register_sort_button_alphabetical(window, "sort_name", "name");
-	register_sort_button_alphabetical(window, "sort_author", "author");
-	register_sort_button_alphabetical(window, "sort_type", "type");
-	register_sort_button_numeric(window, "sort_downloads", "downloads");
-	register_sort_button_numeric(window, "sort_size", "size");
+	generator_sort_array order_funcs;
+
+	init_sorting_option(order_funcs, [](addon_info info) { return info.title; });
+	list.set_column_order(0, order_funcs);
+
+	init_sorting_option(order_funcs, [](addon_info info) { return info.author; });
+	list.set_column_order(1, order_funcs);
+
+	init_sorting_option(order_funcs, [](addon_info info) { return info.size; });
+	list.set_column_order(2, order_funcs);
+
+	init_sorting_option(order_funcs, [](addon_info info) { return info.downloads; });
+	list.set_column_order(3, order_funcs);
+
+	init_sorting_option(order_funcs, [](addon_info info) { return info.type; });
+	list.set_column_order(4, order_funcs);
 
 	find_widget<ttext_box>(&window, "filter", false).set_text_changed_callback(
 		std::bind(&taddon_list::on_filtertext_changed, this, _1, _2));

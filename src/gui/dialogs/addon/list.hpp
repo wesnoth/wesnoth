@@ -38,11 +38,9 @@ public:
 	explicit taddon_list(const config& cfg);
 
 private:
-	void register_sort_button(twindow& window, const std::string& id, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down);
-	void register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id);
-	void register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id);
+	template<typename Fnc>
+	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
 
-	void on_order_button_click(twindow& window, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down, twidget& w);
 	void on_filtertext_changed(ttext_* textbox, const std::string& text);
 
 	std::vector<tselectable_*> orders_;
@@ -67,7 +65,7 @@ private:
 	addons_tracking_list tracking_info_;
 
 	std::vector<std::string> ids_;
-	
+
 	void browse_url_callback(ttext_box& url_box);
 	void copy_url_callback(ttext_box& url_box);
 	void options_button_callback(twindow& window);

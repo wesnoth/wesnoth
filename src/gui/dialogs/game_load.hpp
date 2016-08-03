@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/generator.hpp"
 #include "save_index.hpp"
 #include "tstring.hpp"
 
@@ -70,10 +71,8 @@ private:
 	void evaluate_summary_string(std::stringstream& str,
 								 const config& cfg_summary);
 
-	bool compare_name(unsigned i1, unsigned i2) const;
-	bool compare_date(unsigned i1, unsigned i2) const;
-	bool compare_name_rev(unsigned i1, unsigned i2) const;
-	bool compare_date_rev(unsigned i1, unsigned i2) const;
+	template<typename Fnc>
+	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
 
 	void fill_game_list(twindow& window,
 						std::vector<savegame::save_info>& games);

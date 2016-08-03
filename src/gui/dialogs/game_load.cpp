@@ -145,24 +145,16 @@ void tgame_load::pre_show(twindow& window)
 	display_savegame(window);
 }
 
-bool tgame_load::compare_name(unsigned i1, unsigned i2) const
+template<typename Fnc>
+void tgame_load::init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on)
 {
-	return games_[i1].name() < games_[i2].name();
-}
-
-bool tgame_load::compare_date(unsigned i1, unsigned i2) const
-{
-	return games_[i1].modified() < games_[i2].modified();
-}
-
-bool tgame_load::compare_name_rev(unsigned i1, unsigned i2) const
-{
-	return games_[i1].name() > games_[i2].name();
-}
-
-bool tgame_load::compare_date_rev(unsigned i1, unsigned i2) const
-{
-	return games_[i1].modified() > games_[i2].modified();
+    order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+        return filter_on(games_[i1]) < filter_on(games_[i2]);
+    };
+ 
+    order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+        return filter_on(games_[i1]) > filter_on(games_[i2]);
+    };
 }
 
 void tgame_load::fill_game_list(twindow& window,
@@ -186,12 +178,13 @@ void tgame_load::fill_game_list(twindow& window,
 
 		list.add_row(data);
 	}
+
 	generator_sort_array order_funcs;
-	order_funcs[0] = std::bind(&tgame_load::compare_name, this, _1, _2);
-	order_funcs[1] = std::bind(&tgame_load::compare_name_rev, this, _1, _2);
+
+	init_sorting_option(order_funcs, [](savegame::save_info s) { return s.name(); });
 	list.set_column_order(0, order_funcs);
-	order_funcs[0] = std::bind(&tgame_load::compare_date, this, _1, _2);
-	order_funcs[1] = std::bind(&tgame_load::compare_date_rev, this, _1, _2);
+
+	init_sorting_option(order_funcs, [](savegame::save_info s) { return s.modified(); });
 	list.set_column_order(1, order_funcs);
 }
 
