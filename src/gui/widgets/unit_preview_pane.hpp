@@ -94,8 +94,9 @@ private:
 
 	tlabel* label_name_;
 	tlabel* label_level_;
-	tlabel* label_details_;
-	tlabel* label_details_minimal_;
+
+	tcontrol* label_details_;
+	tcontrol* label_details_minimal_;
 
 	tbutton* button_profile_;
 

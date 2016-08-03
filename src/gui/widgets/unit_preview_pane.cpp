@@ -54,8 +54,8 @@ void tunit_preview_pane::finalize_setup()
 	// Labels
 	label_name_             = find_widget<tlabel>(this, "type_name" , false, false);
 	label_level_            = find_widget<tlabel>(this, "type_level" , false, false);
-	label_details_          = find_widget<tlabel>(this, "type_details", false, false);
-	label_details_minimal_  = find_widget<tlabel>(this, "type_details_minimal", false, false);
+	label_details_          = find_widget<tcontrol>(this, "type_details", false, false);
+	label_details_minimal_  = find_widget<tcontrol>(this, "type_details_minimal", false, false);
 
 	// Profile button
 	button_profile_ = find_widget<tbutton>(this, "type_profile", false, false);
@@ -72,23 +72,23 @@ void tunit_preview_pane::finalize_setup()
  */
 void tunit_preview_pane::print_attack_details(const std::vector<attack_type>& attacks, std::stringstream& str)
 {
-	str << "<b>" << _("Attacks") << "</b>" << "\n";
+	str << "<b>" << _("Attacks") << "</b>";
 
 	for(const auto& a : attacks) {
-		str << "<span color='#f5e6c1'>" << a.damage()
-			<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>" << "\n";
+		str << "\n" << "<span color='#f5e6c1'>" << a.damage()
+			<< font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>";
 
-		str << "<span color='#a69275'>" << "  " << a.range()
-			<< font::weapon_details_sep << a.type() << "</span>" << "\n";
+		str << "\n" << "<span color='#a69275'>" << "  " << a.range()
+			<< font::weapon_details_sep << a.type() << "</span>";
 
 		const std::string special = a.weapon_specials();
 		if (!special.empty()) {
-			str << "<span color='#a69275'>" << "  " << special << "</span>" << "\n";
+			str << "\n" << "<span color='#a69275'>" << "  " << special << "</span>";
 		}
 
 		const std::string accuracy_parry = a.accuracy_parry_description();
 		if(!accuracy_parry.empty()) {
-			str << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>" << "\n";
+			str << "\n" << "<span color='#a69275'>" << "  " << accuracy_parry << "</span>";
 		}
 	}
 }
@@ -106,8 +106,8 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 				 team::get_side_color_index(resources::controller->current_side())
 				 + ")";
 		}
-		
-		mods += image_mods_;
+
+		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
 		icon_type_->set_label((type->icon().empty() ? type->image() : type->icon()) + mods);
 	}
@@ -145,17 +145,17 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 		std::stringstream str;
 		str << "<small>";
 
-		str << "<b>" << _("HP: ") << "</b>"
-			<< "<span color='#21e100'>" << type->hitpoints() << "</span> ";
+		str << "<span color='#21e100'>"
+			<< "<b>" << _("HP: ") << "</b>" << type->hitpoints() << "</span>" << " | ";
 
-		str << "<b>" << _("XP: ") << "</b>"
-			<< "<span color='#00a0e1'>" << type->experience_needed() << "</span> ";
+		str << "<span color='#00a0e1'>"
+			<< "<b>" << _("XP: ") << "</b>" << type->experience_needed() << "</span>" << " | ";
 
 		str << "<b>" << _("MP: ") << "</b>"
-			<< type->movement() << "\n";
+			<< type->movement();
 
 		str << "</small>";
-		str << "\n";
+		str << "\n\n";
 
 		// Print trait details
 		std::stringstream t_str;
@@ -219,7 +219,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += image_mods_;
+		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
 		icon_type_->set_label(unit->absolute_image() + mods);
 	}
@@ -266,7 +266,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 		const std::string name = "<span size='large'>" + (!unit->name().empty() ? unit->name() : " ") + "</span>";
 		str << name << "\n";
 
-		str << "<span color='#f5e6c1'>" << unit->type_name() << "</span>" << "\n";
+		str << "<small><span color='#a69275'>" << unit->type_name() << "</span></small>" << "\n";
 
 		str << "Lvl " << unit->level() << "\n";
 
@@ -297,11 +297,11 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 		std::stringstream str;
 		str << "<small>";
 
-		str << "<b>" << _("HP: ") << "</b>"
-			<<font::span_color(unit->hp_color()) << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>" << " | ";
+		str << font::span_color(unit->hp_color())
+			<< "<b>" << _("HP: ") << "</b>" << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>" << " | ";
 
-		str << "<b>" << _("XP: ") << "</b>"
-			<< font::span_color(unit->xp_color()) << unit->experience() << "/" << unit->max_experience() << "</span>" << " | ";
+		str << font::span_color(unit->xp_color())
+			<< "<b>" << _("XP: ") << "</b>" << unit->experience() << "/" << unit->max_experience() << "</span>" << " | ";
 
 		str << "<b>" << _("MP: ") << "</b>"
 			<< unit->movement_left() << "/" << unit->total_movement();
