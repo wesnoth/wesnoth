@@ -38,8 +38,8 @@ public:
 	explicit taddon_list(const config& cfg);
 
 private:
-	template<typename Fnc>
-	void init_sorting_option(generator_sort_array& order_funcs, Fnc filter_on);
+	template<typename Fcn>
+	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	void on_filtertext_changed(ttext_* textbox, const std::string& text);
 
