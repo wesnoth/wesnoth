@@ -173,7 +173,7 @@ void tunit_recall::pre_show(twindow& window)
 
 	list.clear();
 
-	window.add_to_keyboard_chain(filter);
+	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
