@@ -420,10 +420,12 @@ def run_capture_limited(command, maxlines=20000):
 
 
 import platform
+import multiprocessing
 if platform.system() != 'Windows':
   sys.exit('Error: This script only works on a Windows OS')
-
-corecount = raw_input("Enter number of cores to build boost and wesnoth with: ")
+maxcores = multiprocessing.cpu_count()
+print('The system has %s cores.' % maxcores)
+corecount = raw_input('Enter number of cores to build boost and wesnoth with: ')
 
 print('---[ download dependencies ]---')
 
