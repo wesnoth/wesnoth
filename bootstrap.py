@@ -713,7 +713,7 @@ pause
 """.format(
   path=os.pathsep.join(paths),
   python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
-  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release 2> buildlog.txt'),
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=release --config=force 2> buildlog.txt'),
 )
 
 open(ROOT + '/compile.cmd', 'wb').write(batfile)
@@ -727,7 +727,7 @@ pause
 """.format(
   path=os.pathsep.join(paths),
   python=os.path.normpath(os.path.dirname(sys.executable) + '/python.exe'),
-  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug 2> buildlog.txt'),
+  scons=os.path.normpath(LOOT + toolspec['scons']['path'] + '/script/scons build=debug --config=force 2> buildlog.txt'),
 )
 
 open(ROOT + '/compile(debug-build).cmd', 'wb').write(batfiledebug)
