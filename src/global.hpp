@@ -65,24 +65,37 @@
 // MSVC supports these starting in MSVC 2015
 #if _MSC_VER >= 1900
 #define HAVE_REF_QUALIFIERS 1
-#define HAVE_CONSTEXPR 1
 #define HAVE_INHERITING_CTORS 1
-#define HAVE_NOEXCEPT 1
+#define CONSTEXPR constexpr
+#define NOEXCEPT noexcept
+#else
+#define CONSTEXPR
+#define NOEXCEPT throw()
 #endif
 #endif
 
 #if defined(__clang__)
 // Clang has convenient feature detection macros \o/
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
-#define HAVE_CONSTEXPR __has_feature(cxx_constexpr)
-#define HAVE_NOEXCEPT __has_feature(cxx_noexcept)
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
+
+#if __has_feature(cxx_constexpr)
+#define CONSTEXPR constexpr
+#else
+#define CONSTEXPR
+#endif
+
+#if __has_feature(cxx_noexcept)
+#define NOEXCEPT noexcept
+#else
+#define NOEXCEPT throw()
+#endif
 #endif
 
 #if defined(__GNUX__) && !defined(__clang__)
 // GCC supports two of these from 4.6 up and the others from 4.8 up
-#define HAVE_CONSTEXPR 1
-#define HAVE_NOEXCEPT 1
+#define CONSTEXPR constexpr
+#define NOEXCEPT noexcept
 #if __GNUC__ > 4 || (__GNU_C__ == 4 && __GNUC_MINOR__ >= 8)
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1
