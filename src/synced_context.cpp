@@ -282,9 +282,12 @@ void synced_context::server_choice::send_request() const
 
 config synced_context::ask_server_choice(const server_choice& sch)
 {
+	if (!is_synced()) {
+		ERR_REPLAY << "Trying to ask the server for a '" << sch.name() << "' choice in a unsynced context, doing the choice locally. This can casue OOS.\n";
+		return sch.local_choice();
+	}
 	set_is_simultaneously();
 	resources::controller->increase_server_request_number();
-	assert(is_synced());
 	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
