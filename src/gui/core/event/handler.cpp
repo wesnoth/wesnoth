@@ -597,8 +597,10 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 
 
 		default:
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
 					  << static_cast<Uint32>(button) << ".\n";
+#endif
 			break;
 	}
 }
@@ -625,8 +627,10 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 			mouse(SDL_RIGHT_BUTTON_DOWN, position);
 			break;
 		default:
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
 					  << static_cast<Uint32>(button) << ".\n";
+#endif
 			break;
 	}
 }
