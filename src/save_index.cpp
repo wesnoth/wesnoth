@@ -411,7 +411,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					if (u["canrecruit"].to_bool()) {
 						leader = u["id"].str();
 						leader_image = u["image"].str();
-						leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
+						if(!u["flag_rgb"].empty()) {
+							leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
+						}
 						break;
 					}
 				}
