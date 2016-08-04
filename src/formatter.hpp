@@ -48,20 +48,20 @@ public:
 		return *this;
 	}
 
-    template <typename T>
-    formatter && operator<<(const T & o) && {
-      stream_ << o;
-      return std::move(*this);
-    }
+	template <typename T>
+	formatter && operator<<(const T & o) && {
+		stream_ << o;
+		return std::move(*this);
+	}
 
 	std::string str() {
 		return stream_.str();
 	}
 
-    // Implicit x-value conversion to string
-    operator std::string() && {
-        return stream_.str();
-    }
+	// Implicit x-value conversion to string
+	operator std::string() && {
+		return stream_.str();
+	}
 
 private:
 	std::ostringstream stream_;
