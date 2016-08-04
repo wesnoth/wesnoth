@@ -407,7 +407,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	}
 
 	validate_side(side_);
-	underlying_id_ = n_unit::unit_id::create_real(cfg["underlying_id"].to_int());
+	underlying_id_ = n_unit::unit_id(cfg["underlying_id"].to_size_t());
 	set_underlying_id(id_manager ? *id_manager : resources::gameboard->unit_id_manager());
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
