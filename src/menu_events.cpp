@@ -999,7 +999,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 
 void menu_handler::kill_unit(mouse_handler& mousehandler)
 {
-	const map_location& loc = mousehandler.get_last_hex();
+	const map_location loc = mousehandler.get_last_hex();
 	const unit_map::iterator i = units().find(loc);
 	if(i != units().end()) {
 		const int dying_side = i->side();
