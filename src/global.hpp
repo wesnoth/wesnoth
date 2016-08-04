@@ -60,4 +60,33 @@
 #define HAVE_CXX14
 #endif
 
+// Some C++11 features are not available on all supported platforms
+#if defined(_MSC_VER)
+// MSVC supports these starting in MSVC 2015
+#if _MSC_VER >= 1900
+#define HAVE_REF_QUALIFIERS 1
+#define HAVE_CONSTEXPR 1
+#define HAVE_INHERITING_CTORS 1
+#define HAVE_NOEXCEPT 1
+#endif
+#endif
+
+#if defined(__clang__)
+// Clang has convenient feature detection macros \o/
+#define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
+#define HAVE_CONSTEXPR __has_feature(cxx_constexpr)
+#define HAVE_NOEXCEPT __has_feature(cxx_noexcept)
+#define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
+#endif
+
+#if defined(__GNUX__) && !defined(__clang__)
+// GCC supports two of these from 4.6 up and the others from 4.8 up
+#define HAVE_CONSTEXPR 1
+#define HAVE_NOEXCEPT 1
+#if __GNUC__ > 4 || (__GNU_C__ == 4 && __GNUC_MINOR__ >= 8)
+#define HAVE_REF_QUALIFIERS 1
+#define HAVE_INHERITING_CTORS 1
+#endif
+#endif
+
 #endif //GLOBAL_HPP_INCLUDED
