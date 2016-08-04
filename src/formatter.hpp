@@ -43,23 +43,33 @@ public:
 	}
 
 	template<typename T>
-	formatter& operator<<(const T & o) & {
+	formatter& operator<<(const T & o)
+#if HAVE_REF_QUALIFIERS
+		&
+#endif
+	{
 		stream_ << o;
 		return *this;
 	}
 
+#if HAVE_REF_QUALIFIERS
 	template <typename T>
 	formatter && operator<<(const T & o) && {
 		stream_ << o;
 		return std::move(*this);
 	}
+#endif
 
 	std::string str() {
 		return stream_.str();
 	}
 
 	// Implicit x-value conversion to string
-	operator std::string() && {
+	operator std::string()
+#if HAVE_REF_QUALIFIERS
+		&&
+#endif
+	{
 		return stream_.str();
 	}
 
