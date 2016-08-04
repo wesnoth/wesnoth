@@ -107,6 +107,7 @@
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
 #include "wml_exception.hpp"
+#include "config_assign.hpp"
 
 #include "utils/functional.hpp"               // for bind_t, bind
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
@@ -697,21 +698,29 @@ int game_lua_kernel::intf_set_next_scenario(lua_State *L)
 
 int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 {
-	vconfig cfg = luaW_checkvconfig(L, 1);
 
-	// Filter the sides.
-	std::vector<int> sides = get_sides_vector(cfg);
-	size_t index;
+	int side_num = luaL_checkinteger(L, 1);
 
-	// Filter the locations.
-	std::set<map_location> locs;
-	const terrain_filter filter(cfg, &game_state_);
-	filter.get_locations(locs, true);
-
-	for (const int &side_num : sides)
-	{
-		index = side_num - 1;
-		team &t = teams()[index];
+	if(!lua_isstring(L, 2)) {
+	std::string data = lua_tostring(L, 2);
+		// Special case - using a shroud_data string, or "all"
+		team& side = teams()[side_num - 1];
+		if(place_shroud) {
+			side.reshroud();
+		}
+		if(data != "all") {
+			side.merge_shroud_map_data(data);
+		} else if(!place_shroud) {
+			bool was_shrouded = side.uses_shroud();
+			side.set_shroud(false);
+			actions::clear_shroud(side.side());
+			side.set_shroud(was_shrouded);
+		}
+		return 0;
+	} else if(lua_istable(L, 2)) {
+		std::vector<map_location> locs_v = lua_check<std::vector<map_location>>(L, 2);
+		std::set<map_location> locs(locs_v.begin(), locs_v.end());
+		team &t = teams()[side_num - 1];
 
 		for (map_location const &loc : locs)
 		{
@@ -721,6 +730,8 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 				t.clear_shroud(loc);
 			}
 		}
+	} else {
+		return luaL_argerror(L, 2, "expected list of locations or shroud data string");
 	}
 
 	game_display_->labels().recalculate_shroud();
@@ -2784,6 +2795,31 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 	return 1;
 }
 
+int game_lua_kernel::intf_set_side_id(lua_State *L)
+{
+	int team_i = luaL_checkinteger(L, 1) - 1;
+	std::string flag = luaL_optlstring(L, 2, "", nullptr);
+	std::string color = luaL_optlstring(L, 3, "", nullptr);
+
+	if(flag.empty() && color.empty()) {
+		return 0;
+	}
+	if(team_i < 0 || static_cast<size_t>(team_i) >= teams().size()) {
+		return luaL_error(L, "set_side_id: side number %d out of range", team_i);
+	}
+	team& side = teams()[team_i];
+
+	if(!color.empty()) {
+		side.set_color(color);
+	}
+	if(!flag.empty()) {
+		side.set_flag(flag);
+	}
+
+	game_display_->reinit_flags_for_side(team_i);
+	return 0;
+}
+
 int game_lua_kernel::intf_modify_ai_wml(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
@@ -2797,160 +2833,35 @@ int game_lua_kernel::intf_modify_ai_wml(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_modify_side(lua_State *L)
+static int intf_switch_ai(lua_State *L)
 {
-	vconfig cfg(luaW_checkvconfig(L, 1));
-
-	bool invalidate_screen = false;
-
-	std::string team_name = cfg["team_name"];
-	std::string user_team_name = cfg["user_team_name"];
-	std::string controller = cfg["controller"];
-	std::string defeat_condition = cfg["defeat_condition"];
-	std::string recruit_str = cfg["recruit"];
-	std::string shroud_data = cfg["shroud_data"];
-	std::string village_support = cfg["village_support"];
-	const config& parsed = cfg.get_parsed_config();
-	const config::const_child_itors &ai = parsed.child_range("ai");
-	std::string switch_ai = cfg["switch_ai"];
-
-	std::vector<int> sides = get_sides_vector(cfg);
-	size_t team_index;
-
-	for(const int &side_num : sides)
-	{
-		team_index = side_num - 1;
-
-		team & tm = teams()[team_index];
-
-		LOG_LUA << "modifying side: " << side_num << "\n";
-		if(!team_name.empty()) {
-			LOG_LUA << "change side's team to team_name '" << team_name << "'\n";
-			tm.change_team(team_name,
-					user_team_name);
-		} else if(!user_team_name.empty()) {
-			LOG_LUA << "change side's user_team_name to '" << user_team_name << "'\n";
-			tm.change_team(tm.team_name(),
-					user_team_name);
-		}
-		// Modify recruit list (override)
-		if (!recruit_str.empty()) {
-			tm.set_recruits(utils::set_split(recruit_str));
-		}
-		// Modify income
-		config::attribute_value income = cfg["income"];
-		if (!income.empty()) {
-			tm.set_base_income(income.to_int() + game_config::base_income);
-		}
-		// Modify total gold
-		config::attribute_value gold = cfg["gold"];
-		if (!gold.empty()) {
-			tm.set_gold(gold);
-		}
-		// Set controller
-		if (!controller.empty()) {
-			tm.change_controller_by_wml(controller);
-		}
-		// Set defeat_condition
-		if (!defeat_condition.empty()) {
-			tm.set_defeat_condition_string(defeat_condition);
-		}
-		// Set shroud
-		config::attribute_value shroud = cfg["shroud"];
-		if (!shroud.empty()) {
-			tm.set_shroud(shroud.to_bool(true));
-			invalidate_screen = true;
-		}
-		// Reset shroud
-		if ( cfg["reset_maps"].to_bool(false) ) {
-			tm.reshroud();
-			invalidate_screen = true;
-		}
-		// Merge shroud data
-		if (!shroud_data.empty()) {
-			tm.merge_shroud_map_data(shroud_data);
-			invalidate_screen = true;
-		}
-		// Set whether team is hidden in status table
-		config::attribute_value hidden = cfg["hidden"];
-		if (!hidden.empty()) {
-			tm.set_hidden(hidden.to_bool(true));
-		}
-		// Set fog
-		config::attribute_value fog = cfg["fog"];
-		if (!fog.empty()) {
-			tm.set_fog(fog.to_bool(true));
-			invalidate_screen = true;
-		}
-		// Reset fog
-		if ( cfg["reset_view"].to_bool(false) ) {
-			tm.refog();
-			invalidate_screen = true;
-		}
-		// Set income per village
-		config::attribute_value village_gold = cfg["village_gold"];
-		if (!village_gold.empty()) {
-			tm.set_village_gold(village_gold);
-		}
-		// Set support (unit levels supported per village, for upkeep purposes)
-		if (!village_support.empty()) {
-			tm.set_village_support(lexical_cast_default<int>(village_support, game_config::village_support));
-		}
-		// Redeploy ai from location (this ignores current AI parameters)
-		if (!switch_ai.empty()) {
-			ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
-		}
-		// Override AI parameters
-		if (!ai.empty()) {
-			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
-		}
-		// Change team color
-		config::attribute_value color = cfg["color"];
-		if(!color.empty()) {
-			tm.set_color(color);
-			invalidate_screen = true;
-		}
-		// Change flag imageset
-		config::attribute_value flag = cfg["flag"];
-		if(!flag.empty()) {
-			tm.set_flag(flag);
-			// Needed especially when map isn't animated.
-			invalidate_screen = true;
-		}
-		// If either the flag set or the team color changed, we need to
-		// rebuild the team's flag cache to reflect the changes. Note that
-		// this is not required for flag icons (used by the theme UI only).
-		if((!color.empty() || !flag.empty()) && game_display_) {
-			game_display_->reinit_flags_for_side(team_index);
-		}
-		// Change flag icon
-		config::attribute_value flag_icon = cfg["flag_icon"];
-		if(!flag_icon.empty()) {
-			tm.set_flag_icon(flag_icon);
-			// Not needed.
-			//invalidate_screen = true;
-		}
-		tm.handle_legacy_share_vision(cfg.get_parsed_config());
-		// Suppress end turn confirmations?
-		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
-		if ( !setc.empty() ) {
-			tm.set_no_turn_confirmation(setc.to_bool());
-		}
-
-		// Change leader scrolling options
-		config::attribute_value stl = cfg["scroll_to_leader"];
-		if ( !stl.empty()) {
-			tm.set_scroll_to_leader(stl.to_bool(true));
-		}
+	int side_num = luaL_checkinteger(L, 1);
+	std::string file = luaL_checkstring(L, 2);
+	if(!ai::manager::add_ai_for_side_from_file(side_num, file)) {
+		std::string err = formatter() << "Could not load AI for side " << side_num + 1 << " from file " << file;
+		lua_pushlstring(L, err.c_str(), err.length());
+		return lua_error(L);
 	}
+	return 0;
+}
 
-	// Flag an update of the screen, if needed.
-	if ( invalidate_screen && game_display_) {
-		game_display_->recalculate_minimap();
-		game_display_->invalidate_all();
+static int intf_append_ai(lua_State *L)
+{
+	int side_num = luaL_checkinteger(L, 1);
+	config cfg = luaW_checkconfig(L, 2);
+	if(!cfg.has_child("ai")) {
+		cfg = config_of("ai", cfg);
 	}
-
-
+	bool added_dummy_stage = false;
+	if(!cfg.child("ai").has_child("stage")) {
+		added_dummy_stage = true;
+		cfg.child("ai").add_child("stage", config_of("name", "empty"));
+	}
+	ai::configuration::expand_simplified_aspects(side_num, cfg);
+	if(added_dummy_stage) {
+		// TODO: Delete the dummy stage
+	}
+	ai::manager::append_active_ai_for_side(side_num, cfg.child("ai"));
 	return 0;
 }
 
@@ -4074,6 +3985,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "animate_unit",              &dispatch<&game_lua_kernel::intf_animate_unit               >        },
+		{ "append_ai",                 &intf_append_ai                                                      },
 		{ "clear_menu_item",           &dispatch<&game_lua_kernel::intf_clear_menu_item            >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
 		{ "color_adjust",              &dispatch<&game_lua_kernel::intf_color_adjust               >        },
@@ -4122,7 +4034,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "match_unit",                &dispatch<&game_lua_kernel::intf_match_unit                 >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
 		{ "modify_ai_wml",             &dispatch<&game_lua_kernel::intf_modify_ai_wml              >        },
-		{ "modify_side",               &dispatch<&game_lua_kernel::intf_modify_side                >        },
 		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
 		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
 		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
@@ -4147,11 +4058,13 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },
 		{ "set_menu_item",             &dispatch<&game_lua_kernel::intf_set_menu_item              >        },
 		{ "set_next_scenario",         &dispatch<&game_lua_kernel::intf_set_next_scenario          >        },
+		{ "set_side_id",               &dispatch<&game_lua_kernel::intf_set_side_id                >        },
 		{ "set_terrain",               &dispatch<&game_lua_kernel::intf_set_terrain                >        },
 		{ "set_variable",              &dispatch<&game_lua_kernel::intf_set_variable               >        },
 		{ "set_side_variable",         &dispatch<&game_lua_kernel::intf_set_side_variable          >        },
 		{ "set_village_owner",         &dispatch<&game_lua_kernel::intf_set_village_owner          >        },
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
+		{ "switch_ai",                 &intf_switch_ai                                                      },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "teleport",                  &dispatch<&game_lua_kernel::intf_teleport                   >        },

@@ -8,8 +8,24 @@ Version 1.13.6+dev:
  * Language and i18n:
    * Updated translations: British English, Portuguese (Brazil)
  * Lua API:
-   * New attributes in side proxy:
-     num_units, num_villages, total_upkeep, expenses, net_income
+   * New wesnoth.set_side_id function can change flag, color, or both; it automatically
+     updates cached flag info for you (but you may still need to redraw to see it).
+   * The wesnoth.place_shroud and wesnoth.clear_shroud functions can alter shroud data
+     for a single side. They accept a list of locations, a shroud data string, or the
+     special value "all".
+   * New Lua API functions for altering AI:
+     * wesnoth.switch_ai replaces the entire AI with a definition from a file
+     * wesnoth.append_ai appends AI parameters to the configuation; supports goals,
+       stages, and simple aspects.
+       (Aspect tags are not fully parsed; only the id and facet subtags are used.)
+     * wesnoth.add_ai_component, delete_ai_component, change_ai_component
+       These do the work of the [modify_ai] tag for a single side.
+   * Side proxy changes:
+     * flag and flag_icon are never an empty string
+     * New mutable keys: suppress_end_turn_confirmation, share_vision
+     * New read-only keys: share_maps, share_view
+       num_units, num_villages, total_upkeep, expenses, net_income
+     * Existing keys made mutable: shroud, fog, flag, flag_icon
  * WML Engine:
    * Removed LOW_MEM option when building.
    * Add color= attribute to [floating_text]
