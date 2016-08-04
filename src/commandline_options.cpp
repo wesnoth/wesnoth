@@ -52,15 +52,15 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
 }
 
 bad_commandline_resolution::bad_commandline_resolution(const std::string& resolution)
-	: error((formatter() << "Invalid resolution \"" << resolution
-						 << "\" (WIDTHxHEIGHT expected)").str())
+	: error(formatter() << "Invalid resolution \"" << resolution
+						 << "\" (WIDTHxHEIGHT expected)")
 {
 }
 
 bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 											 const std::string& expected_format)
-	: error((formatter() << "Invalid value set \"" << str
-						 << "\" (" << expected_format << " expected)").str())
+	: error(formatter() << "Invalid value set \"" << str
+						 << "\" (" << expected_format << " expected)")
 {
 }
 

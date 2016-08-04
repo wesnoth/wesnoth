@@ -58,9 +58,9 @@ std::string format_version(unsigned a, unsigned b, unsigned c)
 
 std::string format_version(const SDL_version& v)
 {
-	return (formatter() << unsigned(v.major) << '.'
-						<< unsigned(v.minor) << '.'
-						<< unsigned(v.patch)).str();
+	return formatter() << unsigned(v.major) << '.'
+			    		<< unsigned(v.minor) << '.'
+						<< unsigned(v.patch);
 }
 
 version_table_manager::version_table_manager()

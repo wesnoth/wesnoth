@@ -14,6 +14,7 @@
 #define FORMATTER_HPP_INCLUDED
 
 #include <sstream>
+#include <utility>
 
 /**
  * std::ostringstream wrapper.
@@ -28,6 +29,10 @@
  *  s.str();
  * This class corrects this shortcoming, allowing something like this:
  *  string result = (formatter() << "blah " << n << x << " blah").str();
+ *
+ * Actually, due to the ref qualified versions below, you can get away with this
+ *
+ *  string result = formatter() << "blah " << n << x << " blah";
  */
 class formatter
 {
@@ -38,14 +43,25 @@ public:
 	}
 
 	template<typename T>
-	formatter& operator<<(const T& o) {
+	formatter& operator<<(const T & o) & {
 		stream_ << o;
 		return *this;
 	}
 
+    template <typename T>
+    formatter && operator<<(const T & o) && {
+      stream_ << o;
+      return std::move(*this);
+    }
+
 	std::string str() {
 		return stream_.str();
 	}
+
+    // Implicit x-value conversion to string
+    operator std::string() && {
+        return stream_.str();
+    }
 
 private:
 	std::ostringstream stream_;

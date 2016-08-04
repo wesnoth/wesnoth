@@ -176,10 +176,10 @@ std::string os_version()
 		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
 	}
 
-	return (formatter() << u.sysname << ' '
+	return formatter() << u.sysname << ' '
 						<< u.release << ' '
 						<< u.version << ' '
-						<< u.machine).str();
+						<< u.machine;
 
 #elif defined(_WIN32)
 

@@ -561,7 +561,7 @@ replay_savegame::replay_savegame(saved_game &gamestate, const compression::forma
 
 void replay_savegame::create_filename()
 {
-	set_filename((formatter() << gamestate().classification().label << " " << _("replay")).str());
+	set_filename(formatter() << gamestate().classification().label << " " << _("replay"));
 }
 
 void replay_savegame::write_game(config_writer &out) {
