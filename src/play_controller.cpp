@@ -949,7 +949,7 @@ void play_controller::check_victory()
 	}
 
 	if (found_player || found_network_player) {
-		pump().fire("enemies defeated");
+		pump().fire("enemies_defeated");
 		if (is_regular_game_end()) {
 			return;
 		}
