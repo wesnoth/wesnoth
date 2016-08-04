@@ -506,6 +506,31 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	return true;
 }
 
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if (use_undo) {
+		resources::undo_stack->clear();
+	}
+	debug_notification("kill debug command was used during turn of $player");
+	
+	const map_location loc(child["x"].to_int() -1 , child["y"].to_int() - 1);
+	const unit_map::iterator i = resources::units->find(loc);
+	if (i != resources::units->end()) {
+		const int dying_side = i->side();
+		resources::controller->pump().fire("last breath", loc, loc);
+		if (i.valid()) {
+			unit_display::unit_die(loc, *i);
+		}
+		resources::screen->redraw_minimap();
+		resources::controller->pump().fire("die", loc, loc);
+		if (i.valid()) {
+			resources::units->erase(i);
+		}
+		actions::recalculate_fog(dying_side);
+	}
+	return true;
+}
+
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, use_undo, /*show*/, /*error_handler*/)
 {
 	if(use_undo) {

@@ -1000,21 +1000,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 void menu_handler::kill_unit(mouse_handler& mousehandler)
 {
 	const map_location loc = mousehandler.get_last_hex();
-	const unit_map::iterator i = units().find(loc);
-	if(i != units().end()) {
-		const int dying_side = i->side();
-		pc_.pump().fire("last breath", loc, loc);
-		if (i.valid()) {
-			unit_display::unit_die(loc, *i);
-		}
-		gui_->redraw_minimap();
-		pc_.pump().fire("die", loc, loc);
-		if (i.valid()) {
-			units().erase(i);
-		}
-		actions::recalculate_fog(dying_side);
-		pc_.check_victory();
-	}
+	synced_context::run_and_throw("debug_kill", config_of("x", loc.x + 1)("y", loc.y + 1));
 }
 
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
