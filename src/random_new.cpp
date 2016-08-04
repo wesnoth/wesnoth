@@ -102,21 +102,27 @@ namespace random_new
 
 	double rng::get_random_double()
 	{
-		uint64_t double_as_int = 0u;
+		union
+		{
+			double floating_point_number;
+			uint64_t integer;
+		} number;
+
+		number.integer = 0u;
 		/* Exponent. It's set to zero.
 		Exponent bias is 1023 in double precision, and therefore the value 1023
 		needs to be encoded. */
-		double_as_int |= static_cast<uint64_t>(1023) << 52;
+		number.integer |= static_cast<uint64_t>(1023) << 52;
 		/* Significand. A double-precision floating point number stores 52 significand bits.
 		The underlying RNG only gives us 32 bits, so we need to shift the bits 20 positions
 		to the left. The last 20 significand bits we can leave at zero, we don't need
 		the full 52 bits of randomness allowed by the double-precision format. */
-		double_as_int |= static_cast<uint64_t>(next_random()) << (52 - 32);
+		number.integer |= static_cast<uint64_t>(next_random()) << (52 - 32);
 		/* At this point, the exponent is zero. The significand, taking into account the
 		implicit leading one bit, is at least exactly one and at most almost two.
-		In other words, a reinterpret_cast<double*> gives us a number in the range [1, 2[.
-		Simply subtract one from that value and return it. */
-		return *reinterpret_cast<double*>(&double_as_int) - 1.0;
+		In other words, interpreting the value as a double gives us a number in the range
+		[1, 2[. Simply subtract one from that value and return it. */
+		return number.floating_point_number - 1.0;
 	}
 
 	bool rng::get_random_bool(double probability)
