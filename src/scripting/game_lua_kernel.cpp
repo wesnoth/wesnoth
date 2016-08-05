@@ -3545,7 +3545,7 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
  */
 int game_lua_kernel::intf_get_sides(lua_State* L)
 {
-	LOG_LUA << "intf_get_sides called: this = " << std::hex << this << " myname = " << my_name() << std::endl;
+	LOG_LUA << "intf_get_sides called: this = " << std::hex << this << std::dec << " myname = " << my_name() << std::endl;
 	std::vector<int> sides;
 	const vconfig ssf = luaW_checkvconfig(L, 1, true);
 	if(ssf.null()){
