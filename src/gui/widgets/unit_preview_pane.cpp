@@ -322,8 +322,8 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 		if(!unit->get_ability_list().empty()) {
 			str << "<b>" << _("Abilities") << "</b>" << "\n";
 
-			for(const auto& ab : unit->get_ability_list()) {
-				str << "  " << ab << "\n";
+			for(const auto& ab : unit->ability_tooltips()) {
+				str << "  " << std::get<1>(ab) << "\n";
 			}
 
 			str << "\n";
