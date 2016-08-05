@@ -204,7 +204,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 	//
 
 	const std::string sep(1, COLUMN_SEPARATOR);
-	const std::string& header = formatter() << HEADING_PREFIX << sep <<
+	const std::string header = formatter() << HEADING_PREFIX << sep <<
 		_("Name") << sep << _("Version") << sep << _("Author") << sep <<
 		_("Size") << sep << _("Type");
 
