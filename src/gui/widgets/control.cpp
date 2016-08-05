@@ -664,8 +664,8 @@ tbuilder_control::tbuilder_control(const config& cfg)
 	VALIDATE_WITH_DEV_MESSAGE(
 			help.empty() || !tooltip.empty(),
 			_("Found a widget with a helptip and without a tooltip."),
-			(formatter() << "id '" << id << "' label '" << label
-						 << "' helptip '" << help << "'.").str());
+			formatter() << "id '" << id << "' label '" << label
+						 << "' helptip '" << help << "'.");
 
 
 	DBG_GUI_P << "Window builder: found control with id '" << id

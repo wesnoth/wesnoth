@@ -147,7 +147,7 @@ t_string tslider::get_value_label() const
 		return maximum_value_label_;
 	}
 
-	return t_string((formatter() << get_value()).str());
+	return t_string(formatter() << get_value());
 }
 
 void tslider::child_callback_positioner_moved()

@@ -259,10 +259,10 @@ std::string os_version()
 
 	version += " (";
 	// Add internal version numbers.
-	version += (formatter()
+	version += formatter()
 			<< v.dwMajorVersion << '.'
 			<< v.dwMinorVersion << '.'
-			<< v.dwBuildNumber).str();
+			<< v.dwBuildNumber;
 	version += ")";
 
 	return base + " " + version;

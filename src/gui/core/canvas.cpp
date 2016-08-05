@@ -905,24 +905,24 @@ void tcircle::draw(surface& canvas,
 	VALIDATE_WITH_DEV_MESSAGE(
 			static_cast<int>(x - radius) >= 0,
 			_("Circle doesn't fit on canvas."),
-			(formatter() << "x = " << x << ", radius = " << radius).str());
+			formatter() << "x = " << x << ", radius = " << radius);
 
 	VALIDATE_WITH_DEV_MESSAGE(
 			static_cast<int>(y - radius) >= 0,
 			_("Circle doesn't fit on canvas."),
-			(formatter() << "y = " << y << ", radius = " << radius).str());
+			formatter() << "y = " << y << ", radius = " << radius);
 
 	VALIDATE_WITH_DEV_MESSAGE(
 			static_cast<int>(x + radius) < canvas->w,
 			_("Circle doesn't fit on canvas."),
-			(formatter() << "x = " << x << ", radius = " << radius
-						 << "', canvas width = " << canvas->w << ".").str());
+			formatter() << "x = " << x << ", radius = " << radius
+						 << "', canvas width = " << canvas->w << ".");
 
 	VALIDATE_WITH_DEV_MESSAGE(
 			static_cast<int>(y + radius) < canvas->h,
 			_("Circle doesn't fit on canvas."),
-			(formatter() << "y = " << y << ", radius = " << radius
-						 << "', canvas height = " << canvas->h << ".").str());
+			formatter() << "y = " << y << ", radius = " << radius
+						 << "', canvas height = " << canvas->h << ".");
 
 	// lock the surface
 	surface_lock locker(canvas);
@@ -1106,16 +1106,16 @@ void timage::draw(surface& canvas,
 	unsigned w = w_(local_variables);
 	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(w) >= 0,
 							  _("Image doesn't fit on canvas."),
-							  (formatter() << "Image '" << name
+							  formatter() << "Image '" << name
 										   << "', w = " << static_cast<int>(w)
-										   << ".").str());
+										   << ".");
 
 	unsigned h = h_(local_variables);
 	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(h) >= 0,
 							  _("Image doesn't fit on canvas."),
-							  (formatter() << "Image '" << name
+							  formatter() << "Image '" << name
 										   << "', h = " << static_cast<int>(h)
-										   << ".").str());
+										   << ".");
 
 	local_variables.add("image_width", variant(w ? w : image_->w));
 	local_variables.add("image_height", variant(h ? h : image_->h));
@@ -1123,16 +1123,16 @@ void timage::draw(surface& canvas,
 	const unsigned x = x_(local_variables);
 	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(x) >= 0,
 							  _("Image doesn't fit on canvas."),
-							  (formatter() << "Image '" << name
+							  formatter() << "Image '" << name
 										   << "', x = " << static_cast<int>(x)
-										   << ".").str());
+										   << ".");
 
 	const unsigned y = y_(local_variables);
 	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(y) >= 0,
 							  _("Image doesn't fit on canvas."),
-							  (formatter() << "Image '" << name
+							  formatter() << "Image '" << name
 										   << "', y = " << static_cast<int>(y)
-										   << ".").str());
+										   << ".");
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;

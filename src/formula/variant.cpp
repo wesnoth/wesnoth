@@ -404,9 +404,9 @@ variant variant::operator[](const variant& v) const
 		}
 		return operator[](v.as_int());
 	} else {
-		throw type_error((formatter() << "type error: "
+		throw type_error(formatter() << "type error: "
 			<< " expected a list or a map but found " << type_string()
-			<< " (" << to_debug_string() << ")").str());
+			<< " (" << to_debug_string() << ")");
 	}
 }
 
@@ -481,9 +481,9 @@ size_t variant::num_elements() const
 		assert(map_);
 		return map_->size();
 	} else {
-		throw type_error((formatter() << "type error: "
+		throw type_error(formatter() << "type error: "
 			<< " expected a list or a map but found " << type_string()
-			<< " (" << to_debug_string() << ")").str());
+			<< " (" << to_debug_string() << ")");
 	}
 }
 
@@ -516,9 +516,9 @@ int variant::as_decimal() const
 	} else if( type_ == TYPE_NULL) {
 		return 0;
 	} else {
-		throw type_error((formatter() << "type error: "
+		throw type_error(formatter() << "type error: "
 			<< " expected integer or decimal but found " << type_string()
-			<< " (" << to_debug_string() << ")").str());
+			<< " (" << to_debug_string() << ")");
 	}
 }
 
@@ -640,7 +640,7 @@ variant variant::operator/(const variant& v) const
 		int denominator = v.as_decimal();
 
 		if(denominator == 0) {
-			throw type_error((formatter() << "divide by zero error").str());
+			throw type_error(formatter() << "divide by zero error");
 		}
 
 		long long long_int = as_decimal();
@@ -662,7 +662,7 @@ variant variant::operator/(const variant& v) const
 	const int numerator = as_int();
 	const int denominator = v.as_int();
 	if(denominator == 0) {
-		throw type_error((formatter() << "divide by zero error").str());;
+		throw type_error(formatter() << "divide by zero error");
 	}
 
 	return variant(numerator/denominator);
@@ -674,7 +674,7 @@ variant variant::operator%(const variant& v) const
 		const int numerator = as_decimal();
 		const int denominator = v.as_decimal();
 		if(denominator == 0) {
-			throw type_error((formatter() << "divide by zero error").str());
+			throw type_error(formatter() << "divide by zero error");
 		}
 
 		return variant(numerator%denominator, DECIMAL_VARIANT);
@@ -682,7 +682,7 @@ variant variant::operator%(const variant& v) const
 		const int numerator = as_int();
 		const int denominator = v.as_int();
 		if(denominator == 0) {
-			throw type_error((formatter() << "divide by zero error").str());
+			throw type_error(formatter() << "divide by zero error");
 		}
 
 		return variant(numerator%denominator);
@@ -935,11 +935,11 @@ variant variant::concatenate(const variant& v) const
 		std::string res = as_string() + v.as_string();
 		return variant( res );
 	} else {
-		throw type_error((formatter() << "type error: expected two "
+		throw type_error(formatter() << "type error: expected two "
 			<< " lists or two maps  but found " << type_string()
 			<< " (" << to_debug_string() << ")"
 			<< " and " << v.type_string()
-			<< " (" << v.to_debug_string() << ")").str());
+			<< " (" << v.to_debug_string() << ")");
 	}
 }
 
@@ -962,11 +962,11 @@ variant variant::build_range(const variant& v) const {
 
 bool variant::contains(const variant& v) const {
 	if(type_ != TYPE_LIST && type_ != TYPE_MAP) {
-		throw type_error((formatter() << "type error: expected "
+		throw type_error(formatter() << "type error: expected "
 			<< variant_type_to_string(TYPE_LIST) << " or "
 			<< variant_type_to_string(TYPE_MAP) << " but found "
 			<< variant_type_to_string(type_)
-			<< " (" << to_debug_string() << ")").str());
+			<< " (" << to_debug_string() << ")");
 	}
 
 	if(type_ == TYPE_LIST) {
@@ -981,9 +981,9 @@ bool variant::contains(const variant& v) const {
 void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {
-		throw type_error((formatter() << "type error: " << " expected "
+		throw type_error(formatter() << "type error: " << " expected "
 			<< variant_type_to_string(t) << " but found " << type_string()
-			<< " (" << to_debug_string() << ")").str());
+			<< " (" << to_debug_string() << ")");
 	}
 }
 

@@ -52,7 +52,7 @@ const version_table_manager versions;
 #if 0
 std::string format_version(unsigned a, unsigned b, unsigned c)
 {
-	return (formatter() << a << '.' << b << '.' << c).str();
+	return formatter() << a << '.' << b << '.' << c;
 }
 #endif
 
