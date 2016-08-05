@@ -387,8 +387,7 @@ void menu_handler::scenario_settings_table(int selected)
 				leader_bools.push_back(false);
 			}
 #ifndef LOW_MEM
-			str << "~RC(" << leader->team_color() << '>'
-			    << team::get_side_color_index(n+1) << ")";
+			str << leader->TC_image_mods();
 #endif
 		} else {
 			leader_bools.push_back(false);

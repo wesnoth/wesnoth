@@ -208,8 +208,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 	current_type_ = unit->type_id();
 
 	if(icon_type_) {
-		std::string mods
-			= "~RC(" + unit->team_color() + ">" + team::get_side_color_index(unit->side()) + ")";
+		std::string mods = unit->TC_image_mods();
 
 		if(unit->can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
