@@ -366,6 +366,9 @@ bool part_ui::render_floating_images()
 				update_rect(old_ri.rect);
 			}
 		}
+		back_button_.set_dirty();
+		next_button_.set_dirty();
+		play_button_.set_dirty();
 
 		if (!skip_)
 		{
@@ -380,7 +383,6 @@ bool part_ui::render_floating_images()
 
 		++fi_n;
 	}
-
 	return true;
 #endif
 }
