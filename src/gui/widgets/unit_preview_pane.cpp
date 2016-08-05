@@ -265,7 +265,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 		const std::string name = "<span size='large'>" + (!unit->name().empty() ? unit->name() : " ") + "</span>";
 		str << name << "\n";
 
-		str << "<small><span color='#a69275'>" << unit->type_name() << "</span></small>" << "\n";
+		str << "<span color='#a69275'>" << unit->type_name() << "</span>" << "\n";
 
 		str << "Lvl " << unit->level() << "\n";
 
