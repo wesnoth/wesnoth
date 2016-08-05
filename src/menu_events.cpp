@@ -387,7 +387,7 @@ void menu_handler::scenario_settings_table(int selected)
 				leader_bools.push_back(false);
 			}
 #ifndef LOW_MEM
-			str << leader->TC_image_mods();
+			str << leader->image_mods();
 #endif
 		} else {
 			leader_bools.push_back(false);
