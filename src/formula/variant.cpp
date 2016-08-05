@@ -640,7 +640,7 @@ variant variant::operator/(const variant& v) const
 		int denominator = v.as_decimal();
 
 		if(denominator == 0) {
-			throw type_error(formatter() << "divide by zero error");
+			throw type_error("divide by zero error");
 		}
 
 		long long long_int = as_decimal();
@@ -662,7 +662,7 @@ variant variant::operator/(const variant& v) const
 	const int numerator = as_int();
 	const int denominator = v.as_int();
 	if(denominator == 0) {
-		throw type_error(formatter() << "divide by zero error");
+		throw type_error("divide by zero error");
 	}
 
 	return variant(numerator/denominator);
@@ -674,7 +674,7 @@ variant variant::operator%(const variant& v) const
 		const int numerator = as_decimal();
 		const int denominator = v.as_decimal();
 		if(denominator == 0) {
-			throw type_error(formatter() << "divide by zero error");
+			throw type_error("divide by zero error");
 		}
 
 		return variant(numerator%denominator, DECIMAL_VARIANT);
@@ -682,7 +682,7 @@ variant variant::operator%(const variant& v) const
 		const int numerator = as_int();
 		const int denominator = v.as_int();
 		if(denominator == 0) {
-			throw type_error(formatter() << "divide by zero error");
+			throw type_error("divide by zero error");
 		}
 
 		return variant(numerator%denominator);
