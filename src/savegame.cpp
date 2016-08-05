@@ -120,7 +120,7 @@ void loadgame::show_dialog()
 
 void loadgame::show_difficulty_dialog()
 {
-	if(summary_["corrupt"].to_bool() || (is_replay_save(summary_)) || (!summary_["turn"].empty())) {
+	if(summary_["corrupt"].to_bool()) {
 		return;
 	}
 
@@ -159,9 +159,11 @@ bool loadgame::load_game()
 		return false;
 	}
 
+	if (select_difficulty_)
+		show_difficulty_dialog();
+
 	// Confirm the integrity of the file before throwing the exception.
 	// Use the summary in the save_index for this.
-
 	const config & summary = save_index_manager.get(filename_);
 
 	if (summary["corrupt"].to_bool(false)) {
