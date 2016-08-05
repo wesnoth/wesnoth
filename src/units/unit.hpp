@@ -189,7 +189,7 @@ public:
 	bool unrenamable() const { return unrenamable_; }
 	void set_unrenamable(bool unrenamable) { unrenamable_ = unrenamable; }
 	int side() const { return side_; }
-	const std::string& team_color() const { return flag_rgb_; }
+	const std::string& team_color() const;
 	unit_race::GENDER gender() const { return gender_; }
 	void set_side(unsigned int new_side) { side_ = new_side; }
 	fixed_t alpha() const { return alpha_; }

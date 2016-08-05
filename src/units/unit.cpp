@@ -1024,6 +1024,10 @@ std::string unit::small_profile() const
 	return absolute_image();
 }
 
+const std::string& unit::team_color() const {
+	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
+}
+
 static SDL_Color hp_color_(int hitpoints, int max_hitpoints)
 {
 	double unit_energy = 0.0;
@@ -2421,11 +2425,7 @@ bool unit::matches_id(const std::string& unit_id) const
 
 
 std::string unit::TC_image_mods() const {
-	if(!flag_rgb_.empty()) {
-		return formatter() << "~RC(" << flag_rgb_ << ">" << team::get_side_color_index(side()) << ")";
-	}
-
-	return "";
+	return formatter() << "~RC(" << team_color() << ">" << team::get_side_color_index(side()) << ")";
 }
 std::string unit::image_mods() const {
 	if(!image_mods_.empty()) {

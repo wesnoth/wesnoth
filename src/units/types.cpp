@@ -716,6 +716,10 @@ bool unit_type::musthave_status(const std::string& status_name) const
 	return current_status;
 }
 
+const std::string& unit_type::flag_rgb() const {
+	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
+}
+
 bool unit_type::has_random_traits() const
 {
 	if (num_traits() == 0) return false;

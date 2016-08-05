@@ -119,7 +119,7 @@ namespace game_config
 
 	std::string shroud_prefix, fog_prefix;
 
-	std::string flag_rgb;
+	std::string flag_rgb, unit_rgb;
 	std::vector<Uint32> red_green_scale;
 	std::vector<Uint32> red_green_scale_text;
 
@@ -268,6 +268,9 @@ namespace game_config
 
 		if (const config::attribute_value *a = v.get("flag_rgb")) {
 			flag_rgb = a->str();
+		}
+		if (const config::attribute_value *a = v.get("unit_rgb")) {
+			unit_rgb = a->str();
 		}
 
 		std::string color_string = v["red_green_scale"].str();

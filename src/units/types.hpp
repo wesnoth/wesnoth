@@ -144,7 +144,7 @@ public:
 	bool generate_name() const { return cfg_["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
 
-	const std::string& flag_rgb() const { return flag_rgb_; }
+	const std::string& flag_rgb() const;
 
 	std::vector<attack_type> attacks() const;
 	const movetype & movement_type() const { return movement_type_; }
