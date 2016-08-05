@@ -2556,7 +2556,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		units().insert(u);
 	}
 	if(unit_arg != 1 || luaW_toboolean(L, 3)) {
-		play_controller_.pump().fire("unit placed", loc);
+		play_controller_.pump().fire("unit_placed", loc);
 	}
 	return 0;
 }
@@ -3880,7 +3880,7 @@ int game_lua_kernel::intf_kill(lua_State *L)
 					}
 			}
 		if (fire_event) {
-			play_controller_.pump().fire("last breath", death_loc, killer_loc);
+			play_controller_.pump().fire("last_breath", death_loc, killer_loc);
 		}
 
 		// Visual consequences of the kill.

@@ -789,7 +789,7 @@ void manager::play_turn( side_number side ){
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	ai_composite& ai_obj = get_active_ai_for_side(side);
-	resources::game_events->pump().fire("ai turn");
+	resources::game_events->pump().fire("ai_turn");
 	raise_turn_started();
 	if (resources::tod_manager->has_tod_bonus_changed()) {
 		raise_tod_changed();

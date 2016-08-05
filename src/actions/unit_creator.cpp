@@ -217,7 +217,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
 	if (resources::lua_kernel != nullptr) {
-		resources::game_events->pump().fire("unit placed", loc);
+		resources::game_events->pump().fire("unit_placed", loc);
 	}
 
 	if (resources::screen!=nullptr) {

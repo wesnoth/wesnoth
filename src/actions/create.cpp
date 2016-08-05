@@ -636,7 +636,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
-	resources::game_events->pump().fire("unit placed", current_loc);
+	resources::game_events->pump().fire("unit_placed", current_loc);
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";

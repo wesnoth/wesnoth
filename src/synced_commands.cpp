@@ -477,7 +477,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	// Add the unit to the board.
 	std::pair<unit_map::iterator, bool> add_result = resources::units->replace(loc, created);
 	resources::screen->invalidate_unit();
-	resources::game_events->pump().fire("unit placed", loc);
+	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
 
 	// Village capture?
@@ -517,7 +517,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	const unit_map::iterator i = resources::units->find(loc);
 	if (i != resources::units->end()) {
 		const int dying_side = i->side();
-		resources::controller->pump().fire("last breath", loc, loc);
+		resources::controller->pump().fire("last_breath", loc, loc);
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}

@@ -369,7 +369,7 @@ void play_controller::fire_prestart()
 	// Fire these right before prestart events, to catch only the units sides
 	// have started with.
 	for (const unit& u : gamestate().board_.units()) {
-		pump().fire("unit placed", map_location(u.get_location()));
+		pump().fire("unit_placed", map_location(u.get_location()));
 	}
 
 	pump().fire("prestart");
@@ -448,15 +448,15 @@ void play_controller::do_init_side()
 	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
 	if(!gamestate().tod_manager_.has_turn_event_fired())
 	{
-		pump().fire("turn " + turn_num);
-		pump().fire("new turn");
+		pump().fire("turn_" + turn_num);
+		pump().fire("new_turn");
 		gamestate().tod_manager_.turn_event_fired();
 	}
 
-	pump().fire("side turn");
-	pump().fire("side " + side_num + " turn");
-	pump().fire("side turn " + turn_num);
-	pump().fire("side " + side_num + " turn " + turn_num);
+	pump().fire("side_turn");
+	pump().fire("side_" + side_num + "_turn");
+	pump().fire("side_turn_" + turn_num);
+	pump().fire("side_" + side_num + "_turn_" + turn_num);
 
 	// We want to work out if units for this player should get healed,
 	// and the player should get income now.
@@ -481,10 +481,10 @@ void play_controller::do_init_side()
 	// Prepare the undo stack.
 	undo_stack().new_side_turn(current_side());
 
-	pump().fire("turn refresh");
-	pump().fire("side " + side_num + " turn refresh");
-	pump().fire("turn " + turn_num + " refresh");
-	pump().fire("side " + side_num + " turn " + turn_num + " refresh");
+	pump().fire("turn_refresh");
+	pump().fire("side_" + side_num + "_turn_refresh");
+	pump().fire("turn_" + turn_num + "_refresh");
+	pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
 
 	// Make sure vision is accurate.
 	actions::clear_shroud(current_side(), true);
@@ -543,10 +543,10 @@ void play_controller::finish_side_turn()
 		// Clear shroud, in case units had been slowed for the turn.
 		actions::clear_shroud(current_side());
 
-		pump().fire("side turn end");
-		pump().fire("side "+ side_num + " turn end");
-		pump().fire("side turn " + turn_num + " end");
-		pump().fire("side " + side_num + " turn " + turn_num + " end");
+		pump().fire("side_turn_end");
+		pump().fire("side_"+ side_num + "_turn_end");
+		pump().fire("side_turn_" + turn_num + "_end");
+		pump().fire("side_" + side_num + "_turn_" + turn_num + "_end");
 		// This is where we refog, after all of a side's events are done.
 		actions::recalculate_fog(current_side());
 		check_victory();
@@ -562,8 +562,8 @@ void play_controller::finish_turn()
 {
 	set_scontext_synced sync(2);
 	const std::string turn_num = std::to_string(turn());
-	pump().fire("turn end");
-	pump().fire("turn " + turn_num + " end");
+	pump().fire("turn_end");
+	pump().fire("turn_" + turn_num + "_end");
 	sync.do_final_checkup();
 }
 
@@ -1228,7 +1228,7 @@ void play_controller::check_time_over()
 	if(!time_left) {
 		LOG_NG << "firing time over event...\n";
 		set_scontext_synced_base sync;
-		pump().fire("time over");
+		pump().fire("time_over");
 		LOG_NG << "done firing time over event...\n";
 		// If turns are added while handling 'time over' event.
 		if (gamestate().tod_manager_.is_time_left()) {

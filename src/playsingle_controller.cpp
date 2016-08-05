@@ -289,7 +289,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		{ // Block for set_scontext_synced_base
 			set_scontext_synced_base sync;
 			pump().fire(end_level.proceed_to_next_level ? "victory" : "defeat");
-			pump().fire("scenario end");
+			pump().fire("scenario_end");
 		}
 		if(end_level.proceed_to_next_level) {
 			gamestate().board_.heal_all_survivors();

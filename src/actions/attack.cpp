@@ -1107,7 +1107,7 @@ namespace {
 		dat.add_child("first",  d_weapon_cfg);
 		dat.add_child("second", a_weapon_cfg);
 
-		resources::game_events->pump().fire("last breath", death_loc, attacker_loc, dat);
+		resources::game_events->pump().fire("last_breath", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1160,7 +1160,7 @@ namespace {
 				units_.add(death_loc, newunit);
 
 				game_events::entity_location reanim_loc(defender.loc_, newunit.underlying_id());
-				resources::game_events->pump().fire("unit placed", reanim_loc);
+				resources::game_events->pump().fire("unit_placed", reanim_loc);
 
 				preferences::encountered_units().insert(newunit.type_id());
 				if (update_display_) {
@@ -1490,7 +1490,7 @@ void advance_unit_at(const advance_unit_params& params)
 		if(params.fire_events_)
 		{
 			LOG_NG << "Firing pre advance event at " << params.loc_ <<".\n";
-			resources::game_events->pump().fire("pre advance", params.loc_);
+			resources::game_events->pump().fire("pre_advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
 			u = resources::units->find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
@@ -1621,7 +1621,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	if(fire_event)
 	{
 		LOG_NG << "Firing post_advance event at " << loc << ".\n";
-		resources::game_events->pump().fire("post advance",loc);
+		resources::game_events->pump().fire("post_advance",loc);
 	}
 
 	// "sighted" event(s).
