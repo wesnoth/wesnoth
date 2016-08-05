@@ -208,6 +208,9 @@ void tgame_load::display_savegame(twindow& window)
 	ttoggle_button& cancel_orders_toggle =
 			find_widget<ttoggle_button>(&window, "cancel_orders", false);
 
+	ttoggle_button& change_difficulty_toggle =
+			find_widget<ttoggle_button>(&window, "change_difficulty", false);
+
 	const bool is_replay = savegame::loadgame::is_replay_save(summary);
 	const bool is_scenario_start = summary["turn"].empty();
 
@@ -215,8 +218,11 @@ void tgame_load::display_savegame(twindow& window)
 	replay_toggle.set_value(is_replay);
 	replay_toggle.set_active(!is_replay && !is_scenario_start);
 
-	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves.
+	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves
 	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
+
+	// Changing difficulty doesn't make sense on non-start-of-scenario saves
+	change_difficulty_toggle.set_active(!is_replay && is_scenario_start);
 }
 
 void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
