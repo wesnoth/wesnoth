@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "display_context.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
 #include "game_data.hpp"
@@ -2419,20 +2420,19 @@ bool unit::matches_id(const std::string& unit_id) const
 }
 
 
-std::string unit::TC_image_mods() const{
-	std::stringstream modifier;
-	if(!flag_rgb_.empty()){
-		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_color_index(side()) << ")";
+std::string unit::TC_image_mods() const {
+	if(!flag_rgb_.empty()) {
+		return formatter() << "~RC(" << flag_rgb_ << ">" << team::get_side_color_index(side()) << ")";
 	}
-	return modifier.str();
+
+	return "";
 }
-std::string unit::image_mods() const{
-	std::stringstream modifier;
-	if(!image_mods_.empty()){
-		modifier << "~" << image_mods_;
+std::string unit::image_mods() const {
+	if(!image_mods_.empty()) {
+		return formatter() << "~" << image_mods_ << TC_image_mods();
 	}
-	modifier << TC_image_mods();
-	return modifier.str();
+
+	return TC_image_mods();
 }
 
 const std::string& unit::effect_image_mods() const{
