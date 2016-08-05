@@ -68,9 +68,9 @@ local function generate_objectives(cfg)
 
 				if turn_limit >= current_turn then
 					if turn_limit - current_turn + 1 > 1 then
-						turn_counter = "<small> " .. string.format(tostring(_"(%d turns left)"), turn_limit - current_turn + 1) .. "</small>"
+						turn_counter = "<span foreground='white'><small> " .. string.format(tostring(_"(%d turns left)"), turn_limit - current_turn + 1) .. "</small></span>"
 					else
-						turn_counter = "<small> " .. _"(this turn left)" .. "</small>"
+						turn_counter = "<span foreground='white'><small> " .. _"(this turn left)" .. "</small></span>"
 					end
 				end
 			end
