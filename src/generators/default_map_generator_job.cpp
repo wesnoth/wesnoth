@@ -733,10 +733,8 @@ std::string default_map_generator_job::default_generate_map(
 	config naming = game_config_.child("naming");
 
 	if(cfg.has_child("naming")) {
-		naming.append_children(cfg, "naming");
+		naming.append_attributes(cfg.child("naming"));
 	}
-
-	naming.merge_children("naming");
 
 	// If the [naming] child is empty, we cannot provide good names.
 	std::map<map_location,std::string>* misc_labels = naming.empty() ? nullptr : labels;
@@ -752,12 +750,7 @@ std::string default_map_generator_job::default_generate_map(
 		naming.get_old_attribute("base_names", "male_names", "[naming]male_names= is deprecated, use base_names= instead");
 		//Due to the attribute detection feature of the factory we also support male_name_generator= but keep it undocumented.
 
-		if(naming.has_attribute("base_names")) {
-			base_name_generator = base_generator_factory.get_name_generator( (naming.has_attribute("base_names") || naming.has_attribute("base_name_generator")) ? "base" : "male" );
-		} else {
-			base_name_generator = base_generator_factory.get_name_generator("male");
-		}
-
+		base_name_generator = base_generator_factory.get_name_generator( (naming.has_attribute("base_names") || naming.has_attribute("base_name_generator")) ? "base" : "male" );
 		river_name_generator    = base_generator_factory.get_name_generator("river");
 		lake_name_generator     = base_generator_factory.get_name_generator("lake");
 		road_name_generator     = base_generator_factory.get_name_generator("road");
@@ -1048,8 +1041,11 @@ std::string default_map_generator_job::default_generate_map(
 		// Search a path out for the road
 		pathfind::plain_route rt = pathfind::a_star_search(src, dst, 10000.0, &calc, width, height);
 
+		const std::string& road_base_name = misc_labels != nullptr
+			? base_name_generator->generate()
+			: "";
 		const std::string& road_name = misc_labels != nullptr
-			? road_name_generator->generate({{"base", base_name_generator->generate()}})
+			? road_name_generator->generate({{"base", road_base_name}})
 			: "";
 		const int name_frequency = 20;
 		int name_count = 0;
@@ -1144,7 +1140,8 @@ std::string default_map_generator_job::default_generate_map(
 				terrain[x][y] = letter;
 				if(misc_labels != nullptr) {
 					const map_location loc(x - width / 3, y - height / 3); //add to use for village naming
-					road_names.insert(std::pair<map_location,std::string>(loc, road_name));
+					if(road_base_name != "")
+						road_names.insert(std::pair<map_location,std::string>(loc, road_base_name));
 				}
 			}
 		}
@@ -1269,10 +1266,8 @@ std::string default_map_generator_job::default_generate_map(
 		config village_naming = game_config_.child("village_naming");
 
 		if(cfg.has_child("village_naming")) {
-			village_naming.append_children(cfg,"village_naming");
+			village_naming.append_attributes(cfg.child("village_naming"));
 		}
-
-		village_naming.merge_children("village_naming");
 
 		// If the [village_naming] child is empty, we cannot provide good names.
 		std::map<map_location,std::string>* village_labels = village_naming.empty() ? nullptr : labels;
