@@ -188,8 +188,7 @@ void tunit_recall::pre_show(twindow& window)
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
-		std::string mods
-			= "~RC(" + unit->team_color() + ">" + team::get_side_color_index(unit->side()) + ")";
+		std::string mods = unit->image_mods();
 
 		if(unit->can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
