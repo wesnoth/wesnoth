@@ -632,7 +632,67 @@ function wml_actions.unpetrify(cfg)
 end
 
 function wml_actions.heal_unit(cfg)
-	wesnoth.heal_unit(cfg)
+	local healers = helper.get_child("filter_second")
+	if healers then
+		healers = wesnoth.get_units{
+			ability_type = "heals",
+			T["and"](healers)
+		}
+	else
+		healers = {}
+	end
+
+	local who = helper.get_child("filter")
+	if who then
+		who = wesnoth.get_units(who)
+	else
+		who = wesnoth.get_units{
+			x = wesnoth.current.event_context.x1,
+			y = wesnoth.current.event_context.y1
+		}
+	end
+
+	local heal_full = cfg.amount == "full"
+	local moves_full = cfg.moves == "full"
+	local heal_amount_set = false
+	for i,u in ipairs(who) do
+		local heal_amount = u.max_hitpoints - u.hitpoints
+		if heal_full then
+			u.hitpoints = u.max_hitpoints
+		else
+			heal_amount = math.min(math.max(1, cfg.amount), heal_amount)
+			u.hitpoints = u.hitpoints + heal_amount
+		end
+
+		if moves_full then
+			u.moves = u.max_moves
+		else
+			u.moves = math.min(u.max_moves, u.moves + (cfg.moves or 0))
+		end
+
+		if cfg.restore_attacks then
+			u.attacks_left = u.max_attacks
+		end
+
+		if cfg.restore_statuses then
+			u.status.poisoned = false
+			u.status.petrified = false
+			u.status.slowed = false
+			u.status.unhealable = false
+		end
+
+		if not heal_amount_set then
+			heal_amount_set = true
+			wesnoth.set_variable("heal_amount", heal_amount)
+		end
+
+		if cfg.animate then
+			wesnoth.animate_unit{
+				T.filter(healers),
+				flag = "healing"
+			}
+		end
+	end
 end
 
 function wml_actions.transform_unit(cfg)
