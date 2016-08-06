@@ -255,7 +255,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		// Total damage.
 		left_strings.push_back(_("Total damage"));
 		str.str("");
-		str << stats.damage << utils::unicode_en_dash << stats.num_blows << " (" << stats.chance_to_hit << "%)";
+		str << stats.damage << font::weapon_numbers_sep << stats.num_blows << " (" << stats.chance_to_hit << "%)";
 		right_strings.push_back(str.str());
 
 	// Without a weapon.
