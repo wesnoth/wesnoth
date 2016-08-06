@@ -62,6 +62,8 @@ private:
 	std::function<void()> work_;
 	std::unique_ptr<boost::thread> worker_;
 	std::unique_ptr<cursor::setter> cursor_setter_;
+	std::exception_ptr exception_;
+	void clear_timer();
 
 	twindow* build_window(CVideo& video) const;
 

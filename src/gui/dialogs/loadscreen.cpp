@@ -107,7 +107,15 @@ twindow* tloadscreen::build_window(CVideo& video) const
 void tloadscreen::pre_show(twindow& window)
 {
 	if (work_) {
-		worker_.reset(new boost::thread(work_));
+		worker_.reset(new boost::thread([this]() {
+			try {
+				work_();
+			}
+			catch (const game::error&) {
+				//TODO: guard this with a mutex.
+				exception_ = std::current_exception();
+			}
+		}));
 	}
 	timer_id_ = add_timer(100, std::bind(&tloadscreen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
@@ -121,7 +129,7 @@ void tloadscreen::pre_show(twindow& window)
 void tloadscreen::post_show(twindow& /*window*/)
 {
 	worker_.reset();
-	remove_timer(timer_id_);
+	clear_timer();
 	cursor_setter_.reset();
 }
 
@@ -145,6 +153,10 @@ tloadscreen* tloadscreen::current_load = nullptr;
 void tloadscreen::timer_callback(twindow& window)
 {
 	if (!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
+		if (exception_) {
+			clear_timer();
+			std::rethrow_exception(exception_);
+		}
 		window.close();
 	}
 	if (!work_) {
@@ -174,6 +186,7 @@ void tloadscreen::timer_callback(twindow& window)
 
 tloadscreen::~tloadscreen()
 {
+	clear_timer();
 	close();
 	current_load = nullptr;
 }
@@ -190,6 +203,13 @@ void tloadscreen::display(CVideo& video, std::function<void()> f)
 	else {
 		tloadscreen(std::function<void()>()).show(video);
 		f();
+	}
+}
+void tloadscreen::clear_timer()
+{
+	if (timer_id_ != 0) {
+		remove_timer(timer_id_);
+		timer_id_ = 0;
 	}
 }
 
