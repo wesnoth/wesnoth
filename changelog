@@ -27,7 +27,8 @@ Version 1.13.5+dev:
      remove all objects with a specific duration value.
    * Renamed [foreach] variable= to array=
    * Renamed [foreach] item_var= to variable=
- * Lua API:
+   * Fixed several bugs in the name generation of the map generator
+* Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
      function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
    * Added new function wesnoth.remove_modifications, which removes applied
