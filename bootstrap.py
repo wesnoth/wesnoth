@@ -425,7 +425,7 @@ if platform.system() != 'Windows':
   sys.exit('Error: This script only works on a Windows OS')
 maxcores = multiprocessing.cpu_count()
 print('The system has %s cores.' % maxcores)
-corecount = raw_input('Enter number of cores to build boost and wesnoth with: ')
+CORECOUNT = raw_input('Enter number of cores to build boost and wesnoth with: ')[0].lower()
 
 print('---[ download dependencies ]---')
 
@@ -566,7 +566,7 @@ os.chdir(BOOSTPATH)
 #run('b2 --show-libraries')  # show libraries that require building
 # exclude libs that don't require building (leaving asio here gives an error on Windows)
 names.remove('asio')
-cmdline = 'b2 toolset=gcc threadapi=win32 -j ' + corecount + ' --build-type=complete stage variant=release link=static --with-' + ' --with-'.join(names)
+cmdline = 'b2 -j' + CORECOUNT + ' --build-type=complete stage toolset=gcc threadapi=win32 variant=release link=static --with-' + ' --with-'.join(names)
 # BZip2 is needed for Iostreams
 cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
 print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
@@ -682,7 +682,7 @@ boostinfo = dict(
   suffix = get_boost_suffix(),  # something like '-mgw49-mt-1_57'
   gtkdir = GTKPATH.replace('\\', '/'),
   sdldir = SDLPATH.replace('\\', '/'),
-  jobs = corecount,
+  jobs = CORECOUNT,
 )
 
 cachecontent = """\
