@@ -526,47 +526,16 @@ PATH += os.pathsep + toolpath + '\\bin'
 os.environ['PATH'] = PATH
 
 
-print('. compiling Boost.* requirements from INSTALL:')
-req = """
-[x] compile Boost
-  [x] look into INSTALL to find out which Boost libraries are used
-
- boost_filesystem >= 1.44.0
- boost_locale >= 1.48.0
- boost_iostreams >= 1.36.0
- boost_random >= 1.48.0
- boost_regex >= 1.36.0
- boost_serialization >= 1.36.0 (header only)
- boost_asio >= 1.36.0 (header only)
- boost_program_options >= 1.36.0
- boost_system >= 1.36.0
- boost_thread
-
-  [x] b2 --show-libraries
-  [x] b2.exe toolset=gcc --build-type=complete stage release --with-system --with-iostreams --with-program_options --with-regex
-"""
-def get_boost_names(text):
-  """return array of Boost library names from requirements string """
-  libnames = []
-  for s in req.splitlines():
-    if s.strip().startswith('boost_'):
-      # process string like '   boost_program_options >= 1.36.0'
-      name = s.strip().split()[0].replace('boost_', '')
-      libnames.append(name)
-  return libnames
-names = get_boost_names(req)
-print('.   ' + ' '.join(names))
+print('. compiling Boost.')
 
 os.chdir(BOOSTPATH)
-
 
 # commenting check below, because Boost caches built files itself
 #if exists(BOOSTPATH + '/stage'):  # libs are built in stage dir
 #  print('. (skip) building Boost (%s already exists)' % (BOOSTPATH + '/stage'))
 #run('b2 --show-libraries')  # show libraries that require building
 # exclude libs that don't require building (leaving asio here gives an error on Windows)
-names.remove('asio')
-cmdline = 'b2 -j' + CORECOUNT + ' --build-type=complete stage toolset=gcc threadapi=win32 variant=release link=static --with-' + ' --with-'.join(names)
+cmdline = 'b2 -j' + CORECOUNT + ' --build-type=complete stage toolset=gcc threadapi=win32 variant=release link=static'
 # BZip2 is needed for Iostreams
 cmdline += ' -sBZIP2_SOURCE="%s"' % BZIP2PATH
 print('. building Boost libs ({})'.format(os.path.basename(BOOSTLOG)))
