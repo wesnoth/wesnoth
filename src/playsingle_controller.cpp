@@ -307,14 +307,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 				("result", is_victory ? "victory" : "defeat")
 			));
 		// Play victory music once all victory events
-		// are finished, if we aren't observers.
+		// are finished, if we aren't observers and the
+		// carryover dialog isn't disabled.
 		//
 		// Some scenario authors may use 'continue'
 		// result for something that is not story-wise
 		// a victory, so let them use [music] tags
 		// instead should they want special music.
 		const std::string& end_music = is_victory ? select_victory_music() : select_defeat_music();
-		if(end_music.empty() != true) {
+		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();
@@ -337,8 +338,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			throw;
 		}
 	}
-
-	return LEVEL_RESULT::QUIT;
 }
 
 void playsingle_controller::play_idle_loop()
