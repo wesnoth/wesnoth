@@ -25,6 +25,7 @@
 #include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
 
+#include "config.hpp"
 #include "image.hpp"
 #include "language.hpp"
 #include "sdl/rect.hpp"
@@ -973,7 +974,12 @@ part_ui::RESULT part_ui::show()
 	this->prepare_floating_images();
 
 	if(p_.music().empty() != true) {
-		sound::play_music_repeatedly(p_.music());
+		config music_config;
+		music_config["name"] = p_.music();
+		music_config["ms_after"] = 2000;
+		music_config["immediate"] = true;
+
+		sound::play_music_config(music_config);
 	}
 
 	if(p_.sound().empty() != true) {
