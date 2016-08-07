@@ -271,16 +271,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 
 		str << unit->alignment() << "\n";
 
-		std::string traits;
-		for(const std::string& trait : unit->trait_names()) {
-			traits += (traits.empty() ? "" : ", ") + trait;
-		}
-
-		if(traits.empty()) {
-			traits = " ";
-		}
-
-		str << traits << "\n";
+		str << utils::join(unit->trait_names(), ", ") << "\n";
 
 		str << font::span_color(unit->hp_color())
 			<< _("HP: ") << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>" << "\n";
