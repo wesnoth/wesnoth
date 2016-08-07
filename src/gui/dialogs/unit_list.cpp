@@ -221,10 +221,10 @@ void tunit_list::list_item_clicked(twindow& window)
 
 void tunit_list::post_show(twindow& window)
 {
-	//if(get_retval() == twindow::OK) {
-	//	selected_index_ = find_widget<tlistbox>(&window, "units_list", false)
-	//		.get_selected_row();
-	//}
+	if(get_retval() == twindow::OK) {
+		selected_index_ = find_widget<tlistbox>(&window, "units_list", false)
+			.get_selected_row();
+	}
 }
 
 }
