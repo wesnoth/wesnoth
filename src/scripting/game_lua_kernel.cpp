@@ -1810,12 +1810,6 @@ static int intf_debug(lua_State* L)
 	return 1;
 }
 
-int game_lua_kernel::intf_check_end_level_disabled(lua_State * L)
-{
-	lua_pushboolean(L, play_controller_.is_regular_game_end());
-	return 1;
-}
-
 /**
  * Removes all messages from the chat window.
  */
@@ -1905,11 +1899,6 @@ int game_lua_kernel::intf_get_end_level_data(lua_State* L)
 int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
-
-
-	if (play_controller_.is_regular_game_end()) {
-		return 0;
-	}
 	end_level_data data;
 
 	data.proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
@@ -4661,7 +4650,6 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "animate_unit",              &dispatch<&game_lua_kernel::intf_animate_unit               >        },
-		{ "check_end_level_disabled",  &dispatch<&game_lua_kernel::intf_check_end_level_disabled   >        },
 		{ "clear_menu_item",           &dispatch<&game_lua_kernel::intf_clear_menu_item            >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
 		{ "color_adjust",              &dispatch<&game_lua_kernel::intf_color_adjust               >        },

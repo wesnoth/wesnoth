@@ -30,6 +30,7 @@ Version 1.13.5+dev:
    * Renamed [foreach] variable= to array=
    * Renamed [foreach] item_var= to variable=
    * Fixed several bugs in the name generation of the map generator
+   * Fixed issues with using [endlevel] in victory/defeat events
 * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
      function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name

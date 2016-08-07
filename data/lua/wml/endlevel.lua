@@ -1,11 +1,13 @@
 local helper = wesnoth.require "lua/helper.lua"
+local already_ended = false
 
 function wesnoth.wml_actions.endlevel(cfg)
 	local parsed = helper.parsed(cfg)
-	if wesnoth.check_end_level_disabled() then
+	if already_ended then
 		wesnoth.message("Repeated [endlevel] execution, ignoring")
 		return
 	end
+	already_ended = true
 
 	local next_scenario = cfg.next_scenario
 	if next_scenario then
