@@ -74,42 +74,6 @@ struct advanced_preferences_sorter
 	}
 };
 
-template<hotkey::scope scope, template<class> class Dir>
-struct hotkey_sort_by_type
-{
-	hotkey_sort_by_type(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
-	bool operator()(int lhs, int rhs) const
-	{
-		Dir<bool> compare;
-		return compare((*hotkey_commands_)[lhs]->scope[scope] , (*hotkey_commands_)[rhs]->scope[scope]);
-	}
-	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
-};
-
-template<template<class> class Dir>
-struct hotkey_sort_by_desc
-{
-	hotkey_sort_by_desc(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
-	bool operator()(int lhs, int rhs) const
-	{
-		Dir<std::string> compare;
-		return compare((*hotkey_commands_)[lhs]->description.str() , (*hotkey_commands_)[rhs]->description.str());
-	}
-	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
-};
-
-template<template<class> class Dir>
-struct hotkey_sort_by_command
-{
-	hotkey_sort_by_command(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
-	bool operator()(int lhs, int rhs) const
-	{
-		Dir<std::string> compare;
-		return compare(hotkey::get_names((*hotkey_commands_)[lhs]->command) , hotkey::get_names((*hotkey_commands_)[rhs]->command));
-	}
-	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
-};
-
 const std::string bool_to_display_string(bool value)
 {
 	return value ? _("yes") : _("no");
@@ -441,6 +405,18 @@ static tgrid* get_advanced_row_grid(tlistbox& list, const int selected_row)
 {
 	return dynamic_cast<tgrid*>(
 		list.get_row_grid(selected_row)->find("pref_main_grid", false));
+}
+
+template<typename Fcn>
+void tpreferences::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
+{
+	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on(visible_hotkeys_[i1]) < filter_on(visible_hotkeys_[i2]);
+	};
+
+	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
+		return filter_on(visible_hotkeys_[i1]) > filter_on(visible_hotkeys_[i2]);
+	};
 }
 
 /**
@@ -896,26 +872,21 @@ void tpreferences::initialize_members(twindow& window)
 	generator_sort_array order_funcs;
 
 	// Action column
-	order_funcs[0] = hotkey_sort_by_desc<std::less>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_desc<std::greater>(visible_hotkeys_);
+	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return key->description.str(); });
 	hotkey_list.set_column_order(0, order_funcs);
 
 	// Hotkey column
-	order_funcs[0] = hotkey_sort_by_command<std::less>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_command<std::greater>(visible_hotkeys_);
+	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return hotkey::get_names(key->command); });
 	hotkey_list.set_column_order(1, order_funcs);
 
 	// Scope columns
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, std::less>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, std::greater>(visible_hotkeys_);
+	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return !key->scope[hotkey::SCOPE_GAME]; });
 	hotkey_list.set_column_order(2, order_funcs);
 
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, std::less>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, std::greater>(visible_hotkeys_);
+	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return !key->scope[hotkey::SCOPE_EDITOR]; });
 	hotkey_list.set_column_order(3, order_funcs);
 
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, std::less>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, std::greater>(visible_hotkeys_);
+	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return !key->scope[hotkey::SCOPE_MAIN_MENU]; });
 	hotkey_list.set_column_order(4, order_funcs);
 
 	connect_signal_mouse_left_click(
