@@ -37,10 +37,10 @@ WESNOTH_SERIES="1.13"
 # This allows users to create a link to the app on their desktop
 # os.path.normpath allows Windows users to see their standard path separators
 APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
-upper_dir=APP_DIR.split(os.sep)
-upper_dir.pop()
-WESNOTH_DATA_DIR=os.sep.join(upper_dir)
+WESNOTH_ROOT_DIR=os.sep.join(APP_DIR.split(os.sep)[:-2])  # pop out "data" and "tools"
+WESNOTH_DATA_DIR=os.path.join(WESNOTH_ROOT_DIR,"data")
 WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
+WMLXGETTEXT_DIR=os.path.normpath(os.path.join(WESNOTH_ROOT_DIR,"utils"))
 
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
