@@ -190,7 +190,8 @@ mouse pointer stays on the widget for more than 500 ms."""
         else:
             self.widget.bind("<Enter>",self.preshow)
             self.widget.bind("<Leave>",self.hide)
-        self.bind_all("<Button>",self.hide)
+        self.widget.bind("<ButtonPress>",self.hide)
+        self.widget.bind("<ButtonRelease>",self.hide)
         self.withdraw()
     def preshow(self,event=None):
         self.after_cleanup()
