@@ -73,6 +73,7 @@ struct advanced_preferences_sorter
 			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
 	}
 };
+
 template<hotkey::scope scope, bool reverse>
 struct hotkey_sort_by_type
 {
@@ -84,6 +85,7 @@ struct hotkey_sort_by_type
 	}
 	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
+
 template<bool reverse>
 struct hotkey_sort_by_desc
 {
@@ -95,6 +97,19 @@ struct hotkey_sort_by_desc
 	}
 	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
+
+template<bool reverse>
+struct hotkey_sort_by_command
+{
+	hotkey_sort_by_command(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
+	bool operator()(int lhs, int rhs) const
+	{
+		return reverse ? hotkey::get_names((*hotkey_commands_)[lhs]->command) < hotkey::get_names((*hotkey_commands_)[rhs]->command)
+					   : hotkey::get_names((*hotkey_commands_)[lhs]->command) > hotkey::get_names((*hotkey_commands_)[rhs]->command);
+	}
+	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
+};
+
 const std::string bool_to_display_string(bool value)
 {
 	return value ? _("yes") : _("no");
@@ -880,12 +895,17 @@ void tpreferences::initialize_members(twindow& window)
 
 	generator_sort_array order_funcs;
 
+	// Action column
 	order_funcs[0] = hotkey_sort_by_desc<false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_desc<true>(visible_hotkeys_);
-
 	hotkey_list.set_column_order(0, order_funcs);
 
+	// Hotkey column
+	order_funcs[0] = hotkey_sort_by_command<false>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_command<true>(visible_hotkeys_);
 	hotkey_list.set_column_order(1, order_funcs);
+
+	// Scope columns
 	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, false>(visible_hotkeys_);
 	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, true>(visible_hotkeys_);
 	hotkey_list.set_column_order(2, order_funcs);
