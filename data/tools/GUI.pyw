@@ -89,6 +89,41 @@ def is_wesnoth_tools_path(path):
         return True
     return False
 
+def get_addons_directory():
+    """Returns a string containing the path of the add-ons directory"""
+    # os.path.expanduser gets the current user's home directory on every platform
+    if sys.platform=="win32":
+        # get userdata directory on Windows
+        # it assumes that you choose to store userdata in the My Games directory
+        # while installing Wesnoth
+        userdata=os.path.join(os.path.expanduser("~"),
+                              "Documents",
+                              "My Games",
+                              "Wesnoth"+WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    elif sys.platform.startswith("linux") or "bsd" in sys.platform:
+        # we're on Linux or on a BSD system like FreeBSD
+        userdata=os.path.join(os.path.expanduser("~"),
+                              ".local",
+                              "share",
+                              "wesnoth",
+                              WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    elif sys.platform=="darwin": # we're on MacOS
+        # bear in mind that I don't have a Mac, so this point may be bugged
+        userdata=os.path.join(os.path.expanduser("~"),
+                              "Library",
+                              "Application Support",
+                              "Wesnoth_"+WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    else: # unknown system; if someone else wants to add other rules, be my guest
+        userdata="."
+
+    return userdata if os.path.exists(userdata) else "." # fallback in case the directory doesn't exist
+
 def attach_context_menu(widget,function):
     # on Mac the right button fires a Button-2 event, or so I'm told
     # some mice don't even have two buttons, so the user is forced
@@ -364,42 +399,7 @@ It comes complete with a context menu and a directory selection screen"""
             directory=askdirectory(initialdir=current_dir)
         # otherwise attempt to detect the user's userdata folder
         else:
-            # os.path.expanduser gets the current user's home directory on every platform
-            if sys.platform=="win32":
-                # get userdata directory on Windows
-                # it assumes that you choose to store userdata in the My Games directory
-                # while installing Wesnoth
-                userdata=os.path.join(os.path.expanduser("~"),
-                                      "Documents",
-                                      "My Games",
-                                      "Wesnoth"+WESNOTH_SERIES,
-                                      "data",
-                                      "add-ons")
-            elif sys.platform.startswith("linux") or "bsd" in sys.platform:
-                # we're on Linux or on a BSD system like FreeBSD
-                userdata=os.path.join(os.path.expanduser("~"),
-                                      ".local",
-                                      "share",
-                                      "wesnoth",
-                                      WESNOTH_SERIES,
-                                      "data",
-                                      "add-ons")
-            elif sys.platform=="darwin": # we're on MacOS
-                # bear in mind that I don't have a Mac, so this point may be bugged
-                userdata=os.path.join(os.path.expanduser("~"),
-                                      "Library",
-                                      "Application Support",
-                                      "Wesnoth_"+WESNOTH_SERIES,
-                                      "data",
-                                      "add-ons")
-            else: # unknown system; if someone else wants to add other rules, be my guest
-                userdata="."
-
-            if os.path.exists(userdata): # we may have gotten it wrong
-                directory=askdirectory(initialdir=userdata)
-            else:
-                directory=askdirectory(initialdir=".")
-        
+            directory=askdirectory(initialdir=get_addons_directory())
         if directory:
             # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
             self.textvariable.set(os.path.normpath(directory))
