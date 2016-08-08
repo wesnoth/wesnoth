@@ -407,6 +407,50 @@ It comes complete with a context menu and a directory selection screen"""
     def on_clear(self):
         self.textvariable.set("")
 
+class SelectSaveFile(Frame):
+    def __init__(self, parent, textvariable, **kwargs):
+        """A subclass of Frame with a readonly Entry and a Button with a browse icon.
+It has a context menu and a save file selection dialog."""
+        super().__init__(parent,**kwargs)
+        self.textvariable=textvariable
+        self.file_entry=EntryContext(self,
+                                     width=40,
+                                     textvariable=self.textvariable,
+                                     state="readonly")
+        self.file_entry.pack(side=LEFT,
+                             fill=BOTH,
+                             expand=YES)
+        self.file_button=Button(self,
+                                image=ICONS['browse'],
+                                compound=LEFT,
+                                text="Browse...",
+                                command=self.on_browse)
+        self.file_button.pack(side=LEFT)
+        self.clear_button=Button(self,
+                                 image=ICONS['clear16'],
+                                 compound=LEFT,
+                                 text="Clear",
+                                 command=self.on_clear)
+        self.clear_button.pack(side=LEFT)
+    def on_browse(self):
+        # if the user already selected a file, try to use its directory
+        current_dir,current_file=os.path.split(self.textvariable.get())
+        if os.path.exists(current_dir):
+            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+                                        initialdir=current_dir,
+                                        initialfile=current_file,
+                                        confirmoverwrite=False) # the GUI will ask later if the file should be overwritten, so disable it for now
+        # otherwise attempt to detect the user's userdata folder
+        else:
+            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+                                        initialdir=get_addons_directory(),
+                                        confirmoverwrite=False)
+        if directory:
+            # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
+            self.textvariable.set(os.path.normpath(directory))
+    def on_clear(self):
+        self.textvariable.set("")
+
 class WmllintTab(Frame):
     def __init__(self,parent):
         # it means super(WmllintTab,self), that in turn means
