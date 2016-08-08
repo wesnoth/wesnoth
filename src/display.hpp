@@ -612,7 +612,7 @@ public:
 
 	/** Announce a message prominently. */
 	void announce(const std::string& msg,
-		       const SDL_Color& color = font::GOOD_COLOR);
+		       const SDL_Color& color = font::GOOD_COLOR, int lifetime = 100);
 
 	/**
 	 * Schedule the minimap for recalculation.

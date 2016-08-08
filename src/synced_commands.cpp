@@ -390,7 +390,7 @@ namespace
 	{
 		utils::string_map symbols;
 		symbols["player"] = resources::controller->current_team().current_player();
-		resources::screen->announce(vgettext(message, symbols), font::NORMAL_COLOR);
+		resources::screen->announce(vgettext(message, symbols), font::NORMAL_COLOR, 1000);
 	}
 }
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)

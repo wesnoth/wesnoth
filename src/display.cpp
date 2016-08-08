@@ -1949,13 +1949,13 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-void display::announce(const std::string& message, const SDL_Color& color)
+void display::announce(const std::string& message, const SDL_Color& color, int lifetime)
 {
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
 	flabel.set_position(map_outside_area().w/2, map_outside_area().h/3);
-	flabel.set_lifetime(100);
+	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(map_outside_area());
 
 	font::add_floating_label(flabel);
