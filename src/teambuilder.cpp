@@ -38,14 +38,14 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 class team_builder {
 public:
 	team_builder(const config& side_cfg, std::vector<team>& teams,
-		     const config& level, game_board& board)
+		     const config& level, game_board& board, int num)
 		: gold_info_ngold_(0)
 		, leader_configs_()
 		, level_(level)
 		, board_(board)
 		, player_exists_(false)
 		, seen_ids_()
-		, side_(0)
+		, side_(num)
 		, side_cfg_(side_cfg)
 		, t_(nullptr)
 		, teams_(teams)
@@ -113,21 +113,10 @@ protected:
 
 	void init()
 	{
-		side_ = side_cfg_["side"].to_int(1);
-		if (side_ == 0) // Otherwise falls into the next error, with a very confusing message
-			throw config::error("Side number 0 encountered. Side numbers start at 1");
-		if (unsigned(side_ - 1) >= teams_.size()) {
-			std::stringstream ss;
-			ss << "Side number " << side_ << " higher than number of sides (" << teams_.size() << ")";
-			throw config::error(ss.str());
-		}
-		if (teams_[side_ - 1].side() != 0) {
-			std::stringstream ss;
-			ss << "Duplicate definition of side " << side_;
-			throw config::error(ss.str());
+		if (side_cfg_["side"].to_int(side_) != side_) {
+			ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_ << std::endl;
 		}
 		t_ = &teams_[side_ - 1];
-
 		log_step("init");
 
 		//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
@@ -302,9 +291,9 @@ protected:
 
 team_builder_ptr create_team_builder(const config& side_cfg,
 					 std::vector<team>& teams,
-					 const config& level, game_board& board)
+					 const config& level, game_board& board, int num)
 {
-	return team_builder_ptr(new team_builder(side_cfg, teams, level, board));
+	return team_builder_ptr(new team_builder(side_cfg, teams, level, board, num));
 }
 
 void build_team_stage_one(team_builder_ptr tb_ptr)

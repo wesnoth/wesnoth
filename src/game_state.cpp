@@ -189,9 +189,9 @@ void game_state::init(const config& level, play_controller & pc)
 				first_human_team_ = team_num;
 			}
 		}
-		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level, board_);
 		++team_num;
+		team_builder_ptr tb_ptr = create_team_builder(side,
+			board_.teams_, level, board_, team_num);
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}

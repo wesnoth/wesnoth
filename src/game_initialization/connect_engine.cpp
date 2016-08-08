@@ -898,6 +898,11 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		("recruit", cfg_["recruit"])
 	);
 
+	if (cfg_["side"].to_int(index_ + 1) != index_ + 1) {
+		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1 << std::endl;
+	}
+	cfg_["side"] = index_ + 1;
+
 	// Check if this side should give its control to some other side.
 	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
 	if (side_cntr_index < parent_.side_engines().size()) {
@@ -908,6 +913,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
 		ERR_MP << "contoller=<number> is deperecated\n";
 	}
+
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
 		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
 		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
@@ -1006,10 +1012,6 @@ config side_engine::new_config() const
 		res["faction"] = faction["id"];
 		faction.remove_attributes("id", "name", "image", "gender", "type");
 		res.append(faction);
-	}
-
-	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
-		res["side"] = index_ + 1;
 	}
 
 	res["controller"] = controller_names[controller_];
