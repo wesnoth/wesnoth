@@ -924,6 +924,74 @@ class WmlindentTab(Frame):
         else:
             self.regexp_entry.configure(state=DISABLED)
 
+class WmlxgettextTab(Frame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        self.domain_and_output_frame=Frame(self)
+        self.domain_and_output_frame.grid(row=0,column=0,columnspan=2,sticky=N+E+S+W)
+        self.domain_label=Label(self.domain_and_output_frame,
+                                text="Textdomain:")
+        self.domain_label.grid(row=0,column=0,sticky=W)
+        self.domain_variable=StringVar()
+        self.domain_entry=Entry(self.domain_and_output_frame,
+                                textvariable=self.domain_variable)
+        self.domain_entry.grid(row=0,column=1,sticky=N+E+S+W)
+        self.output_label=Label(self.domain_and_output_frame,
+                                text="Output file:")
+        self.output_label.grid(row=1,column=0,sticky=W)
+        self.output_variable=StringVar()
+        self.output_frame=SelectSaveFile(self.domain_and_output_frame,self.output_variable)
+        self.output_frame.grid(row=1,column=1,sticky=N+E+S+W)
+        self.options_labelframe=LabelFrame(self,
+                                           text="Options")
+        self.options_labelframe.grid(row=2,column=0,sticky=N+E+S+W)
+        self.recursive_variable=BooleanVar()
+        self.recursive_variable.set(True)
+        self.recursive_check=Checkbutton(self.options_labelframe,
+                                         text="Scan subdirectories",
+                                         variable=self.recursive_variable)
+        self.recursive_check.grid(row=0,column=0,sticky=W)
+        self.warnall_variable=BooleanVar()
+        self.warnall_check=Checkbutton(self.options_labelframe,
+                                       text="Show optional warnings",
+                                       variable=self.warnall_variable)
+        self.warnall_check.grid(row=1,column=0,sticky=W)
+        self.fuzzy_variable=BooleanVar()
+        self.fuzzy_check=Checkbutton(self.options_labelframe,
+                                     text="Mark all strings as fuzzy",
+                                     variable=self.fuzzy_variable)
+        self.fuzzy_check.grid(row=2,column=0,sticky=W)
+        self.advanced_labelframe=LabelFrame(self,
+                                            text="Advanced options")
+        self.advanced_labelframe.grid(row=2,column=1,sticky=N+E+S+W)
+        self.package_version_variable=BooleanVar()
+        self.package_version_check=Checkbutton(self.advanced_labelframe,
+                                               text="Package version",
+                                               variable=self.package_version_variable)
+        self.package_version_check.grid(row=0,column=0,sticky=W)
+        self.initialdomain_variable=BooleanVar()
+        self.initialdomain_check=Checkbutton(self.advanced_labelframe,
+                                             text="Initial textdomain",
+                                             variable=self.initialdomain_variable,
+                                             command=self.initialdomain_callback)
+        self.initialdomain_check.grid(row=1,column=0,sticky=W)
+        self.initialdomain_name=StringVar()
+        self.initialdomain_entry=Entry(self.advanced_labelframe,
+                                       state=DISABLED,
+                                       textvariable=self.initialdomain_name)
+        self.initialdomain_entry.grid(row=1,column=1,sticky=E+W)
+        self.domain_and_output_frame.columnconfigure(1,weight=1)
+        self.domain_and_output_frame.rowconfigure(0,uniform="group")
+        self.domain_and_output_frame.rowconfigure(1,uniform="group")
+        self.advanced_labelframe.columnconfigure(1,weight=1)
+        self.columnconfigure(0,weight=1)
+        self.columnconfigure(1,weight=1)
+    def initialdomain_callback(self, event=None):
+        if self.initialdomain_variable.get():
+            self.initialdomain_entry.configure(state=NORMAL)
+        else:
+            self.initialdomain_entry.configure(state=DISABLED)
+
 class MainFrame(Frame):
     def __init__(self,parent):
         self.parent=parent
@@ -994,6 +1062,10 @@ class MainFrame(Frame):
         self.notebook.add(self.wmlindent_tab,
                           text="wmlindent",
                           sticky=N+E+S+W)
+        self.wmlxgettext_tab=WmlxgettextTab(None)
+        self.notebook.add(self.wmlxgettext_tab,
+                          text="wmlxgettext",
+                          sticky=N+E+S+W)
         self.output_frame=LabelFrame(self,
                                      text="Output")
         self.output_frame.grid(row=3,
@@ -1050,6 +1122,9 @@ class MainFrame(Frame):
         elif active_tab==2:
             self.run_tooltip.set_text("Run wmlindent")
             self.run_button.configure(command=self.on_run_wmlindent)
+        elif active_tab==3:
+            self.run_tooltip.set_text("Run wmlxgettext")
+            self.run_button.configure(command=self.on_run_wmlxgettext)
 
     def on_run_wmllint(self):
         # first of all, check if we have something to run wmllint on it
@@ -1214,6 +1289,60 @@ wmlindent will be run on the Wesnoth core directory""")
         wmlindent_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlindent",wmlindent_thread)
+
+    def on_run_wmlxgettext(self):
+        # build the command line and add the path of the Python interpreter
+        wmlxgettext_command_string=[sys.executable]
+        wmlxgettext_command_string.append(os.path.join(WMLXGETTEXT_DIR,"wmlxgettext"))
+        textdomain=self.wmlxgettext_tab.domain_variable.get()
+        if textdomain:
+            wmlxgettext_command_string.extend(["--domain",textdomain])
+        else:
+            showerror("Error","""No textdomain specified""")
+            return
+        wmlxgettext_command_string.append("--directory")
+        umc_dir=self.dir_variable.get()
+        if os.path.exists(umc_dir): # add-on exists
+            wmlxgettext_command_string.append(umc_dir)
+        elif not umc_dir: # path does not exists because the box was left empty
+            showwarning("Warning","""You didn't select a directory.
+
+wmlxgettext won't be run""")
+            return
+        else: # path doesn't exist and isn't empty
+            showerror("Error","""The selected directory does not exists""")
+            return
+        if self.wmlxgettext_tab.recursive_variable.get():
+            wmlxgettext_command_string.append("--recursive")
+        output_file=self.wmlxgettext_tab.output_variable.get()
+        if os.path.exists(output_file):
+            answer=askyesno(title="Overwrite confirmation",
+                            message="""File {} already exists.
+Do you want to overwrite it?""".format(output_file))
+            if not answer:
+                return
+        elif not output_file:
+            showwarning("Warning","""You didn't select an output file.
+
+wmlxgettext won't be run""")
+            return
+        else:
+            wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
+        if self.wmlxgettext_tab.warnall_variable.get():
+            wmlxgettext_command_string.append("--warnall")
+        if self.wmlxgettext_tab.fuzzy_variable.get():
+            wmlxgettext_command_string.append("--fuzzy")
+        if self.wmlxgettext_tab.package_version_variable.get():
+            wmlxgettext_command_string.append("--package-version")
+        wmlxgettext_command_string.append("--no-text-colors")
+        initialdomain=self.wmlxgettext_tab.initialdomain_variable.get()
+        if initialdomain:
+            wmlxgettext_command_string.extend(["--initialdomain",initialdomain])
+        # start thread and wmlxgettext subprocess
+        wmlxgettext_thread=threading.Thread(target=run_tool,args=("wmlxgettext",self.queue,wmlxgettext_command_string))
+        wmlxgettext_thread.start()
+        # build popup
+        dialog=Popup(self.parent,"wmlxgettext",wmlxgettext_thread)
 
     def update_text(self):
         """Checks periodically if the queue is empty.
