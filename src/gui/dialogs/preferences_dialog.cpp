@@ -74,38 +74,38 @@ struct advanced_preferences_sorter
 	}
 };
 
-template<hotkey::scope scope, bool reverse>
+template<hotkey::scope scope, template<class> class Dir>
 struct hotkey_sort_by_type
 {
 	hotkey_sort_by_type(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
 	bool operator()(int lhs, int rhs) const
 	{
-		return reverse ? (*hotkey_commands_)[lhs]->scope[scope] < (*hotkey_commands_)[rhs]->scope[scope]
-		               : (*hotkey_commands_)[lhs]->scope[scope] > (*hotkey_commands_)[rhs]->scope[scope];
+		Dir<bool> compare;
+		return compare((*hotkey_commands_)[lhs]->scope[scope] , (*hotkey_commands_)[rhs]->scope[scope]);
 	}
 	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
 
-template<bool reverse>
+template<template<class> class Dir>
 struct hotkey_sort_by_desc
 {
 	hotkey_sort_by_desc(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
 	bool operator()(int lhs, int rhs) const
 	{
-		return reverse ? (*hotkey_commands_)[lhs]->description.str() < (*hotkey_commands_)[rhs]->description.str()
-		               : (*hotkey_commands_)[lhs]->description.str() > (*hotkey_commands_)[rhs]->description.str();
+		Dir<std::string> compare;
+		return compare((*hotkey_commands_)[lhs]->description.str() , (*hotkey_commands_)[rhs]->description.str());
 	}
 	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
 
-template<bool reverse>
+template<template<class> class Dir>
 struct hotkey_sort_by_command
 {
 	hotkey_sort_by_command(const gui2::tpreferences::t_visible_hotkeys& l) : hotkey_commands_(&l) {}
 	bool operator()(int lhs, int rhs) const
 	{
-		return reverse ? hotkey::get_names((*hotkey_commands_)[lhs]->command) < hotkey::get_names((*hotkey_commands_)[rhs]->command)
-					   : hotkey::get_names((*hotkey_commands_)[lhs]->command) > hotkey::get_names((*hotkey_commands_)[rhs]->command);
+		Dir<std::string> compare;
+		return compare(hotkey::get_names((*hotkey_commands_)[lhs]->command) , hotkey::get_names((*hotkey_commands_)[rhs]->command));
 	}
 	const gui2::tpreferences::t_visible_hotkeys* hotkey_commands_;
 };
@@ -896,26 +896,26 @@ void tpreferences::initialize_members(twindow& window)
 	generator_sort_array order_funcs;
 
 	// Action column
-	order_funcs[0] = hotkey_sort_by_desc<false>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_desc<true>(visible_hotkeys_);
+	order_funcs[0] = hotkey_sort_by_desc<std::less>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_desc<std::greater>(visible_hotkeys_);
 	hotkey_list.set_column_order(0, order_funcs);
 
 	// Hotkey column
-	order_funcs[0] = hotkey_sort_by_command<false>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_command<true>(visible_hotkeys_);
+	order_funcs[0] = hotkey_sort_by_command<std::less>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_command<std::greater>(visible_hotkeys_);
 	hotkey_list.set_column_order(1, order_funcs);
 
 	// Scope columns
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, false>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, true>(visible_hotkeys_);
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_GAME, std::less>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_GAME, std::greater>(visible_hotkeys_);
 	hotkey_list.set_column_order(2, order_funcs);
 
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, false>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, true>(visible_hotkeys_);
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, std::less>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_EDITOR, std::greater>(visible_hotkeys_);
 	hotkey_list.set_column_order(3, order_funcs);
 
-	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, false>(visible_hotkeys_);
-	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, true>(visible_hotkeys_);
+	order_funcs[0] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, std::less>(visible_hotkeys_);
+	order_funcs[1] = hotkey_sort_by_type<hotkey::SCOPE_MAIN_MENU, std::greater>(visible_hotkeys_);
 	hotkey_list.set_column_order(4, order_funcs);
 
 	connect_signal_mouse_left_click(
