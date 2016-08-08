@@ -66,14 +66,6 @@
 
 namespace {
 
-struct advanced_preferences_sorter
-{
-	bool operator()(const config& lhs, const config& rhs) const
-	{
-			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
-	}
-};
-
 const std::string bool_to_display_string(bool value)
 {
 	return value ? _("yes") : _("no");
@@ -106,7 +98,9 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 	}
 
 	std::sort(adv_preferences_cfg_.begin(), adv_preferences_cfg_.end(),
-		advanced_preferences_sorter());
+		[](const config& lhs, const config& rhs) {
+			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
+		});
 }
 
 // Determine the template type in order to use the correct value getter
