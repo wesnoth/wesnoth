@@ -199,7 +199,7 @@ void tunit_create::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_type(units_[selected_row]);
+		.set_displayed_type(*units_[selected_row]);
 }
 
 void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)

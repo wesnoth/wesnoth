@@ -122,7 +122,7 @@ void tunit_recruit::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "recruit_details", false)
-		.set_displayed_type(recruit_list_[selected_row]);
+		.set_displayed_type(*recruit_list_[selected_row]);
 }
 
 void tunit_recruit::show_help(twindow& window)

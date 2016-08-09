@@ -57,10 +57,10 @@ public:
 	}
 
 	/** Displays the stats of a specified unit type */
-	void set_displayed_type(const unit_type* type);
+	void set_displayed_type(const unit_type& type);
 
 	/** Displays the stats of a specific unit */
-	void set_displayed_unit(const unit* unit);
+	void set_displayed_unit(const unit& u);
 
 	/** Sets the facing of the unit image */
 	void set_image_mods(const std::string& mods);

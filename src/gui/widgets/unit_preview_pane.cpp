@@ -93,33 +93,33 @@ void tunit_preview_pane::print_attack_details(const std::vector<attack_type>& at
 	}
 }
 
-void tunit_preview_pane::set_displayed_type(const unit_type* type)
+void tunit_preview_pane::set_displayed_type(const unit_type& type)
 {
 	// Sets the current type id for the profile button callback to use
-	current_type_ = type->id();
+	current_type_ = type.id();
 
 	if(icon_type_) {
 		std::string mods;
 
 		if(resources::controller) {
-			mods = "~RC(" + type->flag_rgb() + ">" +
+			mods = "~RC(" + type.flag_rgb() + ">" +
 				 team::get_side_color_index(resources::controller->current_side())
 				 + ")";
 		}
 
 		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
-		icon_type_->set_label((type->icon().empty() ? type->image() : type->icon()) + mods);
+		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
 
 	if(label_name_) {
-		label_name_->set_label("<big>" + type->type_name() + "</big>");
+		label_name_->set_label("<big>" + type.type_name() + "</big>");
 		label_name_->set_use_markup(true);
 	}
 
 	if(label_level_) {
 		utils::string_map symbols;
-		symbols["lvl"] = std::to_string(type->level());
+		symbols["lvl"] = std::to_string(type.level());
 
 		std::string l_str = vgettext("Lvl $lvl", symbols);
 
@@ -128,17 +128,17 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 	}
 
 	if(icon_race_) {
-		icon_race_->set_label("icons/unit-groups/race_" + type->race_id() + "_30.png");
-		icon_race_->set_tooltip(type->race()->name(type->genders().front()));
+		icon_race_->set_label("icons/unit-groups/race_" + type.race_id() + "_30.png");
+		icon_race_->set_tooltip(type.race()->name(type.genders().front()));
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = type->alignment().to_string();
+		const std::string& alignment_name = type.alignment().to_string();
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
-			type->alignment(),
-			type->genders().front()));
+			type.alignment(),
+			type.genders().front()));
 	}
 
 	if(label_details_) {
@@ -146,24 +146,24 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 		str << "<small>";
 
 		str << "<span color='#21e100'>"
-			<< "<b>" << _("HP: ") << "</b>" << type->hitpoints() << "</span>" << " | ";
+			<< "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | ";
 
 		str << "<span color='#00a0e1'>"
-			<< "<b>" << _("XP: ") << "</b>" << type->experience_needed() << "</span>" << " | ";
+			<< "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | ";
 
 		str << "<b>" << _("MP: ") << "</b>"
-			<< type->movement();
+			<< type.movement();
 
 		str << "</small>";
 		str << "\n\n";
 
 		// Print trait details
 		std::stringstream t_str;
-		for(const auto& tr : type->possible_traits()) {
+		for(const auto& tr : type.possible_traits()) {
 			if(tr["availability"] != "musthave") continue;
 
 			const std::string gender_string =
-				type->genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
+				type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name";
 
 			t_string name = tr[gender_string];
 			if(name.empty()) {
@@ -182,10 +182,10 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 		}
 
 		// Print ability details
-		if(!type->abilities().empty()) {
+		if(!type.abilities().empty()) {
 			str << "<b>" << _("Abilities") << "</b>" << "\n";
 
-			for(const auto& ab : type->abilities()) {
+			for(const auto& ab : type.abilities()) {
 				str << "  " << ab << "\n";
 			}
 
@@ -193,8 +193,8 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 		}
 
 		// Print attack details
-		if(!type->attacks().empty()) {
-			print_attack_details(type->attacks(), str);
+		if(!type.attacks().empty()) {
+			print_attack_details(type.attacks(), str);
 		}
 
 		label_details_->set_label(str.str());
@@ -202,33 +202,33 @@ void tunit_preview_pane::set_displayed_type(const unit_type* type)
 	}
 }
 
-void tunit_preview_pane::set_displayed_unit(const unit* unit)
+void tunit_preview_pane::set_displayed_unit(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
-	current_type_ = unit->type_id();
+	current_type_ = u.type_id();
 
 	if(icon_type_) {
-		std::string mods = unit->image_mods();
+		std::string mods = u.image_mods();
 
-		if(unit->can_recruit()) {
+		if(u.can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
 		}
 
-		for(const std::string& overlay : unit->overlays()) {
+		for(const std::string& overlay : u.overlays()) {
 			mods += "~BLIT(" + overlay + ")";
 		}
 
 		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
-		icon_type_->set_label(unit->absolute_image() + mods);
+		icon_type_->set_label(u.absolute_image() + mods);
 	}
 
 	if(label_name_) {
 		std::string name;
-		if(!unit->name().empty()) {
-			name = "<span size='large'>" + unit->name() + "</span>" + "\n" + "<small><span color='#a69275'>" + unit->type_name() + "</span></small>";
+		if(!u.name().empty()) {
+			name = "<span size='large'>" + u.name() + "</span>" + "\n" + "<small><span color='#a69275'>" + u.type_name() + "</span></small>";
 		} else {
-			name = "<span size='large'>" + unit->type_name() + "</span>\n";
+			name = "<span size='large'>" + u.type_name() + "</span>\n";
 		}
 
 		label_name_->set_label(name);
@@ -237,7 +237,7 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 
 	if(label_level_) {
 		utils::string_map symbols;
-		symbols["lvl"] = std::to_string(unit->level());
+		symbols["lvl"] = std::to_string(u.level());
 
 		std::string l_str = vgettext("Lvl $lvl", symbols);
 
@@ -246,38 +246,38 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 	}
 
 	if(icon_race_) {
-		icon_race_->set_label("icons/unit-groups/race_" + unit->race()->id() + "_30.png");
-		icon_race_->set_tooltip(unit->race()->name(unit->gender()));
+		icon_race_->set_label("icons/unit-groups/race_" + u.race()->id() + "_30.png");
+		icon_race_->set_tooltip(u.race()->name(u.gender()));
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = unit->alignment().to_string();
+		const std::string& alignment_name = u.alignment().to_string();
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
-			unit->alignment(),
-			unit->gender()));
+			u.alignment(),
+			u.gender()));
 	}
 
 	if(label_details_minimal_) {
 		std::stringstream str;
 
-		const std::string name = "<span size='large'>" + (!unit->name().empty() ? unit->name() : " ") + "</span>";
+		const std::string name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
 		str << name << "\n";
 
-		str << "<span color='#a69275'>" << unit->type_name() << "</span>" << "\n";
+		str << "<span color='#a69275'>" << u.type_name() << "</span>" << "\n";
 
-		str << "Lvl " << unit->level() << "\n";
+		str << "Lvl " << u.level() << "\n";
 
-		str << unit->alignment() << "\n";
+		str << u.alignment() << "\n";
 
-		str << utils::join(unit->trait_names(), ", ") << "\n";
+		str << utils::join(u.trait_names(), ", ") << "\n";
 
-		str << font::span_color(unit->hp_color())
-			<< _("HP: ") << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>" << "\n";
+		str << font::span_color(u.hp_color())
+			<< _("HP: ") << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << "\n";
 
-		str << font::span_color(unit->xp_color())
-			<< _("XP: ") << unit->experience() << "/" << unit->max_experience() << "</span>";
+		str << font::span_color(u.xp_color())
+			<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>";
 
 		label_details_minimal_->set_label(str.str());
 		label_details_minimal_->set_use_markup(true);
@@ -287,41 +287,41 @@ void tunit_preview_pane::set_displayed_unit(const unit* unit)
 		std::stringstream str;
 		str << "<small>";
 
-		str << font::span_color(unit->hp_color())
-			<< "<b>" << _("HP: ") << "</b>" << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>" << " | ";
+		str << font::span_color(u.hp_color())
+			<< "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | ";
 
-		str << font::span_color(unit->xp_color())
-			<< "<b>" << _("XP: ") << "</b>" << unit->experience() << "/" << unit->max_experience() << "</span>" << " | ";
+		str << font::span_color(u.xp_color())
+			<< "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | ";
 
 		str << "<b>" << _("MP: ") << "</b>"
-			<< unit->movement_left() << "/" << unit->total_movement();
+			<< u.movement_left() << "/" << u.total_movement();
 
 		str << "</small>";
 		str << "\n\n";
 
 		// Print trait details
-		if(!unit->trait_names().empty()) {
+		if(!u.trait_names().empty()) {
 			str << "<b>" << _("Traits") << "</b>" << "\n";
 
-			for(const auto& trait : unit->trait_names()) {
+			for(const auto& trait : u.trait_names()) {
 				str << "  " << trait << "\n";
 			}
 
 			str << "\n";
 		}
 
-		if(!unit->get_ability_list().empty()) {
+		if(!u.get_ability_list().empty()) {
 			str << "<b>" << _("Abilities") << "</b>" << "\n";
 
-			for(const auto& ab : unit->ability_tooltips()) {
+			for(const auto& ab : u.ability_tooltips()) {
 				str << "  " << std::get<1>(ab) << "\n";
 			}
 
 			str << "\n";
 		}
 
-		if(!unit->attacks().empty()) {
-			print_attack_details(unit->attacks(), str);
+		if(!u.attacks().empty()) {
+			print_attack_details(u.attacks(), str);
 		}
 
 		label_details_->set_label(str.str());

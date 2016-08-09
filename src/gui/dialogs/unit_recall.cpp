@@ -315,7 +315,7 @@ void tunit_recall::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_unit(recall_list_[selected_row].get());
+		.set_displayed_unit(*recall_list_[selected_row].get());
 }
 
 void tunit_recall::post_show(twindow& window)

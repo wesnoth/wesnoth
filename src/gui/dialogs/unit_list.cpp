@@ -198,7 +198,7 @@ void tunit_list::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_unit(unit_list_[selected_row].get());
+		.set_displayed_unit(*unit_list_[selected_row].get());
 }
 
 void tunit_list::post_show(twindow& window)

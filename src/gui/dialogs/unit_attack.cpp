@@ -190,10 +190,10 @@ void tunit_attack::pre_show(twindow& window)
 			std::bind(&tunit_attack::damage_calc_callback, this, std::ref(window)));
 
 	find_widget<tunit_preview_pane>(&window, "attacker_pane", false)
-		.set_displayed_unit(&(*attacker_itor_));
+		.set_displayed_unit(*attacker_itor_);
 
 	find_widget<tunit_preview_pane>(&window, "defender_pane", false)
-		.set_displayed_unit(&(*defender_itor_));
+		.set_displayed_unit(*defender_itor_);
 
 	selected_weapon_ = -1;
 	set_weapon_info(window, weapons_, best_weapon_);
