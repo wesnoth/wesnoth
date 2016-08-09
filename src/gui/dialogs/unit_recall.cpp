@@ -172,7 +172,7 @@ void tunit_recall::pre_show(twindow& window)
 		find_widget<tbutton>(&window, "show_help", false),
 		std::bind(&tunit_recall::show_help, this, std::ref(window)));
 
-	for(const unit_const_ptr& unit : *recall_list_) {
+	for(const unit_const_ptr& unit : recall_list_) {
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
@@ -227,12 +227,12 @@ void tunit_recall::pre_show(twindow& window)
 		filter_options_.push_back(filter_text);
 	}
 
-	list.register_sorting_option(0, [this](const int i) { return (*recall_list_)[i]->type_name().str(); });
-	list.register_sorting_option(1, [this](const int i) { return (*recall_list_)[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) { return (*recall_list_)[i]->level(); });
-	list.register_sorting_option(3, [this](const int i) { return (*recall_list_)[i]->experience(); });
+	list.register_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
+	list.register_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
+	list.register_sorting_option(2, [this](const int i) { return recall_list_[i]->level(); });
+	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
 	list.register_sorting_option(4, [this](const int i) {
-		return !(*recall_list_)[i]->trait_names().empty() ? (*recall_list_)[i]->trait_names().front().str() : "";
+		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
 	list_item_clicked(window);
@@ -240,12 +240,12 @@ void tunit_recall::pre_show(twindow& window)
 
 void tunit_recall::dismiss_unit(twindow& window)
 {
-	LOG_DP << "Recall list units:\n"; dump_recall_list_to_console(*recall_list_);
+	LOG_DP << "Recall list units:\n"; dump_recall_list_to_console(recall_list_);
 
 	tlistbox& list = find_widget<tlistbox>(&window, "recall_list", false);
 	const int index = list.get_selected_row();
 
-	const unit& u = *recall_list_->at(index);
+	const unit& u = *recall_list_[index].get();
 
 	// If the unit is of level > 1, or is close to advancing, we warn the player about it
 	std::stringstream message;
@@ -273,7 +273,7 @@ void tunit_recall::dismiss_unit(twindow& window)
 		}
 	}
 
-	*recall_list_->erase(recall_list_->begin() + index);
+	recall_list_.erase(recall_list_.begin() + index);
 
 	// Remove the entry from the dialog list
 	list.remove_row(index);
@@ -315,7 +315,7 @@ void tunit_recall::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_unit(recall_list_->at(selected_row).get());
+		.set_displayed_unit(recall_list_[selected_row].get());
 }
 
 void tunit_recall::post_show(twindow& window)

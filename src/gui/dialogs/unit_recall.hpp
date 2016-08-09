@@ -33,7 +33,7 @@ class ttext_;
 
 class tunit_recall : public tdialog
 {
-	typedef std::shared_ptr<std::vector<unit_const_ptr> > recalls_ptr_vector;
+	typedef std::vector<unit_const_ptr> recalls_ptr_vector;
 
 public:
 	tunit_recall(recalls_ptr_vector& recall_list, team& team);
