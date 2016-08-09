@@ -53,9 +53,6 @@ install:
     - if [ "$CXXSTD" == "1y" ]; then
           sudo apt-get install -qq g++-5;
           export CXX=g++-5;
-      elif [ "$CXX" == "g++" ]; then
-          sudo apt-get install -qq g++-4.7;
-          export CXX=g++-4.7;
       fi
 
 script: 
