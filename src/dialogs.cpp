@@ -27,6 +27,7 @@
 #include "game_preferences.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/unit_list.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -206,131 +207,14 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 void show_unit_list(display& gui)
 {
-	const std::string heading = std::string(1,HEADING_PREFIX) +
-			_("Type")          + COLUMN_SEPARATOR + // 0
-			_("Name")          + COLUMN_SEPARATOR + // 1
-			_("Moves")         + COLUMN_SEPARATOR + // 2
-			_("Status")        + COLUMN_SEPARATOR + // 3
-			_("HP")            + COLUMN_SEPARATOR + // 4
-			_("Level^Lvl.")    + COLUMN_SEPARATOR + // 5
-			_("XP")            + COLUMN_SEPARATOR + // 6
-			_("unit list^Traits");                  // 7
+	gui2::tunit_list dlg(gui);
 
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2);
-	sorter.set_alpha_sort(3).set_numeric_sort(4).set_level_sort(5, 6);
-	sorter.set_xp_sort(6).set_alpha_sort(7);
+	dlg.show(gui.video());
 
-	std::vector<std::string> items;
-	items.push_back(heading);
+	if(dlg.get_retval() == gui2::twindow::OK) {
+		const map_location& loc = dlg.get_location_to_scroll_to();
 
-	std::vector<map_location> locations_list;
-	std::shared_ptr<std::vector<unit_const_ptr> > units_list = std::make_shared<std::vector<unit_const_ptr> >();
-
-	int selected = 0;
-
-	const unit_map& units = gui.get_units();
-
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if (i->side() != gui.viewing_side())
-			continue;
-
-		std::stringstream row;
-		// If a unit is already selected on the map, we do the same in the unit list dialog
-		if (gui.selected_hex() == i->get_location()) {
-			row << DEFAULT_ITEM;
-			selected = units_list->size();
-		}
-		// If unit is leader, show name in special color, e.g. gold/silver
-		/** @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query */
-
-		if (i->can_recruit() ) {
-			row << "<205,173,0>";   // gold3
-		}
-		row << i->type_name() << COLUMN_SEPARATOR;
-		if (i->can_recruit() ) {
-			row << "<205,173,0>";   // gold3
-		}
-		row << i->name()   << COLUMN_SEPARATOR;
-
-		// display move left (0=red, moved=yellow, not moved=green)
-		if (i->movement_left() == 0) {
-			row << font::RED_TEXT;
-		} else if (i->movement_left() < i->total_movement() ) {
-			row << "<255,255,0>";
-		} else {
-			row << font::GREEN_TEXT;
-		}
-		row << i->movement_left() << '/' << i->total_movement() << COLUMN_SEPARATOR;
-
-		// show icons if unit is slowed, poisoned, petrified, invisible:
-		if(i->get_state(unit::STATE_PETRIFIED))
-			row << IMAGE_PREFIX << "misc/petrified.png"    << IMG_TEXT_SEPARATOR;
-		if(i->get_state(unit::STATE_POISONED))
-			row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
-		if(i->get_state(unit::STATE_SLOWED))
-			row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
-		if(i->invisible(i->get_location(),false))
-			row << IMAGE_PREFIX << "misc/invisible.png";
-		row << COLUMN_SEPARATOR;
-
-		// Display HP
-		// see also unit_preview_pane in dialogs.cpp
-		row << font::color2markup(i->hp_color());
-		row << i->hitpoints()  << '/' << i->max_hitpoints() << COLUMN_SEPARATOR;
-
-		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
-		int level = i->level();
-		if(level < 1) {
-			row << "<150,150,150>";
-		} else if(level == 1) {
-			row << font::NORMAL_TEXT;
-		} else if(level == 2) {
-			row << font::BOLD_TEXT;
-		} else if(level > 2 ) {
-			row << font::BOLD_TEXT << "<255,255,255>";
-		}
-		row << level << COLUMN_SEPARATOR;
-
-		// Display XP
-		row << font::color2markup(i->xp_color());
-		row << i->experience() << "/";
-		if (i->can_advance()) {
-			row << i->max_experience();
-		} else {
-			row << "-";
-		}
-		row << COLUMN_SEPARATOR;
-
-		// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
-		row << utils::join(i->trait_names(), ", ");
-		items.push_back(row.str());
-
-		locations_list.push_back(i->get_location());
-		units_list->push_back(i.get_shared_ptr());
-	}
-
-	{
-		dialogs::units_list_preview_pane unit_preview(units_list);
-		unit_preview.set_selection(selected);
-
-		gui::dialog umenu(gui.video(), _("Unit List"), "", gui::NULL_DIALOG);
-		umenu.set_menu(items, &sorter);
-		umenu.add_pane(&unit_preview);
-		//sort by type name
-		umenu.get_menu().sort_by(0);
-
-		umenu.add_button(new gui::standard_dialog_button(gui.video(), _("Scroll To"), 0, false),
-				gui::dialog::BUTTON_STANDARD);
-		umenu.add_button(new gui::standard_dialog_button(gui.video(), _("Close"), 1, true),
-				gui::dialog::BUTTON_STANDARD);
-		umenu.set_basic_behavior(gui::OK_CANCEL);
-		selected = umenu.show();
-	} // this will kill the dialog before scrolling
-
-	if(selected >= 0 && selected < int(locations_list.size())) {
-		const map_location& loc = locations_list[selected];
-		gui.scroll_to_tile(loc,game_display::WARP);
+		gui.scroll_to_tile(loc, game_display::WARP);
 		gui.select_hex(loc);
 	}
 }

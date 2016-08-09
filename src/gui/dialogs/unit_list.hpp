@@ -15,6 +15,7 @@
 #define GUI_DIALOGS_UNIT_LIST_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "map/location.hpp"
 #include "units/ptr.hpp"
 
 #include <memory>
@@ -35,15 +36,15 @@ class tunit_list : public tdialog
 public:
 	explicit tunit_list(const display& gui);
 
-	int get_selected_index() const
+	map_location get_location_to_scroll_to() const
 	{
-		return selected_index_;
+		return location_of_selected_unit_;
 	}
 
 private:
 	unit_ptr_vector unit_list_;
 
-	int selected_index_;
+	map_location location_of_selected_unit_;
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);

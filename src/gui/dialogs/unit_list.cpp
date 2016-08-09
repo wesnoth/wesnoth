@@ -60,10 +60,6 @@ tunit_list::tunit_list(const display& gui)
 
 		unit_list_->push_back(i.get_shared_ptr());
 	}
-
-	//for(const unit_map& u : gui.get_units()) {
-	//	unit_list_->push_back(u.get_shared_ptr());
-	//}
 }
 
 static std::string format_level_string(const int level)
@@ -127,16 +123,6 @@ void tunit_list::pre_show(twindow& window)
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
-		std::string mods = unit->image_mods();
-
-		if(unit->can_recruit()) {
-			mods += "~BLIT(" + unit::leader_crown() + ")";
-		}
-
-		for(const std::string& overlay : unit->overlays()) {
-			mods += "~BLIT(" + overlay + ")";
-		}
-
 		column["use_markup"] = "true";
 
 		column["label"] = format_if_leader(unit, unit->type_name());
@@ -169,14 +155,36 @@ void tunit_list::pre_show(twindow& window)
 		row_data.insert(std::make_pair("unit_traits", column));
 
 		list.add_row(row_data);
+
+		// NOTE: this needs to be done *after* the row is added
+		tgrid* row_grid = list.get_row_grid(list.get_item_count() - 1);
+
+		// TODO: show custom statuses
+		if(!unit->get_state(unit::STATE_PETRIFIED)) {
+			find_widget<timage>(row_grid, "unit_status_slowed", false).set_visible(twidget::tvisible::invisible);
+		}
+
+		if(!unit->get_state(unit::STATE_POISONED)) {
+			find_widget<timage>(row_grid, "unit_status_poisoned", false).set_visible(twidget::tvisible::invisible);
+		}
+
+		if(!unit->get_state(unit::STATE_SLOWED)) {
+			find_widget<timage>(row_grid, "unit_status_invisible", false).set_visible(twidget::tvisible::invisible);
+		}
+
+		if(!unit->invisible(unit->get_location(), false)) {
+			find_widget<timage>(row_grid, "unit_status_petrified", false).set_visible(twidget::tvisible::invisible);
+		}
 	}
 
 	list.register_sorting_option(0, [this](const int i) { return (*unit_list_)[i]->type_name().str(); });
 	list.register_sorting_option(1, [this](const int i) { return (*unit_list_)[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) { return (*unit_list_)[i]->level(); });
-	list.register_sorting_option(3, [this](const int i) { return (*unit_list_)[i]->experience(); });
-	list.register_sorting_option(4, [this](const int i) {
-		return (*unit_list_)[i]->trait_names().empty() ? (*unit_list_)[i]->trait_names().front().str() : ""; });
+	list.register_sorting_option(2, [this](const int i) { return (*unit_list_)[i]->movement_left(); });
+	list.register_sorting_option(3, [this](const int i) { return (*unit_list_)[i]->hitpoints(); });
+	list.register_sorting_option(4, [this](const int i) { return (*unit_list_)[i]->level(); });
+	list.register_sorting_option(5, [this](const int i) { return (*unit_list_)[i]->experience(); });
+	list.register_sorting_option(6, [this](const int i) {
+		return !(*unit_list_)[i]->trait_names().empty() ? (*unit_list_)[i]->trait_names().front().str() : ""; });
 
 	list_item_clicked(window);
 }
@@ -197,8 +205,9 @@ void tunit_list::list_item_clicked(twindow& window)
 void tunit_list::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		selected_index_ = find_widget<tlistbox>(&window, "units_list", false)
-			.get_selected_row();
+		const int selected_row = find_widget<tlistbox>(&window, "units_list", false).get_selected_row();
+
+		location_of_selected_unit_ = unit_list_->at(selected_row).get()->get_location();
 	}
 }
 
