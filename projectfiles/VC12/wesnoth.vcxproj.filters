@@ -1498,6 +1498,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\unit_recall.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_list.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2869,6 +2872,9 @@
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_recall.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_list.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>

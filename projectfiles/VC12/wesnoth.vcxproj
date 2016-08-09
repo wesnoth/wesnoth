@@ -2141,6 +2141,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_list.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\unit_recall.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -4104,6 +4112,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\transient_message.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_attack.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_create.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\unit_list.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_recall.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_recruit.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\wml_error.hpp" />
