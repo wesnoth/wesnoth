@@ -29,6 +29,17 @@ variant convert_map( const std::map<T, K>& input_map ) {
 	return variant( &tmp );
 }
 
+template <typename T>
+variant convert_set( const std::set<T>& input_set ) {
+	std::map<variant,variant> tmp;
+
+	for(typename std::set<T>::const_iterator i = input_set.begin(); i != input_set.end(); ++i) {
+		tmp[variant(*i)] = variant(1);
+	}
+
+	return variant(&tmp);
+}
+
 
 template <typename T>
 variant convert_vector( const std::vector<T>& input_vector )
@@ -271,9 +282,9 @@ variant unit_callable::get_value(const std::string& key) const
 		}
 		return variant( &res );
 	} else if(key == "states" || key == "status") {
-		const std::map<std::string, std::string>& states_map = u_.get_states();
+		const std::set<std::string>& states_map = u_.get_states();
 
-		return convert_map( states_map );
+		return convert_set(states_map);
 	} else if(key == "side") {
 		return variant(u_.side()-1);
 	} else if(key == "cost") {

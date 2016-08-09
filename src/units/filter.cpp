@@ -381,10 +381,9 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	// handle statuses list
 	if (!vcfg["status"].empty()) {
 		bool status_found = false;
-		std::map<std::string, std::string> states_map = u.get_states();
 
 		for (const std::string status : utils::split(vcfg["status"])) {
-			if (states_map[status] == "yes") {
+			if(u.get_state(status)) {
 				status_found = true;
 				break;
 			}

@@ -655,7 +655,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	, attacks_left_(0)
 	, max_attacks_(0)
 	, states_()
-	, known_boolean_states_( get_known_boolean_state_names().size(),false)
+	, known_boolean_states_(known_boolean_state_names_.size(), false)
 	, variables_()
 	, events_()
 	, filter_recall_()
@@ -1267,25 +1267,21 @@ void unit::heal(int amount)
 	}
 }
 
-const std::map<std::string,std::string> unit::get_states() const
+const std::set<std::string> unit::get_states() const
 {
-	std::map<std::string, std::string> all_states;
-	for (std::string const &s : states_) {
-		all_states[s] = "yes";
-	}
+	std::set<std::string> all_states = states_;
 	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
 	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
 	{
 		if (get_state(i->second)) {
-			all_states.insert(make_pair(i->first, "yes"));
+			all_states.insert(i->first);
 		}
 
 	}
 	// Backwards compatibility for not_living. Don't remove before 1.12
-	if (all_states.find("undrainable") != all_states.end() &&
-		all_states.find("unpoisonable") != all_states.end() &&
-		all_states.find("unplagueable") != all_states.end())
-		all_states["not_living"] = "yes";
+	if(all_states.count("undrainable") && all_states.count("unpoisonable") && all_states.count("unplagueable")) {
+		all_states.insert("not_living");
+	}
 	return all_states;
 }
 
@@ -1322,20 +1318,15 @@ unit::state_t unit::get_known_boolean_state_id(const std::string &state) {
 	return STATE_UNKNOWN;
 }
 
-std::map<std::string, unit::state_t> unit::known_boolean_state_names_ = get_known_boolean_state_names();
-
-std::map<std::string, unit::state_t> unit::get_known_boolean_state_names()
-{
-	std::map<std::string, state_t> known_boolean_state_names_map;
-	known_boolean_state_names_map.insert(std::make_pair("slowed",STATE_SLOWED));
-	known_boolean_state_names_map.insert(std::make_pair("poisoned",STATE_POISONED));
-	known_boolean_state_names_map.insert(std::make_pair("petrified",STATE_PETRIFIED));
-	known_boolean_state_names_map.insert(std::make_pair("uncovered", STATE_UNCOVERED));
-	known_boolean_state_names_map.insert(std::make_pair("not_moved",STATE_NOT_MOVED));
-	known_boolean_state_names_map.insert(std::make_pair("unhealable",STATE_UNHEALABLE));
-	known_boolean_state_names_map.insert(std::make_pair("guardian",STATE_GUARDIAN));
-	return known_boolean_state_names_map;
-}
+std::map<std::string, unit::state_t> unit::known_boolean_state_names_ = {
+	{"slowed",     STATE_SLOWED},
+	{"poisoned",   STATE_POISONED},
+	{"petrified",  STATE_PETRIFIED},
+	{"uncovered",  STATE_UNCOVERED},
+	{"not_moved",  STATE_NOT_MOVED},
+	{"unhealable", STATE_UNHEALABLE},
+	{"guardian",   STATE_GUARDIAN},
+};
 
 void unit::set_state(const std::string &state, bool value)
 {
@@ -1424,9 +1415,8 @@ void unit::write(config& cfg) const
 	cfg["role"] = role_;
 
 	config status_flags;
-	std::map<std::string,std::string> all_states = get_states();
-	for(std::map<std::string,std::string>::const_iterator st = all_states.begin(); st != all_states.end(); ++st) {
-		status_flags[st->first] = st->second;
+	for(const std::string& state : get_states()) {
+		status_flags[state] = true;
 	}
 
 	cfg.clear_children("variables");

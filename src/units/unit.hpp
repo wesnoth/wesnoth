@@ -232,7 +232,7 @@ public:
 	bool resting() const { return resting_; }
 	void set_resting(bool rest) { resting_ = rest; }
 
-	const std::map<std::string,std::string> get_states() const;
+	const std::set<std::string> get_states() const;
 	bool get_state(const std::string& state) const;
 	void set_state(const std::string &state, bool value);
 	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
@@ -240,7 +240,6 @@ public:
 	void set_state(state_t state, bool value);
 	bool get_state(state_t state) const;
 	static state_t get_known_boolean_state_id(const std::string &state);
-	static std::map<std::string, state_t> get_known_boolean_state_names();
 
 	bool has_moved() const { return movement_left() != total_movement(); }
 	bool has_goto() const { return get_goto().valid(); }
