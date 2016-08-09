@@ -19,22 +19,22 @@
 #include "config.hpp"
 
 template <typename T, typename K>
-variant convert_map( const std::map<T, K>& input_map ) {
+variant convert_map(const std::map<T, K>& input_map) {
 	std::map<variant,variant> tmp;
 
-	for(typename std::map< T, K>::const_iterator i = input_map.begin(); i != input_map.end(); ++i) {
-			tmp[ variant(i->first) ] = variant( i->second );
+	for(const auto& p : input_map) {
+		tmp[variant(p.first)] = variant(p.second);
 	}
 
-	return variant( &tmp );
+	return variant(&tmp);
 }
 
 template <typename T>
-variant convert_set( const std::set<T>& input_set ) {
+variant convert_set(const std::set<T>& input_set) {
 	std::map<variant,variant> tmp;
 
-	for(typename std::set<T>::const_iterator i = input_set.begin(); i != input_set.end(); ++i) {
-		tmp[variant(*i)] = variant(1);
+	for(const auto& elem : input_set) {
+		tmp[variant(elem)] = variant(1);
 	}
 
 	return variant(&tmp);
@@ -42,15 +42,15 @@ variant convert_set( const std::set<T>& input_set ) {
 
 
 template <typename T>
-variant convert_vector( const std::vector<T>& input_vector )
+variant convert_vector(const std::vector<T>& input_vector)
 {
 	std::vector<variant> tmp;
 
-	for(typename std::vector<T>::const_iterator i = input_vector.begin(); i != input_vector.end(); ++i) {
-			tmp.push_back( variant( *i ) );
+	for(const auto& elem : input_vector) {
+		tmp.push_back(variant(elem));
 	}
 
-	return variant( &tmp );
+	return variant(&tmp);
 }
 
 
@@ -118,10 +118,9 @@ variant attack_type_callable::get_value(const std::string& key) const
 	} else if(key == "movement_used") {
 		return variant(att_.movement_used());
 	} else if(key == "specials" || key == "special") {
-		const config specials = att_.specials();
 		std::vector<variant> res;
 
-		for(const auto& special : specials.all_children_range()) {
+		for(const auto& special : att_.specials().all_children_range()) {
 			if(!special.cfg["id"].empty()) {
 				res.push_back(variant(special.cfg["id"].str()));
 			}
@@ -208,24 +207,14 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "undead") {
 		return variant(u_.get_state("not_living") ? 1 : 0);
 	} else if(key == "attacks") {
-		const std::vector<attack_type>& att = u_.attacks();
 		std::vector<variant> res;
 
-		for( std::vector<attack_type>::const_iterator i = att.begin(); i != att.end(); ++i)
-			res.push_back(variant(new attack_type_callable(*i)));
+		for(const attack_type& att : u_.attacks()) {
+			res.push_back(variant(new attack_type_callable(att)));
+		}
 		return variant(&res);
 	} else if(key == "abilities") {
-		std::vector<std::string> abilities = u_.get_ability_list();
-		std::vector<variant> res;
-
-		if (abilities.empty())
-			return variant( &res );
-
-		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
-		{
-			res.push_back( variant(*it) );
-		}
-		return variant( &res );
+		return convert_vector(u_.get_ability_list());
 	} else if(key == "hitpoints") {
 		return variant(u_.hitpoints());
 	} else if(key == "max_hitpoints") {
@@ -246,45 +235,13 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "max_attacks") {
 		return variant(u_.max_attacks());
 	} else if(key == "traits") {
-		const std::vector<std::string> traits = u_.get_traits_list();
-		std::vector<variant> res;
-
-		if(traits.empty())
-			return variant( &res );
-
-		for (std::vector<std::string>::const_iterator it = traits.begin(); it != traits.end(); ++it)
-		{
-			res.push_back( variant(*it) );
-		}
-		return variant( &res );
+		return convert_vector(u_.get_traits_list());
 	} else if(key == "extra_recruit") {
-		const std::vector<std::string> recruits = u_.recruits();
-		std::vector<variant> res;
-
-		if(recruits.empty())
-			return variant( &res );
-
-		for (std::vector<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it)
-		{
-			res.push_back( variant(*it) );
-		}
-		return variant( &res );
+		return convert_vector(u_.recruits());
 	} else if(key == "advances_to") {
-		const std::vector<std::string> advances = u_.advances_to();
-		std::vector<variant> res;
-
-		if(advances.empty())
-			return variant( &res );
-
-		for (std::vector<std::string>::const_iterator it = advances.begin(); it != advances.end(); ++it)
-		{
-			res.push_back( variant(*it) );
-		}
-		return variant( &res );
+		return convert_vector(u_.advances_to());
 	} else if(key == "states" || key == "status") {
-		const std::set<std::string>& states_map = u_.get_states();
-
-		return convert_set(states_map);
+		return convert_set(u_.get_states());
 	} else if(key == "side") {
 		return variant(u_.side()-1);
 	} else if(key == "cost") {
@@ -394,17 +351,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "race") {
 		return variant(u_.race_id());
 	} else if(key == "abilities") {
-		std::vector<std::string> abilities = u_.get_ability_list();
-		std::vector<variant> res;
-
-		if (abilities.empty())
-			return variant( &res );
-
-		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
-		{
-			res.push_back( variant(*it) );
-		}
-		return variant( &res );
+		return convert_vector(u_.get_ability_list());
 	} else if(key == "traits") {
 		std::vector<variant> res;
 
@@ -414,11 +361,11 @@ variant unit_type_callable::get_value(const std::string& key) const
 		}
 		return variant(&res);
 	} else if(key == "attacks") {
-		std::vector<attack_type> att = u_.attacks();
 		std::vector<variant> res;
 
-		for( std::vector<attack_type>::iterator i = att.begin(); i != att.end(); ++i)
-			res.push_back(variant(new attack_type_callable(*i)));
+		for(const attack_type& att : u_.attacks()) {
+			res.push_back(variant(new attack_type_callable(att)));
+		}
 		return variant(&res);
 	} else if(key == "hitpoints" || key == "max_hitpoints") {
 		return variant(u_.hitpoints());
