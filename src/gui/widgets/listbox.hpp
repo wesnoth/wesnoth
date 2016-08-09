@@ -239,10 +239,10 @@ public:
 	template<typename Func>
 	void register_sorting_option(const int col, const Func& f)
 	{
-		set_column_order(col, {
+		set_column_order(col, {{
 			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
 			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
-		});
+		}});
 	};
 
 protected:
