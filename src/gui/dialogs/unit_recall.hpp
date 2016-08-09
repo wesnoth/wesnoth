@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "gui/widgets/generator.hpp"
 #include "units/race.hpp"
 #include "units/ptr.hpp"
 
@@ -53,9 +52,6 @@ private:
 
 	std::vector<std::string> filter_options_;
 	std::vector<std::string> last_words_;
-
-	template<typename Fcn>
-	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);

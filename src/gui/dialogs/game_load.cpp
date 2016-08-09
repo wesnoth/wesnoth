@@ -145,13 +145,8 @@ void tgame_load::pre_show(twindow& window)
 		list.add_row(data);
 	}
 
-	generator_sort_array order_funcs;
-
-	init_sorting_option(order_funcs, [](savegame::save_info s) { return s.name(); });
-	list.set_column_order(0, order_funcs);
-
-	init_sorting_option(order_funcs, [](savegame::save_info s) { return s.modified(); });
-	list.set_column_order(1, order_funcs);
+	list.register_sorting_option(0, [this](const int i) { return games_[i].name(); });
+	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "delete", false),
@@ -159,18 +154,6 @@ void tgame_load::pre_show(twindow& window)
 					this, std::ref(window)));
 
 	display_savegame(window);
-}
-
-template<typename Fcn>
-void tgame_load::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
-{
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on(games_[i1]) < filter_on(games_[i2]);
-	};
-
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on(games_[i1]) > filter_on(games_[i2]);
-	};
 }
 
 void tgame_load::display_savegame(twindow& window)

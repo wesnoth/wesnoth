@@ -16,7 +16,6 @@
 #define GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/generator.hpp"
 #include "gui/widgets/group.hpp"
 #include "units/race.hpp"
 
@@ -68,9 +67,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
-
-	template<typename Fcn>
-	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);

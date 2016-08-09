@@ -20,7 +20,6 @@
 #include "game_preferences.hpp"
 #include "utils/make_enum.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/generator.hpp"
 #include "gui/widgets/group.hpp"
 
 // This file is not named preferences.hpp in order -I conflicts with
@@ -74,9 +73,6 @@ private:
 	void initialize_tabs(twindow& window, tlistbox& selector, const int index);
 	void setup_friends_list(twindow& window);
 	void setup_hotkey_list(twindow& window);
-
-	template<typename Fcn>
-	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	void add_friend_list_entry(const bool is_friend,
 		ttext_box& textbox, twindow& window);

@@ -15,7 +15,6 @@
 #define GUI_DIALOGS_UNIT_LIST_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/generator.hpp"
 #include "units/ptr.hpp"
 
 #include <memory>
@@ -45,9 +44,6 @@ private:
 	unit_ptr_vector unit_list_;
 
 	int selected_index_;
-
-	template<typename Fcn>
-    void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);

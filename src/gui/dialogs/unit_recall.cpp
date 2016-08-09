@@ -111,18 +111,6 @@ static std::string format_cost_string(int unit_recall_cost, const int team_recal
 	return str.str();
 }
 
-template<typename Fcn>
-void tunit_recall::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
-{
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on((*recall_list_)[i1]) < filter_on((*recall_list_)[i2]);
-	};
-
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on((*recall_list_)[i1]) > filter_on((*recall_list_)[i2]);
-	};
-}
-
 static std::string get_title_suffix(int side_num)
 {
 	if(!resources::teams || !resources::units) {
@@ -239,25 +227,13 @@ void tunit_recall::pre_show(twindow& window)
 		filter_options_.push_back(filter_text);
 	}
 
-	generator_sort_array order_funcs;
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->type_name().str(); });
-	list.set_column_order(0, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->name().str(); });
-	list.set_column_order(1, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->level(); });
-	list.set_column_order(2, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->experience(); });
-	list.set_column_order(3, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { 
-		return !u.get()->trait_names().empty() ? u.get()->trait_names().front().str() : "";
+	list.register_sorting_option(0, [this](const int i) { return (*recall_list_)[i]->type_name().str(); });
+	list.register_sorting_option(1, [this](const int i) { return (*recall_list_)[i]->name().str(); });
+	list.register_sorting_option(2, [this](const int i) { return (*recall_list_)[i]->level(); });
+	list.register_sorting_option(3, [this](const int i) { return (*recall_list_)[i]->experience(); });
+	list.register_sorting_option(4, [this](const int i) {
+		return !(*recall_list_)[i]->trait_names().empty() ? (*recall_list_)[i]->trait_names().front().str() : "";
 	});
-
-	list.set_column_order(4, order_funcs);
 
 	list_item_clicked(window);
 }

@@ -314,18 +314,6 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 	return colorify_addon_state_string(s, state);
 }
 
-template<typename Fcn>
-void taddon_list::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
-{
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on(addon_at(ids_[i1], addons_)) < filter_on(addon_at(ids_[i2], addons_));
-	};
-
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on(addon_at(ids_[i1], addons_)) > filter_on(addon_at(ids_[i2], addons_));
-	};
-}
-
 void taddon_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
@@ -382,22 +370,11 @@ void taddon_list::pre_show(twindow& window)
 		find_widget<tbutton>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
 
-	generator_sort_array order_funcs;
-
-	init_sorting_option(order_funcs, [](addon_info info) { return info.title; });
-	list.set_column_order(0, order_funcs);
-
-	init_sorting_option(order_funcs, [](addon_info info) { return info.author; });
-	list.set_column_order(1, order_funcs);
-
-	init_sorting_option(order_funcs, [](addon_info info) { return info.size; });
-	list.set_column_order(2, order_funcs);
-
-	init_sorting_option(order_funcs, [](addon_info info) { return info.downloads; });
-	list.set_column_order(3, order_funcs);
-
-	init_sorting_option(order_funcs, [](addon_info info) { return info.type; });
-	list.set_column_order(4, order_funcs);
+	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
+	list.register_sorting_option(1, [this](const int i) { return addon_at(ids_[i], addons_).author; });
+	list.register_sorting_option(2, [this](const int i) { return addon_at(ids_[i], addons_).size; });
+	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
+	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
 
 	find_widget<ttext_box>(&window, "filter", false).set_text_changed_callback(
 		std::bind(&taddon_list::on_filtertext_changed, this, _1, _2));

@@ -19,7 +19,6 @@
 #include "addon/state.hpp"
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/generator.hpp"
 #include "gui/widgets/pane.hpp"
 
 #include "config.hpp" // needed for config::const_child_itors
@@ -38,9 +37,6 @@ public:
 	explicit taddon_list(const config& cfg);
 
 private:
-	template<typename Fcn>
-	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
-
 	void on_filtertext_changed(ttext_* textbox, const std::string& text);
 
 	std::vector<tselectable_*> orders_;

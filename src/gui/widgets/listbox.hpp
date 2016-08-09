@@ -235,6 +235,16 @@ public:
 	void order_by(const tgenerator_::torder_func& func);
 
 	void set_column_order(unsigned col, const generator_sort_array& func);
+
+	template<typename Func>
+	void register_sorting_option(const int col, const Func& f)
+	{
+		set_column_order(col, {
+			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
+			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
+		});
+	};
+
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

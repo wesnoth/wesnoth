@@ -104,18 +104,6 @@ static std::string format_movement_string(unit_const_ptr u)
 	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
 }
 
-template<typename Fcn>
-void tunit_list::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
-{
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on((*unit_list_)[i1]) < filter_on((*unit_list_)[i2]);
-	};
-
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on((*unit_list_)[i1]) > filter_on((*unit_list_)[i2]);
-	};
-}
-
 void tunit_list::pre_show(twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "units_list", false);
@@ -183,25 +171,12 @@ void tunit_list::pre_show(twindow& window)
 		list.add_row(row_data);
 	}
 
-	generator_sort_array order_funcs;
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->type_name().str(); });
-	list.set_column_order(0, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->name().str(); });
-	list.set_column_order(1, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->level(); });
-	list.set_column_order(2, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) { return u.get()->experience(); });
-	list.set_column_order(3, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_const_ptr u) {
-		return !u.get()->trait_names().empty() ? u.get()->trait_names().front().str() : "";
-	});
-
-	list.set_column_order(4, order_funcs);
+	list.register_sorting_option(0, [this](const int i) { return (*unit_list_)[i]->type_name().str(); });
+	list.register_sorting_option(1, [this](const int i) { return (*unit_list_)[i]->name().str(); });
+	list.register_sorting_option(2, [this](const int i) { return (*unit_list_)[i]->level(); });
+	list.register_sorting_option(3, [this](const int i) { return (*unit_list_)[i]->experience(); });
+	list.register_sorting_option(4, [this](const int i) {
+		return (*unit_list_)[i]->trait_names().empty() ? (*unit_list_)[i]->trait_names().front().str() : ""; });
 
 	list_item_clicked(window);
 }

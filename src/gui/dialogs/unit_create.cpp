@@ -87,18 +87,6 @@ tunit_create::tunit_create()
 {
 }
 
-template<typename Fcn>
-void tunit_create::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
-{
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on((*units_[i1])) < filter_on((*units_[i2]));
-	};
-
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on((*units_[i1])) > filter_on((*units_[i2]));
-	};
-}
-
 void tunit_create::pre_show(twindow& window)
 {
 	ttoggle_button& male_toggle
@@ -171,13 +159,8 @@ void tunit_create::pre_show(twindow& window)
 				  << std::endl;
 	}
 
-	generator_sort_array order_funcs;
-
-	init_sorting_option(order_funcs, [](unit_type u) { return u.race()->plural_name().str(); });
-	list.set_column_order(0, order_funcs);
-
-	init_sorting_option(order_funcs, [](unit_type u) { return u.type_name().str(); });
-	list.set_column_order(1, order_funcs);
+	list.register_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
+	list.register_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
 
 	list_item_clicked(window);
 }

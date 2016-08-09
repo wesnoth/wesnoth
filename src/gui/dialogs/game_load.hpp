@@ -16,7 +16,6 @@
 #define GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/generator.hpp"
 #include "save_index.hpp"
 #include "tstring.hpp"
 
@@ -69,9 +68,6 @@ private:
 	void display_savegame(twindow& window);
 	void evaluate_summary_string(std::stringstream& str,
 								 const config& cfg_summary);
-
-	template<typename Fcn>
-	void init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on);
 
 	tfield_text* txtFilter_;
 	tfield_bool* chk_change_difficulty_;

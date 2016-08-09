@@ -401,18 +401,6 @@ static tgrid* get_advanced_row_grid(tlistbox& list, const int selected_row)
 		list.get_row_grid(selected_row)->find("pref_main_grid", false));
 }
 
-template<typename Fcn>
-void tpreferences::init_sorting_option(generator_sort_array& order_funcs, Fcn filter_on)
-{
-	order_funcs[0] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on(visible_hotkeys_[i1]) < filter_on(visible_hotkeys_[i2]);
-	};
-
-	order_funcs[1] = [this, filter_on](unsigned i1, unsigned i2) {
-		return filter_on(visible_hotkeys_[i1]) > filter_on(visible_hotkeys_[i2]);
-	};
-}
-
 /**
  * Sets up states and callbacks for each of the widgets
  */
@@ -863,25 +851,16 @@ void tpreferences::initialize_members(twindow& window)
 
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
 
-	generator_sort_array order_funcs;
-
 	// Action column
-	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return key->description.str(); });
-	hotkey_list.set_column_order(0, order_funcs);
+	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
 
 	// Hotkey column
-	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return hotkey::get_names(key->command); });
-	hotkey_list.set_column_order(1, order_funcs);
+	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->command); });
 
 	// Scope columns
-	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return !key->scope[hotkey::SCOPE_GAME]; });
-	hotkey_list.set_column_order(2, order_funcs);
-
-	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return !key->scope[hotkey::SCOPE_EDITOR]; });
-	hotkey_list.set_column_order(3, order_funcs);
-
-	init_sorting_option(order_funcs, [](const hotkey::hotkey_command* key) { return !key->scope[hotkey::SCOPE_MAIN_MENU]; });
-	hotkey_list.set_column_order(4, order_funcs);
+	hotkey_list.register_sorting_option(2, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; });
+	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
+	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
 
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "btn_add_hotkey", false), std::bind(
