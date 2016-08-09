@@ -31,7 +31,7 @@ class ttext_;
 
 class tunit_list : public tdialog
 {
-	typedef std::shared_ptr<std::vector<unit_const_ptr> > unit_ptr_vector;
+	typedef std::vector<unit_const_ptr> unit_ptr_vector;
 
 public:
 	explicit tunit_list(const display& gui);

@@ -50,7 +50,6 @@ namespace gui2
 REGISTER_DIALOG(unit_list)
 
 tunit_list::tunit_list(const display& gui)
-	: unit_list_{std::make_shared<std::vector<unit_const_ptr> >()}
 {
 	const unit_map& units = gui.get_units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -58,7 +57,7 @@ tunit_list::tunit_list(const display& gui)
 			continue;
 		}
 
-		unit_list_->push_back(i.get_shared_ptr());
+		unit_list_.push_back(i.get_shared_ptr());
 	}
 }
 
@@ -117,9 +116,9 @@ void tunit_list::pre_show(twindow& window)
 
 	window.keyboard_capture(&list);
 
-	if(!unit_list_) return;
+	if(unit_list_.empty()) return;
 
-	for(const unit_const_ptr& unit : *unit_list_) {
+	for(const unit_const_ptr& unit : unit_list_) {
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
@@ -177,14 +176,14 @@ void tunit_list::pre_show(twindow& window)
 		}
 	}
 
-	list.register_sorting_option(0, [this](const int i) { return (*unit_list_)[i]->type_name().str(); });
-	list.register_sorting_option(1, [this](const int i) { return (*unit_list_)[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) { return (*unit_list_)[i]->movement_left(); });
-	list.register_sorting_option(3, [this](const int i) { return (*unit_list_)[i]->hitpoints(); });
-	list.register_sorting_option(4, [this](const int i) { return (*unit_list_)[i]->level(); });
-	list.register_sorting_option(5, [this](const int i) { return (*unit_list_)[i]->experience(); });
+	list.register_sorting_option(0, [this](const int i) { return unit_list_[i]->type_name().str(); });
+	list.register_sorting_option(1, [this](const int i) { return unit_list_[i]->name().str(); });
+	list.register_sorting_option(2, [this](const int i) { return unit_list_[i]->movement_left(); });
+	list.register_sorting_option(3, [this](const int i) { return unit_list_[i]->hitpoints(); });
+	list.register_sorting_option(4, [this](const int i) { return unit_list_[i]->level(); });
+	list.register_sorting_option(5, [this](const int i) { return unit_list_[i]->experience(); });
 	list.register_sorting_option(6, [this](const int i) {
-		return !(*unit_list_)[i]->trait_names().empty() ? (*unit_list_)[i]->trait_names().front().str() : ""; });
+		return !unit_list_[i]->trait_names().empty() ? unit_list_[i]->trait_names().front().str() : ""; });
 
 	list_item_clicked(window);
 }
@@ -199,7 +198,7 @@ void tunit_list::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_unit(unit_list_->at(selected_row).get());
+		.set_displayed_unit(unit_list_[selected_row].get());
 }
 
 void tunit_list::post_show(twindow& window)
@@ -207,7 +206,7 @@ void tunit_list::post_show(twindow& window)
 	if(get_retval() == twindow::OK) {
 		const int selected_row = find_widget<tlistbox>(&window, "units_list", false).get_selected_row();
 
-		location_of_selected_unit_ = unit_list_->at(selected_row).get()->get_location();
+		location_of_selected_unit_ = unit_list_[selected_row].get()->get_location();
 	}
 }
 
