@@ -109,7 +109,12 @@ static config write_str_int_map(const stats::str_int_map& m)
 {
 	config res;
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		res[i->first] = i->second;
+		std::string n = std::to_string(i->second);
+		if(res.has_attribute(n)) {
+			res[n] = res[n].str() + "," + i->first;
+		} else {
+			res[n] = i->first;
+		}
 	}
 
 	return res;
@@ -117,8 +122,24 @@ static config write_str_int_map(const stats::str_int_map& m)
 
 static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 {
-	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		out.write_key_val(i->first, i->second);
+	using reverse_map = std::multimap<int, std::string>;
+	reverse_map rev;
+	std::transform(
+		m.begin(), m.end(),
+		std::inserter(rev, rev.begin()),
+		[](const stats::str_int_map::value_type p) {
+			return std::make_pair(p.second, p.first);
+		}
+	);
+	reverse_map::const_iterator i = rev.begin(), j;
+	while(i != rev.end()) {
+		j = rev.upper_bound(i->first);
+		std::vector<std::string> vals;
+		std::transform(i, j, std::back_inserter(vals), [](const reverse_map::value_type& p) {
+			return p.second;
+		});
+		out.write_key_val(std::to_string(i->first), utils::join(vals));
+		i = j;
 	}
 }
 
@@ -126,7 +147,13 @@ static stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
 	for(const config::attribute &i : cfg.attribute_range()) {
-		m[i.first] = i.second;
+		try {
+			for(const std::string& val : utils::split(i.second)) {
+				m[val] = std::stoi(i.first);
+			}
+		} catch(std::invalid_argument&) {
+			ERR_NG << "Invalid statistics entry; skipping\n";
+		}
 	}
 
 	return m;
