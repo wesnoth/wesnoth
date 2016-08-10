@@ -67,10 +67,11 @@ void tlanguage_selection::pre_show(twindow& window)
 	const language_def& current_language = get_language();
 	for(const auto & lang : languages)
 	{
-		string_map item;
-		item.emplace("label", lang.language);
+		std::map<std::string, string_map> data;
 
-		list.add_row(item);
+		data["language"]["label"] = lang.language;
+
+		list.add_row(data);
 		if(lang == current_language) {
 			list.select_row(list.get_item_count() - 1);
 		}
