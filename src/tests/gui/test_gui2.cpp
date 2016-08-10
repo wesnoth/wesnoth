@@ -75,6 +75,7 @@
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/unit_list.hpp"
@@ -411,6 +412,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::ttheme_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
+	//test<gui2::tunit_advance>();
 	//test<gui2::tunit_attack>();
 	test<gui2::tunit_create>();
 	//test<gui2::tunit_list>();
@@ -479,6 +481,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "unit_recall"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "unit_list"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "game_stats"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "unit_advance"), list.end());
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
