@@ -159,6 +159,7 @@
 		9193FC761D5A62FA004F6C07 /* unit_advance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC731D5A62FA004F6C07 /* unit_advance.cpp */; };
 		9193FC791D5AC2D8004F6C07 /* game_stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC771D5AC2D8004F6C07 /* game_stats.cpp */; };
 		9193FC7A1D5AC2D8004F6C07 /* game_stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC771D5AC2D8004F6C07 /* game_stats.cpp */; };
+		9193FC7B1D5AE5B2004F6C07 /* name_generator_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 913D26751D3C9697002FF3AB /* name_generator_factory.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
 		919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */; };
 		91A214E51CAD666B00927AEA /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
@@ -474,7 +475,6 @@
 		91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA6871C9066CC0030F8D0 /* unit_preview_pane.cpp */; };
 		91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA68B1C9066EC0030F8D0 /* unit_recruit.cpp */; };
 		91E355631CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */; };
-		91E356331CACC47F00774252 /* floating_point_emulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91E356081CACA6CB00774252 /* floating_point_emulation.cpp */; };
 		91E356341CACC47F00774252 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597C4A90FACD42E00CE81F5 /* main.cpp */; };
 		91E356351CACC47F00774252 /* test_addons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91E356091CACA6CB00774252 /* test_addons.cpp */; };
 		91E356361CACC47F00774252 /* test_commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91E3560A1CACA6CB00774252 /* test_commandline_options.cpp */; };
@@ -1710,7 +1710,6 @@
 		91DCA68C1C9066EC0030F8D0 /* unit_recruit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_recruit.hpp; sourceTree = "<group>"; };
 		91DCA68F1C9360610030F8D0 /* test_formula_core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_formula_core.cpp; sourceTree = "<group>"; };
 		91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_unit_test_framework-mt.dylib"; path = "lib/libboost_unit_test_framework-mt.dylib"; sourceTree = "<group>"; };
-		91E356081CACA6CB00774252 /* floating_point_emulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = floating_point_emulation.cpp; sourceTree = "<group>"; };
 		91E356091CACA6CB00774252 /* test_addons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_addons.cpp; sourceTree = "<group>"; };
 		91E3560A1CACA6CB00774252 /* test_commandline_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_commandline_options.cpp; sourceTree = "<group>"; };
 		91E3560B1CACA6CB00774252 /* test_config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_config.cpp; sourceTree = "<group>"; };
@@ -4020,7 +4019,6 @@
 		B597C49D0FACD3F900CE81F5 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				91E356081CACA6CB00774252 /* floating_point_emulation.cpp */,
 				B597C4CA0FACD43B00CE81F5 /* gui */,
 				B597C4A90FACD42E00CE81F5 /* main.cpp */,
 				91E356091CACA6CB00774252 /* test_addons.cpp */,
@@ -5239,7 +5237,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91E356331CACC47F00774252 /* floating_point_emulation.cpp in Sources */,
 				91E356341CACC47F00774252 /* main.cpp in Sources */,
 				91E356351CACC47F00774252 /* test_addons.cpp in Sources */,
 				91E356361CACC47F00774252 /* test_commandline_options.cpp in Sources */,
@@ -5803,6 +5800,7 @@
 				9176FECF1D59745F006EF694 /* unit_list.cpp in Sources */,
 				9193FC761D5A62FA004F6C07 /* unit_advance.cpp in Sources */,
 				9193FC7A1D5AC2D8004F6C07 /* game_stats.cpp in Sources */,
+				9193FC7B1D5AE5B2004F6C07 /* name_generator_factory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
