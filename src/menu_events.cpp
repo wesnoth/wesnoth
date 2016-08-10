@@ -171,7 +171,7 @@ void menu_handler::unit_list()
 	dialogs::show_unit_list(*gui_);
 }
 
-void menu_handler::status_table(int selected)
+void menu_handler::status_table()
 {
 	gui2::tgame_stats dlg(board(), gui_->viewing_team());
 

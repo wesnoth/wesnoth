@@ -53,7 +53,7 @@ public:
 	void objectives(int side_num);
 	void show_statistics(int side_num);
 	void unit_list();
-	void status_table(int selected=0);
+	void status_table();
 	void save_map();
 	void preferences();
 	void show_chat_log();
