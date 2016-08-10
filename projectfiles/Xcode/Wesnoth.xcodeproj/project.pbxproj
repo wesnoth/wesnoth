@@ -157,6 +157,8 @@
 		918C8A241D05FDB0009744A0 /* logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A211D05FDAA009744A0 /* logging.cpp */; };
 		9193FC751D5A62FA004F6C07 /* unit_advance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC731D5A62FA004F6C07 /* unit_advance.cpp */; };
 		9193FC761D5A62FA004F6C07 /* unit_advance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC731D5A62FA004F6C07 /* unit_advance.cpp */; };
+		9193FC791D5AC2D8004F6C07 /* game_stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC771D5AC2D8004F6C07 /* game_stats.cpp */; };
+		9193FC7A1D5AC2D8004F6C07 /* game_stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9193FC771D5AC2D8004F6C07 /* game_stats.cpp */; };
 		919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37F71BAF789D00E0094C /* synced_user_choice.cpp */; };
 		919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */; };
 		91A214E51CAD666B00927AEA /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
@@ -1584,6 +1586,8 @@
 		9190B73B1CA0564700B0EF66 /* register_widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = register_widget.hpp; sourceTree = "<group>"; };
 		9193FC731D5A62FA004F6C07 /* unit_advance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_advance.cpp; sourceTree = "<group>"; };
 		9193FC741D5A62FA004F6C07 /* unit_advance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_advance.hpp; sourceTree = "<group>"; };
+		9193FC771D5AC2D8004F6C07 /* game_stats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_stats.cpp; sourceTree = "<group>"; };
+		9193FC781D5AC2D8004F6C07 /* game_stats.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_stats.hpp; sourceTree = "<group>"; };
 		919B37F71BAF789D00E0094C /* synced_user_choice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_user_choice.cpp; sourceTree = "<group>"; };
 		919B37F91BAF78AB00E0094C /* synced_user_choice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_user_choice.hpp; sourceTree = "<group>"; };
 		919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_choice_wait.cpp; sourceTree = "<group>"; };
@@ -4301,6 +4305,8 @@
 				B595EFE1100436C900C10B66 /* game_load.hpp */,
 				B597EC620FC08E5D00CE81F5 /* game_save.cpp */,
 				B597EC610FC08E5D00CE81F5 /* game_save.hpp */,
+				9193FC771D5AC2D8004F6C07 /* game_stats.cpp */,
+				9193FC781D5AC2D8004F6C07 /* game_stats.hpp */,
 				ECABDA341B6A9461001407C1 /* game_version.cpp */,
 				9184385C1D4C786F00C42277 /* game_version.hpp */,
 				B5B4692A1071189700327599 /* gamestate_inspector.cpp */,
@@ -5225,6 +5231,7 @@
 				918438611D503E4000C42277 /* unit_recall.cpp in Sources */,
 				9176FECE1D59745F006EF694 /* unit_list.cpp in Sources */,
 				9193FC751D5A62FA004F6C07 /* unit_advance.cpp in Sources */,
+				9193FC791D5AC2D8004F6C07 /* game_stats.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5795,6 +5802,7 @@
 				918438621D503E5300C42277 /* unit_recall.cpp in Sources */,
 				9176FECF1D59745F006EF694 /* unit_list.cpp in Sources */,
 				9193FC761D5A62FA004F6C07 /* unit_advance.cpp in Sources */,
+				9193FC7A1D5AC2D8004F6C07 /* game_stats.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
