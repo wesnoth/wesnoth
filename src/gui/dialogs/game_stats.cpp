@@ -121,36 +121,34 @@ void tgame_stats::pre_show(twindow& window)
 		column_stats["label"] = data.teamname.empty() ? team.team_name() : data.teamname;
 		row_data_stats.insert(std::make_pair("team_name", column_stats));
 
-		// We don't spare more info (only name) so let's go on next side ...
-		if(!known && !game_config::debug) {
-			continue;
+		// Only fill in the rest of the info if the side is known...
+		if(known || game_config::debug) {
+			std::string gold_str;
+			if(game_config::debug || !enemy || !viewing_team_.uses_fog()) {
+				gold_str = utils::half_signed_value(data.gold);
+			}
+
+			column_stats["label"] = gold_str;
+			row_data_stats.insert(std::make_pair("team_gold", column_stats));
+
+			std::string village_count = std::to_string(data.villages);
+			if(!viewing_team_.uses_fog() && !viewing_team_.uses_shroud()) {
+				village_count += "/" + std::to_string(board_.map().villages().size());
+			}
+
+			column_stats["label"] = village_count;
+			row_data_stats.insert(std::make_pair("team_villages", column_stats));
+
+			column_stats["label"] = std::to_string(data.units);
+			row_data_stats.insert(std::make_pair("team_units", column_stats));
+
+			column_stats["label"] = std::to_string(data.upkeep);
+			row_data_stats.insert(std::make_pair("team_upkeep", column_stats));
+
+			const std::string income = utils::signed_value(data.net_income);
+			column_stats["label"] = data.net_income < 0 ? "<span color='#ff0000'>" + income + "</span>" : income;
+			row_data_stats.insert(std::make_pair("team_income", column_stats));
 		}
-
-		std::string gold_str;
-		if(game_config::debug || !enemy || !viewing_team_.uses_fog()) {
-			gold_str = utils::half_signed_value(data.gold);
-		}
-
-		column_stats["label"] = gold_str;
-		row_data_stats.insert(std::make_pair("team_gold", column_stats));
-
-		std::string village_count = std::to_string(data.villages);
-		if(!viewing_team_.uses_fog() && !viewing_team_.uses_shroud()) {
-			village_count += "/" + std::to_string(board_.map().villages().size());
-		}
-
-		column_stats["label"] = village_count;
-		row_data_stats.insert(std::make_pair("team_villages", column_stats));
-
-		column_stats["label"] = std::to_string(data.units);
-		row_data_stats.insert(std::make_pair("team_units", column_stats));
-
-		column_stats["label"] = std::to_string(data.upkeep);
-		row_data_stats.insert(std::make_pair("team_upkeep", column_stats));
-
-		const std::string income = utils::signed_value(data.net_income);
-		column_stats["label"] = data.net_income < 0 ? "<span color='#ff0000'>" + income + "</span>" : income;
-		row_data_stats.insert(std::make_pair("team_income", column_stats));
 
 		stats_list.add_row(row_data_stats);
 
