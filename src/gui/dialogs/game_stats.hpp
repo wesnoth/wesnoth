@@ -52,6 +52,8 @@ private:
 
 	int selected_index_;
 
+	unit_const_ptr get_leader(const int side);
+
 	void on_tab_select(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */

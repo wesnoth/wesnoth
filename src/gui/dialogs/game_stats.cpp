@@ -63,6 +63,17 @@ tgame_stats::tgame_stats(game_board& board, const int viewing_team)
 	}
 }
 
+unit_const_ptr tgame_stats::get_leader(const int side)
+{
+	unit_map::const_iterator leader = board_.units().find_leader(side);
+
+	if(leader != board_.units().end()) {
+		return leader.get_shared_ptr();
+	}
+
+	return nullptr;
+}
+
 void tgame_stats::pre_show(twindow& window)
 {
 	tlistbox& stats_list    = find_widget<tlistbox>(&window, "game_stats_list", false);
@@ -81,7 +92,7 @@ void tgame_stats::pre_show(twindow& window)
 
 		const team_data& data = team_data_[team.side() - 1];
 
-		unit_const_ptr leader = board_.units().find_leader(team.side()).get_shared_ptr();
+		unit_const_ptr leader = get_leader(team.side());
 
 		std::string leader_name;
 		std::string leader_image;
@@ -192,8 +203,8 @@ void tgame_stats::pre_show(twindow& window)
 
 	// Sorting options for the status list
 	stats_list.register_sorting_option(0, [this](const int i) {
-		const std::string name = (*board_.units().find_leader(board_.teams()[i].side()).get_shared_ptr()).name();
-		return !name.empty() ? name : "Unknown"; });
+		unit_const_ptr leader = get_leader(i + 1);
+		return leader ? leader->name().str() : ""; });
 
 	stats_list.register_sorting_option(1, [this](const int i) { return board_.teams()[i].user_team_name().str(); });
 	stats_list.register_sorting_option(2, [this](const int i) { return board_.teams()[i].gold(); });
@@ -204,8 +215,8 @@ void tgame_stats::pre_show(twindow& window)
 
 	// Sorting options for the settings list
 	settings_list.register_sorting_option(0, [this](const int i) {
-		const std::string name = (*board_.units().find_leader(board_.teams()[i].side()).get_shared_ptr()).name();
-		return !name.empty() ? name : "Unknown"; });
+		unit_const_ptr leader = get_leader(i + 1);
+		return leader ? leader->name().str() : ""; });
 
 	settings_list.register_sorting_option(1, [this](const int i) { return board_.teams()[i].side(); });
 	settings_list.register_sorting_option(2, [this](const int i) { return board_.teams()[i].start_gold(); });
