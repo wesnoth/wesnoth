@@ -808,7 +808,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
 	gui/dialogs/game_save.cpp
-	gui/dialogs/game_stats.cpp
 	gui/dialogs/game_version.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp

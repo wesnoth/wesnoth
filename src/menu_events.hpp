@@ -117,6 +117,7 @@ private:
 	//void do_speak(const std::string& message, bool allies_only);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
+	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;
 	play_controller & pc_;
