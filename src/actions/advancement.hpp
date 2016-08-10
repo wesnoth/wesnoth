@@ -13,9 +13,7 @@
 
 /**
  * @file
- * Various functions that implement attacks and attack calculations.
- * Unit advancements are also included, as they usually occur as a
- * result of combat.
+ * Various functions that implement advancements of units.
  */
 
 #pragma once
@@ -65,12 +63,14 @@ unit_ptr get_advanced_unit(const unit &u, const std::string &advance_to);
  */
 unit_ptr get_amla_unit(const unit &u, const config &mod_option);
 
+using tadvancement_option = boost::variant<std::string /*change type*/, const config* /*apply amla*/>;
+
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.
- * (Unless mod_option is supplied, in which case an AMLA is performed.)
+ * which is eigher a type to advance to or a config containing the 
+ * [advancement] to perform an amla.
  * Note that 'loc' is not a reference, because if it were a reference,
  * we couldn't safely pass in a reference to the item in the map
  * that we're going to delete, since deletion would invalidate the reference.
  */
-void advance_unit(map_location loc, const std::string &advance_to,
-                  const bool &fire_event = true, const config * mod_option = nullptr);
+void advance_unit(map_location loc, const tadvancement_option &advance_to, bool fire_event = true);

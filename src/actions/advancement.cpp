@@ -133,7 +133,7 @@ namespace
 		}
 		else {
 			const config &mod_option = mod_options[choice - options.size()];
-			::advance_unit(loc, "", fire_event, &mod_option);
+			::advance_unit(loc, &mod_option, fire_event);
 		}
 
 		u = resources::units->find(loc);
@@ -314,8 +314,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 }
 
 
-void advance_unit(map_location loc, const std::string &advance_to,
-                  const bool &fire_event, const config * mod_option)
+void advance_unit(map_location loc, const tadvancement_option &advance_to, bool fire_event)
 {
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {
@@ -346,9 +345,9 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
-	bool use_amla = mod_option != nullptr;
-	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
-	                           get_advanced_unit(*u, advance_to);
+	bool use_amla = boost::get<std::string>(&advance_to) == nullptr;
+	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *boost::get<const config*>(advance_to)) :
+	                           get_advanced_unit(*u, boost::get<std::string>(advance_to));
 	if ( !use_amla )
 	{
 		statistics::advance_unit(*new_unit);
