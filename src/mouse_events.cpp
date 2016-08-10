@@ -22,7 +22,6 @@
 #include "actions/undo.hpp"             // for undo_list
 #include "config.hpp"                   // for config
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
-#include "dialogs.hpp"                  // for units_list_preview_pane, etc
 #include "game_board.hpp"               // for game_board, etc
 #include "game_config.hpp"              // for red_to_green
 #include "game_events/manager.hpp"

@@ -18,7 +18,6 @@
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
-#include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"

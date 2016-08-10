@@ -68,7 +68,7 @@ const team & play_controller::hotkey_handler::viewing_team() const { return play
 bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
 
 void play_controller::hotkey_handler::objectives(){
-	menu_handler_.objectives(gui()->viewing_team()+1);
+	menu_handler_.objectives();
 }
 
 void play_controller::hotkey_handler::show_statistics(){

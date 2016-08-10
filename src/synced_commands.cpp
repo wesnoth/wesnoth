@@ -22,6 +22,7 @@
 #include "team.hpp"
 #include "play_controller.hpp"
 #include "actions/create.hpp"
+#include "actions/advancement.hpp"
 #include "actions/attack.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"

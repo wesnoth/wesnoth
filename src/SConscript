@@ -186,6 +186,7 @@ libcutter = client_env.Library("cutter", libcutter_sources)
 # Used by both 'wesnoth' and 'test' targets
 wesnoth_sources = Split("""
     about.cpp
+    actions/advancement.cpp
     actions/attack.cpp
     actions/create.cpp
     actions/heal.cpp
@@ -256,7 +257,6 @@ wesnoth_sources = Split("""
     desktop/notifications.cpp
     desktop/open.cpp
     desktop/version.cpp
-    dialogs.cpp
     display_chat_manager.cpp
     editor/action/action_item.cpp
     editor/action/action_label.cpp

@@ -14,11 +14,12 @@
 
 #include "global.hpp"
 
-#include "dialogs.hpp"
+#include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/network_transmission.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -627,7 +628,7 @@ bool wait::download_level_data()
 	bool has_scenario_and_controllers = false;
 	while (!has_scenario_and_controllers) {
 		config revc;
-		bool data_res = dialogs::network_receive_dialog(
+		bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
 			video(), _("Getting game data..."), revc, *wesnothd_connection_);
 
 		if (!data_res) {

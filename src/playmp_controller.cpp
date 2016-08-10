@@ -15,11 +15,10 @@
 
 #include "playmp_controller.hpp"
 
-#include "dialogs.hpp"
-
 #include "actions/undo.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
+#include "gui/dialogs/network_transmission.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_handler_mp.hpp"
 #include "log.hpp"
@@ -281,7 +280,7 @@ void playmp_controller::wait_for_upload()
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			const bool  res = dialogs::network_receive_dialog(
+			const bool  res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
 				gui_->video(), _("Waiting for next scenario..."), cfg, mp_info_->wesnothd_connection);
 
 			if(res) {

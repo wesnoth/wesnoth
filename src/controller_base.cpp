@@ -15,7 +15,7 @@
 
 #include "controller_base.hpp"
 
-#include "dialogs.hpp"
+#include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
 #include "game_preferences.hpp"
@@ -25,7 +25,6 @@
 #include "mouse_handler_base.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
-
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 

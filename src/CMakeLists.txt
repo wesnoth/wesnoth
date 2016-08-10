@@ -636,6 +636,7 @@ add_library(wesnoth-schema_validator
 
 set(wesnoth-main_SRC
 	about.cpp
+	actions/advancement.cpp
 	actions/attack.cpp
 	actions/create.cpp
 	actions/heal.cpp
@@ -710,7 +711,6 @@ set(wesnoth-main_SRC
 	desktop/notifications.cpp
 	desktop/open.cpp
 	desktop/version.cpp
-	dialogs.cpp
 	display_chat_manager.cpp
 	editor/action/action.cpp
 	editor/action/action_item.cpp

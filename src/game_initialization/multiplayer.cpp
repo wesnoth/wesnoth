@@ -143,7 +143,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 	shown_hosts.insert(hostpair(host, port));
 
 	config data;
-	sock = dialogs::network_connect_dialog(video, _("Connecting to Server..."), host, port);
+	sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, _("Connecting to Server..."), host, port);
 	do {
 
 		if (!sock) {
@@ -151,7 +151,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 		}
 
 		data.clear();
-		dialogs::network_receive_dialog(video, "", data, *sock);
+		gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "", data, *sock);
 		//mp::check_response(data_res, data);
 
 		if (data.has_child("reject") || data.has_attribute("version")) {
@@ -181,7 +181,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			}
 			shown_hosts.insert(hostpair(host, port));
 			sock.release();
-			sock = dialogs::network_connect_dialog(video, _("Connecting to Server..."), host, port);
+			sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, _("Connecting to Server..."), host, port);
 			continue;
 		}
 
@@ -218,7 +218,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 					sp["selective_ping"] = true;
 				}
 				sock->send_data(response);
-				dialogs::network_receive_dialog(video, "login response", data, *sock);
+				gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
 				config *warning = &data.child("warning");
 
 				if(*warning) {
@@ -298,7 +298,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 
 						// Once again send our request...
 						sock->send_data(response);
-						dialogs::network_receive_dialog(video, "", data, *sock);
+						gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "", data, *sock);
 
 
 						error = &data.child("error");

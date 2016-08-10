@@ -28,6 +28,7 @@
 #include "global.hpp"
 
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
+#include "actions/advancement.hpp"           // for advance_unit_at, etc
 #include "actions/move.hpp"		// for clear_shroud
 #include "actions/vision.hpp"		// for clear_shroud
 #include "ai/composite/ai.hpp"          // for ai_composite

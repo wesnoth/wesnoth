@@ -210,4 +210,18 @@ void tunit_list::post_show(twindow& window)
 	}
 }
 
+void show_unit_list(display& gui)
+{
+	gui2::tunit_list dlg(gui);
+
+	dlg.show(gui.video());
+
+	if (dlg.get_retval() == gui2::twindow::OK) {
+		const map_location& loc = dlg.get_location_to_scroll_to();
+
+		gui.scroll_to_tile(loc, display::WARP);
+		gui.select_hex(loc);
+	}
+}
+
 }

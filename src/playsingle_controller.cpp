@@ -25,7 +25,6 @@
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/manager.hpp"
@@ -612,8 +611,7 @@ void playsingle_controller::check_objectives()
 	const team &t = gamestate().board_.teams()[gui_->viewing_team()];
 
 	if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
-		dialogs::show_objectives(get_scenario_name().str(), t.objectives());
-		t.reset_objectives_changed();
+		show_objectives();
 	}
 }
 

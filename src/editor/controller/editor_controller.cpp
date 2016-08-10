@@ -34,10 +34,10 @@
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/unit_list.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
-#include "dialogs.hpp"
 #include "resources.hpp"
 #include "reports.hpp"
 
@@ -1155,7 +1155,7 @@ void editor_controller::rename_unit()
 
 void editor_controller::unit_list()
 {
-	dialogs::show_unit_list(*gui_);
+	gui2::show_unit_list(*gui_);
 }
 
 void editor_controller::cut_selection()

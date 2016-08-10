@@ -219,17 +219,17 @@ public:
 
 	virtual bool is_replay() { return false; }
 
-	t_string get_scenario_name()
+	t_string get_scenario_name() const
 	{
 		return level_["name"].t_str();
 	}
 
-	bool get_disallow_recall()
+	bool get_disallow_recall() const
 	{
 		return level_["disallow_recall"].to_bool();
 	}
 
-	std::string theme()
+	std::string theme() const
 	{
 		return level_["theme"].str();
 	}
@@ -267,6 +267,7 @@ public:
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool recieve_from_wesnothd(config&) const { return false; }
+	void show_objectives() const;
 protected:
 	struct scoped_savegame_snapshot
 	{

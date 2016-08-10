@@ -29,7 +29,6 @@
 #include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "filechooser.hpp"
 #include "formatter.hpp"
@@ -53,6 +52,7 @@
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_list.hpp"
 #include "gui/dialogs/unit_recall.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
@@ -118,20 +118,18 @@ gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;
 }
 
-void menu_handler::objectives(int side_num)
+void menu_handler::objectives()
 {
 	if (!gamestate().lua_kernel_) {
 		return ;
 	}
 
 	config cfg;
-	cfg["side"] = std::to_string(side_num);
+	cfg["side"] = gui_->viewing_side();
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", "", map_location(),
 			map_location(), config()));
-	team &current_team = teams()[side_num - 1];
-	dialogs::show_objectives(pc_.get_scenario_name(), current_team.objectives());
-	current_team.reset_objectives_changed();
+	pc_.show_objectives();
 }
 
 void menu_handler::show_statistics(int side_num)
@@ -149,7 +147,7 @@ void menu_handler::show_statistics(int side_num)
 
 void menu_handler::unit_list()
 {
-	dialogs::show_unit_list(*gui_);
+	gui2::show_unit_list(*gui_);
 }
 
 void menu_handler::status_table()

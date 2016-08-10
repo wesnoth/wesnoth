@@ -49,7 +49,7 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
-	void objectives(int side_num);
+	void objectives();
 	void show_statistics(int side_num);
 	void unit_list();
 	void status_table();

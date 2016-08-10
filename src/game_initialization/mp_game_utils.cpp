@@ -15,7 +15,6 @@
 
 #include "carryover.hpp"
 #include "config.hpp"
-#include "dialogs.hpp"
 #include "formula/string_utils.hpp"
 #include "saved_game.hpp"
 #include "game_config.hpp"

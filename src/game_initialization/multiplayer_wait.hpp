@@ -18,6 +18,7 @@
 #include "flg_manager.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/combo.hpp"
+#include "show_dialog.hpp" //gui::preview_pane
 
 namespace mp {
 

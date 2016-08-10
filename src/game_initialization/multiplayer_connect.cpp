@@ -19,7 +19,7 @@
 #include "multiplayer_connect.hpp"
 
 #include "ai/configuration.hpp"
-#include "dialogs.hpp"
+#include "construct_dialog.hpp"
 #include "display_chat_manager.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

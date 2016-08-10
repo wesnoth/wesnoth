@@ -29,6 +29,8 @@ namespace gui2
 
 class ttext_;
 
+void show_unit_list(display& gui);
+
 class tunit_list : public tdialog
 {
 	typedef std::vector<unit_const_ptr> unit_ptr_vector;
