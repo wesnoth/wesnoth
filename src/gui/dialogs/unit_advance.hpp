@@ -44,7 +44,7 @@ private:
 
 	const unit_ptr_vector& previews_;
 
-	size_t selected_index_, real_;
+	size_t selected_index_, last_real_advancement_;
 };
 
 } // namespace gui2

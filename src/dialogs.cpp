@@ -106,13 +106,17 @@ int advance_unit_dialog(const map_location &loc)
 
 	if(previews.size() > 1 || always_display) {
 		gui2::tunit_advance dlg(previews, num_real_advances);
+
 		dlg.show(CVideo::get_singleton());
+
 		if(dlg.get_retval() == gui2::twindow::OK) {
 			return dlg.get_selected_index();
-		} else {
-			assert(false);
 		}
+
+		// This should be unreachable, since canceling is disabled for the dialog
+		assert(false);
 	}
+
 	return 0;
 }
 

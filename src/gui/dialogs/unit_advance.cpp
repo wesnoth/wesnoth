@@ -29,16 +29,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "units/unit.hpp"
-//#include "gettext.hpp"
 #include "help/help.hpp"
-//#include "marked-up_text.hpp"
-//#include "play_controller.hpp"
-//#include "resources.hpp"
-//#include "team.hpp"
-//#include "actions/attack.hpp" // for get_advanced_unit, get_amla_unit
-//#include "units/types.hpp"
-//#include "whiteboard/manager.hpp"
-//#include "game_preferences.hpp"
 
 #include "utils/functional.hpp"
 
@@ -50,7 +41,7 @@ REGISTER_DIALOG(unit_advance)
 tunit_advance::tunit_advance(const unit_ptr_vector& samples, size_t real)
 	: previews_(samples)
 	, selected_index_(0)
-	, real_(real)
+	, last_real_advancement_(real)
 {
 }
 
@@ -76,21 +67,25 @@ void tunit_advance::pre_show(twindow& window)
 
 	for(size_t i = 0; i < previews_.size(); i++) {
 		const unit& sample = *previews_[i];
+
 		std::map<std::string, string_map> row_data;
 		string_map column;
 
-		std::string	image_string, name = sample.type_name();
-		if(i >= real_) {
-			auto iter = sample
-				.get_modifications()
-				.child_range("advancement")
-				.second;
+		std::string image_string, name = sample.type_name();
+		
+		// This checks if we've finished iterating over the last unit type advancements
+		// and are into the modification-based advancements.
+		if(i >= last_real_advancement_) {
+			auto iter = sample.get_modifications().child_range("advancement").second;
 			iter--;
+
 			if(iter->has_attribute("image")) {
 				image_string = iter->get("image")->str();
 			}
+
 			name = iter->get("description")->str();
 		}
+
 		if(image_string.empty()) {
 			image_string = sample.type().image() + sample.image_mods();
 		}
@@ -105,6 +100,9 @@ void tunit_advance::pre_show(twindow& window)
 	}
 
 	list_item_clicked(window);
+
+	// Disable ESC existing
+	window.set_escape_disabled(true);
 }
 
 void tunit_advance::list_item_clicked(twindow& window)
