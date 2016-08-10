@@ -433,59 +433,49 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test_tip("tooltip_large");
 
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
-
-	/*
-	 * The unit attack unit test are disabled for now, they calling parameters
-	 * don't allow 'nullptr's needs to be fixed.
-	 */
-	list.erase(
-			std::remove(list.begin(), list.end(), "unit_attack")
-			, list.end());
-	/*
-	 * The chat log unit test are disabled for now, they calling parameters
-	 * don't allow 'nullptr's needs to be fixed.
-	 */
-	list.erase(
-			std::remove(list.begin(), list.end(), "chat_log")
-			, list.end());
-
-	// No test for this right now, not sure how to use the test system
-	// for dialog with no default constructor
-	list.erase(
-			std::remove(list.begin(), list.end(), "lua_interpreter")
-			, list.end());
-
-	/*
-	 * Disable label settings dialog test because we need a display_context
-	 * object, which we don't have, and it's a lot of work to produce a dummy
-	 * one.
-	 */
-	list.erase(
-			std::remove(list.begin(), list.end(), "label_settings")
-			, list.end());
-
-	//Window 'addon_description' registered but not tested.
-	//Window 'addon_filter_options' registered but not tested.
-	//Window 'addon_uninstall_list' registered but not tested.
-	//Window 'network_transmission' registered but not tested.
-	list.erase(std::remove(list.begin(), list.end(), "addon_description"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "addon_filter_options"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "addon_uninstall_list"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "addon_list"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "loadscreen"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "network_transmission"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "synced_choice_wait"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "drop_down_list"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "preferences"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "unit_recruit"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "unit_recall"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "unit_list"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "game_stats"), list.end());
-	list.erase(std::remove(list.begin(), list.end(), "unit_advance"), list.end());
+	std::vector<std::string> omitted = {
+		/*
+		 * The unit attack unit test are disabled for now, they calling parameters
+		 * don't allow 'nullptr's needs to be fixed.
+		 */
+		"unit_attack",
+		/*
+		 * The chat log unit test are disabled for now, they calling parameters
+		 * don't allow 'nullptr's needs to be fixed.
+		 */
+		"chat_log",
+		// No test for this right now, not sure how to use the test system
+		// for dialog with no default constructor
+		"lua_interpreter",
+		/*
+		 * Disable label settings dialog test because we need a display_context
+		 * object, which we don't have, and it's a lot of work to produce a dummy
+		 * one.
+		 */
+		"label_settings",
+		"addon_description",
+		"addon_filter_options",
+		"addon_uninstall_list",
+		"addon_list",
+		"loadscreen",
+		"network_transmission",
+		"synced_choice_wait",
+		"drop_down_list",
+		"preferences",
+		"unit_recruit",
+		"unit_recall",
+		"unit_list",
+		"game_stats",
+		"unit_advance",
+	};
+	std::sort(list.begin(), list.end());
+	std::sort(omitted.begin(), omitted.end());
+	std::vector<std::string> missing;
+	std::set_difference(list.begin(), list.end(), omitted.begin(), omitted.end(), std::back_inserter(missing));
 
 	// Test size() instead of empty() to get the number of offenders
-	BOOST_CHECK_EQUAL(list.size(), 0);
-	for(const std::string& id : list) {
+	BOOST_CHECK_EQUAL(missing.size(), 0);
+	for(const std::string& id : missing) {
 		std::cerr << "Window '" << id << "' registered but not tested.\n";
 	}
 }
