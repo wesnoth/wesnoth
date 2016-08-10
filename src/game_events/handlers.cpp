@@ -112,9 +112,9 @@ void event_handler::disable()
  */
 void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel & lk)
 {
-	//prevents the code below from destroying this object, so that cfg_ is still valid when we execute the handler.
-	handler_ptr this_p = handler_p;
-	vconfig vcfg(cfg_);
+	// We will need our config after possibly self-destructing. Make a copy now.
+	// TODO: instead of copying possibly huge config objects we should use shared things and only increase a refcount here.
+	vconfig vcfg(cfg_, true);
 
 	if (is_menu_item_) {
 		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
@@ -127,6 +127,7 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 		// Also remove our caller's hold on us.
 		handler_p.reset();
 	}
+	// *WARNING*: At this point, dereferencing this could be a memory violation!
 
 	lk.run_wml_action("command", vcfg, event_info);
 }
