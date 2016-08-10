@@ -842,6 +842,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
+	gui/dialogs/unit_advance.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
 	gui/dialogs/unit_list.cpp
