@@ -34,6 +34,7 @@
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
 #include "help/help.hpp"
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -113,14 +114,14 @@ static std::string format_cost_string(int unit_recall_cost, const int team_recal
 
 static std::string get_title_suffix(int side_num)
 {
-	if(!resources::teams || !resources::units) {
+	if(!resources::gameboard || !resources::units) {
 		return "";
 	}
 
 	unit_map& units = *resources::units;
 
 	int controlled_recruiters = 0;
-	for(const auto& team : *resources::teams) {
+	for(const auto& team : resources::gameboard->teams()) {
 		if(team.is_local_human() && !team.recruits().empty() && units.find_leader(team.side()) !=units.end()) {
 			++controlled_recruiters;
 		}

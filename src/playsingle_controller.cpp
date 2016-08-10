@@ -197,7 +197,7 @@ void playsingle_controller::play_scenario_main_loop()
 			}
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
 			for(size_t i = 0; i < local_players.size(); ++i) {
-				(*resources::teams)[i].set_local(local_players[i]);
+				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 			play_scenario_init();
 			replay_.reset(new replay_controller(*this, false, ex.level));

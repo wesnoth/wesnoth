@@ -42,6 +42,7 @@
 #include "reports.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "preferences_display.hpp"
@@ -161,7 +162,7 @@ editor_controller::~editor_controller()
 {
 	resources::units = nullptr;
 	resources::tod_manager = nullptr;
-	resources::teams = nullptr;
+	resources::gameboard = nullptr;
 
 	resources::classification = nullptr;
 	resources::mp_settings = nullptr;

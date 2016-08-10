@@ -20,6 +20,7 @@
 #include "config_assign.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
@@ -302,7 +303,7 @@ void map_context::load_scenario(const config& game_config)
 		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
 
-	resources::teams = &teams_;
+	resources::gameboard->teams() = teams_;
 
 	int i = 1;
 	for(config &side : scenario.child_range("side"))

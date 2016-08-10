@@ -213,7 +213,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		bool restart = side_drop == resources::screen->playing_side();
 
-		if (index >= resources::teams->size()) {
+		if (index >= resources::gameboard->teams().size()) {
 			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
 			throw ingame_wesnothd_error("");
 		}

@@ -25,6 +25,7 @@
 
 #include "config_assign.hpp"
 #include "formula/string_utils.hpp"
+#include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
@@ -482,9 +483,9 @@ void scoped_weapon_info::activate()
 
 void scoped_recall_unit::activate()
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
-	const std::vector<team>& teams = *resources::teams;
+	const std::vector<team>& teams = resources::gameboard->teams();
 
 	std::vector<team>::const_iterator team_it;
 	for (team_it = teams.begin(); team_it != teams.end(); ++team_it) {

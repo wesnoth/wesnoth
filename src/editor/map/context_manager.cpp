@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "filechooser.hpp"
 #include "formula/string_utils.hpp"
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
@@ -76,7 +77,7 @@ public:
 		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
 
 		resources::units = &context_manager_.get_map_context().get_units();
-		resources::teams = &context_manager_.get_map_context().get_teams();
+		resources::gameboard->teams() = context_manager_.get_map_context().get_teams();
 
 		// TODO register the tod_manager with the gui?
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();

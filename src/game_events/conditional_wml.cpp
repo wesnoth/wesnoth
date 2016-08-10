@@ -66,7 +66,7 @@ namespace builtin_conditions {
 		}
 		if(cfg["search_recall_list"].to_bool()) {
 			const unit_filter ufilt(cfg, resources::filter_con);
-			for(const team& team : *resources::teams) {
+			for(const team& team : resources::gameboard->teams()) {
 				if(counts == default_counts && match_count) {
 					break;
 				}

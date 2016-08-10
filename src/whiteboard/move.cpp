@@ -158,7 +158,7 @@ void move::init()
 	{
 		fake_unit_->anim_comp().set_ghosted(true);
 	}
-	side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
+	side_actions_ptr side_actions = resources::gameboard->teams().at(team_index()).get_side_actions();
 	side_actions::iterator action = side_actions->find_last_action_of(*(get_unit()));
 	if (action != side_actions->end())
 	{
@@ -314,8 +314,8 @@ bool move::calculate_new_route(const map_location& source_hex, const map_locatio
 {
 	pathfind::plain_route new_plain_route;
 	pathfind::shortest_path_calculator path_calc(*get_unit(),
-						resources::teams->at(team_index()),
-						*resources::teams, resources::gameboard->map());
+						resources::gameboard->teams().at(team_index()),
+						resources::gameboard->teams(), resources::gameboard->map());
 	new_plain_route = pathfind::a_star_search(source_hex,
 						dest_hex, 10000, &path_calc, resources::gameboard->map().w(), resources::gameboard->map().h());
 	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
@@ -469,7 +469,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != nullptr) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::gameboard->teams().at(viewer_team())) != nullptr) {
 		return LOCATION_OCCUPIED;
 	}
 

@@ -93,6 +93,7 @@ public:
 	virtual ~game_board();
 
 	virtual const std::vector<team> & teams() const { return teams_; }
+	virtual std::vector<team> & teams() { return teams_; }
 	virtual const gamemap & map() const { return *map_; }
 	virtual const unit_map & units() const { return units_; }
 	unit_map & units() { return units_; }

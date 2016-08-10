@@ -82,7 +82,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
 					&& u->invisible(adj[n]))
-				|| ((&(*resources::teams)[u->side() - 1]) == &current_team()
+				|| ((&resources::gameboard->teams()[u->side() - 1]) == &current_team()
 					&& u->movement_left() > 0)) {
 				ret += 1;
 			}
@@ -135,7 +135,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();
-	std::vector<team> teams_ = *resources::teams;
+	std::vector<team> teams_ = resources::gameboard->teams();
 	const bool has_leader = leader != units_.end();
 
 	std::vector<target> targets;

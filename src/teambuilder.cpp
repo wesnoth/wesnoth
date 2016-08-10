@@ -61,7 +61,7 @@ public:
 		//find out the correct qty of gold and handle gold carryover.
 		gold();
 
-		//create a new instance of team and push it to back of resources::teams vector
+		//create a new instance of team and push it to back of resources::gameboard->teams() vector
 		new_team();
 
 		assert(t_!=nullptr);

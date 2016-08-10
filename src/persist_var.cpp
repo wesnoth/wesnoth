@@ -140,7 +140,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
 			config::attribute_value pcfg_side = pcfg["side"];
 			int side = (pcfg_side.str() == "global" || pcfg_side.empty()) ? resources::controller->current_side() : pcfg_side.to_int();
-			if (unsigned (side - 1) >= resources::teams->size()) {
+			if (unsigned (side - 1) >= resources::gameboard->teams().size()) {
 				ERR_PERSIST << "[get_global_variable] attribute \"side\" specifies invalid side number." << "\n";
 				valid = false;
 			}
@@ -177,15 +177,15 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 		//Check side matching only if the side is not "global" or empty.
 		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {
 			//Ensure that the side is valid.
-			if (unsigned(side-1) > resources::teams->size()) {
+			if (unsigned(side-1) > resources::gameboard->teams().size()) {
 				ERR_PERSIST << "[set_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
-			} else if ((*resources::teams)[side - 1].is_empty()) {
+			} else if (resources::gameboard->teams()[side - 1].is_empty()) {
 				LOG_PERSIST << "[set_global_variable] attribute \"side\" specifies a null-controlled side number.";
 				valid = false;
 			} else {
 				//Set the variable only if it is meant for a side we control
-				valid = (*resources::teams)[side - 1].is_local();
+				valid = resources::gameboard->teams()[side - 1].is_local();
 			}
 		}
 	}
@@ -216,15 +216,15 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 		//Check side matching only if the side is not "global" or empty.
 		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {
 			//Ensure that the side is valid.
-			if (unsigned(side-1) > resources::teams->size()) {
+			if (unsigned(side-1) > resources::gameboard->teams().size()) {
 				ERR_PERSIST << "[clear_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
-			} else if ((*resources::teams)[side - 1].is_empty()) {
+			} else if (resources::gameboard->teams()[side - 1].is_empty()) {
 				LOG_PERSIST << "[clear_global_variable] attribute \"side\" specifies a null-controlled side number.";
 				valid = false;
 			} else {
 				//Clear the variable only if it is meant for a side we control
-				valid = (*resources::teams)[side - 1].is_local();
+				valid = resources::gameboard->teams()[side - 1].is_local();
 			}
 		}
 	}

@@ -636,7 +636,7 @@ void move_to_targets_phase::access_points(const move_map& srcdst, const map_loca
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const map_location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->total_movement()) {
-			pathfind::shortest_path_calculator calc(*u_it, current_team(), *resources::teams, map_);
+			pathfind::shortest_path_calculator calc(*u_it, current_team(), resources::gameboard->teams(), map_);
 			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u_it, current_team());
 			pathfind::plain_route rt = a_star_search(loc, dst, u_it->total_movement(), &calc, map_.w(), map_.h(), &allowed_teleports);
 			if(rt.steps.empty() == false) {

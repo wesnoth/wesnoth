@@ -18,6 +18,7 @@
  */
 
 #include "global.hpp"
+#include "game_board.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "resources.hpp" // Needed for teams, to get team save_id for a unit
@@ -41,8 +42,8 @@ typedef std::map<std::string,stats> team_stats_t;
 
 std::string get_team_save_id(const unit & u)
 {
-	assert(resources::teams);
-	return resources::teams->at(u.side()-1).save_id();
+	assert(resources::gameboard);
+	return resources::gameboard->teams().at(u.side()-1).save_id();
 }
 
 struct scenario_stats

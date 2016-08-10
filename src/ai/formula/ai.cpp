@@ -211,7 +211,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = *resources::units;
-    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, resources::gameboard->map());
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -660,7 +660,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
-		return variant(new team_callable((*resources::teams)[get_side()-1]));
+		return variant(new team_callable(resources::gameboard->teams()[get_side()-1]));
 
 	} else if(key == "my_side_number")
 	{
@@ -669,7 +669,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = resources::teams->begin(); i != resources::teams->end(); ++i) {
+		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
 			vars.push_back(variant(new team_callable(*i)));
 		}
 		return variant(&vars);
@@ -677,7 +677,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "allies")
 	{
 		std::vector<variant> vars;
-		for( size_t i = 0; i < resources::teams->size(); ++i) {
+		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( !current_team().is_enemy( i+1 ) )
 				vars.push_back(variant( i ));
 		}
@@ -686,7 +686,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemies")
 	{
 		std::vector<variant> vars;
-		for( size_t i = 0; i < resources::teams->size(); ++i) {
+		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( current_team().is_enemy( i+1 ) )
 				vars.push_back(variant( i ));
 		}
@@ -719,12 +719,12 @@ variant formula_ai::get_value(const std::string& key) const
 
 		unit_types.build_all(unit_type::FULL);
 
-		for( size_t i = 0; i<resources::teams->size(); ++i)
+		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;
 			tmp.push_back( v );
 
-			const std::set<std::string>& recruits = (*resources::teams)[i].recruits();
+			const std::set<std::string>& recruits = resources::gameboard->teams()[i].recruits();
 			if(recruits.empty()) {
 				continue;
 			}
@@ -754,7 +754,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		std::vector< std::vector< variant> > tmp;
-		for( size_t i = 0; i<resources::teams->size(); ++i)
+		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;
 			tmp.push_back( v );
@@ -832,13 +832,13 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
-		for(size_t i = 0; i<resources::teams->size(); ++i)
+		for(size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			vars.push_back( variant() );
 		}
 		for(size_t i = 0; i<vars.size(); ++i)
 		{
-			vars[i] = villages_from_set((*resources::teams)[i].villages());
+			vars[i] = villages_from_set(resources::gameboard->teams()[i].villages());
 		}
 		return variant(&vars);
 

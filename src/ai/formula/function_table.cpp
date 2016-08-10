@@ -280,7 +280,7 @@ private:
 //		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
+//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.resources::gameboard->teams() , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {

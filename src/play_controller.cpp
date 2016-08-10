@@ -126,7 +126,6 @@ static void clear_resources()
 	resources::persist = nullptr;
 	resources::screen = nullptr;
 	resources::soundsources = nullptr;
-	resources::teams = nullptr;
 	resources::tod_manager = nullptr;
 	resources::tunnels = nullptr;
 	resources::undo_stack = nullptr;
@@ -224,7 +223,6 @@ void play_controller::init(CVideo& video, const config& level)
 
 		resources::gameboard = &gamestate().board_;
 		resources::gamedata = &gamestate().gamedata_;
-		resources::teams = &gamestate().board_.teams_;
 		resources::tod_manager = &gamestate().tod_manager_;
 		resources::units = &gamestate().board_.units_;
 		resources::filter_con = &gamestate();
@@ -308,7 +306,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
-	resources::teams = nullptr;
 	resources::tod_manager = nullptr;
 	resources::units = nullptr;
 	resources::filter_con = nullptr;
@@ -320,7 +317,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gamestate_.reset(new game_state(level, *this, tdata_));
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
-	resources::teams = &gamestate().board_.teams_;
 	resources::tod_manager = &gamestate().tod_manager_;
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();

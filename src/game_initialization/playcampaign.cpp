@@ -120,12 +120,12 @@ void campaign_controller::report_victory(
 
 void campaign_controller::show_carryover_message(playsingle_controller& playcontroller, const end_level_data& end_level, const LEVEL_RESULT res)
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
 	//maybe this can be the case for scenario that only contain a story and end during the prestart event ?
-	if(resources::teams->size() < 1){
+	if(resources::gameboard->teams().size() < 1){
 		return;
 	}
 
@@ -145,7 +145,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 	}
 
 	//We need to write the carryover amount to the team thats why we need non const
-	std::vector<team>& teams = *resources::teams;
+	std::vector<team>& teams = resources::gameboard->teams();
 	int persistent_teams = 0;
 	for (const team &t : teams) {
 		if (t.persistent()){

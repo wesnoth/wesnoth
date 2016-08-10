@@ -84,7 +84,7 @@ double goto_phase::evaluate()
 		}
 		// end of passive_leader
 
-		const pathfind::shortest_path_calculator calc(*ui, current_team(), *resources::teams, resources::gameboard->map());
+		const pathfind::shortest_path_calculator calc(*ui, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*ui, current_team());
 
@@ -300,7 +300,7 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
+	pathfind::shortest_path_calculator calc(*leader, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
 			resources::gameboard->map().w(), resources::gameboard->map().h());
 	if(route.steps.empty()) {
@@ -415,7 +415,7 @@ double move_leader_to_keep_phase::evaluate()
 			continue;
 		}
 
-		const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
+		const pathfind::shortest_path_calculator calc(*leader, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
@@ -437,7 +437,7 @@ double move_leader_to_keep_phase::evaluate()
 	const unit* leader = best_leader;
 	const map_location keep = best_keep;
 	const pathfind::paths leader_paths(*leader, false, true, current_team());
-	const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
+	const pathfind::shortest_path_calculator calc(*leader, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
 	if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
@@ -659,7 +659,7 @@ void get_villages_phase::find_villages(
 
 	size_t min_distance = 100000;
 	const gamemap &map_ = resources::gameboard->map();
-	std::vector<team> &teams_ = *resources::teams;
+	std::vector<team> &teams_ = resources::gameboard->teams();
 
 	// When a unit is dispatched we need to make sure we don't
 	// dispatch this unit a second time, so store them here.
@@ -1598,7 +1598,7 @@ double leader_shares_keep_phase::evaluate()
 		return BAD_SCORE;
 	}
 	bool allied_leaders_available = false;
-	for(team &tmp_team : *resources::teams) {
+	for(team &tmp_team : resources::gameboard->teams()) {
 		if(!current_team().is_enemy(tmp_team.side())){
 			std::vector<unit_map::unit_iterator> allied_leaders = resources::units->find_leaders(get_side());
 			if (!allied_leaders.empty()){
@@ -1640,7 +1640,7 @@ void leader_shares_keep_phase::execute()
 		//for each leader, check if he's allied and can reach our keep
 		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); ++i){
 			const unit_map::const_iterator itor = resources::units->find(i->first);
-			team &leader_team = (*resources::teams)[itor->side() - 1];
+			team &leader_team = resources::gameboard->teams()[itor->side() - 1];
 			if(itor != resources::units->end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
 				pathfind::paths::dest_vect::const_iterator tokeep = i->second.destinations.find(keep);
 				if(tokeep != i->second.destinations.end()){

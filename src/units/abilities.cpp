@@ -128,7 +128,7 @@ bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
@@ -153,7 +153,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, *resources::teams, side(), it->side()) &&
+			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
 			{
@@ -167,7 +167,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
 	unit_ability_list res;
 
@@ -194,7 +194,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, *resources::teams, side(), it->side()) &&
+			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc, *it))
 			{
@@ -309,7 +309,7 @@ std::vector<std::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std:
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
-	assert(resources::units && resources::gameboard && resources::teams && resources::tod_manager);
+	assert(resources::units && resources::gameboard && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
 		if ( !unit_filter(vconfig(afilter), resources::filter_con, illuminates).matches(*this, loc) )
@@ -823,14 +823,14 @@ namespace { // Helpers for attack_type::special_active()
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
-		
+
 		// If the primary unit doesn't exist, there's nothing to match
 		if (!un_it.valid()) {
 			return false;
 		}
-		
+
 		unit_filter ufilt(vconfig(filter_child), resources::filter_con);
-		
+
 		// If the other unit doesn't exist, try matching without it
 		if (!u2.valid()) {
 			return ufilt.matches(*un_it, loc);

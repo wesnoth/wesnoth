@@ -56,7 +56,7 @@ mapbuilder::~mapbuilder()
 
 void mapbuilder::pre_build()
 {
-	for (team& t : *resources::teams) {
+	for (team& t : resources::gameboard->teams()) {
 		//Reset spent gold to zero, it'll be recalculated during the map building
 		t.get_side_actions()->reset_gold_spent();
 	}
@@ -68,7 +68,7 @@ void mapbuilder::pre_build()
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if(!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], resources::gameboard->map(), false)) {
+		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], resources::gameboard->map(), false)) {
 			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
 
 			//Don't do anything else to the removed unit!
@@ -96,7 +96,7 @@ void mapbuilder::build_map()
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
 		end = true;
-		for (team &side : *resources::teams) {
+		for (team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_has_visible_plan(side)) {
 				end = false;

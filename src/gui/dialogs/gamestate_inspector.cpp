@@ -32,6 +32,7 @@
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
 
+#include "game_board.hpp"
 #include "game_data.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
@@ -559,8 +560,8 @@ public:
 		}
 
 		if(selected == 0) {
-			config c = resources::teams
-							   ? resources::teams->at(side_ - 1).to_config()
+			config c = resources::gameboard
+							   ? resources::gameboard->teams().at(side_ - 1).to_config()
 							   : config();
 			c.clear_children("ai", "village");
 			model_.set_inspect_window_text(config_to_string(c));
@@ -595,8 +596,8 @@ public:
 
 		if(selected == 6) {
 			std::stringstream s;
-			if (resources::teams) {
-				for(const auto & u : resources::teams->at(side_ - 1).recall_list())
+			if (resources::gameboard) {
+				for(const auto & u : resources::gameboard->teams().at(side_ - 1).recall_list())
 				{
 					s << "id=\"" << u->id() << "\" (" << u->type_id() << ")\nL"
 					  << u->level() << "; " << u->experience() << "/"
@@ -615,8 +616,8 @@ public:
 
 		if(selected == 7) {
 			config c;
-			if (resources::teams) {
-				for(const auto & u : resources::teams->at(side_ - 1).recall_list())
+			if (resources::gameboard) {
+				for(const auto & u : resources::gameboard->teams().at(side_ - 1).recall_list())
 				{
 					config c_unit;
 					u->write(c_unit);
@@ -694,8 +695,8 @@ public:
 		sm_controllers_.push_back(std::make_shared<unit_mode_controller>
 			("units", model_));
 		// BOOST_FOREACHteam
-		int sides = resources::teams
-							? static_cast<int>((*resources::teams).size())
+		int sides = resources::gameboard
+							? static_cast<int>(resources::gameboard->teams().size())
 							: 0;
 		for(int side = 1; side <= sides; ++side) {
 			std::string side_str = std::to_string(side);

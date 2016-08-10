@@ -26,7 +26,6 @@ namespace resources
 	persist_manager      *persist = nullptr;
 	game_display         *screen = nullptr;
 	soundsource::manager *soundsources = nullptr;
-	std::vector<team>    *teams = nullptr;
 	replay               *recorder = nullptr;
 	::tod_manager        *tod_manager = nullptr;
 	fake_unit_manager    *fake_units = nullptr;

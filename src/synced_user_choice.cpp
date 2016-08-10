@@ -103,7 +103,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 {
 	//pass sides by copy because we need a copy.
 	const bool is_synced = synced_context::is_synced();
-	const int max_side  = static_cast<int>(resources::teams->size());
+	const int max_side  = static_cast<int>(resources::gameboard->teams().size());
 	//we currently don't check for too early because luas sync choice doesn't necessarily show screen dialogs.
 	//It (currently) in the responsibility of the user of sync choice to not use dialogs during prestart events..
 	if(!is_synced)
@@ -120,7 +120,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	for(int side : sides)
 	{
 		assert(1 <= side && side <= max_side);
-		if( (*resources::teams)[side-1].is_empty())
+		if( resources::gameboard->teams()[side-1].is_empty())
 		{
 			empty_sides.insert(side);
 		}
@@ -150,7 +150,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	const bool is_synced = synced_context::is_synced();
 	const bool is_mp_game = resources::controller->is_networked_mp();//Only used in debugging output below
-	const int max_side  = static_cast<int>(resources::teams->size());
+	const int max_side  = static_cast<int>(resources::gameboard->teams().size());
 	bool is_side_null_controlled;
 
 	if(!is_synced)
@@ -186,7 +186,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		side = resources::controller->current_side();
 		LOG_REPLAY << " side changed to " << side << "\n";
 	}
-	is_side_null_controlled = (*resources::teams)[side-1].is_empty();
+	is_side_null_controlled = resources::gameboard->teams()[side-1].is_empty();
 
 	LOG_REPLAY << "get_user_choice_called with"
 			<< " name=" << name
@@ -202,7 +202,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//i think in that case we should better use uch.random_choice(),
 		//which could return something like config_of("invalid", true);
 		side = 1;
-		while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
+		while ( side <= max_side  &&  resources::gameboard->teams()[side-1].is_empty() )
 			side++;
 		assert(side <= max_side);
 	}
@@ -233,12 +233,12 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 	, changed_event_("user_choice_update")
 {
 	update_local_choice();
-	const int max_side  = static_cast<int>(resources::teams->size());
+	const int max_side  = static_cast<int>(resources::gameboard->teams().size());
 
 	for(int side : required_)
 	{
 		assert(1 <= side && side <= max_side);
-		const team& t = (*resources::teams)[side-1];
+		const team& t = resources::gameboard->teams()[side-1];
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
@@ -317,7 +317,7 @@ void user_choice_manager::update_local_choice()
 			sides_str += " ";
 			sides_str += std::to_string(side);
 			//and it is local
-			if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
+			if(resources::gameboard->teams()[side-1].is_local() && !resources::gameboard->teams()[side-1].is_idle())
 			{
 				//then we have to make a local choice.
 				local_choice_ = side;

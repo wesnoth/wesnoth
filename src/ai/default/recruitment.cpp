@@ -677,7 +677,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
  */
 const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const {
 	const unit_map& units = *resources::units;
-	const team& team = (*resources::teams)[side - 1];
+	const team& team = resources::gameboard->teams()[side - 1];
 
 	pathfind::full_cost_map cost_map(true, true, team, true, true);
 
@@ -748,7 +748,7 @@ void recruitment::update_average_lawful_bonus() {
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
 	const gamemap& map = resources::gameboard->map();
-	const team& team = (*resources::teams)[get_side() - 1];
+	const team& team = resources::gameboard->teams()[get_side() - 1];
 
 	for(int x = 0; x < map.w(); ++x) {
 		for (int y = 0; y < map.h(); ++y) {
@@ -810,7 +810,7 @@ void recruitment::update_important_hexes() {
 	// The important hexes are those where my value on the cost map is
 	// similar to a enemies one.
 	const pathfind::full_cost_map my_cost_map = get_cost_map_of_side(get_side());
-	for (const team& team : *resources::teams) {
+	for (const team& team : resources::gameboard->teams()) {
 		if (current_team().is_enemy(team.side())) {
 			const pathfind::full_cost_map enemy_cost_map = get_cost_map_of_side(team.side());
 
@@ -932,7 +932,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 	}
 	if (enemy_units.size() < UNIT_THRESHOLD) {
 		// Use also enemies recruitment lists and insert units into enemy_units.
-		for (const team& team : *resources::teams) {
+		for (const team& team : resources::gameboard->teams()) {
 			if (!current_team().is_enemy(team.side())) {
 				continue;
 			}
@@ -1411,7 +1411,7 @@ bool recruitment::remove_job_if_no_blocker(config* job) {
  * positive or negative.
  */
 double recruitment::get_estimated_income(int turns) const {
-	const team& team = (*resources::teams)[get_side() - 1];
+	const team& team = resources::gameboard->teams()[get_side() - 1];
 	const size_t own_villages = team.villages().size();
 	const double village_gain = get_estimated_village_gain();
 	const double unit_gain = get_estimated_unit_gain();
@@ -1447,7 +1447,7 @@ double recruitment::get_estimated_village_gain() const {
 			++neutral_villages;
 		}
 	}
-	return (neutral_villages / resources::teams->size()) / 4.;
+	return (neutral_villages / resources::gameboard->teams().size()) / 4.;
 }
 
 /**
@@ -1474,7 +1474,7 @@ double recruitment::get_unit_ratio() const {
 		}
 	}
 	int allies_count = 0;
-	for (const team& team : *resources::teams) {
+	for (const team& team : resources::gameboard->teams()) {
 		if (!current_team().is_enemy(team.side())) {
 			++allies_count;
 		}
@@ -1712,7 +1712,7 @@ void recruitment::update_scouts_wanted() {
 			++neutral_villages;
 		}
 	}
-	double our_share = static_cast<double>(neutral_villages) / resources::teams->size();
+	double our_share = static_cast<double>(neutral_villages) / resources::gameboard->teams().size();
 
 	// The villages per scout is for a two-side battle,
 	// accounting for all neutral villages on the map.

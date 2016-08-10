@@ -675,7 +675,7 @@ REPLAY_RETURN do_replay(bool one_move)
 REPLAY_RETURN do_replay_handle(bool one_move)
 {
 
-	//team &current_team = (*resources::teams)[side_num - 1];
+	//team &current_team = resources::gameboard->teams()[side_num - 1];
 
 	const int side_num = resources::controller->current_side();
 	while(true)
@@ -797,7 +797,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			int val = child["value"];
 			int tval = child["team"];
-			if (tval <= 0  || tval > int(resources::teams->size())) {
+			if (tval <= 0  || tval > int(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
 					<< "Received update for :" << tval << " Current user :"
@@ -805,7 +805,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 				replay::process_error(errbuf.str());
 			} else {
-				(*resources::teams)[tval - 1].set_countdown_time(val);
+				resources::gameboard->teams()[tval - 1].set_countdown_time(val);
 			}
 		}
 		else if ((*cfg)["dependent"].to_bool(false))

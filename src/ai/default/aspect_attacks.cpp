@@ -147,7 +147,7 @@ void aspect_attacks_base::do_attack_analysis(
 	}
 	const gamemap &map_ = resources::gameboard->map();
 	unit_map &units_ = *resources::units;
-	std::vector<team> &teams_ = *resources::teams;
+	std::vector<team> &teams_ = resources::gameboard->teams();
 
 
 	const size_t max_positions = 1000;

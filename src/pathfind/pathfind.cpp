@@ -121,7 +121,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 map_location find_vacant_castle(const unit & leader)
 {
 	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
-	                        nullptr, &(*resources::teams)[leader.side()-1]);
+	                        nullptr, &resources::gameboard->teams()[leader.side()-1]);
 }
 
 
@@ -279,7 +279,7 @@ static void find_routes(
 	// When see_all is true, the viewing team never matters, but we still
 	// need to supply one to some functions.
 	if ( viewing_team == nullptr )
-		viewing_team = &resources::teams->front();
+		viewing_team = &resources::gameboard->teams().front();
 
 	// Build a teleport map, if needed.
 	const teleport_map teleports = teleporter ?
@@ -530,7 +530,7 @@ paths::paths(const unit& u, bool force_ignore_zoc,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {
-	std::vector<team> const &teams = *resources::teams;
+	std::vector<team> const &teams = resources::gameboard->teams();
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}
@@ -642,7 +642,7 @@ marked_route mark_route(const plain_route &rt)
 
 	int turns = 0;
 	int movement = u.movement_left();
-	const team& unit_team = (*resources::teams)[u.side()-1];
+	const team& unit_team = resources::gameboard->teams()[u.side()-1];
 	bool zoc = false;
 
 	std::vector<map_location>::const_iterator i = rt.steps.begin();
@@ -654,7 +654,7 @@ marked_route mark_route(const plain_route &rt)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
 
-		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+		team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -878,7 +878,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
  */
 void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {
-	std::vector<team> const &teams = *resources::teams;
+	std::vector<team> const &teams = resources::gameboard->teams();
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}

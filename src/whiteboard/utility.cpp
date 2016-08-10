@@ -49,14 +49,14 @@ int viewer_side()
 side_actions_ptr viewer_actions()
 {
 	side_actions_ptr side_actions =
-			(*resources::teams)[resources::screen->viewing_team()].get_side_actions();
+			resources::gameboard->teams()[resources::screen->viewing_team()].get_side_actions();
 	return side_actions;
 }
 
 side_actions_ptr current_side_actions()
 {
 	side_actions_ptr side_actions =
-			(*resources::teams)[resources::controller->current_side() - 1].get_side_actions();
+			resources::gameboard->teams()[resources::controller->current_side() - 1].get_side_actions();
 	return side_actions;
 }
 
@@ -97,7 +97,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 		return nullptr;
 	}
 	//use global method get_visible_unit
-	return resources::gameboard->get_visible_unit(hex, resources::teams->at(viewer_side - 1), false);
+	return resources::gameboard->get_visible_unit(hex, resources::gameboard->teams().at(viewer_side - 1), false);
 }
 
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
@@ -114,7 +114,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 	if(path.size() < 2)
 		return 0;
 
-	team const& u_team = resources::teams->at(u.side()-1);
+	team const& u_team = resources::gameboard->teams().at(u.side()-1);
 	map_location const& dest = path.back();
 	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
@@ -152,7 +152,7 @@ void unghost_owner_unit(unit* unit)
 
 bool has_actions()
 {
-	for (team& t : *resources::teams) {
+	for (team& t : resources::gameboard->teams()) {
 		if (!t.get_side_actions()->empty())
 			return true;
 	}
@@ -170,7 +170,7 @@ void for_each_action(std::function<void(action*)> function, team_filter team_fil
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
 		end = true;
-		for(team &side : *resources::teams) {
+		for(team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_filter(side)) {
 				for(auto iter = actions.turn_begin(turn); iter != actions.turn_end(turn); ++iter) {
@@ -187,7 +187,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 	action_ptr result;
 	size_t result_turn = std::numeric_limits<size_t>::max();
 
-	for(team &side : *resources::teams) {
+	for(team &side : resources::gameboard->teams()) {
 		side_actions &actions = *side.get_side_actions();
 		if(team_filter(side)) {
 			side_actions::iterator chall = actions.find_first_action_at(hex);
@@ -208,7 +208,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 
 std::deque<action_ptr> find_actions_of(unit const &target)
 {
-	return (*resources::teams)[target.side()-1].get_side_actions()->actions_of(target);
+	return resources::gameboard->teams()[target.side()-1].get_side_actions()->actions_of(target);
 }
 
 } //end namespace wb

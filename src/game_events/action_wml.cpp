@@ -117,7 +117,7 @@ namespace { // Support functions
 		std::string img_mods = cfg["image_mods"];
 
 		size_t side_num = cfg["side"].to_int(1);
-		if ( side_num == 0  ||  side_num > resources::teams->size() )
+		if ( side_num == 0  ||  side_num > resources::gameboard->teams().size() )
 			side_num = 1;
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
@@ -167,8 +167,8 @@ namespace { // Support functions
 				continue;
 			}
 			pathfind::shortest_path_calculator calc(fake_unit,
-					(*resources::teams)[fake_unit.side()-1],
-					*resources::teams,
+					resources::gameboard->teams()[fake_unit.side()-1],
+					resources::gameboard->teams(),
 					*game_map);
 
 			try {
@@ -442,17 +442,17 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
-	for(int index = 0; index < int(resources::teams->size()); ++index) {
+	for(int index = 0; index < int(resources::gameboard->teams().size()); ++index) {
 		LOG_NG << "for side " << index + 1 << "...\n";
-		const std::string player_id = (*resources::teams)[index].save_id();
+		const std::string player_id = resources::gameboard->teams()[index].save_id();
 
-		if((*resources::teams)[index].recall_list().size() < 1) {
+		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!\n"
 				   << "player_id: " << player_id << " side: " << index+1 << "\n";
 			continue;
 		}
 
-		recall_list_manager & avail = (*resources::teams)[index].recall_list();
+		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
 		const unit_filter ufilt(unit_filter_cfg, resources::filter_con);
@@ -901,12 +901,12 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	int side = parsed_cfg["side"].to_int(1);
 
 
-	if ((side<1)||(side > static_cast<int>(resources::teams->size()))) {
-		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::teams->size()<<")"<<std::endl;
+	if ((side<1)||(side > static_cast<int>(resources::gameboard->teams().size()))) {
+		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")"<<std::endl;
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}
-	team &tm = resources::teams->at(side-1);
+	team &tm = resources::gameboard->teams().at(side-1);
 
 	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 

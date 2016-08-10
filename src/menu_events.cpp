@@ -1450,8 +1450,8 @@ void console_handler::do_control() {
 	try {
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(bad_lexical_cast&) {
-		std::vector<team>::const_iterator it_t = boost::find_if(*resources::teams, save_id_matches(side));
-		if(it_t == resources::teams->end()) {
+		std::vector<team>::const_iterator it_t = boost::find_if(resources::gameboard->teams(), save_id_matches(side));
+		if(it_t == resources::gameboard->teams().end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
 			command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
