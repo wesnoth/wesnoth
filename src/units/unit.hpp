@@ -317,6 +317,7 @@ public:
 
 	std::vector<config> get_modification_advances() const;
 	config& get_modifications() { return modifications_; }
+	const config& get_modifications() const { return modifications_; }
 
 	typedef boost::ptr_vector<config> t_advancements;
 	void set_advancements(std::vector<config> advancements);

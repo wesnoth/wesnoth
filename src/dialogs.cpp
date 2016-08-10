@@ -28,6 +28,7 @@
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/unit_list.hpp"
+#include "gui/dialogs/unit_advance.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -85,61 +86,32 @@ namespace dialogs
 
 int advance_unit_dialog(const map_location &loc)
 {
-	unit_map::iterator u = resources::units->find(loc);
+	const unit& u = *resources::units->find(loc);
+	std::vector<unit_const_ptr> previews;
 
-	const std::vector<std::string>& options = u->advances_to();
-
-	std::vector<std::string> lang_options;
-
-	std::shared_ptr<std::vector<unit_const_ptr> > sample_units(std::make_shared<std::vector<unit_const_ptr> >());
-	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units->push_back(::get_advanced_unit(*u, *op));
-		const unit& type = *sample_units->back();
-
-#ifdef LOW_MEM
-		lang_options.push_back(IMAGE_PREFIX
-				+ static_cast<std::string const &>(type.absolute_image())
-				+ COLUMN_SEPARATOR + type.type_name());
-#else
-		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
-#endif
-		preferences::encountered_units().insert(*op);
+	for(const std::string& advance : u.advances_to()) {
+		preferences::encountered_units().insert(advance);
+		previews.push_back(get_advanced_unit(u, advance));
 	}
 
+	size_t num_real_advances = previews.size();
 	bool always_display = false;
-	for (const config &mod : u->get_modification_advances())
-	{
-		if (mod["always_display"].to_bool()) always_display = true;
-		sample_units->push_back(::get_amla_unit(*u, mod));
-		const unit& type = *sample_units->back();
-		if (!mod["image"].empty()) {
-			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
-		} else {
-#ifdef LOW_MEM
-			lang_options.push_back(IMAGE_PREFIX
-					+ static_cast<std::string const &>(type.absolute_image())
-					+ COLUMN_SEPARATOR + mod["description"].str());
-#else
-			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
-#endif
+
+	for(const config& advance : u.get_modification_advances()) {
+		if(advance["always_display"]) {
+			always_display = true;
 		}
+		previews.push_back(get_amla_unit(u, advance));
 	}
 
-	assert(!lang_options.empty());
-
-	if (lang_options.size() > 1 || always_display)
-	{
-		units_list_preview_pane unit_preview(sample_units);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&unit_preview);
-
-		gui::dialog advances = gui::dialog(resources::screen->video(),
-				      _("Advance Unit"),
-		                      _("What should our victorious unit become?"),
-		                      gui::OK_ONLY);
-		advances.set_menu(lang_options);
-		advances.set_panes(preview_panes);
-		return advances.show();
+	if(previews.size() > 1 || always_display) {
+		gui2::tunit_advance dlg(previews, num_real_advances);
+		dlg.show(CVideo::get_singleton());
+		if(dlg.get_retval() == gui2::twindow::OK) {
+			return dlg.get_selected_index();
+		} else {
+			assert(false);
+		}
 	}
 	return 0;
 }
