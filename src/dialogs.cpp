@@ -114,7 +114,7 @@ int advance_unit_dialog(const map_location &loc)
 		}
 
 		// This should be unreachable, since canceling is disabled for the dialog
-		assert(false);
+		assert(false && "Unit advance dialog was cancelled, which should be impossible.");
 	}
 
 	return 0;

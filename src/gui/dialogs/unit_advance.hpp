@@ -11,8 +11,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_UNIT_RECRUIT_HPP_INCLUDED
-#define GUI_DIALOGS_UNIT_RECRUIT_HPP_INCLUDED
+#ifndef GUI_DIALOGS_UNIT_ADVANCE_HPP_INCLUDED
+#define GUI_DIALOGS_UNIT_ADVANCE_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
 #include "units/ptr.hpp"
@@ -49,4 +49,4 @@ private:
 
 } // namespace gui2
 
-#endif /* ! GUI_DIALOGS_UNIT_RECRUIT_HPP_INCLUDED */
+#endif /* ! GUI_DIALOGS_UNIT_ADVANCE_HPP_INCLUDED */

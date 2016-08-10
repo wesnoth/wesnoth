@@ -25,7 +25,7 @@
 class display;
 class game_board;
 class team;
-class team_data;
+struct team_data;
 
 namespace gui2
 {
