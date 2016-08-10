@@ -171,43 +171,6 @@ void menu_handler::unit_list()
 	dialogs::show_unit_list(*gui_);
 }
 
-namespace {
-class leader_scroll_dialog : public gui::dialog {
-public:
-	leader_scroll_dialog(display &disp, const std::string &title,
-			std::vector<bool> &leader_bools, int selected,
-			gui::DIALOG_RESULT extra_result) :
-		dialog(disp.video(), title, "", gui::NULL_DIALOG),
-		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
-		leader_bools_(leader_bools),
-		extra_result_(extra_result)
-	{
-		scroll_btn_->enable(leader_bools[selected]);
-		add_button(scroll_btn_, gui::dialog::BUTTON_STANDARD);
-		add_button(new gui::standard_dialog_button(disp.video(),
-			_("Close"), 1, true), gui::dialog::BUTTON_STANDARD);
-	}
-	void action(gui::dialog_process_info &info) {
-		const bool leader_bool = leader_bools_[get_menu().selection()];
-		scroll_btn_->enable(leader_bool);
-		if(leader_bool && (info.double_clicked || (!info.key_down
-		&& (info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER])))) {
-			set_result(get_menu().selection());
-		} else if(!info.key_down && info.key[SDLK_ESCAPE]) {
-			set_result(gui::CLOSE_DIALOG);
-		} else if(!info.key_down && info.key[SDLK_SPACE]) {
-			set_result(extra_result_);
-		} else if(result() == gui::CONTINUE_DIALOG) {
-			dialog::action(info);
-		}
-	}
-private:
-	gui::standard_dialog_button *scroll_btn_;
-	std::vector<bool> &leader_bools_;
-	gui::DIALOG_RESULT extra_result_;
-};
-} //end anonymous namespace
-
 void menu_handler::status_table(int selected)
 {
 	gui2::tgame_stats dlg(board(), gui_->viewing_team());
