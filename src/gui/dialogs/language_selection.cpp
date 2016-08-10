@@ -68,7 +68,7 @@ void tlanguage_selection::pre_show(twindow& window)
 	for(const auto & lang : languages)
 	{
 		string_map item;
-		item.insert(std::make_pair("label", lang.language));
+		item.emplace("label", lang.language);
 
 		list.add_row(item);
 		if(lang == current_language) {

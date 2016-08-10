@@ -84,7 +84,7 @@ void teditor_set_starting_position::pre_show(twindow& window)
 	string_map column;
 
 	column["label"] = _("player^None");
-	data.insert(std::make_pair("player", column));
+	data.emplace("player", column);
 	list.add_row(data);
 
 	for(unsigned i = 0; i < starting_positions_.size(); ++i) {
@@ -97,12 +97,12 @@ void teditor_set_starting_position::pre_show(twindow& window)
 
 		column["label"] = utils::interpolate_variables_into_string(
 				_("Player $player_number"), &symbols);
-		data.insert(std::make_pair("player", column));
+		data.emplace("player", column);
 
 		if(player_pos.valid()) {
 			column["label"] = (formatter() << "(" << player_pos.x + 1 << ", "
 										   << player_pos.y + 1 << ")").str();
-			data.insert(std::make_pair("location", column));
+			data.emplace("location", column);
 		}
 
 		list.add_row(data);

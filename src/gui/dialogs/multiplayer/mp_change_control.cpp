@@ -115,7 +115,7 @@ public:
 		item["id"] = std::string("side_") + std::to_string(side_num);
 		item["label"] = label;
 		item["use_markup"] = "true";
-		data.insert(std::make_pair("side", item));
+		data.emplace("side", item);
 		sides_list->add_row(data);
 	}
 
@@ -136,7 +136,7 @@ public:
 		item["id"] = nick;
 		item["label"] = label;
 		item["use_markup"] = "true";
-		data.insert(std::make_pair("nick", item));
+		data.emplace("nick", item);
 		nicks_list->add_row(data);
 	}
 };

@@ -91,10 +91,10 @@ void tunit_advance::pre_show(twindow& window)
 		}
 
 		column["label"] = image_string;
-		row_data.insert({"advancement_image", column});
+		row_data.emplace("advancement_image", column);
 
 		column["label"] = name;
-		row_data.insert({"advancement_name", column});
+		row_data.emplace("advancement_name", column);
 
 		list.add_row(row_data);
 	}

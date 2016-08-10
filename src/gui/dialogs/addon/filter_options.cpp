@@ -195,7 +195,7 @@ void taddon_filter_options::pre_show(twindow& window)
 		string_map column;
 
 		column["label"] = status_label(ADDON_STATUS_FILTER(k));
-		row.insert(std::make_pair("status", column));
+		row.emplace("status", column);
 
 		list.add_row(row);
 	}

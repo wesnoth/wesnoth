@@ -152,19 +152,19 @@ static void set_weapon_info(twindow& window,
 		item["use_markup"] = "true";
 
 		item["label"] = attacker_weapon.icon();
-		data.insert({"attacker_weapon_icon", item});
+		data.emplace("attacker_weapon_icon", item);
 
 		item["label"] = attacker_stats.str();
-		data.insert({"attacker_weapon", item});
+		data.emplace("attacker_weapon", item);
 
 		item["label"] = "<span color='#a69275'>" + utils::unicode_em_dash + " " + range + " " + utils::unicode_em_dash + "</span>";
-		data.insert({"range", item});
+		data.emplace("range", item);
 
 		item["label"] = defender_stats.str();
-		data.insert({"defender_weapon", item});
+		data.emplace("defender_weapon", item);
 
 		item["label"] = defender_weapon.icon();
-		data.insert({"defender_weapon_icon", item});
+		data.emplace("defender_weapon_icon", item);
 
 		weapon_list.add_row(data);
 	}

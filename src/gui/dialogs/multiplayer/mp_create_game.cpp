@@ -93,8 +93,8 @@ void tmp_create_game::pre_show(twindow& window)
 
 	// Load option (might turn it into a button later).
 	string_map item;
-	item.insert(std::make_pair("label", _("Load Game")));
-	item.insert(std::make_pair("tooltip", _("Load Game...")));
+	item.emplace("label", _("Load Game"));
+	item.emplace("tooltip", _("Load Game..."));
 	list.add_row(item);
 
 	// User maps
@@ -105,7 +105,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 		for(const auto& map : maps) {
 			std::map<std::string, t_string> item;
-			item.insert(std::make_pair("label", map));
+			item.emplace("label", map);
 			list->add_row(item);
 		}
 	*/
@@ -116,8 +116,8 @@ void tmp_create_game::pre_show(twindow& window)
 	{
 		if(map["allow_new_game"].to_bool(true)) {
 			string_map item;
-			item.insert(std::make_pair("label", map["name"].str()));
-			item.insert(std::make_pair("tooltip", map["name"].str()));
+			item.emplace("label", map["name"].str());
+			item.emplace("tooltip", map["name"].str());
 			list.add_row(item);
 
 			// This hack is needed since the next item is too wide to fit.

@@ -125,33 +125,33 @@ void tunit_list::pre_show(twindow& window)
 		column["use_markup"] = "true";
 
 		column["label"] = format_if_leader(unit, unit->type_name());
-		row_data.insert({"unit_type", column});
+		row_data.emplace("unit_type", column);
 
 		const std::string& name = !unit->name().empty() ? format_if_leader(unit, unit->name().str()) : utils::unicode_en_dash;
 		column["label"] = name;
-		row_data.insert({"unit_name", column});
+		row_data.emplace("unit_name", column);
 
 		column["label"] = format_movement_string(unit);
-		row_data.insert({"unit_moves", column});
+		row_data.emplace("unit_moves", column);
 
 		std::stringstream hp_str;
 		hp_str << font::span_color(unit->hp_color()) << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>";
 
 		column["label"] = hp_str.str();
-		row_data.insert({"unit_hp", column});
+		row_data.emplace("unit_hp", column);
 
 		column["label"] = format_level_string(unit->level());
-		row_data.insert({"unit_level", column});
+		row_data.emplace("unit_level", column);
 
 		std::stringstream exp_str;
 		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
 		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : utils::unicode_en_dash) << "</span>";
 
 		column["label"] = exp_str.str();
-		row_data.insert({"unit_experience", column});
+		row_data.emplace("unit_experience", column);
 
 		column["label"] = utils::join(unit->trait_names(), ", ");
-		row_data.insert({"unit_traits", column});
+		row_data.emplace("unit_traits", column);
 
 		list.add_row(row_data);
 

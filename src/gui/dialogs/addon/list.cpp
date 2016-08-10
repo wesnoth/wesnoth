@@ -327,30 +327,31 @@ void taddon_list::pre_show(twindow& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
+		item["use_markup"] = "true";
+
 		item["label"] = info.display_icon();
-		data.insert(std::make_pair("icon", item));
+		data.emplace("icon", item);
 
 		item["label"] = info.display_title();
-		data.insert(std::make_pair("name", item));
+		data.emplace("name", item);
 
 		item["label"] = describe_status_simple(tracking_info_[info.id]);
-		item["use_markup"] = "true";
-		data.insert(std::make_pair("installation_status", item));
+		data.emplace("installation_status", item);
 
 		item["label"] = info.version.str();
-		data.insert(std::make_pair("version", item));
+		data.emplace("version", item);
 
 		item["label"] = info.author;
-		data.insert(std::make_pair("author", item));
+		data.emplace("author", item);
 
 		item["label"] = size_display_string(info.size);
-		data.insert(std::make_pair("size", item));
+		data.emplace("size", item);
 
 		item["label"] = std::to_string(info.downloads);
-		data.insert(std::make_pair("downloads", item));
+		data.emplace("downloads", item);
 
 		item["label"] = info.display_type();
-		data.insert(std::make_pair("type", item));
+		data.emplace("type", item);
 
 		list.add_row(data);
 

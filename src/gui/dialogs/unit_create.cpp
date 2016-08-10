@@ -142,10 +142,10 @@ void tunit_create::pre_show(twindow& window)
 		string_map column;
 
 		column["label"] = units_.back()->race()->plural_name();
-		row_data.insert({"race", column});
+		row_data.emplace("race", column);
 
 		column["label"] = units_.back()->type_name();
-		row_data.insert({"unit_type", column});
+		row_data.emplace("unit_type", column);
 
 		list.add_row(row_data);
 

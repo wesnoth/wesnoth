@@ -434,7 +434,7 @@ void add_label_data(std::map<std::string, string_map>& map,
 	string_map item;
 	item["label"] = label;
 	item["use_markup"] = "true";
-	map.insert(std::make_pair(key, item));
+	map.emplace(key, item);
 }
 
 void add_tooltip_data(std::map<std::string, string_map>& map,
@@ -443,7 +443,7 @@ void add_tooltip_data(std::map<std::string, string_map>& map,
 {
 	string_map item;
 	item["tooltip"] = label;
-	map.insert(std::make_pair(key, item));
+	map.emplace(key, item);
 }
 
 void modify_grid_with_data(tgrid* grid,

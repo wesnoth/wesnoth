@@ -111,7 +111,7 @@ void tcampaign_settings::update_lists(twindow& window)
 			string_map column;
 
 			column["label"] = era;
-			row.insert(std::make_pair("era", column));
+			row.emplace("era", column);
 
 			era_list.add_row(row);
 		}
@@ -131,7 +131,7 @@ void tcampaign_settings::update_lists(twindow& window)
 			string_map column;
 
 			column["label"] = mod->name;
-			row.insert(std::make_pair("mod", column));
+			row.emplace("mod", column);
 
 			mod_list.add_row(row);
 

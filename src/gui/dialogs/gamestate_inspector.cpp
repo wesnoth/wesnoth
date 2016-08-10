@@ -175,7 +175,7 @@ public:
 		item["id"] = id;
 		item["label"] = label;
 		item["use_markup"] = colorize ? "true" : "false";
-		data.insert(std::make_pair("name", item));
+		data.emplace("name", item);
 		stuff_list->add_row(data);
 	}
 
@@ -187,7 +187,7 @@ public:
 		item["id"] = id;
 		item["label"] = label;
 		item["use_markup"] = colorize ? "true" : "false";
-		data.insert(std::make_pair("typename", item));
+		data.emplace("typename", item);
 		stuff_types_list->add_row(data);
 	}
 

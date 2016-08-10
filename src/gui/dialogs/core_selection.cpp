@@ -110,10 +110,10 @@ void tcore_selection::pre_show(twindow& window)
 		std::map<std::string, string_map> list_item_item;
 
 		list_item["label"] = core["image"];
-		list_item_item.insert(std::make_pair("image", list_item));
+		list_item_item.emplace("image", list_item);
 
 		list_item["label"] = core["name"];
-		list_item_item.insert(std::make_pair("name", list_item));
+		list_item_item.emplace("name", list_item);
 
 		list.add_row(list_item_item);
 
@@ -126,7 +126,7 @@ void tcore_selection::pre_show(twindow& window)
 
 		detail_item["label"] = core["description"];
 		detail_item["use_markup"] = "true";
-		detail_page.insert(std::make_pair("description", detail_item));
+		detail_page.emplace("description", detail_item);
 
 		multi_page.add_page(detail_page);
 	}

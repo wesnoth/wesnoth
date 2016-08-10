@@ -113,13 +113,13 @@ void tgame_stats::pre_show(twindow& window)
 		column_stats["use_markup"] = "true";
 
 		column_stats["label"] = leader_image;
-		row_data_stats.insert({"team_leader_image", column_stats});
+		row_data_stats.emplace("team_leader_image", column_stats);
 
 		column_stats["label"] = leader_name;
-		row_data_stats.insert({"team_leader_name", column_stats});
+		row_data_stats.emplace("team_leader_name", column_stats);
 
 		column_stats["label"] = data.teamname.empty() ? team.team_name() : data.teamname;
-		row_data_stats.insert({"team_name", column_stats});
+		row_data_stats.emplace("team_name", column_stats);
 
 		// Only fill in the rest of the info if the side is known...
 		if(known || game_config::debug) {
@@ -129,7 +129,7 @@ void tgame_stats::pre_show(twindow& window)
 			}
 
 			column_stats["label"] = gold_str;
-			row_data_stats.insert({"team_gold", column_stats});
+			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(data.villages);
 			if(!viewing_team_.uses_fog() && !viewing_team_.uses_shroud()) {
@@ -137,17 +137,17 @@ void tgame_stats::pre_show(twindow& window)
 			}
 
 			column_stats["label"] = village_count;
-			row_data_stats.insert({"team_villages", column_stats});
+			row_data_stats.emplace("team_villages", column_stats);
 
 			column_stats["label"] = std::to_string(data.units);
-			row_data_stats.insert({"team_units", column_stats});
+			row_data_stats.emplace("team_units", column_stats);
 
 			column_stats["label"] = std::to_string(data.upkeep);
-			row_data_stats.insert({"team_upkeep", column_stats});
+			row_data_stats.emplace("team_upkeep", column_stats);
 
 			const std::string income = utils::signed_value(data.net_income);
 			column_stats["label"] = data.net_income < 0 ? "<span color='#ff0000'>" + income + "</span>" : income;
-			row_data_stats.insert({"team_income", column_stats});
+			row_data_stats.emplace("team_income", column_stats);
 		}
 
 		stats_list.add_row(row_data_stats);
@@ -161,31 +161,31 @@ void tgame_stats::pre_show(twindow& window)
 		column_settings["use_markup"] = "true";
 
 		column_settings["label"] = leader_image;
-		row_data_settings.insert({"team_leader_image", column_settings});
+		row_data_settings.emplace("team_leader_image", column_settings);
 
 		column_settings["label"] = leader_name;
-		row_data_settings.insert({"team_leader_name", column_settings});
+		row_data_settings.emplace("team_leader_name", column_settings);
 
 		column_settings["label"] = std::to_string(team.side());
-		row_data_settings.insert({"team_side", column_settings});
+		row_data_settings.emplace("team_side", column_settings);
 
 		column_settings["label"] = std::to_string(team.start_gold());
-		row_data_settings.insert({"team_start_gold", column_settings});
+		row_data_settings.emplace("team_start_gold", column_settings);
 
 		column_settings["label"] = std::to_string(team.base_income());
-		row_data_settings.insert({"team_base_income", column_settings});
+		row_data_settings.emplace("team_base_income", column_settings);
 
 		column_settings["label"] = std::to_string(team.village_gold());
-		row_data_settings.insert({"team_village_gold", column_settings});
+		row_data_settings.emplace("team_village_gold", column_settings);
 
 		column_settings["label"] = std::to_string(team.village_support());
-		row_data_settings.insert({"team_village_support", column_settings});
+		row_data_settings.emplace("team_village_support", column_settings);
 
 		column_settings["label"] = team.uses_fog() ? _("yes") : _("no");
-		row_data_settings.insert({"team_fog", column_settings});
+		row_data_settings.emplace("team_fog", column_settings);
 
 		column_settings["label"] = team.uses_shroud() ? _("yes") : _("no");;
-		row_data_settings.insert({"team_shroud", column_settings});
+		row_data_settings.emplace("team_shroud", column_settings);
 
 		settings_list.add_row(row_data_settings);
 	}
