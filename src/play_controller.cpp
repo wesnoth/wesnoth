@@ -1265,6 +1265,7 @@ void play_controller::show_objectives() const
 {
 	const team& t = gamestate().board_.teams()[gui_->viewing_team()];
 	static const std::string no_objectives(_("No objectives available"));
-	gui2::show_transient_message(gui_->video(), get_scenario_name(), (t.objectives().empty() ? no_objectives : t.objectives()), "", true);
+	std::string objectives = t.objectives();
+	gui2::show_transient_message(gui_->video(), get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
 	t.reset_objectives_changed();
 }
