@@ -109,22 +109,4 @@ private:
 								surface& surf, int& width, int& height);
 };
 
-// This class is used when the user clicks on the button
-// to show the "Damage Calculations" dialog.
-class attack_prediction_displayer : public gui::dialog_button_action
-{
-public:
-	attack_prediction_displayer(const std::vector<battle_context>& bc_vector,
-								const map_location& attacker_loc, const map_location& defender_loc)
-		: bc_vector_(bc_vector),
-			  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
-	// This method is called when the button is pressed.
-	RESULT button_pressed(int selection);
-
-private:
-	const std::vector<battle_context>& bc_vector_;
-	const map_location& attacker_loc_;
-	const map_location& defender_loc_;
-};
-
 #endif

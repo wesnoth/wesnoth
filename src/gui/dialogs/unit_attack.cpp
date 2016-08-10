@@ -31,6 +31,7 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_config.hpp"
+#include "game_display.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "language.hpp"
@@ -111,9 +112,9 @@ static void set_weapon_info(twindow& window,
 		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
 		const battle_context_unit_stats& defender = weapon.get_defender_stats();
 
-		const attack_type& attacker_weapon = 
+		const attack_type& attacker_weapon =
 			*attacker.weapon;
-		const attack_type& defender_weapon = defender.weapon ? 
+		const attack_type& defender_weapon = defender.weapon ?
 			*defender.weapon : no_weapon;
 
 		const SDL_Color a_cth_color =
@@ -129,9 +130,9 @@ static void set_weapon_info(twindow& window,
 			range = string_table["range_" + range];
 		}
 
-		const std::string& attw_apecials = 
+		const std::string& attw_apecials =
 			!attacker_weapon.weapon_specials().empty() ? " " + attacker_weapon.weapon_specials() : "";
-		const std::string& defw_specials = 
+		const std::string& defw_specials =
 			!defender_weapon.weapon_specials().empty() ? " " + defender_weapon.weapon_specials() : "";
 
 		std::stringstream attacker_stats, defender_stats;
@@ -175,11 +176,13 @@ static void set_weapon_info(twindow& window,
 
 void tunit_attack::damage_calc_callback(twindow& window)
 {
-	const int selection
+	const size_t index
 		= find_widget<tlistbox>(&window, "weapon_list", false).get_selected_row();
 
-	attack_prediction_displayer predition_dialog(weapons_, (*attacker_itor_).get_location(), (*defender_itor_).get_location());
-	predition_dialog.button_pressed(selection);
+	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
+	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
+
+	gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
 }
 
 void tunit_attack::pre_show(twindow& window)

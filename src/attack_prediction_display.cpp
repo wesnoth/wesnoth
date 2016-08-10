@@ -523,19 +523,3 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 						 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 	}
 }
-
-attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(int selection)
-{
-	// Get the selected weapon, if any.
-	const size_t index = size_t(selection);
-
-	if(index < bc_vector_.size()) {
-		battle_prediction_pane battle_pane(bc_vector_[index], attacker_loc_, defender_loc_);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&battle_pane);
-
-		gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
-	}
-
-	return gui::CONTINUE_DIALOG;
-}
