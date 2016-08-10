@@ -47,6 +47,7 @@
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/game_save.hpp"
+#include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
@@ -385,6 +386,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_save>();
 	test<gui2::tgame_save_message>();
 	test<gui2::tgame_save_oos>();
+	//test<gui2::tgame_stats>();
 	test<gui2::tgamestate_inspector>();
 	test<gui2::tlanguage_selection>();
 	// test<gui2::tloadscreen>(); TODO: enable
@@ -476,6 +478,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	list.erase(std::remove(list.begin(), list.end(), "unit_recruit"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "unit_recall"), list.end());
 	list.erase(std::remove(list.begin(), list.end(), "unit_list"), list.end());
+	list.erase(std::remove(list.begin(), list.end(), "game_stats"), list.end());
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
