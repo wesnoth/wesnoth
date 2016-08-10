@@ -49,7 +49,6 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
-	std::string get_title_suffix(int side_num);
 	void objectives(int side_num);
 	void show_statistics(int side_num);
 	void unit_list();

@@ -118,25 +118,6 @@ gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;
 }
 
-std::string menu_handler::get_title_suffix(int side_num)
-{
-	int controlled_recruiters = 0;
-	for(size_t i = 0; i < teams().size(); ++i) {
-		if(teams()[i].is_local_human() && !teams()[i].recruits().empty()
-		&& units().find_leader(i + 1) != units().end()) {
-		++controlled_recruiters;
-		}
-	}
-	std::stringstream msg;
-	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = units().find_leader(side_num);
-		if (leader != units().end() && !leader->name().empty()) {
-			msg << " (" << leader->name(); msg << ")";
-		}
-	}
-	return msg.str();
-}
-
 void menu_handler::objectives(int side_num)
 {
 	if (!gamestate().lua_kernel_) {
