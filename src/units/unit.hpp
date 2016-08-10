@@ -98,11 +98,7 @@ public:
 	unit(const unit& u);
 
 	/** Initializes a unit from a config */
-	explicit unit(
-			  const config& cfg
-			, bool use_traits = false
-			, const vconfig* vcfg = nullptr
-			, n_unit::id_manager* id_manager = nullptr);
+	explicit unit(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
 	/**
 	  * Initializes a unit from a unit type

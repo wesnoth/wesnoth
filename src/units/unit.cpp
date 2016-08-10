@@ -329,7 +329,7 @@ struct ptr_vector_pushback
 	boost::ptr_vector<config>* vec_;
 };
 
-unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_manager* id_manager)
+unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	: ref_count_(0)
 	, loc_(cfg["x"] - 1, cfg["y"] - 1)
 	, advances_to_()
@@ -409,7 +409,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 
 	validate_side(side_);
 	underlying_id_ = n_unit::unit_id(cfg["underlying_id"].to_size_t());
-	set_underlying_id(id_manager ? *id_manager : resources::gameboard->unit_id_manager());
+	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
 	if(overlays_.size() == 1 && overlays_.front() == "") {
@@ -624,7 +624,6 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	, race_(&unit_race::null_race)
 	, id_()
 	, name_()
-	, underlying_id_(real_unit? n_unit::unit_id(0) : resources::gameboard->unit_id_manager().next_fake_id())
 	, undead_variation_()
 	, variation_(type_->default_variation())
 	, hit_points_(0)
@@ -695,7 +694,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	if(real_unit) {
 		generate_name();
 	}
-	set_underlying_id(resources::gameboard->unit_id_manager());
+	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
 	// Set these after traits and modifications have set the maximums.
 	movement_ = max_movement_;
@@ -2361,14 +2360,15 @@ void unit::set_underlying_id(n_unit::id_manager& id_manager)
 
 unit& unit::clone(bool is_temporary)
 {
+	n_unit::id_manager& ids = resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance();
 	if(is_temporary) {
-		underlying_id_ = resources::gameboard->unit_id_manager().next_fake_id();
+		underlying_id_ = ids.next_fake_id();
 	} else {
 		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
-			underlying_id_ = resources::gameboard->unit_id_manager().next_id();
+			underlying_id_ = ids.next_id();
 		}
 		else {
-			underlying_id_ = resources::gameboard->unit_id_manager().next_fake_id();
+			underlying_id_ = ids.next_fake_id();
 		}
 		std::string::size_type pos = id_.find_last_of('-');
 		if(pos != std::string::npos && pos+1 < id_.size()
@@ -2376,7 +2376,7 @@ unit& unit::clone(bool is_temporary)
 			// this appears to be a duplicate of a generic unit, so give it a new id
 			WRN_UT << "assigning new id to clone of generic unit " << id_ << std::endl;
 			id_.clear();
-			set_underlying_id(resources::gameboard->unit_id_manager());
+			set_underlying_id(ids);
 		}
 	}
 	return *this;

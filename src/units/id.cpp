@@ -22,10 +22,7 @@ static lg::log_domain log_unit("unit");
 
 namespace n_unit
 {
-	id_manager id_manager::manager_;
-
-	id_manager::id_manager() : next_id_(0), fake_id_(0)
-	{}
+	id_manager id_manager::manager_(0);
 
 	unit_id id_manager::next_id()
 	{
