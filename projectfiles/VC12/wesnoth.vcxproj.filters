@@ -1389,7 +1389,6 @@
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
-    <ClCompile Include="..\..\src\dialogs.cpp" />
     <ClCompile Include="..\..\src\display.cpp" />
     <ClCompile Include="..\..\src\display_chat_manager.cpp" />
     <ClCompile Include="..\..\src\display_context.cpp" />
@@ -1499,6 +1498,15 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\unit_list.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\advancement.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_advance.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2750,7 +2758,6 @@
     <ClInclude Include="..\..\src\controller_base.hpp" />
     <ClInclude Include="..\..\src\countdown_clock.hpp" />
     <ClInclude Include="..\..\src\cursor.hpp" />
-    <ClInclude Include="..\..\src\dialogs.hpp" />
     <ClInclude Include="..\..\src\display.hpp" />
     <ClInclude Include="..\..\src\display_chat_manager.hpp" />
     <ClInclude Include="..\..\src\display_context.hpp" />
@@ -2875,6 +2882,15 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\unit_list.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\advancement.hpp">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_advance.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>

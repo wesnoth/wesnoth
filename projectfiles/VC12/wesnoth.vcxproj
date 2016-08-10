@@ -374,6 +374,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\about.cpp" />
+    <ClCompile Include="..\..\src\actions\advancement.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Actions\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Actions\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Actions\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Actions\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Actions\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Actions\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\actions\attack.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Actions\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Actions\</ObjectFileName>
@@ -877,7 +885,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Desktop\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs.cpp" />
     <ClCompile Include="..\..\src\display.cpp" />
     <ClCompile Include="..\..\src\display_chat_manager.cpp" />
     <ClCompile Include="..\..\src\display_context.cpp" />
@@ -1869,6 +1876,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -2123,6 +2138,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_advance.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\unit_attack.cpp">
@@ -3828,6 +3851,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\about.hpp" />
+    <ClInclude Include="..\..\src\actions\advancement.hpp" />
     <ClInclude Include="..\..\src\actions\attack.hpp" />
     <ClInclude Include="..\..\src\actions\create.hpp" />
     <ClInclude Include="..\..\src\actions\heal.hpp" />
@@ -3906,7 +3930,6 @@
     <ClInclude Include="..\..\src\desktop\open.hpp" />
     <ClInclude Include="..\..\src\desktop\version.hpp" />
     <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp" />
-    <ClInclude Include="..\..\src\dialogs.hpp" />
     <ClInclude Include="..\..\src\display.hpp" />
     <ClInclude Include="..\..\src\display_chat_manager.hpp" />
     <ClInclude Include="..\..\src\display_context.hpp" />
@@ -4077,6 +4100,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_delete.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_load.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_save.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\helper.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp" />
@@ -4110,6 +4134,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\tip.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\title_screen.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\transient_message.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\unit_advance.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_attack.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_create.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\unit_list.hpp" />
