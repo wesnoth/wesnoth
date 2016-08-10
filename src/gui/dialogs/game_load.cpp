@@ -137,10 +137,10 @@ void tgame_load::pre_show(twindow& window)
 		std::string name = game.name();
 		utils::ellipsis_truncate(name, 50);
 		item["label"] = name;
-		data.insert(std::make_pair("filename", item));
+		data.insert({"filename", item});
 
 		item["label"] = game.format_time_summary();
-		data.insert(std::make_pair("date", item));
+		data.insert({"date", item});
 
 		list.add_row(data);
 	}

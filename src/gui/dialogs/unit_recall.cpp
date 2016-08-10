@@ -186,29 +186,30 @@ void tunit_recall::pre_show(twindow& window)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
+		column["use_markup"] = "true";
+
 		column["label"] = unit->absolute_image() + mods;
-		row_data.insert(std::make_pair("unit_image", column));
+		row_data.insert({"unit_image", column});
 
 		column["label"] = unit->type_name();
-		row_data.insert(std::make_pair("unit_type", column));
+		row_data.insert({"unit_type", column});
 
 		column["label"] = format_cost_string(unit->recall_cost(), team_.recall_cost());
-		column["use_markup"] = "true";
-		row_data.insert(std::make_pair("unit_recall_cost", column));
+		row_data.insert({"unit_recall_cost", column});
 
 		const std::string& name = !unit->name().empty() ? unit->name().str() : utils::unicode_en_dash;
 		column["label"] = name;
-		row_data.insert(std::make_pair("unit_name", column));
+		row_data.insert({"unit_name", column});
 
 		column["label"] = format_level_string(unit->level());
-		row_data.insert(std::make_pair("unit_level", column));
+		row_data.insert({"unit_level", column});
 
 		std::stringstream exp_str;
 		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
 		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : utils::unicode_en_dash) << "</span>";
 
 		column["label"] = exp_str.str();
-		row_data.insert(std::make_pair("unit_experience", column));
+		row_data.insert({"unit_experience", column});
 
 		// Since the table widgets use heavy formatting, we save a bare copy
 		// of certain options to filter on.
@@ -221,7 +222,7 @@ void tunit_recall::pre_show(twindow& window)
 		}
 
 		column["label"] = !traits.empty() ? traits : utils::unicode_en_dash;
-		row_data.insert(std::make_pair("unit_traits", column));
+		row_data.insert({"unit_traits", column});
 
 		list.add_row(row_data);
 		filter_options_.push_back(filter_text);

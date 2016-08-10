@@ -96,15 +96,15 @@ void tunit_recruit::pre_show(twindow& window)
 		const std::string cost_string = std::to_string(recruit->cost());
 
 		column["label"] = image_string;
-		row_data.insert(std::make_pair("unit_image", column));
+		row_data.insert({"unit_image", column});
 
 		column["label"] = can_afford_unit(recruit->type_name(), can_afford);
 		column["use_markup"] = "true";
-		row_data.insert(std::make_pair("unit_type", column));
+		row_data.insert({"unit_type", column});
 
 		column["label"] = can_afford_unit(cost_string, can_afford);
 		column["use_markup"] = "true";
-		row_data.insert(std::make_pair("unit_cost", column));
+		row_data.insert({"unit_cost", column});
 
 		list.add_row(row_data);
 	}

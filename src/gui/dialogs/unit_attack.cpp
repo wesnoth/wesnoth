@@ -149,23 +149,22 @@ static void set_weapon_info(twindow& window,
 		std::map<std::string, string_map> data;
 		string_map item;
 
+		item["use_markup"] = "true";
+
 		item["label"] = attacker_weapon.icon();
-		data.insert(std::make_pair("attacker_weapon_icon", item));
+		data.insert({"attacker_weapon_icon", item});
 
 		item["label"] = attacker_stats.str();
-		item["use_markup"] = "true";
-		data.insert(std::make_pair("attacker_weapon", item));
+		data.insert({"attacker_weapon", item});
 
 		item["label"] = "<span color='#a69275'>" + utils::unicode_em_dash + " " + range + " " + utils::unicode_em_dash + "</span>";
-		item["use_markup"] = "true";
-		data.insert(std::make_pair("range", item));
+		data.insert({"range", item});
 
 		item["label"] = defender_stats.str();
-		item["use_markup"] = "true";
-		data.insert(std::make_pair("defender_weapon", item));
+		data.insert({"defender_weapon", item});
 
 		item["label"] = defender_weapon.icon();
-		data.insert(std::make_pair("defender_weapon_icon", item));
+		data.insert({"defender_weapon_icon", item});
 
 		weapon_list.add_row(data);
 	}
