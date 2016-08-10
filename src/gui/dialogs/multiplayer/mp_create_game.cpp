@@ -92,10 +92,14 @@ void tmp_create_game::pre_show(twindow& window)
 #endif
 
 	// Load option (might turn it into a button later).
+	std::map<std::string, string_map> data;
 	string_map item;
-	item.emplace("label", _("Load Game"));
-	item.emplace("tooltip", _("Load Game..."));
-	list.add_row(item);
+	
+	item["label"] = _("Load Game");
+	item["tooltip"] = _("Load Game...");
+	data.emplace("game_name", item);
+
+	list.add_row(data);
 
 	// User maps
 	/*	FIXME implement user maps
@@ -115,10 +119,14 @@ void tmp_create_game::pre_show(twindow& window)
 	for(const auto & map : cfg_.child_range("multiplayer"))
 	{
 		if(map["allow_new_game"].to_bool(true)) {
+			std::map<std::string, string_map> data;
 			string_map item;
-			item.emplace("label", map["name"].str());
-			item.emplace("tooltip", map["name"].str());
-			list.add_row(item);
+
+			item["label"] = map["name"].str();
+			item["tooltip"] = map["name"].str();
+			data.emplace("game_name", item);
+
+			list.add_row(data);
 
 			// This hack is needed since the next item is too wide to fit.
 			// and the scrollbar can't truncate text yet.
