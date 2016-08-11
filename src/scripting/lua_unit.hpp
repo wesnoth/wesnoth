@@ -18,9 +18,12 @@
 #include <cstddef>
 #include <string>
 #include "lua_types.hpp" // the luatype typedef
+#include "scripting/lua_common.hpp"
 #include "units/ptr.hpp"
 
 struct lua_State;
+class lua_unit;
+struct map_location;
 
 /**
  * Converts a Lua value to a unit pointer.
@@ -31,16 +34,24 @@ unit* luaW_tounit(lua_State *L, int index, bool only_on_map = false);
  * Converts a Lua value to a unit pointer.
  */
 unit& luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
-class lua_unit;
-lua_unit* luaW_pushlocalunit(lua_State *L, unit& u);
+
 /**
- * Similar to luaW_checkunit/luaW_tounit but returns a unit_ptr, use this instead of
- * luaW_checkunit/luaW_tounit when uasing an api that needs unit_ptr.
+ * Pushes a private unit on the stack.
+ */
+lua_unit* luaW_pushlocalunit(lua_State *L, unit& u);
+
+/**
+ * Similar to luaW_tounit but returns a unit_ptr; use this instead of
+ * luaW_tounit when using an api that needs unit_ptr.
  */
 unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map);
+
+/**
+ * Similar to luaW_checkunit but returns a unit_ptr; use this instead of
+ * luaW_checkunit when using an api that needs unit_ptr.
+ */
 unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map);
 
-struct map_location;
 
 /**
  * Storage for a unit, either owned by the Lua code (#ptr != 0), a
@@ -55,6 +66,10 @@ class lua_unit
 	unit* c_ptr;
 	lua_unit(lua_unit const &);
 
+	template<typename... Args>
+	friend lua_unit* luaW_pushunit(lua_State *L, Args... args);
+	friend lua_unit* luaW_pushlocalunit(lua_State *L, unit& u);
+	static void setmetatable(lua_State *L);
 public:
 	lua_unit(size_t u): uid(u), ptr(), side(0), c_ptr() {}
 	lua_unit(unit_ptr u): uid(0), ptr(u), side(0), c_ptr() {}
@@ -70,5 +85,12 @@ public:
 	// Clobbers loc
 	bool put_map(const map_location &loc);
 };
+
+template<typename... Args>
+inline lua_unit* luaW_pushunit(lua_State *L, Args... args) {
+	lua_unit* lu = new(L) lua_unit(args...);
+	lua_unit::setmetatable(L);
+	return lu;
+}
 
 #endif

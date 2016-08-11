@@ -130,11 +130,16 @@ unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 	return *u;
 }
 
-lua_unit* luaW_pushlocalunit(lua_State *L, unit& u)
+void lua_unit::setmetatable(lua_State *L)
 {
-	lua_unit* res = new(L) lua_unit(u);
 	lua_pushlightuserdata(L, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
+}
+
+lua_unit* luaW_pushlocalunit(lua_State *L, unit& u)
+{
+	lua_unit* res = new(L) lua_unit(u);
+	lua_unit::setmetatable(L);
 	return res;
 }

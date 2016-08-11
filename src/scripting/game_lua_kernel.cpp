@@ -867,10 +867,7 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 		std::string id = luaL_checkstring(L, 1);
 		for(const unit& u : units()) {
 			if(u.id() == id) {
-				new(L) lua_unit(u.underlying_id());
-				lua_pushlightuserdata(L, getunitKey);
-				lua_rawget(L, LUA_REGISTRYINDEX);
-				lua_setmetatable(L, -2);
+				luaW_pushunit(L, u.underlying_id());
 				return 1;
 			}
 		}
@@ -883,11 +880,7 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 
 	if (!ui.valid()) return 0;
 
-	new(L) lua_unit(ui->underlying_id());
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, ui->underlying_id());
 	return 1;
 }
 
@@ -908,11 +901,7 @@ int game_lua_kernel::intf_get_displayed_unit(lua_State *L)
 		game_display_->show_everything());
 	if (!ui.valid()) return 0;
 
-	new(L) lua_unit(ui->underlying_id());
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, ui->underlying_id());
 	return 1;
 }
 
@@ -2735,11 +2724,7 @@ static int intf_create_unit(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
 	unit_ptr u = unit_ptr(new unit(cfg, true));
-	new(L) lua_unit(u);
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, u);
 	return 1;
 }
 
@@ -2751,11 +2736,7 @@ static int intf_create_unit(lua_State *L)
 static int intf_copy_unit(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
-	new(L) lua_unit(unit_ptr(new unit(u)));
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, unit_ptr(new unit(u)));
 	return 1;
 }
 
@@ -4763,8 +4744,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	// Create the getunit metatable.
 	cmd_log_ << "Adding getunit metatable...\n";
 
-	lua_pushlightuserdata(L
-			, getunitKey);
+	lua_pushlightuserdata(L, getunitKey);
 	lua_createtable(L, 0, 5);
 	lua_pushcfunction(L, impl_unit_collect);
 	lua_setfield(L, -2, "__gc");
@@ -5315,10 +5295,7 @@ bool game_lua_kernel::run_filter(char const *name, unit const &u)
 	unit_map::const_unit_iterator ui = units().find(u.get_location());
 	if (!ui.valid()) return false;
 	// Pass the unit as argument.
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
-	lua_pushlightuserdata(L, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, ui->underlying_id());
 
 	return run_filter(name, 1);
 }

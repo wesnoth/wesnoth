@@ -141,13 +141,10 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			const unit& u = u_ref->get_unit();
 			unit_map::iterator un_it = resources::units->find(u.get_location());
 			if(&*un_it == &u) {
-				new(L) lua_unit(u.underlying_id());
+				luaW_pushunit(L, u.underlying_id());
 			} else {
-				new(L) lua_unit(u.side(), u.underlying_id());
+				luaW_pushunit(L, u.side(), u.underlying_id());
 			}
-			lua_pushlightuserdata(L, getunitKey);
-			lua_rawget(L, LUA_REGISTRYINDEX);
-			lua_setmetatable(L, -2);
 		} else if(location_callable* loc_ref = val.try_convert<location_callable>()) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {

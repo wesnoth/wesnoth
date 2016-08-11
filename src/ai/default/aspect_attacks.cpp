@@ -479,10 +479,7 @@ config aspect_attacks_lua::to_config() const
 static bool call_lua_filter_fcn(lua_State* L, const unit& u, int idx)
 {
 	lua_rawgeti(L, LUA_REGISTRYINDEX, idx);
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
-	lua_pushlightuserdata(L, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, u.underlying_id());
 	luaW_pcall(L, 1, 1);
 	bool result = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
