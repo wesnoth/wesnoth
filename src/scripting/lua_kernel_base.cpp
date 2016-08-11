@@ -253,6 +253,8 @@ int dispatch(lua_State *L) {
 	return ((lua_kernel_base::get_lua_kernel<lua_kernel_base>(L)).*method)(L);
 }
 
+extern void push_error_handler(lua_State *L);
+
 // Ctor, initialization
 lua_kernel_base::lua_kernel_base(CVideo * video)
  : mState(luaL_newstate())
@@ -318,14 +320,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	// Store the error handler.
 	cmd_log_ << "Adding error handler...\n";
-
-	lua_pushlightuserdata(L
-			, executeKey);
-	lua_getglobal(L, "debug");
-	lua_getfield(L, -1, "traceback");
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-	lua_pop(L, 1);
+	push_error_handler(L);
 
 	// Create the gettext metatable.
 	cmd_log_ << lua_common::register_gettext_metatable(L);
@@ -493,23 +488,11 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 	return protected_call(mState, nArgs, nRets, e_h);
 }
 
+extern int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
 bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_handler e_h)
 {
-	// Load the error handler before the function and its arguments.
-	lua_pushlightuserdata(L
-			, executeKey);
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_insert(L, -2 - nArgs);
-
-	int error_handler_index = lua_gettop(L) - nArgs - 1;
-
-	// Call the function.
-	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
-	tlua_jailbreak_exception::rethrow();
-
-	// Remove the error handler.
-	lua_remove(L, error_handler_index);
+	int errcode = luaW_pcall_internal(L, nArgs, nRets);
 
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(L, -1);

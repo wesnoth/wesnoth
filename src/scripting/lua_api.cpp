@@ -53,16 +53,25 @@ void chat_message(std::string const &caption, std::string const &msg)
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4706)
-#endif
-bool luaW_pcall(lua_State *L
-		, int nArgs, int nRets, bool allow_wml_error)
+// To silence "no prototype" warnings
+void push_error_handler(lua_State *L);
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
+void push_error_handler(lua_State *L)
+{
+	lua_pushlightuserdata(L, executeKey);
+	lua_getglobal(L, "debug");
+	lua_getfield(L, -1, "traceback");
+	lua_remove(L, -2);
+	lua_rawset(L, LUA_REGISTRYINDEX);
+	lua_pop(L, 1);
+}
+
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 {
 	// Load the error handler before the function and its arguments.
 	lua_pushlightuserdata(L
-			, executeKey);
+						  , executeKey);
 
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_insert(L, -2 - nArgs);
@@ -70,8 +79,23 @@ bool luaW_pcall(lua_State *L
 	int error_handler_index = lua_gettop(L) - nArgs - 1;
 
 	// Call the function.
-	int res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+
+	// Remove the error handler.
+	lua_remove(L, error_handler_index);
+
 	tlua_jailbreak_exception::rethrow();
+
+	return errcode;
+}
+
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
+{
+	int res = luaW_pcall_internal(L, nArgs, nRets);
 
 	if (res)
 	{
@@ -104,9 +128,6 @@ bool luaW_pcall(lua_State *L
 		lua_pop(L, 2);
 		return false;
 	}
-
-	// Remove the error handler.
-	lua_remove(L, error_handler_index);
 
 	return true;
 }
