@@ -26,12 +26,15 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "scripting/lua_api.hpp"
+#include "scripting/lua_unit.hpp"
 #include "scripting/lua_types.hpp"      // for gettextKey, tstringKey, etc
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
 #include "log.hpp"
 #include "gettext.hpp"
+#include "resources.hpp"
+#include "lua_jailbreak_exception.hpp"
+#include "game_display.hpp"
 
 #include <cstring>
 #include <iterator>                     // for distance, advance
@@ -884,4 +887,89 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'\n";
 		return false;
 	}
+}
+
+void chat_message(std::string const &caption, std::string const &msg)
+{
+	if (!resources::screen) return;
+	resources::screen->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg,
+														   events::chat_handler::MESSAGE_PUBLIC, false);
+}
+
+// To silence "no prototype" warnings
+void push_error_handler(lua_State *L);
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
+void push_error_handler(lua_State *L)
+{
+	lua_pushlightuserdata(L, executeKey);
+	lua_getglobal(L, "debug");
+	lua_getfield(L, -1, "traceback");
+	lua_remove(L, -2);
+	lua_rawset(L, LUA_REGISTRYINDEX);
+	lua_pop(L, 1);
+}
+
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
+{
+	// Load the error handler before the function and its arguments.
+	lua_pushlightuserdata(L, executeKey);
+
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_insert(L, -2 - nArgs);
+
+	int error_handler_index = lua_gettop(L) - nArgs - 1;
+
+	// Call the function.
+	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+
+	// Remove the error handler.
+	lua_remove(L, error_handler_index);
+
+	tlua_jailbreak_exception::rethrow();
+
+	return errcode;
+}
+
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
+{
+	int res = luaW_pcall_internal(L, nArgs, nRets);
+
+	if (res)
+	{
+		/*
+		 * When an exception is thrown which doesn't derive from
+		 * std::exception m will be nullptr pointer.
+		 */
+		char const *m = lua_tostring(L, -1);
+		if(m) {
+			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
+				m += 5;
+				char const *e = strstr(m, "stack traceback");
+				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
+			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
+				m += 5;
+				char const *e = nullptr, *em = m;
+				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
+					e = em;
+				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
+			} else {
+				ERR_LUA << m << '\n';
+				chat_message("Lua error", m);
+			}
+		} else {
+			chat_message("Lua caught unknown exception", "");
+		}
+		lua_pop(L, 2);
+		return false;
+	}
+
+	return true;
 }

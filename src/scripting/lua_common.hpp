@@ -29,6 +29,7 @@ class vconfig;
 #include "variable_info.hpp"
 #include "map/location.hpp"
 #include <vector>
+#include <string>
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);
@@ -158,6 +159,18 @@ bool luaW_toboolean(lua_State *L, int n);
 bool luaW_pushvariable(lua_State *L, variable_access_const& v);
 
 bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
+
+/**
+ * Displays a message in the chat window.
+ */
+void chat_message(std::string const &caption, std::string const &msg);
+
+/**
+ * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @param nRets LUA_MULTRET for unbounded return values.
+ * @return true if the call was successful and @a nRets return values are available.
+ */
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);
 
 
 #define return_tstring_attrib(name, accessor) \

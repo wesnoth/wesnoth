@@ -28,18 +28,6 @@ struct lua_State;
 unit* luaW_tounit(lua_State *L, int index, bool only_on_map = false);
 
 /**
- * Displays a message in the chat window.
- */
-void chat_message(std::string const &caption, std::string const &msg);
-
-/**
- * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
- * @param nRets LUA_MULTRET for unbounded return values.
- * @return true if the call was successful and @a nRets return values are available.
- */
-bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);
-
-/**
  * Converts a Lua value to a unit pointer.
  */
 unit& luaW_checkunit(lua_State *L, int index, bool only_on_map = false);

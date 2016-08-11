@@ -24,7 +24,7 @@
 #include "ai/lua/core.hpp"
 #include "ai/composite/aspect.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "scripting/lua_api.hpp"
+#include "scripting/lua_unit.hpp"
 #include "scripting/push_check.hpp"
 #include "lua_object.hpp" // (Nephro)
 

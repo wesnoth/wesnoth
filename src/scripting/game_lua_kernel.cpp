@@ -72,7 +72,7 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
-#include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
+#include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector

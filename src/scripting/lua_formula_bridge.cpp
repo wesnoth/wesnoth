@@ -16,7 +16,7 @@
 #include "boost/variant/static_visitor.hpp"
 
 #include "scripting/game_lua_kernel.hpp"
-#include "scripting/lua_api.hpp"
+#include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
