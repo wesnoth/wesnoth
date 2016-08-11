@@ -774,24 +774,30 @@ level::TYPE create_engine::current_level_type() const
 
 void create_engine::set_current_level(const size_t index)
 {
-	switch (current_level_type().v) {
-	case level::TYPE::CAMPAIGN:
-		current_level_index_ = campaigns_filtered_[index];
-		break;
-	case level::TYPE::SP_CAMPAIGN:
-		current_level_index_ = sp_campaigns_filtered_[index];
-		break;
-	case level::TYPE::SCENARIO:
-		current_level_index_ = scenarios_filtered_[index];
-		break;
-	case level::TYPE::RANDOM_MAP:
-		current_level_index_ = random_maps_filtered_[index];
-		break;
-	case level::TYPE::USER_MAP:
-		current_level_index_ = user_maps_filtered_[index];
-		break;
-	case level::TYPE::USER_SCENARIO:
-		current_level_index_ = user_scenarios_filtered_[index];
+	try {
+		switch (current_level_type().v) {
+		case level::TYPE::CAMPAIGN:
+			current_level_index_ = campaigns_filtered_.at(index);
+			break;
+		case level::TYPE::SP_CAMPAIGN:
+			current_level_index_ = sp_campaigns_filtered_.at(index);
+			break;
+		case level::TYPE::SCENARIO:
+			current_level_index_ = scenarios_filtered_.at(index);
+			break;
+		case level::TYPE::RANDOM_MAP:
+			current_level_index_ = random_maps_filtered_.at(index);
+			break;
+		case level::TYPE::USER_MAP:
+			current_level_index_ = user_maps_filtered_.at(index);
+			break;
+		case level::TYPE::USER_SCENARIO:
+			current_level_index_ = user_scenarios_filtered_.at(index);
+		}
+	}
+	catch (std::out_of_range&)
+	{
+		current_level_index_ = 0u;
 	}
 
 	if (current_level_type_ == level::TYPE::RANDOM_MAP) {
