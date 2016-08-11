@@ -2486,7 +2486,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 
 	if((luaW_isunit(L, unit_arg))) {
 		lua_unit& u = *luaW_checkunit_ref(L, unit_arg);
-		if(u.on_map() && (unit_arg == 1 || u->get_location() == loc)) {
+		if(u.on_map() && u->get_location() == loc) {
 			return 0;
 		}
 		if (!loc.valid()) {
