@@ -26,6 +26,11 @@ class lua_unit;
 struct map_location;
 
 /**
+ * Test if a Lua value is a unit
+ */
+bool luaW_isunit(lua_State *, int index);
+
+/**
  * Converts a Lua value to a unit pointer.
  */
 unit* luaW_tounit(lua_State *L, int index, bool only_on_map = false);
@@ -52,6 +57,21 @@ unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map);
  */
 unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map);
 
+/**
+ * Similar to luaW_tounit but returns a lua_unit; use this if you need
+ * to handle map and recall units differently, for example.
+ *
+ * Note that this only returns null if the element on the stack was not a unit,
+ * so it may be an invalid unit.
+ */
+lua_unit* luaW_tounit_ref(lua_State *L, int index);
+
+/**
+ * Similar to luaW_checkunit but returns a lua_unit; use this if you need
+ * to handle map and recall units differently, for example.
+ */
+lua_unit* luaW_checkunit_ref(lua_State *L, int index);
+
 
 /**
  * Storage for a unit, either owned by the Lua code (#ptr != 0), a
@@ -64,7 +84,8 @@ class lua_unit
 	unit_ptr ptr;
 	int side;
 	unit* c_ptr;
-	lua_unit(lua_unit const &);
+	lua_unit(lua_unit const &) = delete;
+	lua_unit& operator=(const lua_unit&) = delete;
 
 	template<typename... Args>
 	friend lua_unit* luaW_pushunit(lua_State *L, Args... args);
@@ -76,10 +97,15 @@ public:
 	lua_unit(int s, size_t u): uid(u), ptr(), side(s), c_ptr() {}
 	lua_unit(unit& u): uid(0), ptr(), side(0), c_ptr(&u) {}
 	~lua_unit();
+
 	bool on_map() const { return !ptr && side == 0; }
 	int on_recall_list() const { return side; }
+
 	unit* get();
 	unit_ptr get_shared();
+
+	unit* operator->() {return get();}
+	unit& operator*() {return *get();}
 
 	void clear_ref() { uid = 0; ptr = unit_ptr(); side = 0; c_ptr = nullptr; }
 	// Clobbers loc

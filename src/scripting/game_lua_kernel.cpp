@@ -945,12 +945,7 @@ int game_lua_kernel::intf_get_units(lua_State *L)
  */
 int game_lua_kernel::intf_match_unit(lua_State *L)
 {
-	if (!luaW_hasmetatable(L, 1, getunitKey))
-		return luaL_typerror(L, 1, "unit");
-
-	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	unit* u = lu->get();
-	if (!u) return luaL_argerror(L, 1, "unit not found");
+	lua_unit& u = *luaW_checkunit_ref(L, 1);
 
 	vconfig filter = luaW_checkvconfig(L, 2, true);
 
@@ -961,8 +956,8 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 
 	filter_context & fc = game_state_;
 
-	if (luaW_hasmetatable(L, 3, getunitKey)) {
-		if (int side = lu->on_recall_list()) {
+	if(unit* u_adj = luaW_tounit(L, 3)) {
+		if(int side = u.on_recall_list()) {
 			WRN_LUA << "wesnoth.match_unit called with a secondary unit (3rd argument), ";
 			WRN_LUA << "but unit to match was on recall list. ";
 			WRN_LUA << "Thus the 3rd argument is ignored.\n";
@@ -971,13 +966,11 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 			lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 			return 1;
 		}
-		lua_unit *lu_adj = static_cast<lua_unit *>(lua_touserdata(L, 1));
-		unit* u_adj = lu_adj->get();
 		if (!u_adj) {
 			return luaL_argerror(L, 3, "unit not found");
 		}
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, *u_adj));
-	} else if (int side = lu->on_recall_list()) {
+	} else if(int side = u.on_recall_list()) {
 		map_location loc;
 		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
 		team &t = (teams())[side - 1];
@@ -2451,6 +2444,15 @@ int game_lua_kernel::intf_print(lua_State *L) {
 	return 0;
 }
 
+void game_lua_kernel::put_unit_helper(const map_location& loc)
+{
+	if(game_display_) {
+		game_display_->invalidate(loc);
+	}
+
+	units().erase(loc);
+}
+
 /**
  * Places a unit on the map.
  * - Arg 1: (optional) location.
@@ -2467,8 +2469,6 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	}
 	int unit_arg = 1;
 
-	lua_unit *lu = nullptr;
-	unit_ptr u = unit_ptr();
 	map_location loc;
 	if (lua_isnumber(L, 1)) {
 		// Since this form is deprecated, I didn't bother updating it to luaW_tolocation.
@@ -2484,12 +2484,9 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 	}
 
-	if (luaW_hasmetatable(L, unit_arg, getunitKey))
-	{
-		lu = static_cast<lua_unit *>(lua_touserdata(L, unit_arg));
-		u = lu->get_shared();
-		if (!u) return luaL_argerror(L, unit_arg, "unit not found");
-		if (lu->on_map() && (unit_arg == 1 || u->get_location() == loc)) {
+	if((luaW_isunit(L, unit_arg))) {
+		lua_unit& u = *luaW_checkunit_ref(L, unit_arg);
+		if(u.on_map() && (unit_arg == 1 || u->get_location() == loc)) {
 			return 0;
 		}
 		if (!loc.valid()) {
@@ -2499,9 +2496,10 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		} else if (unit_arg != 1) {
 			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
-	}
-	else if (!lua_isnoneornil(L, unit_arg))
-	{
+		put_unit_helper(loc);
+		u.put_map(loc);
+		u.get_shared()->anim_comp().set_standing();
+	} else if(!lua_isnoneornil(L, unit_arg)) {
 		config cfg = luaW_checkconfig(L, unit_arg);
 		if (unit_arg == 1 && !map().on_board(loc)) {
 			loc.x = cfg["x"] - 1;
@@ -2511,29 +2509,16 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		} else if (unit_arg != 1) {
 			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
-		u = unit_ptr (new unit(cfg, true));
-	}
-
-	if (game_display_) {
-		game_display_->invalidate(loc);
-	}
-
-	if (!u) {
-		if (unit_arg == 3) {
-			WRN_LUA << "wesnoth.put_unit(x, y) is deprecated. Use wesnoth.erase_unit(x, y) instead\n";
-			units().erase(loc);
-		}
-		return 0;
-	}
-	units().erase(loc);
-
-	if (lu) {
-		lu->put_map(loc);
-		lu->get_shared()->anim_comp().set_standing();
-	} else {
+		unit_ptr u(new unit(cfg, true));
+		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+	} else {
+		WRN_LUA << "wesnoth.put_unit(x, y) is deprecated. Use wesnoth.erase_unit(x, y) instead\n";
+		put_unit_helper(loc);
+		return 0; // Don't fire event when unit is only erase
 	}
+
 	if(unit_arg != 1 || luaW_toboolean(L, 3)) {
 		play_controller_.pump().fire("unit_placed", loc);
 	}
@@ -2551,18 +2536,14 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 	}
 	map_location loc;
 
-	if (luaW_hasmetatable(L, 1, getunitKey)) {
-		lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-		unit_ptr u = lu->get_shared();
-		if (!lu->get()) {
-			return luaL_argerror(L, 1, "unit not found");
-		}
-		if (lu->on_map()) {
+	if(luaW_isunit(L, 1)) {
+		lua_unit& u = *luaW_checkunit_ref(L, 1);
+		if (u.on_map()) {
 			loc = u->get_location();
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
-		} else if (int side = lu->on_recall_list()) {
+		} else if (int side = u.on_recall_list()) {
 			team &t = teams()[side - 1];
 			// Should it use underlying ID instead?
 			t.recall_list().erase_if_matches_id(u->id());
@@ -2603,20 +2584,22 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	int side = lua_tointeger(L, 2);
 	if (unsigned(side) > teams().size()) side = 0;
 
-	if (luaW_hasmetatable(L, 1, getunitKey))
-	{
-		lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
+	if(luaW_isunit(L, 1)) {
+		lu = luaW_checkunit_ref(L, 1);
 		u = lu->get_shared();
-		if (!u || lu->on_recall_list())
-			return luaL_argerror(L, 1, "unit not found");
-	}
-	else
-	{
+		if(lu->on_recall_list() == side) {
+			return luaL_argerror(L, 1, "unit already on recall list");
+		}
+	} else {
 		config cfg = luaW_checkconfig(L, 1);
 		u = unit_ptr(new unit(cfg, true));
 	}
 
-	if (!side) side = u->side();
+	if (!side) {
+		side = u->side();
+	} else {
+		u->set_side(side);
+	}
 	team &t = teams()[side - 1];
 	// Avoid duplicates in the recall list.
 	size_t uid = u->underlying_id();
@@ -2641,11 +2624,8 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 	if(map_locked_) {
 		return luaL_error(L, "Attempted to remove a unit while the map is locked");
 	}
-	if (!luaW_hasmetatable(L, 1, getunitKey))
-		return luaL_typerror(L, 1, "unit");
-	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
+	lua_unit* lu = luaW_checkunit_ref(L, 1);
 	unit_ptr u = lu->get_shared();
-	if (!u) return luaL_argerror(L, 1, "unit not found");
 
 	if (lu->on_map()) {
 		u = units().extract(u->get_location());
@@ -2675,10 +2655,10 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 
-	unit_ptr u = unit_ptr();
+	unit_ptr u;
 	if (!lua_isnoneornil(L, 2)) {
-		if (luaW_hasmetatable(L, 2, getunitKey)) {
-			u = static_cast<lua_unit *>(lua_touserdata(L, 2))->get_shared();
+		if(luaW_isunit(L, 2)) {
+			u = luaW_checkunit_ptr(L, 2, true);
 		} else {
 			config cfg = luaW_checkconfig(L, 2);
 			u.reset(new unit(cfg, false));

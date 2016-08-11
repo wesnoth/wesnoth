@@ -100,34 +100,95 @@ bool lua_unit::put_map(const map_location &loc)
 	return true;
 }
 
+bool luaW_isunit(lua_State* L, int index)
+{
+	return luaW_hasmetatable(L, index,getunitKey);
+}
+
+enum {
+	LU_OK,
+	LU_NOT_UNIT,
+	LU_NOT_ON_MAP,
+	LU_NOT_VALID,
+};
+
+static lua_unit* internal_get_unit(lua_State *L, int index, bool only_on_map, int& error)
+{
+	error = LU_OK;
+	if(!luaW_isunit(L, index)) {
+		error = LU_NOT_UNIT;
+		return nullptr;
+	}
+	lua_unit* lu = static_cast<lua_unit*>(lua_touserdata(L, index));
+	if(only_on_map && !lu->on_map()) {
+		error = LU_NOT_ON_MAP;
+	}
+	if(!lu->get()) {
+		error = LU_NOT_VALID;
+	}
+	return lu;
+}
+
 unit* luaW_tounit(lua_State *L, int index, bool only_on_map)
 {
-	if (!luaW_hasmetatable(L, index, getunitKey)) return nullptr;
-	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
-	if (only_on_map && !lu->on_map()) return nullptr;
+	int error;
+	lua_unit* lu = internal_get_unit(L, index, only_on_map, error);
+	if(error != LU_OK) {
+		return nullptr;
+	}
 	return lu->get();
 }
 
 unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map)
 {
-	if (!luaW_hasmetatable(L, index, getunitKey)) return unit_ptr();
-	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
-	if (only_on_map && !lu->on_map()) return unit_ptr();
+	int error;
+	lua_unit* lu = internal_get_unit(L, index, only_on_map, error);
+	if(error != LU_OK) {
+		return nullptr;
+	}
 	return lu->get_shared();
+}
+
+lua_unit* luaW_tounit_ref(lua_State *L, int index)
+{
+	int error;
+	return internal_get_unit(L, index, false, error);
+}
+
+static void unit_show_error(lua_State *L, int index, int error)
+{
+	switch(error) {
+		case LU_NOT_UNIT:
+			luaL_typerror(L, index, "unit");
+		case LU_NOT_VALID:
+			luaL_argerror(L, index, "unit not found");
+		case LU_NOT_ON_MAP:
+			luaL_argerror(L, index, "unit not found on map");
+	}
 }
 
 unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map)
 {
-	unit_ptr u = luaW_tounit(L, index, only_on_map);
-	if (!u) luaL_typerror(L, index, "unit");
-	return u;
+	int error;
+	lua_unit* lu = internal_get_unit(L, index, only_on_map, error);
+	unit_show_error(L, index, error);
+	return lu->get_shared();
 }
 
 unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 {
-	unit* u = luaW_tounit(L, index, only_on_map);
-	if (!u) luaL_typerror(L, index, "unit");
-	return *u;
+	int error;
+	lua_unit* lu = internal_get_unit(L, index, only_on_map, error);
+	unit_show_error(L, index, error);
+	return *lu->get();
+}
+
+lua_unit* luaW_checkunit_ref(lua_State *L, int index)
+{
+	int error;
+	lua_unit* lu = internal_get_unit(L, index, false, error);
+	unit_show_error(L, index, error);
+	return lu;
 }
 
 void lua_unit::setmetatable(lua_State *L)
