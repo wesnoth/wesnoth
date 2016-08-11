@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
+#include "game_initialization/create_engine.hpp"
+
 class config;
 
 namespace gui2
@@ -25,7 +27,7 @@ namespace gui2
 class tmp_create_game : public tdialog
 {
 public:
-	explicit tmp_create_game(const config& cfg);
+	explicit tmp_create_game(const config& cfg, ng::create_engine& eng);
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -41,6 +43,8 @@ private:
 
 	const config* scenario_;
 
+	ng::create_engine& engine_;
+
 	/**
 	 * All fields are also in the normal field vector, but they need to be
 	 * manually controlled as well so add the pointers here as well.
@@ -49,6 +53,8 @@ private:
 	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_;
 
 	tfield_integer* turns_, *gold_, *support_, *experience_;
+
+	void on_tab_select(twindow& window);
 
 public:
 	// another map selected

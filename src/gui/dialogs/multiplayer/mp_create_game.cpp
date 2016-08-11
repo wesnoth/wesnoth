@@ -31,6 +31,7 @@
 #endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/stacked_widget.hpp"
 #include "settings.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -42,9 +43,10 @@ namespace gui2
 
 REGISTER_DIALOG(mp_create_game)
 
-tmp_create_game::tmp_create_game(const config& cfg)
+tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& eng)
 	: cfg_(cfg)
 	, scenario_(nullptr)
+	, engine_(eng)
 	, use_map_settings_(register_bool(
 			  "use_map_settings",
 			  true,
@@ -92,14 +94,18 @@ void tmp_create_game::pre_show(twindow& window)
 #endif
 
 	// Load option (might turn it into a button later).
-	std::map<std::string, string_map> data;
-	string_map item;
-	
-	item["label"] = _("Load Game");
-	item["tooltip"] = _("Load Game...");
-	data.emplace("game_name", item);
+	//std::map<std::string, string_map> data;
+	//string_map item;
 
-	list.add_row(data);
+	//item["label"] = _("Load Game");
+	//item["tooltip"] = _("Load Game...");
+	//data.emplace("game_name", item);
+
+	list.clear();
+
+	window.keyboard_capture(&list);
+
+	//list.add_row(data);
 
 	// User maps
 	/*	FIXME implement user maps
@@ -115,7 +121,6 @@ void tmp_create_game::pre_show(twindow& window)
 	*/
 
 	// Standard maps
-	int i = 0;
 	for(const auto & map : cfg_.child_range("multiplayer"))
 	{
 		if(map["allow_new_game"].to_bool(true)) {
@@ -127,16 +132,59 @@ void tmp_create_game::pre_show(twindow& window)
 			data.emplace("game_name", item);
 
 			list.add_row(data);
-
-			// This hack is needed since the next item is too wide to fit.
-			// and the scrollbar can't truncate text yet.
-			if(++i == 46) {
-				break;
-			}
 		}
 	}
 
 	update_map_settings(window);
+
+	tlistbox& mod_list = find_widget<tlistbox>(&window, "mod_list", false);
+
+	//std::vector<std::string> mods = engine_.extras_menu_item_names(ng::create_engine::MOD);
+
+	for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = mod->name;
+		data.emplace("mod_name", item);
+
+		mod_list.add_row(data);
+	}
+
+	//
+	// Set up tab control
+	//
+	tlistbox& tab_bar = find_widget<tlistbox>(&window, "tab_bar", false);
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(*tab_bar,
+			std::bind(&tmp_create_game::on_tab_select,
+				*this, std::ref(window)));
+#else
+	tab_bar.set_callback_value_change(
+			dialog_callback<tmp_create_game, &tmp_create_game::on_tab_select>);
+#endif
+
+	std::map<std::string, string_map> list_data;
+
+	list_data["tab_label"]["label"] = _("General");
+	tab_bar.add_row(list_data);
+
+	list_data["tab_label"]["label"] = _("Game Settings");
+	tab_bar.add_row(list_data);
+
+	tab_bar.select_row(0);
+
+	on_tab_select(window);
+	
+	update_map(window);
+}
+
+void tmp_create_game::on_tab_select(twindow& window)
+{
+	const int i = find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row();
+
+	find_widget<tstacked_widget>(&window, "pager", false).select_layer(i);
 }
 
 void tmp_create_game::post_show(twindow& window)
@@ -149,19 +197,29 @@ void tmp_create_game::post_show(twindow& window)
 void tmp_create_game::update_map(twindow& window)
 {
 	tminimap& minimap = find_widget<tminimap>(&window, "minimap", false);
+	tcontrol& description = find_widget<tcontrol>(&window, "description", false);
+	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
+	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
 
 	const int index = find_widget<tlistbox>(&window, "map_list", false)
-							  .get_selected_row() - 1;
+							  .get_selected_row();
 
-	if(index >= 0) {
+	// TODO: fix for different selections
+	ng::scenario* current_scenario = dynamic_cast<ng::scenario*>(&engine_.current_level());
+
+	//if(index >= 0) {
 		config::const_child_itors children = cfg_.child_range("multiplayer");
 		std::advance(children.first, index);
 		scenario_ = &*children.first;
 		minimap.set_map_data((*scenario_)["map_data"]);
-	} else {
-		minimap.set_map_data("");
-		scenario_ = nullptr;
-	}
+		description.set_label((*scenario_)["description"]);
+		players.set_label(std::to_string(current_scenario->num_players()));
+		map_size.set_label(current_scenario->map_size());
+	//} else {
+	//	minimap.set_map_data("");
+	//	description.set_label("");
+	//	scenario_ = nullptr;
+	//}
 
 	update_map_settings(window);
 }

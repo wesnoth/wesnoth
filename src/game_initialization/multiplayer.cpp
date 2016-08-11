@@ -529,8 +529,9 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 		connect_canceled = false;
 
 		if (gui2::new_widgets) {
+			ng::create_engine create_eng(video, state);
 
-			gui2::tmp_create_game dlg(game_config);
+			gui2::tmp_create_game dlg(game_config, create_eng);
 
 			dlg.show(video);
 
