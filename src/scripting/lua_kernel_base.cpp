@@ -196,11 +196,10 @@ static int intf_name_generator(lua_State *L)
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
-			gen = new(lua_newuserdata(L, sizeof(markov_generator))) markov_generator(input, chain_sz, max_len);
+			gen = new(L) markov_generator(input, chain_sz, max_len);
 			// Ensure the pointer didn't change when cast
 			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
 		} else if(type == "context_free" || type == "cfg" || type == "CFG") {
-			void* buf = lua_newuserdata(L, sizeof(context_free_grammar_generator));
 			if(lua_istable(L, 2)) {
 				std::map<std::string, std::vector<std::string>> data;
 				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
@@ -218,10 +217,10 @@ static int intf_name_generator(lua_State *L)
 					}
 				}
 				if(!data.empty()) {
-					gen = new(buf) context_free_grammar_generator(data);
+					gen = new(L) context_free_grammar_generator(data);
 				}
 			} else {
-				gen = new(buf) context_free_grammar_generator(luaL_checkstring(L, 2));
+				gen = new(L) context_free_grammar_generator(luaL_checkstring(L, 2));
 			}
 			if(gen) {
 				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));

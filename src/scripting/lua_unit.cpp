@@ -132,7 +132,7 @@ unit& luaW_checkunit(lua_State *L, int index, bool only_on_map)
 
 lua_unit* luaW_pushlocalunit(lua_State *L, unit& u)
 {
-	lua_unit* res = new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
+	lua_unit* res = new(L) lua_unit(u);
 	lua_pushlightuserdata(L, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);

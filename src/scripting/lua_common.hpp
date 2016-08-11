@@ -42,6 +42,9 @@ namespace lua_common {
 }
 extern const char * tstringKey;
 
+void* operator new(size_t sz, lua_State *L);
+void operator delete(void* p, lua_State *L);
+
 /**
  * Pushes a vconfig on the top of the stack.
  */

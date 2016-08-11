@@ -141,9 +141,9 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			const unit& u = u_ref->get_unit();
 			unit_map::iterator un_it = resources::units->find(u.get_location());
 			if(&*un_it == &u) {
-				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
+				new(L) lua_unit(u.underlying_id());
 			} else {
-				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.side(), u.underlying_id());
+				new(L) lua_unit(u.side(), u.underlying_id());
 			}
 			lua_pushlightuserdata(L, getunitKey);
 			lua_rawget(L, LUA_REGISTRYINDEX);
@@ -235,7 +235,7 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 	if(!lua_isstring(L, 1)) {
 		luaL_typerror(L, 1, "string");
 	}
-	new(lua_newuserdata(L, sizeof(fwrapper))) fwrapper(lua_tostring(L, 1));
+	new(L) fwrapper(lua_tostring(L, 1));
 	lua_pushlightuserdata(L, formulaKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);

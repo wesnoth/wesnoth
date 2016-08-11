@@ -121,7 +121,7 @@ static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 static int impl_tstring_concat(lua_State *L)
 {
 	// Create a new t_string.
-	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
+	t_string *t = new(L) t_string;
 	luaL_setmetatable(L, tstringKey);
 
 	// Append both arguments to t.
@@ -301,9 +301,8 @@ static int impl_vconfig_pairs_collect(lua_State *L)
  */
 static int impl_vconfig_pairs(lua_State *L)
 {
-	static const size_t sz = sizeof(config::const_attr_itors);
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	new(lua_newuserdata(L, sz)) config::const_attr_itors(vcfg.get_config().attribute_range());
+	new(L) config::const_attr_itors(vcfg.get_config().attribute_range());
 	luaL_newmetatable(L, vconfigpairsKey);
 	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_pairs_iter, 1);
@@ -351,9 +350,8 @@ static int impl_vconfig_ipairs_collect(lua_State *L)
  */
 static int impl_vconfig_ipairs(lua_State *L)
 {
-	static const size_t sz = sizeof(vconfig_child_range);
 	vconfig cfg = luaW_checkvconfig(L, 1);
-	new(lua_newuserdata(L, sz)) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
+	new(L) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
 	luaL_newmetatable(L, vconfigipairsKey);
 	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
@@ -457,15 +455,28 @@ std::string register_vconfig_metatable(lua_State *L)
 
 } // end namespace lua_common
 
+void* operator new(size_t sz, lua_State *L)
+{
+	return lua_newuserdata(L, sz);
+}
+
+void operator delete(void*, lua_State *L)
+{
+	// Not sure if this is needed since it's a no-op
+	// It's only called if a constructor throws while using the above operator new
+	// By removing the userdata from the stack, this should ensure that Lua frees it
+	lua_pop(L, 1);
+}
+
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 {
-	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
+	new(L) vconfig(cfg);
 	luaL_setmetatable(L, vconfigKey);
 }
 
 void luaW_pushtstring(lua_State *L, t_string const &v)
 {
-	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
+	new(L) t_string(v);
 	luaL_setmetatable(L, tstringKey);
 }
 

@@ -867,7 +867,7 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 		std::string id = luaL_checkstring(L, 1);
 		for(const unit& u : units()) {
 			if(u.id() == id) {
-				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
+				new(L) lua_unit(u.underlying_id());
 				lua_pushlightuserdata(L, getunitKey);
 				lua_rawget(L, LUA_REGISTRYINDEX);
 				lua_setmetatable(L, -2);
@@ -883,7 +883,7 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 
 	if (!ui.valid()) return 0;
 
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
+	new(L) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -908,7 +908,7 @@ int game_lua_kernel::intf_get_displayed_unit(lua_State *L)
 		game_display_->show_everything());
 	if (!ui.valid()) return 0;
 
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
+	new(L) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -938,7 +938,7 @@ int game_lua_kernel::intf_get_units(lua_State *L)
 	// note that if filter is null, this yields a null filter matching everything (and doing no work)
 	filter_context & fc = game_state_;
 	for (const unit * ui : unit_filter(filter, &fc).all_matches_on_map()) {
-		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
+		new(L) lua_unit(ui->underlying_id());
 		lua_pushvalue(L, 1);
 		lua_setmetatable(L, 3);
 		lua_rawseti(L, 2, i);
@@ -1033,7 +1033,7 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
 				if (!ufilt( *u, map_location() ))
 					continue;
 			}
-			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u->underlying_id());
+			new(L) lua_unit(s, u->underlying_id());
 			lua_pushvalue(L, 1);
 			lua_setmetatable(L, 3);
 			lua_rawseti(L, 2, i);
@@ -1883,7 +1883,7 @@ int game_lua_kernel::intf_get_end_level_data(lua_State* L)
 		return 0;
 	}
 	auto data = play_controller_.get_end_level_data_const();
-	new(lua_newuserdata(L, sizeof(end_level_data))) end_level_data();
+	new(L) end_level_data();
 	if(luaL_newmetatable(L, "end level data")) {
 		static luaL_Reg const callbacks[] = {
 			{ "__index", 	    &impl_end_level_data_get},
@@ -2735,7 +2735,7 @@ static int intf_create_unit(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
 	unit_ptr u = unit_ptr(new unit(cfg, true));
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
+	new(L) lua_unit(u);
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2751,7 +2751,7 @@ static int intf_create_unit(lua_State *L)
 static int intf_copy_unit(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(unit_ptr(new unit(u)));
+	new(L) lua_unit(unit_ptr(new unit(u)));
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
