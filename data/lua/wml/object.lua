@@ -24,6 +24,10 @@ function wml_actions.object(cfg)
 		unit = wesnoth.get_unit(context.x1, context.y1)
 	end
 
+	-- Default to silent if object has no description
+	local silent = cfg.silent
+	if silent == nil then silent = (text:len() == 0) end
+
 	-- If a unit matches the filter, proceed
 	if unit then
 		text = tostring(cfg.description or "")
@@ -41,8 +45,10 @@ function wml_actions.object(cfg)
 			wesnoth.add_modification(unit, "object", helper.parsed(cfg), add)
 		end
 
-		wesnoth.select_unit(unit, false)
-		wesnoth.highlight_hex(unit.x, unit.y)
+		if not silent then
+			wesnoth.select_unit(unit, false)
+			wesnoth.highlight_hex(unit.x, unit.y)
+		end
 
 		-- Mark this item as used up
 		if obj_id and unique then used_items[obj_id] = true end
@@ -50,10 +56,6 @@ function wml_actions.object(cfg)
 		text = tostring(cfg.cannot_use_message or "")
 		command_type = "else"
 	end
-
-	-- Default to silent if object has no description
-	local silent = cfg.silent
-	if silent == nil then silent = (text:len() == 0) end
 
 	if not silent then
 		wml_actions.redraw{}
