@@ -18,6 +18,7 @@
 #include "gui/dialogs/dialog.hpp"
 
 #include "game_initialization/create_engine.hpp"
+#include "game_initialization/mp_options.hpp"
 
 class config;
 
@@ -45,6 +46,8 @@ private:
 
 	ng::create_engine& engine_;
 
+	//mp::options::manager options_manager_;
+
 	/**
 	 * All fields are also in the normal field vector, but they need to be
 	 * manually controlled as well so add the pointers here as well.
@@ -55,6 +58,8 @@ private:
 	tfield_integer* turns_, *gold_, *support_, *experience_;
 
 	void on_tab_select(twindow& window);
+
+	void update_options_list(twindow& window);
 
 public:
 	// another map selected
