@@ -23,6 +23,8 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -34,6 +36,8 @@
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "formatter.hpp"
+#include "marked-up_text.hpp"
 
 #include "utils/functional.hpp"
 
@@ -56,6 +60,8 @@ void tunit_preview_pane::finalize_setup()
 	label_level_            = find_widget<tlabel>(this, "type_level" , false, false);
 	label_details_          = find_widget<tcontrol>(this, "type_details", false, false);
 	label_details_minimal_  = find_widget<tcontrol>(this, "type_details_minimal", false, false);
+
+	tree_details_ = find_widget<ttree_view>(this, "tree_details", false, false);
 
 	// Profile button
 	button_profile_ = find_widget<tbutton>(this, "type_profile", false, false);
@@ -140,8 +146,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 			type.alignment(),
 			type.genders().front()));
 	}
-
-	if(label_details_) {
+	else if(label_details_) {
 		std::stringstream str;
 		str << "<small>";
 
@@ -202,6 +207,17 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 }
 
+static inline ttree_view_node& add_name_tree_node(ttree_view_node& header_node, const std::string& type, const t_string& label, const t_string& tooltip = "")
+{
+	//Note: we have to pass data instead of just doing 'child_label.set_label(label)' below
+	//      because the ttree_view_node::add_child need to have teh correct size of the 
+	//      node child widgets for its internal size calculations.
+	auto& child_node = header_node.add_child(type, { {"name", { {"label", label } } } });
+	auto& child_label = find_widget<tcontrol>(&child_node, "name", true);
+	child_label.set_tooltip(tooltip);
+	child_label.set_use_markup(true);
+	return child_node;
+}
 void tunit_preview_pane::set_displayed_unit(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
@@ -283,7 +299,100 @@ void tunit_preview_pane::set_displayed_unit(const unit& u)
 		label_details_minimal_->set_use_markup(true);
 	}
 
-	if(label_details_) {
+	if (tree_details_) {
+
+		std::stringstream str;
+		str << "<small>";
+
+		str << font::span_color(u.hp_color())
+			<< "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | ";
+
+		str << font::span_color(u.xp_color())
+			<< "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | ";
+
+		str << "<b>" << _("MP: ") << "</b>"
+			<< u.movement_left() << "/" << u.total_movement();
+
+		str << "</small>";
+
+		tree_details_->clear();
+
+		add_name_tree_node(
+			tree_details_->get_root_node(),
+			"item",
+			str.str()
+		);
+
+		if (!u.trait_names().empty()) {
+			auto& header_node = add_name_tree_node(
+				tree_details_->get_root_node(),
+				"header",
+				"<b>" + _("Traits") + "</b>"
+			);
+
+			assert(u.trait_names().size() == u.trait_descriptions().size());
+			for (size_t i = 0; i < u.trait_names().size(); ++i) {
+				add_name_tree_node(
+					header_node,
+					"item",
+					u.trait_names()[i], 
+					u.trait_descriptions()[i]
+				);
+			}
+		}
+		if (!u.get_ability_list().empty()) {
+			auto& header_node = add_name_tree_node(
+				tree_details_->get_root_node(),
+				"header",
+				"<b>" + _("Abilities") + "</b>"
+			);
+
+			for (const auto& ab : u.ability_tooltips()) {
+				add_name_tree_node(
+					header_node,
+					"item",
+					std::get<1>(ab),
+					std::get<2>(ab)
+				);
+			}
+		}
+
+		if (!u.attacks().empty()) {
+
+			auto& header_node = add_name_tree_node(
+				tree_details_->get_root_node(),
+				"header",
+				"<b>" + _("Attacks") + "</b>"
+			);
+
+			for (const auto& a : u.attacks()) {
+
+				auto& subsection = add_name_tree_node(
+					header_node,
+					"item",
+					(formatter() << "<span color='#f5e6c1'>" << a.damage() << font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>").str()
+				);
+
+				add_name_tree_node(
+					subsection,
+					"item",
+					(formatter() << "<span color='#a69275'>" << a.range() << font::weapon_details_sep << a.type() << "</span>").str()
+				);
+
+				for (const auto& pair : a.special_tooltips())
+				{
+					add_name_tree_node(
+						subsection,
+						"item",
+						(formatter() << font::span_color(font::weapon_details_color) << pair.first << "</span>").str(),
+						(formatter() << _("Weapon special: ") << "<b>" << pair.first << "</b>" << '\n' << pair.second).str()
+					);
+				}
+			}
+
+		}
+	}
+	else if(label_details_) {
 		std::stringstream str;
 		str << "<small>";
 

@@ -30,6 +30,7 @@ namespace gui2
 class tbutton;
 class timage;
 class tlabel;
+class ttree_view;
 
 namespace implementation
 {
@@ -50,6 +51,7 @@ public:
 		, label_name_(nullptr)
 		, label_level_(nullptr)
 		, label_details_(nullptr)
+		, tree_details_(nullptr)
 		, label_details_minimal_(nullptr)
 		, button_profile_(nullptr)
 		, image_mods_()
@@ -97,6 +99,7 @@ private:
 
 	tcontrol* label_details_;
 	tcontrol* label_details_minimal_;
+	ttree_view* tree_details_;
 
 	tbutton* button_profile_;
 

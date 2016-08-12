@@ -62,7 +62,9 @@ ttree_view_node::ttree_view_node(
 
 				twidget* toggle_widget = grid_.find("tree_view_node_icon", false);
 				toggle_ = dynamic_cast<tselectable_*>(toggle_widget);
-
+				if(node_definition.unfolded) {
+					unfolded_ = true;
+				}
 				if(toggle_) {
 					toggle_widget->set_visible(twidget::tvisible::hidden);
 					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
@@ -73,10 +75,8 @@ ttree_view_node::ttree_view_node(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2), event::tdispatcher::back_post_child);
-
-					if(node_definition.unfolded) {
+					if(unfolded_) {
 						toggle_->set_value(1);
-						unfolded_ = true;
 					}
 				}
 
@@ -150,7 +150,7 @@ ttree_view_node& ttree_view_node::add_child(
 			new ttree_view_node(
 					id, node_definitions_, this, tree_view(), data));
 
-	if(is_folded() || is_root_node()) {
+	if(is_folded() /*|| is_root_node()*/) {
 		return *itor;
 	}
 
@@ -169,7 +169,7 @@ ttree_view_node& ttree_view_node::add_child(
 
 	// Calculate height modification.
 	const int height_modification = best_size.y;
-	assert(height_modification > 0);
+	assert(height_modification >= 0);
 
 	// Request new size.
 	tree_view().resize_content(width_modification, height_modification, -1, itor->calculate_ypos());
@@ -224,7 +224,7 @@ bool ttree_view_node::is_folded() const
 
 void ttree_view_node::fold(/*const bool recursive*/)
 {
-	if(is_folded()) {
+	if(!is_folded()) {
 		fold_internal();
 		if(toggle_) {
 			toggle_->set_value(false);
@@ -234,7 +234,7 @@ void ttree_view_node::fold(/*const bool recursive*/)
 
 void ttree_view_node::unfold(/*const texpand_mode mode*/)
 {
-	if(!is_folded()) {
+	if(is_folded()) {
 		unfold_internal();
 		if(toggle_) {
 			toggle_->set_value(true);

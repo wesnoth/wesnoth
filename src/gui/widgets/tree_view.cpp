@@ -90,7 +90,7 @@ void ttree_view::remove_node(ttree_view_node* node)
 
 void ttree_view::clear()
 {
-	get_root_node().children_.clear();
+	get_root_node().clear();
 }
 
 void
