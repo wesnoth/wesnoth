@@ -557,7 +557,7 @@ struct BlendResult
     /**/blend_f, blend_g,
     /**/blend_j, blend_k;
 
-    BlendResult() {}
+    BlendResult() : blend_f(), blend_g(), blend_j(), blend_k() {}
 };
 
 
