@@ -73,6 +73,7 @@
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
 #include "scripting/lua_unit.hpp"
+#include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
@@ -4233,6 +4234,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 
 	//Create the unit metatables
 	cmd_log_ << lua_units::register_metatables(L);
+	cmd_log_ << lua_units::register_attacks_metatables(L);
 
 	// Create the vconfig metatable.
 	cmd_log_ << lua_common::register_vconfig_metatable(L);
