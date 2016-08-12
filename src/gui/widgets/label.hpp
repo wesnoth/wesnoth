@@ -68,7 +68,7 @@ public:
 
 	void set_link_color(const std::string & color);
 
-	virtual bool can_mouse_focus() const override { return false; }
+	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
 private:
 	/**
 	 * Possible states of the widget.

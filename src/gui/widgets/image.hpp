@@ -59,7 +59,7 @@ public:
 		return label();
 	}
 
-	virtual bool can_mouse_focus() const override { return false; }
+	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
