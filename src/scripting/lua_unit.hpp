@@ -119,4 +119,8 @@ inline lua_unit* luaW_pushunit(lua_State *L, Args... args) {
 	return lu;
 }
 
+namespace lua_units {
+	std::string register_metatables(lua_State *L);
+}
+
 #endif
