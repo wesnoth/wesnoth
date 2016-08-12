@@ -20,6 +20,7 @@
 
 #include "cursor.hpp"
 #include "gui/dialogs/loadscreen.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/core/timer.hpp"

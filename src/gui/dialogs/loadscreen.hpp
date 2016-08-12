@@ -14,7 +14,6 @@
 #pragma once
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/label.hpp"
 #include "tstring.hpp"
 
 #include <map>
@@ -33,6 +32,7 @@ namespace cursor
 namespace gui2
 {
 
+class tlabel;
 class twindow;
 
 class tloadscreen : public tdialog
