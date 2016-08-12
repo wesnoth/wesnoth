@@ -27,6 +27,9 @@
 #include "resources.hpp"
 #include "units/map.hpp"
 
+// This is an array so we can use sizeof()
+static const char formulaKey[] = "formula";
+
 void luaW_pushfaivariant(lua_State* L, variant val);
 variant luaW_tofaivariant(lua_State* L, int i);
 
@@ -233,7 +236,7 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 		luaL_typerror(L, 1, "string");
 	}
 	new(L) fwrapper(lua_tostring(L, 1));
-	lua_pushlightuserdata(L, formulaKey);
+	lua_pushlstring(L, formulaKey, sizeof(formulaKey));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
@@ -277,7 +280,7 @@ static int impl_formula_tostring(lua_State* L)
 
 std::string lua_formula_bridge::register_metatables(lua_State* L)
 {
-	lua_pushlightuserdata(L, formulaKey);
+	lua_pushlstring(L, formulaKey, sizeof(formulaKey));
 	lua_createtable(L, 0, 4);
 	lua_pushcfunction(L, impl_formula_collect);
 	lua_setfield(L, -2, "__gc");

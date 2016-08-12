@@ -458,7 +458,7 @@ static void find_routes(
 }
 
 
-static paths::dest_vect::iterator lower_bound(paths::dest_vect &v, const map_location &loc)
+static paths::dest_vect::const_iterator lower_bound(const paths::dest_vect &v, const map_location &loc)
 {
 	size_t sz = v.size(), pos = 0;
 	while (sz)
@@ -473,14 +473,14 @@ static paths::dest_vect::iterator lower_bound(paths::dest_vect &v, const map_loc
 
 paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc) const
 {
-	const_iterator i = lower_bound(const_cast<dest_vect &>(*this), loc), i_end = end();
+	const_iterator i = lower_bound(*this, loc), i_end = end();
 	if (i != i_end && i->curr != loc) i = i_end;
 	return i;
 }
 
 void paths::dest_vect::insert(const map_location &loc)
 {
-	iterator i = lower_bound(*this, loc), i_end = end();
+	const_iterator i = lower_bound(*this, loc), i_end = end();
 	if (i != i_end && i->curr == loc) return;
 	paths::step s = { loc, map_location(), 0 };
 	std::vector<step>::insert(i, s);

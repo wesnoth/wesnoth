@@ -34,7 +34,6 @@
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_types.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 

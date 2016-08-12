@@ -13,7 +13,6 @@
 */
 
 #include "lua_unit_attacks.hpp"
-#include "lua_types.hpp"
 
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit.hpp"
@@ -22,13 +21,17 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
 
+// These are arrays so we can use sizeof
+static const char uattacksKey[] = "unit attacks table";
+static const char uattackKey[] = "unit attack";
+
 void push_unit_attacks_table(lua_State* L, int idx)
 {
 	lua_createtable(L, 1, 0);
 	lua_pushvalue(L, idx);
 	// hack: store the unit_type at -1 because we want positive indices to refer to the attacks.
 	lua_rawseti(L, -2, -1);
-	lua_pushlightuserdata(L, uattacksKey);
+	lua_pushlstring(L, uattacksKey, sizeof(uattacksKey));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 }
@@ -84,7 +87,7 @@ static int impl_unit_attacks_get(lua_State *L)
 	// stack { lua_unit }, id/index, lua_unit, table, attack id
 	lua_rawseti(L, -2, 2);
 	// stack { lua_unit }, id/index, lua_unit, table
-	lua_pushlightuserdata(L, uattackKey);
+	lua_pushlstring(L, uattackKey, sizeof(uattackKey));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
@@ -210,7 +213,7 @@ namespace lua_units {
 		// Create the unit attacks metatable.
 		cmd_out << "Adding unit attacks metatable...\n";
 
-		lua_pushlightuserdata(L, uattacksKey);
+		lua_pushlstring(L, uattacksKey, sizeof(uattacksKey));
 		lua_createtable(L, 0, 3);
 		lua_pushcfunction(L, impl_unit_attacks_get);
 		lua_setfield(L, -2, "__index");
@@ -221,7 +224,7 @@ namespace lua_units {
 		lua_rawset(L, LUA_REGISTRYINDEX);
 
 		// Create the unit attack metatable
-		lua_pushlightuserdata(L, uattackKey);
+		lua_pushlstring(L, uattackKey, sizeof(uattackKey));
 		lua_createtable(L, 0, 3);
 		lua_pushcfunction(L, impl_unit_attack_get);
 		lua_setfield(L, -2, "__index");

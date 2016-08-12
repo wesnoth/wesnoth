@@ -863,8 +863,10 @@ void config::recursive_clear_value(const std::string& key)
 
 	values.erase(key);
 
-	for (const any_child &value : all_children_range()) {
-		const_cast<config *>(&value.cfg)->recursive_clear_value(key);
+	for(std::pair<const std::string, child_list>& p : children) {
+		for(config* cfg : p.second) {
+			cfg->recursive_clear_value(key);
+		}
 	}
 }
 
@@ -1339,8 +1341,10 @@ void config::clear_diff_track(const config& diff)
 			itor->second[index]->clear_diff_track(item.cfg);
 		}
 	}
-	for (const any_child &value : all_children_range()) {
-		const_cast<config *>(&value.cfg)->remove_attribute(diff_track_attribute);
+	for(std::pair<const std::string, child_list>& p : children) {
+		for(config* cfg : p.second) {
+			cfg->remove_attribute(diff_track_attribute);
+		}
 	}
 }
 

@@ -17,7 +17,6 @@
 
 #include <cstddef>
 #include <string>
-#include "lua_types.hpp" // the luatype typedef
 #include "scripting/lua_common.hpp"
 #include "units/ptr.hpp"
 

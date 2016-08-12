@@ -25,7 +25,6 @@ class t_string;
 class vconfig;
 
 #include "config.hpp"
-#include "scripting/lua_types.hpp"
 #include "variable_info.hpp"
 #include "map/location.hpp"
 #include <vector>
@@ -40,7 +39,6 @@ namespace lua_common {
 	std::string register_vconfig_metatable(lua_State *L);
 
 }
-extern const char * tstringKey;
 
 void* operator new(size_t sz, lua_State *L);
 void operator delete(void* p, lua_State *L);
@@ -69,7 +67,7 @@ bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v);
 /**
  * Returns true if the metatable of the object is the one found in the registry.
  */
-bool luaW_hasmetatable(lua_State *L, int index, luatypekey key);
+bool luaW_hasmetatable(lua_State *L, int index, const char* key);
 
 /**
  * Converts a scalar to a translatable string.

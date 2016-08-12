@@ -213,9 +213,9 @@ const config &manager::get_values()
 config& manager::get_value_cfg(const std::string& id)
 {
 	{
-		const config& value_cfg = get_value_cfg_or_empty(id);
-		if (!value_cfg.empty()) {
-			return const_cast<config&>(value_cfg);
+		config& value_cfg = values_.find_child("option", "id", id);
+		if(value_cfg) {
+			return value_cfg;
 		}
 	}
 
@@ -237,16 +237,8 @@ config& manager::get_value_cfg(const std::string& id)
 const config& manager::get_value_cfg_or_empty(const std::string& id) const
 {
 	static const config empty;
-
-	for (const config::any_child& i : values_.all_children_range()) {
-		for (const config& j : i.cfg.child_range("option")) {
-			if (j["id"] == id) {
-				return j;
-			}
-		}
-	}
-
-	return empty;
+	const config& cfg = values_.find_child("option", "id", id);
+	return cfg ? cfg : empty;
 }
 
 config::any_child manager::get_option_parent(const std::string& id) const

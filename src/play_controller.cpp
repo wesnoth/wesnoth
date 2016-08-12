@@ -739,7 +739,7 @@ const mp_game_settings& play_controller::get_mp_settings()
 	return saved_game_.mp_settings();
 }
 
-const game_classification& play_controller::get_classification()
+game_classification& play_controller::get_classification()
 {
 	return saved_game_.classification();
 }

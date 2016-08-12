@@ -548,7 +548,7 @@ private:
 struct unit_movement_resetter
 	: private boost::noncopyable
 {
-	unit_movement_resetter(unit& u, bool operate=true);
+	unit_movement_resetter(const unit& u, bool operate=true);
 	~unit_movement_resetter();
 
 private:

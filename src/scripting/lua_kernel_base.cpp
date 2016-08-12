@@ -34,7 +34,6 @@
 #include "scripting/lua_gui2.hpp"
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_rng.hpp"
-#include "scripting/lua_types.hpp"
 #include "scripting/push_check.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc

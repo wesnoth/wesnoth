@@ -281,7 +281,6 @@
 		91A2156B1CAD6DA400927AEA /* lua_race.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FFF91A51A00900023AF4 /* lua_race.cpp */; };
 		91A2156C1CAD6DA500927AEA /* lua_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */; };
 		91A2156D1CAD6DA500927AEA /* lua_team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5430211A4E6024006D206C /* lua_team.cpp */; };
-		91A2156E1CAD6DA500927AEA /* lua_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C02A0E182F1F64008525C6 /* lua_types.cpp */; };
 		91A2156F1CAD6DA500927AEA /* lua_unit_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5430221A4E6024006D206C /* lua_unit_type.cpp */; };
 		91A215701CAD6E7500927AEA /* context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F25F1A4529D2001910CB /* context.cpp */; };
 		91A215711CAD6E7500927AEA /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F2601A4529D2001910CB /* manager.cpp */; };
@@ -1262,7 +1261,6 @@
 		F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3C14035038007175D6 /* sourceparser.cpp */; };
 		F480CD4C14035038007175D6 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
 		F49F134A15BC627C00B64B0B /* edit_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F49F134815BC627C00B64B0B /* edit_label.cpp */; };
-		F4C02A11182F1F64008525C6 /* lua_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C02A0E182F1F64008525C6 /* lua_types.cpp */; };
 		F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C5DD66158CFD5E0044F754 /* point.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
@@ -4150,8 +4148,6 @@
 				91B621EC1B76BB2200B00E0F /* lua_rng.hpp */,
 				EC5430211A4E6024006D206C /* lua_team.cpp */,
 				91B621ED1B76BB2600B00E0F /* lua_team.hpp */,
-				F4C02A0E182F1F64008525C6 /* lua_types.cpp */,
-				F4C02A0F182F1F64008525C6 /* lua_types.hpp */,
 				9193FC801D5C2CF7004F6C07 /* lua_unit.cpp */,
 				9193FC811D5C2CF8004F6C07 /* lua_unit.hpp */,
 				9193FC841D5D7452004F6C07 /* lua_unit_attacks.cpp */,
@@ -4959,7 +4955,6 @@
 				ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */,
 				ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */,
 				EC5430231A4E6024006D206C /* lua_team.cpp in Sources */,
-				F4C02A11182F1F64008525C6 /* lua_types.cpp in Sources */,
 				EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */,
 				EC89A1481879D17D00A3B0B1 /* lundump.cpp in Sources */,
 				EC89A1491879D17D00A3B0B1 /* lvm.cpp in Sources */,
@@ -5619,7 +5614,6 @@
 				91A2156B1CAD6DA400927AEA /* lua_race.cpp in Sources */,
 				91A2156C1CAD6DA500927AEA /* lua_rng.cpp in Sources */,
 				91A2156D1CAD6DA500927AEA /* lua_team.cpp in Sources */,
-				91A2156E1CAD6DA500927AEA /* lua_types.cpp in Sources */,
 				91A2156F1CAD6DA500927AEA /* lua_unit_type.cpp in Sources */,
 				91A215701CAD6E7500927AEA /* context.cpp in Sources */,
 				91A215711CAD6E7500927AEA /* manager.cpp in Sources */,

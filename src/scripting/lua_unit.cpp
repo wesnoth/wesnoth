@@ -13,7 +13,6 @@
 */
 
 #include "lua_unit.hpp"
-#include "lua_types.hpp"
 
 #include "game_board.hpp"
 #include "log.hpp"
@@ -32,6 +31,11 @@
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+// These are arrays so we can use sizeof
+static const char getunitKey[] = "unit";
+static const char ustatusKey[] = "unit status";
+static const char unitvarKey[] = "unit variables";
 
 lua_unit::~lua_unit()
 {
@@ -196,7 +200,7 @@ lua_unit* luaW_checkunit_ref(lua_State *L, int index)
 
 void lua_unit::setmetatable(lua_State *L)
 {
-	lua_pushlightuserdata(L, getunitKey);
+	lua_pushlstring(L, getunitKey, sizeof(getunitKey));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 }
@@ -328,7 +332,7 @@ static int impl_unit_get(lua_State *L)
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
-		lua_pushlightuserdata(L, ustatusKey);
+		lua_pushlstring(L, ustatusKey, sizeof(ustatusKey));
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_setmetatable(L, -2);
 		return 1;
@@ -337,7 +341,7 @@ static int impl_unit_get(lua_State *L)
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
-		lua_pushlightuserdata(L, unitvarKey);
+		lua_pushlstring(L, unitvarKey, sizeof(unitvarKey));
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_setmetatable(L, -2);
 		return 1;
@@ -531,7 +535,7 @@ namespace lua_units {
 		// Create the getunit metatable.
 		cmd_out << "Adding getunit metatable...\n";
 
-		lua_pushlightuserdata(L, getunitKey);
+		lua_pushlstring(L, getunitKey, sizeof(getunitKey));
 		lua_createtable(L, 0, 5);
 		lua_pushcfunction(L, impl_unit_collect);
 		lua_setfield(L, -2, "__gc");
@@ -548,7 +552,7 @@ namespace lua_units {
 		// Create the unit status metatable.
 		cmd_out << "Adding unit status metatable...\n";
 
-		lua_pushlightuserdata(L, ustatusKey);
+		lua_pushlstring(L, ustatusKey, sizeof(ustatusKey));
 		lua_createtable(L, 0, 3);
 		lua_pushcfunction(L, impl_unit_status_get);
 		lua_setfield(L, -2, "__index");
@@ -561,7 +565,7 @@ namespace lua_units {
 		// Create the unit variables metatable.
 		cmd_out << "Adding unit variables metatable...\n";
 
-		lua_pushlightuserdata(L, unitvarKey);
+		lua_pushlstring(L, unitvarKey, sizeof(unitvarKey));
 		lua_createtable(L, 0, 3);
 		lua_pushcfunction(L, impl_unit_variables_get);
 		lua_setfield(L, -2, "__index");

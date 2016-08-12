@@ -94,7 +94,7 @@ void map_labels::read(const config &cfg)
 	recalculate_labels();
 }
 
-const terrain_label* map_labels::get_label(const map_location& loc, const std::string& team_name) const
+terrain_label* map_labels::get_label_private(const map_location& loc, const std::string& team_name)
 {
 	team_label_map::const_iterator label_map = labels_.find(team_name);
 	if (label_map != labels_.end()) {
