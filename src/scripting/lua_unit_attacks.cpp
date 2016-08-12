@@ -102,10 +102,11 @@ static int impl_unit_attacks_len(lua_State *L)
 	}
 	lua_rawgeti(L, 1, -1);
 	const unit* u = luaW_tounit(L, -1);
-	if(!u) {
+	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
+	if(!u && !ut) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
-	lua_pushinteger(L, u->attacks().size());
+	lua_pushinteger(L, (u ? u->attacks() : ut->attacks()).size());
 	return 1;
 }
 
@@ -122,13 +123,14 @@ static int impl_unit_attack_get(lua_State *L)
 	}
 	lua_rawgeti(L, 1, 1);
 	const unit* u = luaW_tounit(L, -1);
-	if(!u) {
+	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
+	if(!u && !ut) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
 	lua_rawgeti(L, 1, 2);
 	std::string attack_id = luaL_checkstring(L, -1);
 	char const *m = luaL_checkstring(L, 2);
-	for(const attack_type& attack : u->attacks()) {
+	for(const attack_type& attack : u ? u->attacks() : ut->attacks()) {
 		if(attack.id() == attack_id) {
 			return_string_attrib("description", attack.name());
 			return_string_attrib("name", attack.id());
@@ -165,13 +167,14 @@ static int impl_unit_attack_set(lua_State *L)
 	}
 	lua_rawgeti(L, 1, 1);
 	unit* u = luaW_tounit(L, -1);
-	if(!u) {
+	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
+	if(!u && !ut) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
 	lua_rawgeti(L, 1, 2);
 	std::string attack_id = luaL_checkstring(L, -1);
 	char const *m = luaL_checkstring(L, 2);
-	for(attack_type& attack : u->attacks()) {
+	for(attack_type& attack : u ? u->attacks() : ut->attacks()) {
 		if(attack.id() == attack_id) {
 			modify_tstring_attrib("description", attack.set_name(value));
 			// modify_string_attrib("name", attack.set_id(value));
