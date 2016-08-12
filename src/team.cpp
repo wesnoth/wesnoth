@@ -653,7 +653,7 @@ void team::remove_fog_override(const std::set<map_location> &hexes)
 
 void validate_side(int side)
 {
-	if(resources::gameboard->teams().empty()) {
+	if(!resources::gameboard) {
 		return;
 	}
 

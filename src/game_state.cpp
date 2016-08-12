@@ -50,6 +50,8 @@ game_state::game_state(const config & level, play_controller &, const tdata_cach
 	reports_(new reports()),
 	lua_kernel_(),
 	events_manager_(new game_events::manager()),
+	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
+	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
