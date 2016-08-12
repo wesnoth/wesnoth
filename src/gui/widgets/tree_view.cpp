@@ -88,6 +88,11 @@ void ttree_view::remove_node(ttree_view_node* node)
 	resize_content(0, -node_size.y);
 }
 
+void ttree_view::clear()
+{
+	get_root_node().children_.clear();
+}
+
 void
 ttree_view::child_populate_dirty_list(twindow& caller,
 									  const std::vector<twidget*>& call_stack)

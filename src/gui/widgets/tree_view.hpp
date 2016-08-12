@@ -59,6 +59,8 @@ public:
 
 	void remove_node(ttree_view_node* tree_view_node);
 
+	void clear();
+
 	/** See @ref twidget::child_populate_dirty_list. */
 	virtual void
 	child_populate_dirty_list(twindow& caller,
