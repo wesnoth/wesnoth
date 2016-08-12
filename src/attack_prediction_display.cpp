@@ -48,7 +48,7 @@ const int battle_prediction_pane::inter_column_gap_ = 30;
 const int battle_prediction_pane::inter_units_gap_ = 30;
 const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
-battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
+battle_prediction_pane::battle_prediction_pane(battle_context &bc,
 		const map_location &attacker_loc, const map_location &defender_loc) :
 	gui::preview_pane(resources::screen->video()),
 	attacker_loc_(attacker_loc),
@@ -86,9 +86,8 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	dialog_height_(0)
 {
 	// Predict the battle outcome.
-	combatant attacker_combatant(bc.get_attacker_stats());
-	combatant defender_combatant(bc.get_defender_stats());
-	attacker_combatant.fight(defender_combatant);
+	const combatant& attacker_combatant = bc.get_attacker_combatant();
+	const combatant& defender_combatant = bc.get_defender_combatant();
 
 	const battle_context_unit_stats& attacker_stats = bc.get_attacker_stats();
 	const battle_context_unit_stats& defender_stats = bc.get_defender_stats();

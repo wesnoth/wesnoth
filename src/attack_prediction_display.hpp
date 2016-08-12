@@ -29,8 +29,11 @@ class battle_prediction_pane : public gui::preview_pane
 public:
 
 	// Lengthy constructor.
-	battle_prediction_pane(const battle_context& bc,
+	battle_prediction_pane(battle_context& bc,
 		const map_location& attacker_loc, const map_location& defender_loc);
+	battle_prediction_pane(battle_context&& bc,
+		const map_location& attacker_loc, const map_location& defender_loc) :
+		battle_prediction_pane(bc, attacker_loc, defender_loc) {}
 
 	// This method is called to draw the dialog contents.
 	void draw_contents();
