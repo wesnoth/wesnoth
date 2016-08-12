@@ -24,13 +24,16 @@ function wml_actions.object(cfg)
 		unit = wesnoth.get_unit(context.x1, context.y1)
 	end
 
+	-- If a unit matches the filter, proceed
+	if unit then
+		text = tostring(cfg.description or "")
+	end
+
 	-- Default to silent if object has no description
 	local silent = cfg.silent
 	if silent == nil then silent = (text:len() == 0) end
 
-	-- If a unit matches the filter, proceed
 	if unit then
-		text = tostring(cfg.description or "")
 		command_type = "then"
 
 		if cfg.no_write ~= nil then
