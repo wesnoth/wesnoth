@@ -427,21 +427,16 @@ int game_lua_kernel::intf_get_units(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1, true);
 
 	// Go through all the units while keeping the following stack:
-	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
+	// 1: return table, 2: userdata
 	lua_settop(L, 0);
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1;
 
 	// note that if filter is null, this yields a null filter matching everything (and doing no work)
 	filter_context & fc = game_state_;
 	for (const unit * ui : unit_filter(filter, &fc).all_matches_on_map()) {
-		new(L) lua_unit(ui->underlying_id());
-		lua_pushvalue(L, 1);
-		lua_setmetatable(L, 3);
-		lua_rawseti(L, 2, i);
+		luaW_pushunit(L, ui->underlying_id());
+		lua_rawseti(L, 1, i);
 		++i;
 	}
 	return 1;
@@ -507,11 +502,8 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1, true);
 
 	// Go through all the units while keeping the following stack:
-	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
+	// 1: return table, 2: userdata
 	lua_settop(L, 0);
-	lua_pushlightuserdata(L
-			, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1, s = 1;
 	filter_context & fc = game_state_;
@@ -526,10 +518,8 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
 				if (!ufilt( *u, map_location() ))
 					continue;
 			}
-			new(L) lua_unit(s, u->underlying_id());
-			lua_pushvalue(L, 1);
-			lua_setmetatable(L, 3);
-			lua_rawseti(L, 2, i);
+			luaW_pushunit(L, s, u->underlying_id());
+			lua_rawseti(L, 1, i);
 			++i;
 		}
 		++s;
