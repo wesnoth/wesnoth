@@ -27,6 +27,8 @@ namespace gui2
 
 class tmp_create_game : public tdialog
 {
+	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
+
 public:
 	explicit tmp_create_game(const config& cfg, ng::create_engine& eng);
 
@@ -47,6 +49,11 @@ private:
 	ng::create_engine& engine_;
 
 	//mp::options::manager options_manager_;
+
+	std::vector<level_type_info> level_types_;
+	
+	void update_games_list(twindow& window);
+	void display_games_of_type(twindow& window, ng::level::TYPE type);
 
 	/**
 	 * All fields are also in the normal field vector, but they need to be

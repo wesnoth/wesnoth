@@ -398,7 +398,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_change_control>();
 	test<gui2::tmp_cmd_wrapper>();
 	test<gui2::tmp_connect>();
-	test<gui2::tmp_create_game>();
+	//test<gui2::tmp_create_game>();
 	test<gui2::tmp_create_game_set_password>();
 	test<gui2::tmp_join_game_password_prompt>();
 	test<gui2::tdepcheck_confirm_change>();
@@ -467,6 +467,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"unit_list",
 		"game_stats",
 		"unit_advance",
+		"mp_create_game"
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

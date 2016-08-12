@@ -37,7 +37,9 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "game_config.hpp"
 #include "settings.hpp"
+#include "filesystem.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "utils/functional.hpp"
@@ -52,42 +54,43 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& eng)
 	: cfg_(cfg)
 	, scenario_(nullptr)
 	, engine_(eng)
-	, use_map_settings_(register_bool(
-			  "use_map_settings",
-			  true,
-			  preferences::use_map_settings,
-			  preferences::set_use_map_settings,
-			  dialog_callback<tmp_create_game,
-							  &tmp_create_game::update_map_settings>))
-	, fog_(register_bool("fog", true, preferences::fog, preferences::set_fog))
-	, shroud_(register_bool("shroud", true, preferences::shroud, preferences::set_shroud))
+	, use_map_settings_(register_bool("use_map_settings",
+			true, preferences::use_map_settings, preferences::set_use_map_settings,
+				dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>))
+	, fog_(register_bool("fog",
+			true, preferences::fog, preferences::set_fog))
+	, shroud_(register_bool("shroud",
+			true, preferences::shroud, preferences::set_shroud))
 	, start_time_(register_bool("random_start_time",
-								true,
-								preferences::random_start_time,
-								preferences::set_random_start_time))
-	, turns_(register_integer(
-			  "turn_count", true, preferences::turns, preferences::set_turns))
+			true, preferences::random_start_time, preferences::set_random_start_time))
+	, turns_(register_integer("turn_count",
+			true, preferences::turns, preferences::set_turns))
 	, gold_(register_integer("village_gold",
-							 true,
-							 preferences::village_gold,
-							 preferences::set_village_gold))
+			true, preferences::village_gold, preferences::set_village_gold))
 	, support_(register_integer("village_support",
-								false,
-								preferences::village_support,
-								preferences::set_village_support))
+			false, preferences::village_support, preferences::set_village_support))
 	, experience_(register_integer("experience_modifier",
-								   true,
-								   preferences::xp_modifier,
-								   preferences::set_xp_modifier))
+			true, preferences::xp_modifier, preferences::set_xp_modifier))
 	//, options_manager_()
 {
+	level_types_ = {
+		{ng::level::TYPE::SCENARIO, _("Scenarios")},
+		{ng::level::TYPE::CAMPAIGN, _("Campaigns")},
+		{ng::level::TYPE::USER_MAP, _("User Maps")},
+		{ng::level::TYPE::USER_SCENARIO, _("User Scenarios")},
+		{ng::level::TYPE::RANDOM_MAP, _("Random Maps")}
+	};
+
+	if(game_config::debug) {
+		level_types_.push_back({ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns")});
+	}
 }
 
 void tmp_create_game::pre_show(twindow& window)
 {
 	find_widget<tminimap>(&window, "minimap", false).set_config(&cfg_);
 
-	tlistbox& list = find_widget<tlistbox>(&window, "map_list", false);
+	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
 		std::bind(&tmp_create_game::update_map,
@@ -97,49 +100,32 @@ void tmp_create_game::pre_show(twindow& window)
 			dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
 #endif
 
-	// Load option (might turn it into a button later).
-	//std::map<std::string, string_map> data;
-	//string_map item;
-
-	//item["label"] = _("Load Game");
-	//item["tooltip"] = _("Load Game...");
-	//data.emplace("game_name", item);
-
-	list.clear();
-
 	window.keyboard_capture(&list);
 
-	//list.add_row(data);
+	display_games_of_type(window, ng::level::TYPE::SCENARIO);
 
-	// User maps
-	/*	FIXME implement user maps
-		std::vector<std::string> maps;
-		filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &maps, nullptr,
-	   filesystem::FILE_NAME_ONLY);
+	update_map_settings(window);
 
-		for(const auto& map : maps) {
-			std::map<std::string, t_string> item;
-			item.emplace("label", map);
-			list->add_row(item);
-		}
-	*/
+	//
+	// Set up game types combobox
+	//
+	std::vector<std::string> game_types;
 
-	// Standard maps
-	for(const auto & map : cfg_.child_range("multiplayer"))
-	{
-		if(map["allow_new_game"].to_bool(true)) {
-			std::map<std::string, string_map> data;
-			string_map item;
-
-			item["label"] = map["name"].str();
-			item["tooltip"] = map["name"].str();
-			data.emplace("game_name", item);
-
-			list.add_row(data);
+	for(level_type_info& type_info : level_types_) {
+		if(!engine_.get_levels_by_type_unfiltered(type_info.first).empty()) {
+			game_types.push_back(type_info.second);
 		}
 	}
 
-	update_map_settings(window);
+	if(game_types.empty()) {
+		gui2::show_transient_message(window.video(), "", _("No games found."));
+		throw game::error(_("No games found."));
+	}
+
+	tcombobox& game_combobox = find_widget<tcombobox>(&window, "game_types", false);
+
+	game_combobox.set_values(game_types);
+	game_combobox.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(window)));
 
 	//
 	// Set up eras combobox
@@ -213,30 +199,75 @@ void tmp_create_game::on_tab_select(twindow& window)
 	}
 }
 
+void tmp_create_game::update_games_list(twindow& window)
+{
+	const int index = find_widget<tcombobox>(&window, "game_types", false).get_value();
+
+	display_games_of_type(window, level_types_[index].first);
+}
+
+void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE type)
+{
+	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
+
+	list.clear();
+
+	for(const auto& game : engine_.get_levels_by_type(type)) {
+		if(!game.get()->can_launch_game()) {
+			continue;
+		}
+
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		// FIXME
+		/*if(type == ng::level::TYPE::SP_CAMPAIGN) {
+			item["label"] = game.get()->icon();
+		} else {
+			item["label"] = "";
+		}
+
+		data.emplace("game_icon", item);*/
+
+		item["label"] = game.get()->name();
+		item["use_markup"] = "true";
+		data.emplace("game_name", item);
+
+		list.add_row(data);
+	}
+
+	// TODO: move to click handler?
+	const bool is_random_map = type == ng::level::TYPE::RANDOM_MAP;
+
+	find_widget<tbutton>(&window, "random_map_regenerate", false).set_active(is_random_map);
+	find_widget<tbutton>(&window, "random_map_settings", false).set_active(is_random_map);
+}
+
 void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		find_widget<tlistbox>(&window, "map_list", false);
+		find_widget<tlistbox>(&window, "games_list", false);
 	}
 }
 
 void tmp_create_game::update_options_list(twindow& window)
 {
-		const int index = find_widget<tlistbox>(&window, "map_list", false)
-			.get_selected_row();
+	const int index = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
 
 	scenario_ = &cfg_.child("multiplayer", index);
 
 	ttree_view& options_tree = find_widget<ttree_view>(&window, "custom_options", false);
 
-	//options_tree.clear();
+	// TODO: might be inefficient to regenerate this every single time this tab is selected
+	// Maybe look into caching the result if no change has been made to the selection.
+	options_tree.clear();
 
 	for(const auto& options : scenario_->child_range("options")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
 		item["label"] = (*scenario_)["name"];
-		data["tree_view_node_label"] = item;
+		data.emplace("tree_view_node_label", item);
 
 		ttree_view_node& option_node = options_tree.add_node("option_node", data);
 
@@ -244,7 +275,7 @@ void tmp_create_game::update_options_list(twindow& window)
 
 		for(const auto& checkbox_option : options.child_range("checkbox")) {
 			item["label"] = checkbox_option["name"];
-			data["option_checkbox"] = item;
+			data.emplace("option_checkbox", item);
 
 			ttree_view_node& node = option_node.add_child("option_checkbox_node", data);
 
@@ -258,7 +289,7 @@ void tmp_create_game::update_options_list(twindow& window)
 
 		for(const auto& combobox_option : options.child_range("combo")) {
 			item["label"] = combobox_option["name"];
-			data["combobox_label"] = item;
+			data.emplace("combobox_label", item);
 
 			ttree_view_node& node = option_node.add_child("option_combobox_node", data);
 
@@ -279,7 +310,7 @@ void tmp_create_game::update_options_list(twindow& window)
 
 		for(const auto& slider_option : options.child_range("slider")) {
 			item["label"] = slider_option["name"];
-			data["slider_label"] = item;
+			data.emplace("slider_label", item);
 
 			ttree_view_node& node = option_node.add_child("option_slider_node", data);
 
@@ -295,7 +326,7 @@ void tmp_create_game::update_options_list(twindow& window)
 
 		for(const auto& text_entry_option : options.child_range("entry")) {
 			item["label"] = text_entry_option["name"];
-			data["text_entry_label"] = item;
+			data.emplace("text_entry_label", item);
 
 			ttree_view_node& node = option_node.add_child("option_text_entry_node", data);
 
@@ -318,7 +349,7 @@ void tmp_create_game::update_map(twindow& window)
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
 
-	const int index = find_widget<tlistbox>(&window, "map_list", false)
+	const int index = find_widget<tlistbox>(&window, "games_list", false)
 			.get_selected_row();
 
 	engine_.set_current_level(index);
@@ -339,7 +370,7 @@ void tmp_create_game::update_map(twindow& window)
 	//}
 
 	update_map_settings(window);
-	
+
 	if(find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row() == 1) {
 		update_options_list(window);
 	}
