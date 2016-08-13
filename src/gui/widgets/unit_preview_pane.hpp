@@ -51,8 +51,8 @@ public:
 		, label_name_(nullptr)
 		, label_level_(nullptr)
 		, label_details_(nullptr)
-		, tree_details_(nullptr)
 		, label_details_minimal_(nullptr)
+		, tree_details_(nullptr)
 		, button_profile_(nullptr)
 		, image_mods_()
 	{

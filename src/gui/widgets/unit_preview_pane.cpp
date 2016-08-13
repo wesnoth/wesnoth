@@ -146,7 +146,8 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 			type.alignment(),
 			type.genders().front()));
 	}
-	else if(label_details_) {
+
+	if(label_details_) {
 		std::stringstream str;
 		str << "<small>";
 
