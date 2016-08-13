@@ -31,6 +31,7 @@ class tbutton;
 class timage;
 class tlabel;
 class ttree_view;
+class ttree_view_node;
 
 namespace implementation
 {
@@ -105,7 +106,7 @@ private:
 
 	std::string image_mods_;
 
-	void print_attack_details(const std::vector<attack_type>& attacks, std::stringstream& str);
+	void print_attack_details(const std::vector<attack_type>& attacks, ttree_view_node& parent_node);
 
 	enum tstate {
 		ENABLED
