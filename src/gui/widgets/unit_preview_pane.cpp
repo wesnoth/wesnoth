@@ -213,10 +213,10 @@ static inline ttree_view_node& add_name_tree_node(ttree_view_node& header_node, 
 	//Note: we have to pass data instead of just doing 'child_label.set_label(label)' below
 	//      because the ttree_view_node::add_child need to have teh correct size of the 
 	//      node child widgets for its internal size calculations.
-	auto& child_node = header_node.add_child(type, { {"name", { {"label", label } } } });
+	//      Same is true for 'use_markup'
+	auto& child_node = header_node.add_child(type, { { "name", { { "label", label }, { "use_markup", "true" } } } });
 	auto& child_label = find_widget<tcontrol>(&child_node, "name", true);
 	child_label.set_tooltip(tooltip);
-	child_label.set_use_markup(true);
 	return child_node;
 }
 void tunit_preview_pane::set_displayed_unit(const unit& u)
