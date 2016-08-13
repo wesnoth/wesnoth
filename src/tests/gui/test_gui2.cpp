@@ -769,7 +769,9 @@ struct twrapper<gui2::tmp_create_game>
 {
 	static gui2::tmp_create_game* create()
 	{
-		return new gui2::tmp_create_game(main_config);
+		saved_game state;
+		ng::create_engine engine(test_utils::get_fake_display(1024, 768).video(), state);
+		return new gui2::tmp_create_game(main_config, engine);
 	}
 };
 
