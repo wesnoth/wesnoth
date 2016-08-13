@@ -30,20 +30,21 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join) :
-	scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<ucs4::string>(text)),
-	cursor_(text_.size()), selstart_(-1), selend_(-1),
-	grabmouse_(false), text_pos_(0), editable_(editable),
-	show_cursor_(true), show_cursor_at_(0), text_image_(nullptr),
-	wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
-	alpha_focus_(alpha_focus),
-	edit_target_(nullptr),
-	initially_pressed_keys_()
+textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
+	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<ucs4::string>(text)),
+	     cursor_(text_.size()), selstart_(-1), selend_(-1),
+	     grabmouse_(false), text_pos_(0), editable_(editable),
+	     show_cursor_(true), show_cursor_at_(0), text_image_(nullptr),
+	     wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
+	     alpha_focus_(alpha_focus),
+	     edit_target_(nullptr)
+		,listening_(false)
 {
+	// static const SDL_Rect area = d.screen_area();
+	// const int height = font::draw_text(nullptr,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);
-	determine_initially_pressed_keys();
 }
 
 textbox::~textbox()
@@ -476,6 +477,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 	const int c = key.sym;
 	const int old_cursor = cursor_;
 
+	listening_ = true;
+
 	if(editable_) {
 		if(c == SDLK_LEFT && cursor_ > 0)
 			--cursor_;
@@ -595,12 +598,6 @@ bool textbox::handle_key_down(const SDL_Event &event)
 	return changed;
 }
 
-bool textbox::handle_key_up(const SDL_Event& event)
-{
-	initially_pressed_keys_.erase(static_cast<uint16_t>(event.key.keysym.scancode));
-	return false;
-}
-
 void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 {
 	if(!enabled())
@@ -682,14 +679,11 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	const int old_cursor = cursor_;
 
-	if (event.type == SDL_TEXTINPUT && is_listening()) {
+	if (event.type == SDL_TEXTINPUT && listening_) {
 		changed = handle_text_input(event);
-	}
-	else if (event.type == SDL_KEYDOWN) {
-		changed = handle_key_down(event);
-	}
-	else if (event.type == SDL_KEYUP) {
-		changed = handle_key_up(event);
+	} else
+		if (event.type == SDL_KEYDOWN) {
+			changed = handle_key_down(event);
 	}
 	else {
 		if(event.type != SDL_KEYDOWN || (!was_forwarded && focus(&event) != true)) {
@@ -725,19 +719,6 @@ void textbox::pass_event_to_target(const SDL_Event& event)
 void textbox::set_edit_target(textbox* target)
 {
 	edit_target_ = target;
-}
-
-void textbox::determine_initially_pressed_keys()
-{
-	int num_keys;
-	const uint8_t* keys = SDL_GetKeyboardState(&num_keys);
-	for (uint16_t i = 0u; i < static_cast<uint16_t>(num_keys); ++i)
-	{
-		if (keys[i] == 1u)
-		{
-			initially_pressed_keys_.insert(i);
-		}
-	}
 }
 
 } //end namespace gui
