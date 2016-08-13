@@ -424,6 +424,46 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				}
 			}
 		}
+
+		for(config adv : type.modification_advancements()) {
+			for(config effect : adv.child_range("effect")) {
+				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
+					for(config::any_child spec : effect.child("specials").all_children_range()) {
+						if(!spec.cfg["name"].empty()) {
+							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							if(!type.hide_help()) {
+								//add a link in the list of units having this special
+								std::string type_name = type.type_name();
+								//check for variations (walking corpse/soulless etc)
+								const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
+								std::string ref_id = section_prefix + unit_prefix + type.id();
+								//we put the translated name at the beginning of the hyperlink,
+								//so the automatic alphabetic sorting of std::set can use it
+								std::string link = make_link(type_name, ref_id);
+								special_units[spec.cfg["name"]].insert(link);
+							}
+						}
+					}
+				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
+					for(config::any_child spec : effect.child("set_specials").all_children_range()) {
+						if(!spec.cfg["name"].empty()) {
+							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							if(!type.hide_help()) {
+								//add a link in the list of units having this special
+								std::string type_name = type.type_name();
+								//check for variations (walking corpse/soulless etc)
+								const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
+								std::string ref_id = section_prefix + unit_prefix + type.id();
+								//we put the translated name at the beginning of the hyperlink,
+								//so the automatic alphabetic sorting of std::set can use it
+								std::string link = make_link(type_name, ref_id);
+								special_units[spec.cfg["name"]].insert(link);
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	for (std::map<t_string, std::string>::iterator s = special_description.begin();
