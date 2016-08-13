@@ -41,7 +41,8 @@ class context
 public:
 	context() :
 		handlers(),
-		focused_handler(handlers.end())
+		focused_handler(handlers.end()),
+		staging_handlers()
 	{
 	}
 
@@ -53,9 +54,11 @@ public:
 	bool remove_handler(sdl_handler* ptr);
 	void cycle_focus();
 	void set_focus(const sdl_handler* ptr);
+	void add_staging_handlers();
 
 	handler_list handlers;
 	handler_list::iterator focused_handler;
+	std::vector<sdl_handler*> staging_handlers;
 };
 
 //any classes that derive from this class will automatically

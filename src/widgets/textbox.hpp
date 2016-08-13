@@ -17,8 +17,6 @@
 
 #include "serialization/unicode.hpp"
 #include "font.hpp"
-#include <cstdint>
-#include <set>
 
 #include "scrollarea.hpp"
 
@@ -94,15 +92,11 @@ private:
 
 	textbox* edit_target_;
 
-	/* This set contains all the keys which were pressed when the textbox was created.
-	 * This is needed to block the textbox from receiving text input from a hotkey
-	 * that was used to spawn the textbox in the first place.
+	/* This boolean is used to filter out any TextInput events that are received without
+	 * the corresponding KeyPress events. This is needed to avoid a bug when creating a
+	 * textbox using a hotkey.
 	 * */
-	std::set<uint16_t> initially_pressed_keys_;
-
-	bool is_listening() const { return initially_pressed_keys_.empty(); }
-
-	void determine_initially_pressed_keys();
+	bool listening_;
 
 	void handle_event(const SDL_Event& event, bool was_forwarded);
 
@@ -123,7 +117,6 @@ private:
 	bool show_scrollbar() const;
 	bool handle_text_input(const SDL_Event& event);
 	bool handle_key_down(const SDL_Event &event);
-	bool handle_key_up(const SDL_Event &event);
 };
 
 }
