@@ -18,6 +18,11 @@ Version 1.13.5+dev:
    * Fix game map sometimes showing and buttons sometimes not rendered properly in story screen (bug #24553)
    * Improved font rendering on Windows.
  * WML Engine:
+   * New attributes for [message] with [option]
+     - Added variable= to [message]: if specified, gives variable name to receive the [option] index (1..n) selected
+       only used if any [option] appear
+     - Added value= to [option]: if specified, gives value to store in variable instead of index number, only used
+       if variable= appears in [message]
    * New attributes for [role]:
      - search_recall_list=yes|no|only(default yes) controls where to look
      - reassign=yes|no(default yes) if no, check for a unit and do not assign to another
