@@ -43,6 +43,7 @@
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
+#include <boost/range/iterator_range.hpp>
 
 #include "exceptions.hpp"
 #include "tstring.hpp"
@@ -206,8 +207,8 @@ public:
 		Itor i_;
 	};
 
-	typedef std::pair<child_iterator,child_iterator> child_itors;
-	typedef std::pair<const_child_iterator,const_child_iterator> const_child_itors;
+	typedef boost::iterator_range<child_iterator> child_itors;
+	typedef boost::iterator_range<const_child_iterator> const_child_itors;
 
 	/**
 	 * Variant for storing WML attributes.

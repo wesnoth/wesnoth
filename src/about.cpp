@@ -150,7 +150,7 @@ void set_about(const config &cfg)
 	for (const config &campaign : cfg.child_range("campaign"))
 	{
 		config::const_child_itors abouts = campaign.child_range("about");
-		if (abouts.first == abouts.second) continue;
+		if (abouts.empty()) continue;
 
 		config temp;
 		std::ostringstream text;

@@ -136,9 +136,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	}
 	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
 	DBG_LB << dump_games_map(games_by_id_);
-	config::child_itors range = gamelist_.child("gamelist").child_range("game");
-	for(config::child_iterator i = range.first; i != range.second; ++i) {
-		config& c = *i;
+	for(config& c : gamelist_.child("gamelist").child_range("game")) {
 		DBG_LB << "data process: " << c["id"] << " ("
 			   << c[config::diff_track_attribute] << ")\n";
 		int game_id = c["id"];

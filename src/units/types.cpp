@@ -723,12 +723,10 @@ const std::string& unit_type::flag_rgb() const {
 bool unit_type::has_random_traits() const
 {
 	if (num_traits() == 0) return false;
-	config::const_child_itors t = possible_traits();
-	while(t.first != t.second) {
-		const config::attribute_value& availability = (*t.first)["availability"];
+	for(const auto& cfg : possible_traits()) {
+		const config::attribute_value& availability = cfg["availability"];
 		if(availability.blank()) return true;
 		if(strcmp(availability.str().c_str(), "musthave") != 0) return true;
-		++t.first;
 	}
 	return false;
 }

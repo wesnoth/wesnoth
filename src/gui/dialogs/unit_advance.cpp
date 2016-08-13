@@ -76,7 +76,7 @@ void tunit_advance::pre_show(twindow& window)
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {
-			auto iter = sample.get_modifications().child_range("advancement").second;
+			auto iter = sample.get_modifications().child_range("advancement").end();
 			iter--;
 
 			if(iter->has_attribute("image")) {

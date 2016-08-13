@@ -1666,10 +1666,10 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
 		config::const_child_itors its = game_config_manager::get()->game_config().child_range("era");
-		std::string eras_list((*(its.first))["id"]);
-		++its.first;
-		for(; its.first != its.second; ++its.first) {
-			eras_list = eras_list + "," + (*(its.first))["id"];
+		std::string eras_list(its.front()["id"]);
+		its.drop_front();
+		for(const auto& cfg : its) {
+			eras_list = eras_list + "," + cfg["id"];
 		}
 		return_string_attrib("eras", eras_list);
 	}
@@ -3475,7 +3475,7 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
 			ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
 		}
 		// Override AI parameters
-		if (ai.first != ai.second) {
+		if (!ai.empty()) {
 			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
 		}
 		// Change team color

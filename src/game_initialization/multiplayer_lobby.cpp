@@ -984,7 +984,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 		return false;
 	}
 
-	config::const_child_iterator gi = list.child_range("game").first, gs = gi;
+	config::const_child_iterator gi = list.child_range("game").begin(), gs = gi;
 	std::advance(gi, row1.id);
 	const config &game1 = *gi;
 	gi = gs;

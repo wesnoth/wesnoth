@@ -639,8 +639,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	{
 		const unit_type &type = i.second;
 		if (description_type(type) == FULL_DESCRIPTION) {
-			config::const_child_itors traits = type.possible_traits();
-			if (traits.first != traits.second) {
+			if (config::const_child_itors traits = type.possible_traits()) {
 				for (const config & trait : traits) {
 					const std::string trait_id = trait["id"];
 					trait_list.insert(std::make_pair(trait_id, trait));

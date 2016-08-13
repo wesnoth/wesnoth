@@ -34,10 +34,7 @@ namespace
 	auto get_child_range(TConfig& cfg, const std::string& key, int start, int count) -> decltype(cfg.child_range(key))
 	{
 		auto res = cfg.child_range(key);
-		std::advance(res.first, start);
-		res.second = res.first;
-		std::advance(res.second, count);
-		return res;
+		return { res.begin() + start, res.begin() + start + count};
 	}
 
 	void resolve_negative_value(int size, int& val)

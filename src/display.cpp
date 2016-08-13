@@ -3400,12 +3400,12 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	SDL_Rect ellipsis_area = rect;
 
 	for (config::const_child_itors elements = report.child_range("element");
-		 elements.first != elements.second; ++elements.first)
+		 elements.begin() != elements.end(); elements.drop_front())
 	{
 		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;
 
-		std::string t = (*elements.first)["text"];
+		std::string t = elements.front()["text"];
 		if (!t.empty())
 		{
 			if (used_ellipsis) goto skip_element;
@@ -3431,9 +3431,9 @@ void display::refresh_report(std::string const &report_name, const config * new_
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
-			config::const_child_iterator ee = elements.first;
+			config::const_child_iterator ee = elements.begin();
 			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
-				++ee != elements.second && !(*ee)["text"].empty())
+				++ee != elements.end() && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
 				// (to indicate that next elements have not enough space)
@@ -3463,7 +3463,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 				x += area.w;
 			}
 		}
-		else if (!(t = (*elements.first)["image"].str()).empty())
+		else if (!(t = elements.front()["image"].str()).empty())
 		{
 			if (used_ellipsis) goto skip_element;
 
@@ -3503,17 +3503,17 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		}
 
 		skip_element:
-		t = (*elements.first)["tooltip"].t_str().base_str();
+		t = elements.front()["tooltip"].t_str().base_str();
 		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, (*elements.first)["help"].t_str().base_str());
+				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().base_str());
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
 				// TODO: assign an action
 				ellipsis_tooltip << t;
-				config::const_child_iterator ee = elements.first;
-				if (++ee != elements.second)
+				config::const_child_iterator ee = elements.begin();
+				if (++ee != elements.end())
 					ellipsis_tooltip << "\n  _________\n\n";
 			}
 		}

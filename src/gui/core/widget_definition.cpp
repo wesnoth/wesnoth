@@ -145,7 +145,7 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
 	 * extra header dependencies.
 	 */
 	config::const_child_itors itors = cfg.child_range("resolution");
-	VALIDATE(itors.first != itors.second, _("No resolution defined."));
+	VALIDATE(!itors.empty(), _("No resolution defined."));
 }
 
 } // namespace gui2

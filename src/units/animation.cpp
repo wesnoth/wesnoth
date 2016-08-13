@@ -770,10 +770,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["apply_to"] = "attack";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
 		config::const_child_itors missile_fs = anim.child_range("missile_frame");
-		if (anim["offset"].empty() && missile_fs.first == missile_fs.second) {
+		if (anim["offset"].empty() && missile_fs.empty()) {
 			anim["offset"] ="0~0.6,0.6~0";
 		}
-		if (missile_fs.first != missile_fs.second) {
+		if (!missile_fs.empty()) {
 			if (anim["missile_offset"].empty()) anim["missile_offset"] = "0~0.8";
 			if (anim["missile_layer"].empty()) anim["missile_layer"] = missile_layer;
 			config tmp;
@@ -883,7 +883,7 @@ unit_animation::particule::particule(
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
-	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
+	if(!range.empty() && cfg[frame_string+"start_time"].empty()) {
 		for (const config &frame : range) {
 			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
 		}

@@ -302,11 +302,7 @@ void wait::join_game(bool observe)
 			++nb_sides;
 		}
 		if (!side_choice) {
-			size_t count = 0;
-			for(config::child_itors its = get_scenario().child_range("side"); its.second != its.first; ++its.first) {
-				++count;
-			}
-			DBG_MP << "could not find a side, all " << count << " sides were unsuitable\n";
+			DBG_MP << "could not find a side, all " << get_scenario().child_count("side") << " sides were unsuitable\n";
 			set_result(QUIT);
 			return;
 		}
@@ -323,7 +319,7 @@ void wait::join_game(bool observe)
 			if (!era)
 				throw config::error(_("No era information found."));
 			config::const_child_itors possible_sides = era.child_range("multiplayer_side");
-			if (possible_sides.first == possible_sides.second) {
+			if (possible_sides.empty()) {
 				set_result(QUIT);
 				throw config::error(_("No multiplayer sides found"));
 			}

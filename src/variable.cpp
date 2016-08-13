@@ -47,7 +47,7 @@ namespace
 		assert(resources::gamedata);
 		config::const_child_itors range = resources::gamedata->get_variable_access_read(varname).as_array();
 
-		if(range.first == range.second)
+		if(range.empty())
 		{
 			return as_nonempty_range_default.child_range("_");
 		}
@@ -224,7 +224,7 @@ size_t vconfig::count_children(const std::string& key) const
 				try
 				{
 					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
-					n += range.second - range.first;
+					n += range.size();
 				}
 				catch(const invalid_variablename_exception&)
 				{
@@ -254,7 +254,7 @@ vconfig vconfig::child(const std::string& key) const
 			try
 			{
 				config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
-				return vconfig(*range.first, true);
+				return vconfig(range.front(), true);
 			}
 			catch(const invalid_variablename_exception&)
 			{
@@ -329,7 +329,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 
 			config::const_child_itors range = vinfo.as_array();
 
-			if (++inner_index_ < std::distance(range.first, range.second))
+			if (++inner_index_ < int(range.size()))
 			{
 				return *this;
 			}
@@ -380,8 +380,8 @@ vconfig vconfig::all_children_iterator::get_child() const
 		{
 			config::const_child_itors range = as_nonempty_range(vconfig(i_->cfg)["variable"]);
 
-			std::advance(range.first, inner_index_);
-			return vconfig(*range.first, true);
+			range.advance_begin(inner_index_);
+			return vconfig(range.front(), true);
 		}
 		catch(const invalid_variablename_exception&)
 		{

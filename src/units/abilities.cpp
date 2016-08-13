@@ -418,8 +418,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 
 bool unit::has_ability_type(const std::string& ability) const
 {
-	config::const_child_itors itors = this->abilities_.child_range(ability);
-	return itors.first != itors.second;
+	return !abilities_.child_range(ability).empty();
 }
 
 

@@ -268,7 +268,7 @@ const std::string& twindow_builder::read(const config& cfg)
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".\n";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
-	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
 	for(const auto & i : cfgs)
 	{
 		resolutions.push_back(tresolution(i));

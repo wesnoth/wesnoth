@@ -519,12 +519,11 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	//don't use the unit_type's attacks if this config has its own defined
-	config::const_child_itors cfg_range = cfg.child_range("attack");
-	if(cfg_range.first != cfg_range.second) {
+	if(config::const_child_itors cfg_range = cfg.child_range("attack")) {
 		attacks_.clear();
-		do {
-			attacks_.push_back(attack_type(*cfg_range.first));
-		} while(++cfg_range.first != cfg_range.second);
+		for (const config& cfg : cfg_range) {
+			attacks_.push_back(attack_type(cfg));
+		}
 	}
 
 	//If cfg specifies [advancement]s, replace this [advancement]s with them.
@@ -536,11 +535,9 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 
 	//don't use the unit_type's abilities if this config has its own defined
 	//Why do we allow multiple [abilities] tags?
-	cfg_range = cfg.child_range("abilities");
-	if(cfg_range.first != cfg_range.second) {
-		this->abilities_.clear();
-		for(const config& abilities : cfg_range)
-		{
+	if (config::const_child_itors cfg_range = cfg.child_range("abilities")) {
+		abilities_.clear();
+		for (const config& abilities : cfg_range) {
 			this->abilities_.append(abilities);
 		}
 	}
@@ -863,7 +860,7 @@ void unit::generate_traits(bool musthaveonly)
 
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
-	int nb_traits = std::distance(current_traits.first, current_traits.second);
+	int nb_traits = current_traits.size();
 	int max_traits = u_type.num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{

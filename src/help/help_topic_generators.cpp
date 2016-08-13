@@ -391,8 +391,7 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the possible traits of the unit, cross-reference them
 	// to their respective topics.
-	config::const_child_itors traits = type_.possible_traits();
-	if (traits.first != traits.second) {
+	if (config::const_child_itors traits = type_.possible_traits()) {
 		std::vector<trait_data> must_have_traits;
 		std::vector<trait_data> random_traits;
 
@@ -556,8 +555,8 @@ std::string unit_topic_generator::operator()() const {
 
 	// Generate the movement type of the unit, with resistance, defense, movement, jamming and vision data updated according to any 'musthave' traits which always apply
 	movetype movement_type = type_.movement_type();
-	traits = type_.possible_traits();
-	if (traits.first != traits.second && type_.num_traits() > 0) {
+	config::const_child_itors traits = type_.possible_traits();
+	if (!traits.empty() && type_.num_traits() > 0) {
 		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
 				for (const config & effect : t.child_range("effect")) {
