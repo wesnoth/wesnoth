@@ -91,6 +91,7 @@ void ttree_view::remove_node(ttree_view_node* node)
 void ttree_view::clear()
 {
 	get_root_node().clear();
+	resize_content(-content_grid()->get_size().x, -content_grid()->get_size().y);
 }
 
 void
