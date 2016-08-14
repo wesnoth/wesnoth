@@ -827,9 +827,9 @@ void server::handle_delete(const server::request& req)
 	}
 
 	config::child_itors itors = campaigns().child_range("campaign");
-	for(size_t index = 0; itors.first != itors.second; ++index, ++itors.first)
+	for(size_t index = 0; !itors.empty(); ++index, itors.pop_front())
 	{
-		if(&campaign == &*itors.first) {
+		if(&campaign == &itors.front()) {
 			campaigns().remove_child("campaign", index);
 			break;
 		}
