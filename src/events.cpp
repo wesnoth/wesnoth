@@ -34,7 +34,6 @@
 #include <utility>
 #include <vector>
 #include <algorithm>
-#include <iterator>
 #include <boost/thread.hpp>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
@@ -44,10 +43,7 @@ namespace events
 
 void context::add_handler(sdl_handler* ptr)
 {
-	/* Add new handlers to the staging list initially.
-	This ensures that if an event handler adds more handlers, the new handlers
-	won't be called for the event that caused them to be added. */
-	staging_handlers.push_back(ptr);
+	handlers.push_back(ptr);
 }
 
 bool context::remove_handler(sdl_handler* ptr)
@@ -68,18 +64,7 @@ bool context::remove_handler(sdl_handler* ptr)
 
 		if(i == handlers.end()) {
 			--depth;
-
-			// The handler may be in the staging area. Search it from there.
-			auto j = std::find(staging_handlers.begin(), staging_handlers.end(), ptr);
-			if (j != staging_handlers.end())
-			{
-				staging_handlers.erase(j);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return false;
 		}
 
 		if(i == focused_handler) {
@@ -140,12 +125,6 @@ void context::set_focus(const sdl_handler* ptr)
 	if(i != handlers.end() && (*i)->requires_event_focus()) {
 		focused_handler = i;
 	}
-}
-
-void context::add_staging_handlers()
-{
-	std::copy(staging_handlers.begin(), staging_handlers.end(), std::back_inserter(handlers));
-	staging_handlers.clear();
 }
 
 context::~context()
@@ -462,11 +441,6 @@ void pump()
 	ev_end = events.end();
 
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
-		for (context& c : event_contexts)
-		{
-			c.add_staging_handlers();
-		}
-
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
 
