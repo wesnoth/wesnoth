@@ -26,6 +26,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -36,15 +37,12 @@
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
-#include "formatter.hpp"
-#include "marked-up_text.hpp"
 
 #include <boost/iterator/zip_iterator.hpp>
 
 #include "utils/functional.hpp"
 
 namespace {
-
 	template <typename... T>
 	auto zip(const T&... containers) -> boost::iterator_range<boost::zip_iterator<decltype(boost::make_tuple(std::begin(containers)...))>>
 	{
@@ -53,6 +51,7 @@ namespace {
 		return boost::make_iterator_range(zip_begin, zip_end);
 	}
 }
+
 namespace gui2
 {
 
@@ -73,7 +72,7 @@ void tunit_preview_pane::finalize_setup()
 	label_details_          = find_widget<tcontrol>(this, "type_details", false, false);
 	label_details_minimal_  = find_widget<tcontrol>(this, "type_details_minimal", false, false);
 
-	tree_details_ = find_widget<ttree_view>(this, "tree_details", false, false);
+	tree_details_           = find_widget<ttree_view>(this, "tree_details", false, false);
 
 	// Profile button
 	button_profile_ = find_widget<tbutton>(this, "type_profile", false, false);
@@ -84,15 +83,16 @@ void tunit_preview_pane::finalize_setup()
 	}
 }
 
-
 static inline ttree_view_node& add_name_tree_node(ttree_view_node& header_node, const std::string& type, const t_string& label, const t_string& tooltip = "")
 {
-	//Note: we have to pass data instead of just doing 'child_label.set_label(label)' below
-	//      because the ttree_view_node::add_child need to have teh correct size of the 
-	//      node child widgets for its internal size calculations.
-	//      Same is true for 'use_markup'
+	/* Note: We have to pass data instead of just doing 'child_label.set_label(label)' below
+	 * because the ttree_view_node::add_child needs to have the correct size of the
+	 * node child widgets for its internal size calculations.
+	 * Same is true for 'use_markup'
+	 */
 	auto& child_node = header_node.add_child(type, { { "name",{ { "label", label },{ "use_markup", "true" } } } });
 	auto& child_label = find_widget<tcontrol>(&child_node, "name", true);
+
 	child_label.set_tooltip(tooltip);
 	return child_node;
 }
@@ -186,8 +186,8 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 			type.alignment(),
 			type.genders().front()));
 	}
-	if (tree_details_) {
 
+	if(tree_details_) {
 		std::stringstream str;
 		str << "<small>";
 
@@ -213,8 +213,8 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 		// Print trait details
 		{
 			ttree_view_node* header_node = nullptr;
-			
-			for (const auto& tr : type.possible_traits()) {
+
+			for(const auto& tr : type.possible_traits()) {
 				t_string name = tr[type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name"];
 				if (tr["availability"] != "musthave" || name.empty()) {
 					continue;
@@ -235,7 +235,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 		}
 
 		// Print ability details
-		if (!type.abilities().empty()) {
+		if(!type.abilities().empty()) {
 
 			auto& header_node = add_name_tree_node(
 				tree_details_->get_root_node(),
@@ -243,8 +243,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 				"<b>" + _("Abilities") + "</b>"
 			);
 
-			for (const auto& ab : zip(type.abilities() , type.ability_tooltips()))
-			{
+			for(const auto& ab : zip(type.abilities() , type.ability_tooltips())) {
 				add_name_tree_node(
 					header_node,
 					"item",
@@ -253,9 +252,11 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 				);
 			}
 		}
+
 		print_attack_details(type.attacks(), tree_details_->get_root_node());
 	}
 }
+
 void tunit_preview_pane::set_displayed_unit(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
@@ -337,8 +338,7 @@ void tunit_preview_pane::set_displayed_unit(const unit& u)
 		label_details_minimal_->set_use_markup(true);
 	}
 
-	if (tree_details_) {
-
+	if(tree_details_) {
 		std::stringstream str;
 		str << "<small>";
 
@@ -373,7 +373,7 @@ void tunit_preview_pane::set_displayed_unit(const unit& u)
 				add_name_tree_node(
 					header_node,
 					"item",
-					u.trait_names()[i], 
+					u.trait_names()[i],
 					u.trait_descriptions()[i]
 				);
 			}
