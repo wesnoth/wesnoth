@@ -64,6 +64,10 @@ game_stringfixes = {
 "wesnoth" : (
 # conversion added in 1.11.10+dev
 ("Save and Abort game", "Save and abort game"),
+
+# conversion added in 1.13.5+dev
+("You don’t have a leader to", "You do not have a leader to"),
+("You don’t have enough gold to recruit that unit", "You do not have enough gold to recruit that unit"),
 ),
 
 "wesnoth-editor" : (
@@ -74,6 +78,9 @@ game_stringfixes = {
 "wesnoth-lib" : (
 # conversion added in 1.11.15+dev
 ("SP/MP Campaigns", "SP/MP campaigns"),
+
+# conversion added in 1.13.5+dev
+("If you don’t want to receive messages", "If you do not want to receive messages"),
 ),
 
 "wesnoth-httt" : (

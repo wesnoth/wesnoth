@@ -1075,7 +1075,7 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 			add_label_data(data,
 						   "log_text",
 						   VGETTEXT("Whisper session with $name started. "
-									"If you don’t want to receive messages "
+									"If you do not want to receive messages "
 									"from this user, "
 									"type /ignore $name\n",
 									symbols));

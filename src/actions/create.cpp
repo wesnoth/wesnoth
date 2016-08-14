@@ -333,7 +333,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
 	{
 	case RECRUIT_NO_LEADER:
 		LOG_NG << "No leaders on side " << side << " when recalling " << unit_recall.id() << ".\n";
-		return _("You don’t have a leader to recall with.");
+		return _("You do not have a leader to recall with.");
 
 	case RECRUIT_NO_ABLE_LEADER:
 		LOG_NG << "No leader is able to recall " << unit_recall.id() << " on side " << side << ".\n";
@@ -469,7 +469,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 	{
 	case RECRUIT_NO_LEADER:
 		LOG_NG << "No leaders on side " << side << " when recruiting '" << unit_type << "'.\n";
-		return _("You don’t have a leader to recruit with.");
+		return _("You do not have a leader to recruit with.");
 
 	case RECRUIT_NO_ABLE_LEADER:
 		LOG_NG << "No leader is able to recruit '" << unit_type << "' on side " << side << ".\n";

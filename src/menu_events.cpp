@@ -303,7 +303,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 	if (u_type->cost() > current_team.gold() - (pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0)) {
 		gui2::show_transient_message(gui_->video(), "",
-			_("You don’t have enough gold to recruit that unit"));
+			_("You do not have enough gold to recruit that unit"));
 		return false;
 	}
 
