@@ -29,7 +29,7 @@ namespace gui2
 class timage : public tcontrol
 {
 public:
-	timage() : tcontrol(COUNT)
+	timage() : tcontrol(COUNT), best_size_(0, 0)
 	{
 	}
 
@@ -60,6 +60,11 @@ public:
 	}
 
 	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
+
+	void set_best_size(const tpoint& best_size)
+	{
+		best_size_ = best_size;
+	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -93,6 +98,9 @@ private:
 		COUNT
 	};
 
+	/** When we're used as a fixed size item, this holds the best size. */
+	tpoint best_size_;
+
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
@@ -119,6 +127,12 @@ struct tbuilder_image : public tbuilder_control
 	explicit tbuilder_image(const config& cfg);
 
 	using tbuilder_control::build;
+
+	/** The width of the widget. */
+	tformula<unsigned> width;
+
+	/** The height of the widget. */
+	tformula<unsigned> height;
 
 	twidget* build() const;
 };
