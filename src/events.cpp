@@ -52,16 +52,12 @@ void context::add_handler(sdl_handler* ptr)
 
 bool context::remove_handler(sdl_handler* ptr)
 {
-	if(handlers.empty()) {
-		return false;
-	}
-
 	static int depth = 0;
 	++depth;
 
 	// The handler is most likely on the back of the events list,
 	// so look there first, otherwise do a complete search.
-	if(handlers.back() == ptr) {
+	if(!handlers.empty() && handlers.back() == ptr) {
 		if(focused_handler != handlers.end() && *focused_handler == ptr) {
 			focused_handler = handlers.end();
 		}
