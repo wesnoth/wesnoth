@@ -32,9 +32,9 @@ twidget::twidget()
 	, y_(-1)
 	, width_(0)
 	, height_(0)
-	, layout_size_(tpoint(0, 0))
+	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	, last_best_size_(tpoint(0, 0))
+	, last_best_size_()
 #endif
 	, linked_group_()
 	, is_dirty_(true)
@@ -56,9 +56,9 @@ twidget::twidget(const tbuilder_widget& builder)
 	, y_(-1)
 	, width_(0)
 	, height_(0)
-	, layout_size_(tpoint(0, 0))
+	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	, last_best_size_(tpoint(0, 0))
+	, last_best_size_()
 #endif
 	, linked_group_(builder.linked_group)
 	, is_dirty_(true)
@@ -164,7 +164,7 @@ void twidget::layout_initialise(const bool /*full_initialisation*/)
 	assert(visible_ != tvisible::invisible);
 	assert(get_window());
 
-	layout_size_ = tpoint(0, 0);
+	layout_size_ = tpoint();
 	if(!linked_group_.empty()) {
 		get_window()->add_linked_widget(linked_group_, this);
 	}
@@ -190,7 +190,7 @@ tpoint twidget::get_best_size() const
 	assert(visible_ != tvisible::invisible);
 
 	tpoint result = layout_size_;
-	if(result == tpoint(0, 0)) {
+	if(result == tpoint()) {
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
 		if(!get_window()->get_need_layout() && !linked_group_.empty())

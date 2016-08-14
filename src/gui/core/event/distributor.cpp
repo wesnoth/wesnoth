@@ -297,7 +297,7 @@ void tmouse_motion::show_tooltip()
 
 	hover_timer_ = 0;
 	hover_widget_ = nullptr;
-	hover_position_ = tpoint(0, 0);
+	hover_position_ = tpoint();
 }
 
 void tmouse_motion::mouse_leave()
@@ -354,7 +354,7 @@ void tmouse_motion::stop_hover_timer()
 
 		hover_timer_ = 0;
 		hover_widget_ = nullptr;
-		hover_position_ = tpoint(0, 0);
+		hover_position_ = tpoint();
 	}
 }
 

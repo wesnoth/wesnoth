@@ -275,7 +275,7 @@ bool tlistbox::update_content_size()
 		return true;
 	}
 
-	if(get_size() == tpoint(0, 0)) {
+	if(get_size() == tpoint()) {
 		return false;
 	}
 

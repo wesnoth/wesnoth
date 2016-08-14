@@ -208,8 +208,7 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 	if(!label_.empty() && can_wrap()) {
 
 		tpoint size = get_best_text_size(
-				tpoint(0, 0),
-				tpoint(maximum_width - config_->text_extra_width, 0));
+				tpoint(), tpoint(maximum_width - config_->text_extra_width, 0));
 
 		size.x += config_->text_extra_width;
 		size.y += config_->text_extra_height;
@@ -334,7 +333,7 @@ void tcontrol::set_label(const t_string& label)
 	}
 
 	label_ = label;
-	set_layout_size(tpoint(0, 0));
+	set_layout_size(tpoint());
 	update_canvas();
 	set_is_dirty(true);
 }

@@ -328,16 +328,16 @@ void thandler::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
-			mouse(SDL_MOUSE_MOTION, tpoint(event.motion.x, event.motion.y));
+			mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-			mouse_button_down(tpoint(event.button.x, event.button.y),
+			mouse_button_down({event.button.x, event.button.y},
 							  event.button.button);
 			break;
 
 		case SDL_MOUSEBUTTONUP:
-			mouse_button_up(tpoint(event.button.x, event.button.y),
+			mouse_button_up({event.button.x, event.button.y},
 							event.button.button);
 			break;
 
@@ -399,8 +399,7 @@ void thandler::handle_event(const SDL_Event& event)
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize(
-							tpoint(event.window.data1, event.window.data2));
+					video_resize({event.window.data1, event.window.data2});
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:

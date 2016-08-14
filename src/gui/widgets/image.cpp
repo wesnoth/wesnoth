@@ -48,8 +48,8 @@ tpoint timage::calculate_best_size() const
 	const tpoint minimum = get_config_default_size();
 	const tpoint maximum = get_config_maximum_size();
 
-	tpoint result = tpoint(image->w, image->h);
-	if(best_size_ != tpoint(0, 0)) {
+	tpoint result = {image->w, image->h};
+	if(best_size_ != tpoint()) {
 		result = best_size_;
 	}
 

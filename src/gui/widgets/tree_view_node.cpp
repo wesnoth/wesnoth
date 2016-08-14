@@ -154,7 +154,7 @@ ttree_view_node& ttree_view_node::add_child(
 		return *itor;
 	}
 
-	if(tree_view().get_size() == tpoint(0, 0)) {
+	if(tree_view().get_size() == tpoint()) {
 		return *itor;
 	}
 
@@ -395,7 +395,7 @@ bool ttree_view_node::disable_click_dismiss() const
 tpoint ttree_view_node::get_current_size(bool assume_visible) const
 {
 	if(!assume_visible && parent_node_ && parent_node_->is_folded()) {
-		return tpoint(0, 0);
+		return tpoint();
 	}
 
 	tpoint size = get_folded_size();
@@ -769,7 +769,7 @@ ttree_view_node* ttree_view_node::get_node_below()
 				}
 				break;
 			}
-		}	
+		}
 	}
 	return nullptr;
 }

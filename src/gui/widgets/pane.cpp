@@ -369,7 +369,7 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 					 * what seems to work properly when showing and hiding
 					 * items. Might fail with new items (haven't tested yet).
 					 */
-					item.grid->place(tpoint(0, 0), item.grid->get_best_size());
+					item.grid->place(tpoint(), item.grid->get_best_size());
 				}
 				place_or_set_origin_children();
 				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";

@@ -217,7 +217,7 @@ tcontainer_::init_grid(const std::shared_ptr<tbuilder_grid>& grid_builder)
 
 tpoint tcontainer_::border_space() const
 {
-	return tpoint(0, 0);
+	return tpoint();
 }
 
 } // namespace gui2

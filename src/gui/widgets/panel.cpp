@@ -81,8 +81,7 @@ tpoint tpanel::border_space() const
 					config());
 	assert(conf);
 
-	return tpoint(conf->left_border + conf->right_border,
-				  conf->top_border + conf->bottom_border);
+	return tpoint(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
 const std::string& tpanel::get_control_type() const

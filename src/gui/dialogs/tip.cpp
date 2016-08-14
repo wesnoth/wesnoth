@@ -68,7 +68,7 @@ REGISTER_WINDOW(tooltip_large)
 class ttip : public tpopup
 {
 public:
-	ttip() : tpopup(), window_id_(), message_(), mouse_(tpoint(0, 0))
+	ttip() : tpopup(), window_id_(), message_(), mouse_()
 	{
 	}
 

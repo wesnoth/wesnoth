@@ -80,7 +80,7 @@ void ttree_view::remove_node(ttree_view_node* node)
 
 	node->parent_node_->children_.erase(itor);
 
-	if(get_size() == tpoint(0, 0)) {
+	if(get_size() == tpoint()) {
 		return;
 	}
 

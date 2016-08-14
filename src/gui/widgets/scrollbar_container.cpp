@@ -310,14 +310,14 @@ tpoint tscrollbar_container::calculate_best_size() const
 	const tpoint vertical_scrollbar
 			= vertical_scrollbar_grid_->get_visible()
 					  == twidget::tvisible::invisible
-					  ? tpoint(0, 0)
+					  ? tpoint()
 					  : vertical_scrollbar_grid_->get_best_size();
 
 	/***** get horizontal scrollbar size *****/
 	const tpoint horizontal_scrollbar
 			= horizontal_scrollbar_grid_->get_visible()
 					  == twidget::tvisible::invisible
-					  ? tpoint(0, 0)
+					  ? tpoint()
 					  : horizontal_scrollbar_grid_->get_best_size();
 
 	/***** get content size *****/
@@ -555,7 +555,7 @@ bool tscrollbar_container::content_resize_request(const bool force_sizing)
 	DBG_GUI_L << LOG_HEADER << " wanted size " << best_size
 			  << " available size " << size << ".\n";
 
-	if(size == tpoint(0, 0)) {
+	if(size == tpoint()) {
 		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.\n";
 		return false;
 	}
@@ -621,7 +621,7 @@ bool tscrollbar_container::content_resize_request(const int width_modification,
 			  << width_modification << " wanted height modification "
 			  << height_modification << ".\n";
 
-	if(get_size() == tpoint(0, 0)) {
+	if(get_size() == tpoint()) {
 		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.\n";
 		return false;
 	}
@@ -1127,8 +1127,7 @@ void tscrollbar_container::scrollbar_moved()
 								 : vertical_scrollbar_->get_item_position()
 								   * vertical_scrollbar_->get_step_size();
 
-	const tpoint content_origin = tpoint(content_->get_x() - x_offset,
-										 content_->get_y() - y_offset);
+	const tpoint content_origin = {content_->get_x() - x_offset, content_->get_y() - y_offset};
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_rectangle(content_visible_area_);

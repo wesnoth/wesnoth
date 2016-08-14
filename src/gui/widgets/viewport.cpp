@@ -108,7 +108,7 @@ void tviewport::place(const tpoint& origin, const tpoint& size)
 {
 	twidget::place(origin, size);
 
-	widget_.place(tpoint(0, 0), widget_.get_best_size());
+	widget_.place(tpoint(), widget_.get_best_size());
 }
 
 void tviewport::layout_initialise(const bool full_initialisation)
