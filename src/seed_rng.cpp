@@ -28,12 +28,6 @@
 
 #define SEED_RNG_USE_BOOST_RANDOM_DEVICE
 
-//Boost does not support random device on windows before v 1.43.0
-//http://www.boost.org/users/history/version_1_43_0.html
-#if (defined(_WIN32) && (BOOST_VERSION < 104300))
-#undef SEED_RNG_USE_BOOST_RANDOM_DEVICE
-#endif
-
 /*****
   End preprocessor checks
  *****/

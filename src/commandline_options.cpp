@@ -28,7 +28,6 @@
 #include <boost/program_options/positional_options.hpp>
 #include <boost/program_options/value_semantic.hpp>  // for value, etc
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
-#include <boost/version.hpp>            // for BOOST_VERSION
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 namespace po = boost::program_options;
@@ -40,11 +39,7 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
 {
 	two_strings ret_val;
 	if (values.size() != 2) {
-#if BOOST_VERSION >= 104200
 		throw po::validation_error(po::validation_error::invalid_option_value);
-#else
-		throw po::validation_error("Invalid number of strings provided to option requiring exactly two of them.");
-#endif
 	}
 	ret_val.first = values.at(0);
 	ret_val.second = values.at(1);

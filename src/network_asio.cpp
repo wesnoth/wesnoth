@@ -156,11 +156,7 @@ std::size_t connection::is_write_complete(
 	if(ec)
 		throw system_error(ec);
 	bytes_written_ = bytes_transferred;
-#if BOOST_VERSION >= 103700
 	return bytes_to_write_ - bytes_transferred;
-#else
-	return bytes_to_write_ == bytes_transferred;
-#endif
 }
 
 void connection::handle_write(
@@ -195,11 +191,7 @@ std::size_t connection::is_read_complete(
 			if (bytes_to_read_ < 4)
 				bytes_to_read_ = bytes_transferred;
 		}
-#if BOOST_VERSION >= 103700
 		return bytes_to_read_ - bytes_transferred;
-#else
-		return bytes_to_read_ == bytes_transferred;
-#endif
 	}
 }
 
