@@ -1667,7 +1667,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
 		config::const_child_itors its = game_config_manager::get()->game_config().child_range("era");
 		std::string eras_list(its.front()["id"]);
-		its.pop_front(1);
+		its.pop_front();
 		for(const auto& cfg : its) {
 			eras_list = eras_list + "," + cfg["id"];
 		}
