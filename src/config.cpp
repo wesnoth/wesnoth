@@ -1532,11 +1532,11 @@ bool operator==(const config& a, const config& b)
 		return false;
 
 	config::all_children_itors x = a.all_children_range(), y = b.all_children_range();
-	for (; x.first != x.second && y.first != y.second; ++x.first, ++y.first) {
-		if (x.first->key != y.first->key || x.first->cfg != y.first->cfg) {
+	for (; !x.empty() && !y.empty(); x.pop_front(), y.pop_front()) {
+		if (x.front().key != y.front().key || x.front().cfg != y.front().cfg) {
 			return false;
 		}
 	}
 
-	return x.first == x.second && y.first == y.second;
+	return x.empty() && y.empty();
 }

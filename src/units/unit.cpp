@@ -126,8 +126,8 @@ namespace {
 
 	void warn_unknown_attribute(const config::const_attr_itors& cfg)
 	{
-		config::const_attribute_iterator cur = cfg.first;
-		config::const_attribute_iterator end = cfg.second;
+		config::const_attribute_iterator cur = cfg.begin();
+		config::const_attribute_iterator end = cfg.end();
 		const std::string* cur_known = std::begin(internalized_attrs);
 		const std::string* end_known = std::end(internalized_attrs);
 		while(cur_known != end_known) {

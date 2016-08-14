@@ -271,10 +271,11 @@ static int impl_vconfig_pairs_iter(lua_State *L)
 	vconfig vcfg = luaW_checkvconfig(L, 1);
 	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey);
 	config::const_attr_itors& range = *static_cast<config::const_attr_itors*>(p);
-	if (range.first == range.second) {
+	if (range.empty()) {
 		return 0;
 	}
-	config::attribute value = *range.first++;
+	config::attribute value = range.front();
+	range.pop_front();
 	lua_pushlstring(L, value.first.c_str(), value.first.length());
 	luaW_pushscalar(L, vcfg[value.first]);
 	return 2;

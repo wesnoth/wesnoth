@@ -119,7 +119,7 @@ static config &find_ref(const std::string &id, config &cfg, bool remove = false)
 	static config empty_config;
 
 	config::all_children_itors itors = cfg.all_children_range();
-	for (config::all_children_iterator i = itors.first; i != itors.second; ++i)
+	for (config::all_children_iterator i = itors.begin(); i != itors.end(); ++i)
 	{
 		config &icfg = const_cast<config &>(i->cfg);
 		if (i->cfg["id"] == id) {

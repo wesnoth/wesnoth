@@ -461,12 +461,11 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			config fwml = wmlcfg.get_parsed_config();
 			/* Check if the filter only cares about variables.
 			   If so, no need to serialize the whole unit. */
-			config::const_attr_itors ai = fwml.attribute_range();
 			config::all_children_itors ci = fwml.all_children_range();
-			if (std::distance(ai.first, ai.second) == 0 &&
-			    std::distance(ci.first, ci.second) == 1 &&
-			    ci.first->key == "variables") {
-				if (!u.variables().matches(ci.first->cfg))
+			if (fwml.all_children_count() == 1 && 
+				fwml.attribute_count() == 1 &&
+			    ci.front().key == "variables") {
+				if (!u.variables().matches(ci.front().cfg))
 					return false;
 			} else {
 				if (unit_cfg.empty())

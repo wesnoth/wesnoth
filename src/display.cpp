@@ -3400,7 +3400,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	SDL_Rect ellipsis_area = rect;
 
 	for (config::const_child_itors elements = report.child_range("element");
-		 elements.begin() != elements.end(); elements.drop_front())
+		 elements.begin() != elements.end(); elements.pop_front(1))
 	{
 		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;

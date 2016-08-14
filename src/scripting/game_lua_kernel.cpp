@@ -1667,7 +1667,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
 		config::const_child_itors its = game_config_manager::get()->game_config().child_range("era");
 		std::string eras_list(its.front()["id"]);
-		its.drop_front();
+		its.pop_front(1);
 		for(const auto& cfg : its) {
 			eras_list = eras_list + "," + cfg["id"];
 		}
@@ -3623,9 +3623,8 @@ static int intf_remove_modifications(lua_State *L)
 	unit& u = luaW_checkunit(L, 1);
 	config filter = luaW_checkconfig(L, 2);
 	std::string tag = luaL_optstring(L, 3, "object");
-	config::const_attr_itors ai = filter.attribute_range();
-	config::all_children_itors ci = filter.all_children_range();
-	if(std::distance(ai.first, ai.second) == 1 && std::distance(ci.first, ci.second) == 0 && ai.first->first == "duration") {
+	//TODO
+	if(filter.attribute_count() == 1 && filter.all_children_count() == 0 && filter.attribute_range().front().first == "duration") {
 		u.expire_modifications(filter["duration"]);
 	} else {
 		for(config& obj : u.get_modifications().child_range(tag)) {

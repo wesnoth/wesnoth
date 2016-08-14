@@ -698,7 +698,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 		const config::all_children_itors ch_itors = cfg->all_children_range();
 		//if there is an empty command tag or a start tag
-		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
+		if (ch_itors.empty() || cfg->has_child("start"))
 		{
 			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
 			//also we removed the the "add empty replay entry at scenario reload" behavior.
@@ -821,7 +821,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			// but we are called from
 			// the only other option for "dependent" command is checksum wich is already checked.
 			assert(cfg->all_children_count() == 1);
-			std::string child_name = cfg->all_children_range().first->key;
+			std::string child_name = cfg->all_children_range().front().key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;

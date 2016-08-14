@@ -412,7 +412,7 @@ public:
 		Itor i_;
 	};
 
-	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
+	typedef boost::iterator_range<const_attribute_iterator> const_attr_itors;
 
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
@@ -637,15 +637,18 @@ public:
 		};
 
 		typedef any_child value_type;
-		typedef std::forward_iterator_tag iterator_category;
+		typedef std::random_access_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const arrow_helper pointer;
 		typedef const any_child reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
+		typedef all_children_iterator this_type;
 		explicit all_children_iterator(const Itor &i): i_(i) {}
 
 		all_children_iterator &operator++() { ++i_; return *this; }
 		all_children_iterator operator++(int) { return all_children_iterator(i_++); }
+		this_type &operator--() { --i_; return *this; }
+		this_type operator--(int) { return this_type(i_--); }
 
 		reference operator*() const;
 		pointer operator->() const { return *this; }
@@ -653,13 +656,27 @@ public:
 		bool operator==(const all_children_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const all_children_iterator &i) const { return i_ != i.i_; }
 
+		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
+		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
+		friend bool operator>=(const this_type& a, const this_type& b) { return a.i_ >= b.i_; }
+		friend bool operator>(const this_type& a, const this_type& b) { return a.i_ > b.i_; }
+
+		this_type& operator+=(difference_type n) { i_ += n; return *this; }
+		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
+
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
+		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
+		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }
+		friend this_type operator+(difference_type n, const this_type& a) { return this_type(a.i_ + n); }
+
 	private:
 		Itor i_;
 
 		friend class config;
 	};
 
-	typedef std::pair<all_children_iterator, all_children_iterator> all_children_itors;
+	typedef boost::iterator_range<all_children_iterator> all_children_itors;
 
 	/** In-order iteration over all children. */
 	all_children_itors all_children_range() const;

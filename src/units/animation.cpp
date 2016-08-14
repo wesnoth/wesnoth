@@ -210,29 +210,29 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 		animation_cursor &ac = anim_cursors.back();
 
 		// Reached end of sub-tag config block
-		if (ac.itors.first == ac.itors.second) {
+		if (ac.itors.empty()) {
 			if (!ac.parent) break;
 			// Merge all the current branches into the parent.
 			ac.parent->branches.splice(ac.parent->branches.end(), ac.branches);
 			anim_cursors.pop_back();
 			continue;
 		}
-		if (ac.itors.first->key != "if") {
+		if (ac.itors.front().key != "if") {
 			// Append current config object to all the branches in scope.
 			for (animation_branch &ab : ac.branches) {
-				ab.children.push_back(ac.itors.first);
+				ab.children.push_back(ac.itors.begin());
 			}
-			++ac.itors.first;
+			ac.itors.pop_front();
 			continue;
 		}
 		int count = 0;
 		do {
 			/* Copies the current branches to each cursor created for the
 			   conditional clauses. Merge attributes of the clause into them. */
-			anim_cursors.push_back(animation_cursor(ac.itors.first->cfg, &ac));
-			++ac.itors.first;
+			anim_cursors.push_back(animation_cursor(ac.itors.front().cfg, &ac));
+			ac.itors.pop_front();
 			++count;
-		} while (ac.itors.first != ac.itors.second && ac.itors.first->key == "else");
+		} while (!ac.itors.empty() && ac.itors.front().key == "else");
 		if (count > 1) {
 			// When else statements present, clear all branches before 'if'
 			ac.branches.clear();

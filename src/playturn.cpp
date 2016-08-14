@@ -126,7 +126,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 {
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(cfg.all_children_count() == 1);
-	assert(cfg.attribute_range().first == cfg.attribute_range().second);
+	assert(cfg.attribute_range().empty());
 	if(!resources::recorder->at_end())
 	{
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;

@@ -48,7 +48,7 @@ void playturn_network_adapter::read_from_network()
 		back.remove_attribute("side_drop");
 		back.remove_attribute("controller");
 	}
-	else if(back.attribute_range().first != back.attribute_range().second )
+	else if(!back.attribute_range().empty() )
 	{
 		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
 		this->data_.pop_back();
