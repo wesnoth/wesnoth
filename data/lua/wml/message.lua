@@ -287,6 +287,7 @@ function wesnoth.wml_actions.message(cfg)
 					description = option.description,
 					image = option.image,
 					default = option.default,
+					value = option.value
 				}
 				if option.message then
 					if not option.label then
@@ -389,6 +390,14 @@ function wesnoth.wml_actions.message(cfg)
 			log("invalid choice (" .. option_chosen .. ") was specified, choice 1 to " ..
 				#options .. " was expected", "debug")
 			return
+		end
+
+		if cfg.variable ~= nil then
+			if options[option_chosen].value == nil then
+				wesnoth.set_variable(cfg.variable, option_chosen)
+			else
+				wesnoth.set_variable(cfg.variable, options[option_chosen].value)
+			end
 		end
 
 		for i, cmd in ipairs(option_events[option_chosen]) do
