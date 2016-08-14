@@ -24,6 +24,7 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/combobox.hpp"
+#include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -39,7 +40,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "game_config.hpp"
 #include "settings.hpp"
-#include "filesystem.hpp"
+#include "formatter.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "utils/functional.hpp"
@@ -52,6 +53,7 @@ REGISTER_DIALOG(mp_create_game)
 
 tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& eng)
 	: cfg_(cfg)
+	, last_selected_level_(-1)
 	, scenario_(nullptr)
 	, engine_(eng)
 	, use_map_settings_(register_bool("use_map_settings",
@@ -90,21 +92,25 @@ void tmp_create_game::pre_show(twindow& window)
 {
 	find_widget<tminimap>(&window, "minimap", false).set_config(&cfg_);
 
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "random_map_regenerate", false),
+		std::bind(&tmp_create_game::regenerate_random_map, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "random_map_settings", false),
+		std::bind(&tmp_create_game::show_generator_settings, this, std::ref(window)));
+
 	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-		std::bind(&tmp_create_game::update_map,
+		std::bind(&tmp_create_game::on_game_select,
 			*this, std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
+			dialog_callback<tmp_create_game, &tmp_create_game::on_game_select>);
 #endif
 
 	window.keyboard_capture(&list);
-
-	display_games_of_type(window, ng::level::TYPE::SCENARIO);
-
-	update_map_settings(window);
 
 	//
 	// Set up game types combobox
@@ -130,6 +136,7 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	// Set up eras combobox
 	//
+	tcombobox& eras_combobox = find_widget<tcombobox>(&window, "eras", false);
 
 	const std::vector<std::string>& era_names = engine_.extras_menu_item_names(ng::create_engine::ERA, false);
 	if(era_names.empty()) {
@@ -137,7 +144,8 @@ void tmp_create_game::pre_show(twindow& window)
 		throw config::error(_("No eras found"));
 	}
 
-	find_widget<tcombobox>(&window, "eras", false).set_values(era_names);
+	eras_combobox.set_values(era_names);
+	eras_combobox.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(window)));
 
 	//
 	// Set up mods list
@@ -154,6 +162,15 @@ void tmp_create_game::pre_show(twindow& window)
 
 		mod_list.add_row(data);
 	}
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(*mod_list,
+			std::bind(&tmp_create_game::on_mod_select,
+				*this, std::ref(window)));
+#else
+	mod_list.set_callback_value_change(
+			dialog_callback<tmp_create_game, &tmp_create_game::on_mod_select>);
+#endif
 
 	//
 	// Set up tab control
@@ -182,9 +199,16 @@ void tmp_create_game::pre_show(twindow& window)
 
 	tab_bar.select_row(0);
 
-	on_tab_select(window);
+	display_games_of_type(window, ng::level::TYPE::SCENARIO);
 
-	update_map(window);
+	on_tab_select(window);
+}
+
+void tmp_create_game::on_game_select(twindow& window)
+{
+	if(const int index = find_widget<tlistbox>(&window, "games_list", false).get_selected_row() != last_selected_level_) {
+		update_details(window);
+	}
 }
 
 void tmp_create_game::on_tab_select(twindow& window)
@@ -193,9 +217,18 @@ void tmp_create_game::on_tab_select(twindow& window)
 
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(i);
 
-	// TODO: don't hardcode
-	if(i == 1) {
-		update_options_list(window);
+	switch(i) {
+		case 0:
+			// TODO: are there any General panel settings that need to be updated here?
+			break;
+
+		case 1:
+			update_options_list(window);
+			break;
+
+		case 2:
+			update_map_settings(window);
+			break;
 	}
 }
 
@@ -208,6 +241,8 @@ void tmp_create_game::update_games_list(twindow& window)
 
 void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE type)
 {
+	engine_.set_current_level_type(type);
+
 	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
 
 	list.clear();
@@ -241,13 +276,24 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 
 	find_widget<tbutton>(&window, "random_map_regenerate", false).set_active(is_random_map);
 	find_widget<tbutton>(&window, "random_map_settings", false).set_active(is_random_map);
+
+	update_details(window);
 }
 
-void tmp_create_game::post_show(twindow& window)
+void tmp_create_game::on_mod_select(twindow& window)
 {
-	if(get_retval() == twindow::OK) {
-		find_widget<tlistbox>(&window, "games_list", false);
-	}
+	engine_.set_current_mod_index(find_widget<tlistbox>(&window, "mod_list", false).get_selected_row());
+
+	find_widget<tcontrol>(&window, "description", false).set_label(
+		engine_.current_extra(ng::create_engine::MOD).description);
+}
+
+void tmp_create_game::on_era_select(twindow& window)
+{
+	engine_.set_current_era_index(find_widget<tcombobox>(&window, "eras", false).get_value());
+
+	find_widget<tcontrol>(&window, "description", false).set_label(
+		engine_.current_extra(ng::create_engine::ERA).description);
 }
 
 void tmp_create_game::update_options_list(twindow& window)
@@ -287,6 +333,8 @@ void tmp_create_game::update_options_list(twindow& window)
 			//checkbox->set_label(checkbox_option["name"].str());
 		}
 
+		option_node.add_child("options_spacer_node", {});
+
 		for(const auto& combobox_option : options.child_range("combo")) {
 			item["label"] = combobox_option["name"];
 			data.emplace("combobox_label", item);
@@ -308,6 +356,8 @@ void tmp_create_game::update_options_list(twindow& window)
 			}
 		}
 
+		option_node.add_child("options_spacer_node", {});
+
 		for(const auto& slider_option : options.child_range("slider")) {
 			item["label"] = slider_option["name"];
 			data.emplace("slider_label", item);
@@ -324,6 +374,8 @@ void tmp_create_game::update_options_list(twindow& window)
 			slider->set_value(slider_option["default"].to_int());
 		}
 
+		option_node.add_child("options_spacer_node", {});
+
 		for(const auto& text_entry_option : options.child_range("entry")) {
 			item["label"] = text_entry_option["name"];
 			data.emplace("text_entry_label", item);
@@ -338,13 +390,26 @@ void tmp_create_game::update_options_list(twindow& window)
 		}
 
 		// Add the Defaults button at the end
+		option_node.add_child("options_spacer_node", {});
 		option_node.add_child("options_default_button", {});
 	}
 }
 
-void tmp_create_game::update_map(twindow& window)
+void tmp_create_game::show_generator_settings(twindow& window)
 {
-	tminimap& minimap = find_widget<tminimap>(&window, "minimap", false);
+	engine_.generator_user_config(window.video());
+}
+
+void tmp_create_game::regenerate_random_map(twindow& window)
+{
+	engine_.init_generated_level_data();
+
+	update_details(window);
+}
+
+void tmp_create_game::update_details(twindow& window)
+{
+	
 	tcontrol& description = find_widget<tcontrol>(&window, "description", false);
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
@@ -354,26 +419,68 @@ void tmp_create_game::update_map(twindow& window)
 
 	engine_.set_current_level(index);
 
-	ng::scenario* current_scenario = dynamic_cast<ng::scenario*>(&engine_.current_level());
+	engine_.current_level().set_metadata();
 
-	//if(index >= 0) {
-		scenario_ = &cfg_.child("multiplayer", index);
+	// TODO: display a message?
+	find_widget<tcombobox>(&window, "eras", false).set_active(engine_.current_level().allow_era_choice());
 
-		minimap.set_map_data((*scenario_)["map_data"]);
-		description.set_label((*scenario_)["description"]);
-		players.set_label(std::to_string(current_scenario->num_players()));
-		map_size.set_label(current_scenario->map_size());
-	//} else {
-	//	minimap.set_map_data("");
-	//	description.set_label("");
-	//	scenario_ = nullptr;
-	//}
+	// TODO: remove this
+	//scenario_ = &cfg_.child("multiplayer", index);
 
-	update_map_settings(window);
-
-	if(find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row() == 1) {
-		update_options_list(window);
+	// If the current random map doesn't have data, generate it
+	if(engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
+		if(engine_.generator_assigned() && engine_.current_level().data()["map_data"].empty()) {
+			engine_.init_generated_level_data();
+		}
 	}
+
+	description.set_label(engine_.current_level().description());
+	description.set_use_markup(true);
+
+	switch(engine_.current_level_type().v) {
+		case ng::level::TYPE::SCENARIO:
+		case ng::level::TYPE::USER_MAP:
+		case ng::level::TYPE::USER_SCENARIO:
+		case ng::level::TYPE::RANDOM_MAP: {
+			ng::scenario* current_scenario = dynamic_cast<ng::scenario*>(&engine_.current_level());
+
+			assert(current_scenario);
+
+			find_widget<tstacked_widget>(&window, "minimap_stack", false).select_layer(0);
+			find_widget<tminimap>(&window, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
+
+			players.set_label(std::to_string(current_scenario->num_players()));
+			map_size.set_label(current_scenario->map_size());
+
+			break;
+		}
+		case ng::level::TYPE::CAMPAIGN:
+		case ng::level::TYPE::SP_CAMPAIGN: {
+			ng::campaign* current_campaign = dynamic_cast<ng::campaign*>(&engine_.current_level());
+
+			assert(current_campaign);
+
+			//const std::string image = formatter() << current_campaign->data()["image"] << "~SCALE(250,250)";
+
+			find_widget<tstacked_widget>(&window, "minimap_stack", false).select_layer(1);
+			find_widget<timage>(&window, "campaign_image", false).set_label(current_campaign->data()["image"]);
+
+			std::stringstream players_str;
+			players_str << current_campaign->min_players();
+
+			if(current_campaign->max_players() != current_campaign->min_players()) {
+				players_str << " to " << current_campaign->max_players();
+			}
+
+			players.set_label(players_str.str());
+
+			break;
+		}
+	}
+
+	last_selected_level_ = index;
+
+	on_tab_select(window);
 }
 
 void tmp_create_game::update_map_settings(twindow& window)
@@ -415,6 +522,13 @@ void tmp_create_game::update_map_settings(twindow& window)
 		gold_->set_widget_value(window, preferences::village_gold());
 		support_->set_widget_value(window, preferences::village_support());
 		experience_->set_widget_value(window, preferences::xp_modifier());
+	}
+}
+
+void tmp_create_game::post_show(twindow& window)
+{
+	if(get_retval() == twindow::OK) {
+		find_widget<tlistbox>(&window, "games_list", false);
 	}
 }
 

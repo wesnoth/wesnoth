@@ -44,6 +44,8 @@ private:
 
 	const config& cfg_;
 
+	int last_selected_level_;
+
 	const config* scenario_;
 
 	ng::create_engine& engine_;
@@ -55,6 +57,9 @@ private:
 	void update_games_list(twindow& window);
 	void display_games_of_type(twindow& window, ng::level::TYPE type);
 
+	void show_generator_settings(twindow& window);
+	void regenerate_random_map(twindow& window);
+
 	/**
 	 * All fields are also in the normal field vector, but they need to be
 	 * manually controlled as well so add the pointers here as well.
@@ -64,13 +69,18 @@ private:
 
 	tfield_integer* turns_, *gold_, *support_, *experience_;
 
+	void on_game_select(twindow& window);
+
 	void on_tab_select(twindow& window);
 
+	void on_mod_select(twindow& window);
+	void on_era_select(twindow& window);
+	
 	void update_options_list(twindow& window);
 
 public:
 	// another map selected
-	void update_map(twindow& window);
+	void update_details(twindow& window);
 
 	// use_map_settings toggled (also called in other cases.)
 	void update_map_settings(twindow& window);
