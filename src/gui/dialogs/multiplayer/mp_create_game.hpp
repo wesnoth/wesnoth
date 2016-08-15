@@ -18,6 +18,7 @@
 #include "gui/dialogs/dialog.hpp"
 
 #include "game_initialization/create_engine.hpp"
+#include "game_initialization/configure_engine.hpp"
 #include "game_initialization/mp_options.hpp"
 
 class config;
@@ -30,7 +31,7 @@ class tmp_create_game : public tdialog
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	explicit tmp_create_game(const config& cfg, ng::create_engine& eng);
+	tmp_create_game(const config& cfg, ng::create_engine& create_eng, ng::configure_engine& config_eng);
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -48,12 +49,13 @@ private:
 
 	const config* scenario_;
 
-	ng::create_engine& engine_;
+	ng::create_engine& create_engine_;
+	std::unique_ptr<ng::configure_engine> config_engine_;
 
 	//mp::options::manager options_manager_;
 
 	std::vector<level_type_info> level_types_;
-	
+
 	void update_games_list(twindow& window);
 	void display_games_of_type(twindow& window, ng::level::TYPE type);
 
@@ -65,9 +67,9 @@ private:
 	 * manually controlled as well so add the pointers here as well.
 	 */
 
-	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_;
+	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_, *time_limit_;
 
-	tfield_integer* turns_, *gold_, *support_, *experience_;
+	tfield_integer* turns_, *gold_, *support_, *experience_, *init_turn_limit, *turn_bonus_, *reservior_, *action_bonus_;
 
 	void on_game_select(twindow& window);
 
@@ -75,7 +77,7 @@ private:
 
 	void on_mod_select(twindow& window);
 	void on_era_select(twindow& window);
-	
+
 	void update_options_list(twindow& window);
 
 public:

@@ -524,46 +524,46 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 	bool configure_canceled;
 	bool connect_canceled;
 
+	if(gui2::new_widgets) {
+		ng::create_engine create_eng(video, state);
+		ng::configure_engine config_eng(state);
+
+		gui2::tmp_create_game dlg(game_config, create_eng, config_eng);
+
+		dlg.show(video);
+
+		if(wesnothd_connection) {
+			wesnothd_connection->send_data(config("refresh_lobby"));
+		}
+	}
+
 	do {
 		configure_canceled = false;
 		connect_canceled = false;
 
-		if (gui2::new_widgets) {
-			ng::create_engine create_eng(video, state);
+		mp::ui::result res;
 
-			gui2::tmp_create_game dlg(game_config, create_eng);
+		{
+			mp::create ui(video, wesnothd_connection, game_config, state, gamechat, gamelist);
+			run_lobby_loop(video, ui);
+			res = ui.get_result();
+			ui.get_parameters();
+		}
 
-			dlg.show(video);
-
+		switch (res) {
+		case mp::ui::CREATE:
+			configure_canceled = !enter_configure_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			break;
+		case mp::ui::LOAD_GAME:
+			connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			break;
+		case mp::ui::QUIT:
+		default:
+			//update lobby content
 			if (wesnothd_connection) {
 				wesnothd_connection->send_data(config("refresh_lobby"));
 			}
-		} else {
-
-			mp::ui::result res;
-
-			{
-				mp::create ui(video, wesnothd_connection, game_config, state, gamechat, gamelist);
-				run_lobby_loop(video, ui);
-				res = ui.get_result();
-				ui.get_parameters();
-			}
-
-			switch (res) {
-			case mp::ui::CREATE:
-				configure_canceled = !enter_configure_mode(video, game_config, state, wesnothd_connection, local_players_only);
-				break;
-			case mp::ui::LOAD_GAME:
-				connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
-				break;
-			case mp::ui::QUIT:
-			default:
-				//update lobby content
-				if (wesnothd_connection) {
-					wesnothd_connection->send_data(config("refresh_lobby"));
-				}
-				break;
-			}
+			break;
 		}
 	} while(configure_canceled || connect_canceled);
 }
