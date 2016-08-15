@@ -111,6 +111,8 @@ public:
 
 	const std::vector<std::string>& entry_point_titles() const;
 	void write_parameters();
+
+	void update_side_cfg();
 private:
 	saved_game& state_;
 	mp_game_settings& parameters_;
@@ -121,7 +123,7 @@ private:
 	 * This might change in the future.
 	 * NOTE when 'load game' is selected there are no sides.
 	 */
-	const config &side_cfg_;
+	config side_cfg_;
 
 	std::vector<const config*> entry_points_;
 

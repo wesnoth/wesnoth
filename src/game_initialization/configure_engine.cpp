@@ -42,6 +42,11 @@ configure_engine::configure_engine(saved_game& state) :
 	}
 }
 
+void configure_engine::update_side_cfg()
+{
+	side_cfg_ = state_.get_starting_pos().child_or_empty("side");
+}
+
 void configure_engine::set_default_values() {
 	set_use_map_settings(use_map_settings_default());
 	set_game_name(game_name_default());
