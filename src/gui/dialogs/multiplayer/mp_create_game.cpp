@@ -206,7 +206,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 void tmp_create_game::on_game_select(twindow& window)
 {
-	if(const int index = find_widget<tlistbox>(&window, "games_list", false).get_selected_row() != last_selected_level_) {
+	if(find_widget<tlistbox>(&window, "games_list", false).get_selected_row() != last_selected_level_) {
 		update_details(window);
 	}
 }
@@ -299,6 +299,7 @@ void tmp_create_game::on_era_select(twindow& window)
 void tmp_create_game::update_options_list(twindow& window)
 {
 	const int index = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
+	const std::map<std::string, string_map> empty;
 
 	scenario_ = &cfg_.child("multiplayer", index);
 
@@ -333,7 +334,7 @@ void tmp_create_game::update_options_list(twindow& window)
 			//checkbox->set_label(checkbox_option["name"].str());
 		}
 
-		option_node.add_child("options_spacer_node", {});
+		option_node.add_child("options_spacer_node", empty);
 
 		for(const auto& combobox_option : options.child_range("combo")) {
 			item["label"] = combobox_option["name"];
@@ -356,7 +357,7 @@ void tmp_create_game::update_options_list(twindow& window)
 			}
 		}
 
-		option_node.add_child("options_spacer_node", {});
+		option_node.add_child("options_spacer_node", empty);
 
 		for(const auto& slider_option : options.child_range("slider")) {
 			item["label"] = slider_option["name"];
@@ -374,7 +375,7 @@ void tmp_create_game::update_options_list(twindow& window)
 			slider->set_value(slider_option["default"].to_int());
 		}
 
-		option_node.add_child("options_spacer_node", {});
+		option_node.add_child("options_spacer_node", empty);
 
 		for(const auto& text_entry_option : options.child_range("entry")) {
 			item["label"] = text_entry_option["name"];
@@ -390,8 +391,8 @@ void tmp_create_game::update_options_list(twindow& window)
 		}
 
 		// Add the Defaults button at the end
-		option_node.add_child("options_spacer_node", {});
-		option_node.add_child("options_default_button", {});
+		option_node.add_child("options_spacer_node", empty);
+		option_node.add_child("options_default_button", empty);
 	}
 }
 
