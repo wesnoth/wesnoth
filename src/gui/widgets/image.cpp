@@ -49,9 +49,6 @@ tpoint timage::calculate_best_size() const
 	const tpoint maximum = get_config_maximum_size();
 
 	tpoint result = {image->w, image->h};
-	if(best_size_ != tpoint()) {
-		result = best_size_;
-	}
 
 	if(minimum.x > 0 && result.x < minimum.x) {
 		DBG_GUI_L << LOG_HEADER << " increase width to minimum.\n";
@@ -165,10 +162,7 @@ timage_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_image::tbuilder_image(const config& cfg)
-	: tbuilder_control(cfg)
-	, width(cfg["width"])
-	, height(cfg["height"])
+tbuilder_image::tbuilder_image(const config& cfg) : tbuilder_control(cfg)
 {
 }
 
@@ -177,15 +171,6 @@ twidget* tbuilder_image::build() const
 	timage* widget = new timage();
 
 	init_control(widget);
-
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
-
-	const unsigned w = width(size);
-	const unsigned h = height(size);
-
-	if(w || h) {
-		widget->set_best_size(tpoint(w, h));
-	}
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
 			  << definition << "'.\n";
