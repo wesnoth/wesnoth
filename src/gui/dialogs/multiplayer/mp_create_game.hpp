@@ -31,7 +31,7 @@ class tmp_create_game : public tdialog
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	tmp_create_game(const config& cfg, ng::create_engine& create_eng, ng::configure_engine& config_eng);
+	tmp_create_game(const config& cfg, ng::create_engine& create_eng);
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */

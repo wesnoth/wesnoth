@@ -51,12 +51,12 @@ namespace gui2
 
 REGISTER_DIALOG(mp_create_game)
 
-tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_eng, ng::configure_engine& config_eng)
+tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_eng)
 	: cfg_(cfg)
 	, last_selected_level_(-1)
 	, scenario_(nullptr)
 	, create_engine_(create_eng)
-	, config_engine_(new ng::configure_engine(create_engine_.get_state()))
+	, config_engine_()
 	, use_map_settings_(register_bool("use_map_settings",
 			true, preferences::use_map_settings, preferences::set_use_map_settings,
 				dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>))
@@ -98,7 +98,11 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 		level_types_.push_back({ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns")});
 	}
 
-	config_engine_->set_default_values();
+	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),
+		[this](level_type_info& type_info) {
+		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
+	}), level_types_.end());
+
 }
 
 void tmp_create_game::pre_show(twindow& window)
@@ -131,9 +135,7 @@ void tmp_create_game::pre_show(twindow& window)
 	std::vector<std::string> game_types;
 
 	for(level_type_info& type_info : level_types_) {
-		if(!create_engine_.get_levels_by_type_unfiltered(type_info.first).empty()) {
-			game_types.push_back(type_info.second);
-		}
+		game_types.push_back(type_info.second);
 	}
 
 	if(game_types.empty()) {
@@ -434,6 +436,9 @@ void tmp_create_game::update_details(twindow& window)
 
 	create_engine_.current_level().set_metadata();
 
+	create_engine_.get_state() = saved_game();
+	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
 	create_engine_.prepare_for_scenario();
 	create_engine_.prepare_for_new_level();
 	//create_engine_.get_parameters();
@@ -441,7 +446,7 @@ void tmp_create_game::update_details(twindow& window)
 	//config_engine_.write_parameters();
 	//config_engine_->update_side_cfg();
 	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
-
+	config_engine_->set_default_values();
 	// TODO: display a message?
 	if(tcombobox* eras = find_widget<tcombobox>(&window, "eras", false, false)) {
 		eras->set_active(create_engine_.current_level().allow_era_choice());
