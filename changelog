@@ -4,8 +4,8 @@ Version 1.13.5+dev:
      * Fixed broken village encounters.
    * Delfador's Memoirs:
      * S9: Resolved inability to end level even when Delfador has the Staff (bug #24951)
-	 * S17: Resolved Wesnoth units returning to recall list not being healed properly (bug #24952)
-	 * S19: Resolved undead veterans victory condition not working properly.
+     * S17: Resolved Wesnoth units returning to recall list not being healed properly (bug #24952)
+     * S19: Resolved undead veterans victory condition not working properly.
  * Music and sound effects:
    * Added a preference to pause the music when the game loses focus.
    * Now the music fades out between scenarios.
@@ -65,6 +65,7 @@ Version 1.13.5+dev:
      multiple network and local players was ran.
    * Added a tab to run the wmlxgettext tool to GUI.pyw
    * Fixed problem with Spectre's hitpoint bar positioning.
+   * Show correct number of attacks in case of swarm weapon special (bug #24978)
 
 Version 1.13.5:
  * Campaigns:
