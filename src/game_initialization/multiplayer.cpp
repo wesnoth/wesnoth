@@ -524,17 +524,18 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 	bool configure_canceled;
 	bool connect_canceled;
 
-	if(gui2::new_widgets) {
+	if(preferences::new_lobby()) {
 		ng::create_engine create_eng(video, state);
-		ng::configure_engine config_eng(state);
 
-		gui2::tmp_create_game dlg(game_config, create_eng, config_eng);
+		gui2::tmp_create_game dlg(game_config, create_eng);
 
 		dlg.show(video);
 
 		if(wesnothd_connection) {
 			wesnothd_connection->send_data(config("refresh_lobby"));
 		}
+		enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+		return;
 	}
 
 	do {
@@ -661,7 +662,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
-			gui2::tlobby_main dlg(game_config, li, video, *wesnothd_connection);
+			gui2::tlobby_main dlg(game_config, li, *wesnothd_connection);
 			dlg.set_preferences_callback(
 				std::bind(do_preferences_dialog,
 					std::ref(video), std::ref(game_config)));

@@ -31,7 +31,7 @@ namespace ng {
 class configure_engine
 {
 public:
-	configure_engine(saved_game& state);
+	configure_engine(saved_game& state, const config* intial = nullptr);
 
 	// Set all parameters to their default values
 	void set_default_values();
@@ -112,10 +112,15 @@ public:
 	const std::vector<std::string>& entry_point_titles() const;
 	void write_parameters();
 
-	void update_side_cfg();
+	void update_initial_cfg(const config& cfg)
+	{
+		initial_ = &cfg;
+	}
 private:
 	saved_game& state_;
 	mp_game_settings& parameters_;
+	/// Never nullptr.
+	const config* initial_;
 	// village gold, village support, fog, and shroud are per player, always show values of player 1.
 	/**
 	 * @todo This might not be 100% correct, but at the moment
@@ -123,8 +128,15 @@ private:
 	 * This might change in the future.
 	 * NOTE when 'load game' is selected there are no sides.
 	 */
-	config side_cfg_;
-
+	const config& side_cfg() const
+	{
+		return initial_->child_or_empty("side");
+	}
+	const config& initial_cfg() const
+	{
+		return *initial_;
+	}
+	
 	std::vector<const config*> entry_points_;
 
 	std::vector<std::string> entry_point_titles_;
