@@ -103,6 +103,9 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
 	}), level_types_.end());
 
+	create_engine_.get_state() = saved_game();
+	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
 }
 
 void tmp_create_game::pre_show(twindow& window)
@@ -436,16 +439,13 @@ void tmp_create_game::update_details(twindow& window)
 
 	create_engine_.current_level().set_metadata();
 
-	create_engine_.get_state() = saved_game();
-	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-
-	create_engine_.prepare_for_scenario();
-	create_engine_.prepare_for_new_level();
+	//create_engine_.prepare_for_scenario();
+	//create_engine_.prepare_for_new_level();
 	//create_engine_.get_parameters();
 
 	//config_engine_.write_parameters();
-	//config_engine_->update_side_cfg();
 	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
+	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 	config_engine_->set_default_values();
 	// TODO: display a message?
 	if(tcombobox* eras = find_widget<tcombobox>(&window, "eras", false, false)) {
@@ -570,6 +570,48 @@ void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 		find_widget<tlistbox>(&window, "games_list", false);
+
+
+		create_engine_.prepare_for_era_and_mods();
+
+		if (create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
+			create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
+
+			std::string difficulty = create_engine_.select_campaign_difficulty();
+			if (difficulty == "CANCEL") {
+				return;
+			}
+
+			create_engine_.prepare_for_campaign(difficulty);
+		}
+		else if (create_engine_.current_level_type() == ng::level::TYPE::SCENARIO)
+		{
+			create_engine_.prepare_for_scenario();
+		}
+		else
+		{
+			//This means define= doesn't work for random generated scenarios
+			create_engine_.prepare_for_other();
+		}
+
+		create_engine_.prepare_for_new_level();
+
+		create_engine_.prepare_for_scenario();
+		create_engine_.prepare_for_new_level();
+		create_engine_.get_parameters();
+		if (!config_engine_->force_lock_settings())
+		{
+			//config_engine_->set_use_map_settings(fog_->get_widget_value());
+			config_engine_->set_num_turns(turns_->get_widget_value(window));
+			config_engine_->set_village_gold(gold_->get_widget_value(window));
+			config_engine_->set_village_support(support_->get_widget_value(window));
+			config_engine_->set_xp_modifier(experience_->get_widget_value(window));
+			config_engine_->set_random_start_time(start_time_->get_widget_value(window));
+			config_engine_->set_fog_game(fog_->get_widget_value(window));
+			config_engine_->set_shroud_game(shroud_->get_widget_value(window));
+			config_engine_->write_parameters();
+		}
+		//config_engine_->set_options(cfg);
 	}
 }
 
