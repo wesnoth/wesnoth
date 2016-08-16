@@ -892,7 +892,7 @@ void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
 	int distance = wanted_bottom - current_bottom;
 	if(distance > 0) {
 		vertical_scrollbar_->set_item_position(
-				vertical_scrollbar_->get_item_position() + distance);
+				vertical_scrollbar_->get_item_position() - distance);
 	}
 
 	// right.
@@ -901,7 +901,7 @@ void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
 	distance = wanted_right - current_right;
 	if(distance > 0) {
 		horizontal_scrollbar_->set_item_position(
-				horizontal_scrollbar_->get_item_position() + distance);
+				horizontal_scrollbar_->get_item_position() - distance);
 	}
 
 	// top.
