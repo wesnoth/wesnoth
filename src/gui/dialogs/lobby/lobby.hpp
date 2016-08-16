@@ -50,19 +50,13 @@ struct tlobby_chat_window
 	int pending_messages;
 };
 
-struct tplayer_list;
-
 struct tsub_player_list
 {
-	void init(twindow& w, const std::string& id);
-	void show_toggle_callback(twidget& widget);
-	void auto_hide();
-	tlabel* label;
-	tlabel* count;
-	ttoggle_button* show_toggle;
-	tlistbox* list;
+	void init(twindow& w, const std::string& label, const bool unfolded = false);
+	void update_player_count_label();
 	ttree_view_node* tree;
 	tlabel* tree_label;
+	tlabel* label_player_count;
 };
 
 struct tplayer_list
@@ -83,7 +77,7 @@ struct tplayer_list
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info, CVideo& video, twesnothd_connection &wesnothd_connection);
+	tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection);
 
 	~tlobby_main();
 
@@ -301,10 +295,6 @@ private:
 
 	void process_room_query_response(const config& data);
 
-	void join_button_callback(twindow& window);
-
-	void observe_button_callback(twindow& window);
-
 	void join_global_button_callback(twindow& window);
 
 	void observe_global_button_callback(twindow& window);
@@ -370,8 +360,6 @@ private:
 
 	tlistbox* gamelistbox_;
 
-	tlistbox* userlistbox_;
-
 	tlistbox* roomlistbox_;
 
 	tmulti_page* chat_log_container_;
@@ -413,8 +401,6 @@ private:
 	unsigned last_gamelist_update_;
 
 	bool gamelist_diff_update_;
-
-	CVideo& video_;
 
 	twesnothd_connection &wesnothd_connection_;
 

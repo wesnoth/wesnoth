@@ -662,7 +662,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
-			gui2::tlobby_main dlg(game_config, li, video, *wesnothd_connection);
+			gui2::tlobby_main dlg(game_config, li, *wesnothd_connection);
 			dlg.set_preferences_callback(
 				std::bind(do_preferences_dialog,
 					std::ref(video), std::ref(game_config)));
