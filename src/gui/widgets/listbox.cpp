@@ -195,8 +195,8 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
-		generator_->place(generator_->get_origin(),
-						  generator_->calculate_best_size());
+		tpoint best_size = generator_->calculate_best_size();
+		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
 		resize_needed = !content_resize_request();
 	}
 
