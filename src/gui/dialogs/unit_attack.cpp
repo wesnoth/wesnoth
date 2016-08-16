@@ -137,13 +137,14 @@ static void set_weapon_info(twindow& window,
 
 		std::stringstream attacker_stats, defender_stats;
 
+		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
-			<< attacker.damage << font::weapon_numbers_sep << attacker_weapon.num_attacks()
+			<< attacker.damage << font::weapon_numbers_sep << attacker.num_blows
 			<< attw_apecials << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
-			<< defender.damage << font::weapon_numbers_sep << defender_weapon.num_attacks()
+			<< defender.damage << font::weapon_numbers_sep << defender.num_blows
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
