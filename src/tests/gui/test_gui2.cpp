@@ -700,8 +700,7 @@ struct twrapper<gui2::tlobby_main>
 		static twesnothd_connection wesnothd_connection("", "");
 		static twesnothd_connection_init wesnothd_connection_init(wesnothd_connection);
 		static lobby_info li(game_config, wesnothd_connection);
-		return new gui2::tlobby_main(game_config, li,
-			static_cast<display*>(&test_utils::get_fake_display(-1, -1))->video(), wesnothd_connection);
+		return new gui2::tlobby_main(game_config, li, wesnothd_connection);
 	}
 };
 
