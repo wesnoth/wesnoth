@@ -633,7 +633,7 @@ void raise_resize_event()
 void raise_draw_event()
 {
 	if(event_contexts.empty() == false) {
-
+		event_contexts.back().add_staging_handlers();
 		const handler_list& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
