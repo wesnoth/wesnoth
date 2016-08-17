@@ -53,7 +53,6 @@ REGISTER_DIALOG(mp_create_game)
 
 tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_eng)
 	: cfg_(cfg)
-	, last_selected_level_(-1)
 	, scenario_(nullptr)
 	, create_engine_(create_eng)
 	, config_engine_()
@@ -85,6 +84,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 			true, preferences::countdown_reservoir_time, preferences::set_countdown_reservoir_time))
 	, action_bonus_(register_integer("action_bonus",
 			true, preferences::countdown_action_bonus, preferences::set_countdown_action_bonus))
+	, selected_game_index_(-1)
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},
@@ -102,6 +102,8 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 		[this](level_type_info& type_info) {
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
 	}), level_types_.end());
+
+	create_engine_.init_active_mods();
 
 	create_engine_.get_state() = saved_game();
 	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
@@ -179,6 +181,13 @@ void tmp_create_game::pre_show(twindow& window)
 		data.emplace("mod_name", item);
 
 		mod_list.add_row(data);
+
+		const int index = mod_list.get_item_count() - 1;
+		ttoggle_button& mog_toggle = find_widget<ttoggle_button>(mod_list.get_row_grid(index), "mod_active_state", false);
+
+		// TODO
+		//mog_toggle.set_active(true);
+		mog_toggle.set_callback_state_change(std::bind(&tmp_create_game::on_mod_toggle, this, index, _1));
 	}
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -224,7 +233,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 void tmp_create_game::on_game_select(twindow& window)
 {
-	if(find_widget<tlistbox>(&window, "games_list", false).get_selected_row() != last_selected_level_) {
+	if(find_widget<tlistbox>(&window, "games_list", false).get_selected_row() != selected_game_index_) {
 		update_details(window);
 	}
 }
@@ -305,6 +314,12 @@ void tmp_create_game::on_mod_select(twindow& window)
 		create_engine_.current_extra(ng::create_engine::MOD).description);
 }
 
+void tmp_create_game::on_mod_toggle(const int index, twidget&)
+{
+	create_engine_.set_current_mod_index(index);
+	create_engine_.toggle_current_mod();
+}
+
 void tmp_create_game::on_era_select(twindow& window)
 {
 	create_engine_.set_current_era_index(find_widget<tcombobox>(&window, "eras", false).get_value());
@@ -313,27 +328,18 @@ void tmp_create_game::on_era_select(twindow& window)
 		create_engine_.current_extra(ng::create_engine::ERA).description);
 }
 
-void tmp_create_game::update_options_list(twindow& window)
+void tmp_create_game::display_custom_options(ttree_view& tree, const config* config)
 {
-	const int index = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
-	const std::map<std::string, string_map> empty;
+	static const std::map<std::string, string_map> empty;
 
-	scenario_ = &cfg_.child("multiplayer", index);
-
-	ttree_view& options_tree = find_widget<ttree_view>(&window, "custom_options", false);
-
-	// TODO: might be inefficient to regenerate this every single time this tab is selected
-	// Maybe look into caching the result if no change has been made to the selection.
-	options_tree.clear();
-
-	for(const auto& options : scenario_->child_range("options")) {
+	for(const auto& options : config->child_range("options")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = (*scenario_)["name"];
+		item["label"] = (*config)["name"];
 		data.emplace("tree_view_node_label", item);
 
-		ttree_view_node& option_node = options_tree.add_node("option_node", data);
+		ttree_view_node& option_node = tree.add_node("option_node", data);
 
 		data.clear();
 
@@ -386,9 +392,9 @@ void tmp_create_game::update_options_list(twindow& window)
 
 			VALIDATE(slider, missing_widget("option_slider"));
 
-			slider->set_step_size(slider_option["step"].to_int());
-			slider->set_minimum_value(slider_option["min"].to_int());
 			slider->set_maximum_value(slider_option["max"].to_int());
+			slider->set_minimum_value(slider_option["min"].to_int());
+			slider->set_step_size(slider_option["step"].to_int());
 			slider->set_value(slider_option["default"].to_int());
 		}
 
@@ -413,6 +419,29 @@ void tmp_create_game::update_options_list(twindow& window)
 	}
 }
 
+void tmp_create_game::update_options_list(twindow& window)
+{
+	scenario_ = &cfg_.child("multiplayer", selected_game_index_);
+	const config* era_config = &cfg_.child("era", create_engine_.current_era_index());
+
+	ttree_view& options_tree = find_widget<ttree_view>(&window, "custom_options", false);
+
+	// TODO: might be inefficient to regenerate this every single time this tab is selected
+	// Maybe look into caching the result if no change has been made to the selection.
+	options_tree.clear();
+
+	display_custom_options(options_tree, scenario_);
+	display_custom_options(options_tree, era_config);
+
+	for(unsigned int i = 0; i < create_engine_.active_mods().size(); i++) {
+		const config* mod_config = &cfg_.child("modification", i);
+
+		if(mod_config->has_child("options")) {
+			display_custom_options(options_tree, mod_config);
+		}
+	}
+}
+
 void tmp_create_game::show_generator_settings(twindow& window)
 {
 	create_engine_.generator_user_config(window.video());
@@ -427,15 +456,13 @@ void tmp_create_game::regenerate_random_map(twindow& window)
 
 void tmp_create_game::update_details(twindow& window)
 {
-
 	tcontrol& description = find_widget<tcontrol>(&window, "description", false);
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
 
-	const int index = find_widget<tlistbox>(&window, "games_list", false)
-			.get_selected_row();
+	selected_game_index_ = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
 
-	create_engine_.set_current_level(index);
+	create_engine_.set_current_level(selected_game_index_);
 
 	create_engine_.current_level().set_metadata();
 
@@ -506,8 +533,6 @@ void tmp_create_game::update_details(twindow& window)
 		}
 	}
 
-	last_selected_level_ = index;
-
 	on_tab_select(window);
 }
 
@@ -569,38 +594,33 @@ void tmp_create_game::update_map_settings(twindow& window)
 void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		find_widget<tlistbox>(&window, "games_list", false);
-
+		//find_widget<tlistbox>(&window, "games_list", false);
 
 		create_engine_.prepare_for_era_and_mods();
 
-		if (create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
-			create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
+		if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
+		   create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
 
 			std::string difficulty = create_engine_.select_campaign_difficulty();
-			if (difficulty == "CANCEL") {
+			if(difficulty == "CANCEL") {
 				return;
 			}
 
 			create_engine_.prepare_for_campaign(difficulty);
-		}
-		else if (create_engine_.current_level_type() == ng::level::TYPE::SCENARIO)
-		{
+		} else if(create_engine_.current_level_type() == ng::level::TYPE::SCENARIO) {
 			create_engine_.prepare_for_scenario();
-		}
-		else
-		{
+		} else {
 			//This means define= doesn't work for random generated scenarios
 			create_engine_.prepare_for_other();
 		}
 
 		create_engine_.prepare_for_new_level();
 
-		create_engine_.prepare_for_scenario();
-		create_engine_.prepare_for_new_level();
+		//create_engine_.prepare_for_scenario();
+		//create_engine_.prepare_for_new_level();
 		create_engine_.get_parameters();
-		if (!config_engine_->force_lock_settings())
-		{
+
+		if(!config_engine_->force_lock_settings()) {
 			//config_engine_->set_use_map_settings(fog_->get_widget_value());
 			config_engine_->set_num_turns(turns_->get_widget_value(window));
 			config_engine_->set_village_gold(gold_->get_widget_value(window));

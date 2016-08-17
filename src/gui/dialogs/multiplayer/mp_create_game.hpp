@@ -25,6 +25,9 @@ class config;
 
 namespace gui2
 {
+	
+class ttree_view;
+class twidget;
 
 class tmp_create_game : public tdialog
 {
@@ -44,8 +47,6 @@ private:
 	void post_show(twindow& window);
 
 	const config& cfg_;
-
-	int last_selected_level_;
 
 	const config* scenario_;
 
@@ -78,7 +79,13 @@ private:
 	void on_mod_select(twindow& window);
 	void on_era_select(twindow& window);
 
+	void on_mod_toggle(const int index, twidget&);
+	
+	void display_custom_options(ttree_view& tree, const config* config);
+
 	void update_options_list(twindow& window);
+
+	int selected_game_index_;
 
 public:
 	// another map selected
