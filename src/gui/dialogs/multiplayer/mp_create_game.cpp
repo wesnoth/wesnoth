@@ -54,7 +54,6 @@ REGISTER_DIALOG(mp_create_game)
 
 tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_eng)
 	: cfg_(cfg)
-	, scenario_(nullptr)
 	, create_engine_(create_eng)
 	, config_engine_()
 	, use_map_settings_(register_bool("use_map_settings",
@@ -108,7 +107,6 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 
 	create_engine_.get_state() = saved_game();
 	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-
 }
 
 void tmp_create_game::pre_show(twindow& window)
@@ -461,9 +459,6 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 
 void tmp_create_game::update_options_list(twindow& window)
 {
-	scenario_ = &cfg_.child("multiplayer", selected_game_index_);
-	const config* era_config = &cfg_.child("era", create_engine_.current_era_index());
-
 	ttree_view& options_tree = find_widget<ttree_view>(&window, "custom_options", false);
 
 	// TODO: might be inefficient to regenerate this every single time this tab is selected
@@ -509,6 +504,7 @@ void tmp_create_game::update_details(twindow& window)
 	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
 	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 	config_engine_->set_default_values();
+
 	// TODO: display a message?
 	if(tcombobox* eras = find_widget<tcombobox>(&window, "eras", false, false)) {
 		eras->set_active(create_engine_.current_level().allow_era_choice());
@@ -552,7 +548,7 @@ void tmp_create_game::update_details(twindow& window)
 
 			assert(current_campaign);
 
-			create_engine_.get_state().classification().campaign = current_campaign->data()["id"];
+			create_engine_.get_state().classification().campaign = current_campaign->data()["id"].str();
 
 			const std::string image = formatter() << current_campaign->data()["image"] << "~SCALE(240,240)";
 
@@ -577,13 +573,13 @@ void tmp_create_game::update_details(twindow& window)
 
 void tmp_create_game::update_map_settings(twindow& window)
 {
-	if (config_engine_->force_lock_settings()) {
+	if(config_engine_->force_lock_settings()) {
 		use_map_settings_->widget_set_enabled(window, false, false);
 		use_map_settings_->set_widget_value(window, true);
-	}
-	else {
+	} else {
 		use_map_settings_->widget_set_enabled(window, true, false);
 	}
+
 	const bool use_map_settings = use_map_settings_->get_widget_value(window);
 
 	config_engine_->set_use_map_settings(use_map_settings);
@@ -604,44 +600,21 @@ void tmp_create_game::update_map_settings(twindow& window)
 	reservior_      ->widget_set_enabled(window, time_limit, false);
 	action_bonus_   ->widget_set_enabled(window, time_limit, false);
 
-	std::cerr << "turns is " << config_engine_->num_turns_default() << std::endl;
-
 	if(use_map_settings) {
-		//if(scenario_) {
-			//config& side = scenario_->child("side");
-			//const config& side = create_engine_.current_level().data().child("side");
+		fog_       ->set_widget_value(window, config_engine_->fog_game_default());
+		shroud_    ->set_widget_value(window, config_engine_->shroud_game_default());
+		start_time_->set_widget_value(window, config_engine_->random_start_time_default());
 
-			fog_       ->set_widget_value(window, config_engine_->fog_game_default());
-			shroud_    ->set_widget_value(window, config_engine_->shroud_game_default());
-			start_time_->set_widget_value(window, config_engine_->random_start_time_default());
-
-			turns_     ->set_widget_value(window, config_engine_->num_turns_default());
-			gold_      ->set_widget_value(window, config_engine_->village_gold_default());
-			support_   ->set_widget_value(window, config_engine_->village_support_default());
-			experience_->set_widget_value(window, config_engine_->xp_modifier_default());
-		//}
-		// No scenario selected just leave the state unchanged for now.
-
+		turns_     ->set_widget_value(window, config_engine_->num_turns_default());
+		gold_      ->set_widget_value(window, config_engine_->village_gold_default());
+		support_   ->set_widget_value(window, config_engine_->village_support_default());
+		experience_->set_widget_value(window, config_engine_->xp_modifier_default());
 	}
-	//else {
-
-		// Fixme we should store the value and reuse it later...
-	//	fog_->set_widget_value(window, preferences::fog());
-	////	shroud_->set_widget_value(window, preferences::shroud());
-	//	start_time_->set_widget_value(window, preferences::random_start_time());
-
-	//	turns_->set_widget_value(window, preferences::turns());
-	//	gold_->set_widget_value(window, preferences::village_gold());
-	//	support_->set_widget_value(window, preferences::village_support());
-	///	experience_->set_widget_value(window, preferences::xp_modifier());
-	//}
 }
 
 void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		//find_widget<tlistbox>(&window, "games_list", false);
-
 		create_engine_.prepare_for_era_and_mods();
 
 		if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
@@ -649,7 +622,7 @@ void tmp_create_game::post_show(twindow& window)
 
 			std::string difficulty = create_engine_.select_campaign_difficulty();
 			if(difficulty == "CANCEL") {
-				return;
+				window.set_retval(twindow::NONE);
 			}
 
 			create_engine_.prepare_for_campaign(difficulty);
@@ -665,6 +638,7 @@ void tmp_create_game::post_show(twindow& window)
 		create_engine_.get_parameters();
 
 		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value(window));
+
 		if(!config_engine_->force_lock_settings()) {
 			config_engine_->set_num_turns(turns_->get_widget_value(window));
 			config_engine_->set_village_gold(gold_->get_widget_value(window));
@@ -675,15 +649,23 @@ void tmp_create_game::post_show(twindow& window)
 			config_engine_->set_shroud_game(shroud_->get_widget_value(window));
 			config_engine_->write_parameters();
 		}
+
+		config_engine_->set_mp_countdown(time_limit_->get_widget_value(window));
+		config_engine_->set_mp_countdown_init_time(init_turn_limit->get_widget_value(window));
+		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value(window));
+		config_engine_->set_mp_countdown_reservoir_time(reservior_->get_widget_value(window));
+		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value(window));
+
 		config options;
-		for (const auto& mod_pair : visible_options_) {
+		for(const auto& mod_pair : visible_options_) {
 			config& mod = options.add_child(mod_pair.first[0]);
 			mod["id"] = mod_pair.first[1];
-			for (const auto& pair : mod_pair.second) {
+			for(const auto& pair : mod_pair.second) {
 				//TODO: change this to some key=value format as soon as we drop the old  mp configure screen.
 				mod.add_child("option", config_of("id", pair.first)("value", pair.second()));
 			}
 		}
+
 		config_engine_->set_options(options);
 	}
 }

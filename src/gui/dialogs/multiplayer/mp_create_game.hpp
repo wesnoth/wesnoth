@@ -19,7 +19,6 @@
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
-#include "game_initialization/mp_options.hpp"
 
 class config;
 
@@ -48,14 +47,10 @@ private:
 
 	const config& cfg_;
 
-	const config* scenario_;
-
 	std::map<std::array<std::string, 2>, std::map<std::string, std::function<config::attribute_value(void)>>> visible_options_;
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
-
-	//mp::options::manager options_manager_;
 
 	std::vector<level_type_info> level_types_;
 
