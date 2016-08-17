@@ -62,6 +62,7 @@ public:
 
 	// setter methods
 	void set_game_name(std::string name);
+	void set_game_password(std::string name);
 	void set_num_turns(int val);
 	void set_village_gold(int val);
 	void set_village_support(int val);

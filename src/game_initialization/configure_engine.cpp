@@ -76,6 +76,7 @@ mp_game_settings::RANDOM_FACTION_MODE configure_engine::random_faction_mode() co
 const config& configure_engine::options() const { return parameters_.options; }
 
 void configure_engine::set_game_name(std::string val) { parameters_.name = val; }
+void configure_engine::set_game_password(std::string val) { parameters_.password = val; }
 void configure_engine::set_num_turns(int val) { parameters_.num_turns = val; }
 void configure_engine::set_village_gold(int val) { parameters_.village_gold = val; }
 void configure_engine::set_village_support(int val) { parameters_.village_support = val; }

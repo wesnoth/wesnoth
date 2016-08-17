@@ -52,6 +52,8 @@ private:
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
 
+	int selected_game_index_;
+
 	std::vector<level_type_info> level_types_;
 
 	void update_games_list(twindow& window);
@@ -69,6 +71,8 @@ private:
 
 	tfield_integer* turns_, *gold_, *support_, *experience_, *init_turn_limit, *turn_bonus_, *reservior_, *action_bonus_;
 
+	void num_players_filter_callback(twindow& window);
+
 	void on_game_select(twindow& window);
 
 	void on_tab_select(twindow& window);
@@ -81,8 +85,6 @@ private:
 	void display_custom_options(ttree_view& options_tree, std::string&& type, const std::string& id, const config& data);
 
 	void update_options_list(twindow& window);
-
-	int selected_game_index_;
 
 public:
 	// another map selected
