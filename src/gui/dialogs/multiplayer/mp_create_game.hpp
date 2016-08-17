@@ -71,7 +71,8 @@ private:
 
 	tfield_integer* turns_, *gold_, *support_, *experience_, *init_turn_limit, *turn_bonus_, *reservior_, *action_bonus_;
 
-	void num_players_filter_callback(twindow& window);
+	template<typename widget>
+	void filter_changed_callback(twindow& window, const std::string& id);
 
 	void on_game_select(twindow& window);
 

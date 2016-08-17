@@ -139,7 +139,14 @@ void tmp_create_game::pre_show(twindow& window)
 	// Set up filtering
 	//
 	connect_signal_notify_modified(find_widget<tslider>(&window, "num_players", false),
-		std::bind(&tmp_create_game::num_players_filter_callback, this, std::ref(window)));
+		std::bind(&tmp_create_game::filter_changed_callback<tslider>, this, std::ref(window), "num_players"));
+
+	ttext_box& filter = find_widget<ttext_box>(&window, "game_filter", false);
+
+	filter.set_text_changed_callback(
+		std::bind(&tmp_create_game::filter_changed_callback<ttext_box>, this, std::ref(window), "game_filter"));
+
+	window.add_to_keyboard_chain(&filter);
 
 	//
 	// Set up game types combobox
@@ -270,11 +277,13 @@ void tmp_create_game::on_tab_select(twindow& window)
 	}
 }
 
-void tmp_create_game::num_players_filter_callback(twindow& window)
+template<typename widget>
+void tmp_create_game::filter_changed_callback(twindow& window, const std::string& id)
 {
-	create_engine_.apply_level_filter(find_widget<tslider>(&window, "num_players", false).get_value());
+	create_engine_.apply_level_filter(find_widget<widget>(&window, id, false).get_value());
 
-	// TODO: actually display the filtered options
+	// TODO: should this be done with tlistbox::set_row_shown?
+	update_games_list(window);
 }
 
 void tmp_create_game::update_games_list(twindow& window)
