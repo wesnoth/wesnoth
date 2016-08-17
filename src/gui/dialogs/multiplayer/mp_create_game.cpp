@@ -341,9 +341,9 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 
 		ttree_view_node& option_node = tree.add_node("option_node", data);
 
-		data.clear();
-
 		for(const auto& checkbox_option : options.child_range("checkbox")) {
+			data.clear();
+
 			item["label"] = checkbox_option["name"];
 			data.emplace("option_checkbox", item);
 
@@ -357,9 +357,14 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 			//checkbox->set_label(checkbox_option["name"].str());
 		}
 
-		option_node.add_child("options_spacer_node", empty);
+		// Only add a spacer if there were an option of this type
+		if(options.has_child("checkbox")) {
+			option_node.add_child("options_spacer_node", empty);
+		}
 
 		for(const auto& combobox_option : options.child_range("combo")) {
+			data.clear();
+
 			item["label"] = combobox_option["name"];
 			data.emplace("combobox_label", item);
 
@@ -380,9 +385,14 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 			}
 		}
 
-		option_node.add_child("options_spacer_node", empty);
+		// Only add a spacer if there were an option of this type
+		if(options.has_child("combo")) {
+			option_node.add_child("options_spacer_node", empty);
+		}
 
 		for(const auto& slider_option : options.child_range("slider")) {
+			data.clear();
+
 			item["label"] = slider_option["name"];
 			data.emplace("slider_label", item);
 
@@ -394,13 +404,18 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 
 			slider->set_maximum_value(slider_option["max"].to_int());
 			slider->set_minimum_value(slider_option["min"].to_int());
-			slider->set_step_size(slider_option["step"].to_int());
+			slider->set_step_size(slider_option["step"].to_int(1));
 			slider->set_value(slider_option["default"].to_int());
 		}
 
-		option_node.add_child("options_spacer_node", empty);
+		// Only add a spacer if there were an option of this type
+		if(options.has_child("slider")) {
+			option_node.add_child("options_spacer_node", empty);
+		}
 
 		for(const auto& text_entry_option : options.child_range("entry")) {
+			data.clear();
+
 			item["label"] = text_entry_option["name"];
 			data.emplace("text_entry_label", item);
 
@@ -413,8 +428,12 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 			textbox->set_value(text_entry_option["default"].str());
 		}
 
+		// Only add a spacer if there were an option of this type
+		if(options.has_child("entry")) {
+			option_node.add_child("options_spacer_node", empty);
+		}
+
 		// Add the Defaults button at the end
-		option_node.add_child("options_spacer_node", empty);
 		option_node.add_child("options_default_button", empty);
 	}
 }
