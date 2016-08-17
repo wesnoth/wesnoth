@@ -68,6 +68,9 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 
 	post_show(*window);
 
+	// post_show may have updated the windoe retval. Update it here.
+	retval_ = window->get_retval();
+
 	return retval_ == twindow::OK;
 }
 

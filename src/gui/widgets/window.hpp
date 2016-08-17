@@ -425,6 +425,11 @@ public:
 			close();
 	}
 
+	int get_retval()
+	{
+		return retval_;
+	}
+
 	void set_owner(tdialog* owner)
 	{
 		owner_ = owner;
