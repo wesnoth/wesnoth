@@ -389,7 +389,7 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 				combo_values.push_back(item["value"]);
 			}
 
-			if(!combo_items.empty()) {
+			if(combo_items.empty()) {
 				continue;
 			}
 
