@@ -166,6 +166,8 @@ void tmp_create_game::pre_show(twindow& window)
 	eras_combobox.set_values(era_names);
 	eras_combobox.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(window)));
 
+	on_era_select(window);
+
 	//
 	// Set up mods list
 	//
@@ -197,6 +199,8 @@ void tmp_create_game::pre_show(twindow& window)
 	mod_list.set_callback_value_change(
 			dialog_callback<tmp_create_game, &tmp_create_game::on_mod_select>);
 #endif
+
+	on_mod_select(window);
 
 	//
 	// Set up tab control
