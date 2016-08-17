@@ -52,7 +52,7 @@ mp_game_settings::mp_game_settings() :
 	random_start_time(false),
 	fog_game(false),
 	shroud_game(false),
-	allow_observers(false),
+	allow_observers(true),
 	registered_users_only(false),
 	shuffle_sides(false),
 	saved_game(false),

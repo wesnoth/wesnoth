@@ -50,6 +50,8 @@ private:
 
 	const config* scenario_;
 
+	std::map<std::array<std::string, 2>, std::map<std::string, std::function<config::attribute_value(void)>>> visible_options_;
+
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
 
@@ -81,7 +83,7 @@ private:
 
 	void on_mod_toggle(const int index, twidget&);
 	
-	void display_custom_options(ttree_view& tree, const config* config);
+	void display_custom_options(ttree_view& options_tree, std::string&& type, const std::string& id, const config& data);
 
 	void update_options_list(twindow& window);
 

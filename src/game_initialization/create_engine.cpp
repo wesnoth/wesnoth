@@ -973,6 +973,13 @@ std::vector<std::string>& create_engine::active_mods()
 	return state_.mp_settings().active_mods;
 }
 
+const config& create_engine::curent_era_cfg() const
+{
+	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	return *eras_[era_index]->cfg;
+
+}
+
 const mp_game_settings& create_engine::get_parameters()
 {
 	DBG_MP << "getting parameter values" << std::endl;
@@ -1118,6 +1125,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 			new_extras_metadata->id = extra["id"].str();
 			new_extras_metadata->name = extra["name"].str();
 			new_extras_metadata->description = extra["description"].str();
+			new_extras_metadata->cfg = &extra;
 
 			extras.push_back(new_extras_metadata);
 		}

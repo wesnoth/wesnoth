@@ -188,6 +188,7 @@ public:
 		std::string id;
 		std::string name;
 		std::string description;
+		const config* cfg;
 	};
 
 	typedef std::shared_ptr<extras_metadata> extras_metadata_ptr;
@@ -236,6 +237,7 @@ public:
 	void set_current_mod_index(const size_t index);
 
 	size_t current_era_index() const;
+	const config& curent_era_cfg() const;
 	size_t current_mod_index() const;
 
 	const std::vector<extras_metadata_ptr>&

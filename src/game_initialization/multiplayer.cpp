@@ -529,12 +529,12 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 
 		gui2::tmp_create_game dlg(game_config, create_eng);
 
-		dlg.show(video);
-
-		if(wesnothd_connection) {
+		if (dlg.show(video)) {
+			enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+		}
+		else if (wesnothd_connection) {
 			wesnothd_connection->send_data(config("refresh_lobby"));
 		}
-		enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
 		return;
 	}
 

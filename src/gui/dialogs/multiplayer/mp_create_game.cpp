@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
+#include "config_assign.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
@@ -328,15 +329,24 @@ void tmp_create_game::on_era_select(twindow& window)
 		create_engine_.current_extra(ng::create_engine::ERA).description);
 }
 
-void tmp_create_game::display_custom_options(ttree_view& tree, const config* config)
+template<typename T>
+static config::attribute_value cav(const T& v)
 {
+	config::attribute_value res;
+	res = v;
+	return res;
+}
+
+void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& type, const std::string& id, const config& cfg)
+{
+	auto& map = visible_options_[{type, id}];
 	static const std::map<std::string, string_map> empty;
 
-	for(const auto& options : config->child_range("options")) {
+	for(const auto& options : cfg.child_range("options")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = (*config)["name"];
+		item["label"] = cfg["name"];
 		data.emplace("tree_view_node_label", item);
 
 		ttree_view_node& option_node = tree.add_node("option_node", data);
@@ -355,6 +365,7 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 
 			checkbox->set_value(checkbox_option["default"].to_bool());
 			//checkbox->set_label(checkbox_option["name"].str());
+			map[checkbox_option["id"]] = [checkbox]() { return cav(checkbox->get_value_bool()); };
 		}
 
 		// Only add a spacer if there were an option of this type
@@ -368,21 +379,27 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 			item["label"] = combobox_option["name"];
 			data.emplace("combobox_label", item);
 
-			ttree_view_node& node = option_node.add_child("option_combobox_node", data);
-
 			std::vector<std::string> combo_items;
+			std::vector<std::string> combo_values;
 
 			for(const auto& item : combobox_option.child_range("item")) {
 				combo_items.push_back(item["name"]);
+				combo_values.push_back(item["value"]);
 			}
 
 			if(!combo_items.empty()) {
-				tcombobox* combobox = dynamic_cast<tcombobox*>(node.find("option_combobox", true));
-
-				VALIDATE(combobox, missing_widget("option_combobox"));
-
-				combobox->set_values(combo_items);
+				continue;
 			}
+
+			ttree_view_node& node = option_node.add_child("option_combobox_node", data);
+
+			tcombobox* combobox = dynamic_cast<tcombobox*>(node.find("option_combobox", true));
+
+			VALIDATE(combobox, missing_widget("option_combobox"));
+
+			combobox->set_values(combo_items);
+
+			map[combobox_option["id"]] = [combobox, combo_values]() { return cav(combo_values[combobox->get_value()]); };
 		}
 
 		// Only add a spacer if there were an option of this type
@@ -406,6 +423,8 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 			slider->set_minimum_value(slider_option["min"].to_int());
 			slider->set_step_size(slider_option["step"].to_int(1));
 			slider->set_value(slider_option["default"].to_int());
+
+			map[slider_option["id"]] = [slider]() { return cav(slider->get_value()); };
 		}
 
 		// Only add a spacer if there were an option of this type
@@ -426,6 +445,8 @@ void tmp_create_game::display_custom_options(ttree_view& tree, const config* con
 			VALIDATE(textbox, missing_widget("option_text_entry"));
 
 			textbox->set_value(text_entry_option["default"].str());
+
+			map[text_entry_option["id"]] = [textbox]() { return cav(textbox->get_value()); };
 		}
 
 		// Only add a spacer if there were an option of this type
@@ -447,16 +468,16 @@ void tmp_create_game::update_options_list(twindow& window)
 
 	// TODO: might be inefficient to regenerate this every single time this tab is selected
 	// Maybe look into caching the result if no change has been made to the selection.
+	visible_options_.clear();
 	options_tree.clear();
 
-	display_custom_options(options_tree, scenario_);
-	display_custom_options(options_tree, era_config);
+	display_custom_options(options_tree, create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer", create_engine_.current_level().data()["id"], create_engine_.current_level().data());
+	display_custom_options(options_tree, "era", create_engine_.curent_era_cfg()["id"], create_engine_.curent_era_cfg());
 
-	for(unsigned int i = 0; i < create_engine_.active_mods().size(); i++) {
-		const config* mod_config = &cfg_.child("modification", i);
-
-		if(mod_config->has_child("options")) {
-			display_custom_options(options_tree, mod_config);
+	std::set<std::string> activemods(create_engine_.active_mods().begin(), create_engine_.active_mods().end());
+	for (const auto& mod : create_engine_.get_const_extras_by_type(ng::create_engine::MP_EXTRA::MOD)) {
+		if (activemods.find(mod->id) != activemods.end()) {
+			display_custom_options(options_tree, "modification", mod->id, *mod->cfg);
 		}
 	}
 }
@@ -485,11 +506,6 @@ void tmp_create_game::update_details(twindow& window)
 
 	create_engine_.current_level().set_metadata();
 
-	//create_engine_.prepare_for_scenario();
-	//create_engine_.prepare_for_new_level();
-	//create_engine_.get_parameters();
-
-	//config_engine_.write_parameters();
 	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
 	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 	config_engine_->set_default_values();
@@ -520,6 +536,8 @@ void tmp_create_game::update_details(twindow& window)
 
 			assert(current_scenario);
 
+			create_engine_.get_state().classification().campaign = "";
+
 			find_widget<tstacked_widget>(&window, "minimap_stack", false).select_layer(0);
 			find_widget<tminimap>(&window, "minimap", false).set_map_data(current_scenario->data()["map_data"]);
 
@@ -533,6 +551,8 @@ void tmp_create_game::update_details(twindow& window)
 			ng::campaign* current_campaign = dynamic_cast<ng::campaign*>(&create_engine_.current_level());
 
 			assert(current_campaign);
+
+			create_engine_.get_state().classification().campaign = current_campaign->data()["id"];
 
 			const std::string image = formatter() << current_campaign->data()["image"] << "~SCALE(240,240)";
 
@@ -557,6 +577,13 @@ void tmp_create_game::update_details(twindow& window)
 
 void tmp_create_game::update_map_settings(twindow& window)
 {
+	if (config_engine_->force_lock_settings()) {
+		use_map_settings_->widget_set_enabled(window, false, false);
+		use_map_settings_->set_widget_value(window, true);
+	}
+	else {
+		use_map_settings_->widget_set_enabled(window, true, false);
+	}
 	const bool use_map_settings = use_map_settings_->get_widget_value(window);
 
 	config_engine_->set_use_map_settings(use_map_settings);
@@ -635,12 +662,10 @@ void tmp_create_game::post_show(twindow& window)
 
 		create_engine_.prepare_for_new_level();
 
-		//create_engine_.prepare_for_scenario();
-		//create_engine_.prepare_for_new_level();
 		create_engine_.get_parameters();
 
+		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value(window));
 		if(!config_engine_->force_lock_settings()) {
-			//config_engine_->set_use_map_settings(fog_->get_widget_value());
 			config_engine_->set_num_turns(turns_->get_widget_value(window));
 			config_engine_->set_village_gold(gold_->get_widget_value(window));
 			config_engine_->set_village_support(support_->get_widget_value(window));
@@ -650,7 +675,16 @@ void tmp_create_game::post_show(twindow& window)
 			config_engine_->set_shroud_game(shroud_->get_widget_value(window));
 			config_engine_->write_parameters();
 		}
-		//config_engine_->set_options(cfg);
+		config options;
+		for (const auto& mod_pair : visible_options_) {
+			config& mod = options.add_child(mod_pair.first[0]);
+			mod["id"] = mod_pair.first[1];
+			for (const auto& pair : mod_pair.second) {
+				//TODO: change this to some key=value format as soon as we drop the old  mp configure screen.
+				mod.add_child("option", config_of("id", pair.first)("value", pair.second()));
+			}
+		}
+		config_engine_->set_options(options);
 	}
 }
 
