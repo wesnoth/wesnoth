@@ -151,10 +151,9 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	// Set up game types combobox
 	//
-	std::vector<std::string> game_types;
-
+	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
-		game_types.push_back(type_info.second);
+		game_types.push_back(config_of("label", type_info.second));
 	}
 
 	if(game_types.empty()) {
@@ -172,7 +171,11 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	tcombobox& eras_combobox = find_widget<tcombobox>(&window, "eras", false);
 
-	const std::vector<std::string>& era_names = create_engine_.extras_menu_item_names(ng::create_engine::ERA, false);
+	std::vector<config> era_names;
+	for(const auto& era : create_engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
+		era_names.push_back(config_of("label", era));
+	}
+
 	if(era_names.empty()) {
 		gui2::show_transient_message(window.video(), "", _("No eras found."));
 		throw config::error(_("No eras found"));
@@ -401,11 +404,11 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 			item["label"] = combobox_option["name"];
 			data.emplace("combobox_label", item);
 
-			std::vector<std::string> combo_items;
+			std::vector<config> combo_items;
 			std::vector<std::string> combo_values;
 
 			for(const auto& item : combobox_option.child_range("item")) {
-				combo_items.push_back(item["name"]);
+				combo_items.push_back(item);
 				combo_values.push_back(item["value"]);
 			}
 

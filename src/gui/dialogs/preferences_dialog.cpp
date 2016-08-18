@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/preferences_dialog.hpp"
 
+#include "config_assign.hpp"
 #include "game_preferences.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -141,7 +142,7 @@ static void set_resolution_list(tcombobox& res_list, CVideo& video)
 {
 	const std::vector<std::pair<int,int> > resolutions = video.get_available_resolutions(true);
 
-	std::vector<std::string> options;
+	std::vector<config> options;
 	for(const auto& res : resolutions)
 	{
 		std::ostringstream option;
@@ -154,7 +155,7 @@ static void set_resolution_list(tcombobox& res_list, CVideo& video)
 				<< ratio[0] << ':' << ratio[1] << ")</span>";
 		}
 
-		options.push_back(option.str());
+		options.push_back(config_of("label", option.str()));
 	}
 
 	const unsigned current_res = std::find(resolutions.begin(), resolutions.end(),
@@ -782,7 +783,7 @@ void tpreferences::initialize_members(twindow& window)
 
 				for(const config& choice : option.child_range("option"))
 				{
-					combo_options.first.push_back(choice["name"]);
+					combo_options.first.push_back(config_of("label", choice["name"]));
 					combo_options.second.push_back(choice["id"]);
 				}
 

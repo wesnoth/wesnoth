@@ -147,7 +147,7 @@ private:
 	void single_slider_callback(const tslider& widget,
 		std::function<void(int)> setter);
 
-	typedef std::pair<std::vector<std::string>, std::vector<std::string> > combo_data;
+	typedef std::pair<std::vector<config>, std::vector<std::string> > combo_data;
 
 	/**
 	 * Sets the initial state and callback for a combobox

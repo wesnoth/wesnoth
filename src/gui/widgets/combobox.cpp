@@ -24,6 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/dialogs/drop_down_list.hpp"
+#include "config_assign.hpp"
 #include "sound.hpp"
 
 #include "utils/functional.hpp"
@@ -38,7 +39,7 @@ namespace gui2
 
 REGISTER_WIDGET(combobox)
 
-tcombobox::tcombobox() 
+tcombobox::tcombobox()
 	: tcontrol(COUNT)
 	, tselectable_()
 	, state_(ENABLED)
@@ -46,7 +47,7 @@ tcombobox::tcombobox()
 	, values_()
 	, selected_()
 {
-	values_.push_back(this->label());
+	values_.push_back(config_of("label", this->label()));
 
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&tcombobox::signal_handler_mouse_enter, this, _2, _3));
@@ -146,7 +147,7 @@ void tcombobox::signal_handler_left_button_click(const event::tevent event,
 
 	if(droplist.show(get_window()->video())) {
 		selected_ = droplist.selected_item();
-		this->set_label(values_[selected_]);
+		this->set_label(values_[selected_]["label"]);
 		if(selected_callback_) {
 			selected_callback_(*this);
 		}
@@ -162,16 +163,16 @@ void tcombobox::signal_handler_left_button_click(const event::tevent event,
 	handled = true;
 }
 
-void tcombobox::set_values(const std::vector<std::string>& values, int selected)
+void tcombobox::set_values(const std::vector<::config>& values, int selected)
 {
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
-	if(values[selected] != values_[selected_]) {
+	if(values[selected]["label"] != values_[selected_]["label"]) {
 		set_is_dirty(true);
 	}
 	values_ = values;
 	selected_ = selected;
-	set_label(values_[selected_]);
+	set_label(values_[selected_]["label"]);
 
 }
 void tcombobox::set_selected(int selected)
@@ -182,7 +183,7 @@ void tcombobox::set_selected(int selected)
 		set_is_dirty(true);
 	}
 	selected_ = selected;
-	set_label(values_[selected_]);
+	set_label(values_[selected_]["label"]);
 }
 
 // }---------- DEFINITION ---------{
@@ -282,7 +283,7 @@ tbuilder_combobox::tbuilder_combobox(const config& cfg)
 	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
-		options_.push_back(option["label"]);
+		options_.push_back(option);
 	}
 }
 

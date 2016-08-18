@@ -20,6 +20,8 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 
+class config;
+
 namespace gui2
 {
 
@@ -62,9 +64,9 @@ public:
 	{
 		retval_ = retval;
 	}
-	void set_values(const std::vector<std::string>& values, int selected = 0);
+	void set_values(const std::vector<::config>& values, int selected = 0);
 	void set_selected(int selected);
-	
+
 	/** See tselectable_::set_callback_state_change. */
 	std::function<void(twidget&)> callback_state_change_;
 
@@ -84,7 +86,7 @@ public:
 	}
 
 	/** Returns the value of the selected row */
-	std::string get_value_string() const { return values_[selected_]; }
+	std::string get_value_string() const { return values_[selected_]["label"]; }
 
 private:
 	/**
@@ -118,7 +120,7 @@ private:
 	int retval_;
 	/**
 	 */
-	std::vector<std::string> values_;
+	std::vector<::config> values_;
 	/**
 	 */
 	int selected_;
@@ -175,7 +177,7 @@ public:
 private:
 	std::string retval_id_;
 	int retval_;
-	std::vector<std::string> options_;
+	std::vector<::config> options_;
 };
 
 } // namespace implementation
