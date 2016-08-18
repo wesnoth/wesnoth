@@ -57,8 +57,10 @@ void tscroll_label::set_label(const t_string& label)
 				= find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_label(label);
 
-		tpoint best_size = content_grid()->recalculate_best_size();
-		content_resize_request(0, content_visible_area().h - best_size.y);
+		// We want the width to stay cosistent
+		widget->request_reduce_width(widget->get_size().x);
+
+		content_resize_request();
 	}
 }
 
