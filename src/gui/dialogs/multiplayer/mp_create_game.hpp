@@ -90,6 +90,8 @@ private:
 
 	void dialog_exit_hook(twindow& window);
 
+	int convert_to_game_filtered_index(const int initial_index);
+
 public:
 	// another map selected
 	void update_details(twindow& window);

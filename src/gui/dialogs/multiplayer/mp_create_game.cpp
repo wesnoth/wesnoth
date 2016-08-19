@@ -293,7 +293,7 @@ void tmp_create_game::filter_changed_callback(twindow& window, const std::string
 	tlistbox& game_list = find_widget<tlistbox>(&window, "games_list", false);
 
 	std::vector<bool> filtered(game_list.get_item_count());
-	for(const size_t i : create_engine_.get_filtered_level_indicies(create_engine_.current_level_type())) {
+	for(const size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())) {
 		filtered[i] = true;
 	}
 
@@ -541,13 +541,20 @@ void tmp_create_game::regenerate_random_map(twindow& window)
 	update_details(window);
 }
 
+int tmp_create_game::convert_to_game_filtered_index(const int initial_index)
+{
+	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
+	return std::find(filtered_indices.begin(), filtered_indices.end(), initial_index) - filtered_indices.begin();
+}
+
 void tmp_create_game::update_details(twindow& window)
 {
 	tcontrol& description = find_widget<tcontrol>(&window, "description", false);
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
 
-	selected_game_index_ = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
+	// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
+	selected_game_index_ = convert_to_game_filtered_index(find_widget<tlistbox>(&window, "games_list", false).get_selected_row());
 
 	create_engine_.set_current_level(selected_game_index_);
 
