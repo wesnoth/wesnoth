@@ -115,9 +115,7 @@ void tcore_selection::pre_show(twindow& window)
 		list_item["label"] = core["name"];
 		list_item_item.emplace("name", list_item);
 
-		list.add_row(list_item_item);
-
-		tgrid* grid = list.get_row_grid(list.get_item_count() - 1);
+		tgrid* grid = &list.add_row(list_item_item);
 		assert(grid);
 
 		/*** Add detail item ***/

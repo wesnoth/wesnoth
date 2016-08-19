@@ -466,9 +466,8 @@ void tlobby_main::update_gamelist()
 
 		gamelist_id_at_row_.push_back(game.id);
 		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
-		gamelistbox_->add_row(make_game_row_data(game));
+		tgrid* grid = &gamelistbox_->add_row(make_game_row_data(game));
 
-		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
 	}
 
@@ -1034,13 +1033,12 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 		chat_log_container_->add_page(data);
 		std::map<std::string, string_map> data2;
 		add_label_data(data2, "room", whisper ? "<" + name + ">" : name);
-		roomlistbox_->add_row(data2);
+		tgrid* row_grid = &roomlistbox_->add_row(data2);
 
-		const int row_index = roomlistbox_->get_item_count() - 1;
-		tbutton& close_button = find_widget<tbutton>(roomlistbox_->get_row_grid(row_index), "close_window", false);
+		tbutton& close_button = find_widget<tbutton>(row_grid, "close_window", false);
 		connect_signal_mouse_left_click(close_button,
 			std::bind(&tlobby_main::close_window_button_callback,
-					this, row_index));
+					this, roomlistbox_->get_item_count() - 1));
 
 		if(name == "lobby") {
 			close_button.set_visible(tcontrol::tvisible::hidden);

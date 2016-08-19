@@ -353,9 +353,7 @@ void taddon_list::pre_show(twindow& window)
 		item["label"] = info.display_type();
 		data.emplace("type", item);
 
-		list.add_row(data);
-
-		tgrid* row_grid = list.get_row_grid(list.get_item_count() - 1);
+		tgrid* row_grid = &list.add_row(data);
 
 		tstacked_widget& install_update_stack = find_widget<tstacked_widget>(row_grid, "install_update_stack", false);
 

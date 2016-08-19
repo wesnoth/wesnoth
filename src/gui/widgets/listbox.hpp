@@ -70,7 +70,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const string_map& item, const int index = -1);
+	tgrid& add_row(const string_map& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -89,7 +89,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const std::map<std::string /* widget id */, string_map>& data,
+	tgrid& add_row(const std::map<std::string /* widget id */, string_map>& data,
 				 const int index = -1);
 
 	/**

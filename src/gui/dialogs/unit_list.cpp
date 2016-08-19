@@ -153,11 +153,9 @@ void tunit_list::pre_show(twindow& window)
 		column["label"] = utils::join(unit->trait_names(), ", ");
 		row_data.emplace("unit_traits", column);
 
-		list.add_row(row_data);
+		tgrid* row_grid = &list.add_row(row_data);
 
 		// NOTE: this needs to be done *after* the row is added
-		tgrid* row_grid = list.get_row_grid(list.get_item_count() - 1);
-
 		// TODO: show custom statuses
 		if(!unit->get_state(unit::STATE_PETRIFIED)) {
 			find_widget<timage>(row_grid, "unit_status_slowed", false).set_visible(twidget::tvisible::invisible);

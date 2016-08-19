@@ -199,14 +199,13 @@ void tmp_create_game::pre_show(twindow& window)
 		item["label"] = mod->name;
 		data.emplace("mod_name", item);
 
-		mod_list.add_row(data);
+		tgrid* row_grid = &mod_list.add_row(data);
 
-		const int index = mod_list.get_item_count() - 1;
-		ttoggle_button& mog_toggle = find_widget<ttoggle_button>(mod_list.get_row_grid(index), "mod_active_state", false);
+		ttoggle_button& mog_toggle = find_widget<ttoggle_button>(row_grid, "mod_active_state", false);
 
 		// TODO
 		//mog_toggle.set_active(true);
-		mog_toggle.set_callback_state_change(std::bind(&tmp_create_game::on_mod_toggle, this, index, _1));
+		mog_toggle.set_callback_state_change(std::bind(&tmp_create_game::on_mod_toggle, this, mod_list.get_item_count() - 1, _1));
 	}
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

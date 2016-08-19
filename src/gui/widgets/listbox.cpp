@@ -71,24 +71,27 @@ tlistbox::tlistbox(const bool has_minimum,
 {
 }
 
-void tlistbox::add_row(const string_map& item, const int index)
+tgrid& tlistbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	const tgrid& row = generator_->create_item(
+	tgrid& row = generator_->create_item(
 			index, list_builder_, item, callback_list_item_clicked);
 
 	resize_content(row);
+
+	return row;
 }
 
-void
-tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
+tgrid& tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
 				  const int index)
 {
 	assert(generator_);
-	const tgrid& row = generator_->create_item(
+	tgrid& row = generator_->create_item(
 			index, list_builder_, data, callback_list_item_clicked);
 
 	resize_content(row);
+
+	return row;
 }
 
 void tlistbox::remove_row(const unsigned row, unsigned count)
