@@ -68,12 +68,12 @@ private:
 	 * manually controlled as well so add the pointers here as well.
 	 */
 
-	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_, *time_limit_;
+	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_, *time_limit_, *shuffle_sides_, *observers_, *registered_users_, *strict_sync_;
 
 	tfield_integer* turns_, *gold_, *support_, *experience_, *init_turn_limit, *turn_bonus_, *reservior_, *action_bonus_;
 
 	template<typename widget>
-	void filter_changed_callback(twindow& window, const std::string& id);
+	void on_filter_change(twindow& window, const std::string& id);
 
 	void on_game_select(twindow& window);
 
