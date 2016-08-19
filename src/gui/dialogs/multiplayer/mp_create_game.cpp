@@ -290,8 +290,16 @@ void tmp_create_game::filter_changed_callback(twindow& window, const std::string
 {
 	create_engine_.apply_level_filter(find_widget<widget>(&window, id, false).get_value());
 
-	// TODO: should this be done with tlistbox::set_row_shown?
-	update_games_list(window);
+	tlistbox& game_list = find_widget<tlistbox>(&window, "games_list", false);
+
+	std::vector<bool> filtered(game_list.get_item_count());
+	for(const size_t i : create_engine_.get_filtered_level_indicies(create_engine_.current_level_type())) {
+		filtered[i] = true;
+	}
+
+	game_list.set_row_shown(filtered);
+
+	update_details(window);
 }
 
 void tmp_create_game::update_games_list(twindow& window)

@@ -1281,6 +1281,26 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
 	return levels;
 }
 
+std::vector<size_t> create_engine::get_filtered_level_indicies(level::TYPE type) const
+{
+	switch (type.v) {
+	case level::TYPE::SCENARIO:
+		return scenarios_filtered_;
+	case level::TYPE::USER_MAP:
+		return user_maps_filtered_;
+	case level::TYPE::USER_SCENARIO:
+		return user_scenarios_filtered_;
+	case level::TYPE::RANDOM_MAP:
+		return random_maps_filtered_;
+	case level::TYPE::CAMPAIGN:
+		return campaigns_filtered_;
+	case level::TYPE::SP_CAMPAIGN:
+		return sp_campaigns_filtered_;
+	} // end switch
+
+	return std::vector<size_t>();
+}
+
 const std::vector<create_engine::extras_metadata_ptr>&
 	create_engine::get_const_extras_by_type(const MP_EXTRA extra_type) const
 {
