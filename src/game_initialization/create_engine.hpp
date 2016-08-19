@@ -222,7 +222,7 @@ public:
 	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
-	std::vector<size_t> get_filtered_level_indicies(level::TYPE type) const;
+	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
 
 	std::vector<std::string> levels_menu_item_names() const;
 	std::vector<std::string> extras_menu_item_names(

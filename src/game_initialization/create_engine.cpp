@@ -1281,7 +1281,7 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
 	return levels;
 }
 
-std::vector<size_t> create_engine::get_filtered_level_indicies(level::TYPE type) const
+std::vector<size_t> create_engine::get_filtered_level_indices(level::TYPE type) const
 {
 	switch (type.v) {
 	case level::TYPE::SCENARIO:
