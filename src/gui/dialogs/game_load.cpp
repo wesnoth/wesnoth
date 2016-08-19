@@ -357,6 +357,12 @@ void tgame_load::delete_button_callback(twindow& window)
 		games_.erase(games_.begin() + index);
 
 		list.remove_row(index);
+
+		// Close the dialog if there are no more saves
+		if(list.get_item_count() == 0) {
+			window.set_retval(twindow::CANCEL);
+		}
+
 		display_savegame(window);
 	}
 }
