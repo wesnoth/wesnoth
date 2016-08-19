@@ -127,7 +127,7 @@ void tmp_create_game::pre_show(twindow& window)
 	// Custom dialog close hook
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "create_game", false),
-		std::bind(tmp_create_game::dialog_exit_hook, this, std::ref(window)));
+		std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
 
 	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
