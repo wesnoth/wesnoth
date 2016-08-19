@@ -166,7 +166,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 				int v = lua_tointeger(L, i);
 				if (v < 1)
 					goto error_call_destructors_1;
-				int n = tvn.size();
+				int n = tvn.count_children();
 				if (v > n) {
 					goto error_call_destructors_1;
 				}
@@ -186,7 +186,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 				int v = lua_tointeger(L, i);
 				if (v < 1)
 					goto error_call_destructors_1;
-				int n = tvn->size();
+				int n = tvn->count_children();
 				if (v > n) {
 					goto error_call_destructors_1;
 				}
@@ -481,11 +481,11 @@ namespace
 	{
 		//Not tested yet.
 		gui2::ttree_view& tv = node.tree_view();
-		if(pos >= node.size()) {
+		if(pos >= node.count_children()) {
 			return;
 		}
-		if(number <= 0 || number + pos > node.size()) {
-			number = node.size() - pos;
+		if(number <= 0 || number + pos > node.count_children()) {
+			number = node.count_children() - pos;
 		}
 		for (int i = 0; i < number; ++i) {
 			tv.remove_node(&node.get_child_at(pos));

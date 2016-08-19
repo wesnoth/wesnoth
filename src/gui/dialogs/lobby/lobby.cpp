@@ -106,7 +106,7 @@ void tsub_player_list::update_player_count_label()
 	 * widget should also be able to handle it itself. Once done the
 	 * setting of the label text can also be removed.
 	 */
-	label_player_count->set_label((formatter() << "(" << tree->size() << ")").str());
+	label_player_count->set_label((formatter() << "(" << tree->count_children() << ")").str());
 }
 
 void tplayer_list::init(twindow& w)

@@ -156,11 +156,9 @@ public:
 						const bool must_be_active) const override;
 
 	/**
-	 * The "size" of the widget.
-	 *
-	 * @todo Rename this function, names to close to the size of the widget.
+	 * The number of children in this widget.
 	 */
-	size_t size() const
+	size_t count_children() const
 	{
 		return children_.size();
 	}

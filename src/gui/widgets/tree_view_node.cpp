@@ -732,7 +732,7 @@ ttree_view_node* ttree_view_node::get_node_above()
 {
 	assert(!is_root_node());
 	ttree_view_node* cur = nullptr;
-	for(size_t i = 0; i < parent_node_->size(); ++i) {
+	for(size_t i = 0; i < parent_node_->count_children(); ++i) {
 		if(&parent_node_->children_[i] == this) {
 			if(i == 0) {
 				return parent_node_->is_root_node() ? nullptr : parent_node_;
@@ -743,8 +743,8 @@ ttree_view_node* ttree_view_node::get_node_above()
 			}
 		}
 	}
-	while(!cur->is_folded() && cur->size() > 0) {
-		cur = &cur->get_child_at(cur->size() - 1);
+	while(!cur->is_folded() && cur->count_children() > 0) {
+		cur = &cur->get_child_at(cur->count_children() - 1);
 	}
 	return cur;
 }
@@ -752,16 +752,16 @@ ttree_view_node* ttree_view_node::get_node_above()
 ttree_view_node* ttree_view_node::get_node_below()
 {
 	assert(!is_root_node());
-	if(!is_folded() && size() > 0) {
+	if(!is_folded() && count_children() > 0) {
 		return &get_child_at(0);
 	}
 	ttree_view_node* cur = this;
 	while(cur->parent_node_ != nullptr) {
 		ttree_view_node& parent = *cur->parent_node_;
 
-		for(size_t i = 0; i < parent.size(); ++i) {
+		for(size_t i = 0; i < parent.count_children(); ++i) {
 			if(&parent.children_[i] == cur) {
-				if(i < parent.size() - 1) {
+				if(i < parent.count_children() - 1) {
 					return &parent.children_[i + 1];
 				}
 				else {
