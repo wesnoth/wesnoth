@@ -204,12 +204,13 @@ public:
 	void prepare_for_new_level();
 	void prepare_for_era_and_mods();
 	void prepare_for_scenario();
-	void prepare_for_campaign(const std::string& difficulty);
+	void prepare_for_campaign(const std::string& difficulty = "");
 	void prepare_for_saved_game();
 	//random maps, user maps
 	void prepare_for_other();
 
 	std::string select_campaign_difficulty(int set_value = -1);
+	std::string get_selected_campaign_difficulty();
 
 	void apply_level_filter(const std::string& name);
 	void apply_level_filter(int players);
@@ -309,6 +310,8 @@ private:
 	std::unique_ptr<depcheck::manager> dependency_manager_;
 
 	std::unique_ptr<map_generator> generator_;
+
+	std::string selected_campaign_difficulty_;
 };
 
 } // end namespace ng

@@ -36,6 +36,7 @@
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -122,6 +123,11 @@ void tmp_create_game::pre_show(twindow& window)
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "random_map_settings", false),
 		std::bind(&tmp_create_game::show_generator_settings, this, std::ref(window)));
+
+	// Custom dialog close hook
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "create_game", false),
+		std::bind(tmp_create_game::dialog_exit_hook, this, std::ref(window)));
 
 	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -319,16 +325,30 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 		item["label"] = game.get()->name();
 		data.emplace("game_name", item);
 
-		list.add_row(data);
+		tgrid* row_grid = &list.add_row(data);
+
+		find_widget<ttoggle_panel>(row_grid, "game_list_panel", false).set_callback_mouse_left_double_click(
+			std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
 	}
 
-	// TODO: move to click handler?
 	const bool is_random_map = type == ng::level::TYPE::RANDOM_MAP;
 
 	find_widget<tbutton>(&window, "random_map_regenerate", false).set_active(is_random_map);
 	find_widget<tbutton>(&window, "random_map_settings", false).set_active(is_random_map);
 
 	update_details(window);
+}
+
+void tmp_create_game::dialog_exit_hook(twindow& window) {
+	if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
+		create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
+
+		if(create_engine_.select_campaign_difficulty() == "CANCEL") {
+			return;
+		}
+	}
+
+	window.set_retval(twindow::OK);
 }
 
 void tmp_create_game::on_mod_select(twindow& window)
@@ -639,14 +659,8 @@ void tmp_create_game::post_show(twindow& window)
 		create_engine_.prepare_for_era_and_mods();
 
 		if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
-		   create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
-
-			std::string difficulty = create_engine_.select_campaign_difficulty();
-			if(difficulty == "CANCEL") {
-				window.set_retval(twindow::NONE);
-			}
-
-			create_engine_.prepare_for_campaign(difficulty);
+			create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
+			create_engine_.prepare_for_campaign();
 		} else if(create_engine_.current_level_type() == ng::level::TYPE::SCENARIO) {
 			create_engine_.prepare_for_scenario();
 		} else {

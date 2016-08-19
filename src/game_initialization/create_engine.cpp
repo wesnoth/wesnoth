@@ -407,7 +407,8 @@ create_engine::create_engine(CVideo& v, saved_game& state) :
 	state_(state),
 	video_(v),
 	dependency_manager_(nullptr),
-	generator_(nullptr)
+	generator_(nullptr),
+	selected_campaign_difficulty_()
 {
 	DBG_MP << "restoring game config\n";
 
@@ -544,8 +545,10 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
 	DBG_MP << "preparing data for campaign by reloading game config\n";
 
-	if (difficulty != "") {
+	if(difficulty != "") {
 		state_.classification().difficulty = difficulty;
+	} else if(!selected_campaign_difficulty_.empty()) {
+		state_.classification().difficulty = selected_campaign_difficulty_;
 	}
 
 	state_.classification().campaign = current_level().data()["id"].str();
@@ -619,7 +622,14 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	gui2::tcampaign_difficulty dlg(current_level().data());
 	dlg.show(video_);
 
-	return dlg.selected_difficulty();
+	selected_campaign_difficulty_ = dlg.selected_difficulty();
+
+	return selected_campaign_difficulty_;
+}
+
+std::string create_engine::get_selected_campaign_difficulty()
+{
+	return selected_campaign_difficulty_;
 }
 
 void create_engine::prepare_for_saved_game()

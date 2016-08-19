@@ -529,9 +529,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 
 		gui2::tmp_create_game dlg(game_config, create_eng);
 
-		do {
-			dlg.show(video);
-		} while(dlg.get_retval() == gui2::twindow::NONE);
+		dlg.show(video);
 
 		if(dlg.get_retval() == gui2::twindow::OK) {
 			enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);

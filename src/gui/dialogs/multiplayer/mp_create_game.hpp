@@ -24,8 +24,9 @@ class config;
 
 namespace gui2
 {
-	
+
 class ttree_view;
+class ttoggle_panel;
 class twidget;
 
 class tmp_create_game : public tdialog
@@ -82,10 +83,12 @@ private:
 	void on_era_select(twindow& window);
 
 	void on_mod_toggle(const int index, twidget&);
-	
+
 	void display_custom_options(ttree_view& options_tree, std::string&& type, const std::string& id, const config& data);
 
 	void update_options_list(twindow& window);
+
+	void dialog_exit_hook(twindow& window);
 
 public:
 	// another map selected
