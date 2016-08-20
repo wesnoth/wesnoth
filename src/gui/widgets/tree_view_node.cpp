@@ -119,7 +119,7 @@ ttree_view_node::ttree_view_node(
 			}
 		}
 
-		VALIDATE(false, _("Unknown builder id for tree view node."));
+		VALIDATE_WITH_DEV_MESSAGE(false, _("Unknown builder id for tree view node."), id);
 	}
 	else {
 		unfolded_ = true;
