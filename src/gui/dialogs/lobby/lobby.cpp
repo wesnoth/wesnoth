@@ -675,6 +675,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	set_visible_if_exists(grid, "reloaded",           game.reloaded);
 	set_visible_if_exists(grid, "started",            game.started);
 	set_visible_if_exists(grid, "use_map_settings",   game.use_map_settings);
+	set_visible_if_exists(grid, "registered_only",    game.registered_users_only);
 	set_visible_if_exists(grid, "no_era",            !game.have_era);
 
 	if(tbutton* join_button = dynamic_cast<tbutton*>(grid->find("join", false))) {

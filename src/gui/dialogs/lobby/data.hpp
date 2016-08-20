@@ -167,6 +167,7 @@ struct game_info
 	bool observers;
 	bool shuffle_sides;
 	bool use_map_settings;
+	bool registered_users_only;
 	bool verified;
 	bool password_required;
 	bool have_era;
