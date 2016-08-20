@@ -44,7 +44,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 {
 	const terrain_type_data & tdata = *map.tdata();
 
-	const int scale = 8;
+	const int scale = 24;
 
 	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
