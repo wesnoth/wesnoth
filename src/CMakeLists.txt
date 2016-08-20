@@ -468,6 +468,7 @@ set(wesnoth-gui_iterator_SRC
 	gui/auxiliary/iterator/iterator.cpp
 	gui/auxiliary/iterator/walker_grid.cpp
 	gui/auxiliary/iterator/walker_widget.cpp
+	gui/auxiliary/iterator/walker_tree_node.cpp
 )
 
 add_library(wesnoth-gui_iterator

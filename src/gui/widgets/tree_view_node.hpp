@@ -17,6 +17,7 @@
 
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/grid.hpp"
+#include "gui/auxiliary/iterator/walker_tree_node.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
@@ -137,7 +138,7 @@ public:
 	 */
 	virtual iterator::twalker_* create_walker() override
 	{
-		return nullptr;
+		return new gui2::iterator::ttree_node(*this, children_);
 	}
 
 	/** See @ref twidget::find_at. */
