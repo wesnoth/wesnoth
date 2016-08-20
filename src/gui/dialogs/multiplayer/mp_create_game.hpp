@@ -116,6 +116,8 @@ private:
 
 	int convert_to_game_filtered_index(const int initial_index);
 
+	void load_game_callback(twindow& window);
+
 public:
 	// another map selected
 	void update_details(twindow& window);

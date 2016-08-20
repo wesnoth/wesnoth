@@ -118,6 +118,10 @@ void tmp_create_game::pre_show(twindow& window)
 		find_widget<tbutton>(&window, "random_map_settings", false),
 		std::bind(&tmp_create_game::show_generator_settings, this, std::ref(window)));
 
+	connect_signal_mouse_left_click(
+		find_widget<tbutton>(&window, "load_game", false),
+		std::bind(&tmp_create_game::load_game_callback, this, std::ref(window)));
+
 	// Custom dialog close hook
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "create_game", false),
@@ -315,6 +319,13 @@ void tmp_create_game::on_era_select(twindow& window)
 		create_engine_.current_extra(ng::create_engine::ERA).description);
 }
 
+void tmp_create_game::update_games_list(twindow& window)
+{
+	const int index = find_widget<tcombobox>(&window, "game_types", false).get_value();
+
+	display_games_of_type(window, level_types_[index].first);
+}
+
 void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE type)
 {
 	create_engine_.set_current_level_type(type);
@@ -478,13 +489,6 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 	}
 }
 
-void tmp_create_game::update_games_list(twindow& window)
-{
-	const int index = find_widget<tcombobox>(&window, "game_types", false).get_value();
-
-	display_games_of_type(window, level_types_[index].first);
-}
-
 void tmp_create_game::update_options_list(twindow& window)
 {
 	ttree_view& options_tree = find_widget<ttree_view>(&window, "custom_options", false);
@@ -518,6 +522,25 @@ void tmp_create_game::regenerate_random_map(twindow& window)
 	create_engine_.init_generated_level_data();
 
 	update_details(window);
+}
+
+void tmp_create_game::load_game_callback(twindow& window)
+{
+	try {
+		savegame::loadgame load(window.video(), cfg_, create_engine_.get_state());
+
+		if(!load.load_multiplayer_game()) {
+			return ;
+		}
+
+		if(load.cancel_orders()) {
+			create_engine_.get_state().cancel_orders();
+		}
+
+		create_engine_.prepare_for_saved_game();
+
+		window.set_retval(twindow::OK);
+	} catch(config::error&) {}
 }
 
 int tmp_create_game::convert_to_game_filtered_index(const int initial_index)
