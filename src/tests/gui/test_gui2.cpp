@@ -664,13 +664,7 @@ struct twrapper<gui2::tgamestate_inspector>
 {
 	static gui2::tgamestate_inspector* create()
 	{
-		/**
-		 * @todo Would be nice to add real data to the vconfig.
-		 * It would also involve adding real data to the resources.
-		 */
-		static config cfg;
-		static vconfig vcfg(cfg);
-		return new gui2::tgamestate_inspector(vcfg);
+		return new gui2::tgamestate_inspector();
 	}
 
 };
