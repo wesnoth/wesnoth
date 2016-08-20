@@ -100,11 +100,11 @@ public:
 	}
 
 	/**
-	 * The indention level of the node.
+	 * The indentation level of the node.
 	 *
 	 * The root node starts at level 0.
 	 */
-	unsigned get_indention_level() const;
+	unsigned get_indentation_level() const;
 
 	/** Does the node have children? */
 	bool empty() const
@@ -280,8 +280,8 @@ private:
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
-	tpoint calculate_best_size(const int indention_level,
-							   const unsigned indention_step_size) const;
+	tpoint calculate_best_size(const int indentation_level,
+							   const unsigned indentation_step_size) const;
 	/** @param assume_visible: if false (default) it will return 0 if the parent node is folded*/
 	tpoint get_current_size(bool assume_visible = false) const;
 	tpoint get_folded_size() const;
@@ -294,7 +294,7 @@ private:
 	virtual void place(const tpoint& origin, const tpoint& size) override;
 
 	unsigned
-	place(const unsigned indention_step_size, tpoint origin, unsigned width);
+	place(const unsigned indentation_step_size, tpoint origin, unsigned width);
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;

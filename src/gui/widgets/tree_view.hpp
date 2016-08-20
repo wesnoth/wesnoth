@@ -76,9 +76,9 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_indention_step_size(const unsigned indention_step_size)
+	void set_indentation_step_size(const unsigned indentation_step_size)
 	{
-		indention_step_size_ = indention_step_size;
+		indentation_step_size_ = indentation_step_size;
 	}
 
 	ttree_view_node* selected_item()
@@ -118,7 +118,7 @@ private:
 	 */
 	const std::vector<tnode_definition> node_definitions_;
 
-	unsigned indention_step_size_;
+	unsigned indentation_step_size_;
 
 	bool need_layout_;
 
@@ -199,7 +199,7 @@ struct tbuilder_tree_view : public tbuilder_control
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
-	unsigned indention_step_size;
+	unsigned indentation_step_size;
 
 	/**
 	 * The types of nodes in the tree view.

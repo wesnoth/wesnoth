@@ -40,7 +40,7 @@ REGISTER_WIDGET(tree_view)
 ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	: tscrollbar_container(2)
 	, node_definitions_(node_definitions)
-	, indention_step_size_(0)
+	, indentation_step_size_(0)
 	, need_layout_(false)
 	, root_node_(new ttree_view_node("root",
 									 node_definitions_,
@@ -157,7 +157,7 @@ void ttree_view::layout_children(const bool force)
 	assert(root_node_ && content_grid());
 
 	if(need_layout_ || force) {
-		root_node_->place(indention_step_size_,
+		root_node_->place(indentation_step_size_,
 						  get_origin(),
 						  content_grid()->get_size().x);
 		root_node_->set_visible_rectangle(content_visible_area_);
@@ -346,7 +346,7 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
  *                                     Determines whether or not to show the
  *                                     scrollbar. $
  *
- *     indention_step_size & unsigned & 0 &
+ *     indentation_step_size & unsigned & 0 &
  *                                     The number of pixels every level of
  *                                     nodes is indented from the previous
  *                                     level. $
@@ -379,7 +379,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, indention_step_size(cfg["indention_step_size"])
+	, indentation_step_size(cfg["indentation_step_size"])
 	, nodes()
 {
 
@@ -404,7 +404,7 @@ twidget* tbuilder_tree_view::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	widget->set_indention_step_size(indention_step_size);
+	widget->set_indentation_step_size(indentation_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '" << id
 			  << "' with definition '" << definition << "'.\n";
