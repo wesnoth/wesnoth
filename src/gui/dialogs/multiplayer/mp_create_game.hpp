@@ -123,6 +123,8 @@ private:
 	void on_mod_toggle(const int index, twidget&);
 	void on_random_faction_mode_select(twindow& window);
 
+	void show_description(twindow& window, const std::string& new_description);
+
 	void display_custom_options(ttree_view& options_tree, std::string&& type, const std::string& id, const config& data);
 
 	void update_options_list(twindow& window);

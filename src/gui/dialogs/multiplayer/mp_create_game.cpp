@@ -344,8 +344,7 @@ void tmp_create_game::on_mod_select(twindow& window)
 {
 	create_engine_.set_current_mod_index(find_widget<tlistbox>(&window, "mod_list", false).get_selected_row());
 
-	find_widget<tcontrol>(&window, "description", false).set_label(
-		create_engine_.current_extra(ng::create_engine::MOD).description);
+	show_description(window, create_engine_.current_extra(ng::create_engine::MOD).description);
 }
 
 void tmp_create_game::on_mod_toggle(const int index, twidget&)
@@ -358,13 +357,20 @@ void tmp_create_game::on_era_select(twindow& window)
 {
 	create_engine_.set_current_era_index(find_widget<tcombobox>(&window, "eras", false).get_value());
 
-	find_widget<tcontrol>(&window, "description", false).set_label(
-		create_engine_.current_extra(ng::create_engine::ERA).description);
+	show_description(window, create_engine_.current_extra(ng::create_engine::ERA).description);
 }
 
 void tmp_create_game::on_random_faction_mode_select(twindow& window)
 {
 	selected_rfm_index_ = find_widget<tcombobox>(&window, "random_faction_mode", false).get_value();
+}
+
+void tmp_create_game::show_description(twindow& window, const std::string& new_description)
+{
+	tcontrol& description = find_widget<tcontrol>(&window, "description", false);
+
+	description.set_label(!new_description.empty() ? new_description : _("No description available"));
+	description.set_use_markup(true);
 }
 
 void tmp_create_game::update_games_list(twindow& window)
@@ -594,7 +600,6 @@ int tmp_create_game::convert_to_game_filtered_index(const int initial_index)
 
 void tmp_create_game::update_details(twindow& window)
 {
-	tcontrol& description = find_widget<tcontrol>(&window, "description", false);
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
 
@@ -616,8 +621,7 @@ void tmp_create_game::update_details(twindow& window)
 		}
 	}
 
-	description.set_label(create_engine_.current_level().description());
-	description.set_use_markup(true);
+	show_description(window, create_engine_.current_level().description());
 
 	switch(create_engine_.current_level_type().v) {
 		case ng::level::TYPE::SCENARIO:
