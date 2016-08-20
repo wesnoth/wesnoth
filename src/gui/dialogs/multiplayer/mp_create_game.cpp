@@ -709,8 +709,8 @@ void tmp_create_game::post_show(twindow& window)
 
 		config options;
 		for(const auto& mod_pair : visible_options_) {
-			config& mod = options.add_child(mod_pair.first[0]);
-			mod["id"] = mod_pair.first[1];
+			config& mod = options.add_child(mod_pair.first.level_type);
+			mod["id"] = mod_pair.first.id;
 			for(const auto& pair : mod_pair.second) {
 				//TODO: change this to some key=value format as soon as we drop the old  mp configure screen.
 				mod.add_child("option", config_of("id", pair.first)("value", pair.second()));

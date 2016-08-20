@@ -48,7 +48,16 @@ private:
 
 	const config& cfg_;
 
-	std::map<std::array<std::string, 2>, std::map<std::string, std::function<config::attribute_value(void)>>> visible_options_;
+	struct option_source {
+		std::string level_type;
+		std::string id;
+		friend bool operator<(const option_source& a, const option_source& b) {
+			return a.level_type < b.level_type && a.id < b.id;
+		}
+	};
+	using option_getter = std::function<config::attribute_value()>;
+	using option_map = std::map<std::string, option_getter>;
+	std::map<option_source, option_map> visible_options_;
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
@@ -68,9 +77,24 @@ private:
 	 * manually controlled as well so add the pointers here as well.
 	 */
 
-	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_, *time_limit_, *shuffle_sides_, *observers_, *registered_users_, *strict_sync_;
+	tfield_bool* use_map_settings_;
+	tfield_bool* fog_;
+	tfield_bool* shroud_;
+	tfield_bool* start_time_;
+	tfield_bool* time_limit_;
+	tfield_bool* shuffle_sides_;
+	tfield_bool* observers_;
+	tfield_bool* registered_users_;
+	tfield_bool* strict_sync_;
 
-	tfield_integer* turns_, *gold_, *support_, *experience_, *init_turn_limit, *turn_bonus_, *reservior_, *action_bonus_;
+	tfield_integer* turns_;
+	tfield_integer* gold_;
+	tfield_integer* support_;
+	tfield_integer* experience_;
+	tfield_integer* init_turn_limit;
+	tfield_integer* turn_bonus_;
+	tfield_integer* reservior_;
+	tfield_integer* action_bonus_;
 
 	template<typename widget>
 	void on_filter_change(twindow& window, const std::string& id);
