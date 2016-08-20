@@ -112,12 +112,12 @@ public:
 		}
 		return data.substr(pages[which_page].first, pages[which_page].second);
 	}
-	
+
 	void clear_data()
 	{
 		data.clear();
 	}
-	
+
 	void set_data(const std::string& new_data)
 	{
 		data = new_data;
@@ -126,7 +126,7 @@ public:
 
 	int count_pages()
 	{
-		return std::max (static_cast<unsigned long> (pages.size()), 1ul);
+		return std::max<int>(pages.size(), 1);
 	}
 
 private:
@@ -182,14 +182,13 @@ class tgamestate_inspector::view
 public:
 	view(twindow& window)
 		: stuff_list_(find_widget<ttree_view>(&window, "stuff_list", false, true))
-		, title_(find_widget<tcontrol>(&window, "content_title", false, true))
 		, inspect_(find_widget<tcontrol>(&window, "inspect", false, true))
 		, pages_(find_widget<tcontrol>(&window, "page_count", false, true))
 		, left_(find_widget<tcontrol>(&window, "page_left", false, true))
 		, right_(find_widget<tcontrol>(&window, "page_right", false, true))
 	{
 	}
-	
+
 	stuff_list_adder stuff_list_entry(ttree_view_node* parent, const std::string defn)
 	{
 		return stuff_list_adder(parent ? *parent : stuff_list_->get_root_node(), defn);
@@ -199,7 +198,6 @@ public:
 	{
 		int n_pages = m.count_pages();
 		current_page_ = std::min(n_pages - 1, std::max(0, current_page_));
-		title_->set_label(m.name);
 		inspect_->set_label(m.get_data_paged(current_page_));
 		if(n_pages > 1) {
 			std::ostringstream out;
@@ -221,7 +219,7 @@ public:
 		left_->set_visible(twidget::tvisible::invisible);
 		right_->set_visible(twidget::tvisible::invisible);
 	}
-	
+
 	void page(int where)
 	{
 		current_page_ += where;
@@ -230,7 +228,6 @@ public:
 private:
 	int current_page_ = 0;
 	ttree_view* stuff_list_;
-	tcontrol* title_;
 	tcontrol* inspect_;
 	tcontrol* pages_;
 	tcontrol* left_;
@@ -375,7 +372,7 @@ public:
 		view_.page(next ? 1 : -1);
 		view_.update(model_);
 	}
-	
+
 	template<typename T>
 	T& get_controller()
 	{
@@ -388,14 +385,14 @@ public:
 		controllers.push_back(p);
 		return *p;
 	}
-	
+
 	template<typename C>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(ttree_view_node&))
 	{
 		C& sub_controller = get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
 	}
-	
+
 	template<typename C, typename T>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(ttree_view_node&, T), T param)
 	{
@@ -443,7 +440,7 @@ public:
 
 		build_stuff_list(window);
 	}
-	
+
 	void build_stuff_list(twindow& window)
 	{
 		set_node_callback(
@@ -495,7 +492,7 @@ private:
 	std::vector<single_mode_controller*> controllers;
 	node_callback_map callbacks;
 };
- 
+
 tgamestate_inspector::model& single_mode_controller::model() {
 	return c.model_;
 }
@@ -528,7 +525,7 @@ void variable_mode_controller::show_list(ttree_view_node& node)
 
 		std::ostringstream cur_str;
 		cur_str << "[" << c.key << "][" << wml_array_sizes[c.key] << "]";
-		
+
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
 				.widget("name", cur_str.str())
@@ -619,7 +616,7 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	s.str("");
 	s << "L" << u.level();
 	progress.widget("level", s.str());
-	
+
 	s.str("");
 	s << u.experience() << '/' << u.max_experience() << " xp";
 	progress.widget("xp", s.str());
@@ -629,7 +626,7 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	progress.widget("hp", s.str());
 
 	progress.widget("traits", utils::join(u.get_traits_list(), ", "));
-	
+
 	return progress;
 }
 
@@ -783,8 +780,8 @@ void team_mode_controller::show_units(ttree_view_node&, int side)
 
 		s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
 		  << "L" << i->level() << "; " << i->experience() << '/'
-		  << i->max_experience() << " xp; " << i->hitpoints() << '/'
-		  << i->max_hitpoints() << " hp\n";
+		  << i->max_experience() << " XP; " << i->hitpoints() << '/'
+		  << i->max_hitpoints() << " HP\n";
 		for(const auto & str : i->get_traits_list())
 		{
 			s << "\t" << str << std::endl;

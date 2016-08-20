@@ -35,7 +35,7 @@ private:
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-	
+
 	std::shared_ptr<view> view_;
 	std::shared_ptr<model> model_;
 	std::shared_ptr<controller> controller_;
