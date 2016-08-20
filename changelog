@@ -18,6 +18,7 @@ Version 1.13.5+dev:
    * Fix game map sometimes showing and buttons sometimes not rendered properly in story screen (bug #24553)
    * Improved font rendering on Windows.
  * WML Engine:
+   * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
      - Added variable= to [message]: if specified, gives variable name to receive the [option] index (1..n) selected
        only used if any [option] appear
