@@ -41,6 +41,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "game_config.hpp"
+#include "savegame.hpp"
 #include "settings.hpp"
 #include "formatter.hpp"
 
