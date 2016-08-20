@@ -607,11 +607,9 @@ void pump()
 void raise_process_event()
 {
 	if(event_contexts.empty() == false) {
-
+		event_contexts.back().add_staging_handlers();
 		const handler_list& event_handlers = event_contexts.back().handlers;
 
-		//events may cause more event handlers to be added and/or removed,
-		//so we must use indexes instead of iterators here.
 		for(auto handler : event_handlers) {
 			handler->process_event();
 		}
