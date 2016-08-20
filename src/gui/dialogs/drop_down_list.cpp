@@ -58,11 +58,6 @@ void tdrop_down_list::pre_show(twindow& window)
 
 	std::map<std::string, string_map> data;
 	string_map item;
-	
-	//t_string& image      = data["icon"]["label"];
-	//t_string& label      = data["label"]["label"];
-	//t_string& tooltip    = data["label"]["tooltip"];
-	//t_string& use_markup = data["label"]["use_markup"];
 
 	for(const auto& entry : items_) {
 		data.clear();
@@ -72,7 +67,7 @@ void tdrop_down_list::pre_show(twindow& window)
 
 		item["label"] = entry["label"];
 		item["tooltip"] = entry["tooltip"];
-		item["use_markup"] = "true";
+		item["use_markup"] = use_markup_ ? "true" : "false";
 		data.emplace("label", item);
 
 		list.add_row(data);
