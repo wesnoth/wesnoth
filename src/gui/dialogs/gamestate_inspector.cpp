@@ -126,7 +126,7 @@ public:
 
 	int count_pages()
 	{
-		return std::max(pages.size(), 1ul);
+		return std::max (static_cast<unsigned long> (pages.size()), 1ul);
 	}
 
 private:
