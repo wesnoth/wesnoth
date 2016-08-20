@@ -514,37 +514,43 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 
 void server::setup_handlers()
 {
-	cmd_handlers_["shut_down"] = &server::shut_down_handler;
-	cmd_handlers_["restart"] = &server::restart_handler;
-	cmd_handlers_["sample"] = &server::sample_handler;
-	cmd_handlers_["help"] = &server::help_handler;
-	cmd_handlers_["stats"] = &server::stats_handler;
-	cmd_handlers_["metrics"] = &server::metrics_handler;
-	cmd_handlers_["requests"] = &server::requests_handler;
-	cmd_handlers_["games"] = &server::games_handler;
-	cmd_handlers_["wml"] = &server::wml_handler;
-	cmd_handlers_["netstats"] = &server::netstats_handler;
-	cmd_handlers_["report"]   = &server::adminmsg_handler;
-	cmd_handlers_["adminmsg"] = &server::adminmsg_handler;
-	cmd_handlers_["pm"] = &server::pm_handler;
-	cmd_handlers_["privatemsg"] = &server::pm_handler;
-	cmd_handlers_["msg"] = &server::msg_handler;
-	cmd_handlers_["lobbymsg"] = &server::msg_handler;
-	cmd_handlers_["status"] = &server::status_handler;
-	cmd_handlers_["clones"] = &server::clones_handler;
-	cmd_handlers_["bans"] = &server::bans_handler;
-	cmd_handlers_["ban"] = &server::ban_handler;
-	cmd_handlers_["unban"] = &server::unban_handler;
-	cmd_handlers_["ungban"] = &server::ungban_handler;
-	cmd_handlers_["kick"] = &server::kick_handler;
-	cmd_handlers_["kickban"] = &server::kickban_handler;
-	cmd_handlers_["kban"] = &server::kickban_handler;
-	cmd_handlers_["gban"] = &server::gban_handler;
-	cmd_handlers_["motd"] = &server::motd_handler;
-	cmd_handlers_["searchlog"] = &server::searchlog_handler;
-	cmd_handlers_["sl"] = &server::searchlog_handler;
-	cmd_handlers_["dul"] = &server::dul_handler;
-	cmd_handlers_["deny_unregistered_login"] = &server::dul_handler;
+#define SETUP_HANDLER(name, function) \
+	cmd_handlers_[name] = std::bind(function, this, \
+		std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+
+	SETUP_HANDLER("shut_down", &server::shut_down_handler);
+	SETUP_HANDLER("restart", &server::restart_handler);
+	SETUP_HANDLER("sample", &server::sample_handler);
+	SETUP_HANDLER("help", &server::help_handler);
+	SETUP_HANDLER("stats", &server::stats_handler);
+	SETUP_HANDLER("metrics", &server::metrics_handler);
+	SETUP_HANDLER("requests", &server::requests_handler);
+	SETUP_HANDLER("games", &server::games_handler);
+	SETUP_HANDLER("wml", &server::wml_handler);
+	SETUP_HANDLER("netstats", &server::netstats_handler);
+	SETUP_HANDLER("report", &server::adminmsg_handler);
+	SETUP_HANDLER("adminmsg", &server::adminmsg_handler);
+	SETUP_HANDLER("pm", &server::pm_handler);
+	SETUP_HANDLER("privatemsg", &server::pm_handler);
+	SETUP_HANDLER("msg", &server::msg_handler);
+	SETUP_HANDLER("lobbymsg", &server::msg_handler);
+	SETUP_HANDLER("status", &server::status_handler);
+	SETUP_HANDLER("clones", &server::clones_handler);
+	SETUP_HANDLER("bans", &server::bans_handler);
+	SETUP_HANDLER("ban", &server::ban_handler);
+	SETUP_HANDLER("unban", &server::unban_handler);
+	SETUP_HANDLER("ungban", &server::ungban_handler);
+	SETUP_HANDLER("kick", &server::kick_handler);
+	SETUP_HANDLER("kickban", &server::kickban_handler);
+	SETUP_HANDLER("kban", &server::kickban_handler);
+	SETUP_HANDLER("gban", &server::gban_handler);
+	SETUP_HANDLER("motd", &server::motd_handler);
+	SETUP_HANDLER("searchlog", &server::searchlog_handler);
+	SETUP_HANDLER("sl", &server::searchlog_handler);
+	SETUP_HANDLER("dul", &server::dul_handler);
+	SETUP_HANDLER("deny_unregistered_login", &server::dul_handler);
+
+#undef SETUP_HANDLER
 }
 
 void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code)
@@ -2276,7 +2282,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	} else {
 		const cmd_handler &handler = handler_itor->second;
 		try {
-			handler(this, issuer_name, query, parameters, &out);
+			handler(issuer_name, query, parameters, &out);
 		} catch (std::bad_function_call & ex) {
 			ERR_SERVER << "While handling a command '" << command << "', caught a std::bad_function_call exception.\n";
 			ERR_SERVER << ex.what() << std::endl;
