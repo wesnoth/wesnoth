@@ -52,6 +52,14 @@
 namespace gui2
 {
 
+template<typename T>
+static config::attribute_value cav(const T& v)
+{
+	config::attribute_value res;
+	res = v;
+	return res;
+}
+
 // Shorthand
 namespace prefs = preferences;
 
@@ -62,6 +70,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	, create_engine_(create_eng)
 	, config_engine_()
 	, selected_game_index_(-1)
+	, selected_rfm_index_(-1)
 	, use_map_settings_(register_bool( "use_map_settings", true, prefs::use_map_settings, prefs::set_use_map_settings,
 		dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>))
 	, fog_(register_bool("fog", true, prefs::fog, prefs::set_fog))
@@ -99,6 +108,12 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
 	}), level_types_.end());
 
+	rfm_types_ = {
+		mp_game_settings::RANDOM_FACTION_MODE::DEFAULT,
+		mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR,
+		mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR,
+	};
+
 	create_engine_.init_active_mods();
 
 	create_engine_.get_state() = saved_game();
@@ -128,18 +143,6 @@ void tmp_create_game::pre_show(twindow& window)
 		find_widget<tbutton>(&window, "create_game", false),
 		std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
 
-	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(list,
-		std::bind(&tmp_create_game::on_game_select,
-			*this, std::ref(window)));
-#else
-	list.set_callback_value_change(
-			dialog_callback<tmp_create_game, &tmp_create_game::on_game_select>);
-#endif
-
-	window.keyboard_capture(&list);
-
 	//
 	// Set up filtering
 	//
@@ -152,6 +155,11 @@ void tmp_create_game::pre_show(twindow& window)
 		std::bind(&tmp_create_game::on_filter_change<ttext_box>, this, std::ref(window), "game_filter"));
 
 	window.add_to_keyboard_chain(&filter);
+
+	// For the num players filter, we want the first option to say 'any'. Since we're using the built-in slider
+	// label here, we need to use set_value_labels and sadly need to specify a label for every value :|
+	const std::vector<t_string> num_player_filter_display_values = {"any", "2", "3", "4", "5", "6", "7", "8", "9"};
+	find_widget<tslider>(&window, "num_players", false).set_value_labels(num_player_filter_display_values);
 
 	//
 	// Set up game types combobox
@@ -222,6 +230,30 @@ void tmp_create_game::pre_show(twindow& window)
 	on_mod_select(window);
 
 	//
+	// Set up random faction mode copobox
+	//
+	std::vector<config> rfm_options;
+	for(const auto& type : rfm_types_) {
+		rfm_options.push_back(config_of("label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)));
+	};
+
+	// Manually insert tooltips. Need to find a better way to do this
+	rfm_options[0]["tooltip"] = cav(_("Independent: Random factions assigned independently"));
+	rfm_options[1]["tooltip"] = cav(_("No Mirror: No two players will get the same faction"));
+	rfm_options[2]["tooltip"] = cav(_("No Ally Mirror: No two allied players will get the same faction"));
+
+	const int initial_index = std::find(rfm_types_.begin(), rfm_types_.end(),
+		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode())) - rfm_types_.begin();
+
+	tcombobox& rfm_combobox = find_widget<tcombobox>(&window, "random_faction_mode", false);
+
+	rfm_combobox.set_values(rfm_options);
+	rfm_combobox.set_selected(initial_index);
+	rfm_combobox.connect_click_handler(std::bind(&tmp_create_game::on_random_faction_mode_select, this, std::ref(window)));
+
+	on_random_faction_mode_select(window);
+
+	//
 	// Set up tab control
 	//
 	tlistbox& tab_bar = find_widget<tlistbox>(&window, "tab_bar", false);
@@ -246,11 +278,24 @@ void tmp_create_game::pre_show(twindow& window)
 	list_data["tab_label"]["label"] = _("Game Settings");
 	tab_bar.add_row(list_data);
 
-	tab_bar.select_row(0);
+	//
+	// Main games list
+	//
+	tlistbox& list = find_widget<tlistbox>(&window, "games_list", false);
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(list,
+		std::bind(&tmp_create_game::on_game_select,
+			*this, std::ref(window)));
+#else
+	list.set_callback_value_change(
+			dialog_callback<tmp_create_game, &tmp_create_game::on_game_select>);
+#endif
+
+	window.keyboard_capture(&list);
+
+	// This handles both the initial game and tab selection
 	display_games_of_type(window, ng::level::TYPE::SCENARIO);
-
-	on_tab_select(window);
 }
 
 template<typename widget>
@@ -280,22 +325,19 @@ void tmp_create_game::on_game_select(twindow& window)
 void tmp_create_game::on_tab_select(twindow& window)
 {
 	const int i = find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row();
-
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(i);
 
-	switch(i) {
-		case 0:
-			// TODO: are there any General panel settings that need to be updated here?
-			break;
-
-		case 1:
-			update_options_list(window);
-			break;
-
-		case 2:
-			update_map_settings(window);
-			break;
+	// TODO: display a message to this effect instead?
+	if(i == tab::TAB_GENERAL) {
+		find_widget<tcombobox>(&window, "eras", false).set_active(create_engine_.current_level().allow_era_choice());
 	}
+
+	if(i == tab::TAB_OPTIONS) {
+		update_options_list(window);
+	}
+
+	// Map Settings can and should be updated every time
+	update_map_settings(window);
 }
 
 void tmp_create_game::on_mod_select(twindow& window)
@@ -318,6 +360,11 @@ void tmp_create_game::on_era_select(twindow& window)
 
 	find_widget<tcontrol>(&window, "description", false).set_label(
 		create_engine_.current_extra(ng::create_engine::ERA).description);
+}
+
+void tmp_create_game::on_random_faction_mode_select(twindow& window)
+{
+	selected_rfm_index_ = find_widget<tcombobox>(&window, "random_faction_mode", false).get_value();
 }
 
 void tmp_create_game::update_games_list(twindow& window)
@@ -363,14 +410,6 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 	find_widget<tbutton>(&window, "random_map_settings", false).set_active(is_random_map);
 
 	update_details(window);
-}
-
-template<typename T>
-static config::attribute_value cav(const T& v)
-{
-	config::attribute_value res;
-	res = v;
-	return res;
 }
 
 void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& type, const std::string& id, const config& cfg)
@@ -507,10 +546,13 @@ void tmp_create_game::update_options_list(twindow& window)
 
 	std::set<std::string> activemods(create_engine_.active_mods().begin(), create_engine_.active_mods().end());
 	for(const auto& mod : create_engine_.get_const_extras_by_type(ng::create_engine::MP_EXTRA::MOD)) {
-		if (activemods.find(mod->id) != activemods.end()) {
+		if(activemods.find(mod->id) != activemods.end()) {
 			display_custom_options(options_tree, "modification", mod->id, *mod->cfg);
 		}
 	}
+
+	// No custom options, display a message
+	find_widget<tcontrol>(&window, "no_options_notice", false).set_visible(options_tree.empty() ? twindow::tvisible::visible : twindow::tvisible::invisible);
 }
 
 void tmp_create_game::show_generator_settings(twindow& window)
@@ -566,11 +608,6 @@ void tmp_create_game::update_details(twindow& window)
 	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
 	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 	config_engine_->set_default_values();
-
-	// TODO: display a message?
-	if(tcombobox* eras = find_widget<tcombobox>(&window, "eras", false, false)) {
-		eras->set_active(create_engine_.current_level().allow_era_choice());
-	}
 
 	// If the current random map doesn't have data, generate it
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
@@ -727,9 +764,10 @@ void tmp_create_game::post_show(twindow& window)
 		config_engine_->set_oos_debug(strict_sync_->get_widget_value(window));
 		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value(window));
 
-		// TODO: we rely on a hardcoded list in the WML file. Should we procedurally generate the contents?
-		config_engine_->set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::from_int(
-			find_widget<tcombobox>(&window, "random_faction_mode", false).get_value()));
+		config_engine_->set_random_faction_mode(rfm_types_[selected_rfm_index_]);
+
+		// Since we don't have a tfield handling this option, we need to save the value manually
+		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
 		config options;
 		for(const auto& mod_pair : visible_options_) {

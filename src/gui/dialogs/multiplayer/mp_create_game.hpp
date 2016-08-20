@@ -19,6 +19,7 @@
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
+#include "mp_game_settings.hpp"
 
 class config;
 
@@ -55,6 +56,7 @@ private:
 			return a.level_type < b.level_type && a.id < b.id;
 		}
 	};
+
 	using option_getter = std::function<config::attribute_value()>;
 	using option_map = std::map<std::string, option_getter>;
 	std::map<option_source, option_map> visible_options_;
@@ -63,8 +65,23 @@ private:
 	std::unique_ptr<ng::configure_engine> config_engine_;
 
 	int selected_game_index_;
+	int selected_rfm_index_;
 
 	std::vector<level_type_info> level_types_;
+
+	/* We keep and work with a vector of the RFM types since it's the easiest way to get a value for
+	 * the config_engine and preferences setters, since comboboxes aren't supported by tfield.
+	 * Even if they were, they take a RANDOM_FACTION_MODE value not an index. If we try to keep a copy of the
+	 * selected RFM type in a member value and update it every time you perform a selection, there's still a problem
+	 * of setting an initial value. Comparing strings between the (translated) combobox values and the hardcoded
+	 * (non-translated) RANDOM_FACTION_MODE string values is a horrible way to do it and would break in any
+	 * language other than English, so instead we'll keep a vector and use std::find to get the initial index.
+	 * This method should also allow the values to eventually be translated, since the string values don't
+	 * come into consideration at all, save for populating the combobox.
+	 *
+	 * -- vultraz, 8/21/2016
+	 */
+	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
 
 	void update_games_list(twindow& window);
 	void display_games_of_type(twindow& window, ng::level::TYPE type);
@@ -100,17 +117,17 @@ private:
 	void on_filter_change(twindow& window, const std::string& id);
 
 	void on_game_select(twindow& window);
-
 	void on_tab_select(twindow& window);
-
 	void on_mod_select(twindow& window);
 	void on_era_select(twindow& window);
-
 	void on_mod_toggle(const int index, twidget&);
+	void on_random_faction_mode_select(twindow& window);
 
 	void display_custom_options(ttree_view& options_tree, std::string&& type, const std::string& id, const config& data);
 
 	void update_options_list(twindow& window);
+	void update_details(twindow& window);
+	void update_map_settings(twindow& window);
 
 	void dialog_exit_hook(twindow& window);
 
@@ -118,12 +135,7 @@ private:
 
 	void load_game_callback(twindow& window);
 
-public:
-	// another map selected
-	void update_details(twindow& window);
-
-	// use_map_settings toggled (also called in other cases.)
-	void update_map_settings(twindow& window);
+	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
 
 } // namespace gui2
