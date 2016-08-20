@@ -539,7 +539,7 @@ void tmp_create_game::load_game_callback(twindow& window)
 
 		create_engine_.prepare_for_saved_game();
 
-		window.set_retval(twindow::OK);
+		dialog_exit_hook(window);
 	} catch(config::error&) {}
 }
 
