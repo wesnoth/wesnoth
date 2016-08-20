@@ -173,7 +173,7 @@ public:
 
 private:
 	ttree_view_node& stuff_list_;
-	const std::string& defn_;
+	const std::string defn_;
 	std::map<std::string, string_map> data_;
 };
 
