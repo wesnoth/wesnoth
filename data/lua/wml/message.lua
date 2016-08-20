@@ -211,7 +211,7 @@ local function message_user_choice(cfg, speaker, options, text_input)
 	end
 	
 	-- add formatting
-	msg_cfg.message = add_formatting(cfg, cfg.message)
+	msg_cfg.message = add_formatting(cfg, msg_cfg.message)
 	
 	-- Parse input text, if not available all fields are empty
 	if text_input then
