@@ -657,7 +657,8 @@ void unit_mode_controller::show_unit(ttree_view_node& node)
 
 void team_mode_controller::show_list(ttree_view_node& node, int side)
 {
-	const config& cfg = resources::gameboard->get_team(side).to_config();
+	config&& cfg = resources::gameboard->get_team(side).to_config();
+	cfg.clear_children("ai");
 	model().set_data(config_to_string(cfg));
 
 	if(node.count_children() > 0) {
