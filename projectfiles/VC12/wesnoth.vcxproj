@@ -1476,6 +1476,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_widget.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Auxiliary\Iterator\</ObjectFileName>
@@ -4044,6 +4052,7 @@
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\policy_visit.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_grid.hpp" />
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_widget.hpp" />
     <ClInclude Include="..\..\src\gui\auxiliary\old_markup.hpp" />
     <ClInclude Include="..\..\src\gui\core\canvas.hpp" />
