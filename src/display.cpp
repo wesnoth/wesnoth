@@ -24,6 +24,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
+#include "hotkey/command_executor.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -2672,6 +2673,15 @@ void display::redraw_everything()
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
 		create_buttons();
+	}
+
+	hotkey::command_executor* command_executor =
+		resources::controller->get_hotkey_command_executor();
+	if (command_executor != nullptr)
+	{
+		// This function adds button overlays,
+		// it needs to be run after recreating the buttons.
+		command_executor->set_button_state();
 	}
 
 	panelsDrawn_ = false;

@@ -70,6 +70,11 @@ public:
 	void set_scroll_down(bool on);
 	void set_scroll_left(bool on);
 	void set_scroll_right(bool on);
+
+	/**
+	* Get (optionally) a command executor to handle context menu events
+	*/
+	virtual hotkey::command_executor * get_hotkey_command_executor() { return nullptr; }
 protected:
 	virtual bool is_browsing() const
 	{ return false; }
@@ -91,11 +96,6 @@ protected:
 	 * Get (optionally) a plugins context a derived class uses
 	 */
 	virtual plugins_context * get_plugins_context() { return nullptr; }
-
-	/**
-	 * Get (optionally) a command executor to handle context menu events
-	 */
-	virtual hotkey::command_executor * get_hotkey_command_executor() { return nullptr; }
 
 	/**
 	 * Derived classes should override this to return false when arrow keys
