@@ -350,6 +350,9 @@ void tmp_create_game::on_tab_select(twindow& window)
 
 void tmp_create_game::on_mod_select(twindow& window)
 {
+	if (find_widget<tlistbox>(&window, "mod_list", false).get_item_count() <= 0)	// no modifications installed
+		return;
+
 	create_engine_.set_current_mod_index(find_widget<tlistbox>(&window, "mod_list", false).get_selected_row());
 
 	show_description(window, create_engine_.current_extra(ng::create_engine::MOD).description);
