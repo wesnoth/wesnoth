@@ -24,6 +24,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
+#include "desktop/clipboard.hpp"
 #include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -36,111 +37,64 @@ namespace gui2
 
 REGISTER_WIDGET3(ttext_box_definition, password_box, "text_box_definition")
 
-namespace
-{
-
-size_t get_text_length(const std::string& str)
-{
-	return utf8::size(str);
-}
-
-} // namespace
-
 void tpassword_box::set_value(const std::string& text)
 {
-	ttext_box::set_value(text);
-	real_value_ = get_value();
-	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
+	real_value_ = text;
+	size_t sz = utf8::size(text);
+	utf8::string passwd;
+	for(size_t i = 0; i < sz; i++) {
+		passwd.append("•");
+	}
+	ttext_box::set_value(passwd);
+}
+
+void tpassword_box::delete_selection()
+{
+	int len = get_selection_length();
+	if(len == 0) {
+		return;
+	}
+	unsigned start = get_selection_start();
+	if(len < 0) {
+		len = -len;
+		start -= len;
+	}
+
+	utf8::erase(real_value_, start, len);
+	set_value(real_value_);
+	set_cursor(start, false);
 }
 
 void tpassword_box::insert_char(const utf8::string& unicode)
 {
-	pre_function();
-	ttext_box::insert_char(unicode);
-	post_function();
-}
-
-void tpassword_box::delete_char(const bool before_cursor)
-{
-	pre_function();
-	ttext_box::delete_char(before_cursor);
-	post_function();
-}
-
-void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
-{
-	pre_function();
-
-	// Copy & paste from ttext_::handle_key_backspace()
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
-
-	handled = true;
-	if(get_selection_length() != 0) {
-		delete_selection();
-	} else if(get_selection_start()) {
-		delete_char(true);
+	int len = get_selection_length();
+	unsigned sel = get_selection_start();
+	if(len < 0) {
+		len = -len;
+		sel -= len;
 	}
 
-	post_function();
-}
-
-void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled)
-{
-	pre_function();
-
-	// Copy & paste from ttext_::handle_key_delete()
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
-
-	handled = true;
-	if(get_selection_length() != 0) {
-		delete_selection();
-	} else if(get_selection_start() < get_text_length(text())) {
-		delete_char(false);
+	size_t sz = utf8::size(unicode);
+	if(sz == 1) {
+		ttext_box::insert_char("•");
+	} else {
+		utf8::string passwd;
+		for(size_t i = 0; i < sz; i++) {
+			passwd.append("•");
+		}
+		ttext_box::insert_char(passwd);
+		set_cursor(sel + sz, false);
 	}
-
-	post_function();
+	utf8::insert(real_value_, sel, unicode);
 }
 
 void tpassword_box::paste_selection(const bool mouse)
 {
-	pre_function();
-	ttext_box::paste_selection(mouse);
-	post_function();
-}
-
-void tpassword_box::pre_function()
-{
-	// ttext_box::set_value() will reset the selection,
-	// we therefore have to remember it
-	size_t selection_start = get_selection_start();
-	size_t selection_length = get_selection_length();
-
-	// Tell ttext_box the actual input of this box
-	ttext_box::set_value(real_value_);
-
-	// Restore the selection
-	set_selection_start(selection_start);
-	set_selection_length(selection_length);
-}
-
-void tpassword_box::post_function()
-{
-	// See above
-	size_t selection_start = get_selection_start();
-	size_t selection_length = get_selection_length();
-
-	// Get the input back and make ttext_box forget it
-	real_value_ = get_value();
-	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
-
-	// See above
-	set_selection_start(selection_start);
-	set_selection_length(selection_length);
-
-	// Why do the selection functions not update
-	// the canvas?
-	update_canvas();
-	set_is_dirty(true);
+	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
+	if(text.empty()) {
+		return;
+	}
+	insert_char(text);
 }
 
 const std::string& tpassword_box::get_control_type() const
