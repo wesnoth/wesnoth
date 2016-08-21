@@ -327,9 +327,17 @@ void tmp_create_game::on_tab_select(twindow& window)
 	const int i = find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row();
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(i);
 
-	// TODO: display a message to this effect instead?
 	if(i == tab::TAB_GENERAL) {
-		find_widget<tcombobox>(&window, "eras", false).set_active(create_engine_.current_level().allow_era_choice());
+		const bool can_select_era = create_engine_.current_level().allow_era_choice();
+
+		tcombobox& era_combo = find_widget<tcombobox>(&window, "eras", false);
+		if(!can_select_era) {
+			era_combo.set_label(_("No eras available for this game."));
+		} else {
+			era_combo.set_selected(era_combo.get_value());
+		}
+
+		era_combo.set_active(can_select_era);
 	}
 
 	if(i == tab::TAB_OPTIONS) {
@@ -608,18 +616,19 @@ void tmp_create_game::update_details(twindow& window)
 
 	create_engine_.set_current_level(selected_game_index_);
 
-	create_engine_.current_level().set_metadata();
-
-	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
-	config_engine_->update_initial_cfg(create_engine_.current_level().data());
-	config_engine_->set_default_values();
-
 	// If the current random map doesn't have data, generate it
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
 		if(create_engine_.generator_assigned() && create_engine_.current_level().data()["map_data"].empty()) {
 			create_engine_.init_generated_level_data();
 		}
 	}
+
+	create_engine_.current_level().set_metadata();
+
+	// Reset the config_engine with new values
+	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
+	config_engine_->update_initial_cfg(create_engine_.current_level().data());
+	config_engine_->set_default_values();
 
 	show_description(window, create_engine_.current_level().description());
 
@@ -650,7 +659,7 @@ void tmp_create_game::update_details(twindow& window)
 
 			create_engine_.get_state().classification().campaign = current_campaign->data()["id"].str();
 
-			const std::string image = formatter() << current_campaign->data()["image"] << "~SCALE_INTO(240,240)";
+			const std::string image = formatter() << current_campaign->data()["image"] << "~SCALE_INTO(265,265)";
 
 			find_widget<tstacked_widget>(&window, "minimap_stack", false).select_layer(1);
 			find_widget<timage>(&window, "campaign_image", false).set_label(image);
