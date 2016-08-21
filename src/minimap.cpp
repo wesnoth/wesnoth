@@ -76,11 +76,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	cache_map *fog_cache = &mini_fogged_terrain_cache;
 	cache_map *highlight_cache = &mini_highlighted_terrain_cache;
 
-	for(int y = 0; y != map.total_height(); ++y)
-		for(int x = 0; x != map.total_width(); ++x) {
+	for(int y = 0; y <= map.total_height(); ++y)
+		for(int x = 0; x <= map.total_width(); ++x) {
 
 			const map_location loc(x,y);
-			if(!map.on_board(loc))
+			if(!map.on_board_with_border(loc))
 				continue;
 
 			const bool highlighted = reach_map && reach_map->count(loc) != 0;
@@ -97,11 +97,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			// if not, only the bottom half-hexes are clipped
 			// and it looks asymmetrical.
 
-			// also do 1-pixel shift because the scaling
-			// function seems to do it with its rounding
 			SDL_Rect maprect = sdl::create_rect(
-					x * scale * 3 / 4 - 1
-					, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - 1
+					x * scale * 3 / 4 - (scale / 4)
+					, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - (scale / 4)
 					, 0
 					, 0);
 
