@@ -26,8 +26,9 @@ class config;
 namespace gui2
 {
 
-class ttree_view;
+class ttoggle_button;
 class ttoggle_panel;
+class ttree_view;
 class twidget;
 
 class tmp_create_game : public tdialog
@@ -57,9 +58,18 @@ private:
 		}
 	};
 
-	using option_getter = std::function<config::attribute_value()>;
-	using option_map = std::map<std::string, option_getter>;
-	std::map<option_source, option_map> visible_options_;
+	using option_map = std::map<std::string, config::attribute_value>;
+
+	std::vector<option_source> visible_options_;
+	std::map<option_source, option_map> options_data_;
+
+	void display_custom_options(twindow& window, ttree_view& options_tree, std::string&& type, const config& data);
+
+	template<typename T>
+	void update_options_data_map(T* widget, const option_source& source);
+	void update_options_data_map(ttoggle_button* widget, const option_source& source);
+
+	void reset_options_data(twindow& window, const option_source& source);
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
@@ -69,15 +79,16 @@ private:
 
 	std::vector<level_type_info> level_types_;
 
-	/* We keep and work with a vector of the RFM types since it's the easiest way to get a value for
-	 * the config_engine and preferences setters, since comboboxes aren't supported by tfield.
-	 * Even if they were, they take a RANDOM_FACTION_MODE value not an index. If we try to keep a copy of the
-	 * selected RFM type in a member value and update it every time you perform a selection, there's still a problem
-	 * of setting an initial value. Comparing strings between the (translated) combobox values and the hardcoded
-	 * (non-translated) RANDOM_FACTION_MODE string values is a horrible way to do it and would break in any
-	 * language other than English, so instead we'll keep a vector and use std::find to get the initial index.
-	 * This method should also allow the values to eventually be translated, since the string values don't
-	 * come into consideration at all, save for populating the combobox.
+	/* We keep and work with a vector of the RFM types since it's the easiest way to get a value for the
+	 * config_engine and preferences setters, since comboboxes aren't supported by tfield. Even if they
+	 * were, the above functions take a RANDOM_FACTION_MODE value, not an index. Even if we try to keep a
+	 * copy of the selected RFM type index in a int value and update it every time you perform a selection,
+	 * there's still the problem of getting an initial value from preferences, which again is provided as a
+	 * RANDOM_FACTION_MODE value. Comparing strings between the (translated) combobox values in the WML and
+	 * the hardcoded (non-translated) RANDOM_FACTION_MODE string values stored in preferences is a horrible
+	 * way to do it and would break in any language other than English. Instead, we'll keep a vector and use
+	 * std::find to get the initial index. This method should also allow the values to eventually be translated,
+	 * since the string values don't come into consideration at all, save for populating the combobox.
 	 *
 	 * -- vultraz, 8/21/2016
 	 */
@@ -124,8 +135,6 @@ private:
 	void on_random_faction_mode_select(twindow& window);
 
 	void show_description(twindow& window, const std::string& new_description);
-
-	void display_custom_options(ttree_view& options_tree, std::string&& type, const std::string& id, const config& data);
 
 	void update_options_list(twindow& window);
 	void update_details(twindow& window);

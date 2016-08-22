@@ -154,7 +154,8 @@ void tmp_create_game::pre_show(twindow& window)
 	filter.set_text_changed_callback(
 		std::bind(&tmp_create_game::on_filter_change<ttext_box>, this, std::ref(window), "game_filter"));
 
-	window.add_to_keyboard_chain(&filter);
+	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
+	window.keyboard_capture(&filter);
 
 	// For the num players filter, we want the first option to say 'any'. Since we're using the built-in slider
 	// label here, we need to use set_value_labels and sadly need to specify a label for every value :|
@@ -292,7 +293,7 @@ void tmp_create_game::pre_show(twindow& window)
 			dialog_callback<tmp_create_game, &tmp_create_game::on_game_select>);
 #endif
 
-	window.keyboard_capture(&list);
+	window.add_to_keyboard_chain(&list);
 
 	// This handles both the initial game and tab selection
 	display_games_of_type(window, ng::level::TYPE::SCENARIO);
@@ -429,10 +430,34 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 	update_details(window);
 }
 
-void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& type, const std::string& id, const config& cfg)
+template<typename T>
+void tmp_create_game::update_options_data_map(T* widget, const option_source& source)
 {
-	auto& map = visible_options_[{type, id}];
-	static const std::map<std::string, string_map> empty;
+	options_data_[source][widget->id()] = widget->get_value();
+}
+
+template<>
+void tmp_create_game::update_options_data_map(ttoggle_button* widget, const option_source& source)
+{
+	options_data_[source][widget->id()] = widget->get_value_bool();
+}
+
+void tmp_create_game::reset_options_data(twindow& window, const option_source& source)
+{
+	options_data_[source].clear();
+
+	// FIXME: we want to update the display of options immediately, but this causes a crash, possible since
+	// it's clearing a tree from a callback inside itself.
+	//update_options_list(window);
+}
+
+void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, std::string&& type, const config& cfg)
+{
+	// Needed since some compilers don't like passing just {}
+	static const std::map<std::string, string_map> empty_map;
+
+	visible_options_.push_back({type, cfg["id"]});
+	auto& data_map = options_data_[visible_options_.back()];
 
 	for(const auto& options : cfg.child_range("options")) {
 		std::map<std::string, string_map> data;
@@ -455,14 +480,21 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 
 			VALIDATE(checkbox, missing_widget("option_checkbox"));
 
-			checkbox->set_value(checkbox_option["default"].to_bool());
-			//checkbox->set_label(checkbox_option["name"].str());
-			map[checkbox_option["id"]] = [checkbox]() { return cav(checkbox->get_value_bool()); };
+			const std::string widget_id = checkbox_option["id"];
+
+			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
+				data_map[widget_id] = checkbox_option["default"];
+			}
+
+			checkbox->set_id(widget_id);
+			checkbox->set_value(data_map[widget_id].to_bool());
+			checkbox->set_callback_state_change(
+				std::bind(&tmp_create_game::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
 		}
 
 		// Only add a spacer if there were an option of this type
 		if(options.has_child("checkbox")) {
-			option_node.add_child("options_spacer_node", empty);
+			option_node.add_child("options_spacer_node", empty_map);
 		}
 
 		for(const auto& combobox_option : options.child_range("combo")) {
@@ -474,7 +506,10 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 			std::vector<config> combo_items;
 			std::vector<std::string> combo_values;
 
-			for(const auto& item : combobox_option.child_range("item")) {
+			for(auto item : combobox_option.child_range("item")) {
+				// Comboboxes expect this key to be 'label' not 'name'
+				item["label"] = item["name"];
+
 				combo_items.push_back(item);
 				combo_values.push_back(item["value"]);
 			}
@@ -489,14 +524,22 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 
 			VALIDATE(combobox, missing_widget("option_combobox"));
 
-			combobox->set_values(combo_items);
+			const std::string widget_id = combobox_option["id"];
 
-			map[combobox_option["id"]] = [combobox, combo_values]() { return cav(combo_values[combobox->get_value()]); };
+			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
+				data_map[widget_id] = combobox_option["default"];
+			}
+
+			combobox->set_id(widget_id);
+			combobox->set_values(combo_items);
+			combobox->set_selected(data_map[widget_id].to_int());
+			combobox->connect_click_handler(
+				std::bind(&tmp_create_game::update_options_data_map<tcombobox>, this, combobox, visible_options_.back()));
 		}
 
 		// Only add a spacer if there were an option of this type
 		if(options.has_child("combo")) {
-			option_node.add_child("options_spacer_node", empty);
+			option_node.add_child("options_spacer_node", empty_map);
 		}
 
 		for(const auto& slider_option : options.child_range("slider")) {
@@ -511,17 +554,25 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 
 			VALIDATE(slider, missing_widget("option_slider"));
 
+			const std::string widget_id = slider_option["id"];
+
+			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
+				data_map[widget_id] = slider_option["default"];
+			}
+
+			slider->set_id(widget_id);
 			slider->set_maximum_value(slider_option["max"].to_int());
 			slider->set_minimum_value(slider_option["min"].to_int());
 			slider->set_step_size(slider_option["step"].to_int(1));
-			slider->set_value(slider_option["default"].to_int());
+			slider->set_value(data_map[widget_id].to_int());
 
-			map[slider_option["id"]] = [slider]() { return cav(slider->get_value()); };
+			connect_signal_notify_modified(*slider,
+				std::bind(&tmp_create_game::update_options_data_map<tslider>, this, slider, visible_options_.back()));
 		}
 
 		// Only add a spacer if there were an option of this type
 		if(options.has_child("slider")) {
-			option_node.add_child("options_spacer_node", empty);
+			option_node.add_child("options_spacer_node", empty_map);
 		}
 
 		for(const auto& text_entry_option : options.child_range("entry")) {
@@ -536,13 +587,23 @@ void tmp_create_game::display_custom_options(ttree_view& tree, std::string&& typ
 
 			VALIDATE(textbox, missing_widget("option_text_entry"));
 
-			textbox->set_value(text_entry_option["default"].str());
+			const std::string widget_id = text_entry_option["id"];
 
-			map[text_entry_option["id"]] = [textbox]() { return cav(textbox->get_value()); };
+			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
+				data_map[widget_id] = text_entry_option["default"];
+			}
+
+			textbox->set_id(widget_id);
+			textbox->set_value(data_map[widget_id].str());
+			textbox->set_text_changed_callback(
+				std::bind(&tmp_create_game::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
 		}
 
 		// Add the Defaults button at the end
-		option_node.add_child("options_default_button", empty);
+		ttree_view_node& node = option_node.add_child("options_default_button", empty_map);
+
+		connect_signal_mouse_left_click(find_widget<tbutton>(&node, "reset_option_values", false),
+			std::bind(&tmp_create_game::reset_options_data, this, std::ref(window), visible_options_.back()));
 	}
 }
 
@@ -555,16 +616,16 @@ void tmp_create_game::update_options_list(twindow& window)
 	visible_options_.clear();
 	options_tree.clear();
 
-	display_custom_options(options_tree,
+	display_custom_options(window, options_tree,
 		create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer",
-		create_engine_.current_level().data()["id"], create_engine_.current_level().data());
+		create_engine_.current_level().data());
 
-	display_custom_options(options_tree, "era", create_engine_.curent_era_cfg()["id"], create_engine_.curent_era_cfg());
+	display_custom_options(window, options_tree, "era", create_engine_.curent_era_cfg());
 
 	std::set<std::string> activemods(create_engine_.active_mods().begin(), create_engine_.active_mods().end());
 	for(const auto& mod : create_engine_.get_const_extras_by_type(ng::create_engine::MP_EXTRA::MOD)) {
 		if(activemods.find(mod->id) != activemods.end()) {
-			display_custom_options(options_tree, "modification", mod->id, *mod->cfg);
+			display_custom_options(window, options_tree, "modification", *mod->cfg);
 		}
 	}
 
@@ -786,12 +847,12 @@ void tmp_create_game::post_show(twindow& window)
 		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
 		config options;
-		for(const auto& mod_pair : visible_options_) {
-			config& mod = options.add_child(mod_pair.first.level_type);
-			mod["id"] = mod_pair.first.id;
-			for(const auto& pair : mod_pair.second) {
-				//TODO: change this to some key=value format as soon as we drop the old  mp configure screen.
-				mod.add_child("option", config_of("id", pair.first)("value", pair.second()));
+		for(const auto& source : visible_options_) {
+			config& mod = options.add_child(source.level_type);
+			mod["id"] = source.id;
+			for(const auto& option : options_data_[source]) {
+				// TODO: change this to some key=value format as soon as we drop the old mp configure screen.
+				mod.add_child("option", config_of("id", option.first)("value", option.second));
 			}
 		}
 
