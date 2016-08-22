@@ -200,7 +200,7 @@ private:
 #endif
 	void setup_handlers();
 
-	typedef std::function<void(server*, const std::string&, const std::string&, std::string&, std::ostringstream *)> cmd_handler;
+	typedef std::function<void(const std::string&, const std::string&, std::string&, std::ostringstream *)> cmd_handler;
 	std::map<std::string, cmd_handler> cmd_handlers_;
 
 	void shut_down_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
