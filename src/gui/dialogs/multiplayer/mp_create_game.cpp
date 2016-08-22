@@ -157,11 +157,6 @@ void tmp_create_game::pre_show(twindow& window)
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	window.keyboard_capture(&filter);
 
-	// For the num players filter, we want the first option to say 'any'. Since we're using the built-in slider
-	// label here, we need to use set_value_labels and sadly need to specify a label for every value :|
-	const std::vector<t_string> num_player_filter_display_values = {"any", "2", "3", "4", "5", "6", "7", "8", "9"};
-	find_widget<tslider>(&window, "num_players", false).set_value_labels(num_player_filter_display_values);
-
 	//
 	// Set up game types combobox
 	//
