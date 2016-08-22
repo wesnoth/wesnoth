@@ -505,7 +505,8 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 			std::vector<config> combo_items;
 			std::vector<std::string> combo_values;
 
-			for(auto item : combobox_option.child_range("item")) {
+			config::const_child_itors items = combobox_option.child_range("item");
+			for(auto item : items) {
 				// Comboboxes expect this key to be 'label' not 'name'
 				item["label"] = item["name"];
 
@@ -531,7 +532,15 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			combobox->set_id(widget_id);
 			combobox->set_values(combo_items);
-			combobox->set_selected(data_map[widget_id].to_int());
+
+			config::attribute_value val = data_map[widget_id];
+			auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
+				return cfg["value"] == val;
+			});
+			if(iter != items.end()) {
+				combobox->set_selected(iter - items.begin());
+			}
+
 			combobox->connect_click_handler(
 				std::bind(&tmp_create_game::update_options_data_map<tcombobox>, this, combobox, visible_options_.back()));
 		}
