@@ -395,7 +395,7 @@
 		91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */; };
 		91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; };
 		91A215E41CAD9D4300927AEA /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCEA0ECA805A002BE442 /* button.cpp */; };
-		91A215E71CAD9D4300927AEA /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* combobox.cpp */; };
+		91A215E71CAD9D4300927AEA /* menu_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* menu_button.cpp */; };
 		91A215E91CAD9D4300927AEA /* container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCEE0ECA805A002BE442 /* container.cpp */; };
 		91A215EB1CAD9D4300927AEA /* control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCF00ECA805A002BE442 /* control.cpp */; };
 		91A215ED1CAD9D4300927AEA /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCF20ECA805A002BE442 /* debug.cpp */; };
@@ -739,7 +739,7 @@
 		91E357501CACCC3E00774252 /* message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCC10ECA805A002BE442 /* message.cpp */; };
 		91ECD5D21BA11A5200B25CF1 /* unit_creator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91ECD5D01BA11A5200B25CF1 /* unit_creator.cpp */; };
 		91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462821C71139B0050A9C9 /* preferences_dialog.cpp */; };
-		91F462881C7115C50050A9C9 /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* combobox.cpp */; };
+		91F462881C7115C50050A9C9 /* menu_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462861C7115C50050A9C9 /* menu_button.cpp */; };
 		91F462941C7117400050A9C9 /* drop_down_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F462921C7117400050A9C9 /* drop_down_list.cpp */; };
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
 		91FBBAD61CB6AF8900470BFE /* player_connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD41CB6AF8900470BFE /* player_connection.cpp */; };
@@ -1747,8 +1747,8 @@
 		91EF6C041C9E22E400E2A733 /* smart_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = smart_list.hpp; sourceTree = "<group>"; };
 		91F462821C71139B0050A9C9 /* preferences_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preferences_dialog.cpp; sourceTree = "<group>"; };
 		91F462831C71139B0050A9C9 /* preferences_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = preferences_dialog.hpp; sourceTree = "<group>"; };
-		91F462861C7115C50050A9C9 /* combobox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
-		91F462871C7115C50050A9C9 /* combobox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = combobox.hpp; sourceTree = "<group>"; };
+		91F462861C7115C50050A9C9 /* menu_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_button.cpp; sourceTree = "<group>"; };
+		91F462871C7115C50050A9C9 /* menu_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = menu_button.hpp; sourceTree = "<group>"; };
 		91F462921C7117400050A9C9 /* drop_down_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drop_down_list.cpp; sourceTree = "<group>"; };
 		91F462931C7117400050A9C9 /* drop_down_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drop_down_list.hpp; sourceTree = "<group>"; };
 		91FAC7081C7F931900DAB2C3 /* lua_formula_bridge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_formula_bridge.hpp; sourceTree = "<group>"; };
@@ -4376,8 +4376,6 @@
 				B5A9BCEA0ECA805A002BE442 /* button.cpp */,
 				B5A9BCEB0ECA805A002BE442 /* button.hpp */,
 				B5CF7BBE10D55F7B00A8BEB5 /* clickable.hpp */,
-				91F462861C7115C50050A9C9 /* combobox.cpp */,
-				91F462871C7115C50050A9C9 /* combobox.hpp */,
 				B5A9BCEE0ECA805A002BE442 /* container.cpp */,
 				B5A9BCEF0ECA805A002BE442 /* container.hpp */,
 				B5A9BCF00ECA805A002BE442 /* control.cpp */,
@@ -4409,6 +4407,8 @@
 				B5A9BD000ECA805A002BE442 /* listbox.hpp */,
 				62579C811573E797003089D5 /* matrix.cpp */,
 				62579C821573E797003089D5 /* matrix.hpp */,
+				91F462861C7115C50050A9C9 /* menu_button.cpp */,
+				91F462871C7115C50050A9C9 /* menu_button.hpp */,
 				B5A9BD030ECA805A002BE442 /* minimap.cpp */,
 				B5A9BD040ECA805A002BE442 /* minimap.hpp */,
 				B54AC6F80FEA9FA5006F6FBD /* multi_page.cpp */,
@@ -5214,7 +5214,7 @@
 				919B37F81BAF789E00E0094C /* synced_user_choice.cpp in Sources */,
 				919B37FC1BAF7A9D00E0094C /* synced_choice_wait.cpp in Sources */,
 				91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
-				91F462881C7115C50050A9C9 /* combobox.cpp in Sources */,
+				91F462881C7115C50050A9C9 /* menu_button.cpp in Sources */,
 				91F462941C7117400050A9C9 /* drop_down_list.cpp in Sources */,
 				9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */,
 				91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */,
@@ -5721,7 +5721,7 @@
 				91A215D91CAD96D900927AEA /* mp_method_selection.cpp in Sources */,
 				91A215DA1CAD96D900927AEA /* synced_choice_wait.cpp in Sources */,
 				91A215E41CAD9D4300927AEA /* button.cpp in Sources */,
-				91A215E71CAD9D4300927AEA /* combobox.cpp in Sources */,
+				91A215E71CAD9D4300927AEA /* menu_button.cpp in Sources */,
 				91A215E91CAD9D4300927AEA /* container.cpp in Sources */,
 				91A215EB1CAD9D4300927AEA /* control.cpp in Sources */,
 				91A215ED1CAD9D4300927AEA /* debug.cpp in Sources */,

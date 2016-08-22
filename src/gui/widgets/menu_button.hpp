@@ -30,10 +30,10 @@ namespace gui2
 /**
  * Simple push button.
  */
-class tcombobox : public tcontrol, public tselectable_
+class tmenu_button : public tcontrol, public tselectable_
 {
 public:
-	tcombobox();
+	tmenu_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -148,9 +148,9 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tcombobox_definition : public tcontrol_definition
+struct tmenu_button_definition : public tcontrol_definition
 {
-	explicit tcombobox_definition(const config& cfg);
+	explicit tmenu_button_definition(const config& cfg);
 
 	struct tresolution : public tresolution_definition_
 	{
@@ -165,10 +165,10 @@ class tcontrol;
 namespace implementation
 {
 
-struct tbuilder_combobox : public tbuilder_control
+struct tbuilder_menu_button : public tbuilder_control
 {
 public:
-	explicit tbuilder_combobox(const config& cfg);
+	explicit tbuilder_menu_button(const config& cfg);
 
 	using tbuilder_control::build;
 

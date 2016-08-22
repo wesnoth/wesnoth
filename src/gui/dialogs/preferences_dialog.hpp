@@ -32,7 +32,7 @@ namespace gui2
 {
 
 class tlistbox;
-class tcombobox;
+class tmenu_button;
 class tcontrol;
 class tslider;
 class ttext_box;
@@ -150,16 +150,16 @@ private:
 	typedef std::pair<std::vector<config>, std::vector<std::string> > combo_data;
 
 	/**
-	 * Sets the initial state and callback for a combobox
+	 * Sets the initial state and callback for a menu_button
 	 */
-	void setup_combobox(
+	void setup_menu_button(
 		const std::string& widget_id,
 		const combo_data& options,
 		const unsigned start_value,
 		std::function<void(std::string)> callback,
 		twidget& find_in);
 
-	void simple_combobox_callback(const tcombobox& widget,
+	void simple_menu_button_callback(const tmenu_button& widget,
 		std::function<void(std::string)> setter, std::vector<std::string>& vec);
 
 	/**

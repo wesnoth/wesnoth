@@ -21,7 +21,7 @@ class config;
 
 namespace gui2
 {
-///Used by the combobox widget.
+///Used by the menu_button widget.
 class tdrop_down_list : public tdialog
 {
 public:
@@ -34,7 +34,7 @@ public:
 	}
 	int selected_item() const { return selected_item_; }
 private:
-	/// The screen location of the combobox button that triggred this droplist.
+	/// The screen location of the menu_button button that triggred this droplist.
 	/// Note: we don't adjust the location of this dialog to when resizing the window.
 	/// Instead this dialog automatically closes itself on resizing.
 	SDL_Rect button_pos_;

@@ -24,7 +24,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/combobox.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -150,7 +150,7 @@ void tmp_create_game::pre_show(twindow& window)
 	window.keyboard_capture(&filter);
 
 	//
-	// Set up game types combobox
+	// Set up game types menu_button
 	//
 	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
@@ -162,19 +162,19 @@ void tmp_create_game::pre_show(twindow& window)
 		throw game::error(_("No games found."));
 	}
 
-	tcombobox& game_combobox = find_widget<tcombobox>(&window, "game_types", false);
+	tmenu_button& game_menu_button = find_widget<tmenu_button>(&window, "game_types", false);
 
-	game_combobox.set_values(game_types);
+	game_menu_button.set_values(game_types);
 	if(game_config::debug || preferences::level_type() != ng::level::TYPE::SP_CAMPAIGN) {
-		game_combobox.set_selected(preferences::level_type());
+		game_menu_button.set_selected(preferences::level_type());
 	}
 
-	game_combobox.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(window)));
+	game_menu_button.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(window)));
 
 	//
-	// Set up eras combobox
+	// Set up eras menu_button
 	//
-	tcombobox& eras_combobox = find_widget<tcombobox>(&window, "eras", false);
+	tmenu_button& eras_menu_button = find_widget<tmenu_button>(&window, "eras", false);
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
@@ -186,12 +186,12 @@ void tmp_create_game::pre_show(twindow& window)
 		throw config::error(_("No eras found"));
 	}
 
-	eras_combobox.set_values(era_names);
-	eras_combobox.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(window)));
+	eras_menu_button.set_values(era_names);
+	eras_menu_button.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(window)));
 
 	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
 	if(era_selection >= 0) {
-		eras_combobox.set_selected(era_selection);
+		eras_menu_button.set_selected(era_selection);
 	}
 
 	on_era_select(window);
@@ -234,7 +234,7 @@ void tmp_create_game::pre_show(twindow& window)
 	on_mod_select(window);
 
 	//
-	// Set up random faction mode copobox
+	// Set up random faction mode menu_button
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
@@ -249,11 +249,11 @@ void tmp_create_game::pre_show(twindow& window)
 	const int initial_index = std::find(rfm_types_.begin(), rfm_types_.end(),
 		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode())) - rfm_types_.begin();
 
-	tcombobox& rfm_combobox = find_widget<tcombobox>(&window, "random_faction_mode", false);
+	tmenu_button& rfm_menu_button = find_widget<tmenu_button>(&window, "random_faction_mode", false);
 
-	rfm_combobox.set_values(rfm_options);
-	rfm_combobox.set_selected(initial_index);
-	rfm_combobox.connect_click_handler(std::bind(&tmp_create_game::on_random_faction_mode_select, this, std::ref(window)));
+	rfm_menu_button.set_values(rfm_options);
+	rfm_menu_button.set_selected(initial_index);
+	rfm_menu_button.connect_click_handler(std::bind(&tmp_create_game::on_random_faction_mode_select, this, std::ref(window)));
 
 	on_random_faction_mode_select(window);
 
@@ -334,7 +334,7 @@ void tmp_create_game::on_tab_select(twindow& window)
 	if(i == tab::TAB_GENERAL) {
 		const bool can_select_era = create_engine_.current_level().allow_era_choice();
 
-		tcombobox& era_combo = find_widget<tcombobox>(&window, "eras", false);
+		tmenu_button& era_combo = find_widget<tmenu_button>(&window, "eras", false);
 		if(!can_select_era) {
 			era_combo.set_label(_("No eras available for this game."));
 		} else {
@@ -370,14 +370,14 @@ void tmp_create_game::on_mod_toggle(const int index)
 
 void tmp_create_game::on_era_select(twindow& window)
 {
-	create_engine_.set_current_era_index(find_widget<tcombobox>(&window, "eras", false).get_value());
+	create_engine_.set_current_era_index(find_widget<tmenu_button>(&window, "eras", false).get_value());
 
 	show_description(window, create_engine_.current_extra(ng::create_engine::ERA).description);
 }
 
 void tmp_create_game::on_random_faction_mode_select(twindow& window)
 {
-	selected_rfm_index_ = find_widget<tcombobox>(&window, "random_faction_mode", false).get_value();
+	selected_rfm_index_ = find_widget<tmenu_button>(&window, "random_faction_mode", false).get_value();
 }
 
 void tmp_create_game::show_description(twindow& window, const std::string& new_description)
@@ -390,7 +390,7 @@ void tmp_create_game::show_description(twindow& window, const std::string& new_d
 
 void tmp_create_game::update_games_list(twindow& window)
 {
-	const int index = find_widget<tcombobox>(&window, "game_types", false).get_value();
+	const int index = find_widget<tmenu_button>(&window, "game_types", false).get_value();
 
 	display_games_of_type(window, level_types_[index].first, create_engine_.current_level().id());
 }
@@ -508,19 +508,19 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 			option_node.add_child("options_spacer_node", empty_map);
 		}
 
-		for(const auto& combobox_option : options.child_range("combo")) {
+		for(const auto& menu_button_option : options.child_range("combo")) {
 			data.clear();
 
-			item["label"] = combobox_option["name"];
-			data.emplace("combobox_label", item);
+			item["label"] = menu_button_option["name"];
+			data.emplace("menu_button_label", item);
 			item.clear();
-			item["tooltip"] = combobox_option["description"];
-			data.emplace("option_combobox", item);
+			item["tooltip"] = menu_button_option["description"];
+			data.emplace("option_menu_button", item);
 
 			std::vector<config> combo_items;
 			std::vector<std::string> combo_values;
 
-			config::const_child_itors items = combobox_option.child_range("item");
+			config::const_child_itors items = menu_button_option.child_range("item");
 			for(auto item : items) {
 				// Comboboxes expect this key to be 'label' not 'name'
 				item["label"] = item["name"];
@@ -533,31 +533,31 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 				continue;
 			}
 
-			ttree_view_node& node = option_node.add_child("option_combobox_node", data);
+			ttree_view_node& node = option_node.add_child("option_menu_button_node", data);
 
-			tcombobox* combobox = dynamic_cast<tcombobox*>(node.find("option_combobox", true));
+			tmenu_button* menu_button = dynamic_cast<tmenu_button*>(node.find("option_menu_button", true));
 
-			VALIDATE(combobox, missing_widget("option_combobox"));
+			VALIDATE(menu_button, missing_widget("option_menu_button"));
 
-			const std::string widget_id = combobox_option["id"];
+			const std::string widget_id = menu_button_option["id"];
 
 			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-				data_map[widget_id] = combobox_option["default"];
+				data_map[widget_id] = menu_button_option["default"];
 			}
 
-			combobox->set_id(widget_id);
-			combobox->set_values(combo_items);
+			menu_button->set_id(widget_id);
+			menu_button->set_values(combo_items);
 
 			config::attribute_value val = data_map[widget_id];
 			auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
 				return cfg["value"] == val;
 			});
 			if(iter != items.end()) {
-				combobox->set_selected(iter - items.begin());
+				menu_button->set_selected(iter - items.begin());
 			}
 
-			combobox->connect_click_handler(
-				std::bind(&tmp_create_game::update_options_data_map<tcombobox>, this, combobox, visible_options_.back()));
+			menu_button->connect_click_handler(
+				std::bind(&tmp_create_game::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
 		}
 
 		// Only add a spacer if there were an option of this type

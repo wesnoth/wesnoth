@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/combobox.hpp"
+#include "gui/widgets/menu_button.hpp"
 
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
@@ -37,9 +37,9 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-REGISTER_WIDGET(combobox)
+REGISTER_WIDGET(menu_button)
 
-tcombobox::tcombobox()
+tmenu_button::tmenu_button()
 	: tcontrol(COUNT)
 	, tselectable_()
 	, state_(ENABLED)
@@ -50,36 +50,36 @@ tcombobox::tcombobox()
 	values_.push_back(config_of("label", this->label()));
 
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&tcombobox::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&tmenu_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&tcombobox::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&tmenu_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&tcombobox::signal_handler_left_button_down, this, _2, _3));
+			&tmenu_button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&tcombobox::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&tmenu_button::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tcombobox::signal_handler_left_button_click, this, _2, _3));
+			&tmenu_button::signal_handler_left_button_click, this, _2, _3));
 }
 
-void tcombobox::set_active(const bool active)
+void tmenu_button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tcombobox::get_active() const
+bool tmenu_button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tcombobox::get_state() const
+unsigned tmenu_button::get_state() const
 {
 	return state_;
 }
 
-void tcombobox::set_state(const tstate state)
+void tmenu_button::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -87,13 +87,13 @@ void tcombobox::set_state(const tstate state)
 	}
 }
 
-const std::string& tcombobox::get_control_type() const
+const std::string& tmenu_button::get_control_type() const
 {
-	static const std::string type = "combobox";
+	static const std::string type = "menu_button";
 	return type;
 }
 
-void tcombobox::signal_handler_mouse_enter(const event::tevent event,
+void tmenu_button::signal_handler_mouse_enter(const event::tevent event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -102,7 +102,7 @@ void tcombobox::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void tcombobox::signal_handler_mouse_leave(const event::tevent event,
+void tmenu_button::signal_handler_mouse_leave(const event::tevent event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -111,7 +111,7 @@ void tcombobox::signal_handler_mouse_leave(const event::tevent event,
 	handled = true;
 }
 
-void tcombobox::signal_handler_left_button_down(const event::tevent event,
+void tmenu_button::signal_handler_left_button_down(const event::tevent event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -125,7 +125,7 @@ void tcombobox::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void tcombobox::signal_handler_left_button_up(const event::tevent event,
+void tmenu_button::signal_handler_left_button_up(const event::tevent event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -134,7 +134,7 @@ void tcombobox::signal_handler_left_button_up(const event::tevent event,
 	handled = true;
 }
 
-void tcombobox::signal_handler_left_button_click(const event::tevent event,
+void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 											   bool& handled)
 {
 	assert(get_window());
@@ -163,7 +163,7 @@ void tcombobox::signal_handler_left_button_click(const event::tevent event,
 	handled = true;
 }
 
-void tcombobox::set_values(const std::vector<::config>& values, int selected)
+void tmenu_button::set_values(const std::vector<::config>& values, int selected)
 {
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -175,7 +175,7 @@ void tcombobox::set_values(const std::vector<::config>& values, int selected)
 	set_label(values_[selected_]["label"]);
 
 }
-void tcombobox::set_selected(int selected)
+void tmenu_button::set_selected(int selected)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -188,29 +188,29 @@ void tcombobox::set_selected(int selected)
 
 // }---------- DEFINITION ---------{
 
-tcombobox_definition::tcombobox_definition(const config& cfg)
+tmenu_button_definition::tmenu_button_definition(const config& cfg)
 	: tcontrol_definition(cfg)
 {
-	DBG_GUI_P << "Parsing combobox " << id << '\n';
+	DBG_GUI_P << "Parsing menu_button " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
 /*WIKI
  * @page = GUIWidgetDefinitionWML
- * @order = 1_combobox
+ * @order = 1_menu_button
  *
- * == combobox ==
+ * == menu_button ==
  *
- * @macro = combobox_description
+ * @macro = menu_button_description
  *
  * The following states exist:
- * * state_enabled, the combobox is enabled.
- * * state_disabled, the combobox is disabled.
- * * state_pressed, the left mouse combobox is down.
- * * state_focused, the mouse is over the combobox.
+ * * state_enabled, the menu_button is enabled.
+ * * state_disabled, the menu_button is disabled.
+ * * state_pressed, the left mouse menu_button is down.
+ * * state_focused, the mouse is over the menu_button.
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="combobox_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="menu_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
@@ -221,13 +221,13 @@ tcombobox_definition::tcombobox_definition(const config& cfg)
  * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_focused"}
  * @end{tag}{name="resolution"}
- * @end{tag}{name="combobox_definition"}
+ * @end{tag}{name="menu_button_definition"}
  * @end{parent}{name="gui/"}
  */
-tcombobox_definition::tresolution::tresolution(const config& cfg)
+tmenu_button_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
-	// Note the order should be the same as the enum tstate in combobox.hpp.
+	// Note the order should be the same as the enum tstate in menu_button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));
@@ -237,46 +237,46 @@ tcombobox_definition::tresolution::tresolution(const config& cfg)
 // }---------- BUILDER -----------{
 
 /*WIKI_MACRO
- * @begin{macro}{combobox_description}
+ * @begin{macro}{menu_button_description}
  *
- *        A combobox is a control to choose an element from a list of elements.
+ *        A menu_button is a control to choose an element from a list of elements.
  * @end{macro}
  */
 
 /*WIKI
  * @page = GUIWidgetInstanceWML
- * @order = 2_combobox
+ * @order = 2_menu_button
  * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
- * @begin{tag}{name="combobox"}{min=0}{max=-1}{super="generic/widget_instance"}
- * == combobox ==
+ * @begin{tag}{name="menu_button"}{min=0}{max=-1}{super="generic/widget_instance"}
+ * == menu_button ==
  *
- * @macro = combobox_description
+ * @macro = menu_button_description
  *
- * Instance of a combobox. When a combobox has a return value it sets the
+ * Instance of a menu_button. When a menu_button has a return value it sets the
  * return value for the window. Normally this closes the window and returns
  * this value to the caller. The return value can either be defined by the
- * user or determined from the id of the combobox. The return value has a
+ * user or determined from the id of the menu_button. The return value has a
  * higher precedence as the one defined by the id. (Of course it's weird to
- * give a combobox an id and then override its return value.)
+ * give a menu_button an id and then override its return value.)
  *
- * When the combobox doesn't have a standard id, but you still want to use the
+ * When the menu_button doesn't have a standard id, but you still want to use the
  * return value of that id, use return_value_id instead. This has a higher
  * precedence as return_value.
  *
- * List with the combobox specific variables:
+ * List with the menu_button specific variables:
  * @begin{table}{config}
  *     return_value_id & string & "" &   The return value id. $
  *     return_value & int & 0 &          The return value. $
  *
  * @end{table}
- * @end{tag}{name="combobox"}
+ * @end{tag}{name="menu_button"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 
 namespace implementation
 {
 
-tbuilder_combobox::tbuilder_combobox(const config& cfg)
+tbuilder_menu_button::tbuilder_menu_button(const config& cfg)
 	: tbuilder_control(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
@@ -287,9 +287,9 @@ tbuilder_combobox::tbuilder_combobox(const config& cfg)
 	}
 }
 
-twidget* tbuilder_combobox::build() const
+twidget* tbuilder_menu_button::build() const
 {
-	tcombobox* widget = new tcombobox();
+	tmenu_button* widget = new tmenu_button();
 
 	init_control(widget);
 
@@ -297,7 +297,7 @@ twidget* tbuilder_combobox::build() const
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
-	DBG_GUI_G << "Window builder: placed combobox '" << id
+	DBG_GUI_G << "Window builder: placed menu_button '" << id
 			  << "' with definition '" << definition << "'.\n";
 
 	return widget;

@@ -22,7 +22,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/window_builder/instance.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/combobox.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -223,7 +223,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(matrix);
 	TRY(minimap);
 	TRY(button);
-	TRY(combobox);
+	TRY(menu_button);
 	TRY(drawing);
 	TRY(password_box);
 	TRY(unit_preview_pane);

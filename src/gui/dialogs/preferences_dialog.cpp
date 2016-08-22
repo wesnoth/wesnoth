@@ -41,7 +41,7 @@
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/combobox.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -110,7 +110,7 @@ static std::string disambiguate_widget_value(const ttoggle_button& parent_widget
 	return bool_to_display_string(parent_widget.get_value_bool());
 }
 
-static std::string disambiguate_widget_value(const tcombobox& parent_widget)
+static std::string disambiguate_widget_value(const tmenu_button& parent_widget)
 {
 	return parent_widget.get_value_string();
 }
@@ -138,7 +138,7 @@ static std::string get_max_autosaves_status_label(const tslider& slider)
 }
 
 // Helper function to refresh resolution list
-static void set_resolution_list(tcombobox& res_list, CVideo& video)
+static void set_resolution_list(tmenu_button& res_list, CVideo& video)
 {
 	const std::vector<std::pair<int,int> > resolutions = video.get_available_resolutions(true);
 
@@ -225,21 +225,21 @@ void tpreferences::setup_single_slider(
 		slider_callback));
 }
 
-void tpreferences::setup_combobox(
+void tpreferences::setup_menu_button(
 		const std::string& widget_id,
 		const combo_data& options,
 		const unsigned start_value,
 		std::function<void(std::string)> callback,
 		twidget& find_in)
 {
-	tcombobox& widget =
-		find_widget<tcombobox>(&find_in, widget_id, false);
+	tmenu_button& widget =
+		find_widget<tmenu_button>(&find_in, widget_id, false);
 
 	widget.set_use_markup(true);
 	widget.set_values(options.first, start_value);
 
 	connect_signal_mouse_left_click(widget, std::bind(
-		&tpreferences::simple_combobox_callback,
+		&tpreferences::simple_menu_button_callback,
 		this, std::ref(widget),
 		callback, options.second));
 }
@@ -511,7 +511,7 @@ void tpreferences::initialize_members(twindow& window)
 			this, std::ref(window)));
 
 	/* SET RESOLUTION */
-	tcombobox& res_list = find_widget<tcombobox>(&window, "resolution_set", false);
+	tmenu_button& res_list = find_widget<tmenu_button>(&window, "resolution_set", false);
 
 	res_list.set_use_markup(true);
 	res_list.set_active(!fullscreen());
@@ -791,7 +791,7 @@ void tpreferences::initialize_members(twindow& window)
 					combo_options.second.begin(), combo_options.second.end(),
 					get(pref_name, option["default"].str())) - combo_options.second.begin();
 
-				tcombobox* setter_widget = new tcombobox;
+				tmenu_button* setter_widget = new tmenu_button;
 				setter_widget->set_definition("default");
 				setter_widget->set_id("setter");
 
@@ -801,7 +801,7 @@ void tpreferences::initialize_members(twindow& window)
 				typedef void (*setter) (const std::string &, const std::string &);
 				setter set_ptr = &preferences::set;
 
-				setup_combobox("setter",
+				setup_menu_button("setter",
 					combo_options, selected,
 					std::bind(set_ptr, pref_name, _1),
 					*details_grid);
@@ -1167,7 +1167,7 @@ void tpreferences::single_slider_callback(const tslider& widget,
 	setter(widget.get_value());
 }
 
-void tpreferences::simple_combobox_callback(const tcombobox& widget,
+void tpreferences::simple_menu_button_callback(const tmenu_button& widget,
 		std::function<void(std::string)> setter, std::vector<std::string>& vec)
 {
 	const unsigned index = widget.get_value();
@@ -1188,14 +1188,14 @@ void tpreferences::fullscreen_toggle_callback(twindow& window)
 		find_widget<ttoggle_button>(&window, "fullscreen", false).get_value_bool();
 	window.video().set_fullscreen(ison);
 
-	tcombobox& res_list = find_widget<tcombobox>(&window, "resolution_set", false);
+	tmenu_button& res_list = find_widget<tmenu_button>(&window, "resolution_set", false);
 	set_resolution_list(res_list, window.video());
 	res_list.set_active(!ison);
 }
 
 void tpreferences::handle_res_select(twindow& window)
 {
-	tcombobox& res_list = find_widget<tcombobox>(&window, "resolution_set", false);
+	tmenu_button& res_list = find_widget<tmenu_button>(&window, "resolution_set", false);
 	const int choice = res_list.get_value();
 
 	if (resolutions_[static_cast<size_t>(choice)] == window.video().current_resolution()) {
