@@ -2675,13 +2675,13 @@ void display::redraw_everything()
 		create_buttons();
 	}
 
-	hotkey::command_executor* command_executor =
-		resources::controller->get_hotkey_command_executor();
-	if (command_executor != nullptr)
-	{
-		// This function adds button overlays,
-		// it needs to be run after recreating the buttons.
-		command_executor->set_button_state();
+	if(resources::controller) {
+		hotkey::command_executor* command_executor = resources::controller->get_hotkey_command_executor();
+		if(command_executor != nullptr)	{
+			// This function adds button overlays,
+			// it needs to be run after recreating the buttons.
+			command_executor->set_button_state();
+		}
 	}
 
 	panelsDrawn_ = false;
