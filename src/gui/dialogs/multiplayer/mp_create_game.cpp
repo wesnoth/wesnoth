@@ -815,13 +815,16 @@ void tmp_create_game::post_show(twindow& window)
 		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value(window));
 
 		if(!config_engine_->force_lock_settings()) {
-			config_engine_->set_num_turns(turns_->get_widget_value(window));
+			// Max slider value (in this case, 100) means 'unlimited turns', so pass the value -1
+			const int num_turns = turns_->get_widget_value(window);
+			config_engine_->set_num_turns(num_turns < ::settings::turns_max ? num_turns : - 1);
 			config_engine_->set_village_gold(gold_->get_widget_value(window));
 			config_engine_->set_village_support(support_->get_widget_value(window));
 			config_engine_->set_xp_modifier(experience_->get_widget_value(window));
 			config_engine_->set_random_start_time(start_time_->get_widget_value(window));
 			config_engine_->set_fog_game(fog_->get_widget_value(window));
 			config_engine_->set_shroud_game(shroud_->get_widget_value(window));
+
 			config_engine_->write_parameters();
 		}
 
