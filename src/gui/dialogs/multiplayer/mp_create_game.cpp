@@ -52,14 +52,6 @@
 namespace gui2
 {
 
-template<typename T>
-static config::attribute_value cav(const T& v)
-{
-	config::attribute_value res;
-	res = v;
-	return res;
-}
-
 // Shorthand
 namespace prefs = preferences;
 
@@ -176,6 +168,7 @@ void tmp_create_game::pre_show(twindow& window)
 	if(game_config::debug || preferences::level_type() != ng::level::TYPE::SP_CAMPAIGN) {
 		game_combobox.set_selected(preferences::level_type());
 	}
+
 	game_combobox.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(window)));
 
 	//
@@ -196,7 +189,7 @@ void tmp_create_game::pre_show(twindow& window)
 	eras_combobox.set_values(era_names);
 	eras_combobox.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(window)));
 
-	int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
+	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
 	if(era_selection >= 0) {
 		eras_combobox.set_selected(era_selection);
 	}
@@ -208,7 +201,7 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	tlistbox& mod_list = find_widget<tlistbox>(&window, "mod_list", false);
 
-	auto& activemods = preferences::modifications();
+	const auto& activemods = preferences::modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -220,7 +213,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 		ttoggle_button& mog_toggle = find_widget<ttoggle_button>(row_grid, "mod_active_state", false);
 
-		int i = mod_list.get_item_count() - 1;
+		const int i = mod_list.get_item_count() - 1;
 		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
@@ -249,9 +242,9 @@ void tmp_create_game::pre_show(twindow& window)
 	};
 
 	// Manually insert tooltips. Need to find a better way to do this
-	rfm_options[0]["tooltip"] = cav(_("Independent: Random factions assigned independently"));
-	rfm_options[1]["tooltip"] = cav(_("No Mirror: No two players will get the same faction"));
-	rfm_options[2]["tooltip"] = cav(_("No Ally Mirror: No two allied players will get the same faction"));
+	rfm_options[0]["tooltip"] = _("Independent: Random factions assigned independently");
+	rfm_options[1]["tooltip"] = _("No Mirror: No two players will get the same faction");
+	rfm_options[2]["tooltip"] = _("No Ally Mirror: No two allied players will get the same faction");
 
 	const int initial_index = std::find(rfm_types_.begin(), rfm_types_.end(),
 		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode())) - rfm_types_.begin();
@@ -306,7 +299,7 @@ void tmp_create_game::pre_show(twindow& window)
 	window.add_to_keyboard_chain(&list);
 
 	// This handles both the initial game and tab selection
-		display_games_of_type(window, ng::level::TYPE::from_int(preferences::level_type()), preferences::level());
+	display_games_of_type(window, ng::level::TYPE::from_int(preferences::level_type()), preferences::level());
 }
 
 template<typename widget>
