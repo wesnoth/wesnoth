@@ -27,7 +27,6 @@
 #include "resources.hpp"
 #include "units/map.hpp"
 
-// This is an array so we can use sizeof()
 static const char formulaKey[] = "formula";
 
 void luaW_pushfaivariant(lua_State* L, variant val);
@@ -208,8 +207,8 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 {
 	bool need_delete = false;
 	fwrapper* form;
-	if(luaW_hasmetatable(L, 1, formulaKey)) {
-		form = static_cast<fwrapper*>(lua_touserdata(L, 1));
+	if(void* ud = luaL_testudata(L, 1, formulaKey)) {
+		form = static_cast<fwrapper*>(ud);
 	} else {
 		need_delete = true;
 		form = new fwrapper(luaL_checkstring(L, 1));
@@ -236,9 +235,7 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 		luaL_typerror(L, 1, "string");
 	}
 	new(L) fwrapper(lua_tostring(L, 1));
-	lua_pushlstring(L, formulaKey, sizeof(formulaKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaL_setmetatable(L, formulaKey);
 	return 1;
 }
 
@@ -280,8 +277,7 @@ static int impl_formula_tostring(lua_State* L)
 
 std::string lua_formula_bridge::register_metatables(lua_State* L)
 {
-	lua_pushlstring(L, formulaKey, sizeof(formulaKey));
-	lua_createtable(L, 0, 4);
+	luaL_newmetatable(L, formulaKey);
 	lua_pushcfunction(L, impl_formula_collect);
 	lua_setfield(L, -2, "__gc");
 	lua_pushcfunction(L, impl_formula_tostring);
@@ -290,7 +286,6 @@ std::string lua_formula_bridge::register_metatables(lua_State* L)
 	lua_setfield(L, -2, "__call");
 	lua_pushstring(L, "formula");
 	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
 	
 	return "Adding formula metatable...\n";
 }

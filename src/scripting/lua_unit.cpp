@@ -32,7 +32,6 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-// These are arrays so we can use sizeof
 static const char getunitKey[] = "unit";
 static const char ustatusKey[] = "unit status";
 static const char unitvarKey[] = "unit variables";
@@ -109,7 +108,7 @@ bool lua_unit::put_map(const map_location &loc)
 
 bool luaW_isunit(lua_State* L, int index)
 {
-	return luaW_hasmetatable(L, index,getunitKey);
+	return luaL_testudata(L, index,getunitKey);
 }
 
 enum {
@@ -200,9 +199,7 @@ lua_unit* luaW_checkunit_ref(lua_State *L, int index)
 
 void lua_unit::setmetatable(lua_State *L)
 {
-	lua_pushlstring(L, getunitKey, sizeof(getunitKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaL_setmetatable(L, getunitKey);
 }
 
 lua_unit* luaW_pushlocalunit(lua_State *L, unit& u)
@@ -332,18 +329,14 @@ static int impl_unit_get(lua_State *L)
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
-		lua_pushlstring(L, ustatusKey, sizeof(ustatusKey));
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
+		luaL_setmetatable(L, ustatusKey);
 		return 1;
 	}
 	if(strcmp(m, "variables") == 0) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
-		lua_pushlstring(L, unitvarKey, sizeof(unitvarKey));
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
+		luaL_setmetatable(L, unitvarKey);
 		return 1;
 	}
 	if(strcmp(m, "attacks") == 0) {
@@ -535,8 +528,7 @@ namespace lua_units {
 		// Create the getunit metatable.
 		cmd_out << "Adding getunit metatable...\n";
 
-		lua_pushlstring(L, getunitKey, sizeof(getunitKey));
-		lua_createtable(L, 0, 5);
+		luaL_newmetatable(L, getunitKey);
 		lua_pushcfunction(L, impl_unit_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_unit_equality);
@@ -547,33 +539,28 @@ namespace lua_units {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "unit");
 		lua_setfield(L, -2, "__metatable");
-		lua_rawset(L, LUA_REGISTRYINDEX);
 
 		// Create the unit status metatable.
 		cmd_out << "Adding unit status metatable...\n";
 
-		lua_pushlstring(L, ustatusKey, sizeof(ustatusKey));
-		lua_createtable(L, 0, 3);
+		luaL_newmetatable(L, ustatusKey);
 		lua_pushcfunction(L, impl_unit_status_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_status_set);
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "unit status");
 		lua_setfield(L, -2, "__metatable");
-		lua_rawset(L, LUA_REGISTRYINDEX);
 
 		// Create the unit variables metatable.
 		cmd_out << "Adding unit variables metatable...\n";
 
-		lua_pushlstring(L, unitvarKey, sizeof(unitvarKey));
-		lua_createtable(L, 0, 3);
+		luaL_newmetatable(L, unitvarKey);
 		lua_pushcfunction(L, impl_unit_variables_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_variables_set);
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "unit variables");
 		lua_setfield(L, -2, "__metatable");
-		lua_rawset(L, LUA_REGISTRYINDEX);
 
 		return cmd_out.str();
 	}

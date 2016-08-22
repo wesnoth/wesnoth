@@ -43,7 +43,6 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 
-// These are arrays so we can use sizeof
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";
 static const char vconfigpairsKey[] = "vconfig pairs";
@@ -537,17 +536,6 @@ bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v)
 	return true;
 }
 
-bool luaW_hasmetatable(lua_State *L, int index, const char* key)
-{
-	if (!lua_getmetatable(L, index))
-		return false;
-	lua_pushstring(L, key);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	bool ok = lua_rawequal(L, -1, -2) == 1;
-	lua_pop(L, 2);
-	return ok;
-}
-
 bool luaW_totstring(lua_State *L, int index, t_string &str)
 {
 	switch (lua_type(L, index)) {
@@ -912,20 +900,14 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
 
 void push_error_handler(lua_State *L)
 {
-	lua_pushlstring(L, executeKey, sizeof(executeKey));
-	lua_getglobal(L, "debug");
-	lua_getfield(L, -1, "traceback");
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-	lua_pop(L, 1);
+	luaW_getglobal(L, "debug", "traceback");
+	lua_setfield(L, LUA_REGISTRYINDEX, executeKey);
 }
 
 int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 {
 	// Load the error handler before the function and its arguments.
-	lua_pushlstring(L, executeKey, sizeof(executeKey));
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, executeKey);
 	lua_insert(L, -2 - nArgs);
 
 	int error_handler_index = lua_gettop(L) - nArgs - 1;

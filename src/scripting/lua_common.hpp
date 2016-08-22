@@ -63,12 +63,6 @@ void luaW_pushscalar(lua_State *L, config::attribute_value const &v);
  */
 bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v);
 
-
-/**
- * Returns true if the metatable of the object is the one found in the registry.
- */
-bool luaW_hasmetatable(lua_State *L, int index, const char* key);
-
 /**
  * Converts a scalar to a translatable string.
  */

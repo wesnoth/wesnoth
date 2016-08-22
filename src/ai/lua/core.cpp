@@ -50,7 +50,6 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)
 #define ERR_LUA LOG_STREAM(err, log_ai_engine_lua)
 
-// This is an array so we can use sizeof()
 static char const aisKey[] = "ai contexts";
 
 namespace ai {
@@ -60,17 +59,15 @@ static void push_attack_analysis(lua_State *L, const attack_analysis&);
 void lua_ai_context::init(lua_State *L)
 {
 	// Create the ai elements table.
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
 	lua_newtable(L);
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	lua_setfield(L, LUA_REGISTRYINDEX, aisKey);
 }
 
 void lua_ai_context::get_arguments(config &cfg) const
 {
 	int top = lua_gettop(L);
 
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
 
 	lua_getfield(L, -1, "params");
@@ -83,8 +80,7 @@ void lua_ai_context::set_arguments(const config &cfg)
 {
 	int top = lua_gettop(L);
 
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
 
 	luaW_pushconfig(L, cfg);
@@ -97,8 +93,7 @@ void lua_ai_context::get_persistent_data(config &cfg) const
 {
 	int top = lua_gettop(L);
 
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
 
 	lua_getfield(L, -1, "data");
@@ -111,8 +106,7 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 {
 	int top = lua_gettop(L);
 
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
 
 	luaW_pushconfig(L, cfg);
@@ -956,8 +950,7 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 {
 	// Retrieve the ai elements table from the registry.
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AIs registry table]
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AIs registry table]
 	size_t length_ai = lua_rawlen(L, -1); // length of table
 	lua_newtable(L); // [-1: AI state table  -2: AIs registry table]
 	generate_and_push_ai_table(L, engine); // [-1: AI routines  -2: AI state  -3: AIs registry]
@@ -1023,8 +1016,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	}
 
 	// Retrieve the ai elements table from the registry.
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
 	size_t length = lua_rawlen(L, -1);//length of ais_table
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: f  -2: ais_table  -3: f]
@@ -1055,8 +1047,7 @@ lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L), was_re
 		return; // Leave the AI table on the stack, as requested
 	}
 	lua_pop(L, 1); // Pop the nil value off the stack
-	lua_pushlstring(L, aisKey, sizeof(aisKey)); // [-1: key]
-	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AI registry]
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry]
 	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
 	lua_remove(L,-2); // [-1: AI state]
 	
@@ -1088,8 +1079,7 @@ lua_ai_load::~lua_ai_load()
 lua_ai_context::~lua_ai_context()
 {
 	// Remove the ai context from the registry, so that it can be collected.
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_pushnil(L);
 	lua_rawseti(L, -2, num_);
 	lua_pop(L, 1);
@@ -1103,8 +1093,7 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	lua_ai_load ctx(context_, read_only); // [-1: AI state table]
 
 	// Load the user function from the registry.
-	lua_pushlstring(L, aisKey, sizeof(aisKey)); // [-1: key  -2: AI state]
-	lua_rawget(L, LUA_REGISTRYINDEX); // [-1: AI registry  -2: AI state]
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry  -2: AI state]
 	lua_rawgeti(L, -1, num_); // [-1: AI action  -2: AI registry  -3: AI state]
 	lua_remove(L, -2); // [-1: AI action  -2: AI state]
 	
@@ -1126,8 +1115,7 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 lua_ai_action_handler::~lua_ai_action_handler()
 {
 	// Remove the function from the registry, so that it can be collected.
-	lua_pushlstring(L, aisKey, sizeof(aisKey));
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_pushnil(L);
 	lua_rawseti(L, -2, num_);
 	lua_pop(L, 1);
