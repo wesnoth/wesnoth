@@ -63,7 +63,7 @@ namespace {
 	int const titleshadow_b = 0;
 
 	int const titlebox_font_size = 20; // pt?
-	int const storybox_font_size = 14; // pt?
+	int const storybox_font_size = 17; // pt?
 
 	Uint32 const titlebox_font_color = 0xFFFFFFFF;
 	Uint32 const storybox_font_color = 0xDDDDDDFF;
