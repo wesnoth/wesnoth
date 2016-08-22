@@ -95,7 +95,7 @@ private:
 	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
 
 	void update_games_list(twindow& window);
-	void display_games_of_type(twindow& window, ng::level::TYPE type);
+	void display_games_of_type(twindow& window, ng::level::TYPE type, const std::string& level);
 
 	void show_generator_settings(twindow& window);
 	void regenerate_random_map(twindow& window);
@@ -131,7 +131,7 @@ private:
 	void on_tab_select(twindow& window);
 	void on_mod_select(twindow& window);
 	void on_era_select(twindow& window);
-	void on_mod_toggle(const int index, twidget&);
+	void on_mod_toggle(const int index);
 	void on_random_faction_mode_select(twindow& window);
 
 	void show_description(twindow& window, const std::string& new_description);

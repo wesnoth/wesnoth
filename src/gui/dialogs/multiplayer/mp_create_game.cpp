@@ -173,6 +173,9 @@ void tmp_create_game::pre_show(twindow& window)
 	tcombobox& game_combobox = find_widget<tcombobox>(&window, "game_types", false);
 
 	game_combobox.set_values(game_types);
+	if(game_config::debug || preferences::level_type() != ng::level::TYPE::SP_CAMPAIGN) {
+		game_combobox.set_selected(preferences::level_type());
+	}
 	game_combobox.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(window)));
 
 	//
@@ -193,6 +196,11 @@ void tmp_create_game::pre_show(twindow& window)
 	eras_combobox.set_values(era_names);
 	eras_combobox.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(window)));
 
+	int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
+	if(era_selection >= 0) {
+		eras_combobox.set_selected(era_selection);
+	}
+
 	on_era_select(window);
 
 	//
@@ -200,18 +208,25 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	tlistbox& mod_list = find_widget<tlistbox>(&window, "mod_list", false);
 
-	for(const auto& mod : create_engine_.extras_menu_item_names(ng::create_engine::MOD, false)) {
+	auto& activemods = preferences::modifications();
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = mod;
+		item["label"] = mod->name;
 		data.emplace("mod_name", item);
 
 		tgrid* row_grid = &mod_list.add_row(data);
 
 		ttoggle_button& mog_toggle = find_widget<ttoggle_button>(row_grid, "mod_active_state", false);
 
-		mog_toggle.set_callback_state_change(std::bind(&tmp_create_game::on_mod_toggle, this, mod_list.get_item_count() - 1, _1));
+		int i = mod_list.get_item_count() - 1;
+		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
+			create_engine_.active_mods().push_back(mod->id);
+			mog_toggle.set_value_bool(true);
+		}
+
+		mog_toggle.set_callback_state_change(std::bind(&tmp_create_game::on_mod_toggle, this, i));
 	}
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -291,7 +306,7 @@ void tmp_create_game::pre_show(twindow& window)
 	window.add_to_keyboard_chain(&list);
 
 	// This handles both the initial game and tab selection
-	display_games_of_type(window, ng::level::TYPE::SCENARIO);
+		display_games_of_type(window, ng::level::TYPE::from_int(preferences::level_type()), preferences::level());
 }
 
 template<typename widget>
@@ -354,7 +369,7 @@ void tmp_create_game::on_mod_select(twindow& window)
 	show_description(window, create_engine_.current_extra(ng::create_engine::MOD).description);
 }
 
-void tmp_create_game::on_mod_toggle(const int index, twidget&)
+void tmp_create_game::on_mod_toggle(const int index)
 {
 	create_engine_.set_current_mod_index(index);
 	create_engine_.toggle_current_mod();
@@ -384,10 +399,10 @@ void tmp_create_game::update_games_list(twindow& window)
 {
 	const int index = find_widget<tcombobox>(&window, "game_types", false).get_value();
 
-	display_games_of_type(window, level_types_[index].first);
+	display_games_of_type(window, level_types_[index].first, create_engine_.current_level().id());
 }
 
-void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE type)
+void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE type, const std::string& level)
 {
 	create_engine_.set_current_level_type(type);
 
@@ -415,6 +430,13 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 
 		find_widget<ttoggle_panel>(row_grid, "game_list_panel", false).set_callback_mouse_left_double_click(
 			std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
+	}
+
+	if(!level.empty()) {
+		int level_index = create_engine_.find_level_by_id(level);
+		if(level_index >= 0) {
+			list.select_row(level_index);
+		}
 	}
 
 	const bool is_random_map = type == ng::level::TYPE::RANDOM_MAP;
@@ -815,6 +837,11 @@ void tmp_create_game::dialog_exit_hook(twindow& window) {
 void tmp_create_game::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
+		preferences::set_modifications(create_engine_.active_mods());
+		preferences::set_level_type(create_engine_.current_level_type().v);
+		preferences::set_level(create_engine_.current_level().id());
+		preferences::set_era(create_engine_.current_extra(ng::create_engine::ERA).id);
+
 		create_engine_.prepare_for_era_and_mods();
 
 		if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
