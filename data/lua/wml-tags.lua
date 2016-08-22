@@ -1076,7 +1076,6 @@ function wml_actions.deprecated_message(cfg)
 end
 
 function wml_actions.wml_message(cfg)
-	local logger = cfg.logger or ''
 	wesnoth.log(cfg.logger, cfg.message, cfg.to_chat)
 end
 
