@@ -467,6 +467,7 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 			data.clear();
 
 			item["label"] = checkbox_option["name"];
+			item["tooltip"] = checkbox_option["description"];
 			data.emplace("option_checkbox", item);
 
 			ttree_view_node& node = option_node.add_child("option_checkbox_node", data);
@@ -497,6 +498,9 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			item["label"] = combobox_option["name"];
 			data.emplace("combobox_label", item);
+			item.clear();
+			item["tooltip"] = combobox_option["description"];
+			data.emplace("option_combobox", item);
 
 			std::vector<config> combo_items;
 			std::vector<std::string> combo_values;
@@ -542,6 +546,9 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			item["label"] = slider_option["name"];
 			data.emplace("slider_label", item);
+			item.clear();
+			item["tooltip"] = slider_option["description"];
+			data.emplace("option_slider", item);
 
 			ttree_view_node& node = option_node.add_child("option_slider_node", data);
 
@@ -575,6 +582,9 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			item["label"] = text_entry_option["name"];
 			data.emplace("text_entry_label", item);
+			item.clear();
+			item["tooltip"] = text_entry_option["description"];
+			data.emplace("option_text_entry", item);
 
 			ttree_view_node& node = option_node.add_child("option_text_entry_node", data);
 
