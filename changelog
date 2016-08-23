@@ -20,6 +20,9 @@ Version 1.13.5+dev:
    * Fix game map sometimes showing and buttons sometimes not rendered properly in story screen (bug #24553)
    * Improved font rendering on Windows.
    * Redesigned gamestate inspector window.
+   * Recall dialog no longer shows units that no leader on the map can recall
+     (due to the [filter_recall] not matching)
+   * Weapon specials only gained through AMLAs now get a help topic
  * WML Engine:
    * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
@@ -47,6 +50,8 @@ Version 1.13.5+dev:
    * Renamed [foreach] item_var= to variable=
    * Fixed several bugs in the name generation of the map generator
    * Fixed issues with using [endlevel] in victory/defeat events
+   * The {MAGENTA_IS_THE_TEAM_COLOR} macro is no longer needed in [unit_type]
+     It is now the default behaviour unless overridden with the flag_rgb key.
 * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
      function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
@@ -57,6 +62,7 @@ Version 1.13.5+dev:
    * The built-in conditionals have_unit, have_location, and variable are now
      present in the wesnoth.wml_conditionals table. This means they can be directly
      called, extended with new features, or even overridden with custom implementations.
+   * New recall_filter field in unit proxy returns the [filter_recall] config
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts battle
      outcome by simulating a few thousand fights instead of calculating exact
