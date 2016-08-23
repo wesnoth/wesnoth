@@ -168,7 +168,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 	 * We have three use cases:
 	 * 1. An empty castle tile is highlighted; we return only the units recallable there.
 	 * 2. A leader on a keep is highlighted; we return only the units recallable by that leader.
-	 * 3. Otherwise, we return all units in the recall list.
+	 * 3. Otherwise, we return all units in the recall list that can be recalled by any leader on the map.
 	 */
 
 	bool leader_in_place = false;
@@ -216,10 +216,15 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 
 	if ( !leader_in_place )
 	{
-		// Return the full recall list.
-		for (const unit_const_ptr & recall : resources::gameboard->teams()[side-1].recall_list())
-		{
-			result.push_back(recall);
+		std::set<size_t> valid_local_recalls;
+
+		for(auto u = resources::units->begin(); u != resources::units->end(); ++u) {
+			//We only consider leaders on our side.
+			if(!u->can_recruit() || u->side() != side) {
+				continue;
+			}
+
+			add_leader_filtered_recalls(u.get_shared_ptr(), result, &valid_local_recalls);
 		}
 	}
 
