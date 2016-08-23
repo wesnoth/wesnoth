@@ -881,7 +881,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	if (!to_variable.blank())
 	{
 		parsed_cfg.remove_attribute("to_variable");
-		unit new_unit(parsed_cfg, true);
+		unit new_unit(parsed_cfg, true, &cfg);
 		try
 		{
 			config &var = resources::gamedata->get_variable_cfg(to_variable);
