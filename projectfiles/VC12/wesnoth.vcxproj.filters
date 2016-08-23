@@ -572,6 +572,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\game_save.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\game_version.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -626,10 +629,19 @@
     <ClCompile Include="..\..\src\gui\dialogs\transient_message.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_advance.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\unit_attack.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\unit_create.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_list.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\unit_recall.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\unit_recruit.cpp">
@@ -732,6 +744,9 @@
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_grid.cpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.cpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_widget.cpp">
@@ -950,9 +965,9 @@
     <ClCompile Include="..\..\src\utils\markov_generator.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\src\utils\name_generator_factory.hpp">
+    <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
       <Filter>utils</Filter>
-    </ClInclude>
+    </ClCompile>
     <ClCompile Include="..\..\src\utils\sha1.cpp">
       <Filter>utils</Filter>
     </ClCompile>
@@ -1057,6 +1072,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\tests\utils\play_scenario.cpp">
       <Filter>Tests\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\actions\advancement.cpp">
+      <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\actions\attack.cpp">
       <Filter>Actions</Filter>
@@ -1491,27 +1509,6 @@
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wmi_pager.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
-    <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\unit_recall.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\unit_list.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\actions\advancement.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\game_stats.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\unit_advance.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.cpp">
-      <Filter>Gui\Auxiliary\Iterator</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -1946,6 +1943,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_save.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2003,10 +2003,19 @@
     <ClInclude Include="..\..\src\gui\dialogs\transient_message.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_advance.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\unit_attack.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\unit_create.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_recall.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\unit_list.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\unit_recruit.hpp">
@@ -2136,6 +2145,9 @@
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_grid.hpp">
+      <Filter>Gui\Auxiliary\Iterator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.hpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_widget.hpp">
@@ -2393,6 +2405,9 @@
     <ClInclude Include="..\..\src\utils\name_generator.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\name_generator_factory.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\utils\reference_counter.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2407,6 +2422,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\tools\schema\tag.hpp">
       <Filter>tools\schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\actions\advancement.hpp">
+      <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\actions\attack.hpp">
       <Filter>Actions</Filter>
@@ -2881,24 +2899,6 @@
     <ClInclude Include="..\..\src\wmi_pager.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\unit_recall.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\unit_list.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\actions\advancement.hpp">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\unit_advance.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\auxiliary\iterator\walker_tree_node.hpp">
-      <Filter>Gui\Auxiliary\Iterator</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
