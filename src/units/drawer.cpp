@@ -16,6 +16,7 @@
 
 #include "display.hpp"
 #include "display_context.hpp"
+#include "formatter.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "map/map.hpp"
@@ -170,8 +171,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 		halo_man.set_location(ac.unit_halo_, x, y - height_adjust);
 	}
 
-
-
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
@@ -201,23 +200,21 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		if(ellipse != "none") {
 			// check if the unit has a ZoC or can recruit
-			const char* const nozoc = emit_zoc ? "" : "nozoc-";
-			const char* const leader = can_recruit ? "leader-" : "";
-			const char* const selected = sel_hex == loc ? "selected-" : "";
+			const std::string nozoc    = !emit_zoc      ? "nozoc-"    : "";
+			const std::string leader   = can_recruit    ? "leader-"   : "";
+			const std::string selected = sel_hex == loc ? "selected-" : "";
+			const std::string tc       = team::get_side_color_index(side);
+
+			const std::string ellipse_top = formatter() << ellipse << "-" << leader << nozoc << selected << "top.png~RC(ellipse_red>" << tc << ")";
+			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
 
 			// Load the ellipse parts recolored to match team color
-			char buf[100];
-			std::string tc=team::get_side_color_index(side);
 #ifdef SDL_GPU
-			snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
-			ellipse_back = image::get_texture(image::locator(buf), image::SCALED_TO_ZOOM);
-			snprintf(buf,sizeof(buf),"%s-%s%s%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
-			ellipse_front = image::get_texture(image::locator(buf), image::SCALED_TO_ZOOM);
+			ellipse_back = image::get_texture(image::locator(ellipse_top), image::SCALED_TO_ZOOM);
+			ellipse_front = image::get_texture(image::locator(ellipse_bot), image::SCALED_TO_ZOOM);
 #else
-			snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
-			ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
-			snprintf(buf,sizeof(buf),"%s-%s%s%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
-			ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
+			ellipse_back.assign(image::get_image(image::locator(ellipse_top), image::SCALED_TO_ZOOM));
+			ellipse_front.assign(image::get_image(image::locator(ellipse_bot), image::SCALED_TO_ZOOM));
 #endif
 		}
 	}
