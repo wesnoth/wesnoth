@@ -470,6 +470,7 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
+	return_cfg_attrib("recall_filter", cfg = u.recall_filter());
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
