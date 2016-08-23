@@ -136,6 +136,12 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
 vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = false);
 
 /**
+ * Like the two-argument version, but if it was a vconfig, also
+ * returns a pointer to that vconfig.
+ */
+config luaW_checkconfig(lua_State *L, int index, vconfig* vcfg);
+
+/**
  * Pushes the value found by following the variadic names (char *), if the
  * value is not nil.
  * @return true if an element was pushed.

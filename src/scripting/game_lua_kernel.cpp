@@ -2513,7 +2513,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	}
 	else if (!lua_isnoneornil(L, unit_arg))
 	{
-		config cfg = luaW_checkconfig(L, unit_arg);
+		vconfig* vcfg = nullptr;
+		config cfg = luaW_checkconfig(L, unit_arg, vcfg);
 		if (unit_arg == 1 && !map().on_board(loc)) {
 			loc.x = cfg["x"] - 1;
 			loc.y = cfg["y"] - 1;
@@ -2522,7 +2523,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		} else if (unit_arg != 1) {
 			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
-		u = unit_ptr (new unit(cfg, true));
+		u = unit_ptr (new unit(cfg, true, vcfg));
 	}
 
 	if (game_display_) {
@@ -2623,8 +2624,9 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	}
 	else
 	{
-		config cfg = luaW_checkconfig(L, 1);
-		u = unit_ptr(new unit(cfg, true));
+		vconfig* vcfg = nullptr;
+		config cfg = luaW_checkconfig(L, 1, vcfg);
+		u = unit_ptr(new unit(cfg, true, vcfg));
 	}
 
 	if (!side) side = u->side();
@@ -2691,8 +2693,9 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 		if (luaW_hasmetatable(L, 2, getunitKey)) {
 			u = static_cast<lua_unit *>(lua_touserdata(L, 2))->get_shared();
 		} else {
-			config cfg = luaW_checkconfig(L, 2);
-			u.reset(new unit(cfg, false));
+			vconfig* vcfg = nullptr;
+			config cfg = luaW_checkconfig(L, 2, vcfg);
+			u.reset(new unit(cfg, false, vcfg));
 		}
 	}
 
@@ -2733,8 +2736,9 @@ int game_lua_kernel::intf_float_label(lua_State *L)
  */
 static int intf_create_unit(lua_State *L)
 {
-	config cfg = luaW_checkconfig(L, 1);
-	unit_ptr u = unit_ptr(new unit(cfg, true));
+	vconfig* vcfg = nullptr;
+	config cfg = luaW_checkconfig(L, 1, vcfg);
+	unit_ptr u = unit_ptr(new unit(cfg, true, vcfg));
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L
 			, getunitKey);

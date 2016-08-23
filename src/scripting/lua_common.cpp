@@ -755,6 +755,15 @@ config luaW_checkconfig(lua_State *L, int index)
 	return result;
 }
 
+config luaW_checkconfig(lua_State *L, int index, vconfig* vcfg)
+{
+	config result = luaW_checkconfig(L, index);
+	if(void* p = luaL_testudata(L, index, vconfigKey)) {
+		vcfg = static_cast<vconfig*>(p);
+	}
+	return result;
+}
+
 bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 {
 	switch (lua_type(L, index))
