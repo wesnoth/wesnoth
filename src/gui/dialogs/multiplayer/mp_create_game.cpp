@@ -82,6 +82,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	, turn_bonus_(register_integer("turn_bonus", true, prefs::countdown_turn_bonus, prefs::set_countdown_turn_bonus))
 	, reservior_(register_integer("reservior", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
 	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
+	, plugins_context_()
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},
@@ -300,6 +301,37 @@ void tmp_create_game::pre_show(twindow& window)
 
 	// This handles both the initial game and tab selection
 	display_games_of_type(window, ng::level::TYPE::from_int(preferences::level_type()), preferences::level());
+
+	// Set up the Lua plugin context
+	plugins_context_.reset(new plugins_context("Multiplayer Create"));
+
+	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(twindow::OK); }, false);
+	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+	plugins_context_->set_callback("load",   [this, &window](const config&) { load_game_callback(window); }, false);
+
+	plugins_context_->set_callback("select_level", [&window](const config& cfg) {
+		find_widget<tlistbox>(&window, "games_list", false).select_row(cfg["index"].to_int()); }, true);
+	plugins_context_->set_callback("select_type",  [this, &window](const config& cfg) {
+		display_games_of_type(window, ng::level::TYPE::string_to_enum(cfg["type"]), cfg["level"]); }, true);
+
+	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
+	plugins_context_->set_accessor("get_selected", [this](const config&) {
+		const ng::level& current_level = create_engine_.current_level();
+		return config_of
+			("id", current_level.id())
+			("name", current_level.name())
+			("icon", current_level.icon())
+			("description", current_level.description())
+			("allow_era_choice", current_level.allow_era_choice())
+			("type", create_engine_.current_level_type());
+	});
+
+	plugins_context_->set_accessor("find_level", [this](const config& cfg) {
+		const std::string id = cfg["id"].str();
+		return config_of
+			("index", create_engine_.find_level_by_id(id))
+			("type", create_engine_.find_level_type_by_id(id));
+	});
 }
 
 template<typename widget>
