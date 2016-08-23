@@ -484,7 +484,7 @@ void tmp_create_game::update_options_data_map(ttoggle_button* widget, const opti
 	options_data_[source][widget->id()] = widget->get_value_bool();
 }
 
-void tmp_create_game::reset_options_data(twindow& window, const option_source& source)
+void tmp_create_game::reset_options_data(twindow& /*window*/, const option_source& source)
 {
 	options_data_[source].clear();
 
