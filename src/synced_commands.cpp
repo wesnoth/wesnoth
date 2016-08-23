@@ -420,10 +420,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			}
 		}
 	} else if (name == "status" ) {
-		config cfg;
-		i->write(cfg);
-		resources::units->erase(loc);
-		config& statuses = cfg.child_or_add("status");
 		for (std::string status : utils::split(value)) {
 			bool add = true;
 			if (status.length() >= 1 && status[0] == '-') {
@@ -433,10 +429,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			if (status.empty()) {
 				continue;
 			}
-			statuses[status] = add;
+			i->set_state(status, add);
 		}
-		unit new_u(cfg, true);
-		resources::units->add(loc, new_u);
 	} else {
 		config cfg;
 		i->write(cfg);
