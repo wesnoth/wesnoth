@@ -484,13 +484,13 @@ void tmp_create_game::update_options_data_map(ttoggle_button* widget, const opti
 	options_data_[source][widget->id()] = widget->get_value_bool();
 }
 
-void tmp_create_game::reset_options_data(twindow& /*window*/, const option_source& source)
+void tmp_create_game::reset_options_data(twindow& window, const option_source& source, bool& handled, bool& halt)
 {
 	options_data_[source].clear();
+	update_options_list(window);
 
-	// FIXME: we want to update the display of options immediately, but this causes a crash, possible since
-	// it's clearing a tree from a callback inside itself.
-	//update_options_list(window);
+	handled = true;
+	halt = true;
 }
 
 void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, std::string&& type, const config& cfg)
@@ -664,7 +664,8 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 		ttree_view_node& node = option_node.add_child("options_default_button", empty_map);
 
 		connect_signal_mouse_left_click(find_widget<tbutton>(&node, "reset_option_values", false),
-			std::bind(&tmp_create_game::reset_options_data, this, std::ref(window), visible_options_.back()));
+			std::bind(&tmp_create_game::reset_options_data, this, std::ref(window), visible_options_.back(),
+				std::placeholders::_3, std::placeholders::_4));
 	}
 }
 

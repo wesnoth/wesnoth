@@ -70,7 +70,7 @@ private:
 	void update_options_data_map(T* widget, const option_source& source);
 	void update_options_data_map(ttoggle_button* widget, const option_source& source);
 
-	void reset_options_data(twindow& window, const option_source& source);
+	void reset_options_data(twindow& window, const option_source& source, bool& handled, bool& halt);
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
