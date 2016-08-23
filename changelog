@@ -3,21 +3,25 @@ Version 1.13.5+dev:
    * Eastern Invasion:
      * Fixed broken village encounters.
    * Delfador's Memoirs:
-     * S9: Resolved inability to end level even when Delfador has the Staff (bug #24951)
-     * S17: Resolved Wesnoth units returning to recall list not being healed properly (bug #24952)
+     * S9: Resolved inability to end level even when Delfador has the Staff
+       (bug #24951)
+     * S17: Resolved Wesnoth units returning to recall list not being healed
+       properly (bug #24952)
      * S19: Resolved undead veterans victory condition not working properly.
  * Music and sound effects:
    * Added a preference to pause the music when the game loses focus.
    * Now the music fades out between scenarios.
  * Graphics:
-   * Improved or new terrain graphics: New wooden floor variation and new transitions.
+   * Improved or new terrain graphics: New wooden floor variation and new
+     transitions.
  * Units:
    * Changed the sound for the melee attack of the
      Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
  * User Interface:
    * Trait descriptions in the help are now generated. (This makes user-defined
      traits show up in the help as well.)
-   * Fix game map sometimes showing and buttons sometimes not rendered properly in story screen (bug #24553)
+   * Fix game map sometimes showing and buttons sometimes not rendered properly
+     in story screen (bug #24553)
    * Improved font rendering on Windows.
    * Redesigned gamestate inspector window.
    * Recall dialog no longer shows units that no leader on the map can recall
@@ -26,23 +30,27 @@ Version 1.13.5+dev:
  * WML Engine:
    * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
-     - Added variable= to [message]: if specified, gives variable name to receive the [option] index (1..n) selected
+     * Added variable= to [message]: if specified, gives variable name to
+       receive the [option] index (1..n) selected
        only used if any [option] appear
-     - Added value= to [option]: if specified, gives value to store in variable instead of index number, only used
-       if variable= appears in [message]
+     * Added value= to [option]: if specified, gives value to store in variable
+       instead of index number, only used if variable= appears in [message]
    * New attributes for [role]:
-     - search_recall_list=yes|no|only(default yes) controls where to look
-     - reassign=yes|no(default yes) if no, check for a unit and do not assign to another
-     - [auto_recall] sub-tag, if assigned to recall list, gives [recall] attributes (no SUF)
-     - [else] sub-tag, WML to execute if no unit found for the role
-   * New help_text= key for [trait] to set the description displayed in the help.
+     * search_recall_list=yes|no|only(default yes) controls where to look
+     * reassign=yes|no(default yes) if no, check for a unit and do not assign to
+       another
+     * [auto_recall] sub-tag, if assigned to recall list, gives [recall]
+       attributes (no SUF)
+     * [else] sub-tag, WML to execute if no unit found for the role
+   * New help_text= key for [trait] to set the description displayed in the
+     help.
    * Added tag id= [fire_event], which allows raising events by id
    * [modify_unit] now understands [effect] tags, which it applies directly.
      This replaces the use of [object] with no_write=yes (which will be removed
      in the next release).
    * Add [object]take_only_once=yes|no (default yes) - if set to no, automatic
-     tracking is disabled for this object (allowing it to be taken multiple times
-     even if it has an id).
+     tracking is disabled for this object (allowing it to be taken multiple
+     times even if it has an id).
    * New [remove_object] tag which removes applied [object]s from matched units;
      it can filter on the entire [object] WML. The most efficient use is to
      remove all objects with a specific duration value.
@@ -53,22 +61,24 @@ Version 1.13.5+dev:
    * The {MAGENTA_IS_THE_TEAM_COLOR} macro is no longer needed in [unit_type]
      It is now the default behaviour unless overridden with the flag_rgb key.
 * Lua API:
-   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The old
-     function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
+   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
+     old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
    * Added new function wesnoth.remove_modifications, which removes applied
      modifications of the chosen type from a unit. The most efficient use is to
      remove all modifications with a specific duration value.
      Also callable as u:remove_modifications.
    * The built-in conditionals have_unit, have_location, and variable are now
-     present in the wesnoth.wml_conditionals table. This means they can be directly
-     called, extended with new features, or even overridden with custom implementations.
+     present in the wesnoth.wml_conditionals table. This means they can be
+     directly called, extended with new features, or even overridden with custom
+     implementations.
    * New recall_filter field in unit proxy returns the [filter_recall] config
 * Performance:
-   * When a heuristic determines that it's probably faster, the game predicts battle
+   * When a heuristic determines that it's probably faster, the game predicts
+     battle
      outcome by simulating a few thousand fights instead of calculating exact
-     probabilities. This method is inexact, but in very complex battles (extremely
-     high HP, drain, slow, berserk, etc.) it's significantly faster than the default
-     damage calculation method.
+     probabilities. This method is inexact, but in very complex battles
+     (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
+     default damage calculation method.
 * Miscellaneous and bug fixes:
    * Fixed a stray ; character appearing pre-entered in the command console.
    * Fixed bug in wesnothd that was causing server crashes if game with
@@ -76,8 +86,8 @@ Version 1.13.5+dev:
    * Added a tab to run the wmlxgettext tool to GUI.pyw
    * Fixed problem with Spectre's hitpoint bar positioning.
    * Show correct number of attacks in case of swarm weapon special (bug #24978)
-   * Fixed bug that icons of buttons under the minimap disappeared when the player opened
-     and closed a menu.
+   * Fixed bug that icons of buttons under the minimap disappeared when the
+     player opened and closed a menu.
 
 Version 1.13.5:
  * Campaigns:
