@@ -458,7 +458,7 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 
 	if(!level.empty()) {
 		int level_index = create_engine_.find_level_by_id(level);
-		if(level_index >= 0) {
+		if(level_index >= 0 && size_t(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
 		}
 	}
