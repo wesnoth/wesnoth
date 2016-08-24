@@ -1007,6 +1007,7 @@ void tlobby_main::post_show(twindow& /*window*/)
 	window_ = nullptr;
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
+	plugins_context_.reset();
 }
 
 room_info* tlobby_main::active_window_room()

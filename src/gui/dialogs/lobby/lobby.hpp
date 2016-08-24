@@ -19,6 +19,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "chat_events.hpp"
 #include "gui/dialogs/lobby/info.hpp"
+#include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "game_initialization/multiplayer.hpp"
 
 class display;
@@ -75,7 +76,7 @@ struct tplayer_list
 	ttree_view* tree;
 };
 
-class tlobby_main : public tdialog, private events::chat_handler, private mp::gui2_mp_shared_context
+class tlobby_main : public tdialog, private events::chat_handler, private plugin_executor
 {
 public:
 	tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection);

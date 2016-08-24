@@ -72,12 +72,5 @@ mp::ui::result goto_mp_connect(CVideo& video, ng::connect_engine& engine,
  */
 mp::ui::result goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, twesnothd_connection* wesnothd_connection, bool observe);
 
-// TODO: move to own file?
-class gui2_mp_shared_context
-{
-public:
-	std::unique_ptr<plugins_context> plugins_context_;
-};
-
 }
 #endif

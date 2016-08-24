@@ -861,6 +861,7 @@ void tmp_create_game::dialog_exit_hook(twindow& window) {
 
 void tmp_create_game::post_show(twindow& window)
 {
+	plugins_context_.reset();
 	// Show all tabs so that find_widget works correctly
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(-1);
 	if(get_retval() == twindow::OK) {

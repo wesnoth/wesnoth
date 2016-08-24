@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_MP_CREATE_GAME_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
@@ -32,7 +33,7 @@ class ttoggle_panel;
 class ttree_view;
 class twidget;
 
-class tmp_create_game : public tdialog, private mp::gui2_mp_shared_context
+class tmp_create_game : public tdialog, private plugin_executor
 {
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
