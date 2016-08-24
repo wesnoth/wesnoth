@@ -595,14 +595,12 @@ void luaW_filltable(lua_State *L, config const &cfg)
 void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
 	lua_createtable(L, 2, 0);
-	
-	lua_pushinteger(L, 1);
+
 	lua_pushinteger(L, ml.x + 1);
-	lua_rawset(L, -3);
-	
-	lua_pushinteger(L, 2);
+	lua_rawseti(L, -3, 1);
+
 	lua_pushinteger(L, ml.y + 1);
-	lua_rawset(L, -3);
+	lua_rawseti(L, -3, 2);
 }
 
 bool luaW_tolocation(lua_State *L, int index, map_location& loc) {

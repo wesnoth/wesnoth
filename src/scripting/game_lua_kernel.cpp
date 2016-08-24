@@ -247,11 +247,7 @@ static int special_locations_next(lua_State *L)
 		return 0;
 	}
 	lua_pushstring(L, it->first.c_str());
-	lua_createtable(L, 2, 0);
-	lua_pushnumber(L, it->second.x + 1);
-	lua_rawseti(L, -2, 1);
-	lua_pushnumber(L, it->second.y + 1);
-	lua_rawseti(L, -2, 2);
+	luaW_pushlocation(L, it->second);
 	return 2;
 }
 
@@ -271,22 +267,18 @@ static int special_locations_index(lua_State *L)
 		return 0;
 	}
 	else {
-		lua_createtable(L, 2, 0);
-		lua_pushnumber(L, it->second.x + 1);
-		lua_rawseti(L, -2, 1);
-		lua_pushnumber(L, it->second.y + 1);
-		lua_rawseti(L, -2, 2);
+		luaW_pushlocation(L, it->second);
 		return 1;
 	}
 }
 
 static int special_locations_newindex(lua_State *L)
 {
-	lua_pushstring(L, "special locations cannot be modified uwing wesnoth.special_locations");
+	lua_pushstring(L, "special locations cannot be modified using wesnoth.special_locations");
 	return lua_error(L);
 }
 
-static void push_locations_talbe(lua_State *L)
+static void push_locations_table(lua_State *L)
 {
 	lua_newtable(L); // The functor table
 	lua_newtable(L); // The functor metatable
@@ -1090,12 +1082,7 @@ int game_lua_kernel::intf_get_starting_location(lua_State* L)
 	const map_location& starting_pos = board().map().starting_position(side);
 	if(!board().map().on_board(starting_pos)) return 0;
 
-	lua_createtable(L, 2, 0);
-	lua_pushinteger(L, starting_pos.x + 1);
-	lua_rawseti(L, -2, 1);
-	lua_pushinteger(L, starting_pos.y + 1);
-	lua_rawseti(L, -2, 2);
-
+	luaW_pushlocation(L, starting_pos);
 	return 1;
 }
 
@@ -4300,7 +4287,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "game_events");
-	push_locations_talbe(L);
+	push_locations_table(L);
 	lua_setfield(L, -2, "special_locations");
 	lua_pop(L, 1);
 

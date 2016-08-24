@@ -198,18 +198,6 @@ t_match::t_match(const t_terrain& tcode):
 	}
 }
 
-coordinate::coordinate()
-	: x(0)
-	, y(0)
-{
-}
-
-coordinate::coordinate(const int x_, const int y_)
-	: x(x_)
-	, y(y_)
-{
-}
-
 t_terrain read_terrain_code(const std::string& str, const t_layer filler)
 {
 	return string_to_number_(str, filler);

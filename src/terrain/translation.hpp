@@ -24,6 +24,7 @@
 #include <boost/bimap/set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>
 #include "exceptions.hpp"
+#include "map/location.hpp"
 
 namespace t_translation {
 
@@ -93,16 +94,7 @@ namespace t_translation {
 	};
 
 	/**  Contains an x and y coordinate used for starting positions in maps. */
-	/** TODO: remove this class and use map_location */
-	struct coordinate {
-		coordinate();
-		coordinate(const int x_, const int y_);
-		int x;
-		int y;
-		friend bool operator <(const coordinate&l, const coordinate&r) {
-			return l.x < r.x || (l.x == r.x && l.y < r.y);
-		}
-	};
+	using coordinate = map_location;
 
     // Exception thrown if there's an error with the terrain.
 	// Note: atm most thrown result in a crash, but I like
