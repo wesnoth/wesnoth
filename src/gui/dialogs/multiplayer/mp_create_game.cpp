@@ -82,7 +82,6 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	, turn_bonus_(register_integer("turn_bonus", true, prefs::countdown_turn_bonus, prefs::set_countdown_turn_bonus))
 	, reservior_(register_integer("reservior", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
 	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
-	, plugins_context_()
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},

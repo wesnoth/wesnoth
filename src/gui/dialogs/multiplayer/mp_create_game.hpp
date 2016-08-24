@@ -19,8 +19,8 @@
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "mp_game_settings.hpp"
-#include "scripting/plugins/context.hpp"
 
 class config;
 
@@ -32,7 +32,7 @@ class ttoggle_panel;
 class ttree_view;
 class twidget;
 
-class tmp_create_game : public tdialog
+class tmp_create_game : public tdialog, private mp::gui2_mp_shared_context
 {
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
@@ -124,8 +124,6 @@ private:
 	tfield_integer* turn_bonus_;
 	tfield_integer* reservior_;
 	tfield_integer* action_bonus_;
-
-	std::unique_ptr<plugins_context> plugins_context_;
 
 	template<typename widget>
 	void on_filter_change(twindow& window, const std::string& id);

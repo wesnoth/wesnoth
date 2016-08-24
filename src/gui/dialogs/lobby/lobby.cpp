@@ -976,6 +976,21 @@ void tlobby_main::pre_show(twindow& window)
 	tlobby_main::network_handler();
 	lobby_update_timer_ = add_timer(
 		game_config::lobby_network_timer, std::bind(&tlobby_main::network_handler, this), true);
+
+	// Set up Lua plugin context
+	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
+
+	plugins_context_->set_callback("join", 	  [this, &window](const config&) { join_global_button_callback(window); }, true);
+	plugins_context_->set_callback("observe", [this, &window](const config&) { observe_global_button_callback(window); }, true);
+	plugins_context_->set_callback("create",  [this, &window](const config&) { create_button_callback(window); }, true);
+	plugins_context_->set_callback("quit",    [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+
+	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
+	// TODO: gui1 version allowed specifying by id, should we support this?
+	plugins_context_->set_callback("select_game", [this](const config& cfg) { gamelistbox_->select_row(cfg["index"].to_int()); },	true);
+
+	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
+	plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
 }
 
 void tlobby_main::post_show(twindow& /*window*/)
