@@ -584,9 +584,7 @@ std::string unit_topic_generator::operator()() const {
 		try {
 			resistance -= std::stoi(dam_it.second);
 		} catch(std::invalid_argument) {}
-		char resi[16];
-		snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
-		std::string resist = resi;
+		std::string resist = std::to_string(resistance) + '%';
 		const size_t pos = resist.find('-');
 		if (pos != std::string::npos) {
 			resist.replace(pos, 1, utils::unicode_minus);
