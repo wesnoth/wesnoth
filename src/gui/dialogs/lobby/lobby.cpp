@@ -986,8 +986,17 @@ void tlobby_main::pre_show(twindow& window)
 	plugins_context_->set_callback("quit",    [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
-	// TODO: gui1 version allowed specifying by id, should we support this?
-	plugins_context_->set_callback("select_game", [this](const config& cfg) { gamelistbox_->select_row(cfg["index"].to_int()); },	true);
+	plugins_context_->set_callback("select_game", [this](const config& cfg) {
+		int i = 0;
+		if(cfg.has_attribute("id")) {
+			if(game_info* game = lobby_info_.get_game_by_id(cfg["id"].to_int())) {
+				i = std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
+			}
+		} else {
+			i = cfg["index"].to_int();
+		}
+		gamelistbox_->select_row(i);
+	},	true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
 	plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
