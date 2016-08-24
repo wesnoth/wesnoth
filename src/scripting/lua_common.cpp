@@ -755,7 +755,7 @@ config luaW_checkconfig(lua_State *L, int index)
 	return result;
 }
 
-config luaW_checkconfig(lua_State *L, int index, vconfig* vcfg)
+config luaW_checkconfig(lua_State *L, int index, const vconfig*& vcfg)
 {
 	config result = luaW_checkconfig(L, index);
 	if(void* p = luaL_testudata(L, index, vconfigKey)) {

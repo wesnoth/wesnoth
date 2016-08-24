@@ -2514,7 +2514,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	}
 	else if (!lua_isnoneornil(L, unit_arg))
 	{
-		vconfig* vcfg = nullptr;
+		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, unit_arg, vcfg);
 		if (unit_arg == 1 && !map().on_board(loc)) {
 			loc.x = cfg["x"] - 1;
@@ -2625,7 +2625,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	}
 	else
 	{
-		vconfig* vcfg = nullptr;
+		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
 		u = unit_ptr(new unit(cfg, true, vcfg));
 	}
@@ -2694,7 +2694,7 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 		if (luaW_hasmetatable(L, 2, getunitKey)) {
 			u = static_cast<lua_unit *>(lua_touserdata(L, 2))->get_shared();
 		} else {
-			vconfig* vcfg = nullptr;
+			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
 			u.reset(new unit(cfg, false, vcfg));
 		}
@@ -2737,7 +2737,7 @@ int game_lua_kernel::intf_float_label(lua_State *L)
  */
 static int intf_create_unit(lua_State *L)
 {
-	vconfig* vcfg = nullptr;
+	const vconfig* vcfg = nullptr;
 	config cfg = luaW_checkconfig(L, 1, vcfg);
 	unit_ptr u = unit_ptr(new unit(cfg, true, vcfg));
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
