@@ -30,12 +30,10 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_types.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 

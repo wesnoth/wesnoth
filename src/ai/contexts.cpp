@@ -383,8 +383,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
-		unit* held_unit = const_cast<unit *>(&*un_it);
-		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
+		const unit_movement_resetter move_resetter(*un_it,enemy || assume_full_movement);
 
 		// Insert the trivial moves of staying on the same map location.
 		if (un_it->movement_left() > 0) {

@@ -117,6 +117,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_open_help(lua_State *L);
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
+	void put_unit_helper(const map_location& loc);
 	int intf_put_unit(lua_State *L);
 	int intf_erase_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);

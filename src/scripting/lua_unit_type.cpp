@@ -15,6 +15,7 @@
 #include "scripting/lua_unit_type.hpp"
 
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
 #include "units/types.hpp"
 
@@ -73,13 +74,7 @@ static int impl_unit_type_get(lua_State *L)
 		return 1;
 	}
 	if (strcmp(m, "attacks") == 0) {
-		lua_createtable(L, 1, 0);
-		lua_pushvalue(L, 1);
-		// hack: store the unit_type at -1 because we want positive indices to refer to the attacks.
-		lua_rawseti(L, -2, -1);
-		lua_pushlightuserdata(L, uattacksKey);
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
+		push_unit_attacks_table(L, 1);
 		return 1;
 	}
 	return 0;

@@ -41,7 +41,9 @@ public:
 	void write(config& res) const;
 	void read(const config &cfg);
 
-	const terrain_label* get_label(const map_location& loc, const std::string& team_name) const;
+	const terrain_label* get_label(const map_location& loc, const std::string& team_name) const {
+		return const_cast<map_labels*>(this)->get_label_private(loc, team_name);
+	}
 	// search a team-only label, if fails then try public labels
 	const terrain_label* get_label(const map_location& loc) const;
 	const terrain_label* set_label(const map_location& loc,
@@ -81,10 +83,7 @@ private:
 	void add_label(const map_location &, terrain_label *);
 
 	void clear_map(label_map &, bool);
-	/// For our private use, a wrapper for get_label() that can return a pointer
-	/// to a non-const terrain_label.
-	terrain_label* get_label_private(const map_location& loc, const std::string& team_name)
-	{ return const_cast<terrain_label*>(get_label(loc, team_name)); }
+	terrain_label* get_label_private(const map_location& loc, const std::string& team_name);
 	// Note: this is not an overload of get_label() so that we do not block
 	//       outsiders from calling get_label for a non-const map_labels object.
 

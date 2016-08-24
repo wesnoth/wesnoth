@@ -2380,11 +2380,11 @@ unit& unit::clone(bool is_temporary)
 }
 
 
-unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
-	u_(u), moves_(u.movement_left(true))
+unit_movement_resetter::unit_movement_resetter(const unit &u, bool operate) :
+	u_(const_cast<unit&>(u)), moves_(u.movement_left(true))
 {
 	if (operate) {
-		u.set_movement(u.total_movement());
+		u_.set_movement(u_.total_movement());
 	}
 }
 

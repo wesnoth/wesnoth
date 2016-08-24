@@ -25,7 +25,6 @@
 #include "lua/lua.h"
 #include "map/location.hpp"
 #include "resources.hpp"
-#include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "terrain/filter.hpp"
 #include "variable.hpp"

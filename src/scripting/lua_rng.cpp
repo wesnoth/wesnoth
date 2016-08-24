@@ -37,7 +37,7 @@ static const char * Rng = "Rng";
 int impl_rng_create(lua_State* L)
 {
 	uint32_t seed = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).get_random_seed();
-	new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng(seed);
+	new(L) mt_rng(seed);
 	luaL_setmetatable(L, Rng);
 
 	return 1;

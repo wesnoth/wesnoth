@@ -34,7 +34,6 @@
 #include "scripting/lua_gui2.hpp"
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_rng.hpp"
-#include "scripting/lua_types.hpp"
 #include "scripting/push_check.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc
@@ -196,11 +195,10 @@ static int intf_name_generator(lua_State *L)
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
-			gen = new(lua_newuserdata(L, sizeof(markov_generator))) markov_generator(input, chain_sz, max_len);
+			gen = new(L) markov_generator(input, chain_sz, max_len);
 			// Ensure the pointer didn't change when cast
 			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
 		} else if(type == "context_free" || type == "cfg" || type == "CFG") {
-			void* buf = lua_newuserdata(L, sizeof(context_free_grammar_generator));
 			if(lua_istable(L, 2)) {
 				std::map<std::string, std::vector<std::string>> data;
 				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
@@ -218,10 +216,10 @@ static int intf_name_generator(lua_State *L)
 					}
 				}
 				if(!data.empty()) {
-					gen = new(buf) context_free_grammar_generator(data);
+					gen = new(L) context_free_grammar_generator(data);
 				}
 			} else {
-				gen = new(buf) context_free_grammar_generator(luaL_checkstring(L, 2));
+				gen = new(L) context_free_grammar_generator(luaL_checkstring(L, 2));
 			}
 			if(gen) {
 				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
@@ -252,6 +250,8 @@ template <member_callback method>
 int dispatch(lua_State *L) {
 	return ((lua_kernel_base::get_lua_kernel<lua_kernel_base>(L)).*method)(L);
 }
+
+extern void push_error_handler(lua_State *L);
 
 // Ctor, initialization
 lua_kernel_base::lua_kernel_base(CVideo * video)
@@ -318,14 +318,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	// Store the error handler.
 	cmd_log_ << "Adding error handler...\n";
-
-	lua_pushlightuserdata(L
-			, executeKey);
-	lua_getglobal(L, "debug");
-	lua_getfield(L, -1, "traceback");
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-	lua_pop(L, 1);
+	push_error_handler(L);
 
 	// Create the gettext metatable.
 	cmd_log_ << lua_common::register_gettext_metatable(L);
@@ -493,23 +486,11 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 	return protected_call(mState, nArgs, nRets, e_h);
 }
 
+extern int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
 bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_handler e_h)
 {
-	// Load the error handler before the function and its arguments.
-	lua_pushlightuserdata(L
-			, executeKey);
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_insert(L, -2 - nArgs);
-
-	int error_handler_index = lua_gettop(L) - nArgs - 1;
-
-	// Call the function.
-	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
-	tlua_jailbreak_exception::rethrow();
-
-	// Remove the error handler.
-	lua_remove(L, error_handler_index);
+	int errcode = luaW_pcall_internal(L, nArgs, nRets);
 
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(L, -1);

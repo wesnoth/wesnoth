@@ -41,9 +41,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 

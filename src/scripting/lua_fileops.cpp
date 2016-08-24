@@ -19,7 +19,6 @@
 #include "game_config.hpp" //for game_config::debug_lua
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"	// for chat_message, luaW_pcall
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 
 #include <exception>

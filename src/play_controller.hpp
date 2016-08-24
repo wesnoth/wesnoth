@@ -198,7 +198,7 @@ public:
 
 	std::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
-	const game_classification& get_classification();
+	game_classification& get_classification();
 	int get_server_request_number() const { return gamestate().server_request_number_; }
 	void increase_server_request_number() { ++gamestate().server_request_number_; }
 

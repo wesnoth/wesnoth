@@ -16,7 +16,7 @@
 #include "boost/variant/static_visitor.hpp"
 
 #include "scripting/game_lua_kernel.hpp"
-#include "scripting/lua_api.hpp"
+#include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -26,6 +26,8 @@
 
 #include "resources.hpp"
 #include "units/map.hpp"
+
+static const char formulaKey[] = "formula";
 
 void luaW_pushfaivariant(lua_State* L, variant val);
 variant luaW_tofaivariant(lua_State* L, int i);
@@ -141,13 +143,10 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			const unit& u = u_ref->get_unit();
 			unit_map::iterator un_it = resources::units->find(u.get_location());
 			if(&*un_it == &u) {
-				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
+				luaW_pushunit(L, u.underlying_id());
 			} else {
-				new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.side(), u.underlying_id());
+				luaW_pushunit(L, u.side(), u.underlying_id());
 			}
-			lua_pushlightuserdata(L, getunitKey);
-			lua_rawget(L, LUA_REGISTRYINDEX);
-			lua_setmetatable(L, -2);
 		} else if(location_callable* loc_ref = val.try_convert<location_callable>()) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
@@ -208,8 +207,8 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 {
 	bool need_delete = false;
 	fwrapper* form;
-	if(luaW_hasmetatable(L, 1, formulaKey)) {
-		form = static_cast<fwrapper*>(lua_touserdata(L, 1));
+	if(void* ud = luaL_testudata(L, 1, formulaKey)) {
+		form = static_cast<fwrapper*>(ud);
 	} else {
 		need_delete = true;
 		form = new fwrapper(luaL_checkstring(L, 1));
@@ -235,10 +234,8 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 	if(!lua_isstring(L, 1)) {
 		luaL_typerror(L, 1, "string");
 	}
-	new(lua_newuserdata(L, sizeof(fwrapper))) fwrapper(lua_tostring(L, 1));
-	lua_pushlightuserdata(L, formulaKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	new(L) fwrapper(lua_tostring(L, 1));
+	luaL_setmetatable(L, formulaKey);
 	return 1;
 }
 
@@ -280,8 +277,7 @@ static int impl_formula_tostring(lua_State* L)
 
 std::string lua_formula_bridge::register_metatables(lua_State* L)
 {
-	lua_pushlightuserdata(L, formulaKey);
-	lua_createtable(L, 0, 4);
+	luaL_newmetatable(L, formulaKey);
 	lua_pushcfunction(L, impl_formula_collect);
 	lua_setfield(L, -2, "__gc");
 	lua_pushcfunction(L, impl_formula_tostring);
@@ -290,7 +286,6 @@ std::string lua_formula_bridge::register_metatables(lua_State* L)
 	lua_setfield(L, -2, "__call");
 	lua_pushstring(L, "formula");
 	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
 	
 	return "Adding formula metatable...\n";
 }
