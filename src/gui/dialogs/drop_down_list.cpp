@@ -73,11 +73,11 @@ void tdrop_down_list::pre_show(twindow& window)
 			data.emplace("label", item);
 		}
 
-		if(entry.has_attribute("label_right")) {
-			item["label"] = entry["label_right"];
+		if(entry.has_attribute("details")) {
+			item["label"] = entry["details"];
 			item["tooltip"] = entry["tooltip"];
 			item["use_markup"] = use_markup_ ? "true" : "false";
-			data.emplace("label_right", item);
+			data.emplace("details", item);
 		}
 
 		tgrid& new_row = list.add_row(data);

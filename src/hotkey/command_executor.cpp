@@ -477,7 +477,7 @@ std::vector<config> command_executor::get_menu_images(display& disp, const std::
 				else {
 					i = label.find_first_of(1);
 					if(i != std::string::npos) {
-						result.back()["label_right"] = label.substr(i + 1);
+						result.back()["details"] = label.substr(i + 1);
 						result.back()["image"] = label.substr(1, i - 1);
 					} else {
 						result.back()["label"] = label;
@@ -497,7 +497,7 @@ std::vector<config> command_executor::get_menu_images(display& disp, const std::
 					}
 				}
 				result.back()["label"] = desc;
-				result.back()["label_right"] = hotkey::get_names(item);
+				result.back()["details"] = hotkey::get_names(item);
 			}
 		}
 	}
