@@ -1027,7 +1027,7 @@ wml_actions.unstore_unit = function(cfg)
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
 		if cfg.find_vacant then
-			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability ~= false and unit)
+			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
 		local text = nil
