@@ -909,7 +909,6 @@ set(wesnoth-main_SRC
 	scripting/application_lua_kernel.cpp
 	scripting/debug_lua.cpp
 	scripting/game_lua_kernel.cpp
-	scripting/lua_api.cpp
 	scripting/lua_common.cpp
 	scripting/lua_cpp_function.cpp
 	scripting/lua_fileops.cpp
@@ -920,7 +919,8 @@ set(wesnoth-main_SRC
 	scripting/lua_race.cpp
 	scripting/lua_rng.cpp
 	scripting/lua_team.cpp
-	scripting/lua_types.cpp
+	scripting/lua_unit.cpp
+	scripting/lua_unit_attacks.cpp
 	scripting/lua_unit_type.cpp
 	scripting/mapgen_lua_kernel.cpp
 	scripting/plugins/context.cpp
