@@ -121,7 +121,7 @@ private:
 	tfield_integer* gold_;
 	tfield_integer* support_;
 	tfield_integer* experience_;
-	tfield_integer* init_turn_limit;
+	tfield_integer* init_turn_limit_;
 	tfield_integer* turn_bonus_;
 	tfield_integer* reservior_;
 	tfield_integer* action_bonus_;

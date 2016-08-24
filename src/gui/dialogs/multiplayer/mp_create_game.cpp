@@ -78,7 +78,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	, gold_(register_integer("village_gold", true, prefs::village_gold, prefs::set_village_gold))
 	, support_(register_integer("village_support", true, prefs::village_support, prefs::set_village_support))
 	, experience_(register_integer("experience_modifier", true, prefs::xp_modifier, prefs::set_xp_modifier))
-	, init_turn_limit(register_integer("init_turn_limit", true, prefs::countdown_init_time, prefs::set_countdown_init_time))
+	, init_turn_limit_(register_integer("init_turn_limit", true, prefs::countdown_init_time, prefs::set_countdown_init_time))
 	, turn_bonus_(register_integer("turn_bonus", true, prefs::countdown_turn_bonus, prefs::set_countdown_turn_bonus))
 	, reservior_(register_integer("reservior", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
 	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
@@ -311,6 +311,32 @@ void tmp_create_game::pre_show(twindow& window)
 		ctx->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
 		ctx->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 		ctx->set_callback("set_name", [&window](const config& cfg) { find_widget<ttext_box>(&window, "game_name", false).set_value(cfg["name"]); }, true);
+		ctx->set_callback("set_password", [&window](const config& cfg) { find_widget<ttext_box>(&window, "game_password", false).set_value(cfg["password"]); }, true);
+		ctx->set_callback("update_settings", [this, &window](const config& cfg) {
+			#define UPDATE_ATTRIBUTE(field) do{ \
+				if(cfg.has_attribute(#field)) { \
+					field##_->set_widget_value(window, cfg[#field]); \
+				} \
+			} while(false)
+			UPDATE_ATTRIBUTE(turns);
+			UPDATE_ATTRIBUTE(gold);
+			UPDATE_ATTRIBUTE(support);
+			UPDATE_ATTRIBUTE(experience);
+			UPDATE_ATTRIBUTE(start_time);
+			UPDATE_ATTRIBUTE(fog);
+			UPDATE_ATTRIBUTE(shroud);
+			UPDATE_ATTRIBUTE(time_limit);
+			UPDATE_ATTRIBUTE(init_turn_limit);
+			UPDATE_ATTRIBUTE(turn_bonus);
+			UPDATE_ATTRIBUTE(reservior);
+			UPDATE_ATTRIBUTE(action_bonus);
+			UPDATE_ATTRIBUTE(observers);
+			UPDATE_ATTRIBUTE(registered_users);
+			UPDATE_ATTRIBUTE(strict_sync);
+			UPDATE_ATTRIBUTE(shuffle_sides);
+			#undef UPDATE_ATTRIBUTE
+		}, true);
+		ctx->set_accessor("game_config",  [this](const config&) {return cfg_; });
 		plugins_context_.reset(ctx);
 	}, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
@@ -320,6 +346,13 @@ void tmp_create_game::pre_show(twindow& window)
 		find_widget<tlistbox>(&window, "games_list", false).select_row(cfg["index"].to_int()); }, true);
 	plugins_context_->set_callback("select_type",  [this, &window](const config& cfg) {
 		display_games_of_type(window, ng::level::TYPE::string_to_enum(cfg["type"]), cfg["level"]); }, true);
+	plugins_context_->set_callback("select_era", [this, &window](const config& cfg) {
+		find_widget<tmenu_button>(&window, "eras", false).set_value(cfg["index"].to_int()); }, true);
+	plugins_context_->set_callback("select_mod", [this, &window](const config& cfg) {
+		auto& mods = find_widget<tlistbox>(&window, "mod_list", false);
+		mods.select_row(cfg["index"].to_int());
+		find_widget<ttoggle_button>(&mods, "mod_active_state", false).set_value(cfg["active"].to_bool(true));
+	}, true);
 
 	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
@@ -338,6 +371,12 @@ void tmp_create_game::pre_show(twindow& window)
 		return config_of
 			("index", create_engine_.find_level_by_id(id))
 			("type", create_engine_.find_level_type_by_id(id));
+	});
+	plugins_context_->set_accessor_int("find_era", [this](const config& cfg) {
+		return create_engine_.find_extra_by_id(ng::create_engine::ERA, cfg["id"]);
+	});
+	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg) {
+		return create_engine_.find_extra_by_id(ng::create_engine::MOD, cfg["id"]);
 	});
 }
 
@@ -838,7 +877,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 	const bool time_limit = time_limit_->get_widget_value(window);
 
-	init_turn_limit ->widget_set_enabled(window, time_limit, false);
+	init_turn_limit_->widget_set_enabled(window, time_limit, false);
 	turn_bonus_     ->widget_set_enabled(window, time_limit, false);
 	reservior_      ->widget_set_enabled(window, time_limit, false);
 	action_bonus_   ->widget_set_enabled(window, time_limit, false);
@@ -911,7 +950,7 @@ void tmp_create_game::post_show(twindow& window)
 		}
 
 		config_engine_->set_mp_countdown(time_limit_->get_widget_value(window));
-		config_engine_->set_mp_countdown_init_time(init_turn_limit->get_widget_value(window));
+		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value(window));
 		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value(window));
 		config_engine_->set_mp_countdown_reservoir_time(reservior_->get_widget_value(window));
 		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value(window));
