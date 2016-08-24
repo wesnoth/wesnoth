@@ -21,6 +21,7 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/image.hpp"
 
 #include "utils/functional.hpp"
 
@@ -65,12 +66,32 @@ void tdrop_down_list::pre_show(twindow& window)
 		item["label"] = entry["icon"];
 		data.emplace("icon", item);
 
-		item["label"] = entry["label"];
-		item["tooltip"] = entry["tooltip"];
-		item["use_markup"] = use_markup_ ? "true" : "false";
-		data.emplace("label", item);
+		if(!entry.has_attribute("image")) {
+			item["label"] = entry["label"];
+			item["tooltip"] = entry["tooltip"];
+			item["use_markup"] = use_markup_ ? "true" : "false";
+			data.emplace("label", item);
+		}
 
-		list.add_row(data);
+		if(entry.has_attribute("label_right")) {
+			item["label"] = entry["label_right"];
+			item["tooltip"] = entry["tooltip"];
+			item["use_markup"] = use_markup_ ? "true" : "false";
+			data.emplace("label_right", item);
+		}
+
+		tgrid& new_row = list.add_row(data);
+
+		if(entry.has_attribute("image")) {
+			timage* img = new timage;
+			img->set_definition("default");
+			img->set_label(entry["image"]);
+			img->set_tooltip(entry["tooltip"]);
+			tgrid* mi_grid = dynamic_cast<tgrid*>(new_row.find("menu_item", false));
+			if(mi_grid) {
+				delete mi_grid->swap_child("label", img, false);
+			}
+		}
 	}
 
 	list.select_row(selected_item_);
