@@ -1081,7 +1081,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		bool is_enabled(const chmap::command& c) const
 		{
 			return !((c.has_flag('D') && !game_config::debug)
-				  || (c.has_flag('N') && menu_handler_.pc_.is_networked_mp())
+				  || (c.has_flag('N') && !menu_handler_.pc_.is_networked_mp())
 				  || (c.has_flag('A') && !preferences::is_authenticated())
 				  || (c.has_flag('S') && (synced_context::get_synced_state() != synced_context::UNSYNCED)));
 		}
