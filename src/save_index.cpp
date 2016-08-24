@@ -425,12 +425,15 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	//}
 
 	cfg_summary["leader"] = leader;
-	// We need a binary path-independent path to the leader image here
-	// so it can be displayed for campaign-specific units in the dialog
-	// even when the campaign isn't loaded yet.
-	cfg_summary["leader_image"] = filesystem::get_independent_image_path(leader_image);
-	// Append the leader image's team coloring
-	cfg_summary["leader_image"] = cfg_summary["leader_image"].str() + leader_image_tc_modifier;
+	if(!cfg_summary["leader_image"].empty()) {
+		// We need a binary path-independent path to the leader image here
+		// so it can be displayed for campaign-specific units in the dialog
+		// even when the campaign isn't loaded yet.
+		cfg_summary["leader_image"] = filesystem::get_independent_image_path(leader_image);
+
+		// Append the leader image's team coloring
+		cfg_summary["leader_image"] = cfg_summary["leader_image"].str() + leader_image_tc_modifier;
+	}
 
 	if(!shrouded) {
 		if(has_snapshot) {
