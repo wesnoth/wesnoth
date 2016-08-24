@@ -2088,7 +2088,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	if(luaW_isunit(L, 1)) {
 		lu = luaW_checkunit_ref(L, 1);
 		u = lu->get_shared();
-		if(lu->on_recall_list() == side) {
+		if(lu->on_recall_list() && lu->on_recall_list() == side) {
 			return luaL_argerror(L, 1, "unit already on recall list");
 		}
 	} else {
