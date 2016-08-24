@@ -304,7 +304,15 @@ void tmp_create_game::pre_show(twindow& window)
 	// Set up the Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
-	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(twindow::OK); }, false);
+	plugins_context_->set_callback("create", [this, &window](const config&) {
+		// Switch plugin context to configure mode
+		plugins_context_.reset();
+		plugins_context* ctx = new plugins_context("Multiplayer Configure");
+		ctx->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
+		ctx->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+		ctx->set_callback("set_name", [&window](const config& cfg) { find_widget<ttext_box>(&window, "game_name", false).set_value(cfg["name"]); }, true);
+		plugins_context_.reset(ctx);
+	}, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 	plugins_context_->set_callback("load",   [this, &window](const config&) { load_game_callback(window); }, false);
 
