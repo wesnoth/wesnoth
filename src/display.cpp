@@ -273,7 +273,7 @@ void display::init_flags() {
 	side_colors.reserve(dc_->teams().size());
 
 	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		std::string side_color = team::get_side_color_index(i+1);
+		std::string side_color = dc_->teams()[i].color();
 		side_colors.push_back(side_color);
 		init_flags_for_side_internal(i, side_color);
 	}
@@ -287,7 +287,7 @@ void display::reinit_flags_for_side(size_t side)
 		return;
 	}
 
-	init_flags_for_side_internal(side, team::get_side_color_index(side + 1));
+	init_flags_for_side_internal(side, dc_->teams()[side].color());
 }
 
 void display::init_flags_for_side_internal(size_t n, const std::string& side_color)

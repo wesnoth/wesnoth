@@ -85,7 +85,7 @@ void tunit_recruit::pre_show(twindow& window)
 		string_map column;
 
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
-			+ team::get_side_color_index(team_.side()) + ")";
+			+ team_.color() + ")";
 
 		int wb_gold = 0;
 		if(resources::controller) {

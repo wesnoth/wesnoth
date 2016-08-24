@@ -545,7 +545,7 @@ void team::change_team(const std::string &name, const t_string &user_name)
 
 void team::clear_caches(){
 	// Reset the cache of allies for all teams
-	if(!resources::gameboard->teams().empty()) {
+	if(resources::gameboard) {
 		for(auto& t : resources::gameboard->teams()) {
 			t.enemies_.clear();
 			t.ally_shroud_.clear();
@@ -563,7 +563,7 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 
 bool team::shrouded(const map_location& loc) const
 {
-	if(resources::gameboard->teams().empty())
+	if(!resources::gameboard)
 		return shroud_.value(loc.x+1,loc.y+1);
 
 	return shroud_.shared_value(ally_shroud(resources::gameboard->teams()),loc.x+1,loc.y+1);
@@ -577,7 +577,7 @@ bool team::fogged(const map_location& loc) const
 	if ( fog_clearer_.count(loc) > 0 )
 		return false;
 
-	if(resources::gameboard->teams().empty())
+	if(!resources::gameboard)
 		return fog_.value(loc.x+1,loc.y+1);
 
 	return fog_.shared_value(ally_fog(resources::gameboard->teams()),loc.x+1,loc.y+1);
@@ -838,7 +838,7 @@ std::string team::get_side_color_index(int side)
 {
 	size_t index = size_t(side-1);
 
-	if(!resources::gameboard->teams().empty() && index < resources::gameboard->teams().size()) {
+	if(resources::gameboard && index < resources::gameboard->teams().size()) {
 		const std::string side_map = resources::gameboard->teams()[index].color();
 		if(!side_map.empty()) {
 			return side_map;

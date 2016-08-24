@@ -204,7 +204,7 @@ static config unit_side(reports::context & rc, const unit* u)
 	const team &u_team = rc.teams()[u->side() - 1];
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = team::get_side_color_index(u->side());
+	std::string new_rgb = u_team.color();
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
