@@ -861,6 +861,8 @@ void tmp_create_game::dialog_exit_hook(twindow& window) {
 
 void tmp_create_game::post_show(twindow& window)
 {
+	// Show all tabs so that find_widget works correctly
+	find_widget<tstacked_widget>(&window, "pager", false).select_layer(-1);
 	if(get_retval() == twindow::OK) {
 		preferences::set_modifications(create_engine_.active_mods());
 		preferences::set_level_type(create_engine_.current_level_type().v);
