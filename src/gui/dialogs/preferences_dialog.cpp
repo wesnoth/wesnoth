@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "video.hpp"
 #include "formula/string_utils.hpp"
+#include "formatter.hpp"
 #include "filesystem.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -145,17 +146,16 @@ static void set_resolution_list(tmenu_button& res_list, CVideo& video)
 	std::vector<config> options;
 	for(const auto& res : resolutions)
 	{
-		std::ostringstream option;
-		option << res.first << utils::unicode_multiplication_sign << res.second;
+		config option;
+		option["label"] = formatter() << res.first << utils::unicode_multiplication_sign << res.second;
 
 		const int div = boost::math::gcd(res.first, res.second);
 		const int ratio[2] = {res.first/div, res.second/div};
-		if (ratio[0] <= 10 || ratio[1] <= 10) {
-			option << " <span color='#777777'>("
-				<< ratio[0] << ':' << ratio[1] << ")</span>";
+		if(ratio[0] <= 10 || ratio[1] <= 10) {
+			option["details"] = formatter() << "<span color='#777777'>(" << ratio[0] << ':' << ratio[1] << ")</span>";
 		}
 
-		options.push_back(config_of("label", option.str()));
+		options.push_back(option);
 	}
 
 	const unsigned current_res = std::find(resolutions.begin(), resolutions.end(),
