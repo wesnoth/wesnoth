@@ -815,9 +815,6 @@
     <ClCompile Include="..\..\src\scripting\game_lua_kernel.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\scripting\lua_api.cpp">
-      <Filter>Scripting</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_common.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
@@ -848,7 +845,10 @@
     <ClCompile Include="..\..\src\scripting\lua_team.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\scripting\lua_types.cpp">
+    <ClCompile Include="..\..\src\scripting\lua_unit.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_unit_attacks.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_unit_type.cpp">
@@ -2231,9 +2231,6 @@
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\scripting\lua_api.hpp">
-      <Filter>Scripting</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_common.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
@@ -2267,7 +2264,10 @@
     <ClInclude Include="..\..\src\scripting\lua_team.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\scripting\lua_types.hpp">
+    <ClInclude Include="..\..\src\scripting\lua_unit.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_unit_attacks.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_unit_type.hpp">

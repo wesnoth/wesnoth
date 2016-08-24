@@ -2787,14 +2787,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\scripting\lua_api.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_common.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
@@ -2875,7 +2867,15 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\scripting\lua_types.cpp">
+    <ClCompile Include="..\..\src\scripting\lua_unit.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_unit_attacks.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
@@ -4285,7 +4285,6 @@
     <ClInclude Include="..\..\src\scripting\application_lua_kernel.hpp" />
     <ClInclude Include="..\..\src\scripting\debug_lua.hpp" />
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp" />
-    <ClInclude Include="..\..\src\scripting\lua_api.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_common.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_cpp_function.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_fileops.hpp" />
@@ -4297,7 +4296,8 @@
     <ClInclude Include="..\..\src\scripting\lua_race.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_rng.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_team.hpp" />
-    <ClInclude Include="..\..\src\scripting\lua_types.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_unit.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_unit_attacks.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_unit_type.hpp" />
     <ClInclude Include="..\..\src\scripting\mapgen_lua_kernel.hpp" />
     <ClInclude Include="..\..\src\scripting\plugins\context.hpp" />
