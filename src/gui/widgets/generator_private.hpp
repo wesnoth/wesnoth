@@ -150,9 +150,9 @@ struct tone : public virtual tgenerator_
 		if(get_selected_item_count() == 1) {
 			// deselect current.
 			do_deselect_item(get_selected_item());
-			// select new.
-			do_select_item(index);
 		}
+		// select new.
+		do_select_item(index);
 	}
 };
 

@@ -94,7 +94,9 @@ void tdrop_down_list::pre_show(twindow& window)
 		}
 	}
 
-	list.select_row(selected_item_);
+	if(selected_item_ >= 0 && unsigned(selected_item_) < list.get_item_count()) {
+		list.select_row(selected_item_);
+	}
 
 	list.set_callback_item_change(std::bind(&tdrop_down_list::item_change_callback, this, std::ref(window), _1));
 
