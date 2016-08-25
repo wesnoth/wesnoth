@@ -980,23 +980,32 @@ void tlobby_main::pre_show(twindow& window)
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
-	plugins_context_->set_callback("join", 	  [this, &window](const config&) { join_global_button_callback(window); }, true);
-	plugins_context_->set_callback("observe", [this, &window](const config&) { observe_global_button_callback(window); }, true);
-	plugins_context_->set_callback("create",  [this, &window](const config&) { create_button_callback(window); }, true);
-	plugins_context_->set_callback("quit",    [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+	auto get_game_index_from_id = [&](const int id)->int {
+		if(game_info* game = lobby_info_.get_game_by_id(id)) {
+			return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
+		}
+
+		return -1;
+	};
+
+	plugins_context_->set_callback("join", 	  [&, this](const config&) {
+		legacy_result_ = JOIN;
+		do_game_join(get_game_index_from_id(selected_game_id_), false);
+	}, true);
+
+	plugins_context_->set_callback("observe", [&, this](const config&) {
+		legacy_result_ = OBSERVE;
+		do_game_join(get_game_index_from_id(selected_game_id_), true);
+	}, true);
+
+	plugins_context_->set_callback("create", [this, &window](const config&) { create_button_callback(window); }, true);
+	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
-	plugins_context_->set_callback("select_game", [this](const config& cfg) {
-		int i = 0;
-		if(cfg.has_attribute("id")) {
-			if(game_info* game = lobby_info_.get_game_by_id(cfg["id"].to_int())) {
-				i = std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
-			}
-		} else {
-			i = cfg["index"].to_int();
-		}
-		gamelistbox_->select_row(i);
-	},	true);
+	plugins_context_->set_callback("select_game", [&, this](const config& cfg) {
+		const int i = cfg.has_attribute("id") ? get_game_index_from_id(cfg["id"].to_int()) : cfg["index"].to_int();
+		selected_game_id_ = lobby_info_.games()[i]->id;
+	}, true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
 	plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
