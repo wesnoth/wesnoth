@@ -748,6 +748,8 @@ void tmp_create_game::update_options_list(twindow& window)
 void tmp_create_game::show_generator_settings(twindow& window)
 {
 	create_engine_.generator_user_config(window.video());
+
+	regenerate_random_map(window);
 }
 
 void tmp_create_game::regenerate_random_map(twindow& window)
