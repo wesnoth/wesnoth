@@ -17,6 +17,7 @@
 #include "gui/core/timer.hpp"
 #include "gui/widgets/window.hpp"
 #include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "game_config.hpp"
 #include <memory>
 
@@ -36,11 +37,15 @@ protected:
 
 protected:
 	plugin_executor() {
-		timer_id = add_timer(game_config::lobby_network_timer, std::bind(&plugin_executor::play_slice, this), true);
+		if(plugins_manager::get()) {
+			timer_id = add_timer(game_config::lobby_network_timer, std::bind(&plugin_executor::play_slice, this), true);
+		}
 	}
 
 	~plugin_executor() {
-		remove_timer(timer_id);
+		if(plugins_manager::get()) {
+			remove_timer(timer_id);
+		}
 	}
 };
 
