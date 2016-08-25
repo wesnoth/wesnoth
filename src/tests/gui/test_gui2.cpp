@@ -17,6 +17,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "config_assign.hpp"
 #include "config_cache.hpp"
 #include "editor/editor_display.hpp" // for dummy display context
 #include "filesystem.hpp"
@@ -156,7 +157,7 @@ namespace {
 	template<class T>
 	struct twrapper
 	{
-		static T* create() { return new T(); }
+		T* create() { return new T(); }
 	};
 
 	typedef std::pair<unsigned, unsigned> tresolution;
@@ -168,7 +169,8 @@ namespace {
 		for(const tresolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-			const std::unique_ptr<gui2::tdialog> dlg(twrapper<T>::create());
+			twrapper<T> ctor;
+			const std::unique_ptr<gui2::tdialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
 			const std::string id = gui2::unit_test_mark_as_tested(*(dlg.get()));
@@ -206,7 +208,8 @@ namespace {
 			for(const tresolution& resolution : resolutions) {
 				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-				const std::unique_ptr<gui2::tpopup> dlg(twrapper<T>::create());
+				twrapper<T> ctor;
+				const std::unique_ptr<gui2::tpopup> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
 				const std::string id = gui2::unit_test_mark_popup_as_tested(*(dlg.get()));
@@ -504,9 +507,9 @@ namespace {
 template<>
 struct twrapper<gui2::taddon_connect>
 {
-	static gui2::taddon_connect* create()
+	std::string host_name = "host_name";
+	gui2::taddon_connect* create()
 	{
-		static std::string host_name = "host_name";
 		return new gui2::taddon_connect(host_name, true);
 	}
 };
@@ -514,10 +517,13 @@ struct twrapper<gui2::taddon_connect>
 template<>
 struct twrapper<gui2::taddon_list>
 {
-	static gui2::taddon_list* create()
+	config cfg;
+	twrapper()
 	{
 		/** @todo Would nice to add one or more dummy addons in the list. */
-		static config cfg;
+	}
+	gui2::taddon_list* create()
+	{
 		return new gui2::taddon_list(cfg);
 	}
 };
@@ -525,9 +531,9 @@ struct twrapper<gui2::taddon_list>
 template<>
 struct twrapper<gui2::tcampaign_difficulty>
 {
-	static gui2::tcampaign_difficulty* create()
+	gui2::tcampaign_difficulty* create()
 	{
-		static const config items("difficulty");
+		const config items("difficulty");
 
 		return new gui2::tcampaign_difficulty(items);
 	}
@@ -536,11 +542,13 @@ struct twrapper<gui2::tcampaign_difficulty>
 template<>
 struct twrapper<gui2::tcampaign_selection>
 {
-	static gui2::tcampaign_selection* create()
+	saved_game state;
+	ng::create_engine ng;
+	twrapper() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
 	{
-		static saved_game state;
-		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1).video(), state);
+	}
+	gui2::tcampaign_selection* create()
+	{
 		return new gui2::tcampaign_selection(ng);
 	}
 };
@@ -548,11 +556,13 @@ struct twrapper<gui2::tcampaign_selection>
 template<>
 struct twrapper<gui2::tcampaign_settings>
 {
-	static gui2::tcampaign_settings* create()
+	saved_game state;
+	ng::create_engine ng;
+	twrapper() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
 	{
-		static saved_game state;
-		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-		static ng::create_engine ng(test_utils::get_fake_display(-1, -1).video(), state);
+	}
+	gui2::tcampaign_settings* create()
+	{
 		return new gui2::tcampaign_settings(ng);
 	}
 };
@@ -560,11 +570,11 @@ struct twrapper<gui2::tcampaign_settings>
 template<>
 struct twrapper<gui2::tchat_log>
 {
-	static gui2::tchat_log* create()
+	config cfg;
+	vconfig vcfg;
+	twrapper() : vcfg(cfg) {}
+	gui2::tchat_log* create()
 	{
-		static config cfg;
-		static vconfig vcfg(cfg);
-
 		return new gui2::tchat_log(vcfg, nullptr);
 	}
 };
@@ -572,10 +582,10 @@ struct twrapper<gui2::tchat_log>
 template<>
 struct twrapper<gui2::tedit_label>
 {
-	static gui2::tedit_label* create()
+	std::string label = "Label text to modify";
+	bool team_only = false;
+	gui2::tedit_label* create()
 	{
-		static std::string label = "Label text to modify";
-		static bool team_only = false;
 		return new gui2::tedit_label(label, team_only);
 	}
 };
@@ -583,9 +593,9 @@ struct twrapper<gui2::tedit_label>
 template<>
 struct twrapper<gui2::tedit_text>
 {
-	static gui2::tedit_text* create()
+	std::string text = "text to modify";
+	gui2::tedit_text* create()
 	{
-		static std::string text = "text to modify";
 		return new gui2::tedit_text("title", "label", text);
 	}
 };
@@ -593,9 +603,9 @@ struct twrapper<gui2::tedit_text>
 template<>
 struct twrapper<gui2::tformula_debugger>
 {
-	static gui2::tformula_debugger* create()
+	game_logic::formula_debugger debugger;
+	gui2::tformula_debugger* create()
 	{
-		static game_logic::formula_debugger debugger;
 		return new gui2::tformula_debugger(debugger);
 	}
 };
@@ -603,21 +613,14 @@ struct twrapper<gui2::tformula_debugger>
 template<>
 struct twrapper<gui2::tgame_load>
 {
-	static gui2::tgame_load* create()
+	config cfg;
+	twrapper()
 	{
 		/** @todo Would be nice to add real data to the config. */
-		static config cfg;
-		return new gui2::tgame_load(cfg);
 	}
-
-};
-
-template<>
-struct twrapper<gui2::tgame_version>
-{
-	static gui2::tgame_version* create()
+	gui2::tgame_load* create()
 	{
-		return new gui2::tgame_version();
+		return new gui2::tgame_load(cfg);
 	}
 
 };
@@ -625,10 +628,10 @@ struct twrapper<gui2::tgame_version>
 template<>
 struct twrapper<gui2::tgame_save>
 {
-	static gui2::tgame_save* create()
+	std::string title = "Title";
+	std::string filename = "filename";
+	gui2::tgame_save* create()
 	{
-		static std::string title = "Title";
-		static std::string filename = "filename";
 		return new gui2::tgame_save(title, filename);
 	}
 
@@ -637,11 +640,11 @@ struct twrapper<gui2::tgame_save>
 template<>
 struct twrapper<gui2::tgame_save_message>
 {
-	static gui2::tgame_save_message* create()
+	std::string title = "Title";
+	std::string filename = "filename";
+	std::string message = "message";
+	gui2::tgame_save_message* create()
 	{
-		static std::string title = "Title";
-		static std::string filename = "filename";
-		static std::string message = "message";
 		return new gui2::tgame_save_message(title, filename, message);
 	}
 
@@ -650,12 +653,12 @@ struct twrapper<gui2::tgame_save_message>
 template<>
 struct twrapper<gui2::tgame_save_oos>
 {
-	static gui2::tgame_save_oos* create()
+	bool ignore_all = false;
+	std::string title = "Title";
+	std::string filename = "filename";
+	std::string message = "message";
+	gui2::tgame_save_oos* create()
 	{
-		static bool ignore_all = false;
-		static std::string title = "Title";
-		static std::string filename = "filename";
-		static std::string message = "message";
 		return new gui2::tgame_save_oos(ignore_all, title, filename, message);
 	}
 
@@ -664,17 +667,15 @@ struct twrapper<gui2::tgame_save_oos>
 template<>
 struct twrapper<gui2::tgamestate_inspector>
 {
-	static config vars;
-	static game_events::manager events;
-	static gui2::tgamestate_inspector* create()
+	config vars;
+	game_events::manager events;
+	gui2::tgamestate_inspector* create()
 	{
 		const display_context* dc = editor::get_dummy_display_context();
 		return new gui2::tgamestate_inspector(vars, events, *dc, "Unit Test");
 	}
 
 };
-config twrapper<gui2::tgamestate_inspector>::vars;
-game_events::manager twrapper<gui2::tgamestate_inspector>::events;
 
 struct twesnothd_connection_init
 {
@@ -693,15 +694,19 @@ struct twesnothd_connection_init
 		}
 	}
 };
+
 template<>
 struct twrapper<gui2::tlobby_main>
 {
-	static gui2::tlobby_main* create()
+	config game_config;
+	twesnothd_connection wesnothd_connection;
+	twesnothd_connection_init wesnothd_connection_init;
+	lobby_info li;
+	twrapper() : wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection), li(game_config, wesnothd_connection)
 	{
-		static config game_config;
-		static twesnothd_connection wesnothd_connection("", "");
-		static twesnothd_connection_init wesnothd_connection_init(wesnothd_connection);
-		static lobby_info li(game_config, wesnothd_connection);
+	}
+	gui2::tlobby_main* create()
+	{
 		return new gui2::tlobby_main(game_config, li, wesnothd_connection);
 	}
 };
@@ -717,14 +722,19 @@ class fake_chat_handler : public events::chat_handler {
 template<>
 struct twrapper<gui2::tlobby_player_info>
 {
-	static gui2::tlobby_player_info* create()
+	config c;
+	fake_chat_handler ch;
+	user_info ui;
+	twesnothd_connection wesnothd_connection;
+	twesnothd_connection_init wesnothd_connection_init;
+	lobby_info li;
+	twrapper()
+		: wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection)
+		, ui(c), li(c, wesnothd_connection)
 	{
-		static config c;
-		static fake_chat_handler ch;
-		static user_info ui(c);
-		static twesnothd_connection wesnothd_connection("", "");
-		static twesnothd_connection_init wesnothd_connection_init(wesnothd_connection);
-		static lobby_info li(c, wesnothd_connection);
+	}
+	gui2::tlobby_player_info* create()
+	{
 		return new gui2::tlobby_player_info(ch, ui, li);
 	}
 };
@@ -732,7 +742,7 @@ struct twrapper<gui2::tlobby_player_info>
 template<>
 struct twrapper<gui2::tlogging>
 {
-	static gui2::tlogging* create()
+	gui2::tlogging* create()
 	{
 		return new gui2::tlogging();
 	}
@@ -741,7 +751,7 @@ struct twrapper<gui2::tlogging>
 template<>
 struct twrapper<gui2::tmessage>
 {
-	static gui2::tmessage* create()
+	gui2::tmessage* create()
 	{
 		return new gui2::tmessage("Title", "Message", false, false);
 	}
@@ -750,7 +760,7 @@ struct twrapper<gui2::tmessage>
 template<>
 struct twrapper<gui2::tmp_change_control>
 {
-	static gui2::tmp_change_control* create()
+	gui2::tmp_change_control* create()
 	{
 		return new gui2::tmp_change_control(nullptr);
 	}
@@ -759,7 +769,7 @@ struct twrapper<gui2::tmp_change_control>
 template<>
 struct twrapper<gui2::tmp_cmd_wrapper>
 {
-	static gui2::tmp_cmd_wrapper* create()
+	gui2::tmp_cmd_wrapper* create()
 	{
 		return new gui2::tmp_cmd_wrapper("foo");
 	}
@@ -768,10 +778,13 @@ struct twrapper<gui2::tmp_cmd_wrapper>
 template<>
 struct twrapper<gui2::tmp_create_game>
 {
-	static gui2::tmp_create_game* create()
+	saved_game state;
+	ng::create_engine engine;
+	twrapper() : state(config_of("campaign_type", "multiplayer")), engine(test_utils::get_fake_display(-1, -1).video(), state)
 	{
-		saved_game state;
-		ng::create_engine engine(test_utils::get_fake_display(1024, 768).video(), state);
+	}
+	gui2::tmp_create_game* create()
+	{
 		return new gui2::tmp_create_game(main_config, engine);
 	}
 };
@@ -779,9 +792,9 @@ struct twrapper<gui2::tmp_create_game>
 template<>
 struct twrapper<gui2::tmp_create_game_set_password>
 {
-	static gui2::tmp_create_game_set_password* create()
+	std::string password;
+	gui2::tmp_create_game_set_password* create()
 	{
-		static std::string password;
 		return new gui2::tmp_create_game_set_password(password);
 	}
 };
@@ -789,9 +802,9 @@ struct twrapper<gui2::tmp_create_game_set_password>
 template<>
 struct twrapper<gui2::tmp_join_game_password_prompt>
 {
-	static gui2::tmp_join_game_password_prompt* create()
+	std::string password;
+	gui2::tmp_join_game_password_prompt* create()
 	{
-		static std::string password;
 		return new gui2::tmp_join_game_password_prompt(password);
 	}
 };
@@ -799,9 +812,9 @@ struct twrapper<gui2::tmp_join_game_password_prompt>
 template<>
 struct twrapper<gui2::tdepcheck_confirm_change>
 {
-	static gui2::tdepcheck_confirm_change* create()
+	std::vector<std::string> mods = {"mod_one", "some other", "more"};
+	gui2::tdepcheck_confirm_change* create()
 	{
-		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_confirm_change(true, mods, "requester");
 	}
 };
@@ -809,9 +822,9 @@ struct twrapper<gui2::tdepcheck_confirm_change>
 template<>
 struct twrapper<gui2::tdepcheck_select_new>
 {
-	static gui2::tdepcheck_select_new* create()
+	std::vector<std::string> mods = {"mod_one", "some other", "more"};
+	gui2::tdepcheck_select_new* create()
 	{
-		static std::vector<std::string> mods = {"mod_one", "some other", "more"};
 		return new gui2::tdepcheck_select_new(ng::depcheck::MODIFICATION, mods);
 	}
 };
@@ -819,7 +832,7 @@ struct twrapper<gui2::tdepcheck_select_new>
 template<>
 struct twrapper<gui2::tmp_login>
 {
-	static gui2::tmp_login* create()
+	gui2::tmp_login* create()
 	{
 		return new gui2::tmp_login("label", true);
 	}
@@ -828,38 +841,25 @@ struct twrapper<gui2::tmp_login>
 template<>
 struct twrapper<gui2::tsimple_item_selector>
 {
-	static gui2::tsimple_item_selector* create()
+	gui2::tsimple_item_selector* create()
 	{
-		return new gui2::tsimple_item_selector("title"
-				, "message"
-				, std::vector<std::string>()
-				, false
-				, false);
+		return new gui2::tsimple_item_selector("title", "message", std::vector<std::string>(), false, false);
 	}
 };
 
 template<>
 struct twrapper<gui2::tscreenshot_notification>
 {
-	static gui2::tscreenshot_notification* create()
+	gui2::tscreenshot_notification* create()
 	{
 		return new gui2::tscreenshot_notification("path");
 	}
 };
 
 template<>
-struct twrapper<gui2::tselect_orb_colors>
-{
-	static gui2::tselect_orb_colors* create()
-	{
-		return new gui2::tselect_orb_colors();
-	}
-};
-
-template<>
 struct twrapper<gui2::ttheme_list>
 {
-	static theme_info make_theme(std::string name)
+	theme_info make_theme(std::string name)
 	{
 		theme_info ti;
 		ti.id = name;
@@ -867,10 +867,9 @@ struct twrapper<gui2::ttheme_list>
 		ti.description = name + " this is a description";
 		return ti;
 	}
-	static gui2::ttheme_list* create()
+	std::vector<theme_info> themes = {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
+	gui2::ttheme_list* create()
 	{
-		static std::vector<theme_info> themes = {make_theme("classic"),
-		make_theme("new"), make_theme("more"), make_theme("themes")};
 		return new gui2::ttheme_list(themes, 0);
 	}
 };
@@ -878,7 +877,7 @@ struct twrapper<gui2::ttheme_list>
 template<>
 struct twrapper<gui2::teditor_generate_map>
 {
-	static gui2::teditor_generate_map* create()
+	gui2::teditor_generate_map* create()
 	{
 		gui2::teditor_generate_map* result = new gui2::teditor_generate_map();
 		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
@@ -902,10 +901,10 @@ struct twrapper<gui2::teditor_generate_map>
 template<>
 struct twrapper<gui2::teditor_new_map>
 {
-	static gui2::teditor_new_map* create()
+	int width;
+	int height;
+	gui2::teditor_new_map* create()
 	{
-		static int width;
-		static int height;
 		return new gui2::teditor_new_map(width, height);
 	}
 };
@@ -913,10 +912,9 @@ struct twrapper<gui2::teditor_new_map>
 template<>
 struct twrapper<gui2::teditor_set_starting_position>
 {
-	static gui2::teditor_set_starting_position* create()
+	std::vector<map_location> locations;
+	gui2::teditor_set_starting_position* create()
 	{
-		static std::vector<map_location> locations;
-
 		return new gui2::teditor_set_starting_position(0, 0, locations);
 	}
 };
@@ -924,27 +922,22 @@ struct twrapper<gui2::teditor_set_starting_position>
 template<>
 struct twrapper<gui2::teditor_resize_map>
 {
-	static gui2::teditor_resize_map* create()
+	int width = 0;
+	int height = 0;
+	gui2::teditor_resize_map::EXPAND_DIRECTION expand_direction = gui2::teditor_resize_map::EXPAND_TOP;
+	bool copy = false;
+	gui2::teditor_resize_map* create()
 	{
-		static int width = 0;
-		static int height = 0;
-		static gui2::teditor_resize_map::EXPAND_DIRECTION expand_direction =
-				gui2::teditor_resize_map::EXPAND_TOP;
-		static bool copy = false;
-		return new gui2::teditor_resize_map(
-				  width
-				, height
-				, expand_direction
-				, copy);
+		return new gui2::teditor_resize_map(width, height, expand_direction, copy);
 	}
 };
 
 template<>
 struct twrapper<gui2::tfolder_create>
 {
-	static gui2::tfolder_create* create()
+	std::string folder_name;
+	gui2::tfolder_create* create()
 	{
-		static std::string folder_name;
 		return new gui2::tfolder_create(folder_name);
 	}
 };
@@ -961,7 +954,7 @@ struct twrapper<gui2::tmp_server_list>
 template<>
 struct twrapper<gui2::ttransient_message>
 {
-	static gui2::ttransient_message* create()
+	gui2::ttransient_message* create()
 	{
 		return new gui2::ttransient_message("Title", false, "Message", false, "");
 	}
@@ -970,9 +963,9 @@ struct twrapper<gui2::ttransient_message>
 template<>
 struct twrapper<gui2::twml_error>
 {
-	static gui2::twml_error* create()
+	std::vector<std::string> files = {"some", "files", "here"};
+	gui2::twml_error* create()
 	{
-		static std::vector<std::string> files = {"some", "files", "here"};
 		return new gui2::twml_error("Summary", "Post summary", files, "Details");
 	}
 };
@@ -980,7 +973,7 @@ struct twrapper<gui2::twml_error>
 template<>
 struct twrapper<gui2::twml_message_left>
 {
-	static gui2::twml_message_left* create()
+	gui2::twml_message_left* create()
 	{
 		return new gui2::twml_message_left("Title", "Message", "", false);
 	}
@@ -989,7 +982,7 @@ struct twrapper<gui2::twml_message_left>
 template<>
 struct twrapper<gui2::twml_message_right>
 {
-	static gui2::twml_message_right* create()
+	gui2::twml_message_right* create()
 	{
 		return new gui2::twml_message_right("Title", "Message", "", false);
 	}
