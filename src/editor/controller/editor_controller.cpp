@@ -226,7 +226,7 @@ void editor_controller::custom_tods_dialog()
 
 	std::vector<time_of_day> schedule = context_manager_->get_map_context().get_time_manager()->times();
 
-	if(!gui2::tcustom_tod::execute(&(gui()), schedule, gui().video())) {
+	if(!gui2::tcustom_tod::execute(gui(), schedule)) {
 		adjust_resetter.reset();
 	} else {
 		// TODO save the new tod here

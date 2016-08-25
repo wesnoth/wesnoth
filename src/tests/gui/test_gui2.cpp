@@ -36,9 +36,14 @@
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/dialogs/chat_log.hpp"
+#include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/editor/custom_tod.hpp"
+#include "gui/dialogs/editor/edit_side.hpp"
+#include "gui/dialogs/editor/edit_label.hpp"
+#include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
@@ -428,7 +433,11 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::twml_message_right>();
 	test<gui2::tmp_alerts_options>();
 	test<gui2::tadvanced_graphics_options>();
-
+	test<gui2::tcustom_tod>();
+	test<gui2::teditor_edit_label>();
+	test<gui2::teditor_edit_side>();
+	test<gui2::teditor_edit_scenario>();
+	test<gui2::tcore_selection>();
 	//test<gui2::tlua_interpreter>(& lua_kernel_base());
 
 	/* The tpopup classes. */
@@ -472,6 +481,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"unit_list",
 		"game_stats",
 		"unit_advance",
+		"mp_host_game_prompt",
 		"mp_create_game"
 	};
 	std::sort(list.begin(), list.end());
@@ -580,6 +590,34 @@ struct twrapper<gui2::tchat_log>
 };
 
 template<>
+struct twrapper<gui2::tcore_selection>
+{
+	std::vector<config> cores;
+	twrapper()
+	{
+		cores.resize(1);
+	}
+	gui2::tcore_selection* create()
+	{
+		return new gui2::tcore_selection(cores, 0);
+	}
+};
+
+template<>
+struct twrapper<gui2::tcustom_tod>
+{
+	std::vector<time_of_day> times;
+	twrapper()
+	{
+		times.resize(1);
+	}
+	gui2::tcustom_tod* create()
+	{
+		return new gui2::tcustom_tod(test_utils::get_fake_display(-1, -1), times);
+	}
+};
+
+template<>
 struct twrapper<gui2::tedit_label>
 {
 	std::string label = "Label text to modify";
@@ -597,6 +635,46 @@ struct twrapper<gui2::tedit_text>
 	gui2::tedit_text* create()
 	{
 		return new gui2::tedit_text("title", "label", text);
+	}
+};
+
+template<>
+struct twrapper<gui2::teditor_edit_label>
+{
+	std::string label = "Label text to modify";
+	std::string category = "test";
+	bool immutable = false, fog = false, shroud = false;
+	SDL_Color color;
+	gui2::teditor_edit_label* create()
+	{
+		return new gui2::teditor_edit_label(label, immutable, fog, shroud, color, category);
+	}
+};
+
+template<>
+struct twrapper<gui2::teditor_edit_scenario>
+{
+	std::string id, name, descr;
+	int turns, xp_mod;
+	bool defeat_enemies, random_start;
+	gui2::teditor_edit_scenario* create()
+	{
+		return new gui2::teditor_edit_scenario(id, name, descr, turns, xp_mod, defeat_enemies, random_start);
+	}
+};
+
+template<>
+struct twrapper<gui2::teditor_edit_side>
+{
+	std::string name, user_name;
+	int gold, income, village, support;
+	bool no_leader, hidden, fog, shroud;
+	team::CONTROLLER controller;
+	team::SHARE_VISION share_vision;
+	gui2::teditor_edit_side* create()
+	{
+		return new gui2::
+		teditor_edit_side(1, name, user_name, gold, income, village, support, fog, shroud, share_vision, controller, no_leader, hidden);
 	}
 };
 
