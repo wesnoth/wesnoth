@@ -320,6 +320,23 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		}
 	}
 
+	// Shorthand for all advancements of a given type
+	if (!vcfg["type_tree"].empty()) {
+		std::set<std::string> types;
+		for(const std::string type : utils::split(vcfg["type_tree"])) {
+			if(types.count(type)) {
+				continue;
+			}
+			if(const unit_type* ut = unit_types.find(type)) {
+				const auto& tree = ut->advancement_tree();
+				types.insert(tree.begin(), tree.end());
+			}
+		}
+		if(types.find(u.type_id()) == types.end()) {
+			return false;
+		}
+	}
+
 	// The variation_type could be a comma separated list of types
 	if (!vcfg["variation"].empty())
 	{
