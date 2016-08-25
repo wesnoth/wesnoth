@@ -588,10 +588,11 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 		for(const auto& menu_button_option : options.child_range("combo")) {
 			data.clear();
+			item.clear();
 
 			item["label"] = menu_button_option["name"];
 			data.emplace("menu_button_label", item);
-			item.clear();
+
 			item["tooltip"] = menu_button_option["description"];
 			data.emplace("option_menu_button", item);
 
@@ -630,6 +631,7 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 			auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
 				return cfg["value"] == val;
 			});
+
 			if(iter != items.end()) {
 				menu_button->set_selected(iter - items.begin());
 			}
@@ -645,10 +647,11 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 		for(const auto& slider_option : options.child_range("slider")) {
 			data.clear();
+			item.clear();
 
 			item["label"] = slider_option["name"];
 			data.emplace("slider_label", item);
-			item.clear();
+
 			item["tooltip"] = slider_option["description"];
 			data.emplace("option_slider", item);
 
@@ -681,10 +684,11 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 		for(const auto& text_entry_option : options.child_range("entry")) {
 			data.clear();
+			item.clear();
 
 			item["label"] = text_entry_option["name"];
 			data.emplace("text_entry_label", item);
-			item.clear();
+
 			item["tooltip"] = text_entry_option["description"];
 			data.emplace("option_text_entry", item);
 
