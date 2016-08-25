@@ -431,6 +431,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::twml_error>();
 	test<gui2::twml_message_left>();
 	test<gui2::twml_message_right>();
+	test<gui2::twml_message_double>();
 	test<gui2::tmp_alerts_options>();
 	test<gui2::tadvanced_graphics_options>();
 	test<gui2::tcustom_tod>();
@@ -1063,6 +1064,15 @@ struct twrapper<gui2::twml_message_right>
 	gui2::twml_message_right* create()
 	{
 		return new gui2::twml_message_right("Title", "Message", "", false);
+	}
+};
+
+template<>
+struct twrapper<gui2::twml_message_double>
+{
+	gui2::twml_message_double* create()
+	{
+		return new gui2::twml_message_double("Title", "Message", "", false, "", true);
 	}
 };
 
