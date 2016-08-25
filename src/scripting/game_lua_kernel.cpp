@@ -2147,7 +2147,7 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 	unit_ptr u;
 	if (!lua_isnoneornil(L, 2)) {
 		if(luaW_isunit(L, 2)) {
-			u = luaW_checkunit_ptr(L, 2, true);
+			u = luaW_checkunit_ptr(L, 2, false);
 		} else {
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
