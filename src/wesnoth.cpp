@@ -854,6 +854,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
 			game->start_editor();
 			continue;
+		} else if(res == gui2::ttitle_screen::NOTHING) {
+			continue;
 		}
 		game->launch_game(should_reload);
 	}

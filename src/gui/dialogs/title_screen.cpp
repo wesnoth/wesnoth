@@ -362,6 +362,14 @@ void ttitle_screen::pre_show(twindow& window)
 	if(cores.size() <= 1) {
 		find_widget<tbutton>(&window, "cores", false).set_visible(twindow::tvisible::invisible);
 	}
+
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&ttitle_screen::on_resize, this, std::ref(window)));
+}
+
+void ttitle_screen::on_resize(twindow& window)
+{
+	window.set_retval(NOTHING);
+	window.close();
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)

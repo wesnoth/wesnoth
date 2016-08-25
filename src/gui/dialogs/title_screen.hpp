@@ -91,6 +91,8 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
+	void on_resize(twindow& window);
+
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;
 
