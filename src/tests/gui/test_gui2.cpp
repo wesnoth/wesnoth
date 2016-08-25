@@ -527,7 +527,7 @@ struct twrapper<gui2::tcampaign_difficulty>
 {
 	static gui2::tcampaign_difficulty* create()
 	{
-		static const config items;
+		static const config items("difficulty");
 
 		return new gui2::tcampaign_difficulty(items);
 	}
