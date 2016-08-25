@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/game_load.hpp"
 
+#include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
@@ -38,6 +39,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "image.hpp"
 #include "language.hpp"
 #include "savegame.hpp"
 #include "serialization/string_utils.hpp"
@@ -170,14 +172,40 @@ void tgame_load::display_savegame(twindow& window)
 
 	const config& summary = game.summary();
 
-	find_widget<timage>(&window, "imgLeader", false)
-			.set_label(summary["leader_image"]);
-
 	find_widget<tminimap>(&window, "minimap", false)
 			.set_map_data(summary["map_data"]);
 
 	find_widget<tlabel>(&window, "lblScenario", false)
 			.set_label(summary["label"]);
+
+	tlistbox& leader_list = find_widget<tlistbox>(&window, "leader_list", false);
+
+	leader_list.clear();
+
+	for(const auto& leader : summary.child_range("leader")) {
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		// First, we evaluate whether the leader image as provided exists.
+		// If not, we try getting a binary-path independent path. If that still doesn't
+		// work, we fallback on unknown-unit.png.
+		std::string leader_image = leader["leader_image"].str();
+		if(!image::exists(leader_image)) {
+			leader_image = filesystem::get_independent_image_path(leader_image);
+		}
+
+		if(leader_image.empty()) {
+			leader_image = "units/unknown-unit.png";
+		}
+
+		item["label"] = leader_image;
+		data.emplace("imgLeader", item);
+
+		item["label"] = leader["leader_name"];
+		data.emplace("leader_name", item);
+
+		leader_list.add_row(data);
+	}
 
 	std::stringstream str;
 	str << game.format_time_local() << "\n";

@@ -333,13 +333,13 @@ save_info create_save_info::operator()(const std::string& filename) const
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
-	const config &cfg_snapshot = cfg_save.child("snapshot");
+	const config& cfg_snapshot = cfg_save.child("snapshot");
 	//Servergenerated replays contain [scenario] and no [replay_start]
-	const config &cfg_replay_start = cfg_save.child("replay_start") ? cfg_save.child("replay_start") : cfg_save.child("scenario") ;
+	const config& cfg_replay_start = cfg_save.child("replay_start") ? cfg_save.child("replay_start") : cfg_save.child("scenario") ;
 
-	const config &cfg_replay = cfg_save.child("replay");
+	const config& cfg_replay = cfg_save.child("replay");
 	const bool has_replay = cfg_replay && !cfg_replay.empty();
-	const bool has_snapshot = cfg_snapshot && cfg_snapshot.child("side");
+	const bool has_snapshot = cfg_snapshot && cfg_snapshot.has_child("side");
 
 	cfg_summary["replay"] = has_replay;
 	cfg_summary["snapshot"] = has_snapshot;
@@ -356,84 +356,70 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
 	cfg_summary["random_mode"] = cfg_save["random_mode"];
 
-
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
 
 	if(has_snapshot) {
 		cfg_summary["turn"] = cfg_snapshot["turn_at"];
-		if (cfg_snapshot["turns"] != "-1") {
+		if(cfg_snapshot["turns"] != "-1") {
 			cfg_summary["turn"] = cfg_summary["turn"].str() + "/" + cfg_snapshot["turns"].str();
 		}
 	}
 
-	// Find the first human leader so we can display their icon in the load menu.
-
-	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
-	std::string leader;
-	std::string leader_image;
-	std::string leader_image_tc_modifier;
-
-	//for (const config &p : cfg_save.child_range("player"))
-	//{
-	//	if (p["canrecruit"].to_bool(false))) {
-	//		leader = p["save_id"];
-	//	}
-	//}
+	// Find the human leaders so we can display their icons and names in the load menu.
+	config leader_config;
 
 	bool shrouded = false;
 
-	//if (!leader.empty())
-	//{
-		if (const config &snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start))
-		{
-			for (const config &side : snapshot.child_range("side"))
-			{
-				if (side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
+	if(const config& snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start)) {
+		for(const config &side : snapshot.child_range("side")) {
+			std::string leader;
+			std::string leader_image;
+			std::string leader_image_tc_modifier;
+			std::string leader_name;
+
+			if(side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
+				continue;
+			}
+
+			if(side["shroud"].to_bool()) {
+				shrouded = true;
+			}
+
+			for(const config &u : side.child_range("unit")) {
+				if(!u["canrecruit"].to_bool()) {
 					continue;
 				}
 
-				if (side["shroud"].to_bool()) {
-					shrouded = true;
-				}
+				leader = u["id"].str();
+				leader_name = u["name"].str();
+				leader_image = u["image"].str();
+				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
 
-				if (side["canrecruit"].to_bool())
-				{
-						leader = side["id"].str();
-						leader_image = side["image"].str();
-						leader_image_tc_modifier = "~RC(magenta>" + side["color"].str() + ")"; // Hardcode magenta
-						break;
-				}
-
-				for (const config &u : side.child_range("unit"))
-				{
-					if (u["canrecruit"].to_bool()) {
-						leader = u["id"].str();
-						leader_image = u["image"].str();
-						if(!u["flag_rgb"].empty()) {
-							leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
-						}
-						break;
-					}
-				}
-
-				// Exit on first human leader
 				break;
 			}
+
+			// We need a binary path-independent path to the leader image here so it can be displayed
+			// for campaign-specific units even when the campaign isn't loaded yet.
+			std::string leader_image_path = filesystem::get_independent_image_path(leader_image);
+
+			// If the image path was found, we append the leader TC modifier. If it's not (such as in
+			// the case where the binary path hasn't been loaded yet, perhaps due to save_index being
+			// deleted), the unaltered image path is used and will be parsed by get_independent_image_path
+			// at runtime.
+			if(!leader_image_path.empty()) {
+				leader_image_path += leader_image_tc_modifier;
+
+				leader_image = leader_image_path;
+			}
+
+			leader_config["leader"] = leader;
+			leader_config["leader_name"] = leader_name;
+			leader_config["leader_image"] = leader_image;
+
+			cfg_summary.add_child("leader", leader_config);
 		}
-	//}
-
-	cfg_summary["leader"] = leader;
-
-	// We need a binary path-independent path to the leader image here
-	// so it can be displayed for campaign-specific units in the dialog
-	// even when the campaign isn't loaded yet.
-	cfg_summary["leader_image"] = filesystem::get_independent_image_path(leader_image);
-
-	// Append the leader image's team coloring
-	if(!cfg_summary["leader_image"].empty()) {
-		cfg_summary["leader_image"] = cfg_summary["leader_image"].str() + leader_image_tc_modifier;
 	}
 
 	if(!shrouded) {
