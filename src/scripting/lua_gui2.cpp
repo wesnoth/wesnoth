@@ -255,12 +255,13 @@ int show_message_dialog(lua_State *L, CVideo & video)
 {
 	config txt_cfg;
 	const bool has_input = !lua_isnoneornil(L, 3) && luaW_toconfig(L, 3, txt_cfg) && !txt_cfg.empty();
-	const std::string& input_caption = txt_cfg["label"];
-	std::string input_text = txt_cfg["text"].str();
-	unsigned int input_max_len = txt_cfg["max_length"].to_int(256);
 
-	std::vector<gui2::twml_message_option> options;
-	int chosen_option = -1;
+	gui2::twml_message_input input;
+	input.caption = txt_cfg["label"].str();
+	input.text = txt_cfg["text"].str();
+	input.maximum_length = txt_cfg["max_length"].to_int(256);
+
+	gui2::twml_message_options options;
 	if (!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
 		size_t n = lua_rawlen(L, 2);
@@ -296,9 +297,9 @@ int show_message_dialog(lua_State *L, CVideo & video)
 			}
 			gui2::twml_message_option option(opt["label"], opt["description"], opt["image"]);
 			if(opt["default"].to_bool(false)) {
-				chosen_option = i - 1;
+				options.chosen_option = i - 1;
 			}
-			options.push_back(option);
+			options.option_list.push_back(option);
 			lua_pop(L, 1);
 		}
 		lua_getfield(L, 2, "default");
@@ -309,7 +310,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 				error << "default= key in options list is not a valid option index (1-" << n << ")";
 				return luaL_argerror(L, 2, error.str().c_str());
 			}
-			chosen_option = i - 1;
+			options.chosen_option = i - 1;
 		}
 		lua_pop(L, 1);
 	}
@@ -317,24 +318,32 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	const config& def_cfg = luaW_checkconfig(L, 1);
 	const std::string& title = def_cfg["title"];
 	const std::string& message = def_cfg["message"];
-	const std::string& portrait = def_cfg["portrait"];
+
+	using portrait = gui2::twml_message_portrait;
+	std::unique_ptr<portrait> left;
+	std::unique_ptr<portrait> right;
+	const bool is_double = def_cfg.has_attribute("second_portrait");
 	const bool left_side = def_cfg["left_side"].to_bool(true);
-	const bool mirror = def_cfg["mirror"].to_bool(false);
+	if(is_double || left_side) {
+		left.reset(new portrait {def_cfg["portrait"], def_cfg["mirror"].to_bool(false)});
+	} else {
+		// This means right side only.
+		right.reset(new portrait {def_cfg["portrait"], def_cfg["mirror"].to_bool(false)});
+	}
+	if(is_double) {
+		right.reset(new portrait {def_cfg["second_portrait"], def_cfg["second_mirror"].to_bool(false)});
+	}
 
-	int dlg_result = gui2::show_wml_message(
-		left_side, video, title, message, portrait, mirror,
-		has_input, input_caption, &input_text, input_max_len,
-		options, &chosen_option
-	);
+	int dlg_result = gui2::show_wml_message(video, title, message, left.get(), right.get(), options, input);
 
-	if (!has_input && options.empty()) {
+	if (!has_input && options.option_list.empty()) {
 		lua_pushinteger(L, dlg_result);
 	} else {
-		lua_pushinteger(L, chosen_option + 1);
+		lua_pushinteger(L, options.chosen_option + 1);
 	}
 
 	if (has_input) {
-		lua_pushlstring(L, input_text.c_str(), input_text.length());
+		lua_pushlstring(L, input.text.c_str(), input.text.length());
 	} else {
 		lua_pushnil(L);
 	}
