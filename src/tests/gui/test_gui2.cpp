@@ -802,9 +802,9 @@ struct twrapper<gui2::tlobby_player_info>
 {
 	config c;
 	fake_chat_handler ch;
-	user_info ui;
 	twesnothd_connection wesnothd_connection;
 	twesnothd_connection_init wesnothd_connection_init;
+	user_info ui;
 	lobby_info li;
 	twrapper()
 		: wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection)
