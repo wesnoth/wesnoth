@@ -273,7 +273,7 @@ void ttitle_screen::pre_show(twindow& window)
 	if(tcontrol* control
 	   = find_widget<tcontrol>(&window, "revision_number", false, false)) {
 
-		control->set_label(_("Version ") + game_config::revision);
+		control->set_label(_("Version") + std::string(" ") + game_config::revision);
 	}
 	window.canvas()[0].set_variable(
 			"revision_number",
