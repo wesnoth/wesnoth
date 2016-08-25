@@ -17,6 +17,7 @@
 #include "gui/dialogs/title_screen.hpp"
 
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -356,6 +357,11 @@ void ttitle_screen::pre_show(twindow& window)
 			std::bind(&ttitle_screen::show_debug_clock_window,
 						this,
 						std::ref(window.video())));
+
+	auto cores = game_config_manager::get()->game_config().child_range("core");
+	if(cores.size() <= 1) {
+		find_widget<tbutton>(&window, "cores", false).set_visible(twindow::tvisible::invisible);
+	}
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)

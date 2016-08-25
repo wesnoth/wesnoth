@@ -831,7 +831,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 			int current = 0;
 			std::vector<config> cores;
-			for (const config& core : game_config_manager::get()->game_config().child_range("core")) {
+			for (const config& core : config_manager.game_config().child_range("core")) {
 				cores.push_back(core);
 				if (core["id"] == preferences::core_id())
 					current = cores.size() -1;
