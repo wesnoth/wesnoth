@@ -18,12 +18,14 @@
 #include <boost/test/unit_test.hpp>
 
 #include "config_cache.hpp"
+#include "editor/editor_display.hpp" // for dummy display context
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
+#include "game_events/manager.hpp"
 #include "generators/map_create.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/connect.hpp"
@@ -662,12 +664,18 @@ struct twrapper<gui2::tgame_save_oos>
 template<>
 struct twrapper<gui2::tgamestate_inspector>
 {
+	static config vars;
+	static game_events::manager events;
 	static gui2::tgamestate_inspector* create()
 	{
-		return new gui2::tgamestate_inspector();
+		const display_context* dc = editor::get_dummy_display_context();
+		return new gui2::tgamestate_inspector(vars, events, *dc, "Unit Test");
 	}
 
 };
+config twrapper<gui2::tgamestate_inspector>::vars;
+game_events::manager twrapper<gui2::tgamestate_inspector>::events;
+
 struct twesnothd_connection_init
 {
 	twesnothd_connection_init(twesnothd_connection& conn)

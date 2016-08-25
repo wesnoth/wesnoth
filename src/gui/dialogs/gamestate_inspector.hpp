@@ -18,6 +18,9 @@
 #include "gui/dialogs/dialog.hpp"
 #include "variable.hpp"
 
+namespace game_events {class manager; }
+class display_context;
+
 namespace gui2
 {
 
@@ -27,7 +30,7 @@ public:
 	class model;
 	class view;
 	class controller;
-	tgamestate_inspector(const std::string& title = "");
+	tgamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title = "");
 
 private:
 	/** Inherited from tdialog. */
@@ -40,6 +43,9 @@ private:
 	std::shared_ptr<model> model_;
 	std::shared_ptr<controller> controller_;
 	std::string title_;
+	const config& vars_;
+	const game_events::manager& events_;
+	const display_context& dc_;
 };
 }
 

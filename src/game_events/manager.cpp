@@ -183,7 +183,7 @@ void manager::add_events(const config::const_child_itors &cfgs, const std::strin
 	}
 }
 
-void manager::write_events(config& cfg)
+void manager::write_events(config& cfg) const
 {
 	for(const handler_ptr &eh : *event_handlers_) {
 		if ( !eh || eh->is_menu_item() ) {

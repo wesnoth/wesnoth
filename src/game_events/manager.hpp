@@ -114,7 +114,7 @@ namespace game_events {
 
 		void add_events(const config::const_child_itors &cfgs,
 		                const std::string& type = std::string());
-		void write_events(config& cfg);
+		void write_events(config& cfg) const;
 
 		game_events::t_pump & pump();
 	};

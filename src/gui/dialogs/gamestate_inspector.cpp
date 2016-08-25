@@ -34,7 +34,6 @@
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "recall_list_manager.hpp"
-#include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
@@ -249,6 +248,9 @@ protected:
 	tgamestate_inspector::model& model();
 	tgamestate_inspector::view& view();
 	tgamestate_inspector::controller& c;
+	const config& vars();
+	const game_events::manager& events();
+	const display_context& dc();
 };
 
 class variable_mode_controller : public single_mode_controller
@@ -256,26 +258,18 @@ class variable_mode_controller : public single_mode_controller
 public:
 	variable_mode_controller(tgamestate_inspector::controller& c)
 		: single_mode_controller(c)
-		, vars(resources::gamedata->get_variables())
 	{
 	}
 
 	void show_list(ttree_view_node& node);
 	void show_var(ttree_view_node& node);
 	void show_array(ttree_view_node& node);
-
-private:
-	const config& vars;
 };
 
 class event_mode_controller : public single_mode_controller
 {
 public:
-	event_mode_controller(tgamestate_inspector::controller& c)
-		: single_mode_controller(c)
-	{
-		resources::game_events->write_events(events);
-	}
+	event_mode_controller(tgamestate_inspector::controller& c);
 	void show_list(ttree_view_node& node, bool is_wmi);
 	void show_event(ttree_view_node& node, bool is_wmi);
 
@@ -288,15 +282,11 @@ class unit_mode_controller : public single_mode_controller
 public:
 	unit_mode_controller(tgamestate_inspector::controller& c)
 		: single_mode_controller(c)
-		, units(*resources::units)
 	{
 	}
 
 	void show_list(ttree_view_node& node);
 	void show_unit(ttree_view_node& node);
-
-private:
-	const unit_map& units;
 };
 
 class team_mode_controller : public single_mode_controller
@@ -304,7 +294,6 @@ class team_mode_controller : public single_mode_controller
 public:
 	team_mode_controller(tgamestate_inspector::controller& c)
 		: single_mode_controller(c)
-		, teams(resources::gameboard->teams())
 	{
 	}
 
@@ -316,16 +305,15 @@ public:
 	void show_recall_unit(ttree_view_node& node, int side);
 	void show_units(ttree_view_node& node, int side);
 	void show_unit(ttree_view_node& node, int side);
-
-private:
-	const std::vector<team>& teams;
 };
 
 class tgamestate_inspector::controller
 {
 	friend class single_mode_controller;
 public:
-	controller(model& m, view& v) : model_(m), view_(v)
+	controller(model& m, view& v, const config& vars, const game_events::manager& events, const display_context& dc)
+		: model_(m), view_(v)
+		, vars_(vars), events_(events), dc_(dc)
 	{
 	}
 
@@ -465,11 +453,11 @@ public:
 				.widget("name", "units")
 				.add(),
 			&unit_mode_controller::show_list);
-		int sides = resources::gameboard ? resources::gameboard->teams().size() : 0;
+		int sides = dc_.teams().size();
 		for(int side = 1; side <= sides; side++) {
 			std::ostringstream label;
 			label << "team " << side;
-			const std::string& name = resources::gameboard->get_team(side).user_team_name();
+			const std::string& name = dc_.get_team(side).user_team_name();
 			if(!name.empty()) {
 				label << " (" << name << ")";
 			}
@@ -491,6 +479,9 @@ private:
 	using node_callback_map = std::map<std::vector<int>, node_callback>;
 	std::vector<single_mode_controller*> controllers;
 	node_callback_map callbacks;
+	const config& vars_;
+	const game_events::manager& events_;
+	const display_context& dc_;
 };
 
 tgamestate_inspector::model& single_mode_controller::model() {
@@ -501,6 +492,24 @@ tgamestate_inspector::view& single_mode_controller::view() {
 	return c.view_;
 }
 
+const config& single_mode_controller::vars() {
+	return c.vars_;
+}
+
+const game_events::manager& single_mode_controller::events() {
+	return c.events_;
+}
+
+const display_context& single_mode_controller::dc() {
+	return c.dc_;
+}
+
+event_mode_controller::event_mode_controller(tgamestate_inspector::controller& c)
+	: single_mode_controller(c)
+{
+	single_mode_controller::events().write_events(events);
+}
+
 void variable_mode_controller::show_list(ttree_view_node& node)
 {
 	model().clear_data();
@@ -509,29 +518,29 @@ void variable_mode_controller::show_list(ttree_view_node& node)
 		return;
 	}
 
-	for(const auto & a : vars.attribute_range())
+	for(const auto& attr : vars().attribute_range())
 	{
 		c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
-				.widget("name", a.first)
+				.widget("name", attr.first)
 				.add(),
 			&variable_mode_controller::show_var);
 	}
 
 	std::map<std::string, size_t> wml_array_sizes;
 
-	for(const auto & c : vars.all_children_range())
+	for(const auto& ch : vars().all_children_range())
 	{
 
 		std::ostringstream cur_str;
-		cur_str << "[" << c.key << "][" << wml_array_sizes[c.key] << "]";
+		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
 				.widget("name", cur_str.str())
 				.add(),
 			&variable_mode_controller::show_array);
-		wml_array_sizes[c.key]++;
+		wml_array_sizes[ch.key]++;
 	}
 }
 
@@ -539,7 +548,7 @@ void variable_mode_controller::show_var(ttree_view_node& node)
 {
 	twidget* w = node.find("name", false);
 	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
-		model().set_data(vars[label->label()]);
+		model().set_data(vars()[label->label()]);
 	}
 }
 
@@ -551,7 +560,7 @@ void variable_mode_controller::show_array(ttree_view_node& node)
 		size_t n_start = var.find_last_of('[') + 1;
 		size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(vars.child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(vars().child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -589,10 +598,10 @@ void event_mode_controller::show_event(ttree_view_node& node, bool is_wmi)
 	model().set_data(config_to_string(events.child(is_wmi ? "menu_item" : "event", n)));
 }
 
-static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u)
+static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u, const display_context& dc)
 {
 
-	Uint32 team_color = game_config::tc_info(resources::gameboard->get_team(u.side()).color())[0];
+	Uint32 team_color = game_config::tc_info(dc.get_team(u.side()).color())[0];
 	std::stringstream s;
 
 	s << '(' << u.get_location() << ')';
@@ -638,9 +647,9 @@ void unit_mode_controller::show_list(ttree_view_node& node)
 		return;
 	}
 
-	for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
+	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end(); ++i) {
 		auto progress = view().stuff_list_entry(&node, "unit");
-		add_unit_entry(progress, *i);
+		add_unit_entry(progress, *i, dc());
 		c.set_node_callback(progress.add(), &unit_mode_controller::show_unit);
 	}
 }
@@ -648,7 +657,7 @@ void unit_mode_controller::show_list(ttree_view_node& node)
 void unit_mode_controller::show_unit(ttree_view_node& node)
 {
 	int i = node.describe_path().back();
-	unit_map::const_iterator u = units.begin();
+	unit_map::const_iterator u = dc().units().begin();
 	std::advance(u, i);
 	config c_unit;
 	u->write(c_unit);
@@ -657,7 +666,7 @@ void unit_mode_controller::show_unit(ttree_view_node& node)
 
 void team_mode_controller::show_list(ttree_view_node& node, int side)
 {
-	config&& cfg = resources::gameboard->get_team(side).to_config();
+	config&& cfg = dc().get_team(side).to_config();
 	cfg.clear_children("ai");
 	model().set_data(config_to_string(cfg));
 
@@ -743,9 +752,9 @@ void team_mode_controller::show_recall(ttree_view_node& node, int side)
 		return;
 	}
 
-	for(const unit_ptr u : resources::gameboard->get_team(side).recall_list()) {
+	for(const unit_ptr u : dc().get_team(side).recall_list()) {
 		auto progress = view().stuff_list_entry(&node, "unit");
-		add_unit_entry(progress, *u);
+		add_unit_entry(progress, *u, dc());
 		c.set_node_callback(progress.add(), &team_mode_controller::show_recall_unit, side);
 	}
 }
@@ -753,7 +762,7 @@ void team_mode_controller::show_recall(ttree_view_node& node, int side)
 void team_mode_controller::show_recall_unit(ttree_view_node& node, int side)
 {
 	int i = node.describe_path().back();
-	auto u = resources::gameboard->get_team(side).recall_list().begin();
+	auto u = dc().get_team(side).recall_list().begin();
 	std::advance(u, i);
 	config c_unit;
 	(*u)->write(c_unit);
@@ -768,8 +777,7 @@ void team_mode_controller::show_ai_tree(ttree_view_node&, int side)
 void team_mode_controller::show_units(ttree_view_node&, int side)
 {
 	std::ostringstream s;
-	for(unit_map::iterator i = resources::units->begin();
-		i != resources::units->end();
+	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end();
 		++i) {
 		if(i->side() != side) {
 			continue;
@@ -794,7 +802,11 @@ void team_mode_controller::show_units(ttree_view_node&, int side)
 
 REGISTER_DIALOG(gamestate_inspector)
 
-tgamestate_inspector::tgamestate_inspector(const std::string& title) : title_(title)
+tgamestate_inspector::tgamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title)
+	: title_(title)
+	, vars_(vars)
+	, events_(events)
+	, dc_(dc)
 {
 	model_.reset(new model);
 }
@@ -802,7 +814,7 @@ tgamestate_inspector::tgamestate_inspector(const std::string& title) : title_(ti
 void tgamestate_inspector::pre_show(twindow& window)
 {
 	view_.reset(new view(window));
-	controller_.reset(new controller(*model_, *view_));
+	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
 
 	if(!title_.empty()) {
 		find_widget<tcontrol>(&window, "inspector_name", false).set_label(title_);

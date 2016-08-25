@@ -44,6 +44,8 @@
 #include "scripting/lua_common.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
+#include "game_data.hpp"
+#include "game_state.hpp"
 
 #include "utils/functional.hpp"
 
@@ -738,9 +740,9 @@ int show_lua_console(lua_State * /*L*/, CVideo & video, lua_kernel_base * lk)
 	return 0;
 }
 
-int show_gamestate_inspector(CVideo & video, const vconfig & cfg)
+int show_gamestate_inspector(CVideo & video, const vconfig & cfg, const game_data& data, const game_state& state)
 {
-	gui2::tgamestate_inspector inspect_dialog(cfg["name"]);
+	gui2::tgamestate_inspector inspect_dialog(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
 	inspect_dialog.show(video);
 	return 0;
 }

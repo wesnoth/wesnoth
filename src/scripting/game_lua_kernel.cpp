@@ -349,7 +349,7 @@ int game_lua_kernel::intf_animate_unit(lua_State *L)
 int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
 {
 	if (game_display_) {
-		return lua_gui2::show_gamestate_inspector(game_display_->video(), luaW_checkvconfig(L, 1));
+		return lua_gui2::show_gamestate_inspector(game_display_->video(), luaW_checkvconfig(L, 1), gamedata(), game_state_);
 	}
 	return 0;
 }

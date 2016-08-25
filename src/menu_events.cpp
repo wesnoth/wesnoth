@@ -1786,7 +1786,7 @@ void console_handler::do_show_var() {
 
 void console_handler::do_inspect() {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::tgamestate_inspector inspect_dialog;
+	gui2::tgamestate_inspector inspect_dialog(resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
 	inspect_dialog.show(menu_handler_.gui_->video());
 }
 
