@@ -82,6 +82,10 @@ Version 1.13.5+dev:
      (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
      default damage calculation method.
 * Miscellaneous and bug fixes:
+   * A new way to make units invulnerable for debugging: select the unit and type
+     ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
+     chance to zero: as a result, it doesn't slow down damage prediction unlike the
+     "increase HP to ridiculous levels" method.
    * Fixed a stray ; character appearing pre-entered in the command console.
    * Fixed bug in wesnothd that was causing server crashes if game with
      multiple network and local players was ran.

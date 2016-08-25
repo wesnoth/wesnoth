@@ -564,6 +564,11 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 		hit_points_ = max_hit_points_;
 	}
 
+	if (cfg["invulnerable"].to_bool(false) == true)
+	{
+		set_state("invulnerable", true);
+	}
+
 	goto_.x = cfg["goto_x"].to_int() - 1;
 	goto_.y = cfg["goto_y"].to_int() - 1;
 

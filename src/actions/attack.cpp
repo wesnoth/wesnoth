@@ -156,6 +156,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 		chance_to_hit = cth_effects.get_composite_value();
 
+		if (opp.get_state("invulnerable"))
+		{
+			chance_to_hit = 0;
+		}
+
 		// Compute base damage done with the weapon.
 		int base_damage = weapon->modified_damage(backstab_pos);
 
