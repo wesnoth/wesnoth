@@ -980,31 +980,34 @@ void tlobby_main::pre_show(twindow& window)
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
-	auto get_game_index_from_id = [&](const int id)->int {
-		if(game_info* game = lobby_info_.get_game_by_id(id)) {
+	auto get_game_index_from_id = [this](const int game_id)->int {
+		if(game_info* game = lobby_info_.get_game_by_id(game_id)) {
 			return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
 		}
 
 		return -1;
 	};
 
-	plugins_context_->set_callback("join", 	  [&, this](const config&) {
-		legacy_result_ = JOIN;
-		do_game_join(get_game_index_from_id(selected_game_id_), false);
+	plugins_context_->set_callback("join",    [&, this](const config&) {
+		if(do_game_join(get_game_index_from_id(selected_game_id_), false)) {
+			legacy_result_ = JOIN;
+			window.close();
+		}
 	}, true);
 
 	plugins_context_->set_callback("observe", [&, this](const config&) {
-		legacy_result_ = OBSERVE;
-		do_game_join(get_game_index_from_id(selected_game_id_), true);
+		if(do_game_join(get_game_index_from_id(selected_game_id_), true)) {
+			legacy_result_ = OBSERVE;
+			window.close();
+		}
 	}, true);
 
 	plugins_context_->set_callback("create", [this, &window](const config&) { create_button_callback(window); }, true);
 	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
-	plugins_context_->set_callback("select_game", [&, this](const config& cfg) {
-		const int i = cfg.has_attribute("id") ? get_game_index_from_id(cfg["id"].to_int()) : cfg["index"].to_int();
-		selected_game_id_ = lobby_info_.games()[i]->id;
+	plugins_context_->set_callback("select_game", [this](const config& cfg) {
+		selected_game_id_ = cfg.has_attribute("id") ? cfg["id"].to_int() : lobby_info_.games()[cfg["index"].to_int()]->id;
 	}, true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
