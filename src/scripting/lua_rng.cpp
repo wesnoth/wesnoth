@@ -17,6 +17,7 @@
 #include "log.hpp"
 #include "mt_rng.hpp"
 #include "lua_kernel_base.hpp"
+#include "lua_common.hpp" // for new(L)
 
 #include <new>
 #include <string>
