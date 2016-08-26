@@ -46,7 +46,7 @@ static const char * Team = "side";
 static int impl_side_get(lua_State *L)
 {
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t = **static_cast<team **>(luaL_checkudata(L, 1, Team));
+	team &t = luaW_checkteam(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -104,7 +104,7 @@ static int impl_side_get(lua_State *L)
 static int impl_side_set(lua_State *L)
 {
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t = **static_cast<team **>(luaL_checkudata(L, 1, Team));
+	team &t = luaW_checkteam(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -150,6 +150,18 @@ static int impl_side_set(lua_State *L)
 	return luaL_argerror(L, 2, err_msg.c_str());
 }
 
+static int impl_side_equal(lua_State *L)
+{
+	// Hidden metamethod, so arg1 has to be a pointer to a team.
+	team &t1 = luaW_checkteam(L, 1);
+	if(team* t2 = luaW_toteam(L, 2)) {
+		lua_pushboolean(L, t1.side() == t2->side());
+	} else {
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
 namespace lua_team {
 
 	std::string register_metatable(lua_State * L)
@@ -159,6 +171,7 @@ namespace lua_team {
 		static luaL_Reg const callbacks[] = {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
+			{ "__eq",	        &impl_side_equal},
 			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, callbacks, 0);
@@ -175,4 +188,17 @@ void luaW_pushteam(lua_State *L, team & tm)
 	team** t = static_cast<team**>(lua_newuserdata(L, sizeof(team*)));
 	*t = &tm;
 	luaL_setmetatable(L, Team);
+}
+
+team& luaW_checkteam(lua_State* L, int idx)
+{
+	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
+}
+
+team* luaW_toteam(lua_State* L, int idx)
+{
+	if(void* p = luaL_testudata(L, idx, Team)) {
+		return *static_cast<team **>(p);
+	}
+	return nullptr;
 }

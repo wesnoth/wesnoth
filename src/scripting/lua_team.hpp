@@ -28,7 +28,13 @@ namespace lua_team {
 	std::string register_metatable(lua_State *);
 } //end namespace lua_team
 
-// Create a full userdata containing a pointer to the team.
+/// Create a full userdata containing a pointer to the team.
 void luaW_pushteam(lua_State *, team &);
+
+/// Test if the top stack element is a team, and if so, return it
+team* luaW_toteam(lua_State*, int);
+
+/// Test if the top stack element is a team, and if not, error
+team& luaW_checkteam(lua_State*, int);
 
 #endif
