@@ -72,6 +72,8 @@ local function plugin()
   until info.name == "Multiplayer Configure"
 
   context.set_name({name = "Test"})
+  context.update_settings({registered_users = false})
+
   log("hosting a game")
   context.launch({})
 
