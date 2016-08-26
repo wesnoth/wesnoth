@@ -301,54 +301,56 @@ void tmp_create_game::pre_show(twindow& window)
 	// This handles both the initial game and tab selection
 	display_games_of_type(window, ng::level::TYPE::from_int(preferences::level_type()), preferences::level());
 
+	//
 	// Set up the Lua plugin context
+	//
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
-	plugins_context_->set_callback("create", [this, &window](const config&) {
-		// Switch plugin context to configure mode
-		plugins_context_.reset();
-		plugins_context* ctx = new plugins_context("Multiplayer Configure");
-		ctx->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
-		ctx->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
-		ctx->set_callback("set_name", [&window](const config& cfg) { find_widget<ttext_box>(&window, "game_name", false).set_value(cfg["name"]); }, true);
-		ctx->set_callback("set_password", [&window](const config& cfg) { find_widget<ttext_box>(&window, "game_password", false).set_value(cfg["password"]); }, true);
-		ctx->set_callback("update_settings", [this, &window](const config& cfg) {
-			#define UPDATE_ATTRIBUTE(field) do{ \
-				if(cfg.has_attribute(#field)) { \
-					field##_->set_widget_value(window, cfg[#field]); \
-				} \
-			} while(false)
-			UPDATE_ATTRIBUTE(turns);
-			UPDATE_ATTRIBUTE(gold);
-			UPDATE_ATTRIBUTE(support);
-			UPDATE_ATTRIBUTE(experience);
-			UPDATE_ATTRIBUTE(start_time);
-			UPDATE_ATTRIBUTE(fog);
-			UPDATE_ATTRIBUTE(shroud);
-			UPDATE_ATTRIBUTE(time_limit);
-			UPDATE_ATTRIBUTE(init_turn_limit);
-			UPDATE_ATTRIBUTE(turn_bonus);
-			UPDATE_ATTRIBUTE(reservior);
-			UPDATE_ATTRIBUTE(action_bonus);
-			UPDATE_ATTRIBUTE(observers);
-			UPDATE_ATTRIBUTE(registered_users);
-			UPDATE_ATTRIBUTE(strict_sync);
-			UPDATE_ATTRIBUTE(shuffle_sides);
-			#undef UPDATE_ATTRIBUTE
-		}, true);
-		ctx->set_accessor("game_config",  [this](const config&) {return cfg_; });
-		plugins_context_.reset(ctx);
-	}, false);
+	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(twindow::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 	plugins_context_->set_callback("load",   [this, &window](const config&) { load_game_callback(window); }, false);
 
+#define UPDATE_ATTRIBUTE(field) \
+	if(cfg.has_attribute(#field)) { field##_->set_widget_value(window, cfg[#field]); } \
+
+	plugins_context_->set_callback("update_settings", [this, &window](const config& cfg) {
+		UPDATE_ATTRIBUTE(turns);
+		UPDATE_ATTRIBUTE(gold);
+		UPDATE_ATTRIBUTE(support);
+		UPDATE_ATTRIBUTE(experience);
+		UPDATE_ATTRIBUTE(start_time);
+		UPDATE_ATTRIBUTE(fog);
+		UPDATE_ATTRIBUTE(shroud);
+		UPDATE_ATTRIBUTE(time_limit);
+		UPDATE_ATTRIBUTE(init_turn_limit);
+		UPDATE_ATTRIBUTE(turn_bonus);
+		UPDATE_ATTRIBUTE(reservior);
+		UPDATE_ATTRIBUTE(action_bonus);
+		UPDATE_ATTRIBUTE(observers);
+		UPDATE_ATTRIBUTE(registered_users);
+		UPDATE_ATTRIBUTE(strict_sync);
+		UPDATE_ATTRIBUTE(shuffle_sides);
+	}, true);
+
+#undef UPDATE_ATTRIBUTE
+
+	plugins_context_->set_callback("set_name",     [&window](const config& cfg) {
+		find_widget<ttext_box>(&window, "game_name", false).set_value(cfg["name"]);
+	}, true);
+
+	plugins_context_->set_callback("set_password", [&window](const config& cfg) {
+		find_widget<ttext_box>(&window, "game_password", false).set_value(cfg["password"]);}, true);
+
 	plugins_context_->set_callback("select_level", [&window](const config& cfg) {
 		find_widget<tlistbox>(&window, "games_list", false).select_row(cfg["index"].to_int()); }, true);
+
 	plugins_context_->set_callback("select_type",  [this, &window](const config& cfg) {
 		display_games_of_type(window, ng::level::TYPE::string_to_enum(cfg["type"]), cfg["level"]); }, true);
-	plugins_context_->set_callback("select_era", [this, &window](const config& cfg) {
+
+	plugins_context_->set_callback("select_era",   [&window](const config& cfg) {
 		find_widget<tmenu_button>(&window, "eras", false).set_value(cfg["index"].to_int()); }, true);
-	plugins_context_->set_callback("select_mod", [this, &window](const config& cfg) {
+
+	plugins_context_->set_callback("select_mod",   [&window](const config& cfg) {
 		auto& mods = find_widget<tlistbox>(&window, "mod_list", false);
 		mods.select_row(cfg["index"].to_int());
 		find_widget<ttoggle_button>(&mods, "mod_active_state", false).set_value(cfg["active"].to_bool(true));
@@ -366,15 +368,17 @@ void tmp_create_game::pre_show(twindow& window)
 			("type", create_engine_.current_level_type());
 	});
 
-	plugins_context_->set_accessor("find_level", [this](const config& cfg) {
+	plugins_context_->set_accessor("find_level",   [this](const config& cfg) {
 		const std::string id = cfg["id"].str();
 		return config_of
 			("index", create_engine_.find_level_by_id(id))
 			("type", create_engine_.find_level_type_by_id(id));
 	});
+
 	plugins_context_->set_accessor_int("find_era", [this](const config& cfg) {
 		return create_engine_.find_extra_by_id(ng::create_engine::ERA, cfg["id"]);
 	});
+
 	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg) {
 		return create_engine_.find_extra_by_id(ng::create_engine::MOD, cfg["id"]);
 	});
@@ -432,7 +436,7 @@ void tmp_create_game::on_tab_select(twindow& window)
 
 void tmp_create_game::on_mod_select(twindow& window)
 {
-	if (find_widget<tlistbox>(&window, "mod_list", false).get_item_count() <= 0)	// no modifications installed
+	if (find_widget<tlistbox>(&window, "mod_list", false).get_item_count() <= 0) // no modifications installed
 		return;
 
 	create_engine_.set_current_mod_index(find_widget<tlistbox>(&window, "mod_list", false).get_selected_row());
@@ -915,8 +919,10 @@ void tmp_create_game::dialog_exit_hook(twindow& window) {
 void tmp_create_game::post_show(twindow& window)
 {
 	plugins_context_.reset();
+
 	// Show all tabs so that find_widget works correctly
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(-1);
+
 	if(get_retval() == twindow::OK) {
 		preferences::set_modifications(create_engine_.active_mods());
 		preferences::set_level_type(create_engine_.current_level_type().v);
