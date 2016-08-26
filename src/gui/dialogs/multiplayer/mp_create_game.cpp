@@ -549,6 +549,12 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 	visible_options_.push_back({type, cfg["id"]});
 	auto& data_map = options_data_[visible_options_.back()];
 
+	auto set_default_data_value = [&](const std::string& widget_id, const config& cfg) {
+		if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
+			data_map[widget_id] = cfg["default"];
+		}
+	};
+
 	for(const auto& options : cfg.child_range("options")) {
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -573,9 +579,7 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			const std::string widget_id = checkbox_option["id"];
 
-			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-				data_map[widget_id] = checkbox_option["default"];
-			}
+			set_default_data_value(widget_id, checkbox_option);
 
 			checkbox->set_id(widget_id);
 			checkbox->set_value(data_map[widget_id].to_bool());
@@ -622,9 +626,7 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			const std::string widget_id = menu_button_option["id"];
 
-			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-				data_map[widget_id] = menu_button_option["default"];
-			}
+			set_default_data_value(widget_id, menu_button_option);
 
 			menu_button->set_id(widget_id);
 			menu_button->set_values(combo_items);
@@ -665,9 +667,7 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			const std::string widget_id = slider_option["id"];
 
-			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-				data_map[widget_id] = slider_option["default"];
-			}
+			set_default_data_value(widget_id, slider_option);
 
 			slider->set_id(widget_id);
 			slider->set_maximum_value(slider_option["max"].to_int());
@@ -702,9 +702,7 @@ void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, 
 
 			const std::string widget_id = text_entry_option["id"];
 
-			if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-				data_map[widget_id] = text_entry_option["default"];
-			}
+			set_default_data_value(widget_id, text_entry_option);
 
 			textbox->set_id(widget_id);
 			textbox->set_value(data_map[widget_id].str());
