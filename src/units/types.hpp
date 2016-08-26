@@ -73,6 +73,8 @@ private: // These will be called by build().
 	/// Load the most needed data into an empty unit_type (build to CREATE).
 	void build_created(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
+
+	typedef std::map<std::string,unit_type> variations_map;
 public:
 	/// Performs a build of this to the indicated stage.
 	void build(BUILD_STATUS status, const movement_type_map &movement_types,
@@ -197,6 +199,7 @@ public:
 	/// to the HELP_INDEXED status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	std::vector<std::string> variations() const;
+	const variations_map& variation_types() const {return variations_; }
 
 	/**
 	 * @param variation_id		The id of the variation we search for.
@@ -269,7 +272,6 @@ private:
 
 	unit_type* gender_types_[2];
 
-	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
 	std::string default_variation_;
 	std::string variation_name_;

@@ -4219,6 +4219,9 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 	// Create the vconfig metatable.
 	cmd_log_ << lua_common::register_vconfig_metatable(L);
 
+	// Create the unit_types table
+	cmd_log_ << lua_unit_type::register_table(L);
+
 	// Create the ai elements table.
 	cmd_log_ << "Adding ai elements table...\n";
 
@@ -4342,19 +4345,6 @@ void game_lua_kernel::initialize(const config& level)
 		lua_setfield(L, -2, "sides");
 		cmd_log_ << "Added wesnoth.sides\n";
 	}
-
-	// Create the unit_types table.
-	cmd_log_ << "Adding unit_types table...\n";
-
-	lua_settop(L, 0);
-	lua_getglobal(L, "wesnoth");
-	lua_newtable(L);
-	for (const unit_type_data::unit_type_map::value_type &ut : unit_types.types())
-	{
-		luaW_pushunittype(L, ut.first);
-		lua_setfield(L, -2, ut.first.c_str());
-	}
-	lua_setfield(L, -2, "unit_types");
 
 	//Create the races table.
 	cmd_log_ << "Adding races table...\n";

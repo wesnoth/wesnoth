@@ -100,10 +100,6 @@ unit_type::unit_type(const unit_type& o) :
 {
 	gender_types_[0] = o.gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr;
 	gender_types_[1] = o.gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr;
-
-	for(variations_map::const_iterator i = o.variations_.begin(); i != o.variations_.end(); ++i) {
-		variations_[i->first] = new unit_type(*i->second);
-	}
 }
 
 
@@ -167,10 +163,6 @@ unit_type::~unit_type()
 {
 	delete gender_types_[0];
 	delete gender_types_[1];
-
-	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
-		delete i->second;
-	}
 }
 
 /**
@@ -211,7 +203,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	// Propagate the build to the variations.
 	for (variations_map::value_type & variation : variations_) {
-		variation.second->build_full(mv_types, races, traits);
+		variation.second.build_full(mv_types, races, traits);
 	}
 
 	// Deprecation messages, only seen when unit is parsed for the first time.
@@ -351,11 +343,16 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 		const std::string& var_id = var_cfg["variation_id"].empty() ?
 				var_cfg["variation_name"] : var_cfg["variation_id"];
 
-		unit_type *ut = new unit_type(var_cfg, id_);
-		ut->debug_id_ = debug_id_ + " [" + var_id + "]";
-		ut->base_id_ = base_id_;  // In case this is not id_.
-		ut->build_help_index(mv_types, races, traits);
-		variations_.insert(std::make_pair(var_id, ut));
+		variations_map::iterator ut;
+		bool success;
+		std::tie(ut, success) = variations_.emplace(var_id, unit_type(var_cfg, id_));
+		if(success) {
+			ut->second.debug_id_ = debug_id_ + " [" + var_id + "]";
+			ut->second.base_id_ = base_id_;  // In case this is not id_.
+			ut->second.build_help_index(mv_types, races, traits);
+		} else {
+			ERR_CF << "Skipping duplicate unit variation ID: " << var_id << "\n";
+		}
 	}
 
 	hide_help_= cfg_["hide_help"].to_bool();
@@ -464,7 +461,7 @@ const unit_type& unit_type::get_variation(const std::string& id) const
 {
 	const variations_map::const_iterator i = variations_.find(id);
 	if(i != variations_.end()) {
-		return *i->second;
+		return i->second;
 	} else {
 		return *this;
 	}
@@ -626,7 +623,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		for(variations_map::iterator v=variations_.begin();
 			v!=variations_.end(); ++v) {
 			LOG_CONFIG << "variation advancement: ";
-			v->second->add_advancement(to_unit,xp);
+			v->second.add_advancement(to_unit,xp);
 		}
 	}
 }
@@ -749,8 +746,7 @@ bool unit_type::has_variation(const std::string& variation_id) const
 bool unit_type::show_variations_in_help() const
 {
 	for (const variations_map::value_type &val : variations_) {
-		assert(val.second != nullptr);
-		if (!val.second->hide_help()) {
+		if (!val.second.hide_help()) {
 			return true;
 		}
 	}
