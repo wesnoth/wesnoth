@@ -106,14 +106,9 @@ protected:
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
 
-	// Show a dialog to the currently connected video object (if available)
-	int intf_show_dialog(lua_State * L);
-
-	// Show a message dialog, possibly with options
-	int intf_show_message_dialog(lua_State * L);
-
-	// Show a transient popup message
-	int intf_show_popup_dialog(lua_State * L);
+	using video_function = int (*)(lua_State*,CVideo&);
+	template<video_function> friend int video_dispatch(lua_State*);
+	int video_dispatch_impl(lua_State* L, video_function callback);
 
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);

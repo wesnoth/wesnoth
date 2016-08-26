@@ -17,6 +17,7 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/canvas.hpp"     // for tcanvas
 #include "gui/core/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/dialogs/drop_down_list.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -27,9 +28,11 @@
 #include "gui/widgets/progress_bar.hpp"  // for tprogress_bar
 #include "gui/widgets/selectable.hpp"   // for tselectable_
 #include "gui/widgets/slider.hpp"       // for tslider
+#include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"     // for ttext_box
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/widget.hpp"       // for twidget
 #include "gui/widgets/window.hpp"       // for twindow
 
@@ -42,6 +45,9 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_unit.hpp"
+#include "scripting/lua_unit_type.hpp"
+#include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 #include "game_data.hpp"
@@ -61,7 +67,7 @@ class CVideo;
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char * dlgclbkKey = "dialog callback";
+static const char dlgclbkKey[] = "dialog callback";
 
 namespace {
 	struct scoped_dialog
@@ -84,8 +90,7 @@ namespace {
 	scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
 		: L(l), prev(current), window(w), callbacks()
 	{
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, -2);
 		lua_rawget(L, LUA_REGISTRYINDEX);
@@ -98,8 +103,7 @@ namespace {
 	{
 		delete window;
 		current = prev;
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_pushvalue(L, -1);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, 1);
@@ -197,6 +201,22 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 			{
 				std::string m = luaL_checkstring(L, i);
 				w = tvn->find(m, false);
+			}
+		}
+		else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+			if(lua_isnumber(L, i)) {
+				int v = lua_tointeger(L, i);
+				if(v < 1) {
+					goto error_call_destructors_1;
+				}
+				int n = sw->get_layer_count();
+				if(v > n) {
+					goto error_call_destructors_1;
+				}
+				w = sw->get_layer_grid(v - 1);
+			} else {
+				std::string m = luaL_checkstring(L, i);
+				w = sw->find(m, false);
 			}
 		}
 		else
@@ -367,6 +387,33 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
 }
 
 /**
+ * Displays a popup menu at the current mouse position
+ * Best used from a [set_menu_item], to show a submenu
+ * - Arg 1: Configs defining each item, with keys icon, image/label, second_label, tooltip
+ * - Args 2, 3: Initial selection (integer); whether to parse markup (boolean)
+ */
+int show_menu(lua_State* L, CVideo& video) {
+	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
+	SDL_Rect pos = {1,1,1,1};
+	SDL_GetMouseState(&pos.x, &pos.y);
+
+	int initial = -1;
+	bool markup = false;
+	if(lua_isnumber(L, 2)) {
+		initial = lua_tointeger(L, 2) - 1;
+		markup = lua_toboolean(L, 3);
+	} else if(lua_isnumber(L, 3)) {
+		initial = lua_tointeger(L, 3) - 1;
+		markup = lua_toboolean(L, 2);
+	}
+
+	gui2::tdrop_down_list menu(pos, items, initial, markup);
+	menu.show(video);
+	lua_pushinteger(L, menu.selected_item() + 1);
+	return 1;
+}
+
+/**
  * Sets the value of a widget on the current dialog.
  * - Arg 1: scalar.
  * - Args 2..n: path of strings and integers.
@@ -429,6 +476,22 @@ int intf_set_dialog_value(lua_State *L)
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
+	else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+		const int v = luaL_checkinteger(L, 1);
+		const int n = sw->get_layer_count();
+		if(v >= 0 && v <= n) {
+			sw->select_layer(v - 1);
+		}
+	}
+	else if(gui2::tunit_preview_pane* upp = dynamic_cast<gui2::tunit_preview_pane*>(w)) {
+		if(const unit_type* ut = luaW_tounittype(L, 1)) {
+			upp->set_displayed_type(*ut);
+		} else if(unit* u = luaW_tounit(L, 1)) {
+			upp->set_displayed_unit(*u);
+		} else {
+			return luaL_typerror(L, 1, "unit or unit type");
+		}
+	}
 	else
 	{
 		t_string v = luaW_checktstring(L, 1);
@@ -479,6 +542,8 @@ int intf_get_dialog_value(lua_State *L)
 			lua_pushinteger(L, path[i] + 1);
 			lua_rawseti(L, -2, i + 1);
 		}
+	} else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+		lua_pushinteger(L, sw->current_layer());
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
@@ -543,8 +608,7 @@ namespace { // helpers of intf_set_dialog_callback()
 			cb = i->second;
 		}
 		lua_State *L = scoped_dialog::current->L;
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, cb);
 		lua_remove(L, -2);
@@ -575,8 +639,7 @@ int intf_set_dialog_callback(lua_State *L)
 	scoped_dialog::callback_map::iterator i = m.find(w);
 	if (i != m.end())
 	{
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_pushnil(L);
 		lua_rawseti(L, -2, i->second);
@@ -588,10 +651,7 @@ int intf_set_dialog_callback(lua_State *L)
 
 	if (gui2::tclickable_ *c = dynamic_cast<gui2::tclickable_ *>(w)) {
 		static tdialog_callback_wrapper wrapper;
-		c->connect_click_handler(std::bind(
-									  &tdialog_callback_wrapper::forward
-									, wrapper
-									, w));
+		c->connect_click_handler(std::bind(&tdialog_callback_wrapper::forward, wrapper, w));
 	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
 		s->set_callback_state_change(&dialog_callback);
 	}
@@ -615,8 +675,7 @@ int intf_set_dialog_callback(lua_State *L)
 	else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
-	lua_pushstring(L
-			, dlgclbkKey);
+	lua_pushstring(L, dlgclbkKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	int n = lua_rawlen(L, -1) + 1;
 	m[w] = n;

@@ -114,8 +114,13 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
+template<lua_kernel_base::video_function callback>
+int video_dispatch(lua_State *L) {
+	return lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).video_dispatch_impl(L, callback);
+}
+
 // The show-dialog call back is here implemented as a method of lua kernel, since it needs a pointer to external object CVideo
-int lua_kernel_base::intf_show_dialog(lua_State *L)
+int lua_kernel_base::video_dispatch_impl(lua_State* L, lua_kernel_base::video_function callback)
 {
 	if (!video_) {
 		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
@@ -123,29 +128,7 @@ int lua_kernel_base::intf_show_dialog(lua_State *L)
 		return 0;
 	}
 
-	return lua_gui2::show_dialog(L, *video_);
-}
-
-int lua_kernel_base::intf_show_message_dialog(lua_State *L)
-{
-	if (!video_) {
-		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
-		lua_error(L);
-		return 0;
-	}
-
-	return lua_gui2::show_message_dialog(L, *video_);
-}
-
-int lua_kernel_base::intf_show_popup_dialog(lua_State *L)
-{
-	if (!video_) {
-		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
-		lua_error(L);
-		return 0;
-	}
-
-	return lua_gui2::show_popup_dialog(L, *video_);
+	return callback(L, *video_);
 }
 
 // The show lua console callback is similarly a method of lua kernel
@@ -355,9 +338,10 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
 		{ "dofile", 		      &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
-		{ "show_dialog",	      &dispatch<&lua_kernel_base::intf_show_dialog>      },
-		{ "show_message_dialog",     &dispatch<&lua_kernel_base::intf_show_message_dialog> },
-		{ "show_popup_dialog",       &dispatch<&lua_kernel_base::intf_show_popup_dialog>   },
+		{ "show_dialog",	      &video_dispatch<lua_gui2::show_dialog>   },
+		{ "show_menu",               &video_dispatch<lua_gui2::show_menu>  },
+		{ "show_message_dialog",     &video_dispatch<lua_gui2::show_message_dialog> },
+		{ "show_popup_dialog",       &video_dispatch<lua_gui2::show_popup_dialog>   },
 		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
