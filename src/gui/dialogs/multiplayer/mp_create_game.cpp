@@ -335,14 +335,15 @@ void tmp_create_game::pre_show(twindow& window)
 #undef UPDATE_ATTRIBUTE
 
 	plugins_context_->set_callback("set_name",     [&window](const config& cfg) {
-		find_widget<ttext_box>(&window, "game_name", false).set_value(cfg["name"]);
-	}, true);
+		find_widget<ttext_box>(&window, "game_name", false).set_value(cfg["name"]); }, true);
 
 	plugins_context_->set_callback("set_password", [&window](const config& cfg) {
-		find_widget<ttext_box>(&window, "game_password", false).set_value(cfg["password"]);}, true);
+		find_widget<ttext_box>(&window, "game_password", false).set_value(cfg["password"]); }, true);
 
-	plugins_context_->set_callback("select_level", [&window](const config& cfg) {
-		find_widget<tlistbox>(&window, "games_list", false).select_row(cfg["index"].to_int()); }, true);
+	plugins_context_->set_callback("select_level", [this](const config& cfg) {
+		selected_game_index_ = convert_to_game_filtered_index(cfg["index"].to_int());
+		create_engine_.set_current_level(selected_game_index_);
+	}, true);
 
 	plugins_context_->set_callback("select_type",  [this, &window](const config& cfg) {
 		display_games_of_type(window, ng::level::TYPE::string_to_enum(cfg["type"]), cfg["level"]); }, true);
@@ -350,11 +351,8 @@ void tmp_create_game::pre_show(twindow& window)
 	plugins_context_->set_callback("select_era",   [&window](const config& cfg) {
 		find_widget<tmenu_button>(&window, "eras", false).set_value(cfg["index"].to_int()); }, true);
 
-	plugins_context_->set_callback("select_mod",   [&window](const config& cfg) {
-		auto& mods = find_widget<tlistbox>(&window, "mod_list", false);
-		mods.select_row(cfg["index"].to_int());
-		find_widget<ttoggle_button>(&mods, "mod_active_state", false).set_value(cfg["active"].to_bool(true));
-	}, true);
+	plugins_context_->set_callback("select_mod",   [this](const config& cfg) {
+		on_mod_toggle(cfg["index"].to_int()); }, true);
 
 	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
