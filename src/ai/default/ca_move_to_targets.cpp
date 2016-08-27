@@ -837,9 +837,8 @@ double move_to_targets_phase::rate_group(const std::set<map_location>& group, co
 		defense /= battlefield.size();
 
 		int best_attack = 0;
-		const std::vector<attack_type>& attacks = un.attacks();
-		for(std::vector<attack_type>::const_iterator a = attacks.begin(); a != attacks.end(); ++a) {
-			const int strength = a->num_attacks()*a->damage();
+		for(const attack_type& a : un.attacks()) {
+			const int strength = a.num_attacks() * a.damage();
 			best_attack = std::max<int>(strength,best_attack);
 		}
 

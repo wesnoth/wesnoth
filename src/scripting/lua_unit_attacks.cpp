@@ -95,7 +95,7 @@ static int impl_unit_attacks_get(lua_State *L)
 		return luaL_argerror(L, 1, "unknown unit");
 	}
 	const attack_type* attack = nullptr;
-	const std::vector<attack_type>& attacks = u ? u->get()->attacks() : ut->attacks();
+	const_attack_itors attacks = u ? u->get()->attacks() : ut->attacks();
 	if(!lua_isnumber(L,2)) {
 		std::string attack_id = luaL_checkstring(L, 2);
 		for(const attack_type& at : attacks) {

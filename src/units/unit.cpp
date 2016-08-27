@@ -522,7 +522,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	if(config::const_child_itors cfg_range = cfg.child_range("attack")) {
 		attacks_.clear();
 		for (const config& cfg : cfg_range) {
-			attacks_.push_back(attack_type(cfg));
+			attacks_.emplace_back(new attack_type(cfg));
 		}
 	}
 
@@ -968,7 +968,10 @@ void unit::advance_to(const unit_type &u_type,
 	jamming_ = new_type.jamming();
 	movement_type_ = new_type.movement_type();
 	emit_zoc_ = new_type.has_zoc();
-	attacks_ = new_type.attacks();
+	attacks_.clear();
+	std::transform(new_type.attacks().begin(), new_type.attacks().end(), std::back_inserter(attacks_), [](const attack_type& atk) {
+		return new attack_type(atk);
+	});
 	unit_value_ = new_type.cost();
 
 	max_attacks_ = new_type.max_attacks();
@@ -1466,7 +1469,7 @@ void unit::write(config& cfg) const
 	cfg["max_attacks"] = max_attacks_;
 	cfg["zoc"] = emit_zoc_;
 	cfg.clear_children("attack");
-	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
+	for(attack_ptr i : attacks_) {
 		i->write(cfg.add_child("attack"));
 	}
 	cfg["cost"] = unit_value_;
@@ -1718,8 +1721,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		bool first_attack = true;
 
 		std::string desc;
-		for(std::vector<attack_type>::iterator a = attacks_.begin();
-			a != attacks_.end(); ++a) {
+		for(attack_ptr a : attacks_) {
 			bool affected = a->describe_modification(effect, &desc);
 			if(affected && desc != "") {
 				if(first_attack) {
@@ -1814,19 +1816,14 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			description_ = *v;
 		}
 	} else if(apply_to == "new_attack") {
-		attacks_.push_back(attack_type(effect));
+		attacks_.emplace_back(new attack_type(effect));
 	} else if(apply_to == "remove_attacks") {
-		std::vector<attack_type>::iterator a = attacks_.begin();
-		while(a != attacks_.end()) {
-			if(a->matches_filter(effect)) {
-				a = attacks_.erase(a);
-				continue;
-			}
-			++a;
-		}
+		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a){
+			return a->matches_filter(effect);
+		});
+		attacks_.erase(iter, attacks_.end());
 	} else if(apply_to == "attack") {
-		for(std::vector<attack_type>::iterator a = attacks_.begin();
-			a != attacks_.end(); ++a) {
+		for(attack_ptr a : attacks_) {
 			a->apply_modification(effect);
 		}
 	} else if(apply_to == "hitpoints") {

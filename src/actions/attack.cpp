@@ -570,7 +570,8 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	return attacker_stats_->attack_num;
 }
 
-/** @todo FIXME: Hand previous defender unit in here. */
+/** @todo FIXME: Hand previous defender unit in here.
+ */
 int battle_context::choose_defender_weapon(const unit &attacker,
 		const unit &defender, unsigned attacker_weapon, const unit_map& units,
 		const map_location& attacker_loc, const map_location& defender_loc,
@@ -665,7 +666,7 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 
 
 namespace {
-	void refresh_weapon_index(int& weap_index, std::string const& weap_id, std::vector<attack_type> const& attacks)
+	void refresh_weapon_index(int& weap_index, std::string const& weap_id, attack_itors attacks)
 	{
 		if(attacks.empty()) {
 			//no attacks to choose from

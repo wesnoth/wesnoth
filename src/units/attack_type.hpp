@@ -21,6 +21,10 @@
 #include <string>
 #include <vector>
 
+#include <boost/iterator/indirect_iterator.hpp>
+#include <boost/range/iterator_range.hpp>
+#include <boost/smart_ptr/intrusive_ptr.hpp>
+
 class unit_ability_list;
 
 //the 'attack type' is the type of attack, how many times it strikes,
@@ -121,5 +125,29 @@ private:
 	int movement_used_;
 	int parry_;
 	config specials_;
+	size_t ref_count = 0;
+
+	friend void intrusive_ptr_add_ref(attack_type* atk) {
+		++atk->ref_count;
+	}
+
+	friend void intrusive_ptr_release(attack_type* atk) {
+		--atk->ref_count;
+	}
 };
+
+using attack_ptr = boost::intrusive_ptr<attack_type>;
+using const_attack_ptr = boost::intrusive_ptr<const attack_type>;
+using attack_list = std::vector<attack_ptr>;
+using attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::iterator>>;
+using const_attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::const_iterator>>;
+
+inline attack_itors make_attack_itors(attack_list& atks) {
+	return boost::make_iterator_range(boost::make_indirect_iterator(atks.begin()), boost::make_indirect_iterator(atks.end()));
+}
+
+inline const_attack_itors make_attack_itors(const attack_list& atks) {
+	return boost::make_iterator_range(boost::make_indirect_iterator(atks.begin()), boost::make_indirect_iterator(atks.end()));
+}
+
 #endif

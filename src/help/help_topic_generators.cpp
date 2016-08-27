@@ -491,8 +491,7 @@ std::string unit_topic_generator::operator()() const {
 		ss << "\n\n" << detailed_description;
 
 	// Print the different attacks a unit has, if it has any.
-	std::vector<attack_type> attacks = type_.attacks();
-	if (!attacks.empty()) {
+	if (!type_.attacks().empty()) {
 		// Print headers for the table.
 		ss << "\n\n<header>text='" << escape(_("unit help^Attacks"))
 			<< "'</header>\n\n";
@@ -508,31 +507,29 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
 		// Print information about every attack.
-		for(std::vector<attack_type>::const_iterator attack_it = attacks.begin(),
-				attack_end = attacks.end();
-				attack_it != attack_end; ++attack_it) {
-			std::string lang_weapon = attack_it->name();
-			std::string lang_type = string_table["type_" + attack_it->type()];
+		for(const attack_type& attack : type_.attacks()) {
+			std::string lang_weapon = attack.name();
+			std::string lang_type = string_table["type_" + attack.type()];
 			std::vector<item> row;
 			std::stringstream attack_ss;
-			attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
-			row.push_back(std::make_pair(attack_ss.str(),image_width(attack_it->icon())));
+			attack_ss << "<img>src='" << attack.icon() << "'</img>";
+			row.push_back(std::make_pair(attack_ss.str(),image_width(attack.icon())));
 			push_tab_pair(row, lang_weapon);
 			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
-			attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks()
-				<< " " << attack_it->accuracy_parry_description();
+			attack_ss << attack.damage() << utils::unicode_en_dash << attack.num_attacks()
+				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
-			if ((*attack_it).min_range() > 1 || (*attack_it).max_range() > 1) {
-				attack_ss << (*attack_it).min_range() << "-" << (*attack_it).max_range() << ' ';
+			if (attack.min_range() > 1 || attack.max_range() > 1) {
+				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
-			attack_ss << string_table["range_" + (*attack_it).range()];
+			attack_ss << string_table["range_" + attack.range()];
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
-			std::vector<std::pair<t_string, t_string> > specials = attack_it->special_tooltips();
+			std::vector<std::pair<t_string, t_string> > specials = attack.special_tooltips();
 			if (!specials.empty()) {
 				std::string lang_special = "";
 				const size_t specials_size = specials.size();

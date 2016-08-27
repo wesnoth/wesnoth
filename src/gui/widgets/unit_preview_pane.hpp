@@ -18,7 +18,6 @@
 
 #include <string>
 
-class attack_type;
 class unit;
 class unit_type;
 
@@ -106,7 +105,8 @@ private:
 
 	std::string image_mods_;
 
-	void print_attack_details(const std::vector<attack_type>& attacks, ttree_view_node& parent_node);
+	template<typename T> // This is only a template to avoid including units/attack.hpp
+	void print_attack_details(T attacks, ttree_view_node& parent_node);
 
 	enum tstate {
 		ENABLED

@@ -252,9 +252,8 @@ public:
 	void set_emit_zoc(bool val) { emit_zoc_ = val; }
 	bool get_emit_zoc() const { return emit_zoc_; }
 
-
-	const std::vector<attack_type>& attacks() const { return attacks_; }
-	std::vector<attack_type>& attacks() { return attacks_; }
+	const_attack_itors attacks() const { return make_attack_itors(attacks_); }
+	attack_itors attacks() { return make_attack_itors(attacks_); }
 
 	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
 
@@ -483,7 +482,7 @@ private:
 	std::vector<std::string> overlays_;
 
 	std::string role_;
-	std::vector<attack_type> attacks_;
+	attack_list attacks_;
 protected:
 	mutable map_location::DIRECTION facing_; //TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable
 						 //But it's not easy to separate this guy from the animation code right now.

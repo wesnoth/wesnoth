@@ -402,11 +402,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		if (description_type(type) != FULL_DESCRIPTION)
 		 	continue;
 
-		std::vector<attack_type> attacks = type.attacks();
-		for (std::vector<attack_type>::const_iterator it = attacks.begin();
-					it != attacks.end(); ++it) {
+		for (const attack_type& atk : type.attacks()) {
 
-			std::vector<std::pair<t_string, t_string> > specials = it->special_tooltips();
+			std::vector<std::pair<t_string, t_string> > specials = atk.special_tooltips();
 			for ( size_t i = 0; i != specials.size(); ++i )
 			{
 				special_description.insert(std::make_pair(specials[i].first, specials[i].second));

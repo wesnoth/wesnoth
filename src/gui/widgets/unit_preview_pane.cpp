@@ -101,7 +101,8 @@ static inline ttree_view_node& add_name_tree_node(ttree_view_node& header_node, 
  * Both unit and unit_type use the same format (vector of attack_types) for their
  * attack data, meaning we can keep this as a helper function.
  */
-void tunit_preview_pane::print_attack_details(const std::vector<attack_type>& attacks, ttree_view_node& parent_node)
+template<typename T>
+void tunit_preview_pane::print_attack_details(T attacks, ttree_view_node& parent_node)
 {
 	if (attacks.empty()) {
 		return;

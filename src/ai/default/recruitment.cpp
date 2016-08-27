@@ -1118,8 +1118,8 @@ void recruitment::simulate_attack(
 		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()" << std::endl;
 		return;
 	}
-	const std::vector<attack_type> attacker_weapons = attacker->attacks();
-	const std::vector<attack_type> defender_weapons = defender->attacks();
+	const_attack_itors attacker_weapons = attacker->attacks();
+	const_attack_itors defender_weapons = defender->attacks();
 
 	std::shared_ptr<attack_simulation> best_att_attack;
 

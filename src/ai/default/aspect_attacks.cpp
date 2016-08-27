@@ -168,15 +168,14 @@ void aspect_attacks_base::do_attack_analysis(
 		//
 		// See if the unit has the slow ability -- units with slow only attack first.
 		bool backstab = false, slow = false;
-		std::vector<attack_type>& attacks = unit_itor->attacks();
-		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
+		for(const attack_type& a : unit_itor->attacks()) {
 			// For speed, just assume these specials will be active if
 			// they are present.
-			if ( a->get_special_bool("backstab", true) ) {
+			if ( a.get_special_bool("backstab", true) ) {
 				backstab = true;
 			}
 
-			if ( a->get_special_bool("slow", true) ) {
+			if ( a.get_special_bool("slow", true) ) {
 				slow = true;
 			}
 		}
