@@ -16,7 +16,9 @@
 
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit.hpp"
+#include "scripting/lua_unit_type.hpp"
 #include "units/unit.hpp"
+#include "units/attack_type.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
@@ -24,13 +26,55 @@
 static const char uattacksKey[] = "unit attacks table";
 static const char uattackKey[] = "unit attack";
 
+struct attack_ref {
+	bool read_only; // true if it's a unit type attack
+	int owner_ref;
+	attack_type* attack;
+	lua_unit* owner(lua_State* L) {
+		lua_rawgeti(L, LUA_REGISTRYINDEX, owner_ref);
+		lua_unit* u = luaW_tounit_ref(L, -1);
+		lua_pop(L, 1);
+		return u;
+	}
+};
+
 void push_unit_attacks_table(lua_State* L, int idx)
 {
+	idx = lua_absindex(L, idx);
 	lua_createtable(L, 1, 0);
 	lua_pushvalue(L, idx);
-	// hack: store the unit_type at -1 because we want positive indices to refer to the attacks.
-	lua_rawseti(L, -2, -1);
+	// hack: store the unit_type at 0 because we want positive indices to refer to the attacks.
+	lua_rawseti(L, -2, 0);
 	luaL_setmetatable(L, uattacksKey);
+}
+
+void luaW_pushweapon(lua_State* L, const attack_type& weapon, int owner_idx)
+{
+	owner_idx = lua_absindex(L, owner_idx);
+	attack_ref* atk = new(L) attack_ref {!owner_idx, 0, const_cast<attack_type*>(&weapon)};
+	luaL_setmetatable(L, uattackKey);
+	if(owner_idx) {
+		lua_pushvalue(L, owner_idx);
+		atk->owner_ref = luaL_ref(L, LUA_REGISTRYINDEX);
+	}
+}
+
+static attack_ref& luaW_checkweapon_ref(lua_State* L, int idx)
+{
+	return *static_cast<attack_ref*>(luaL_checkudata(L, idx, uattackKey));
+}
+
+attack_type* luaW_toweapon(lua_State* L, int idx)
+{
+	if(void* p = luaL_testudata(L, idx, uattackKey)) {
+		return static_cast<attack_ref*>(p)->attack;
+	}
+	return nullptr;
+}
+
+attack_type& luaW_checkweapon(lua_State* L, int idx)
+{
+	return *luaW_checkweapon_ref(L, idx).attack;
 }
 
 /**
@@ -44,14 +88,14 @@ static int impl_unit_attacks_get(lua_State *L)
 	if(!lua_istable(L, 1)) {
 		return luaL_typerror(L, 1, "unit attacks");
 	}
-	lua_rawgeti(L, 1, -1);
-	const unit* u = luaW_tounit(L, -1);
-	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
-	if(!u && !ut) {
+	lua_rawgeti(L, 1, 0);
+	lua_unit* u = luaW_tounit_ref(L, -1);
+	const unit_type* ut = luaW_tounittype(L, -1);
+	if((!u || !u->get()) && !ut) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
 	const attack_type* attack = nullptr;
-	const std::vector<attack_type>& attacks = u ? u->attacks() : ut->attacks();
+	const std::vector<attack_type>& attacks = u ? u->get()->attacks() : ut->attacks();
 	if(!lua_isnumber(L,2)) {
 		std::string attack_id = luaL_checkstring(L, 2);
 		for(const attack_type& at : attacks) {
@@ -73,18 +117,7 @@ static int impl_unit_attacks_get(lua_State *L)
 		attack = &attacks[index];
 	}
 
-	// stack { lua_unit }, id/index, lua_unit
-	lua_createtable(L, 2, 0);
-	// stack { lua_unit }, id/index, lua_unit, table
-	lua_pushvalue(L, -2);
-	// stack { lua_unit }, id/index, lua_unit, table, lua_unit
-	lua_rawseti(L, -2, 1);
-	// stack { lua_unit }, id/index, lua_unit, table
-	lua_pushstring(L, attack->id().c_str());
-	// stack { lua_unit }, id/index, lua_unit, table, attack id
-	lua_rawseti(L, -2, 2);
-	// stack { lua_unit }, id/index, lua_unit, table
-	luaL_setmetatable(L, uattackKey);
+	luaW_pushweapon(L, *attack, u ? -1 : 0);
 	return 1;
 }
 
@@ -98,9 +131,9 @@ static int impl_unit_attacks_len(lua_State *L)
 	if(!lua_istable(L, 1)) {
 		return luaL_typerror(L, 1, "unit attacks");
 	}
-	lua_rawgeti(L, 1, -1);
+	lua_rawgeti(L, 1, 0);
 	const unit* u = luaW_tounit(L, -1);
-	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
+	const unit_type* ut = luaW_tounittype(L, -1);
 	if(!u && !ut) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
@@ -109,27 +142,20 @@ static int impl_unit_attacks_len(lua_State *L)
 }
 
 /**
- * Gets a propoerty of a units attack (__index metamethod).
+ * Gets a property of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
  * - Ret 1:
  */
 static int impl_unit_attack_get(lua_State *L)
 {
-	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit attack");
-	}
-	lua_rawgeti(L, 1, 1);
-	const unit* u = luaW_tounit(L, -1);
-	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
-	if(!u && !ut) {
+	attack_ref& atk_ref = luaW_checkweapon_ref(L, 1);
+	lua_unit* owner = atk_ref.owner(L);
+	if(owner && !owner->get()) {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
-	lua_rawgeti(L, 1, 2);
-	std::string attack_id = luaL_checkstring(L, -1);
+	attack_type& attack = *atk_ref.attack;
 	char const *m = luaL_checkstring(L, 2);
-	for(const attack_type& attack : u ? u->attacks() : ut->attacks()) {
-		if(attack.id() == attack_id) {
 			return_string_attrib("description", attack.name());
 			return_string_attrib("name", attack.id());
 			return_string_attrib("type", attack.type());
@@ -147,33 +173,27 @@ static int impl_unit_attack_get(lua_State *L)
 			std::string err_msg = "unknown property of attack: ";
 			err_msg += m;
 			return luaL_argerror(L, 2, err_msg.c_str());
-		}
-	}
-	return luaL_argerror(L, 1, "invalid attack id");
 }
 
 /**
- * Gets a propoerty of a units attack (__index metamethod).
+ * Gets a property of a units attack (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
  * - Arg 2: string
  * - Ret 1:
  */
 static int impl_unit_attack_set(lua_State *L)
 {
-	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit attack");
-	}
-	lua_rawgeti(L, 1, 1);
-	unit* u = luaW_tounit(L, -1);
-	const unit_type* ut = static_cast<const unit_type*>(luaL_testudata(L, -1, "unit type"));
-	if(!u && !ut) {
+	attack_ref& atk_ref = luaW_checkweapon_ref(L, 1);
+	lua_unit* owner = atk_ref.owner(L);
+	if(owner && !owner->get()) {
 		return luaL_argerror(L, 1, "unknown unit");
+	} else if(!owner) {
+		return luaL_argerror(L, 1, "unit type attacks are immutable");
 	}
-	lua_rawgeti(L, 1, 2);
-	std::string attack_id = luaL_checkstring(L, -1);
+	unit* u = owner ? owner->get() : nullptr;
+	(void)u;
+	attack_type& attack = *atk_ref.attack;
 	char const *m = luaL_checkstring(L, 2);
-	for(attack_type& attack : u ? u->attacks() : ut->attacks()) {
-		if(attack.id() == attack_id) {
 			modify_tstring_attrib("description", attack.set_name(value));
 			// modify_string_attrib("name", attack.set_id(value));
 			modify_string_attrib("type", attack.set_type(value));
@@ -191,13 +211,31 @@ static int impl_unit_attack_set(lua_State *L)
 				attack.set_specials(luaW_checkconfig(L, 3));
 				return 0;
 			}
-			return_cfgref_attrib("specials", attack.specials());
+
 			std::string err_msg = "unknown modifyable property of attack: ";
 			err_msg += m;
 			return luaL_argerror(L, 2, err_msg.c_str());
-		}
+}
+
+static int impl_unit_attack_equal(lua_State* L)
+{
+	const attack_type& ut1 = luaW_checkweapon(L, 1);
+	if(const attack_type* ut2 = luaW_toweapon(L, 2)) {
+		lua_pushboolean(L, &ut1 == ut2);
+	} else {
+		lua_pushboolean(L, false);
 	}
-	return luaL_argerror(L, 1, "invalid attack id");
+	return 1;
+}
+
+static int impl_unit_attack_collect(lua_State* L)
+{
+	attack_ref* atk = static_cast<attack_ref*>(luaL_checkudata(L, 1, uattackKey));
+	if(!atk->read_only) {
+		luaL_unref(L, LUA_REGISTRYINDEX, atk->owner_ref);
+	}
+	atk->~attack_ref();
+	return 0;
 }
 
 namespace lua_units {
@@ -213,7 +251,7 @@ namespace lua_units {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_attacks_len);
 		lua_setfield(L, -2, "__len");
-		lua_pushstring(L, "unit attacks");
+		lua_pushstring(L, uattacksKey);
 		lua_setfield(L, -2, "__metatable");
 
 		// Create the unit attack metatable
@@ -222,7 +260,11 @@ namespace lua_units {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_attack_set);
 		lua_setfield(L, -2, "__newindex");
-		lua_pushstring(L, "unit attack");
+		lua_pushcfunction(L, impl_unit_attack_equal);
+		lua_setfield(L, -2, "__eq");
+		lua_pushcfunction(L, impl_unit_attack_collect);
+		lua_setfield(L, -2, "__gc");
+		lua_pushstring(L, uattackKey);
 		lua_setfield(L, -2, "__metatable");
 
 		return cmd_out.str();

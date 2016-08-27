@@ -148,7 +148,7 @@ public:
 
 	const std::string& flag_rgb() const;
 
-	std::vector<attack_type> attacks() const;
+	const std::vector<attack_type>& attacks() const;
 	const movetype & movement_type() const { return movement_type_; }
 
 	int experience_needed(bool with_acceleration=true) const;
@@ -244,6 +244,7 @@ private:
 	const config &cfg_;
 	mutable config unit_cfg_;  /// Generated as needed via get_cfg_for_units().
 	mutable bool built_unit_cfg_;
+	mutable std::vector<attack_type> attacks_cache_;
 
 	std::string id_;
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.

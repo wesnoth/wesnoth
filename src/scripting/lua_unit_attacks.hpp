@@ -18,11 +18,17 @@
 #include <string>
 
 struct lua_State;
+class attack_type;
+class lua_unit;
 
 void push_unit_attacks_table(lua_State* L, int idx);
 
 namespace lua_units {
 	std::string register_attacks_metatables(lua_State* L);
 }
+
+void luaW_pushweapon(lua_State* L, const attack_type& weapon, int owner_idx = 0);
+attack_type* luaW_toweapon(lua_State* L, int idx);
+attack_type& luaW_checkweapon(lua_State* L, int idx);
 
 #endif

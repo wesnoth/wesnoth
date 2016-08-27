@@ -484,14 +484,17 @@ const std::vector<unit_animation>& unit_type::animations() const {
 	return animations_;
 }
 
-std::vector<attack_type> unit_type::attacks() const
+const std::vector<attack_type>& unit_type::attacks() const
 {
-	std::vector<attack_type> res;
-	for (const config &att : cfg_.child_range("attack")) {
-		res.push_back(attack_type(att));
+	if(!attacks_cache_.empty()) {
+		return attacks_cache_;
 	}
 
-	return res;
+	for (const config &att : cfg_.child_range("attack")) {
+		attacks_cache_.push_back(attack_type(att));
+	}
+
+	return attacks_cache_;
 }
 
 

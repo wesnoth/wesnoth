@@ -70,9 +70,7 @@ class unit_adapter {
 			}
 		}
 
-		// FIXME: we return a vector by value because unit_type and unit APIs
-		// disagree as to what should be returned by their attacks() method
-		std::vector<attack_type> attacks() const {
+		const std::vector<attack_type>& attacks() const {
 			if(unit_type_ != nullptr) {
 				return unit_type_->attacks();
 			} else {
