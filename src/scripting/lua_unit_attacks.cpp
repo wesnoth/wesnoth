@@ -156,23 +156,23 @@ static int impl_unit_attack_get(lua_State *L)
 	}
 	attack_type& attack = *atk_ref.attack;
 	char const *m = luaL_checkstring(L, 2);
-			return_string_attrib("description", attack.name());
-			return_string_attrib("name", attack.id());
-			return_string_attrib("type", attack.type());
-			return_string_attrib("icon", attack.icon());
-			return_string_attrib("range", attack.range());
-			return_int_attrib("damage", attack.damage());
-			return_int_attrib("number", attack.num_attacks());
-			return_int_attrib("attack_weight", attack.attack_weight());
-			return_int_attrib("defense_weight", attack.defense_weight());
-			return_int_attrib("accuracy", attack.accuracy());
-			return_int_attrib("movement_used", attack.movement_used());
-			return_int_attrib("parry", attack.parry());
-			return_cfgref_attrib("specials", attack.specials());
-			return_cfgref_attrib("__cfg", attack.to_config());
-			std::string err_msg = "unknown property of attack: ";
-			err_msg += m;
-			return luaL_argerror(L, 2, err_msg.c_str());
+	return_string_attrib("description", attack.name());
+	return_string_attrib("name", attack.id());
+	return_string_attrib("type", attack.type());
+	return_string_attrib("icon", attack.icon());
+	return_string_attrib("range", attack.range());
+	return_int_attrib("damage", attack.damage());
+	return_int_attrib("number", attack.num_attacks());
+	return_int_attrib("attack_weight", attack.attack_weight());
+	return_int_attrib("defense_weight", attack.defense_weight());
+	return_int_attrib("accuracy", attack.accuracy());
+	return_int_attrib("movement_used", attack.movement_used());
+	return_int_attrib("parry", attack.parry());
+	return_cfgref_attrib("specials", attack.specials());
+	return_cfgref_attrib("__cfg", attack.to_config());
+	std::string err_msg = "unknown property of attack: ";
+	err_msg += m;
+	return luaL_argerror(L, 2, err_msg.c_str());
 }
 
 /**
@@ -194,27 +194,27 @@ static int impl_unit_attack_set(lua_State *L)
 	(void)u;
 	attack_type& attack = *atk_ref.attack;
 	char const *m = luaL_checkstring(L, 2);
-			modify_tstring_attrib("description", attack.set_name(value));
-			// modify_string_attrib("name", attack.set_id(value));
-			modify_string_attrib("type", attack.set_type(value));
-			modify_string_attrib("icon", attack.set_icon(value));
-			modify_string_attrib("range", attack.set_range(value));
-			modify_int_attrib("damage", attack.set_damage(value));
-			modify_int_attrib("number", attack.set_num_attacks(value));
-			modify_int_attrib("attack_weight", attack.set_attack_weight(value));
-			modify_int_attrib("defense_weight", attack.set_defense_weight(value));
-			modify_int_attrib("accuracy", attack.set_accuracy(value));
-			modify_int_attrib("movement_used", attack.set_movement_used(value));
-			modify_int_attrib("parry", attack.set_parry(value));
+	modify_tstring_attrib("description", attack.set_name(value));
+	// modify_string_attrib("name", attack.set_id(value));
+	modify_string_attrib("type", attack.set_type(value));
+	modify_string_attrib("icon", attack.set_icon(value));
+	modify_string_attrib("range", attack.set_range(value));
+	modify_int_attrib("damage", attack.set_damage(value));
+	modify_int_attrib("number", attack.set_num_attacks(value));
+	modify_int_attrib("attack_weight", attack.set_attack_weight(value));
+	modify_int_attrib("defense_weight", attack.set_defense_weight(value));
+	modify_int_attrib("accuracy", attack.set_accuracy(value));
+	modify_int_attrib("movement_used", attack.set_movement_used(value));
+	modify_int_attrib("parry", attack.set_parry(value));
 
-			if(strcmp(m, "specials") == 0) {
-				attack.set_specials(luaW_checkconfig(L, 3));
-				return 0;
-			}
+	if(strcmp(m, "specials") == 0) {
+		attack.set_specials(luaW_checkconfig(L, 3));
+		return 0;
+	}
 
-			std::string err_msg = "unknown modifyable property of attack: ";
-			err_msg += m;
-			return luaL_argerror(L, 2, err_msg.c_str());
+	std::string err_msg = "unknown modifiable property of attack: ";
+	err_msg += m;
+	return luaL_argerror(L, 2, err_msg.c_str());
 }
 
 static int impl_unit_attack_equal(lua_State* L)
