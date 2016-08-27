@@ -195,7 +195,7 @@ static int impl_unit_attack_set(lua_State *L)
 	attack_type& attack = *atk_ref.attack;
 	char const *m = luaL_checkstring(L, 2);
 	modify_tstring_attrib("description", attack.set_name(value));
-	// modify_string_attrib("name", attack.set_id(value));
+	modify_string_attrib("name", attack.set_id(value));
 	modify_string_attrib("type", attack.set_type(value));
 	modify_string_attrib("icon", attack.set_icon(value));
 	modify_string_attrib("range", attack.set_range(value));

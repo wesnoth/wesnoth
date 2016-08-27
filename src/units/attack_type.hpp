@@ -49,12 +49,10 @@ public:
 	const config specials() const { return specials_; }
 
 	void set_name(const t_string& value) { description_  = value; }
-	// void set_id(const std::string& value) { return id = value; }
+	void set_id(const std::string& value) { id_ = value; }
 	void set_type(const std::string& value) { type_ = value; }
 	void set_icon(const std::string& value) { icon_ = value; }
 	void set_range(const std::string& value) { range_ = value; }
-	// void set_min_range(int value) { min_range_ = value; }
-	// void set_max_range(int value) { max_range_ = value; }
 	void set_accuracy(int value) { accuracy_ = value; }
 	void set_parry(int value) { parry_ = value; }
 	void set_damage(int value) { damage_ = value; }
