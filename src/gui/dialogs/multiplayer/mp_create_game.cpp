@@ -49,6 +49,8 @@
 #include "utils/functional.hpp"
 #endif
 
+#include <boost/algorithm/string.hpp>
+
 namespace gui2
 {
 
@@ -807,6 +809,11 @@ void tmp_create_game::update_details(twindow& window)
 	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
 	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 	config_engine_->set_default_values();
+
+	// Set the title, with newlines replaced. Newlines are sometimes found in SP Campaign names
+	std::string title = create_engine_.current_level().name();
+	boost::replace_all(title, "\n", " " + utils::unicode_em_dash + " ");
+	find_widget<tcontrol>(&window, "game_title", false).set_label(title);
 
 	show_description(window, create_engine_.current_level().description());
 
