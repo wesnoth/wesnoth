@@ -164,8 +164,8 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
-		generator_->place(generator_->get_origin(),
-						  generator_->calculate_best_size());
+		tpoint best_size = generator_->calculate_best_size();
+		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
 		resize_needed = !content_resize_request();
 	}
 
