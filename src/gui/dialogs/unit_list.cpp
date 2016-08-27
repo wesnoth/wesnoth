@@ -33,7 +33,9 @@
 #include "gui/widgets/window.hpp"
 #include "display.hpp"
 #include "formatter.hpp"
+#include "game_board.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
 #include "units/map.hpp"
 #include "units/ptr.hpp"
 #include "units/unit.hpp"
@@ -149,7 +151,7 @@ void tunit_list::pre_show(twindow& window)
 		// NOTE: this needs to be done *after* the row is added
 		// TODO: show custom statuses
 		if(!unit->get_state(unit::STATE_PETRIFIED)) {
-			find_widget<timage>(row_grid, "unit_status_slowed", false).set_visible(twidget::tvisible::invisible);
+			find_widget<timage>(row_grid, "unit_status_petrified", false).set_visible(twidget::tvisible::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_POISONED)) {
@@ -157,11 +159,11 @@ void tunit_list::pre_show(twindow& window)
 		}
 
 		if(!unit->get_state(unit::STATE_SLOWED)) {
-			find_widget<timage>(row_grid, "unit_status_invisible", false).set_visible(twidget::tvisible::invisible);
+			find_widget<timage>(row_grid, "unit_status_slowed", false).set_visible(twidget::tvisible::invisible);
 		}
 
-		if(!unit->invisible(unit->get_location(), false)) {
-			find_widget<timage>(row_grid, "unit_status_petrified", false).set_visible(twidget::tvisible::invisible);
+		if(!unit->invisible(unit->get_location(), *resources::gameboard, false)) {
+			find_widget<timage>(row_grid, "unit_status_invisible", false).set_visible(twidget::tvisible::invisible);
 		}
 	}
 

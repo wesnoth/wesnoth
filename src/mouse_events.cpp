@@ -779,7 +779,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		clicked_location.destinations.insert(hex);
 
 		for(unit_map::iterator u = pc_.gamestate().board_.units_.begin(); u != pc_.gamestate().board_.units_.end(); ++u) {
-			bool invisible = u->invisible(u->get_location());
+			bool invisible = u->invisible(u->get_location(), gui_->get_disp_context());
 
 			if (!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 			{
@@ -1097,7 +1097,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 		// (Visible to current team, not necessarily the unit's team.)
 		if (!pc_.get_map_const().on_board(loc)) continue;
 		unit_map::const_iterator i = pc_.gamestate().board_.units().find(loc);
-		if ( !i ||  !i->is_visible_to_team(cur_team, pc_.gamestate().board_.map(), false) )
+		if ( !i ||  !i->is_visible_to_team(cur_team, pc_.gamestate().board_.map(), gui_->get_disp_context(), false) )
 			continue;
 		const unit &target = *i;
 		// Can only attack non-petrified enemies.
@@ -1119,7 +1119,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&
-	    it->invisible(it->get_location()))
+	    it->invisible(it->get_location(), gui().get_disp_context()))
 		return false;
 
 	if (it->get_hidden())

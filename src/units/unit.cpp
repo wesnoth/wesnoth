@@ -2280,7 +2280,7 @@ void unit::apply_modifications()
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
-bool unit::invisible(const map_location& loc, bool see_all) const
+bool unit::invisible(const map_location& loc, const display_context& dc, bool see_all) const
 {
 	if (loc != get_location()) {
 		DBG_UT << "unit::invisible called: id = " << id() << " loc = " << loc << " get_loc = " << get_location() << std::endl;
@@ -2305,7 +2305,7 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = get_ability_bool(hides,loc);
+	bool is_inv = get_ability_bool(hides, loc, dc);
 	if(is_inv){
 		is_inv = (resources::gameboard ? !resources::gameboard->would_be_discovered(loc, side_,see_all) : true);
 	}
@@ -2322,14 +2322,14 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 }
 
 
-bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const see_all) const
+bool unit::is_visible_to_team(team const& team, gamemap const& map, display_context const& dc, bool const see_all) const
 {
 	map_location const& loc = get_location();
 	if (!map.on_board(loc))
 		return false;
 	if (see_all)
 		return true;
-	if (team.is_enemy(side()) && invisible(loc))
+	if (team.is_enemy(side()) && invisible(loc, dc))
 		return false;
 	// allied planned moves are also visible under fog. (we assume that fake units on the map are always whiteboard markers)
 	if (!team.is_enemy(side()) && underlying_id_.is_fake())

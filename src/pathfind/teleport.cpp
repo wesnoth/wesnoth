@@ -236,7 +236,7 @@ const teleport_map get_teleport_locations(const unit &u,
 {
 	std::vector<teleport_group> groups;
 
-	if (u.get_ability_bool("teleport")) {
+	if (u.get_ability_bool("teleport", *resources::gameboard)) {
 		for (const unit_ability & teleport : u.get_abilities("teleport")) {
 			const int tunnel_count = (teleport.first)->child_count("tunnel");
 			for(int i = 0; i < tunnel_count; ++i) {

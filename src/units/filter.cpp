@@ -500,7 +500,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		bool found = false;
 		for (const int viewer : viewers) {
 			bool fogged = fc_.get_disp_context().teams()[viewer - 1].fogged(loc);
-			bool hiding = u.invisible(loc/*, false(?) */);
+			bool hiding = u.invisible(loc, fc_.get_disp_context());
 			bool unit_hidden = fogged || hiding;
 			if (vision["visible"].to_bool(true) != unit_hidden) {
 				found = true;

@@ -2102,7 +2102,9 @@ void display::draw_minimap()
 	draw_minimap_units();
 #else
 	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
+		minimap_ = image::getMinimap(area.w, area.h, get_map(),
+			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
 		if(minimap_ == nullptr) {
 			return;
 		}
@@ -2159,7 +2161,7 @@ void display::draw_minimap_units()
 	for(unit_map::const_iterator u = dc_->units().begin(); u != dc_->units().end(); ++u) {
 		if (fogged(u->get_location()) ||
 		    (dc_->teams()[currentTeam_].is_enemy(u->side()) &&
-		     u->invisible(u->get_location())) ||
+		     u->invisible(u->get_location(), *dc_)) ||
 			 u->get_hidden()) {
 			continue;
 		}
@@ -2829,6 +2831,12 @@ void display::draw_invalidated() {
 		}
 	}
 	invalidated_hexes_ += invalidated_.size();
+
+	if (dc_->teams().empty())
+	{
+		// The unit drawer can't function without teams
+		return;
+	}
 
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 

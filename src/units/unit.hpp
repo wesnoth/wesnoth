@@ -25,6 +25,7 @@
 #include "units/id.hpp"
 
 class display;
+class display_context;
 class gamemap;
 struct SDL_Color;
 class team;
@@ -366,13 +367,13 @@ public:
 	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
 	 * This means that the ability could be owned by the unit itself, or by an adjacent unit.
 	 */
-	bool get_ability_bool(const std::string& tag_name, const map_location& loc) const;
+	bool get_ability_bool(const std::string& tag_name, const map_location& loc, const display_context& dc) const;
 	/**
 	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
 	 * This means that the ability could be owned by the unit itself, or by an adjacent unit.
 	 */
-	bool get_ability_bool(const std::string &tag_name) const
-	{ return get_ability_bool(tag_name, loc_); }
+	bool get_ability_bool(const std::string &tag_name, const display_context& dc) const
+	{ return get_ability_bool(tag_name, loc_, dc); }
 	unit_ability_list get_abilities(const std::string &tag_name, const map_location& loc) const;
 	unit_ability_list get_abilities(const std::string &tag_name) const
 	{ return get_abilities(tag_name, loc_); }
@@ -389,9 +390,9 @@ public:
 	void generate_name();
 
 	// Only see_all=true use caching
-	bool invisible(const map_location& loc, bool see_all=true) const;
+	bool invisible(const map_location& loc, const display_context& dc, bool see_all = true) const;
 
-	bool is_visible_to_team(team const& team, gamemap const & map , bool const see_all = true) const;
+	bool is_visible_to_team(team const& team, gamemap const& map , display_context const& dc, bool const see_all = true) const;
 
 	/** Mark this unit as clone so it can be inserted to unit_map
 	 * @returns                   self (for convenience)

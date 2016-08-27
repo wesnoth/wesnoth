@@ -2300,11 +2300,11 @@ static int intf_unit_defense(lua_State *L)
  * - Arg 2: string.
  * - Ret 1: boolean.
  */
-static int intf_unit_ability(lua_State *L)
+int game_lua_kernel::intf_unit_ability(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	lua_pushboolean(L, u.get_ability_bool(m));
+	lua_pushboolean(L, u.get_ability_bool(m, board()));
 	return 1;
 }
 
@@ -4087,7 +4087,6 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "remove_modifications",     &intf_remove_modifications     },
 		{ "set_music",                &intf_set_music                },
 		{ "transform_unit",           &intf_transform_unit           },
-		{ "unit_ability",             &intf_unit_ability             },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_vision_cost",         &intf_unit_vision_cost         },
@@ -4186,6 +4185,7 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
 		{ "teleport",                  &dispatch<&game_lua_kernel::intf_teleport                   >        },
+		{ "unit_ability",              &dispatch<&game_lua_kernel::intf_unit_ability               >        },
 		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },
 		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
@@ -4385,7 +4385,7 @@ int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
 		{"movement",              intf_unit_movement_cost},
 		{"vision",                intf_unit_vision_cost},
 		{"jamming",               intf_unit_jamming_cost},
-		{"ability",               intf_unit_ability},
+		{"ability",               &dispatch<&game_lua_kernel::intf_unit_ability>},
 		{"transform",             intf_transform_unit},
 		{"select",                &dispatch<&game_lua_kernel::intf_select_unit>},
 	};

@@ -267,7 +267,7 @@ void unit_mover::start(unit_ptr u)
 	disp_->invalidate(path_[0]);
 
 	// If the unit can be seen here by the viewing side:
-	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[0]) ) {
+	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[0], disp_->get_disp_context()) ) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
 		disp_->scroll_to_tiles(path_, game_display::ONSCREEN, true, true, 0.0, false);
@@ -336,8 +336,8 @@ void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wai
 
 	for ( ; current_ < path_index; ++current_ )
 		// If the unit can be seen by the viewing side while making this step:
-		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_]) ||
-		     !temp_unit_ptr_->invisible(path_[current_+1]) )
+		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_], disp_->get_disp_context()) ||
+		     !temp_unit_ptr_->invisible(path_[current_+1], disp_->get_disp_context()) )
 		{
 			// Wait for the previous step to complete before drawing the next one.
 			wait_for_anims();
