@@ -992,6 +992,10 @@ twidget* tbuilder_listbox::build() const
  *                                     must have the same number of columns as
  *                                     the 'list_definition'. $
  *
+ *     has_minimum & bool & true &     If false, less than one row can be selected. $
+ *
+ *     has_maximum & bool & true &     If false, more than one row can be selected. $
+ *
  * @end{table}
  * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="header"}
@@ -1023,6 +1027,8 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, list_builder(nullptr)
 	, list_data()
+	, has_minimum_(cfg["has_minimum"].to_bool(true))
+	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
 	const config& l = cfg.child("list_definition");
 
@@ -1069,7 +1075,7 @@ twidget* tbuilder_horizontal_listbox::build() const
 	return widget;
 #else
 	tlistbox* widget
-			= new tlistbox(true, true, tgenerator_::horizontal_list, true);
+			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::horizontal_list, true);
 
 	init_control(widget);
 
