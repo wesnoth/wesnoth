@@ -192,7 +192,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		}
 	}
 
-	if (size_t(weapon_num) >= u->attacks().size()) {
+	if (static_cast<unsigned>(weapon_num) >= u->attacks().size()) {
 		error_handler("illegal weapon type in attack\n", true);
 		return false;
 	}
