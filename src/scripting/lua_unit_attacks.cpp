@@ -19,23 +19,21 @@
 #include "scripting/lua_unit_type.hpp"
 #include "units/unit.hpp"
 #include "units/attack_type.hpp"
+#include "utils/const_clone.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
+
+#include <type_traits>
 
 static const char uattacksKey[] = "unit attacks table";
 static const char uattackKey[] = "unit attack";
 
 struct attack_ref {
-	bool read_only; // true if it's a unit type attack
-	int owner_ref;
-	attack_type* attack;
-	lua_unit* owner(lua_State* L) {
-		lua_rawgeti(L, LUA_REGISTRYINDEX, owner_ref);
-		lua_unit* u = luaW_tounit_ref(L, -1);
-		lua_pop(L, 1);
-		return u;
-	}
+	attack_ptr attack;
+	const_attack_ptr cattack;
+	attack_ref(attack_ptr atk) : attack(atk), cattack(atk) {}
+	attack_ref(const_attack_ptr atk) : cattack(atk) {}
 };
 
 void push_unit_attacks_table(lua_State* L, int idx)
@@ -48,15 +46,16 @@ void push_unit_attacks_table(lua_State* L, int idx)
 	luaL_setmetatable(L, uattacksKey);
 }
 
-void luaW_pushweapon(lua_State* L, const attack_type& weapon, int owner_idx)
+void luaW_pushweapon(lua_State* L, attack_ptr weapon)
 {
-	owner_idx = lua_absindex(L, owner_idx);
-	attack_ref* atk = new(L) attack_ref {!owner_idx, 0, const_cast<attack_type*>(&weapon)};
+	new(L) attack_ref(weapon);
 	luaL_setmetatable(L, uattackKey);
-	if(owner_idx) {
-		lua_pushvalue(L, owner_idx);
-		atk->owner_ref = luaL_ref(L, LUA_REGISTRYINDEX);
-	}
+}
+
+void luaW_pushweapon(lua_State* L, const_attack_ptr weapon)
+{
+	new(L) attack_ref(weapon);
+	luaL_setmetatable(L, uattackKey);
 }
 
 static attack_ref& luaW_checkweapon_ref(lua_State* L, int idx)
@@ -64,17 +63,49 @@ static attack_ref& luaW_checkweapon_ref(lua_State* L, int idx)
 	return *static_cast<attack_ref*>(luaL_checkudata(L, idx, uattackKey));
 }
 
-attack_type* luaW_toweapon(lua_State* L, int idx)
+const_attack_ptr luaW_toweapon(lua_State* L, int idx)
 {
 	if(void* p = luaL_testudata(L, idx, uattackKey)) {
-		return static_cast<attack_ref*>(p)->attack;
+		return static_cast<attack_ref*>(p)->cattack;
 	}
 	return nullptr;
 }
 
 attack_type& luaW_checkweapon(lua_State* L, int idx)
 {
-	return *luaW_checkweapon_ref(L, idx).attack;
+	attack_ref& atk = luaW_checkweapon_ref(L, idx);
+	if(!atk.attack) {
+		luaL_argerror(L, idx, "attack is read-only");
+	}
+	return *atk.attack;
+}
+
+template<typename T>
+using attack_ptr_in = boost::intrusive_ptr<typename utils::tconst_clone<attack_type, typename std::remove_pointer<T>::type>::type>;
+
+// Note that these two templates are designed on the assumption that T is either unit or unit_type
+template<typename T>
+auto find_attack(T* u, std::string id) -> attack_ptr_in<T>
+{
+	auto attacks = u->attacks();
+	for(auto at = attacks.begin(); at != attacks.end(); ++at) {
+		if(at->id() == id) {
+			return *at.base();
+		}
+	}
+	return nullptr;
+}
+
+template<typename T>
+auto find_attack(T* u, size_t i) -> attack_ptr_in<T>
+{
+	auto attacks = u->attacks();
+	if(i < attacks.size()) {
+		auto iter = attacks.begin();
+		iter += i;
+		return *iter.base();
+	}
+	return nullptr;
 }
 
 /**
@@ -89,35 +120,18 @@ static int impl_unit_attacks_get(lua_State *L)
 		return luaL_typerror(L, 1, "unit attacks");
 	}
 	lua_rawgeti(L, 1, 0);
-	lua_unit* u = luaW_tounit_ref(L, -1);
+	lua_unit* lu = luaW_tounit_ref(L, -1);
 	const unit_type* ut = luaW_tounittype(L, -1);
-	if((!u || !u->get()) && !ut) {
+	if(lu && lu->get()) {
+		unit* u = lu->get();
+		attack_ptr atk = lua_isnumber(L, 2) ? find_attack(u, luaL_checkinteger(L, 2) - 1) : find_attack(u, luaL_checkstring(L, 2));
+		luaW_pushweapon(L, atk);
+	} else if(ut) {
+		const_attack_ptr atk = lua_isnumber(L, 2) ? find_attack(ut, luaL_checkinteger(L, 2) - 1) : find_attack(ut, luaL_checkstring(L, 2));
+		luaW_pushweapon(L, atk);
+	} else {
 		return luaL_argerror(L, 1, "unknown unit");
 	}
-	const attack_type* attack = nullptr;
-	const_attack_itors attacks = u ? u->get()->attacks() : ut->attacks();
-	if(!lua_isnumber(L,2)) {
-		std::string attack_id = luaL_checkstring(L, 2);
-		for(const attack_type& at : attacks) {
-			if(at.id() == attack_id) {
-				attack = &at;
-				break;
-			}
-		}
-		if(attack == nullptr) {
-			//return nil on invalid index, just like lua tables do.
-			return 0;
-		}
-	} else {
-		size_t index = luaL_checkinteger(L, 2) - 1;
-		if(index >= attacks.size()) {
-			//return nil on invalid index, just like lua tables do.
-			return 0;
-		}
-		attack = &attacks[index];
-	}
-
-	luaW_pushweapon(L, *attack, u ? -1 : 0);
 	return 1;
 }
 
@@ -150,12 +164,9 @@ static int impl_unit_attacks_len(lua_State *L)
 static int impl_unit_attack_get(lua_State *L)
 {
 	attack_ref& atk_ref = luaW_checkweapon_ref(L, 1);
-	lua_unit* owner = atk_ref.owner(L);
-	if(owner && !owner->get()) {
-		return luaL_argerror(L, 1, "unknown unit");
-	}
-	attack_type& attack = *atk_ref.attack;
+	const attack_type& attack = *atk_ref.cattack;
 	char const *m = luaL_checkstring(L, 2);
+	return_bool_attrib("read_only", atk_ref.attack == nullptr);
 	return_string_attrib("description", attack.name());
 	return_string_attrib("name", attack.id());
 	return_string_attrib("type", attack.type());
@@ -183,16 +194,7 @@ static int impl_unit_attack_get(lua_State *L)
  */
 static int impl_unit_attack_set(lua_State *L)
 {
-	attack_ref& atk_ref = luaW_checkweapon_ref(L, 1);
-	lua_unit* owner = atk_ref.owner(L);
-	if(owner && !owner->get()) {
-		return luaL_argerror(L, 1, "unknown unit");
-	} else if(!owner) {
-		return luaL_argerror(L, 1, "unit type attacks are immutable");
-	}
-	unit* u = owner ? owner->get() : nullptr;
-	(void)u;
-	attack_type& attack = *atk_ref.attack;
+	attack_type& attack = luaW_checkweapon(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	modify_tstring_attrib("description", attack.set_name(value));
 	modify_string_attrib("name", attack.set_id(value));
@@ -219,21 +221,15 @@ static int impl_unit_attack_set(lua_State *L)
 
 static int impl_unit_attack_equal(lua_State* L)
 {
-	const attack_type& ut1 = luaW_checkweapon(L, 1);
-	if(const attack_type* ut2 = luaW_toweapon(L, 2)) {
-		lua_pushboolean(L, &ut1 == ut2);
-	} else {
-		lua_pushboolean(L, false);
-	}
+	const_attack_ptr ut1 = luaW_toweapon(L, 1);
+	const_attack_ptr ut2 = luaW_toweapon(L, 2);
+	lua_pushboolean(L, ut1 == ut2);
 	return 1;
 }
 
 static int impl_unit_attack_collect(lua_State* L)
 {
 	attack_ref* atk = static_cast<attack_ref*>(luaL_checkudata(L, 1, uattackKey));
-	if(!atk->read_only) {
-		luaL_unref(L, LUA_REGISTRYINDEX, atk->owner_ref);
-	}
 	atk->~attack_ref();
 	return 0;
 }

@@ -125,13 +125,13 @@ private:
 	int movement_used_;
 	int parry_;
 	config specials_;
-	size_t ref_count = 0;
+	mutable size_t ref_count = 0;
 
-	friend void intrusive_ptr_add_ref(attack_type* atk) {
+	friend void intrusive_ptr_add_ref(const attack_type* atk) {
 		++atk->ref_count;
 	}
 
-	friend void intrusive_ptr_release(attack_type* atk) {
+	friend void intrusive_ptr_release(const attack_type* atk) {
 		--atk->ref_count;
 	}
 };
