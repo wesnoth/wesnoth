@@ -1097,7 +1097,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 		// (Visible to current team, not necessarily the unit's team.)
 		if (!pc_.get_map_const().on_board(loc)) continue;
 		unit_map::const_iterator i = pc_.gamestate().board_.units().find(loc);
-		if ( !i ||  !i->is_visible_to_team(cur_team, pc_.gamestate().board_.map(), gui_->get_disp_context(), false) )
+		if ( !i ||  !i->is_visible_to_team(cur_team, gui_->get_disp_context(), false) )
 			continue;
 		const unit &target = *i;
 		// Can only attack non-petrified enemies.

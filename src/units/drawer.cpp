@@ -76,7 +76,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 	std::string ellipse=u.image_ellipse();
 
-	if ( hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, map, dc, show_everything) )
+	if ( hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, dc, show_everything) )
 	{
 		ac.clear_haloes();
 		if(ac.anim_) {

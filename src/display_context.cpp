@@ -58,7 +58,7 @@ const unit * display_context::get_visible_unit(const map_location & loc, const t
 {
 	if (!map().on_board(loc)) return nullptr;
 	const unit_map::const_iterator u = units().find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, map(), *this, see_all)) {
+	if (!u.valid() || !u->is_visible_to_team(current_team, *this, see_all)) {
 		return nullptr;
 	}
 	return &*u;
