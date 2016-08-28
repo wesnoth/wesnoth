@@ -118,6 +118,24 @@ public:
 		}
 	}
 
+	/**
+	 * Sets a common callback function for all members.
+	 */
+	void set_callback_on_value_change(const std::function<void(twidget&)>& func)
+	{
+		// Ensure this callback is only called on the member being activated
+		const auto callback = [func](twidget& widget)->void {
+			if(dynamic_cast<tselectable_*>(&widget)->get_value_bool()) {
+				func(widget);
+			}
+		};
+
+		for(auto& member : members())
+		{
+			member.first->set_callback_state_change(callback);
+		}
+	}
+
 private:
 	group_list members_;
 

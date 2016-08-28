@@ -99,10 +99,7 @@ void tunit_create::pre_show(twindow& window)
 
 	gender_toggle.set_member_states(last_gender);
 
-	male_toggle.set_callback_state_change(
-			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
-
-	female_toggle.set_callback_state_change(
+	gender_toggle.set_callback_on_value_change(
 			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
 
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);

@@ -67,14 +67,7 @@ void tfaction_select::pre_show(twindow& window)
 
 	gender_toggle_.set_member_states("random");
 
-	// TODO: consolidate when adding a all-member callback setter to tgroup
-	gender_rand.set_callback_state_change(
-			dialog_callback<tfaction_select, &tfaction_select::on_gender_select>);
-
-	gender_male.set_callback_state_change(
-			dialog_callback<tfaction_select, &tfaction_select::on_gender_select>);
-
-	gender_female.set_callback_state_change(
+	gender_toggle_.set_callback_on_value_change(
 			dialog_callback<tfaction_select, &tfaction_select::on_gender_select>);
 
 	//
