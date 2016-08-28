@@ -822,6 +822,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/logging.cpp
 	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/multiplayer/faction_select.cpp
 	gui/dialogs/multiplayer/mp_alerts_options.cpp
 	gui/dialogs/multiplayer/mp_change_control.cpp
 	gui/dialogs/multiplayer/mp_cmd_wrapper.cpp

@@ -65,6 +65,7 @@
 #include "gui/dialogs/logging.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/multiplayer/faction_select.cpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
@@ -388,6 +389,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_set_starting_position>();
+	//test<gui2::tfaction_select>();
 	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
 	test<gui2::tgame_cache_options>();
@@ -483,7 +485,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"game_stats",
 		"unit_advance",
 		"mp_host_game_prompt",
-		"mp_create_game"
+		"mp_create_game",
+		"faction_select"
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
