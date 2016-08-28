@@ -27,6 +27,9 @@ Version 1.13.5+dev:
    * Recall dialog no longer shows units that no leader on the map can recall
      (due to the [filter_recall] not matching)
    * Weapon specials only gained through AMLAs now get a help topic
+   * The "Cores" button on the title screen is now hidden if no cores other
+     than the default are installed
+   * Redesigned game dropdown/context menu appearance
  * WML Engine:
    * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
@@ -74,6 +77,21 @@ Version 1.13.5+dev:
      directly called, extended with new features, or even overridden with custom
      implementations.
    * New recall_filter field in unit proxy returns the [filter_recall] config
+   * New variations field in unit_type proxy returns a list of unit variations
+     Each member is a full unit_type describing that variation.
+   * Lua side, unit_type, and unit attack proxies can now be compared with ==
+     with identity semantics. (Previously, each time such a proxy was obtained,
+     it would produce a new object that did not compare equal to any others.)
+   * Lua dialog functions now support the stacked widget and the unit preview pane
+   * New wesnoth.show_menu function shows a dropdown menu at the mouse location
+   * Lua attack proxy has new read_only field which is true for unit_type attacks
+     If true, attempts to change the attack will result in an error.
+   * The name field in Lua attack proxy is now writable
+   * The attacks field in the Lua unit proxy is now writable
+     Specifically, attacks may be replaced, appended (by assigning a new ID or
+     the next valid index), or removed (by setting a field to nil).
+   * wesnoth.show_message_dialog supports second_portrait and second_mirror keys
+     in its first argument, which produces a dialog with two portraits.
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle
