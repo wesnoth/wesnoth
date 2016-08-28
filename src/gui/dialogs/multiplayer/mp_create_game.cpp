@@ -166,11 +166,20 @@ void tmp_create_game::pre_show(twindow& window)
 
 	tmenu_button& game_menu_button = find_widget<tmenu_button>(&window, "game_types", false);
 
-	game_menu_button.set_values(game_types);
-	if(game_config::debug || preferences::level_type() != ng::level::TYPE::SP_CAMPAIGN) {
-		game_menu_button.set_selected(preferences::level_type());
-	}
+	// Helper to make sure the initially selected level type is valid
+	auto get_initial_type_index = [this]() {
+		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
+			return info.first == ng::level::TYPE::from_int(preferences::level_type());
+		});
 
+		if(index != level_types_.end()) {
+			return index - level_types_.begin();
+		}
+
+		return 0;
+	};
+
+	game_menu_button.set_values(game_types, get_initial_type_index());
 	game_menu_button.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(window)));
 
 	//
@@ -253,8 +262,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 	tmenu_button& rfm_menu_button = find_widget<tmenu_button>(&window, "random_faction_mode", false);
 
-	rfm_menu_button.set_values(rfm_options);
-	rfm_menu_button.set_selected(initial_index);
+	rfm_menu_button.set_values(rfm_options, initial_index);
 	rfm_menu_button.connect_click_handler(std::bind(&tmp_create_game::on_random_faction_mode_select, this, std::ref(window)));
 
 	on_random_faction_mode_select(window);
@@ -301,7 +309,7 @@ void tmp_create_game::pre_show(twindow& window)
 	window.add_to_keyboard_chain(&list);
 
 	// This handles both the initial game and tab selection
-	display_games_of_type(window, ng::level::TYPE::from_int(preferences::level_type()), preferences::level());
+	display_games_of_type(window, level_types_[get_initial_type_index()].first, preferences::level());
 
 	//
 	// Set up the Lua plugin context
