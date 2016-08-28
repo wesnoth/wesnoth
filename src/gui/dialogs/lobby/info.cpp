@@ -222,11 +222,13 @@ void lobby_info::sync_games_display_status()
 	DBG_LB << "lobby_info::sync_games_display_status";
 	DBG_LB << "games_by_id_ size: " << games_by_id_.size();
 
-	for(auto& game : games_by_id_) {
-		if(game.second->display_status == game_info::DELETED) {
-			games_by_id_.erase(game.first);
+	game_info_map::iterator i = games_by_id_.begin();
+	while(i != games_by_id_.end()) {
+		if(i->second->display_status == game_info::DELETED) {
+			i = games_by_id_.erase(i);
 		} else {
-			game.second->display_status = game_info::CLEAN;
+			i->second->display_status = game_info::CLEAN;
+			++i;
 		}
 	}
 
