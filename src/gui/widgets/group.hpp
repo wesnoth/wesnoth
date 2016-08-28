@@ -79,25 +79,12 @@ public:
 	}
 
 	/**
-	 * The default actions to take when clicking on one of the widgets
-	 * in the group.
-	 */
-	void group_operator()
-	{
-		for(auto& member : members())
-		{
-			member.first->set_value(false);
-		}
-	}
-
-	/**
 	 * Returns the value paired with the currently activiely toggled member
 	 * of the group.
 	 */
 	T get_active_member_value()
 	{
-		for(auto& member : members())
-		{
+		for(auto& member : members()) {
 			if(member.first->get_value_bool()) {
 				return member.second;
 			}
@@ -112,8 +99,7 @@ public:
 	 */
 	void set_member_states(const T& value)
 	{
-		for(auto& member : members())
-		{
+		for(auto& member : members()) {
 			member.first->set_value(member.second == value);
 		}
 	}
@@ -130,8 +116,7 @@ public:
 			}
 		};
 
-		for(auto& member : members())
-		{
+		for(auto& member : members()) {
 			member.first->set_callback_state_change(callback);
 		}
 	}
@@ -139,6 +124,16 @@ public:
 private:
 	group_list members_;
 
+	/**
+	 * The default actions to take when clicking on one of the widgets
+	 * in the group.
+	 */
+	void group_operator()
+	{
+		for(auto& member : members()) {
+			member.first->set_value(false);
+		}
+	}
 };
 
 } // namespace gui2
