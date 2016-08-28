@@ -167,7 +167,7 @@ void tmp_create_game::pre_show(twindow& window)
 	tmenu_button& game_menu_button = find_widget<tmenu_button>(&window, "game_types", false);
 
 	// Helper to make sure the initially selected level type is valid
-	auto get_initial_type_index = [this]() {
+	auto get_initial_type_index = [this]()->int {
 		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
 			return info.first == ng::level::TYPE::from_int(preferences::level_type());
 		});
