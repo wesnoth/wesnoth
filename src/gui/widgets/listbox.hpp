@@ -33,6 +33,7 @@ namespace implementation
 {
 struct tbuilder_listbox;
 struct tbuilder_horizontal_listbox;
+struct tbuilder_grid_listbox;
 }
 
 /** The listbox class. */
@@ -40,6 +41,7 @@ class tlistbox : public tscrollbar_container
 {
 	friend struct implementation::tbuilder_listbox;
 	friend struct implementation::tbuilder_horizontal_listbox;
+	friend struct implementation::tbuilder_grid_listbox;
 	friend class tdebug_layout_graph;
 
 public:
@@ -411,6 +413,30 @@ struct tbuilder_listbox : public tbuilder_control
 struct tbuilder_horizontal_listbox : public tbuilder_control
 {
 	explicit tbuilder_horizontal_listbox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<string_map> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+struct tbuilder_grid_listbox : public tbuilder_control
+{
+	explicit tbuilder_grid_listbox(const config& cfg);
 
 	using tbuilder_control::build;
 

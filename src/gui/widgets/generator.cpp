@@ -513,6 +513,298 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
+tmatrix::tmatrix() : placed_(false)//, n_cols_(2)
+{
+}
+
+void tmatrix::create_item(const unsigned /*index*/)
+{
+	if(!placed_) {
+		return;
+	}
+
+	/** @todo implement. */
+	assert(false);
+}
+
+tpoint tmatrix::calculate_best_size() const
+{
+	// The best size is the one that minimizes overall width and height
+	// We try a number of columns from 2 up to sqrt(rows) + 1
+	size_t n_items = get_item_count();
+	if(n_items == 0) {
+		return tpoint();
+	} else if(n_items == 1) {
+		return item(0).get_best_size();
+	}
+	size_t max_cols = sqrt(n_items) + 1;
+	std::map<size_t,tpoint> best_sizes;
+	for(size_t cols = 2, n = 0; cols <= max_cols && n < n_items; cols++) {
+		tpoint result;
+		for(size_t i = 0; i < n_items / cols + 1; ++i) {
+			tpoint row_size;
+			for(size_t j = 0; j < cols && n < n_items; j++, n++) {
+				const tgrid& grid = item(n);
+				if(grid.get_visible() == twidget::tvisible::invisible
+				   || !get_item_shown(n)) {
+					j--;
+					continue;
+				}
+
+				const tpoint best_size = grid.get_best_size();
+
+				row_size.x += best_size.x;
+
+				if(best_size.y > row_size.y) {
+					row_size.y = best_size.y;
+				}
+			}
+
+			if(row_size.x > result.x) {
+				result.x = row_size.x;
+			}
+
+			result.y += row_size.y;
+		}
+		best_sizes[cols] = result;
+	}
+
+	return std::min_element(best_sizes.begin(), best_sizes.end(), [](const std::pair<size_t,tpoint>& p1, const std::pair<size_t,tpoint>& p2) {
+		return p1.second.x + p1.second.y < p2.second.x + p2.second.y;
+	})->second;
+	//n_cols_ = iter->first; // TODO: This needs to be recalculated from the best size somehow?
+}
+
+void tmatrix::place(const tpoint& origin, const tpoint& size)
+{
+	/*
+	 * - Set every item to its best size.
+	 * - The origin gets increased with the height of the last item.
+	 * - No item should be wider as the size.
+	 * - In the end the origin should be the sum of the origin and the wanted
+	 *   height.
+	 */
+
+	tpoint current_origin = origin;
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = item_ordered(i);
+		if(grid.get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
+
+			continue;
+		}
+
+		tpoint best_size = grid.get_best_size();
+		// FIXME should we look at grow factors???
+//		best_size.x = size.x;
+
+		grid.place(current_origin, best_size);
+
+		if(current_origin.x + best_size.x > size.x) {
+			current_origin.x = origin.x;
+			current_origin.y += best_size.y;
+		} else {
+			current_origin.x += best_size.x;
+		}
+	}
+
+//	assert(current_origin.y == origin.y + size.y);
+}
+
+void tmatrix::set_origin(const tpoint& origin)
+{
+	tpoint current_origin = origin;
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = item_ordered(i);
+		if(grid.get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
+
+			continue;
+		}
+
+		grid.set_origin(current_origin);
+
+		if(current_origin.x + grid.get_width() > get_width()) {
+			current_origin.x = origin.x;
+			current_origin.y += grid.get_height();
+		} else {
+			current_origin.x += grid.get_width();
+		}
+	}
+}
+
+void tmatrix::set_visible_rectangle(const SDL_Rect& rectangle)
+{
+	/*
+	 * Note for most implementations this function could work only for the
+	 * tindependent class it probably fails. Evaluate to make a generic
+	 * function in the tgenerator template class and call it from the wanted
+	 * placement functions.
+	 */
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = item(i);
+		grid.set_visible_rectangle(rectangle);
+	}
+}
+
+twidget* tmatrix::find_at(const tpoint& coordinate,
+						  const bool must_be_active)
+{
+	assert(get_window());
+
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = item(i);
+		if(grid.get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(i)) {
+
+			continue;
+		}
+
+		twidget* widget = grid.find_at(coordinate, must_be_active);
+
+		if(widget) {
+			return widget;
+		}
+	}
+	return nullptr;
+}
+
+const twidget* tmatrix::find_at(const tpoint& coordinate,
+								const bool must_be_active) const
+{
+	assert(get_window());
+
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		const tgrid& grid = item(i);
+		if(grid.get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(i)) {
+
+			continue;
+		}
+
+		const twidget* widget = grid.find_at(coordinate, must_be_active);
+
+		if(widget) {
+			return widget;
+		}
+	}
+	return nullptr;
+}
+
+void tmatrix::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
+
+		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
+
+			continue;
+		}
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(get_item_at_ordered(i), true);
+			return;
+		}
+	}
+}
+
+void tmatrix::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+
+		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
+
+			continue;
+		}
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(get_item_at_ordered(i), true);
+			return;
+		}
+	}
+}
+
+void tmatrix::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
+
+		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
+
+			continue;
+		}
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(get_item_at_ordered(i), true);
+			return;
+		}
+	}
+}
+
+void tmatrix::handle_key_right_arrow(SDLMod /*modifier*/,
+									 bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+
+		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
+		   || !get_item_shown(get_item_at_ordered(i))) {
+
+			continue;
+		}
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(get_item_at_ordered(i), true);
+			return;
+		}
+	}
+}
+
 void tindependent::request_reduce_width(const unsigned maximum_width)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {

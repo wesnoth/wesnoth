@@ -349,11 +349,10 @@ private:
  */
 struct tmatrix : public virtual tgenerator_
 {
+	tmatrix();
+
 	/** See thorizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/)
-	{
-		ERROR_LOG(false);
-	}
+	void create_item(const unsigned /*index*/);
 
 	/* Also make the overload from the generator_ visible. */
 	using tgenerator_::create_item;
@@ -372,72 +371,48 @@ struct tmatrix : public virtual tgenerator_
 	}
 
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override
-	{
-		ERROR_LOG(false);
-	}
+	virtual tpoint calculate_best_size() const override;
 
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& /*origin*/
-					   ,
-					   const tpoint& /*size*/) override
-	{
-		ERROR_LOG(false);
-	}
+					   , const tpoint& /*size*/) override;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& /*origin*/) override
-	{
-		ERROR_LOG(false);
-	}
+	virtual void set_origin(const tpoint& /*origin*/) override;
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& /*rectangle*/)
-	{
-		ERROR_LOG(false);
-	}
+	void set_visible_rectangle(const SDL_Rect& /*rectangle*/);
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& /*coordinate*/
-							 ,
-							 const bool /*must_be_active*/) override
-	{
-		ERROR_LOG(false);
-	}
+							 , const bool /*must_be_active*/) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& /*coordinate*/
-								   ,
-								   const bool /*must_be_active*/) const override
-	{
-		ERROR_LOG(false);
-	}
+								   , const bool /*must_be_active*/) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_up_arrow(SDLMod, bool&);
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_down_arrow(SDLMod, bool&);
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_left_arrow(SDLMod, bool&);
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_right_arrow(SDLMod, bool&);
+private:
+	/**
+	 * Has the grid already been placed?
+	 *
+	 * If the grid is placed it's no problem set the location of the new
+	 * item,it hasn't been placed, there's no information about its location
+	 * so do nothing.
+	 */
+	bool placed_;
 };
 
 /**
