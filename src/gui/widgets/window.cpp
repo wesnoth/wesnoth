@@ -67,6 +67,8 @@
 namespace game_logic { class function_symbol_table; }
 namespace gui2 { class tbutton; }
 
+static lg::log_domain log_gui("gui/layout");
+#define ERR_GUI  LOG_STREAM(err, log_gui)
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -983,7 +985,10 @@ bool twindow::has_linked_size_group(const std::string& id)
 void twindow::add_linked_widget(const std::string& id, twidget* widget)
 {
 	assert(widget);
-	assert(has_linked_size_group(id));
+	if(!has_linked_size_group(id)) {
+		ERR_GUI << "Unknown linked group '" << id << "'; skipping";
+		return;
+	}
 
 	std::vector<twidget*>& widgets = linked_size_[id].widgets;
 	if(std::find(widgets.begin(), widgets.end(), widget) == widgets.end()) {
@@ -994,7 +999,9 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 void twindow::remove_linked_widget(const std::string& id, const twidget* widget)
 {
 	assert(widget);
-	assert(has_linked_size_group(id));
+	if(!has_linked_size_group(id)) {
+		return;
+	}
 
 	std::vector<twidget*>& widgets = linked_size_[id].widgets;
 
