@@ -2428,6 +2428,17 @@ const std::string& unit::effect_image_mods() const{
 	return image_mods_;
 }
 
+// Called by the Lua API after resetting an attack pointer.
+bool unit::remove_attack(attack_ptr atk)
+{
+	auto iter = std::find(attacks_.begin(), attacks_.end(), atk);
+	if(iter == attacks_.end()) {
+		return false;
+	}
+	attacks_.erase(iter);
+	return true;
+}
+
 void unit::remove_attacks_ai()
 {
 	if (attacks_left_ == max_attacks_) {

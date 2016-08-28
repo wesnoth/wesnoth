@@ -130,9 +130,63 @@ static int impl_unit_attacks_get(lua_State *L)
 		const_attack_ptr atk = lua_isnumber(L, 2) ? find_attack(ut, luaL_checkinteger(L, 2) - 1) : find_attack(ut, luaL_checkstring(L, 2));
 		luaW_pushweapon(L, atk);
 	} else {
-		return luaL_argerror(L, 1, "unknown unit");
+		return luaL_argerror(L, 1, "unit not found");
 	}
 	return 1;
+}
+
+static attack_itors::iterator get_attack_iter(unit& u, attack_ptr atk)
+{
+	// This is slightly inefficient since it walks the attack list a second time...
+	return std::find_if(u.attacks().begin(), u.attacks().end(), [&atk](const attack_type& atk2) {
+		return &atk2 == atk;
+	});
+}
+
+static int impl_unit_attacks_set(lua_State* L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaL_typerror(L, 1, "unit attacks");
+	}
+	lua_rawgeti(L, 1, 0);
+	const unit_type* ut = luaW_tounittype(L, -1);
+	if(ut) {
+		return luaL_argerror(L, 1, "unit type attack table is immutable");
+	}
+
+	unit& u = luaW_checkunit(L, -1);
+	attack_ptr atk = lua_isnumber(L, 2) ? find_attack(&u, luaL_checkinteger(L, 2) - 1) : find_attack(&u, luaL_checkstring(L, 2));
+	if(lua_isnumber(L, 2) && lua_tonumber(L, 2) - 1 > u.attacks().size()) {
+		return luaL_argerror(L, 2, "attack can only be added at the end of the list");
+	}
+
+	if(lua_isnil(L, 3)) {
+		// Delete the attack
+		u.remove_attack(atk);
+		return 0;
+	}
+
+	auto iter = get_attack_iter(u, atk), end = u.attacks().end();
+	if(const_attack_ptr atk2 = luaW_toweapon(L, 3)) {
+		if(iter == end) {
+			atk = u.add_attack(end, *atk2);
+		} else {
+			iter.base()->reset(new attack_type(*atk2));
+			atk = *iter.base();
+		}
+	} else {
+		config cfg = luaW_checkconfig(L, 3);
+		if(iter == end) {
+			atk = u.add_attack(end, cfg);
+		} else {
+			iter.base()->reset(new attack_type(cfg));
+			atk = *iter.base();
+		}
+	}
+	if(!lua_isnumber(L, 2)) {
+		atk->set_id(lua_tostring(L, 2));
+	}
+	return 0;
 }
 
 /**
@@ -245,6 +299,8 @@ namespace lua_units {
 		luaL_newmetatable(L, uattacksKey);
 		lua_pushcfunction(L, impl_unit_attacks_get);
 		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_unit_attacks_set);
+		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_unit_attacks_len);
 		lua_setfield(L, -2, "__len");
 		lua_pushstring(L, uattacksKey);

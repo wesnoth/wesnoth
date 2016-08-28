@@ -254,6 +254,11 @@ public:
 
 	const_attack_itors attacks() const { return make_attack_itors(attacks_); }
 	attack_itors attacks() { return make_attack_itors(attacks_); }
+	bool remove_attack(attack_ptr atk);
+	template<typename... Args>
+	attack_ptr add_attack(attack_itors::iterator position, Args... args) {
+		return *attacks_.emplace(position.base(), new attack_type(args...));
+	}
 
 	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
 
