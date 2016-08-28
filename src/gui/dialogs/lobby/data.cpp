@@ -176,8 +176,7 @@ game_info::game_info(const config& game, const config& game_config)
 	, vision()
 	, status()
 	, time_limit()
-	, vacant_slots(lexical_cast_default<int>(game["slots"],
-											 0)) // Can't use to_int() here.
+	, vacant_slots(lexical_cast_default<int>(game["slots"], 0)) // Can't use to_int() here.
 	, current_turn(0)
 	, reloaded(game["savegame"].to_bool())
 	, started(false)
@@ -197,8 +196,7 @@ game_info::game_info(const config& game, const config& game_config)
 {
 	std::string turn = game["turn"];
 	if(!game["mp_era"].empty()) {
-		const config& era_cfg
-				= game_config.find_child("era", "id", game["mp_era"]);
+		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 		utils::string_map symbols;
 		symbols["era_id"] = game["mp_era"];
 		if(era_cfg) {
@@ -222,10 +220,9 @@ game_info::game_info(const config& game, const config& game_config)
 
 	if(!game.child_or_empty("modification").empty()) {
 		for(const config &cfg : game.child_range("modification")) {
-			if (cfg["require_modification"].to_bool(false)) {
-				const config &mod = game_config.find_child("modification", "id",
-														   cfg["id"]);
-				if (!mod) {
+			if(cfg["require_modification"].to_bool(false)) {
+				const config &mod = game_config.find_child("modification", "id", cfg["id"]);
+				if(!mod) {
 					have_all_mods = false;
 					break;
 				}
@@ -240,8 +237,7 @@ game_info::game_info(const config& game, const config& game_config)
 	if(map_data.empty()) {
 		map_info += " — ??×??";
 	} else {
-		try
-		{
+		try {
 			gamemap map(std::make_shared<terrain_type_data>(game_config), map_data);
 			// mini_map = image::getMinimap(minimap_size_, minimap_size_, map,
 			// 0);
@@ -249,48 +245,38 @@ game_info::game_info(const config& game, const config& game_config)
 			msi << map.w() << utils::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
 			map_info += " — " + map_size_info;
-		}
-		catch(incorrect_map_format_error& e)
-		{
+		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "illegal map: " << e.message << std::endl;
 			verified = false;
-		}
-		catch(twml_exception& e)
-		{
+		} catch(twml_exception& e) {
 			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
 			verified = false;
 		}
 	}
 	map_info += " ";
 	if(!game["mp_scenario"].empty()) {
-		// check if it's a multiplayer scenario
-		const config* level_cfg = &game_config.find_child("multiplayer",
-														  "id",
-														  game["mp_scenario"]);
+		// Check if it's a multiplayer scenario
+		const config* level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
 		if(!*level_cfg) {
-			// check if it's a user map
-			level_cfg = &game_config.find_child("generic_multiplayer",
-												"id",
-												game["mp_scenario"]);
+			// Check if it's a user map
+			level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 		}
 		if(*level_cfg) {
 			scenario = (*level_cfg)["name"].str();
 			map_info += scenario;
-			// reloaded games do not match the original scenario hash,
-			// so it makes no sense to test them, they always would appear
-			// as remote scenarios
+			// Reloaded games do not match the original scenario hash, so it makes no sense
+			// to test them, since they always would appear as remote scenarios
 			if(!reloaded) {
-				if(const config& hashes
-				   = game_config.child("multiplayer_hashes")) {
+				if(const config& hashes = game_config.child("multiplayer_hashes")) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					for(const auto & i : hashes.attribute_range())
-					{
+					for(const auto & i : hashes.attribute_range()) {
 						if(i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
 						}
 					}
+
 					if(!hash_found) {
 						remote_scenario = true;
 						map_info += " — ";
@@ -311,6 +297,7 @@ game_info::game_info(const config& game, const config& game_config)
 		map_info += scenario;
 		verified = false;
 	}
+
 	if(reloaded) {
 		map_info += " — ";
 		map_info += _("Reloaded game");
@@ -328,9 +315,7 @@ game_info::game_info(const config& game, const config& game_config)
 	} else {
 		started = false;
 		if(vacant_slots > 0) {
-			status = std::string(
-							 _n("Vacant Slot:", "Vacant Slots:", vacant_slots))
-					 + " " + game["slots"];
+			status = std::string(_n("Vacant Slot:", "Vacant Slots:", vacant_slots)) + " " + game["slots"];
 		}
 	}
 
@@ -345,6 +330,7 @@ game_info::game_info(const config& game, const config& game_config)
 	} else {
 		vision = _("none");
 	}
+
 	if(game["mp_countdown"].to_bool()) {
 		time_limit = game["mp_countdown_init_time"].str() + "+"
 					 + game["mp_countdown_turn_bonus"].str() + "/"
@@ -361,8 +347,7 @@ bool game_info::can_join() const
 
 bool game_info::can_observe() const
 {
-	return (have_era && have_all_mods && observers)
-			|| preferences::is_authenticated();
+	return (have_era && have_all_mods && observers) || preferences::is_authenticated();
 }
 
 const char* game_info::display_status_string() const
@@ -377,8 +362,7 @@ const char* game_info::display_status_string() const
 		case game_info::UPDATED:
 			return "updated";
 		default:
-			ERR_CF << "BAD display_status " << display_status << " in game "
-				   << id << "\n";
+			ERR_CF << "BAD display_status " << display_status << " in game " << id << "\n";
 			return "?";
 	}
 }
@@ -389,8 +373,7 @@ game_filter_stack::game_filter_stack() : filters_()
 
 game_filter_stack::~game_filter_stack()
 {
-	for(auto f : filters_)
-	{
+	for(auto f : filters_) {
 		delete f;
 	}
 }
@@ -402,20 +385,21 @@ void game_filter_stack::append(game_filter_base* f)
 
 void game_filter_stack::clear()
 {
-	for(auto f : filters_)
-	{
+	for(auto f : filters_) {
 		delete f;
 	}
+
 	filters_.clear();
 }
 
 bool game_filter_and_stack::match(const game_info& game) const
 {
-	for(auto f : filters_)
-	{
-		if(!f->match(game))
+	for(auto f : filters_) {
+		if(!f->match(game)) {
 			return false;
+		}
 	}
+
 	return true;
 }
 
@@ -423,14 +407,8 @@ bool game_filter_general_string_part::match(const game_info& game) const
 {
 	const std::string& s1 = game.map_info;
 	const std::string& s2 = game.name;
-	return std::search(s1.begin(),
-					   s1.end(),
-					   value_.begin(),
-					   value_.end(),
-					   chars_equal_insensitive) != s1.end()
-		   || std::search(s2.begin(),
-						  s2.end(),
-						  value_.begin(),
-						  value_.end(),
-						  chars_equal_insensitive) != s2.end();
+	return std::search(s1.begin(), s1.end(), value_.begin(), value_.end(),
+			chars_equal_insensitive) != s1.end()
+	    || std::search(s2.begin(), s2.end(), value_.begin(), value_.end(),
+			chars_equal_insensitive) != s2.end();
 }
