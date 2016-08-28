@@ -367,6 +367,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 		}
 	}
 
+	// Ensure we don't get duplicate [leader] tags
+	cfg_summary.clear_children("leader");
+
 	// Find the human leaders so we can display their icons and names in the load menu.
 	config leader_config;
 
