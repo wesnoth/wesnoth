@@ -1083,7 +1083,7 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 	}
 }
 
-void tpreferences::initialize_tabs(twindow& /*window*/, tlistbox& selector, const int index)
+void tpreferences::initialize_tabs(twindow& /*window*/, tlistbox& selector)
 {
 	//
 	// MULTIPLAYER TABS
@@ -1148,7 +1148,7 @@ void tpreferences::pre_show(twindow& window)
 			const int to_select = (ii == main_index ? tab_index : 0);
 
 			// Initialize tabs for this page
-			initialize_tabs(window, *tab_selector, ii);
+			initialize_tabs(window, *tab_selector);
 
 			tab_selector->select_row(to_select);
 			tab_pager->select_layer(to_select);

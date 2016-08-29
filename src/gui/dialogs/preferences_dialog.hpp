@@ -70,7 +70,7 @@ private:
 
 	/** Initializers */
 	void initialize_members(twindow& window);
-	void initialize_tabs(twindow& window, tlistbox& selector, const int index);
+	void initialize_tabs(twindow& window, tlistbox& selector);
 	void setup_friends_list(twindow& window);
 	void setup_hotkey_list(twindow& window);
 
