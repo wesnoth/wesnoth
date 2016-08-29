@@ -848,9 +848,56 @@ void tpreferences::initialize_members(twindow& window)
 
 	row_data.clear();
 
+	tlistbox& hotkey_categories = find_widget<tlistbox>(&window, "list_categories", false);
+
+	const std::string cat_names[] = {
+		// TODO: This list needs to be synchronized with the hotkey::HOTKEY_CATEGORY enum
+		// Find some way to do that automatically
+		_("General"),
+		_("Saved Games"),
+		_("Map Commands"),
+		_("Unit Commands"),
+		_("Player Chat"),
+		_("Replay Control"),
+		_("Planning Mode"),
+		_("Scenario Editor"),
+		_("Editor Palettes"),
+		_("Editor Tools"),
+		_("Editor Clipboard"),
+		_("Editor Selection"),
+		_("Debug Commands"),
+		_("Custom WML Commands"),
+		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
+	};
+
+	for(int i = 0; i <= hotkey::HKCAT_PLACEHOLDER; i++) {
+		row_data["cat_label"]["label"] = cat_names[i];
+		hotkey_categories.add_row(row_data);
+		hotkey_categories.select_row(hotkey_categories.get_item_count() - 1);
+	}
+
 	setup_hotkey_list(window);
 
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
+
+	hotkey_categories.set_callback_item_change([&hotkey_list, &hotkey_categories](size_t i) {
+		if(i >= hotkey::HKCAT_PLACEHOLDER) {
+			return;
+		}
+		hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
+		// For listboxes that allow multiple selection, get_selected_row() returns the most
+		// recently selected row. Thus, if it returns i, this row was just selected.
+		// Otherwise, it must have been deselected.
+		bool show = hotkey_categories.get_selected_row() == int(i);
+		std::vector<bool> mask = hotkey_list.get_rows_shown();
+		auto hotkeys = hotkey::get_hotkey_commands();
+		for(size_t j = 0; j < hotkeys.size(); j++) {
+			if(hotkeys[j].category == cat) {
+				mask[j] = show;
+			}
+		}
+		hotkey_list.set_row_shown(mask);
+	});
 
 	// Action column
 	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });

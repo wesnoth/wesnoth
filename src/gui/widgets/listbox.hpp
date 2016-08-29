@@ -143,6 +143,13 @@ public:
 	void set_row_shown(const std::vector<bool>& shown);
 
 	/**
+	 * Returns a list of visible rows
+	 *
+	 * @returns                   A mask indicating which rows are visible
+	 */
+	std::vector<bool> get_rows_shown() const;
+
+	/**
 	 * Returns the grid of the wanted row.
 	 *
 	 * There's only a const version since allowing callers to modify the grid

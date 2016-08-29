@@ -214,6 +214,15 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 	}
 }
 
+std::vector<bool> tlistbox::get_rows_shown() const
+{
+	std::vector<bool> shown;
+	for(size_t i = 0; i < get_item_count(); i++) {
+		shown.push_back(generator_->get_item_shown(i));
+	}
+	return shown;
+}
+
 const tgrid* tlistbox::get_row_grid(const unsigned row) const
 {
 	assert(generator_);
