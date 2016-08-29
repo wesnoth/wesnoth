@@ -65,7 +65,7 @@
 #include "gui/dialogs/logging.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/multiplayer/faction_select.cpp"
+#include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
@@ -389,7 +389,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
 	test<gui2::teditor_set_starting_position>();
-	//test<gui2::tfaction_select>();
+	test<gui2::tfaction_select>();
 	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
 	test<gui2::tgame_cache_options>();
@@ -486,7 +486,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
-		"faction_select"
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
@@ -1076,6 +1075,23 @@ struct twrapper<gui2::twml_message_double>
 	gui2::twml_message_double* create()
 	{
 		return new gui2::twml_message_double("Title", "Message", "", false, "", true);
+	}
+};
+
+template<>
+struct twrapper<gui2::tfaction_select>
+{
+	config era_cfg, side_cfg;
+	std::vector<const config*> eras;
+	ng::flg_manager flg;
+	std::string color;
+	twrapper()
+		: era_cfg(), side_cfg(), eras(1, &era_cfg) // TODO: Add an actual era definition
+		, flg(eras, side_cfg, false, false, false)
+		, color("teal")
+	{}
+	gui2::tfaction_select* create() {
+		return new gui2::tfaction_select(flg, color, 1);
 	}
 };
 
