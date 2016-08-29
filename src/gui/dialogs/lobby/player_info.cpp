@@ -158,7 +158,6 @@ void tlobby_player_info::update_relation(twindow& w)
 		default:
 			relation_->set_label(_("Error"));
 	}
-	w.invalidate_layout();
 }
 
 void tlobby_player_info::add_to_friends_button_callback(twindow& w)
