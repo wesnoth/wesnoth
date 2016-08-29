@@ -844,7 +844,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, size_t req_cols)
+static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, unsigned int req_cols)
 {
 	std::vector<std::map<std::string, string_map>> list_data;
 	for(const auto & row : data.child_range("row"))
