@@ -778,7 +778,8 @@ void tlobby_main::update_playerlist()
 
 		switch(user.relation) {
 			case user_info::ME:
-			/* fall through */
+				icon_ss << "-s";
+				break;
 			case user_info::NEUTRAL:
 				icon_ss << "-n";
 				break;
