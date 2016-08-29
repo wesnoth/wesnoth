@@ -309,6 +309,25 @@ config::attribute_value vconfig::expand(const std::string &key) const
 	return val;
 }
 
+vconfig::attribute_iterator::reference vconfig::attribute_iterator::operator*() const
+{
+	config::attribute val = *i_;
+	if(resources::gamedata) {
+		val.second.apply_visitor(vconfig_expand_visitor(val.second));
+	}
+	return val;
+}
+
+vconfig::attribute_iterator::pointer vconfig::attribute_iterator::operator->() const
+{
+	config::attribute val = *i_;
+	if(resources::gamedata) {
+		val.second.apply_visitor(vconfig_expand_visitor(val.second));
+	}
+	pointer_proxy p = {val};
+	return p;
+}
+
 vconfig::all_children_iterator::all_children_iterator(const Itor &i) :
 	i_(i), inner_index_(0), cache_()
 {
@@ -348,6 +367,25 @@ vconfig::all_children_iterator vconfig::all_children_iterator::operator++(int)
 {
 	vconfig::all_children_iterator i = *this;
 	this->operator++();
+	return i;
+}
+
+vconfig::all_children_iterator& vconfig::all_children_iterator::operator--()
+{
+	if(inner_index_ >= 0 && i_->key == "insert_tag") {
+		if(--inner_index_ >= 0) {
+			return *this;
+		}
+		inner_index_ = 0;
+	}
+	--i_;
+	return *this;
+}
+
+vconfig::all_children_iterator vconfig::all_children_iterator::operator--(int)
+{
+	vconfig::all_children_iterator i = *this;
+	this->operator--();
 	return i;
 }
 

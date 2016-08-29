@@ -90,21 +90,56 @@ public:
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
 
+	struct attribute_iterator
+	{
+		struct pointer_proxy;
+
+		typedef const config::attribute value_type;
+		typedef std::bidirectional_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef const pointer_proxy pointer;
+		typedef const config::attribute reference;
+		typedef config::const_attribute_iterator Itor;
+		explicit attribute_iterator(const Itor &i): i_(i) {}
+
+		attribute_iterator &operator++() { ++i_; return *this; }
+		attribute_iterator operator++(int) { return attribute_iterator(i_++); }
+
+		attribute_iterator &operator--() { --i_; return *this; }
+		attribute_iterator operator--(int) { return attribute_iterator(i_--); }
+
+		reference operator*() const;
+		pointer operator->() const;
+
+		bool operator==(const attribute_iterator &i) const { return i_ == i.i_; }
+		bool operator!=(const attribute_iterator &i) const { return i_ != i.i_; }
+
+	private:
+		Itor i_;
+	};
+
+	boost::iterator_range<attribute_iterator> attribute_range() {
+		config::const_attr_itors range = cfg_->attribute_range();
+		return boost::make_iterator_range(attribute_iterator(range.begin()), attribute_iterator(range.end()));
+	}
+
 	struct all_children_iterator
 	{
 		struct pointer_proxy;
 
 		typedef std::pair<std::string, vconfig> value_type;
-		typedef std::forward_iterator_tag iterator_category;
+		typedef std::bidirectional_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const pointer_proxy pointer;
 		typedef const value_type reference;
-		typedef config::all_children_iterator Itor;
+		typedef config::const_all_children_iterator Itor;
 		explicit all_children_iterator(const Itor &i);
 		all_children_iterator(const Itor &i, const std::shared_ptr<const config> & cache);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
+		all_children_iterator& operator--();
+		all_children_iterator  operator--(int);
 
 		reference operator*() const;
 		pointer operator->() const;
@@ -141,8 +176,8 @@ public:
 	/** In-order iteration over all children. */
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
-	std::pair<all_children_iterator,all_children_iterator> all_ordered() const {
-		return std::make_pair(ordered_begin(), ordered_end());
+	boost::iterator_range<all_children_iterator> all_ordered() const {
+		return boost::make_iterator_range(ordered_begin(), ordered_end());
 	}
 
 private:
@@ -155,6 +190,12 @@ private:
 	/// Used to access our config (original or copy, as appropriate).
 	mutable const config* cfg_;
 	static const config default_empty_config;
+};
+
+struct vconfig::attribute_iterator::pointer_proxy
+{
+	value_type p;
+	const value_type *operator->() const { return &p; }
 };
 
 struct vconfig::all_children_iterator::pointer_proxy

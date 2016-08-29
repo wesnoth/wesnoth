@@ -648,6 +648,13 @@ unsigned config::all_children_count() const
 	return ordered_children.size();
 }
 
+unsigned config::attribute_count() const
+{
+	return std::count_if(values.begin(), values.end(), [](const attribute& v) {
+		return !v.second.blank();
+	});
+}
+
 bool config::has_child(const std::string &key) const
 {
 	check_valid();
@@ -987,8 +994,26 @@ config::const_attr_itors config::attribute_range() const
 {
 	check_valid();
 
-	return const_attr_itors(const_attribute_iterator(values.begin()),
+	const_attr_itors range (const_attribute_iterator(values.begin()),
 	                        const_attribute_iterator(values.end()));
+
+	// Ensure the first element is not blank, as a few places assume this
+	while(range.begin() != range.end() && range.begin()->second.blank()) {
+		range.pop_front();
+	}
+	return range;
+}
+
+config::attr_itors config::attribute_range()
+{
+	check_valid();
+	attr_itors range(attribute_iterator(values.begin()), attribute_iterator(values.end()));
+
+	// Ensure the first element is not blank, as a few places assume this
+	while(range.begin() != range.end() && range.begin()->second.blank()) {
+		range.pop_front();
+	}
+	return range;
 }
 
 namespace {
@@ -1116,17 +1141,49 @@ config::all_children_iterator::reference config::all_children_iterator::operator
 	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
 }
 
-config::all_children_iterator config::ordered_begin() const
+config::const_all_children_iterator::reference config::const_all_children_iterator::operator*() const
+{
+	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
+}
+
+config::const_all_children_iterator config::ordered_begin() const
+{
+	return const_all_children_iterator(ordered_children.cbegin());
+}
+
+config::const_all_children_iterator config::ordered_cbegin() const
+{
+	return const_all_children_iterator(ordered_children.cbegin());
+}
+
+config::const_all_children_iterator config::ordered_end() const
+{
+	return const_all_children_iterator(ordered_children.cend());
+}
+
+config::const_all_children_iterator config::ordered_cend() const
+{
+	return const_all_children_iterator(ordered_children.cend());
+}
+
+config::const_all_children_itors config::all_children_range() const
+{
+	return const_all_children_itors(
+		const_all_children_iterator(ordered_children.cbegin()),
+		const_all_children_iterator(ordered_children.cend()));
+}
+
+config::all_children_iterator config::ordered_begin()
 {
 	return all_children_iterator(ordered_children.begin());
 }
 
-config::all_children_iterator config::ordered_end() const
+config::all_children_iterator config::ordered_end()
 {
 	return all_children_iterator(ordered_children.end());
 }
 
-config::all_children_itors config::all_children_range() const
+config::all_children_itors config::all_children_range()
 {
 	return all_children_itors(
 		all_children_iterator(ordered_children.begin()),
@@ -1535,7 +1592,7 @@ bool operator==(const config& a, const config& b)
 	if (a.values != b.values)
 		return false;
 
-	config::all_children_itors x = a.all_children_range(), y = b.all_children_range();
+	config::const_all_children_itors x = a.all_children_range(), y = b.all_children_range();
 	for (; !x.empty() && !y.empty(); x.pop_front(), y.pop_front()) {
 		if (x.front().key != y.front().key || x.front().cfg != y.front().cfg) {
 			return false;

@@ -74,11 +74,11 @@ struct animation_branch
 	}
 
 	config attributes;
-	std::vector<config::all_children_iterator> children;
+	std::vector<config::const_all_children_iterator> children;
 	config merge() const
 	{
 		config result = attributes;
-		for (const config::all_children_iterator &i : children) {
+		for (const config::const_all_children_iterator &i : children) {
 			result.add_child(i->key, i->cfg);
 		}
 		return result;
@@ -89,7 +89,7 @@ typedef std::list<animation_branch> animation_branches;
 
 struct animation_cursor
 {
-	config::all_children_itors itors;
+	config::const_all_children_itors itors;
 	animation_branches branches;
 	animation_cursor *parent;
 	animation_cursor(const config &cfg):
@@ -638,7 +638,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["apply_to"] = "standing";
 		anim["cycles"] = "true";
 		// add cycles to all frames within a standing animation block
-		for (config::all_children_iterator ci : ab.children)
+		for (config::const_all_children_iterator ci : ab.children)
 		{
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
@@ -656,7 +656,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		config anim = ab.merge();
 		anim["apply_to"] = "default";
 		anim["cycles"] = "true";
-		for (config::all_children_iterator ci : ab.children)
+		for (config::const_all_children_iterator ci : ab.children)
 		{
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");

@@ -154,7 +154,7 @@ register_builder_widget(const std::string& id,
 
 tbuilder_widget_ptr create_builder_widget(const config& cfg)
 {
-	config::all_children_itors children = cfg.all_children_range();
+	config::const_all_children_itors children = cfg.all_children_range();
 	size_t nb_children = std::distance(children.begin(), children.end());
 	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
 

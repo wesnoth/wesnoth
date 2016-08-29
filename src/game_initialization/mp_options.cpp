@@ -243,9 +243,9 @@ const config& manager::get_value_cfg_or_empty(const std::string& id) const
 
 config::any_child manager::get_option_parent(const std::string& id) const
 {
-	static const config empty;
+	static config empty;
 	static const std::string empty_key = "";
-	static config::any_child not_found(&empty_key, &empty);
+	static const config::any_child not_found(&empty_key, &empty);
 
 	for (const config::any_child& i : options_info_.all_children_range()) {
 		for (const config::any_child& j : i.cfg.all_children_range()) {

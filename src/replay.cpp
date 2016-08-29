@@ -696,7 +696,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 
-		const config::all_children_itors ch_itors = cfg->all_children_range();
+		const config::const_all_children_itors ch_itors = cfg->all_children_range();
 		//if there is an empty command tag or a start tag
 		if (ch_itors.empty() || cfg->has_child("start"))
 		{
