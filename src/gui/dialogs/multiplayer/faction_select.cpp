@@ -138,11 +138,6 @@ void tfaction_select::on_faction_select(twindow& window)
 		}
 	}
 
-	// TODO: this breaks ordering within the FLG manager
-	//std::sort(leaders.begin(), leaders.end(), [](const config& cfg1, const config& cfg2) {
-	//	return cfg1["label"].str() < cfg2["label"].str();
-	//});
-
 	tmenu_button& leader_dropdown = find_widget<tmenu_button>(&window, "leader_menu", false);
 
 	leader_dropdown.set_values(leaders, flg_manager_.current_leader_index());
@@ -172,7 +167,7 @@ void tfaction_select::on_leader_select(twindow& window)
 		return std::find(genders.begin(), genders.end(), gender) != genders.end();
 	};
 
-	// TODO: should we decouple this from the dlg manager and instead just check the unit type directly?
+	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	find_widget<ttoggle_button>(&window, "gender_male", false).set_active(gender_available(unit_race::s_male));
 	find_widget<ttoggle_button>(&window, "gender_female", false).set_active(gender_available(unit_race::s_female));
 
