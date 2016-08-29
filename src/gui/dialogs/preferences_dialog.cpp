@@ -864,7 +864,6 @@ void tpreferences::initialize_members(twindow& window)
 		_("Editor Palettes"),
 		_("Editor Tools"),
 		_("Editor Clipboard"),
-		_("Editor Selection"),
 		_("Debug Commands"),
 		_("Custom WML Commands"),
 		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
@@ -880,7 +879,7 @@ void tpreferences::initialize_members(twindow& window)
 
 	tlistbox& hotkey_list = find_widget<tlistbox>(&window, "list_hotkeys", false);
 
-	hotkey_categories.set_callback_item_change([&hotkey_list, &hotkey_categories](size_t i) {
+	hotkey_categories.set_callback_item_change([this, &hotkey_list, &hotkey_categories](size_t i) {
 		if(i >= hotkey::HKCAT_PLACEHOLDER) {
 			return;
 		}
@@ -890,9 +889,8 @@ void tpreferences::initialize_members(twindow& window)
 		// Otherwise, it must have been deselected.
 		bool show = hotkey_categories.get_selected_row() == int(i);
 		std::vector<bool> mask = hotkey_list.get_rows_shown();
-		auto hotkeys = hotkey::get_hotkey_commands();
-		for(size_t j = 0; j < hotkeys.size(); j++) {
-			if(hotkeys[j].category == cat) {
+		for(size_t j = 0; j < visible_hotkeys_.size(); j++) {
+			if(visible_hotkeys_[j]->category == cat) {
 				mask[j] = show;
 			}
 		}

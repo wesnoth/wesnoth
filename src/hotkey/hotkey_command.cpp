@@ -130,10 +130,10 @@ hotkey_command_temp hotkey_list_[] = {
 
 	// These are not really hotkey items but menu entries to get expanded.
 	// They need to have their own hotkey to control their active state.
-	{ HOTKEY_EDITOR_PLAYLIST, "editor-playlist", N_("Switch Time of Day"), true, scope_editor, HKCAT_SCENARIO, "" },
-	{ HOTKEY_EDITOR_SCHEDULE, "menu-editor-schedule", "", true, scope_editor, HKCAT_SCENARIO, "" },
-	{ HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, scope_editor, HKCAT_SCENARIO, "" },
-	{ HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, scope_editor, HKCAT_SCENARIO, "" },
+	{ HOTKEY_EDITOR_PLAYLIST, "editor-playlist", N_("Switch Time of Day"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+	{ HOTKEY_EDITOR_SCHEDULE, "menu-editor-schedule", "", true, scope_editor, HKCAT_PLACEHOLDER, "" },
+	{ HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+	{ HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
 	{ HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Time Schedule Editor"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, scope_editor, HKCAT_SCENARIO, "" },
@@ -174,7 +174,7 @@ hotkey_command_temp hotkey_list_[] = {
 
 	{ HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, scope_editor, HKCAT_TOOLS, "" },
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, scope_editor, HKCAT_TOOLS, "" },
-	{ HOTKEY_EDITOR_UNIT_FACING, "menu-unit-facing", "", true, scope_editor, HKCAT_TOOLS, "" },
+	{ HOTKEY_EDITOR_UNIT_FACING, "menu-unit-facing", "", true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
 	{ HOTKEY_MINIMAP_CODING_UNIT, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, scope_game | scope_editor | scope_main, HKCAT_MAP, "" },
 	{ HOTKEY_MINIMAP_CODING_TERRAIN, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, scope_game | scope_editor | scope_main, HKCAT_MAP, "" },
@@ -194,7 +194,7 @@ hotkey_command_temp hotkey_list_[] = {
 	{ HOTKEY_EDITOR_SELECTION_CUT, "editor-cut", N_("Cut"), false, scope_editor, HKCAT_CLIPBOARD, "" },
 	{ HOTKEY_EDITOR_SELECTION_COPY, "editor-copy", N_("Copy"), false, scope_editor, HKCAT_CLIPBOARD, "" },
 	{ HOTKEY_EDITOR_CLIPBOARD_PASTE, "editor-paste", N_("Paste"), false, scope_editor, HKCAT_CLIPBOARD, N_("Left mouse button pastes from the clipboard, right brings up a context menu.") },
-	{ HOTKEY_EDITOR_SELECTION_EXPORT, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), true, scope_editor, HKCAT_CLIPBOARD, "" },
+	{ HOTKEY_EDITOR_SELECTION_EXPORT, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 	{ HOTKEY_EDITOR_SELECT_ALL, "editor-select-all", N_("Select All"), false, scope_editor, HKCAT_CLIPBOARD, "" },
 	{ HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse", N_("Select Inverse"), false, scope_editor, HKCAT_CLIPBOARD, "" },
 	{ HOTKEY_EDITOR_SELECT_NONE, "editor-select-none", N_("Select None"), false, scope_editor, HKCAT_CLIPBOARD, "" },
@@ -219,9 +219,9 @@ hotkey_command_temp hotkey_list_[] = {
 	// This item is for binding in the preferences
 	{ HOTKEY_EDITOR_TOGGLE_TRANSITIONS, "editor-toggle-transitions", N_("Toggle Terrain Transition Update"), false, scope_editor, HKCAT_MAP, "" },
 	// The next three are for displaying the different states in the menu
-	{ HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", N_("Auto-update Terrain Transitions"), true, scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS, "editor-no-update-transitions", N_("Auto-update Terrain Transitions: No"), true, scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS, "editor-partial-update-transitions", N_("Auto-update Terrain Transitions: Partial"), true, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", N_("Auto-update Terrain Transitions"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+	{ HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS, "editor-no-update-transitions", N_("Auto-update Terrain Transitions: No"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+	{ HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS, "editor-partial-update-transitions", N_("Auto-update Terrain Transitions: Partial"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
 	{ HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", N_("Refresh Image Cache"), false, scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", N_("Draw Hex Coordinates"), false, scope_editor, HKCAT_MAP, "" },
@@ -250,7 +250,7 @@ hotkey_command_temp hotkey_list_[] = {
 	{ HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, scope_game, HKCAT_CHAT, "" },
 
 	{ HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, scope_main, HKCAT_GENERAL, "" },
-	{ TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true , scope_editor | scope_main, HKCAT_DEBUG, "" },
+	{ TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true , scope_editor | scope_main, HKCAT_PLACEHOLDER, "" },
 	{ TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__TUTORIAL, "title_screen__tutorial", N_("Start Tutorial"), false	, scope_main, HKCAT_GENERAL, "" },
