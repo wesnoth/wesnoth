@@ -1980,6 +1980,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\faction_select.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -3851,7 +3859,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\wmi_pager.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
     <ClCompile Include="..\..\src\xBRZ\xbrz.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Xbrz\</ObjectFileName>
@@ -4127,6 +4134,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\logging.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\lua_interpreter.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\message.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\faction_select.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp" />
@@ -4455,7 +4463,6 @@
     <ClInclude Include="..\..\src\widgets\slider.hpp" />
     <ClInclude Include="..\..\src\widgets\textbox.hpp" />
     <ClInclude Include="..\..\src\widgets\widget.hpp" />
-    <ClInclude Include="..\..\src\wmi_pager.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
     <ClInclude Include="..\..\src\xBRZ\config.hpp" />
