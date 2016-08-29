@@ -315,7 +315,7 @@ private:
 
 	void send_message_to_active_window(const std::string& input);
 
-	void close_window_button_callback(size_t idx);
+	void close_window_button_callback(tlobby_chat_window& chat_window, bool& handled, bool& halt);
 
 	void create_button_callback(twindow& window);
 

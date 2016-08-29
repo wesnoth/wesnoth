@@ -1070,13 +1070,13 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
 
 		chat_log_container_->add_page(data);
 		std::map<std::string, string_map> data2;
-		add_label_data(data2, "room", whisper ? "<" + name + ">" : name);
+		add_label_data(data2, "room", whisper ? font::escape_text("<" + name + ">") : name);
 		tgrid* row_grid = &roomlistbox_->add_row(data2);
 
 		tbutton& close_button = find_widget<tbutton>(row_grid, "close_window", false);
 		connect_signal_mouse_left_click(close_button,
-			std::bind(&tlobby_main::close_window_button_callback,
-					this, roomlistbox_->get_item_count() - 1));
+			std::bind(&tlobby_main::close_window_button_callback, this, open_windows_.back(),
+				std::placeholders::_3, std::placeholders::_4));
 
 		if(name == "lobby") {
 			close_button.set_visible(tcontrol::tvisible::hidden);
@@ -1140,7 +1140,7 @@ void tlobby_main::add_whisper_window_whisper(const std::string& sender,
 											 const std::string& message)
 {
 	std::stringstream ss;
-	ss << "<" << sender << "> " << message;
+	ss << "<b>" << sender << ":</b> " << font::escape_text(message);
 	tlobby_chat_window* t = whisper_window_open(sender, false);
 	if(!t) {
 		ERR_LB << "Whisper window not open in add_whisper_window_whisper for "
@@ -1564,9 +1564,16 @@ void tlobby_main::send_message_to_active_window(const std::string& input)
 	}
 }
 
-void tlobby_main::close_window_button_callback(size_t idx)
+void tlobby_main::close_window_button_callback(tlobby_chat_window& chat_window, bool& handled, bool& halt)
 {
-	close_window(idx);
+	const int index = std::find_if(open_windows_.begin(), open_windows_.end(), [&chat_window](const tlobby_chat_window& room) {
+		return room.name == chat_window.name;
+	}) - open_windows_.begin();
+
+	close_window(index);
+
+	handled = true;
+	halt = true;
 }
 
 void tlobby_main::create_button_callback(twindow& window)
