@@ -114,6 +114,9 @@ void tlobby_player_info::pre_show(twindow& window)
 		loc << _("In lobby");
 	}
 
+	time_ = find_widget<ttext_box>(&window, "time", false, true);
+	reason_ = find_widget<ttext_box>(&window, "reason", false, true);
+
 	find_widget<tlabel>(&window, "location_info", false).set_label(loc.str());
 
 	update_relation(window);
