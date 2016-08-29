@@ -1717,7 +1717,6 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	if(dlg.result_open_whisper()) {
 		tlobby_chat_window* t = whisper_window_open(info->name, true);
 		switch_to_window(t);
-		window_->invalidate_layout();
 	}
 
 	selected_game_id_ = info->game_id;
