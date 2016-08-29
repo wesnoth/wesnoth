@@ -68,7 +68,13 @@ static int impl_gettext(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	char const *d = static_cast<char *>(lua_touserdata(L, 1));
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
-	luaW_pushtstring(L, t_string(m, d));
+	if(lua_isstring(L, 3)) {
+		const char* pl = luaL_checkstring(L, 3);
+		int count = luaL_checkinteger(L, 4);
+		luaW_pushtstring(L, t_string(m, pl, count, d));
+	} else {
+		luaW_pushtstring(L, t_string(m, d));
+	}
 	return 1;
 }
 

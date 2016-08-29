@@ -67,11 +67,10 @@ local function generate_objectives(cfg)
 				local turn_limit = wesnoth.game_config.last_turn
 
 				if turn_limit >= current_turn then
-					if turn_limit - current_turn + 1 > 1 then
-						turn_counter = "<span foreground='white'><small> " .. string.format(tostring(_"(%d turns left)"), turn_limit - current_turn + 1) .. "</small></span>"
-					else
-						turn_counter = "<span foreground='white'><small> " .. _"(this turn left)" .. "</small></span>"
-					end
+					local turn_count = turn_limit - current_turn + 1
+					turn_counter = _("(this turn left)", "(%d turns left)", turn_count)
+					turn_counter = tostring(turn_counter):format(turn_count)
+					turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
 				end
 			end
 

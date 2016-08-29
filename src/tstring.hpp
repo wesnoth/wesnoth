@@ -34,9 +34,13 @@ public:
 		bool eos() const                          { return begin_ == string_.size(); }
 		bool last() const                         { return end_ == string_.size(); }
 		bool translatable() const                 { return translatable_; }
+		bool countable() const                    { return countable_; }
+		int count() const                         { return count_; }
 		const std::string& textdomain() const     { return textdomain_; }
 		std::string::const_iterator begin() const { return string_.begin() + begin_; }
 		std::string::const_iterator end() const   { return string_.begin() + end_; }
+		std::string::const_iterator plural_begin() const;
+		std::string::const_iterator plural_end() const;
 	private:
 		void update();
 
@@ -44,7 +48,8 @@ public:
 		std::string::size_type begin_;
 		std::string::size_type end_;
 		std::string textdomain_;
-		bool translatable_;
+		bool translatable_, countable_;
+		int count_;
 	};
 
 	friend class walker;
@@ -56,6 +61,7 @@ public:
 	t_string_base(const t_string_base&);
 	t_string_base(const std::string& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
+	t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 	t_string_base(const char* string);
 
 	static t_string_base from_serialized(const std::string& string);
@@ -129,6 +135,7 @@ public:
 	t_string(const char *);
 	t_string(const std::string &);
 	t_string(const std::string &str, const std::string &textdomain);
+	t_string(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 
 	t_string &operator=(const char *o);
 
