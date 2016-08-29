@@ -82,8 +82,6 @@ private:
 	void remove_friend_list_entry(tlistbox& friends_list,
 		ttext_box& textbox, twindow& window);
 
-	void add_tab(tlistbox& tab_bar, const std::string& label);
-	void add_pager_row(tlistbox& selector, const std::string& icon, const std::string& label);
 	void set_visible_page(twindow& window, unsigned int page, const std::string& pager_id);
 
 	/** Callback for selection changes */

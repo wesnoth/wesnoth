@@ -1083,31 +1083,11 @@ void tpreferences::on_advanced_prefs_list_select(tlistbox& list, twindow& window
 	}
 }
 
-void tpreferences::add_pager_row(tlistbox& selector, const std::string& icon, const std::string& label)
-{
-	std::map<std::string, string_map> data;
-	data["icon"]["label"] = "icons/icon-" + icon;
-	data["label"]["label"] = label;
-	selector.add_row(data);
-}
-
-void tpreferences::add_tab(tlistbox& tab_bar, const std::string& label)
-{
-	std::map<std::string, string_map> data;
-	data["tab_label"]["label"] = label;
-	tab_bar.add_row(data);
-}
-
 void tpreferences::initialize_tabs(twindow& /*window*/, tlistbox& selector, const int index)
 {
 	//
 	// MULTIPLAYER TABS
 	//
-
-	if(index == 4) {
-		add_tab(selector, _("Prefs tab^General"));
-		add_tab(selector, _("Prefs tab^Friends"));
-	}
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(selector, std::bind(
@@ -1142,13 +1122,6 @@ void tpreferences::pre_show(twindow& window)
 			<tpreferences, &tpreferences::on_page_select>);
 #endif
 	window.keyboard_capture(&selector);
-
-	add_pager_row(selector, "general.png", _("Prefs section^General"));
-	add_pager_row(selector, "hotkeys.png", _("Prefs section^Hotkeys"));
-	add_pager_row(selector, "display.png", _("Prefs section^Display"));
-	add_pager_row(selector, "music.png",  _("Prefs section^Sound"));
-	add_pager_row(selector, "multiplayer.png", _("Prefs section^Multiplayer"));
-	add_pager_row(selector, "advanced.png", _("Prefs section^Advanced"));
 
 	// Initializes initial values and sets up callbacks. This needs to be
 	// done before selecting the initial page, otherwise widgets from other

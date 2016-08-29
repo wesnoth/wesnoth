@@ -281,17 +281,6 @@ void tmp_create_game::pre_show(twindow& window)
 			dialog_callback<tmp_create_game, &tmp_create_game::on_tab_select>);
 #endif
 
-	std::map<std::string, string_map> list_data;
-
-	list_data["tab_label"]["label"] = _("General");
-	tab_bar.add_row(list_data);
-
-	list_data["tab_label"]["label"] = _("Custom Options");
-	tab_bar.add_row(list_data);
-
-	list_data["tab_label"]["label"] = _("Game Settings");
-	tab_bar.add_row(list_data);
-
 	//
 	// Main games list
 	//
