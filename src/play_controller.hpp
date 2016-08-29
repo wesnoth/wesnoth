@@ -34,7 +34,6 @@ class game_display;
 class game_data;
 class team;
 class unit;
-class wmi_pager;
 class replay;
 class saved_game;
 struct mp_game_settings;

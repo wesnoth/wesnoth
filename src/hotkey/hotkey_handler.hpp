@@ -30,7 +30,6 @@ namespace game_events { class wml_menu_item; }
 class game_display;
 class game_state;
 class saved_game;
-class wmi_pager;
 
 class team;
 
@@ -67,7 +66,6 @@ private:
 	 */
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const_item_ptr> wml_commands_;
-	const std::unique_ptr<wmi_pager> wml_command_pager_;
 	int last_context_menu_x_;
 	int last_context_menu_y_;
 

@@ -587,7 +587,6 @@ wesnoth_sources = Split("""
     widgets/combo.cpp
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
-    wmi_pager.cpp
     """)
 
 if env["PLATFORM"] == "win32":
