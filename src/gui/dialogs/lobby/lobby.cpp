@@ -897,6 +897,7 @@ void tlobby_main::pre_show(twindow& window)
 	chat_log_container_ = find_widget<tmulti_page>(&window, "chat_log_container", false, true);
 
 	window.set_enter_disabled(true);
+	window.set_escape_disabled(true);
 
 	window_ = &window;
 
