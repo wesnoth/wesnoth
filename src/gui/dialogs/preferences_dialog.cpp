@@ -870,7 +870,7 @@ void tpreferences::initialize_members(twindow& window)
 		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
 	};
 
-	for(int i = 0; i <= hotkey::HKCAT_PLACEHOLDER; i++) {
+	for(int i = 0; i < hotkey::HKCAT_PLACEHOLDER; i++) {
 		row_data["cat_label"]["label"] = cat_names[i];
 		hotkey_categories.add_row(row_data);
 		hotkey_categories.select_row(hotkey_categories.get_item_count() - 1);
