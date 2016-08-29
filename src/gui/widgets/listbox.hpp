@@ -287,7 +287,7 @@ private:
 	 */
 	void finalize(tbuilder_grid_const_ptr header,
 				  tbuilder_grid_const_ptr footer,
-				  const std::vector<string_map>& list_data);
+				  const std::vector<std::map<std::string, string_map>>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -405,7 +405,7 @@ struct tbuilder_listbox : public tbuilder_control
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<string_map> list_data;
+	std::vector<std::map<std::string, string_map>> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -429,7 +429,7 @@ struct tbuilder_horizontal_listbox : public tbuilder_control
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<string_map> list_data;
+	std::vector<std::map<std::string, string_map>> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -453,7 +453,7 @@ struct tbuilder_grid_listbox : public tbuilder_control
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<string_map> list_data;
+	std::vector<std::map<std::string, string_map>> list_data;
 
 	bool has_minimum_, has_maximum_;
 };

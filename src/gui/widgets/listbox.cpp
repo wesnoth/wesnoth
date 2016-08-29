@@ -529,7 +529,7 @@ void swap_grid(tgrid* grid,
 
 void tlistbox::finalize(tbuilder_grid_const_ptr header,
 						tbuilder_grid_const_ptr footer,
-						const std::vector<string_map>& list_data)
+						const std::vector<std::map<std::string, string_map>>& list_data)
 {
 	// "Inherited."
 	tscrollbar_container::finalize_setup();
@@ -835,6 +835,33 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
+static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, size_t req_cols)
+{
+	std::vector<std::map<std::string, string_map>> list_data;
+	for(const auto & row : data.child_range("row"))
+	{
+		auto cols = row.child_range("column");
+		VALIDATE(cols.size() == req_cols, _("'list_data' must have the same number of columns as the 'list_definition'."));
+
+		for(const auto & c : cols)
+		{
+			list_data.emplace_back();
+			for(const auto & i : c.attribute_range())
+			{
+				list_data.back()[""][i.first] = i.second;
+			}
+			for(const auto& w : c.child_range("widget"))
+			{
+				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
+				for(const auto& i : w.attribute_range()) {
+					list_data.back()[w["id"]][i.first] = i.second;
+				}
+			}
+		}
+	}
+	return list_data;
+}
+
 tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	: tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
@@ -864,28 +891,8 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
 
-	const config& data = cfg.child("list_data");
-	if(!data) {
-		return;
-	}
-
-	for(const auto & row : data.child_range("row"))
-	{
-		unsigned col = 0;
-
-		for(const auto & c : row.child_range("column"))
-		{
-			list_data.push_back(string_map());
-			for(const auto & i : c.attribute_range())
-			{
-				list_data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == list_builder->cols,
-				 _("'list_data' must have the same number of "
-				   "columns as the 'list_definition'."));
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
 	}
 }
 
@@ -1037,27 +1044,8 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
 
-	const config& data = cfg.child("list_data");
-	if(!data)
-		return;
-
-	for(const auto & row : data.child_range("row"))
-	{
-		unsigned col = 0;
-
-		for(const auto & c : row.child_range("column"))
-		{
-			list_data.push_back(string_map());
-			for(const auto & i : c.attribute_range())
-			{
-				list_data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == list_builder->cols,
-				 _("'list_data' must have "
-				   "the same number of columns as the 'list_definition'."));
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
 	}
 }
 
@@ -1181,27 +1169,8 @@ tbuilder_grid_listbox::tbuilder_grid_listbox(const config& cfg)
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
 
-	const config& data = cfg.child("list_data");
-	if(!data)
-		return;
-
-	for(const auto & row : data.child_range("row"))
-	{
-		unsigned col = 0;
-
-		for(const auto & c : row.child_range("column"))
-		{
-			list_data.push_back(string_map());
-			for(const auto & i : c.attribute_range())
-			{
-				list_data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == list_builder->cols,
-				 _("'list_data' must have "
-				   "the same number of columns as the 'list_definition'."));
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
 	}
 }
 
