@@ -3622,6 +3622,8 @@ Version 1.9.7:
    * Fixed bug #18000, #18099: Show a wrongly entered MP password and crash
      upon editing this text.
  * WML engine:
+   * added mode=replace to [modify_unit] to replace rather than merge unit subtags
+     (does not apply to object, trait, effect, or advancement)  
    * new attribute team_name= in SSFs
    * added [event][filter_side]<SSF keys> support
    * added support for inline SSF to [chat]
