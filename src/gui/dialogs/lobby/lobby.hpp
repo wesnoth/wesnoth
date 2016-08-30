@@ -344,7 +344,7 @@ private:
 
 	void user_dialog_callback(user_info* info);
 
-	void skip_replay_changed_callback(twidget& w);
+	void skip_replay_changed_callback(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

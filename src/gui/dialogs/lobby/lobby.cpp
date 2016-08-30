@@ -30,6 +30,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -946,11 +947,18 @@ void tlobby_main::pre_show(twindow& window)
 
 	find_widget<tbutton>(&window, "observe_global", false).set_active(false);
 
-	ttoggle_button& skip_replay
-			= find_widget<ttoggle_button>(&window, "skip_replay", false);
-	skip_replay.set_value(preferences::skip_mp_replay());
-	skip_replay.set_callback_state_change(
-			std::bind(&tlobby_main::skip_replay_changed_callback, this, _1));
+	tmenu_button& replay_options = find_widget<tmenu_button>(&window, "replay_options", false);
+
+	if(preferences::skip_mp_replay()) {
+		replay_options.set_selected(1);
+	}
+
+	if(preferences::blindfold_replay()) {
+		replay_options.set_selected(2);
+	}
+
+	replay_options.connect_click_handler(
+			std::bind(&tlobby_main::skip_replay_changed_callback, this, std::ref(window)));
 
 	filter_friends_ = find_widget<ttoggle_button>(&window, "filter_with_friends", false, true);
 	filter_ignored_ = find_widget<ttoggle_button>(&window, "filter_without_ignored", false, true);
@@ -1743,10 +1751,12 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	wesnothd_connection_.send_data(config("refresh_lobby"));
 }
 
-void tlobby_main::skip_replay_changed_callback(twidget& w)
+void tlobby_main::skip_replay_changed_callback(twindow& window)
 {
-	ttoggle_button& tb = dynamic_cast<ttoggle_button&>(w);
-	preferences::set_skip_mp_replay(tb.get_value_bool());
+	// TODO: this prefence should probably be controlled with an enum
+	const int value = find_widget<tmenu_button>(&window, "replay_options", false).get_value();
+	preferences::set_skip_mp_replay(value == 1);
+	preferences::set_blindfold_replay(value == 2);
 }
 
 void tlobby_main::send_to_server(const config& cfg)
