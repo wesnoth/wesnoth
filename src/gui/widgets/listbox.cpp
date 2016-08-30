@@ -844,13 +844,13 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, const int req_cols)
+static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, const unsigned int req_cols)
 {
 	std::vector<std::map<std::string, string_map>> list_data;
 	for(const auto & row : data.child_range("row"))
 	{
 		auto cols = row.child_range("column");
-		VALIDATE(cols.size() == static_cast<unsigned>(req_cols), _("'list_data' must have the same number of columns as the 'list_definition'."));
+		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols, _("'list_data' must have the same number of columns as the 'list_definition'."));
 
 		for(const auto & c : cols)
 		{
