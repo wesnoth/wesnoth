@@ -187,7 +187,7 @@ struct game_info
 	const char* display_status_string() const;
 };
 
-class game_filter_base : public std::unary_function<game_info, bool>
+class game_filter_base
 {
 public:
 	virtual ~game_filter_base()
