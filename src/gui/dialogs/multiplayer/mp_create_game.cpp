@@ -258,7 +258,8 @@ void tmp_create_game::pre_show(twindow& window)
 	rfm_options[2]["tooltip"] = _("No Ally Mirror: No two allied players will get the same faction");
 
 	const int initial_index = std::find(rfm_types_.begin(), rfm_types_.end(),
-		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode())) - rfm_types_.begin();
+		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode(), mp_game_settings::RANDOM_FACTION_MODE::DEFAULT))
+		- rfm_types_.begin();
 
 	tmenu_button& rfm_menu_button = find_widget<tmenu_button>(&window, "random_faction_mode", false);
 
@@ -345,7 +346,7 @@ void tmp_create_game::pre_show(twindow& window)
 	}, true);
 
 	plugins_context_->set_callback("select_type",  [this](const config& cfg) {
-		create_engine_.set_current_level_type(ng::level::TYPE::string_to_enum(cfg["type"])); }, true);
+		create_engine_.set_current_level_type(ng::level::TYPE::string_to_enum(cfg["type"], ng::level::TYPE::SCENARIO)); }, true);
 
 	plugins_context_->set_callback("select_era",   [this](const config& cfg) {
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
