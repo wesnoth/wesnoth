@@ -62,24 +62,18 @@ void tlobby_player_info::pre_show(twindow& window)
 	add_to_friends_ = &find_widget<tbutton>(&window, "add_to_friends", false);
 	connect_signal_mouse_left_click(
 			*add_to_friends_,
-			std::bind(&tlobby_player_info::add_to_friends_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&tlobby_player_info::add_to_friends_button_callback, this));
 
 	add_to_ignores_ = &find_widget<tbutton>(&window, "add_to_ignores", false);
 	connect_signal_mouse_left_click(
 			*add_to_ignores_,
-			std::bind(&tlobby_player_info::add_to_ignores_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&tlobby_player_info::add_to_ignores_button_callback, this));
 
 	remove_from_list_
 			= &find_widget<tbutton>(&window, "remove_from_list", false);
 	connect_signal_mouse_left_click(
 			*remove_from_list_,
-			std::bind(&tlobby_player_info::remove_from_list_button_callback,
-						this,
-						std::ref(window)));
+			std::bind(&tlobby_player_info::remove_from_list_button_callback, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<tbutton>(&window, "check_status", false),
@@ -119,7 +113,7 @@ void tlobby_player_info::pre_show(twindow& window)
 
 	find_widget<tlabel>(&window, "location_info", false).set_label(loc.str());
 
-	update_relation(window);
+	update_relation();
 
 	if(!preferences::is_authenticated()) {
 		twidget* aw = window.find("admin", false);
@@ -131,7 +125,7 @@ void tlobby_player_info::post_show(twindow& /*window*/)
 {
 }
 
-void tlobby_player_info::update_relation(twindow& w)
+void tlobby_player_info::update_relation()
 {
 	add_to_friends_->set_active(false);
 	add_to_ignores_->set_active(false);
@@ -160,25 +154,25 @@ void tlobby_player_info::update_relation(twindow& w)
 	}
 }
 
-void tlobby_player_info::add_to_friends_button_callback(twindow& w)
+void tlobby_player_info::add_to_friends_button_callback()
 {
 	preferences::add_friend(info_.name, "");
 	info_.relation = user_info::FRIEND;
-	update_relation(w);
+	update_relation();
 }
 
-void tlobby_player_info::add_to_ignores_button_callback(twindow& w)
+void tlobby_player_info::add_to_ignores_button_callback()
 {
 	preferences::add_ignore(info_.name, "");
 	info_.relation = user_info::IGNORED;
-	update_relation(w);
+	update_relation();
 }
 
-void tlobby_player_info::remove_from_list_button_callback(twindow& w)
+void tlobby_player_info::remove_from_list_button_callback()
 {
 	preferences::remove_acquaintance(info_.name);
 	info_.relation = user_info::NEUTRAL;
-	update_relation(w);
+	update_relation();
 }
 
 void tlobby_player_info::start_whisper_button_callback(twindow& w)
