@@ -600,6 +600,11 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 		return "";
 	}
 
+	// One difficulty found. Use it
+	if(difficulties.size() == 1) {
+		return difficulties[0];
+	}
+
 	// A specific difficulty value was passed
 	// Use a minimilistic interface to get the specified define
 	if(set_value != -1) {
