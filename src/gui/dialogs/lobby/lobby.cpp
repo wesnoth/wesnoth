@@ -711,6 +711,8 @@ void tlobby_main::update_gamelist_filter()
 		   << ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
 	assert(lobby_info_.games().size() == gamelistbox_->get_item_count());
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
+
+	update_gamelist_header();
 }
 
 void tlobby_main::update_playerlist()
