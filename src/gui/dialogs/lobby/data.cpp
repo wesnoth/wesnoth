@@ -367,48 +367,12 @@ const char* game_info::display_status_string() const
 	}
 }
 
-game_filter_stack::game_filter_stack() : filters_()
+bool game_info::match_string_filter(const std::string& filter) const
 {
-}
-
-game_filter_stack::~game_filter_stack()
-{
-	for(auto f : filters_) {
-		delete f;
-	}
-}
-
-void game_filter_stack::append(game_filter_base* f)
-{
-	filters_.push_back(f);
-}
-
-void game_filter_stack::clear()
-{
-	for(auto f : filters_) {
-		delete f;
-	}
-
-	filters_.clear();
-}
-
-bool game_filter_and_stack::match(const game_info& game) const
-{
-	for(auto f : filters_) {
-		if(!f->match(game)) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-bool game_filter_general_string_part::match(const game_info& game) const
-{
-	const std::string& s1 = game.map_info;
-	const std::string& s2 = game.name;
-	return std::search(s1.begin(), s1.end(), value_.begin(), value_.end(),
+	const std::string& s1 = map_info;
+	const std::string& s2 = name;
+	return std::search(s1.begin(), s1.end(), filter.begin(), filter.end(),
 			chars_equal_insensitive) != s1.end()
-	    || std::search(s2.begin(), s2.end(), value_.begin(), value_.end(),
+	    || std::search(s2.begin(), s2.end(), filter.begin(), filter.end(),
 			chars_equal_insensitive) != s2.end();
 }

@@ -33,6 +33,8 @@ public:
 
 	typedef std::map<int, game_info*> game_info_map;
 
+	using game_filter_func = std::function<bool(const game_info&)>;
+
 	/**
 	 * Process a full gamelist. Current info is discarded.
 	 */
@@ -55,7 +57,7 @@ public:
 	}
 
 	void clear_game_filter();
-	void add_game_filter(game_filter_base* f);
+	void add_game_filter(game_filter_func func);
 	void set_game_filter_invert(bool value);
 	void apply_game_filter();
 
@@ -110,7 +112,7 @@ private:
 	std::vector<user_info> users_;
 	std::vector<user_info*> users_sorted_;
 	std::map<std::string, chat_log> whispers_;
-	game_filter_and_stack game_filter_;
+	std::vector<game_filter_func> game_filters_;
 	bool game_filter_invert_;
 	std::vector<bool> games_visibility_;
 	twesnothd_connection& wesnothd_connection_;

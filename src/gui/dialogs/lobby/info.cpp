@@ -46,7 +46,7 @@ lobby_info::lobby_info(const config& game_config, twesnothd_connection& wesnothd
 	, users_()
 	, users_sorted_()
 	, whispers_()
-	, game_filter_()
+	, game_filters_()
 	, game_filter_invert_(false)
 	, games_visibility_()
 	, wesnothd_connection_(wesnothd_connection)
@@ -299,14 +299,14 @@ const std::vector<game_info*>& lobby_info::games_filtered() const
 	return games_filtered_;
 }
 
-void lobby_info::add_game_filter(game_filter_base* f)
+void lobby_info::add_game_filter(game_filter_func func)
 {
-	game_filter_.append(f);
+	game_filters_.push_back(func);
 }
 
 void lobby_info::clear_game_filter()
 {
-	game_filter_.clear();
+	game_filters_.clear();
 }
 
 void lobby_info::set_game_filter_invert(bool value)
@@ -332,7 +332,11 @@ void lobby_info::apply_game_filter()
 	for(auto g : games_) {
 		game_info& gi = *g;
 
-		bool show = game_filter_.match(gi);
+		bool show = true;
+		for(const auto& filter_func : game_filters_) {
+			if(!(show = filter_func(gi))) break;
+		}
+
 		if(game_filter_invert_) {
 			show = !show;
 		}

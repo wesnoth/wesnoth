@@ -1660,25 +1660,31 @@ void tlobby_main::game_filter_reload()
 {
 	lobby_info_.clear_game_filter();
 
-	for(const auto & s : utils::split(filter_text_->get_value(), ' '))
-	{
-		lobby_info_.add_game_filter(new game_filter_general_string_part(s));
+	for(const auto& s : utils::split(filter_text_->get_value(), ' ')) {
+		lobby_info_.add_game_filter([s](const game_info& info)->bool {
+			return info.match_string_filter(s);
+		});
 	}
+
 	// TODO: make changing friend/ignore lists trigger a refresh
 	if(filter_friends_->get_value()) {
-		lobby_info_.add_game_filter(
-				new game_filter_value<bool, &game_info::has_friends>(true));
+		lobby_info_.add_game_filter([](const game_info& info)->bool {
+			return info.has_friends == true;
+		});
 	}
+
 	if(filter_ignored_->get_value()) {
-		lobby_info_.add_game_filter(
-				new game_filter_value<bool, &game_info::has_ignored>(false));
+		lobby_info_.add_game_filter([](const game_info& info)->bool {
+			return info.has_ignored == false;
+		});
 	}
+
 	if(filter_slots_->get_value()) {
-		lobby_info_.add_game_filter(
-				new game_filter_value<size_t,
-									  &game_info::vacant_slots,
-									  std::greater<size_t> >(0));
+		lobby_info_.add_game_filter([](const game_info& info)->bool {
+			return info.vacant_slots > 0;
+		});
 	}
+
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value_bool());
 }
 
