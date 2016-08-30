@@ -137,7 +137,7 @@ void tgame_load::pre_show(twindow& window)
 		string_map item;
 
 		std::string name = game.name();
-		utils::ellipsis_truncate(name, 50);
+		utils::ellipsis_truncate(name, 40);
 		item["label"] = name;
 		data.emplace("filename", item);
 
