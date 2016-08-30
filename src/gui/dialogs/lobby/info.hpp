@@ -25,7 +25,7 @@ class twesnothd_connection;
 class lobby_info
 {
 public:
-	explicit lobby_info(const config& game_config, twesnothd_connection&);
+	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons, twesnothd_connection&);
 
 	~lobby_info();
 
@@ -101,6 +101,7 @@ private:
 	void process_userlist();
 
 	const config& game_config_;
+	const std::vector<std::string>& installed_addons_;
 	config gamelist_;
 	bool gamelist_initialized_;
 	std::vector<room_info> rooms_;

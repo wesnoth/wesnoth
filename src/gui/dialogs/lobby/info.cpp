@@ -35,8 +35,9 @@ static lg::log_domain log_lobby("lobby");
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
-lobby_info::lobby_info(const config& game_config, twesnothd_connection& wesnothd_connection)
+lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons, twesnothd_connection& wesnothd_connection)
 	: game_config_(game_config)
+	, installed_addons_(installed_addons)
 	, gamelist_()
 	, gamelist_initialized_(false)
 	, rooms_()
@@ -102,7 +103,7 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const auto & c : gamelist_.child("gamelist").child_range("game")) {
-		game_info* game = new game_info(c, game_config_);
+		game_info* game = new game_info(c, game_config_, installed_addons_);
 		games_by_id_[game->id] = game;
 	}
 
@@ -146,12 +147,12 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 		if(diff_result == "new" || diff_result == "modified") {
 			if(current_i == games_by_id_.end()) {
-				games_by_id_.insert({game_id, new game_info(c, game_config_)});
+				games_by_id_.insert({game_id, new game_info(c, game_config_, installed_addons_)});
 				continue;
 			}
 
 			// Had a game with that id, so update it and mark it as such
-			*(current_i->second) = game_info(c, game_config_);
+			*(current_i->second) = game_info(c, game_config_, installed_addons_);
 			current_i->second->display_status = game_info::UPDATED;
 		} else if(diff_result == "deleted") {
 			if(current_i == games_by_id_.end()) {

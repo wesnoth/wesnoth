@@ -782,8 +782,9 @@ struct twrapper<gui2::tlobby_main>
 	config game_config;
 	twesnothd_connection wesnothd_connection;
 	twesnothd_connection_init wesnothd_connection_init;
+	std::vector<std::string> installed_addons;
 	lobby_info li;
-	twrapper() : wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection), li(game_config, wesnothd_connection)
+	twrapper() : wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection), li(game_config, installed_addons, wesnothd_connection)
 	{
 	}
 	gui2::tlobby_main* create()

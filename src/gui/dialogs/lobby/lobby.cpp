@@ -17,6 +17,7 @@
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/lobby/player_info.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/helper.hpp"
 
@@ -40,9 +41,11 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
+#include "addon/manager_ui.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
+#include "game_initialization/lobby_reload_request_exception.hpp"
 #include "gettext.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
@@ -1505,6 +1508,56 @@ void tlobby_main::join_or_observe(int idx)
 	}
 }
 
+static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info::required_addon>& reqs, game_info::ADDON_REQ addon_outcome)
+{
+	if(addon_outcome == game_info::CANNOT_SATISFY) {
+		std::string e_title = _("Incompatible user-made content.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons which are incompatible with your version. You might suggest they update their add-ons.");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		for(const game_info::required_addon & a : reqs) {
+			if (a.outcome == game_info::CANNOT_SATISFY) {
+				err_msg += "• " + a.message + "\n";
+			}
+		}
+		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
+		
+		return false;
+	} else if(addon_outcome == game_info::NEED_DOWNLOAD) {
+		std::string e_title = _("Missing user-made content.");
+		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		std::vector<std::string> needs_download;
+		for(const game_info::required_addon & a : reqs) {
+			if(a.outcome == game_info::NEED_DOWNLOAD) {
+				err_msg += "• " + a.message + "\n";
+
+				needs_download.push_back(a.addon_id);
+			} else if(a.outcome == game_info::CANNOT_SATISFY) {
+				assert(false);
+			}
+		}
+		assert(needs_download.size() > 0);
+
+		if(gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+			ad_hoc_addon_fetch_session(v, needs_download);
+			// Evil exception throwing. Boooo.
+			throw mp::lobby_reload_request_exception();
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
 bool tlobby_main::do_game_join(int idx, bool observe)
 {
 	if(idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
@@ -1527,6 +1580,19 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 			return false;
 		}
 	}
+
+	// check whehter to try to download addons
+	if(game.addons_outcome != game_info::SATISFIED) {
+		if(game.addons.empty()) {
+			gui2::show_error_message(window_->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			return false;
+		}
+
+		if(!handle_addon_requirements_gui(window_->video(), game.addons, game.addons_outcome)) {
+			return false;
+		}
+	}
+
 	config response;
 	config& join = response.add_child("join");
 	join["id"] = std::to_string(game.id);

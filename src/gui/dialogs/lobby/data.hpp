@@ -135,7 +135,7 @@ struct user_info
  */
 struct game_info
 {
-	game_info(const config& c, const config& game_config);
+	game_info(const config& c, const config& game_config, const std::vector<std::string>& installed_addons);
 
 	bool can_join() const;
 	bool can_observe() const;
@@ -183,6 +183,17 @@ struct game_info
 		DELETED
 	};
 	game_display_status display_status;
+
+	enum ADDON_REQ { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
+
+	struct required_addon {
+		std::string addon_id;
+		ADDON_REQ outcome;
+		std::string message;
+	};
+
+	std::vector<required_addon> addons;
+	ADDON_REQ addons_outcome;
 
 	const char* display_status_string() const;
 

@@ -652,7 +652,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			sound::empty_playlist();
 			sound::stop_music();
 		}
-		lobby_info li(game_config, *wesnothd_connection);
+		lobby_info li(game_config, installed_addons, *wesnothd_connection);
 
 		// Force a black background
 		const Uint32 color = SDL_MapRGBA(video.getSurface()->format
