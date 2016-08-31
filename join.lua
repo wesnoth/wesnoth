@@ -106,7 +106,7 @@ local function plugin()
 
   if info.name == "Dialog" then
     log("got a leader select dialog...")
-    context.set_result({result = 0})
+    context.skip_dialog({})
     events, context, info = coroutine.yield()
 
     repeat

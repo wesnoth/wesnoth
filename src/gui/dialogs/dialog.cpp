@@ -18,6 +18,8 @@
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "video.hpp"
 
 namespace gui2
@@ -34,6 +36,15 @@ tdialog::~tdialog()
 bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	if(video.faked()) {
+		plugins_manager* pm = plugins_manager::get();
+		if (pm && pm->any_running())
+		{
+			plugins_context pc("Dialog");
+			pc.set_callback("skip_dialog", [this](config) { retval_ = twindow::OK; }, false);
+			pc.set_callback("quit", [](config) {}, false);
+			pc.play_slice();
+		}
+
 		return false;
 	}
 
