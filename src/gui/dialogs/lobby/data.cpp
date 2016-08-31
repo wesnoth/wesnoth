@@ -16,7 +16,9 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
+#include "gui/auxiliary/old_markup.hpp"
 #include "filesystem.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -251,7 +253,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 					break;
 				}
 				ADDON_REQ result = check_addon_version_compatibility(mod, game);
-				addons_outcome = std::max(addons_outcome, result); //elevate to most severe error level encountered so far
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		}
 	}
@@ -280,11 +282,16 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 	}
 	map_info += " ";
-	if(!game["mp_scenario"].empty()) {
+
+	//
+	// Check scenarios and campaigns
+	//
+	if(!game["mp_scenario"].empty() && game["mp_campaign"].empty()) {
 		// Check if it's a multiplayer scenario
 		const config* level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
+
+		// Check if it's a user map
 		if(!*level_cfg) {
-			// Check if it's a user map
 			level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 		}
 		if(*level_cfg) {
@@ -314,7 +321,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 			if((*level_cfg)["require_scenario"].to_bool(false)) {
 				ADDON_REQ result = check_addon_version_compatibility((*level_cfg), game);
-				addons_outcome = std::max(addons_outcome, result); //elevate to most severe error level encountered so far
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
 			utils::string_map symbols;
@@ -322,6 +329,53 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
 			map_info += scenario;
 			verified = false;
+		}
+	} else if(!game["mp_campaign"].empty()) {
+		if(const config& level_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
+			const std::string campaign_text = formatter()
+				<< _("Campaign:")
+				<< " "
+				<< level_cfg["name"]
+				<< " — "
+				<< game["mp_scenario_name"];
+
+			scenario = campaign_text;
+			map_info += campaign_text;
+
+			// Difficulty.
+			const std::vector<std::string> difficulties = utils::split(level_cfg["difficulties"]);
+			const std::string difficulty_descriptions = level_cfg["difficulty_descriptions"];
+			std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
+			int index = 0;
+
+			// TODO: use difficulties instead of difficulty_descriptions if
+			// difficulty_descriptions is not available
+			assert(difficulties.size() == difficulty_options.size());
+			for(const std::string& difficulty : difficulties) {
+				if(difficulty == game["difficulty_define"]) {
+					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
+					map_info += " — ";
+					map_info += menu_item.label();
+					map_info += " ";
+					map_info += menu_item.description();
+
+					break;
+				}
+				index++;
+			}
+
+			ADDON_REQ result = check_addon_version_compatibility(level_cfg, game);
+			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+		} else {
+			utils::string_map symbols;
+			symbols["campaign_id"] = game["mp_campaign"];
+			scenario = vgettext("Unknown campaign: $campaign_id", symbols);
+			map_info += scenario;
+			verified = false;
+
+			if(game["require_scenario"].to_bool(false)) {
+				//have_scenario = false;
+			}
 		}
 	} else {
 		scenario = _("Unknown scenario");
@@ -418,7 +472,6 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 			symbols["local_ver"] = local_ver.str();
 			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", symbols);
 
-			std::cerr << "right path" << std::endl;
 			required_addons.push_back(r);
 			return r.outcome;
 		}
