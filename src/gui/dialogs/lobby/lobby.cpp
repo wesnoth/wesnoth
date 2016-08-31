@@ -1511,8 +1511,8 @@ void tlobby_main::join_or_observe(int idx)
 static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info::required_addon>& reqs, game_info::ADDON_REQ addon_outcome)
 {
 	if(addon_outcome == game_info::CANNOT_SATISFY) {
-		std::string e_title = _("Incompatible user-made content.");
-		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons which are incompatible with your version. You might suggest they update their add-ons.");
+		std::string e_title = _("Incompatible User-made Content.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
 
 		err_msg +="\n\n";
 		err_msg += _("Details:");
@@ -1524,10 +1524,10 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 			}
 		}
 		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
-		
+
 		return false;
 	} else if(addon_outcome == game_info::NEED_DOWNLOAD) {
-		std::string e_title = _("Missing user-made content.");
+		std::string e_title = _("Missing User-made Content.");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
 
 		err_msg +="\n\n";
@@ -1540,15 +1540,17 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 				err_msg += "• " + a.message + "\n";
 
 				needs_download.push_back(a.addon_id);
-			} else if(a.outcome == game_info::CANNOT_SATISFY) {
-				assert(false);
 			}
 		}
+
 		assert(needs_download.size() > 0);
 
-		if(gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+		if(gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons, true) == gui2::twindow::OK) {
+			// Begin download session
 			ad_hoc_addon_fetch_session(v, needs_download);
-			// Evil exception throwing. Boooo.
+
+			// TODO: get rid of evil exception throwing. Boooo! In any case, this is here to reload the game config
+			// and the installed_addons list that the lobby has.
 			throw mp::lobby_reload_request_exception();
 
 			return true;
@@ -1581,14 +1583,14 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 		}
 	}
 
-	// check whehter to try to download addons
+	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != game_info::SATISFIED) {
-		if(game.addons.empty()) {
+		if(game.required_addons.empty()) {
 			gui2::show_error_message(window_->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
 			return false;
 		}
 
-		if(!handle_addon_requirements_gui(window_->video(), game.addons, game.addons_outcome)) {
+		if(!handle_addon_requirements_gui(window_->video(), game.required_addons, game.addons_outcome)) {
 			return false;
 		}
 	}

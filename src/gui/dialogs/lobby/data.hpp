@@ -192,8 +192,10 @@ struct game_info
 		std::string message;
 	};
 
-	std::vector<required_addon> addons;
+	std::vector<required_addon> required_addons;
 	ADDON_REQ addons_outcome;
+
+	ADDON_REQ check_addon_version_compatibility(const config& local_item, const config& game);
 
 	const char* display_status_string() const;
 
