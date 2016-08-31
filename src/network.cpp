@@ -945,7 +945,7 @@ struct bandwidth_stats {
 	int in_packets;
 	int in_bytes;
 	int day;
-	const static size_t type_width = 16;
+	const static size_t type_width = 20;
 	const static size_t packet_width = 7;
 	const static size_t bytes_width = 10;
 	bandwidth_stats& operator+=(const bandwidth_stats& a)
