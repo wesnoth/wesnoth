@@ -53,13 +53,6 @@ static lg::log_domain log_mp("mp/main");
 #define ERR_MP LOG_STREAM(err, log_mp)
 
 
-namespace {
-
-const SDL_Rect leader_pane_position = {-260,-370,260,370};
-const int leader_pane_border = 10;
-
-}
-
 namespace mp {
 
 wait::wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state,
