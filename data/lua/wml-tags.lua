@@ -900,7 +900,7 @@ end
 function wml_actions.role(cfg)
 	-- role= and type= are handled differently than in other tags,
 	-- so we need to remove them from the filter
-	local role = cfg.role
+	local role = cfg.role or ""
 	local filter = helper.shallow_literal(cfg)
 
 	local types = {}
