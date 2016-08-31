@@ -245,15 +245,21 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	map_info = era;
 
 	if(!game.child_or_empty("modification").empty()) {
-		for(const config &cfg : game.child_range("modification")) {
-			if(cfg["require_modification"].to_bool(false)) {
-				const config &mod = game_config.find_child("modification", "id", cfg["id"]);
-				if(!mod) {
-					have_all_mods = false;
-					break;
+		for(const config& cfg : game.child_range("modification")) {
+			if(const config& mod = game_config.find_child("modification", "id", cfg["id"])) {
+				mod_info += (mod_info.empty() ? "" : ", ") + mod["name"].str();
+
+				if(cfg["require_modification"].to_bool(false)) {
+					ADDON_REQ result = check_addon_version_compatibility(mod, game);
+					addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 				}
-				ADDON_REQ result = check_addon_version_compatibility(mod, game);
-				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			} else {
+				mod_info += (mod_info.empty() ? "" : ", ") + cfg["id"].str();
+
+				if(cfg["require_modification"].to_bool(false)) {
+					have_all_mods = false;
+					mod_info += " " + _("(missing)");
+				}
 			}
 		}
 	}

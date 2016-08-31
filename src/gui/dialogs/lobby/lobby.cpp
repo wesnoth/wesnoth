@@ -624,8 +624,9 @@ std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_inf
 	add_label_data(data, "status", colorize(game.status, color_string));
 	add_label_data(data, "name",   colorize(game.name, color_string));
 
-	add_label_data(data, "era",             game.era);
+	add_label_data(data, "era",             colorize(game.era, "#a69275"));
 	add_label_data(data, "era_short",       game.era_short);
+	add_label_data(data, "mods",            colorize(game.mod_info, "#a69275"));
 	add_label_data(data, "map_info",        game.map_info);
 	add_label_data(data, "scenario",        game.scenario);
 	add_label_data(data, "map_size_text",   game.map_size_info);
