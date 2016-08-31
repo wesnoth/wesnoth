@@ -93,7 +93,7 @@ local function plugin()
 
   events, context, info = coroutine.yield()
 
-  repeat
+  while not (info.name == "Dialog" or info.name == "Multiplayer Wait") do
     if context.join then
       context.join({})
     else
@@ -102,7 +102,7 @@ local function plugin()
 
     events, context, info = coroutine.yield()
     idle_text("in " .. info.name .. " waiting for leader select dialog")
-  until info.name == "Dialog" or info.name == "Multiplayer Wait"
+  end
 
   if info.name == "Dialog" then
     log("got a leader select dialog...")
@@ -124,6 +124,16 @@ local function plugin()
   until info.name == "Game"
 
   log("got to a game context...")
+
+  repeat
+    events, context, info = coroutine.yield()
+    idle_text("in " .. info.name .. " waiting for not game")
+  until info.name ~= "Game"
+
+  repeat
+    events, context, info = coroutine.yield()
+    idle_text("in " .. info.name .. " waiting for game")
+  until info.name == "Game"
 
   repeat
     events, context, info = coroutine.yield()
