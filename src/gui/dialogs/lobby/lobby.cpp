@@ -407,9 +407,7 @@ void add_tooltip_data(std::map<std::string, string_map>& map,
 					  const std::string& key,
 					  const std::string& label)
 {
-	string_map item;
-	item["tooltip"] = label;
-	map.emplace(key, item);
+	map[key]["tooltip"] = label;
 }
 
 void modify_grid_with_data(tgrid* grid,
