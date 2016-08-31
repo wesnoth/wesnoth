@@ -56,6 +56,8 @@ REGISTER_DIALOG(addon_uninstall_list)
 
 void taddon_uninstall_list::pre_show(twindow& window)
 {
+	set_restore(true);
+
 	tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);
 

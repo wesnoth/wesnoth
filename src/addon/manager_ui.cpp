@@ -964,13 +964,14 @@ void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& a
 		msg_title = !updating ? _("Add-on Installed") : _("Add-on Updated");
 		msg_text = !updating ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
 
+		// Extra flags are so restore_background can be set. Remove when no longer necessary
 		gui2::show_transient_message(v,
-			msg_title, utils::interpolate_variables_into_string(msg_text, &syms));
+			msg_title, utils::interpolate_variables_into_string(msg_text, &syms), "", false, false, true);
 	} else if(failed_titles.empty()) {
 		msg_title = !updating ? _("Add-ons Installed") : _("Add-ons Updated");
 		msg_text = !updating ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
 
-		gui2::show_transient_message(v, msg_title, msg_text);
+		gui2::show_transient_message(v, msg_title, msg_text, "", false, false, true);
 	} else {
 		msg_title = !updating ? _("Installation Failed") : _("Update Failed");
 		msg_text = _n(
@@ -1182,7 +1183,7 @@ bool uninstall_local_addons(CVideo& v)
 
 		gui2::show_transient_message(
 			v, dlg_title,
-			dlg_msg + list_lead + utils::bullet_list(succeeded_names));
+			dlg_msg + list_lead + utils::bullet_list(succeeded_names), "", false, false, true);
 
 		return true;
 	}
