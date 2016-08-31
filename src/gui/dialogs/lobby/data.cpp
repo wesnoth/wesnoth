@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "gui/auxiliary/old_markup.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -242,7 +242,9 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		era_short = "??";
 		verified = false;
 	}
-	map_info = era;
+
+	std::stringstream info_stream;
+	info_stream << era;
 
 	if(!game.child_or_empty("modification").empty()) {
 		for(const config& cfg : game.child_range("modification")) {
@@ -269,7 +271,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	}
 
 	if(map_data.empty()) {
-		map_info += " — ??×??";
+		info_stream << " — ??×??";
 	} else {
 		try {
 			gamemap map(std::make_shared<terrain_type_data>(game_config), map_data);
@@ -278,7 +280,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			std::ostringstream msi;
 			msi << map.w() << utils::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
-			map_info += " — " + map_size_info;
+			info_stream << " — " + map_size_info;
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "illegal map: " << e.message << std::endl;
 			verified = false;
@@ -287,7 +289,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			verified = false;
 		}
 	}
-	map_info += " ";
+	info_stream << " ";
 
 	//
 	// Check scenarios and campaigns
@@ -300,9 +302,11 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(!*level_cfg) {
 			level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 		}
+
 		if(*level_cfg) {
-			scenario = (*level_cfg)["name"].str();
-			map_info += scenario;
+			scenario = formatter() << "<b>" << _("(S)") << "</b>" << " " << (*level_cfg)["name"].str();
+			info_stream << scenario;
+
 			// Reloaded games do not match the original scenario hash, so it makes no sense
 			// to test them, since they always would appear as remote scenarios
 			if(!reloaded) {
@@ -318,8 +322,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 					if(!hash_found) {
 						remote_scenario = true;
-						map_info += " — ";
-						map_info += _("Remote scenario");
+						info_stream << " — ";
+						info_stream << _("Remote scenario");
 						verified = false;
 					}
 				}
@@ -333,65 +337,51 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			utils::string_map symbols;
 			symbols["scenario_id"] = game["mp_scenario"];
 			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
-			map_info += scenario;
+			info_stream << scenario;
 			verified = false;
 		}
 	} else if(!game["mp_campaign"].empty()) {
 		if(const config& level_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
-			const std::string campaign_text = formatter()
-				<< _("Campaign:")
-				<< " "
-				<< level_cfg["name"]
-				<< " — "
+			std::stringstream campaign_text;
+			campaign_text
+				<< "<b>" << _("(C)") << "</b>" << " "
+				<< level_cfg["name"] << " — "
 				<< game["mp_scenario_name"];
 
-			scenario = campaign_text;
-			map_info += campaign_text;
-
-			// Difficulty.
-			const std::vector<std::string> difficulties = utils::split(level_cfg["difficulties"]);
-			const std::string difficulty_descriptions = level_cfg["difficulty_descriptions"];
-			std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
-			int index = 0;
-
-			// TODO: use difficulties instead of difficulty_descriptions if
-			// difficulty_descriptions is not available
-			assert(difficulties.size() == difficulty_options.size());
-			for(const std::string& difficulty : difficulties) {
-				if(difficulty == game["difficulty_define"]) {
-					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
-					map_info += " — ";
-					map_info += menu_item.label();
-					map_info += " ";
-					map_info += menu_item.description();
+			// Difficulty
+			config difficulties = gui2::generate_difficulty_config(level_cfg);
+			for(const config& difficulty : difficulties.child_range("difficulty")) {
+				if(difficulty["define"] == game["difficulty_define"]) {
+					campaign_text << " — " << difficulty["description"];
 
 					break;
 				}
-				index++;
 			}
 
-			ADDON_REQ result = check_addon_version_compatibility(level_cfg, game);
-			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			scenario = campaign_text.str();
+			info_stream << campaign_text.rdbuf();
+
+			// TODO: should we have this?
+			//if(game["require_scenario"].to_bool(false)) {
+				ADDON_REQ result = check_addon_version_compatibility(level_cfg, game);
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			//}
 		} else {
 			utils::string_map symbols;
 			symbols["campaign_id"] = game["mp_campaign"];
 			scenario = vgettext("Unknown campaign: $campaign_id", symbols);
-			map_info += scenario;
+			info_stream << scenario;
 			verified = false;
-
-			if(game["require_scenario"].to_bool(false)) {
-				//have_scenario = false;
-			}
 		}
 	} else {
 		scenario = _("Unknown scenario");
-		map_info += scenario;
+		info_stream << scenario;
 		verified = false;
 	}
 
 	if(reloaded) {
-		map_info += " — ";
-		map_info += _("Reloaded game");
+		info_stream << " — ";
+		info_stream << _("Reloaded game");
 		verified = false;
 	}
 
@@ -402,7 +392,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			const std::string current_turn_string = turn.substr(0, index);
 			current_turn = lexical_cast<unsigned int>(current_turn_string);
 		}
-		status = _("Turn ") + turn;
+		status = _("Turn") + " " + turn;
 	} else {
 		started = false;
 		if(vacant_slots > 0) {
@@ -423,12 +413,13 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	}
 
 	if(game["mp_countdown"].to_bool()) {
-		time_limit = game["mp_countdown_init_time"].str() + "+"
-					 + game["mp_countdown_turn_bonus"].str() + "/"
-					 + game["mp_countdown_action_bonus"].str();
-	} else {
-		time_limit = "";
+		time_limit = formatter()
+			<< game["mp_countdown_init_time"].str() << "+"
+			<< game["mp_countdown_turn_bonus"].str() << "/"
+			<< game["mp_countdown_action_bonus"].str();
 	}
+
+	map_info = info_stream.str();
 }
 
 game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& local_item, const config& game)
