@@ -1141,6 +1141,9 @@
 		EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
 		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC64D7681A085F4A0092EF75 /* libboost_random-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */; };
+		EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		EC6C6B8C1D77CB2800807ED1 /* eras.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91C554621D77A50F002DB0C8 /* eras.cfg */; };
+		EC6C6B8D1D77CB2C00807ED1 /* eras.lua in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91C554631D77A50F002DB0C8 /* eras.lua */; };
 		EC74C10F1975765F00B85A1A /* depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */; };
 		EC74C1101975765F00B85A1A /* depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
@@ -1318,6 +1321,8 @@
 				91273E941C7BF1D8005E7F81 /* core in Copy Data Files */,
 				91273E951C7BF1D8005E7F81 /* cores.cfg in Copy Data Files */,
 				91273E961C7BF1D8005E7F81 /* english.cfg in Copy Data Files */,
+				EC6C6B8C1D77CB2800807ED1 /* eras.cfg in Copy Data Files */,
+				EC6C6B8D1D77CB2C00807ED1 /* eras.lua in Copy Data Files */,
 				91273E981C7BF1D8005E7F81 /* game_config.cfg in Copy Data Files */,
 				91273E991C7BF1D8005E7F81 /* gui in Copy Data Files */,
 				91273E9A1C7BF1D8005E7F81 /* hardwired in Copy Data Files */,
@@ -1371,6 +1376,7 @@
 				91B622171B76C0A600B00E0F /* libpango-1.0.0.dylib in Copy Frameworks */,
 				91B622181B76C0A600B00E0F /* libpangocairo-1.0.0.dylib in Copy Frameworks */,
 				91B622191B76C0A600B00E0F /* libpangoft2-1.0.0.dylib in Copy Frameworks */,
+				EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */,
 				91B6221A1B76C0A600B00E0F /* libpixman-1.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
 				91A41F901CA22A98008B10D5 /* libreadline.6.3.dylib in Copy Frameworks */,
