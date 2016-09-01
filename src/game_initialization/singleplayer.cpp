@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2008 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "singleplayer.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
@@ -10,8 +23,10 @@
 #include "multiplayer_connect.hpp"
 #include "multiplayer_ui.hpp"
 #include "playcampaign.hpp"
-#include "resources.hpp"
 #include "wml_exception.hpp"
+
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace {
 
@@ -22,29 +37,27 @@ config gamelist;
 
 namespace sp {
 
-bool enter_create_mode(CVideo& video, const config& game_config,
-	saved_game& state, jump_to_campaign_info jump_to_campaign, bool local_players_only) {
-
+bool enter_create_mode(CVideo& video, const config& game_config, saved_game& state, jump_to_campaign_info jump_to_campaign, bool local_players_only)
+{
 	bool configure_canceled = false;
 
 	do {
-
 		ng::create_engine create_eng(video, state);
+
 		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
 
-		std::vector<ng::create_engine::level_ptr> campaigns(
-			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN));
+		const std::vector<ng::create_engine::level_ptr> campaigns =
+			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
 
-		if (campaigns.empty()) {
-		  gui2::show_error_message(video,
-					  _("No campaigns are available.\n"));
+		if(campaigns.empty()) {
+			gui2::show_error_message(video, _("No campaigns are available."));
 			return false;
 		}
 
-		bool use_deterministic_mode = false;
+		std::string random_mode = "";
+
 		// No campaign selected from command line
-		if (jump_to_campaign.campaign_id_.empty() == true)
-		{
+		if(jump_to_campaign.campaign_id_.empty()) {
 			gui2::tcampaign_selection dlg(create_eng);
 
 			try {
@@ -58,49 +71,38 @@ bool enter_create_mode(CVideo& video, const config& game_config,
 				return false;
 			}
 
-			use_deterministic_mode = dlg.get_deterministic();
-
-		}
-		else
-		{
-			// don't reset the campaign_id_ so we can know
+			if(dlg.get_deterministic()) {
+				random_mode = "deterministic";
+			}
+		} else {
+			// Don't reset the campaign_id_ so we can know
 			// if we should quit the game or return to the main menu
 
-			// checking for valid campaign name
-			bool not_found = true;
-			for(size_t i = 0; i < campaigns.size(); ++i)
-			{
-				if (campaigns[i]->data()["id"] == jump_to_campaign.campaign_id_)
-				{
-					create_eng.set_current_level(i);
-					not_found = false;
-					break;
-				}
+			// Checking for valid campaign name
+			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](ng::create_engine::level_ptr level) {
+				return level->data()["id"] == jump_to_campaign.campaign_id_;
+			});
 
-			}
-
-			// didn't find any campaign with that id
-			if (not_found)
-			{
-				//TODO: use ERR_NG or similar
-				std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign.campaign_id_<<"]\n";
+			// Didn't find a campaign with that id
+			if(campaign == campaigns.end()) {
+				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id_ << "]" << std::endl;
 				return false;
 			}
 
+			create_eng.set_current_level(campaign - campaigns.begin());
 		}
 
-		std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 		state.classification().random_mode = random_mode;
 
-		std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign.difficulty_);
+		const std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign.difficulty_);
 
-		if (selected_difficulty == "FAIL") return false;
-		if (selected_difficulty == "CANCEL") {
-			if (jump_to_campaign.campaign_id_.empty() == false)
-			{
+		if(selected_difficulty == "FAIL") return false;
+		if(selected_difficulty == "CANCEL") {
+			if(!jump_to_campaign.campaign_id_.empty()) {
 				jump_to_campaign.campaign_id_ = "";
 			}
-			// canceled difficulty dialog, relaunch the campaign selection dialog
+
+			// Canceled difficulty dialog, relaunch the campaign selection dialog
 			return enter_create_mode(video, game_config, state, jump_to_campaign, local_players_only);
 		}
 
@@ -112,15 +114,15 @@ bool enter_create_mode(CVideo& video, const config& game_config,
 				config_of("next_scenario", jump_to_campaign.scenario_id_)
 			);
 		}
+
 		create_eng.prepare_for_new_level();
 
 		create_eng.get_parameters();
-		if(!state.valid())
-		{
-			//TODO: use ERR_NG or similar
-			std::cerr << "Cannot load scenario with id=" << state.get_scenario_id() << "\n";
+		if(!state.valid()) {
+			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id() << std::endl;
 			return false;
 		}
+
 		configure_canceled = !enter_configure_mode(video, game_config_manager::get()->game_config(), state, local_players_only);
 
 	} while (configure_canceled);
@@ -128,7 +130,8 @@ bool enter_create_mode(CVideo& video, const config& game_config,
 	return true;
 }
 
-bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only) {
+bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only)\
+{
 	bool connect_canceled;
 	do {
 		connect_canceled = false;
@@ -151,15 +154,15 @@ bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& 
 			return false;
 		}
 	} while (connect_canceled);
+
 	return true;
 }
 
-bool enter_connect_mode(CVideo& video, const config& game_config,
-	saved_game& state, bool local_players_only) {
-
+bool enter_connect_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only)
+{
 	ng::connect_engine connect_eng(state, true, nullptr);
 
-	if (state.mp_settings().show_connect) {
+	if(state.mp_settings().show_connect) {
 		mp::ui::result res;
 		gamelist.clear();
 		{
