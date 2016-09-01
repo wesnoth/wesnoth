@@ -17,6 +17,7 @@
 #include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/widgets/window.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_configure.hpp"
@@ -115,47 +116,32 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			);
 		}
 
-		create_eng.prepare_for_new_level();
-
-		create_eng.get_parameters();
 		if(!state.valid()) {
 			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id() << std::endl;
 			return false;
 		}
 
-		configure_canceled = !enter_configure_mode(video, game_config_manager::get()->game_config(), state, local_players_only);
+		configure_canceled = !enter_configure_mode(video, game_config_manager::get()->game_config(), state, create_eng, local_players_only);
 
 	} while (configure_canceled);
 
 	return true;
 }
 
-bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only)\
+bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng, bool local_players_only)
 {
-	bool connect_canceled;
-	do {
-		connect_canceled = false;
+	gui2::tsp_options_configure dlg(create_eng);
 
-		mp::ui::result res;
+	dlg.show(video);
 
-		{
-			mp::configure ui(video, 0, game_config, gamechat, gamelist, state, local_players_only);
-			mp::run_lobby_loop(video, ui);
-			res = ui.get_result();
-			ui.get_parameters();
-		}
+	if(dlg.get_retval() == gui2::twindow::OK) {
+		create_eng.prepare_for_new_level();
+		create_eng.get_parameters();
 
-		switch (res) {
-		case mp::ui::CREATE:
-			connect_canceled = !enter_connect_mode(video, game_config, state, local_players_only);
-			break;
-		case mp::ui::QUIT:
-		default:
-			return false;
-		}
-	} while (connect_canceled);
+		enter_connect_mode(video, game_config, state, local_players_only);
+	}
 
-	return true;
+	return dlg.get_retval() == gui2::twindow::OK;
 }
 
 bool enter_connect_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only)
