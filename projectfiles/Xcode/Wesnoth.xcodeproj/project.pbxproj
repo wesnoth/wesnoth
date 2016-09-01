@@ -484,6 +484,8 @@
 		91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */; };
 		91D191471D78D1D900E60B56 /* mp_options_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D191451D78D1D900E60B56 /* mp_options_helper.cpp */; };
 		91D191481D78D1D900E60B56 /* mp_options_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D191451D78D1D900E60B56 /* mp_options_helper.cpp */; };
+		91D1914B1D78E3FC00E60B56 /* sp_options_configure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D191491D78E3FC00E60B56 /* sp_options_configure.cpp */; };
+		91D1914C1D78E3FC00E60B56 /* sp_options_configure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D191491D78E3FC00E60B56 /* sp_options_configure.cpp */; };
 		91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA6871C9066CC0030F8D0 /* unit_preview_pane.cpp */; };
 		91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA68B1C9066EC0030F8D0 /* unit_recruit.cpp */; };
 		91E355631CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */; };
@@ -1730,6 +1732,8 @@
 		91C55DA31CC078820040012E /* context_free_grammar_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = context_free_grammar_generator.hpp; sourceTree = "<group>"; };
 		91D191451D78D1D900E60B56 /* mp_options_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_options_helper.cpp; sourceTree = "<group>"; };
 		91D191461D78D1D900E60B56 /* mp_options_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_options_helper.hpp; sourceTree = "<group>"; };
+		91D191491D78E3FC00E60B56 /* sp_options_configure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sp_options_configure.cpp; sourceTree = "<group>"; };
+		91D1914A1D78E3FC00E60B56 /* sp_options_configure.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sp_options_configure.hpp; sourceTree = "<group>"; };
 		91DCA6871C9066CC0030F8D0 /* unit_preview_pane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_preview_pane.cpp; sourceTree = "<group>"; };
 		91DCA6881C9066CC0030F8D0 /* unit_preview_pane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_preview_pane.hpp; sourceTree = "<group>"; };
 		91DCA68B1C9066EC0030F8D0 /* unit_recruit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_recruit.cpp; sourceTree = "<group>"; };
@@ -4364,6 +4368,8 @@
 				9130A45F1C73BB6100852782 /* select_orb_colors.hpp */,
 				B5CE470312A041EF00D665EE /* simple_item_selector.cpp */,
 				B5CE470412A041EF00D665EE /* simple_item_selector.hpp */,
+				91D191491D78E3FC00E60B56 /* sp_options_configure.cpp */,
+				91D1914A1D78E3FC00E60B56 /* sp_options_configure.hpp */,
 				EC3381C518B520120020DD6F /* theme_list.cpp */,
 				EC3381C618B520120020DD6F /* theme_list.hpp */,
 				4944F4111354FB970027E614 /* tip.cpp */,
@@ -5260,6 +5266,7 @@
 				9193FC861D5D7461004F6C07 /* lua_unit_attacks.cpp in Sources */,
 				91C554601D73F997002DB0C8 /* faction_select.cpp in Sources */,
 				91D191471D78D1D900E60B56 /* mp_options_helper.cpp in Sources */,
+				91D1914B1D78E3FC00E60B56 /* sp_options_configure.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5833,6 +5840,7 @@
 				9193FC871D5D7461004F6C07 /* lua_unit_attacks.cpp in Sources */,
 				91C554611D73F997002DB0C8 /* faction_select.cpp in Sources */,
 				91D191481D78D1D900E60B56 /* mp_options_helper.cpp in Sources */,
+				91D1914C1D78E3FC00E60B56 /* sp_options_configure.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
