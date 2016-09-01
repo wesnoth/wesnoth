@@ -198,9 +198,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 				if(!tdata_->try_merge_terrains(tiles_[x][y])) {
 					std::stringstream ss;
 					ss << "Illegal tile in map: (" << t_translation::write_terrain_code(tiles_[x][y])
-						   << ") '" << tiles_[x][y] << "'\n";
-					ERR_CF << ss.str();
-					ss << "The map cannot be loaded.";
+						   << ") '" << tiles_[x][y] << "'";
 					throw incorrect_map_format_error(ss.str().c_str());
 				}
 			}
