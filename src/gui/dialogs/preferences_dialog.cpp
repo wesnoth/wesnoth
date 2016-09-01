@@ -1126,7 +1126,8 @@ void tpreferences::pre_show(twindow& window)
 	// pages cannot be found afterwards.
 	initialize_members(window);
 
-	assert(selector.get_item_count() == pager.get_layer_count());
+	VALIDATE(selector.get_item_count() == pager.get_layer_count(),
+		"The preferences pager and its selector listbox do not have the same number of items.");
 
 	const int main_index = index_in_pager_range(index_.first, pager);
 

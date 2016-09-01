@@ -986,7 +986,7 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 {
 	assert(widget);
 	if(!has_linked_size_group(id)) {
-		ERR_GUI << "Unknown linked group '" << id << "'; skipping";
+		ERR_GUI << "Unknown linked group '" << id << "'; skipping\n";
 		return;
 	}
 
