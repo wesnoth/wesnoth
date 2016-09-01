@@ -144,7 +144,9 @@ void t_string_base::walker::update()
 
 	case PLURAL_PART:
 		begin_ = string_.find_first_of(mark, end_ + 5);
-		if(begin_ == PLURAL_PART) {
+		if(begin_ == std::string::npos)
+			begin_ = string_.size();
+		if(string_[begin_] == PLURAL_PART) {
 			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
 			return;

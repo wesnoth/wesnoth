@@ -69,7 +69,8 @@ local function generate_objectives(cfg)
 				if turn_limit >= current_turn then
 					local turn_count = turn_limit - current_turn + 1
 					turn_counter = _("(this turn left)", "(%d turns left)", turn_count)
-					turn_counter = tostring("<span foreground='white'><small> " .. turn_counter .. "</small></span>"):format(turn_count)
+					turn_counter = tostring(turn_counter):format(turn_count)
+					turn_counter = "<span foreground='white'><small> " .. turn_counter .. "</small></span>"
 				end
 			end
 
