@@ -330,6 +330,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			if(const unit_type* ut = unit_types.find(type)) {
 				const auto& tree = ut->advancement_tree();
 				types.insert(tree.begin(), tree.end());
+				types.insert(type);
 			}
 		}
 		if(types.find(u.type_id()) == types.end()) {
