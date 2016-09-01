@@ -182,14 +182,14 @@ namespace { // Support functions
 				break;
 			}
 
-			pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
+			pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, calc,
 				game_map->w(), game_map->h());
 
 			if (route.steps.empty()) {
 				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities" << std::endl;
 				pathfind::emergency_path_calculator calc(fake_unit, *game_map);
 
-				route = pathfind::a_star_search(src, dst, 10000, &calc,
+				route = pathfind::a_star_search(src, dst, 10000, calc,
 						game_map->w(), game_map->h());
 				if(route.steps.empty()) {
 					// This would occur when trying to do a MUF of a unit
@@ -197,7 +197,7 @@ namespace { // Support functions
 					// costs). This really cannot fail.
 					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain" << std::endl;
 					pathfind::dummy_path_calculator calc(fake_unit, *game_map);
-					route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
+					route = a_star_search(src, dst, 10000, calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
 				}
 			}

@@ -252,7 +252,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         destination = res;
     }
 
-    pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, &calc,
+    pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, calc,
             resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
     return route;

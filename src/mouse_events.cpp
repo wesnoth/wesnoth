@@ -457,7 +457,7 @@ pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_
 
 	pathfind::plain_route route;
 
-	route = pathfind::a_star_search(un->get_location(), go_to, 10000.0, &calc, board.map().w(), board.map().h(), &allowed_teleports);
+	route = pathfind::a_star_search(un->get_location(), go_to, 10000.0, calc, board.map().w(), board.map().h(), &allowed_teleports);
 
 	return mark_route(route);
 }

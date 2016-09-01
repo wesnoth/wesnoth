@@ -316,7 +316,7 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 
 	passage_path_calculator calc(map_, params.wall_, laziness, windiness, rng_);
 
-	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, params.width_, params.height_);
+	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, calc, params.width_, params.height_);
 
 	int width = std::max<int>(1, p.cfg["width"].to_int());
 	int jagged = p.cfg["jagged"];

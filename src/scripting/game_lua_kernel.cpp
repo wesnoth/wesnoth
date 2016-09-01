@@ -1494,7 +1494,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			teams(), map, ignore_units, false, see_all);
 	}
 
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, calc, map.w(), map.h(),
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map.w(), map.h(),
 		&teleport_locations);
 	delete calc;
 

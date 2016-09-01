@@ -142,22 +142,21 @@ public:
 
 
 plain_route a_star_search(const map_location& src, const map_location& dst,
-                          double stop_at, const cost_calculator *calc,
+                          double stop_at, const cost_calculator& calc,
                           const size_t width, const size_t height,
                           const teleport_map *teleports, bool border) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height, border));
 	assert(dst.valid(width, height, border));
-	assert(calc != nullptr);
-	assert(stop_at <= calc->getNoPathValue());
+	assert(stop_at <= calc.getNoPathValue());
 	//---------------------------------------------------
 
 	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
-	if (calc->cost(dst, 0) >= stop_at) {
+	if (calc.cost(dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		plain_route locRoute;
-		locRoute.move_cost = int(calc->getNoPathValue());
+		locRoute.move_cost = int(calc.getNoPathValue());
 		return locRoute;
 	}
 
@@ -209,7 +208,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at + 1;
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
-			double cost = n.g + calc->cost(locs[i], n.g);
+			double cost = n.g + calc.cost(locs[i], n.g);
 			if (cost >= thresh) continue;
 
 			bool in_list = next.in == search_counter + 1;
@@ -236,7 +235,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		std::reverse(route.steps.begin(), route.steps.end());
 	} else {
 		LOG_PF << "aborted a* search  " << "\n";
-		route.move_cost = static_cast<int>(calc->getNoPathValue());
+		route.move_cost = static_cast<int>(calc.getNoPathValue());
 	}
 
 	return route;

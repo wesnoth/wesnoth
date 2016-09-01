@@ -317,7 +317,7 @@ bool move::calculate_new_route(const map_location& source_hex, const map_locatio
 						resources::gameboard->teams().at(team_index()),
 						resources::gameboard->teams(), resources::gameboard->map());
 	new_plain_route = pathfind::a_star_search(source_hex,
-						dest_hex, 10000, &path_calc, resources::gameboard->map().w(), resources::gameboard->map().h());
+						dest_hex, 10000, path_calc, resources::gameboard->map().w(), resources::gameboard->map().h());
 	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
 	route_.reset(new pathfind::marked_route(pathfind::mark_route(new_plain_route)));
 	calculate_move_cost();

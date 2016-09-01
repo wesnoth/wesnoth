@@ -355,7 +355,7 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 	// any convex castle on the map. Strictly speaking it could be
 	// reduced to sqrt(map.w()**2 + map.h()**2).
 	pathfind::plain_route rt =
-		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
+		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), calc,
 		                        map.w(), map.h());
 	return !rt.steps.empty();
 }

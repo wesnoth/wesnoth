@@ -1039,7 +1039,7 @@ std::string default_map_generator_job::default_generate_map(
 		}
 
 		// Search a path out for the road
-		pathfind::plain_route rt = pathfind::a_star_search(src, dst, 10000.0, &calc, width, height);
+		pathfind::plain_route rt = pathfind::a_star_search(src, dst, 10000.0, calc, width, height);
 
 		const std::string& road_base_name = misc_labels != nullptr
 			? base_name_generator->generate()

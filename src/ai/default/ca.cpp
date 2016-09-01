@@ -89,7 +89,7 @@ double goto_phase::evaluate()
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*ui, current_team());
 
 		pathfind::plain_route route;
-		route = pathfind::a_star_search(ui->get_location(), ui->get_goto(), 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+		route = pathfind::a_star_search(ui->get_location(), ui->get_goto(), 10000.0, calc, map_.w(), map_.h(), &allowed_teleports);
 
 		if (!route.steps.empty()){
 			move_ = check_move_action(ui->get_location(), route.steps.back(), true, true);
@@ -301,7 +301,7 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	pathfind::shortest_path_calculator calc(*leader, current_team(), resources::gameboard->teams(), resources::gameboard->map());
-	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
+	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, calc,
 			resources::gameboard->map().w(), resources::gameboard->map().h());
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
@@ -420,7 +420,7 @@ double move_leader_to_keep_phase::evaluate()
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
 		pathfind::plain_route route;
-		route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
+		route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
 		if (!route.steps.empty() || route.move_cost < shortest_distance) {
 			best_leader = &(*leader);
@@ -456,7 +456,7 @@ double move_leader_to_keep_phase::evaluate()
 	ordered_locations moves_toward_keep;
 
 	pathfind::plain_route route;
-	route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
+	route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
 	// find next hop
 	map_location next_hop = map_location::null_location();
@@ -477,7 +477,7 @@ double move_leader_to_keep_phase::evaluate()
 
 	for (const pathfind::paths::step &dest : leader_paths.destinations) {
 		if (!units_.find(dest.curr).valid()) {
-			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, &calc,
+			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, calc,
 					resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 			if (route.move_cost < next_hop_cost) {
 				moves_toward_keep.insert(std::make_pair(route.move_cost, dest.curr));

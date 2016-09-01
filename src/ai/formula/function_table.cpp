@@ -1017,7 +1017,7 @@ private:
 
 		pathfind::emergency_path_calculator em_calc(*unit_it, resources::gameboard->map());
 
-                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
+                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
