@@ -12,10 +12,10 @@ res.quick_4mp_leaders = function(args)
 		return
 	end
 
-	local tratit_quick = args[1][2]
+	local trait_quick = args[1][2]
 	for i, unit in ipairs(wesnoth.get_units { canrecruit = true, T.filter_wml { max_moves = 4 } }) do
 		if not unit.variables.dont_make_me_quick then
-			wesnoth.add_modification(unit, "trait", tratit_quick )
+			wesnoth.add_modification(unit, "trait", trait_quick )
 			unit.moves = unit.max_moves
 			unit.hitpoints = unit.max_hitpoints
 		end
