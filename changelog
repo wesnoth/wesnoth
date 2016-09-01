@@ -33,6 +33,7 @@ Version 1.13.5+dev:
    * The "Cores" button on the title screen is now hidden if no cores other
      than the default are installed
    * Redesigned game dropdown/context menu appearance
+   * New categories bar in hotkey preferences allows you to filter hotkeys
  * WML Engine:
    * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
@@ -95,6 +96,9 @@ Version 1.13.5+dev:
      the next valid index), or removed (by setting a field to nil).
    * wesnoth.show_message_dialog supports second_portrait and second_mirror keys
      in its first argument, which produces a dialog with two portraits.
+   * The callable userdata returned by wesnoth.textdomain can now be called with
+     an additional two parameters (a plural string and a count) in order to support
+     gettext plurals.
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle
