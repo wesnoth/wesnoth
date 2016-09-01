@@ -242,16 +242,6 @@ void tgame_stats::pre_show(twindow& window)
 			dialog_callback<tgame_stats, &tgame_stats::on_tab_select>);
 #endif
 
-	std::map<std::string, string_map> list_data;
-
-	list_data["tab_label"]["label"] = _("Game Stats");
-	tab_bar.add_row(list_data);
-
-	list_data["tab_label"]["label"] = _("Scenario Settings");
-	tab_bar.add_row(list_data);
-
-	tab_bar.select_row(0);
-
 	on_tab_select(window);
 }
 
