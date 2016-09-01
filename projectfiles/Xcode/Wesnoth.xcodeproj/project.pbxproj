@@ -482,6 +482,8 @@
 		91C554681D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */; };
+		91D191471D78D1D900E60B56 /* mp_options_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D191451D78D1D900E60B56 /* mp_options_helper.cpp */; };
+		91D191481D78D1D900E60B56 /* mp_options_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91D191451D78D1D900E60B56 /* mp_options_helper.cpp */; };
 		91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA6871C9066CC0030F8D0 /* unit_preview_pane.cpp */; };
 		91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA68B1C9066EC0030F8D0 /* unit_recruit.cpp */; };
 		91E355631CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */; };
@@ -1726,6 +1728,8 @@
 		91C55DA11CC078780040012E /* name_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = name_generator.hpp; sourceTree = "<group>"; };
 		91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context_free_grammar_generator.cpp; sourceTree = "<group>"; };
 		91C55DA31CC078820040012E /* context_free_grammar_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = context_free_grammar_generator.hpp; sourceTree = "<group>"; };
+		91D191451D78D1D900E60B56 /* mp_options_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_options_helper.cpp; sourceTree = "<group>"; };
+		91D191461D78D1D900E60B56 /* mp_options_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_options_helper.hpp; sourceTree = "<group>"; };
 		91DCA6871C9066CC0030F8D0 /* unit_preview_pane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_preview_pane.cpp; sourceTree = "<group>"; };
 		91DCA6881C9066CC0030F8D0 /* unit_preview_pane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_preview_pane.hpp; sourceTree = "<group>"; };
 		91DCA68B1C9066EC0030F8D0 /* unit_recruit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_recruit.cpp; sourceTree = "<group>"; };
@@ -3774,6 +3778,8 @@
 				F40C04841706613100B4DA68 /* mp_login.hpp */,
 				B5A9BCC70ECA805A002BE442 /* mp_method_selection.cpp */,
 				B5A9BCC80ECA805A002BE442 /* mp_method_selection.hpp */,
+				91D191451D78D1D900E60B56 /* mp_options_helper.cpp */,
+				91D191461D78D1D900E60B56 /* mp_options_helper.hpp */,
 				91222E9C1D6E2D2900001AF2 /* plugin_executor.hpp */,
 				919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */,
 				919B37FB1BAF7A9D00E0094C /* synced_choice_wait.hpp */,
@@ -5253,6 +5259,7 @@
 				9193FC821D5C2CF8004F6C07 /* lua_unit.cpp in Sources */,
 				9193FC861D5D7461004F6C07 /* lua_unit_attacks.cpp in Sources */,
 				91C554601D73F997002DB0C8 /* faction_select.cpp in Sources */,
+				91D191471D78D1D900E60B56 /* mp_options_helper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5825,6 +5832,7 @@
 				9193FC831D5C2D00004F6C07 /* lua_unit.cpp in Sources */,
 				9193FC871D5D7461004F6C07 /* lua_unit_attacks.cpp in Sources */,
 				91C554611D73F997002DB0C8 /* faction_select.cpp in Sources */,
+				91D191481D78D1D900E60B56 /* mp_options_helper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
