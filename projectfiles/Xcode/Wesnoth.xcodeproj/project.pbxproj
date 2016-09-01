@@ -82,7 +82,6 @@
 		91273E941C7BF1D8005E7F81 /* core in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E771C7BF1C0005E7F81 /* core */; };
 		91273E951C7BF1D8005E7F81 /* cores.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E781C7BF1C0005E7F81 /* cores.cfg */; };
 		91273E961C7BF1D8005E7F81 /* english.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E791C7BF1C1005E7F81 /* english.cfg */; };
-		91273E971C7BF1D8005E7F81 /* era_blank.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7A1C7BF1C1005E7F81 /* era_blank.cfg */; };
 		91273E981C7BF1D8005E7F81 /* game_config.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7B1C7BF1C1005E7F81 /* game_config.cfg */; };
 		91273E991C7BF1D8005E7F81 /* gui in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7C1C7BF1C1005E7F81 /* gui */; };
 		91273E9A1C7BF1D8005E7F81 /* hardwired in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91273E7D1C7BF1C1005E7F81 /* hardwired */; };
@@ -479,6 +478,11 @@
 		91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */; };
 		91C554601D73F997002DB0C8 /* faction_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C5545E1D73F997002DB0C8 /* faction_select.cpp */; };
 		91C554611D73F997002DB0C8 /* faction_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C5545E1D73F997002DB0C8 /* faction_select.cpp */; };
+		91C554641D77A510002DB0C8 /* eras.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 91C554621D77A50F002DB0C8 /* eras.cfg */; };
+		91C554651D77A510002DB0C8 /* eras.lua in Resources */ = {isa = PBXBuildFile; fileRef = 91C554631D77A50F002DB0C8 /* eras.lua */; };
+		91C554671D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
+		91C554681D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
+		91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */; };
 		91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA6871C9066CC0030F8D0 /* unit_preview_pane.cpp */; };
 		91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91DCA68B1C9066EC0030F8D0 /* unit_recruit.cpp */; };
@@ -1314,7 +1318,6 @@
 				91273E941C7BF1D8005E7F81 /* core in Copy Data Files */,
 				91273E951C7BF1D8005E7F81 /* cores.cfg in Copy Data Files */,
 				91273E961C7BF1D8005E7F81 /* english.cfg in Copy Data Files */,
-				91273E971C7BF1D8005E7F81 /* era_blank.cfg in Copy Data Files */,
 				91273E981C7BF1D8005E7F81 /* game_config.cfg in Copy Data Files */,
 				91273E991C7BF1D8005E7F81 /* gui in Copy Data Files */,
 				91273E9A1C7BF1D8005E7F81 /* hardwired in Copy Data Files */,
@@ -1538,7 +1541,6 @@
 		91273E771C7BF1C0005E7F81 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; path = core; sourceTree = "<group>"; };
 		91273E781C7BF1C0005E7F81 /* cores.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = cores.cfg; sourceTree = "<group>"; };
 		91273E791C7BF1C1005E7F81 /* english.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = english.cfg; sourceTree = "<group>"; };
-		91273E7A1C7BF1C1005E7F81 /* era_blank.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = era_blank.cfg; sourceTree = "<group>"; };
 		91273E7B1C7BF1C1005E7F81 /* game_config.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = game_config.cfg; sourceTree = "<group>"; };
 		91273E7C1C7BF1C1005E7F81 /* gui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gui; sourceTree = "<group>"; };
 		91273E7D1C7BF1C1005E7F81 /* hardwired */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hardwired; sourceTree = "<group>"; };
@@ -1714,6 +1716,9 @@
 		91B621F71B76BD4600B00E0F /* multimenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = multimenu.hpp; sourceTree = "<group>"; };
 		91C5545E1D73F997002DB0C8 /* faction_select.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = faction_select.cpp; sourceTree = "<group>"; };
 		91C5545F1D73F997002DB0C8 /* faction_select.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = faction_select.hpp; sourceTree = "<group>"; };
+		91C554621D77A50F002DB0C8 /* eras.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eras.cfg; sourceTree = "<group>"; };
+		91C554631D77A50F002DB0C8 /* eras.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eras.lua; sourceTree = "<group>"; };
+		91C554661D77A545002DB0C8 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
 		91C55DA11CC078780040012E /* name_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = name_generator.hpp; sourceTree = "<group>"; };
 		91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context_free_grammar_generator.cpp; sourceTree = "<group>"; };
 		91C55DA31CC078820040012E /* context_free_grammar_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = context_free_grammar_generator.hpp; sourceTree = "<group>"; };
@@ -2729,6 +2734,7 @@
 				B55999270EC61F59008DD061 /* SDL2_mixer.framework in Frameworks */,
 				B5599E9C0EC68BF2008DD061 /* SDL2_ttf.framework in Frameworks */,
 				B55998F80EC61EA5008DD061 /* SDL2.framework in Frameworks */,
+				91C554671D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2757,6 +2763,7 @@
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
 				916719071CADAC0D00B055A9 /* libboost_random-mt.dylib in Frameworks */,
+				91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2771,6 +2778,7 @@
 				EC64D7681A085F4A0092EF75 /* libboost_random-mt.dylib in Frameworks */,
 				ECF9D44219F4050E00E6C9D9 /* libboost_system-mt.dylib in Frameworks */,
 				EC225C9718EF0ABC00025EC4 /* libintl.8.dylib in Frameworks */,
+				91C554681D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3157,7 +3165,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECA9E7461CA20AA800A947D6 /* libreadline.6.3.dylib */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 				ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */,
 				F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */,
@@ -3185,11 +3192,13 @@
 				EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */,
 				EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */,
 				EC5C243018EF07B4001FA499 /* libpangoft2-1.0.0.dylib */,
-				90606A2A1D5599BA00719B40 /* libpcre.1.dylib */,
+				91C554661D77A545002DB0C8 /* libpcre.1.dylib */,
 				B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */,
 				EC5C243118EF07B4001FA499 /* libpng16.16.dylib */,
+				ECA9E7461CA20AA800A947D6 /* libreadline.6.3.dylib */,
 				EC5C243A18EF07B4001FA499 /* libz.1.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */,
+				90606A2A1D5599BA00719B40 /* libpcre.1.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3411,7 +3420,8 @@
 				91273E771C7BF1C0005E7F81 /* core */,
 				91273E781C7BF1C0005E7F81 /* cores.cfg */,
 				91273E791C7BF1C1005E7F81 /* english.cfg */,
-				91273E7A1C7BF1C1005E7F81 /* era_blank.cfg */,
+				91C554621D77A50F002DB0C8 /* eras.cfg */,
+				91C554631D77A50F002DB0C8 /* eras.lua */,
 				91273E7B1C7BF1C1005E7F81 /* game_config.cfg */,
 				91273E7C1C7BF1C1005E7F81 /* gui */,
 				91273E7D1C7BF1C1005E7F81 /* hardwired */,
@@ -4677,6 +4687,8 @@
 				B5F9C5950F93BB0B00C02205 /* InfoPlist.strings in Resources */,
 				B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */,
 				B5A9B22C0ECA4074002BE442 /* sounds in Resources */,
+				91C554641D77A510002DB0C8 /* eras.cfg in Resources */,
+				91C554651D77A510002DB0C8 /* eras.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
