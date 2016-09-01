@@ -118,7 +118,7 @@ private:
 
 	void show_description(twindow& window, const std::string& new_description);
 
-	void update_options_list(twindow& window);
+	void update_options_list();
 	void update_details(twindow& window);
 	void update_map_settings(twindow& window);
 

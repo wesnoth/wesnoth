@@ -434,7 +434,7 @@ void tmp_create_game::on_tab_select(twindow& window)
 	}
 
 	if(i == tab::TAB_OPTIONS) {
-		update_options_list(window);
+		update_options_list();
 	}
 
 	// Map Settings can and should be updated every time
@@ -526,7 +526,7 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 	update_details(window);
 }
 
-void tmp_create_game::update_options_list(twindow& window)
+void tmp_create_game::update_options_list()
 {
 	options_manager_->update_options_list();
 }
