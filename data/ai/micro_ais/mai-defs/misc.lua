@@ -1,3 +1,13 @@
+function wesnoth.micro_ais.assassin(cfg)
+	local required_keys = { "[filter]", "[filter_second]" }
+	local optional_keys = { "[prefer]" }
+	local CA_parms = {
+		ai_id = 'mai_assassin',
+		{ ca_id = 'attack', location = 'ca_simple_attack.lua', score = 110001 },
+		{ ca_id = 'move', location = 'ca_assassin_move.lua', score = 110000 }
+	}
+    return required_keys, optional_keys, CA_parms
+end
 
 function wesnoth.micro_ais.lurkers(cfg)
 	local required_keys = { "[filter]", "[filter_location]" }

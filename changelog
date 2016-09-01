@@ -1,4 +1,6 @@
 Version 1.13.5+dev:
+ * AI:
+   * New Micro AI: Assassin Squad AI
  * Campaigns:
    * Eastern Invasion:
      * Fixed broken village encounters.
@@ -3623,7 +3625,7 @@ Version 1.9.7:
      upon editing this text.
  * WML engine:
    * added mode=replace to [modify_unit] to replace rather than merge unit subtags
-     (does not apply to object, trait, effect, or advancement)  
+     (does not apply to object, trait, effect, or advancement)
    * new attribute team_name= in SSFs
    * added [event][filter_side]<SSF keys> support
    * added support for inline SSF to [chat]
