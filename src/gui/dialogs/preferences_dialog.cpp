@@ -1265,6 +1265,11 @@ void tpreferences::on_page_select(twindow& window)
 	const int selected_row =
 		std::max(0, find_widget<tlistbox>(&window, "selector", false).get_selected_row());
 	set_visible_page(window, static_cast<unsigned int>(selected_row), "pager");
+	// FIXME: This is a hack to ensure that the hotkey categories bar doesn't take up extra vertical space
+	// It should be removed if the matrix placement policy can be fixed.
+	if(selected_row == 1) {
+		window.invalidate_layout();
+	}
 }
 
 void tpreferences::on_tab_select(twindow& window)

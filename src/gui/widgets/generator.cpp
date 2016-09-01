@@ -19,6 +19,8 @@
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
+#include <numeric>
+
 namespace gui2
 {
 
@@ -529,50 +531,61 @@ void tmatrix::create_item(const unsigned /*index*/)
 
 tpoint tmatrix::calculate_best_size() const
 {
-	// The best size is the one that minimizes overall width and height
-	// We try a number of columns from 2 up to sqrt(rows) + 1
+	// The best size is the one that minimizes aspect ratio of the enclosing rect
+	// We first calculate the best size of each item,
+	// then find the number of rows that minimizes the aspect ratio
+	// We try a number of columns from 1 up to sqrt(visible_items) + 2
 	size_t n_items = get_item_count();
-	if(n_items == 0) {
-		return tpoint();
-	} else if(n_items == 1) {
-		return item(0).get_best_size();
-	}
-	size_t max_cols = sqrt(n_items) + 1;
-	std::map<size_t,tpoint> best_sizes;
-	for(size_t cols = 2, n = 0; cols <= max_cols && n < n_items; cols++) {
-		tpoint result;
-		for(size_t i = 0; i < n_items / cols + 1; ++i) {
-			tpoint row_size;
-			for(size_t j = 0; j < cols && n < n_items; j++, n++) {
-				const tgrid& grid = item(n);
-				if(grid.get_visible() == twidget::tvisible::invisible
-				   || !get_item_shown(n)) {
-					j--;
-					continue;
-				}
-
-				const tpoint best_size = grid.get_best_size();
-
-				row_size.x += best_size.x;
-
-				if(best_size.y > row_size.y) {
-					row_size.y = best_size.y;
-				}
-			}
-
-			if(row_size.x > result.x) {
-				result.x = row_size.x;
-			}
-
-			result.y += row_size.y;
+	size_t max_cols = sqrt(n_items) + 2;
+	std::vector<tpoint> item_sizes;
+	for(size_t i = 0; i < n_items; i++) {
+		const tgrid& grid = item(i);
+		if(grid.get_visible() != twidget::tvisible::invisible && get_item_shown(i)) {
+			item_sizes.push_back(grid.get_best_size());
 		}
-		best_sizes[cols] = result;
+	}
+	if(item_sizes.empty()) {
+		return tpoint();
+	}
+	std::vector<tpoint> best_sizes(1);
+	best_sizes[0] = std::accumulate(item_sizes.begin(), item_sizes.end(), tpoint(), [](tpoint a, tpoint b) {
+		return tpoint(std::max(a.x, b.x), a.y + b.y);
+	});
+	int max_xtra = std::min_element(item_sizes.begin(), item_sizes.end(), [](tpoint a, tpoint b) {
+		return a.x < b.x;
+	})->x / 2;
+	for(size_t cells_in_1st_row = 2; cells_in_1st_row <= max_cols; cells_in_1st_row++) {
+		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0, [](int a, tpoint b) {
+			return a + b.x;
+		});
+		int row_max_width = row_min_width + max_xtra;
+		int row = 0;
+		tpoint row_size, total_size;
+		for(size_t n = 0; n < item_sizes.size(); n++) {
+			if(row_size.x + item_sizes[n].x > row_max_width) {
+				// Start new row
+				row++;
+				total_size.y += row_size.y;
+				if(total_size.x < row_size.x) {
+					total_size.x = row_size.x;
+				}
+				row_size = tpoint();
+			}
+			row_size.x += item_sizes[n].x;
+			if(row_size.y < item_sizes[n].y) {
+				row_size.y = item_sizes[n].y;
+			}
+		}
+		total_size.y += row_size.y;
+		if(total_size.x < row_size.x) {
+			total_size.x = row_size.x;
+		}
+		best_sizes.push_back(total_size);
 	}
 
-	return std::min_element(best_sizes.begin(), best_sizes.end(), [](const std::pair<size_t,tpoint>& p1, const std::pair<size_t,tpoint>& p2) {
-		return p1.second.x + p1.second.y < p2.second.x + p2.second.y;
-	})->second;
-	//n_cols_ = iter->first; // TODO: This needs to be recalculated from the best size somehow?
+	return *std::min_element(best_sizes.begin(), best_sizes.end(), [](tpoint p1, tpoint p2) {
+		return std::max<double>(p1.x, p1.y) / std::min<double>(p1.x, p1.y) < std::max<double>(p2.x, p2.y) / std::min<double>(p2.x, p2.y);
+	});
 }
 
 void tmatrix::place(const tpoint& origin, const tpoint& size)
@@ -585,7 +598,9 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 	 *   height.
 	 */
 
+	// TODO: Make sure all cells in a row are the same height
 	tpoint current_origin = origin;
+	int row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item_ordered(i);
@@ -597,24 +612,35 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 
 		tpoint best_size = grid.get_best_size();
 		// FIXME should we look at grow factors???
-//		best_size.x = size.x;
+
+		if(current_origin.x + best_size.x > origin.x + size.x) {
+			current_origin.x = origin.x;
+			current_origin.y += row_height;
+			row_height = 0;
+		}
 
 		grid.place(current_origin, best_size);
 
-		if(current_origin.x + best_size.x > size.x) {
-			current_origin.x = origin.x;
-			current_origin.y += best_size.y;
-		} else {
-			current_origin.x += best_size.x;
+		current_origin.x += best_size.x;
+		if(best_size.y > row_height) {
+			row_height = best_size.y;
 		}
 	}
 
-//	assert(current_origin.y == origin.y + size.y);
+	// TODO: If size is wider than best_size, the matrix will take too much vertical space.
+	// This block is supposed to correct for that, but doesn't work properly.
+	// To be more specific, it doesn't
+	if(current_origin.y + row_height != origin.y + size.y) {
+		tpoint better_size = size;
+		better_size.y -= current_origin.y + row_height - origin.y;
+		set_layout_size(better_size);
+	}
 }
 
 void tmatrix::set_origin(const tpoint& origin)
 {
 	tpoint current_origin = origin;
+	size_t row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = item_ordered(i);
@@ -624,13 +650,17 @@ void tmatrix::set_origin(const tpoint& origin)
 			continue;
 		}
 
+		if(current_origin.x + grid.get_width() > origin.x + get_width()) {
+			current_origin.x = origin.x;
+			current_origin.y += row_height;
+			row_height = 0;
+		}
+
 		grid.set_origin(current_origin);
 
-		if(current_origin.x + grid.get_width() > get_width()) {
-			current_origin.x = origin.x;
-			current_origin.y += grid.get_height();
-		} else {
-			current_origin.x += grid.get_width();
+		current_origin.x += grid.get_width();
+		if(grid.get_height() > row_height) {
+			row_height = grid.get_height();
 		}
 	}
 }
