@@ -841,7 +841,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
-	gui/dialogs/sp_options_configure.hpp
+	gui/dialogs/sp_options_configure.cpp
 	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
