@@ -50,7 +50,7 @@ public:
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
-	const config specials() const { return specials_; }
+	const config &specials() const { return specials_; }
 
 	void set_name(const t_string& value) { description_  = value; }
 	void set_id(const std::string& value) { id_ = value; }
