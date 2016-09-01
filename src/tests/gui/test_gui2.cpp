@@ -809,10 +809,11 @@ struct twrapper<gui2::tlobby_player_info>
 	twesnothd_connection wesnothd_connection;
 	twesnothd_connection_init wesnothd_connection_init;
 	user_info ui;
+	std::vector<std::string> installed_addons;
 	lobby_info li;
 	twrapper()
 		: wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection)
-		, ui(c), li(c, wesnothd_connection)
+		, ui(c), li(c, installed_addons, wesnothd_connection)
 	{
 	}
 	gui2::tlobby_player_info* create()
