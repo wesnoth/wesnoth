@@ -292,9 +292,12 @@ bool loadgame::load_multiplayer_game()
 {
 	show_dialog();
 
-	if (filename_.empty())
+	if(filename_.empty()) {
 		return false;
+	}
 
+	// read_save_file needs to be called before we can verify the classification so the data has
+	// been populated. Since we do that, we report any errors in that process first.
 	std::string error_log;
 	{
 		cursor::setter cur(cursor::WAIT);
@@ -302,8 +305,6 @@ bool loadgame::load_multiplayer_game()
 
 		read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
-
-		gamestate_.set_data(load_config_);
 	}
 
 	if(!error_log.empty()) {
@@ -318,10 +319,14 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
-	if(gamestate_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	// We want to verify the game classification before setting the data, so we don't check on
+	// gamestate_.classification() and instead construct a game_classification object manually.
+	if(game_classification(load_config_).campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		gui2::show_transient_error_message(video_, _("This is not a multiplayer save."));
 		return false;
 	}
+
+	set_gamestate();
 
 	return check_version_compatibility();
 }
