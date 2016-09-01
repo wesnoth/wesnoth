@@ -900,8 +900,16 @@ end
 function wml_actions.role(cfg)
 	-- role= and type= are handled differently than in other tags,
 	-- so we need to remove them from the filter
-	local role = cfg.role or ""
+	local role = cfg.role
 	local filter = helper.shallow_literal(cfg)
+
+	if role == nil then
+		if helper.get_child("auto_recall") ~= nil then
+			role = ""
+		else
+			helper.wml_error("missing role= in [role]")
+		end
+	end
 
 	local types = {}
 
