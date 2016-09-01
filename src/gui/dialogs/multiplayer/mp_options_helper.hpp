@@ -16,6 +16,8 @@
 
 #include "game_initialization/create_engine.hpp"
 
+class config;
+
 namespace gui2
 {
 
@@ -30,6 +32,8 @@ public:
 	tmp_options_helper(twindow& window, ng::create_engine& create_engine);
 
 	void update_options_list();
+
+	const config get_options_config();
 
 private:
 	struct option_source {

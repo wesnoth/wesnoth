@@ -764,17 +764,7 @@ void tmp_create_game::post_show(twindow& window)
 		// Since we don't have a tfield handling this option, we need to save the value manually
 		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
-		config options;
-		for(const auto& source : options_manager_->get_visible_options()) {
-			config& mod = options.add_child(source.level_type);
-			mod["id"] = source.id;
-			for(const auto& option : options_manager_->get_options_data()[source]) {
-				// TODO: change this to some key=value format as soon as we drop the old mp configure screen.
-				mod.add_child("option", config_of("id", option.first)("value", option.second));
-			}
-		}
-
-		config_engine_->set_options(options);
+		config_engine_->set_options(options_manager_->get_options_config());
 
 		// Set game name
 		const std::string name = find_widget<ttext_box>(&window, "game_name", false).get_value();

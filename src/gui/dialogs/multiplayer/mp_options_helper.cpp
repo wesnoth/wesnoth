@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
+#include "config_assign.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -256,6 +257,21 @@ void tmp_options_helper::display_custom_options(ttree_view& tree, std::string&& 
 			std::bind(&tmp_options_helper::reset_options_data, this, visible_options_.back(),
 				std::placeholders::_3, std::placeholders::_4));
 	}
+}
+
+const config tmp_options_helper::get_options_config()
+{
+	config options;
+	for(const auto& source : visible_options_) {
+		config& mod = options.add_child(source.level_type);
+		mod["id"] = source.id;
+		for(const auto& option : options_data_[source]) {
+			// TODO: change this to some key=value format as soon as we drop the old mp configure screen.
+			mod.add_child("option", config_of("id", option.first)("value", option.second));
+		}
+	}
+
+	return options;
 }
 
 } // namespace gui2
