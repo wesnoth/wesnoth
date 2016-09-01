@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
+#include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
@@ -30,7 +31,6 @@ namespace gui2
 
 class ttoggle_button;
 class ttoggle_panel;
-class ttree_view;
 class twidget;
 
 class tmp_create_game : public tdialog, private plugin_executor
@@ -52,29 +52,9 @@ private:
 
 	const config& cfg_;
 
-	struct option_source {
-		std::string level_type;
-		std::string id;
-		friend bool operator<(const option_source& a, const option_source& b) {
-			return a.level_type < b.level_type && a.id < b.id;
-		}
-	};
-
-	using option_map = std::map<std::string, config::attribute_value>;
-
-	std::vector<option_source> visible_options_;
-	std::map<option_source, option_map> options_data_;
-
-	void display_custom_options(twindow& window, ttree_view& options_tree, std::string&& type, const config& data);
-
-	template<typename T>
-	void update_options_data_map(T* widget, const option_source& source);
-	void update_options_data_map(ttoggle_button* widget, const option_source& source);
-
-	void reset_options_data(twindow& window, const option_source& source, bool& handled, bool& halt);
-
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
+	std::unique_ptr<tmp_options_helper> options_manager_;
 
 	int selected_game_index_;
 	int selected_rfm_index_;

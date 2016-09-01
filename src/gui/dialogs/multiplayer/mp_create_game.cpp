@@ -38,8 +38,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/tree_view.hpp"
-#include "gui/widgets/tree_view_node.hpp"
 #include "game_config.hpp"
 #include "savegame.hpp"
 #include "settings.hpp"
@@ -63,6 +61,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	: cfg_(cfg)
 	, create_engine_(create_eng)
 	, config_engine_()
+	, options_manager_()
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
 	, use_map_settings_(register_bool( "use_map_settings", true, prefs::use_map_settings, prefs::set_use_map_settings,
@@ -136,6 +135,11 @@ void tmp_create_game::pre_show(twindow& window)
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "create_game", false),
 		std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
+
+	//
+	// Set up the options manager. Needs to be done before selecting an initial tab
+	//
+	options_manager_.reset(new tmp_options_helper(window, create_engine_));
 
 	//
 	// Set up filtering
@@ -522,229 +526,9 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 	update_details(window);
 }
 
-template<typename T>
-void tmp_create_game::update_options_data_map(T* widget, const option_source& source)
-{
-	options_data_[source][widget->id()] = widget->get_value();
-}
-
-template<>
-void tmp_create_game::update_options_data_map(ttoggle_button* widget, const option_source& source)
-{
-	options_data_[source][widget->id()] = widget->get_value_bool();
-}
-
-void tmp_create_game::reset_options_data(twindow& window, const option_source& source, bool& handled, bool& halt)
-{
-	options_data_[source].clear();
-	update_options_list(window);
-
-	handled = true;
-	halt = true;
-}
-
-void tmp_create_game::display_custom_options(twindow& window, ttree_view& tree, std::string&& type, const config& cfg)
-{
-	// Needed since some compilers don't like passing just {}
-	static const std::map<std::string, string_map> empty_map;
-
-	visible_options_.push_back({type, cfg["id"]});
-	auto& data_map = options_data_[visible_options_.back()];
-
-	auto set_default_data_value = [&](const std::string& widget_id, const config& cfg) {
-		if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-			data_map[widget_id] = cfg["default"];
-		}
-	};
-
-	for(const auto& options : cfg.child_range("options")) {
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["label"] = cfg["name"];
-		data.emplace("tree_view_node_label", item);
-
-		ttree_view_node& option_node = tree.add_node("option_node", data);
-
-		for(const auto& checkbox_option : options.child_range("checkbox")) {
-			data.clear();
-
-			item["label"] = checkbox_option["name"];
-			item["tooltip"] = checkbox_option["description"];
-			data.emplace("option_checkbox", item);
-
-			ttree_view_node& node = option_node.add_child("option_checkbox_node", data);
-
-			ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("option_checkbox", true));
-
-			VALIDATE(checkbox, missing_widget("option_checkbox"));
-
-			const std::string widget_id = checkbox_option["id"];
-
-			set_default_data_value(widget_id, checkbox_option);
-
-			checkbox->set_id(widget_id);
-			checkbox->set_value(data_map[widget_id].to_bool());
-			checkbox->set_callback_state_change(
-				std::bind(&tmp_create_game::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
-		}
-
-		// Only add a spacer if there were an option of this type
-		if(options.has_child("checkbox")) {
-			option_node.add_child("options_spacer_node", empty_map);
-		}
-
-		for(const auto& menu_button_option : options.child_range("combo")) {
-			data.clear();
-			item.clear();
-
-			item["label"] = menu_button_option["name"];
-			data.emplace("menu_button_label", item);
-
-			item["tooltip"] = menu_button_option["description"];
-			data.emplace("option_menu_button", item);
-
-			std::vector<config> combo_items;
-			std::vector<std::string> combo_values;
-
-			config::const_child_itors items = menu_button_option.child_range("item");
-			for(auto item : items) {
-				// Comboboxes expect this key to be 'label' not 'name'
-				item["label"] = item["name"];
-
-				combo_items.push_back(item);
-				combo_values.push_back(item["value"]);
-			}
-
-			if(combo_items.empty()) {
-				continue;
-			}
-
-			ttree_view_node& node = option_node.add_child("option_menu_button_node", data);
-
-			tmenu_button* menu_button = dynamic_cast<tmenu_button*>(node.find("option_menu_button", true));
-
-			VALIDATE(menu_button, missing_widget("option_menu_button"));
-
-			const std::string widget_id = menu_button_option["id"];
-
-			set_default_data_value(widget_id, menu_button_option);
-
-			menu_button->set_id(widget_id);
-			menu_button->set_values(combo_items);
-
-			config::attribute_value val = data_map[widget_id];
-			auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
-				return cfg["value"] == val;
-			});
-
-			if(iter != items.end()) {
-				menu_button->set_selected(iter - items.begin());
-			}
-
-			menu_button->connect_click_handler(
-				std::bind(&tmp_create_game::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
-		}
-
-		// Only add a spacer if there were an option of this type
-		if(options.has_child("combo")) {
-			option_node.add_child("options_spacer_node", empty_map);
-		}
-
-		for(const auto& slider_option : options.child_range("slider")) {
-			data.clear();
-			item.clear();
-
-			item["label"] = slider_option["name"];
-			data.emplace("slider_label", item);
-
-			item["tooltip"] = slider_option["description"];
-			data.emplace("option_slider", item);
-
-			ttree_view_node& node = option_node.add_child("option_slider_node", data);
-
-			tslider* slider = dynamic_cast<tslider*>(node.find("option_slider", true));
-
-			VALIDATE(slider, missing_widget("option_slider"));
-
-			const std::string widget_id = slider_option["id"];
-
-			set_default_data_value(widget_id, slider_option);
-
-			slider->set_id(widget_id);
-			slider->set_maximum_value(slider_option["max"].to_int());
-			slider->set_minimum_value(slider_option["min"].to_int());
-			slider->set_step_size(slider_option["step"].to_int(1));
-			slider->set_value(data_map[widget_id].to_int());
-
-			connect_signal_notify_modified(*slider,
-				std::bind(&tmp_create_game::update_options_data_map<tslider>, this, slider, visible_options_.back()));
-		}
-
-		// Only add a spacer if there were an option of this type
-		if(options.has_child("slider")) {
-			option_node.add_child("options_spacer_node", empty_map);
-		}
-
-		for(const auto& text_entry_option : options.child_range("entry")) {
-			data.clear();
-			item.clear();
-
-			item["label"] = text_entry_option["name"];
-			data.emplace("text_entry_label", item);
-
-			item["tooltip"] = text_entry_option["description"];
-			data.emplace("option_text_entry", item);
-
-			ttree_view_node& node = option_node.add_child("option_text_entry_node", data);
-
-			ttext_box* textbox = dynamic_cast<ttext_box*>(node.find("option_text_entry", true));
-
-			VALIDATE(textbox, missing_widget("option_text_entry"));
-
-			const std::string widget_id = text_entry_option["id"];
-
-			set_default_data_value(widget_id, text_entry_option);
-
-			textbox->set_id(widget_id);
-			textbox->set_value(data_map[widget_id].str());
-			textbox->set_text_changed_callback(
-				std::bind(&tmp_create_game::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
-		}
-
-		// Add the Defaults button at the end
-		ttree_view_node& node = option_node.add_child("options_default_button", empty_map);
-
-		connect_signal_mouse_left_click(find_widget<tbutton>(&node, "reset_option_values", false),
-			std::bind(&tmp_create_game::reset_options_data, this, std::ref(window), visible_options_.back(),
-				std::placeholders::_3, std::placeholders::_4));
-	}
-}
-
 void tmp_create_game::update_options_list(twindow& window)
 {
-	ttree_view& options_tree = find_widget<ttree_view>(&window, "custom_options", false);
-
-	// TODO: might be inefficient to regenerate this every single time this tab is selected
-	// Maybe look into caching the result if no change has been made to the selection.
-	visible_options_.clear();
-	options_tree.clear();
-
-	display_custom_options(window, options_tree,
-		create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer",
-		create_engine_.current_level().data());
-
-	display_custom_options(window, options_tree, "era", create_engine_.curent_era_cfg());
-
-	std::set<std::string> activemods(create_engine_.active_mods().begin(), create_engine_.active_mods().end());
-	for(const auto& mod : create_engine_.get_const_extras_by_type(ng::create_engine::MP_EXTRA::MOD)) {
-		if(activemods.find(mod->id) != activemods.end()) {
-			display_custom_options(window, options_tree, "modification", *mod->cfg);
-		}
-	}
-
-	// No custom options, display a message
-	find_widget<tcontrol>(&window, "no_options_notice", false).set_visible(options_tree.empty() ? twindow::tvisible::visible : twindow::tvisible::invisible);
+	options_manager_->update_options_list();
 }
 
 void tmp_create_game::show_generator_settings(twindow& window)
@@ -981,10 +765,10 @@ void tmp_create_game::post_show(twindow& window)
 		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
 		config options;
-		for(const auto& source : visible_options_) {
+		for(const auto& source : options_manager_->get_visible_options()) {
 			config& mod = options.add_child(source.level_type);
 			mod["id"] = source.id;
-			for(const auto& option : options_data_[source]) {
+			for(const auto& option : options_manager_->get_options_data()[source]) {
 				// TODO: change this to some key=value format as soon as we drop the old mp configure screen.
 				mod.add_child("option", config_of("id", option.first)("value", option.second));
 			}
