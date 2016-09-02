@@ -904,11 +904,7 @@ function wml_actions.role(cfg)
 	local filter = helper.shallow_literal(cfg)
 
 	if role == nil then
-		if helper.get_child("auto_recall") ~= nil then
-			role = ""
-		else
-			helper.wml_error("missing role= in [role]")
-		end
+		helper.wml_error("missing role= in [role]")
 	end
 
 	local types = {}
