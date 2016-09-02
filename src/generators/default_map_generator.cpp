@@ -36,62 +36,27 @@ namespace {
 	const size_t max_coastal = 5;
 }
 
-default_map_generator::default_map_generator(const config &cfg) :
-	default_width_(40),
-	default_height_(40),
-	width_(40),
-	height_(40),
-	island_size_(0),
-	iterations_(1000),
-	hill_size_(10),
-	max_lakes_(20),
-	nvillages_(25),
-	castle_size_(9),
-	nplayers_(2),
-	link_castles_(true),
-	show_labels_(true),
-	cfg_(cfg ? cfg : config())
+generator_data::generator_data(const config &cfg)
+	: width(std::max(0, cfg["map_width"].to_int(40)))
+	, height(std::max(0, cfg["map_height"].to_int(40)))
+	, default_width(width)
+	, default_height(height)
+	, nplayers(std::max(0, cfg["players"].to_int(2)))
+	, nvillages(std::max(0, cfg["villages"].to_int(25)))
+	, iterations(std::max(0, cfg["iterations"].to_int(1000)))
+	, hill_size(std::max(0, cfg["hill_size"].to_int(10)))
+	, castle_size(std::max(0, cfg["castle_size"].to_int(9)))
+	, island_size(std::max(0, cfg["island_size"].to_int(0)))
+	, max_lakes(std::max(0, cfg["max_lakes"].to_int(20)))
+	, link_castles(true)
+	, show_labels(true)
 {
-	if (!cfg) return;
+}
 
-	int width = cfg["map_width"];
-	if (width > 0)
-		width_ = width;
-
-	int height = cfg["map_height"];
-	if (height > 0)
-		height_ = height;
-
-	default_width_ = width_;
-	default_height_ = height_;
-
-	int iterations = cfg["iterations"];
-	if (iterations > 0)
-		iterations_ = iterations;
-
-	int hill_size = cfg["hill_size"];
-	if (hill_size > 0)
-		hill_size_ = hill_size;
-
-	int max_lakes = cfg["max_lakes"];
-	if (max_lakes > 0)
-		max_lakes_ = max_lakes;
-
-	int nvillages = cfg["villages"];
-	if (nvillages > 0)
-		nvillages_ = nvillages;
-
-	int castle_size = cfg["castle_size"];
-	if (castle_size > 0)
-		castle_size_ = castle_size;
-
-	int nplayers = cfg["players"];
-	if (nplayers > 0)
-		nplayers_ = nplayers;
-
-	int island_size = cfg["island_size"];
-	if (island_size > 0)
-		island_size_ = island_size;
+default_map_generator::default_map_generator(const config& cfg)
+	: cfg_(cfg)
+	, data_(cfg)
+{
 }
 
 bool default_map_generator::allow_user_config() const { return true; }
@@ -129,7 +94,7 @@ void default_map_generator::user_config(CVideo& v)
 	SDL_Rect players_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,0,0);
 	SDL_Rect width_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,width_label,0,0);
 	SDL_Rect height_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,height_label,0,0);
-	SDL_Rect iterations_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,0,0);
+	SDL_Rect iteration_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,0,0);
 	SDL_Rect hillsize_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,hillsize_label,0,0);
 	SDL_Rect villages_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_label,0,0);
 	SDL_Rect castlesize_rect = font::draw_text(nullptr,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,castlesize_label,0,0);
@@ -138,12 +103,12 @@ void default_map_generator::user_config(CVideo& v)
 	const int horz_margin = 15;
 	const int text_right = xpos + horz_margin +
 	        std::max<int>(std::max<int>(std::max<int>(std::max<int>(std::max<int>(std::max<int>(
-		         players_rect.w,width_rect.w),height_rect.w),iterations_rect.w),hillsize_rect.w),villages_rect.w),castlesize_rect.w);
+		         players_rect.w,width_rect.w),height_rect.w),iteration_rect.w),hillsize_rect.w),villages_rect.w),castlesize_rect.w);
 
 	players_rect.x = text_right - players_rect.w;
 	width_rect.x = text_right - width_rect.w;
 	height_rect.x = text_right - height_rect.w;
-	iterations_rect.x = text_right - iterations_rect.w;
+	iteration_rect.x = text_right - iteration_rect.w;
 	hillsize_rect.x = text_right - hillsize_rect.w;
 	villages_rect.x = text_right - villages_rect.w;
 	castlesize_rect.x = text_right - castlesize_rect.w;
@@ -153,10 +118,10 @@ void default_map_generator::user_config(CVideo& v)
 	players_rect.y = ypos + vertical_margin*2;
 	width_rect.y = players_rect.y + players_rect.h + vertical_margin;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
-	iterations_rect.y = height_rect.y + height_rect.h + vertical_margin;
-	hillsize_rect.y = iterations_rect.y + iterations_rect.h + vertical_margin;
+	iteration_rect.y = height_rect.y + height_rect.h + vertical_margin;
+	hillsize_rect.y = iteration_rect.y + iteration_rect.h + vertical_margin;
 	villages_rect.y = hillsize_rect.y + hillsize_rect.h + vertical_margin;
-	castlesize_rect.y = villages_rect.y + iterations_rect.h + vertical_margin;
+	castlesize_rect.y = villages_rect.y + iteration_rect.h + vertical_margin;
 	landform_rect.y = castlesize_rect.y + villages_rect.h + vertical_margin;
 
 	const int right_space = 150;
@@ -172,7 +137,7 @@ void default_map_generator::user_config(CVideo& v)
 	players_slider.set_location(slider_rect);
 	players_slider.set_min(2);
 	players_slider.set_max(gamemap::MAX_PLAYERS);
-	players_slider.set_value(nplayers_);
+	players_slider.set_value(data_.nplayers);
 
 	const int min_width = 20;
 	const int max_width = 100;
@@ -184,24 +149,24 @@ void default_map_generator::user_config(CVideo& v)
 	width_slider.set_location(slider_rect);
 	width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	width_slider.set_max(max_width);
-	width_slider.set_value(width_);
+	width_slider.set_value(data_.width);
 
 	slider_rect.y = height_rect.y;
 	gui::slider height_slider(screen);
 	height_slider.set_location(slider_rect);
 	height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	height_slider.set_max(max_height);
-	height_slider.set_value(height_);
+	height_slider.set_value(data_.height);
 
 	const int min_iterations = 10;
 	const int max_iterations = 3000;
 
-	slider_rect.y = iterations_rect.y;
+	slider_rect.y = iteration_rect.y;
 	gui::slider iterations_slider(screen);
 	iterations_slider.set_location(slider_rect);
 	iterations_slider.set_min(min_iterations);
 	iterations_slider.set_max(max_iterations);
-	iterations_slider.set_value(iterations_);
+	iterations_slider.set_value(data_.iterations);
 
 	const int min_hillsize = 1;
 	const int max_hillsize = 50;
@@ -211,7 +176,7 @@ void default_map_generator::user_config(CVideo& v)
 	hillsize_slider.set_location(slider_rect);
 	hillsize_slider.set_min(min_hillsize);
 	hillsize_slider.set_max(max_hillsize);
-	hillsize_slider.set_value(hill_size_);
+	hillsize_slider.set_value(data_.hill_size);
 
 	const int min_villages = 0;
 	const int max_villages = 50;
@@ -221,7 +186,7 @@ void default_map_generator::user_config(CVideo& v)
 	villages_slider.set_location(slider_rect);
 	villages_slider.set_min(min_villages);
 	villages_slider.set_max(max_villages);
-	villages_slider.set_value(nvillages_);
+	villages_slider.set_value(data_.nvillages);
 
 	const int min_castlesize = 2;
 	const int max_castlesize = 14;
@@ -231,7 +196,7 @@ void default_map_generator::user_config(CVideo& v)
 	castlesize_slider.set_location(slider_rect);
 	castlesize_slider.set_min(min_castlesize);
 	castlesize_slider.set_max(max_castlesize);
-	castlesize_slider.set_value(castle_size_);
+	castlesize_slider.set_value(data_.castle_size);
 
 
 	const int min_landform = 0;
@@ -241,31 +206,31 @@ void default_map_generator::user_config(CVideo& v)
 	landform_slider.set_location(slider_rect);
 	landform_slider.set_min(min_landform);
 	landform_slider.set_max(max_landform);
-	landform_slider.set_value(island_size_);
+	landform_slider.set_value(data_.island_size);
 
 	SDL_Rect link_rect = slider_rect;
 	link_rect.y = link_rect.y + link_rect.h + vertical_margin;
 
 	gui::button link_castles(screen,_("Roads between castles"),gui::button::TYPE_CHECK);
-	link_castles.set_check(link_castles_);
+	link_castles.set_check(data_.link_castles);
 	link_castles.set_location(link_rect);
 
 	SDL_Rect labels_rect = link_rect;
 	labels_rect.y = labels_rect.y + labels_rect.h + vertical_margin;
 
 	gui::button show_labels(screen,_("Show labels"),gui::button::TYPE_CHECK);
-	show_labels.set_check(show_labels_);
+	show_labels.set_check(data_.show_labels);
 	show_labels.set_location(labels_rect);
 
 	while(true) {
-		nplayers_ = players_slider.value();
-		width_ = width_slider.value();
-		height_ = height_slider.value();
-		iterations_ = iterations_slider.value();
-		hill_size_ = hillsize_slider.value();
-		nvillages_ = villages_slider.value();
-		castle_size_ = castlesize_slider.value();
-		island_size_ = landform_slider.value();
+		data_.nplayers = players_slider.value();
+		data_.width = width_slider.value();
+		data_.height = height_slider.value();
+		data_.iterations = iterations_slider.value();
+		data_.hill_size = hillsize_slider.value();
+		data_.nvillages = villages_slider.value();
+		data_.castle_size = castlesize_slider.value();
+		data_.island_size = landform_slider.value();
 
 		dialog_restorer.restore();
 		close_button.set_dirty(true);
@@ -293,35 +258,35 @@ void default_map_generator::user_config(CVideo& v)
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,players_rect.x,players_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,width_label,width_rect.x,width_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,height_label,height_rect.x,height_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,iterations_rect.x,iterations_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,iteration_rect.x,iteration_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_label,villages_rect.x,villages_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,castlesize_label,castlesize_rect.x,castlesize_rect.y);
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_label,landform_rect.x,landform_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, std::to_string(nplayers_),
+			font::NORMAL_COLOR, std::to_string(data_.nplayers),
 			slider_right + horz_margin, players_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, std::to_string(width_),
+			font::NORMAL_COLOR, std::to_string(data_.width),
 			slider_right + horz_margin, width_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, std::to_string(height_),
+			font::NORMAL_COLOR, std::to_string(data_.height),
 			slider_right+horz_margin,height_rect.y);
 
 		std::stringstream villages_str;
-		villages_str << nvillages_ << _("/1000 tiles");
+		villages_str << data_.nvillages << _("/1000 tiles");
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_str.str(),
 		                slider_right+horz_margin,villages_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOR, std::to_string(castle_size_),
+			font::NORMAL_COLOR, std::to_string(data_.castle_size),
 			slider_right + horz_margin, castlesize_rect.y);
 
 		std::stringstream landform_str;
-		landform_str << translation::gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
+		landform_str << translation::gettext(data_.island_size == 0 ? N_("Inland") : (data_.island_size < max_coastal ? N_("Coastal") : N_("Island")));
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 
@@ -332,8 +297,8 @@ void default_map_generator::user_config(CVideo& v)
 		events::pump();
 	}
 
-	link_castles_ = link_castles.checked();
-	show_labels_ = show_labels.checked();
+	data_.link_castles = link_castles.checked();
+	data_.show_labels = show_labels.checked();
 }
 
 std::string default_map_generator::name() const { return "default"; }
@@ -362,35 +327,36 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	}
 
 	// Suppress labels?
-	if ( !show_labels_ )
+	if ( !data_.show_labels )
 		labels = nullptr;
 
 	// the random generator thinks odd widths are nasty, so make them even
-	if (is_odd(width_))
-		++width_;
+	if (is_odd(data_.width))
+		++data_.width;
 
-	size_t iterations = (iterations_*width_*height_)/(default_width_*default_height_);
-	size_t island_size = 0;
+	data_.island_size = 0;
+	data_.iterations = (data_.iterations*data_.width*data_.height)/(data_.default_width*data_.default_height);
 	size_t island_off_center = 0;
-	size_t max_lakes = max_lakes_;
 
-	if(island_size_ >= max_coastal) {
+	if(static_cast<unsigned>(data_.island_size) >= max_coastal) {
 
 		//islands look good with much fewer iterations than normal, and fewer lake
-		iterations /= 10;
-		max_lakes /= 9;
+		data_.iterations /= 10;
+		data_.max_lakes /= 9;
 
 		//the radius of the island should be up to half the width of the map
-		const size_t island_radius = 50 + ((max_island - island_size_)*50)/(max_island - max_coastal);
-		island_size = (island_radius*(width_/2))/100;
-	} else if(island_size_ > 0) {
+		const size_t island_radius = 50 + ((max_island - data_.island_size)*50)/(max_island - max_coastal);
+		data_.island_size = (island_radius*(data_.width/2))/100;
+	} else if(data_.island_size > 0) {
 		DBG_NG << "coastal...\n";
 		//the radius of the island should be up to twice the width of the map
-		const size_t island_radius = 40 + ((max_coastal - island_size_)*40)/max_coastal;
-		island_size = (island_radius*width_*2)/100;
-		island_off_center = std::min<size_t>(width_,height_);
+		const size_t island_radius = 40 + ((max_coastal - data_.island_size)*40)/max_coastal;
+		data_.island_size = (island_radius*data_.width*2)/100;
+		island_off_center = std::min<size_t>(data_.width,data_.height);
 		DBG_NG << "calculated coastal params...\n";
 	}
+
+	data_.nvillages = (data_.nvillages * data_.width * data_.height) / 1000;
 
 	// A map generator can fail so try a few times to get a map before aborting.
 	std::string map;
@@ -407,9 +373,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 			labels_copy = *labels;
 		}
 		try{
-			map = job.default_generate_map(width_, height_, island_size, island_off_center,
-				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
-				castle_size_, nplayers_, link_castles_, labels_ptr, cfg_);
+			map = job.default_generate_map(data_, island_off_center, labels_ptr, cfg_);
 			error_message = "";
 		}
 		catch (mapgen_exception& exc){
@@ -451,8 +415,8 @@ config default_map_generator::create_scenario(boost::optional<uint32_t> randomse
 			labels.begin(); i != labels.end(); ++i) {
 
 		if(i->first.x >= 0 && i->first.y >= 0 &&
-				i->first.x < static_cast<long>(width_) &&
-				i->first.y < static_cast<long>(height_)) {
+				i->first.x < static_cast<long>(data_.width) &&
+				i->first.y < static_cast<long>(data_.height)) {
 
 			config& label = res.add_child("label");
 			label["text"] = i->second;

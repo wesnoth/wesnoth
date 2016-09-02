@@ -19,10 +19,11 @@
 
 class config;
 
-#include "util.hpp"
+#include "default_map_generator.hpp"
 #include "map/location.hpp"
-#include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
+#include "terrain/translation.hpp"
+#include "util.hpp"
 #include "utils/name_generator.hpp"
 
 #include <boost/random.hpp>
@@ -37,11 +38,8 @@ public:
 	default_map_generator_job(uint32_t seed);
 
 	/** Generate the map. */
-	std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
-			size_t iterations, size_t hill_size,
-			size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers,
-			bool roads_between_castles, std::map<map_location,std::string>* labels,
-			const config& cfg);
+	std::string default_generate_map(generator_data data, size_t island_off_center, std::map<map_location,std::string>* labels, const config& cfg);
+
 private:
 	typedef std::vector<std::vector<int> > height_map;
 	typedef t_translation::t_map terrain_map;
