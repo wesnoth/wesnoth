@@ -14,7 +14,9 @@
 #ifndef GUI_DIALOGS_UNIT_LIST_HPP_INCLUDED
 #define GUI_DIALOGS_UNIT_LIST_HPP_INCLUDED
 
+#include "gettext.hpp"
 #include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "map/location.hpp"
 #include "units/ptr.hpp"
 
@@ -27,26 +29,29 @@ class display;
 namespace gui2
 {
 
-class ttext_;
+using unit_ptr_vector = std::vector<unit_const_ptr>;
 
 void show_unit_list(display& gui);
 
 class tunit_list : public tdialog
 {
-	typedef std::vector<unit_const_ptr> unit_ptr_vector;
-
 public:
-	explicit tunit_list(const display& gui);
+	explicit tunit_list(unit_ptr_vector& unit_list, map_location& scroll_to);
 
-	map_location get_location_to_scroll_to() const
+	static bool execute(unit_ptr_vector& unit_list, map_location& scroll_to, CVideo& video)
 	{
-		return location_of_selected_unit_;
+		if(unit_list.empty()) {
+			show_transient_message(video, "", _("No units found."));
+			return false;
+		}
+
+		return tunit_list(unit_list, scroll_to).show(video);
 	}
 
 private:
-	unit_ptr_vector unit_list_;
+	unit_ptr_vector& unit_list_;
 
-	map_location location_of_selected_unit_;
+	map_location& scroll_to_;
 
 	/** Callbacks */
 	void list_item_clicked(twindow& window);

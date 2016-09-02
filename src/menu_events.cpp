@@ -152,12 +152,10 @@ void menu_handler::unit_list()
 
 void menu_handler::status_table()
 {
-	gui2::tgame_stats dlg(board(), gui_->viewing_team());
+	int selected_index;
 
-	dlg.show(gui_->video());
-
-	if(dlg.get_retval() == gui2::twindow::OK) {
-		gui_->scroll_to_leader(teams()[dlg.get_selected_index()].side());
+	if(gui2::tgame_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
+		gui_->scroll_to_leader(teams()[selected_index].side());
 	}
 }
 

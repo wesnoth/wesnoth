@@ -35,13 +35,11 @@
 #include "formatter.hpp"
 #include "game_board.hpp"
 #include "game_classification.hpp"
-#include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/map.hpp"
-#include "units/ptr.hpp"
 #include "units/unit.hpp"
 
 #include "utils/functional.hpp"
@@ -54,9 +52,10 @@ namespace gui2
 
 REGISTER_DIALOG(game_stats)
 
-tgame_stats::tgame_stats(game_board& board, const int viewing_team)
+tgame_stats::tgame_stats(game_board& board, const int viewing_team, int& selected_index)
 	: board_(board)
 	, viewing_team_(board_.teams()[viewing_team])
+	, selected_index_(selected_index)
 {
 	for(const auto& team : board_.teams()) {
 		team_data_.push_back(board_.calculate_team_data(team, team.side()));

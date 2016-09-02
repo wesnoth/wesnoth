@@ -14,32 +14,36 @@
 #ifndef GUI_DIALOGS_GAME_STATS_HPP_INCLUDED
 #define GUI_DIALOGS_GAME_STATS_HPP_INCLUDED
 
+#include "game_board.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "map/location.hpp"
-#include "units/ptr.hpp"
+#include "gui/dialogs/transient_message.hpp"
+#include "team.hpp"
 
 #include <memory>
 #include <string>
 #include <vector>
 
 class display;
-class game_board;
 class team;
 struct team_data;
 
 namespace gui2
 {
 
-class ttext_;
-
 class tgame_stats : public tdialog
 {
 public:
-	tgame_stats(game_board& board, const int viewing_team);
+	tgame_stats(game_board& board, const int viewing_team, int& selected_index);
 
-	int get_selected_index() const
+	static execute(game_board& board, const int viewing_team, int& selected_index, CVideo& video)
 	{
-		return selected_index_;
+		if(std::all_of(board.teams().begin(), board.teams().end(), [](team& team) { return team.hidden(); })) {
+			show_transient_message(video, "", _("No visible sides found."));
+			return false;
+		}
+
+		return tgame_stats(board, viewing_team, selected_index).show(video);
 	}
 
 private:
@@ -50,7 +54,7 @@ private:
 
 	std::vector<team_data> team_data_;
 
-	int selected_index_;
+	int& selected_index_;
 
 	unit_const_ptr get_leader(const int side);
 

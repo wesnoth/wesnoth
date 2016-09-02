@@ -33,7 +33,6 @@
 #include "gui/widgets/window.hpp"
 #include "display.hpp"
 #include "formatter.hpp"
-#include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "units/map.hpp"
 #include "units/ptr.hpp"
@@ -49,16 +48,10 @@ namespace gui2
 
 REGISTER_DIALOG(unit_list)
 
-tunit_list::tunit_list(const display& gui)
+tunit_list::tunit_list(unit_ptr_vector& unit_list, map_location& scroll_to)
+	: unit_list_(unit_list)
+	, scroll_to_(scroll_to)
 {
-	const unit_map& units = gui.get_units();
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->side() != gui.viewing_side()) {
-			continue;
-		}
-
-		unit_list_.push_back(i.get_shared_ptr());
-	}
 }
 
 static std::string format_level_string(const int level)
@@ -115,8 +108,6 @@ void tunit_list::pre_show(twindow& window)
 	list.clear();
 
 	window.keyboard_capture(&list);
-
-	if(unit_list_.empty()) return;
 
 	for(const unit_const_ptr& unit : unit_list_) {
 		std::map<std::string, string_map> row_data;
@@ -204,21 +195,27 @@ void tunit_list::post_show(twindow& window)
 	if(get_retval() == twindow::OK) {
 		const int selected_row = find_widget<tlistbox>(&window, "units_list", false).get_selected_row();
 
-		location_of_selected_unit_ = unit_list_[selected_row].get()->get_location();
+		scroll_to_ = unit_list_[selected_row].get()->get_location();
 	}
 }
 
 void show_unit_list(display& gui)
 {
-	gui2::tunit_list dlg(gui);
+	unit_ptr_vector unit_list;
+	map_location scroll_to;
 
-	dlg.show(gui.video());
+	const unit_map& units = gui.get_units();
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->side() != gui.viewing_side()) {
+			continue;
+		}
 
-	if (dlg.get_retval() == gui2::twindow::OK) {
-		const map_location& loc = dlg.get_location_to_scroll_to();
+		unit_list.push_back(i.get_shared_ptr());
+	}
 
-		gui.scroll_to_tile(loc, display::WARP);
-		gui.select_hex(loc);
+	if(gui2::tunit_list::execute(unit_list, scroll_to, gui.video())) {
+		gui.scroll_to_tile(scroll_to, display::WARP);
+		gui.select_hex(scroll_to);
 	}
 }
 
