@@ -261,6 +261,7 @@ public:
 
 	void init_active_mods();
 	std::vector<std::string>& active_mods();
+	std::vector<extras_metadata_ptr> active_mods_data();
 
 	const mp_game_settings& get_parameters();
 

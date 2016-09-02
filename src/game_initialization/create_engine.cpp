@@ -988,6 +988,18 @@ std::vector<std::string>& create_engine::active_mods()
 	return state_.mp_settings().active_mods;
 }
 
+std::vector<create_engine::extras_metadata_ptr> create_engine::active_mods_data()
+{
+	const std::vector<extras_metadata_ptr>& mods = get_const_extras_by_type(MP_EXTRA::MOD);
+
+	std::vector<extras_metadata_ptr> data_vec;
+	std::copy_if(mods.begin(), mods.end(), std::back_inserter(data_vec), [this](extras_metadata_ptr mod) {
+		return dependency_manager_->is_modification_active(mod->id);
+	});
+
+	return data_vec;
+}
+
 const config& create_engine::curent_era_cfg() const
 {
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
