@@ -29,6 +29,24 @@ class tsp_options_configure : public tdialog, private plugin_executor
 public:
 	explicit tsp_options_configure(ng::create_engine& create_engine);
 
+	/**
+	 * Execute function. We only want to show the dialog if there are active mods and
+	 * those active mods all have custom options.
+	 */
+	static bool execute(ng::create_engine& create_engine, CVideo& video)
+	{
+		using mod_type = ng::create_engine::extras_metadata_ptr;
+
+		const std::vector<mod_type>& activemods = create_engine.active_mods_data();
+		if(std::none_of(activemods.begin(), activemods.end(), [](mod_type mod) {
+			return (*mod->cfg).has_child("options");
+		})) {
+			return true;
+		}
+
+		return tsp_options_configure(create_engine).show(video);
+	}
+
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

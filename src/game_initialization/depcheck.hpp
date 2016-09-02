@@ -138,6 +138,15 @@ public:
 	bool is_modification_active(int index) const;
 
 	/**
+	 * Tells whether a certain mod is activated.
+	 *
+	 * @param string the string id of the mod
+	 *
+	 * @return true if activated, false is not
+	 */
+	bool is_modification_active(const std::string id) const;
+
+	/**
 	 * Returns the selected era
 	 *
 	 * @return the index of the era

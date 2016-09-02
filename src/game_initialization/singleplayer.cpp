@@ -130,18 +130,16 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng, bool local_players_only)
 {
-	gui2::tsp_options_configure dlg(create_eng);
-
-	dlg.show(video);
-
-	if(dlg.get_retval() == gui2::twindow::OK) {
-		create_eng.prepare_for_new_level();
-		create_eng.get_parameters();
-
-		enter_connect_mode(video, game_config, state, local_players_only);
+	if(!gui2::tsp_options_configure::execute(create_eng, video)) {
+		return false;
 	}
 
-	return dlg.get_retval() == gui2::twindow::OK;
+	create_eng.prepare_for_new_level();
+	create_eng.get_parameters();
+
+	enter_connect_mode(video, game_config, state, local_players_only);
+
+	return true;
 }
 
 bool enter_connect_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only)
