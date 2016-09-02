@@ -44,7 +44,7 @@ private:
 		}
 	};
 
-	void display_custom_options(ttree_view& options_tree, std::string&& type, const config& data);
+	void display_custom_options(std::string&& type, const config& data);
 
 	template<typename T>
 	void update_options_data_map(T* widget, const option_source& source);

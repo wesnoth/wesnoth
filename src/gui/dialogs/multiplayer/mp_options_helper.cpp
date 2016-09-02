@@ -43,17 +43,14 @@ void tmp_options_helper::update_options_list()
 	visible_options_.clear();
 	options_tree_.clear();
 
-	display_custom_options(options_tree_,
+	display_custom_options(
 		create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer",
 		create_engine_.current_level().data());
 
-	display_custom_options(options_tree_, "era", create_engine_.curent_era_cfg());
+	display_custom_options("era", create_engine_.curent_era_cfg());
 
-	std::set<std::string> activemods(create_engine_.active_mods().begin(), create_engine_.active_mods().end());
-	for(const auto& mod : create_engine_.get_const_extras_by_type(ng::create_engine::MP_EXTRA::MOD)) {
-		if(activemods.find(mod->id) != activemods.end()) {
-			display_custom_options(options_tree_, "modification", *mod->cfg);
-		}
+	for(const auto& mod : create_engine_.active_mods_data()) {
+		display_custom_options("modification", *mod->cfg);
 	}
 
 	// No custom options, display a message
@@ -81,7 +78,7 @@ void tmp_options_helper::reset_options_data(const option_source& source, bool& h
 	halt = true;
 }
 
-void tmp_options_helper::display_custom_options(ttree_view& tree, std::string&& type, const config& cfg)
+void tmp_options_helper::display_custom_options(std::string&& type, const config& cfg)
 {
 	// Needed since some compilers don't like passing just {}
 	static const std::map<std::string, string_map> empty_map;
@@ -102,7 +99,7 @@ void tmp_options_helper::display_custom_options(ttree_view& tree, std::string&& 
 		item["label"] = cfg["name"];
 		data.emplace("tree_view_node_label", item);
 
-		ttree_view_node& option_node = tree.add_node("option_node", data);
+		ttree_view_node& option_node = options_tree_.add_node("option_node", data);
 
 		for(const auto& checkbox_option : options.child_range("checkbox")) {
 			data.clear();
