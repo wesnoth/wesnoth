@@ -5922,10 +5922,6 @@
 					"\"$(SRCROOT)/lib\"",
 				);
 				MACH_O_TYPE = mh_execute;
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-fsanitize=address",
-				);
 				PRODUCT_NAME = unit_tests;
 			};
 			name = Debug;
@@ -5967,10 +5963,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 					"$(PROJECT_DIR)/lib",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-fsanitize=address",
 				);
 				PRODUCT_NAME = wesnothd;
 			};
@@ -6015,10 +6007,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-fsanitize=address",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
