@@ -1511,6 +1511,12 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\sp_options_configure.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2906,6 +2912,12 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\sp_options_configure.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
