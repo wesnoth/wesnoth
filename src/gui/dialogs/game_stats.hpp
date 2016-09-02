@@ -36,7 +36,7 @@ class tgame_stats : public tdialog
 public:
 	tgame_stats(game_board& board, const int viewing_team, int& selected_index);
 
-	static execute(game_board& board, const int viewing_team, int& selected_index, CVideo& video)
+	static bool execute(game_board& board, const int viewing_team, int& selected_index, CVideo& video)
 	{
 		if(std::all_of(board.teams().begin(), board.teams().end(), [](team& team) { return team.hidden(); })) {
 			show_transient_message(video, "", _("No visible sides found."));
