@@ -45,6 +45,7 @@
 #include "gui/dialogs/editor/edit_label.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
+#include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
 #include "gui/dialogs/editor/set_starting_position.hpp"
@@ -402,6 +403,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_save_oos>();
 	//test<gui2::tgame_stats>();
 	test<gui2::tgamestate_inspector>();
+	//test<gui2::tgenerator_settings>();
 	test<gui2::tlanguage_selection>();
 	// test<gui2::tloadscreen>(); TODO: enable
 	test<gui2::tlobby_main>();
@@ -489,6 +491,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_host_game_prompt",
 		"mp_create_game",
 		"sp_options_configure",
+		"generator_settings",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

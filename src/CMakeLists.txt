@@ -800,6 +800,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/editor/edit_side.cpp
 	gui/dialogs/editor/edit_scenario.cpp
 	gui/dialogs/editor/generate_map.cpp
+	gui/dialogs/editor/generator_settings.cpp
 	gui/dialogs/editor/new_map.cpp
 	gui/dialogs/editor/resize_map.cpp
 	gui/dialogs/editor/set_starting_position.cpp
