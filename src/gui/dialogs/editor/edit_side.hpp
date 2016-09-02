@@ -76,9 +76,6 @@ private:
 	void pre_show(twindow& window);
 	void post_show(twindow& window);
 
-	template <typename T>
-	void register_radio_toggle(const std::string& toggle_id, tgroup<T>& group, const T& enum_value, T& current_value, twindow& window);
-
 	team::CONTROLLER& controller_;
 	tgroup<team::CONTROLLER> controller_group;
 

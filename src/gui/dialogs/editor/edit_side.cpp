@@ -88,23 +88,17 @@ teditor_edit_side::teditor_edit_side(int side,
 
 void teditor_edit_side::pre_show(twindow& window)
 {
-	register_radio_toggle<team::CONTROLLER>("controller_human", controller_group, team::CONTROLLER::HUMAN, controller_, window);
-	register_radio_toggle<team::CONTROLLER>("controller_ai",    controller_group, team::CONTROLLER::AI,    controller_, window);
-	register_radio_toggle<team::CONTROLLER>("controller_null",  controller_group, team::CONTROLLER::EMPTY, controller_, window);
+	controller_group.add_member(&find_widget<ttoggle_button>(&window, "controller_human", false), team::CONTROLLER::HUMAN);
+	controller_group.add_member(&find_widget<ttoggle_button>(&window, "controller_ai", false),    team::CONTROLLER::AI);
+	controller_group.add_member(&find_widget<ttoggle_button>(&window, "controller_null", false),  team::CONTROLLER::EMPTY);
 
-	register_radio_toggle<team::SHARE_VISION>("vision_all",    vision_group, team::SHARE_VISION::ALL,    share_vision_, window);
-	register_radio_toggle<team::SHARE_VISION>("vision_shroud", vision_group, team::SHARE_VISION::SHROUD, share_vision_, window);
-	register_radio_toggle<team::SHARE_VISION>("vision_null",   vision_group, team::SHARE_VISION::NONE,   share_vision_, window);
-}
+	controller_group.set_member_states(controller_);
 
-template <typename T>
-void teditor_edit_side::register_radio_toggle(const std::string& toggle_id, tgroup<T>& group, const T& enum_value, T& current_value, twindow& window)
-{
-	ttoggle_button& b = find_widget<ttoggle_button>(&window, toggle_id, false);
+	vision_group.add_member(&find_widget<ttoggle_button>(&window, "vision_all", false),    team::SHARE_VISION::ALL);
+	vision_group.add_member(&find_widget<ttoggle_button>(&window, "vision_shroud", false), team::SHARE_VISION::SHROUD);
+	vision_group.add_member(&find_widget<ttoggle_button>(&window, "vision_null", false),   team::SHARE_VISION::NONE);
 
-	b.set_value(enum_value == current_value);
-
-	group.add_member(&b, enum_value);
+	vision_group.set_member_states(share_vision_);
 }
 
 void teditor_edit_side::post_show(twindow&)
