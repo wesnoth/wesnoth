@@ -1,3 +1,4 @@
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
 #include "chat_events.hpp"
@@ -137,8 +138,8 @@ void chat_command_handler::do_remove()
 void chat_command_handler::do_display()
 {
 	// TODO: add video and game config argument to chat_command_handler?
-	preferences::show_preferences_dialog(CVideo::get_singleton(),
-		game_config_manager::get()->game_config(), preferences::VIEW_FRIENDS);
+	gui2::tpreferences::display(CVideo::get_singleton(), game_config_manager::get()->game_config(),
+		preferences::VIEW_FRIENDS);
 }
 
 void chat_command_handler::do_version() {

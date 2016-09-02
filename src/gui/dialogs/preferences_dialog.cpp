@@ -82,7 +82,7 @@ using namespace preferences;
 
 REGISTER_DIALOG(preferences)
 
-tpreferences::tpreferences(CVideo& video, const config& game_cfg)
+tpreferences::tpreferences(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view)
 	: resolutions_(video.get_available_resolutions(true))
 	, adv_preferences_cfg_()
 	, friend_names_()
@@ -93,7 +93,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg)
 		{"0.25", "0.5", "0.75", "1", "1.25", "1.5", "1.75", "2", "3", "4", "8", "16" })
 	, visible_hotkeys_()
 	, font_scaling_(font_scaling())
-	, index_(0,0)
+	, initial_index_(pef_view_map[initial_view])
 {
 	for(const config& adv : game_cfg.child_range("advanced_preference")) {
 		adv_preferences_cfg_.push_back(adv);
@@ -1129,7 +1129,7 @@ void tpreferences::pre_show(twindow& window)
 	VALIDATE(selector.get_item_count() == pager.get_layer_count(),
 		"The preferences pager and its selector listbox do not have the same number of items.");
 
-	const int main_index = index_in_pager_range(index_.first, pager);
+	const int main_index = index_in_pager_range(initial_index_.first, pager);
 
 	// Loops through each pager layer and checks if it has both a tab bar
 	// and stack. If so, it initilizes the options for the former and
@@ -1143,7 +1143,7 @@ void tpreferences::pre_show(twindow& window)
 
 		if(tab_pager && tab_selector) {
 			const int ii = static_cast<int>(i);
-			const int tab_index = index_in_pager_range(index_.second, *tab_pager);
+			const int tab_index = index_in_pager_range(initial_index_.second, *tab_pager);
 			const int to_select = (ii == main_index ? tab_index : 0);
 
 			// Initialize tabs for this page

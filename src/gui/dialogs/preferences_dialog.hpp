@@ -28,8 +28,34 @@
 namespace hotkey {
 	struct hotkey_command;
 }
+
+namespace preferences {
+	enum PREFERENCE_VIEW {
+		VIEW_DEFAULT,
+		VIEW_FRIENDS
+	};
+
+	/**
+	 * Map containing page mappings that can be used to set the initally displayed page
+	 * of the dialog. The pair is in an 0-indexed toplevel stack/substack format, where
+	 * the first is the list of main Preference categories (such as General and Display)
+	 * and the second is any sub-stack found on that page.
+	 *
+	 * TODO: this isn't the most optimal solution, since if the order or number of pages
+	 * in either stack changes, this map needs to be updated. Optimally the stacked_widget
+	 * widget would allow specifying page by string id, but that would require changes to
+	 * tgenerator. It's something to look into, however.
+	 */
+	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map = {
+		{VIEW_DEFAULT, {0,0}},
+		{VIEW_FRIENDS, {4,1}}
+	};
+}
+
 namespace gui2
 {
+
+using namespace preferences;
 
 class tlistbox;
 class tmenu_button;
@@ -41,24 +67,15 @@ class ttoggle_button;
 class tpreferences : public tdialog
 {
 public:
-	/**
-	 * Constructor.
-	 */
-	tpreferences(CVideo& video, const config& game_cfg);
+	tpreferences(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view);
 
 	/** The display function -- see @ref tdialog for more information. */
-	static bool display(CVideo& video, const config& game_cfg)
+	static void display(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW initial_view = VIEW_DEFAULT)
 	{
-		tpreferences(video, game_cfg).show(video);
-		return true;
+		tpreferences(video, game_cfg, initial_view).show(video);
 	}
 
 	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
-
-	void set_selected_index(std::pair<int, int> index)
-	{
-		index_ = index;
-	}
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -222,7 +239,7 @@ private:
 	int font_scaling_;
 
 	// The page/tab index pairs for setting visible pages
-	std::pair<int, int> index_;
+	const std::pair<int, int>& initial_index_;
 };
 
 } // namespace gui2

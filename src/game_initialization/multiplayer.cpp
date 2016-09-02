@@ -26,6 +26,7 @@
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/network_transmission.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
@@ -616,7 +617,7 @@ static bool enter_configure_mode(CVideo& video, const config& game_config,
 static void do_preferences_dialog(CVideo& video, const config& game_config)
 {
 	DBG_MP << "displaying preferences dialog" << std::endl;
-	preferences::show_preferences_dialog(video, game_config);
+	gui2::tpreferences::display(video, game_config);
 
 	/**
 	 * The screen size might have changed force an update of the size.

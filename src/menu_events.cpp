@@ -48,6 +48,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/game_stats.hpp"
@@ -193,7 +194,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	preferences::show_preferences_dialog(gui_->video(), game_config_);
+	gui2::tpreferences::display(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
