@@ -51,7 +51,8 @@ void tgenerator_settings::pre_show(twindow& window)
 {
 	// We adjust the minimum values of the width and height sliders when the number of players changes.
 	// This is done because the map generator needs more space to generate more castles for more players.
-	connect_signal_notify_modified(*players_->widget(), std::bind(&adjust_minimum_size_by_players, this, std::ref(window)));
+	connect_signal_notify_modified(*players_->widget(), std::bind(
+		&tgenerator_settings::adjust_minimum_size_by_players, this, std::ref(window)));
 
 	bind_status_label(window, "players");
 	bind_status_label(window, "width");
@@ -68,7 +69,8 @@ void tgenerator_settings::bind_status_label(twindow& window, const std::string& 
 
 	label.set_label(std::to_string(slider.get_value()) + suffix);
 
-	connect_signal_notify_modified(slider, std::bind(&status_label_callback, this, std::ref(slider), std::ref(label), suffix));
+	connect_signal_notify_modified(slider, std::bind(
+		&tgenerator_settings::status_label_callback, this, std::ref(slider), std::ref(label), suffix));
 }
 
 void tgenerator_settings::status_label_callback(tslider& slider, tlabel& label, const std::string& suffix)
@@ -84,7 +86,8 @@ void tgenerator_settings::bind_landform_status_label(twindow& window)
 
 	landform_status_label_callback(slider, label);
 
-	connect_signal_notify_modified(slider, std::bind(&landform_status_label_callback, this, std::ref(slider), std::ref(label)));
+	connect_signal_notify_modified(slider, std::bind(
+		&tgenerator_settings::landform_status_label_callback, this, std::ref(slider), std::ref(label)));
 }
 
 // TODO: remove
