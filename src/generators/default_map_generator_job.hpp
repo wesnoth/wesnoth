@@ -38,7 +38,7 @@ public:
 	default_map_generator_job(uint32_t seed);
 
 	/** Generate the map. */
-	std::string default_generate_map(generator_data data, size_t island_off_center, std::map<map_location,std::string>* labels, const config& cfg);
+	std::string default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg);
 
 private:
 	typedef std::vector<std::vector<int> > height_map;

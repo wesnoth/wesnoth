@@ -705,7 +705,7 @@ static void flood_name(const map_location& start, const std::string& name, std::
 	}
 }
 
-std::string default_map_generator_job::default_generate_map(generator_data data, size_t island_off_center, std::map<map_location,std::string>* labels, const config& cfg)
+std::string default_map_generator_job::default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
 
@@ -759,7 +759,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	}
 
 	// Generate the height of everything.
-	const height_map heights = generate_height_map(data.width, data.height, data.iterations, data.hill_size, data.island_size, island_off_center);
+	const height_map heights = generate_height_map(data.width, data.height, data.iterations, data.hill_size, data.island_size, data.island_off_center);
 
 	LOG_NG << "Done generating height map. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	ticks = SDL_GetTicks();

@@ -33,8 +33,8 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 namespace {
-	const size_t max_island = 10;
-	const size_t max_coastal = 5;
+	const int max_island = 10;
+	const int max_coastal = 5;
 }
 
 generator_data::generator_data(const config &cfg)
@@ -48,6 +48,7 @@ generator_data::generator_data(const config &cfg)
 	, hill_size(std::max(0, cfg["hill_size"].to_int(10)))
 	, castle_size(std::max(0, cfg["castle_size"].to_int(9)))
 	, island_size(std::max(0, cfg["island_size"].to_int(0)))
+	, island_off_center(0)
 	, max_lakes(std::max(0, cfg["max_lakes"].to_int(20)))
 	, link_castles(true)
 	, show_labels(true)
@@ -87,71 +88,85 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	uint32_t seed;
 	if(const uint32_t* pseed = randomseed.get_ptr()) {
 		seed = *pseed;
-	}
-	else {
+	} else {
 		seed = seed_rng::next_seed();
 	}
 
+	/* We construct a copy of the generator data and modify it as needed. This ensures every time
+	 * this function is called the generator job gets a fresh set of settings, and that the internal
+	 * copy of the settings are never touched except by the settings dialog.
+	 *
+	 * The original data is still used for conditional checks and calculations, but any modifications
+	 * should be done on this object.
+	 */
+	generator_data job_data = data_;
+
 	// Suppress labels?
-	if ( !data_.show_labels )
+	if(!data_.show_labels) {
 		labels = nullptr;
+	}
 
-	// the random generator thinks odd widths are nasty, so make them even
-	if (is_odd(data_.width))
-		++data_.width;
+	// The random generator thinks odd widths are nasty, so make them even
+	if(is_odd(data_.width)) {
+		++job_data.width;
+	}
 
-	data_.iterations = (data_.iterations*data_.width*data_.height)/(data_.default_width*data_.default_height);
-	size_t island_off_center = 0;
+	job_data.iterations = (data_.iterations * data_.width * data_.height)/(data_.default_width * data_.default_height);
+	job_data.island_size = 0;
+	job_data.nvillages = (data_.nvillages * data_.width * data_.height) / 1000;
+	job_data.island_off_center = 0;
 
-	if(static_cast<unsigned>(data_.island_size) >= max_coastal) {
+	if(data_.island_size >= max_coastal) {
+		// Islands look good with much fewer iterations than normal, and fewer lakes
+		job_data.iterations /= 10;
+		job_data.max_lakes /= 9;
 
-		//islands look good with much fewer iterations than normal, and fewer lake
-		data_.iterations /= 10;
-		data_.max_lakes /= 9;
-
-		//the radius of the island should be up to half the width of the map
-		const size_t island_radius = 50 + ((max_island - data_.island_size)*50)/(max_island - max_coastal);
-		data_.island_size = (island_radius*(data_.width/2))/100;
+		// The radius of the island should be up to half the width of the map
+		const int island_radius = 50 + ((max_island - data_.island_size) * 50)/(max_island - max_coastal);
+		job_data.island_size = (island_radius * (data_.width/2))/100;
 	} else if(data_.island_size > 0) {
-		DBG_NG << "coastal...\n";
-		//the radius of the island should be up to twice the width of the map
-		const size_t island_radius = 40 + ((max_coastal - data_.island_size)*40)/max_coastal;
-		data_.island_size = (island_radius*data_.width*2)/100;
-		island_off_center = std::min<size_t>(data_.width,data_.height);
+		// The radius of the island should be up to twice the width of the map
+		const int island_radius = 40 + ((max_coastal - data_.island_size) * 40)/max_coastal;
+		job_data.island_size = (island_radius * data_.width * 2)/100;
+		job_data.island_off_center = std::min(data_.width, data_.height);
 		DBG_NG << "calculated coastal params...\n";
 	}
 
-	data_.nvillages = (data_.nvillages * data_.width * data_.height) / 1000;
-
 	// A map generator can fail so try a few times to get a map before aborting.
 	std::string map;
+
 	// Keep a copy of labels as it can be written to by the map generator func
 	std::map<map_location,std::string> labels_copy;
-	std::map<map_location,std::string> * labels_ptr =  labels ? &labels_copy : nullptr;
-	std::string error_message;
-	//initilize the job outside the loop so that we really get a different result everytime we run the loop.
+	std::map<map_location,std::string>* labels_ptr = labels ? &labels_copy : nullptr;
+
+	// Iinitilize the job outside the loop so that we really get a different result everytime we run the loop.
 	default_map_generator_job job(seed);
+
 	int tries = 10;
+	std::string error_message;
 	do {
-		if (labels) {
-			// Reset the labels.
+		// Reset the labels.
+		if(labels) {
 			labels_copy = *labels;
 		}
-		try{
-			map = job.default_generate_map(data_, island_off_center, labels_ptr, cfg_);
+
+		try {
+			map = job.default_generate_map(job_data, labels_ptr, cfg_);
 			error_message = "";
-		}
-		catch (mapgen_exception& exc){
+		} catch(mapgen_exception& exc) {
 			error_message = exc.message;
 		}
+
 		--tries;
-	} while (tries && map.empty());
-	if (labels) {
+	} while(tries && map.empty());
+
+	if(labels) {
 		labels->swap(labels_copy);
 	}
 
-	if (error_message != "")
+	if(!error_message.empty()) {
 		throw mapgen_exception(error_message);
+	}
 
 	return map;
 }

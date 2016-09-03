@@ -31,6 +31,7 @@ struct generator_data {
 	int hill_size;
 	int castle_size;
 	int island_size;
+	int island_off_center;
 	int max_lakes;
 	bool link_castles;
 	bool show_labels;
