@@ -405,7 +405,7 @@ void tmp_create_game::on_filter_change(twindow& window, const std::string& id)
 
 	game_list.set_row_shown(filtered);
 
-	update_details(window);
+	on_game_select(window);
 }
 
 void tmp_create_game::on_game_select(twindow& window)
@@ -495,7 +495,7 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 
 	list.clear();
 
-	for(const auto& game : create_engine_.get_levels_by_type(type)) {
+	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
 		if(!game.get()->can_launch_game()) {
 			continue;
 		}
@@ -517,7 +517,11 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 			std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
 	}
 
-	if(!level.empty()) {
+	// Recalculate which rows should be visisble
+	on_filter_change<tslider>(window, "num_players");
+	on_filter_change<ttext_box>(window, "game_filter");
+
+	if(!level.empty() && !list.get_rows_shown().empty()) {
 		int level_index = create_engine_.find_level_by_id(level);
 		if(level_index >= 0 && size_t(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
