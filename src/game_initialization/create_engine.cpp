@@ -871,6 +871,11 @@ bool create_engine::generator_assigned() const
 	return generator_ != nullptr;
 }
 
+bool create_engine::generator_has_settings() const
+{
+	return generator_->allow_user_config();
+}
+
 void create_engine::generator_user_config(CVideo& v)
 {
 	generator_->user_config(v);

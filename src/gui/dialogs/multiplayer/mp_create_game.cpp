@@ -584,11 +584,13 @@ void tmp_create_game::update_details(twindow& window)
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
 
-	// If the current random map doesn't have data, generate it
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
+		// If the current random map doesn't have data, generate it
 		if(create_engine_.generator_assigned() && create_engine_.current_level().data()["map_data"].empty()) {
 			create_engine_.init_generated_level_data();
 		}
+
+		find_widget<tbutton>(&window, "random_map_settings", false).set_active(create_engine_.generator_has_settings());
 	}
 
 	create_engine_.current_level().set_metadata();
