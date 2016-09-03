@@ -410,7 +410,13 @@ void tmp_create_game::on_filter_change(twindow& window, const std::string& id)
 
 void tmp_create_game::on_game_select(twindow& window)
 {
-	if(find_widget<tlistbox>(&window, "games_list", false).get_selected_row() != selected_game_index_) {
+	const int selected_game = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
+
+	if(selected_game != selected_game_index_) {
+		// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
+		selected_game_index_ = convert_to_game_filtered_index(selected_game);
+
+		create_engine_.set_current_level(selected_game_index_);
 		update_details(window);
 	}
 }
@@ -523,7 +529,10 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 	find_widget<tbutton>(&window, "random_map_regenerate", false).set_active(is_random_map);
 	find_widget<tbutton>(&window, "random_map_settings", false).set_active(is_random_map);
 
-	update_details(window);
+	// Override the last selection so on_game_select selects the new level
+	selected_game_index_ = -1;
+
+	on_game_select(window);
 }
 
 void tmp_create_game::update_options_list()
@@ -574,11 +583,6 @@ void tmp_create_game::update_details(twindow& window)
 {
 	tcontrol& players = find_widget<tcontrol>(&window, "map_num_players", false);
 	tcontrol& map_size = find_widget<tcontrol>(&window, "map_size", false);
-
-	// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
-	selected_game_index_ = convert_to_game_filtered_index(find_widget<tlistbox>(&window, "games_list", false).get_selected_row());
-
-	create_engine_.set_current_level(selected_game_index_);
 
 	// If the current random map doesn't have data, generate it
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
