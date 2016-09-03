@@ -288,9 +288,6 @@ function ca_attack_highxp:execution(cfg, data)
     local attacker = wesnoth.get_unit(data.XP_attack.src.x, data.XP_attack.src.y)
     local defender = wesnoth.get_unit(data.XP_attack.target.x, data.XP_attack.target.y)
 
-    -- This line will be removed for the final version, of course:
-    wesnoth.fire("message", { speaker = attacker.id, message = "Executing high XP attack, ca_score = " .. data.XP_attack.ca_score })
-
     AH.movefull_outofway_stopunit(ai, attacker, data.XP_attack.dst.x, data.XP_attack.dst.y)
 
     if (not attacker) or (not attacker.valid) then return end
