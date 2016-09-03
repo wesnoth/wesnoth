@@ -127,13 +127,8 @@ local function plugin()
 
   repeat
     events, context, info = coroutine.yield()
-    idle_text("in " .. info.name .. " waiting for not game")
-  until info.name ~= "Game"
-
-  repeat
-    events, context, info = coroutine.yield()
-    idle_text("in " .. info.name .. " waiting for game")
-  until info.name == "Game"
+    idle_text("in " .. info.name .. " waiting for the last scenario")
+  until info.scenario_name ~= nil and info.scenario_name().scenario_name == "Multiplayer Unit Test test2"
 
   repeat
     events, context, info = coroutine.yield()

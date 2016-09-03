@@ -297,6 +297,7 @@ void play_controller::init(CVideo& video, const config& level)
 		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("save_replay", [this](const config& cfg) { save_replay_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("quit", throw_end_level(), false);
+		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
 	});
 	//Do this after the loadingscreen, so that ita happens in the main thread.
 	gui_->join();
