@@ -39,7 +39,7 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
-#define ERR_NG LOG_STREAM(warn, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_NGE LOG_STREAM(debug, log_engine_enemies)
@@ -510,17 +510,18 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 {
 	CONTROLLER new_controller;
 	if(!new_controller.parse(new_controller_string)) {
-		ERR_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+		WRN_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
 		return;
 	}
 	if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
-		ERR_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
+		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
 		return;
 	}
 	config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
 	if(!new_controller.parse(choice["controller"])) {
 		//TODO: this should be more than a ERR_NG message.
-		ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
+		// GL-2016SEP02 Oh? So why was ERR_NG defined as warning level? Making the call fit the definition.
+		WRN_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
 	}
 	if(!resources::controller->is_replay()) {
 		set_local(choice["is_local"].to_bool());
