@@ -37,7 +37,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     local max_unit_level = 0
     local units = {}
     for _,unit in ipairs(all_units) do
-        if (unit.side == wesnoth.current.side) and (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
+        if (unit.side == wesnoth.current.side) and (unit.attacks_left > 0) and (#unit.attacks > 0) then
             table.insert(units, unit)
 
             local level = wesnoth.unit_types[unit.type].level
