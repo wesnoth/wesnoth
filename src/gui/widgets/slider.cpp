@@ -108,8 +108,6 @@ void tslider::set_minimum_value(const int minimum_value)
 
 	if(value < minimum_value_) {
 		set_item_position(0);
-	} else {
-		set_item_position(minimum_value_ + value);
 	}
 }
 
@@ -130,8 +128,6 @@ void tslider::set_maximum_value(const int maximum_value)
 
 	if(value > maximum_value) {
 		set_item_position(get_maximum_value());
-	} else {
-		set_item_position(minimum_value_ + value);
 	}
 }
 
