@@ -100,7 +100,6 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	if (is_odd(data_.width))
 		++data_.width;
 
-	data_.island_size = 0;
 	data_.iterations = (data_.iterations*data_.width*data_.height)/(data_.default_width*data_.default_height);
 	size_t island_off_center = 0;
 
