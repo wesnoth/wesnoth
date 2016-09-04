@@ -164,9 +164,9 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			}
 
 			utils::string_map i18n_symbols;
-			i18n_symbols["version1"] = version;
-			i18n_symbols["version2"] = game_config::version;
-			const std::string errorstring = vgettext("The server accepts versions '$version1' while you are using version '$version2'", i18n_symbols);
+			i18n_symbols["required_version"] = version;
+			i18n_symbols["your_version"] = game_config::version;
+			const std::string errorstring = vgettext("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
 			throw wesnothd_error(errorstring);
 		}
 

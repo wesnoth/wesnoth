@@ -68,6 +68,9 @@ game_stringfixes = {
 # conversion added in 1.13.5+dev
 ("You don’t have a leader to", "You do not have a leader to"),
 ("You don’t have enough gold to recruit that unit", "You do not have enough gold to recruit that unit"),
+
+# conversion added in 1.13.6+dev
+("The server accepts versions '$version1' while you are using version '$version2'", "The server accepts versions '$required_version', but you are using version '$your_version'")
 ),
 
 "wesnoth-editor" : (
