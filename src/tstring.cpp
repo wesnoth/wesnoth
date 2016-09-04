@@ -175,7 +175,12 @@ void t_string_base::walker::update()
 			return;
 		}
 		countable_ = true;
-		count_ = *reinterpret_cast<const int32_t*>(string_.data() + end_ + 1);
+		union {
+			int32_t count;
+			char data[4];
+		} cvt;
+		std::copy_n(string_.data() + end_ + 1, 4, cvt.data);
+		count_ = cvt.count;
 	} else {
 		countable_ = false;
 		count_ = 0;
@@ -293,9 +298,12 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 	value_ += sing;
 	value_ += PLURAL_PART;
 
-	char count_val[4];
-	*reinterpret_cast<int32_t*>(count_val) = count;
-	for(char c : count_val) {
+	union {
+		int32_t count;
+		char data[4];
+	} cvt;
+	cvt.count = count;
+	for(char c : cvt.data) {
 		value_ += c;
 	}
 	value_ += pl;
