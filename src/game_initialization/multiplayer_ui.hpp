@@ -100,7 +100,7 @@ public:
 	 * The methodes hide_children and layout_children are supposed to be
 	 * overridden by subclasses of this class which add new sub-widgets.
 	 */
-	void set_location(const SDL_Rect& rect);
+	void set_location(const SDL_Rect& rect) override;
 	using widget::set_location;
 	const std::vector<std::string>& user_list() const { return user_list_; }
 	void send_to_server(const config& cfg) override;
@@ -124,18 +124,18 @@ protected:
 	 */
 	const config& game_config() const;
 
-	virtual void draw_contents();
+	virtual void draw_contents() override;
 
-	virtual void process_event();
+	virtual void process_event() override;
 
-	virtual void handle_event(const SDL_Event& event);
+	virtual void handle_event(const SDL_Event& event) override;
 	virtual void handle_key_event(const SDL_KeyboardEvent& event);
 
 	/** Override chat_handler. */
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
-			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE);
-	void send_chat_message(const std::string& message, bool allies_only=false);
+			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE) override;
+	void send_chat_message(const std::string& message, bool allies_only=false) override;
 
 	/** Process chat messages. */
 	void process_message(const config& msg, const bool whisper=false);

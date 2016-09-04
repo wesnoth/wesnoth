@@ -53,30 +53,30 @@ public:
 
 
 
-	virtual sdl_handler_vector handler_members();
+	virtual sdl_handler_vector handler_members() override;
 
-	void set_start_item(size_t index) { items_start_ = index; }
+	void set_start_item(size_t index) override { items_start_ = index; }
 
-	size_t start_num(void) { return items_start_; }
+	size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items);
-	void expand_palette_groups_menu(std::vector<std::string>& items);
+	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items) override;
+	void expand_palette_groups_menu(std::vector<std::string>& items) override;
 
-	void set_group(size_t index);
+	void set_group(size_t index) override;
 //	int active_group();
 
-	const std::vector<item_group>& get_groups() const { return groups_; }
+	const std::vector<item_group>& get_groups() const override { return groups_; }
 
-	virtual void draw() {
+	virtual void draw() override {
 		widget::draw();
 	}
-	virtual void draw_contents();
+	virtual void draw_contents() override;
 
-	void next_group() {
+	void next_group() override {
 		set_group( (active_group_index() +1) % (groups_.size()) );
 	}
-	void prev_group() {
+	void prev_group() override {
 		set_group( (active_group_index() -1) % (groups_.size()) );
 	}
 
@@ -85,14 +85,14 @@ public:
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	void adjust_size(const SDL_Rect& target);
+	void adjust_size(const SDL_Rect& target) override;
 
-	virtual bool scroll_up();
-	virtual bool can_scroll_up();
-	virtual bool scroll_down();
-	virtual bool can_scroll_down();
+	virtual bool scroll_up() override;
+	virtual bool can_scroll_up() override;
+	virtual bool scroll_down() override;
+	virtual bool can_scroll_down() override;
 
-	void swap();
+	void swap() override;
 
 	virtual std::string get_help_string() = 0;
 
@@ -123,12 +123,12 @@ private:
 	virtual bool is_selected_bg_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	int num_items();
+	int num_items() override;
 
 	/** Return the number of items in the palette. */
 	int num_visible_items() { return buttons_.size();  }
 
-	void hide(bool hidden) {
+	void hide(bool hidden) override {
 		widget::hide(hidden);
 		if (!hidden)
 			help_handle_ = gui_.video().set_help_string(get_help_string());
@@ -149,8 +149,8 @@ protected:
 	const std::vector<std::string>& active_group() { return group_map_[active_group_]; }
 
 	/** Select a foreground item. */
-	virtual void select_fg_item(const std::string& item_id);
-	virtual void select_bg_item(const std::string& item_id);
+	virtual void select_fg_item(const std::string& item_id) override;
+	virtual void select_bg_item(const std::string& item_id) override;
 
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.

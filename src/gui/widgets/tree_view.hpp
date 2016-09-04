@@ -99,16 +99,16 @@ public:
 protected:
 /***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 	/** Inherited from tscrollbar_container. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	void handle_key_up_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	void handle_key_down_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	void handle_key_left_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+	void handle_key_right_arrow(SDLMod modifier, bool& handled) override;
 private:
 	/**
 	 * @todo evaluate which way the dependancy should go.

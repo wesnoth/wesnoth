@@ -45,27 +45,27 @@ public:
 	void play_scenario_init();
 	void play_scenario_main_loop();
 
-	virtual void handle_generic_event(const std::string& name);
+	virtual void handle_generic_event(const std::string& name) override;
 
-	virtual void check_objectives();
-	virtual void on_not_observer() {}
+	virtual void check_objectives() override;
+	virtual void on_not_observer() override {}
 	virtual void maybe_linger();
 
 	void end_turn();
-	void force_end_turn();
+	void force_end_turn() override;
 
 	class hotkey_handler;
 	std::string describe_result() const;
 
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
-	virtual bool should_return_to_play_side();
+	virtual bool should_return_to_play_side() override;
 	replay_controller * get_replay_controller() { return replay_.get(); }
-	bool is_replay() { return get_replay_controller() != nullptr; }
+	bool is_replay() override { return get_replay_controller() != nullptr; }
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
 protected:
-	virtual void play_side_impl();
+	virtual void play_side_impl() override;
 	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
@@ -76,7 +76,7 @@ protected:
 	virtual void play_idle_loop();
 	virtual void do_idle_notification();
 	virtual void play_network_turn();
-	virtual void init_gui();
+	virtual void init_gui() override;
 	void store_recalls();
 	void store_gold(bool obs = false);
 
@@ -99,8 +99,8 @@ protected:
 	bool skip_next_turn_;
 	std::unique_ptr<replay_controller> replay_;
 	void linger();
-	void sync_end_turn();
-	void update_viewing_player();
+	void sync_end_turn() override;
+	void update_viewing_player() override;
 	void reset_replay();
 };
 

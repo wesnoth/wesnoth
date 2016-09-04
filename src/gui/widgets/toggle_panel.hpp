@@ -92,7 +92,7 @@ public:
 	}
 
 	/** Inherited from tselectable_ */
-	void set_value(const unsigned selected);
+	void set_value(const unsigned selected) override;
 
 	/** Inherited from tselectable_ */
 	unsigned num_states() const override;
@@ -102,7 +102,7 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(std::function<void(twidget&)> callback)
+	void set_callback_state_change(std::function<void(twidget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}

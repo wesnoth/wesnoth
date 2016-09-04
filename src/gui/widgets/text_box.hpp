@@ -155,22 +155,22 @@ protected:
 	virtual void update_canvas() override;
 
 	/** Inherited from ttext_. */
-	void goto_end_of_line(const bool select = false)
+	void goto_end_of_line(const bool select = false) override
 	{
 		goto_end_of_data(select);
 	}
 
 	/** Inherited from ttext_. */
-	void goto_start_of_line(const bool select = false)
+	void goto_start_of_line(const bool select = false) override
 	{
 		goto_start_of_data(select);
 	}
 
 	/** Inherited from ttext_. */
-	void delete_char(const bool before_cursor);
+	void delete_char(const bool before_cursor) override;
 
 	/** Inherited from ttext_. */
-	void delete_selection();
+	void delete_selection() override;
 
 	void handle_mouse_selection(tpoint mouse, const bool start_selection);
 
@@ -217,7 +217,7 @@ private:
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
 	{
 	}
 
@@ -229,7 +229,7 @@ private:
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
 	{
 	}
 
@@ -251,16 +251,16 @@ private:
 	void handle_key_default(bool& handled,
 							SDLKey key,
 							SDLMod modifier,
-							const utf8::string& unicode);
+							const utf8::string& unicode) override;
 
 	/** Inherited from ttext_. */
-	void handle_key_clear_line(SDLMod modifier, bool& handled);
+	void handle_key_clear_line(SDLMod modifier, bool& handled) override;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** Inherited from tcontrol. */
-	void load_config_extra();
+	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

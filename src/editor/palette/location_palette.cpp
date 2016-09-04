@@ -118,7 +118,7 @@ public:
 	{
 		state_.selected = selected;
 	}
-	void draw() { gui::widget::draw(); }
+	void draw() override { gui::widget::draw(); }
 private:
 	std::string id_;
 	std::string desc_;

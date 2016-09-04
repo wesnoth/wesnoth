@@ -80,7 +80,7 @@ public:
 	virtual unsigned num_states() const override { return values_.size(); }
 
 	/** Inherited from tselectable_ */
-	virtual void set_callback_state_change(std::function<void(twidget&)> callback)
+	virtual void set_callback_state_change(std::function<void(twidget&)> callback) override
 	{
 		selected_callback_ = callback;
 	}

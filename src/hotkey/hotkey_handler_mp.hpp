@@ -33,12 +33,12 @@ public:
 	hotkey_handler(playmp_controller &, saved_game &);
 	~hotkey_handler();
 
-	virtual void speak();
-	virtual void whisper();
-	virtual void shout();
-	virtual void start_network();
-	virtual void stop_network();
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
+	virtual void speak() override;
+	virtual void whisper() override;
+	virtual void shout() override;
+	virtual void start_network() override;
+	virtual void stop_network() override;
+	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
 
 };
 

@@ -36,7 +36,7 @@ class team;
 class play_controller::hotkey_handler : public hotkey::command_executor_default {
 
 protected:
-	display& get_display() { return play_controller_.get_display(); }
+	display& get_display() override { return play_controller_.get_display(); }
 
 	/** References to parent object / constituents */
 	play_controller & play_controller_;
@@ -83,49 +83,49 @@ public:
 	static const std::string wml_menu_hotkey_prefix;
 
 	//event handlers, overridden from command_executor
-	virtual void objectives();
-	virtual void show_statistics();
-	virtual void unit_list();
-	virtual void left_mouse_click();
-	virtual void move_action();
-	virtual void select_and_action();
-	virtual void select_hex();
-	virtual void deselect_hex();
-	virtual void right_mouse_click();
-	virtual void status_table();
-	virtual void save_game();
-	virtual void save_replay();
-	virtual void save_map();
-	virtual void load_game();
-	virtual void preferences();
-	virtual void show_chat_log();
-	virtual void show_help();
-	virtual void cycle_units();
-	virtual void cycle_back_units();
-	virtual void undo();
-	virtual void redo();
-	virtual void show_enemy_moves(bool ignore_units);
-	virtual void goto_leader();
-	virtual void unit_description();
-	virtual void terrain_description();
-	virtual void toggle_ellipses();
-	virtual void toggle_grid();
-	virtual void search();
-	virtual void toggle_accelerated_speed();
-	virtual void scroll_up(bool on);
-	virtual void scroll_down(bool on);
-	virtual void scroll_left(bool on);
-	virtual void scroll_right(bool on);
+	virtual void objectives() override;
+	virtual void show_statistics() override;
+	virtual void unit_list() override;
+	virtual void left_mouse_click() override;
+	virtual void move_action() override;
+	virtual void select_and_action() override;
+	virtual void select_hex() override;
+	virtual void deselect_hex() override;
+	virtual void right_mouse_click() override;
+	virtual void status_table() override;
+	virtual void save_game() override;
+	virtual void save_replay() override;
+	virtual void save_map() override;
+	virtual void load_game() override;
+	virtual void preferences() override;
+	virtual void show_chat_log() override;
+	virtual void show_help() override;
+	virtual void cycle_units() override;
+	virtual void cycle_back_units() override;
+	virtual void undo() override;
+	virtual void redo() override;
+	virtual void show_enemy_moves(bool ignore_units) override;
+	virtual void goto_leader() override;
+	virtual void unit_description() override;
+	virtual void terrain_description() override;
+	virtual void toggle_ellipses() override;
+	virtual void toggle_grid() override;
+	virtual void search() override;
+	virtual void toggle_accelerated_speed() override;
+	virtual void scroll_up(bool on) override;
+	virtual void scroll_down(bool on) override;
+	virtual void scroll_left(bool on) override;
+	virtual void scroll_right(bool on) override;
 	virtual void replay_skip_animation() override
 	{ return play_controller_.toggle_skipping_replay(); }
 
-	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
+	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const override;
 	virtual void load_autosave(const std::string& filename);
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
+	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 	/** Check if a command can be executed. */
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true);
-	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
+	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
+	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true) override;
+	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
 
 	/**
 	 *  Determines whether the command should be in the context menu or not.

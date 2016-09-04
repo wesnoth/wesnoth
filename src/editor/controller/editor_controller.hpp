@@ -98,41 +98,41 @@ class editor_controller : public controller_base,
 		void custom_tods_dialog();
 
 		/** Save the map, open dialog if not named yet. */
-		void save_map() {context_manager_->save_map();}
+		void save_map() override {context_manager_->save_map();}
 
 		/** command_executor override */
-		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const;
+		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const override;
 
 		/** command_executor override */
-		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
+		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 
 		/** command_executor override */
-		bool execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true);
+		bool execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true) override;
 
 		/** controller_base override */
-		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
+		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
 
-		void show_help();
-		void status_table();
+		void show_help() override;
+		void status_table() override;
 
 		/** Show the preferences dialog */
-		void preferences();
+		void preferences() override;
 
 		/** Handle hotkeys to scroll map */
-		void scroll_up(bool on);
-		void scroll_down(bool on);
-		void scroll_left(bool on);
-		void scroll_right(bool on);
+		void scroll_up(bool on) override;
+		void scroll_down(bool on) override;
+		void scroll_left(bool on) override;
+		void scroll_right(bool on) override;
 
 		/** Grid toggle */
-		void toggle_grid();
+		void toggle_grid() override;
 
-		void terrain_description();
-		void unit_description();
+		void terrain_description() override;
+		void unit_description() override;
 		void change_unit_id();
-		void rename_unit();
+		void rename_unit() override;
 
-		void unit_list();
+		void unit_list() override;
 
 		/** Copy the selection on the current map to the clipboard */
 		void copy_selection();
@@ -152,25 +152,25 @@ class editor_controller : public controller_base,
 		void add_area();
 
 		/* mouse_handler_base overrides */
-		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location());
-		editor_display& gui() { return *gui_; }
-		const editor_display& gui() const { return *gui_; }
-		bool allow_mouse_wheel_scroll(int x, int y);
-		bool right_click_show_menu(int x, int y, const bool browse);
-		bool left_click(int x, int y, const bool browse);
-		void left_drag_end(int x, int y, const bool browse);
-		void left_mouse_up(int x, int y, const bool browse);
-		bool right_click(int x, int y, const bool browse);
-		void right_drag_end(int x, int y, const bool browse);
-		void right_mouse_up(int x, int y, const bool browse);
+		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location()) override;
+		editor_display& gui() override { return *gui_; }
+		const editor_display& gui() const override { return *gui_; }
+		bool allow_mouse_wheel_scroll(int x, int y) override;
+		bool right_click_show_menu(int x, int y, const bool browse) override;
+		bool left_click(int x, int y, const bool browse) override;
+		void left_drag_end(int x, int y, const bool browse) override;
+		void left_mouse_up(int x, int y, const bool browse) override;
+		bool right_click(int x, int y, const bool browse) override;
+		void right_drag_end(int x, int y, const bool browse) override;
+		void right_mouse_up(int x, int y, const bool browse) override;
 
-		virtual hotkey::command_executor * get_hotkey_command_executor();
+		virtual hotkey::command_executor * get_hotkey_command_executor() override;
 
 	protected:
 		/* controller_base overrides */
-		void process_keyup_event(const SDL_Event& event);
-		mouse_handler_base& get_mouse_handler_base() { return *this; }
-		editor_display& get_display() { return *gui_; }
+		void process_keyup_event(const SDL_Event& event) override;
+		mouse_handler_base& get_mouse_handler_base() override { return *this; }
+		editor_display& get_display() override { return *gui_; }
 
 		/** Get the current mouse action */
 		mouse_action* get_mouse_action();
@@ -216,12 +216,12 @@ class editor_controller : public controller_base,
 		/**
 		 * Undos an action in the current map context
 		 */
-		void undo();
+		void undo() override;
 
 		/**
 		 * Redos an action in the current map context
 		 */
-		void redo();
+		void redo() override;
 
 		editor::menu_type active_menu_;
 

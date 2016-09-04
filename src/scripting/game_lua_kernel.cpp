@@ -2581,7 +2581,7 @@ namespace
 			, desc(descr)
 		{}
 
-		virtual config query_user(int side) const
+		virtual config query_user(int side) const override
 		{
 			bool is_local_ai = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).teams()[side - 1].is_local_ai();
 			config cfg;
@@ -2589,7 +2589,7 @@ namespace
 			return cfg;
 		}
 
-		virtual config random_choice(int side) const
+		virtual config random_choice(int side) const override
 		{
 			config cfg;
 			if(random_choice_index != 0 && lua_isfunction(L, random_choice_index)) {
@@ -2617,7 +2617,7 @@ namespace
 		//Although luas sync_choice can show a dialog, (and will in most cases)
 		//we return false to enable other possible things that do not contain UI things.
 		//it's in the responsibility of the umc dev to not show dialogs during prestart events.
-		virtual bool is_visible() const { return false; }
+		virtual bool is_visible() const override { return false; }
 	};
 }//unnamed namespace for lua_synchronize
 

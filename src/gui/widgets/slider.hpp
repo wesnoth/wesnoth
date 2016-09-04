@@ -42,28 +42,28 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tinteger_selector_. */
-	void set_value(const int value);
+	void set_value(const int value) override;
 
 	/** Inherited from tinteger_selector_. */
-	int get_value() const
+	int get_value() const override
 	{
 		return minimum_value_ + get_item_position() * get_step_size();
 	}
 
 	/** Inherited from tinteger_selector_. */
-	void set_minimum_value(const int minimum_value);
+	void set_minimum_value(const int minimum_value) override;
 
 	/** Inherited from tinteger_selector_. */
-	int get_minimum_value() const
+	int get_minimum_value() const override
 	{
 		return minimum_value_;
 	}
 
 	/** Inherited from tinteger_selector_. */
-	void set_maximum_value(const int maximum_value);
+	void set_maximum_value(const int maximum_value) override;
 
 	/** Inherited from tinteger_selector_. */
-	int get_maximum_value() const
+	int get_maximum_value() const override
 	// The number of items needs to include the begin and end so count - 1.
 	{
 		return minimum_value_ + get_item_count() - 1;
@@ -105,7 +105,7 @@ public:
 
 protected:
 	/** Inherited from tscrollbar. */
-	void child_callback_positioner_moved();
+	void child_callback_positioner_moved() override;
 
 private:
 	/** The best size for the slider part itself, if 0 ignored. */
@@ -120,35 +120,34 @@ private:
 	int minimum_value_;
 
 	/** Inherited from tscrollbar. */
-	unsigned get_length() const
+	unsigned get_length() const override
 	{
 		return get_width();
 	}
 
 	/** Inherited from tscrollbar. */
-	unsigned minimum_positioner_length() const;
+	unsigned minimum_positioner_length() const override;
 
 	/** Inherited from tscrollbar. */
-	unsigned maximum_positioner_length() const;
+	unsigned maximum_positioner_length() const override;
 
 	/** Inherited from tscrollbar. */
-	unsigned offset_before() const;
+	unsigned offset_before() const override;
 
 	/** Inherited from tscrollbar. */
-	unsigned offset_after() const;
+	unsigned offset_after() const override;
 
 	/** Inherited from tscrollbar. */
-	bool on_positioner(const tpoint& coordinate) const;
+	bool on_positioner(const tpoint& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int on_bar(const tpoint& coordinate) const;
+	int on_bar(const tpoint& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	bool in_orthogonal_range(const tpoint& coordinate) const;
+	bool in_orthogonal_range(const tpoint& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current)
-			const
+	int get_length_difference(const tpoint& original, const tpoint& current) const override
 	{
 		return current.x - original.x;
 	}

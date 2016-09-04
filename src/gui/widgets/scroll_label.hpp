@@ -64,7 +64,7 @@ public:
 	/** See @ref tcontrol::get_state. */
 	virtual unsigned get_state() const override;
 	
-	bool can_wrap() const;
+	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
 
 private:
@@ -91,7 +91,7 @@ private:
 	tstate state_;
 	bool wrap_on;
 
-	void finalize_subclass();
+	void finalize_subclass() override;
 
 	/***** ***** ***** inherited ****** *****/
 

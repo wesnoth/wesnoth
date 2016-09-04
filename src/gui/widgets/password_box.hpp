@@ -40,7 +40,7 @@ public:
 	}
 
 	/** Inherited from ttext_. */
-	virtual void set_value(const std::string& text);
+	virtual void set_value(const std::string& text) override;
 	std::string get_real_value() const
 	{
 		return real_value_;
@@ -48,9 +48,9 @@ public:
 
 
 protected:
-	void insert_char(const utf8::string& unicode);
-	void paste_selection(const bool mouse);
-	void delete_selection();
+	void insert_char(const utf8::string& unicode) override;
+	void paste_selection(const bool mouse) override;
+	void delete_selection() override;
 
 	// We do not override copy_selection because we
 	// actually want it to copy just the stars

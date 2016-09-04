@@ -53,7 +53,7 @@ public:
 	void set_label(const std::string& val);
 
 	bool hit(int x, int y) const;
-	virtual void enable(bool new_val=true);
+	virtual void enable(bool new_val=true) override;
 	void release();
 
 	void set_item_image(
@@ -66,18 +66,18 @@ public:
 		item_id_ = id;
 	}
 
-	void draw() {
+	void draw() override {
 		widget::draw();
 	}
 
 protected:
 
-	virtual void handle_event(const SDL_Event& event);
+	virtual void handle_event(const SDL_Event& event) override;
 	virtual void mouse_motion(const SDL_MouseMotionEvent& event);
 	virtual void mouse_down(const SDL_MouseButtonEvent& event);
 	virtual void mouse_up(const SDL_MouseButtonEvent& event);
 
-	virtual void draw_contents();
+	virtual void draw_contents() override;
 
 private:
 

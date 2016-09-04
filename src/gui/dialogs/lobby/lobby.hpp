@@ -139,34 +139,34 @@ public:
 protected:
 	/** inherited form chat_handler */
 	virtual void send_chat_message(const std::string& message,
-								   bool /*allies_only*/);
+								   bool /*allies_only*/) override;
 
-	virtual void user_relation_changed(const std::string& name);
+	virtual void user_relation_changed(const std::string& name) override;
 
-	/** inherited form chat_handler */
+	/** inherited from chat_handler */
 	virtual void add_chat_message(const time_t& time,
 								  const std::string& speaker,
 								  int side,
 								  const std::string& message,
 								  events::chat_handler::MESSAGE_TYPE type
-								  = events::chat_handler::MESSAGE_PRIVATE);
+								  = events::chat_handler::MESSAGE_PRIVATE) override;
 
-	/** inherited form chat_handler */
+	/** inherited from chat_handler */
 	virtual void add_whisper_sent(const std::string& receiver,
-								  const std::string& message);
+								  const std::string& message) override;
 
-	/** inherited form chat_handler */
+	/** inherited from chat_handler */
 	virtual void add_whisper_received(const std::string& sender,
-									  const std::string& message);
+									  const std::string& message) override;
 
-	/** inherited form chat_handler */
+	/** inherited from chat_handler */
 	virtual void add_chat_room_message_sent(const std::string& room,
-											const std::string& message);
+											const std::string& message) override;
 
-	/** inherited form chat_handler */
+	/** inherited from chat_handler */
 	virtual void add_chat_room_message_received(const std::string& room,
 												const std::string& speaker,
-												const std::string& message);
+												const std::string& message) override;
 
 private:
 	void update_selected_game();
@@ -347,16 +347,16 @@ private:
 	void skip_replay_changed_callback(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from tdialog. */
-	virtual void post_build(twindow& window);
+	virtual void post_build(twindow& window) override;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(twindow& window) override;
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(twindow& window) override;
 
 	const config& game_config_;
 

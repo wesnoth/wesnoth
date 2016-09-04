@@ -30,11 +30,11 @@ public:
 	location_palette(editor_display &gui, const config& /*cfg*/, mouse_action** active_mouse_action);
 
 
-	virtual sdl_handler_vector handler_members();
+	virtual sdl_handler_vector handler_members() override;
 
-	void set_start_item(size_t index) { items_start_ = index; }
+	void set_start_item(size_t index) override { items_start_ = index; }
 
-	size_t start_num(void) { return items_start_; }
+	size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
 	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >&) override {}
@@ -45,22 +45,22 @@ public:
 	virtual void prev_group() override {}
 	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
 
-	virtual void draw() {
+	virtual void draw() override {
 		widget::draw();
 	}
-	virtual void draw_contents();
+	virtual void draw_contents() override;
 
 	/**
 	 * Update the size of this widget.
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	void adjust_size(const SDL_Rect& target);
+	void adjust_size(const SDL_Rect& target) override;
 
-	virtual bool scroll_up();
-	virtual bool can_scroll_up();
-	virtual bool scroll_down();
-	virtual bool can_scroll_down();
+	virtual bool scroll_up() override;
+	virtual bool can_scroll_up() override;
+	virtual bool scroll_down() override;
+	virtual bool can_scroll_down() override;
 
 	void swap() override {}
 	bool can_swap() { return false; }
@@ -87,7 +87,7 @@ private:
 	virtual bool is_selected_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	int num_items();
+	int num_items() override;
 	/** Return the maximum number of items shown at the same time. */
 	int num_visible_items();
 protected:
