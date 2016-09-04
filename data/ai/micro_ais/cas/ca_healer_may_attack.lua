@@ -7,7 +7,7 @@ function ca_healer_may_attack:evaluation()
     -- After attacks by all other units are done, reset things so that healers can attack, if desired
     -- This will be blacklisted after first execution each turn
 
-    local score = 99990
+    local score = 99900
     return score
 end
 

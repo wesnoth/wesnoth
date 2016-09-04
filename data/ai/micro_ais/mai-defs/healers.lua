@@ -11,7 +11,7 @@ function wesnoth.micro_ais.healer_support(cfg)
 	-- The healers_can_attack CA is only added to the table if aggression ~= 0
 	-- But: make sure we always try removal
 	if (cfg.action == 'delete') or (tonumber(cfg.aggression) ~= 0) then
-		table.insert(CA_parms, { ca_id = 'may_attack', location = 'ca_healer_may_attack.lua', score = 99990 })
+		table.insert(CA_parms, { ca_id = 'may_attack', location = 'ca_healer_may_attack.lua', score = 99900 })
 	end
     return {}, optional_keys, CA_parms
 end
