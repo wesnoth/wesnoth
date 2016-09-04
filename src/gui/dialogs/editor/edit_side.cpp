@@ -54,7 +54,7 @@ teditor_edit_side::teditor_edit_side(editor::editor_team_info& info)
 	: controller_(info.controller)
 	, share_vision_(info.share_vision)
 {
-	register_label("side_number", true, std::to_string(info.side + 1), true);
+	register_label("side_number", true, std::to_string(info.side), true);
 
 	register_text("team_name", true, info.id, true);
 	register_text("user_team_name", true, info.name, true);

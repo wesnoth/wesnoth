@@ -31,7 +31,7 @@
 namespace editor {
 
 struct editor_team_info {
-	editor_team_info(const team& t, const int side);
+	editor_team_info(const team& t);
 
 	int side;
 	std::string id;

@@ -675,15 +675,12 @@ struct twrapper<gui2::teditor_edit_scenario>
 template<>
 struct twrapper<gui2::teditor_edit_side>
 {
-	std::string name, user_name;
-	int gold, income, village, support;
-	bool no_leader, hidden, fog, shroud;
-	team::CONTROLLER controller;
-	team::SHARE_VISION share_vision;
+	team t;
+	editor::editor_team_info info;
+	twrapper() : info(t) {}
 	gui2::teditor_edit_side* create()
 	{
-		return new gui2::
-		teditor_edit_side(1, name, user_name, gold, income, village, support, fog, shroud, share_vision, controller, no_leader, hidden);
+		return new gui2::teditor_edit_side(info);
 	}
 };
 

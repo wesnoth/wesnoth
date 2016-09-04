@@ -40,8 +40,8 @@
 
 namespace editor {
 
-editor_team_info::editor_team_info(const team& t, const int side)
-	: side(side)
+editor_team_info::editor_team_info(const team& t)
+	: side(t.side())
 	, id(t.team_name())
 	, name(t.user_team_name())
 	, gold(t.gold())
@@ -219,8 +219,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 void map_context::set_side_setup(editor_team_info& info)
 {
-	assert(teams_.size() > static_cast<unsigned int>(info.side));
-	team& t = teams_[info.side];
+	assert(teams_.size() >= static_cast<unsigned int>(info.side));
+	team& t = teams_[info.side - 1];
 //	t.set_save_id(id);
 //	t.set_name(name);
 	t.change_team(info.id, info.name);

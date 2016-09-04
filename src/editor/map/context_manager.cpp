@@ -214,11 +214,7 @@ void context_manager::edit_side_dialog(int side)
 	//TODO
 	//t.support()
 
-	// TODO: @celticminstrel: the side parameter passed here is then used to access
-	// the team by index in set_side_setup. In teditor_edit_side, it's displayed as
-	// a side number, as as such is shown +1. Just a note for the team index refactor
-	// branch.
-	editor_team_info team_info(t, side);
+	editor_team_info team_info(t);
 
 	if(gui2::teditor_edit_side::execute(team_info, gui_.video())) {
 		get_map_context().set_side_setup(team_info);
