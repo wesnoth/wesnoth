@@ -74,6 +74,11 @@ function wesnoth.micro_ais.fast_ai(cfg)
 			W.modify_ai {
 				side = cfg.side,
 				action = "try_delete",
+				path = "stage[main_loop].candidate_action[high_xp_attack]"
+			}
+			W.modify_ai {
+				side = cfg.side,
+				action = "try_delete",
 				path = "stage[main_loop].candidate_action[combat]"
 			}
 		else

@@ -17,7 +17,7 @@ function ca_return_guardian:evaluation(cfg)
     local guardian = get_guardian(cfg)
     if guardian then
         if (guardian.x == cfg.return_x) and (guardian.y == cfg.return_y) then
-            return cfg.ca_score - 20
+            return cfg.ca_score - 200
         else
             return cfg.ca_score
         end
