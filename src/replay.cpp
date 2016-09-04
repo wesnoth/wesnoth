@@ -368,10 +368,10 @@ void replay::remove_command(int index)
 static std::vector< chat_msg > message_log;
 
 
-const std::vector<chat_msg>& replay::build_chat_log()
+const std::vector<chat_msg>& replay::build_chat_log() const
 {
 	message_log.clear();
-	std::vector<int>::iterator loc_it;
+	std::vector<int>::const_iterator loc_it;
 	int last_location = 0;
 	std::back_insert_iterator<std::vector < chat_msg > > chat_log_appender( back_inserter(message_log));
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
@@ -551,7 +551,7 @@ void replay::undo()
 	undo_cut(dummy);
 }
 
-config &replay::command(int n)
+config &replay::command(int n) const
 {
 	config & retv = base_->get_command_at(n);
 	assert(retv);

@@ -67,10 +67,10 @@ REGISTER_DIALOG(chat_log)
 class tchat_log::model
 {
 public:
-	model(const vconfig& c, replay* r)
+	model(const vconfig& c, const replay& r)
 		: cfg(c)
 		, msg_label(nullptr)
-		, chat_log_history(r->build_chat_log())
+		, chat_log_history(r.build_chat_log())
 		, page(0)
 		, page_number()
 		, page_label()
@@ -339,7 +339,7 @@ private:
 class tchat_log::view
 {
 public:
-	view(const vconfig& cfg, replay* r) : model_(cfg, r), controller_(model_)
+	view(const vconfig& cfg, const replay& r) : model_(cfg, r), controller_(model_)
 	{
 	}
 
@@ -428,7 +428,7 @@ private:
 };
 
 
-tchat_log::tchat_log(const vconfig& cfg, replay* r) : view_()
+tchat_log::tchat_log(const vconfig& cfg, const replay& r) : view_()
 {
 	LOG_CHAT_LOG << "Entering tchat_log::tchat_log" << std::endl;
 	view_ = std::make_shared<view>(cfg, r);

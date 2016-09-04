@@ -52,7 +52,7 @@ namespace gui2
 
 REGISTER_DIALOG(game_stats)
 
-tgame_stats::tgame_stats(game_board& board, const int viewing_team, int& selected_index)
+tgame_stats::tgame_stats(const display_context& board, const int viewing_team, int& selected_index)
 	: board_(board)
 	, viewing_team_(board_.teams()[viewing_team])
 	, selected_index_(selected_index)

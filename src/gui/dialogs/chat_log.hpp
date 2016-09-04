@@ -29,7 +29,7 @@ public:
 	class model;
 	class view;
 	class controller;
-	tchat_log(const vconfig& cfg, replay* replay);
+	tchat_log(const vconfig& cfg, const replay& replay);
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);

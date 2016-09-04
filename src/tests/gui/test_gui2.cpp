@@ -99,6 +99,7 @@
 #include "language.hpp"
 #include "game_initialization/create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
+#include "replay.hpp"
 #include "saved_game.hpp"
 //#include "scripting/lua_kernel_base.hpp"
 #include "video.hpp"
@@ -262,7 +263,7 @@ namespace {
 	{
 		for(const tresolution& resolution : resolutions) {
 			
-			//CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
+			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			std::vector<std::string>& list =
 					gui2::unit_test_registered_window_list();
@@ -270,19 +271,10 @@ namespace {
 
 			std::string exception;
 			try {
-/**
- * @todo The code crashes for some unknown reason when this code is disabled.
- * The backtrace however doesn't show this path, in fact the crash occurs
- * before this code is used. So not entirely sure whether it's a compiler bug
- * or a part of the static initialization fiasco. Need to test with different
- * compilers and try to find the cause.
- */
-#if 0
 				gui2::tip::show(video
 						, id
 						, "Test messsage for a tooltip."
 						, gui2::tpoint(0, 0));
-#endif
 			} catch(gui2::tlayout_exception_width_modified&) {
 				exception = "gui2::tlayout_exception_width_modified";
 			} catch(gui2::tlayout_exception_width_resize_failed&) {
@@ -384,7 +376,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tcampaign_difficulty>();
 	test<gui2::tcampaign_selection>();
 	test<gui2::tcampaign_settings>();
-//	test<gui2::tchat_log>(); /** @todo ENABLE */
+	test<gui2::tchat_log>();
 	test<gui2::tedit_label>();
 	test<gui2::tedit_text>();
 	test<gui2::teditor_generate_map>();
@@ -401,9 +393,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_save>();
 	test<gui2::tgame_save_message>();
 	test<gui2::tgame_save_oos>();
-	//test<gui2::tgame_stats>();
+	test<gui2::tgame_stats>();
 	test<gui2::tgamestate_inspector>();
-	//test<gui2::tgenerator_settings>();
+	test<gui2::tgenerator_settings>();
 	test<gui2::tlanguage_selection>();
 	// test<gui2::tloadscreen>(); TODO: enable
 	test<gui2::tlobby_main>();
@@ -424,7 +416,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tsimple_item_selector>();
 	test<gui2::tscreenshot_notification>();
 	test<gui2::tselect_orb_colors>();
-	//test<gui2::tsp_options_configure>();
+	test<gui2::tsp_options_configure>();
 	test<gui2::ttheme_list>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
@@ -452,6 +444,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/* The tooltip classes. */
 	test_tip("tooltip_large");
+	test_tip("tooltip");
 
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
 	std::vector<std::string> omitted = {
@@ -460,11 +453,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		 * don't allow 'nullptr's needs to be fixed.
 		 */
 		"unit_attack",
-		/*
-		 * The chat log unit test are disabled for now, they calling parameters
-		 * don't allow 'nullptr's needs to be fixed.
-		 */
-		"chat_log",
 		// No test for this right now, not sure how to use the test system
 		// for dialog with no default constructor
 		"lua_interpreter",
@@ -486,12 +474,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"unit_recruit",
 		"unit_recall",
 		"unit_list",
-		"game_stats",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
-		"sp_options_configure",
-		"generator_settings",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
@@ -591,10 +576,12 @@ struct twrapper<gui2::tchat_log>
 {
 	config cfg;
 	vconfig vcfg;
-	twrapper() : vcfg(cfg) {}
+	replay_recorder_base rbase;
+	replay r;
+	twrapper() : vcfg(cfg), r(rbase) {}
 	gui2::tchat_log* create()
 	{
-		return new gui2::tchat_log(vcfg, nullptr);
+		return new gui2::tchat_log(vcfg, r);
 	}
 };
 
@@ -1097,6 +1084,41 @@ struct twrapper<gui2::tfaction_select>
 	{}
 	gui2::tfaction_select* create() {
 		return new gui2::tfaction_select(flg, color, 1);
+	}
+};
+
+template<>
+struct twrapper<gui2::tgame_stats>
+{
+	int i;
+	gui2::tgame_stats* create()
+	{
+		const display_context* ctx = editor::get_dummy_display_context();
+		return new gui2::tgame_stats(*ctx, 1, i);
+	}
+};
+
+template<>
+struct twrapper<gui2::tgenerator_settings>
+{
+	config cfg;
+	generator_data data;
+	twrapper() : data(cfg) {}
+	gui2::tgenerator_settings* create()
+	{
+		return new gui2::tgenerator_settings(data);
+	}
+};
+
+template<>
+struct twrapper<gui2::tsp_options_configure>
+{
+	saved_game state;
+	ng::create_engine engine;
+	twrapper() : engine(test_utils::get_fake_display(-1, -1).video(), state) {}
+	gui2::tsp_options_configure* create()
+	{
+		return new gui2::tsp_options_configure(engine);
 	}
 };
 

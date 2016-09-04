@@ -203,7 +203,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::tchat_log chat_log_dialog(vconfig(c), resources::recorder);
+	gui2::tchat_log chat_log_dialog(vconfig(c), *resources::recorder);
 	chat_log_dialog.show(gui_->video());
 	//std::string text = resources::recorder->build_chat_log();
 	//gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);

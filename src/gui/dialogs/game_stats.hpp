@@ -34,7 +34,7 @@ namespace gui2
 class tgame_stats : public tdialog
 {
 public:
-	tgame_stats(game_board& board, const int viewing_team, int& selected_index);
+	tgame_stats(const display_context& board, const int viewing_team, int& selected_index);
 
 	static bool execute(game_board& board, const int viewing_team, int& selected_index, CVideo& video)
 	{
@@ -48,7 +48,7 @@ public:
 
 private:
 	// TODO: don't like having this
-	game_board& board_;
+	const display_context& board_;
 
 	const team& viewing_team_;
 

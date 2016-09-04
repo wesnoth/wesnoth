@@ -86,7 +86,7 @@ public:
 	bool add_chat_message_location();
 	bool add_chat_message_location(int pos);
 	void speak(const config& cfg);
-	const std::vector<chat_msg>& build_chat_log();
+	const std::vector<chat_msg>& build_chat_log() const;
 
 	//get data range will get a range of moves from the replay system.
 	//if data_type is 'ALL_DATA' then it will return all data in this range
@@ -135,7 +135,7 @@ private:
 
 	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;
 
-	config &command(int);
+	config &command(int) const;
 	void remove_command(int);
 	/** Adds a new empty command to the command list at the end.
 	 *
