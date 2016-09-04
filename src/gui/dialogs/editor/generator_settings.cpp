@@ -15,10 +15,11 @@
 
 #include "gui/dialogs/editor/generator_settings.hpp"
 
+#include "formatter.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
+#include "gui/widgets/status_label_helper.hpp"
 #include "gettext.hpp"
 
 #include "utils/functional.hpp"
@@ -32,10 +33,16 @@ static int min_size = 20;
 
 REGISTER_DIALOG(generator_settings)
 
+static const auto landform_label = [](tslider& s)->std::string {
+	return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island"));
+};
+
 tgenerator_settings::tgenerator_settings(generator_data& data)
 	: players_(register_integer("players", true, data.nplayers))
 	, width_(register_integer("width",     true, data.width))
 	, height_(register_integer("height",   true, data.height))
+	, update_width_label_()
+	, update_height_label_()
 {
 	register_integer("hills_num",    true, data.iterations);
 	register_integer("hills_size",   true, data.hill_size);
@@ -54,46 +61,14 @@ void tgenerator_settings::pre_show(twindow& window)
 	connect_signal_notify_modified(*players_->widget(), std::bind(
 		&tgenerator_settings::adjust_minimum_size_by_players, this, std::ref(window)));
 
-	bind_status_label(window, "players");
-	bind_status_label(window, "width");
-	bind_status_label(window, "height");
-	bind_status_label(window, "villages", _("/1000 tiles"));
-	bind_status_label(window, "castle_size");
-	bind_landform_status_label(window);
-}
+	gui2::bind_status_label<tslider>(window, "players");
 
-void tgenerator_settings::bind_status_label(twindow& window, const std::string& id, const std::string& suffix)
-{
-    tslider& slider = find_widget<tslider>(&window, id, false);
-	tlabel& label = find_widget<tlabel>(&window, id + "_label", false);
+	update_width_label_  = gui2::bind_status_label<tslider>(window, "width");
+	update_height_label_ = gui2::bind_status_label<tslider>(window, "height");
 
-	label.set_label(std::to_string(slider.get_value()) + suffix);
-
-	connect_signal_notify_modified(slider, std::bind(
-		&tgenerator_settings::status_label_callback, this, std::ref(slider), std::ref(label), suffix));
-}
-
-void tgenerator_settings::status_label_callback(tslider& slider, tlabel& label, const std::string& suffix)
-{
-	label.set_label(std::to_string(slider.get_value()) + suffix);
-}
-
-// TODO: remove
-void tgenerator_settings::bind_landform_status_label(twindow& window)
-{
-    tslider& slider = find_widget<tslider>(&window, "landform", false);
-	tlabel& label = find_widget<tlabel>(&window, "landform_label", false);
-
-	landform_status_label_callback(slider, label);
-
-	connect_signal_notify_modified(slider, std::bind(
-		&tgenerator_settings::landform_status_label_callback, this, std::ref(slider), std::ref(label)));
-}
-
-// TODO: remove
-void tgenerator_settings::landform_status_label_callback(tslider& slider, tlabel& label)
-{
-	label.set_label(slider.get_value() == 0 ? _("Inland") : (slider.get_value() < max_coastal ? _("Coastal") : _("Island")));
+	gui2::bind_status_label<tslider>(window, "villages", [](tslider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
+	gui2::bind_status_label<tslider>(window, "castle_size");
+	gui2::bind_status_label<tslider>(window, "landform", [](tslider& s)->std::string { return landform_label(s); });
 }
 
 void tgenerator_settings::adjust_minimum_size_by_players(twindow& window)
@@ -103,12 +78,13 @@ void tgenerator_settings::adjust_minimum_size_by_players(twindow& window)
 	const auto update_dimension_slider = [&](tfield_integer* field) {
 		tslider& w = dynamic_cast<tslider&>(*field->widget());
 		w.set_minimum_value(min_size + extra_size);
-
-		status_label_callback(w, find_widget<tlabel>(&window, w.id() + "_label", false));
 	};
 
 	update_dimension_slider(width_);
 	update_dimension_slider(height_);
+
+	update_width_label_();
+	update_height_label_();
 }
 
 } // end namespace gui2

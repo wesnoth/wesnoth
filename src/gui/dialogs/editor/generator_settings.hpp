@@ -37,13 +37,6 @@ public:
 private:
 	void pre_show(twindow& window);
 
-	void bind_status_label(twindow& window, const std::string& id, const std::string& suffix = "");
-	void status_label_callback(tslider& slider, tlabel& label, const std::string& suffix = "");
-
-	// TODO: find a more generic way to do this
-	void bind_landform_status_label(twindow& window);
-	void landform_status_label_callback(tslider& slider, tlabel& label);
-
 	void adjust_minimum_size_by_players(twindow& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -53,6 +46,8 @@ private:
 	tfield_integer* players_;
 	tfield_integer* width_;
 	tfield_integer* height_;
+
+	std::function<void()> update_width_label_, update_height_label_;
 };
 
 }
