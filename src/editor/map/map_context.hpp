@@ -30,6 +30,24 @@
 
 namespace editor {
 
+struct editor_team_info {
+	editor_team_info(const team& t, const int side);
+
+	int side;
+	std::string id;
+	std::string name;
+	int gold;
+	int income;
+	int village_income;
+	int village_support;
+	bool fog;
+	bool shroud;
+	team::SHARE_VISION share_vision;
+	team::CONTROLLER controller;
+	bool no_leader;
+	bool hidden;
+};
+
 /**
  * This class wraps around a map to provide a concise interface for the editor to work with.
  * The actual map object can change rapidly (be assigned to), the map context persists
@@ -242,10 +260,7 @@ public:
 	/**
 	 * TODO
 	 */
-	void set_side_setup(int side, const std::string& id, const std::string& name,
-			int gold, int income, int village_gold, int village_support,
-			bool fog, bool shroud, team::SHARE_VISION share_vision,
-			team::CONTROLLER controller, bool hidden, bool no_leader);
+	void set_side_setup(editor_team_info& info);
 
 	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.

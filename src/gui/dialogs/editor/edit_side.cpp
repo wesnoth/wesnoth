@@ -50,40 +50,26 @@ namespace gui2
 
 REGISTER_DIALOG(editor_edit_side)
 
-teditor_edit_side::teditor_edit_side(int side,
-									 std::string& id,
-									 std::string& name,
-									 int& gold,
-									 int& income,
-									 int& village_income,
-									 int& village_support,
-									 bool& fog,
-									 bool& shroud,
-									 team::SHARE_VISION& share_vision,
-									 team::CONTROLLER& controller,
-									 bool& no_leader,
-									 bool& hidden)
-	: controller_(controller)
-	, share_vision_(share_vision)
+teditor_edit_side::teditor_edit_side(editor::editor_team_info& info)
+	: controller_(info.controller)
+	, share_vision_(info.share_vision)
 {
-	std::stringstream side_stream;
-	side_stream << side;
-	register_label("side_number", true, side_stream.str(), true);
+	register_label("side_number", true, std::to_string(info.side + 1), true);
 
-	register_text("team_name", true, id, true);
-	register_text("user_team_name", true, name, true);
+	register_text("team_name", true, info.id, true);
+	register_text("user_team_name", true, info.name, true);
 
-	register_integer("gold", true, gold);
-	register_integer("income", true, income);
+	register_integer("gold", true, info.gold);
+	register_integer("income", true, info.income);
 
-	register_integer("village_income", true, village_income);
-	register_integer("village_support", true, village_support);
+	register_integer("village_income", true, info.village_income);
+	register_integer("village_support", true, info.village_support);
 
-	register_bool("fog", true, fog);
-	register_bool("shroud", true, shroud);
+	register_bool("fog", true, info.fog);
+	register_bool("shroud", true, info.shroud);
 
-	register_bool("no_leader", true, no_leader);
-	register_bool("hidden", true, hidden);
+	register_bool("no_leader", true, info.no_leader);
+	register_bool("hidden", true, info.hidden);
 }
 
 void teditor_edit_side::pre_show(twindow& window)

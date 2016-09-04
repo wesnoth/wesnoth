@@ -15,6 +15,7 @@
 #ifndef GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
 #define GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
 
+#include "editor/map/map_context.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "team.hpp"
@@ -27,49 +28,12 @@ class ttoggle_button;
 class teditor_edit_side : public tdialog
 {
 public:
-	teditor_edit_side(int side,
-					  std::string& team_name,
-					  std::string& user_team_name,
-					  int& gold,
-					  int& income,
-					  int& village_income,
-					  int& village_support,
-					  bool& fog,
-					  bool& shroud,
-					  team::SHARE_VISION& share_vision,
-					  team::CONTROLLER& controller,
-					  bool& no_leader,
-					  bool& hidden);
+	explicit teditor_edit_side(editor::editor_team_info& info);
 
 	/** The execute function see @ref tdialog for more information. */
-	static bool execute(int side,
-						std::string& team_name,
-						std::string& user_team_name,
-						int& gold,
-						int& income,
-						int& village_income,
-						int& village_support,
-						bool& fog,
-						bool& shroud,
-						team::SHARE_VISION& share_vision,
-						team::CONTROLLER& controller,
-						bool& no_leader,
-						bool& hidden,
-						CVideo& video)
+	static bool execute(editor::editor_team_info& info, CVideo& video)
 	{
-		return teditor_edit_side(side,
-								 team_name,
-								 user_team_name,
-								 gold,
-								 income,
-								 village_income,
-								 village_support,
-								 fog,
-								 shroud,
-								 share_vision,
-								 controller,
-								 no_leader,
-								 hidden).show(video);
+		return teditor_edit_side(info).show(video);
 	}
 
 private:

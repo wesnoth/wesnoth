@@ -40,6 +40,23 @@
 
 namespace editor {
 
+editor_team_info::editor_team_info(const team& t, const int side)
+	: side(side)
+	, id(t.team_name())
+	, name(t.user_team_name())
+	, gold(t.gold())
+	, income(t.base_income())
+	, village_income(t.village_gold())
+	, village_support(t.village_support())
+	, fog(t.uses_fog())
+	, shroud(t.uses_shroud())
+	, share_vision(t.share_vision())
+	, controller(t.controller())
+	, no_leader(t.no_leader())
+	, hidden(t.hidden())
+{
+}
+
 const size_t map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule)
@@ -200,26 +217,23 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	add_to_recent_files();
 }
 
-void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
-		int gold, int income, int village_gold, int village_support,
-		bool fog, bool shroud, team::SHARE_VISION share_vision,
-		team::CONTROLLER controller, bool hidden, bool no_leader)
+void map_context::set_side_setup(editor_team_info& info)
 {
-	assert(teams_.size() > static_cast<unsigned int>(side));
-	team& t = teams_[side];
+	assert(teams_.size() > static_cast<unsigned int>(info.side));
+	team& t = teams_[info.side];
 //	t.set_save_id(id);
 //	t.set_name(name);
-	t.change_team(team_name, user_team_name);
-	t.have_leader(!no_leader);
-	t.change_controller(controller);
-	t.set_gold(gold);
-	t.set_base_income(income);
-	t.set_hidden(hidden);
-	t.set_fog(fog);
-	t.set_shroud(shroud);
-	t.set_share_vision(share_vision);
-	t.set_village_gold(village_gold);
-	t.set_village_support(village_support);
+	t.change_team(info.id, info.name);
+	t.have_leader(!info.no_leader);
+	t.change_controller(info.controller);
+	t.set_gold(info.gold);
+	t.set_base_income(info.income);
+	t.set_hidden(info.hidden);
+	t.set_fog(info.fog);
+	t.set_shroud(info.shroud);
+	t.set_share_vision(info.share_vision);
+	t.set_village_gold(info.village_income);
+	t.set_village_support(info.village_support);
 	actions_since_save_++;
 }
 

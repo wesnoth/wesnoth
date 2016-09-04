@@ -214,33 +214,14 @@ void context_manager::edit_side_dialog(int side)
 	//TODO
 	//t.support()
 
-	team::CONTROLLER controller = t.controller();
+	// TODO: @celticminstrel: the side parameter passed here is then used to access
+	// the team by index in set_side_setup. In teditor_edit_side, it's displayed as
+	// a side number, as as such is shown +1. Just a note for the team index refactor
+	// branch.
+	editor_team_info team_info(t, side);
 
-	std::string user_team_name = t.user_team_name();
-	std::string team_name = t.team_name();
-
-	int gold = t.gold();
-	int income = t.base_income();
-	int village_gold = t.village_gold();
-	int village_support = t.village_support();
-
-	bool no_leader = t.no_leader();
-	bool hidden = t.hidden();
-	bool fog = t.uses_fog();
-	bool shroud = t.uses_shroud();
-
-	team::SHARE_VISION share_vision = t.share_vision();
-
-	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
-			gold, income, village_gold, village_support,
-			fog, shroud, share_vision,
-			controller, no_leader, hidden,
-			gui_.video());
-
-	if (ok) {
-		get_map_context().set_side_setup(side, team_name, user_team_name,
-				gold, income, village_gold, village_support,
-				fog, shroud, share_vision, controller, hidden, no_leader);
+	if(gui2::teditor_edit_side::execute(team_info, gui_.video())) {
+		get_map_context().set_side_setup(team_info);
 	}
 }
 
