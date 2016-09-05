@@ -198,6 +198,11 @@ void tunit_create::list_item_clicked(twindow& window)
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
 		.set_displayed_type(*units_[selected_row]);
+
+	gender_toggle.set_member_active(unit_race::GENDER::MALE,
+		units_[selected_row]->has_gender_variation(unit_race::GENDER::MALE));
+	gender_toggle.set_member_active(unit_race::GENDER::FEMALE,
+		units_[selected_row]->has_gender_variation(unit_race::GENDER::FEMALE));
 }
 
 void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
