@@ -101,8 +101,11 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 		ttree_view_node& option_node = options_tree_.add_node("option_node", data);
 
-		for(const auto& checkbox_option : options.child_range("checkbox")) {
+		for(const config::any_child opt : options.all_children_range()) {
 			data.clear();
+
+			if(opt.key == "checkbox") {
+				const config& checkbox_option = opt.cfg;
 
 			item["label"] = checkbox_option["name"];
 			item["tooltip"] = checkbox_option["description"];
@@ -122,14 +125,15 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 			checkbox->set_value(data_map[widget_id].to_bool());
 			checkbox->set_callback_state_change(
 				std::bind(&tmp_options_helper::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
-		}
-
-		// Only add a spacer if there were an option of this type
-		if(options.has_child("checkbox")) {
+			} else if(opt.key == "spacer") {
 			option_node.add_child("options_spacer_node", empty_map);
-		}
+			} else if(opt.key == "choice" || opt.key == "combo") {
+				if(opt.key == "combo") {
+					lg::wml_error() << "[options][combo] is deprecated; use [choice] instead\n";
+				}
 
-		for(const auto& menu_button_option : options.child_range("combo")) {
+				const config& menu_button_option = opt.cfg;
+
 			data.clear();
 			item.clear();
 
@@ -179,14 +183,9 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 			menu_button->connect_click_handler(
 				std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
-		}
+			} else if(opt.key == "slider") {
+				const config& slider_option = opt.cfg;
 
-		// Only add a spacer if there were an option of this type
-		if(options.has_child("combo")) {
-			option_node.add_child("options_spacer_node", empty_map);
-		}
-
-		for(const auto& slider_option : options.child_range("slider")) {
 			data.clear();
 			item.clear();
 
@@ -214,14 +213,9 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 			connect_signal_notify_modified(*slider,
 				std::bind(&tmp_options_helper::update_options_data_map<tslider>, this, slider, visible_options_.back()));
-		}
+			} else if(opt.key == "entry") {
+				const config& text_entry_option = opt.cfg;
 
-		// Only add a spacer if there were an option of this type
-		if(options.has_child("slider")) {
-			option_node.add_child("options_spacer_node", empty_map);
-		}
-
-		for(const auto& text_entry_option : options.child_range("entry")) {
 			data.clear();
 			item.clear();
 
@@ -245,6 +239,7 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 			textbox->set_value(data_map[widget_id].str());
 			textbox->set_text_changed_callback(
 				std::bind(&tmp_options_helper::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
+			}
 		}
 
 		// Add the Defaults button at the end
