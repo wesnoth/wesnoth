@@ -21,6 +21,7 @@
 #include "gui/dialogs/lobby/info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "game_initialization/multiplayer.hpp"
+#include "quit_confirmation.hpp"
 
 class display;
 
@@ -76,7 +77,7 @@ struct tplayer_list
 	ttree_view* tree;
 };
 
-class tlobby_main : public tdialog, private events::chat_handler, private plugin_executor
+class tlobby_main : public tdialog, public quit_confirmation, private events::chat_handler, private plugin_executor
 {
 public:
 	tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection);
@@ -345,6 +346,10 @@ private:
 	void user_dialog_callback(user_info* info);
 
 	void skip_replay_changed_callback(twindow& window);
+
+	void signal_handler_key_down(SDLKey key, bool& handled, bool& halt);
+
+	static bool logout_prompt();
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

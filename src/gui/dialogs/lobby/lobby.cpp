@@ -305,10 +305,16 @@ void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, cons
 	}
 }
 
+bool tlobby_main::logout_prompt()
+{
+	return show_prompt(_("Do you really want to log out?"));
+}
+
 tlobby_main::tlobby_main(const config& game_config,
 						 lobby_info& info,
 						 twesnothd_connection &wesnothd_connection)
-	: legacy_result_(QUIT)
+	: quit_confirmation(&tlobby_main::logout_prompt)
+	, legacy_result_(QUIT)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
 	, roomlistbox_(nullptr)
@@ -859,6 +865,18 @@ void tlobby_main::update_selected_game()
 	player_list_dirty_ = true;
 }
 
+void tlobby_main::signal_handler_key_down(SDLKey key, bool& handled, bool& halt)
+{
+	if(key == SDLK_ESCAPE) {
+		if(quit()) {
+			window_->set_retval(twindow::OK);
+			window_->close();
+		}
+		handled = true;
+		halt = true;
+	}
+}
+
 void tlobby_main::pre_show(twindow& window)
 {
 	SCOPE_LB;
@@ -904,6 +922,10 @@ void tlobby_main::pre_show(twindow& window)
 
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
+	// A new key handler to deal with escape in a different manner.
+	window.connect_signal<event::SDL_KEY_DOWN>(
+		std::bind(&tlobby_main::signal_handler_key_down, this, _5, _3, _4),
+		event::tdispatcher::front_pre_child);
 
 	window_ = &window;
 
