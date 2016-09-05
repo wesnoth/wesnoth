@@ -107,26 +107,26 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 			if(opt.key == "checkbox") {
 				const config& checkbox_option = opt.cfg;
 
-			item["label"] = checkbox_option["name"];
-			item["tooltip"] = checkbox_option["description"];
-			data.emplace("option_checkbox", item);
+				item["label"] = checkbox_option["name"];
+				item["tooltip"] = checkbox_option["description"];
+				data.emplace("option_checkbox", item);
 
-			ttree_view_node& node = option_node.add_child("option_checkbox_node", data);
+				ttree_view_node& node = option_node.add_child("option_checkbox_node", data);
 
-			ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("option_checkbox", true));
+				ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("option_checkbox", true));
 
-			VALIDATE(checkbox, missing_widget("option_checkbox"));
+				VALIDATE(checkbox, missing_widget("option_checkbox"));
 
-			const std::string widget_id = checkbox_option["id"];
+				const std::string widget_id = checkbox_option["id"];
 
-			set_default_data_value(widget_id, checkbox_option);
+				set_default_data_value(widget_id, checkbox_option);
 
-			checkbox->set_id(widget_id);
-			checkbox->set_value(data_map[widget_id].to_bool());
-			checkbox->set_callback_state_change(
-				std::bind(&tmp_options_helper::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
+				checkbox->set_id(widget_id);
+				checkbox->set_value(data_map[widget_id].to_bool());
+				checkbox->set_callback_state_change(
+					std::bind(&tmp_options_helper::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
 			} else if(opt.key == "spacer") {
-			option_node.add_child("options_spacer_node", empty_map);
+				option_node.add_child("options_spacer_node", empty_map);
 			} else if(opt.key == "choice" || opt.key == "combo") {
 				if(opt.key == "combo") {
 					lg::wml_error() << "[options][combo] is deprecated; use [choice] instead\n";
@@ -134,111 +134,111 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 				const config& menu_button_option = opt.cfg;
 
-			data.clear();
-			item.clear();
+				data.clear();
+				item.clear();
 
-			item["label"] = menu_button_option["name"];
-			data.emplace("menu_button_label", item);
+				item["label"] = menu_button_option["name"];
+				data.emplace("menu_button_label", item);
 
-			item["tooltip"] = menu_button_option["description"];
-			data.emplace("option_menu_button", item);
+				item["tooltip"] = menu_button_option["description"];
+				data.emplace("option_menu_button", item);
 
-			std::vector<config> combo_items;
-			std::vector<std::string> combo_values;
+				std::vector<config> combo_items;
+				std::vector<std::string> combo_values;
 
-			config::const_child_itors items = menu_button_option.child_range("item");
-			for(auto item : items) {
-				// Comboboxes expect this key to be 'label' not 'name'
-				item["label"] = item["name"];
+				config::const_child_itors items = menu_button_option.child_range("item");
+				for(auto item : items) {
+					// Comboboxes expect this key to be 'label' not 'name'
+					item["label"] = item["name"];
 
-				combo_items.push_back(item);
-				combo_values.push_back(item["value"]);
-			}
+					combo_items.push_back(item);
+					combo_values.push_back(item["value"]);
+				}
 
-			if(combo_items.empty()) {
-				continue;
-			}
+				if(combo_items.empty()) {
+					continue;
+				}
 
-			ttree_view_node& node = option_node.add_child("option_menu_button_node", data);
+				ttree_view_node& node = option_node.add_child("option_menu_button_node", data);
 
-			tmenu_button* menu_button = dynamic_cast<tmenu_button*>(node.find("option_menu_button", true));
+				tmenu_button* menu_button = dynamic_cast<tmenu_button*>(node.find("option_menu_button", true));
 
-			VALIDATE(menu_button, missing_widget("option_menu_button"));
+				VALIDATE(menu_button, missing_widget("option_menu_button"));
 
-			const std::string widget_id = menu_button_option["id"];
+				const std::string widget_id = menu_button_option["id"];
 
-			set_default_data_value(widget_id, menu_button_option);
+				set_default_data_value(widget_id, menu_button_option);
 
-			menu_button->set_id(widget_id);
-			menu_button->set_values(combo_items);
+				menu_button->set_id(widget_id);
+				menu_button->set_values(combo_items);
 
-			config::attribute_value val = data_map[widget_id];
-			auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
-				return cfg["value"] == val;
-			});
+				config::attribute_value val = data_map[widget_id];
+				auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
+					return cfg["value"] == val;
+				});
 
-			if(iter != items.end()) {
-				menu_button->set_selected(iter - items.begin());
-			}
+				if(iter != items.end()) {
+					menu_button->set_selected(iter - items.begin());
+				}
 
-			menu_button->connect_click_handler(
-				std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
+				menu_button->connect_click_handler(
+					std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
 			} else if(opt.key == "slider") {
 				const config& slider_option = opt.cfg;
 
-			data.clear();
-			item.clear();
+				data.clear();
+				item.clear();
 
-			item["label"] = slider_option["name"];
-			data.emplace("slider_label", item);
+				item["label"] = slider_option["name"];
+				data.emplace("slider_label", item);
 
-			item["tooltip"] = slider_option["description"];
-			data.emplace("option_slider", item);
+				item["tooltip"] = slider_option["description"];
+				data.emplace("option_slider", item);
 
-			ttree_view_node& node = option_node.add_child("option_slider_node", data);
+				ttree_view_node& node = option_node.add_child("option_slider_node", data);
 
-			tslider* slider = dynamic_cast<tslider*>(node.find("option_slider", true));
+				tslider* slider = dynamic_cast<tslider*>(node.find("option_slider", true));
 
-			VALIDATE(slider, missing_widget("option_slider"));
+				VALIDATE(slider, missing_widget("option_slider"));
 
-			const std::string widget_id = slider_option["id"];
+				const std::string widget_id = slider_option["id"];
 
-			set_default_data_value(widget_id, slider_option);
+				set_default_data_value(widget_id, slider_option);
 
-			slider->set_id(widget_id);
-			slider->set_maximum_value(slider_option["max"].to_int());
-			slider->set_minimum_value(slider_option["min"].to_int());
-			slider->set_step_size(slider_option["step"].to_int(1));
-			slider->set_value(data_map[widget_id].to_int());
+				slider->set_id(widget_id);
+				slider->set_maximum_value(slider_option["max"].to_int());
+				slider->set_minimum_value(slider_option["min"].to_int());
+				slider->set_step_size(slider_option["step"].to_int(1));
+				slider->set_value(data_map[widget_id].to_int());
 
-			connect_signal_notify_modified(*slider,
-				std::bind(&tmp_options_helper::update_options_data_map<tslider>, this, slider, visible_options_.back()));
+				connect_signal_notify_modified(*slider,
+					std::bind(&tmp_options_helper::update_options_data_map<tslider>, this, slider, visible_options_.back()));
 			} else if(opt.key == "entry") {
 				const config& text_entry_option = opt.cfg;
 
-			data.clear();
-			item.clear();
+				data.clear();
+				item.clear();
 
-			item["label"] = text_entry_option["name"];
-			data.emplace("text_entry_label", item);
+				item["label"] = text_entry_option["name"];
+				data.emplace("text_entry_label", item);
 
-			item["tooltip"] = text_entry_option["description"];
-			data.emplace("option_text_entry", item);
+				item["tooltip"] = text_entry_option["description"];
+				data.emplace("option_text_entry", item);
 
-			ttree_view_node& node = option_node.add_child("option_text_entry_node", data);
+				ttree_view_node& node = option_node.add_child("option_text_entry_node", data);
 
-			ttext_box* textbox = dynamic_cast<ttext_box*>(node.find("option_text_entry", true));
+				ttext_box* textbox = dynamic_cast<ttext_box*>(node.find("option_text_entry", true));
 
-			VALIDATE(textbox, missing_widget("option_text_entry"));
+				VALIDATE(textbox, missing_widget("option_text_entry"));
 
-			const std::string widget_id = text_entry_option["id"];
+				const std::string widget_id = text_entry_option["id"];
 
-			set_default_data_value(widget_id, text_entry_option);
+				set_default_data_value(widget_id, text_entry_option);
 
-			textbox->set_id(widget_id);
-			textbox->set_value(data_map[widget_id].str());
-			textbox->set_text_changed_callback(
-				std::bind(&tmp_options_helper::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
+				textbox->set_id(widget_id);
+				textbox->set_value(data_map[widget_id].str());
+				textbox->set_text_changed_callback(
+					std::bind(&tmp_options_helper::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
 			}
 		}
 
