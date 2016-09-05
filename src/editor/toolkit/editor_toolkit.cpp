@@ -104,7 +104,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
-	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
+	mouse_action_map::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		palette_manager_->active_palette().hide(true);
 		mouse_action_ = i->second;
@@ -122,7 +122,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 
 bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 {
-	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::const_iterator i = mouse_actions_.find(command);
+	mouse_action_map::const_iterator i = mouse_actions_.find(command);
 	return (i != mouse_actions_.end()) && (i->second == mouse_action_);
 }
 
