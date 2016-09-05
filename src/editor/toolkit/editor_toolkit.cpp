@@ -42,9 +42,6 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 editor_toolkit::~editor_toolkit()
 {
 	//TODO ask someone about that
-	//for (const mouse_action_map::value_type a : mouse_actions_) {
-	//	delete a.second;
-	//}
 	//delete palette_manager_.get();
 }
 
@@ -69,23 +66,23 @@ void editor_toolkit::init_sidebar(const config& game_config)
 void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 {
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
-		new mouse_action_paint(&brush_, key_, *palette_manager_->terrain_palette_.get())));
+		std::make_shared<mouse_action_paint>(&brush_, key_, *palette_manager_->terrain_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
-		new mouse_action_fill(key_, *palette_manager_->terrain_palette_.get())));
+		std::make_shared<mouse_action_fill>(key_, *palette_manager_->terrain_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
-		new mouse_action_select(&brush_, key_, *palette_manager_->empty_palette_.get())));
+		std::make_shared<mouse_action_select>(&brush_, key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
-		new mouse_action_starting_position(key_, *palette_manager_->location_palette_.get())));
+		std::make_shared<mouse_action_starting_position>(key_, *palette_manager_->location_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
-		new mouse_action_map_label(key_, *palette_manager_->empty_palette_.get())));
+		std::make_shared<mouse_action_map_label>(key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
-		new mouse_action_unit(key_, *palette_manager_->unit_palette_.get())));
+		std::make_shared<mouse_action_unit>(key_, *palette_manager_->unit_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_VILLAGE,
-			new mouse_action_village(key_, *palette_manager_->empty_palette_.get())));
+		std::make_shared<mouse_action_village>(key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_CLIPBOARD_PASTE,
-			new mouse_action_paste(cmanager.get_clipboard(), key_, *palette_manager_->empty_palette_.get())));
+		std::make_shared<mouse_action_paste>(cmanager.get_clipboard(), key_, *palette_manager_->empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_ITEM,
-			new mouse_action_item(key_, *palette_manager_->item_palette_.get())));
+		std::make_shared<mouse_action_item>(key_, *palette_manager_->item_palette_.get())));
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
@@ -97,7 +94,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 		}
 	}
 
-	mouse_action_ = (mouse_actions_.find(hotkey::HOTKEY_EDITOR_TOOL_PAINT))->second;
+	mouse_action_ = (mouse_actions_.find(hotkey::HOTKEY_EDITOR_TOOL_PAINT))->second.get();
 	set_mouseover_overlay();
 }
 
@@ -107,7 +104,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 	mouse_action_map::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		palette_manager_->active_palette().hide(true);
-		mouse_action_ = i->second;
+		mouse_action_ = i->second.get();
 		palette_manager_->adjust_size();
 
 		set_mouseover_overlay();
@@ -123,7 +120,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 {
 	mouse_action_map::const_iterator i = mouse_actions_.find(command);
-	return (i != mouse_actions_.end()) && (i->second == mouse_action_);
+	return (i != mouse_actions_.end()) && (i->second.get() == mouse_action_);
 }
 
 void editor_toolkit::update_mouse_action_highlights()

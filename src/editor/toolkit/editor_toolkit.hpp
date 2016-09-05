@@ -93,7 +93,7 @@ private:
 	mouse_action* mouse_action_;
 
 	/** The mouse actions */
-	typedef std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_action_map;
+	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action> > mouse_action_map;
 	mouse_action_map mouse_actions_;
 
 //Brush members
