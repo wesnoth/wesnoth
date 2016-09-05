@@ -40,7 +40,7 @@ function ca_attack_highxp:evaluation(cfg, data)
         if (unit.side == wesnoth.current.side) and (unit.attacks_left > 0) and (#unit.attacks > 0) then
             table.insert(units, unit)
 
-            local level = wesnoth.unit_types[unit.type].level
+            local level = unit.level
             if (level > max_unit_level) then
                 max_unit_level = level
             end
@@ -60,7 +60,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                 local ind_attackers, ind_other_units = {}, {}
                 for i_u,unit in ipairs(units) do
                     if (H.distance_between(enemy.x, enemy.y, unit.x, unit.y) <= unit.moves + 1) then
-                        if (wesnoth.unit_types[unit.type].level >= XP_to_levelup) then
+                        if (unit.level >= XP_to_levelup) then
                             potential_target = true
                             table.insert(ind_attackers, i_u)
                         else

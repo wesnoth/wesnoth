@@ -319,7 +319,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
                 local unit_in_way = wesnoth.get_unit(xa, ya)
                 local data = { x = xa, y = ya,
                     defender = enemy,
-                    defender_level = wesnoth.unit_types[enemy.type].level,
+                    defender_level = enemy.level,
                     unit_in_way = unit_in_way
                 }
                 table.insert(attacks, data)

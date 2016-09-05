@@ -37,7 +37,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         end
     end
 
-    if (leader.attacks_left == 0) or (not H.get_child(leader.__cfg, 'attack')) then return 0 end
+    if (leader.attacks_left == 0) or (#leader.attacks == 0) then return 0 end
 
     local excluded_enemies_map = LS.create()
 

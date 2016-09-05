@@ -111,7 +111,7 @@ function ca_assassin_move:execution(cfg, data)
         local zoc_active = (not is_skirmisher)
 
         if zoc_active then
-            local level = wesnoth.unit_types[enemy.type].level
+            local level = enemy.level
             if (level == 0) then zoc_active = false end
         end
 

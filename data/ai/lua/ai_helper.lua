@@ -736,12 +736,11 @@ end
 function ai_helper.get_units_with_attacks(filter)
     -- Using formula = '$this_unit.attacks_left > 0' is slow, this method is much faster
     -- Also need to check that units actually have attacks (as attacks_left > 0 with no attacks is possible)
-    -- The latter has to go through unit.__cfg which is slow, but there is no way around that, as far as I know
     local all_units = wesnoth.get_units(filter)
 
     local units = {}
     for _,unit in ipairs(all_units) do
-        if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) then
             table.insert(units, unit)
         end
     end

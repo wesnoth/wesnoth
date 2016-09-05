@@ -77,7 +77,7 @@ function ca_fast_combat:evaluation(cfg, data)
         local unit_info = FAU.get_unit_info(unit, data.gamedata)
         local unit_copy = FAU.get_unit_copy(unit.id, data.gamedata)
 
-        if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) then
             local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes })
 
             if (#attacks > 0) then
