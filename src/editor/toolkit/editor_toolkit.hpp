@@ -65,7 +65,8 @@ public:
 
 
 	/** Get the current mouse action */
-	mouse_action* get_mouse_action() { return mouse_action_; }
+	mouse_action& get_mouse_action() { return *mouse_action_; }
+	const mouse_action& get_mouse_action() const { return *mouse_action_; }
 	/** Get the current palette */
 	common_palette& get_palette();
 
@@ -93,7 +94,7 @@ private:
 //Tools
 
 	/** The current mouse action */
-	mouse_action* mouse_action_;
+	mouse_action* mouse_action_;  // Never null (outside the constructor).
 
 	/** The mouse actions */
 	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action> > mouse_action_map;

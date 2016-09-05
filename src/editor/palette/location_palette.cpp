@@ -249,7 +249,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	button_goto_.reset();
 	
 	button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
-		//static_cast<mouse_action_starting_position*>(toolkit_.get_mouse_action())-> ??
+		//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
 		map_location pos = disp_.get_map().special_location(selected_item_);
 		if (pos.valid()) {
 			disp_.scroll_to_tile(pos, display::WARP);

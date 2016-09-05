@@ -29,7 +29,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	: gui_(gui)
 	, key_(key)
 	, palette_manager_()
-	, mouse_action_(nullptr)
+	, mouse_action_(nullptr)  // Will be set before this constructor ends.
 	, mouse_actions_()
 	, brush_(nullptr)
 	, brushes_()
@@ -125,7 +125,7 @@ bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 
 common_palette& editor_toolkit::get_palette()
 {
-	return get_mouse_action()->get_palette();
+	return get_mouse_action().get_palette();
 }
 
 void editor_toolkit::update_mouse_action_highlights()
@@ -134,12 +134,12 @@ void editor_toolkit::update_mouse_action_highlights()
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 	map_location hex_clicked = gui_.hex_clicked_on(x,y);
-	get_mouse_action()->update_brush_highlights(gui_, hex_clicked);
+	get_mouse_action().update_brush_highlights(gui_, hex_clicked);
 }
 
 void editor_toolkit::set_mouseover_overlay(editor_display& gui)
 {
-	mouse_action_->set_mouse_overlay(gui);
+	get_mouse_action().set_mouse_overlay(gui);
 }
 
 void editor_toolkit::clear_mouseover_overlay()

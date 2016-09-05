@@ -347,7 +347,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_BRUSH_3:
 		case HOTKEY_EDITOR_BRUSH_NW_SE:
 		case HOTKEY_EDITOR_BRUSH_SW_NE:
-			return toolkit_->get_mouse_action()->supports_brushes();
+			return get_mouse_action().supports_brushes();
 
 		case HOTKEY_EDITOR_TOOL_NEXT:
 			return true;
@@ -693,17 +693,17 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_ZOOM_IN:
 			gui_->set_zoom(zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_OUT:
 			gui_->set_zoom(-zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_DEFAULT:
 			gui_->set_default_zoom();
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 
 			//Palette
@@ -1248,10 +1248,10 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		editor_action* last_undo = context_manager_->get_map_context().last_undo_action();
 		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
-			a = toolkit_->get_mouse_action()->drag_left(*gui_, x, y, partial, last_undo);
+			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
 		} else if (dragging_right_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(3)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
-			a = toolkit_->get_mouse_action()->drag_right(*gui_, x, y, partial, last_undo);
+			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}
 		//Partial means that the mouse action has modified the
 		//last undo action and the controller shouldn't add
@@ -1266,7 +1266,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 			context_manager_->refresh_after_action(true);
 		}
 	} else {
-		toolkit_->get_mouse_action()->move(*gui_, hex_clicked);
+		get_mouse_action().move(*gui_, hex_clicked);
 	}
 	gui().highlight_hex(hex_clicked);
 }
@@ -1278,7 +1278,7 @@ bool editor_controller::allow_mouse_wheel_scroll(int x, int y)
 
 bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	return toolkit_->get_mouse_action()->has_context_menu();
+	return get_mouse_action().has_context_menu();
 }
 
 bool editor_controller::left_click(int x, int y, const bool browse)
@@ -1293,7 +1293,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		return true;
 
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
-	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
+	editor_action* a = get_mouse_action().click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state();
 
@@ -1302,13 +1302,13 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 
 void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->drag_end_left(*gui_, x, y);
+	editor_action* a = get_mouse_action().drag_end_left(*gui_, x, y);
 	perform_delete(a);
 }
 
 void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
+	editor_action* a = get_mouse_action().up_left(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
@@ -1316,7 +1316,7 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	if (s && s->value_change()) {
 		if (gui_->set_zoom(s->value(), true)) {
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			set_button_state();
 		}
 	}
@@ -1331,7 +1331,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
-	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
+	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state();
 	return false;
@@ -1339,13 +1339,13 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 
 void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->drag_end_right(*gui_, x, y);
+	editor_action* a = get_mouse_action().drag_end_right(*gui_, x, y);
 	perform_delete(a);
 }
 
 void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
+	editor_action* a = get_mouse_action().up_right(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
@@ -1364,7 +1364,7 @@ void editor_controller::terrain_description()
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
 {
-	editor_action* a = toolkit_->get_mouse_action()->key_event(gui(), event);
+	editor_action* a = get_mouse_action().key_event(gui(), event);
 	perform_refresh_delete(a);
 	toolkit_->set_mouseover_overlay();
 }
