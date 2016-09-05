@@ -94,7 +94,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 		}
 	}
 
-	mouse_action_ = (mouse_actions_.find(hotkey::HOTKEY_EDITOR_TOOL_PAINT))->second.get();
+	mouse_action_ = (mouse_actions_.find(hotkey::HOTKEY_EDITOR_TOOL_PAINT))->second;
 	set_mouseover_overlay();
 }
 
@@ -104,7 +104,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 	mouse_action_map::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		palette_manager_->active_palette().hide(true);
-		mouse_action_ = i->second.get();
+		mouse_action_ = i->second;
 		palette_manager_->adjust_size();
 
 		set_mouseover_overlay();
@@ -120,7 +120,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 {
 	mouse_action_map::const_iterator i = mouse_actions_.find(command);
-	return (i != mouse_actions_.end()) && (i->second.get() == mouse_action_);
+	return (i != mouse_actions_.end()) && (i->second == mouse_action_);
 }
 
 common_palette& editor_toolkit::get_palette()

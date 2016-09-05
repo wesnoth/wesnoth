@@ -95,7 +95,7 @@ private:
 //Tools
 
 	/** The current mouse action */
-	mouse_action* mouse_action_;  // Never null (outside the constructor).
+	std::shared_ptr<mouse_action> mouse_action_;  // Never null (outside the constructor).
 
 	/** The mouse actions */
 	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action> > mouse_action_map;
