@@ -17,9 +17,8 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/widget.hpp"
-#include "utils/iterable_pair.hpp"
 
-#include <vector>
+#include <map>
 #include "utils/functional.hpp"
 
 namespace gui2
@@ -29,32 +28,30 @@ template <class T>
 class tgroup
 {
 public:
-	typedef typename std::pair<tselectable_*, T> group_type;
-	typedef typename std::vector<group_type>     group_list;
-	typedef typename group_list::iterator        group_iterator;
-	typedef typename group_list::const_iterator  group_iterator_const;
+	typedef typename std::map<T, tselectable_*>  group_map;
+	typedef typename group_map::iterator         group_iterator;
+	typedef typename group_map::const_iterator   group_iterator_const;
 
 	/**
-	 * Adds a widget/value pair to the group vector. A callback is set
+	 * Adds a widget/value pair to the group map. A callback is set
 	 * that sets all members' toggle states to false when clicked. This
 	 * happens before individual widget handlers fire, meaning that the
 	 * clicked widget will remain the only one selected.
 	 */
 	void add_member(tselectable_* widget, const T& value)
 	{
-		members_.push_back(std::make_pair(widget, value));
+		members_.emplace(value, widget);
 
 		dynamic_cast<twidget*>(widget)->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&tgroup::group_operator, this), event::tdispatcher::front_child);
 	}
 
 	/**
-	 * Removes a member from the group vector.
+	 * Removes a member from the group map.
 	 */
-	void remove_member(tselectable_* widget)
+	void remove_member(const T& value)
 	{
-		members_.erase(std::find_if(members_.begin(), members_.end(),
-			[&widget](const group_type& member){ return member.first == widget; }));
+		members_.erase(value);
 	}
 
 	/**
@@ -68,25 +65,25 @@ public:
 	/**
 	 * Group member getters
 	 */
-	std::pair<group_iterator, group_iterator> members()
+	group_map& members()
 	{
-		return std::make_pair(members_.begin(), members_.end());
+		return members_;
 	}
 
-	std::pair<group_iterator_const, group_iterator_const> members() const
+	const group_map& members() const
 	{
-		return std::make_pair(members_.begin(), members_.end());
+		return members_;
 	}
 
 	/**
-	 * Returns the value paired with the currently activiely toggled member
+	 * Returns the value paired with the currently actively toggled member
 	 * of the group.
 	 */
 	T get_active_member_value()
 	{
-		for(auto& member : members()) {
-			if(member.first->get_value_bool()) {
-				return member.second;
+		for(auto& member : members_) {
+			if(member.second->get_value_bool()) {
+				return member.first;
 			}
 		}
 
@@ -99,8 +96,8 @@ public:
 	 */
 	void set_member_states(const T& value)
 	{
-		for(auto& member : members()) {
-			member.first->set_value(member.second == value);
+		for(auto& member : members_) {
+			member.second->set_value(member.first == value);
 		}
 	}
 
@@ -116,13 +113,13 @@ public:
 			}
 		};
 
-		for(auto& member : members()) {
-			member.first->set_callback_state_change(callback);
+		for(auto& member : members_) {
+			member.second->set_callback_state_change(callback);
 		}
 	}
 
 private:
-	group_list members_;
+	group_map members_;
 
 	/**
 	 * The default actions to take when clicking on one of the widgets
@@ -130,8 +127,8 @@ private:
 	 */
 	void group_operator()
 	{
-		for(auto& member : members()) {
-			member.first->set_value(false);
+		for(auto& member : members_) {
+			member.second->set_value(false);
 		}
 	}
 };
