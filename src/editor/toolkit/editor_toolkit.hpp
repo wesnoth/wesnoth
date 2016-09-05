@@ -66,6 +66,7 @@ public:
 
 	/** Get the current mouse action */
 	mouse_action& get_mouse_action() { return *mouse_action_; }
+	/** Get the current mouse action */
 	const mouse_action& get_mouse_action() const { return *mouse_action_; }
 	/** Get the current palette */
 	common_palette& get_palette();
