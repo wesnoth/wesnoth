@@ -173,7 +173,9 @@ class editor_controller : public controller_base,
 		editor_display& get_display() override { return *gui_; }
 
 		/** Get the current mouse action */
-		mouse_action& get_mouse_action() const { return toolkit_->get_mouse_action(); }
+		const mouse_action& get_mouse_action() const { return toolkit_->get_mouse_action(); }
+		/** Get the current mouse action */
+		mouse_action& get_mouse_action() { return toolkit_->get_mouse_action(); }
 
 		/**
 		 * Perform an action, then delete the action object.

@@ -121,7 +121,7 @@ public:
 	common_palette& get_palette() { return palette_; }
 
 	/** Whether we need the brush bar, is used to grey it out.*/
-	virtual bool supports_brushes() { return false; }
+	virtual bool supports_brushes() const { return false; }
 
 	/**
 	 * Set the mouse overlay for this action. Defaults to an empty overlay.
@@ -281,7 +281,7 @@ public:
 
 	void set_mouse_overlay(editor_display& disp);
 
-	bool supports_brushes() { return true; }
+	virtual bool supports_brushes() const override { return true; }
 
 protected:
 
@@ -302,7 +302,7 @@ public:
 	{
 	}
 
-	bool has_context_menu() const;
+	virtual bool has_context_menu() const override;
 
 	/**
 	 * Show an outline of where the paste will go
