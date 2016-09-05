@@ -547,7 +547,6 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/settings.cpp
 	gui/widgets/slider.cpp
 	gui/widgets/spacer.cpp
-	gui/widgets/status_label_helper.cpp
 	gui/widgets/stacked_widget.cpp
 	gui/widgets/text.cpp
 	gui/widgets/text_box.cpp

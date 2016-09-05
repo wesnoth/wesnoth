@@ -33,10 +33,6 @@ static int min_size = 20;
 
 REGISTER_DIALOG(generator_settings)
 
-static const auto landform_label = [](tslider& s)->std::string {
-	return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island"));
-};
-
 tgenerator_settings::tgenerator_settings(generator_data& data)
 	: players_(register_integer("players", true, data.nplayers))
 	, width_(register_integer("width",     true, data.width))
@@ -68,7 +64,8 @@ void tgenerator_settings::pre_show(twindow& window)
 
 	gui2::bind_status_label<tslider>(window, "villages", [](tslider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
 	gui2::bind_status_label<tslider>(window, "castle_size");
-	gui2::bind_status_label<tslider>(window, "landform", [](tslider& s)->std::string { return landform_label(s); });
+	gui2::bind_status_label<tslider>(window, "landform", [](tslider& s)->std::string {
+		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
 void tgenerator_settings::adjust_minimum_size_by_players(twindow& window)

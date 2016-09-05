@@ -33,7 +33,7 @@ template<typename W>
 std::function<void()> bind_status_label(twindow& window, const std::string& id,
 		std::function<std::string(W&)> value_getter = [](W& w)->std::string { return std::to_string(w.get_value()); })
 {
-    W& source = find_widget<W>(&window, id, false);
+	W& source = find_widget<W>(&window, id, false);
 	tcontrol& label = find_widget<tcontrol>(&window, id + "_label", false);
 
 	const auto update_label = [&, value_getter]() {
