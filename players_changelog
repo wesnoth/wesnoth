@@ -3,6 +3,10 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
 Version 1.13.5+dev:
+ * AI:
+   * Added new high_xp_attack candidate action to default AI. This CA performs
+     attacks on enemy units so close to leveling that the default AI's combat CA
+     would not attack them.
  * Campaigns:
    * Delfador's Memoirs:
      * S9: Resolved inability to end level even when Delfador has the Staff (bug #24951)
