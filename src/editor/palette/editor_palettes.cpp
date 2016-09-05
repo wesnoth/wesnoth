@@ -23,7 +23,7 @@
 #include "filesystem.hpp"
 #include "units/types.hpp"
 
-#include "editor/action/mouse/mouse_action.hpp"
+#include "editor/toolkit/editor_toolkit.hpp"
 
 #include "wml_separators.hpp"
 
@@ -306,8 +306,7 @@ template bool editor_palette<overlay>::is_selected_bg_item(const std::string& id
 template<class Item>
 void editor_palette<Item>::draw_contents()
 {
-	if (*active_mouse_action_)
-		(*active_mouse_action_)->set_mouse_overlay(gui_);
+	toolkit_.set_mouseover_overlay(gui_);
 
 	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button) {

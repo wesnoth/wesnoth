@@ -204,9 +204,9 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 }
 
 terrain_palette::terrain_palette(editor_display &gui, const config& cfg,
-								 mouse_action** active_mouse_action)
+                                 editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<t_translation::t_terrain>(gui, cfg, 36, 4, active_mouse_action)
+	:	editor_palette<t_translation::t_terrain>(gui, cfg, 36, 4, toolkit)
 {
 }
 

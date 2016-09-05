@@ -23,11 +23,14 @@ class location_palette_button;
 
 namespace editor {
 
+class editor_toolkit;
+
 class location_palette : public common_palette {
 
 public:
 
-	location_palette(editor_display &gui, const config& /*cfg*/, mouse_action** active_mouse_action);
+	location_palette(editor_display &gui, const config& /*cfg*/,
+	                 editor_toolkit &toolkit);
 
 
 	virtual sdl_handler_vector handler_members() override;
@@ -109,7 +112,7 @@ protected:
 private:
 	std::string selected_item_;
 	std::vector<std::string> items_;
-    mouse_action** active_mouse_action_;
+	editor_toolkit& toolkit_;
 	boost::ptr_vector<location_palette_item> buttons_;
 	std::unique_ptr<location_palette_button> button_add_;
 	std::unique_ptr<location_palette_button> button_delete_;

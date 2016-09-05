@@ -49,7 +49,8 @@ private:
 	void init_mouse_actions(context_manager& c_manager);
 
 public:
-	void set_mouseover_overlay();
+	void set_mouseover_overlay(editor_display& gui);
+	void set_mouseover_overlay() { set_mouseover_overlay(gui_); }
 	void clear_mouseover_overlay();
 
 	/**
@@ -65,6 +66,8 @@ public:
 
 	/** Get the current mouse action */
 	mouse_action* get_mouse_action() { return mouse_action_; }
+	/** Get the current palette */
+	common_palette& get_palette();
 
 // Brush related methods
 

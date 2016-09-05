@@ -20,7 +20,7 @@
 #include "marked-up_text.hpp"
 #include "tooltips.hpp"
 
-#include "editor/action/mouse/mouse_action.hpp"
+#include "editor/toolkit/editor_toolkit.hpp"
 #include "gui/dialogs/edit_text.hpp"
 
 #include "wml_separators.hpp"
@@ -150,7 +150,8 @@ protected:
 
 };
 namespace editor {
-location_palette::location_palette(editor_display &gui, const config& /*cfg*/, mouse_action** active_mouse_action)
+location_palette::location_palette(editor_display &gui, const config& /*cfg*/,
+                                   editor_toolkit &toolkit)
 		: common_palette(gui)
 		, gui_(gui)
 		, item_size_(20)
@@ -161,7 +162,7 @@ location_palette::location_palette(editor_display &gui, const config& /*cfg*/, m
 		, items_start_(0)
 		, selected_item_()
 		, items_()
-		, active_mouse_action_(active_mouse_action)
+		, toolkit_(toolkit)
 		, buttons_()
 		, button_add_()
 		, button_delete_()
@@ -248,7 +249,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	button_goto_.reset();
 	
 	button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
-		//static_cast<mouse_action_starting_position&>(**active_mouse_action_).
+		//static_cast<mouse_action_starting_position*>(toolkit_.get_mouse_action())-> ??
 		map_location pos = disp_.get_map().special_location(selected_item_);
 		if (pos.valid()) {
 			disp_.scroll_to_tile(pos, display::WARP);
@@ -302,8 +303,7 @@ bool location_palette::is_selected_item(const std::string& id)
 
 void location_palette::draw_contents()
 {
-	if (*active_mouse_action_)
-		(*active_mouse_action_)->set_mouse_overlay(gui_);
+	toolkit_.set_mouseover_overlay(gui_);
 	int y = palette_y_;
 	const int x = palette_x_;
 	const int starting = items_start_;
@@ -331,7 +331,7 @@ void location_palette::draw_contents()
 		tile.hide(true);
 
 		if (i >= ending) {
-			//We want to hide all follwing buttons to we cannot use break here.
+			//We want to hide all following buttons so we cannot use break here.
 			continue;
 		}
 

@@ -86,9 +86,9 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 }
 
 item_palette::item_palette(editor_display &gui, const config& cfg,
-								 mouse_action** active_mouse_action)
+                           editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<overlay>(gui, cfg, 36, 4, active_mouse_action)
+	:	editor_palette<overlay>(gui, cfg, 36, 4, toolkit)
 {
 }
 

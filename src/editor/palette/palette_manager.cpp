@@ -18,21 +18,21 @@
 #include "widgets/widget.hpp"
 
 #include "tooltips.hpp"
-#include "editor/action/mouse/mouse_action.hpp"
+#include "editor/toolkit/editor_toolkit.hpp"
 
 namespace editor {
 
 palette_manager::palette_manager(editor_display& gui, const config& cfg
-		, mouse_action** active_mouse_action)
+                               , editor_toolkit& toolkit)
 		: gui::widget(gui.video()),
 		  gui_(gui),
 		  palette_start_(0),
-		  mouse_action_(active_mouse_action),
-		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
-		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
+		  toolkit_(toolkit),
+		  terrain_palette_(new terrain_palette(gui, cfg, toolkit)),
+		  unit_palette_(new unit_palette(gui, cfg, toolkit)),
 		  empty_palette_(new empty_palette(gui)),
-		  item_palette_(new item_palette(gui, cfg, active_mouse_action))
-		, location_palette_(new location_palette(gui, cfg, active_mouse_action))
+		  item_palette_(new item_palette(gui, cfg, toolkit))
+		, location_palette_(new location_palette(gui, cfg, toolkit))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
@@ -107,7 +107,7 @@ void palette_manager::resrote_palete_bg(bool scroll_top)
 
 common_palette& palette_manager::active_palette()
 {
-	return (*mouse_action_)->get_palette();
+	return toolkit_.get_palette();
 }
 
 void palette_manager::scroll_bottom()

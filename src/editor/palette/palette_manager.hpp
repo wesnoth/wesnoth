@@ -29,13 +29,15 @@
 
 namespace editor {
 
+class editor_toolkit;
+
 /** Empty palette */
 class palette_manager : public gui::widget {
 
 public:
 
 	palette_manager(editor_display &gui, const config& cfg
-				, mouse_action** active_mouse_action);
+	              , editor_toolkit &toolkit);
 
 	void set_group(size_t index);
 
@@ -76,7 +78,7 @@ private:
 
 	editor_display& gui_;
 	int palette_start_;
-	mouse_action** mouse_action_;
+	editor_toolkit& toolkit_;
 
 public:
 

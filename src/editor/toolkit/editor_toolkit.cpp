@@ -60,7 +60,7 @@ void editor_toolkit::init_brushes(const config& game_config)
 
 void editor_toolkit::init_sidebar(const config& game_config)
 {
-	palette_manager_.reset(new palette_manager(gui_, game_config, &mouse_action_));
+	palette_manager_.reset(new palette_manager(gui_, game_config, *this));
 }
 
 void editor_toolkit::init_mouse_actions(context_manager& cmanager)
@@ -123,6 +123,11 @@ bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 	return (i != mouse_actions_.end()) && (i->second.get() == mouse_action_);
 }
 
+common_palette& editor_toolkit::get_palette()
+{
+	return get_mouse_action()->get_palette();
+}
+
 void editor_toolkit::update_mouse_action_highlights()
 {
 	DBG_ED << __func__ << "\n";
@@ -132,9 +137,9 @@ void editor_toolkit::update_mouse_action_highlights()
 	get_mouse_action()->update_brush_highlights(gui_, hex_clicked);
 }
 
-void editor_toolkit::set_mouseover_overlay()
+void editor_toolkit::set_mouseover_overlay(editor_display& gui)
 {
-	mouse_action_->set_mouse_overlay(gui_);
+	mouse_action_->set_mouse_overlay(gui);
 }
 
 void editor_toolkit::clear_mouseover_overlay()

@@ -20,13 +20,16 @@
 #include "tristate_button.hpp"
 
 namespace editor {
+
+class editor_toolkit;
+
 template<class Item>
 class editor_palette : public tristate_palette {
 
 public:
 
 	editor_palette(editor_display &gui, const config& /*cfg*/
-			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
+	             , size_t item_size, size_t item_width, editor_toolkit &toolkit)
 		: tristate_palette(gui)
 		, groups_()
 		, gui_(gui)
@@ -45,7 +48,7 @@ public:
 		, active_group_()
 		, selected_fg_item_()
 		, selected_bg_item_()
-		, active_mouse_action_(active_mouse_action)
+		, toolkit_(toolkit)
 		, buttons_()
 		, help_handle_(-1)
 	{
@@ -183,7 +186,7 @@ private:
 	std::string selected_fg_item_;
 	std::string selected_bg_item_;
 
-    mouse_action** active_mouse_action_;
+    editor_toolkit& toolkit_;
     std::vector<gui::tristate_button> buttons_;
 
     int help_handle_;
