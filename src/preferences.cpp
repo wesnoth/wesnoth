@@ -468,6 +468,16 @@ void set_language(const std::string& s)
 	preferences::set("locale", s);
 }
 
+std::string gui_theme()
+{
+	return prefs["gui2_theme"];
+}
+
+void set_gui_theme(const std::string& s)
+{
+	preferences::set("gui2_theme", s);
+}
+
 bool ellipses()
 {
 	return get("show_side_colors", false);

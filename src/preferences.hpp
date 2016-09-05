@@ -101,6 +101,9 @@ namespace preferences {
 	std::string language();
 	void set_language(const std::string& s);
 
+	std::string gui_theme();
+	void set_gui_theme(const std::string& s);
+
 	// Don't rename it to sound() because of a gcc-3.3 branch bug,
 	// which will cause it to conflict with the sound namespace.
 	bool sound_on();
