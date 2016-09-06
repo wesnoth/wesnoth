@@ -22,19 +22,22 @@
 namespace gui2 {
 
 /**
- * Creates a bound status label that will reflect the state of a widget. The initial label value
- * is set here, and then again any time the widget is modified. A function is also returned that
- * can be called to update the field manually.
+ * Creates a bound status label that will reflect the label state of a widget. The initial label
+ * value is set here, and then again any time the widget is modified. A function is also returned
+ * that can be called to update the label manually.
  *
- * Currently, it only works on types that have a get_value() member and fire a MODIFIED event,
- * but could be changed in the future.
+ * This relies on hooking into the NOTIFY_MODIFIED event, so can only be used with widgets that fire
+ * that event.
  */
 template<typename W>
-std::function<void()> bind_status_label(twindow& window, const std::string& id,
-		std::function<std::string(W&)> value_getter = [](W& w)->std::string { return std::to_string(w.get_value()); })
+std::function<void()> bind_status_label(twidget& find_in, const std::string& id,
+		const std::function<std::string(W&)> value_getter = [](W& w)->std::string { return std::to_string(w.get_value()); },
+		const std::string& label_id = "")
 {
-	W& source = find_widget<W>(&window, id, false);
-	tcontrol& label = find_widget<tcontrol>(&window, id + "_label", false);
+	const std::string label_id_ = label_id.empty() ? id + "_label" : label_id;
+
+	W& source = find_widget<W>(&find_in, id, false);
+	tcontrol& label = find_widget<tcontrol>(&find_in, label_id_, false);
 
 	const auto update_label = [&, value_getter]() {
 		const std::string value = value_getter(source);
