@@ -164,12 +164,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 			assert(threats.empty() == false);
 
-#ifdef SUOKKO
-			//FIXME: suokko's revision 29531 included this change.  Correct?
-			const double value = threat*get_protect_leader()/leader->second.hitpoints();
-#else
 			const double value = threat/double(threats.size());
-#endif
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
 				targets.push_back(target(*i,value,target::TYPE::THREAT));

@@ -310,30 +310,13 @@ void aspect_attacks_base::do_attack_analysis(
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
-#ifdef SUOKKO
-			//FIXME: this code was in sukko's r29531  Correct?
-			// scale vulnerability to 60 hp unit
-			if(cur_position >= 0 && rating < best_rating
-					&& (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints() -
-						(support*surround_bonus*30.0)/unit_itor->second.max_hitpoints()
-						> best_vulnerability - best_support) {
-				continue;
-			}
-#else
 			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
 				continue;
 			}
-#endif
 			cur_position = j;
 			best_rating = rating;
-#ifdef SUOKKO
-			//FIXME: this code was in sukko's r29531  Correct?
-			best_vulnerability = (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints();
-			best_support = (support*surround_bonus*30.0)/unit_itor->second.max_hitpoints();
-#else
 			best_vulnerability = vulnerability/surround_bonus;
 			best_support = support*surround_bonus;
-#endif
 		}
 
 		if(cur_position != -1) {
