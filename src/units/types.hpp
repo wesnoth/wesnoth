@@ -198,7 +198,7 @@ public:
 	/// The returned vector will not be empty, provided this has been built
 	/// to the HELP_INDEXED status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
-	const bool has_gender_variation(unit_race::GENDER gender) const
+	bool has_gender_variation(unit_race::GENDER gender) const
 	{
 		return std::find(genders_.begin(), genders_.end(), gender) != genders_.end();
 	}
