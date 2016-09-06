@@ -76,6 +76,12 @@ public:
 		return members_;
 	}
 
+	template<typename W>
+	W& member(const T& value)
+	{
+		return dynamic_cast<W&>(*members_.at(value));
+	}
+
 	/**
 	 * Returns the value paired with the currently actively toggled member
 	 * of the group.
