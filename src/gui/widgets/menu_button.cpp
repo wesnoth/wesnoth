@@ -148,6 +148,7 @@ void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 	if(droplist.show(get_window()->video())) {
 		selected_ = droplist.selected_item();
 		this->set_label(values_[selected_]["label"]);
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		if(selected_callback_) {
 			selected_callback_(*this);
 		}

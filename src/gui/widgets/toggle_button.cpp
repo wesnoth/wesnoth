@@ -170,6 +170,8 @@ void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
 
 	set_value(get_value() + 1);
 
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	if(callback_state_change_) {
 		callback_state_change_(*this);
 	}

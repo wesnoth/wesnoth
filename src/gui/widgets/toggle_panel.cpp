@@ -258,6 +258,9 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
 	 *
 	 * 2014.06.09 -- Mordante
 	 */
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	if(callback_state_change_) {
 		callback_state_change_(*this);
 	}
@@ -272,6 +275,8 @@ void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
 	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
 	set_value(get_value() + 1);
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);

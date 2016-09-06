@@ -603,6 +603,8 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 	unfolded_ = unfolded_new;
 	is_folded() ? fold_internal() : unfold_internal();
 
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	if(callback_state_change_) {
 		callback_state_change_(*this);
 	}
