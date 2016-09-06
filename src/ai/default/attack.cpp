@@ -304,7 +304,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
                }
         }
 
-	if(!leader_threat && vulnerability*terrain_quality > 0.0  && !is_surrounded) {
+	if(!leader_threat && vulnerability*terrain_quality > 0.0 && support != 0) {
 		value *= support/(vulnerability*terrain_quality);
 	}
 
