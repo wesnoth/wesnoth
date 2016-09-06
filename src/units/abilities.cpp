@@ -17,6 +17,7 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "display_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
@@ -126,10 +127,8 @@ bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side
 }
 
 
-bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
+bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc, const display_context& dc) const
 {
-	assert(resources::gameboard);
-
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
 			ability_affects_self(tag_name, i, loc))
@@ -153,7 +152,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
+			if (affects_side(j, dc.teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
 			{

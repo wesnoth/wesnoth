@@ -89,6 +89,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_set_side_variable(lua_State *L);
 	int intf_highlight_hex(lua_State *L);
 	int intf_is_enemy(lua_State *L);
+	int intf_unit_ability(lua_State *L);
 	int intf_view_locked(lua_State *L);
 	int intf_lock_view(lua_State *L);
 	int intf_get_terrain(lua_State *L);

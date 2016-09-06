@@ -401,7 +401,7 @@ static void find_routes(
 
 				if ( skirmisher  &&  next.moves_left > 0  &&
 				     enemy_zoc(*current_team, next_hex, *viewing_team, see_all)  &&
-				     !skirmisher->get_ability_bool("skirmisher", next_hex) ) {
+				     !skirmisher->get_ability_bool("skirmisher", next_hex, *resources::gameboard) ) {
 					next.moves_left = 0;
 				}
 			}
@@ -656,7 +656,7 @@ marked_route mark_route(const plain_route &rt)
 
 			++turns;
 
-			bool invisible = u.invisible(*i,false);
+			bool invisible = u.invisible(*i, *resources::gameboard, false);
 
 			res.marks[*i] = marked_route::mark(turns, zoc, capture, invisible);
 
@@ -669,7 +669,7 @@ marked_route mark_route(const plain_route &rt)
 		}
 
 		zoc = enemy_zoc(unit_team, *(i + 1), viewing_team)
-					&& !u.get_ability_bool("skirmisher", *(i+1));
+					&& !u.get_ability_bool("skirmisher", *(i+1), *resources::gameboard);
 
 		if (zoc) {
 			movement = 0;
@@ -752,7 +752,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	// check ZoC
 	if (!ignore_unit_ && remaining_movement != terrain_cost
 	    && enemy_zoc(teams_[unit_.side()-1], loc, viewing_team_, see_all_)
-			&& !unit_.get_ability_bool("skirmisher", loc)) {
+			&& !unit_.get_ability_bool("skirmisher", loc, *resources::gameboard)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;
 	} else {

@@ -76,7 +76,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 	std::string ellipse=u.image_ellipse();
 
-	if ( hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref,map, show_everything) )
+	if ( hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, dc, show_everything) )
 	{
 		ac.clear_haloes();
 		if(ac.anim_) {
@@ -102,7 +102,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
 	params.submerge= is_flying ? -1.0 : terrain_info.unit_submerge();
 
-	if (u.invisible(loc) &&
+	if (u.invisible(loc, dc) &&
 			params.highlight_ratio > 0.5) {
 		params.highlight_ratio = 0.5;
 	}
