@@ -31,7 +31,7 @@ namespace lua_unit_type {
 
 /// Create a lua object containing a reference to a unittype, and a
 /// metatable to access the properties.
-void luaW_pushunittype(lua_State *, const unit_type*);
+void luaW_pushunittype(lua_State *, const unit_type&);
 
 /// Test if a stack element is a unit type, and return it if so
 const unit_type* luaW_tounittype(lua_State*, int);

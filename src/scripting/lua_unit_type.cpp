@@ -110,8 +110,11 @@ static int impl_unit_type_lookup(lua_State* L)
 	} else {
 		ut = unit_types.find(id);
 	}
-	luaW_pushunittype(L, ut);
-	return 1;
+	if(ut) {
+		luaW_pushunittype(L, *ut);
+		return 1;
+	}
+	return 0;
 }
 
 static int impl_unit_type_new(lua_State* L)
@@ -143,7 +146,7 @@ static int impl_unit_type_next(lua_State* L)
 		return 0;
 	}
 	lua_pushlstring(L, it->first.c_str(), it->first.size());
-	luaW_pushunittype(L, &it->second);
+	luaW_pushunittype(L, it->second);
 	return 2;
 }
 
@@ -190,9 +193,9 @@ namespace lua_unit_type {
 	}
 }
 
-void luaW_pushunittype(lua_State *L, const unit_type* ut)
+void luaW_pushunittype(lua_State *L, const unit_type& ut)
 {
-	*static_cast<const unit_type**>(lua_newuserdata(L, sizeof(unit_type*))) = ut;
+	*static_cast<const unit_type**>(lua_newuserdata(L, sizeof(unit_type*))) = &ut;
 	luaL_setmetatable(L, UnitType);
 }
 
