@@ -839,7 +839,6 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 		saved_game state_copy(state);
 		campaign_controller controller(video, state_copy, game_config, game_config_manager::get()->terrain_types());
 		controller.play_game();
-		break;
 	}
 }
 

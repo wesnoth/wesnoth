@@ -108,7 +108,7 @@ bool lua_unit::put_map(const map_location &loc)
 
 bool luaW_isunit(lua_State* L, int index)
 {
-	return luaL_testudata(L, index,getunitKey);
+	return luaL_testudata(L, index,getunitKey) != nullptr;
 }
 
 enum {

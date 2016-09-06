@@ -335,7 +335,10 @@ void lobby_info::apply_game_filter()
 
 		bool show = true;
 		for(const auto& filter_func : game_filters_) {
-			if(!(show = filter_func(gi))) break;
+			show = filter_func(gi);
+			if(!show) {
+				break;
+			}
 		}
 
 		if(game_filter_invert_) {

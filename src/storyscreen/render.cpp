@@ -765,8 +765,8 @@ void part_ui::render_story_box()
 	last_key_ = true;
 	font::ttext t;
 	bool scan_finished = false;
-	SDL_Rect scan;
-	SDL_Rect dstrect;
+	SDL_Rect scan = {0};
+	SDL_Rect dstrect = {0};
 
 
 	while(true) {

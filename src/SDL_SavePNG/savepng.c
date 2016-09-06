@@ -9,8 +9,6 @@
 
 #include "savepng.h"
 
-#pragma GCC diagnostic ignored "-Wold-style-cast"
-
 #define SAVEPNG_SUCCESS 0
 #define SAVEPNG_ERROR -1
 
@@ -28,16 +26,17 @@
 #define amask 0xFF000000
 #endif
 
-#include <cstdlib>
+#include <stdlib.h>
 
 /* libpng callbacks */
-static void png_error_SDL(png_structp /*ctx*/, png_const_charp str)
+static void png_error_SDL(png_structp ctx, png_const_charp str)
 {
+	(void) ctx; // Unused
 	SDL_SetError("libpng: %s\n", str);
 }
 static void png_write_SDL(png_structp png_ptr, png_bytep data, png_size_t length)
 {
-	SDL_RWops *rw = static_cast<SDL_RWops*>(png_get_io_ptr(png_ptr));
+	SDL_RWops *rw = (SDL_RWops*)(png_get_io_ptr(png_ptr));
 	SDL_RWwrite(rw, data, sizeof(png_byte), length);
 }
 
@@ -75,16 +74,16 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	/* Initialize and do basic error checking */
 	if (!dst)
 	{
-		SDL_SetError("Argument 2 to SDL_SavePNG_RW can't be nullptr, expecting SDL_RWops*\n");
+		SDL_SetError("Argument 2 to SDL_SavePNG_RW can't be NULL, expecting SDL_RWops*\n");
 		return (SAVEPNG_ERROR);
 	}
 	if (!surface)
 	{
-		SDL_SetError("Argument 1 to SDL_SavePNG_RW can't be nullptr, expecting SDL_Surface*\n");
+		SDL_SetError("Argument 1 to SDL_SavePNG_RW can't be NULL, expecting SDL_Surface*\n");
 		if (freedst) SDL_RWclose(dst);
 		return (SAVEPNG_ERROR);
 	}
-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, nullptr, png_error_SDL, nullptr); /* err_ptr, err_fn, warn_fn */
+	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, png_error_SDL, NULL); /* err_ptr, err_fn, warn_fn */
 	if (!png_ptr)
 	{
 		SDL_SetError("Unable to png_create_write_struct on %s\n", PNG_LIBPNG_VER_STRING);
@@ -95,7 +94,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	if (!info_ptr)
 	{
 		SDL_SetError("Unable to png_create_info_struct\n");
-		png_destroy_write_struct(&png_ptr, nullptr);
+		png_destroy_write_struct(&png_ptr, NULL);
 		if (freedst) SDL_RWclose(dst);
 		return (SAVEPNG_ERROR);
 	}
@@ -107,7 +106,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	}
 
 	/* Setup our RWops writer */
-	png_set_write_fn(png_ptr, dst, png_write_SDL, nullptr); /* w_ptr, write_fn, flush_fn */
+	png_set_write_fn(png_ptr, dst, png_write_SDL, NULL); /* w_ptr, write_fn, flush_fn */
 
 	/* Prepare chunks */
 	colortype = PNG_COLOR_MASK_COLOR;
@@ -116,7 +115,7 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	&& (pal = surface->format->palette))
 	{
 		colortype |= PNG_COLOR_MASK_PALETTE;
-		pal_ptr = static_cast<png_colorp>(malloc(pal->ncolors * sizeof(png_color)));
+		pal_ptr = (png_colorp)(malloc(pal->ncolors * sizeof(png_color)));
 		for (i = 0; i < pal->ncolors; i++) {
 			pal_ptr[i].red   = pal->colors[i].r;
 			pal_ptr[i].green = pal->colors[i].g;
@@ -142,9 +141,9 @@ int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst)
 	/* Write everything */
 	png_write_info(png_ptr, info_ptr);
 #ifdef USE_ROW_POINTERS
-	row_pointers = static_cast<png_bytep*> (malloc(sizeof(png_bytep)*surface->h));
+	row_pointers = (png_bytep*) (malloc(sizeof(png_bytep)*surface->h));
 	for (i = 0; i < surface->h; i++)
-		row_pointers[i] = static_cast<png_bytep>(static_cast<Uint8*>(surface->pixels)) + i * surface->pitch;
+		row_pointers[i] = ((png_bytep)surface->pixels) + i * surface->pitch;
 	png_write_image(png_ptr, row_pointers);
 	free(row_pointers);
 #else

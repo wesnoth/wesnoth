@@ -319,26 +319,26 @@ void tmp_create_game::pre_show(twindow& window)
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 	plugins_context_->set_callback("load",   [this, &window](const config&) { load_game_callback(window); }, false);
 
-#define UPDATE_ATTRIBUTE(field) \
-	if(cfg.has_attribute(#field)) { field##_->set_widget_value(window, cfg[#field]); } \
+#define UPDATE_ATTRIBUTE(field, convert) \
+	if(cfg.has_attribute(#field)) { field##_->set_widget_value(window, cfg[#field].convert()); } else \
 
 	plugins_context_->set_callback("update_settings", [this, &window](const config& cfg) {
-		UPDATE_ATTRIBUTE(turns);
-		UPDATE_ATTRIBUTE(gold);
-		UPDATE_ATTRIBUTE(support);
-		UPDATE_ATTRIBUTE(experience);
-		UPDATE_ATTRIBUTE(start_time);
-		UPDATE_ATTRIBUTE(fog);
-		UPDATE_ATTRIBUTE(shroud);
-		UPDATE_ATTRIBUTE(time_limit);
-		UPDATE_ATTRIBUTE(init_turn_limit);
-		UPDATE_ATTRIBUTE(turn_bonus);
-		UPDATE_ATTRIBUTE(reservior);
-		UPDATE_ATTRIBUTE(action_bonus);
-		UPDATE_ATTRIBUTE(observers);
-		UPDATE_ATTRIBUTE(registered_users);
-		UPDATE_ATTRIBUTE(strict_sync);
-		UPDATE_ATTRIBUTE(shuffle_sides);
+		UPDATE_ATTRIBUTE(turns, to_int);
+		UPDATE_ATTRIBUTE(gold, to_int);
+		UPDATE_ATTRIBUTE(support, to_int);
+		UPDATE_ATTRIBUTE(experience, to_int);
+		UPDATE_ATTRIBUTE(start_time, to_bool);
+		UPDATE_ATTRIBUTE(fog, to_bool);
+		UPDATE_ATTRIBUTE(shroud, to_bool);
+		UPDATE_ATTRIBUTE(time_limit, to_bool);
+		UPDATE_ATTRIBUTE(init_turn_limit, to_int);
+		UPDATE_ATTRIBUTE(turn_bonus, to_int);
+		UPDATE_ATTRIBUTE(reservior, to_int);
+		UPDATE_ATTRIBUTE(action_bonus, to_int);
+		UPDATE_ATTRIBUTE(observers, to_bool);
+		UPDATE_ATTRIBUTE(registered_users, to_bool);
+		UPDATE_ATTRIBUTE(strict_sync, to_bool);
+		UPDATE_ATTRIBUTE(shuffle_sides, to_bool);
 	}, true);
 
 #undef UPDATE_ATTRIBUTE

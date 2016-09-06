@@ -56,7 +56,7 @@ hotkey::hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id)
 			font::NORMAL_COLOR, text,
 			centerx - text_size.w / 2, centery - text_size.h / 2);
 	video.flip();
-	SDL_Event event;
+	SDL_Event event = {0};
 	event.type = 0;
 	int keycode = -1;
 

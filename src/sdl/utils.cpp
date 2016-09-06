@@ -75,7 +75,7 @@ SDL_Color int_to_color(const Uint32 rgb)
 
 SDL_Color string_to_color(const std::string& color_string)
 {
-	SDL_Color color;
+	SDL_Color color = {0};
 
 	std::vector<Uint32> temp_rgb;
 	if(string2rgb(color_string, temp_rgb) && !temp_rgb.empty()) {

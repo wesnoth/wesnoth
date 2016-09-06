@@ -401,10 +401,10 @@ int show_menu(lua_State* L, CVideo& video) {
 	bool markup = false;
 	if(lua_isnumber(L, 2)) {
 		initial = lua_tointeger(L, 2) - 1;
-		markup = lua_toboolean(L, 3);
+		markup = luaW_toboolean(L, 3);
 	} else if(lua_isnumber(L, 3)) {
 		initial = lua_tointeger(L, 3) - 1;
-		markup = lua_toboolean(L, 2);
+		markup = luaW_toboolean(L, 2);
 	}
 
 	gui2::tdrop_down_list menu(pos, items, initial, markup);

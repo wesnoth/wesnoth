@@ -127,7 +127,7 @@ public:
 	{
 		struct pointer_proxy;
 
-		typedef std::pair<std::string, vconfig> value_type;
+		typedef const std::pair<std::string, vconfig> value_type;
 		typedef std::bidirectional_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const pointer_proxy pointer;
@@ -195,13 +195,15 @@ private:
 struct vconfig::attribute_iterator::pointer_proxy
 {
 	value_type p;
-	const value_type *operator->() const { return &p; }
+	pointer_proxy(value_type p) : p(p) {}
+	value_type *operator->() const { return &p; }
 };
 
 struct vconfig::all_children_iterator::pointer_proxy
 {
 	value_type p;
-	const value_type *operator->() const { return &p; }
+	pointer_proxy(value_type p) : p(p) {}
+	value_type *operator->() const { return &p; }
 };
 
 
