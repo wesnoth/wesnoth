@@ -168,8 +168,8 @@ void tfaction_select::on_leader_select(twindow& window)
 	};
 
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
-	find_widget<ttoggle_button>(&window, "gender_male", false).set_active(gender_available(unit_race::s_male));
-	find_widget<ttoggle_button>(&window, "gender_female", false).set_active(gender_available(unit_race::s_female));
+	gender_toggle_.set_member_active(unit_race::s_male, gender_available(unit_race::s_male));
+	gender_toggle_.set_member_active(unit_race::s_female, gender_available(unit_race::s_female));
 
 	update_leader_image(window);
 }
