@@ -80,7 +80,9 @@
 		<Unit filename="../../packaging/windows/wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="../../src/SDL_SavePNG/savepng.cpp" />
+		<Unit filename="../../src/SDL_SavePNG/savepng.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../../src/SDL_SavePNG/savepng.h" />
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
