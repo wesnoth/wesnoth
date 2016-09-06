@@ -1088,7 +1088,7 @@
 		EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
 		EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */; };
 		EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
-		EC2F60221A04983B0018C9D6 /* savepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60211A04983B0018C9D6 /* savepng.cpp */; };
+		EC2F60221A04983B0018C9D6 /* savepng.c in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60211A04983B0018C9D6 /* savepng.c */; };
 		EC2F9A041A18112D00A14878 /* lua_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
 		EC349AAE1AE318B100A0767A /* mp_join_game_password_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC349AAD1AE318B100A0767A /* mp_join_game_password_prompt.cpp */; };
@@ -2442,7 +2442,7 @@
 		EC2F600C1A048E220018C9D6 /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singleplayer.cpp; sourceTree = "<group>"; };
 		EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = advanced_graphics_options.cpp; sourceTree = "<group>"; };
 		EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xbrz.cpp; sourceTree = "<group>"; };
-		EC2F60211A04983B0018C9D6 /* savepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = savepng.cpp; path = ../SDL_SavePNG/savepng.cpp; sourceTree = "<group>"; };
+		EC2F60211A04983B0018C9D6 /* savepng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = savepng.c; path = ../SDL_SavePNG/savepng.c; sourceTree = "<group>"; };
 		EC2F60231A04985A0018C9D6 /* savepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = savepng.h; path = ../SDL_SavePNG/savepng.h; sourceTree = "<group>"; };
 		EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_interpreter.cpp; sourceTree = "<group>"; };
 		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = theme_list.cpp; sourceTree = "<group>"; };
@@ -3551,7 +3551,7 @@
 				EC84247018F30DB700FC1EEF /* exception.hpp */,
 				ECFB9FAB193BFB6E00146ED0 /* rect.cpp */,
 				91B621F11B76BBC500B00E0F /* rect.hpp */,
-				EC2F60211A04983B0018C9D6 /* savepng.cpp */,
+				EC2F60211A04983B0018C9D6 /* savepng.c */,
 				EC2F60231A04985A0018C9D6 /* savepng.h */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
@@ -5106,7 +5106,7 @@
 				EC28C59119423529003B0F5E /* save_index.cpp in Sources */,
 				ECD39893194B830300CF2125 /* saved_game.cpp in Sources */,
 				B52EE8DB121359A600CFBDAB /* savegame.cpp in Sources */,
-				EC2F60221A04983B0018C9D6 /* savepng.cpp in Sources */,
+				EC2F60221A04983B0018C9D6 /* savepng.c in Sources */,
 				F480CD2414034F18007175D6 /* schema_validator.cpp in Sources */,
 				EC19E6F018B7F24B003B4B81 /* screenshot_notification.cpp in Sources */,
 				B5A9BD690ECA805A002BE442 /* scroll_label.cpp in Sources */,

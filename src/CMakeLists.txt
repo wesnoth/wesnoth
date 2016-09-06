@@ -406,7 +406,7 @@ set(wesnoth-sdl_SRC
 if(ENABLE_LIBPNG AND PNG_FOUND)
 	set(wesnoth-sdl_SRC
 		${wesnoth-sdl_SRC}
-		SDL_SavePNG/savepng.cpp
+		SDL_SavePNG/savepng.c
 	)
 endif(ENABLE_LIBPNG AND PNG_FOUND)
 
