@@ -90,13 +90,15 @@ tfield_bool* tdialog::register_bool(
 		const bool mandatory,
 		const std::function<bool()>& callback_load_value,
 		const std::function<void(const bool)>& callback_save_value,
-		const std::function<void(twidget&)>& callback_change)
+		const std::function<void(twidget&)>& callback_change,
+		const bool initial_fire)
 {
 	tfield_bool* field = new tfield_bool(id,
 										 mandatory,
 										 callback_load_value,
 										 callback_save_value,
-										 callback_change);
+										 callback_change,
+										 initial_fire);
 
 	fields_.push_back(field);
 	return field;
@@ -106,10 +108,11 @@ tfield_bool*
 tdialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const std::function<void(twidget&)>& callback_change)
+					   const std::function<void(twidget&)>& callback_change,
+					   const bool initial_fire)
 {
 	tfield_bool* field
-			= new tfield_bool(id, mandatory, linked_variable, callback_change);
+			= new tfield_bool(id, mandatory, linked_variable, callback_change, initial_fire);
 
 	fields_.push_back(field);
 	return field;

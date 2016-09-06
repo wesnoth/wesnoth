@@ -551,19 +551,23 @@ public:
 				const bool mandatory,
 				const std::function<bool()>& callback_load_value,
 				const std::function<void(const bool)>& callback_save_value,
-				const std::function<void(twidget&)>& callback_change)
+				const std::function<void(twidget&)>& callback_change,
+				const bool initial_fire)
 		: tfield<bool, gui2::tselectable_>(
 				  id, mandatory, callback_load_value, callback_save_value)
 		, callback_change_(callback_change)
+		, initial_fire_(initial_fire)
 	{
 	}
 
 	tfield_bool(const std::string& id,
 				const bool mandatory,
 				bool& linked_variable,
-				const std::function<void(twidget&)>& callback_change)
+				const std::function<void(twidget&)>& callback_change,
+				const bool initial_fire)
 		: tfield<bool, gui2::tselectable_>(id, mandatory, linked_variable)
 		, callback_change_(callback_change)
+		, initial_fire_(initial_fire)
 	{
 	}
 
@@ -572,16 +576,19 @@ private:
 	void init_specialized(twindow& window)
 	{
 		if(callback_change_) {
-			tselectable_* widget
-					= dynamic_cast<tselectable_*>(window.find(id(), false));
+			if(twidget* widget = window.find(id(), false)) {
+				if(initial_fire_) {
+					callback_change_(*widget);
+				}
 
-			if(widget) {
-				widget->set_callback_state_change(callback_change_);
+				dynamic_cast<tselectable_*>(widget)->set_callback_state_change(callback_change_);
 			}
 		}
 	}
 
 	std::function<void(twidget&)> callback_change_;
+
+	const bool initial_fire_;
 };
 
 /** Specialized field class for text. */

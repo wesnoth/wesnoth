@@ -201,7 +201,8 @@ protected:
 				  const std::function<void(const bool)>& callback_save_value
 				  = std::function<void(const bool)>(),
 				  const std::function<void(twidget&)>& callback_change
-				  = std::function<void(twidget&)>());
+				  = std::function<void(twidget&)>(),
+				  const bool initial_fire = false);
 
 	/**
 	 * Creates a new boolean field.
@@ -223,7 +224,8 @@ protected:
 				  const bool mandatory,
 				  bool& linked_variable,
 				  const std::function<void(twidget&)>& callback_change
-				  = std::function<void(twidget&)>());
+				  = std::function<void(twidget&)>(),
+				  const bool initial_fire = false);
 
 	/**
 	 * Creates a new integer field.
