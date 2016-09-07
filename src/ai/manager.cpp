@@ -165,7 +165,7 @@ void holder::modify_side_ai_config(config cfg)
 	if (this->readonly_context_ == nullptr) {
 		// if not initialized, append that config to the bottom of base cfg
 		// then, merge aspects with the same id
-		cfg_.merge_with(cfg);
+		cfg_.append_children(cfg);
 		cfg_.merge_children_by_attribute("aspect","id");
 	} else {
 		// else run 'add_facet' command on each [aspect][facet]
@@ -718,7 +718,7 @@ void manager::modify_active_ai_config_old_for_side ( side_number side, const con
 	for (const config& cfg : ai_parameters) {
 		cfgs.add_child("ai", cfg);
 	}
-	cfgs.child_or_add("ai").add_child("stage");
+	cfgs.child_or_add("ai").add_child("stage")["name"] = "empty";
 	get_active_ai_holder_for_side(side).modify_side_ai_config(cfgs);
 }
 
