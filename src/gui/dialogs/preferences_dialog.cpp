@@ -246,9 +246,10 @@ static tgrid* get_advanced_row_grid(tlistbox& list, const int selected_row)
 	return dynamic_cast<tgrid*>(list.get_row_grid(selected_row)->find("pref_main_grid", false));
 }
 
-static void disable_slider_on_toggle(twindow& window, twidget& w, const std::string& id)
+template<typename W>
+static void disable_widget_on_toggle(twindow& window, twidget& w, const std::string& id)
 {
-	find_widget<tslider>(&window, id, false).set_active(dynamic_cast<tselectable_&>(w).get_value_bool());
+	find_widget<W>(&window, id, false).set_active(dynamic_cast<tselectable_&>(w).get_value_bool());
 };
 
 /**
@@ -266,7 +267,7 @@ void tpreferences::post_build(twindow& window)
 
 	/* ACCELERATED SPEED */
 	register_bool("turbo_toggle", true, turbo, set_turbo,
-		[&](twidget& w) { disable_slider_on_toggle(window, w, "turbo_slider"); }, true);
+		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "turbo_slider"); }, true);
 
 	const auto accl_load = [this]()->int {
 		return std::find(accl_speeds_.begin(), accl_speeds_.end(),
@@ -368,18 +369,8 @@ void tpreferences::post_build(twindow& window)
 		grid, set_grid);
 
 	/* ANIMATE MAP */
-	ttoggle_button& animate_map_toggle =
-		find_widget<ttoggle_button>(&window, "animate_terrains", false);
-
-	ttoggle_button& animate_water_toggle =
-		find_widget<ttoggle_button>(&window, "animate_water", false);
-
-	animate_map_toggle.set_value(animate_map());
-	animate_water_toggle.set_active(animate_map_toggle.get_value_bool());
-
-	connect_signal_mouse_left_click(animate_map_toggle, std::bind(
-			&tpreferences::animate_map_toggle_callback,
-			this, std::ref(animate_map_toggle), std::ref(animate_water_toggle)));
+	register_bool("animate_terrains", true, animate_map, set_animate_map,
+		[&](twidget& w) { disable_widget_on_toggle<ttoggle_button>(window, w, "animate_water"); }, true);
 
 	/* ANIMATE WATER */
 	register_bool("animate_water", true,
@@ -391,7 +382,7 @@ void tpreferences::post_build(twindow& window)
 
 	/* SHOW UNIT IDLE ANIMS */
 	register_bool("animate_units_idle", true, idle_anim, set_idle_anim,
-		[&](twidget& w) { disable_slider_on_toggle(window, w, "idle_anim_frequency"); });
+		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "idle_anim_frequency"); });
 
 	register_integer("idle_anim_frequency", true,
 		idle_anim_rate, set_idle_anim_rate);
@@ -413,14 +404,14 @@ void tpreferences::post_build(twindow& window)
 
 	/* SOUND FX */
 	register_bool("sound_toggle_sfx", true, sound_on, set_sound,
-		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_sfx"); }, true);
+		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_sfx"); }, true);
 
 	register_integer("sound_volume_sfx", true,
 		sound_volume, set_sound_volume);
 
 	/* MUSIC */
 	register_bool("sound_toggle_music", true, music_on, set_music,
-		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_music"); }, true);
+		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_music"); }, true);
 
 	register_integer("sound_volume_music", true,
 		music_volume, set_music_volume);
@@ -430,14 +421,14 @@ void tpreferences::post_build(twindow& window)
 
 	/* TURN BELL */
 	register_bool("sound_toggle_bell", true, turn_bell, set_turn_bell,
-		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_bell"); }, true);
+		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_bell"); }, true);
 
 	register_integer("sound_volume_bell", true,
 		bell_volume, set_bell_volume);
 
 	/* UI FX */
 	register_bool("sound_toggle_uisfx", true, UI_sound_on, set_UI_sound,
-		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_uisfx"); }, true);
+		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_uisfx"); }, true);
 
 	register_integer("sound_volume_uisfx", true,
 		UI_volume, set_UI_volume);
@@ -1044,14 +1035,6 @@ void tpreferences::handle_res_select(twindow& window)
 	window.video().set_resolution(resolutions_[static_cast<size_t>(choice)]);
 	events::raise_resize_event();
 	set_resolution_list(res_list, window.video());
-}
-
-void tpreferences::animate_map_toggle_callback(ttoggle_button& toggle,
-		ttoggle_button& toggle_water)
-{
-	const bool value = toggle.get_value_bool();
-	set_animate_map(value);
-	toggle_water.set_active(value);
 }
 
 void tpreferences::on_page_select(twindow& window)
