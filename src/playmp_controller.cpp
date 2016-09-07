@@ -281,7 +281,7 @@ void playmp_controller::wait_for_upload()
 	while(true) {
 		try {
 			const bool  res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
-				gui_->video(), _("Waiting for next scenario..."), cfg, mp_info_->wesnothd_connection);
+				gui_->video(), "next scenario", cfg, mp_info_->wesnothd_connection);
 
 			if(res) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {

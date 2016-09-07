@@ -36,7 +36,7 @@ namespace gui2
 class tnetwork_transmission : public tdialog
 {
 public:
-	//A wrapper of eigher a twesnothd_connection or a network_asio::connection
+	//A wrapper of either a twesnothd_connection or a network_asio::connection
 	class connection_data 
 	{
 	public:
@@ -52,7 +52,7 @@ public:
 	static std::unique_ptr<twesnothd_connection> wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
 
 private:
-	static void wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg1, const std::string& msg2);
+	static void wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg);
 	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor

@@ -23,6 +23,7 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -96,7 +97,7 @@ void tnetwork_transmission::post_show(twindow& /*window*/)
 	connection_->cancel();
 }
 
-void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg1, const std::string& msg2)
+void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg)
 {
 	if (video.faked()) {
 		while (!conn.finished()) {
@@ -105,7 +106,13 @@ void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transm
 		}
 	}
 	else {
-		gui2::tnetwork_transmission(conn, msg1, msg2).show(video);
+		gui2::tloadscreen::display(video, [&]() {
+			gui2::tloadscreen::progress(msg.c_str());
+			while(!conn.finished()) {
+				conn.poll();
+				SDL_Delay(1);
+			}
+		});
 	}
 }
 
@@ -122,8 +129,9 @@ struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::conne
 
 bool tnetwork_transmission::wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, twesnothd_connection& wesnothd_connection)
 {
+	assert(!msg.empty());
 	read_wesnothd_connection_data gui_data(wesnothd_connection);
-	wesnothd_dialog(video, gui_data, msg, _("Waiting"));
+	wesnothd_dialog(video, gui_data, msg);
 	return wesnothd_connection.receive_data(cfg);
 }
 
@@ -138,9 +146,10 @@ struct connect_wesnothd_connection_data : public gui2::tnetwork_transmission::co
 
 std::unique_ptr<twesnothd_connection> tnetwork_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
 {
+	assert(!msg.empty());
 	std::unique_ptr<twesnothd_connection> res(new twesnothd_connection(hostname, std::to_string(port)));
 	connect_wesnothd_connection_data gui_data(*res);
-	wesnothd_dialog(video, gui_data, msg, _("Connecting"));
+	wesnothd_dialog(video, gui_data, msg);
 	return res;
 }
 

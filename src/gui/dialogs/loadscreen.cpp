@@ -58,6 +58,12 @@ static const std::map<std::string, std::string> stages =
 	{ "refresh addons", N_("Searching for installed add-ons") },
 	{ "start game", N_("Starting game") },
 	{ "verify cache", N_("Verifying cache") },
+	{ "connect to server", N_("Connecting to server") },
+	{ "login response", N_("Logging in") },
+	{ "waiting", N_("Waiting for server") },
+	{ "redirect", N_("Connecting to redirected server") },
+	{ "next scenario", N_("Waiting for next scenario") },
+	{ "download level data", N_("Getting game data") },
 };
 
 namespace gui2

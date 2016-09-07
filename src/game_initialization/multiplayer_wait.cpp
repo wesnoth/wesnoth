@@ -480,7 +480,7 @@ bool wait::download_level_data()
 	while (!has_scenario_and_controllers) {
 		config revc;
 		bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
-			video(), _("Getting game data..."), revc, *wesnothd_connection_);
+			video(), "download level data", revc, *wesnothd_connection_);
 
 		if (!data_res) {
 			DBG_MP << "download_level_data bad results\n";

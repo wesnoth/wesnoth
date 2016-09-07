@@ -20,6 +20,7 @@
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/lobby/lobby.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
@@ -143,7 +144,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 	shown_hosts.insert(hostpair(host, port));
 
 	config data;
-	sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, _("Connecting to Server..."), host, port);
+	sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, "connect to server", host, port);
 	do {
 
 		if (!sock) {
@@ -151,7 +152,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 		}
 
 		data.clear();
-		gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "", data, *sock);
+		gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "waiting", data, *sock);
 		//mp::check_response(data_res, data);
 
 		if (data.has_child("reject") || data.has_attribute("version")) {
@@ -181,7 +182,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			}
 			shown_hosts.insert(hostpair(host, port));
 			sock.release();
-			sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, _("Connecting to Server..."), host, port);
+			sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
 
@@ -298,7 +299,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 
 						// Once again send our request...
 						sock->send_data(response);
-						gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "", data, *sock);
+						gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
 
 
 						error = &data.child("error");

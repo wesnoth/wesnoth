@@ -73,7 +73,8 @@ bool addons_client::request_addons_list(config& cfg)
 
 	config response_buf;
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
+	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
+	 */
 
 	this->send_simple_request("request_campaign_list", response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));

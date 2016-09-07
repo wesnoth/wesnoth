@@ -26,7 +26,6 @@
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
