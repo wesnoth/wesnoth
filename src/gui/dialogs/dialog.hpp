@@ -135,6 +135,7 @@ public:
 		, fields_()
 		, focus_()
 		, restore_(false)
+		, allow_plugin_skip_(true)
 	{
 	}
 
@@ -171,6 +172,11 @@ public:
 	void set_restore(const bool restore)
 	{
 		restore_ = restore;
+	}
+
+	void set_allow_plugin_skip(const bool allow_plugin_skip)
+	{
+		allow_plugin_skip_ = allow_plugin_skip;
 	}
 
 protected:
@@ -330,6 +336,14 @@ private:
 	 * behavior so they can change it in pre_show().
 	 */
 	bool restore_;
+
+	/**
+	 * Allow plugins to skip through the dialog?
+	 * Most dialogs install a plugins context to allow plugins to accept whatever the dialog is offering
+	 * and continue. Some dialogs, especially those that install their own plugins context, may want to
+	 * disable this.
+	 */
+	bool allow_plugin_skip_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;

@@ -311,6 +311,7 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	// Set up the Lua plugin context
 	//
+	set_allow_plugin_skip(false);
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
 	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(twindow::OK); }, false);

@@ -1014,6 +1014,7 @@ void tlobby_main::pre_show(twindow& window)
 		game_config::lobby_network_timer, std::bind(&tlobby_main::network_handler, this), true);
 
 	// Set up Lua plugin context
+	set_allow_plugin_skip(false);
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
 	auto get_game_index_from_id = [this](const int game_id)->int {
