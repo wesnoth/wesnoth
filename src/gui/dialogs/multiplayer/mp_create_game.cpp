@@ -318,7 +318,7 @@ void tmp_create_game::pre_show(twindow& window)
 	plugins_context_->set_callback("load",   [this, &window](const config&) { load_game_callback(window); }, false);
 
 #define UPDATE_ATTRIBUTE(field, convert) \
-	if(cfg.has_attribute(#field)) { field##_->set_widget_value(window, cfg[#field].convert()); } else \
+	do { if(cfg.has_attribute(#field)) { field##_->set_widget_value(window, cfg[#field].convert()); } } while(false) \
 
 	plugins_context_->set_callback("update_settings", [this, &window](const config& cfg) {
 		UPDATE_ATTRIBUTE(turns, to_int);
