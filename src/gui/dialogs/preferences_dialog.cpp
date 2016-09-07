@@ -18,19 +18,17 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 
 #include "config_assign.hpp"
+#include "gettext.hpp"
+#include "filesystem.hpp"
+#include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "lobby_preferences.hpp"
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-#include "lobby_preferences.hpp"
-#include "gettext.hpp"
 #include "video.hpp"
-#include "formula/string_utils.hpp"
-#include "formatter.hpp"
-#include "filesystem.hpp"
-#include "gui/dialogs/message.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 
 // Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
@@ -39,7 +37,9 @@
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
 
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -61,12 +61,8 @@
 #include "gui/widgets/window.hpp"
 #include "util.hpp"
 
-#include "gettext.hpp"
-
-#include <sstream>
 #include "utils/functional.hpp"
 #include <boost/math/common_factor_rt.hpp>
-
 
 namespace gui2 {
 
