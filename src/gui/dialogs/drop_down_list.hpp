@@ -49,8 +49,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
-
-	void item_change_callback(twindow& window, size_t item);
 };
 
 } // namespace gui2

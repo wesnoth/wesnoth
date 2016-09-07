@@ -34,11 +34,13 @@ namespace {
 	void click_callback(twindow& window, bool& handled, bool& halt, tpoint coordinate)
 	{
 		SDL_Rect rect = window.get_rectangle();
+		halt = handled = true;
 		if(coordinate.x < rect.x || coordinate.x > rect.x + rect.w || coordinate.y < rect.y || coordinate.y > rect.y + rect.h ) {
-			halt = handled = true;
 			window.set_retval(twindow::CANCEL);
-			window.close();
+		} else {
+			window.set_retval(twindow::OK);
 		}
+		window.close();
 	}
 
 	void resize_callback(twindow& window)
@@ -98,24 +100,18 @@ void tdrop_down_list::pre_show(twindow& window)
 		list.select_row(selected_item_);
 	}
 
-	list.set_callback_item_change(std::bind(&tdrop_down_list::item_change_callback, this, std::ref(window), _1));
+	window.keyboard_capture(&list);
 
 	//Dismiss on click outside the window
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_child);
+	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_post_child);
 
 	//Dismiss on resize
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::tdispatcher::front_child);
 }
 
-void tdrop_down_list::item_change_callback(twindow& window, size_t item)
+void tdrop_down_list::post_show(twindow& window)
 {
-	selected_item_ = item;
-	window.set_retval(twindow::OK);
-	window.close();
-}
-
-void tdrop_down_list::post_show(twindow&)
-{
+	selected_item_ = find_widget<tlistbox>(&window, "list", true).get_selected_row();
 }
 
 } // namespace gui2
