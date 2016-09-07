@@ -249,7 +249,19 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 
 void thorizontal_list::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -276,7 +288,19 @@ void thorizontal_list::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 void thorizontal_list::handle_key_right_arrow(SDLMod /*modifier*/,
 											  bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -445,7 +469,19 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 
 void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -471,7 +507,19 @@ void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 
 void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -701,7 +749,19 @@ const twidget* tmatrix::find_at(const tpoint& coordinate,
 
 void tmatrix::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -727,7 +787,19 @@ void tmatrix::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 
 void tmatrix::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -753,7 +825,19 @@ void tmatrix::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 void tmatrix::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
@@ -780,7 +864,19 @@ void tmatrix::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 void tmatrix::handle_key_right_arrow(SDLMod /*modifier*/,
 									 bool& handled)
 {
+	if(get_item_count() == 0) {
+		return;
+	}
+
 	if(get_selected_item_count() == 0) {
+		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+			if(get_item_shown(get_item_at_ordered(i))) {
+				// TODO: Check if active?
+				handled = true;
+				select_item(get_item_at_ordered(i), true);
+				break;
+			}
+		}
 		return;
 	}
 
