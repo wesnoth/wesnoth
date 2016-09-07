@@ -117,6 +117,11 @@ static void set_weapon_info(twindow& window,
 		const attack_type& defender_weapon = defender.weapon ?
 			*defender.weapon : no_weapon;
 
+		// Don't show if the atacker's weapon has at least one active "disable" special.
+		if(attacker_weapon.get_special_bool("disable")) {
+			continue;
+		}
+
 		const SDL_Color a_cth_color =
 			int_to_color(game_config::red_to_green(attacker.chance_to_hit));
 		const SDL_Color d_cth_color =
