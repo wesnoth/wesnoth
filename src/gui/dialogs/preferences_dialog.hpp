@@ -89,16 +89,15 @@ private:
 	/** Initializers */
 	void initialize_tabs(twindow& window, tlistbox& selector);
 	void set_resolution_list(tmenu_button& res_list, CVideo& video);
-	void setup_friends_list(twindow& window);
 	void setup_hotkey_list(twindow& window);
 
-	void add_friend_list_entry(const bool is_friend,
-		ttext_box& textbox, twindow& window);
+	std::map<std::string, string_map> get_friends_list_row_data(const acquaintance& entry);
 
-	void on_friends_list_select(tlistbox& friends, ttext_box& textbox);
+	void add_friend_list_entry(const bool is_friend, ttext_box& textbox, twindow& window);
+	void remove_friend_list_entry(tlistbox& friends_list, ttext_box& textbox, twindow& window);
 
-	void remove_friend_list_entry(tlistbox& friends_list,
-		ttext_box& textbox, twindow& window);
+	void on_friends_list_select(tlistbox& list, ttext_box& textbox);
+	void update_friends_list_controls(twindow& window, tlistbox& list);
 
 	void set_visible_page(twindow& window, unsigned int page, const std::string& pager_id);
 
@@ -126,7 +125,6 @@ private:
 
 	std::vector<std::pair<int,int> > resolutions_;
 	std::vector<config> adv_preferences_cfg_;
-	std::vector<std::string> friend_names_;
 
 	int last_selected_item_;
 

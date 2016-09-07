@@ -156,14 +156,14 @@ void tlobby_player_info::update_relation()
 
 void tlobby_player_info::add_to_friends_button_callback()
 {
-	preferences::add_friend(info_.name, "");
+	preferences::add_acquaintance(info_.name, "friend", "");
 	info_.relation = user_info::FRIEND;
 	update_relation();
 }
 
 void tlobby_player_info::add_to_ignores_button_callback()
 {
-	preferences::add_ignore(info_.name, "");
+	preferences::add_acquaintance(info_.name, "ignore", "");
 	info_.relation = user_info::IGNORED;
 	update_relation();
 }

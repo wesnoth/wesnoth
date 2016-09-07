@@ -77,7 +77,6 @@ REGISTER_DIALOG(preferences)
 tpreferences::tpreferences(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view)
 	: resolutions_(video.get_available_resolutions(true))
 	, adv_preferences_cfg_()
-	, friend_names_()
 	, last_selected_item_(0)
 	, accl_speeds_(
 		// IMPORTANT: NEVER have trailing zeroes here, or else the cast from doubles
@@ -122,84 +121,42 @@ void tpreferences::set_resolution_list(tmenu_button& res_list, CVideo& video)
 	res_list.set_values(options, current_res);
 }
 
-void tpreferences::setup_friends_list(twindow& window)
+std::map<std::string, string_map> tpreferences::get_friends_list_row_data(const acquaintance& entry)
 {
-	tlistbox& friends_list = find_widget<tlistbox>(&window, "friends_list", false);
-
-	const std::map<std::string, acquaintance>& acquaintances = get_acquaintances();
-
 	std::map<std::string, string_map> data;
+	string_map item;
 
-	find_widget<tbutton>(&window, "remove", false).set_active(!acquaintances.empty());
+	std::string image = "friend.png";
+	std::string descriptor = _("friend");
+	std::string notes;
 
-	friends_list.clear();
-	friend_names_.clear();
-
-	if(acquaintances.empty()) {
-		data["friend_icon"]["label"] = "misc/status-neutral.png";
-		data["friend_name"]["label"] = _("Empty list");
-		friends_list.add_row(data);
-
-		return;
+	if(entry.get_status() == "ignore") {
+		image = "ignore.png";
+		descriptor = _("ignored");
 	}
 
-	for(const auto& acquaintence : acquaintances) {
-		std::string image = "friend.png";
-		std::string descriptor = _("friend");
-		std::string notes;
-
-		if(acquaintence.second.get_status() == "ignore") {
-			image = "ignore.png";
-			descriptor = _("ignored");
-		}
-
-		if(!acquaintence.second.get_notes().empty()) {
-			notes = " <small>(" + acquaintence.second.get_notes() + ")</small>";
-		}
-
-		data["friend_icon"]["label"] = "misc/status-" + image;
-
-		data["friend_name"]["label"] = acquaintence.second.get_nick() + notes;
-		data["friend_name"]["use_markup"] = "true";
-
-		data["friend_status"]["label"] = "<small>" + descriptor + "</small>";
-		data["friend_status"]["use_markup"] = "true";
-		friends_list.add_row(data);
-
-		friend_names_.push_back(acquaintence.first);
+	if(!entry.get_notes().empty()) {
+		notes = " <small>(" + entry.get_notes() + ")</small>";
 	}
+
+	item["use_markup"] = "true";
+
+	item["label"] = "misc/status-" + image;
+	data.emplace("friend_icon", item);
+
+	item["label"] = entry.get_nick() + notes;
+	data.emplace("friend_name", item);
+
+	item["label"] = "<small>" + descriptor + "</small>";
+	data.emplace("friend_status", item);
+
+	return data;
 }
 
-void tpreferences::add_friend_list_entry(const bool is_friend, ttext_box& textbox, twindow& window)
+void tpreferences::on_friends_list_select(tlistbox& list, ttext_box& textbox)
 {
-	std::string reason;
-	std::string username = textbox.text();
-	size_t pos = username.find_first_of(' ');
-
-	if(pos != std::string::npos) {
-		reason = username.substr(pos + 1);
-		username = username.substr(0, pos);
-	}
-
-	const bool added_sucessfully = is_friend ?
-		add_friend(username, reason) :
-		add_ignore(username, reason) ;
-
-	if(!added_sucessfully) {
-		gui2::show_transient_message(window.video(),  _("Error"), _("Invalid username"),
-				std::string(), false, false, true);
-		return;
-	}
-
-	textbox.clear();
-
-	setup_friends_list(window);
-}
-
-void tpreferences::on_friends_list_select(tlistbox& friends, ttext_box& textbox)
-{
-    const int num_friends = get_acquaintances().size();
-	const int sel = friends.get_selected_row();
+	const int num_friends = get_acquaintances().size();
+	const int sel = list.get_selected_row();
 
 	if(sel < 0 || sel >= num_friends) {
 		return;
@@ -211,15 +168,62 @@ void tpreferences::on_friends_list_select(tlistbox& friends, ttext_box& textbox)
 	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
 }
 
-void tpreferences::remove_friend_list_entry(tlistbox& friends_list,
-		ttext_box& textbox, twindow& window)
+void tpreferences::update_friends_list_controls(twindow& window, tlistbox& list)
 {
-	std::string to_remove = textbox.text();
+	const bool list_empty = list.get_item_count() == 0;
 
+	if(!list_empty) {
+		list.select_row(std::min(static_cast<int>(list.get_item_count()) - 1, list.get_selected_row()));
+	}
+
+	find_widget<tbutton>(&window, "remove", false).set_active(!list_empty);
+
+	find_widget<tlabel>(&window, "no_friends_notice", false).set_visible(
+		list_empty ? twindow::tvisible::visible : twindow::tvisible::invisible);
+}
+
+void tpreferences::add_friend_list_entry(const bool is_friend, ttext_box& textbox, twindow& window)
+{
+	std::string username = textbox.text();
+	if(username.empty()) {
+		gui2::show_transient_message(window.video(), "", _("No username specified"), "", false, false, true);
+		return;
+	}
+
+	std::string reason;
+
+	size_t pos = username.find_first_of(' ');
+	if(pos != std::string::npos) {
+		reason = username.substr(pos + 1);
+		username = username.substr(0, pos);
+	}
+
+	acquaintance* entry = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
+	if(!entry) {
+		gui2::show_transient_message(window.video(), _("Error"), _("Invalid username"), "", false, false, true);
+		return;
+	}
+
+	textbox.clear();
+
+	tlistbox& list = find_widget<tlistbox>(&window, "friends_list", false);
+	list.add_row(get_friends_list_row_data(*entry));
+
+	update_friends_list_controls(window, list);
+}
+
+void tpreferences::remove_friend_list_entry(tlistbox& friends_list, ttext_box& textbox, twindow& window)
+{
 	const int selected_row = std::max(0, friends_list.get_selected_row());
 
+	std::map<std::string, acquaintance>::const_iterator who = get_acquaintances().begin();
+	std::advance(who, selected_row);
+
+	const std::string to_remove = !textbox.text().empty() ? textbox.text() : who->second.get_nick();
+
 	if(to_remove.empty()) {
-		to_remove = friend_names_[selected_row];
+		gui2::show_transient_message(window.video(), "", _("No username specified"), "", false, false, true);
+		return;
 	}
 
 	if(!remove_acquaintance(to_remove)) {
@@ -229,7 +233,10 @@ void tpreferences::remove_friend_list_entry(tlistbox& friends_list,
 
 	textbox.clear();
 
-	setup_friends_list(window);
+	tlistbox& list = find_widget<tlistbox>(&window, "friends_list", false);
+	list.remove_row(selected_row);
+
+	update_friends_list_controls(window, list);
 }
 
 // Helper function to get the main grid in each row of the advanced section
@@ -476,10 +483,15 @@ void tpreferences::post_build(twindow& window)
 	});
 
 	/* FRIENDS LIST */
-	setup_friends_list(window);
+	tlistbox& friends_list = find_widget<tlistbox>(&window, "friends_list", false);
+
+	friends_list.clear();
+
+	for(const auto& entry : get_acquaintances()) {
+		friends_list.add_row(get_friends_list_row_data(entry.second));
+	}
 
 	ttext_box& textbox = find_widget<ttext_box>(&window, "friend_name_box", false);
-	tlistbox& friend_list = find_widget<tlistbox>(&window, "friends_list", false);
 
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "add_friend", false), std::bind(
@@ -499,17 +511,15 @@ void tpreferences::post_build(twindow& window)
 		find_widget<tbutton>(&window, "remove", false), std::bind(
 			&tpreferences::remove_friend_list_entry,
 			this,
-			std::ref(friend_list),
+			std::ref(friends_list),
 			std::ref(textbox),
 			std::ref(window)));
 
-	friend_list.set_callback_value_change(std::bind(
+	friends_list.set_callback_value_change(std::bind(
 			&tpreferences::on_friends_list_select,
 			this,
-			std::ref(friend_list),
+			std::ref(friends_list),
 			std::ref(textbox)));
-
-	friend_list.select_row(0);
 
 	/* ALERTS */
 	connect_signal_mouse_left_click(
