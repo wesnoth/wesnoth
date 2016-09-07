@@ -125,14 +125,12 @@ tpoint thorizontal_list::calculate_best_size() const
 	tpoint result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		const tpoint best_size = grid.get_best_size();
+		const tpoint best_size = item(i).get_best_size();
 
 		result.x += best_size.x;
 
@@ -157,13 +155,12 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
+		tgrid& grid = item_ordered(i);
 		tpoint best_size = grid.get_best_size();
 		assert(best_size.y <= size.y);
 		// FIXME should we look at grow factors???
@@ -182,13 +179,12 @@ void thorizontal_list::set_origin(const tpoint& origin)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
+		tgrid& grid = item_ordered(i);
 		grid.set_origin(current_origin);
 		current_origin.x += grid.get_width();
 	}
@@ -216,14 +212,12 @@ twidget* thorizontal_list::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		twidget* widget = grid.find_at(coordinate, must_be_active);
+		twidget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -239,14 +233,12 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		const twidget* widget = grid.find_at(coordinate, must_be_active);
+		const twidget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -266,8 +258,7 @@ void thorizontal_list::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
 
-		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -294,8 +285,7 @@ void thorizontal_list::handle_key_right_arrow(SDLMod /*modifier*/,
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 
-		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -330,14 +320,12 @@ tpoint tvertical_list::calculate_best_size() const
 	tpoint result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		const tpoint best_size = grid.get_best_size();
+		const tpoint best_size = item(i).get_best_size();
 
 		if(best_size.x > result.x) {
 			result.x = best_size.x;
@@ -362,13 +350,12 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
+		tgrid& grid = item_ordered(i);
 		tpoint best_size = grid.get_best_size();
 		assert(best_size.x <= size.x);
 		// FIXME should we look at grow factors???
@@ -387,13 +374,12 @@ void tvertical_list::set_origin(const tpoint& origin)
 	tpoint current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
+		tgrid& grid = item_ordered(i);
 		grid.set_origin(current_origin);
 		current_origin.y += grid.get_height();
 	}
@@ -421,15 +407,13 @@ twidget* tvertical_list::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
 
-		twidget* widget = grid.find_at(coordinate, must_be_active);
+		twidget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -445,14 +429,12 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		const twidget* widget = grid.find_at(coordinate, must_be_active);
+		const twidget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -472,8 +454,7 @@ void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
 
-		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -499,8 +480,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 
-		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -539,9 +519,8 @@ tpoint tmatrix::calculate_best_size() const
 	size_t max_cols = sqrt(n_items) + 2;
 	std::vector<tpoint> item_sizes;
 	for(size_t i = 0; i < n_items; i++) {
-		const tgrid& grid = item(i);
-		if(grid.get_visible() != twidget::tvisible::invisible && get_item_shown(i)) {
-			item_sizes.push_back(grid.get_best_size());
+		if(get_item_shown(i)) {
+			item_sizes.push_back(item(i).get_best_size());
 		}
 	}
 	if(item_sizes.empty()) {
@@ -603,13 +582,12 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 	int row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
+		tgrid& grid = item_ordered(i);
 		tpoint best_size = grid.get_best_size();
 		// FIXME should we look at grow factors???
 
@@ -643,13 +621,12 @@ void tmatrix::set_origin(const tpoint& origin)
 	size_t row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
 
+		tgrid& grid = item_ordered(i);
 		if(current_origin.x + grid.get_width() > origin.x + get_width()) {
 			current_origin.x = origin.x;
 			current_origin.y += row_height;
@@ -687,14 +664,12 @@ twidget* tmatrix::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		twidget* widget = grid.find_at(coordinate, must_be_active);
+		twidget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -710,14 +685,12 @@ const twidget* tmatrix::find_at(const tpoint& coordinate,
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = item(i);
-		if(grid.get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(i)) {
+		if(!get_item_shown(i)) {
 
 			continue;
 		}
 
-		const twidget* widget = grid.find_at(coordinate, must_be_active);
+		const twidget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -737,8 +710,7 @@ void tmatrix::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
 
-		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -764,8 +736,7 @@ void tmatrix::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 
-		if(item_ordered(i).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -791,8 +762,7 @@ void tmatrix::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
 
-		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}
@@ -819,8 +789,7 @@ void tmatrix::handle_key_right_arrow(SDLMod /*modifier*/,
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 
-		if(item(get_item_at_ordered(i)).get_visible() == twidget::tvisible::invisible
-		   || !get_item_shown(get_item_at_ordered(i))) {
+		if(!get_item_shown(get_item_at_ordered(i))) {
 
 			continue;
 		}

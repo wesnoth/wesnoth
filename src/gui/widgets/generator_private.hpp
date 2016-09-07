@@ -22,6 +22,7 @@
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/window.hpp" // For twindow::tvisible
 
 namespace gui2
 {
@@ -661,7 +662,7 @@ public:
 	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown;
+		return items_[index]->shown && items_[index]->grid.get_visible() != twindow::tvisible::invisible;
 	}
 
 
