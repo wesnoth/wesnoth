@@ -95,7 +95,7 @@ void chat_command_handler::do_ignore()
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
 
-		if (preferences::add_ignore(get_arg(1), get_data(2))) {
+		if (preferences::add_acquaintance(get_arg(1), "ignore", get_data(2))) {
 			print(_("ignores list"), VGETTEXT("Added to ignore list: $nick", symbols));
 			chat_handler_.user_relation_changed(get_arg(1));
 		}
@@ -114,7 +114,7 @@ void chat_command_handler::do_friend()
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
 
-		if (preferences::add_friend(get_arg(1), get_data(2))) {
+		if (preferences::add_acquaintance(get_arg(1), "friend", get_data(2))) {
 			print(_("friends list"), VGETTEXT("Added to friends list: $nick", symbols));
 			chat_handler_.user_relation_changed(get_arg(1));
 		}
