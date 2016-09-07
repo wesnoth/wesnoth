@@ -149,6 +149,8 @@ public:
 	 */
 	std::vector<bool> get_rows_shown() const;
 
+	bool any_rows_shown() const;
+
 	/**
 	 * Returns the grid of the wanted row.
 	 *
