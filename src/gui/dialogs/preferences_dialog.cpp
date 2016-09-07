@@ -399,14 +399,14 @@ void tpreferences::post_build(twindow& window)
 	//
 
 	/* SOUND FX */
-	register_bool("sound_toggle_sfx", true, sound_on, set_sound,
+	register_bool("sound_toggle_sfx", true, sound_on, bind_void(set_sound, _1),
 		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_sfx"); }, true);
 
 	register_integer("sound_volume_sfx", true,
 		sound_volume, set_sound_volume);
 
 	/* MUSIC */
-	register_bool("sound_toggle_music", true, music_on, set_music,
+	register_bool("sound_toggle_music", true, music_on, bind_void(set_music, _1),
 		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_music"); }, true);
 
 	register_integer("sound_volume_music", true,
@@ -416,14 +416,14 @@ void tpreferences::post_build(twindow& window)
 		stop_music_in_background, set_stop_music_in_background);
 
 	/* TURN BELL */
-	register_bool("sound_toggle_bell", true, turn_bell, set_turn_bell,
+	register_bool("sound_toggle_bell", true, turn_bell, bind_void(set_turn_bell, _1),
 		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_bell"); }, true);
 
 	register_integer("sound_volume_bell", true,
 		bell_volume, set_bell_volume);
 
 	/* UI FX */
-	register_bool("sound_toggle_uisfx", true, UI_sound_on, set_UI_sound,
+	register_bool("sound_toggle_uisfx", true, UI_sound_on, bind_void(set_UI_sound, _1),
 		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "sound_volume_uisfx"); }, true);
 
 	register_integer("sound_volume_uisfx", true,
