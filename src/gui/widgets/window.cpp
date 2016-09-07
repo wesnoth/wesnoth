@@ -671,7 +671,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	{
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialised = false;
-		for(status_ = SHOWING; status_ != REQUEST_CLOSE;) {
+		for(status_ = SHOWING; status_ != CLOSED;) {
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();
@@ -689,6 +689,10 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 				 */
 				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
 				mouse_button_state_initialised = true;
+			}
+
+			if(status_ == REQUEST_CLOSE) {
+				status_ = exit_hook_(*this) ? CLOSED : SHOWING;
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.

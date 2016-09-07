@@ -465,6 +465,30 @@ public:
 			return tpoint(-1, -1);
 		}
 	}
+
+	/**
+	 * Sets the window's exit hook.
+	 *
+	 * A window will only close if this function returns true.
+	 *
+	 * @param window                       The current window.
+	 */
+	void set_exit_hook(std::function<bool(twindow&)> func)
+	{
+		exit_hook_ = func;
+	}
+
+	void set_exit_hook_ok_only(std::function<bool(twindow&)> func)
+	{
+		exit_hook_ = [func](twindow& w)->bool {
+			if(w.get_retval() == OK) {
+				return func(w);
+			}
+
+			return true;
+		};
+	}
+
 private:
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
@@ -764,6 +788,8 @@ private:
 
 	void signal_handler_request_placement(const event::tevent event,
 										  bool& handled);
+
+	std::function<bool(twindow&)> exit_hook_ = [](twindow&)->bool { return true; };
 };
 
 // }---------- DEFINITION ---------{
