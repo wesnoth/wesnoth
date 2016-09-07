@@ -132,9 +132,7 @@ void tmp_create_game::pre_show(twindow& window)
 		std::bind(&tmp_create_game::load_game_callback, this, std::ref(window)));
 
 	// Custom dialog close hook
-	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&window, "create_game", false),
-		std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
+	window.set_exit_hook_ok_only([this](twindow& w)->bool { return dialog_exit_hook(w); });
 
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab
@@ -511,10 +509,7 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 		item["label"] = game.get()->name();
 		data.emplace("game_name", item);
 
-		tgrid* row_grid = &list.add_row(data);
-
-		find_widget<ttoggle_panel>(row_grid, "game_list_panel", false).set_callback_mouse_left_double_click(
-			std::bind(&tmp_create_game::dialog_exit_hook, this, std::ref(window)));
+		list.add_row(data);
 	}
 
 	// Recalculate which rows should be visisble
@@ -573,7 +568,7 @@ void tmp_create_game::load_game_callback(twindow& window)
 
 		create_engine_.prepare_for_saved_game();
 
-		dialog_exit_hook(window);
+		window.set_retval(twindow::OK);
 	} catch(config::error&) {}
 }
 
@@ -701,16 +696,16 @@ void tmp_create_game::update_map_settings(twindow& window)
 	}
 }
 
-void tmp_create_game::dialog_exit_hook(twindow& window) {
+bool tmp_create_game::dialog_exit_hook(twindow&) {
 	if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
 		create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
 
 		if(create_engine_.select_campaign_difficulty() == "CANCEL") {
-			return;
+			return false;
 		}
 	}
 
-	window.set_retval(twindow::OK);
+	return true;
 }
 
 void tmp_create_game::post_show(twindow& window)

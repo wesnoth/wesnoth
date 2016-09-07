@@ -122,7 +122,7 @@ private:
 	void update_details(twindow& window);
 	void update_map_settings(twindow& window);
 
-	void dialog_exit_hook(twindow& window);
+	bool dialog_exit_hook(twindow&);
 
 	int convert_to_game_filtered_index(const int initial_index);
 
