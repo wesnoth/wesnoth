@@ -259,14 +259,14 @@ void tpreferences::post_build(twindow& window)
 
 	/* ACCELERATED SPEED */
 	register_bool("turbo_toggle", true, turbo, set_turbo,
-		[&](twidget& w)->void { disable_slider_on_toggle(window, w, "turbo_slider"); }, true);
+		[&](twidget& w) { disable_slider_on_toggle(window, w, "turbo_slider"); }, true);
 
-	const auto accl_load = [&]()->int {
+	const auto accl_load = [this]()->int {
 		return std::find(accl_speeds_.begin(), accl_speeds_.end(),
 			lexical_cast<std::string>(turbo_speed())) - accl_speeds_.begin() + 1;
 	};
 
-	const auto accl_save = [&](int i) {
+	const auto accl_save = [this](int i) {
 		set_turbo_speed(lexical_cast<double>(accl_speeds_[i - 1]));
 	};
 
@@ -384,7 +384,7 @@ void tpreferences::post_build(twindow& window)
 
 	/* SHOW UNIT IDLE ANIMS */
 	register_bool("animate_units_idle", true, idle_anim, set_idle_anim,
-		[&](twidget& w)->void { disable_slider_on_toggle(window, w, "idle_anim_frequency"); });
+		[&](twidget& w) { disable_slider_on_toggle(window, w, "idle_anim_frequency"); });
 
 	register_integer("idle_anim_frequency", true,
 		idle_anim_rate, set_idle_anim_rate);
@@ -406,14 +406,14 @@ void tpreferences::post_build(twindow& window)
 
 	/* SOUND FX */
 	register_bool("sound_toggle_sfx", true, sound_on, set_sound,
-		[&](twidget& w)->void { disable_slider_on_toggle(window, w, "sound_volume_sfx"); }, true);
+		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_sfx"); }, true);
 
 	register_integer("sound_volume_sfx", true,
 		sound_volume, set_sound_volume);
 
 	/* MUSIC */
 	register_bool("sound_toggle_music", true, music_on, set_music,
-		[&](twidget& w)->void { disable_slider_on_toggle(window, w, "sound_volume_music"); }, true);
+		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_music"); }, true);
 
 	register_integer("sound_volume_music", true,
 		music_volume, set_music_volume);
@@ -423,14 +423,14 @@ void tpreferences::post_build(twindow& window)
 
 	/* TURN BELL */
 	register_bool("sound_toggle_bell", true, turn_bell, set_turn_bell,
-		[&](twidget& w)->void { disable_slider_on_toggle(window, w, "sound_volume_bell"); }, true);
+		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_bell"); }, true);
 
 	register_integer("sound_volume_bell", true,
 		bell_volume, set_bell_volume);
 
 	/* UI FX */
 	register_bool("sound_toggle_uisfx", true, UI_sound_on, set_UI_sound,
-		[&](twidget& w)->void { disable_slider_on_toggle(window, w, "sound_volume_uisfx"); }, true);
+		[&](twidget& w) { disable_slider_on_toggle(window, w, "sound_volume_uisfx"); }, true);
 
 	register_integer("sound_volume_uisfx", true,
 		UI_volume, set_UI_volume);
@@ -552,8 +552,8 @@ void tpreferences::post_build(twindow& window)
 		tgrid* main_grid = get_advanced_row_grid(advanced, this_row);
 		assert(main_grid);
 
-		tgrid* details_grid = find_widget<tgrid>(main_grid, "prefs_setter_grid", false, true);
-		details_grid->set_visible(tcontrol::tvisible::invisible);
+		tgrid& details_grid = find_widget<tgrid>(main_grid, "prefs_setter_grid", false);
+		details_grid.set_visible(tcontrol::tvisible::invisible);
 
 		// The toggle widget for toggle-type options (hidden for other types)
 		ttoggle_button& toggle_box = find_widget<ttoggle_button>(main_grid, "value_toggle", false);
@@ -591,9 +591,9 @@ void tpreferences::post_build(twindow& window)
 				setter_widget->set_step_size(
 					option["step"].empty() ? 1 : option["step"].to_int());
 
-				delete details_grid->swap_child("setter", setter_widget, true);
+				delete details_grid.swap_child("setter", setter_widget, true);
 
-				tslider& slider = find_widget<tslider>(details_grid, "setter", false);
+				tslider& slider = find_widget<tslider>(&details_grid, "setter", false);
 
 				slider.set_value(lexical_cast_default<int>(get(pref_name), option["default"].to_int()));
 
@@ -624,9 +624,9 @@ void tpreferences::post_build(twindow& window)
 				setter_widget->set_definition("default");
 				setter_widget->set_id("setter");
 
-				delete details_grid->swap_child("setter", setter_widget, true);
+				delete details_grid.swap_child("setter", setter_widget, true);
 
-				tmenu_button& menu = find_widget<tmenu_button>(details_grid, "setter", false);
+				tmenu_button& menu = find_widget<tmenu_button>(&details_grid, "setter", false);
 
 				menu.set_values(menu_data, selected);
 				menu.set_callback_state_change([=](twidget& w) {
@@ -942,14 +942,12 @@ void tpreferences::pre_show(twindow& window)
 
 	//
 	// Status labels
-	// These need to be set here in pre_show, once the fields are initilized. For some reason, this
+	// These need to be set here in pre_show, once the fields are initialized. For some reason, this
 	// is not the case for those in Advanced
 	//
 
-	// INFINITE_AUTO_SAVES is hardcoded as 61 in game_preferences.hpp
 	gui2::bind_status_label<tslider>(window, "max_saves_slider", [](tslider& s)->std::string {
-		// _("∞") doesn't look good on Windows. Restore when it does
-		return s.get_value() == INFINITE_AUTO_SAVES ? _("infinite") : s.get_value_label().str();
+		return s.get_value() == INFINITE_AUTO_SAVES ? _("∞") : s.get_value_label().str();
 	});
 
 	gui2::bind_status_label<tslider>(window, "turbo_slider",     [](tslider& s)->std::string {
@@ -1017,7 +1015,6 @@ void tpreferences::fullscreen_toggle_callback(twindow& window)
 {
 	const bool ison = find_widget<ttoggle_button>(&window, "fullscreen", false).get_value_bool();
 	window.video().set_fullscreen(ison);
-	events::raise_resize_event();
 
 	tmenu_button& res_list = find_widget<tmenu_button>(&window, "resolution_set", false);
 
