@@ -595,13 +595,7 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 	typedef std::map<std::string, config> config_map;
 	config_map merged_children_map;
 	for (const config &cfg : child_range(key)) {
-		const std::string &value = cfg[attribute];
-		config_map::iterator m = merged_children_map.find(value);
-		if ( m!=merged_children_map.end() ) {
-			m->second.append(cfg);
-		} else {
-			merged_children_map.insert(make_pair(value, cfg));
-		}
+		merged_children_map[cfg[attribute]].append(cfg);
 	}
 
 	clear_children(key);
