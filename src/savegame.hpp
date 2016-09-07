@@ -32,6 +32,29 @@ bool save_game_exists(const std::string& name, compression::format compressed);
 /** Delete all autosaves of a certain scenario. */
 void clean_saves(const std::string& label);
 
+struct load_game_metadata {
+	/** Name of the savefile to be loaded. */
+	std::string filename;
+
+	/** The difficulty the save is meant to be loaded with. */
+	std::string difficulty;
+
+	/** State of the "show_replay" checkbox in the load-game dialog. */
+	bool show_replay;
+
+	/** State of the "cancel_orders" checkbox in the load-game dialog. */
+	bool cancel_orders;
+
+	/** State of the "change_difficulty" checkbox in the load-game dialog. */
+	bool select_difficulty;
+
+	/** Summary config of the save selected in the load game dialog. */
+	config summary;
+
+	/** Config information of the savefile to be loaded. */
+	config load_config;
+};
+
 /** The class for loading a savefile. */
 class loadgame
 {
@@ -58,9 +81,9 @@ public:
 	void set_gamestate();
 
 	// Getter-methods
-	bool show_replay() const { return show_replay_; }
-	bool cancel_orders() const { return cancel_orders_; }
-	const std::string & filename() const { return filename_; }
+	bool show_replay() const { return load_data_.show_replay; }
+	bool cancel_orders() const { return load_data_.cancel_orders; }
+	const std::string & filename() const { return load_data_.filename; }
 
 	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
 	static bool check_version_compatibility(const version_info & version, CVideo & video);
@@ -71,10 +94,8 @@ public:
 	}
 
 private:
-	/** Display the load-game dialog. */
-	void show_dialog();
 	/** Display the difficulty dialog. */
-	void show_difficulty_dialog();
+	bool show_difficulty_dialog();
 	/** Call check_version_compatibility above, using the version of this savefile. */
 	bool check_version_compatibility();
 	/** Copy era information into the snapshot. */
@@ -84,13 +105,8 @@ private:
 	CVideo& video_;
 
 	saved_game& gamestate_; /** Primary output information. */
-	std::string filename_; /** Name of the savefile to be loaded. */
-	std::string difficulty_; /** The difficulty the save is meant to be loaded with. */
-	config load_config_; /** Config information of the savefile to be loaded. */
-	bool show_replay_; /** State of the "show_replay" checkbox in the load-game dialog. */
-	bool cancel_orders_; /** State of the "cancel_orders" checkbox in the load-game dialog. */
-	bool select_difficulty_; /** State of the "change_difficulty" checkbox in the load-game dialog. */
-	config summary_; /** Summary config of the save selected in the load game dialog. */
+
+	load_game_metadata load_data_;
 };
 
 /**

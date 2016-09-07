@@ -85,46 +85,16 @@ loadgame::loadgame(CVideo& video, const config& game_config, saved_game& gamesta
 	: game_config_(game_config)
 	, video_(video)
 	, gamestate_(gamestate)
-	, filename_()
-	, difficulty_()
-	, load_config_()
-	, show_replay_(false)
-	, cancel_orders_(false)
-	, select_difficulty_(false)
-	, summary_()
+	, load_data_()
 {}
 
-void loadgame::show_dialog()
+bool loadgame::show_difficulty_dialog()
 {
-	if(get_saves_list().empty()) {
-		gui2::show_transient_message(video_, _("No Saved Games"),
-			_("There are no save files to load"));
-		return;
+	if(load_data_.summary["corrupt"].to_bool()) {
+		return false;
 	}
 
-	// FIXME: Integrate the load_game dialog into this class
-	// something to watch for the curious, but not yet ready to go
-	gui2::tgame_load load_dialog(game_config_);
-	load_dialog.show(video_);
-
-	if (load_dialog.get_retval() == gui2::twindow::OK) {
-		select_difficulty_ = load_dialog.change_difficulty();
-
-		filename_ = load_dialog.filename();
-		show_replay_ = load_dialog.show_replay();
-		cancel_orders_ = load_dialog.cancel_orders();
-
-		summary_ = load_dialog.summary();
-	}
-}
-
-void loadgame::show_difficulty_dialog()
-{
-	if(summary_["corrupt"].to_bool()) {
-		return;
-	}
-
-	std::string campaign_id = summary_["campaign"];
+	std::string campaign_id = load_data_.summary["campaign"];
 
 	for(const config &campaign : game_config_.child_range("campaign"))
 	{
@@ -135,36 +105,43 @@ void loadgame::show_difficulty_dialog()
 		gui2::tcampaign_difficulty difficulty_dlg(campaign);
 		difficulty_dlg.show(video_);
 
-		// Return if canceled, since otherwise difficulty_ will be set to 'CANCEL'
+		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
 		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-			return;
+			return false;
 		}
 
-		difficulty_ = difficulty_dlg.selected_difficulty();
+		load_data_.difficulty = difficulty_dlg.selected_difficulty();
 
 		// Exit loop
 		break;
 	}
+
+	return true;
 }
 
 // Called only by play_controller to handle in-game attempts to load. Instead of returning true,
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game()
 {
-	if (!video_.faked()) {
-		show_dialog();
+	if(!video_.faked()) {
+		if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+			return false;
+		}
 	}
 
-	if(filename_.empty()) {
+	if(load_data_.filename.empty()) {
 		return false;
 	}
 
-	if (select_difficulty_)
-		show_difficulty_dialog();
+	if(load_data_.select_difficulty) {
+		if(!show_difficulty_dialog()) {
+			return false;
+		}
+	}
 
 	// Confirm the integrity of the file before throwing the exception.
 	// Use the summary in the save_index for this.
-	const config & summary = save_index_manager.get(filename_);
+	const config & summary = save_index_manager.get(load_data_.filename);
 
 	if (summary["corrupt"].to_bool(false)) {
 		gui2::show_error_message(video_,
@@ -176,7 +153,7 @@ bool loadgame::load_game()
 		return false;
 	}
 
-	throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_, true);
+	throw game::load_game_exception(load_data_.filename, load_data_.show_replay, load_data_.cancel_orders, load_data_.select_difficulty, load_data_.difficulty, true);
 }
 
 bool loadgame::load_game(
@@ -187,28 +164,33 @@ bool loadgame::load_game(
 		, const std::string& difficulty
 		, bool skip_version_check)
 {
-	filename_ = filename;
-	difficulty_ = difficulty;
-	select_difficulty_ = select_difficulty;
+	load_data_.filename = filename;
+	load_data_.difficulty = difficulty;
+	load_data_.select_difficulty = select_difficulty;
 
-	if (filename_.empty()){
-		show_dialog();
-	}
-	else{
-		show_replay_ = show_replay;
-		cancel_orders_ = cancel_orders;
+	if(load_data_.filename.empty()){
+		if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+			return false;
+		}
+	} else {
+		load_data_.show_replay = show_replay;
+		load_data_.cancel_orders = cancel_orders;
 	}
 
-	if (filename_.empty())
+	if(load_data_.filename.empty()) {
 		return false;
+	}
 
-	if (select_difficulty_)
-		show_difficulty_dialog();
+	if(load_data_.select_difficulty) {
+		if(!show_difficulty_dialog()) {
+			return false;
+		}
+	}
 
 	std::string error_log;
-	read_save_file(filename_, load_config_, &error_log);
+	read_save_file(load_data_.filename, load_data_.load_config, &error_log);
 
-	convert_old_saves(load_config_);
+	convert_old_saves(load_data_.load_config);
 
 	if(!error_log.empty()) {
         try {
@@ -222,11 +204,11 @@ bool loadgame::load_game(
         }
 	}
 
-	if (!difficulty_.empty()){
-		load_config_["difficulty"] = difficulty_;
+	if (!load_data_.difficulty.empty()){
+		load_data_.load_config["difficulty"] = load_data_.difficulty;
 	}
 	// read classification to for loading the game_config config object.
-	gamestate_.classification() = game_classification(load_config_);
+	gamestate_.classification() = game_classification(load_data_.load_config);
 
 	if (skip_version_check) {
 		return true;
@@ -285,14 +267,16 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 
 void loadgame::set_gamestate()
 {
-	gamestate_.set_data(load_config_);
+	gamestate_.set_data(load_data_.load_config);
 }
 
 bool loadgame::load_multiplayer_game()
 {
-	show_dialog();
+	if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+		return false;
+	}
 
-	if(filename_.empty()) {
+	if(load_data_.filename.empty()) {
 		return false;
 	}
 
@@ -303,8 +287,8 @@ bool loadgame::load_multiplayer_game()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		read_save_file(filename_, load_config_, &error_log);
-		copy_era(load_config_);
+		read_save_file(load_data_.filename, load_data_.load_config, &error_log);
+		copy_era(load_data_.load_config);
 	}
 
 	if(!error_log.empty()) {
@@ -314,14 +298,14 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
-	if(is_replay_save(summary_)) {
+	if(is_replay_save(load_data_.summary)) {
 		gui2::show_transient_message(video_, _("Load Game"), _("Replays are not supported in multiplayer mode."));
 		return false;
 	}
 
 	// We want to verify the game classification before setting the data, so we don't check on
 	// gamestate_.classification() and instead construct a game_classification object manually.
-	if(game_classification(load_config_).campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+	if(game_classification(load_data_.load_config).campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		gui2::show_transient_error_message(video_, _("This is not a multiplayer save."));
 		return false;
 	}

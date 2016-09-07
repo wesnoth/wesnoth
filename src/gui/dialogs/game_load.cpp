@@ -41,7 +41,6 @@
 #include "gui/widgets/window.hpp"
 #include "image.hpp"
 #include "language.hpp"
-#include "savegame.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cctype>
@@ -89,30 +88,23 @@ namespace gui2
 
 REGISTER_DIALOG(game_load)
 
-tgame_load::tgame_load(const config& cache_config)
-	: txtFilter_(register_text("txtFilter", true))
-	, chk_change_difficulty_(register_bool("change_difficulty", true))
-	, chk_show_replay_(register_bool("show_replay", true))
-	, chk_cancel_orders_(register_bool("cancel_orders", true))
-	, filename_()
-	, change_difficulty_(false)
-	, show_replay_(false)
-	, cancel_orders_(false)
+tgame_load::tgame_load(const config& cache_config, savegame::load_game_metadata& data)
+	: filename_(data.filename)
+	, change_difficulty_(register_bool("change_difficulty", true, data.select_difficulty))
+	, show_replay_(register_bool("show_replay", true, data.show_replay))
+	, cancel_orders_(register_bool("cancel_orders", true, data.cancel_orders))
+	, summary_(data.summary)
 	, games_({savegame::get_saves_list()})
 	, cache_config_(cache_config)
 	, last_words_()
-	, summary_()
 {
 }
 
 void tgame_load::pre_show(twindow& window)
 {
-	assert(txtFilter_);
-
 	find_widget<tminimap>(&window, "minimap", false).set_config(&cache_config_);
 
-	ttext_box* filter
-			= find_widget<ttext_box>(&window, "txtFilter", false, true);
+	ttext_box* filter = find_widget<ttext_box>(&window, "txtFilter", false, true);
 
 	filter->set_text_changed_callback(
 			std::bind(&tgame_load::filter_text_changed, this, _1, _2));
@@ -169,20 +161,19 @@ void tgame_load::display_savegame(twindow& window)
 
 	savegame::save_info& game = games_[selected_row];
 	filename_ = game.name();
-
-	const config& summary = game.summary();
+	summary_  = game.summary();
 
 	find_widget<tminimap>(&window, "minimap", false)
-			.set_map_data(summary["map_data"]);
+			.set_map_data(summary_["map_data"]);
 
 	find_widget<tlabel>(&window, "lblScenario", false)
-			.set_label(summary["label"]);
+			.set_label(summary_["label"]);
 
 	tlistbox& leader_list = find_widget<tlistbox>(&window, "leader_list", false);
 
 	leader_list.clear();
 
-	for(const auto& leader : summary.child_range("leader")) {
+	for(const auto& leader : summary_.child_range("leader")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -209,21 +200,16 @@ void tgame_load::display_savegame(twindow& window)
 
 	std::stringstream str;
 	str << game.format_time_local() << "\n";
-	evaluate_summary_string(str, summary);
+	evaluate_summary_string(str, summary_);
 
 	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
-	ttoggle_button& replay_toggle =
-			find_widget<ttoggle_button>(&window, "show_replay", false);
+	ttoggle_button& replay_toggle            = dynamic_cast<ttoggle_button&>(*show_replay_->widget());
+	ttoggle_button& cancel_orders_toggle     = dynamic_cast<ttoggle_button&>(*cancel_orders_->widget());
+	ttoggle_button& change_difficulty_toggle = dynamic_cast<ttoggle_button&>(*change_difficulty_->widget());
 
-	ttoggle_button& cancel_orders_toggle =
-			find_widget<ttoggle_button>(&window, "cancel_orders", false);
-
-	ttoggle_button& change_difficulty_toggle =
-			find_widget<ttoggle_button>(&window, "change_difficulty", false);
-
-	const bool is_replay = savegame::loadgame::is_replay_save(summary);
-	const bool is_scenario_start = summary["turn"].empty();
+	const bool is_replay = savegame::loadgame::is_replay_save(summary_);
+	const bool is_scenario_start = summary_["turn"].empty();
 
 	// Always toggle show_replay on if the save is a replay
 	replay_toggle.set_value(is_replay);
@@ -278,19 +264,14 @@ void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 	}
 
 	list.set_row_shown(show_items);
-}
 
-void tgame_load::post_show(twindow& window)
-{
-	change_difficulty_ = chk_change_difficulty_->get_widget_value(window);
-	show_replay_ = chk_show_replay_->get_widget_value(window);
-	cancel_orders_ = chk_cancel_orders_->get_widget_value(window);
+	const bool any_shown = list.any_rows_shown();
 
-	if(!games_.empty()) {
-		const int index =
-			find_widget<tlistbox>(&window, "savegame_list", false).get_selected_row();
-		summary_ = games_[index].summary();
-	}
+	// Disable Load button if no games are available
+	find_widget<tbutton>(&window, "ok", false).set_active(any_shown);
+
+	// Diable 'Enter' loading if no games are available
+	window.set_enter_disabled(!any_shown);
 }
 
 void tgame_load::evaluate_summary_string(std::stringstream& str,
