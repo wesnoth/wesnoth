@@ -101,8 +101,8 @@ public:
 	bool force_lock_settings() const { return force_lock_settings_; }
 
 private:
-	connect_engine(const connect_engine&);
-	void operator=(const connect_engine&);
+	connect_engine(const connect_engine&) = delete;
+	void operator=(const connect_engine&) = delete;
 
 	void send_level_data() const;
 
@@ -223,8 +223,8 @@ public:
 	std::string get_color(int index = -1) const;
 	int num_colors() const;
 private:
-	side_engine(const side_engine& engine);
-	void operator=(const side_engine&);
+	side_engine(const side_engine& engine) = delete;
+	void operator=(const side_engine&) = delete;
 
 	void add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value);
