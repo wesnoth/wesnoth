@@ -14,12 +14,35 @@
 #ifndef GUI_WIDGETS_STATUS_LABEL_HELPER_HPP_INCLUDED
 #define GUI_WIDGETS_STATUS_LABEL_HELPER_HPP_INCLUDED
 
+#include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/control.hpp"
+#include "gui/widgets/integer_selector.hpp"
+#include "gui/widgets/selectable.hpp"
 
 #include "utils/functional.hpp"
 
 namespace gui2 {
+
+/**
+ * Default value getter for selectable widgets (like toggle buttons)
+ */
+template<typename T>
+static inline typename std::enable_if<std::is_base_of<tselectable_, T>::value, std::string>::type
+default_value_getter(T& w)
+{
+	return w.get_value_bool() ? _("yes") : _("no");
+}
+
+/**
+ * Default value getter for integer-based widgets (like sliders)
+ */
+template<typename T>
+static inline typename std::enable_if<std::is_base_of<tinteger_selector_, T>::value, std::string>::type
+default_value_getter(T& w)
+{
+	return w.get_value_label();
+}
 
 /**
  * Creates a bound status label that will reflect the label state of a widget. The initial label
@@ -31,7 +54,7 @@ namespace gui2 {
  */
 template<typename W>
 std::function<void()> bind_status_label(twidget& find_in, const std::string& id,
-		const std::function<std::string(W&)> value_getter = [](W& w)->std::string { return std::to_string(w.get_value()); },
+		const std::function<std::string(W&)> value_getter = default_value_getter<W>,
 		const std::string& label_id = "")
 {
 	const std::string label_id_ = label_id.empty() ? id + "_label" : label_id;
