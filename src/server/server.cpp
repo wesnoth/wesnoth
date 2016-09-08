@@ -2943,18 +2943,24 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 }
 
 void server::delete_game(int gameid) {
-	const std::shared_ptr<game>& game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
+	std::shared_ptr<game> game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
 
 	// Set the availability status for all quitting users.
-	for(const auto& user : player_connections_.get<game_t>().equal_range(gameid)) {
-		user.info().mark_available();
+	using titer = player_connections::index<game_t>::type::iterator;
+	auto range_pair = player_connections_.get<game_t>().equal_range(gameid);
+	//make a copy of the iterators so that we can change them while iterating over them.
+	std::vector<titer> range_vctor;
+
+	for (titer it = range_pair.first; it != range_pair.second; ++it) {
+		range_vctor.push_back(it);
+		it->info().mark_available();
 		simple_wml::document udiff;
 		if(make_change_diff(games_and_users_list_.root(), NULL,
-					 "user", user.info().config_address(), udiff)) {
+					 "user", it->info().config_address(), udiff)) {
 		send_to_lobby(udiff);
 		} else {
 			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_. (socket: "
-				<< user.socket() << ")\n";
+				<< it->socket() << ")\n";
 		}
 	}
 
@@ -2962,11 +2968,9 @@ void server::delete_game(int gameid) {
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	game_ptr->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
-	player_connections::index<game_t>::type::iterator iter, i_end;
-	std::tie(iter, i_end) = player_connections_.get<game_t>().equal_range(gameid);
-	for(;iter != i_end; iter++)
-		player_connections_.get<game_t>().modify(iter, player_record::enter_lobby);
-
+	for (const titer& it : range_vctor) {
+		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
+	}
 	game_ptr->send_data(games_and_users_list_);
 }
 
