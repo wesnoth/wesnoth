@@ -967,21 +967,19 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1; // abort, click will do nothing
 	}
 
-	auto attacker_weapons = (*attacker).attacks();
+	std::vector<battle_context> bc_vector;
+	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
-	const bool all_disabled = std::all_of(attacker_weapons.begin(), attacker_weapons.end(), [](attack_type& attack) {
-		return attack.get_special_bool("disable");
+	const bool all_disabled = std::all_of(bc_vector.begin(), bc_vector.end(), [](battle_context& context) {
+		return (*context.get_attacker_stats().weapon).get_special_bool("disable");
 	});
 
-	if(attacker_weapons.empty() || all_disabled) {
+	if((*attacker).attacks().empty() || all_disabled) {
 		gui2::show_transient_message(gui_->video(), "No Attacks",
 			_("This unit has no usable weapons."));
 
 		return -1;
 	}
-
-	std::vector<battle_context> bc_vector;
-	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	gui2::tunit_attack dlg(
 			  attacker
