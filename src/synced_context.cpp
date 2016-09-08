@@ -323,7 +323,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			//here we can get into the situation that the decision has already been made but not received yet.
 			synced_context::pull_remote_user_input();
 			//FIXME: we shoudl call play_controller::play_silce or the application will freeze while waiting for a remote choice.
-
+			resources::controller->play_slice();
 			/*
 				we don't want to send multiple "require_random" to the server.
 			*/
