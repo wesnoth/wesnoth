@@ -316,6 +316,10 @@ unit::unit(const unit& o)
 	, small_profile_(o.small_profile_)
 	, invisibility_cache_()
 {
+	// Copy the attacks rather than just copying references
+	for(auto& a : attacks_) {
+		a.reset(new attack_type(*a));
+	}
 }
 
 struct ptr_vector_pushback
