@@ -2381,6 +2381,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\multi_page.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -4217,6 +4224,7 @@
     <ClInclude Include="..\..\src\gui\widgets\matrix.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\menu_button.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\minimap.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\multi_page.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\pane.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\panel.hpp" />

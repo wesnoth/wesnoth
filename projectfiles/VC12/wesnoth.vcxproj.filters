@@ -1520,6 +1520,9 @@
     <ClCompile Include="..\..\src\SDL_SavePNG\savepng.c">
       <Filter>SDL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2923,6 +2926,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\editor\generator_settings.hpp">
       <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp">
+      <Filter>Gui\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
