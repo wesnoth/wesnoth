@@ -340,7 +340,7 @@ void tpreferences::post_build(twindow& window)
 	tmenu_button& res_list = find_widget<tmenu_button>(&window, "resolution_set", false);
 
 	res_list.set_use_markup(true);
-	res_list.set_active(!fullscreen());
+	res_list.set_active(true);
 
 	set_resolution_list(res_list, window.video());
 
@@ -1016,7 +1016,6 @@ void tpreferences::fullscreen_toggle_callback(twindow& window)
 	tmenu_button& res_list = find_widget<tmenu_button>(&window, "resolution_set", false);
 
 	set_resolution_list(res_list, window.video());
-	res_list.set_active(!ison);
 }
 
 void tpreferences::handle_res_select(twindow& window)

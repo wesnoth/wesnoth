@@ -404,7 +404,7 @@ bool CVideo::init_window()
 	video_flags = get_flags(video_flags);
 
 	if (preferences::fullscreen()) {
-		video_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+		video_flags |= SDL_WINDOW_FULLSCREEN;
 	} else if (preferences::maximized()) {
 		video_flags |= SDL_WINDOW_MAXIMIZED;
 	}
@@ -451,9 +451,11 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 			break;
 
 		case TO_RES:
-			window->restore();
 			window->set_size(x, y);
-			window->center();
+			if (!isFullScreen()) {
+				window->restore();
+				window->center();
+			}
 			break;
 	}
 
@@ -542,8 +544,8 @@ Uint8 CVideo::window_state()
 	if (flags & SDL_WINDOW_MAXIMIZED) {
 		state |= SDL_WINDOW_MAXIMIZED;
 	}
-	if (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) {
-		state |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+	if (flags & SDL_WINDOW_FULLSCREEN) {
+		state |= SDL_WINDOW_FULLSCREEN;
 	}
 	return state;
 }
@@ -619,7 +621,7 @@ std::pair<int,int> CVideo::current_resolution()
 }
 
 bool CVideo::isFullScreen() const {
-	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
+	return (window->get_flags() & SDL_WINDOW_FULLSCREEN) != 0;
 }
 
 

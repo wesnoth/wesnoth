@@ -93,7 +93,7 @@ void twindow::restore()
 
 void twindow::full_screen()
 {
-	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 }
 
 void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
