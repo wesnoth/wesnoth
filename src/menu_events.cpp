@@ -1641,36 +1641,38 @@ void console_handler::do_next_level()
 }
 
 void console_handler::do_choose_level() {
+	std::string tag = menu_handler_.pc_.get_classification().get_tagname();
 	std::vector<std::string> options;
-	int next = 0, nb = 0;
-	for(const config &sc : menu_handler_.game_config_.child_range("scenario"))
-	{
-		const std::string &id = sc["id"];
-		options.push_back(id);
-		if (id == menu_handler_.gamedata().next_scenario())
-			next = nb;
-		++nb;
-	}
-	// find scenarios of multiplayer campaigns
-	// (assumes that scenarios are ordered properly in the game_config)
-	std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
-	for(const config &mp : menu_handler_.game_config_.child_range("multiplayer"))
-	{
-		if (mp["id"] == scenario)
-		{
-			const std::string &id = mp["id"];
+	std::string next;
+	if(tag != "multiplayer") {
+		for(const config &sc : menu_handler_.game_config_.child_range(tag)) {
+			const std::string &id = sc["id"];
 			options.push_back(id);
-			if (id == menu_handler_.gamedata().next_scenario())
-				next = nb;
-			++nb;
-			scenario = mp["next_scenario"].str();
+			if(id == menu_handler_.gamedata().next_scenario()) {
+				next = id;
+			}
+		}
+	} else {
+		// find scenarios of multiplayer campaigns
+		// (assumes that scenarios are ordered properly in the game_config)
+		std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
+		for(const config &mp : menu_handler_.game_config_.child_range("multiplayer"))
+		{
+			if (mp["id"] == scenario)
+			{
+				const std::string &id = mp["id"];
+				options.push_back(id);
+				if (id == menu_handler_.gamedata().next_scenario())
+					next = id;
+				scenario = mp["next_scenario"].str();
+			}
 		}
 	}
 	std::sort(options.begin(), options.end());
-	int choice = 0;
+	int choice = std::lower_bound(options.begin(), options.end(), next) - options.begin();
 	{
 		gui2::tsimple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
-		dlg.set_selected_index(next);
+		dlg.set_selected_index(choice);
 		dlg.show(menu_handler_.gui_->video());
 		choice = dlg.selected_index();
 	}
