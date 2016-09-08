@@ -333,7 +333,7 @@ void create::process_event_impl(const process_event_data & data)
 				}
 			}
 
-			if (load.cancel_orders())
+			if (load.data().cancel_orders)
 				engine_.get_state().cancel_orders();
 
 			engine_.prepare_for_saved_game();

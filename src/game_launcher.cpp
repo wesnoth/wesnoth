@@ -677,14 +677,14 @@ bool game_launcher::load_game()
 		return false;
 	}
 
-	play_replay_ = load.show_replay();
+	play_replay_ = load.data().show_replay;
 	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no") << "\n";
 	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no") << "\n";
-	// in case load.show_replay() && !state_.is_mid_game_save()
+	// in case load.data().show_replay && !state_.is_mid_game_save()
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
 
-	if(state_.is_mid_game_save() && load.show_replay())
+	if(state_.is_mid_game_save() && load.data().show_replay)
 	{
 		statistics::clear_current_scenario();
 	}
@@ -693,7 +693,7 @@ bool game_launcher::load_game()
 		state_.unify_controllers();
 	}
 
-	if (load.cancel_orders()) {
+	if (load.data().cancel_orders) {
 		state_.cancel_orders();
 	}
 

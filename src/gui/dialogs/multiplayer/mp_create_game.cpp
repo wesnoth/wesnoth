@@ -562,7 +562,7 @@ void tmp_create_game::load_game_callback(twindow& window)
 			return ;
 		}
 
-		if(load.cancel_orders()) {
+		if(load.data().cancel_orders) {
 			create_engine_.get_state().cancel_orders();
 		}
 

@@ -81,10 +81,11 @@ public:
 	void set_gamestate();
 
 	// Getter-methods
-	bool show_replay() const { return load_data_.show_replay; }
-	bool cancel_orders() const { return load_data_.cancel_orders; }
-	const std::string & filename() const { return load_data_.filename; }
-
+	const load_game_metadata& data()
+	{
+		return load_data_;
+	}
+	
 	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
 	static bool check_version_compatibility(const version_info & version, CVideo & video);
 
