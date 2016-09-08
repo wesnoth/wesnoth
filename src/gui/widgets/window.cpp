@@ -497,7 +497,7 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	// of items.
 	if(id == "ok") {
 		return OK;
-	} else if(id == "cancel") {
+	} else if(id == "cancel" || id == "quit") {
 		return CANCEL;
 	} else {
 		return NONE;
