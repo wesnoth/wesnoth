@@ -54,7 +54,6 @@ namespace gui2
  * This shows the dialog for attacking units.
  *
  * @begin{table}{dialog_widgets}
- * attacker_portrait & & image   & o & Shows the portrait of the attacking unit.
  *                                     $
  * attacker_icon     & & image   & o & Shows the icon of the attacking unit. $
  * attacker_name     & & control & o & Shows the name of the attacking unit. $
@@ -86,29 +85,38 @@ tunit_attack::tunit_attack(const unit_map::iterator& attacker_itor,
 {
 }
 
-template <class T>
-static void
-set_label(twindow& window, const std::string& id, const std::string& label)
+void tunit_attack::damage_calc_callback(twindow& window)
 {
-	T* widget = find_widget<T>(&window, id, false, false);
-	if(widget) {
-		widget->set_label(label);
-	}
+	const size_t index
+		= find_widget<tlistbox>(&window, "weapon_list", false).get_selected_row();
+
+	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
+	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
+
+	gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
 }
 
-static void set_weapon_info(twindow& window,
-							const std::vector<battle_context>& weapons,
-							const int best_weapon)
+void tunit_attack::pre_show(twindow& window)
 {
-	tlistbox& weapon_list
-			= find_widget<tlistbox>(&window, "weapon_list", false);
+	connect_signal_mouse_left_click(
+			find_widget<tbutton>(&window, "damage_calculation", false),
+			std::bind(&tunit_attack::damage_calc_callback, this, std::ref(window)));
+
+	find_widget<tunit_preview_pane>(&window, "attacker_pane", false)
+		.set_displayed_unit(*attacker_itor_);
+
+	find_widget<tunit_preview_pane>(&window, "defender_pane", false)
+		.set_displayed_unit(*defender_itor_);
+
+	selected_weapon_ = -1;
+
+	tlistbox& weapon_list = find_widget<tlistbox>(&window, "weapon_list", false);
 	window.keyboard_capture(&weapon_list);
 
 	const config empty;
 	const attack_type no_weapon(empty);
 
-	for(const auto & weapon : weapons)
-	{
+	for(const auto & weapon : weapons_) {
 		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
 		const battle_context_unit_stats& defender = weapon.get_defender_stats();
 
@@ -176,42 +184,14 @@ static void set_weapon_info(twindow& window,
 		weapon_list.add_row(data);
 	}
 
-	assert(best_weapon < static_cast<int>(weapon_list.get_item_count()));
-	weapon_list.select_row(best_weapon);
-}
-
-void tunit_attack::damage_calc_callback(twindow& window)
-{
-	const size_t index
-		= find_widget<tlistbox>(&window, "weapon_list", false).get_selected_row();
-
-	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
-	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
-
-	gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
-}
-
-void tunit_attack::pre_show(twindow& window)
-{
-	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "damage_calculation", false),
-			std::bind(&tunit_attack::damage_calc_callback, this, std::ref(window)));
-
-	find_widget<tunit_preview_pane>(&window, "attacker_pane", false)
-		.set_displayed_unit(*attacker_itor_);
-
-	find_widget<tunit_preview_pane>(&window, "defender_pane", false)
-		.set_displayed_unit(*defender_itor_);
-
-	selected_weapon_ = -1;
-	set_weapon_info(window, weapons_, best_weapon_);
+	assert(best_weapon_ < static_cast<int>(weapon_list.get_item_count()));
+	weapon_list.select_row(best_weapon_);
 }
 
 void tunit_attack::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		selected_weapon_ = find_widget<tlistbox>(&window, "weapon_list", false)
-								   .get_selected_row();
+		selected_weapon_ = find_widget<tlistbox>(&window, "weapon_list", false).get_selected_row();
 	}
 }
 
