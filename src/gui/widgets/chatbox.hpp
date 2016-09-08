@@ -37,7 +37,7 @@ class ttext_box;
 
 namespace implementation
 {
-	struct tbuilder_mp_chatbox;
+	struct tbuilder_chatbox;
 }
 
 
@@ -52,12 +52,12 @@ struct tlobby_chat_window
 	int pending_messages;
 };
 
-class tmp_chatbox : public tcontainer_, public events::chat_handler
+class tchatbox : public tcontainer_, public events::chat_handler
 {
-	friend struct implementation::tbuilder_mp_chatbox;
+	friend struct implementation::tbuilder_chatbox;
 
 public:
-	tmp_chatbox();
+	tchatbox();
 
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) override;
@@ -253,10 +253,10 @@ public:
 
 // }---------- DEFINITION ---------{
 
-struct tmp_chatbox_definition : public tcontrol_definition
+struct tchatbox_definition : public tcontrol_definition
 {
 
-	explicit tmp_chatbox_definition(const config& cfg);
+	explicit tchatbox_definition(const config& cfg);
 
 	struct tresolution : public tresolution_definition_
 	{
@@ -271,10 +271,10 @@ struct tmp_chatbox_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_mp_chatbox : public tbuilder_control
+struct tbuilder_chatbox : public tbuilder_control
 {
 public:
-	explicit tbuilder_mp_chatbox(const config& cfg);
+	explicit tbuilder_chatbox(const config& cfg);
 
 	using tbuilder_control::build;
 

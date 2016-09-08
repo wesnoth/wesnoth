@@ -519,6 +519,7 @@ add_library(wesnoth-gui_tooltip
 set(wesnoth-gui_widget_SRC
 	gui/dialogs/drop_down_list.cpp
 	gui/widgets/button.cpp
+	gui/widgets/chatbox.cpp
 	gui/widgets/container.cpp
 	gui/widgets/control.cpp
 	gui/widgets/debug.cpp
@@ -534,7 +535,6 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/matrix.cpp
 	gui/widgets/menu_button.cpp
 	gui/widgets/minimap.cpp
-	gui/widgets/mp_chatbox.cpp
 	gui/widgets/multi_page.cpp
 	gui/widgets/pane.cpp
 	gui/widgets/panel.cpp

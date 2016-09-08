@@ -33,7 +33,7 @@
 #endif
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
-#include "gui/widgets/mp_chatbox.hpp"
+#include "gui/widgets/chatbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -739,7 +739,7 @@ void tlobby_main::pre_show(twindow& window)
 
 	window_ = &window;
 
-	chatbox_ = find_widget<tmp_chatbox>(&window, "chat", false, true);
+	chatbox_ = find_widget<tchatbox>(&window, "chat", false, true);
 	chatbox_->set_lobby_info(lobby_info_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 

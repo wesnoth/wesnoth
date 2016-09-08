@@ -41,7 +41,7 @@ class ttext_box;
 class twindow;
 class tmulti_page;
 class ttoggle_button;
-class tmp_chatbox;
+class tchatbox;
 
 struct tsub_player_list
 {
@@ -192,7 +192,7 @@ private:
 
 	lobby_info& lobby_info_;
 
-	tmp_chatbox* chatbox_;
+	tchatbox* chatbox_;
 
 	std::function<void()> preferences_callback_;
 
