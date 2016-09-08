@@ -26,6 +26,7 @@
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
+#include "game_launcher.hpp"
 #include "game_events/manager.hpp"
 #include "generators/map_create.hpp"
 #include "gui/core/layout_exception.hpp"
@@ -685,13 +686,14 @@ template<>
 struct twrapper<gui2::tgame_load>
 {
 	config cfg;
+	savegame::load_game_metadata data;
 	twrapper()
 	{
 		/** @todo Would be nice to add real data to the config. */
 	}
 	gui2::tgame_load* create()
 	{
-		return new gui2::tgame_load(cfg);
+		return new gui2::tgame_load(cfg, data);
 	}
 
 };
@@ -1030,6 +1032,19 @@ struct twrapper<gui2::ttransient_message>
 	gui2::ttransient_message* create()
 	{
 		return new gui2::ttransient_message("Title", false, "Message", false, "");
+	}
+};
+
+template<>
+struct twrapper<gui2::ttitle_screen>
+{
+	std::vector<std::string> args;
+	commandline_options opts;
+	game_launcher game;
+	twrapper() : opts(args), game(opts, "unit_tests") {}
+	gui2::ttitle_screen* create()
+	{
+		return new gui2::ttitle_screen(game);
 	}
 };
 
