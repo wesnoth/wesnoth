@@ -16,6 +16,9 @@
 #define GUI_DIALOGS_TITLE_SCREEN_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "hotkey/hotkey_command.hpp"
+
+class game_launcher;
 
 namespace gui2
 {
@@ -36,52 +39,34 @@ extern bool show_debug_clock_button;
 class ttitle_screen : public tdialog
 {
 public:
-	ttitle_screen();
+	ttitle_screen(game_launcher& game);
 
 	~ttitle_screen();
 
 	/**
-	 * Values for the menu-items of the main menu.
-	 *
-	 * @todo Evaluate the best place for these items.
+	 * Values for actions which leave the title screen.
+	 * Actions that merely show a dialog are not included here.
 	 */
 	enum tresult {
-		TUTORIAL = 1 /**< Start special campaign 'tutorial' */
-		,
-		NEW_CAMPAIGN /**< Let user select a campaign to play */
-		,
-		DOWNLOAD_CAMPAIGN,
-		MULTIPLAYER /**<
-					 * Play single scenario against humans or AI
-					 */
-		,
-		LOAD_GAME,
-		GET_ADDONS,
-		CORES,
-		START_MAP_EDITOR,
-		CHANGE_LANGUAGE,
-		EDIT_PREFERENCES,
-		SHOW_ABOUT /**< Show credits */
-		,
-		QUIT_GAME,
-		TIP_PREVIOUS /**< Show previous tip-of-the-day */
-		,
-		TIP_NEXT /**< Show next tip-of-the-day */
-		,
-		SHOW_HELP,
-		REDRAW_BACKGROUND /**<
-						   * Used after an action needing a redraw (ex:
-						   * fullscreen)
-						   */
-		,
-		RELOAD_GAME_DATA /**< Used to reload all game data */
-		,
-		NOTHING /**<
-				 * Default, nothing done, no redraw needed
-				 */
+		LAUNCH_GAME, ///< Start playing a single-player game, such as the tutorial or a campaign
+		MP_CONNECT, ///< Connect to an MP server
+		MP_HOST, ///< Host an MP game
+		MP_LOCAL, ///< Start a local MP game
+		MAP_EDITOR, ///< Start the map/scenario editor
+		SHOW_ABOUT, ///< Show credits
+		QUIT_GAME, ///< Exit to desktop
+		REDRAW_BACKGROUND, /**< Used after an action needing a redraw
+							* For example, if the window was resized or fullscreen was toggled
+							*/
+		RELOAD_GAME_DATA, ///< Used to reload all game data
 	};
 
+	static tresult display(game_launcher& launcher);
+
 private:
+	tresult result_;
+	game_launcher& game_;
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -92,6 +77,8 @@ private:
 	void pre_show(twindow& window);
 
 	void on_resize(twindow& window);
+
+	void basic_callback(twindow& window, tresult result);
 
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;

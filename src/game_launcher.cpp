@@ -754,7 +754,7 @@ bool game_launcher::goto_multiplayer()
 {
 	if(jump_to_multiplayer_){
 		jump_to_multiplayer_ = false;
-		if(play_multiplayer()){
+		if(play_multiplayer(MP_CONNECT)){
 			;
 		}else{
 			return false;
@@ -813,45 +813,13 @@ void game_launcher::start_wesnothd()
 	throw game::mp_server_error("Starting MP server failed!");
 }
 
-bool game_launcher::play_multiplayer()
+bool game_launcher::play_multiplayer(mp_selection res)
 {
-	int res;
-
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
-	//Print Gui only if the user hasn't specified any server
-	if( multiplayer_server_.empty() ){
-
-		int start_server;
-		do {
-			start_server = 0;
-
-			gui2::tmp_method_selection dlg;
-
-			dlg.show(video());
-
-			if(dlg.get_retval() == gui2::twindow::OK) {
-				res = dlg.get_choice();
-			} else {
-				return false;
-
-			}
-
-			if (res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				start_server = !gui2::tmp_host_game_prompt::execute(video());
-			}
-		} while (start_server);
-		if (res < 0) {
-			return false;
-		}
-
-	}else{
-		res = 4;
-	}
-
 	try {
-		if (res == 2)
+		if (res == MP_HOST)
 		{
 			try {
 				start_wesnothd();
@@ -875,21 +843,13 @@ bool game_launcher::play_multiplayer()
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
 
-		if(res == 3) {
+		if(res == MP_LOCAL) {
 			mp::start_local_game(video(),
 			    game_config_manager::get()->game_config(), state_);
-		} else if((res >= 0 && res <= 2) || res == 4) {
-			std::string host;
-			if(res == 0) {
-				host = preferences::server_list().front().address;
-			}else if(res == 2) {
-				host = "localhost";
-			}else if(res == 4){
-				host = multiplayer_server_;
-				multiplayer_server_ = "";
-			}
+		} else {
 			mp::start_client(video(), game_config_manager::get()->game_config(),
-				state_, host);
+				state_, multiplayer_server_);
+			multiplayer_server_.clear();
 		}
 
 	} catch(game::mp_server_error& e) {

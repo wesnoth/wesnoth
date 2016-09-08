@@ -57,6 +57,8 @@ public:
 
 	CVideo& video() { return *video_; }
 
+	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
+
 	bool init_video();
 	bool init_language();
 	bool init_joystick();
@@ -80,7 +82,8 @@ public:
 
 	bool jump_to_editor() const { return jump_to_editor_; }
 
-	bool play_multiplayer();
+	void select_mp_server(std::string server) { multiplayer_server_ = server; }
+	bool play_multiplayer(mp_selection res);
 	bool play_multiplayer_commandline();
 	bool change_language();
 
