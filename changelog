@@ -38,6 +38,8 @@ Version 1.13.5+dev:
      than the default are installed
    * Redesigned game dropdown/context menu appearance
    * New categories bar in hotkey preferences allows you to filter hotkeys
+   * Fix issue with the title screen not redrawing when the window size or
+     fullscreen setting changes with a dialog open over it.
  * WML Engine:
    * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
@@ -73,6 +75,8 @@ Version 1.13.5+dev:
      It is now the default behaviour unless overridden with the flag_rgb key.
    * New key type_tree in unit filters - similar to type, but also matches any
      possible advancements of the specified unit types.
+   * [options][combo] in [scenario], [modifications], etc has been renamed
+     to [choice] (which is more accurate). The old name still works for now.
 * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
@@ -115,6 +119,7 @@ Version 1.13.5+dev:
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
      chance to zero: as a result, it doesn't slow down damage prediction unlike the
      "increase HP to ridiculous levels" method.
+   * The ;choose_level command now works in the tutorial and in [test] scenarios
    * Fixed a stray ; character appearing pre-entered in the command console.
    * Fixed bug in wesnothd that was causing server crashes if game with
      multiple network and local players was ran.
