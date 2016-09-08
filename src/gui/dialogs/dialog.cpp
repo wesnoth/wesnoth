@@ -35,7 +35,11 @@ tdialog::~tdialog()
 
 bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
-	if(allow_plugin_skip_ && video.faked()) {
+	if(video.faked()) {
+		if(!allow_plugin_skip_) {
+			return false;
+		}
+
 		plugins_manager* pm = plugins_manager::get();
 		if (pm && pm->any_running())
 		{
