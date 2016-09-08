@@ -23,6 +23,7 @@
 #include "map/exception.hpp"
 #include "wml_exception.hpp"
 #include "wesnothd_connection.hpp"
+#include "mp_ui_alerts.hpp"
 #include <iterator>
 
 static lg::log_domain log_engine("engine");
@@ -65,7 +66,36 @@ void lobby_info::delete_games()
 		delete v.second;
 	}
 }
-
+namespace gui2
+{
+void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
+{
+	switch (mode) {
+	case NOTIFY_WHISPER:
+	case NOTIFY_WHISPER_OTHER_WINDOW:
+	case NOTIFY_OWN_NICK:
+		mp_ui_alerts::private_message(true, sender, message);
+		break;
+	case NOTIFY_FRIEND_MESSAGE:
+		mp_ui_alerts::friend_message(true, sender, message);
+		break;
+	case NOTIFY_SERVER_MESSAGE:
+		mp_ui_alerts::server_message(true, sender, message);
+		break;
+	case NOTIFY_LOBBY_QUIT:
+		mp_ui_alerts::player_leaves(true);
+		break;
+	case NOTIFY_LOBBY_JOIN:
+		mp_ui_alerts::player_joins(true);
+		break;
+	case NOTIFY_MESSAGE:
+		mp_ui_alerts::public_message(true, sender, message);
+		break;
+	default:
+		break;
+	}
+}
+}
 namespace
 {
 

@@ -33,6 +33,7 @@
 #endif
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/mp_chatbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -49,7 +50,6 @@
 #include "gettext.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
-#include "mp_ui_alerts.hpp"
 #include "playmp_controller.hpp"
 #include "wesnothd_connection.hpp"
 
@@ -132,179 +132,6 @@ void tplayer_list::update_sort_icons()
 	sort_by_relation->set_icon_name(sort_by_relation->get_value() ? "lobby/sort-friend.png" : "lobby/sort-friend-off.png");
 }
 
-void tlobby_main::send_chat_message(const std::string& message,
-									bool /*allies_only*/)
-{
-	config data, msg;
-	msg["message"] = message;
-	msg["sender"] = preferences::login();
-	data.add_child("message", msg);
-
-	add_chat_message(time(nullptr), preferences::login(), 0, message); // local
-																	// echo
-	wesnothd_connection_.send_data(data);
-}
-
-void tlobby_main::user_relation_changed(const std::string& /*name*/)
-{
-	player_list_dirty_ = true;
-}
-
-void tlobby_main::add_chat_message(const time_t& /*time*/,
-								   const std::string& speaker,
-								   int /*side*/,
-								   const std::string& message,
-								   events::chat_handler::MESSAGE_TYPE /*type*/)
-{
-	std::stringstream ss;
-	ss << "<b>" << speaker << ":</b> ";
-	ss << font::escape_text(message);
-	append_to_chatbox(ss.str());
-}
-
-
-void tlobby_main::add_whisper_sent(const std::string& receiver,
-								   const std::string& message)
-{
-	if(whisper_window_active(receiver)) {
-		add_active_window_message(preferences::login(), message, true);
-	} else if(tlobby_chat_window* t = whisper_window_open(
-					  receiver, preferences::auto_open_whisper_windows())) {
-		switch_to_window(t);
-		add_active_window_message(preferences::login(), message, true);
-	} else {
-		utils::string_map symbols;
-		symbols["receiver"] = receiver;
-		add_active_window_whisper(VGETTEXT("whisper to $receiver", symbols),
-								  message, true);
-	}
-	lobby_info_.get_whisper_log(receiver)
-			.add_message(preferences::login(), message);
-}
-
-void tlobby_main::add_whisper_received(const std::string& sender,
-									   const std::string& message)
-{
-	bool can_go_to_active = !preferences::whisper_friends_only()
-							|| preferences::is_friend(sender);
-	bool can_open_new = preferences::auto_open_whisper_windows()
-						&& can_go_to_active;
-	lobby_info_.get_whisper_log(sender).add_message(sender, message);
-	if(whisper_window_open(sender, can_open_new)) {
-		if(whisper_window_active(sender)) {
-			add_active_window_message(sender, message);
-			do_notify(NOTIFY_WHISPER, sender, message);
-		} else {
-			add_whisper_window_whisper(sender, message);
-			increment_waiting_whsipers(sender);
-			do_notify(NOTIFY_WHISPER_OTHER_WINDOW, sender, message);
-		}
-	} else if(can_go_to_active) {
-		add_active_window_whisper(sender, message);
-		do_notify(NOTIFY_WHISPER, sender, message);
-	} else {
-		LOG_LB << "Ignoring whisper from " << sender << "\n";
-	}
-}
-
-void tlobby_main::add_chat_room_message_sent(const std::string& room,
-											 const std::string& message)
-{
-	// do not open room window here, player should be in the room before sending
-	// messages yo it should be allowed to happen
-	if(tlobby_chat_window* t = room_window_open(room, false)) {
-		room_info* ri = lobby_info_.get_room(room);
-		assert(ri);
-		if(!room_window_active(room)) {
-			switch_to_window(t);
-		}
-		ri->log().add_message(preferences::login(), message);
-		add_active_window_message(preferences::login(), message, true);
-	} else {
-		LOG_LB << "Cannot add sent message to ui for room " << room
-			   << ", player not in the room\n";
-	}
-}
-
-void tlobby_main::add_chat_room_message_received(const std::string& room,
-												 const std::string& speaker,
-												 const std::string& message)
-{
-	if(room_info* ri = lobby_info_.get_room(room)) {
-		t_notify_mode notify_mode = NOTIFY_NONE;
-		ri->log().add_message(speaker, message);
-		if(room_window_active(room)) {
-			add_active_window_message(speaker, message);
-			notify_mode = NOTIFY_MESSAGE;
-		} else {
-			add_room_window_message(room, speaker, message);
-			increment_waiting_messages(room);
-			notify_mode = NOTIFY_MESSAGE_OTHER_WINDOW;
-		}
-		if(speaker == "server") {
-			notify_mode = NOTIFY_SERVER_MESSAGE;
-		} else if(utils::word_match(message, preferences::login())) {
-			notify_mode = NOTIFY_OWN_NICK;
-		} else if(preferences::is_friend(speaker)) {
-			notify_mode = NOTIFY_FRIEND_MESSAGE;
-		}
-		do_notify(notify_mode, speaker, message);
-	} else {
-		LOG_LB << "Discarding message to room " << room << " from " << speaker
-			   << " (room not open)\n";
-	}
-}
-
-void tlobby_main::append_to_chatbox(const std::string& text, const bool force_scroll)
-{
-	append_to_chatbox(text, active_window_, force_scroll);
-}
-
-void tlobby_main::append_to_chatbox(const std::string& text, size_t id, const bool force_scroll)
-{
-	tgrid& grid = chat_log_container_->page_grid(id);
-	tscroll_label& log = find_widget<tscroll_label>(&grid, "log_text", false);
-	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
-	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
-	log.set_use_markup(true);
-	log.set_label(log.label() + "\n" +
-				  "<span color='#bcb088'>" + preferences::get_chat_timestamp(time(0)) + text + "</span>");
-
-	if(chatbox_at_end || force_scroll) {
-		log.scroll_vertical_scrollbar(tscrollbar_::END);
-	} else {
-		log.set_vertical_scrollbar_item_position(chatbox_position);
-	}
-}
-
-void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
-{
-	switch(mode) {
-		case NOTIFY_WHISPER:
-		case NOTIFY_WHISPER_OTHER_WINDOW:
-		case NOTIFY_OWN_NICK:
-			mp_ui_alerts::private_message(true, sender, message);
-			break;
-		case NOTIFY_FRIEND_MESSAGE:
-			mp_ui_alerts::friend_message(true, sender, message);
-			break;
-		case NOTIFY_SERVER_MESSAGE:
-			mp_ui_alerts::server_message(true, sender, message);
-			break;
-		case NOTIFY_LOBBY_QUIT:
-			mp_ui_alerts::player_leaves(true);
-			break;
-		case NOTIFY_LOBBY_JOIN:
-			mp_ui_alerts::player_joins(true);
-			break;
-		case NOTIFY_MESSAGE:
-			mp_ui_alerts::public_message(true, sender, message);
-			break;
-		default:
-			break;
-	}
-}
-
 bool tlobby_main::logout_prompt()
 {
 	return show_prompt(_("Do you really want to log out?"));
@@ -317,13 +144,9 @@ tlobby_main::tlobby_main(const config& game_config,
 	, legacy_result_(QUIT)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
-	, roomlistbox_(nullptr)
-	, chat_log_container_(nullptr)
-	, chat_input_(nullptr)
 	, window_(nullptr)
 	, lobby_info_(info)
 	, preferences_callback_()
-	, open_windows_()
 	, active_window_(0)
 	, filter_friends_(nullptr)
 	, filter_ignored_(nullptr)
@@ -729,12 +552,12 @@ void tlobby_main::update_playerlist()
 		return;
 	SCOPE_LB;
 	DBG_LB << "Playerlist update: " << lobby_info_.users().size() << "\n";
-	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
+	lobby_info_.update_user_statuses(selected_game_id_, chatbox_->active_window_room());
 	lobby_info_.sort_users(player_list_.sort_by_name->get_value_bool(),
 						   player_list_.sort_by_relation->get_value_bool());
 
 	bool lobby = false;
-	if(room_info* ri = active_window_room()) {
+	if(room_info* ri = chatbox_->active_window_room()) {
 		if(ri->name() == "lobby") {
 			lobby = true;
 		}
@@ -880,17 +703,6 @@ void tlobby_main::signal_handler_key_down(SDLKey key, bool& handled, bool& halt)
 void tlobby_main::pre_show(twindow& window)
 {
 	SCOPE_LB;
-	roomlistbox_ = find_widget<tlistbox>(&window, "room_list", false, true);
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(
-			*roomlistbox_,
-			std::bind(&tlobby_main::room_switch_callback,
-						*this,
-						std::ref(window)));
-#else
-	roomlistbox_->set_callback_value_change(
-			dialog_callback<tlobby_main, &tlobby_main::room_switch_callback>);
-#endif
 
 	gamelistbox_ = find_widget<tlistbox>(&window, "game_list", false, true);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -918,8 +730,6 @@ void tlobby_main::pre_show(twindow& window)
 	player_list_.sort_by_relation->set_callback_state_change(
 			std::bind(&tlobby_main::player_filter_callback, this, _1));
 
-	chat_log_container_ = find_widget<tmulti_page>(&window, "chat_log_container", false, true);
-
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 	// A new key handler to deal with escape in a different manner.
@@ -929,16 +739,9 @@ void tlobby_main::pre_show(twindow& window)
 
 	window_ = &window;
 
-	chat_input_ = find_widget<ttext_box>(&window, "chat_input", false, true);
-	assert(chat_input_);
-	connect_signal_pre_key_press(
-		*chat_input_,
-		std::bind(&tlobby_main::chat_input_keypress_callback,
-				this,
-				_3,
-				_4,
-				_5,
-				std::ref(window)));
+	chatbox_ = find_widget<tmp_chatbox>(&window, "chat", false, true);
+	chatbox_->set_lobby_info(lobby_info_);
+	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "create", false),
@@ -1004,8 +807,8 @@ void tlobby_main::pre_show(twindow& window)
 			*filter_text_,
 			std::bind(&tlobby_main::game_filter_keypress_callback, this, _5));
 
-	room_window_open("lobby", true);
-	active_window_changed();
+	chatbox_->room_window_open("lobby", true);
+	chatbox_->active_window_changed();
 	game_filter_reload();
 
 	// Force first update to be directly.
@@ -1042,7 +845,7 @@ void tlobby_main::pre_show(twindow& window)
 	plugins_context_->set_callback("create", [this, &window](const config&) { create_button_callback(window); }, true);
 	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 
-	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
+	plugins_context_->set_callback("chat", [this](const config& cfg) { chatbox_->send_chat_message(cfg["message"], false); }, true);
 	plugins_context_->set_callback("select_game", [this](const config& cfg) {
 		selected_game_id_ = cfg.has_attribute("id") ? cfg["id"].to_int() : lobby_info_.games()[cfg["index"].to_int()]->id;
 	}, true);
@@ -1057,242 +860,6 @@ void tlobby_main::post_show(twindow& /*window*/)
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
 	plugins_context_.reset();
-}
-
-room_info* tlobby_main::active_window_room()
-{
-	const tlobby_chat_window& t = open_windows_[active_window_];
-	if(t.whisper)
-		return nullptr;
-	return lobby_info_.get_room(t.name);
-}
-
-tlobby_chat_window* tlobby_main::room_window_open(const std::string& room,
-												  bool open_new)
-{
-	return search_create_window(room, false, open_new);
-}
-
-tlobby_chat_window* tlobby_main::whisper_window_open(const std::string& name,
-													 bool open_new)
-{
-	return search_create_window(name, true, open_new);
-}
-
-tlobby_chat_window* tlobby_main::search_create_window(const std::string& name,
-													  bool whisper,
-													  bool open_new)
-{
-	for(auto & t : open_windows_) {
-		if(t.name == name && t.whisper == whisper)
-			return &t;
-	}
-
-	if(open_new) {
-		open_windows_.push_back(tlobby_chat_window(name, whisper));
-		std::map<std::string, string_map> data;
-		utils::string_map symbols;
-		symbols["name"] = name;
-		if(whisper) {
-			add_label_data(data, "log_text",
-			   VGETTEXT("Whisper session with $name started. "
-						"If you do not want to receive messages "
-						"from this user, "
-						"type /ignore $name\n",
-						symbols));
-		} else {
-			add_label_data(data, "log_text", VGETTEXT("<i>Room $name joined</i>", symbols));
-			lobby_info_.open_room(name);
-		}
-
-		chat_log_container_->add_page(data);
-		std::map<std::string, string_map> data2;
-		add_label_data(data2, "room", whisper ? font::escape_text("<" + name + ">") : name);
-		tgrid* row_grid = &roomlistbox_->add_row(data2);
-
-		tbutton& close_button = find_widget<tbutton>(row_grid, "close_window", false);
-		connect_signal_mouse_left_click(close_button,
-			std::bind(&tlobby_main::close_window_button_callback, this, open_windows_.back(),
-				std::placeholders::_3, std::placeholders::_4));
-
-		if(name == "lobby") {
-			close_button.set_visible(tcontrol::tvisible::hidden);
-		}
-
-		return &open_windows_.back();
-	}
-	return nullptr;
-}
-
-bool tlobby_main::whisper_window_active(const std::string& name)
-{
-	const tlobby_chat_window& t = open_windows_[active_window_];
-	return t.name == name && t.whisper == true;
-}
-
-bool tlobby_main::room_window_active(const std::string& room)
-{
-	const tlobby_chat_window& t = open_windows_[active_window_];
-	return t.name == room && t.whisper == false;
-}
-
-void tlobby_main::increment_waiting_whsipers(const std::string& name)
-{
-	if(tlobby_chat_window* t = whisper_window_open(name, false)) {
-		t->pending_messages++;
-		if(t->pending_messages == 1) {
-			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0])
-				   << " with " << t->name << "\n";
-			tgrid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
-			// this breaks for some reason
-			// tlabel& label = grid->get_widget<tlabel>("room", false);
-			// label.set_use_markup(true);
-			// label.set_label(colorize("<" + t->name + ">", "red"));
-			find_widget<timage>(grid, "pending_messages", false)
-					.set_visible(twidget::tvisible::visible);
-		}
-	}
-}
-
-void tlobby_main::increment_waiting_messages(const std::string& room)
-{
-	if(tlobby_chat_window* t = room_window_open(room, false)) {
-		t->pending_messages++;
-		if(t->pending_messages == 1) {
-			int idx = t - &open_windows_[0];
-			DBG_LB << "do room pending mark row " << idx << " with " << t->name
-				   << "\n";
-			tgrid* grid = roomlistbox_->get_row_grid(idx);
-			// this breaks for some reason
-			// tlabel& label = grid->get_widget<tlabel>("room", false);
-			// label.set_use_markup(true);
-			// label.set_label(colorize(t->name, "red"));
-			find_widget<timage>(grid, "pending_messages", false)
-					.set_visible(twidget::tvisible::visible);
-		}
-	}
-}
-
-void tlobby_main::add_whisper_window_whisper(const std::string& sender,
-											 const std::string& message)
-{
-	std::stringstream ss;
-	ss << "<b>" << sender << ":</b> " << font::escape_text(message);
-	tlobby_chat_window* t = whisper_window_open(sender, false);
-	if(!t) {
-		ERR_LB << "Whisper window not open in add_whisper_window_whisper for "
-			   << sender << "\n";
-		return;
-	}
-	append_to_chatbox(ss.str(), t - &open_windows_[0], false);
-}
-
-void tlobby_main::add_active_window_whisper(const std::string& sender,
-											const std::string& message,
-											const bool force_scroll)
-{
-	std::stringstream ss;
-	ss << "<b>"
-	   << "whisper: " << sender << ":</b> " << font::escape_text(message);
-	append_to_chatbox(ss.str(), force_scroll);
-}
-
-void tlobby_main::add_room_window_message(const std::string& room,
-										  const std::string& sender,
-										  const std::string& message)
-{
-	std::stringstream ss;
-	ss << "<b>" << sender << ":</b> " << font::escape_text(message);
-	tlobby_chat_window* t = room_window_open(room, false);
-	if(!t) {
-		ERR_LB << "Room window not open in add_room_window_message for " << room
-			   << "\n";
-		return;
-	}
-	append_to_chatbox(ss.str(), t - &open_windows_[0], false);
-}
-
-void tlobby_main::add_active_window_message(const std::string& sender,
-											const std::string& message,
-											const bool force_scroll)
-{
-	std::stringstream ss;
-	ss << "<b>" << sender << ":</b> " << font::escape_text(message);
-	append_to_chatbox(ss.str(), force_scroll);
-}
-
-void tlobby_main::switch_to_window(tlobby_chat_window* t)
-{
-	switch_to_window(t - &open_windows_[0]);
-}
-
-void tlobby_main::switch_to_window(size_t id)
-{
-	active_window_ = id;
-	assert(active_window_ < open_windows_.size());
-	chat_log_container_->select_page(active_window_);
-	roomlistbox_->select_row(active_window_);
-	active_window_changed();
-}
-
-void tlobby_main::active_window_changed()
-{
-	tlobby_chat_window& t = open_windows_[active_window_];
-
-	DBG_LB << "active window changed to " << active_window_ << " "
-		   << (t.whisper ? "w" : "r") << " " << t.name << "\n";
-
-	// clear pending messages notification in room listbox
-	tgrid* grid = roomlistbox_->get_row_grid(active_window_);
-	find_widget<timage>(grid, "pending_messages", false).set_visible(twidget::tvisible::hidden);
-	t.pending_messages = 0;
-
-	player_list_dirty_ = true;
-}
-
-
-void tlobby_main::close_active_window()
-{
-	DBG_LB << "Close window button clicked\n";
-	return close_window(active_window_);
-}
-
-void tlobby_main::close_window(size_t idx)
-{
-	const tlobby_chat_window& t = open_windows_[idx];
-	bool active_changed = idx == active_window_;
-	DBG_LB << "Close window " << idx << " - " << t.name << "\n";
-
-	if((t.name == "lobby" && t.whisper == false) || open_windows_.size() == 1) {
-		return;
-	}
-
-	if(t.whisper == false) {
-		// closing a room window -- send a part to the server
-		config data, msg;
-		msg["room"] = t.name;
-		msg["player"] = preferences::login();
-		data.add_child("room_part", msg);
-		wesnothd_connection_.send_data(data);
-	}
-
-	if(active_window_ == open_windows_.size() - 1) {
-		active_window_--;
-	}
-
-	if(t.whisper) {
-		lobby_info_.get_whisper_log(t.name).clear();
-	} else {
-		lobby_info_.close_room(t.name);
-	}
-
-	open_windows_.erase(open_windows_.begin() + idx);
-	roomlistbox_->remove_row(idx);
-	roomlistbox_->select_row(active_window_);
-	chat_log_container_->remove_page(idx);
-	chat_log_container_->select_page(active_window_);
-	if(active_changed)
-		active_window_changed();
 }
 
 void tlobby_main::network_handler()
@@ -1327,44 +894,14 @@ void tlobby_main::network_handler()
 
 void tlobby_main::process_network_data(const config& data)
 {
-	if(const config& c = data.child("error")) {
+	if (const config& c = data.child("error")) {
 		throw wesnothd_error(c["message"]);
-	} else if(const config& c = data.child("message")) {
-		process_message(c);
-	} else if(const config& c = data.child("whisper")) {
-		process_message(c, true);
+	} else if (chatbox_->process_network_data(data)) {
+
 	} else if(data.child("gamelist")) {
 		process_gamelist(data);
 	} else if(const config& c = data.child("gamelist_diff")) {
 		process_gamelist_diff(c);
-	} else if(const config& c = data.child("room_join")) {
-		process_room_join(c);
-	} else if(const config& c = data.child("room_part")) {
-		process_room_part(c);
-	} else if(const config& c = data.child("room_query_response")) {
-		process_room_query_response(c);
-	}
-}
-
-void tlobby_main::process_message(const config& data, bool whisper /*= false*/)
-{
-	std::string sender = data["sender"];
-	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
-		   << ", len " << data["message"].str().size() << '\n';
-	if(preferences::is_ignored(sender))
-		return;
-	const std::string& message = data["message"];
-	preferences::parse_admin_authentication(sender, message);
-	if(whisper) {
-		add_whisper_received(sender, message);
-	} else {
-		std::string room = data["room"];
-		if(room.empty()) {
-			LOG_LB << "Message without a room from " << sender
-				   << ", assuming lobby\n";
-			room = "lobby";
-		}
-		add_chat_room_message_received(room, sender, message);
 	}
 }
 
@@ -1391,116 +928,6 @@ void tlobby_main::process_gamelist_diff(const config& data)
 			do_notify(NOTIFY_LOBBY_QUIT);
 		} else {
 			do_notify(NOTIFY_LOBBY_JOIN);
-		}
-	}
-}
-
-void tlobby_main::process_room_join(const config& data)
-{
-	const std::string& room = data["room"];
-	const std::string& player = data["player"];
-	room_info* r = lobby_info_.get_room(room);
-	DBG_LB << "room join: " << room << " " << player << " "
-		   << static_cast<void*>(r) << "\n";
-
-	if(r) {
-		if(player == preferences::login()) {
-			if(const config& members = data.child("members")) {
-				r->process_room_members(members);
-			}
-		} else {
-			r->add_member(player);
-			/* TODO: add/use preference */
-			utils::string_map symbols;
-			symbols["player"] = player;
-			add_room_window_message(
-					room,
-					"server",
-					VGETTEXT("$player has entered the room", symbols));
-		}
-		if(r == active_window_room()) {
-			player_list_dirty_ = true;
-		}
-	} else {
-		if(player == preferences::login()) {
-			tlobby_chat_window* t = room_window_open(room, true);
-			lobby_info_.open_room(room);
-			r = lobby_info_.get_room(room);
-			assert(r);
-			if(const config& members = data.child("members")) {
-				r->process_room_members(members);
-			}
-			switch_to_window(t);
-
-			const std::string& topic = data["topic"];
-			if(!topic.empty()) {
-				add_chat_room_message_received(
-						"room", "server", room + ": " + topic);
-			}
-		} else {
-			LOG_LB << "Discarding join info for a room the player is not in\n";
-		}
-	}
-}
-
-void tlobby_main::process_room_part(const config& data)
-{
-	// todo close room window when the part message is sent
-	const std::string& room = data["room"];
-	const std::string& player = data["player"];
-	DBG_LB << "Room part: " << room << " " << player << "\n";
-	room_info* r = lobby_info_.get_room(room);
-	if(r) {
-		r->remove_member(player);
-		/* TODO: add/use preference */
-		utils::string_map symbols;
-		symbols["player"] = player;
-		add_room_window_message(
-				room, "server", VGETTEXT("$player has left the room", symbols));
-		if(active_window_room() == r) {
-			player_list_dirty_ = true;
-		}
-	} else {
-		LOG_LB << "Discarding part info for a room the player is not in\n";
-	}
-}
-
-void tlobby_main::process_room_query_response(const config& data)
-{
-	const std::string& room = data["room"];
-	const std::string& message = data["message"];
-	DBG_LB << "room query response: " << room << " " << message << "\n";
-	if(room.empty()) {
-		if(!message.empty()) {
-			add_active_window_message("server", message);
-		}
-		if(const config& rooms = data.child("rooms")) {
-			// TODO: this should really open a nice join room dialog instead
-			std::stringstream ss;
-			ss << "Rooms:";
-			for(const auto & r : rooms.child_range("room"))
-			{
-				ss << " " << r["name"];
-			}
-			add_active_window_message("server", ss.str());
-		}
-	} else {
-		if(room_window_open(room, false)) {
-			if(!message.empty()) {
-				add_chat_room_message_received(room, "server", message);
-			}
-			if(const config& members = data.child("members")) {
-				room_info* r = lobby_info_.get_room(room);
-				assert(r);
-				r->process_room_members(members);
-				if(r == active_window_room()) {
-					player_list_dirty_ = true;
-				}
-			}
-		} else {
-			if(!message.empty()) {
-				add_active_window_message("server", room + ": " + message);
-			}
 		}
 	}
 }
@@ -1636,48 +1063,6 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	return true;
 }
 
-void tlobby_main::send_message_button_callback(twindow& /*window*/)
-{
-	const std::string& input = chat_input_->get_value();
-	if(input.empty())
-		return;
-	if(input[0] == '/') {
-		// TODO: refactor do_speak so it uses context information about
-		//      opened window, so e.g. /ignore in a whisper session ignores
-		//      the other party without having to specify it's nick.
-		chat_handler::do_speak(input);
-	} else {
-		config msg;
-		send_message_to_active_window(input);
-	}
-	chat_input_->save_to_history();
-	chat_input_->set_value("");
-}
-
-void tlobby_main::send_message_to_active_window(const std::string& input)
-{
-	tlobby_chat_window& t = open_windows_[active_window_];
-	if(t.whisper) {
-		send_whisper(t.name, input);
-		add_whisper_sent(t.name, input);
-	} else {
-		send_chat_room_message(t.name, input);
-		add_chat_room_message_sent(t.name, input);
-	}
-}
-
-void tlobby_main::close_window_button_callback(tlobby_chat_window& chat_window, bool& handled, bool& halt)
-{
-	const int index = std::find_if(open_windows_.begin(), open_windows_.end(), [&chat_window](const tlobby_chat_window& room) {
-		return room.name == chat_window.name;
-	}) - open_windows_.begin();
-
-	close_window(index);
-
-	handled = true;
-	halt = true;
-}
-
 void tlobby_main::create_button_callback(twindow& window)
 {
 	legacy_result_ = CREATE;
@@ -1702,49 +1087,6 @@ void tlobby_main::show_preferences_button_callback(twindow& window)
 		window.invalidate_layout();
 
 		wesnothd_connection_.send_data(config("refresh_lobby"));
-	}
-}
-
-void tlobby_main::room_switch_callback(twindow& /*window*/)
-{
-	switch_to_window(roomlistbox_->get_selected_row());
-}
-
-void tlobby_main::chat_input_keypress_callback(bool& handled,
-											   bool& halt,
-											   const SDLKey key,
-											   twindow& window)
-{
-	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
-		send_message_button_callback(window);
-		handled = true;
-		halt = true;
-	} else if(key == SDLK_TAB) {
-		std::string text = chat_input_->get_value();
-		const std::vector<user_info>& match_infos = lobby_info_.users();
-		std::vector<std::string> matches;
-
-		for(const auto & ui : match_infos)
-		{
-			if(ui.name != preferences::login()) {
-				matches.push_back(ui.name);
-			}
-		}
-		const bool line_start = utils::word_completion(text, matches);
-
-		if(matches.empty()) {
-			return;
-		}
-
-		if(matches.size() == 1) {
-			text.append(line_start ? ": " : " ");
-		} else {
-			std::string completion_list = utils::join(matches, " ");
-			append_to_chatbox(completion_list);
-		}
-		chat_input_->set_value(text);
-		handled = true;
-		halt = true;
 	}
 }
 
@@ -1812,7 +1154,7 @@ void tlobby_main::player_filter_callback(gui2::twidget& /*widget*/)
 
 void tlobby_main::user_dialog_callback(user_info* info)
 {
-	tlobby_player_info dlg(*this, *info, lobby_info_);
+	tlobby_player_info dlg(*chatbox_, *info, lobby_info_);
 
 	lobby_delay_gamelist_update_guard g(*this);
 
@@ -1821,8 +1163,8 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	delay_playerlist_update_ = true;
 
 	if(dlg.result_open_whisper()) {
-		tlobby_chat_window* t = whisper_window_open(info->name, true);
-		switch_to_window(t);
+		tlobby_chat_window* t = chatbox_->whisper_window_open(info->name, true);
+		chatbox_->switch_to_window(t);
 	}
 
 	selected_game_id_ = info->game_id;

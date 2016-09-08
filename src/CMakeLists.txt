@@ -534,6 +534,7 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/matrix.cpp
 	gui/widgets/menu_button.cpp
 	gui/widgets/minimap.cpp
+	gui/widgets/mp_chatbox.cpp
 	gui/widgets/multi_page.cpp
 	gui/widgets/pane.cpp
 	gui/widgets/panel.cpp

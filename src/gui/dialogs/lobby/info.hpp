@@ -96,6 +96,7 @@ public:
 		return users_;
 	}
 	const std::vector<user_info*>& users_sorted() const;
+	twesnothd_connection& wesnothd_connection() const { return wesnothd_connection_; }
 
 private:
 	void process_userlist();
@@ -119,4 +120,23 @@ private:
 	twesnothd_connection& wesnothd_connection_;
 };
 
+enum t_notify_mode {
+	NOTIFY_NONE,
+	NOTIFY_MESSAGE,
+	NOTIFY_MESSAGE_OTHER_WINDOW,
+	NOTIFY_SERVER_MESSAGE,
+	NOTIFY_OWN_NICK,
+	NOTIFY_FRIEND_MESSAGE,
+	NOTIFY_WHISPER,
+	NOTIFY_WHISPER_OTHER_WINDOW,
+	NOTIFY_LOBBY_JOIN,
+	NOTIFY_LOBBY_QUIT,
+	NOTIFY_COUNT
+};
+
+namespace gui2
+{
+	void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::string & message);
+	inline void do_mp_notify(t_notify_mode mode) { do_mp_notify(mode, "", ""); }
+}
 #endif
