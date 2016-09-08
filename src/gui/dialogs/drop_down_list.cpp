@@ -31,16 +31,14 @@ namespace gui2
 REGISTER_DIALOG(drop_down_list)
 
 namespace {
-	void click_callback(twindow& window, bool& handled, bool& halt, tpoint coordinate)
+	void click_callback(twindow& window, bool&, bool&, tpoint coordinate)
 	{
 		SDL_Rect rect = window.get_rectangle();
-		halt = handled = true;
 		if(coordinate.x < rect.x || coordinate.x > rect.x + rect.w || coordinate.y < rect.y || coordinate.y > rect.y + rect.h ) {
 			window.set_retval(twindow::CANCEL);
-		} else {
-			window.set_retval(twindow::OK);
 		}
-		window.close();
+
+		window.set_retval(twindow::OK);
 	}
 
 	void resize_callback(twindow& window)
@@ -103,7 +101,7 @@ void tdrop_down_list::pre_show(twindow& window)
 	window.keyboard_capture(&list);
 
 	//Dismiss on click outside the window
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_post_child);
+	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_child);
 
 	//Dismiss on resize
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::tdispatcher::front_child);
