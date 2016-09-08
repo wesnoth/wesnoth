@@ -332,7 +332,7 @@ void ttitle_screen::pre_show(twindow& window)
 			game_.clear_loaded_game();
 		}
 	});
-	register_button(window, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](twindow& window) {
+	register_button(window, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](twindow&) {
 		// NOTE: we need the help_manager to get access to the Add-ons
 		// section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
