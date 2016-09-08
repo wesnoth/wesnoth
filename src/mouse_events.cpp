@@ -967,7 +967,13 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1; // abort, click will do nothing
 	}
 
-	if ((*attacker).attacks().empty()) {
+	auto attacker_weapons = (*attacker).attacks();
+
+	const bool all_disabled = std::all_of(attacker_weapons.begin(), attacker_weapons.end(), [](attack_type& attack) {
+		return attack.get_special_bool("disable");
+	});
+
+	if(attacker_weapons.empty() || all_disabled) {
 		gui2::show_transient_message(gui_->video(), "No Attacks",
 			_("This unit has no usable weapons."));
 
