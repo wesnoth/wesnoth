@@ -36,9 +36,9 @@ namespace {
 		SDL_Rect rect = window.get_rectangle();
 		if(coordinate.x < rect.x || coordinate.x > rect.x + rect.w || coordinate.y < rect.y || coordinate.y > rect.y + rect.h ) {
 			window.set_retval(twindow::CANCEL);
+		} else {
+			window.set_retval(twindow::OK);
 		}
-
-		window.set_retval(twindow::OK);
 	}
 
 	void resize_callback(twindow& window)
