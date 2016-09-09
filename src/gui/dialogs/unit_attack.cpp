@@ -184,8 +184,8 @@ void tunit_attack::pre_show(twindow& window)
 		weapon_list.add_row(data);
 	}
 
-	assert(best_weapon_ < static_cast<int>(weapon_list.get_item_count()));
-	weapon_list.select_row(best_weapon_);
+	const int last_item = weapon_list.get_item_count() - 1;
+	weapon_list.select_row(std::min(best_weapon_, last_item));
 }
 
 void tunit_attack::post_show(twindow& window)
