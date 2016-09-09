@@ -123,6 +123,22 @@
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>OMP_WAIT_POLICY=PASSIVE</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>OMP_WAIT_POLICY=PASSIVE</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>OMP_WAIT_POLICY=PASSIVE</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>OMP_WAIT_POLICY=PASSIVE</LocalDebuggerEnvironment>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <BuildLog>
       <Path>$(IntDir)BuildLog-wesnoth.htm</Path>

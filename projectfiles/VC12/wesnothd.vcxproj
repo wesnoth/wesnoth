@@ -85,6 +85,18 @@
     <IntDir>$(Configuration)\wesnothd\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <BuildLog>
       <Path>$(IntDir)BuildLog-wesnothd.htm</Path>
