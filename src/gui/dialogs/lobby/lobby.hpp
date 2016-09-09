@@ -172,6 +172,8 @@ private:
 
 	static bool logout_prompt();
 
+	int get_game_index_from_id(const int game_id) const;
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 

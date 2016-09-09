@@ -820,14 +820,6 @@ void tlobby_main::pre_show(twindow& window)
 	set_allow_plugin_skip(false);
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
-	auto get_game_index_from_id = [this](const int game_id)->int {
-		if(game_info* game = lobby_info_.get_game_by_id(game_id)) {
-			return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
-		}
-
-		return -1;
-	};
-
 	plugins_context_->set_callback("join",    [&, this](const config&) {
 		if(do_game_join(get_game_index_from_id(selected_game_id_), false)) {
 			legacy_result_ = JOIN;
@@ -1202,6 +1194,15 @@ void tlobby_main::skip_replay_changed_callback(twindow& window)
 void tlobby_main::send_to_server(const config& cfg)
 {
 	wesnothd_connection_.send_data(cfg);
+}
+
+int tlobby_main::get_game_index_from_id(const int game_id) const
+{
+	if (game_info* game = lobby_info_.get_game_by_id(game_id)) {
+		return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
+	}
+
+	return -1;
 }
 
 } // namespace gui2
