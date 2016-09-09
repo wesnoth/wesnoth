@@ -123,9 +123,9 @@ private:
 
 	std::function<void(void)> active_window_changed_callback_;
 
-	lobby_info* lobby_info_;
+	class lobby_info* lobby_info_;
 
-	lobby_info& lobby_info() { return *lobby_info_; }
+	class lobby_info& lobby_info() { return *lobby_info_; }
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
