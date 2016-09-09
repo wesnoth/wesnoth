@@ -856,6 +856,18 @@ void tlobby_main::post_show(twindow& /*window*/)
 
 void tlobby_main::network_handler()
 {
+	try {
+		config data;
+		if (wesnothd_connection_.receive_data(data)) {
+			process_network_data(data);
+		}
+	}
+	catch (wesnothd_error& e) {
+		LOG_LB << "caught wesnothd_error in network_handler: " << e.message
+			<< "\n";
+		throw;
+	}
+
 	if(gamelist_dirty_ && !delay_gamelist_update_
 	   && (SDL_GetTicks() - last_gamelist_update_
 		   > game_config::lobby_refresh)) {
@@ -870,17 +882,6 @@ void tlobby_main::network_handler()
 	if(player_list_dirty_) {
 		update_gamelist_filter();
 		update_playerlist();
-	}
-
-	try {
-		config data;
-		if(wesnothd_connection_.receive_data(data)) {
-			process_network_data(data);
-		}
-	} catch(wesnothd_error& e) {
-		LOG_LB << "caught wesnothd_error in network_handler: " << e.message
-			   << "\n";
-		throw;
 	}
 }
 
@@ -1003,7 +1004,7 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 
 bool tlobby_main::do_game_join(int idx, bool observe)
 {
-	if(idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
+	if(idx < 0 || idx >= static_cast<int>(lobby_info_.games().size())) {
 		ERR_LB << "Requested join/observe of a game with index out of range: "
 			   << idx << ", games size is " << lobby_info_.games().size()
 			   << "\n";
