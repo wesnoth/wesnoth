@@ -317,11 +317,6 @@ void map_context::load_scenario(const config& game_config)
 		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
 
-	// TODO: is the gameboard *supposed* to be loaded here...?
-	if(resources::gameboard) {
-		resources::gameboard->teams() = teams_;
-	}
-
 	int i = 1;
 	for(config &side : scenario.child_range("side"))
 	{
