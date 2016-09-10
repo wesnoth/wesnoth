@@ -67,6 +67,7 @@ public:
 		 *                        for these formulas.
 		 */
 		virtual void draw(surface& canvas,
+						  SDL_Renderer* renderer,
 						  const game_logic::map_formula_callable& variables)
 				= 0;
 	};
@@ -162,6 +163,8 @@ private:
 
 	/** The surface we draw all items on. */
 	surface canvas_;
+
+	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
 	game_logic::map_formula_callable variables_;

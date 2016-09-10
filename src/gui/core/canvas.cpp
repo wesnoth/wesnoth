@@ -81,27 +81,13 @@ namespace
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
 
-/**
- * Draws a single pixel on a surface.
- *
- * @pre                   The caller needs to make sure the selected coordinate
- *                        fits on the @p surface.
- * @pre                   The @p canvas is locked.
- *
- * @param start           The memory address which is the start of the surface
- *                        buffer to draw in.
- * @param color           The color of the pixel to draw.
- * @param w               The width of the surface.
- * @param x               The x coordinate of the pixel to draw.
- * @param y               The y coordinate of the pixel to draw.
- */
-static void put_pixel(const ptrdiff_t start,
-					  const Uint32 color,
-					  const unsigned w,
-					  const unsigned x,
-					  const unsigned y)
+static void set_renderer_color(SDL_Renderer* renderer, Uint32 color)
 {
-	*reinterpret_cast<Uint32*>(start + (y* w* 4) + x* 4) = color;
+	SDL_SetRenderDrawColor(renderer,
+		(color & 0xFF000000) >> 24,
+		(color & 0x00FF0000) >> 16,
+		(color & 0x0000FF00) >> 8,
+		(color & 0x000000FF));
 }
 
 /**
@@ -121,19 +107,13 @@ static void put_pixel(const ptrdiff_t start,
  * @param y2              The end y coordinate of the line to draw.
  */
 static void draw_line(surface& canvas,
+					  SDL_Renderer* renderer,
 					  Uint32 color,
 					  unsigned x1,
 					  unsigned y1,
 					  const unsigned x2,
 					  unsigned y2)
 {
-	color = SDL_MapRGBA(canvas->format,
-						((color & 0xFF000000) >> 24),
-						((color & 0x00FF0000) >> 16),
-						((color & 0x0000FF00) >> 8),
-						((color & 0x000000FF)));
-
-	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
 	unsigned w = canvas->w;
 
 	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1 << " to " << x2
@@ -145,50 +125,13 @@ static void draw_line(surface& canvas,
 	assert(static_cast<int>(y1) < canvas->h);
 	assert(static_cast<int>(y2) < canvas->h);
 
-	// use a special case for vertical lines
-	if(x1 == x2) {
-		if(y2 < y1) {
-			std::swap(y1, y2);
-		}
+	set_renderer_color(renderer, color);
 
-		for(unsigned y = y1; y <= y2; ++y) {
-			put_pixel(start, color, w, x1, y);
-		}
-		return;
-	}
-
-	// use a special case for horizontal lines
-	if(y1 == y2) {
-		for(unsigned x = x1; x <= x2; ++x) {
-			put_pixel(start, color, w, x, y1);
-		}
-		return;
-	}
-
-	// Algorithm based on
-	// http://de.wikipedia.org/wiki/Bresenham-Algorithmus#Kompakte_Variante
-	// version of 26.12.2010.
-	const int dx = x2 - x1; // precondition x2 >= x1
-	const int dy = abs(static_cast<int>(y2 - y1));
-	const int step_x = 1;
-	const int step_y = y1 < y2 ? 1 : -1;
-	int err = (dx > dy ? dx : -dy) / 2;
-	int e2;
-
-	for(;;) {
-		put_pixel(start, color, w, x1, y1);
-		if(x1 == x2 && y1 == y2) {
-			break;
-		}
-		e2 = err;
-		if(e2 > -dx) {
-			err -= dy;
-			x1 += step_x;
-		}
-		if(e2 < dy) {
-			err += dx;
-			y1 += step_y;
-		}
+	if(x1 == x2 && y1 == y2) {
+		// Handle single-pixel lines properly
+		SDL_RenderDrawPoint(renderer, x1, y1);
+	} else {
+		SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
 	}
 }
 
@@ -206,18 +149,12 @@ static void draw_line(surface& canvas,
  * @param radius          The radius of the circle to draw.
  */
 static void draw_circle(surface& canvas,
+						SDL_Renderer* renderer,
 						Uint32 color,
 						const unsigned x_center,
 						const unsigned y_center,
 						const unsigned radius)
 {
-	color = SDL_MapRGBA(canvas->format,
-						((color & 0xFF000000) >> 24),
-						((color & 0x00FF0000) >> 16),
-						((color & 0x0000FF00) >> 8),
-						((color & 0x000000FF)));
-
-	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
 	unsigned w = canvas->w;
 
 	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
@@ -229,22 +166,25 @@ static void draw_circle(surface& canvas,
 	assert(static_cast<int>(y_center + radius) < canvas->h);
 	assert(static_cast<int>(y_center - radius) >= 0);
 
+	set_renderer_color(renderer, color);
+
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
 	// version of 2011.02.07.
 	int d = -static_cast<int>(radius);
 	int x = radius;
 	int y = 0;
-	while(!(y > x)) {
-		put_pixel(start, color, w, x_center + x, y_center + y);
-		put_pixel(start, color, w, x_center + x, y_center - y);
-		put_pixel(start, color, w, x_center - x, y_center + y);
-		put_pixel(start, color, w, x_center - x, y_center - y);
 
-		put_pixel(start, color, w, x_center + y, y_center + x);
-		put_pixel(start, color, w, x_center + y, y_center - x);
-		put_pixel(start, color, w, x_center - y, y_center + x);
-		put_pixel(start, color, w, x_center - y, y_center - x);
+	while(!(y > x)) {
+		SDL_RenderDrawPoint(renderer, x_center + x, y_center + y);
+		SDL_RenderDrawPoint(renderer, x_center + x, y_center - y);
+		SDL_RenderDrawPoint(renderer, x_center - x, y_center + y);
+		SDL_RenderDrawPoint(renderer, x_center - x, y_center - y);
+
+		SDL_RenderDrawPoint(renderer, x_center + y, y_center + x);
+		SDL_RenderDrawPoint(renderer, x_center + y, y_center - x);
+		SDL_RenderDrawPoint(renderer, x_center - y, y_center + x);
+		SDL_RenderDrawPoint(renderer, x_center - y, y_center - x);
 
 		d += 2 * y + 1;
 		++y;
@@ -272,6 +212,7 @@ public:
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
+			  SDL_Renderer* renderer,
 			  const game_logic::map_formula_callable& variables);
 
 private:
@@ -621,6 +562,7 @@ tline::tline(const config& cfg)
 }
 
 void tline::draw(surface& canvas,
+				 SDL_Renderer* renderer,
 				 const game_logic::map_formula_callable& variables)
 {
 	/**
@@ -646,17 +588,10 @@ void tline::draw(surface& canvas,
 
 	// @todo FIXME respect the thickness.
 
-	// now draw the line we use Bresenham's algorithm, which doesn't
-	// support antialiasing. The advantage is that it's easy for testing.
-
 	// lock the surface
 	surface_lock locker(canvas);
-	if(x1 > x2) {
-		// invert points
-		draw_line(canvas, color_, x2, y2, x1, y1);
-	} else {
-		draw_line(canvas, color_, x1, y1, x2, y2);
-	}
+
+	draw_line(canvas, renderer, color_, x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
@@ -676,10 +611,11 @@ public:
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
+			  SDL_Renderer* renderer,
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The x coordinate of the rectangle. */
+	tformula<int> x_, /**< The x coordinate of the rectangle. */
 			y_,			   /**< The y coordinate of the rectangle. */
 			w_,			   /**< The width of the rectangle. */
 			h_;			   /**< The height of the rectangle. */
@@ -689,7 +625,7 @@ private:
 	 *
 	 * If 0 the fill color is used for the entire widget.
 	 */
-	unsigned border_thickness_;
+	int border_thickness_;
 
 	/**
 	 * The border color of the rectangle.
@@ -759,6 +695,7 @@ trectangle::trectangle(const config& cfg)
 }
 
 void trectangle::draw(surface& canvas,
+					  SDL_Renderer* renderer,
 					  const game_logic::map_formula_callable& variables)
 {
 	/**
@@ -766,56 +703,48 @@ void trectangle::draw(surface& canvas,
 	 * silly unless there has been a resize. So to optimize we should use an
 	 * extra flag or do the calculation in a separate routine.
 	 */
-	const unsigned x = x_(variables);
-	const unsigned y = y_(variables);
-	const unsigned w = w_(variables);
-	const unsigned h = h_(variables);
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
 
 	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y << " width " << w
 			  << " height " << h << " canvas size " << canvas->w << ','
 			  << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x) < canvas->w
-			 && static_cast<int>(x + w) <= canvas->w
-			 && static_cast<int>(y) < canvas->h
-			 && static_cast<int>(y + h) <= canvas->h,
-			 _("Rectangle doesn't fit on canvas."));
-
+	VALIDATE(x     <  canvas->w
+	      && x + w <= canvas->w
+	      && y     <  canvas->h
+	      && y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
 
 	surface_lock locker(canvas);
 
-	// draw the border
-	for(unsigned i = 0; i < border_thickness_; ++i) {
+	// Draw the border
+	for(int i = 0; i < border_thickness_; ++i) {
+		SDL_Rect dimensions {
+			x + i,
+			y + i,
+			w - (i * 2),
+			h - (i * 2)
+		};
 
-		const unsigned left = x + i;
-		const unsigned right = left + w - (i * 2) - 1;
-		const unsigned top = y + i;
-		const unsigned bottom = top + h - (i * 2) - 1;
+		set_renderer_color(renderer, border_color_);
 
-		// top horizontal (left -> right)
-		draw_line(canvas, border_color_, left, top, right, top);
-
-		// right vertical (top -> bottom)
-		draw_line(canvas, border_color_, right, top, right, bottom);
-
-		// bottom horizontal (left -> right)
-		draw_line(canvas, border_color_, left, bottom, right, bottom);
-
-		// left vertical (top -> bottom)
-		draw_line(canvas, border_color_, left, top, left, bottom);
+		SDL_RenderDrawRect(renderer, &dimensions);
 	}
 
+	// Fill the background, if applicable
 	if(fill_color_) {
+		set_renderer_color(renderer, fill_color_);
 
-		sdl::draw_solid_tinted_rectangle(
-			(x +  border_thickness_),
-			(y +  border_thickness_),
-			(w - (border_thickness_ * 2)),
-			(h - (border_thickness_ * 2)),
-			(fill_color_ & 0xFF000000) >> 24,
-			(fill_color_ & 0x00FF0000) >> 16,
-			(fill_color_ & 0x0000FF00) >> 8,
-			(fill_color_ & 0x000000FF) /  255.0, canvas);
+		SDL_Rect area {
+			x +  border_thickness_,
+			y +  border_thickness_,
+			w - (border_thickness_ * 2),
+			h - (border_thickness_ * 2)
+		};
+
+		SDL_RenderFillRect(renderer, &area);
 	}
 }
 
@@ -836,6 +765,7 @@ public:
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
+			  SDL_Renderer* renderer,
 			  const game_logic::map_formula_callable& variables);
 
 private:
@@ -887,6 +817,7 @@ tcircle::tcircle(const config& cfg)
 }
 
 void tcircle::draw(surface& canvas,
+				   SDL_Renderer* renderer,
 				   const game_logic::map_formula_callable& variables)
 {
 	/**
@@ -926,7 +857,8 @@ void tcircle::draw(surface& canvas,
 
 	// lock the surface
 	surface_lock locker(canvas);
-	draw_circle(canvas, color_, x, y, radius);
+
+	draw_circle(canvas, renderer, color_, x, y, radius);
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
@@ -946,6 +878,7 @@ public:
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
+			  SDL_Renderer* renderer,
 			  const game_logic::map_formula_callable& variables);
 
 private:
@@ -1067,6 +1000,7 @@ timage::timage(const config& cfg)
 }
 
 void timage::draw(surface& canvas,
+				  SDL_Renderer* /*renderer*/,
 				  const game_logic::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
@@ -1241,6 +1175,7 @@ public:
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
+			  SDL_Renderer* renderer,
 			  const game_logic::map_formula_callable& variables);
 
 private:
@@ -1365,6 +1300,7 @@ ttext::ttext(const config& cfg)
 }
 
 void ttext::draw(surface& canvas,
+				 SDL_Renderer* /*renderer*/,
 				 const game_logic::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
@@ -1459,6 +1395,7 @@ tcanvas::tcanvas()
 	, w_(0)
 	, h_(0)
 	, canvas_()
+	, renderer_()
 	, variables_()
 	, is_dirty_(true)
 {
@@ -1482,13 +1419,16 @@ void tcanvas::draw(const bool force)
 	DBG_GUI_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(create_neutral_surface(w_, h_));
 
+	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
+	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
+
 	// draw items
-	for(std::vector<tshape_ptr>::iterator itor = shapes_.begin();
-		itor != shapes_.end();
-		++itor) {
+	for(auto& shape : shapes_) {
 		log_scope2(log_gui_draw, "Canvas: draw shape.");
 
-		(*itor)->draw(canvas_, variables_);
+		shape->draw(canvas_, renderer_, variables_);
+
+		SDL_RenderPresent(renderer_);
 	}
 
 	is_dirty_ = false;
