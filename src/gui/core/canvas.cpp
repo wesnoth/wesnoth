@@ -151,9 +151,9 @@ static void draw_line(surface& canvas,
 static void draw_circle(surface& canvas,
 						SDL_Renderer* renderer,
 						Uint32 color,
-						const unsigned x_center,
-						const unsigned y_center,
-						const unsigned radius)
+						const int x_center,
+						const int y_center,
+						const int radius)
 {
 	unsigned w = canvas->w;
 
@@ -175,16 +175,18 @@ static void draw_circle(surface& canvas,
 	int x = radius;
 	int y = 0;
 
-	while(!(y > x)) {
-		SDL_RenderDrawPoint(renderer, x_center + x, y_center + y);
-		SDL_RenderDrawPoint(renderer, x_center + x, y_center - y);
-		SDL_RenderDrawPoint(renderer, x_center - x, y_center + y);
-		SDL_RenderDrawPoint(renderer, x_center - x, y_center - y);
+	std::vector<SDL_Point> points;
 
-		SDL_RenderDrawPoint(renderer, x_center + y, y_center + x);
-		SDL_RenderDrawPoint(renderer, x_center + y, y_center - x);
-		SDL_RenderDrawPoint(renderer, x_center - y, y_center + x);
-		SDL_RenderDrawPoint(renderer, x_center - y, y_center - x);
+	while(!(y > x)) {
+		points.push_back({x_center + x, y_center + y});
+		points.push_back({x_center + x, y_center - y});
+		points.push_back({x_center - x, y_center + y});
+		points.push_back({x_center - x, y_center - y});
+
+		points.push_back({x_center + y, y_center + x});
+		points.push_back({x_center + y, y_center - x});
+		points.push_back({x_center - y, y_center + x});
+		points.push_back({x_center - y, y_center - x});
 
 		d += 2 * y + 1;
 		++y;
@@ -193,6 +195,8 @@ static void draw_circle(surface& canvas,
 			--x;
 		}
 	}
+
+	SDL_RenderDrawPoints(renderer, points.data(), points.size());
 }
 
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
@@ -1395,10 +1399,16 @@ tcanvas::tcanvas()
 	, w_(0)
 	, h_(0)
 	, canvas_()
-	, renderer_()
+	, renderer_(nullptr)
 	, variables_()
 	, is_dirty_(true)
 {
+}
+
+tcanvas::~tcanvas()
+{
+	SDL_DestroyRenderer(renderer_);
+
 }
 
 void tcanvas::draw(const bool force)
@@ -1419,6 +1429,8 @@ void tcanvas::draw(const bool force)
 	DBG_GUI_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(create_neutral_surface(w_, h_));
 
+	SDL_DestroyRenderer(renderer_);
+
 	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
 	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
 
@@ -1427,9 +1439,9 @@ void tcanvas::draw(const bool force)
 		log_scope2(log_gui_draw, "Canvas: draw shape.");
 
 		shape->draw(canvas_, renderer_, variables_);
-
-		SDL_RenderPresent(renderer_);
 	}
+
+	SDL_RenderPresent(renderer_);
 
 	is_dirty_ = false;
 }

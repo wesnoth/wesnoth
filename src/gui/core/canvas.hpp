@@ -76,6 +76,7 @@ public:
 	typedef std::shared_ptr<const tshape> const_tshape_ptr;
 
 	tcanvas();
+	~tcanvas();
 
 	/**
 	 * Draws the canvas.
