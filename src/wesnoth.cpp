@@ -752,16 +752,25 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return 0;
 		}
 
-
 		preferences::load_hotkeys();
 
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
-		gui2::ttitle_screen::tresult res = gui2::ttitle_screen::display(*game);
 
-		game_launcher::RELOAD_GAME_DATA should_reload =
-			game_launcher::RELOAD_DATA;
+		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
+
+		// If loading a game, skip the titlescreen entirely
+		if(game->is_loading()) {
+			if(!game->load_game()) {
+				game->clear_loaded_game();
+			}
+
+			game->launch_game(should_reload);
+			continue;
+		}
+
+		gui2::ttitle_screen::tresult res = gui2::ttitle_screen::display(*game);
 
 		switch(res) {
 		case gui2::ttitle_screen::QUIT_GAME:
