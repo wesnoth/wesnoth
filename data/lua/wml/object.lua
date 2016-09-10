@@ -27,6 +27,9 @@ function wml_actions.object(cfg)
 	-- If a unit matches the filter, proceed
 	if unit then
 		text = tostring(cfg.description or "")
+	else
+		text = tostring(cfg.cannot_use_message or "")
+		command_type = "else"
 	end
 
 	-- Default to silent if object has no description
@@ -55,9 +58,6 @@ function wml_actions.object(cfg)
 
 		-- Mark this item as used up
 		if obj_id and unique then used_items[obj_id] = true end
-	else
-		text = tostring(cfg.cannot_use_message or "")
-		command_type = "else"
 	end
 
 	if not silent then
