@@ -16,12 +16,18 @@
 #ifndef SAVEGAME_H_INCLUDED
 #define SAVEGAME_H_INCLUDED
 
+#include "config.hpp"
 #include "filesystem.hpp"
-#include "saved_game.hpp"
-#include "show_dialog.hpp"
+#include "lua_jailbreak_exception.hpp"
 #include "serialization/compression.hpp"
+
+#include <exception>
+
 class config_writer;
 class game_display;
+class saved_game;
+class CVideo;
+class version_info;
 
 namespace savegame {
 /** converts saves from older versions of wesnoth*/
@@ -55,6 +61,30 @@ struct load_game_metadata {
 	config load_config;
 };
 
+/**
+* Exception used to signal that the user has decided to abortt a game,
+* and to load another game instead.
+*/
+class load_game_exception
+	: public tlua_jailbreak_exception, public std::exception
+{
+public:
+	load_game_exception()
+		: tlua_jailbreak_exception()
+	{
+	}
+
+	load_game_exception(load_game_metadata&& data)
+		: tlua_jailbreak_exception()
+		, data_(data)
+	{
+	}
+	load_game_metadata data_;
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(load_game_exception)
+};
+
 /** The class for loading a savefile. */
 class loadgame
 {
@@ -66,22 +96,16 @@ public:
 	   some failure or abort of the load process */
 
 	/** Load a game without providing any information. */
-	bool load_game();
+	bool load_game_ingame();
 	/** Load a game with pre-setting information for the load-game dialog. */
-	bool load_game(
-			  const std::string& filename
-			, const bool show_replay
-			, const bool cancel_orders
-			, const bool select_difficulty
-			, const std::string& difficulty
-			, bool skip_version_check);
+	bool load_game();
 	/** Loading a game from within the multiplayer-create dialog. */
 	bool load_multiplayer_game();
 	/** Generate the gamestate out of the loaded game config. */
 	void set_gamestate();
 
 	// Getter-methods
-	const load_game_metadata& data()
+	load_game_metadata& data()
 	{
 		return load_data_;
 	}
@@ -109,7 +133,6 @@ private:
 
 	load_game_metadata load_data_;
 };
-
 /**
  * The base class for all savegame stuff.
  * This should not be used directly, as it does not directly produce usable saves.
@@ -123,6 +146,8 @@ protected:
 	savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title = "Save");
 
 public:
+	enum DIALOG_TYPE { YES_NO, OK_CANCEL};
+
 	virtual ~savegame() {}
 
 	/** Saves a game without user interaction, unless the file exists and it should be asked
@@ -135,7 +160,7 @@ public:
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
 	bool save_game_interactive(CVideo& video, const std::string& message,
-		gui::DIALOG_TYPE dialog_type);
+		DIALOG_TYPE dialog_type);
 
 	const std::string& filename() const { return filename_; }
 
@@ -173,7 +198,7 @@ private:
 		override this to take effect. */
 	virtual void create_filename() {}
 	/** Display the save game dialog. */
-	virtual int show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type);
+	virtual int show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type);
 	/** Ask the user if an existing file should be overwritten. */
 	bool check_overwrite(CVideo& video);
 
@@ -210,10 +235,10 @@ public:
 
 private:
 	/** Create a filename for automatic saves */
-	virtual void create_filename();
+	virtual void create_filename() override;
 
 
-	void write_game(config_writer &out);
+	void write_game(config_writer &out) override;
 
 protected:
 	game_display& gui_;
@@ -227,9 +252,9 @@ public:
 
 private:
 	/** Create a filename for automatic saves */
-	virtual void create_filename();
+	virtual void create_filename() override;
 
-	void write_game(config_writer &out);
+	void write_game(config_writer &out) override;
 };
 
 /** Class for autosaves. */
@@ -242,7 +267,7 @@ public:
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
 	/** Create a filename for automatic saves */
-	virtual void create_filename();
+	virtual void create_filename() override;
 };
 
 class oos_savegame : public ingame_savegame
@@ -252,7 +277,7 @@ public:
 
 private:
 	/** Display the save game dialog. */
-	virtual int show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type);
+	virtual int show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type) override;
 	bool& ignore_;
 };
 
@@ -263,7 +288,7 @@ public:
 	scenariostart_savegame(saved_game& gamestate, const compression::format compress_saves);
 
 private:
-	void write_game(config_writer &out);
+	void write_game(config_writer &out) override;
 };
 
 } //end of namespace savegame

@@ -20,6 +20,7 @@
 #include "savegame.hpp"
 #include "save_index.hpp"
 #include "tstring.hpp"
+#include "gettext.hpp"
 
 namespace gui2
 {

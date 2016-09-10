@@ -55,49 +55,6 @@ struct lua_error : public error {
 	lua_error(const std::string& msg, const std::string& context) : error(context + ":\n  " + msg) {}
 };
 
-/**
- * Exception used to signal that the user has decided to abort a game,
- * and to load another game instead.
- */
-class load_game_exception
-	: public tlua_jailbreak_exception
-{
-public:
-
-	load_game_exception()
-		: tlua_jailbreak_exception()
-	{
-	}
-
-	load_game_exception(
-			  const std::string& game_
-			, const bool show_replay_
-			, const bool cancel_orders_
-			, const bool select_difficulty_
-			, const std::string& difficulty_
-			, bool skip_version_check_ = false)
-		: tlua_jailbreak_exception()
-	{
-		game = game_;
-		show_replay = show_replay_;
-		cancel_orders = cancel_orders_;
-		select_difficulty = select_difficulty_;
-		difficulty = difficulty_;
-		skip_version_check = skip_version_check_;
-	}
-
-	static std::string game;
-	static bool show_replay;
-	static bool cancel_orders;
-	static bool select_difficulty;
-	static std::string difficulty;
-	static bool skip_version_check;
-
-private:
-
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(load_game_exception)
-};
-
 }
 
 #endif

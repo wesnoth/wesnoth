@@ -19,7 +19,6 @@
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font.hpp"                     // for manager
-#include "game_errors.hpp"              // for load_game_exception, etc
 #include "game_preferences.hpp"         // for manager
 #include "hotkey/hotkey_manager.hpp"    // for manager
 #include "image.hpp"                    // for manager
@@ -33,7 +32,7 @@
 class commandline_options;
 class config;
 class CVideo;
-
+namespace savegame { struct load_game_metadata; }
 struct jump_to_campaign_info
 {
 public:
@@ -70,7 +69,7 @@ public:
 	int unit_test();
 
 	bool is_loading() const;
-	void clear_loaded_game() { game::load_game_exception::game.clear(); }
+	void clear_loaded_game();
 	bool load_game();
 	void set_tutorial();
 
@@ -130,6 +129,7 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
+	std::unique_ptr<savegame::load_game_metadata> load_data_;
 };
 
 #endif

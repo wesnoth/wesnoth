@@ -814,7 +814,7 @@ void play_controller::save_game()
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
+		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -836,7 +836,7 @@ void play_controller::save_replay()
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
+		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}
@@ -864,7 +864,7 @@ void play_controller::save_map()
 void play_controller::load_game()
 {
 	savegame::loadgame load(gui_->video(), game_config_, saved_game_);
-	load.load_game();
+	load.load_game_ingame();
 }
 
 void play_controller::undo()
@@ -992,7 +992,7 @@ void play_controller::process_oos(const std::string& msg) const
 
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw quit_game_exception
+	save.save_game_interactive(gui_->video(), message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)

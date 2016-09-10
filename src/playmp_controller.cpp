@@ -255,7 +255,7 @@ void playmp_controller::linger()
 			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
-		} catch (game::load_game_exception&) {
+		} catch (savegame::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
 			throw;
@@ -372,7 +372,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	}
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
+	save.save_game_interactive(gui_->video(), temp_buf.str(), savegame::savegame::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){

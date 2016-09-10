@@ -39,7 +39,6 @@
 #include "game_board.hpp"            // for game_board
 #include "game_config.hpp"              // for debug
 #include "game_display.hpp"          // for game_display
-#include "game_errors.hpp"		// for throw
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
 #include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc

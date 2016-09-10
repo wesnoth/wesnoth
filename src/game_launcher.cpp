@@ -14,6 +14,7 @@
 
 #include "game_launcher.hpp"
 #include "global.hpp"                   // for false_, bool_
+#include "game_errors.hpp"
 
 #include "about.hpp" //for show_about
 #include "commandline_options.hpp"      // for commandline_options
@@ -121,7 +122,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
 	jump_to_campaign_(false, -1, "", ""),
-	jump_to_editor_(false)
+	jump_to_editor_(false),
+	load_data_()
 {
 	bool no_music = false;
 	bool no_sound = false;
@@ -178,15 +180,15 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.editor)
 	{
 		jump_to_editor_ = true;
-		if(!cmdline_opts_.editor->empty())
-			game::load_game_exception::game = *cmdline_opts_.editor;
+		if (!cmdline_opts_.editor->empty())
+			load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.editor });
 	}
 	if (cmdline_opts_.fps)
 		preferences::set_show_fps(true);
 	if (cmdline_opts_.fullscreen)
 		video().set_fullscreen(true);
 	if (cmdline_opts_.load)
-		game::load_game_exception::game = *cmdline_opts_.load;
+		load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.load });
 	if (cmdline_opts_.max_fps) {
 		int fps;
 		//FIXME: remove the next line once the weird util.cpp specialized template lexical_cast_default() linking issue is solved
@@ -263,8 +265,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	}
 	if (cmdline_opts_.windowed)
 		video().set_fullscreen(false);
-	if (cmdline_opts_.with_replay)
-		game::load_game_exception::show_replay = true;
+	if (cmdline_opts_.with_replay && load_data_)
+		load_data_->show_replay = true;
 
 	std::cerr
 		<< "\nData directory:               " << game_config::path
@@ -488,7 +490,8 @@ bool game_launcher::play_test()
 	try {
 		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		ccontroller.play_game();
-	} catch (game::load_game_exception &) {
+	} catch (savegame::load_game_exception &e) {
+		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		return true;
 	}
 
@@ -524,9 +527,6 @@ int game_launcher::unit_test()
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
-	} catch (game::load_game_exception &) {
-		std::cerr << "Load_game_exception encountered while loading the unit test!" << std::endl;
-		return 1; //failed to load the unit test scenario
 	} catch(twml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
 		return 1;
@@ -540,14 +540,7 @@ int game_launcher::unit_test()
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(video(), false, "unit_test_replay"); //false means don't check for overwrite
 
-	clear_loaded_game();
-
-	//game::load_game_exception::game = *cmdline_opts_.load
-	game::load_game_exception::game = "unit_test_replay";
-	//	game::load_game_exception::game = "Unit_test_" + test_scenario_ + "_replay";
-
-	game::load_game_exception::show_replay = true;
-	game::load_game_exception::cancel_orders = true;
+	load_data_.reset(new savegame::load_game_metadata{ "unit_test_replay" , "", true, true, false });
 
 	if (!load_game()) {
 		std::cerr << "Failed to load the replay!" << std::endl;
@@ -561,10 +554,6 @@ int game_launcher::unit_test()
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
-		clear_loaded_game();
-	} catch (game::load_game_exception &) {
-		std::cerr << "Load_game_exception encountered during play_replay!" << std::endl;
-		return 3; //failed to load replay
 	} catch(twml_exception& e) {
 		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
 		return 4; //failed with an error during the replay
@@ -622,7 +611,7 @@ bool game_launcher::play_render_image_mode()
 
 bool game_launcher::is_loading() const
 {
-	return !game::load_game_exception::game.empty();
+	return !!load_data_;
 }
 
 bool game_launcher::load_game()
@@ -631,12 +620,14 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(video(), game_config_manager::get()->game_config(),
-	    state_);
+	savegame::loadgame load(video(), game_config_manager::get()->game_config(), state_);
+	if (load_data_) {
+		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
+		load.data() = std::move(*load_data);
+	}
 
 	try {
-		if(!load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty, game::load_game_exception::skip_version_check)) {
-			clear_loaded_game();
+		if(!load.load_game()) {
 			return false;
 		}
 
@@ -767,12 +758,12 @@ bool game_launcher::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
-		if (start_editor(filesystem::normalize_path(game::load_game_exception::game)) ==
+		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
+		if (start_editor(filesystem::normalize_path(load_data->filename)) ==
 		    editor::EXIT_QUIT_TO_DESKTOP)
 		{
 			return false;
 		}
-		clear_loaded_game();
 	}
 	return true;
 }
@@ -878,7 +869,8 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		}
 	} catch(incorrect_map_format_error& e) {
 		gui2::show_error_message(video(), std::string(_("The game map could not be loaded: ")) + e.message);
-	} catch (game::load_game_exception &) {
+	} catch (savegame::load_game_exception & e) {
+		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
 		e.show(video());
@@ -934,6 +926,7 @@ void game_launcher::show_preferences()
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 {
+	assert(!load_data_);
 	if(play_replay_)
 	{
 		play_replay();
@@ -965,9 +958,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 				about::show_about(video(),state_.classification().campaign);
 			}
 		}
-
-		clear_loaded_game();
-	} catch (game::load_game_exception &) {
+	} catch (savegame::load_game_exception &e) {
+		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
 		e.show(video());
@@ -976,12 +968,12 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 void game_launcher::play_replay()
 {
+	assert(!load_data_);
 	try {
 		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		ccontroller.play_replay();
-
-		clear_loaded_game();
-	} catch (game::load_game_exception &) {
+	} catch (savegame::load_game_exception &e) {
+		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
 		e.show(video());
@@ -1005,6 +997,11 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 		image::flush_cache();
 	}
 	return editor::EXIT_ERROR; // not supposed to happen
+}
+
+void game_launcher::clear_loaded_game()
+{
+	load_data_.reset();
 }
 
 game_launcher::~game_launcher()

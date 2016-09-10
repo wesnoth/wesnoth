@@ -38,6 +38,7 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "savegame.hpp"
+#include "saved_game.hpp"
 #include "scripting/plugins/context.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
@@ -322,9 +323,9 @@ void create::process_event_impl(const process_event_data & data)
 		{
 			savegame::loadgame load(video(),
 				game_config_manager::get()->game_config(), engine_.get_state());
-
 			if (data.filename) {
-				if (!load.load_game(*data.filename, false, false, false, "", true)) {
+				load.data().filename = *data.filename;
+				if (!load.load_game()) {
 					return ;
 				}
 			} else {

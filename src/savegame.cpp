@@ -25,6 +25,7 @@
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/game_load.hpp"
@@ -35,17 +36,13 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
-#include "map/label.hpp"
 #include "persist_manager.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"
+#include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
-//#include "units/unit.hpp"
-#include "units/id.hpp"
 #include "version.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -121,12 +118,14 @@ bool loadgame::show_difficulty_dialog()
 
 // Called only by play_controller to handle in-game attempts to load. Instead of returning true,
 // throws a "load_game_exception" to signal a resulting load game request.
-bool loadgame::load_game()
+bool loadgame::load_game_ingame()
 {
-	if(!video_.faked()) {
-		if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
-			return false;
-		}
+	if (video_.faked()) {
+		return false;
+	}
+
+	if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+		return false;
 	}
 
 	if(load_data_.filename.empty()) {
@@ -153,28 +152,19 @@ bool loadgame::load_game()
 		return false;
 	}
 
-	throw game::load_game_exception(load_data_.filename, load_data_.show_replay, load_data_.cancel_orders, load_data_.select_difficulty, load_data_.difficulty, true);
+	throw load_game_exception(std::move(load_data_));
 }
 
-bool loadgame::load_game(
-		  const std::string& filename
-		, const bool show_replay
-		, const bool cancel_orders
-		, const bool select_difficulty
-		, const std::string& difficulty
-		, bool skip_version_check)
+bool loadgame::load_game()
 {
-	load_data_.filename = filename;
-	load_data_.difficulty = difficulty;
-	load_data_.select_difficulty = select_difficulty;
+	bool skip_version_check = true;
 
 	if(load_data_.filename.empty()){
 		if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
 			return false;
 		}
-	} else {
-		load_data_.show_replay = show_replay;
-		load_data_.cancel_orders = cancel_orders;
+		skip_version_check = false;
+		load_data_.show_replay |= is_replay_save(load_data_.summary);
 	}
 
 	if(load_data_.filename.empty()) {
@@ -276,6 +266,8 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
+
+	load_data_.show_replay |= is_replay_save(load_data_.summary);
 	if(load_data_.filename.empty()) {
 		return false;
 	}
@@ -347,15 +339,14 @@ bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const 
 
 	if (ask_for_overwrite){
 		if (!check_overwrite(video)) {
-			return save_game_interactive(video, "", gui::OK_CANCEL);
+			return save_game_interactive(video, "", savegame::OK_CANCEL);
 		}
 	}
 
 	return save_game(&video);
 }
 
-bool savegame::save_game_interactive(CVideo& video, const std::string& message,
-									 gui::DIALOG_TYPE dialog_type)
+bool savegame::save_game_interactive(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type)
 {
 	show_confirmation_ = true;
 	create_filename();
@@ -373,16 +364,16 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	return false;
 }
 
-int savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type)
+int savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type)
 {
 	int res = 0;
 
-	if (dialog_type == gui::OK_CANCEL){
+	if (dialog_type == OK_CANCEL){
 		gui2::tgame_save dlg(filename_, title_);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
-	else if (dialog_type == gui::YES_NO){
+	else if (dialog_type == YES_NO){
 		gui2::tgame_save_message dlg(filename_, title_, message);
 		dlg.show(video);
 		res = dlg.get_retval();
@@ -600,7 +591,7 @@ oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, bool& ignor
 	, ignore_(ignore)
 {}
 
-int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
+int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE /*dialog_type*/)
 {
 	int res = 0;
 
