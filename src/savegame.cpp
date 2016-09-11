@@ -138,6 +138,8 @@ bool loadgame::load_game_ingame()
 		}
 	}
 
+	load_data_.show_replay |= is_replay_save(load_data_.summary);
+
 	// Confirm the integrity of the file before throwing the exception.
 	// Use the summary in the save_index for this.
 	const config & summary = save_index_manager.get(load_data_.filename);
