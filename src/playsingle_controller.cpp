@@ -118,10 +118,24 @@ void playsingle_controller::init_gui(){
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks()) << "\n";
 	play_controller::init_gui();
 
-	if(gamestate().first_human_team_ != -1) {
-		gui_->scroll_to_tile(gamestate().board_.map().starting_position(gamestate().first_human_team_ + 1), game_display::WARP);
+	// Scroll to the starting position of the first team. If there is a
+	// human team, use that team; otherwise use team 1. If the map defines
+	// a starting position for the selected team, scroll to that tile. Note
+	// this often does not matter since many scenario start with messages,
+	// which will usually scroll to the speaker. Also note that the map
+	// does not necessarily define the starting positions. While usually
+	// best to use the map, the scenarion may explicitly set the positions,
+	// overriding those found in the map (if any).
+	{
+		int scroll_team = gamestate().first_human_team_ + 1;
+		if (scroll_team == 0) {
+			scroll_team = 1;
+		}
+		map_location loc(gamestate().board_.map().starting_position(scroll_team));
+		if ((loc.x >= 0) && (loc.y >= 0)) {
+			gui_->scroll_to_tile(loc, game_display::WARP);
+		}
 	}
-	gui_->scroll_to_tile(gamestate().board_.map().starting_position(1), game_display::WARP);
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
 	gui_->draw();
