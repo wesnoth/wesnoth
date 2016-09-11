@@ -87,7 +87,7 @@ public:
 	void bind(twindow& window) {
 		msg_label = &find_widget<tscroll_label>(&window, "msg", false);
 		msg_label->set_use_markup(true);
-		msg_label->set_vertical_scrollbar_mode(tscrollbar_container::always_visible);
+		msg_label->set_vertical_scrollbar_mode(tscrollbar_container::ALWAYS_VISIBLE);
 		msg_label->set_label("");
 	}
 

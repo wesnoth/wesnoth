@@ -1581,7 +1581,7 @@ twindow_definition::tresolution::tresolution(const config& cfg)
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
- *     always_visible or auto_visible.
+ *     ALWAYS_VISIBLE or AUTO_VISIBLE.
  * - Handle shared sizes:
  *   - Height and width:
  *     - Get the best size for all widgets that share height and width.

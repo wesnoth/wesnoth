@@ -28,6 +28,8 @@ namespace gui2
 namespace implementation
 {
 
+using scrollbar_mode = tscrollbar_container::tscrollbar_mode;
+
 /**
  * Returns the vertical alignment.
  *
@@ -71,8 +73,7 @@ unsigned read_flags(const config& cfg);
  *
  * @returns                       The scrollbar mode flags.
  */
-tscrollbar_container::tscrollbar_mode
-get_scrollbar_mode(const std::string& scrollbar_mode);
+scrollbar_mode get_scrollbar_mode(const std::string& scrollbar_mode);
 
 /**
  * Returns the return value for a widget.

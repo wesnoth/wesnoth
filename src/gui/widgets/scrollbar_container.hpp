@@ -60,29 +60,30 @@ public:
 
 	/** The way to handle the showing or hiding of the scrollbar. */
 	enum tscrollbar_mode {
-		always_visible, /**<
-						 * The scrollbar is always shown, whether
-						 * needed or not.
-						 */
-		always_invisible, /**<
-						   * The scrollbar is never shown even not
-						   * when needed. There's also no space
-						   * reserved for the scrollbar.
-						   */
-		auto_visible, /**<
-					   * The scrollbar is shown when the number of
-					   * items is larger as the visible items. The
-					   * space for the scrollbar is always
-					   * reserved, just in case it's needed after
-					   * the initial sizing (due to adding items).
-					   */
-		auto_visible_first_run /**<
-								* Like auto_visible, but when not needed
-								* upon the initial layout phase, the bars
-								* are not shown and no space is reserved
-								* for them. (The algorithm hides them by
-								* default.
-								*/
+		/**
+		 * The scrollbar is always shown, whether needed or not.
+		 */
+		ALWAYS_VISIBLE,
+
+		/**
+		 * The scrollbar is never shown even notwhen needed. There's also no space
+		 * reserved for the scrollbar.
+		 */
+		ALWAYS_INVISIBLE,
+
+		/**
+		 * The scrollbar is shown when the number of items is larger as the visible items.
+		 * The space for the scrollbar is always reserved, just in case it's needed after
+		 * the initial sizing (due to adding items).
+		 */
+		AUTO_VISIBLE,
+
+		/**
+		 * Like AUTO_VISIBLE, but when not needed upon the initial layout phase, the bars
+		 * are not shown and no space is reserved for them. (The algorithm hides them by
+		 * default.
+		 */
+		AUTO_VISIBLE_FIRST_RUN,
 	};
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -303,11 +304,11 @@ protected:
 	 *                            * positive values increase height.
 	 * @param width_modification_pos
 	 *                            The position where the additional content was
-	 *                            inserted/removed, defaults to -1 whcih means 
+	 *                            inserted/removed, defaults to -1 whcih means
 	 *                            'at end'
 	 * @param height_modification_po
 	 *                            The position where the additional content was
-	 *                            inserted/removed, defaults to -1 whcih means 
+	 *                            inserted/removed, defaults to -1 whcih means
 	 *                            'at end'
 	 *
 	 * @returns                   True is wanted modification is accepted false

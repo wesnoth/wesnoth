@@ -68,8 +68,8 @@ const std::map<std::string, tscrollbar_::tscroll>& scroll_lookup()
 tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	: tcontainer_(canvas_count)
 	, state_(ENABLED)
-	, vertical_scrollbar_mode_(auto_visible_first_run)
-	, horizontal_scrollbar_mode_(auto_visible_first_run)
+	, vertical_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
+	, horizontal_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
 	, vertical_scrollbar_grid_(nullptr)
 	, horizontal_scrollbar_grid_(nullptr)
 	, vertical_scrollbar_(nullptr)
@@ -125,12 +125,12 @@ void tscrollbar_container::layout_initialise(const bool full_initialisation)
 
 		assert(vertical_scrollbar_grid_);
 		switch(vertical_scrollbar_mode_) {
-			case always_visible:
+			case ALWAYS_VISIBLE:
 				vertical_scrollbar_grid_->set_visible(
 						twidget::tvisible::visible);
 				break;
 
-			case auto_visible:
+			case AUTO_VISIBLE:
 				vertical_scrollbar_grid_->set_visible(
 						twidget::tvisible::hidden);
 				break;
@@ -142,12 +142,12 @@ void tscrollbar_container::layout_initialise(const bool full_initialisation)
 
 		assert(horizontal_scrollbar_grid_);
 		switch(horizontal_scrollbar_mode_) {
-			case always_visible:
+			case ALWAYS_VISIBLE:
 				horizontal_scrollbar_grid_->set_visible(
 						twidget::tvisible::visible);
 				break;
 
-			case auto_visible:
+			case AUTO_VISIBLE:
 				horizontal_scrollbar_grid_->set_visible(
 						twidget::tvisible::hidden);
 				break;
@@ -188,7 +188,7 @@ void tscrollbar_container::request_reduce_height(const unsigned maximum_height)
 		return;
 	}
 
-	if(vertical_scrollbar_mode_ == always_invisible) {
+	if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE) {
 		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.\n";
 		return;
 	}
@@ -253,7 +253,7 @@ void tscrollbar_container::request_reduce_width(const unsigned maximum_width)
 		return;
 	}
 
-	if(horizontal_scrollbar_mode_ == always_invisible) {
+	if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE) {
 		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.\n";
 		return;
 	}
@@ -276,7 +276,7 @@ void tscrollbar_container::request_reduce_width(const unsigned maximum_width)
 	}
 
 	// If showing the scrollbar increased the width, hide and abort.
-	if(horizontal_scrollbar_mode_ == auto_visible_first_run && scrollbar_size.x
+	if(horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN && scrollbar_size.x
 															   > size.x) {
 
 		horizontal_scrollbar_grid_->set_visible(twidget::tvisible::invisible);
@@ -356,7 +356,7 @@ set_scrollbar_mode(tgrid* scrollbar_grid,
 {
 	assert(scrollbar_grid && scrollbar);
 
-	if(scrollbar_mode == tscrollbar_container::always_invisible) {
+	if(scrollbar_mode == tscrollbar_container::ALWAYS_INVISIBLE) {
 		scrollbar_grid->set_visible(twidget::tvisible::invisible);
 		return;
 	}
@@ -365,7 +365,7 @@ set_scrollbar_mode(tgrid* scrollbar_grid,
 	scrollbar->set_item_position(0);
 	scrollbar->set_visible_items(visible_items);
 
-	if(scrollbar_mode == tscrollbar_container::auto_visible) {
+	if(scrollbar_mode == tscrollbar_container::AUTO_VISIBLE) {
 
 		const bool scrollbar_needed = items > visible_items;
 
@@ -404,7 +404,7 @@ adjust_scrollbar_mode(tgrid* scrollbar_grid,
 	//Casts insertion_pos to an unsigned so negative values are interpreted as 'at end'
 	const bool inserted_before_visible_area = is_inserted_before(static_cast<unsigned>(insertion_pos), items_before, previous_item_position, visible_items);
 
-	if(scrollbar_mode == tscrollbar_container::always_invisible) {
+	if(scrollbar_mode == tscrollbar_container::ALWAYS_INVISIBLE) {
 		scrollbar_grid->set_visible(twidget::tvisible::invisible);
 		return;
 	}
@@ -414,7 +414,7 @@ adjust_scrollbar_mode(tgrid* scrollbar_grid,
 	//scrollbar->set_item_position(0);
 	scrollbar->set_visible_items(visible_items);
 
-	if(scrollbar_mode == tscrollbar_container::auto_visible) {
+	if(scrollbar_mode == tscrollbar_container::AUTO_VISIBLE) {
 
 		const bool scrollbar_needed = items_after > visible_items;
 
@@ -540,7 +540,7 @@ bool tscrollbar_container::disable_click_dismiss() const
 bool tscrollbar_container::content_resize_request(const bool force_sizing)
 {
 	/**
-	 * @todo Try to handle auto_visible_first_run here as well.
+	 * @todo Try to handle AUTO_VISIBLE_FIRST_RUN here as well.
 	 *
 	 * Handling it here makes the code a bit more complex but allows to not
 	 * reserve space for scrollbars, which will look nicer in the MP lobby.
@@ -576,8 +576,8 @@ bool tscrollbar_container::content_resize_request(const bool force_sizing)
 
 	if(best_size.x > size.x) {
 		DBG_GUI_L << LOG_HEADER << " content too wide.\n";
-		if(horizontal_scrollbar_mode_ == always_invisible
-		   || (horizontal_scrollbar_mode_ == auto_visible_first_run
+		if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE
+		   || (horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 			   && horizontal_scrollbar_grid_->get_visible()
 				  == twidget::tvisible::invisible)) {
 
@@ -592,8 +592,8 @@ bool tscrollbar_container::content_resize_request(const bool force_sizing)
 
 	if(best_size.y > size.y) {
 		DBG_GUI_L << LOG_HEADER << " content too high.\n";
-		if(vertical_scrollbar_mode_ == always_invisible
-		   || (vertical_scrollbar_mode_ == auto_visible_first_run
+		if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE
+		   || (vertical_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 			   && vertical_scrollbar_grid_->get_visible()
 				  == twidget::tvisible::invisible)) {
 
@@ -676,8 +676,8 @@ bool tscrollbar_container::content_resize_width(const int width_modification, co
 	}
 
 	assert(horizontal_scrollbar_ && horizontal_scrollbar_grid_);
-	if(horizontal_scrollbar_mode_ == always_invisible
-	   || (horizontal_scrollbar_mode_ == auto_visible_first_run
+	if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE
+	   || (horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 		   && horizontal_scrollbar_grid_->get_visible()
 			  == twidget::tvisible::invisible)) {
 
@@ -726,8 +726,8 @@ bool tscrollbar_container::content_resize_height(const int height_modification, 
 	}
 
 	assert(vertical_scrollbar_ && vertical_scrollbar_grid_);
-	if(vertical_scrollbar_mode_ == always_invisible
-	   || (vertical_scrollbar_mode_ == auto_visible_first_run
+	if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE
+	   || (vertical_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 		   && vertical_scrollbar_grid_->get_visible()
 			  == twidget::tvisible::invisible)) {
 
@@ -1117,12 +1117,12 @@ void tscrollbar_container::scrollbar_moved()
 	assert(vertical_scrollbar_ && horizontal_scrollbar_);
 
 	/*** Update the content location. ***/
-	const int x_offset = horizontal_scrollbar_mode_ == always_invisible
+	const int x_offset = horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE
 								 ? 0
 								 : horizontal_scrollbar_->get_item_position()
 								   * horizontal_scrollbar_->get_step_size();
 
-	const int y_offset = vertical_scrollbar_mode_ == always_invisible
+	const int y_offset = vertical_scrollbar_mode_ == ALWAYS_INVISIBLE
 								 ? 0
 								 : vertical_scrollbar_->get_item_position()
 								   * vertical_scrollbar_->get_step_size();
