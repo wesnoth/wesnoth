@@ -257,6 +257,9 @@ static int impl_unit_attack_get(lua_State *L)
 	return_int_attrib("parry", attack.parry());
 	return_cfgref_attrib("specials", attack.specials());
 	return_cfgref_attrib("__cfg", attack.to_config());
+	if(luaW_getmetafield(L, 1, m)) {
+		return 1;
+	}
 	std::string err_msg = "unknown property of attack: ";
 	err_msg += m;
 	return luaL_argerror(L, 2, err_msg.c_str());
@@ -303,6 +306,14 @@ static int impl_unit_attack_equal(lua_State* L)
 	return 1;
 }
 
+static int impl_unit_attack_match(lua_State* L)
+{
+	const_attack_ptr atk = luaW_toweapon(L, 1);
+	config cfg = luaW_checkconfig(L, 2);
+	lua_pushboolean(L, atk->matches_filter(cfg));
+	return 1;
+}
+
 static int impl_unit_attack_collect(lua_State* L)
 {
 	attack_ref* atk = static_cast<attack_ref*>(luaL_checkudata(L, 1, uattackKey));
@@ -342,6 +353,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__gc");
 		lua_pushstring(L, uattackKey);
 		lua_setfield(L, -2, "__metatable");
+		lua_pushcfunction(L, impl_unit_attack_match);
+		lua_setfield(L, -2, "matches");
 
 		return cmd_out.str();
 	}
