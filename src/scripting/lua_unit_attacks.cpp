@@ -209,9 +209,31 @@ static int impl_unit_attacks_len(lua_State *L)
 	return 1;
 }
 
+static int impl_unit_attacks_next(lua_State *L)
+{
+	lua_len(L, 1);
+	int n = luaL_checknumber(L, 2) + 1;
+	int max_n = luaL_checknumber(L, -1);
+	if(n > max_n) {
+		return 0;
+	}
+	lua_pushnumber(L, n);
+	lua_pushvalue(L, -1);
+	lua_gettable(L, 1);
+	return 2;
+}
+
+static int impl_unit_attacks_iter(lua_State* L)
+{
+	lua_pushcfunction(L, impl_unit_attacks_next);
+	lua_pushvalue(L, 1);
+	lua_pushnumber(L, 0);
+	return 3;
+}
+
 /**
  * Gets a property of a units attack (__index metamethod).
- * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
+ * - Arg 1: table containing the userdata containing the unit id. and a string identifying the attack.
  * - Arg 2: string
  * - Ret 1:
  */
@@ -303,6 +325,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_unit_attacks_len);
 		lua_setfield(L, -2, "__len");
+		lua_pushcfunction(L, impl_unit_attacks_iter);
+		lua_setfield(L, -2, "__ipairs");
 		lua_pushstring(L, uattacksKey);
 		lua_setfield(L, -2, "__metatable");
 
