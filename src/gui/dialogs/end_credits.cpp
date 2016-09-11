@@ -18,9 +18,11 @@
 #include "game_config.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
-#include "gui/widgets/settings.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
 #include "marked-up_text.hpp"
@@ -70,7 +72,7 @@ void tend_credits::pre_show(twindow& window)
 		if(line[0] == '-') {
 			str << font::escape_text(line.substr(1)) << "\n";
 		} else if(line[0] == '+') {
-			str << "<big>" << font::escape_text(line.substr(1)) << "</big>" << "\n";
+			str << "<span size='x-large'>" << font::escape_text(line.substr(1)) << "</span>" << "\n";
 		}
 	}
 
@@ -78,6 +80,15 @@ void tend_credits::pre_show(twindow& window)
 
 	text_widget_->set_use_markup(true);
 	text_widget_->set_label(str.str());
+
+	// HACK: always hide the scrollbar, even if it's needed.
+	// This should probably be implemented as a scrollbar mode.
+	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
+	if(tgrid* v_grid = dynamic_cast<tgrid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
+		find_widget<tscrollbar_>(v_grid, "_vertical_scrollbar", false).set_visible(twidget::tvisible::hidden);
+		find_widget<trepeating_button>(v_grid, "_half_page_up", false).set_visible(twidget::tvisible::hidden);
+		find_widget<trepeating_button>(v_grid, "_half_page_down", false).set_visible(twidget::tvisible::hidden);
+	}
 }
 
 void tend_credits::timer_callback(twindow&)
