@@ -74,10 +74,9 @@ static int impl_unit_type_get(lua_State *L)
 		push_unit_attacks_table(L, 1);
 		return 1;
 	}
+	// TODO: Should this only exist for base units?
 	if(strcmp(m, "variations") == 0) {
-		lua_createtable(L, 0, 1);
-		lua_pushvalue(L, 1);
-		lua_setfield(L, -2, "base");
+		*new(L) const unit_type* = &ut;
 		luaL_setmetatable(L, UnitTypeTable);
 		return 1;
 	}
@@ -97,11 +96,9 @@ static int impl_unit_type_equal(lua_State* L)
 
 static int impl_unit_type_lookup(lua_State* L)
 {
-	lua_pushstring(L, "base");
-	lua_rawget(L, 1);
 	std::string id = luaL_checkstring(L, 2);
 	const unit_type* ut;
-	if(const unit_type* base = luaW_tounittype(L, -1)) {
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
 		if(id == "male" || id == "female") {
 			ut = &base->get_gender_unit_type(id);
 		} else {
@@ -120,17 +117,14 @@ static int impl_unit_type_lookup(lua_State* L)
 static int impl_unit_type_new(lua_State* L)
 {
 	// This could someday become a hook to construct new unit types on the fly?
-	// For now though, we just want to avoid the __index callback not being called
-	// because keys got set in the table.
+	// For now though, it's just an error
 	lua_pushstring(L, "unit_types table is read-only");
 	return lua_error(L);
 }
 
 static int impl_unit_type_next(lua_State* L)
 {
-	lua_pushstring(L, "base");
-	lua_rawget(L, 1);
-	const unit_type* base = luaW_tounittype(L, -1);
+	const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable));
 	auto unit_map = base ? base->variation_types() : unit_types.types();
 	decltype(unit_map)::const_iterator it;
 	if(lua_isnoneornil(L, 2)) {
@@ -175,7 +169,7 @@ namespace lua_unit_type {
 	std::string register_table(lua_State* L)
 	{
 		lua_getglobal(L, "wesnoth");
-		lua_newtable(L);
+		*new(L) unit_type* = nullptr;
 		luaL_newmetatable(L, UnitTypeTable);
 		lua_pushcfunction(L, impl_unit_type_lookup);
 		lua_setfield(L, -2, "__index");
