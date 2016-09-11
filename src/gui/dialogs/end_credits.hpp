@@ -25,10 +25,14 @@ class display;
 namespace gui2
 {
 
+class tscroll_label;
+
 class tend_credits : public tdialog
 {
 public:
 	tend_credits(const std::vector<std::string>& text, const std::vector<std::string>& backgrounds);
+
+	~tend_credits();
 
 	static void display(const std::vector<std::string>& text, const std::vector<std::string>& backgrounds, CVideo& video)
 	{
@@ -42,9 +46,15 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
+	void timer_callback(twindow&);
+
 	const std::vector<std::string>& text_;
 
 	std::vector<std::string> backgrounds_;
+
+	size_t timer_id_;
+
+	tscroll_label* text_widget_;
 };
 
 } // namespace gui2

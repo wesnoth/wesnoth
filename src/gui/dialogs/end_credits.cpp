@@ -17,7 +17,9 @@
 
 #include "game_config.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/window.hpp"
 #include "formatter.hpp"
@@ -31,14 +33,26 @@ REGISTER_DIALOG(end_credits)
 tend_credits::tend_credits(const std::vector<std::string>& text, const std::vector<std::string>& backgrounds)
 	: text_(text)
 	, backgrounds_(backgrounds)
+	, timer_id_()
+	, text_widget_(nullptr)
 {
 	if(backgrounds_.empty()) {
 		backgrounds_.push_back(game_config::images::game_title_background);
 	}
 }
 
+tend_credits::~tend_credits()
+{
+	if(timer_id_ != 0) {
+		remove_timer(timer_id_);
+		timer_id_ = 0;
+	}
+}
+
 void tend_credits::pre_show(twindow& window)
 {
+	timer_id_ = add_timer(50, std::bind(&tend_credits::timer_callback, this, std::ref(window)), true);
+
 	// TODO: apparently, multiple images are supported... need to implement along with scrolling
 	window.canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
 
@@ -53,11 +67,15 @@ void tend_credits::pre_show(twindow& window)
 		}
 	}
 
-	tscroll_label& text = find_widget<tscroll_label>(&window, "text", false);
+	text_widget_ = find_widget<tscroll_label>(&window, "text", false, true);
 
-	text.set_text_alignment(PangoAlignment::PANGO_ALIGN_CENTER);
-	text.set_use_markup(true);
-	text.set_label(str.str());
+	text_widget_->set_use_markup(true);
+	text_widget_->set_label(str.str());
+}
+
+void tend_credits::timer_callback(twindow&)
+{
+	text_widget_->scroll_vertical_scrollbar(tscrollbar_::ITEM_FORWARD);
 }
 
 }
