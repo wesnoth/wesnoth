@@ -92,6 +92,9 @@ static int impl_side_get(lua_State *L)
 	}
 
 	return_cfg_attrib("__cfg", t.write(cfg));
+	if(luaW_getmetafield(L, 1, m)) {
+		return 1;
+	}
 	return 0;
 }
 
@@ -178,6 +181,9 @@ namespace lua_team {
 
 		lua_pushstring(L, "side");
 		lua_setfield(L, -2, "__metatable");
+		// Side methods
+		luaW_getglobal(L, "wesnoth", "match_side");
+		lua_setfield(L, -2, "matches");
 
 		return "Adding getside metatable...\n";
 	}

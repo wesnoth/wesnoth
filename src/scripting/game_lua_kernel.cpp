@@ -2795,8 +2795,6 @@ int game_lua_kernel::intf_match_location(lua_State *L)
  */
 int game_lua_kernel::intf_match_side(lua_State *L)
 {
-	unsigned side = luaL_checkinteger(L, 1) - 1;
-	if (side >= teams().size()) return 0;
 	vconfig filter = luaW_checkvconfig(L, 2, true);
 
 	if (filter.null()) {
@@ -2806,7 +2804,14 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 
 	filter_context & fc = game_state_;
 	side_filter s_filter(filter, &fc);
-	lua_pushboolean(L, s_filter.match(side + 1));
+
+	if(team* t = luaW_toteam(L, 1)) {
+		lua_pushboolean(L, s_filter.match(*t));
+	} else {
+		unsigned side = luaL_checkinteger(L, 1) - 1;
+		if (side >= teams().size()) return 0;
+		lua_pushboolean(L, s_filter.match(side + 1));
+	}
 	return 1;
 }
 
