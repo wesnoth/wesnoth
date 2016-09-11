@@ -1148,8 +1148,6 @@
 		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC64D7681A085F4A0092EF75 /* libboost_random-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */; };
 		EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		EC6C6B8C1D77CB2800807ED1 /* eras.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91C554621D77A50F002DB0C8 /* eras.cfg */; };
-		EC6C6B8D1D77CB2C00807ED1 /* eras.lua in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 91C554631D77A50F002DB0C8 /* eras.lua */; };
 		EC74C10F1975765F00B85A1A /* depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */; };
 		EC74C1101975765F00B85A1A /* depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
@@ -1327,8 +1325,6 @@
 				91273E941C7BF1D8005E7F81 /* core in Copy Data Files */,
 				91273E951C7BF1D8005E7F81 /* cores.cfg in Copy Data Files */,
 				91273E961C7BF1D8005E7F81 /* english.cfg in Copy Data Files */,
-				EC6C6B8C1D77CB2800807ED1 /* eras.cfg in Copy Data Files */,
-				EC6C6B8D1D77CB2C00807ED1 /* eras.lua in Copy Data Files */,
 				91273E981C7BF1D8005E7F81 /* game_config.cfg in Copy Data Files */,
 				91273E991C7BF1D8005E7F81 /* gui in Copy Data Files */,
 				91273E9A1C7BF1D8005E7F81 /* hardwired in Copy Data Files */,
@@ -1733,8 +1729,6 @@
 		91B621F71B76BD4600B00E0F /* multimenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = multimenu.hpp; sourceTree = "<group>"; };
 		91C5545E1D73F997002DB0C8 /* faction_select.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = faction_select.cpp; sourceTree = "<group>"; };
 		91C5545F1D73F997002DB0C8 /* faction_select.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = faction_select.hpp; sourceTree = "<group>"; };
-		91C554621D77A50F002DB0C8 /* eras.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eras.cfg; sourceTree = "<group>"; };
-		91C554631D77A50F002DB0C8 /* eras.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eras.lua; sourceTree = "<group>"; };
 		91C554661D77A545002DB0C8 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
 		91C55DA11CC078780040012E /* name_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = name_generator.hpp; sourceTree = "<group>"; };
 		91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context_free_grammar_generator.cpp; sourceTree = "<group>"; };
@@ -3441,8 +3435,6 @@
 				91273E771C7BF1C0005E7F81 /* core */,
 				91273E781C7BF1C0005E7F81 /* cores.cfg */,
 				91273E791C7BF1C1005E7F81 /* english.cfg */,
-				91C554621D77A50F002DB0C8 /* eras.cfg */,
-				91C554631D77A50F002DB0C8 /* eras.lua */,
 				91273E7B1C7BF1C1005E7F81 /* game_config.cfg */,
 				91273E7C1C7BF1C1005E7F81 /* gui */,
 				91273E7D1C7BF1C1005E7F81 /* hardwired */,
