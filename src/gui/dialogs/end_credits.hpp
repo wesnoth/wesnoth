@@ -46,7 +46,7 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
-	void timer_callback(twindow&);
+	void timer_callback();
 #if 0
 	void key_press_callback(bool&, bool&, const SDLKey key);
 #endif

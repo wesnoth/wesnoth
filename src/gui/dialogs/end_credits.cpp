@@ -56,7 +56,10 @@ tend_credits::~tend_credits()
 
 void tend_credits::pre_show(twindow& window)
 {
-	timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this, std::ref(window)), true);
+	// Delay a little before beginning the scrolling
+	add_timer(1000, [this](size_t) {
+		timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
+	});
 
 #if 0
 	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
@@ -91,7 +94,7 @@ void tend_credits::pre_show(twindow& window)
 	}
 }
 
-void tend_credits::timer_callback(twindow&)
+void tend_credits::timer_callback()
 {
 	text_widget_->scroll_vertical_scrollbar(tscrollbar_::ITEM_FORWARD);
 }
