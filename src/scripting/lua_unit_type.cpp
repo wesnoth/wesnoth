@@ -126,11 +126,34 @@ static int impl_unit_type_next(lua_State* L)
 {
 	const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable));
 	auto unit_map = base ? base->variation_types() : unit_types.types();
-	decltype(unit_map)::const_iterator it;
+	decltype(unit_map)::const_iterator it = unit_map.end();
 	if(lua_isnoneornil(L, 2)) {
+		if(base) {
+			if(base->has_gender_variation(unit_race::MALE)) {
+				lua_pushstring(L, "male");
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::MALE));
+				return 2;
+			} else if(base->has_gender_variation(unit_race::FEMALE)) {
+				lua_pushstring(L, "female");
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::FEMALE));
+				return 2;
+			}
+		}
 		it = unit_map.begin();
 	} else {
-		it = unit_map.find(luaL_checkstring(L, 2));
+		const std::string id = luaL_checkstring(L, 2);
+		if(base) {
+			if(id == "male" && base->has_gender_variation(unit_race::FEMALE)) {
+				lua_pushstring(L, "female");
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::FEMALE));
+				return 2;
+			} else if(id == "male" || id == "female") {
+				it = unit_map.begin();
+			}
+		}
+		if(it == unit_map.end()) {
+			it = unit_map.find(id);
+		}
 		if(it == unit_map.end()) {
 			return 0;
 		}
