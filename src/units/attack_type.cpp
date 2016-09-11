@@ -140,7 +140,6 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
-			return true;
 		} catch(game_logic::formula_error& e) {
 			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
