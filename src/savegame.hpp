@@ -59,6 +59,15 @@ struct load_game_metadata {
 
 	/** Config information of the savefile to be loaded. */
 	config load_config;
+
+	explicit load_game_metadata(const std::string& fname = "", const std::string& hard = "",
+			bool replay = false, bool stop = false, bool change = false,
+			const config& summary = config(), const config& info = config())
+		: filename(fname), difficulty(hard)
+		, show_replay(replay), cancel_orders(stop), select_difficulty(change)
+		, summary(summary), load_config(info)
+	{
+	}
 };
 
 /**
@@ -69,8 +78,9 @@ class load_game_exception
 	: public tlua_jailbreak_exception, public std::exception
 {
 public:
-	load_game_exception()
+	load_game_exception(const std::string& fname)
 		: tlua_jailbreak_exception()
+		, data_(fname)
 	{
 	}
 

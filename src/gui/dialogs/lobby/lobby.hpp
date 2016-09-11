@@ -198,8 +198,6 @@ private:
 
 	std::function<void()> preferences_callback_;
 
-	size_t active_window_;
-
 	ttoggle_button* filter_friends_;
 
 	ttoggle_button* filter_ignored_;

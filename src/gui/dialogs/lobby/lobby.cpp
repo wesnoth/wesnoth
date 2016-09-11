@@ -147,7 +147,6 @@ tlobby_main::tlobby_main(const config& game_config,
 	, window_(nullptr)
 	, lobby_info_(info)
 	, preferences_callback_()
-	, active_window_(0)
 	, filter_friends_(nullptr)
 	, filter_ignored_(nullptr)
 	, filter_slots_(nullptr)
