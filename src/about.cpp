@@ -36,6 +36,7 @@
 #include "tstring.hpp"                  // for operator==
 #include "video.hpp"                    // for update_rect, CVideo
 #include "widgets/button.hpp"           // for button
+#include "gui/dialogs/end_credits.hpp"
 
 #include <algorithm>                    // for max
 #include <map>                          // for map, map<>::mapped_type
@@ -228,6 +229,9 @@ void show_about(CVideo &video, const std::string &campaign)
 	}
 
 	surface map_image, map_image_scaled;
+
+	// TODO: enable
+	//gui2::tend_credits::display(text, image_list, video);
 
 	if(!image_list.empty()) {
 		map_image = image::get_image(image_list[0]);

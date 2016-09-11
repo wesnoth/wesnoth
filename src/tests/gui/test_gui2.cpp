@@ -50,6 +50,7 @@
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
 #include "gui/dialogs/editor/set_starting_position.hpp"
+#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
@@ -437,6 +438,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_edit_label>();
 	test<gui2::teditor_edit_side>();
 	test<gui2::teditor_edit_scenario>();
+	//test<gui2::tend_credits>();
 	test<gui2::tcore_selection>();
 	//test<gui2::tlua_interpreter>(& lua_kernel_base());
 
@@ -479,7 +481,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_host_game_prompt",
 		"mp_create_game",
 		// The title screen appears to be throwing a bad_alloc on Travis, so disable it for now
-		"title_screen"
+		"title_screen",
+		"end_credits",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
