@@ -1463,7 +1463,7 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 			SDL_Rect r = rect;
 			surface s = get_surface_portion(surf, r);
 			s = blur_surface(s, blur_depth_, false);
-			sdl_blit(s, nullptr, surf, &rect);
+			sdl_blit(s, nullptr, surf, &r);
 		}
 	}
 
