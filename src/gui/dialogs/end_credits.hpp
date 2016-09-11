@@ -16,9 +16,9 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include <memory>
-#include <string>
 #include <vector>
+
+#include "sdl/utils.hpp"
 
 class display;
 
@@ -47,6 +47,9 @@ private:
 	void pre_show(twindow& window);
 
 	void timer_callback(twindow&);
+#if 0
+	void key_press_callback(bool&, bool&, const SDLKey key);
+#endif
 
 	const std::vector<std::string>& text_;
 
@@ -55,6 +58,8 @@ private:
 	size_t timer_id_;
 
 	tscroll_label* text_widget_;
+
+	int scroll_speed_;
 };
 
 } // namespace gui2

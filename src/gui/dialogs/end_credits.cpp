@@ -25,6 +25,8 @@
 #include "formatter.hpp"
 #include "marked-up_text.hpp"
 
+#include "utils/functional.hpp"
+
 namespace gui2
 {
 
@@ -35,6 +37,7 @@ tend_credits::tend_credits(const std::vector<std::string>& text, const std::vect
 	, backgrounds_(backgrounds)
 	, timer_id_()
 	, text_widget_(nullptr)
+	, scroll_speed_(4)
 {
 	if(backgrounds_.empty()) {
 		backgrounds_.push_back(game_config::images::game_title_background);
@@ -51,7 +54,11 @@ tend_credits::~tend_credits()
 
 void tend_credits::pre_show(twindow& window)
 {
-	timer_id_ = add_timer(50, std::bind(&tend_credits::timer_callback, this, std::ref(window)), true);
+	timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this, std::ref(window)), true);
+
+#if 0
+	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
+#endif
 
 	// TODO: apparently, multiple images are supported... need to implement along with scrolling
 	window.canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
@@ -78,4 +85,17 @@ void tend_credits::timer_callback(twindow&)
 	text_widget_->scroll_vertical_scrollbar(tscrollbar_::ITEM_FORWARD);
 }
 
+#if 0
+void tend_credits::key_press_callback(bool&, bool&, const SDLKey key)
+{
+	if(key == SDLK_UP && scroll_speed_ < 20) {
+		++scroll_speed_;
+	}
+
+	if(key == SDLK_DOWN && scroll_speed_ > 0) {
+		--scroll_speed_;
+	}
 }
+#endif
+
+} // namespace gui2
