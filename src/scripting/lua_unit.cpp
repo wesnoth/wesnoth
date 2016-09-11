@@ -356,7 +356,10 @@ static int impl_unit_get(lua_State *L)
 	return_string_attrib("portrait", u.big_profile() == u.absolute_image() ? u.absolute_image() + u.image_mods() : u.big_profile());
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
 
-	return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).return_unit_method(L, m);
+	if(luaW_getmetafield(L, 1, m)) {
+		return 1;
+	}
+	return 0;
 }
 
 /**
@@ -540,6 +543,41 @@ namespace lua_units {
 		lua_setfield(L, -2, "__newindex");
 		lua_pushstring(L, "unit");
 		lua_setfield(L, -2, "__metatable");
+		// Unit methods
+		luaW_getglobal(L, "wesnoth", "match_unit");
+		lua_setfield(L, -2, "matches");
+		luaW_getglobal(L, "wesnoth", "put_recall_unit");
+		lua_setfield(L, -2, "to_recall");
+		luaW_getglobal(L, "wesnoth", "put_unit");
+		lua_setfield(L, -2, "to_map");
+		luaW_getglobal(L, "wesnoth", "erase_unit");
+		lua_setfield(L, -2, "erase");
+		luaW_getglobal(L, "wesnoth", "copy_unit");
+		lua_setfield(L, -2, "clone");
+		luaW_getglobal(L, "wesnoth", "extract_unit");
+		lua_setfield(L, -2, "extract");
+		luaW_getglobal(L, "wesnoth", "advance_unit");
+		lua_setfield(L, -2, "advance");
+		luaW_getglobal(L, "wesnoth", "add_modification");
+		lua_setfield(L, -2, "add_modification");
+		luaW_getglobal(L, "wesnoth", "unit_resistance");
+		lua_setfield(L, -2, "resistance");
+		luaW_getglobal(L, "wesnoth", "remove_modifications");
+		lua_setfield(L, -2, "remove_modifications");
+		luaW_getglobal(L, "wesnoth", "unit_defense");
+		lua_setfield(L, -2, "defense");
+		luaW_getglobal(L, "wesnoth", "unit_movement_cost");
+		lua_setfield(L, -2, "movement");
+		luaW_getglobal(L, "wesnoth", "unit_vision_cost");
+		lua_setfield(L, -2, "vision");
+		luaW_getglobal(L, "wesnoth", "unit_jamming_cost");
+		lua_setfield(L, -2, "jamming");
+		luaW_getglobal(L, "wesnoth", "unit_ability");
+		lua_setfield(L, -2, "ability");
+		luaW_getglobal(L, "wesnoth", "transform_unit");
+		lua_setfield(L, -2, "transform");
+		luaW_getglobal(L, "wesnoth", "select_unit");
+		lua_setfield(L, -2, "select");
 
 		// Create the unit status metatable.
 		cmd_out << "Adding unit status metatable...\n";

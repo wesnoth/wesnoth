@@ -4369,37 +4369,6 @@ void game_lua_kernel::initialize(const config& level)
 	load_game(level);
 }
 
-int game_lua_kernel::return_unit_method(lua_State *L, char const *m) {
-	static luaL_Reg const methods[] = {
-		{"matches",               &dispatch<&game_lua_kernel::intf_match_unit>},
-		{"to_recall",             &dispatch<&game_lua_kernel::intf_put_recall_unit>},
-		{"to_map",                &dispatch<&game_lua_kernel::intf_put_unit>},
-		{"erase",                 &dispatch<&game_lua_kernel::intf_erase_unit>},
-		{"clone",                 intf_copy_unit},
-		{"extract",               &dispatch<&game_lua_kernel::intf_extract_unit>},
-		{"advance",               intf_advance_unit},
-		{"add_modification",      intf_add_modification},
-		{"remove_modifications",  intf_remove_modifications},
-		{"resistance",            intf_unit_resistance},
-		{"defense",               intf_unit_defense},
-		{"movement",              intf_unit_movement_cost},
-		{"vision",                intf_unit_vision_cost},
-		{"jamming",               intf_unit_jamming_cost},
-		{"ability",               &dispatch<&game_lua_kernel::intf_unit_ability>},
-		{"transform",             intf_transform_unit},
-		{"select",                &dispatch<&game_lua_kernel::intf_select_unit>},
-	};
-
-	for (const luaL_Reg& r : methods) {
-		if (strcmp(m, r.name) == 0) {
-			lua_pushcfunction(L, r.func);
-			return 1;
-		}
-	}
-
-	return 0;
-}
-
 void game_lua_kernel::set_game_display(game_display * gd) {
 	game_display_ = gd;
 	if (gd) {

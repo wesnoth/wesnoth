@@ -214,7 +214,6 @@ public:
 
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
-	int return_unit_method(lua_State *L, char const *m);
 
 	void mouse_over_hex_callback(const map_location& loc);
 	void select_hex_callback(const map_location& loc);

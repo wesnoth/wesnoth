@@ -44,6 +44,12 @@ void* operator new(size_t sz, lua_State *L);
 void operator delete(void* p, lua_State *L);
 
 /**
+ * Like luaL_getmetafield, but returns false if key is an empty string
+ * or begins with two underscores.
+ */
+bool luaW_getmetafield(lua_State *L, int idx, const char* key);
+
+/**
  * Pushes a vconfig on the top of the stack.
  */
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg);

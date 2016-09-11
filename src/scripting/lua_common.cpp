@@ -474,6 +474,21 @@ void operator delete(void*, lua_State *L)
 	lua_pop(L, 1);
 }
 
+bool luaW_getmetafield(lua_State *L, int idx, const char* key)
+{
+	if(key == nullptr) {
+		return false;
+	}
+	int n = strlen(key);
+	if(n == 0) {
+		return false;
+	}
+	if(n >= 2 && key[0] == '_' && key[1] == '_') {
+		return false;
+	}
+	return luaL_getmetafield(L, idx, key);
+}
+
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 {
 	new(L) vconfig(cfg);
