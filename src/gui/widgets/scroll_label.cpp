@@ -39,7 +39,11 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label(bool wrap) : tscrollbar_container(COUNT), state_(ENABLED), wrap_on(wrap)
+tscroll_label::tscroll_label(bool wrap, const std::string& text_alignment)
+	: tscrollbar_container(COUNT)
+	, state_(ENABLED)
+	, wrap_on(wrap)
+	, text_alignment(text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(
@@ -99,6 +103,7 @@ void tscroll_label::finalize_subclass()
 	assert(lbl);
 	lbl->set_label(label());
 	lbl->set_can_wrap(wrap_on);
+	lbl->set_text_alignment(decode_text_alignment(text_alignment));
 }
 
 void tscroll_label::set_can_wrap(bool can_wrap)
@@ -239,12 +244,13 @@ tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, wrap_on(cfg["wrap"].to_bool(true))
+	, text_alignment(cfg["text_alignment"])
 {
 }
 
 twidget* tbuilder_scroll_label::build() const
 {
-	tscroll_label* widget = new tscroll_label(wrap_on);
+	tscroll_label* widget = new tscroll_label(wrap_on, text_alignment);
 
 	init_control(widget);
 
