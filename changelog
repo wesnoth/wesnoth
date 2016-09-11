@@ -91,6 +91,7 @@ Version 1.13.5+dev:
    * New recall_filter field in unit proxy returns the [filter_recall] config
    * New variations field in unit_type proxy returns a list of unit variations
      Each member is a full unit_type describing that variation.
+     The table is iterable with pairs().
    * Lua side, unit_type, and unit attack proxies can now be compared with ==
      with identity semantics. (Previously, each time such a proxy was obtained,
      it would produce a new object that did not compare equal to any others.)
@@ -107,6 +108,8 @@ Version 1.13.5+dev:
    * The callable userdata returned by wesnoth.textdomain can now be called with
      an additional two parameters (a plural string and a count) in order to support
      gettext plurals.
+   * New matches function in team and unit attack metatables, which test if the
+     side or weapon matches a filter.
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle
