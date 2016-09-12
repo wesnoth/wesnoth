@@ -162,7 +162,6 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
-    sdl/alpha.cpp
     sdl/exception.cpp
     sdl/image.cpp
     sdl/rect.cpp
@@ -691,7 +690,6 @@ test_utils_sources = Split("""
     """)
 
 wesmage_sources = Split("""
-    sdl/alpha.cpp
     sdl/utils.cpp
     sdl/window.cpp
     tools/dummy_video.cpp
@@ -744,7 +742,6 @@ test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 
 create_images_sources = Split("""
-    sdl/alpha.cpp
     sdl/utils.cpp
     sdl/window.cpp
     tests/create_images.cpp

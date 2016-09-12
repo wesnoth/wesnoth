@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
-#include "sdl/alpha.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
@@ -252,8 +251,8 @@ void tristate_button::draw_contents() {
 	}
 
 //  TODO for later reference
-//	SDL_SetAlpha(nbase, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-//	SDL_SetAlpha(image, 0, 0);
+//	adjust_surface_alpha(nbase, SDL_ALPHA_OPAQUE);
+//	adjust_surface_alpha(image, SDL_ALPHA_TRANSPARENT);
 //
 //	TODO might be needed.
 	bg_restore();
