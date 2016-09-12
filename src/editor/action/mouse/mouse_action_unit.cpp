@@ -244,7 +244,8 @@ void mouse_action_unit::set_unit_mouse_overlay(editor_display& disp, const unit_
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 

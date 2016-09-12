@@ -19,7 +19,6 @@
 #include "widgets/textbox.hpp"
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
-#include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
@@ -99,11 +98,11 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 	const bool is_at_bottom = get_position() == get_max_position();
 	const ucs4::string& wtext = unicode_cast<ucs4::string>(text);
 
-	const surface new_text = add_text_line(wtext, color);
+	surface new_text = add_text_line(wtext, color);
 	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
 
-	SDL_SetAlpha(new_text.get(),0,0);
-	SDL_SetAlpha(text_image_.get(),0,0);
+	adjust_surface_alpha(new_text, SDL_ALPHA_TRANSPARENT);
+	adjust_surface_alpha(text_image_, SDL_ALPHA_TRANSPARENT);
 	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_NONE);
 	sdl_blit(text_image_,nullptr,new_surface,nullptr);
 	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_BLEND);
@@ -240,7 +239,8 @@ void textbox::draw_contents()
 			// while not changing any applicable non-grayscale AA. Actual colored text will
 			// not look as good, but this is not currently a concern since GUI1 textboxes
 			// are not used much nowadays, and they will eventually all go away.
-			sdl_blit(adjust_surface_alpha(text_image_, ftofxp(0.3)), &src, surf, &dest);
+			adjust_surface_alpha(text_image_, ftofxp(0.3));
+			sdl_blit(text_image_, &src, surf, &dest);
 		}
 	}
 

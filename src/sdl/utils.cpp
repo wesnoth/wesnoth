@@ -21,7 +21,6 @@
 #include "color_range.hpp"
 
 #include "sdl/utils.hpp"
-#include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 
 #include "neon.hpp"
@@ -141,9 +140,9 @@ surface make_neutral_surface(const surface &surf)
 		return nullptr;
 	}
 
-	surface const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
+	surface result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
 	if(result != nullptr) {
-		SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+		adjust_surface_alpha(result, SDL_ALPHA_OPAQUE);
 	}
 
 	return result;
@@ -172,9 +171,11 @@ surface create_optimized_surface(const surface &surf)
 	if(surf == nullptr)
 		return nullptr;
 
-	SDL_SetAlpha(surf,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
+	surface temp = surf;
 
-	return surf;
+	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+
+	return temp;
 }
 
 surface stretch_surface_horizontal(
@@ -1201,43 +1202,13 @@ surface brighten_image(const surface &surf, fixed_t amount, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize)
+void adjust_surface_alpha(surface& surf, fixed_t amount)
 {
-	if(surf== nullptr) {
-		return nullptr;
+	if(surf == nullptr) {
+		return;
 	}
 
-	surface nsurf(make_neutral_surface(surf));
-
-	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
-	}
-
-	{
-		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
-
-		if (amount < 0) amount = 0;
-		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
-
-			if(alpha) {
-				Uint8 r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
-
-				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-			}
-
-			++beg;
-		}
-	}
-
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	SDL_SetSurfaceAlphaMod(surf, Uint8(amount));
 }
 
 class pixel_callable : public game_logic::formula_callable {
@@ -1296,7 +1267,8 @@ surface adjust_surface_alpha_formula(const surface &surf, const std::string& for
 		return nullptr;
 	}
 
-	SDL_SetAlpha(nsurf.get(),SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+	adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+
 	{
 		surface_lock lock(nsurf);
 		Uint32* cur = lock.pixels();

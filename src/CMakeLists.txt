@@ -389,7 +389,6 @@ set_target_properties(wesnoth-lua
 ########### Helper libraries ###############
 
 set(wesnoth-sdl_SRC
-	sdl/alpha.cpp
 	sdl/exception.cpp
 	sdl/rect.cpp
 	sdl/image.cpp
