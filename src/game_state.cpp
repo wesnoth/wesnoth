@@ -42,13 +42,13 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, play_controller &, const tdata_cache & tdata) :
+game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
 	tod_manager_(level),
-	pathfind_manager_(),
+	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
-	lua_kernel_(),
+	lua_kernel_(new game_lua_kernel(nullptr, *this, pc, *reports_)),
 	events_manager_(new game_events::manager()),
 	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
 	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
@@ -197,6 +197,9 @@ void game_state::init(const config& level, play_controller & pc)
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
+	//Initilize the lua kernel before the units are created.
+	lua_kernel_->initialize(level);
+
 	{
 		//sync traits of start units and the random start time.
 		random_new::set_random_determinstic deterministic(gamedata_.rng());
@@ -215,8 +218,6 @@ void game_state::init(const config& level, play_controller & pc)
 			}
 		}
 	}
-
-	pathfind_manager_.reset(new pathfind::manager(level));
 
 	lua_kernel_.reset(new game_lua_kernel(nullptr, *this, pc, *reports_));
 }

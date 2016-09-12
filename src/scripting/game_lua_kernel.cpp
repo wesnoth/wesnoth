@@ -4370,8 +4370,6 @@ void game_lua_kernel::initialize(const config& level)
 	for (const config &cfg : level_lua_.child_range("lua")) {
 		run_lua_tag(cfg);
 	}
-
-	load_game(level);
 }
 
 void game_lua_kernel::set_game_display(game_display * gd) {
