@@ -5,6 +5,9 @@ Version 1.13.5+dev:
      would not attack them.
    * New Micro AI: Assassin Squad AI
    * Fix bug #23720, AI units with max_moves=0 do not attack.
+   * Fix bug #22179: [disable] weapon special is ignored by AI. A second
+     instance of the AI also ignoring this special under different circumstances
+     has also been fixed.
  * Campaigns:
    * Eastern Invasion:
      * Fixed broken village encounters.
