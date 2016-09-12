@@ -242,26 +242,27 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	palette_y_ = target.y;
 	const int button_height = 30;
 	int bottom = target.y + target.h;
-	
-
-	button_add_.reset();
-	button_delete_.reset();
-	button_goto_.reset();
-	
-	button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
-		//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
-		map_location pos = disp_.get_map().special_location(selected_item_);
-		if (pos.valid()) {
-			disp_.scroll_to_tile(pos, display::WARP);
-		}
-	}));
-	button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Add"), [this]() {
-		std::string newid;
-		if (gui2::tedit_text::execute(_("New Location Identifer"), "", newid, video())) {
-			add_item(newid);
-		}
-	}));
-	button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), nullptr));
+	if (!button_goto_) {
+		button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
+			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
+			map_location pos = disp_.get_map().special_location(selected_item_);
+			if (pos.valid()) {
+				disp_.scroll_to_tile(pos, display::WARP);
+			}
+		}));
+		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Add"), [this]() {
+			std::string newid;
+			if (gui2::tedit_text::execute(_("New Location Identifer"), "", newid, video())) {
+				add_item(newid);
+			}
+		}));
+		button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), nullptr));
+	}
+	else {
+		button_goto_->set_location(SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height });
+		button_add_->set_location(SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height });
+		button_delete_->set_location(SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height });
+	}
 
 	const int space_for_items = bottom - target.y;
 	const int items_fitting = space_for_items / item_space_;
@@ -271,6 +272,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
 		buttons_.resize(items_fitting, &lpi);
 	}
+
 	set_location(target);
 	set_dirty(true);
 	gui_.video().clear_help_string(help_handle_);
