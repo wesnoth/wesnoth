@@ -534,6 +534,12 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			attacker_combatant_ = new combatant(*attacker_stats_);
 			defender_combatant_ = new combatant(*defender_stats_, prev_def);
 			attacker_combatant_->fight(*defender_combatant_);
+		} else {
+			if (attacker_stats_->disable) {
+				delete attacker_stats_;
+				attacker_stats_ = nullptr;
+				continue;
+			}
 		}
 		if (!best_att_comb || better_combat(*attacker_combatant_, *defender_combatant_,
 					*best_att_comb, *best_def_comb, harm_weight)) {
