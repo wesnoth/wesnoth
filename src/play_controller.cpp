@@ -228,6 +228,7 @@ void play_controller::init(CVideo& video, const config& level)
 		resources::filter_con = &gamestate();
 		resources::undo_stack = &undo_stack();
 		resources::game_events = gamestate().events_manager_.get();
+		resources::lua_kernel = gamestate().lua_kernel_.get();
 
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
@@ -268,7 +269,6 @@ void play_controller::init(CVideo& video, const config& level)
 		// Has to be done before registering any events!
 		gamestate().set_game_display(gui_.get());
 		gui2::tloadscreen::progress("init lua");
-		resources::lua_kernel = gamestate().lua_kernel_.get();
 
 		if(gamestate().first_human_team_ != -1) {
 			gui_->set_team(gamestate().first_human_team_);
@@ -291,7 +291,7 @@ void play_controller::init(CVideo& video, const config& level)
 		gui2::tloadscreen::progress("start game");
 		//loadscreen_manager->reset();
 		gamestate().gamedata_.set_phase(game_data::PRELOAD);
-		gamestate().lua_kernel_->initialize(level);
+		gamestate().lua_kernel_->load_game(level);
 
 		plugins_context_.reset(new plugins_context("Game"));
 		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
@@ -323,10 +323,10 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
 	resources::game_events = gamestate().events_manager_.get();
+	resources::lua_kernel = gamestate().lua_kernel_.get();
 
 	gamestate_->init(level, *this);
 	gamestate().set_game_display(gui_.get());
-	resources::lua_kernel = gamestate().lua_kernel_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	gui_->reset_tod_manager(gamestate().tod_manager_);
@@ -334,7 +334,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gui_->change_display_context(&gamestate().board_);
 	saved_game_.get_replay().set_pos(replay_pos);
 	gamestate().gamedata_.set_phase(game_data::PRELOAD);
-	gamestate().lua_kernel_->initialize(level);
+	gamestate().lua_kernel_->load_game(level);
 }
 
 void play_controller::init_managers()
