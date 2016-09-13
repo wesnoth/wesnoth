@@ -179,8 +179,8 @@ surface floating_label::create_surface()
 
 			if (background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
-				surf_ = create_optimized_surface(foreground);
-				return surf_;
+				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+				return surf_ = foreground;
 			}
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
@@ -196,7 +196,8 @@ surface floating_label::create_surface()
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			blit_surface(foreground, nullptr, background, &r);
 
-			surf_ = create_optimized_surface(background);
+			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
+			surf_ = background;
 			// RLE compression seems less efficient for big semi-transparent area
 			// so, remove it for this case, but keep the optimized display format
 			adjust_surface_alpha(surf_, SDL_ALPHA_OPAQUE);
@@ -212,12 +213,13 @@ surface floating_label::create_surface()
 
 			if (background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
-				surf_ = create_optimized_surface(foreground);
-				return surf_;
+				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+				return surf_ = foreground;
 			}
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			blit_surface(foreground, nullptr, background, &r);
-			surf_ = create_optimized_surface(background);
+			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
+			surf_ = background;
 		}
 	}
 
