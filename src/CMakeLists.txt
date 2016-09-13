@@ -394,6 +394,7 @@ set_target_properties(wesnoth-lua
 set(wesnoth-sdl_SRC
 	sdl/exception.cpp
 	sdl/rect.cpp
+	sdl/renderer.cpp
 	sdl/image.cpp
 	sdl/window.cpp
 	sdl/utils.cpp
