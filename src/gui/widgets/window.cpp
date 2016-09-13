@@ -352,7 +352,10 @@ twindow::twindow(CVideo& video,
 
 	connect();
 
-	connect_signal<event::DRAW>(std::bind(&twindow::draw, this));
+	if (!video.faked())
+	{
+		connect_signal<event::DRAW>(std::bind(&twindow::draw, this));
+	}
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
 			&twindow::signal_handler_sdl_video_resize, this, _2, _3, _5));

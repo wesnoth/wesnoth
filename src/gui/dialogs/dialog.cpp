@@ -35,7 +35,7 @@ tdialog::~tdialog()
 
 bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
-	if(video.faked()) {
+	if(video.faked() && !show_even_without_video_) {
 		if(!allow_plugin_skip_) {
 			return false;
 		}

@@ -109,6 +109,8 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 		mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR,
 	};
 
+	set_show_even_without_video(true);
+
 	create_engine_.init_active_mods();
 
 	create_engine_.get_state() = saved_game();

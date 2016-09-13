@@ -136,6 +136,7 @@ public:
 		, focus_()
 		, restore_(false)
 		, allow_plugin_skip_(true)
+		, show_even_without_video_(false)
 	{
 	}
 
@@ -177,6 +178,11 @@ public:
 	void set_allow_plugin_skip(const bool allow_plugin_skip)
 	{
 		allow_plugin_skip_ = allow_plugin_skip;
+	}
+
+	void set_show_even_without_video(const bool show_even_without_video)
+	{
+		show_even_without_video_ = show_even_without_video;
 	}
 
 protected:
@@ -344,6 +350,13 @@ private:
 	 * disable this.
 	 */
 	bool allow_plugin_skip_;
+
+	/**
+	 * Show the dialog even with --nogui?
+	 * Some dialogs need to be shown even when --nogui is specified if the game is being driven by a plugin.
+	 * Those dialogs allow the plugin to control them by creating a plugin context in pre_show().
+	 */
+	bool show_even_without_video_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;

@@ -165,6 +165,8 @@ tlobby_main::tlobby_main(const config& game_config,
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
 {
+	// Need to set this in the constructor, pre_show() is too late
+	set_show_even_without_video(true);
 }
 
 struct lobby_delay_gamelist_update_guard
