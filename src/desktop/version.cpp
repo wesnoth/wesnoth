@@ -86,7 +86,7 @@ struct posix_pipe_release_policy
  * The stream object type is the same as a regular file stream, but the release
  * policy is different, as required by popen(3).
  */
-typedef util::scoped_resource<std::FILE*, posix_pipe_release_policy> scoped_posix_pipe;
+typedef std::unique_ptr<std::FILE, posix_pipe_release_policy> scoped_posix_pipe;
 
 /**
  * Read a single line from the specified pipe.
@@ -105,7 +105,7 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 	ver.reserve(64);
 
 	// We only want the first line.
-	while((c = std::fgetc(p)) && c != EOF && c != '\n' && c != '\r') {
+	while((c = std::fgetc(p.get())) && c != EOF && c != '\n' && c != '\r') {
 		ver.push_back(static_cast<char>(c));
 	}
 
