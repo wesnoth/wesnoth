@@ -48,62 +48,72 @@
 
 SDL_Keycode sdl_keysym_from_name(std::string const &keyname);
 
-
-struct surface
+class surface
 {
-private:
-	static void sdl_add_ref(SDL_Surface *surf)
-	{
-		if (surf != nullptr)
-			++surf->refcount;
-	}
-
-	struct free_sdl_surface {
-		void operator()(SDL_Surface *surf) const
-		{
-			if (surf != nullptr)
-				 SDL_FreeSurface(surf);
-		}
-	};
-
-	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 public:
 	surface() : surface_(nullptr)
 	{}
 
-	surface(SDL_Surface *surf) : surface_(surf)
+	surface(SDL_Surface* surf) : surface_(surf)
 	{}
 
-	surface(const surface& o) : surface_(o.surface_.get())
+	surface(const surface& s) : surface_(s.get())
 	{
-		sdl_add_ref(surface_.get());
+		add_surface_ref(surface_);
 	}
 
-	void assign(const surface& o)
+	~surface()
 	{
-		SDL_Surface *surf = o.surface_.get();
-		sdl_add_ref(surf); // need to be done before assign to avoid corruption on "a=a;"
-		surface_.assign(surf);
+		free_surface();
 	}
 
-	surface& operator=(const surface& o)
+	void assign(SDL_Surface* surf)
 	{
-		assign(o);
+		assign_surface_internal(surf);
+	}
+
+	void assign(const surface& s)
+	{
+		assign_surface_internal(s.get());
+	}
+
+	surface& operator=(const surface& s)
+	{
+		assign(s);
 		return *this;
 	}
 
-	operator SDL_Surface*() const { return surface_.get(); }
+	operator SDL_Surface*() const { return surface_; }
 
-	SDL_Surface* get() const { return surface_.get(); }
+	SDL_Surface* get() const { return surface_; }
 
-	SDL_Surface* operator->() const { return surface_.get(); }
+	SDL_Surface* operator->() const { return surface_; }
 
-	void assign(SDL_Surface* surf) { surface_.assign(surf); }
-
-	bool null() const { return surface_.get() == nullptr; }
+	bool null() const { return surface_ == nullptr; }
 
 private:
-	scoped_sdl_surface surface_;
+	static void add_surface_ref(SDL_Surface* surf)
+	{
+		if(surf) {
+			++surf->refcount;
+		}
+	}
+
+	void assign_surface_internal(SDL_Surface* surf)
+	{
+		add_surface_ref(surf); // Needs to be done before assignment to avoid corruption on "a = a;"
+		free_surface();
+		surface_ = surf;
+	}
+
+	void free_surface()
+	{
+		if(surface_) {
+			SDL_FreeSurface(surface_);
+		}
+	}
+
+	SDL_Surface* surface_;
 };
 
 bool operator<(const surface& a, const surface& b);
