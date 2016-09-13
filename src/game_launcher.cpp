@@ -759,7 +759,7 @@ bool game_launcher::goto_editor()
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
 		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
-		if (start_editor(filesystem::normalize_path(load_data->filename)) ==
+		if (start_editor(filesystem::normalize_path(load_data ? load_data->filename : "")) ==
 		    editor::EXIT_QUIT_TO_DESKTOP)
 		{
 			return false;
