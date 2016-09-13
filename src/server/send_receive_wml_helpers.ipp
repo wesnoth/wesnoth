@@ -161,6 +161,15 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 	async_write(*socket, buffers, op);
 }
 
+#else
+
+// TODO: Implement this for systems without sendfile()
+template<typename Handler, typename ErrorHandler>
+void async_send_file(socket_ptr, const std::string&, Handler, ErrorHandler)
+{
+	assert(false && "Not implemented yet");
+}
+
 #endif
 
 template<typename Handler>

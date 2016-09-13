@@ -480,7 +480,36 @@
 		91B622221B76C0F400B00E0F /* libboost_regex-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5313AD4E35003C701D /* libboost_regex-mt.dylib */; };
 		91B622231B76C0F400B00E0F /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
 		91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */; };
+		91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		91C548D21D886AF000FE6A7B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D01D886AF000FE6A7B /* server_base.cpp */; };
+		91C548DA1D886BD600FE6A7B /* addon_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D31D886BD500FE6A7B /* addon_utils.cpp */; };
+		91C548DB1D886BD600FE6A7B /* blacklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D51D886BD500FE6A7B /* blacklist.cpp */; };
+		91C548DC1D886BD600FE6A7B /* campaign_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D71D886BD500FE6A7B /* campaign_server.cpp */; };
+		91C548DD1D886BE300FE6A7B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D01D886AF000FE6A7B /* server_base.cpp */; };
+		91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA80EC62181008DD061 /* config.cpp */; };
+		91C548DF1D886E2100FE6A7B /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
+		91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
+		91C548E11D886E7200FE6A7B /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
+		91C548E21D886E9000FE6A7B /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
+		91C548E31D886EBC00FE6A7B /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
+		91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
+		91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
+		91C548E61D886F0700FE6A7B /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
+		91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */; };
+		91C548E91D886F6800FE6A7B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F00EC62181008DD061 /* md5.cpp */; };
+		91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
+		91C548EB1D886F8C00FE6A7B /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */; };
+		91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
+		91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */; };
+		91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */; };
+		91C548EF1D88702800FE6A7B /* input_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B5B0F893E7500444FBF /* input_stream.cpp */; };
+		91C548F01D88703300FE6A7B /* validation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE9AB1213640400CFBDAB /* validation.cpp */; };
+		91C548F11D88705C00FE6A7B /* color_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AAA0EC62181008DD061 /* color_range.cpp */; };
+		91C548F21D88707D00FE6A7B /* filesystem_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */; };
+		91C548F31D8870BB00FE6A7B /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AB0EC62181008DD061 /* parser.cpp */; };
+		91C548F41D8870C700FE6A7B /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999670EC62181008DD061 /* version.cpp */; };
+		91C548F51D8870DE00FE6A7B /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B10EC62181008DD061 /* tokenizer.cpp */; };
+		91C548F61D8870F800FE6A7B /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AD0EC62181008DD061 /* preprocessor.cpp */; };
 		91C554601D73F997002DB0C8 /* faction_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C5545E1D73F997002DB0C8 /* faction_select.cpp */; };
 		91C554611D73F997002DB0C8 /* faction_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C5545E1D73F997002DB0C8 /* faction_select.cpp */; };
 		91C554671D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
@@ -1730,9 +1759,17 @@
 		91B621F51B76BCB000B00E0F /* unicode_cast.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = unicode_cast.hpp; sourceTree = "<group>"; };
 		91B621F61B76BCB000B00E0F /* unicode_types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = unicode_types.hpp; sourceTree = "<group>"; };
 		91B621F71B76BD4600B00E0F /* multimenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = multimenu.hpp; sourceTree = "<group>"; };
-		91C548CF1D886AF000FE6A7B /* send_receive_wml_helpers.ipp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = send_receive_wml_helpers.ipp; sourceTree = "<group>"; };
+		91C548CE1D8866ED00FE6A7B /* campaignd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = campaignd; sourceTree = BUILT_PRODUCTS_DIR; };
+		91C548CF1D886AF000FE6A7B /* send_receive_wml_helpers.ipp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = send_receive_wml_helpers.ipp; sourceTree = "<group>"; };
 		91C548D01D886AF000FE6A7B /* server_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_base.cpp; sourceTree = "<group>"; };
 		91C548D11D886AF000FE6A7B /* server_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server_base.hpp; sourceTree = "<group>"; };
+		91C548D31D886BD500FE6A7B /* addon_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = addon_utils.cpp; path = ../campaign_server/addon_utils.cpp; sourceTree = "<group>"; };
+		91C548D41D886BD500FE6A7B /* addon_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = addon_utils.hpp; path = ../campaign_server/addon_utils.hpp; sourceTree = "<group>"; };
+		91C548D51D886BD500FE6A7B /* blacklist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = blacklist.cpp; path = ../campaign_server/blacklist.cpp; sourceTree = "<group>"; };
+		91C548D61D886BD500FE6A7B /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = blacklist.hpp; path = ../campaign_server/blacklist.hpp; sourceTree = "<group>"; };
+		91C548D71D886BD500FE6A7B /* campaign_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = campaign_server.cpp; path = ../campaign_server/campaign_server.cpp; sourceTree = "<group>"; };
+		91C548D81D886BD500FE6A7B /* campaign_server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = campaign_server.hpp; path = ../campaign_server/campaign_server.hpp; sourceTree = "<group>"; };
+		91C548D91D886BD600FE6A7B /* control.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = control.hpp; path = ../campaign_server/control.hpp; sourceTree = "<group>"; };
 		91C5545E1D73F997002DB0C8 /* faction_select.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = faction_select.cpp; sourceTree = "<group>"; };
 		91C5545F1D73F997002DB0C8 /* faction_select.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = faction_select.hpp; sourceTree = "<group>"; };
 		91C554661D77A545002DB0C8 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
@@ -2761,6 +2798,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91C548C21D8866ED00FE6A7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */,
+				91C548E21D886E9000FE6A7B /* libboost_system-mt.dylib in Frameworks */,
+				91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */,
+				91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt.dylib in Frameworks */,
+				91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B597C4960FACD3CD00CE81F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2848,6 +2897,7 @@
 				8D1107320486CEB800E47090 /* Wesnoth.app */,
 				B5BB6B4B0F890FBA00444FBF /* wesnothd */,
 				B597C4980FACD3CD00CE81F5 /* unit_tests */,
+				91C548CE1D8866ED00FE6A7B /* campaignd */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4528,8 +4578,15 @@
 		B5BB6B560F893DE000444FBF /* server */ = {
 			isa = PBXGroup;
 			children = (
+				91C548D31D886BD500FE6A7B /* addon_utils.cpp */,
+				91C548D41D886BD500FE6A7B /* addon_utils.hpp */,
 				B5BB6B7C0F893E7500444FBF /* ban.cpp */,
 				B5BB6B7A0F893E7500444FBF /* ban.hpp */,
+				91C548D51D886BD500FE6A7B /* blacklist.cpp */,
+				91C548D61D886BD500FE6A7B /* blacklist.hpp */,
+				91C548D71D886BD500FE6A7B /* campaign_server.cpp */,
+				91C548D81D886BD500FE6A7B /* campaign_server.hpp */,
+				91C548D91D886BD600FE6A7B /* control.hpp */,
 				B5BB6B7B0F893E7500444FBF /* forum_user_handler.cpp */,
 				B5BB6B790F893E7500444FBF /* forum_user_handler.hpp */,
 				B5BB6B5A0F893E7500444FBF /* game.cpp */,
@@ -4647,6 +4704,22 @@
 			productReference = 8D1107320486CEB800E47090 /* Wesnoth.app */;
 			productType = "com.apple.product-type.application";
 		};
+		91C548A01D8866ED00FE6A7B /* campaignd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91C548CB1D8866ED00FE6A7B /* Build configuration list for PBXNativeTarget "campaignd" */;
+			buildPhases = (
+				91C548A11D8866ED00FE6A7B /* Sources */,
+				91C548C21D8866ED00FE6A7B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = campaignd;
+			productName = Server;
+			productReference = 91C548CE1D8866ED00FE6A7B /* campaignd */;
+			productType = "com.apple.product-type.tool";
+		};
 		B597C4970FACD3CD00CE81F5 /* unit_tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B597C49C0FACD3EC00CE81F5 /* Build configuration list for PBXNativeTarget "unit_tests" */;
@@ -4705,6 +4778,7 @@
 				8D1107260486CEB800E47090 /* Wesnoth */,
 				B5BB6B4A0F890FBA00444FBF /* wesnothd */,
 				B597C4970FACD3CD00CE81F5 /* unit_tests */,
+				91C548A01D8866ED00FE6A7B /* campaignd */,
 			);
 		};
 /* End PBXProject section */
@@ -5289,6 +5363,37 @@
 				9132C1781D7A981D008F604E /* generator_settings.cpp in Sources */,
 				918E9D061D8211130080686E /* chatbox.cpp in Sources */,
 				91F06A7E1D85FE6E0005C353 /* end_credits.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91C548A11D8866ED00FE6A7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91C548DA1D886BD600FE6A7B /* addon_utils.cpp in Sources */,
+				91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */,
+				91C548DB1D886BD600FE6A7B /* blacklist.cpp in Sources */,
+				91C548DC1D886BD600FE6A7B /* campaign_server.cpp in Sources */,
+				91C548F11D88705C00FE6A7B /* color_range.cpp in Sources */,
+				91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */,
+				91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */,
+				91C548F21D88707D00FE6A7B /* filesystem_common.cpp in Sources */,
+				91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */,
+				91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */,
+				91C548E61D886F0700FE6A7B /* hash.cpp in Sources */,
+				91C548EF1D88702800FE6A7B /* input_stream.cpp in Sources */,
+				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
+				91C548E91D886F6800FE6A7B /* md5.cpp in Sources */,
+				91C548F31D8870BB00FE6A7B /* parser.cpp in Sources */,
+				91C548F61D8870F800FE6A7B /* preprocessor.cpp in Sources */,
+				91C548DD1D886BE300FE6A7B /* server_base.cpp in Sources */,
+				91C548EB1D886F8C00FE6A7B /* simple_wml.cpp in Sources */,
+				91C548E11D886E7200FE6A7B /* string_utils.cpp in Sources */,
+				91C548F51D8870DE00FE6A7B /* tokenizer.cpp in Sources */,
+				91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */,
+				91C548E31D886EBC00FE6A7B /* unicode.cpp in Sources */,
+				91C548F01D88703300FE6A7B /* validation.cpp in Sources */,
+				91C548F41D8870C700FE6A7B /* version.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5931,6 +6036,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		91C548CC1D8866ED00FE6A7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/lib\"",
+					"$(PROJECT_DIR)/lib",
+				);
+				PRODUCT_NAME = campaignd;
+			};
+			name = Debug;
+		};
+		91C548CD1D8866ED00FE6A7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
+				);
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/lib\"",
+					"$(PROJECT_DIR)/lib",
+				);
+				PRODUCT_NAME = campaignd;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		B597C49A0FACD3CE00CE81F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6189,6 +6335,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		91C548CB1D8866ED00FE6A7B /* Build configuration list for PBXNativeTarget "campaignd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91C548CC1D8866ED00FE6A7B /* Debug */,
+				91C548CD1D8866ED00FE6A7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B597C49C0FACD3EC00CE81F5 /* Build configuration list for PBXNativeTarget "unit_tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
