@@ -247,8 +247,9 @@ surface crop_modification::operator()(const surface& src) const
 	 * Since it seems to work for most cases, rather change this caller instead
 	 * of the function signature. (The issue was discovered in bug #20876).
 	 */
-	return create_optimized_surface(
-			cut_surface(make_neutral_surface(src), area));
+    surface temp = cut_surface(make_neutral_surface(src), area);
+	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+	return temp;
 }
 
 const SDL_Rect& crop_modification::get_slice() const

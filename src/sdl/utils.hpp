@@ -142,7 +142,6 @@ bool is_neutral(const surface& surf);
 
 surface make_neutral_surface(const surface &surf);
 surface create_neutral_surface(int w, int h);
-surface create_optimized_surface(const surface &surf);
 
 /**
  * Stretches a surface in the horizontal direction.

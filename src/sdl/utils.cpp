@@ -163,18 +163,6 @@ surface create_neutral_surface(int w, int h)
 	return result;
 }
 
-surface create_optimized_surface(const surface &surf)
-{
-	if(surf == nullptr)
-		return nullptr;
-
-	surface temp = surf;
-
-	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
-
-	return temp;
-}
-
 surface stretch_surface_horizontal(
 		const surface& surf, const unsigned w, const bool optimize)
 {
@@ -217,7 +205,11 @@ surface stretch_surface_horizontal(
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 surface stretch_surface_vertical(
@@ -260,7 +252,11 @@ surface stretch_surface_vertical(
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 Uint32 blend_rgba(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char a, unsigned char drop)
@@ -283,16 +279,17 @@ surface scale_surface_xbrz(const surface & surf, size_t z)
 		z = 1;
 	}
 
-
 	if (z == 1) {
-		return create_optimized_surface(surf);
+		surface temp = surf; // TODO: no temp surface
+		adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+		return temp;
 	}
 
 	surface dst(create_neutral_surface(surf->w *z, surf->h * z));
 
 	if (z == 0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -308,7 +305,9 @@ surface scale_surface_xbrz(const surface & surf, size_t z)
 
 		xbrz::scale(z, src_lock.pixels(), dst_lock.pixels(), surf->w, surf->h);
 	}
-	return create_optimized_surface(dst);
+
+	adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	return dst;
 }
 
 surface scale_surface_nn (const surface & surf, int w, int h)
@@ -329,7 +328,7 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -346,7 +345,9 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 
 		xbrz::nearestNeighborScale(src_lock.pixels(), surf->w, surf->h, dst_lock.pixels(), w, h);
 	}
-	return create_optimized_surface(dst);
+
+	adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	return dst;
 }
 
 // NOTE: Don't pass this function 0 scaling arguments.
@@ -372,7 +373,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -481,7 +482,11 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
@@ -502,7 +507,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -573,7 +578,11 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 
@@ -618,7 +627,11 @@ surface tile_surface(const surface& surf, int w, int h, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dest) : dest;
+	if(optimize) {
+		adjust_surface_alpha(dest, SDL_ALPHA_OPAQUE);
+	}
+
+	return dest;
 }
 
 surface adjust_surface_color(const surface &surf, int red, int green, int blue, bool optimize)
@@ -626,8 +639,15 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue, 
 	if(surf == nullptr)
 		return nullptr;
 
-	if((red == 0 && green == 0 && blue == 0))
-		return optimize ? create_optimized_surface(surf) : surf;
+	if((red == 0 && green == 0 && blue == 0)) {
+		surface temp = surf; // TODO: remove temp surface
+
+		if(optimize) {
+			adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+		}
+
+		return temp;
+	}
 
 	surface nsurf(make_neutral_surface(surf));
 
@@ -661,7 +681,11 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue, 
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface greyscale_image(const surface &surf, bool optimize)
@@ -706,7 +730,11 @@ surface greyscale_image(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface monochrome_image(const surface &surf, const int threshold, bool optimize)
@@ -746,7 +774,11 @@ surface monochrome_image(const surface &surf, const int threshold, bool optimize
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface sepia_image(const surface &surf, bool optimize)
@@ -788,7 +820,11 @@ surface sepia_image(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB, bool optimize)
@@ -831,7 +867,11 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface alpha_to_greyscale(const surface &surf, bool optimize)
@@ -859,7 +899,11 @@ surface alpha_to_greyscale(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface wipe_alpha(const surface &surf, bool optimize)
@@ -886,7 +930,11 @@ surface wipe_alpha(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 
@@ -924,7 +972,11 @@ surface shadow_image(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a, bool optimize) {
@@ -1026,7 +1078,11 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize){
@@ -1058,7 +1114,11 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, boo
 		++beg;
 		}
 
-		return optimize ? create_optimized_surface(nsurf) : nsurf;
+		if(optimize) {
+			adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+		}
+
+		return nsurf;
 	}
 	return surf;
 }
@@ -1102,7 +1162,11 @@ surface brighten_image(const surface &surf, fixed_t amount, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 void adjust_surface_alpha(surface& surf, fixed_t amount)
@@ -1149,7 +1213,11 @@ surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface mask_surface(const surface &surf, const surface &mask, bool* empty_result, const std::string& filename)
@@ -1218,8 +1286,8 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 	if(empty_result)
 		*empty_result = empty;
 
+	//adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
 	return nsurf;
-	//return create_optimized_surface(nsurf);
 }
 
 bool in_mask_surface(const surface &surf, const surface &mask)
@@ -1327,8 +1395,11 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
 
+	return nsurf;
 }
 
 surface light_surface(const surface &surf, const surface &lightmap, bool optimize)
@@ -1393,7 +1464,11 @@ surface light_surface(const surface &surf, const surface &lightmap, bool optimiz
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 
@@ -1413,7 +1488,11 @@ surface blur_surface(const surface &surf, int depth, bool optimize)
 	SDL_Rect rect = sdl::create_rect(0, 0, surf->w, surf->h);
 	blur_surface(res, rect, depth);
 
-	return optimize ? create_optimized_surface(res) : res;
+	if(optimize) {
+		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
+	}
+
+	return res;
 }
 
 void blur_surface(surface& surf, SDL_Rect rect, int depth)
@@ -1652,7 +1731,11 @@ surface blur_alpha_surface(const surface &surf, int depth, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(res) : res;
+	if(optimize) {
+		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
+	}
+
+	return res;
 }
 
 surface cut_surface(const surface &surf, SDL_Rect const &r)
@@ -1753,7 +1836,11 @@ surface blend_surface(
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 /* Simplified RotSprite algorithm.
@@ -1813,7 +1900,12 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 							get_pixel(src, src_lock, source_x, source_y));
 			}
 	}
-	return optimize ? create_optimized_surface(dst) : dst;
+
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel)
@@ -1907,7 +1999,11 @@ surface rotate_180_surface(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 
@@ -1945,7 +2041,11 @@ surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 
@@ -1975,7 +2075,11 @@ surface flip_surface(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface flop_surface(const surface &surf, bool optimize)
@@ -2004,7 +2108,11 @@ surface flop_surface(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface create_compatible_surface(const surface &surf, int width, int height)
