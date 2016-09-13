@@ -17,8 +17,6 @@
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
-#include <boost/tuple/tuple.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/variant.hpp>
 
@@ -27,16 +25,9 @@
 #include "units/id.hpp"
 
 class display;
+class display_context;
 class gamemap;
-#if defined(_MSC_VER) && _MSC_VER <= 1600
-/*
-	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
-	And will create corrupt binaries without giving a warning / error.
-*/
-#include <SDL_video.h>
-#else
 struct SDL_Color;
-#endif
 class team;
 class unit_animation_component;
 class unit_formula_manager;
@@ -45,7 +36,7 @@ class vconfig;
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;
 namespace unit_detail {
-	template<typename T> const T& get_or_default(const boost::scoped_ptr<T>& v)
+	template<typename T> const T& get_or_default(const std::unique_ptr<T>& v)
 	{
 		if(v) {
 			return *v;
@@ -108,11 +99,7 @@ public:
 	unit(const unit& u);
 
 	/** Initializes a unit from a config */
-	explicit unit(
-			  const config& cfg
-			, bool use_traits = false
-			, const vconfig* vcfg = nullptr
-			, n_unit::id_manager* id_manager = nullptr);
+	explicit unit(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
 	/**
 	  * Initializes a unit from a unit type
@@ -199,7 +186,7 @@ public:
 	bool unrenamable() const { return unrenamable_; }
 	void set_unrenamable(bool unrenamable) { unrenamable_ = unrenamable; }
 	int side() const { return side_; }
-	const std::string& team_color() const { return flag_rgb_; }
+	const std::string& team_color() const;
 	unit_race::GENDER gender() const { return gender_; }
 	void set_side(unsigned int new_side) { side_ = new_side; }
 	fixed_t alpha() const { return alpha_; }
@@ -242,7 +229,7 @@ public:
 	bool resting() const { return resting_; }
 	void set_resting(bool rest) { resting_ = rest; }
 
-	const std::map<std::string,std::string> get_states() const;
+	const std::set<std::string> get_states() const;
 	bool get_state(const std::string& state) const;
 	void set_state(const std::string &state, bool value);
 	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
@@ -250,7 +237,6 @@ public:
 	void set_state(state_t state, bool value);
 	bool get_state(state_t state) const;
 	static state_t get_known_boolean_state_id(const std::string &state);
-	static std::map<std::string, state_t> get_known_boolean_state_names();
 
 	bool has_moved() const { return movement_left() != total_movement(); }
 	bool has_goto() const { return get_goto().valid(); }
@@ -267,9 +253,13 @@ public:
 	void set_emit_zoc(bool val) { emit_zoc_ = val; }
 	bool get_emit_zoc() const { return emit_zoc_; }
 
-
-	const std::vector<attack_type>& attacks() const { return attacks_; }
-	std::vector<attack_type>& attacks() { return attacks_; }
+	const_attack_itors attacks() const { return make_attack_itors(attacks_); }
+	attack_itors attacks() { return make_attack_itors(attacks_); }
+	bool remove_attack(attack_ptr atk);
+	template<typename... Args>
+	attack_ptr add_attack(attack_itors::iterator position, Args... args) {
+		return *attacks_.emplace(position.base(), new attack_type(args...));
+	}
 
 	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
 
@@ -291,7 +281,7 @@ public:
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
-	
+
 	struct upkeep_full {};
 	struct upkeep_loyal {};
 	typedef boost::variant<upkeep_full, upkeep_loyal, int> t_upkeep;
@@ -327,6 +317,8 @@ public:
 	std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
+	config& get_modifications() { return modifications_; }
+	const config& get_modifications() const { return modifications_; }
 
 	typedef boost::ptr_vector<config> t_advancements;
 	void set_advancements(std::vector<config> advancements);
@@ -338,7 +330,7 @@ public:
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 	void expire_modifications(const std::string & duration);
-	
+
 	static const std::set<std::string> builtin_effects;
 	void apply_builtin_effect(std::string type, const config& effect);
 	std::string describe_builtin_effect(std::string type, const config& effect);
@@ -375,18 +367,18 @@ public:
 	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
 	 * This means that the ability could be owned by the unit itself, or by an adjacent unit.
 	 */
-	bool get_ability_bool(const std::string& tag_name, const map_location& loc) const;
+	bool get_ability_bool(const std::string& tag_name, const map_location& loc, const display_context& dc) const;
 	/**
 	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
 	 * This means that the ability could be owned by the unit itself, or by an adjacent unit.
 	 */
-	bool get_ability_bool(const std::string &tag_name) const
-	{ return get_ability_bool(tag_name, loc_); }
+	bool get_ability_bool(const std::string &tag_name, const display_context& dc) const
+	{ return get_ability_bool(tag_name, loc_, dc); }
 	unit_ability_list get_abilities(const std::string &tag_name, const map_location& loc) const;
 	unit_ability_list get_abilities(const std::string &tag_name) const
 	{ return get_abilities(tag_name, loc_); }
 	/** Tuple of: neutral ability name, gendered ability name, description */
-	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=nullptr) const;
+	std::vector<std::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=nullptr) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 
@@ -398,9 +390,9 @@ public:
 	void generate_name();
 
 	// Only see_all=true use caching
-	bool invisible(const map_location& loc, bool see_all=true) const;
+	bool invisible(const map_location& loc, const display_context& dc, bool see_all = true) const;
 
-	bool is_visible_to_team(team const& team, gamemap const & map , bool const see_all = true) const;
+	bool is_visible_to_team(team const& team, display_context const& dc, bool const see_all = true) const;
 
 	/** Mark this unit as clone so it can be inserted to unit_map
 	 * @returns                   self (for convenience)
@@ -471,7 +463,7 @@ private:
 
 	fixed_t alpha_;
 
-	boost::scoped_ptr<unit_formula_manager> formula_man_;
+	std::unique_ptr<unit_formula_manager> formula_man_;
 
 	int movement_;
 	int max_movement_;
@@ -496,7 +488,7 @@ private:
 	std::vector<std::string> overlays_;
 
 	std::string role_;
-	std::vector<attack_type> attacks_;
+	attack_list attacks_;
 protected:
 	mutable map_location::DIRECTION facing_; //TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable
 						 //But it's not easy to separate this guy from the animation code right now.
@@ -514,7 +506,7 @@ private:
 	friend class unit_animation_component;
 
 private:
-	boost::scoped_ptr<unit_animation_component> anim_comp_;
+	std::unique_ptr<unit_animation_component> anim_comp_;
 
 	bool getsHit_;
 	mutable bool hidden_;
@@ -524,9 +516,9 @@ private:
 	config abilities_;
 	t_advancements advancements_;
 	t_string description_;
-	boost::scoped_ptr<std::string> usage_;
-	boost::scoped_ptr<std::string> halo_;
-	boost::scoped_ptr<std::string> ellipse_;
+	std::unique_ptr<std::string> usage_;
+	std::unique_ptr<std::string> halo_;
+	std::unique_ptr<std::string> ellipse_;
 	bool random_traits_;
 	bool generate_name_;
 	t_upkeep upkeep_;
@@ -561,7 +553,7 @@ private:
 struct unit_movement_resetter
 	: private boost::noncopyable
 {
-	unit_movement_resetter(unit& u, bool operate=true);
+	unit_movement_resetter(const unit& u, bool operate=true);
 	~unit_movement_resetter();
 
 private:

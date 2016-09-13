@@ -41,7 +41,6 @@
 #include "whiteboard/manager.hpp"       // for manager
 #include "widgets/button.hpp"           // for button
 
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
 #include <ctime>                        // for time
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -127,7 +126,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 {
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(cfg.all_children_count() == 1);
-	assert(cfg.attribute_range().first == cfg.attribute_range().second);
+	assert(cfg.attribute_range().empty());
 	if(!resources::recorder->at_end())
 	{
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;
@@ -214,7 +213,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		bool restart = side_drop == resources::screen->playing_side();
 
-		if (index >= resources::teams->size()) {
+		if (index >= resources::gameboard->teams().size()) {
 			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
 			throw ingame_wesnothd_error("");
 		}
@@ -350,7 +349,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
 	else if (cfg.child("notify_next_scenario")) {
-		gui::button* btn_end = resources::screen->find_action_button("button-endturn");
+		std::shared_ptr<gui::button> btn_end = resources::screen->find_action_button("button-endturn");
 		if(btn_end) {
 			btn_end->enable(true);
 		}

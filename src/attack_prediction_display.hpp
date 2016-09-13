@@ -29,8 +29,11 @@ class battle_prediction_pane : public gui::preview_pane
 public:
 
 	// Lengthy constructor.
-	battle_prediction_pane(const battle_context& bc,
+	battle_prediction_pane(battle_context& bc,
 		const map_location& attacker_loc, const map_location& defender_loc);
+	battle_prediction_pane(battle_context&& bc,
+		const map_location& attacker_loc, const map_location& defender_loc) :
+		battle_prediction_pane(bc, attacker_loc, defender_loc) {}
 
 	// This method is called to draw the dialog contents.
 	void draw_contents();
@@ -107,24 +110,6 @@ private:
 							const battle_context_unit_stats& stats,
 								const battle_context_unit_stats& opp_stats,
 								surface& surf, int& width, int& height);
-};
-
-// This class is used when the user clicks on the button
-// to show the "Damage Calculations" dialog.
-class attack_prediction_displayer : public gui::dialog_button_action
-{
-public:
-	attack_prediction_displayer(const std::vector<battle_context>& bc_vector,
-								const map_location& attacker_loc, const map_location& defender_loc)
-		: bc_vector_(bc_vector),
-			  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
-	// This method is called when the button is pressed.
-	RESULT button_pressed(int selection);
-
-private:
-	const std::vector<battle_context>& bc_vector_;
-	const map_location& attacker_loc_;
-	const map_location& defender_loc_;
 };
 
 #endif

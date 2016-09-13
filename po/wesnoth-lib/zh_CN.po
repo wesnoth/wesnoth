@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2015-02-07 13:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1731,7 +1731,7 @@ msgstr ""
 #: data/gui/window/chat_log.cfg:203 data/gui/window/game_version.cfg:600
 #: data/gui/window/gamestate_inspector.cfg:315
 #: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_player_info.cfg:199
-#: data/gui/window/lua_interpreter.cfg:133 data/gui/window/message.cfg:135
+#: data/gui/window/lua_interpreter.cfg:148 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:314 src/construct_dialog.cpp:140
 #: src/generators/default_map_generator.cpp:110
@@ -1756,18 +1756,18 @@ msgstr "现在您将连接到服务器以下载附加组件。"
 msgid "Server:"
 msgstr "服务器："
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "移除附加组件"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Help"
 msgstr "帮助"
 
@@ -1795,8 +1795,8 @@ msgstr "连接"
 #: data/gui/window/editor_set_starting_position.cfg:175
 #: data/gui/window/folder_create.cfg:133 data/gui/window/game_load.cfg:463
 #: data/gui/window/game_save.cfg:134 data/gui/window/label_settings.cfg:149
-#: data/gui/window/language_selection.cfg:141 data/gui/window/message.cfg:149
-#: data/gui/window/mp_change_control.cfg:160
+#: data/gui/window/language_selection.cfg:141 data/gui/window/logging.cfg:168
+#: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:160
 #: data/gui/window/mp_cmd_wrapper.cfg:477 data/gui/window/mp_connect.cfg:173
 #: data/gui/window/mp_create_game.cfg:559
 #: data/gui/window/mp_create_game_choose_mods.cfg:202
@@ -2039,9 +2039,9 @@ msgstr "递增"
 msgid "sort^Descending"
 msgstr "递减"
 
-#. [label]: id=name
-#. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_name
+#. [toggle_button]: id=sort_0
+#. [label]: id=name
 #: data/gui/window/addon_list.cfg:50 data/gui/window/game_load.cfg:245
 #: data/gui/window/mp_server_list.cfg:107
 msgid "Name"
@@ -2074,9 +2074,9 @@ msgstr "尺寸："
 msgid "Downloads"
 msgstr "下载："
 
-#. [toggle_button]: id=sort_1
-#. [label]: id=typename
 #. [toggle_button]: id=sort_type
+#. [label]: id=typename
+#. [toggle_button]: id=sort_1
 #: data/gui/window/addon_list.cfg:121
 #: data/gui/window/gamestate_inspector.cfg:107
 #: data/gui/window/unit_create.cfg:158
@@ -2088,8 +2088,8 @@ msgstr "类型"
 msgid "Choose the add-ons you want to remove."
 msgstr "选择您希望移除的附加组件。"
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/mp_cmd_wrapper.cfg:198
 #: data/gui/window/preferences/05_multiplayer.cfg:317
@@ -2176,7 +2176,7 @@ msgstr ""
 #: data/gui/window/folder_create.cfg:119
 #: data/gui/window/game_cache_options.cfg:247 data/gui/window/game_load.cfg:450
 #: data/gui/window/game_save.cfg:120 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:127
+#: data/gui/window/language_selection.cfg:127 data/gui/window/logging.cfg:158
 #: data/gui/window/mp_change_control.cfg:150
 #: data/gui/window/mp_create_game.cfg:544
 #: data/gui/window/mp_create_game_choose_mods.cfg:188
@@ -2239,8 +2239,8 @@ msgstr ""
 msgid "Configure sides"
 msgstr "配置："
 
-#. [label]
 #. [label]: id=era_label
+#. [label]
 #: data/gui/window/campaign_settings.cfg:157
 #: data/gui/window/mp_create_game.cfg:185
 msgid "Era:"
@@ -2268,9 +2268,9 @@ msgstr "页码："
 msgid "Last"
 msgstr "末页"
 
+#. [button]: id=previous_page
 #. [button]: id=previous_tod
 #. [button]: id=previous_tip
-#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:97 data/gui/window/custom_tod.cfg:327
 #: data/gui/window/title_screen.cfg:195
 msgid "Previous"
@@ -2281,9 +2281,9 @@ msgstr "回退"
 msgid "Previous page"
 msgstr "上一页"
 
+#. [button]: id=next_page
 #. [button]: id=next_tod
 #. [button]: id=next_tip
-#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/custom_tod.cfg:352
 #: data/gui/window/title_screen.cfg:210
 msgid "Next"
@@ -2609,7 +2609,7 @@ msgstr "无"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:210
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:211
 msgid "Generate Map"
 msgstr "生成地图"
 
@@ -2664,7 +2664,7 @@ msgstr "创建"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:208
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:209
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -2769,8 +2769,8 @@ msgstr "继续"
 msgid "Execution trace"
 msgstr "执行轨迹"
 
-#. [grid]
 #. [button]: id=cancel
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/title_screen.cfg:266
 msgid "Quit"
@@ -2816,15 +2816,15 @@ msgstr "复制"
 msgid "Copy this path to clipboard"
 msgstr "将路径复制到剪贴板"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "浏览"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2860,8 +2860,8 @@ msgstr "删除存档"
 msgid "Do you really want to delete this game?"
 msgstr "您真的想删除这个游戏吗？"
 
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -2875,8 +2875,8 @@ msgstr "不再显示"
 msgid "Load Game"
 msgstr "读取游戏"
 
-#. [label]
 #. [label]: id=lblFilter
+#. [label]
 #: data/gui/window/game_load.cfg:195 data/gui/window/unit_create.cfg:98
 msgid "Filter"
 msgstr "过滤条件"
@@ -3045,8 +3045,8 @@ msgstr "物品"
 msgid "Contents"
 msgstr "内容"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:303
 #: data/gui/window/lua_interpreter.cfg:41
 msgid "Lua Console"
@@ -3059,8 +3059,8 @@ msgstr ""
 msgid "Show or Hide Labels"
 msgstr "显示浮动标签"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:263
 msgid "Language"
@@ -3211,8 +3211,8 @@ msgstr "缩小"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#. [grid]
 #. [button]: id=show_preferences
+#. [grid]
 #: data/gui/window/lobby_main.cfg:691 data/gui/window/preferences.cfg:209
 #: data/gui/window/title_screen.cfg:264 src/hotkey/hotkey_command.cpp:87
 msgid "Preferences"
@@ -3294,6 +3294,20 @@ msgstr "封禁时间："
 #: data/gui/window/lobby_player_info.cfg:187
 msgid "Kick/ban"
 msgstr "剔出/封禁"
+
+#. [label]
+#: data/gui/window/logging.cfg:85
+#, fuzzy
+#| msgid "Options"
+msgid "Logging Options"
+msgstr "选项"
+
+#. [button]: id=clear
+#: data/gui/window/lua_interpreter.cfg:132
+#, fuzzy
+#| msgid "Clean Gray Cobbles"
+msgid "Clear Console"
+msgstr "干净的灰色卵石"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
@@ -3433,8 +3447,8 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:221
 msgid "Defaults"
@@ -3553,8 +3567,8 @@ msgstr "地图尺寸："
 msgid "Default"
 msgstr "默认"
 
-#. [label]: id=title
 #. [button]: id=password
+#. [label]: id=title
 #: data/gui/window/mp_create_game.cfg:226
 #: data/gui/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -3608,8 +3622,8 @@ msgstr "设置密码，这是想加入您的游戏的人所必需输入的。"
 msgid "Password:"
 msgstr "密码："
 
-#. [column]
 #. [label]
+#. [column]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:165
 msgid "Host Networked Game"
@@ -3661,8 +3675,8 @@ msgid "Password Reminder"
 msgstr "密码提示"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:39
 #: data/gui/window/title_screen.cfg:258 src/gui/dialogs/game_load.cpp:354
 msgid "Multiplayer"
@@ -3913,7 +3927,7 @@ msgstr ""
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:87
-msgid "Available in titlescreen"
+msgid "Available at titlescreen"
 msgstr ""
 
 #. [button]: id=btn_add_hotkey
@@ -4535,7 +4549,7 @@ msgstr "征募"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:204
-#: src/gui/dialogs/preferences_dialog.cpp:381
+#: src/gui/dialogs/preferences_dialog.cpp:382
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "错误"
@@ -4551,35 +4565,35 @@ msgstr "详细："
 msgid "Copy this report to clipboard"
 msgstr "将报告复制到剪贴板"
 
-#: src/build_info.cpp:183
+#: src/build_info.cpp:168
 msgid "feature^Experimental OpenMP support"
 msgstr ""
 
-#: src/build_info.cpp:188
+#: src/build_info.cpp:173
 msgid "feature^PNG screenshots"
 msgstr ""
 
-#: src/build_info.cpp:193
+#: src/build_info.cpp:178
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:198
+#: src/build_info.cpp:183
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:205
+#: src/build_info.cpp:190
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:214
+#: src/build_info.cpp:199
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:220
+#: src/build_info.cpp:205
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:225
+#: src/build_info.cpp:210
 msgid "feature^Growl notifications back end"
 msgstr ""
 
@@ -4603,21 +4617,21 @@ msgstr "删除文件失败。"
 msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
-#: src/game_preferences.cpp:408
+#: src/game_preferences.cpp:407
 msgid "No server has been defined."
 msgstr "服务器未定义。"
 
-#: src/game_preferences.cpp:507
+#: src/game_preferences.cpp:506
 msgid "player"
 msgstr "玩家"
 
-#: src/game_preferences.cpp:1033
+#: src/game_preferences.cpp:1042
 #, fuzzy
 #| msgid "%H:%M"
 msgid "[%H:%M]"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:1036
+#: src/game_preferences.cpp:1045
 #, fuzzy
 #| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
@@ -4792,7 +4806,7 @@ msgstr "未知"
 #: src/gui/dialogs/chat_log.cpp:418 src/gui/dialogs/game_cache_options.cpp:104
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:870
-#: src/gui/dialogs/lua_interpreter.cpp:460
+#: src/gui/dialogs/lua_interpreter.cpp:476
 #: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:226
 msgid "Clipboard support not found, contact your packager"
@@ -4884,40 +4898,40 @@ msgstr ""
 "当前选定的模组与您的游戏配置不兼容。\n"
 "请选择一个兼容的模组。"
 
-#: src/gui/dialogs/game_cache_options.cpp:137
+#: src/gui/dialogs/game_cache_options.cpp:138
 #, fuzzy
 #| msgid "addon_state^Unknown"
 msgid "dir_size^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:56
-#: src/gui/dialogs/network_transmission.cpp:57
+#: src/gui/dialogs/game_cache_options.cpp:140
+#: src/gui/dialogs/network_transmission.cpp:51
+#: src/gui/dialogs/network_transmission.cpp:52
 #: src/gui/dialogs/screenshot_notification.cpp:73
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_cache_options.cpp:162
+#: src/gui/dialogs/game_cache_options.cpp:163
 msgid "Cache Cleaned"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:163
+#: src/gui/dialogs/game_cache_options.cpp:164
 msgid "The game data cache has been cleaned."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:166
+#: src/gui/dialogs/game_cache_options.cpp:167
 msgid "The game data cache could not be completely cleaned."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:182
+#: src/gui/dialogs/game_cache_options.cpp:183
 msgid "Cache Purged"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:183
+#: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache has been purged."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:186
+#: src/gui/dialogs/game_cache_options.cpp:187
 msgid "The game data cache could not be purged."
 msgstr ""
 
@@ -4995,71 +5009,71 @@ msgstr "未知"
 msgid "Side $side_number ($name)"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:43
+#: src/gui/dialogs/loadscreen.cpp:44
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:44
+#: src/gui/dialogs/loadscreen.cpp:45
 msgid "Reading files and creating cache"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:45 src/gui/dialogs/loadscreen.cpp:48
+#: src/gui/dialogs/loadscreen.cpp:46 src/gui/dialogs/loadscreen.cpp:49
 msgid "Initializing display"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:46
+#: src/gui/dialogs/loadscreen.cpp:47
 msgid "Reinitialize fonts for the current language"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:47
+#: src/gui/dialogs/loadscreen.cpp:48
 msgid "Initializing teams"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:49
+#: src/gui/dialogs/loadscreen.cpp:50
 #, fuzzy
 #| msgid "Configuration:"
 msgid "Loading game configuration"
 msgstr "配置："
 
-#: src/gui/dialogs/loadscreen.cpp:50
+#: src/gui/dialogs/loadscreen.cpp:51
 #, fuzzy
 #| msgid "Flowering Water Lilies"
 msgid "Loading data files"
 msgstr "盛开的睡莲"
 
-#: src/gui/dialogs/loadscreen.cpp:51
+#: src/gui/dialogs/loadscreen.cpp:52
 msgid "Loading level"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:52
+#: src/gui/dialogs/loadscreen.cpp:53
 msgid "Initializing scripting engine"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:53
+#: src/gui/dialogs/loadscreen.cpp:54
 #, fuzzy
 #| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
 msgstr "开始时便启用计划模式"
 
-#: src/gui/dialogs/loadscreen.cpp:54
+#: src/gui/dialogs/loadscreen.cpp:55
 msgid "Reading unit files"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:55
+#: src/gui/dialogs/loadscreen.cpp:56
 msgid "Loading units"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:56
+#: src/gui/dialogs/loadscreen.cpp:57
 msgid "Searching for installed add-ons"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:57
+#: src/gui/dialogs/loadscreen.cpp:58
 #, fuzzy
 #| msgid "Random starting time"
 msgid "Starting game"
 msgstr "随机初始时段"
 
-#: src/gui/dialogs/loadscreen.cpp:58
+#: src/gui/dialogs/loadscreen.cpp:59
 msgid "Verifying cache"
 msgstr ""
 
@@ -5067,27 +5081,27 @@ msgstr ""
 msgid "whisper to $receiver"
 msgstr "对$receiver说悄悄话"
 
-#: src/gui/dialogs/lobby/lobby.cpp:629
+#: src/gui/dialogs/lobby/lobby.cpp:630
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "游戏：$num_shown个已显示，共有$num_total个"
 
-#: src/gui/dialogs/lobby/lobby.cpp:673
+#: src/gui/dialogs/lobby/lobby.cpp:674
 msgid "Observers allowed"
 msgstr "允许观察"
 
-#: src/gui/dialogs/lobby/lobby.cpp:676
+#: src/gui/dialogs/lobby/lobby.cpp:677
 msgid "Observers not allowed"
 msgstr "不允许观察"
 
-#: src/gui/dialogs/lobby/lobby.cpp:1076
+#: src/gui/dialogs/lobby/lobby.cpp:1077
 msgid ""
-"Whisper session with $name started. If you don’t want to receive messages "
+"Whisper session with $name started. If you do not want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 "和 $name 的悄悄话开始。如果您不希望接收来自该用户的消息，请输入 /ignore "
 "$name\n"
 
-#: src/gui/dialogs/lobby/lobby.cpp:1083
+#: src/gui/dialogs/lobby/lobby.cpp:1084
 #, fuzzy
 #| msgid "Room $name joined"
 msgid "<i>Room $name joined</i>"
@@ -5115,47 +5129,47 @@ msgstr "阵营 $side"
 msgid "Load Game..."
 msgstr "读取游戏..."
 
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "no"
 msgstr "否"
 
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "yes"
 msgstr "是"
 
-#: src/gui/dialogs/preferences_dialog.cpp:157
+#: src/gui/dialogs/preferences_dialog.cpp:158
 msgid "infinite"
 msgstr "无限"
 
-#: src/gui/dialogs/preferences_dialog.cpp:330
+#: src/gui/dialogs/preferences_dialog.cpp:331
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty list"
 msgstr "（空列表）"
 
-#: src/gui/dialogs/preferences_dialog.cpp:339
+#: src/gui/dialogs/preferences_dialog.cpp:340
 msgid "friend"
 msgstr "好友"
 
-#: src/gui/dialogs/preferences_dialog.cpp:344
+#: src/gui/dialogs/preferences_dialog.cpp:345
 msgid "ignored"
 msgstr "被忽略"
 
-#: src/gui/dialogs/preferences_dialog.cpp:381
+#: src/gui/dialogs/preferences_dialog.cpp:382
 msgid "Invalid username"
 msgstr "用户名无效"
 
-#: src/gui/dialogs/preferences_dialog.cpp:414
+#: src/gui/dialogs/preferences_dialog.cpp:415
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "查看并编辑好友和忽略列表"
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-msgid "&#10003;"
+#: src/gui/dialogs/preferences_dialog.cpp:937
+msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:997
+#: src/gui/dialogs/preferences_dialog.cpp:998
 #, fuzzy
 #| msgid ""
 #| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
@@ -5167,51 +5181,51 @@ msgstr ""
 "“$hotkey_sequence”目前已用于“$old_hotkey_action”。您希望将该快捷键序列重新设"
 "定为“$new_hotkey_action|”吗？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:1000
 msgid "Reassign Hotkey"
 msgstr "重新指定快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1016
+#: src/gui/dialogs/preferences_dialog.cpp:1017
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有的快捷键都被重置为默认值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1016
+#: src/gui/dialogs/preferences_dialog.cpp:1017
 msgid "Hotkeys Reset"
 msgstr "重置快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1088
+#: src/gui/dialogs/preferences_dialog.cpp:1091
 #, fuzzy
 #| msgid "Prefs section^General"
 msgid "Prefs tab^General"
 msgstr "常规"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1089
+#: src/gui/dialogs/preferences_dialog.cpp:1092
 msgid "Prefs tab^Friends"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:1126
+#: src/gui/dialogs/preferences_dialog.cpp:1129
 msgid "Prefs section^General"
 msgstr "常规"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1127
+#: src/gui/dialogs/preferences_dialog.cpp:1130
 #, fuzzy
 #| msgid "Prefs section^Game"
 msgid "Prefs section^Hotkeys"
 msgstr "游戏"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1128
+#: src/gui/dialogs/preferences_dialog.cpp:1131
 msgid "Prefs section^Display"
 msgstr "图像"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1129
+#: src/gui/dialogs/preferences_dialog.cpp:1132
 msgid "Prefs section^Sound"
 msgstr "声音"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1130
+#: src/gui/dialogs/preferences_dialog.cpp:1133
 msgid "Prefs section^Multiplayer"
 msgstr "多人游戏"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1131
+#: src/gui/dialogs/preferences_dialog.cpp:1134
 #, fuzzy
 #| msgid "Prefs section^Game"
 msgid "Prefs section^Advanced"
@@ -5347,7 +5361,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "单击“解散”需要一个“click_dismiss”或“ok”按钮。"
 
 #: src/gui/widgets/window.cpp:1081 src/gui/widgets/window.cpp:1118
-#: src/tests/gui/test_gui2.cpp:486
+#: src/tests/gui/test_gui2.cpp:489
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示对话框，屏幕大小不够。"
 
@@ -5733,19 +5747,25 @@ msgstr "左卷调色板"
 msgid "Scroll Palette Right"
 msgstr "右卷调色板"
 
-#: src/hotkey/hotkey_command.cpp:155
+#: src/hotkey/hotkey_command.cpp:154
+#, fuzzy
+#| msgid "Options"
+msgid "Remove Location"
+msgstr "选项"
+
+#: src/hotkey/hotkey_command.cpp:156
 msgid "Add New Side"
 msgstr "添加新阵营"
 
-#: src/hotkey/hotkey_command.cpp:157
+#: src/hotkey/hotkey_command.cpp:158
 msgid "Next Tool"
 msgstr "下一工具"
 
-#: src/hotkey/hotkey_command.cpp:159
+#: src/hotkey/hotkey_command.cpp:160
 msgid "Paint Tool"
 msgstr "绘图工具"
 
-#: src/hotkey/hotkey_command.cpp:159 src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:160 src/hotkey/hotkey_command.cpp:161
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -5753,11 +5773,11 @@ msgstr ""
 "使用鼠标左/右键来绘制地形前/背景。按住Shift可仅绘制基础层。使用Ctrl+点击对光"
 "标之下的地形进行抽样。"
 
-#: src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:161
 msgid "Fill Tool"
 msgstr "填充工具"
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -5765,11 +5785,11 @@ msgstr ""
 "根据Ctrl键的状态，鼠标左键进行选取/取消选取操作，而鼠标右键将打开上下文菜单。"
 "按住Shift以对具有相同地形的格子进行魔术棒选取。"
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid "Selection Tool"
 msgstr "选择工具"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -5778,19 +5798,19 @@ msgstr ""
 "鼠标左键显示玩家的选择，右键取消显示。数字键将屏幕移动到对应的起始位置，Alt"
 "+数字键在光标处设定对应的起始位置，Delete删除起始位置。"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid "Starting Positions Tool"
 msgstr "起始点工具"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Label Tool"
 msgstr "标注工具"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr "鼠标左键设定或拖动标签，右键清除标签。"
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -5798,366 +5818,366 @@ msgstr ""
 "鼠标左键设置一个新单位，或通过拖动来移动单位，右键打开上下文菜单。需要已定义"
 "的阵营。"
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid "Unit Tool"
 msgstr "单位工具"
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:166
 msgid "Item Tool"
 msgstr "物品工具"
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:166
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 "鼠标左键设置一个新物品或通过拖动来移动物品，右键清除物品。此功能尚未实现。"
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr "鼠标左键设置或拖动一个音源，右键清除音源。此功能尚未实现。"
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid "Sound Source Tool"
 msgstr "声源工具"
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr "左键将村庄的所有权分配给当前阵营，右键清除。需要定义好的阵营。"
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid "Village Tool"
 msgstr "村庄工具"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:170
 msgid "Can Recruit"
 msgstr "可以征募"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle the recruit attribute of a unit."
 msgstr "开启/关闭单位的征募特性。"
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Can be Renamed"
 msgstr "可被重命名"
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle the unit being renameable."
 msgstr "切换单位的重命名使能。"
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Assign Recruit List"
 msgstr "分配征募列表"
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr "将选定的一组单位作为该单位的征募列表。"
 
-#: src/hotkey/hotkey_command.cpp:173
+#: src/hotkey/hotkey_command.cpp:174
 msgid "Change Unit ID"
 msgstr "更改单位ID"
 
-#: src/hotkey/hotkey_command.cpp:174
+#: src/hotkey/hotkey_command.cpp:175
 msgid "Loyal"
 msgstr "忠诚"
 
-#: src/hotkey/hotkey_command.cpp:177
+#: src/hotkey/hotkey_command.cpp:178
 msgid "Toggle Minimap Unit Coding"
 msgstr "开启/关闭小地图单位编码"
 
-#: src/hotkey/hotkey_command.cpp:178
+#: src/hotkey/hotkey_command.cpp:179
 msgid "Toggle Minimap Terrain Coding"
 msgstr "开启/关闭小地图地形编码"
 
-#: src/hotkey/hotkey_command.cpp:180
+#: src/hotkey/hotkey_command.cpp:181
 msgid "Toggle Minimap Unit Drawing"
 msgstr "开启/关闭小地图单位显示"
 
-#: src/hotkey/hotkey_command.cpp:181
+#: src/hotkey/hotkey_command.cpp:182
 msgid "Toggle Minimap Village Drawing"
 msgstr "开启/关闭小地图村庄显示"
 
-#: src/hotkey/hotkey_command.cpp:182
+#: src/hotkey/hotkey_command.cpp:183
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "开启/关闭小地图地形显示"
 
-#: src/hotkey/hotkey_command.cpp:184
+#: src/hotkey/hotkey_command.cpp:185
 msgid "Next Brush"
 msgstr "下一笔刷"
 
-#: src/hotkey/hotkey_command.cpp:185
+#: src/hotkey/hotkey_command.cpp:186
 msgid "Default Brush"
 msgstr "默认笔刷"
 
-#: src/hotkey/hotkey_command.cpp:186
+#: src/hotkey/hotkey_command.cpp:187
 msgid "Single Tile"
 msgstr "单个格子"
 
-#: src/hotkey/hotkey_command.cpp:187
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Radius One"
 msgstr "半径一"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Radius Two"
 msgstr "半径二"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Brush NW-SE"
 msgstr "西北-东南笔刷"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Brush SW-NE"
 msgstr "西南-东北笔刷"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "鼠标左键从剪贴板中粘贴，右键打开上下文菜单。"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "导出所选坐标至系统剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Select Inverse"
 msgstr "反选"
 
-#: src/hotkey/hotkey_command.cpp:198
+#: src/hotkey/hotkey_command.cpp:199
 msgid "Select None"
 msgstr "取消选择"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Rotate Clipboard Clockwise"
 msgstr "顺时针旋转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:200
+#: src/hotkey/hotkey_command.cpp:201
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "逆时针旋转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Flip Clipboard Horizontally"
 msgstr "水平翻转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:202
+#: src/hotkey/hotkey_command.cpp:203
 msgid "Flip Clipboard Vertically"
 msgstr "垂直翻转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Rotate Selection"
 msgstr "旋转选定区域"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Flip Selection"
 msgstr "翻转选定区域"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Fill Selection"
 msgstr "填充选定区域"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Generate Tiles in Selection"
 msgstr "在选定区域内生成区块"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Randomize Tiles in Selection"
 msgstr "在选定区域内随机区块"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Rotate Map"
 msgstr "旋转地图"
 
-#: src/hotkey/hotkey_command.cpp:211
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Apply a Mask"
 msgstr "应用遮罩"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Create Mask"
 msgstr "创建遮罩"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Display"
 msgstr "刷新显示"
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Update Terrain Transitions"
 msgstr "刷新地形过渡"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Toggle Terrain Transition Update"
 msgstr "开启/关闭地形过渡更新"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Auto-update Terrain Transitions"
 msgstr "自动刷新地形过渡"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Auto-update Terrain Transitions: No"
 msgstr "自动刷新地形过渡：否"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "自动刷新地形过渡：部分"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Draw Hex Coordinates"
 msgstr "绘制六角格坐标"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Draw Terrain Codes"
 msgstr "绘制地形编码"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Save Selection to Area"
 msgstr "将选区保存到区域"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Rename Selected Area"
 msgstr "重新命名所选区域"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Remove Selected Area"
 msgstr "移除所选区域"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Add New Area"
 msgstr "添加新的区域"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Edit Scenario"
 msgstr "编辑场景"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Edit Side"
 msgstr " 编辑阵营"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Remove Side"
 msgstr "移除阵营"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Delay Shroud Updates"
 msgstr "暂缓更新黑幕"
 
 # personally i like the original translation阴影区域, gonna discuss about this
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Update Shroud Now"
 msgstr "立即刷新黑幕"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Continue Move"
 msgstr "继续移动"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Find Label or Unit"
 msgstr "查找标签或单位"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Speak to Ally"
 msgstr "与盟友聊天"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Speak to All"
 msgstr "与所有人聊天"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "View Chat Log"
 msgstr "察看聊天纪录"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Enter User Command"
 msgstr "输入用户命令"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Custom Command"
 msgstr "自定义命令"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Run Formula"
 msgstr "运行AI公式"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Clear Messages"
 msgstr "清除所有信息"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Change Language"
 msgstr "改变语言"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Refresh WML"
 msgstr "刷新WML"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Next Tip of the Day"
 msgstr "下一条每日提示"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Previous Tip of the Day"
 msgstr "前一条每日提示"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Start Tutorial"
 msgstr "开始教程"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Start Campaign"
 msgstr "开始战役"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:257
 msgid "Start Multiplayer Game"
 msgstr "开始多人游戏"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Manage Add-ons"
 msgstr "管理附加组件"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:259
 #, fuzzy
 #| msgid "Manage Add-ons"
 msgid "Manage Cores"
 msgstr "管理附加组件"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Start Editor"
 msgstr "启动编辑器"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Show Credits"
 msgstr "显示制作者名单"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Show Helptip"
 msgstr "显示帮助提示"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Unrecognized Command"
 msgstr "未识别指令"
 
@@ -6183,23 +6203,23 @@ msgstr "zh_CN"
 msgid "The maximum text width is less than 1."
 msgstr "最大文字宽度小于1。"
 
-#: src/preferences_display.cpp:126
+#: src/preferences_display.cpp:124
 msgid "No known themes. Try changing from within an existing game."
 msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 
-#: src/preferences_display.cpp:191
+#: src/preferences_display.cpp:189
 #, fuzzy
 #| msgid "Find $filename server binary to host networked games"
 msgid "Find $filename server binary"
 msgstr "查找$filename服务器可执行文件以便建立联网游戏"
 
-#: src/terrain/translation.cpp:712
+#: src/terrain/translation.cpp:706
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "找到一个具有超过4个字符的字符串的地形，受影响的地形是："
 
-#: src/text.cpp:893
+#: src/text.cpp:897
 msgid "The text contains invalid markup: "
 msgstr "此文本中有非法的标记："
 
@@ -6479,11 +6499,6 @@ msgstr ""
 
 #~ msgid "Quit Editor"
 #~ msgstr "退出编辑器"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Level options"
-#~ msgstr "选项"
 
 #~ msgid "Generate Random Map"
 #~ msgstr "生成随机地图"

@@ -14,7 +14,7 @@
 
 #include "room.hpp"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 class config;
 

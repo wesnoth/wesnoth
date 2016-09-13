@@ -100,10 +100,6 @@ unit_type::unit_type(const unit_type& o) :
 {
 	gender_types_[0] = o.gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr;
 	gender_types_[1] = o.gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr;
-
-	for(variations_map::const_iterator i = o.variations_.begin(); i != o.variations_.end(); ++i) {
-		variations_[i->first] = new unit_type(*i->second);
-	}
 }
 
 
@@ -157,6 +153,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	animations_(),
 	build_status_(NOT_BUILT)
 {
+	check_id(id_);
+	check_id(base_id_);
 	gender_types_[0] = nullptr;
 	gender_types_[1] = nullptr;
 }
@@ -165,10 +163,6 @@ unit_type::~unit_type()
 {
 	delete gender_types_[0];
 	delete gender_types_[1];
-
-	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
-		delete i->second;
-	}
 }
 
 /**
@@ -190,27 +184,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	if ( race_ != &unit_race::null_race )
 	{
-		if (!race_->uses_global_traits()) {
-			possible_traits_.clear();
-		}
-		if ( cfg_["ignore_race_traits"].to_bool() ) {
-			possible_traits_.clear();
-		} else {
-			for (const config &t : race_->additional_traits())
-			{
-				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
-					possible_traits_.add_child("trait", t);
-			}
-		}
 		if (undead_variation_.empty()) {
 			undead_variation_ = race_->undead_variation();
 		}
-	}
-
-	// Insert any traits that are just for this unit type
-	for (const config &trait : cfg_.child_range("trait"))
-	{
-		possible_traits_.add_child("trait", trait);
 	}
 
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
@@ -227,7 +203,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	// Propagate the build to the variations.
 	for (variations_map::value_type & variation : variations_) {
-		variation.second->build_full(mv_types, races, traits);
+		variation.second.build_full(mv_types, races, traits);
 	}
 
 	// Deprecation messages, only seen when unit is parsed for the first time.
@@ -338,16 +314,45 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	{
 		possible_traits_.add_child("trait", t);
 	}
+	if ( race_ != &unit_race::null_race )
+	{
+		if (!race_->uses_global_traits()) {
+			possible_traits_.clear();
+		}
+		if ( cfg_["ignore_race_traits"].to_bool() ) {
+			possible_traits_.clear();
+		} else {
+			for (const config &t : race_->additional_traits())
+			{
+				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
+					possible_traits_.add_child("trait", t);
+			}
+		}
+		if (undead_variation_.empty()) {
+			undead_variation_ = race_->undead_variation();
+		}
+	}
+	// Insert any traits that are just for this unit type
+	for (const config &trait : cfg_.child_range("trait"))
+	{
+		possible_traits_.add_child("trait", trait);
+	}
+
 	for (const config &var_cfg : cfg_.child_range("variation"))
 	{
 		const std::string& var_id = var_cfg["variation_id"].empty() ?
 				var_cfg["variation_name"] : var_cfg["variation_id"];
 
-		unit_type *ut = new unit_type(var_cfg, id_);
-		ut->debug_id_ = debug_id_ + " [" + var_id + "]";
-		ut->base_id_ = base_id_;  // In case this is not id_.
-		ut->build_help_index(mv_types, races, traits);
-		variations_.insert(std::make_pair(var_id, ut));
+		variations_map::iterator ut;
+		bool success;
+		std::tie(ut, success) = variations_.emplace(var_id, unit_type(var_cfg, id_));
+		if(success) {
+			ut->second.debug_id_ = debug_id_ + " [" + var_id + "]";
+			ut->second.base_id_ = base_id_;  // In case this is not id_.
+			ut->second.build_help_index(mv_types, races, traits);
+		} else {
+			ERR_CF << "Skipping duplicate unit variation ID: " << var_id << "\n";
+		}
 	}
 
 	hide_help_= cfg_["hide_help"].to_bool();
@@ -456,7 +461,7 @@ const unit_type& unit_type::get_variation(const std::string& id) const
 {
 	const variations_map::const_iterator i = variations_.find(id);
 	if(i != variations_.end()) {
-		return *i->second;
+		return i->second;
 	} else {
 		return *this;
 	}
@@ -479,14 +484,17 @@ const std::vector<unit_animation>& unit_type::animations() const {
 	return animations_;
 }
 
-std::vector<attack_type> unit_type::attacks() const
+const_attack_itors unit_type::attacks() const
 {
-	std::vector<attack_type> res;
-	for (const config &att : cfg_.child_range("attack")) {
-		res.push_back(attack_type(att));
+	if(!attacks_cache_.empty()) {
+		return make_attack_itors(attacks_cache_);
 	}
 
-	return res;
+	for (const config &att : cfg_.child_range("attack")) {
+		attacks_cache_.emplace_back(new attack_type(att));
+	}
+
+	return make_attack_itors(attacks_cache_);
 }
 
 
@@ -548,9 +556,9 @@ std::vector<std::string> unit_type::get_ability_list() const
 	if (!abilities) return res;
 
 	for (const config::any_child &ab : abilities.all_children_range()) {
-		const std::string &id = ab.cfg["id"];
+		std::string id = ab.cfg["id"];
 		if (!id.empty())
-			res.push_back(id);
+			res.push_back(std::move(id));
 	}
 
 	return res;
@@ -618,7 +626,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		for(variations_map::iterator v=variations_.begin();
 			v!=variations_.end(); ++v) {
 			LOG_CONFIG << "variation advancement: ";
-			v->second->add_advancement(to_unit,xp);
+			v->second.add_advancement(to_unit,xp);
 		}
 	}
 }
@@ -708,15 +716,17 @@ bool unit_type::musthave_status(const std::string& status_name) const
 	return current_status;
 }
 
+const std::string& unit_type::flag_rgb() const {
+	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
+}
+
 bool unit_type::has_random_traits() const
 {
 	if (num_traits() == 0) return false;
-	config::const_child_itors t = possible_traits();
-	while(t.first != t.second) {
-		const config::attribute_value& availability = (*t.first)["availability"];
+	for(const auto& cfg : possible_traits()) {
+		const config::attribute_value& availability = cfg["availability"];
 		if(availability.blank()) return true;
 		if(strcmp(availability.str().c_str(), "musthave") != 0) return true;
-		++t.first;
 	}
 	return false;
 }
@@ -739,8 +749,7 @@ bool unit_type::has_variation(const std::string& variation_id) const
 bool unit_type::show_variations_in_help() const
 {
 	for (const variations_map::value_type &val : variations_) {
-		assert(val.second != nullptr);
-		if (!val.second->hide_help()) {
+		if (!val.second.hide_help()) {
 			return true;
 		}
 	}
@@ -1285,6 +1294,28 @@ const unit_race *unit_type_data::find_race(const std::string &key) const
 {
 	race_map::const_iterator i = races_.find(key);
 	return i != races_.end() ? &i->second : nullptr;
+}
+
+void unit_type::check_id(std::string& id)
+{
+	assert(!id.empty());
+	//we don't allow leading whitepaces
+	if (id[0] == ' ') {
+		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
+	}
+	bool gave_wanrning = false;
+	for (size_t pos = 0; pos < id.size(); ++pos) {
+		const char c = id[pos];
+		const bool valid = c == '_' || c == ' ' || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
+		if (!valid) {
+			if (!gave_wanrning) {
+				ERR_UT << "Found unit type id with invalid chracters: \"" << id << "\"\n";
+				gave_wanrning = true;
+			}
+			id[pos] = '_';
+		}
+	}
+
 }
 
 unit_type_data unit_types;

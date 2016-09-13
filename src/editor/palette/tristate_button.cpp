@@ -38,7 +38,7 @@ const int font_size = font::SIZE_SMALL;
 const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
 
 tristate_button::tristate_button(CVideo& video,
-		editor::common_palette* palette,
+		editor::tristate_palette* palette,
 		std::string button_image_name,
 		const bool auto_join) :
 				widget(video, auto_join),

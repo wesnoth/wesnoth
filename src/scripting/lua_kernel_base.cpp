@@ -30,15 +30,19 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
+#include "scripting/lua_formula_bridge.hpp"
 #include "scripting/lua_gui2.hpp"
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_rng.hpp"
-#include "scripting/lua_types.hpp"
+#include "scripting/push_check.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc
 
+#include "serialization/string_utils.hpp"
 #include "utils/functional.hpp"
-#include <boost/scoped_ptr.hpp>
+#include "utils/name_generator.hpp"
+#include "utils/markov_generator.hpp"
+#include "utils/context_free_grammar_generator.hpp"
 
 #include <cstring>
 #include <exception>
@@ -56,6 +60,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
+// Registry key for metatable
+static const char * Gen = "name generator";
 
 // Callback implementations
 
@@ -107,8 +114,13 @@ int lua_kernel_base::intf_print(lua_State* L)
 	return 0;
 }
 
+template<lua_kernel_base::video_function callback>
+int video_dispatch(lua_State *L) {
+	return lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).video_dispatch_impl(L, callback);
+}
+
 // The show-dialog call back is here implemented as a method of lua kernel, since it needs a pointer to external object CVideo
-int lua_kernel_base::intf_show_dialog(lua_State *L)
+int lua_kernel_base::video_dispatch_impl(lua_State* L, lua_kernel_base::video_function callback)
 {
 	if (!video_) {
 		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
@@ -116,29 +128,7 @@ int lua_kernel_base::intf_show_dialog(lua_State *L)
 		return 0;
 	}
 
-	return lua_gui2::show_dialog(L, *video_);
-}
-
-int lua_kernel_base::intf_show_message_dialog(lua_State *L)
-{
-	if (!video_) {
-		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
-		lua_error(L);
-		return 0;
-	}
-
-	return lua_gui2::show_message_dialog(L, *video_);
-}
-
-int lua_kernel_base::intf_show_popup_dialog(lua_State *L)
-{
-	if (!video_) {
-		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
-		lua_error(L);
-		return 0;
-	}
-
-	return lua_gui2::show_popup_dialog(L, *video_);
+	return callback(L, *video_);
 }
 
 // The show lua console callback is similarly a method of lua kernel
@@ -160,6 +150,80 @@ int lua_kernel_base::intf_show_lua_console(lua_State *L)
 	return lua_gui2::show_lua_console(L, *video_, this);
 }
 
+static int impl_name_generator_call(lua_State *L)
+{
+	name_generator* gen = static_cast<name_generator*>(lua_touserdata(L, 1));
+	lua_pushstring(L, gen->generate().c_str());
+	return 1;
+}
+
+static int impl_name_generator_collect(lua_State *L)
+{
+	name_generator* gen = static_cast<name_generator*>(lua_touserdata(L, 1));
+	gen->~name_generator();
+	return 0;
+}
+
+static int intf_name_generator(lua_State *L)
+{
+	std::string type = luaL_checkstring(L, 1);
+	name_generator* gen = nullptr;
+	try {
+		if(type == "markov" || type == "markov_chain") {
+			std::vector<std::string> input;
+			if(lua_istable(L, 2)) {
+				input = lua_check<std::vector<std::string>>(L, 2);
+			} else {
+				input = utils::parenthetical_split(luaL_checkstring(L, 2), ',');
+			}
+			int chain_sz = luaL_optinteger(L, 3, 2);
+			int max_len = luaL_optinteger(L, 4, 12);
+			gen = new(L) markov_generator(input, chain_sz, max_len);
+			// Ensure the pointer didn't change when cast
+			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
+		} else if(type == "context_free" || type == "cfg" || type == "CFG") {
+			if(lua_istable(L, 2)) {
+				std::map<std::string, std::vector<std::string>> data;
+				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
+					if(!lua_isstring(L, -2)) {
+						lua_pushstring(L, "CFG generator: invalid nonterminal name (must be a string)");
+						return lua_error(L);
+					}
+					if(lua_isstring(L, -1)) {
+						data[lua_tostring(L,-2)] = utils::split(lua_tostring(L,-1),'|');
+					} else if(lua_istable(L, -1)) {
+						data[lua_tostring(L,-2)] = lua_check<std::vector<std::string>>(L, -1);
+					} else {
+						lua_pushstring(L, "CFG generator: invalid noterminal value (must be a string or list of strings)");
+						return lua_error(L);
+					}
+				}
+				if(!data.empty()) {
+					gen = new(L) context_free_grammar_generator(data);
+				}
+			} else {
+				gen = new(L) context_free_grammar_generator(luaL_checkstring(L, 2));
+			}
+			if(gen) {
+				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
+			}
+		} else {
+			return luaL_argerror(L, 1, "should be either 'markov_chain' or 'context_free'");
+		}
+	}
+	catch (const name_generator_invalid_exception& ex) {
+		lua_pushstring(L, ex.what());
+		return lua_error(L);
+	}
+
+	// We set the metatable now, even if the generator is invalid, so that it
+	// will be properly collected if it was invalid.
+	luaL_getmetatable(L, Gen);
+	lua_setmetatable(L, -2);
+
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -169,6 +233,8 @@ template <member_callback method>
 int dispatch(lua_State *L) {
 	return ((lua_kernel_base::get_lua_kernel<lua_kernel_base>(L)).*method)(L);
 }
+
+extern void push_error_handler(lua_State *L);
 
 // Ctor, initialization
 lua_kernel_base::lua_kernel_base(CVideo * video)
@@ -235,14 +301,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	// Store the error handler.
 	cmd_log_ << "Adding error handler...\n";
-
-	lua_pushlightuserdata(L
-			, executeKey);
-	lua_getglobal(L, "debug");
-	lua_getfield(L, -1, "traceback");
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-	lua_pop(L, 1);
+	push_error_handler(L);
 
 	// Create the gettext metatable.
 	cmd_log_ << lua_common::register_gettext_metatable(L);
@@ -279,21 +338,16 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
 		{ "dofile", 		      &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
-		{ "show_dialog",	      &dispatch<&lua_kernel_base::intf_show_dialog>      },
-		{ "show_message_dialog",     &dispatch<&lua_kernel_base::intf_show_message_dialog> },
-		{ "show_popup_dialog",       &dispatch<&lua_kernel_base::intf_show_popup_dialog>   },
+		{ "show_dialog",	      &video_dispatch<lua_gui2::show_dialog>   },
+		{ "show_menu",               &video_dispatch<lua_gui2::show_menu>  },
+		{ "show_message_dialog",     &video_dispatch<lua_gui2::show_message_dialog> },
+		{ "show_popup_dialog",       &video_dispatch<lua_gui2::show_popup_dialog>   },
 		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
+		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
+		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
+		{ "name_generator",           &intf_name_generator           },
 		{ nullptr, nullptr }
 	};
-
-/*
-	lua_cpp::Reg const cpp_callbacks[] = {
-		{ "dofile", 		std::bind(&lua_kernel_base::intf_dofile, this, _1)},
-		{ "require", 		std::bind(&lua_kernel_base::intf_require, this, _1)},
-		{ "show_dialog",	std::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
-		{ "show_lua_console",	std::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
-	};
-*/
 
 	lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
@@ -349,9 +403,22 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	cmd_log_ << "Adding rng tables...\n";
 	lua_rng::load_tables(L);
 
+	cmd_log_ << "Adding name generator metatable...\n";
+	luaL_newmetatable(L, Gen);
+	static luaL_Reg const generator[] = {
+		{ "__call", &impl_name_generator_call},
+		{ "__gc", &impl_name_generator_collect},
+		{ nullptr, nullptr}
+	};
+	luaL_setfuncs(L, generator, 0);
+
+	// Create formula bridge metatables
+	cmd_log_ << lua_formula_bridge::register_metatables(L);
+
 	// Loading ilua:
 	cmd_log_ << "Loading ilua...\n";
 
+	lua_settop(L, 0);
 	lua_pushstring(L, "lua/ilua.lua");
 	int result = intf_require(L);
 	if (result == 1) {
@@ -403,23 +470,11 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 	return protected_call(mState, nArgs, nRets, e_h);
 }
 
+extern int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
 bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_handler e_h)
 {
-	// Load the error handler before the function and its arguments.
-	lua_pushlightuserdata(L
-			, executeKey);
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_insert(L, -2 - nArgs);
-
-	int error_handler_index = lua_gettop(L) - nArgs - 1;
-
-	// Call the function.
-	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
-	tlua_jailbreak_exception::rethrow();
-
-	// Remove the error handler.
-	lua_remove(L, error_handler_index);
+	int errcode = luaW_pcall_internal(L, nArgs, nRets);
 
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(L, -1);
@@ -476,19 +531,31 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 	return true;
 }
 
+void lua_kernel_base::run_lua_tag(const config& cfg)
+{
+	int nArgs = 0;
+	if (const config& args = cfg.child("args")) {
+		luaW_pushconfig(this->mState, args);
+		++nArgs;
+	}
+	run(cfg["code"].str().c_str(), nArgs);
+}
 // Call load_string and protected call. Make them throw exceptions.
 //
-void lua_kernel_base::throwing_run(const char * prog) {
+void lua_kernel_base::throwing_run(const char * prog, int nArgs)
+{
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
 	load_string(prog, eh);
-	protected_call(0, 0, eh);
+	lua_insert(mState, -nArgs - 1);
+	protected_call(nArgs, 0, eh);
 }
 
 // Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
-void lua_kernel_base::run(const char * prog) {
+void lua_kernel_base::run(const char * prog, int nArgs)
+{
 	try {
-		throwing_run(prog);
+		throwing_run(prog, nArgs);
 	} catch (game::lua_error & e) {
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
@@ -507,7 +574,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 		// Try to load the experiment without syntax errors
 		load_string(experiment.c_str(), eh);
 	} catch (game::lua_error &) {
-		throwing_run(prog);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		throwing_run(prog, 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
 		return;
 	}
 	// experiment succeeded, now run but log normally.
@@ -656,7 +723,7 @@ lua_kernel_base*& lua_kernel_base::get_lua_kernel_base_ptr(lua_State *L)
 	return *reinterpret_cast<lua_kernel_base**>(reinterpret_cast<char*>(L) - LUA_KERNEL_BASE_OFFSET);
 }
 
-boost::uint32_t lua_kernel_base::get_random_seed()
+uint32_t lua_kernel_base::get_random_seed()
 {
 	return seed_rng::next_seed();
 }

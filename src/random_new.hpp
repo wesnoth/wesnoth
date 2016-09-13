@@ -15,9 +15,8 @@
 #define RANDOM_NEW_H_INCLUDED
 
 #include <cstdlib> //needed for RAND_MAX
-#include <boost/cstdint.hpp>
-
-using boost::uint32_t;
+#include <cstdint>
+#include <iterator> //needed for std::distance
 
 namespace random_new
 {
@@ -49,6 +48,30 @@ namespace random_new
 		 */
 		int get_random_int(int min, int max)
 		{ return min + get_random_int_in_range_zero_to(max - min); }
+
+		/**
+		 * This helper method returns true with the probability supplied as a parameter.
+		 * @param probability	The probability of returning true, from 0 to 1.
+		 */
+		bool get_random_bool(double probability);
+
+		/**
+		 * This helper method returns a floating-point number in the range [0,1[.
+		 */
+		double get_random_double();
+
+		/**
+		 * This helper method selects a random element from a container of floating-point numbers.
+		 * Every number has a probability to be selected equal to the number itself
+		 * (e.g. a number of 0.1 is selected with a probability of 0.1). The sum of numbers
+		 * should be one.
+		 * @param first	Iterator to the beginning of the container
+		 * @param last	Iterator to the end of the container
+		 * @ret			The index of the selected number
+		 */
+		template <typename T>
+		unsigned int get_random_element(T first, T last);
+
 		static rng& default_instance();
 	protected:
 		virtual uint32_t next_random_impl() = 0;
@@ -68,5 +91,27 @@ namespace random_new
 		Outside a synced context this has the same effect as rand()
 	*/
 	extern rng* generator;
+
+	template <typename T>
+	unsigned int rng::get_random_element(T first, T last)
+	{
+		double target = get_random_double();
+		double sum = 0.0;
+		T it = first;
+		sum += *it;
+		while (sum <= target)
+		{
+			++it;
+			if (it != last)
+			{
+				sum += *it;
+			}
+			else
+			{
+				break;
+			}
+		}
+		return std::distance(first, it);
+	}
 }
 #endif

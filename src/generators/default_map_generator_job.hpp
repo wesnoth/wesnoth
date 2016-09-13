@@ -18,53 +18,47 @@
 #define DEFAULT_MAP_GENERATOR_JOB_HPP_INCLUDED
 
 class config;
-class unit_race;
 
-#include "util.hpp"
+#include "default_map_generator.hpp"
 #include "map/location.hpp"
-#include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
+#include "terrain/translation.hpp"
+#include "util.hpp"
 #include "utils/name_generator.hpp"
 
 #include <boost/random.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
+#include <cstdint>
 #include <map>
+#include <memory>
 
 class default_map_generator_job
 {
 public:
 	default_map_generator_job();
-	default_map_generator_job(boost::uint32_t seed);
+	default_map_generator_job(uint32_t seed);
 
 	/** Generate the map. */
-	std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
-                                 size_t iterations, size_t hill_size,
-								 size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers,
-								 bool roads_between_castles, std::map<map_location,std::string>* labels,
-								 const config& cfg);
-private:
+	std::string default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg);
 
+private:
 	typedef std::vector<std::vector<int> > height_map;
 	typedef t_translation::t_map terrain_map;
 
 	bool generate_river_internal(const height_map& heights,
-		terrain_map& terrain, int x, int y, std::vector<map_location>& river,
-		std::set<map_location>& seen_locations, int river_uphill);
+			terrain_map& terrain, int x, int y, std::vector<map_location>& river,
+			std::set<map_location>& seen_locations, int river_uphill);
 
 	std::vector<map_location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill);
 
 	height_map generate_height_map(size_t width, size_t height,
-                               size_t iterations, size_t hill_size,
-							   size_t island_size, size_t island_off_center);
+			size_t iterations, size_t hill_size,
+			size_t island_size, size_t island_off_center);
 
 	bool generate_lake(t_translation::t_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
-	std::string generate_name(boost::shared_ptr<name_generator>& name_generator, const std::string& id,
-		std::string* base_name=nullptr,
-		utils::string_map* additional_symbols=nullptr);
 
 	boost::random::mt19937 rng_;
+	const config& game_config_;
 
 };
 #endif

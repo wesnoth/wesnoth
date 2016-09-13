@@ -20,7 +20,6 @@
 #include "saved_game.hpp"
 #include "multiplayer_ui.hpp"
 #include "saved_game.hpp"
-#include <boost/scoped_ptr.hpp>
 #include <set>
 
 namespace rand_rng { class mt_rng; }
@@ -40,8 +39,8 @@ enum controller {
 class connect_engine;
 class side_engine;
 
-typedef boost::scoped_ptr<connect_engine> connect_engine_ptr;
-typedef boost::shared_ptr<side_engine> side_engine_ptr;
+typedef const std::unique_ptr<connect_engine> connect_engine_ptr;
+typedef std::shared_ptr<side_engine> side_engine_ptr;
 typedef std::pair<ng::controller, std::string> controller_option;
 
 class connect_engine
@@ -49,7 +48,7 @@ class connect_engine
 public:
 	/// @param players the player which are already connected to the current game.
 	///                This is always empty unless we advance form a previous scenario.
-	connect_engine(saved_game& state, 
+	connect_engine(saved_game& state,
 		const bool first_scenario, mp_campaign_info* campaign_info);
 	~connect_engine();
 
@@ -102,8 +101,8 @@ public:
 	bool force_lock_settings() const { return force_lock_settings_; }
 
 private:
-	connect_engine(const connect_engine&);
-	void operator=(const connect_engine&);
+	connect_engine(const connect_engine&) = delete;
+	void operator=(const connect_engine&) = delete;
 
 	void send_level_data() const;
 
@@ -224,8 +223,8 @@ public:
 	std::string get_color(int index = -1) const;
 	int num_colors() const;
 private:
-	side_engine(const side_engine& engine);
-	void operator=(const side_engine&);
+	side_engine(const side_engine& engine) = delete;
+	void operator=(const side_engine&) = delete;
 
 	void add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value);

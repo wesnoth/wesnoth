@@ -122,9 +122,11 @@ private:
 	/** The chosen option. */
 	int* chosen_option_;
 
+protected:
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
+private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 };
@@ -163,43 +165,90 @@ private:
 	virtual const std::string& window_id() const;
 };
 
+/** Shows a dialog with two portraits, one on each side. */
+class twml_message_double : public twml_message_left
+{
+public:
+	twml_message_double(const std::string& title,
+					   const std::string& message,
+					   const std::string& portrait,
+					   const bool mirror,
+					   const std::string& second_portrait,
+					   const bool second_mirror)
+		: twml_message_left(title, message, portrait, mirror)
+		, second_portrait_(second_portrait)
+		, second_mirror_(second_mirror)
+	{
+	}
+
+private:
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const;
+
+	/** Inherited from tdialog. */
+	void pre_show(twindow& window);
+
+	std::string second_portrait_;
+
+	bool second_mirror_;
+};
+
+/**
+ * Parameter pack for message list input options
+ */
+struct twml_message_options
+{
+	/// A list of options to select in the dialog.
+	std::vector<twml_message_option> option_list;
+	/// The initially chosen option.
+	/// Will be set to the chosen option when the dialog closes.
+	mutable int chosen_option;
+};
+
+/**
+ * Parameter pack for message text input options
+ */
+struct twml_message_input
+{
+	/// The caption for the optional input text box.
+	/// If empty, there is no input box.
+	std::string caption;
+	/// The initial text value.
+	/// Will be set to the result.
+	mutable std::string text;
+	/// The maximum length of the text.
+	unsigned maximum_length;
+};
+
+/**
+ * Parameter pack for message portrait
+ */
+struct twml_message_portrait
+{
+	/// FIlename of the portrait.
+	std::string portrait;
+	/// Does the portrait need to be mirrored?
+	bool mirror;
+};
 
 /**
  *  Helper function to show a portrait.
  *
- *  @param left_side              If true the portrait is shown on the left,
- *                                on the right side otherwise.
  *  @param video                  The display variable.
  *  @param title                  The title of the dialog.
  *  @param message                The message to show.
- *  @param portrait               Filename of the portrait.
- *  @param mirror                 Does the portrait need to be mirrored?
- *
- *  @param has_input              Do we need to show the input box.
- *  @param input_caption          The caption for the optional input text
- *                                box. If this value != "" there is an input
- *                                and the input text parameter is mandatory.
- *  @param input_text             Pointer to the initial text value will be
- *                                set to the result.
- *  @param maximum_length         The maximum length of the text.
- *
- *  @param option_list            A list of options to select in the dialog.
- *  @param chosen_option          Pointer to the initially chosen option.
- *                                Will be set to the chosen option when the
- *                                dialog closes.
+ *  @param left                   Portrait to show on the left.
+ *  @param right                  Portrait to show on the right.
+ *  @param options                Options to offer.
+ *  @param input                  Info on text input.
  */
-int show_wml_message(const bool left_side,
-					 CVideo& video,
+int show_wml_message(CVideo& video,
 					 const std::string& title,
 					 const std::string& message,
-					 const std::string& portrait,
-					 const bool mirror,
-					 const bool has_input,
-					 const std::string& input_caption,
-					 std::string* input_text,
-					 const unsigned maximum_length,
-					 const std::vector<twml_message_option>& option_list,
-					 int* chosen_option);
+					 const twml_message_portrait* left,
+					 const twml_message_portrait* right,
+					 const twml_message_options& options,
+					 const twml_message_input& input);
 
 
 } // namespace gui2

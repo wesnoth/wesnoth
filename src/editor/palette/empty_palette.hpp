@@ -35,33 +35,30 @@ public:
 	//event handling
 	virtual bool mouse_click() { return false;}
 
-	virtual bool scroll_up() { return false;}
-	virtual bool can_scroll_up() { return false;}
-	virtual bool scroll_down() { return false;}
-	virtual bool can_scroll_down() { return false;}
-
-	virtual void select_fg_item(const std::string& /*item_id*/) {}
-	virtual void select_bg_item(const std::string& /*item_id*/) {}
+	virtual bool scroll_up() override { return false;}
+	virtual bool can_scroll_up() override { return false;}
+	virtual bool scroll_down() override { return false;}
+	virtual bool can_scroll_down() override { return false;}
 
 	//drawing
-	virtual void adjust_size(const SDL_Rect& /*target*/) {}
-	virtual void draw() {}
+	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
+	virtual void draw() override {}
 
-	void hide(bool hidden) {
+	void hide(bool hidden) override {
 		if (!hidden) {
-			gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+			std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 			upscroll_button->enable(false);
-			gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+			std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 			downscroll_button->enable(false);
-			gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			palette_menu_button->set_overlay("");
 			palette_menu_button->enable(false);
 		} else {
-			gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+			std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 			upscroll_button->enable(true);
-			gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+			std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 			downscroll_button->enable(true);
-			gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			palette_menu_button->enable(true);
 		}
 	}
@@ -69,22 +66,21 @@ public:
 	std::vector<gui::widget>* get_widgets() { return nullptr; }
 
 	//group
-	virtual void set_group(size_t /*index*/) {}
-	virtual void next_group() {}
-	virtual void prev_group() {}
-	virtual const config active_group_report() { return config();}
-	virtual const std::vector<item_group>& get_groups() const { return empty_; }
+	virtual void set_group(size_t /*index*/) override {}
+	virtual void next_group() override {}
+	virtual void prev_group() override {}
+	virtual const std::vector<item_group>& get_groups() const override { return empty_; }
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) {}
-	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) {}
+	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) override {}
+	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) override {}
 
     //item
-	virtual size_t num_items() {return 0;}
-	virtual size_t start_num() {return 0;}
-	virtual void set_start_item(size_t /*index*/) {}
-	virtual bool supports_swap() { return false; }
-	virtual void swap() {}
+	virtual int num_items() override {return 0;}
+	virtual size_t start_num() override {return 0;}
+	virtual void set_start_item(size_t /*index*/) override {}
+	virtual bool supports_swap() override { return false; }
+	virtual void swap() override {}
 
 private:
 	display& gui_;

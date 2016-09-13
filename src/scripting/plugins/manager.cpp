@@ -17,10 +17,6 @@
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include <assert.h>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -38,7 +34,7 @@ struct plugin {
 	std::string name;
 	std::string source;
 	bool is_file;
-	boost::scoped_ptr<application_lua_kernel::thread> thread;
+	std::unique_ptr<application_lua_kernel::thread> thread;
 	std::vector<plugins_manager::event> queue;
 };
 
@@ -166,8 +162,8 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 					//this is to ensure the semantics that if a plugins context is left, then any pending requests
 					//are discarded to prevent them from being executed at an improper time
 	}
-	playing_ = boost::make_shared<bool> (true);
-	boost::shared_ptr<bool> local = playing_; //make a local copy of the pointer on the stack
+	playing_ = std::make_shared<bool> (true);
+	std::shared_ptr<bool> local = playing_; //make a local copy of the pointer on the stack
 
 	for (size_t idx = 0; idx < size(); ++idx)
 	{

@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include <boost/optional/optional.hpp>
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 class map_generator;
 class display;
@@ -48,7 +48,7 @@ public:
 
 	void select_map_generator(map_generator* mg);
 
-	boost::optional<boost::uint32_t> get_seed();
+	boost::optional<uint32_t> get_seed();
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */

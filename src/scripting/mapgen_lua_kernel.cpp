@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_rng.hpp"
 #include "scripting/lua_pathfind_cost_calculator.hpp"
@@ -99,7 +98,7 @@ static int intf_find_path(lua_State *L)
 	if(lua_isboolean(L, 8)) {
 		border = luaW_toboolean(L, 8);
 	}
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, &calc, width, height, nullptr, border);
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, calc, width, height, nullptr, border);
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
@@ -151,7 +150,7 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 	run_generator(prog, generator);
 }
 
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	run_generator(prog, generator);
@@ -166,7 +165,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	run_generator(prog, generator);
@@ -185,9 +184,9 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 	}
 	return result;
 }
-boost::uint32_t mapgen_lua_kernel::get_random_seed()
+uint32_t mapgen_lua_kernel::get_random_seed()
 {
-	if(boost::uint32_t* pint = random_seed_.get_ptr()) {
+	if(uint32_t* pint = random_seed_.get_ptr()) {
 		return (*pint)++;
 	}
 	else {

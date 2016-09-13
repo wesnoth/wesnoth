@@ -70,7 +70,7 @@ unsigned decode_font_style(const std::string& style)
 	return TTF_STYLE_NORMAL;
 }
 
-boost::uint32_t decode_color(const std::string& color)
+uint32_t decode_color(const std::string& color)
 {
 	std::vector<std::string> fields = utils::split(color);
 
@@ -78,7 +78,7 @@ boost::uint32_t decode_color(const std::string& color)
 	while(fields.size() < 4)
 		fields.push_back("0");
 
-	boost::uint32_t result = 0;
+	uint32_t result = 0;
 	for(int i = 0; i < 4; ++i) {
 		// shift the previous value before adding, since it's a nop on the
 		// first run there's no need for an if.

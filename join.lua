@@ -47,10 +47,16 @@ local function plugin()
     idle_text("in " .. info.name .. " waiting for titlescreen or lobby")
   until info.name == "titlescreen" or info.name == "Multiplayer Lobby"
 
-  while info.name == "titlescreen" do
+  local tries = 0
+  while info.name == "titlescreen" and tries < 100 do
     context.play_multiplayer({})
+    tries = tries + 1
     log("playing multiplayer...")
     events, context, info = coroutine.yield()
+  end
+  if info.name == "titlescreen" then
+    context.exit({code = 1})
+    coroutine.yield()
   end
 
   repeat
@@ -87,7 +93,7 @@ local function plugin()
 
   events, context, info = coroutine.yield()
 
-  repeat
+  while not (info.name == "Dialog" or info.name == "Multiplayer Wait") do
     if context.join then
       context.join({})
     else
@@ -96,11 +102,11 @@ local function plugin()
 
     events, context, info = coroutine.yield()
     idle_text("in " .. info.name .. " waiting for leader select dialog")
-  until info.name == "Dialog" or info.name == "Multiplayer Wait"
+  end
 
   if info.name == "Dialog" then
     log("got a leader select dialog...")
-    context.set_result({result = 0})
+    context.skip_dialog({})
     events, context, info = coroutine.yield()
 
     repeat
@@ -118,6 +124,11 @@ local function plugin()
   until info.name == "Game"
 
   log("got to a game context...")
+
+  repeat
+    events, context, info = coroutine.yield()
+    idle_text("in " .. info.name .. " waiting for the last scenario")
+  until info.scenario_name ~= nil and info.scenario_name().scenario_name == "Multiplayer Unit Test test2"
 
   repeat
     events, context, info = coroutine.yield()

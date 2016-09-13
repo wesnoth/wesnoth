@@ -16,7 +16,6 @@
 
 #include "about.hpp"
 #include "addon/manager.hpp"
-#include "addon/manager_ui.hpp"
 #include "build_info.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc
 #include "config.hpp"                   // for config, config::error, etc
@@ -32,12 +31,10 @@
 #include "game_launcher.hpp"          // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"  // for tmanager
-#include "gui/dialogs/core_selection.hpp"  // for tcore_selection
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
 #include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
-#include "help/help.hpp"                     // for help_manager
 #include "image.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "preferences.hpp"              // for core_id, etc
@@ -80,8 +77,6 @@
 #include <boost/iostreams/filtering_stream.hpp>  // for filtering_stream
 #include <boost/optional.hpp>           // for optional
 #include <boost/program_options/errors.hpp>  // for error
-#include <boost/scoped_ptr.hpp>         // for scoped_ptr
-#include <boost/tuple/tuple.hpp>        // for tuple
 
 #include <algorithm>                    // for transform
 #include <cerrno>                       // for ENOMEM
@@ -412,10 +407,10 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		return 0;
 	}
 	if(cmdline_opts.log) {
-		for(std::vector<boost::tuple<int, std::string> >::const_iterator it=cmdline_opts.log->begin(); it!=cmdline_opts.log->end(); ++it)
+		for(std::vector<std::pair<int, std::string> >::const_iterator it=cmdline_opts.log->begin(); it!=cmdline_opts.log->end(); ++it)
 		{
-			const std::string log_domain = it->get<1>();
-			const int severity = it->get<0>();
+			const std::string log_domain = it->second;
+			const int severity = it->first;
 			if (!lg::set_log_domain_severity(log_domain, severity))
 			{
 				std::cerr << "unknown log domain: " << log_domain << '\n';
@@ -582,7 +577,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return finished;
 	}
 
-	boost::scoped_ptr<game_launcher> game(
+	const std::unique_ptr<game_launcher> game(
 		new game_launcher(cmdline_opts,args[0].c_str()));
 	const int start_ticks = SDL_GetTicks();
 
@@ -664,14 +659,12 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
-	config tips_of_day;
-
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
 	plugins_manager plugins_man(new application_lua_kernel(&game->video()));
 
 	plugins_context::Reg const callbacks[] = {
-		{ "play_multiplayer",		std::bind(&game_launcher::play_multiplayer, game.get())},
+		{ "play_multiplayer",		std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
 	};
 	plugins_context::aReg const accessors[] = {
 		{ "command_line",		std::bind(&commandline_options::to_config, &cmdline_opts)},
@@ -679,7 +672,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
 
-	plugins.set_callback("exit", std::bind(&safe_exit, std::bind(get_int, std::placeholders::_1, "code", 0)), false);
+	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	for (;;)
 	{
@@ -759,105 +752,67 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return 0;
 		}
 
-		gui2::ttitle_screen::tresult res = game->is_loading()
-				? gui2::ttitle_screen::LOAD_GAME
-				: gui2::ttitle_screen::NOTHING;
-
 		preferences::load_hotkeys();
 
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
-		if(res == gui2::ttitle_screen::NOTHING) {
-			gui2::ttitle_screen dlg;
-			dlg.show(game->video());
 
-			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
+		game_launcher::RELOAD_GAME_DATA should_reload = game_launcher::RELOAD_DATA;
+
+		// If loading a game, skip the titlescreen entirely
+		if(game->is_loading()) {
+			if(!game->load_game()) {
+				game->clear_loaded_game();
+			}
+
+			game->launch_game(should_reload);
+			continue;
 		}
 
-		game_launcher::RELOAD_GAME_DATA should_reload =
-			game_launcher::RELOAD_DATA;
+		gui2::ttitle_screen::tresult res = gui2::ttitle_screen::display(*game);
 
-		if(res == gui2::ttitle_screen::QUIT_GAME) {
+		switch(res) {
+		case gui2::ttitle_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...\n";
 			return 0;
-		} else if(res == gui2::ttitle_screen::LOAD_GAME) {
-			if(game->load_game() == false) {
-				game->clear_loaded_game();
-				res = gui2::ttitle_screen::NOTHING;
-				continue;
-			}
-			should_reload = game_launcher::NO_RELOAD_DATA;
-		} else if(res == gui2::ttitle_screen::TUTORIAL) {
-			game->set_tutorial();
-		} else if(res == gui2::ttitle_screen::NEW_CAMPAIGN) {
-			if(game->new_campaign() == false) {
-				continue;
-			}
-			should_reload = game_launcher::NO_RELOAD_DATA;
-		} else if(res == gui2::ttitle_screen::MULTIPLAYER) {
+		case gui2::ttitle_screen::MP_CONNECT:
 			game_config::debug = game_config::mp_debug;
-			if(game->play_multiplayer() == false) {
+			if(!game->play_multiplayer(game_launcher::MP_CONNECT)) {
 				continue;
 			}
-		} else if(res == gui2::ttitle_screen::CHANGE_LANGUAGE) {
-			try {
-				if (game->change_language()) {
-					tips_of_day.clear();
-					t_string::reset_translations();
-					image::flush_cache();
-				}
-			} catch ( std::runtime_error & e ) {
-				gui2::show_error_message(game->video(), e.what());
+			break;
+		case gui2::ttitle_screen::MP_HOST:
+			game_config::debug = game_config::mp_debug;
+			if(!game->play_multiplayer(game_launcher::MP_HOST)) {
+				continue;
 			}
-			continue;
-		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
-			game->show_preferences();
-			continue;
-		} else if(res == gui2::ttitle_screen::SHOW_ABOUT) {
-			about::show_about(game->video());
-			continue;
-		} else if(res == gui2::ttitle_screen::SHOW_HELP) {
-			help::help_manager help_manager(&config_manager.game_config());
-			help::show_help(game->video());
-			continue;
-		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
-			// NOTE: we need the help_manager to get access to the Add-ons
-			// section in the game help!
-			help::help_manager help_manager(&config_manager.game_config());
-			if(manage_addons(game->video())) {
-				config_manager.reload_changed_game_config();
+			break;
+		case gui2::ttitle_screen::MP_LOCAL:
+			game_config::debug = game_config::mp_debug;
+			if(!game->play_multiplayer(game_launcher::MP_LOCAL)) {
+				continue;
 			}
-			continue;
-		} else if(res == gui2::ttitle_screen::CORES) {
-
-			int current = 0;
-			std::vector<config> cores;
-			for (const config& core : game_config_manager::get()->game_config().child_range("core")) {
-				cores.push_back(core);
-				if (core["id"] == preferences::core_id())
-					current = cores.size() -1;
-			}
-
-			gui2::tcore_selection core_dlg(cores, current);
-			if (core_dlg.show(game->video())) {
-				int core_index = core_dlg.get_choice();
-				const std::string& core_id = cores[core_index]["id"];
-				preferences::set_core_id(core_id);
-				config_manager.reload_changed_game_config();
-			}
-			continue;
-		} else if(res == gui2::ttitle_screen::RELOAD_GAME_DATA) {
+			break;
+		case gui2::ttitle_screen::RELOAD_GAME_DATA:
 			gui2::tloadscreen::display(game->video(), [&config_manager]() {
 				config_manager.reload_changed_game_config();
 				image::flush_cache();
 			});
-			continue;
-		} else if(res == gui2::ttitle_screen::START_MAP_EDITOR) {
+			break;
+		case gui2::ttitle_screen::MAP_EDITOR:
 			game->start_editor();
-			continue;
+			break;
+		case gui2::ttitle_screen::SHOW_ABOUT:
+			about::show_about(game->video());
+			break;
+		case gui2::ttitle_screen::LAUNCH_GAME:
+			game->launch_game(should_reload);
+			break;
+		case gui2::ttitle_screen::REDRAW_BACKGROUND:
+			// Do nothing
+			break;
 		}
-		game->launch_game(should_reload);
 	}
 }
 #ifdef _WIN32
@@ -1032,6 +987,9 @@ int main(int argc, char** argv)
 	sigaction(SIGTERM, &terminate_handler, nullptr);
 	sigaction(SIGINT, &terminate_handler, nullptr);
 #endif
+
+	//declare this here so that it will always be at the front of the event queue.
+	events::event_context global_context;
 
 	try {
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';

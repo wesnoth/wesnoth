@@ -49,11 +49,10 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
-	std::string get_title_suffix(int side_num);
-	void objectives(int side_num);
+	void objectives();
 	void show_statistics(int side_num);
 	void unit_list();
-	void status_table(int selected=0);
+	void status_table();
 	void save_map();
 	void preferences();
 	void show_chat_log();
@@ -107,8 +106,8 @@ public:
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
-			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE);
-	void send_chat_message(const std::string& message, bool allies_only=false);
+			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE) override;
+	void send_chat_message(const std::string& message, bool allies_only=false) override;
 private:
 	//console_handler is basically a sliced out part of menu_handler
 	//and as such needs access to menu_handler's privates
@@ -117,7 +116,6 @@ private:
 	//void do_speak(const std::string& message, bool allies_only);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
-	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;
 	play_controller & pc_;

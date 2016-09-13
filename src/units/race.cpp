@@ -24,8 +24,8 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
-#include "utils/markov_generator.hpp"
-#include "utils/context_free_grammar_generator.hpp"
+#include "utils/name_generator.hpp"
+#include "utils/name_generator_factory.hpp"
 
 /// Dummy race used when a race is not yet known.
 const unit_race unit_race::null_race;
@@ -56,8 +56,10 @@ unit_race::unit_race() :
 		global_traits_(true),
 		undead_variation_()
 {
-		name_[MALE] = "";
-		name_[FEMALE] = "";
+	name_[MALE] = "";
+	name_[FEMALE] = "";
+	name_generator_[MALE].reset(new name_generator());
+	name_generator_[FEMALE].reset(new name_generator());
 }
 
 unit_race::unit_race(const config& cfg) :
@@ -79,6 +81,7 @@ unit_race::unit_race(const config& cfg) :
 		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
 	}
+
 	// use "name" if "male_name" or "female_name" aren't available
 	name_[MALE] = cfg["male_name"];
 	if(name_[MALE].empty()) {
@@ -89,34 +92,11 @@ unit_race::unit_race(const config& cfg) :
 		name_[FEMALE] = (cfg["name"]);
 	}
 
-	config::attribute_value male_generator = cfg["male_name_generator"];
-	config::attribute_value female_generator = cfg["female_name_generator"];
-	if(male_generator.blank()) {
-		male_generator = cfg["name_generator"];
-	}
-	if(female_generator.blank()) {
-		female_generator = cfg["name_generator"];
-	}
+	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
-	if(!male_generator.blank()) {
-		name_generator_[MALE].reset(new context_free_grammar_generator(male_generator));
-		if(!name_generator_[MALE]->is_valid()) {
-			name_generator_[MALE].reset();
-		}
-	}
-	if(!female_generator.blank()) {
-		name_generator_[FEMALE].reset(new context_free_grammar_generator(female_generator));
-		if(!name_generator_[FEMALE]->is_valid()) {
-			name_generator_[FEMALE].reset();
-		}
-	}
-
-	int chain_size = cfg["markov_chain_size"].to_int(2);
-	if(!name_generator_[MALE]) {
-		name_generator_[MALE].reset(new markov_generator(utils::split(cfg["male_names"]), chain_size, 12));
-	}
-	if(!name_generator_[FEMALE]) {
-		name_generator_[FEMALE].reset(new markov_generator(utils::split(cfg["female_names"]), chain_size, 12));
+	for(int i=MALE; i<NUM_GENDERS; i++) {
+		GENDER gender = static_cast<GENDER>(i);
+		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
 	}
 }
 

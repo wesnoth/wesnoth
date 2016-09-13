@@ -1498,7 +1498,7 @@ public:
 
 private:
 	template<typename T>
-	void add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> >& where);
+	void add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T> >& where);
 
 	const config cfg_;
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -27,13 +27,13 @@ msgstr "Subterràneu"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:429
+#: data/core/macros/abilities.cfg:348
 msgid "berserk"
 msgstr "berserk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:430
+#: data/core/macros/abilities.cfg:349
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -51,13 +51,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:516
+#: data/core/macros/abilities.cfg:435
 msgid "magical"
 msgstr "màgic"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:517
+#: data/core/macros/abilities.cfg:436
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -73,7 +73,7 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:480
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
@@ -81,7 +81,7 @@ msgstr "primer atac"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:562
+#: data/core/macros/abilities.cfg:481
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -3897,18 +3897,18 @@ msgstr ""
 "moviment restant."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:335
 msgid "feeding"
 msgstr "alimentació"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:336
 #, fuzzy
 msgid "female^feeding"
 msgstr "intrèpida"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:338
+#: data/core/macros/abilities.cfg:337
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -3920,18 +3920,13 @@ msgstr ""
 " Esta unitat guanya 1 punt de vida afegit al seu màxim quan mata a una "
 "unitat viva."
 
-#. [unstore_unit]
-#: data/core/macros/abilities.cfg:360
-msgid "+1 max HP"
-msgstr "+1 PV màx."
-
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:440
+#: data/core/macros/abilities.cfg:359
 msgid "backstab"
 msgstr "punyalada per l'esquena"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:360
 #, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3945,12 +3940,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:461 data/core/macros/abilities.cfg:472
+#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
 msgid "plague"
 msgstr "plaga"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:462
+#: data/core/macros/abilities.cfg:381
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3968,7 +3963,7 @@ msgstr ""
 "funciona ab No Morts o unitats en aldees."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:392
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3986,12 +3981,12 @@ msgstr ""
 "ab No Morts o unitats en aldees."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:483
+#: data/core/macros/abilities.cfg:402
 msgid "slows"
 msgstr "retardar"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:484
+#: data/core/macros/abilities.cfg:403
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4012,13 +4007,13 @@ msgstr ""
 "caragol en el seu panel d'informació."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:493
+#: data/core/macros/abilities.cfg:412
 #, fuzzy
 msgid "petrifies"
 msgstr "Colps"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:494
+#: data/core/macros/abilities.cfg:413
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -4029,12 +4024,12 @@ msgstr ""
 "moure ni atacar."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:503
+#: data/core/macros/abilities.cfg:422
 msgid "marksman"
 msgstr "tirador"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:504
+#: data/core/macros/abilities.cfg:423
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4048,12 +4043,12 @@ msgstr ""
 "colpejar."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:447
 msgid "swarm"
 msgstr "eixam"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:529
+#: data/core/macros/abilities.cfg:448
 #, fuzzy
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -4068,12 +4063,12 @@ msgstr ""
 "punts de vida màxims tindrà 3/4 dels seus colps."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:457
 msgid "charge"
 msgstr "càrrega"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:539
+#: data/core/macros/abilities.cfg:458
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4089,12 +4084,12 @@ msgstr ""
 "fa que esta unitat reba el doble de dany dels contraatacs enemics."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:470
 msgid "drains"
 msgstr "drena"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:552
+#: data/core/macros/abilities.cfg:471
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4109,12 +4104,12 @@ msgstr ""
 "la mitat de la cantitat drenada (arredonint cap avall)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:571
+#: data/core/macros/abilities.cfg:490
 msgid "poison"
 msgstr "verí"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:491
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -5606,6 +5601,10 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
+msgid "+1 max HP"
+msgstr "+1 PV màx."
 
 #: src/help/help.cpp:183
 msgid "Close"

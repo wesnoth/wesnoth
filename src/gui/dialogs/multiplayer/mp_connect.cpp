@@ -103,10 +103,10 @@ void tmp_server_list::pre_show(twindow& window)
 		string_map item;
 
 		item["label"] = server.name;
-		data.insert(std::make_pair("name", item));
+		data.emplace("name", item);
 
 		item["label"] = server.address;
-		data.insert(std::make_pair("address", item));
+		data.emplace("address", item);
 
 		list.add_row(data);
 	}

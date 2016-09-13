@@ -163,7 +163,7 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 	case SDL_KEYDOWN:
 	case SDL_KEYUP: {
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
-		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
+		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		SDL_Scancode code;
 		code = event.key.keysym.scancode;
 		keyboard->set_scancode(code);
@@ -172,7 +172,7 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 	case SDL_MOUSEBUTTONDOWN:
 	case SDL_MOUSEBUTTONUP: {
 		hotkey_mouse_ptr mouse(new hotkey_mouse());
-		base = boost::dynamic_pointer_cast<hotkey_base>(mouse);
+		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(event.button.button);
 		break;
 	}
@@ -195,7 +195,7 @@ hotkey_ptr load_from_config(const config& cfg)
 	const std::string& mouse_cfg = cfg["mouse"];
 	if (!mouse_cfg.empty()) {
 		hotkey_mouse_ptr mouse(new hotkey_mouse());
-		base = boost::dynamic_pointer_cast<hotkey_base>(mouse);
+		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(cfg["button"].to_int());
 	}
 	// TODO: add joystick support back
@@ -219,7 +219,7 @@ hotkey_ptr load_from_config(const config& cfg)
 	const std::string& key_cfg = cfg["key"];
 	if (!key_cfg.empty()) {
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
-		base = boost::dynamic_pointer_cast<hotkey_base>(keyboard);
+		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
 		SDL_Scancode scancode = SDL_GetScancodeFromName(key_cfg.c_str());
 		if (scancode == SDL_SCANCODE_UNKNOWN) {
@@ -306,7 +306,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 
 bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 {
-	hotkey_mouse_ptr other_m = boost::dynamic_pointer_cast<hotkey_mouse>(other);
+	hotkey_mouse_ptr other_m = std::dynamic_pointer_cast<hotkey_mouse>(other);
 
 	if (other_m == hotkey_mouse_ptr()) {
 		return false;
@@ -335,7 +335,7 @@ bool has_hotkey_item(const std::string& command)
 
 bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 {
-	hotkey_keyboard_ptr other_k = boost::dynamic_pointer_cast<hotkey_keyboard>(
+	hotkey_keyboard_ptr other_k = std::dynamic_pointer_cast<hotkey_keyboard>(
 			other);
 	if (other_k == hotkey_keyboard_ptr()) {
 		return false;
@@ -363,9 +363,8 @@ void add_hotkey(const hotkey_ptr item)
 
 	if (!hotkeys_.empty()) {
 		hotkeys_.erase(
-				std::remove_if(hotkeys_.begin(), hotkeys_.end(),
-						std::bind(&hotkey_base::bindings_equal, _1, (item))),
-				hotkeys_.end());
+			std::remove_if(hotkeys_.begin(), hotkeys_.end(), [item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); }),
+			hotkeys_.end());
 	}
 
 	hotkeys_.push_back(item);

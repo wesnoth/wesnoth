@@ -20,8 +20,11 @@
 #include <vector>
 #include <map>
 #include <stdint.h>
-
+#include <boost/bimap.hpp>
+#include <boost/bimap/set_of.hpp>
+#include <boost/bimap/multiset_of.hpp>
 #include "exceptions.hpp"
+#include "map/location.hpp"
 
 namespace t_translation {
 
@@ -91,12 +94,7 @@ namespace t_translation {
 	};
 
 	/**  Contains an x and y coordinate used for starting positions in maps. */
-	struct coordinate {
-		coordinate();
-		coordinate(const size_t x_, const size_t y_);
-		size_t x;
-		size_t y;
-	};
+	using coordinate = map_location;
 
     // Exception thrown if there's an error with the terrain.
 	// Note: atm most thrown result in a crash, but I like
@@ -196,6 +194,7 @@ namespace t_translation {
 	 */
 	std::string write_list(const t_list& list);
 
+	using tstarting_positions = boost::bimaps::bimap<boost::bimaps::set_of<std::string>, boost::bimaps::multiset_of<coordinate>>;
 	/**
 	 * Reads a gamemap string into a 2D vector
 	 *
@@ -228,7 +227,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	t_map read_game_map(const std::string& str, std::map<int, coordinate>& starting_positions);
+	t_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.
@@ -240,7 +239,7 @@ namespace t_translation {
 	 *					For readability the map is padded to groups of 12 chars,
 	 *					followed by a comma and space.
 	 */
-	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions = std::map<int, coordinate>());
+	std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions = tstarting_positions(), coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Tests whether a specific terrain matches a list of expressions.

@@ -25,13 +25,15 @@ class twesnothd_connection;
 class lobby_info
 {
 public:
-	explicit lobby_info(const config& game_config, twesnothd_connection&);
+	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons, twesnothd_connection&);
 
 	~lobby_info();
 
 	void delete_games();
 
 	typedef std::map<int, game_info*> game_info_map;
+
+	using game_filter_func = std::function<bool(const game_info&)>;
 
 	/**
 	 * Process a full gamelist. Current info is discarded.
@@ -55,7 +57,7 @@ public:
 	}
 
 	void clear_game_filter();
-	void add_game_filter(game_filter_base* f);
+	void add_game_filter(game_filter_func func);
 	void set_game_filter_invert(bool value);
 	void apply_game_filter();
 
@@ -94,11 +96,13 @@ public:
 		return users_;
 	}
 	const std::vector<user_info*>& users_sorted() const;
+	twesnothd_connection& wesnothd_connection() const { return wesnothd_connection_; }
 
 private:
 	void process_userlist();
 
 	const config& game_config_;
+	const std::vector<std::string>& installed_addons_;
 	config gamelist_;
 	bool gamelist_initialized_;
 	std::vector<room_info> rooms_;
@@ -110,10 +114,29 @@ private:
 	std::vector<user_info> users_;
 	std::vector<user_info*> users_sorted_;
 	std::map<std::string, chat_log> whispers_;
-	game_filter_and_stack game_filter_;
+	std::vector<game_filter_func> game_filters_;
 	bool game_filter_invert_;
 	std::vector<bool> games_visibility_;
 	twesnothd_connection& wesnothd_connection_;
 };
 
+enum t_notify_mode {
+	NOTIFY_NONE,
+	NOTIFY_MESSAGE,
+	NOTIFY_MESSAGE_OTHER_WINDOW,
+	NOTIFY_SERVER_MESSAGE,
+	NOTIFY_OWN_NICK,
+	NOTIFY_FRIEND_MESSAGE,
+	NOTIFY_WHISPER,
+	NOTIFY_WHISPER_OTHER_WINDOW,
+	NOTIFY_LOBBY_JOIN,
+	NOTIFY_LOBBY_QUIT,
+	NOTIFY_COUNT
+};
+
+namespace gui2
+{
+	void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::string & message);
+	inline void do_mp_notify(t_notify_mode mode) { do_mp_notify(mode, "", ""); }
+}
 #endif

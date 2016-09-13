@@ -23,7 +23,7 @@
 #include "filesystem.hpp"
 #include "units/types.hpp"
 
-#include "editor/action/mouse/mouse_action.hpp"
+#include "editor/toolkit/editor_toolkit.hpp"
 
 #include "wml_separators.hpp"
 
@@ -87,8 +87,8 @@ template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<st
 template<class Item>
 bool editor_palette<Item>::scroll_up()
 {
-	unsigned int decrement = item_width_;
-	if (items_start_ + nitems_ == num_items() && num_items() % item_width_ != 0) {
+	int decrement = item_width_;
+	if (items_start_ + num_visible_items() == num_items() && num_items() % item_width_ != 0) {
 		decrement = num_items() % item_width_;
 	}
 	if(items_start_ >= decrement) {
@@ -170,7 +170,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	for (const item_group& group : groups_) {
 		if (group.id == id) {
 			found = true;
-			gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			if (palette_menu_button) {
 				//palette_menu_button->set_label(group.name);
 				palette_menu_button->set_tooltip_string(group.name);
@@ -185,8 +185,6 @@ void editor_palette<Item>::set_group(const std::string& id)
 	if(active_group().empty()) {
 		ERR_ED << "No items found in group with the id: '" << id << "'." << std::endl;
 	}
-
-	gui_.set_palette_report(active_group_report());
 }
 template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
 template void editor_palette<unit_type>::set_group(const std::string& id);
@@ -219,34 +217,14 @@ template size_t editor_palette<unit_type>::active_group_index();
 template size_t editor_palette<overlay>::active_group_index();
 
 template<class Item>
-const config editor_palette<Item>::active_group_report()
-{
-	config cfg;
-	config& report = cfg.add_child("element");
-	for (size_t i = 0 ; i < groups_.size(); i++) {
-		if (groups_[i].id == active_group_) {
-			std::string groupname = groups_[i].name;
-			report["image"] = groups_[i].icon;
-			report["tooltip"] = groupname;
-		}
-	}
-	return cfg;
-}
-template const config editor_palette<t_translation::t_terrain>::active_group_report();
-template const config editor_palette<unit_type>::active_group_report();
-template const config editor_palette<overlay>::active_group_report();
-
-template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
 	palette_x_ = target.x;
 	palette_y_ = target.y;
-	const size_t space_for_items = target.h;
-	const unsigned items_fitting =
-		static_cast<unsigned> (space_for_items / item_space_) *
-		item_width_;
-	nitems_ = std::min<int>(items_fitting, nmax_items_);
-	if (buttons_.size() != nitems_) {
+	const int space_for_items = target.h;
+	const int items_fitting = (space_for_items / item_space_) * item_width_;
+	nitems_ = std::min(items_fitting, nmax_items_);
+	if (num_visible_items() != nitems_) {
 		buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
 	}
 	set_location(target);
@@ -299,14 +277,13 @@ template void editor_palette<unit_type>::swap();
 template void editor_palette<overlay>::swap();
 
 template<class Item>
-size_t editor_palette<Item>::num_items()
+int editor_palette<Item>::num_items()
 {
-	const size_t size = group_map_[active_group_].size();
-	return size;
+	return group_map_[active_group_].size();
 }
-template size_t editor_palette<t_translation::t_terrain>::num_items();
-template size_t editor_palette<unit_type>::num_items();
-template size_t editor_palette<overlay>::num_items();
+template int editor_palette<t_translation::t_terrain>::num_items();
+template int editor_palette<unit_type>::num_items();
+template int editor_palette<overlay>::num_items();
 
 template<class Item>
 bool editor_palette<Item>::is_selected_fg_item(const std::string& id)
@@ -329,10 +306,9 @@ template bool editor_palette<overlay>::is_selected_bg_item(const std::string& id
 template<class Item>
 void editor_palette<Item>::draw_contents()
 {
-	if (*active_mouse_action_)
-		(*active_mouse_action_)->set_mouse_overlay(gui_);
+	toolkit_.set_mouseover_overlay(gui_);
 
-	gui::button* palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button) {
 
 		t_string& name = groups_[active_group_index()].name;
@@ -344,22 +320,19 @@ void editor_palette<Item>::draw_contents()
 
 	unsigned int y = palette_y_;
 	unsigned int x = palette_x_;
-	unsigned int starting = items_start_;
-	unsigned int ending = starting + nitems_;
-	if(ending > num_items() ){
-		ending = num_items();
-	}
+	int starting = items_start_;
+	int ending = std::min<int>(starting + nitems_, num_items());
 
-	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->enable(starting != 0);
-	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->enable(ending != num_items());
 
 
-	unsigned int counter = starting;
-	for (unsigned int i = 0 ; i < buttons_.size() ; i++) {
+	int counter = starting;
+	for (int i = 0, size = num_visible_items(); i < size ; ++i) {
 		//TODO check if the conditions still hold for the counter variable
 		//for (unsigned int counter = starting; counter < ending; counter++)
 

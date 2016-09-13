@@ -55,7 +55,6 @@
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-#include "reference_counted_object.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 #include "tstring.hpp"
@@ -68,6 +67,8 @@
 namespace game_logic { class function_symbol_table; }
 namespace gui2 { class tbutton; }
 
+static lg::log_domain log_gui("gui/layout");
+#define ERR_GUI  LOG_STREAM(err, log_gui)
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -496,49 +497,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	// of items.
 	if(id == "ok") {
 		return OK;
-	} else if(id == "cancel") {
+	} else if(id == "cancel" || id == "quit") {
 		return CANCEL;
-
-		/**
-		 * The ones for the title screen.
-		 *
-		 * This is a kind of hack, but the values are hardcoded in the
-		 * titlescreen and don't want to change them at the moment. It would be
-		 * a good idea to
-		 * add some namespaces to avoid names clashing.
-		 */
-	} else if(id == "tutorial") {
-		return static_cast<tretval>(ttitle_screen::TUTORIAL);
-	} else if(id == "editor") {
-		return static_cast<tretval>(ttitle_screen::START_MAP_EDITOR);
-	} else if(id == "credits") {
-		return static_cast<tretval>(ttitle_screen::SHOW_ABOUT);
-	} else if(id == "quit") {
-		return static_cast<tretval>(ttitle_screen::QUIT_GAME);
-
-		/**
-		 * The hacks which are here so the old engine can handle the event. The
-		 * new engine can't handle all dialogs yet, so it needs to fall back to
-		 * the old engine to make certain things happen.
-		 */
-	} else if(id == "help") {
-		return static_cast<tretval>(ttitle_screen::SHOW_HELP);
-	} else if(id == "campaign") {
-		return static_cast<tretval>(ttitle_screen::NEW_CAMPAIGN);
-	} else if(id == "multiplayer") {
-		return static_cast<tretval>(ttitle_screen::MULTIPLAYER);
-	} else if(id == "load") {
-		return static_cast<tretval>(ttitle_screen::LOAD_GAME);
-	} else if(id == "addons") {
-		return static_cast<tretval>(ttitle_screen::GET_ADDONS);
-	} else if(id == "cores") {
-		return static_cast<tretval>(ttitle_screen::CORES);
-	} else if(id == "language") {
-		return static_cast<tretval>(ttitle_screen::CHANGE_LANGUAGE);
-	} else if(id == "preferences") {
-		return static_cast<tretval>(ttitle_screen::EDIT_PREFERENCES);
-
-		// default if nothing matched
 	} else {
 		return NONE;
 	}
@@ -670,7 +630,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	{
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialised = false;
-		for(status_ = SHOWING; status_ != REQUEST_CLOSE;) {
+		for(status_ = SHOWING; status_ != CLOSED;) {
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();
@@ -688,6 +648,10 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 				 */
 				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
 				mouse_button_state_initialised = true;
+			}
+
+			if(status_ == REQUEST_CLOSE) {
+				status_ = exit_hook_(*this) ? CLOSED : SHOWING;
 			}
 
 			// Add a delay so we don't keep spinning if there's no event.
@@ -984,7 +948,10 @@ bool twindow::has_linked_size_group(const std::string& id)
 void twindow::add_linked_widget(const std::string& id, twidget* widget)
 {
 	assert(widget);
-	assert(has_linked_size_group(id));
+	if(!has_linked_size_group(id)) {
+		ERR_GUI << "Unknown linked group '" << id << "'; skipping\n";
+		return;
+	}
 
 	std::vector<twidget*>& widgets = linked_size_[id].widgets;
 	if(std::find(widgets.begin(), widgets.end(), widget) == widgets.end()) {
@@ -995,7 +962,9 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 void twindow::remove_linked_widget(const std::string& id, const twidget* widget)
 {
 	assert(widget);
-	assert(has_linked_size_group(id));
+	if(!has_linked_size_group(id)) {
+		return;
+	}
 
 	std::vector<twidget*>& widgets = linked_size_[id].widgets;
 
@@ -1014,8 +983,8 @@ void twindow::layout()
 {
 	/***** Initialize. *****/
 
-	boost::intrusive_ptr<const twindow_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const twindow_definition::tresolution>(
+	std::shared_ptr<const twindow_definition::tresolution>
+	conf = std::static_pointer_cast<const twindow_definition::tresolution>(
 			config());
 	assert(conf);
 
@@ -1298,7 +1267,7 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void twindow::finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid)
+void twindow::finalize(const std::shared_ptr<tbuilder_grid>& content_grid)
 {
 	swap_grid(nullptr, &grid(), content_grid->build(), "_window_content_grid");
 }
@@ -1533,7 +1502,7 @@ twindow_definition::tresolution::tresolution(const config& cfg)
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
-		grid = new tbuilder_grid(child);
+		grid = std::make_shared<tbuilder_grid>(child);
 	}
 }
 
@@ -1612,7 +1581,7 @@ twindow_definition::tresolution::tresolution(const config& cfg)
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
- *     always_visible or auto_visible.
+ *     ALWAYS_VISIBLE or AUTO_VISIBLE.
  * - Handle shared sizes:
  *   - Height and width:
  *     - Get the best size for all widgets that share height and width.

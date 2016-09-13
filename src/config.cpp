@@ -421,7 +421,7 @@ bool config::attribute_value::equals(const std::string &str) const
 	return *this == v;
 	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" beeing false
 	// because a["a"] is '1' and not '"1"'.
-	// return boost::apply_visitor(std::bind( equality_visitor(), _1, boost::cref(str) ), value_);
+	// return boost::apply_visitor(std::bind( equality_visitor(), _1, std::cref(str) ), value_);
 	// that's why we don't use it.
 }
 
@@ -595,13 +595,7 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 	typedef std::map<std::string, config> config_map;
 	config_map merged_children_map;
 	for (const config &cfg : child_range(key)) {
-		const std::string &value = cfg[attribute];
-		config_map::iterator m = merged_children_map.find(value);
-		if ( m!=merged_children_map.end() ) {
-			m->second.append(cfg);
-		} else {
-			merged_children_map.insert(make_pair(value, cfg));
-		}
+		merged_children_map[cfg[attribute]].append(cfg);
 	}
 
 	clear_children(key);
@@ -646,6 +640,13 @@ unsigned config::child_count(const std::string &key) const
 unsigned config::all_children_count() const
 {
 	return ordered_children.size();
+}
+
+unsigned config::attribute_count() const
+{
+	return std::count_if(values.begin(), values.end(), [](const attribute& v) {
+		return !v.second.blank();
+	});
 }
 
 bool config::has_child(const std::string &key) const
@@ -863,8 +864,10 @@ void config::recursive_clear_value(const std::string& key)
 
 	values.erase(key);
 
-	for (const any_child &value : all_children_range()) {
-		const_cast<config *>(&value.cfg)->recursive_clear_value(key);
+	for(std::pair<const std::string, child_list>& p : children) {
+		for(config* cfg : p.second) {
+			cfg->recursive_clear_value(key);
+		}
 	}
 }
 
@@ -985,8 +988,26 @@ config::const_attr_itors config::attribute_range() const
 {
 	check_valid();
 
-	return const_attr_itors(const_attribute_iterator(values.begin()),
+	const_attr_itors range (const_attribute_iterator(values.begin()),
 	                        const_attribute_iterator(values.end()));
+
+	// Ensure the first element is not blank, as a few places assume this
+	while(range.begin() != range.end() && range.begin()->second.blank()) {
+		range.pop_front();
+	}
+	return range;
+}
+
+config::attr_itors config::attribute_range()
+{
+	check_valid();
+	attr_itors range(attribute_iterator(values.begin()), attribute_iterator(values.end()));
+
+	// Ensure the first element is not blank, as a few places assume this
+	while(range.begin() != range.end() && range.begin()->second.blank()) {
+		range.pop_front();
+	}
+	return range;
 }
 
 namespace {
@@ -1114,17 +1135,49 @@ config::all_children_iterator::reference config::all_children_iterator::operator
 	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
 }
 
-config::all_children_iterator config::ordered_begin() const
+config::const_all_children_iterator::reference config::const_all_children_iterator::operator*() const
+{
+	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
+}
+
+config::const_all_children_iterator config::ordered_begin() const
+{
+	return const_all_children_iterator(ordered_children.cbegin());
+}
+
+config::const_all_children_iterator config::ordered_cbegin() const
+{
+	return const_all_children_iterator(ordered_children.cbegin());
+}
+
+config::const_all_children_iterator config::ordered_end() const
+{
+	return const_all_children_iterator(ordered_children.cend());
+}
+
+config::const_all_children_iterator config::ordered_cend() const
+{
+	return const_all_children_iterator(ordered_children.cend());
+}
+
+config::const_all_children_itors config::all_children_range() const
+{
+	return const_all_children_itors(
+		const_all_children_iterator(ordered_children.cbegin()),
+		const_all_children_iterator(ordered_children.cend()));
+}
+
+config::all_children_iterator config::ordered_begin()
 {
 	return all_children_iterator(ordered_children.begin());
 }
 
-config::all_children_iterator config::ordered_end() const
+config::all_children_iterator config::ordered_end()
 {
 	return all_children_iterator(ordered_children.end());
 }
 
-config::all_children_itors config::all_children_range() const
+config::all_children_itors config::all_children_range()
 {
 	return all_children_itors(
 		all_children_iterator(ordered_children.begin()),
@@ -1339,8 +1392,10 @@ void config::clear_diff_track(const config& diff)
 			itor->second[index]->clear_diff_track(item.cfg);
 		}
 	}
-	for (const any_child &value : all_children_range()) {
-		const_cast<config *>(&value.cfg)->remove_attribute(diff_track_attribute);
+	for(std::pair<const std::string, child_list>& p : children) {
+		for(config* cfg : p.second) {
+			cfg->remove_attribute(diff_track_attribute);
+		}
 	}
 }
 
@@ -1531,12 +1586,12 @@ bool operator==(const config& a, const config& b)
 	if (a.values != b.values)
 		return false;
 
-	config::all_children_itors x = a.all_children_range(), y = b.all_children_range();
-	for (; x.first != x.second && y.first != y.second; ++x.first, ++y.first) {
-		if (x.first->key != y.first->key || x.first->cfg != y.first->cfg) {
+	config::const_all_children_itors x = a.all_children_range(), y = b.all_children_range();
+	for (; !x.empty() && !y.empty(); x.pop_front(), y.pop_front()) {
+		if (x.front().key != y.front().key || x.front().cfg != y.front().cfg) {
 			return false;
 		}
 	}
 
-	return x.first == x.second && y.first == y.second;
+	return x.empty() && y.empty();
 }

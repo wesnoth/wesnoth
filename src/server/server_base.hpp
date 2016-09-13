@@ -26,7 +26,7 @@
 #include <boost/asio/signal_set.hpp>
 #include <boost/shared_array.hpp>
 
-typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
 
 struct server_shutdown : public game::error
 {

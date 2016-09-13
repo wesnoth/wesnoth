@@ -70,9 +70,7 @@ class unit_adapter {
 			}
 		}
 
-		// FIXME: we return a vector by value because unit_type and unit APIs
-		// disagree as to what should be returned by their attacks() method
-		std::vector<attack_type> attacks() const {
+		const_attack_itors attacks() const {
 			if(unit_type_ != nullptr) {
 				return unit_type_->attacks();
 			} else {
@@ -280,7 +278,7 @@ private:
 //		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
+//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.resources::gameboard->teams() , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
@@ -1019,7 +1017,7 @@ private:
 
 		pathfind::emergency_path_calculator em_calc(*unit_it, resources::gameboard->map());
 
-                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
+                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
@@ -1542,42 +1540,15 @@ private:
 		if(u1.is_null() || u2.is_null()) {
 			return variant();
 		}
-		std::vector<attack_type> attacks_tmp;
-		std::vector<attack_type>& attacks = attacks_tmp;
 
-		//we have to make sure that this function works with any combination of unit_callable/unit_type_callable passed to it
-		const unit_callable* u_attacker = try_convert_variant<unit_callable>(u1);
-		if (u_attacker)
-		{
-			attacks = u_attacker->get_unit().attacks();
-		} else
-		{
-			const unit_type_callable* u_t_attacker = convert_variant<unit_type_callable>(u1);
-			attacks_tmp = u_t_attacker->get_unit_type().attacks();
+		unit_adapter u_attacker(u1), u_defender(u2);
+		int best = 0;
+		for(const attack_type& atk : u_attacker.attacks()) {
+			const int dmg = round_damage(atk.damage(), u_defender.damage_from(atk), 100) * atk.num_attacks();
+			if(dmg > best)
+				best = dmg;
 		}
-
-		const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
-		if (u_defender)
-		{
-			const unit& defender = u_defender->get_unit();
-			int best = 0;
-			for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-				const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, map_location()), 100) * i->num_attacks();
-				if(dmg > best)
-					best = dmg;
-			}
-			return variant(best);
-		} else
-		{
-			const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
-			int best = 0;
-			for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-				const int dmg = round_damage(i->damage(), defender.movement_type().resistance_against(*i), 100) * i->num_attacks();
-				if(dmg > best)
-					best = dmg;
-			}
-			return variant(best);
-		}
+		return variant(best);
 	}
 };
 
@@ -1593,9 +1564,7 @@ private:
 		int highest_melee_damage = 0;
 		int highest_ranged_damage = 0;
 
-		std::vector<attack_type> attacks = attacker.attacks();
-
-		for (const attack_type &attack : attacks) {
+		for (const attack_type &attack : attacker.attacks()) {
 			const int dmg = round_damage(attack.damage(), defender.damage_from(attack), 100) * attack.num_attacks();
 			if (attack.range() == "melee") {
 				highest_melee_damage = std::max(highest_melee_damage, dmg);

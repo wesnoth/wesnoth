@@ -29,6 +29,12 @@ namespace game_events
 {
 	bool conditional_passed(const vconfig& cond);
 	bool matches_special_filter(const config &cfg, const vconfig& filter);
+
+	namespace builtin_conditions {
+		bool have_unit(const vconfig& cfg);
+		bool have_location(const vconfig& cfg);
+		bool variable_matches(const vconfig& cfg);
+	}
 }
 
 #endif // GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED

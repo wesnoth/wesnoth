@@ -19,7 +19,7 @@
 #include "image.hpp"
 #include <string>
 #include <vector>
-#include <boost/noncopyable.hpp>
+
 #include "exceptions.hpp"
 
 #define SHADER_EFFECT_NONE 0

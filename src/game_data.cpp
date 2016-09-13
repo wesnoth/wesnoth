@@ -104,7 +104,7 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
 	std::vector<config> temp = {value};
-	return *get_variable_access_write(key).append_array(temp).first;
+	return get_variable_access_write(key).append_array(temp).front();
 }
 
 void game_data::clear_variable_cfg(const std::string& varname)

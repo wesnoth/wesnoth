@@ -39,7 +39,11 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label(bool wrap) : tscrollbar_container(COUNT), state_(ENABLED), wrap_on(wrap)
+tscroll_label::tscroll_label(bool wrap, const std::string& text_alignment)
+	: tscrollbar_container(COUNT)
+	, state_(ENABLED)
+	, wrap_on(wrap)
+	, text_alignment(text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(
@@ -56,6 +60,9 @@ void tscroll_label::set_label(const t_string& label)
 		tlabel* widget
 				= find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_label(label);
+
+		// We want the width to stay cosistent
+		widget->request_reduce_width(widget->get_size().x);
 
 		content_resize_request();
 	}
@@ -96,6 +103,7 @@ void tscroll_label::finalize_subclass()
 	assert(lbl);
 	lbl->set_label(label());
 	lbl->set_can_wrap(wrap_on);
+	lbl->set_text_alignment(decode_text_alignment(text_alignment));
 }
 
 void tscroll_label::set_can_wrap(bool can_wrap)
@@ -188,7 +196,7 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -236,21 +244,21 @@ tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, wrap_on(cfg["wrap"].to_bool(true))
+	, text_alignment(cfg["text_alignment"])
 {
 }
 
 twidget* tbuilder_scroll_label::build() const
 {
-	tscroll_label* widget = new tscroll_label(wrap_on);
+	tscroll_label* widget = new tscroll_label(wrap_on, text_alignment);
 
 	init_control(widget);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	boost::intrusive_ptr<const tscroll_label_definition::tresolution>
-	conf = boost::
-			dynamic_pointer_cast<const tscroll_label_definition::tresolution>(
+	std::shared_ptr<const tscroll_label_definition::tresolution>
+	conf = std::static_pointer_cast<const tscroll_label_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

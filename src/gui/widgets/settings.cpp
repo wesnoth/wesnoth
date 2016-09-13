@@ -33,6 +33,8 @@
 #include "serialization/schema_validator.hpp"
 #include "formula/string_utils.hpp"
 #include "wml_exception.hpp"
+#include "gui/core/log.hpp"
+#include "preferences.hpp"
 
 namespace gui2
 {
@@ -435,9 +437,10 @@ void tgui_definition::load_widget_definitions(
 	for(const auto & def : definitions)
 	{
 
-		// We assume all definitions are unique if not we would leak memory.
-		assert(control_definition[definition_type].find(def->id)
-			   == control_definition[definition_type].end());
+		if(control_definition[definition_type].find(def->id) != control_definition[definition_type].end()) {
+			ERR_GUI_P << "Skipping duplicate control definition '" << def->id << "' for '" << definition_type << "'\n";
+			continue;
+		}
 
 		control_definition[definition_type]
 				.insert(std::make_pair(def->id, def));
@@ -463,6 +466,9 @@ static std::map<std::string, tgui_definition> guis;
 
 /** Points to the current gui. */
 static std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
+
+/** Points to the default gui. */
+static std::map<std::string, tgui_definition>::const_iterator default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
@@ -497,14 +503,14 @@ void load_settings()
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(
-				filesystem::get_wml_location("gui/default.cfg"), &preproc);
+				filesystem::get_wml_location("gui/_main.cfg"), &preproc);
 
 		read(cfg, *stream, &validator);
 	}
 	catch(config::error& e)
 	{
 		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'."
+		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'."
 				  << std::endl;
 	}
 	catch(const abstract_validator::error& e)
@@ -521,9 +527,15 @@ void load_settings()
 		guis.insert(child);
 	}
 
-	VALIDATE(guis.find("default") != guis.end(), _("No default gui defined."));
+	default_gui = guis.find("default");
+	VALIDATE(default_gui != guis.end(), _("No default gui defined."));
 
-	current_gui = guis.find("default");
+	std::string current_theme = preferences::gui_theme();
+	current_gui = current_theme.empty() ? default_gui : guis.find(current_theme);
+	if(current_gui == guis.end()) {
+		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'\n";
+		current_gui = default_gui;
+	}
 	current_gui->second.activate();
 }
 
@@ -628,12 +640,13 @@ get_window_builder(const std::string& type)
 	std::map<std::string, twindow_builder>::const_iterator window
 			= current_gui->second.window_types.find(type);
 
-	if(true) { // FIXME Test for default gui.
-		if(window == current_gui->second.window_types.end()) {
+	if(window == current_gui->second.window_types.end()) {
+		if(current_gui != default_gui) {
+			window = default_gui->second.window_types.find(type);
+		}
+		if(window == current_gui->second.window_types.end() || window == default_gui->second.window_types.end()) {
 			throw twindow_builder_invalid_id();
 		}
-	} else {
-		// FIXME Get the definition in the default gui and do an assertion test.
 	}
 
 	for(std::vector<twindow_builder::tresolution>::const_iterator itor

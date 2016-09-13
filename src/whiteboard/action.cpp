@@ -105,7 +105,7 @@ action::action(config const& cfg, bool hidden)
 	// Construct and validate team_index_
 	int team_index_temp = cfg["team_index_"].to_int(-1); //default value: -1
 	if(team_index_temp < 0
-			|| team_index_temp >= static_cast<int>(resources::teams->size()))
+			|| team_index_temp >= static_cast<int>(resources::gameboard->teams().size()))
 		throw ctor_err("action: Invalid team_index_");
 	team_index_ = team_index_temp;
 }

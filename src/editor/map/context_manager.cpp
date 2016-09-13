@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "filechooser.hpp"
 #include "formula/string_utils.hpp"
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
@@ -76,7 +77,10 @@ public:
 		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
 
 		resources::units = &context_manager_.get_map_context().get_units();
-		resources::teams = &context_manager_.get_map_context().get_teams();
+
+		if(resources::gameboard) {
+			resources::gameboard->teams() = context_manager_.get_map_context().get_teams();
+		}
 
 		// TODO register the tod_manager with the gui?
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
@@ -210,33 +214,10 @@ void context_manager::edit_side_dialog(int side)
 	//TODO
 	//t.support()
 
-	team::CONTROLLER controller = t.controller();
+	editor_team_info team_info(t);
 
-	std::string user_team_name = t.user_team_name();
-	std::string team_name = t.team_name();
-
-	int gold = t.gold();
-	int income = t.base_income();
-	int village_gold = t.village_gold();
-	int village_support = t.village_support();
-
-	bool no_leader = t.no_leader();
-	bool hidden = t.hidden();
-	bool fog = t.uses_fog();
-	bool shroud = t.uses_shroud();
-
-	team::SHARE_VISION share_vision = t.share_vision();
-
-	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
-			gold, income, village_gold, village_support,
-			fog, shroud, share_vision,
-			controller, no_leader, hidden,
-			gui_.video());
-
-	if (ok) {
-		get_map_context().set_side_setup(side, team_name, user_team_name,
-				gold, income, village_gold, village_support,
-				fog, shroud, share_vision, controller, hidden, no_leader);
+	if(gui2::teditor_edit_side::execute(team_info, gui_.video())) {
+		get_map_context().set_side_setup(team_info);
 	}
 }
 
@@ -1007,7 +988,7 @@ void context_manager::switch_context(const int index, const bool force)
 
 void context_manager::replace_map_context(map_context* new_mc)
 {
-	boost::scoped_ptr<map_context> del(map_contexts_[current_context_index_]);
+	const std::unique_ptr<map_context> del(map_contexts_[current_context_index_]);
 	map_context_refresher mcr(*this, *new_mc);
 	map_contexts_[current_context_index_] = new_mc;
 

@@ -72,19 +72,19 @@ size_t cave_map_generator::cave_map_generator_job::translate_y(size_t y) const
 	return y;
 }
 
-std::string cave_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
+std::string cave_map_generator::create_map(boost::optional<uint32_t> randomseed)
 {
 	const config res = create_scenario(randomseed);
 	return res["map_data"];
 }
 
-config cave_map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
+config cave_map_generator::create_scenario(boost::optional<uint32_t> randomseed)
 {
 	cave_map_generator_job job(*this, randomseed);
 	return job.res_;
 }
 
-cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<boost::uint32_t> randomseed)
+cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<uint32_t> randomseed)
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
@@ -99,7 +99,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 {
 	uint32_t seed = randomseed.get_ptr() ? *randomseed.get_ptr() : seed_rng::next_seed();
 	rng_.seed(seed);
-	std::cerr << "creating random cave with seed:" << seed;
+	LOG_NG << "creating random cave with seed: " << seed << '\n';
 	flipx_ = int(rng_() % 100) < params.flipx_chance_;
 	flipy_ = int(rng_() % 100) < params.flipy_chance_;
 
@@ -154,16 +154,25 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		if (!xpos.empty()) {
 			const std::vector<std::string>& items = utils::split(xpos, '-');
 			if(items.empty() == false) {
-				min_xpos = std::stoi(items.front()) - 1;
-				max_xpos = std::stoi(items.back());
+				try {
+					min_xpos = std::stoi(items.front()) - 1;
+					max_xpos = std::stoi(items.back());
+				} catch(std::invalid_argument) {
+					lg::wml_error() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+					continue;
+				}
 			}
 		}
 
 		if (!ypos.empty()) {
 			const std::vector<std::string>& items = utils::split(ypos, '-');
 			if(items.empty() == false) {
-				min_ypos = std::stoi(items.front()) - 1;
-				max_ypos = std::stoi(items.back());
+				try {
+					min_ypos = std::stoi(items.front()) - 1;
+					max_ypos = std::stoi(items.back());
+				} catch(std::invalid_argument) {
+					lg::wml_error() << "Invalid min/max coordinates in cave_map_generator: " << items.front() << ", " << items.back() << "\n";
+				}
 			}
 		}
 		const size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));
@@ -307,7 +316,7 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 
 	passage_path_calculator calc(map_, params.wall_, laziness, windiness, rng_);
 
-	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, params.width_, params.height_);
+	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, calc, params.width_, params.height_);
 
 	int width = std::max<int>(1, p.cfg["width"].to_int());
 	int jagged = p.cfg["jagged"];
@@ -345,7 +354,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		t_translation::coordinate coord(
 				  loc.x + gamemap::default_border
 				, loc.y + gamemap::default_border);
-		starting_positions_[starting_position] = coord;
+		starting_positions_.insert(t_translation::tstarting_positions::value_type(std::to_string(starting_position), coord));
 	}
 
 	map_location adj[6];

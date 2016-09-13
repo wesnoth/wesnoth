@@ -93,10 +93,10 @@ void tdepcheck_select_new::pre_show(twindow& window)
 
 	for(const auto & item : items_)
 	{
-		string_map current;
-		current.insert(std::make_pair("label", item));
+		std::map<std::string, string_map> data;
+		data["option"]["label"] = item;
 
-		listbox.add_row(current);
+		listbox.add_row(data);
 	}
 
 	listbox.select_row(0);

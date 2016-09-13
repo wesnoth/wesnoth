@@ -107,11 +107,11 @@ editor_action* mouse_action::key_event(
 	|| event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
-		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_);
-		if (res == 0 && player_starting_at_hex != -1) {
-			a = new editor_action_starting_position(map_location(), player_starting_at_hex);
-		} else if (res > 0 && res != player_starting_at_hex) {
-			a = new editor_action_starting_position(previous_move_hex_, res);
+		const std::string* old_id = disp.map().is_starting_position(previous_move_hex_);
+		if (res == 0 && old_id != nullptr) {
+			a = new editor_action_starting_position(map_location(), *old_id);
+		} else if (res > 0 && (old_id == nullptr || *old_id == std::to_string(res))) {
+			a = new editor_action_starting_position(previous_move_hex_, std::to_string(res));
 		}
 	}
 	return a;
@@ -398,30 +398,25 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	if (!disp.map().on_board(hex)) {
 		return nullptr;
 	}
-
-	const unsigned player_starting_at_hex = disp.map().is_starting_position(hex);
-
-	std::vector<map_location> starting_positions;
-
-	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
-		starting_positions.push_back(disp.map().starting_position(i));
+	auto player_starting_at_hex = disp.map().is_starting_position(hex);
+	 
+	if (has_ctrl_modifier()) {
+		if (player_starting_at_hex) {
+			location_palette_.add_item(*player_starting_at_hex);
+		}
+		return nullptr;
 	}
 
-	gui2::teditor_set_starting_position dlg(
-		player_starting_at_hex, gamemap::MAX_PLAYERS, starting_positions);
-	dlg.show(disp.video());
-
-	unsigned new_player_at_hex = dlg.result(); // 1st player = 1
+	std::string new_player_at_hex = location_palette_.selected_item();
 	editor_action* a = nullptr;
 
-	if(new_player_at_hex != player_starting_at_hex) {
-		if(!new_player_at_hex) {
-			// Erase current starting position
-			a = new editor_action_starting_position(map_location(), player_starting_at_hex);
-		} else {
-			// Set a starting position
-			a = new editor_action_starting_position(hex, new_player_at_hex);
-		}
+	if(!player_starting_at_hex || new_player_at_hex != *player_starting_at_hex) {
+		// Set a starting position
+		a = new editor_action_starting_position(hex, new_player_at_hex);
+	}
+	else {
+		// Erase current starting position
+		a = new editor_action_starting_position(map_location(), *player_starting_at_hex);
 	}
 
 	update_brush_highlights(disp, hex);
@@ -438,9 +433,9 @@ editor_action* mouse_action_starting_position::click_left(editor_display& /*disp
 editor_action* mouse_action_starting_position::up_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	int player_starting_at_hex = disp.map().is_starting_position(hex);
-	if (player_starting_at_hex != -1) {
-		return new editor_action_starting_position(map_location(), player_starting_at_hex);
+	auto player_starting_at_hex = disp.map().is_starting_position(hex);
+	if (player_starting_at_hex != nullptr) {
+		return new editor_action_starting_position(map_location(), *player_starting_at_hex);
 	} else {
 		return nullptr;
 	}

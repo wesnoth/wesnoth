@@ -23,9 +23,9 @@ namespace util {
 const std::string itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" ;
 const std::string hash_prefix = "$H$";
 
-unsigned char* md5(const std::string& input) {
+std::array<uint8_t, 16> md5(const std::string& input) {
 	MD5 md5_worker;
-	md5_worker.update(const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(input.c_str())), input.size());
+	md5_worker.update(reinterpret_cast<const uint8_t*>(input.data()), input.size());
 	md5_worker.finalize();
 	return md5_worker.raw_digest();
 }
@@ -48,7 +48,7 @@ bool is_valid_hash(const std::string& hash) {
 	return true;
 }
 
-std::string encode_hash(unsigned char* input) {
+std::string encode_hash(const std::array<uint8_t, 16>& input) {
 	std::string encoded_hash;
 
 	unsigned int i = 0;
@@ -74,9 +74,9 @@ std::string encode_hash(unsigned char* input) {
 std::string create_hash(const std::string& password, const std::string& salt, int iteration_count) {
 	iteration_count = 1 << iteration_count;
 
-	unsigned char* output = md5(salt + password);
+	std::array<uint8_t, 16> output = md5(salt + password);
 	do {
-		output = md5(std::string(reinterpret_cast<char*>(output), reinterpret_cast<char*>(output) + 16).append(password));
+		output = md5(std::string(output.begin(), output.end()).append(password));
 	} while(--iteration_count);
 
 	return encode_hash(output);

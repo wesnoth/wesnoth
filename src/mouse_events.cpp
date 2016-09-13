@@ -22,7 +22,6 @@
 #include "actions/undo.hpp"             // for undo_list
 #include "config.hpp"                   // for config
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
-#include "dialogs.hpp"                  // for units_list_preview_pane, etc
 #include "game_board.hpp"               // for game_board, etc
 #include "game_config.hpp"              // for red_to_green
 #include "game_events/manager.hpp"
@@ -54,8 +53,6 @@
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
 #include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
 #include <new>                          // for bad_alloc
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -460,7 +457,7 @@ pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_
 
 	pathfind::plain_route route;
 
-	route = pathfind::a_star_search(un->get_location(), go_to, 10000.0, &calc, board.map().w(), board.map().h(), &allowed_teleports);
+	route = pathfind::a_star_search(un->get_location(), go_to, 10000.0, calc, board.map().w(), board.map().h(), &allowed_teleports);
 
 	return mark_route(route);
 }
@@ -478,7 +475,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 
 void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -486,7 +483,7 @@ void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 
 void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -494,7 +491,7 @@ void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 
 void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -502,7 +499,7 @@ void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/
 
 void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -510,7 +507,7 @@ void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/
 
 void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change())
 		if (gui_->set_zoom(s->value(), true))
 			pc_.get_hotkey_command_executor()->set_button_state();
@@ -782,7 +779,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		clicked_location.destinations.insert(hex);
 
 		for(unit_map::iterator u = pc_.gamestate().board_.units_.begin(); u != pc_.gamestate().board_.units_.end(); ++u) {
-			bool invisible = u->invisible(u->get_location());
+			bool invisible = u->invisible(u->get_location(), gui_->get_disp_context());
 
 			if (!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 			{
@@ -949,11 +946,11 @@ int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, u
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
 			battle_context bc(pc_.gamestate().board_.units_, attacker->get_location(), defender->get_location(), i);
-			bc_vector.push_back(bc);
-			if (bc.better_attack(bc_vector[best], 0.5)) {
+			if (!bc_vector.empty() && bc.better_attack(bc_vector[best], 0.5)) {
 				// as some weapons can be hidden, i is not a valid index into the resulting vector
-				best = bc_vector.size() - 1;
+				best = bc_vector.size();
 			}
+			bc_vector.push_back(bc);
 		}
 	}
 	return best;
@@ -970,15 +967,19 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1; // abort, click will do nothing
 	}
 
-	if ((*attacker).attacks().empty()) {
+	std::vector<battle_context> bc_vector;
+	const int best = fill_weapon_choices(bc_vector, attacker, defender);
+
+	const bool all_disabled = std::all_of(bc_vector.begin(), bc_vector.end(), [](battle_context& context) {
+		return (*context.get_attacker_stats().weapon).get_special_bool("disable");
+	});
+
+	if((*attacker).attacks().empty() || all_disabled) {
 		gui2::show_transient_message(gui_->video(), "No Attacks",
 			_("This unit has no usable weapons."));
 
 		return -1;
 	}
-
-	std::vector<battle_context> bc_vector;
-	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	gui2::tunit_attack dlg(
 			  attacker
@@ -1100,7 +1101,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 		// (Visible to current team, not necessarily the unit's team.)
 		if (!pc_.get_map_const().on_board(loc)) continue;
 		unit_map::const_iterator i = pc_.gamestate().board_.units().find(loc);
-		if ( !i ||  !i->is_visible_to_team(cur_team, pc_.gamestate().board_.map(), false) )
+		if ( !i ||  !i->is_visible_to_team(cur_team, gui_->get_disp_context(), false) )
 			continue;
 		const unit &target = *i;
 		// Can only attack non-petrified enemies.
@@ -1122,7 +1123,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&
-	    it->invisible(it->get_location()))
+	    it->invisible(it->get_location(), gui().get_disp_context()))
 		return false;
 
 	if (it->get_hidden())

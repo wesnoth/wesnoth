@@ -26,7 +26,6 @@
 #include "global.hpp"
 #include "ai/game_info.hpp"                // for side_number, ai_ptr
 
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <deque>                        // for deque
 #include <map>                          // for map, map<>::value_compare
 #include <stack>                        // for stack
@@ -45,7 +44,7 @@ namespace events { class observer; }
 
 namespace ai {
 
-typedef boost::shared_ptr<ai_composite> composite_ai_ptr;
+typedef std::shared_ptr<ai_composite> composite_ai_ptr;
 
 /**
  * Base class that holds the AI and current AI parameters.

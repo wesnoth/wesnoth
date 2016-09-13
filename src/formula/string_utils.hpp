@@ -42,6 +42,7 @@ inline bool might_contain_variables(const std::string &str)
  * is nullptr, then game event variables will be used instead.
  */
 std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols);
+std::string interpolate_variables_into_string(const std::string &str, const std::map<std::string,std::string> * const symbols);
 std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables);
 
 /**
@@ -52,16 +53,6 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
  */
 t_string interpolate_variables_into_tstring(const t_string &str, const variable_set& variables);
 
-}
-/// An alias for boost::assign::map_list_of<std::string, std::string>
-inline boost::assign_detail::generic_list< std::pair
-        <
-            boost::assign_detail::assign_decay<std::string>::type,
-            boost::assign_detail::assign_decay<std::string>::type
-        > >
-string_map_of(const std::string& k, const std::string& v)
-{
-	return boost::assign::map_list_of<std::string, std::string>(k, v);
 }
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */

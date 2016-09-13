@@ -21,7 +21,7 @@
 
 class gamemap;
 
-class xy_pred : public std::unary_function<map_location const&, bool>
+class xy_pred
 {
 public:
 	virtual bool operator()(map_location const&) const = 0;

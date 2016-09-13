@@ -94,7 +94,7 @@ void map_labels::read(const config &cfg)
 	recalculate_labels();
 }
 
-const terrain_label* map_labels::get_label(const map_location& loc, const std::string& team_name) const
+terrain_label* map_labels::get_label_private(const map_location& loc, const std::string& team_name)
 {
 	team_label_map::const_iterator label_map = labels_.find(team_name);
 	if (label_map != labels_.end()) {
@@ -298,7 +298,7 @@ const std::vector<std::string>& map_labels::all_categories() const {
 		categories_dirty = false;
 		categories.clear();
 		categories.push_back("team");
-		for(size_t i = 1; i <= resources::teams->size(); i++) {
+		for(size_t i = 1; i <= resources::gameboard->teams().size(); i++) {
 			categories.push_back("side:" + std::to_string(i));
 		}
 		std::set<std::string> unique_cats;

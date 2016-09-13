@@ -26,10 +26,27 @@
 #include "overlay.hpp"
 #include "display_context.hpp"
 
-#include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace editor {
+
+struct editor_team_info {
+	editor_team_info(const team& t);
+
+	int side;
+	std::string id;
+	std::string name;
+	int gold;
+	int income;
+	int village_income;
+	int village_support;
+	bool fog;
+	bool shroud;
+	team::SHARE_VISION share_vision;
+	team::CONTROLLER controller;
+	bool no_leader;
+	bool hidden;
+};
 
 /**
  * This class wraps around a map to provide a concise interface for the editor to work with.
@@ -243,10 +260,7 @@ public:
 	/**
 	 * TODO
 	 */
-	void set_side_setup(int side, const std::string& id, const std::string& name,
-			int gold, int income, int village_gold, int village_support,
-			bool fog, bool shroud, team::SHARE_VISION share_vision,
-			team::CONTROLLER controller, bool hidden, bool no_leader);
+	void set_side_setup(editor_team_info& info);
 
 	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
@@ -486,7 +500,7 @@ private:
 	unit_map units_;
 	std::vector<team> teams_;
 	std::vector<std::string> lbl_categories_;
-	boost::scoped_ptr<tod_manager> tod_manager_;
+	std::unique_ptr<tod_manager> tod_manager_;
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;
 

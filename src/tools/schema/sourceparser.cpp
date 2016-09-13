@@ -27,9 +27,9 @@ namespace schema_validation{
  *For details, look http://wiki.wesnoth.org/WML_Annotation_Format , please
  */
 /** line is valid*/
-const std::string valid = "^\\s*\\*\\s*";
+const std::string valid = R"""(^\s*\*\s*)""";
 /** begining of wiki block*/
-const std::string wiki_begin ="^\\s*/\\*(?:WIKI|SCHEMA)";
+const std::string wiki_begin = R"""(^\s*/\*(?:WIKI|SCHEMA))""";
 /** whitespace is possible*/
 const std::string space ="\\s*";
 /** sigh "="*/

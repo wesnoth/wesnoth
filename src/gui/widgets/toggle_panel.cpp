@@ -141,8 +141,8 @@ unsigned ttoggle_panel::get_state() const
 
 SDL_Rect ttoggle_panel::get_client_rect() const
 {
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
@@ -157,13 +157,12 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 
 tpoint ttoggle_panel::border_space() const
 {
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
-	return tpoint(conf->left_border + conf->right_border,
-				  conf->top_border + conf->bottom_border);
+	return tpoint(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
 void ttoggle_panel::set_value(const unsigned selected)
@@ -189,8 +188,8 @@ void ttoggle_panel::set_state(const tstate state)
 	state_ = state;
 	set_is_dirty(true);
 
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 }
@@ -259,6 +258,9 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
 	 *
 	 * 2014.06.09 -- Mordante
 	 */
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	if(callback_state_change_) {
 		callback_state_change_(*this);
 	}
@@ -273,6 +275,8 @@ void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
 	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
 	set_value(get_value() + 1);
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);
@@ -416,7 +420,7 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = new tbuilder_grid(c);
+	grid = std::make_shared<tbuilder_grid>(c);
 }
 
 twidget* tbuilder_toggle_panel::build() const

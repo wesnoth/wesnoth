@@ -44,12 +44,11 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(listbox)
+REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
+REGISTER_WIDGET3(tlistbox_definition, grid_listbox, _4)
 
 namespace
 {
-// in separate namespace to avoid name classes
-REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
-
 void callback_list_item_clicked(twidget& caller)
 {
 	get_parent<tlistbox>(caller).list_item_clicked(caller);
@@ -71,24 +70,27 @@ tlistbox::tlistbox(const bool has_minimum,
 {
 }
 
-void tlistbox::add_row(const string_map& item, const int index)
+tgrid& tlistbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	const tgrid& row = generator_->create_item(
+	tgrid& row = generator_->create_item(
 			index, list_builder_, item, callback_list_item_clicked);
 
 	resize_content(row);
+
+	return row;
 }
 
-void
-tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
+tgrid& tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
 				  const int index)
 {
 	assert(generator_);
-	const tgrid& row = generator_->create_item(
+	tgrid& row = generator_->create_item(
 			index, list_builder_, data, callback_list_item_clicked);
 
 	resize_content(row);
+
+	return row;
 }
 
 void tlistbox::remove_row(const unsigned row, unsigned count)
@@ -115,7 +117,7 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 				width_reduced += generator_->item(row).get_width();
 			}
 			else {
-				height_reduced += generator_->item(row).get_height();			
+				height_reduced += generator_->item(row).get_height();
 			}
 		}
 		generator_->delete_item(row);
@@ -161,8 +163,8 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
-		generator_->place(generator_->get_origin(),
-						  generator_->calculate_best_size());
+		tpoint best_size = generator_->calculate_best_size();
+		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
 		resize_needed = !content_resize_request();
 	}
 
@@ -195,8 +197,8 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
-		generator_->place(generator_->get_origin(),
-						  generator_->calculate_best_size());
+		tpoint best_size = generator_->calculate_best_size();
+		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
 		resize_needed = !content_resize_request();
 	}
 
@@ -210,6 +212,25 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 	if(selected_row != get_selected_row() && callback_value_changed_) {
 		callback_value_changed_(*this);
 	}
+}
+
+std::vector<bool> tlistbox::get_rows_shown() const
+{
+	std::vector<bool> shown;
+	for(size_t i = 0; i < get_item_count(); i++) {
+		shown.push_back(generator_->get_item_shown(i));
+	}
+	return shown;
+}
+
+bool tlistbox::any_rows_shown() const
+{
+	for(size_t i = 0; i < get_item_count(); i++) {
+		if(generator_->get_item_shown(i)) {
+			return true;
+		}
+	}
+	return false;
 }
 
 const tgrid* tlistbox::get_row_grid(const unsigned row) const
@@ -275,7 +296,7 @@ bool tlistbox::update_content_size()
 		return true;
 	}
 
-	if(get_size() == tpoint(0, 0)) {
+	if(get_size() == tpoint()) {
 		return false;
 	}
 
@@ -527,7 +548,7 @@ void swap_grid(tgrid* grid,
 
 void tlistbox::finalize(tbuilder_grid_const_ptr header,
 						tbuilder_grid_const_ptr footer,
-						const std::vector<string_map>& list_data)
+						const std::vector<std::map<std::string, string_map>>& list_data)
 {
 	// "Inherited."
 	tscrollbar_container::finalize_setup();
@@ -593,7 +614,7 @@ void tlistbox::order_by(const tgenerator_::torder_func& func)
 	need_layout_ = true;
 }
 
-void tlistbox::set_column_order(unsigned col, const std::vector<tgenerator_::torder_func>& func)
+void tlistbox::set_column_order(unsigned col, const generator_sort_array& func)
 {
 	if(col >= orders_.size()) {
 		orders_.resize(col + 1);
@@ -732,7 +753,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -833,6 +854,33 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
+static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, const unsigned int req_cols)
+{
+	std::vector<std::map<std::string, string_map>> list_data;
+	for(const auto & row : data.child_range("row"))
+	{
+		auto cols = row.child_range("column");
+		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols, _("'list_data' must have the same number of columns as the 'list_definition'."));
+
+		for(const auto & c : cols)
+		{
+			list_data.emplace_back();
+			for(const auto & i : c.attribute_range())
+			{
+				list_data.back()[""][i.first] = i.second;
+			}
+			for(const auto& w : c.child_range("widget"))
+			{
+				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
+				for(const auto& i : w.attribute_range()) {
+					list_data.back()[w["id"]][i.first] = i.second;
+				}
+			}
+		}
+	}
+	return list_data;
+}
+
 tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	: tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
@@ -847,43 +895,23 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
 	if(const config& h = cfg.child("header")) {
-		header = new tbuilder_grid(h);
+		header = std::make_shared<tbuilder_grid>(h);
 	}
 
 	if(const config& f = cfg.child("footer")) {
-		footer = new tbuilder_grid(f);
+		footer = std::make_shared<tbuilder_grid>(f);
 	}
 
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = new tbuilder_grid(l);
+	list_builder = std::make_shared<tbuilder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
 
-	const config& data = cfg.child("list_data");
-	if(!data) {
-		return;
-	}
-
-	for(const auto & row : data.child_range("row"))
-	{
-		unsigned col = 0;
-
-		for(const auto & c : row.child_range("column"))
-		{
-			list_data.push_back(string_map());
-			for(const auto & i : c.attribute_range())
-			{
-				list_data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == list_builder->cols,
-				 _("'list_data' must have the same number of "
-				   "columns as the 'list_definition'."));
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
 	}
 }
 
@@ -940,8 +968,8 @@ twidget* tbuilder_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tlistbox_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const tlistbox_definition::tresolution>
+	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 
@@ -989,6 +1017,10 @@ twidget* tbuilder_listbox::build() const
  *                                     must have the same number of columns as
  *                                     the 'list_definition'. $
  *
+ *     has_minimum & bool & true &     If false, less than one row can be selected. $
+ *
+ *     has_maximum & bool & true &     If false, more than one row can be selected. $
+ *
  * @end{table}
  * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="header"}
@@ -1020,36 +1052,19 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, list_builder(nullptr)
 	, list_data()
+	, has_minimum_(cfg["has_minimum"].to_bool(true))
+	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = new tbuilder_grid(l);
+	list_builder = std::make_shared<tbuilder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
 
-	const config& data = cfg.child("list_data");
-	if(!data)
-		return;
-
-	for(const auto & row : data.child_range("row"))
-	{
-		unsigned col = 0;
-
-		for(const auto & c : row.child_range("column"))
-		{
-			list_data.push_back(string_map());
-			for(const auto & i : c.attribute_range())
-			{
-				list_data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == list_builder->cols,
-				 _("'list_data' must have "
-				   "the same number of columns as the 'list_definition'."));
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
 	}
 }
 
@@ -1066,7 +1081,7 @@ twidget* tbuilder_horizontal_listbox::build() const
 	return widget;
 #else
 	tlistbox* widget
-			= new tlistbox(true, true, tgenerator_::horizontal_list, true);
+			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::horizontal_list, true);
 
 	init_control(widget);
 
@@ -1078,8 +1093,133 @@ twidget* tbuilder_horizontal_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tlistbox_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const tlistbox_definition::tresolution>
+	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
+			widget->config());
+	assert(conf);
+
+	widget->init_grid(conf->grid);
+
+	widget->finalize(nullptr, nullptr, list_data);
+
+	return widget;
+#endif
+}
+
+/*WIKI_MACRO
+ * @begin{macro}{grid_listbox_description}
+ *
+ *        A grid listbox is a control that holds several items of the
+ *        same type.  Normally the items in a listbox are ordered in rows,
+ *        this version orders them in a grid instead.
+ * @end{macro}
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_grid_listbox
+ * @begin{parent}{name="gui/window/resolution/grid/row/column/"}
+ * @begin{tag}{name="grid_listbox"}{min="0"}{max="-1"}{super="generic/widget_instance"}
+ * == Horizontal listbox ==
+ *
+ * @macro = grid_listbox_description
+ *
+ * List with the grid listbox specific variables:
+ * @begin{table}{config}
+ *     vertical_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. $
+ *
+ *     list_definition & section & &   This defines how a listbox item
+ *                                     looks. It must contain the grid
+ *                                     definition for 1 column of the list. $
+ *
+ *     list_data & section & [] &      A grid alike section which stores the
+ *                                     initial data for the listbox. Every row
+ *                                     must have the same number of columns as
+ *                                     the 'list_definition'. $
+ *
+ *     has_minimum & bool & true &     If false, less than one cell can be selected. $
+ *
+ *     has_maximum & bool & true &     If false, more than one cell can be selected. $
+ *
+ * @end{table}
+ * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="header"}
+ * @begin{tag}{name="footer"}{min=0}{max=1}{super="gui/window/resolution/grid"}
+ * @end{tag}{name="footer"}
+ * @begin{tag}{name="list_definition"}{min=0}{max=1}
+ * @begin{tag}{name="row"}{min=1}{max=1}{super="generic/listbox_grid/row"}
+ * @end{tag}{name="row"}
+ * @end{tag}{name="list_definition"}
+ * @begin{tag}{name="list_data"}{min=0}{max=1}{super="generic/listbox_grid"}
+ * @end{tag}{name="list_data"}
+ * In order to force widgets to be the same size inside a grid listbox,
+ * the widgets need to be inside a linked_group.
+ *
+ * Inside the list section there are only the following widgets allowed
+ * * grid (to nest)
+ * * selectable widgets which are
+ * ** toggle_button
+ * ** toggle_panel
+ * @end{tag}{name="grid_listbox"}
+ * @end{parent}{name="gui/window/resolution/grid/row/column/"}
+ */
+
+tbuilder_grid_listbox::tbuilder_grid_listbox(const config& cfg)
+	: tbuilder_control(cfg)
+	, vertical_scrollbar_mode(
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, list_builder(nullptr)
+	, list_data()
+	, has_minimum_(cfg["has_minimum"].to_bool(true))
+	, has_maximum_(cfg["has_maximum"].to_bool(true))
+{
+	const config& l = cfg.child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+	list_builder = std::make_shared<tbuilder_grid>(l);
+	assert(list_builder);
+	VALIDATE(list_builder->rows == 1,
+			 _("A 'list_definition' should contain one row."));
+
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+	}
+}
+
+twidget* tbuilder_grid_listbox::build() const
+{
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	tlist* widget = new tlist(
+			true, true, tgenerator_::grid, true, list_builder);
+
+	init_control(widget);
+	if(!list_data.empty()) {
+		widget->append_rows(list_data);
+	}
+	return widget;
+#else
+	tlistbox* widget
+			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::grid, true);
+
+	init_control(widget);
+
+	widget->set_list_builder(list_builder); // FIXME in finalize???
+
+	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+
+	DBG_GUI_G << "Window builder: placed listbox '" << id
+			  << "' with definition '" << definition << "'.\n";
+
+	std::shared_ptr<const tlistbox_definition::tresolution>
+	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 

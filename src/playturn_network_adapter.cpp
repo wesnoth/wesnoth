@@ -48,7 +48,7 @@ void playturn_network_adapter::read_from_network()
 		back.remove_attribute("side_drop");
 		back.remove_attribute("controller");
 	}
-	else if(back.attribute_range().first != back.attribute_range().second )
+	else if(!back.attribute_range().empty() )
 	{
 		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
 		this->data_.pop_back();
@@ -61,6 +61,7 @@ void playturn_network_adapter::read_from_network()
 bool playturn_network_adapter::is_at_end()
 {
 	assert(!data_.empty());
+	if (data_.size() > 1) return false;
 	return this->next_ == data_.back().ordered_end();
 }
 
@@ -114,7 +115,7 @@ bool playturn_network_adapter::read(config& dst)
 }
 
 playturn_network_adapter::playturn_network_adapter(source_type source)
-	: data_(boost::assign::list_of(config()).convert_to_container<std::list<config> >()),
+	: data_({config()}),
 	next_(data_.front().ordered_end()),
 	next_command_num_(0),
 	network_reader_(source)

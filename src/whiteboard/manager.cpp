@@ -49,7 +49,6 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include "utils/functional.hpp"
 
 #include <sstream>
@@ -79,8 +78,8 @@ manager::manager():
 		temp_move_unit_underlying_id_(0),
 		key_poller_(new CKey),
 		hidden_unit_hexes_(),
-		net_buffer_(resources::teams->size()),
-		team_plans_hidden_(resources::teams->size(),preferences::hide_whiteboard()),
+		net_buffer_(resources::gameboard->teams().size()),
+		team_plans_hidden_(resources::gameboard->teams().size(),preferences::hide_whiteboard()),
 		units_owning_moves_()
 {
 	LOG_WB << "Manager initialized.\n";
@@ -143,7 +142,7 @@ void manager::print_help_once()
 bool manager::can_modify_game_state() const
 {
 	if(wait_for_side_init_
-					|| resources::teams == nullptr
+					|| resources::gameboard == nullptr
 					|| executing_actions_
 					|| resources::gameboard->is_observer()
 					|| resources::controller->is_linger_mode())
@@ -277,8 +276,8 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	//Look for planned recruits that depend on this leader
 	for(action_const_ptr action : *viewer_actions())
 	{
-		recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action);
-		recall_const_ptr recall = boost::dynamic_pointer_cast<class recall const>(action);
+		recruit_const_ptr recruit = std::dynamic_pointer_cast<class recruit const>(action);
+		recall_const_ptr recall = std::dynamic_pointer_cast<class recall const>(action);
 		if(recruit || recall)
 		{
 			map_location const target_hex = recruit?recruit->get_recruit_hex():recall->get_recall_hex();
@@ -327,13 +326,13 @@ void manager::post_delete_action(action_ptr action)
 	// If the last remaining action of the unit that owned this move is a move as well,
 	// adjust its appearance accordingly.
 
-	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
+	side_actions_ptr side_actions = resources::gameboard->teams().at(action->team_index()).get_side_actions();
 
 	unit_ptr actor = action->get_unit();
 	if(actor) { // The unit might have died following the execution of an attack
 		side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
 		if(action_it != side_actions->end()) {
-			move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it);
+			move_ptr move = std::dynamic_pointer_cast<class move>(*action_it);
 			if(move && move->get_fake_unit()) {
 				move->get_fake_unit()->anim_comp().set_standing(true);
 			}
@@ -343,7 +342,7 @@ void manager::post_delete_action(action_ptr action)
 
 static void hide_all_plans()
 {
-	for(team& t : *resources::teams){
+	for(team& t : resources::gameboard->teams()){
 		t.get_side_actions()->hide();
 	}
 }
@@ -352,11 +351,11 @@ static void hide_all_plans()
 void manager::update_plan_hiding(size_t team_index)
 {
 	//We don't control the "viewing" side ... we're probably an observer
-	if(!resources::teams->at(team_index).is_local_human())
+	if(!resources::gameboard->teams().at(team_index).is_local_human())
 		hide_all_plans();
 	else // normal circumstance
 	{
-		for(team& t : *resources::teams)
+		for(team& t : resources::gameboard->teams())
 		{
 			//make sure only appropriate teams are hidden
 			if(!t.is_network_human())
@@ -398,10 +397,10 @@ void manager::on_change_controller(int side, const team& t)
 			hide_all_plans(); // give up knowledge of everyone's plans, in case we became an observer
 
 		//tell them our plans -- they may not have received them up to this point
-		size_t num_teams = resources::teams->size();
+		size_t num_teams = resources::gameboard->teams().size();
 		for(size_t i=0; i<num_teams; ++i)
 		{
-			team& local_team = resources::teams->at(i);
+			team& local_team = resources::gameboard->teams().at(i);
 			if(local_team.is_local_human() && !local_team.is_enemy(side))
 				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
@@ -552,7 +551,7 @@ void manager::draw_hex(const map_location& hex)
 
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;
-		for (team& t : *resources::teams)
+		for (team& t : resources::gameboard->teams())
 		{
 			side_actions& sa = *t.get_side_actions();
 			if(!sa.hidden())
@@ -608,7 +607,7 @@ void manager::send_network_data()
 		config packet;
 		config& wb_cfg = packet.add_child("whiteboard",buf_cfg);
 		wb_cfg["side"] = static_cast<int>(team_index+1);
-		wb_cfg["to_sides"] = resources::teams->at(team_index).allied_human_teams();
+		wb_cfg["to_sides"] = resources::gameboard->teams().at(team_index).allied_human_teams();
 
 		buf_cfg = config();
 
@@ -626,7 +625,7 @@ void manager::process_network_data(config const& cfg)
 		size_t count = wb_cfg.child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").\n";
 
-		team& team_from = resources::teams->at(wb_cfg["side"]-1);
+		team& team_from = resources::gameboard->teams().at(wb_cfg["side"]-1);
 		for(side_actions::net_cmd const& cmd : wb_cfg.child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
@@ -1049,14 +1048,14 @@ void manager::contextual_bump_down_action()
 
 bool manager::has_actions() const
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 	return wb::has_actions();
 }
 
 bool manager::unit_has_actions(unit const* unit) const
 {
 	assert(unit != nullptr);
-	assert(resources::teams);
+	assert(resources::gameboard);
 	return viewer_actions()->unit_has_actions(*unit);
 }
 
@@ -1065,7 +1064,7 @@ int manager::get_spent_gold_for(int side)
 	if(wait_for_side_init_)
 		return 0;
 
-	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
+	return resources::gameboard->teams().at(side - 1).get_side_actions()->get_gold_spent();
 }
 
 void manager::options_dlg()
@@ -1082,7 +1081,7 @@ void manager::options_dlg()
 	options.push_back(_("HIDE ALL allies’ plans"));
 
 	//populate list of networked allies
-	for(team &t : *resources::teams)
+	for(team &t : resources::gameboard->teams())
 	{
 		//Exclude enemies, AIs, and local players
 		if(t.is_enemy(v_side) || !t.is_network())
@@ -1231,7 +1230,7 @@ future_map_if_active::~future_map_if_active()
 
 real_map::real_map():
 		initial_planned_unit_map_(resources::whiteboard && resources::whiteboard->has_planned_unit_map()),
-		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : boost::shared_ptr<bool>(new bool(false)))
+		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : std::shared_ptr<bool>(new bool(false)))
 {
 	if (!resources::whiteboard)
 		return;

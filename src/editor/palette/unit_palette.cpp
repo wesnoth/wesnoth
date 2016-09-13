@@ -38,13 +38,13 @@ void unit_palette::setup(const config& /*cfg*/)
 			continue;
 		item_map_.insert(std::pair<std::string, unit_type>(i.second.id(), i.second));
 		group_map_[i.second.race_id()].push_back(i.second.id());
-		nmax_items_ = std::max(nmax_items_, group_map_[i.second.race_id()].size());
+		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
 		//TODO
 		bool core = true;
 		if (core) {
 			// Add the unit to the default group
 			group_map_["all"].push_back(i.second.id());
-			nmax_items_ = std::max(nmax_items_, group_map_["all"].size());
+			nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 		} else {
 			non_core_items_.insert(i.second.id());
 		}
@@ -103,9 +103,9 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 }
 
 unit_palette::unit_palette(editor_display &gui, const config& cfg,
-								 mouse_action** active_mouse_action)
+                           editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<unit_type>(gui, cfg, 36, 4, active_mouse_action),
+	:	editor_palette<unit_type>(gui, cfg, 36, 4, toolkit),
 	 	selected_bg_items_()
 {
 }

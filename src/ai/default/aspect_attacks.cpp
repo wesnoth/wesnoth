@@ -30,7 +30,7 @@
 #include "units/unit.hpp"
 #include "pathfind/pathfind.hpp"
 #include "units/filter.hpp"
-#include "scripting/lua_api.hpp"
+#include "scripting/lua_unit.hpp"
 #include "lua/lauxlib.h"
 
 namespace ai {
@@ -70,14 +70,14 @@ void aspect_attacks_base::recalculate() const
 	this->valid_ = true;
 }
 
-boost::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
+std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 {
 		const move_map& srcdst = get_srcdst();
 		const move_map& dstsrc = get_dstsrc();
 		const move_map& enemy_srcdst = get_enemy_srcdst();
 		const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
-		boost::shared_ptr<attacks_vector> res(new attacks_vector());
+		std::shared_ptr<attacks_vector> res(new attacks_vector());
 		unit_map& units_ = *resources::units;
 
 		std::vector<map_location> unit_locs;
@@ -104,7 +104,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 			// Attack anyone who is on the enemy side,
 			// and who is not invisible or petrified.
 			if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
-			    !j->invisible(j->get_location()))
+			    !j->invisible(j->get_location(), *resources::gameboard))
 			{
 				if (!is_allowed_enemy(*j)) {
 					continue;
@@ -147,7 +147,7 @@ void aspect_attacks_base::do_attack_analysis(
 	}
 	const gamemap &map_ = resources::gameboard->map();
 	unit_map &units_ = *resources::units;
-	std::vector<team> &teams_ = *resources::teams;
+	std::vector<team> &teams_ = resources::gameboard->teams();
 
 
 	const size_t max_positions = 1000;
@@ -168,15 +168,14 @@ void aspect_attacks_base::do_attack_analysis(
 		//
 		// See if the unit has the slow ability -- units with slow only attack first.
 		bool backstab = false, slow = false;
-		std::vector<attack_type>& attacks = unit_itor->attacks();
-		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
+		for(const attack_type& a : unit_itor->attacks()) {
 			// For speed, just assume these specials will be active if
 			// they are present.
-			if ( a->get_special_bool("backstab", true) ) {
+			if ( a.get_special_bool("backstab", true) ) {
 				backstab = true;
 			}
 
-			if ( a->get_special_bool("slow", true) ) {
+			if ( a.get_special_bool("slow", true) ) {
 				slow = true;
 			}
 		}
@@ -289,7 +288,7 @@ void aspect_attacks_base::do_attack_analysis(
 					}
 
 					// No surround bonus if target is skirmisher
-					if (!itor->get_ability_bool("skirmisher"))
+					if (!itor->get_ability_bool("skirmisher", *resources::gameboard))
 						surround_bonus = 1.2;
 				}
 
@@ -311,30 +310,13 @@ void aspect_attacks_base::do_attack_analysis(
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
-#ifdef SUOKKO
-			//FIXME: this code was in sukko's r29531  Correct?
-			// scale vulnerability to 60 hp unit
-			if(cur_position >= 0 && rating < best_rating
-					&& (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints() -
-						(support*surround_bonus*30.0)/unit_itor->second.max_hitpoints()
-						> best_vulnerability - best_support) {
-				continue;
-			}
-#else
 			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
 				continue;
 			}
-#endif
 			cur_position = j;
 			best_rating = rating;
-#ifdef SUOKKO
-			//FIXME: this code was in sukko's r29531  Correct?
-			best_vulnerability = (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints();
-			best_support = (support*surround_bonus*30.0)/unit_itor->second.max_hitpoints();
-#else
 			best_vulnerability = vulnerability/surround_bonus;
 			best_support = support*surround_bonus;
-#endif
 		}
 
 		if(cur_position != -1) {
@@ -378,7 +360,7 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate",loc) == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc, *resources::gameboard) == false) {
 		rating += healing_value;
 	}
 
@@ -428,7 +410,7 @@ bool aspect_attacks::is_allowed_enemy(const unit& u) const
 
 } // end of namespace testing_ai_default
 
-aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx)
+aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx)
 	: aspect_attacks_base(context, cfg, id)
 	, handler_(), code_(), params_(cfg.child_or_empty("args"))
 {
@@ -446,7 +428,7 @@ aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &
 		// error
 		return;
 	}
-	handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+	handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
 void aspect_attacks_lua::recalculate() const
@@ -479,10 +461,7 @@ config aspect_attacks_lua::to_config() const
 static bool call_lua_filter_fcn(lua_State* L, const unit& u, int idx)
 {
 	lua_rawgeti(L, LUA_REGISTRYINDEX, idx);
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u.underlying_id());
-	lua_pushlightuserdata(L, getunitKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaW_pushunit(L, u.underlying_id());
 	luaW_pcall(L, 1, 1);
 	bool result = luaW_toboolean(L, -1);
 	lua_pop(L, 1);

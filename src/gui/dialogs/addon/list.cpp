@@ -94,24 +94,6 @@ namespace gui2
  */
 
 namespace {
-	// TODO: it would be better if we didnt have to parse the config every time.
-	bool str_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].str() < cfg->child("campaign", i2)[prop_id].str();
-	}
-	bool str_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].str() > cfg->child("campaign", i2)[prop_id].str();
-	}
-	bool num_up(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].to_int() < cfg->child("campaign", i2)[prop_id].to_int();
-	}
-	bool num_down(const config* cfg, const std::string& prop_id, unsigned i1, unsigned i2)
-	{
-		return cfg->child("campaign", i1)[prop_id].to_int() > cfg->child("campaign", i2)[prop_id].to_int();
-	}
-
 	struct filter_transform
 	{
 		filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
@@ -142,7 +124,7 @@ namespace {
 		}
 		const std::vector<std::string> filtertext_;
 	};
-	
+
 	/**
 	 * Retrieves an element from the given associative container or dies in some
 	 * way.
@@ -198,53 +180,6 @@ void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text
 		res.push_back(filter(child));
 	}
 	listbox.set_row_shown(res);
-}
-
-void taddon_list::on_order_button_click(twindow& window, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down, twidget& w)
-{
-	tselectable_& selectable = dynamic_cast<tselectable_&>(w);
-	for(auto& other : orders_)
-	{
-		if(other != &selectable) {
-			other->set_value(0);
-		}
-	}
-	tlistbox& listbox = find_widget<tlistbox>(&window, "addons", true);
-	switch(selectable.get_value())
-	{
-	case 0:
-		listbox.order_by(std::less<unsigned>());
-		break;
-	case 1:
-		listbox.order_by(up);
-		break;
-	case 2:
-		listbox.order_by(down);
-		break;
-	}
-}
-
-void taddon_list::register_sort_button(twindow& window, const std::string& id, const tgenerator_::torder_func& up, const tgenerator_::torder_func& down)
-{
-	tselectable_& selectable = find_widget<tselectable_>(&window, id, true);
-	orders_.push_back(&selectable);
-	selectable.set_callback_state_change(std::bind(&taddon_list::on_order_button_click, this, std::ref(window), up, down, _1));
-}
-
-void taddon_list::register_sort_button_alphabetical(twindow& window, const std::string& id, const std::string& prop_id)
-{
-	register_sort_button(window, id,
-		std::bind(&str_up,   &cfg_, prop_id, _1, _2),
-		std::bind(&str_down, &cfg_, prop_id, _1, _2)
-	);
-}
-
-void taddon_list::register_sort_button_numeric(twindow& window, const std::string& id, const std::string& prop_id)
-{
-	register_sort_button(window, id,
-		std::bind(&num_up,   &cfg_, prop_id, _1, _2),
-		std::bind(&num_down, &cfg_, prop_id, _1, _2)
-	);
 }
 
 static std::string colorify_addon_state_string(const std::string& str,
@@ -392,34 +327,33 @@ void taddon_list::pre_show(twindow& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
+		item["use_markup"] = "true";
+
 		item["label"] = info.display_icon();
-		data.insert(std::make_pair("icon", item));
+		data.emplace("icon", item);
 
 		item["label"] = info.display_title();
-		data.insert(std::make_pair("name", item));
+		data.emplace("name", item);
 
 		item["label"] = describe_status_simple(tracking_info_[info.id]);
-		item["use_markup"] = "true";
-		data.insert(std::make_pair("installation_status", item));
+		data.emplace("installation_status", item);
 
 		item["label"] = info.version.str();
-		data.insert(std::make_pair("version", item));
+		data.emplace("version", item);
 
 		item["label"] = info.author;
-		data.insert(std::make_pair("author", item));
+		data.emplace("author", item);
 
 		item["label"] = size_display_string(info.size);
-		data.insert(std::make_pair("size", item));
+		data.emplace("size", item);
 
 		item["label"] = std::to_string(info.downloads);
-		data.insert(std::make_pair("downloads", item));
+		data.emplace("downloads", item);
 
 		item["label"] = info.display_type();
-		data.insert(std::make_pair("type", item));
+		data.emplace("type", item);
 
-		list.add_row(data);
-
-		tgrid* row_grid = list.get_row_grid(list.get_item_count() - 1);
+		tgrid* row_grid = &list.add_row(data);
 
 		tstacked_widget& install_update_stack = find_widget<tstacked_widget>(row_grid, "install_update_stack", false);
 
@@ -435,11 +369,11 @@ void taddon_list::pre_show(twindow& window)
 		find_widget<tbutton>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
 
-	register_sort_button_alphabetical(window, "sort_name", "name");
-	register_sort_button_alphabetical(window, "sort_author", "author");
-	register_sort_button_alphabetical(window, "sort_type", "type");
-	register_sort_button_numeric(window, "sort_downloads", "downloads");
-	register_sort_button_numeric(window, "sort_size", "size");
+	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
+	list.register_sorting_option(1, [this](const int i) { return addon_at(ids_[i], addons_).author; });
+	list.register_sorting_option(2, [this](const int i) { return addon_at(ids_[i], addons_).size; });
+	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
+	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
 
 	find_widget<ttext_box>(&window, "filter", false).set_text_changed_callback(
 		std::bind(&taddon_list::on_filtertext_changed, this, _1, _2));

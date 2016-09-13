@@ -17,14 +17,13 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/button.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
-#include "gui/widgets/listbox.hpp"
-#endif
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -32,9 +31,9 @@
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
 
+#include "game_board.hpp"
 #include "game_data.hpp"
 #include "recall_list_manager.hpp"
-#include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
@@ -45,7 +44,6 @@
 
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/shared_ptr.hpp>
 
 namespace
 {
@@ -96,803 +94,733 @@ namespace gui2
  * @end{table}
  */
 
-
-/*
-static void inspect_ai(twindow& window, int side)
-{
-	const config &ai_cfg = ai::manager::to_config(side);
-	NEW_find_widget<tcontrol>(
-			&window,
-			"inspect",
-			false).set_label(config_to_string(ai_cfg.debug));
-}
-*/
-
-/**
- * Template for dialog callbacks for dialogs using model-view-controller
- * architecture pattern.
- *
- * It allows delegating of the callback to a private view class, which should
- * be accessible via dialog->get_view() (and return a pointer to the view
- * class). Example usage: widget->set_callback(dialog_callback<my_dialog_class,
- * my_dialog_class::inner_view_class
- * &my_dialog_class::inner_view_class::member_function>);
- */
-template <class D, class V, void (V::*fptr)()>
-void dialog_view_callback(twidget& caller)
-{
-	D* dialog = dynamic_cast<D*>(caller.dialog());
-	assert(dialog);
-	(*(dialog->get_view()).*fptr)();
-}
-
-
-// The model is an interface defining the data to be displayed or otherwise
-// acted upon in the user interface.
 class tgamestate_inspector::model
 {
 public:
-	model(const vconfig& c)
-		: cfg(c)
-		, name()
-		, stuff_list()
-		, stuff_types_list()
-		, inspect()
-		, inspector_name()
-		, copy_button()
-		, lua_button()
-	{
-		name = cfg["name"].str();
-	}
-
-	vconfig cfg;
 	std::string name;
 
-	tlistbox* stuff_list;
-	tlistbox* stuff_types_list;
-	tcontrol* inspect;
-	tcontrol* inspector_name;
-	tbutton* copy_button;
-	tbutton* lua_button;
+	std::string get_data_full()
+	{
+		return data;
+	}
 
+	std::string get_data_paged(int which_page)
+	{
+		if(size_t(which_page) >= pages.size()) {
+			return "";
+		}
+		return data.substr(pages[which_page].first, pages[which_page].second);
+	}
+
+	void clear_data()
+	{
+		data.clear();
+	}
+
+	void set_data(const std::string& new_data)
+	{
+		data = new_data;
+		repaginate();
+	}
+
+	int count_pages()
+	{
+		return std::max<int>(pages.size(), 1);
+	}
+
+private:
+	void repaginate()
+	{
+		pages.clear();
+		size_t start = 0;
+		while(start < data.size()) {
+			size_t end = data.find_last_of('\n', start + max_inspect_win_len);
+			if(end == std::string::npos) {
+				end = data.size() - 1;
+			}
+			int len = end - start + 1;
+			pages.emplace_back(start, len);
+			start += len;
+		}
+	}
 	static const unsigned int max_inspect_win_len = 20000;
+	std::string data;
+	std::vector<std::pair<size_t,int>> pages;
+};
 
+class stuff_list_adder
+{
+public:
+	stuff_list_adder(ttree_view_node& stuff_list, const std::string& defn)
+		: stuff_list_(stuff_list)
+		, defn_(defn)
+	{
+	}
+
+	std::vector<int> add()
+	{
+		return stuff_list_.add_child(defn_, data_).describe_path();
+	}
+
+	stuff_list_adder& widget(const std::string& ref, const std::string& label, bool markup = false)
+	{
+		string_map& item = data_[ref];
+		item["label"] = label;
+		item["use_markup"] = markup ? "true" : "false";
+		return *this;
+	}
+
+private:
+	ttree_view_node& stuff_list_;
+	const std::string defn_;
+	std::map<std::string, string_map> data_;
+};
+
+class tgamestate_inspector::view
+{
+public:
+	view(twindow& window)
+		: stuff_list_(find_widget<ttree_view>(&window, "stuff_list", false, true))
+		, inspect_(find_widget<tcontrol>(&window, "inspect", false, true))
+		, pages_(find_widget<tcontrol>(&window, "page_count", false, true))
+		, left_(find_widget<tcontrol>(&window, "page_left", false, true))
+		, right_(find_widget<tcontrol>(&window, "page_right", false, true))
+	{
+	}
+
+	stuff_list_adder stuff_list_entry(ttree_view_node* parent, const std::string defn)
+	{
+		return stuff_list_adder(parent ? *parent : stuff_list_->get_root_node(), defn);
+	}
+
+	void update(model& m)
+	{
+		int n_pages = m.count_pages();
+		current_page_ = std::min(n_pages - 1, std::max(0, current_page_));
+		inspect_->set_label(m.get_data_paged(current_page_));
+		if(n_pages > 1) {
+			std::ostringstream out;
+			out << current_page_ + 1 << '/' << n_pages;
+			pages_->set_label(out.str());
+			left_->set_visible(twidget::tvisible::visible);
+			right_->set_visible(twidget::tvisible::visible);
+		} else {
+			pages_->set_label("");
+			left_->set_visible(twidget::tvisible::invisible);
+			right_->set_visible(twidget::tvisible::invisible);
+		}
+	}
 
 	void clear_stuff_list()
 	{
-		stuff_list->clear();
+		stuff_list_->clear();
+		pages_->set_label("");
+		left_->set_visible(twidget::tvisible::invisible);
+		right_->set_visible(twidget::tvisible::invisible);
 	}
 
-
-	void clear_stuff_types_list()
+	void page(int where)
 	{
-		stuff_types_list->clear();
+		current_page_ += where;
 	}
 
-	void add_row_to_stuff_list(const std::string& id, const std::string& label, bool colorize = false)
-	{
-		std::map<std::string, string_map> data;
-		string_map item;
-		item["id"] = id;
-		item["label"] = label;
-		item["use_markup"] = colorize ? "true" : "false";
-		data.insert(std::make_pair("name", item));
-		stuff_list->add_row(data);
-	}
-
-
-	void add_row_to_stuff_types_list(const std::string& id, const std::string& label, bool colorize = false)
-	{
-		std::map<std::string, string_map> data;
-		string_map item;
-		item["id"] = id;
-		item["label"] = label;
-		item["use_markup"] = colorize ? "true" : "false";
-		data.insert(std::make_pair("typename", item));
-		stuff_types_list->add_row(data);
-	}
-
-
-	void set_inspect_window_text(const std::string& s, unsigned int page = 0)
-	{
-		unsigned int reminder = (s.length() - (max_inspect_win_len * page));
-		std::string s_ = s.substr(max_inspect_win_len * page, reminder > max_inspect_win_len ? max_inspect_win_len : reminder);
-		inspect->set_label(s_);
-	}
-
-
-	unsigned int get_num_page(const std::string& s)
-	{
-		// We always want to reserve a page for empty contents.
-		if(s.empty()) {
-			return 1;
-		}
-
-		return (s.length() / max_inspect_win_len) + (s.length() % max_inspect_win_len > 0 ? 1 : 0);
-	}
+private:
+	int current_page_ = 0;
+	ttree_view* stuff_list_;
+	tcontrol* inspect_;
+	tcontrol* pages_;
+	tcontrol* left_;
+	tcontrol* right_;
 };
 
 class single_mode_controller
 {
 public:
-	single_mode_controller(const std::string& name,
-						   tgamestate_inspector::model& m)
-		: model_(m), name_(name)
+	single_mode_controller(tgamestate_inspector::controller& c) : c(c)
 	{
 	}
+
 	virtual ~single_mode_controller()
 	{
 	}
 
-	std::string name() const
-	{
-		return name_;
-	}
-
-	virtual void show_stuff_list() = 0;
-	virtual void handle_stuff_list_selection() = 0;
-	virtual void update_view_from_model() = 0;
-
 protected:
-	tgamestate_inspector::model& model_;
-	std::string name_;
+	tgamestate_inspector::model& model();
+	tgamestate_inspector::view& view();
+	tgamestate_inspector::controller& c;
+	const config& vars();
+	const game_events::manager& events();
+	const display_context& dc();
 };
 
 class variable_mode_controller : public single_mode_controller
 {
 public:
-	variable_mode_controller(const std::string& name,
-							 tgamestate_inspector::model& m)
-		: single_mode_controller(name, m)
+	variable_mode_controller(tgamestate_inspector::controller& c)
+		: single_mode_controller(c)
 	{
 	}
 
-	void show_stuff_list()
-	{
-		model_.clear_stuff_list();
-
-		const config& vars = resources::gamedata
-									 ? resources::gamedata->get_variables()
-									 : config();
-
-		for(const auto & a : vars.attribute_range())
-		{
-			model_.add_row_to_stuff_list(a.first, a.first);
-		}
-
-		std::map<std::string, size_t> wml_array_sizes;
-
-		for(const auto & c : vars.all_children_range())
-		{
-			if (wml_array_sizes.find(c.key) == wml_array_sizes.end()) {
-				wml_array_sizes[c.key] = 0;
-			} else {
-				++wml_array_sizes[c.key];
-			}
-
-			unsigned int num_pages = model_.get_num_page(config_to_string(c.cfg));
-			for (unsigned int i = 0; i < num_pages; i++) {
-				std::ostringstream cur_str;
-				cur_str << "[" << c.key << "][" << wml_array_sizes[c.key] << "]";
-				if (num_pages > 1) {
-					cur_str << " " << (i + 1) << "/" << num_pages;
-				}
-				model_.add_row_to_stuff_list(cur_str.str(), cur_str.str());
-			}
-		}
-
-		model_.set_inspect_window_text("");
-	}
-
-	void handle_stuff_list_selection()
-	{
-		int selected = model_.stuff_list->get_selected_row();
-		if(selected == -1) {
-			model_.set_inspect_window_text("");
-			return;
-		}
-
-		int i = 0; ///@todo replace with precached data
-		const config& vars = resources::gamedata
-									 ? resources::gamedata->get_variables()
-									 : config();
-
-		for(const auto & a : vars.attribute_range())
-		{
-			if(selected == i) {
-				model_.set_inspect_window_text(a.second);
-				return;
-			}
-			i++;
-		}
-
-		for(const auto & c : vars.all_children_range())
-		{
-			for (unsigned int j = 0; j < model_.get_num_page(config_to_string(c.cfg)); ++j) {
-				if (selected == i) {
-					model_.set_inspect_window_text(config_to_string(c.cfg), j);
-					return;
-				}
-				i++;
-			}
-		}
-	}
-
-	virtual void update_view_from_model()
-	{
-		show_stuff_list();
-		handle_stuff_list_selection();
-	}
+	void show_list(ttree_view_node& node);
+	void show_var(ttree_view_node& node);
+	void show_array(ttree_view_node& node);
 };
 
-/**
- * Controller for WML event and menu item handler views.
- */
 class event_mode_controller : public single_mode_controller
 {
 public:
-	/** WML event handler tag identifier. */
-	enum HANDLER_TYPE
-	{
-		EVENT_HANDLER,	/**< Standard WML event handler ([event]). */
-		WMI_HANDLER		/**< WML menu item handler ([menu_item]). */
-	};
-
-	/**
-	 * Constructor.
-	 *
-	 * @param name        View name displayed on the UI.
-	 * @param m           Inspector model reference.
-	 * @param wml_node    WML node key. Should be either "event" or
-	 *                    "menu_item".
-	 */
-	event_mode_controller(const std::string& name,
-						  tgamestate_inspector::model& m,
-						  HANDLER_TYPE handler_type)
-		: single_mode_controller(name, m)
-		, handler_type_(handler_type)
-		, pages_()
-	{
-	}
-
-	/**
-	 * Populates the list of pages for this view.
-	 */
-	virtual void show_stuff_list()
-	{
-		assert(resources::game_events);
-
-		const std::string handler_key
-				= handler_type_ == WMI_HANDLER ? "menu_item" : "event";
-
-		model_.clear_stuff_list();
-		pages_.clear();
-		config events_config;
-		resources::game_events->write_events(events_config);
-
-		for(const auto & cfg : events_config.child_range(handler_key))
-		{
-			shared_string_ptr sstrp(new std::string(config_to_string(cfg)));
-			const std::string& wmltext = *sstrp;
-			const unsigned num_pages = model_.get_num_page(wmltext);
-
-			for(unsigned i = 0; i < num_pages; ++i) {
-				pages_.push_back(std::make_pair(sstrp, i));
-
-				std::ostringstream o;
-
-				if(handler_type_ == WMI_HANDLER) {
-					// [menu_item]
-					o << cfg["id"].str();
-				} else {
-					// [event]
-					o << cfg["name"].str();
-					if(!cfg["id"].empty()) {
-						o << " [id=\"" << cfg["id"].str() << "\"]";
-					}
-				}
-
-				if(num_pages > 1) {
-					o << " [page" << (i + 1) << '/' << num_pages << ']';
-				}
-
-				model_.add_row_to_stuff_list(o.str(), o.str());
-			}
-		}
-
-		model_.set_inspect_window_text("");
-	}
-
-	/**
-	 * Updates the page display for the currently selected item in this view.
-	 */
-	virtual void handle_stuff_list_selection()
-	{
-		const int row = model_.stuff_list->get_selected_row();
-		if(row < 0 || size_t(row) >= pages_.size()) {
-			model_.set_inspect_window_text("");
-			return;
-		}
-
-		const page_descriptor& pd = pages_[size_t(row)];
-		model_.set_inspect_window_text(*pd.first, pd.second);
-	}
-
-	/**
-	 * Updates the whole view (page list and page display).
-	 */
-	virtual void update_view_from_model()
-	{
-		show_stuff_list();
-		handle_stuff_list_selection();
-	}
+	event_mode_controller(tgamestate_inspector::controller& c);
+	void show_list(ttree_view_node& node, bool is_wmi);
+	void show_event(ttree_view_node& node, bool is_wmi);
 
 private:
-	// Because of GUI2's limitations, we need to use set_inspect_window_text's
-	// option to split view pages into multiple subpages. Each of those
-	// subpages is built from a shared string object we cache beforehand for
-	// cycle efficiency. We use a vector of page content pointers/subpage
-	// number pairs matching the UI layout to keep things simple.
-
-	typedef boost::shared_ptr<std::string> shared_string_ptr;
-	typedef std::pair<shared_string_ptr, unsigned> page_descriptor;
-
-	HANDLER_TYPE handler_type_;
-	std::vector<page_descriptor> pages_;
+	config events;
 };
 
 class unit_mode_controller : public single_mode_controller
 {
 public:
-	unit_mode_controller(const std::string& name,
-						 tgamestate_inspector::model& m)
-		: single_mode_controller(name, m)
+	unit_mode_controller(tgamestate_inspector::controller& c)
+		: single_mode_controller(c)
 	{
 	}
 
-	void show_stuff_list()
-	{
-		model_.clear_stuff_list();
-
-		if(resources::units && resources::filter_con) {
-			const display_context& viewer = resources::filter_con->get_disp_context();
-			for(unit_map::iterator i = resources::units->begin();
-				i != resources::units->end();
-				++i) {
-				Uint32 which_color = game_config::tc_info(viewer.teams()[i->side() - 1].color())[0];
-
-				std::stringstream s;
-				s << '(' << i->get_location();
-				s << ") <span color='#" << std::hex << which_color << std::dec;
-				s << "'>side=" << i->side() << "</span> ";
-				if(i->can_recruit()) {
-					s << "<span color='yellow'>LEADER</span> ";
-				}
-
-				s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
-				  << "L" << i->level() << "; " << i->experience() << '/'
-				  << i->max_experience() << " xp; " << i->hitpoints() << '/'
-				  << i->max_hitpoints() << " hp;";
-				for(const auto & str : i->get_traits_list())
-				{
-					s << " " << str;
-				}
-
-				std::string key = s.str();
-				model_.add_row_to_stuff_list(i->id(), key, true);
-			}
-		}
-
-		model_.set_inspect_window_text("");
-	}
-
-	void handle_stuff_list_selection()
-	{
-		int selected = model_.stuff_list->get_selected_row();
-		if(selected == -1) {
-			model_.set_inspect_window_text("");
-			return;
-		}
-
-		if(resources::units) {
-			int i = 0; ///@todo replace with precached data
-			for(unit_map::iterator u = resources::units->begin();
-				u != resources::units->end();
-				++u) {
-				if(selected == i) {
-					config c_unit;
-					u->write(c_unit);
-					std::ostringstream cfg_str;
-					write(cfg_str, c_unit);
-					model_.set_inspect_window_text(cfg_str.str());
-					return;
-				}
-				i++;
-			}
-		}
-		model_.set_inspect_window_text("");
-	}
-
-	virtual void update_view_from_model()
-	{
-		show_stuff_list();
-		handle_stuff_list_selection();
-	}
+	void show_list(ttree_view_node& node);
+	void show_unit(ttree_view_node& node);
 };
-
 
 class team_mode_controller : public single_mode_controller
 {
 public:
-	team_mode_controller(const std::string& name,
-						 tgamestate_inspector::model& m,
-						 int side)
-		: single_mode_controller(name, m), side_(side)
+	team_mode_controller(tgamestate_inspector::controller& c)
+		: single_mode_controller(c)
 	{
 	}
 
-	void show_stuff_list()
-	{
-		model_.clear_stuff_list();
-		// note: needs sync with handle_stuff_list_selection()
-		model_.add_row_to_stuff_list("overview", "overview");
-		model_.add_row_to_stuff_list("ai overview", "ai overview");
-		model_.add_row_to_stuff_list("ai engines", "ai engines");
-		model_.add_row_to_stuff_list("ai stages", "ai stages");
-		model_.add_row_to_stuff_list("ai aspects", "ai aspects");
-		model_.add_row_to_stuff_list("ai goals", "ai goals");
-		model_.add_row_to_stuff_list("recall list overview",
-									 "recall list overview");
-		model_.add_row_to_stuff_list("recall list full", "recall list full");
-		model_.add_row_to_stuff_list("ai component structure",
-									 "ai component structure");
-		model_.add_row_to_stuff_list("unit list overview",
-									 "unit list overview");
-		model_.set_inspect_window_text("");
-	}
-
-	void handle_stuff_list_selection()
-	{
-		int selected = model_.stuff_list->get_selected_row();
-		if(selected == -1) {
-			model_.set_inspect_window_text("");
-			return;
-		}
-
-		if(selected == 0) {
-			config c = resources::teams
-							   ? resources::teams->at(side_ - 1).to_config()
-							   : config();
-			c.clear_children("ai", "village");
-			model_.set_inspect_window_text(config_to_string(c));
-			return;
-		}
-
-		if(selected == 1) {
-			model_.set_inspect_window_text(
-					ai::manager::get_active_ai_overview_for_side(side_));
-			return;
-		}
-
-		if(selected == 2) {
-			model_.set_inspect_window_text(
-					config_to_string(ai::manager::to_config(side_), "engine"));
-		}
-		
-		if(selected == 3) {
-			model_.set_inspect_window_text(
-					config_to_string(ai::manager::to_config(side_), "stage"));
-		}
-		
-		if(selected == 4) {
-			model_.set_inspect_window_text(
-					config_to_string(ai::manager::to_config(side_), "aspect"));
-		}
-		
-		if(selected == 5) {
-			model_.set_inspect_window_text(
-					config_to_string(ai::manager::to_config(side_), "goal"));
-		}
-
-		if(selected == 6) {
-			std::stringstream s;
-			if (resources::teams) {
-				for(const auto & u : resources::teams->at(side_ - 1).recall_list())
-				{
-					s << "id=\"" << u->id() << "\" (" << u->type_id() << ")\nL"
-					  << u->level() << "; " << u->experience() << "/"
-					  << u->max_experience() << " xp; " << u->hitpoints() << "/"
-					  << u->max_hitpoints() << " hp\n";
-					for(const auto & str : u->get_traits_list())
-					{
-						s << "\t" << str << std::endl;
-					}
-					s << std::endl;
-				}
-			}
-			model_.set_inspect_window_text(s.str());
-			return;
-		}
-
-		if(selected == 7) {
-			config c;
-			if (resources::teams) {
-				for(const auto & u : resources::teams->at(side_ - 1).recall_list())
-				{
-					config c_unit;
-					u->write(c_unit);
-					c.add_child("unit", c_unit);
-				}
-			}
-			model_.set_inspect_window_text(config_to_string(c));
-			return;
-		}
-
-		if(selected == 8) {
-			model_.set_inspect_window_text(
-					ai::manager::get_active_ai_structure_for_side(side_));
-			return;
-		}
-
-
-		if(selected == 9) {
-			std::stringstream s;
-			if(resources::units) {
-				for(unit_map::iterator i = resources::units->begin();
-					i != resources::units->end();
-					++i) {
-					if(i->side() != side_) {
-						continue;
-					}
-					s << '(' << i->get_location() << ") ";
-					if(i->can_recruit()) {
-						s << "LEADER ";
-					}
-
-					s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
-					  << "L" << i->level() << "; " << i->experience() << '/'
-					  << i->max_experience() << " xp; " << i->hitpoints() << '/'
-					  << i->max_hitpoints() << " hp\n";
-					for(const auto & str : i->get_traits_list())
-					{
-						s << "\t" << str << std::endl;
-					}
-					s << std::endl;
-				}
-			}
-			model_.set_inspect_window_text(s.str());
-			return;
-		}
-	}
-
-	virtual void update_view_from_model()
-	{
-		show_stuff_list();
-		handle_stuff_list_selection();
-	}
-
-private:
-	int side_;
+	void show_list(ttree_view_node& node, int side);
+	void show_ai(ttree_view_node& node, int side);
+	void show_ai_components(ttree_view_node& node, int side);
+	void show_ai_tree(ttree_view_node& node, int side);
+	void show_recall(ttree_view_node& node, int side);
+	void show_recall_unit(ttree_view_node& node, int side);
+	void show_units(ttree_view_node& node, int side);
+	void show_unit(ttree_view_node& node, int side);
 };
 
-
-// The controller acts upon the model. It retrieves data from repositories,
-// persists it, manipulates it, and determines how it will be displayed in the
-// view.
 class tgamestate_inspector::controller
 {
+	friend class single_mode_controller;
 public:
-	typedef std::vector<boost::shared_ptr<single_mode_controller> >
-	sm_controller_ptr_vector;
-	controller(model& m) : model_(m), sm_controllers_()
+	controller(model& m, view& v, const config& vars, const game_events::manager& events, const display_context& dc)
+		: model_(m), view_(v)
+		, vars_(vars), events_(events), dc_(dc)
 	{
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new variable_mode_controller("variables", model_)));
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new event_mode_controller(
-						"events", model_, event_mode_controller::EVENT_HANDLER)));
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new event_mode_controller(
-						"menu items", model_, event_mode_controller::WMI_HANDLER)));
-		sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-				new unit_mode_controller("units", model_)));
-		// BOOST_FOREACHteam
-		int sides = resources::teams
-							? static_cast<int>((*resources::teams).size())
-							: 0;
-		for(int side = 1; side <= sides; ++side) {
-			std::string side_str = std::to_string(side);
-			sm_controllers_.push_back(boost::shared_ptr<single_mode_controller>(
-					new team_mode_controller(
-							std::string("team ") + side_str, model_, side)));
+	}
+
+	void handle_stuff_list_item_clicked(twidget& tree)
+	{
+		ttree_view_node* selected = dynamic_cast<ttree_view&>(tree).selected_item();
+		callbacks[selected->describe_path()](*selected);
+		if(!selected->is_root_node()) {
+			using iter_t = iterator::twalker_*;
+			auto v = iterator::twalker_::child;
+			for(iter_t w = selected->parent_node().create_walker(); !w->at_end(v); w->next(v)) {
+				twidget* wgt = w->get(v);
+				if(ttree_view_node* node = dynamic_cast<ttree_view_node*>(wgt)) {
+					if(node != selected) {
+						node->fold();
+					} else {
+						node->unfold();
+					}
+				}
+			}
 		}
-	}
-
-	boost::shared_ptr<single_mode_controller> get_sm_controller()
-	{
-		int selected = model_.stuff_types_list->get_selected_row();
-		if(selected == -1) {
-			// TODO: select row (maybe remember last selected row?...)
-			selected = 0;
-		}
-		return sm_controllers_.at(selected);
-	}
-
-	void show_stuff_types_list()
-	{
-		model_.clear_stuff_types_list();
-		for(auto sm_controller : sm_controllers_)
-		{
-			model_.add_row_to_stuff_types_list(sm_controller->name(),
-											   sm_controller->name());
-		}
-	}
-
-
-	void show_title()
-	{
-		model_.inspector_name->set_label(model_.name);
-	}
-
-
-	void update_view_from_model()
-	{
-		boost::shared_ptr<single_mode_controller> c = get_sm_controller();
-
-		show_title();
-		c->update_view_from_model();
-	}
-
-
-	void handle_stuff_list_item_clicked()
-	{
-		model_.set_inspect_window_text("");
-		boost::shared_ptr<single_mode_controller> c = get_sm_controller();
-		c->handle_stuff_list_selection();
-	}
-
-
-	void handle_stuff_types_list_item_clicked()
-	{
-		model_.clear_stuff_list();
-		model_.set_inspect_window_text("");
-		boost::shared_ptr<single_mode_controller> c = get_sm_controller();
-		c->update_view_from_model(); // TODO: 'activate'
+		view_.update(model_);
 	}
 
 	void handle_copy_button_clicked()
 	{
-		desktop::clipboard::copy_to_clipboard(model_.inspect->label(), false);
-	}
-
-	void handle_lua_button_clicked(CVideo & video)
-	{
-		tlua_interpreter::display(video, tlua_interpreter::GAME);
-	}
-
-private:
-	model& model_;
-	sm_controller_ptr_vector sm_controllers_;
-};
-
-
-// The view is an interface that displays data (the model) and routes user
-// commands to the controller to act upon that data.
-class tgamestate_inspector::view
-{
-public:
-	view(const vconfig& cfg) : model_(cfg), controller_(model_)
-	{
-	}
-
-	void pre_show(twindow& /*window*/)
-	{
-		controller_.show_stuff_types_list();
-		controller_.update_view_from_model();
-	}
-
-
-	void handle_stuff_list_item_clicked()
-	{
-		controller_.handle_stuff_list_item_clicked();
-	}
-
-	void handle_stuff_types_list_item_clicked()
-	{
-		controller_.handle_stuff_types_list_item_clicked();
-	}
-
-	void handle_copy_button_clicked(twindow& /*window*/)
-	{
-		controller_.handle_copy_button_clicked();
+		desktop::clipboard::copy_to_clipboard(model_.get_data_full(), false);
 	}
 
 	void handle_lua_button_clicked(twindow& window)
 	{
-		controller_.handle_lua_button_clicked(window.video());
+		tlua_interpreter::display(window.video(), tlua_interpreter::GAME);
+		// The game state could've changed, so reset the dialog
+		callbacks.clear();
+		controllers.clear();
+		view_.clear_stuff_list();
+		build_stuff_list(window);
+		model_.clear_data();
+		view_.update(model_);
+	}
+
+	void handle_page_button_clicked(bool next)
+	{
+		view_.page(next ? 1 : -1);
+		view_.update(model_);
+	}
+
+	template<typename T>
+	T& get_controller()
+	{
+		for(auto& c : controllers) {
+			if(T* p = dynamic_cast<T*>(c)) {
+				return *p;
+			}
+		}
+		T* p = new T(*this);
+		controllers.push_back(p);
+		return *p;
+	}
+
+	template<typename C>
+	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(ttree_view_node&))
+	{
+		C& sub_controller = get_controller<C>();
+		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
+	}
+
+	template<typename C, typename T>
+	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(ttree_view_node&, T), T param)
+	{
+		C& sub_controller = get_controller<C>();
+		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1, param));
 	}
 
 	void bind(twindow& window)
 	{
-		model_.stuff_list
-				= &find_widget<tlistbox>(&window, "stuff_list", false);
-		model_.stuff_types_list
-				= &find_widget<tlistbox>(&window, "stuff_types_list", false);
-		model_.inspect = find_widget<tcontrol>(&window, "inspect", false, true);
-		model_.inspector_name
-				= &find_widget<tcontrol>(&window, "inspector_name", false);
-		model_.copy_button
-				= &find_widget<tbutton>(&window, "copy", false);
-		model_.lua_button
-				= &find_widget<tbutton>(&window, "lua", false);
+		auto stuff_list = find_widget<ttree_view>(&window, "stuff_list", false, true);
+		auto copy_button = find_widget<tbutton>(&window, "copy", false, true);
+		auto lua_button = find_widget<tbutton>(&window, "lua", false, true);
+		auto left_button = find_widget<tbutton>(&window, "page_left", false, true);
+		auto right_button = find_widget<tbutton>(&window, "page_right", false, true);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-		connect_signal_notify_modified(
-				*model_.stuff_list,
-				std::bind(&tgamestate_inspector::view::
-									 handle_stuff_list_item_clicked,
-							this));
-
-		connect_signal_notify_modified(
-				*model_.stuff_types_list,
-				std::bind(&tgamestate_inspector::view::
-									 handle_stuff_list_item_clicked,
-							this));
-
-#else
-		model_.stuff_list->set_callback_value_change(
-				dialog_view_callback<tgamestate_inspector,
-									 tgamestate_inspector::view,
-									 &tgamestate_inspector::view::
-											  handle_stuff_list_item_clicked>);
-
-		model_.stuff_types_list->set_callback_value_change(
-				dialog_view_callback<tgamestate_inspector,
-									 tgamestate_inspector::view,
-									 &tgamestate_inspector::view::
-											  handle_stuff_types_list_item_clicked>);
-#endif
+		stuff_list->set_selection_change_callback(std::bind(&tgamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
 
 		connect_signal_mouse_left_click(
-				*model_.copy_button,
-				std::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
-							this,
-							std::ref(window)));
+				*copy_button,
+				std::bind(&tgamestate_inspector::controller::handle_copy_button_clicked,
+					this));
 
 		connect_signal_mouse_left_click(
-				*model_.lua_button,
-				std::bind(&tgamestate_inspector::view::handle_lua_button_clicked,
-							this,
-							std::ref(window)));
+				*lua_button,
+				std::bind(&tgamestate_inspector::controller::handle_lua_button_clicked,
+					this, std::ref(window)));
+
+		connect_signal_mouse_left_click(
+				*left_button,
+				std::bind(&tgamestate_inspector::controller::handle_page_button_clicked,
+					this, false));
+
+		connect_signal_mouse_left_click(
+				*right_button,
+				std::bind(&tgamestate_inspector::controller::handle_page_button_clicked,
+					this, true));
+
+		left_button->set_visible(twidget::tvisible::invisible);
+		right_button->set_visible(twidget::tvisible::invisible);
 
 		if (!desktop::clipboard::available()) {
-			model_.copy_button->set_active(false);
-			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
+			copy_button->set_active(false);
+			copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
+
+		build_stuff_list(window);
+	}
+
+	void build_stuff_list(twindow& window)
+	{
+		set_node_callback(
+			view_.stuff_list_entry(nullptr, "basic")
+				.widget("name", "variables")
+				.add(),
+			&variable_mode_controller::show_list);
+		set_node_callback(
+			view_.stuff_list_entry(nullptr, "basic")
+				.widget("name", "events")
+				.add(),
+			&event_mode_controller::show_list,
+			false);
+		set_node_callback(
+			view_.stuff_list_entry(nullptr, "basic")
+				.widget("name", "menu items")
+				.add(),
+			&event_mode_controller::show_list,
+			true);
+		set_node_callback(
+			view_.stuff_list_entry(nullptr, "basic")
+				.widget("name", "units")
+				.add(),
+			&unit_mode_controller::show_list);
+		int sides = dc_.teams().size();
+		for(int side = 1; side <= sides; side++) {
+			std::ostringstream label;
+			label << "team " << side;
+			const std::string& name = dc_.get_team(side).user_team_name();
+			if(!name.empty()) {
+				label << " (" << name << ")";
+			}
+			set_node_callback(
+				view_.stuff_list_entry(nullptr, "basic")
+					.widget("name", label.str())
+					.add(),
+				&team_mode_controller::show_list,
+				side);
+		}
+		// Expand initially selected node
+		callbacks[{0}](find_widget<ttree_view>(&window, "stuff_list", false).get_root_node().get_child_at(0));
 	}
 
 private:
-	model model_;
-	controller controller_;
+	model& model_;
+	view& view_;
+	using node_callback = std::function<void(ttree_view_node&)>;
+	using node_callback_map = std::map<std::vector<int>, node_callback>;
+	std::vector<single_mode_controller*> controllers;
+	node_callback_map callbacks;
+	const config& vars_;
+	const game_events::manager& events_;
+	const display_context& dc_;
 };
 
+tgamestate_inspector::model& single_mode_controller::model() {
+	return c.model_;
+}
+
+tgamestate_inspector::view& single_mode_controller::view() {
+	return c.view_;
+}
+
+const config& single_mode_controller::vars() {
+	return c.vars_;
+}
+
+const game_events::manager& single_mode_controller::events() {
+	return c.events_;
+}
+
+const display_context& single_mode_controller::dc() {
+	return c.dc_;
+}
+
+event_mode_controller::event_mode_controller(tgamestate_inspector::controller& c)
+	: single_mode_controller(c)
+{
+	single_mode_controller::events().write_events(events);
+}
+
+void variable_mode_controller::show_list(ttree_view_node& node)
+{
+	model().clear_data();
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	for(const auto& attr : vars().attribute_range())
+	{
+		c.set_node_callback(
+			view().stuff_list_entry(&node, "basic")
+				.widget("name", attr.first)
+				.add(),
+			&variable_mode_controller::show_var);
+	}
+
+	std::map<std::string, size_t> wml_array_sizes;
+
+	for(const auto& ch : vars().all_children_range())
+	{
+
+		std::ostringstream cur_str;
+		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+
+		this->c.set_node_callback(
+			view().stuff_list_entry(&node, "basic")
+				.widget("name", cur_str.str())
+				.add(),
+			&variable_mode_controller::show_array);
+		wml_array_sizes[ch.key]++;
+	}
+}
+
+void variable_mode_controller::show_var(ttree_view_node& node)
+{
+	twidget* w = node.find("name", false);
+	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
+		model().set_data(vars()[label->label()]);
+	}
+}
+
+void variable_mode_controller::show_array(ttree_view_node& node)
+{
+	twidget* w = node.find("name", false);
+	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
+		const std::string& var = label->label();
+		size_t n_start = var.find_last_of('[') + 1;
+		size_t n_len = var.size() - n_start - 1;
+		int n = std::stoi(var.substr(n_start, n_len));
+		model().set_data(config_to_string(vars().child(var.substr(1, n_start - 3), n)));
+	}
+}
+
+void event_mode_controller::show_list(ttree_view_node& node, bool is_wmi)
+{
+	model().clear_data();
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	for(const auto & cfg : events.child_range(is_wmi ? "menu_item" : "event"))
+	{
+		std::string name = is_wmi ? cfg["id"] : cfg["name"];
+		bool named_event = !is_wmi && !cfg["id"].empty();
+
+		auto progress = view()
+			.stuff_list_entry(&node, named_event ? "named_event" : "basic")
+			.widget("name", name);
+
+		if(named_event) {
+			std::ostringstream out;
+			out << "id=\"" << cfg["id"] << '"';
+			progress.widget("id", out.str());
+		}
+
+		c.set_node_callback(progress.add(), &event_mode_controller::show_event, is_wmi);
+	}
+
+}
+
+void event_mode_controller::show_event(ttree_view_node& node, bool is_wmi)
+{
+	int n = node.describe_path().back();
+	model().set_data(config_to_string(events.child(is_wmi ? "menu_item" : "event", n)));
+}
+
+static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u, const display_context& dc)
+{
+
+	Uint32 team_color = game_config::tc_info(dc.get_team(u.side()).color())[0];
+	std::stringstream s;
+
+	s << '(' << u.get_location() << ')';
+	progress.widget("loc", s.str());
+
+	s.str("");
+	s << "<span color='#" << std::hex << team_color << std::dec;
+	s << "'>side=" << u.side() << "</span>";
+	progress.widget("side", s.str(), true);
+
+	if(u.can_recruit()) {
+		progress.widget("leader", "<span color='yellow'>LEADER</span> ", true);
+	}
+
+	s.str("");
+	s << "id=\"" << u.id() << '"';
+	progress.widget("id", s.str());
+
+	progress.widget("type", u.type_id());
+
+	s.str("");
+	s << "L" << u.level();
+	progress.widget("level", s.str());
+
+	s.str("");
+	s << u.experience() << '/' << u.max_experience() << " xp";
+	progress.widget("xp", s.str());
+
+	s.str("");
+	s << u.hitpoints() << '/' << u.max_hitpoints() << " hp";
+	progress.widget("hp", s.str());
+
+	progress.widget("traits", utils::join(u.get_traits_list(), ", "));
+
+	return progress;
+}
+
+void unit_mode_controller::show_list(ttree_view_node& node)
+{
+	model().clear_data();
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end(); ++i) {
+		auto progress = view().stuff_list_entry(&node, "unit");
+		add_unit_entry(progress, *i, dc());
+		c.set_node_callback(progress.add(), &unit_mode_controller::show_unit);
+	}
+}
+
+void unit_mode_controller::show_unit(ttree_view_node& node)
+{
+	int i = node.describe_path().back();
+	unit_map::const_iterator u = dc().units().begin();
+	std::advance(u, i);
+	config c_unit;
+	u->write(c_unit);
+	model().set_data(config_to_string(c_unit));
+}
+
+void team_mode_controller::show_list(ttree_view_node& node, int side)
+{
+	config&& cfg = dc().get_team(side).to_config();
+	cfg.clear_children("ai");
+	model().set_data(config_to_string(cfg));
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "ai")
+			.add(),
+		&team_mode_controller::show_ai,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "recall list")
+			.add(),
+		&team_mode_controller::show_recall,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "units")
+			.add(),
+		&team_mode_controller::show_units,
+		side);
+}
+
+void team_mode_controller::show_ai(ttree_view_node& node, int side)
+{
+	model().set_data(ai::manager::get_active_ai_overview_for_side(side));
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "engines")
+			.add(),
+		&team_mode_controller::show_ai_components,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "stages")
+			.add(),
+		&team_mode_controller::show_ai_components,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "aspects")
+			.add(),
+		&team_mode_controller::show_ai_components,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "goals")
+			.add(),
+		&team_mode_controller::show_ai_components,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "component structure")
+			.add(),
+		&team_mode_controller::show_ai_tree,
+		side);
+}
+
+void team_mode_controller::show_ai_components(ttree_view_node& node, int side)
+{
+	twidget* w = node.find("name", false);
+	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
+		std::string tag = label->label();
+		tag.pop_back();
+		model().set_data(config_to_string(ai::manager::to_config(side), tag));
+	}
+}
+
+void team_mode_controller::show_recall(ttree_view_node& node, int side)
+{
+	model().clear_data();
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	for(const unit_ptr u : dc().get_team(side).recall_list()) {
+		auto progress = view().stuff_list_entry(&node, "unit");
+		add_unit_entry(progress, *u, dc());
+		c.set_node_callback(progress.add(), &team_mode_controller::show_recall_unit, side);
+	}
+}
+
+void team_mode_controller::show_recall_unit(ttree_view_node& node, int side)
+{
+	int i = node.describe_path().back();
+	auto u = dc().get_team(side).recall_list().begin();
+	std::advance(u, i);
+	config c_unit;
+	(*u)->write(c_unit);
+	model().set_data(config_to_string(c_unit));
+}
+
+void team_mode_controller::show_ai_tree(ttree_view_node&, int side)
+{
+	model().set_data(ai::manager::get_active_ai_structure_for_side(side));
+}
+
+void team_mode_controller::show_units(ttree_view_node&, int side)
+{
+	std::ostringstream s;
+	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end();
+		++i) {
+		if(i->side() != side) {
+			continue;
+		}
+		s << '(' << i->get_location() << ") ";
+		if(i->can_recruit()) {
+			s << "LEADER ";
+		}
+
+		s << "\nid=\"" << i->id() << "\" (" << i->type_id() << ")\n"
+		  << "L" << i->level() << "; " << i->experience() << '/'
+		  << i->max_experience() << " XP; " << i->hitpoints() << '/'
+		  << i->max_hitpoints() << " HP\n";
+		for(const auto & str : i->get_traits_list())
+		{
+			s << "\t" << str << std::endl;
+		}
+		s << std::endl;
+	}
+	model().set_data(s.str());
+}
 
 REGISTER_DIALOG(gamestate_inspector)
 
-tgamestate_inspector::tgamestate_inspector(const vconfig& cfg)
-	: view_(new view(cfg))
+tgamestate_inspector::tgamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title)
+	: title_(title)
+	, vars_(vars)
+	, events_(events)
+	, dc_(dc)
 {
-}
-
-boost::shared_ptr<tgamestate_inspector::view> tgamestate_inspector::get_view()
-{
-	return view_;
+	model_.reset(new model);
 }
 
 void tgamestate_inspector::pre_show(twindow& window)
 {
-	view_->bind(window);
-	view_->pre_show(window);
+	view_.reset(new view(window));
+	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
+
+	if(!title_.empty()) {
+		find_widget<tcontrol>(&window, "inspector_name", false).set_label(title_);
+	}
+	controller_->bind(window);
+	view_->update(*model_);
 }
 
 } // end of namespace gui2

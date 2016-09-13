@@ -24,6 +24,8 @@
 
 namespace editor {
 
+class editor_toolkit;
+
 //std::string get_selected_terrain();
 
 /** Palette where the terrain to be drawn can be selected. */
@@ -31,8 +33,8 @@ class item_palette : public editor_palette<overlay> {
 public:
 
 	item_palette(editor_display &gui,
-			const config& cfg,
-			mouse_action** active_mouse_action);
+	             const config& cfg,
+	             editor_toolkit &toolkit);
 
 	virtual void setup(const config& cfg);
 

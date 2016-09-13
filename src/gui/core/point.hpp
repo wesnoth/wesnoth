@@ -23,6 +23,10 @@ namespace gui2
 /** Holds a 2D point. */
 struct tpoint
 {
+	tpoint() : x(0), y(0)
+	{
+	}
+
 	tpoint(const int x_, const int y_) : x(x_), y(y_)
 	{
 	}
@@ -53,14 +57,14 @@ struct tpoint
 
 	tpoint operator+(const tpoint& point) const
 	{
-		return tpoint(x + point.x, y + point.y);
+		return {x + point.x, y + point.y};
 	}
 
 	tpoint& operator+=(const tpoint& point);
 
 	tpoint operator-(const tpoint& point) const
 	{
-		return tpoint(x - point.x, y - point.y);
+		return {x - point.x, y - point.y};
 	}
 
 	tpoint& operator-=(const tpoint& point);

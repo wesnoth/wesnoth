@@ -46,13 +46,13 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
-	void connect_click_handler(const event::tsignal_function& signal)
+	void connect_click_handler(const event::tsignal_function& signal) override
 	{
 		connect_signal_mouse_left_click(*this, signal);
 	}
 
 	/** Inherited from tclickable. */
-	void disconnect_click_handler(const event::tsignal_function& signal)
+	void disconnect_click_handler(const event::tsignal_function& signal) override
 	{
 		disconnect_signal_mouse_left_click(*this, signal);
 	}

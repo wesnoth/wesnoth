@@ -21,6 +21,10 @@
 #include <string>
 #include <vector>
 
+#include <boost/iterator/indirect_iterator.hpp>
+#include <boost/range/iterator_range.hpp>
+#include <boost/smart_ptr/intrusive_ptr.hpp>
+
 class unit_ability_list;
 
 //the 'attack type' is the type of attack, how many times it strikes,
@@ -46,15 +50,13 @@ public:
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
-	const config specials() const { return specials_; }
+	const config &specials() const { return specials_; }
 
 	void set_name(const t_string& value) { description_  = value; }
-	// void set_id(const std::string& value) { return id = value; }
+	void set_id(const std::string& value) { id_ = value; }
 	void set_type(const std::string& value) { type_ = value; }
 	void set_icon(const std::string& value) { icon_ = value; }
 	void set_range(const std::string& value) { range_ = value; }
-	// void set_min_range(int value) { min_range_ = value; }
-	// void set_max_range(int value) { max_range_ = value; }
 	void set_accuracy(int value) { accuracy_ = value; }
 	void set_parry(int value) { parry_ = value; }
 	void set_damage(int value) { damage_ = value; }
@@ -123,5 +125,29 @@ private:
 	int movement_used_;
 	int parry_;
 	config specials_;
+	mutable size_t ref_count = 0;
+
+	friend void intrusive_ptr_add_ref(const attack_type* atk) {
+		++atk->ref_count;
+	}
+
+	friend void intrusive_ptr_release(const attack_type* atk) {
+		--atk->ref_count;
+	}
 };
+
+using attack_ptr = boost::intrusive_ptr<attack_type>;
+using const_attack_ptr = boost::intrusive_ptr<const attack_type>;
+using attack_list = std::vector<attack_ptr>;
+using attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::iterator>>;
+using const_attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::const_iterator>>;
+
+inline attack_itors make_attack_itors(attack_list& atks) {
+	return boost::make_iterator_range(boost::make_indirect_iterator(atks.begin()), boost::make_indirect_iterator(atks.end()));
+}
+
+inline const_attack_itors make_attack_itors(const attack_list& atks) {
+	return boost::make_iterator_range(boost::make_indirect_iterator(atks.begin()), boost::make_indirect_iterator(atks.end()));
+}
+
 #endif

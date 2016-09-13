@@ -37,10 +37,10 @@ WESNOTH_SERIES="1.13"
 # This allows users to create a link to the app on their desktop
 # os.path.normpath allows Windows users to see their standard path separators
 APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
-upper_dir=APP_DIR.split(os.sep)
-upper_dir.pop()
-WESNOTH_DATA_DIR=os.sep.join(upper_dir)
+WESNOTH_ROOT_DIR=os.sep.join(APP_DIR.split(os.sep)[:-2])  # pop out "data" and "tools"
+WESNOTH_DATA_DIR=os.path.join(WESNOTH_ROOT_DIR,"data")
 WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
+WMLXGETTEXT_DIR=os.path.normpath(os.path.join(WESNOTH_ROOT_DIR,"utils"))
 
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
@@ -88,6 +88,41 @@ def is_wesnoth_tools_path(path):
        "tools" in lower_path:
         return True
     return False
+
+def get_addons_directory():
+    """Returns a string containing the path of the add-ons directory"""
+    # os.path.expanduser gets the current user's home directory on every platform
+    if sys.platform=="win32":
+        # get userdata directory on Windows
+        # it assumes that you choose to store userdata in the My Games directory
+        # while installing Wesnoth
+        userdata=os.path.join(os.path.expanduser("~"),
+                              "Documents",
+                              "My Games",
+                              "Wesnoth"+WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    elif sys.platform.startswith("linux") or "bsd" in sys.platform:
+        # we're on Linux or on a BSD system like FreeBSD
+        userdata=os.path.join(os.path.expanduser("~"),
+                              ".local",
+                              "share",
+                              "wesnoth",
+                              WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    elif sys.platform=="darwin": # we're on MacOS
+        # bear in mind that I don't have a Mac, so this point may be bugged
+        userdata=os.path.join(os.path.expanduser("~"),
+                              "Library",
+                              "Application Support",
+                              "Wesnoth_"+WESNOTH_SERIES,
+                              "data",
+                              "add-ons")
+    else: # unknown system; if someone else wants to add other rules, be my guest
+        userdata="."
+
+    return userdata if os.path.exists(userdata) else "." # fallback in case the directory doesn't exist
 
 def attach_context_menu(widget,function):
     # on Mac the right button fires a Button-2 event, or so I'm told
@@ -155,7 +190,8 @@ mouse pointer stays on the widget for more than 500 ms."""
         else:
             self.widget.bind("<Enter>",self.preshow)
             self.widget.bind("<Leave>",self.hide)
-        self.bind_all("<Button>",self.hide)
+        self.widget.bind("<ButtonPress>",self.hide)
+        self.widget.bind("<ButtonRelease>",self.hide)
         self.withdraw()
     def preshow(self,event=None):
         self.after_cleanup()
@@ -364,42 +400,51 @@ It comes complete with a context menu and a directory selection screen"""
             directory=askdirectory(initialdir=current_dir)
         # otherwise attempt to detect the user's userdata folder
         else:
-            # os.path.expanduser gets the current user's home directory on every platform
-            if sys.platform=="win32":
-                # get userdata directory on Windows
-                # it assumes that you choose to store userdata in the My Games directory
-                # while installing Wesnoth
-                userdata=os.path.join(os.path.expanduser("~"),
-                                      "Documents",
-                                      "My Games",
-                                      "Wesnoth"+WESNOTH_SERIES,
-                                      "data",
-                                      "add-ons")
-            elif sys.platform.startswith("linux") or "bsd" in sys.platform:
-                # we're on Linux or on a BSD system like FreeBSD
-                userdata=os.path.join(os.path.expanduser("~"),
-                                      ".local",
-                                      "share",
-                                      "wesnoth",
-                                      WESNOTH_SERIES,
-                                      "data",
-                                      "add-ons")
-            elif sys.platform=="darwin": # we're on MacOS
-                # bear in mind that I don't have a Mac, so this point may be bugged
-                userdata=os.path.join(os.path.expanduser("~"),
-                                      "Library",
-                                      "Application Support",
-                                      "Wesnoth_"+WESNOTH_SERIES,
-                                      "data",
-                                      "add-ons")
-            else: # unknown system; if someone else wants to add other rules, be my guest
-                userdata="."
+            directory=askdirectory(initialdir=get_addons_directory())
+        if directory:
+            # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
+            self.textvariable.set(os.path.normpath(directory))
+    def on_clear(self):
+        self.textvariable.set("")
 
-            if os.path.exists(userdata): # we may have gotten it wrong
-                directory=askdirectory(initialdir=userdata)
-            else:
-                directory=askdirectory(initialdir=".")
-        
+class SelectSaveFile(Frame):
+    def __init__(self, parent, textvariable, **kwargs):
+        """A subclass of Frame with a readonly Entry and a Button with a browse icon.
+It has a context menu and a save file selection dialog."""
+        super().__init__(parent,**kwargs)
+        self.textvariable=textvariable
+        self.file_entry=EntryContext(self,
+                                     width=40,
+                                     textvariable=self.textvariable,
+                                     state="readonly")
+        self.file_entry.pack(side=LEFT,
+                             fill=BOTH,
+                             expand=YES)
+        self.file_button=Button(self,
+                                image=ICONS['browse'],
+                                compound=LEFT,
+                                text="Browse...",
+                                command=self.on_browse)
+        self.file_button.pack(side=LEFT)
+        self.clear_button=Button(self,
+                                 image=ICONS['clear16'],
+                                 compound=LEFT,
+                                 text="Clear",
+                                 command=self.on_clear)
+        self.clear_button.pack(side=LEFT)
+    def on_browse(self):
+        # if the user already selected a file, try to use its directory
+        current_dir,current_file=os.path.split(self.textvariable.get())
+        if os.path.exists(current_dir):
+            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+                                        initialdir=current_dir,
+                                        initialfile=current_file,
+                                        confirmoverwrite=False) # the GUI will ask later if the file should be overwritten, so disable it for now
+        # otherwise attempt to detect the user's userdata folder
+        else:
+            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+                                        initialdir=get_addons_directory(),
+                                        confirmoverwrite=False)
         if directory:
             # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
             self.textvariable.set(os.path.normpath(directory))
@@ -879,6 +924,74 @@ class WmlindentTab(Frame):
         else:
             self.regexp_entry.configure(state=DISABLED)
 
+class WmlxgettextTab(Frame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        self.domain_and_output_frame=Frame(self)
+        self.domain_and_output_frame.grid(row=0,column=0,columnspan=2,sticky=N+E+S+W)
+        self.domain_label=Label(self.domain_and_output_frame,
+                                text="Textdomain:")
+        self.domain_label.grid(row=0,column=0,sticky=W)
+        self.domain_variable=StringVar()
+        self.domain_entry=Entry(self.domain_and_output_frame,
+                                textvariable=self.domain_variable)
+        self.domain_entry.grid(row=0,column=1,sticky=N+E+S+W)
+        self.output_label=Label(self.domain_and_output_frame,
+                                text="Output file:")
+        self.output_label.grid(row=1,column=0,sticky=W)
+        self.output_variable=StringVar()
+        self.output_frame=SelectSaveFile(self.domain_and_output_frame,self.output_variable)
+        self.output_frame.grid(row=1,column=1,sticky=N+E+S+W)
+        self.options_labelframe=LabelFrame(self,
+                                           text="Options")
+        self.options_labelframe.grid(row=2,column=0,sticky=N+E+S+W)
+        self.recursive_variable=BooleanVar()
+        self.recursive_variable.set(True)
+        self.recursive_check=Checkbutton(self.options_labelframe,
+                                         text="Scan subdirectories",
+                                         variable=self.recursive_variable)
+        self.recursive_check.grid(row=0,column=0,sticky=W)
+        self.warnall_variable=BooleanVar()
+        self.warnall_check=Checkbutton(self.options_labelframe,
+                                       text="Show optional warnings",
+                                       variable=self.warnall_variable)
+        self.warnall_check.grid(row=1,column=0,sticky=W)
+        self.fuzzy_variable=BooleanVar()
+        self.fuzzy_check=Checkbutton(self.options_labelframe,
+                                     text="Mark all strings as fuzzy",
+                                     variable=self.fuzzy_variable)
+        self.fuzzy_check.grid(row=2,column=0,sticky=W)
+        self.advanced_labelframe=LabelFrame(self,
+                                            text="Advanced options")
+        self.advanced_labelframe.grid(row=2,column=1,sticky=N+E+S+W)
+        self.package_version_variable=BooleanVar()
+        self.package_version_check=Checkbutton(self.advanced_labelframe,
+                                               text="Package version",
+                                               variable=self.package_version_variable)
+        self.package_version_check.grid(row=0,column=0,sticky=W)
+        self.initialdomain_variable=BooleanVar()
+        self.initialdomain_check=Checkbutton(self.advanced_labelframe,
+                                             text="Initial textdomain",
+                                             variable=self.initialdomain_variable,
+                                             command=self.initialdomain_callback)
+        self.initialdomain_check.grid(row=1,column=0,sticky=W)
+        self.initialdomain_name=StringVar()
+        self.initialdomain_entry=Entry(self.advanced_labelframe,
+                                       state=DISABLED,
+                                       textvariable=self.initialdomain_name)
+        self.initialdomain_entry.grid(row=1,column=1,sticky=E+W)
+        self.domain_and_output_frame.columnconfigure(1,weight=1)
+        self.domain_and_output_frame.rowconfigure(0,uniform="group")
+        self.domain_and_output_frame.rowconfigure(1,uniform="group")
+        self.advanced_labelframe.columnconfigure(1,weight=1)
+        self.columnconfigure(0,weight=1)
+        self.columnconfigure(1,weight=1)
+    def initialdomain_callback(self, event=None):
+        if self.initialdomain_variable.get():
+            self.initialdomain_entry.configure(state=NORMAL)
+        else:
+            self.initialdomain_entry.configure(state=DISABLED)
+
 class MainFrame(Frame):
     def __init__(self,parent):
         self.parent=parent
@@ -949,6 +1062,10 @@ class MainFrame(Frame):
         self.notebook.add(self.wmlindent_tab,
                           text="wmlindent",
                           sticky=N+E+S+W)
+        self.wmlxgettext_tab=WmlxgettextTab(None)
+        self.notebook.add(self.wmlxgettext_tab,
+                          text="wmlxgettext",
+                          sticky=N+E+S+W)
         self.output_frame=LabelFrame(self,
                                      text="Output")
         self.output_frame.grid(row=3,
@@ -1005,6 +1122,9 @@ class MainFrame(Frame):
         elif active_tab==2:
             self.run_tooltip.set_text("Run wmlindent")
             self.run_button.configure(command=self.on_run_wmlindent)
+        elif active_tab==3:
+            self.run_tooltip.set_text("Run wmlxgettext")
+            self.run_button.configure(command=self.on_run_wmlxgettext)
 
     def on_run_wmllint(self):
         # first of all, check if we have something to run wmllint on it
@@ -1169,6 +1289,60 @@ wmlindent will be run on the Wesnoth core directory""")
         wmlindent_thread.start()
         # build popup
         dialog=Popup(self.parent,"wmlindent",wmlindent_thread)
+
+    def on_run_wmlxgettext(self):
+        # build the command line and add the path of the Python interpreter
+        wmlxgettext_command_string=[sys.executable]
+        wmlxgettext_command_string.append(os.path.join(WMLXGETTEXT_DIR,"wmlxgettext"))
+        textdomain=self.wmlxgettext_tab.domain_variable.get()
+        if textdomain:
+            wmlxgettext_command_string.extend(["--domain",textdomain])
+        else:
+            showerror("Error","""No textdomain specified""")
+            return
+        wmlxgettext_command_string.append("--directory")
+        umc_dir=self.dir_variable.get()
+        if os.path.exists(umc_dir): # add-on exists
+            wmlxgettext_command_string.append(umc_dir)
+        elif not umc_dir: # path does not exists because the box was left empty
+            showwarning("Warning","""You didn't select a directory.
+
+wmlxgettext won't be run""")
+            return
+        else: # path doesn't exist and isn't empty
+            showerror("Error","""The selected directory does not exists""")
+            return
+        if self.wmlxgettext_tab.recursive_variable.get():
+            wmlxgettext_command_string.append("--recursive")
+        output_file=self.wmlxgettext_tab.output_variable.get()
+        if os.path.exists(output_file):
+            answer=askyesno(title="Overwrite confirmation",
+                            message="""File {} already exists.
+Do you want to overwrite it?""".format(output_file))
+            if not answer:
+                return
+        elif not output_file:
+            showwarning("Warning","""You didn't select an output file.
+
+wmlxgettext won't be run""")
+            return
+        else:
+            wmlxgettext_command_string.extend(["-o",self.wmlxgettext_tab.output_variable.get()])
+        if self.wmlxgettext_tab.warnall_variable.get():
+            wmlxgettext_command_string.append("--warnall")
+        if self.wmlxgettext_tab.fuzzy_variable.get():
+            wmlxgettext_command_string.append("--fuzzy")
+        if self.wmlxgettext_tab.package_version_variable.get():
+            wmlxgettext_command_string.append("--package-version")
+        wmlxgettext_command_string.append("--no-text-colors")
+        initialdomain=self.wmlxgettext_tab.initialdomain_variable.get()
+        if initialdomain:
+            wmlxgettext_command_string.extend(["--initialdomain",initialdomain])
+        # start thread and wmlxgettext subprocess
+        wmlxgettext_thread=threading.Thread(target=run_tool,args=("wmlxgettext",self.queue,wmlxgettext_command_string))
+        wmlxgettext_thread.start()
+        # build popup
+        dialog=Popup(self.parent,"wmlxgettext",wmlxgettext_thread)
 
     def update_text(self):
         """Checks periodically if the queue is empty.

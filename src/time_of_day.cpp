@@ -18,6 +18,8 @@
 #include "time_of_day.hpp"
 #include "gettext.hpp"
 
+#include <iostream>
+
 std::ostream &operator<<(std::ostream &s, const tod_color& c){
 	s << c.r << "," << c.g << "," << c.b;
 	return s;

@@ -18,6 +18,8 @@
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "video.hpp"
 
 namespace gui2
@@ -34,6 +36,19 @@ tdialog::~tdialog()
 bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	if(video.faked()) {
+		if(!allow_plugin_skip_) {
+			return false;
+		}
+
+		plugins_manager* pm = plugins_manager::get();
+		if (pm && pm->any_running())
+		{
+			plugins_context pc("Dialog");
+			pc.set_callback("skip_dialog", [this](config) { retval_ = twindow::OK; }, false);
+			pc.set_callback("quit", [](config) {}, false);
+			pc.play_slice();
+		}
+
 		return false;
 	}
 
@@ -68,21 +83,26 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 
 	post_show(*window);
 
+	// post_show may have updated the windoe retval. Update it here.
+	retval_ = window->get_retval();
+
 	return retval_ == twindow::OK;
 }
 
 tfield_bool* tdialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<bool()>& callback_load_value,
-		const std::function<void(const bool)>& callback_save_value,
-		const std::function<void(twidget&)>& callback_change)
+		const std::function<bool()> callback_load_value,
+		const std::function<void(bool)> callback_save_value,
+		const std::function<void(twidget&)> callback_change,
+		const bool initial_fire)
 {
 	tfield_bool* field = new tfield_bool(id,
 										 mandatory,
 										 callback_load_value,
 										 callback_save_value,
-										 callback_change);
+										 callback_change,
+										 initial_fire);
 
 	fields_.push_back(field);
 	return field;
@@ -92,10 +112,11 @@ tfield_bool*
 tdialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const std::function<void(twidget&)>& callback_change)
+					   const std::function<void(twidget&)> callback_change,
+					   const bool initial_fire)
 {
 	tfield_bool* field
-			= new tfield_bool(id, mandatory, linked_variable, callback_change);
+			= new tfield_bool(id, mandatory, linked_variable, callback_change, initial_fire);
 
 	fields_.push_back(field);
 	return field;
@@ -104,8 +125,8 @@ tdialog::register_bool(const std::string& id,
 tfield_integer* tdialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<int()>& callback_load_value,
-		const std::function<void(const int)>& callback_save_value)
+		const std::function<int()> callback_load_value,
+		const std::function<void(const int)> callback_save_value)
 {
 	tfield_integer* field = new tfield_integer(
 			id, mandatory, callback_load_value, callback_save_value);
@@ -127,8 +148,8 @@ tfield_integer* tdialog::register_integer(const std::string& id,
 tfield_text* tdialog::register_text(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<std::string()>& callback_load_value,
-		const std::function<void(const std::string&)>& callback_save_value,
+		const std::function<std::string()> callback_load_value,
+		const std::function<void(const std::string&)> callback_save_value,
 		const bool capture_focus)
 {
 	tfield_text* field = new tfield_text(

@@ -174,10 +174,10 @@ function wml_actions.foreach(cfg)
 		helper.wml_error "[foreach] does not contain any [do] tags"
 	end
 	
-	local array_name = cfg.variable or helper.wml_error "[foreach] missing required variable= attribute"
+	local array_name = cfg.array or helper.wml_error "[foreach] missing required array= attribute"
 	local array = helper.get_variable_array(array_name)
 	if #array == 0 then return end -- empty and scalars unwanted
-	local item_name = cfg.item_var or "this_item"
+	local item_name = cfg.variable or "this_item"
 	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
 	local i_name = cfg.index_var or "i"
 	local i = utils.start_var_scope(i_name) -- if i is already set

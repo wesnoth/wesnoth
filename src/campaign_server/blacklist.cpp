@@ -123,7 +123,7 @@ bool blacklist::is_in_ip_masklist(const std::string& ip, const blacklist::globli
 	return false;
 }
 
-bool blacklist::ip_matches(const std::string& ip, const blacklist::glob& ip_mask) const
+bool blacklist::ip_matches(const std::string& ip, const std::string& ip_mask) const
 {
 	// TODO: we want CIDR subnet mask matching here, not glob matching!
 	return utils::wildcard_string_match(ip, ip_mask);

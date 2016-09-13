@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2015-03-03 23:27+0100\n"
-"Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
+"POT-Creation-Date: 2016-07-24 20:26 UTC\n"
+"PO-Revision-Date: 2016-01-07 12:02+0100\n"
+"Last-Translator: Liam Tailor <liado@wp.pl>\n"
 "Language-Team: none\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth/\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
@@ -358,7 +358,7 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:35
 #: data/core/units/goblins/Pillager.cfg:33
 #: data/core/units/goblins/Wolf_Rider.cfg:47
-#: data/core/units/monsters/Giant_Spider.cfg:25
+#: data/core/units/monsters/Giant_Spider.cfg:26
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:41
 #: data/core/units/monsters/Wolf.cfg:47
@@ -3502,13 +3502,13 @@ msgid ""
 "troops to exploit. The sight of Arif on the march, shields high, has caused "
 "many a defender to worry about the strength of their walls."
 msgstr ""
-"Arifowie tworzą podstawę piechoty Kalifatu. Wielu z nich pochodzi spośród "
+"Arifowie tworzą podstawę piechoty Kalifatu. Wielu z nich wywodzi się spośród "
 "szlachty lub rodzin z wojskowymi tradycjami i spędziło większość życia na "
 "ćwiczeniu swego fachu. Biorąc pod uwagę ich intensywny nacisk na szermierkę, "
 "są oni często wysyłani przeciwko ufortyfikowanym pozycjom wroga, aby "
 "stworzyć tam wyłom dla pozostałych żołnierzy. Widok maszerujących Arifów z "
-"uniesionym wysoko tarczami niejednokrotnie przyprawiał obrońców o "
-"zmartwienie co wytrzymałości ich murów."
+"uniesionymi wysoko tarczami niejednokrotnie przyprawiał obrońców o "
+"zmartwienie co do wytrzymałości ich murów."
 
 #. [attack]: type=blade
 #: data/core/units/khalifate/Arif.cfg:22 data/core/units/khalifate/Ghazi.cfg:22
@@ -3522,7 +3522,7 @@ msgstr "długi miecz"
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:4
 msgid "Batal"
-msgstr ""
+msgstr "Batal"
 
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:18
@@ -3534,6 +3534,12 @@ msgid ""
 "taking on only the most daring missions, Batal are often heroes to the "
 "common troopers, an image they do not try to dissuade."
 msgstr ""
+"Batal to elitarna jednostka Muharibów która stosuje taktykę szybkiego ataku "
+"i ucieczki. Zwinny jak koza i silny jak baran, ceni sobie skoordynowane, "
+"zaciekłe ataki. Zmusza przeciwnika do ruchu zasypując go strzałami, po czym "
+"przystępuje do ataku straszliwym toporem. Biorąc pod uwagę ich zamiłowanie "
+"do podejmowania się tylko najtrudniejszych misji, Batal często są odbierani "
+"jako bohatrowie pośród zwykłych żołdaków."
 
 #. [attack]: type=pierce
 #: data/core/units/khalifate/Batal.cfg:31
@@ -3547,7 +3553,7 @@ msgstr "łuk kompozytowy"
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:4
 msgid "Elder Falcon"
-msgstr "Starszy mag"
+msgstr "Starszy jastrząb"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:19
@@ -3557,19 +3563,21 @@ msgid ""
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy's head. "
 msgstr ""
+"Starsze Jastrzębie z dumą noszą znamiona doświadczonych wojowników - blizny, "
+"uzyskane podczas wielu walk pośród wirujących ostrzy. Silniejsze i szybsze "
+"od swoich młodszych pobratymców, według przesłanek potrafią jednym "
+"uderzeniem skrócić przeciwnika o głowę."
 
 #. [attack]: type=pierce
 #: data/core/units/khalifate/Elder_Falcon.cfg:36
 #: data/core/units/khalifate/Falcon.cfg:35
 msgid "beak"
-msgstr ""
+msgstr "dziób"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:4
-#, fuzzy
-#| msgid "Elder Falcon"
 msgid "Falcon"
-msgstr "Starszy mag"
+msgstr "Jastrząb"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:18
@@ -3579,11 +3587,15 @@ msgid ""
 "the enemies of the Khalifate, and their great speed is a boon to scouting "
 "out the land."
 msgstr ""
+"Jastrzębie, zazwyczaj wykorzystywane dla sportu, są bardzo cenne i uznawane "
+"jako symbol wysokiego statusu pośród szlachty. Szkolone aby okaleczać i "
+"rozrywać przeciwników Kalifatu na strzępy. Ich ogromna prędkość jest "
+"kluczowa przy misjach zwiadowczych."
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:4
 msgid "Faris"
-msgstr ""
+msgstr "Faris"
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:17
@@ -3594,11 +3606,17 @@ msgid ""
 "rest of the Khalifate cavalry. Consummate horsemen, the Faris have long "
 "claimed they need only a single lance strike to kill a man."
 msgstr ""
+"Ci Khaiyalowie, którzy odznaczą się w walce wyjątkowym męstwem, otrzymują "
+"szansę udowodnienia swojej wartości i dołączenia do szeregów Farisów. "
+"Nagrodą dla nielicznych, za przezwyciężenie trudnych wyzwań i testów jest "
+"wyjątkowy koński pancerz, który wyróżnia ich spośród kawalerii Kalifatu. Ci "
+"wytrawni jeźdźcy chwalą się, że wystarczy im tylko jedno uderzenie lancą aby "
+"zabić człowieka."
 
 #. [unit_type]: id=Ghazi, race=khalifate
 #: data/core/units/khalifate/Ghazi.cfg:4
 msgid "Ghazi"
-msgstr ""
+msgstr "Ghazi"
 
 #. [unit_type]: id=Ghazi, race=khalifate
 #: data/core/units/khalifate/Ghazi.cfg:17
@@ -3609,18 +3627,24 @@ msgid ""
 "in number, their presence can be decisive in dislodging even the most "
 "hardened redoubt."
 msgstr ""
+"Uzbrojeni w miecze, tarcze i wiarę. Ghazi to poważani wojownicy w szeregach "
+"armii Kalifatu. Rozwijają i doskonalą sztukę walki poprzez stosowanie wielu "
+"technik, takich jak potężne uderzenia tarczą, które zwalają z nóg "
+"niespodziewających się takiego ataku przeciwników. Mimo że jest ich "
+"niewielu, ich obecność na polu bitwy może być decydującym czynnikiem w "
+"rozbiciu wrogiej obrony."
 
 #. [attack]: type=impact
 #: data/core/units/khalifate/Ghazi.cfg:34
 #: data/core/units/khalifate/Khalid.cfg:41
 #: data/core/units/khalifate/Shuja.cfg:35
 msgid "shield bash"
-msgstr ""
+msgstr "uderzenie tarczą"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:4
 msgid "Hadaf"
-msgstr ""
+msgstr "Hadaf"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:18
@@ -3631,6 +3655,11 @@ msgid ""
 "a time, returning to camp only for supplies and to pass on news of their "
 "exploits."
 msgstr ""
+"Ci Quanasowie, którzy odznaczają się największymi umiejętnościami, "
+"selekcjonowani są do jednostek Hadafów, które często wykrzystuje się do "
+"łupienia wrogich obozów i miast. Nierzadko działają samodzielnie, wyruszając "
+"na długie wyprawy, wracają do obozu tylko po to aby się zaopatrzyć i "
+"przekazać wieści ze swoich wypadów."
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:4
@@ -3639,6 +3668,15 @@ msgstr "Hakim"
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Hakim are learned individuals who have given up their urban life in order "
+#| "to assist the Khalifate armies in their travels. Their motivations are "
+#| "many; some look to it as an adventure or as a steady source of pay, while "
+#| "others feel it to be a requirement of their faith. Regardless, Hakims are "
+#| "highly respected by all. They are trained with the advanced medical "
+#| "techniques and possess a potent clutch of medicines and herbs, which "
+#| "allows them to quickly heal even the most gravely wounded allies."
 msgid ""
 "Hakim are learned individuals who have given up their urban life in order to "
 "assist the Khalifate armies in their travels. Their motivations are many; "
@@ -3648,18 +3686,18 @@ msgid ""
 "possess a potent clutch of medicines and herbs, which allows them to quickly "
 "heal even the most gravely wounded allies."
 msgstr ""
-"Hakimowie to uczeni, którzy porzucili życie w miastach na rzecz pomocy w "
-"wędrówkach armii Kalifatu. Robią to z wielu powodów; niektórzy z nich "
-"uważają to za pewną przygodę lub stałe źródło dochodu, podczas gdy inni "
-"uważają to za obowiązek wiary. Pomimo tego, Hakimowie są w wielkim poważaniu "
-"u wszystkich. Są oni ćwiczeni w różnych zaawansowanych technikach medycznych "
-"i posiadają potężny zbiór leków i ziół, które umożliwają im szybko uleczyć "
-"nawet najpoważniej rannych sojuszników."
+"Hakimowie to uczeni, którzy porzucili życie w miastach na rzecz pomagania "
+"potrzebującym w wyprawach armii Kalifatu. Robią to z wielu powodów; "
+"niektórzy z nich uważają to za pewną przygodę lub stałe źródło dochodu, "
+"podczas gdy inni uważają to za obowiązek wiary. Pomimo tego, Hakimowie "
+"cieszą się wielkim poważaniem w szeregach. Są oni ćwiczeni w różnych "
+"zaawansowanych technikach medycznych i posiadają potężny zbiór leków i ziół, "
+"które umożliwają im szybko uleczyć nawet najpoważniej rannych sojuszników."
 
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:4
 msgid "Jawal"
-msgstr ""
+msgstr "Jawal"
 
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:19
@@ -3671,6 +3709,12 @@ msgid ""
 "with great speed through the lines of battle to rain arrows down upon the "
 "enemy."
 msgstr ""
+"Najbardziej elitarni wojownicy spośród Saree awansują do rangi Jawal, "
+"konnych łuczników, znanych ze swojej prędkości i zwinności, które - według "
+"pogłosek - zawdzięczają elfickiej krwi, płynącej w ich żyłach. Jawalowie, "
+"aby zdementować te bzdurne plotki, często demonstrują swe niezwykłe "
+"umiejętności w bitwie, gdzie, gnając z wielką prędkością pośród ścierających "
+"się wojowników, zasypują wroga deszczem strzał. "
 
 #. [unit_type]: id=Jundi, race=khalifate
 #: data/core/units/khalifate/Jundi.cfg:4
@@ -3690,14 +3734,14 @@ msgstr ""
 "Jundi reprezentują idealną jednostkę Kalifatu w wielu aspektach; elastyczni, "
 "mobilni, równie efektywni w obronie, w ataku, jak i w walce wręcz lub na "
 "odległość. Są najlepiej oswojeni z walką w terenie i środowisku dla nich "
-"zwyczajnym; na pustyniach i wzgórzach południowych ziem. Poza tym, walczą "
+"zwyczajnym —  na pustyniach i wzgórzach południowych ziem. Poza tym, walczą "
 "oni najlepiej o świcie lub o zmierzchu, gdy temperatura na pustyni jest "
 "umiarkowana."
 
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:4
 msgid "Khaiyal"
-msgstr ""
+msgstr "Khaiyal"
 
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:26
@@ -3709,11 +3753,17 @@ msgid ""
 "Khaiyal ride into the resulting melee with their maces in hand, trusting "
 "their armor to keep them safe."
 msgstr ""
+"Khaiyal wykorzystują efekt psychologiczny, jaki wywiera na wrogu taranujące "
+"uderzenie pędzącego rumaka, zakutego w ciężką zbroję. Odznaczający się "
+"majestatem wśród szeregów, łamią morale przeciwników szarżując na nich z "
+"lancą w ręku. Podczas tych rzadkich sytuacji, kiedy szarża nie sprawi że "
+"wróg zbiegnie z pola bitwy, Khaiyalowie podejmują walkę wręcz używając "
+"buzdyganów, chroniąc się za wytrzymałym pancerzem."
 
 #. [unit_type]: id=Khalid, race=khalifate
 #: data/core/units/khalifate/Khalid.cfg:4
 msgid "Khalid"
-msgstr ""
+msgstr "Khalid"
 
 #. [unit_type]: id=Khalid, race=khalifate
 #: data/core/units/khalifate/Khalid.cfg:24
@@ -3725,11 +3775,16 @@ msgid ""
 "endlessly around the campfire with the reverent tones of those that speak of "
 "living legends."
 msgstr ""
+"W każdym pokoleniu rodzi się wojownik, który wznosi sie ponad swoich rodaków "
+"i wrogów; Wydaje się że potrafi on nawet zmienić losy całego świata. Często, "
+"przyjmuje on imię Khalid, po legendarnym wojowniku z dawnych czasów, a naród "
+"wielbi go za wyjątkowe umiejętności i oddanie. O jego czynach opowiada się z "
+"wielką czcią i podziwem godnym żywej legendy. "
 
 #. [unit_type]: id=Mighwar, race=khalifate
 #: data/core/units/khalifate/Mighwar.cfg:4
 msgid "Mighwar"
-msgstr ""
+msgstr "Mighwar"
 
 #. [unit_type]: id=Mighwar, race=khalifate
 #: data/core/units/khalifate/Mighwar.cfg:21
@@ -3740,11 +3795,15 @@ msgid ""
 "through the ranks of the enemy, swords ripping and tearing at those around "
 "them. "
 msgstr ""
+"Mighwarowie utrzymują wśród swoich szeregów wyższe standardy, niż "
+"Monawishowie spośród których się wywodzą. Nie zadowala ich tylko "
+"wymanwewrowanie przeciwnika, łączą oni swoją prędkość i agresywność tańcząc "
+"wokół wroga, siekąc dookoła zabójczymi ostrzami."
 
 #. [unit_type]: id=Monawish, race=khalifate
 #: data/core/units/khalifate/Monawish.cfg:4
 msgid "Monawish"
-msgstr ""
+msgstr "Monawish"
 
 #. [unit_type]: id=Monawish, race=khalifate
 #: data/core/units/khalifate/Monawish.cfg:20
@@ -3755,11 +3814,16 @@ msgid ""
 "used to harry the flanks of opposing forces, and it is said to be easier to "
 "catch the wind in your hand than to catch a Monawish."
 msgstr ""
+"Niektórzy Jundi, wykazujący się wysokimi umiejętnościami zwiadowcy, awansują "
+"do rangi Monawisha. Porzucając łuk, skupiają się oni na trenowaniu zwinności "
+"swych stóp, co pozwala im na płynne przemiesczanie się na polu bitwy i "
+"nękanie flank wrogiej armii.  Mówi się, że łatwiej jest schwytać wiatr niż "
+"dogonić jednego spośród Monawishów."
 
 #. [unit_type]: id=Mudafi, race=khalifate
 #: data/core/units/khalifate/Mudafi.cfg:4
 msgid "Mudafi"
-msgstr ""
+msgstr "Mudafi"
 
 #. [unit_type]: id=Mudafi, race=khalifate
 #: data/core/units/khalifate/Mudafi.cfg:17
@@ -3770,11 +3834,16 @@ msgid ""
 "preferred strategy is to gradually wear down enemies, until they can be "
 "defeated in a vicious counter stroke."
 msgstr ""
+"Armie Kalifatu znane są głównie ze swojej doskonałej mobilności i zajadłych "
+"ataków, jednak potrafią się też świetnie bronić. Mudafi są doskonali w "
+"utrzymywaniu ważnych pozycji, trzymając wroga na dystans za pomocą ostrych "
+"włóczni. Ich najczęstszą strategią jest powolne wykrwawianie przeciwnika po "
+"którym następuje gwałtowny kontratak."
 
 #. [unit_type]: id=Mufariq, race=khalifate
 #: data/core/units/khalifate/Mufariq.cfg:4
 msgid "Mufariq"
-msgstr ""
+msgstr "Mufarik"
 
 #. [unit_type]: id=Mufariq, race=khalifate
 #: data/core/units/khalifate/Mufariq.cfg:19
@@ -3786,11 +3855,19 @@ msgid ""
 "riders in the slightest, and the displaced air of a descending mace is the "
 "last sound they hear."
 msgstr ""
+"Mufarikowie to szlachetni jeźdźcy, posiadający wiele tytułów i uznanie, "
+"typowe dla wojowników ich rangi, podobnie jak znakomite zwoje zdobiące ich "
+"pancerz. Doskonaląc sztukę walki lancą podczas wielu lat spędzonych w "
+"bitwie, Mufarikowie stają się niepowstrzymywalną siłą. Zbiegający "
+"przeciwnicy szybko przekonują się, że uczieczka na wzgórza nie daje im "
+"żadnej przewagi, nad tymi znakomitymi jeźdźcami, a świst powietrza, "
+"uciekającego przed opadającym buzdyganem, to ostatni dzwięk jaki słyszą w "
+"swoim życiu."
 
 #. [unit_type]: id=Muharib, race=khalifate
 #: data/core/units/khalifate/Muharib.cfg:4
 msgid "Muharib"
-msgstr ""
+msgstr "Muharib"
 
 #. [unit_type]: id=Muharib, race=khalifate
 #: data/core/units/khalifate/Muharib.cfg:17
@@ -3801,11 +3878,16 @@ msgid ""
 "issue pilfering these supplies, and so they tend to be more well-equipped "
 "than most."
 msgstr ""
+"Muharibowie często służą w roli bojowych zwiadowców; Nie tylko obserwują "
+"przeciwników, przeprowadzają również grabieżcze ataki na linie zaopatrznia i "
+"eliminują wrogie patrole. Przez większość czasu przebywają z dala od głównej "
+"siły uderzeniowej, łupiąc zapasy i uzbrojenie, więc często są lepiej "
+"wyposażeni niż ich pobratymcy."
 
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:4
 msgid "Naffat"
-msgstr ""
+msgstr "Naffat"
 
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:22
@@ -3815,26 +3897,29 @@ msgid ""
 "the use of fire in warfare is not a novel concept, the flames of the Naffat "
 "have proven disturbingly difficult for their enemies to extinguish."
 msgstr ""
+"Naffatowie to zło koniecznie wśród szeregów armii Kalifatu. Używają ognia, "
+"siejąc pożogę pośród umocnień przeciwnika i strach wśród jego szeregów. Mimo "
+"że podapalnie to znana taktyka wojskowa, ognie Naffatów okazują się bardzo "
+"trudne do opanowania przez ich wrogów. "
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:27
 #: data/core/units/khalifate/Qatif-al-nar.cfg:27
 #: data/core/units/khalifate/Tineen.cfg:27
 msgid "naphtha attack"
-msgstr ""
+msgstr "ognie naphtha"
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:36
 #: data/core/units/khalifate/Qatif-al-nar.cfg:36
 #: data/core/units/khalifate/Tineen.cfg:36
-#, fuzzy
 msgid "fire arrow"
-msgstr "szpony"
+msgstr "ognista strzała"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:4
 msgid "Qanas"
-msgstr ""
+msgstr "Qanas"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:17
@@ -3846,11 +3931,17 @@ msgid ""
 "needed. Qanas are often used to draw enemies into a position where they will "
 "be surrounded and crushed by Faris."
 msgstr ""
+"Konni, którzy nie mają na tyle dużych umiejętności aby dołączyć do Farisów, "
+"i nie radzą sobie z cięciwą na tyle dobrze, aby zostać Saree, przydzielani "
+"są do jednostki Qanasów. Nie oznacza to ich słabości, stają się oni częścią "
+"konnego odpowiednika Muharibów, wspierając pieszych swoimi buzdyganami i "
+"łukami. Qanasi są czesto wykorzystywani do wymanewrowania przeciwnika na "
+"pozycje w których Farisowie mogą go łatwo otoczyć i zmiażdżyć."
 
 #. [unit_type]: id=Qatif_al_nar, race=khalifate
 #: data/core/units/khalifate/Qatif-al-nar.cfg:5
 msgid "Qatif-al-nar"
-msgstr ""
+msgstr "Qatif-al-nar"
 
 #. [unit_type]: id=Qatif_al_nar, race=khalifate
 #: data/core/units/khalifate/Qatif-al-nar.cfg:22
@@ -3860,11 +3951,16 @@ msgid ""
 "troops, Qatif-al-nar can be easily located in battle by the cleared charred "
 "area around them, a testament to the success of their experiments."
 msgstr ""
+"Qatif-al-nar spędzają wiele czasu eksperymentując ze swoją bronią, o czym "
+"wyraźnie świadczy zapach popiołu i siarki który często wydzielają. Inni "
+"żołnierze podchodzą do nich z pewną dozą ostrożności. Qatif-al-nar łatwo "
+"odnaleźć na polu bitwy odszukując obszary wypalonej ziemii, które są "
+"fizycznym dowodem ich bardziej udanych eksperymentów."
 
 #. [unit_type]: id=Rami, race=khalifate
 #: data/core/units/khalifate/Rami.cfg:4
 msgid "Rami"
-msgstr ""
+msgstr "Rami"
 
 #. [unit_type]: id=Rami, race=khalifate
 #: data/core/units/khalifate/Rami.cfg:18
@@ -3874,11 +3970,15 @@ msgid ""
 "superior speed and agility to circle and harass their foes, whittling down "
 "their numbers with relentless arrows."
 msgstr ""
+"Rami to doskonali jeźdźcy, którzy potrafią posługiwać się łukiem z końskiego "
+"grzbietu lepiej, niż większość łuczników stojąc na własnych nogach. Gardzą "
+"używaniem ciężkich zbroi, wolą polegać na własnym sprycie i zwinności, aby "
+"okrążyć i nękać wroga, kładąc przeciwników trupem ostrymi grotami strzał."
 
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:4
 msgid "Rasikh"
-msgstr ""
+msgstr "Rasikh"
 
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:18
@@ -3890,11 +3990,17 @@ msgid ""
 "they can be trusted to hold any position or line, long after lesser soldiers "
 "and men have fled in terror."
 msgstr ""
+"Pośród krain Kalifatu, rozrzucone są samotne wieże i garnizony, które "
+"zapewniają schronienie karawanom i mieszkańcom przed bandytami i potworami. "
+"Bastiony te, chronione są przez najwytrwalszych żołnierzy, którzy często "
+"stawiali czoła przeważającym siłom i zwyciężali. W armii, powierza im się "
+"utrzymywanie najważniejszych pozycji i stawia w pierszym szeregu, który "
+"utrzymują dłużej, niż pomniejsi żołdacy którzy uciekają przerażeni."
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:4
 msgid "Saree"
-msgstr ""
+msgstr "Saree"
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:18
@@ -3904,11 +4010,15 @@ msgid ""
 "This has made them the fastest riders in the Khalifate armies, and a wise "
 "Khalid uses this to their advantage."
 msgstr ""
+"Rami, którzy zademonstrują na polu walki wyjątkową wprawę w łucznictwie, "
+"awansują do rangi Saree. Spędzają oni wiele godzin każdego dnia, ćwicząc, i "
+"budując więź ze swoim rumakiem. Czyni to ich najszybszymi jeźdzcami armii "
+"Kalifatu, co mądrzy dowódcy wykorzystują do zdobycia przewagi taktycznej."
 
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Shuja.cfg:4
 msgid "Shuja"
-msgstr ""
+msgstr "Shuja"
 
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Shuja.cfg:18
@@ -3918,11 +4028,15 @@ msgid ""
 "soldiers to fight for their cause. Despite this, they are often found "
 "leading from the front, taking down their foes with sword and shield."
 msgstr ""
+"Odznaczają się wielkim męstwem i wprawą, w szeregach armii Kalifatu sprawują "
+"obowiązki dowódców. Ich czyny są dobrze znane wśród kohort, inspirując "
+"żołnierzy do zaciekłej walki. Pomimo swojej roli, często można ich spotkać w "
+"pierwszych szeregach, gdzie walczą z wrogiem dzierżąc miecz i tarczę. "
 
 #. [unit_type]: id=Tabib, race=khalifate
 #: data/core/units/khalifate/Tabib.cfg:4
 msgid "Tabib"
-msgstr ""
+msgstr "Tabib"
 
 #. [unit_type]: id=Tabib, race=khalifate
 #: data/core/units/khalifate/Tabib.cfg:23
@@ -3933,11 +4047,16 @@ msgid ""
 "well, often to the disbelief of the injured. Hardened by years of travels, "
 "many are able to treat themselves."
 msgstr ""
+"Niektórzy mają większą wprawę w opatrywaniu rannych, niż w posługiwaniu się "
+"bronią. Tabibowie, zahartowani w wieloletnich podróżach, posiadają ogromną "
+"wiedzę, i sprawują obowiązki medyków Kalifatu. Ich lekarstwa i maści nie "
+"tylko leczą rany, ale potrafią też usunąć infekcje, a nawet trucizny, co "
+"często wprawia w osłupienie kuracjuszy.   "
 
 #. [unit_type]: id=Tineen, race=khalifate
 #: data/core/units/khalifate/Tineen.cfg:4
 msgid "Tineen"
-msgstr ""
+msgstr "Tineen"
 
 #. [unit_type]: id=Tineen, race=khalifate
 #: data/core/units/khalifate/Tineen.cfg:22
@@ -3947,6 +4066,11 @@ msgid ""
 "of the value of life, Tineen are caught up in the power of their caged fire "
 "and likely to test their latest naphtha jar at the first opportunity."
 msgstr ""
+"Niektórzy spośród Qatif-al-nar, którzy odcinają się od reszty świata dla "
+"swoich eksperymentów, otrzymują tytuł Tineena , jako znak uznania i trwogi "
+"którą wzbudzają. Nieświadomi wartości życia, zatracają się w potędze "
+"uwięzionych płomieni; na polu walki chętnie przetestowują swoje ognie "
+"naphtha na przeciwnikach, kiedy tylko nadarzy się okazja."
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -4430,7 +4554,7 @@ msgid "Giant Spider"
 msgstr "Gigantyczny pająk"
 
 #. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Giant_Spider.cfg:20
+#: data/core/units/monsters/Giant_Spider.cfg:21
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -4441,7 +4565,7 @@ msgstr ""
 "przeciwników spowalniają wystrzeloną pajęczyną."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Spider.cfg:37
+#: data/core/units/monsters/Giant_Spider.cfg:38
 msgid "web"
 msgstr "sieć"
 
@@ -4542,8 +4666,8 @@ msgstr ""
 msgid "Wolf"
 msgstr "Wilk"
 
-#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:33
 #: data/core/units/monsters/Wolf_Dire.cfg:24
@@ -5364,8 +5488,8 @@ msgstr ""
 "niezdarne i kruche. W wirze walki nierzadko nabierają jednak wigoru, stając "
 "się tym samym znacznie groźniejszymi przeciwnikami."
 
-#. [attack]: type=arcane
 #. [attack]: type=impact
+#. [attack]: type=arcane
 #: data/core/units/undead/Corpse_Soulless.cfg:75
 #: data/core/units/undead/Corpse_Walking.cfg:74
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:36
@@ -6093,7 +6217,6 @@ msgstr ""
 #~ "zamieszkujące odległe, pokryte śniegiem góry. Niewielu je widziało, przez "
 #~ "co wielu w ogóle wątpi w ich istnienie."
 
-#, fuzzy
 #~| msgid ""
 #~| "To attract any practitioners, the lure of black magic must be a great "
 #~| "prize indeed, for anyone caught practicing the art in the civilized "
@@ -6118,7 +6241,7 @@ msgstr ""
 #~ "committed themselves to learning."
 #~ msgstr ""
 #~ "Ponieważ w cywilizowanym świecie każdego przyłapanego na praktykowaniu "
-#~ "czarnej magii czeka śmierć, nowych praktykujących może przyciągnąć tylko "
+#~ "czarnej magii czeka śmierć, nowych adeptów może przyciągnąć tylko "
 #~ "wyjątkowo wspaniała nagroda. A jednak znajdują się tacy, którzy pragną "
 #~ "zajmować się tą mroczną sztuką, gdyż czekającą na nich nagrodą jest nic "
 #~ "innego jak tylko nieśmiertelność. Kryjący się w tajemnych kultach lub "

@@ -44,7 +44,7 @@ void item_palette::setup(const config& cfg)
 			if (!group["core"].to_bool(false))
 				non_core_items_.insert(item["id"]);
 		}
-		nmax_items_ = std::max(nmax_items_, group_map_[group["id"]].size());
+		nmax_items_ = std::max<int>(nmax_items_, group_map_[group["id"]].size());
 	}
 
 	select_fg_item("anvil");
@@ -86,9 +86,9 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 }
 
 item_palette::item_palette(editor_display &gui, const config& cfg,
-								 mouse_action** active_mouse_action)
+                           editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<overlay>(gui, cfg, 36, 4, active_mouse_action)
+	:	editor_palette<overlay>(gui, cfg, 36, 4, toolkit)
 {
 }
 

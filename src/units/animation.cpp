@@ -18,7 +18,6 @@
 
 #include "filter_context.hpp"
 #include "game_display.hpp"
-#include "halo.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -75,11 +74,11 @@ struct animation_branch
 	}
 
 	config attributes;
-	std::vector<config::all_children_iterator> children;
+	std::vector<config::const_all_children_iterator> children;
 	config merge() const
 	{
 		config result = attributes;
-		for (const config::all_children_iterator &i : children) {
+		for (const config::const_all_children_iterator &i : children) {
 			result.add_child(i->key, i->cfg);
 		}
 		return result;
@@ -90,7 +89,7 @@ typedef std::list<animation_branch> animation_branches;
 
 struct animation_cursor
 {
-	config::all_children_itors itors;
+	config::const_all_children_itors itors;
 	animation_branches branches;
 	animation_cursor *parent;
 	animation_cursor(const config &cfg):
@@ -211,29 +210,29 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 		animation_cursor &ac = anim_cursors.back();
 
 		// Reached end of sub-tag config block
-		if (ac.itors.first == ac.itors.second) {
+		if (ac.itors.empty()) {
 			if (!ac.parent) break;
 			// Merge all the current branches into the parent.
 			ac.parent->branches.splice(ac.parent->branches.end(), ac.branches);
 			anim_cursors.pop_back();
 			continue;
 		}
-		if (ac.itors.first->key != "if") {
+		if (ac.itors.front().key != "if") {
 			// Append current config object to all the branches in scope.
 			for (animation_branch &ab : ac.branches) {
-				ab.children.push_back(ac.itors.first);
+				ab.children.push_back(ac.itors.begin());
 			}
-			++ac.itors.first;
+			ac.itors.pop_front();
 			continue;
 		}
 		int count = 0;
 		do {
 			/* Copies the current branches to each cursor created for the
 			   conditional clauses. Merge attributes of the clause into them. */
-			anim_cursors.push_back(animation_cursor(ac.itors.first->cfg, &ac));
-			++ac.itors.first;
+			anim_cursors.push_back(animation_cursor(ac.itors.front().cfg, &ac));
+			ac.itors.pop_front();
 			++count;
-		} while (ac.itors.first != ac.itors.second && ac.itors.first->key == "else");
+		} while (!ac.itors.empty() && ac.itors.front().key == "else");
 		if (count > 1) {
 			// When else statements present, clear all branches before 'if'
 			ac.branches.clear();
@@ -350,13 +349,13 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	std::vector<std::string>::iterator hit;
 	for(hit=hits_str.begin() ; hit != hits_str.end() ; ++hit) {
 		if(*hit == "yes" || *hit == "hit") {
-			hits_.push_back(HIT);
+			hits_.push_back(hit_type::HIT);
 		}
 		if(*hit == "no" || *hit == "miss") {
-			hits_.push_back(MISS);
+			hits_.push_back(hit_type::MISS);
 		}
 		if(*hit == "yes" || *hit == "kill" ) {
-			hits_.push_back(KILL);
+			hits_.push_back(hit_type::KILL);
 		}
 	}
 	std::vector<std::string> value2_str = utils::split(cfg["value_second"]);
@@ -536,8 +535,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
 		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
-		animations.back().hits_.push_back(HIT);
-		animations.back().hits_.push_back(KILL);
+		animations.back().hits_.push_back(hit_type::HIT);
+		animations.back().hits_.push_back(hit_type::KILL);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
@@ -639,7 +638,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["apply_to"] = "standing";
 		anim["cycles"] = "true";
 		// add cycles to all frames within a standing animation block
-		for (config::all_children_iterator ci : ab.children)
+		for (config::const_all_children_iterator ci : ab.children)
 		{
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
@@ -657,7 +656,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		config anim = ab.merge();
 		anim["apply_to"] = "default";
 		anim["cycles"] = "true";
-		for (config::all_children_iterator ci : ab.children)
+		for (config::const_all_children_iterator ci : ab.children)
 		{
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
@@ -771,10 +770,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["apply_to"] = "attack";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
 		config::const_child_itors missile_fs = anim.child_range("missile_frame");
-		if (anim["offset"].empty() && missile_fs.first == missile_fs.second) {
+		if (anim["offset"].empty() && missile_fs.empty()) {
 			anim["offset"] ="0~0.6,0.6~0";
 		}
-		if (missile_fs.first != missile_fs.second) {
+		if (!missile_fs.empty()) {
 			if (anim["missile_offset"].empty()) anim["missile_offset"] = "0~0.8";
 			if (anim["missile_layer"].empty()) anim["missile_layer"] = missile_layer;
 			config tmp;
@@ -884,7 +883,7 @@ unit_animation::particule::particule(
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
-	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
+	if(!range.empty() && cfg[frame_string+"start_time"].empty()) {
 		for (const config &frame : range) {
 			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
 		}
@@ -1097,95 +1096,61 @@ std::string unit_animation::debug() const
 
 std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
 {
-	std::cout << "[";
-	int i=0;
-	for (std::string event : u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	std::string events_string = utils::join(u_animation.event_);
+	outstream << "[" << events_string << "]\n";
 
-	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
+	outstream << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
 	if (u_animation.hits_.size() > 0) {
-		std::cout << "\thits=";
-		i=0;
-		for (const unit_animation::hit_type hit_type : u_animation.hits_) {
-			if (i>0) std::cout << ','; i++;
-			switch (hit_type) {
-				case (unit_animation::HIT)     : std::cout << "hit"; break;
-				case (unit_animation::MISS)    : std::cout << "miss"; break;
-				case (unit_animation::KILL)    : std::cout << "kill"; break;
-				case (unit_animation::INVALID) : std::cout << "invalid"; break;
-			}
-		}
-		std::cout << '\n';
+		std::vector<std::string> hits;
+		std::transform(u_animation.hits_.begin(), u_animation.hits_.end(), std::back_inserter(hits), unit_animation::hit_type::enum_to_string);
+		outstream << "\thits=" << utils::join(hits) << '\n';
 	}
 	if (u_animation.directions_.size() > 0) {
-		std::cout << "\tdirections=";
-		i=0;
-		for (const map_location::DIRECTION direction : u_animation.directions_) {
-			if (i>0) std::cout << ','; i++;
-			switch (direction) {
-				case (map_location::NORTH)     : std::cout << "n"; break;
-				case (map_location::NORTH_EAST): std::cout << "ne"; break;
-				case (map_location::SOUTH_EAST): std::cout << "se"; break;
-				case (map_location::SOUTH)     : std::cout << "s"; break;
-				case (map_location::SOUTH_WEST): std::cout << "sw"; break;
-				case (map_location::NORTH_WEST): std::cout << "nw"; break;
-				default: break;
-			}
-		}
-		std::cout << '\n';
+		std::vector<std::string> dirs;
+		std::transform(u_animation.directions_.begin(), u_animation.directions_.end(), std::back_inserter(dirs), map_location::write_direction);
+		outstream << "\tdirections=" << utils::join(dirs) << '\n';
 	}
 	if (u_animation.terrain_types_.size() > 0) {
-		i=0;
-		std::cout << "\tterrain=";
-		for (const t_translation::t_terrain terrain : u_animation.terrain_types_) {
-			if (i>0) std::cout << ','; i++;
-			std::cout << terrain;
-		}
-		std::cout << '\n';
+		outstream << "\tterrain=" << utils::join(u_animation.terrain_types_) << '\n';
 	}
-	if (u_animation.frequency_>0) std::cout << "frequency=" << u_animation.frequency_ << '\n';
+	if (u_animation.frequency_>0) outstream << "frequency=" << u_animation.frequency_ << '\n';
 
 	if (u_animation.unit_filter_.size() > 0) {
-		std::cout << "[filter]\n";
+		outstream << "[filter]\n";
 		for (const config & cfg : u_animation.unit_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		//std::cout << "TODO: create debugging output for unit filters";
-		std::cout << "[/filter]\n";
+		outstream << "[/filter]\n";
 	}
 	if (u_animation.secondary_unit_filter_.size() > 0) {
-		std::cout << "[filter_second]\n";
+		outstream << "[filter_second]\n";
 		for (const config & cfg : u_animation.secondary_unit_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		//std::cout << "TODO: create debugging output for unit filters";
-		std::cout << "[/filter_second]\n";
+		outstream << "[/filter_second]\n";
 	}
 	if (u_animation.primary_attack_filter_.size() > 0) {
-		std::cout << "[filter_attack]\n";
+		outstream << "[filter_attack]\n";
 		for (const config cfg : u_animation.primary_attack_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		std::cout << "[/filter_attack]\n";
+		outstream << "[/filter_attack]\n";
 	}
 	if (u_animation.secondary_attack_filter_.size() > 0) {
-		std::cout << "[filter_second_attack]\n";
+		outstream << "[filter_second_attack]\n";
 		for (const config cfg : u_animation.secondary_attack_filter_) {
-			std::cout << cfg.debug();
+			outstream << cfg.debug();
 		}
-		std::cout << "[/filter_second_attack]\n";
+		outstream << "[/filter_second_attack]\n";
 	}
 
 	for (size_t i=0; i<u_animation.unit_anim_.get_frames_count(); i++) {
-		std::cout << "\t[frame]\n";
+		outstream << "\t[frame]\n";
 		for (const std::string frame_string : u_animation.unit_anim_.get_frame(i).debug_strings()) {
-			std::cout << "\t\t" << frame_string <<"\n";
+			outstream << "\t\t" << frame_string <<"\n";
 		}
-		std::cout << "\t[/frame]\n";
+		outstream << "\t[/frame]\n";
 	}
 
 	for (std::pair<std::string, unit_animation::particule> p : u_animation.sub_anims_) {
@@ -1193,22 +1158,16 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 			std::string sub_frame_name = p.first;
 			size_t pos = sub_frame_name.find("_frame");
 			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
-			std::cout << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
-			std::cout << "\t[" << p.first << "]\n";
+			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
+			outstream << "\t[" << p.first << "]\n";
 			for (const std::string frame_string : p.second.get_frame(i).debug_strings()) {
-				std::cout << "\t\t" << frame_string << '\n';
+				outstream << "\t\t" << frame_string << '\n';
 			}
-			std::cout << "\t[/" << p.first << "]\n";
+			outstream << "\t[/" << p.first << "]\n";
 		}
 	}
 
-	std::cout << "[/";
-	i=0;
-	for (std::string event : u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
-		std::cout << event;
-	}
-	std::cout << "]\n";
+	outstream << "[/" << events_string << "]\n";
 	return outstream;
 }
 
@@ -1288,7 +1247,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!tmp.animation) return;
 
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
-	animated_units_.push_back(tmp);
+	animated_units_.push_back(std::move(tmp));
 }
 
 void unit_animator::add_animation(const unit* animated_unit
@@ -1309,7 +1268,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!tmp.animation) return;
 
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
-	animated_units_.push_back(tmp);
+	animated_units_.push_back(std::move(tmp));
 }
 
 void unit_animator::replace_anim_if_invalid(const unit* animated_unit

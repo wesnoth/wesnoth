@@ -24,6 +24,7 @@
 #include "editor_controller.hpp"
 
 #include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/location_palette.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
 
@@ -32,15 +33,17 @@
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/unit_list.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
-#include "dialogs.hpp"
 #include "resources.hpp"
 #include "reports.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "preferences_display.hpp"
@@ -49,8 +52,6 @@
 #include "units/animation_component.hpp"
 
 #include "quit_confirmation.hpp"
-
-#include "halo.hpp"
 
 #include "utils/functional.hpp"
 
@@ -162,7 +163,7 @@ editor_controller::~editor_controller()
 {
 	resources::units = nullptr;
 	resources::tod_manager = nullptr;
-	resources::teams = nullptr;
+	resources::gameboard = nullptr;
 
 	resources::classification = nullptr;
 	resources::mp_settings = nullptr;
@@ -226,7 +227,7 @@ void editor_controller::custom_tods_dialog()
 
 	std::vector<time_of_day> schedule = context_manager_->get_map_context().get_time_manager()->times();
 
-	if(!gui2::tcustom_tod::execute(&(gui()), schedule, gui().video())) {
+	if(!gui2::tcustom_tod::execute(gui(), schedule)) {
 		adjust_resetter.reset();
 	} else {
 		// TODO save the new tod here
@@ -346,7 +347,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_BRUSH_3:
 		case HOTKEY_EDITOR_BRUSH_NW_SE:
 		case HOTKEY_EDITOR_BRUSH_SW_NE:
-			return toolkit_->get_mouse_action()->supports_brushes();
+			return get_mouse_action().supports_brushes();
 
 		case HOTKEY_EDITOR_TOOL_NEXT:
 			return true;
@@ -439,6 +440,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
+		case HOTKEY_EDITOR_REMOVE_LOCATION:
 			return true;
 		case HOTKEY_EDITOR_MAP_ROTATE:
 			return false; //not implemented
@@ -654,7 +656,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
 					std::vector<std::string> items;
 					items.push_back("editor-playlist");
-					gui::button* b = gui_->find_menu_button("menu-playlist");
+					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
 				}
@@ -691,17 +693,17 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_ZOOM_IN:
 			gui_->set_zoom(zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_OUT:
 			gui_->set_zoom(-zoom_amount);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_DEFAULT:
 			gui_->set_default_zoom();
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 
 			//Palette
@@ -979,6 +981,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
 			gui().invalidate_all();
 			return true;
+		case HOTKEY_EDITOR_REMOVE_LOCATION: {
+			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
+			if (lp) {
+				perform_delete(new editor_action_starting_position(map_location(), lp->selected_item()));
+			}
+			return true;
+		}
 		default:
 			return hotkey::command_executor::execute_command(cmd, index, press);
 	}
@@ -1079,7 +1088,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	preferences::show_preferences_dialog(gui_->video(), game_config_);
+	gui2::tpreferences::display(gui_->video(), game_config_);
 
 	gui_->redraw_everything();
 }
@@ -1148,7 +1157,7 @@ void editor_controller::rename_unit()
 
 void editor_controller::unit_list()
 {
-	dialogs::show_unit_list(*gui_);
+	gui2::show_unit_list(*gui_);
 }
 
 void editor_controller::cut_selection()
@@ -1190,7 +1199,7 @@ void editor_controller::export_selection_coords()
 void editor_controller::perform_delete(editor_action* action)
 {
 	if (action) {
-		boost::scoped_ptr<editor_action> action_auto(action);
+		const std::unique_ptr<editor_action> action_auto(action);
 		context_manager_->get_map_context().perform_action(*action);
 	}
 }
@@ -1198,7 +1207,7 @@ void editor_controller::perform_delete(editor_action* action)
 void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
 	if (action) {
-		boost::scoped_ptr<editor_action> action_auto(action);
+		const std::unique_ptr<editor_action> action_auto(action);
 		context_manager_->perform_refresh(*action, drag_part);
 	}
 }
@@ -1239,16 +1248,16 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		editor_action* last_undo = context_manager_->get_map_context().last_undo_action();
 		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
-			a = toolkit_->get_mouse_action()->drag_left(*gui_, x, y, partial, last_undo);
+			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
 		} else if (dragging_right_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(3)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
-			a = toolkit_->get_mouse_action()->drag_right(*gui_, x, y, partial, last_undo);
+			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}
 		//Partial means that the mouse action has modified the
 		//last undo action and the controller shouldn't add
 		//anything to the undo stack (hence a different perform_ call)
 		if (a != nullptr) {
-			boost::scoped_ptr<editor_action> aa(a);
+			const std::unique_ptr<editor_action> aa(a);
 			if (partial) {
 				context_manager_->get_map_context().perform_partial_action(*a);
 			} else {
@@ -1257,7 +1266,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 			context_manager_->refresh_after_action(true);
 		}
 	} else {
-		toolkit_->get_mouse_action()->move(*gui_, hex_clicked);
+		get_mouse_action().move(*gui_, hex_clicked);
 	}
 	gui().highlight_hex(hex_clicked);
 }
@@ -1269,7 +1278,7 @@ bool editor_controller::allow_mouse_wheel_scroll(int x, int y)
 
 bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	return toolkit_->get_mouse_action()->has_context_menu();
+	return get_mouse_action().has_context_menu();
 }
 
 bool editor_controller::left_click(int x, int y, const bool browse)
@@ -1284,7 +1293,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		return true;
 
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
-	editor_action* a = toolkit_->get_mouse_action()->click_left(*gui_, x, y);
+	editor_action* a = get_mouse_action().click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state();
 
@@ -1293,21 +1302,21 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 
 void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->drag_end_left(*gui_, x, y);
+	editor_action* a = get_mouse_action().drag_end_left(*gui_, x, y);
 	perform_delete(a);
 }
 
 void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->up_left(*gui_, x, y);
+	editor_action* a = get_mouse_action().up_left(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
-	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
 	if (s && s->value_change()) {
 		if (gui_->set_zoom(s->value(), true)) {
 			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->get_mouse_action()->set_mouse_overlay(*gui_);
+			toolkit_->set_mouseover_overlay(*gui_);
 			set_button_state();
 		}
 	}
@@ -1322,7 +1331,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
-	editor_action* a = toolkit_->get_mouse_action()->click_right(*gui_, x, y);
+	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state();
 	return false;
@@ -1330,13 +1339,13 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 
 void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->drag_end_right(*gui_, x, y);
+	editor_action* a = get_mouse_action().drag_end_right(*gui_, x, y);
 	perform_delete(a);
 }
 
 void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
-	editor_action* a = toolkit_->get_mouse_action()->up_right(*gui_, x, y);
+	editor_action* a = get_mouse_action().up_right(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
@@ -1355,7 +1364,7 @@ void editor_controller::terrain_description()
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
 {
-	editor_action* a = toolkit_->get_mouse_action()->key_event(gui(), event);
+	editor_action* a = get_mouse_action().key_event(gui(), event);
 	perform_refresh_delete(a);
 	toolkit_->set_mouseover_overlay();
 }
@@ -1382,6 +1391,11 @@ void editor_controller::scroll_left(bool on)
 void editor_controller::scroll_right(bool on)
 {
 	controller_base::set_scroll_right(on);
+}
+
+std::vector<std::string> editor_controller::additional_actions_pressed()
+{
+	return toolkit_->get_palette_manager()->active_palette().action_pressed();
 }
 
 } //end namespace editor

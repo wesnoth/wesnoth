@@ -113,6 +113,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_PALETTE_ITEM_SWAP, HOTKEY_EDITOR_PALETTE_ITEMS_CLEAR,
 	HOTKEY_EDITOR_PALETTE_GROUPS, HOTKEY_EDITOR_PALETTE_UPSCROLL, HOTKEY_EDITOR_PALETTE_DOWNSCROLL,
 
+	HOTKEY_EDITOR_REMOVE_LOCATION,
 	HOTKEY_EDITOR_PLAYLIST,
 	HOTKEY_EDITOR_SCHEDULE,
 	HOTKEY_EDITOR_LOCAL_TIME,
@@ -187,6 +188,23 @@ enum HOTKEY_COMMAND {
 	HOTKEY_NULL
 };
 
+enum HOTKEY_CATEGORY {
+	HKCAT_GENERAL,
+	HKCAT_SAVING,
+	HKCAT_MAP,
+	HKCAT_UNITS,
+	HKCAT_CHAT,
+	HKCAT_REPLAY,
+	HKCAT_WHITEBOARD,
+	HKCAT_SCENARIO,
+	HKCAT_PALETTE,
+	HKCAT_TOOLS,
+	HKCAT_CLIPBOARD,
+	HKCAT_DEBUG,
+	HKCAT_CUSTOM,
+	HKCAT_PLACEHOLDER // Keep this one last
+};
+
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
 /// Stores all information related to functions that can be bound to hotkeys.
@@ -196,11 +214,11 @@ public:
 	/// the compiler want me to make a default constructor
 	/// since most member are const, calling the default constructor is normally no use.
 	hotkey_command();
-	hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hotkey::hk_scopes scope, const t_string& tooltip);
+	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
 	/// there is some inconstancy with that names in this file.
 	/// This binds the command to a function. Does not need to be unique.
-	const hotkey::HOTKEY_COMMAND id;
+	const HOTKEY_COMMAND id;
 	/// The command is unique.
 	const std::string command;
 	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
@@ -208,7 +226,9 @@ public:
 	/// If hidden then don't show the command in the hotkey preferences.
 	const bool hidden;
 	/// The visibility scope of the command.
-	const hotkey::hk_scopes scope;
+	const hk_scopes scope;
+	/// The category of the command.
+	const HOTKEY_CATEGORY category;
 
 	const t_string tooltip;
 
@@ -224,7 +244,7 @@ public:
 /// Do not use this outside hotkeys.cpp.
 /// hotkey_command uses t_string which might cause bugs when used at program startup, so use this for the hotkey_list_ (and only there).
 struct hotkey_command_temp {
-	hotkey::HOTKEY_COMMAND id;
+	HOTKEY_COMMAND id;
 
 	const char* command;
 	/// description, tooltip are untranslated
@@ -232,7 +252,8 @@ struct hotkey_command_temp {
 
 	bool hidden;
 
-	hotkey::hk_scopes scope;
+	hk_scopes scope;
+	HOTKEY_CATEGORY category;
 
 	const char* tooltip;
 };

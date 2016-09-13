@@ -51,8 +51,6 @@
 #include "variable.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -62,7 +60,7 @@ namespace actions {
 
 const std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
 {
-	const team & current_team = (*resources::teams)[side -1];
+	const team & current_team = resources::gameboard->teams()[side -1];
 
 	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc << "\n";
 
@@ -88,7 +86,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 			local_result.insert(find_it->recruits().begin(),
 			                    find_it->recruits().end());
 		}
-		else if ( find_it->is_visible_to_team(current_team, resources::gameboard->map(), false) )
+		else if ( find_it->is_visible_to_team(current_team, *resources::gameboard, false) )
 		{
 			// This hex is visibly occupied, so we cannot recruit here.
 			allow_local = false;
@@ -134,7 +132,7 @@ namespace { // Helpers for get_recalls()
 	                                 std::vector< unit_const_ptr > & result,
 	                                 std::set<size_t> * already_added = nullptr)
 	{
-		const team& leader_team = (*resources::teams)[leader->side()-1];
+		const team& leader_team = resources::gameboard->teams()[leader->side()-1];
 		const std::string& save_id = leader_team.save_id();
 
 		const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
@@ -170,7 +168,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 	 * We have three use cases:
 	 * 1. An empty castle tile is highlighted; we return only the units recallable there.
 	 * 2. A leader on a keep is highlighted; we return only the units recallable by that leader.
-	 * 3. Otherwise, we return all units in the recall list.
+	 * 3. Otherwise, we return all units in the recall list that can be recalled by any leader on the map.
 	 */
 
 	bool leader_in_place = false;
@@ -189,7 +187,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 			add_leader_filtered_recalls(find_it.get_shared_ptr(), result);
 			return result;
 		}
-		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], resources::gameboard->map(), false) )
+		else if ( find_it->is_visible_to_team(resources::gameboard->teams()[side-1], *resources::gameboard, false) )
 		{
 			// This hex is visibly occupied, so we cannot recall here.
 			allow_local = false;
@@ -218,10 +216,15 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 
 	if ( !leader_in_place )
 	{
-		// Return the full recall list.
-		for (const unit_const_ptr & recall : (*resources::teams)[side-1].recall_list())
-		{
-			result.push_back(recall);
+		std::set<size_t> valid_local_recalls;
+
+		for(auto u = resources::units->begin(); u != resources::units->end(); ++u) {
+			//We only consider leaders on our side.
+			if(!u->can_recruit() || u->side() != side) {
+				continue;
+			}
+
+			add_leader_filtered_recalls(u.get_shared_ptr(), result, &valid_local_recalls);
 		}
 	}
 
@@ -244,7 +247,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_LEADER;
 
 		// Make sure the recalling unit can recall this specific unit.
-		team& recall_team = (*resources::teams)[recaller.side()-1];
+		team& recall_team = (*resources::gameboard).teams()[recaller.side()-1];
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
 						recall_team.recall_list().find_index(recall_unit.id()));
 
@@ -335,7 +338,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
 	{
 	case RECRUIT_NO_LEADER:
 		LOG_NG << "No leaders on side " << side << " when recalling " << unit_recall.id() << ".\n";
-		return _("You don’t have a leader to recall with.");
+		return _("You do not have a leader to recall with.");
 
 	case RECRUIT_NO_ABLE_LEADER:
 		LOG_NG << "No leader is able to recall " << unit_recall.id() << " on side " << side << ".\n";
@@ -420,7 +423,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 	// If the specified unit type is in the team's recruit list, there is no
 	// need to check each leader's list.
-	if ( util::contains((*resources::teams)[side-1].recruits(), unit_type) )
+	if ( util::contains(resources::gameboard->teams()[side-1].recruits(), unit_type) )
 		check_type.clear();
 
 	// If the check location is not valid, we will never get an "OK" result.
@@ -471,7 +474,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 	{
 	case RECRUIT_NO_LEADER:
 		LOG_NG << "No leaders on side " << side << " when recruiting '" << unit_type << "'.\n";
-		return _("You don’t have a leader to recruit with.");
+		return _("You do not have a leader to recruit with.");
 
 	case RECRUIT_NO_ABLE_LEADER:
 		LOG_NG << "No leader is able to recruit '" << unit_type << "' on side " << side << ".\n";
@@ -584,8 +587,8 @@ namespace { // Helpers for place_recruit()
 		int min_dist = INT_MAX;
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
-			if ((*resources::teams)[unit_itor->side()-1].is_enemy(new_unit.side()) &&
-				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], *map, false)) {
+			if (resources::gameboard->teams()[unit_itor->side()-1].is_enemy(new_unit.side()) &&
+				unit_itor->is_visible_to_team(resources::gameboard->teams()[new_unit.side()-1], *resources::gameboard, false)) {
 				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;
@@ -638,20 +641,20 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
-	resources::game_events->pump().fire("unit placed", current_loc);
+	resources::game_events->pump().fire("unit_placed", current_loc);
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			res.get<0>() |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			std::get<0>(res) |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return true;
+			return std::make_tuple(true, 0, false);
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
-	(*resources::teams)[u->side()-1].spend_gold(cost);
+	resources::gameboard->teams()[u->side()-1].spend_gold(cost);
 
 	if ( show ) {
 		unit_display::unit_recruited(current_loc, leader_loc);
@@ -665,29 +668,29 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 
 	// Village capturing.
 	if ( resources::gameboard->map().is_village(current_loc) ) {
-		res.get<1>() = resources::gameboard->village_owner(current_loc) + 1;
-		res.get<0>() |= actions::get_village(current_loc, new_unit_itor->side(), &res.get<2>());
+		std::get<1>(res) = resources::gameboard->village_owner(current_loc) + 1;
+		std::get<0>(res) |= actions::get_village(current_loc, new_unit_itor->side(), &std::get<2>(res));
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
-			return true;
+			return std::make_tuple(true, 0, false);
 	}
 
 	// Fog clearing.
 	actions::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
-		res.get<0>() |= clearer.clear_unit(current_loc, *new_unit_itor);
+		std::get<0>(res) |= clearer.clear_unit(current_loc, *new_unit_itor);
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			res.get<0>() |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			std::get<0>(res) |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 	}
 
 	// "sighted" event(s).
-	res.get<0>() |= clearer.fire_events();
+	std::get<0>(res) |= clearer.fire_events();
 	if ( new_unit_itor.valid() )
-		res.get<0>() |= actions::actor_sighted(*new_unit_itor);
+		std::get<0>(res) |= actions::actor_sighted(*new_unit_itor);
 
 	return res;
 }
@@ -710,10 +713,10 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recruit.)
 	if ( use_undo ) {
-		resources::undo_stack->add_recruit(new_unit, loc, from, res.get<1>(), res.get<2>());
+		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
 		// Check for information uncovered or randomness used.
 
-		if ( res.get<0>() || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -759,8 +762,8 @@ bool recall_unit(const std::string & id, team & current_team,
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
-		resources::undo_stack->add_recall(recall, loc, from, res.get<1>(), res.get<2>());
-		if ( res.get<0>() || !synced_context::can_undo()) {
+		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
+		if ( std::get<0>(res) || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}

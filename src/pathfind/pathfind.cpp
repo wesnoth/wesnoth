@@ -121,7 +121,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 map_location find_vacant_castle(const unit & leader)
 {
 	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
-	                        nullptr, &(*resources::teams)[leader.side()-1]);
+	                        nullptr, &resources::gameboard->teams()[leader.side()-1]);
 }
 
 
@@ -279,7 +279,7 @@ static void find_routes(
 	// When see_all is true, the viewing team never matters, but we still
 	// need to supply one to some functions.
 	if ( viewing_team == nullptr )
-		viewing_team = &resources::teams->front();
+		viewing_team = &resources::gameboard->teams().front();
 
 	// Build a teleport map, if needed.
 	const teleport_map teleports = teleporter ?
@@ -401,7 +401,7 @@ static void find_routes(
 
 				if ( skirmisher  &&  next.moves_left > 0  &&
 				     enemy_zoc(*current_team, next_hex, *viewing_team, see_all)  &&
-				     !skirmisher->get_ability_bool("skirmisher", next_hex) ) {
+				     !skirmisher->get_ability_bool("skirmisher", next_hex, *resources::gameboard) ) {
 					next.moves_left = 0;
 				}
 			}
@@ -457,31 +457,21 @@ static void find_routes(
 	}
 }
 
-
-static paths::dest_vect::iterator lower_bound(paths::dest_vect &v, const map_location &loc)
-{
-	size_t sz = v.size(), pos = 0;
-	while (sz)
-	{
-		if (v[pos + sz / 2].curr < loc) {
-			pos = pos + sz / 2 + 1;
-			sz = sz - sz / 2 - 1;
-		} else sz = sz / 2;
-	}
-	return v.begin() + pos;
+static bool step_compare(const paths::step& a, const map_location& b) {
+	return a.curr < b;
 }
 
 paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc) const
 {
-	const_iterator i = lower_bound(const_cast<dest_vect &>(*this), loc), i_end = end();
-	if (i != i_end && i->curr != loc) i = i_end;
+	const_iterator i = std::lower_bound(begin(), end(), loc, step_compare);
+	if (i != end() && i->curr != loc) return end();
 	return i;
 }
 
 void paths::dest_vect::insert(const map_location &loc)
 {
-	iterator i = lower_bound(*this, loc), i_end = end();
-	if (i != i_end && i->curr == loc) return;
+	iterator i = std::lower_bound(begin(), end(), loc, step_compare);
+	if (i != end() && i->curr == loc) return;
 	paths::step s = { loc, map_location(), 0 };
 	std::vector<step>::insert(i, s);
 }
@@ -530,7 +520,7 @@ paths::paths(const unit& u, bool force_ignore_zoc,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {
-	std::vector<team> const &teams = *resources::teams;
+	std::vector<team> const &teams = resources::gameboard->teams();
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}
@@ -642,7 +632,7 @@ marked_route mark_route(const plain_route &rt)
 
 	int turns = 0;
 	int movement = u.movement_left();
-	const team& unit_team = (*resources::teams)[u.side()-1];
+	const team& unit_team = resources::gameboard->teams()[u.side()-1];
 	bool zoc = false;
 
 	std::vector<map_location>::const_iterator i = rt.steps.begin();
@@ -654,7 +644,7 @@ marked_route mark_route(const plain_route &rt)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
 
-		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+		team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -666,7 +656,7 @@ marked_route mark_route(const plain_route &rt)
 
 			++turns;
 
-			bool invisible = u.invisible(*i,false);
+			bool invisible = u.invisible(*i, *resources::gameboard, false);
 
 			res.marks[*i] = marked_route::mark(turns, zoc, capture, invisible);
 
@@ -679,7 +669,7 @@ marked_route mark_route(const plain_route &rt)
 		}
 
 		zoc = enemy_zoc(unit_team, *(i + 1), viewing_team)
-					&& !u.get_ability_bool("skirmisher", *(i+1));
+					&& !u.get_ability_bool("skirmisher", *(i+1), *resources::gameboard);
 
 		if (zoc) {
 			movement = 0;
@@ -762,7 +752,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	// check ZoC
 	if (!ignore_unit_ && remaining_movement != terrain_cost
 	    && enemy_zoc(teams_[unit_.side()-1], loc, viewing_team_, see_all_)
-			&& !unit_.get_ability_bool("skirmisher", loc)) {
+			&& !unit_.get_ability_bool("skirmisher", loc, *resources::gameboard)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;
 	} else {
@@ -878,7 +868,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
  */
 void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {
-	std::vector<team> const &teams = *resources::teams;
+	std::vector<team> const &teams = resources::gameboard->teams();
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}

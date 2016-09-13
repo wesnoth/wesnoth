@@ -101,35 +101,37 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 
 /**
  * Returns the menu items that can be shown for the given location.
- * Should be used with a wmi_pager to limit the number of items displayed at once.
  *
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
  */
-std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
-	game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const
+void wmi_container::get_items(const map_location& hex,
+                              std::vector<std::shared_ptr<const wml_menu_item>>& items,
+                              std::vector<std::string>& descriptions,
+                              filter_context& fc, game_data& gamedata, unit_map& units) const
 {
-	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > ret;
 	if ( empty() ) {
 		// Nothing to do (skip setting game variables).
-		return ret;
+		return;
 	}
+
 	// Prepare for can show().
 	gamedata.get_variable("x1") = hex.x + 1;
 	gamedata.get_variable("y1") = hex.y + 1;
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
 
 	// Check each menu item.
-	for (const item_ptr & item : std::make_pair (start, finish))
+	for (const item_ptr & item : *this)
 	{
 		// Can this item be shown?
 		if ( item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu()) && item->can_show(hex, gamedata, fc) )
 		{
 			// Include this item.
-			ret.push_back(std::make_pair(item, item->menu_text()));
+			items.push_back(item);
+			descriptions.push_back(item->menu_text());
 		}
 	}
-	return ret;
+	return;
 }
 
 /**

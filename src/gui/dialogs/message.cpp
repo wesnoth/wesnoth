@@ -64,6 +64,8 @@ struct tmessage_implementation
 
 void tmessage::pre_show(twindow& window)
 {
+	set_restore(true);
+
 	// ***** Validate the required buttons ***** ***** ***** *****
 	tmessage_implementation::init_button(window, buttons_[left_1], "left_side");
 	tmessage_implementation::init_button(window, buttons_[cancel], "cancel");
@@ -116,7 +118,7 @@ void tmessage::set_button_caption(const tbutton_id button,
 }
 
 void tmessage::set_button_visible(const tbutton_id button,
-								  const twidget::tvisible::scoped_enum visible)
+								  const twidget::tvisible visible)
 {
 	buttons_[button].visible = visible;
 	if(buttons_[button].button) {

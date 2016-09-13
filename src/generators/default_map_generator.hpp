@@ -18,6 +18,25 @@
 #include "config.hpp"
 #include "generators/map_generator.hpp"
 
+struct generator_data {
+	generator_data(const config& cfg);
+
+	int width;
+	int height;
+	int default_width;
+	int default_height;
+	int nplayers;
+	int nvillages;
+	int iterations;
+	int hill_size;
+	int castle_size;
+	int island_size;
+	int island_off_center;
+	int max_lakes;
+	bool link_castles;
+	bool show_labels;
+};
+
 class default_map_generator : public map_generator
 {
 public:
@@ -30,16 +49,15 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map(boost::optional<boost::uint32_t> randomseed);
-	config create_scenario(boost::optional<boost::uint32_t> randomseed);
+	std::string create_map(boost::optional<uint32_t> randomseed);
+	config create_scenario(boost::optional<uint32_t> randomseed);
 
 private:
+	std::string generate_map(std::map<map_location,std::string>* labels, boost::optional<uint32_t> randomseed);
 
-	std::string generate_map(std::map<map_location,std::string>* labels, boost::optional<boost::uint32_t> randomseed);
-
-	size_t default_width_, default_height_, width_, height_, island_size_, iterations_, hill_size_, max_lakes_, nvillages_, castle_size_, nplayers_;
-	bool link_castles_, show_labels_;
 	config cfg_;
+
+	generator_data data_;
 };
 
 #endif

@@ -26,7 +26,6 @@
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
-#include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "formula/string_utils.hpp"
 #include "game_events/manager.hpp"
@@ -40,7 +39,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "halo.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "pathfind/teleport.hpp"
@@ -64,7 +62,6 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <boost/make_shared.hpp>
 #include "utils/functional.hpp"
 
 static lg::log_domain log_aitesting("aitesting");
@@ -89,27 +86,23 @@ static lg::log_domain log_engine_enemies("engine/enemies");
  */
 static void copy_persistent(const config& src, config& dst)
 {
-	typedef boost::container::flat_set<std::string> stringset;
+	static const std::set<std::string> attrs = {
+			"id",
+			"theme",
+			"next_scenario",
+			"description",
+			"name",
+			"defeat_music",
+			"victory_music",
+			"victory_when_enemies_defeated",
+			"remove_from_carryover_on_defeat",
+			"disallow_recall",
+			"experience_modifier",
+			"require_scenario"};
 
-	static stringset attrs = boost::assign::list_of
-			("id")
-			("theme")
-			("next_scenario")
-			("description")
-			("name")
-			("defeat_music")
-			("victory_music")
-			("victory_when_enemies_defeated")
-			("remove_from_carryover_on_defeat")
-			("disallow_recall")
-			("experience_modifier")
-			("require_scenario")
-		.convert_to_container<stringset>();
-
-	static stringset tags = boost::assign::list_of
-			("terrain_graphics")
-			("lua")
-		.convert_to_container<stringset>();
+	static const std::set<std::string> tags = {
+			"terrain_graphics",
+			"lua"};
 
 	for (const std::string& attr : attrs)
 	{
@@ -133,7 +126,6 @@ static void clear_resources()
 	resources::persist = nullptr;
 	resources::screen = nullptr;
 	resources::soundsources = nullptr;
-	resources::teams = nullptr;
 	resources::tod_manager = nullptr;
 	resources::tunnels = nullptr;
 	resources::undo_stack = nullptr;
@@ -231,12 +223,12 @@ void play_controller::init(CVideo& video, const config& level)
 
 		resources::gameboard = &gamestate().board_;
 		resources::gamedata = &gamestate().gamedata_;
-		resources::teams = &gamestate().board_.teams_;
 		resources::tod_manager = &gamestate().tod_manager_;
 		resources::units = &gamestate().board_.units_;
 		resources::filter_con = &gamestate();
 		resources::undo_stack = &undo_stack();
 		resources::game_events = gamestate().events_manager_.get();
+		resources::lua_kernel = gamestate().lua_kernel_.get();
 
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
@@ -277,7 +269,6 @@ void play_controller::init(CVideo& video, const config& level)
 		// Has to be done before registering any events!
 		gamestate().set_game_display(gui_.get());
 		gui2::tloadscreen::progress("init lua");
-		resources::lua_kernel = gamestate().lua_kernel_.get();
 
 		if(gamestate().first_human_team_ != -1) {
 			gui_->set_team(gamestate().first_human_team_);
@@ -300,12 +291,13 @@ void play_controller::init(CVideo& video, const config& level)
 		gui2::tloadscreen::progress("start game");
 		//loadscreen_manager->reset();
 		gamestate().gamedata_.set_phase(game_data::PRELOAD);
-		gamestate().lua_kernel_->initialize(level);
+		gamestate().lua_kernel_->load_game(level);
 
 		plugins_context_.reset(new plugins_context("Game"));
-		plugins_context_->set_callback("save_game", std::bind(&play_controller::save_game_auto, this, std::bind(get_str, std::placeholders::_1, "filename" )), true);
-		plugins_context_->set_callback("save_replay", std::bind(&play_controller::save_replay_auto, this, std::bind(get_str, std::placeholders::_1, "filename" )), true);
+		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
+		plugins_context_->set_callback("save_replay", [this](const config& cfg) { save_replay_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("quit", throw_end_level(), false);
+		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
 	});
 	//Do this after the loadingscreen, so that ita happens in the main thread.
 	gui_->join();
@@ -315,7 +307,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
-	resources::teams = nullptr;
 	resources::tod_manager = nullptr;
 	resources::units = nullptr;
 	resources::filter_con = nullptr;
@@ -327,16 +318,15 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gamestate_.reset(new game_state(level, *this, tdata_));
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
-	resources::teams = &gamestate().board_.teams_;
 	resources::tod_manager = &gamestate().tod_manager_;
 	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
 	resources::game_events = gamestate().events_manager_.get();
+	resources::lua_kernel = gamestate().lua_kernel_.get();
 
 	gamestate_->init(level, *this);
 	gamestate().set_game_display(gui_.get());
-	resources::lua_kernel = gamestate().lua_kernel_.get();
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
 	gui_->reset_tod_manager(gamestate().tod_manager_);
@@ -344,7 +334,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gui_->change_display_context(&gamestate().board_);
 	saved_game_.get_replay().set_pos(replay_pos);
 	gamestate().gamedata_.set_phase(game_data::PRELOAD);
-	gamestate().lua_kernel_->initialize(level);
+	gamestate().lua_kernel_->load_game(level);
 }
 
 void play_controller::init_managers()
@@ -375,7 +365,7 @@ void play_controller::fire_prestart()
 	// Fire these right before prestart events, to catch only the units sides
 	// have started with.
 	for (const unit& u : gamestate().board_.units()) {
-		pump().fire("unit placed", map_location(u.get_location()));
+		pump().fire("unit_placed", map_location(u.get_location()));
 	}
 
 	pump().fire("prestart");
@@ -454,15 +444,15 @@ void play_controller::do_init_side()
 	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
 	if(!gamestate().tod_manager_.has_turn_event_fired())
 	{
-		pump().fire("turn " + turn_num);
-		pump().fire("new turn");
+		pump().fire("turn_" + turn_num);
+		pump().fire("new_turn");
 		gamestate().tod_manager_.turn_event_fired();
 	}
 
-	pump().fire("side turn");
-	pump().fire("side " + side_num + " turn");
-	pump().fire("side turn " + turn_num);
-	pump().fire("side " + side_num + " turn " + turn_num);
+	pump().fire("side_turn");
+	pump().fire("side_" + side_num + "_turn");
+	pump().fire("side_turn_" + turn_num);
+	pump().fire("side_" + side_num + "_turn_" + turn_num);
 
 	// We want to work out if units for this player should get healed,
 	// and the player should get income now.
@@ -487,10 +477,10 @@ void play_controller::do_init_side()
 	// Prepare the undo stack.
 	undo_stack().new_side_turn(current_side());
 
-	pump().fire("turn refresh");
-	pump().fire("side " + side_num + " turn refresh");
-	pump().fire("turn " + turn_num + " refresh");
-	pump().fire("side " + side_num + " turn " + turn_num + " refresh");
+	pump().fire("turn_refresh");
+	pump().fire("side_" + side_num + "_turn_refresh");
+	pump().fire("turn_" + turn_num + "_refresh");
+	pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
 
 	// Make sure vision is accurate.
 	actions::clear_shroud(current_side(), true);
@@ -549,10 +539,10 @@ void play_controller::finish_side_turn()
 		// Clear shroud, in case units had been slowed for the turn.
 		actions::clear_shroud(current_side());
 
-		pump().fire("side turn end");
-		pump().fire("side "+ side_num + " turn end");
-		pump().fire("side turn " + turn_num + " end");
-		pump().fire("side " + side_num + " turn " + turn_num + " end");
+		pump().fire("side_turn_end");
+		pump().fire("side_"+ side_num + "_turn_end");
+		pump().fire("side_turn_" + turn_num + "_end");
+		pump().fire("side_" + side_num + "_turn_" + turn_num + "_end");
 		// This is where we refog, after all of a side's events are done.
 		actions::recalculate_fog(current_side());
 		check_victory();
@@ -568,8 +558,8 @@ void play_controller::finish_turn()
 {
 	set_scontext_synced sync(2);
 	const std::string turn_num = std::to_string(turn());
-	pump().fire("turn end");
-	pump().fire("turn " + turn_num + " end");
+	pump().fire("turn_end");
+	pump().fire("turn_" + turn_num + "_end");
 	sync.do_final_checkup();
 }
 
@@ -633,7 +623,7 @@ void play_controller::tab()
 		for (const unit& u : gamestate().board_.units()){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
-					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+					!(gamestate().board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc, gui_->get_disp_context())))
 				dictionary.insert(u.name());
 		}
 		//TODO List map labels
@@ -740,7 +730,7 @@ events::mouse_handler& play_controller::get_mouse_handler_base()
 	return mouse_handler_;
 }
 
-boost::shared_ptr<wb::manager> play_controller::get_whiteboard()
+std::shared_ptr<wb::manager> play_controller::get_whiteboard()
 {
 	return whiteboard_manager_;
 }
@@ -750,7 +740,7 @@ const mp_game_settings& play_controller::get_mp_settings()
 	return saved_game_.mp_settings();
 }
 
-const game_classification& play_controller::get_classification()
+game_classification& play_controller::get_classification()
 {
 	return saved_game_.classification();
 }
@@ -824,7 +814,7 @@ void play_controller::save_game()
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
+		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -846,7 +836,7 @@ void play_controller::save_replay()
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
+		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}
@@ -874,7 +864,7 @@ void play_controller::save_map()
 void play_controller::load_game()
 {
 	savegame::loadgame load(gui_->video(), game_config_, saved_game_);
-	load.load_game();
+	load.load_game_ingame();
 }
 
 void play_controller::undo()
@@ -955,7 +945,7 @@ void play_controller::check_victory()
 	}
 
 	if (found_player || found_network_player) {
-		pump().fire("enemies defeated");
+		pump().fire("enemies_defeated");
 		if (is_regular_game_end()) {
 			return;
 		}
@@ -1002,7 +992,7 @@ void play_controller::process_oos(const std::string& msg) const
 
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw quit_game_exception
+	save.save_game_interactive(gui_->video(), message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
@@ -1234,7 +1224,7 @@ void play_controller::check_time_over()
 	if(!time_left) {
 		LOG_NG << "firing time over event...\n";
 		set_scontext_synced_base sync;
-		pump().fire("time over");
+		pump().fire("time_over");
 		LOG_NG << "done firing time over event...\n";
 		// If turns are added while handling 'time over' event.
 		if (gamestate().tod_manager_.is_time_left()) {
@@ -1266,4 +1256,13 @@ play_controller::scoped_savegame_snapshot::scoped_savegame_snapshot(const play_c
 play_controller::scoped_savegame_snapshot::~scoped_savegame_snapshot()
 {
 	controller_.saved_game_.remove_snapshot();
+}
+
+void play_controller::show_objectives() const
+{
+	const team& t = gamestate().board_.teams()[gui_->viewing_team()];
+	static const std::string no_objectives(_("No objectives available"));
+	std::string objectives = t.objectives();
+	gui2::show_transient_message(gui_->video(), get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
+	t.reset_objectives_changed();
 }

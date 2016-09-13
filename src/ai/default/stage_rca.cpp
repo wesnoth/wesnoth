@@ -52,18 +52,13 @@ void candidate_action_evaluation_loop::on_create()
 		engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
 	}
 
-	std::function<void(std::vector<candidate_action_ptr>&, const config&)> factory_candidate_actions =
-		std::bind(&candidate_action_evaluation_loop::create_candidate_action,*this,_1,_2);
-
+	std::function<void(std::vector<candidate_action_ptr>&, const config&)> factory_candidate_actions = [this](std::vector<candidate_action_ptr> &candidate_actions, const config &cfg)
+	{
+		engine::parse_candidate_action_from_config(*this, cfg, std::back_inserter(candidate_actions));
+	};
 	register_vector_property(property_handlers(),"candidate_action",candidate_actions_, factory_candidate_actions);
 
 }
-
-void candidate_action_evaluation_loop::create_candidate_action(std::vector<candidate_action_ptr> &candidate_actions, const config &cfg)
-{
-	engine::parse_candidate_action_from_config(*this,cfg,std::back_inserter(candidate_actions));
-}
-
 
 config candidate_action_evaluation_loop::to_config() const
 {

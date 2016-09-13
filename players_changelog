@@ -2,7 +2,35 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
-Version 1.13.4+dev:
+Version 1.13.5+dev:
+ * AI:
+   * Added new high_xp_attack candidate action to default AI. This CA performs
+     attacks on enemy units so close to leveling that the default AI's combat CA
+     would not attack them.
+ * Campaigns:
+   * Delfador's Memoirs:
+     * S9: Resolved inability to end level even when Delfador has the Staff (bug #24951)
+ * Graphics:
+   * New sprite for Tentacle of the Deep.
+ * Music and sound effects:
+   * Added a preference to pause the music when the game loses focus.
+   * Now the music fades out between scenarios.
+ * Units:
+   * Changed the sound for the melee attack of the
+     Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
+ * Performance:
+   * When a heuristic determines that it's probably faster, the game predicts battle
+     outcome by simulating a few thousand fights instead of calculating exact
+     probabilities. This method is inexact, but in very complex battles (extremely
+     high HP, drain, slow, berserk, etc.) it's significantly faster than the default
+     damage calculation method.
+ * Miscellaneous and bug fixes:
+   * Fixed a stray ; character appearing pre-entered in the command console.
+   * Show correct number of attacks in case of swarm weapon special (bug #24978)
+   * Fixed bug that icons of buttons under the minimap disappeared when the player opened
+     and closed a menu.
+
+Version 1.13.5:
  * Campaigns:
    * Heir to the Throne:
      * New sprites for Li'sar.
@@ -11,22 +39,28 @@ Version 1.13.4+dev:
 
  * Language and i18n:
    * Updated translations: British English, Galician, German, Italian, Japanese,
-     Portuguese, RACV, Russian, Scottish Gaelic, Spanish.
+     Polish, Portuguese, RACV, Russian, Scottish Gaelic, Spanish.
 
  * User interface:
+   * Fixed Mage of Light halo appearing in the top-left corner of the screen
+     while the mage is moving (bug #23712).
    * Fixed Observers icon appearing behind other top bar items in MP games on
      horizontal UI resolutions < 1024 (bug #24455).
    * Fixed ToD schedule progress indicator appearing behind other top bar items
      on vertical UI resolutions < 600.
    * Added a gui method to activate loggers (Preferences -> Advanced -> Logging)
-     loggers activated in the gui print just like loggers activated in the 
+     loggers activated in the gui print just like loggers activated in the
      command line (i.e. messages appear in the console)
-
+   * Increased the font size for text in buttons.
+   * Changed unit help topics to use smaller images on smaller monitors.
 
  * Miscellaneous and bug fixes:
    * Allow changing keybindings for scrolling the map.
    * Fixed bug #24696 (Nightstalk ability not working)
 
+ * Multiplayer
+   * Added "Registered users only" checkbox to multiplayer configuration dialog which
+     when checked, only allows registered users to join the game
 
 Version 1.13.4:
  * Language and i18n:
@@ -337,25 +371,25 @@ Version 1.13.0:
    * Fix unit move continuation if enemy discovered (#21372)
    * Support for total conversions, so called "cores".
    * Partial moves now able to be continued properly in whiteboard (#22231)
-   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for 
+   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for
      the default lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
-   * Fix bug wherein chat history synopses weren't working right in the dbus 
+   * Fix bug wherein chat history synopses weren't working right in the dbus
      notifications
    * Default to classic minimap unit/village color coding (colored by side).
    * Default to classic minimap terrain representation (satellite view).
    * Added trait list with links to the help page for units
-   * In the help page for a units, if a unit has "terrain defense caps" (like 
-     cavalry on forests), a "Defense Capped" column is added to the terrain 
+   * In the help page for a units, if a unit has "terrain defense caps" (like
+     cavalry on forests), a "Defense Capped" column is added to the terrain
      modifiers table, showing which terrains have a cap in place. A link to an
      explanation of this behavior elsewhere in the help is given.
-   * When using the terrain description feature with a mixed terrain type, the 
+   * When using the terrain description feature with a mixed terrain type, the
      game will autogenerate a formatted explanation of its best/worst
      movement/defense properties.
    * Autogenerate help pages for all eras and factions.
-   * Help pages for a faction autogenerates a list of races and alignments that 
+   * Help pages for a faction autogenerates a list of races and alignments that
      appear in that faction.
-   * Make nice help descriptions for the default factions (using content from 
+   * Make nice help descriptions for the default factions (using content from
      the wiki).
    * Fix bug wherein hotkeys for changing tips in titlescreen aren't working.
 
@@ -3881,4 +3915,3 @@ Version 1.3.1:
       your friends and ignores list.
     * Many performance improvements making the game run faster now.
     * Made some tooltips visible again.
-

@@ -207,11 +207,11 @@ void server::load_config()
 void server::handle_new_client(socket_ptr socket)
 {
 	async_receive_doc(socket,
-					  boost::bind(&server::handle_request, this, _1, _2)
+					  std::bind(&server::handle_request, this, _1, _2)
 					  );
 }
 
-void server::handle_request(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
 	config data;
 	read(data, doc->output());
@@ -787,9 +787,9 @@ void server::handle_delete(const server::request& req)
 	}
 
 	config::child_itors itors = campaigns().child_range("campaign");
-	for(size_t index = 0; itors.first != itors.second; ++index, ++itors.first)
+	for(size_t index = 0; !itors.empty(); ++index, itors.pop_front())
 	{
-		if(&campaign == &*itors.first) {
+		if(&campaign == &itors.front()) {
 			campaigns().remove_child("campaign", index);
 			break;
 		}

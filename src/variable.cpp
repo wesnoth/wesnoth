@@ -25,6 +25,7 @@
 
 #include "config_assign.hpp"
 #include "formula/string_utils.hpp"
+#include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
@@ -46,7 +47,7 @@ namespace
 		assert(resources::gamedata);
 		config::const_child_itors range = resources::gamedata->get_variable_access_read(varname).as_array();
 
-		if(range.first == range.second)
+		if(range.empty())
 		{
 			return as_nonempty_range_default.child_range("_");
 		}
@@ -65,7 +66,7 @@ vconfig::vconfig() :
 {
 }
 
-vconfig::vconfig(const config & cfg, const boost::shared_ptr<const config> & cache) :
+vconfig::vconfig(const config & cfg, const std::shared_ptr<const config> & cache) :
 	cache_(cache), cfg_(&cfg)
 {
 }
@@ -223,7 +224,7 @@ size_t vconfig::count_children(const std::string& key) const
 				try
 				{
 					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
-					n += range.second - range.first;
+					n += range.size();
 				}
 				catch(const invalid_variablename_exception&)
 				{
@@ -253,7 +254,7 @@ vconfig vconfig::child(const std::string& key) const
 			try
 			{
 				config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
-				return vconfig(*range.first, true);
+				return vconfig(range.front(), true);
 			}
 			catch(const invalid_variablename_exception&)
 			{
@@ -308,12 +309,31 @@ config::attribute_value vconfig::expand(const std::string &key) const
 	return val;
 }
 
+vconfig::attribute_iterator::reference vconfig::attribute_iterator::operator*() const
+{
+	config::attribute val = *i_;
+	if(resources::gamedata) {
+		val.second.apply_visitor(vconfig_expand_visitor(val.second));
+	}
+	return val;
+}
+
+vconfig::attribute_iterator::pointer vconfig::attribute_iterator::operator->() const
+{
+	config::attribute val = *i_;
+	if(resources::gamedata) {
+		val.second.apply_visitor(vconfig_expand_visitor(val.second));
+	}
+	pointer_proxy p = {val};
+	return p;
+}
+
 vconfig::all_children_iterator::all_children_iterator(const Itor &i) :
 	i_(i), inner_index_(0), cache_()
 {
 }
 
-vconfig::all_children_iterator::all_children_iterator(const Itor &i, const boost::shared_ptr<const config> & cache) :
+vconfig::all_children_iterator::all_children_iterator(const Itor &i, const std::shared_ptr<const config> & cache) :
 	i_(i), inner_index_(0), cache_(cache)
 {
 }
@@ -328,7 +348,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 
 			config::const_child_itors range = vinfo.as_array();
 
-			if (++inner_index_ < std::distance(range.first, range.second))
+			if (++inner_index_ < int(range.size()))
 			{
 				return *this;
 			}
@@ -347,6 +367,25 @@ vconfig::all_children_iterator vconfig::all_children_iterator::operator++(int)
 {
 	vconfig::all_children_iterator i = *this;
 	this->operator++();
+	return i;
+}
+
+vconfig::all_children_iterator& vconfig::all_children_iterator::operator--()
+{
+	if(inner_index_ >= 0 && i_->key == "insert_tag") {
+		if(--inner_index_ >= 0) {
+			return *this;
+		}
+		inner_index_ = 0;
+	}
+	--i_;
+	return *this;
+}
+
+vconfig::all_children_iterator vconfig::all_children_iterator::operator--(int)
+{
+	vconfig::all_children_iterator i = *this;
+	this->operator--();
 	return i;
 }
 
@@ -379,8 +418,8 @@ vconfig vconfig::all_children_iterator::get_child() const
 		{
 			config::const_child_itors range = as_nonempty_range(vconfig(i_->cfg)["variable"]);
 
-			std::advance(range.first, inner_index_);
-			return vconfig(*range.first, true);
+			range.advance_begin(inner_index_);
+			return vconfig(range.front(), true);
 		}
 		catch(const invalid_variablename_exception&)
 		{
@@ -482,9 +521,9 @@ void scoped_weapon_info::activate()
 
 void scoped_recall_unit::activate()
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
-	const std::vector<team>& teams = *resources::teams;
+	const std::vector<team>& teams = resources::gameboard->teams();
 
 	std::vector<team>::const_iterator team_it;
 	for (team_it = teams.begin(); team_it != teams.end(); ++team_it) {

@@ -11,19 +11,11 @@
 
 namespace ng {
 
-configure_engine::configure_engine(saved_game& state) :
-	state_(state),
-	parameters_(state_.mp_settings()),
-	side_cfg_(state_.get_starting_pos().child_or_empty("side"))
+configure_engine::configure_engine(saved_game& state, const config* intial)
+	: state_(state)
+	, parameters_(state_.mp_settings())
+	, initial_(intial ? intial : &state_.get_starting_pos())
 {
-	if (!state_.get_starting_pos().has_child("side")) {
-		std::stringstream msg;
-		msg << "Configure Engine: No sides found in scenario, aborting.";
-		std::cerr << msg.str();
-		std::cerr << "Full scenario config:\n";
-		std::cerr << state_.to_config().debug();
-		throw game::error(msg.str());
-	}
 
 	set_use_map_settings(use_map_settings_default());
 	if(state_.classification().get_tagname() == "scenario") {
@@ -60,7 +52,7 @@ void configure_engine::set_default_values() {
 }
 
 bool configure_engine::force_lock_settings() const {
-	return state_.get_starting_pos()["force_lock_settings"].to_bool(!state_.classification().is_normal_mp_game());
+	return initial_cfg()["force_lock_settings"].to_bool(!state_.classification().is_normal_mp_game());
 }
 
 std::string configure_engine::game_name() const { return parameters_.name; }
@@ -78,11 +70,13 @@ bool configure_engine::random_start_time() const { return parameters_.random_sta
 bool configure_engine::fog_game() const { return parameters_.fog_game; }
 bool configure_engine::shroud_game() const { return parameters_.shroud_game; }
 bool configure_engine::allow_observers() const { return parameters_.allow_observers; }
+bool configure_engine::registered_users_only() const { return parameters_.registered_users_only; }
 bool configure_engine::shuffle_sides() const { return parameters_.shuffle_sides; }
 mp_game_settings::RANDOM_FACTION_MODE configure_engine::random_faction_mode() const { return parameters_.random_faction_mode; }
 const config& configure_engine::options() const { return parameters_.options; }
 
 void configure_engine::set_game_name(std::string val) { parameters_.name = val; }
+void configure_engine::set_game_password(std::string val) { parameters_.password = val; }
 void configure_engine::set_num_turns(int val) { parameters_.num_turns = val; }
 void configure_engine::set_village_gold(int val) { parameters_.village_gold = val; }
 void configure_engine::set_village_support(int val) { parameters_.village_support = val; }
@@ -97,6 +91,7 @@ void configure_engine::set_random_start_time(bool val) { parameters_.random_star
 void configure_engine::set_fog_game(bool val) { parameters_.fog_game = val; }
 void configure_engine::set_shroud_game(bool val) { parameters_.shroud_game = val; }
 void configure_engine::set_allow_observers(bool val) { parameters_.allow_observers = val; }
+void configure_engine::set_registered_users_only(bool val) { parameters_.registered_users_only = val; }
 void configure_engine::set_oos_debug(bool val) { state_.classification().oos_debug = val; }
 void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides = val; }
 void configure_engine::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val) { parameters_.random_faction_mode = val;}
@@ -126,22 +121,22 @@ std::string configure_engine::game_name_default() const {
 }
 int configure_engine::num_turns_default() const {
 	return use_map_settings() ?
-		settings::get_turns(state_.get_starting_pos()["turns"]) :
+		settings::get_turns(initial_cfg()["turns"]) :
 		preferences::turns();
 }
 int configure_engine::village_gold_default() const {
-	return use_map_settings() && !side_cfg_.empty() ?
-		settings::get_village_gold(side_cfg_["village_gold"], &state_.classification()) :
+	return use_map_settings() && !side_cfg().empty() ?
+		settings::get_village_gold(side_cfg()["village_gold"], &state_.classification()) :
 		preferences::village_gold();
 }
 int configure_engine::village_support_default() const {
-	return use_map_settings() && !side_cfg_.empty() ?
-		settings::get_village_support(side_cfg_["village_support"]) :
+	return use_map_settings() && !side_cfg().empty() ?
+		settings::get_village_support(side_cfg()["village_support"]) :
 		preferences::village_support();
 }
 int configure_engine::xp_modifier_default() const {
 	return use_map_settings() ?
-		settings::get_xp_modifier(state_.get_starting_pos()["experience_modifier"]) :
+		settings::get_xp_modifier(initial_cfg()["experience_modifier"]) :
 		preferences::xp_modifier();
 }
 int configure_engine::mp_countdown_init_time_default() const {
@@ -164,21 +159,25 @@ bool configure_engine::use_map_settings_default() const {
 }
 bool configure_engine::random_start_time_default() const {
 	return use_map_settings() ?
-		state_.get_starting_pos()["random_start_time"].to_bool(false) :
+		initial_cfg()["random_start_time"].to_bool(false) :
 		preferences::random_start_time();
 }
 bool configure_engine::fog_game_default() const {
-	return use_map_settings() && !side_cfg_.empty() ?
-		side_cfg_["fog"].to_bool(state_.classification().is_normal_mp_game()) :
+	return use_map_settings() && !side_cfg().empty() ?
+		side_cfg()["fog"].to_bool(state_.classification().is_normal_mp_game()) :
 		preferences::fog();
 }
 bool configure_engine::shroud_game_default() const {
-	return use_map_settings() && !side_cfg_.empty() ?
-		side_cfg_["shroud"].to_bool(false) :
+	return use_map_settings() && !side_cfg().empty() ?
+		side_cfg()["shroud"].to_bool(false) :
 		preferences::shroud();
 }
 bool configure_engine::allow_observers_default() const {
 	return preferences::allow_observers();
+}
+bool configure_engine::registered_users_only_default() const
+{
+	return preferences::registered_users_only();
 }
 bool configure_engine::shuffle_sides_default() const {
 	return preferences::shuffle_sides();

@@ -14,11 +14,8 @@
 #pragma once
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/label.hpp"
 #include "tstring.hpp"
 
-
-#include <boost/scoped_ptr.hpp>
 #include <map>
 #include <vector>
 #include <atomic>
@@ -35,6 +32,7 @@ namespace cursor
 namespace gui2
 {
 
+class tlabel;
 class twindow;
 
 class tloadscreen : public tdialog
@@ -47,7 +45,7 @@ public:
 
 	static void display(CVideo& video, std::function<void()> f);
 	static bool displaying() { return current_load != nullptr; }
-	
+
 	static void progress(const char* stage_name = nullptr);
 
 	/**
@@ -62,8 +60,10 @@ private:
 	size_t timer_id_;
 	int animation_counter_;
 	std::function<void()> work_;
-	boost::scoped_ptr<boost::thread> worker_;
-	boost::scoped_ptr<cursor::setter> cursor_setter_;
+	std::unique_ptr<boost::thread> worker_;
+	std::unique_ptr<cursor::setter> cursor_setter_;
+	std::exception_ptr exception_;
+	void clear_timer();
 
 	twindow* build_window(CVideo& video) const;
 

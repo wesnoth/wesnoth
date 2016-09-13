@@ -27,10 +27,7 @@
 #include "config.hpp"
 #include "utils/smart_list.hpp"
 
-#include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#include <memory>
 #include <set>
 #include <string>
 
@@ -44,7 +41,7 @@ namespace game_events
 	class manager;
 
 	/// Shared pointer to handler objects.
-	typedef boost::shared_ptr<event_handler> handler_ptr;
+	typedef std::shared_ptr<event_handler> handler_ptr;
 	/// Storage of event handlers.
 	typedef std::vector<handler_ptr> handler_vec;
 
@@ -88,7 +85,7 @@ namespace game_events
 	class  handler_list
 	{
 		/// The weak pointers that are used internally.
-		typedef boost::weak_ptr<event_handler> internal_ptr;
+		typedef std::weak_ptr<event_handler> internal_ptr;
 		/// The underlying list.
 		typedef utils::smart_list<internal_ptr> list_t;
 

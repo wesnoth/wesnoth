@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 20:00+0300\n"
+"POT-Creation-Date: 2016-07-24 23:26+0300\n"
 "PO-Revision-Date: 2015-11-07 11:07+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -1761,7 +1761,7 @@ msgstr ""
 #: data/gui/window/chat_log.cfg:203 data/gui/window/game_version.cfg:600
 #: data/gui/window/gamestate_inspector.cfg:315
 #: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_player_info.cfg:199
-#: data/gui/window/lua_interpreter.cfg:133 data/gui/window/message.cfg:135
+#: data/gui/window/lua_interpreter.cfg:148 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
 #: data/gui/window/preferences.cfg:314 src/construct_dialog.cpp:140
 #: src/generators/default_map_generator.cpp:110
@@ -1786,18 +1786,18 @@ msgstr "Teraz sa pripojíš na server, aby si si stiahol doplnky."
 msgid "Server:"
 msgstr "Server:"
 
-#. [label]
 #. [button]: id=remove_addons
+#. [label]
 #: data/gui/window/addon_connect.cfg:144
 #: data/gui/window/addon_uninstall_list.cfg:51
 msgid "Remove Add-ons"
 msgstr "Odstrániť doplnky"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=help
 #. [button]: id=show_help
+#. [button]: id=help
 #: data/gui/window/addon_connect.cfg:184 data/gui/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Help"
 msgstr "Pomoc"
 
@@ -1825,8 +1825,8 @@ msgstr "Pripojiť"
 #: data/gui/window/editor_set_starting_position.cfg:175
 #: data/gui/window/folder_create.cfg:133 data/gui/window/game_load.cfg:463
 #: data/gui/window/game_save.cfg:134 data/gui/window/label_settings.cfg:149
-#: data/gui/window/language_selection.cfg:141 data/gui/window/message.cfg:149
-#: data/gui/window/mp_change_control.cfg:160
+#: data/gui/window/language_selection.cfg:141 data/gui/window/logging.cfg:168
+#: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:160
 #: data/gui/window/mp_cmd_wrapper.cfg:477 data/gui/window/mp_connect.cfg:173
 #: data/gui/window/mp_create_game.cfg:559
 #: data/gui/window/mp_create_game_choose_mods.cfg:202
@@ -2068,9 +2068,9 @@ msgstr "Vzostupne"
 msgid "sort^Descending"
 msgstr "Zostupne"
 
-#. [label]: id=name
-#. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_name
+#. [toggle_button]: id=sort_0
+#. [label]: id=name
 #: data/gui/window/addon_list.cfg:50 data/gui/window/game_load.cfg:245
 #: data/gui/window/mp_server_list.cfg:107
 msgid "Name"
@@ -2103,9 +2103,9 @@ msgstr "Veľkosť:"
 msgid "Downloads"
 msgstr "Sťahovania:"
 
-#. [toggle_button]: id=sort_1
-#. [label]: id=typename
 #. [toggle_button]: id=sort_type
+#. [label]: id=typename
+#. [toggle_button]: id=sort_1
 #: data/gui/window/addon_list.cfg:121
 #: data/gui/window/gamestate_inspector.cfg:107
 #: data/gui/window/unit_create.cfg:158
@@ -2117,8 +2117,8 @@ msgstr "Typ"
 msgid "Choose the add-ons you want to remove."
 msgstr "Vyber doplnky na odstránenie."
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/mp_cmd_wrapper.cfg:198
 #: data/gui/window/preferences/05_multiplayer.cfg:317
@@ -2205,7 +2205,7 @@ msgstr ""
 #: data/gui/window/folder_create.cfg:119
 #: data/gui/window/game_cache_options.cfg:247 data/gui/window/game_load.cfg:450
 #: data/gui/window/game_save.cfg:120 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:127
+#: data/gui/window/language_selection.cfg:127 data/gui/window/logging.cfg:158
 #: data/gui/window/mp_change_control.cfg:150
 #: data/gui/window/mp_create_game.cfg:544
 #: data/gui/window/mp_create_game_choose_mods.cfg:188
@@ -2268,8 +2268,8 @@ msgstr ""
 msgid "Configure sides"
 msgstr "Nastavenie:"
 
-#. [label]
 #. [label]: id=era_label
+#. [label]
 #: data/gui/window/campaign_settings.cfg:157
 #: data/gui/window/mp_create_game.cfg:185
 msgid "Era:"
@@ -2297,9 +2297,9 @@ msgstr "Strana:"
 msgid "Last"
 msgstr "Posledná"
 
+#. [button]: id=previous_page
 #. [button]: id=previous_tod
 #. [button]: id=previous_tip
-#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:97 data/gui/window/custom_tod.cfg:327
 #: data/gui/window/title_screen.cfg:195
 msgid "Previous"
@@ -2310,9 +2310,9 @@ msgstr "Predchádzajúca"
 msgid "Previous page"
 msgstr "Predchádzajúca strana"
 
+#. [button]: id=next_page
 #. [button]: id=next_tod
 #. [button]: id=next_tip
-#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/custom_tod.cfg:352
 #: data/gui/window/title_screen.cfg:210
 msgid "Next"
@@ -2638,7 +2638,7 @@ msgstr "Žiadne"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:210
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:211
 msgid "Generate Map"
 msgstr "Generuj mapu"
 
@@ -2693,7 +2693,7 @@ msgstr "Vytvoriť"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:208
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:209
 msgid "Resize Map"
 msgstr "Zmeň veľkosť mapy"
 
@@ -2798,8 +2798,8 @@ msgstr "Pokračovať"
 msgid "Execution trace"
 msgstr "Postupnosť vykonávania"
 
-#. [grid]
 #. [button]: id=cancel
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/title_screen.cfg:266
 msgid "Quit"
@@ -2845,15 +2845,15 @@ msgstr "Kopírovať"
 msgid "Copy this path to clipboard"
 msgstr "Skopírovať cestu do schránky"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
 msgstr "Prehliadať"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
@@ -2889,8 +2889,8 @@ msgstr "Vymazať uložené"
 msgid "Do you really want to delete this game?"
 msgstr "Chceš naozaj vymazať túto hru?"
 
-#. [toggle_button]: id=do_not_show_again
 #. [toggle_button]: id=dont_ask_again
+#. [toggle_button]: id=do_not_show_again
 #: data/gui/window/game_delete.cfg:80
 #: data/gui/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
@@ -2904,8 +2904,8 @@ msgstr "Už nikdy nezobrazovať"
 msgid "Load Game"
 msgstr "Načítaj hru"
 
-#. [label]
 #. [label]: id=lblFilter
+#. [label]
 #: data/gui/window/game_load.cfg:195 data/gui/window/unit_create.cfg:98
 msgid "Filter"
 msgstr "Filter"
@@ -3074,8 +3074,8 @@ msgstr "Predmety"
 msgid "Contents"
 msgstr "Obsah"
 
-#. [label]
 #. [button]: id=lua
+#. [label]
 #: data/gui/window/gamestate_inspector.cfg:303
 #: data/gui/window/lua_interpreter.cfg:41
 msgid "Lua Console"
@@ -3088,8 +3088,8 @@ msgstr ""
 msgid "Show or Hide Labels"
 msgstr "Ukázať pohyblivé nápisy"
 
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:263
 msgid "Language"
@@ -3240,8 +3240,8 @@ msgstr "Oddiaľ mapu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#. [grid]
 #. [button]: id=show_preferences
+#. [grid]
 #: data/gui/window/lobby_main.cfg:691 data/gui/window/preferences.cfg:209
 #: data/gui/window/title_screen.cfg:264 src/hotkey/hotkey_command.cpp:87
 msgid "Preferences"
@@ -3323,6 +3323,20 @@ msgstr "Čas zablokovania:"
 #: data/gui/window/lobby_player_info.cfg:187
 msgid "Kick/ban"
 msgstr "Vykopnúť/zablokovať"
+
+#. [label]
+#: data/gui/window/logging.cfg:85
+#, fuzzy
+#| msgid "Options"
+msgid "Logging Options"
+msgstr "Možnosti"
+
+#. [button]: id=clear
+#: data/gui/window/lua_interpreter.cfg:132
+#, fuzzy
+#| msgid "Clean Gray Cobbles"
+msgid "Clear Console"
+msgstr "Čistá sivá dlažba"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
@@ -3462,8 +3476,8 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:221
 msgid "Defaults"
@@ -3582,8 +3596,8 @@ msgstr "Veľkosť mapy: "
 msgid "Default"
 msgstr "Predvolené"
 
-#. [label]: id=title
 #. [button]: id=password
+#. [label]: id=title
 #: data/gui/window/mp_create_game.cfg:226
 #: data/gui/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
@@ -3637,8 +3651,8 @@ msgstr "Nastav heslo, ktoré musia zadať hráči pri vstupe do hry."
 msgid "Password:"
 msgstr "Heslo: "
 
-#. [column]
 #. [label]
+#. [column]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:165
 msgid "Host Networked Game"
@@ -3691,8 +3705,8 @@ msgid "Password Reminder"
 msgstr "Pripomienka hesla"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:39
 #: data/gui/window/title_screen.cfg:258 src/gui/dialogs/game_load.cpp:354
 msgid "Multiplayer"
@@ -3946,7 +3960,7 @@ msgstr ""
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:87
-msgid "Available in titlescreen"
+msgid "Available at titlescreen"
 msgstr ""
 
 #. [button]: id=btn_add_hotkey
@@ -4576,7 +4590,7 @@ msgstr "Verbuj"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:204
-#: src/gui/dialogs/preferences_dialog.cpp:381
+#: src/gui/dialogs/preferences_dialog.cpp:382
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Chyba"
@@ -4592,35 +4606,35 @@ msgstr "Detaily:"
 msgid "Copy this report to clipboard"
 msgstr "Kopírovať hlásenie do schránky"
 
-#: src/build_info.cpp:183
+#: src/build_info.cpp:168
 msgid "feature^Experimental OpenMP support"
 msgstr ""
 
-#: src/build_info.cpp:188
+#: src/build_info.cpp:173
 msgid "feature^PNG screenshots"
 msgstr ""
 
-#: src/build_info.cpp:193
+#: src/build_info.cpp:178
 msgid "feature^Lua console completion"
 msgstr ""
 
-#: src/build_info.cpp:198
+#: src/build_info.cpp:183
 msgid "feature^Legacy bidirectional rendering"
 msgstr ""
 
-#: src/build_info.cpp:205
+#: src/build_info.cpp:190
 msgid "feature^D-Bus notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:214
+#: src/build_info.cpp:199
 msgid "feature^Win32 notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:220
+#: src/build_info.cpp:205
 msgid "feature^Cocoa notifications back end"
 msgstr ""
 
-#: src/build_info.cpp:225
+#: src/build_info.cpp:210
 msgid "feature^Growl notifications back end"
 msgstr ""
 
@@ -4644,21 +4658,21 @@ msgstr "Nepodarilo sa vymazať súbor."
 msgid "Creation of the directory failed."
 msgstr "Nepodarilo sa vytvoriť adresár."
 
-#: src/game_preferences.cpp:408
+#: src/game_preferences.cpp:407
 msgid "No server has been defined."
 msgstr "Nebol definovaný žiadny server."
 
-#: src/game_preferences.cpp:507
+#: src/game_preferences.cpp:506
 msgid "player"
 msgstr "hráč"
 
-#: src/game_preferences.cpp:1033
+#: src/game_preferences.cpp:1042
 #, fuzzy
 #| msgid "%H:%M"
 msgid "[%H:%M]"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:1036
+#: src/game_preferences.cpp:1045
 #, fuzzy
 #| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
@@ -4835,7 +4849,7 @@ msgstr "Neznámy"
 #: src/gui/dialogs/chat_log.cpp:418 src/gui/dialogs/game_cache_options.cpp:104
 #: src/gui/dialogs/game_version.cpp:186
 #: src/gui/dialogs/gamestate_inspector.cpp:870
-#: src/gui/dialogs/lua_interpreter.cpp:460
+#: src/gui/dialogs/lua_interpreter.cpp:476
 #: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:226
 msgid "Clipboard support not found, contact your packager"
@@ -4927,40 +4941,40 @@ msgstr ""
 "Zvolená modifikácia nie je kompatibilná s aktuálnym prostredím.\n"
 "Prosím zvoľ nejakú kompatibilnú."
 
-#: src/gui/dialogs/game_cache_options.cpp:137
+#: src/gui/dialogs/game_cache_options.cpp:138
 #, fuzzy
 #| msgid "addon_state^Unknown"
 msgid "dir_size^Unknown"
 msgstr "Neznámy"
 
-#: src/gui/dialogs/game_cache_options.cpp:139
-#: src/gui/dialogs/network_transmission.cpp:56
-#: src/gui/dialogs/network_transmission.cpp:57
+#: src/gui/dialogs/game_cache_options.cpp:140
+#: src/gui/dialogs/network_transmission.cpp:51
+#: src/gui/dialogs/network_transmission.cpp:52
 #: src/gui/dialogs/screenshot_notification.cpp:73
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_cache_options.cpp:162
+#: src/gui/dialogs/game_cache_options.cpp:163
 msgid "Cache Cleaned"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:163
+#: src/gui/dialogs/game_cache_options.cpp:164
 msgid "The game data cache has been cleaned."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:166
+#: src/gui/dialogs/game_cache_options.cpp:167
 msgid "The game data cache could not be completely cleaned."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:182
+#: src/gui/dialogs/game_cache_options.cpp:183
 msgid "Cache Purged"
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:183
+#: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache has been purged."
 msgstr ""
 
-#: src/gui/dialogs/game_cache_options.cpp:186
+#: src/gui/dialogs/game_cache_options.cpp:187
 msgid "The game data cache could not be purged."
 msgstr ""
 
@@ -5038,73 +5052,73 @@ msgstr "Neznáme"
 msgid "Side $side_number ($name)"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:43
+#: src/gui/dialogs/loadscreen.cpp:44
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:44
+#: src/gui/dialogs/loadscreen.cpp:45
 msgid "Reading files and creating cache"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:45 src/gui/dialogs/loadscreen.cpp:48
+#: src/gui/dialogs/loadscreen.cpp:46 src/gui/dialogs/loadscreen.cpp:49
 msgid "Initializing display"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:46
+#: src/gui/dialogs/loadscreen.cpp:47
 msgid "Reinitialize fonts for the current language"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:47
+#: src/gui/dialogs/loadscreen.cpp:48
 msgid "Initializing teams"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:49
+#: src/gui/dialogs/loadscreen.cpp:50
 #, fuzzy
 #| msgid "Configuration:"
 msgid "Loading game configuration"
 msgstr "Nastavenie:"
 
-#: src/gui/dialogs/loadscreen.cpp:50
+#: src/gui/dialogs/loadscreen.cpp:51
 #, fuzzy
 #| msgid "Flowering Water Lilies"
 msgid "Loading data files"
 msgstr "Kvitnúce vodné lekná"
 
-#: src/gui/dialogs/loadscreen.cpp:51
+#: src/gui/dialogs/loadscreen.cpp:52
 msgid "Loading level"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:52
+#: src/gui/dialogs/loadscreen.cpp:53
 msgid "Initializing scripting engine"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:53
+#: src/gui/dialogs/loadscreen.cpp:54
 #, fuzzy
 #| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
 msgstr "Zapnúť plánovací režim pri spustení"
 
-#: src/gui/dialogs/loadscreen.cpp:54
+#: src/gui/dialogs/loadscreen.cpp:55
 msgid "Reading unit files"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:55
+#: src/gui/dialogs/loadscreen.cpp:56
 msgid "Loading units"
 msgstr ""
 
-#: src/gui/dialogs/loadscreen.cpp:56
+#: src/gui/dialogs/loadscreen.cpp:57
 #, fuzzy
 #| msgid "Uninstall Add-ons"
 msgid "Searching for installed add-ons"
 msgstr "Odinštalovať doplnky"
 
-#: src/gui/dialogs/loadscreen.cpp:57
+#: src/gui/dialogs/loadscreen.cpp:58
 #, fuzzy
 #| msgid "Random starting time"
 msgid "Starting game"
 msgstr "Náhodný čas začiatku"
 
-#: src/gui/dialogs/loadscreen.cpp:58
+#: src/gui/dialogs/loadscreen.cpp:59
 msgid "Verifying cache"
 msgstr ""
 
@@ -5112,27 +5126,27 @@ msgstr ""
 msgid "whisper to $receiver"
 msgstr "šepkanie s $receiver"
 
-#: src/gui/dialogs/lobby/lobby.cpp:629
+#: src/gui/dialogs/lobby/lobby.cpp:630
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Hry: zobrazené $num_shown z $num_total"
 
-#: src/gui/dialogs/lobby/lobby.cpp:673
+#: src/gui/dialogs/lobby/lobby.cpp:674
 msgid "Observers allowed"
 msgstr "Diváci povolení"
 
-#: src/gui/dialogs/lobby/lobby.cpp:676
+#: src/gui/dialogs/lobby/lobby.cpp:677
 msgid "Observers not allowed"
 msgstr "Diváci nie sú povolení"
 
-#: src/gui/dialogs/lobby/lobby.cpp:1076
+#: src/gui/dialogs/lobby/lobby.cpp:1077
 msgid ""
-"Whisper session with $name started. If you don’t want to receive messages "
+"Whisper session with $name started. If you do not want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 "Šepkanie s hráčom $name spustené. Ak nechceš ďalej dostávať správy od tohto "
 "hráča, napíš /ignore $name\n"
 
-#: src/gui/dialogs/lobby/lobby.cpp:1083
+#: src/gui/dialogs/lobby/lobby.cpp:1084
 #, fuzzy
 #| msgid "Room $name joined"
 msgid "<i>Room $name joined</i>"
@@ -5160,47 +5174,47 @@ msgstr "Strana $side"
 msgid "Load Game..."
 msgstr "Načítaj hru..."
 
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "no"
 msgstr "nie"
 
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "yes"
 msgstr "áno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:157
+#: src/gui/dialogs/preferences_dialog.cpp:158
 msgid "infinite"
 msgstr "neobmedzený"
 
-#: src/gui/dialogs/preferences_dialog.cpp:330
+#: src/gui/dialogs/preferences_dialog.cpp:331
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty list"
 msgstr "(prázdny zoznam)"
 
-#: src/gui/dialogs/preferences_dialog.cpp:339
+#: src/gui/dialogs/preferences_dialog.cpp:340
 msgid "friend"
 msgstr "priateľ"
 
-#: src/gui/dialogs/preferences_dialog.cpp:344
+#: src/gui/dialogs/preferences_dialog.cpp:345
 msgid "ignored"
 msgstr "ignorovaný"
 
-#: src/gui/dialogs/preferences_dialog.cpp:381
+#: src/gui/dialogs/preferences_dialog.cpp:382
 msgid "Invalid username"
 msgstr "Neplatné používateľské meno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:414
+#: src/gui/dialogs/preferences_dialog.cpp:415
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Zobraziť a meniť zoznam priateľov a ignorovaných hráčov"
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-msgid "&#10003;"
+#: src/gui/dialogs/preferences_dialog.cpp:937
+msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:997
+#: src/gui/dialogs/preferences_dialog.cpp:998
 #, fuzzy
 #| msgid ""
 #| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
@@ -5212,51 +5226,51 @@ msgstr ""
 "\"$hotkey_sequence|\" je používaná \"$old_hotkey_action|\". Chceš ju "
 "predefinovať na \"$new_hotkey_action|\"?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:1000
 msgid "Reassign Hotkey"
 msgstr "Predefinovať klávesovú skratku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1016
+#: src/gui/dialogs/preferences_dialog.cpp:1017
 msgid "All hotkeys have been reset to their default values."
 msgstr "Všetky klávesové skratky boli nastavené na štandardné hodnoty."
 
-#: src/gui/dialogs/preferences_dialog.cpp:1016
+#: src/gui/dialogs/preferences_dialog.cpp:1017
 msgid "Hotkeys Reset"
 msgstr "Zrušiť klávesové skratky"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1088
+#: src/gui/dialogs/preferences_dialog.cpp:1091
 #, fuzzy
 #| msgid "Prefs section^General"
 msgid "Prefs tab^General"
 msgstr "Všeobecné"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1089
+#: src/gui/dialogs/preferences_dialog.cpp:1092
 msgid "Prefs tab^Friends"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:1126
+#: src/gui/dialogs/preferences_dialog.cpp:1129
 msgid "Prefs section^General"
 msgstr "Všeobecné"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1127
+#: src/gui/dialogs/preferences_dialog.cpp:1130
 #, fuzzy
 #| msgid "Prefs section^Game"
 msgid "Prefs section^Hotkeys"
 msgstr "Hra"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1128
+#: src/gui/dialogs/preferences_dialog.cpp:1131
 msgid "Prefs section^Display"
 msgstr "Obrazovka"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1129
+#: src/gui/dialogs/preferences_dialog.cpp:1132
 msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1130
+#: src/gui/dialogs/preferences_dialog.cpp:1133
 msgid "Prefs section^Multiplayer"
 msgstr "Zápas"
 
-#: src/gui/dialogs/preferences_dialog.cpp:1131
+#: src/gui/dialogs/preferences_dialog.cpp:1134
 #, fuzzy
 #| msgid "Prefs section^Game"
 msgid "Prefs section^Advanced"
@@ -5391,7 +5405,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Zrušenie kliknutia vyžaduje tlačidlo 'click_dismiss' alebo 'ok'."
 
 #: src/gui/widgets/window.cpp:1081 src/gui/widgets/window.cpp:1118
-#: src/tests/gui/test_gui2.cpp:486
+#: src/tests/gui/test_gui2.cpp:489
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 "Nepodarilo sa zobraziť dialógové okno, ktoré sa nezmestilo na obrazovku."
@@ -5777,19 +5791,25 @@ msgstr "Posunúť paletu doľava"
 msgid "Scroll Palette Right"
 msgstr "Posunúť paletu doprava"
 
-#: src/hotkey/hotkey_command.cpp:155
+#: src/hotkey/hotkey_command.cpp:154
+#, fuzzy
+#| msgid "Remove Add-ons"
+msgid "Remove Location"
+msgstr "Odstrániť doplnky"
+
+#: src/hotkey/hotkey_command.cpp:156
 msgid "Add New Side"
 msgstr "Pridať novú stranu"
 
-#: src/hotkey/hotkey_command.cpp:157
+#: src/hotkey/hotkey_command.cpp:158
 msgid "Next Tool"
 msgstr "Ďalší nástroj"
 
-#: src/hotkey/hotkey_command.cpp:159
+#: src/hotkey/hotkey_command.cpp:160
 msgid "Paint Tool"
 msgstr "Kresliaci nástroj"
 
-#: src/hotkey/hotkey_command.cpp:159 src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:160 src/hotkey/hotkey_command.cpp:161
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -5798,11 +5818,11 @@ msgstr ""
 "Shift pre kreslenie len na základnú vrstvu. Ctrl+klik prevezme terén pod "
 "kurzorom."
 
-#: src/hotkey/hotkey_command.cpp:160
+#: src/hotkey/hotkey_command.cpp:161
 msgid "Fill Tool"
 msgstr "Vypĺňací nástroj"
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
@@ -5810,11 +5830,11 @@ msgstr ""
 "Ľavé tlačidlo myši označí alebo odznačí (s Ctrl), pravé zobrazí kontextové "
 "menu. Držte Shift pre označovanie polí s rovnakým terénom."
 
-#: src/hotkey/hotkey_command.cpp:161
+#: src/hotkey/hotkey_command.cpp:162
 msgid "Selection Tool"
 msgstr "Nástroj výberu"
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -5824,19 +5844,19 @@ msgstr ""
 "posúvajú štartovaciu pozíciu, Alt+číslo nastaví štartovaciu pozíciu pod "
 "kurzorom, Delete vymaže."
 
-#: src/hotkey/hotkey_command.cpp:162
+#: src/hotkey/hotkey_command.cpp:163
 msgid "Starting Positions Tool"
 msgstr "Nástroj začiatočných pozícií"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Label Tool"
 msgstr "Nástroj nápisov"
 
-#: src/hotkey/hotkey_command.cpp:163
+#: src/hotkey/hotkey_command.cpp:164
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr "Ľavé tlačidlo myši nastaví alebo posunie nápis, pravé vymaže."
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
@@ -5844,15 +5864,15 @@ msgstr ""
 "Ľavé tlačidlo myši nastaví novú jednotku alebo potiahne jednotku, pravé "
 "zobrazí kontextové menu. Musí byť určená strana."
 
-#: src/hotkey/hotkey_command.cpp:164
+#: src/hotkey/hotkey_command.cpp:165
 msgid "Unit Tool"
 msgstr "Nástroj jednotiek"
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:166
 msgid "Item Tool"
 msgstr "Nástroj predmetov"
 
-#: src/hotkey/hotkey_command.cpp:165
+#: src/hotkey/hotkey_command.cpp:166
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
@@ -5860,7 +5880,7 @@ msgstr ""
 "Ľavé tlačidlo myši nastaví nový predmet alebo ho potiahne, pravé vymaže. "
 "Zatiaľ neimplementované."
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
@@ -5868,11 +5888,11 @@ msgstr ""
 "Ľavé tlačidlo myši nastaví alebo potiahne zdroj zvuku, pravé vymaže. Zatiaľ "
 "neimplementované."
 
-#: src/hotkey/hotkey_command.cpp:166
+#: src/hotkey/hotkey_command.cpp:167
 msgid "Sound Source Tool"
 msgstr "Nástroj pre zdroje zvuku"
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
@@ -5880,334 +5900,334 @@ msgstr ""
 "Ľavé tlačidlo myši nastaví vlastníctvo dediny na aktuálnu stranu, pravé "
 "vymaže. Musí byť určená strana."
 
-#: src/hotkey/hotkey_command.cpp:167
+#: src/hotkey/hotkey_command.cpp:168
 msgid "Village Tool"
 msgstr "Nástroj dedín"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:170
 msgid "Can Recruit"
 msgstr "Môže verbovať"
 
-#: src/hotkey/hotkey_command.cpp:169
+#: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle the recruit attribute of a unit."
 msgstr "Prepnúť vlastnosť verbovania na jednotke."
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Can be Renamed"
 msgstr "Môže byť premenované"
 
-#: src/hotkey/hotkey_command.cpp:170
+#: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle the unit being renameable."
 msgstr "Prepnúť premenovateľnosť jednotky."
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Assign Recruit List"
 msgstr "Priradiť zoznam na verbovanie"
 
-#: src/hotkey/hotkey_command.cpp:171
+#: src/hotkey/hotkey_command.cpp:172
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr "Priradiť jednotke označený zoznam jednotiek ako zoznam na verbovanie."
 
-#: src/hotkey/hotkey_command.cpp:173
+#: src/hotkey/hotkey_command.cpp:174
 msgid "Change Unit ID"
 msgstr "Zmeniť ID jednotky"
 
-#: src/hotkey/hotkey_command.cpp:174
+#: src/hotkey/hotkey_command.cpp:175
 msgid "Loyal"
 msgstr "Verný"
 
-#: src/hotkey/hotkey_command.cpp:177
+#: src/hotkey/hotkey_command.cpp:178
 msgid "Toggle Minimap Unit Coding"
 msgstr "Prepnúť kódovanie jednotiek na minimape"
 
-#: src/hotkey/hotkey_command.cpp:178
+#: src/hotkey/hotkey_command.cpp:179
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Prepnúť kódovanie terénu na minimape"
 
-#: src/hotkey/hotkey_command.cpp:180
+#: src/hotkey/hotkey_command.cpp:181
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Prepnúť kreslenie jednotiek na minimape"
 
-#: src/hotkey/hotkey_command.cpp:181
+#: src/hotkey/hotkey_command.cpp:182
 msgid "Toggle Minimap Village Drawing"
 msgstr "Prepnúť kreslenie dedín na minimape"
 
-#: src/hotkey/hotkey_command.cpp:182
+#: src/hotkey/hotkey_command.cpp:183
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Prepnúť kreslenie terénu na minimape"
 
-#: src/hotkey/hotkey_command.cpp:184
+#: src/hotkey/hotkey_command.cpp:185
 msgid "Next Brush"
 msgstr "Ďalší štetec"
 
-#: src/hotkey/hotkey_command.cpp:185
+#: src/hotkey/hotkey_command.cpp:186
 msgid "Default Brush"
 msgstr "Predvolený štetec"
 
-#: src/hotkey/hotkey_command.cpp:186
+#: src/hotkey/hotkey_command.cpp:187
 msgid "Single Tile"
 msgstr "Jedno pole"
 
-#: src/hotkey/hotkey_command.cpp:187
+#: src/hotkey/hotkey_command.cpp:188
 msgid "Radius One"
 msgstr "Polomer 1"
 
-#: src/hotkey/hotkey_command.cpp:188
+#: src/hotkey/hotkey_command.cpp:189
 msgid "Radius Two"
 msgstr "Polomer 2"
 
-#: src/hotkey/hotkey_command.cpp:189
+#: src/hotkey/hotkey_command.cpp:190
 msgid "Brush NW-SE"
 msgstr "Štetec SZ-JV"
 
-#: src/hotkey/hotkey_command.cpp:190
+#: src/hotkey/hotkey_command.cpp:191
 msgid "Brush SW-NE"
 msgstr "Štetec JZ-SV"
 
-#: src/hotkey/hotkey_command.cpp:192
+#: src/hotkey/hotkey_command.cpp:193
 msgid "Cut"
 msgstr "Vystrihni"
 
-#: src/hotkey/hotkey_command.cpp:193
+#: src/hotkey/hotkey_command.cpp:194
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "Ľavé tlačidlo myši prilepí zo schránky, pravé zobrazí kontextové menu."
 
-#: src/hotkey/hotkey_command.cpp:194
+#: src/hotkey/hotkey_command.cpp:195
 msgid "Paste"
 msgstr "Vlož"
 
-#: src/hotkey/hotkey_command.cpp:195
+#: src/hotkey/hotkey_command.cpp:196
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportovať vybrané súradnice do systémovej schránky"
 
-#: src/hotkey/hotkey_command.cpp:196
+#: src/hotkey/hotkey_command.cpp:197
 msgid "Select All"
 msgstr "Označ všetko"
 
-#: src/hotkey/hotkey_command.cpp:197
+#: src/hotkey/hotkey_command.cpp:198
 msgid "Select Inverse"
 msgstr "Označ inverzne"
 
-#: src/hotkey/hotkey_command.cpp:198
+#: src/hotkey/hotkey_command.cpp:199
 msgid "Select None"
 msgstr "Zruš označenie"
 
-#: src/hotkey/hotkey_command.cpp:199
+#: src/hotkey/hotkey_command.cpp:200
 msgid "Rotate Clipboard Clockwise"
 msgstr "Otočiť schránku doprava"
 
-#: src/hotkey/hotkey_command.cpp:200
+#: src/hotkey/hotkey_command.cpp:201
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Otočiť schránku doľava"
 
-#: src/hotkey/hotkey_command.cpp:201
+#: src/hotkey/hotkey_command.cpp:202
 msgid "Flip Clipboard Horizontally"
 msgstr "Prevrátiť schránku horizontálne"
 
-#: src/hotkey/hotkey_command.cpp:202
+#: src/hotkey/hotkey_command.cpp:203
 msgid "Flip Clipboard Vertically"
 msgstr "Prevrátiť schránku vertikálne"
 
-#: src/hotkey/hotkey_command.cpp:203
+#: src/hotkey/hotkey_command.cpp:204
 msgid "Rotate Selection"
 msgstr "Otoč výber"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Flip Selection"
 msgstr "Otoč výber"
 
-#: src/hotkey/hotkey_command.cpp:205
+#: src/hotkey/hotkey_command.cpp:206
 msgid "Fill Selection"
 msgstr "Vyplň označené"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:207
 msgid "Generate Tiles in Selection"
 msgstr "Generuj polia vo výbere"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Randomize Tiles in Selection"
 msgstr "Premiešaj polia vo výbere"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Rotate Map"
 msgstr "Otoč mapu"
 
-#: src/hotkey/hotkey_command.cpp:211
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Apply a Mask"
 msgstr "Aplikuj masku"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:213
 msgid "Create Mask"
 msgstr "Vytvor masku"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Display"
 msgstr "Prekresli obrazovku"
 
-#: src/hotkey/hotkey_command.cpp:215
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Update Terrain Transitions"
 msgstr "Prekresli prechody terénu"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:219
 msgid "Toggle Terrain Transition Update"
 msgstr "Prepnúť prechody terénu"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Auto-update Terrain Transitions"
 msgstr "Automaticky prekresľuj prechody terénu"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automaticky prekresľovať prechody terénu: Nie"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automaticky prekresľovať prechody terénu: Čiastočne"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Refresh Image Cache"
 msgstr "Obnov pamäť obrázkov"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Draw Hex Coordinates"
 msgstr "Zobraz súradnice hexov"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Draw Terrain Codes"
 msgstr "Kresli kódy terénu"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Save Selection to Area"
 msgstr "Uložiť označenie do oblasti"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Rename Selected Area"
 msgstr "Premenovať označenú oblasť"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Remove Selected Area"
 msgstr "Vymazať označenú oblasť"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Add New Area"
 msgstr "Pridať ďalšiu oblasť"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Edit Scenario"
 msgstr "Upraviť scénu"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Edit Side"
 msgstr "Upraviť stranu"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Remove Side"
 msgstr "Odstrániť stranu"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Delay Shroud Updates"
 msgstr "Pozastav odkrývanie mapy"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Update Shroud Now"
 msgstr "Vykresli odkrytú mapu"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Continue Move"
 msgstr "Pokračuj v pohybe"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Find Label or Unit"
 msgstr "Nájdi značku alebo jednotku"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Speak to Ally"
 msgstr "Povedz spojencom"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Speak to All"
 msgstr "Povedz všetkým"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:245
 msgid "View Chat Log"
 msgstr "Ukáž záznam rozhovoru"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Enter User Command"
 msgstr "Zadaj užívateľský príkaz"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Custom Command"
 msgstr "Užívateľský príkaz"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Run Formula"
 msgstr "Spustiť vzorec AI"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Clear Messages"
 msgstr "Vymaž správy"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Change Language"
 msgstr "Zmeň jazyk"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Refresh WML"
 msgstr "Aktualizovať WML"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Next Tip of the Day"
 msgstr "Ďalší tip dňa"
 
-#: src/hotkey/hotkey_command.cpp:253
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Previous Tip of the Day"
 msgstr "Predchádzajúci tip dňa"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:255
 msgid "Start Tutorial"
 msgstr "Spustiť výcvik"
 
-#: src/hotkey/hotkey_command.cpp:255
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Start Campaign"
 msgstr "Spustiť výpravu"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:257
 msgid "Start Multiplayer Game"
 msgstr "Spustiť zápas"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Manage Add-ons"
 msgstr "Spravovať doplnky"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:259
 #, fuzzy
 #| msgid "Manage Add-ons"
 msgid "Manage Cores"
 msgstr "Spravovať doplnky"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Start Editor"
 msgstr "Spustiť editor"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Show Credits"
 msgstr "Zobraziť autorov hry"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Show Helptip"
 msgstr "Zobraziť pomôckou"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Unrecognized Command"
 msgstr "Nerozpoznaný príkaz"
 
@@ -6233,23 +6253,23 @@ msgstr "sk,cz,en"
 msgid "The maximum text width is less than 1."
 msgstr "Maximálna šírka textu je menšia ako 1."
 
-#: src/preferences_display.cpp:126
+#: src/preferences_display.cpp:124
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
-#: src/preferences_display.cpp:191
+#: src/preferences_display.cpp:189
 #, fuzzy
 #| msgid "Find $filename server binary to host networked games"
 msgid "Find $filename server binary"
 msgstr "Nájdi program servera ($filename) na vytvorenie sieťových hier"
 
-#: src/terrain/translation.cpp:712
+#: src/terrain/translation.cpp:706
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "Našiel sa terén s identifikátorom s viac ako 4 znakmi: "
 
-#: src/text.cpp:893
+#: src/text.cpp:897
 msgid "The text contains invalid markup: "
 msgstr "Text obsahuje neplatné značky: "
 

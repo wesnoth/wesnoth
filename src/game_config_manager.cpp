@@ -35,8 +35,6 @@
 #include "theme.hpp"
 #include "image.hpp"
 
-#include <boost/make_shared.hpp>
-
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
@@ -296,7 +294,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		set_unit_data();
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
-		tdata_ = boost::make_shared<terrain_type_data>(game_config_);
+		tdata_ = std::make_shared<terrain_type_data>(game_config_);
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 	} catch(game::error& e) {
@@ -414,7 +412,7 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", nullptr };
+			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", "campaign", nullptr };
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{
@@ -518,7 +516,7 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
 		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 
-	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
+	typedef std::shared_ptr<game_config::scoped_preproc_define> define;
 	std::deque<define> extra_defines;
 	for (const std::string& extra_define : classification.campaign_xtra_defines) {
 		define new_define(new game_config::scoped_preproc_define(extra_define));
@@ -554,7 +552,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp)
 ///During an mp game the default difficuly define is also defined so better already load it now if we alreeady must reload config cache.
 	game_config::scoped_preproc_define normal(DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 
-	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
+	typedef std::shared_ptr<game_config::scoped_preproc_define> define;
 	try{
 		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
 	}

@@ -39,36 +39,33 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
-#define ERR_NG LOG_STREAM(warn, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_NGE LOG_STREAM(debug, log_engine_enemies)
 #define LOG_NGE LOG_STREAM(info, log_engine_enemies)
 #define WRN_NGE LOG_STREAM(warn, log_engine_enemies)
 
-
-static std::vector<team> *&teams = resources::teams;
-
 //static member initialization
 const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
-const boost::container::flat_set<std::string> team::attributes = boost::assign::list_of<std::string>("ai_config")
-	("carryover_add")("carryover_percentage")("color")("controller")("current_player")("defeat_condition")("flag")
-	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
-	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
-	("recall_cost")("recruit")("save_id")("scroll_to_leader")
-	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
-	("suppress_end_turn_confirmation")
-	("team_name")("user_team_name")("side_name")("village_gold")("village_support")("is_local")
+const std::set<std::string> team::attributes = {"ai_config",
+	"carryover_add", "carryover_percentage", "color", "controller", "current_player", "defeat_condition", "flag",
+	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
+	"no_leader", "objectives", "objectives_changed", "persistent", "lost",
+	"recall_cost", "recruit", "save_id", "scroll_to_leader",
+	"share_vision", "share_maps" ,"share_view", "shroud", "shroud_data", "start_gold",
+	"suppress_end_turn_confirmation",
+	"team_name", "user_team_name", "side_name", "village_gold", "village_support", "is_local",
 	// Multiplayer attributes.
-	("player_id")("action_bonus_count")("allow_changes")("allow_player")("color_lock")
-	("countdown_time")("disallow_observers")("faction")
-	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
-	("leader")("random_leader")("team_lock")("terrain_liked")
-	("user_description")("controller_lock")("chose_random")
-	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
+	"player_id", "action_bonus_count", "allow_changes", "allow_player", "color_lock",
+	"countdown_time", "disallow_observers", "faction",
+	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
+	"leader", "random_leader", "team_lock", "terrain_liked",
+	"user_description", "controller_lock", "chose_random",
+	"disallow_shuffle", "description"};
 
 team::team_info::team_info() :
 	gold(0),
@@ -440,7 +437,7 @@ int team::minimum_recruit_price() const
 
 bool team::calculate_enemies(size_t index) const
 {
-	if(teams == nullptr || index >= teams->size()) {
+	if(!resources::gameboard || index >= resources::gameboard->teams().size()) {
 		return false;
 	}
 
@@ -454,15 +451,15 @@ bool team::calculate_enemies(size_t index) const
 bool team::calculate_is_enemy(size_t index) const
 {
 	// We're not enemies of ourselves
-	if(&(*teams)[index] == this) {
+	if(&resources::gameboard->teams()[index] == this) {
 		return false;
 	}
 
 	// We are friends with anyone who we share a teamname with
 	std::vector<std::string> our_teams = utils::split(info_.team_name),
-						   their_teams = utils::split((*teams)[index].info_.team_name);
+						   their_teams = utils::split(resources::gameboard->teams()[index].info_.team_name);
 
-	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_name ["<<info_.team_name<<"], their team_name is ["<<(*teams)[index].info_.team_name<<"]"<< std::endl;
+	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team "<<index+1 << "; our team_name ["<<info_.team_name<<"], their team_name is ["<<resources::gameboard->teams()[index].info_.team_name<<"]"<< std::endl;
 	for(std::vector<std::string>::const_iterator t = our_teams.begin(); t != our_teams.end(); ++t) {
 		if(std::find(their_teams.begin(), their_teams.end(), *t) != their_teams.end())
 		{
@@ -513,17 +510,18 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 {
 	CONTROLLER new_controller;
 	if(!new_controller.parse(new_controller_string)) {
-		ERR_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+		WRN_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
 		return;
 	}
 	if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
-		ERR_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
+		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
 		return;
 	}
 	config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
 	if(!new_controller.parse(choice["controller"])) {
 		//TODO: this should be more than a ERR_NG message.
-		ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
+		// GL-2016SEP02 Oh? So why was ERR_NG defined as warning level? Making the call fit the definition.
+		WRN_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
 	}
 	if(!resources::controller->is_replay()) {
 		set_local(choice["is_local"].to_bool());
@@ -548,11 +546,11 @@ void team::change_team(const std::string &name, const t_string &user_name)
 
 void team::clear_caches(){
 	// Reset the cache of allies for all teams
-	if(teams != nullptr) {
-		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
-			i->enemies_.clear();
-			i->ally_shroud_.clear();
-			i->ally_fog_.clear();
+	if(resources::gameboard) {
+		for(auto& t : resources::gameboard->teams()) {
+			t.enemies_.clear();
+			t.ally_shroud_.clear();
+			t.ally_fog_.clear();
 		}
 	}
 }
@@ -566,10 +564,10 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 
 bool team::shrouded(const map_location& loc) const
 {
-	if(!teams)
+	if(!resources::gameboard)
 		return shroud_.value(loc.x+1,loc.y+1);
 
-	return shroud_.shared_value(ally_shroud(*teams),loc.x+1,loc.y+1);
+	return shroud_.shared_value(ally_shroud(resources::gameboard->teams()),loc.x+1,loc.y+1);
 }
 
 bool team::fogged(const map_location& loc) const
@@ -580,10 +578,10 @@ bool team::fogged(const map_location& loc) const
 	if ( fog_clearer_.count(loc) > 0 )
 		return false;
 
-	if(!teams)
+	if(!resources::gameboard)
 		return fog_.value(loc.x+1,loc.y+1);
 
-	return fog_.shared_value(ally_fog(*teams),loc.x+1,loc.y+1);
+	return fog_.shared_value(ally_fog(resources::gameboard->teams()),loc.x+1,loc.y+1);
 }
 
 const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
@@ -614,7 +612,7 @@ const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<tea
 
 bool team::knows_about_team(size_t index) const
 {
-	const team& t = (*teams)[index];
+	const team& t = resources::gameboard->teams()[index];
 
 	// We know about our own team
 	if(this == &t) return true;
@@ -656,11 +654,11 @@ void team::remove_fog_override(const std::set<map_location> &hexes)
 
 void validate_side(int side)
 {
-	if(teams == nullptr) {
+	if(!resources::gameboard) {
 		return;
 	}
 
-	if(side < 1 || side > int(teams->size())) {
+	if(side < 1 || side > int(resources::gameboard->teams().size())) {
 		throw game::game_error("invalid side(" + std::to_string(side) + ") found in unit definition");
 	}
 }
@@ -841,8 +839,8 @@ std::string team::get_side_color_index(int side)
 {
 	size_t index = size_t(side-1);
 
-	if(teams != nullptr && index < teams->size()) {
-		const std::string side_map = (*teams)[index].color();
+	if(resources::gameboard && index < resources::gameboard->teams().size()) {
+		const std::string side_map = resources::gameboard->teams()[index].color();
 		if(!side_map.empty()) {
 			return side_map;
 		}
@@ -880,7 +878,7 @@ config team::to_config() const
 std::string team::allied_human_teams() const
 {
 	std::vector<int> res;
-	for(const team& t : *teams)
+	for(const team& t : resources::gameboard->teams())
 	{
 		if(!t.is_enemy(this->side()) && t.is_human()) {
 			res.push_back(t.side());

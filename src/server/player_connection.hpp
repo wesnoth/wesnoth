@@ -24,7 +24,6 @@
 #define  BOOST_ASIO_DISABLE_THREADS
 #endif
 #include <boost/asio.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include <boost/multi_index_container.hpp>
 #include <boost/multi_index/member.hpp>
@@ -35,23 +34,21 @@
 namespace wesnothd
 {
 
-typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
-
 class player_record
 {
 	const socket_ptr socket_;
 	mutable player player_;
-	boost::shared_ptr<game> game_;
+	std::shared_ptr<game> game_;
 
 	public:
 
 	const socket_ptr socket() const { return socket_; }
 	player& info() const { return player_; }
 	const std::string& name() const { return player_.name(); }
-	const boost::shared_ptr<game> get_game() const;
-	boost::shared_ptr<game>& get_game();
+	const std::shared_ptr<game> get_game() const;
+	std::shared_ptr<game>& get_game();
 	int game_id() const;
-	static void set_game(player_record&, boost::shared_ptr<game>);
+	static void set_game(player_record&, std::shared_ptr<game>);
 	static void enter_lobby(player_record&);
 
 	player_record(const socket_ptr socket, const player& player) : socket_(socket), player_(player) {}

@@ -24,7 +24,6 @@
 
 #include "actions/undo.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
 #include "game_display.hpp"
@@ -41,7 +40,6 @@
 #include "whiteboard/manager.hpp"
 #include "replay_recorder_base.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <set>
 #include <map>
 
@@ -370,10 +368,10 @@ void replay::remove_command(int index)
 static std::vector< chat_msg > message_log;
 
 
-const std::vector<chat_msg>& replay::build_chat_log()
+const std::vector<chat_msg>& replay::build_chat_log() const
 {
 	message_log.clear();
-	std::vector<int>::iterator loc_it;
+	std::vector<int>::const_iterator loc_it;
 	int last_location = 0;
 	std::back_insert_iterator<std::vector < chat_msg > > chat_log_appender( back_inserter(message_log));
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
@@ -553,7 +551,7 @@ void replay::undo()
 	undo_cut(dummy);
 }
 
-config &replay::command(int n)
+config &replay::command(int n) const
 {
 	config & retv = base_->get_command_at(n);
 	assert(retv);
@@ -677,7 +675,7 @@ REPLAY_RETURN do_replay(bool one_move)
 REPLAY_RETURN do_replay_handle(bool one_move)
 {
 
-	//team &current_team = (*resources::teams)[side_num - 1];
+	//team &current_team = resources::gameboard->teams()[side_num - 1];
 
 	const int side_num = resources::controller->current_side();
 	while(true)
@@ -698,9 +696,9 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 
-		const config::all_children_itors ch_itors = cfg->all_children_range();
+		const config::const_all_children_itors ch_itors = cfg->all_children_range();
 		//if there is an empty command tag or a start tag
-		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
+		if (ch_itors.empty() || cfg->has_child("start"))
 		{
 			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
 			//also we removed the the "add empty replay entry at scenario reload" behavior.
@@ -799,7 +797,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			int val = child["value"];
 			int tval = child["team"];
-			if (tval <= 0  || tval > int(resources::teams->size())) {
+			if (tval <= 0  || tval > int(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
 					<< "Received update for :" << tval << " Current user :"
@@ -807,7 +805,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 				replay::process_error(errbuf.str());
 			} else {
-				(*resources::teams)[tval - 1].set_countdown_time(val);
+				resources::gameboard->teams()[tval - 1].set_countdown_time(val);
 			}
 		}
 		else if ((*cfg)["dependent"].to_bool(false))
@@ -823,7 +821,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			// but we are called from
 			// the only other option for "dependent" command is checksum wich is already checked.
 			assert(cfg->all_children_count() == 1);
-			std::string child_name = cfg->all_children_range().first->key;
+			std::string child_name = cfg->all_children_range().front().key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;

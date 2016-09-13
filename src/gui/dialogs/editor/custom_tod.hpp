@@ -42,14 +42,12 @@ class ttext_box;
 class tcustom_tod : public tdialog
 {
 public:
-	tcustom_tod(editor::editor_display* display,
+	tcustom_tod(display& display,
 				const std::vector<time_of_day>& tods);
 
-	static bool execute(editor::editor_display* display,
-						const std::vector<time_of_day>& tods,
-						CVideo& video)
+	static bool execute(display& display, const std::vector<time_of_day>& tods)
 	{
-		return tcustom_tod(display, tods).show(video);
+		return tcustom_tod(display, tods).show(display.video());
 	}
 
 private:
@@ -108,11 +106,8 @@ private:
 
 	/**
 	 * The display to update when the ToD changes.
-	 *
-	 * The pointer may be nullptr, in the unit tests, but normally it should be a
-	 * pointer to a valid object.
 	 */
-	editor::editor_display* display_;
+	display& display_;
 };
 
 } // namespace gui2

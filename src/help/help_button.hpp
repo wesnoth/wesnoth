@@ -27,14 +27,14 @@ class help_button : public gui::dialog_button, public hotkey::command_executor {
 public:
 	help_button(CVideo& video, const std::string &help_topic);
 	~help_button();
-	int action(gui::dialog_process_info &info);
+	int action(gui::dialog_process_info &info) override;
 	std::string topic() const { return topic_; }
-	void join();
-	void leave();
+	void join() override;
+	void leave() override;
 	CVideo& get_video() override { return video_; }
 private:
-	void show_help();
-	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const;
+	void show_help() override;
+	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const override;
 
 	CVideo &video_;
 	const std::string topic_;

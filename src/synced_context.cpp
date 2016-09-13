@@ -37,7 +37,6 @@
 #include "syncmp_handler.hpp"
 #include "units/id.hpp"
 #include "whiteboard/manager.hpp"
-#include <boost/lexical_cast.hpp>
 
 #include <cassert>
 #include <stdlib.h>
@@ -256,16 +255,16 @@ void synced_context::send_user_choice()
 	syncmp_registry::send_user_choice();
 }
 
-boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
+std::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
-		return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
+		return std::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
 	}
 	else
 	{
-		return boost::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
+		return std::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
 	}
 }
 
@@ -283,9 +282,12 @@ void synced_context::server_choice::send_request() const
 
 config synced_context::ask_server_choice(const server_choice& sch)
 {
+	if (!is_synced()) {
+		ERR_REPLAY << "Trying to ask the server for a '" << sch.name() << "' choice in a unsynced context, doing the choice locally. This can casue OOS.\n";
+		return sch.local_choice();
+	}
 	set_is_simultaneously();
 	resources::controller->increase_server_request_number();
-	assert(is_synced());
 	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
@@ -321,7 +323,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			//here we can get into the situation that the decision has already been made but not received yet.
 			synced_context::pull_remote_user_input();
 			//FIXME: we shoudl call play_controller::play_silce or the application will freeze while waiting for a remote choice.
-
+			resources::controller->play_slice();
 			/*
 				we don't want to send multiple "require_random" to the server.
 			*/

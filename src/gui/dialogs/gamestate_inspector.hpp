@@ -18,7 +18,8 @@
 #include "gui/dialogs/dialog.hpp"
 #include "variable.hpp"
 
-#include <boost/shared_ptr.hpp>
+namespace game_events {class manager; }
+class display_context;
 
 namespace gui2
 {
@@ -29,9 +30,7 @@ public:
 	class model;
 	class view;
 	class controller;
-	explicit tgamestate_inspector(const vconfig& cfg);
-
-	boost::shared_ptr<view> get_view();
+	tgamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title = "");
 
 private:
 	/** Inherited from tdialog. */
@@ -40,7 +39,13 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	boost::shared_ptr<view> view_;
+	std::shared_ptr<view> view_;
+	std::shared_ptr<model> model_;
+	std::shared_ptr<controller> controller_;
+	std::string title_;
+	const config& vars_;
+	const game_events::manager& events_;
+	const display_context& dc_;
 };
 }
 

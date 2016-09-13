@@ -18,20 +18,21 @@
 #include "widgets/widget.hpp"
 
 #include "tooltips.hpp"
-#include "editor/action/mouse/mouse_action.hpp"
+#include "editor/toolkit/editor_toolkit.hpp"
 
 namespace editor {
 
 palette_manager::palette_manager(editor_display& gui, const config& cfg
-		, mouse_action** active_mouse_action)
+                               , editor_toolkit& toolkit)
 		: gui::widget(gui.video()),
 		  gui_(gui),
 		  palette_start_(0),
-		  mouse_action_(active_mouse_action),
-		  terrain_palette_(new terrain_palette(gui, cfg, active_mouse_action)),
-		  unit_palette_(new unit_palette(gui, cfg, active_mouse_action)),
+		  toolkit_(toolkit),
+		  terrain_palette_(new terrain_palette(gui, cfg, toolkit)),
+		  unit_palette_(new unit_palette(gui, cfg, toolkit)),
 		  empty_palette_(new empty_palette(gui)),
-		  item_palette_(new item_palette(gui, cfg, active_mouse_action))
+		  item_palette_(new item_palette(gui, cfg, toolkit))
+		, location_palette_(new location_palette(gui, cfg, toolkit))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);
@@ -46,7 +47,7 @@ void palette_manager::set_group(size_t index)
 
 void palette_manager::adjust_size()
 {
-	scroll_top();
+	resrote_palete_bg(false);
 	const SDL_Rect& rect = gui_.palette_area();
 	set_location(rect);
 	palette_start_ = rect.y;
@@ -91,15 +92,22 @@ void palette_manager::scroll_up()
 
 void palette_manager::scroll_top()
 {
+	resrote_palete_bg(true);
+}
+
+void palette_manager::resrote_palete_bg(bool scroll_top)
+{
 	const SDL_Rect rect = gui_.palette_area();
-	active_palette().set_start_item(0);
+	if (scroll_top) {
+		active_palette().set_start_item(0);
+	}
 	bg_restore(rect);
 	set_dirty();
 }
 
 common_palette& palette_manager::active_palette()
 {
-	return (*mouse_action_)->get_palette();
+	return toolkit_.get_palette();
 }
 
 void palette_manager::scroll_bottom()
@@ -122,13 +130,13 @@ void palette_manager::draw_contents()
 
 	tooltips::clear_tooltips(loc);
 
-	gui::button* upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->hide(false);
-	gui::button* downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->hide(false);
-	gui::button* palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+	std::shared_ptr<gui::button> palette_menu_button = gui_.find_action_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 

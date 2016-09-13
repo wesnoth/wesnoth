@@ -20,7 +20,7 @@
 
 #include "game_end_exceptions.hpp"
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <sstream>
 #include <set>
 #include <string>
@@ -30,7 +30,7 @@ class saved_game;
 class terrain_type_data;
 class team;
 class playsingle_controller;
-typedef boost::shared_ptr<terrain_type_data> tdata_cache;
+typedef std::shared_ptr<terrain_type_data> tdata_cache;
 
 class config;
 

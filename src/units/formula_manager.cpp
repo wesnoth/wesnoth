@@ -23,7 +23,7 @@
 
 void unit_formula_manager::add_formula_var(std::string str, variant var)
 {
-	if(!formula_vars_) formula_vars_ = new game_logic::map_formula_callable;
+	if(!formula_vars_) formula_vars_ = std::make_shared<game_logic::map_formula_callable>();
 	formula_vars_->add(str, var);
 }
 
@@ -35,7 +35,7 @@ void unit_formula_manager::read(const config & ai)
 
 	if (const config &ai_vars = ai.child("vars"))
 	{
-		formula_vars_ = new game_logic::map_formula_callable;
+		formula_vars_ = std::make_shared<game_logic::map_formula_callable>();
 
 		variant var;
 		for (const config::attribute &i : ai_vars.attribute_range()) {

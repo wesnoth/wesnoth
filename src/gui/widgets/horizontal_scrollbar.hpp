@@ -35,35 +35,34 @@ public:
 
 private:
 	/** Inherited from tscrollbar. */
-	unsigned get_length() const
+	unsigned get_length() const override
 	{
 		return get_width();
 	}
 
 	/** Inherited from tscrollbar. */
-	unsigned minimum_positioner_length() const;
+	unsigned minimum_positioner_length() const override;
 
 	/** Inherited from tscrollbar. */
-	unsigned maximum_positioner_length() const;
+	unsigned maximum_positioner_length() const override;
 
 	/** Inherited from tscrollbar. */
-	unsigned offset_before() const;
+	unsigned offset_before() const override;
 
 	/** Inherited from tscrollbar. */
-	unsigned offset_after() const;
+	unsigned offset_after() const override;
 
 	/** Inherited from tscrollbar. */
-	bool on_positioner(const tpoint& coordinate) const;
+	bool on_positioner(const tpoint& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int on_bar(const tpoint& coordinate) const;
+	int on_bar(const tpoint& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	bool in_orthogonal_range(const tpoint& coordinate) const;
+	bool in_orthogonal_range(const tpoint& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current)
-			const
+	int get_length_difference(const tpoint& original, const tpoint& current) const override
 	{
 		return current.x - original.x;
 	}

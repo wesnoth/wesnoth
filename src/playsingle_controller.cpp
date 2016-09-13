@@ -25,7 +25,6 @@
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/manager.hpp"
@@ -52,7 +51,6 @@
 #include "statistics.hpp"
 #include "storyscreen/interface.hpp"
 #include "units/unit.hpp"
-#include "units/animation.hpp"
 #include "util.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
@@ -199,7 +197,7 @@ void playsingle_controller::play_scenario_main_loop()
 			}
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
 			for(size_t i = 0; i < local_players.size(); ++i) {
-				(*resources::teams)[i].set_local(local_players[i]);
+				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 			play_scenario_init();
 			replay_.reset(new replay_controller(*this, false, ex.level));
@@ -286,10 +284,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			}
 			return LEVEL_RESULT::VICTORY;
 		}
-		pump().fire(is_victory ? "victory" : "defeat");
+		pump().fire(is_victory ? "local_victory" : "local_defeat");
 		{ // Block for set_scontext_synced_base
 			set_scontext_synced_base sync;
-			pump().fire("scenario end");
+			pump().fire(end_level.proceed_to_next_level ? "victory" : "defeat");
+			pump().fire("scenario_end");
 		}
 		if(end_level.proceed_to_next_level) {
 			gamestate().board_.heal_all_survivors();
@@ -307,38 +306,34 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 				("result", is_victory ? "victory" : "defeat")
 			));
 		// Play victory music once all victory events
-		// are finished, if we aren't observers.
+		// are finished, if we aren't observers and the
+		// carryover dialog isn't disabled.
 		//
 		// Some scenario authors may use 'continue'
 		// result for something that is not story-wise
 		// a victory, so let them use [music] tags
 		// instead should they want special music.
 		const std::string& end_music = is_victory ? select_victory_music() : select_defeat_music();
-		if(end_music.empty() != true) {
+		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();
 		return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
-	} catch(const game::load_game_exception &) {
+	} catch(const savegame::load_game_exception &) {
 		// Loading a new game is effectively a quit.
-		//
-		if ( game::load_game_exception::game != "" ) {
-			saved_game_ = saved_game();
-		}
+		saved_game_ = saved_game();
 		throw;
 	} catch(wesnothd_error& e) {
 
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
+		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), savegame::savegame::YES_NO);
 		if(dynamic_cast<ingame_wesnothd_error*>(&e)) {
 			return LEVEL_RESULT::QUIT;
 		} else {
 			throw;
 		}
 	}
-
-	return LEVEL_RESULT::QUIT;
 }
 
 void playsingle_controller::play_idle_loop()
@@ -486,11 +481,9 @@ void playsingle_controller::linger()
 			play_slice();
 			gui_->draw();
 		}
-	} catch(const game::load_game_exception &) {
+	} catch(const savegame::load_game_exception &) {
 		// Loading a new game is effectively a quit.
-		if ( game::load_game_exception::game != "" ) {
-			saved_game_ = saved_game();
-		}
+		saved_game_ = saved_game();
 		throw;
 	}
 
@@ -540,7 +533,9 @@ void playsingle_controller::play_ai_turn()
 	turn_data_.send_data();
 	try {
 		try {
-			ai::manager::play_turn(current_side());
+			if (!should_return_to_play_side()) {
+				ai::manager::play_turn(current_side());
+			}
 		}
 		catch (return_to_play_side_exception&) {
 		}
@@ -611,8 +606,7 @@ void playsingle_controller::check_objectives()
 	const team &t = gamestate().board_.teams()[gui_->viewing_team()];
 
 	if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
-		dialogs::show_objectives(get_scenario_name().str(), t.objectives());
-		t.reset_objectives_changed();
+		show_objectives();
 	}
 }
 
@@ -667,7 +661,7 @@ void playsingle_controller::reset_replay()
 
 void playsingle_controller::enable_replay(bool is_unit_test)
 {
-	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), boost::shared_ptr<config>( new config(saved_game_.replay_start())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
+	replay_.reset(new replay_controller(*this, gamestate().has_human_sides(), std::shared_ptr<config>( new config(saved_game_.replay_start())), std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)));
 	if(is_unit_test) {
 		replay_->play_replay();
 	}

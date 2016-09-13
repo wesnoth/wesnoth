@@ -56,6 +56,11 @@ public:
 	bool is_random_faction();
 	void resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid); //Second Argument is a list of faction ids we don't want to match, used to implement random faction modes. If it is not possible to resolve then we just proceed anyways rather than give an error.
 
+	bool is_saved_game() const
+	{
+		return saved_game_;
+	}
+
 	// Picks the first faction with the greater amount of data
 	// matching the criteria.
 	int find_suitable_faction() const;
@@ -78,6 +83,11 @@ public:
 
 	int current_faction_index() const;
 
+	int current_leader_index() const
+		{ return leader_index(current_leader_); }
+	int current_gender_index() const
+		{ return gender_index(current_gender_); }
+
 private:
 	flg_manager(const flg_manager&);
 	void operator=(const flg_manager&);
@@ -98,11 +108,6 @@ private:
 	int leader_index(const std::string& leader) const;
 	/// returns -1 if no gender with that name was found
 	int gender_index(const std::string& gender) const;
-
-	int current_leader_index() const
-		{ return leader_index(current_leader_); }
-	int current_gender_index() const
-		{ return gender_index(current_gender_); }
 
 	const std::vector<const config*>& era_factions_;
 

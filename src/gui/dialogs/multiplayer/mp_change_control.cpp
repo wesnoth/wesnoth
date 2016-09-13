@@ -29,6 +29,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "formula/string_utils.hpp"
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
@@ -38,7 +39,6 @@
 
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define ERR_GUI LOG_STREAM(err, log_gui)
@@ -116,7 +116,7 @@ public:
 		item["id"] = std::string("side_") + std::to_string(side_num);
 		item["label"] = label;
 		item["use_markup"] = "true";
-		data.insert(std::make_pair("side", item));
+		data.emplace("side", item);
 		sides_list->add_row(data);
 	}
 
@@ -137,7 +137,7 @@ public:
 		item["id"] = nick;
 		item["label"] = label;
 		item["use_markup"] = "true";
-		data.insert(std::make_pair("nick", item));
+		data.emplace("nick", item);
 		nicks_list->add_row(data);
 	}
 };
@@ -173,8 +173,8 @@ public:
 		model_.clear_nicks();
 
 		std::set<std::string> nicks;
-		for(std::vector<team>::const_iterator it = resources::teams->begin();
-			it != resources::teams->end();
+		for(std::vector<team>::const_iterator it = resources::gameboard->teams().begin();
+			it != resources::gameboard->teams().end();
 			++it) {
 			if(!it->is_local_ai() && !it->is_network_ai() && !it->is_idle()
 			   && !it->is_empty() && !it->current_player().empty())
@@ -193,8 +193,8 @@ public:
 
 		for(const auto & nick : nicks)
 		{
-			if(side_number_ <= static_cast<int>(resources::teams->size())
-			   && resources::teams->at(side_number_ - 1).current_player()
+			if(side_number_ <= static_cast<int>(resources::gameboard->teams().size())
+			   && resources::gameboard->teams().at(side_number_ - 1).current_player()
 				  == nick) {
 				std::string label_str = "<b>" + nick + "</b>";
 				model_.add_nick(nick, label_str);
@@ -230,7 +230,7 @@ private:
 class tmp_change_control::controller
 {
 public:
-	typedef std::vector<boost::shared_ptr<side_controller> >
+	typedef std::vector<std::shared_ptr<side_controller> >
 	side_controller_ptr_vector;
 	controller(model& m) : model_(m), side_controllers_()
 	{
@@ -240,29 +240,29 @@ public:
 	{
 		DBG_GUI << "Sides list: filling\n";
 		model_.clear_sides();
-		int sides = resources::teams
-							? static_cast<int>((*resources::teams).size())
+		int sides = resources::gameboard
+							? static_cast<int>(resources::gameboard->teams().size())
 							: 0;
 		for(int side = 1; side <= sides; ++side) {
-			if(!resources::teams->at(side - 1).hidden()) {
+			if(!resources::gameboard->teams().at(side - 1).hidden()) {
 				string_map symbols;
 				symbols["side"] = std::to_string(side);
 				std::string side_str = vgettext("Side $side", symbols);
 				side_str = font::span_color(team::get_side_color(side))
 						   + side_str + "</span>";
 				model_.add_side(side, side_str);
-				side_controllers_.push_back(boost::shared_ptr<side_controller>(
-						new side_controller(side_str, model_, side)));
+				side_controllers_.push_back(std::make_shared<side_controller>(
+						side_str, model_, side));
 			}
 		}
 	}
 
-	boost::shared_ptr<side_controller> get_side_controller()
+	std::shared_ptr<side_controller> get_side_controller()
 	{
 		int selected = model_.sides_list->get_selected_row();
 		if(selected < 0 || selected
 						   >= static_cast<int>(side_controllers_.size()))
-			return boost::shared_ptr<side_controller>(); // null pointer
+			return std::shared_ptr<side_controller>(); // null pointer
 		else
 			return side_controllers_.at(selected);
 	}
@@ -397,7 +397,7 @@ tmp_change_control::tmp_change_control(events::menu_handler* mh)
 {
 }
 
-boost::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
+std::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
 {
 	return view_;
 }

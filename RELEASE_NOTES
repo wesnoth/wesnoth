@@ -18,57 +18,18 @@ CHANGES
 Example contents.
 [/rasection]
 
-[rasection="Support for SDL 1.2 has been dropped"]
-SDL version 1.2.x has been removed in favour of SDL version 2.0.x. The build systems have been and all code has been removed that utilised verions 1.2.x.
-[/rasection]
 
-[rasection="WML/Lua compatibility changes and deprecations"]
+[rasection="Additions and changes to the AI"]
 [list]
+[*]A new candidate action (CA), called [wiki=RCA_AI#The_Candidate_Actions_.28CAs.29_of_the_main_loop_Stage_in_the_RCA_AI]high XP attack[/wiki], has been added to all general Wesnoth AIs in mainline, fixing a short-coming in the default AI's combat CA. Previously, the AI would only attack units 1 experience point (XP) from leveling under very specific and rarely occurring circumstances. It was possible to exploit this, for example, for blocking vital passages or keeping key units alive without these units ever being attacked, making scenarios much easier than they were intended.
+
+The new CA fixes this hole and will generally, but not blindly, attack such units now. The attack logic is explained [url=https://github.com/wesnoth/wesnoth/blob/master/data/ai/lua/ca_high_xp_attack.lua#L5]here[/url]. Since the new behavior is accomplished not by changing the existing attack code, but by adding a new candidate action, the previous behavior can be restored by removing the high_xp_attack CA, in case this is desired in specific scenarios.
+[*]For content creators, a [wiki=Micro_AIs#Assassin_Squad_Micro_AI_.28ai_type.3Dassassin.29]new Micro AI[/wiki], controlling individual assassins or an entire assassin squad has been added. It is already being used in Heir to the Throne scenario 8, 'The Princess of Wesnoth'.
+[*]A long standing bug which caused units with zero maximum moves not to attack adjacent enemies under certain circumstances has been fixed. This also (sometimes) affected units which could not move due to other circumstances (such as terrain).
+[*]Two instances of the AI ignoring the [disable] weapon special have been fixed.
 [/list]
 [/rasection]
 
-[rasection="Wesnoth Formula Language update"]
-The Wesnoth formula language used by $(...) substitution, the formula= key in standard unit filters, and a few other places has received some significant updates. The changlog has the full list, but some highlights are:
-[list]
-[*]New operators for string concatenation, ranges, and testing containment
-[*]New string interpolation syntax
-[*]Dot operator can access identifier-friendly string keys in maps
-[*]Function definitions work outside FormulaAI and GUI2
-[*]Many new functions for math and string manipulation
-[*]Exponentiation operator is now right-associative (meaning 2^3^2 now produces 512 rather than 64)
-[*]Dice operator is now synced
-[*]Improved formula debugger
-[/list]
-The "fai" and "faiend" keywords are deprecated in favour of "wfl" and "wflend" respectively. This is part of a move to more clearly distinguish [wiki]Wesnoth Formula Language[/wiki], the language itself, from [wiki]FormulaAI[/wiki], which is just one use of the language in Wesnoth.
-
-The attributes leader, total_movement, movement_left, and states in WFL unit variables were renamed to canrecruit, max_moves, moves, and status respectively; this was done to make them match the Lua and WML names for the same things. Also, the special attribute in WFL weapon variables is now specials. The old names will continue to work for now, but they may be removed in a future version.
-[/rasection]
-
-[rasection="Changes to the AI"]
-After several development cycles of adding new and/or experimental features to the AI engine, a long overdue AI code cleanup effort was undertaken in order to facilitate future AI maintenance and development. This included a refactoring and reorganization of the code of the current AI as well as the removal of non-functional, outdated or deprecated code.
-
-As a result, the format for configuring some AI parameters has been simplified. The AI functionality has also been extended in several ways. For example, it now allows Lua facets and the [modify_ai] tag has been extended to allow editing the internal jobs of the recruitment_instructions aspect.
-
-While making these changes, we tried to retain backward compatibility as much as feasible. Thus, most of the changes are invisible to the WML and custom AI developer and the vast majority of existing UMC code will continue to function as is. It is, however, unavoidable that some old AIs or AI configurations will require updating. A summary of those changes is given below. For more details, see the full changelog and the Wesnoth wiki. In addition, we have set up a separate [forum thread; create first post and add link] in which you can post any questions and problems you might encounter while updating your code.
-[/rasection]
-
-[rawarn="AI compatibility breaking changes"]
-Several old, deprecated AI components were removed:
-[list]
-[*]Several aspects that no longer did anything anyway: number_of_possible_recruits_to_force_recruit, recruitment_ignore_bad_combat, recruitment_ignore_bad_movement
-[*]The recruitment aspect; however, this is automatically translated to a recruitment_instructions aspect, which means it will now be honored where it was previously ignored
-[*]Stages that were either old and deprecated or experimental and unmaintained/broken: old recruitment, fallback, Strategy Formulation with RCA
-[*]Candidate actions that were either old and deprecated or experimental and unmaintained/broken: old recruitment, simple move-to-targets, global fallback, Akihara recruitment, experimental recruitment
-[*]The protect_my_unit [goal] type
-[/list]
-
-A number of changes were made to the way Lua AI components are declared in the WML and how the code is called by the engine. The wiki documents the new method in detail, but unfortunately these changes are likely to break some AIs. However, the fixes will be simple in most cases:
-[list=1]
-[*]If you used old-style Lua candidate actions (with execute= and evaluate= keys) together with an explicit [engine]name=lua tag, they will no longer work as written. In many cases, the fix will be simple - the code within [engine] frequently begins with a line similar to [c]local ai = ...[/c]. Simply removing this line will be sufficient to fix most such cases; if you accessed a "data" variable in the AI, see the Experimental AI definition (data/ai/ais/ai_generic_rush.cfg) for an example of how to fix it.
-[*]If you used old-style Lua candidate actions without an explicit engine tag, you may need to remove a line similar to [c]local ai = ...[/c] from some of your code. In general, anything of the form [c]ai = <something>[/c] needs to be changed.
-[*]If you used new-style (external) Lua candidate actions (with a location key), they will still work for the time being (provided that they use the exec_parms= and/or eval_parms= keys), but we recommend updating them nevertheless. The exec_parms= and eval_parms= keys should be combined into an [args] tag, and the argument list of your execution and evaluation functions should be changed from [c](ai, cfg, self)[/c] to [c](cfg, data)[/c]. The data parameter is the same as self.data was before; however, provided you do not have an explicit [engine] tag, self.data will continue to work.
-[/list]
-[/rawarn]
 
 ==========
 KNOWN BUGS
@@ -78,11 +39,11 @@ KNOWN BUGS
 [b]General bugs:[/b]
 
 [list]
+[*]Crashes may occur during the loading screen. If those crashes happen to you, you can disable the loading screen animation by addding disable_loading screen_animation=yes in your preferences file.
 [*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
 [*]Wesnoth does not exist on the panel (bug [bug]24202[/bug]).
 [*]"Name of Game" bleeds onto "Player/Type" label when leaving/entering the app (bug [bug]24437[/bug]).
 [*]Inconsistent transparency on credits screen (bug [bug]24428[/bug]).
-[*]options become black on hover (bug [bug]24478[/bug]).
 [*]Dialog In Replay Clearing Issue (bug [bug]24491[/bug]).
 [/list]
 [/raissue]
@@ -99,22 +60,12 @@ KNOWN BUGS
 [list]
 [*]ClearType font rendering is disabled as it causes glitches (bug [bug]21648[/bug]).
 This is likely caused by outdated libraries in the packaging process.
-[*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
-This is likely caused by outdated libraries in the packaging process. There is no built-in workaround available yet.
 [/list]
 
-[b]Bugs specific to Apple OS X:[/b]
-
-The following issues affecting Wesnoth on Apple OS X are known and they are pending fixes. Many of them require significant re-engineering that can only be done in 1.13.x development releases later, or cannot be properly addressed due to a lack of experienced OS X coders in our team. Thus, unless someone can contribute patches to address them, it is unlikely that these bugs will be fixed.
+[b]Bugs specific to macOS:[/b]
 
 [list]
-[*]The default variable-width font is used instead of a monospace font even where a monospace font is required (bug [bug]23628[/bug]).
-[*]Helvetica is used as the default variable-width font instead of DejaVu Sans (bug [bug]23560[/bug]).
-[*]Fullscreen mode does not fill the entire screen when maximum resolution is selected in Preferences → Display, and user interface elements are scaled and distorted.
-[*]System commands do not work while Wesnoth is running in fullscreen mode (bug [bug]21943[/bug]).
 [*]Trackpad tap clicking is sometimes not recognized ([url=http://forums.wesnoth.org/viewtopic.php?f=4&t=39788]forum post[/url]).
-[*]Unofficial builds  with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
-[*]Consecutive line breaks (paragraph breaks) are not rendered as expected (bug [bug]21649[/bug]).
-This is likely caused by outdated libraries in the packaging process. There is no built-in workaround available yet.
+[*]Unofficial builds with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
 [/list]
 [/raissue]

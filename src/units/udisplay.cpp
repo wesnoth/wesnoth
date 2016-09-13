@@ -128,7 +128,7 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
-			false,"",0,unit_animation::INVALID,nullptr,nullptr,step_left);
+			false,"",0,unit_animation::hit_type::INVALID,nullptr,nullptr,step_left);
 	animator.start_animations();
 	animator.pause_animation();
 	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
@@ -217,7 +217,7 @@ void unit_mover::replace_temporary(unit_ptr u)
 	u->set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	(*resources::teams)[u->side()-1].is_enemy(disp_->viewing_side());
+	is_enemy_ =	resources::gameboard->teams()[u->side()-1].is_enemy(disp_->viewing_side());
 }
 
 
@@ -267,7 +267,7 @@ void unit_mover::start(unit_ptr u)
 	disp_->invalidate(path_[0]);
 
 	// If the unit can be seen here by the viewing side:
-	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[0]) ) {
+	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[0], disp_->get_disp_context()) ) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
 		disp_->scroll_to_tiles(path_, game_display::ONSCREEN, true, true, 0.0, false);
@@ -336,8 +336,8 @@ void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wai
 
 	for ( ; current_ < path_index; ++current_ )
 		// If the unit can be seen by the viewing side while making this step:
-		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_]) ||
-		     !temp_unit_ptr_->invisible(path_[current_+1]) )
+		if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[current_], disp_->get_disp_context()) ||
+		     !temp_unit_ptr_->invisible(path_[current_+1], disp_->get_disp_context()) )
 		{
 			// Wait for the previous step to complete before drawing the next one.
 			wait_for_anims();
@@ -507,8 +507,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 	unit_animator animator;
 	attacker.set_facing(loc.get_relative_dir(defender_loc));
 	defender->set_facing(defender_loc.get_relative_dir(loc));
-	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
-	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
+	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",0,unit_animation::hit_type::HIT,attack,secondary_attack,0);
+	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",0,unit_animation::hit_type::MISS,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -524,10 +524,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,"",0,unit_animation::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,"",0,unit_animation::hit_type::INVALID,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,"",0,unit_animation::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,"",0,unit_animation::hit_type::INVALID,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
@@ -554,10 +554,10 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(&loser,"death",loc,winner_loc,0,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
+	animator.add_animation(&loser,"death",loc,winner_loc,0,false,"",0,unit_animation::hit_type::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
 	animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",0,
-			unit_animation::KILL,secondary_attack,attack,0);
+			unit_animation::hit_type::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -609,11 +609,11 @@ void unit_attack(display * disp, game_board & board,
 
 	unit_animation::hit_type hit_type;
 	if(damage >= defender.hitpoints()) {
-		hit_type = unit_animation::KILL;
+		hit_type = unit_animation::hit_type::KILL;
 	} else if(damage > 0) {
-		hit_type = unit_animation::HIT;
+		hit_type = unit_animation::hit_type::HIT;
 	}else {
-		hit_type = unit_animation::MISS;
+		hit_type = unit_animation::hit_type::MISS;
 	}
 	animator.add_animation(&attacker, "attack", att->get_location(),
 		def->get_location(), damage, true,  text_2,
@@ -802,11 +802,11 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		attack_type *primary = nullptr;
 		attack_type *secondary = nullptr;
 		Uint32 text_color;
-		unit_animation::hit_type hits=  unit_animation::INVALID;
-		std::vector<attack_type> attacks = u->attacks();
-		std::vector<attack_type>::iterator itor;
-		boost::scoped_ptr<attack_type> dummy_primary;
-		boost::scoped_ptr<attack_type> dummy_secondary;
+		unit_animation::hit_type hits=  unit_animation::hit_type::INVALID;
+		const_attack_itors attacks = u->attacks();
+		const_attack_itors::const_iterator itor;
+		attack_ptr dummy_primary;
+		attack_ptr dummy_secondary;
 
 		// death and victory animations are handled here because usually
 		// the code iterates through all the unit's attacks
@@ -849,13 +849,13 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		}
 
 		if(cfg["hits"] == "yes" || cfg["hits"] == "hit") {
-			hits = unit_animation::HIT;
+			hits = unit_animation::hit_type::HIT;
 		}
 		if(cfg["hits"] == "no" || cfg["hits"] == "miss") {
-			hits = unit_animation::MISS;
+			hits = unit_animation::hit_type::MISS;
 		}
 		if( cfg["hits"] == "kill" ) {
-			hits = unit_animation::KILL;
+			hits = unit_animation::hit_type::KILL;
 		}
 		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
 			text_color = display::rgb(0xff,0xff,0xff);

@@ -94,9 +94,8 @@ void tlabel_settings::pre_show(twindow& window) {
 		}
 
 		list_data["cat_name"]["label"] = name;
-		cats_listbox.add_row(list_data);
+		tgrid* grid = &cats_listbox.add_row(list_data);
 
-		tgrid* grid = cats_listbox.get_row_grid(cats_listbox.get_item_count() - 1);
 		ttoggle_button& status = find_widget<ttoggle_button>(grid, "cat_status", false);
 		status.set_value(visible);
 		status.set_callback_state_change(std::bind(&tlabel_settings::toggle_category, this, _1, category));

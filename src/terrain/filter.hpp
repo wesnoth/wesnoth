@@ -27,18 +27,9 @@ class unit_filter;
 class unit_map;
 class team;
 
-#include <boost/scoped_ptr.hpp> //to memoize unit_filter
-
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
 public:
-
-#ifdef _MSC_VER
-	// This constructor is required for MSVC 9 SP1 due to a bug there
-	// see http://social.msdn.microsoft.com/forums/en-US/vcgeneral/thread/34473b8c-0184-4750-a290-08558e4eda4e
-	// other compilers don't need it.
-	 terrain_filter();
-#endif
 
 	terrain_filter(const vconfig& cfg,
 		const filter_context * fc, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
@@ -66,6 +57,7 @@ public:
 	void flatten(const bool flat_tod=true) { flat_ = flat_tod; }
 
 	config to_config() const;
+	friend class terrain_filterimpl;
 private:
 	bool match_internal(const map_location& loc, const bool ignore_xy) const;
 
@@ -86,7 +78,7 @@ private:
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
 		std::vector< std::pair<terrain_filter, std::map<map_location,bool> > > adjacent_match_cache;
 
-		boost::scoped_ptr<unit_filter> ufilter_;
+		std::unique_ptr<unit_filter> ufilter_;
 	};
 
 	mutable terrain_filter_cache cache_;

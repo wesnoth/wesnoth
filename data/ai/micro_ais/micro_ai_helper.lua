@@ -170,7 +170,7 @@ function micro_ai_helper.delete_aspects(side, aspect_parms)
         W.modify_ai {
             side = side,
             action = "try_delete",
-            path = "aspect[attacks].facet[" .. parms.aspect_id .. "]"
+            path = "aspect[attacks].facet[" .. parms.facet.id .. "]"
         }
     end
 end

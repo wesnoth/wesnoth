@@ -45,6 +45,7 @@ namespace {
 	const char UNTRANSLATABLE_PART = 0x02;
 	const char TEXTDOMAIN_SEPARATOR = 0x03;
 	const char ID_TRANSLATABLE_PART = 0x04;
+	const char PLURAL_PART = 0x05;
 
 	std::vector<std::string> id_to_textdomain;
 	std::map<std::string, unsigned int> textdomain_to_id;
@@ -70,18 +71,19 @@ t_string_base::walker::walker(const t_string_base& string) :
 	}
 }
 
+static std::string mark = std::string(TRANSLATABLE_PART, 1) + UNTRANSLATABLE_PART +
+	ID_TRANSLATABLE_PART + PLURAL_PART;
+
 void t_string_base::walker::update()
 {
 	unsigned int id;
-
-	static std::string mark = std::string(TRANSLATABLE_PART, 1) + UNTRANSLATABLE_PART +
-		ID_TRANSLATABLE_PART;
 
 	if(begin_ == string_.size())
 		return;
 
 	switch(string_[begin_]) {
 	case TRANSLATABLE_PART: {
+		// Format: [TRANSLATABLE_PART]textdomain[TEXTDOMAIN_SEPARATOR]msgid[...]
 		std::string::size_type textdomain_end =
 			string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
@@ -102,6 +104,7 @@ void t_string_base::walker::update()
 		break;
 	}
 	case ID_TRANSLATABLE_PART:
+		// Format: [ID_TRANSLATABLE_PART][2-byte textdomain ID]msgid[...]
 		if(begin_ + 3 >= string_.size()) {
 			ERR_CF << "Error: invalid string: " << string_ << std::endl;
 			begin_ = string_.size();
@@ -139,12 +142,71 @@ void t_string_base::walker::update()
 		begin_ += 1;
 		break;
 
+	case PLURAL_PART:
+		begin_ = string_.find_first_of(mark, end_ + 5);
+		if(begin_ == std::string::npos)
+			begin_ = string_.size();
+		if(string_[begin_] == PLURAL_PART) {
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			begin_ = string_.size();
+			return;
+		}
+		update();
+		break;
+
 	default:
 		end_ = string_.size();
 		translatable_ = false;
 		textdomain_ = "";
 		break;
 	}
+
+	if(translatable_ && string_[end_] == PLURAL_PART) {
+		// Format: [PLURAL_PART][4-byte count]msgid_plural[...]
+		if(end_ + 5 >= string_.size()) {
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			begin_ = string_.size();
+			return;
+		}
+		std::string::size_type real_end = string_.find_first_of(mark, end_ + 6);
+		if(real_end < string_.size() && string_[real_end] == PLURAL_PART) {
+			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			begin_ = string_.size();
+			return;
+		}
+		countable_ = true;
+		union {
+			int32_t count;
+			char data[4];
+		} cvt;
+		std::copy_n(string_.data() + end_ + 1, 4, cvt.data);
+		count_ = cvt.count;
+	} else {
+		countable_ = false;
+		count_ = 0;
+	}
+}
+
+std::string::const_iterator t_string_base::walker::plural_begin() const
+{
+	if(!countable_) {
+		return begin();
+	}
+
+	return end() + 5;
+}
+
+std::string::const_iterator t_string_base::walker::plural_end() const
+{
+	if(!countable_) {
+		return end();
+	}
+
+	std::string::size_type pl_end = string_.find_first_of(mark, end_ + 5);
+	if(pl_end == std::string::npos) {
+		pl_end = string_.size();
+	}
+	return string_.begin() + pl_end;
 }
 
 t_string_base::t_string_base() :
@@ -205,6 +267,46 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 	value_ += char(id & 0xff);
 	value_ += char(id >> 8);
 	value_ += string;
+}
+
+t_string_base::t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain) :
+	value_(1, ID_TRANSLATABLE_PART),
+	translated_value_(),
+	translation_timestamp_(0),
+	translatable_(true),
+	last_untranslatable_(false)
+{
+	if (sing.empty() && pl.empty()) {
+		value_.clear();
+		translatable_ = false;
+		return;
+	}
+
+	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
+	unsigned int id;
+
+	if(idi == textdomain_to_id.end()) {
+		id = id_to_textdomain.size();
+		textdomain_to_id[textdomain] = id;
+		id_to_textdomain.push_back(textdomain);
+	} else {
+		id = idi->second;
+	}
+
+	value_ += char(id & 0xff);
+	value_ += char(id >> 8);
+	value_ += sing;
+	value_ += PLURAL_PART;
+
+	union {
+		int32_t count;
+		char data[4];
+	} cvt;
+	cvt.count = count;
+	for(char c : cvt.data) {
+		value_ += c;
+	}
+	value_ += pl;
 }
 
 t_string_base::t_string_base(const char* string) :
@@ -444,7 +546,12 @@ const std::string& t_string_base::str() const
 		std::string part(w.begin(), w.end());
 
 		if(w.translatable()) {
-			translated_value_ += translation::dsgettext(w.textdomain().c_str(), part.c_str());
+			if(w.countable()) {
+				std::string plural(w.plural_begin(), w.plural_end());
+				translated_value_ += translation::dsngettext(w.textdomain().c_str(), part.c_str(), plural.c_str(), w.count());
+			} else {
+				translated_value_ += translation::dsgettext(w.textdomain().c_str(), part.c_str());
+			}
 		} else {
 			translated_value_ += part;
 		}
@@ -454,7 +561,7 @@ const std::string& t_string_base::str() const
 	return translated_value_;
 }
 
-t_string::t_string() : super()
+t_string::t_string() : val_(new base())
 {
 }
 
@@ -462,35 +569,41 @@ t_string::~t_string()
 {
 }
 
-t_string::t_string(const t_string &o) : super(o)
+t_string::t_string(const t_string &o) : val_(o.val_)
 {
 }
 
-t_string::t_string(const base &o) : super(o)
+t_string::t_string(const base &o) : val_(new base(o))
 {
 }
 
-t_string::t_string(const char *o) : super(base(o))
+t_string::t_string(const char *o) : val_(new base(o))
 {
 }
 
-t_string::t_string(const std::string &o) : super(base(o))
+t_string::t_string(const std::string &o) : val_(new base(o))
 {
 }
 
-t_string::t_string(const std::string &o, const std::string &textdomain) : super(base(o, textdomain))
+t_string::t_string(const std::string &o, const std::string &textdomain) : val_(new base(o, textdomain))
+{
+}
+
+t_string::t_string(const std::string &s, const std::string& pl, int c, const std::string &textdomain)
+		: val_(new base(s, pl, c, textdomain))
 {
 }
 
 t_string &t_string::operator=(const t_string &o)
 {
-	super::operator=(o);
+	val_ = o.val_;
 	return *this;
 }
 
 t_string &t_string::operator=(const char *o)
 {
-	super::operator=(base(o));
+	t_string o2(o);
+	swap(o2);
 	return *this;
 }
 
@@ -511,42 +624,4 @@ std::ostream& operator<<(std::ostream& stream, const t_string_base& string)
 {
 	stream << string.str();
 	return stream;
-}
-
-/**
- * shared_object<tstring_base> implementation of hash database
- */
-
-template <typename T, typename node = shared_node<T> >
-struct types {
-typedef boost::multi_index_container<
-	node,
-	boost::multi_index::indexed_by<
-		boost::multi_index::hashed_unique<
-			BOOST_MULTI_INDEX_MEMBER(node, T, val)
-		>
-	>
-> hash_map;
-
-typedef typename hash_map::template nth_index<0>::type hash_index;
-
-};
-
-static types<t_string_base>::hash_map& map() { static types<t_string_base>::hash_map* map = new types<t_string_base>::hash_map; return *map; }
-static types<t_string_base>::hash_index& index() { return map().get<0>(); }
-static std::mutex& mutex() { static std::mutex* m = new std::mutex(); return *m; }
-typedef shared_node<t_string_base> node;
-
-template<>
-const node* shared_object<t_string_base>::insert_into_index(const node & n)
-{
-	std::lock_guard<std::mutex> lock(mutex());
-	return &*index().insert(n).first;
-}
-
-template<>
-void shared_object<t_string_base>::erase_from_index(const node * ptr)
-{
-	std::lock_guard<std::mutex> lock(mutex());
-	index().erase(index().find(ptr->val));
 }

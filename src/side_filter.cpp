@@ -38,22 +38,6 @@
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
 
-#ifdef _MSC_VER
-// This is a workaround for a VC bug; this constructor is never called
-// and so we don't care about the warnings this quick fix generates
-#pragma warning(push)
-#pragma warning(disable:4413)
-side_filter::side_filter()
-	: cfg_(vconfig::unconstructed_vconfig())
-	, flat_()
-	, side_string_()
-	, fc_(nullptr)
-{
-	assert(false);
-}
-#pragma warning(pop)
-#endif
-
 side_filter::~side_filter() {}
 
 side_filter::side_filter(const vconfig& cfg, const filter_context * fc,  bool flat_tod)

@@ -406,7 +406,7 @@ set(wesnoth-sdl_SRC
 if(ENABLE_LIBPNG AND PNG_FOUND)
 	set(wesnoth-sdl_SRC
 		${wesnoth-sdl_SRC}
-		SDL_SavePNG/savepng.cpp
+		SDL_SavePNG/savepng.c
 	)
 endif(ENABLE_LIBPNG AND PNG_FOUND)
 
@@ -468,6 +468,7 @@ set(wesnoth-gui_iterator_SRC
 	gui/auxiliary/iterator/iterator.cpp
 	gui/auxiliary/iterator/walker_grid.cpp
 	gui/auxiliary/iterator/walker_widget.cpp
+	gui/auxiliary/iterator/walker_tree_node.cpp
 )
 
 add_library(wesnoth-gui_iterator
@@ -518,7 +519,7 @@ add_library(wesnoth-gui_tooltip
 set(wesnoth-gui_widget_SRC
 	gui/dialogs/drop_down_list.cpp
 	gui/widgets/button.cpp
-	gui/widgets/combobox.cpp
+	gui/widgets/chatbox.cpp
 	gui/widgets/container.cpp
 	gui/widgets/control.cpp
 	gui/widgets/debug.cpp
@@ -532,6 +533,7 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/list.cpp
 	gui/widgets/listbox.cpp
 	gui/widgets/matrix.cpp
+	gui/widgets/menu_button.cpp
 	gui/widgets/minimap.cpp
 	gui/widgets/multi_page.cpp
 	gui/widgets/pane.cpp
@@ -636,6 +638,7 @@ add_library(wesnoth-schema_validator
 
 set(wesnoth-main_SRC
 	about.cpp
+	actions/advancement.cpp
 	actions/attack.cpp
 	actions/create.cpp
 	actions/heal.cpp
@@ -710,7 +713,6 @@ set(wesnoth-main_SRC
 	desktop/notifications.cpp
 	desktop/open.cpp
 	desktop/version.cpp
-	dialogs.cpp
 	display_chat_manager.cpp
 	editor/action/action.cpp
 	editor/action/action_item.cpp
@@ -733,6 +735,7 @@ set(wesnoth-main_SRC
 	editor/toolkit/brush.cpp
 	editor/palette/editor_palettes.cpp
 	editor/palette/item_palette.cpp
+	editor/palette/location_palette.cpp
 	editor/palette/terrain_palettes.cpp
 	editor/palette/unit_palette.cpp
 	editor/editor_display.cpp
@@ -798,15 +801,18 @@ set(wesnoth-main_SRC
 	gui/dialogs/editor/edit_side.cpp
 	gui/dialogs/editor/edit_scenario.cpp
 	gui/dialogs/editor/generate_map.cpp
+	gui/dialogs/editor/generator_settings.cpp
 	gui/dialogs/editor/new_map.cpp
 	gui/dialogs/editor/resize_map.cpp
 	gui/dialogs/editor/set_starting_position.cpp
+	gui/dialogs/end_credits.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_cache_options.cpp
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
 	gui/dialogs/game_save.cpp
+	gui/dialogs/game_stats.cpp
 	gui/dialogs/game_version.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp
@@ -819,6 +825,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/logging.cpp
 	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/multiplayer/faction_select.cpp
 	gui/dialogs/multiplayer/mp_alerts_options.cpp
 	gui/dialogs/multiplayer/mp_change_control.cpp
 	gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
@@ -829,6 +836,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
 	gui/dialogs/multiplayer/mp_login.cpp
 	gui/dialogs/multiplayer/mp_method_selection.cpp
+	gui/dialogs/multiplayer/mp_options_helper.cpp
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
 	gui/dialogs/preferences_dialog.cpp
@@ -836,12 +844,16 @@ set(wesnoth-main_SRC
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
+	gui/dialogs/sp_options_configure.cpp
 	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
+	gui/dialogs/unit_advance.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
+	gui/dialogs/unit_list.cpp
+	gui/dialogs/unit_recall.cpp
 	gui/dialogs/unit_recruit.cpp
 	gui/dialogs/wml_error.cpp
 	gui/dialogs/wml_message.cpp
@@ -903,7 +915,6 @@ set(wesnoth-main_SRC
 	scripting/application_lua_kernel.cpp
 	scripting/debug_lua.cpp
 	scripting/game_lua_kernel.cpp
-	scripting/lua_api.cpp
 	scripting/lua_common.cpp
 	scripting/lua_cpp_function.cpp
 	scripting/lua_fileops.cpp
@@ -914,7 +925,8 @@ set(wesnoth-main_SRC
 	scripting/lua_race.cpp
 	scripting/lua_rng.cpp
 	scripting/lua_team.cpp
-	scripting/lua_types.cpp
+	scripting/lua_unit.cpp
+	scripting/lua_unit_attacks.cpp
 	scripting/lua_unit_type.cpp
 	scripting/mapgen_lua_kernel.cpp
 	scripting/plugins/context.cpp
@@ -958,6 +970,7 @@ set(wesnoth-main_SRC
 	utils/sha1.cpp
 	utils/context_free_grammar_generator.cpp
 	utils/markov_generator.cpp
+	utils/name_generator_factory.cpp
 	variable.cpp
 	variable_info.cpp
 	wesnothd_connection.cpp
@@ -972,7 +985,6 @@ set(wesnoth-main_SRC
 	whiteboard/side_actions.cpp
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
-	wmi_pager.cpp
 	${network_implementation_files}
 )
 
@@ -1352,7 +1364,6 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
 
 	set(test_SRC
-		tests/floating_point_emulation.cpp
 		tests/gui/iterator.cpp
 		tests/gui/fire_event.cpp
 		tests/gui/test_drop_target.cpp

@@ -17,6 +17,9 @@
 	SDL_SavePNG_RW(surface, SDL_RWFromFile(file, "wb"), 1)
 //
 //TODO: filesystem::load_RWops is only for reading, would like a writing version also
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
 
 /*
  * Save an SDL_Surface as a PNG file, using writable RWops.
@@ -34,5 +37,9 @@ extern int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *rw, int freedst);
  * Return new SDL_Surface with a format suitable for PNG output.
  */
 extern SDL_Surface *SDL_PNGFormatAlpha(SDL_Surface *src);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

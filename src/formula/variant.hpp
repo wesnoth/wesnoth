@@ -15,7 +15,6 @@
 #ifndef VARIANT_HPP_INCLUDED
 #define VARIANT_HPP_INCLUDED
 
-#include <boost/shared_ptr.hpp>
 #include <map>
 #include <vector>
 
@@ -39,9 +38,6 @@ struct call_stack_manager {
 	}
 };
 
-struct variant_list;
-struct variant_string;
-struct variant_map;
 class variant_iterator;
 
 struct type_error : public game::error {
@@ -154,8 +150,6 @@ public:
 	void serialize_to_string(std::string& str) const;
 	void serialize_from_string(const std::string& str);
 
-	int refcount() const;
-
 	std::string string_cast() const;
 
 	std::string to_debug_string(std::vector<const game_logic::formula_callable*>* seen=nullptr, bool verbose = false) const;
@@ -168,12 +162,11 @@ private:
 		int decimal_value_;
 		const game_logic::formula_callable* callable_;
 		game_logic::formula_callable* mutable_callable_;
-		variant_list* list_;
-		variant_string* string_;
-		variant_map* map_;
+		std::vector<variant>* list_;
+		std::string* string_;
+		std::map<variant,variant>* map_;
 	};
 
-	void increment_refcount();
 	void release();
 };
 

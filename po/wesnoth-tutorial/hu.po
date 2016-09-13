@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
 "PO-Revision-Date: 2014-03-29 09:21+0100\n"
 "Last-Translator: Farkas János <mail.janos.farkas@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -613,14 +613,16 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:595
-msgid "I’ll tell them to use the one that does the most damage!"
+#, fuzzy
+#| msgid "I’ll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Megmondom majd nekik, hogy azt használják, amelyik többet sebez!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
-msgid "female^I’ll tell them to use the one that does the most damage!"
+msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Megmondom majd nekik, hogy azt használják, amelyik többet sebez!"
 
 #. [message]: speaker=Delfador
@@ -2104,7 +2106,7 @@ msgstr "Csatlós"
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2125,7 +2127,7 @@ msgid "female^Fighter"
 msgstr "Csatlósnő"
 
 #. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
+#: data/campaigns/tutorial/units/Fighteress.cfg:25
 msgid "saber"
 msgstr "szablya"
 

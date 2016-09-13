@@ -83,6 +83,8 @@ namespace game_config
 	namespace images {
 	std::string game_title,
 			game_title_background,
+			game_logo,
+			game_logo_background,
 			// orbs and hp/xp bar
 			orb,
 			energy,
@@ -117,7 +119,7 @@ namespace game_config
 
 	std::string shroud_prefix, fog_prefix;
 
-	std::string flag_rgb;
+	std::string flag_rgb, unit_rgb;
 	std::vector<uint32_t> red_green_scale;
 	std::vector<uint32_t> red_green_scale_text;
 
@@ -225,6 +227,8 @@ namespace game_config
 			using namespace game_config::images;
 			game_title = i["game_title"].str();
 			game_title_background = i["game_title_background"].str();
+			game_logo = i["game_logo"].str();
+			game_logo_background = i["game_logo_background"].str();
 
 			orb = i["orb"].str();
 			energy = i["energy"].str();
@@ -264,6 +268,9 @@ namespace game_config
 
 		if (const config::attribute_value *a = v.get("flag_rgb")) {
 			flag_rgb = a->str();
+		}
+		if (const config::attribute_value *a = v.get("unit_rgb")) {
+			unit_rgb = a->str();
 		}
 
 		std::string color_string = v["red_green_scale"].str();

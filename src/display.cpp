@@ -24,6 +24,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
+#include "hotkey/command_executor.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -144,7 +145,7 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 
 
 
-display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
+display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
 	video2::draw_layering(auto_join),
 	dc_(dc),
 	halo_man_(new halo::manager(*this)),
@@ -272,7 +273,7 @@ void display::init_flags() {
 	side_colors.reserve(dc_->teams().size());
 
 	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		std::string side_color = team::get_side_color_index(i+1);
+		std::string side_color = dc_->teams()[i].color();
 		side_colors.push_back(side_color);
 		init_flags_for_side_internal(i, side_color);
 	}
@@ -286,7 +287,7 @@ void display::reinit_flags_for_side(size_t side)
 		return;
 	}
 
-	init_flags_for_side_internal(side, team::get_side_color_index(side + 1));
+	init_flags_for_side_internal(side, dc_->teams()[side].color());
 }
 
 void display::init_flags_for_side_internal(size_t n, const std::string& side_color)
@@ -309,19 +310,21 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	animated<image::locator> temp_anim;
 
 	std::vector<std::string> items = utils::square_parenthetical_split(flag);
-	std::vector<std::string>::const_iterator itor = items.begin();
-	for(; itor != items.end(); ++itor) {
-		const std::vector<std::string>& items = utils::split(*itor, ':');
-		std::string str;
-		int time;
 
-		if(items.size() > 1) {
-			str = items.front();
-			time = std::stoi(items.back());
-		} else {
-			str = *itor;
-			time = 100;
+	for(const std::string& item : items) {
+		const std::vector<std::string>& sub_items = utils::split(item, ':');
+		std::string str = item;
+		int time = 100;
+
+		if(sub_items.size() > 1) {
+			str = sub_items.front();
+			try {
+				time = std::stoi(sub_items.back());
+			} catch(std::invalid_argument) {
+				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
+			}
 		}
+
 		std::stringstream temp;
 		temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
 		image::locator flag_image(temp.str());
@@ -391,7 +394,7 @@ void display::set_team(size_t teamindex, bool show_everything)
 		dont_show_all_ = false;
 	}
 	labels().recalculate_labels();
-	if(boost::shared_ptr<wb::manager> w = wb_.lock())
+	if(std::shared_ptr<wb::manager> w = wb_.lock())
 		w->on_viewer_change(teamindex);
 }
 
@@ -823,31 +826,31 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 	return res;
 }
 
-gui::button* display::find_action_button(const std::string& id)
+std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
 {
 	for (size_t i = 0; i < action_buttons_.size(); ++i) {
-		if(action_buttons_[i].id() == id) {
-			return &action_buttons_[i];
+		if(action_buttons_[i]->id() == id) {
+			return action_buttons_[i];
 		}
 	}
 	return nullptr;
 }
 
-gui::button* display::find_menu_button(const std::string& id)
+std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 {
 	for (size_t i = 0; i < menu_buttons_.size(); ++i) {
-		if(menu_buttons_[i].id() == id) {
-			return &menu_buttons_[i];
+		if(menu_buttons_[i]->id() == id) {
+			return menu_buttons_[i];
 		}
 	}
 	return nullptr;
 }
 
-gui::zoom_slider* display::find_slider(const std::string& id)
+std::shared_ptr<gui::zoom_slider> display::find_slider(const std::string& id)
 {
 	for (size_t i = 0; i < sliders_.size(); ++i) {
-		if(sliders_[i].id() == id) {
-			return &sliders_[i];
+		if(sliders_[i]->id() == id) {
+			return sliders_[i];
 		}
 	}
 	return nullptr;
@@ -859,7 +862,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning sliders...\n";
 	const std::vector<theme::slider>& sliders = theme_.sliders();
 	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		gui::zoom_slider* s = find_slider(i->get_id());
+		std::shared_ptr<gui::zoom_slider> s = find_slider(i->get_id());
 		if (s) {
 			const SDL_Rect& loc = i->location(screen_area());
 			s->set_location(loc);
@@ -870,7 +873,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning menu buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		gui::button* b = find_menu_button(i->get_id());
+		std::shared_ptr<gui::button> b = find_menu_button(i->get_id());
 		if(b) {
 			const SDL_Rect& loc = i->location(screen_area());
 			b->set_location(loc);
@@ -883,7 +886,7 @@ void display::layout_buttons()
 	DBG_DP << "positioning action buttons...\n";
 	const std::vector<theme::action>& actions = theme_.actions();
 	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		gui::button* b = find_action_button(i->get_id());
+		std::shared_ptr<gui::button> b = find_action_button(i->get_id());
 		if(b) {
 			const SDL_Rect& loc = i->location(screen_area());
 			b->set_location(loc);
@@ -896,30 +899,33 @@ void display::layout_buttons()
 
 void display::create_buttons()
 {
-	std::vector<gui::button> menu_work;
-	std::vector<gui::button> action_work;
-	std::vector<gui::zoom_slider> slider_work;
+	std::vector<std::shared_ptr<gui::button>> menu_work;
+	std::vector<std::shared_ptr<gui::button>> action_work;
+	std::vector<std::shared_ptr<gui::zoom_slider>> slider_work;
 
 	DBG_DP << "creating sliders...\n";
 	const std::vector<theme::slider>& sliders = theme_.sliders();
 	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		gui::zoom_slider s(screen_, i->image(), i->black_line());
+		std::shared_ptr<gui::zoom_slider> s(new gui::zoom_slider(screen_, i->image(), i->black_line()));
+		s->leave();
+		s->join_same(this);
 		DBG_DP << "drawing button " << i->get_id() << "\n";
-		s.set_id(i->get_id());
+		s->set_id(i->get_id());
 		//TODO support for non zoom sliders
-		s.set_max(MaxZoom);
-		s.set_min(MinZoom);
-		s.set_value(zoom_);
+		s->set_max(MaxZoom);
+		s->set_min(MinZoom);
+		s->set_value(zoom_);
 		if (!i->tooltip().empty()){
-			s.set_tooltip_string(i->tooltip());
+			s->set_tooltip_string(i->tooltip());
 		}
 
-		gui::zoom_slider* s_prev = find_slider(s.id());
+		std::shared_ptr<gui::zoom_slider> s_prev = find_slider(s->id());
 		if(s_prev) {
-			s.set_max(s_prev->max_value());
-			s.set_min(s_prev->min_value());
-			s.set_value(s_prev->value());
-			s.enable(s_prev->enabled());
+			//s_prev->leave();
+			s->set_max(s_prev->max_value());
+			s->set_min(s_prev->min_value());
+			s->set_value(s_prev->value());
+			s->enable(s_prev->enabled());
 		}
 
 		slider_work.push_back(s);
@@ -931,42 +937,48 @@ void display::create_buttons()
 
 		if (!i->is_button()) continue;
 
-		gui::button b(screen_, i->title(), gui::button::TYPE_PRESS, i->image(),
-				gui::button::DEFAULT_SPACE, true, i->overlay());
+		std::shared_ptr<gui::button> b(new gui::button(screen_, i->title(), gui::button::TYPE_PRESS, i->image(),
+				gui::button::DEFAULT_SPACE, false, i->overlay()));
 		DBG_DP << "drawing button " << i->get_id() << "\n";
-		b.set_id(i->get_id());
+		b->join_same(this);
+		b->set_id(i->get_id());
 		if (!i->tooltip().empty()){
-			b.set_tooltip_string(i->tooltip());
+			b->set_tooltip_string(i->tooltip());
 		}
 
-		gui::button* b_prev = find_menu_button(b.id());
-		if(b_prev) b.enable(b_prev->enabled());
+		std::shared_ptr<gui::button> b_prev = find_menu_button(b->id());
+		if(b_prev) {
+			b->enable(b_prev->enabled());
+		}
 
 		menu_work.push_back(b);
 	}
 	DBG_DP << "creating action buttons...\n";
 	const std::vector<theme::action>& actions = theme_.actions();
 	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		gui::button b(screen_, i->title(), string_to_button_type(i->type()), i->image(),
-				gui::button::DEFAULT_SPACE, true, i->overlay());
+		std::shared_ptr<gui::button> b(new gui::button(screen_, i->title(), string_to_button_type(i->type()), i->image(),
+				gui::button::DEFAULT_SPACE, false, i->overlay()));
 
 		DBG_DP << "drawing button " << i->get_id() << "\n";
-		b.set_id(i->get_id());
+		b->set_id(i->get_id());
+		b->join_same(this);
 		if (!i->tooltip(0).empty()){
-			b.set_tooltip_string(i->tooltip(0));
+			b->set_tooltip_string(i->tooltip(0));
 		}
 
-		gui::button* b_prev = find_action_button(b.id());
-		if(b_prev) b.enable(b_prev->enabled());
+		std::shared_ptr<gui::button> b_prev = find_action_button(b->id());
+		if(b_prev) b->enable(b_prev->enabled());
 
 		action_work.push_back(b);
 	}
 
 
-
-	menu_buttons_.swap(menu_work);
-	action_buttons_.swap(action_work);
-	sliders_.swap(slider_work);
+	menu_buttons_.clear();
+	menu_buttons_.assign(menu_work.begin(), menu_work.end());
+	action_buttons_.clear();
+	action_buttons_.assign(action_work.begin(), action_work.end());
+	sliders_.clear();
+	sliders_.assign(slider_work.begin(), slider_work.end());
 
 	layout_buttons();
 	DBG_DP << "buttons created\n";
@@ -974,16 +986,16 @@ void display::create_buttons()
 
 void display::render_buttons()
 {
-	for (gui::button &btn : menu_buttons_) {
-		btn.set_dirty(true);
+	for (std::shared_ptr<gui::button> btn : menu_buttons_) {
+		btn->set_dirty(true);
 	}
 
-	for (gui::button &btn : action_buttons_) {
-		btn.set_dirty(true);
+	for (std::shared_ptr<gui::button> btn : action_buttons_) {
+		btn->set_dirty(true);
 	}
 
-	for (gui::slider &sld : sliders_) {
-		sld.set_dirty(true);
+	for (std::shared_ptr<gui::slider> sld : sliders_) {
+		sld->set_dirty(true);
 	}
 }
 
@@ -1486,7 +1498,7 @@ void display::update_display()
 #ifdef SDL_GPU
 static void draw_panel(surface &target, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
 #else
-static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
+static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std::shared_ptr<gui::button>>& /*buttons*/)
 #endif
 {
 	//log_scope("draw panel");
@@ -1889,9 +1901,9 @@ void display::draw_wrap(bool update, bool force)
 
 const theme::action* display::action_pressed()
 {
-	for(std::vector<gui::button>::iterator i = action_buttons_.begin();
+	for(std::vector<std::shared_ptr<gui::button>>::iterator i = action_buttons_.begin();
 			i != action_buttons_.end(); ++i) {
-		if(i->pressed()) {
+		if((*i)->pressed()) {
 			const size_t index = i - action_buttons_.begin();
 			if(index >= theme_.actions().size()) {
 				assert(false);
@@ -1906,14 +1918,14 @@ const theme::action* display::action_pressed()
 
 const theme::menu* display::menu_pressed()
 {
-	for(std::vector<gui::button>::iterator i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
-		if(i->pressed()) {
+	for(std::vector<std::shared_ptr<gui::button>>::iterator i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
+		if((*i)->pressed()) {
 			const size_t index = i - menu_buttons_.begin();
 			if(index >= theme_.menus().size()) {
 				assert(false);
 				return nullptr;
 			}
-			return theme_.get_menu_item(i->id());
+			return theme_.get_menu_item((*i)->id());
 		}
 	}
 
@@ -1933,18 +1945,18 @@ void display::enable_menu(const std::string& item, bool enable)
 			if(index >= menu_buttons_.size()) {
 				continue;
 			}
-			menu_buttons_[index].enable(enable);
+			menu_buttons_[index]->enable(enable);
 		}
 	}
 }
 
-void display::announce(const std::string& message, const SDL_Color& color)
+void display::announce(const std::string& message, const SDL_Color& color, int lifetime)
 {
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
 	flabel.set_position(map_outside_area().w/2, map_outside_area().h/3);
-	flabel.set_lifetime(100);
+	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(map_outside_area());
 
 	font::add_floating_label(flabel);
@@ -2090,7 +2102,9 @@ void display::draw_minimap()
 	draw_minimap_units();
 #else
 	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
+		minimap_ = image::getMinimap(area.w, area.h, get_map(),
+			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+			(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr);
 		if(minimap_ == nullptr) {
 			return;
 		}
@@ -2147,7 +2161,7 @@ void display::draw_minimap_units()
 	for(unit_map::const_iterator u = dc_->units().begin(); u != dc_->units().end(); ++u) {
 		if (fogged(u->get_location()) ||
 		    (dc_->teams()[currentTeam_].is_enemy(u->side()) &&
-		     u->invisible(u->get_location())) ||
+		     u->invisible(u->get_location(), *dc_)) ||
 			 u->get_hidden()) {
 			continue;
 		}
@@ -2286,7 +2300,7 @@ bool display::set_zoom(int amount, bool absolute)
 	}
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 	if (new_zoom != zoom_) {
-		gui::slider* zoom_slider = find_slider("map-zoom-slider");
+		std::shared_ptr<gui::slider> zoom_slider = find_slider("map-zoom-slider");
 		if (zoom_slider) {
 			zoom_slider->set_value(new_zoom);
 		}
@@ -2659,8 +2673,18 @@ void display::redraw_everything()
 
 	theme_.set_resolution(screen_area());
 
-	layout_buttons();
-	render_buttons();
+	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+		create_buttons();
+	}
+
+	if(resources::controller) {
+		hotkey::command_executor* command_executor = resources::controller->get_hotkey_command_executor();
+		if(command_executor != nullptr)	{
+			// This function adds button overlays,
+			// it needs to be run after recreating the buttons.
+			command_executor->set_button_state();
+		}
+	}
 
 	panelsDrawn_ = false;
 	if (!gui::in_dialog()) {
@@ -2710,6 +2734,7 @@ void display::draw(bool update,bool force) {
 	}
 
 	if (dirty_) {
+		flip_locker flip_lock(screen_);
 		dirty_ = false;
 		redraw_everything();
 		return;
@@ -2806,6 +2831,12 @@ void display::draw_invalidated() {
 		}
 	}
 	invalidated_hexes_ += invalidated_.size();
+
+	if (dc_->teams().empty())
+	{
+		// The unit drawer can't function without teams
+		return;
+	}
 
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
@@ -3387,12 +3418,12 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	SDL_Rect ellipsis_area = rect;
 
 	for (config::const_child_itors elements = report.child_range("element");
-		 elements.first != elements.second; ++elements.first)
+		 elements.begin() != elements.end(); elements.pop_front())
 	{
 		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;
 
-		std::string t = (*elements.first)["text"];
+		std::string t = elements.front()["text"];
 		if (!t.empty())
 		{
 			if (used_ellipsis) goto skip_element;
@@ -3418,9 +3449,9 @@ void display::refresh_report(std::string const &report_name, const config * new_
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
-			config::const_child_iterator ee = elements.first;
+			config::const_child_iterator ee = elements.begin();
 			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
-				++ee != elements.second && !(*ee)["text"].empty())
+				++ee != elements.end() && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
 				// (to indicate that next elements have not enough space)
@@ -3450,7 +3481,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 				x += area.w;
 			}
 		}
-		else if (!(t = (*elements.first)["image"].str()).empty())
+		else if (!(t = elements.front()["image"].str()).empty())
 		{
 			if (used_ellipsis) goto skip_element;
 
@@ -3490,17 +3521,17 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		}
 
 		skip_element:
-		t = (*elements.first)["tooltip"].t_str().base_str();
+		t = elements.front()["tooltip"].t_str().base_str();
 		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, (*elements.first)["help"].t_str().base_str());
+				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().base_str());
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
 				// TODO: assign an action
 				ellipsis_tooltip << t;
-				config::const_child_iterator ee = elements.first;
-				if (++ee != elements.second)
+				config::const_child_iterator ee = elements.begin();
+				if (++ee != elements.end())
 					ellipsis_tooltip << "\n  _________\n\n";
 			}
 		}

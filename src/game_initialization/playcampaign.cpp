@@ -38,7 +38,6 @@
 #include "mp_game_utils.hpp"
 #include "multiplayer.hpp"
 #include "connect_engine.hpp"
-#include "dialogs.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -61,7 +60,7 @@ void campaign_controller::report_victory(
 	std::ostringstream &report, team& t,
 	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
 {
-	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
+	report << "<small>\n" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
 
 	if(t.carryover_bonus() != 0) {
 		if (turns_left > -1) {
@@ -121,12 +120,12 @@ void campaign_controller::report_victory(
 
 void campaign_controller::show_carryover_message(playsingle_controller& playcontroller, const end_level_data& end_level, const LEVEL_RESULT res)
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
 	//maybe this can be the case for scenario that only contain a story and end during the prestart event ?
-	if(resources::teams->size() < 1){
+	if(resources::gameboard->teams().size() < 1){
 		return;
 	}
 
@@ -139,14 +138,14 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 		title = _("Scenario Report");
 	} else if (res == LEVEL_RESULT::VICTORY) {
 		title = _("Victory");
-		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
+		report << "<b>" << _("You have emerged victorious!") << "</b>\n";
 	} else {
 		title = _("Defeat");
 		report <<  _("You have been defeated!") << "\n";
 	}
 
 	//We need to write the carryover amount to the team thats why we need non const
-	std::vector<team>& teams = *resources::teams;
+	std::vector<team>& teams = resources::gameboard->teams();
 	int persistent_teams = 0;
 	for (const team &t : teams) {
 		if (t.persistent()){
@@ -174,7 +173,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 				continue;
 			}
 			if (persistent_teams > 1) {
-				report << "\n<b>" << t.side_name() << "</b>\n";
+				report << "\n<b>" << t.side_name() << "</b>";
 			}
 
 			report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);

@@ -139,7 +139,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 
 bool get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
-	std::vector<team> &teams = *resources::teams;
+	std::vector<team> &teams = resources::gameboard->teams();
 	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
 	if (t && t->owns_village(loc)) {
 		return false;
@@ -363,7 +363,7 @@ namespace { // Private helpers for move_unit()
 		orig_dir_(move_it_->facing()),
 		goto_( is_ai_move() ? move_it_->get_goto() : route.back() ),
 		current_side_(orig_side_),
-		current_team_(&(*resources::teams)[current_side_-1]),
+		current_team_(&resources::gameboard->teams()[current_side_-1]),
 		current_uses_fog_(current_team_->fog_or_shroud()  &&
 		                  current_team_->auto_shroud_updates()),
 		move_loc_(begin_),
@@ -427,7 +427,7 @@ namespace { // Private helpers for move_unit()
 
 			if ( neighbor_it != units.end()  &&
 			     current_team_->is_enemy(neighbor_it->side())  &&
-			     neighbor_it->invisible(adjacent[i]) )
+			     neighbor_it->invisible(adjacent[i], *resources::gameboard) )
 			{
 				// Ambushed!
 				ambushed_ = true;
@@ -735,7 +735,7 @@ namespace { // Private helpers for move_unit()
 
 		if ( start != begin_ ) {
 			// Check for being unable to leave the current hex.
-			if ( !move_it_->get_ability_bool("skirmisher", *start)  &&
+			if ( !move_it_->get_ability_bool("skirmisher", *start, *resources::gameboard) &&
 			      pathfind::enemy_zoc(*current_team_, *start, *current_team_) )
 				zoc_stop_ = *start;
 		}
@@ -758,7 +758,7 @@ namespace { // Private helpers for move_unit()
 			moves_left_.push_back(remaining_moves);
 
 			// Check for being unable to leave this hex.
-			if ( !move_it_->get_ability_bool("skirmisher", *end)  &&
+			if ( !move_it_->get_ability_bool("skirmisher", *end, *resources::gameboard) &&
 			      pathfind::enemy_zoc(*current_team_, *end, *current_team_) )
 				zoc_stop_ = *end;
 		}
@@ -791,7 +791,7 @@ namespace { // Private helpers for move_unit()
 
 		// Update the current unit data.
 		current_side_ = found ? move_it_->side() : orig_side_;
-		current_team_ = &(*resources::teams)[current_side_-1];
+		current_team_ = &resources::gameboard->teams()[current_side_-1];
 		current_uses_fog_ = current_team_->fog_or_shroud()  &&
 		                    ( current_side_ != orig_side_  ||
 		                      current_team_->auto_shroud_updates() );
@@ -1238,7 +1238,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	//if we have no fog activated then we always skip sighted
 	if(resources::units->find(steps.front()) != resources::units->end())
 	{
-		const team &current_team = (*resources::teams)[
+		const team &current_team = resources::gameboard->teams()[
 			resources::units->find(steps.front())->side() - 1];
 		continued_move |= !current_team.fog_or_shroud();
 	}

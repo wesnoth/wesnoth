@@ -21,11 +21,9 @@
 #include "ai/lua/lua_object.hpp"
 #include "ai/lua/engine_lua.hpp"
 #include "ai/default/aspect_attacks.hpp"
-#include "scripting/lua_types.hpp"
 #include "scripting/lua_common.hpp"
 #include "resources.hpp"
 
-#include <boost/smart_ptr/make_shared_object.hpp>
 #include "lua/lauxlib.h"
 
 namespace ai {
@@ -39,9 +37,9 @@ namespace ai {
 	template class lua_object<aspect_attacks_lua_filter>;
 	
 	template <>
-	boost::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n)
+	std::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n)
 	{
-		boost::shared_ptr<aspect_attacks_lua_filter> att(new aspect_attacks_lua_filter);
+		std::shared_ptr<aspect_attacks_lua_filter> att(new aspect_attacks_lua_filter);
 		att->lua = nullptr;
 		att->ref_own_ = att->ref_enemy_ = -1;
 		if(!lua_istable(L, n)) {

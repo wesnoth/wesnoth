@@ -34,7 +34,6 @@
 #include "filesystem.hpp"
 #include "game_classification.hpp"
 #include "game_display.hpp"
-#include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -66,8 +65,6 @@
 #include "wml_exception.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/assign/list_of.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/regex.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -119,7 +116,7 @@ namespace { // Support functions
 		std::string img_mods = cfg["image_mods"];
 
 		size_t side_num = cfg["side"].to_int(1);
-		if ( side_num == 0  ||  side_num > resources::teams->size() )
+		if ( side_num == 0  ||  side_num > resources::gameboard->teams().size() )
 			side_num = 1;
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
@@ -154,35 +151,44 @@ namespace { // Support functions
 		map_location dst;
 		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 			if(i==0){
-				src.x = std::stoi(xvals[i])-1;
-				src.y = std::stoi(yvals[i])-1;
+				try {
+					src.x = std::stoi(xvals[i])-1;
+					src.y = std::stoi(yvals[i])-1;
+				} catch(std::invalid_argument) {
+					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i] << '\n';
+					continue;
+				}
 				if (!game_map->on_board(src)) {
-					ERR_CF << "invalid move_unit_fake source: " << src << '\n';
+					ERR_CF << "Invalid move_unit_fake source: " << src << '\n';
 					break;
 				}
 				path.push_back(src);
 				continue;
 			}
 			pathfind::shortest_path_calculator calc(fake_unit,
-					(*resources::teams)[fake_unit.side()-1],
-					*resources::teams,
+					resources::gameboard->teams()[fake_unit.side()-1],
+					resources::gameboard->teams(),
 					*game_map);
 
-			dst.x = std::stoi(xvals[i])-1;
-			dst.y = std::stoi(yvals[i])-1;
+			try {
+				dst.x = std::stoi(xvals[i])-1;
+				dst.y = std::stoi(yvals[i])-1;
+			} catch(std::invalid_argument) {
+				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i] << '\n';
+			}
 			if (!game_map->on_board(dst)) {
-				ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
+				ERR_CF << "Invalid move_unit_fake destination: " << dst << '\n';
 				break;
 			}
 
-			pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, &calc,
+			pathfind::plain_route route = pathfind::a_star_search(src, dst, 10000, calc,
 				game_map->w(), game_map->h());
 
 			if (route.steps.empty()) {
 				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities" << std::endl;
 				pathfind::emergency_path_calculator calc(fake_unit, *game_map);
 
-				route = pathfind::a_star_search(src, dst, 10000, &calc,
+				route = pathfind::a_star_search(src, dst, 10000, calc,
 						game_map->w(), game_map->h());
 				if(route.steps.empty()) {
 					// This would occur when trying to do a MUF of a unit
@@ -190,7 +196,7 @@ namespace { // Support functions
 					// costs). This really cannot fail.
 					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain" << std::endl;
 					pathfind::dummy_path_calculator calc(fake_unit, *game_map);
-					route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
+					route = a_star_search(src, dst, 10000, calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
 				}
 			}
@@ -417,6 +423,8 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 }
 
 /// If we should recall units that match a certain description.
+// If you change attributes specific to [recall] (that is, not a Standard Unit Filter)
+// be sure to update data/lua/wml_tag, auto_recall feature for [role] to reflect your changes.
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
 	LOG_NG << "recalling unit...\n";
@@ -433,17 +441,17 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
-	for(int index = 0; index < int(resources::teams->size()); ++index) {
+	for(int index = 0; index < int(resources::gameboard->teams().size()); ++index) {
 		LOG_NG << "for side " << index + 1 << "...\n";
-		const std::string player_id = (*resources::teams)[index].save_id();
+		const std::string player_id = resources::gameboard->teams()[index].save_id();
 
-		if((*resources::teams)[index].recall_list().size() < 1) {
+		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!\n"
 				   << "player_id: " << player_id << " side: " << index+1 << "\n";
 			continue;
 		}
 
-		recall_list_manager & avail = (*resources::teams)[index].recall_list();
+		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
 		const unit_filter ufilt(unit_filter_cfg, resources::filter_con);
@@ -508,10 +516,10 @@ namespace {
 		{
 			//Do a regex check for the file format to prevent sending aribitary files to other clients.
 			//Note: this allows only the new format.
-			static const std::string s_simple_terrain = "[A-Za-z\\\\\\|\\/]{1,4}";
-			static const std::string s_terrain = s_simple_terrain + "(\\^" + s_simple_terrain + ")?";
+			static const std::string s_simple_terrain = R"""([A-Za-z\\|/]{1,4})""";
+			static const std::string s_terrain = s_simple_terrain + R"""((\^)""" + s_simple_terrain + ")?";
 			static const std::string s_sep = "(, |\\n)";
-			static const std::string s_prefix = "(\\d+ )?";
+			static const std::string s_prefix = R"""((\d+ )?)""";
 			static const std::string s_all = "(" + s_prefix + s_terrain + s_sep + ")+";
 			static const boost::regex r_all(s_all);
 
@@ -686,7 +694,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 				for (const config &cfg : data) {
 					merged_children.append(cfg);
 				}
-				data = boost::assign::list_of(merged_children).convert_to_container<std::vector<config> >();
+				data = {merged_children};
 			}
 			dest.merge_array(data);
 		}
@@ -872,7 +880,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	if (!to_variable.blank())
 	{
 		parsed_cfg.remove_attribute("to_variable");
-		unit new_unit(parsed_cfg, true);
+		unit new_unit(parsed_cfg, true, &cfg);
 		try
 		{
 			config &var = resources::gamedata->get_variable_cfg(to_variable);
@@ -892,12 +900,12 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	int side = parsed_cfg["side"].to_int(1);
 
 
-	if ((side<1)||(side > static_cast<int>(resources::teams->size()))) {
-		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::teams->size()<<")"<<std::endl;
+	if ((side<1)||(side > static_cast<int>(resources::gameboard->teams().size()))) {
+		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")"<<std::endl;
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}
-	team &tm = resources::teams->at(side-1);
+	team &tm = resources::gameboard->teams().at(side-1);
 
 	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 

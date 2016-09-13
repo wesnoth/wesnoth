@@ -16,6 +16,7 @@
 #define LUA_UNIT_TYPE_HPP_INCLUDED
 
 struct lua_State;
+class unit_type;
 
 #include <string>
 
@@ -25,10 +26,17 @@ struct lua_State;
  */
 namespace lua_unit_type {
 	std::string register_metatable(lua_State *);
+	std::string register_table(lua_State *);
 } //end namespace lua_team
 
 /// Create a lua object containing a reference to a unittype, and a
 /// metatable to access the properties.
-void luaW_pushunittype(lua_State *, const std::string &);
+void luaW_pushunittype(lua_State *, const unit_type&);
+
+/// Test if a stack element is a unit type, and return it if so
+const unit_type* luaW_tounittype(lua_State*, int);
+
+/// Test if a stack element is a unit type, and return it if so
+const unit_type& luaW_checkunittype(lua_State*, int);
 
 #endif

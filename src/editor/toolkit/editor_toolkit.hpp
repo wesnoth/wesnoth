@@ -21,8 +21,6 @@
 #include "editor/toolkit/brush.hpp"
 #include "hotkey/hotkey_command.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 class config;
 
 namespace editor {
@@ -51,7 +49,8 @@ private:
 	void init_mouse_actions(context_manager& c_manager);
 
 public:
-	void set_mouseover_overlay();
+	void set_mouseover_overlay(editor_display& gui);
+	void set_mouseover_overlay() { set_mouseover_overlay(gui_); }
 	void clear_mouseover_overlay();
 
 	/**
@@ -66,7 +65,11 @@ public:
 
 
 	/** Get the current mouse action */
-	mouse_action* get_mouse_action() { return mouse_action_; }
+	mouse_action& get_mouse_action() { return *mouse_action_; }
+	/** Get the current mouse action */
+	const mouse_action& get_mouse_action() const { return *mouse_action_; }
+	/** Get the current palette */
+	common_palette& get_palette();
 
 // Brush related methods
 
@@ -87,15 +90,15 @@ private:
 
 	const CKey& key_;
 
-	boost::scoped_ptr<palette_manager> palette_manager_;
+	std::unique_ptr<palette_manager> palette_manager_;
 
 //Tools
 
 	/** The current mouse action */
-	mouse_action* mouse_action_;
+	std::shared_ptr<mouse_action> mouse_action_;  // Never null (outside the constructor).
 
 	/** The mouse actions */
-	typedef std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_action_map;
+	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action> > mouse_action_map;
 	mouse_action_map mouse_actions_;
 
 //Brush members

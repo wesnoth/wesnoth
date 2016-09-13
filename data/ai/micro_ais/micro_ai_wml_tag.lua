@@ -19,7 +19,7 @@ wesnoth.require("ai/micro_ais/mai-defs/recruiting.lua")
 function wesnoth.wml_actions.micro_ai(cfg)
     local CA_path = 'ai/micro_ais/cas/'
 
-    cfg = cfg.__parsed
+    cfg = cfg.__shallow_parsed
 
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end

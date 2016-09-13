@@ -25,7 +25,6 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-#include <SDL_net.h>
 
 #include <boost/version.hpp>
 
@@ -53,15 +52,15 @@ const version_table_manager versions;
 #if 0
 std::string format_version(unsigned a, unsigned b, unsigned c)
 {
-	return (formatter() << a << '.' << b << '.' << c).str();
+	return formatter() << a << '.' << b << '.' << c;
 }
 #endif
 
 std::string format_version(const SDL_version& v)
 {
-	return (formatter() << unsigned(v.major) << '.'
-						<< unsigned(v.minor) << '.'
-						<< unsigned(v.patch)).str();
+	return formatter() << unsigned(v.major) << '.'
+			    		<< unsigned(v.minor) << '.'
+						<< unsigned(v.patch);
 }
 
 version_table_manager::version_table_manager()

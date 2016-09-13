@@ -50,13 +50,13 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	void update_relation(twindow& w);
+	void update_relation();
 
-	void add_to_friends_button_callback(twindow& w);
+	void add_to_friends_button_callback();
 
-	void add_to_ignores_button_callback(twindow& w);
+	void add_to_ignores_button_callback();
 
-	void remove_from_list_button_callback(twindow& w);
+	void remove_from_list_button_callback();
 
 	void start_whisper_button_callback(twindow& w);
 

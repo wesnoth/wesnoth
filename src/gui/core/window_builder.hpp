@@ -17,7 +17,6 @@
 
 #include "gui/auxiliary/formula.hpp"
 #include "gui/widgets/grid.hpp"
-#include "reference_counted_object.hpp"
 
 #include "utils/functional.hpp"
 
@@ -39,7 +38,7 @@ class twindow;
 twindow* build(CVideo& video, const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
-struct tbuilder_widget : public reference_counted_object
+struct tbuilder_widget
 {
 public:
 	/**
@@ -50,7 +49,7 @@ public:
 	 * using and `[instance]' widget this decision can be postponed until
 	 * instantiation.
 	 */
-	typedef std::map<std::string, boost::intrusive_ptr<tbuilder_widget> >
+	typedef std::map<std::string, std::shared_ptr<tbuilder_widget> >
 	treplacements;
 
 	explicit tbuilder_widget(const config& cfg);
@@ -73,8 +72,8 @@ public:
 #endif
 };
 
-typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
-typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
+typedef std::shared_ptr<tbuilder_widget> tbuilder_widget_ptr;
+typedef std::shared_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
 
 /**
  * Registers a widget to be build.
@@ -115,7 +114,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg);
 template <class T>
 tbuilder_widget_ptr build_widget(const config& cfg)
 {
-	return new T(cfg);
+	return std::make_shared<T>(cfg);
 }
 
 struct tbuilder_grid : public tbuilder_widget
@@ -147,8 +146,8 @@ public:
 	void build(tgrid& grid, const treplacements& replacements) const;
 };
 
-typedef boost::intrusive_ptr<tbuilder_grid> tbuilder_grid_ptr;
-typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+typedef std::shared_ptr<tbuilder_grid> tbuilder_grid_ptr;
+typedef std::shared_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 
 class twindow_builder
 {

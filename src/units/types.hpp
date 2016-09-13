@@ -21,6 +21,7 @@
 #include "units/race.hpp"
 #include "units/attack_type.hpp"
 #include "util.hpp"
+#include "game_errors.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <map>
@@ -38,6 +39,14 @@ typedef std::map<std::string, movetype> movement_type_map;
 class unit_type
 {
 public:
+	class error : public game::game_error
+	{
+	public:
+		error(const std::string& msg)
+			: game::game_error(msg)
+		{
+		}
+	};
 	/**
 	 * Creates a unit type for the given config, but delays its build
 	 * till later.
@@ -53,6 +62,7 @@ public:
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
 	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
+	static void check_id(std::string& id);
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
@@ -63,6 +73,8 @@ private: // These will be called by build().
 	/// Load the most needed data into an empty unit_type (build to CREATE).
 	void build_created(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
+
+	typedef std::map<std::string,unit_type> variations_map;
 public:
 	/// Performs a build of this to the indicated stage.
 	void build(BUILD_STATUS status, const movement_type_map &movement_types,
@@ -134,9 +146,9 @@ public:
 	bool generate_name() const { return cfg_["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
 
-	const std::string& flag_rgb() const { return flag_rgb_; }
+	const std::string& flag_rgb() const;
 
-	std::vector<attack_type> attacks() const;
+	const_attack_itors attacks() const;
 	const movetype & movement_type() const { return movement_type_; }
 
 	int experience_needed(bool with_acceleration=true) const;
@@ -186,7 +198,13 @@ public:
 	/// The returned vector will not be empty, provided this has been built
 	/// to the HELP_INDEXED status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
+	bool has_gender_variation(unit_race::GENDER gender) const
+	{
+		return std::find(genders_.begin(), genders_.end(), gender) != genders_.end();
+	}
+
 	std::vector<std::string> variations() const;
+	const variations_map& variation_types() const {return variations_; }
 
 	/**
 	 * @param variation_id		The id of the variation we search for.
@@ -231,6 +249,7 @@ private:
 	const config &cfg_;
 	mutable config unit_cfg_;  /// Generated as needed via get_cfg_for_units().
 	mutable bool built_unit_cfg_;
+	mutable attack_list attacks_cache_;
 
 	std::string id_;
 	std::string debug_id_;  /// A suffix for id_, used when logging messages.
@@ -259,7 +278,6 @@ private:
 
 	unit_type* gender_types_[2];
 
-	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
 	std::string default_variation_;
 	std::string variation_name_;

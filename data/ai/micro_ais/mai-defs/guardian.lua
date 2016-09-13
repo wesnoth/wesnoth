@@ -34,7 +34,7 @@ function wesnoth.micro_ais.return_guardian(cfg)
 	local optional_keys = { "id", "[filter]" }
 	local CA_parms = {
 		ai_id = 'mai_return_guardian',
-		{ ca_id = 'move', location = 'ca_return_guardian.lua', score = cfg.ca_score or 100010 }
+		{ ca_id = 'move', location = 'ca_return_guardian.lua', score = cfg.ca_score or 100100 }
 	}
     return required_keys, optional_keys, CA_parms
 end

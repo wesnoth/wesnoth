@@ -25,9 +25,9 @@
 
 #define ERR_G LOG_STREAM(err, lg::general())
 
-boost::uint32_t threading::thread::get_id() { return SDL_GetThreadID(thread_); }
+uint32_t threading::thread::get_id() { return SDL_GetThreadID(thread_); }
 
-boost::uint32_t threading::get_current_thread_id() { return SDL_ThreadID(); }
+uint32_t threading::get_current_thread_id() { return SDL_ThreadID(); }
 
 static int run_async_operation(void* data)
 {

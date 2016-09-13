@@ -72,9 +72,9 @@ void ttheme_list::pre_show(twindow& window)
 		}
 
 		column["label"] = theme_name;
-		data.insert(std::make_pair("name", column));
+		data.emplace("name", column);
 		column["label"] = t.description;
-		data.insert(std::make_pair("description", column));
+		data.emplace("description", column);
 
 		list.add_row(data);
 	}

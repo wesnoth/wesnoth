@@ -19,7 +19,7 @@
 #ifndef SERIALIZATION_VALIDATOR_HPP_INCLUDED
 #define SERIALIZATION_VALIDATOR_HPP_INCLUDED
 
-#include "game_errors.hpp"
+#include "exceptions.hpp"
 
 #include <string>
 

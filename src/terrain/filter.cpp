@@ -32,6 +32,9 @@
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "scripting/game_lua_kernel.hpp"
+
+#include <boost/range/adaptor/transformed.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -40,24 +43,6 @@ static lg::log_domain log_engine("engine");
 terrain_filter::~terrain_filter()
 {
 }
-
-#ifdef _MSC_VER
-// This is a workaround for a VC bug; this constructor is never called
-// and so we don't care about the warnings this quick fix generates
-#pragma warning(push)
-#pragma warning(disable:4413)
-terrain_filter::terrain_filter():
-	cfg_(vconfig::unconstructed_vconfig()),
-	fc_(nullptr),
-	cache_(),
-	max_loop_(),
-	flat_()
-{
-	assert(false);
-}
-#pragma warning(pop)
-#endif
-
 
 terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc,
 		const bool flat_tod, const size_t max_loop) :
@@ -116,6 +101,13 @@ namespace {
 
 bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
 {
+	std::string lua_function = cfg_["lua_function"];
+	if (!lua_function.empty() && fc_->get_lua_kernel()) {
+		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc)) {
+			return false;
+		}
+	}
+
 	//Filter Areas
 	if (cfg_.has_attribute("area") &&
 		fc_->get_tod_man().get_area_by_id(cfg_["area"]).count(loc) == 0)
@@ -134,12 +126,12 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//Allow filtering on location ranges
-	if(!ignore_xy) {
-		if(!loc.matches_range(cfg_["x"], cfg_["y"])) {
+	if (!ignore_xy) {
+		if (!loc.matches_range(cfg_["x"], cfg_["y"])) {
 			return false;
 		}
 		//allow filtering by searching a stored variable of locations
-		if(cfg_.has_attribute("find_in")) {
+		if (cfg_.has_attribute("find_in")) {
 			if (const game_data * gd = fc_->get_game_data()) {
 				try
 				{
@@ -154,14 +146,18 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 					}
 					if (!found) return false;
 				}
-				catch(const invalid_variablename_exception&)
+				catch (const invalid_variablename_exception&)
 				{
 					return false;
 				}
 			}
 		}
+		if (cfg_.has_attribute("location_id")) {
+			if (loc != fc_->get_disp_context().map().special_location(cfg_["location_id"])) {
+				return false;
+			}
+		}
 	}
-
 	//Allow filtering on unit
 	if(cfg_.has_child("filter")) {
 		const unit_map::const_iterator u = fc_->get_disp_context().units().find(loc);
@@ -415,7 +411,69 @@ bool terrain_filter::match(const map_location& loc) const
 	}
 	return false;
 }
+//using a class to be able to firen it in terrain_filter
+class terrain_filterimpl
+{
+public:
+	using location_set = std::set<map_location>;
+	struct tno_start_set_yet {};
+	struct tno_filter
+	{
+		bool operator()(const map_location&) const { return true; }
+	};
 
+	template<typename T, typename F1, typename F2, typename F3>
+	static void filter_final(T&& src, location_set& dest, const terrain_filter&, const F1& f1, const F2& f2, const F3& f3)
+	{
+		for (const map_location &loc : src) {
+			if (f1(loc) && f2(loc) && f3(loc)) {
+				dest.insert(loc);
+			}
+		}
+	}
+
+	template<typename T, typename F1, typename F2>
+	static void filter_special_loc(T&& src, location_set& dest, const terrain_filter& filter, const F1& f1, const F2& f2)
+	{
+		if (filter.cfg_.has_attribute("location_id")) {
+			map_location loc2 = filter.fc_->get_disp_context().map().special_location(filter.cfg_["location_id"]);
+			filter_final(src, dest, filter, f1, f2, [loc2](const map_location& loc) { return loc == loc2; });
+		}
+		else {
+			filter_final(src, dest, filter, f1, f2, tno_filter());
+		}
+	}
+
+	template<typename T, typename F1>
+	static void filter_area(T&& src, location_set& dest, const terrain_filter& filter, const F1& f1)
+	{
+		if (filter.cfg_.has_attribute("area")) {
+			const std::set<map_location>& area = filter.fc_->get_tod_man().get_area_by_id(filter.cfg_["area"]);
+			filter_special_loc(src, dest, filter, f1, [&area](const map_location& loc) { return area.find(loc) != area.end(); });
+		}
+		else {
+			filter_special_loc(src, dest, filter, f1, tno_filter());
+		}
+	}
+
+	template<typename T>
+	static void filter_xy(T&& src, location_set& dest, const terrain_filter& filter, bool with_border)
+	{
+		if (filter.cfg_.has_attribute("x") || filter.cfg_.has_attribute("y")) {
+			std::vector<map_location> xy_vector = filter.fc_->get_disp_context().map().parse_location_range(filter.cfg_["x"], filter.cfg_["y"], with_border);
+			filter_area(src, dest, filter, [&xy_vector](const map_location& loc) { return std::find(xy_vector.begin(), xy_vector.end(), loc) != xy_vector.end(); });
+		}
+		else {
+			filter_area(src, dest, filter, tno_filter());
+		}
+	}
+};
+//using lambdas with boost transformed gives compile erros on gcc (it works on clang and msvc)
+struct cfg_to_loc
+{
+	map_location operator()(const config& cfg) const { return map_location(cfg, nullptr); }
+	typedef map_location result_type;
+};
 void terrain_filter::get_locations(std::set<map_location>& locs, bool with_border) const
 {
 	std::set<map_location> match_set;
@@ -423,163 +481,42 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	// See if the caller provided an override to with_border
 	with_border = cfg_["include_borders"].to_bool(with_border);
 
-	// None of the generators provided
-	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
-			&& !cfg_.has_attribute("find_in")
-			&& !cfg_.has_attribute("area") ) {
+	if (cfg_.has_attribute("find_in")) {
 
+		if (const game_data * gd = fc_->get_game_data()) {
+			try
+			{
+				auto ar = gd->get_variable_access_read(cfg_["find_in"]).as_array();
+				terrain_filterimpl::filter_xy(ar | boost::adaptors::transformed(cfg_to_loc()), match_set, *this, with_border);
+			}
+			catch (const invalid_variablename_exception&)
+			{
+				//Do nothing
+			}
+		}
+	}
+	else if (cfg_.has_attribute("x") || cfg_.has_attribute("y")) {
+		std::vector<map_location> xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		terrain_filterimpl::filter_area(xy_vector, match_set, *this, terrain_filterimpl::tno_filter());
+	}
+	else if (cfg_.has_attribute("area")) {
+		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
+		terrain_filterimpl::filter_special_loc(area, match_set, *this, terrain_filterimpl::tno_filter(), terrain_filterimpl::tno_filter());
+	}
+	else if (cfg_.has_attribute("location_id")) {
+		map_location loc2 = fc_->get_disp_context().map().special_location(cfg_["location_id"]);
+		if (loc2.valid()) {
+			match_set.insert(loc2);
+		}
+	}
+	else {
 		//consider all locations on the map
 		int bs = fc_->get_disp_context().map().border_size();
 		int w = with_border ? fc_->get_disp_context().map().w() + bs : fc_->get_disp_context().map().w();
 		int h = with_border ? fc_->get_disp_context().map().h() + bs : fc_->get_disp_context().map().h();
 		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
 			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
-				match_set.insert(map_location(x,y));
-			}
-		}
-	} else
-
-	// Only the x,y attributes found
-	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
-			&& !cfg_.has_attribute("find_in")
-			&& !cfg_.has_attribute("area") ) {
-
-		std::vector<map_location> xy_vector;
-		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
-		match_set.insert(xy_vector.begin(), xy_vector.end());
-	} else
-
-	// Only find_in provided
-	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
-			&& cfg_.has_attribute("find_in")
-			&& !cfg_.has_attribute("area") ) {
-
-		//use content of find_in as starting set
-		if (const game_data * gd = fc_->get_game_data()) {
-			try
-			{
-				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-				for (const config& cfg : vi.as_array())
-				{
-					map_location test_loc(cfg, nullptr);
-					match_set.insert(test_loc);
-				}
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				//Do nothing
-			}
-		}
-	} else
-
-	// Only area provided
-	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
-			&& !cfg_.has_attribute("find_in")
-			&& cfg_.has_attribute("area") ) {
-
-		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
-		match_set.insert(area.begin(), area.end());
-	} else
-
-	// find_in + xy
-	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
-			&& cfg_.has_attribute("find_in")
-			&& !cfg_.has_attribute("area") ) {
-
-		std::vector<map_location> xy_vector;
-		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
-		match_set.insert(xy_vector.begin(), xy_vector.end());
-
-		// remove any locations not found in the specified variable
-		if (const game_data * gd = fc_->get_game_data()) {
-			try
-			{
-				std::set<map_location> findin_locs;
-				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-				for (const config& cfg : vi.as_array())
-				{
-					map_location test_loc(cfg, nullptr);
-					if (match_set.count(test_loc)) {
-						findin_locs.insert(test_loc);
-					}
-				}
-				match_set.swap(findin_locs);
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				match_set.clear();
-			}
-		}
-	} else
-
-	// xy + area
-	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
-			&& !cfg_.has_attribute("find_in")
-			&& cfg_.has_attribute("area") ) {
-
-		std::vector<map_location> xy_vector;
-		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
-		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
-
-		for (const map_location& loc : xy_vector) {
-			if (area.count(loc) != 0)
-				match_set.insert(loc);
-		}
-	} else
-
-	// area + find_in
-	if ( !(cfg_.has_attribute("x") && cfg_.has_attribute("y"))
-			&& cfg_.has_attribute("find_in")
-			&& cfg_.has_attribute("area") ) {
-
-		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
-
-		//use content of find_in as starting set
-
-		if (const game_data * gd = fc_->get_game_data()) {
-			try
-			{
-				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-				for (const config& cfg : vi.as_array())
-				{
-					map_location test_loc(cfg, nullptr);
-					if (area.count(test_loc) != 0)
-						match_set.insert(test_loc);
-				}
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				match_set.clear();
-			}
-		}
-	} else
-
-	// area + find_in + xy
-	if ( (cfg_.has_attribute("x") && cfg_.has_attribute("y"))
-			&& cfg_.has_attribute("find_in")
-			&& cfg_.has_attribute("area") ) {
-
-		const std::vector<map_location>& xy_vector =
-				fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
-		std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
-
-		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
-
-		//use content of find_in as starting set
-		if (const game_data * gd = fc_->get_game_data()) {
-			try
-			{
-				variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
-
-				for (const config &cfg : vi.as_array()) {
-					map_location test_loc(cfg, nullptr);
-					if (area.count(test_loc) != 0 && xy_set.count(test_loc) != 0)
-						match_set.insert(test_loc);
-				}
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				//Do nothing
+				match_set.insert(map_location(x, y));
 			}
 		}
 	}

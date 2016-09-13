@@ -30,7 +30,6 @@
 #include "video.hpp"                    // fore current_resolution
 
 #include <boost/optional.hpp>  // for optional
-#include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>
@@ -239,45 +238,50 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
+	const int screen_width = CVideo::get_singleton().getx();
+
 	ss << "Level " << type_.level();
 	ss << "\n\n";
 
-	// Show the unit's image.
-#ifdef LOW_MEM
-	ss << "<img>src='" << male_type.image() << "~XBRZ(2)' box='no'</img> ";
-#else
-	ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
+	ss << "<img>src='" << male_type.image();
+#ifndef LOW_MEM
+	ss << "~RC(" << male_type.flag_rgb() << ">red)";
 #endif
+	if (screen_width >= 1600) ss << "~XBRZ(2)";
+	ss << "' box='no'</img> ";
+
 
 	if (&female_type != &male_type) {
-#ifdef LOW_MEM
-		ss << "<img>src='" << female_type.image() << "~XBRZ(2)' box='no'</img> ";
-#else
-		ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
+		ss << "<img>src='" << female_type.image();
+#ifndef LOW_MEM
+		ss << "~RC(" << female_type.flag_rgb() << ">red)";
 #endif
+		if (screen_width >= 1600) ss << "~XBRZ(2)";
+		ss << "' box='no'</img> ";
 	}
 
 	const std::string &male_portrait = male_type.small_profile().empty() ?
 		male_type.big_profile() : male_type.small_profile();
 	const std::string &female_portrait = female_type.small_profile().empty() ?
 		female_type.big_profile() : female_type.small_profile();
-	
-	int sz = 400;
-	int screen_width = CVideo::get_singleton().getx();
-	if (screen_width <= 800) {
-		sz = 200;
-	} else if(screen_width <= 1024) {
-		sz = 300;
+
+	const bool has_male_portrait = !male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image";
+	const bool has_female_portrait = !female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image";
+
+	int sz = (has_male_portrait && has_female_portrait ? 300 : 400);
+	if (screen_width <= 1366) {
+		sz = (has_male_portrait && has_female_portrait ? 200 : 300);
+	} else if (screen_width >= 1920) {
+		sz = 400;
 	}
 
 	// TODO: figure out why the second checks don't match but the last does
-	if (!male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image") {
+	if (has_male_portrait) {
 		ss << "<img>src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
-	ss << "\n\n";
 
-	if (!female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image") {
+	if (has_female_portrait) {
 		ss << "<img>src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
@@ -292,7 +296,7 @@ std::string unit_topic_generator::operator()() const {
 			std::vector<std::string> adv_units =
 				reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
-			
+
 			for (const std::string &adv : adv_units) {
 				const unit_type *type = unit_types.find(adv, unit_type::HELP_INDEXED);
 				if (!type || type->hide_help()) {
@@ -387,8 +391,7 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the possible traits of the unit, cross-reference them
 	// to their respective topics.
-	config::const_child_itors traits = type_.possible_traits();
-	if (traits.first != traits.second && type_.num_traits() > 0) {
+	if (config::const_child_itors traits = type_.possible_traits()) {
 		std::vector<trait_data> must_have_traits;
 		std::vector<trait_data> random_traits;
 
@@ -400,7 +403,7 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		bool line1 = !must_have_traits.empty();
-		bool line2 = !random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0;
+		bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
 
 		if (line1) {
 			std::string traits_label = _("Traits");
@@ -488,8 +491,7 @@ std::string unit_topic_generator::operator()() const {
 		ss << "\n\n" << detailed_description;
 
 	// Print the different attacks a unit has, if it has any.
-	std::vector<attack_type> attacks = type_.attacks();
-	if (!attacks.empty()) {
+	if (!type_.attacks().empty()) {
 		// Print headers for the table.
 		ss << "\n\n<header>text='" << escape(_("unit help^Attacks"))
 			<< "'</header>\n\n";
@@ -505,31 +507,29 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Special"));
 		table.push_back(first_row);
 		// Print information about every attack.
-		for(std::vector<attack_type>::const_iterator attack_it = attacks.begin(),
-				attack_end = attacks.end();
-				attack_it != attack_end; ++attack_it) {
-			std::string lang_weapon = attack_it->name();
-			std::string lang_type = string_table["type_" + attack_it->type()];
+		for(const attack_type& attack : type_.attacks()) {
+			std::string lang_weapon = attack.name();
+			std::string lang_type = string_table["type_" + attack.type()];
 			std::vector<item> row;
 			std::stringstream attack_ss;
-			attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
-			row.push_back(std::make_pair(attack_ss.str(),image_width(attack_it->icon())));
+			attack_ss << "<img>src='" << attack.icon() << "'</img>";
+			row.push_back(std::make_pair(attack_ss.str(),image_width(attack.icon())));
 			push_tab_pair(row, lang_weapon);
 			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
-			attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks()
-				<< " " << attack_it->accuracy_parry_description();
+			attack_ss << attack.damage() << utils::unicode_en_dash << attack.num_attacks()
+				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
-			if ((*attack_it).min_range() > 1 || (*attack_it).max_range() > 1) {
-				attack_ss << (*attack_it).min_range() << "-" << (*attack_it).max_range() << ' ';
+			if (attack.min_range() > 1 || attack.max_range() > 1) {
+				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
-			attack_ss << string_table["range_" + (*attack_it).range()];
+			attack_ss << string_table["range_" + attack.range()];
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
-			std::vector<std::pair<t_string, t_string> > specials = attack_it->special_tooltips();
+			std::vector<std::pair<t_string, t_string> > specials = attack.special_tooltips();
 			if (!specials.empty()) {
 				std::string lang_special = "";
 				const size_t specials_size = specials.size();
@@ -552,8 +552,8 @@ std::string unit_topic_generator::operator()() const {
 
 	// Generate the movement type of the unit, with resistance, defense, movement, jamming and vision data updated according to any 'musthave' traits which always apply
 	movetype movement_type = type_.movement_type();
-	traits = type_.possible_traits();
-	if (traits.first != traits.second && type_.num_traits() > 0) {
+	config::const_child_itors traits = type_.possible_traits();
+	if (!traits.empty() && type_.num_traits() > 0) {
 		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
 				for (const config & effect : t.child_range("effect")) {
@@ -575,19 +575,19 @@ std::string unit_topic_generator::operator()() const {
 	push_header(first_res_row, _("Resistance"));
 	resistance_table.push_back(first_res_row);
 	utils::string_map dam_tab = movement_type.damage_table();
-	for (utils::string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
-		 	dam_it != dam_end; ++dam_it) {
+	for(std::pair<std::string, std::string> dam_it : dam_tab) {
 		std::vector<item> row;
-		int resistance = 100 - std::stoi((*dam_it).second);
-		char resi[16];
-		snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
-		std::string resist = resi;
+		int resistance = 100;
+		try {
+			resistance -= std::stoi(dam_it.second);
+		} catch(std::invalid_argument) {}
+		std::string resist = std::to_string(resistance) + '%';
 		const size_t pos = resist.find('-');
 		if (pos != std::string::npos) {
 			resist.replace(pos, 1, utils::unicode_minus);
 		}
 		std::string color = unit_helper::resistance_color(resistance);
-		std::string lang_weapon = string_table["type_" + dam_it->first];
+		std::string lang_weapon = string_table["type_" + dam_it.first];
 		push_tab_pair(row, lang_weapon);
 		std::stringstream str;
 		str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";

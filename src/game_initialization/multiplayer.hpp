@@ -18,6 +18,7 @@
 #include "mp_game_settings.hpp"
 #include "connect_engine.hpp"
 #include "multiplayer_ui.hpp"
+#include "scripting/plugins/context.hpp"
 
 class config;
 class CVideo;

@@ -19,21 +19,25 @@
 #include <string>
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 struct lua_State;
 class CVideo;
+class config;
 
 class lua_kernel_base {
 public:
 	lua_kernel_base(CVideo * ptr);
 	virtual ~lua_kernel_base();
 
+	/** Runs a [lua] tag. Doesn't throw lua_error.*/
+	void run_lua_tag(const config& cfg);
+
 	/** Runs a plain script. Doesn't throw lua_error.*/
-	void run(char const *prog);
+	void run(char const *prog, int nArgs = 0);
 
 	/** Runs a plain script, but reports errors by throwing lua_error.*/
-	void throwing_run(char const * prog);
+	void throwing_run(char const * prog, int nArgs);
 
 	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
 	void interactive_run(char const * prog);
@@ -62,7 +66,7 @@ public:
 		return *static_cast<T*>(get_lua_kernel_base_ptr(L));
 	}
 
-	virtual boost::uint32_t get_random_seed();
+	virtual uint32_t get_random_seed();
 	lua_State * get_state() { return mState; }
 protected:
 	lua_State *mState;
@@ -102,14 +106,9 @@ protected:
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
 
-	// Show a dialog to the currently connected video object (if available)
-	int intf_show_dialog(lua_State * L);
-
-	// Show a message dialog, possibly with options
-	int intf_show_message_dialog(lua_State * L);
-
-	// Show a transient popup message
-	int intf_show_popup_dialog(lua_State * L);
+	using video_function = int (*)(lua_State*,CVideo&);
+	template<video_function> friend int video_dispatch(lua_State*);
+	int video_dispatch_impl(lua_State* L, video_function callback);
 
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);

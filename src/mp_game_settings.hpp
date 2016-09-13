@@ -59,6 +59,7 @@ struct mp_game_settings
 	bool fog_game;
 	bool shroud_game;
 	bool allow_observers;
+	bool registered_users_only;
 	bool shuffle_sides;
 
 	bool saved_game;

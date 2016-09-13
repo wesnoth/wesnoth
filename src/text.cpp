@@ -31,7 +31,9 @@
 
 #include "video.hpp"
 
-#pragma GCC diagnostic ignored "-Wold-style-cast"
+#ifdef __GNUC__
+# pragma GCC diagnostic ignored "-Wold-style-cast"
+#endif
 
 namespace font {
 
@@ -134,15 +136,8 @@ ttext::ttext() :
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
 	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
-#ifdef _WIN32
-	// Cairo on Windows (at least the latest available version from gtk.org
-	// as of 2014-02-22, version 1.10.2) has issues with ClearType resulting
-	// in glitchy anti-aliasing with CAIRO_ANTIALIAS_SUBPIXEL or
-	// CAIRO_ANTIALIAS_DEFAULT, but not CAIRO_ANTIALIAS_GRAY, so we use that
-	// as a workaround until the Windows package is updated to use a newer
-	// version of Cairo (see Wesnoth bug #21648).
-	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_GRAY);
-#endif
+	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_DEFAULT);
+
 	pango_cairo_context_set_font_options(context_, fo);
 	cairo_font_options_destroy(fo);
 }
@@ -704,7 +699,6 @@ struct decode_table
 static struct decode_table decode_table;
 
 
-#ifndef _WIN32
 /**
  * Converts from premultiplied alpha to plain alpha.
  * @param p pointer to a 4-byte endian-dependent color.
@@ -737,7 +731,6 @@ static void decode_pixel(unsigned char *p)
 	DECODE(1);
 	DECODE(2);
 }
-#endif
 
 
 void ttext::rerender(const bool force) const
@@ -769,8 +762,6 @@ void ttext::rerender(const bool force) const
 
 		pango_cairo_show_layout(cr, layout_);
 
-#ifndef _WIN32
-
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
@@ -781,13 +772,7 @@ void ttext::rerender(const bool force) const
 				decode_pixel(pixel);
 			}
 		}
-#else
-		// The solution code above doesn't seem to work properly on windows so
-		// use the old trick of drawing the same text a few times.
-		pango_cairo_show_layout(cr, layout_);
-		pango_cairo_show_layout(cr, layout_);
-		pango_cairo_show_layout(cr, layout_);
-#endif
+
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			surface_buffer_, width, height, 32, stride,
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
@@ -906,4 +891,3 @@ bool ttext::set_markup_helper(const std::string& text)
 }
 
 } // namespace font
-

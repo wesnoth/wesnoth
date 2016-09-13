@@ -469,7 +469,7 @@ private:
 	 * @returns                   The best size.
 	 */
 	tpoint get_best_text_size(const tpoint& minimum_size,
-							  const tpoint& maximum_size = tpoint(0, 0)) const;
+							  const tpoint& maximum_size = {0, 0}) const;
 
 	/**
 	 * Contains a helper cache for the rendering.

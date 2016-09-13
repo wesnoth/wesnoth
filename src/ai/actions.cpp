@@ -165,7 +165,7 @@ game_info& action_result::get_info() const
 
 team& action_result::get_my_team() const
 {
-	return (*resources::teams)[side_-1];
+	return resources::gameboard->teams()[side_-1];
 }
 
 
@@ -377,13 +377,13 @@ bool move_result::test_route(const unit &un)
 	}
 
 	team &my_team = get_my_team();
-	const pathfind::shortest_path_calculator calc(un, my_team, *resources::teams, resources::gameboard->map());
+	const pathfind::shortest_path_calculator calc(un, my_team, resources::gameboard->teams(), resources::gameboard->map());
 
 	//allowed teleports
 	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
 
 	//do an A*-search
-	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
+	route_ = std::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
 	if (route_->steps.empty()) {
 		set_error(E_NO_ROUTE);
 		return false;
@@ -1081,10 +1081,10 @@ const std::string& actions::get_error_name(int error_code)
 		error_names_.insert(std::make_pair(move_result::E_NO_UNIT,"move_result::E_NO_UNIT"));
 		error_names_.insert(std::make_pair(move_result::E_NOT_OWN_UNIT,"move_result::E_NOT_OWN_UNIT"));
 		error_names_.insert(std::make_pair(move_result::E_INCAPACITATED_UNIT,"move_result::E_INCAPACITATED_UNIT"));
-		error_names_.insert(std::make_pair(move_result::E_AMBUSHED,"E_AMBUSHED"));
-		error_names_.insert(std::make_pair(move_result::E_FAILED_TELEPORT,"E_FAILED_TELEPORT"));
-		error_names_.insert(std::make_pair(move_result::E_NOT_REACHED_DESTINATION,"E_NOT_REACHED_DESTINATION"));
-		error_names_.insert(std::make_pair(move_result::E_NO_ROUTE,"E_NO_ROUTE"));
+		error_names_.insert(std::make_pair(move_result::E_AMBUSHED,"move_result::E_AMBUSHED"));
+		error_names_.insert(std::make_pair(move_result::E_FAILED_TELEPORT,"move_result::E_FAILED_TELEPORT"));
+		error_names_.insert(std::make_pair(move_result::E_NOT_REACHED_DESTINATION,"move_result::E_NOT_REACHED_DESTINATION"));
+		error_names_.insert(std::make_pair(move_result::E_NO_ROUTE,"move_result::E_NO_ROUTE"));
 
 		error_names_.insert(std::make_pair(recall_result::E_NOT_AVAILABLE_FOR_RECALLING,"recall_result::E_NOT_AVAILABLE_FOR_RECALLING"));
 		error_names_.insert(std::make_pair(recall_result::E_NO_GOLD,"recall_result::E_NO_GOLD"));

@@ -82,7 +82,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
 	if ( jamming == nullptr ) {
-		create_jamming_map(local_jamming, (*resources::teams)[viewer.side()-1]);
+		create_jamming_map(local_jamming, resources::gameboard->teams()[viewer.side()-1]);
 		jamming = &local_jamming;
 	}
 
@@ -462,7 +462,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer,
                                 bool can_delay, bool invalidate, bool instant)
 {
-	team & viewing_team = (*resources::teams)[viewer.side()-1];
+	team & viewing_team = resources::gameboard->teams()[viewer.side()-1];
 
 	// Abort if there is nothing to clear.
 	if ( !viewing_team.fog_or_shroud() )
@@ -494,7 +494,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer
  */
 bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 {
-	team & viewing_team = (*resources::teams)[viewer.side()-1];
+	team & viewing_team = resources::gameboard->teams()[viewer.side()-1];
 	// A pair of dummy variables needed to simplify some logic.
 	size_t enemies, friends;
 
@@ -595,12 +595,12 @@ void shroud_clearer::invalidate_after_clear()
  */
 std::vector<int> get_sides_not_seeing(const unit & target)
 {
-	const std::vector<team> & teams = *resources::teams;
+	const std::vector<team> & teams = resources::gameboard->teams();
 	std::vector<int> not_seeing;
 
 	size_t team_size = teams.size();
 	for ( size_t i = 0; i != team_size; ++i)
-		if ( !target.is_visible_to_team(teams[i], resources::gameboard->map(), false) )
+		if ( !target.is_visible_to_team(teams[i], *resources::gameboard, false) )
 			// not_see contains side numbers; i is a team index, so add 1.
 			not_seeing.push_back(i+1);
 
@@ -631,7 +631,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
  * 5) Sides that do not use fog or shroud CAN get sighted events.
  */
 {
-	const std::vector<team> & teams = *resources::teams;
+	const std::vector<team> & teams = resources::gameboard->teams();
 	const size_t teams_size = teams.size();
 	const map_location & target_loc = target.get_location();
 
@@ -646,7 +646,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	needs_event[target.side()-1] = false;
 	// Exclude those teams that cannot see the target.
 	for ( size_t i = 0; i != teams_size; ++i )
-		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], resources::gameboard->map(), false);
+		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], *resources::gameboard, false);
 
 	// Cache "jamming".
 	std::vector< std::map<map_location, int> > jamming_cache(teams_size);
@@ -704,7 +704,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
  */
 void recalculate_fog(int side)
 {
-	team &tm = (*resources::teams)[side - 1];
+	team &tm = resources::gameboard->teams()[side - 1];
 
 	if (!tm.uses_fog())
 		return;
@@ -753,7 +753,7 @@ void recalculate_fog(int side)
  */
 bool clear_shroud(int side, bool reset_fog, bool fire_events)
 {
-	team &tm = (*resources::teams)[side - 1];
+	team &tm = resources::gameboard->teams()[side - 1];
 	if (!tm.uses_shroud() && !tm.uses_fog())
 		return false;
 

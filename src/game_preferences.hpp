@@ -67,8 +67,7 @@ class acquaintance;
 
 	const std::map<std::string, acquaintance> & get_acquaintances();
 	std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
-	bool add_friend(const std::string& nick, const std::string& notes);
-	bool add_ignore(const std::string& nick, const std::string& reason);
+	preferences::acquaintance* add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes);
 	void add_completed_campaign(const std::string &campaign_id, const std::string &difficulty_level);
 	bool remove_acquaintance(const std::string& nick);
 	bool is_friend(const std::string& nick);
@@ -138,6 +137,9 @@ class acquaintance;
 
 	bool allow_observers();
 	void set_allow_observers(bool value);
+
+	bool registered_users_only();
+	void set_registered_users_only(bool value);
 
 	bool shuffle_sides();
 	void set_shuffle_sides(bool value);
@@ -249,9 +251,6 @@ class acquaintance;
 
 	int chat_message_aging();
 	void set_chat_message_aging(const int aging);
-
-	int max_wml_menu_items();
-	void set_max_wml_menu_items(int max);
 
 	bool show_all_units_in_help();
 	void set_show_all_units_in_help(bool value);

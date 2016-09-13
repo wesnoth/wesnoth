@@ -25,14 +25,11 @@
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <boost/cstdint.hpp>
 #include <SDL_timer.h>
 #include <SDL_video.h>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
-
-using boost::uint32_t;
 
 namespace {
 	const int chat_message_border = 5;

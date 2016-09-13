@@ -38,6 +38,7 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "savegame.hpp"
+#include "saved_game.hpp"
 #include "scripting/plugins/context.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
@@ -207,9 +208,9 @@ create::create(CVideo& video, twesnothd_connection* wesnothd_connection, const c
 	plugins_context_->set_callback("create", 	std::bind(&create::plugin_event_helper, this, process_event_data (true, false, false)));
 	plugins_context_->set_callback("load", 		std::bind(&create::plugin_event_helper, this, process_event_data (false, true, false)));
 	plugins_context_->set_callback("quit", 		std::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
-	plugins_context_->set_callback("chat",		std::bind(&create::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
-	plugins_context_->set_callback("select_level",	std::bind(&gui::menu::move_selection, &levels_menu_, std::bind(get_size_t, _1, "index", 0u)), true);
-	plugins_context_->set_callback("select_type",	std::bind(&create::select_level_type_helper, this, std::bind(get_str, _1, "type")), true);
+	plugins_context_->set_callback("chat",		[this](const config& cfg) { send_chat_message(cfg["message"], false); },	true);
+	plugins_context_->set_callback("select_level", [this](const config& cfg) { levels_menu_.move_selection(cfg["index"].to_int()); }, true);
+	plugins_context_->set_callback("select_type", [this](const config& cfg) { select_level_type_helper(cfg["type"]); }, true);
 
 	plugins_context_->set_accessor("game_config",	std::bind(&create::game_config, this));
 	plugins_context_->set_accessor("get_selected",  std::bind(&get_selected_helper, &engine_));
@@ -322,9 +323,9 @@ void create::process_event_impl(const process_event_data & data)
 		{
 			savegame::loadgame load(video(),
 				game_config_manager::get()->game_config(), engine_.get_state());
-
 			if (data.filename) {
-				if (!load.load_game(*data.filename, false, false, false, "", true)) {
+				load.data().filename = *data.filename;
+				if (!load.load_game()) {
 					return ;
 				}
 			} else {
@@ -333,7 +334,7 @@ void create::process_event_impl(const process_event_data & data)
 				}
 			}
 
-			if (load.cancel_orders())
+			if (load.data().cancel_orders)
 				engine_.get_state().cancel_orders();
 
 			engine_.prepare_for_saved_game();
@@ -446,6 +447,8 @@ void create::process_event_impl(const process_event_data & data)
 
 			break;
 		}
+		case ng::level::TYPE::SAVED_GAME:
+			break;
 		} // end switch
 
 		map_size_label_.set_text(map_size.str());

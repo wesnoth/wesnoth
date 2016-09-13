@@ -18,15 +18,13 @@
 #include "formula/string_utils.hpp"
 
 #include "display.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
 #include "wml_exception.hpp"
 
 #include "terrain/type_data.hpp"
-
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 
 namespace editor {
 
@@ -43,13 +41,13 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 }
 
 editor_map::editor_map(const config& terrain_cfg)
-	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), "")
+	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), "")
 	, selection_()
 {
 }
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), data)
+	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), data)
 	, selection_()
 {
 	sanity_check();
@@ -69,7 +67,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::t_terrain & filler)
-	: gamemap(boost::make_shared<terrain_type_data>(terrain_cfg), t_translation::write_game_map(
+	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), t_translation::write_game_map(
 		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
 {
@@ -148,13 +146,21 @@ std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_locati
 std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 {
 	std::set<map_location> label_locs;
-	std::string label = _("Player");
-	label += " ";
-	for (int i = 0, size = starting_positions_.size(); i < size; ++i) {
-		if (starting_positions_[i].valid()) {
-			disp.labels().set_label(starting_positions_[i], label + std::to_string(i + 1));
-			label_locs.insert(starting_positions_[i]);
+	std::string label;
+
+
+	for (const auto& pair : starting_positions_.left) {
+
+		bool is_number = std::find_if(pair.first.begin(), pair.first.end(), [](char c) { return !std::isdigit(c); }) == pair.first.end();
+		if (is_number) {
+			label = vgettext("Player $side_num", utils::string_map{ { "side_num", pair.first } });
 		}
+		else {
+			label = pair.first;
+		}
+
+		disp.labels().set_label(map_location(pair.second.x, pair.second.y), label);
+		label_locs.insert(map_location(pair.second.x, pair.second.y));
 	}
 	return label_locs;
 }
@@ -252,11 +258,8 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 
 	// fix the starting positions
 	if(x_offset || y_offset) {
-		for(size_t i = 0; i < starting_positions_.size(); ++i) {
-			if(starting_positions_[i] != map_location()) {
-				starting_positions_[i].x -= x_offset;
-				starting_positions_[i].y -= y_offset;
-			}
+		for (auto it = starting_positions_.left.begin(); it != starting_positions_.left.end(); ++it) {
+			starting_positions_.left.modify_data(it, [=](t_translation::coordinate & loc) { loc.x -= x_offset; loc.y -= y_offset;});
 		}
 	}
 	sanity_check();

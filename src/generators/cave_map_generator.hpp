@@ -34,13 +34,13 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map(boost::optional<boost::uint32_t> randomseed = boost::none);
-	config create_scenario(boost::optional<boost::uint32_t> randomseed = boost::none);
+	std::string create_map(boost::optional<uint32_t> randomseed = boost::none);
+	config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
 
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params, boost::optional<boost::uint32_t> randomseed = boost::none);
+		cave_map_generator_job(const cave_map_generator& params, boost::optional<uint32_t> randomseed = boost::none);
 
 		struct chamber {
 			chamber()
@@ -81,7 +81,7 @@ private:
 		bool flipx_, flipy_;
 
 		t_translation::t_map map_;
-		std::map<int, t_translation::coordinate> starting_positions_;
+		t_translation::tstarting_positions starting_positions_;
 		std::map<std::string,size_t> chamber_ids_;
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;

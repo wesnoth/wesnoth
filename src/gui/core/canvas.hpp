@@ -50,7 +50,7 @@ public:
 	 * The other shapes are declared and defined in canvas.cpp, since the
 	 * implementation details are not interesting for users of the canvas.
 	 */
-	class tshape : public reference_counted_object
+	class tshape
 	{
 	public:
 		virtual ~tshape()
@@ -67,14 +67,16 @@ public:
 		 *                        for these formulas.
 		 */
 		virtual void draw(surface& canvas,
+						  SDL_Renderer* renderer,
 						  const game_logic::map_formula_callable& variables)
 				= 0;
 	};
 
-	typedef boost::intrusive_ptr<tshape> tshape_ptr;
-	typedef boost::intrusive_ptr<const tshape> const_tshape_ptr;
+	typedef std::shared_ptr<tshape> tshape_ptr;
+	typedef std::shared_ptr<const tshape> const_tshape_ptr;
 
 	tcanvas();
+	~tcanvas();
 
 	/**
 	 * Draws the canvas.
@@ -162,6 +164,8 @@ private:
 
 	/** The surface we draw all items on. */
 	surface canvas_;
+
+	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
 	game_logic::map_formula_callable variables_;

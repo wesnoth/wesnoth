@@ -36,7 +36,6 @@
 
 class CVideo;
 
-namespace boost { template <class T> class intrusive_ptr; }
 namespace gui2 { class twidget; }
 namespace gui2 { namespace event { struct tmessage; } }
 namespace gui2 { struct tpoint; }
@@ -426,6 +425,11 @@ public:
 			close();
 	}
 
+	int get_retval()
+	{
+		return retval_;
+	}
+
 	void set_owner(tdialog* owner)
 	{
 		owner_ = owner;
@@ -461,6 +465,30 @@ public:
 			return tpoint(-1, -1);
 		}
 	}
+
+	/**
+	 * Sets the window's exit hook.
+	 *
+	 * A window will only close if this function returns true.
+	 *
+	 * @param window                       The current window.
+	 */
+	void set_exit_hook(std::function<bool(twindow&)> func)
+	{
+		exit_hook_ = func;
+	}
+
+	void set_exit_hook_ok_only(std::function<bool(twindow&)> func)
+	{
+		exit_hook_ = [func](twindow& w)->bool {
+			if(w.get_retval() == OK) {
+				return func(w);
+			}
+
+			return true;
+		};
+	}
+
 private:
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
@@ -683,7 +711,7 @@ private:
 	 *
 	 * @param content_grid        The new contents for the content grid.
 	 */
-	void finalize(const boost::intrusive_ptr<tbuilder_grid>& content_grid);
+	void finalize(const std::shared_ptr<tbuilder_grid>& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	tdebug_layout_graph* debug_layout_;
@@ -760,6 +788,8 @@ private:
 
 	void signal_handler_request_placement(const event::tevent event,
 										  bool& handled);
+
+	std::function<bool(twindow&)> exit_hook_ = [](twindow&)->bool { return true; };
 };
 
 // }---------- DEFINITION ---------{

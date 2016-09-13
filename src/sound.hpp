@@ -85,6 +85,14 @@ class music_thinker : public events::pump_monitor {
 	void process(events::pump_info &info);
 };
 
+// A class to mute music when the game is in background
+class music_muter : public events::sdl_handler {
+public:
+	music_muter();
+	void handle_event(const SDL_Event&) override {}
+	void handle_window_event(const SDL_Event& event) override;
+};
+
 // Save music playlist for snapshot
 void write_music_play_list(config& snapshot);
 

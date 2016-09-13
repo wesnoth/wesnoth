@@ -93,7 +93,7 @@ namespace {
 		x2 = e.filter_loc2.x + 1; y2 = e.filter_loc2.y + 1;
 
 		int realx1 = 0, realy1 = 0, realx2 = 0, realy2 = 0;
-		boost::scoped_ptr<scoped_xy_unit> u1, u2;
+		std::unique_ptr<scoped_xy_unit> u1, u2;
 		if(unit_ptr who = get_unit(e.uid1, e.id1)) {
 			realx1 = who->get_location().x;
 			realy1 = who->get_location().y;
@@ -110,7 +110,7 @@ namespace {
 		scoped_weapon_info w1("weapon", e.data.child("first"));
 		scoped_weapon_info w2("second_weapon", e.data.child("second"));
 
-		game_events::queued_event q(tag, map_location(x1, y1), map_location(x2, y2), e.data);
+		game_events::queued_event q(tag, "", map_location(x1, y1), map_location(x2, y2), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
 
 		if(u1) {

@@ -18,6 +18,7 @@
 #include "flg_manager.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/combo.hpp"
+#include "show_dialog.hpp" //gui::preview_pane
 
 namespace mp {
 
@@ -39,30 +40,6 @@ protected:
 	virtual void process_network_data(const config& data);
 
 private:
-	class leader_preview_pane : public gui::preview_pane
-	{
-	public:
-		leader_preview_pane(CVideo& v, ng::flg_manager& flg,
-			const std::string& color);
-
-		bool show_above() const;
-		bool left_side() const;
-		void set_selection(int index);
-
-		sdl_handler_vector handler_members();
-
-	private:
-		virtual void process_event();
-		virtual void draw_contents();
-
-		ng::flg_manager& flg_;
-
-		const std::string color_;
-
-		gui::combo combo_leader_;
-		gui::combo combo_gender_;
-	};
-
 	void generate_menu();
 	bool download_level_data();
 	config& get_scenario();

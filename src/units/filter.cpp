@@ -39,8 +39,6 @@
 #include "formula/formula.hpp"
 
 #include <boost/optional.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include <vector>
 
@@ -73,7 +71,7 @@ bool unit_filter::matches(const unit & u, const unit & u2) const {
 
 
 /// Forward declare the "construct" method which constructs an appropriate filter impl
-static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
+static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
 
 /// Null unit filter is built when the input config is null
 class null_unit_filter_impl : public unit_filter_abstract_impl {
@@ -192,15 +190,15 @@ private:
  *
  */
 
-static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
+static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
 {
 	if (vcfg.empty()) {
-		return boost::make_shared<null_unit_filter_impl> (fc);
+		return std::make_shared<null_unit_filter_impl> (fc);
 	}
 	if (vcfg.get_config().attribute_count() == 1 && vcfg.get_config().all_children_count() == 0 && vcfg.has_attribute("limit")) {
-		return boost::make_shared<null_unit_filter_impl> (fc);
+		return std::make_shared<null_unit_filter_impl> (fc);
 	}
-	return boost::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
+	return std::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
 	//TODO: Add more efficient implementations for special cases
 }
 
@@ -322,6 +320,24 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		}
 	}
 
+	// Shorthand for all advancements of a given type
+	if (!vcfg["type_tree"].empty()) {
+		std::set<std::string> types;
+		for(const std::string type : utils::split(vcfg["type_tree"])) {
+			if(types.count(type)) {
+				continue;
+			}
+			if(const unit_type* ut = unit_types.find(type)) {
+				const auto& tree = ut->advancement_tree();
+				types.insert(tree.begin(), tree.end());
+				types.insert(type);
+			}
+		}
+		if(types.find(u.type_id()) == types.end()) {
+			return false;
+		}
+	}
+
 	// The variation_type could be a comma separated list of types
 	if (!vcfg["variation"].empty())
 	{
@@ -383,10 +399,9 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	// handle statuses list
 	if (!vcfg["status"].empty()) {
 		bool status_found = false;
-		std::map<std::string, std::string> states_map = u.get_states();
 
 		for (const std::string status : utils::split(vcfg["status"])) {
-			if (states_map[status] == "yes") {
+			if(u.get_state(status)) {
 				status_found = true;
 				break;
 			}
@@ -400,10 +415,8 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	if (vcfg.has_child("has_attack")) {
 		const vconfig& weap_filter = vcfg.child("has_attack");
 		bool has_weapon = false;
-		const std::vector<attack_type>& attacks = u.attacks();
-		for(std::vector<attack_type>::const_iterator i = attacks.begin();
-			i != attacks.end(); ++i) {
-			if(i->matches_filter(weap_filter.get_parsed_config())) {
+		for(const attack_type& a : u.attacks()) {
+			if(a.matches_filter(weap_filter.get_parsed_config())) {
 				has_weapon = true;
 				break;
 			}
@@ -414,10 +427,8 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	} else if (!vcfg["has_weapon"].blank()) {
 		std::string weapon = vcfg["has_weapon"];
 		bool has_weapon = false;
-		const std::vector<attack_type>& attacks = u.attacks();
-		for(std::vector<attack_type>::const_iterator i = attacks.begin();
-			i != attacks.end(); ++i) {
-			if(i->id() == weapon) {
+		for(const attack_type& a : u.attacks()) {
+			if(a.id() == weapon) {
 				has_weapon = true;
 				break;
 			}
@@ -464,12 +475,11 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			config fwml = wmlcfg.get_parsed_config();
 			/* Check if the filter only cares about variables.
 			   If so, no need to serialize the whole unit. */
-			config::const_attr_itors ai = fwml.attribute_range();
 			config::all_children_itors ci = fwml.all_children_range();
-			if (std::distance(ai.first, ai.second) == 0 &&
-			    std::distance(ci.first, ci.second) == 1 &&
-			    ci.first->key == "variables") {
-				if (!u.variables().matches(ci.first->cfg))
+			if (fwml.all_children_count() == 1 && 
+				fwml.attribute_count() == 1 &&
+			    ci.front().key == "variables") {
+				if (!u.variables().matches(ci.front().cfg))
 					return false;
 			} else {
 				if (unit_cfg.empty())
@@ -490,7 +500,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		bool found = false;
 		for (const int viewer : viewers) {
 			bool fogged = fc_.get_disp_context().teams()[viewer - 1].fogged(loc);
-			bool hiding = u.invisible(loc/*, false(?) */);
+			bool hiding = u.invisible(loc, fc_.get_disp_context());
 			bool unit_hidden = fogged || hiding;
 			if (vision["visible"].to_bool(true) != unit_hidden) {
 				found = true;
@@ -569,7 +579,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			const unit_callable main(loc,u);
 			game_logic::map_formula_callable callable(&main);
 			if (u2) {
-				boost::intrusive_ptr<unit_callable> secondary(new unit_callable(*u2));
+				std::shared_ptr<unit_callable> secondary(new unit_callable(*u2));
 				callable.add("other", variant(secondary.get()));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}

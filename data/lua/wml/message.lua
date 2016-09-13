@@ -11,11 +11,6 @@ end
 local function get_image(cfg, speaker)
 	local image = cfg.image
 	local left_side = true
-	
-	if image == "~RIGHT()" then
-		image = nil
-		left_side = false
-	end
 
 	if speaker and (image == nil or image == "") then
 		image = speaker.portrait
@@ -25,18 +20,20 @@ local function get_image(cfg, speaker)
 		return "", true
 	end
 
+	-- Note: This is deprecated except for use to set default alignment in portraits
+	-- (Move it into the first if statement later, with a nil check)
 	if image:find("~RIGHT%(%)") then
 		left_side = false
 		-- The percent signs escape the parentheses for a literal match
 		image = image:gsub("~RIGHT%(%)", "")
 	end
 
-	if image:find("~LEFT%(%)") then
-		-- This currently overrides ~RIGHT()
-		-- Use if a portrait defaults to ~RIGHT(),
-		-- or in [unit_type] to force it to left.
+	if cfg.image_pos == 'left' then
 		left_side = true
-		image = image:gsub("~LEFT%(%)", "")
+	elseif cfg.image_pos == 'right' then
+		left_side = false
+	elseif cfg.image_pos ~= nil then
+		helper.wml_error('Invalid [message]image_pos - should be left or right')
 	end
 
 	return image, left_side
@@ -214,7 +211,7 @@ local function message_user_choice(cfg, speaker, options, text_input)
 	end
 	
 	-- add formatting
-	msg_cfg.message = add_formatting(cfg, cfg.message)
+	msg_cfg.message = add_formatting(cfg, msg_cfg.message)
 	
 	-- Parse input text, if not available all fields are empty
 	if text_input then
@@ -290,6 +287,7 @@ function wesnoth.wml_actions.message(cfg)
 					description = option.description,
 					image = option.image,
 					default = option.default,
+					value = option.value
 				}
 				if option.message then
 					if not option.label then
@@ -392,6 +390,14 @@ function wesnoth.wml_actions.message(cfg)
 			log("invalid choice (" .. option_chosen .. ") was specified, choice 1 to " ..
 				#options .. " was expected", "debug")
 			return
+		end
+
+		if cfg.variable ~= nil then
+			if options[option_chosen].value == nil then
+				wesnoth.set_variable(cfg.variable, option_chosen)
+			else
+				wesnoth.set_variable(cfg.variable, options[option_chosen].value)
+			end
 		end
 
 		for i, cmd in ipairs(option_events[option_chosen]) do

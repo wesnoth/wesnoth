@@ -145,37 +145,43 @@ void twml_message_::post_show(twindow& window)
 	}
 }
 
+void twml_message_double::pre_show(twindow& window)
+{
+	twml_message_left::pre_show(window);
+	window.canvas(1).set_variable("second_portrait_image", variant(second_portrait_));
+	window.canvas(1).set_variable("second_portrait_mirror", variant(second_mirror_));
+}
+
 REGISTER_DIALOG(wml_message_left)
 
 REGISTER_DIALOG(wml_message_right)
 
-int show_wml_message(const bool left_side,
-					 CVideo& video,
+REGISTER_DIALOG(wml_message_double)
+
+int show_wml_message(CVideo& video,
 					 const std::string& title,
 					 const std::string& message,
-					 const std::string& portrait,
-					 const bool mirror,
-					 const bool has_input,
-					 const std::string& input_caption,
-					 std::string* input_text,
-					 const unsigned maximum_length,
-					 const std::vector<twml_message_option>& option_list,
-					 int* chosen_option)
+					 const twml_message_portrait* left,
+					 const twml_message_portrait* right,
+					 const twml_message_options& options,
+					 const twml_message_input& input)
 {
-	boost::shared_ptr<twml_message_> dlg;
-	if(left_side) {
-		dlg.reset(new twml_message_left(title, message, portrait, mirror));
+	std::shared_ptr<twml_message_> dlg;
+	if(left && !right) {
+		dlg.reset(new twml_message_left(title, message, left->portrait, left->mirror));
+	} else if(!left && right) {
+		dlg.reset(new twml_message_right(title, message, right->portrait, right->mirror));
 	} else {
-		dlg.reset(new twml_message_right(title, message, portrait, mirror));
+		dlg.reset(new twml_message_double(title, message, left->portrait, left->mirror, right->portrait, right->mirror));
 	}
 	assert(dlg.get());
 
-	if(has_input) {
-		dlg->set_input(input_caption, input_text, maximum_length);
+	if(!input.caption.empty()) {
+		dlg->set_input(input.caption, &input.text, input.maximum_length);
 	}
 
-	if(!option_list.empty()) {
-		dlg->set_option_list(option_list, chosen_option);
+	if(!options.option_list.empty()) {
+		dlg->set_option_list(options.option_list, &options.chosen_option);
 	}
 
 	dlg->show(video);

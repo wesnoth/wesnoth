@@ -24,7 +24,7 @@
 
 #include "utils/functional.hpp"
 #include <boost/mpl/int.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 
 #include <map>
 
@@ -36,6 +36,9 @@ class twidget;
 
 namespace event
 {
+
+template<typename K, tevent E>
+using has_key = boost::mpl::has_key<K, boost::mpl::int_<E>>;
 
 struct tmessage;
 
@@ -258,7 +261,7 @@ public:
 	/**
 	 * Connect a signal for callback in tset_event.
 	 *
-	 * The function uses some boost magic to avoid registering the wrong
+	 * The function uses some enable_if magic to avoid registering the wrong
 	 * function, but the common way to use this function is:
 	 * widget->connect_signal<EVENT_ID>(
 	 * std::bind(&tmy_dialog::my_member, this));
@@ -273,8 +276,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event, E>::value>::type
 	connect_signal(const tsignal_function& signal,
 				   const tposition position = back_child)
 	{
@@ -292,8 +294,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event, E>::value>::type
 	disconnect_signal(const tsignal_function& signal,
 					  const tposition position = back_child)
 	{
@@ -308,8 +309,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_mouse,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_mouse, E>::value>::type
 	connect_signal(const tsignal_mouse_function& signal,
 				   const tposition position = back_child)
 	{
@@ -327,8 +327,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_mouse,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_mouse, E>::value>::type
 	disconnect_signal(const tsignal_mouse_function& signal,
 					  const tposition position = back_child)
 	{
@@ -343,8 +342,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_keyboard,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_keyboard, E>::value>::type
 	connect_signal(const tsignal_keyboard_function& signal,
 				   const tposition position = back_child)
 	{
@@ -362,8 +360,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_keyboard,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_keyboard, E>::value>::type
 	disconnect_signal(const tsignal_keyboard_function& signal,
 					  const tposition position = back_child)
 	{
@@ -381,8 +378,7 @@ public:
 	 *                               and shouldn't be used.
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_notification,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_notification, E>::value>::type
 	connect_signal(const tsignal_notification_function& signal,
 				   const tposition position = back_child)
 	{
@@ -405,8 +401,7 @@ public:
 	 *                               front_pre_child)
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_notification,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_notification, E>::value>::type
 	disconnect_signal(const tsignal_notification_function& signal,
 					  const tposition position = back_child)
 	{
@@ -424,8 +419,7 @@ public:
 	 *                               and shouldn't be used.
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_message,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_message, E>::value>::type
 	connect_signal(const tsignal_message_function& signal,
 				   const tposition position = back_child)
 	{
@@ -448,8 +442,7 @@ public:
 	 *                               front_pre_child)
 	 */
 	template <tevent E>
-	typename boost::enable_if<boost::mpl::has_key<tset_event_message,
-												  boost::mpl::int_<E> > >::type
+	typename std::enable_if<has_key<tset_event_message, E>::value>::type
 	disconnect_signal(const tsignal_message_function& signal,
 					  const tposition position = back_child)
 	{

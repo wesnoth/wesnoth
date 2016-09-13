@@ -297,7 +297,7 @@ void tmouse_motion::show_tooltip()
 
 	hover_timer_ = 0;
 	hover_widget_ = nullptr;
-	hover_position_ = tpoint(0, 0);
+	hover_position_ = tpoint();
 }
 
 void tmouse_motion::mouse_leave()
@@ -354,7 +354,7 @@ void tmouse_motion::stop_hover_timer()
 
 		hover_timer_ = 0;
 		hover_widget_ = nullptr;
-		hover_position_ = tpoint(0, 0);
+		hover_position_ = tpoint();
 	}
 }
 
@@ -459,9 +459,11 @@ void tmouse_button<sdl_button_down,
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	if(is_down_) {
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 		WRN_GUI_E << LOG_HEADER << event
 				  << ". The mouse button is already down, "
 				  << "we missed an event.\n";
+#endif
 		return;
 	}
 	is_down_ = true;
@@ -481,8 +483,10 @@ void tmouse_button<sdl_button_down,
 		}
 
 		if(mouse_over != mouse_focus_) {
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << LOG_HEADER << ". Mouse down on non focused widget "
 					  << "and mouse not captured, we missed events.\n";
+#endif
 			mouse_focus_ = mouse_over;
 		}
 

@@ -44,7 +44,7 @@ public:
 
 	virtual void set_ai_context(ai_context *context);
 private:
-	boost::shared_ptr<formula_ai> formula_ai_;
+	std::shared_ptr<formula_ai> formula_ai_;
 };
 
 } //end of namespace ai

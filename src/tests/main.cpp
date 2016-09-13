@@ -74,10 +74,11 @@ std::ofstream reporter;
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture()
 	{
+		using namespace boost::unit_test;
 		reporter.open("boost_test_result.xml");
 		assert( reporter.is_open() );
 
-		boost::unit_test::results_reporter::set_stream(reporter);
+		results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
 
@@ -93,21 +94,21 @@ struct wesnoth_global_fixture {
 
 		// Set more report as default
 #if BOOST_VERSION >= 106000
-		if (boost::unit_test::runtime_config::get<boost::unit_test::log_level>(boost::unit_test::runtime_config::LOG_LEVEL) == boost::unit_test::invalid_log_level)
-			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
-		if (boost::unit_test::runtime_config::get<boost::unit_test::report_level>(boost::unit_test::runtime_config::REPORT_LEVEL) == boost::unit_test::INV_REPORT_LEVEL)
-			boost::unit_test::results_reporter::set_level(boost::unit_test::SHORT_REPORT);
-		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
-		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
+		if(runtime_config::get<log_level>(runtime_config::LOG_LEVEL) == invalid_log_level)
+			unit_test_log.set_threshold_level(log_messages);
+		if(runtime_config::get<report_level>(runtime_config::REPORT_LEVEL) == INV_REPORT_LEVEL)
+			results_reporter::set_level(SHORT_REPORT);
+		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
+		unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
+		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 #else
-		if (boost::unit_test::runtime_config::log_level() == boost::unit_test::invalid_log_level)
-			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
-		if (boost::unit_test::runtime_config::report_level() == boost::unit_test::INV_REPORT_LEVEL)
-			boost::unit_test::results_reporter::set_level(boost::unit_test::SHORT_REPORT);
-		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
-		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
+		if(runtime_config::log_level() == invalid_log_level)
+			unit_test_log.set_threshold_level(log_messages);
+		if(runtime_config::report_level() == INV_REPORT_LEVEL)
+			results_reporter::set_level(SHORT_REPORT);
+		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
+		unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
+		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 #endif
 	}
 	~wesnoth_global_fixture()

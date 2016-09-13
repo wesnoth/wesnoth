@@ -24,8 +24,8 @@
 
 #include "global.hpp"
 
-#include <boost/shared_ptr.hpp>
-
+#include <memory>
+#include <string>
 
 class variant;
 
@@ -39,7 +39,7 @@ class formula_callable;
 
 class base_breakpoint;
 
-typedef boost::shared_ptr<base_breakpoint> breakpoint_ptr;
+typedef std::shared_ptr<base_breakpoint> breakpoint_ptr;
 
 formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const std::string& f_name);
 

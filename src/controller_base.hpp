@@ -70,6 +70,11 @@ public:
 	void set_scroll_down(bool on);
 	void set_scroll_left(bool on);
 	void set_scroll_right(bool on);
+
+	/**
+	* Get (optionally) a command executor to handle context menu events
+	*/
+	virtual hotkey::command_executor * get_hotkey_command_executor() { return nullptr; }
 protected:
 	virtual bool is_browsing() const
 	{ return false; }
@@ -93,17 +98,14 @@ protected:
 	virtual plugins_context * get_plugins_context() { return nullptr; }
 
 	/**
-	 * Get (optionally) a command executor to handle context menu events
-	 */
-	virtual hotkey::command_executor * get_hotkey_command_executor() { return nullptr; }
-
-	/**
 	 * Derived classes should override this to return false when arrow keys
 	 * should not scroll the map, hotkeys not processed etc, for example
 	 * when a textbox is active
 	 * @returns true when arrow keys should scroll the map, false otherwise
 	 */
 	virtual bool have_keyboard_focus();
+
+	virtual std::vector<std::string> additional_actions_pressed() { return std::vector<std::string>(); }
 
 
 	/**

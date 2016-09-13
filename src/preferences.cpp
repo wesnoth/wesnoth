@@ -57,6 +57,22 @@ config prefs;
 
 namespace preferences {
 
+/*
+ * Stores all the static, default values for certain game preferences. The values
+ * are kept here for easy modification without a lnegthy rebuild.
+ *
+ * Add any variables of similar type here.
+ */
+const int min_window_width  = 800;
+const int min_window_height = 600;
+
+const int def_window_width  = 1024;
+const int def_window_height = 768;
+
+const int min_font_scaling  = 80;
+const int max_font_scaling  = 150;
+
+
 class prefs_event_handler : public events::sdl_handler {
 public:
 	virtual void handle_event(const SDL_Event &) {}
@@ -93,6 +109,8 @@ base_manager::base_manager()
 
 base_manager::~base_manager()
 {
+	event_handler_.leave_global();
+
 	try {
 		if (no_preferences_save) return;
 
@@ -135,9 +153,7 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 void write_preferences()
 {
 #ifndef _WIN32
-
     bool prefs_file_existed = access(filesystem::get_prefs_file().c_str(), F_OK) == 0;
-
 #endif
 
 	try {
@@ -147,9 +163,7 @@ void write_preferences()
 		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
 	}
 
-
 #ifndef _WIN32
-
     if(!prefs_file_existed) {
 
         if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
@@ -157,10 +171,7 @@ void write_preferences()
         }
 
     }
-
 #endif
-
-
 }
 
 void set(const std::string &key, bool value)
@@ -346,27 +357,19 @@ void set_scroll_to_action(bool ison)
 	prefs["scroll_to_action"] = ison;
 }
 
-int min_allowed_width()
-{
-	return 800;
-}
-
-int min_allowed_height()
-{
-	return 600;
-}
-
 std::pair<int,int> resolution()
 {
 	const std::string& x = prefs["xresolution"], y = prefs["yresolution"];
 
 	if (!x.empty() && !y.empty()) {
-		return std::make_pair(
-			std::max(std::stoi(x), min_allowed_width()),
-			std::max(std::stoi(y), min_allowed_height()));
-	} else {
-		return std::pair<int,int>(1024,768);
+		try {
+			return std::make_pair(
+				std::max(std::stoi(x), min_window_width),
+				std::max(std::stoi(y), min_window_height));
+		} catch(std::invalid_argument) {}
 	}
+
+	return std::pair<int,int>(def_window_width, def_window_height);
 }
 
 bool maximized()
@@ -421,13 +424,13 @@ void save_turbo_speed(const double speed)
 
 int font_scaling()
 {
-	// Clip at 50 because if it's too low it'll cause crashes
-	return std::max<int>(50, prefs["font_scale"].to_int(100));
+	// Clip at 80 because if it's too low it'll cause crashes
+	return std::max<int>(std::min<int>(prefs["font_scale"].to_int(100), max_font_scaling), min_font_scaling);
 }
 
 void set_font_scaling(int scale)
 {
-	prefs["font_scale"] = scale;
+	prefs["font_scale"] = std::max(std::min(scale, max_font_scaling), min_font_scaling);
 }
 
 int font_scaled(int size)
@@ -463,6 +466,16 @@ std::string language()
 void set_language(const std::string& s)
 {
 	preferences::set("locale", s);
+}
+
+std::string gui_theme()
+{
+	return prefs["gui2_theme"];
+}
+
+void set_gui_theme(const std::string& s)
+{
+	preferences::set("gui2_theme", s);
 }
 
 bool ellipses()
@@ -675,6 +688,16 @@ bool set_music(bool ison) {
 			sound::stop_music();
 	}
 	return true;
+}
+
+bool stop_music_in_background()
+{
+	return get("stop_music_in_background", false);
+}
+
+void set_stop_music_in_background(bool ison)
+{
+	preferences::set("stop_music_in_background", ison);
 }
 
 namespace {
@@ -1035,6 +1058,16 @@ bool disable_loadingscreen_animation()
 void set_disable_loadingscreen_animation(bool value)
 {
 	set("disable_loadingscreen_animation", value);
+}
+
+bool damage_prediction_allow_monte_carlo_simulation()
+{
+	return get("damage_prediction_allow_monte_carlo_simulation", true);
+}
+
+void set_damage_prediction_allow_monte_carlo_simulation(bool value)
+{
+	set("damage_prediction_allow_monte_carlo_simulation", value);
 }
 
 } // end namespace preferences

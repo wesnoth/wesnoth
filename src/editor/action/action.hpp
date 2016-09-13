@@ -283,8 +283,8 @@ class editor_action_fill : public editor_action_location_terrain
 class editor_action_starting_position : public editor_action_location
 {
 	public:
-		editor_action_starting_position(map_location loc, int player)
-		: editor_action_location(loc), player_(player)
+		editor_action_starting_position(map_location loc, std::string loc_id)
+		: editor_action_location(loc), loc_id_(loc_id)
 		{
 		}
 		editor_action_starting_position* clone() const;
@@ -292,7 +292,7 @@ class editor_action_starting_position : public editor_action_location
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "starting_pos"; }
 	protected:
-		int player_;
+		std::string loc_id_;
 };
 
 

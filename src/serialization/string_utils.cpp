@@ -27,8 +27,7 @@
 #include "serialization/unicode.hpp"
 #include "util.hpp"
 #include <cassert>
-#include <boost/array.hpp>
-#include <boost/lexical_cast.hpp>
+#include <array>
 
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general())
@@ -125,7 +124,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 			if (flags & STRIP_SPACES)
 				strip_end(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(new_val);
+				res.push_back(std::move(new_val));
 			++i2;
 			if (flags & STRIP_SPACES) {
 				while (i2 != val.end() && portable_isspace(*i2))
@@ -142,7 +141,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 	if (flags & STRIP_SPACES)
 		strip_end(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(new_val);
+		res.push_back(std::move(new_val));
 
 	return res;
 }
@@ -430,7 +429,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	if (flags & STRIP_SPACES)
 		strip(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(new_val);
+		res.push_back(std::move(new_val));
 
 	if(!part.empty()){
 			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;;
@@ -442,7 +441,10 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 // Modify a number by string representing integer difference, or optionally %
 int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
-	int value = std::stoi(amount);
+	int value = 0;
+	try {
+		value = std::stoi(amount);
+	} catch(std::invalid_argument) {}
 	if(amount[amount.size()-1] == '%') {
 		value = div100rounded(number * value);
 	}
@@ -560,7 +562,7 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 std::string si_string(double input, bool base2, std::string unit) {
 	const double multiplier = base2 ? 1024 : 1000;
 
-	typedef boost::array<std::string, 9> strings9;
+	typedef std::array<std::string, 9> strings9;
 
 	strings9 prefixes;
 	strings9::const_iterator prefix;
@@ -801,7 +803,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c, int flag
 			if (flags & STRIP_SPACES)
 				strip(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(new_val);
+				res.push_back(std::move(new_val));
 			++i2;
 			if (flags & STRIP_SPACES) {
 				while(i2 != val.end() && *i2 == ' ')
@@ -828,9 +830,13 @@ std::pair< int, int > parse_range(std::string const &str)
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<int,int> res(std::stoi(a), std::stoi(b));
-	if (res.second < res.first)
-		res.second = res.first;
+	std::pair<int,int> res = {0,0};
+	try {
+		res = std::make_pair(std::stoi(a), std::stoi(b));
+		if (res.second < res.first) {
+			res.second = res.first;
+		}
+	} catch(std::invalid_argument) {}
 
 	return res;
 }

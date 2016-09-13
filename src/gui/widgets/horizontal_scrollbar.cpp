@@ -35,8 +35,8 @@ REGISTER_WIDGET(horizontal_scrollbar)
 
 unsigned thorizontal_scrollbar::minimum_positioner_length() const
 {
-	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
 											   tresolution>(config());
 
 	assert(conf);
@@ -45,8 +45,8 @@ unsigned thorizontal_scrollbar::minimum_positioner_length() const
 
 unsigned thorizontal_scrollbar::maximum_positioner_length() const
 {
-	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
 											   tresolution>(config());
 
 	assert(conf);
@@ -55,8 +55,8 @@ unsigned thorizontal_scrollbar::maximum_positioner_length() const
 
 unsigned thorizontal_scrollbar::offset_before() const
 {
-	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
 											   tresolution>(config());
 
 	assert(conf);
@@ -65,8 +65,8 @@ unsigned thorizontal_scrollbar::offset_before() const
 
 unsigned thorizontal_scrollbar::offset_after() const
 {
-	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
 											   tresolution>(config());
 	assert(conf);
 

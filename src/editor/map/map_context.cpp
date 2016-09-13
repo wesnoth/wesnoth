@@ -20,6 +20,7 @@
 #include "config_assign.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
@@ -38,6 +39,23 @@
 
 
 namespace editor {
+
+editor_team_info::editor_team_info(const team& t)
+	: side(t.side())
+	, id(t.team_name())
+	, name(t.user_team_name())
+	, gold(t.gold())
+	, income(t.base_income())
+	, village_income(t.village_gold())
+	, village_support(t.village_support())
+	, fog(t.uses_fog())
+	, shroud(t.uses_shroud())
+	, share_vision(t.share_vision())
+	, controller(t.controller())
+	, no_leader(t.no_leader())
+	, hidden(t.hidden())
+{
+}
 
 const size_t map_context::max_action_stack_size_ = 100;
 
@@ -141,7 +159,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	}
 
 	// 1.0 Pure map data
-	boost::regex rexpression_map_data("map_data\\s*=\\s*\"(.+?)\"");
+	boost::regex rexpression_map_data(R"""(map_data\s*=\s*"(.+?)")""");
 	boost::smatch matched_map_data;
 	if (!boost::regex_search(file_string, matched_map_data, rexpression_map_data,
 			boost::regex_constants::match_not_dot_null)) {
@@ -154,12 +172,12 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 	// 2.0 Embedded map
 	const std::string& map_data = matched_map_data[1];
-	boost::regex rexpression_macro("\\{(.+?)\\}");
+	boost::regex rexpression_macro(R"""(\{(.+?)\})""");
 	boost::smatch matched_macro;
 	if (!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
 		// We have a map_data string but no macro ---> embedded or scenario
 
-		boost::regex rexpression_scenario("\\[scenario\\]|\\[test\\]|\\[multiplayer\\]");
+		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer)\])""");
 		if (!boost::regex_search(file_string, rexpression_scenario)) {
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
@@ -199,26 +217,23 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	add_to_recent_files();
 }
 
-void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
-		int gold, int income, int village_gold, int village_support,
-		bool fog, bool shroud, team::SHARE_VISION share_vision,
-		team::CONTROLLER controller, bool hidden, bool no_leader)
+void map_context::set_side_setup(editor_team_info& info)
 {
-	assert(teams_.size() > static_cast<unsigned int>(side));
-	team& t = teams_[side];
+	assert(teams_.size() >= static_cast<unsigned int>(info.side));
+	team& t = teams_[info.side - 1];
 //	t.set_save_id(id);
 //	t.set_name(name);
-	t.change_team(team_name, user_team_name);
-	t.have_leader(!no_leader);
-	t.change_controller(controller);
-	t.set_gold(gold);
-	t.set_base_income(income);
-	t.set_hidden(hidden);
-	t.set_fog(fog);
-	t.set_shroud(shroud);
-	t.set_share_vision(share_vision);
-	t.set_village_gold(village_gold);
-	t.set_village_support(village_support);
+	t.change_team(info.id, info.name);
+	t.have_leader(!info.no_leader);
+	t.change_controller(info.controller);
+	t.set_gold(info.gold);
+	t.set_base_income(info.income);
+	t.set_hidden(info.hidden);
+	t.set_fog(info.fog);
+	t.set_shroud(info.shroud);
+	t.set_share_vision(info.share_vision);
+	t.set_village_gold(info.village_income);
+	t.set_village_support(info.village_support);
 	actions_since_save_++;
 }
 
@@ -301,8 +316,6 @@ void map_context::load_scenario(const config& game_config)
 	for(const config& music : scenario.child_range("music")) {
 		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
-
-	resources::teams = &teams_;
 
 	int i = 1;
 	for(config &side : scenario.child_range("side"))
@@ -542,7 +555,7 @@ bool map_context::save_map()
 			filesystem::write_file(get_filename(), map_data);
 		} else {
 			std::string map_string = filesystem::read_file(get_filename());
-			boost::regex rexpression_map_data("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
+			boost::regex rexpression_map_data(R"""((.*map_data\s*=\s*")(.+?)(".*))""");
 			boost::smatch matched_map_data;
 			if (boost::regex_search(map_string, matched_map_data, rexpression_map_data,
 					boost::regex_constants::match_not_dot_null)) {
@@ -692,7 +705,7 @@ void map_context::partial_undo()
 	}
 	//a partial undo performs the first action form the current action's action_chain that would be normally performed
 	//i.e. the *first* one.
-	boost::scoped_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
+	const std::unique_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
 	if (undo_chain->empty()) {
 		actions_since_save_--;
 		delete undo_chain;
@@ -727,7 +740,7 @@ void map_context::clear_stack(action_stack& stack)
 void map_context::perform_action_between_stacks(action_stack& from, action_stack& to)
 {
 	assert(!from.empty());
-	boost::scoped_ptr<editor_action> action(from.back());
+	const std::unique_ptr<editor_action> action(from.back());
 	from.pop_back();
 	editor_action* reverse_action = action->perform(*this);
 	to.push_back(reverse_action);

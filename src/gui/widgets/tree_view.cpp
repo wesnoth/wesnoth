@@ -40,7 +40,7 @@ REGISTER_WIDGET(tree_view)
 ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	: tscrollbar_container(2)
 	, node_definitions_(node_definitions)
-	, indention_step_size_(0)
+	, indentation_step_size_(0)
 	, need_layout_(false)
 	, root_node_(new ttree_view_node("root",
 									 node_definitions_,
@@ -80,12 +80,18 @@ void ttree_view::remove_node(ttree_view_node* node)
 
 	node->parent_node_->children_.erase(itor);
 
-	if(get_size() == tpoint(0, 0)) {
+	if(get_size() == tpoint()) {
 		return;
 	}
 
 	// Don't shrink the width, need to think about a good algorithm to do so.
 	resize_content(0, -node_size.y);
+}
+
+void ttree_view::clear()
+{
+	get_root_node().clear();
+	resize_content(0, -content_grid()->get_size().y);
 }
 
 void
@@ -151,7 +157,7 @@ void ttree_view::layout_children(const bool force)
 	assert(root_node_ && content_grid());
 
 	if(need_layout_ || force) {
-		root_node_->place(indention_step_size_,
+		root_node_->place(indentation_step_size_,
 						  get_origin(),
 						  content_grid()->get_size().x);
 		root_node_->set_visible_rectangle(content_visible_area_);
@@ -190,7 +196,7 @@ void ttree_view::signal_handler_left_button_down(const event::tevent event)
 }
 template<ttree_view_node* (ttree_view_node::*func) ()>
 ttree_view_node* ttree_view::get_next_node()
-{	
+{
 	ttree_view_node* selected = selected_item();
 	if(!selected) {
 		return nullptr;
@@ -224,7 +230,7 @@ void ttree_view::handle_key_up_arrow(SDLMod modifier, bool& handled)
 		handled = true;
 	}
 	else {
-		tscrollbar_container::handle_key_up_arrow(modifier, handled);	
+		tscrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
 
@@ -234,7 +240,7 @@ void ttree_view::handle_key_down_arrow(SDLMod modifier, bool& handled)
 		handled = true;
 	}
 	else {
-		tscrollbar_container::handle_key_down_arrow(modifier, handled);	
+		tscrollbar_container::handle_key_down_arrow(modifier, handled);
 	}
 }
 
@@ -306,7 +312,7 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -340,7 +346,7 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
  *                                     Determines whether or not to show the
  *                                     scrollbar. $
  *
- *     indention_step_size & unsigned & 0 &
+ *     indentation_step_size & unsigned & 0 &
  *                                     The number of pixels every level of
  *                                     nodes is indented from the previous
  *                                     level. $
@@ -373,7 +379,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, indention_step_size(cfg["indention_step_size"])
+	, indentation_step_size(cfg["indentation_step_size"])
 	, nodes()
 {
 
@@ -398,14 +404,13 @@ twidget* tbuilder_tree_view::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	widget->set_indention_step_size(indention_step_size);
+	widget->set_indentation_step_size(indentation_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const ttree_view_definition::tresolution>
-	conf = boost::
-			dynamic_pointer_cast<const ttree_view_definition::tresolution>(
+	std::shared_ptr<const ttree_view_definition::tresolution>
+	conf = std::static_pointer_cast<const ttree_view_definition::tresolution>(
 					widget->config());
 	assert(conf);
 
@@ -429,7 +434,7 @@ ttree_node::ttree_node(const config& cfg)
 
 	VALIDATE(node_definition, _("No node defined."));
 
-	builder = new tbuilder_grid(node_definition);
+	builder = std::make_shared<tbuilder_grid>(node_definition);
 }
 
 } // namespace implementation

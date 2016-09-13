@@ -86,7 +86,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(it != get_unit_map().end()) {
 		selection_candidate_ = it.get_shared_ptr();
 
-		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(*it)) {
+		if(resources::gameboard->teams().at(it->side()-1).get_side_actions()->unit_has_actions(*it)) {
 			owner_unit_ = it.get_shared_ptr();
 		}
 
@@ -189,7 +189,7 @@ void highlighter::last_action_redraw(move_ptr move)
 {
 	//Last action with a fake unit always gets normal appearance
 	if(move->get_fake_unit()) {
-		side_actions& sa = *resources::teams->at(move->team_index()).get_side_actions();
+		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
 		side_actions::iterator last_action = sa.find_last_action_of(*(move->get_unit()));
 		side_actions::iterator second_to_last_action = last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 
@@ -288,7 +288,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 void highlighter::highlight_main_visitor::visit(attack_ptr attack)
 {
 	///@todo: highlight the attack indicator
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
@@ -319,7 +319,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 
 void highlighter::highlight_secondary_visitor::visit(attack_ptr attack)
 {
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::unhighlight_visitor::visit(move_ptr move)
@@ -336,7 +336,7 @@ void highlighter::unhighlight_visitor::visit(move_ptr move)
 
 void highlighter::unhighlight_visitor::visit(attack_ptr attack)
 {
-	visit(boost::static_pointer_cast<move>(attack));
+	visit(std::static_pointer_cast<move>(attack));
 }
 
 void highlighter::unhighlight_visitor::visit(recall_ptr recall)

@@ -19,7 +19,6 @@
  * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
 
-#include "game_errors.hpp"
 #include "global.hpp"
 
 #include "log.hpp"

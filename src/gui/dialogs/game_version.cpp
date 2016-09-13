@@ -267,16 +267,6 @@ void tgame_version::pre_show(twindow& window)
 	tlistbox& tab_bar
 			= find_widget<tlistbox>(&window, "tab_bar", false);
 
-	list_data["tab_label"]["label"] = _("Paths");
-	tab_bar.add_row(list_data);
-
-	list_data["tab_label"]["label"] = _("Libraries");
-	tab_bar.add_row(list_data);
-
-	list_data["tab_label"]["label"] = _("Features");
-	tab_bar.add_row(list_data);
-
-	tab_bar.select_row(0);
 	window.keyboard_capture(&tab_bar);
 
 	const unsigned tab_count = tab_bar.get_item_count();

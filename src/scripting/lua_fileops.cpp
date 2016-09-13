@@ -19,13 +19,11 @@
 #include "game_config.hpp" //for game_config::debug_lua
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"	// for chat_message, luaW_pcall
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 
 #include <exception>
 #include <string>
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
 #include "lua/lauxlib.h"
@@ -124,7 +122,7 @@ int intf_read_file(lua_State *L)
 	if(p.empty()) {
 		return luaL_argerror(L, -1, "file not found");
 	}
-	boost::scoped_ptr<std::istream> fs(filesystem::istream_file(p));
+	const std::unique_ptr<std::istream> fs(filesystem::istream_file(p));
 	fs->exceptions(std::ios_base::goodbit);
 	size_t size = 0;
 	fs->seekg(0, std::ios::end);
@@ -186,7 +184,7 @@ public:
 	}
 private:
 	char buff_[LUAL_BUFFERSIZE];
-	boost::scoped_ptr<std::istream> pistream_;
+	const std::unique_ptr<std::istream> pistream_;
 };
 
 /**

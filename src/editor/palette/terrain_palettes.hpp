@@ -24,6 +24,8 @@
 
 namespace editor {
 
+class editor_toolkit;
+
 const t_translation::t_terrain& get_selected_fg_terrain();
 const t_translation::t_terrain& get_selected_bg_terrain();
 
@@ -33,7 +35,7 @@ class terrain_palette : public editor_palette<t_translation::t_terrain> {
 public:
 
 	terrain_palette(editor_display &gui, const config& cfg,
-			mouse_action** active_mouse_action);
+	                editor_toolkit &toolkit);
 
 	const gamemap& map() const { return gui_.get_map(); }
 

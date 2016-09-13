@@ -44,7 +44,6 @@
 #include "wml_exception.hpp"
 #include "config_assign.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <cmath>
 
 static lg::log_domain log_ai_recruitment("ai/recruitment");
@@ -678,7 +677,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
  */
 const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const {
 	const unit_map& units = *resources::units;
-	const team& team = (*resources::teams)[side - 1];
+	const team& team = resources::gameboard->teams()[side - 1];
 
 	pathfind::full_cost_map cost_map(true, true, team, true, true);
 
@@ -749,7 +748,7 @@ void recruitment::update_average_lawful_bonus() {
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
 	const gamemap& map = resources::gameboard->map();
-	const team& team = (*resources::teams)[get_side() - 1];
+	const team& team = resources::gameboard->teams()[get_side() - 1];
 
 	for(int x = 0; x < map.w(); ++x) {
 		for (int y = 0; y < map.h(); ++y) {
@@ -811,7 +810,7 @@ void recruitment::update_important_hexes() {
 	// The important hexes are those where my value on the cost map is
 	// similar to a enemies one.
 	const pathfind::full_cost_map my_cost_map = get_cost_map_of_side(get_side());
-	for (const team& team : *resources::teams) {
+	for (const team& team : resources::gameboard->teams()) {
 		if (current_team().is_enemy(team.side())) {
 			const pathfind::full_cost_map enemy_cost_map = get_cost_map_of_side(team.side());
 
@@ -933,7 +932,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 	}
 	if (enemy_units.size() < UNIT_THRESHOLD) {
 		// Use also enemies recruitment lists and insert units into enemy_units.
-		for (const team& team : *resources::teams) {
+		for (const team& team : resources::gameboard->teams()) {
 			if (!current_team().is_enemy(team.side())) {
 				continue;
 			}
@@ -1119,20 +1118,20 @@ void recruitment::simulate_attack(
 		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()" << std::endl;
 		return;
 	}
-	const std::vector<attack_type> attacker_weapons = attacker->attacks();
-	const std::vector<attack_type> defender_weapons = defender->attacks();
+	const_attack_itors attacker_weapons = attacker->attacks();
+	const_attack_itors defender_weapons = defender->attacks();
 
-	boost::shared_ptr<attack_simulation> best_att_attack;
+	std::shared_ptr<attack_simulation> best_att_attack;
 
 	// Let attacker choose weapon
 	for (const attack_type& att_weapon : attacker_weapons) {
-		boost::shared_ptr<attack_simulation> best_def_response;
+		std::shared_ptr<attack_simulation> best_def_response;
 		// Let defender choose weapon
 		for (const attack_type& def_weapon : defender_weapons) {
 			if (att_weapon.range() != def_weapon.range()) {
 				continue;
 			}
-			boost::shared_ptr<attack_simulation> simulation(new attack_simulation(
+			std::shared_ptr<attack_simulation> simulation(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
 					&att_weapon, &def_weapon, average_lawful_bonus_));
@@ -1412,7 +1411,7 @@ bool recruitment::remove_job_if_no_blocker(config* job) {
  * positive or negative.
  */
 double recruitment::get_estimated_income(int turns) const {
-	const team& team = (*resources::teams)[get_side() - 1];
+	const team& team = resources::gameboard->teams()[get_side() - 1];
 	const size_t own_villages = team.villages().size();
 	const double village_gain = get_estimated_village_gain();
 	const double unit_gain = get_estimated_unit_gain();
@@ -1448,7 +1447,7 @@ double recruitment::get_estimated_village_gain() const {
 			++neutral_villages;
 		}
 	}
-	return (neutral_villages / resources::teams->size()) / 4.;
+	return (neutral_villages / resources::gameboard->teams().size()) / 4.;
 }
 
 /**
@@ -1475,7 +1474,7 @@ double recruitment::get_unit_ratio() const {
 		}
 	}
 	int allies_count = 0;
-	for (const team& team : *resources::teams) {
+	for (const team& team : resources::gameboard->teams()) {
 		if (!current_team().is_enemy(team.side())) {
 			++allies_count;
 		}
@@ -1713,7 +1712,7 @@ void recruitment::update_scouts_wanted() {
 			++neutral_villages;
 		}
 	}
-	double our_share = static_cast<double>(neutral_villages) / resources::teams->size();
+	double our_share = static_cast<double>(neutral_villages) / resources::gameboard->teams().size();
 
 	// The villages per scout is for a two-side battle,
 	// accounting for all neutral villages on the map.
@@ -1802,9 +1801,9 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	for (config lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
-	std::function<void(std::vector<boost::shared_ptr<recruit_job> >&, const config&)> factory_jobs =
+	std::function<void(std::vector<std::shared_ptr<recruit_job> >&, const config&)> factory_jobs =
 		std::bind(&recruitment_aspect::create_job,*this,_1,_2);
-	std::function<void(std::vector<boost::shared_ptr<recruit_limit> >&, const config&)> factory_limits =
+	std::function<void(std::vector<std::shared_ptr<recruit_limit> >&, const config&)> factory_limits =
 		std::bind(&recruitment_aspect::create_limit,*this,_1,_2);
 	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
 	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
@@ -1812,18 +1811,18 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 
 void recruitment_aspect::recalculate() const {
 	config cfg;
-	for (const boost::shared_ptr<recruit_job>& job : jobs_) {
+	for (const std::shared_ptr<recruit_job>& job : jobs_) {
 		cfg.add_child("recruit", job->to_config());
 	}
-	for (const boost::shared_ptr<recruit_limit>& lim : limits_) {
+	for (const std::shared_ptr<recruit_limit>& lim : limits_) {
 		cfg.add_child("limit", lim->to_config());
 	}
 	*this->value_ = cfg;
 	this->valid_ = true;
 }
 
-void recruitment_aspect::create_job(std::vector<boost::shared_ptr<recruit_job> > &jobs, const config &job) {
-	boost::shared_ptr<recruit_job> job_ptr(new recruit_job(
+void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job> > &jobs, const config &job) {
+	std::shared_ptr<recruit_job> job_ptr(new recruit_job(
 		utils::split(job["type"]),
 		job["leader_id"], job["id"],
 		job["number"].to_int(-1), job["importance"].to_int(1),
@@ -1834,8 +1833,8 @@ void recruitment_aspect::create_job(std::vector<boost::shared_ptr<recruit_job> >
 	jobs.push_back(job_ptr);
 }
 
-void recruitment_aspect::create_limit(std::vector<boost::shared_ptr<recruit_limit> > &limits, const config &lim) {
-	boost::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
+void recruitment_aspect::create_limit(std::vector<std::shared_ptr<recruit_limit> > &limits, const config &lim) {
+	std::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
 		utils::split(lim["type"]),
 		lim["id"],
 		lim["max"].to_int(0)

@@ -25,6 +25,3 @@
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
-
-#include <boost/make_shared.hpp>
-

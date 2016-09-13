@@ -21,7 +21,7 @@
 
 #include <map>
 
-#include <boost/array.hpp>
+#include <array>
 
 namespace gui2
 {
@@ -62,7 +62,7 @@ private:
 	const std::string log_path_;
 #endif
 
-	typedef boost::array<std::string, 4> deplist_entry;
+	typedef std::array<std::string, 4> deplist_entry;
 	std::vector<deplist_entry> deps_;
 
 	std::vector<game_config::optional_feature> opts_;

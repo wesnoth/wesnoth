@@ -19,6 +19,7 @@
 #include "halo.hpp"
 #include "units/frame.hpp"
 #include "units/ptr.hpp"
+#include "utils/make_enum.hpp"
 
 class attack_type;
 class display;
@@ -29,14 +30,19 @@ class unit_animation
 		/** Shouldn't be used so only declared. */
 		unit_animation();
 	public:
-		typedef enum { MATCH_FAIL=-10 , DEFAULT_ANIM=-9} variation_type;
-		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
+		enum variation_type { MATCH_FAIL=-10 , DEFAULT_ANIM=-9};
+		MAKE_ENUM(hit_type,
+			(HIT, "hit")
+			(MISS, "miss")
+			(KILL, "kill")
+			(INVALID, "invalid")
+		);
 
 		static const std::vector<std::string>& all_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=nullptr,const attack_type* second_attack = nullptr, int value2 =0) const;
+	int matches(const display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=hit_type::INVALID,const attack_type* attack=nullptr,const attack_type* second_attack = nullptr, int value2 =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; }
@@ -100,7 +106,7 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			bool need_minimal_update() const;
-			typedef enum { UNSET,CYCLE,NO_CYCLE} cycle_state;
+			enum cycle_state { UNSET,CYCLE,NO_CYCLE};
 			void override(int start_time
 					, int duration
 					, const cycle_state cycles
@@ -173,7 +179,7 @@ class unit_animator
 				, const std::string& text = ""
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
-					unit_animation::INVALID
+					unit_animation::hit_type::INVALID
 				, const attack_type* attack = nullptr
 				, const attack_type* second_attack = nullptr
 				, int value2 = 0);
@@ -186,7 +192,7 @@ class unit_animator
 				, const std::string& text = ""
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
-					unit_animation::INVALID
+					unit_animation::hit_type::INVALID
 				, const attack_type* attack = nullptr
 				, const attack_type* second_attack = nullptr
 				, int value2 = 0);

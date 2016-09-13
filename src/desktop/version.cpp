@@ -176,10 +176,10 @@ std::string os_version()
 		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
 	}
 
-	return (formatter() << u.sysname << ' '
+	return formatter() << u.sysname << ' '
 						<< u.release << ' '
 						<< u.version << ' '
-						<< u.machine).str();
+						<< u.machine;
 
 #elif defined(_WIN32)
 
@@ -259,10 +259,10 @@ std::string os_version()
 
 	version += " (";
 	// Add internal version numbers.
-	version += (formatter()
+	version += formatter()
 			<< v.dwMajorVersion << '.'
 			<< v.dwMinorVersion << '.'
-			<< v.dwBuildNumber).str();
+			<< v.dwBuildNumber;
 	version += ")";
 
 	return base + " " + version;

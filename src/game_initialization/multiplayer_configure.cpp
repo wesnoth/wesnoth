@@ -81,6 +81,7 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	countdown_action_bonus_slider_(video),
 	name_entry_label_(video, _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
 	observers_game_(video, _("Observers"), gui::button::TYPE_CHECK),
+	registered_users_only_(video, _("Registered users only"), gui::button::TYPE_CHECK),
 	oos_debug_(video, _("Debug OOS"), gui::button::TYPE_CHECK),
 	shuffle_sides_(video, _("Shuffle sides"), gui::button::TYPE_CHECK),
 	random_faction_mode_label_(video, _("Random factions:"), font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -136,6 +137,10 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 	observers_game_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
+
+	registered_users_only_.set_check(engine_.registered_users_only_default());
+	registered_users_only_.set_help_string(_("Allow only registered users to join the game"));
+	registered_users_only_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
 
 	oos_debug_.set_check(false);
 	oos_debug_.set_help_string(_("More checks for OOS errors but also more network traffic"));
@@ -233,7 +238,7 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	//These structure initializers create a lobby::process_data_event
 	plugins_context_->set_callback("launch", 	std::bind(&configure::plugin_event_helper, this, process_event_data (true, false)));
 	plugins_context_->set_callback("quit", 		std::bind(&configure::plugin_event_helper, this, process_event_data (false, true)));
-	plugins_context_->set_callback("set_name",	std::bind(&gui::textbox::set_text, &name_entry_, std::bind(get_str, _1, "name"), font::NORMAL_COLOR), true);
+	plugins_context_->set_callback("set_name", [this](const config& cfg) { name_entry_.set_text(cfg["name"], font::NORMAL_COLOR); }, true);
 
 	if(!options_manager_.has_options() && engine_.force_lock_settings() && state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		set_result(CREATE);
@@ -264,7 +269,10 @@ configure::~configure()
 	// don't set observers preference if disabled (for singleplayer)
 	if (observers_game_.enabled())
 		preferences::set_allow_observers(engine_.allow_observers());
-
+	// don't set registered_users_only preference if disabled (for singleplayer)
+	if (registered_users_only_.enabled())
+		preferences::set_registered_users_only(engine_.registered_users_only());
+	
 	// When using map settings, the following variables are determined by the map,
 	// so don't store them as the new preferences.
 	if(!engine_.use_map_settings()) {
@@ -318,6 +326,7 @@ void configure::get_parameters()
 		engine_.write_parameters();
 	}
 	engine_.set_allow_observers(observers_game_.checked());
+	engine_.set_registered_users_only(registered_users_only_.checked());
 	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
 	engine_.set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::from_int(random_faction_mode_.selected()));
@@ -509,6 +518,7 @@ void configure::hide_children(bool hide)
 	name_entry_label_.hide(hide);
 
 	observers_game_.hide(hide);
+	registered_users_only_.hide(hide);
 	oos_debug_.hide(hide);
 	shuffle_sides_.hide(hide);
 	random_faction_mode_label_.hide(hide);
@@ -570,7 +580,9 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos_left += 2 * border_size;
 	options_pane_left_.add_widget(&shuffle_sides_, xpos_left, ypos_left);
 	options_pane_left_.add_widget(&observers_game_,
-		xpos_left + (options_pane_left_.width() - xpos_left) / 2 + border_size, ypos_left);
+		xpos_left + options_pane_left_.width() / 3 + border_size, ypos_left);
+	options_pane_left_.add_widget(&registered_users_only_,
+		xpos_left + options_pane_left_.width() * 2/ 3 + border_size, ypos_left);
 	ypos_left += shuffle_sides_.height() + border_size;
 
 	options_pane_left_.add_widget(&random_faction_mode_label_, xpos_left, ypos_left);

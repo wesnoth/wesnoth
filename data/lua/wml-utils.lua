@@ -8,7 +8,7 @@ function utils.trim(s)
 end
 
 function utils.split(s)
-	return tostring(s):gmatch("[^%s,][^,]*")
+	return tostring(s or ""):gmatch("[^%s,][^,]*")
 end
 
 function utils.check_key(val, key, tag, convert_spaces)

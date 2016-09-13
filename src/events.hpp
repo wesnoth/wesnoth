@@ -18,6 +18,7 @@
 #include <SDL_events.h>
 #include <SDL_version.h>
 #include <vector>
+#include <list>
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
@@ -31,6 +32,35 @@
 namespace events
 {
 
+class sdl_handler;
+
+typedef std::list<sdl_handler*> handler_list;
+
+class context
+{
+public:
+	context() :
+		handlers(),
+		focused_handler(handlers.end()),
+		staging_handlers()
+	{
+	}
+
+	~context();
+
+	context(const context&) = delete;
+
+	void add_handler(sdl_handler* ptr);
+	bool remove_handler(sdl_handler* ptr);
+	void cycle_focus();
+	void set_focus(const sdl_handler* ptr);
+	void add_staging_handlers();
+
+	handler_list handlers;
+	handler_list::iterator focused_handler;
+	std::vector<sdl_handler*> staging_handlers;
+};
+
 //any classes that derive from this class will automatically
 //receive sdl events through the handle function for their lifetime,
 //while the event context they were created in is active.
@@ -40,6 +70,7 @@ namespace events
 //the handler is destroyed.
 class sdl_handler
 {
+friend class context;
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
 	virtual void handle_window_event(const SDL_Event& event) = 0;
@@ -55,11 +86,15 @@ public:
 	virtual void process_tooltip_string(int /*mousex*/, int /*mousey*/) {}
 
 	virtual void join(); /*joins the current event context*/
+	virtual void join(context &c); /*joins the specified event context*/
+	virtual void join_same(sdl_handler* parent); /*joins the same event context as the parent is already associated with */
 	virtual void leave(); /*leave the event context*/
 
 	virtual void join_global(); /*join the global event context*/
 	virtual void leave_global(); /*leave the global event context*/
 
+	virtual bool has_joined() { return has_joined_;}
+	virtual bool has_joined_global() { return has_joined_global_;}
 protected:
 	sdl_handler(const bool auto_join=true);
 	virtual ~sdl_handler();
@@ -74,7 +109,6 @@ private:
 };
 
 void focus_handler(const sdl_handler* ptr);
-void cycle_focus();
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 

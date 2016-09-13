@@ -28,11 +28,37 @@
 namespace hotkey {
 	struct hotkey_command;
 }
+
+namespace preferences {
+	enum PREFERENCE_VIEW {
+		VIEW_DEFAULT,
+		VIEW_FRIENDS
+	};
+
+	/**
+	 * Map containing page mappings that can be used to set the initally displayed page
+	 * of the dialog. The pair is in an 0-indexed toplevel stack/substack format, where
+	 * the first is the list of main Preference categories (such as General and Display)
+	 * and the second is any sub-stack found on that page.
+	 *
+	 * TODO: this isn't the most optimal solution, since if the order or number of pages
+	 * in either stack changes, this map needs to be updated. Optimally the stacked_widget
+	 * widget would allow specifying page by string id, but that would require changes to
+	 * tgenerator. It's something to look into, however.
+	 */
+	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map = {
+		{VIEW_DEFAULT, {0,0}},
+		{VIEW_FRIENDS, {4,1}}
+	};
+}
+
 namespace gui2
 {
 
+using namespace preferences;
+
 class tlistbox;
-class tcombobox;
+class tmenu_button;
 class tcontrol;
 class tslider;
 class ttext_box;
@@ -41,49 +67,38 @@ class ttoggle_button;
 class tpreferences : public tdialog
 {
 public:
-	/**
-	 * Constructor.
-	 */
-	tpreferences(CVideo& video, const config& game_cfg);
+	tpreferences(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view);
 
 	/** The display function -- see @ref tdialog for more information. */
-	static bool display(CVideo& video, const config& game_cfg)
+	static void display(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW initial_view = VIEW_DEFAULT)
 	{
-		tpreferences(video, game_cfg).show(video);
-		return true;
+		tpreferences(video, game_cfg, initial_view).show(video);
 	}
 
 	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
-
-	void set_selected_index(std::pair<int, int> index)
-	{
-		index_ = index;
-	}
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
+	void post_build(twindow& window);
 	void pre_show(twindow& window);
 	void post_show(twindow& /*window*/);
 
 	/** Initializers */
-	void initialize_members(twindow& window);
-	void initialize_tabs(twindow& window, tlistbox& selector, const int index);
-	void setup_friends_list(twindow& window);
+	void initialize_tabs(twindow& window, tlistbox& selector);
+	void set_resolution_list(tmenu_button& res_list, CVideo& video);
 	void setup_hotkey_list(twindow& window);
 
-	void add_friend_list_entry(const bool is_friend,
-		ttext_box& textbox, twindow& window);
+	std::map<std::string, string_map> get_friends_list_row_data(const acquaintance& entry);
 
-	void edit_friend_list_entry(tlistbox& friends, ttext_box& textbox);
+	void add_friend_list_entry(const bool is_friend, ttext_box& textbox, twindow& window);
+	void remove_friend_list_entry(tlistbox& friends_list, ttext_box& textbox, twindow& window);
 
-	void remove_friend_list_entry(tlistbox& friends_list,
-		ttext_box& textbox, twindow& window);
+	void on_friends_list_select(tlistbox& list, ttext_box& textbox);
+	void update_friends_list_controls(twindow& window, tlistbox& list);
 
-	void add_tab(tlistbox& tab_bar, const std::string& label);
-	void add_pager_row(tlistbox& selector, const std::string& icon, const std::string& label);
 	void set_visible_page(twindow& window, unsigned int page, const std::string& pager_id);
 
 	/** Callback for selection changes */
@@ -94,114 +109,11 @@ private:
 	/** Special callback functions */
 	void handle_res_select(twindow& window);
 	void fullscreen_toggle_callback(twindow& window);
-	void accl_speed_slider_callback(tslider& slider);
-	void max_autosaves_slider_callback(tslider& slider, tcontrol& status_label);
-	void font_scaling_slider_callback(tslider& slider);
-	void animate_map_toggle_callback(ttoggle_button& toggle, ttoggle_button& toggle_water);
 	void add_hotkey_callback(tlistbox& hotkeys);
 	void remove_hotkey_callback(tlistbox& hotkeys);
 	void default_hotkey_callback(twindow& window);
 
-	/**
-	 * Sets the initial state and callback for a simple bool-state toggle button
-	 * In the callback, the bool value of the widget is passeed to the setter
-	 */
-	void setup_single_toggle(
-		const std::string& widget_id,
-		const bool start_value,
-		std::function<void(bool)> callback,
-		twidget& find_in,
-		const bool inverted = false);
-
-	void single_toggle_callback(const ttoggle_button& widget,
-		std::function<void(bool)> setter,
-		const bool inverted);
-
-	/**
-	 * Sets the initial state and callback for a bool-state toggle button/slider
-	 * pair. In the callback, the slider is set to active/inactive based on the
-	 * button's value, which is also passed to the setter.
-	 */
-	void setup_toggle_slider_pair(
-		const std::string& toggle_widget,
-		const std::string& slider_widget,
-		const bool toggle_start_value,
-		const int slider_state_value,
-		std::function<void(bool)> toggle_callback,
-		std::function<void(int)> slider_callback,
-		twidget& find_in);
-
-	void toggle_slider_pair_callback(const ttoggle_button& toggle_widget,
-		tslider& slider_widget, std::function<void(bool)> setter);
-
-	/**
-	 * Sets the initial state and callback for a standalone slider
-	 * In the callback, int value of the widget is passeed to the setter
-	 */
-	void setup_single_slider(
-		const std::string& widget_id,
-		const int start_value,
-		std::function<void(int)> slider_callback,
-		twidget& find_in);
-
-	void single_slider_callback(const tslider& widget,
-		std::function<void(int)> setter);
-
-	typedef std::pair<std::vector<std::string>, std::vector<std::string> > combo_data;
-
-	/**
-	 * Sets the initial state and callback for a combobox
-	 */
-	void setup_combobox(
-		const std::string& widget_id,
-		const combo_data& options,
-		const unsigned start_value,
-		std::function<void(std::string)> callback,
-		twidget& find_in);
-
-	void simple_combobox_callback(const tcombobox& widget,
-		std::function<void(std::string)> setter, std::vector<std::string>& vec);
-
-	/**
-	 * Sets the a radio button group
-	 * Since (so far) there is only one group of these, the code is speciliazed.
-	 * If (at a later date) more groups need to be added, this will have to be
-	 * generalized.
-	 */
 	tgroup<preferences::LOBBY_JOINS> lobby_joins_group;
-
-	template <typename T>
-	void setup_radio_toggle(
-		const std::string& toggle_id,
-		const T& enum_value,
-		const int start_value,
-		tgroup<T>& group,
-		std::function<void(int)> callback,
-		twindow& window);
-
-	template <typename T>
-	void toggle_radio_callback(
-		tgroup<T>& group,
-		std::function<void(int)> setter);
-
-	/**
-	 * Sets up a label that always displays the value of another widget.
-	 */
-	template <typename T>
-	void bind_status_label(
-		T& parent,
-		const std::string& label_id,
-		twidget& find_in);
-
-	void bind_status_label(
-		tslider& parent,
-		const std::string& label_id,
-		twidget& find_in,
-		const std::string& suffix = "");
-
-	template <typename T>
-	void status_label_callback(T& parent_widget,
-		tcontrol& label_widget, const std::string& suffix = "");
 
 	MAKE_ENUM(ADVANCED_PREF_TYPE,
 		(TOGGLE,  "boolean")
@@ -212,19 +124,14 @@ private:
 
 	std::vector<std::pair<int,int> > resolutions_;
 	std::vector<config> adv_preferences_cfg_;
-	std::vector<std::string> friend_names_;
 
 	int last_selected_item_;
 
 	std::vector<t_string> accl_speeds_;
 	t_visible_hotkeys visible_hotkeys_;
 
-	// Special variable to keep the value of the scaling slider,
-	// to be used in post_show
-	int font_scaling_;
-
 	// The page/tab index pairs for setting visible pages
-	std::pair<int, int> index_;
+	const std::pair<int, int>& initial_index_;
 };
 
 } // namespace gui2

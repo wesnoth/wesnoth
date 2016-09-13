@@ -46,7 +46,6 @@
 #include <cassert>
 #include <boost/algorithm/string/predicate.hpp>
 #include "utils/functional.hpp"
-#include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -616,7 +615,7 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 			}
 			if (!found) {
 				// Parsing the map and generating the minimap are both cpu expensive
-				gamemap map(boost::make_shared<terrain_type_data>(game_config), item.map_data);
+				gamemap map(std::make_shared<terrain_type_data>(game_config), item.map_data);
 				item.mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
 				item.map_info_size = std::to_string(map.w()) + utils::unicode_multiplication_sign
 					+ std::to_string(map.h());
@@ -845,6 +844,7 @@ void gamebrowser::populate_game_item(gamebrowser::game_item & item, const config
 		item.time_limit = "";
 	}
 	item.xp = game["experience_modifier"].str() + "%";
+	item.registered_users_only = game["registered_users_only"].to_bool(true);
 	item.observers = game["observer"].to_bool(true);
 	item.shuffle_sides = game["shuffle_sides"].to_bool(true);
 	item.verified = verified;
@@ -984,7 +984,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 		return false;
 	}
 
-	config::const_child_iterator gi = list.child_range("game").first, gs = gi;
+	config::const_child_iterator gi = list.child_range("game").begin(), gs = gi;
 	std::advance(gi, row1.id);
 	const config &game1 = *gi;
 	gi = gs;
@@ -1099,9 +1099,8 @@ lobby::lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config&
 	plugins_context_->set_callback("observe", 	std::bind(&lobby::plugin_event_helper, this, process_event_data (false, true, false, false)));
 	plugins_context_->set_callback("create", 	std::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, true, false)));
 	plugins_context_->set_callback("quit", 		std::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, false, true)));
-	plugins_context_->set_callback("chat",		std::bind(&lobby::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
-	plugins_context_->set_callback("select_game",	std::bind(&gamebrowser::select_game, &(this->games_menu_), std::bind(get_str, _1, "id")),	true);
-
+	plugins_context_->set_callback("chat",		[this](const config& cfg) { send_chat_message(cfg["message"], false); },	true);
+	plugins_context_->set_callback("select_game",	[this](const config& cfg) { games_menu_.select_game(cfg["id"]); },	true);
 	plugins_context_->set_accessor("game_list",	std::bind(&lobby::gamelist, this));
 	plugins_context_->set_accessor("game_config",	std::bind(&lobby::game_config, this));
 }

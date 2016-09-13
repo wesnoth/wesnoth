@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
 "PO-Revision-Date: 2014-11-15 12:03+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -587,14 +587,16 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:595
-msgid "I’ll tell them to use the one that does the most damage!"
+#, fuzzy
+#| msgid "I’ll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Я велю им использовать ту, что наносит больше урона!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
-msgid "female^I’ll tell them to use the one that does the most damage!"
+msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Я велю им использовать ту, что наносит больше урона!"
 
 #. [message]: speaker=Delfador
@@ -2014,7 +2016,7 @@ msgstr "Ученик"
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2034,7 +2036,7 @@ msgid "female^Fighter"
 msgstr "Ученица"
 
 #. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
+#: data/campaigns/tutorial/units/Fighteress.cfg:25
 msgid "saber"
 msgstr "сабля"
 

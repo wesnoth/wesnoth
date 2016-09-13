@@ -1,7 +1,7 @@
 # vi: syntax=python:et:ts=4
 from config_check_utils import find_include
-from os.path import join, dirname, basename
-import sys, os.path
+from os.path import join, dirname, basename, normpath
+import sys
 from glob import glob
 import re
 
@@ -70,7 +70,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
-    if sys.platform != "win32" and not os.path.samefile(boostdir, "/usr/include"):
+    if sys.platform == "win32" or normpath(boostdir) != "/usr/include":
         if env["fast"]:
             env.AppendUnique(CXXFLAGS = ["-isystem", boostdir], LIBPATH = [boostlibdir])
         else:

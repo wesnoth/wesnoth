@@ -36,8 +36,6 @@
 #include "util.hpp"
 #include "variable.hpp"
 
-#include <boost/assign/list_of.hpp>
-
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
@@ -45,144 +43,131 @@ static lg::log_domain log_engine("engine");
 // This file is in the game_events namespace.
 namespace game_events {
 
-namespace { // Support functions
+namespace builtin_conditions {
+	std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
-	bool internal_conditional_passed(const vconfig& cond)
+	bool have_unit(const vconfig& cfg)
 	{
-		const vconfig::child_list& true_keyword = cond.get_children("true");
-		if(!true_keyword.empty()) {
-			return true;
-		}
-
-		const vconfig::child_list& false_keyword = cond.get_children("false");
-		if(!false_keyword.empty()) {
+		if(resources::units == nullptr) {
 			return false;
 		}
-
-		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
-
-		// If the if statement requires we have a certain unit,
-		// then check for that.
-		const vconfig::child_list& have_unit = cond.get_children("have_unit");
-		for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
-			if(resources::units == nullptr)
-				return false;
-			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
-				? utils::parse_ranges((*u)["count"]) : default_counts;
-			int match_count = 0;
-			const unit_filter ufilt(*u, resources::filter_con);
-			for (const unit &i : *resources::units)
-			{
-				if ( i.hitpoints() > 0  &&  ufilt(i) ) {
-					++match_count;
-					if(counts == default_counts) {
-						// by default a single match is enough, so avoid extra work
-						break;
-					}
+		std::vector<std::pair<int,int> > counts = cfg.has_attribute("count")
+			? utils::parse_ranges(cfg["count"]) : default_counts;
+		int match_count = 0;
+		const unit_filter ufilt(cfg, resources::filter_con);
+		for(const unit &i : *resources::units) {
+			if(i.hitpoints() > 0 && ufilt(i)) {
+				++match_count;
+				if(counts == default_counts) {
+					// by default a single match is enough, so avoid extra work
+					break;
 				}
 			}
-			if ((*u)["search_recall_list"].to_bool())
-			{
-				const unit_filter ufilt(*u, resources::filter_con);
-				for(std::vector<team>::iterator team = resources::teams->begin();
-						team!=resources::teams->end(); ++team)
-				{
+		}
+		if(cfg["search_recall_list"].to_bool()) {
+			const unit_filter ufilt(cfg, resources::filter_con);
+			for(const team& team : resources::gameboard->teams()) {
+				if(counts == default_counts && match_count) {
+					break;
+				}
+				for(size_t t = 0; t < team.recall_list().size(); ++t) {
 					if(counts == default_counts && match_count) {
 						break;
 					}
-					for(size_t t = 0; t < team->recall_list().size(); ++t) {
-						if(counts == default_counts && match_count) {
-							break;
-						}
-						scoped_recall_unit auto_store("this_unit", team->save_id(), t);
-						if ( ufilt( *team->recall_list()[t] ) ) {
-							++match_count;
-						}
+					scoped_recall_unit auto_store("this_unit", team.save_id(), t);
+					if(ufilt(*team.recall_list()[t])) {
+						++match_count;
 					}
 				}
 			}
-			if(!in_ranges(match_count, counts)) {
-				return false;
-			}
 		}
+		return in_ranges(match_count, counts);
+	}
 
-		// If the if statement requires we have a certain location,
-		// then check for that.
-		const vconfig::child_list& have_location = cond.get_children("have_location");
-		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
-			std::set<map_location> res;
-			terrain_filter(*v, resources::filter_con).get_locations(res);
+	bool have_location(const vconfig& cfg)
+	{
+		std::set<map_location> res;
+		terrain_filter(cfg, resources::filter_con).get_locations(res);
 
-			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
-				? utils::parse_ranges((*v)["count"]) : default_counts;
-			if(!in_ranges<int>(res.size(), counts)) {
-				return false;
-			}
-		}
+		std::vector<std::pair<int,int> > counts = cfg.has_attribute("count")
+		? utils::parse_ranges(cfg["count"]) : default_counts;
+		return in_ranges<int>(res.size(), counts);
+	}
 
-		// Check against each variable statement,
-		// to see if the variable matches the conditions or not.
-		const vconfig::child_list& variables = cond.get_children("variable");
+	bool variable_matches(const vconfig& values)
+	{
+		const std::string name = values["name"];
+		config::attribute_value value = resources::gamedata->get_variable_const(name);
 
-		for (const vconfig &values : variables)
-		{
-			const std::string name = values["name"];
-			config::attribute_value value = resources::gamedata->get_variable_const(name);
-
-#define TEST_STR_ATTR(name, test) do { \
+#define TEST_STR_ATTR(name, test) \
+		do { \
 			if (values.has_attribute(name)) { \
 				std::string attr_str = values[name].str(); \
 				std::string str_value = value.str(); \
 				if (!(test)) return false; \
 			} \
-			} while (0)
+		} while (0)
 
-#define TEST_NUM_ATTR(name, test) do { \
+#define TEST_NUM_ATTR(name, test) \
+		do { \
 			if (values.has_attribute(name)) { \
 				double attr_num = values[name].to_double(); \
 				double num_value = value.to_double(); \
 				if (!(test)) return false; \
 			} \
-			} while (0)
+		} while (0)
 
-#define TEST_BOL_ATTR(name, test) do { \
+#define TEST_BOL_ATTR(name, test) \
+		do { \
 			if (values.has_attribute(name)) { \
 				bool attr_bool = values[name].to_bool(); \
 				bool bool_value = value.to_bool(); \
 				if (!(test)) return false; \
 			} \
-			} while (0)
+		} while (0)
 
-			TEST_STR_ATTR("equals",                str_value == attr_str);
-			TEST_STR_ATTR("not_equals",            str_value != attr_str);
-			TEST_NUM_ATTR("numerical_equals",      num_value == attr_num);
-			TEST_NUM_ATTR("numerical_not_equals",  num_value != attr_num);
-			TEST_NUM_ATTR("greater_than",          num_value >  attr_num);
-			TEST_NUM_ATTR("less_than",             num_value <  attr_num);
-			TEST_NUM_ATTR("greater_than_equal_to", num_value >= attr_num);
-			TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
-			TEST_BOL_ATTR("boolean_equals",       bool_value == attr_bool);
-			TEST_BOL_ATTR("boolean_not_equals",   bool_value != attr_bool);
-			TEST_STR_ATTR("contains", str_value.find(attr_str) != std::string::npos);
+		TEST_STR_ATTR("equals",                str_value == attr_str);
+		TEST_STR_ATTR("not_equals",            str_value != attr_str);
+		TEST_NUM_ATTR("numerical_equals",      num_value == attr_num);
+		TEST_NUM_ATTR("numerical_not_equals",  num_value != attr_num);
+		TEST_NUM_ATTR("greater_than",          num_value >  attr_num);
+		TEST_NUM_ATTR("less_than",             num_value <  attr_num);
+		TEST_NUM_ATTR("greater_than_equal_to", num_value >= attr_num);
+		TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
+		TEST_BOL_ATTR("boolean_equals",       bool_value == attr_bool);
+		TEST_BOL_ATTR("boolean_not_equals",   bool_value != attr_bool);
+		TEST_STR_ATTR("contains", str_value.find(attr_str) != std::string::npos);
 
 #undef TEST_STR_ATTR
 #undef TEST_NUM_ATTR
 #undef TEST_BOL_ATTR
+		return true;
+	}
+}
+
+namespace { // Support functions
+	bool internal_conditional_passed(const vconfig& cond)
+	{
+		if(cond.has_child("true")) {
+			return true;
+		}
+		if(cond.has_child("false")) {
+			return false;
 		}
 
 		vconfig::all_children_iterator cond_end = cond.ordered_end();
-		static const boost::container::flat_set<std::string> hard_coded = boost::assign::list_of("true")("false")("have_unit")("have_location")("variable")
-		("then")("else")("elseif")("not")("and")("or")("do").convert_to_container<boost::container::flat_set<std::string> >();
+		static const std::set<std::string> skip =
+			{"then", "else", "elseif", "not", "and", "or", "do"};
 
-		assert(resources::lua_kernel);
-
-		for (vconfig::all_children_iterator it = cond.ordered_begin(); it != cond_end; ++it) {
+		for(vconfig::all_children_iterator it = cond.ordered_begin(); it != cond_end; ++it) {
 			std::string key = it.get_key();
-			if (std::find(hard_coded.begin(), hard_coded.end(), key) == hard_coded.end()) {
-				bool result = resources::lua_kernel->run_wml_conditional(key, it.get_child());
-				if (!result) {
-					return false;
-				}
+			bool result = true;
+			if(std::find(skip.begin(), skip.end(), key) == skip.end()) {
+				assert(resources::lua_kernel);
+				result = resources::lua_kernel->run_wml_conditional(key, it.get_child());
+			}
+			if (!result) {
+				return false;
 			}
 		}
 

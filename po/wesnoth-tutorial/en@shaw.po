@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
+"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
 "PO-Revision-Date: 2009-10-12 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -576,14 +576,16 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:595
-msgid "I’ll tell them to use the one that does the most damage!"
+#, fuzzy
+#| msgid "I’ll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does more damage!"
 msgstr "𐑲'𐑤 𐑑𐑧𐑤 𐑞𐑧𐑥 𐑑 𐑿𐑕 𐑞 𐑢𐑳𐑯 𐑞𐑨𐑑 𐑛𐑴𐑟 𐑞 𐑥𐑴𐑕𐑑 𐑛𐑨𐑥𐑦𐑡!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
-msgid "female^I’ll tell them to use the one that does the most damage!"
+msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "𐑲'𐑤 𐑑𐑧𐑤 𐑞𐑧𐑥 𐑑 𐑿𐑕 𐑞 𐑢𐑳𐑯 𐑞𐑨𐑑 𐑛𐑴𐑟 𐑞 𐑥𐑴𐑕𐑑 𐑛𐑨𐑥𐑦𐑡!"
 
 #. [message]: speaker=Delfador
@@ -1935,7 +1937,7 @@ msgstr "𐑓𐑲𐑑𐑼"
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -1955,7 +1957,7 @@ msgid "female^Fighter"
 msgstr "𐑓𐑲𐑑𐑼"
 
 #. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
+#: data/campaigns/tutorial/units/Fighteress.cfg:25
 msgid "saber"
 msgstr "𐑕𐑱𐑚𐑻"
 

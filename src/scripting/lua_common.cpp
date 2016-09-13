@@ -26,12 +26,14 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "scripting/lua_api.hpp"
-#include "scripting/lua_types.hpp"      // for gettextKey, tstringKey, etc
+#include "scripting/lua_unit.hpp"
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
 #include "log.hpp"
 #include "gettext.hpp"
+#include "resources.hpp"
+#include "lua_jailbreak_exception.hpp"
+#include "game_display.hpp"
 
 #include <cstring>
 #include <iterator>                     // for distance, advance
@@ -41,11 +43,12 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 
-static const char * gettextKey = "gettext";
-static const char * vconfigKey = "vconfig";
-static const char * vconfigpairsKey = "vconfig pairs";
-static const char * vconfigipairsKey = "vconfig ipairs";
-const char * tstringKey = "translatable string";
+static const char gettextKey[] = "gettext";
+static const char vconfigKey[] = "vconfig";
+static const char vconfigpairsKey[] = "vconfig pairs";
+static const char vconfigipairsKey[] = "vconfig ipairs";
+static const char tstringKey[] = "translatable string";
+static const char executeKey[] = "err";
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -65,7 +68,13 @@ static int impl_gettext(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	char const *d = static_cast<char *>(lua_touserdata(L, 1));
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
-	luaW_pushtstring(L, t_string(m, d));
+	if(lua_isstring(L, 3)) {
+		const char* pl = luaL_checkstring(L, 3);
+		int count = luaL_checkinteger(L, 4);
+		luaW_pushtstring(L, t_string(m, pl, count, d));
+	} else {
+		luaW_pushtstring(L, t_string(m, d));
+	}
 	return 1;
 }
 
@@ -118,7 +127,7 @@ static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 static int impl_tstring_concat(lua_State *L)
 {
 	// Create a new t_string.
-	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
+	t_string *t = new(L) t_string;
 	luaL_setmetatable(L, tstringKey);
 
 	// Append both arguments to t.
@@ -271,10 +280,11 @@ static int impl_vconfig_pairs_iter(lua_State *L)
 	vconfig vcfg = luaW_checkvconfig(L, 1);
 	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey);
 	config::const_attr_itors& range = *static_cast<config::const_attr_itors*>(p);
-	if (range.first == range.second) {
+	if (range.empty()) {
 		return 0;
 	}
-	config::attribute value = *range.first++;
+	config::attribute value = range.front();
+	range.pop_front();
 	lua_pushlstring(L, value.first.c_str(), value.first.length());
 	luaW_pushscalar(L, vcfg[value.first]);
 	return 2;
@@ -297,9 +307,8 @@ static int impl_vconfig_pairs_collect(lua_State *L)
  */
 static int impl_vconfig_pairs(lua_State *L)
 {
-	static const size_t sz = sizeof(config::const_attr_itors);
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	new(lua_newuserdata(L, sz)) config::const_attr_itors(vcfg.get_config().attribute_range());
+	new(L) config::const_attr_itors(vcfg.get_config().attribute_range());
 	luaL_newmetatable(L, vconfigpairsKey);
 	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_pairs_iter, 1);
@@ -347,9 +356,8 @@ static int impl_vconfig_ipairs_collect(lua_State *L)
  */
 static int impl_vconfig_ipairs(lua_State *L)
 {
-	static const size_t sz = sizeof(vconfig_child_range);
 	vconfig cfg = luaW_checkvconfig(L, 1);
-	new(lua_newuserdata(L, sz)) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
+	new(L) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
 	luaL_newmetatable(L, vconfigipairsKey);
 	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
@@ -453,15 +461,43 @@ std::string register_vconfig_metatable(lua_State *L)
 
 } // end namespace lua_common
 
+void* operator new(size_t sz, lua_State *L)
+{
+	return lua_newuserdata(L, sz);
+}
+
+void operator delete(void*, lua_State *L)
+{
+	// Not sure if this is needed since it's a no-op
+	// It's only called if a constructor throws while using the above operator new
+	// By removing the userdata from the stack, this should ensure that Lua frees it
+	lua_pop(L, 1);
+}
+
+bool luaW_getmetafield(lua_State *L, int idx, const char* key)
+{
+	if(key == nullptr) {
+		return false;
+	}
+	int n = strlen(key);
+	if(n == 0) {
+		return false;
+	}
+	if(n >= 2 && key[0] == '_' && key[1] == '_') {
+		return false;
+	}
+	return luaL_getmetafield(L, idx, key);
+}
+
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 {
-	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
+	new(L) vconfig(cfg);
 	luaL_setmetatable(L, vconfigKey);
 }
 
 void luaW_pushtstring(lua_State *L, t_string const &v)
 {
-	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
+	new(L) t_string(v);
 	luaL_setmetatable(L, tstringKey);
 }
 
@@ -519,19 +555,6 @@ bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v)
 			return false;
 	}
 	return true;
-}
-
-bool luaW_hasmetatable(lua_State *L
-		, int index
-		, luatypekey key)
-{
-	if (!lua_getmetatable(L, index))
-		return false;
-	lua_pushlightuserdata(L, key);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	bool ok = lua_rawequal(L, -1, -2) == 1;
-	lua_pop(L, 2);
-	return ok;
 }
 
 bool luaW_totstring(lua_State *L, int index, t_string &str)
@@ -593,14 +616,12 @@ void luaW_filltable(lua_State *L, config const &cfg)
 void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
 	lua_createtable(L, 2, 0);
-	
-	lua_pushinteger(L, 1);
+
 	lua_pushinteger(L, ml.x + 1);
-	lua_rawset(L, -3);
-	
-	lua_pushinteger(L, 2);
+	lua_rawseti(L, -2, 1);
+
 	lua_pushinteger(L, ml.y + 1);
-	lua_rawset(L, -3);
+	lua_rawseti(L, -2, 2);
 }
 
 bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
@@ -754,6 +775,15 @@ config luaW_checkconfig(lua_State *L, int index)
 	return result;
 }
 
+config luaW_checkconfig(lua_State *L, int index, const vconfig*& vcfg)
+{
+	config result = luaW_checkconfig(L, index);
+	if(void* p = luaL_testudata(L, index, vconfigKey)) {
+		vcfg = static_cast<vconfig*>(p);
+	}
+	return result;
+}
+
 bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 {
 	switch (lua_type(L, index))
@@ -883,4 +913,83 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'\n";
 		return false;
 	}
+}
+
+void chat_message(std::string const &caption, std::string const &msg)
+{
+	if (!resources::screen) return;
+	resources::screen->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg,
+														   events::chat_handler::MESSAGE_PUBLIC, false);
+}
+
+// To silence "no prototype" warnings
+void push_error_handler(lua_State *L);
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
+void push_error_handler(lua_State *L)
+{
+	luaW_getglobal(L, "debug", "traceback");
+	lua_setfield(L, LUA_REGISTRYINDEX, executeKey);
+}
+
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
+{
+	// Load the error handler before the function and its arguments.
+	lua_getfield(L, LUA_REGISTRYINDEX, executeKey);
+	lua_insert(L, -2 - nArgs);
+
+	int error_handler_index = lua_gettop(L) - nArgs - 1;
+
+	// Call the function.
+	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+
+	// Remove the error handler.
+	lua_remove(L, error_handler_index);
+
+	tlua_jailbreak_exception::rethrow();
+
+	return errcode;
+}
+
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4706)
+#endif
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
+{
+	int res = luaW_pcall_internal(L, nArgs, nRets);
+
+	if (res)
+	{
+		/*
+		 * When an exception is thrown which doesn't derive from
+		 * std::exception m will be nullptr pointer.
+		 */
+		char const *m = lua_tostring(L, -1);
+		if(m) {
+			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
+				m += 5;
+				char const *e = strstr(m, "stack traceback");
+				lg::wml_error() << std::string(m, e ? e - m : strlen(m));
+			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
+				m += 5;
+				char const *e = nullptr, *em = m;
+				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
+					e = em;
+				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
+			} else {
+				ERR_LUA << m << '\n';
+				chat_message("Lua error", m);
+			}
+		} else {
+			chat_message("Lua caught unknown exception", "");
+		}
+		lua_pop(L, 2);
+		return false;
+	}
+
+	return true;
 }

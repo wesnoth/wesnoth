@@ -161,7 +161,7 @@ void tdebug_clock::update_time(const bool force)
 	string_map item;
 
 	item["label"] = std::to_string(second_stamp);
-	item_data.insert(std::make_pair("time", item));
+	item_data.emplace("time", item);
 
 	if(pane_) {
 		pane_->create_item(item_data, tags);

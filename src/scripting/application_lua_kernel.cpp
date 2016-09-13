@@ -30,12 +30,10 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_types.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 
@@ -49,10 +47,7 @@
 #include <utility>
 
 #include "utils/functional.hpp"
-#include <boost/make_shared.hpp>
-#include <boost/noncopyable.hpp>
 #include <boost/range/adaptors.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -217,7 +212,7 @@ struct lua_context_backend {
 	{}
 };
 
-static int impl_context_backend(lua_State * L, boost::shared_ptr<lua_context_backend> backend, std::string req_name)
+static int impl_context_backend(lua_State * L, std::shared_ptr<lua_context_backend> backend, std::string req_name)
 {
 	if (!backend->valid) {
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
@@ -231,7 +226,7 @@ static int impl_context_backend(lua_State * L, boost::shared_ptr<lua_context_bac
 	return 0;
 }
 
-static int impl_context_accessor(lua_State * L, boost::shared_ptr<lua_context_backend> backend, plugins_context::accessor_function func)
+static int impl_context_accessor(lua_State * L, std::shared_ptr<lua_context_backend> backend, plugins_context::accessor_function func)
 {
 	if (!backend->valid) {
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
@@ -268,7 +263,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	}
 
 	// Now we have to create the context object. It is arranged as a table of boost functions.
-	boost::shared_ptr<lua_context_backend> this_context_backend = boost::make_shared<lua_context_backend> (lua_context_backend());
+	std::shared_ptr<lua_context_backend> this_context_backend = std::make_shared<lua_context_backend> (lua_context_backend());
 	lua_newtable(T_); // this will be the context table
 	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
 		lua_pushstring(T_, key.c_str());

@@ -22,7 +22,7 @@
 #include <map>
 #include <vector>
 
-#include "game_errors.hpp"
+#include "exceptions.hpp"
 
 class config_writer;
 class config;

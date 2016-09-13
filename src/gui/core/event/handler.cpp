@@ -328,16 +328,16 @@ void thandler::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
-			mouse(SDL_MOUSE_MOTION, tpoint(event.motion.x, event.motion.y));
+			mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-			mouse_button_down(tpoint(event.button.x, event.button.y),
+			mouse_button_down({event.button.x, event.button.y},
 							  event.button.button);
 			break;
 
 		case SDL_MOUSEBUTTONUP:
-			mouse_button_up(tpoint(event.button.x, event.button.y),
+			mouse_button_up({event.button.x, event.button.y},
 							event.button.button);
 			break;
 
@@ -399,8 +399,7 @@ void thandler::handle_event(const SDL_Event& event)
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
-					video_resize(
-							tpoint(event.window.data1, event.window.data2));
+					video_resize({event.window.data1, event.window.data2});
 					break;
 
 				case SDL_WINDOWEVENT_ENTER:
@@ -427,8 +426,10 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		default:
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type)
-					  << ".\n";
+			          << ".\n";
+#endif
 			break;
 	}
 }
@@ -595,8 +596,10 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 
 
 		default:
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
 					  << static_cast<Uint32>(button) << ".\n";
+#endif
 			break;
 	}
 }
@@ -623,8 +626,10 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 			mouse(SDL_RIGHT_BUTTON_DOWN, position);
 			break;
 		default:
+#ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
 					  << static_cast<Uint32>(button) << ".\n";
+#endif
 			break;
 	}
 }

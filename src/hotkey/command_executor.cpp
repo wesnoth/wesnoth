@@ -19,6 +19,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/drop_down_list.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_separators.hpp"
 #include "filesystem.hpp"
@@ -363,13 +364,15 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	std::vector<std::string> items = items_arg;
 	if (items.empty()) return;
 
-	std::vector<std::string> menu = get_menu_images(gui, items);
-	int res = 0;
+	std::vector<config> menu = get_menu_images(gui, items);
+	int res = -1;
 	{
-		gui::dialog mmenu = gui::dialog(gui.video(),"","",
-				gui::MESSAGE, gui::dialog::hotkeys_style);
-		mmenu.set_menu(menu);
-		res = mmenu.show(xloc, yloc);
+		SDL_Rect pos = {xloc, yloc, 1, 1};
+		gui2::tdrop_down_list mmenu(pos, menu, -1, false);
+		mmenu.show(gui.video());
+		if(mmenu.get_retval() == gui2::twindow::OK) {
+			res = mmenu.selected_item();
+		}
 	} // This will kill the dialog.
 	if (res < 0 || size_t(res) >= items.size()) return;
 
@@ -405,6 +408,13 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 
 std::string command_executor::get_menu_image(display& disp, const std::string& command, int index) const {
 
+	// TODO: Find a way to do away with the fugly special markup
+	if(command[0] == '&') {
+		size_t n = command.find_first_of('=');
+		if(n != std::string::npos)
+			return command.substr(1, n - 1);
+	}
+
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
@@ -439,32 +449,45 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	}
 }
 
-std::vector<std::string> command_executor::get_menu_images(display& disp, const std::vector<std::string>& items) {
-	std::vector<std::string> result;
-	bool has_image = false;
+std::vector<config> command_executor::get_menu_images(display& disp, const std::vector<std::string>& items) {
+	std::vector<config> result;
 
-	for (size_t i = 0; i < items.size(); ++i) {
+	for(size_t i = 0; i < items.size(); ++i) {
 		std::string const& item = items[i];
 		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item);
+		result.emplace_back();
 
-		std::stringstream str;
 		//see if this menu item has an associated image
 		std::string img(get_menu_image(disp, item, i));
 		if (img.empty() == false) {
-			has_image = true;
-			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
+			result.back()["icon"] = img;
 		}
 
 		const theme::menu* menu = disp.get_theme().get_menu_item(item);
 		if (hk == hotkey::HOTKEY_NULL) {
 			if (menu)
-				str << menu->title();
-			else
-				str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
+				result.back()["label"] = menu->title();
+			else {
+				std::string label(item.begin(), item.begin() + item.find_last_not_of(' ') + 1);
+
+				// TODO: To away with the fugly markup, both '=' and 0x01
+				size_t i = label.find_first_of('=');
+				if(i != std::string::npos)
+					result.back()["label"] = label.substr(i + 1);
+				else {
+					i = label.find_first_of(1);
+					if(i != std::string::npos) {
+						result.back()["details"] = label.substr(i + 1);
+						result.back()["image"] = label.substr(1, i - 1);
+					} else {
+						result.back()["label"] = label;
+					}
+				}
+			}
 		} else {
 
 			if (menu)
-				str << menu->title();
+				result.back()["label"] = menu->title();
 			else {
 				std::string desc = hotkey::get_description(item);
 				if (hk == HOTKEY_ENDTURN) {
@@ -473,17 +496,8 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 						desc = b->title();
 					}
 				}
-				str << desc << COLUMN_SEPARATOR << hotkey::get_names(item);
-			}
-		}
-
-		result.push_back(str.str());
-	}
-	//If any of the menu items have an image, create an image column
-	if (has_image) {
-		for (std::vector<std::string>::iterator i = result.begin(); i != result.end(); ++i) {
-			if (*(i->begin()) != IMAGE_PREFIX) {
-				i->insert(i->begin(), COLUMN_SEPARATOR);
+				result.back()["label"] = desc;
+				result.back()["details"] = hotkey::get_names(item);
 			}
 		}
 	}
@@ -642,7 +656,7 @@ void command_executor_default::set_button_state()
 	display& disp = get_display();
 	for (const theme::menu& menu : disp.get_theme().menus()) {
 
-		gui::button* button = disp.find_menu_button(menu.get_id());
+		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		for (const std::string& command : menu.items()) {
@@ -659,7 +673,7 @@ void command_executor_default::set_button_state()
 
 	for (const theme::action& action : disp.get_theme().actions()) {
 
-		gui::button* button = disp.find_action_button(action.get_id());
+		std::shared_ptr<gui::button> button = disp.find_action_button(action.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		int i = 0;
@@ -735,6 +749,10 @@ void command_executor_default::zoom_default()
 }
 void command_executor_default::map_screenshot()
 {
-	make_screenshot(_("Map-Screenshot"), get_video(), boost::bind(&display::screenshot, &get_display(), _1, true));
+	make_screenshot(_("Map-Screenshot"), get_video(),
+		[this](const std::string& filename, const CVideo&)
+	{
+		return get_display().screenshot(filename, true);
+	});
 }
 }

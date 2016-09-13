@@ -34,8 +34,6 @@
 #include "units/helper.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/shared_ptr.hpp>
-
 #include <cassert>
 #include <ctime>
 
@@ -206,7 +204,7 @@ static config unit_side(reports::context & rc, const unit* u)
 	const team &u_team = rc.teams()[u->side() - 1];
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = team::get_side_color_index(u->side());
+	std::string new_rgb = u_team.color();
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
@@ -301,7 +299,7 @@ static config unit_status(reports::context & rc, const unit* u)
 	if (!u) return config();
 	config res;
 	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-	if (rc.map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
+	if (rc.map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex, rc.dc())) {
 		add_status(res, "misc/invisible.png", N_("invisible: "),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 	}
@@ -369,14 +367,14 @@ static config unit_abilities(const unit* u)
 	config res;
 
 	std::vector<bool> active;
-	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
+	const std::vector<std::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
 	const size_t abilities_size = abilities.size();
 	for ( size_t i = 0; i != abilities_size; ++i )
 	{
 		// Aliases for readability:
-		const std::string &base_name = abilities[i].get<0>().base_str();
-		const t_string &display_name = abilities[i].get<1>();
-		const t_string &description = abilities[i].get<2>();
+		const std::string &base_name = std::get<0>(abilities[i]).base_str();
+		const t_string &display_name = std::get<1>(abilities[i]);
+		const t_string &description  = std::get<2>(abilities[i]);
 
 		std::ostringstream str, tooltip;
 
@@ -764,7 +762,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			continue;
 		const map_location &loc = enemy.get_location();
 		if (viewing_team.fogged(loc) ||
-		    (viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc)))
+		    (viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc, rc.dc())))
 			continue;
 		bool new_type = seen_types.insert(enemy.type_id()).second;
 		if (new_type) {
@@ -1563,7 +1561,7 @@ REPORT_GENERATOR(report_countdown, rc)
 
 void reports::register_generator(const std::string &name, reports::generator *g)
 {
-	dynamic_generators_[name] = boost::shared_ptr<reports::generator>(g);
+	dynamic_generators_[name] = std::shared_ptr<reports::generator>(g);
 }
 
 config reports::generate_report(const std::string &name, reports::context & rc, bool only_static)

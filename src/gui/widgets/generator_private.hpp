@@ -22,6 +22,7 @@
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/window.hpp" // For twindow::tvisible
 
 namespace gui2
 {
@@ -150,9 +151,9 @@ struct tone : public virtual tgenerator_
 		if(get_selected_item_count() == 1) {
 			// deselect current.
 			do_deselect_item(get_selected_item());
-			// select new.
-			do_select_item(index);
 		}
+		// select new.
+		do_select_item(index);
 	}
 };
 
@@ -200,8 +201,7 @@ struct thorizontal_list : public virtual tgenerator_
 	}
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/)
-			override
+	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
@@ -220,7 +220,7 @@ struct thorizontal_list : public virtual tgenerator_
 	 *
 	 * @param rectangle           The visible rectangle.
 	 */
-	void set_visible_rectangle(const SDL_Rect& rectangle);
+	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
@@ -233,22 +233,22 @@ struct thorizontal_list : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
 	{
 		/* do nothing */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
 	{
 		/* do nothing */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	void handle_key_left_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+	void handle_key_right_arrow(SDLMod modifier, bool& handled) override;
 
 private:
 	/**
@@ -279,8 +279,7 @@ struct tvertical_list : public virtual tgenerator_
 	}
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/)
-			override
+	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
@@ -295,7 +294,7 @@ struct tvertical_list : public virtual tgenerator_
 	virtual void set_origin(const tpoint& origin) override;
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& rectangle);
+	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
@@ -308,18 +307,18 @@ struct tvertical_list : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	void handle_key_up_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	void handle_key_down_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	void handle_key_left_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
 	{ /* do nothing */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	void handle_key_right_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
 	{ /* do nothing */
 	}
 
@@ -349,11 +348,10 @@ private:
  */
 struct tmatrix : public virtual tgenerator_
 {
+	tmatrix();
+
 	/** See thorizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/)
-	{
-		ERROR_LOG(false);
-	}
+	void create_item(const unsigned /*index*/);
 
 	/* Also make the overload from the generator_ visible. */
 	using tgenerator_::create_item;
@@ -365,79 +363,54 @@ struct tmatrix : public virtual tgenerator_
 	}
 
 	/** See @ref twidget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/)
-			override
+	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override
-	{
-		ERROR_LOG(false);
-	}
+	virtual tpoint calculate_best_size() const override;
 
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& /*origin*/
-					   ,
-					   const tpoint& /*size*/) override
-	{
-		ERROR_LOG(false);
-	}
+					   , const tpoint& /*size*/) override;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& /*origin*/) override
-	{
-		ERROR_LOG(false);
-	}
+	virtual void set_origin(const tpoint& /*origin*/) override;
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& /*rectangle*/)
-	{
-		ERROR_LOG(false);
-	}
+	void set_visible_rectangle(const SDL_Rect& /*rectangle*/) override;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& /*coordinate*/
-							 ,
-							 const bool /*must_be_active*/) override
-	{
-		ERROR_LOG(false);
-	}
+							 , const bool /*must_be_active*/) override;
 
 	/** See @ref twidget::find_at. */
 	virtual const twidget* find_at(const tpoint& /*coordinate*/
-								   ,
-								   const bool /*must_be_active*/) const override
-	{
-		ERROR_LOG(false);
-	}
+								   , const bool /*must_be_active*/) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_up_arrow(SDLMod, bool&) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_down_arrow(SDLMod, bool&) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_left_arrow(SDLMod, bool&) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod, bool&)
-	{
-		ERROR_LOG(false);
-	}
+	void handle_key_right_arrow(SDLMod, bool&) override;
+private:
+	/**
+	 * Has the grid already been placed?
+	 *
+	 * If the grid is placed it's no problem set the location of the new
+	 * item,it hasn't been placed, there's no information about its location
+	 * so do nothing.
+	 */
+	bool placed_;
 };
 
 /**
@@ -462,7 +435,7 @@ struct tindependent : public virtual tgenerator_
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/** See thorizontal_list::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height);
+	virtual void request_reduce_height(const unsigned maximum_height) override;
 
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const override;
@@ -474,7 +447,7 @@ struct tindependent : public virtual tgenerator_
 	virtual void set_origin(const tpoint& origin) override;
 
 	/** See @ref thorizontal_list::set_visible_rectangle(). */
-	void set_visible_rectangle(const SDL_Rect& rectangle);
+	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref twidget::find_at. */
 	virtual twidget* find_at(const tpoint& coordinate,
@@ -494,25 +467,25 @@ struct tindependent : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod, bool&)
+	void handle_key_up_arrow(SDLMod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod, bool&)
+	void handle_key_down_arrow(SDLMod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod, bool&)
+	void handle_key_left_arrow(SDLMod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod, bool&)
+	void handle_key_right_arrow(SDLMod, bool&) override
 	{
 		/* DO NOTHING */
 	}
@@ -615,7 +588,7 @@ public:
 	/***** ***** ***** inherited ***** ****** *****/
 
 	/** Inherited from tgenerator_. */
-	void delete_item(const unsigned index)
+	void delete_item(const unsigned index) override
 	{
 		assert(index < items_.size());
 
@@ -634,7 +607,7 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void clear()
+	void clear() override
 	{
 		for(auto item : items_)
 		{
@@ -645,7 +618,7 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void select_item(const unsigned index, const bool select = true)
+	void select_item(const unsigned index, const bool select = true) override
 	{
 		assert(index < items_.size());
 
@@ -662,14 +635,14 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	bool is_selected(const unsigned index) const
+	bool is_selected(const unsigned index) const override
 	{
 		assert(index < items_.size());
 		return (*items_[index]).selected;
 	}
 
 	/** Inherited from tgenerator_. */
-	void set_item_shown(const unsigned index, const bool show)
+	void set_item_shown(const unsigned index, const bool show) override
 	{
 		assert(index < items_.size());
 		if(items_[index]->shown != show) {
@@ -686,27 +659,27 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	virtual bool get_item_shown(const unsigned index) const
+	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown;
+		return items_[index]->shown && items_[index]->grid.get_visible() != twindow::tvisible::invisible;
 	}
 
 
 	/** Inherited from tgenerator_. */
-	unsigned get_item_count() const
+	unsigned get_item_count() const override
 	{
 		return items_.size();
 	}
 
 	/** Inherited from tgenerator_. */
-	unsigned get_selected_item_count() const
+	unsigned get_selected_item_count() const override
 	{
 		return selected_item_count_;
 	}
 
 	/** Inherited from tgenerator_. */
-	int get_selected_item() const
+	int get_selected_item() const override
 	{
 
 		if(selected_item_count_ == 0) {
@@ -728,21 +701,21 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	tgrid& item(const unsigned index)
+	tgrid& item(const unsigned index) override
 	{
 		assert(index < items_.size());
 		return items_[index]->grid;
 	}
 
 	/** Inherited from tgenerator_. */
-	const tgrid& item(const unsigned index) const
+	const tgrid& item(const unsigned index) const override
 	{
 		assert(index < items_.size());
 		return items_[index]->grid;
 	}
 
 	/** Inherited from tgenerator_. */
-	tgrid& item_ordered(const unsigned index)
+	tgrid& item_ordered(const unsigned index) override
 	{
 		calculate_order();
 		assert(index < items_.size());
@@ -750,7 +723,7 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	const tgrid& item_ordered(const unsigned index) const
+	const tgrid& item_ordered(const unsigned index) const override
 	{
 		calculate_order();
 		assert(index < items_.size());
@@ -762,7 +735,7 @@ public:
 	tgrid& create_item(const int index,
 					   tbuilder_grid_const_ptr list_builder,
 					   const string_map& item_data,
-					   const std::function<void(twidget&)>& callback)
+					   const std::function<void(twidget&)>& callback) override
 	{
 		std::map<std::string, string_map> data;
 
@@ -775,7 +748,7 @@ public:
 			const int index,
 			tbuilder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */, string_map>& item_data,
-			const std::function<void(twidget&)>& callback)
+			const std::function<void(twidget&)>& callback) override
 	{
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
@@ -802,7 +775,7 @@ public:
 			tbuilder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
-			const std::function<void(twidget&)>& callback)
+			const std::function<void(twidget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -811,7 +784,7 @@ public:
 	virtual void create_items(const int index,
 							  tbuilder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
-							  const std::function<void(twidget&)>& callback)
+							  const std::function<void(twidget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -940,32 +913,32 @@ public:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled)
+	void handle_key_up_arrow(SDLMod modifier, bool& handled) override
 	{
 		placement::handle_key_up_arrow(modifier, handled);
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled)
+	void handle_key_down_arrow(SDLMod modifier, bool& handled) override
 	{
 		placement::handle_key_down_arrow(modifier, handled);
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled)
+	void handle_key_left_arrow(SDLMod modifier, bool& handled) override
 	{
 		placement::handle_key_left_arrow(modifier, handled);
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled)
+	void handle_key_right_arrow(SDLMod modifier, bool& handled) override
 	{
 		placement::handle_key_right_arrow(modifier, handled);
 	}
 
 protected:
 	/** Inherited from tgenerator_. */
-	void do_select_item(const unsigned index) // fixme rename to impl
+	void do_select_item(const unsigned index) override
 	{
 		assert(index < items_.size());
 
@@ -974,7 +947,7 @@ protected:
 	}
 
 	/** Inherited from tgenerator_. */
-	void do_deselect_item(const unsigned index)
+	void do_deselect_item(const unsigned index) override
 	{
 		assert(index < items_.size());
 
@@ -1054,14 +1027,14 @@ private:
 		}
 	};
 
-	virtual unsigned get_ordered_index(unsigned index) const
+	virtual unsigned get_ordered_index(unsigned index) const override
 	{
 		assert(index < items_.size());
 		calculate_order();
 		return items_[index]->ordered_index;
 	}
 
-	virtual unsigned get_item_at_ordered(unsigned index_ordered) const
+	virtual unsigned get_item_at_ordered(unsigned index_ordered) const override
 	{
 		assert(index_ordered < items_.size());
 		calculate_order();

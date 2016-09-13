@@ -27,7 +27,6 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
-#include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)
@@ -67,7 +66,6 @@ bool stage_unit_formulas::do_play_stage()
 						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
 						if (priority_formula) {
 							game_logic::map_formula_callable callable(&fai_);
-							callable.add_ref();
 							callable.add("me", variant(new unit_callable(*i)));
 							priority = (game_logic::formula::evaluate(priority_formula, callable)).as_int();
 						} else {
@@ -101,7 +99,6 @@ bool stage_unit_formulas::do_play_stage()
 					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
 					if (formula) {
 						game_logic::map_formula_callable callable(&fai_);
-						callable.add_ref();
 						callable.add("me", variant(new unit_callable(*i)));
 						fai_.make_action(formula, callable);
 					} else {
@@ -124,7 +121,6 @@ bool stage_unit_formulas::do_play_stage()
 					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
 					if (loop_formula) {
 						game_logic::map_formula_callable callable(&fai_);
-						callable.add_ref();
 						callable.add("me", variant(new unit_callable(*i)));
 						while ( !fai_.make_action(loop_formula, callable).is_empty() && i.valid() )
 						{

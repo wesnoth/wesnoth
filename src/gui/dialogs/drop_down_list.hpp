@@ -17,13 +17,15 @@
 #include "gui/dialogs/dialog.hpp"
 #include "sdl/rect.hpp"
 
+class config;
+
 namespace gui2
 {
-///Used by the combobox widget.
+///Used by the menu_button widget.
 class tdrop_down_list : public tdialog
 {
 public:
-	tdrop_down_list(SDL_Rect button_pos, const std::vector<std::string>& items, int selected_item, bool use_markup)
+	tdrop_down_list(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup)
 		: button_pos_(button_pos)
 		, items_(items)
 		, selected_item_(selected_item)
@@ -32,11 +34,11 @@ public:
 	}
 	int selected_item() const { return selected_item_; }
 private:
-	/// The screen location of the combobox button that triggred this droplist.
+	/// The screen location of the menu_button button that triggred this droplist.
 	/// Note: we don't adjust the location of this dialog to when resizing the window.
 	/// Instead this dialog automatically closes itself on resizing.
 	SDL_Rect button_pos_;
-	std::vector<std::string> items_;
+	std::vector<config> items_;
 	int selected_item_;
 	bool use_markup_;
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -47,8 +49,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
-
-	void item_change_callback(twindow& window, size_t item);
 };
 
 } // namespace gui2

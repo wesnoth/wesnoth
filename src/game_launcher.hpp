@@ -19,7 +19,6 @@
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font.hpp"                     // for manager
-#include "game_errors.hpp"              // for load_game_exception, etc
 #include "game_preferences.hpp"         // for manager
 #include "hotkey/hotkey_manager.hpp"    // for manager
 #include "image.hpp"                    // for manager
@@ -27,14 +26,13 @@
 #include "scoped_resource.hpp"          // for scoped_ptr
 #include "sound.hpp"                    // for music_thinker
 
-#include <boost/scoped_ptr.hpp>
 #include <string>                       // for string
 #include <vector>                       // for vector
 
 class commandline_options;
 class config;
 class CVideo;
-
+namespace savegame { struct load_game_metadata; }
 struct jump_to_campaign_info
 {
 public:
@@ -58,6 +56,8 @@ public:
 
 	CVideo& video() { return *video_; }
 
+	enum mp_selection {MP_CONNECT, MP_HOST, MP_LOCAL};
+
 	bool init_video();
 	bool init_language();
 	bool init_joystick();
@@ -69,7 +69,7 @@ public:
 	int unit_test();
 
 	bool is_loading() const;
-	void clear_loaded_game() { game::load_game_exception::game.clear(); }
+	void clear_loaded_game();
 	bool load_game();
 	void set_tutorial();
 
@@ -81,7 +81,8 @@ public:
 
 	bool jump_to_editor() const { return jump_to_editor_; }
 
-	bool play_multiplayer();
+	void select_mp_server(std::string server) { multiplayer_server_ = server; }
+	bool play_multiplayer(mp_selection res);
 	bool play_multiplayer_commandline();
 	bool change_language();
 
@@ -106,7 +107,7 @@ private:
 
 	const commandline_options& cmdline_opts_;
 	//Never null.
-	boost::scoped_ptr<CVideo> video_;
+	const std::unique_ptr<CVideo> video_;
 
 	const font::manager font_manager_;
 	const preferences::manager prefs_manager_;
@@ -114,6 +115,7 @@ private:
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
 	sound::music_thinker music_thinker_;
+	sound::music_muter music_muter_;
 
 	std::string test_scenario_;
 
@@ -127,6 +129,7 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
+	std::unique_ptr<savegame::load_game_metadata> load_data_;
 };
 
 #endif

@@ -48,7 +48,7 @@ const int battle_prediction_pane::inter_column_gap_ = 30;
 const int battle_prediction_pane::inter_units_gap_ = 30;
 const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
-battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
+battle_prediction_pane::battle_prediction_pane(battle_context &bc,
 		const map_location &attacker_loc, const map_location &defender_loc) :
 	gui::preview_pane(resources::screen->video()),
 	attacker_loc_(attacker_loc),
@@ -86,9 +86,8 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	dialog_height_(0)
 {
 	// Predict the battle outcome.
-	combatant attacker_combatant(bc.get_attacker_stats());
-	combatant defender_combatant(bc.get_defender_stats());
-	attacker_combatant.fight(defender_combatant);
+	const combatant& attacker_combatant = bc.get_attacker_combatant();
+	const combatant& defender_combatant = bc.get_defender_combatant();
 
 	const battle_context_unit_stats& attacker_stats = bc.get_attacker_stats();
 	const battle_context_unit_stats& defender_stats = bc.get_defender_stats();
@@ -255,7 +254,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		// Total damage.
 		left_strings.push_back(_("Total damage"));
 		str.str("");
-		str << stats.damage << utils::unicode_en_dash << stats.num_blows << " (" << stats.chance_to_hit << "%)";
+		str << stats.damage << font::weapon_numbers_sep << stats.num_blows << " (" << stats.chance_to_hit << "%)";
 		right_strings.push_back(str.str());
 
 	// Without a weapon.
@@ -522,20 +521,4 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOR, str_buf,
 						 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 	}
-}
-
-attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(int selection)
-{
-	// Get the selected weapon, if any.
-	const size_t index = size_t(selection);
-
-	if(index < bc_vector_.size()) {
-		battle_prediction_pane battle_pane(bc_vector_[index], attacker_loc_, defender_loc_);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&battle_pane);
-
-		gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
-	}
-
-	return gui::CONTINUE_DIALOG;
 }

@@ -16,7 +16,9 @@
 
 #include "gui/dialogs/title_screen.hpp"
 
+#include "addon/manager_ui.hpp"
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -27,6 +29,11 @@
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
+#include "game_config_manager.hpp"
+#include "gui/dialogs/core_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
+#include "gui/dialogs/message.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tip.hpp"
@@ -37,9 +44,11 @@
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "help/help.hpp"
 #include "video.hpp"
 
 #include "utils/functional.hpp"
+#include "game_launcher.hpp"
 
 #include <algorithm>
 
@@ -110,8 +119,8 @@ namespace gui2
  * previous_tip & & button & m &
  *         The button show the previous tip of the day. $
  *
- * logo & & progress_bar & o &
- *         A progress bar to "animate" the Wesnoth logo. $
+ * logo & & image & o &
+ *         The Wesnoth logo. $
  *
  * revision_number & & control & o &
  *         A widget to show the version number when the version number is
@@ -124,14 +133,13 @@ REGISTER_DIALOG(title_screen)
 
 bool show_debug_clock_button = false;
 
-static bool hotkey(twindow& window, const ttitle_screen::tresult result)
+void ttitle_screen::basic_callback(twindow& window, tresult res)
 {
-	window.set_retval(static_cast<twindow::tretval>(result));
-
-	return true;
+	result_ = res;
+	window.close();
 }
 
-ttitle_screen::ttitle_screen() : debug_clock_(nullptr)
+ttitle_screen::ttitle_screen(game_launcher& game) : result_(REDRAW_BACKGROUND), game_(game), debug_clock_(nullptr)
 {
 }
 
@@ -140,10 +148,24 @@ ttitle_screen::~ttitle_screen()
 	delete debug_clock_;
 }
 
+using btn_callback = std::function<void(twindow&)>;
+
+static void register_button(twindow& window, const std::string& id, hotkey::HOTKEY_COMMAND hk, btn_callback callback)
+{
+	if(hk != hotkey::HOTKEY_NULL) {
+		window.register_hotkey(hk, [callback](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
+			callback(dynamic_cast<twindow&>(win));
+			return true;
+		});
+	}
+	event::connect_signal_mouse_left_click(find_widget<tbutton>(&window, id, false), [callback](event::tdispatcher& win, event::tevent, bool&, bool&) {
+		callback(dynamic_cast<twindow&>(win));
+	});
+}
+
 static bool fullscreen(CVideo& video)
 {
 	video.set_fullscreen(!preferences::fullscreen());
-
 
 	return true;
 }
@@ -156,74 +178,15 @@ static bool launch_lua_console(twindow & window)
 
 void ttitle_screen::post_build(twindow& window)
 {
-	/** @todo Should become a title screen hotkey. */
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__RELOAD_WML,
-			std::bind(&hotkey, std::ref(window), RELOAD_GAME_DATA));
+			[this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
+				basic_callback(dynamic_cast<twindow&>(win), RELOAD_GAME_DATA);
+				return true;
+			});
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
 			std::bind(fullscreen, std::ref(window.video())));
-
-	window.register_hotkey(
-			hotkey::HOTKEY_LANGUAGE,
-			std::bind(&hotkey, std::ref(window), CHANGE_LANGUAGE));
-
-	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME,
-						   std::bind(&hotkey, std::ref(window), LOAD_GAME));
-
-	window.register_hotkey(hotkey::HOTKEY_HELP,
-						   std::bind(&hotkey, std::ref(window), SHOW_HELP));
-
-	window.register_hotkey(
-			hotkey::HOTKEY_PREFERENCES,
-			std::bind(&hotkey, std::ref(window), EDIT_PREFERENCES));
-
-	std::function<void()> next_tip_wrapper = std::bind(
-			&ttitle_screen::update_tip, this, std::ref(window), true);
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__NEXT_TIP,
-			std::bind(function_wrapper<bool, std::function<void()> >,
-						true,
-						next_tip_wrapper));
-
-	std::function<void()> previous_tip_wrapper = std::bind(
-			&ttitle_screen::update_tip, this, std::ref(window), false);
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__PREVIOUS_TIP,
-			std::bind(function_wrapper<bool, std::function<void()> >,
-						true,
-						previous_tip_wrapper));
-
-	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL,
-						   std::bind(&hotkey, std::ref(window), TUTORIAL));
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__CAMPAIGN,
-			std::bind(&hotkey, std::ref(window), NEW_CAMPAIGN));
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__MULTIPLAYER,
-			std::bind(&hotkey, std::ref(window), MULTIPLAYER));
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__ADDONS,
-			std::bind(&hotkey, std::ref(window), GET_ADDONS));
-
-	window.register_hotkey(hotkey::TITLE_SCREEN__CORES,
-						   std::bind(&hotkey, std::ref(window), CORES));
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__EDITOR,
-			std::bind(&hotkey, std::ref(window), START_MAP_EDITOR));
-
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__CREDITS,
-			std::bind(&hotkey, std::ref(window), SHOW_ABOUT));
-
-	window.register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP,
-						   std::bind(&hotkey, std::ref(window), QUIT_GAME));
 
 	window.register_hotkey(
 			hotkey::LUA_CONSOLE,
@@ -259,6 +222,7 @@ debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
 void ttitle_screen::pre_show(twindow& window)
 {
 	set_restore(false);
+	set_allow_plugin_skip(false);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
@@ -273,7 +237,7 @@ void ttitle_screen::pre_show(twindow& window)
 	if(tcontrol* control
 	   = find_widget<tcontrol>(&window, "revision_number", false, false)) {
 
-		control->set_label(_("Version ") + game_config::revision);
+		control->set_label(_("Version") + std::string(" ") + game_config::revision);
 	}
 	window.canvas()[0].set_variable(
 			"revision_number",
@@ -306,19 +270,14 @@ void ttitle_screen::pre_show(twindow& window)
 
 	update_tip(window, true);
 
-	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "next_tip", false),
-			std::bind(&ttitle_screen::update_tip,
-						this,
-						std::ref(window),
-						true));
-
-	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "previous_tip", false),
-			std::bind(&ttitle_screen::update_tip,
-						this,
-						std::ref(window),
-						false));
+	register_button(window, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
+		std::bind(&ttitle_screen::update_tip, this, std::ref(window), true));
+	register_button(window, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
+		std::bind(&ttitle_screen::update_tip, this, std::ref(window), false));
+	register_button(window, "help", hotkey::HOTKEY_HELP, [this](twindow&) {
+		help::help_manager help_manager(&game_config_manager::get()->game_config());
+		help::show_help(game_.video());
+	});
 
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined" << std::endl;
@@ -336,24 +295,140 @@ void ttitle_screen::pre_show(twindow& window)
 	}
 
 	/***** Logo *****/
-	find_widget<timage>(&window, "logo", false).set_image("misc/logo.png");
+	find_widget<timage>(&window, "logo-bg", false).set_image(game_config::images::game_logo_background);
+
+	find_widget<timage>(&window, "logo", false).set_image(game_config::images::game_logo);
 
 	/***** About dialog button *****/
-	tbutton& about = find_widget<tbutton>(&window, "about", false);
-	connect_signal_mouse_left_click(
-			about,
+	register_button(window, "about", hotkey::HOTKEY_NULL,
 			std::bind(&tgame_version::display, std::ref(window.video())));
 
 	/***** Set the clock button. *****/
 	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
 	clock.set_visible(show_debug_clock_button ? twidget::tvisible::visible
 											  : twidget::tvisible::invisible);
-
-	connect_signal_mouse_left_click(
-			clock,
+	register_button(window, "clock", hotkey::HOTKEY_NULL,
 			std::bind(&ttitle_screen::show_debug_clock_window,
 						this,
 						std::ref(window.video())));
+
+	/***** Main menu buttons *****/
+	register_button(window, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this](twindow& window) {
+		game_.set_tutorial();
+		result_ = LAUNCH_GAME;
+		window.close();
+	});
+	register_button(window, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](twindow& window) {
+		if(game_.new_campaign()) {
+			result_ = LAUNCH_GAME;
+			window.close();
+		}
+	});
+	register_button(window, "load", hotkey::HOTKEY_LOAD_GAME, [this](twindow& window) {
+		if(game_.load_game()) {
+			result_ = LAUNCH_GAME;
+			window.close();
+		} else {
+			game_.clear_loaded_game();
+		}
+	});
+	register_button(window, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](twindow&) {
+		// NOTE: we need the help_manager to get access to the Add-ons
+		// section in the game help!
+		help::help_manager help_manager(&game_config_manager::get()->game_config());
+		if(manage_addons(game_.video())) {
+			game_config_manager::get()->reload_changed_game_config();
+		}
+	});
+	register_button(window, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](twindow& window) {
+		while(true) {
+			gui2::tmp_method_selection dlg;
+			dlg.show(game_.video());
+
+			if(dlg.get_retval() != gui2::twindow::OK) {
+				return;
+			}
+
+			int res = dlg.get_choice();
+
+			if(dlg.get_choice() == 2 && preferences::mp_server_warning_disabled() < 2) {
+				if(!gui2::tmp_host_game_prompt::execute(game_.video())) {
+					continue;
+				}
+			}
+
+			switch(res) {
+				case 0:
+					result_ = MP_CONNECT;
+					game_.select_mp_server(preferences::server_list().front().address);
+					break;
+				case 1:
+					result_ = MP_CONNECT;
+					game_.select_mp_server("");
+					break;
+				case 2:
+					result_ = MP_HOST;
+					game_.select_mp_server("localhost");
+					break;
+				case 3:
+					result_ = MP_LOCAL;
+					break;
+			}
+			window.close();
+			return;
+		}
+	});
+	register_button(window, "editor", hotkey::TITLE_SCREEN__EDITOR,
+		std::bind(&ttitle_screen::basic_callback, this, std::ref(window), MAP_EDITOR));
+	register_button(window, "cores", hotkey::TITLE_SCREEN__CORES, [this](twindow&) {
+		int current = 0;
+		std::vector<config> cores;
+		for (const config& core : game_config_manager::get()->game_config().child_range("core")) {
+			cores.push_back(core);
+			if (core["id"] == preferences::core_id())
+				current = cores.size() - 1;
+		}
+
+		gui2::tcore_selection core_dlg(cores, current);
+		if (core_dlg.show(game_.video())) {
+			int core_index = core_dlg.get_choice();
+			const std::string& core_id = cores[core_index]["id"];
+			preferences::set_core_id(core_id);
+			game_config_manager::get()->reload_changed_game_config();
+		}
+	});
+	register_button(window, "language", hotkey::HOTKEY_LANGUAGE, [this](twindow& window) {
+		try {
+			if(game_.change_language()) {
+				t_string::reset_translations();
+				image::flush_cache();
+				result_ = REDRAW_BACKGROUND;
+				window.close();
+			}
+		} catch(std::runtime_error& e) {
+			gui2::show_error_message(game_.video(), e.what());
+		}
+	});
+	register_button(window, "preferences", hotkey::HOTKEY_PREFERENCES, [this](twindow&) {
+		game_.show_preferences();
+	});
+	register_button(window, "credits", hotkey::TITLE_SCREEN__CREDITS,
+		std::bind(&ttitle_screen::basic_callback, this, std::ref(window), SHOW_ABOUT));
+	register_button(window, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP,
+		std::bind(&ttitle_screen::basic_callback, this, std::ref(window), QUIT_GAME));
+
+	auto cores = game_config_manager::get()->game_config().child_range("core");
+	if(cores.size() <= 1) {
+		find_widget<tbutton>(&window, "cores", false).set_visible(twindow::tvisible::invisible);
+	}
+
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&ttitle_screen::on_resize, this, std::ref(window)));
+}
+
+void ttitle_screen::on_resize(twindow& window)
+{
+	result_ = REDRAW_BACKGROUND;
+	window.close();
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)
@@ -398,6 +473,15 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 		debug_clock_ = new tdebug_clock();
 		debug_clock_->show(video, true);
 	}
+}
+
+ttitle_screen::tresult ttitle_screen::display(game_launcher& game)
+{
+	ttitle_screen ts(game);
+	while(ts.result_ == tresult::REDRAW_BACKGROUND) {
+		ts.show(game.video());
+	}
+	return ts.result_;
 }
 
 } // namespace gui2

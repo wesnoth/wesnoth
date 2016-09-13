@@ -28,15 +28,12 @@
 #include "tod_manager.hpp"
 #include "game_state.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <set>
 
 class game_display;
 class game_data;
 class team;
 class unit;
-class wmi_pager;
 class replay;
 class saved_game;
 struct mp_game_settings;
@@ -87,7 +84,7 @@ public:
 
 	//event handler, overridden from observer
 	//there is nothing to handle in this class actually but that might change in the future
-	virtual void handle_generic_event(const std::string& /*name*/) {}
+	virtual void handle_generic_event(const std::string& /*name*/) override {}
 
 	bool can_undo() const;
 	bool can_redo() const;
@@ -195,12 +192,12 @@ public:
 
 	void do_consolesave(const std::string& filename);
 
-	events::mouse_handler& get_mouse_handler_base();
+	events::mouse_handler& get_mouse_handler_base() override;
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
-	boost::shared_ptr<wb::manager> get_whiteboard();
+	std::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
-	const game_classification& get_classification();
+	game_classification& get_classification();
 	int get_server_request_number() const { return gamestate().server_request_number_; }
 	void increase_server_request_number() { ++gamestate().server_request_number_; }
 
@@ -208,9 +205,9 @@ public:
 
 	int get_ticks();
 
-	virtual soundsource::manager* get_soundsource_man();
-	virtual plugins_context* get_plugins_context();
-	hotkey::command_executor* get_hotkey_command_executor();
+	virtual soundsource::manager* get_soundsource_man() override;
+	virtual plugins_context* get_plugins_context() override;
+	hotkey::command_executor* get_hotkey_command_executor() override;
 
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
@@ -221,17 +218,17 @@ public:
 
 	virtual bool is_replay() { return false; }
 
-	t_string get_scenario_name()
+	t_string get_scenario_name() const
 	{
 		return level_["name"].t_str();
 	}
 
-	bool get_disallow_recall()
+	bool get_disallow_recall() const
 	{
 		return level_["disallow_recall"].to_bool();
 	}
 
-	std::string theme()
+	std::string theme() const
 	{
 		return level_["theme"].str();
 	}
@@ -258,7 +255,7 @@ public:
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
 	int ticks() const { return ticks_; }
-	game_display& get_display();
+	game_display& get_display() override;
 
 	void update_savegame_snapshot() const;
 	/**
@@ -269,6 +266,7 @@ public:
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool recieve_from_wesnothd(config&) const { return false; }
+	void show_objectives() const;
 protected:
 	struct scoped_savegame_snapshot
 	{
@@ -278,10 +276,10 @@ protected:
 	};
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
-	bool have_keyboard_focus();
-	void process_focus_keydown_event(const SDL_Event& event);
-	void process_keydown_event(const SDL_Event& event);
-	void process_keyup_event(const SDL_Event& event);
+	bool have_keyboard_focus() override;
+	void process_focus_keydown_event(const SDL_Event& event) override;
+	void process_keydown_event(const SDL_Event& event) override;
+	void process_keyup_event(const SDL_Event& event) override;
 
 	void init_managers();
 	///preload events cannot be synced
@@ -308,35 +306,35 @@ private:
 protected:
 	//gamestate
 	const tdata_cache& tdata_;
-	boost::scoped_ptr<game_state> gamestate_;
+	std::unique_ptr<game_state> gamestate_;
 	config level_;
 	saved_game& saved_game_;
 
 	//managers
-	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
+	std::unique_ptr<tooltips::manager> tooltips_manager_;
 
 	//whiteboard manager
-	boost::shared_ptr<wb::manager> whiteboard_manager_;
+	std::shared_ptr<wb::manager> whiteboard_manager_;
 
 	//plugins context
-	boost::scoped_ptr<plugins_context> plugins_context_;
+	std::unique_ptr<plugins_context> plugins_context_;
 
 	//more managers
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
-	boost::scoped_ptr<hotkey_handler> hotkey_handler_;
-	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
+	std::unique_ptr<hotkey_handler> hotkey_handler_;
+	std::unique_ptr<soundsource::manager> soundsources_manager_;
 	persist_manager persist_;
 
 	//other objects
-	boost::scoped_ptr<game_display> gui_;
-	boost::scoped_ptr<unit_experience_accelerator> xp_mod_;
-	boost::scoped_ptr<const statistics::scenario_context> statistics_context_;
+	std::unique_ptr<game_display> gui_;
+	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
+	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
 	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; };
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; };
-	boost::scoped_ptr<replay> replay_;
+	std::unique_ptr<replay> replay_;
 
 	bool skip_replay_;
 	bool linger_;

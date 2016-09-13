@@ -135,7 +135,7 @@ struct user_info
  */
 struct game_info
 {
-	game_info(const config& c, const config& game_config);
+	game_info(const config& c, const config& game_config, const std::vector<std::string>& installed_addons);
 
 	bool can_join() const;
 	bool can_observe() const;
@@ -150,6 +150,7 @@ struct game_info
 	std::string map_size_info;
 	std::string era;
 	std::string era_short;
+	std::string mod_info;
 
 	std::string gold;
 	std::string support;
@@ -167,6 +168,7 @@ struct game_info
 	bool observers;
 	bool shuffle_sides;
 	bool use_map_settings;
+	bool registered_users_only;
 	bool verified;
 	bool password_required;
 	bool have_era;
@@ -183,94 +185,22 @@ struct game_info
 	};
 	game_display_status display_status;
 
+	enum ADDON_REQ { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
+
+	struct required_addon {
+		std::string addon_id;
+		ADDON_REQ outcome;
+		std::string message;
+	};
+
+	std::vector<required_addon> required_addons;
+	ADDON_REQ addons_outcome;
+
+	ADDON_REQ check_addon_version_compatibility(const config& local_item, const config& game);
+
 	const char* display_status_string() const;
-};
 
-class game_filter_base : public std::unary_function<game_info, bool>
-{
-public:
-	virtual ~game_filter_base()
-	{
-	}
-	virtual bool match(const game_info& game) const = 0;
-	bool operator()(const game_info& game) const
-	{
-		return match(game);
-	}
-};
-
-template <class T>
-class game_filter_not : public game_filter_base
-{
-public:
-	explicit game_filter_not(const T& t) : t(t)
-	{
-	}
-	bool match(const game_info& game) const
-	{
-		return !t.match(game);
-	}
-	T t;
-};
-
-class game_filter_stack : public game_filter_base
-{
-public:
-	game_filter_stack();
-	virtual ~game_filter_stack();
-
-	/**
-	 * Takes ownership
-	 */
-	void append(game_filter_base* f);
-
-	void clear();
-
-	bool empty() const
-	{
-		return filters_.empty();
-	}
-
-protected:
-	std::vector<game_filter_base*> filters_;
-};
-
-class game_filter_and_stack : public game_filter_stack
-{
-public:
-	bool match(const game_info& game) const;
-};
-
-template <class T, T game_info::*member, class OP = std::equal_to<T> >
-class game_filter_value : public game_filter_base
-{
-public:
-	explicit game_filter_value(const T& value) : member_(member), value_(value)
-	{
-	}
-
-	bool match(const game_info& game) const
-	{
-		return OP()(game.*member_, value_);
-	}
-
-private:
-	T game_info::*member_;
-	T value_;
-};
-
-class game_filter_general_string_part : public game_filter_base
-{
-public:
-	explicit game_filter_general_string_part(const std::string& value)
-		: value_(value)
-	{
-	}
-
-	bool match(const game_info& game) const;
-
-private:
-	std::string value_;
+	bool match_string_filter(const std::string& filter) const;
 };
 
 #endif

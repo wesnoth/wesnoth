@@ -8,7 +8,6 @@
 #include "config.hpp"
 
 #include <boost/noncopyable.hpp>
-#include <boost/optional.hpp>
 
 namespace actions {
 	class undo_list;
@@ -102,6 +101,7 @@ namespace actions {
 		/// Redoes this action.
 		virtual bool redo(int)
 		{
+			replay_data.clear();
 			return true;
 		}
 	};

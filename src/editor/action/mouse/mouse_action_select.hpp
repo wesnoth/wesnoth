@@ -61,8 +61,8 @@ public:
 
 	virtual void set_mouse_overlay(editor_display& disp);
 
-	bool has_context_menu() const { return true; }
-	bool supports_brushes() { return true; }
+	virtual bool has_context_menu() const override { return true; }
+	virtual bool supports_brushes() const override { return true; }
 
 };
 

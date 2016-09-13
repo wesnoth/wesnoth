@@ -21,6 +21,7 @@
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
+#include "scripting/lua_common.hpp" // for new(L)
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
@@ -83,9 +84,8 @@ void register_metatable ( lua_State* L )
 
 void push_function( lua_State* L, const lua_function & f )
 {
-	void * p = lua_newuserdata(L, sizeof(lua_function));
+	new(L) lua_function(f);
 	luaL_setmetatable(L, cpp_function);
-	new (p) lua_function(f);
 }
 
 void set_functions( lua_State* L, const std::vector<lua_cpp::Reg>& functions)

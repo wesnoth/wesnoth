@@ -84,7 +84,7 @@ namespace {
 	POISON_STATUS poison_progress(int side, const unit & patient,
 	                              std::vector<unit *> & healers)
 	{
-		const std::vector<team> &teams = *resources::teams;
+		const std::vector<team> &teams = resources::gameboard->teams();
 		unit_map &units = *resources::units;
 
 		POISON_STATUS curing = POISON_NORMAL;
@@ -349,9 +349,9 @@ void calculate_healing(int side, bool update_display)
 		}
 
 		const team & viewing_team =
-			(*resources::teams)[resources::screen->viewing_team()];
+			resources::gameboard->teams()[resources::screen->viewing_team()];
 		if (!resources::controller->is_skipping_replay() && update_display &&
-		    patient.is_visible_to_team(viewing_team, resources::gameboard->map(), false) )
+		    patient.is_visible_to_team(viewing_team, *resources::gameboard, false) )
 		{
 			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
 		}

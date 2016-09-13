@@ -114,6 +114,7 @@ void carryover::to_config(config& cfg){
 	side["add"] = add_;
 	side["current_player"] = current_player_;
 	side["previous_recruits"] = get_recruits(false);
+	side.add_child("variables", variables_);
 	for(const config & u_cfg : recall_list_) {
 		side.add_child("unit", u_cfg);
 	}

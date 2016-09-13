@@ -18,7 +18,6 @@
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
-#include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -40,8 +39,6 @@
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
-
-#include <boost/scoped_ptr.hpp>
 
 #include "addon/client.hpp"
 
@@ -155,7 +152,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 	result.outcome = SUCCESS;
 	result.wml_changed = false;
 
-	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
 	// TODO: We don't currently check for the need to upgrade. I'll probably
 	// work on that when implementing dependency tiers later.
@@ -206,9 +203,9 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 	//
 
 	const std::string sep(1, COLUMN_SEPARATOR);
-	const std::string& header = (formatter() << HEADING_PREFIX << sep <<
+	const std::string header = formatter() << HEADING_PREFIX << sep <<
 		_("Name") << sep << _("Version") << sep << _("Author") << sep <<
-		_("Size") << sep << _("Type")).str();
+		_("Size") << sep << _("Type");
 
 	std::vector<std::string> options(1, header);
 	std::vector<int> sort_sizes;
@@ -609,7 +606,7 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons, ADDON_SORT sort,
 
 void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& addons, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, addons_filter_state& filter)
 {
-	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
 	stay_in_ui = false;
 	filter.changed = false;
@@ -967,13 +964,14 @@ void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& a
 		msg_title = !updating ? _("Add-on Installed") : _("Add-on Updated");
 		msg_text = !updating ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
 
+		// Extra flags are so restore_background can be set. Remove when no longer necessary
 		gui2::show_transient_message(v,
-			msg_title, utils::interpolate_variables_into_string(msg_text, &syms));
+			msg_title, utils::interpolate_variables_into_string(msg_text, &syms), "", false, false, true);
 	} else if(failed_titles.empty()) {
 		msg_title = !updating ? _("Add-ons Installed") : _("Add-ons Updated");
 		msg_text = !updating ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
 
-		gui2::show_transient_message(v, msg_title, msg_text);
+		gui2::show_transient_message(v, msg_title, msg_text, "", false, false, true);
 	} else {
 		msg_title = !updating ? _("Installation Failed") : _("Update Failed");
 		msg_text = _n(
@@ -1185,7 +1183,7 @@ bool uninstall_local_addons(CVideo& v)
 
 		gui2::show_transient_message(
 			v, dlg_title,
-			dlg_msg + list_lead + utils::bullet_list(succeeded_names));
+			dlg_msg + list_lead + utils::bullet_list(succeeded_names), "", false, false, true);
 
 		return true;
 	}

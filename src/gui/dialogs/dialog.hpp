@@ -135,6 +135,7 @@ public:
 		, fields_()
 		, focus_()
 		, restore_(false)
+		, allow_plugin_skip_(true)
 	{
 	}
 
@@ -173,6 +174,11 @@ public:
 		restore_ = restore;
 	}
 
+	void set_allow_plugin_skip(const bool allow_plugin_skip)
+	{
+		allow_plugin_skip_ = allow_plugin_skip;
+	}
+
 protected:
 	/**
 	 * Creates a new boolean field.
@@ -196,12 +202,10 @@ protected:
 	tfield_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
-				  const std::function<bool()>& callback_load_value
-				  = std::function<bool()>(),
-				  const std::function<void(const bool)>& callback_save_value
-				  = std::function<void(const bool)>(),
-				  const std::function<void(twidget&)>& callback_change
-				  = std::function<void(twidget&)>());
+				  const std::function<bool()> callback_load_value = nullptr,
+				  const std::function<void(bool)> callback_save_value = nullptr,
+				  const std::function<void(twidget&)> callback_change = nullptr,
+				  const bool initial_fire = false);
 
 	/**
 	 * Creates a new boolean field.
@@ -222,8 +226,8 @@ protected:
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  bool& linked_variable,
-				  const std::function<void(twidget&)>& callback_change
-				  = std::function<void(twidget&)>());
+				  const std::function<void(twidget&)> callback_change = nullptr,
+				  const bool initial_fire = false);
 
 	/**
 	 * Creates a new integer field.
@@ -233,10 +237,8 @@ protected:
 	tfield_integer*
 	register_integer(const std::string& id,
 					 const bool mandatory,
-					 const std::function<int()>& callback_load_value
-					 = std::function<int()>(),
-					 const std::function<void(const int)>& callback_save_value
-					 = std::function<void(const int)>());
+					 const std::function<int()> callback_load_value = nullptr,
+					 const std::function<void(int)> callback_save_value = nullptr);
 
 	/**
 	 * Creates a new integer field.
@@ -254,10 +256,8 @@ protected:
 	tfield_text* register_text(
 			const std::string& id,
 			const bool mandatory,
-			const std::function<std::string()>& callback_load_value
-			= std::function<std::string()>(),
-			const std::function<void(const std::string&)>& callback_save_value
-			= std::function<void(const std::string&)>(),
+			const std::function<std::string()> callback_load_value = nullptr,
+			const std::function<void(const std::string&)> callback_save_value = nullptr,
 			const bool capture_focus = false);
 
 	/**
@@ -336,6 +336,14 @@ private:
 	 * behavior so they can change it in pre_show().
 	 */
 	bool restore_;
+
+	/**
+	 * Allow plugins to skip through the dialog?
+	 * Most dialogs install a plugins context to allow plugins to accept whatever the dialog is offering
+	 * and continue. Some dialogs, especially those that install their own plugins context, may want to
+	 * disable this.
+	 */
+	bool allow_plugin_skip_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;

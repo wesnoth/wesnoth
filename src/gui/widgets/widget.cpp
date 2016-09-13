@@ -32,9 +32,9 @@ twidget::twidget()
 	, y_(-1)
 	, width_(0)
 	, height_(0)
-	, layout_size_(tpoint(0, 0))
+	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	, last_best_size_(tpoint(0, 0))
+	, last_best_size_()
 #endif
 	, linked_group_()
 	, is_dirty_(true)
@@ -56,9 +56,9 @@ twidget::twidget(const tbuilder_widget& builder)
 	, y_(-1)
 	, width_(0)
 	, height_(0)
-	, layout_size_(tpoint(0, 0))
+	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	, last_best_size_(tpoint(0, 0))
+	, last_best_size_()
 #endif
 	, linked_group_(builder.linked_group)
 	, is_dirty_(true)
@@ -164,7 +164,7 @@ void twidget::layout_initialise(const bool /*full_initialisation*/)
 	assert(visible_ != tvisible::invisible);
 	assert(get_window());
 
-	layout_size_ = tpoint(0, 0);
+	layout_size_ = tpoint();
 	if(!linked_group_.empty()) {
 		get_window()->add_linked_widget(linked_group_, this);
 	}
@@ -190,7 +190,7 @@ tpoint twidget::get_best_size() const
 	assert(visible_ != tvisible::invisible);
 
 	tpoint result = layout_size_;
-	if(result == tpoint(0, 0)) {
+	if(result == tpoint()) {
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
 		if(!get_window()->get_need_layout() && !linked_group_.empty())
@@ -442,7 +442,7 @@ bool twidget::get_is_dirty() const
 	return is_dirty_;
 }
 
-void twidget::set_visible(const tvisible::scoped_enum visible)
+void twidget::set_visible(const tvisible visible)
 {
 	if(visible == visible_) {
 		return;
@@ -468,12 +468,12 @@ void twidget::set_visible(const tvisible::scoped_enum visible)
 	}
 }
 
-twidget::tvisible::scoped_enum twidget::get_visible() const
+twidget::tvisible twidget::get_visible() const
 {
 	return visible_;
 }
 
-twidget::tredraw_action::scoped_enum twidget::get_drawing_action() const
+twidget::tredraw_action twidget::get_drawing_action() const
 {
 	return (width_ == 0 || height_ == 0) ? tredraw_action::none
 										 : redraw_action_;

@@ -36,8 +36,8 @@ REGISTER_WIDGET(panel)
 
 SDL_Rect tpanel::get_client_rect() const
 {
-	boost::intrusive_ptr<const tpanel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tpanel_definition::tresolution>(
+	std::shared_ptr<const tpanel_definition::tresolution> conf
+			= std::static_pointer_cast<const tpanel_definition::tresolution>(
 					config());
 	assert(conf);
 
@@ -76,13 +76,12 @@ void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_off
 
 tpoint tpanel::border_space() const
 {
-	boost::intrusive_ptr<const tpanel_definition::tresolution> conf
-			= boost::dynamic_pointer_cast<const tpanel_definition::tresolution>(
+	std::shared_ptr<const tpanel_definition::tresolution> conf
+			= std::static_pointer_cast<const tpanel_definition::tresolution>(
 					config());
 	assert(conf);
 
-	return tpoint(conf->left_border + conf->right_border,
-				  conf->top_border + conf->bottom_border);
+	return tpoint(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
 const std::string& tpanel::get_control_type() const
@@ -196,7 +195,7 @@ tbuilder_panel::tbuilder_panel(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = new tbuilder_grid(c);
+	grid = std::make_shared<tbuilder_grid>(c);
 }
 
 twidget* tbuilder_panel::build() const

@@ -66,10 +66,10 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		boost::shared_ptr<formula_debugger> fdbp;
+		std::shared_ptr<formula_debugger> fdbp;
 		bool need_wrapper = false;
 		if (fdb==nullptr) {
-			fdbp = boost::shared_ptr<formula_debugger>(new formula_debugger());
+			fdbp = std::shared_ptr<formula_debugger>(new formula_debugger());
 			fdb = &*fdbp;
 			need_wrapper = true;
 
@@ -98,7 +98,6 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
 		const formula_callable* callable = var.as_callable();
-		callable->add_ref();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
@@ -319,7 +318,7 @@ private:
 			speaker = args()[0]->evaluate(variables, fdb).string_cast();
 			i_value = 1;
 		}
-		
+
 		const variant value = args()[i_value]->evaluate(variables,fdb);
 		long run_time = 0;
 		for(int i = 1; i < 1000; i++) {
@@ -767,7 +766,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
@@ -937,7 +935,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
@@ -975,7 +972,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it){
 				self_callable.add(self, *it);
@@ -1011,7 +1007,6 @@ private:
 			}
 		} else {
 			map_formula_callable self_callable;
-			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(variant_iterator it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
@@ -1117,7 +1112,6 @@ private:
 			++it;
 		}
 		map_formula_callable self_callable;
-		self_callable.add_ref();
 		for(; it != items.end(); ++it) {
 			self_callable.add("a", res);
 			self_callable.add("b", *it);
@@ -1383,18 +1377,6 @@ private:
 	}
 };
 
-
-class refcount_function : public function_expression {
-public:
-	explicit refcount_function(const args_list& args)
-	    : function_expression("refcount", args, 1, 1)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(args()[0]->evaluate(variables,fdb).refcount());
-	}
-};
-
 class loc_function : public function_expression {
 public:
 	explicit loc_function(const args_list& args)
@@ -1427,7 +1409,7 @@ public:
 	explicit distance_between_function(const args_list& args)
 	: function_expression("distance_between", args, 2, 2)
 	{}
-	
+
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
@@ -1469,7 +1451,7 @@ void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) 
 		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
 }
 
-	
+
 void key_value_pair::serialize_to_string(std::string& str) const {
 	str += "pair(";
 	key_.serialize_to_string(str);
@@ -1594,7 +1576,6 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(sgn);
 		FUNCTION(round);
 		FUNCTION(as_decimal);
-		FUNCTION(refcount);
 		FUNCTION(pair);
 		FUNCTION(loc);
 		FUNCTION(distance_between);
@@ -1639,7 +1620,7 @@ expression_ptr create_function(const std::string& fn,
 			return res;
 		}
 	}
-	
+
 	expression_ptr res(get_functions_map().create_function(fn, args));
 	if(!res) {
 		throw formula_error("Unknown function: " + fn, "", "", 0);

@@ -24,9 +24,7 @@
 #include "server_base.hpp"
 #include "player_connection.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/shared_array.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 
 #include <boost/asio/signal_set.hpp>
 
@@ -42,20 +40,19 @@ private:
 	void handle_new_client(socket_ptr socket);
 
 	void handle_version(socket_ptr socket);
-	void read_version(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
 	void login(socket_ptr socket);
-	void handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_login(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 	void send_password_request(socket_ptr socket, const std::string& msg,
-							   const std::string& user, const char* error_code = "", bool force_confirmation = false);
-
+		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
 	void add_player(socket_ptr socket, const wesnothd::player&);
 	void read_from_player(socket_ptr socket);
-	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
-	void handle_player_in_lobby(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
-	void handle_player_in_game(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_read_from_player(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
+	void handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
 	void handle_nickserv(socket_ptr socket, simple_wml::node& nickserv);
@@ -106,12 +103,12 @@ private:
 
 	std::deque<login_log> failed_logins_;
 
-	boost::scoped_ptr<user_handler> user_handler_;
+	std::unique_ptr<user_handler> user_handler_;
 	std::map<long int,std::string> seeds_;
 
 	player_connections player_connections_;
-	std::deque<boost::shared_ptr<game>> games() {
-		std::deque<boost::shared_ptr<game>> result;
+	std::deque<std::shared_ptr<game>> games() {
+		std::deque<std::shared_ptr<game>> result;
 		for(const auto& iter : player_connections_.get<game_t>())
 			if(result.empty() || iter.get_game() != result.back())
 				result.push_back(iter.get_game());
@@ -189,7 +186,7 @@ private:
 #endif
 	void setup_handlers();
 
-	typedef std::function<void(server*, const std::string&, const std::string&, std::string&, std::ostringstream *)> cmd_handler;
+	typedef std::function<void(const std::string&, const std::string&, std::string&, std::ostringstream *)> cmd_handler;
 	std::map<std::string, cmd_handler> cmd_handlers_;
 
 	void shut_down_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);

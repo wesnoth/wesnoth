@@ -54,9 +54,6 @@
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "candidates.hpp"               // for base_candidate_action, etc
 
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/lexical_cast.hpp>       // for lexical_cast
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
 #include <map>                          // for multimap<>::const_iterator, etc
@@ -114,7 +111,6 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	vars_(),
 	function_table_(*this)
 {
-	add_ref();
 	init_readonly_context_proxy(context);
 	LOG_AI << "creating new formula ai"<< std::endl;
 }
@@ -169,7 +165,6 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		game_logic::formula f(formula_str, &function_table_);
 
 		game_logic::map_formula_callable callable(this);
-		callable.add_ref();
 
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,nullptr);
@@ -216,7 +211,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = *resources::units;
-    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, resources::gameboard->map());
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -257,7 +252,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         destination = res;
     }
 
-    pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, &calc,
+    pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, calc,
             resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
     return route;
@@ -533,7 +528,6 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		     */
 
 			game_logic::map_formula_callable callable(this);
-			callable.add_ref();
 
 			if(error != variant())
 				callable.add("error", error);
@@ -666,7 +660,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
-		return variant(new team_callable((*resources::teams)[get_side()-1]));
+		return variant(new team_callable(resources::gameboard->teams()[get_side()-1]));
 
 	} else if(key == "my_side_number")
 	{
@@ -675,7 +669,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = resources::teams->begin(); i != resources::teams->end(); ++i) {
+		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
 			vars.push_back(variant(new team_callable(*i)));
 		}
 		return variant(&vars);
@@ -683,7 +677,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "allies")
 	{
 		std::vector<variant> vars;
-		for( size_t i = 0; i < resources::teams->size(); ++i) {
+		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( !current_team().is_enemy( i+1 ) )
 				vars.push_back(variant( i ));
 		}
@@ -692,7 +686,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemies")
 	{
 		std::vector<variant> vars;
-		for( size_t i = 0; i < resources::teams->size(); ++i) {
+		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( current_team().is_enemy( i+1 ) )
 				vars.push_back(variant( i ));
 		}
@@ -725,12 +719,12 @@ variant formula_ai::get_value(const std::string& key) const
 
 		unit_types.build_all(unit_type::FULL);
 
-		for( size_t i = 0; i<resources::teams->size(); ++i)
+		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;
 			tmp.push_back( v );
 
-			const std::set<std::string>& recruits = (*resources::teams)[i].recruits();
+			const std::set<std::string>& recruits = resources::gameboard->teams()[i].recruits();
 			if(recruits.empty()) {
 				continue;
 			}
@@ -760,7 +754,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		std::vector< std::vector< variant> > tmp;
-		for( size_t i = 0; i<resources::teams->size(); ++i)
+		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;
 			tmp.push_back( v );
@@ -838,13 +832,13 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
-		for(size_t i = 0; i<resources::teams->size(); ++i)
+		for(size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			vars.push_back( variant() );
 		}
 		for(size_t i = 0; i<vars.size(); ++i)
 		{
-			vars[i] = villages_from_set((*resources::teams)[i].villages());
+			vars[i] = villages_from_set(resources::gameboard->teams()[i].villages());
 		}
 		return variant(&vars);
 
@@ -936,7 +930,6 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 
 void formula_ai::on_create(){
 	//make sure we don't run out of refcount
-	vars_.add_ref();
 
 	for(const config &func : cfg_.child_range("function"))
 	{
@@ -980,7 +973,6 @@ void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
 	game_logic::map_formula_callable callable(this);
-	callable.add_ref();
 	fai_ca->update_callable_map( callable );
 	const_formula_ptr move_formula(fai_ca->get_action());
 	return !make_action(move_formula, callable).is_empty();

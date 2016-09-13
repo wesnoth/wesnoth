@@ -21,7 +21,7 @@
 #include "terrain/translation.hpp"
 #include "game_config.hpp"
 
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
 
 ///this module manages the cache of images. With an image name, you can get
@@ -60,11 +60,11 @@ namespace image {
 			int center_y_;
 		};
 
-		friend size_t hash_value(const value&);
+		friend struct std::hash<value>;
 
 	public:
 
-		typedef boost::unordered_map<value, int> locator_finder_t;
+		typedef std::unordered_map<value, int> locator_finder_t;
 
 		// Constructing locators is somewhat slow, accessing image
 		// through locators is fast. The idea is that calling functions
@@ -127,9 +127,6 @@ namespace image {
 #ifdef SDL_GPU
 	sdl::timage load_texture(const locator &loc);
 #endif
-
-	size_t hash_value(const locator::value&);
-
 
 	typedef cache_type<surface> image_cache;
 #ifdef SDL_GPU

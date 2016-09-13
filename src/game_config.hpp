@@ -85,6 +85,8 @@ namespace game_config
 	namespace images {
 	extern std::string game_title,
 			game_title_background,
+			game_logo,
+			game_logo_background,
 			// orbs and hp/xp bar
 			orb,
 			energy,
@@ -123,7 +125,7 @@ namespace game_config
 	extern double hex_brightening;
 	extern double hex_semi_brightening;
 
-	extern std::string flag_rgb;
+	extern std::string flag_rgb, unit_rgb;
 	extern std::vector<uint32_t> red_green_scale;
 	extern std::vector<uint32_t> red_green_scale_text;
 

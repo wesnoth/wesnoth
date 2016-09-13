@@ -18,8 +18,8 @@
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
-#include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
+#include <memory>
+#include <boost/noncopyable.hpp>
 
 #include "sdl/window.hpp"
 
@@ -209,10 +209,12 @@ public:
 	 */
 	std::vector<std::pair<int, int> > get_available_resolutions(const bool include_current = false);
 
+	void lock_flips(bool);
+
 private:
 	static CVideo* singleton_;
 
-	boost::scoped_ptr<sdl::twindow> window;
+	std::unique_ptr<sdl::twindow> window;
 	class video_event_handler : public events::sdl_handler {
 	public:
 		virtual void handle_event(const SDL_Event &) {}
@@ -242,6 +244,7 @@ private:
 	int help_string_;
 
 	int updatesLocked_;
+	int flip_locked_;
 };
 
 //an object which will lock the display for the duration of its lifetime.
@@ -268,6 +271,21 @@ private:
 	CVideo& video;
 	bool unlock;
 };
+
+class flip_locker
+{
+public:
+	flip_locker(CVideo &video) : video_(video) {
+		video_.lock_flips(true);
+	}
+	~flip_locker() {
+		video_.lock_flips(false);
+	}
+
+private:
+	CVideo& video_;
+};
+
 
 namespace video2 {
 class draw_layering: public events::sdl_handler {

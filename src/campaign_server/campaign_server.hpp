@@ -20,7 +20,6 @@
 #include "server/simple_wml.hpp"
 
 #include "utils/functional.hpp"
-#include <boost/scoped_ptr.hpp>
 #include <boost/unordered_map.hpp>
 #include <boost/asio/steady_timer.hpp>
 
@@ -90,7 +89,7 @@ private:
 	std::string blacklist_file_;
 
 	void handle_new_client(socket_ptr socket);
-	void handle_request(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
 

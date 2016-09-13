@@ -48,6 +48,10 @@ tunit_recruit::tunit_recruit(std::vector<const unit_type*>& recruit_list, team& 
 	, team_(team)
 	, selected_index_(0)
 {
+	// Ensure the recruit list is sorted by name
+	std::sort(recruit_list_.begin(), recruit_list_.end(), [this](const unit_type* t1, const unit_type* t2) {
+		return t1->type_name().str() < t2->type_name().str();
+	});
 }
 
 static std::string can_afford_unit(const std::string& text, const bool can_afford)
@@ -69,6 +73,8 @@ void tunit_recruit::pre_show(twindow& window)
 		dialog_callback<tunit_recruit, &tunit_recruit::list_item_clicked>);
 #endif
 
+	window.keyboard_capture(&list);
+
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "show_help", false),
 		std::bind(&tunit_recruit::show_help, this, std::ref(window)));
@@ -79,11 +85,11 @@ void tunit_recruit::pre_show(twindow& window)
 		string_map column;
 
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
-			+ team::get_side_color_index(team_.side()) + ")";
+			+ team_.color() + ")";
 
 		int wb_gold = 0;
 		if(resources::controller) {
-			if(const boost::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
+			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
 				wb::future_map future; // So gold takes into account planned spending
 				wb_gold = whiteb->get_spent_gold_for(team_.side());
 			}
@@ -93,16 +99,16 @@ void tunit_recruit::pre_show(twindow& window)
 
 		const std::string cost_string = std::to_string(recruit->cost());
 
+		column["use_markup"] = "true";
+
 		column["label"] = image_string;
-		row_data.insert(std::make_pair("unit_image", column));
+		row_data.emplace("unit_image", column);
 
 		column["label"] = can_afford_unit(recruit->type_name(), can_afford);
-		column["use_markup"] = "true";
-		row_data.insert(std::make_pair("unit_type", column));
+		row_data.emplace("unit_type", column);
 
 		column["label"] = can_afford_unit(cost_string, can_afford);
-		column["use_markup"] = "true";
-		row_data.insert(std::make_pair("unit_cost", column));
+		row_data.emplace("unit_cost", column);
 
 		list.add_row(row_data);
 	}
@@ -120,7 +126,7 @@ void tunit_recruit::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "recruit_details", false)
-		.set_displayed_type(recruit_list_[selected_row]);
+		.set_displayed_type(*recruit_list_[selected_row]);
 }
 
 void tunit_recruit::show_help(twindow& window)

@@ -33,8 +33,6 @@
 #include "gui/dialogs/loadscreen.hpp"
 
 #include "utils/functional.hpp"
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 #include <SDL_timer.h>
 
 #include <algorithm>
@@ -44,14 +42,16 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, play_controller &, const tdata_cache & tdata) :
+game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
 	tod_manager_(level),
-	pathfind_manager_(),
+	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
-	lua_kernel_(),
+	lua_kernel_(new game_lua_kernel(nullptr, *this, pc, *reports_)),
 	events_manager_(new game_events::manager()),
+	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
+	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
 	init_side_done_(level["init_side_done"].to_bool(false)),
@@ -191,12 +191,15 @@ void game_state::init(const config& level, play_controller & pc)
 				first_human_team_ = team_num;
 			}
 		}
-		team_builder_ptr tb_ptr = create_team_builder(side,
-			board_.teams_, level, board_);
 		++team_num;
+		team_builder_ptr tb_ptr = create_team_builder(side,
+			board_.teams_, level, board_, team_num);
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
+	//Initilize the lua kernel before the units are created.
+	lua_kernel_->initialize(level);
+
 	{
 		//sync traits of start units and the random start time.
 		random_new::set_random_determinstic deterministic(gamedata_.rng());
@@ -215,10 +218,6 @@ void game_state::init(const config& level, play_controller & pc)
 			}
 		}
 	}
-
-	pathfind_manager_.reset(new pathfind::manager(level));
-
-	lua_kernel_.reset(new game_lua_kernel(nullptr, *this, pc, *reports_));
 }
 
 void game_state::set_game_display(game_display * gd)
@@ -355,7 +354,7 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 	// any convex castle on the map. Strictly speaking it could be
 	// reduced to sqrt(map.w()**2 + map.h()**2).
 	pathfind::plain_route rt =
-		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
+		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), calc,
 		                        map.w(), map.h());
 	return !rt.steps.empty();
 }

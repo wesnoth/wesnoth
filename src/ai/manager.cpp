@@ -38,7 +38,6 @@
 #include "game_end_exceptions.hpp" // for ai_end_turn_exception
 #include "game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
-#include "game_errors.hpp"              // for game_error
 #include "ai/lua/aspect_advancements.hpp"
 #include "ai/registry.hpp"                 // for init
 #include "util.hpp"                     // for lexical_cast
@@ -101,7 +100,7 @@ void holder::init( side_number side )
 		default_ai_context_ = new default_ai_context_impl(*readwrite_context_,cfg_);
 	}
 	if (!this->ai_){
-		ai_ = boost::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
+		ai_ = std::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
 	}
 
 	if (this->ai_) {
@@ -157,6 +156,7 @@ void holder::modify_side_ai_config(config cfg)
 	// transform ai_parameters to new-style config
 
 	configuration::expand_simplified_aspects(this->side_, cfg);
+	cfg = cfg.child("ai");
 	//at this point we have a single config which contains [aspect][facet] tags
 	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
 
@@ -164,7 +164,7 @@ void holder::modify_side_ai_config(config cfg)
 	if (this->readonly_context_ == nullptr) {
 		// if not initialized, append that config to the bottom of base cfg
 		// then, merge aspects with the same id
-		cfg_.merge_with(cfg);
+		cfg_.append_children(cfg);
 		cfg_.merge_children_by_attribute("aspect","id");
 	} else {
 		// else run 'add_facet' command on each [aspect][facet]
@@ -713,9 +713,12 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
 {
+	config cfgs;
 	for (const config& cfg : ai_parameters) {
-		get_active_ai_holder_for_side(side).modify_side_ai_config(cfg);
+		cfgs.add_child("ai", cfg);
 	}
+	cfgs.child_or_add("ai").add_child("stage")["name"] = "empty";
+	get_active_ai_holder_for_side(side).modify_side_ai_config(cfgs);
 }
 
 
@@ -785,7 +788,7 @@ void manager::play_turn( side_number side ){
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	ai_composite& ai_obj = get_active_ai_for_side(side);
-	resources::game_events->pump().fire("ai turn");
+	resources::game_events->pump().fire("ai_turn");
 	raise_turn_started();
 	if (resources::tod_manager->has_tod_bonus_changed()) {
 		raise_tod_changed();

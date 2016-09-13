@@ -38,7 +38,7 @@ local function bandits_found(x,y)
 	local bandit_villages = helper.get_variable_array("bandit_villages")
 	local boss_found = wesnoth.get_variable("boss_found")
 	local visited = wesnoth.get_variable("villages_visited")
-	local rand1 = helper.rand(3,4)
+	local rand1 = helper.rand("3,4")
 	local rand2 = helper.rand("2.."..rand1)
 
 	for i=1,rand2 do

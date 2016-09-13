@@ -38,7 +38,7 @@ function wml_actions.sync_variable(cfg)
 				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wesnoth.get_variable(name .. ".length") > 0 and "array" or "attribute")
 				local variable_info = { name = name, type = variable_type }
 				table.insert(res, { "variable", variable_info })
-				if variable_type == "indexed" then 
+				if variable_type == "indexed" then
 					table.insert(variable_info, { "value", wesnoth.get_variable(name) } )
 				elseif variable_type == "array" then
 					for i = 1, wesnoth.get_variable(name .. ".length") do
@@ -53,7 +53,7 @@ function wml_actions.sync_variable(cfg)
 	)
 	for variable in helper.child_range(result, "variable") do
 		local name = variable.name
-		
+
 		if variable.type == "indexed" then
 			wesnoth.set_variable(name, variable[1][2])
 		elseif variable.type == "array" then
@@ -141,7 +141,9 @@ function wml_actions.fire_event(cfg)
 	local w2 = helper.get_child(cfg, "secondary_attack")
 	if w2 then w1 = w1 or {} end
 
-	wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
+	if cfg.id and cfg.id ~= "" then wesnoth.fire_event_by_id(cfg.id, x1, y1, x2, y2, w1, w2)
+	elseif cfg.name and cfg.name ~= "" then wesnoth.fire_event_by_name(cfg.name, x1, y1, x2, y2, w1, w2)
+	end
 end
 
 function wml_actions.allow_recruit(cfg)
@@ -269,7 +271,7 @@ end
 -- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
 function wml_actions.test_condition(cfg)
 	local logger = cfg.logger or "warning"
-	
+
 	-- This function returns true if it managed to explain the failure
 	local function explain(current_cfg, expect)
 		for i,t in ipairs(current_cfg) do
@@ -313,7 +315,7 @@ function wml_actions.test_condition(cfg)
 			end
 		end
 	end
-	
+
 	-- Use not twice here to convert nil to false
 	explain(cfg, not not cfg.result)
 end
@@ -398,7 +400,7 @@ function wml_actions.store_unit(cfg)
 	--cache the needed units here, since the filter might reference the to-be-cleared variable(s)
 	local units = wesnoth.get_units(filter)
 	local recall_units = wesnoth.get_recall_units(filter)
-	
+
 	local writer = utils.vwriter.init(cfg, "unit")
 
 	for i,u in ipairs(units) do
@@ -687,7 +689,7 @@ end
 
 -- This is the port of the old [modify_ai] into lua. It is different from wesnoth.modify_ai in that it uses a standard side filter.
 -- I don't know why these functions were made to behave differently, but this seems to be the more powerful and useful one according
--- to mattsc's comments 
+-- to mattsc's comments
 function wml_actions.modify_ai(cfg)
 	wesnoth.modify_ai_wml(cfg)
 end
@@ -764,7 +766,7 @@ end
 function wml_actions.put_to_recall_list(cfg)
 	local units = wesnoth.get_units(cfg)
 
-	for i, unit in ipairs(units) do	
+	for i, unit in ipairs(units) do
 		if cfg.heal then
 			unit.hitpoints = unit.max_hitpoints
 			unit.moves = unit.max_moves
@@ -901,6 +903,10 @@ function wml_actions.role(cfg)
 	local role = cfg.role
 	local filter = helper.shallow_literal(cfg)
 
+	if role == nil then
+		helper.wml_error("missing role= in [role]")
+	end
+
 	local types = {}
 
 	if cfg.type then
@@ -910,38 +916,94 @@ function wml_actions.role(cfg)
 	end
 
 	filter.role, filter.type = nil, nil
+	local search_map, search_recall, reassign = true, true, true
+	if cfg.search_recall_list == "only" then
+		search_map = false
+	elseif cfg.search_recall_list ~= nil then
+		search_recall = not not cfg.search_recall_list
+	end
+	if cfg.reassign ~= nil then
+		reassign = not not cfg.reassign
+	end
 
-	-- first attempt to match units on the map
-	local i = 1
-	repeat
-		-- give precedence based on the order specified in type=
-		if #types > 0 then
-			filter.type = types[i]
+	-- pre-build a new [recall] from the [auto_recall]
+	-- copy only recall-specific attributes, no SUF at all
+	-- the SUF will be id= which we will add in a moment
+	-- keep this in sync with the C++ recall function!!!
+	local recall = nil
+	local child = helper.get_child(cfg, "auto_recall")
+	if child ~= nil then
+		if helper.get_nth_child(cfg, "auto_recall", 2) ~= nil then
+			wesnoth.log("debug", "More than one [auto_recall] found within [role]", true)
 		end
-		local unit = wesnoth.get_units(filter)[1]
-		if unit then
-			unit.role = role
-			return
-		end
-		i = i + 1
-	until #types == 0 or i > #types
+		local original = helper.shallow_literal(child)
+		recall = {}
+		recall.x = original.x
+		recall.y = original.y
+		recall.show = original.show
+		recall.fire_event = original.fire_event
+		recall.check_passability = original.check_passability
+	end
 
-	-- then try to match units on the recall lists
-	i = 1
-	repeat
-		if #types > 0 then
-			filter.type = types[i]
+	if not reassign then
+		if search_map then
+			local unit = wesnoth.get_units{role=role}[1]
+			if unit then
+				return
+			end
 		end
-		local unit = wesnoth.get_recall_units(filter)[1]
-		if unit then
-			unit.role = role
-			return
+		if recall and search_recall then
+			local unit = wesnoth.get_recall_units{role=role}[1]
+			if unit then
+				recall.id = unit.id
+				wml_actions.recall(recall)
+				return
+			end
 		end
-		i = i + 1
-	until #types == 0 or i > #types
+	end
 
-	-- no matching unit found, issue a warning
-	wesnoth.message("WML", "No matching units found in [role]")
+	if search_map then
+		-- first attempt to match units on the map
+		local i = 1
+		repeat
+			-- give precedence based on the order specified in type=
+			if #types > 0 then
+				filter.type = types[i]
+			end
+			local unit = wesnoth.get_units(filter)[1]
+			if unit then
+				unit.role = role
+				return
+			end
+			i = i + 1
+		until #types == 0 or i > #types
+	end
+
+	if search_recall then
+		-- then try to match units on the recall lists
+		i = 1
+		repeat
+			if #types > 0 then
+				filter.type = types[i]
+			end
+			local unit = wesnoth.get_recall_units(filter)[1]
+			if unit then
+				unit.role = role
+				if recall then
+					recall.id = unit.id
+					wml_actions.recall(recall)
+				end
+				return
+			end
+			i = i + 1
+		until #types == 0 or i > #types
+	end
+
+	-- no matching unit found, try the [else] tags
+	for else_child in helper.child_range(cfg, "else") do
+		local action = utils.handle_event_commands(else_child, "conditional")
+		if action ~= "none" then return end
+	end
 end
 
 function wml_actions.unsynced(cfg)
@@ -969,14 +1031,14 @@ wml_actions.unstore_unit = function(cfg)
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
 		if cfg.find_vacant then
-			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability ~= false and unit)
+			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
 		local text = nil
 		if unit_cfg.gender == "female" then
 			text = cfg.female_text or cfg.text
 		else
-			text = cfg.male_text or cfg.text				
+			text = cfg.male_text or cfg.text
 		end
 		local color = cfg.color
 		if color == nil and cfg.red and cfg.blue and cfg.green then
@@ -996,7 +1058,7 @@ end
 wml_actions.teleport = function(cfg)
 	local context = wesnoth.current.event_context
 	local filter = helper.get_child(cfg, "filter") or { x = context.x1, y = context.y1 }
-	local unit = wesnoth.get_units(filter)[0]
+	local unit = wesnoth.get_units(filter)[1]
 	if not unit then
 		-- No error if no unit matches.
 		return
@@ -1018,7 +1080,6 @@ function wml_actions.deprecated_message(cfg)
 end
 
 function wml_actions.wml_message(cfg)
-	local logger = cfg.logger or ''
 	wesnoth.log(cfg.logger, cfg.message, cfg.to_chat)
 end
 
@@ -1124,69 +1185,7 @@ function wml_actions.set_variable(cfg)
 	end
 
 	if cfg.rand then
-		local random_string = cfg.rand
-		local num_choices = 0
-		local items = {}
-
-		-- split on commas
-		for word in random_string:gmatch("[^,]+") do
-			-- does the word contain two dots? If yes, that's a range
-			local dots_start, dots_end = word:find("%.%.")
-			if dots_start then
-				-- split on the dots if so and cast as numbers
-				local low = tonumber(word:sub(1, dots_start-1))
-				local high = tonumber(word:sub(dots_end+1))
-				-- perhaps someone passed a string as part of the range, intercept the issue
-				if not (low and high) then
-					wesnoth.message("<WML>","Malformed range: rand " .. cfg.rand)
-					table.insert(items, word)
-					num_choices = num_choices + 1
-				else
-					if low > high then
-						-- low is greater than high, swap them
-						low, high = high, low
-					end
-
-					-- if both ends represent the same number, then just use that number
-					if low == high then
-						table.insert(items, low)
-						num_choices = num_choices + 1
-					else
-						-- insert a table representing the range
-						table.insert(items, {low, high})
-						-- how many items does the range contain? Increase difference by 1 because we include both ends
-						num_choices = num_choices + (high - low) + 1
-					end
-				end
-			else
-				-- handle as a string
-				table.insert(items, word)
-				num_choices = num_choices + 1
-			end
-		end
-
-		local idx = wesnoth.random(1, num_choices)
-		local done = false
-
-		for i, item in ipairs(items) do
-			if type(item) == "table" then -- that's a range
-				local elems = item[2] - item[1] + 1 -- amount of elements in the range, both ends included
-				if elems >= idx then
-					wesnoth.set_variable(name, item[1] + elems - idx)
-					done = true
-					break
-				else
-					idx = idx - elems
-				end
-			else -- that's a single element
-				idx = idx - 1
-				if idx == 0 then
-					wesnoth.set_variable(name, item)
-					done = true
-				end
-			end
-			if done then break end
-		end
+		wesnoth.set_variable(name, helper.rand(tostring(cfg.rand)))
 	end
 
 	local join_child = helper.get_child(cfg, "join")
@@ -1205,5 +1204,14 @@ function wml_actions.set_variable(cfg)
 		end
 
 		wesnoth.set_variable(name, table.concat(string_to_join, separator))
+	end
+end
+
+function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
+	local endlevel_data = wesnoth.get_end_level_data()
+	if not endlevel_data then
+		return false
+	else
+		return endlevel_data.proceed_to_next_level
 	end
 end

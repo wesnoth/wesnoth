@@ -541,7 +541,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 
 void tgrid::set_origin(const tpoint& origin)
 {
-	const tpoint movement = tpoint(origin.x - get_x(), origin.y - get_y());
+	const tpoint movement = {origin.x - get_x(), origin.y - get_y()};
 
 	// Inherited.
 	twidget::set_origin(origin);
@@ -552,8 +552,7 @@ void tgrid::set_origin(const tpoint& origin)
 		twidget* widget = child.widget();
 		assert(widget);
 
-		widget->set_origin(tpoint(widget->get_x() + movement.x,
-								  widget->get_y() + movement.y));
+		widget->set_origin(tpoint(widget->get_x() + movement.x, widget->get_y() + movement.y));
 	}
 }
 
@@ -708,7 +707,7 @@ tpoint tgrid::tchild::get_best_size() const
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 				  << " widget visible " << false << " returning 0,0"
 				  << ".\n";
-		return tpoint(0, 0);
+		return tpoint();
 	}
 
 	const tpoint best_size = widget_->get_best_size() + border_space();
@@ -758,12 +757,12 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 
 	const tcontrol* control = dynamic_cast<const tcontrol*>(widget());
 	const tpoint maximum_size = control ? control->get_config_maximum_size()
-										: tpoint(0, 0);
+										: tpoint();
 
 	if((flags_ & (HORIZONTAL_MASK | VERTICAL_MASK))
 	   == (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT)) {
 
-		if(maximum_size == tpoint(0, 0) || size <= maximum_size) {
+		if(maximum_size == tpoint() || size <= maximum_size) {
 
 			DBG_GUI_L << LOG_CHILD_HEADER
 					  << " in maximum size range setting widget to " << origin
@@ -774,8 +773,7 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 		}
 	}
 
-	tpoint widget_size = tpoint(std::min(size.x, best_size.x),
-								std::min(size.y, best_size.y));
+	tpoint widget_size = tpoint(std::min(size.x, best_size.x), std::min(size.y, best_size.y));
 	tpoint widget_orig = origin;
 
 	const unsigned v_flag = flags_ & VERTICAL_MASK;

@@ -6,17 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2012-04-04 19:46+0100\n"
+"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
+"PO-Revision-Date: 2016-02-21 15:49+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
-"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
-"Language: \n"
+"Language-Team: z.banach@wsisiz.edu.pl\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: POLAND\n"
-"X-Poedit-Language: Polish\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #. [lua]: wml_actions.select_character
@@ -114,7 +113,7 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"W tym samouczku będzie grać Konradem.\n"
+"W tym samouczku będziesz grać Konradem.\n"
 "Stoisz w twierdzy, a twój mentor Delfador jest po wschodniej stronie rzeki."
 
 #. [message]: speaker=narrator
@@ -130,7 +129,7 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"W tym samouczku będzie grać Li’sar.\n"
+"W tym samouczku będziesz grać Li’sar.\n"
 "Stoisz w twierdzy, a twój mentor Delfador jest po wschodniej stronie rzeki."
 
 #. [event]
@@ -138,14 +137,14 @@ msgstr ""
 #, fuzzy
 #| msgid "Left click on Konrad"
 msgid "Click on Konrad"
-msgstr "Kliknij Konrada lewym przyciskiem"
+msgstr "Kliknij na Konrada lewym przyciskiem"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:167
 #, fuzzy
 #| msgid "Left click on Li’sar"
 msgid "Click on Li’sar"
-msgstr "Kliknij Li'sar lewym przyciskiem"
+msgstr "Kliknij na Li'sar lewym przyciskiem"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:201
@@ -616,14 +615,16 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:595
-msgid "I’ll tell them to use the one that does the most damage!"
+#, fuzzy
+#| msgid "I’ll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Każę im po prostu użyć tego, który zadaje najwięcej obrażeń!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
 #, fuzzy
 #| msgid "I’ll tell them to use the one that does the most damage!"
-msgid "female^I’ll tell them to use the one that does the most damage!"
+msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Każę im po prostu użyć tego, który zadaje najwięcej obrażeń!"
 
 #. [message]: speaker=Delfador
@@ -656,7 +657,7 @@ msgid ""
 msgstr ""
 "Nie zrobiłbyś przecież znowu czegoś tak głupiego jak samotny atak na tę "
 "atrapę, prawda?\n"
-"Najpierw użyj wojowników, których zarekrutowałeś - będą bardzo pomocni."
+"Najpierw użyj wojowników, których rekrutowałeś - będą bardzo pomocni."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:651
@@ -873,15 +874,22 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:907
 msgid "End Scenario"
-msgstr ""
+msgstr "Zakończ scenariusz"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
+#, fuzzy
+#| msgid ""
+#| "Do you want to keep practicing? You can end this scenario at any time by "
+#| "using the <b>End Scenario</b> item in the context menu."
 msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu to move on to the "
 "next phase of your training."
 msgstr ""
+"Czy chcesz kontynuować ćwiczenie? Możesz zakończyć ten scenariusz w dowolnym "
+"momencie, korzystając z elementu <b>Zakończ scenariusz</b> z menu "
+"kontekstowego."
 
 #. [option]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
@@ -1077,8 +1085,8 @@ msgid ""
 msgstr ""
 "Orki obozują po drugiej stronie rzeki. To jest kraj elfów: my, elfy, "
 "poruszamy się w lasach szybko i walczymy w nich bardzo skutecznie. Musisz "
-"pokonać ich przywódcę, dzięki czemu nigdy więcej nie będą nam mogli "
-"zagrozić. Będę ci doradzać."
+"pokonać ich przywódcę, aby nigdy więcej nie mogli już nam zagrozić. Będę ci "
+"doradzać."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:159
@@ -1096,8 +1104,8 @@ msgid ""
 msgstr ""
 "Orki obozują po drugiej stronie rzeki. To jest kraj elfów: my, elfy, "
 "poruszamy się w lasach szybko i walczymy w nich bardzo skutecznie. Musisz "
-"pokonać ich przywódcę, dzięki czemu nigdy więcej nie będą nam mogli "
-"zagrozić. Będę ci doradzać."
+"pokonać ich przywódcę, aby nigdy więcej nie mogli już nam zagrozić. Będę ci "
+"doradzać."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:165
@@ -1415,27 +1423,18 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:389
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
 msgstr "<big>Poruszanie się na duże odległości</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:391
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Możesz sprawić, by jednostka sama się poruszała przez kilka tur — wybierz "
-"ją, a następnie kliknij cel. Zostanie wyświetlona liczba pokazująca liczbę "
+"ją, a następnie kliknij cel. Zostanie wyświetlona liczba pokazująca ilość "
 "tur potrzebnych do osiągnięcia tego miejsca."
 
 #. [message]: speaker=student
@@ -1483,25 +1482,16 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:418
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
 msgstr "<big>Śledzenie ruchów wroga</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:420
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Możesz sprawdzić, jak daleko dotrze wroga jednostka, umieszczając nad nią "
 "kursor myszy. Możesz też sprawdzić możliwe ruchy wszystkich przeciwników — w "
 "tym celu wybierz <b>Pokaż ruchy wroga</b> z menu <b>Działania</b>."
@@ -1694,8 +1684,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
 msgstr "<big>Pora dnia</big>"
 
@@ -1717,7 +1705,7 @@ msgid ""
 "unit)."
 msgstr ""
 "Pamiętaj o wycofywaniu rannych jednostek do wiosek. Uzdrowiciele mogą "
-"przywrócić tylko 4 punkty życia naraz, a wioski leczą o 8 punktów (co jest "
+"przywrócić tylko 4 punkty życia naraz, a wioski leczą 8 punktów (co jest "
 "maksymalną wartością leczenia)."
 
 #. [event]
@@ -1731,21 +1719,11 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:618
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Śledzenie niewykorzystanych jednostek</big>"
+msgstr "<big>Znajdowanie niewykorzystanych jednostek</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:620
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1753,7 +1731,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Możesz upewnić się, że w danej turze wszystkie twoje jednostki otrzymały "
 "rozkazy: naciskaj klawisz <b>n</b>, aby przełączać się na kolejne jednostki. "
 "Naciśnięcie <b>spacji</b> spowoduje wskazanie, że jednostka już skończyła "
@@ -1763,8 +1740,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:629
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
 msgstr "<big>Warunki zwycięstwa</big>"
 
@@ -1772,7 +1747,6 @@ msgstr "<big>Warunki zwycięstwa</big>"
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:631
 #, fuzzy
 #| msgid ""
-#| "\n"
 #| "In this scenario, you only need to defeat the orc leader to win. (Victory "
 #| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
 #| "the <b>Main Menu</b>)."
@@ -1781,7 +1755,6 @@ msgid ""
 "conditions for a scenario are given under <b>Scenario Objectives</b> in  "
 "<b>Menu</b>)."
 msgstr ""
-"\n"
 "Do zwycięstwa w tym scenariuszu wystarczy, że pokonasz przywódcę orków. "
 "(Warunki zwycięstwa w scenariuszu zawsze możesz wyświetlić poprzez opcję "
 "<b>Cele misji</b> w <b>Menu głównym</b>)."
@@ -1789,25 +1762,19 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:640
 #, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
+#| msgid "Recruit the Right Unit Types"
 msgid "Recruit the Right Units"
-msgstr "<big>Rekrutuj właściwe typy jednostek</big>"
+msgstr "<big>Rekrutuj odpowiednie typy jednostek</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:642
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Pamiętaj o rekrutowaniu żołnierzy najbardziej użytecznych w danej sytuacji. "
 "Łucznicy będą szczególnie skuteczni przeciwko rębaczom, jeźdźcom wilków i "
-"ich przywódcy."
+"przywódcy wroga."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:669
@@ -1818,10 +1785,8 @@ msgstr "Nie mam już pieniędzy na rekrutację!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:670
-#, fuzzy
-#| msgid "I have no more money to recruit!"
 msgid "female^I have enough gold to recruit more units!"
-msgstr "Nie mam już pieniędzy na rekrutację!"
+msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:725
@@ -2086,8 +2051,7 @@ msgstr ""
 #| msgid "You took too long! We’ll never be rid of these orcs!"
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr ""
-"Zbyt wiele czasu ci to wszystko zabrało, już nigdy nie pozbędziemy się tych "
-"orków!"
+"Bitwa za bardzo się przeciągnęła, już nigdy nie pozbędziemy się tych orków!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
@@ -2137,7 +2101,7 @@ msgstr "Wojownik"
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2158,7 +2122,7 @@ msgid "female^Fighter"
 msgstr "Wojowniczka"
 
 #. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
+#: data/campaigns/tutorial/units/Fighteress.cfg:25
 msgid "saber"
 msgstr "szabla"
 
@@ -2207,14 +2171,6 @@ msgstr ""
 "\n"
 "<big>Kliknij myszą lub naciśnij spację, aby kontynuować...</big>"
 
-#, fuzzy
-#~| msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
-#~ msgid ""
-#~ "You have $student_hp hitpoints and a sword, boy. I’m fairly sure you’ll "
-#~ "win."
-#~ msgstr ""
-#~ "Chłopcze, masz 32 punkty życia i miecz. Jestem pewien, że zwyciężysz."
-
 #~ msgid ""
 #~ "<big>You have selected Konrad.</big>\n"
 #~ "The places he can move to are highlighted."
@@ -2252,6 +2208,10 @@ msgstr ""
 #~ msgstr ""
 #~ "Nie na to pole masz się ruszyć. Po zamknięciu tej wiadomości możesz "
 #~ "nacisnąć <b>u</b>, aby cofnąć ruch i spróbować ponownie."
+
+#~ msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
+#~ msgstr ""
+#~ "Chłopcze, masz 32 punkty życia i miecz. Jestem pewien, że zwyciężysz."
 
 #~ msgid "Click on the quintain to attack it"
 #~ msgstr "Kliknij atrapę, by ją zaatakować"
@@ -2294,10 +2254,10 @@ msgstr ""
 #~ "Do wioski!"
 
 #~ msgid "Click on the village to move Konrad"
-#~ msgstr "Kliknij wioskę, by przesunąć Konrada"
+#~ msgstr "Kliknij na wioskę, by przesunąć Konrada"
 
 #~ msgid "Click on the village to move Li’sar"
-#~ msgstr "Kliknij wioskę, by przesunąć Li'sar"
+#~ msgstr "Kliknij na wioskę, by przesunąć Li'sar"
 
 #~ msgid "Click on the <b>End Turn</b> button"
 #~ msgstr "Kliknij przycisk <b>Zakończ turę</b>"
@@ -2644,22 +2604,14 @@ msgstr ""
 #~ "Rębacze orków nie potrafią atakować na odległość, więc używaj przeciwko "
 #~ "nim swoich łuczników."
 
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "To review the capabilities of any unit—including an enemy—hover the "
-#~| "mouse over it, and you will see a unit summary on the right of the screen"
 #~ msgid ""
 #~ "To review the capabilities of any unit—including an enemy—hover the mouse "
 #~ "over it, and you will see a unit summary on the right of the screen"
 #~ msgstr ""
-#~ "\n"
 #~ "Aby zobaczyć umiejętności dowolnej jednostki (również wrogiej), najedź na "
 #~ "nią kursorem myszy, a z prawej strony ekranu zostanie wyświetlone "
 #~ "podsumowanie jednostki."
 
-#, fuzzy
-#~| msgid "<big>Unit Summaries</big>"
 #~ msgid "Unit Summaries"
 #~ msgstr "<big>Podsumowania jednostek</big>"
 
@@ -2750,18 +2702,11 @@ msgstr ""
 #~ "Nie zapomnij o wojowniku, który został wysłany na wschód — możesz wysłać "
 #~ "go na południe, do ostatniej wioski w pobliżu przesmyku."
 
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "After this dialog, hold the mouse over the landscape image below the "
-#~| "minimap on the right. This brings up a description of the time of day, "
-#~| "showing who has the advantage."
 #~ msgid ""
 #~ "After this dialog, hold the mouse over the landscape image below the "
 #~ "minimap on the right. This brings up a description of the time of day, "
 #~ "showing who has the advantage."
 #~ msgstr ""
-#~ "\n"
 #~ "Po zamknięciu tego okna najedź kursorem myszy na obrazek przedstawiający "
 #~ "krajobraz pod minimapą z prawej strony, a zobaczysz opis pory dnia wraz z "
 #~ "informacją, kto teraz walczy lepiej."

@@ -23,9 +23,6 @@ class config;
 #include "tod_manager.hpp"
 #include "units/id.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-
 class game_display;
 class play_controller;
 class game_lua_kernel;
@@ -48,14 +45,14 @@ public:
 	game_data gamedata_;
 	game_board board_;
 	tod_manager tod_manager_;
-	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
-	boost::scoped_ptr<reports> reports_;
-	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
-	boost::scoped_ptr<game_events::manager> events_manager_;
+	std::unique_ptr<pathfind::manager> pathfind_manager_;
+	const std::unique_ptr<reports> reports_;
+	std::unique_ptr<game_lua_kernel> lua_kernel_;
+	const std::unique_ptr<game_events::manager> events_manager_;
 	/// undo_stack_ is never nullptr. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
-	boost::scoped_ptr<actions::undo_list> undo_stack_;
+	const std::unique_ptr<actions::undo_list> undo_stack_;
 	int player_number_;
 
 	typedef boost::optional<end_level_data> t_possible_end_level_data;

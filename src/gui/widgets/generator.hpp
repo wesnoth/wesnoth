@@ -18,7 +18,7 @@
 #include "widget.hpp"
 #include "tstring.hpp"
 
-#include <boost/intrusive_ptr.hpp>
+#include <array>
 
 typedef std::map<std::string, t_string> string_map;
 
@@ -26,7 +26,7 @@ namespace gui2
 {
 
 struct tbuilder_grid;
-typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+typedef std::shared_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 
 class tgrid;
 
@@ -365,6 +365,8 @@ protected:
 	virtual unsigned get_ordered_index(unsigned index) const = 0;
 	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
 };
+
+using generator_sort_array = std::array<tgenerator_::torder_func, 2>;
 
 } // namespace gui2
 

@@ -20,10 +20,10 @@
 #ifndef CONFIG_CACHE_HPP_INCLUDED
 #define CONFIG_CACHE_HPP_INCLUDED
 
+#include <cassert>
 #include <list>
+#include <memory>
 #include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "serialization/preprocessor.hpp"
 
@@ -256,7 +256,7 @@ class fake_transaction : private boost::noncopyable
 {
 	friend class config_cache;
 
-	typedef boost::scoped_ptr<config_cache_transaction> value_type;
+	typedef std::unique_ptr<config_cache_transaction> value_type;
 	value_type trans_;
 
 	fake_transaction() : trans_()

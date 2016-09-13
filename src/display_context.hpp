@@ -56,6 +56,7 @@ public:
 	virtual const unit_map & units() const = 0;
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
 	std::vector<std::string> & hidden_label_categories_ref();
+	const team& get_team(int side) const;
 
 	// Helper for is_visible_to_team
 

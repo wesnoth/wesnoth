@@ -10,8 +10,10 @@ function wml_actions.object(cfg)
 	local context = wesnoth.current.event_context
 
 	-- If this item has already been used
+	local unique = cfg.take_only_once
+	if unique == nil then unique = true end
 	local obj_id = utils.check_key(cfg.id, "id", "object", true)
-	if obj_id and used_items[obj_id] then return end
+	if obj_id and unique and used_items[obj_id] then return end
 
 	local unit, command_type, text
 
@@ -25,7 +27,21 @@ function wml_actions.object(cfg)
 	-- If a unit matches the filter, proceed
 	if unit then
 		text = tostring(cfg.description or "")
+	else
+		text = tostring(cfg.cannot_use_message or "")
+		command_type = "else"
+	end
+
+	-- Default to silent if object has no description
+	local silent = cfg.silent
+	if silent == nil then silent = (text:len() == 0) end
+
+	if unit then
 		command_type = "then"
+
+		if cfg.no_write ~= nil then
+			wesnoth.log("wml", "[object]no_write=yes is deprecated in favour of placing [effect] tags in [modify_unit]")
+		end
 
 		local dvs = cfg.delayed_variable_substitution
 		local add = cfg.no_write ~= true
@@ -35,19 +51,14 @@ function wml_actions.object(cfg)
 			wesnoth.add_modification(unit, "object", helper.parsed(cfg), add)
 		end
 
-		wesnoth.select_unit(unit, false)
-		wesnoth.highlight_hex(unit.x, unit.y)
+		if not silent then
+			wesnoth.select_unit(unit, false)
+			wesnoth.highlight_hex(unit.x, unit.y)
+		end
 
 		-- Mark this item as used up
-		if obj_id then used_items[obj_id] = true end
-	else
-		text = tostring(cfg.cannot_use_message or "")
-		command_type = "else"
+		if obj_id and unique then used_items[obj_id] = true end
 	end
-
-	-- Default to silent if object has no description
-	local silent = cfg.silent
-	if silent == nil then silent = (text:len() == 0) end
 
 	if not silent then
 		wml_actions.redraw{}
@@ -80,6 +91,13 @@ function wesnoth.game_events.on_save()
 	local cfg = old_on_save()
 	table.insert(cfg, T.used_items(used_items) )
 	return cfg
+end
+
+function wml_actions.remove_object(cfg)
+	local obj_id = cfg.object_id
+	for _,unit in ipairs(wesnoth.get_units(cfg)) do
+		wesnoth.remove_modifications(unit, {id = obj_id})
+	end
 end
 
 function wesnoth.wml_conditionals.found_item(cfg)

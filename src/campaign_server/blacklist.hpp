@@ -44,8 +44,7 @@ namespace campaignd
 class blacklist : private boost::noncopyable
 {
 public:
-	typedef std::string       glob;
-	typedef std::vector<glob> globlist;
+	typedef std::vector<std::string> globlist;
 
 	blacklist();
 	explicit blacklist(const config& cfg);
@@ -93,7 +92,7 @@ private:
 	bool is_in_globlist(const std::string& str, const globlist& glist) const;
 
 	bool is_in_ip_masklist(const std::string& ip, const globlist& mlist) const;
-	bool ip_matches(const std::string& ip, const glob& ip_mask) const;
+	bool ip_matches(const std::string& ip, const std::string& ip_mask) const;
 };
 
 }

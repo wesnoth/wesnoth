@@ -31,7 +31,7 @@ namespace ng {
 class configure_engine
 {
 public:
-	configure_engine(saved_game& state);
+	configure_engine(saved_game& state, const config* intial = nullptr);
 
 	// Set all parameters to their default values
 	void set_default_values();
@@ -55,12 +55,14 @@ public:
 	bool fog_game() const;
 	bool shroud_game() const;
 	bool allow_observers() const;
+	bool registered_users_only() const;
 	bool shuffle_sides() const;
 	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode() const;
 	const config& options() const;
 
 	// setter methods
 	void set_game_name(std::string name);
+	void set_game_password(std::string name);
 	void set_num_turns(int val);
 	void set_village_gold(int val);
 	void set_village_support(int val);
@@ -75,6 +77,7 @@ public:
 	void set_fog_game(bool val);
 	void set_shroud_game(bool val);
 	void set_allow_observers(bool val);
+	void set_registered_users_only(bool val);
 	void set_oos_debug(bool val);
 	void set_shuffle_sides(bool val);
 	void set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val);
@@ -99,6 +102,7 @@ public:
 	bool fog_game_default() const;
 	bool shroud_game_default() const;
 	bool allow_observers_default() const;
+	bool registered_users_only_default() const;
 	bool shuffle_sides_default() const;
 	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode_default() const;
 	const config& options_default() const;
@@ -108,9 +112,16 @@ public:
 
 	const std::vector<std::string>& entry_point_titles() const;
 	void write_parameters();
+
+	void update_initial_cfg(const config& cfg)
+	{
+		initial_ = &cfg;
+	}
 private:
 	saved_game& state_;
 	mp_game_settings& parameters_;
+	/// Never nullptr.
+	const config* initial_;
 	// village gold, village support, fog, and shroud are per player, always show values of player 1.
 	/**
 	 * @todo This might not be 100% correct, but at the moment
@@ -118,8 +129,15 @@ private:
 	 * This might change in the future.
 	 * NOTE when 'load game' is selected there are no sides.
 	 */
-	const config &side_cfg_;
-
+	const config& side_cfg() const
+	{
+		return initial_->child_or_empty("side");
+	}
+	const config& initial_cfg() const
+	{
+		return *initial_;
+	}
+	
 	std::vector<const config*> entry_points_;
 
 	std::vector<std::string> entry_point_titles_;

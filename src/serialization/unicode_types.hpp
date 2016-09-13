@@ -18,10 +18,10 @@
 #include <string>
 #include <vector>
 #include <exception>
-#include <boost/cstdint.hpp>
+#include <cstdint>
 
 namespace ucs4 {
-	typedef boost::uint32_t char_t;
+	typedef uint32_t char_t;
 	typedef std::vector<char_t> string;
 }
 

@@ -1,4 +1,4 @@
-fai 'scouting_eval.fai'
+wfl 'scouting_eval.fai'
 
 if(me.loc = my_leader.loc,
 	-5,
@@ -12,4 +12,4 @@ if( me.max_moves > 5,
 where enemies_in_range = filter( enemy_units, 'enemy', distance_between( me.loc, enemy.loc ) < me.max_moves),
       shroud   = find_shroud()
 
-faiend
+wflend

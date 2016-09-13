@@ -29,7 +29,6 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "whiteboard/manager.hpp"
-#include "wmi_pager.hpp"
 
 #include "units/unit.hpp"
 
@@ -42,7 +41,6 @@ play_controller::hotkey_handler::hotkey_handler(play_controller & pc, saved_game
 	, saved_game_(sg)
 	, savenames_()
 	, wml_commands_()
-	, wml_command_pager_(new wmi_pager())
 	, last_context_menu_x_(0)
 	, last_context_menu_y_(0)
 {}
@@ -68,7 +66,7 @@ const team & play_controller::hotkey_handler::viewing_team() const { return play
 bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
 
 void play_controller::hotkey_handler::objectives(){
-	menu_handler_.objectives(gui()->viewing_team()+1);
+	menu_handler_.objectives();
 }
 
 void play_controller::hotkey_handler::show_statistics(){
@@ -247,11 +245,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 			load_autosave(savenames_[i]);
 
 		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
-			if (!wml_command_pager_->capture(*wml_commands_[i])) {
-				wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(), gamestate().gamedata_);
-			} else { //relaunch the menu
-				show_menu(gui()->get_theme().context_menu()->items(),last_context_menu_x_,last_context_menu_y_,true, *gui());
-			}
+			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(), gamestate().gamedata_);
 			return true;
 		}
 	}
@@ -426,10 +420,8 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::strin
 
 			// Replace this placeholder entry with available menu items.
 			items.erase(items.begin() + i);
-			wml_command_pager_->update_ref(&gamestate().get_wml_menu_items());
-			wml_command_pager_->get_items(mouse_handler_.get_last_hex(),
-							gamestate().gamedata_, gamestate(), gamestate().board_.units_,
-			                                         wml_commands_, newitems);
+			gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
+				gamestate(), gamestate().gamedata_, gamestate().board_.units_);
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
 			// End the "for" loop.
 			break;
@@ -539,5 +531,5 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(hotkey::H
 
 void play_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
-	throw game::load_game_exception(filename, false, false, false, "", true);
+	throw savegame::load_game_exception(filename);
 }

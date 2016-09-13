@@ -15,6 +15,7 @@
 #include "scripting/lua_unit_type.hpp"
 
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
 #include "units/types.hpp"
 
@@ -29,7 +30,8 @@
  */
 
 // Registry key
-static const char * UnitType = "unit type";
+static const char UnitType[] = "unit type";
+static const char UnitTypeTable[] = "unit types";
 
 /**
  * Gets some data on a unit type (__index metamethod).
@@ -39,12 +41,8 @@ static const char * UnitType = "unit type";
  */
 static int impl_unit_type_get(lua_State *L)
 {
+	const unit_type& ut = luaW_checkunittype(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	lua_pushstring(L, "id");
-	lua_rawget(L, 1);
-	const unit_type *utp = unit_types.find(lua_tostring(L, -1));
-	if (!utp) return luaL_argerror(L, 1, "unknown unit type");
-	unit_type const &ut = *utp;
 
 	// Find the corresponding attribute.
 	return_tstring_attrib("name", ut.type_name());
@@ -73,16 +71,107 @@ static int impl_unit_type_get(lua_State *L)
 		return 1;
 	}
 	if (strcmp(m, "attacks") == 0) {
-		lua_createtable(L, 1, 0);
-		lua_pushvalue(L, 1);
-		// hack: store the unit_type at -1 because we want positive indices to refer to the attacks.
-		lua_rawseti(L, -2, -1);
-		lua_pushlightuserdata(L, uattacksKey);
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
+		push_unit_attacks_table(L, 1);
+		return 1;
+	}
+	// TODO: Should this only exist for base units?
+	if(strcmp(m, "variations") == 0) {
+		*new(L) const unit_type* = &ut;
+		luaL_setmetatable(L, UnitTypeTable);
 		return 1;
 	}
 	return 0;
+}
+
+static int impl_unit_type_equal(lua_State* L)
+{
+	const unit_type& ut1 = luaW_checkunittype(L, 1);
+	if(const unit_type* ut2 = luaW_tounittype(L, 2)) {
+		lua_pushboolean(L, &ut1 == ut2);
+	} else {
+		lua_pushboolean(L, false);
+	}
+	return 1;
+}
+
+static int impl_unit_type_lookup(lua_State* L)
+{
+	std::string id = luaL_checkstring(L, 2);
+	const unit_type* ut;
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
+		if(id == "male" || id == "female") {
+			ut = &base->get_gender_unit_type(id);
+		} else {
+			ut = &base->get_variation(id);
+		}
+	} else {
+		ut = unit_types.find(id);
+	}
+	if(ut) {
+		luaW_pushunittype(L, *ut);
+		return 1;
+	}
+	return 0;
+}
+
+static int impl_unit_type_new(lua_State* L)
+{
+	// This could someday become a hook to construct new unit types on the fly?
+	// For now though, it's just an error
+	lua_pushstring(L, "unit_types table is read-only");
+	return lua_error(L);
+}
+
+static int impl_unit_type_next(lua_State* L)
+{
+	const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable));
+	auto unit_map = base ? base->variation_types() : unit_types.types();
+	decltype(unit_map)::const_iterator it = unit_map.end();
+	if(lua_isnoneornil(L, 2)) {
+		if(base) {
+			if(base->has_gender_variation(unit_race::MALE)) {
+				lua_pushstring(L, "male");
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::MALE));
+				return 2;
+			} else if(base->has_gender_variation(unit_race::FEMALE)) {
+				lua_pushstring(L, "female");
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::FEMALE));
+				return 2;
+			}
+		}
+		it = unit_map.begin();
+	} else {
+		const std::string id = luaL_checkstring(L, 2);
+		if(base) {
+			if(id == "male" && base->has_gender_variation(unit_race::FEMALE)) {
+				lua_pushstring(L, "female");
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_race::FEMALE));
+				return 2;
+			} else if(id == "male" || id == "female") {
+				it = unit_map.begin();
+			}
+		}
+		if(it == unit_map.end()) {
+			it = unit_map.find(id);
+		}
+		if(it == unit_map.end()) {
+			return 0;
+		}
+		++it;
+	}
+	if (it == unit_map.end()) {
+		return 0;
+	}
+	lua_pushlstring(L, it->first.c_str(), it->first.size());
+	luaW_pushunittype(L, it->second);
+	return 2;
+}
+
+static int impl_unit_type_pairs(lua_State* L) {
+	lua_pushcfunction(L, &impl_unit_type_next);
+	lua_pushvalue(L, -2);
+	lua_pushnil(L);
+	return 3;
 }
 
 namespace lua_unit_type {
@@ -92,17 +181,50 @@ namespace lua_unit_type {
 
 		lua_pushcfunction(L, impl_unit_type_get);
 		lua_setfield(L, -2, "__index");
-		lua_pushstring(L, "unit type");
+		lua_pushcfunction(L, impl_unit_type_equal);
+		lua_setfield(L, -2, "__eq");
+		lua_pushstring(L, UnitType);
 		lua_setfield(L, -2, "__metatable");
 
 		return "Adding unit type metatable...\n";
 	}
+
+	std::string register_table(lua_State* L)
+	{
+		lua_getglobal(L, "wesnoth");
+		*new(L) unit_type* = nullptr;
+		luaL_newmetatable(L, UnitTypeTable);
+		lua_pushcfunction(L, impl_unit_type_lookup);
+		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_unit_type_new);
+		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_unit_type_pairs);
+		lua_setfield(L, -2, "__pairs");
+		lua_pushstring(L, UnitTypeTable);
+		lua_setfield(L, -2, "__metatable");
+		lua_setmetatable(L, -2);
+		lua_setfield(L, -2, "unit_types");
+		lua_pop(L, 1);
+
+		return "Adding unit_types table...\n";
+	}
 }
 
-void luaW_pushunittype(lua_State *L, const std::string & id)
+void luaW_pushunittype(lua_State *L, const unit_type& ut)
 {
-	lua_createtable(L, 0, 1);
-	lua_pushstring(L, id.c_str());
-	lua_setfield(L, -2, "id");
+	*static_cast<const unit_type**>(lua_newuserdata(L, sizeof(unit_type*))) = &ut;
 	luaL_setmetatable(L, UnitType);
+}
+
+const unit_type* luaW_tounittype(lua_State* L, int idx)
+{
+	if(void* p = luaL_testudata(L, idx, UnitType)) {
+		return *static_cast<const unit_type**>(p);
+	}
+	return nullptr;
+}
+
+const unit_type& luaW_checkunittype(lua_State* L, int idx)
+{
+	return **static_cast<const unit_type**>(luaL_checkudata(L, idx, UnitType));;
 }

@@ -99,10 +99,7 @@ void tunit_create::pre_show(twindow& window)
 
 	gender_toggle.set_member_states(last_gender);
 
-	male_toggle.set_callback_state_change(
-			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
-
-	female_toggle.set_callback_state_change(
+	gender_toggle.set_callback_on_value_change(
 			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
 
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
@@ -114,6 +111,7 @@ void tunit_create::pre_show(twindow& window)
 			std::bind(&tunit_create::filter_text_changed, this, _1, _2));
 
 	window.keyboard_capture(filter);
+	window.add_to_keyboard_chain(&list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
@@ -141,9 +139,10 @@ void tunit_create::pre_show(twindow& window)
 		string_map column;
 
 		column["label"] = units_.back()->race()->plural_name();
-		row_data.insert(std::make_pair("race", column));
+		row_data.emplace("race", column);
+
 		column["label"] = units_.back()->type_name();
-		row_data.insert(std::make_pair("unit_type", column));
+		row_data.emplace("unit_type", column);
 
 		list.add_row(row_data);
 
@@ -158,35 +157,10 @@ void tunit_create::pre_show(twindow& window)
 				  << std::endl;
 	}
 
-	std::vector<tgenerator_::torder_func> order_funcs(2);
-	order_funcs[0] = std::bind(&tunit_create::compare_race, this, _1, _2);
-	order_funcs[1] = std::bind(&tunit_create::compare_race_rev, this, _1, _2);
-	list.set_column_order(0, order_funcs);
-	order_funcs[0] = std::bind(&tunit_create::compare_type, this, _1, _2);
-	order_funcs[1] = std::bind(&tunit_create::compare_type_rev, this, _1, _2);
-	list.set_column_order(1, order_funcs);
+	list.register_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
+	list.register_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
 
 	list_item_clicked(window);
-}
-
-bool tunit_create::compare_type(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->type_name().str() < units_[i2]->type_name().str();
-}
-
-bool tunit_create::compare_race(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->race()->plural_name().str() < units_[i2]->race()->plural_name().str();
-}
-
-bool tunit_create::compare_type_rev(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->type_name().str() > units_[i2]->type_name().str();
-}
-
-bool tunit_create::compare_race_rev(unsigned i1, unsigned i2) const
-{
-	return units_[i1]->race()->plural_name().str() > units_[i2]->race()->plural_name().str();
 }
 
 void tunit_create::post_show(twindow& window)
@@ -223,7 +197,12 @@ void tunit_create::list_item_clicked(twindow& window)
 	}
 
 	find_widget<tunit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_type(units_[selected_row]);
+		.set_displayed_type(*units_[selected_row]);
+
+	gender_toggle.set_member_active(unit_race::GENDER::MALE,
+		units_[selected_row]->has_gender_variation(unit_race::GENDER::MALE));
+	gender_toggle.set_member_active(unit_race::GENDER::FEMALE,
+		units_[selected_row]->has_gender_variation(unit_race::GENDER::FEMALE));
 }
 
 void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)

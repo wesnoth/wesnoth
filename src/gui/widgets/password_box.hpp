@@ -34,32 +34,13 @@ namespace gui2
 
 class tpassword_box : public ttext_box
 {
-
-	// The hack works like this: we add the member real_value_
-	// that holds the actual user input.
-	// Overridden functions now simply
-	//  - call set_value() from ttext_box with real_value_,
-	//    which is done in prefunction()
-	//  - call ttext_box::overridden_function()
-	//  - set real_value_ to get_value() from ttext_box and
-	//    call set_value() from ttext_box with real_value_
-	//    turned into stars, which is done in post_function()
-	//
-	// and overridden function should therefore look like this:
-	//
-	// overridden_function(some parameter) {
-	// 	pre_function();
-	// 	ttext_box::overridden_function(some parameter);
-	// 	post_function();
-	// }
-
 public:
 	tpassword_box() : ttext_box(), real_value_()
 	{
 	}
 
 	/** Inherited from ttext_. */
-	virtual void set_value(const std::string& text);
+	virtual void set_value(const std::string& text) override;
 	std::string get_real_value() const
 	{
 		return real_value_;
@@ -67,20 +48,14 @@ public:
 
 
 protected:
-	void insert_char(const utf8::string& unicode);
-	void delete_char(const bool before_cursor);
-
-	void paste_selection(const bool mouse);
+	void insert_char(const utf8::string& unicode) override;
+	void paste_selection(const bool mouse) override;
+	void delete_selection() override;
 
 	// We do not override copy_selection because we
 	// actually want it to copy just the stars
 
 private:
-	void handle_key_backspace(SDLMod modifier, bool& handled);
-	void handle_key_delete(SDLMod modifier, bool& handled);
-
-	void pre_function();
-	void post_function();
 
 	std::string real_value_;
 

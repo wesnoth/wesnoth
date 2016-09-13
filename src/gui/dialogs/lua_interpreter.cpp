@@ -28,6 +28,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "resources.hpp" //for help fetching lua kernel pointers
@@ -43,7 +44,6 @@
 #include <string>
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/scoped_ptr.hpp>
 
 #ifdef HAVE_HISTORY
 #include "filesystem.hpp"
@@ -87,7 +87,7 @@ public:
 	void bind(twindow& window) {
 		msg_label = &find_widget<tscroll_label>(&window, "msg", false);
 		msg_label->set_use_markup(true);
-		msg_label->set_vertical_scrollbar_mode(tscrollbar_container::always_visible);
+		msg_label->set_vertical_scrollbar_mode(tscrollbar_container::ALWAYS_VISIBLE);
 		msg_label->set_label("");
 	}
 
@@ -157,6 +157,13 @@ public:
 
 	std::string get_log() const { return log_.str(); } ///< Get the log string
 	std::string get_name() const { return L_.my_name(); } ///< Get a string describing the name of lua kernel
+
+	/// Clear the console log
+	void clear_log() {
+		L_.clear_log();
+		log_.str("");
+		log_.clear();
+	}
 
 	//* Tab completion: Get list of presently defined global variables */
 	std::vector<std::string> get_globals() { return L_.get_global_var_names(); }
@@ -351,13 +358,14 @@ public:
 class tlua_interpreter::controller {
 private:
 	tbutton* copy_button;
+	tbutton* clear_button;
 
 	ttext_box* text_entry;
 	std::string text_entry_;
 
-	boost::scoped_ptr<tlua_interpreter::lua_model> lua_model_;
-	boost::scoped_ptr<tlua_interpreter::input_model> input_model_;
-	boost::scoped_ptr<tlua_interpreter::view> view_;
+	const std::unique_ptr<tlua_interpreter::lua_model> lua_model_;
+	const std::unique_ptr<tlua_interpreter::input_model> input_model_;
+	const std::unique_ptr<tlua_interpreter::view> view_;
 
 	void execute();
 	void tab();
@@ -376,6 +384,7 @@ public:
 	void bind(twindow& window);
 
 	void handle_copy_button_clicked(twindow & window);
+	void handle_clear_button_clicked(twindow & window);
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
@@ -447,11 +456,17 @@ void tlua_interpreter::controller::bind(twindow& window)
 						_5,
 						std::ref(window)));
 
-
 	copy_button = &find_widget<tbutton>(&window, "copy", false);
 	connect_signal_mouse_left_click(
 			*copy_button,
 			std::bind(&tlua_interpreter::controller::handle_copy_button_clicked,
+						this,
+						std::ref(window)));
+
+	clear_button = &find_widget<tbutton>(&window, "clear", false);
+	connect_signal_mouse_left_click(
+			*clear_button,
+			std::bind(&tlua_interpreter::controller::handle_clear_button_clicked,
 						this,
 						std::ref(window)));
 
@@ -468,6 +483,15 @@ void tlua_interpreter::controller::handle_copy_button_clicked(twindow & /*window
 {
 	assert(lua_model_);
 	desktop::clipboard::copy_to_clipboard(lua_model_->get_log(), false);
+}
+
+/** Clear the text */
+void tlua_interpreter::controller::handle_clear_button_clicked(twindow & /*window*/)
+{
+	assert(lua_model_);
+	lua_model_->clear_log();
+	assert(view_);
+	view_->update_contents("");
 }
 
 /** Handle return key (execute) or tab key (tab completion) */
@@ -636,6 +660,11 @@ void tlua_interpreter::controller::search(int direction)
 
 /** Display a new console, using given video and lua kernel */
 void tlua_interpreter::display(CVideo& video, lua_kernel_base * lk) {
+#ifndef ALWAYS_HAVE_LUA_CONSOLE
+	if(!game_config::debug) {
+		return;
+	}
+#endif
 	if (!lk) {
 		ERR_LUA << "Tried to open console with a null lua kernel pointer.\n";
 		return;

@@ -72,20 +72,14 @@ void plugins_context::set_accessor(const std::string & name, accessor_function f
 	accessors_[name] = func;
 }
 
-template<typename T>
-static config make_config(const std::string & name, const T & val)
-{
-	return config_of(name, val);
-}
-
 void plugins_context::set_accessor_string(const std::string & name, std::function<std::string(config)> func)
 {
-	set_accessor(name, std::bind(&make_config<std::string>, name, std::bind(func, _1)));
+	set_accessor(name, [func, name](const config& cfg) { return config_of(name, func(cfg)); });
 }
 
 void plugins_context::set_accessor_int(const std::string & name, std::function<int(config)> func)
 {
-	set_accessor(name, std::bind(&make_config<int>, name, std::bind(func, _1)));
+	set_accessor(name, [func, name](const config& cfg) { return config_of(name, func(cfg)); });
 }
 
 
@@ -107,27 +101,7 @@ void plugins_context::play_slice()
 	plugins_manager::get()->play_slice(*this);
 }
 
-static bool shim(config cfg, std::function<void(config)> func, bool return_value)
-{
-	func(cfg);
-	return return_value;
-}
-
 void plugins_context::set_callback(const std::string & name, std::function<void(config)> func, bool preserves_context)
 {
-	set_callback(name, std::bind(shim, _1, func, preserves_context));
+	set_callback(name, [func, preserves_context](config cfg) { func(cfg); return preserves_context; });
 }
-
-const std::function< std::string ( const config & , const std::string & ) > get_str =
-	std::bind(&config::attribute_value::str,
-		std::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2));
-
-const std::function< int ( const config & , const std::string &, int ) > get_int =
-	std::bind(&config::attribute_value::to_int,
-		std::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
-		, _3);
-
-const std::function< size_t ( const config & , const std::string &, size_t ) > get_size_t =
-	std::bind(&config::attribute_value::to_size_t,
-		std::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
-		, _3);

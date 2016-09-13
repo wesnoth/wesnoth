@@ -210,7 +210,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		/* if tile is occupied by friendly or petrified/invisible unit */
 		if (!ai_.current_team().is_enemy(unit->side())  ||
 		    unit->incapacitated() ||
-		    unit->invisible(unit->get_location()))
+		    unit->invisible(unit->get_location(), *resources::gameboard))
 			continue;
 		/* add attacks with default weapon */
 		attack_callable* item = new attack_callable(attacker_location, attack_position, adj[n], -1);

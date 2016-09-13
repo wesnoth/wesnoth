@@ -50,7 +50,7 @@ public:
 
 
 protected:
-	boost::shared_ptr<attacks_vector> analyze_targets() const;
+	std::shared_ptr<attacks_vector> analyze_targets() const;
 
 	void do_attack_analysis(const map_location& loc,
 	                const move_map& srcdst, const move_map& dstsrc,
@@ -73,20 +73,20 @@ public:
 	virtual bool is_allowed_enemy(const unit& u) const;
 	virtual config to_config() const;
 private:
-	boost::shared_ptr<unit_filter> filter_own_, filter_enemy_;
+	std::shared_ptr<unit_filter> filter_own_, filter_enemy_;
 };
 
 } // end of namespace testing_ai_default
 
 struct aspect_attacks_lua_filter {
 	lua_State* lua;
-	boost::shared_ptr<unit_filter> filter_own_, filter_enemy_;
+	std::shared_ptr<unit_filter> filter_own_, filter_enemy_;
 	int ref_own_, ref_enemy_;
 };
 
 class aspect_attacks_lua : public ai_default_rca::aspect_attacks_base {
 public:
-	aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, boost::shared_ptr<lua_ai_context>& l_ctx);
+	aspect_attacks_lua(readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx);
 	virtual ~aspect_attacks_lua() {}
 
 	virtual bool is_allowed_attacker(const unit& u) const;
@@ -94,8 +94,8 @@ public:
 	virtual config to_config() const;
 	virtual void recalculate() const;
 private:
-	boost::shared_ptr<lua_ai_action_handler> handler_;
-	mutable boost::shared_ptr<lua_object<aspect_attacks_lua_filter> > obj_;
+	std::shared_ptr<lua_ai_action_handler> handler_;
+	mutable std::shared_ptr<lua_object<aspect_attacks_lua_filter> > obj_;
 	std::string code_;
 	const config params_;
 };

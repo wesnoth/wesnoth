@@ -36,9 +36,9 @@
 #include "tstring.hpp"                  // for operator==
 #include "video.hpp"                    // for update_rect, CVideo
 #include "widgets/button.hpp"           // for button
+#include "gui/dialogs/end_credits.hpp"
 
 #include <algorithm>                    // for max
-#include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <map>                          // for map, map<>::mapped_type
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
@@ -151,7 +151,7 @@ void set_about(const config &cfg)
 	for (const config &campaign : cfg.child_range("campaign"))
 	{
 		config::const_child_itors abouts = campaign.child_range("about");
-		if (abouts.first == abouts.second) continue;
+		if (abouts.empty()) continue;
 
 		config temp;
 		std::ostringstream text;
@@ -207,7 +207,7 @@ void set_about(const config &cfg)
  */
 void show_about(CVideo &video, const std::string &campaign)
 {
-	boost::scoped_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
+	std::unique_ptr<cursor::setter> cur(new cursor::setter(cursor::WAIT));
 	surface& screen = video.getSurface();
 	if (screen == nullptr) return;
 
@@ -229,6 +229,9 @@ void show_about(CVideo &video, const std::string &campaign)
 	}
 
 	surface map_image, map_image_scaled;
+
+	// TODO: enable
+	//gui2::tend_credits::display(text, image_list, video);
 
 	if(!image_list.empty()) {
 		map_image = image::get_image(image_list[0]);

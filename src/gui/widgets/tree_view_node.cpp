@@ -62,7 +62,9 @@ ttree_view_node::ttree_view_node(
 
 				twidget* toggle_widget = grid_.find("tree_view_node_icon", false);
 				toggle_ = dynamic_cast<tselectable_*>(toggle_widget);
-
+				if(node_definition.unfolded) {
+					unfolded_ = true;
+				}
 				if(toggle_) {
 					toggle_widget->set_visible(twidget::tvisible::hidden);
 					toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
@@ -73,10 +75,8 @@ ttree_view_node::ttree_view_node(
 							&ttree_view_node::signal_handler_left_button_click,
 							this,
 							_2), event::tdispatcher::back_post_child);
-
-					if(node_definition.unfolded) {
+					if(unfolded_) {
 						toggle_->set_value(1);
-						unfolded_ = true;
 					}
 				}
 
@@ -119,7 +119,7 @@ ttree_view_node::ttree_view_node(
 			}
 		}
 
-		VALIDATE(false, _("Unknown builder id for tree view node."));
+		VALIDATE_WITH_DEV_MESSAGE(false, _("Unknown builder id for tree view node."), id);
 	}
 	else {
 		unfolded_ = true;
@@ -150,11 +150,11 @@ ttree_view_node& ttree_view_node::add_child(
 			new ttree_view_node(
 					id, node_definitions_, this, tree_view(), data));
 
-	if(is_folded() || is_root_node()) {
+	if(is_folded() /*|| is_root_node()*/) {
 		return *itor;
 	}
 
-	if(tree_view().get_size() == tpoint(0, 0)) {
+	if(tree_view().get_size() == tpoint()) {
 		return *itor;
 	}
 
@@ -163,13 +163,13 @@ ttree_view_node& ttree_view_node::add_child(
 
 	// Calculate width modification.
 	tpoint best_size = itor->get_best_size();
-	best_size.x += get_indention_level() * tree_view().indention_step_size_;
+	best_size.x += get_indentation_level() * tree_view().indentation_step_size_;
 	const unsigned width_modification
 			= best_size.x > current_width ? best_size.x - current_width : 0;
 
 	// Calculate height modification.
 	const int height_modification = best_size.y;
-	assert(height_modification > 0);
+	assert(height_modification >= 0);
 
 	// Request new size.
 	tree_view().resize_content(width_modification, height_modification, -1, itor->calculate_ypos());
@@ -177,7 +177,7 @@ ttree_view_node& ttree_view_node::add_child(
 	return *itor;
 }
 
-unsigned ttree_view_node::get_indention_level() const
+unsigned ttree_view_node::get_indentation_level() const
 {
 	unsigned level = 0;
 
@@ -224,7 +224,7 @@ bool ttree_view_node::is_folded() const
 
 void ttree_view_node::fold(/*const bool recursive*/)
 {
-	if(is_folded()) {
+	if(!is_folded()) {
 		fold_internal();
 		if(toggle_) {
 			toggle_->set_value(false);
@@ -234,7 +234,7 @@ void ttree_view_node::fold(/*const bool recursive*/)
 
 void ttree_view_node::unfold(/*const texpand_mode mode*/)
 {
-	if(!is_folded()) {
+	if(is_folded()) {
 		unfold_internal();
 		if(toggle_) {
 			toggle_->set_value(true);
@@ -384,7 +384,7 @@ void ttree_view_node::impl_populate_dirty_list(
 
 tpoint ttree_view_node::calculate_best_size() const
 {
-	return calculate_best_size(-1, tree_view().indention_step_size_);
+	return calculate_best_size(-1, tree_view().indentation_step_size_);
 }
 
 bool ttree_view_node::disable_click_dismiss() const
@@ -395,7 +395,7 @@ bool ttree_view_node::disable_click_dismiss() const
 tpoint ttree_view_node::get_current_size(bool assume_visible) const
 {
 	if(!assume_visible && parent_node_ && parent_node_->is_folded()) {
-		return tpoint(0, 0);
+		return tpoint();
 	}
 
 	tpoint size = get_folded_size();
@@ -426,9 +426,9 @@ tpoint ttree_view_node::get_current_size(bool assume_visible) const
 tpoint ttree_view_node::get_folded_size() const
 {
 	tpoint size = grid_.get_best_size();
-	if(get_indention_level() > 1) {
-		size.x += (get_indention_level() - 1)
-				  * tree_view().indention_step_size_;
+	if(get_indentation_level() > 1) {
+		size.x += (get_indentation_level() - 1)
+				  * tree_view().indentation_step_size_;
 	}
 	return size;
 }
@@ -436,9 +436,9 @@ tpoint ttree_view_node::get_folded_size() const
 tpoint ttree_view_node::get_unfolded_size() const
 {
 	tpoint size = grid_.get_best_size();
-	if(get_indention_level() > 1) {
-		size.x += (get_indention_level() - 1)
-				  * tree_view().indention_step_size_;
+	if(get_indentation_level() > 1) {
+		size.x += (get_indentation_level() - 1)
+				  * tree_view().indentation_step_size_;
 	}
 
 	for(boost::ptr_vector<ttree_view_node>::const_iterator itor
@@ -461,15 +461,15 @@ tpoint ttree_view_node::get_unfolded_size() const
 	return size;
 }
 
-tpoint ttree_view_node::calculate_best_size(const int indention_level,
-											const unsigned indention_step_size)
+tpoint ttree_view_node::calculate_best_size(const int indentation_level,
+											const unsigned indentation_step_size)
 		const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	tpoint best_size = grid_.get_best_size();
-	if(indention_level > 0) {
-		best_size.x += indention_level * indention_step_size;
+	if(indentation_level > 0) {
+		best_size.x += indentation_level * indentation_step_size;
 	}
 
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
@@ -485,8 +485,8 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level,
 			continue;
 		}
 
-		const tpoint node_size = node.calculate_best_size(indention_level + 1,
-														  indention_step_size);
+		const tpoint node_size = node.calculate_best_size(indentation_level + 1,
+														  indentation_step_size);
 
 		if(!is_folded()) {
 			best_size.y += node_size.y;
@@ -504,7 +504,7 @@ void ttree_view_node::set_origin(const tpoint& origin)
 	twidget::set_origin(origin);
 
 	// Using layout_children seems to fail.
-	place(tree_view().indention_step_size_, origin, get_size().x);
+	place(tree_view().indentation_step_size_, origin, get_size().x);
 }
 
 void ttree_view_node::place(const tpoint& origin, const tpoint& size)
@@ -515,7 +515,7 @@ void ttree_view_node::place(const tpoint& origin, const tpoint& size)
 	tree_view().layout_children(true);
 }
 
-unsigned ttree_view_node::place(const unsigned indention_step_size,
+unsigned ttree_view_node::place(const unsigned indentation_step_size,
 								tpoint origin,
 								unsigned width)
 {
@@ -528,9 +528,9 @@ unsigned ttree_view_node::place(const unsigned indention_step_size,
 	grid_.place(origin, best_size);
 
 	if(!is_root_node()) {
-		origin.x += indention_step_size;
-		assert(width >= indention_step_size);
-		width -= indention_step_size;
+		origin.x += indentation_step_size;
+		assert(width >= indentation_step_size);
+		width -= indentation_step_size;
 	}
 	origin.y += best_size.y;
 
@@ -542,7 +542,7 @@ unsigned ttree_view_node::place(const unsigned indention_step_size,
 	DBG_GUI_L << LOG_HEADER << " set children.\n";
 	for(auto & node : children_)
 	{
-		origin.y += node.place(indention_step_size, origin, width);
+		origin.y += node.place(indentation_step_size, origin, width);
 	}
 
 	// Inherited.
@@ -602,6 +602,8 @@ ttree_view_node::signal_handler_left_button_click(const event::tevent event)
 	}
 	unfolded_ = unfolded_new;
 	is_folded() ? fold_internal() : unfold_internal();
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	if(callback_state_change_) {
 		callback_state_change_(*this);
@@ -732,7 +734,7 @@ ttree_view_node* ttree_view_node::get_node_above()
 {
 	assert(!is_root_node());
 	ttree_view_node* cur = nullptr;
-	for(size_t i = 0; i < parent_node_->size(); ++i) {
+	for(size_t i = 0; i < parent_node_->count_children(); ++i) {
 		if(&parent_node_->children_[i] == this) {
 			if(i == 0) {
 				return parent_node_->is_root_node() ? nullptr : parent_node_;
@@ -743,8 +745,8 @@ ttree_view_node* ttree_view_node::get_node_above()
 			}
 		}
 	}
-	while(!cur->is_folded() && cur->size() > 0) {
-		cur = &cur->get_child_at(cur->size() - 1);
+	while(!cur->is_folded() && cur->count_children() > 0) {
+		cur = &cur->get_child_at(cur->count_children() - 1);
 	}
 	return cur;
 }
@@ -752,16 +754,16 @@ ttree_view_node* ttree_view_node::get_node_above()
 ttree_view_node* ttree_view_node::get_node_below()
 {
 	assert(!is_root_node());
-	if(!is_folded() && size() > 0) {
+	if(!is_folded() && count_children() > 0) {
 		return &get_child_at(0);
 	}
 	ttree_view_node* cur = this;
 	while(cur->parent_node_ != nullptr) {
 		ttree_view_node& parent = *cur->parent_node_;
 
-		for(size_t i = 0; i < parent.size(); ++i) {
+		for(size_t i = 0; i < parent.count_children(); ++i) {
 			if(&parent.children_[i] == cur) {
-				if(i < parent.size() - 1) {
+				if(i < parent.count_children() - 1) {
 					return &parent.children_[i + 1];
 				}
 				else {
@@ -769,7 +771,7 @@ ttree_view_node* ttree_view_node::get_node_below()
 				}
 				break;
 			}
-		}	
+		}
 	}
 	return nullptr;
 }

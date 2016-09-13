@@ -15,18 +15,19 @@
 
 #include "addon/manager.hpp" // for get_installed_addons
 #include "config_assign.hpp"
-#include "dialogs.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/lobby/lobby.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/network_transmission.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
@@ -143,16 +144,15 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 	shown_hosts.insert(hostpair(host, port));
 
 	config data;
-	sock = dialogs::network_connect_dialog(video, _("Connecting to Server..."), host, port);
-
+	sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, "connect to server", host, port);
 	do {
 
 		if (!sock) {
-			return std::move(sock);
+			return sock;
 		}
 
 		data.clear();
-		dialogs::network_receive_dialog(video, "", data, *sock);
+		gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "waiting", data, *sock);
 		//mp::check_response(data_res, data);
 
 		if (data.has_child("reject") || data.has_attribute("version")) {
@@ -165,9 +165,9 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			}
 
 			utils::string_map i18n_symbols;
-			i18n_symbols["version1"] = version;
-			i18n_symbols["version2"] = game_config::version;
-			const std::string errorstring = vgettext("The server accepts versions '$version1' while you are using version '$version2'", i18n_symbols);
+			i18n_symbols["required_version"] = version;
+			i18n_symbols["your_version"] = game_config::version;
+			const std::string errorstring = vgettext("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
 			throw wesnothd_error(errorstring);
 		}
 
@@ -182,7 +182,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 			}
 			shown_hosts.insert(hostpair(host, port));
 			sock.release();
-			sock = dialogs::network_connect_dialog(video, _("Connecting to Server..."), host, port);
+			sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
 
@@ -219,7 +219,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 					sp["selective_ping"] = true;
 				}
 				sock->send_data(response);
-				dialogs::network_receive_dialog(video, "login response", data, *sock);
+				gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
 				config *warning = &data.child("warning");
 
 				if(*warning) {
@@ -299,7 +299,7 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 
 						// Once again send our request...
 						sock->send_data(response);
-						dialogs::network_receive_dialog(video, "", data, *sock);
+						gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
 
 
 						error = &data.child("error");
@@ -526,45 +526,49 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 	bool configure_canceled;
 	bool connect_canceled;
 
+	if(preferences::new_lobby()) {
+		ng::create_engine create_eng(video, state);
+
+		gui2::tmp_create_game dlg(game_config, create_eng);
+
+		dlg.show(video);
+
+		if(dlg.get_retval() == gui2::twindow::OK) {
+			enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+		} else if(wesnothd_connection) {
+			wesnothd_connection->send_data(config("refresh_lobby"));
+		}
+
+		return;
+	}
+
 	do {
 		configure_canceled = false;
 		connect_canceled = false;
 
-		if (gui2::new_widgets) {
+		mp::ui::result res;
 
-			gui2::tmp_create_game dlg(game_config);
+		{
+			mp::create ui(video, wesnothd_connection, game_config, state, gamechat, gamelist);
+			run_lobby_loop(video, ui);
+			res = ui.get_result();
+			ui.get_parameters();
+		}
 
-			dlg.show(video);
-
+		switch (res) {
+		case mp::ui::CREATE:
+			configure_canceled = !enter_configure_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			break;
+		case mp::ui::LOAD_GAME:
+			connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			break;
+		case mp::ui::QUIT:
+		default:
+			//update lobby content
 			if (wesnothd_connection) {
 				wesnothd_connection->send_data(config("refresh_lobby"));
 			}
-		} else {
-
-			mp::ui::result res;
-
-			{
-				mp::create ui(video, wesnothd_connection, game_config, state, gamechat, gamelist);
-				run_lobby_loop(video, ui);
-				res = ui.get_result();
-				ui.get_parameters();
-			}
-
-			switch (res) {
-			case mp::ui::CREATE:
-				configure_canceled = !enter_configure_mode(video, game_config, state, wesnothd_connection, local_players_only);
-				break;
-			case mp::ui::LOAD_GAME:
-				connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
-				break;
-			case mp::ui::QUIT:
-			default:
-				//update lobby content
-				if (wesnothd_connection) {
-					wesnothd_connection->send_data(config("refresh_lobby"));
-				}
-				break;
-			}
+			break;
 		}
 	} while(configure_canceled || connect_canceled);
 }
@@ -614,7 +618,7 @@ static bool enter_configure_mode(CVideo& video, const config& game_config,
 static void do_preferences_dialog(CVideo& video, const config& game_config)
 {
 	DBG_MP << "displaying preferences dialog" << std::endl;
-	preferences::show_preferences_dialog(video, game_config);
+	gui2::tpreferences::display(video, game_config);
 
 	/**
 	 * The screen size might have changed force an update of the size.
@@ -650,7 +654,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			sound::empty_playlist();
 			sound::stop_music();
 		}
-		lobby_info li(game_config, *wesnothd_connection);
+		lobby_info li(game_config, installed_addons, *wesnothd_connection);
 
 		// Force a black background
 		const Uint32 color = SDL_MapRGBA(video.getSurface()->format
@@ -662,7 +666,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
-			gui2::tlobby_main dlg(game_config, li, video, *wesnothd_connection);
+			gui2::tlobby_main dlg(game_config, li, *wesnothd_connection);
 			dlg.set_preferences_callback(
 				std::bind(do_preferences_dialog,
 					std::ref(video), std::ref(game_config)));
@@ -836,7 +840,6 @@ void start_local_game_commandline(CVideo& video, const config& game_config,
 		saved_game state_copy(state);
 		campaign_controller controller(video, state_copy, game_config, game_config_manager::get()->terrain_types());
 		controller.play_game();
-		break;
 	}
 }
 

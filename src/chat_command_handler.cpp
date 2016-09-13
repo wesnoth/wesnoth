@@ -1,3 +1,4 @@
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
 #include "chat_events.hpp"
@@ -94,7 +95,7 @@ void chat_command_handler::do_ignore()
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
 
-		if (preferences::add_ignore(get_arg(1), get_data(2))) {
+		if (preferences::add_acquaintance(get_arg(1), "ignore", get_data(2))) {
 			print(_("ignores list"), VGETTEXT("Added to ignore list: $nick", symbols));
 			chat_handler_.user_relation_changed(get_arg(1));
 		}
@@ -113,7 +114,7 @@ void chat_command_handler::do_friend()
 		utils::string_map symbols;
 		symbols["nick"] = get_arg(1);
 
-		if (preferences::add_friend(get_arg(1), get_data(2))) {
+		if (preferences::add_acquaintance(get_arg(1), "friend", get_data(2))) {
 			print(_("friends list"), VGETTEXT("Added to friends list: $nick", symbols));
 			chat_handler_.user_relation_changed(get_arg(1));
 		}
@@ -137,8 +138,8 @@ void chat_command_handler::do_remove()
 void chat_command_handler::do_display()
 {
 	// TODO: add video and game config argument to chat_command_handler?
-	preferences::show_preferences_dialog(CVideo::get_singleton(),
-		game_config_manager::get()->game_config(), preferences::VIEW_FRIENDS);
+	gui2::tpreferences::display(CVideo::get_singleton(), game_config_manager::get()->game_config(),
+		preferences::VIEW_FRIENDS);
 }
 
 void chat_command_handler::do_version() {

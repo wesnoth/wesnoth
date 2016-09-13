@@ -15,11 +15,10 @@
 
 #include "playmp_controller.hpp"
 
-#include "dialogs.hpp"
-
 #include "actions/undo.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
+#include "gui/dialogs/network_transmission.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_handler_mp.hpp"
 #include "log.hpp"
@@ -31,7 +30,6 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "formula/string_utils.hpp"
-#include "units/animation.hpp"
 #include "whiteboard/manager.hpp"
 #include "countdown_clock.hpp"
 #include "synced_context.hpp"
@@ -122,10 +120,9 @@ void playmp_controller::play_human_turn()
 	LOG_NG << "playmp::play_human_turn...\n";
 	assert(!linger_);
 	remove_blindfold();
-	boost::scoped_ptr<countdown_clock> timer;
-	if(saved_game_.mp_settings().mp_countdown) {
-		timer.reset(new countdown_clock(current_team()));
-	}
+	const std::unique_ptr<countdown_clock> timer(saved_game_.mp_settings().mp_countdown
+        ? new countdown_clock(current_team())
+        : nullptr);
 	show_turn_dialog();
 	if(undo_stack().can_undo()) {
 		// If we reload a networked mp game we cannot undo moves made before the save
@@ -214,7 +211,7 @@ void playmp_controller::set_end_scenario_button()
 {
 	// Modify the end-turn button
 	if (! is_host()) {
-		gui::button* btn_end = gui_->find_action_button("button-endturn");
+		std::shared_ptr<gui::button> btn_end = gui_->find_action_button("button-endturn");
 		btn_end->enable(false);
 	}
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
@@ -258,7 +255,7 @@ void playmp_controller::linger()
 			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
-		} catch (game::load_game_exception&) {
+		} catch (savegame::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
 			throw;
@@ -283,8 +280,8 @@ void playmp_controller::wait_for_upload()
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			const bool  res = dialogs::network_receive_dialog(
-				gui_->video(), _("Waiting for next scenario..."), cfg, mp_info_->wesnothd_connection);
+			const bool  res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
+				gui_->video(), "next scenario", cfg, mp_info_->wesnothd_connection);
 
 			if(res) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
@@ -375,7 +372,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	}
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
+	save.save_game_interactive(gui_->video(), temp_buf.str(), savegame::savegame::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
@@ -433,7 +430,7 @@ void playmp_controller::pull_remote_choice()
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone
 	// Also turn_data_.sync_network() (which calls turn_data_.send_data()) won't work if the undo stack isn't empty because undoable moves won't be sended
 	// Also undo_stack()clear() must be called synced so we cannot do that here.
-	assert(!undo_stack().can_undo());
+	assert(!current_team().is_local() || !undo_stack().can_undo());
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);

@@ -33,6 +33,7 @@ namespace implementation
 {
 struct tbuilder_listbox;
 struct tbuilder_horizontal_listbox;
+struct tbuilder_grid_listbox;
 }
 
 /** The listbox class. */
@@ -40,6 +41,7 @@ class tlistbox : public tscrollbar_container
 {
 	friend struct implementation::tbuilder_listbox;
 	friend struct implementation::tbuilder_horizontal_listbox;
+	friend struct implementation::tbuilder_grid_listbox;
 	friend class tdebug_layout_graph;
 
 public:
@@ -70,7 +72,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const string_map& item, const int index = -1);
+	tgrid& add_row(const string_map& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -89,7 +91,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(const std::map<std::string /* widget id */, string_map>& data,
+	tgrid& add_row(const std::map<std::string /* widget id */, string_map>& data,
 				 const int index = -1);
 
 	/**
@@ -139,6 +141,15 @@ public:
 	 *                            listbox.
 	 */
 	void set_row_shown(const std::vector<bool>& shown);
+
+	/**
+	 * Returns a list of visible rows
+	 *
+	 * @returns                   A mask indicating which rows are visible
+	 */
+	std::vector<bool> get_rows_shown() const;
+
+	bool any_rows_shown() const;
 
 	/**
 	 * Returns the grid of the wanted row.
@@ -234,21 +245,31 @@ public:
 
 	void order_by(const tgenerator_::torder_func& func);
 
-	void set_column_order(unsigned col, const std::vector<tgenerator_::torder_func>& func);
+	void set_column_order(unsigned col, const generator_sort_array& func);
+
+	template<typename Func>
+	void register_sorting_option(const int col, const Func& f)
+	{
+		set_column_order(col, {{
+			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
+			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
+		}});
+	};
+
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	void handle_key_up_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	void handle_key_down_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+	void handle_key_left_arrow(SDLMod modifier, bool& handled) override;
 
 	/** Inherited from tscrollbar_container. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+	void handle_key_right_arrow(SDLMod modifier, bool& handled) override;
 
 private:
 	/**
@@ -275,7 +296,7 @@ private:
 	 */
 	void finalize(tbuilder_grid_const_ptr header,
 				  tbuilder_grid_const_ptr footer,
-				  const std::vector<string_map>& list_data);
+				  const std::vector<std::map<std::string, string_map>>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -308,7 +329,7 @@ private:
 
 	bool need_layout_;
 
-	typedef std::vector<std::pair<tselectable_*, std::vector<tgenerator_::torder_func> > > torder_list;
+	typedef std::vector<std::pair<tselectable_*, generator_sort_array > > torder_list;
 	torder_list orders_;
 	/**
 	 * Resizes the content.
@@ -343,7 +364,7 @@ private:
 	void layout_children(const bool force);
 
 	/** Inherited from tscrollbar_container. */
-	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+	virtual void set_content_size(const tpoint& origin, const tpoint& size) override;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -393,7 +414,7 @@ struct tbuilder_listbox : public tbuilder_control
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<string_map> list_data;
+	std::vector<std::map<std::string, string_map>> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
@@ -417,7 +438,33 @@ struct tbuilder_horizontal_listbox : public tbuilder_control
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<string_map> list_data;
+	std::vector<std::map<std::string, string_map>> list_data;
+
+	bool has_minimum_, has_maximum_;
+};
+
+struct tbuilder_grid_listbox : public tbuilder_control
+{
+	explicit tbuilder_grid_listbox(const config& cfg);
+
+	using tbuilder_control::build;
+
+	twidget* build() const;
+
+	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<std::map<std::string, string_map>> list_data;
+
+	bool has_minimum_, has_maximum_;
 };
 
 } // namespace implementation

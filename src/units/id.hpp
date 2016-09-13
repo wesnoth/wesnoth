@@ -18,7 +18,7 @@
 
 #include <ctime>
 
-#include <boost/noncopyable.hpp>
+//#include <boost/noncopyable.hpp>
 
 namespace n_unit {
 
@@ -33,7 +33,7 @@ namespace n_unit {
 		bool is_empty() const { return !value; }
 
 		static unit_id create_real(size_t val) { return unit_id(val); }
-		static unit_id create_fake(size_t val) { return unit_id(val + highest_bit); }
+		static unit_id create_fake(size_t val) { return unit_id(val | highest_bit); }
 
 		friend bool operator <(unit_id a, unit_id b) { return a.value < b.value; }
 		friend bool operator <=(unit_id a, unit_id b) { return a.value <= b.value; }
@@ -48,7 +48,6 @@ namespace n_unit {
 		size_t next_id_;
 		size_t fake_id_;
 		static id_manager manager_;
-		id_manager();
 	public:
 		id_manager(size_t next_id) : next_id_(next_id) , fake_id_(0) {}
 		/** returns id for unit that is created */
@@ -62,6 +61,7 @@ namespace n_unit {
 		/** Clears id counter after game */
 		void clear();
 		void reset_fake();
+		static id_manager& global_instance() {return manager_;}
 	};
 
 }

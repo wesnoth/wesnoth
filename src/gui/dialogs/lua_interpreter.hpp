@@ -17,8 +17,6 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 class lua_kernel_base;
 
 namespace gui2
@@ -44,7 +42,7 @@ public:
 	static void display(CVideo& video, lua_kernel_base * lk);
 	static void display(CVideo& video, WHICH_KERNEL which);
 private:
-	boost::scoped_ptr<controller> controller_;
+	const std::unique_ptr<controller> controller_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

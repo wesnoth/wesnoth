@@ -56,7 +56,7 @@ mapbuilder::~mapbuilder()
 
 void mapbuilder::pre_build()
 {
-	for (team& t : *resources::teams) {
+	for (team& t : resources::gameboard->teams()) {
 		//Reset spent gold to zero, it'll be recalculated during the map building
 		t.get_side_actions()->reset_gold_spent();
 	}
@@ -68,7 +68,7 @@ void mapbuilder::pre_build()
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if(!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], resources::gameboard->map(), false)) {
+		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], *resources::gameboard, false)) {
 			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
 
 			//Don't do anything else to the removed unit!
@@ -96,7 +96,7 @@ void mapbuilder::build_map()
 	bool end = false;
 	for(size_t turn=0; !end; ++turn) {
 		end = true;
-		for (team &side : *resources::teams) {
+		for (team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_has_visible_plan(side)) {
 				end = false;
@@ -135,7 +135,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	if(erval != action::OK) {
 		// We do not delete obstructed moves, nor invalid actions caused by obstructed moves.
 		if(has_invalid_actions_.find(unit.get()) == has_invalid_actions_.end()) {
-			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && boost::dynamic_pointer_cast<move>(action))) {
+			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && std::dynamic_pointer_cast<move>(action))) {
 				has_invalid_actions_.insert(unit.get());
 				invalid_actions_.push_back(action_it);
 			} else {
@@ -178,7 +178,7 @@ void mapbuilder::post_visit_team(size_t turn)
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
 	for(action_ptr action : boost::adaptors::reverse(applied_actions_this_turn_)) {
-		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
+		move_ptr move = std::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
 			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit().get()) == 0) {

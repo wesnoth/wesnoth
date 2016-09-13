@@ -45,7 +45,6 @@
 
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
-#include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
@@ -270,6 +269,8 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		res = generate_weapon_special_topics(sort_generated);
 	} else if (generator == "time_of_days") {
 		res = generate_time_of_day_topics(sort_generated);
+	} else if (generator == "traits") {
+		res = generate_trait_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
@@ -401,11 +402,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		if (description_type(type) != FULL_DESCRIPTION)
 		 	continue;
 
-		std::vector<attack_type> attacks = type.attacks();
-		for (std::vector<attack_type>::const_iterator it = attacks.begin();
-					it != attacks.end(); ++it) {
+		for (const attack_type& atk : type.attacks()) {
 
-			std::vector<std::pair<t_string, t_string> > specials = it->special_tooltips();
+			std::vector<std::pair<t_string, t_string> > specials = atk.special_tooltips();
 			for ( size_t i = 0; i != specials.size(); ++i )
 			{
 				special_description.insert(std::make_pair(specials[i].first, specials[i].second));
@@ -420,6 +419,46 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link = make_link(type_name, ref_id);
 					special_units[specials[i].first].insert(link);
+				}
+			}
+		}
+
+		for(config adv : type.modification_advancements()) {
+			for(config effect : adv.child_range("effect")) {
+				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
+					for(config::any_child spec : effect.child("specials").all_children_range()) {
+						if(!spec.cfg["name"].empty()) {
+							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							if(!type.hide_help()) {
+								//add a link in the list of units having this special
+								std::string type_name = type.type_name();
+								//check for variations (walking corpse/soulless etc)
+								const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
+								std::string ref_id = section_prefix + unit_prefix + type.id();
+								//we put the translated name at the beginning of the hyperlink,
+								//so the automatic alphabetic sorting of std::set can use it
+								std::string link = make_link(type_name, ref_id);
+								special_units[spec.cfg["name"]].insert(link);
+							}
+						}
+					}
+				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
+					for(config::any_child spec : effect.child("set_specials").all_children_range()) {
+						if(!spec.cfg["name"].empty()) {
+							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							if(!type.hide_help()) {
+								//add a link in the list of units having this special
+								std::string type_name = type.type_name();
+								//check for variations (walking corpse/soulless etc)
+								const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
+								std::string ref_id = section_prefix + unit_prefix + type.id();
+								//we put the translated name at the beginning of the hyperlink,
+								//so the automatic alphabetic sorting of std::set can use it
+								std::string link = make_link(type_name, ref_id);
+								special_units[spec.cfg["name"]].insert(link);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -622,6 +661,64 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
+
+std::vector<topic> generate_trait_topics(const bool sort_generated)
+{
+	std::vector<topic> topics;
+	std::map<t_string, const config> trait_list;
+
+	for (const config & trait : unit_types.traits()) {
+		const std::string trait_id = trait["id"];
+		trait_list.insert(std::make_pair(trait_id, trait));
+	}
+
+
+	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
+	{
+		const unit_type &type = i.second;
+		if (description_type(type) == FULL_DESCRIPTION) {
+			if (config::const_child_itors traits = type.possible_traits()) {
+				for (const config & trait : traits) {
+					const std::string trait_id = trait["id"];
+					trait_list.insert(std::make_pair(trait_id, trait));
+				}
+			}
+			if (const unit_race *r = unit_types.find_race(type.race_id())) {
+				for (const config & trait : r->additional_traits()) {
+					const std::string trait_id = trait["id"];
+					trait_list.insert(std::make_pair(trait_id, trait));
+				}
+			}
+		}
+	}
+
+	for (std::map<t_string, const config>::iterator a = trait_list.begin(); a != trait_list.end(); ++a) {
+		std::string id = "traits_" + a->first;
+		const config trait = a->second;
+		std::stringstream text;
+		if (trait["help_text"].empty()) {
+			text << trait["description"];
+		} else {
+			text << trait["help_text"];
+		}
+		text << "\n\n";
+		if (trait["availability"] == "musthave") {
+			text << _("Availability: ") << _("Must-have") << "\n";
+		} else if (trait["availability"] == "none") {
+			text << _("Availability: ") << _("Unavailable") << "\n";
+		}
+		std::string name = trait["male_name"].str();
+		if (name.empty()) name = trait["female_name"].str();
+		if (name.empty()) name = trait["name"].str();
+
+		topics.push_back( topic(name, id, text.str()) );
+	}
+
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
+	return topics;
+}
+
 
 std::string make_unit_link(const std::string& type_id)
 {

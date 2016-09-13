@@ -72,7 +72,7 @@ class connection
 		);
 	union {
 		char binary[4];
-		boost::uint32_t num;
+		uint32_t num;
 	} handshake_response_;
 
 	std::size_t is_write_complete(
@@ -92,7 +92,7 @@ class connection
 		std::size_t bytes_transferred,
 		config& response
 		);
-	boost::uint32_t payload_size_;
+	uint32_t payload_size_;
 	std::size_t bytes_to_write_;
 	std::size_t bytes_written_;
 	std::size_t bytes_to_read_;

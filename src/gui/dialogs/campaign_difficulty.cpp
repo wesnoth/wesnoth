@@ -72,23 +72,19 @@ namespace gui2
 
 REGISTER_DIALOG(campaign_difficulty)
 
-tcampaign_difficulty::tcampaign_difficulty(
-		const config& campaign)
-	: difficulties_()
-	, campaign_id_(campaign["id"])
-	, selected_difficulty_()
+config generate_difficulty_config(const config& source)
 {
-	set_restore(true);
+	config result;
 
 	// Populate local config with difficulty children
-	difficulties_.append_children(campaign, "difficulty");
+	result.append_children(source, "difficulty");
 
 	// Convert legacy format to new-style config if latter not present
-	if(difficulties_.empty()) {
+	if(result.empty()) {
 		WRN_WML << "[campaign] difficulties,difficulty_descriptions= is deprecated. Use [difficulty] instead" << std::endl;
 
-		std::vector<std::string> difficulty_list = utils::split(campaign["difficulties"]);
-		std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
+		std::vector<std::string> difficulty_list = utils::split(source["difficulties"]);
+		std::vector<std::string> difficulty_opts = utils::split(source["difficulty_descriptions"], ';');
 
 		if(difficulty_opts.size() != difficulty_list.size()) {
 			difficulty_opts = difficulty_list;
@@ -106,9 +102,21 @@ tcampaign_difficulty::tcampaign_difficulty(
 			temp["default"] = parsed.is_default();
 			temp["old_markup"] = true; // To prevent double parentheses in the dialog
 
-			difficulties_.add_child("difficulty", temp);
+			result.add_child("difficulty", temp);
 		}
 	}
+
+	return result;
+}
+
+tcampaign_difficulty::tcampaign_difficulty(const config& campaign)
+	: difficulties_()
+	, campaign_id_(campaign["id"])
+	, selected_difficulty_()
+{
+	set_restore(true);
+
+	difficulties_ = generate_difficulty_config(campaign);
 }
 
 void tcampaign_difficulty::pre_show(twindow& window)

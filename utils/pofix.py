@@ -64,6 +64,13 @@ game_stringfixes = {
 "wesnoth" : (
 # conversion added in 1.11.10+dev
 ("Save and Abort game", "Save and abort game"),
+
+# conversion added in 1.13.5+dev
+("You don’t have a leader to", "You do not have a leader to"),
+("You don’t have enough gold to recruit that unit", "You do not have enough gold to recruit that unit"),
+
+# conversion added in 1.13.6+dev
+("The server accepts versions '$version1' while you are using version '$version2'", "The server accepts versions '$required_version', but you are using version '$your_version'")
 ),
 
 "wesnoth-editor" : (
@@ -74,6 +81,9 @@ game_stringfixes = {
 "wesnoth-lib" : (
 # conversion added in 1.11.15+dev
 ("SP/MP Campaigns", "SP/MP campaigns"),
+
+# conversion added in 1.13.5+dev
+("If you don’t want to receive messages", "If you do not want to receive messages"),
 ),
 
 "wesnoth-httt" : (
@@ -81,6 +91,11 @@ game_stringfixes = {
 ("Second, who you most", "Second, whom you most"),
 # fix added in 1.11.16+dev
 ("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
+),
+
+"wesnoth-low" : (
+# added for 1.13.4+dev
+("If you loose you still have a chance to defeat Kalenz in the next scenario.", "If you lose you still have a chance to defeat Kalenz in the next scenario."),
 ),
 
 "wesnoth-nr" : (

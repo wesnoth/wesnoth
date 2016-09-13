@@ -33,10 +33,10 @@ struct handle_doc
 		boost::uint32_t size;
 		char buf[4];
 	};
-	boost::shared_ptr<DataSize> data_size;
-	boost::shared_ptr<simple_wml::document> doc;
+	std::shared_ptr<DataSize> data_size;
+	std::shared_ptr<simple_wml::document> doc;
 	boost::shared_array<char> buffer;
-	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, boost::shared_ptr<simple_wml::document> doc) :
+	handle_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, std::shared_ptr<simple_wml::document> doc) :
 		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize), doc(doc)
 	{
 		data_size->size = htonl(size);
@@ -59,7 +59,7 @@ template<typename Handler, typename ErrorHandler>
 void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler, ErrorHandler error_handler)
 {
 	try {
-		boost::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
+		std::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
 		simple_wml::string_span s = doc_ptr->output_compressed();
 		std::vector<boost::asio::const_buffer> buffers;
 

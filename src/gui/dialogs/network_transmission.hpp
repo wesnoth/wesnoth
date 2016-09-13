@@ -21,6 +21,8 @@
 #include <boost/optional.hpp>
 #include "events.hpp"
 
+class twesnothd_connection;
+
 namespace gui2
 {
 
@@ -34,6 +36,7 @@ namespace gui2
 class tnetwork_transmission : public tdialog
 {
 public:
+	//A wrapper of either a twesnothd_connection or a network_asio::connection
 	class connection_data 
 	{
 	public:
@@ -44,7 +47,12 @@ public:
 		virtual void poll() = 0;
 		virtual ~connection_data() {}
 	};
+
+	static bool wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, twesnothd_connection& wesnothd_connection);
+	static std::unique_ptr<twesnothd_connection> wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
+
 private:
+	static void wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg);
 	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor

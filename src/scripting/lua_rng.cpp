@@ -17,6 +17,7 @@
 #include "log.hpp"
 #include "mt_rng.hpp"
 #include "lua_kernel_base.hpp"
+#include "lua_common.hpp" // for new(L)
 
 #include <new>
 #include <string>
@@ -36,8 +37,8 @@ static const char * Rng = "Rng";
 
 int impl_rng_create(lua_State* L)
 {
-	boost::uint32_t seed = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).get_random_seed();
-	new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng(seed);
+	uint32_t seed = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).get_random_seed();
+	new(L) mt_rng(seed);
 	luaL_setmetatable(L, Rng);
 
 	return 1;

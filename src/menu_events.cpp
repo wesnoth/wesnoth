@@ -29,7 +29,6 @@
 #include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "config_assign.hpp"
-#include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "filechooser.hpp"
 #include "formatter.hpp"
@@ -49,9 +48,13 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/unit_create.hpp"
+#include "gui/dialogs/unit_list.hpp"
+#include "gui/dialogs/unit_recall.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -116,39 +119,18 @@ gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;
 }
 
-std::string menu_handler::get_title_suffix(int side_num)
-{
-	int controlled_recruiters = 0;
-	for(size_t i = 0; i < teams().size(); ++i) {
-		if(teams()[i].is_local_human() && !teams()[i].recruits().empty()
-		&& units().find_leader(i + 1) != units().end()) {
-		++controlled_recruiters;
-		}
-	}
-	std::stringstream msg;
-	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = units().find_leader(side_num);
-		if (leader != units().end() && !leader->name().empty()) {
-			msg << " (" << leader->name(); msg << ")";
-		}
-	}
-	return msg.str();
-}
-
-void menu_handler::objectives(int side_num)
+void menu_handler::objectives()
 {
 	if (!gamestate().lua_kernel_) {
 		return ;
 	}
 
 	config cfg;
-	cfg["side"] = std::to_string(side_num);
+	cfg["side"] = gui_->viewing_side();
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
-		game_events::queued_event("_from_interface", map_location(),
+		game_events::queued_event("_from_interface", "", map_location(),
 			map_location(), config()));
-	team &current_team = teams()[side_num - 1];
-	dialogs::show_objectives(pc_.get_scenario_name(), current_team.objectives());
-	current_team.reset_objectives_changed();
+	pc_.show_objectives();
 }
 
 void menu_handler::show_statistics(int side_num)
@@ -166,271 +148,16 @@ void menu_handler::show_statistics(int side_num)
 
 void menu_handler::unit_list()
 {
-	dialogs::show_unit_list(*gui_);
+	gui2::show_unit_list(*gui_);
 }
 
-namespace {
-class leader_scroll_dialog : public gui::dialog {
-public:
-	leader_scroll_dialog(display &disp, const std::string &title,
-			std::vector<bool> &leader_bools, int selected,
-			gui::DIALOG_RESULT extra_result) :
-		dialog(disp.video(), title, "", gui::NULL_DIALOG),
-		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
-		leader_bools_(leader_bools),
-		extra_result_(extra_result)
-	{
-		scroll_btn_->enable(leader_bools[selected]);
-		add_button(scroll_btn_, gui::dialog::BUTTON_STANDARD);
-		add_button(new gui::standard_dialog_button(disp.video(),
-			_("Close"), 1, true), gui::dialog::BUTTON_STANDARD);
-	}
-	void action(gui::dialog_process_info &info) {
-		const bool leader_bool = leader_bools_[get_menu().selection()];
-		scroll_btn_->enable(leader_bool);
-		if(leader_bool && (info.double_clicked || (!info.key_down
-		&& (info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER])))) {
-			set_result(get_menu().selection());
-		} else if(!info.key_down && info.key[SDLK_ESCAPE]) {
-			set_result(gui::CLOSE_DIALOG);
-		} else if(!info.key_down && info.key[SDLK_SPACE]) {
-			set_result(extra_result_);
-		} else if(result() == gui::CONTINUE_DIALOG) {
-			dialog::action(info);
-		}
-	}
-private:
-	gui::standard_dialog_button *scroll_btn_;
-	std::vector<bool> &leader_bools_;
-	gui::DIALOG_RESULT extra_result_;
-};
-} //end anonymous namespace
-void menu_handler::status_table(int selected)
+void menu_handler::status_table()
 {
-	std::stringstream heading;
-	heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
-			<< _("Team")         << COLUMN_SEPARATOR
-			<< _("Gold")         << COLUMN_SEPARATOR
-			<< _("Villages")     << COLUMN_SEPARATOR
-			<< _("status^Units") << COLUMN_SEPARATOR
-			<< _("Upkeep")       << COLUMN_SEPARATOR
-			<< _("Income");
+	int selected_index;
 
-	gui::menu::basic_sorter sorter;
-	sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_alpha_sort(2).set_numeric_sort(3)
-		  .set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6).set_numeric_sort(7);
-
-	std::vector<std::string> items;
-	std::vector<bool> leader_bools;
-	items.push_back(heading.str());
-
-	const team& viewing_team = teams()[gui_->viewing_team()];
-
-	unsigned total_villages = 0;
-	// a variable to check if there are any teams to show in the table
-	bool status_table_empty = true;
-
-	//if the player is under shroud or fog, they don't get
-	//to see details about the other sides, only their own
-	//side, allied sides and a ??? is shown to demonstrate
-	//lack of information about the other sides But he see
-	//all names with in colors
-	for(size_t n = 0; n != teams().size(); ++n) {
-		if(teams()[n].hidden()) {
-			continue;
-		}
-		status_table_empty=false;
-
-		const bool known = viewing_team.knows_about_team(n);
-		const bool enemy = viewing_team.is_enemy(n+1);
-
-		std::stringstream str;
-
-		const team_data data = board().calculate_team_data(teams()[n],n+1);
-
-		unit_map::const_iterator leader = units().find_leader(n + 1);
-		std::string leader_name;
-		//output the number of the side first, and this will
-		//cause it to be displayed in the correct color
-		if(leader != units().end()) {
-			const bool fogged = viewing_team.fogged(leader->get_location());
-			// Add leader image. If it's fogged
-			// show only a random leader image.
-			if (!fogged || known || game_config::debug) {
-				str << IMAGE_PREFIX << leader->absolute_image();
-#ifndef LOW_MEM
-				str << leader->image_mods();
-#endif
-				leader_bools.push_back(true);
-				leader_name = leader->name();
-			} else {
-				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
-#ifndef LOW_MEM
-				str << "~RC(magenta>" << teams()[n].color() << ")";
-#endif
-				leader_bools.push_back(false);
-				leader_name = "Unknown";
-			}
-
-			if (pc_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)
-				leader_name = teams()[n].side_name();
-
-		} else {
-			leader_bools.push_back(false);
-		}
-		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			<< leader_name << COLUMN_SEPARATOR
-			<< (data.teamname.empty() ? teams()[n].team_name() : data.teamname)
-			<< COLUMN_SEPARATOR;
-
-		if(!known && !game_config::debug) {
-			// We don't spare more info (only name)
-			// so let's go on next side ...
-			items.push_back(str.str());
-			continue;
-		}
-
-		if(game_config::debug) {
-			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
-		} else if(enemy && viewing_team.uses_fog()) {
-			str << ' ' << COLUMN_SEPARATOR;
-		} else {
-			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
-		}
-		str << data.villages;
-		if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
-			str << "/" << map().villages().size();
-		}
-		str << COLUMN_SEPARATOR
-			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
-			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << utils::signed_value(data.net_income);
-		total_villages += data.villages;
-		items.push_back(str.str());
+	if(gui2::tgame_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
+		gui_->scroll_to_leader(teams()[selected_index].side());
 	}
-	if (total_villages > map().villages().size()) {
-		ERR_NG << "Logic error: map has " << map().villages().size() << " villages but status table shows " << total_villages << " owned in total" << std::endl;
-	}
-
-	if (status_table_empty)
-	{
-		// no sides to show - display empty table
-		std::stringstream str;
-		str << " ";
-		for (int i=0;i<7;++i)
-			str << COLUMN_SEPARATOR << " ";
-		leader_bools.push_back(false);
-		items.push_back(str.str());
-	}
-	int result = 0;
-	{
-		leader_scroll_dialog slist(*gui_, _("Current Status"), leader_bools, selected, gui::DIALOG_FORWARD);
-		slist.add_button(new gui::dialog_button(gui_->video(), _("More >"),
-												 gui::button::TYPE_PRESS, gui::DIALOG_FORWARD),
-												 gui::dialog::BUTTON_EXTRA_LEFT);
-		slist.set_menu(items, &sorter);
-		slist.get_menu().move_selection(selected);
-		result = slist.show();
-		selected = slist.get_menu().selection();
-	} // this will kill the dialog before scrolling
-
-	if (result >= 0)
-		gui_->scroll_to_leader(selected+1);
-	else if (result == gui::DIALOG_FORWARD)
-		scenario_settings_table(selected);
-}
-
-void menu_handler::scenario_settings_table(int selected)
-{
-	std::stringstream heading;
-	heading << HEADING_PREFIX << _("scenario settings^Leader") << COLUMN_SEPARATOR
-			<< COLUMN_SEPARATOR
-			<< _("scenario settings^Side")              << COLUMN_SEPARATOR
-			<< _("scenario settings^Start\nGold")       << COLUMN_SEPARATOR
-			<< _("scenario settings^Base\nIncome")      << COLUMN_SEPARATOR
-			<< _("scenario settings^Gold Per\nVillage") << COLUMN_SEPARATOR
-			<< _("scenario settings^Support Per\nVillage") << COLUMN_SEPARATOR
-			<< _("scenario settings^Fog")               << COLUMN_SEPARATOR
-			<< _("scenario settings^Shroud");
-
-	gui::menu::basic_sorter sorter;
-	sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2)
-		  .set_numeric_sort(3).set_numeric_sort(4).set_numeric_sort(5)
-		  .set_numeric_sort(6).set_alpha_sort(7).set_alpha_sort(8);
-
-	std::vector<std::string> items;
-	std::vector<bool> leader_bools;
-	items.push_back(heading.str());
-
-	const team& viewing_team = teams()[gui_->viewing_team()];
-	bool settings_table_empty = true;
-	bool fogged;
-
-	for(size_t n = 0; n != teams().size(); ++n) {
-		if(teams()[n].hidden()) {
-			continue;
-		}
-		settings_table_empty = false;
-
-		std::stringstream str;
-		unit_map::const_iterator leader = units().find_leader(n + 1);
-
-		if(leader != units().end()) {
-			// Add leader image. If it's fogged
-			// show only a random leader image.
-			fogged=viewing_team.fogged(leader->get_location());
-			if (!fogged || viewing_team.knows_about_team(n)) {
-				str << IMAGE_PREFIX << leader->absolute_image();
-				leader_bools.push_back(true);
-			} else {
-				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
-				leader_bools.push_back(false);
-			}
-#ifndef LOW_MEM
-			str << "~RC(" << leader->team_color() << '>'
-			    << team::get_side_color_index(n+1) << ")";
-#endif
-		} else {
-			leader_bools.push_back(false);
-		}
-
-		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			<< teams()[n].side_name() << COLUMN_SEPARATOR
-			<< n + 1 << COLUMN_SEPARATOR
-			<< teams()[n].start_gold() << COLUMN_SEPARATOR
-			<< teams()[n].base_income() << COLUMN_SEPARATOR
-			<< teams()[n].village_gold() << COLUMN_SEPARATOR
-			<< teams()[n].village_support() << COLUMN_SEPARATOR
-			<< (teams()[n].uses_fog()    ? _("yes") : _("no")) << COLUMN_SEPARATOR
-			<< (teams()[n].uses_shroud() ? _("yes") : _("no")) << COLUMN_SEPARATOR;
-
-		items.push_back(str.str());
-	}
-
-	if (settings_table_empty)
-	{
-		// no sides to show - display empty table
-		std::stringstream str;
-		for (int i=0;i<8;++i)
-			str << " " << COLUMN_SEPARATOR;
-		leader_bools.push_back(false);
-		items.push_back(str.str());
-	}
-		int result = 0;
-		{
-			leader_scroll_dialog slist(*gui_, _("Scenario Settings"), leader_bools, selected, gui::DIALOG_BACK);
-			slist.set_menu(items, &sorter);
-			slist.get_menu().move_selection(selected);
-			slist.add_button(new gui::dialog_button(gui_->video(), _(" < Back"),
-													 gui::button::TYPE_PRESS, gui::DIALOG_BACK),
-													 gui::dialog::BUTTON_EXTRA_LEFT);
-			result = slist.show();
-			selected = slist.get_menu().selection();
-		} // this will kill the dialog before scrolling
-
-		if (result >= 0)
-			gui_->scroll_to_leader(selected+1);
-		else if (result == gui::DIALOG_BACK)
-			status_table(selected);
 }
 
 void menu_handler::save_map()
@@ -467,7 +194,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	preferences::show_preferences_dialog(gui_->video(), game_config_);
+	gui2::tpreferences::display(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
@@ -476,7 +203,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::tchat_log chat_log_dialog(vconfig(c), resources::recorder);
+	gui2::tchat_log chat_log_dialog(vconfig(c), *resources::recorder);
 	chat_log_dialog.show(gui_->video());
 	//std::string text = resources::recorder->build_chat_log();
 	//gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
@@ -575,7 +302,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 	if (u_type->cost() > current_team.gold() - (pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0)) {
 		gui2::show_transient_message(gui_->video(), "",
-			_("You don’t have enough gold to recruit that unit"));
+			_("You do not have enough gold to recruit that unit"));
 		return false;
 	}
 
@@ -614,16 +341,16 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	team &current_team = teams()[side_num - 1];
 
-	boost::shared_ptr<std::vector<unit_const_ptr > > recall_list_team = boost::make_shared<std::vector<unit_const_ptr> >();
+	std::vector<unit_const_ptr> recall_list_team;
 	{ wb::future_map future; // ensures recall list has planned recalls removed
-		*recall_list_team = actions::get_recalls(side_num, last_hex);
+		recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
 
 	gui_->draw(); //clear the old menu
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	for(const unit_const_ptr & unit : *recall_list_team)
+	for(const unit_const_ptr & unit : recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}
@@ -634,23 +361,29 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			" veteran survivors from a previous scenario)"));
 		return;
 	}
-	if(recall_list_team->empty()) {
+	if(recall_list_team.empty()) {
 		gui2::show_transient_message(gui_->video(), "",
 			_("You currently can't recall at the highlighted location"));
 		return;
 	}
 
-	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
-	int unit_cost = current_team.recall_cost();
-	if (res < 0) {
+	gui2::tunit_recall dlg(recall_list_team, current_team);
+
+	dlg.show(gui_->video());
+
+	if(dlg.get_retval() != gui2::twindow::OK) {
 		return;
 	}
+
+	int res = dlg.get_selected_index();
+	int unit_cost = current_team.recall_cost();
+
 	// we need to check if unit has a specific recall cost
 	// if it does we use it elsewise we use the team.recall_cost()
 	// the magic number -1 is what it gets set to if the unit doesn't
 	// have a special recall_cost of its own.
-	else if(recall_list_team->at(res)->recall_cost() > -1) {
-		unit_cost = recall_list_team->at(res)->recall_cost();
+	if(recall_list_team[res]->recall_cost() > -1) {
+		unit_cost = recall_list_team[res]->recall_cost();
 	}
 
 	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
@@ -672,22 +405,21 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	map_location recall_from = map_location::null_location();
 	std::string err;
 	{ wb::future_map_if_active future; // future unit map removes invisible units from map, don't do this outside of planning mode
-		err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team->at(res)));
+		err = actions::find_recall_location(side_num, recall_location, recall_from, *recall_list_team[res].get());
 	} // end planned unit map scope
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);
 		return;
 	}
 
-	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recall(*recall_list_team->at(res), side_num, recall_location)) {
+	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recall(*recall_list_team[res].get(), side_num, recall_location)) {
 		bool success = synced_context::run_and_throw("recall",
-			replay_helper::get_recall(recall_list_team->at(res)->id(), recall_location, recall_from),
+			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
 			true,
 			true,
 			synced_context::ignore_error_function);
 
-		if(!success)
-		{
+		if(!success) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list." << std::endl;
 		}
 	}
@@ -703,7 +435,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units().begin(); u != units().end(); ++u) {
-		bool invisible = u->invisible(u->get_location());
+		bool invisible = u->invisible(u->get_location(), gui_->get_disp_context());
 
 		if (teams()[side_num - 1].is_enemy(u->side()) &&
 		    !gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
@@ -749,7 +481,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	/**
 	 * Returns true if @a side_num has at least one unit that can still move.
 	 */
-	bool partmoved_units(int side_num, const unit_map & units, const game_board & board, const boost::shared_ptr<wb::manager> & whiteb)
+	bool partmoved_units(int side_num, const unit_map & units, const game_board & board, const std::shared_ptr<wb::manager> & whiteb)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
@@ -766,7 +498,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	 * Returns true if @a side_num has at least one unit that (can but) has not
 	 * moved.
 	 */
-	bool unmoved_units(int side_num, const unit_map & units, const game_board & board, const boost::shared_ptr<wb::manager> & whiteb)
+	bool unmoved_units(int side_num, const unit_map & units, const game_board & board, const std::shared_ptr<wb::manager> & whiteb)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
@@ -993,22 +725,8 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 
 void menu_handler::kill_unit(mouse_handler& mousehandler)
 {
-	const map_location& loc = mousehandler.get_last_hex();
-	const unit_map::iterator i = units().find(loc);
-	if(i != units().end()) {
-		const int dying_side = i->side();
-		pc_.pump().fire("last breath", loc, loc);
-		if (i.valid()) {
-			unit_display::unit_die(loc, *i);
-		}
-		gui_->redraw_minimap();
-		pc_.pump().fire("die", loc, loc);
-		if (i.valid()) {
-			units().erase(i);
-		}
-		actions::recalculate_fog(dying_side);
-		pc_.check_victory();
-	}
+	const map_location loc = mousehandler.get_last_hex();
+	synced_context::run_and_throw("debug_kill", config_of("x", loc.x + 1)("y", loc.y + 1));
 }
 
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
@@ -1362,7 +1080,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		bool is_enabled(const chmap::command& c) const
 		{
 			return !((c.has_flag('D') && !game_config::debug)
-				  || (c.has_flag('N') && menu_handler_.pc_.is_networked_mp())
+				  || (c.has_flag('N') && !menu_handler_.pc_.is_networked_mp())
 				  || (c.has_flag('A') && !preferences::is_authenticated())
 				  || (c.has_flag('S') && (synced_context::get_synced_state() != synced_context::UNSYNCED)));
 		}
@@ -1575,7 +1293,7 @@ void menu_handler::do_search(const std::string& new_search)
 						last_search_.begin(), last_search_.end(),
 						chars_equal_insensitive) != name.end()) {
 					if (!teams()[gui_->viewing_team()].is_enemy(ui->side()) ||
-					    !ui->invisible(ui->get_location())) {
+					    !ui->invisible(ui->get_location(), gui_->get_disp_context())) {
 						found = true;
 					}
 				}
@@ -1731,8 +1449,8 @@ void console_handler::do_control() {
 	try {
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(bad_lexical_cast&) {
-		std::vector<team>::const_iterator it_t = boost::find_if(*resources::teams, save_id_matches(side));
-		if(it_t == resources::teams->end()) {
+		std::vector<team>::const_iterator it_t = boost::find_if(resources::gameboard->teams(), save_id_matches(side));
+		if(it_t == resources::gameboard->teams().end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
 			command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
@@ -1923,36 +1641,38 @@ void console_handler::do_next_level()
 }
 
 void console_handler::do_choose_level() {
+	std::string tag = menu_handler_.pc_.get_classification().get_tagname();
 	std::vector<std::string> options;
-	int next = 0, nb = 0;
-	for(const config &sc : menu_handler_.game_config_.child_range("scenario"))
-	{
-		const std::string &id = sc["id"];
-		options.push_back(id);
-		if (id == menu_handler_.gamedata().next_scenario())
-			next = nb;
-		++nb;
-	}
-	// find scenarios of multiplayer campaigns
-	// (assumes that scenarios are ordered properly in the game_config)
-	std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
-	for(const config &mp : menu_handler_.game_config_.child_range("multiplayer"))
-	{
-		if (mp["id"] == scenario)
-		{
-			const std::string &id = mp["id"];
+	std::string next;
+	if(tag != "multiplayer") {
+		for(const config &sc : menu_handler_.game_config_.child_range(tag)) {
+			const std::string &id = sc["id"];
 			options.push_back(id);
-			if (id == menu_handler_.gamedata().next_scenario())
-				next = nb;
-			++nb;
-			scenario = mp["next_scenario"].str();
+			if(id == menu_handler_.gamedata().next_scenario()) {
+				next = id;
+			}
+		}
+	} else {
+		// find scenarios of multiplayer campaigns
+		// (assumes that scenarios are ordered properly in the game_config)
+		std::string scenario = menu_handler_.pc_.get_mp_settings().mp_scenario;
+		for(const config &mp : menu_handler_.game_config_.child_range("multiplayer"))
+		{
+			if (mp["id"] == scenario)
+			{
+				const std::string &id = mp["id"];
+				options.push_back(id);
+				if (id == menu_handler_.gamedata().next_scenario())
+					next = id;
+				scenario = mp["next_scenario"].str();
+			}
 		}
 	}
 	std::sort(options.begin(), options.end());
-	int choice = 0;
+	int choice = std::lower_bound(options.begin(), options.end(), next) - options.begin();
 	{
 		gui2::tsimple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
-		dlg.set_selected_index(next);
+		dlg.set_selected_index(choice);
 		dlg.show(menu_handler_.gui_->video());
 		choice = dlg.selected_index();
 	}
@@ -2067,7 +1787,7 @@ void console_handler::do_show_var() {
 
 void console_handler::do_inspect() {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::tgamestate_inspector inspect_dialog(cfg);
+	gui2::tgamestate_inspector inspect_dialog(resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
 	inspect_dialog.show(menu_handler_.gui_->video());
 }
 
@@ -2158,7 +1878,7 @@ void console_handler::do_toggle_draw_terrain_codes() {
 }
 
 void console_handler::do_toggle_whiteboard() {
-	if (const boost::shared_ptr<wb::manager> & whiteb = menu_handler_.pc_.get_whiteboard()) {
+	if (const std::shared_ptr<wb::manager> & whiteb = menu_handler_.pc_.get_whiteboard()) {
 		whiteb->set_active(!whiteb->is_active());
 		if (whiteb->is_active()) {
 			print(get_cmd(), _("Planning mode activated!"));

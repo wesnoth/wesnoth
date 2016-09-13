@@ -70,7 +70,11 @@ namespace t_translation {
 	 *
 	 * @return          The converted layer.
 	 */
-	static t_layer string_to_layer_(const std::string& str);
+	static t_layer string_to_layer_(const char* begin, const char* end);
+	static t_layer string_to_layer_(const std::string& str)
+	{
+		return string_to_layer_(str.c_str(), str.c_str() + str.size());
+	}
 
 	/**
 	 * Converts a terrain string to a number.
@@ -84,7 +88,7 @@ namespace t_translation {
 	 * @return                  The terrain code found in the string if no
 	 *                          valid terrain is found VOID will be returned.
 	 */
-	static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler);
+	static t_terrain string_to_number_(std::string str, std::string& start_position, const t_layer filler);
 	static t_terrain string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
@@ -98,7 +102,7 @@ namespace t_translation {
 	 *                              position given it's padded to 4 chars else
 	 *                              padded to 7 chars.
 	 */
-	static std::string number_to_string_(t_terrain terrain, const int start_position = -1);
+	static std::string number_to_string_(t_terrain terrain, const std::string& start_position = "");
 
 	/**
 	 * Converts a terrain string to a number for the builder.
@@ -194,18 +198,6 @@ t_match::t_match(const t_terrain& tcode):
 	}
 }
 
-coordinate::coordinate()
-	: x(0)
-	, y(0)
-{
-}
-
-coordinate::coordinate(const size_t x_, const size_t y_)
-	: x(x_)
-	, y(y_)
-{
-}
-
 t_terrain read_terrain_code(const std::string& str, const t_layer filler)
 {
 	return string_to_number_(str, filler);
@@ -266,7 +258,7 @@ std::string write_list(const t_list& list)
 	return result.str();
 }
 
-t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_positions)
+t_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset)
 {
 	t_map result;
 
@@ -291,22 +283,16 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
-		int starting_position = -1;
+		std::string starting_position;
 		// The gamemap never has a wildcard
 		const t_terrain tile = string_to_number_(terrain, starting_position, NO_LAYER);
 
 		// Add to the resulting starting position
-		if(starting_position != -1) {
-			if(starting_positions.find(starting_position) != starting_positions.end()) {
-				// Redefine existion position
+		if(!starting_position.empty()) {
+			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
 				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
-				starting_positions[starting_position].x = x;
-				starting_positions[starting_position].y = y;
-			} else {
-				// Add new position
-				const struct coordinate coord(x, y);
-				starting_positions.insert(std::pair<int, coordinate>(starting_position, coord));
 			}
+			starting_positions.insert(tstarting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
 		}
 
 		// Make space for the new item
@@ -377,7 +363,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	return result;
 }
 
-std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions)
+std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions, coordinate border_offset)
 {
 	std::stringstream str;
 
@@ -388,16 +374,11 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			// it needs to be added to the terrain.
 			// After it's found it can't be found again,
 			// so the location is removed from the map.
-			std::map<int, coordinate>::iterator itor = starting_positions.begin();
-			int starting_position = -1;
-			for(; itor != starting_positions.end(); ++itor) {
-				if(itor->second.x == x && itor->second.y == y) {
-					starting_position = itor->first;
-					starting_positions.erase(itor);
-					break;
-				}
+			auto itor = starting_positions.right.find(coordinate(x - border_offset.x, y - border_offset.y));
+			std::string starting_position;
+			if (itor != starting_positions.right.end()) {
+				starting_position = itor->second;
 			}
-
 			// Add the separator
 			if(x != 0) {
 				str << ", ";
@@ -701,23 +682,24 @@ static t_terrain get_mask_(const t_terrain& terrain)
 	}
 }
 
-static t_layer string_to_layer_(const std::string& str)
+static t_layer string_to_layer_(const char* begin, const char* end)
 {
-	if (str.empty())
+	size_t size = end - begin;
+	if (begin == end) {
 		return NO_LAYER;
-
+	}
 	t_layer result = 0;
 
 	// Validate the string
-	VALIDATE(str.size() <= 4, _("A terrain with a string with more "
-		"than 4 characters has been found, the affected terrain is :") + str);
+	VALIDATE(size <= 4, _("A terrain with a string with more "
+		"than 4 characters has been found, the affected terrain is :") + std::string(begin, end));
 
 	// The conversion to int puts the first char
 	// in the highest part of the number.
 	// This will make the wildcard matching
 	// later on a bit easier.
 	for(size_t i = 0; i < 4; ++i) {
-		const unsigned char c = (i < str.length()) ? str[i] : 0;
+		const unsigned char c = (i < size) ? begin[i] : 0;
 
 		// Clearing the lower area is a nop on i == 0
 		// so no need for if statement
@@ -731,40 +713,43 @@ static t_layer string_to_layer_(const std::string& str)
 }
 
 static t_terrain string_to_number_(const std::string& str, const t_layer filler) {
-	int dummy = -1;
+	std::string dummy;
 	return string_to_number_(str, dummy, filler);
 }
 
-static t_terrain string_to_number_(std::string str, int& start_position, const t_layer filler)
+static t_terrain string_to_number_(std::string str, std::string& start_position, const t_layer filler)
 {
+	const char* c_str = str.c_str();
+	size_t begin = 0;
+	size_t end = str.size();
 	t_terrain result;
 
 	// Strip the spaces around us
 	const std::string& whitespace = " \t";
-	str.erase(0, str.find_first_not_of(whitespace));
-	str.erase(str.find_last_not_of(whitespace) + 1);
-	if(str.empty()) {
+	begin = str.find_first_not_of(whitespace);
+	end = str.find_last_not_of(whitespace) + 1;
+	if(begin == std::string::npos) {
 		return result;
 	}
 
 	// Split if we have 1 space inside
-	size_t offset = str.find(' ', 0);
-	if(offset != std::string::npos) {
+	size_t offset = str.find(' ', begin);
+	if(offset < end) {
 		try {
-			start_position = lexical_cast<int>(str.substr(0, offset));
+			start_position = str.substr(begin, offset - begin);
 		} catch(bad_lexical_cast&) {
 			return VOID_TERRAIN;
 		}
-		str.erase(0, offset + 1);
+		begin = offset + 1;
 	}
 
 	offset = str.find('^', 0);
 	if(offset !=  std::string::npos) {
 		const std::string base_str(str, 0, offset);
 		const std::string overlay_str(str, offset + 1, str.size());
-		result = t_terrain(base_str, overlay_str);
+		result = t_terrain { string_to_layer_(c_str + begin, c_str + offset), string_to_layer_(c_str + offset + 1, c_str + end) };
 	} else {
-		result = t_terrain(str, filler);
+		result = t_terrain { string_to_layer_(c_str + begin, c_str + end), filler };
 
 		// Ugly hack
 		if(filler == WILDCARD && (result.base == NOT.base ||
@@ -777,13 +762,13 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 	return result;
 }
 
-static std::string number_to_string_(t_terrain terrain, const int start_position)
+static std::string number_to_string_(t_terrain terrain, const std::string& start_position)
 {
 	std::string result = "";
 
 	// Insert the start position
-	if(start_position > 0) {
-		result = std::to_string(start_position) + " ";
+	if(!start_position.empty()) {
+		result = start_position + " ";
 	}
 
 	/*

@@ -43,7 +43,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
+      useCustomWorkingDirectory = "YES"
+      customWorkingDirectory = "$BUILT_PRODUCTS_DIR/Wesnoth.app/Contents/Resources"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "NO"
@@ -60,17 +61,17 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "DYLD_FALLBACK_FRAMEWORK_PATH"
-            value = "./TestFrameworks:./Wesnoth.app/Contents/Frameworks"
+            value = "../../../TestFrameworks:../Frameworks"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "DYLD_FALLBACK_LIBRARY_PATH"
-            value = "./TestFrameworks:./Wesnoth.app/Contents/Frameworks"
+            value = "../../../TestFrameworks:../Frameworks"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "DYLD_IMAGE_SUFFIX"
-            value = "w"
+            value = "-mt"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

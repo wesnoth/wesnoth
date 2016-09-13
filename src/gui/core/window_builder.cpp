@@ -22,7 +22,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/window_builder/instance.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/combobox.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -109,8 +109,8 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 
 	window->set_click_dismiss(definition->click_dismiss);
 
-	boost::intrusive_ptr<const twindow_definition::tresolution>
-	conf = boost::dynamic_pointer_cast<const twindow_definition::tresolution>(
+	std::shared_ptr<const twindow_definition::tresolution>
+	conf = std::static_pointer_cast<const twindow_definition::tresolution>(
 			window->config());
 	assert(conf);
 
@@ -154,8 +154,8 @@ register_builder_widget(const std::string& id,
 
 tbuilder_widget_ptr create_builder_widget(const config& cfg)
 {
-	config::all_children_itors children = cfg.all_children_range();
-	size_t nb_children = std::distance(children.first, children.second);
+	config::const_all_children_itors children = cfg.all_children_range();
+	size_t nb_children = std::distance(children.begin(), children.end());
 	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
 
 	for(const auto & item : builder_widget_lookup())
@@ -169,19 +169,19 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	}
 
 	if(const config& c = cfg.child("grid")) {
-		return new tbuilder_grid(c);
+		return std::make_shared<tbuilder_grid>(c);
 	}
 
 	if(const config& instance = cfg.child("instance")) {
-		return new implementation::tbuilder_instance(instance);
+		return std::make_shared<implementation::tbuilder_instance>(instance);
 	}
 
 	if(const config& pane = cfg.child("pane")) {
-		return new implementation::tbuilder_pane(pane);
+		return std::make_shared<implementation::tbuilder_pane>(pane);
 	}
 
 	if(const config& viewport = cfg.child("viewport")) {
-		return new implementation::tbuilder_viewport(viewport);
+		return std::make_shared<implementation::tbuilder_viewport>(viewport);
 	}
 
 /*
@@ -204,7 +204,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 #define TRY(name)                                                              \
 	do {                                                                       \
 		if(const config& c = cfg.child(#name)) {                               \
-			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);    \
+			tbuilder_widget_ptr p =                                            \
+				std::make_shared<implementation::tbuilder_##name>(c);          \
 			assert(false);                                                     \
 		}                                                                      \
 	} while(0)
@@ -222,7 +223,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(matrix);
 	TRY(minimap);
 	TRY(button);
-	TRY(combobox);
+	TRY(menu_button);
 	TRY(drawing);
 	TRY(password_box);
 	TRY(unit_preview_pane);
@@ -267,7 +268,7 @@ const std::string& twindow_builder::read(const config& cfg)
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".\n";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
-	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
+	VALIDATE(!cfgs.empty(), _("No resolution defined."));
 	for(const auto & i : cfgs)
 	{
 		resolutions.push_back(tresolution(i));
@@ -410,7 +411,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = new tbuilder_grid(c);
+	grid = std::make_shared<tbuilder_grid>(tbuilder_grid(c));
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(),

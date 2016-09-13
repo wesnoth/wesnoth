@@ -24,6 +24,10 @@ std::vector<std::string>& display_context::hidden_label_categories_ref() {
 	return const_cast<std::vector<std::string>&>(this->hidden_label_categories());
 }
 
+const team& display_context::get_team(int side) const {
+	return teams()[side-1];
+}
+
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
 	map_location adjs[6];
@@ -42,7 +46,7 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 			if(see_all) {
 				return true;
 			} else if (!teams()[side_num-1].fogged(u_loc)
-			&& !u.invisible(u_loc, true)) {
+			&& !u.invisible(u_loc, *this, true)) {
 				return true;
 			}
 		}
@@ -54,7 +58,7 @@ const unit * display_context::get_visible_unit(const map_location & loc, const t
 {
 	if (!map().on_board(loc)) return nullptr;
 	const unit_map::const_iterator u = units().find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, map(), see_all)) {
+	if (!u.valid() || !u->is_visible_to_team(current_team, *this, see_all)) {
 		return nullptr;
 	}
 	return &*u;

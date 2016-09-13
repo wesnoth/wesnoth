@@ -14,11 +14,14 @@
 
 #include "global.hpp"
 
-#include "dialogs.hpp"
+#include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "game_config_manager.hpp"
 #include "game_preferences.hpp"
+#include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/network_transmission.hpp"
+#include "gui/widgets/window.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -50,148 +53,7 @@ static lg::log_domain log_mp("mp/main");
 #define ERR_MP LOG_STREAM(err, log_mp)
 
 
-namespace {
-
-const SDL_Rect leader_pane_position = {-260,-370,260,370};
-const int leader_pane_border = 10;
-
-}
-
 namespace mp {
-
-wait::leader_preview_pane::leader_preview_pane(CVideo& v,
-	ng::flg_manager& flg, const std::string& color) :
-	gui::preview_pane(v),
-	flg_(flg),
-	color_(color),
-	combo_leader_(v, std::vector<std::string>()),
-	combo_gender_(v, std::vector<std::string>())
-{
-	flg_.reset_leader_combo(combo_leader_, color_);
-	flg_.reset_gender_combo(combo_gender_, color_);
-
-	set_location(leader_pane_position);
-}
-
-void wait::leader_preview_pane::process_event()
-{
-	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
-		flg_.set_current_leader(combo_leader_.selected());
-
-		flg_.reset_gender_combo(combo_gender_, color_);
-
-		set_dirty();
-	}
-
-	if (combo_gender_.changed() && combo_gender_.selected() >= 0) {
-		flg_.set_current_gender(combo_gender_.selected());
-
-		set_dirty();
-	}
-}
-
-void wait::leader_preview_pane::draw_contents()
-{
-	bg_restore();
-
-	surface& screen = video().getSurface();
-
-	SDL_Rect const &loc = location();
-	const SDL_Rect area = sdl::create_rect(loc.x + leader_pane_border,
-		loc.y + leader_pane_border,loc.w - leader_pane_border * 2,
-		loc.h - leader_pane_border * 2);
-	const clip_rect_setter clipper(screen, &area);
-
-	std::string faction = flg_.current_faction()["faction"];
-
-	const std::string recruits = flg_.current_faction()["recruit"];
-	const std::vector<std::string> recruit_list = utils::split(recruits);
-	std::ostringstream recruit_string;
-
-	if (!faction.empty() && faction[0] == font::IMAGE) {
-		std::string::size_type p = faction.find_first_of(COLUMN_SEPARATOR);
-		if (p != std::string::npos && p < faction.size())
-			faction = faction.substr(p+1);
-	}
-
-	std::string image;
-
-	const unit_type *ut = unit_types.find(flg_.current_leader());
-
-	if (ut) {
-		const unit_type &utg = ut->get_gender_unit_type(flg_.current_gender());
-
-		image = utg.image() + ng::get_RC_suffix(utg.flag_rgb(), color_);
-	}
-
-	for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
-		itor != recruit_list.end(); ++itor) {
-
-		const unit_type *rt = unit_types.find(*itor);
-		if (!rt) continue;
-
-		if (itor != recruit_list.begin())
-			recruit_string << ", ";
-		recruit_string << rt->type_name();
-	}
-
-	SDL_Rect image_rect = {area.x,area.y,0,0};
-
-	surface unit_image(image::get_image(image));
-
-	if (!unit_image.null()) {
-		image_rect.w = unit_image->w;
-		image_rect.h = unit_image->h;
-		sdl_blit(unit_image, nullptr, screen, &image_rect);
-	}
-
-	font::draw_text(&video(), area, font::SIZE_PLUS, font::NORMAL_COLOR,
-		faction, area.x + 110, area.y + 60);
-	const SDL_Rect leader_rect = font::draw_text(&video(), area,
-		font::SIZE_SMALL, font::NORMAL_COLOR, _("Leader: "), area.x,
-		area.y + 110);
-	const SDL_Rect gender_rect = font::draw_text(&video(), area,
-		font::SIZE_SMALL, font::NORMAL_COLOR, _("Gender: "), area.x,
-		leader_rect.y + 30 + (leader_rect.h - combo_leader_.height()) / 2);
-	font::draw_wrapped_text(&video(), area, font::SIZE_SMALL,
-		font::NORMAL_COLOR, _("Recruits: ") + recruit_string.str(), area.x,
-		area.y + 132 + 30 + (leader_rect.h - combo_leader_.height()) / 2,
-		area.w);
-	combo_leader_.set_location(leader_rect.x + leader_rect.w + 16,
-		leader_rect.y + (leader_rect.h - combo_leader_.height()) / 2);
-	combo_gender_.set_location(leader_rect.x + leader_rect.w + 16,
-		gender_rect.y + (gender_rect.h - combo_gender_.height()) / 2);
-}
-
-bool wait::leader_preview_pane::show_above() const
-{
-	return false;
-}
-
-bool wait::leader_preview_pane::left_side() const
-{
-	return false;
-}
-
-void wait::leader_preview_pane::set_selection(int selection)
-{
-	if (selection >= 0) {
-		flg_.set_current_faction(selection);
-
-		flg_.reset_leader_combo(combo_leader_, color_);
-		flg_.reset_gender_combo(combo_gender_, color_);
-
-		set_dirty();
-	}
-}
-
-sdl_handler_vector wait::leader_preview_pane::handler_members() {
-	sdl_handler_vector h;
-	h.push_back(&combo_leader_);
-	h.push_back(&combo_gender_);
-	return h;
-}
-
 
 wait::wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state,
 	mp::chat& c, config& gamelist, const bool first_scenario) :
@@ -211,7 +73,7 @@ wait::wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& c
 
 	//These structure initializers create a lobby::process_data_event
 	plugins_context_->set_callback("quit", 		std::bind(&wait::process_event_impl, this, true), 						false);
-	plugins_context_->set_callback("chat",		std::bind(&wait::send_chat_message, this, std::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("chat", [this](const config& cfg) { send_chat_message(cfg["message"], false); }, true);
 }
 
 wait::~wait()
@@ -301,11 +163,7 @@ void wait::join_game(bool observe)
 			++nb_sides;
 		}
 		if (!side_choice) {
-			size_t count = 0;
-			for(config::child_itors its = get_scenario().child_range("side"); its.second != its.first; ++its.first) {
-				++count;
-			}
-			DBG_MP << "could not find a side, all " << count << " sides were unsuitable\n";
+			DBG_MP << "could not find a side, all " << get_scenario().child_count("side") << " sides were unsuitable\n";
 			set_result(QUIT);
 			return;
 		}
@@ -322,7 +180,7 @@ void wait::join_game(bool observe)
 			if (!era)
 				throw config::error(_("No era information found."));
 			config::const_child_itors possible_sides = era.child_range("multiplayer_side");
-			if (possible_sides.first == possible_sides.second) {
+			if (possible_sides.empty()) {
 				set_result(QUIT);
 				throw config::error(_("No multiplayer sides found"));
 			}
@@ -364,16 +222,10 @@ void wait::join_game(bool observe)
 				}
 			}
 
+			gui2::tfaction_select dlg(flg, color, side_num + 1);
+			dlg.show(video());
 
-			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(video(), flg, color);
-			preview_panes.push_back(&leader_selector);
-
-			const int faction_choice = gui::show_dialog(video(), nullptr,
-				_("Choose your faction:"), _("Starting position: ") +
-				std::to_string(side_num + 1), gui::OK_CANCEL,
-				&choices, &preview_panes);
-			if(faction_choice < 0) {
+			if(dlg.get_retval() != gui2::twindow::OK) {
 				set_result(QUIT);
 				return;
 			}
@@ -627,8 +479,8 @@ bool wait::download_level_data()
 	bool has_scenario_and_controllers = false;
 	while (!has_scenario_and_controllers) {
 		config revc;
-		bool data_res = dialogs::network_receive_dialog(
-			video(), _("Getting game data..."), revc, *wesnothd_connection_);
+		bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
+			video(), "download level data", revc, *wesnothd_connection_);
 
 		if (!data_res) {
 			DBG_MP << "download_level_data bad results\n";
@@ -655,7 +507,7 @@ bool wait::download_level_data()
 			}
 			has_scenario_and_controllers = true;
 		}
-		
+
 	}
 
 	DBG_MP << "download_level_data() success.\n";

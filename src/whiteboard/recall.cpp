@@ -26,6 +26,7 @@
 #include "actions/create.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
@@ -73,7 +74,7 @@ recall::recall(config const& cfg, bool hidden)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	for(const unit_const_ptr & recall_unit : resources::teams->at(team_index()).recall_list())
+	for(const unit_const_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
@@ -113,7 +114,7 @@ void recall::accept(visitor& v)
 
 void recall::execute(bool& success, bool& complete)
 {
-	team & current_team = resources::teams->at(team_index());
+	team & current_team = resources::gameboard->teams().at(team_index());
 
 	assert(valid());
 	assert(temp_unit_.get());
@@ -145,11 +146,11 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
 	//temporarily remove unit from recall list
-	unit_ptr it = resources::teams->at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
+	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
 	assert(it);
 
 	//Add cost to money spent on recruits.
-	int cost = resources::teams->at(team_index()).recall_cost();
+	int cost = resources::gameboard->teams().at(team_index()).recall_cost();
 	if (it->recall_cost() > -1) {
 		cost = it->recall_cost();
 	}
@@ -158,7 +159,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	//unit map takes ownership of temp_unit
 	unit_map.insert(temp_unit_);
 
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
+	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 	// Update gold in top bar
 	resources::screen->invalidate_game_status();
 }
@@ -169,7 +170,7 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 	assert(temp_unit_.get());
 
 	//Put unit back into recall list
-	resources::teams->at(team_index()).recall_list().add(temp_unit_);
+	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_);
 }
 
 void recall::draw_hex(map_location const& hex)
@@ -183,7 +184,7 @@ void recall::draw_hex(map_location const& hex)
 		unit &it = *get_unit();
 		int cost = statistics::un_recall_unit_cost(it);
 		if (cost < 0) {
-			number_text << utils::unicode_minus << resources::teams->at(team_index()).recall_cost();
+			number_text << utils::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}
 		else {
 			number_text << utils::unicode_minus << cost;
@@ -207,11 +208,11 @@ action::error recall::check_validity() const
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list
-	if( !(*resources::teams)[team_index()].recall_list().find_if_matches_id(temp_unit_->id()) ) {
+	if( !resources::gameboard->teams()[team_index()].recall_list().find_if_matches_id(temp_unit_->id()) ) {
 		return UNIT_UNAVAILABLE;
 	}
 	//Check that there is still enough gold to recall this unit
-	if((*resources::teams)[team_index()].recall_cost() > (*resources::teams)[team_index()].gold()) {
+	if(resources::gameboard->teams()[team_index()].recall_cost() > resources::gameboard->teams()[team_index()].gold()) {
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit

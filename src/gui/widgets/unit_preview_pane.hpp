@@ -18,6 +18,7 @@
 
 #include <string>
 
+class unit;
 class unit_type;
 
 namespace gui2
@@ -28,6 +29,8 @@ namespace gui2
 class tbutton;
 class timage;
 class tlabel;
+class ttree_view;
+class ttree_view_node;
 
 namespace implementation
 {
@@ -40,27 +43,29 @@ class tunit_preview_pane : public tcontainer_
 
 public:
 	tunit_preview_pane()
-        : tcontainer_(1)
-		, current_type_("")
-		, icon_type_()
-		, icon_race_()
-		, icon_alignment_()
-		, label_name_()
-		, label_level_()
-		, label_details_()
-		, button_profile_()
+		: tcontainer_(1)
+		, current_type_()
+		, icon_type_(nullptr)
+		, icon_race_(nullptr)
+		, icon_alignment_(nullptr)
+		, label_name_(nullptr)
+		, label_level_(nullptr)
+		, label_details_(nullptr)
+		, label_details_minimal_(nullptr)
+		, tree_details_(nullptr)
+		, button_profile_(nullptr)
+		, image_mods_()
 	{
 	}
 
-	/**
-	 * Initializes the interneral sub-widget pointers.
-	 * Should be called when building the window, so the pointers
-	 * are initilized when set_displayed_type() is called.
-	 */
-	void finalize_setup();
-
 	/** Displays the stats of a specified unit type */
-	void set_displayed_type(const unit_type* type);
+	void set_displayed_type(const unit_type& type);
+
+	/** Displays the stats of a specific unit */
+	void set_displayed_unit(const unit& u);
+
+	/** Sets the facing of the unit image */
+	void set_image_mods(const std::string& mods);
 
 	/** Callback for the profile button */
 	void profile_button_callback();
@@ -74,18 +79,34 @@ public:
 	/** See @ref tcontrol::get_state. */
 	virtual unsigned get_state() const override;
 
+protected:
+	/**
+	 * Initializes the interneral sub-widget pointers.
+	 * Should be called when building the window, so the pointers
+	 * are initilized when set_displayed_type() is called.
+	 */
+	void finalize_setup();
+
 private:
 	std::string current_type_;
 
-	timage*  icon_type_;
-	timage*  icon_race_;
-	timage*  icon_alignment_;
+	timage* icon_type_;
+	timage* icon_race_;
+	timage* icon_alignment_;
 
-	tlabel*  label_name_;
-	tlabel*  label_level_;
-	tlabel*  label_details_;
+	tlabel* label_name_;
+	tlabel* label_level_;
+
+	tcontrol* label_details_;
+	tcontrol* label_details_minimal_;
+	ttree_view* tree_details_;
 
 	tbutton* button_profile_;
+
+	std::string image_mods_;
+
+	template<typename T> // This is only a template to avoid including units/attack.hpp
+	void print_attack_details(T attacks, ttree_view_node& parent_node);
 
 	enum tstate {
 		ENABLED
@@ -121,11 +142,15 @@ namespace implementation
 
 struct tbuilder_unit_preview_pane : public tbuilder_control
 {
+public:
 	explicit tbuilder_unit_preview_pane(const config& cfg);
 
 	using tbuilder_control::build;
 
 	twidget* build() const;
+
+private:
+	const std::string image_mods_;
 };
 
 } // namespace implementation

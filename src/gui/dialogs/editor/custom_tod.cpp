@@ -85,7 +85,7 @@ namespace gui2
 
 REGISTER_DIALOG(custom_tod)
 
-tcustom_tod::tcustom_tod(editor::editor_display* display,
+tcustom_tod::tcustom_tod(display& display,
 						 const std::vector<time_of_day>& tods)
 	: tods_(tods)
 	, current_tod_(0)
@@ -115,7 +115,7 @@ void tcustom_tod::select_file(const std::string& filename,
 	}
 
 	int res = dialogs::show_file_chooser_dialog(
-			display_->video(), dn, _("Choose File"));
+			display_.video(), dn, _("Choose File"));
 	if(res == 0) {
 		if(attribute == "image") {
 			tods_[current_tod_].image = dn;
@@ -173,10 +173,6 @@ void tcustom_tod::update_tod_display(twindow& window)
 								tod_green_field_->get_value(),
 								tod_blue_field_->get_value());
 
-	if(!display_) {
-		return;
-	}
-
 	// Prevent a floating slice of window appearing alone over the
 	// theme UI sidebar after redrawing tiles and before we have a
 	// chance to redraw the rest of this window.
@@ -192,10 +188,10 @@ void tcustom_tod::update_tod_display(twindow& window)
 	// redraw_everything() instead.
 
 	// invalidate all tiles so they are redrawn with the new ToD tint next
-	display_->invalidate_all();
+	display_.invalidate_all();
 
 	// redraw tiles
-	display_->draw(false);
+	display_.draw(false);
 
 	window.invalidate_layout();
 }

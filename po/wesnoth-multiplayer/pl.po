@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-04-30 17:00 UTC\n"
-"PO-Revision-Date: 2012-01-22 14:01+0100\n"
-"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
-"Language-Team:  <z.banach@wsisiz.edu.pl>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
+"PO-Revision-Date: 2016-03-04 14:19+0100\n"
+"Last-Translator: Jarom <jaromirb@op.pl>\n"
+"Language-Team: z.banach@wsisiz.edu.pl\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
-"X-Poedit-Basepath: /usr/local/share/wesnoth/\n"
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -43,6 +42,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"Standardowa era trybu gry wieloosobowej w Wesnoth. Zawiera sześć frakcji i "
+"jest raczej zbalansowana."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:76
@@ -56,11 +57,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Era z jednostkami wyższego poziomu: liderzy mają trzeci poziom, a rekrutować "
+"można jednostki pierwszego i drugiego poziomu. Zawiera sześć frakcji. Nie "
+"uważana za zbalansowaną."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:84
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Domyślna + Kalifat"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:85
@@ -72,13 +76,17 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Era dodająca dodatkową frakcję do sześciu podstawowych z ery Domyślnej.. "
+"Jednostki Kalifatu nie używają magii, zamiast tego polegają na sprytnym "
+"wykorzystaniu terenu i skoordynowanych atakach o zmierzchu i świcie.\n"
+"\n"
+"Ta era jest ciągle w fazie rozwoju, więc prosimy o zgłaszanie  wszelkich "
+"pojawiających się błędów."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Wiek bohaterów"
+msgstr "Wiek bohaterów + Kalifat"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:96
@@ -90,11 +98,17 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Era dodająca dodatkową frakcję do sześciu podstawowych z Wieku Bohaterów. "
+"Jednostki Kalifatu nie używają magii, zamiast tego polegają na sprytnym "
+"wykorzystaniu terenu i skoordynowanych atakach o zmierzchu i świcie.\n"
+"\n"
+"Ta era jest ciągle w fazie rozwoju, więc prosimy o zgłaszanie  wszelkich "
+"pojawiających się błędów."
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:65
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Strona %d</span>"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:81
@@ -138,7 +152,7 @@ msgstr ""
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Kalifat"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:15
@@ -289,7 +303,7 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:53
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
@@ -322,7 +336,7 @@ msgstr "Północ"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:61
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:65
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
@@ -422,19 +436,18 @@ msgstr ""
 "najdalszych rubieży lasu Lintanir, toczono wielkie i straszliwe wojny. "
 "Kroniki donoszą o potężnym magu bitewnym, a przy tym wybitnym taktyku i "
 "znawcy sztuk tajemnych, któremu poddani nadali przydomek Nieustraszony. "
-"Podczas bitwy pod Arcanclave Nieustraszony ze swoimi wojskami toczył bój z "
-"okrutną rasą demonów zwanych Kah Ruuk. Otoczony przez dziesiątki tysięcy Kah "
-"Ruuków Nieustraszony użył magii, aby wezwać na pomoc potężnego żywiołaka "
-"ziemi, który z nieznanych przyczyn był mu winien przysługą. Żywiołak wyniósł "
-"z głębi ziemie wielkie skały, w kilka chwil formując z nich mury i wieże "
-"potężnej fortecy. Tysiące Kah Ruuków zginęły podczas ataków na Cytadelę "
-"Arcanclave, a Nieustraszony wraz ze swoimi ludźmi świętował zwycięstwo. "
-"Ponad tysiąc lat później wojownicza królowa Cynsaun I wygnała z ruin "
-"Cytadeli Arcanclave zakon nekromantów i w kolejnych latach umocniła cały "
-"region swoimi wojskami. Powiadają, że gdzieś pośród granitowych i "
-"obsydianowych murów Cytadeli Arcanclave mogą po dziś dzień być ukryte "
-"potężne artefakty magiczne, pochodzące jeszcze z czasów Nieustraszonego. "
-"Projekt: Doc Paterson."
+"Podczas bitwy pod Arcanclave Nieustraszony wraz ze swymi wojskami toczył bój "
+"z okrutną rasą demonów zwanych Kah Ruuk. Otoczony przez dziesiątki tysięcy "
+"Kah Ruuków Nieustraszony użył magii, aby wezwać na pomoc potężnego żywiołaka "
+"ziemi, który był mu winien przysługę. Żywiołak wyniósł z głębi ziemii "
+"wielkie skały, w kilka chwil formując z nich mury i wieże potężnej fortecy. "
+"Tysiące Kah Ruuków zginęły podczas ataków na Cytadelę Arcanclave, a "
+"Nieustraszony wraz ze swoimi ludźmi świętował zwycięstwo. Ponad tysiąc lat "
+"później wojownicza królowa Cynsaun I wygnała z ruin Cytadeli Arcanclave "
+"zakon nekromantów i w kolejnych latach umocniła cały region swoimi wojskami. "
+"Powiadają, że gdzieś pośród granitowych i obsydianowych murów Cytadeli "
+"Arcanclave mogą po dziś dzień być ukryte potężne artefakty magiczne, "
+"pochodzące jeszcze z czasów Nieustraszonego. Projekt: Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -498,23 +511,23 @@ msgid "teamname^West"
 msgstr "Zachód"
 
 #. [multiplayer]: id=multiplayer_Basilisk
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:37
 msgid "2p — Caves of the Basilisk"
 msgstr "2g — Jaskinie Bazyliszka"
 
 #. [multiplayer]: id=multiplayer_Basilisk
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:39
 msgid ""
 "These caves were once the lair of Chak’kso Ney’yks, a legendary Elder "
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"Te jasknie zamieszkiwał niegdyś Chak'kso Ney'yks, legendarny Stary "
+"Te jaskinie zamieszkiwał niegdyś Chak'kso Ney'yks, legendarny Stary "
 "Bazyliszek. Skamieniałe postacie jego ofiar stanowią pomniki jego okrutnej "
 "mocy."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:82
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:86
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -556,15 +569,37 @@ msgstr ""
 "Przechodzą lata, dni cichną jak grom .\n"
 "Tu stoi ten, co śmiał ziemie przebiec\n"
 "Po skarb Bazyliszka, porzucić swój dom.\n"
+"(zapisane przez Ognistego Żołnierza)\n"
+"\n"
+"Przez ciemnie niebo dmie zimny wiatr\n"
+"Starej nocy przyświeca księżyca sierp\n"
+"Odważny był smok, który wkroczył w mrok\n"
+" (ew. Odważny był jaszczur, który wkroczył w paszczę)\n"
+"I dla złota bazyliszka, zostawił swój dom \n"
+"\n"
+"W tę czarną noc, wzburzone niebo\n"
+"W las poszła cała nauka jego\n"
+"odważny, acz głupiec w bazyliszka kopiec\n"
+"wkradł  się, a ogień palił się w nim\n"
+"\n"
+"Płomień ten jednak zgasł w mig\n"
+"gdy bazyliszka potężny ryk\n"
+"Zmroził go w kość i odmienił dość\n"
+"W kamień obrócił na wieki\n"
+"\n"
+"Wiatr przez niebo zimno dmie\n"
+"lata mijają, starzeją się dni\n"
+"Tu stoi smok, który wkroczył w mrok\n"
+"I dla złota bazyliszka, zostawił swój dom \n"
 "(zapisane przez Ognistego Żołnierza)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:104
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:108
 msgid "Xikkrisx"
 msgstr "Xikkrisx"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:110
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:114
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
 "the Elders of the Rysssrylosszkk Clan (translation: “The Hunts-Foes-In-"
@@ -586,34 +621,34 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
-"Xikkrisx z Syrsszk był wielkim jaszczurzym wojownikiem, które przysłała w te "
-"strony rada starszych Klanu Rysssrylosszkk (dosł. \"Klanu polujących na "
+"Xikkrisx z Syrsszk był wielkim jaszczurzym wojownikiem, którego przysłała w "
+"te strony rada starszych Klanu Rysssrylosszkk (dosł. \"Klanu polujących na "
 "wrogów we wrzących rzekach\"). Rada planowała atak na ludzką strażnicę i "
 "uznała, że nie obejdzie się bez potężnej magii Oxsrrska, jaszczurzego "
 "mistyka, o którym ostatnio słyszano, gdy udawał się ku Jezioru Ruaskkolina. "
-"Xikkrisx znalazł skamieniałe ciało Oxsrrska, wraz ze staranie zawiązanym "
+"Xikkrisx znalazł skamieniałe ciało Oxsrrska, wraz ze starannie zawiązanym "
 "zwojem, który leżał w niewielkiej szczelinie na dnie jaskini. Rozwinął zwój "
-"i przeczytał fragment ze środka tekstu: \"Gdy Chak'kso został spętany i "
-"wygnany z Górnego Świata, jego rozwścieczony duch walczył o oswobodzenie i z "
-"czasem nabył zdolność wywierania złowieszczego wpływu na niektóre części "
-"Górnego Świata poprzez kamienne drogi, które prowadzą z powierzchni ku "
-"głębinom Niższych Przestrzeni. Jego furia spowodowała przemianę jaj "
-"złożonych przez wielkie jaszczury i ukształtowanie straszliwych stworzeń "
-"stanowiących narzędzia nienawiści Chak'ksa\". Zdezorientowany Xikkrisx "
-"postanowił się skupić na wykonaniu powierzonego mu zadania. Uznawszy, że "
-"starszyzna znajdzie sposób, by przywrócić Oxsrrska do życia, rozpoczął "
-"morderczy marsz z powrotem na ziemie Klanu Rysssrylosszkk, niosąc ze sobą "
-"posąg Oxsrrska. Nie odszedł jednak daleko od jeziora, gdy zmęczenie zmusiło "
-"go do zatrzymania się. Xikkrisx postawił posąg w niewielkiej jaskini, w "
-"której następnie ułożył się do snu. Obudził go mrożący krew w żyłach ryk..."
+"i przeczytał fragment tekstu: \"Gdy Chak'kso został spętany i wygnany z "
+"Górnego Świata, jego rozwścieczony duch walczył o oswobodzenie i z czasem "
+"nabył zdolność wywierania złowieszczego wpływu na niektóre części Górnego "
+"Świata poprzez kamienne drogi, które prowadzą z powierzchni ku głębinom "
+"Niższych Przestrzeni. Jego furia spowodowała przemianę jaj złożonych przez "
+"wielkie jaszczury i ukształtowanie straszliwych stworzeń stanowiących "
+"narzędzia nienawiści Chak'ksa\". Zdezorientowany Xikkrisx postanowił się "
+"skupić na wykonaniu powierzonego mu zadania. Uznawszy, że starszyzna "
+"znajdzie sposób, by przywrócić Oxsrrska do życia, rozpoczął morderczy marsz "
+"z powrotem na ziemie Klanu Rysssrylosszkk, niosąc ze sobą posąg Oxsrrska. "
+"Nie odszedł jednak daleko od jeziora, gdy zmęczenie zmusiło go do "
+"zatrzymania się. Xikkrisx postawił posąg w niewielkiej jaskini, w której "
+"następnie ułożył się do snu. Obudził go mrożący krew w żyłach ryk..."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:113
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:117
 msgid "Oxsrrsk"
 msgstr "Oxsrrsk"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:120
 msgid ""
 "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
 "Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a "
@@ -649,14 +684,14 @@ msgstr ""
 "wiele wieków po jego wygnaniu w przekazach zaczęły się pojawiać wzmianki o "
 "nowym gatunku stworzeń, posiadających zdolność obracania każdej żywej istoty "
 "w kamień. Był czas, gdy bazyliszki (jak nazywano te istoty) siały "
-"spustoszenie w świecie żywych, obracając w kamień tysiące stworzeń. "
+"spustoszenie w świecie żywych, obracając w kamień tysiące istnień. "
 "Ostatecznie wszystkie bazyliszki wytępiono, choć ogromnym kosztem. Wieść "
 "niosła, że przeżył tylko jeden, jedyny bazyliszek zwany Ney'yks, czyli "
 "\"Najstarsze dziecko\". Przekonany, że uda mu się to stworzenie odnaleźć i "
 "zmusić do posłuszeństwa, Oxsrrsk wyruszył na poszukiwanie bazyliszka..."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:126
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "— Seven Stones and Eleven\n"
@@ -667,22 +702,22 @@ msgid ""
 "— Seven Stones — and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
-"Skromnej budowy, sprawne ręce\n"
-"- - Siedem kamieni i jedenaście\n"
-"Nie dał swym wrogom za dużo szans\n"
-"- - Siedem kamieni i jedenaście\n"
+"Skromnej budowy, zręczne dłonie\n"
+"—  Siedem kamieni i jedenaście\n"
+"Nie dał swym wrogom cienia szans\n"
+"—  Siedem kamieni i jedenaście\n"
 "Strzelec znany jako Smoków Zguba\n"
-"pośród statui martwych poległ tu\n"
-"- - Siedem kamieni - i jedenaście\n"
+"pośród posągów poległ tu\n"
+"—  Siedem kamieni - i jedenaście\n"
 "(zapisane przez Gauteamusa)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:133
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:137
 msgid "Blum Duk"
 msgstr "Blum Duk"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:135
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:139
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -701,7 +736,7 @@ msgid ""
 msgstr ""
 "Blum Duk znany był w swym goblińskim klanie z wielkiej odwagi i tego, że "
 "udało mu się oswoić jednego z górskich wargów. Tylko jego przywództwo i "
-"niezwykłe zdolności sprawiały, że gobliny z tych terenów wciąż żyły mimo "
+"niezwykłe zdolności sprawiały, że gobliny wciąż żyły na tych terenach mimo "
 "zagrożeń ze strony ludzi i elfów. Plotka głosiła, że jego wilk zabił "
 "pięćdziesięciu ludzi i sto elfów. \n"
 "I tak, gdy usłyszał o okropnym potworze, który pojawił się w okolicy, "
@@ -716,12 +751,12 @@ msgstr ""
 "(zapisane przez Elfickiego Grabieżcę)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:142
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:146
 msgid "Rah Ihn Mar"
 msgstr "Rah Ihn Mar"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:144
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -745,7 +780,7 @@ msgstr ""
 "polowanie..."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:151
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:155
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -763,7 +798,7 @@ msgstr ""
 "(zapisane przez Turina)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
 msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
@@ -772,7 +807,7 @@ msgstr ""
 "(napisał ZwycięzcaA)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
 msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
@@ -781,7 +816,7 @@ msgstr ""
 "(napisał ZwycięzcaB)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -800,12 +835,12 @@ msgstr ""
 "(zapisane przez Fynmiira)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
 msgid "Bramwythl"
 msgstr "Bramwythl"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:182
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:186
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -840,12 +875,12 @@ msgstr ""
 "(zapisane przez Elfickiego Grabieżcę)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:193
 msgid "Talael Ryndoc"
 msgstr "Talael Ryndoc"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
@@ -854,12 +889,12 @@ msgstr ""
 "Marszałkiem Aethekiem Corrynem, lecz do spotkania między nimi nie doszło. "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:199
 msgid "Aethec Corryn"
 msgstr "Aethec Corryn"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:198
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:202
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric’s Hall, and "
@@ -877,12 +912,12 @@ msgstr ""
 "Nie powinien był krzyczeć tak głośno... "
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
 msgid "Rilhon"
 msgstr "Rilhon"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:206
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:210
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves— a spear whose head was "
@@ -909,7 +944,7 @@ msgstr ""
 "(zapisane przez Patersona)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -1131,7 +1166,7 @@ msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:324
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -1140,7 +1175,7 @@ msgstr ""
 "jeśli zdołamy je w porę pokonać, zwycięstwo będzie nasze."
 
 #. [lua]: final_spawn
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:352
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:338
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -1152,27 +1187,27 @@ msgstr ""
 "ugruntowane."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:473
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:459
 msgid "Clear Weather"
 msgstr "Dobra pogoda"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:479
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:465
 msgid "Drought"
 msgstr "Susza"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:491
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:477
 msgid "Heavy Rains"
 msgstr "Ulewy"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:497
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:483
 msgid "Snowfall"
 msgstr "Śnieg"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:503
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:489
 msgid "Heavy Snowfall"
 msgstr "Śnieżyce"
 
@@ -1261,100 +1296,100 @@ msgstr ""
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:182
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:223
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:352
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:488
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:90
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:170
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:211
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:284
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:474
 msgid "Big Baby Bo"
 msgstr "Dzieciak Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:116
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:104
 msgid "Rawffus the Dim"
 msgstr "Rawffus Tępawy"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:169
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:157
 msgid "Kolbur"
 msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:196
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:184
 msgid "Vilhelm Viskitynnyri"
 msgstr "Wilhelm Wiskitynnyri"
 
-#. [unit]: type=Woodsman, id=Clockwork Boy
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:258
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:270
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:718
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:730
+#. [unit]: type=Woodsman
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:245
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:256
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:703
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:714
 msgid "Clockwork Boy"
 msgstr "Mechaniczny chłopiec"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:323
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:309
 msgid "Neki the Brutal"
 msgstr "Neki Brutal"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:366
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:352
 msgid "Drowsk Calbeht"
 msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:429
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:415
 msgid "Rzrrt the Dauntless"
 msgstr "Rhzrrt Nieustraszony"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:470
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:456
 msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, Wybraniec Śmierci"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:562
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:642
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:683
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:758
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:812
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:948
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:548
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:669
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:742
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:796
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:932
 msgid "Big Baby Dro"
 msgstr "Dzieciak Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:576
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:562
 msgid "Gawffus the Dim"
 msgstr "Gawffus Tępawy"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:629
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:656
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:642
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:783
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:767
 msgid "Neki the Brute"
 msgstr "Neki Zbir"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:826
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:810
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:873
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn Nieustraszony"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:930
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:914
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Wybraniec Śmierci"
 
@@ -1607,18 +1642,18 @@ msgid "3p — Alirok Marsh"
 msgstr "3g — Mokradła Alirok"
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1977,8 +2012,8 @@ msgstr "Pięć armii walczy o zwycięstwo w różnorodnym krajobrazie."
 msgid "5p — The Wilderlands"
 msgstr "5g — Pustkowia"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -2188,9 +2223,9 @@ msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
-"Inspirowana mapą Morituri mapa 8-osobowa. Rozegra się tu bitwa na epicką "
-"skalę, wymagająca od obu drużyn sprawnej koordynacji zarówno w ataku, jak i "
-"w obronie."
+"Inspirowana scenariuszem Morituri mapa 8-osobowa. Rozegra się tu bitwa na "
+"epicką skalę, wymagająca od obu drużyn sprawnej koordynacji zarówno w ataku, "
+"jak i w obronie."
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
@@ -2336,6 +2371,10 @@ msgid ""
 msgstr ""
 "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
+
+#, fuzzy
+#~ msgid "Custom"
+#~ msgstr "Niestandardowa"
 
 #, fuzzy
 #~| msgid "Random map"

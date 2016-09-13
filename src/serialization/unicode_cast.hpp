@@ -17,8 +17,6 @@
 #include "ucs4_convert_impl.hpp"
 #include <iostream>   //for std::cerr
 #include <iterator>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_arithmetic.hpp>
 
 namespace ucs4_convert_impl
 {

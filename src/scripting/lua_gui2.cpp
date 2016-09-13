@@ -17,6 +17,7 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/canvas.hpp"     // for tcanvas
 #include "gui/core/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/dialogs/drop_down_list.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -27,9 +28,11 @@
 #include "gui/widgets/progress_bar.hpp"  // for tprogress_bar
 #include "gui/widgets/selectable.hpp"   // for tselectable_
 #include "gui/widgets/slider.hpp"       // for tslider
+#include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"     // for ttext_box
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/widget.hpp"       // for twidget
 #include "gui/widgets/window.hpp"       // for twindow
 
@@ -41,11 +44,14 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "scripting/lua_unit.hpp"
+#include "scripting/lua_unit_type.hpp"
+#include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
+#include "game_data.hpp"
+#include "game_state.hpp"
 
 #include "utils/functional.hpp"
 
@@ -61,7 +67,7 @@ class CVideo;
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char * dlgclbkKey = "dialog callback";
+static const char dlgclbkKey[] = "dialog callback";
 
 namespace {
 	struct scoped_dialog
@@ -84,8 +90,7 @@ namespace {
 	scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
 		: L(l), prev(current), window(w), callbacks()
 	{
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, -2);
 		lua_rawget(L, LUA_REGISTRYINDEX);
@@ -98,8 +103,7 @@ namespace {
 	{
 		delete window;
 		current = prev;
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_pushvalue(L, -1);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, 1);
@@ -166,7 +170,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 				int v = lua_tointeger(L, i);
 				if (v < 1)
 					goto error_call_destructors_1;
-				int n = tvn.size();
+				int n = tvn.count_children();
 				if (v > n) {
 					goto error_call_destructors_1;
 				}
@@ -186,7 +190,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 				int v = lua_tointeger(L, i);
 				if (v < 1)
 					goto error_call_destructors_1;
-				int n = tvn->size();
+				int n = tvn->count_children();
 				if (v > n) {
 					goto error_call_destructors_1;
 				}
@@ -197,6 +201,22 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 			{
 				std::string m = luaL_checkstring(L, i);
 				w = tvn->find(m, false);
+			}
+		}
+		else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+			if(lua_isnumber(L, i)) {
+				int v = lua_tointeger(L, i);
+				if(v < 1) {
+					goto error_call_destructors_1;
+				}
+				int n = sw->get_layer_count();
+				if(v > n) {
+					goto error_call_destructors_1;
+				}
+				w = sw->get_layer_grid(v - 1);
+			} else {
+				std::string m = luaL_checkstring(L, i);
+				w = sw->find(m, false);
 			}
 		}
 		else
@@ -255,12 +275,13 @@ int show_message_dialog(lua_State *L, CVideo & video)
 {
 	config txt_cfg;
 	const bool has_input = !lua_isnoneornil(L, 3) && luaW_toconfig(L, 3, txt_cfg) && !txt_cfg.empty();
-	const std::string& input_caption = txt_cfg["label"];
-	std::string input_text = txt_cfg["text"].str();
-	unsigned int input_max_len = txt_cfg["max_length"].to_int(256);
 
-	std::vector<gui2::twml_message_option> options;
-	int chosen_option = -1;
+	gui2::twml_message_input input;
+	input.caption = txt_cfg["label"].str();
+	input.text = txt_cfg["text"].str();
+	input.maximum_length = txt_cfg["max_length"].to_int(256);
+
+	gui2::twml_message_options options;
 	if (!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
 		size_t n = lua_rawlen(L, 2);
@@ -296,9 +317,9 @@ int show_message_dialog(lua_State *L, CVideo & video)
 			}
 			gui2::twml_message_option option(opt["label"], opt["description"], opt["image"]);
 			if(opt["default"].to_bool(false)) {
-				chosen_option = i - 1;
+				options.chosen_option = i - 1;
 			}
-			options.push_back(option);
+			options.option_list.push_back(option);
 			lua_pop(L, 1);
 		}
 		lua_getfield(L, 2, "default");
@@ -309,7 +330,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 				error << "default= key in options list is not a valid option index (1-" << n << ")";
 				return luaL_argerror(L, 2, error.str().c_str());
 			}
-			chosen_option = i - 1;
+			options.chosen_option = i - 1;
 		}
 		lua_pop(L, 1);
 	}
@@ -317,24 +338,32 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	const config& def_cfg = luaW_checkconfig(L, 1);
 	const std::string& title = def_cfg["title"];
 	const std::string& message = def_cfg["message"];
-	const std::string& portrait = def_cfg["portrait"];
+
+	using portrait = gui2::twml_message_portrait;
+	std::unique_ptr<portrait> left;
+	std::unique_ptr<portrait> right;
+	const bool is_double = def_cfg.has_attribute("second_portrait");
 	const bool left_side = def_cfg["left_side"].to_bool(true);
-	const bool mirror = def_cfg["mirror"].to_bool(false);
+	if(is_double || left_side) {
+		left.reset(new portrait {def_cfg["portrait"], def_cfg["mirror"].to_bool(false)});
+	} else {
+		// This means right side only.
+		right.reset(new portrait {def_cfg["portrait"], def_cfg["mirror"].to_bool(false)});
+	}
+	if(is_double) {
+		right.reset(new portrait {def_cfg["second_portrait"], def_cfg["second_mirror"].to_bool(false)});
+	}
 
-	int dlg_result = gui2::show_wml_message(
-		left_side, video, title, message, portrait, mirror,
-		has_input, input_caption, &input_text, input_max_len,
-		options, &chosen_option
-	);
+	int dlg_result = gui2::show_wml_message(video, title, message, left.get(), right.get(), options, input);
 
-	if (!has_input && options.empty()) {
+	if (!has_input && options.option_list.empty()) {
 		lua_pushinteger(L, dlg_result);
 	} else {
-		lua_pushinteger(L, chosen_option + 1);
+		lua_pushinteger(L, options.chosen_option + 1);
 	}
 
 	if (has_input) {
-		lua_pushlstring(L, input_text.c_str(), input_text.length());
+		lua_pushlstring(L, input.text.c_str(), input.text.length());
 	} else {
 		lua_pushnil(L);
 	}
@@ -355,6 +384,33 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
 
 	gui2::show_transient_message(video, title, msg, image, true, true);
 	return 0;
+}
+
+/**
+ * Displays a popup menu at the current mouse position
+ * Best used from a [set_menu_item], to show a submenu
+ * - Arg 1: Configs defining each item, with keys icon, image/label, second_label, tooltip
+ * - Args 2, 3: Initial selection (integer); whether to parse markup (boolean)
+ */
+int show_menu(lua_State* L, CVideo& video) {
+	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
+	SDL_Rect pos = {1,1,1,1};
+	SDL_GetMouseState(&pos.x, &pos.y);
+
+	int initial = -1;
+	bool markup = false;
+	if(lua_isnumber(L, 2)) {
+		initial = lua_tointeger(L, 2) - 1;
+		markup = luaW_toboolean(L, 3);
+	} else if(lua_isnumber(L, 3)) {
+		initial = lua_tointeger(L, 3) - 1;
+		markup = luaW_toboolean(L, 2);
+	}
+
+	gui2::tdrop_down_list menu(pos, items, initial, markup);
+	menu.show(video);
+	lua_pushinteger(L, menu.selected_item() + 1);
+	return 1;
 }
 
 /**
@@ -420,6 +476,22 @@ int intf_set_dialog_value(lua_State *L)
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
+	else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+		const int v = luaL_checkinteger(L, 1);
+		const int n = sw->get_layer_count();
+		if(v >= 0 && v <= n) {
+			sw->select_layer(v - 1);
+		}
+	}
+	else if(gui2::tunit_preview_pane* upp = dynamic_cast<gui2::tunit_preview_pane*>(w)) {
+		if(const unit_type* ut = luaW_tounittype(L, 1)) {
+			upp->set_displayed_type(*ut);
+		} else if(unit* u = luaW_tounit(L, 1)) {
+			upp->set_displayed_unit(*u);
+		} else {
+			return luaL_typerror(L, 1, "unit or unit type");
+		}
+	}
 	else
 	{
 		t_string v = luaW_checktstring(L, 1);
@@ -470,6 +542,8 @@ int intf_get_dialog_value(lua_State *L)
 			lua_pushinteger(L, path[i] + 1);
 			lua_rawseti(L, -2, i + 1);
 		}
+	} else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+		lua_pushinteger(L, sw->current_layer());
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
@@ -481,11 +555,11 @@ namespace
 	{
 		//Not tested yet.
 		gui2::ttree_view& tv = node.tree_view();
-		if(pos >= node.size()) {
+		if(pos >= node.count_children()) {
 			return;
 		}
-		if(number <= 0 || number + pos > node.size()) {
-			number = node.size() - pos;
+		if(number <= 0 || number + pos > node.count_children()) {
+			number = node.count_children() - pos;
 		}
 		for (int i = 0; i < number; ++i) {
 			tv.remove_node(&node.get_child_at(pos));
@@ -534,8 +608,7 @@ namespace { // helpers of intf_set_dialog_callback()
 			cb = i->second;
 		}
 		lua_State *L = scoped_dialog::current->L;
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, cb);
 		lua_remove(L, -2);
@@ -566,8 +639,7 @@ int intf_set_dialog_callback(lua_State *L)
 	scoped_dialog::callback_map::iterator i = m.find(w);
 	if (i != m.end())
 	{
-		lua_pushstring(L
-				, dlgclbkKey);
+		lua_pushstring(L, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_pushnil(L);
 		lua_rawseti(L, -2, i->second);
@@ -579,10 +651,7 @@ int intf_set_dialog_callback(lua_State *L)
 
 	if (gui2::tclickable_ *c = dynamic_cast<gui2::tclickable_ *>(w)) {
 		static tdialog_callback_wrapper wrapper;
-		c->connect_click_handler(std::bind(
-									  &tdialog_callback_wrapper::forward
-									, wrapper
-									, w));
+		c->connect_click_handler(std::bind(&tdialog_callback_wrapper::forward, wrapper, w));
 	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
 		s->set_callback_state_change(&dialog_callback);
 	}
@@ -606,8 +675,7 @@ int intf_set_dialog_callback(lua_State *L)
 	else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
-	lua_pushstring(L
-			, dlgclbkKey);
+	lua_pushstring(L, dlgclbkKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	int n = lua_rawlen(L, -1) + 1;
 	m[w] = n;
@@ -693,7 +761,7 @@ int intf_set_dialog_visible(lua_State *L)
 {
 	typedef gui2::tcontrol::tvisible tvisible;
 
-	tvisible::scoped_enum flag = tvisible::visible;
+	tvisible flag = tvisible::visible;
 
 	switch (lua_type(L, 1)) {
 		case LUA_TBOOLEAN:
@@ -740,9 +808,9 @@ int show_lua_console(lua_State * /*L*/, CVideo & video, lua_kernel_base * lk)
 	return 0;
 }
 
-int show_gamestate_inspector(CVideo & video, const vconfig & cfg)
+int show_gamestate_inspector(CVideo & video, const vconfig & cfg, const game_data& data, const game_state& state)
 {
-	gui2::tgamestate_inspector inspect_dialog(cfg);
+	gui2::tgamestate_inspector inspect_dialog(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
 	inspect_dialog.show(video);
 	return 0;
 }

@@ -54,11 +54,6 @@
 #include "undo_update_shroud_action.hpp"
 
 #include <algorithm>                    // for reverse
-#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/ptr_container/detail/static_move_ptr.hpp>
-#include <boost/ptr_container/detail/void_ptr_iterator.hpp>
-#include <boost/ptr_container/ptr_sequence_adapter.hpp>
-#include <boost/shared_ptr.hpp>         // for shared_ptr
 #include <cassert>                      // for assert
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <set>                          // for set
@@ -454,7 +449,7 @@ void undo_list::redo()
 bool undo_list::apply_shroud_changes() const
 {
 	game_display &disp = *resources::screen;
-	team &tm = (*resources::teams)[side_ - 1];
+	team &tm = resources::gameboard->teams()[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
 		return false;

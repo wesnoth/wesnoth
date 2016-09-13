@@ -89,7 +89,7 @@ void tsimple_item_selector::pre_show(twindow& window)
 		string_map column;
 
 		column["label"] = it;
-		data.insert(std::make_pair("item", column));
+		data.emplace("item", column);
 
 		list.add_row(data);
 	}

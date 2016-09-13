@@ -22,6 +22,7 @@
 #include "team.hpp"
 #include "play_controller.hpp"
 #include "actions/create.hpp"
+#include "actions/advancement.hpp"
 #include "actions/attack.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
@@ -65,7 +66,7 @@ synced_command::map& synced_command::registry()
 SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = (*resources::teams)[current_team_num - 1];
+	team &current_team = resources::gameboard->teams()[current_team_num - 1];
 
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
@@ -130,7 +131,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = (*resources::teams)[current_team_num - 1];
+	team &current_team = resources::gameboard->teams()[current_team_num - 1];
 
 	const std::string& unit_id = child["value"];
 	map_location loc(child, resources::gamedata);
@@ -191,7 +192,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		}
 	}
 
-	if (size_t(weapon_num) >= u->attacks().size()) {
+	if (static_cast<unsigned>(weapon_num) >= u->attacks().size()) {
 		error_handler("illegal weapon type in attack\n", true);
 		return false;
 	}
@@ -229,7 +230,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = (*resources::teams)[current_team_num - 1];
+	team &current_team = resources::gameboard->teams()[current_team_num - 1];
 
 	const std::string& unit_id = child["value"];
 	size_t old_size = current_team.recall_list().size();
@@ -252,7 +253,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = (*resources::teams)[current_team_num - 1];
+	team &current_team = resources::gameboard->teams()[current_team_num - 1];
 
 	std::vector<map_location> steps;
 
@@ -390,7 +391,7 @@ namespace
 	{
 		utils::string_map symbols;
 		symbols["player"] = resources::controller->current_team().current_player();
-		resources::screen->announce(vgettext(message, symbols), font::NORMAL_COLOR);
+		resources::screen->announce(vgettext(message, symbols), font::NORMAL_COLOR, 1000);
 	}
 }
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)
@@ -419,10 +420,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			}
 		}
 	} else if (name == "status" ) {
-		config cfg;
-		i->write(cfg);
-		resources::units->erase(loc);
-		config& statuses = cfg.child_or_add("status");
 		for (std::string status : utils::split(value)) {
 			bool add = true;
 			if (status.length() >= 1 && status[0] == '-') {
@@ -432,10 +429,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			if (status.empty()) {
 				continue;
 			}
-			statuses[status] = add;
+			i->set_state(status, add);
 		}
-		unit new_u(cfg, true);
-		resources::units->add(loc, new_u);
 	} else {
 		config cfg;
 		i->write(cfg);
@@ -477,7 +472,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	// Add the unit to the board.
 	std::pair<unit_map::iterator, bool> add_result = resources::units->replace(loc, created);
 	resources::screen->invalidate_unit();
-	resources::game_events->pump().fire("unit placed", loc);
+	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
 
 	// Village capture?
@@ -503,6 +498,31 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	resources::lua_kernel->run(child["code"].str().c_str());
 	resources::controller->pump().flush_messages();
 
+	return true;
+}
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if (use_undo) {
+		resources::undo_stack->clear();
+	}
+	debug_notification("kill debug command was used during turn of $player");
+	
+	const map_location loc(child["x"].to_int() -1 , child["y"].to_int() - 1);
+	const unit_map::iterator i = resources::units->find(loc);
+	if (i != resources::units->end()) {
+		const int dying_side = i->side();
+		resources::controller->pump().fire("last_breath", loc, loc);
+		if (i.valid()) {
+			unit_display::unit_die(loc, *i);
+		}
+		resources::screen->redraw_minimap();
+		resources::controller->pump().fire("die", loc, loc);
+		if (i.valid()) {
+			resources::units->erase(i);
+		}
+		actions::recalculate_fog(dying_side);
+	}
 	return true;
 }
 

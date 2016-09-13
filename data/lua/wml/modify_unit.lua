@@ -5,9 +5,11 @@ local wml_actions = wesnoth.wml_actions
 function wml_actions.modify_unit(cfg)
 	local unit_variable = "LUA_modify_unit"
 
+	local replace_mode = cfg.mode == "replace"
+
 	local function handle_attributes(cfg, unit_path, toplevel)
 		for current_key, current_value in pairs(helper.shallow_parsed(cfg)) do
-			if type(current_value) ~= "table" and (not toplevel or current_key ~= "type") then
+			if type(current_value) ~= "table" and (not toplevel or (current_key ~= "type" and current_key ~= "mode")) then
 				wesnoth.set_variable(string.format("%s.%s", unit_path, current_key), current_value)
 			end
 		end
@@ -51,7 +53,22 @@ function wml_actions.modify_unit(cfg)
 				wesnoth.add_modification(unit, current_tag, mod)
 				unit = unit.__cfg;
 				wesnoth.set_variable(unit_path, unit)
+			elseif current_tag == "effect" then
+				local mod = current_table[2]
+				local apply_to = mod.apply_to
+				if wesnoth.effects[apply_to] then
+					local unit = wesnoth.get_variable(unit_path)
+					unit = wesnoth.create_unit(unit)
+					wesnoth.effects[apply_to](unit, mod)
+					unit = unit.__cfg;
+					wesnoth.set_variable(unit_path, unit)
+				else
+					helper.wml_error("[modify_unit] had invalid [effect]apply_to value")
+				end
 			else
+				if replace_mode then
+					wesnoth.set_variable(string.format("%s.%s", unit_path, current_tag), {})
+				end
 				local tag_index = children_handled[current_tag] or 0
 				handle_child(current_table[2], string.format("%s.%s[%u]",
 					unit_path, current_tag, tag_index))

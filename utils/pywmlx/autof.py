@@ -11,7 +11,7 @@ def autoscan(pathdir):
             rx = re.compile(r'\.(cfg|lua)$', re.I)
             m = re.search(rx, name)
             if m:
-                value = os.path.join(root, name)
+                value = os.path.realpath(os.path.join(root, name))
                 value = value [ len(parentdir) +1 : ]
                 if os.name == "posix":
                     value = re.sub(r'^\/', '', value)

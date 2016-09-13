@@ -30,11 +30,11 @@ public:
 		mp_campaign_info* mp_info);
 	virtual ~playmp_controller();
 
-	void maybe_linger();
-	void process_oos(const std::string& err_msg) const;
+	void maybe_linger() override;
+	void process_oos(const std::string& err_msg) const override;
 
-	void pull_remote_choice();
-	void send_user_choice();
+	void pull_remote_choice() override;
+	void send_user_choice() override;
 
 	class hotkey_handler;
 
@@ -42,18 +42,18 @@ public:
 	void send_to_wesnothd(const config& cfg, const std::string& packet_type = "unknown") const override;
 	bool recieve_from_wesnothd(config& cfg) const override;
 protected:
-	virtual void handle_generic_event(const std::string& name);
+	virtual void handle_generic_event(const std::string& name) override;
 
 	void start_network();
 	void stop_network();
 
-	virtual void play_side_impl();
-	virtual void play_human_turn();
+	virtual void play_side_impl() override;
+	virtual void play_human_turn() override;
 	virtual void play_linger_turn();
-	virtual void after_human_turn();
-	virtual void play_network_turn();
-	virtual void do_idle_notification();
-	virtual void play_idle_loop();
+	virtual void after_human_turn() override;
+	virtual void play_network_turn() override;
+	virtual void do_idle_notification() override;
+	virtual void play_idle_loop() override;
 
 	void linger();
 	/** Wait for the host to upload the next scenario. */
@@ -61,7 +61,7 @@ protected:
 
 	mutable bool network_processing_stopped_;
 
-	virtual void on_not_observer();
+	virtual void on_not_observer() override;
 	bool is_host() const;
 	void remove_blindfold();
 

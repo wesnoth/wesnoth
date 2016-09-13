@@ -25,7 +25,7 @@
 
 #include <SDL_video.h>
 
-typedef struct { size_t x1,y1,x2,y2; } _rect;
+struct _rect { size_t x1,y1,x2,y2; };
 
 struct theme_info
 {

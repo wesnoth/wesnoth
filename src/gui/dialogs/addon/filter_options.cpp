@@ -122,7 +122,7 @@ taddon_filter_options::taddon_filter_options()
 	, sort_tgroup_()
 	, dir_tgroup_()
 {
-	displayed_types_.assign(true);
+	displayed_types_.fill(true);
 
 	// This part has to be hardcoded, sadly.
 
@@ -195,7 +195,7 @@ void taddon_filter_options::pre_show(twindow& window)
 		string_map column;
 
 		column["label"] = status_label(ADDON_STATUS_FILTER(k));
-		row.insert(std::make_pair("status", column));
+		row.emplace("status", column);
 
 		list.add_row(row);
 	}

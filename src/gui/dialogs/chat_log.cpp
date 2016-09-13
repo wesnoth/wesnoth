@@ -39,7 +39,6 @@
 
 #include <vector>
 #include "utils/functional.hpp"
-#include <boost/shared_ptr.hpp>
 
 static lg::log_domain log_chat_log("chat_log");
 #define DBG_CHAT_LOG LOG_STREAM(debug, log_chat_log)
@@ -68,10 +67,10 @@ REGISTER_DIALOG(chat_log)
 class tchat_log::model
 {
 public:
-	model(const vconfig& c, replay* r)
+	model(const vconfig& c, const replay& r)
 		: cfg(c)
 		, msg_label(nullptr)
-		, chat_log_history(r->build_chat_log())
+		, chat_log_history(r.build_chat_log())
 		, page(0)
 		, page_number()
 		, page_label()
@@ -340,7 +339,7 @@ private:
 class tchat_log::view
 {
 public:
-	view(const vconfig& cfg, replay* r) : model_(cfg, r), controller_(model_)
+	view(const vconfig& cfg, const replay& r) : model_(cfg, r), controller_(model_)
 	{
 	}
 
@@ -429,14 +428,14 @@ private:
 };
 
 
-tchat_log::tchat_log(const vconfig& cfg, replay* r) : view_()
+tchat_log::tchat_log(const vconfig& cfg, const replay& r) : view_()
 {
 	LOG_CHAT_LOG << "Entering tchat_log::tchat_log" << std::endl;
-	view_ = boost::shared_ptr<view>(new view(cfg, r));
+	view_ = std::make_shared<view>(cfg, r);
 	LOG_CHAT_LOG << "Exiting tchat_log::tchat_log" << std::endl;
 }
 
-boost::shared_ptr<tchat_log::view> tchat_log::get_view()
+std::shared_ptr<tchat_log::view> tchat_log::get_view()
 {
 	return view_;
 }

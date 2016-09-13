@@ -15,8 +15,7 @@
 #ifndef TSTRING_H_INCLUDED
 #define TSTRING_H_INCLUDED
 
-#include "utils/shared_object.hpp"
-
+#include <memory>
 #include <string>
 
 /**
@@ -35,9 +34,13 @@ public:
 		bool eos() const                          { return begin_ == string_.size(); }
 		bool last() const                         { return end_ == string_.size(); }
 		bool translatable() const                 { return translatable_; }
+		bool countable() const                    { return countable_; }
+		int count() const                         { return count_; }
 		const std::string& textdomain() const     { return textdomain_; }
 		std::string::const_iterator begin() const { return string_.begin() + begin_; }
 		std::string::const_iterator end() const   { return string_.begin() + end_; }
+		std::string::const_iterator plural_begin() const;
+		std::string::const_iterator plural_end() const;
 	private:
 		void update();
 
@@ -45,7 +48,8 @@ public:
 		std::string::size_type begin_;
 		std::string::size_type end_;
 		std::string textdomain_;
-		bool translatable_;
+		bool translatable_, countable_;
+		int count_;
 	};
 
 	friend class walker;
@@ -57,6 +61,7 @@ public:
 	t_string_base(const t_string_base&);
 	t_string_base(const std::string& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
+	t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 	t_string_base(const char* string);
 
 	static t_string_base from_serialized(const std::string& string);
@@ -111,10 +116,9 @@ private:
 inline size_t hash_value(const t_string_base& str) { return str.hash_value(); }
 std::ostream& operator<<(std::ostream&, const t_string_base&);
 
-class t_string :
-	private shared_object<t_string_base> {
+class t_string
+{
 public:
-	typedef shared_object<t_string_base> super;
 	typedef t_string_base base;
 	typedef t_string_base::walker walker;
 
@@ -131,6 +135,7 @@ public:
 	t_string(const char *);
 	t_string(const std::string &);
 	t_string(const std::string &str, const std::string &textdomain);
+	t_string(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 
 	t_string &operator=(const char *o);
 
@@ -142,10 +147,18 @@ public:
 	t_string operator+(const t_string& o) const { return get() + o.get(); }
 	t_string operator+(const std::string& o) const { return get() + o; }
 	t_string operator+(const char* o) const { return get() + o; }
-
-	t_string& operator+=(const t_string& o) { set(base(get()) += o.get()); return *this; }
-	t_string& operator+=(const std::string& o) { set(base(get()) += o); return *this; }
-	t_string& operator+=(const char* o) { set(base(get()) += o); return *this; }
+private:
+	template<typename T>
+	void increase_impl(const T& other)
+	{
+		base * nw = new base(get());
+		*nw += other;
+		val_.reset(nw);
+	}
+public:
+	t_string& operator+=(const t_string& o) { increase_impl(o.get()); return *this; }
+	t_string& operator+=(const std::string& o) { increase_impl(o); return *this; }
+	t_string& operator+=(const char* o) { increase_impl(o); return *this; }
 
 	bool operator==(const t_string& o) const { return get() == o.get(); }
 	bool operator==(const std::string& o) const { return get() == o; }
@@ -170,7 +183,11 @@ public:
 	static void add_textdomain(const std::string &name, const std::string &path);
 	static void reset_translations();
 
-	const t_string_base& get() const { return super::get(); }
+	const t_string_base& get() const { return *val_; }
+	void swap(t_string& other) { val_.swap(other.val_); }
+private:
+	//never null
+	std::shared_ptr<const t_string_base> val_;
 };
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
 inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }

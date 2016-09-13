@@ -40,8 +40,6 @@
 
 #include "game_display.hpp" // for resources::screen
 
-#include <boost/scoped_ptr.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -134,6 +132,9 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		else if ( place == "map"  ||  place.compare(0, 4, "map_") == 0 ) {
 			loc = map_location(cfg, resources::gamedata);
 		}
+		else {
+			loc = board_->map().special_location(place);
+		}
 
 		if(loc.valid() && board_->map().on_board(loc)) {
 			const bool pass((place == "leader_passable") || (place == "map_passable"));
@@ -165,7 +166,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	if ( !recall_list_element ) {
 		//make the new unit
-		unit_ptr new_unit(new unit(temp_cfg, true, vcfg, &board_->unit_id_manager()));
+		unit_ptr new_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
 			//add the new unit to map
@@ -216,7 +217,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
 	if (resources::lua_kernel != nullptr) {
-		resources::game_events->pump().fire("unit placed", loc);
+		resources::game_events->pump().fire("unit_placed", loc);
 	}
 
 	if (resources::screen!=nullptr) {

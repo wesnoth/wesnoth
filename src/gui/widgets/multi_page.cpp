@@ -215,7 +215,7 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg)
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(child);
+	grid = std::make_shared<tbuilder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -272,7 +272,7 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
 	const config& page = cfg.child("page_definition");
 
 	VALIDATE(page, _("No page defined."));
-	builder = new tbuilder_grid(page);
+	builder = std::make_shared<tbuilder_grid>(page);
 	assert(builder);
 
 	/** @todo This part is untested. */
@@ -312,9 +312,8 @@ twidget* tbuilder_multi_page::build() const
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const tmulti_page_definition::tresolution>
-	conf = boost::
-			dynamic_pointer_cast<const tmulti_page_definition::tresolution>(
+	std::shared_ptr<const tmulti_page_definition::tresolution>
+	conf = std::static_pointer_cast<const tmulti_page_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

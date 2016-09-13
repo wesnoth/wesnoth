@@ -26,10 +26,8 @@
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
-#include "soundsource.hpp"
 #include "util.hpp"
 
-#include <boost/unordered_map.hpp>
 #include <iostream>
 
 
@@ -164,6 +162,14 @@ namespace game_events {
 		}
 
 		log_handlers();
+	}
+
+	const handler_ptr t_event_handlers::get_event_handler_by_id(const std::string & id) {
+		id_map_t::iterator find_it = id_map_.find(id);
+		if ( find_it != id_map_.end()  &&  !find_it->second.expired() ) {
+			return handler_ptr( find_it->second );
+		}
+		return handler_ptr( );
 	}
 
 } // end namespace game_events

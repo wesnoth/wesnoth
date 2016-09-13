@@ -37,7 +37,7 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_members. */
-	void set_members(const string_map& data);
+	void set_members(const string_map& data) override;
 
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) override;
@@ -49,7 +49,7 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tcontrol. */
-	void update_canvas();
+	void update_canvas() override;
 
 	/** Inherited from tselectable_ */
 	unsigned get_value() const override
@@ -59,14 +59,14 @@ public:
 	/** Inherited from tselectable_ */
 	unsigned num_states() const override;
 	/** Inherited from tselectable_ */
-	void set_value(const unsigned selected);
+	void set_value(const unsigned selected) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(std::function<void(twidget&)> callback)
+	void set_callback_state_change(std::function<void(twidget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}

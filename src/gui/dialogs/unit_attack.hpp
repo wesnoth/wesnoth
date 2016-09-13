@@ -47,8 +47,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	void profile_button_callback(twindow& window, const std::string& type);
-
 	void damage_calc_callback(twindow& window);
 
 	/** The index of the selected weapon. */

@@ -34,7 +34,7 @@
 	namespace                                                                  \
 	{                                                                          \
                                                                                \
-	namespace ns_##type                                                        \
+	namespace ns_##type##id                                                    \
 	{                                                                          \
                                                                                \
 		struct tregister_helper                                                \

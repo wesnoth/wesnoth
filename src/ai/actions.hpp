@@ -196,7 +196,7 @@ private:
 	const map_location from_;
 	const map_location to_;
 	bool remove_movement_;
-	boost::shared_ptr<pathfind::plain_route> route_;
+	std::shared_ptr<pathfind::plain_route> route_;
 	map_location unit_location_;
 	bool unreach_is_ok_;
 	bool has_ambusher_;

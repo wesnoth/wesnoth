@@ -25,6 +25,7 @@
 #include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
 
+#include "config.hpp"
 #include "image.hpp"
 #include "language.hpp"
 #include "sdl/rect.hpp"
@@ -62,7 +63,7 @@ namespace {
 	int const titleshadow_b = 0;
 
 	int const titlebox_font_size = 20; // pt?
-	int const storybox_font_size = 14; // pt?
+	int const storybox_font_size = 17; // pt?
 
 	Uint32 const titlebox_font_color = 0xFFFFFFFF;
 	Uint32 const storybox_font_color = 0xDDDDDDFF;
@@ -366,6 +367,9 @@ bool part_ui::render_floating_images()
 				update_rect(old_ri.rect);
 			}
 		}
+		back_button_.set_dirty();
+		next_button_.set_dirty();
+		play_button_.set_dirty();
 
 		if (!skip_)
 		{
@@ -380,7 +384,6 @@ bool part_ui::render_floating_images()
 
 		++fi_n;
 	}
-
 	return true;
 #endif
 }
@@ -762,8 +765,8 @@ void part_ui::render_story_box()
 	last_key_ = true;
 	font::ttext t;
 	bool scan_finished = false;
-	SDL_Rect scan;
-	SDL_Rect dstrect;
+	SDL_Rect scan = {0,0,0,0};
+	SDL_Rect dstrect = {0,0,0,0};
 
 
 	while(true) {
@@ -964,12 +967,19 @@ bool part_ui::handle_interface()
 
 part_ui::RESULT part_ui::show()
 {
+	update_locker locker(video_);
+
 	this->prepare_background();
 	this->prepare_geometry();
 	this->prepare_floating_images();
 
 	if(p_.music().empty() != true) {
-		sound::play_music_repeatedly(p_.music());
+		config music_config;
+		music_config["name"] = p_.music();
+		music_config["ms_after"] = 2000;
+		music_config["immediate"] = true;
+
+		sound::play_music_config(music_config);
 	}
 
 	if(p_.sound().empty() != true) {

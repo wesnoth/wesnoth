@@ -48,6 +48,8 @@
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
 
+using acquaintances_map = std::map<std::string, preferences::acquaintance>;
+
 namespace {
 
 bool message_private_on = false;
@@ -60,7 +62,7 @@ std::set<t_translation::t_terrain> encountered_terrains_set;
 
 std::map<std::string, std::vector<std::string> > history_map;
 
-std::map<std::string, preferences::acquaintance> acquaintances;
+acquaintances_map acquaintances;
 
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
@@ -278,18 +280,26 @@ std::map<std::string, std::string> get_acquaintances_nice(const std::string& fil
 	return ac_nice;
 }
 
-bool add_friend(const std::string& nick, const std::string& notes) {
-	if (!utils::isvalid_wildcard(nick)) return false;
-	acquaintances[nick] = preferences::acquaintance(nick, "friend", notes);
-	save_acquaintances();
-	return true;
-}
+preferences::acquaintance* add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes)
+{
+	if(!utils::isvalid_wildcard(nick)) {
+		return nullptr;
+	}
 
-bool add_ignore(const std::string& nick, const std::string& reason) {
-	if (!utils::isvalid_wildcard(nick)) return false;
-	acquaintances[nick] = preferences::acquaintance(nick, "ignore", reason);
+	preferences::acquaintance new_entry(nick, mode, notes);
+
+	acquaintances_map::iterator iter;
+	bool success;
+
+	std::tie(iter, success) = acquaintances.emplace(nick, new_entry);
+
+	if(!success) {
+		iter->second = new_entry;
+	}
+
 	save_acquaintances();
-	return true;
+
+	return &iter->second;
 }
 
 bool remove_acquaintance(const std::string& nick) {
@@ -601,6 +611,16 @@ bool allow_observers()
 void set_allow_observers(bool value)
 {
 	preferences::set("allow_observers", value);
+}
+
+bool registered_users_only()
+{
+	return preferences::get("registered_users_only", false);
+}
+
+void set_registered_users_only(bool value)
+{
+	preferences::set("registered_users_only", value);
 }
 
 bool shuffle_sides()
@@ -1064,16 +1084,6 @@ void set_chat_message_aging(const int aging)
 int chat_message_aging()
 {
 	return lexical_cast_default<int>(preferences::get("chat_message_aging"), 20);
-}
-
-void set_max_wml_menu_items(int max)
-{
-	preferences::set("max_wml_menu_items", max);
-}
-
-int max_wml_menu_items()
-{
-	return lexical_cast_default<int>(preferences::get("max_wml_menu_items"), 7);
 }
 
 bool show_all_units_in_help() {

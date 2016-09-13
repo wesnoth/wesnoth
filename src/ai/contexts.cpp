@@ -39,7 +39,6 @@
 #include "game_board.hpp"            // for game_board
 #include "game_config.hpp"              // for debug
 #include "game_display.hpp"          // for game_display
-#include "game_errors.hpp"		// for throw
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
 #include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc
@@ -58,8 +57,6 @@
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
-#include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
-#include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
 #include <cmath>                       // for sqrt
 #include <cstdlib>                     // for abs
 #include <ctime>                       // for time
@@ -109,7 +106,7 @@ void readwrite_context_impl::raise_gamestate_changed() const
 
 team& readwrite_context_impl::current_team_w()
 {
-	return (*resources::teams)[get_side()-1];
+	return resources::gameboard->teams()[get_side()-1];
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
@@ -179,9 +176,9 @@ synced_command_result_ptr readonly_context_impl::check_synced_command_action(con
 
 
 template<typename T>
-void readonly_context_impl::add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> > &where)
+void readonly_context_impl::add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T> > &where)
 {
-	boost::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
+	std::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
 	known_aspects_.insert(make_pair(name,ka_ptr));
 }
 
@@ -338,7 +335,7 @@ void readonly_context_impl::diagnostic(const std::string& msg)
 
 const team& readonly_context_impl::current_team() const
 {
-	return (*resources::teams)[get_side()-1];
+	return resources::gameboard->teams()[get_side()-1];
 }
 
 
@@ -381,12 +378,11 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		}
 
 		// We can't see where invisible enemy units might move.
-		if (enemy && un_it->invisible(un_it->get_location()) && !see_all) {
+		if (enemy && un_it->invisible(un_it->get_location(), *resources::gameboard) && !see_all) {
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
-		unit* held_unit = const_cast<unit *>(&*un_it);
-		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
+		const unit_movement_resetter move_resetter(*un_it,enemy || assume_full_movement);
 
 		// Insert the trivial moves of staying on the same map location.
 		if (un_it->movement_left() > 0) {
@@ -431,8 +427,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 			// Don't take friendly villages
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
-				for(size_t n = 0; n != resources::teams->size(); ++n) {
-					if((*resources::teams)[n].owns_village(dst)) {
+				for(size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
+					if(resources::gameboard->teams()[n].owns_village(dst)) {
 						int side = n + 1;
 						if (get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;

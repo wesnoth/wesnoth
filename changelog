@@ -1,36 +1,197 @@
-Version 1.13.4+dev:
+Version 1.13.5+dev:
+ * AI:
+   * Added new high_xp_attack candidate action to default AI. This CA performs
+     attacks on enemy units so close to leveling that the default AI's combat CA
+     would not attack them.
+   * New Micro AI: Assassin Squad AI
+   * Fix bug #23720, AI units with max_moves=0 do not attack.
+   * Fix bug #22179: [disable] weapon special is ignored by AI. A second
+     instance of the AI also ignoring this special under different circumstances
+     has also been fixed.
  * Campaigns:
+   * Eastern Invasion:
+     * Fixed broken village encounters.
+   * Delfador's Memoirs:
+     * S9: Resolved inability to end level even when Delfador has the Staff
+       (bug #24951)
+     * S17: Resolved Wesnoth units returning to recall list not being healed
+       properly (bug #24952)
+     * S19: Resolved undead veterans victory condition not working properly.
+ * Music and sound effects:
+   * Added a preference to pause the music when the game loses focus.
+   * Now the music fades out between scenarios.
+ * Graphics:
+   * Improved or new terrain graphics: New wooden floor variation and new
+     transitions.
+   * New sprite for Tentacle of the Deep.
+ * Units:
+   * Changed the sound for the melee attack of the
+     Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
+ * User Interface:
+   * Trait descriptions in the help are now generated. (This makes user-defined
+     traits show up in the help as well.)
+   * Fix game map sometimes showing and buttons sometimes not rendered properly
+     in story screen (bug #24553)
+   * Improved font rendering on Windows.
+   * Redesigned gamestate inspector window.
+   * Recall dialog no longer shows units that no leader on the map can recall
+     (due to the [filter_recall] not matching)
+   * Weapon specials only gained through AMLAs now get a help topic
+   * The "Cores" button on the title screen is now hidden if no cores other
+     than the default are installed
+   * Redesigned game dropdown/context menu appearance
+   * New categories bar in hotkey preferences allows you to filter hotkeys
+   * Fix issue with the title screen not redrawing when the window size or
+     fullscreen setting changes with a dialog open over it.
+ * WML Engine:
+   * Added {HAS_NO_TURN_LIMIT} macro for objectives
+   * New attributes for [message] with [option]
+     * Added variable= to [message]: if specified, gives variable name to
+       receive the [option] index (1..n) selected
+       only used if any [option] appear
+     * Added value= to [option]: if specified, gives value to store in variable
+       instead of index number, only used if variable= appears in [message]
+   * New attributes for [role]:
+     * search_recall_list=yes|no|only(default yes) controls where to look
+     * reassign=yes|no(default yes) if no, check for a unit and do not assign to
+       another
+     * [auto_recall] sub-tag, if assigned to recall list, gives [recall]
+       attributes (no SUF)
+     * [else] sub-tag, WML to execute if no unit found for the role
+   * New help_text= key for [trait] to set the description displayed in the
+     help.
+   * Added tag id= [fire_event], which allows raising events by id
+   * [modify_unit] now understands [effect] tags, which it applies directly.
+     This replaces the use of [object] with no_write=yes (which will be removed
+     in the next release).
+   * Add [object]take_only_once=yes|no (default yes) - if set to no, automatic
+     tracking is disabled for this object (allowing it to be taken multiple
+     times even if it has an id).
+   * New [remove_object] tag which removes applied [object]s from matched units;
+     it can filter on the entire [object] WML. The most efficient use is to
+     remove all objects with a specific duration value.
+   * Renamed [foreach] variable= to array=
+   * Renamed [foreach] item_var= to variable=
+   * Fixed several bugs in the name generation of the map generator
+   * Fixed issues with using [endlevel] in victory/defeat events
+   * The {MAGENTA_IS_THE_TEAM_COLOR} macro is no longer needed in [unit_type]
+     It is now the default behaviour unless overridden with the flag_rgb key.
+   * New key type_tree in unit filters - similar to type, but also matches any
+     possible advancements of the specified unit types.
+   * [options][combo] in [scenario], [modifications], etc has been renamed
+     to [choice] (which is more accurate). The old name still works for now.
+* Lua API:
+   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
+     old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
+   * Added new function wesnoth.remove_modifications, which removes applied
+     modifications of the chosen type from a unit. The most efficient use is to
+     remove all modifications with a specific duration value.
+     Also callable as u:remove_modifications.
+   * The built-in conditionals have_unit, have_location, and variable are now
+     present in the wesnoth.wml_conditionals table. This means they can be
+     directly called, extended with new features, or even overridden with custom
+     implementations.
+   * New recall_filter field in unit proxy returns the [filter_recall] config
+   * New variations field in unit_type proxy returns a list of unit variations
+     Each member is a full unit_type describing that variation.
+     The table is iterable with pairs().
+   * Lua side, unit_type, and unit attack proxies can now be compared with ==
+     with identity semantics. (Previously, each time such a proxy was obtained,
+     it would produce a new object that did not compare equal to any others.)
+   * Lua dialog functions now support the stacked widget and the unit preview pane
+   * New wesnoth.show_menu function shows a dropdown menu at the mouse location
+   * Lua attack proxy has new read_only field which is true for unit_type attacks
+     If true, attempts to change the attack will result in an error.
+   * The name field in Lua attack proxy is now writable
+   * The attacks field in the Lua unit proxy is now writable
+     Specifically, attacks may be replaced, appended (by assigning a new ID or
+     the next valid index), or removed (by setting a field to nil).
+   * wesnoth.show_message_dialog supports second_portrait and second_mirror keys
+     in its first argument, which produces a dialog with two portraits.
+   * The callable userdata returned by wesnoth.textdomain can now be called with
+     an additional two parameters (a plural string and a count) in order to support
+     gettext plurals.
+   * New matches function in team and unit attack metatables, which test if the
+     side or weapon matches a filter.
+* Performance:
+   * When a heuristic determines that it's probably faster, the game predicts
+     battle
+     outcome by simulating a few thousand fights instead of calculating exact
+     probabilities. This method is inexact, but in very complex battles
+     (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
+     default damage calculation method.
+* Miscellaneous and bug fixes:
+   * A new way to make units invulnerable for debugging: select the unit and type
+     ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
+     chance to zero: as a result, it doesn't slow down damage prediction unlike the
+     "increase HP to ridiculous levels" method.
+   * The ;choose_level command now works in the tutorial and in [test] scenarios
+   * Fixed a stray ; character appearing pre-entered in the command console.
+   * Fixed bug in wesnothd that was causing server crashes if game with
+     multiple network and local players was ran.
+   * Added a tab to run the wmlxgettext tool to GUI.pyw
+   * Fixed problem with Spectre's hitpoint bar positioning.
+   * Show correct number of attacks in case of swarm weapon special (bug #24978)
+   * Fixed bug that icons of buttons under the minimap disappeared when the
+     player opened and closed a menu.
+
+Version 1.13.5:
+ * Campaigns:
+   * An Orcish Incursion:
+     * Linaera can recruit Mage, and cannot recruit Elves
    * Heir to the Throne:
      * Add journey tracks for 19c/20b path.
      * New sprites for Li'sar.
      * S10: Clarify objectives and change egg image on capture.
      * S19c: Removed the undead and the swamps.
+   * Tutorial
+     * Improve translatability for languages with gender-dependent pronouns
+     * S1: Fix unit being deselected after the select message
+     * S2: Highlight (outline) talked-about locations
    * Legend of Wesmere
-   	 * S3: fix bug which silently disabled Urudin retreat AI
+     * S3: fix bug which silently disabled Urudin retreat AI
  * Graphics:
    * Updated generic portrait of Mermaid Initiate.
    * Added generic portrait for Giant Spider.
  * Language and i18n:
    * Updated translations: British English, Galician, German, Italian, Japanese,
-     Portuguese, RACV, Russian, Scottish Gaelic, Spanish
+     Polish, Portuguese, RACV, Russian, Scottish Gaelic, Spanish
  * Networking:
    * Reworked the multiplayer server to use asio functions for networking
      operations instead of SDL_net, thus it no longer depends on SDL_net and SDL.
+   * The client now uses boost::asio for communication with wesnothd too.
  * Removed support for SDL 1.2. SDL 2 is now the only supported version.
  * Terrains:
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
+ * Editor:
+   * Allow to set special locations in the editor which can then be read by wml.
  * User Interface:
+   * Fix flickering caused by tooltips, closing windows and tabbing into the game (bug #24532)
    * Various design improvements to GUI2 widgets
    * New simpler GUI2 loading screen
    * New colored cursor graphics
+   * Fixed Mage of Light halo appearing in the top-left corner of the screen
+     while the mage is moving (bug #23712).
    * Fixed Observers icon appearing behind other top bar items in MP games on
      horizontal UI resolutions < 1024 (bug #24455).
    * Fixed ToD schedule progress indicator appearing behind other top bar items
      on vertical UI resolutions < 600.
    * Improved the dialog for choosing what to do when a player leaves in
      multiplayer.
+   * The side overview now also shows allied human sides in sp even if
+     they aren't discovered yet
+   * Added an option to disable the loadingscreen animation since it caused
+     bugs in some configurations.
+   * Added a gui method to activate loggers (Preferences -> Advanced -> Logging)
+     loggers activated in the gui print just like loggers activated in the
+     command line (i.e. messages appear in the console)
+   * The Lua console screen now has a clear button
+   * Fix bug #24762: Editor actions are out of sync after resizing.
+   * Increased the font size for text in buttons.
+   * Changed unit help topics to use smaller images on smaller monitors.
  * WML engine:
    * Add color= attribute to [message].
+   * Add [else], search_recall_list=, auto_recall= to [role]
    * Fix some issues with [foreach]
    * Fix some issues with backstab-like weapon specials
    * Support [effect]times=<integer>
@@ -59,7 +220,13 @@ Version 1.13.4+dev:
      are derived
    * Modification tags in [modify_unit] now support delayed_variable_substitution
      (This means [advancement], [object], and [trait] tags.)
+   * All looping tags now give an error if they contain no [do] tag.
+     (They may contain multiple [do] tags, however.)
+   * Add [message]image_pos=left|right, which mostly supercedes ~RIGHT()
+   * For [core] authors: New keys for game logo (game_logo, game_logo_background)
    * AiWML:
+     * Filters within [micro_ai] can now use $this_unit, which was previously
+       impossible due to the config being prematurely parsed.
      * Simplified aspect syntax which works for all aspects, present and future:
        * All aspects with simple values can be specified as key=value
        * Except attacks, all aspects with complex values have a simple tag form
@@ -139,6 +306,13 @@ Version 1.13.4+dev:
          aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
          (For a limit, replace "recruit" with "limit".)
          The [recruit] and [limit] tags now support id keys for this.
+   * Added side_name= attribute in [side], it's now no longer possible to
+     specify the current_player attribute in the [side] wml.
+   * unit filters, specially in wesnoth.get_units now have a limit= attribute
+     to limit the number or matched units.
+   * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
+     that only registered users should be allowed to join the game
+   * wesnoth now does a stricter check for unit type ids.
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -147,7 +321,7 @@ Version 1.13.4+dev:
    * wesnoth.highlight_hex is no longer deprecated, but its effect is
      slightly different from the old one. It outlines a hex, nothing more.
    * wesnoth.select_hex is now deprecated in favour of the new
-     wesnoth.select_unit (or u:select_unit). The effect is almost the same
+     wesnoth.select_unit (or u:select). The effect is almost the same
      (with the exception that it does not outline the hex if true is
      passed as the second argument), but this name change was done to
      emphasize that it acts on a unit, more than a location.
@@ -165,7 +339,11 @@ Version 1.13.4+dev:
      and [deprecated_message] tags now use this.
    * New wesnoth.name_generator function builds a name generator and returns
      it as a callable userdata. Both the original Markov chain generator
-     and the new context free gramamr generator are supported
+     and the new context free grammar generator are supported
+   * New wesnoth.get_end_level_data() function which can be called in a
+     victory, defeat, or scenario_end event to access (or change) how
+     the scenario ends.
+   * Fix wesnoth.erase_unit failing if the unit was on a recall list.
    * WML tables defined in Lua now accept string keys with array values
      (where "array" is a table whose keys are all integers). This joins
      the elements of the array with commas and produces a single string
@@ -217,8 +395,17 @@ Version 1.13.4+dev:
        should return a table with keys "own" and "enemy", each of which may
        be either a unit filter table or a function which takes a unit as a
        parameter and returns true or false.
+   * Added wesnoth.game_events.on_mouse_move/on_mouse_actions callbacks
+     (fr #22635)
+   * Added wesnoth.special_locations
+   * [lua] tags now also support the [args] subtag outside events.
+   * added lua_function= attribute in location filters
+   * Added on_event.lua which is an eaiser to use wrapper for
+     wesnoth.game_events.on_event
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
+   * Added "Registered users only" checkbox to multiplayer configuration dialog which
+     when checked, only allows registered users to join the game
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
      The following attributes were renamed (old names still work, for now):
@@ -269,8 +456,8 @@ Version 1.13.4+dev:
        This counts backwards from the specified offset
        A size of -1 is the same as 1.
      * if() can take two arguments; returns null if the condition is false
-     * tolist() will now invert the effect of tomap()
-     * debug_print() now shows in console if debug mode is on
+     * tomap() will now invert the effect of tolist()
+     * debug_print() now shows in chat area if debug mode is on
    * New core functions:
      * Trig functions tan, acos, asin, atan have been added. (Sin and cos
        existed since at least 1.9 but were undocumented until very recently.)
@@ -290,6 +477,9 @@ Version 1.13.4+dev:
        passing to tomap() - this also means key-value pairs are now
        serializable (relevant in FormulaAI)
      * sgn(), trunc() and frac() functions for decimal numbers
+   * Map generator engine:
+     * makes now use of the new context free grammar name generator
+     * ported name generation from english.cfg to [naming]
    * Bugfixes:
      * Dice operator is now synced (where possible)
      * Modulus (%) operator now works on decimal numbers
@@ -324,6 +514,9 @@ Version 1.13.4+dev:
    * Debug commands that create units now do so for the currently controlled
      side instead of always side 1.
    * Fixed bug #24696 (Nightstalk ability not working)
+   * Ported the following scripts to Python 3: TeamColorizer, about_cfg_to_wiki,
+     campaign2wiki, terrain2wiki
+   * Wesnoth now ignores unknown arguments that XCode may pass when testing.
 
 Version 1.13.4:
  * Language and i18n:
@@ -407,6 +600,13 @@ Version 1.13.3:
    * Added name= and write_name= attributes in [item]
    * Added description_alignment= key to [campaign]
    * Fixed [put_to_recall_list] not working correctly (bug #24390)
+   * Wesnoth now does a stricter check in variablenames and doesn't allow
+     empty indexes like "a[].b" anymore.
+ * Lua API:
+   * Added wesnoth.read_file
+   * wesnoth.dofile/require now allow .. in relative paths.
+   * unit.level and unit.upkeep can now be changed via lua unit proxies.
+   * wesnoth.find_path is now available in lua map generators and allows border=yes/no parameter.
  * Miscellaneous and bug fixes:
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
@@ -3443,6 +3643,8 @@ Version 1.9.7:
    * Fixed bug #18000, #18099: Show a wrongly entered MP password and crash
      upon editing this text.
  * WML engine:
+   * added mode=replace to [modify_unit] to replace rather than merge unit subtags
+     (does not apply to object, trait, effect, or advancement)
    * new attribute team_name= in SSFs
    * added [event][filter_side]<SSF keys> support
    * added support for inline SSF to [chat]

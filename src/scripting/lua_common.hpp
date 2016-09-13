@@ -25,10 +25,10 @@ class t_string;
 class vconfig;
 
 #include "config.hpp"
-#include "scripting/lua_types.hpp"
 #include "variable_info.hpp"
 #include "map/location.hpp"
 #include <vector>
+#include <string>
 
 namespace lua_common {
 	int intf_textdomain(lua_State *L);
@@ -39,7 +39,15 @@ namespace lua_common {
 	std::string register_vconfig_metatable(lua_State *L);
 
 }
-extern const char * tstringKey;
+
+void* operator new(size_t sz, lua_State *L);
+void operator delete(void* p, lua_State *L);
+
+/**
+ * Like luaL_getmetafield, but returns false if key is an empty string
+ * or begins with two underscores.
+ */
+bool luaW_getmetafield(lua_State *L, int idx, const char* key);
 
 /**
  * Pushes a vconfig on the top of the stack.
@@ -60,12 +68,6 @@ void luaW_pushscalar(lua_State *L, config::attribute_value const &v);
  * Converts the value at the top of the stack to an attribute value
  */
 bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v);
-
-
-/**
- * Returns true if the metatable of the object is the one found in the registry.
- */
-bool luaW_hasmetatable(lua_State *L, int index, luatypekey key);
 
 /**
  * Converts a scalar to a translatable string.
@@ -136,6 +138,12 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
 vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = false);
 
 /**
+ * Like the two-argument version, but if it was a vconfig, also
+ * returns a pointer to that vconfig.
+ */
+config luaW_checkconfig(lua_State *L, int index, const vconfig*& vcfg);
+
+/**
  * Pushes the value found by following the variadic names (char *), if the
  * value is not nil.
  * @return true if an element was pushed.
@@ -158,6 +166,18 @@ bool luaW_toboolean(lua_State *L, int n);
 bool luaW_pushvariable(lua_State *L, variable_access_const& v);
 
 bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
+
+/**
+ * Displays a message in the chat window.
+ */
+void chat_message(std::string const &caption, std::string const &msg);
+
+/**
+ * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @param nRets LUA_MULTRET for unbounded return values.
+ * @return true if the call was successful and @a nRets return values are available.
+ */
+bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);
 
 
 #define return_tstring_attrib(name, accessor) \

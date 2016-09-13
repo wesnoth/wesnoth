@@ -15,7 +15,7 @@
 
 #include "controller_base.hpp"
 
-#include "dialogs.hpp"
+#include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
 #include "game_preferences.hpp"
@@ -25,7 +25,6 @@
 #include "mouse_handler_base.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
-
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
@@ -229,6 +228,11 @@ void controller_base::play_slice(bool is_delay_enabled)
 		const SDL_Rect& action_loc = a->location(get_display().screen_area());
 		execute_action(a->items(), action_loc.x+1, action_loc.y + action_loc.h + 1,false);
 
+		return;
+	}
+	auto str_vec = additional_actions_pressed();
+	if (!str_vec.empty()) {
+		execute_action(str_vec, 0, 0, false);
 		return;
 	}
 

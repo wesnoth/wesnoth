@@ -20,6 +20,7 @@
 #include "theme.hpp"
 #include "editor/palette/editor_palettes.hpp"
 #include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/location_palette.hpp"
 #include "editor/palette/empty_palette.hpp"
 
 #include <SDL_video.h>
@@ -120,7 +121,7 @@ public:
 	common_palette& get_palette() { return palette_; }
 
 	/** Whether we need the brush bar, is used to grey it out.*/
-	virtual bool supports_brushes() { return false; }
+	virtual bool supports_brushes() const { return false; }
 
 	/**
 	 * Set the mouse overlay for this action. Defaults to an empty overlay.
@@ -280,7 +281,7 @@ public:
 
 	void set_mouse_overlay(editor_display& disp);
 
-	bool supports_brushes() { return true; }
+	virtual bool supports_brushes() const override { return true; }
 
 protected:
 
@@ -301,7 +302,7 @@ public:
 	{
 	}
 
-	bool has_context_menu() const;
+	virtual bool has_context_menu() const override;
 
 	/**
 	 * Show an outline of where the paste will go
@@ -367,8 +368,8 @@ protected:
 class mouse_action_starting_position : public mouse_action
 {
 public:
-	mouse_action_starting_position(const CKey& key, empty_palette& palette)
-	: mouse_action(palette, key), click_(false)
+	mouse_action_starting_position(const CKey& key, location_palette& palette)
+	: mouse_action(palette, key), click_(false), location_palette_(palette)
 	{
 	}
 
@@ -392,6 +393,7 @@ public:
 
 private:
 	bool click_;
+	location_palette& location_palette_;
 };
 
 

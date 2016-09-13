@@ -25,8 +25,11 @@
 #include "terrain_palettes.hpp"
 #include "unit_palette.hpp"
 #include "item_palette.hpp"
+#include "location_palette.hpp"
 
 namespace editor {
+
+class editor_toolkit;
 
 /** Empty palette */
 class palette_manager : public gui::widget {
@@ -34,7 +37,7 @@ class palette_manager : public gui::widget {
 public:
 
 	palette_manager(editor_display &gui, const config& cfg
-				, mouse_action** active_mouse_action);
+	              , editor_toolkit &toolkit);
 
 	void set_group(size_t index);
 
@@ -47,6 +50,7 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
+	void resrote_palete_bg(bool scroll_top);
 	void scroll_bottom();
 
 //TODO
@@ -74,14 +78,15 @@ private:
 
 	editor_display& gui_;
 	int palette_start_;
-	mouse_action** mouse_action_;
+	editor_toolkit& toolkit_;
 
 public:
 
-	boost::scoped_ptr<terrain_palette> terrain_palette_;
-	boost::scoped_ptr<unit_palette>    unit_palette_;
-	boost::scoped_ptr<empty_palette>   empty_palette_;
-	boost::scoped_ptr<item_palette>    item_palette_;
+	const std::unique_ptr<terrain_palette> terrain_palette_;
+	const std::unique_ptr<unit_palette> unit_palette_;
+	const std::unique_ptr<empty_palette> empty_palette_;
+	const std::unique_ptr<item_palette> item_palette_;
+	const std::unique_ptr<location_palette> location_palette_;
 };
 
 }

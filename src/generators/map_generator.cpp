@@ -28,7 +28,7 @@ static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 
-config map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
+config map_generator::create_scenario(boost::optional<uint32_t> randomseed)
 {
 	config res;
 	res["map_data"] = create_map(randomseed);

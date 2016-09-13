@@ -28,7 +28,6 @@
 #include "multiplayer_ui.hpp" // For get_color_string
 #include "wesnothd_connection.hpp"
 
-#include <boost/assign.hpp>
 #include <stdlib.h>
 #include <ctime>
 
@@ -496,7 +495,7 @@ void connect_engine::start_game_commandline(
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
-	typedef boost::tuple<unsigned int, std::string> mp_option;
+	typedef std::tuple<unsigned int, std::string> mp_option;
 
 	rand_rng::mt_rng rng;
 
@@ -508,14 +507,14 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_side) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_side) {
 
-				if (option.get<0>() == num) {
-					if (std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == option.get<1>(); }) != era_factions_.end()) {
-						DBG_MP << "\tsetting side " << option.get<0>() << "\tfaction: " << option.get<1>() << std::endl;
+				if (std::get<0>(option) == num) {
+					if (std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == std::get<1>(option); }) != era_factions_.end()) {
+						DBG_MP << "\tsetting side " << std::get<0>(option) << "\tfaction: " << std::get<1>(option) << std::endl;
 
-						side->set_faction_commandline(option.get<1>());
+						side->set_faction_commandline(std::get<1>(option));
 					}
 					else {
-						ERR_MP << "failed to set side " << option.get<0>() << " to faction " << option.get<1>() << std::endl;
+						ERR_MP << "failed to set side " << std::get<0>(option) << " to faction " << std::get<1>(option) << std::endl;
 					}
 				}
 			}
@@ -525,11 +524,11 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_controller) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_controller) {
 
-				if (option.get<0>() == num) {
-					DBG_MP << "\tsetting side " << option.get<0>() <<
-						"\tfaction: " << option.get<1>() << std::endl;
+				if (std::get<0>(option) == num) {
+					DBG_MP << "\tsetting side " << std::get<0>(option) <<
+						"\tfaction: " << std::get<1>(option) << std::endl;
 
-					side->set_controller_commandline(option.get<1>());
+					side->set_controller_commandline(std::get<1>(option));
 				}
 			}
 		}
@@ -540,11 +539,11 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_algorithm) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_algorithm) {
 
-				if (option.get<0>() == num) {
-					DBG_MP << "\tsetting side " << option.get<0>() <<
-						"\tfaction: " << option.get<1>() << std::endl;
+				if (std::get<0>(option) == num) {
+					DBG_MP << "\tsetting side " << std::get<0>(option) <<
+						"\tfaction: " << std::get<1>(option) << std::endl;
 
-					side->set_ai_algorithm(option.get<1>());
+					side->set_ai_algorithm(std::get<1>(option));
 				}
 			}
 		}
@@ -568,11 +567,11 @@ void connect_engine::start_game_commandline(
 		if (cmdline_opts.multiplayer_ai_config) {
 			for (const mp_option& option : *cmdline_opts.multiplayer_ai_config) {
 
-				if (option.get<0>() == side["side"].to_unsigned()) {
+				if (std::get<0>(option) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] <<
-						"\tai_config: " << option.get<1>() << std::endl;
+						"\tai_config: " << std::get<1>(option) << std::endl;
 
-					side["ai_config"] = option.get<1>();
+					side["ai_config"] = std::get<1>(option);
 				}
 			}
 		}
@@ -586,18 +585,18 @@ void connect_engine::start_game_commandline(
 			side["income"] = 1;
 		}
 
-		typedef boost::tuple<unsigned int, std::string, std::string>
+		typedef std::tuple<unsigned int, std::string, std::string>
 			mp_parameter;
 
 		if (cmdline_opts.multiplayer_parm) {
 			for (const mp_parameter& parameter : *cmdline_opts.multiplayer_parm) {
 
-				if (parameter.get<0>() == side["side"].to_unsigned()) {
+				if (std::get<0>(parameter) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] << " " <<
-						parameter.get<1>() << ": " << parameter.get<2>() <<
+						std::get<1>(parameter) << ": " << std::get<2>(parameter) <<
 							std::endl;
 
-					side[parameter.get<1>()] = parameter.get<2>();
+					side[std::get<1>(parameter)] = std::get<2>(parameter);
 				}
 			}
 		}
@@ -899,6 +898,11 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		("recruit", cfg_["recruit"])
 	);
 
+	if (cfg_["side"].to_int(index_ + 1) != index_ + 1) {
+		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1 << std::endl;
+	}
+	cfg_["side"] = index_ + 1;
+
 	// Check if this side should give its control to some other side.
 	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
 	if (side_cntr_index < parent_.side_engines().size()) {
@@ -909,6 +913,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
 		ERR_MP << "contoller=<number> is deperecated\n";
 	}
+
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
 		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
 		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
@@ -1009,10 +1014,6 @@ config side_engine::new_config() const
 		res.append(faction);
 	}
 
-	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
-		res["side"] = index_ + 1;
-	}
-
 	res["controller"] = controller_names[controller_];
 	// the hosts recieves the serversided controller tweaks after the start event, but
 	// for mp sync it's very important that the controller types are correct
@@ -1024,9 +1025,8 @@ config side_engine::new_config() const
 		res["user_description"] = t_string(desc, "wesnoth");
 		desc = vgettext(
 			"$playername $side",
-			boost::assign::map_list_of
-				("playername", _(desc.c_str()))
-				("side", res["side"].str())
+				{std::make_pair("playername", _(desc.c_str())),
+				std::make_pair("side", res["side"].str())}
 		);
 	} else if (!player_id_.empty()) {
 		desc = player_id_;
@@ -1097,7 +1097,44 @@ config side_engine::new_config() const
 		(*leader)["gender"] = flg_.current_gender();
 
 		res["team_name"] = parent_.team_names_[team_];
-		res["user_team_name"] = parent_.user_team_names_[team_];
+
+		// TODO: Fix this mess!
+		//
+		// There is a fundamental disconnect, here. One the one hand we have the idea of
+		// 'teams' (which don't actually exist). A 'team' has a name (internal key:
+		// team_name) and a translatable display name (internal key: user_team_name). But
+		// what we actually have are sides. Sides relate to each other by 'team' (internal
+		// key: team_name) and each side has it's own name for the team (internal key:
+		// user_team_name).
+		//
+		// The confusion is that the keys from the side have names which one might expect
+		// always refer to the 'team' concept. THEY DO NOT! They are simply named in such
+		// a way to confuse the unwary.
+		//
+		// There is no simple, clean way to clear up the confusion. So, I'm applying the
+		// Principle of Least Surprise. The user can see the user_team_name, and it should
+		// not change. So if the side already has a user_team_name, use it.
+		//
+		// In the rare and unlikely (like, probably never happens) case that the side does
+		// not have a user_team_name, but an (nebulous and non-deterministic term here)
+		// EARLIER side has the same team_name and that side gives a user_team_name, we'll
+		// use it.
+		//
+		// The effect of this mess, and my lame fix for it, is probably only visible when
+		// randomizing the sides on a team for multi-player games. But the effect when it's
+		// not fixed is an obvious mistake on the player's screen when playing a campaign
+		// in single-player mode.
+		//
+		// At some level, all this is probably wrong, but it is the least breakage from the
+		// mess I found; so deal with it, or fix it.
+		//
+		// If, by now, you get the impression this is a kludged-together mess which cries
+		// out for an honest design and a thoughtful implementation, you're correct! But
+		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm excersizing
+		// my perogative as a grey-beard and leaving this for someone else to clean up.
+		if ((res["user_team_name"] == "") || (!parent_.params_.use_map_settings)) {
+			res["user_team_name"] = parent_.user_team_names_[team_];
+		}
 		res["allow_player"] = allow_player_;
 		res["color"] = get_color(color_);
 		res["gold"] = gold_;

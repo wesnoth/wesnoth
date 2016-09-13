@@ -81,8 +81,8 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
-					&& u->invisible(adj[n]))
-				|| ((&(*resources::teams)[u->side() - 1]) == &current_team()
+					&& u->invisible(adj[n], *resources::gameboard))
+				|| ((&resources::gameboard->teams()[u->side() - 1]) == &current_team()
 					&& u->movement_left() > 0)) {
 				ret += 1;
 			}
@@ -109,7 +109,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate",loc) == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc, *resources::gameboard) == false) {
 		rating += healing_value;
 	}
 
@@ -135,7 +135,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();
-	std::vector<team> teams_ = *resources::teams;
+	std::vector<team> teams_ = resources::gameboard->teams();
 	const bool has_leader = leader != units_.end();
 
 	std::vector<target> targets;
@@ -164,12 +164,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 			assert(threats.empty() == false);
 
-#ifdef SUOKKO
-			//FIXME: suokko's revision 29531 included this change.  Correct?
-			const double value = threat*get_protect_leader()/leader->second.hitpoints();
-#else
 			const double value = threat/double(threats.size());
-#endif
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
 				targets.push_back(target(*i,value,target::TYPE::THREAT));
@@ -233,7 +228,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 		for(u = units_.begin(); u != units_.end(); ++u) {
 			//is a visible enemy leader
 			if (u->can_recruit() && current_team().is_enemy(u->side())
-			    && !u->invisible(u->get_location())) {
+			    && !u->invisible(u->get_location(), *resources::gameboard)) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
 				targets.push_back(target(u->get_location(), get_leader_value(), target::TYPE::LEADER));

@@ -61,6 +61,7 @@ unsigned music_refresh_rate = 20;
 bool want_new_music = false;
 int fadingout_time=5000;
 bool no_fading = false;
+bool unload_music = false;
 
 // number of allocated channels,
 const size_t n_of_channels = 32;
@@ -410,12 +411,8 @@ void reset_sound() {
 
 void stop_music() {
 	if(mix_ok) {
-		Mix_HaltMusic();
-
-		std::map<std::string,Mix_Music*>::iterator i;
-		for(i = music_cache.begin(); i != music_cache.end(); ++i)
-			Mix_FreeMusic(i->second);
-		music_cache.clear();
+		Mix_FadeOutMusic(500);
+		Mix_HookMusicFinished([](){ unload_music = true; });
 	}
 }
 
@@ -613,7 +610,44 @@ void music_thinker::process(events::pump_info &info) {
 			if(Mix_PlayingMusic()) {
 				Mix_FadeOutMusic(fadingout_time);
 			}
+
+			unload_music = false;
 			play_new_music();
+		}
+	}
+
+	if (unload_music) {
+		for (auto track : music_cache) {
+			Mix_FreeMusic(track.second);
+		}
+		music_cache.clear();
+
+		Mix_HookMusicFinished(nullptr);
+
+		unload_music = false;
+	}
+}
+
+music_muter::music_muter() :
+	events::sdl_handler(false)
+{
+	join_global();
+}
+
+void music_muter::handle_window_event(const SDL_Event& event)
+{
+	if (preferences::stop_music_in_background() && preferences::music_on())
+	{
+		if (event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
+		{
+			Mix_ResumeMusic();
+		}
+		else if (event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
+		{
+			if (Mix_PlayingMusic())
+			{
+				Mix_PauseMusic();
+			}
 		}
 	}
 }

@@ -56,7 +56,7 @@ std::string get_child_id(const std::string& parent_id,
 	// strings. No idea why so switched to using the good old lexical_cast
 	// instead.
 
-	// return (formatter() << parent_id << "_C_" << row << '_' << col).c_str();
+	// return formatter() << parent_id << "_C_" << row << '_' << col;
 	std::string result = parent_id + "_C_" + std::to_string(row)
 						 + '_' + std::to_string(col);
 
@@ -91,7 +91,7 @@ std::string get_base_filename()
 	static unsigned counter = 0;
 	++counter;
 
-	return (formatter() << buf << '_' << counter << '_').str();
+	return formatter() << buf << '_' << counter << '_';
 }
 /***** ***** ***** ***** FLAGS ***** ***** ***** *****/
 

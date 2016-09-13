@@ -13,7 +13,7 @@ function retreat_functions.min_hp(unit)
     -- The minimum hp to retreat is a function of level and terrain defense
     -- We want to stay longer on good terrain and leave early on very bad terrain
     local hp_per_level = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))/15
-    local level = wesnoth.unit_types[unit.type].level
+    local level = unit.level
 
     -- Leaders are considered to be higher level because of their value
     if unit.canrecruit then level = level+2 end

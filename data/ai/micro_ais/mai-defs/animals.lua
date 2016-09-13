@@ -46,7 +46,7 @@ function wesnoth.micro_ais.wolves(cfg)
 				aspect = "attacks",
 				facet = {
 					name = "ai_default_rca::aspect_attacks",
-					id = "dont_attack",
+					id = "mai_wolves_" .. cfg.ca_id .. "_dont_attack",
 					invalidate_on_gamestate_change = "yes",
 					{ "filter_enemy", {
 						{ "not", {

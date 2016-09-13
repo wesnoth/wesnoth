@@ -17,7 +17,6 @@
 
 #include "terrain/terrain.hpp"
 
-#include <boost/shared_ptr.hpp>
 #include <map>
 
 class terrain_type_data {
@@ -88,5 +87,5 @@ public:
 
 };
 
-typedef boost::shared_ptr<terrain_type_data> tdata_cache;
+typedef std::shared_ptr<terrain_type_data> tdata_cache;
 #endif

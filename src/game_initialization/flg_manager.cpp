@@ -492,6 +492,11 @@ void flg_manager::update_choosable_leaders()
 			choosable_leaders_.push_back(default_leader_type_);
 		}
 	}
+
+	// Sort alphabetically, but with the 'random' option always first
+	std::sort(choosable_leaders_.begin() + 1, choosable_leaders_.end(), [](const std::string& str1, const std::string& str2) {
+		return str1 < str2;
+	});
 }
 
 void flg_manager::update_choosable_genders()

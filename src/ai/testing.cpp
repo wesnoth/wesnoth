@@ -45,7 +45,7 @@ void ai_testing::log_turn_end(unsigned int side)
 void ai_testing::log_turn(const char* msg, unsigned int side)
 {
 	assert(side>=1);
-	team& current_team = (*resources::teams)[side-1];
+	team& current_team = resources::gameboard->teams()[side-1];
 
 	int _turn_number = resources::tod_manager->turn();
 	int _units = resources::gameboard->side_units(side);
@@ -89,8 +89,8 @@ void ai_testing::log_victory(std::set<unsigned int> winners)
 
 void ai_testing::log_game_start()
 {
-	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
-		int side = tm-resources::teams->begin()+1;
+	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {
+		int side = tm-resources::gameboard->teams().begin()+1;
 		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
 		LOG_AI_TESTING << "TEAM"<<side<<": " << tm->side() << std::endl;
 		resources::recorder->add_log_data("ai_log","ai_id"+std::to_string(side),ai::manager::get_active_ai_identifier_for_side(side));
@@ -105,8 +105,8 @@ void ai_testing::log_game_end()
 	LOG_AI_TESTING << "GAME_END_TURN: "<< resources::tod_manager->turn() <<std::endl;
 	resources::recorder->add_log_data("ai_log","end_turn",
 		std::to_string(resources::tod_manager->turn()));
-	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
-		int side = tm-resources::teams->begin()+1;
+	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {
+		int side = tm-resources::gameboard->teams().begin()+1;
 		resources::recorder->add_log_data("ai_log","end_gold"+std::to_string(side),std::to_string(tm->gold()));
 		resources::recorder->add_log_data("ai_log","end_units"+std::to_string(side),std::to_string(resources::gameboard->side_units(side)));
 	}

@@ -27,8 +27,6 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 namespace editor {
 
 editor_action_unit* editor_action_unit::clone() const
@@ -109,7 +107,7 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 
 	/* @todo
 	  if (mc.get_map().is_village(new_loc_)) {
-		(*(resources::teams))[u.side()].get_village(new_loc_);
+		(*(resources::gameboard->teams()))[u.side()].get_village(new_loc_);
 	}
 	*/
 

@@ -27,6 +27,13 @@ namespace gui2
 namespace implementation
 {
 
+static std::map<std::string, scrollbar_mode> scrollbar_mode_map = {
+	{ "always",        scrollbar_mode::ALWAYS_VISIBLE },
+	{ "never",         scrollbar_mode::ALWAYS_INVISIBLE },
+	{ "auto",          scrollbar_mode::AUTO_VISIBLE },
+	{ "initial_auto",  scrollbar_mode::AUTO_VISIBLE_FIRST_RUN },
+};
+
 unsigned get_v_align(const std::string& v_align)
 {
 	if(v_align == "top") {
@@ -110,22 +117,20 @@ unsigned read_flags(const config& cfg)
 	return flags;
 }
 
-tscrollbar_container::tscrollbar_mode
-get_scrollbar_mode(const std::string& scrollbar_mode)
+scrollbar_mode get_scrollbar_mode(const std::string& scrollbar_mode)
 {
-	if(scrollbar_mode == "always") {
-		return tscrollbar_container::always_visible;
-	} else if(scrollbar_mode == "never") {
-		return tscrollbar_container::always_invisible;
-	} else if(scrollbar_mode == "auto") {
-		return tscrollbar_container::auto_visible;
-	} else {
-		if(!scrollbar_mode.empty() && scrollbar_mode != "initial_auto") {
-			ERR_GUI_E << "Invalid scrollbar mode '" << scrollbar_mode
-					  << "' falling back to 'initial_auto'.\n";
-		}
-		return tscrollbar_container::auto_visible_first_run;
+	if(scrollbar_mode.empty()) {
+		return tscrollbar_container::AUTO_VISIBLE_FIRST_RUN;
 	}
+
+	if(scrollbar_mode_map.find(scrollbar_mode) == scrollbar_mode_map.end()) {
+		ERR_GUI_E << "Invalid scrollbar mode '" << scrollbar_mode << "'."
+		          << "Falling back to 'initial_auto'." << std::endl;
+
+		return tscrollbar_container::AUTO_VISIBLE_FIRST_RUN;
+	}
+
+	return scrollbar_mode_map[scrollbar_mode];
 }
 
 int get_retval(const std::string& retval_id,

@@ -17,6 +17,7 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "display_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
@@ -126,10 +127,8 @@ bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side
 }
 
 
-bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
+bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc, const display_context& dc) const
 {
-	assert(resources::teams);
-
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
 			ability_affects_self(tag_name, i, loc))
@@ -153,7 +152,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, *resources::teams, side(), it->side()) &&
+			if (affects_side(j, dc.teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
 			{
@@ -167,7 +166,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	assert(resources::teams);
+	assert(resources::gameboard);
 
 	unit_ability_list res;
 
@@ -194,7 +193,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, *resources::teams, side(), it->side()) &&
+			if (affects_side(j, resources::gameboard->teams(), side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc, *it))
 			{
@@ -212,9 +211,9 @@ std::vector<std::string> unit::get_ability_list() const
 	std::vector<std::string> res;
 
 	for (const config::any_child &ab : this->abilities_.all_children_range()) {
-		std::string const &id = ab.cfg["id"];
+		std::string id = ab.cfg["id"];
 		if (!id.empty())
-			res.push_back(id);
+			res.push_back(std::move(id));
 	}
 	return res;
 }
@@ -258,9 +257,9 @@ namespace {
  *                     one and will indicate whether or not the corresponding
  *                     ability is active.
  */
-std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std::vector<bool> *active_list) const
+std::vector<std::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std::vector<bool> *active_list) const
 {
-	std::vector<boost::tuple<t_string,t_string,t_string> > res;
+	std::vector<std::tuple<t_string,t_string,t_string> > res;
 	if ( active_list )
 		active_list->clear();
 
@@ -272,7 +271,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
-				res.push_back(boost::make_tuple(
+				res.push_back(std::make_tuple(
 						ab.cfg["name"].t_str(),
 						name,
 						ab.cfg["description"].t_str() ));
@@ -290,7 +289,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
-				res.push_back(boost::make_tuple(
+				res.push_back(std::make_tuple(
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
 						default_value(ab.cfg, "description_inactive", "description").t_str() ));
@@ -309,7 +308,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
-	assert(resources::units && resources::gameboard && resources::teams && resources::tod_manager);
+	assert(resources::units && resources::gameboard && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
 		if ( !unit_filter(vconfig(afilter), resources::filter_con, illuminates).matches(*this, loc) )
@@ -418,8 +417,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 
 bool unit::has_ability_type(const std::string& ability) const
 {
-	config::const_child_itors itors = this->abilities_.child_range(ability);
-	return itors.first != itors.second;
+	return !abilities_.child_range(ability).empty();
 }
 
 
@@ -657,7 +655,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 
 		std::string const &name = sp.cfg["name"].str();
 		if (!name.empty()) {
-			if (!res.empty()) res += ',';
+			if (!res.empty()) res += ", ";
 			res += name;
 		}
 	}
@@ -823,14 +821,14 @@ namespace { // Helpers for attack_type::special_active()
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
-		
+
 		// If the primary unit doesn't exist, there's nothing to match
 		if (!un_it.valid()) {
 			return false;
 		}
-		
+
 		unit_filter ufilt(vconfig(filter_child), resources::filter_con);
-		
+
 		// If the other unit doesn't exist, try matching without it
 		if (!u2.valid()) {
 			return ufilt.matches(*un_it, loc);

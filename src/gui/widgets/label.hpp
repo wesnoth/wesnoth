@@ -68,7 +68,7 @@ public:
 
 	void set_link_color(const std::string & color);
 
-	virtual bool can_mouse_focus() const override { return false; }
+	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
 private:
 	/**
 	 * Possible states of the widget.
@@ -116,7 +116,7 @@ private:
 	virtual const std::string& get_control_type() const override;
 
 	/** Inherited from tcontrol. */
-	void load_config_extra();
+	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

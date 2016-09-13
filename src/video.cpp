@@ -220,7 +220,8 @@ CVideo::CVideo(FAKE_TYPES type) :
 	mode_changed_(false),
 	fake_screen_(false),
 	help_string_(0),
-	updatesLocked_(0)
+	updatesLocked_(0),
+	flip_locked_(0)
 {
 	assert(!singleton_);
 	singleton_ = this;
@@ -414,8 +415,8 @@ bool CVideo::init_window()
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
 	window->set_minimum_size(
-		preferences::min_allowed_width(),
-		preferences::min_allowed_height()
+		preferences::min_window_width,
+		preferences::min_window_height
 	);
 
 	event_handler_.join_global();
@@ -495,7 +496,7 @@ void CVideo::delay(unsigned int milliseconds)
 
 void CVideo::flip()
 {
-	if(fake_screen_)
+	if(fake_screen_ || flip_locked_ > 0)
 		return;
 #ifdef SDL_GPU
 	assert(render_target_);
@@ -583,7 +584,7 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions(const bool i
 		return result;
 	}
 
-	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
+	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
 
 	SDL_DisplayMode mode;
 	for (int i = 0; i < modes; ++i) {
@@ -715,4 +716,12 @@ void CVideo::set_resolution(const unsigned width, const unsigned height)
 	// Change the config values.
 	preferences::_set_resolution(std::make_pair(width, height));
 	preferences::_set_maximized(false);
+}
+
+void CVideo::lock_flips(bool lock) {
+	if (lock) {
+		++flip_locked_;
+	} else {
+		--flip_locked_;
+	}
 }

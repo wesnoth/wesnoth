@@ -20,8 +20,8 @@
 
 struct SDL_Rect;
 class config;
-
 namespace editor {
+class editor_display;
 
 /**
  * Stores the info about the groups in a nice format.
@@ -51,8 +51,6 @@ public:
 
 	virtual sdl_handler_vector handler_members() { return sdl_handler_vector(); }
 
-	virtual void select_fg_item(const std::string& item_id) = 0;
-	virtual void select_bg_item(const std::string& item_id) = 0;
 
 	/** Scroll the editor-palette up one step if possible. */
 	virtual bool scroll_up() = 0;
@@ -70,7 +68,6 @@ public:
 	virtual void set_group(size_t index) = 0;
 	virtual void next_group() = 0;
 	virtual void prev_group() = 0;
-	virtual const config active_group_report() = 0;
 	virtual const std::vector<item_group>& get_groups() const = 0;
 
 	/** Menu expanding for palette group list */
@@ -78,15 +75,27 @@ public:
 	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items) = 0;
 
     //item
-	virtual size_t num_items() = 0;
+	virtual int num_items() = 0;
 	virtual size_t start_num() = 0;
 	virtual void set_start_item(size_t index) = 0;
 
 	virtual bool supports_swap() { return true; }
 	virtual void swap() = 0;
 
+	virtual std::vector<std::string> action_pressed() const { return std::vector<std::string>(); }
 };
 
+// a palette containing tristtate buttons.
+class tristate_palette : public common_palette
+{
+public:
+	tristate_palette(display &gui)
+		: common_palette(gui)
+	{
+	}
+	virtual void select_fg_item(const std::string& item_id) = 0;
+	virtual void select_bg_item(const std::string& item_id) = 0;
+};
 
 }
 

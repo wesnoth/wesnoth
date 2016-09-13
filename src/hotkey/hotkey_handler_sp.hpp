@@ -25,15 +25,12 @@
 
 #include "hotkey/hotkey_handler.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-
 class playsingle_controller::hotkey_handler : public play_controller::hotkey_handler {
 
 protected:
 	playsingle_controller & playsingle_controller_;
 
-	boost::shared_ptr<wb::manager> whiteboard_manager_;
+	std::shared_ptr<wb::manager> whiteboard_manager_;
 
 	bool is_observer() const;
 
@@ -41,35 +38,35 @@ public:
 	hotkey_handler(playsingle_controller &, saved_game &);
 	~hotkey_handler();
 
-	virtual void recruit();
-	virtual void repeat_recruit();
-	virtual void recall();
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-	virtual void toggle_shroud_updates();
-	virtual void update_shroud_now();
-	virtual void end_turn();
-	virtual void rename_unit();
-	virtual void create_unit();
-	virtual void change_side();
-	virtual void kill_unit();
-	virtual void label_terrain(bool);
-	virtual void clear_labels();
-	virtual void label_settings();
-	virtual void continue_move();
-	virtual void unit_hold_position();
-	virtual void end_unit_turn();
-	virtual void user_command();
-	virtual void custom_command();
-	virtual void ai_formula();
-	virtual void clear_messages();
+	virtual void recruit() override;
+	virtual void repeat_recruit() override;
+	virtual void recall() override;
+	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
+	virtual void toggle_shroud_updates() override;
+	virtual void update_shroud_now() override;
+	virtual void end_turn() override;
+	virtual void rename_unit() override;
+	virtual void create_unit() override;
+	virtual void change_side() override;
+	virtual void kill_unit() override;
+	virtual void label_terrain(bool) override;
+	virtual void clear_labels() override;
+	virtual void label_settings() override;
+	virtual void continue_move() override;
+	virtual void unit_hold_position() override;
+	virtual void end_unit_turn() override;
+	virtual void user_command() override;
+	virtual void custom_command() override;
+	virtual void ai_formula() override;
+	virtual void clear_messages() override;
 	// Whiteboard hotkeys
-	virtual void whiteboard_toggle();
-	virtual void whiteboard_execute_action();
-	virtual void whiteboard_execute_all_actions();
-	virtual void whiteboard_delete_action();
-	virtual void whiteboard_bump_up_action();
-	virtual void whiteboard_bump_down_action();
-	virtual void whiteboard_suppose_dead();
+	virtual void whiteboard_toggle() override;
+	virtual void whiteboard_execute_action() override;
+	virtual void whiteboard_execute_all_actions() override;
+	virtual void whiteboard_delete_action() override;
+	virtual void whiteboard_bump_up_action() override;
+	virtual void whiteboard_bump_down_action() override;
+	virtual void whiteboard_suppose_dead() override;
 
 	//replay
 	replay_controller& get_replay_controller()
@@ -96,8 +93,8 @@ public:
 	virtual void reset_replay() override
 	{ return playsingle_controller_.reset_replay(); }
 	virtual void replay_exit() override;
-	virtual void load_autosave(const std::string& filename);
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
+	virtual void load_autosave(const std::string& filename) override;
+	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 };
 
 #endif

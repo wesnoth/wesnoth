@@ -18,9 +18,9 @@
 #include "utils/make_enum.hpp"
 #include "map/map.hpp"
 #include "mp_game_settings.hpp"
+#include "save_index.hpp"
 #include "sdl/utils.hpp"
 
-#include <boost/scoped_ptr.hpp>
 #include <string>
 #include <utility>
 
@@ -42,6 +42,7 @@ public:
 		(RANDOM_MAP,    "random_map")
 		(CAMPAIGN,      "campaign")
 		(SP_CAMPAIGN,   "sp_campaign")
+		(SAVED_GAME,    "saved_game")
 	)
 
 	virtual bool can_launch_game() const = 0;
@@ -86,7 +87,7 @@ public:
 protected:
 	void set_sides();
 
-	boost::scoped_ptr<gamemap> map_;
+	std::unique_ptr<gamemap> map_;
 
 	surface minimap_img_;
 	std::string map_hash_;
@@ -176,6 +177,24 @@ private:
 	int max_players_;
 };
 
+class engine_saved_game : public scenario
+{
+public:
+	engine_saved_game(const config& data, const std::string name);
+
+	std::string name() const;
+	std::string id() const;
+
+	bool can_launch_game() const;
+
+private:
+	engine_saved_game(const engine_saved_game&);
+	void operator=(const engine_saved_game&);
+
+	std::string name_;
+	std::string id_;
+};
+
 class create_engine
 {
 public:
@@ -189,27 +208,30 @@ public:
 		std::string id;
 		std::string name;
 		std::string description;
+		const config* cfg;
 	};
 
-	typedef boost::shared_ptr<extras_metadata> extras_metadata_ptr;
+	typedef std::shared_ptr<extras_metadata> extras_metadata_ptr;
 
-	typedef boost::shared_ptr<level> level_ptr;
-	typedef boost::shared_ptr<scenario> scenario_ptr;
-	typedef boost::shared_ptr<user_map> user_map_ptr;
-	typedef boost::shared_ptr<random_map> random_map_ptr;
-	typedef boost::shared_ptr<campaign> campaign_ptr;
+	typedef std::shared_ptr<level> level_ptr;
+	typedef std::shared_ptr<scenario> scenario_ptr;
+	typedef std::shared_ptr<user_map> user_map_ptr;
+	typedef std::shared_ptr<random_map> random_map_ptr;
+	typedef std::shared_ptr<campaign> campaign_ptr;
+	typedef std::shared_ptr<engine_saved_game> saved_game_ptr;
 
 	void init_generated_level_data();
 
 	void prepare_for_new_level();
 	void prepare_for_era_and_mods();
 	void prepare_for_scenario();
-	void prepare_for_campaign(const std::string& difficulty);
+	void prepare_for_campaign(const std::string& difficulty = "");
 	void prepare_for_saved_game();
 	//random maps, user maps
 	void prepare_for_other();
 
 	std::string select_campaign_difficulty(int set_value = -1);
+	std::string get_selected_campaign_difficulty();
 
 	void apply_level_filter(const std::string& name);
 	void apply_level_filter(int players);
@@ -220,6 +242,8 @@ public:
 
 	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
+
+	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
 
 	std::vector<std::string> levels_menu_item_names() const;
 	std::vector<std::string> extras_menu_item_names(
@@ -237,6 +261,7 @@ public:
 	void set_current_mod_index(const size_t index);
 
 	size_t current_era_index() const;
+	const config& curent_era_cfg() const;
 	size_t current_mod_index() const;
 
 	const std::vector<extras_metadata_ptr>&
@@ -247,6 +272,7 @@ public:
 	bool toggle_current_mod(bool force = false);
 
 	bool generator_assigned() const;
+	bool generator_has_settings() const;
 	void generator_user_config(CVideo& v);
 
 	int find_level_by_id(const std::string& id) const;
@@ -257,6 +283,7 @@ public:
 
 	void init_active_mods();
 	std::vector<std::string>& active_mods();
+	std::vector<extras_metadata_ptr> active_mods_data();
 
 	const mp_game_settings& get_parameters();
 
@@ -287,6 +314,7 @@ private:
 	std::vector<campaign_ptr> campaigns_;
 	std::vector<campaign_ptr> sp_campaigns_;
 	std::vector<random_map_ptr> random_maps_;
+	std::vector<saved_game_ptr> saved_games_;
 
 	std::vector<size_t> scenarios_filtered_;
 	std::vector<size_t> user_maps_filtered_;
@@ -294,6 +322,7 @@ private:
 	std::vector<size_t> campaigns_filtered_;
 	std::vector<size_t> sp_campaigns_filtered_;
 	std::vector<size_t> random_maps_filtered_;
+	std::vector<size_t> saved_games_filtered_;
 
 	std::vector<std::string> user_map_names_;
 	std::vector<std::string> user_scenario_names_;
@@ -305,9 +334,11 @@ private:
 
 	CVideo& video_;
 	//Never nullptr
-	boost::scoped_ptr<depcheck::manager> dependency_manager_;
+	std::unique_ptr<depcheck::manager> dependency_manager_;
 
-	boost::scoped_ptr<map_generator> generator_;
+	std::unique_ptr<map_generator> generator_;
+
+	std::string selected_campaign_difficulty_;
 };
 
 } // end namespace ng
