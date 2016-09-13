@@ -167,6 +167,7 @@ tlobby_main::tlobby_main(const config& game_config,
 {
 	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
+	set_allow_plugin_skip(false);
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -818,7 +819,6 @@ void tlobby_main::pre_show(twindow& window)
 		game_config::lobby_network_timer, std::bind(&tlobby_main::network_handler, this), true);
 
 	// Set up Lua plugin context
-	set_allow_plugin_skip(false);
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
 	plugins_context_->set_callback("join",    [&, this](const config&) {

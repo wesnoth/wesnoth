@@ -141,6 +141,8 @@ void ttitle_screen::basic_callback(twindow& window, tresult res)
 
 ttitle_screen::ttitle_screen(game_launcher& game) : result_(REDRAW_BACKGROUND), game_(game), debug_clock_(nullptr)
 {
+	// Need to set this in the constructor, pre_show() / post_build() is too late
+	set_allow_plugin_skip(false);
 }
 
 ttitle_screen::~ttitle_screen()
@@ -222,7 +224,6 @@ debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
 void ttitle_screen::pre_show(twindow& window)
 {
 	set_restore(false);
-	set_allow_plugin_skip(false);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);

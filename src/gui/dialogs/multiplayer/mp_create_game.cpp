@@ -115,6 +115,9 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 
 	create_engine_.get_state() = saved_game();
 	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
+	// Need to set this in the constructor, pre_show() is too late
+	set_allow_plugin_skip(false);
 }
 
 void tmp_create_game::pre_show(twindow& window)
@@ -315,7 +318,6 @@ void tmp_create_game::pre_show(twindow& window)
 	//
 	// Set up the Lua plugin context
 	//
-	set_allow_plugin_skip(false);
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
 	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(twindow::OK); }, false);
