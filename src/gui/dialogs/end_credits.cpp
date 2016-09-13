@@ -39,7 +39,7 @@ tend_credits::tend_credits(const std::vector<std::string>& text, const std::vect
 	, backgrounds_(backgrounds)
 	, timer_id_()
 	, text_widget_(nullptr)
-	, scroll_speed_(4)
+	, scroll_speed_(100)
 {
 	if(backgrounds_.empty()) {
 		backgrounds_.push_back(game_config::images::game_title_background);
@@ -58,12 +58,11 @@ void tend_credits::pre_show(twindow& window)
 {
 	// Delay a little before beginning the scrolling
 	add_timer(1000, [this](size_t) {
-		timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
+		timer_id_ = add_timer(50, std::bind(&tend_credits::timer_callback, this), true);
+		last_scroll_ = SDL_GetTicks();
 	});
 
-#if 0
 	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
-#endif
 
 	// TODO: apparently, multiple images are supported... need to implement along with scrolling
 	window.canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
@@ -96,20 +95,28 @@ void tend_credits::pre_show(twindow& window)
 
 void tend_credits::timer_callback()
 {
-	text_widget_->scroll_vertical_scrollbar(tscrollbar_::ITEM_FORWARD);
+	uint32_t now = SDL_GetTicks();
+	uint32_t missed_time = now - last_scroll_;
+	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
+	// Calculate how far the text should have scrolled by now
+	// The division by 1000 is to convert milliseconds to seconds.
+	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
+	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
+	last_scroll_ = now;
+	if(text_widget_->vertical_scrollbar_at_end()) {
+		remove_timer(timer_id_);
+	}
 }
 
-#if 0
 void tend_credits::key_press_callback(bool&, bool&, const SDLKey key)
 {
-	if(key == SDLK_UP && scroll_speed_ < 20) {
-		++scroll_speed_;
+	if(key == SDLK_UP && scroll_speed_ < 200) {
+		scroll_speed_ <<= 1;
 	}
 
-	if(key == SDLK_DOWN && scroll_speed_ > 0) {
-		--scroll_speed_;
+	if(key == SDLK_DOWN && scroll_speed_ > 50) {
+		scroll_speed_ >>= 1;
 	}
 }
-#endif
 
 } // namespace gui2

@@ -47,9 +47,7 @@ private:
 	void pre_show(twindow& window);
 
 	void timer_callback();
-#if 0
 	void key_press_callback(bool&, bool&, const SDLKey key);
-#endif
 
 	const std::vector<std::string>& text_;
 
@@ -59,7 +57,10 @@ private:
 
 	tscroll_label* text_widget_;
 
+	/// The speed of auto-scrolling, specified as px/s
 	int scroll_speed_;
+
+	uint32_t last_scroll_;
 };
 
 } // namespace gui2
