@@ -189,7 +189,7 @@ private:
 	 */
 	void signal_handler_sdl_key_down(const event::tevent event,
 									 bool& handled,
-									 const SDLKey key);
+									 const SDL_Keycode key);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see tscrollbar class for more handling of this event.

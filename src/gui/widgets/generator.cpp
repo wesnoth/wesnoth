@@ -247,7 +247,7 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 	return nullptr;
 }
 
-void thorizontal_list::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
+void thorizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -285,7 +285,7 @@ void thorizontal_list::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void thorizontal_list::handle_key_right_arrow(SDLMod /*modifier*/,
+void thorizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 											  bool& handled)
 {
 	if(get_item_count() == 0) {
@@ -467,7 +467,7 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 	return nullptr;
 }
 
-void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
+void tvertical_list::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -505,7 +505,7 @@ void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
+void tvertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -747,7 +747,7 @@ const twidget* tmatrix::find_at(const tpoint& coordinate,
 	return nullptr;
 }
 
-void tmatrix::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
+void tmatrix::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -785,7 +785,7 @@ void tmatrix::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void tmatrix::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
+void tmatrix::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -823,7 +823,7 @@ void tmatrix::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void tmatrix::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
+void tmatrix::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -861,7 +861,7 @@ void tmatrix::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void tmatrix::handle_key_right_arrow(SDLMod /*modifier*/,
+void tmatrix::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 									 bool& handled)
 {
 	if(get_item_count() == 0) {

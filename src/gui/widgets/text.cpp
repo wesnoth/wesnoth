@@ -205,7 +205,7 @@ void ttext_::set_state(const tstate state)
 	}
 }
 
-void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
+void ttext_::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
@@ -217,7 +217,7 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
+void ttext_::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
@@ -229,7 +229,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_home(SDLMod modifier, bool& handled)
+void ttext_::handle_key_home(SDL_Keymod modifier, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -241,7 +241,7 @@ void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_end(SDLMod modifier, bool& handled)
+void ttext_::handle_key_end(SDL_Keymod modifier, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -253,7 +253,7 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
+void ttext_::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -266,7 +266,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
+void ttext_::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -280,8 +280,8 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 }
 
 void ttext_::handle_key_default(bool& handled,
-								SDLKey /*key*/,
-								SDLMod /*modifier*/,
+								SDL_Keycode /*key*/,
+								SDL_Keymod /*modifier*/,
 								const utf8::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
@@ -305,8 +305,8 @@ void ttext_::signal_handler_middle_button_click(const event::tevent event,
 
 void ttext_::signal_handler_sdl_key_down(const event::tevent event,
 										 bool& handled,
-										 const SDLKey key,
-										 SDLMod modifier,
+										 const SDL_Keycode key,
+										 SDL_Keymod modifier,
 										 const utf8::string& unicode)
 {
 
@@ -316,7 +316,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event,
 // be modifed seems not to be required when I read the comment in
 // widgets/textbox.cpp:516. Would be nice if somebody on a MAC would test it.
 #ifdef __APPLE__
-	const unsigned copypaste_modifier = KMOD_LMETA | KMOD_RMETA;
+	const unsigned copypaste_modifier = KMOD_LGUI | KMOD_RGUI;
 #else
 	const unsigned copypaste_modifier = KMOD_CTRL;
 #endif
@@ -354,7 +354,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event,
 			}
 
 			// If ctrl-a is used for home drop the control modifier
-			modifier = static_cast<SDLMod>(modifier & ~KMOD_CTRL);
+			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
 		/* FALL DOWN */
 
 		case SDLK_HOME:
@@ -368,7 +368,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event,
 			}
 
 			// If ctrl-e is used for end drop the control modifier
-			modifier = static_cast<SDLMod>(modifier & ~KMOD_CTRL);
+			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
 		/* FALL DOWN */
 
 		case SDLK_END:

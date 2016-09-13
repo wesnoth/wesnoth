@@ -233,22 +233,22 @@ struct thorizontal_list : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
+	void handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{
 		/* do nothing */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
+	void handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{
 		/* do nothing */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled) override;
+	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled) override;
+	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
 	/**
@@ -307,18 +307,18 @@ struct tvertical_list : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled) override;
+	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled) override;
+	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
+	void handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{ /* do nothing */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod /*modifier*/, bool& /*handled*/) override
+	void handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{ /* do nothing */
 	}
 
@@ -392,16 +392,16 @@ struct tmatrix : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod, bool&) override;
+	void handle_key_up_arrow(SDL_Keymod, bool&) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod, bool&) override;
+	void handle_key_down_arrow(SDL_Keymod, bool&) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod, bool&) override;
+	void handle_key_left_arrow(SDL_Keymod, bool&) override;
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod, bool&) override;
+	void handle_key_right_arrow(SDL_Keymod, bool&) override;
 private:
 	/**
 	 * Has the grid already been placed?
@@ -467,25 +467,25 @@ struct tindependent : public virtual tgenerator_
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod, bool&) override
+	void handle_key_up_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod, bool&) override
+	void handle_key_down_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod, bool&) override
+	void handle_key_left_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod, bool&) override
+	void handle_key_right_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
@@ -913,25 +913,25 @@ public:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled) override
+	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override
 	{
 		placement::handle_key_up_arrow(modifier, handled);
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled) override
+	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override
 	{
 		placement::handle_key_down_arrow(modifier, handled);
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod modifier, bool& handled) override
+	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override
 	{
 		placement::handle_key_left_arrow(modifier, handled);
 	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod modifier, bool& handled) override
+	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override
 	{
 		placement::handle_key_right_arrow(modifier, handled);
 	}

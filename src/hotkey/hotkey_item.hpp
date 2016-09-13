@@ -56,7 +56,7 @@ public:
 
 	/**
 	 * Set keyboard modifiers.
-	 * @param mods Bitmask of SDLMod.
+	 * @param mods Bitmask of SDL_Keymod.
 	 */
 	void set_mods(unsigned int mods)
 	{

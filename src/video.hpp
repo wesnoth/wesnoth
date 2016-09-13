@@ -184,7 +184,7 @@ public:
 	void update_framebuffer();
 
 	/**
-	 * Wrapper for SDL_GetAppState.
+	 * Wrapper for CVideo::get_singleton().window_state.
 	 */
 	Uint8 window_state();
 

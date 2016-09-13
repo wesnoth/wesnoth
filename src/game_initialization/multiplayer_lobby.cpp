@@ -447,8 +447,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 				// already has helped in generating a double click.
 				// ??
 				SDL_Event ev;
-				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT,
-							   SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
+				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT, DOUBLE_CLICK_EVENT, DOUBLE_CLICK_EVENT);
 				if (ev.type == DOUBLE_CLICK_EVENT) {
 					ignore_next_doubleclick_ = true;
 				}

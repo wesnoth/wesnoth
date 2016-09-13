@@ -697,8 +697,8 @@ void tdistributor::keyboard_remove_from_chain(twidget* widget)
 	}
 }
 
-void tdistributor::signal_handler_sdl_key_down(const SDLKey key,
-											   const SDLMod modifier,
+void tdistributor::signal_handler_sdl_key_down(const SDL_Keycode key,
+											   const SDL_Keymod modifier,
 											   const utf8::string& unicode)
 {
 	/** @todo Test whether recursion protection is needed. */

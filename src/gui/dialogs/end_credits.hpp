@@ -48,7 +48,7 @@ private:
 	void pre_show(twindow& window);
 
 	void timer_callback();
-	void key_press_callback(bool&, bool&, const SDLKey key);
+	void key_press_callback(bool&, bool&, const SDL_Keycode key);
 
 	const std::string& focus_on_;
 

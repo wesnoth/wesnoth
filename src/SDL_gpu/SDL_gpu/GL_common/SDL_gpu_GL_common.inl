@@ -1517,13 +1517,13 @@ static Uint8 ToggleFullscreen(GPU_Renderer* renderer, Uint8 use_desktop_resoluti
 	Uint16 w, h;
 
     if(SDL_WM_ToggleFullScreen(surf))
-        return (surf->flags & SDL_FULLSCREEN);
+        return (surf->flags & SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     w = surf->w;
     h = surf->h;
-    surf->flags ^= SDL_FULLSCREEN;
+    surf->flags ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
     renderer->SetWindowResolution(renderer, w, h);
-    return (surf->flags & SDL_FULLSCREEN);
+    return (surf->flags & SDL_WINDOW_FULLSCREEN_DESKTOP);
 #endif
 }
 

@@ -690,7 +690,7 @@ void tlobby_main::update_selected_game()
 	player_list_dirty_ = true;
 }
 
-void tlobby_main::signal_handler_key_down(SDLKey key, bool& handled, bool& halt)
+void tlobby_main::signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt)
 {
 	if(key == SDLK_ESCAPE) {
 		if(quit()) {
@@ -1116,7 +1116,7 @@ void tlobby_main::game_filter_reload()
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value_bool());
 }
 
-void tlobby_main::game_filter_keypress_callback(const SDLKey key)
+void tlobby_main::game_filter_keypress_callback(const SDL_Keycode key)
 {
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		game_filter_reload();

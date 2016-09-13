@@ -298,8 +298,8 @@ bool ttext_box::history_down()
 }
 
 void ttext_box::handle_key_default(bool& handled,
-								   SDLKey key,
-								   SDLMod modifier,
+								   SDL_Keycode key,
+								   SDL_Keymod modifier,
 								   const utf8::string& unicode)
 {
 	if(key == SDLK_TAB && (modifier & KMOD_CTRL)) {
@@ -316,7 +316,7 @@ void ttext_box::handle_key_default(bool& handled,
 	}
 }
 
-void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
+void ttext_box::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 {
 	handled = true;
 

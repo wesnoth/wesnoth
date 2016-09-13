@@ -776,7 +776,7 @@ private:
 
 	void signal_handler_sdl_key_down(const event::tevent event,
 									 bool& handled,
-									 const SDLKey key);
+									 const SDL_Keycode key);
 
 	void signal_handler_message_show_tooltip(const event::tevent event,
 											 bool& handled,

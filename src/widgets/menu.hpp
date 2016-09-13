@@ -252,7 +252,7 @@ private:
 	mutable int max_items_, item_height_;
 
 	void adjust_viewport_to_selection();
-	void key_press(SDLKey key);
+	void key_press(SDL_Keycode key);
 
 	std::vector<item> items_;
 	std::vector<size_t> item_pos_;

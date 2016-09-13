@@ -224,7 +224,7 @@ bool ttree_view::handle_up_down_arrow()
 	return false;
 }
 
-void ttree_view::handle_key_up_arrow(SDLMod modifier, bool& handled)
+void ttree_view::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
 	if(handle_up_down_arrow<&ttree_view_node::get_selectable_node_above>()) {
 		handled = true;
@@ -234,7 +234,7 @@ void ttree_view::handle_key_up_arrow(SDLMod modifier, bool& handled)
 	}
 }
 
-void ttree_view::handle_key_down_arrow(SDLMod modifier, bool& handled)
+void ttree_view::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
 	if(handle_up_down_arrow<&ttree_view_node::get_selectable_node_below>()) {
 		handled = true;
@@ -245,7 +245,7 @@ void ttree_view::handle_key_down_arrow(SDLMod modifier, bool& handled)
 }
 
 
-void ttree_view::handle_key_left_arrow(SDLMod modifier, bool& handled)
+void ttree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	ttree_view_node* selected = selected_item();
 	if(!selected || selected->is_folded()) {
@@ -256,7 +256,7 @@ void ttree_view::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	handled = true;
 }
 
-void ttree_view::handle_key_right_arrow(SDLMod modifier, bool& handled)
+void ttree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	ttree_view_node* selected = selected_item();
 	if(!selected || !selected->is_folded()) {

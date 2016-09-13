@@ -18,9 +18,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 
-#include "sdl/compat.hpp"
-
-#include "video.hpp" //SDL_GetAppState()
+#include "video.hpp" //CVideo::get_singleton().window_state()
 
 #ifdef HAVE_LIBDBUS
 #include "dbus_notification.hpp"
@@ -51,7 +49,7 @@ bool available() { return true; }
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	Uint8 app_state = SDL_GetAppState();
+	Uint8 app_state = CVideo::get_singleton().window_state();
 
 	// Do not show notifications when the window is visible...
 	if ((app_state & SDL_APPACTIVE) != 0)

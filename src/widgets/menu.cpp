@@ -584,7 +584,7 @@ void menu::reset_selection()
 	set_selection_pos(0, true);
 }
 
-void menu::key_press(SDLKey key)
+void menu::key_press(SDL_Keycode key)
 {
 	if (!click_selects_) {
 		switch(key) {
@@ -629,7 +629,7 @@ bool menu::requires_event_focus(const SDL_Event* event) const
 	}
 
 	if(event->type == SDL_KEYDOWN) {
-		SDLKey key = event->key.keysym.sym;
+		SDL_Keycode key = event->key.keysym.sym;
 		if (!click_selects_) {
 			switch(key) {
 			case SDLK_UP:
@@ -699,8 +699,7 @@ void menu::handle_event(const SDL_Event& event)
 				// this double click was generated from a click that
 				// already has helped in generating a double click.
 				SDL_Event ev;
-				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT,
-							   SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
+				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT, DOUBLE_CLICK_EVENT, DOUBLE_CLICK_EVENT);
 				if (ev.type == DOUBLE_CLICK_EVENT) {
 					ignore_next_doubleclick_ = true;
 				}

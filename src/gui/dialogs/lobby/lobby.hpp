@@ -158,7 +158,7 @@ private:
 
 	void game_filter_change_callback(twidget& widget);
 
-	void game_filter_keypress_callback(const SDLKey key);
+	void game_filter_keypress_callback(const SDL_Keycode key);
 
 	void gamelist_change_callback(twindow& window);
 
@@ -168,7 +168,7 @@ private:
 
 	void skip_replay_changed_callback(twindow& window);
 
-	void signal_handler_key_down(SDLKey key, bool& handled, bool& halt);
+	void signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt);
 
 	static bool logout_prompt();
 

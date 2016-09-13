@@ -288,8 +288,8 @@ private:
 
 	void signal_handler_sdl_key_down(const event::tevent event,
 									 bool& handled,
-									 const SDLKey key,
-									 SDLMod modifier);
+									 const SDL_Keycode key,
+									 SDL_Keymod modifier);
 };
 
 typedef tlist tlistbox;

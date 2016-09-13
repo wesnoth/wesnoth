@@ -20,6 +20,5 @@
 #include <SDL.h>
 
 #include "events.hpp"
-#include "sdl/compat.hpp"
 
 #endif

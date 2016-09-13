@@ -278,7 +278,7 @@ bool slider::requires_event_focus(const SDL_Event* event) const
 	}
 
 	if(event->type == SDL_KEYDOWN) {
-		SDLKey key = event->key.keysym.sym;
+		SDL_Keycode key = event->key.keysym.sym;
 		switch(key) {
 		case SDLK_LEFT:
 		case SDLK_RIGHT:
@@ -317,7 +317,7 @@ void slider::handle_event(const SDL_Event& event)
 		break;
 	case SDL_KEYDOWN:
 		if(focus(&event) && allow_key_events()) { //allow_key_events is used by zoom_sliders to disable left-right key press, which is buggy for them
-			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+			const SDL_Keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 			const int c = key.sym;
 			if(c == SDLK_LEFT) {
 				sound::play_UI_sound(game_config::sounds::slider_adjust);

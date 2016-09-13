@@ -84,10 +84,8 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
 		SDL_Event new_event;
-		if(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
-					SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {
-			while(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
-						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {};
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {};
 			get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
 		} else {
 			get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
@@ -134,7 +132,7 @@ void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
 
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
-	bool mouse_in_window = (SDL_GetAppState() & SDL_APPMOUSEFOCUS) != 0
+	bool mouse_in_window = (CVideo::get_singleton().window_state() & SDL_APPMOUSEFOCUS) != 0
 		|| preferences::get("scroll_when_mouse_outside", true);
 	int scroll_speed = preferences::scroll_speed();
 	int dx = 0, dy = 0;
@@ -277,7 +275,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	// be nice when window is not visible
 	// NOTE should be handled by display instead, to only disable drawing
-	if (is_delay_enabled && (SDL_GetAppState() & SDL_APPACTIVE) == 0) {
+	if (is_delay_enabled && (CVideo::get_singleton().window_state() & SDL_APPACTIVE) == 0) {
 		CVideo::delay(200);
 	}
 

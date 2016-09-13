@@ -19,7 +19,6 @@
 
 #include "scoped_resource.hpp"
 #include "util.hpp"
-#include "sdl/compat.hpp"
 
 #include <SDL.h>
 
@@ -47,7 +46,7 @@
 #define SDL_BUTTON_WHEELRIGHT 7
 #endif
 
-SDLKey sdl_keysym_from_name(std::string const &keyname);
+SDL_Keycode sdl_keysym_from_name(std::string const &keyname);
 
 
 struct surface

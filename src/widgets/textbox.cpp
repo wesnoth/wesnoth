@@ -402,7 +402,7 @@ void textbox::erase_selection()
 namespace {
 	const unsigned int copypaste_modifier =
 #ifdef __APPLE__
-		KMOD_LMETA | KMOD_RMETA
+		KMOD_LGUI | KMOD_RGUI
 #else
 		KMOD_CTRL
 #endif
@@ -420,7 +420,7 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 	}
 
 	if(event->type == SDL_KEYDOWN) {
-		SDLKey key = event->key.keysym.sym;
+		SDL_Keycode key = event->key.keysym.sym;
 		switch(key) {
 		case SDLK_UP:
 		case SDLK_DOWN:
@@ -471,8 +471,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 {
 	bool changed = false;
 
-	const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
-	const SDLMod modifiers = SDL_GetModState();
+	const SDL_Keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+	const SDL_Keymod modifiers = SDL_GetModState();
 
 	const int c = key.sym;
 	const int old_cursor = cursor_;

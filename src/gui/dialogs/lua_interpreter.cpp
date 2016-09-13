@@ -388,7 +388,7 @@ public:
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
-						   const SDLKey key,
+						   const SDL_Keycode key,
 						   twindow& window);
 
 	void update_view(); ///< Update the view based on the model
@@ -497,7 +497,7 @@ void tlua_interpreter::controller::handle_clear_button_clicked(twindow & /*windo
 /** Handle return key (execute) or tab key (tab completion) */
 void tlua_interpreter::controller::input_keypress_callback(bool& handled,
 							   bool& halt,
-							   const SDLKey key,
+							   const SDL_Keycode key,
 							   twindow& /*window*/)
 {
 	assert(lua_model_);

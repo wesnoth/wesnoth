@@ -133,7 +133,7 @@ private:
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 	
-	void chat_input_keypress_callback(bool& handled, bool& halt, const SDLKey key);
+	void chat_input_keypress_callback(bool& handled, bool& halt, const SDL_Keycode key);
 
 	void append_to_chatbox(const std::string& text, const bool force_scroll = false);
 

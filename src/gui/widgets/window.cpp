@@ -391,7 +391,7 @@ twindow::twindow(CVideo& video,
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
 					&twindow::signal_handler_sdl_key_down, this, _2, _3, _5),
-			event::tdispatcher::back_pre_child);
+			event::tdispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&twindow::signal_handler_sdl_key_down, this, _2, _3, _5));
 
@@ -1409,11 +1409,12 @@ void twindow::signal_handler_click_dismiss(const event::tevent event,
 
 void twindow::signal_handler_sdl_key_down(const event::tevent event,
 										  bool& handled,
-										  SDLKey key)
+										  SDL_Keycode key)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
+		std::cerr << "window key handler fires\n";
 		set_retval(OK);
 		handled = true;
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {

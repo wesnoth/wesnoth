@@ -17,7 +17,6 @@
 
 #include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "sdl/compat.hpp"
 #include "serialization/unicode_types.hpp"
 
 #include <SDL_events.h>
@@ -74,8 +73,8 @@ typedef std::function<void(tdispatcher& dispatcher,
 							 const tevent event,
 							 bool& handled,
 							 bool& halt,
-							 const SDLKey key,
-							 const SDLMod modifier,
+							 const SDL_Keycode key,
+							 const SDL_Keymod modifier,
 							 const utf8::string& unicode)>
 tsignal_keyboard_function;
 
@@ -186,8 +185,8 @@ public:
 	 */
 	bool fire(const tevent event,
 			  twidget& target,
-			  const SDLKey key,
-			  const SDLMod modifier,
+			  const SDL_Keycode key,
+			  const SDL_Keymod modifier,
 			  const utf8::string& unicode);
 
 	/**

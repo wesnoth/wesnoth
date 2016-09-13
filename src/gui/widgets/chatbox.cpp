@@ -164,7 +164,7 @@ void tchatbox::send_message_button_callback()
 }
 
 
-void tchatbox::chat_input_keypress_callback(bool& handled, bool& halt, const SDLKey key)
+void tchatbox::chat_input_keypress_callback(bool& handled, bool& halt, const SDL_Keycode key)
 {
 	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		send_message_button_callback();

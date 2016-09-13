@@ -256,8 +256,8 @@ private:
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
 	 */
-	void key_down(const SDLKey key,
-				  const SDLMod modifier,
+	void key_down(const SDL_Keycode key,
+				  const SDL_Keymod modifier,
 				  const utf8::string& unicode);
 
 	/**
@@ -710,7 +710,7 @@ void thandler::key_down(const SDL_Event& event)
 
 void thandler::text_input(const std::string& unicode)
 {
-	key_down(static_cast<SDLKey>(0), static_cast<SDLMod>(0), unicode);
+	key_down(static_cast<SDL_Keycode>(0), static_cast<SDL_Keymod>(0), unicode);
 }
 
 bool thandler::hotkey_pressed(const hotkey::hotkey_ptr key)
@@ -724,8 +724,8 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_ptr key)
 	return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
 }
 
-void thandler::key_down(const SDLKey key,
-						const SDLMod modifier,
+void thandler::key_down(const SDL_Keycode key,
+						const SDL_Keymod modifier,
 						const utf8::string& unicode)
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
