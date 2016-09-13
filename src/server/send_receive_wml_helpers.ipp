@@ -15,9 +15,14 @@
 #ifndef SEND_RECEIVE_WML_HELPERS_HPP
 #define SEND_RECEIVE_WML_HELPERS_HPP
 
-#include <sys/sendfile.h>
-
+#ifdef HAVE_CONFIG_H
 #include "config.h"
+#endif
+
+#ifdef HAVE_SENDFILE
+#include <sys/sendfile.h>
+#endif
+
 #include "server_base.hpp"
 #include "simple_wml.hpp"
 #include "filesystem.hpp"
