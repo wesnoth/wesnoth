@@ -1407,8 +1407,6 @@ tcanvas::tcanvas()
 
 tcanvas::~tcanvas()
 {
-	SDL_DestroyRenderer(renderer_);
-
 }
 
 void tcanvas::draw(const bool force)
@@ -1429,9 +1427,7 @@ void tcanvas::draw(const bool force)
 	DBG_GUI_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(create_neutral_surface(w_, h_));
 
-	SDL_DestroyRenderer(renderer_);
-
-	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
+	renderer_ = canvas_.create_renderer();
 	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
 
 	// draw items

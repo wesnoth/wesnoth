@@ -51,13 +51,13 @@ SDL_Keycode sdl_keysym_from_name(std::string const &keyname);
 class surface
 {
 public:
-	surface() : surface_(nullptr)
+	surface() : surface_(nullptr), renderer_(nullptr)
 	{}
 
-	surface(SDL_Surface* surf) : surface_(surf)
+	surface(SDL_Surface* surf) : surface_(surf), renderer_(nullptr)
 	{}
 
-	surface(const surface& s) : surface_(s.get())
+	surface(const surface& s) : surface_(s.get()), renderer_(nullptr)
 	{
 		add_surface_ref(surface_);
 	}
@@ -65,6 +65,7 @@ public:
 	~surface()
 	{
 		free_surface();
+		destroy_renderer();
 	}
 
 	void assign(SDL_Surface* surf)
@@ -81,6 +82,12 @@ public:
 	{
 		assign(s);
 		return *this;
+	}
+
+	SDL_Renderer* create_renderer()
+	{
+		renderer_ = SDL_CreateSoftwareRenderer(surface_);
+		return renderer_;
 	}
 
 	operator SDL_Surface*() const { return surface_; }
@@ -104,6 +111,12 @@ private:
 		add_surface_ref(surf); // Needs to be done before assignment to avoid corruption on "a = a;"
 		free_surface();
 		surface_ = surf;
+
+		// Reassign renderer if it exists
+		if(renderer_) {
+			destroy_renderer();
+			create_renderer();
+		}
 	}
 
 	void free_surface()
@@ -113,7 +126,15 @@ private:
 		}
 	}
 
+	void destroy_renderer()
+	{
+		if(renderer_) {
+			SDL_DestroyRenderer(renderer_);
+		}
+	}
+
 	SDL_Surface* surface_;
+	SDL_Renderer* renderer_;
 };
 
 bool operator<(const surface& a, const surface& b);
