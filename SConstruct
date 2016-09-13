@@ -512,7 +512,7 @@ for env in [test_env, campaignd_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 
         if env['strict']:
-            env.AppendUnique(CCFLAGS = Split("-Werror $(-Wno-unsused-local-typedefs$)"))
+            env.AppendUnique(CCFLAGS = Split("-Werror $(-Wno-unused-local-typedefs$)"))
             env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
