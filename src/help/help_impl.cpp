@@ -1012,13 +1012,14 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 
 std::string generate_about_text()
 {
-	std::vector<std::string> about_lines = about::get_text();
+	/*std::vector<std::string> about_lines = about::get_text();
 	std::vector<std::string> res_lines;
 	std::transform(about_lines.begin(), about_lines.end(), std::back_inserter(res_lines),
 				   about_text_formatter());
 	res_lines.erase(std::remove(res_lines.begin(), res_lines.end(), ""), res_lines.end());
 	std::string text = utils::join(res_lines, "\n");
-	return text;
+	return text;*/
+	return "";
 }
 
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg)

@@ -16,7 +16,6 @@
 #include "global.hpp"                   // for false_, bool_
 #include "game_errors.hpp"
 
-#include "about.hpp" //for show_about
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
 #include "config_assign.hpp"
@@ -30,6 +29,7 @@
 #include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
+#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
@@ -955,7 +955,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {
-				about::show_about(video(),state_.classification().campaign);
+				gui2::tend_credits::display(video(), state_.classification().campaign);
 			}
 		}
 	} catch (savegame::load_game_exception &e) {

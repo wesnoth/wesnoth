@@ -17,7 +17,6 @@
 
 #include "global.hpp"
 
-class CVideo;
 class config;
 
 #include <vector>
@@ -26,9 +25,17 @@ class config;
 namespace about
 {
 
-void show_about(CVideo& video, const std::string &campaign = std::string());
+/**
+ * General getter methods for the credits config and image lists by campaign id
+ */
+const config& get_about_config();
+
+std::vector<std::string> get_background_images(const std::string& campaign);
+
+/**
+ * Regenerates the credits config
+ */
 void set_about(const config& cfg);
-std::vector<std::string> get_text(const std::string &campaign = std::string(), bool split_multiline_headers = false);
 
 }
 

@@ -14,7 +14,6 @@
 
 #include "global.hpp"
 
-#include "about.hpp"
 #include "addon/manager.hpp"
 #include "build_info.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc
@@ -31,6 +30,7 @@
 #include "game_launcher.hpp"          // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"  // for tmanager
+#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
 #include "gui/dialogs/message.hpp" 	// for show_error_message
@@ -804,7 +804,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			game->start_editor();
 			break;
 		case gui2::ttitle_screen::SHOW_ABOUT:
-			about::show_about(game->video());
+			gui2::tend_credits::display(game->video());
 			break;
 		case gui2::ttitle_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);

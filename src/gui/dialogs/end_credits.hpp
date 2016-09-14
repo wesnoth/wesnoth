@@ -20,6 +20,7 @@
 
 #include "sdl/utils.hpp"
 
+class config;
 class display;
 
 namespace gui2
@@ -30,13 +31,13 @@ class tscroll_label;
 class tend_credits : public tdialog
 {
 public:
-	tend_credits(const std::vector<std::string>& text, const std::vector<std::string>& backgrounds);
+	explicit tend_credits(const std::string& campaign);
 
 	~tend_credits();
 
-	static void display(const std::vector<std::string>& text, const std::vector<std::string>& backgrounds, CVideo& video)
+	static void display(CVideo& video, const std::string& campaign = "")
 	{
-		tend_credits(text, backgrounds).show(video);
+		tend_credits(campaign).show(video);
 	}
 
 private:
@@ -49,7 +50,7 @@ private:
 	void timer_callback();
 	void key_press_callback(bool&, bool&, const SDLKey key);
 
-	const std::vector<std::string>& text_;
+	const std::string& focus_on_;
 
 	std::vector<std::string> backgrounds_;
 
@@ -57,7 +58,7 @@ private:
 
 	tscroll_label* text_widget_;
 
-	/// The speed of auto-scrolling, specified as px/s
+	// The speed of auto-scrolling, specified as px/s
 	int scroll_speed_;
 
 	uint32_t last_scroll_;
