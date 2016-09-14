@@ -184,8 +184,26 @@ std::string directory_name(const std::string& file);
 
 /**
  * Returns the absolute path of a file.
+ *
+ * @param path                 Original path.
+ * @param normalize_separators Whether to substitute path separators with the
+ *                             platform's preferred format.
  */
-std::string normalize_path(const std::string &path);
+std::string normalize_path(const std::string& path,
+						   bool normalize_separators = false);
+
+/**
+ * Returns whether the path is the root of the file hierarchy.
+ *
+ * @note This function is unreliable for paths that do not exist -- it will
+ *       always return @a false for those.
+ */
+bool is_root(const std::string& path);
+
+/**
+ * Returns whether the path seems to be relative.
+ */
+bool is_relative(const std::string& path);
 
 /**
  * Returns whether @a c is a path separator.
@@ -194,6 +212,11 @@ std::string normalize_path(const std::string &path);
  *       path separator as well.
  */
 bool is_path_sep(char c);
+
+/**
+ * Returns the standard path separator for the current platform.
+ */
+char path_separator();
 
 /**
  *  The paths manager is responsible for recording the various paths

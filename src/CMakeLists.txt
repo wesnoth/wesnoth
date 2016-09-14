@@ -62,6 +62,7 @@ if(MSVC)
 		${sdl-lib}
 		${sdlmain-lib}
 		ws2_32.lib
+		shlwapi.lib
 	)
 else(MSVC)
 	set(common-external-libs

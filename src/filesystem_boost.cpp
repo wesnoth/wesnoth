@@ -39,6 +39,7 @@ using boost::uintmax_t;
 
 #include <windows.h>
 #include <shlobj.h>
+#include <shlwapi.h>
 #endif /* !_WIN32 */
 
 #include "config.hpp"
@@ -918,16 +919,65 @@ std::string directory_name(const std::string& file)
 {
 	return path(file).parent_path().string();
 }
+
 bool is_path_sep(char c)
 {
 	static const path sep = path("/").make_preferred();
 	const std::string s = std::string(1, c);
 	return sep == path(s).make_preferred();
 }
-std::string normalize_path(const std::string &fpath)
+
+char path_separator()
 {
-	if (fpath.empty()) {
+	return path::preferred_separator;
+}
+
+bool is_root(const std::string& path)
+{
+#ifndef _WIN32
+	error_code ec;
+	const bfs::path& p = bfs::canonical(path, ec);
+	return ec ? false : !p.has_parent_path();
+#else
+	//
+	// Boost.Filesystem is completely unreliable when it comes to detecting
+	// whether a path refers to a drive's root directory on Windows, so we are
+	// forced to take an alternative approach here. Instead of hand-parsing
+	// strings we'll just call a graphical shell service.
+	//
+	// There are several poorly-documented ways to refer to a drive in Windows by
+	// escaping the filesystem namespace using \\.\, \\?\, and \??\. We're just
+	// going to ignore those here, which may yield unexpected results in places
+	// such as the file dialog. This function really shouldn't be used for
+	// security validation anyway, and there are virtually infinite ways to name
+	// a drive's root using the NT object namespace so it's pretty pointless to
+	// try to catch those there.
+	//
+	// (And no, shlwapi.dll's PathIsRoot() doesn't recognize \\.\C:\, \\?\C:\, or
+	// \??\C:\ as roots either.)
+	//
+	// More generally, do NOT use this code in security-sensitive applications.
+	//
+	// See also: <https://googleprojectzero.blogspot.com/2016/02/the-definitive-guide-on-win32-to-nt.html>
+	//
+	const std::wstring& wpath = bfs::path{path}.make_preferred().wstring();
+	return PathIsRootW(wpath.c_str());
+#endif
+}
+
+bool is_relative(const std::string& path)
+{
+	return bfs::path{path}.is_relative();
+}
+
+std::string normalize_path(const std::string& fpath, bool normalize_separators)
+{
+	if(fpath.empty()) {
 		return fpath;
+	}
+
+	if(normalize_separators) {
+		return bfs::absolute(fpath).make_preferred().string();
 	}
 
 	return bfs::absolute(fpath).string();
