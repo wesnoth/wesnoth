@@ -49,6 +49,28 @@ BOOST_AUTO_TEST_CASE( test_fs_game_path_reverse_engineering )
 
 BOOST_AUTO_TEST_CASE( test_fs_base )
 {
+	BOOST_CHECK( is_root("/") );
+	BOOST_CHECK( is_root("////") );
+	BOOST_CHECK( is_root("/../") );
+	BOOST_CHECK( is_root("/../.././") );
+	BOOST_CHECK( is_root("/.././../.") );
+	BOOST_CHECK( is_root("/.") );
+
+	BOOST_CHECK( is_root("/bin/..") );
+	BOOST_CHECK( is_root("/bin/../bin/../.") );
+
+	BOOST_CHECK( !is_root("/bin") );
+	BOOST_CHECK( !is_root("/bin/../bin/.") );
+
+	BOOST_CHECK( is_relative(".") );
+	BOOST_CHECK( is_relative("..") );
+	BOOST_CHECK( is_relative("../foo") );
+	BOOST_CHECK( is_relative("foo") );
+	BOOST_CHECK( !is_relative("/./../foo/..") );
+	BOOST_CHECK( !is_relative("/foo/..") );
+	BOOST_CHECK( !is_relative("/foo") );
+	BOOST_CHECK( !is_relative("///foo") );
+
 	BOOST_CHECK( is_directory("/") );
 	BOOST_CHECK( is_directory("/.") );
 	BOOST_CHECK( is_directory("/./././.") );
