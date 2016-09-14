@@ -39,6 +39,8 @@
 #include <csignal>
 #include <ctime>
 
+#include <chrono>
+
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/exception/get_error_info.hpp>
 #include <boost/random.hpp>
