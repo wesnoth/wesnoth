@@ -938,6 +938,7 @@ def standard_unit_filter():
 
 # Associations for the ability sanity checks.
 notepairs = [
+    ("movement_type=mounted", "{SPECIAL_NOTES_DEFENSE_CAP}"),
     ("movement_type=undeadspirit", "{SPECIAL_NOTES_SPIRIT}"),
     ("type=arcane", "{SPECIAL_NOTES_ARCANE}"),
     ("{ABILITY_HEALS}", "{SPECIAL_NOTES_HEALS}"),
