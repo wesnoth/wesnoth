@@ -98,7 +98,6 @@ struct wesnoth_global_fixture {
 		if(runtime_config::report_level() == INV_REPORT_LEVEL)
 			results_reporter::set_level(SHORT_REPORT);
 		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 #endif
 	}
