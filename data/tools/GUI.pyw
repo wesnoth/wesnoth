@@ -978,13 +978,14 @@ class WmlxgettextTab(Frame):
         self.initialdomain_name=StringVar()
         self.initialdomain_entry=Entry(self.advanced_labelframe,
                                        state=DISABLED,
+                                       width=0,
                                        textvariable=self.initialdomain_name)
         self.initialdomain_entry.grid(row=1,column=1,sticky=E+W)
         self.domain_and_output_frame.columnconfigure(1,weight=1)
         self.domain_and_output_frame.rowconfigure(0,uniform="group")
         self.domain_and_output_frame.rowconfigure(1,uniform="group")
         self.advanced_labelframe.columnconfigure(1,weight=1)
-        self.columnconfigure(0,weight=1)
+        self.columnconfigure(0,weight=2)
         self.columnconfigure(1,weight=1)
     def initialdomain_callback(self, event=None):
         if self.initialdomain_variable.get():
