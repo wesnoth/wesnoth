@@ -400,11 +400,6 @@ if env["prereqs"]:
 
     env = conf.Finish()
 
-    campaignd_env = env.Clone()
-    conf = campaignd_env.Configure(**configure_args)
-    have_sdl_net()
-    campaignd_env = conf.Finish()
-
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
@@ -458,7 +453,7 @@ if env["prereqs"]:
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
 
-    have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') and conf.CheckSDL("SDL2_net", header_file = "SDL_net") \
+    have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') \
                             or Warning("WARN: Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
@@ -495,7 +490,7 @@ if not env['nls']:
 #
 print "---[applying configuration]---"
 
-for env in [test_env, campaignd_env, client_env, env]:
+for env in [test_env, client_env, env]:
     build_root="#/"
     if os.path.isabs(env["build_dir"]):
         build_root = ""
@@ -557,7 +552,7 @@ try:
 except:
     pass
 
-Export(Split("env campaignd_env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
@@ -571,7 +566,7 @@ builds = {
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
 
-for env in [test_env, campaignd_env, client_env, env]:
+for env in [test_env, client_env, env]:
     env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
     env.AppendUnique(**builds[build])
     env.Append(CXXFLAGS = Split(os.environ.get('CXXFLAGS', [])), LINKFLAGS = Split(os.environ.get('LDFLAGS', [])))

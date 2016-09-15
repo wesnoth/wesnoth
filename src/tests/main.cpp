@@ -42,7 +42,6 @@
 #include "game_errors.hpp"
 #include "gui/core/event/handler.hpp"
 #include "gui/widgets/helper.hpp"
-#include "network.hpp"
 #include "config.hpp"
 #include "log.hpp"
 
@@ -56,13 +55,6 @@ static void exception_translator_config(const config::error& e)
 {
 	throw "config:error: " + e.message;
 }
-
-static void exception_translator_network(const network::error& e)
-{
-	throw "network::error: " + e.message;
-}
-
-
 
 static void exception_translator_game(const game::error& e)
 {
@@ -99,7 +91,6 @@ struct wesnoth_global_fixture {
 		if(runtime_config::get<report_level>(runtime_config::REPORT_LEVEL) == INV_REPORT_LEVEL)
 			results_reporter::set_level(SHORT_REPORT);
 		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 #else
 		if(runtime_config::log_level() == invalid_log_level)
@@ -107,7 +98,6 @@ struct wesnoth_global_fixture {
 		if(runtime_config::report_level() == INV_REPORT_LEVEL)
 			results_reporter::set_level(SHORT_REPORT);
 		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
-		unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 #endif
 	}

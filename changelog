@@ -113,6 +113,10 @@ Version 1.13.5+dev:
      gettext plurals.
    * New matches function in team and unit attack metatables, which test if the
      side or weapon matches a filter.
+* Networking
+   * Ported campaignd to use boost.asio instead of SDL_net.
+   * Removed unit tests for old networking stack. This was the last part that
+   depended on SDL_net
 * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle

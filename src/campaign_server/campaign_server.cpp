@@ -23,7 +23,6 @@
 
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "network_worker.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -57,52 +56,16 @@ static lg::log_domain log_campaignd("campaignd");
 #define WRN_CS LOG_STREAM(warn,  log_campaignd)
 #define ERR_CS LOG_STREAM(err,   log_campaignd)
 
-//compatibility code for MS compilers
-#ifndef SIGHUP
-#define SIGHUP 20
-#endif
-/** @todo FIXME: should define SIGINT here too, but to what? */
+static lg::log_domain log_config("config");
+#define ERR_CONFIG LOG_STREAM(err, log_config)
+#define WRN_CONFIG LOG_STREAM(warn, log_config)
+
+static lg::log_domain log_server("server");
+#define ERR_SERVER LOG_STREAM(err, log_server)
+
+#include "server/send_receive_wml_helpers.ipp"
 
 namespace {
-
-/**
- * Whether to reload the server configuration as soon as possible
- * (e.g. after SIGHUP).
- */
-sig_atomic_t need_reload = 0;
-
-void flag_sighup(int signal)
-{
-	assert(signal == SIGHUP);
-	LOG_CS << "SIGHUP caught, scheduling config reload.\n";
-	need_reload = 1;
-}
-
-void exit_sigint(int signal)
-{
-	assert(signal == SIGINT);
-	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
-	exit(0);
-}
-
-void exit_sigterm(int signal)
-{
-	assert(signal == SIGTERM);
-	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGTERM);
-}
-
-time_t monotonic_clock()
-{
-#if defined(_POSIX_MONOTONIC_CLOCK) && !defined(_WIN32)
-	timespec ts;
-	clock_gettime(CLOCK_MONOTONIC, &ts);
-	return ts.tv_sec;
-#else
-	#warning monotonic_clock() is not truly monotonic!
-	return time(nullptr);
-#endif
-}
 
 /* Secure password storage functions */
 bool authenticate(config& campaign, const config::attribute_value& passphrase)
@@ -136,29 +99,22 @@ void set_passphrase(config& campaign, std::string passphrase)
 
 namespace campaignd {
 
-server::server(const std::string& cfg_file, size_t min_threads, size_t max_threads)
-	: cfg_()
+server::server(const std::string& cfg_file)
+	: server_base(default_campaignd_port, true)
+	, cfg_()
 	, cfg_file_(cfg_file)
 	, read_only_(false)
 	, compress_level_(0)
-	, input_()
 	, hooks_()
 	, handlers_()
 	, feedback_url_format_()
 	, blacklist_()
 	, blacklist_file_()
-	, port_(load_config())
-	, net_manager_(min_threads, max_threads)
-	, server_manager_(port_)
+	, flush_timer_(io_service_)
 {
-#ifndef _MSC_VER
-	signal(SIGHUP, flag_sighup);
-#endif
-	signal(SIGINT, exit_sigint);
-	signal(SIGTERM, exit_sigterm);
+	load_config();
 
-	LOG_CS << "Port: " << port_ << "  Worker threads min/max: " << min_threads
-		   << '/' << max_threads << '\n';
+	LOG_CS << "Port: " << port_ << "\n";
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
@@ -176,6 +132,9 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	}
 
 	register_handlers();
+
+	start_server();
+	flush_cfg();
 }
 
 server::~server()
@@ -183,7 +142,7 @@ server::~server()
 	write_config();
 }
 
-int server::load_config()
+void server::load_config()
 {
 	LOG_CS << "Reading configuration from " << cfg_file_ << "...\n";
 
@@ -195,9 +154,6 @@ int server::load_config()
 	if(read_only_) {
 		LOG_CS << "READ-ONLY MODE ACTIVE\n";
 	}
-
-	const bool use_system_sendfile = cfg_["network_use_system_sendfile"].to_bool();
-	network_worker_pool::set_use_system_sendfile(use_system_sendfile);
 
 	// Seems like compression level above 6 is a waste of CPU cycles.
 	compress_level_ = cfg_["compress_level"].to_int(6);
@@ -218,9 +174,21 @@ int server::load_config()
 	if(!cfg_["control_socket"].empty()) {
 		const std::string& path = cfg_["control_socket"].str();
 
-		if(!input_.get() || input_->path() != path) {
-			input_.reset(new input_stream(cfg_["control_socket"]));
+#ifndef _WIN32
+		if(path != fifo_path_) {
+			const int res = mkfifo(path.c_str(),0660);
+			if(res != 0 && errno != EEXIST) {
+				ERR_CS << "could not make fifo at '" << path << "' (" << strerror(errno) << ")\n";
+			} else {
+				input_.close();
+				int fifo = open(path.c_str(), O_RDWR|O_NONBLOCK);
+				input_.assign(fifo);
+				LOG_CS << "opened fifo at '" << path << "'. Server commands may be written to this file.\n";
+				read_from_fifo();
+				fifo_path_ = path;
+			}
 		}
+#endif
 	}
 
 	// Ensure the campaigns list WML exists even if empty, other functions
@@ -230,11 +198,138 @@ int server::load_config()
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
 	// at some later point.
-	cfg_["network_use_system_sendfile"] = use_system_sendfile;
 	cfg_["compress_level"] = compress_level_;
 
 	// But not the listening port number.
-	return cfg_["port"].to_int(default_campaignd_port);
+	port_ = cfg_["port"].to_int(default_campaignd_port);
+}
+
+void server::handle_new_client(socket_ptr socket)
+{
+	async_receive_doc(socket,
+					  std::bind(&server::handle_request, this, _1, _2)
+					  );
+}
+
+void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
+{
+	config data;
+	read(data, doc->output());
+
+	config::all_children_iterator i = data.ordered_begin();
+
+	if(i != data.ordered_end()) {
+		// We only handle the first child.
+		const config::any_child& c = *i;
+
+		request_handlers_table::const_iterator j
+				= handlers_.find(c.key);
+
+		if(j != handlers_.end()) {
+			// Call the handler.
+			j->second(this, request(c.key, c.cfg, socket));
+		} else {
+			send_error("Unrecognized [" + c.key + "] request.",socket);
+		}
+	}
+}
+
+#ifndef _WIN32
+
+void server::handle_read_from_fifo(const boost::system::error_code& error, std::size_t)
+{
+	if(error) {
+		if(error == boost::asio::error::operation_aborted)
+			// This means fifo was closed by load_config() to open another fifo
+			return;
+		ERR_CS << "Error reading from fifo: " << error.message() << '\n';
+		return;
+	}
+
+	std::istream is(&admin_cmd_);
+	std::string cmd;
+	std::getline(is, cmd);
+
+	const control_line ctl = cmd;
+
+	if(ctl == "shut_down") {
+		LOG_CS << "Shut down requested by admin, shutting down...\n";
+		throw server_shutdown("Shut down via fifo command");
+	} else if(ctl == "readonly") {
+		if(ctl.args_count()) {
+			cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
+		}
+
+		LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
+	} else if(ctl == "flush") {
+		LOG_CS << "Flushing config to disk...\n";
+		write_config();
+	} else if(ctl == "reload") {
+		if(ctl.args_count()) {
+			if(ctl[1] == "blacklist") {
+				LOG_CS << "Reloading blacklist...\n";
+				load_blacklist();
+			} else {
+				ERR_CS << "Unrecognized admin reload argument: " << ctl[1] << '\n';
+			}
+		} else {
+			LOG_CS << "Reloading all configuration...\n";
+			load_config();
+			LOG_CS << "Reloaded configuration\n";
+		}
+	} else if(ctl == "setpass") {
+		if(ctl.args_count() != 2) {
+			ERR_CS << "Incorrect number of arguments for 'setpass'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			const std::string& newpass = ctl[2];
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
+			} else if(newpass.empty()) {
+				// Shouldn't happen!
+				ERR_CS << "Add-on passphrases may not be empty!\n";
+			} else {
+				set_passphrase(campaign, newpass);
+				write_config();
+				LOG_CS << "New passphrase set for '" << addon_id << "'\n";
+			}
+		}
+	} else {
+		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
+	}
+
+	read_from_fifo();
+}
+
+#endif
+
+void server::handle_sighup(const boost::system::error_code&, int)
+{
+	LOG_CS << "SIGHUP caught, reloading config.\n";
+
+	load_config(); // TODO: handle port number config changes
+
+	LOG_CS << "Reloaded configuration\n";
+
+	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+}
+
+void server::flush_cfg()
+{
+	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.async_wait(boost::bind(&server::handle_flush, this, _1));
+}
+
+void server::handle_flush(const boost::system::error_code& error)
+{
+	if(error) {
+		ERR_CS << "Error from reload timer: " << error.message() << "\n";
+		throw boost::system::system_error(error);
+	}
+	write_config();
+	flush_cfg();
 }
 
 void server::load_blacklist()
@@ -300,7 +395,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 
 		// exec() and family never return; if they do, we have a problem
 		std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
-		          << '\n';
+				  << '\n';
 		exit(errno);
 
 	} else {
@@ -309,161 +404,19 @@ void server::fire(const std::string& hook, const std::string& addon)
 #endif
 }
 
-void server::send_message(const std::string& msg, network::connection sock)
+void server::send_message(const std::string& msg, socket_ptr sock)
 {
-	config cfg;
-	cfg.add_child("message")["message"] = msg;
-	network::send_data(cfg, sock);
+	simple_wml::document doc;
+	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
+	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-void server::send_error(const std::string& msg, network::connection sock)
+void server::send_error(const std::string& msg, socket_ptr sock)
 {
-	config cfg;
-	cfg.add_child("error")["message"] = msg;
-	ERR_CS << "[" << network::ip_address(sock) << "]: " << msg << '\n';
-	network::send_data(cfg, sock);
-}
-
-void server::run()
-{
-	network::connection sock = 0;
-
-	time_t last_ts = monotonic_clock();
-
-	for(;;)
-	{
-		if(need_reload) {
-			load_config(); // TODO: handle port number config changes
-
-			need_reload = 0;
-			last_ts = 0;
-
-			LOG_CS << "Reloaded configuration\n";
-		}
-
-		try {
-			bool force_flush = false;
-			std::string admin_cmd;
-
-			if(input_ && input_->read_line(admin_cmd)) {
-				control_line ctl = admin_cmd;
-
-				if(ctl == "shut_down") {
-					LOG_CS << "Shut down requested by admin, shutting down...\n";
-					break;
-				} else if(ctl == "readonly") {
-					if(ctl.args_count()) {
-						cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
-					}
-
-					LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
-				} else if(ctl == "flush") {
-					force_flush = true;
-					LOG_CS << "Flushing config to disk...\n";
-				} else if(ctl == "reload") {
-					if(ctl.args_count()) {
-						if(ctl[1] == "blacklist") {
-							LOG_CS << "Reloading blacklist...\n";
-							load_blacklist();
-						} else {
-							ERR_CS << "Unrecognized admin reload argument: " << ctl[1] << '\n';
-						}
-					} else {
-						LOG_CS << "Reloading all configuration...\n";
-						need_reload = 1;
-						// Avoid flush timer ellapsing
-						continue;
-					}
-				} else if(ctl == "setpass") {
-					if(ctl.args_count() != 2) {
-						ERR_CS << "Incorrect number of arguments for 'setpass'\n";
-					} else {
-						const std::string& addon_id = ctl[1];
-						const std::string& newpass = ctl[2];
-						config& campaign = get_campaign(addon_id);
-
-						if(!campaign) {
-							ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
-						} else if(newpass.empty()) {
-							// Shouldn't happen!
-							ERR_CS << "Add-on passphrases may not be empty!\n";
-						} else {
-							set_passphrase(campaign, newpass);
-							write_config();
-							LOG_CS << "New passphrase set for '" << addon_id << "'\n";
-						}
-					}
-				} else {
-					ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
-				}
-			}
-
-			const time_t cur_ts = monotonic_clock();
-			// Write config to disk every ten minutes.
-			if(force_flush || labs(cur_ts - last_ts) >= 10*60) {
-				write_config();
-				last_ts = cur_ts;
-			}
-
-			network::process_send_queue();
-
-			sock = network::accept_connection();
-			if(sock) {
-				LOG_CS << "received connection from " << network::ip_address(sock) << "\n";
-			}
-
-			config data;
-
-			while((sock = network::receive_data(data, 0)) != network::null_connection)
-			{
-				config::all_children_iterator i = data.ordered_begin();
-
-				if(i != data.ordered_end()) {
-					// We only handle the first child.
-					const config::any_child& c = *i;
-
-					request_handlers_table::const_iterator j
-							= handlers_.find(c.key);
-
-					if(j != handlers_.end()) {
-						// Call the handler.
-						j->second(this, request(c.key, c.cfg, sock));
-					} else {
-						send_error("Unrecognized [" + c.key + "] request.",
-								   sock);
-					}
-				}
-			}
-		} catch(network::error& e) {
-			if(!e.socket) {
-				ERR_CS << "fatal network error: " << e.message << "\n";
-				throw;
-			} else {
-				LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
-				e.disconnect();
-			}
-		} catch(const config::error& e) {
-			network::connection err_sock = 0;
-			network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
-
-			if(err_connection != nullptr) {
-				err_sock = *err_connection;
-			}
-
-			if(err_sock == 0 && sock > 0) {
-				err_sock = sock;
-			}
-
-			if(err_sock) {
-				ERR_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
-				network::disconnect(err_sock);
-			} else {
-				throw;
-			}
-		}
-
-		SDL_Delay(20);
-	}
+	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
+	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
 void server::register_handler(const std::string& cmd, const request_handler& func)
@@ -486,7 +439,7 @@ void server::register_handlers()
 
 void server::handle_request_campaign_list(const server::request& req)
 {
-	LOG_CS << "sending campaign list to " << req.addr << " using gzip";
+	LOG_CS << "sending campaign list to " << req.addr << " using gzip\n";
 
 	time_t epoch = time(nullptr);
 	config campaign_list;
@@ -570,12 +523,18 @@ void server::handle_request_campaign_list(const server::request& req)
 	config response;
 	response.add_child("campaigns", campaign_list);
 
-	std::cerr << " size: " << (network::send_data(response, req.sock)/1024) << "KiB\n";
+	std::ostringstream ostr;
+	write(ostr, response);
+	std::string wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	async_send_doc(req.sock, doc, boost::bind(&server::handle_new_client, this, _1));
 }
 
 void server::handle_request_campaign(const server::request& req)
 {
-	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip";
+	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
 
 	config& campaign = get_campaign(req.cfg["name"]);
 
@@ -592,7 +551,8 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		std::cerr << " size: " << size/1024 << "KiB\n";
-		network::send_file(campaign["filename"], req.sock);
+		async_send_file(req.sock, campaign["filename"],
+				boost::bind(&server::handle_new_client, this, _1), null_handler);
 		// Clients doing upgrades or some other specific thing shouldn't bump
 		// the downloads count. Default to true for compatibility with old
 		// clients that won't tell us what they are trying to do.
@@ -644,11 +604,11 @@ void server::handle_upload(const server::request& req)
 	} catch(const utf8::invalid_utf8_exception&) {
 		if(!passed_name_utf8_check) {
 			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 1, "
-			       << "the add-on pbl info contains invalid UTF-8\n";
+				   << "the add-on pbl info contains invalid UTF-8\n";
 			send_error("Add-on rejected: The add-on name contains an invalid UTF-8 sequence.", req.sock);
 		} else {
 			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 2, "
-			       << "the internal add-ons list contains invalid UTF-8\n";
+				   << "the internal add-ons list contains invalid UTF-8\n";
 			send_error("Server error: The server add-ons list is damaged.", req.sock);
 		}
 
@@ -811,8 +771,8 @@ void server::handle_delete(const server::request& req)
 	}
 
 	if(!authenticate(campaign, erase["passphrase"])
-	   && (campaigns()["master_password"].empty()
-	   || campaigns()["master_password"] != erase["passphrase"]))
+		&& (campaigns()["master_password"].empty()
+		|| campaigns()["master_password"] != erase["passphrase"]))
 	{
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
@@ -870,32 +830,26 @@ void server::handle_change_passphrase(const server::request& req)
 
 } // end namespace campaignd
 
-int main(int argc, char**argv)
+int main()
 {
 	game_config::path = filesystem::get_cwd();
 
 	lg::set_log_domain_severity("campaignd", lg::info());
+	lg::set_log_domain_severity("server", lg::info());
 	lg::timestamps(true);
 
 	try {
 		std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
 
-		const std::string& cfg_path = filesystem::normalize_path("server.cfg");
+		const std::string cfg_path = filesystem::normalize_path("server.cfg");
 
-		if(argc >= 2 && atoi(argv[1])){
-			campaignd::server(cfg_path, atoi(argv[1])).run();
-		} else {
-			campaignd::server(cfg_path).run();
-		}
+		campaignd::server(cfg_path).run();
 	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
 	} catch(filesystem::io_exception& /*e*/) {
 		std::cerr << "File I/O error\n";
 		return 2;
-	} catch(network::error& e) {
-		std::cerr << "Aborted with network error: " << e.message << '\n';
-		return 3;
 	} catch(std::bad_function_call& /*e*/) {
 		std::cerr << "Bad request handler function call\n";
 		return 4;

@@ -16,29 +16,25 @@
 #define CAMPAIGN_SERVER_HPP_INCLUDED
 
 #include "campaign_server/blacklist.hpp"
-#include "network.hpp"
-#include "server/input_stream.hpp"
+#include "server/server_base.hpp"
+#include "server/simple_wml.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/unordered_map.hpp>
+#include <boost/asio/steady_timer.hpp>
+
+#include <chrono>
 
 namespace campaignd {
 
 /**
  * Legacy add-ons server.
  */
-class server : private boost::noncopyable
+class server : private boost::noncopyable, public server_base
 {
 public:
-	explicit server(const std::string& cfg_file,
-					size_t min_threads = 10,
-					size_t max_threads = 0);
+	explicit server(const std::string& cfg_file);
 	~server();
-
-	/**
-	 * Runs the server request processing loop.
-	 */
-	void run();
 
 private:
 	/**
@@ -53,7 +49,7 @@ private:
 		const std::string& cmd;
 		const config& cfg;
 
-		const network::connection sock;
+		const socket_ptr sock;
 		const std::string addr;
 
 		/**
@@ -69,11 +65,11 @@ private:
 		 */
 		request(const std::string& reqcmd,
 				const config& reqcfg,
-				network::connection reqsock)
+				socket_ptr reqsock)
 			: cmd(reqcmd)
 			, cfg(reqcfg)
 			, sock(reqsock)
-			, addr(network::ip_address(sock))
+			, addr(client_address(sock))
 		{}
 	};
 
@@ -86,8 +82,6 @@ private:
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
 
-	std::unique_ptr<input_stream> input_; /**< Server control socket. */
-
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
 
@@ -96,17 +90,24 @@ private:
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
-	int port_;
+	void handle_new_client(socket_ptr socket);
+	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
-	const network::manager net_manager_;
-	const network::server_manager server_manager_;
+	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
+
+	void handle_sighup(const boost::system::error_code& error, int signal_number);
+
+	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
+	/**
+	 * Starts timer to write config to disk every ten minutes.
+	 */
+	void flush_cfg();
+	void handle_flush(const boost::system::error_code& error);
 
 	/**
 	 * Reads the server configuration from WML.
-	 *
-	 * @return The configured listening port number.
 	 */
-	int load_config();
+	void load_config();
 
 	/**
 	 * Writes the server configuration WML back to disk.
@@ -172,17 +173,13 @@ private:
 	void handle_delete(const request&);
 	void handle_change_passphrase(const request&);
 
-	//
-	// Generic responses.
-	//
-
 	/**
 	 * Send a client an informational message.
 	 *
 	 * The WML sent consists of a document containing a single @p [message]
 	 * child with a @a message attribute holding the value of @a msg.
 	 */
-	void send_message(const std::string& msg, network::connection sock);
+	void send_message(const std::string& msg, socket_ptr sock);
 
 	/**
 	 * Send a client an error message.
@@ -192,7 +189,7 @@ private:
 	 * sending the error to the client, a line with the client IP and message
 	 * is recorded to the server log.
 	 */
-	void send_error(const std::string& msg, network::connection sock);
+	void send_error(const std::string& msg, socket_ptr sock);
 };
 
 } // end namespace campaignd

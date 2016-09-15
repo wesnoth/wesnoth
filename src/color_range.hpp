@@ -27,13 +27,12 @@
 #include <map>
 #include <string>
 #include <vector>
-
-#include <SDL_types.h>
+#include <stdint.h>
 
 /* Convert comma separated string into rgb values.
  * Return false and empty result on error.
  */
-bool string2rgb(const std::string& s, std::vector<Uint32>& result);
+bool string2rgb(const std::string& s, std::vector<uint32_t>& result);
 
 /**
  * A color range definition is made of four reference RGB colors, used
@@ -61,13 +60,13 @@ public:
   * @param min Minimum color shade
   * @param rep High-contrast reference color
   */
-  color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){}
+  color_range(uint32_t mid , uint32_t max = 0x00FFFFFF , uint32_t min = 0x00000000 , uint32_t rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){}
 
   /**
    * Constructor, which expects four reference RGB colors.
    * @param v STL vector with the four reference colors in order.
    */
-  color_range(const std::vector<Uint32>& v)
+  color_range(const std::vector<uint32_t>& v)
     : mid_(v.size()     ? v[0] : 0x00808080),
       max_(v.size() > 1 ? v[1] : 0x00FFFFFF),
       min_(v.size() > 2 ? v[2] : 0x00000000),
@@ -79,13 +78,13 @@ public:
   color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {}
 
   /** Average color shade. */
-  Uint32 mid() const{return(mid_);}
+  uint32_t mid() const{return(mid_);}
   /** Maximum color shade. */
-  Uint32 max() const{return(max_);}
+  uint32_t max() const{return(max_);}
   /** Minimum color shade. */
-  Uint32 min() const{return(min_);}
+  uint32_t min() const{return(min_);}
   /** High-contrast shade, intended for the minimap markers. */
-  Uint32 rep() const{return(rep_);}
+  uint32_t rep() const{return(rep_);}
 
   bool operator<(const color_range& b) const
   {
@@ -106,13 +105,13 @@ public:
   std::string debug() const;
 
 private:
-  Uint32 mid_ , max_ , min_ , rep_;
+  uint32_t mid_ , max_ , min_ , rep_;
 };
 
 /**
  * Creates a reference color palette from a color range.
  */
-std::vector<Uint32> palette(color_range cr);
+std::vector<uint32_t> palette(color_range cr);
 
 /**
  * Converts a source palette using the specified color_range object.
@@ -123,17 +122,17 @@ std::vector<Uint32> palette(color_range cr);
  * @return A STL map of colors, with the keys being source palette elements, and the values
  *         are the result of applying the color range conversion on it.
  */
-std::map<Uint32, Uint32> recolor_range(const color_range& new_rgb, const std::vector<Uint32>& old_rgb);
+std::map<uint32_t, uint32_t> recolor_range(const color_range& new_rgb, const std::vector<uint32_t>& old_rgb);
 
 /**
  * Converts a color value to WML text markup syntax for highlighting.
  * For example, 0x00CC00CC becomes "<204,0,204>".
  */
-std::string rgb2highlight(Uint32 rgb);
+std::string rgb2highlight(uint32_t rgb);
 
 /**
  * Converts a color value to WML text markup syntax for highlighting.
  * For example, 0x00CC00CC becomes "#CC00CC".
  */
-std::string rgb2highlight_pango(Uint32 rgb);
+std::string rgb2highlight_pango(uint32_t rgb);
 #endif

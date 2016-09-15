@@ -47,8 +47,6 @@ if(ZLIB_INCLUDE_DIR)
 	include_directories(SYSTEM ${ZLIB_INCLUDE_DIR} )
 endif()
 
-set(network_implementation_files network.cpp network_worker.cpp)
-
 if(ENABLE_SDL_GPU)
 	message(STATUS "Configuring SDL_gpu...")
 	add_definitions("-DSDL_GPU")
@@ -242,7 +240,6 @@ set(libwesnoth-core_STAT_SRC
 	md5.cpp
 	mt_rng.cpp
 	seed_rng.cpp
-	thread.cpp
 	tstring.cpp
 	util.cpp
 	version.cpp
@@ -985,7 +982,6 @@ set(wesnoth-main_SRC
 	whiteboard/side_actions.cpp
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
-	${network_implementation_files}
 )
 
 ########### libwesnoth-game ###############
@@ -1157,17 +1153,16 @@ if(ENABLE_SERVER)
 set(wesnothd_SRC
 	server/ban.cpp
 	server/game.cpp
-	server/input_stream.cpp
 	server/metrics.cpp
 	server/player.cpp
 	server/player_connection.cpp
 	server/player_network.cpp
 	server/server.cpp
+	server/server_base.cpp
 	server/simple_wml.cpp
 	server/user_handler.cpp
 	server/forum_user_handler.cpp
 	server/sample_user_handler.cpp
-	${network_implementation_files}
 )
 
 add_executable(wesnothd WIN32
@@ -1190,8 +1185,8 @@ set(campaignd_SRC
 	campaign_server/addon_utils.cpp
 	campaign_server/blacklist.cpp
 	campaign_server/campaign_server.cpp
-	server/input_stream.cpp
-	${network_implementation_files}
+	server/server_base.cpp
+	server/simple_wml.cpp
 )
 
 check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
@@ -1384,7 +1379,6 @@ if(ENABLE_TESTS)
 		tests/test_lua.cpp
 		tests/test_map_location.cpp
 		tests/test_make_enum.cpp
-		tests/test_network_worker.cpp
 		tests/test_rng.cpp
 		tests/test_mp_connect.cpp
 		tests/test_sdl_utils.cpp
