@@ -124,6 +124,7 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 	);
 }
 
+#ifndef _WIN32
 void server_base::read_from_fifo() {
 	async_read_until(input_,
 					 admin_cmd_, '\n',
@@ -131,6 +132,7 @@ void server_base::read_from_fifo() {
 						{ this->handle_read_from_fifo(error, bytes_transferred); }
 	);
 }
+#endif
 
 void server_base::handle_termination(const boost::system::error_code& error, int signal_number)
 {
