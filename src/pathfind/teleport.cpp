@@ -146,6 +146,10 @@ bool teleport_group::always_visible() const {
 	return cfg_["always_visible"].to_bool(false);
 }
 
+bool teleport_group::pass_allied_units() const {
+	return cfg_["pass_allied_units"].to_bool(false);
+}
+
 config teleport_group::to_config() const {
 	config retval = cfg_;
 	retval["saved"] = "yes";
@@ -183,7 +187,7 @@ teleport_map::teleport_map(
 			locations.second.swap(filter_locs.second);
 		}
 
-		if (!ignore_units) {
+		if (!group.pass_allied_units() && !ignore_units) {
 			std::set<map_location>::iterator loc = locations.second.begin();
 			while(loc != locations.second.end()) {
 				const unit *v = resources::gameboard->get_visible_unit(*loc, viewing_team, see_all);

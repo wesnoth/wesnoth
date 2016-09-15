@@ -70,6 +70,11 @@ public:
 	 */
 	bool always_visible() const;
 
+	/*
+	 * Returns whether allied units on the exit hex can be passed.
+	 */
+	bool pass_allied_units() const;
+
 	/** Inherited from savegame_config. */
 	config to_config() const;
 
