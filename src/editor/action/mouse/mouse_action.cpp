@@ -183,7 +183,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	image = mask_surface(image, image::get_hexmask());
 
 	// Add the alpha factor
-	image = adjust_surface_alpha(image, alpha);
+	adjust_surface_alpha(image, alpha);
 
 	// scale the image
 	const int zoom = disp.hex_size();
@@ -344,7 +344,8 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 
@@ -399,7 +400,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 		return nullptr;
 	}
 	auto player_starting_at_hex = disp.map().is_starting_position(hex);
-	 
+
 	if (has_ctrl_modifier()) {
 		if (player_starting_at_hex) {
 			location_palette_.add_item(*player_starting_at_hex);
@@ -461,7 +462,8 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 

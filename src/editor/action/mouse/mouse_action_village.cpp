@@ -52,7 +52,8 @@ void mouse_action_village::set_mouse_overlay(editor_display& disp)
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 

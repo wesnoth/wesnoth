@@ -29,6 +29,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/renderer.hpp"
 #include "text.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -78,126 +79,6 @@ namespace
  * @end{tag}{name="blur"}
  * @end{tag}{name="pre_commit"}
  */
-
-/***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
-
-static void set_renderer_color(SDL_Renderer* renderer, Uint32 color)
-{
-	SDL_SetRenderDrawColor(renderer,
-		(color & 0xFF000000) >> 24,
-		(color & 0x00FF0000) >> 16,
-		(color & 0x0000FF00) >> 8,
-		(color & 0x000000FF));
-}
-
-/**
- * Draws a line on a surface.
- *
- * @pre                   The caller needs to make sure the entire line fits on
- *                        the @p surface.
- * @pre                   @p x2 >= @p x1
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The color of the line to draw.
- * @param x1              The start x coordinate of the line to draw.
- * @param y1              The start y coordinate of the line to draw.
- * @param x2              The end x coordinate of the line to draw.
- * @param y2              The end y coordinate of the line to draw.
- */
-static void draw_line(surface& canvas,
-					  SDL_Renderer* renderer,
-					  Uint32 color,
-					  unsigned x1,
-					  unsigned y1,
-					  const unsigned x2,
-					  unsigned y2)
-{
-	unsigned w = canvas->w;
-
-	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1 << " to " << x2
-			  << ',' << y2 << " canvas width " << w << " canvas height "
-			  << canvas->h << ".\n";
-
-	assert(static_cast<int>(x1) < canvas->w);
-	assert(static_cast<int>(x2) < canvas->w);
-	assert(static_cast<int>(y1) < canvas->h);
-	assert(static_cast<int>(y2) < canvas->h);
-
-	set_renderer_color(renderer, color);
-
-	if(x1 == x2 && y1 == y2) {
-		// Handle single-pixel lines properly
-		SDL_RenderDrawPoint(renderer, x1, y1);
-	} else {
-		SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-	}
-}
-
-/**
- * Draws a circle on a surface.
- *
- * @pre                   The circle must fit on the canvas.
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The color of the circle to draw.
- * @param x_center        The x coordinate of the center of the circle to draw.
- * @param y_center        The y coordinate of the center of the circle to draw.
- * @param radius          The radius of the circle to draw.
- */
-static void draw_circle(surface& canvas,
-						SDL_Renderer* renderer,
-						Uint32 color,
-						const int x_center,
-						const int y_center,
-						const int radius)
-{
-	unsigned w = canvas->w;
-
-	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
-
-	assert(static_cast<int>(x_center + radius) < canvas->w);
-	assert(static_cast<int>(x_center - radius) >= 0);
-	assert(static_cast<int>(y_center + radius) < canvas->h);
-	assert(static_cast<int>(y_center - radius) >= 0);
-
-	set_renderer_color(renderer, color);
-
-	// Algorithm based on
-	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
-	// version of 2011.02.07.
-	int d = -static_cast<int>(radius);
-	int x = radius;
-	int y = 0;
-
-	std::vector<SDL_Point> points;
-
-	while(!(y > x)) {
-		points.push_back({x_center + x, y_center + y});
-		points.push_back({x_center + x, y_center - y});
-		points.push_back({x_center - x, y_center + y});
-		points.push_back({x_center - x, y_center - y});
-
-		points.push_back({x_center + y, y_center + x});
-		points.push_back({x_center + y, y_center - x});
-		points.push_back({x_center - y, y_center + x});
-		points.push_back({x_center - y, y_center - x});
-
-		d += 2 * y + 1;
-		++y;
-		if(d > 0) {
-			d += -2 * x + 2;
-			--x;
-		}
-	}
-
-	SDL_RenderDrawPoints(renderer, points.data(), points.size());
-}
 
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
@@ -595,7 +476,7 @@ void tline::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_line(canvas, renderer, color_, x1, y1, x2, y2);
+	sdl::draw_line(canvas, renderer, color_, x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
@@ -732,14 +613,14 @@ void trectangle::draw(surface& canvas,
 			h - (i * 2)
 		};
 
-		set_renderer_color(renderer, border_color_);
+		sdl::set_renderer_color(renderer, border_color_);
 
 		SDL_RenderDrawRect(renderer, &dimensions);
 	}
 
 	// Fill the background, if applicable
 	if(fill_color_) {
-		set_renderer_color(renderer, fill_color_);
+		sdl::set_renderer_color(renderer, fill_color_);
 
 		SDL_Rect area {
 			x +  border_thickness_,
@@ -862,7 +743,7 @@ void tcircle::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_circle(canvas, renderer, color_, x, y, radius);
+	sdl::draw_circle(canvas, renderer, color_, x, y, radius);
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
@@ -1407,8 +1288,6 @@ tcanvas::tcanvas()
 
 tcanvas::~tcanvas()
 {
-	SDL_DestroyRenderer(renderer_);
-
 }
 
 void tcanvas::draw(const bool force)
@@ -1429,9 +1308,7 @@ void tcanvas::draw(const bool force)
 	DBG_GUI_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(create_neutral_surface(w_, h_));
 
-	SDL_DestroyRenderer(renderer_);
-
-	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
+	renderer_ = canvas_.create_renderer();
 	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
 
 	// draw items

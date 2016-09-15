@@ -19,7 +19,6 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
-#include "sdl/alpha.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <map>
@@ -222,9 +221,12 @@ surface wipe_alpha_modification::operator()(const surface& src) const
 	return wipe_alpha(src);
 }
 
+// TODO: make this take a non-const reference and don't construct the temp surface
 surface adjust_alpha_modification::operator()(const surface & src) const
 {
-	return adjust_surface_alpha(src, amount_);
+	surface temp = src;
+	adjust_surface_alpha(temp, amount_);
+	return temp;
 }
 
 surface crop_modification::operator()(const surface& src) const
@@ -245,8 +247,9 @@ surface crop_modification::operator()(const surface& src) const
 	 * Since it seems to work for most cases, rather change this caller instead
 	 * of the function signature. (The issue was discovered in bug #20876).
 	 */
-	return create_optimized_surface(
-			cut_surface(make_neutral_surface(src), area));
+    surface temp = cut_surface(make_neutral_surface(src), area);
+	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+	return temp;
 }
 
 const SDL_Rect& crop_modification::get_slice() const
@@ -397,7 +400,7 @@ std::pair<int,int> scale_exact_modification::calculate_size(const surface& src) 
 		}
 		h = old_h;
 	}
-	
+
 	return std::make_pair(w, h);
 }
 
@@ -420,7 +423,7 @@ std::pair<int,int> scale_into_modification::calculate_size(const surface& src) c
 		}
 		h = old_h;
 	}
-	
+
 	long double ratio = std::min(w / old_w, h / old_h);
 
 	return std::make_pair(old_w * ratio, old_h * ratio);
@@ -435,9 +438,12 @@ surface xbrz_modification::operator()(const surface& src) const
 	return scale_surface_xbrz(src, z_);
 }
 
+// TODO: make this take a non-const reference and don't construct the temp surface
 surface o_modification::operator()(const surface& src) const
 {
-	return adjust_surface_alpha(src, ftofxp(opacity_));
+	surface temp = src;
+	adjust_surface_alpha(temp, ftofxp(opacity_));
+	return temp;
 }
 
 float o_modification::get_opacity() const
@@ -523,13 +529,15 @@ surface darken_modification::operator()(const surface &src) const
 	return ret;
 }
 
+// TODO: make this take a non-const reference and don't construct the temp surface
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
 	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
-	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-	blit_surface(src, nullptr, ret, nullptr);
+    surface temp = src;
+	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+	blit_surface(temp, nullptr, ret, nullptr);
 	return ret;
 }
 
