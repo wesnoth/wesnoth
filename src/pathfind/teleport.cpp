@@ -182,8 +182,20 @@ teleport_map::teleport_map(
 			locations.first.swap(filter_locs.first);
 			locations.second.swap(filter_locs.second);
 		}
-		std::string teleport_id = group.get_teleport_id();
 
+		if (!ignore_units) {
+			std::set<map_location>::iterator loc = locations.second.begin();
+			while(loc != locations.second.end()) {
+				const unit *v = resources::gameboard->get_visible_unit(*loc, viewing_team, see_all);
+				if (v) {
+					loc = locations.second.erase(loc);
+				} else {
+					++loc;
+				}
+			}
+		}
+
+		std::string teleport_id = group.get_teleport_id();
 		std::set<map_location>::iterator source_it = locations.first.begin();
 		for (; source_it != locations.first.end(); ++source_it ) {
 			if(teleport_map_.count(*source_it) == 0) {
