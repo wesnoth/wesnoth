@@ -30,6 +30,8 @@
 
 #include "utils/functional.hpp"
 
+#include <sstream>
+
 namespace gui2
 {
 
