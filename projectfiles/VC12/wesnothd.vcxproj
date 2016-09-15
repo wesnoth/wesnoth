@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\filesystem_win32.ii" />
+    <None Include="..\..\src\server\send_receive_wml_helpers.ipp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\mt_rng.cpp" />
@@ -273,6 +274,12 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\server\server_base.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\server\simple_wml.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
@@ -300,6 +307,7 @@
     <ClInclude Include="..\..\src\server\player_network.hpp" />
     <ClInclude Include="..\..\src\server\sample_user_handler.hpp" />
     <ClInclude Include="..\..\src\server\server.hpp" />
+    <ClInclude Include="..\..\src\server\server_base.hpp" />
     <ClInclude Include="..\..\src\server\simple_wml.hpp" />
     <ClInclude Include="..\..\src\server\user_handler.hpp" />
   </ItemGroup>

@@ -22,6 +22,9 @@
     <None Include="..\..\src\filesystem_win32.ii">
       <Filter>Others</Filter>
     </None>
+    <None Include="..\..\src\server\send_receive_wml_helpers.ipp">
+      <Filter>Server</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\server\ban.cpp">
@@ -62,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
+    <ClCompile Include="..\..\src\server\server_base.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\server\ban.hpp">
@@ -102,5 +108,8 @@
     </ClInclude>
     <ClInclude Include="..\..\src\mt_rng.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
+    <ClInclude Include="..\..\src\server\server_base.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
