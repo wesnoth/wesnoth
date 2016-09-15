@@ -453,7 +453,13 @@ directories are given, all files under the current directory are checked.""")
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
                 with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
-                    collisions.append(hashlib.md5(ifp.read()).hexdigest()) # hexdigest can be easily printed, unlike digest
+                    m = hashlib.md5()
+                    while True:
+                        chunk = ifp.read(1024) # read 1 KiB each time to avoid using too much memory
+                        if not chunk:
+                            break
+                        m.update(chunk)
+                    collisions.append(m.hexdigest()) # hexdigest can be easily printed, unlike digest
             hashes = {}
             # hash in Py3 is a builtin function, hence the underscore after the variable name
             for (filename, hash_) in zip(xref.filelist.flatten(), collisions):
