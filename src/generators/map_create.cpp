@@ -19,7 +19,6 @@
 #include "generators/default_map_generator.hpp"
 #include "generators/lua_map_generator.hpp"
 #include "log.hpp"
-#include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
