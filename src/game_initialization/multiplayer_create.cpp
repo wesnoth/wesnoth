@@ -619,9 +619,9 @@ void create::hide_children(bool hide)
 	filter_name_.hide(hide);
 
 	if (hide) {
-		image_restorer_.assign(nullptr);
+		image_restorer_.reset(nullptr);
 	} else {
-		image_restorer_.assign(new surface_restorer(&video(), image_rect_));
+		image_restorer_.reset(new surface_restorer(&video(), image_rect_));
 
 		engine_.current_level().set_metadata();
 		draw_level_image();

@@ -50,7 +50,7 @@ game_board::game_board(const game_board & other)
 game_board::~game_board() {}
 
 
-//TODO: Fix this so that we swap pointers to maps, and also fix replace_map to use scoped_ptr::reset.
+//TODO: Fix this so that we swap pointers to maps
 // However, then anytime gameboard is overwritten, resources::gamemap must be updated. So might want to
 // just get rid of resources::gamemap and replace with resources::gameboard->map() at that point.
 void swap(game_board & one, game_board & other) {

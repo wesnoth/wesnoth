@@ -47,8 +47,8 @@ namespace gui{
 				preferences::set_message_private(check_->checked());
 			}
 		}
-		box_.assign(nullptr);
-		check_.assign(nullptr);
+		box_.reset(nullptr);
+		check_.reset(nullptr);
 		font::remove_floating_label(label_);
 		mode_ = TEXTBOX_NONE;
 		gui.invalidate_all();
@@ -113,12 +113,12 @@ namespace gui{
 		mode_ = mode;
 
 		if(check_label != "") {
-			check_.assign(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
+			check_.reset(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
 			check_->set_check(checked);
 		}
 
 
-		box_.assign(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
+		box_.reset(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
 
 		update_location(gui);
 	}

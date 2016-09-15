@@ -23,7 +23,6 @@
 #include "hotkey/hotkey_manager.hpp"    // for manager
 #include "image.hpp"                    // for manager
 #include "saved_game.hpp"               // for saved_game
-#include "scoped_resource.hpp"          // for scoped_ptr
 #include "sound.hpp"                    // for music_thinker
 
 #include <string>                       // for string

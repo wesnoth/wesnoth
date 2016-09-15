@@ -54,7 +54,7 @@ private:
 
 	/// collection of units destined to be drawn but not put into the unit map
 	std::deque<internal_ptr_type> fake_units_;
-	display & my_display_; //!< Reference to my display. The display owns me in a scoped_ptr, so this should never be a dangling reference.
+	display & my_display_; //!< Reference to my display
 };
 
 #endif

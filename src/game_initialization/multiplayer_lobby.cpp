@@ -126,9 +126,9 @@ void gamebrowser::draw()
 		return;
 	if(dirty()) {
 		bg_restore();
-		util::scoped_ptr<clip_rect_setter> clipper(nullptr);
+		std::unique_ptr<clip_rect_setter> clipper(nullptr);
 		if(clip_rect())
-			clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect()));
+			clipper.reset(new clip_rect_setter(video().getSurface(), clip_rect()));
 		draw_contents();
 		update_rect(location());
 		set_dirty(false);

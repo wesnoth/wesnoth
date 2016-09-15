@@ -18,8 +18,8 @@
 
 // Scoped_resource can't use a pointer to an incomplete pointer with MSVC.
 #include "widgets/textbox.hpp"
-#include "scoped_resource.hpp"
 
+#include <memory>
 #include <set>
 
 class game_display;
@@ -38,8 +38,8 @@ namespace gui{
 		floating_textbox();
 
 		TEXTBOX_MODE mode() const { return mode_; }
-		const util::scoped_ptr<gui::button>& check() const { return check_; }
-		const util::scoped_ptr<gui::textbox>& box() const { return box_; }
+		const std::unique_ptr<gui::button>& check() const { return check_; }
+		const std::unique_ptr<gui::textbox>& box() const { return box_; }
 
 		void close(game_display& gui);
 		void update_location(game_display& gui);
@@ -49,8 +49,8 @@ namespace gui{
 		bool active() const { return box_.get() != nullptr; }
 
 	private:
-		util::scoped_ptr<gui::textbox> box_;
-		util::scoped_ptr<gui::button> check_;
+		std::unique_ptr<gui::textbox> box_;
+		std::unique_ptr<gui::button> check_;
 
 		TEXTBOX_MODE mode_;
 

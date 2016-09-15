@@ -87,7 +87,7 @@ private:
 	gui::textbox description_;
 	gui::textbox filter_name_;
 
-	util::scoped_ptr<surface_restorer> image_restorer_;
+	std::unique_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
 
 	std::vector<ng::level::TYPE> available_level_types_;

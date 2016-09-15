@@ -24,8 +24,6 @@
 
 #include "editor/map/map_context.hpp"
 
-#include <boost/scoped_ptr.hpp>
-
 namespace editor {
 
 editor_action_item* editor_action_item::clone() const
