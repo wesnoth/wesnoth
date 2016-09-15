@@ -57,7 +57,11 @@ tend_credits::~tend_credits()
 static void parse_about_tags(const config& cfg, std::stringstream& str)
 {
 	for(const auto& about : cfg.child_range("about")) {
-		str << "<span size='x-large'>" << about["title"] << "</span>" << "\n";
+		if(!about.has_child("entry")) {
+			continue;
+		}
+
+		str << "\n" << "<span size='x-large'>" << about["title"] << "</span>" << "\n";
 
 		for(const auto& entry : about.child_range("entry")) {
 			str << entry["name"] << "\n";
@@ -87,7 +91,7 @@ void tend_credits::pre_show(twindow& window)
 	for(const auto& group : credits_config.child_range("credits_group")) {
 		std::stringstream& group_stream = (group["id"] == focus_on_) ? focus_str : str;
 
-		group_stream << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
+		group_stream << "\n" << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
 
 		parse_about_tags(group, group_stream);
 	}
