@@ -95,7 +95,7 @@ void tend_credits::pre_show(twindow& window)
 	// TODO: this seems an inefficient way to place the focused group first
 	if(!focus_str.str().empty()) {
 		focus_str << str.rdbuf();
-		str.swap(focus_str);
+		std::swap(str, focus_str);
 	}
 
 	// Get the appropriate background images
