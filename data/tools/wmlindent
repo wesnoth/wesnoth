@@ -108,11 +108,13 @@ def reindent(name, infp, outfp):
     seen_wml = False
     inmacro = False
     ignoring = False
+    instring = False
     indent = ""
     lasttag = ""
     countlines = 0
     countblanks = 0
     multitag = re.compile(r"\[a-z]].*\[[a-z]") # Avoid triggering on arrays
+    continued_string = re.compile(r".+\+\s*(#.*)?$") # Check if the line is a string being continued
     for line in infp:
         countlines += 1
         # User may declare indentation exceptions
@@ -147,8 +149,12 @@ def reindent(name, infp, outfp):
             transformed = line.strip() + "\n"
         else:
             transformed = line
+        # Check if we're in the middle of a string concatenation
+        if instring:
+            if opener(transformed) or closer(transformed):
+                print('wmlindent: "%s", line %d: Expected string, received tag.' % (name, countlines), file=sys.stderr)
         # Track whether we've seen real WML rather than just macro definitions
-        if transformed.startswith("#define"):
+        elif transformed.startswith("#define"):
             saved_indent = indent
             indent = wmltools.baseindent
             inmacro = True
@@ -191,6 +197,13 @@ def reindent(name, infp, outfp):
         # May need to indent based on the line we just saw.
         if opener(transformed):
             indent += wmltools.baseindent
+        if continued_string.search(transformed):
+            if not instring:
+                indent += wmltools.baseindent
+                instring = True
+        elif instring and not (transformed.startswith("#")):
+            indent = indent[:-len(wmltools.baseindent)]
+            instring = False
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
         if dostrip:
