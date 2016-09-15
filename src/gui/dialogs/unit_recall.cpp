@@ -45,6 +45,7 @@
 #include "units/ptr.hpp"
 
 #include "utils/functional.hpp"
+#include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
@@ -340,7 +341,7 @@ void tunit_recall::filter_text_changed(ttext_* textbox, const std::string& text)
 		return;
 	last_words_ = words;
 
-	std::vector<bool> show_items(list.get_item_count(), true);
+	boost::dynamic_bitset<> show_items(list.get_item_count(), true);
 
 	if(!text.empty()) {
 		for(unsigned int i = 0; i < list.get_item_count(); i++) {

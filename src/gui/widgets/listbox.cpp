@@ -180,7 +180,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 	}
 }
 
-void tlistbox::set_row_shown(const std::vector<bool>& shown)
+void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 {
 	assert(generator_);
 	assert(shown.size() == get_item_count());
@@ -214,9 +214,9 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 	}
 }
 
-std::vector<bool> tlistbox::get_rows_shown() const
+boost::dynamic_bitset<> tlistbox::get_rows_shown() const
 {
-	std::vector<bool> shown;
+	boost::dynamic_bitset<> shown;
 	for(size_t i = 0; i < get_item_count(); i++) {
 		shown.push_back(generator_->get_item_shown(i));
 	}

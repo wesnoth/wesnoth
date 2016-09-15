@@ -716,7 +716,7 @@ void tpreferences::post_build(twindow& window)
 		// recently selected row. Thus, if it returns i, this row was just selected.
 		// Otherwise, it must have been deselected.
 		bool show = hotkey_categories.get_selected_row() == int(i);
-		std::vector<bool> mask = hotkey_list.get_rows_shown();
+		boost::dynamic_bitset<> mask = hotkey_list.get_rows_shown();
 		for(size_t j = 0; j < visible_hotkeys_.size(); j++) {
 			if(visible_hotkeys_[j]->category == cat) {
 				mask[j] = show;

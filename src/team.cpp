@@ -34,6 +34,7 @@
 #include "whiteboard/side_actions.hpp"
 #include "config_assign.hpp"
 #include "serialization/string_utils.hpp"
+#include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -435,17 +436,15 @@ int team::minimum_recruit_price() const
 	return info_.minimum_recruit_price;
 }
 
-bool team::calculate_enemies(size_t index) const
+void team::calculate_enemies(size_t index) const
 {
 	if(!resources::gameboard || index >= resources::gameboard->teams().size()) {
-		return false;
+		return;
 	}
 
 	while(enemies_.size() <= index) {
 		enemies_.push_back(calculate_is_enemy(enemies_.size()));
 	}
-
-	return enemies_.back();
 }
 
 bool team::calculate_is_enemy(size_t index) const

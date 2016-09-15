@@ -55,6 +55,7 @@
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -190,7 +191,8 @@ void playsingle_controller::play_scenario_main_loop()
 			//    OOS if the undone action is in the snapshot of the saved
 			//    game (luckily this is never the case for autosaves).
 			//
-			std::vector<bool> local_players(gamestate().board_.teams().size(), true);
+			boost::dynamic_bitset<> local_players;
+			local_players.resize(gamestate().board_.teams().size(), true);
 			//Preserve side controllers, becasue we won't get the side controoller updates again when replaying.
 			for(size_t i = 0; i < local_players.size(); ++i) {
 				local_players[i] = gamestate().board_.teams()[i].is_local();

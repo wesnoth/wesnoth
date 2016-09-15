@@ -35,6 +35,7 @@
 #include "pathfind/teleport.hpp"
 
 #include <numeric>
+#include <boost/dynamic_bitset.hpp>
 
 #include <SDL.h>
 
@@ -983,8 +984,7 @@ void get_villages_phase::dispatch_complex(
 	std::multimap<size_t /* villages_per_unit value*/,
 		size_t /*villages_per_unit index*/> unit_lookup;
 
-	std::vector</*unit*/std::vector</*village*/bool> >
-		matrix(reachmap.size(), std::vector<bool>(village_count, false));
+	std::vector</*unit*/boost::dynamic_bitset</*village*/>> matrix(reachmap.size(), boost::dynamic_bitset<>(village_count));
 
 	treachmap::const_iterator itor = reachmap.begin();
 	for(size_t u = 0; u < unit_count; ++u, ++itor) {
@@ -1072,28 +1072,22 @@ void get_villages_phase::dispatch_complex(
 				continue;
 			}
 
-			std::vector<bool> result;
-			std::transform(matrix[src_itor->second].begin(), matrix[src_itor->second].end(),
-				matrix[dst_itor->second].begin(),
-				std::back_inserter(result),
-				std::logical_and<bool>()
-				);
-
-			size_t matched = std::count(result.begin(), result.end(), true);
+			boost::dynamic_bitset<> result = matrix[src_itor->second] & matrix[dst_itor->second];
+			size_t matched = result.count();
 
 			// we found a  solution, dispatch
 			if(matched == 2) {
 				// Collect data
-				std::vector<bool>::iterator first = std::find(result.begin(), result.end(), true);
-				std::vector<bool>::iterator second = std::find(first + 1, result.end(), true);
+				size_t first = result.find_first();
+				size_t second = result.find_next(first);
 
-				const map_location village1 = villages[first - result.begin()];
-				const map_location village2 = villages[second - result.begin()];
+				const map_location village1 = villages[first];
+				const map_location village2 = villages[second];
 
 				const bool perfect = (src_itor->first == 2 &&
 					dst_itor->first == 2 &&
-					units_per_village[first - result.begin()] == 2 &&
-					units_per_village[second - result.begin()] == 2);
+					units_per_village[first] == 2 &&
+					units_per_village[second] == 2);
 
 				// Dispatch
 				DBG_AI_TESTING_AI_DEFAULT << "Found a square.\nDispatched unit at " << units[src_itor->second]

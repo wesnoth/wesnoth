@@ -24,6 +24,7 @@
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <boost/smart_ptr/intrusive_ptr.hpp>
+#include <boost/dynamic_bitset_fwd.hpp>
 
 class unit_ability_list;
 
@@ -70,7 +71,7 @@ public:
 
 	bool get_special_bool(const std::string& special, bool simple_check=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
-	std::vector<std::pair<t_string, t_string> > special_tooltips(std::vector<bool> *active_list=nullptr) const;
+	std::vector<std::pair<t_string, t_string> > special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
 	void set_specials_context(const map_location& unit_loc, const map_location& other_loc,
 	                          bool attacking, const attack_type *other_attack) const;

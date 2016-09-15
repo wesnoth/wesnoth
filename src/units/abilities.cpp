@@ -28,6 +28,7 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "filter_context.hpp"
+#include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -257,7 +258,7 @@ namespace {
  *                     one and will indicate whether or not the corresponding
  *                     ability is active.
  */
-std::vector<std::tuple<t_string,t_string,t_string> > unit::ability_tooltips(std::vector<bool> *active_list) const
+std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
 {
 	std::vector<std::tuple<t_string,t_string,t_string> > res;
 	if ( active_list )
@@ -608,7 +609,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
  * If the appropriate name is empty, the special is skipped.
  */
 std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
-	std::vector<bool> *active_list) const
+	boost::dynamic_bitset<>* active_list) const
 {
 	//log_scope("special_tooltips");
 	std::vector<std::pair<t_string, t_string> > res;

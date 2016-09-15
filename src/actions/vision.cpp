@@ -35,6 +35,8 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 class unit_animation;
 
 static lg::log_domain log_engine("engine");
@@ -636,7 +638,8 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	const map_location & target_loc = target.get_location();
 
 	// Determine the teams that (probably) should get events.
-	std::vector<bool> needs_event(teams_size, cache == nullptr);
+	boost::dynamic_bitset<> needs_event;
+	needs_event.resize(teams_size, cache == nullptr);
 	if ( cache != nullptr ) {
 		// Flag just the sides in the cache as needing events.
 		for (int side : *cache)

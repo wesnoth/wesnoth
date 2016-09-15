@@ -51,6 +51,7 @@
 
 #include "utils/functional.hpp"
 #include <boost/function_output_iterator.hpp>
+#include <boost/dynamic_bitset.hpp>
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -372,7 +373,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	, attacks_left_(0)
 	, max_attacks_(0)
 	, states_()
-	, known_boolean_states_(known_boolean_state_names_.size(),false)
+	, known_boolean_states_()
 	, variables_()
 	, events_()
 	, filter_recall_()
@@ -660,7 +661,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	, attacks_left_(0)
 	, max_attacks_(0)
 	, states_()
-	, known_boolean_states_(known_boolean_state_names_.size(), false)
+	, known_boolean_states_()
 	, variables_()
 	, events_()
 	, filter_recall_()

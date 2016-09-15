@@ -201,7 +201,7 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 	}
 }
 
-void tlist::set_row_shown(const std::vector<bool>& shown)
+void tlist::set_row_shown(const boost::dynamic_bitset<>& shown)
 {
 	assert(generator_);
 	assert(shown.size() == get_item_count());

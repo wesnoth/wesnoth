@@ -22,6 +22,7 @@
 #include "addon/state.hpp"
 
 #include <array>
+#include <boost/dynamic_bitset.hpp>
 
 namespace gui2
 {
@@ -33,13 +34,12 @@ class taddon_filter_options : public tdialog
 public:
 	taddon_filter_options();
 
-	std::vector<bool> displayed_types() const
+	boost::dynamic_bitset<> displayed_types() const
 	{
-		return std::vector<bool>(displayed_types_.begin(),
-								 displayed_types_.end());
+		return boost::dynamic_bitset<>(displayed_types_.begin(), displayed_types_.end());
 	}
 
-	void set_displayed_types(const std::vector<bool>& types)
+	void set_displayed_types(const boost::dynamic_bitset<>& types)
 	{
 		read_types_vector(types);
 	}
@@ -92,7 +92,7 @@ private:
 	void register_displayed_type_field(const std::string& field_id,
 									   ADDON_TYPE addon_type);
 
-	void read_types_vector(const std::vector<bool>& v);
+	void read_types_vector(const boost::dynamic_bitset<>& v);
 
 	void toggle_all_displayed_types_button_callback(twindow& window);
 

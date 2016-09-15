@@ -43,6 +43,7 @@
 #include "units/types.hpp"
 
 #include "utils/functional.hpp"
+#include <boost/dynamic_bitset.hpp>
 
 static std::string last_chosen_type_id = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
@@ -217,7 +218,7 @@ void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 		return;
 	last_words_ = words;
 
-	std::vector<bool> show_items(list.get_item_count(), true);
+	boost::dynamic_bitset<> show_items(list.get_item_count(), true);
 
 	if(!text.empty()) {
 		for(unsigned int i = 0; i < list.get_item_count(); i++) {

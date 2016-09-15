@@ -22,6 +22,8 @@
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 class config;
 class video;
 class CVideo;
@@ -212,8 +214,8 @@ private:
 		lobby_sorter(const config& cfg);
 	};
 
-	std::vector<bool> game_vacant_slots_;
-	std::vector<bool> game_observers_;
+	boost::dynamic_bitset<> game_vacant_slots_;
+	boost::dynamic_bitset<> game_observers_;
 
 	gui::button observe_game_;
 	gui::button join_game_;

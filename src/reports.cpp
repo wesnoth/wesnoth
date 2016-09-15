@@ -36,6 +36,7 @@
 
 #include <cassert>
 #include <ctime>
+#include <boost/dynamic_bitset.hpp>
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
@@ -366,7 +367,7 @@ static config unit_abilities(const unit* u)
 	if (!u) return config();
 	config res;
 
-	std::vector<bool> active;
+	boost::dynamic_bitset<> active;
 	const std::vector<std::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
 	const size_t abilities_size = abilities.size();
 	for ( size_t i = 0; i != abilities_size; ++i )
@@ -799,7 +800,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	}
 
 	at.set_specials_context_for_listing();
-	std::vector<bool> active;
+	boost::dynamic_bitset<> active;
 	const std::vector<std::pair<t_string, t_string> > &specials = at.special_tooltips(&active);
 	const size_t specials_size = specials.size();
 	for ( size_t i = 0; i != specials_size; ++i )

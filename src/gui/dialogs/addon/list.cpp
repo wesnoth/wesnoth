@@ -173,8 +173,7 @@ void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text
 {
 	tlistbox& listbox = find_widget<tlistbox>(textbox->get_window(), "addons", true);
 	filter_transform filter(utils::split(text, ' '));
-	std::vector<bool> res;
-	res.reserve(cfg_.child_count("campaign"));
+	boost::dynamic_bitset<> res;
 	for(const auto& child : cfg_.child_range("campaign"))
 	{
 		res.push_back(filter(child));
