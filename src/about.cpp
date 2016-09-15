@@ -14,10 +14,10 @@
 
 #include "about.hpp"
 
-#include "config.hpp"                   // for config, etc
-#include "serialization/string_utils.hpp"  // for split, etc
+#include "config.hpp"
+#include "serialization/string_utils.hpp"
 
-#include <map>                          // for map, map<>::mapped_type
+#include <map>
 
 /**
  * @namespace about
@@ -26,8 +26,8 @@
 namespace about
 {
 
-static config about_list = config();
-static std::map<std::string , std::string> images;
+static config about_list;
+static std::map<std::string, std::string> images;
 static std::string images_default;
 
 const config& get_about_config()
@@ -80,7 +80,7 @@ void set_about(const config &cfg)
 		temp["id"] = id;
 
 		std::string campaign_images;
-	
+
 		for(const config& about : campaign.child_range("about")) {
 			temp.add_child("about", about);
 
