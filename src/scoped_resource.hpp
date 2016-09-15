@@ -22,7 +22,6 @@
 #define SCOPED_RESOURCE_H_INCLUDED
 
 #include "global.hpp"
-#include <cstdio> //for FILE
 
 namespace util
 {

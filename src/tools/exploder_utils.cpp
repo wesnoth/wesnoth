@@ -15,6 +15,8 @@
 #include "exploder_utils.hpp"
 #include "game_config.hpp"
 #include "serialization/string_utils.hpp"
+#include <cstdio> //for FILE
+#include <memory>
 #include <png.h>
 #include <zlib.h>
 
@@ -165,11 +167,16 @@ namespace {
 	};
 }
 
+static void close_FILE(std::FILE* f) const
+{
+	if(f != nullptr) { std::fclose(f); }
+}	
+
 //saves the given SDL structure into a given filename.
 void save_image(surface surf, const std::string &filename)
 {
 	//opens the actual file
-	const util::scoped_FILE file(fopen(filename.c_str(),"wb"));
+	const std::unique_ptr<std::FILE> file(fopen(filename.c_str(),"wb"), close_FILE);
 
 	//initializes PNG write structures
 	//TODO: review whether providing nullptr error handlers is something
@@ -204,7 +211,7 @@ void save_image(surface surf, const std::string &filename)
 	//converts the data to the RGBA format. We cannot pass SDL data
 	//directly to the png lib, even if we know its pixel format, because of
 	//endianness problems.
-	util::scoped_array<rgba> rgba_data(new rgba[surf->w * surf->h]);
+	std::unique_ptr<rgba[]> rgba_data(new rgba[surf->w * surf->h]);
 
 	Uint32 *surf_data = lock.pixels();
 	int pos = 0;
