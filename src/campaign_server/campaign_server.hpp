@@ -23,6 +23,8 @@
 #include <boost/unordered_map.hpp>
 #include <boost/asio/steady_timer.hpp>
 
+#include <chrono>
+
 namespace campaignd {
 
 /**
@@ -95,7 +97,7 @@ private:
 
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
 
-	boost::asio::steady_timer flush_timer_;
+	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 	/**
 	 * Starts timer to write config to disk every ten minutes.
 	 */
