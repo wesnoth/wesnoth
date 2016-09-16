@@ -151,7 +151,7 @@ void tend_credits::timer_callback()
 
 void tend_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
 {
-	if(key == SDLK_UP && scroll_speed_ < 200) {
+	if(key == SDLK_UP && scroll_speed_ < 400) {
 		scroll_speed_ <<= 1;
 	}
 
