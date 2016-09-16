@@ -17,8 +17,10 @@
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
+#include <boost/dynamic_bitset_fwd.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/variant.hpp>
+#include <bitset>
 
 #include "units/types.hpp"
 #include "units/ptr.hpp"
@@ -378,7 +380,7 @@ public:
 	unit_ability_list get_abilities(const std::string &tag_name) const
 	{ return get_abilities(tag_name, loc_); }
 	/** Tuple of: neutral ability name, gendered ability name, description */
-	std::vector<std::tuple<t_string,t_string,t_string> > ability_tooltips(std::vector<bool> *active_list=nullptr) const;
+	std::vector<std::tuple<t_string, t_string, t_string> > ability_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 
@@ -477,7 +479,8 @@ private:
 	int max_attacks_;
 
 	std::set<std::string> states_;
-	std::vector<bool> known_boolean_states_;
+	// TODO: Somehow make a static const var for the 7 so that it can auto-update if new boolean states are ever added
+	std::bitset<7> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;
 	config events_;

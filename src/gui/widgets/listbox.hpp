@@ -23,6 +23,8 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 namespace gui2
 {
 
@@ -140,14 +142,14 @@ public:
 	 *                            be equal to the number of items in the
 	 *                            listbox.
 	 */
-	void set_row_shown(const std::vector<bool>& shown);
+	void set_row_shown(const boost::dynamic_bitset<>& shown);
 
 	/**
 	 * Returns a list of visible rows
 	 *
 	 * @returns                   A mask indicating which rows are visible
 	 */
-	std::vector<bool> get_rows_shown() const;
+	boost::dynamic_bitset<> get_rows_shown() const;
 
 	bool any_rows_shown() const;
 

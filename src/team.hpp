@@ -26,6 +26,7 @@
 #include <set>
 
 #include <stdint.h>
+#include <boost/dynamic_bitset.hpp>
 
 class game_data;
 class gamemap;
@@ -239,10 +240,13 @@ public:
 
 	bool is_enemy(int n) const {
 		const size_t index = size_t(n-1);
+		if(index >= enemies_.size()) {
+			calculate_enemies(index);
+		}
 		if(index < enemies_.size()) {
 			return enemies_[index];
 		} else {
-			return calculate_enemies(index);
+			return false;
 		}
 	}
 
@@ -414,9 +418,10 @@ private:
 	recall_list_manager recall_list_;
 	std::string last_recruit_;
 
-	bool calculate_enemies(size_t index) const;
+private:
+	void calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;
-	mutable std::vector<bool> enemies_;
+	mutable boost::dynamic_bitset<> enemies_;
 
 	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;
 

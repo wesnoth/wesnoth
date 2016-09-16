@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "gui/dialogs/lobby/data.hpp"
+#include <boost/dynamic_bitset.hpp>
 class twesnothd_connection;
 /**
  * This class represents the collective information the client has
@@ -86,7 +87,7 @@ public:
 	{
 		return games_;
 	}
-	const std::vector<bool>& games_visibility() const
+	const boost::dynamic_bitset<>& games_visibility() const
 	{
 		return games_visibility_;
 	}
@@ -116,7 +117,7 @@ private:
 	std::map<std::string, chat_log> whispers_;
 	std::vector<game_filter_func> game_filters_;
 	bool game_filter_invert_;
-	std::vector<bool> games_visibility_;
+	boost::dynamic_bitset<> games_visibility_;
 	twesnothd_connection& wesnothd_connection_;
 };
 

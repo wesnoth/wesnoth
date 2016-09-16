@@ -403,7 +403,7 @@ void tmp_create_game::on_filter_change(twindow& window, const std::string& id)
 
 	tlistbox& game_list = find_widget<tlistbox>(&window, "games_list", false);
 
-	std::vector<bool> filtered(game_list.get_item_count());
+	boost::dynamic_bitset<> filtered(game_list.get_item_count());
 	for(const size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())) {
 		filtered[i] = true;
 	}

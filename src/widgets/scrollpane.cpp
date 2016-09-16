@@ -19,6 +19,7 @@
 #include "global.hpp"
 
 #include <algorithm>
+#include <boost/dynamic_bitset.hpp>
 
 #include "widgets/scrollpane.hpp"
 
@@ -122,7 +123,7 @@ void scrollpane::scroll(unsigned int pos)
 void scrollpane::update_widget_positions()
 {
 	widget_map::iterator itor;
-	std::vector<bool> hidden(content_.size());
+	boost::dynamic_bitset<> hidden(content_.size());
 	int i = 0;
 	for(itor = content_.begin(); itor != content_.end(); ++itor) {
 		hidden[i++] = (itor->second.w->state_ == HIDDEN);

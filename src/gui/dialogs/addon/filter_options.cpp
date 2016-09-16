@@ -30,6 +30,8 @@
 
 #include "utils/functional.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 namespace
 {
 bool unchecked_bool_field_finder(gui2::twindow& window,
@@ -150,7 +152,7 @@ void taddon_filter_options::register_displayed_type_field(
 			register_bool(field_id, true, displayed_types_[addon_type]));
 }
 
-void taddon_filter_options::read_types_vector(const std::vector<bool>& v)
+void taddon_filter_options::read_types_vector(const boost::dynamic_bitset<>& v)
 {
 	for(size_t k = 0; k < displayed_types_.size(); ++k) {
 		// All unspecified types default to visible.

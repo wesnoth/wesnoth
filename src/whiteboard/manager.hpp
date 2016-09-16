@@ -24,6 +24,7 @@
 #include "units/map.hpp"
 
 #include <boost/noncopyable.hpp>
+#include <boost/dynamic_bitset.hpp>
 
 class CKey;
 class team;
@@ -238,7 +239,7 @@ private:
 	std::vector<config> net_buffer_;
 
 	///team_plans_hidden_[i] = whether or not to hide actions from teams[i].
-	std::vector<bool> team_plans_hidden_;
+	boost::dynamic_bitset<> team_plans_hidden_;
 
 	///used to keep track of units owning planned moves for visual ghosting/unghosting
 	std::set<size_t> units_owning_moves_;

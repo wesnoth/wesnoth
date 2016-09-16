@@ -42,6 +42,8 @@
 
 #include "addon/client.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");
 static lg::log_domain log_filesystem("filesystem");
@@ -447,7 +449,7 @@ public:
 struct addons_filter_state
 {
 	std::string keywords;
-	std::vector<bool> types;
+	boost::dynamic_bitset<> types;
 	ADDON_STATUS_FILTER status;
 	// Yes, the sorting criterion and direction are part of the
 	// filter options since changing them requires rebuilding the
@@ -489,14 +491,14 @@ public:
 
 		dlg.show(video_);
 
-		const std::vector<bool> new_types = dlg.displayed_types();
+		const boost::dynamic_bitset<> new_types = dlg.displayed_types();
 		const ADDON_STATUS_FILTER new_status = dlg.displayed_status();
 		const ADDON_SORT new_sort = dlg.sort();
 		const ADDON_SORT_DIRECTION new_direction = dlg.direction();
 
 		assert(f_.types.size() == new_types.size());
 
-		if(std::equal(f_.types.begin(), f_.types.end(), new_types.begin()) && f_.status == new_status &&
+		if(f_.types == new_types && f_.status == new_status &&
 		   f_.sort == new_sort && f_.direction == new_direction) {
 			// Close the manager dialog only if the filter options changed.
 			return gui::CONTINUE_DIALOG;

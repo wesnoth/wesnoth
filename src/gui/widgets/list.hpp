@@ -20,6 +20,8 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 namespace gui2
 {
 
@@ -138,7 +140,7 @@ public:
 	 *                            be equal to the number of items in the
 	 *                            listbox.
 	 */
-	void set_row_shown(const std::vector<bool>& shown);
+	void set_row_shown(const boost::dynamic_bitset<>& shown);
 
 	/**
 	 * Returns the grid of the wanted row.
