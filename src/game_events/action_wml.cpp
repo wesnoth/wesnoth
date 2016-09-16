@@ -817,21 +817,19 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
-	gamemap mask_map(resources::gameboard->map());
-
-	bool border = cfg["border"].to_bool(true);
+	gamemap mask_map(resources::gameboard->map().tdata(), "");
 
 	try {
 		if(!cfg["mask_file"].empty()) {
 			const std::string& maskfile = filesystem::get_wml_location(cfg["mask_file"].str());
 
 			if(filesystem::file_exists(maskfile)) {
-				mask_map.read(filesystem::read_file(maskfile), false, border);
+				mask_map.read(filesystem::read_file(maskfile), false);
 			} else {
 				throw incorrect_map_format_error("Invalid file path");
 			}
 		} else {
-			mask_map.read(cfg["mask"], false, border);
+			mask_map.read(cfg["mask"], false);
 		}
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
@@ -840,7 +838,12 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 		e.show(resources::screen->video());
 		return;
 	}
-	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc, border);
+
+	if (!cfg["border"].to_bool(true)) {
+		mask_map.add_fog_border();
+	}
+
+	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc);
 	resources::screen->needs_rebuild(true);
 }
 
