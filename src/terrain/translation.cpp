@@ -33,7 +33,7 @@
 
 namespace t_translation {
 
-	size_t max_map_size() {
+	int max_map_size() {
 		return 1000; //TODO make this overridable by the user without having to rebuild
 	}
 
@@ -258,12 +258,34 @@ std::string write_list(const t_list& list)
 	return result.str();
 }
 
+static std::pair<int, int> get_map_size(const char* begin, const char* end)
+{
+	int w = 1;
+	int h = 0;
+	for (const char* it = begin; it != end;) {
+		int cur_w = 1;
+		++h;
+
+
+		for (;it != end && (*it != '\n' && *it != '\r'); ++it) {
+			if (*it == ',') {
+				++cur_w;
+			}
+		}
+		w = std::max(w, cur_w);
+
+		while (it != end && (*it == '\n' || *it == '\r')) {
+			++it;
+		}
+
+	}
+	return{ w, h };
+}
+
 t_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset)
 {
-	t_map result;
-
 	size_t offset = 0;
-	size_t x = 0, y = 0, width = 0;
+	int x = 0, y = 0, width = 0;
 
 	// Skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
@@ -272,8 +294,11 @@ t_map read_game_map(const std::string& str, tstarting_positions& starting_positi
 
 	// Did we get an empty map?
 	if((offset + 1) >= str.length()) {
-		return result;
+		return t_map();
 	}
+
+	auto map_size = get_map_size(&str[offset], str.c_str() + str.size());
+	t_map result(map_size.first, map_size.second);
 
 	while(offset < str.length()) {
 
@@ -295,20 +320,12 @@ t_map read_game_map(const std::string& str, tstarting_positions& starting_positi
 			starting_positions.insert(tstarting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
 		}
 
-		// Make space for the new item
-		// NOTE we increase the vector every loop for every x and y.
-		// Profiling with an increase of y with 256 items didn't show
-		// an significant speed increase.
-		// So didn't rework the system to allocate larger vectors at once.
-		if(result.size() <= x) {
-			result.resize(x + 1);
-		}
-		if(result[x].size() <= y) {
-			result[x].resize(y + 1);
+		if(result.w <= x || result.h <= y) {
+			throw error("Map not a rectangle.");
 		}
 
 		// Add the resulting terrain number
-		result[x][y] = tile;
+		result.get(x, y) = tile;
 
 		// Evaluate the separator
 		if(pos_separator == std::string::npos || utils::isnewline(str[pos_separator])) {
@@ -367,8 +384,8 @@ std::string write_game_map(const t_map& map, const tstarting_positions& starting
 {
 	std::stringstream str;
 
-	for(size_t y = 0; y < map[0].size(); ++y) {
-		for(size_t x = 0; x < map.size(); ++x) {
+	for(int y = 0; y < map.h; ++y) {
+		for(int x = 0; x < map.w; ++x) {
 
 			// If the current location is a starting position,
 			// it needs to be added to the terrain.
@@ -386,7 +403,7 @@ std::string write_game_map(const t_map& map, const tstarting_positions& starting
 			str << number_to_string_(map[x][y], starting_position);
 		}
 
-		if (y < map[0].size() -1)
+		if (y < map.h -1)
 			str << "\n";
 	}
 
@@ -575,26 +592,27 @@ bool has_wildcard(const t_list& list)
 
 t_map read_builder_map(const std::string& str)
 {
-	size_t offset = 0;
-	t_map result;
+	boost::multi_array<int, sizeof(t_map)> a;
 
+	size_t offset = 0;
 	// Skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
 		++offset;
 	}
-
 	// Did we get an empty map?
 	if((offset + 1) >= str.length()) {
-		return result;
+		return t_map();
 	}
 
-	size_t x = 0, y = 0;
+	auto map_size = get_map_size(&str[offset], str.c_str() + str.size());
+	t_map result(map_size.second, map_size.first, t_terrain(t_translation::TB_DOT, t_layer()));
+
+	int x = 0, y = 0;
 	while(offset < str.length()) {
 
 		// Get a terrain chunk
 		const std::string separators = ",\n\r";
 		const size_t pos_separator = str.find_first_of(separators, offset);
-
 		std::string terrain = "";
 		// Make sure we didn't hit an empty chunk
 		// which is allowed
@@ -606,15 +624,12 @@ t_map read_builder_map(const std::string& str)
 		const t_terrain tile = string_to_builder_number_(terrain);
 
 		// Make space for the new item
-		if(result.size() <= y) {
-			result.resize(y + 1);
-		}
-		if(result[y].size() <= x) {
-			result[y].resize(x + 1);
+		if (result.h <= x || result.w <= y) {
+			throw error("Map not a rectangle.");
 		}
 
 		// Add the resulting terrain number,
-		result[y][x] = tile;
+		result.get(y, x) = tile;
 
 		// evaluate the separator
 		if(pos_separator == std::string::npos) {
@@ -745,8 +760,6 @@ static t_terrain string_to_number_(std::string str, std::string& start_position,
 
 	offset = str.find('^', 0);
 	if(offset !=  std::string::npos) {
-		const std::string base_str(str, 0, offset);
-		const std::string overlay_str(str, offset + 1, str.size());
 		result = t_terrain { string_to_layer_(c_str + begin, c_str + offset), string_to_layer_(c_str + offset + 1, c_str + end) };
 	} else {
 		result = t_terrain { string_to_layer_(c_str + begin, c_str + end), filler };

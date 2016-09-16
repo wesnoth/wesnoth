@@ -88,8 +88,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
-	, map_(t_translation::t_map(params.width_ + 2 * gamemap::default_border,
-	       t_translation::t_list(params.height_ + 2 * gamemap::default_border, params.wall_)))
+	, map_(t_translation::t_map(params.width_ + 2 * gamemap::default_border, params.height_ + 2 * gamemap::default_border/*, params.wall_*/))
 	, starting_positions_()
 	, chamber_ids_()
 	, chambers_()
@@ -292,7 +291,7 @@ private:
 double passage_path_calculator::cost(const map_location& loc, const double) const
 {
 	double res = 1.0;
-	if (map_[loc.x + gamemap::default_border][loc.y + gamemap::default_border] == wall_) {
+	if (map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border) == wall_) {
 		res = laziness_;
 	}
 
@@ -333,7 +332,7 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, const t_translation::t_terrain & t)
 {
 	if (params.on_board(loc)) {
-		t_translation::t_terrain& c = map_[loc.x + gamemap::default_border][loc.y + gamemap::default_border];
+		t_translation::t_terrain& c = map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border);
 
 		if(c == params.clear_ || c == params.wall_ || c == params.village_) {
 			// Change this terrain.

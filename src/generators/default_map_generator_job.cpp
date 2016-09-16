@@ -83,8 +83,7 @@ namespace {
 	double road_path_calculator::cost(const map_location& loc, const double /*so_far*/) const
 	{
 		++calls;
-		if(loc.x < 0 || loc.y < 0 || loc.x >= static_cast<long>(map_.size()) ||
-				loc.y >= static_cast<long>(map_.front().size())) {
+		if(loc.x < 0 || loc.y < 0 || loc.x >= map_.w || loc.y >= map_.h) {
 
 			return (pathfind::cost_calculator::getNoPathValue());
 		}
@@ -145,8 +144,7 @@ namespace {
 
 	bool is_valid_terrain::operator()(int x, int y) const
 	{
-		if(x < 0 || x >= static_cast<long>(map_.size()) ||
-				y < 0 || y >= static_cast<long>(map_[x].size())) {
+		if(x < 0 || x >= map_.w || y < 0 || y >= map_.h) {
 
 			return false;
 		}
@@ -394,7 +392,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
  */
 bool default_map_generator_job::generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched)
 {
-	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size() || lake_fall_off < 0) {
+	if(x < 0 || y < 0 || x >= terrain.w || y >= terrain.h || lake_fall_off < 0) {
 		return false;
 	}
 	//we checked for this eariler.
@@ -533,18 +531,14 @@ static std::string output_map(const terrain_map& terrain,
 	// All other segments of the map are there only to give
 	// the important middle part some context.
 	// We also have a border so also adjust for that.
-	const size_t begin_x = terrain.size() / 3 - gamemap::default_border ;
-	const size_t end_x = terrain.size() * 2 / 3 + gamemap::default_border;
-	const size_t begin_y = terrain.front().size() / 3 - gamemap::default_border;
-	const size_t end_y = terrain.front().size() * 2 / 3 + gamemap::default_border;
+	const size_t begin_x = terrain.w / 3 - gamemap::default_border ;
+	const size_t end_x = terrain.w * 2 / 3 + gamemap::default_border;
+	const size_t begin_y = terrain.h / 3 - gamemap::default_border;
+	const size_t end_y = terrain.h * 2 / 3 + gamemap::default_border;
 
-	terrain_map map;
-	map.resize(end_x - begin_x);
+	terrain_map map(end_x - begin_x, end_y - begin_y);
 	for(size_t y = begin_y; y != end_y; ++y) {
 		for(size_t x = begin_x; x != end_x; ++x) {
-			if((y - begin_y) == 0){
-				map[x - begin_x].resize(end_y - begin_y);
-			}
 			map[x - begin_x][y - begin_y] = terrain[x][y];
 		}
 	}
@@ -632,8 +626,8 @@ static map_location place_village(const t_translation::t_map& map,
 	map_location best_loc;
 	int best_rating = 0;
 	for(auto i : locs) {
-		if(i.x < 0 || i.y < 0 || i.x >= static_cast<long>(map.size()) ||
-				i.y >= static_cast<long>(map[i.x].size())) {
+		if(i.x < 0 || i.y < 0 || i.x >= map.w ||
+				i.y >= map.h) {
 
 			continue;
 		}
@@ -655,8 +649,8 @@ static map_location place_village(const t_translation::t_map& map,
 			get_adjacent_tiles(map_location(i.x,i.y),adj);
 			for(size_t n = 0; n != 6; ++n) {
 				if(adj[n].x < 0 || adj[n].y < 0 ||
-						adj[n].x >= static_cast<long>(map.size()) ||
-						adj[n].y >= static_cast<long>(map[adj[n].x].size())) {
+						adj[n].x >= map.w ||
+						adj[n].y >= map.h) {
 
 					continue;
 				}
@@ -777,7 +771,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		height_conversion.push_back(terrain_height_mapper(h));
 	}
 
-	terrain_map terrain(data.width, t_translation::t_list(data.height, grassland));
+	terrain_map terrain(data.width, data.height, grassland);
 	size_t x, y;
 	for(x = 0; x != heights.size(); ++x) {
 		for(y = 0; y != heights[x].size(); ++y) {

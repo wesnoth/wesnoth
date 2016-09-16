@@ -23,6 +23,7 @@
 #include <boost/bimap.hpp>
 #include <boost/bimap/set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>
+#include <boost/multi_array.hpp>
 #include "exceptions.hpp"
 #include "map/location.hpp"
 
@@ -32,7 +33,7 @@ namespace t_translation {
      * Return the maximum allowed map size (in either dimension),
      * the maximum map area is, therefore, this value squared.
      */
-    size_t max_map_size();
+    int max_map_size();
 
 	typedef uint32_t t_layer;
 	const t_layer WILDCARD = 0x2A000000;
@@ -74,7 +75,25 @@ namespace t_translation {
 	// operator<< is defined later
 
 	typedef std::vector<t_terrain> t_list;
-	typedef std::vector<std::vector<t_terrain> > t_map;
+	struct t_map {
+
+		t_map() = default;
+		t_map(const t_map&) = default;
+		t_map(t_map&&) = default;
+		t_map(int w, int h, t_terrain fill = t_terrain()) : data(w * h, fill), w(w), h(h) {}
+
+		t_map & operator= (const t_map &) = default;
+		t_map & operator= (t_map &&) = default;
+
+		t_terrain& get(int x, int y) { return data[x * h + y]; }
+		const t_terrain& get(int x, int y) const { return data[x * h + y]; }
+
+		std::vector<t_terrain> data;
+		int w;
+		int h;
+		std::vector<t_terrain>::iterator operator[](int x) { return data.begin() + h * x; }
+		std::vector<t_terrain>::const_iterator operator[](int x) const { return data.begin() + h * x; }
+	};
 
 	/**
 	 * This structure can be used for matching terrain strings.
