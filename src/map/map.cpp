@@ -325,13 +325,14 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 			else {
 				set_terrain(map_location(x2,y2), t);
-				if (false /*TODO: add overwrite special locs paramter*/) {
-					starting_positions_.right.erase(t_translation::coordinate(x2, y2));
-					for (auto& pair : m.starting_positions_.right.equal_range(t_translation::coordinate(x1, y1))) {
-						starting_positions_.insert(tstarting_positions::value_type(pair.second, t_translation::coordinate(x2, y2)));
-					}
-				}
 			}
+		}
+	}
+
+	if (!rules_cfg["ignore_special_locations"].to_bool(false)) {
+		for(auto& pair : m.starting_positions_.left) {
+			starting_positions_.left.erase(pair.first);
+			starting_positions_.insert(tstarting_positions::value_type(pair.first, t_translation::coordinate(pair.second.x + xpos, pair.second.y + ypos+ ((xpos & 1) && (pair.second.x & 1) ? 1 : 0))));
 		}
 	}
 }

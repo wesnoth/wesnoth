@@ -44,6 +44,14 @@ Version 1.13.5+dev:
    * Fix issue with the title screen not redrawing when the window size or
      fullscreen setting changes with a dialog open over it.
  * WML Engine:
+   * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
+     ignore the special locations given in the mask, leaving all those on the
+     underlying map unchanged.
+   * [terrain_mask] starting locations and special locations are relative to
+     the mask. Existing names replace any in the underlying map regardless of
+     their location. Each name as a unique location; but a location may have
+     any number of names. While a map/mask can give only one name per location;
+     stacking masks allows multiple names. Names cannot be removed.
    * Added {HAS_NO_TURN_LIMIT} macro for objectives
    * New attributes for [message] with [option]
      * Added variable= to [message]: if specified, gives variable name to
