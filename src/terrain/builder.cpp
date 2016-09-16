@@ -807,17 +807,17 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	// If there is an empty map leave directly.
 	// Determine after conversion, since a
 	// non-empty string can return an empty map.
-	if(map.empty()) {
+	if(map.data.empty()) {
 		return;
 	}
 
-	int lineno = (map[0][0] == t_translation::NONE_TERRAIN) ? 1 : 0;
+	int lineno = (map.get(0,0) == t_translation::NONE_TERRAIN) ? 1 : 0;
 	int x = lineno;
 	int y = 0;
-	for(size_t y_off = 0; y_off < map.size(); ++y_off) {
-		for(size_t x_off = x; x_off < map[y_off].size(); ++x_off) {
+	for(int y_off = 0; y_off < map.w; ++y_off) {
+		for(int x_off = x; x_off < map.h; ++x_off) {
 
-			const t_translation::t_terrain terrain = map[y_off][x_off];
+			const t_translation::t_terrain terrain = map.get(y_off, x_off);
 
 			if(terrain.base == t_translation::TB_DOT) {
 				// Dots are simple placeholders,
@@ -831,7 +831,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 					assert(false);
 					return;
 			}
-		x += 2;
+			x += 2;
 		}
 
 		if(lineno % 2 == 1) {
