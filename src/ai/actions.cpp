@@ -41,6 +41,7 @@
 #include "attack_prediction.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
+#include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"

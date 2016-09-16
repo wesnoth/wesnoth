@@ -22,6 +22,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
+#include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"

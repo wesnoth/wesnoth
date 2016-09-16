@@ -16,7 +16,6 @@
 
 #include "config.hpp"
 #include "utils/make_enum.hpp"
-#include "map/map.hpp"
 #include "mp_game_settings.hpp"
 #include "save_index.hpp"
 #include "sdl/utils.hpp"
@@ -27,6 +26,8 @@
 class CVideo;
 class saved_game;
 class map_generator;
+class gamemap;
+
 namespace ng {
 namespace depcheck { class manager; }
 class level
