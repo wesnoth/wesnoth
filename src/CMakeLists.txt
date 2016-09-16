@@ -919,6 +919,7 @@ set(wesnoth-main_SRC
 	scripting/lua_gui2.cpp
 	scripting/lua_kernel_base.cpp
 	scripting/lua_map_location_ops.cpp
+	scripting/lua_preferences.cpp
 	scripting/lua_race.cpp
 	scripting/lua_rng.cpp
 	scripting/lua_team.cpp
