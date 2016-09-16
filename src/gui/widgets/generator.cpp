@@ -171,7 +171,11 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 		current_origin.x += best_size.x;
 	}
 
-	//assert(current_origin.x == origin.x + size.x);
+	if(current_origin.x != origin.x + size.x) {
+		ERR_GUI_L << "Failed to fit horizontal list to requested rect; expected right edge was " << origin.x + size.x;
+		ERR_GUI_L << ", actual right edge was " << current_origin.x;
+		ERR_GUI_L << " (left edge is " << origin.x << ")\n";
+	}
 }
 
 void thorizontal_list::set_origin(const tpoint& origin)
@@ -390,7 +394,11 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 		current_origin.y += best_size.y;
 	}
 
-	//assert(current_origin.y == origin.y + size.y);
+	if(current_origin.y != origin.y + size.y) {
+		ERR_GUI_L << "Failed to fit vertical list to requested rect; expected bottom edge was " << origin.y + size.y;
+		ERR_GUI_L << ", actual bottom edge was " << current_origin.y;
+		ERR_GUI_L << " (top edge is " << origin.y << ")\n";
+	}
 }
 
 void tvertical_list::set_origin(const tpoint& origin)
@@ -655,7 +663,7 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 
 	// TODO: If size is wider than best_size, the matrix will take too much vertical space.
 	// This block is supposed to correct for that, but doesn't work properly.
-	// To be more specific, it doesn't
+	// To be more specific, it requires invalidating the layout to take effect.
 	if(current_origin.y + row_height != origin.y + size.y) {
 		tpoint better_size = size;
 		better_size.y -= current_origin.y + row_height - origin.y;
