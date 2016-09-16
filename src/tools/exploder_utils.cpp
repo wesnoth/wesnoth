@@ -15,6 +15,7 @@
 #include "exploder_utils.hpp"
 #include "game_config.hpp"
 #include "serialization/string_utils.hpp"
+#include <boost/shared_array.hpp>
 #include <cstdio> //for FILE
 #include <memory>
 #include <png.h>
@@ -167,7 +168,7 @@ namespace {
 	};
 }
 
-static void close_FILE(std::FILE* f) const
+static void close_FILE(std::FILE* f)
 {
 	if(f != nullptr) { std::fclose(f); }
 }	
@@ -176,7 +177,7 @@ static void close_FILE(std::FILE* f) const
 void save_image(surface surf, const std::string &filename)
 {
 	//opens the actual file
-	const std::unique_ptr<std::FILE> file(fopen(filename.c_str(),"wb"), close_FILE);
+	const std::unique_ptr<std::FILE, void(*)(std::FILE*)> file(fopen(filename.c_str(),"wb"), &close_FILE);
 
 	//initializes PNG write structures
 	//TODO: review whether providing nullptr error handlers is something
@@ -193,7 +194,7 @@ void save_image(surface surf, const std::string &filename)
 	}
 
 	//instructs the PNG library to use the open file
-	png_init_io(png_ptr, file);
+	png_init_io(png_ptr, file.get());
 
 	//sets compression level to the maximum
 	png_set_compression_level(png_ptr,
@@ -211,12 +212,12 @@ void save_image(surface surf, const std::string &filename)
 	//converts the data to the RGBA format. We cannot pass SDL data
 	//directly to the png lib, even if we know its pixel format, because of
 	//endianness problems.
-	std::unique_ptr<rgba[]> rgba_data(new rgba[surf->w * surf->h]);
+	boost::shared_array<rgba> rgba_data(new rgba[surf->w * surf->h]);
 
 	Uint32 *surf_data = lock.pixels();
 	int pos = 0;
 	for(int y = 0; y < surf->h; ++y) {
-		row_pointers[y] = reinterpret_cast<png_byte*>(rgba_data + pos);
+		row_pointers[y] = reinterpret_cast<png_byte*>(rgba_data.get() + pos);
 		for(int x = 0; x < surf->w; ++x) {
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*surf_data, surf->format, &red, &green, &blue, &alpha);
