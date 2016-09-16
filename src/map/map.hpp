@@ -106,10 +106,13 @@ public:
 	{
 		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
+private:
+	//private method, use set_terrain instead which also updates villages_.
 	t_translation::t_terrain& operator[](const map_location& loc)
 	{
 		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
+public:
 
 	/**
 	 * Looks up terrain at a particular location.
@@ -167,15 +170,6 @@ public:
 	void set_terrain(const map_location& loc, const t_translation::t_terrain & terrain, const terrain_type_data::tmerge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
 
 	/**
-	 * Remove the cached border terrain at loc.
-	 *
-	 * Needed by the editor to make tiles at the border update correctly when
-	 * drawing other tiles.
-	 */
-	void remove_from_border_cache(const map_location &loc)
-		{ borderCache_.erase(loc); }
-
-	/**
 	 * Maximum number of players supported.
 	 *
 	 * Warning: when you increase this, you need to add
@@ -229,9 +223,6 @@ private:
 
 	tdata_cache tdata_;
 	std::vector<map_location> villages_;
-
-	mutable std::map<map_location, t_translation::t_terrain> borderCache_;
-	mutable std::map<t_translation::t_terrain, size_t> terrainFrequencyCache_;
 
 protected:
 	/** Sizes of the map area. */
