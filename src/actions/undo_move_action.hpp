@@ -34,8 +34,8 @@ struct move_action : undo_action, shroud_clearing_action
 		, shroud_clearing_action(cfg)
 		, starting_moves(sm)
 		, starting_dir(dir)
-		, goto_hex(unit_cfg["goto_x"].to_int(-999) - 1,
-		         unit_cfg["goto_y"].to_int(-999) - 1)
+		, goto_hex(unit_cfg["goto_x"].to_int(-999),
+		         unit_cfg["goto_y"].to_int(-999), wml_loc())
 	{
 	}
 	virtual const char* get_type() const { return "move"; }

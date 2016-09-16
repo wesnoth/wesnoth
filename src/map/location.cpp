@@ -35,7 +35,7 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 std::ostream &operator<<(std::ostream &s, map_location const &l) {
-	s << (l.x + 1) << ',' << (l.y + 1);
+	s << (l.wml_x()) << ',' << (l.wml_y());
 	return s;
 }
 std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
@@ -216,7 +216,7 @@ void map_location::write(config& cfg) const
 }
 
 static bool is_vertically_higher_than ( const map_location & m1, const map_location & m2 ) {
-	return (is_even(m1.x) && is_odd(m2.x)) ? (m1.y <= m2.y) : (m1.y < m2.y);
+	return (is_odd(m1.wml_x()) && is_even(m2.wml_x())) ? (m1.wml_y() <= m2.wml_y()) : (m1.wml_y() < m2.wml_y());
 }
 
 map_location::DIRECTION map_location::get_relative_dir(const map_location & loc) const
@@ -417,22 +417,24 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 			i = locs.begin(),
 			first = i,
 			last = i;
-	x << (i->x + 1);
-	y << (i->y + 1);
+
+	x << (i->wml_x());
+	y << (i->wml_y());
 
 	for(++i; i != locs.end(); ++i) {
-		if(i->x != first->x || i->y != last->y+1){
-			if(last->y != first->y)
-				y << "-" << (last->y + 1);
-			x << "," << (i->x + 1);
-			y << "," << (i->y + 1);
+		if(i->wml_x() != first->wml_x() || i->wml_y() - 1 != last->wml_y()) {
+			if (last->wml_y() != first->wml_y()) {
+				y << "-" << (last->wml_y());
+			}
+			x << "," << (i->wml_x());
+			y << "," << (i->wml_y());
 			first = i;
 		}
 		last = i;
 	}
 	// finish last range
-	if(last->y != first->y)
-		y << "-" << (last->y + 1);
+	if(last->wml_y() != first->wml_y())
+		y << "-" << (last->wml_y());
 
 	cfg["x"] = x.str();
 	cfg["y"] = y.str();
@@ -463,8 +465,8 @@ void write_locations(const std::vector<map_location>& locs, config& cfg)
 			end = locs.end();
 
 	for(; i != end; ++i) {
-		x << (i->x + 1);
-		y << (i->y + 1);
+		x << (i->wml_x());
+		y << (i->wml_y());
 		if(i+1 != end){
 			x << ",";
 			y << ",";

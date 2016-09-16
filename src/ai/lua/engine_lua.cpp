@@ -179,7 +179,7 @@ public:
 		: lua_candidate_action_wrapper(context, cfg, lua_ai_ctx)
 		, bound_unit_()
 	{
-		map_location loc(cfg["unit_x"] - 1, cfg["unit_y"] - 1); // lua and c++ coords differ by one
+		map_location loc(cfg["unit_x"], cfg["unit_y"], wml_loc()); // lua and c++ coords differ by one
 		bound_unit_ = unit_ptr(new unit(*resources::units->find(loc)));
 	}
 

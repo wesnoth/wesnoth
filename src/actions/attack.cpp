@@ -795,7 +795,7 @@ namespace {
 	std::string attack::unit_info::dump()
 	{
 		std::stringstream s;
-		s << get_unit().type_id() << " (" << loc_.x + 1 << ',' << loc_.y + 1 << ')';
+		s << get_unit().type_id() << " (" << loc_.wml_x() << ',' << loc_.wml_y() << ')';
 		return s.str();
 	}
 

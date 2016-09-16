@@ -57,9 +57,9 @@ variant convert_vector(const std::vector<T>& input_vector)
 variant location_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
-		return variant(loc_.x+1);
+		return variant(loc_.wml_x());
 	} else if(key == "y") {
-		return variant(loc_.y+1);
+		return variant(loc_.wml_y());
 	} else {
 		return variant();
 	}
@@ -86,7 +86,7 @@ int location_callable::do_compare(const game_logic::formula_callable* callable) 
 void location_callable::serialize_to_string(std::string& str) const
 {
 	std::ostringstream s;
-	s << "loc(" << (loc_.x+1) << "," << (loc_.y+1) << ")";
+	s << "loc(" << (loc_.wml_x()) << "," << (loc_.wml_y()) << ")";
 	str += s.str();
 }
 
@@ -180,13 +180,13 @@ variant unit_callable::get_value(const std::string& key) const
 		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
-			return variant(loc_.x+1);
+			return variant(loc_.wml_x());
 		}
 	} else if(key == "y") {
 		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
-			return variant(loc_.y+1);
+			return variant(loc_.wml_y());
 		}
 	} else if(key == "loc") {
 		if (loc_==map_location::null_location()) {
@@ -499,9 +499,9 @@ int config_callable::do_compare(const game_logic::formula_callable* callable) co
 variant terrain_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
-		return variant(loc_.x+1);
+		return variant(loc_.wml_x());
 	} else if(key == "y") {
-		return variant(loc_.y+1);
+		return variant(loc_.wml_y());
 	} else if(key == "loc") {
 		return variant(new location_callable(loc_));
 	} else if(key == "id") {

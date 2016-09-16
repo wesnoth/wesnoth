@@ -65,7 +65,7 @@ attack::attack(size_t team_index, bool hidden, unit& u, const map_location& targ
 
 attack::attack(config const& cfg, bool hidden)
 	: move(cfg,hidden)
-	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"])
+	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"], wml_loc())
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
@@ -280,8 +280,8 @@ config attack::to_config() const
 //	final_cfg["temp_movement_subtracted_"] = temp_movement_subtracted_; //Unnecessary
 
 	config target_hex_cfg;
-	target_hex_cfg["x"]=target_hex_.x;
-	target_hex_cfg["y"]=target_hex_.y;
+	target_hex_cfg["x"]=target_hex_.wml_x();
+	target_hex_cfg["y"]=target_hex_.wml_y();
 	final_cfg.add_child("target_hex_",target_hex_cfg);
 
 	return final_cfg;

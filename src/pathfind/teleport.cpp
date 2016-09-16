@@ -124,7 +124,7 @@ void teleport_group::get_teleport_pair(
 	const unit_filter ufilt(filter, resources::filter_con); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u, loc)) {
 
-		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
+		scoped_xy_unit teleport_unit("teleport_unit", loc, *resources::units);
 
 		terrain_filter source_filter(source, fc);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);

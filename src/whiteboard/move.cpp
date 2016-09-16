@@ -109,10 +109,10 @@ move::move(config const& cfg, bool hidden)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
 	for(config const& loc_cfg : route_cfg.child_range("step")) {
-		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"]));
+		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"], wml_loc()));
 	}
 	for(config const& mark_cfg : route_cfg.child_range("mark")) {
-		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
+		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
 			= pathfind::marked_route::mark(mark_cfg["turns"],
 				mark_cfg["zoc"].to_bool(),
 				mark_cfg["capture"].to_bool(),
@@ -505,16 +505,16 @@ config move::to_config() const
 	for(map_location const& loc : route_->steps)
 	{
 		config loc_cfg;
-		loc_cfg["x"]=loc.x;
-		loc_cfg["y"]=loc.y;
+		loc_cfg["x"]=loc.wml_x();
+		loc_cfg["y"]=loc.wml_y();
 		route_cfg.add_child("step",loc_cfg);
 	}
 	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
 	for(pair_loc_mark const& item : route_->marks)
 	{
 		config mark_cfg;
-		mark_cfg["x"]=item.first.x;
-		mark_cfg["y"]=item.first.y;
+		mark_cfg["x"]=item.first.wml_x();
+		mark_cfg["y"]=item.first.wml_y();
 		mark_cfg["turns"]=item.second.turns;
 		mark_cfg["zoc"]=item.second.zoc;
 		mark_cfg["capture"]=item.second.capture;

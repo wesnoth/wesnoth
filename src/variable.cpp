@@ -499,16 +499,15 @@ scoped_wml_variable::~scoped_wml_variable()
 
 void scoped_xy_unit::activate()
 {
-	map_location loc = map_location(x_, y_);
-	unit_map::const_iterator itor = umap_.find(loc);
+	unit_map::const_iterator itor = umap_.find(loc_);
 	if(itor != umap_.end()) {
 		config &tmp_cfg = store();
 		itor->write(tmp_cfg);
-		tmp_cfg["x"] = x_ + 1;
-		tmp_cfg["y"] = y_ + 1;
-		LOG_NG << "auto-storing $" << name() << " at (" << loc << ")\n";
+		tmp_cfg["x"] = loc_.wml_x();
+		tmp_cfg["y"] = loc_.wml_y();
+		LOG_NG << "auto-storing $" << name() << " at (" << loc_ << ")\n";
 	} else {
-		ERR_NG << "failed to auto-store $" << name() << " at (" << loc << ")" << std::endl;
+		ERR_NG << "failed to auto-store $" << name() << " at (" << loc_ << ")" << std::endl;
 	}
 }
 

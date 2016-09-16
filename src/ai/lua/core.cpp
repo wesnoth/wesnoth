@@ -164,8 +164,8 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 		return 0;
 	}
 	else {
-		lua_pushnumber(L, res.x+1);
-		lua_pushnumber(L, res.y+1);
+		lua_pushnumber(L, res.wml_x());
+		lua_pushnumber(L, res.wml_y());
 		return 2;
 	}
 }
@@ -274,8 +274,8 @@ static int ai_synced_command(lua_State *L, bool exec)
 	int side = get_readonly_context(L).get_side();
 	map_location location;
 	if (!lua_isnoneornil(L, 2)) {
-		location.x = lua_tonumber(L, 2);
-		location.y = lua_tonumber(L, 3);
+		location.set_wml_x(lua_tonumber(L, 2));
+		location.set_wml_y(lua_tonumber(L, 3));
 	}
 
 	ai::synced_command_result_ptr synced_command_result = ai::actions::execute_synced_command_action(side,exec,std::string(lua_code),location);
@@ -298,8 +298,8 @@ static int ai_recruit(lua_State *L, bool exec)
 	int side = get_readonly_context(L).get_side();
 	map_location where;
 	if (!lua_isnoneornil(L, 2)) {
-		where.x = lua_tonumber(L, 2) - 1;
-		where.y = lua_tonumber(L, 3) - 1;
+		where.set_wml_x(lua_tonumber(L, 2));
+		where.set_wml_y(lua_tonumber(L, 3));
 	}
 	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location();
@@ -323,8 +323,8 @@ static int ai_recall(lua_State *L, bool exec)
 	int side = get_readonly_context(L).get_side();
 	map_location where;
 	if (!lua_isnoneornil(L, 2)) {
-		where.x = lua_tonumber(L, 2) - 1;
-		where.y = lua_tonumber(L, 3) - 1;
+		where.set_wml_x(lua_tonumber(L, 2));
+		where.set_wml_y(lua_tonumber(L, 3));
 	}
 	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location();

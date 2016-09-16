@@ -169,7 +169,7 @@ public:
 	 * Called when the middle click scrolling
 	 */
 	void set_scroll_start (int x, int y) { scroll_start_x_ = x; scroll_start_y_ = y; }
-	const map_location get_scroll_start () { return map_location(scroll_start_x_, scroll_start_y_); }
+	const SDL_Point get_scroll_start() { return{ scroll_start_x_, scroll_start_y_ }; }
 	bool scroll_started() { return scroll_started_; }
 
 protected:

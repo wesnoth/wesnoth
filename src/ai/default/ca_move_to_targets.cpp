@@ -438,7 +438,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		access_points(srcdst, best->get_location(), best_target->loc, locs);
 
 		if(locs.empty() == false) {
-			LOG_AI << "supporting unit at " << best_target->loc.x + 1 << "," << best_target->loc.y + 1 << "\n";
+			LOG_AI << "supporting unit at " << best_target->loc.wml_x() << "," << best_target->loc.wml_y() << "\n";
 			map_location best_loc;
 			int best_defense = 0;
 			double best_vulnerability = 0.0;
@@ -517,7 +517,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 			}
 		} else {
-			LOG_AI << "massing to attack " << best_target->loc.x + 1 << "," << best_target->loc.y + 1
+			LOG_AI << "massing to attack " << best_target->loc.wml_x() << "," << best_target->loc.wml_y()
 				<< " " << our_strength << "\n";
 
 			const double value = best_target->value;
@@ -594,7 +594,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 						targets.erase(best_target);
 					}
 
-					LOG_AI << "Moving to " << its.first->first.x + 1 << "," << its.first->first.y + 1 << "\n";
+					LOG_AI << "Moving to " << its.first->first.wml_x() << "," << its.first->first.wml_y() << "\n";
 
 					return std::pair<map_location,map_location>(its.first->second,its.first->first);
 				} else {
@@ -803,7 +803,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
 				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {
 					preferred_moves.push_front(adj[n]);
-					LOG_AI << "added moves: " << adj[n].x + 1 << "," << adj[n].y + 1 << "\n";
+					LOG_AI << "added moves: " << adj[n].wml_x() << "," << adj[n].wml_y() << "\n";
 				}
 			}
 		} else {

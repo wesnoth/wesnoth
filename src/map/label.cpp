@@ -29,7 +29,7 @@
 //tile will still be shrouded, and the label being drawn looks weird.
 inline bool is_shrouded(const display& disp, const map_location& loc)
 {
-	return disp.shrouded(loc) || disp.shrouded(map_location(loc.x,loc.y+1));
+	return disp.shrouded(loc) || disp.shrouded(loc.get_direction(map_location::SOUTH));
 }
 
 /// Rather simple test for a hex being fogged.
@@ -553,15 +553,17 @@ SDL_Rect terrain_label::get_rect() const
 
 void terrain_label::draw()
 {
-	if (text_.empty() && tooltip_.empty())
+	if (text_.empty() && tooltip_.empty()) {
 		return;
+	}
 	clear();
 
-	if ( !viewable(parent_->disp().get_disp_context()) )
+	if (!viewable(parent_->disp().get_disp_context())) {
 		return;
-
-	const map_location loc_nextx(loc_.x+1,loc_.y);
-	const map_location loc_nexty(loc_.x,loc_.y+1);
+	}
+	//Note: the y part of loc_nextx is not used at all.
+	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
+	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
 	const int xloc = (parent_->disp().get_location_x(loc_) +
 			parent_->disp().get_location_x(loc_nextx)*2)/3;
 	const int yloc = parent_->disp().get_location_y(loc_nexty) - font::SIZE_NORMAL;

@@ -437,7 +437,7 @@ int gamemap::num_valid_starting_positions() const
 
 const std::string* gamemap::is_starting_position(const map_location& loc) const
 {
-	auto it = starting_positions_.right.find(t_translation::coordinate(loc.x, loc.y));
+	auto it = starting_positions_.right.find(loc);
 	return it == starting_positions_.right.end() ? nullptr : &it->second;
 }
 
@@ -447,14 +447,14 @@ void gamemap::set_special_location(const std::string& id, const map_location& lo
 	auto it_left = starting_positions_.left.find(id);
 	if (it_left != starting_positions_.left.end()) {
 		if (valid) {
-			starting_positions_.left.replace_data(it_left, t_translation::coordinate(loc.x, loc.y));
+			starting_positions_.left.replace_data(it_left, loc);
 		}
 		else {
 			starting_positions_.left.erase(it_left);
 		}
 	}
 	else {
-		starting_positions_.left.insert(it_left, std::make_pair(id, t_translation::coordinate(loc.x, loc.y)));
+		starting_positions_.left.insert(it_left, std::make_pair(id, loc));
 	}
 }
 

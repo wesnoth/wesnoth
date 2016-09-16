@@ -17,8 +17,8 @@ struct lua_pathfind_cost_calculator : pathfind::cost_calculator
 	{
 		// Copy the user function and push the location and current cost.
 		lua_pushvalue(L, index);
-		lua_pushinteger(L, loc.x + 1);
-		lua_pushinteger(L, loc.y + 1);
+		lua_pushinteger(L, loc.wml_x());
+		lua_pushinteger(L, loc.wml_y());
 		lua_pushnumber(L, so_far);
 		// Execute the user function.
 		if (!luaW_pcall(L, 3, 1)) {

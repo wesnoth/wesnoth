@@ -103,10 +103,7 @@ namespace { // Support functions
 	 */
 	map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = -999)
 	{
-		int x = cfg["x"].to_int(defaultx) - 1;
-		int y = cfg["y"].to_int(defaulty) - 1;
-
-		return map_location(x, y);
+		return map_location(cfg["x"].to_int(defaultx), cfg["y"].to_int(defaulty), wml_loc());
 	}
 
 	fake_unit_ptr create_fake_unit(const vconfig& cfg)
@@ -152,8 +149,8 @@ namespace { // Support functions
 		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 			if(i==0){
 				try {
-					src.x = std::stoi(xvals[i])-1;
-					src.y = std::stoi(yvals[i])-1;
+					src.set_wml_x(std::stoi(xvals[i]));
+					src.set_wml_y(std::stoi(yvals[i]));
 				} catch(std::invalid_argument) {
 					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i] << '\n';
 					continue;
@@ -171,8 +168,8 @@ namespace { // Support functions
 					*game_map);
 
 			try {
-				dst.x = std::stoi(xvals[i])-1;
-				dst.y = std::stoi(yvals[i])-1;
+				dst.set_wml_x(std::stoi(xvals[i]));
+				dst.set_wml_y(std::stoi(yvals[i]));
 			} catch(std::invalid_argument) {
 				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i] << '\n';
 			}

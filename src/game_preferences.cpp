@@ -1165,7 +1165,9 @@ static void encounter_recallable_units(const std::vector<team>& teams){
 	}
 }
 
-void encounter_map_terrain(const gamemap& map){
+void encounter_map_terrain(const gamemap& map)
+{
+	//TODO shouldn't this include the border locations?
 	for (int map_x = 0; map_x < map.w(); ++map_x) {
 		for (int map_y = 0; map_y < map.h(); ++map_y) {
 			const t_translation::t_terrain t = map.get_terrain(map_location(map_x, map_y));

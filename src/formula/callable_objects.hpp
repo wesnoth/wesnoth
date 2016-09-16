@@ -114,8 +114,6 @@ public:
 	{
 		type_ = LOCATION_C;
 	}
-	explicit location_callable(int x, int y) : loc_(map_location(x,y))
-	{}
 
 	const map_location& loc() const { return loc_; }
 

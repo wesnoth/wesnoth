@@ -1385,8 +1385,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		return variant(new location_callable(map_location(
-							     args()[0]->evaluate(variables,add_debug_info(fdb,0,"loc:x")).as_int()-1,
-							     args()[1]->evaluate(variables,add_debug_info(fdb,1,"loc:y")).as_int()-1)));
+							     args()[0]->evaluate(variables,add_debug_info(fdb,0,"loc:x")).as_int(),
+							     args()[1]->evaluate(variables,add_debug_info(fdb,1,"loc:y")).as_int(), wml_loc())));
 	}
 };
 

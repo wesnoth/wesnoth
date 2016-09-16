@@ -981,8 +981,8 @@ const std::set<map_location>& keeps_cache::get()
 	if(keeps_.empty()) {
 		// Generate the list of keeps:
 		// iterate over the entire map and find all keeps.
-		for(size_t x = 0; x != size_t(map_->w()); ++x) {
-			for(size_t y = 0; y != size_t(map_->h()); ++y) {
+		for(int x = 0; x != map_->w(); ++x) {
+			for(int y = 0; y != map_->h(); ++y) {
 				const map_location loc(x,y);
 				if(map_->is_keep(loc)) {
 					map_location adj[6];

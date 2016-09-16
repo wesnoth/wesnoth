@@ -67,7 +67,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 recruit::recruit(config const& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_name_(cfg["unit_name_"])
-	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"])
+	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"], wml_loc())
 	, temp_unit_()
 	, fake_unit_()
 	, cost_(0)
@@ -212,8 +212,8 @@ config recruit::to_config() const
 //	final_cfg["temp_cost_"] = temp_cost_; //Unnecessary
 
 	config loc_cfg;
-	loc_cfg["x"]=recruit_hex_.x;
-	loc_cfg["y"]=recruit_hex_.y;
+	loc_cfg["x"]=recruit_hex_.wml_x();
+	loc_cfg["y"]=recruit_hex_.wml_y();
 	final_cfg.add_child("recruit_hex_",loc_cfg);
 
 	return final_cfg;

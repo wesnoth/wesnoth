@@ -70,7 +70,7 @@ suppose_dead::suppose_dead(config const& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_underlying_id_(0)
 	, unit_id_()
-	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
+	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
@@ -185,8 +185,8 @@ config suppose_dead::to_config() const
 	final_cfg["unit_id_"]=unit_id_;
 
 	config loc_cfg;
-	loc_cfg["x"]=loc_.x;
-	loc_cfg["y"]=loc_.y;
+	loc_cfg["x"]=loc_.wml_x();
+	loc_cfg["y"]=loc_.wml_y();
 	final_cfg.add_child("loc_",loc_cfg);
 
 	return final_cfg;
