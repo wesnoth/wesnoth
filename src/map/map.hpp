@@ -78,18 +78,6 @@ public:
 	 */
 	gamemap(const tdata_cache &tdata, const std::string &data); //throw(incorrect_map_format_error)
 
-
-	/**
-	 * Loads a map, from the [map] wml config in @a level.
-	 *
-	 * Data should be a series of lines, with each character representing one
-	 * hex on the map.  Starting locations are represented by numbers
-	 *
-	 * @param tdata the terrain data
-	 * @param level the scenario config to load from.
-	 */
-	gamemap(const tdata_cache &tdata, const config &level); //throw(incorrect_map_format_error)
-
 	virtual ~gamemap();
 
 	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1);
@@ -97,7 +85,7 @@ public:
 	std::string write() const;
 
 	/** Overlays another map onto this one at the given position. */
-	void overlay(const gamemap& m, const config& rules, int x=0, int y=0, bool border=false);
+	void overlay(const gamemap& m, const config& rules, map_location loc);
 
 	/** Effective map width. */
 	int w() const { return w_; }
@@ -224,7 +212,7 @@ public:
 			}
 		}
 	}
-
+	void add_fog_border();
 protected:
 	t_translation::t_map tiles_;
 

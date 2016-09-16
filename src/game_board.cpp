@@ -35,7 +35,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 
 game_board::game_board(const tdata_cache & tdata, const config & level)
 	: teams_()
-	, map_(new gamemap(tdata, level))
+	, map_(new gamemap(tdata, level["map_data"]))
 	, unit_id_manager_(level["next_underlying_unit_id"])
 	, units_()
 {
@@ -291,8 +291,8 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 
 
 
-void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc, bool border) {
-	map_->overlay(mask_map, cfg, loc.x, loc.y, border);
+void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc) {
+	map_->overlay(mask_map, cfg, loc);
 }
 
 bool game_board::change_terrain(const map_location &loc, const std::string &t_str,

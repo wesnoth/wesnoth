@@ -120,27 +120,6 @@ gamemap::gamemap(const tdata_cache& tdata, const std::string& data):
 	read(data);
 }
 
-gamemap::gamemap(const tdata_cache& tdata, const config& level):
-		tiles_(1, 1),
-		tdata_(tdata),
-		villages_(),
-		borderCache_(),
-		terrainFrequencyCache_(),
-		w_(-1),
-		h_(-1),
-		border_size_(default_border)
-{
-	DBG_G << "loading map: '" << level.debug() << "'\n";
-
-	const std::string& map_data = level["map_data"];
-	if (!map_data.empty()) {
-		read(map_data);
-	} else {
-		w_ = 0;
-		h_ = 0;
-	}
-}
-
 gamemap::~gamemap()
 {
 }
@@ -260,8 +239,11 @@ namespace
 		}
 	};
 }
-void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
+void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location loc)
 {
+	bool border = true;
+	int xpos = loc.x;
+	int ypos = loc.y;
 	//const config::const_child_itors &rules = rules_cfg.child_range("rule");
 	std::vector<overlay_rule> rules(rules_cfg.child_count("rule"));
 	for(size_t i = 0; i <rules.size(); ++i)
@@ -545,3 +527,17 @@ std::vector<map_location> gamemap::parse_location_range(const std::string &x, co
 	}
 	return res;
 }
+
+void gamemap::add_fog_border()
+{
+	t_translation::t_map tiles_new(tiles_.w + 1, tiles_.h + 1);
+	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
+		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
+			tiles_new.get(x, y) = (x == 0 || y == 0) ? t_translation::VOID_TERRAIN : tiles_.get(x - 1, y - 1);
+		}
+	}
+	++w_;
+	++h_;
+	tiles_ = tiles_new;
+}
+
