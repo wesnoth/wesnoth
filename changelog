@@ -89,6 +89,9 @@ Version 1.13.5+dev:
      possible advancements of the specified unit types.
    * [options][combo] in [scenario], [modifications], etc has been renamed
      to [choice] (which is more accurate). The old name still works for now.
+   * ~ADJUST_ALPHA() image path function now takes a WFL formula. It can access
+     the following variables: x, y, width, height, red, green, blue, alpha.
+	 It no longer accepts a percentage (use ~O() for that).
 * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name

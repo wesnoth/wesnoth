@@ -278,14 +278,14 @@ public:
 class adjust_alpha_modification : public modification
 {
 public:
-	adjust_alpha_modification(fixed_t amount)
-		: amount_(amount)
+	adjust_alpha_modification(const std::string& formula)
+		: formula_(formula)
 	{}
 
 	virtual surface operator()(const surface& src) const;
 
 private:
-	fixed_t amount_;
+	std::string formula_;
 };
 
 /**
