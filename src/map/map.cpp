@@ -293,11 +293,11 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 				break;
 			}
 
-			if (rule && !rule->use_old_) {
-				set_terrain(map_location(x2, y2), rule->terrain_ ? *rule->terrain_ : t , rule->mode_, rule->replace_if_failed_);
+			if (!rule) {
+				set_terrain(map_location(x2, y2), t);
 			}
-			else {
-				set_terrain(map_location(x2,y2), t);
+			else if(!rule->use_old_) {
+				set_terrain(map_location(x2, y2), rule->terrain_ ? *rule->terrain_ : t , rule->mode_, rule->replace_if_failed_);
 			}
 		}
 	}
