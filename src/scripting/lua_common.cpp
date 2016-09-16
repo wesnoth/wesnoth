@@ -617,10 +617,10 @@ void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
 	lua_createtable(L, 2, 0);
 
-	lua_pushinteger(L, ml.x + 1);
+	lua_pushinteger(L, ml.wml_x());
 	lua_rawseti(L, -2, 1);
 
-	lua_pushinteger(L, ml.y + 1);
+	lua_pushinteger(L, ml.wml_y());
 	lua_rawseti(L, -2, 2);
 }
 
@@ -641,9 +641,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;
 		lua_getfield(L, index, "x");
-		result.x = lua_tonumberx(L, -1, &x_was_num) - 1;
+		result.set_wml_x(lua_tonumberx(L, -1, &x_was_num));
 		lua_getfield(L, index, "y");
-		result.y = lua_tonumberx(L, -1, &y_was_num) - 1;
+		result.set_wml_y(lua_tonumberx(L, -1, &y_was_num));
 		lua_pop(L, 2);
 		if (!x_was_num || !y_was_num) {
 			// If we get here and it was userdata, checking numeric indices won't help
@@ -652,9 +652,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 				return false;
 			}
 			lua_rawgeti(L, index, 1);
-			result.x = lua_tonumberx(L, -1, &x_was_num) - 1;
+			result.set_wml_x(lua_tonumberx(L, -1, &x_was_num));
 			lua_rawgeti(L, index, 2);
-			result.y = lua_tonumberx(L, -1, &y_was_num) - 1;
+			result.set_wml_y(lua_tonumberx(L, -1, &y_was_num));
 			lua_pop(L, 2);
 		}
 		if (x_was_num && y_was_num) {
@@ -665,9 +665,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		// If it's a number, then we consume two elements on the stack
 		// Since we have no way of notifying the caller that we have
 		// done this, we remove the first number from the stack.
-		loc.x = lua_tonumber(L, index) - 1;
+		loc.set_wml_x(lua_tonumber(L, index));
 		lua_remove(L, index);
-		loc.y = lua_tonumber(L, index) - 1;
+		loc.set_wml_y(lua_tonumber(L, index));
 		return true;
 	}
 	return false;

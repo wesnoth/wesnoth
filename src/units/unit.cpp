@@ -336,7 +336,7 @@ struct ptr_vector_pushback
 
 unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	: ref_count_(0)
-	, loc_(cfg["x"] - 1, cfg["y"] - 1)
+	, loc_(cfg["x"], cfg["y"], wml_loc())
 	, advances_to_()
 	, type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"]))
 	, type_name_()
@@ -574,8 +574,8 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 		set_state("invulnerable", v->to_bool());
 	}
 
-	goto_.x = cfg["goto_x"].to_int() - 1;
-	goto_.y = cfg["goto_y"].to_int() - 1;
+	goto_.set_wml_x(cfg["goto_x"].to_int());
+	goto_.set_wml_y(cfg["goto_y"].to_int());
 
 	if (const config::attribute_value *v = cfg.get("moves")) {
 		movement_ = *v;
@@ -1449,8 +1449,8 @@ void unit::write(config& cfg) const
 
 	cfg["facing"] = map_location::write_direction(facing_);
 
-	cfg["goto_x"] = goto_.x + 1;
-	cfg["goto_y"] = goto_.y + 1;
+	cfg["goto_x"] = goto_.wml_x();
+	cfg["goto_y"] = goto_.wml_y();
 
 	cfg["moves"] = movement_;
 	cfg["max_moves"] = max_movement_;

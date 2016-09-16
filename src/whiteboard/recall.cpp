@@ -69,7 +69,7 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 recall::recall(config const& cfg, bool hidden)
 	: action(cfg,hidden)
 	, temp_unit_()
-	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
+	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"], wml_loc())
 	, fake_unit_()
 {
 	// Construct and validate temp_unit_
@@ -233,8 +233,8 @@ config recall::to_config() const
 //	final_cfg["temp_cost_"] = temp_cost_; //Unnecessary
 
 	config loc_cfg;
-	loc_cfg["x"]=recall_hex_.x;
-	loc_cfg["y"]=recall_hex_.y;
+	loc_cfg["x"]=recall_hex_.wml_x();
+	loc_cfg["y"]=recall_hex_.wml_y();
 	final_cfg.add_child("recall_hex_",loc_cfg);
 
 	return final_cfg;

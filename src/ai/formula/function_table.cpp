@@ -681,7 +681,7 @@ private:
 		for(int i = 0; i < w; ++i)
 			for(int j = 0; j < h; ++j) {
 				if(ai_.current_team().shrouded(map_location(i,j)))
-					vars.push_back(variant(new location_callable(i,j)));
+					vars.push_back(variant(new location_callable(map_location(i, j))));
 			}
 
 		return variant(&vars);
@@ -742,7 +742,7 @@ private:
 			convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"calculate_outcome:attacker_current_location")))->loc();
 		if(units.count(attacker_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
-				attacker_location.x+1 << "," << attacker_location.y+1 << ")\n";
+				attacker_location.wml_x() << "," << attacker_location.wml_y() << ")\n";
 			return variant();
 		}
 
@@ -750,7 +750,7 @@ private:
 			convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"calculate_outcome:defender_location")))->loc();
 		if(units.count(defender_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
-				defender_location.x+1 << "," << defender_location.y+1 << ")\n";
+				defender_location.wml_x() << "," << defender_location.wml_y() << ")\n";
 			return variant();
 		}
 
@@ -959,7 +959,7 @@ private:
 
 		if( unit_it == resources::units->end() ) {
 			std::ostringstream str;
-			str << "shortest_path function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
+			str << "shortest_path function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
 			throw formula_error( str.str(), "", "", 0);
 		}
 
@@ -1009,7 +1009,7 @@ private:
 
 		if( unit_it == resources::units->end() ) {
 			std::ostringstream str;
-			str << "simplest_path function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
+			str << "simplest_path function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
 			throw formula_error( str.str(), "", "", 0);
 		}
 
@@ -1063,7 +1063,7 @@ private:
 
 		if( unit_it == resources::units->end() ) {
 			std::ostringstream str;
-			str << "next_hop function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
+			str << "next_hop function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
 			throw formula_error( str.str(), "", "", 0);
 		}
 
@@ -1259,8 +1259,8 @@ private:
 		if(args().size() == 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:location")))->loc();
 		} else {
-			loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:x")).as_int() - 1,
-					    args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_village:y")).as_int() - 1 );
+			loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:x")).as_int(),
+					    args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_village:y")).as_int(), wml_loc());
 		}
 		return variant(m.is_village(loc));
 	}
@@ -1283,8 +1283,8 @@ private:
 		if(args().size() == 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:location")))->loc();
 		} else {
-			loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:x")).as_int() - 1,
-					    args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_unowned_village:y")).as_int() - 1 );
+			loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:x")).as_int(),
+					    args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_unowned_village:y")).as_int(), wml_loc());
 		}
 
 		if(m.is_village(loc) && (my_villages.count(loc)==0) ) {

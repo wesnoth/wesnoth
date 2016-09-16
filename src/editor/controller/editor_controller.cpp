@@ -1183,12 +1183,12 @@ void editor_controller::export_selection_coords()
 	std::stringstream ssx, ssy;
 	std::set<map_location>::const_iterator i = context_manager_->get_map().selection().begin();
 	if (i != context_manager_->get_map().selection().end()) {
-		ssx << "x = " << i->x + 1;
-		ssy << "y = " << i->y + 1;
+		ssx << "x = " << i->wml_x();
+		ssy << "y = " << i->wml_y();
 		++i;
 		while (i != context_manager_->get_map().selection().end()) {
-			ssx << ", " << i->x + 1;
-			ssy << ", " << i->y + 1;
+			ssx << ", " << i->wml_x();
+			ssy << ", " << i->wml_y();
 			++i;
 		}
 		ssx << "\n" << ssy.str() << "\n";
@@ -1292,7 +1292,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	if (!context_manager_->get_map().on_board_with_border(hex_clicked))
 		return true;
 
-	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
+	LOG_ED << "Left click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state();
@@ -1330,7 +1330,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click, after generic handling\n";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return true;
-	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
+	LOG_ED << "Right click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
 	if (a) set_button_state();

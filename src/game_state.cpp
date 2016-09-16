@@ -96,12 +96,12 @@ static int placing_score(const config& side, const gamemap& map, const map_locat
 	int positions = 0, liked = 0;
 	const t_translation::t_list terrain = t_translation::read_list(side["terrain_liked"]);
 
-	for(int i = pos.x-8; i != pos.x+8; ++i) {
-		for(int j = pos.y-8; j != pos.y+8; ++j) {
-			const map_location pos(i,j);
-			if(map.on_board(pos)) {
+	for(int i = -8; i != 8; ++i) {
+		for(int j = -8; j != +8; ++j) {
+			const map_location pos2  = pos.plus(i, j);
+			if(map.on_board(pos2)) {
 				++positions;
-				if(std::count(terrain.begin(),terrain.end(),map[pos])) {
+				if(std::count(terrain.begin(),terrain.end(),map[pos2])) {
 					++liked;
 				}
 			}

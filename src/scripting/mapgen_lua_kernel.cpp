@@ -83,10 +83,10 @@ static int intf_find_path(lua_State *L)
 {
 	int arg = 1;
 	map_location src, dst;
-	src.x = luaL_checkinteger(L, 1) - 1;
-	src.y = luaL_checkinteger(L, 2) - 1;
-	dst.x = luaL_checkinteger(L, 3) - 1;
-	dst.y = luaL_checkinteger(L, 4) - 1;
+	src.set_wml_x(luaL_checkinteger(L, 1));
+	src.set_wml_y(luaL_checkinteger(L, 2));
+	dst.set_wml_x(luaL_checkinteger(L, 3));
+	dst.set_wml_y(luaL_checkinteger(L, 4));
 	if(lua_isfunction(L, arg)) { 
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 5));
 		return luaL_argerror(L, 5, msg);
@@ -105,9 +105,9 @@ static int intf_find_path(lua_State *L)
 	for (int i = 0; i < nb; ++i)
 	{
 		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, res.steps[i].x + 1);
+		lua_pushinteger(L, res.steps[i].wml_x());
 		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, res.steps[i].y + 1);
+		lua_pushinteger(L, res.steps[i].wml_y());
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, i + 1);
 	}

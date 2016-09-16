@@ -1171,8 +1171,8 @@ static size_t move_unit_internal(undo_list* undo_stack,
 	config co;
 	config cn = config_of
 		("stopped_early", mover.stopped_early())
-		("final_hex_x", mover.final_hex().x + 1)
-		("final_hex_y", mover.final_hex().y + 1);
+		("final_hex_x", mover.final_hex().wml_x())
+		("final_hex_y", mover.final_hex().wml_y());
 	bool matches_replay = checkup_instance->local_checkup(cn,co);
 	if(!matches_replay)
 	{

@@ -31,8 +31,8 @@ void move_action::write(config & cfg) const
 	cfg["starting_direction"] = map_location::write_direction(starting_dir);
 	cfg["starting_moves"] = starting_moves;
 	config & child = cfg.child("unit");
-	child["goto_x"] = goto_hex.x + 1;
-	child["goto_y"] = goto_hex.y + 1;
+	child["goto_x"] = goto_hex.wml_x();
+	child["goto_y"] = goto_hex.wml_y();
 }
 
 /**

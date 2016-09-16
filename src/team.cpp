@@ -564,9 +564,9 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 bool team::shrouded(const map_location& loc) const
 {
 	if(!resources::gameboard)
-		return shroud_.value(loc.x+1,loc.y+1);
+		return shroud_.value(loc.wml_x(),loc.wml_y());
 
-	return shroud_.shared_value(ally_shroud(resources::gameboard->teams()),loc.x+1,loc.y+1);
+	return shroud_.shared_value(ally_shroud(resources::gameboard->teams()),loc.wml_x(),loc.wml_y());
 }
 
 bool team::fogged(const map_location& loc) const
@@ -578,9 +578,9 @@ bool team::fogged(const map_location& loc) const
 		return false;
 
 	if(!resources::gameboard)
-		return fog_.value(loc.x+1,loc.y+1);
+		return fog_.value(loc.wml_x(),loc.wml_y());
 
-	return fog_.shared_value(ally_fog(resources::gameboard->teams()),loc.x+1,loc.y+1);
+	return fog_.shared_value(ally_fog(resources::gameboard->teams()),loc.wml_x(),loc.wml_y());
 }
 
 const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const

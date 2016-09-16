@@ -28,6 +28,8 @@ class variable_set;
 #include <algorithm>
 #include <utility>
 
+struct wml_loc {};
+
 /**
  * Encapsulates the map of the game.
  *
@@ -60,6 +62,7 @@ struct map_location {
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
+	map_location(int x, int y, wml_loc) : x(x - 1), y(y - 1) {}
 	map_location(const config& cfg, const variable_set *variables = nullptr);
 
 	static const map_location & ZERO();
@@ -75,7 +78,6 @@ struct map_location {
 	inline bool valid(const int parWidth, const int parHeight, const int border) const
 	{ return ((x + border >= 0) && (y + border >= 0) && (x < parWidth + border) && (y < parHeight + border)); }
 
-	int x, y;
 	bool matches_range(const std::string& xloc, const std::string& yloc) const;
 
 	// Inlining those for performance reasons
@@ -110,6 +112,18 @@ struct map_location {
 	map_location rotate_right_around_center(const map_location & center, int k) const;
 
 	friend std::size_t hash_value(map_location const &a);
+
+	int wml_x() const { return x + 1; }
+	int wml_y() const { return y + 1; }
+
+	void set_wml_x(int v) { x = v - 1; }
+	void set_wml_y(int v) { y = v - 1; }
+	//on purpose these functions don't take map_location objects, if you use map_location objects to store 'differences' between 2 locations use vector_sum().
+	void add(int x, int y) { this->x += x; this->y += y; }
+	map_location plus(int x, int y) const { return map_location(this->x + x, this->y + y); }
+
+
+	int x, y;
 };
 
 /** Function which tells if two locations are adjacent. */
@@ -156,7 +170,7 @@ struct hash<map_location> {
 	size_t operator()(const map_location& l) const {
 		// The 2000 bias supposedly ensures that the correct x is recovered for negative y
 		// This implementation copied from the Lua location_set
-		return (l.x + 1) * 16384 + (l.y + 1) + 2000;
+		return (l.wml_x()) * 16384 + (l.wml_y()) + 2000;
 	}
 };
 }

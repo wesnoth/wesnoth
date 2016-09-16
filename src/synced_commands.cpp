@@ -508,7 +508,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	}
 	debug_notification("kill debug command was used during turn of $player");
 	
-	const map_location loc(child["x"].to_int() -1 , child["y"].to_int() - 1);
+	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
 	const unit_map::iterator i = resources::units->find(loc);
 	if (i != resources::units->end()) {
 		const int dying_side = i->side();

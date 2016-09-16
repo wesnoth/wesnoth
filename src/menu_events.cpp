@@ -669,7 +669,7 @@ namespace { // Helpers for create_unit()
 	                      const map_location & loc, const unit_type & u_type,
 	                      unit_race::GENDER gender = unit_race::NUM_GENDERS)
 	{
-		synced_context::run_and_throw("debug_create_unit", config_of("x", loc.x + 1)("y", loc.y + 1)("type", u_type.id())("gender", gender_string(gender)));
+		synced_context::run_and_throw("debug_create_unit", config_of("x", loc.wml_x())("y", loc.wml_y())("type", u_type.id())("gender", gender_string(gender)));
 	}
 
 }// Anonymous namespace
@@ -726,7 +726,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 void menu_handler::kill_unit(mouse_handler& mousehandler)
 {
 	const map_location loc = mousehandler.get_last_hex();
-	synced_context::run_and_throw("debug_kill", config_of("x", loc.x + 1)("y", loc.y + 1));
+	synced_context::run_and_throw("debug_kill", config_of("x", loc.wml_x())("y", loc.wml_y()));
 }
 
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
@@ -1821,7 +1821,7 @@ void console_handler::do_unit() {
 		}
 	}
 
-	synced_context::run_and_throw("debug_unit", config_of("x", loc.x + 1)("y", loc.y + 1)("name", parameters[0])("value", parameters[1]));
+	synced_context::run_and_throw("debug_unit", config_of("x", loc.wml_x())("y", loc.wml_y())("name", parameters[0])("value", parameters[1]));
 }
 
 void console_handler::do_discover() {
