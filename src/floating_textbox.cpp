@@ -28,42 +28,44 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-namespace gui{
-	floating_textbox::floating_textbox() :
-		box_(nullptr),
+namespace gui2 {
+	tfloating_textbox::tfloating_textbox(game_display& gui) :
+		ttext_box(),
+		gui_(gui),
 		check_(nullptr),
-		mode_(TEXTBOX_NONE),
+		mode_(NONE),
 		label_string_(),
 		label_(0)
-	{}
-
-	void floating_textbox::close(game_display& gui)
 	{
-		if(!active()) {
-			return;
+		set_definition("transparent");
+		if(!CVideo::get_singleton().faked()) {
+			connect_signal<event::DRAW>(std::bind(&tfloating_textbox::draw, this));
 		}
-		if(check_ != nullptr) {
-			if(mode_ == TEXTBOX_MESSAGE) {
-				preferences::set_message_private(check_->checked());
-			}
-		}
-		box_.reset(nullptr);
-		check_.reset(nullptr);
-		font::remove_floating_label(label_);
-		mode_ = TEXTBOX_NONE;
-		gui.invalidate_all();
 	}
 
-	void floating_textbox::update_location(game_display& gui)
+	tfloating_textbox::~tfloating_textbox()
 	{
-		if (box_ == nullptr)
-			return;
+		if(check_ && mode_ == MESSAGE) {
+			preferences::set_message_private(check_->get_value_bool());
+		}
+		font::remove_floating_label(label_);
+		gui_.invalidate_all();
+	}
 
-		const SDL_Rect& area = gui.map_outside_area();
+	void tfloating_textbox::draw()
+	{
+		surface& frame_buffer = CVideo::get_singleton().getSurface();
+		draw_background(frame_buffer, 0, 0);
+		draw_children(frame_buffer, 0, 0);
+		draw_foreground(frame_buffer, 0, 0);
+	}
 
+	void tfloating_textbox::update_location()
+	{
+		const SDL_Rect& area = gui_.map_outside_area();
 		const int border_size = 10;
-
-		const int ypos = area.y+area.h-30 - (check_ != nullptr ? check_->height() + border_size : 0);
+		const int check_height = check_ ? check_->get_best_size().y : 0;
+		const int ypos = area.y+area.h-30 - check_height;
 
 		if (label_ != 0)
 			font::remove_floating_label(label_);
@@ -87,60 +89,54 @@ namespace gui{
 			return;
 		}
 
-		if(box_ != nullptr) {
-			box_->set_volatile(true);
-			const SDL_Rect rect = sdl::create_rect(
-				  area.x + label_area.w + border_size * 2
-				, ypos
-				, textbox_width
-				, box_->height());
+		tpoint origin(area.x + label_area.w + border_size * 2, ypos);
+		tpoint size(textbox_width, get_best_size().y);
+		set_origin(origin);
+		place(origin, size);
 
-			box_->set_location(rect);
-		}
-
-		if(check_ != nullptr) {
-			check_->set_volatile(true);
-			check_->set_location(box_->location().x,box_->location().y + box_->location().h + border_size);
+		if(check_) {
+			tpoint origin(get_x(), get_y() + get_height());
+			tpoint size = check_->get_best_size();
+			check_->set_origin(origin);
+			check_->place(origin, size);
 		}
 	}
 
-	void floating_textbox::show(gui::TEXTBOX_MODE mode, const std::string& label,
-		const std::string& check_label, bool checked, game_display& gui)
+	void tfloating_textbox::show(MODE mode, const std::string& label, const std::string& check_label, bool checked)
 	{
-		close(gui);
-
 		label_string_ = label;
 		mode_ = mode;
 
-		if(check_label != "") {
-			check_.reset(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
-			check_->set_check(checked);
+//		set_label(label);
+		set_font_size(font::SIZE_PLUS);
+		connect();
+//		box_.reset(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
+
+		if(!check_label.empty()) {
+			check_.reset(new ttoggle_button);
+			check_->set_definition("default");
+			check_->set_label(check_label);
+			check_->set_value_bool(checked);
+			check_->connect();
 		}
 
-
-		box_.reset(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
-
-		update_location(gui);
+		update_location();
 	}
 
-	void floating_textbox::tab(const std::set<std::string>& dictionary)
+	void tfloating_textbox::tab(const std::set<std::string>& dictionary)
 	{
-		if(active() == false) {
-			return;
-		}
-
-		std::string text = box_->text();
+		std::string text = get_value();
 		std::vector<std::string> matches(dictionary.begin(), dictionary.end());
 		const bool line_start = utils::word_completion(text, matches);
 
 		if (matches.empty()) return;
-		if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
+		if (matches.size() == 1 && mode_ == MESSAGE) {
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
 			resources::screen->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
-		box_->set_text(text);
+		set_value(text);
 	}
 }

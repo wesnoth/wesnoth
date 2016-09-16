@@ -581,44 +581,49 @@ bool play_controller::enemies_visible() const
 
 void play_controller::enter_textbox()
 {
-	if(menu_handler_.get_textbox().active() == false) {
+	if(!menu_handler_.get_textbox()) {
 		return;
 	}
 
-	const std::string str = menu_handler_.get_textbox().box()->text();
+	gui2::tfloating_textbox& box = *menu_handler_.get_textbox();
+	const std::string str = box.get_value();
 	const unsigned int team_num = current_side();
 	events::mouse_handler& mousehandler = mouse_handler_;
 
-	switch(menu_handler_.get_textbox().mode()) {
-	case gui::TEXTBOX_SEARCH:
+	switch(box.mode()) {
+	case gui2::tfloating_textbox::SEARCH:
 		menu_handler_.do_search(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.close_textbox();
 		break;
-	case gui::TEXTBOX_MESSAGE:
+	case gui2::tfloating_textbox::MESSAGE:
 		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(*gui_);  //need to close that one after executing do_speak() !
+		menu_handler_.close_textbox();  //need to close that one after executing do_speak() !
 		break;
-	case gui::TEXTBOX_COMMAND:
-		menu_handler_.get_textbox().close(*gui_);
+	case gui2::tfloating_textbox::COMMAND:
+		menu_handler_.close_textbox();
 		menu_handler_.do_command(str);
 		break;
-	case gui::TEXTBOX_AI:
-		menu_handler_.get_textbox().close(*gui_);
+	case gui2::tfloating_textbox::AI:
+		menu_handler_.close_textbox();
 		menu_handler_.do_ai_formula(str, team_num, mousehandler);
 		break;
 	default:
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.close_textbox();
 		ERR_DP << "unknown textbox mode" << std::endl;
 	}
 }
 
 void play_controller::tab()
 {
-	gui::TEXTBOX_MODE mode = menu_handler_.get_textbox().mode();
+	if(!menu_handler_.get_textbox()) {
+		return;
+	}
+
+	gui2::tfloating_textbox::MODE mode = menu_handler_.get_textbox()->mode();
 
 	std::set<std::string> dictionary;
 	switch(mode) {
-	case gui::TEXTBOX_SEARCH:
+	case gui2::tfloating_textbox::SEARCH:
 	{
 		for (const unit& u : gamestate().board_.units()){
 			const map_location& loc = u.get_location();
@@ -629,13 +634,13 @@ void play_controller::tab()
 		//TODO List map labels
 		break;
 	}
-	case gui::TEXTBOX_COMMAND:
+	case gui2::tfloating_textbox::COMMAND:
 	{
 		std::vector<std::string> commands = menu_handler_.get_commands_list();
 		dictionary.insert(commands.begin(), commands.end());
 		// no break here, we also want player names from the next case
 	}
-	case gui::TEXTBOX_MESSAGE:
+	case gui2::tfloating_textbox::MESSAGE:
 	{
 		for (const team& t : gamestate().board_.teams()) {
 			if(!t.is_empty())
@@ -669,7 +674,7 @@ void play_controller::tab()
 		ERR_DP << "unknown textbox mode" << std::endl;
 	} //switch(mode)
 
-	menu_handler_.get_textbox().tab(dictionary);
+	menu_handler_.get_textbox()->tab(dictionary);
 }
 
 team& play_controller::current_team()
@@ -752,13 +757,13 @@ game_display& play_controller::get_display()
 
 bool play_controller::have_keyboard_focus()
 {
-	return !menu_handler_.get_textbox().active();
+	return menu_handler_.get_textbox() == nullptr;
 }
 
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.close_textbox();
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {

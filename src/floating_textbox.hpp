@@ -16,8 +16,8 @@
 #ifndef FLOATING_TEXTBOX_H_INCLUDED
 #define FLOATING_TEXTBOX_H_INCLUDED
 
-// Scoped_resource can't use a pointer to an incomplete pointer with MSVC.
-#include "widgets/textbox.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 
 #include <memory>
 #include <set>
@@ -26,33 +26,26 @@ class game_display;
 class team;
 class unit_map;
 
-namespace gui{
+namespace gui2 {
 
-	class button;
-
-	enum TEXTBOX_MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
-		        TEXTBOX_COMMAND, TEXTBOX_AI };
-
-	class floating_textbox{
+	class tfloating_textbox : public ttext_box {
 	public:
-		floating_textbox();
+		enum MODE { NONE, SEARCH, MESSAGE, COMMAND, AI };
+		tfloating_textbox(game_display& gui);
+		~tfloating_textbox();
 
-		TEXTBOX_MODE mode() const { return mode_; }
-		const std::unique_ptr<gui::button>& check() const { return check_; }
-		const std::unique_ptr<gui::textbox>& box() const { return box_; }
+		MODE mode() const { return mode_; }
+		bool checked() const { return check_ ? check_->get_value_bool() : false; }
 
-		void close(game_display& gui);
-		void update_location(game_display& gui);
-		void show(gui::TEXTBOX_MODE mode, const std::string& label,
-			const std::string& check_label, bool checked, game_display& gui);
+		void update_location();
+		void show(MODE mode, const std::string& label, const std::string& check_label = "", bool checked = false);
 		void tab(const std::set<std::string>& dictionary);
-		bool active() const { return box_.get() != nullptr; }
 
 	private:
-		std::unique_ptr<gui::textbox> box_;
-		std::unique_ptr<gui::button> check_;
-
-		TEXTBOX_MODE mode_;
+		void draw();
+		std::unique_ptr<ttoggle_button> check_;
+		game_display& gui_;
+		MODE mode_;
 
 		std::string label_string_;
 		int label_;

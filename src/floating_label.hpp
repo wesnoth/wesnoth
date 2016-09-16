@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "font.hpp"
-
 #include "sdl/utils.hpp"
 #include <string>
 

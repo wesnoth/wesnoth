@@ -193,7 +193,7 @@ tpoint twidget::get_best_size() const
 	if(result == tpoint()) {
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
-		if(!get_window()->get_need_layout() && !linked_group_.empty())
+		if(get_window() && !get_window()->get_need_layout() && !linked_group_.empty())
 		{
 			tpoint linked_size = get_window()->get_linked_size(linked_group_);
 			result.x = std::max(result.x, linked_size.x);

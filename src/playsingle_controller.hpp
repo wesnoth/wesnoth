@@ -81,7 +81,7 @@ protected:
 	void store_gold(bool obs = false);
 
 	const cursor::setter cursor_setter;
-	gui::floating_textbox textbox_info_;
+//	std::unique_ptr<gui2::tfloating_textbox> textbox_info_;
 
 	replay_network_sender replay_sender_;
 	playturn_network_adapter network_reader_;

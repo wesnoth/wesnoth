@@ -46,8 +46,9 @@ public:
 		const config& game_config);
 	virtual ~menu_handler();
 
-	gui::floating_textbox& get_textbox();
-	void set_gui(game_display* gui) { gui_ = gui; }
+	gui2::tfloating_textbox* get_textbox();
+	void close_textbox();
+	void set_gui(game_display* gui);
 
 	void objectives();
 	void show_statistics(int side_num);
@@ -129,7 +130,7 @@ private:
 
 	const config& game_config_;
 
-	gui::floating_textbox textbox_info_;
+	std::unique_ptr<gui2::tfloating_textbox> textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
 };
