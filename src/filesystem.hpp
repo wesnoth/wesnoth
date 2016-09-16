@@ -183,6 +183,19 @@ std::string base_name(const std::string& file);
 std::string directory_name(const std::string& file);
 
 /**
+ * Finds the nearest parent in existence for a file or directory.
+ *
+ * @note    The file's own existence is not checked.
+ *
+ * @returns An absolute path to the closest parent of the given path, or an
+ *          empty string if none could be found. While on POSIX platforms this
+ *          cannot happen (unless the original path was already empty), on
+ *          Windows it might be the case that the original path refers to a
+ *          drive letter or network share that does not exist.
+ */
+std::string nearest_extant_parent(const std::string& file);
+
+/**
  * Returns the absolute path of a file.
  *
  * @param path                 Original path.

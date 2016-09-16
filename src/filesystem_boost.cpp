@@ -920,6 +920,26 @@ std::string directory_name(const std::string& file)
 	return path(file).parent_path().string();
 }
 
+std::string nearest_extant_parent(const std::string& file)
+{
+	if(file.empty()) {
+		return "";
+	}
+
+	bfs::path p{file};
+	error_code ec;
+
+	do {
+		p = p.parent_path();
+		bfs::path q = canonical(p, ec);
+		if (!ec) {
+			p = q;
+		}
+	} while(ec && !is_root(p.string()));
+
+	return ec ? "" : p.string();
+}
+
 bool is_path_sep(char c)
 {
 	static const path sep = path("/").make_preferred();
