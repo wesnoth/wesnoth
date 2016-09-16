@@ -1414,7 +1414,6 @@ void twindow::signal_handler_sdl_key_down(const event::tevent event,
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
-		std::cerr << "window key handler fires\n";
 		set_retval(OK);
 		handled = true;
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
