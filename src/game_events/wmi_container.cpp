@@ -88,9 +88,9 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 	const wml_menu_item & wmi = **iter;
 
 	// Prepare for can show().
-	gamedata.get_variable("x1") = hex.x + 1;
-	gamedata.get_variable("y1") = hex.y + 1;
-	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
+	gamedata.get_variable("x1") = hex.wml_x();
+	gamedata.get_variable("y1") = hex.wml_y();
+	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Can this item be shown?
 	if ( wmi.can_show(hex, gamedata, fc) ) {
@@ -116,9 +116,9 @@ void wmi_container::get_items(const map_location& hex,
 	}
 
 	// Prepare for can show().
-	gamedata.get_variable("x1") = hex.x + 1;
-	gamedata.get_variable("y1") = hex.y + 1;
-	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
+	gamedata.get_variable("x1") = hex.wml_x();
+	gamedata.get_variable("y1") = hex.wml_y();
+	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Check each menu item.
 	for (const item_ptr & item : *this)

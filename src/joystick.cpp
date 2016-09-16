@@ -282,9 +282,8 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex, con
 	//const bool greater_deadzone = radius > deadzone;
 	//const bool greater_threshold2 = radius > threshold2;
 
-	int x = selected_hex.x + round_double(x_axis / 3200);
-	int y = selected_hex.y + round_double(y_axis / 3200);
-	highlighted_hex = map_location(x,y);
+	highlighted_hex = selected_hex;
+	highlighted_hex.add(round_double(x_axis / 3200), round_double(y_axis / 3200));
 
 	//if (!greater_threshold) {
 	//	counter_ = 0;
@@ -343,20 +342,19 @@ bool joystick_manager::update_highlighted_hex(map_location& highlighted_hex) {
 	return true;
 }
 
-const map_location joystick_manager::get_direction(const map_location& loc, joystick_manager::DIRECTION direction) {
-
-	int x = loc.x;
-	int y = loc.y;
+const map_location joystick_manager::get_direction(const map_location& loc, joystick_manager::DIRECTION direction)
+{
+	map_location l = loc;
 
 	switch(direction) {
-		case NORTH:      return map_location(x, y - 1);
-		case SOUTH:      return map_location(x, y + 1);
-		case SOUTH_EAST: return map_location(x + 1, y + (1+is_odd(x))/2 );
-		case SOUTH_WEST: return map_location(x - 1, y + (1+is_odd(x))/2 );
-		case NORTH_EAST: return map_location(x + 1, y - (1+is_even(x))/2 );
-		case NORTH_WEST: return map_location(x - 1, y - (1+is_even(x))/2 );
-		case WEST:       return map_location(x - 1, y);
-		case EAST:       return map_location(x + 1, y);
+		case NORTH:      return l.get_direction(map_location::NORTH);
+		case SOUTH:      return l.get_direction(map_location::SOUTH);
+		case SOUTH_EAST: return l.get_direction(map_location::SOUTH_EAST);
+		case SOUTH_WEST: return l.get_direction(map_location::SOUTH_WEST);
+		case NORTH_EAST: return l.get_direction(map_location::NORTH_EAST);
+		case NORTH_WEST: return l.get_direction(map_location::NORTH_WEST);
+		case WEST:       l.add(-1, 0); return l;
+		case EAST:       l.add(1, 0); return l;
 		default:
 			assert(false);
 			return map_location();

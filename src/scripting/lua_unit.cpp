@@ -264,11 +264,11 @@ static int impl_unit_get(lua_State *L)
 	unit const &u = *pu;
 
 	// Find the corresponding attribute.
-	return_int_attrib("x", u.get_location().x + 1);
-	return_int_attrib("y", u.get_location().y + 1);
+	return_int_attrib("x", u.get_location().wml_x());
+	return_int_attrib("y", u.get_location().wml_y());
 	if(strcmp(m, "loc") == 0) {
-		lua_pushinteger(L, u.get_location().x + 1);
-		lua_pushinteger(L, u.get_location().y + 1);
+		lua_pushinteger(L, u.get_location().wml_x());
+		lua_pushinteger(L, u.get_location().wml_y());
 		return 2;
 	}
 	return_int_attrib("side", u.side());
@@ -424,8 +424,8 @@ static int impl_unit_set(lua_State *L)
 	}
 	if(!lu->on_map()) {
 		map_location loc = u.get_location();
-		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
-		modify_int_attrib("y", loc.y = value - 1; u.set_location(loc));
+		modify_int_attrib("x", loc.set_wml_x(value); u.set_location(loc));
+		modify_int_attrib("y", loc.set_wml_y(value); u.set_location(loc));
 	}
 
 	std::string err_msg = "unknown modifiable property of unit: ";

@@ -967,7 +967,7 @@ void synced_command_result::do_execute()
 
 	std::stringstream s;
 	if (location_ != map_location::null_location()){
-		s << "local x1 = " << location_.x << " local y1 = " << location_.y << " ";
+		s << "local x1 = " << location_.wml_x() << " local y1 = " << location_.wml_y() << " ";
 	}
 	s << lua_code_;
 

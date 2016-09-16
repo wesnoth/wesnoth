@@ -17,6 +17,7 @@
 #define VARIABLE_H_INCLUDED
 
 #include "config.hpp"
+#include "map/location.hpp"
 
 #include <utility>
 
@@ -235,11 +236,11 @@ private:
 class scoped_xy_unit : public scoped_wml_variable
 {
 public:
-	scoped_xy_unit(const std::string& var_name, const int x, const int y, const unit_map& umap)
-		: scoped_wml_variable(var_name), x_(x), y_(y), umap_(umap) {}
+	scoped_xy_unit(const std::string& var_name, map_location loc, const unit_map& umap)
+		: scoped_wml_variable(var_name), loc_(loc), umap_(umap) {}
 	void activate();
 private:
-	const int x_, y_;
+	const map_location loc_;
 	const unit_map& umap_;
 };
 

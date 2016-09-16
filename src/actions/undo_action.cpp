@@ -17,8 +17,8 @@ undo_event::undo_event(const config& cmds, const game_events::queued_event& ctx)
 	, data(ctx.data)
 	, loc1(ctx.loc1)
 	, loc2(ctx.loc2)
-	, filter_loc1(ctx.loc1.filter_x(), ctx.loc1.filter_y())
-	, filter_loc2(ctx.loc2.filter_x(), ctx.loc2.filter_y())
+	, filter_loc1(ctx.loc1.filter_loc())
+	, filter_loc2(ctx.loc2.filter_loc())
 	, uid1(), uid2()
 {
 	unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
@@ -35,10 +35,10 @@ undo_event::undo_event(const config& cmds, const game_events::queued_event& ctx)
 undo_event::undo_event(const config& first, const config& second, const config& weapons, const config& cmds)
 	: commands(cmds)
 	, data(weapons)
-	, loc1(first["x"], first["y"])
-	, loc2(second["x"], second["y"])
-	, filter_loc1(first["filter_x"], first["filter_y"])
-	, filter_loc2(second["filter_x"], second["filter_y"])
+	, loc1(first["x"], first["y"], wml_loc())
+	, loc2(second["x"], second["y"], wml_loc())
+	, filter_loc1(first["filter_x"], first["filter_y"], wml_loc())
+	, filter_loc2(second["filter_x"], second["filter_y"], wml_loc())
 	, uid1(first["underlying_id"])
 	, uid2(second["underlying_id"])
 	, id1(first["id"])
@@ -89,37 +89,35 @@ namespace {
 		config::attribute_value& x2 = resources::gamedata->get_variable("x2");
 		config::attribute_value& y2 = resources::gamedata->get_variable("y2");
 		int oldx1 = x1, oldy1 = y1, oldx2 = x2, oldy2 = y2;
-		x1 = e.filter_loc1.x + 1; y1 = e.filter_loc1.y + 1;
-		x2 = e.filter_loc2.x + 1; y2 = e.filter_loc2.y + 1;
+		x1 = e.filter_loc1.wml_x(); y1 = e.filter_loc1.wml_y();
+		x2 = e.filter_loc2.wml_x(); y2 = e.filter_loc2.wml_y();
 
-		int realx1 = 0, realy1 = 0, realx2 = 0, realy2 = 0;
+		map_location real1, real2;
 		std::unique_ptr<scoped_xy_unit> u1, u2;
 		if(unit_ptr who = get_unit(e.uid1, e.id1)) {
-			realx1 = who->get_location().x;
-			realy1 = who->get_location().y;
+			real1 = who->get_location();
 			who->set_location(e.loc1);
-			u1.reset(new scoped_xy_unit("unit", realx1, realy1, *resources::units));
+			u1.reset(new scoped_xy_unit("unit", real1, *resources::units));
 		}
 		if(unit_ptr who = get_unit(e.uid2, e.id2)) {
-			realx2 = who->get_location().x;
-			realy2 = who->get_location().y;
+			real2 = who->get_location();
 			who->set_location(e.loc2);
-			u2.reset(new scoped_xy_unit("unit", realx2, realy2, *resources::units));
+			u2.reset(new scoped_xy_unit("unit", real2, *resources::units));
 		}
 
 		scoped_weapon_info w1("weapon", e.data.child("first"));
 		scoped_weapon_info w2("second_weapon", e.data.child("second"));
 
-		game_events::queued_event q(tag, "", map_location(x1, y1), map_location(x2, y2), e.data);
+		game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
 
 		if(u1) {
 			unit_ptr who = get_unit(e.uid1, e.id1);
-			who->set_location(map_location(realx1, realy1));
+			who->set_location(map_location(real1));
 		}
 		if(u2) {
 			unit_ptr who = get_unit(e.uid2, e.id2);
-			who->set_location(map_location(realx2, realy2));
+			who->set_location(map_location(real2));
 		}
 
 		x1 = oldx1; y1 = oldy1;
@@ -171,19 +169,19 @@ void undo_action::write_event_vector(const event_vector& vec, config& cfg, const
 		entry.add_child("filter_weapons", evt.data);
 		entry.add_child("command", evt.commands);
 		// First location
-		first["filter_x"] = evt.filter_loc1.x;
-		first["filter_y"] = evt.filter_loc1.y;
+		first["filter_x"] = evt.filter_loc1.wml_x();
+		first["filter_y"] = evt.filter_loc1.wml_y();
 		first["underlying_id"] = evt.uid1;
 		first["id"] = evt.id1;
-		first["x"] = evt.loc1.x;
-		first["y"] = evt.loc1.y;
+		first["x"] = evt.loc1.wml_x();
+		first["y"] = evt.loc1.wml_y();
 		// Second location
-		second["filter_x"] = evt.filter_loc2.x;
-		second["filter_y"] = evt.filter_loc2.y;
+		second["filter_x"] = evt.filter_loc2.wml_x();
+		second["filter_y"] = evt.filter_loc2.wml_y();
 		second["underlying_id"] = evt.uid2;
 		second["id"] = evt.id2;
-		second["x"] = evt.loc2.x;
-		second["y"] = evt.loc2.y;
+		second["x"] = evt.loc2.wml_x();
+		second["y"] = evt.loc2.wml_y();
 	}
 }
 

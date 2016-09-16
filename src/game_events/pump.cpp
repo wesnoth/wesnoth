@@ -275,8 +275,8 @@ namespace { // Support functions
 			return false;
 
 		unit_map *units = resources::units;
-		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
-		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
+		scoped_xy_unit first_unit("unit", ev.loc1, *units);
+		scoped_xy_unit second_unit("second_unit", ev.loc2, *units);
 		scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 		scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 
@@ -546,10 +546,10 @@ bool t_pump::operator()()
 
 		assert(impl_->my_manager);
 
-		resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
-		resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
-		resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
-		resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+		resources::gamedata->get_variable("x1") = ev.loc1.filter_loc().wml_x();
+		resources::gamedata->get_variable("y1") = ev.loc1.filter_loc().wml_y();
+		resources::gamedata->get_variable("x2") = ev.loc2.filter_loc().wml_x();
+		resources::gamedata->get_variable("y2") = ev.loc2.filter_loc().wml_y();
 
 		if ( event_id.empty() ) {
 

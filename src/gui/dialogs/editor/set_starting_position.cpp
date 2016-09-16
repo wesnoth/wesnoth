@@ -100,8 +100,8 @@ void teditor_set_starting_position::pre_show(twindow& window)
 		data.emplace("player", column);
 
 		if(player_pos.valid()) {
-			column["label"] = (formatter() << "(" << player_pos.x + 1 << ", "
-										   << player_pos.y + 1 << ")").str();
+			column["label"] = (formatter() << "(" << player_pos.wml_x() << ", "
+										   << player_pos.wml_y() << ")").str();
 			data.emplace("location", column);
 		}
 

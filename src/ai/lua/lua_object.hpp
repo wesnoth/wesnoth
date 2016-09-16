@@ -183,7 +183,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 		lua_rawget(L, -2);
 		int value = lua_tointeger(L, -1);
 
-		map_location ml(x - 1, y - 1);
+		map_location ml(x, y, wml_loc());
 
 		*tg = target(ml, value, type);
 	}

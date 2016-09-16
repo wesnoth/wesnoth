@@ -1046,8 +1046,8 @@ int game_lua_kernel::intf_get_mouseover_tile(lua_State *L)
 
 	const map_location &loc = game_display_->mouseover_hex();
 	if (!board().map().on_board(loc)) return 0;
-	lua_pushinteger(L, loc.x + 1);
-	lua_pushinteger(L, loc.y + 1);
+	lua_pushinteger(L, loc.wml_x());
+	lua_pushinteger(L, loc.wml_y());
 	return 2;
 }
 
@@ -1064,8 +1064,8 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 
 	const map_location &loc = game_display_->selected_hex();
 	if (!board().map().on_board(loc)) return 0;
-	lua_pushinteger(L, loc.x + 1);
-	lua_pushinteger(L, loc.y + 1);
+	lua_pushinteger(L, loc.wml_x());
+	lua_pushinteger(L, loc.wml_y());
 	return 2;
 }
 
@@ -1223,15 +1223,15 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 			cfg.add_child("second_weapon", weapon);
 		}
 		if (ev.loc1.valid()) {
-			cfg["x1"] = ev.loc1.filter_x() + 1;
-			cfg["y1"] = ev.loc1.filter_y() + 1;
+			cfg["x1"] = ev.loc1.filter_loc().wml_x();
+			cfg["y1"] = ev.loc1.filter_loc().wml_y();
 			// The position of the unit involved in this event, currently the only case where this is different from x1/y1 are enter/exit_hex events
-			cfg["unit_x"] = ev.loc1.x + 1;
-			cfg["unit_y"] = ev.loc1.y + 1;
+			cfg["unit_x"] = ev.loc1.wml_x();
+			cfg["unit_y"] = ev.loc1.wml_y();
 		}
 		if (ev.loc2.valid()) {
-			cfg["x2"] = ev.loc2.filter_x() + 1;
-			cfg["y2"] = ev.loc2.filter_y() + 1;
+			cfg["x2"] = ev.loc2.filter_loc().wml_x();
+			cfg["y2"] = ev.loc2.filter_loc().wml_y();
 		}
 		luaW_pushconfig(L, cfg);
 		return 1;
@@ -1503,9 +1503,9 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	for (int i = 0; i < nb; ++i)
 	{
 		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, res.steps[i].x + 1);
+		lua_pushinteger(L, res.steps[i].wml_x());
 		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, res.steps[i].y + 1);
+		lua_pushinteger(L, res.steps[i].wml_y());
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, i + 1);
 	}
@@ -1581,9 +1581,9 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	{
 		pathfind::paths::step &s = res.destinations[i];
 		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, s.curr.x + 1);
+		lua_pushinteger(L, s.curr.wml_x());
 		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, s.curr.y + 1);
+		lua_pushinteger(L, s.curr.wml_y());
 		lua_rawseti(L, -2, 2);
 		lua_pushinteger(L, s.move_left);
 		lua_rawseti(L, -2, 3);
@@ -1793,10 +1793,10 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	{
 		lua_createtable(L, 4, 0);
 
-		lua_pushinteger(L, loc.x + 1);
+		lua_pushinteger(L, loc.wml_x());
 		lua_rawseti(L, -2, 1);
 
-		lua_pushinteger(L, loc.y + 1);
+		lua_pushinteger(L, loc.wml_y());
 		lua_rawseti(L, -2, 2);
 
 		lua_pushinteger(L, cost_map.get_pair_at(loc.x, loc.y).first);
@@ -1960,8 +1960,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	if (lua_isnumber(L, 1)) {
 		// Since this form is deprecated, I didn't bother updating it to luaW_tolocation.
 		unit_arg = 3;
-		loc.x = lua_tointeger(L, 1) - 1;
-		loc.y = luaL_checkinteger(L, 2) - 1;
+		loc.set_wml_x(lua_tointeger(L, 1));
+		loc.set_wml_y(luaL_checkinteger(L, 2));
 		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 1, "invalid location");
 		}
@@ -1990,10 +1990,11 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, unit_arg, vcfg);
 		if (unit_arg == 1 && !map().on_board(loc)) {
-			loc.x = cfg["x"] - 1;
-			loc.y = cfg["y"] - 1;
-			if (!map().on_board(loc))
+			loc.set_wml_x(cfg["x"]);
+			loc.set_wml_y(cfg["y"]);
+			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 2, "invalid location");
+			}
 		} else if (unit_arg != 1) {
 			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
 		}
@@ -2044,8 +2045,8 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 		}
 	} else if (!lua_isnoneornil(L, 1)) {
 		config cfg = luaW_checkconfig(L, 1);
-		loc.x = cfg["x"] - 1;
-		loc.y = cfg["y"] - 1;
+		loc.set_wml_x(cfg["x"]);
+		loc.set_wml_y(cfg["y"]);
 		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 1, "invalid location");
 		}
@@ -2158,8 +2159,8 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 	map_location res = find_vacant_tile(loc, pathfind::VACANT_ANY, u.get());
 
 	if (!res.valid()) return 0;
-	lua_pushinteger(L, res.x + 1);
-	lua_pushinteger(L, res.y + 1);
+	lua_pushinteger(L, res.wml_x());
+	lua_pushinteger(L, res.wml_y());
 	return 2;
 }
 
@@ -2724,9 +2725,9 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 	for (map_location const &loc : res)
 	{
 		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, loc.x + 1);
+		lua_pushinteger(L, loc.wml_x());
 		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, loc.y + 1);
+		lua_pushinteger(L, loc.wml_y());
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, i);
 		++i;
@@ -2752,9 +2753,9 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
 		bool matches = terrain_filter(filter, &fc).match(*it);
 		if (matches) {
 			lua_createtable(L, 2, 0);
-			lua_pushinteger(L, it->x + 1);
+			lua_pushinteger(L, it->wml_x());
 			lua_rawseti(L, -2, 1);
-			lua_pushinteger(L, it->y + 1);
+			lua_pushinteger(L, it->wml_y());
 			lua_rawseti(L, -2, 2);
 			lua_rawseti(L, -2, i);
 			++i;
@@ -4649,8 +4650,8 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 */
 bool game_lua_kernel::run_filter(char const *name, const map_location& l)
 {
-	lua_pushinteger(mState, l.x + 1);
-	lua_pushinteger(mState, l.y + 1);
+	lua_pushinteger(mState, l.wml_x());
+	lua_pushinteger(mState, l.wml_y());
 	return run_filter(name, 2);
 }
 /**
@@ -4776,8 +4777,8 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_move")) {
 		return;
 	}
-	lua_push(L, loc.x + 1);
-	lua_push(L, loc.y + 1);
+	lua_push(L, loc.wml_x());
+	lua_push(L, loc.wml_y());
 	luaW_pcall(L, 2, 0, false);
 	return;
 }
@@ -4789,8 +4790,8 @@ void game_lua_kernel::select_hex_callback(const map_location& loc)
 	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_action")) {
 		return;
 	}
-	lua_push(L, loc.x + 1);
-	lua_push(L, loc.y + 1);
+	lua_push(L, loc.wml_x());
+	lua_push(L, loc.wml_y());
 	luaW_pcall(L, 2, 0, false);
 	return;
 }

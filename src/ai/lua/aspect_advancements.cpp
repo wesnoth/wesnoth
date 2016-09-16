@@ -76,8 +76,8 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	}
 
 	const std::string& unit_id = (*unit).id();
-	const int unit_x = (*unit).get_location().x + 1;
-	const int unit_y = (*unit).get_location().y + 1;
+	const int unit_x = (*unit).get_location().wml_x();
+	const int unit_y = (*unit).get_location().wml_y();
 
 	LOG_LUA << "Entering unit_advancements_aspect::get_advancements() in instance " << this << " with unit " << unit_id <<  " on (x,y) = (" << unit_x << ", " << unit_y << ")\n";
 

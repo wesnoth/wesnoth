@@ -312,9 +312,9 @@ public:
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
-	bool clear_shroud(const map_location& loc) { return shroud_.clear(loc.x+1,loc.y+1); }
-	void place_shroud(const map_location& loc) { shroud_.place(loc.x+1,loc.y+1); }
-	bool clear_fog(const map_location& loc) { return fog_.clear(loc.x+1,loc.y+1); }
+	bool clear_shroud(const map_location& loc) { return shroud_.clear(loc.wml_x(),loc.wml_y()); }
+	void place_shroud(const map_location& loc) { shroud_.place(loc.wml_x(),loc.wml_y()); }
+	bool clear_fog(const map_location& loc) { return fog_.clear(loc.wml_x(),loc.wml_y()); }
 	void reshroud() { shroud_.reset(); }
 	void refog() { fog_.reset(); }
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }

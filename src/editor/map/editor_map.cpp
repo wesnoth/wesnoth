@@ -159,8 +159,8 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 			label = pair.first;
 		}
 
-		disp.labels().set_label(map_location(pair.second.x, pair.second.y), label);
-		label_locs.insert(map_location(pair.second.x, pair.second.y));
+		disp.labels().set_label(pair.second, label);
+		label_locs.insert(pair.second);
 	}
 	return label_locs;
 }
@@ -259,7 +259,7 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	// fix the starting positions
 	if(x_offset || y_offset) {
 		for (auto it = starting_positions_.left.begin(); it != starting_positions_.left.end(); ++it) {
-			starting_positions_.left.modify_data(it, [=](t_translation::coordinate & loc) { loc.x -= x_offset; loc.y -= y_offset;});
+			starting_positions_.left.modify_data(it, [=](t_translation::coordinate & loc) { loc.add(-x_offset, -y_offset); });
 		}
 	}
 	sanity_check();

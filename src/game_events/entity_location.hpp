@@ -36,8 +36,7 @@ namespace game_events
 		explicit entity_location(const unit &);
 		entity_location(const unit &u, const map_location &filter_loc);
 
-		int filter_x() const { return filter_loc_.x; }
-		int filter_y() const { return filter_loc_.y; }
+		const map_location& filter_loc() const { return filter_loc_;  }
 		bool matches_unit(const unit_map::const_iterator & un_it) const;
 		bool matches_unit_filter(const unit_map::const_iterator & un_it,
 		                         const vconfig & filter) const;
