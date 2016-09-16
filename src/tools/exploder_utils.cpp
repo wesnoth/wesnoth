@@ -15,7 +15,6 @@
 #include "exploder_utils.hpp"
 #include "game_config.hpp"
 #include "serialization/string_utils.hpp"
-#include <boost/shared_array.hpp>
 #include <cstdio> //for FILE
 #include <memory>
 #include <png.h>
@@ -212,12 +211,12 @@ void save_image(surface surf, const std::string &filename)
 	//converts the data to the RGBA format. We cannot pass SDL data
 	//directly to the png lib, even if we know its pixel format, because of
 	//endianness problems.
-	boost::shared_array<rgba> rgba_data(new rgba[surf->w * surf->h]);
+	std::unique_ptr<rgba[]> rgba_data(new rgba[surf->w * surf->h]);
 
 	Uint32 *surf_data = lock.pixels();
 	int pos = 0;
 	for(int y = 0; y < surf->h; ++y) {
-		row_pointers[y] = reinterpret_cast<png_byte*>(rgba_data.get() + pos);
+		row_pointers[y] = reinterpret_cast<png_byte*>(&rgba_data[pos]);
 		for(int x = 0; x < surf->w; ++x) {
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*surf_data, surf->format, &red, &green, &blue, &alpha);
