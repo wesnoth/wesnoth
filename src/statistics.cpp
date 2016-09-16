@@ -536,7 +536,6 @@ void un_recruit_unit(const unit& u)
 int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhaps in undo.cpp
 {					// but I'm too lazy to do it at the moment
 	stats& s = get_stats(get_team_save_id(u));
-	s.recalls[u.type_id()]--;
 	return u.recall_cost();
 }
 
