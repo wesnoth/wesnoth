@@ -234,7 +234,6 @@ namespace
 }
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location loc)
 {
-	bool border = true;
 	int xpos = loc.x;
 	int ypos = loc.y;
 	//const config::const_child_itors &rules = rules_cfg.child_range("rule");
@@ -252,13 +251,11 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 		rules[i].use_old_ = cfg["use_old"].to_bool();
 		rules[i].replace_if_failed_ = cfg["replace_if_failed"].to_bool();
 	}
-	
-	int actual_border = (m.border_size() == border_size()) && border ? border_size() : 0;
 
-	const int xstart = std::max<int>(-actual_border, -xpos - actual_border);
-	const int ystart = std::max<int>(-actual_border, -ypos - actual_border - ((xpos & 1) ? 1 : 0));
-	const int xend = std::min<int>(m.w() + actual_border, w() + actual_border - xpos);
-	const int yend = std::min<int>(m.h() + actual_border, h() + actual_border - ypos);
+	const int xstart = std::max<int>(-border_size(), -xpos - border_size());
+	const int ystart = std::max<int>(-border_size(), -ypos - border_size() - ((xpos & 1) ? 1 : 0));
+	const int xend = std::min<int>(m.w() + border_size(), w() + border_size() - xpos);
+	const int yend = std::min<int>(m.h() + border_size(), h() + border_size() - ypos);
 
 	for(int x1 = xstart; x1 < xend; ++x1) {
 		for(int y1 = ystart; y1 < yend; ++y1) {
