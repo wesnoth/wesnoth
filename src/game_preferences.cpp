@@ -1167,17 +1167,13 @@ static void encounter_recallable_units(const std::vector<team>& teams){
 
 void encounter_map_terrain(const gamemap& map)
 {
-	//TODO shouldn't this include the border locations?
-	for (int map_x = 0; map_x < map.w(); ++map_x) {
-		for (int map_y = 0; map_y < map.h(); ++map_y) {
-			const t_translation::t_terrain t = map.get_terrain(map_location(map_x, map_y));
+	map.for_each_loc([&](const map_location& loc) {
+		const t_translation::t_terrain t = map.get_terrain(loc);
+		preferences::encountered_terrains().insert(t);
+		for (t_translation::t_terrain t : map.underlying_union_terrain(loc)) {
 			preferences::encountered_terrains().insert(t);
-			const t_translation::t_list& underlaying_list = map.underlying_union_terrain(map_location(map_x, map_y));
-			for (std::vector<t_translation::t_terrain>::const_iterator ut = underlaying_list.begin(); ut != underlaying_list.end(); ++ut) {
-				preferences::encountered_terrains().insert(*ut);
-			};
 		}
-	}
+	});
 }
 
 void encounter_all_content(const game_board & gameboard_) {
