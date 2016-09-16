@@ -34,6 +34,7 @@
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "log.hpp"
+#include "map/map.hpp"
 #include "map/exception.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer.hpp"
@@ -156,8 +157,8 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 	if (persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level)||
 			state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST))
 	{
-		gamemap map = playcontroller.get_map_const();
-		tod_manager tod = playcontroller.get_tod_manager_const();
+		const gamemap& map = playcontroller.get_map_const();
+		const tod_manager& tod = playcontroller.get_tod_manager_const();
 		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
 		for (team &t : teams)
 		{

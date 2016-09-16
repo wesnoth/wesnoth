@@ -15,12 +15,12 @@
 #define MINIMAP_HPP_INCLUDED
 
 #include <cstddef>
-#include "map/map.hpp"
 
 class gamemap;
 struct surface;
 class team;
 struct map_location;
+class gamemap;
 
 #ifdef SDL_GPU
 class CVideo;

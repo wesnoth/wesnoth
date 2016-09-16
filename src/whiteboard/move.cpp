@@ -29,6 +29,7 @@
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_end_exceptions.hpp"
+#include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"

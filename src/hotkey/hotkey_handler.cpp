@@ -24,6 +24,7 @@
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "map/map.hpp"
 #include "play_controller.hpp"
 #include "preferences_display.hpp"
 #include "savegame.hpp"

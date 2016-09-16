@@ -23,6 +23,7 @@
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
+#include "map/map.hpp"
 #include "save_index.hpp"
 #include "gui/dialogs/message.hpp"
 #include "resources.hpp"
