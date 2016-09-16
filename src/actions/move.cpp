@@ -453,12 +453,6 @@ namespace { // Private helpers for move_unit()
 		if ( blocking_unit == resources::units->end() )
 			return false;
 
-		if ( !tiles_adjacent(hex, prev_hex) ) {
-			// Cannot teleport to an occupied hex.
-			teleport_failed_ = true;
-			return true;
-		}
-
 		if ( current_team_->is_enemy(blocking_unit->side()) ) {
 			// Trying to go through an enemy.
 			blocked_loc_ = hex;
