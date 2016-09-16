@@ -268,7 +268,7 @@ editor_action_apply_mask* editor_action_apply_mask::clone() const
 }
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().overlay(mask_, config(), 0, 0, false);
+	mc.get_map().overlay(mask_, config(), {0, 0});
 	mc.set_needs_terrain_rebuild();
 }
 
