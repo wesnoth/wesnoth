@@ -204,6 +204,27 @@ public:
 
 	using tstarting_positions = t_translation::tstarting_positions;
 	const tstarting_positions& special_locations() const { return starting_positions_; }
+
+	template<typename F>
+	void for_each_loc(const F& f) const
+	{
+		for (int x = -border_size_; x < w() + border_size_; ++x) {
+			for (int y = -border_size_; y < h() + border_size_; ++y) {
+				f({ x, y });
+			}
+		}
+	}
+	//Doesn't include border.
+	template<typename F>
+	void for_each_walkable_loc(const F& f) const
+	{
+		for (int x = 0; x < w(); ++x) {
+			for (int y = 0; y < h(); ++y) {
+				f({ x, y });
+			}
+		}
+	}
+
 protected:
 	t_translation::t_map tiles_;
 
