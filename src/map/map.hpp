@@ -109,13 +109,19 @@ public:
 	int border_size() const { return border_size_; }
 
 	/** Real width of the map, including borders. */
-	int total_width()  const { return total_width_; }
+	int total_width()  const { return tiles_.w; }
 
 	/** Real height of the map, including borders */
-	int total_height() const { return total_height_; }
+	int total_height() const { return tiles_.h; }
 
 	const t_translation::t_terrain operator[](const map_location& loc) const
-		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
+	{
+		return tiles_.get(loc.x + border_size_, loc.y + border_size_);
+	}
+	t_translation::t_terrain& operator[](const map_location& loc)
+	{
+		return tiles_.get(loc.x + border_size_, loc.y + border_size_);
+	}
 
 	/**
 	 * Looks up terrain at a particular location.
@@ -263,10 +269,6 @@ protected:
 	/** Sizes of the map area. */
 	int w_;
 	int h_;
-
-	/** Sizes of the map including the borders. */
-	int total_width_;
-	int total_height_;
 
 private:
 	/** The size of the border around the map. */
