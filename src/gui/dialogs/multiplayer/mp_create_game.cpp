@@ -36,6 +36,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
+#include "gui/widgets/status_label_helper.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -281,6 +282,19 @@ void tmp_create_game::pre_show(twindow& window)
 	rfm_menu_button.connect_click_handler(std::bind(&tmp_create_game::on_random_faction_mode_select, this, std::ref(window)));
 
 	on_random_faction_mode_select(window);
+
+	//
+	// Set up the setting status labels
+	//
+	bind_status_label<tslider>(window, turns_->id());
+	bind_status_label<tslider>(window, gold_->id());
+	bind_status_label<tslider>(window, support_->id());
+	bind_status_label<tslider>(window, experience_->id());
+
+	bind_status_label<tslider>(window, init_turn_limit_->id());
+	bind_status_label<tslider>(window, turn_bonus_->id());
+	bind_status_label<tslider>(window, reservior_->id());
+	bind_status_label<tslider>(window, action_bonus_->id());
 
 	//
 	// Set up tab control
@@ -741,7 +755,7 @@ void tmp_create_game::post_show(twindow& window)
 
 			return;
 		}
-	
+
 		preferences::set_modifications(create_engine_.active_mods());
 		preferences::set_level_type(create_engine_.current_level_type().v);
 		preferences::set_level(create_engine_.current_level().id());
