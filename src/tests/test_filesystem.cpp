@@ -190,6 +190,27 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 	BOOST_CHECK( get_wml_location("why_would_anyone_ever_name_a_file_like_this").empty() );
 }
 
+BOOST_AUTO_TEST_CASE( test_fs_search )
+{
+	const std::string& userdata = get_user_data_dir();
+
+	BOOST_CHECK_EQUAL( nearest_extant_parent(userdata + "/THIS_DOES_NOT_EXIST/foo/bar"), userdata );
+
+	BOOST_CHECK_EQUAL( nearest_extant_parent(gamedata + "/THIS_DOES_NOT_EXIST_EITHER/foo"), gamedata );
+	BOOST_CHECK_EQUAL( nearest_extant_parent(gamedata + "/data/_main.cfg"), gamedata + "/data" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent(gamedata + "/data/core/THIS_DOES_NOT_EXIST/test"), gamedata + "/data/core" );
+
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/THIS_HOPEFULLY_DOES_NOT_EXIST"), "/" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST/foo/bar/."), "/bin" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST/foo"), "/bin" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST"), "/bin" );
+	// Directories that don't exist can't have a .. entry.
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST/.."), "/bin" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/."), "/bin" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/./../bin/././"), "/bin" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/./../././"), "/" );
+}
+
 BOOST_AUTO_TEST_CASE( test_fs_fluff )
 {
 	BOOST_CHECK( ends_with("foobarbazbat", "bazbat") );
