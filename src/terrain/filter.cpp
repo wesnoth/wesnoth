@@ -101,6 +101,10 @@ namespace {
 
 bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
 {
+	if (!this->fc_->get_disp_context().map().on_board_with_border(loc)) {
+		return false;
+	}
+
 	std::string lua_function = cfg_["lua_function"];
 	if (!lua_function.empty() && fc_->get_lua_kernel()) {
 		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc)) {
