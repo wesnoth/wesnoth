@@ -71,11 +71,10 @@ static void parse_about_tags(const config& cfg, std::stringstream& ss)
 
 void tend_credits::pre_show(twindow& window)
 {
+	timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
+
 	// Delay a little before beginning the scrolling
-	add_timer(3000, [this](size_t) {
-		timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
-		last_scroll_ = SDL_GetTicks();
-	});
+	last_scroll_ = SDL_GetTicks() + 3000;
 
 	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
 
@@ -129,6 +128,10 @@ void tend_credits::pre_show(twindow& window)
 void tend_credits::timer_callback()
 {
 	uint32_t now = SDL_GetTicks();
+	if(last_scroll_ > now) {
+		return;
+	}
+
 	uint32_t missed_time = now - last_scroll_;
 
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
