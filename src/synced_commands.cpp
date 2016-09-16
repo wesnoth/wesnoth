@@ -30,6 +30,7 @@
 #include "game_preferences.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
+#include "map/map.hpp"
 #include "units/helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"

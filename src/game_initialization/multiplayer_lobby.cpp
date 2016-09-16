@@ -24,6 +24,7 @@
 #include "game_preferences.hpp"
 #include "lobby_preferences.hpp"
 #include "map/exception.hpp"
+#include "map/map.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"

@@ -35,6 +35,7 @@
 #include "hotkey/hotkey_handler_sp.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
+#include "map/map.hpp"
 #include "marked-up_text.hpp"
 #include "playturn.hpp"
 #include "random_new_deterministic.hpp"
