@@ -486,7 +486,7 @@ bool luaW_getmetafield(lua_State *L, int idx, const char* key)
 	if(n >= 2 && key[0] == '_' && key[1] == '_') {
 		return false;
 	}
-	return luaL_getmetafield(L, idx, key);
+	return luaL_getmetafield(L, idx, key) != 0;
 }
 
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
