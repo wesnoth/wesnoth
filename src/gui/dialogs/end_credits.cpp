@@ -54,17 +54,17 @@ tend_credits::~tend_credits()
 	}
 }
 
-static void parse_about_tags(const config& cfg, std::stringstream& str)
+static void parse_about_tags(const config& cfg, std::stringstream& ss)
 {
 	for(const auto& about : cfg.child_range("about")) {
 		if(!about.has_child("entry")) {
 			continue;
 		}
 
-		str << "\n" << "<span size='x-large'>" << about["title"] << "</span>" << "\n";
+		ss << "\n" << "<span size='x-large'>" << about["title"] << "</span>" << "\n";
 
 		for(const auto& entry : about.child_range("entry")) {
-			str << entry["name"] << "\n";
+			ss << entry["name"] << "\n";
 		}
 	}
 }
@@ -79,27 +79,26 @@ void tend_credits::pre_show(twindow& window)
 
 	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
 
-	std::stringstream str;
-	std::stringstream focus_str;
+	std::stringstream ss;
+	std::stringstream focus_ss;
 
 	const config& credits_config = about::get_about_config();
 
 	// First, parse all the toplevel [about] tags
-	parse_about_tags(credits_config, str);
+	parse_about_tags(credits_config, ss);
 
 	// Next, parse all the grouped [about] tags (usually by campaign)
 	for(const auto& group : credits_config.child_range("credits_group")) {
-		std::stringstream& group_stream = (group["id"] == focus_on_) ? focus_str : str;
+		std::stringstream& group_stream = (group["id"] == focus_on_) ? focus_ss : ss;
 
 		group_stream << "\n" << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
 
 		parse_about_tags(group, group_stream);
 	}
 
-	// TODO: this seems an inefficient way to place the focused group first
-	if(!focus_str.str().empty()) {
-		focus_str << str.rdbuf();
-		str = std::move(focus_str);
+	// If a section is focused, move it to the top
+	if(!focus_ss.str().empty()) {
+		focus_ss << ss.rdbuf();
 	}
 
 	// Get the appropriate background images
@@ -115,7 +114,7 @@ void tend_credits::pre_show(twindow& window)
 	text_widget_ = find_widget<tscroll_label>(&window, "text", false, true);
 
 	text_widget_->set_use_markup(true);
-	text_widget_->set_label(str.str());
+	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
 
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
