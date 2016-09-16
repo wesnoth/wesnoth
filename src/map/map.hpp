@@ -179,12 +179,6 @@ public:
 	void set_terrain(const map_location& loc, const t_translation::t_terrain & terrain, const terrain_type_data::tmerge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
 
 	/**
-	 * Returns a list of the frequencies of different terrain types on the map,
-	 * with terrain nearer the center getting weighted higher.
-	 */
-	const std::map<t_translation::t_terrain, size_t>& get_weighted_terrain_frequencies() const;
-
-	/**
 	 * Remove the cached border terrain at loc.
 	 *
 	 * Needed by the editor to make tiles at the border update correctly when
@@ -234,16 +228,7 @@ public:
 protected:
 	t_translation::t_map tiles_;
 
-	/**
-	 * The size of the starting positions array is MAX_PLAYERS + 1,
-	 * because the positions themselves are numbered from 1.
-	 */
 	tstarting_positions starting_positions_;
-
-	/**
-	 * Clears the border cache, needed for the editor
-	 */
-	void clear_border_cache() { borderCache_.clear(); }
 
 private:
 
