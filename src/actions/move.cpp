@@ -445,7 +445,7 @@ namespace { // Private helpers for move_unit()
 	 * @return true if @a hex is obstructed.
 	 */
 	inline bool unit_mover::check_for_obstructing_unit(const map_location & hex,
-	                                                   const map_location & prev_hex)
+	                                                   const map_location & /*prev_hex*/)
 	{
 		const unit_map::const_iterator blocking_unit = resources::units->find(hex);
 
