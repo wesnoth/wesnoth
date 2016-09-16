@@ -15,6 +15,7 @@
 #define MINIMAP_HPP_INCLUDED
 
 #include <cstddef>
+#include <map>
 
 class gamemap;
 struct surface;
