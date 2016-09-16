@@ -313,13 +313,13 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 	LOG_CS << "Reloaded configuration\n";
 
-	sighup_.async_wait(boost::bind(&server::handle_sighup, this, _1, _2));
+	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
 }
 
 void server::flush_cfg()
 {
 	flush_timer_.expires_from_now(std::chrono::minutes(10));
-	flush_timer_.async_wait(boost::bind(&server::handle_flush, this, _1));
+	flush_timer_.async_wait(std::bind(&server::handle_flush, this, _1));
 }
 
 void server::handle_flush(const boost::system::error_code& error)
@@ -408,7 +408,7 @@ void server::send_message(const std::string& msg, socket_ptr sock)
 {
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", msg.c_str());
-	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
 void server::send_error(const std::string& msg, socket_ptr sock)
@@ -416,7 +416,7 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
-	async_send_doc(sock, doc, boost::bind(&server::handle_new_client, this, _1), null_handler);
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
 void server::register_handler(const std::string& cmd, const request_handler& func)
@@ -529,7 +529,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	async_send_doc(req.sock, doc, boost::bind(&server::handle_new_client, this, _1));
+	async_send_doc(req.sock, doc, std::bind(&server::handle_new_client, this, _1));
 }
 
 void server::handle_request_campaign(const server::request& req)
@@ -552,7 +552,7 @@ void server::handle_request_campaign(const server::request& req)
 
 		std::cerr << " size: " << size/1024 << "KiB\n";
 		async_send_file(req.sock, campaign["filename"],
-				boost::bind(&server::handle_new_client, this, _1), null_handler);
+				std::bind(&server::handle_new_client, this, _1), null_handler);
 		// Clients doing upgrades or some other specific thing shouldn't bump
 		// the downloads count. Default to true for compatibility with old
 		// clients that won't tell us what they are trying to do.

@@ -16,9 +16,8 @@
 
 #include "log.hpp"
 #include "util.hpp"
+#include "utils/functional.hpp"
 
-#include <boost/bind.hpp>
-#include <boost/make_shared.hpp>
 
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)
@@ -62,13 +61,13 @@ void server_base::start_server()
 		[=](const boost::system::error_code& error, int sig)
 			{ this->handle_sighup(error, sig); });
 #endif
-	sigs_.async_wait(boost::bind(&server_base::handle_termination, this, _1, _2));
+	sigs_.async_wait(std::bind(&server_base::handle_termination, this, _1, _2));
 }
 
 void server_base::serve()
 {
-	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
-	acceptor_.async_accept(*socket, boost::bind(&server_base::accept_connection, this, _1, socket));
+	socket_ptr socket = std::make_shared<boost::asio::ip::tcp::socket>(std::ref(io_service_));
+	acceptor_.async_accept(*socket, std::bind(&server_base::accept_connection, this, _1, socket));
 }
 
 void server_base::accept_connection(const boost::system::error_code& error, socket_ptr socket)
@@ -104,7 +103,7 @@ void server_base::serverside_handshake(socket_ptr socket)
 	boost::shared_array<char> handshake(new char[4]);
 	async_read(
 				*socket, boost::asio::buffer(handshake.get(), 4),
-				boost::bind(&server_base::handle_handshake, this, _1, socket, handshake)
+				std::bind(&server_base::handle_handshake, this, _1, socket, handshake)
 				);
 }
 
