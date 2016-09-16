@@ -112,8 +112,7 @@ gamemap::gamemap(const tdata_cache& tdata, const std::string& data):
 		borderCache_(),
 		terrainFrequencyCache_(),
 		w_(-1),
-		h_(-1),
-		border_size_(default_border)
+		h_(-1)
 {
 	DBG_G << "loading map: '" << data << "'\n";
 
@@ -124,10 +123,8 @@ gamemap::~gamemap()
 {
 }
 
-void gamemap::read(const std::string& data, const bool allow_invalid, int border_size) {
-
-	// Initial stuff
-	border_size_ = border_size;
+void gamemap::read(const std::string& data, const bool allow_invalid)
+{
 	tiles_ = t_translation::t_map();
 	villages_.clear();
 	starting_positions_.clear();
@@ -143,7 +140,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	const std::string& data_only = std::string(data, offset);
 
 	try {
-		tiles_ = t_translation::read_game_map(data_only, starting_positions_, t_translation::coordinate{ border_size_, border_size_ });
+		tiles_ = t_translation::read_game_map(data_only, starting_positions_, t_translation::coordinate{ border_size(), border_size() });
 
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
@@ -152,8 +149,8 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 	}
 
 	// Post processing on the map
-	w_ = total_width() - 2 * border_size_;
-	h_ = total_height() - 2 * border_size_;
+	w_ = total_width() - 2 * border_size();
+	h_ = total_height() - 2 * border_size();
 	//Disabled since there are callcases which pass along a valid map header but empty
 	//map data. Still, loading (and actually applying) an empty map causes problems later on.
 	//Other callcases which need to load a dummy map use completely empty data :(.
@@ -174,10 +171,10 @@ void gamemap::read(const std::string& data, const bool allow_invalid, int border
 			}
 
 			// Is it a village?
-			if(x >= border_size_ && y >= border_size_
-					&& x < total_width()-border_size_  && y < total_height()-border_size_
+			if(x >= border_size() && y >= border_size()
+					&& x < total_width()- border_size() && y < total_height()- border_size()
 					&& tdata_->is_village(tiles_.get(x, y))) {
-				villages_.push_back(map_location(x-border_size_, y-border_size_));
+				villages_.push_back(map_location(x - border_size(), y - border_size()));
 			}
 		}
 	}
@@ -206,15 +203,13 @@ int gamemap::read_header(const std::string& data)
 	config header;
 	::read(header, header_str);
 
-	border_size_ = header["border_size"];
-
 	return header_offset + 2;
 }
 
 
 std::string gamemap::write() const
 {
-	return t_translation::write_game_map(tiles_, starting_positions_, t_translation::coordinate{ border_size_, border_size_ }) + "\n";
+	return t_translation::write_game_map(tiles_, starting_positions_, t_translation::coordinate{ border_size(), border_size() }) + "\n";
 }
 namespace
 {
@@ -314,7 +309,7 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 {
 
 	if(on_board_with_border(loc)) {
-		return tiles_[loc.x + border_size_][loc.y + border_size_];
+		return (*this)[loc];
 	}
 
 	if ( loc == map_location::null_location() ) {
@@ -444,8 +439,8 @@ bool gamemap::on_board(const map_location& loc) const
 bool gamemap::on_board_with_border(const map_location& loc) const
 {
 	return !tiles_.data.empty()  &&  // tiles_ is not empty when initialized.
-	       loc.x >= -border_size_  &&  loc.x < w_ + border_size_  &&
-	       loc.y >= -border_size_  &&  loc.y < h_ + border_size_;
+	       loc.x >= -border_size() &&  loc.x < w_ + border_size() &&
+	       loc.y >= -border_size() &&  loc.y < h_ + border_size();
 }
 
 void gamemap::set_terrain(const map_location& loc, const t_translation::t_terrain & terrain, const terrain_type_data::tmerge_mode mode, bool replace_if_failed) {

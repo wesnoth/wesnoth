@@ -80,7 +80,7 @@ public:
 
 	virtual ~gamemap();
 
-	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1);
+	void read(const std::string& data, const bool allow_invalid = true);
 
 	std::string write() const;
 
@@ -94,7 +94,7 @@ public:
 	int h() const { return h_; }
 
 	/** Size of the map border. */
-	int border_size() const { return border_size_; }
+	int border_size() const { return default_border; }
 
 	/** Real width of the map, including borders. */
 	int total_width()  const { return tiles_.w; }
@@ -104,11 +104,11 @@ public:
 
 	const t_translation::t_terrain operator[](const map_location& loc) const
 	{
-		return tiles_.get(loc.x + border_size_, loc.y + border_size_);
+		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
 	t_translation::t_terrain& operator[](const map_location& loc)
 	{
-		return tiles_.get(loc.x + border_size_, loc.y + border_size_);
+		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
 
 	/**
@@ -196,8 +196,8 @@ public:
 	template<typename F>
 	void for_each_loc(const F& f) const
 	{
-		for (int x = -border_size_; x < w() + border_size_; ++x) {
-			for (int y = -border_size_; y < h() + border_size_; ++y) {
+		for (int x = -border_size(); x < w() + border_size(); ++x) {
+			for (int y = -border_size(); y < h() + border_size(); ++y) {
 				f({ x, y });
 			}
 		}
@@ -227,11 +227,6 @@ private:
 	 */
 	int read_header(const std::string& data);
 
-	/** Allows lookup of terrain at a particular location. */
-	//const t_translation::t_list operator[](int index) const
-	//	{ return tiles_[index + border_size_]; }
-
-
 	tdata_cache tdata_;
 	std::vector<map_location> villages_;
 
@@ -242,10 +237,6 @@ protected:
 	/** Sizes of the map area. */
 	int w_;
 	int h_;
-
-private:
-	/** The size of the border around the map. */
-	int border_size_;
 };
 
 #endif
