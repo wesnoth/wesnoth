@@ -189,8 +189,6 @@ public:
 	bool same_size_as(const gamemap& other) const;
 
 protected:
-	t_translation::t_list clone_column(int x, const t_translation::t_terrain & filler);
-
 	//helper functions for resizing
 	void expand_right(int count, const t_translation::t_terrain & filler);
 	void expand_left(int count, const t_translation::t_terrain & filler);

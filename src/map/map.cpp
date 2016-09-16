@@ -500,29 +500,6 @@ void gamemap::set_terrain(const map_location& loc, const t_translation::t_terrai
 	}
 }
 
-const std::map<t_translation::t_terrain, size_t>& gamemap::get_weighted_terrain_frequencies() const
-{
-	if(terrainFrequencyCache_.empty() == false) {
-		return terrainFrequencyCache_;
-	}
-
-	const map_location center(w()/2,h()/2);
-
-	const size_t furthest_distance = distance_between(map_location::ZERO(),center);
-
-	const size_t weight_at_edge = 100;
-	const size_t additional_weight_at_center = 200;
-
-	for(size_t i = 0; i != size_t(w()); ++i) {
-		for(size_t j = 0; j != size_t(h()); ++j) {
-			const size_t distance = distance_between(map_location(i,j),center);
-			terrainFrequencyCache_[tiles_.get(i + border_size_, j)] += weight_at_edge +
-			    (furthest_distance-distance)*additional_weight_at_center;
-		}
-	}
-	return terrainFrequencyCache_;
-}
-
 std::vector<map_location> gamemap::parse_location_range(const std::string &x, const std::string &y,
 	bool with_border) const
 {
