@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "cave_map_generator.hpp"
+#include "config_assign.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
@@ -96,6 +97,12 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	, res_(params.cfg_.child_or_empty("settings"))
 	, rng_() //initialises with rand()
 {
+	res_.add_child("event", config_of
+		("name", "start")
+		("message", config_of
+			("message", "scenario_generation=cave is deprecated and will be removed soon.")
+		)
+	);
 	uint32_t seed = randomseed.get_ptr() ? *randomseed.get_ptr() : seed_rng::next_seed();
 	rng_.seed(seed);
 	LOG_NG << "creating random cave with seed: " << seed << '\n';
