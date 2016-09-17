@@ -15,7 +15,6 @@
 #include "global.hpp"
 #include "map_create.hpp"
 
-#include "generators/cave_map_generator.hpp"
 #include "generators/default_map_generator.hpp"
 #include "generators/lua_map_generator.hpp"
 #include "log.hpp"
@@ -31,8 +30,6 @@ map_generator* create_map_generator(const std::string& name, const config &cfg)
 {
 	if(name == "default" || name == "") {
 		return new default_map_generator(cfg);
-	} else if(name == "cave") {
-		return new cave_map_generator(cfg);
 	} else if(name == "lua") {
 		return new lua_map_generator(cfg);
 	} else {
