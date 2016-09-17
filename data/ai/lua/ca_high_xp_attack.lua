@@ -88,45 +88,48 @@ function ca_attack_highxp:evaluation(cfg, data)
     local attacker_copies = LS.create()
 
     local aggression = ai.get_aggression()
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
     local max_ca_score, max_rating, best_attack = 0, 0
     for _,target_info in ipairs(target_infos) do
         local target = all_units[target_info.ind_target]
         local can_force_level = {}
         local attack_hexes = LS.create()
         for xa,ya in H.adjacent_tiles(target.x, target.y) do
-            local unit_in_way = wesnoth.get_unit(xa, ya)
+            if (not avoid_map:get(xa, ya)) then
+                local unit_in_way = wesnoth.get_unit(xa, ya)
 
-            if unit_in_way then
-                if (unit_in_way.side == wesnoth.current.side) then
-                    local uiw_reach
-                    if reaches:get(unit_in_way.x, unit_in_way.y) then
-                        uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
-                    else
-                        uiw_reach = wesnoth.find_reach(unit_in_way)
-                        reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
-                    end
+                if unit_in_way then
+                    if (unit_in_way.side == wesnoth.current.side) then
+                        local uiw_reach
+                        if reaches:get(unit_in_way.x, unit_in_way.y) then
+                            uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
+                        else
+                            uiw_reach = wesnoth.find_reach(unit_in_way)
+                            reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
+                        end
 
-                    -- Check whether the unit to move out of the way has an unoccupied hex to move to.
-                    -- We do not deal with cases where a unit can move out of the way for a
-                    -- unit that is moving out of the way of the initial unit (etc.).
-                    local can_move = false
-                    for _,uiw_loc in ipairs(uiw_reach) do
-                        -- Unit in the way of the unit in the way
-                        local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
-                        if (not uiw_uiw) then
-                            can_move = true
-                            break
+                        -- Check whether the unit to move out of the way has an unoccupied hex to move to.
+                        -- We do not deal with cases where a unit can move out of the way for a
+                        -- unit that is moving out of the way of the initial unit (etc.).
+                        local can_move = false
+                        for _,uiw_loc in ipairs(uiw_reach) do
+                            -- Unit in the way of the unit in the way
+                            local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
+                            if (not uiw_uiw) then
+                                can_move = true
+                                break
+                            end
+                        end
+                        if (not can_move) then
+                            -- Keep this case as the unit in the way might be a potential attacker
+                            attack_hexes:insert(xa, ya, unit_in_way.id)
+                        else
+                            attack_hexes:insert(xa, ya, 'can_move_away')
                         end
                     end
-                    if (not can_move) then
-                        -- Keep this case as the unit in the way might be a potential attacker
-                        attack_hexes:insert(xa, ya, unit_in_way.id)
-                    else
-                        attack_hexes:insert(xa, ya, 'can_move_away')
-                    end
+                else
+                    attack_hexes:insert(xa, ya, 'empty')
                 end
-            else
-                attack_hexes:insert(xa, ya, 'empty')
             end
         end
 
