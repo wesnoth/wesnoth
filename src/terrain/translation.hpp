@@ -79,11 +79,15 @@ namespace t_translation {
 
 		t_map() = default;
 		t_map(const t_map&) = default;
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 		t_map(t_map&&) = default;
+#endif
 		t_map(int w, int h, t_terrain fill = t_terrain()) : data(w * h, fill), w(w), h(h) {}
 
 		t_map & operator= (const t_map &) = default;
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 		t_map & operator= (t_map &&) = default;
+#endif
 
 		t_terrain& get(int x, int y) { return data[x * h + y]; }
 		const t_terrain& get(int x, int y) const { return data[x * h + y]; }
