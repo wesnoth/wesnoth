@@ -446,6 +446,11 @@ void tgui_definition::load_widget_definitions(
 				.insert(std::make_pair(def->id, def));
 	}
 
+	// The default GUI needs to ensure each widget has a default definition, but non-default GUIs can just fall back to the default definition in the default GUI.
+	if(this->id != "default") {
+		return;
+	}
+
 	utils::string_map symbols;
 	symbols["definition"] = definition_type;
 	symbols["id"] = "default";
@@ -600,18 +605,40 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 			= current_gui->second.control_definition.find(control_type);
 #endif
 
-	ASSERT_LOG(control_definition
-			   != current_gui->second.control_definition.end(),
-			   "Type '" << control_type << "' is unknown.");
+	std::map<std::string, tcontrol_definition_ptr>::const_iterator control;
 
-	std::map<std::string, tcontrol_definition_ptr>::const_iterator control
-			= control_definition->second.find(definition);
+	if(control_definition == current_gui->second.control_definition.end()) {
+		goto fallback;
+	}
+
+	control = control_definition->second.find(definition);
 
 	if(control == control_definition->second.end()) {
-		LOG_GUI_G << "Control: type '" << control_type << "' definition '"
-				  << definition << "' not found, falling back to 'default'.\n";
-		control = control_definition->second.find("default");
-		assert(control != control_definition->second.end());
+	fallback:
+		bool found_fallback = false;
+		if(current_gui != default_gui) {
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+			auto default_control_definition = (control_type == "list")
+					? default_gui->second.control_definition.find("listbox")
+					: default_gui->second.control_definition.find(control_type);
+#else
+			auto default_control_definition = default_gui->second.control_definition.find(control_type);
+#endif
+
+			ASSERT_LOG(default_control_definition != default_gui->second.control_definition.end(),
+					   "Type '" << control_type << "' is unknown.");
+
+			control = default_control_definition->second.find(definition);
+			found_fallback = control != default_control_definition->second.end();
+		}
+		if(!found_fallback) {
+			if(definition != "default") {
+				LOG_GUI_G << "Control: type '" << control_type << "' definition '"
+						  << definition << "' not found, falling back to 'default'.\n";
+				return get_control(control_type, "default");
+			}
+			ERROR_LOG("default definition not found for control " << control_type);
+		}
 	}
 
 	for(std::vector<tresolution_definition_ptr>::const_iterator itor
@@ -643,8 +670,10 @@ get_window_builder(const std::string& type)
 	if(window == current_gui->second.window_types.end()) {
 		if(current_gui != default_gui) {
 			window = default_gui->second.window_types.find(type);
-		}
-		if(window == current_gui->second.window_types.end() || window == default_gui->second.window_types.end()) {
+			if(window == default_gui->second.window_types.end()) {
+				throw twindow_builder_invalid_id();
+			}
+		} else if(window == current_gui->second.window_types.end()) {
 			throw twindow_builder_invalid_id();
 		}
 	}
