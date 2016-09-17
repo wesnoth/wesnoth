@@ -147,7 +147,7 @@ bool teleport_group::always_visible() const {
 }
 
 bool teleport_group::pass_allied_units() const {
-	return cfg_["pass_allied_units"].to_bool(false);
+	return cfg_["pass_allied_units"].to_bool(true);
 }
 
 config teleport_group::to_config() const {
