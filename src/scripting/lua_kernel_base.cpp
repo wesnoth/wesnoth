@@ -33,7 +33,6 @@
 #include "scripting/lua_formula_bridge.hpp"
 #include "scripting/lua_gui2.hpp"
 #include "scripting/lua_map_location_ops.hpp"
-#include "scripting/lua_preferences.hpp"
 #include "scripting/lua_rng.hpp"
 #include "scripting/push_check.hpp"
 
@@ -399,9 +398,6 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	luaL_setfuncs(L, map_callbacks, 0);
 	lua_setfield(L, -2, "map_location");
 	lua_pop(L, 1);
-
-	// Create the preferences table.
-	cmd_log_ << lua_preferences::register_table(L);
 
 	// Add mersenne twister rng wrapper
 	cmd_log_ << "Adding rng tables...\n";

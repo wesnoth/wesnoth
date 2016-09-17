@@ -127,9 +127,6 @@ Version 1.13.5+dev:
      it would produce a new object that did not compare equal to any others.)
    * Lua dialog functions now support the stacked widget and the unit preview pane
    * New wesnoth.show_menu function shows a dropdown menu at the mouse location
-   * New table wesnoth.preferences that gives read-write access to game preferences.
-     The table is not iterable, but you can read and change preferences with
-     predefined names.
    * Lua attack proxy has new read_only field which is true for unit_type attacks
      If true, attempts to change the attack will result in an error.
    * The name field in Lua attack proxy is now writable
