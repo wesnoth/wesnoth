@@ -237,10 +237,15 @@ public:
 	 */
 	bool console_attached() const;
 
+	/**
+	 * Returns whether we own the console we are attached to, if any.
+	 */
+	bool owns_console() const;
+
 private:
 	std::string fn_;
 	std::string cur_path_;
-	bool use_wincon_;
+	bool use_wincon_, created_wincon_;
 
 	enum STREAM_ID {
 		STREAM_STDOUT = 1,
@@ -399,6 +404,11 @@ bool log_file_manager::console_attached() const
 	return GetConsoleWindow() != nullptr;
 }
 
+bool log_file_manager::owns_console() const
+{
+	return created_wincon_;
+}
+
 void log_file_manager::enable_native_console_output()
 {
 	if(use_wincon_) {
@@ -409,8 +419,10 @@ void log_file_manager::enable_native_console_output()
 
 	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
 		LOG_LS << "Attached parent process console.\n";
+		created_wincon_ = false;
 	} else if(AllocConsole()) {
 		LOG_LS << "Allocated own console.\n";
+		created_wincon_ = true;
 	} else {
 		ERR_LS << "Console attachment or allocation failed!\n";
 		return;
@@ -468,6 +480,11 @@ void enable_native_console_output()
 	}
 
 	lfm.reset(new log_file_manager(true));
+}
+
+bool using_own_console()
+{
+	return lfm->owns_console();
 }
 
 void finish_log_file_setup()

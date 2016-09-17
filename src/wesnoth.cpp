@@ -907,6 +907,19 @@ static void restart_process(const std::vector<std::string>& commandline)
 }
 #endif
 
+#ifdef _WIN32
+#define error_exit(res) \
+	do { \
+		if(lg::using_own_console()) { \
+			std::cerr << "Press enter to continue..." << std::endl; \
+			std::cin.get(); \
+		} \
+		return res; \
+	} while(false)
+#else
+#define error_exit(res) return res
+#endif
+
 #if defined(__native_client__) || defined(__APPLE__)
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
@@ -1030,19 +1043,19 @@ int main(int argc, char** argv)
 		safe_exit(res);
 	} catch(boost::program_options::error& e) {
 		std::cerr << "Error in command line: " << e.what() << '\n';
-		return 1;
+		error_exit(1);
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
-		return 1;
+		error_exit(1);
 	} catch(font::manager::error&) {
 		std::cerr << "Could not initialize fonts. Exiting.\n";
-		return 1;
+		error_exit(1);
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
-		return 1;
+		error_exit(1);
 	} catch(gui::button::error&) {
 		std::cerr << "Could not create button: Image could not be found\n";
-		return 1;
+		error_exit(1);
 	} catch(CVideo::quit&) {
 		//just means the game should quit
 	} catch(return_to_play_side_exception&) {
@@ -1052,38 +1065,38 @@ int main(int argc, char** argv)
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
-		return 1;
+		error_exit(1);
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
-		return 1;
+		error_exit(1);
 	} catch(const sdl::texception& e) {
 		std::cerr << e.what();
-		return 1;
+		error_exit(1);
 	} catch(game::error &) {
 		// A message has already been displayed.
-		return 1;
+		error_exit(1);
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
-		return ENOMEM;
+		error_exit(ENOMEM);
 #if !defined(NO_CATCH_AT_GAME_END)
 	} catch(std::exception & e) {
 		// Try to catch unexpected exceptions.
 		std::cerr << "Caught general exception:\n" << e.what() << std::endl;
-		return 1;
+		error_exit(1);
 	} catch(std::string & e) {
 		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
-		return 1;
+		error_exit(1);
 	} catch(const char * e) {
 		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
-		return 1;
+		error_exit(1);
 	} catch(...) {
 		// Ensure that even when we terminate with `throw 42`, the exception
 		// is caught and all destructors are actually called. (Apparently,
 		// some compilers will simply terminate without calling destructors if
 		// the exception isn't caught.)
 		std::cerr << "Caught unspecified general exception. Terminating." << std::endl;
-		return 1;
+		error_exit(1);
 #endif
 	}
 

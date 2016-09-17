@@ -80,6 +80,12 @@ void finish_log_file_setup();
  */
 void enable_native_console_output();
 
+/**
+ * Returns true if a console was allocated by the Wesnoth process.
+ * Returns false if no native console or if it was attached from a parent process.
+ */
+bool using_own_console();
+
 }
 
 #endif
