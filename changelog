@@ -92,6 +92,11 @@ Version 1.13.5+dev:
    * ~ADJUST_ALPHA() image path function now takes a WFL formula. It can access
      the following variables: x, y, width, height, red, green, blue, alpha.
 	 It no longer accepts a percentage (use ~O() for that).
+   * Fixed [rule] in [terrain_mask] ignoring use_old=yes
+   * Fixed filter returning invalid locations if invalid locations were given
+     in a variable that was used with find_in=
+   * Moves cave map generator to lua. scenario_generation=cave is now deprecated and
+     will be removed soon.
 * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
@@ -330,6 +335,8 @@ Version 1.13.5:
    * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
      that only registered users should be allowed to join the game
    * wesnoth now does a stricter check for unit type ids.
+   * In multiplayer,  victory events now fire at the end of the scenario if at least one
+     human player has won, this fixes OOS in mp campaigns.
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
