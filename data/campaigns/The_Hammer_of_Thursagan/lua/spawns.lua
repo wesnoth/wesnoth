@@ -14,6 +14,7 @@ function wml_actions.spawn_units(cfg)
 	for i=1,count do
 		local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
 		if #locs == 0 then locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
+		if #locs == 0 then break end
 
 		local unit_type = helper.rand(types)
 		local loc_i = helper.rand("1.."..#locs)
