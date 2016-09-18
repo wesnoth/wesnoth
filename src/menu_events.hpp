@@ -18,7 +18,6 @@
 
 #include "global.hpp"
 #include "chat_events.hpp"
-#include "floating_textbox.hpp"
 #include "units/map.hpp"
 
 #include <vector>
@@ -36,6 +35,11 @@ namespace events {
 	class mouse_handler;
 }
 
+namespace gui2 {
+	class tfloating_textbox;
+}
+
+class game_display;
 struct fallback_ai_to_human_exception {};
 
 namespace events {
@@ -46,7 +50,7 @@ public:
 		const config& game_config);
 	virtual ~menu_handler();
 
-	gui2::tfloating_textbox* get_textbox();
+	const std::shared_ptr<gui2::tfloating_textbox> get_textbox();
 	void close_textbox();
 	void set_gui(game_display* gui);
 
@@ -130,7 +134,7 @@ private:
 
 	const config& game_config_;
 
-	std::unique_ptr<gui2::tfloating_textbox> textbox_info_;
+	std::shared_ptr<gui2::tfloating_textbox> textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
 };

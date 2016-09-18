@@ -58,6 +58,7 @@
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "floating_textbox.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -115,8 +116,8 @@ unit_map& menu_handler::units() { return gamestate().board_.units_; }
 std::vector<team>& menu_handler::teams() const { return gamestate().board_.teams_; }
 const gamemap& menu_handler::map() { return gamestate().board_.map(); }
 
-gui2::tfloating_textbox* menu_handler::get_textbox(){
-	return textbox_info_.get();
+const std::shared_ptr<gui2::tfloating_textbox> menu_handler::get_textbox(){
+	return textbox_info_;
 }
 
 void menu_handler::close_textbox() {
@@ -225,10 +226,13 @@ void menu_handler::show_help()
 
 void menu_handler::speak()
 {
-	textbox_info_.reset(new gui2::tfloating_textbox(*gui_));
-	textbox_info_->show(gui2::tfloating_textbox::MESSAGE,_("Message:"),
-		has_friends() ? board().is_observer() ? _("Send to observers only") : _("Send to allies only")
-					  : "", preferences::message_private());
+	const std::string check_label = has_friends()
+		? board().is_observer()
+			? _("Send to observers only")
+			: _("Send to allies only")
+		: "";
+	textbox_info_.reset(new gui2::tfloating_textbox(*gui_, gui2::tfloating_textbox::MESSAGE, _("Message:"), check_label, preferences::message_private()));
+	textbox_info_->show(gui_->video());
 }
 
 void menu_handler::whisper()
@@ -957,8 +961,8 @@ void menu_handler::search()
 		msg << " [" << last_search_ << "]";
 	}
 	msg << ':';
-	textbox_info_.reset(new gui2::tfloating_textbox(*gui_));
-	textbox_info_->show(gui2::tfloating_textbox::SEARCH, msg.str());
+	textbox_info_.reset(new gui2::tfloating_textbox(*gui_, gui2::tfloating_textbox::SEARCH, msg.str()));
+	textbox_info_->show(gui_->video());
 }
 
 void menu_handler::do_speak(){
@@ -1921,8 +1925,8 @@ void menu_handler::do_ai_formula(const std::string& str,
 
 void menu_handler::user_command()
 {
-	textbox_info_.reset(new gui2::tfloating_textbox(*gui_));
-	textbox_info_->show(gui2::tfloating_textbox::COMMAND, translation::sgettext("prompt^Command:"));
+	textbox_info_.reset(new gui2::tfloating_textbox(*gui_, gui2::tfloating_textbox::COMMAND, translation::sgettext("prompt^Command:")));
+	textbox_info_->show(gui_->video());
 }
 
 void menu_handler::request_control_change ( int side_num, const std::string& player )
@@ -1956,8 +1960,8 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 	if (!pc_.is_networked_mp()) {
-		textbox_info_.reset(new gui2::tfloating_textbox(*gui_));
-		textbox_info_->show(gui2::tfloating_textbox::AI, translation::sgettext("prompt^Command:"));
+		textbox_info_.reset(new gui2::tfloating_textbox(*gui_, gui2::tfloating_textbox::AI, translation::sgettext("prompt^Command:")));
+		textbox_info_->show(gui_->video());
 	}
 }
 

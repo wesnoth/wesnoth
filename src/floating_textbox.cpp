@@ -15,6 +15,12 @@
 
 #include "global.hpp"
 #include "floating_textbox.hpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/window.hpp"
+#include "gui/dialogs/dialog.hpp"
 
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
@@ -29,20 +35,26 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 namespace gui2 {
-	tfloating_textbox::tfloating_textbox(game_display& gui) :
-		ttext_box(),
-		gui_(gui),
-		check_(nullptr),
-		mode_(NONE),
-		label_string_(),
-		label_(0)
-	{
-		set_definition("transparent");
-		if(!CVideo::get_singleton().faked()) {
-			connect_signal<event::DRAW>(std::bind(&tfloating_textbox::draw, this));
-		}
-	}
 
+	REGISTER_DIALOG(floating_textbox);
+
+	tfloating_textbox::tfloating_textbox(game_display& gui, MODE mode, const std::string& label, const std::string& check_label, bool checked) :
+//		ttext_box(),
+	//	gui_(gui),
+		check_(nullptr),
+		mode_(mode),
+		label_string_(label),
+		check_label_(check_label),
+		initially_checked_(checked),
+		active_(false)
+	{/*
+		set_definition("transparent");
+		CVideo& video = CVideo::get_singleton();
+		if(!video.faked()) {
+			connect_signal<event::DRAW>(std::bind(&tfloating_textbox::draw, this, std::ref(video)));
+		}*/
+	}
+	/*
 	tfloating_textbox::~tfloating_textbox()
 	{
 		if(check_ && mode_ == MESSAGE) {
@@ -51,35 +63,35 @@ namespace gui2 {
 		font::remove_floating_label(label_);
 		gui_.invalidate_all();
 	}
-
-	void tfloating_textbox::draw()
+	
+	void tfloating_textbox::draw(CVideo& video)
 	{
-		surface& frame_buffer = CVideo::get_singleton().getSurface();
+		surface& frame_buffer = video.getSurface();
 		draw_background(frame_buffer, 0, 0);
 		draw_children(frame_buffer, 0, 0);
 		draw_foreground(frame_buffer, 0, 0);
 	}
-
-	void tfloating_textbox::update_location()
+	*/
+	void tfloating_textbox::pre_show(twindow& window)
 	{
+		active_ = true;
+		
+		find_widget<tcontrol>(&window, "label", false).set_label(label_string_);
+		box_ = find_widget<ttext_box>(&window, "box", false, true);
+
+		check_ = find_widget<ttoggle_button>(&window, "mode_toggle", false, true);
+		if(check_label_.empty()) {
+			check_->set_visible(twindow::tvisible::invisible);
+		} else {
+			check_->set_label(check_label_);
+			check_->set_value_bool(initially_checked_);
+		}
+
+		/*
 		const SDL_Rect& area = gui_.map_outside_area();
 		const int border_size = 10;
 		const int check_height = check_ ? check_->get_best_size().y : 0;
 		const int ypos = area.y+area.h-30 - check_height;
-
-		if (label_ != 0)
-			font::remove_floating_label(label_);
-
-		font::floating_label flabel(label_string_);
-		flabel.set_color(font::YELLOW_COLOR);
-		flabel.set_position(area.x + border_size, ypos);
-		flabel.set_alignment(font::LEFT_ALIGN);
-		flabel.set_clip_rect(area);
-
-		label_ = font::add_floating_label(flabel);
-
-		if (label_ == 0)
-			return;
 
 		const SDL_Rect& label_area = font::get_floating_label_rect(label_);
 		const int textbox_width = area.w - label_area.w - border_size*3;
@@ -99,9 +111,9 @@ namespace gui2 {
 			tpoint size = check_->get_best_size();
 			check_->set_origin(origin);
 			check_->place(origin, size);
-		}
+		}*/
 	}
-
+	/*
 	void tfloating_textbox::show(MODE mode, const std::string& label, const std::string& check_label, bool checked)
 	{
 		label_string_ = label;
@@ -117,15 +129,17 @@ namespace gui2 {
 			check_->set_definition("default");
 			check_->set_label(check_label);
 			check_->set_value_bool(checked);
+			check_->set_parent(this);
 			check_->connect();
 		}
 
 		update_location();
+		fire(event::DRAW, *this);
 	}
-
+	*/
 	void tfloating_textbox::tab(const std::set<std::string>& dictionary)
 	{
-		std::string text = get_value();
+		std::string text = box_->get_value();
 		std::vector<std::string> matches(dictionary.begin(), dictionary.end());
 		const bool line_start = utils::word_completion(text, matches);
 
@@ -137,6 +151,16 @@ namespace gui2 {
 			resources::screen->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
-		set_value(text);
+		box_->set_value(text);
+	}
+
+	bool tfloating_textbox::checked() const
+	{
+		return check_ ? check_->get_value_bool() : false;
+	}
+
+	std::string tfloating_textbox::get_value() const
+	{
+		return box_->get_value();
 	}
 }

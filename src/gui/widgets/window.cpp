@@ -549,7 +549,7 @@ void twindow::show_non_modal(/*const unsigned auto_close_timeout*/)
 	invalidate_layout();
 	suspend_drawing_ = false;
 
-	events::pump();
+	//events::pump();
 }
 
 int twindow::show(const bool restore, const unsigned auto_close_timeout)
