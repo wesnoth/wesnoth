@@ -94,13 +94,15 @@ public:
 	 * @param viewing_team
 	 * @param see_all
 	 * @param ignore_units
+	 * @param check_vision
 	 */
 	teleport_map(
 			  const std::vector<teleport_group>& teleport_groups
 			, const unit& u
 			, const team &viewing_team
 			, const bool see_all
-			, const bool ignore_units);
+			, const bool ignore_units
+			, const bool check_vision);
 
 	/*
 	 * Constructs an empty teleport map.
@@ -140,10 +142,11 @@ private:
  * @param viewing_team		The team the player belongs to
  * @param see_all			Whether the teleport can be seen below shroud
  * @param ignore_units		Whether to ignore zoc and blocking by units
+ * @param check_vision		Whether to check vision as opposed to movement range
  * @returns a teleport_map
  */
 const teleport_map get_teleport_locations(const unit &u, const team &viewing_team,
-		bool see_all = false, bool ignore_units = false);
+		bool see_all = false, bool ignore_units = false, bool check_vision = false);
 
 class manager
 {
