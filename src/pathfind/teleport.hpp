@@ -75,6 +75,11 @@ public:
 	 */
 	bool pass_allied_units() const;
 
+	/*
+	 * Returns whether vision through tunnels is possible.
+	 */
+	bool allow_vision() const;
+
 	/** Inherited from savegame_config. */
 	config to_config() const;
 

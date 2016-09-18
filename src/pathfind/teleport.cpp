@@ -150,6 +150,10 @@ bool teleport_group::pass_allied_units() const {
 	return cfg_["pass_allied_units"].to_bool(true);
 }
 
+bool teleport_group::allow_vision() const {
+	return cfg_["allow_vision"].to_bool(true);
+}
+
 config teleport_group::to_config() const {
 	config retval = cfg_;
 	retval["saved"] = "yes";
@@ -173,6 +177,11 @@ teleport_map::teleport_map(
 	for (const teleport_group& group : groups) {
 
 		teleport_pair locations;
+
+        if (check_vision && !group.allow_vision()) {
+        	continue;
+        }
+
 		group.get_teleport_pair(locations, u, ignore_units);
 		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
 			teleport_pair filter_locs;
