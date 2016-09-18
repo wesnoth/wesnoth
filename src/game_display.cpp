@@ -30,6 +30,7 @@
 #include "floating_label.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
+#include "floating_textbox.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -284,6 +285,7 @@ void game_display::draw_invalidated()
 void game_display::post_commit()
 {
 	halo_man_->render();
+	textbox_info_->
 }
 
 void game_display::draw_hex(const map_location& loc)

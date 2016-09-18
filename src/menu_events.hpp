@@ -134,7 +134,6 @@ private:
 
 	const config& game_config_;
 
-	std::shared_ptr<gui2::tfloating_textbox> textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
 };

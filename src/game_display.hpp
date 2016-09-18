@@ -31,6 +31,10 @@ class game_board;
 
 #include <deque>
 
+namespace gui2 {
+	class tfloating_textbox;
+}
+
 // This needs to be separate from display.h because of the static
 // singleton member, which will otherwise trigger link failure
 // when building the editor.
@@ -262,6 +266,7 @@ private:
 
 	bool needs_rebuild_;
 
+	std::shared_ptr<gui2::tfloating_textbox> textbox_info_;
 };
 
 #endif
