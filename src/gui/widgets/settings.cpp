@@ -21,7 +21,7 @@
 
 #include "gui/widgets/settings.hpp"
 
-#include "asserts.hpp"
+#include "formatter.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
@@ -625,8 +625,7 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 			auto default_control_definition = default_gui->second.control_definition.find(control_type);
 #endif
 
-			ASSERT_LOG(default_control_definition != default_gui->second.control_definition.end(),
-					   "Type '" << control_type << "' is unknown.");
+			VALIDATE(control_definition != current_gui->second.control_definition.end(), formatter() << "Type '" << control_type << "' is unknown.");
 
 			control = default_control_definition->second.find(definition);
 			found_fallback = control != default_control_definition->second.end();
@@ -656,7 +655,7 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 		}
 	}
 
-	ERROR_LOG(false);
+	VALIDATE(false, formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
 }
 
 std::vector<twindow_builder::tresolution>::const_iterator
@@ -693,7 +692,7 @@ get_window_builder(const std::string& type)
 		}
 	}
 
-	ERROR_LOG(false);
+	VALIDATE(false, formatter() << "Window '" << type << "' has no resolutions.\n");
 }
 
 /*WIKI

@@ -16,7 +16,7 @@
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
 
-#include "asserts.hpp"
+#include <cassert>
 
 namespace gui2
 {

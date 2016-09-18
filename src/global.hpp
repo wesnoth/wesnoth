@@ -68,9 +68,11 @@
 #define HAVE_INHERITING_CTORS 1
 #define CONSTEXPR constexpr
 #define NOEXCEPT noexcept
+#define NORETURN [[noreturn]]
 #else
 #define CONSTEXPR
 #define NOEXCEPT throw()
+#define NORETURN __declspec(noreturn)
 #endif
 #endif
 
@@ -78,6 +80,8 @@
 // Clang has convenient feature detection macros \o/
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
+// All supported versions of clang have this
+#define NORETURN [[noreturn]]
 
 #if __has_feature(cxx_constexpr)
 #define CONSTEXPR constexpr
@@ -92,14 +96,13 @@
 #endif
 #endif
 
-#if defined(__GNUX__) && !defined(__clang__)
+#if defined(__GNUC__) && !defined(__clang__)
 // GCC supports two of these from 4.6 up and the others from 4.8 up
 #define CONSTEXPR constexpr
 #define NOEXCEPT noexcept
-#if __GNUC__ > 4 || (__GNU_C__ == 4 && __GNUC_MINOR__ >= 8)
+#define NORETURN [[noreturn]]
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1
-#endif
 #endif
 
 #endif //GLOBAL_HPP_INCLUDED

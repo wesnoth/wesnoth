@@ -20,7 +20,7 @@
  */
 
 #include "global.hpp"
-#include "asserts.hpp"
+#include <cassert>
 #include "log.hpp"
 #include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
@@ -255,7 +255,7 @@ void part_ui::prepare_background()
 		}
 
 		blit_surface(layer, &srect, background_, &drect);
-		ASSERT_LOG(layer.null() == false, "Oops: a storyscreen part background layer got nullptr");
+		assert(layer.null() == false && "Oops: a storyscreen part background layer got nullptr");
 
 		if (bl.is_base_layer() || no_base_yet) {
 			x_scale_factor_ = x_scale_factor;
