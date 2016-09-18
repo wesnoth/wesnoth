@@ -636,7 +636,7 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 						  << definition << "' not found, falling back to 'default'.\n";
 				return get_control(control_type, "default");
 			}
-			ERROR_LOG("default definition not found for control " << control_type);
+			FAIL(formatter() << "default definition not found for control " << control_type);
 		}
 	}
 
