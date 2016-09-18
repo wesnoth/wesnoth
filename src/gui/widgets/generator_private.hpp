@@ -697,7 +697,7 @@ public:
 					return i;
 				}
 			}
-			VALIDATE_WITH_DEV_MESSAGE(false, "No item selected.",
+			FAIL_WITH_DEV_MESSAGE("No item selected.",
 				"selected_item_count_ was non-zero, yet no selected item was found.");
 		}
 	}

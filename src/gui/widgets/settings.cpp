@@ -655,7 +655,7 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 		}
 	}
 
-	VALIDATE(false, formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
+	FAIL(formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
 }
 
 std::vector<twindow_builder::tresolution>::const_iterator
@@ -692,7 +692,7 @@ get_window_builder(const std::string& type)
 		}
 	}
 
-	VALIDATE(false, formatter() << "Window '" << type << "' has no resolutions.\n");
+	FAIL(formatter() << "Window '" << type << "' has no resolutions.\n");
 }
 
 /*WIKI

@@ -100,7 +100,7 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 			t_string msg = vgettext(
 					"Linked '$id' group has multiple definitions.", symbols);
 
-			VALIDATE(false, msg);
+			FAIL(msg);
 		}
 
 		window->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
@@ -182,7 +182,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		return std::make_shared<implementation::tbuilder_viewport>(viewport);
 	}
 
-	VALIDATE(false,"Unknown widget type " + cfg.ordered_begin()->key);
+	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 	return nullptr;
 }
 
@@ -397,7 +397,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 							   "'fixed_height' key.",
 							   symbols);
 
-			VALIDATE(false, msg);
+			FAIL(msg);
 		}
 
 		linked_groups.push_back(linked_group);
