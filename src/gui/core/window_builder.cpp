@@ -182,6 +182,52 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		return std::make_shared<implementation::tbuilder_viewport>(viewport);
 	}
 
+/*
+ * This is rather odd, when commented out the classes no longer seem to be in
+ * the executable, no real idea why, except maybe of an overzealous optimizer
+ * while linking. It seems that all these classes aren't explicitly
+ * instantiated but only implicitly. Also when looking at the symbols in
+ * libwesnoth-game.a the repeating button is there regardless of this #if but
+ * in the final binary only if the #if is enabled.
+ *
+ * If this code is executed, which it will cause an assertion failure.
+ *
+ * Its likeley that this happens becasue some build this as a library file
+ * which is then used by the wesnoth executable. For msvc a good try to fix
+ * this issue is to add __pragma(comment(linker, "/include:" #TYPE)) or
+ * similar in the REGISTER_WIDGET3 macro. For gcc and similar this can only
+ * be fixed by using --whole-archive flag when linking this library.
+ */
+#if 1
+#define TRY(name)                                                              \
+	do {                                                                       \
+		if(const config& c = cfg.child(#name)) {                               \
+			tbuilder_widget_ptr p =                                            \
+				std::make_shared<implementation::tbuilder_##name>(c);          \
+			assert(false);                                                     \
+		}                                                                      \
+	} while(0)
+
+	TRY(stacked_widget);
+	TRY(scrollbar_panel);
+	TRY(horizontal_scrollbar);
+	TRY(repeating_button);
+	TRY(vertical_scrollbar);
+	TRY(label);
+	TRY(image);
+	TRY(toggle_button);
+	TRY(slider);
+	TRY(scroll_label);
+	TRY(matrix);
+	TRY(minimap);
+	TRY(button);
+	TRY(menu_button);
+	TRY(drawing);
+	TRY(password_box);
+	TRY(unit_preview_pane);
+#undef TRY
+#endif
+
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 	return nullptr;
 }
