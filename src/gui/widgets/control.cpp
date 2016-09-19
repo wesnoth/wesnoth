@@ -655,6 +655,7 @@ tbuilder_control::tbuilder_control(const config& cfg)
 	, tooltip(cfg["tooltip"].t_str())
 	, help(cfg["help"].t_str())
 	, use_tooltip_on_label_overflow(true)
+	, use_markup(cfg["use_markup"].to_bool(false))
 {
 	if(definition.empty()) {
 		definition = "default";
@@ -682,6 +683,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_tooltip(tooltip);
 	control->set_help_message(help);
 	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
+	control->set_use_markup(use_markup);
 #ifndef LOW_MEM
 	control->set_debug_border_mode(debug_border_mode);
 	control->set_debug_border_colour(debug_border_color);
