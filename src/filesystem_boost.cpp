@@ -990,17 +990,26 @@ bool is_relative(const std::string& path)
 	return bfs::path{path}.is_relative();
 }
 
-std::string normalize_path(const std::string& fpath, bool normalize_separators)
+std::string normalize_path(const std::string& fpath, bool normalize_separators, bool resolve_dot_entries)
 {
 	if(fpath.empty()) {
 		return fpath;
 	}
 
-	if(normalize_separators) {
-		return bfs::absolute(fpath).make_preferred().string();
+	error_code ec;
+	bfs::path p = resolve_dot_entries
+			? bfs::canonical(fpath, ec)
+			: bfs::absolute(fpath);
+
+	if(ec) {
+		return "";
 	}
 
-	return bfs::absolute(fpath).string();
+	if(normalize_separators) {
+		return p.make_preferred().string();
+	} else {
+		return p.string();
+	}
 }
 
 /**
