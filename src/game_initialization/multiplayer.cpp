@@ -26,6 +26,7 @@
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/widgets/settings.hpp"
@@ -474,6 +475,23 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 
 	{
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get()));
+
+        if(preferences::new_lobby()) {
+            gui2::tmp_staging dlg(game_config, *connect_engine);
+            dlg.show(video);
+
+            if(dlg.get_retval() == gui2::twindow::OK) {
+                campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
+                controller.set_mp_info(campaign_info.get());
+                controller.play_game();
+                if(wesnothd_connection) {
+                    wesnothd_connection->send_data(config("leave_game"));
+                }
+            }
+
+            return true;
+        }
+
 		mp::connect ui(video, wesnothd_connection, state.mp_settings().name, game_config, gamechat, gamelist,
 			*connect_engine);
 		run_lobby_loop(video, ui);
