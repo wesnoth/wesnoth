@@ -191,13 +191,13 @@ const config& save_info::summary() const {
 
 std::string save_info::format_time_local() const
 {
-	tm* tm_l = localtime(&modified());
-	if (tm_l) {
+	if(tm* tm_l = localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y");
 		return translation::strftime(format, tm_l);
-	} else {
-		LOG_SAVE << "localtime() returned null for time " << this->modified() << ", save " << name();
 	}
+
+	LOG_SAVE << "localtime() returned null for time " << this->modified() << ", save " << name();
+	return "";
 }
 
 std::string save_info::format_time_summary() const
