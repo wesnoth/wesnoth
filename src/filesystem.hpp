@@ -201,9 +201,19 @@ std::string nearest_extant_parent(const std::string& file);
  * @param path                 Original path.
  * @param normalize_separators Whether to substitute path separators with the
  *                             platform's preferred format.
+ * @param resolve_dot_entries  Whether to resolve . and .. directory entries.
+ *                             This requires @a path to refer to a valid
+ *                             existing object.
+ *
+ * @returns An absolute path -- that is, a path that is independent of the
+ *          current working directory for the process. If resolve_dot_entries
+ *          is set to true, the returned path has . and .. components resolved;
+ *          however, if resolution fails because a component does not exist, an
+ *          empty string is returned instead.
  */
 std::string normalize_path(const std::string& path,
-						   bool normalize_separators = false);
+						   bool normalize_separators = false,
+						   bool resolve_dot_entries = false);
 
 /**
  * Returns whether the path is the root of the file hierarchy.

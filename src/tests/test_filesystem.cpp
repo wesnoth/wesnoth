@@ -194,6 +194,9 @@ BOOST_AUTO_TEST_CASE( test_fs_search )
 {
 	const std::string& userdata = get_user_data_dir();
 
+	BOOST_CHECK_EQUAL( normalize_path("/bin/./../././bin////", true, true), "/bin" );
+	BOOST_CHECK( normalize_path("/bin/./../THIS_HOPEFULLY_DOES_NOT_EXIST/.././bin////", true, true).empty() );
+
 	BOOST_CHECK_EQUAL( nearest_extant_parent(userdata + "/THIS_DOES_NOT_EXIST/foo/bar"), userdata );
 
 	BOOST_CHECK_EQUAL( nearest_extant_parent(gamedata + "/THIS_DOES_NOT_EXIST_EITHER/foo"), gamedata );
