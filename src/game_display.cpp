@@ -269,7 +269,9 @@ void game_display::draw_invalidated()
 {
 	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
-
+	if (fake_unit_man_->empty()) {
+		return;
+	}
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
 	for (const unit* temp_unit : *fake_unit_man_) {

@@ -620,10 +620,12 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_objectives()
 {
-	const team &t = gamestate().board_.teams()[gui_->viewing_team()];
+	if (!gamestate().board_.teams().empty()) {
+		const team &t = gamestate().board_.teams()[gui_->viewing_team()];
 
-	if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
-		show_objectives();
+		if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
+			show_objectives();
+		}
 	}
 }
 
