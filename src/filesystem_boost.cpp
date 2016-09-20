@@ -985,6 +985,11 @@ bool is_root(const std::string& path)
 #endif
 }
 
+std::string root_name(const std::string& path)
+{
+	return bfs::path{path}.root_name().string();
+}
+
 bool is_relative(const std::string& path)
 {
 	return bfs::path{path}.is_relative();
