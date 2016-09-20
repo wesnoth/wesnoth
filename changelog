@@ -26,6 +26,8 @@ Version 1.13.6+dev:
      * New read-only keys: share_maps, share_view
        num_units, num_villages, total_upkeep, expenses, net_income
      * Existing keys made mutable: shroud, fog, flag, flag_icon
+   * wesnoth.scroll_to_tile now accepts a third boolean argument - if true, the scroll
+     is skipped when the tile is already visible onscreen.
  * WML Engine:
    * Removed LOW_MEM option when building.
    * Add color= attribute to [floating_text]

@@ -2371,15 +2371,22 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
  * - Arg 1: location.
  * - Arg 2: boolean preventing scroll to fog.
  * - Arg 3: boolean specifying whether to warp instantly.
+ * - Arg 4: boolean specifying whether to skip if already onscreen
  */
 int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 	bool check_fogged = luaW_toboolean(L, 2);
-	bool immediate = luaW_toboolean(L, 3);
+	game_display::SCROLL_TYPE scroll = luaW_toboolean(L, 4)
+		? luaW_toboolean(L, 3)
+			? game_display::WARP
+			: game_display::SCROLL
+		: luaW_toboolean(L, 3)
+			? game_display::ONSCREEN_WARP
+			: game_display::ONSCREEN
+	;
 	if (game_display_) {
-		game_display_->scroll_to_tile(loc,
-			immediate ? game_display::WARP : game_display::SCROLL, check_fogged);
+		game_display_->scroll_to_tile(loc, scroll, check_fogged);
 	}
 	return 0;
 }
