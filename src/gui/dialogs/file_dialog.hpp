@@ -145,9 +145,23 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Sets the OK button label.
+	 *
+	 * By default, "Save" is used when save_mode is enabled, and "Open" otherwise.
+	 * Calling this method with an empty string will reset the label to the
+	 * default.
+	 */
+	tfile_dialog& set_ok_label(const std::string& value)
+	{
+		ok_label_ = value;
+		return *this;
+	}
+
 private:
 	std::string title_;
 	std::string msg_;
+	std::string ok_label_;
 
 	std::string current_entry_;
 	std::string current_dir_;
