@@ -224,6 +224,16 @@ std::string normalize_path(const std::string& path,
 bool is_root(const std::string& path);
 
 /**
+ * Returns the name of the root device if included in the given path.
+ *
+ * This only properly makes sense on Windows with paths containing a drive
+ * letter or UNC at the start -- otherwise, it will return the empty string. To
+ * ensure that a suitable root name can be found you might want to use
+ * normalize_path() first with @a resolve_dot_entries set to true.
+ */
+std::string root_name(const std::string& path);
+
+/**
  * Returns whether the path seems to be relative.
  */
 bool is_relative(const std::string& path);
