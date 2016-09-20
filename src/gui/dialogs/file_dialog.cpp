@@ -22,6 +22,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -484,7 +485,22 @@ void tfile_dialog::on_file_delete_cmd(twindow& window)
 	}
 
 	const std::string& selection = concat_path(current_dir_, current_entry_);
-	if(!fs::delete_file(selection)) {
+	const bool is_dir = fs::is_directory(selection);
+
+	const std::string& message = (is_dir
+			? _("The following folder and its contents will be permanently deleted:")
+			: _("The following file will be permanently deleted:"))
+			+ "\n\n" + selection + "\n\n" + _("Do you wish to continue?");
+
+	if(gui2::show_message(window.video(), _("Confirm"), message, gui2::tmessage::yes_no_buttons) == gui2::twindow::CANCEL) {
+		return;
+	}
+
+	const bool result = is_dir
+			? fs::delete_directory(selection)
+			: fs::delete_file(selection);
+
+	if(!result) {
 		show_transient_error_message(window.video(),
 				vgettext("Could not delete $path|. Make sure you have the appropriate permissions to write to this location.",
 						 {{"path", selection}}));
