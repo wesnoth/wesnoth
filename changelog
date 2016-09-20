@@ -99,7 +99,14 @@ Version 1.13.5+dev:
      in a variable that was used with find_in=
    * Moves cave map generator to lua. scenario_generation=cave is now deprecated and
      will be removed soon.
-* Lua API:
+   * Tunnel functionality was expanded and the default behavior was altered in
+     order to make moves through tunnels consistent with all other moves:
+     * Vison through tunnels is now possible and enabled by default. It can be
+       turned off by setting allow_vision=no in the [tunnel] tag.
+     * Own and allied units on tunnel exits do not block the tunnel any more.
+       The blocking behavior can be reenabled by setting pass_allied_units=no
+       in the [tunnel] tag.
+ * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
    * Added new function wesnoth.remove_modifications, which removes applied
@@ -132,18 +139,18 @@ Version 1.13.5+dev:
      gettext plurals.
    * New matches function in team and unit attack metatables, which test if the
      side or weapon matches a filter.
-* Networking
+ * Networking
    * Ported campaignd to use boost.asio instead of SDL_net.
    * Removed unit tests for old networking stack. This was the last part that
    depended on SDL_net
-* Performance:
+ * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle
      outcome by simulating a few thousand fights instead of calculating exact
      probabilities. This method is inexact, but in very complex battles
      (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
      default damage calculation method.
-* Miscellaneous and bug fixes:
+ * Miscellaneous and bug fixes:
    * A new way to make units invulnerable for debugging: select the unit and type
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
      chance to zero: as a result, it doesn't slow down damage prediction unlike the

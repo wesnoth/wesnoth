@@ -31,6 +31,15 @@ The new CA fixes this hole and will generally, but not blindly, attack such unit
 [/rasection]
 
 
+[rasection="Tunnel functionality expanded"]
+Tunnel functionality was expanded and the default behavior was altered in order to make moves through tunnels consistent with all other moves:
+[list]
+[*]Vison through tunnels is now possible and enabled by default. It can be turned off by setting allow_vision=no in the [tunnel] tag.
+[*]Own and allied units on tunnel exits do not block the tunnel any more. The blocking behavior can be reenabled by setting pass_allied_units=no in the [tunnel] tag.
+[/list]
+[/rasection]
+
+
 ==========
 KNOWN BUGS
 ==========
