@@ -743,6 +743,7 @@ void tlobby_main::pre_show(twindow& window)
 
 	chatbox_ = find_widget<tchatbox>(&window, "chat", false, true);
 	chatbox_->set_lobby_info(lobby_info_);
+	chatbox_->set_wesnothd_connection(wesnothd_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 
 	connect_signal_mouse_left_click(
@@ -914,6 +915,7 @@ void tlobby_main::process_gamelist_diff(const config& data)
 		gamelist_dirty_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!" << std::endl;
+		wesnothd_connection_.send_data(config("refresh_lobby"));
 	}
 	int joined = data.child_count("insert_child");
 	int left = data.child_count("remove_child");

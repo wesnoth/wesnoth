@@ -21,8 +21,8 @@
 
 #include <string>
 
-
 class config;
+class twesnothd_connection;
 
 namespace gui2
 {
@@ -73,6 +73,8 @@ public:
 	void set_active_window_changed_callback(const std::function<void(void)>& f) { active_window_changed_callback_ = f; }
 
 	void set_lobby_info(lobby_info& i) { lobby_info_ = &i; }
+
+	void set_wesnothd_connection(twesnothd_connection& c) { wesnothd_connection_ = &c; }
 
 protected:
 	/**
@@ -127,12 +129,14 @@ private:
 
 	class lobby_info& lobby_info() { return *lobby_info_; }
 
+	twesnothd_connection* wesnothd_connection_;
+
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) override;
-	
+
 	void chat_input_keypress_callback(bool& handled, bool& halt, const SDL_Keycode key);
 
 	void append_to_chatbox(const std::string& text, const bool force_scroll = false);

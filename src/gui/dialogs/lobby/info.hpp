@@ -18,7 +18,7 @@
 #include "config.hpp"
 #include "gui/dialogs/lobby/data.hpp"
 #include <boost/dynamic_bitset.hpp>
-class twesnothd_connection;
+
 /**
  * This class represents the collective information the client has
  * about the players and games on the server
@@ -26,7 +26,7 @@ class twesnothd_connection;
 class lobby_info
 {
 public:
-	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons, twesnothd_connection&);
+	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons);
 
 	~lobby_info();
 
@@ -97,7 +97,6 @@ public:
 		return users_;
 	}
 	const std::vector<user_info*>& users_sorted() const;
-	twesnothd_connection& wesnothd_connection() const { return wesnothd_connection_; }
 
 private:
 	void process_userlist();
@@ -118,7 +117,6 @@ private:
 	std::vector<game_filter_func> game_filters_;
 	bool game_filter_invert_;
 	boost::dynamic_bitset<> games_visibility_;
-	twesnothd_connection& wesnothd_connection_;
 };
 
 enum t_notify_mode {

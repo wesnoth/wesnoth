@@ -36,7 +36,7 @@ static lg::log_domain log_lobby("lobby");
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
-lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons, twesnothd_connection& wesnothd_connection)
+lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons)
 	: game_config_(game_config)
 	, installed_addons_(installed_addons)
 	, gamelist_()
@@ -51,7 +51,6 @@ lobby_info::lobby_info(const config& game_config, const std::vector<std::string>
 	, game_filters_()
 	, game_filter_invert_(false)
 	, games_visibility_()
-	, wesnothd_connection_(wesnothd_connection)
 {
 }
 
@@ -156,7 +155,6 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	} catch(config::error& e) {
 		ERR_LB << "Error while applying the gamelist diff: '" << e.message
 		       << "' Getting a new gamelist.\n";
-		wesnothd_connection_.send_data(config("refresh_lobby"));
 		return false;
 	}
 
@@ -168,7 +166,6 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const int game_id = c["id"];
 		if(game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config" << std::endl;
-			wesnothd_connection_.send_data(config("refresh_lobby"));
 			return false;
 		}
 
@@ -206,7 +203,6 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	} catch(config::error& e) {
 		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message
 			   << "' Getting a new gamelist.\n";
-		wesnothd_connection_.send_data(config("refresh_lobby"));
 		return false;
 	}
 

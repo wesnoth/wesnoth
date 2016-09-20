@@ -85,6 +85,7 @@ tchatbox::tchatbox()
 	, active_window_(0)
 	, active_window_changed_callback_()
 	, lobby_info_(nullptr)
+	, wesnothd_connection_(nullptr)
 {
 }
 
@@ -251,7 +252,9 @@ void tchatbox::send_chat_message(const std::string& message,
 	::config c = config_of("message", config_of("message", message)("sender", preferences::login()));
 	add_chat_message(time(nullptr), preferences::login(), 0, message); // local
 																	   // echo
-	lobby_info().wesnothd_connection().send_data(c);
+	if(wesnothd_connection_) {
+		wesnothd_connection_->send_data(c);
+	}
 }
 
 void tchatbox::user_relation_changed(const std::string& /*name*/)
@@ -460,9 +463,10 @@ void tchatbox::close_window_button_callback(tlobby_chat_window& chat_window, boo
 
 void tchatbox::send_to_server(const ::config& cfg)
 {
-	lobby_info().wesnothd_connection().send_data(cfg);
+	if(wesnothd_connection_) {
+		wesnothd_connection_->send_data(cfg);
+	}
 }
-
 
 void tchatbox::increment_waiting_whsipers(const std::string& name)
 {
