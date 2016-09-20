@@ -178,9 +178,9 @@ teleport_map::teleport_map(
 
 		teleport_pair locations;
 
-        if (check_vision && !group.allow_vision()) {
-        	continue;
-        }
+		if (check_vision && !group.allow_vision()) {
+			continue;
+		}
 
 		group.get_teleport_pair(locations, u, ignore_units);
 		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
