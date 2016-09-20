@@ -108,6 +108,8 @@ void tfaction_select::pre_show(twindow& window)
 		list.add_row(data);
 	}
 
+	list.select_row(flg_manager_.current_faction_index());
+
 	on_faction_select(window);
 }
 
@@ -118,6 +120,10 @@ void tfaction_select::on_faction_select(twindow& window)
 	if(selected_row == -1) {
 		return;
 	}
+
+	// Since set_current_faction overrides the current leader, save a copy of the previous leader index so the
+	// leader dropdown can be set to the appropriate initial selection.
+	const int previous_leader_selection = flg_manager_.current_leader_index();
 
 	flg_manager_.set_current_faction(selected_row);
 
@@ -140,7 +146,7 @@ void tfaction_select::on_faction_select(twindow& window)
 
 	tmenu_button& leader_dropdown = find_widget<tmenu_button>(&window, "leader_menu", false);
 
-	leader_dropdown.set_values(leaders, flg_manager_.current_leader_index());
+	leader_dropdown.set_values(leaders, previous_leader_selection);
 	leader_dropdown.set_active(leaders.size() > 1 && !flg_manager_.is_saved_game());
 
 	on_leader_select(window);
