@@ -53,6 +53,8 @@ private:
 
 	void on_controller_select(ng::side_engine& side, tgrid& row_grid);
 	void on_ai_select(ng::side_engine& side, tmenu_button& ai_menu);
+	void on_color_select(ng::side_engine& side, tgrid& row_grid);
+	void on_team_select(ng::side_engine& side, tmenu_button& team_menu);
 
 	void select_leader_callback(twindow& window, ng::side_engine& side, tgrid& row_grid);
 

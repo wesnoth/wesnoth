@@ -57,20 +57,12 @@
 namespace gui2
 {
 
-// FIXME: doesn't show properly...
-//static const std::string male = "&#9794;";
-//static const std::string female = "&#9792;";
-
-static const std::string male = "(M)";
-static const std::string female = "(F)";
-
 REGISTER_DIALOG(mp_staging)
 
 tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engine)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 {
-	//ai_algorithms_ = ai::configuration::get_available_ais();
 }
 
 void tmp_staging::pre_show(twindow& window)
@@ -185,6 +177,7 @@ void tmp_staging::pre_show(twindow& window)
 
 		team_selection.set_values(team_names, side.team());
 		team_selection.set_active(!saved_game);
+		team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(side), std::ref(team_selection)));
 
 		//
 		// Colors
@@ -206,6 +199,7 @@ void tmp_staging::pre_show(twindow& window)
 
 		color_selection.set_values(color_options, side.color());
 		color_selection.set_active(!saved_game);
+		color_selection.connect_click_handler(std::bind(&tmp_staging::on_color_select, this, std::ref(side), std::ref(row_grid)));
 
 		//
 		// Gold and Income
@@ -283,6 +277,22 @@ void tmp_staging::on_ai_select(ng::side_engine& side, tmenu_button& ai_menu)
 	sync_changes();
 }
 
+void tmp_staging::on_color_select(ng::side_engine& side, tgrid& row_grid)
+{
+	side.set_color(find_widget<tmenu_button>(&row_grid, "side_color", false).get_value());
+
+	update_leader_display(side, row_grid);
+
+	sync_changes();
+}
+
+void tmp_staging::on_team_select(ng::side_engine& side, tmenu_button& team_menu)
+{
+	side.set_team(team_menu.get_value());
+
+	sync_changes();
+}
+
 void tmp_staging::select_leader_callback(twindow& window, ng::side_engine& side, tgrid& row_grid)
 {
 	gui2::tfaction_select dlg(side.flg(), std::to_string(side.color() + 1), side.index() + 1);
@@ -300,25 +310,26 @@ void tmp_staging::update_leader_display(ng::side_engine& side, tgrid& row_grid)
 	const std::string current_faction = (*side.flg().choosable_factions()[side.flg().current_faction_index()])["name"];
 
 	// BIG FAT TODO: get rid of this shitty "null" string value in the FLG manager
-	const std::string current_leader = side.flg().current_leader() != "null" ? side.flg().current_leader() : utils::unicode_em_dash;
+	std::string current_leader = side.flg().current_leader() != "null" ? side.flg().current_leader() : utils::unicode_em_dash;
 	const std::string current_gender = side.flg().current_gender() != "null" ? side.flg().current_gender() : utils::unicode_em_dash;
 
 	// Sprite
-	std::string new_image;
+	std::string new_image = "units/random-dice.png";
 
-	if(side.flg().is_random_faction() || current_leader == "random") {
-		new_image = "units/random-dice.png";
-	} else {
+	if(!side.flg().is_random_faction() && current_leader != "random") {
 		const unit_type& type = unit_types.find(current_leader)->get_gender_unit_type(current_gender);
-
 		new_image = formatter() << type.image() << "~RC(magenta>" << side.color() + 1 << ")";
 	}
 
 	find_widget<timage>(&row_grid, "leader_image", false).set_label(new_image);
 
 	// Faction and leader
+	if(!side.cfg()["name"].empty()) {
+		current_leader = formatter() << side.cfg()["name"] << " (<i>" << current_leader << "</i>)";
+	}
+
 	find_widget<tlabel>(&row_grid, "leader_type", false).set_label(current_leader);
-	find_widget<tlabel>(&row_grid, "leader_faction", false).set_label(current_faction);
+	find_widget<tlabel>(&row_grid, "leader_faction", false).set_label("<span color='#a69275'>" + current_faction + "</span>");
 
 	// Gender
 	if(current_gender != utils::unicode_em_dash) {
