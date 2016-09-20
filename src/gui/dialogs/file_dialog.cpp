@@ -95,6 +95,7 @@ REGISTER_DIALOG(file_dialog)
 tfile_dialog::tfile_dialog()
 	: title_(_("Find File"))
 	, msg_()
+	, ok_label_()
 	, current_entry_()
 	, current_dir_()
 	, read_only_(false)
@@ -151,6 +152,7 @@ void tfile_dialog::pre_show(twindow& window)
 {
 	tcontrol& title = find_widget<tcontrol>(&window, "title", false);
 	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
+	tcontrol& ok = find_widget<tcontrol>(&window, "ok", false);
 
 	title.set_label(title_);
 
@@ -159,6 +161,12 @@ void tfile_dialog::pre_show(twindow& window)
 	} else {
 		message.set_label(msg_);
 		message.set_use_markup(true);
+	}
+
+	if(ok_label_.empty()) {
+		ok.set_label(save_mode_ ? _("Save") : _("Open"));
+	} else {
+		ok.set_label(ok_label_);
 	}
 
 	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
