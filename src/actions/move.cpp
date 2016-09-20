@@ -34,6 +34,7 @@
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "pathfind/pathfind.hpp"
+#include "pathfind/teleport.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
 #include "synced_context.hpp"
@@ -445,13 +446,45 @@ namespace { // Private helpers for move_unit()
 	 * @return true if @a hex is obstructed.
 	 */
 	inline bool unit_mover::check_for_obstructing_unit(const map_location & hex,
-	                                                   const map_location & /*prev_hex*/)
+	                                                   const map_location & prev_hex)
 	{
 		const unit_map::const_iterator blocking_unit = resources::units->find(hex);
 
 		// If no unit, then the path is not obstructed.
 		if ( blocking_unit == resources::units->end() )
 			return false;
+
+		// Check for units blocking a teleport exit. This can now only happen
+		// if these units are not visible to the current side, as otherwise no
+		// valid path is found.
+		if ( !tiles_adjacent(hex, prev_hex) ) {
+			if ( current_team_->is_enemy(blocking_unit->side()) ) {
+				// Enemy units always block the tunnel.
+				teleport_failed_ = true;
+				return true;
+			} else {
+				// By contrast, allied units (of a side which does not share vision) only
+				// block the tunnel if pass_allied_units=true. Whether the teleport is possible
+				// is checked by getting the teleport map with the see_all flag set to true.
+				const pathfind::teleport_map teleports = pathfind::get_teleport_locations(*move_it_, *current_team_, true, false, false);
+				std::set<map_location> allowed_teleports;
+				teleports.get_adjacents(allowed_teleports, prev_hex);
+
+				bool found_valid_teleport = false;
+				std::set<map_location>::const_iterator it = allowed_teleports.begin();
+				while( it!=allowed_teleports.end() && !found_valid_teleport ) {
+					if ( *it == hex ) {
+						found_valid_teleport = true;
+					}
+					++it;
+				}
+
+				if (!found_valid_teleport) {
+					teleport_failed_ = true;
+					return true;
+				}
+			}
+		}
 
 		if ( current_team_->is_enemy(blocking_unit->side()) ) {
 			// Trying to go through an enemy.
