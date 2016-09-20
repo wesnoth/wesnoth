@@ -610,7 +610,12 @@ void tpreferences::post_build(twindow& window)
 				std::vector<std::string> option_ids;
 
 				for(const config& choice : option.child_range("option")) {
-					menu_data.push_back(config_of("label", choice["name"]));
+					config option;
+					option["label"] = choice["name"];
+					if(choice.has_attribute("description")) {
+						option["details"] = std::string("<span color='#777'>") + choice["description"] + "</span>";
+					}
+					menu_data.push_back(option);
 					option_ids.push_back(choice["id"]);
 				}
 
@@ -625,6 +630,7 @@ void tpreferences::post_build(twindow& window)
 
 				tmenu_button& menu = find_widget<tmenu_button>(&details_grid, "setter", false);
 
+				menu.set_use_markup(true);
 				menu.set_values(menu_data, selected);
 				menu.set_callback_state_change([=](twidget& w) {
 					set(pref_name, option_ids[dynamic_cast<tmenu_button&>(w).get_value()]);
