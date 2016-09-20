@@ -59,9 +59,10 @@ namespace gui2
 
 REGISTER_DIALOG(mp_staging)
 
-tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engine)
+tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engine, lobby_info& lobby_info)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
+	, lobby_info_(lobby_info)
 {
 }
 
@@ -236,11 +237,10 @@ void tmp_staging::pre_show(twindow& window)
 	// Initialize chatbox and game rooms
 	//
 
-	// TODO: seems the chatbox requires lobby info to be set first
-	/*tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
+	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
 
-	chat.room_window_open("this game", true);
-	chat.active_window_changed();*/
+	chat.set_lobby_info(lobby_info_);
+	chat.room_window_open("this game", true); // TODO: better title?
 
 	//
 	// Set up the Lua plugin context

@@ -725,7 +725,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			break;
 		case mp::ui::CREATE:
 			try {
-				enter_create_mode(video, game_config, state, wesnothd_connection, false);
+				enter_create_mode(video, game_config, state, wesnothd_connection, li, false);
 			} catch(config::error& error) {
 				if (!error.message.empty())
 					gui2::show_error_message(video, error.message);

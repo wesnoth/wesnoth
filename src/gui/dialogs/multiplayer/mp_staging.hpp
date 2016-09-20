@@ -16,6 +16,7 @@
 
 #include "ai/configuration.hpp"
 #include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/lobby/info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
 #include "game_initialization/connect_engine.hpp"
@@ -37,7 +38,7 @@ class twidget;
 class tmp_staging : public tdialog, private plugin_executor
 {
 public:
-	tmp_staging(const config& cfg, ng::connect_engine& connect_engine);
+	tmp_staging(const config& cfg, ng::connect_engine& connect_engine, lobby_info& lobby_info);
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -64,6 +65,7 @@ private:
 
 	std::vector<ai::description*> ai_algorithms_;
 
+	lobby_info& lobby_info_;
 };
 
 } // namespace gui2
