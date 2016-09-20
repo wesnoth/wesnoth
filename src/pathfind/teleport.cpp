@@ -200,8 +200,13 @@ teleport_map::teleport_map(
 		if (!group.pass_allied_units() && !ignore_units && !check_vision) {
 			std::set<map_location>::iterator loc = locations.second.begin();
 			while(loc != locations.second.end()) {
-				const unit *v = resources::gameboard->get_visible_unit(*loc, viewing_team, see_all);
-				if (v) {
+				unit_map::iterator u;
+				if (see_all) {
+					u = resources::units->find(*loc);
+				} else {
+					u = resources::gameboard->find_visible_unit(*loc, viewing_team);
+				}
+				if (u != resources::units->end()) {
 					loc = locations.second.erase(loc);
 				} else {
 					++loc;
