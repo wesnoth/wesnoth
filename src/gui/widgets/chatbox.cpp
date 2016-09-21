@@ -122,7 +122,7 @@ void tchatbox::send_message_button_callback()
 		// TODO: refactor do_speak so it uses context information about
 		//      opened window, so e.g. /ignore in a whisper session ignores
 		//      the other party without having to specify it's nick.
-		//chat_handler::do_speak(input);
+		chat_handler::do_speak(input);
 	} else {
 		tlobby_chat_window& t = open_windows_[active_window_];
 
