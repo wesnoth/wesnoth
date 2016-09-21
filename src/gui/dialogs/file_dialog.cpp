@@ -425,18 +425,16 @@ void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name
 	std::map<std::string, string_map> data;
 	data["icon"]["label"] = icon;
 	data["file"]["label"] = label;
-	filelist.add_row(data);
 
+	tgrid& last_grid = filelist.add_row(data);
 	const unsigned last_pos = filelist.get_item_count() - 1;
-	tgrid* const last_grid = filelist.get_row_grid(last_pos);
-	assert(last_grid);
 
 	//
 	// Crummy hack around the lack of an option to hook into row double click
 	// events for all rows using the GUI2 listbox API. Assign a special retval to
 	// each row that triggers a special check during dialog exit.
 	//
-	find_widget<ttoggle_panel>(last_grid, "item_panel", false)
+	find_widget<ttoggle_panel>(&last_grid, "item_panel", false)
 			.set_retval(FILE_DIALOG_ITEM_RETVAL);
 
 	if(check_selection && name == current_entry_) {
