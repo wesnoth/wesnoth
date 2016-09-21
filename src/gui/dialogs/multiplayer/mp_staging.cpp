@@ -236,11 +236,26 @@ void tmp_staging::pre_show(twindow& window)
 	//
 	// Initialize chatbox and game rooms
 	//
-
 	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
 
 	chat.set_lobby_info(lobby_info_);
 	chat.room_window_open("this game", true); // TODO: better title?
+	chat.active_window_changed();
+
+	//
+	// Set up player list
+	//
+	tlistbox& player_list = find_widget<tlistbox>(&window, "player_list", false);
+
+	for(const auto& player : connect_engine_.connected_users()) {
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = player;
+		data.emplace("player_name", item);
+
+		player_list.add_row(data);
+	}
 
 	//
 	// Set up the Lua plugin context
