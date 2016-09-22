@@ -122,11 +122,7 @@ std::string encode_text_alignment(const PangoAlignment alignment)
 
 t_string missing_widget(const std::string& id)
 {
-	utils::string_map symbols;
-	symbols["id"] = id;
-
-	return t_string(
-			vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
+	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", {{"id", id}}));
 }
 
 void get_screen_size_variables(game_logic::map_formula_callable& variable)

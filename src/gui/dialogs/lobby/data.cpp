@@ -206,9 +206,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				r.addon_id = addon["id"].str();
 				r.outcome = NEED_DOWNLOAD;
 
-				utils::string_map symbols;
-				symbols["id"] = addon["id"].str();
-				r.message = vgettext("Missing addon: $id", symbols);
+				r.message = vgettext("Missing addon: $id", {{"id", addon["id"].str()}});
 				required_addons.push_back(r);
 				if(addons_outcome == SATISFIED) {
 					addons_outcome = NEED_DOWNLOAD;
@@ -220,8 +218,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	std::string turn = game["turn"];
 	if(!game["mp_era"].empty()) {
 		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
-		utils::string_map symbols;
-		symbols["era_id"] = game["mp_era"];
 		if(era_cfg) {
 			era = era_cfg["name"].str();
 			era_short = era_cfg["short_name"].str();
@@ -233,7 +229,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = vgettext("Unknown era: $era_id", symbols);
+			era = vgettext("Unknown era: $era_id", {{"era_id", game["mp_era"].str()}});
 			era_short = "?" + make_short_name(era);
 			verified = false;
 		}
@@ -334,9 +330,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
-			utils::string_map symbols;
-			symbols["scenario_id"] = game["mp_scenario"];
-			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
+			scenario = vgettext("Unknown scenario: $scenario_id", {{"scenario_id", game["mp_scenario"].str()}});
 			info_stream << scenario;
 			verified = false;
 		}
@@ -367,9 +361,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
-			utils::string_map symbols;
-			symbols["campaign_id"] = game["mp_campaign"];
-			scenario = vgettext("Unknown campaign: $campaign_id", symbols);
+			scenario = vgettext("Unknown campaign: $campaign_id", {{"campaign_id", game["mp_campaign"].str()}});
 			info_stream << scenario;
 			verified = false;
 		}
@@ -449,11 +441,12 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 		if(local_min_ver > remote_ver) {
 			r.outcome = CANNOT_SATISFY;
 
-			utils::string_map symbols;
-			symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
-			symbols["host_ver"] = remote_ver.str();
-			symbols["local_ver"] = local_ver.str();
-			r.message = vgettext("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", symbols);
+			// TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
+			r.message = vgettext("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
+				{"addon",     r.addon_id},
+				{"host_ver",  remote_ver.str()},
+				{"local_ver", local_ver.str()}
+			});
 
 			required_addons.push_back(r);
 			return r.outcome;
@@ -463,11 +456,12 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 		if(remote_min_ver > local_ver) {
 			r.outcome = NEED_DOWNLOAD;
 
-			utils::string_map symbols;
-			symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
-			symbols["host_ver"] = remote_ver.str();
-			symbols["local_ver"] = local_ver.str();
-			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", symbols);
+			// TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
+			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", {
+				{"addon", r.addon_id},
+				{"host_ver", remote_ver.str()},
+				{"local_ver", local_ver.str()}
+			});
 
 			required_addons.push_back(r);
 			return r.outcome;

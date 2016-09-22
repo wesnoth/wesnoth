@@ -451,12 +451,10 @@ void tgui_definition::load_widget_definitions(
 		return;
 	}
 
-	utils::string_map symbols;
-	symbols["definition"] = definition_type;
-	symbols["id"] = "default";
-	t_string msg(vgettext("Widget definition '$definition' "
-						  "doesn't contain the definition for '$id'.",
-						  symbols));
+	t_string msg(vgettext("Widget definition '$definition' doesn't contain the definition for '$id'.", {
+		{"definition", definition_type},
+		{"id", "default"}
+	}));
 
 	VALIDATE(control_definition[definition_type].find("default")
 			 != control_definition[definition_type].end(),

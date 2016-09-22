@@ -95,10 +95,7 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 	{
 
 		if(window->has_linked_size_group(lg.id)) {
-			utils::string_map symbols;
-			symbols["id"] = lg.id;
-			t_string msg = vgettext(
-					"Linked '$id' group has multiple definitions.", symbols);
+			t_string msg = vgettext("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
 
 			FAIL(msg);
 		}
