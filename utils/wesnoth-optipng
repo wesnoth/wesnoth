@@ -118,8 +118,11 @@ get_statistics_and_delete_temp_files()
 		# Compare output size with original and print per-file statistics
 		local old_png_size=`stat ${stat_args} ${1} 2> /dev/null`
 		local new_png_size=`stat ${stat_args} ${1}.new 2> /dev/null`
-
-		if [ "$old_png_size" -gt "$new_png_size" ]; then
+		# only save it savings are >10% or >1kb
+		threshold=`echo "${new_png_size}*1.1" | bc`
+		# the ${threshold/.*/} cuts of anything after decimal point since bash doesn't support floats
+		size_reduction=`echo "$old_png_size - $new_png_size" | bc`
+		if [ "$old_png_size" -gt "${threshold/.*/}" ] || [ "$size_reduction" -ge 1000 ] ; then
 			local png_savings_size=$((${old_png_size}-${new_png_size}))
 			total_original_size=$((${total_original_size}+${old_png_size}))
 			total_savings_size=$((${total_savings_size}+${png_savings_size}))
@@ -218,8 +221,8 @@ for f in $filelist
 do
 	while [ $(jobs -pr | wc -l) -ge $max_number_threads ]
 	do
-		# max number of threads reached, wait for a quarter second...
-		sleep 0.25
+		# max number of threads reached, wait for a deci second...
+		sleep 0.10
 	done
 	#when here, we can do our normal optimization run
 	optimize_imgfile $f $opti_nice &
