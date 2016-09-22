@@ -140,27 +140,28 @@ void user_info::update_relation()
 	}
 }
 
-namespace
+// Returns an abbreviated form of the provided string - ie, 'Ageless Era' should become 'AE'
+static std::string make_short_name(const std::string& long_name)
 {
-
-std::string make_short_name(const std::string& long_name)
-{
-	if(long_name.empty())
+	if(long_name.empty()) {
 		return "";
-	std::string sh;
-	bool had_space = true;
-	for(size_t i = 1; i < long_name.size(); ++i) {
-		if(long_name[i] == ' ') {
-			had_space = true;
-		} else if(had_space && long_name[i] != '?') {
-			sh += long_name[i];
-			had_space = false;
+	}
+
+	size_t pos = 0;
+
+	std::stringstream ss;
+	ss << long_name[pos];
+
+	while(pos < long_name.size()) {
+		pos = long_name.find(' ', pos + 1);
+
+		if(pos <= long_name.size() - 2) {
+			ss << long_name[pos + 1];
 		}
 	}
-	return sh;
-}
 
-} // end anonymous namespace
+	return ss.str();
+}
 
 game_info::game_info(const config& game, const config& game_config, const std::vector<std::string>& installed_addons)
 	: mini_map()
@@ -230,7 +231,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		} else {
 			have_era = !game["require_era"].to_bool(true);
 			era = vgettext("Unknown era: $era_id", {{"era_id", game["mp_era"].str()}});
-			era_short = "?" + make_short_name(era);
+			era_short = make_short_name(era);
 			verified = false;
 		}
 	} else {
