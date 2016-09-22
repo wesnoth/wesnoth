@@ -107,22 +107,22 @@ public:
 	void rename_area_dialog();
 
 	/** Menu expanding for open maps list */
-	void expand_open_maps_menu(std::vector<std::string>& items);
+	std::vector<config> expand_open_maps_menu();
 
 	/** Menu expanding for most recent loaded list */
-	void expand_load_mru_menu(std::vector<std::string>& items);
+	std::vector<config> expand_load_mru_menu();
 
 	/** Menu expanding for the map's player sides */
-	void expand_sides_menu(std::vector<std::string>& items);
+	std::vector<config> expand_sides_menu();
 
 	/** Menu expanding for the map's defined areas */
-	void expand_areas_menu(std::vector<std::string>& items);
+	std::vector<config> expand_areas_menu();
 
 	/** Menu expanding for the map's defined areas */
-	void expand_time_menu(std::vector<std::string>& items);
+	std::vector<config> expand_time_menu();
 
 	/** Menu expanding for the map's defined areas */
-	void expand_local_time_menu(std::vector<std::string>& items);
+	std::vector<config> expand_local_time_menu();
 
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);

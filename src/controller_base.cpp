@@ -96,14 +96,18 @@ void controller_base::handle_event(const SDL_Event& event)
 		process_keydown_event(event);
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
-			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
+			SDL_Rect pos = {event.button.x, event.button.y, 0, 0};
+			std::vector<config> menu = expand_menu(get_display().get_theme().context_menu()->items());
+			show_menu(menu, pos, true, get_display());
 		}
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
-			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
+			SDL_Rect pos = {event.button.x, event.button.y, 0, 0};
+			std::vector<config> menu = expand_menu(get_display().get_theme().context_menu()->items());
+			show_menu(menu, pos, true, get_display());
 		}
 		break;
 	case SDL_MOUSEWHEEL:
@@ -198,6 +202,14 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 	return get_display().scroll(dx, dy);
 }
 
+void controller_base::execute_menu_selection(const std::string& id, int index)
+{
+	const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(id);
+	hotkey::command_executor* exec = get_hotkey_command_executor();
+	hotkey::execute_command(cmd, exec, index);
+	exec->set_button_state();
+}
+
 void controller_base::play_slice(bool is_delay_enabled)
 {
 	CKey key;
@@ -215,12 +227,25 @@ void controller_base::play_slice(bool is_delay_enabled)
 		l->update();
 	}
 
-	const theme::menu* const m = get_display().menu_pressed();
+	const theme::menu* m = get_display().menu_pressed();
 	if(m != nullptr) {
-		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
-		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false, get_display());
+		SDL_Rect menu_loc = m->location(get_display().screen_area());
+		while(true) {
+			std::vector<config> menu = expand_menu(m->items());
+			int res = show_menu(menu, menu_loc, false, get_display());
+			if(res < 0) {
+				return;
+			} else if(menu[res]["repeating"].to_bool(false)) {
+				execute_menu_selection(menu[res]["id"], res);
+				continue;
+			}
 
-		return;
+			m = get_display().get_theme().get_menu_item(menu[res]["id"]);
+			if (m == nullptr) {
+				execute_menu_selection(menu[res]["id"], res);
+				return;
+			}
+		}
 	}
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
@@ -286,17 +311,17 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 }
 
-void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+int controller_base::show_menu(const std::vector<config>& items_arg, SDL_Rect& where, bool context_menu, display& disp)
 {
 	hotkey::command_executor * cmd_exec = get_hotkey_command_executor();
 	if (!cmd_exec) {
-		return;
+		return -1;
 	}
 
-	std::vector<std::string> items = items_arg;
-	std::vector<std::string>::iterator i = items.begin();
+	std::vector<config> items = items_arg;
+	std::vector<config>::iterator i = items.begin();
 	while(i != items.end()) {
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(i->operator[]("id"));
 		if(!cmd_exec->can_execute_command(command)
 			|| (context_menu && !in_context_menu(command.id))) {
 			i = items.erase(i);
@@ -305,8 +330,18 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 		++i;
 	}
 	if(items.empty())
-		return;
-	cmd_exec->show_menu(items, xloc, yloc, context_menu, disp);
+		return -1;
+	return cmd_exec->show_menu(items, where, context_menu, disp);
+}
+
+std::vector<config> controller_base::expand_menu(const std::vector<std::string>& items)
+{
+	hotkey::command_executor* hkx = get_hotkey_command_executor();
+	std::vector<config> result;
+	if(hkx) {
+		result = hkx->get_menu_images(get_display(), items);
+	}
+	return result;
 }
 
 void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)

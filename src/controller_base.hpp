@@ -141,8 +141,9 @@ protected:
 	 */
 	virtual void process_keyup_event(const SDL_Event& event);
 
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
-	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+	virtual int show_menu(const std::vector<config>& items, SDL_Rect& where, bool context_menu, display& disp);
+	virtual std::vector<config> expand_menu(const std::vector<std::string>& items);
+	virtual void execute_action(const std::vector<std::string>& items, int xloc, int yloc, bool context_menu);
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
@@ -154,6 +155,8 @@ protected:
 	bool scroll_left_;
 	bool scroll_right_;
 	joystick_manager joystick_manager_;
+private:
+	void execute_menu_selection(const std::string& id, int index);
 };
 
 

@@ -33,6 +33,7 @@ public:
 	{
 	}
 	int selected_item() const { return selected_item_; }
+	SDL_Rect selected_item_rect() const { return selected_rect_; }
 private:
 	/// The screen location of the menu_button button that triggred this droplist.
 	/// Note: we don't adjust the location of this dialog to when resizing the window.
@@ -40,6 +41,7 @@ private:
 	SDL_Rect button_pos_;
 	std::vector<config> items_;
 	int selected_item_;
+	SDL_Rect selected_rect_;
 	bool use_markup_;
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

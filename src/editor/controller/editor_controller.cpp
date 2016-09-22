@@ -41,6 +41,7 @@
 #include "resources.hpp"
 #include "reports.hpp"
 
+#include "config_assign.hpp"
 #include "desktop/clipboard.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
@@ -240,6 +241,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	using namespace hotkey; //reduce hotkey:: clutter
 	switch (cmd.id) {
 		case HOTKEY_NULL:
+			index -= active_menu_base_index_;
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
 
@@ -532,6 +534,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 
 	case HOTKEY_NULL:
+		index -= active_menu_base_index_;
 		switch (active_menu_) {
 		case editor::MAP:
 			return index == context_manager_->current_context_index()
@@ -601,6 +604,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 	switch (command) {
 		case HOTKEY_NULL:
+			index -= active_menu_base_index_;
 			switch (active_menu_) {
 			case MAP:
 				if (index >= 0) {
@@ -653,10 +657,6 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
-					std::vector<std::string> items;
-					items.push_back("editor-playlist");
-					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
-					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
 				}
 			case SCHEDULE:
@@ -997,91 +997,126 @@ void editor_controller::show_help()
 	help::show_help(gui_->video(), "..editor");
 }
 
-void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+int editor_controller::show_menu(const std::vector<config>& items_arg, SDL_Rect& where, bool context_menu, display& disp)
 {
 	if (context_menu) {
-		if (!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
-			return;
+		if (!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(where.x, where.y))) {
+			return -1;
 		}
 	}
 
-	std::vector<std::string> items;
-	std::vector<std::string>::const_iterator i = items_arg.begin();
-	while(i != items_arg.end())
-	{
-
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+	std::vector<config> items;
+	std::vector<int> indices;
+	for(size_t i = 0; i < items_arg.size(); i++) {
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(items_arg[i]["id"]);
 
 		if ( ( can_execute_command(command)
 			&& (!context_menu || in_context_menu(command.id)) )
 			|| command.id == hotkey::HOTKEY_NULL) {
-			items.push_back(*i);
-		}
-		++i;
-	}
-	if (!items.empty() && items.front() == "EDITOR-LOAD-MRU-PLACEHOLDER") {
-		active_menu_ = editor::LOAD_MRU;
-		context_manager_->expand_load_mru_menu(items);
-	}
-	if (!items.empty() && items.front() == "editor-switch-map") {
-		active_menu_ = editor::MAP;
-		context_manager_->expand_open_maps_menu(items);
-	}
-	if (!items.empty() && items.front() == "editor-palette-groups") {
-		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
-	}
-	if (!items.empty() && items.front() == "editor-switch-side") {
-		active_menu_ = editor::SIDE;
-		context_manager_->expand_sides_menu(items);
-	}
-	if (!items.empty() && items.front() == "editor-switch-area") {
-		active_menu_ = editor::AREA;
-		context_manager_->expand_areas_menu(items);
-	}
-	if (!items.empty() && items.front() == "editor-switch-time") {
-		active_menu_ = editor::TIME;
-		context_manager_->expand_time_menu(items);
-	}
-	if (!items.empty() && items.front() == "editor-assign-local-time") {
-		active_menu_ = editor::LOCAL_TIME;
-		context_manager_->expand_local_time_menu(items);
-	}
-	if (!items.empty() && items.front() == "menu-unit-facings") {
-		active_menu_ = editor::UNIT_FACING;
-		items.erase(items.begin());
-		for (int dir = 0; dir != map_location::NDIRECTIONS; dir++)
-			items.push_back(map_location::write_translated_direction(map_location::DIRECTION(dir)));
-	}
-	if (!items.empty() && items.front() == "editor-playlist") {
-		active_menu_ = editor::MUSIC;
-		items.erase(items.begin());
-		for (const sound::music_track& track : music_tracks_) {
-			items.push_back(track.title().empty() ? track.id() : track.title());
-		}
-	}
-	if (!items.empty() && items.front() == "editor-assign-schedule") {
-		active_menu_ = editor::SCHEDULE;
-
-		items.erase(items.begin());
-
-		for (tods_map::iterator iter = tods_.begin();
-				iter != tods_.end(); ++iter) 	{
-			items.push_back(iter->second.first);
-		}
-	}
-	if (!items.empty() && items.front() == "editor-assign-local-schedule") {
-		active_menu_ = editor::LOCAL_SCHEDULE;
-
-		items.erase(items.begin());
-
-		for (tods_map::iterator iter = tods_.begin();
-				iter != tods_.end(); ++iter) 	{
-			items.push_back(iter->second.first);
+			items.push_back(items_arg[i]);
+			indices.push_back(i);
 		}
 	}
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
+	int res = command_executor::show_menu(items, where, context_menu, disp);
+	if(res >= 0 && static_cast<size_t>(res) < indices.size()) {
+
+		return indices[res];
+	}
+	return -1;
+}
+
+std::vector<config>::iterator editor_controller::set_active_menu(std::vector<config>& base_menu, const std::vector<config>& items, std::vector<config>::iterator base_pos, editor::menu_type type)
+{
+	active_menu_ = type;
+	active_menu_base_index_ = base_pos - base_menu.begin();
+	auto ret = base_menu.insert(base_menu.erase(base_pos), items.begin(), items.end());
+	for(size_t i = 0; i < items.size(); i++) {
+		size_t j = i + active_menu_base_index_;
+		config::attribute_value& icon = base_menu[j]["icon"];
+		switch(get_action_state(hotkey::HOTKEY_NULL, j)) {
+			case hotkey::ACTION_ON:
+				icon = game_config::images::checked_menu;
+				break;
+			case hotkey::ACTION_OFF:
+				icon = game_config::images::unchecked_menu;
+				break;
+			case hotkey::ACTION_SELECTED:
+				icon = game_config::images::selected_menu;
+				break;
+			case hotkey::ACTION_DESELECTED:
+				icon = game_config::images::deselected_menu;
+				break;
+			case hotkey::ACTION_STATELESS:
+				break;
+		}
+	}
+	return ret;
+}
+
+std::vector<config> editor_controller::expand_schedules_menu(const std::string& id) const
+{
+	std::vector<config> schedules;
+	for(tods_map::const_iterator iter = tods_.begin(); iter != tods_.end(); ++iter) {
+		schedules.push_back(config_of("label", iter->second.first)("id", id));
+	}
+	return schedules;
+}
+
+std::vector<config> editor_controller::expand_menu(const std::vector<std::string>& items)
+{
+	std::vector<config> menu = controller_base::expand_menu(items);
+	// Note: The game currently only supports ONE special placeholder item per menu.
+	// This is why each if statement contains a 'break'.
+	// It's also why 'iter++' is included in the loop header.
+	for(auto iter = menu.begin(); iter != menu.end(); iter++) {
+		const std::string& item = (*iter)["id"];
+		if(item == "EDITOR-LOAD-MRU-PLACEHOLDER") {
+			iter = set_active_menu(menu, context_manager_->expand_load_mru_menu(), iter, editor::LOAD_MRU);
+			break;
+		} else if(item == "editor-switch-map") {
+			iter = set_active_menu(menu, context_manager_->expand_open_maps_menu(), iter, editor::MAP);
+			break;
+		} else if(item == "editor-palette-groups") {
+			iter = set_active_menu(menu, toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(), iter, editor::PALETTE);
+			break;
+		} else if(item == "editor-switch-side") {
+			iter = set_active_menu(menu, context_manager_->expand_sides_menu(), iter, editor::SIDE);
+			break;
+		} else if(item == "editor-switch-area") {
+			iter = set_active_menu(menu, context_manager_->expand_areas_menu(), iter, editor::AREA);
+			break;
+		} else if(item == "editor-switch-time") {
+			iter = set_active_menu(menu, context_manager_->expand_time_menu(), iter, editor::TIME);
+			break;
+		} else if(item == "editor-assign-local-time") {
+			iter = set_active_menu(menu, context_manager_->expand_local_time_menu(), iter, editor::LOCAL_TIME);
+			break;
+		} else if(item == "menu-unit-facings") {
+			std::vector<config> directions;
+			for(int dir = 0; dir != map_location::NDIRECTIONS; dir++) {
+				directions.push_back(config_of("id","menu-unit-facings")("label",map_location::write_translated_direction(map_location::DIRECTION(dir))));
+			}
+			iter = set_active_menu(menu, directions, iter, editor::UNIT_FACING);
+			break;
+		} else if(item == "editor-playlist") {
+			std::vector<config> tracks;
+			for(const sound::music_track& track : music_tracks_) {
+				// Don't include the ID here, because that makes it not work.
+				// (The reason is that there's a dummy hotkey for this, so including the ID will attempt to execute that instead.)
+				tracks.push_back(config_of("label", track.title().empty() ? track.id() : track.title())("repeating", true));
+			}
+			iter = set_active_menu(menu, tracks, iter, editor::MUSIC);
+			break;
+		} else if(item == "editor-assign-schedule") {
+			iter = set_active_menu(menu, expand_schedules_menu(item), iter, editor::SCHEDULE);
+			break;
+		} else if(item == "editor-assign-local-schedule") {
+			iter = set_active_menu(menu, expand_schedules_menu(item), iter, editor::LOCAL_SCHEDULE);
+			break;
+		}
+	}
+	return menu;
 }
 
 void editor_controller::preferences()

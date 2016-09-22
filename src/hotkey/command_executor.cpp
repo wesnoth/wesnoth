@@ -23,6 +23,7 @@
 #include "gui/widgets/window.hpp"
 #include "wml_separators.hpp"
 #include "filesystem.hpp"
+#include "config_assign.hpp"
 #include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -359,61 +360,47 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 }
 
 
-void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
+int command_executor::show_menu(const std::vector<config>& items, SDL_Rect& pos, bool context_menu, display& gui)
 {
-	std::vector<std::string> items = items_arg;
-	if (items.empty()) return;
+	if (items.empty()) return -1;
 
-	std::vector<config> menu = get_menu_images(gui, items);
 	int res = -1;
 	{
-		SDL_Rect pos = {xloc, yloc, 1, 1};
-		gui2::tdrop_down_list mmenu(pos, menu, -1, false);
+		if(context_menu) {
+			pos.w = pos.h = 1;
+		}
+		gui2::tdrop_down_list mmenu(pos, items, -1, false);
 		mmenu.show(gui.video());
 		if(mmenu.get_retval() == gui2::twindow::OK) {
 			res = mmenu.selected_item();
+			if(res >= 0 && !items[res]["repeating"].to_bool()) {
+				pos = mmenu.selected_item_rect();
+			}
 		}
 	} // This will kill the dialog.
-	if (res < 0 || size_t(res) >= items.size()) return;
-
-	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]);
-	if (submenu) {
-		int y,x;
-		SDL_GetMouseState(&x,&y);
-		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
-	} else {
-		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]);
-		hotkey::execute_command(cmd,this,res);
-		set_button_state();
-	}
+	if (res < 0 || size_t(res) >= items.size()) return -1;
+	return res;
 }
 
-void command_executor::execute_action(const std::vector<std::string>& items_arg, int /*xloc*/, int /*yloc*/, bool /*context_menu*/, display&)
+void command_executor::execute_action(const std::vector<std::string>& items, int /*xloc*/, int /*yloc*/, bool /*context_menu*/, display&)
 {
-	std::vector<std::string> items = items_arg;
-	if (items.empty()) {
-		return;
-	}
-
-	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
-		const hotkey_command &command = hotkey::get_hotkey_command(*i);
+	for(const std::string& cmd_id : items) {
+		const hotkey_command &command = hotkey::get_hotkey_command(cmd_id);
 		if (can_execute_command(command)) {
 			hotkey::execute_command(command, this);
 			set_button_state();
 		}
-		++i;
 	}
 }
 
 std::string command_executor::get_menu_image(display& disp, const std::string& command, int index) const {
-
-	// TODO: Find a way to do away with the fugly special markup
-	if(command[0] == '&') {
-		size_t n = command.find_first_of('=');
-		if(n != std::string::npos)
-			return command.substr(1, n - 1);
-	}
+//
+//	// TODO: Find a way to do away with the fugly special markup
+//	if(command[0] == '&') {
+//		size_t n = command.find_first_of('=');
+//		if(n != std::string::npos)
+//			return command.substr(1, n - 1);
+//	}
 
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
@@ -455,7 +442,7 @@ std::vector<config> command_executor::get_menu_images(display& disp, const std::
 	for(size_t i = 0; i < items.size(); ++i) {
 		std::string const& item = items[i];
 		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item);
-		result.emplace_back();
+		result.emplace_back(config_of("id", item));
 
 		//see if this menu item has an associated image
 		std::string img(get_menu_image(disp, item, i));
@@ -464,41 +451,18 @@ std::vector<config> command_executor::get_menu_images(display& disp, const std::
 		}
 
 		const theme::menu* menu = disp.get_theme().get_menu_item(item);
-		if (hk == hotkey::HOTKEY_NULL) {
-			if (menu)
-				result.back()["label"] = menu->title();
-			else {
-				std::string label(item.begin(), item.begin() + item.find_last_not_of(' ') + 1);
-
-				// TODO: To away with the fugly markup, both '=' and 0x01
-				size_t i = label.find_first_of('=');
-				if(i != std::string::npos)
-					result.back()["label"] = label.substr(i + 1);
-				else {
-					i = label.find_first_of(1);
-					if(i != std::string::npos) {
-						result.back()["details"] = label.substr(i + 1);
-						result.back()["image"] = label.substr(1, i - 1);
-					} else {
-						result.back()["label"] = label;
-					}
+		if (menu) {
+			result.back()["label"] = menu->title();
+		} else if(hk != HOTKEY_NULL) {
+			std::string desc = hotkey::get_description(item);
+			if (hk == HOTKEY_ENDTURN) {
+				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
+				if (b) {
+					desc = b->title();
 				}
 			}
-		} else {
-
-			if (menu)
-				result.back()["label"] = menu->title();
-			else {
-				std::string desc = hotkey::get_description(item);
-				if (hk == HOTKEY_ENDTURN) {
-					const theme::action *b = disp.get_theme().get_action_item("button-endturn");
-					if (b) {
-						desc = b->title();
-					}
-				}
-				result.back()["label"] = desc;
-				result.back()["details"] = hotkey::get_names(item);
-			}
+			result.back()["label"] = desc;
+			result.back()["details"] = hotkey::get_names(item);
 		}
 	}
 	return result;

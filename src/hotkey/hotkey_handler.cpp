@@ -15,6 +15,7 @@
 #include "hotkey/hotkey_handler.hpp"
 
 #include "actions/create.hpp"
+#include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"
@@ -372,102 +373,80 @@ static void trim_items(std::vector<std::string>& newitems) {
 	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<std::string>& items)
+std::vector<config> play_controller::hotkey_handler::expand_autosaves()
 {
 	const compression::format comp_format =
 		preferences::save_compression_format();
 
 	savenames_.clear();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "AUTOSAVES") {
-			items.erase(items.begin() + i);
-			std::vector<std::string> newitems;
-			std::vector<std::string> newsaves;
-			for (unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
-				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + std::to_string(turn);
-				if (savegame::save_game_exists(name, comp_format)) {
-					newsaves.push_back(
-						name + compression::format_extension(comp_format));
-					newitems.push_back(_("Back to Turn ") + std::to_string(turn));
-				}
-			}
-
-			const std::string& start_name = saved_game_.classification().label;
-			if(savegame::save_game_exists(start_name, comp_format)) {
-				newsaves.push_back(
-					start_name + compression::format_extension(comp_format));
-				newitems.push_back(_("Back to Start"));
-			}
-
-			// Make sure list doesn't get too long: keep top two,
-			// midpoint and bottom.
-			trim_items(newitems);
-			trim_items(newsaves);
-
-			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
-			break;
+	std::vector<std::string> newitems;
+	std::vector<std::string> newsaves;
+	for (unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
+		std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + std::to_string(turn);
+		if (savegame::save_game_exists(name, comp_format)) {
+			newsaves.push_back(
+				name + compression::format_extension(comp_format));
+			newitems.push_back(_("Back to Turn ") + std::to_string(turn));
 		}
-		savenames_.push_back("");
 	}
+
+	const std::string& start_name = saved_game_.classification().label;
+	if(savegame::save_game_exists(start_name, comp_format)) {
+		newsaves.push_back(
+			start_name + compression::format_extension(comp_format));
+		newitems.push_back(_("Back to Start"));
+	}
+
+	// Make sure list doesn't get too long: keep top two,
+	// midpoint and bottom.
+	trim_items(newitems);
+	trim_items(newsaves);
+
+	std::vector<config> result;
+	std::transform(newitems.begin(), newitems.end(), std::back_inserter(result), [](const std::string& name) {
+		return config_of("label", name)("id", "AUTOSAVES");
+	});
+	savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
+	savenames_.push_back("");
+	return result;
 }
 
-void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::string>& items)
+std::vector<config> play_controller::hotkey_handler::expand_wml_commands()
 {
 	wml_commands_.clear();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "wml") {
-			std::vector<std::string> newitems;
+	std::vector<std::string> newitems;
 
-			// Replace this placeholder entry with available menu items.
-			items.erase(items.begin() + i);
-			gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
-				gamestate(), gamestate().gamedata_, gamestate().board_.units_);
-			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			// End the "for" loop.
-			break;
-		}
-		// Pad the commands with null pointers (keeps the indices of items and
-		// wml_commands_ synced).
-		wml_commands_.push_back(const_item_ptr());
-	}
+	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
+		gamestate(), gamestate().gamedata_, gamestate().board_.units_);
+
+	std::vector<config> result;
+	std::transform(newitems.begin(), newitems.end(), std::back_inserter(result), [](const std::string& name) {
+		return config_of("id", "wml")("label", name);
+	});
+	return result;
 }
 
-void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+int play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, SDL_Rect& where, bool context_menu, display& disp)
 {
 	if (context_menu)
 	{
-		last_context_menu_x_ = xloc;
-		last_context_menu_y_ = yloc;
+		last_context_menu_x_ = where.x;
+		last_context_menu_y_ = where.y;
 	}
 
-	std::vector<std::string> items = items_arg;
-	const hotkey::hotkey_command* cmd;
-	std::vector<std::string>::iterator i = items.begin();
+	std::vector<config> items = items_arg;
+	std::vector<config>::iterator i = items.begin();
 	while(i != items.end()) {
-		if (*i == "AUTOSAVES") {
-			// Autosave visibility is similar to LOAD_GAME hotkey
-
-			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
-		} else {
-			cmd = &hotkey::get_hotkey_command(*i);
-		}
+		const hotkey::hotkey_command cmd = hotkey::get_hotkey_command(i->operator[]("id"));
 		// Remove commands that can't be executed or don't belong in this type of menu
-		if(*i != "wml" && (!can_execute_command(*cmd) || (context_menu && !in_context_menu(cmd->id)))) {
+		if(i->operator[]("id") != "wml" && (!can_execute_command(cmd) || (context_menu && !in_context_menu(cmd.id)))) {
 			i = items.erase(i);
 			continue;
 		}
 		++i;
 	}
 
-	// Add special non-hotkey items to the menu and remember their indices
-	expand_autosaves(items);
-	expand_wml_commands(items);
-
-	if(items.empty())
-		return;
-
-	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
+	return command_executor::show_menu(items, where, context_menu, disp);
 }
 
 bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND command) const
