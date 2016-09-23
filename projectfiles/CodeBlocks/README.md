@@ -1,6 +1,6 @@
 ## Compiling Wesnoth on Windows using CodeBlocks
 
-(Last tested using Wesnoth 1.13.2+ on Code::Blocks 16.01)
+(Last tested using Wesnoth 1.13.5+ on Code::Blocks 16.01)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
@@ -47,7 +47,7 @@
     dialog. Enter the following settings into the text boxes:
 
     * Compiler's installation directory: the path to which you installed
-      tdm-gcc-4.5.2 (click on ... to browse for it).
+      tdm-gcc-5.1.0 (click on ... to browse for it).
     * C compiler, C++ compiler, Linker for dynamic libs: g++.exe
     * Linker for static libs: ar.exe
 
