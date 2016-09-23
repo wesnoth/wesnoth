@@ -53,7 +53,9 @@ function ca_attack_highxp:evaluation(cfg, data)
     -- but it is much faster than path finding, so it is done for preselection.
     local target_infos = {}
     for i_t,enemy in ipairs(all_units) do
-        if wesnoth.is_enemy(wesnoth.current.side, enemy.side) then
+        if wesnoth.is_enemy(wesnoth.current.side, enemy.side)
+            and enemy:matches({ { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } } })
+        then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level >= XP_to_levelup) then
                 local potential_target = false
