@@ -51,13 +51,13 @@
 			<Add library="SDL2" />
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
-			<Add library="libboost_iostreams-mgw51-mt-1_58.a" />
-			<Add library="libboost_bzip2-mgw51-mt-1_58.a" />
-			<Add library="libboost_filesystem-mgw51-mt-1_58.a" />
-			<Add library="libboost_locale-mgw51-mt-1_58.a" />
-			<Add library="libboost_random-mgw51-mt-1_58.a" />
-			<Add library="libboost_system-mgw51-mt-1_58.a" />
-			<Add library="libboost_zlib-mgw51-mt-1_58.a" />
+			<Add library="libboost_iostreams-mgw51-mt-1_61.a" />
+			<Add library="libboost_bzip2-mgw51-mt-1_61.a" />
+			<Add library="libboost_filesystem-mgw51-mt-1_61.a" />
+			<Add library="libboost_locale-mgw51-mt-1_61.a" />
+			<Add library="libboost_random-mgw51-mt-1_61.a" />
+			<Add library="libboost_system-mgw51-mt-1_61.a" />
+			<Add library="libboost_zlib-mgw51-mt-1_61.a" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnothd.rc">
 			<Option compilerVar="WINDRES" />
@@ -120,6 +120,8 @@
 		<Unit filename="../../src/server/sample_user_handler.hpp" />
 		<Unit filename="../../src/server/server.cpp" />
 		<Unit filename="../../src/server/server.hpp" />
+		<Unit filename="../../src/server/server_base.cpp" />
+		<Unit filename="../../src/server/server_base.hpp" />
 		<Unit filename="../../src/server/simple_wml.cpp" />
 		<Unit filename="../../src/server/simple_wml.hpp" />
 		<Unit filename="../../src/server/user_handler.cpp" />
