@@ -276,6 +276,10 @@ function ca_attack_highxp:evaluation(cfg, data)
                     best_attack = attack_info
                     best_attack.target = { x = target.x, y = target.y }
                     best_attack.ca_score = ca_score
+                    -- Also need to save weapon number because attack simulation above
+                    -- is for a different situation than the actual units on the map.
+                    -- +1 because of difference between Lua and C++ indices
+                    best_attack.attack_num = att_weapon.attack_num + 1
                 end
             end
         end
@@ -297,7 +301,7 @@ function ca_attack_highxp:execution(cfg, data)
 
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
-    AH.checked_attack(ai, attacker, defender)
+    AH.checked_attack(ai, attacker, defender, data.XP_attack.attack_num)
 
     data.XP_attack = nil
 end
