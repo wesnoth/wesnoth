@@ -75,6 +75,10 @@ public:
 	// and second element whether to silently update UI.
 	std::pair<bool, bool> process_network_data(const config& data);
 
+	// First two elements are the same as above, the third is any data
+	// received from the server (or empty config if there isn't any new data).
+	std::tuple<bool, bool, config> process_network_data();
+
 	// Returns the side which is taken by a given user,
 	// or -1 if none was found.
 	int find_user_side_index_by_id(const std::string& id) const;

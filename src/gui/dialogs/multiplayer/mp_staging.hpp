@@ -28,6 +28,7 @@ class config;
 namespace gui2
 {
 
+class tchatbox;
 class ttoggle_button;
 class ttoggle_panel;
 class tslider;
@@ -51,6 +52,9 @@ private:
 	void post_show(twindow& window);
 
 	void sync_changes();
+
+	/** Clears asynchronous send and receive buffers and handles incoming data. */
+	void process_network(tchatbox& chat);
 
 	void on_controller_select(ng::side_engine& side, tgrid& row_grid);
 	void on_ai_select(ng::side_engine& side, tmenu_button& ai_menu);
