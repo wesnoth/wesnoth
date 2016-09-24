@@ -225,8 +225,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 #undef TRY
 #endif
 
+	// FAIL() doesn't return
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
-	return nullptr;
 }
 
 /*WIKI
