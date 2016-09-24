@@ -176,7 +176,11 @@ void tmp_staging::pre_show(twindow& window)
 
 		tmenu_button& team_selection = find_widget<tmenu_button>(&row_grid, "side_team", false);
 
-		team_selection.set_values(team_names, side.team());
+		// HACK: side.team() does not get its index from side.player_teams(), but rather side.team_names().
+		// As such, the index is off if there is only 1 playable team. This is a hack to make sure the menu_button
+		// widget doesn't assert with the invalid initial selection. The connect_engine should be fixed once the GUI1
+		// dialog is dropped
+		team_selection.set_values(team_names, std::min(static_cast<int>(team_names.size() - 1), side.team()));
 		team_selection.set_active(!saved_game);
 		team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(side), std::ref(team_selection)));
 
