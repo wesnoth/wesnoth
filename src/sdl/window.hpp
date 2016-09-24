@@ -31,7 +31,7 @@
 
 #include <string>
 
-struct surface;
+class surface;
 struct SDL_Renderer;
 
 namespace sdl

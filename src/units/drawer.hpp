@@ -37,7 +37,7 @@ class unit;
 
 struct SDL_Color;
 struct SDL_Rect;
-struct surface;
+class surface;
 
 # include <SDL_types.h>
 typedef Sint32 fixed_t;

@@ -24,7 +24,7 @@
 #include "gpu.hpp"
 #include <string>
 
-struct surface;
+class surface;
 class CVideo;
 
 namespace sdl

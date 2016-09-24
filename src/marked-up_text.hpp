@@ -19,7 +19,7 @@
 
 
 class CVideo;
-struct surface;
+class surface;
 #include <SDL_video.h>
 #include <string>
 #include "serialization/unicode_types.hpp"
