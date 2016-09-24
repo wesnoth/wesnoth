@@ -17,7 +17,6 @@
 #ifndef SDL_UTILS_INCLUDED
 #define SDL_UTILS_INCLUDED
 
-#include "scoped_resource.hpp"
 #include "util.hpp"
 
 #include <SDL.h>
