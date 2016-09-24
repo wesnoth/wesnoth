@@ -67,13 +67,7 @@ std::string format_time_summary(time_t t) {
 	}
 	assert(!format_string.empty());
 
-	char buf[40];
-	const size_t res = util::strftime(buf, sizeof(buf), format_string, &save_time);
-	if(res == 0) {
-		buf[0] = 0;
-	}
-
-	return buf;
+	return translation::strftime(format_string, &save_time);
 }
 
 }

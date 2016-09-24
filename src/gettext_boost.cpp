@@ -83,7 +83,7 @@ namespace
 			}
 
 			generator_.use_ansi_encoding(false);
-			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet);
+			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet);
 			generator_.characters(bl::char_facet);
 			//we cannot have current_locale_ beeing a non boost gerenerated locale since it might not suppy
 			//the boost::locale::info facet. as soon as we add message paths update_locale_internal might fail
@@ -276,4 +276,14 @@ void init()
 {
 
 }
+
+std::string strftime(const std::string& format, const std::tm* time)
+{
+	std::basic_ostringstream<char> dummy;
+	dummy.imbue(get_manager().get_locale());
+	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
+
+	return dummy.str();
+}
+
 }

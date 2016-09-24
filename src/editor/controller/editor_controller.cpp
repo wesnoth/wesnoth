@@ -17,7 +17,6 @@
 
 #include "editor/map/context_manager.hpp"
 
-#include "asserts.hpp"
 #include "editor/action/action.hpp"
 #include "editor/action/action_unit.hpp"
 #include "editor/action/action_select.hpp"

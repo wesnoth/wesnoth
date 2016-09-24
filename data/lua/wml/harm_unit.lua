@@ -1,6 +1,7 @@
 local helper = wesnoth.require "lua/helper.lua"
 local utils = wesnoth.require "lua/wml-utils.lua"
 local wml_actions = wesnoth.wml_actions
+local T = helper.set_wml_tag_metatable {}
 
 function wml_actions.harm_unit(cfg)
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[harm_unit] missing required [filter] tag")

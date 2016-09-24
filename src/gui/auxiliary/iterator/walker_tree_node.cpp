@@ -17,7 +17,7 @@
 #include "gui/auxiliary/iterator/walker_tree_node.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
-#include "asserts.hpp"
+#include <cassert>
 
 namespace gui2
 {

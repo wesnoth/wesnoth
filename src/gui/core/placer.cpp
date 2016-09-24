@@ -16,7 +16,7 @@
 
 #include "gui/core/placer.hpp"
 
-#include "asserts.hpp"
+#include <cassert>
 #include "gui/core/placer/horizontal_list.hpp"
 #include "gui/core/placer/vertical_list.hpp"
 
@@ -34,7 +34,7 @@ tplacer_* tplacer_::build(const tgrow_direction grow_direction,
 			return new implementation::tplacer_vertical_list(parallel_items);
 	};
 
-	UNREACHABLE_CODE;
+	throw "UNREACHABLE CODE REACHED";
 }
 
 tplacer_::~tplacer_()

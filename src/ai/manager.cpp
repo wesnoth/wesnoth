@@ -218,7 +218,6 @@ config holder::to_config() const
 		return cfg_;
 	} else {
 		config cfg = ai_->to_config();
-		cfg["version"] = "10703";
 		if (this->side_context_!=nullptr) {
 			cfg.merge_with(this->side_context_->to_side_context_config());
 		}

@@ -18,7 +18,6 @@
  */
 
 #include "global.hpp"
-#include "asserts.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "storyscreen/part.hpp"

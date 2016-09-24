@@ -37,6 +37,7 @@
 #include "wesconfig.h"
 #include <string>
 #include <vector>
+#include <ctime>
 
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
@@ -76,6 +77,8 @@ namespace translation
 
 	void init();
 	int compare(const std::string& s1,const std::string& s2);
+
+	std::string strftime(const std::string& format, const std::tm* time);
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)

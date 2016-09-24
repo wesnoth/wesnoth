@@ -17,12 +17,13 @@
 
 #include "gui/widgets/generator.hpp"
 
-#include "asserts.hpp"
+#include <cassert>
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp" // For twindow::tvisible
+#include "wml_exception.hpp"
 
 namespace gui2
 {
@@ -696,7 +697,8 @@ public:
 					return i;
 				}
 			}
-			ERROR_LOG("No item selected.");
+			FAIL_WITH_DEV_MESSAGE("No item selected.",
+				"selected_item_count_ was non-zero, yet no selected item was found.");
 		}
 	}
 

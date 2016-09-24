@@ -16,7 +16,6 @@
 
 #include "gui/core/window_builder.hpp"
 
-#include "asserts.hpp"
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
@@ -101,7 +100,7 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 			t_string msg = vgettext(
 					"Linked '$id' group has multiple definitions.", symbols);
 
-			VALIDATE(false, msg);
+			FAIL(msg);
 		}
 
 		window->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
@@ -155,8 +154,7 @@ register_builder_widget(const std::string& id,
 tbuilder_widget_ptr create_builder_widget(const config& cfg)
 {
 	config::const_all_children_itors children = cfg.all_children_range();
-	size_t nb_children = std::distance(children.begin(), children.end());
-	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
+	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
 
 	for(const auto & item : builder_widget_lookup())
 	{
@@ -230,8 +228,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 #undef TRY
 #endif
 
-	std::cerr << cfg;
-	ERROR_LOG(false);
+	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
+	return nullptr;
 }
 
 /*WIKI
@@ -445,7 +443,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 							   "'fixed_height' key.",
 							   symbols);
 
-			VALIDATE(false, msg);
+			FAIL(msg);
 		}
 
 		linked_groups.push_back(linked_group);

@@ -23,7 +23,7 @@
 #include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
 
-#include "asserts.hpp"
+#include <cassert>
 #include "variable.hpp"
 
 #include "game_events/conditional_wml.hpp"
@@ -50,7 +50,7 @@ controller::controller(CVideo& video, const vconfig& data, const std::string& sc
 	, segment_index_(segment_index)
 	, parts_()
 {
-	ASSERT_LOG(resources::gamedata != nullptr, "Ouch: gamedata is nullptr when initializing storyscreen controller");
+	assert(resources::gamedata != nullptr && "Ouch: gamedata is nullptr when initializing storyscreen controller");
 	resolve_wml(data);
 }
 
@@ -160,7 +160,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 #ifndef LOW_MEM
 	std::vector< render_pointer_type > uis_;
 	for(part_pointer_type p : parts_) {
-		ASSERT_LOG( p != nullptr, "Ouch: hit nullptr storyscreen part in collection" );
+		assert(p != nullptr && "Ouch: hit nullptr storyscreen part in collection");
 		render_pointer_type const rpt(new part_ui(*p, video_, next_button, back_button, play_button));
 		uis_.push_back(rpt);
 	}

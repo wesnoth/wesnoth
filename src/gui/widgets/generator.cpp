@@ -1090,9 +1090,7 @@ tselect::init(tgrid* grid,
 			} else if(child_grid) {
 				init(child_grid, data, callback);
 			} else {
-				VALIDATE(false,
-						 "Only toggle buttons and panels are allowed as "
-						 "the cells of a list definition.");
+				FAIL("Only toggle buttons and panels are allowed as the cells of a list definition.");
 			}
 		}
 	}

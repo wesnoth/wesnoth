@@ -532,6 +532,7 @@ public:
 	t_string tooltip;
 	t_string help;
 	bool use_tooltip_on_label_overflow;
+	bool use_markup;
 };
 
 } // namespace implementation

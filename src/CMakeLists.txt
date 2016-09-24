@@ -834,6 +834,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/multiplayer/mp_login.cpp
 	gui/dialogs/multiplayer/mp_method_selection.cpp
 	gui/dialogs/multiplayer/mp_options_helper.cpp
+	gui/dialogs/multiplayer/mp_staging.cpp
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
 	gui/dialogs/preferences_dialog.cpp
