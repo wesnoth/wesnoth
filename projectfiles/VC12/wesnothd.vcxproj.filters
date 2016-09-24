@@ -57,6 +57,9 @@
     <ClCompile Include="..\..\src\server\server.cpp">
       <Filter>Server</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\server\server_base.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\server\simple_wml.cpp">
       <Filter>Server</Filter>
     </ClCompile>
@@ -65,9 +68,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
-    <ClCompile Include="..\..\src\server\server_base.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\server\ban.hpp">
@@ -100,6 +100,9 @@
     <ClInclude Include="..\..\src\server\server.hpp">
       <Filter>Server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\server\server_base.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\server\simple_wml.hpp">
       <Filter>Server</Filter>
     </ClInclude>
@@ -108,8 +111,5 @@
     </ClInclude>
     <ClInclude Include="..\..\src\mt_rng.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
-    <ClInclude Include="..\..\src\server\server_base.hpp">
-      <Filter>Server</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

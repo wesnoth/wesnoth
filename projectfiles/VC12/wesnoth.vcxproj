@@ -2286,6 +2286,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\container.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -2410,13 +2417,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\multi_page.cpp">
@@ -2987,14 +2987,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scripting\Plugins\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\Plugins\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\Plugins\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\sdl\alpha.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\sdl\exception.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
@@ -4273,6 +4265,7 @@
     <ClInclude Include="..\..\src\gui\widgets\slider.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\spacer.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\stacked_widget.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\status_label_helper.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\text.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\text_box.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\toggle_button.hpp" />
@@ -4380,7 +4373,6 @@
     <ClInclude Include="..\..\src\scripting\plugins\context.hpp" />
     <ClInclude Include="..\..\src\scripting\plugins\manager.hpp" />
     <ClInclude Include="..\..\src\scripting\push_check.hpp" />
-    <ClInclude Include="..\..\src\sdl\alpha.hpp" />
     <ClInclude Include="..\..\src\sdl\exception.hpp" />
     <ClInclude Include="..\..\src\sdl\gpu.hpp" />
     <ClInclude Include="..\..\src\sdl\image.hpp" />
@@ -4388,6 +4380,7 @@
     <ClInclude Include="..\..\src\sdl\shader.hpp" />
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
+    <ClInclude Include="..\..\src\SDL_SavePNG\savepng.h" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />
