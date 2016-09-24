@@ -166,6 +166,8 @@ Version 1.13.5+dev:
      player opened and closed a menu.
    * Correct unit recall count in statistics when undoing a unit recall (bug #25060)
    * Add tip to recall units instead of recruiting them if costs exceed 20 gold (recruitment costs)
+   * Resolve sides in map editor not having a proper side number and subsequently
+     causing a crash upon editing (bug #25093)
 
 Version 1.13.5:
  * Campaigns:

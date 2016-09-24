@@ -133,8 +133,8 @@ public:
 	/** Display a scenario edit dialog and process user input. */
 	void edit_scenario_dialog();
 
-	/** TODO */
-	void edit_side_dialog(int side);
+	/** Display a side edit dialog and process user input. */
+	void edit_side_dialog(int side_index);
 
 	/** Display a new map dialog and process user input. */
 	void new_map_dialog();
