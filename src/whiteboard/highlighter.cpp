@@ -190,6 +190,22 @@ void highlighter::last_action_redraw(move_ptr move)
 	//Last action with a fake unit always gets normal appearance
 	if(move->get_fake_unit()) {
 		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
+
+		// Units with planned actions may have been killed in the previous turn before all actions were completed.
+		// In these cases, remove these planned actions for any invalid units and do not redraw anything.
+		if (move->get_unit() == NULL)
+		{
+			// Note: the planned actions seem to only get removed from the screen when
+			// a redraw is triggered by the mouse cursor moving over them.
+			for (side_actions::iterator iterator = sa.begin(); iterator < sa.end(); iterator++)
+			{
+				if (iterator->get()->get_unit() == NULL)
+					sa.remove_action (iterator);
+			}
+
+			return;
+		}
+
 		side_actions::iterator last_action = sa.find_last_action_of(*(move->get_unit()));
 		side_actions::iterator second_to_last_action = last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 
