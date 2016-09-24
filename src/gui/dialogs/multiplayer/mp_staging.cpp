@@ -282,11 +282,11 @@ void tmp_staging::on_controller_select(ng::side_engine& side, tgrid& row_grid)
 	tmenu_button& ai_selection         = find_widget<tmenu_button>(&row_grid, "ai_controller", false);
 	tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
 
-	side.set_controller(side.controller_options()[controller_selection.get_value()].first);
+	if(side.controller_changed(controller_selection.get_value())) {
+		ai_selection.set_visible(side.controller() == ng::CNTR_COMPUTER ? twidget::tvisible::visible : twidget::tvisible::hidden);
 
-	ai_selection.set_visible(side.controller() == ng::CNTR_COMPUTER ? twidget::tvisible::visible : twidget::tvisible::hidden);
-
-	sync_changes();
+		sync_changes();
+	}
 }
 
 void tmp_staging::on_ai_select(ng::side_engine& side, tmenu_button& ai_menu)
