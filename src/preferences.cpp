@@ -194,6 +194,11 @@ void set(const std::string &key, const std::string &value)
 	prefs[key] = value;
 }
 
+void set(const std::string &key, const config::attribute_value &value)
+{
+	prefs[key] = value;
+}
+
 void clear(const std::string& key)
 {
 	prefs.recursive_clear_value(key);
@@ -228,6 +233,11 @@ std::string get(const std::string& key, const std::string& def) {
 bool get(const std::string &key, bool def)
 {
 	return prefs[key].to_bool(def);
+}
+
+config::attribute_value get_as_attribute(const std::string &key)
+{
+	return prefs[key];
 }
 
 void disable_preferences_save() {

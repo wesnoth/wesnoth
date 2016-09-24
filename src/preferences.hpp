@@ -17,9 +17,9 @@
 #ifndef PREFERENCES_HPP_INCLUDED
 #define PREFERENCES_HPP_INCLUDED
 
-class config;
 class display;
 
+#include "config.hpp"
 #include "terrain/translation.hpp"
 
 #include <SDL.h>
@@ -52,14 +52,16 @@ namespace preferences {
 
 	void set(const std::string& key, const std::string &value);
 	void set(const std::string& key, char const *value);
-	void set(const std::string &key, bool value);
-	void set(const std::string &key, int value);
+	void set(const std::string& key, bool value);
+	void set(const std::string& key, int value);
+	void set(const std::string& key, const config::attribute_value& value);
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
 	const config &get_child(const std::string &key);
 	std::string get(const std::string& key);
 	std::string get(const std::string& key, const std::string& def);
-	bool get(const std::string &key, bool def);
+	bool get(const std::string& key, bool def);
+	config::attribute_value get_as_attribute(const std::string& key);
 	void erase(const std::string& key);
 	bool have_setting(const std::string& key);
 
