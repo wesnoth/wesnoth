@@ -64,6 +64,7 @@ tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engi
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)
 {
+	set_show_even_without_video(true);
 }
 
 void tmp_staging::pre_show(twindow& window)
@@ -268,7 +269,7 @@ void tmp_staging::pre_show(twindow& window)
 
 	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
-	plugins_context_->set_callback("chat",   [this, &window](const config&) { return; /* TODO*/ }, false);
+	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
 void tmp_staging::sync_changes()

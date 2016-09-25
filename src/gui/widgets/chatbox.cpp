@@ -37,6 +37,7 @@
 #include "game_preferences.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
+#include "scripting/plugins/manager.hpp"
 
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
@@ -701,6 +702,11 @@ void tchatbox::process_message(const ::config& data, bool whisper /*= false*/)
 
 		add_chat_room_message_received(room, sender, message);
 	}
+
+	// Notify plugins about the message
+	::config plugin_data = data;
+	plugin_data["whisper"] = whisper;
+	plugins_manager::get()->notify_event("chat", plugin_data);
 }
 
 bool tchatbox::process_network_data(const ::config& data)
