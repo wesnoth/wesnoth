@@ -69,9 +69,15 @@ local function plugin()
 
   context.create({})
 
+  while (info.name ~= "Multiplayer Staging") do
+    events, context, info = coroutine.yield()
+    idle_text("in " .. info.name .. " waiting for staging")
+  end
+
   ready = nil
   repeat
     events, context, info = coroutine.yield()
+    context.process_network({})
     for i,v in ipairs(events) do
       if v[1] == "chat" then
         std_print(events[i][2])

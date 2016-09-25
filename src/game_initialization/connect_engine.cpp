@@ -759,6 +759,21 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 	return result;
 }
 
+std::tuple<bool, bool, config> connect_engine::process_network_data()
+{
+	config data;
+	bool has_data = campaign_info_->wesnothd_connection.receive_data(data);
+	if (!has_data)
+	{
+		return std::make_tuple(false, false, data);
+	}
+	else
+	{
+		std::pair<bool, bool> ret = process_network_data(data);
+		return std::make_tuple(ret.first, ret.second, data);
+	}
+}
+
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
 	size_t i = 0;

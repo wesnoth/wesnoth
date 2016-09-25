@@ -64,6 +64,7 @@ tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engi
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)
 {
+	set_show_even_without_video(true);
 }
 
 void tmp_staging::pre_show(twindow& window)
@@ -268,13 +269,21 @@ void tmp_staging::pre_show(twindow& window)
 
 	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
-	plugins_context_->set_callback("chat",   [this, &window](const config&) { return; /* TODO*/ }, false);
+	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
+	plugins_context_->set_callback("process_network", [this, &chat](const config&) { process_network(chat); }, true);
 }
 
 void tmp_staging::sync_changes()
 {
 	// TODO: should this call somehow be integrated into the connect engine setters?
 	connect_engine_.update_and_send_diff();
+}
+
+void tmp_staging::process_network(tchatbox& chat)
+{
+	config data;
+	std::tie(std::ignore, std::ignore, data) = connect_engine_.process_network_data();
+	chat.process_network_data(data);
 }
 
 void tmp_staging::on_controller_select(ng::side_engine& side, tgrid& row_grid)
