@@ -454,7 +454,6 @@ surface o_modification::operator()(const surface& src) const
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*src->h;
 
-		if (amount < 0) amount = 0;
 		while(beg != end) {
 			Uint8 alpha = (*beg) >> 24;
 
