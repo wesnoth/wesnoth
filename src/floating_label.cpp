@@ -121,7 +121,7 @@ sdl::timage floating_label::create_image()
 
 			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 
 			img_ = sdl::timage(background);
 		}
@@ -131,7 +131,7 @@ sdl::timage floating_label::create_image()
 				(foreground->w + 4, foreground->h + 4);
 			sdl::fill_rect(background, nullptr, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 			background = shadow_image(background, false);
 
 			if (background == nullptr) {
@@ -140,7 +140,7 @@ sdl::timage floating_label::create_image()
 				return img_;
 			}
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 			img_ = sdl::timage(background);
 		}
 	}
@@ -194,7 +194,7 @@ surface floating_label::create_surface()
 
 			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 
 			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
 			surf_ = background;
@@ -208,7 +208,7 @@ surface floating_label::create_surface()
 				(foreground->w + 4, foreground->h + 4);
 			sdl::fill_rect(background, nullptr, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 			background = shadow_image(background, false);
 
 			if (background == nullptr) {
@@ -217,7 +217,7 @@ surface floating_label::create_surface()
 				return surf_ = foreground;
 			}
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
 			surf_ = background;
 		}

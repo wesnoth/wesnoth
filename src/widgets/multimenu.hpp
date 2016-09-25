@@ -62,7 +62,7 @@ namespace gui {
 		int last_changed();
 
 	protected:
-		virtual void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row(const size_t row_index, SDL_Rect& rect, ROW_TYPE type);
 		virtual void handle_event(const SDL_Event& event);
 
 		/**

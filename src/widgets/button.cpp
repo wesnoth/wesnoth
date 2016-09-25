@@ -555,7 +555,7 @@ void button::draw_contents()
 		}
 
 		surface nimage = make_neutral_surface(image);
-		blit_surface(noverlay, nullptr, nimage, nullptr);
+		sdl_blit(noverlay, nullptr, nimage, nullptr);
 		image = nimage;
 	}
 

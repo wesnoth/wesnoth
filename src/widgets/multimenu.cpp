@@ -22,11 +22,11 @@ namespace gui {
 		menu(video, items, click_selects, max_height, max_width, sorter_obj, menu_style, auto_join),
 		active_items_(items.size(), false) {}
 
-	void multimenu::draw_row(const size_t row_index, const SDL_Rect &rect, menu::ROW_TYPE type) {
+	void multimenu::draw_row(const size_t row_index, SDL_Rect &rect, menu::ROW_TYPE type) {
 		surface img = image::get_image(active_items_[row_index]
 									   ? "buttons/checkbox-pressed.png"
 									   : "buttons/checkbox.png");
-		blit_surface(img, nullptr, video().getSurface(), &rect);
+		sdl_blit(img, nullptr, video().getSurface(), &rect);
 		SDL_Rect newrect = {
 				Sint16 (rect.x + img->w + 2),
 				rect.y,

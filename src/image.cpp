@@ -622,7 +622,7 @@ static surface apply_light(surface surf, const light_string& ls){
 				//copy the cached image to avoid modifying the cache
 				lightmap = make_neutral_surface(lts);
 			} else{
-				blit_surface(lts, nullptr, lightmap, nullptr);
+				sdl_blit(lts, nullptr, lightmap, nullptr);
 			}
 		}
 		//cache the result
