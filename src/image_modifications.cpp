@@ -292,11 +292,10 @@ surface blit_modification::operator()(const surface& src) const
 		throw texception(sstr);
 	}
 
-	//blit_surface want neutral surfaces
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
 	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
-	blit_surface(nsurf, nullptr, nsrc, &r);
+	sdl_blit(nsurf, nullptr, nsrc, &r);
 	return nsrc;
 }
 
@@ -321,7 +320,7 @@ surface mask_modification::operator()(const surface& src) const
 		return mask_surface(src, mask_);
 	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
 	surface new_mask = create_neutral_surface(src->w, src->h);
-	blit_surface(mask_, nullptr, new_mask, &r);
+	sdl_blit(mask_, nullptr, new_mask, &r);
 	return mask_surface(src, new_mask);
 }
 
@@ -546,7 +545,7 @@ surface brighten_modification::operator()(const surface &src) const
 	surface ret = make_neutral_surface(src);
 	surface tod_bright(image::get_image(game_config::images::tod_bright));
 	if (tod_bright)
-		blit_surface(tod_bright, nullptr, ret, nullptr);
+		sdl_blit(tod_bright, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -555,7 +554,7 @@ surface darken_modification::operator()(const surface &src) const
 	surface ret = make_neutral_surface(src);
 	surface tod_dark(image::get_image(game_config::images::tod_dark));
 	if (tod_dark)
-		blit_surface(tod_dark, nullptr, ret, nullptr);
+		sdl_blit(tod_dark, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -566,7 +565,7 @@ surface background_modification::operator()(const surface &src) const
 					    color_.b, color_.a));
 	surface temp = src;
 	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
-	blit_surface(temp, nullptr, ret, nullptr);
+	sdl_blit(temp, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -1006,7 +1005,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 		y = lexical_cast_default<int>(param[2]);
 	}
 
-	if(x < 0 || y < 0) { //required by blit_surface
+	if(x < 0 || y < 0) {
 		ERR_DP << "negative position arguments in ~BLIT() function" << std::endl;
 		return nullptr;
 	}
@@ -1039,7 +1038,7 @@ REGISTER_MOD_PARSER(MASK, args)
 		y = lexical_cast_default<int>(param[2]);
 	}
 
-	if(x < 0 || y < 0) { //required by blit_surface
+	if(x < 0 || y < 0) {
 		ERR_DP << "negative position arguments in ~MASK() function" << std::endl;
 		return nullptr;
 	}
