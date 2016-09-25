@@ -45,7 +45,7 @@ void mouse_action_village::set_mouse_overlay(editor_display& disp)
 	surface image = create_neutral_surface(72,72);
 
 	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
-	blit_surface(image60, nullptr, image, &r);
+	sdl_blit(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;
 	int size = image->w;

@@ -237,17 +237,16 @@ void tristate_button::draw_contents() {
 	scalled_item.assign(scale_surface(itemImage_,
 			36, 36));
 
-	// blit_surface want neutral surfaces
 	surface nitem = make_neutral_surface(scalled_item);
 	surface nbase = make_neutral_surface(base);
 
 	//TODO avoid magic numbers
 	SDL_Rect r = sdl::create_rect(1, 1, 0, 0);
-	blit_surface(nitem, nullptr, nbase, &r);
+	sdl_blit(nitem, nullptr, nbase, &r);
 
 	if (!overlay.null()) {
 		surface noverlay = make_neutral_surface(overlay);
-		blit_surface(noverlay, nullptr, nbase, nullptr);
+		sdl_blit(noverlay, nullptr, nbase, nullptr);
 	}
 
 //  TODO for later reference
