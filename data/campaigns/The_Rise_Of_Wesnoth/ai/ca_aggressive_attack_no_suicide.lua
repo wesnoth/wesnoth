@@ -2,7 +2,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local ca_aggressive_attack_no_suicide = {}
 
-function ca_aggressive_attack_no_suicide:evaluation(ai, cfg, self)
+function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
 
     local units = wesnoth.get_units {
         side = wesnoth.current.side,
@@ -48,20 +48,20 @@ function ca_aggressive_attack_no_suicide:evaluation(ai, cfg, self)
     end
 
     if (max_rating > -9e99) then
-        self.data.attack = best_attack
+        data.attack = best_attack
         return 100000
     end
 
     return 0
 end
 
-function ca_aggressive_attack_no_suicide:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.attack.src.x, self.data.attack.src.y)
-    local defender = wesnoth.get_unit(self.data.attack.target.x, self.data.attack.target.y)
+function ca_aggressive_attack_no_suicide:execution(cfg, data)
+    local attacker = wesnoth.get_unit(data.attack.src.x, data.attack.src.y)
+    local defender = wesnoth.get_unit(data.attack.target.x, data.attack.target.y)
 
-    AH.movefull_outofway_stopunit(ai, attacker, self.data.attack.dst.x, self.data.attack.dst.y)
+    AH.movefull_outofway_stopunit(ai, attacker, data.attack.dst.x, data.attack.dst.y)
     ai.attack(attacker, defender)
-    self.data.attack = nil
+    data.attack = nil
 end
 
 return ca_aggressive_attack_no_suicide
