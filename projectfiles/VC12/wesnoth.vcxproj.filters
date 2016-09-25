@@ -1526,6 +1526,9 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
+    <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2935,6 +2938,9 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_preferences.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">

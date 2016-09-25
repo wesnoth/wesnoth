@@ -2916,6 +2916,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_race.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
@@ -4362,6 +4369,7 @@
     <ClInclude Include="..\..\src\scripting\lua_kernel_base.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_map_location_ops.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_pathfind_cost_calculator.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_preferences.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_race.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_rng.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_team.hpp" />

@@ -34,6 +34,7 @@
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_preferences.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 
@@ -95,6 +96,9 @@ application_lua_kernel::application_lua_kernel(CVideo * ptr)
 	lua_pushcfunction(mState, &intf_describe_plugins);
 	lua_setglobal(mState, "describe_plugins");
 	lua_settop(mState, 0);
+
+	// Create the preferences table.
+	cmd_log_ << lua_preferences::register_table(mState);
 }
 
 application_lua_kernel::thread::thread(lua_State * T) : T_(T), started_(false) {}
