@@ -223,7 +223,8 @@ surface wipe_alpha_modification::operator()(const surface& src) const
 
 surface adjust_alpha_modification::operator()(const surface & src) const
 {
-	return adjust_surface_alpha_formula(src, formula_);}
+	return adjust_surface_alpha_formula(src, formula_);
+}
 
 surface crop_modification::operator()(const surface& src) const
 {
@@ -434,12 +435,45 @@ surface xbrz_modification::operator()(const surface& src) const
 	return scale_surface_xbrz(src, z_);
 }
 
-// TODO: make this take a non-const reference and don't construct the temp surface
+/*
+ * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
+ * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
+ */
 surface o_modification::operator()(const surface& src) const
 {
-	surface temp = src;
-	adjust_surface_alpha(temp, ftofxp(opacity_));
-	return temp;
+	surface nsurf(make_neutral_surface(src));
+
+	if(nsurf == nullptr) {
+		std::cerr << "could not make neutral surface...\n";
+		return nullptr;
+	}
+
+	Uint8 amount = ftofxp(opacity_);
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*src->h;
+
+		if (amount < 0) amount = 0;
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+
+				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
+
+			++beg;
+		}
+	}
+
+	return nsurf;
 }
 
 float o_modification::get_opacity() const
@@ -525,13 +559,12 @@ surface darken_modification::operator()(const surface &src) const
 	return ret;
 }
 
-// TODO: make this take a non-const reference and don't construct the temp surface
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
 	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
-    surface temp = src;
+	surface temp = src;
 	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
 	blit_surface(temp, nullptr, ret, nullptr);
 	return ret;
