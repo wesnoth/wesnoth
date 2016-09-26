@@ -118,19 +118,19 @@ function ca_transport:execution()
 
         -- Unload 1 level 2 unit
         local l2_type = H.rand('Swordsman,Javelineer,Pikeman')
-        local command = "wesnoth.put_unit(".. best_adj_tiles[1][1] .. "," .. best_adj_tiles[1][2]
-            .. ", { side = " .. wesnoth.current.side
+        local command = "wesnoth.put_unit({ side = " .. wesnoth.current.side
             .. ", type = '" .. l2_type
-            .. "', moves = 2 })"
+            .. "', moves = 2 }, "
+            .. best_adj_tiles[1][1] .. "," .. best_adj_tiles[1][2] .. ")"
         ai.synced_command(command, best_unit.x, best_unit.y)
 
         -- Unload up to 2 level 1 units
         for i = 2, math.min(#best_adj_tiles, 3) do
             local l1_type = H.rand('Fencer,Mage,Cavalryman,Bowman,Spearman')
-            local command = "wesnoth.put_unit(".. best_adj_tiles[i][1] .. "," .. best_adj_tiles[i][2]
-                .. ", { side = " .. wesnoth.current.side
+            local command = "wesnoth.put_unit({ side = " .. wesnoth.current.side
                 .. ", type = '" .. l1_type
-                .. "', moves = 2 })"
+                .. "', moves = 2 }, "
+                .. best_adj_tiles[i][1] .. "," .. best_adj_tiles[i][2] .. ")"
             ai.synced_command(command, best_unit.x, best_unit.y)
         end
 
