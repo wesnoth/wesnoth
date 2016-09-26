@@ -1758,7 +1758,9 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != ftofxp(1.0)) {
-		adjust_surface_alpha(surf, alpha);
+		surface temp = make_neutral_surface(surf);
+		adjust_surface_alpha(temp, alpha);
+		surf = temp;
 	}
 
 	if(surf == nullptr) {
