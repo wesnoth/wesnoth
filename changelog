@@ -8,6 +8,9 @@ Version 1.13.5+dev:
    * Fix bug #22179: [disable] weapon special is ignored by AI. A second
      instance of the AI also ignoring this special under different circumstances
      has also been fixed.
+   * Fix bug of Experimental AI recruiting sometimes failing under shroud
+   * Fix some mainline campaigns custom AIs not working due to syntax changes
+     after the AI refactoring for Wesnoth 1.13.5 (e.g. bug #25123)
  * Campaigns:
    * Eastern Invasion:
      * Fixed broken village encounters.
