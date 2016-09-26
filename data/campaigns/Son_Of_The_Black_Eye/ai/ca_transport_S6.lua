@@ -10,7 +10,7 @@ local ca_transport = {}
 --    staying in deep water surrounded by deep water only
 -- Also unload units onto best hexes adjacent to landing site
 
-function ca_transport:evaluation(ai)
+function ca_transport:evaluation()
     local units = wesnoth.get_units { side = wesnoth.current.side, formula = 'movement_left > 0' }
 
     for i,u in ipairs(units) do
@@ -23,7 +23,7 @@ function ca_transport:evaluation(ai)
     return 0
 end
 
-function ca_transport:execution(ai)
+function ca_transport:execution()
     local units = wesnoth.get_units {}
 
     -- Need all transport units plus maps of all units, all transport units and
