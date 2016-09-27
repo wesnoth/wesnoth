@@ -71,6 +71,8 @@ public:
 	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
+	void leave_game();
+
 	// Return pair first element specifies whether to leave the game
 	// and second element whether to silently update UI.
 	std::pair<bool, bool> process_network_data(const config& data);
