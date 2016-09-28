@@ -460,7 +460,7 @@ struct addons_filter_state
 
 	addons_filter_state()
 		: keywords()
-		, types(ADDON_TYPES_COUNT, true)
+		, types(ADDON_TYPES_COUNT, 0xFFFFFFFFUL)
 		, status(FILTER_ALL)
 		, sort(SORT_NAMES)
 		, direction(DIRECTION_ASCENDING)
