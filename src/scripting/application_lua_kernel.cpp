@@ -49,12 +49,13 @@
 
 #include "utils/functional.hpp"
 #include <boost/range/adaptors.hpp>
-#include "video.hpp"
+#include <SDL.h>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 #include "lua/luaconf.h"
 
+class CVideo;
 struct lua_State;
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -93,7 +94,7 @@ static int intf_describe_plugins(lua_State * L)
 static int intf_delay(lua_State* L)
 {
 	unsigned int delay = static_cast<unsigned int>(luaL_checkint(L, 1));
-	CVideo::delay(delay);
+	SDL_Delay(delay);
 	return 0;
 }
 
