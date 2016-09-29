@@ -17,18 +17,16 @@ later, or Clang 3.3 and later.
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
- * Boost libraries:
-   * Filesystem                >= 1.44.0
-   * Locale                    >= 1.48.0
-   * Iostreams                 >= 1.36.0
-   * Multi-index               >= 1.36.0 (header only)
-   * Random                    >= 1.48.0
-   * Regex                     >= 1.36.0
-   * Serialization             >= 1.36.0 (header only)
-   * Asio                      >= 1.36.0 (header only)
-   * Program Options           >= 1.36.0
-   * System                    >= 1.36.0
-   * Thread                    >= 1.36.0
+ * Boost libraries             >= 1.48.0
+     Most headers plus the following binary libs:
+   * Filesystem
+   * Locale
+   * Iostreams
+   * Random
+   * Regex
+   * Program Options
+   * System
+   * Thread
  * SDL2 libraries:
    * SDL2                      >= 2.0.2 (2.0.4 on Windows and OS X)
    * SDL2_image                >= 2.0.0 (with PNG and JPEG support)
@@ -57,9 +55,8 @@ features:
    Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
    of the user interface.
 
-Note that although different Boost version requirements are listed, individual
-libraries from different releases are generally incompatible with each other
-and you should not mix and match.
+ * Growl
+   Desktop notifications on OS X, particularly on 10.7.
 
 Although not recommended, you may use libintl on platforms other than Windows
 instead of Boost.Locale. For scons, set the `libintl` option to `true`.
@@ -95,6 +92,9 @@ While Wesnoth may be easily installed system-wide using SCons or CMake, it is
 also possible to run it directly from the source directory after building. This
 may be useful in situations where you don't have root access or need to
 rebuild Wesnoth frequently (i.e. for development and testing).
+
+For Windows users, a Visual C++ 2013 solution is included in _projectfiles/VC12_.
+For OS X users, an XCode project is included in _projectfiles/XCode_.
 
 
 3. SCons Build
