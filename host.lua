@@ -15,9 +15,14 @@ local function plugin()
 
   local function idle_text(text)
     counter = counter + 1
-    if counter >= 100 then
+    if counter % 100 == 0 then
       counter = 0
       log("idling " .. text)
+    end
+    if counter >= 100000 then
+      log("timed out " .. text)
+      context.exit{code = 1}
+      coroutine.yield()
     end
   end
 
