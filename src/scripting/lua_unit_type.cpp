@@ -122,6 +122,18 @@ static int impl_unit_type_new(lua_State* L)
 	return lua_error(L);
 }
 
+static int impl_unit_type_count(lua_State* L)
+{
+	lua_pushstring(L, "base");
+	lua_rawget(L, 1);
+	if(const unit_type* base = luaW_tounittype(L, -1)) {
+		lua_pushnumber(L, base->variations().size() + base->genders().size());
+	} else {
+		lua_pushnumber(L, unit_types.types().size());
+	}
+	return 1;
+}
+
 static int impl_unit_type_next(lua_State* L)
 {
 	const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable));
@@ -198,6 +210,8 @@ namespace lua_unit_type {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_type_new);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_unit_type_count);
+		lua_setfield(L, -2, "__len");
 		lua_pushcfunction(L, impl_unit_type_pairs);
 		lua_setfield(L, -2, "__pairs");
 		lua_pushstring(L, UnitTypeTable);
