@@ -461,7 +461,6 @@ void pump()
 
 	ev_end = events.end();
 
-	bool redrew = false;
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
 		for (context& c : event_contexts)
 		{
@@ -470,12 +469,6 @@ void pump()
 
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
-			case DRAW_EVENT:
-				if(redrew) {
-					continue;
-				}
-				redrew = true;
-				break;
 
 			case SDL_WINDOWEVENT:
 				switch(event.window.event) {
@@ -585,10 +578,6 @@ void pump()
 				quit_confirmation::quit_to_desktop();
 				continue; //this event is already handled.
 			}
-		}
-
-		if(event.type != DRAW_EVENT) {
-			redrew = false;
 		}
 
 		const handler_list& event_handlers = event_contexts.front().handlers;
