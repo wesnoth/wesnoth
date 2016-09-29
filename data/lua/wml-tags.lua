@@ -506,7 +506,8 @@ function wml_actions.move_unit(cfg)
 	local to_y = tostring(cfg.to_y or helper.wml_error(coordinate_error))
 	local fire_event = cfg.fire_event
 	local muf_force_scroll = cfg.force_scroll
-	local check_passability = cfg.check_passability; if check_passability == nil then check_passability = true end
+	local check_passability = cfg.check_passability
+	if check_passability == nil then check_passability = true end
 	cfg = helper.literal(cfg)
 	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
 	local units = wesnoth.get_units(cfg)
