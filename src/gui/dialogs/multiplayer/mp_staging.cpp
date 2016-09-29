@@ -16,7 +16,6 @@
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 
 #include "config_assign.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
@@ -43,28 +42,39 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "game_config.hpp"
-#include "savegame.hpp"
+#include "mp_ui_alerts.hpp"
 #include "settings.hpp"
 #include "units/types.hpp"
 #include "formatter.hpp"
+#include "wesnothd_connection.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "utils/functional.hpp"
 #endif
-
-#include <boost/algorithm/string.hpp>
 
 namespace gui2
 {
 
 REGISTER_DIALOG(mp_staging)
 
-tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engine, lobby_info& lobby_info)
+tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, twesnothd_connection* wesnothd_connection)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)
+	, wesnothd_connection_(wesnothd_connection)
+	, update_timer_(0)
 {
 	set_show_even_without_video(true);
+
+	assert(!ai_algorithms_.empty());
+}
+
+tmp_staging::~tmp_staging()
+{
+	if(update_timer_ != 0) {
+		remove_timer(update_timer_);
+		update_timer_ = 0;
+	}
 }
 
 void tmp_staging::pre_show(twindow& window)
@@ -123,8 +133,6 @@ void tmp_staging::pre_show(twindow& window)
 		//
 		// AI Algorithm
 		//
-		assert(!ai_algorithms_.empty());
-
 		int selection = 0;
 
 		// We use an index-based loop in order to get the index of the selected option
@@ -155,7 +163,7 @@ void tmp_staging::pre_show(twindow& window)
 		tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
 
 		controller_selection.set_values(controller_names, side.current_controller_index());
-		controller_selection.set_active(side.controller_options().size() > 1);
+		controller_selection.set_active(controller_names.size() > 1);
 		controller_selection.connect_click_handler(std::bind(&tmp_staging::on_controller_select, this, std::ref(side), std::ref(row_grid)));
 
 		on_controller_select(side, row_grid);
@@ -181,7 +189,7 @@ void tmp_staging::pre_show(twindow& window)
 		// As such, the index is off if there is only 1 playable team. This is a hack to make sure the menu_button
 		// widget doesn't assert with the invalid initial selection. The connect_engine should be fixed once the GUI1
 		// dialog is dropped
-		team_selection.set_values(team_names, std::min(static_cast<int>(team_names.size() - 1), side.team()));
+		team_selection.set_values(team_names, std::min<int>(team_names.size() - 1, side.team()));
 		team_selection.set_active(!saved_game);
 		team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(side), std::ref(team_selection)));
 
@@ -244,13 +252,72 @@ void tmp_staging::pre_show(twindow& window)
 	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
 
 	chat.set_lobby_info(lobby_info_);
+	chat.set_wesnothd_connection(*wesnothd_connection_);
+
 	chat.room_window_open("this game", true); // TODO: better title?
 	chat.active_window_changed();
 
 	//
 	// Set up player list
 	//
+	update_player_list(window);
+
+	//
+	// Set up the network handling
+	//
+	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&tmp_staging::network_handler, this, std::ref(window)), true);
+
+	network_handler(window);
+
+	//
+	// Set up the Lua plugin context
+	//
+	plugins_context_.reset(new plugins_context("Multiplayer Staging"));
+
+	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
+	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
+}
+
+/*
+ * We don't need the full widget setup as is done initially, just value setters.
+ */
+void tmp_staging::update_side_ui(twindow& window, const int i)
+{
+	tgrid& row_grid = *find_widget<tlistbox>(&window, "side_list", false).get_row_grid(i);
+
+	ng::side_engine& side = *connect_engine_.side_engines()[i].get();
+
+	const int ai_i = std::find_if(ai_algorithms_.begin(), ai_algorithms_.end(), [&side](ai::description* a) {
+		return a->id == side.ai_algorithm();
+	}) - ai_algorithms_.begin();
+
+	find_widget<tmenu_button>(&row_grid, "ai_controller", false).set_selected(ai_i);
+
+	std::vector<config> controller_names;
+	for(const auto& controller : side.controller_options()) {
+		controller_names.push_back(config_of("label", controller.second));
+	}
+
+	tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
+
+	controller_selection.set_values(controller_names, side.current_controller_index());
+	controller_selection.set_active(controller_names.size() > 1);
+
+	update_leader_display(side, row_grid);
+
+	find_widget<tmenu_button>(&row_grid, "side_team", false).set_selected(side.team());
+	find_widget<tmenu_button>(&row_grid, "side_color", false).set_selected(side.color());
+
+	find_widget<tslider>(&row_grid, "side_gold_slider", false).set_value(side.cfg()["gold"].to_int(100));
+	find_widget<tslider>(&row_grid, "side_income_slider", false).set_value(side.cfg()["income"]);
+}
+
+void tmp_staging::update_player_list(twindow& window)
+{
 	tlistbox& player_list = find_widget<tlistbox>(&window, "player_list", false);
+
+	player_list.clear();
 
 	for(const auto& player : connect_engine_.connected_users()) {
 		std::map<std::string, string_map> data;
@@ -261,15 +328,6 @@ void tmp_staging::pre_show(twindow& window)
 
 		player_list.add_row(data);
 	}
-
-	//
-	// Set up the Lua plugin context
-	//
-	plugins_context_.reset(new plugins_context("Multiplayer Staging"));
-
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
-	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
 void tmp_staging::sync_changes()
@@ -354,7 +412,55 @@ void tmp_staging::update_leader_display(ng::side_engine& side, tgrid& row_grid)
 	// Gender
 	if(current_gender != utils::unicode_em_dash) {
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
-		find_widget<timage>(&row_grid, "leader_gender", false).set_label(gender_icon);
+
+		timage& icon = find_widget<timage>(&row_grid, "leader_gender", false);
+
+		icon.set_label(gender_icon);
+		icon.set_tooltip(current_gender);
+	}
+}
+
+void tmp_staging::network_handler(twindow& window)
+{
+	config data;
+	if(!wesnothd_connection_ || !wesnothd_connection_->receive_data(data)) {
+		return;
+	}
+
+	// Update chat
+	find_widget<tchatbox>(&window, "chat", false).process_network_data(data);
+
+	// TODO: why is this needed...
+	const bool was_able_to_start = connect_engine_.can_start_game();
+
+	bool quit_signal_recieved;
+	std::tie(quit_signal_recieved, std::ignore) = connect_engine_.process_network_data(data);
+
+	if(quit_signal_recieved) {
+		window.set_retval(twindow::CANCEL);
+	}
+
+	// Update sides
+	for(unsigned i = 0; i < connect_engine_.side_engines().size(); i++) {
+		update_side_ui(window, i);
+	}
+
+	// Update player list
+	// TODO: optimally, it wouldn't regenerate the entire list every single refresh cycle
+	update_player_list(window);
+
+	// Update status label and buttons
+	// T O D O F I X T H I S S H I T
+	find_widget<tlabel>(&window, "status_label", false).set_label(
+		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
+			? _("Waiting for players to join...")
+			: _("Waiting for players to choose factions...")
+	);
+
+	find_widget<tbutton>(&window, "ok", false).set_active(connect_engine_.can_start_game());
+
+	if(!was_able_to_start && connect_engine_.can_start_game()) {
+		mp_ui_alerts::ready_for_start();
 	}
 }
 

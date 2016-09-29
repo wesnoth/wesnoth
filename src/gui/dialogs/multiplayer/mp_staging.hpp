@@ -38,7 +38,9 @@ class twidget;
 class tmp_staging : public tdialog, private plugin_executor
 {
 public:
-	tmp_staging(const config& cfg, ng::connect_engine& connect_engine, lobby_info& lobby_info);
+	tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, twesnothd_connection* wesnothd_connection = nullptr);
+
+	~tmp_staging();
 
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -49,6 +51,10 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
+
+	void update_side_ui(twindow& window, const int i);
+	
+	void update_player_list(twindow& window);
 
 	void sync_changes();
 
@@ -61,11 +67,17 @@ private:
 
 	void update_leader_display(ng::side_engine& side, tgrid& row_grid);
 
+	void network_handler(twindow& window);
+
 	ng::connect_engine& connect_engine_;
 
 	std::vector<ai::description*> ai_algorithms_;
 
 	lobby_info& lobby_info_;
+
+	twesnothd_connection* wesnothd_connection_;
+
+	size_t update_timer_;
 };
 
 } // namespace gui2
