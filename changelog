@@ -50,6 +50,8 @@ Version 1.13.5+dev:
      fullscreen setting changes with a dialog open over it.
    * Restored descriptions for choices in combobox-based Advanced Preferences
      entries (lost in 1.13.3).
+   * When using the --wconsole option, the game now prints a prompt in the event
+     of a fatal error to avoid closing the console before the error can be seen.
  * WML Engine:
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the
@@ -128,6 +130,8 @@ Version 1.13.5+dev:
    * Lua side, unit_type, and unit attack proxies can now be compared with ==
      with identity semantics. (Previously, each time such a proxy was obtained,
      it would produce a new object that did not compare equal to any others.)
+   * Lua unit_type lists (wesnoth.unit_types and unit_type.variations) are now
+     countable with the Lua length operator.
    * Lua dialog functions now support the stacked widget and the unit preview pane
    * New wesnoth.show_menu function shows a dropdown menu at the mouse location
    * Lua attack proxy has new read_only field which is true for unit_type attacks
