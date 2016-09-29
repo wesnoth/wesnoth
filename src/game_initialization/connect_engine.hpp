@@ -102,6 +102,8 @@ public:
 	bool first_scenario() const { return first_scenario_; }
 	bool force_lock_settings() const { return force_lock_settings_; }
 
+	bool receive_from_server(config& dst) const;
+
 private:
 	connect_engine(const connect_engine&) = delete;
 	void operator=(const connect_engine&) = delete;
@@ -134,7 +136,6 @@ private:
 
 	std::set<std::string>& connected_users_rw();
 	void send_to_server(const config& cfg) const;
-	bool receive_from_server(config& dst) const;
 };
 
 class side_engine
