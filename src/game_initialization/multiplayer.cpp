@@ -25,6 +25,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/network_transmission.hpp"
@@ -405,17 +406,6 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 // The functions enter_(screen)_mode are simple functions that take care of
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
-
-static config& get_scenario(config& c)
-{
-	if(config& scenario = c.child("scenario"))
-		return scenario;
-	else if(config& snapshot = c.child("snapshot"))
-		return snapshot;
-	else
-		return c;
-}
-
 static void enter_wait_mode(CVideo& video, const config& game_config, saved_game& state, twesnothd_connection* wesnothd_connection,
 	lobby_info& li, bool observe, int current_turn = 0)
 {
@@ -435,131 +425,8 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 
 	{
 		if(preferences::new_lobby()) {
-			bool download_res = true;
 
-			assert(wesnothd_connection);
-			config level;
-			DBG_MP << "download_level_data()\n";
-
-			if(!true) {
-				// Ask for the next scenario data.
-				wesnothd_connection->send_data(config("load_next_scenario"));
-			}
-
-			bool has_scenario_and_controllers = false;
-			while(!has_scenario_and_controllers) {
-				config revc;
-				bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
-					video, "download level data", revc, *wesnothd_connection);
-
-				if(!data_res) {
-					DBG_MP << "download_level_data bad results\n";
-					download_res = false;
-				}
-
-				mp::check_response(data_res, revc);
-
-				if(revc.child("leave_game")) {
-					download_res = false;
-				} else if(config& next_scenario = revc.child("next_scenario")) {
-					level.swap(next_scenario);
-				} else if(revc.has_attribute("version")) {
-					level.swap(revc);
-					has_scenario_and_controllers = true;
-				} else if(config& controllers = revc.child("controllers")) {
-					int index = 0;
-					for(const config& controller : controllers.child_range("controller")) {
-						if(config& side = get_scenario(level).child("side", index)) {
-							side["is_local"] = controller["is_local"];
-						}
-						++index;
-					}
-					has_scenario_and_controllers = true;
-				}
-
-			}
-
-			std::cerr << "download_level_data() success.\n";
-
-			if(!download_res) {
-				DBG_MP << "mp wait: could not download level data, quitting...";
-				//set_result(QUIT);
-				return;
-			} else if(level["started"].to_bool()) {
-				//set_result(PLAY);
-				return;
-			}
-
-			if(true) {
-				state = saved_game();
-				state.classification() = game_classification(level);
-
-				if(state.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-					//ERR_MP << "Mp wait recieved a game that is not a multiplayer game\n";
-				}
-				// Make sure that we have the same config as host, if possible.
-				game_config_manager::get()->load_game_config_for_game(state.classification());
-			}
-
-			// Add the map name to the title.
-			//append_to_title(": " + get_scenario(level)["name"].t_str());
-
-			game_config::add_color_info(get_scenario(level));
-			if(!observe) {
-				//search for an appropriate vacant slot. If a description is set
-				//(i.e. we're loading from a saved game), then prefer to get the side
-				//with the same description as our login. Otherwise just choose the first
-				//available side.
-				const config *side_choice = nullptr;
-				//int side_num = -1, nb_sides = 0;
-				for(const config &sd : get_scenario(level).child_range("side")) {
-					//std::cerr << "*** side " << nb_sides << "***\n" << sd.debug() << "***\n";
-
-					if(sd["controller"] == "reserved" && sd["current_player"] == preferences::login()) {
-						side_choice = &sd;
-						//side_num = nb_sides;
-						break;
-					}
-
-					if(sd["controller"] == "human" && sd["player_id"].empty()) {
-						if(!side_choice) { // found the first empty side
-							side_choice = &sd;
-							//side_num = nb_sides;
-						}
-
-						if(sd["current_player"] == preferences::login()) {
-							side_choice = &sd;
-							//side_num = nb_sides;
-							break;  // found the preferred one
-						}
-					}
-
-					if(sd["player_id"] == preferences::login()) {
-						//We already own a side in this game.
-						//generate_menu();
-						return;
-					}
-					//++nb_sides;
-				}
-
-				if(!side_choice) {
-					DBG_MP << "could not find a side, all " << get_scenario(level).child_count("side") << " sides were unsuitable\n";
-					//set_result(QUIT);
-					return;
-				}
-			}
-
-			mp::level_to_gamestate(level, state);
-
-			campaign_info.reset(new mp_campaign_info(*wesnothd_connection));
-
-			//campaign_info->connected_players.insert(li.users().begin(), li.users().end());
-
-			ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get()));
-
-			connect_engine->receive_from_server(level);
-
-			gui2::tmp_staging dlg(*connect_engine, li, wesnothd_connection);
+			gui2::tmp_join_game dlg(state, li, *wesnothd_connection, true, observe);
 			dlg.show(video);
 
 			if(dlg.get_retval() == gui2::twindow::OK) {
@@ -568,9 +435,9 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 				controller.play_game();
 			}
 
-			//if(wesnothd_connection) {
-			//	wesnothd_connection->send_data(config("leave_game"));
-			//}
+			if(wesnothd_connection) {
+				wesnothd_connection->send_data(config("leave_game"));
+			}
 
 			return;
 		}

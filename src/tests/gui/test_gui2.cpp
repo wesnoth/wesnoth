@@ -75,6 +75,7 @@
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game_set_password.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
@@ -410,6 +411,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_connect>();
 	//test<gui2::tmp_create_game>();
 	test<gui2::tmp_create_game_set_password>();
+	test<gui2::tmp_join_game>();
 	test<gui2::tmp_join_game_password_prompt>();
 	test<gui2::tdepcheck_confirm_change>();
 	test<gui2::tdepcheck_select_new>();
@@ -486,6 +488,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"title_screen",
 		"end_credits",
 		"mp_staging",
+		"mp_join_game",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

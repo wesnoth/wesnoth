@@ -468,8 +468,7 @@ void tmp_staging::post_show(twindow& window)
 {
 	if(window.get_retval() == twindow::OK) {
 		connect_engine_.start_game();
-	}
-	else {
+	} else {
 		connect_engine_.leave_game();
 	}
 }
