@@ -411,7 +411,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_connect>();
 	//test<gui2::tmp_create_game>();
 	test<gui2::tmp_create_game_set_password>();
-	test<gui2::tmp_join_game>();
+	//test<gui2::tmp_join_game>();
 	test<gui2::tmp_join_game_password_prompt>();
 	test<gui2::tdepcheck_confirm_change>();
 	test<gui2::tdepcheck_select_new>();
