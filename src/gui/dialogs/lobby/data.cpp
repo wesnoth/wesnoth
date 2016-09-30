@@ -200,20 +200,32 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	, required_addons()
 	, addons_outcome(SATISFIED)
 {
-	for(const config& addon : game.child_range("addon")) {
-		if(addon.has_attribute("id")) {
-			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
+	const auto parse_requirements = [&](const config& c, const std::string& id_key) {
+		if(c.has_attribute(id_key)) {
+			if(std::find(installed_addons.begin(), installed_addons.end(), c[id_key].str()) == installed_addons.end()) {
 				required_addon r;
-				r.addon_id = addon["id"].str();
+				r.addon_id = c[id_key].str();
 				r.outcome = NEED_DOWNLOAD;
 
-				r.message = vgettext("Missing addon: $id", {{"id", addon["id"].str()}});
+				r.message = vgettext("Missing addon: $id", {{"id", c[id_key].str()}});
 				required_addons.push_back(r);
 				if(addons_outcome == SATISFIED) {
 					addons_outcome = NEED_DOWNLOAD;
 				}
 			}
 		}
+	};
+
+	for(const config& addon : game.child_range("addon")) {
+		parse_requirements(addon, "id");
+	}
+
+	/*
+	 * Modifications have a different format than addons. The id and addon_id are keys sent by the
+	 * server, so we have to parse them separately here and add them to the required_addons vector.
+	 */
+	for(const config& mod : game.child_range("modification")) {
+		parse_requirements(mod, "addon_id");
 	}
 
 	std::string turn = game["turn"];
@@ -233,6 +245,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			era = vgettext("Unknown era: $era_id", {{"era_id", game["mp_era"].str()}});
 			era_short = make_short_name(era);
 			verified = false;
+
+			addons_outcome = NEED_DOWNLOAD;
 		}
 	} else {
 		era = _("Unknown era");
@@ -253,11 +267,13 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 					addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 				}
 			} else {
-				mod_info += (mod_info.empty() ? "" : ", ") + cfg["id"].str();
+				mod_info += (mod_info.empty() ? "" : ", ") + cfg["addon_id"].str();
 
 				if(cfg["require_modification"].to_bool(false)) {
 					have_all_mods = false;
 					mod_info += " " + _("(missing)");
+
+					addons_outcome = NEED_DOWNLOAD;
 				}
 			}
 		}
@@ -474,7 +490,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 
 bool game_info::can_join() const
 {
-	return have_era && have_all_mods && !started && vacant_slots > 0;
+	return !started && vacant_slots > 0;
 }
 
 bool game_info::can_observe() const
