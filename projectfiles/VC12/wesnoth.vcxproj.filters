@@ -1529,6 +1529,9 @@
     <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2940,6 +2943,9 @@
     <ClInclude Include="..\..\src\wml_separators.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_preferences.hpp">
       <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
