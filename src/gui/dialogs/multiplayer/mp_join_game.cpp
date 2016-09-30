@@ -185,10 +185,8 @@ void tmp_join_game::post_build(twindow& window)
 		window.set_retval(twindow::CANCEL);
 	}
 
-	const bool allow_choice = (*side_choice)["allow_changes"].to_bool(true);
-
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
-	if(allow_choice) {
+	if((*side_choice)["allow_changes"].to_bool(true)) {
 		events::event_context context;
 
 		const config& era = level_.child("era");
@@ -397,23 +395,27 @@ void tmp_join_game::generate_side_list(twindow& window)
 		// Don't show gold for saved games
 		// TODO: gold icon
 		if(side["allow_changes"].to_bool()) {
-			item["label"] = side["gold"].str() + " " + "Gold";
+			item["label"] = side["gold"].str() + " " + _("Gold");
 			data.emplace("side_gold", item);
 		}
 
 		const int income_amt = side["income"];
 		if(income_amt != 0) {
-			const std::string income_string = formatter() << (income_amt > 0 ? "+" : "") << income_amt << "Income";
+			const std::string income_string = formatter() << (income_amt > 0 ? "+" : "") << income_amt << " " << _("Income");
 
 			item["label"] = income_string;
 			data.emplace("side_income", item);
 		}
 
-		// TODO: colorize
-		item["label"] = side["color"];
+		item["label"] = (formatter() << "buttons/misc/orb-active.png~RC(magenta>" << side["color"] << ")").str();
 		data.emplace("side_color", item);
 
-		list.add_row(data);
+		tgrid& row_grid = list.add_row(data);
+
+		if(income_amt == 0) {
+			find_widget<timage>(&row_grid, "income_icon", false).set_visible(twidget::tvisible::invisible);
+			find_widget<tlabel>(&row_grid, "side_income", false).set_visible(twidget::tvisible::invisible);
+		}
 	}
 }
 
