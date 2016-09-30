@@ -19,7 +19,7 @@
 #include <cassert>
 #include <stdlib.h>
 #include <boost/random/mersenne_twister.hpp>
-#include <time.h>
+#include <random>
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
@@ -33,8 +33,10 @@ namespace {
 	{
 	public:
 		rng_default()
-			: gen_(time(nullptr))
+			: gen_()
 		{
+			std::random_device entropy_source;
+			gen_.seed(entropy_source());
 		}
 	protected:
 		virtual uint32_t next_random_impl()
