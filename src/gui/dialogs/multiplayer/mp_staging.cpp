@@ -397,6 +397,9 @@ void tmp_staging::update_leader_display(ng::side_engine& side, tgrid& row_grid)
 	if(!side.flg().is_random_faction() && current_leader != "random") {
 		const unit_type& type = unit_types.find(current_leader)->get_gender_unit_type(current_gender);
 		new_image = formatter() << type.image() << "~RC(magenta>" << side.color() + 1 << ")";
+
+		// We don't need the unit type id anymore, and can now replace this variable with the type name
+		current_leader = type.type_name();
 	}
 
 	find_widget<timage>(&row_grid, "leader_image", false).set_label(new_image);
