@@ -672,7 +672,7 @@ void tpreferences::post_build(twindow& window)
 		std::ref(window))));
 #endif
 
-	advanced.select_row(0);
+	on_advanced_prefs_list_select(advanced, window);
 
 	//
 	// HOTKEYS PANEL
