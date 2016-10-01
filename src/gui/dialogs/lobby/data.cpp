@@ -347,7 +347,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
-			scenario = vgettext("Unknown scenario: $scenario_id", {{"scenario_id", game["mp_scenario"].str()}});
+			scenario = vgettext("Unknown scenario: $scenario_id", {{"scenario_id", game["mp_scenario_name"].str()}});
 			info_stream << scenario;
 			verified = false;
 		}
