@@ -52,11 +52,12 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	void update_side_ui(twindow& window, const int i);
-	
 	void update_player_list(twindow& window);
 
-	void sync_changes();
+	void set_state_changed()
+	{
+		state_changed_ = true;
+	};
 
 	void on_controller_select(ng::side_engine& side, tgrid& row_grid);
 	void on_ai_select(ng::side_engine& side, tmenu_button& ai_menu);
@@ -78,6 +79,8 @@ private:
 	twesnothd_connection* wesnothd_connection_;
 
 	size_t update_timer_;
+
+	bool state_changed_;
 };
 
 } // namespace gui2

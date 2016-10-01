@@ -63,6 +63,7 @@ tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_i
 	, lobby_info_(lobby_info)
 	, wesnothd_connection_(wesnothd_connection)
 	, update_timer_(0)
+	, state_changed_(false)
 {
 	set_show_even_without_video(true);
 
@@ -221,12 +222,12 @@ void tmp_staging::pre_show(twindow& window)
 		tslider& slider_gold = find_widget<tslider>(&row_grid, "side_gold_slider", false);
 		slider_gold.set_value(side.cfg()["gold"].to_int(100));
 
-		connect_signal_notify_modified(slider_gold, std::bind([&]() { side.set_gold(slider_gold.get_value()); }));
+		connect_signal_notify_modified(slider_gold, std::bind([&]() { side.set_gold(slider_gold.get_value()); set_state_changed(); }));
 
 		tslider& slider_income = find_widget<tslider>(&row_grid, "side_income_slider", false);
 		slider_income.set_value(side.cfg()["income"]);
 
-		connect_signal_notify_modified(slider_income, std::bind([&]() { side.set_income(slider_income.get_value()); }));
+		connect_signal_notify_modified(slider_income, std::bind([&]() { side.set_income(slider_income.get_value()); set_state_changed(); }));
 
 		// TODO: hide header, or maybe display the saved values
 		if(saved_game) {
@@ -279,40 +280,6 @@ void tmp_staging::pre_show(twindow& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-/*
- * We don't need the full widget setup as is done initially, just value setters.
- */
-void tmp_staging::update_side_ui(twindow& window, const int i)
-{
-	tgrid& row_grid = *find_widget<tlistbox>(&window, "side_list", false).get_row_grid(i);
-
-	ng::side_engine& side = *connect_engine_.side_engines()[i].get();
-
-	const int ai_i = std::find_if(ai_algorithms_.begin(), ai_algorithms_.end(), [&side](ai::description* a) {
-		return a->id == side.ai_algorithm();
-	}) - ai_algorithms_.begin();
-
-	find_widget<tmenu_button>(&row_grid, "ai_controller", false).set_selected(ai_i);
-
-	std::vector<config> controller_names;
-	for(const auto& controller : side.controller_options()) {
-		controller_names.push_back(config_of("label", controller.second));
-	}
-
-	tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
-
-	controller_selection.set_values(controller_names, side.current_controller_index());
-	controller_selection.set_active(controller_names.size() > 1);
-
-	update_leader_display(side, row_grid);
-
-	find_widget<tmenu_button>(&row_grid, "side_team", false).set_selected(side.team());
-	find_widget<tmenu_button>(&row_grid, "side_color", false).set_selected(side.color());
-
-	find_widget<tslider>(&row_grid, "side_gold_slider", false).set_value(side.cfg()["gold"].to_int(100));
-	find_widget<tslider>(&row_grid, "side_income_slider", false).set_value(side.cfg()["income"]);
-}
-
 void tmp_staging::update_player_list(twindow& window)
 {
 	tlistbox& player_list = find_widget<tlistbox>(&window, "player_list", false);
@@ -330,12 +297,6 @@ void tmp_staging::update_player_list(twindow& window)
 	}
 }
 
-void tmp_staging::sync_changes()
-{
-	// TODO: should this call somehow be integrated into the connect engine setters?
-	connect_engine_.update_and_send_diff();
-}
-
 void tmp_staging::on_controller_select(ng::side_engine& side, tgrid& row_grid)
 {
 	tmenu_button& ai_selection         = find_widget<tmenu_button>(&row_grid, "ai_controller", false);
@@ -344,7 +305,7 @@ void tmp_staging::on_controller_select(ng::side_engine& side, tgrid& row_grid)
 	if(side.controller_changed(controller_selection.get_value())) {
 		ai_selection.set_visible(side.controller() == ng::CNTR_COMPUTER ? twidget::tvisible::visible : twidget::tvisible::hidden);
 
-		sync_changes();
+		set_state_changed();
 	}
 }
 
@@ -352,7 +313,7 @@ void tmp_staging::on_ai_select(ng::side_engine& side, tmenu_button& ai_menu)
 {
 	side.set_ai_algorithm(ai_algorithms_[ai_menu.get_value()]->id);
 
-	sync_changes();
+	set_state_changed();
 }
 
 void tmp_staging::on_color_select(ng::side_engine& side, tgrid& row_grid)
@@ -361,14 +322,14 @@ void tmp_staging::on_color_select(ng::side_engine& side, tgrid& row_grid)
 
 	update_leader_display(side, row_grid);
 
-	sync_changes();
+	set_state_changed();
 }
 
 void tmp_staging::on_team_select(ng::side_engine& side, tmenu_button& team_menu)
 {
 	side.set_team(team_menu.get_value());
 
-	sync_changes();
+	set_state_changed();
 }
 
 void tmp_staging::select_leader_callback(twindow& window, ng::side_engine& side, tgrid& row_grid)
@@ -379,7 +340,7 @@ void tmp_staging::select_leader_callback(twindow& window, ng::side_engine& side,
 	if(dlg.get_retval() == twindow::OK) {
 		update_leader_display(side, row_grid);
 
-		sync_changes();
+		set_state_changed();
 	}
 }
 
@@ -425,6 +386,14 @@ void tmp_staging::update_leader_display(ng::side_engine& side, tgrid& row_grid)
 
 void tmp_staging::network_handler(twindow& window)
 {
+	// First, send off any changes if they've been accumulated
+	if(state_changed_) {
+		connect_engine_.update_and_send_diff();
+
+		state_changed_ = false;
+	}
+
+	// Next, check for any incoming changes
 	config data;
 	if(!wesnothd_connection_ || !wesnothd_connection_->receive_data(data)) {
 		return;
@@ -443,9 +412,24 @@ void tmp_staging::network_handler(twindow& window)
 		window.set_retval(twindow::CANCEL);
 	}
 
-	// Update sides
+	// Update side leader displays
+	// This is basically only needed when a new player joins and selects their faction
 	for(unsigned i = 0; i < connect_engine_.side_engines().size(); i++) {
-		update_side_ui(window, i);
+		tgrid& row_grid = *find_widget<tlistbox>(&window, "side_list", false).get_row_grid(i);
+
+		ng::side_engine& side = *connect_engine_.side_engines()[i].get();
+
+		update_leader_display(side, row_grid);
+
+		std::vector<config> controller_names;
+		for(const auto& controller : side.controller_options()) {
+			controller_names.push_back(config_of("label", controller.second));
+		}
+
+		tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
+
+		controller_selection.set_values(controller_names, side.current_controller_index());
+		controller_selection.set_active(controller_names.size() > 1);
 	}
 
 	// Update player list
