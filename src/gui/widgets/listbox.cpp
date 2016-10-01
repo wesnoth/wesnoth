@@ -222,11 +222,7 @@ void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 boost::dynamic_bitset<> tlistbox::get_rows_shown() const
 {
-	boost::dynamic_bitset<> shown;
-	for(size_t i = 0; i < get_item_count(); i++) {
-		shown.push_back(generator_->get_item_shown(i));
-	}
-	return shown;
+	return generator_->get_items_shown();
 }
 
 bool tlistbox::any_rows_shown() const
