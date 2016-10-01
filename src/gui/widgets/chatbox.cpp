@@ -187,6 +187,7 @@ void tchatbox::append_to_chatbox(const std::string& text, size_t id, const bool 
 	tgrid& grid = chat_log_container_->page_grid(id);
 
 	tscroll_label& log = find_widget<tscroll_label>(&grid, "log_text", false);
+	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 
 	const std::string new_text = formatter()
 		<< log.label() << "\n" << "<span color='#bcb088'>" << preferences::get_chat_timestamp(time(0)) << text << "</span>";
@@ -194,7 +195,6 @@ void tchatbox::append_to_chatbox(const std::string& text, size_t id, const bool 
 	log.set_use_markup(true);
 	log.set_label(new_text);
 
-	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
 	if(chatbox_at_end || force_scroll) {
