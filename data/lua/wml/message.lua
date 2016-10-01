@@ -200,6 +200,9 @@ local function message_user_choice(cfg, speaker, options, text_input)
 		title = caption,
 		message = cfg.message,
 		portrait = image,
+		mirror = cfg.message,
+		second_portrait = cfg.second_image,
+		second_mirror = cfg.second_mirror,
 	}
 	
 	if speaker ~= nil then
