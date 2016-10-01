@@ -150,6 +150,10 @@ bool teleport_group::pass_allied_units() const {
 	return cfg_["pass_allied_units"].to_bool(true);
 }
 
+bool teleport_group::allow_vision() const {
+	return cfg_["allow_vision"].to_bool(true);
+}
+
 config teleport_group::to_config() const {
 	config retval = cfg_;
 	retval["saved"] = "yes";
@@ -163,7 +167,8 @@ teleport_map::teleport_map(
 		, const unit& u
 		, const team &viewing_team
 		, const bool see_all
-		, const bool ignore_units)
+		, const bool ignore_units
+		, const bool check_vision)
 	: teleport_map_()
 	, sources_()
 	, targets_()
@@ -172,6 +177,11 @@ teleport_map::teleport_map(
 	for (const teleport_group& group : groups) {
 
 		teleport_pair locations;
+
+		if (check_vision && !group.allow_vision()) {
+			continue;
+		}
+
 		group.get_teleport_pair(locations, u, ignore_units);
 		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
 			teleport_pair filter_locs;
@@ -187,11 +197,16 @@ teleport_map::teleport_map(
 			locations.second.swap(filter_locs.second);
 		}
 
-		if (!group.pass_allied_units() && !ignore_units) {
+		if (!group.pass_allied_units() && !ignore_units && !check_vision) {
 			std::set<map_location>::iterator loc = locations.second.begin();
 			while(loc != locations.second.end()) {
-				const unit *v = resources::gameboard->get_visible_unit(*loc, viewing_team, see_all);
-				if (v) {
+				unit_map::iterator u;
+				if (see_all) {
+					u = resources::units->find(*loc);
+				} else {
+					u = resources::gameboard->find_visible_unit(*loc, viewing_team);
+				}
+				if (u != resources::units->end()) {
 					loc = locations.second.erase(loc);
 				} else {
 					++loc;
@@ -248,7 +263,7 @@ void teleport_map::get_targets(std::set<map_location>& targets) const {
 
 const teleport_map get_teleport_locations(const unit &u,
 	const team &viewing_team,
-	bool see_all, bool ignore_units)
+	bool see_all, bool ignore_units, bool check_vision)
 {
 	std::vector<teleport_group> groups;
 
@@ -265,7 +280,7 @@ const teleport_map get_teleport_locations(const unit &u,
 	const std::vector<teleport_group>& global_groups = resources::tunnels->get();
 	groups.insert(groups.end(), global_groups.begin(), global_groups.end());
 
-	return teleport_map(groups, u, viewing_team, see_all, ignore_units);
+	return teleport_map(groups, u, viewing_team, see_all, ignore_units, check_vision);
 }
 
 manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {

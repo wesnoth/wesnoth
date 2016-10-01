@@ -389,7 +389,6 @@ set_target_properties(wesnoth-lua
 ########### Helper libraries ###############
 
 set(wesnoth-sdl_SRC
-	sdl/alpha.cpp
 	sdl/exception.cpp
 	sdl/rect.cpp
 	sdl/image.cpp
@@ -830,6 +829,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/multiplayer/mp_create_game.cpp
 	gui/dialogs/multiplayer/mp_create_game_set_password.cpp
 	gui/dialogs/multiplayer/mp_host_game_prompt.cpp
+	gui/dialogs/multiplayer/mp_join_game.cpp
 	gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
 	gui/dialogs/multiplayer/mp_login.cpp
 	gui/dialogs/multiplayer/mp_method_selection.cpp
@@ -920,6 +920,7 @@ set(wesnoth-main_SRC
 	scripting/lua_gui2.cpp
 	scripting/lua_kernel_base.cpp
 	scripting/lua_map_location_ops.cpp
+	scripting/lua_preferences.cpp
 	scripting/lua_race.cpp
 	scripting/lua_rng.cpp
 	scripting/lua_team.cpp

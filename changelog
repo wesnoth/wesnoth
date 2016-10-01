@@ -8,6 +8,9 @@ Version 1.13.5+dev:
    * Fix bug #22179: [disable] weapon special is ignored by AI. A second
      instance of the AI also ignoring this special under different circumstances
      has also been fixed.
+   * Fix bug of Experimental AI recruiting sometimes failing under shroud
+   * Fix some mainline campaigns custom AIs not working due to syntax changes
+     after the AI refactoring for Wesnoth 1.13.5 (e.g. bug #25123)
  * Campaigns:
    * Eastern Invasion:
      * Fixed broken village encounters.
@@ -25,6 +28,7 @@ Version 1.13.5+dev:
    * Improved or new terrain graphics: New wooden floor variation and new
      transitions.  New aquatic encampment.
    * New sprite for Tentacle of the Deep.
+   * Tweaked colors for all time schedules.
  * Units:
    * Changed the sound for the melee attack of the
      Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
@@ -44,6 +48,10 @@ Version 1.13.5+dev:
    * New categories bar in hotkey preferences allows you to filter hotkeys
    * Fix issue with the title screen not redrawing when the window size or
      fullscreen setting changes with a dialog open over it.
+   * Restored descriptions for choices in combobox-based Advanced Preferences
+     entries (lost in 1.13.3).
+   * When using the --wconsole option, the game now prints a prompt in the event
+     of a fatal error to avoid closing the console before the error can be seen.
  * WML Engine:
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the
@@ -97,7 +105,14 @@ Version 1.13.5+dev:
      in a variable that was used with find_in=
    * Moves cave map generator to lua. scenario_generation=cave is now deprecated and
      will be removed soon.
-* Lua API:
+   * Tunnel functionality was expanded and the default behavior was altered in
+     order to make moves through tunnels consistent with all other moves:
+     * Vison through tunnels is now possible and enabled by default. It can be
+       turned off by setting allow_vision=no in the [tunnel] tag.
+     * Own and allied units on tunnel exits do not block the tunnel any more.
+       The blocking behavior can be reenabled by setting pass_allied_units=no
+       in the [tunnel] tag.
+ * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
    * Added new function wesnoth.remove_modifications, which removes applied
@@ -115,6 +130,8 @@ Version 1.13.5+dev:
    * Lua side, unit_type, and unit attack proxies can now be compared with ==
      with identity semantics. (Previously, each time such a proxy was obtained,
      it would produce a new object that did not compare equal to any others.)
+   * Lua unit_type lists (wesnoth.unit_types and unit_type.variations) are now
+     countable with the Lua length operator.
    * Lua dialog functions now support the stacked widget and the unit preview pane
    * New wesnoth.show_menu function shows a dropdown menu at the mouse location
    * Lua attack proxy has new read_only field which is true for unit_type attacks
@@ -130,18 +147,18 @@ Version 1.13.5+dev:
      gettext plurals.
    * New matches function in team and unit attack metatables, which test if the
      side or weapon matches a filter.
-* Networking
+ * Networking
    * Ported campaignd to use boost.asio instead of SDL_net.
    * Removed unit tests for old networking stack. This was the last part that
    depended on SDL_net
-* Performance:
+ * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle
      outcome by simulating a few thousand fights instead of calculating exact
      probabilities. This method is inexact, but in very complex battles
      (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
      default damage calculation method.
-* Miscellaneous and bug fixes:
+ * Miscellaneous and bug fixes:
    * A new way to make units invulnerable for debugging: select the unit and type
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
      chance to zero: as a result, it doesn't slow down damage prediction unlike the
@@ -152,10 +169,15 @@ Version 1.13.5+dev:
      multiple network and local players was ran.
    * Added a tab to run the wmlxgettext tool to GUI.pyw
    * Fixed problem with Spectre's hitpoint bar positioning.
+   * Fixed crash when unit with planned actions is killed before those actions are
+     completed (bug #20071)
    * Show correct number of attacks in case of swarm weapon special (bug #24978)
    * Fixed bug that icons of buttons under the minimap disappeared when the
      player opened and closed a menu.
    * Correct unit recall count in statistics when undoing a unit recall (bug #25060)
+   * Add tip to recall units instead of recruiting them if costs exceed 20 gold (recruitment costs)
+   * Resolve sides in map editor not having a proper side number and subsequently
+     causing a crash upon editing (bug #25093)
 
 Version 1.13.5:
  * Campaigns:

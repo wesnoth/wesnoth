@@ -53,7 +53,9 @@ function ca_attack_highxp:evaluation(cfg, data)
     -- but it is much faster than path finding, so it is done for preselection.
     local target_infos = {}
     for i_t,enemy in ipairs(all_units) do
-        if wesnoth.is_enemy(wesnoth.current.side, enemy.side) then
+        if wesnoth.is_enemy(wesnoth.current.side, enemy.side)
+            and enemy:matches({ { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } } })
+        then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level >= XP_to_levelup) then
                 local potential_target = false
@@ -274,6 +276,10 @@ function ca_attack_highxp:evaluation(cfg, data)
                     best_attack = attack_info
                     best_attack.target = { x = target.x, y = target.y }
                     best_attack.ca_score = ca_score
+                    -- Also need to save weapon number because attack simulation above
+                    -- is for a different situation than the actual units on the map.
+                    -- +1 because of difference between Lua and C++ indices
+                    best_attack.attack_num = att_weapon.attack_num + 1
                 end
             end
         end
@@ -295,7 +301,7 @@ function ca_attack_highxp:execution(cfg, data)
 
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
-    AH.checked_attack(ai, attacker, defender)
+    AH.checked_attack(ai, attacker, defender, data.XP_attack.attack_num)
 
     data.XP_attack = nil
 end

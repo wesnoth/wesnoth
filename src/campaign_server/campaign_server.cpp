@@ -112,6 +112,15 @@ server::server(const std::string& cfg_file)
 	, blacklist_file_()
 	, flush_timer_(io_service_)
 {
+
+#ifndef _WIN32
+	struct sigaction sa;
+	std::memset( &sa, 0, sizeof(sa) );
+	sa.sa_handler = SIG_IGN;
+	int res = sigaction( SIGPIPE, &sa, NULL);
+	assert( res == 0 );
+#endif
+
 	load_config();
 
 	LOG_CS << "Port: " << port_ << "\n";

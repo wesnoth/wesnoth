@@ -151,9 +151,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 								sdl_blit(tile, nullptr, combined, &r);
 								r.x = std::max(0, (tile->w - overlay->w)/2);
 								r.y = std::max(0, (tile->h - overlay->h)/2);
-								//blit_surface needs neutral surface
 								surface overlay_neutral = make_neutral_surface(overlay);
-								blit_surface(overlay_neutral, nullptr, combined, &r);
+								sdl_blit(overlay_neutral, nullptr, combined, &r);
 								tile = combined;
 							}
 						}

@@ -609,6 +609,13 @@ void connect_engine::start_game_commandline(
 	send_to_server(config("start_game"));
 }
 
+void connect_engine::leave_game()
+{
+	DBG_MP << "leaving the game" << std::endl;
+
+	send_to_server(config("leave_game"));
+}
+
 std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 {
 	std::pair<bool, bool> result(std::make_pair(false, true));

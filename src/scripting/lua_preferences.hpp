@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2016 by Jyrki Vesterinen <sandgtx@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,22 +12,16 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_ALPHA_HPP_INCLUDED
-#define SDL_ALPHA_HPP_INCLUDED
+#ifndef SCRIPTING_LUA_UNIT_PREFERENCES_HPP
+#define SCRIPTING_LUA_UNIT_PREFERENCES_HPP
 
-/**
- * @file
- * Compatibility layer for using SDL 1.2 and 2.0.
- *
- * Emulates SDL_SetAlpha.
- */
+#include <string>
 
-#include <SDL.h>
+struct lua_State;
 
-
-#define SDL_SRCALPHA 0x00010000
-
-int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha);
-
+namespace lua_preferences
+{
+	std::string register_table(lua_State* L);
+}
 
 #endif

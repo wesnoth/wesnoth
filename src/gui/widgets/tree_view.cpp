@@ -54,7 +54,12 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 			std::bind(&ttree_view::signal_handler_left_button_down, this, _2),
 			event::tdispatcher::back_pre_child);
 }
-
+ttree_view::~ttree_view()
+{
+	if (root_node_) {
+		root_node_->clear_before_destruct();
+	}
+}
 ttree_view_node& ttree_view::add_node(
 		const std::string& id,
 		const std::map<std::string /* widget id */, string_map>& data)

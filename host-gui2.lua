@@ -23,6 +23,8 @@ local function plugin()
 
   log("hello world")
 
+  wesnoth.preferences.new_lobby = true
+
   repeat
     events, context, info = coroutine.yield()
     idle_text("in " .. info.name .. " waiting for titlescreen or lobby")

@@ -23,7 +23,7 @@
 
 #include "sdl/window.hpp"
 
-struct surface;
+class surface;
 #ifdef SDL_GPU
 #include "sdl/shader.hpp"
 #include "sdl/utils.hpp"

@@ -424,13 +424,11 @@ void tlobby_main::update_gamelist_diff()
 void tlobby_main::update_gamelist_header()
 {
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
-	utils::string_map symbols;
-	symbols["num_shown"]
-			= std::to_string(lobby_info_.games_filtered().size());
-	symbols["num_total"]
-			= std::to_string(lobby_info_.games().size());
-	std::string games_string
-			= VGETTEXT("Games: showing $num_shown out of $num_total", symbols);
+	const std::string games_string = vgettext("Games: showing $num_shown out of $num_total", {
+		{"num_shown", std::to_string(lobby_info_.games_filtered().size())},
+		{"num_total", std::to_string(lobby_info_.games().size())}
+	});
+
 	find_widget<tlabel>(gamelistbox_, "map", false).set_label(games_string);
 #endif
 }
@@ -743,6 +741,7 @@ void tlobby_main::pre_show(twindow& window)
 
 	chatbox_ = find_widget<tchatbox>(&window, "chat", false, true);
 	chatbox_->set_lobby_info(lobby_info_);
+	chatbox_->set_wesnothd_connection(wesnothd_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 
 	connect_signal_mouse_left_click(
@@ -914,6 +913,7 @@ void tlobby_main::process_gamelist_diff(const config& data)
 		gamelist_dirty_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!" << std::endl;
+		wesnothd_connection_.send_data(config("refresh_lobby"));
 	}
 	int joined = data.child_count("insert_child");
 	int left = data.child_count("remove_child");

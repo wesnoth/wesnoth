@@ -2078,6 +2078,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -2103,6 +2111,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_staging.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -2278,6 +2294,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\container.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -2402,13 +2425,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\multi_page.cpp">
@@ -2908,6 +2924,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_race.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
@@ -2979,14 +3002,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scripting\Plugins\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\Plugins\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\Plugins\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\sdl\alpha.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\sdl\exception.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
@@ -4200,10 +4215,12 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_login.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_method_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_staging.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp" />
@@ -4264,6 +4281,7 @@
     <ClInclude Include="..\..\src\gui\widgets\slider.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\spacer.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\stacked_widget.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\status_label_helper.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\text.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\text_box.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\toggle_button.hpp" />
@@ -4349,7 +4367,6 @@
     <ClInclude Include="..\..\src\savegame_config.hpp" />
     <ClInclude Include="..\..\src\save_blocker.hpp" />
     <ClInclude Include="..\..\src\save_index.hpp" />
-    <ClInclude Include="..\..\src\scoped_resource.hpp" />
     <ClInclude Include="..\..\src\scripting\application_lua_kernel.hpp" />
     <ClInclude Include="..\..\src\scripting\debug_lua.hpp" />
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp" />
@@ -4361,6 +4378,7 @@
     <ClInclude Include="..\..\src\scripting\lua_kernel_base.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_map_location_ops.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_pathfind_cost_calculator.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_preferences.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_race.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_rng.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_team.hpp" />
@@ -4371,7 +4389,6 @@
     <ClInclude Include="..\..\src\scripting\plugins\context.hpp" />
     <ClInclude Include="..\..\src\scripting\plugins\manager.hpp" />
     <ClInclude Include="..\..\src\scripting\push_check.hpp" />
-    <ClInclude Include="..\..\src\sdl\alpha.hpp" />
     <ClInclude Include="..\..\src\sdl\exception.hpp" />
     <ClInclude Include="..\..\src\sdl\gpu.hpp" />
     <ClInclude Include="..\..\src\sdl\image.hpp" />
@@ -4379,6 +4396,7 @@
     <ClInclude Include="..\..\src\sdl\shader.hpp" />
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
+    <ClInclude Include="..\..\src\SDL_SavePNG\savepng.h" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />

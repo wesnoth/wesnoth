@@ -272,17 +272,13 @@ void tgame_version::pre_show(twindow& window)
 	const unsigned tab_count = tab_bar.get_item_count();
 	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
 
-	for(unsigned k = 0; k < tab_count; ++k) {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-		connect_signal_notify_modified(tab_bar,
-									   std::bind(&tgame_version::tab_switch_callback,
-												   *this,
-												   std::ref(window)));
+	connect_signal_notify_modified(tab_bar,
+		std::bind(&tgame_version::tab_switch_callback, *this, std::ref(window)));
 #else
-		tab_bar.set_callback_value_change(
-			dialog_callback<tgame_version, &tgame_version::tab_switch_callback>);
+	tab_bar.set_callback_value_change(
+		dialog_callback<tgame_version, &tgame_version::tab_switch_callback>);
 #endif
-	}
 }
 
 void tgame_version::tab_switch_callback(twindow& window)

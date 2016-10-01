@@ -21,7 +21,6 @@
 #include "color_range.hpp"
 
 #include "sdl/utils.hpp"
-#include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 
 #include "neon.hpp"
@@ -141,9 +140,9 @@ surface make_neutral_surface(const surface &surf)
 		return nullptr;
 	}
 
-	surface const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
+	surface result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
 	if(result != nullptr) {
-		SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+		adjust_surface_alpha(result, SDL_ALPHA_OPAQUE);
 	}
 
 	return result;
@@ -165,16 +164,6 @@ surface create_neutral_surface(int w, int h)
 			format.Amask);
 
 	return result;
-}
-
-surface create_optimized_surface(const surface &surf)
-{
-	if(surf == nullptr)
-		return nullptr;
-
-	SDL_SetAlpha(surf,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-
-	return surf;
 }
 
 surface stretch_surface_horizontal(
@@ -219,7 +208,11 @@ surface stretch_surface_horizontal(
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 surface stretch_surface_vertical(
@@ -262,98 +255,12 @@ surface stretch_surface_vertical(
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
-}
-
-#ifdef PANDORA
-static void
-scale_surface_down(surface& dst, const surface& src, const int w_dst, const int h_dst)
-{
-	const_surface_lock src_lock(src);
-	surface_lock dst_lock(dst);
-
-	const Uint32* const src_pixels = src_lock.pixels();
-	Uint32* const dst_pixels = dst_lock.pixels();
-
-	int y_dst = 0;       // The current y in the destination surface
-
-	int y_src = 0;       // The current y in the source surface
-	int y_src_next = 0;  // The next y in the source surface
-	int y_step = 0;      // The y stepper
-	int h_src = src->h;  // The height of the source surface
-
-	for( ; y_dst != h_dst; ++y_dst, y_src = y_src_next) {
-
-		y_step += h_src;
-		do {
-			++y_src_next;
-			y_step -= h_dst;
-		} while(y_step >= h_dst);
-
-		int x_dst = 0;       // The current x in the destination surface
-
-		int x_src = 0;       // The current x in the source surface
-		int x_src_next = 0;  // The next x in the source surface
-		int x_step = 0;      // The x stepper
-		int w_src = src->w;  // The width of the source surface
-
-		for( ; x_dst != w_dst; ++x_dst, x_src = x_src_next) {
-
-			x_step += w_src;
-			do {
-				++x_src_next;
-				x_step -= w_dst;
-			} while(x_step >= w_dst);
-
-			int r_sum = 0, g_sum = 0, b_sum = 0, a_sum = 0;
-			int samples = 0;
-
-			// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
-			// which we want to derive the pixel from
-			for(int x = x_src; x < x_src_next; ++x) {
-				for(int y = y_src; y < y_src_next; ++y) {
-
-					++samples;
-
-					const Uint32 pixel = src_pixels[y_src * w_src + x_src];
-					const Uint8 a = pixel >> 24;
-					if(a) {
-						a_sum += a;
-						r_sum += a * static_cast<Uint8>(pixel >> 16);
-						g_sum += a * static_cast<Uint8>(pixel >> 8);
-						b_sum += a * static_cast<Uint8>(pixel);
-					}
-				}
-			}
-
-			if(a_sum) {
-
-				const int adjustment = (a_sum | 1) >> 1;
-				r_sum += adjustment;
-				g_sum += adjustment;
-				b_sum += adjustment;
-
-				r_sum /= a_sum;
-				g_sum /= a_sum;
-				b_sum /= a_sum;
-
-				assert(samples == (x_src_next - x_src) * (y_src_next - y_src));
-				if(samples != 1) {
-					a_sum += (samples | 1) >> 1;
-					a_sum /= samples;
-				}
-			}
-
-			dst_pixels[y_dst * w_dst + x_dst] =
-					  static_cast<Uint8>(a_sum) << 24
-					| static_cast<Uint8>(r_sum) << 16
-					| static_cast<Uint8>(g_sum) << 8
-					| static_cast<Uint8>(b_sum);
-		}
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
 	}
-}
 
-#endif
+	return dst;
+}
 
 Uint32 blend_rgba(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char a, unsigned char drop)
 {
@@ -375,16 +282,17 @@ surface scale_surface_xbrz(const surface & surf, size_t z)
 		z = 1;
 	}
 
-
 	if (z == 1) {
-		return create_optimized_surface(surf);
+		surface temp = surf; // TODO: no temp surface
+		adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+		return temp;
 	}
 
 	surface dst(create_neutral_surface(surf->w *z, surf->h * z));
 
 	if (z == 0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -400,7 +308,9 @@ surface scale_surface_xbrz(const surface & surf, size_t z)
 
 		xbrz::scale(z, src_lock.pixels(), dst_lock.pixels(), surf->w, surf->h);
 	}
-	return create_optimized_surface(dst);
+
+	adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	return dst;
 }
 
 surface scale_surface_nn (const surface & surf, int w, int h)
@@ -421,7 +331,7 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -438,7 +348,9 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 
 		xbrz::nearestNeighborScale(src_lock.pixels(), surf->w, surf->h, dst_lock.pixels(), w, h);
 	}
-	return create_optimized_surface(dst);
+
+	adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	return dst;
 }
 
 // NOTE: Don't pass this function 0 scaling arguments.
@@ -464,7 +376,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -573,7 +485,11 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
@@ -594,7 +510,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
-		return create_optimized_surface(dst);
+		return dst;
 	}
 
 	surface src(make_neutral_surface(surf));
@@ -605,9 +521,6 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 		return nullptr;
 	}
 
-#ifdef PANDORA
-	scale_surface_down(dst, src, w, h);
-#else
 	{
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
@@ -667,9 +580,12 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 
 		}
 	}
-#endif
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 
@@ -714,7 +630,11 @@ surface tile_surface(const surface& surf, int w, int h, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dest) : dest;
+	if(optimize) {
+		adjust_surface_alpha(dest, SDL_ALPHA_OPAQUE);
+	}
+
+	return dest;
 }
 
 surface adjust_surface_color(const surface &surf, int red, int green, int blue, bool optimize)
@@ -722,8 +642,15 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue, 
 	if(surf == nullptr)
 		return nullptr;
 
-	if((red == 0 && green == 0 && blue == 0))
-		return optimize ? create_optimized_surface(surf) : surf;
+	if((red == 0 && green == 0 && blue == 0)) {
+		surface temp = surf; // TODO: remove temp surface
+
+		if(optimize) {
+			adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+		}
+
+		return temp;
+	}
 
 	surface nsurf(make_neutral_surface(surf));
 
@@ -757,7 +684,11 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue, 
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface greyscale_image(const surface &surf, bool optimize)
@@ -802,7 +733,11 @@ surface greyscale_image(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface monochrome_image(const surface &surf, const int threshold, bool optimize)
@@ -842,7 +777,11 @@ surface monochrome_image(const surface &surf, const int threshold, bool optimize
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface sepia_image(const surface &surf, bool optimize)
@@ -884,7 +823,11 @@ surface sepia_image(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB, bool optimize)
@@ -927,7 +870,11 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface alpha_to_greyscale(const surface &surf, bool optimize)
@@ -955,7 +902,11 @@ surface alpha_to_greyscale(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface wipe_alpha(const surface &surf, bool optimize)
@@ -982,7 +933,11 @@ surface wipe_alpha(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 
@@ -1020,7 +975,11 @@ surface shadow_image(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a, bool optimize) {
@@ -1122,7 +1081,11 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize){
@@ -1154,7 +1117,11 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, boo
 		++beg;
 		}
 
-		return optimize ? create_optimized_surface(nsurf) : nsurf;
+		if(optimize) {
+			adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+		}
+
+		return nsurf;
 	}
 	return surf;
 }
@@ -1198,46 +1165,20 @@ surface brighten_image(const surface &surf, fixed_t amount, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
-surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize)
+void adjust_surface_alpha(surface& surf, fixed_t amount)
 {
-	if(surf== nullptr) {
-		return nullptr;
+	if(surf == nullptr) {
+		return;
 	}
 
-	surface nsurf(make_neutral_surface(surf));
-
-	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
-	}
-
-	{
-		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
-
-		if (amount < 0) amount = 0;
-		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
-
-			if(alpha) {
-				Uint8 r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
-
-				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-			}
-
-			++beg;
-		}
-	}
-
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	SDL_SetSurfaceAlphaMod(surf, Uint8(amount));
 }
 
 class pixel_callable : public game_logic::formula_callable {
@@ -1296,7 +1237,8 @@ surface adjust_surface_alpha_formula(const surface &surf, const std::string& for
 		return nullptr;
 	}
 
-	SDL_SetAlpha(nsurf.get(),SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+	adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+
 	{
 		surface_lock lock(nsurf);
 		Uint32* cur = lock.pixels();
@@ -1323,7 +1265,11 @@ surface adjust_surface_alpha_formula(const surface &surf, const std::string& for
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize)
@@ -1361,7 +1307,11 @@ surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface mask_surface(const surface &surf, const surface &mask, bool* empty_result, const std::string& filename)
@@ -1430,8 +1380,8 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 	if(empty_result)
 		*empty_result = empty;
 
+	//adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
 	return nsurf;
-	//return create_optimized_surface(nsurf);
 }
 
 bool in_mask_surface(const surface &surf, const surface &mask)
@@ -1539,8 +1489,11 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
 
+	return nsurf;
 }
 
 surface light_surface(const surface &surf, const surface &lightmap, bool optimize)
@@ -1605,7 +1558,11 @@ surface light_surface(const surface &surf, const surface &lightmap, bool optimiz
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 
@@ -1625,7 +1582,11 @@ surface blur_surface(const surface &surf, int depth, bool optimize)
 	SDL_Rect rect = sdl::create_rect(0, 0, surf->w, surf->h);
 	blur_surface(res, rect, depth);
 
-	return optimize ? create_optimized_surface(res) : res;
+	if(optimize) {
+		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
+	}
+
+	return res;
 }
 
 void blur_surface(surface& surf, SDL_Rect rect, int depth)
@@ -1864,7 +1825,11 @@ surface blur_alpha_surface(const surface &surf, int depth, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(res) : res;
+	if(optimize) {
+		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
+	}
+
+	return res;
 }
 
 surface cut_surface(const surface &surf, SDL_Rect const &r)
@@ -1953,38 +1918,6 @@ surface blend_surface(
 		const Uint16 blue  = ratio * static_cast<Uint8>(color);
 		ratio = 256 - ratio;
 
-#ifdef PANDORA
-		/*
-		 * Use an optimised version of the generic algorithm. The optimised
-		 * version processes 8 pixels a time. If the number of pixels is not an
-		 * exact multiple of 8 it falls back to the generic algorithm to handle
-		 * the last pixels.
-		 */
-		uint16x8_t vred = vdupq_n_u16(red);
-		uint16x8_t vgreen = vdupq_n_u16(green);
-		uint16x8_t vblue = vdupq_n_u16(blue);
-
-		uint8x8_t vratio = vdup_n_u8(ratio);
-
-		const int div = (nsurf->w * surf->h) / 8;
-		for(int i = 0; i < div; ++i, beg += 8) {
-			uint8x8x4_t rgba = vld4_u8(reinterpret_cast<Uint8*>(beg));
-
-			uint16x8_t b = vmull_u8(rgba.val[0], vratio);
-			uint16x8_t g = vmull_u8(rgba.val[1], vratio);
-			uint16x8_t r = vmull_u8(rgba.val[2], vratio);
-
-			b = vaddq_u16(b, vblue);
-			g = vaddq_u16(g, vgreen);
-			r = vaddq_u16(r, vred);
-
-			rgba.val[0] = vshrn_n_u16(b, 8);
-			rgba.val[1] = vshrn_n_u16(g, 8);
-			rgba.val[2] = vshrn_n_u16(r, 8);
-
-			vst4_u8(reinterpret_cast<Uint8*>(beg), rgba);
-		}
-#endif
 		while(beg != end) {
 			Uint8 a = static_cast<Uint8>(*beg >> 24);
 			Uint8 r = (ratio * static_cast<Uint8>(*beg >> 16) + red)   >> 8;
@@ -1997,7 +1930,11 @@ surface blend_surface(
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 /* Simplified RotSprite algorithm.
@@ -2057,7 +1994,12 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 							get_pixel(src, src_lock, source_x, source_y));
 			}
 	}
-	return optimize ? create_optimized_surface(dst) : dst;
+
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel)
@@ -2151,7 +2093,11 @@ surface rotate_180_surface(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 
@@ -2189,7 +2135,11 @@ surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(dst) : dst;
+	if(optimize) {
+		adjust_surface_alpha(dst, SDL_ALPHA_OPAQUE);
+	}
+
+	return dst;
 }
 
 
@@ -2219,7 +2169,11 @@ surface flip_surface(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface flop_surface(const surface &surf, bool optimize)
@@ -2248,7 +2202,11 @@ surface flop_surface(const surface &surf, bool optimize)
 		}
 	}
 
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface create_compatible_surface(const surface &surf, int width, int height)

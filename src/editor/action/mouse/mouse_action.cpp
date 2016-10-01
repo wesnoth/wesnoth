@@ -172,18 +172,18 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
 	SDL_Rect rcDestLeft = sdl::create_rect(offset, quarter_size, 0, 0);
-	blit_surface ( image_fg, nullptr, image, &rcDestLeft );
+	sdl_blit( image_fg, nullptr, image, &rcDestLeft );
 
 	// Blit right side
 	image_bg = scale_surface(image_bg, new_size, new_size);
 	SDL_Rect rcDestRight = sdl::create_rect(half_size, quarter_size, 0, 0);
-	blit_surface ( image_bg, nullptr, image, &rcDestRight );
+	sdl_blit( image_bg, nullptr, image, &rcDestRight );
 
 	//apply mask so the overlay is contained within the mouseover hex
 	image = mask_surface(image, image::get_hexmask());
 
 	// Add the alpha factor
-	image = adjust_surface_alpha(image, alpha);
+	adjust_surface_alpha(image, alpha);
 
 	// scale the image
 	const int zoom = disp.hex_size();
@@ -337,14 +337,15 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	surface image = create_neutral_surface(72,72);
 
 	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
-	blit_surface(image60, nullptr, image, &r);
+	sdl_blit(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 
@@ -399,7 +400,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 		return nullptr;
 	}
 	auto player_starting_at_hex = disp.map().is_starting_position(hex);
-	 
+
 	if (has_ctrl_modifier()) {
 		if (player_starting_at_hex) {
 			location_palette_.add_item(*player_starting_at_hex);
@@ -454,14 +455,15 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	surface image = create_neutral_surface(72,72);
 
 	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
-	blit_surface(image60, nullptr, image, &r);
+	sdl_blit(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	adjust_surface_alpha(image, alpha);
+	image = scale_surface(image, zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
 

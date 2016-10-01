@@ -18,7 +18,7 @@
 #include <map>
 
 class gamemap;
-struct surface;
+class surface;
 class team;
 struct map_location;
 class gamemap;

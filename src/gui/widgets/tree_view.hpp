@@ -46,6 +46,8 @@ public:
 
 	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
 
+	~ttree_view();
+
 	using tscrollbar_container::finalize_setup;
 
 	ttree_view_node& get_root_node()

@@ -33,6 +33,19 @@ REGISTER_DIALOG(drop_down_list)
 namespace {
 	void click_callback(twindow& window, bool&, bool&, tpoint coordinate)
 	{
+		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or more selections,
+		 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because
+		 * of this, selecting the same entry in the dropdown list essentilly sets the list's selected row to -1, causing problems.
+		 *
+		 * In order to work around this, we first manually deselect the selected entry here. This handler is called *before*
+		 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
+		 */
+		tlistbox& list = find_widget<tlistbox>(&window, "list", true);
+		const int sel = list.get_selected_row();
+		if(sel >= 0) {
+			list.select_row(sel, false);
+		}
+
 		SDL_Rect rect = window.get_rectangle();
 		if(coordinate.x < rect.x || coordinate.x > rect.x + rect.w || coordinate.y < rect.y || coordinate.y > rect.y + rect.h ) {
 			window.set_retval(twindow::CANCEL);

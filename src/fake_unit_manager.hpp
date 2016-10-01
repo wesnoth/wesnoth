@@ -42,7 +42,7 @@ public:
 
 	const_iterator begin() const { return fake_units_.begin(); }
 	const_iterator end() const { return fake_units_.end(); }
-
+	bool empty() const { return fake_units_.empty(); }
 private:
 	/** Register a unit with this manager. private, should only be called by fake_unit_ptr. */
 	void place_temporary_unit(internal_ptr_type);

@@ -395,6 +395,9 @@
     <ClCompile Include="..\..\src\gui\widgets\button.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\container.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -554,6 +557,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\edit_text.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\end_credits.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -615,6 +621,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\simple_item_selector.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\sp_options_configure.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\theme_list.cpp">
@@ -695,6 +704,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\editor\generate_map.cpp">
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor\generator_settings.cpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\editor\new_map.cpp">
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClCompile>
@@ -735,6 +747,12 @@
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_method_selection.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_staging.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
@@ -1190,9 +1208,6 @@
     <ClCompile Include="..\..\src\hotkey\hotkey_preferences_display.cpp">
       <Filter>Hotkeys</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\sdl\alpha.cpp">
-      <Filter>SDL</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\sdl\exception.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1200,6 +1215,9 @@
       <Filter>SDL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\sdl\rect.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\SDL_SavePNG\savepng.c">
       <Filter>SDL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\sdl\shader.cpp">
@@ -1508,23 +1526,11 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.cpp">
+    <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\sp_options_configure.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\editor\generator_settings.cpp">
-      <Filter>Gui\Dialogs\Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\SDL_SavePNG\savepng.c">
-      <Filter>SDL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\end_credits.cpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1756,6 +1762,9 @@
     <ClInclude Include="..\..\src\gui\widgets\button.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\clickable.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -1867,6 +1876,9 @@
     <ClInclude Include="..\..\src\gui\widgets\stacked_widget.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\status_label_helper.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\text.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -1942,6 +1954,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\edit_text.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\end_credits.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2006,6 +2021,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\simple_item_selector.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\sp_options_configure.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\theme_list.hpp">
@@ -2086,6 +2104,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\editor\generate_map.hpp">
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor\generator_settings.hpp">
+      <Filter>Gui\Dialogs\Editor</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\editor\new_map.hpp">
       <Filter>Gui\Dialogs\Editor</Filter>
     </ClInclude>
@@ -2126,6 +2147,12 @@
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_method_selection.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_staging.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp">
@@ -2557,9 +2584,6 @@
     <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp">
       <Filter>Hotkeys</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\sdl\alpha.hpp">
-      <Filter>SDL</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\sdl\exception.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
@@ -2570,6 +2594,9 @@
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\sdl\rect.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\SDL_SavePNG\savepng.h">
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\sdl\shader.hpp">
@@ -2879,7 +2906,6 @@
     <ClInclude Include="..\..\src\saved_game.hpp" />
     <ClInclude Include="..\..\src\savegame.hpp" />
     <ClInclude Include="..\..\src\savegame_config.hpp" />
-    <ClInclude Include="..\..\src\scoped_resource.hpp" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />
@@ -2915,20 +2941,11 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.hpp">
+    <ClInclude Include="..\..\src\scripting\lua_preferences.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\sp_options_configure.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\editor\generator_settings.hpp">
-      <Filter>Gui\Dialogs\Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\end_credits.hpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

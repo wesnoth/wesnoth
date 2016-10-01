@@ -741,17 +741,19 @@ void ttext::rerender(const bool force) const
 		recalculate(force);
 		surface_dirty_ = false;
 
-		int width = rect_.x + rect_.width;
+		int width  = rect_.x + rect_.width;
 		int height = rect_.y + rect_.height;
-		if (maximum_width_  > 0 && width  > maximum_width_ ) width  = maximum_width_;
-		if (maximum_height_ > 0 && height > maximum_height_) height = maximum_height_;
-		const unsigned stride = width * 4;
+		if(maximum_width_  > 0) { width  = std::min(width, maximum_width_); }
+		if(maximum_height_ > 0) { height = std::min(height, maximum_height_); }
+
+		cairo_format_t format = CAIRO_FORMAT_ARGB32;
+		const unsigned stride = cairo_format_stride_for_width(format, width);
+
 		create_surface_buffer(stride * height);
 
-		cairo_surface_t *cairo_surface =
-			cairo_image_surface_create_for_data(surface_buffer_,
-				CAIRO_FORMAT_ARGB32, width, height, stride);
-		cairo_t *cr = cairo_create(cairo_surface);
+		cairo_surface_t* cairo_surface =
+			cairo_image_surface_create_for_data(surface_buffer_, format, width, height, stride);
+		cairo_t* cr = cairo_create(cairo_surface);
 
 		/* set color (used for foreground). */
 		cairo_set_source_rgba(cr,
@@ -765,17 +767,15 @@ void ttext::rerender(const bool force) const
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
-		for (int y = 0; y < height; ++y) {
-			for (int x = 0; x < width; ++x)
-			{
-				unsigned char *pixel = &surface_buffer_[(y * width + x) * 4];
+		for(int y = 0; y < height; ++y) {
+			for(int x = 0; x < width; ++x) {
+				unsigned char* pixel = &surface_buffer_[(y * width + x) * 4];
 				decode_pixel(pixel);
 			}
 		}
 
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
-			surface_buffer_, width, height, 32, stride,
-			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
+			surface_buffer_, width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 #ifdef SDL_GPU
 		texture_ = sdl::timage(surface_);
 #endif

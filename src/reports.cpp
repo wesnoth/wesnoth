@@ -1350,7 +1350,6 @@ REPORT_GENERATOR(terrain_info, rc)
 	if (terrain == t_translation::OFF_MAP_USER)
 		return config();
 
-	std::ostringstream str;
 	config cfg;
 
 	bool high_res = false;

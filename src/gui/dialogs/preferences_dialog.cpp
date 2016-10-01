@@ -610,7 +610,12 @@ void tpreferences::post_build(twindow& window)
 				std::vector<std::string> option_ids;
 
 				for(const config& choice : option.child_range("option")) {
-					menu_data.push_back(config_of("label", choice["name"]));
+					config option;
+					option["label"] = choice["name"];
+					if(choice.has_attribute("description")) {
+						option["details"] = std::string("<span color='#777'>") + choice["description"] + "</span>";
+					}
+					menu_data.push_back(option);
 					option_ids.push_back(choice["id"]);
 				}
 
@@ -625,6 +630,7 @@ void tpreferences::post_build(twindow& window)
 
 				tmenu_button& menu = find_widget<tmenu_button>(&details_grid, "setter", false);
 
+				menu.set_use_markup(true);
 				menu.set_values(menu_data, selected);
 				menu.set_callback_state_change([=](twidget& w) {
 					set(pref_name, option_ids[dynamic_cast<tmenu_button&>(w).get_value()]);
@@ -666,7 +672,7 @@ void tpreferences::post_build(twindow& window)
 		std::ref(window))));
 #endif
 
-	advanced.select_row(0);
+	on_advanced_prefs_list_select(advanced, window);
 
 	//
 	// HOTKEYS PANEL
@@ -832,12 +838,11 @@ void tpreferences::add_hotkey_callback(tlistbox& hotkeys)
 	}
 
 	if(oldhk) {
-		utils::string_map symbols;
-		symbols["hotkey_sequence"]   = oldhk->get_name();
-		symbols["old_hotkey_action"] = hotkey::get_description(oldhk->get_command());
-		symbols["new_hotkey_action"] = hotkey::get_description(newhk->get_command());
-
-		std::string text = vgettext("“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\nDo you wish to reassign it to “<b>$new_hotkey_action|</b>”?", symbols);
+		const std::string text = vgettext("“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\nDo you wish to reassign it to “<b>$new_hotkey_action|</b>”?", {
+			{"hotkey_sequence",   oldhk->get_name()},
+			{"old_hotkey_action", hotkey::get_description(oldhk->get_command())},
+			{"new_hotkey_action", hotkey::get_description(newhk->get_command())}
+		});
 
 		const int res = gui2::show_message(video, _("Reassign Hotkey"), text, gui2::tmessage::yes_no_buttons, true);
 		if(res != gui2::twindow::OK) {

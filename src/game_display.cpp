@@ -118,8 +118,8 @@ void game_display::new_turn()
 		const time_of_day& old_tod = tod_manager_->get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
-			const surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
-			const surface new_mask(image::get_image(tod.image_mask,image::SCALED_TO_HEX));
+			surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
+			surface new_mask(image::get_image(tod.image_mask,image::SCALED_TO_HEX));
 
 			const int niterations = static_cast<int>(10/turbo_speed());
 			const int frame_time = 30;
@@ -139,12 +139,14 @@ void game_display::new_turn()
 #else
 				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
-					tod_hex_mask1.assign(adjust_surface_alpha(old_mask,proportion));
+					adjust_surface_alpha(old_mask, proportion);
+					tod_hex_mask1.assign(old_mask);
 				}
 
 				if(new_mask != nullptr) {
 					const fixed_t proportion = fxpdiv(i,niterations);
-					tod_hex_mask2.assign(adjust_surface_alpha(new_mask,proportion));
+					adjust_surface_alpha(new_mask, proportion);
+					tod_hex_mask2.assign(new_mask);
 				}
 #endif
 
@@ -269,7 +271,9 @@ void game_display::draw_invalidated()
 {
 	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
-
+	if (fake_unit_man_->empty()) {
+		return;
+	}
 	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
 	for (const unit* temp_unit : *fake_unit_man_) {

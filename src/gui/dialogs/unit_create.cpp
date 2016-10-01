@@ -218,7 +218,8 @@ void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 		return;
 	last_words_ = words;
 
-	boost::dynamic_bitset<> show_items(list.get_item_count(), true);
+	boost::dynamic_bitset<> show_items;
+	show_items.resize(list.get_item_count(), true);
 
 	if(!text.empty()) {
 		for(unsigned int i = 0; i < list.get_item_count(); i++) {

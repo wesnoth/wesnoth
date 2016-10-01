@@ -23,8 +23,6 @@
 #include <set>
 #include <stack>
 
-#include "sdl/alpha.hpp"
-
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
 #define LOG_FT LOG_STREAM(info, log_font)
@@ -119,11 +117,11 @@ sdl::timage floating_label::create_image()
 			// dark background will darken the anti-aliased part.
 			// This 1.13 value seems to restore the brightness of version 1.4
 			// (where the text was blitted directly on screen)
-			foreground = adjust_surface_alpha(foreground, ftofxp(1.13), false);
+			adjust_surface_alpha(foreground, ftofxp(1.13));
 
 			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
-			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+			sdl_blit(foreground, nullptr, background, &r);
 
 			img_ = sdl::timage(background);
 		}
@@ -133,7 +131,7 @@ sdl::timage floating_label::create_image()
 				(foreground->w + 4, foreground->h + 4);
 			sdl::fill_rect(background, nullptr, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 			background = shadow_image(background, false);
 
 			if (background == nullptr) {
@@ -141,8 +139,8 @@ sdl::timage floating_label::create_image()
 				img_ = sdl::timage(foreground);
 				return img_;
 			}
-			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+			sdl_blit(foreground, nullptr, background, &r);
 			img_ = sdl::timage(background);
 		}
 	}
@@ -181,8 +179,8 @@ surface floating_label::create_surface()
 
 			if (background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
-				surf_ = create_optimized_surface(foreground);
-				return surf_;
+				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+				return surf_ = foreground;
 			}
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
@@ -192,16 +190,17 @@ surface floating_label::create_surface()
 			// dark background will darken the anti-aliased part.
 			// This 1.13 value seems to restore the brightness of version 1.4
 			// (where the text was blitted directly on screen)
-			foreground = adjust_surface_alpha(foreground, ftofxp(1.13), false);
+			adjust_surface_alpha(foreground, ftofxp(1.13));
 
 			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
-			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
+			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+			sdl_blit(foreground, nullptr, background, &r);
 
-			surf_ = create_optimized_surface(background);
+			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
+			surf_ = background;
 			// RLE compression seems less efficient for big semi-transparent area
 			// so, remove it for this case, but keep the optimized display format
-			SDL_SetAlpha(surf_,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+			adjust_surface_alpha(surf_, SDL_ALPHA_OPAQUE);
 		}
 		else {
 			// background is blurred shadow of the text
@@ -209,17 +208,18 @@ surface floating_label::create_surface()
 				(foreground->w + 4, foreground->h + 4);
 			sdl::fill_rect(background, nullptr, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
-			blit_surface(foreground, nullptr, background, &r);
+			sdl_blit(foreground, nullptr, background, &r);
 			background = shadow_image(background, false);
 
 			if (background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
-				surf_ = create_optimized_surface(foreground);
-				return surf_;
+				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+				return surf_ = foreground;
 			}
-			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
-			blit_surface(foreground, nullptr, background, &r);
-			surf_ = create_optimized_surface(background);
+			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
+			sdl_blit(foreground, nullptr, background, &r);
+			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
+			surf_ = background;
 		}
 	}
 

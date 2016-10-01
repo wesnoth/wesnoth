@@ -65,16 +65,16 @@
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
 			<Add library="libpng" />
-			<Add library="libboost_iostreams-mgw51-mt-1_58.a" />
-			<Add library="libboost_bzip2-mgw51-mt-1_58.a" />
-			<Add library="libboost_filesystem-mgw51-mt-1_58.a" />
-			<Add library="libboost_locale-mgw51-mt-1_58.a" />
-			<Add library="libboost_program_options-mgw51-mt-1_58.a" />
-			<Add library="libboost_random-mgw51-mt-1_58.a" />
-			<Add library="libboost_regex-mgw51-mt-1_58.a" />
-			<Add library="libboost_system-mgw51-mt-1_58.a" />
-			<Add library="libboost_thread-mgw51-mt-1_58.a" />
-			<Add library="libboost_zlib-mgw51-mt-1_58.a" />
+			<Add library="libboost_iostreams-mgw51-mt-1_61.a" />
+			<Add library="libboost_bzip2-mgw51-mt-1_61.a" />
+			<Add library="libboost_filesystem-mgw51-mt-1_61.a" />
+			<Add library="libboost_locale-mgw51-mt-1_61.a" />
+			<Add library="libboost_program_options-mgw51-mt-1_61.a" />
+			<Add library="libboost_random-mgw51-mt-1_61.a" />
+			<Add library="libboost_regex-mgw51-mt-1_61.a" />
+			<Add library="libboost_system-mgw51-mt-1_61.a" />
+			<Add library="libboost_thread-mgw51-mt-1_61.a" />
+			<Add library="libboost_zlib-mgw51-mt-1_61.a" />
 			<Add directory="./" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnoth.rc">
@@ -607,6 +607,8 @@
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_create_game_set_password.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_host_game_prompt.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_host_game_prompt.hpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/mp_join_game.cpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/mp_join_game.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_login.cpp" />
@@ -918,7 +920,6 @@
 		<Unit filename="../../src/saved_game.hpp" />
 		<Unit filename="../../src/savegame.cpp" />
 		<Unit filename="../../src/savegame.hpp" />
-		<Unit filename="../../src/scoped_resource.hpp" />
 		<Unit filename="../../src/scripting/application_lua_kernel.cpp" />
 		<Unit filename="../../src/scripting/application_lua_kernel.hpp" />
 		<Unit filename="../../src/scripting/debug_lua.cpp" />
@@ -939,6 +940,8 @@
 		<Unit filename="../../src/scripting/lua_kernel_base.hpp" />
 		<Unit filename="../../src/scripting/lua_map_location_ops.cpp" />
 		<Unit filename="../../src/scripting/lua_map_location_ops.hpp" />
+		<Unit filename="../../src/scripting/lua_preferences.cpp" />
+		<Unit filename="../../src/scripting/lua_preferences.hpp" />
 		<Unit filename="../../src/scripting/lua_race.cpp" />
 		<Unit filename="../../src/scripting/lua_race.hpp" />
 		<Unit filename="../../src/scripting/lua_rng.cpp" />
@@ -957,8 +960,6 @@
 		<Unit filename="../../src/scripting/plugins/context.hpp" />
 		<Unit filename="../../src/scripting/plugins/manager.cpp" />
 		<Unit filename="../../src/scripting/plugins/manager.hpp" />
-		<Unit filename="../../src/sdl/alpha.cpp" />
-		<Unit filename="../../src/sdl/alpha.hpp" />
 		<Unit filename="../../src/sdl/exception.cpp" />
 		<Unit filename="../../src/sdl/exception.hpp" />
 		<Unit filename="../../src/sdl/image.cpp" />

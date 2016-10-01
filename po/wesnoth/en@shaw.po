@@ -5589,7 +5589,7 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑑𐑦𐑙 𐑑 𐑕𐑻𐑝𐑻..."
 
 #: src/format_time_summary.cpp:47 src/reports.cpp:1532
 msgid "%H:%M"
-msgstr "%𐑱𐑗:%𐑧𐑥"
+msgstr "%H:%M"
 
 #: src/format_time_summary.cpp:50 src/reports.cpp:1532
 msgid "%I:%M %p"
@@ -5597,23 +5597,19 @@ msgstr ""
 
 #: src/format_time_summary.cpp:55
 msgid "%A, %H:%M"
-msgstr "%𐑩, %𐑱𐑗:%𐑧𐑥"
+msgstr "%A, %H:%M"
 
 #: src/format_time_summary.cpp:58
-#, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
-msgstr "%𐑩, %𐑱𐑗:%𐑧𐑥"
+msgstr "%A, %I:%M %p"
 
 #: src/format_time_summary.cpp:62
 msgid "%b %d"
-msgstr "%𐑚𐑰 %𐑛𐑰"
+msgstr "%b %d"
 
 #: src/format_time_summary.cpp:66
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
-msgstr "%𐑚𐑰 %𐑛𐑰 %𐑢𐑲"
+msgstr "%b %d %Y"
 
 #: src/game_config.cpp:387
 msgid "Invalid color range: "
@@ -6292,7 +6288,8 @@ msgid "Random map options:"
 msgstr "𐑮𐑨𐑯𐑛𐑩𐑥 𐑕𐑑𐑸𐑑 𐑑𐑲𐑥"
 
 #: src/game_initialization/multiplayer_create.cpp:97
-#: src/game_initialization/multiplayer_lobby.cpp:699 src/help/help_impl.cpp:528
+#: src/game_initialization/multiplayer_lobby.cpp:699
+#: src/help/help_impl.cpp:528
 msgid "Era:"
 msgstr "𐑽𐑩:"
 
@@ -7177,8 +7174,8 @@ msgstr ""
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:392 src/save_index.cpp:293 src/savegame.cpp:74
-#: src/savegame.cpp:600 src/savegame.cpp:602
+#: src/hotkey/hotkey_handler.cpp:392 src/save_index.cpp:293
+#: src/savegame.cpp:74 src/savegame.cpp:600 src/savegame.cpp:602
 msgid "Auto-Save"
 msgstr "𐑷𐑑𐑴-𐑕𐑱𐑝"
 
@@ -8238,13 +8235,11 @@ msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟:"
 
 #: src/save_index.cpp:196
 msgid "%a %b %d %H:%M %Y"
-msgstr "%𐑩 %𐑚𐑰 %𐑛𐑰 %𐑱𐑗:%𐑧𐑥 %𐑢𐑲"
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/save_index.cpp:196
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%𐑩 %𐑚𐑰 %𐑛𐑰 %𐑱𐑗:%𐑧𐑥 %𐑢𐑲"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/save_index.cpp:225 src/save_index.cpp:227
 msgid " replay"
@@ -8729,16 +8724,12 @@ msgid "September"
 msgstr ""
 
 #: src/strftime.cpp:78
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
-msgstr "%𐑩 %𐑚𐑰 %𐑛𐑰 %𐑱𐑗:%𐑧𐑥 %𐑢𐑲"
+msgstr "%a %b %e %H:%M:%S %Y"
 
 #: src/strftime.cpp:82
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
-msgstr "%𐑩 %𐑚𐑰 %𐑛𐑰 %𐑱𐑗:%𐑧𐑥 %𐑢𐑲"
+msgstr "%a %d %b %Y %H:%M:%S %z"
 
 #: src/strftime.cpp:93
 msgid "AM"

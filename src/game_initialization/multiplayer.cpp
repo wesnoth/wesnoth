@@ -25,6 +25,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/network_transmission.hpp"
@@ -405,9 +406,8 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 // The functions enter_(screen)_mode are simple functions that take care of
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
-
 static void enter_wait_mode(CVideo& video, const config& game_config, saved_game& state, twesnothd_connection* wesnothd_connection,
-	bool observe, int current_turn = 0)
+	lobby_info& li, bool observe, int current_turn = 0)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -415,21 +415,40 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 
 	gamelist.clear();
 	statistics::fresh_stats();
-	mp_campaign_info campaign_info(*wesnothd_connection);
-	campaign_info.is_host = false;
+	std::unique_ptr<mp_campaign_info> campaign_info;
+	campaign_info.reset(new mp_campaign_info(*wesnothd_connection));
+	campaign_info->is_host = false;
 	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info.skip_replay_until_turn = current_turn;
-		campaign_info.skip_replay_blindfolded = preferences::blindfold_replay();
+		campaign_info->skip_replay_until_turn = current_turn;
+		campaign_info->skip_replay_blindfolded = preferences::blindfold_replay();
 	}
 
 	{
+		if(preferences::new_lobby()) {
+
+			gui2::tmp_join_game dlg(state, li, *wesnothd_connection, true, observe);
+			dlg.show(video);
+
+			if(dlg.get_retval() == gui2::twindow::OK) {
+				campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
+				controller.set_mp_info(campaign_info.get());
+				controller.play_game();
+			}
+
+			if(wesnothd_connection) {
+				wesnothd_connection->send_data(config("leave_game"));
+			}
+
+			return;
+		}
+
 		mp::wait ui(video, wesnothd_connection, game_config, state, gamechat, gamelist);
 
 		ui.join_game(observe);
 
 		run_lobby_loop(video, ui);
 		res = ui.get_result();
-		campaign_info.connected_players.insert(ui.user_list().begin(), ui.user_list().end());
+		campaign_info->connected_players.insert(ui.user_list().begin(), ui.user_list().end());
 
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
@@ -441,7 +460,7 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 	switch (res) {
 	case mp::ui::PLAY: {
 		campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
-		controller.set_mp_info(&campaign_info);
+		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 		break;
 	}
@@ -453,10 +472,10 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 }
 
 static void enter_create_mode(CVideo& video, const config& game_config, saved_game& state, twesnothd_connection* wesnothd_connection,
-	bool local_players_only = false);
+	lobby_info& li, bool local_players_only = false);
 
 static bool enter_connect_mode(CVideo& video, const config& game_config,
-	saved_game& state, twesnothd_connection* wesnothd_connection,
+	saved_game& state, twesnothd_connection* wesnothd_connection, lobby_info& li,
 	bool local_players_only = false)
 {
 	DBG_MP << "entering connect mode" << std::endl;
@@ -476,21 +495,22 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 	{
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get()));
 
-        if(preferences::new_lobby()) {
-            gui2::tmp_staging dlg(game_config, *connect_engine);
-            dlg.show(video);
+		if(preferences::new_lobby()) {
+			gui2::tmp_staging dlg(*connect_engine, li, wesnothd_connection);
+			dlg.show(video);
 
-            if(dlg.get_retval() == gui2::twindow::OK) {
-                campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
-                controller.set_mp_info(campaign_info.get());
-                controller.play_game();
-                if(wesnothd_connection) {
-                    wesnothd_connection->send_data(config("leave_game"));
-                }
-            }
+			if(dlg.get_retval() == gui2::twindow::OK) {
+				campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
+				controller.set_mp_info(campaign_info.get());
+				controller.play_game();
+			}
 
-            return true;
-        }
+			if(wesnothd_connection) {
+				wesnothd_connection->send_data(config("leave_game"));
+			}
+
+			return true;
+		}
 
 		mp::connect ui(video, wesnothd_connection, state.mp_settings().name, game_config, gamechat, gamelist,
 			*connect_engine);
@@ -516,7 +536,7 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 		break;
 	}
 	case mp::ui::CREATE:
-		enter_create_mode(video, game_config, state, wesnothd_connection, local_players_only);
+		enter_create_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 		if (wesnothd_connection) {
 			wesnothd_connection->send_data(config("leave_game"));
 		}
@@ -533,11 +553,11 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 	return true;
 }
 
-static bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, twesnothd_connection* wesnothd_connection,
+static bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, twesnothd_connection* wesnothd_connection, lobby_info& li,
 	bool local_players_only = false);
 
 static void enter_create_mode(CVideo& video, const config& game_config,
-	saved_game& state, twesnothd_connection* wesnothd_connection, bool local_players_only)
+	saved_game& state, twesnothd_connection* wesnothd_connection, lobby_info& li, bool local_players_only)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -552,7 +572,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 		dlg.show(video);
 
 		if(dlg.get_retval() == gui2::twindow::OK) {
-			enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			enter_connect_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 		} else if(wesnothd_connection) {
 			wesnothd_connection->send_data(config("refresh_lobby"));
 		}
@@ -575,10 +595,10 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 
 		switch (res) {
 		case mp::ui::CREATE:
-			configure_canceled = !enter_configure_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			configure_canceled = !enter_configure_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 			break;
 		case mp::ui::LOAD_GAME:
-			connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:
@@ -592,7 +612,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 }
 
 static bool enter_configure_mode(CVideo& video, const config& game_config,
-	saved_game& state, twesnothd_connection* wesnothd_connection, bool local_players_only)
+	saved_game& state, twesnothd_connection* wesnothd_connection, lobby_info& li, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;
 
@@ -618,7 +638,7 @@ static bool enter_configure_mode(CVideo& video, const config& game_config,
 
 		switch (res) {
 		case mp::ui::CREATE:
-			connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, local_players_only);
+			connect_canceled = !enter_connect_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:
@@ -672,7 +692,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			sound::empty_playlist();
 			sound::stop_music();
 		}
-		lobby_info li(game_config, installed_addons, *wesnothd_connection);
+		lobby_info li(game_config, installed_addons);
 
 		// Force a black background
 		const Uint32 color = SDL_MapRGBA(video.getSurface()->format
@@ -714,7 +734,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		case mp::ui::JOIN:
 		case mp::ui::OBSERVE:
 			try {
-				enter_wait_mode(video, game_config, state, wesnothd_connection, res == mp::ui::OBSERVE, current_turn);
+				enter_wait_mode(video, game_config, state, wesnothd_connection, li, res == mp::ui::OBSERVE, current_turn);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui2::show_error_message(video, error.message);
@@ -725,7 +745,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			break;
 		case mp::ui::CREATE:
 			try {
-				enter_create_mode(video, game_config, state, wesnothd_connection, false);
+				enter_create_mode(video, game_config, state, wesnothd_connection, li, false);
 			} catch(config::error& error) {
 				if (!error.message.empty())
 					gui2::show_error_message(video, error.message);
@@ -757,7 +777,9 @@ void start_local_game(CVideo& video, const config& game_config,
 	gamechat.clear_history();
 	gamelist.clear();
 	preferences::set_message_private(false);
-	enter_create_mode(video, game_config, state, nullptr, true);
+	// TODO: should lobby_info take a nullptr in this case, or should we pass the installed_addons data here too?
+	lobby_info li(game_config, std::vector<std::string>());
+	enter_create_mode(video, game_config, state, nullptr, li, true);
 }
 
 void start_local_game_commandline(CVideo& video, const config& game_config,

@@ -34,6 +34,7 @@
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_preferences.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 
@@ -48,6 +49,7 @@
 
 #include "utils/functional.hpp"
 #include <boost/range/adaptors.hpp>
+#include <SDL.h>
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -89,12 +91,28 @@ static int intf_describe_plugins(lua_State * L)
 	return 0;
 }
 
+static int intf_delay(lua_State* L)
+{
+	unsigned int delay = static_cast<unsigned int>(luaL_checkint(L, 1));
+	SDL_Delay(delay);
+	return 0;
+}
+
 application_lua_kernel::application_lua_kernel(CVideo * ptr)
  : lua_kernel_base(ptr)
 {
+	lua_getglobal(mState, "wesnoth");
+	lua_pushcfunction(mState, intf_delay);
+	lua_setfield(mState, -2, "delay");
+
+	lua_settop(mState, 0);
+
 	lua_pushcfunction(mState, &intf_describe_plugins);
 	lua_setglobal(mState, "describe_plugins");
 	lua_settop(mState, 0);
+
+	// Create the preferences table.
+	cmd_log_ << lua_preferences::register_table(mState);
 }
 
 application_lua_kernel::thread::thread(lua_State * T) : T_(T), started_(false) {}

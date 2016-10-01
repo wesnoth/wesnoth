@@ -71,6 +71,8 @@ public:
 	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
+	void leave_game();
+
 	// Return pair first element specifies whether to leave the game
 	// and second element whether to silently update UI.
 	std::pair<bool, bool> process_network_data(const config& data);
@@ -99,6 +101,8 @@ public:
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
 	bool force_lock_settings() const { return force_lock_settings_; }
+
+	bool receive_from_server(config& dst) const;
 
 private:
 	connect_engine(const connect_engine&) = delete;
@@ -132,7 +136,6 @@ private:
 
 	std::set<std::string>& connected_users_rw();
 	void send_to_server(const config& cfg) const;
-	bool receive_from_server(config& dst) const;
 };
 
 class side_engine

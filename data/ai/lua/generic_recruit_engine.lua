@@ -585,6 +585,7 @@ return {
                 data.castle = {
                     locs = wesnoth.get_locations {
                         x = "1-"..width, y = "1-"..height,
+                        { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } },
                         { "and", {
                             x = leader.x, y = leader.y, radius = 200,
                             { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }

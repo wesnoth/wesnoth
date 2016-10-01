@@ -19,7 +19,6 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
-#include "sdl/alpha.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <map>
@@ -245,8 +244,9 @@ surface crop_modification::operator()(const surface& src) const
 	 * Since it seems to work for most cases, rather change this caller instead
 	 * of the function signature. (The issue was discovered in bug #20876).
 	 */
-	return create_optimized_surface(
-			cut_surface(make_neutral_surface(src), area));
+    surface temp = cut_surface(make_neutral_surface(src), area);
+	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+	return temp;
 }
 
 const SDL_Rect& crop_modification::get_slice() const
@@ -292,11 +292,10 @@ surface blit_modification::operator()(const surface& src) const
 		throw texception(sstr);
 	}
 
-	//blit_surface want neutral surfaces
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
 	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
-	blit_surface(nsurf, nullptr, nsrc, &r);
+	sdl_blit(nsurf, nullptr, nsrc, &r);
 	return nsrc;
 }
 
@@ -321,7 +320,7 @@ surface mask_modification::operator()(const surface& src) const
 		return mask_surface(src, mask_);
 	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
 	surface new_mask = create_neutral_surface(src->w, src->h);
-	blit_surface(mask_, nullptr, new_mask, &r);
+	sdl_blit(mask_, nullptr, new_mask, &r);
 	return mask_surface(src, new_mask);
 }
 
@@ -397,7 +396,7 @@ std::pair<int,int> scale_exact_modification::calculate_size(const surface& src) 
 		}
 		h = old_h;
 	}
-	
+
 	return std::make_pair(w, h);
 }
 
@@ -420,7 +419,7 @@ std::pair<int,int> scale_into_modification::calculate_size(const surface& src) c
 		}
 		h = old_h;
 	}
-	
+
 	long double ratio = std::min(w / old_w, h / old_h);
 
 	return std::make_pair(old_w * ratio, old_h * ratio);
@@ -435,9 +434,44 @@ surface xbrz_modification::operator()(const surface& src) const
 	return scale_surface_xbrz(src, z_);
 }
 
+/*
+ * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
+ * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
+ */
 surface o_modification::operator()(const surface& src) const
 {
-	return adjust_surface_alpha(src, ftofxp(opacity_));
+	surface nsurf(make_neutral_surface(src));
+
+	if(nsurf == nullptr) {
+		std::cerr << "could not make neutral surface...\n";
+		return nullptr;
+	}
+
+	Uint8 amount = ftofxp(opacity_);
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*src->h;
+
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+
+				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
+
+			++beg;
+		}
+	}
+
+	return nsurf;
 }
 
 float o_modification::get_opacity() const
@@ -510,7 +544,7 @@ surface brighten_modification::operator()(const surface &src) const
 	surface ret = make_neutral_surface(src);
 	surface tod_bright(image::get_image(game_config::images::tod_bright));
 	if (tod_bright)
-		blit_surface(tod_bright, nullptr, ret, nullptr);
+		sdl_blit(tod_bright, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -519,7 +553,7 @@ surface darken_modification::operator()(const surface &src) const
 	surface ret = make_neutral_surface(src);
 	surface tod_dark(image::get_image(game_config::images::tod_dark));
 	if (tod_dark)
-		blit_surface(tod_dark, nullptr, ret, nullptr);
+		sdl_blit(tod_dark, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -528,8 +562,9 @@ surface background_modification::operator()(const surface &src) const
 	surface ret = make_neutral_surface(src);
 	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
-	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-	blit_surface(src, nullptr, ret, nullptr);
+	surface temp = src;
+	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+	sdl_blit(temp, nullptr, ret, nullptr);
 	return ret;
 }
 
@@ -969,7 +1004,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 		y = lexical_cast_default<int>(param[2]);
 	}
 
-	if(x < 0 || y < 0) { //required by blit_surface
+	if(x < 0 || y < 0) {
 		ERR_DP << "negative position arguments in ~BLIT() function" << std::endl;
 		return nullptr;
 	}
@@ -1002,7 +1037,7 @@ REGISTER_MOD_PARSER(MASK, args)
 		y = lexical_cast_default<int>(param[2]);
 	}
 
-	if(x < 0 || y < 0) { //required by blit_surface
+	if(x < 0 || y < 0) {
 		ERR_DP << "negative position arguments in ~MASK() function" << std::endl;
 		return nullptr;
 	}

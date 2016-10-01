@@ -25,7 +25,6 @@
 #include "marked-up_text.hpp"
 #include "text.hpp"
 #include "tooltips.hpp"
-#include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -853,7 +852,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 		return surface();
 	} else if (surfaces.size() == 1 && surfaces.front().size() == 1) {
 		surface surf = surfaces.front().front();
-		SDL_SetAlpha(surf, SDL_SRCALPHA | SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
+		adjust_surface_alpha(surf, SDL_ALPHA_OPAQUE);
 		return surf;
 	} else {
 
@@ -862,14 +861,14 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 			return res;
 
 		size_t ypos = 0;
-		for(std::vector< std::vector<surface> >::const_iterator i = surfaces.begin(),
+		for(std::vector< std::vector<surface> >::iterator i = surfaces.begin(),
 		    i_end = surfaces.end(); i != i_end; ++i) {
 			size_t xpos = 0;
 			size_t height = 0;
 
-			for(std::vector<surface>::const_iterator j = i->begin(),
+			for(std::vector<surface>::iterator j = i->begin(),
 					j_end = i->end(); j != j_end; ++j) {
-				SDL_SetAlpha(*j, 0, 0); // direct blit without alpha blending
+				adjust_surface_alpha(*j, SDL_ALPHA_TRANSPARENT); // direct blit without alpha blending
 				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
 				sdl_blit(*j, nullptr, res, &dstrect);
 				xpos += (*j)->w;

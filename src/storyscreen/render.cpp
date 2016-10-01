@@ -254,7 +254,7 @@ void part_ui::prepare_background()
 			drect.x = 0;
 		}
 
-		blit_surface(layer, &srect, background_, &drect);
+		sdl_blit(layer, &srect, background_, &drect);
 		assert(layer.null() == false && "Oops: a storyscreen part background layer got nullptr");
 
 		if (bl.is_base_layer() || no_base_yet) {

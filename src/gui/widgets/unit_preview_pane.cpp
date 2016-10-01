@@ -165,10 +165,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(label_level_) {
-		utils::string_map symbols;
-		symbols["lvl"] = std::to_string(type.level());
-
-		std::string l_str = vgettext("Lvl $lvl", symbols);
+		std::string l_str = vgettext("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 
 		label_level_->set_label("<b>" + l_str + "</b>");
 		label_level_->set_use_markup(true);
@@ -292,10 +289,7 @@ void tunit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(label_level_) {
-		utils::string_map symbols;
-		symbols["lvl"] = std::to_string(u.level());
-
-		std::string l_str = vgettext("Lvl $lvl", symbols);
+		std::string l_str = vgettext("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 
 		label_level_->set_label("<b>" + l_str + "</b>");
 		label_level_->set_use_markup(true);

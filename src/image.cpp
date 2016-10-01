@@ -622,7 +622,7 @@ static surface apply_light(surface surf, const light_string& ls){
 				//copy the cached image to avoid modifying the cache
 				lightmap = make_neutral_surface(lts);
 			} else{
-				blit_surface(lts, nullptr, lightmap, nullptr);
+				sdl_blit(lts, nullptr, lightmap, nullptr);
 			}
 		}
 		//cache the result
@@ -959,7 +959,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 
 	// Optimizes surface before storing it
 	if(res)
-		res = create_optimized_surface(res);
+		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
 
 #ifdef _OPENMP
 #pragma omp critical(image_cache)
@@ -1112,7 +1112,8 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	}
 
 	// Optimizes surface before storing it
-	res = create_optimized_surface(res);
+	adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
+
 	// record the lighted surface in the corresponding variants cache
 	i_locator.access_in_cache(*imap)[ls] = res;
 

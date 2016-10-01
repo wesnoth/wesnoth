@@ -835,6 +835,13 @@ void prob_matrix::clear()
 
 		used_rows_[p].clear();
 		used_cols_[p].clear();
+
+		/* Row and column 0 are always considered to be used.
+		Functions like merge_col() access *used_rows_[plane].begin() without checking if there are
+		any used rows: thus, ensuring that there are used rows and columns is necessary to avoid
+		memory corruption. */
+		used_rows_[p].insert(0u);
+		used_cols_[p].insert(0u);
 	}
 }
 

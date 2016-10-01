@@ -24,7 +24,7 @@
 #include <string>
 
 struct SDL_Rect;
-struct surface;
+class surface;
 class t_string;
 
 namespace game_logic

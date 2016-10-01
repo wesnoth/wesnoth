@@ -40,7 +40,7 @@ ttree_view_node::ttree_view_node(
 		const std::map<std::string /* widget id */, string_map>& data)
 	: twidget()
 	, parent_node_(parent_node)
-	, tree_view_(parent_tree_view)
+	, tree_view_(&parent_tree_view)
 	, grid_()
 	, children_()
 	, node_definitions_(node_definitions)
@@ -128,8 +128,15 @@ ttree_view_node::ttree_view_node(
 
 ttree_view_node::~ttree_view_node()
 {
-	if(/*tree_view() &&*/ tree_view().selected_item_ == this) {
+	if(tree_view_ && tree_view().selected_item_ == this) {
 		tree_view().selected_item_ = nullptr;
+	}
+}
+void ttree_view_node::clear_before_destruct()
+{
+	tree_view_ = nullptr;
+	for (auto& child : children_) {
+		child.clear_before_destruct();
 	}
 }
 
@@ -204,7 +211,7 @@ const ttree_view_node& ttree_view_node::parent_node() const
 
 ttree_view& ttree_view_node::tree_view()
 {
-	return tree_view_;
+	return *tree_view_;
 }
 
 void ttree_view_node::request_reduce_width(const unsigned /*maximum_width*/)
@@ -214,7 +221,7 @@ void ttree_view_node::request_reduce_width(const unsigned /*maximum_width*/)
 
 const ttree_view& ttree_view_node::tree_view() const
 {
-	return tree_view_;
+	return *tree_view_;
 }
 
 bool ttree_view_node::is_folded() const

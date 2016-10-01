@@ -74,7 +74,7 @@ action_result::action_result( side_number side )
 action_result::~action_result()
 {
 	if (!return_value_checked_) {
-		ERR_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl;
+		DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; //Demotes to DBG "unchecked result" warning
 	}
 }
 
@@ -97,7 +97,7 @@ void action_result::execute()
 		try {
 			do_execute();
 		} catch (return_to_play_side_exception&) {
-			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 			throw;
 		}
 	}
@@ -313,7 +313,7 @@ void attack_result::do_execute()
 	try {
 		manager::raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -512,7 +512,7 @@ void move_result::do_execute()
 		try {
 			manager::raise_gamestate_changed();
 		} catch (...) {
-			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 			throw;
 		}
 	}
@@ -664,7 +664,7 @@ void recall_result::do_execute()
 	try {
 		manager::raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -813,7 +813,7 @@ void recruit_result::do_execute()
 	try {
 		manager::raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -919,7 +919,7 @@ void stopunit_result::do_execute()
 			manager::raise_gamestate_changed();//to be on the safe side
 		}
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }
@@ -978,7 +978,7 @@ void synced_command_result::do_execute()
 		set_gamestate_changed();
 		manager::raise_gamestate_changed();
 	} catch (...) {
-		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
+		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
 	}
 }

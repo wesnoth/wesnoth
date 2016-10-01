@@ -75,6 +75,7 @@
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game_set_password.hpp"
+#include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
@@ -410,6 +411,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_connect>();
 	//test<gui2::tmp_create_game>();
 	test<gui2::tmp_create_game_set_password>();
+	//test<gui2::tmp_join_game>();
 	test<gui2::tmp_join_game_password_prompt>();
 	test<gui2::tdepcheck_confirm_change>();
 	test<gui2::tdepcheck_select_new>();
@@ -486,6 +488,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"title_screen",
 		"end_credits",
 		"mp_staging",
+		"mp_join_game",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
@@ -784,7 +787,7 @@ struct twrapper<gui2::tlobby_main>
 	twesnothd_connection_init wesnothd_connection_init;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
-	twrapper() : wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection), li(game_config, installed_addons, wesnothd_connection)
+	twrapper() : wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection), li(game_config, installed_addons)
 	{
 	}
 	gui2::tlobby_main* create()
@@ -813,7 +816,7 @@ struct twrapper<gui2::tlobby_player_info>
 	lobby_info li;
 	twrapper()
 		: wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection)
-		, ui(c), li(c, installed_addons, wesnothd_connection)
+		, ui(c), li(c, installed_addons)
 	{
 	}
 	gui2::tlobby_player_info* create()

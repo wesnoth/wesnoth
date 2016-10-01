@@ -140,12 +140,9 @@ public:
 		dynamic_cast<tcontrol&>(w).set_active(active);
 
 		// Only select another member this was selected
-		// TODO: for some reason, this doesn't work as expected. While the button will be
-		// deselected, the get_active call seems to fail, leading to situations where
-		// no member is selected. Commenting out for now.
-		//if(!w.get_value_bool()) {
-		//	return;
-		//}
+		if(!w.get_value_bool()) {
+			return;
+		}
 
 		w.set_value_bool(false);
 

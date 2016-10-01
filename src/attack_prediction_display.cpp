@@ -23,7 +23,6 @@
 #include "language.hpp"
 #include "marked-up_text.hpp"
 #include "resources.hpp"
-#include "sdl/alpha.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 
@@ -431,7 +430,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	surf = create_neutral_surface(width, height);
 
 	// Disable alpha channel to avoid problem with sdl_blit
-	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
+	adjust_surface_alpha(surf, SDL_ALPHA_OPAQUE);
 
 	SDL_Rect clip_rect = sdl::create_rect(0, 0, width, height);
 	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, SDL_ALPHA_OPAQUE);

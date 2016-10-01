@@ -103,7 +103,7 @@ private:
 	tfield_integer* experience_;
 	tfield_integer* init_turn_limit_;
 	tfield_integer* turn_bonus_;
-	tfield_integer* reservior_;
+	tfield_integer* reservoir_;
 	tfield_integer* action_bonus_;
 
 	template<typename widget>

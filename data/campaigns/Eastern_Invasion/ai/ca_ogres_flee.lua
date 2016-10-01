@@ -5,7 +5,7 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
 local ca_ogres_flee = {}
 
-function ca_ogres_flee:evaluation(ai, cfg, self)
+function ca_ogres_flee:evaluation()
     local units = wesnoth.get_units { side = wesnoth.current.side,
         formula = 'movement_left > 0'
     }
@@ -14,7 +14,7 @@ function ca_ogres_flee:evaluation(ai, cfg, self)
     return 110000
 end
 
-function ca_ogres_flee:execution(ai, cfg, self)
+function ca_ogres_flee:execution()
     local units = wesnoth.get_units { side = wesnoth.current.side,
         formula = 'movement_left > 0'
     }

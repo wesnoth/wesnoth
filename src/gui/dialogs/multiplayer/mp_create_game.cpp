@@ -83,7 +83,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	, experience_(register_integer("experience_modifier", true, prefs::xp_modifier, prefs::set_xp_modifier))
 	, init_turn_limit_(register_integer("init_turn_limit", true, prefs::countdown_init_time, prefs::set_countdown_init_time))
 	, turn_bonus_(register_integer("turn_bonus", true, prefs::countdown_turn_bonus, prefs::set_countdown_turn_bonus))
-	, reservior_(register_integer("reservior", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
+	, reservoir_(register_integer("reservoir", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
 	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
 {
 	level_types_ = {
@@ -293,7 +293,7 @@ void tmp_create_game::pre_show(twindow& window)
 
 	bind_status_label<tslider>(window, init_turn_limit_->id());
 	bind_status_label<tslider>(window, turn_bonus_->id());
-	bind_status_label<tslider>(window, reservior_->id());
+	bind_status_label<tslider>(window, reservoir_->id());
 	bind_status_label<tslider>(window, action_bonus_->id());
 
 	//
@@ -352,7 +352,7 @@ void tmp_create_game::pre_show(twindow& window)
 		UPDATE_ATTRIBUTE(time_limit, to_bool);
 		UPDATE_ATTRIBUTE(init_turn_limit, to_int);
 		UPDATE_ATTRIBUTE(turn_bonus, to_int);
-		UPDATE_ATTRIBUTE(reservior, to_int);
+		UPDATE_ATTRIBUTE(reservoir, to_int);
 		UPDATE_ATTRIBUTE(action_bonus, to_int);
 		UPDATE_ATTRIBUTE(observers, to_bool);
 		UPDATE_ATTRIBUTE(registered_users, to_bool);
@@ -703,7 +703,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 	init_turn_limit_->widget_set_enabled(window, time_limit, false);
 	turn_bonus_     ->widget_set_enabled(window, time_limit, false);
-	reservior_      ->widget_set_enabled(window, time_limit, false);
+	reservoir_      ->widget_set_enabled(window, time_limit, false);
 	action_bonus_   ->widget_set_enabled(window, time_limit, false);
 
 	if(use_map_settings) {
@@ -796,7 +796,7 @@ void tmp_create_game::post_show(twindow& window)
 		config_engine_->set_mp_countdown(time_limit_->get_widget_value(window));
 		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value(window));
 		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value(window));
-		config_engine_->set_mp_countdown_reservoir_time(reservior_->get_widget_value(window));
+		config_engine_->set_mp_countdown_reservoir_time(reservoir_->get_widget_value(window));
 		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value(window));
 
 		config_engine_->set_allow_observers(observers_->get_widget_value(window));

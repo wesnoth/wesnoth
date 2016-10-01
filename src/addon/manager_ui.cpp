@@ -460,12 +460,14 @@ struct addons_filter_state
 
 	addons_filter_state()
 		: keywords()
-		, types(ADDON_TYPES_COUNT, true)
+		, types(ADDON_TYPES_COUNT)
 		, status(FILTER_ALL)
 		, sort(SORT_NAMES)
 		, direction(DIRECTION_ASCENDING)
 		, changed(false)
-	{}
+	{
+		types.flip();
+	}
 };
 
 /** GUI1 support class handling the filter options button. */

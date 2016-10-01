@@ -158,7 +158,6 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
-    sdl/alpha.cpp
     sdl/exception.cpp
     sdl/image.cpp
     sdl/rect.cpp
@@ -405,6 +404,7 @@ wesnoth_sources = Split("""
     gui/dialogs/multiplayer/mp_create_game_set_password.cpp
     gui/dialogs/multiplayer/mp_create_game.cpp
     gui/dialogs/multiplayer/mp_host_game_prompt.cpp
+    gui/dialogs/multiplayer/mp_join_game.cpp
     gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
     gui/dialogs/multiplayer/mp_login.cpp
     gui/dialogs/multiplayer/mp_method_selection.cpp
@@ -525,6 +525,7 @@ wesnoth_sources = Split("""
     scripting/lua_gui2.cpp
     scripting/lua_kernel_base.cpp
     scripting/lua_map_location_ops.cpp
+    scripting/lua_preferences.cpp
     scripting/lua_race.cpp
     scripting/lua_rng.cpp
     scripting/lua_team.cpp
@@ -690,7 +691,6 @@ test_utils_sources = Split("""
     """)
 
 wesmage_sources = Split("""
-    sdl/alpha.cpp
     sdl/utils.cpp
     sdl/window.cpp
     tools/dummy_video.cpp
@@ -742,7 +742,6 @@ test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 
 create_images_sources = Split("""
-    sdl/alpha.cpp
     sdl/utils.cpp
     sdl/window.cpp
     tests/create_images.cpp

@@ -221,6 +221,9 @@ public:
 	void select_node();
 	tgrid& get_grid() { return grid_; }
 	void layout_initialise(const bool full_initialisation) override;
+
+	void clear_before_destruct();
+
 private:
 
 	int calculate_ypos();
@@ -235,7 +238,7 @@ private:
 	ttree_view_node* parent_node_;
 
 	/** The tree view that owns us. */
-	ttree_view& tree_view_;
+	ttree_view* tree_view_;
 
 	/** Grid holding our contents. */
 	tgrid grid_;

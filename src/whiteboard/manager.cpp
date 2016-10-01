@@ -79,9 +79,12 @@ manager::manager():
 		key_poller_(new CKey),
 		hidden_unit_hexes_(),
 		net_buffer_(resources::gameboard->teams().size()),
-		team_plans_hidden_(resources::gameboard->teams().size(),preferences::hide_whiteboard()),
+		team_plans_hidden_(resources::gameboard->teams().size()),
 		units_owning_moves_()
 {
+	if(preferences::hide_whiteboard()) {
+		team_plans_hidden_.flip();
+	}
 	LOG_WB << "Manager initialized.\n";
 }
 

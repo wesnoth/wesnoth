@@ -16,7 +16,6 @@
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 
 #include "config_assign.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
@@ -43,34 +42,40 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "game_config.hpp"
-#include "savegame.hpp"
+#include "mp_ui_alerts.hpp"
 #include "settings.hpp"
 #include "units/types.hpp"
 #include "formatter.hpp"
+#include "wesnothd_connection.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "utils/functional.hpp"
 #endif
 
-#include <boost/algorithm/string.hpp>
-
 namespace gui2
 {
 
-// FIXME: doesn't show properly...
-//static const std::string male = "&#9794;";
-//static const std::string female = "&#9792;";
-
-static const std::string male = "(M)";
-static const std::string female = "(F)";
-
 REGISTER_DIALOG(mp_staging)
 
-tmp_staging::tmp_staging(const config& /*cfg*/, ng::connect_engine& connect_engine)
+tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, twesnothd_connection* wesnothd_connection)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
+	, lobby_info_(lobby_info)
+	, wesnothd_connection_(wesnothd_connection)
+	, update_timer_(0)
+	, state_changed_(false)
 {
-	//ai_algorithms_ = ai::configuration::get_available_ais();
+	set_show_even_without_video(true);
+
+	assert(!ai_algorithms_.empty());
+}
+
+tmp_staging::~tmp_staging()
+{
+	if(update_timer_ != 0) {
+		remove_timer(update_timer_);
+		update_timer_ = 0;
+	}
 }
 
 void tmp_staging::pre_show(twindow& window)
@@ -129,8 +134,6 @@ void tmp_staging::pre_show(twindow& window)
 		//
 		// AI Algorithm
 		//
-		assert(!ai_algorithms_.empty());
-
 		int selection = 0;
 
 		// We use an index-based loop in order to get the index of the selected option
@@ -161,7 +164,7 @@ void tmp_staging::pre_show(twindow& window)
 		tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
 
 		controller_selection.set_values(controller_names, side.current_controller_index());
-		controller_selection.set_active(side.controller_options().size() > 1);
+		controller_selection.set_active(controller_names.size() > 1);
 		controller_selection.connect_click_handler(std::bind(&tmp_staging::on_controller_select, this, std::ref(side), std::ref(row_grid)));
 
 		on_controller_select(side, row_grid);
@@ -183,8 +186,13 @@ void tmp_staging::pre_show(twindow& window)
 
 		tmenu_button& team_selection = find_widget<tmenu_button>(&row_grid, "side_team", false);
 
-		team_selection.set_values(team_names, side.team());
+		// HACK: side.team() does not get its index from side.player_teams(), but rather side.team_names().
+		// As such, the index is off if there is only 1 playable team. This is a hack to make sure the menu_button
+		// widget doesn't assert with the invalid initial selection. The connect_engine should be fixed once the GUI1
+		// dialog is dropped
+		team_selection.set_values(team_names, std::min<int>(team_names.size() - 1, side.team()));
 		team_selection.set_active(!saved_game);
+		team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(side), std::ref(team_selection)));
 
 		//
 		// Colors
@@ -206,6 +214,7 @@ void tmp_staging::pre_show(twindow& window)
 
 		color_selection.set_values(color_options, side.color());
 		color_selection.set_active(!saved_game);
+		color_selection.connect_click_handler(std::bind(&tmp_staging::on_color_select, this, std::ref(side), std::ref(row_grid)));
 
 		//
 		// Gold and Income
@@ -213,12 +222,12 @@ void tmp_staging::pre_show(twindow& window)
 		tslider& slider_gold = find_widget<tslider>(&row_grid, "side_gold_slider", false);
 		slider_gold.set_value(side.cfg()["gold"].to_int(100));
 
-		connect_signal_notify_modified(slider_gold, std::bind([&]() { side.set_gold(slider_gold.get_value()); }));
+		connect_signal_notify_modified(slider_gold, std::bind([&]() { side.set_gold(slider_gold.get_value()); set_state_changed(); }));
 
 		tslider& slider_income = find_widget<tslider>(&row_grid, "side_income_slider", false);
 		slider_income.set_value(side.cfg()["income"]);
 
-		connect_signal_notify_modified(slider_income, std::bind([&]() { side.set_income(slider_income.get_value()); }));
+		connect_signal_notify_modified(slider_income, std::bind([&]() { side.set_income(slider_income.get_value()); set_state_changed(); }));
 
 		// TODO: hide header, or maybe display the saved values
 		if(saved_game) {
@@ -241,12 +250,25 @@ void tmp_staging::pre_show(twindow& window)
 	//
 	// Initialize chatbox and game rooms
 	//
+	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
 
-	// TODO: seems the chatbox requires lobby info to be set first
-	/*tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
+	chat.set_lobby_info(lobby_info_);
+	chat.set_wesnothd_connection(*wesnothd_connection_);
 
-	chat.room_window_open("this game", true);
-	chat.active_window_changed();*/
+	chat.room_window_open("this game", true); // TODO: better title?
+	chat.active_window_changed();
+
+	//
+	// Set up player list
+	//
+	update_player_list(window);
+
+	//
+	// Set up the network handling
+	//
+	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&tmp_staging::network_handler, this, std::ref(window)), true);
+
+	network_handler(window);
 
 	//
 	// Set up the Lua plugin context
@@ -255,13 +277,24 @@ void tmp_staging::pre_show(twindow& window)
 
 	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
-	plugins_context_->set_callback("chat",   [this, &window](const config&) { return; /* TODO*/ }, false);
+	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-void tmp_staging::sync_changes()
+void tmp_staging::update_player_list(twindow& window)
 {
-	// TODO: should this call somehow be integrated into the connect engine setters?
-	connect_engine_.update_and_send_diff();
+	tlistbox& player_list = find_widget<tlistbox>(&window, "player_list", false);
+
+	player_list.clear();
+
+	for(const auto& player : connect_engine_.connected_users()) {
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = player;
+		data.emplace("player_name", item);
+
+		player_list.add_row(data);
+	}
 }
 
 void tmp_staging::on_controller_select(ng::side_engine& side, tgrid& row_grid)
@@ -269,18 +302,34 @@ void tmp_staging::on_controller_select(ng::side_engine& side, tgrid& row_grid)
 	tmenu_button& ai_selection         = find_widget<tmenu_button>(&row_grid, "ai_controller", false);
 	tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
 
-	side.set_controller(side.controller_options()[controller_selection.get_value()].first);
+	if(side.controller_changed(controller_selection.get_value())) {
+		ai_selection.set_visible(side.controller() == ng::CNTR_COMPUTER ? twidget::tvisible::visible : twidget::tvisible::hidden);
 
-	ai_selection.set_visible(side.controller() == ng::CNTR_COMPUTER ? twidget::tvisible::visible : twidget::tvisible::hidden);
-
-	sync_changes();
+		set_state_changed();
+	}
 }
 
 void tmp_staging::on_ai_select(ng::side_engine& side, tmenu_button& ai_menu)
 {
 	side.set_ai_algorithm(ai_algorithms_[ai_menu.get_value()]->id);
 
-	sync_changes();
+	set_state_changed();
+}
+
+void tmp_staging::on_color_select(ng::side_engine& side, tgrid& row_grid)
+{
+	side.set_color(find_widget<tmenu_button>(&row_grid, "side_color", false).get_value());
+
+	update_leader_display(side, row_grid);
+
+	set_state_changed();
+}
+
+void tmp_staging::on_team_select(ng::side_engine& side, tmenu_button& team_menu)
+{
+	side.set_team(team_menu.get_value());
+
+	set_state_changed();
 }
 
 void tmp_staging::select_leader_callback(twindow& window, ng::side_engine& side, tgrid& row_grid)
@@ -291,7 +340,7 @@ void tmp_staging::select_leader_callback(twindow& window, ng::side_engine& side,
 	if(dlg.get_retval() == twindow::OK) {
 		update_leader_display(side, row_grid);
 
-		sync_changes();
+		set_state_changed();
 	}
 }
 
@@ -300,30 +349,105 @@ void tmp_staging::update_leader_display(ng::side_engine& side, tgrid& row_grid)
 	const std::string current_faction = (*side.flg().choosable_factions()[side.flg().current_faction_index()])["name"];
 
 	// BIG FAT TODO: get rid of this shitty "null" string value in the FLG manager
-	const std::string current_leader = side.flg().current_leader() != "null" ? side.flg().current_leader() : utils::unicode_em_dash;
+	std::string current_leader = side.flg().current_leader() != "null" ? side.flg().current_leader() : utils::unicode_em_dash;
 	const std::string current_gender = side.flg().current_gender() != "null" ? side.flg().current_gender() : utils::unicode_em_dash;
 
 	// Sprite
-	std::string new_image;
+	std::string new_image = "units/random-dice.png";
 
-	if(side.flg().is_random_faction() || current_leader == "random") {
-		new_image = "units/random-dice.png";
-	} else {
+	if(!side.flg().is_random_faction() && current_leader != "random") {
 		const unit_type& type = unit_types.find(current_leader)->get_gender_unit_type(current_gender);
-
 		new_image = formatter() << type.image() << "~RC(magenta>" << side.color() + 1 << ")";
+
+		// We don't need the unit type id anymore, and can now replace this variable with the type name
+		current_leader = type.type_name();
 	}
 
 	find_widget<timage>(&row_grid, "leader_image", false).set_label(new_image);
 
 	// Faction and leader
+	if(!side.cfg()["name"].empty()) {
+		current_leader = formatter() << side.cfg()["name"] << " (<i>" << current_leader << "</i>)";
+	}
+
 	find_widget<tlabel>(&row_grid, "leader_type", false).set_label(current_leader);
-	find_widget<tlabel>(&row_grid, "leader_faction", false).set_label(current_faction);
+	find_widget<tlabel>(&row_grid, "leader_faction", false).set_label("<span color='#a69275'>" + current_faction + "</span>");
 
 	// Gender
 	if(current_gender != utils::unicode_em_dash) {
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
-		find_widget<timage>(&row_grid, "leader_gender", false).set_label(gender_icon);
+
+		timage& icon = find_widget<timage>(&row_grid, "leader_gender", false);
+
+		icon.set_label(gender_icon);
+		icon.set_tooltip(current_gender);
+	}
+}
+
+void tmp_staging::network_handler(twindow& window)
+{
+	// First, send off any changes if they've been accumulated
+	if(state_changed_) {
+		connect_engine_.update_and_send_diff();
+
+		state_changed_ = false;
+	}
+
+	// Next, check for any incoming changes
+	config data;
+	if(!wesnothd_connection_ || !wesnothd_connection_->receive_data(data)) {
+		return;
+	}
+
+	// Update chat
+	find_widget<tchatbox>(&window, "chat", false).process_network_data(data);
+
+	// TODO: why is this needed...
+	const bool was_able_to_start = connect_engine_.can_start_game();
+
+	bool quit_signal_recieved;
+	std::tie(quit_signal_recieved, std::ignore) = connect_engine_.process_network_data(data);
+
+	if(quit_signal_recieved) {
+		window.set_retval(twindow::CANCEL);
+	}
+
+	// Update side leader displays
+	// This is basically only needed when a new player joins and selects their faction
+	for(unsigned i = 0; i < connect_engine_.side_engines().size(); i++) {
+		tgrid& row_grid = *find_widget<tlistbox>(&window, "side_list", false).get_row_grid(i);
+
+		ng::side_engine& side = *connect_engine_.side_engines()[i].get();
+
+		update_leader_display(side, row_grid);
+
+		std::vector<config> controller_names;
+		for(const auto& controller : side.controller_options()) {
+			controller_names.push_back(config_of("label", controller.second));
+		}
+
+		tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
+
+		controller_selection.set_values(controller_names, side.current_controller_index());
+		controller_selection.set_active(controller_names.size() > 1);
+	}
+
+	// Update player list
+	// TODO: optimally, it wouldn't regenerate the entire list every single refresh cycle
+	update_player_list(window);
+
+	// Update status label and buttons
+	// T O D O F I X T H I S S H I T
+	find_widget<tlabel>(&window, "status_label", false).set_label(
+		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
+			? _("Waiting for players to join...")
+			: _("Waiting for players to choose factions...")
+	);
+
+	find_widget<tbutton>(&window, "ok", false).set_active(connect_engine_.can_start_game());
+
+	if(!was_able_to_start && connect_engine_.can_start_game()) {
+		mp_ui_alerts::ready_for_start();
 	}
 }
 
@@ -331,6 +455,8 @@ void tmp_staging::post_show(twindow& window)
 {
 	if(window.get_retval() == twindow::OK) {
 		connect_engine_.start_game();
+	} else {
+		connect_engine_.leave_game();
 	}
 }
 
