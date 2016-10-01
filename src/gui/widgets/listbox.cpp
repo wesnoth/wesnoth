@@ -185,6 +185,12 @@ void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	assert(generator_);
 	assert(shown.size() == get_item_count());
 
+	if (generator_->get_items_shown() == shown)
+	{
+		LOG_GUI_G << LOG_HEADER << " returning early" << std::endl;
+		return;
+	}
+
 	twindow* window = get_window();
 	assert(window);
 

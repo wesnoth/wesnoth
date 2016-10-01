@@ -18,6 +18,8 @@
 #include "widget.hpp"
 #include "tstring.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 #include <array>
 
 typedef std::map<std::string, t_string> string_map;
@@ -116,6 +118,17 @@ public:
 
 	/** Returns whether the item is shown. */
 	virtual bool get_item_shown(const unsigned index) const = 0;
+
+	/** Returns the visibility of all the items as a bit set. */
+	boost::dynamic_bitset<> get_items_shown()
+	{
+		boost::dynamic_bitset<> items_shown(get_item_count());
+		for (unsigned int i = 0u; i < get_item_count(); ++i)
+		{
+			items_shown[i] = get_item_shown(i);
+		}
+		return items_shown;
+	}
 
 	/** Returns the number of items. */
 	virtual unsigned get_item_count() const = 0;
