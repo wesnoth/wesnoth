@@ -33,6 +33,7 @@ mp_game_settings::mp_game_settings() :
 	password(),
 	hash(),
 	mp_era(),
+	mp_era_addon_id(),
 	mp_scenario(),
 	mp_scenario_name(),
 	mp_campaign(),
@@ -66,6 +67,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, password()
 	, hash(cfg["hash"].str())
 	, mp_era(cfg["mp_era"].str())
+	, mp_era_addon_id(cfg["mp_era_addon_id"].str())
 	, mp_scenario(cfg["mp_scenario"].str())
 	, mp_scenario_name(cfg["mp_scenario_name"].str())
 	, mp_campaign(cfg["mp_campaign"].str())
@@ -107,6 +109,7 @@ config mp_game_settings::to_config() const
 	cfg["scenario"] = name;
 	cfg["hash"] = hash;
 	cfg["mp_era"] = mp_era;
+	cfg["mp_era_addon_id"] = mp_era_addon_id;
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["mp_scenario_name"] = mp_scenario_name;
 	cfg["mp_campaign"] = mp_campaign;

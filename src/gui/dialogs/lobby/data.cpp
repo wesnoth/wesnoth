@@ -242,7 +242,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = vgettext("Unknown era: $era_id", {{"era_id", game["mp_era"].str()}});
+			era = vgettext("Unknown era: $era_id", {{"era_id", game["mp_era_addon_id"].str()}});
 			era_short = make_short_name(era);
 			verified = false;
 
