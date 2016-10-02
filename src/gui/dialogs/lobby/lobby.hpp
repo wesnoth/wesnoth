@@ -98,18 +98,12 @@ protected:
 public:
 	void update_playerlist();
 
-	enum legacy_result {
+	enum lobby_result {
 		QUIT,
 		JOIN,
 		OBSERVE,
-		CREATE,
-		PREFERENCES
+		CREATE
 	};
-
-	legacy_result get_legacy_result() const
-	{
-		return legacy_result_;
-	}
 
 	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
 	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
@@ -118,11 +112,6 @@ protected:
 
 private:
 	void update_selected_game();
-
-	/**
-	 * Result flag for interfacing with other MP dialogs
-	 */
-	legacy_result legacy_result_;
 
 	/**
 	 * Network polling callback
@@ -148,8 +137,6 @@ private:
 	 *         reason like user canceled the password dialog or idx was invalid.
 	 */
 	bool do_game_join(int idx, bool observe);
-
-	void create_button_callback(twindow& window);
 
 	void show_preferences_button_callback(twindow& window);
 

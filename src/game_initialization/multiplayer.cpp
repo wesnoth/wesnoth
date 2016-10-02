@@ -710,7 +710,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 					std::ref(video), std::ref(game_config)));
 			dlg.show(video);
 			//ugly kludge for launching other dialogs like the old lobby
-			switch (dlg.get_legacy_result()) {
+			switch(dlg.get_retval()) {
 				case gui2::tlobby_main::CREATE:
 					res = mp::ui::CREATE;
 					break;

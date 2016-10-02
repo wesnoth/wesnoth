@@ -136,7 +136,6 @@ bool tlobby_main::logout_prompt()
 
 tlobby_main::tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection)
 	: quit_confirmation(&tlobby_main::logout_prompt)
-	, legacy_result_(QUIT)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
 	, window_(nullptr)
@@ -720,9 +719,7 @@ void tlobby_main::pre_show(twindow& window)
 	chatbox_->set_wesnothd_connection(wesnothd_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 
-	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&window, "create", false),
-		std::bind(&tlobby_main::create_button_callback, this, std::ref(window)));
+	find_widget<tbutton>(&window, "create", false).set_retval(CREATE);
 
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "refresh", false),
@@ -789,19 +786,17 @@ void tlobby_main::pre_show(twindow& window)
 
 	plugins_context_->set_callback("join",    [&, this](const config&) {
 		if(do_game_join(get_game_index_from_id(selected_game_id_), false)) {
-			legacy_result_ = JOIN;
-			window.close();
+			window.set_retval(JOIN);
 		}
 	}, true);
 
 	plugins_context_->set_callback("observe", [&, this](const config&) {
 		if(do_game_join(get_game_index_from_id(selected_game_id_), true)) {
-			legacy_result_ = OBSERVE;
-			window.close();
+			window.set_retval(OBSERVE);
 		}
 	}, true);
 
-	plugins_context_->set_callback("create", [this, &window](const config&) { create_button_callback(window); }, true);
+	plugins_context_->set_callback("create", [this, &window](const config&) { window.set_retval(CREATE); }, true);
 	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { chatbox_->send_chat_message(cfg["message"], false); }, true);
@@ -892,16 +887,14 @@ void tlobby_main::process_gamelist_diff(const config& data)
 void tlobby_main::observe_global_button_callback(twindow& window)
 {
 	if(do_game_join(gamelistbox_->get_selected_row(), true)) {
-		legacy_result_ = OBSERVE;
-		window.close();
+		window.set_retval(OBSERVE);
 	}
 }
 
 void tlobby_main::join_global_button_callback(twindow& window)
 {
 	if(do_game_join(gamelistbox_->get_selected_row(), false)) {
-		legacy_result_ = JOIN;
-		window.close();
+		window.set_retval(JOIN);
 	}
 }
 
@@ -909,8 +902,7 @@ void tlobby_main::join_or_observe(int idx)
 {
 	const game_info& game = *lobby_info_.games()[idx];
 	if(do_game_join(idx, !game.can_join())) {
-		legacy_result_ = game.can_join() ? JOIN : OBSERVE;
-		window_->close();
+		window_->set_retval(game.can_join() ? JOIN : OBSERVE);
 	}
 }
 
@@ -1016,12 +1008,6 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 		// playmp_controller::set_replay_last_turn(game.current_turn);
 	}
 	return true;
-}
-
-void tlobby_main::create_button_callback(twindow& window)
-{
-	legacy_result_ = CREATE;
-	window.close();
 }
 
 void tlobby_main::refresh_button_callback(twindow& /*window*/)
