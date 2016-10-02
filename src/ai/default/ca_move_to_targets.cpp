@@ -278,7 +278,17 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	unit_map::iterator u;
 
-	//find the first eligible unit
+	//take care of all the guardians first
+	for(u = units_.begin(); u != units_.end(); ++u) {
+		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated())) {
+			if (u->get_state("guardian")) {
+				LOG_AI << u->type_id() << " is guardian, staying still\n";
+				return std::make_pair(u->get_location(), u->get_location());
+			}
+		}
+	}
+
+	//now find the first eligible remaining unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
 		if (!(u->side() != get_side() || (u->can_recruit() && !get_leader_ignores_keep()) || u->movement_left() <= 0 || u->incapacitated())) {
 			break;
@@ -288,12 +298,6 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	if(u == units_.end()) {
 		LOG_AI  << "no eligible units found\n";
 		return std::pair<map_location,map_location>();
-	}
-
-	//guardian units stay put
-	if (u->get_state("guardian")) {
-		LOG_AI << u->type_id() << " is guardian, staying still\n";
-		return std::make_pair(u->get_location(), u->get_location());
 	}
 
 	const pathfind::plain_route dummy_route;
