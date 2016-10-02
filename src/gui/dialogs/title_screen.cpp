@@ -371,7 +371,7 @@ void ttitle_screen::pre_show(twindow& window)
 					window.set_retval(MP_LOCAL);
 					break;
 			}
-			window.close();
+
 			return;
 		}
 	});

@@ -775,20 +775,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 		/*
 		 * Quick explanation of the titlscreen loop:
 		 *
-		 * The dialog's redraw_background_ flag is initialized as true in the constructor, and as such, the first time this
-		 * loop is executed, the dialog will show. Each time the dialog is opened, the aforementioned flag is set to false,
-		 * and any regular action simply sets the window's retval and proceeds to the appropriate action.
+		 * The dialog's redraw_background_ flag is initialized as true in the constructor, so the dialog will always display
+		 * at least once when this loop is executed. Each time it's opened, the aforementioned flag is set to false, and any
+		 * selection that results in leaving the dialog simply sets the window's retval and proceeds to the appropriate action.
 		 *
 		 * Certain actions (such as window resizing) set the flag to true, which allows the dialog to reopen with any layout
 		 * changes such as those dictatted by window resolution.
-		 *
-		 * However, if none of those special actions were taken, we then once again set the flag to true on the next run of
-		 * the loop so the dialog once again opens properly.
 		 */
-		if(!dlg.redraw_background()) {
-			dlg.set_redraw_background(true);
-		}
-
 		while(dlg.redraw_background()) {
 			dlg.show(game->video());
 		}

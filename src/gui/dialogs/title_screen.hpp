@@ -58,11 +58,6 @@ public:
 		RELOAD_GAME_DATA, ///< Used to reload all game data
 	};
 
-	void set_redraw_background(const bool value)
-	{
-		redraw_background_ = value;
-	}
-
 	bool redraw_background() const
 	{
 		return redraw_background_;
