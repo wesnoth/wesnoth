@@ -310,7 +310,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	bool show_move = show;
 	if ( current_team.is_local_ai() || current_team.is_network_ai())
 	{
-		show_move = show_move && preferences::show_ai_moves();
+		show_move = show_move && !preferences::skip_ai_moves();
 	}
 	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : nullptr, skip_sighted, skip_ally_sighted, show_move);
 

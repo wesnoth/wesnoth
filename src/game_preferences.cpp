@@ -901,14 +901,14 @@ void set_modifications(const std::vector<std::string>& value, bool mp)
 
 }
 
-bool show_ai_moves()
+bool skip_ai_moves()
 {
-	return preferences::get("show_ai_moves", true);
+	return preferences::get("skip_ai_moves", true);
 }
 
-void set_show_ai_moves(bool value)
+void set_skip_ai_moves(bool value)
 {
-	preferences::set("show_ai_moves", value);
+	preferences::set("skip_ai_moves", value);
 }
 
 void set_show_side_colors(bool value)

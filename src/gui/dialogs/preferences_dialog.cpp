@@ -282,7 +282,7 @@ void tpreferences::post_build(twindow& window)
 
 	/* SKIP AI MOVES */
 	register_bool("skip_ai_moves", true,
-		show_ai_moves, set_show_ai_moves);
+		skip_ai_moves, set_skip_ai_moves);
 
 	/* DISABLE AUTO MOVES */
 	register_bool("disable_auto_moves", true,

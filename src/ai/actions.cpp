@@ -474,7 +474,7 @@ void move_result::do_execute()
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
-			/*bool show_move*/ preferences::show_ai_moves(),
+			/*bool show_move*/ preferences::skip_ai_moves(),
 			/*bool* interrupted*/ nullptr,
 			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
 
@@ -657,7 +657,7 @@ void recall_result::do_execute()
 	synced_context::run_in_synced_context_if_not_already("recall",
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
 		false,
-		preferences::show_ai_moves(),
+		!preferences::skip_ai_moves(),
 		synced_context::ignore_error_function);
 
 	set_gamestate_changed();
@@ -804,10 +804,10 @@ void recruit_result::do_execute()
 		return;
 	}
 
-	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
+	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
 	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
-	//                        preferences::show_ai_moves(), false);
+	//                        !preferences::skip_ai_moves(), false);
 
 	set_gamestate_changed();
 	try {

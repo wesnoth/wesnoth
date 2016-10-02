@@ -208,8 +208,8 @@ class acquaintance;
 	const std::vector<std::string>& modifications(bool mp=true);
 	void set_modifications(const std::vector<std::string>& value, bool mp=true);
 
-	bool show_ai_moves();
-	void set_show_ai_moves(bool value);
+	bool skip_ai_moves();
+	void set_skip_ai_moves(bool value);
 
 	void set_show_side_colors(bool value);
 	bool show_side_colors();
