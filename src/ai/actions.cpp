@@ -474,7 +474,7 @@ void move_result::do_execute()
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
-			/*bool show_move*/ preferences::skip_ai_moves(),
+			/*bool show_move*/ !preferences::skip_ai_moves(),
 			/*bool* interrupted*/ nullptr,
 			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
 

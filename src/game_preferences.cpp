@@ -903,7 +903,7 @@ void set_modifications(const std::vector<std::string>& value, bool mp)
 
 bool skip_ai_moves()
 {
-	return preferences::get("skip_ai_moves", true);
+	return preferences::get("skip_ai_moves", false);
 }
 
 void set_skip_ai_moves(bool value)
