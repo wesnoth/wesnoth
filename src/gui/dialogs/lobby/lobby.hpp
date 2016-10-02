@@ -77,11 +77,12 @@ public:
 	/**
 	 * Set the callback used to show the preferences.
 	 */
-	void set_preferences_callback(std::function<void()> f);
+	void set_preferences_callback(std::function<void()> f)
+	{
+		preferences_callback_ = f;
+	}
 
 	void update_gamelist();
-
-	void send_to_server(const config& cfg);
 
 protected:
 	void update_gamelist_header();
