@@ -157,8 +157,7 @@ void move_to_targets_phase::execute()
 		}
 
 		LOG_AI << "choosing move with " << targets.size() << " targets\n";
-		std::pair<map_location,map_location> move = choose_move(targets, get_srcdst(),
-								get_dstsrc(), get_enemy_dstsrc());
+		std::pair<map_location,map_location> move = choose_move(targets);
 		LOG_AI << "choose_move ends with " << targets.size() << " targets\n";
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
@@ -269,7 +268,7 @@ double move_to_targets_phase::rate_target(const target& tg, const unit_map::iter
 
 
 
-std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
+std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vector<target>& targets)
 {
 	log_scope2(log_ai_testing_ca_move_to_targets, "choosing move");
 
@@ -305,6 +304,8 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	// and if its real value is better than other maximal values
 	// then we can skip them.
 
+	const move_map& dstsrc = get_dstsrc();
+	const move_map& enemy_dstsrc = get_enemy_dstsrc();
 	std::vector<rated_target> rated_targets;
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		// passing a dummy route to have the maximal rating
@@ -431,6 +432,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target
+	const move_map& srcdst = get_srcdst();
 	if(best_target->type == target::TYPE::SUPPORT) {
 		LOG_AI << "support...\n";
 
