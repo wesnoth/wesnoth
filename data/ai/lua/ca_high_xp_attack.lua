@@ -55,6 +55,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     for i_t,enemy in ipairs(all_units) do
         if wesnoth.is_enemy(wesnoth.current.side, enemy.side)
             and enemy:matches({ { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } } })
+            and (not enemy.status.petrified)
         then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level >= XP_to_levelup) then
