@@ -119,7 +119,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 		error_call_destructors_1:
 		luaL_argerror(L, i, "out of bounds");
 		error_call_destructors_2:
-		luaL_typerror(L, i, "string");
+		luaW_type_error(L, i, "string");
 		error_call_destructors_3:
 		luaL_argerror(L, i, "widget not found");
 		return nullptr;
@@ -489,7 +489,7 @@ int intf_set_dialog_value(lua_State *L)
 		} else if(unit* u = luaW_tounit(L, 1)) {
 			unit_preview_pane->set_displayed_unit(*u);
 		} else {
-			return luaL_typerror(L, 1, "unit or unit type");
+			return luaW_type_error(L, 1, "unit or unit type");
 		}
 	}
 	else
@@ -784,7 +784,7 @@ int intf_set_dialog_visible(lua_State *L)
 			}
 			break;
 		default:
-			return luaL_typerror(L, 1, "boolean or string");
+			return luaW_type_error(L, 1, "boolean or string");
 	}
 
 	gui2::twidget *w = find_widget(L, 2, true);

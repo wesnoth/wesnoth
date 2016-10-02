@@ -117,7 +117,7 @@ auto find_attack(T* u, size_t i) -> attack_ptr_in<T>
 static int impl_unit_attacks_get(lua_State *L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit attacks");
+		return luaW_type_error(L, 1, "unit attacks");
 	}
 	lua_rawgeti(L, 1, 0);
 	lua_unit* lu = luaW_tounit_ref(L, -1);
@@ -146,7 +146,7 @@ static attack_itors::iterator get_attack_iter(unit& u, attack_ptr atk)
 static int impl_unit_attacks_set(lua_State* L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit attacks");
+		return luaW_type_error(L, 1, "unit attacks");
 	}
 	lua_rawgeti(L, 1, 0);
 	const unit_type* ut = luaW_tounittype(L, -1);
@@ -197,7 +197,7 @@ static int impl_unit_attacks_set(lua_State* L)
 static int impl_unit_attacks_len(lua_State *L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit attacks");
+		return luaW_type_error(L, 1, "unit attacks");
 	}
 	lua_rawgeti(L, 1, 0);
 	const unit* u = luaW_tounit(L, -1);

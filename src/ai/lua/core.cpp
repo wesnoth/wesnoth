@@ -156,7 +156,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 		leader = luaW_tounit(L, index);
 		if (!leader) return luaL_argerror(L, 1, "unknown unit");
 	}
-	else return luaL_typerror(L, 1, "unit");
+	else return luaW_type_error(L, 1, "unit");
 	const map_location loc = leader->get_location();
 	const pathfind::paths leader_paths(*leader, false, true, context.current_team());
 	const map_location &res = context.suitable_keep(loc,leader_paths);

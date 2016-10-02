@@ -117,7 +117,7 @@ static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 			}
 			//intentional fall-through
 		default:
-			luaL_typerror(L, src, "string");
+			luaW_type_error(L, src, "string");
 	}
 }
 
@@ -586,7 +586,7 @@ t_string luaW_checktstring(lua_State *L, int index)
 {
 	t_string result;
 	if (!luaW_totstring(L, index, result))
-		luaL_typerror(L, index, "translatable string");
+		luaW_type_error(L, index, "translatable string");
 	return result;
 }
 
@@ -677,7 +677,7 @@ map_location luaW_checklocation(lua_State *L, int index)
 {
 	map_location result;
 	if (!luaW_tolocation(L, index, result))
-		luaL_typerror(L, index, "location");
+		luaW_type_error(L, index, "location");
 	return result;
 }
 
@@ -771,7 +771,7 @@ config luaW_checkconfig(lua_State *L, int index)
 {
 	config result;
 	if (!luaW_toconfig(L, index, result))
-		luaL_typerror(L, index, "WML table");
+		luaW_type_error(L, index, "WML table");
 	return result;
 }
 
@@ -815,7 +815,7 @@ vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing)
 {
 	vconfig result = vconfig::unconstructed_vconfig();
 	if (!luaW_tovconfig(L, index, result) || (!allow_missing && result.null()))
-		luaL_typerror(L, index, "WML table");
+		luaW_type_error(L, index, "WML table");
 	return result;
 }
 
@@ -904,7 +904,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 			}
 		default:
 		default_explicit:
-			return luaL_typerror(L, n, "WML table or scalar") != 0;
+			return luaW_type_error(L, n, "WML table or scalar") != 0;
 
 		}
 	}
@@ -992,4 +992,11 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 	}
 
 	return true;
+}
+
+// Originally luaL_typerror, now deprecated.
+// Easier to define it for Wesnoth and not have to worry about it if we update Lua.
+int luaW_type_error (lua_State *L, int narg, const char *tname) {
+	const char *msg = lua_pushfstring(L, "%s expected, got %s", tname, luaL_typename(L, narg));
+	return luaL_argerror(L, narg, msg);
 }

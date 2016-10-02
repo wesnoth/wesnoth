@@ -232,7 +232,7 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 int lua_formula_bridge::intf_compile_formula(lua_State* L)
 {
 	if(!lua_isstring(L, 1)) {
-		luaL_typerror(L, 1, "string");
+		luaW_type_error(L, 1, "string");
 	}
 	new(L) fwrapper(lua_tostring(L, 1));
 	luaL_setmetatable(L, formulaKey);
