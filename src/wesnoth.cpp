@@ -770,9 +770,30 @@ static int do_gameloop(const std::vector<std::string>& args)
 			continue;
 		}
 
-		gui2::ttitle_screen::tresult res = gui2::ttitle_screen::display(*game);
+		gui2::ttitle_screen dlg(*game);
 
-		switch(res) {
+		/*
+		 * Quick explanation of the titlscreen loop:
+		 *
+		 * The dialog's redraw_background_ flag is initialized as true in the constructor, and as such, the first time this
+		 * loop is executed, the dialog will show. Each time the dialog is opened, the aforementioned flag is set to false,
+		 * and any regular action simply sets the window's retval and proceeds to the appropriate action.
+		 *
+		 * Certain actions (such as window resizing) set the flag to true, which allows the dialog to reopen with any layout
+		 * changes such as those dictatted by window resolution.
+		 *
+		 * However, if none of those special actions were taken, we then once again set the flag to true on the next run of
+		 * the loop so the dialog once again opens properly.
+		 */
+		if(!dlg.redraw_background()) {
+			dlg.set_redraw_background(true);
+		}
+
+		while(dlg.redraw_background()) {
+			dlg.show(game->video());
+		}
+
+		switch(dlg.get_retval()) {
 		case gui2::ttitle_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...\n";
 			return 0;
@@ -808,9 +829,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 			break;
 		case gui2::ttitle_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);
-			break;
-		case gui2::ttitle_screen::REDRAW_BACKGROUND:
-			// Do nothing
 			break;
 		}
 	}

@@ -133,13 +133,7 @@ REGISTER_DIALOG(title_screen)
 
 bool show_debug_clock_button = false;
 
-void ttitle_screen::basic_callback(twindow& window, tresult res)
-{
-	result_ = res;
-	window.close();
-}
-
-ttitle_screen::ttitle_screen(game_launcher& game) : result_(REDRAW_BACKGROUND), game_(game), debug_clock_(nullptr)
+ttitle_screen::ttitle_screen(game_launcher& game) : game_(game), redraw_background_(true), debug_clock_(nullptr)
 {
 	// Need to set this in the constructor, pre_show() / post_build() is too late
 	set_allow_plugin_skip(false);
@@ -180,12 +174,10 @@ static bool launch_lua_console(twindow & window)
 
 void ttitle_screen::post_build(twindow& window)
 {
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__RELOAD_WML,
-			[this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
-				basic_callback(dynamic_cast<twindow&>(win), RELOAD_GAME_DATA);
-				return true;
-			});
+	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
+		dynamic_cast<twindow&>(win).set_retval(RELOAD_GAME_DATA);
+		return true;
+	});
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
 			std::bind(fullscreen, std::ref(window.video())));
@@ -227,6 +219,9 @@ void ttitle_screen::pre_show(twindow& window)
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
+
+	// Each time the dialog shows, we set this to false
+	redraw_background_ = false;
 
 #ifdef DEBUG_TOOLTIP
 	window.connect_signal<event::SDL_MOUSE_MOTION>(
@@ -316,23 +311,23 @@ void ttitle_screen::pre_show(twindow& window)
 	/***** Main menu buttons *****/
 	register_button(window, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this](twindow& window) {
 		game_.set_tutorial();
-		result_ = LAUNCH_GAME;
-		window.close();
+		window.set_retval(LAUNCH_GAME);
 	});
+
 	register_button(window, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](twindow& window) {
 		if(game_.new_campaign()) {
-			result_ = LAUNCH_GAME;
-			window.close();
+			window.set_retval(LAUNCH_GAME);
 		}
 	});
+
 	register_button(window, "load", hotkey::HOTKEY_LOAD_GAME, [this](twindow& window) {
 		if(game_.load_game()) {
-			result_ = LAUNCH_GAME;
-			window.close();
+			window.set_retval(LAUNCH_GAME);
 		} else {
 			game_.clear_loaded_game();
 		}
 	});
+
 	register_button(window, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](twindow&) {
 		// NOTE: we need the help_manager to get access to the Add-ons
 		// section in the game help!
@@ -341,6 +336,7 @@ void ttitle_screen::pre_show(twindow& window)
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});
+
 	register_button(window, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](twindow& window) {
 		while(true) {
 			gui2::tmp_method_selection dlg;
@@ -360,27 +356,28 @@ void ttitle_screen::pre_show(twindow& window)
 
 			switch(res) {
 				case 0:
-					result_ = MP_CONNECT;
 					game_.select_mp_server(preferences::server_list().front().address);
+					window.set_retval(MP_CONNECT);
 					break;
 				case 1:
-					result_ = MP_CONNECT;
 					game_.select_mp_server("");
+					window.set_retval(MP_CONNECT);
 					break;
 				case 2:
-					result_ = MP_HOST;
 					game_.select_mp_server("localhost");
+					window.set_retval(MP_HOST);
 					break;
 				case 3:
-					result_ = MP_LOCAL;
+					window.set_retval(MP_LOCAL);
 					break;
 			}
 			window.close();
 			return;
 		}
 	});
-	register_button(window, "editor", hotkey::TITLE_SCREEN__EDITOR,
-		std::bind(&ttitle_screen::basic_callback, this, std::ref(window), MAP_EDITOR));
+
+	register_button(window, "editor", hotkey::TITLE_SCREEN__EDITOR, [&](twindow& window) { window.set_retval(MAP_EDITOR); });
+
 	register_button(window, "cores", hotkey::TITLE_SCREEN__CORES, [this](twindow&) {
 		int current = 0;
 		std::vector<config> cores;
@@ -398,25 +395,27 @@ void ttitle_screen::pre_show(twindow& window)
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});
+
 	register_button(window, "language", hotkey::HOTKEY_LANGUAGE, [this](twindow& window) {
 		try {
 			if(game_.change_language()) {
 				t_string::reset_translations();
 				image::flush_cache();
-				result_ = REDRAW_BACKGROUND;
+				redraw_background_ = true;
 				window.close();
 			}
 		} catch(std::runtime_error& e) {
 			gui2::show_error_message(game_.video(), e.what());
 		}
 	});
+
 	register_button(window, "preferences", hotkey::HOTKEY_PREFERENCES, [this](twindow&) {
 		game_.show_preferences();
 	});
-	register_button(window, "credits", hotkey::TITLE_SCREEN__CREDITS,
-		std::bind(&ttitle_screen::basic_callback, this, std::ref(window), SHOW_ABOUT));
-	register_button(window, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP,
-		std::bind(&ttitle_screen::basic_callback, this, std::ref(window), QUIT_GAME));
+
+	register_button(window, "credits", hotkey::TITLE_SCREEN__CREDITS, [&](twindow& window) { window.set_retval(SHOW_ABOUT); });
+
+	register_button(window, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [&](twindow& window) { window.set_retval(QUIT_GAME); });
 
 	auto cores = game_config_manager::get()->game_config().child_range("core");
 	if(cores.size() <= 1) {
@@ -428,7 +427,7 @@ void ttitle_screen::pre_show(twindow& window)
 
 void ttitle_screen::on_resize(twindow& window)
 {
-	result_ = REDRAW_BACKGROUND;
+	redraw_background_ = true;
 	window.close();
 }
 
@@ -474,15 +473,6 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 		debug_clock_ = new tdebug_clock();
 		debug_clock_->show(video, true);
 	}
-}
-
-ttitle_screen::tresult ttitle_screen::display(game_launcher& game)
-{
-	ttitle_screen ts(game);
-	while(ts.result_ == tresult::REDRAW_BACKGROUND) {
-		ts.show(game.video());
-	}
-	return ts.result_;
 }
 
 } // namespace gui2

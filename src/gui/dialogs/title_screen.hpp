@@ -55,17 +55,23 @@ public:
 		MAP_EDITOR, ///< Start the map/scenario editor
 		SHOW_ABOUT, ///< Show credits
 		QUIT_GAME, ///< Exit to desktop
-		REDRAW_BACKGROUND, /**< Used after an action needing a redraw
-							* For example, if the window was resized or fullscreen was toggled
-							*/
 		RELOAD_GAME_DATA, ///< Used to reload all game data
 	};
 
-	static tresult display(game_launcher& launcher);
+	void set_redraw_background(const bool value)
+	{
+		redraw_background_ = value;
+	}
+
+	bool redraw_background() const
+	{
+		return redraw_background_;
+	}
 
 private:
-	tresult result_;
 	game_launcher& game_;
+
+	bool redraw_background_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -77,8 +83,6 @@ private:
 	void pre_show(twindow& window);
 
 	void on_resize(twindow& window);
-
-	void basic_callback(twindow& window, tresult result);
 
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;
