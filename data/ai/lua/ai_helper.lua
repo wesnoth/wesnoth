@@ -137,6 +137,7 @@ function ai_helper.checked_attack(ai, attacker, defender, weapon)
     local check = ai.check_attack(attacker, defender, weapon)
 
     if (not check.ok) then
+        ai.stopunit_attacks(attacker)
         ai_helper.checked_action_error('ai.attack from ' .. attacker.x .. ',' .. attacker.y .. ' to ' .. defender.x .. ',' .. defender.y, check.status)
         return
     end
@@ -153,6 +154,7 @@ function ai_helper.checked_move_core(ai, unit, x, y, move_type)
         -- E_AMBUSHED = 2005
         -- E_NOT_REACHED_DESTINATION = 2007
         if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
+            ai.stopunit_moves(unit)
             ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status)
             return
         end
