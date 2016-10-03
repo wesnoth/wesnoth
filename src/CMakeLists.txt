@@ -34,10 +34,6 @@ if(SDL2MIXER_INCLUDE_DIR)
 	include_directories(SYSTEM ${SDL2MIXER_INCLUDE_DIR} )
 	set(sdl_mixer-lib ${SDL2_MIXER_LIBRARY})
 endif()
-if(SDL2NET_INCLUDE_DIR)
-	include_directories(SYSTEM ${SDL2NET_INCLUDE_DIR} )
-	set(sdl_net-lib ${SDL2_NET_LIBRARY})
-endif()
 if(SDL2TTF_INCLUDE_DIR)
 	include_directories(SYSTEM ${SDL2TTF_INCLUDE_DIR} )
 	set(sdl_ttf-lib ${SDL2_TTF_LIBRARY})
@@ -143,13 +139,11 @@ endif(MSVC)
 
 set(server-external-libs
 	${common-external-libs}
-	${sdl_net-lib}
 	${Boost_SYSTEM_LIBRARIES}
 )
 
 set(game-external-libs
 	${game-external-libs}
-	${sdl_net-lib}
 )
 
 set(tools-external-libs
