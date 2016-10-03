@@ -133,6 +133,8 @@ public:
 
 	/**
 	 * Whether to provide user interface elements for manipulating existing objects.
+	 *
+	 * This is initially disabled.
 	 */
 	tfile_dialog& set_read_only(bool value)
 	{
@@ -152,6 +154,8 @@ public:
 
 	/**
 	 * Sets the dialog's behavior on non-existent file name inputs.
+	 *
+	 * This is initially disabled.
 	 *
 	 * When save mode is enabled, file names entered into the dialog by the user
 	 * need not exist already (but their parent directories still do). Otherwise,
