@@ -363,12 +363,6 @@ if env["prereqs"]:
         conf.CheckLib("vorbis")
         conf.CheckLib("mikmod")
 
-
-    def have_sdl_net():
-        return \
-            conf.CheckSDL(require_version = SDL2_version) & \
-            conf.CheckSDL("SDL2_net", header_file = "SDL_net")
-
     def have_sdl_other():
         return \
             conf.CheckSDL(require_version = SDL2_version) & \
