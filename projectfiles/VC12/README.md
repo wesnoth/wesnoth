@@ -156,18 +156,7 @@ folders, all version numbers are minimal requirements:
       into the corresponding *General Folder*.
 
 
-   6. sdl-net-1.2 ( http://www.libsdl.org/projects/SDL_net )
-
-      Download the binary file for Win32  
-      	SDL_net-devel-1.2.7-VC8.zip  
-      and unpack it into the projects folder to get:  
-      	`C:\projects\SDL_net-1.2.7\`
-
-      Copy the contents of each the 'lib' and the 'include' folder
-      into the corresponding *General Folder*.
-
-
-   7. sdl-ttf-2.0.8 ( http://www.libsdl.org/projects/SDL_ttf )
+   6. sdl-ttf-2.0.8 ( http://www.libsdl.org/projects/SDL_ttf )
 
       Download the binary file for Win32  
       	SDL_ttf-devel-2.0.8-VC8.zip  
@@ -178,7 +167,7 @@ folders, all version numbers are minimal requirements:
       into the corresponding *General Folder*.
 
 
-   8. libfontconfig-2.4.1
+   7. libfontconfig-2.4.1
       	( http://www.gtk.org/download/win32.php )
 
       Download the 'Fontconfig' package 'Binaries' from the
@@ -191,7 +180,7 @@ folders, all version numbers are minimal requirements:
       'lib' *General Folder*.
 
 
-   9. pangocairo-1.24.4 ( http://www.gtk.org/download-windows.html )
+   8. pangocairo-1.24.4 ( http://www.gtk.org/download-windows.html )
 
       Download the following 'Binaryies' and 'Dev' packages from the
       'GTK+ individual packages'  
