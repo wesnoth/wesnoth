@@ -82,7 +82,6 @@ opts.AddVariables(
     BoolVariable('prereqs','abort if prerequisites cannot be detected',True),
     ('program_suffix', 'suffix to append to names of installed programs',"$version_suffix"),
     ('version_suffix', 'suffix that will be added to default values of prefsdir, program_suffix and datadirname', ""),
-    BoolVariable('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
     BoolVariable('forum_user_handler', 'Enable forum user handler in wesnothd', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
