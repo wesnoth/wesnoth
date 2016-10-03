@@ -267,14 +267,19 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	LOG_G << "setting language to  '" << language << "' \n";
 	get_manager().set_language(language);
 }
+
 int compare(const std::string& s1, const std::string& s2)
 {
 	return std::use_facet<std::collate<char> >(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
 }
 
+int icompare(const std::string& s1, const std::string& s2)
+{
+	return std::use_facet<bl::collator<char> >(get_manager().get_locale()).compare(bl::collator_base::secondary, s1, s2);
+}
+
 void init()
 {
-
 }
 
 std::string strftime(const std::string& format, const std::tm* time)
