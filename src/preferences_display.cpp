@@ -23,12 +23,12 @@
 #include "preferences_display.hpp"
 
 #include "display.hpp"
-#include "filechooser.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/theme_list.hpp"
@@ -164,16 +164,20 @@ void show_wesnothd_server_search(CVideo& video)
 		path = old_path;
 	}
 
-	utils::string_map symbols;
+	const std::string msg = vgettext(
+			  "The <b>$filename</b> server application provides multiplayer server functionality and is required for hosting local network games. It will normally be found in the same folder where the game executable is installed.", {{"filename", filename}});
 
-	symbols["filename"] = filename;
+	gui2::tfile_dialog dlg;
 
-	const std::string title = utils::interpolate_variables_into_string(
-			  _("Find $filename server binary")
-			, &symbols);
+	dlg.set_title(_("Find Server Application"))
+	   .set_message(msg)
+	   .set_ok_label(_("Select"))
+	   .set_read_only(true)
+	   .set_filename(filename)
+	   .set_path(path);
 
-	int res = dialogs::show_file_chooser_dialog(video, path, title, false, filename);
-	if (res == 0) {
+	if(dlg.show(video)) {
+		path = dlg.path();
 		preferences::set_mp_server_program_name(path);
 	}
 }

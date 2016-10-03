@@ -30,7 +30,6 @@
 #include "chat_command_handler.hpp"
 #include "config_assign.hpp"
 #include "display_chat_manager.hpp"
-#include "filechooser.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
@@ -43,6 +42,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/edit_label.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -166,8 +166,15 @@ void menu_handler::save_map()
 	int res = 0;
 	int overwrite = 1;
 	do {
-		res = dialogs::show_file_chooser_dialog_save(gui_->video(), input_name, _("Save the Map As"), ".map");
-		if (res == 0) {
+		gui2::tfile_dialog dlg;
+
+		dlg.set_title(_("Save the Map As"))
+		   .set_save_mode(true)
+		   .set_path(input_name)
+		   .set_extension(".map");
+
+		if(dlg.show(gui_->video())) {
+			input_name = dlg.path();
 
 			if (filesystem::file_exists(input_name)) {
 				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);

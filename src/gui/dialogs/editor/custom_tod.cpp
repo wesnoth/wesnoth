@@ -17,10 +17,10 @@
 #include "gui/dialogs/editor/custom_tod.hpp"
 
 #include "filesystem.hpp"
-#include "filechooser.hpp"
 #include "editor/editor_preferences.hpp"
 #include "editor/editor_display.hpp"
 #include "gui/auxiliary/field.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -114,9 +114,15 @@ void tcustom_tod::select_file(const std::string& filename,
 		dn = default_dir;
 	}
 
-	int res = dialogs::show_file_chooser_dialog(
-			display_.video(), dn, _("Choose File"));
-	if(res == 0) {
+	gui2::tfile_dialog dlg;
+
+	dlg.set_title(_("Choose File"))
+	   .set_ok_label(_("Select"))
+	   .set_path(dn);
+
+	if(dlg.show(display_.video())) {
+		dn = dlg.path();
+
 		if(attribute == "image") {
 			tods_[current_tod_].image = dn;
 		} else if(attribute == "mask") {

@@ -131,7 +131,6 @@ libwesnoth_sources = Split("""
     utils/make_enum.cpp
     video.cpp
     widgets/button.cpp
-    widgets/file_menu.cpp
     widgets/label.cpp
     widgets/menu_style.cpp
     widgets/menu.cpp
@@ -284,7 +283,6 @@ wesnoth_sources = Split("""
     editor/toolkit/editor_toolkit.cpp
     fake_unit_manager.cpp
     fake_unit_ptr.cpp
-    filechooser.cpp
     filesystem_sdl.cpp
     floating_textbox.cpp
     formula/callable_objects.cpp

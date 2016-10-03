@@ -15,7 +15,6 @@
 #ifndef GUI_DIALOGS_CUSTOM_TOD_HPP_INCLUDED
 #define GUI_DIALOGS_CUSTOM_TOD_HPP_INCLUDED
 
-#include "filechooser.hpp"
 #include "time_of_day.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/text_box.hpp"
