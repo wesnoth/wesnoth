@@ -18,10 +18,11 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/integer_selector.hpp"
-#include "gui/widgets/window.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/image.hpp"
+#include "gui/widgets/integer_selector.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/window.hpp"
 
 #include "utils/functional.hpp"
 
@@ -81,25 +82,26 @@ void tdrop_down_list::pre_show(twindow& window)
 
 		if(!entry.has_attribute("image")) {
 			item["label"] = entry["label"];
-			item["tooltip"] = entry["tooltip"];
 			item["use_markup"] = use_markup_ ? "true" : "false";
 			data.emplace("label", item);
 		}
 
 		if(entry.has_attribute("details")) {
 			item["label"] = entry["details"];
-			item["tooltip"] = entry["tooltip"];
 			item["use_markup"] = use_markup_ ? "true" : "false";
 			data.emplace("details", item);
 		}
 
 		tgrid& new_row = list.add_row(data);
 
+		// Set the tooltip on the whole panel
+		find_widget<ttoggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
+
 		if(entry.has_attribute("image")) {
 			timage* img = new timage;
 			img->set_definition("default");
 			img->set_label(entry["image"]);
-			img->set_tooltip(entry["tooltip"]);
+
 			tgrid* mi_grid = dynamic_cast<tgrid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
 				delete mi_grid->swap_child("label", img, false);
