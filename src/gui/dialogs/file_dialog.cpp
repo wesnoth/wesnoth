@@ -86,6 +86,15 @@ inline std::string filesystem_root()
 	return std::string(1, fs::path_separator());
 }
 
+inline void isort_dir_entries(std::vector<std::string>& entries)
+{
+	// Yes, this uses Wesnoth's locale and not the filesystem/OS locale. Yes, this
+	// isn't ideal. No, we don't really need to worry about it. It's just a
+	// cosmetic procedure anyway.
+	std::sort(entries.begin(), entries.end(),
+			  [](const std::string& a, const std::string& b) { return translation::icompare(a, b) < 0; });
+}
+
 } // unnamed namespace
 
 namespace gui2
@@ -384,6 +393,8 @@ void tfile_dialog::refresh_fileview(twindow& window)
 	// TODO: Need to detect and handle cases where we don't have search permission
 	//       on current_dir_, otherwise things may get weird.
 	filesystem::get_files_in_dir(current_dir_, &dir_files_, &dir_subdirs_, filesystem::FILE_NAME_ONLY);
+	isort_dir_entries(dir_files_);
+	isort_dir_entries(dir_subdirs_);
 
 	//
 	// Clear and refill the filelist box.
