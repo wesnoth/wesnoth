@@ -198,8 +198,8 @@ void tmp_create_game::pre_show(twindow& window)
 	tmenu_button& eras_menu_button = find_widget<tmenu_button>(&window, "eras", false);
 
 	std::vector<config> era_names;
-	for(const auto& era : create_engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
-		era_names.push_back(config_of("label", era));
+	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
+		era_names.push_back(config_of("label", era->name)("tooltip", era->description));
 	}
 
 	if(era_names.empty()) {
@@ -483,7 +483,7 @@ void tmp_create_game::on_era_select(twindow& window)
 {
 	create_engine_.set_current_era_index(find_widget<tmenu_button>(&window, "eras", false).get_value());
 
-	show_description(window, create_engine_.current_extra(ng::create_engine::ERA).description);
+	find_widget<tmenu_button>(&window, "eras", false).set_tooltip(create_engine_.current_extra(ng::create_engine::ERA).description);
 }
 
 void tmp_create_game::on_random_faction_mode_select(twindow& window)
