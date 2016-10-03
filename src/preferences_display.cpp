@@ -133,36 +133,16 @@ bool show_theme_dialog(CVideo& video)
 
 void show_wesnothd_server_search(CVideo& video)
 {
-	// Showing file_chooser so user can search the wesnothd
-	std::string old_path = preferences::get_mp_server_program_name();
-	size_t offset = old_path.rfind("/");
-	if (offset != std::string::npos)
-	{
-		old_path = old_path.substr(0, offset);
-	}
-	else
-	{
-		old_path.clear();
-	}
 #ifndef _WIN32
-
-#ifndef WESNOTH_PREFIX
-#define WESNOTH_PREFIX "/usr"
-#endif
 	const std::string filename = "wesnothd";
-	std::string path = WESNOTH_PREFIX + std::string("/bin");
-	if (!filesystem::is_directory(path))
-		path = filesystem::get_cwd();
-
-#else
+#else // _WIN32
 	const std::string filename = "wesnothd.exe";
-	std::string path = filesystem::get_cwd();
 #endif
-	if (!old_path.empty()
-			&& filesystem::is_directory(old_path))
-	{
-		path = old_path;
-	}
+
+	const std::string& old_path = filesystem::directory_name(preferences::get_mp_server_program_name());
+	std::string path =
+		!old_path.empty() && filesystem::is_directory(old_path)
+		? old_path : filesystem::get_exe_dir();
 
 	const std::string msg = vgettext(
 			  "The <b>$filename</b> server application provides multiplayer server functionality and is required for hosting local network games. It will normally be found in the same folder where the game executable is installed.", {{"filename", filename}});
