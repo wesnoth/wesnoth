@@ -275,11 +275,10 @@ void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 	window.set_enter_disabled(!any_shown);
 }
 
-void tgame_load::evaluate_summary_string(std::stringstream& str,
-										 const config& cfg_summary)
+void tgame_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
 	if(cfg_summary["corrupt"].to_bool()) {
-		str << "\n" << _("#(Invalid)");
+		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
 
 		return;
 	}
