@@ -414,6 +414,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			leader_config["leader"] = leader;
 			leader_config["leader_name"] = leader_name;
 			leader_config["leader_image"] = leader_image;
+			leader_config["leader_image_tc_modifier"] = leader_image_tc_modifier;
 
 			cfg_summary.add_child("leader", leader_config);
 		}
