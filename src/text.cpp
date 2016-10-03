@@ -98,9 +98,6 @@ ttext::ttext() :
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),
-#ifdef SDL_GPU
-	texture_(),
-#endif
 	text_(),
 	markedup_text_(false),
 	link_aware_(false),
@@ -162,13 +159,6 @@ surface ttext::render() const
 	return surface_;
 }
 
-#ifdef SDL_GPU
-sdl::timage ttext::render_as_texture() const
-{
-	rerender();
-	return texture_;
-}
-#endif
 
 int ttext::get_width() const
 {
@@ -776,9 +766,6 @@ void ttext::rerender(const bool force) const
 
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			surface_buffer_, width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
-#ifdef SDL_GPU
-		texture_ = sdl::timage(surface_);
-#endif
 		cairo_destroy(cr);
 		cairo_surface_destroy(cairo_surface);
 	}

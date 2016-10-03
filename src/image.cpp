@@ -164,11 +164,6 @@ image::image_cache images_,
 		tod_colored_images_,
 		brightened_images_;
 
-#ifdef SDL_GPU
-image::texture_cache txt_images_,
-		txt_hexed_images_,
-		txt_brightened_images_;
-#endif
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -179,9 +174,6 @@ image::bool_cache is_empty_hex_;
 // caches storing the different lighted cases for each image
 image::lit_cache lit_images_,
 		lit_scaled_images_;
-#ifdef SDL_GPU
-image::lit_texture_cache lit_textures_;
-#endif
 // caches storing each lightmap generated
 image::lit_variants lightmaps_;
 
@@ -649,17 +641,6 @@ surface load_from_disk(const locator &loc)
 	}
 }
 
-#ifdef SDL_GPU
-sdl::timage load_texture(const locator &loc)
-{
-	surface img = load_from_disk(loc);
-	if (!img.null()) {
-		return sdl::timage(img);
-	} else {
-		return sdl::timage();
-	}
-}
-#endif
 
 manager::manager() {}
 
@@ -969,104 +950,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
-#ifdef SDL_GPU
-sdl::timage get_texture(const locator& loc, TYPE type)
-{
-	if (loc.is_void()) {
-		return sdl::timage();
-	}
 
-	texture_cache *cache;
-
-	switch (type) {
-	case UNSCALED:
-	case SCALED_TO_ZOOM:
-		cache = &txt_images_;
-		break;
-	case BRIGHTENED:
-		cache = &txt_brightened_images_;
-		break;
-	case HEXED:
-	case SCALED_TO_HEX:
-	case TOD_COLORED:
-		cache = &txt_hexed_images_;
-		break;
-	default:
-		return sdl::timage();
-	}
-
-	if (!loc.in_cache(*cache)) {
-		if (type == UNSCALED || type == SCALED_TO_ZOOM) {
-			sdl::timage txt = load_texture(loc);
-			loc.add_to_cache(*cache, txt);
-		} else if (type == BRIGHTENED) {
-			surface surf = get_brightened(loc);
-			sdl::timage txt(surf);
-			loc.add_to_cache(*cache, txt);
-		} else {
-			surface surf = get_hexed(loc);
-			sdl::timage txt(surf);
-			loc.add_to_cache(*cache, txt);
-		}
-	}
-
-	sdl::timage result = loc.locate_in_cache(*cache);
-
-	switch (type) {
-	case UNSCALED:
-	case HEXED:
-	case BRIGHTENED:
-		break;
-	case TOD_COLORED:
-		result.set_color_mod(red_adjust, green_adjust, blue_adjust);
-	case SCALED_TO_ZOOM:
-	case SCALED_TO_HEX:
-		result.set_scale(zoom / 72.0f, zoom / 72.0f);
-		break;
-	default:
-		return sdl::timage();
-	}
-
-	return result;
-}
-#endif
-
-#ifdef SDL_GPU
-sdl::timage get_lighted_texture(const locator &i_locator, const light_string &ls, TYPE type)
-{
-	sdl::timage res;
-	if(i_locator.is_void())
-		return res;
-
-	// if no light variants yet, need to add an empty map
-	if(!i_locator.in_cache(lit_textures_)){
-		i_locator.add_to_cache(lit_textures_, lit_texture_variants());
-	}
-
-	//need access to add it if not found
-	{ // enclose reference pointing to data stored in a changing vector
-		const lit_texture_variants& lvar = i_locator.locate_in_cache(lit_textures_);
-		lit_texture_variants::const_iterator lvi = lvar.find(ls);
-		if(lvi != lvar.end()) {
-			return lvi->second;
-		}
-	}
-
-	// not cached yet, generate it
-	surface surf = get_image(i_locator, HEXED);
-	surf = apply_light(surf, ls);
-
-	res = sdl::timage(surf);
-
-	if (type == SCALED_TO_HEX) {
-		res.set_scale(zoom / 72.0f, zoom / 72.0f);
-	}
-	// record the lighted surface in the corresponding variants cache
-	i_locator.access_in_cache(lit_textures_)[ls] = res;
-
-	return res;
-}
-#endif
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {
 	surface res;

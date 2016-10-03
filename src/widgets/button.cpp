@@ -48,17 +48,10 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing,
                const bool auto_join, std::string overlay_image)
 	: widget(video, auto_join), type_(type),
-#ifdef SDL_GPU
-	  label_text_(label), label_image_(),
-	  image_(), pressedImage_(), activeImage_(), pressedActiveImage_(),
-	  disabledImage_(), pressedDisabledImage_(),
-	  overlayImage_(), overlayPressedImage_(), overlayActiveImage_(),
-#else
 	  label_text_(label),
 	  image_(nullptr), pressedImage_(nullptr), activeImage_(nullptr), pressedActiveImage_(nullptr),
 	  disabledImage_(nullptr), pressedDisabledImage_(nullptr),
 	  overlayImage_(nullptr), overlayPressedImage_(nullptr), overlayActiveImage_(nullptr),
-#endif
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
 	  button_image_name_(), button_overlay_image_name_(overlay_image),
@@ -107,86 +100,6 @@ void button::load_images() {
 			break;
 	}
 
-#ifdef SDL_GPU
-	sdl::timage button_image(image::get_texture(button_image_name_ + ".png" + button_image_path_suffix_));
-	sdl::timage pressed_image(image::get_texture(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
-	sdl::timage active_image(image::get_texture(button_image_name_ + "-active.png"+ button_image_path_suffix_));
-	sdl::timage disabled_image;
-	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"))
-		disabled_image = image::get_texture(button_image_name_ + "-disabled.png"+ button_image_path_suffix_);
-	sdl::timage pressed_disabled_image, pressed_active_image, touched_image;
-
-	if (!button_overlay_image_name_.empty()) {
-		overlayImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_);
-		overlayPressedImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_);
-
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
-			overlayActiveImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_);
-
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
-			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_);
-		if (overlayDisabledImage_.null())
-			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
-
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
-			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png");
-		if (overlayPressedDisabledImage_.null())
-			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
-	} else {
-		overlayImage_ = sdl::timage();
-	}
-
-	if (disabled_image.null()) {
-		disabled_image = image::get_texture(button_image_name_ + ".png~GS()" + button_image_path_suffix_);
-	}
-
-	if (pressed_image.null())
-		pressed_image = button_image;
-
-	if (active_image.null())
-		active_image = button_image;
-
-	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-		touched_image = image::get_texture(button_image_name_ + "-touched.png"+ button_image_path_suffix_);
-		if (touched_image.null())
-			touched_image = pressed_image;
-
-		pressed_active_image = (image::get_texture(button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_));
-		if (pressed_active_image.null())
-			pressed_active_image = pressed_image;
-
-		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"))
-			pressed_disabled_image = image::get_texture(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
-		if (pressed_disabled_image.null())
-			pressed_disabled_image = image::get_texture(button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
-	}
-
-	if (button_image.null()) {
-		ERR_DP << "error initializing button!" << std::endl;
-		throw error();
-	}
-
-	base_height_ = button_image.height();
-	base_width_ = button_image.width();
-
-	if (type_ != TYPE_IMAGE) {
-		set_label(label_text_);
-	}
-
-	image_ = button_image;
-	pressedImage_ = pressed_image;
-	activeImage_ = active_image;
-	disabledImage_ = disabled_image;
-	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-		pressedDisabledImage_ = pressed_disabled_image;
-		pressedActiveImage_ = pressed_active_image;
-		touchedImage_ = touched_image;
-	}
-
-	if (type_ == TYPE_IMAGE){
-		calculate_size();
-	}
-#else
 	surface button_image(image::get_image(button_image_name_ + ".png" + button_image_path_suffix_));
 	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
 	surface active_image(image::get_image(button_image_name_ + "-active.png"+ button_image_path_suffix_));
@@ -281,7 +194,6 @@ void button::load_images() {
 	if (type_ == TYPE_IMAGE){
 		calculate_size();
 	}
-#endif
 }
 
 button::~button()
@@ -292,13 +204,8 @@ void button::calculate_size()
 {
 	if (type_ == TYPE_IMAGE){
 		SDL_Rect loc_image = location();
-#ifdef SDL_GPU
-		loc_image.h = image_.height();
-		loc_image.w = image_.width();
-#else
 		loc_image.h = image_->h;
 		loc_image.w = image_->w;
-#endif
 		set_location(loc_image);
 		return;
 	}
@@ -398,92 +305,6 @@ void button::enable(bool new_val)
 
 void button::draw_contents()
 {
-#ifdef SDL_GPU
-	sdl::timage image = image_;
-	const int image_w = image_.width();
-
-	int offset = 0;
-	switch(state_) {
-	case ACTIVE:
-		image = activeImage_;
-		break;
-	case PRESSED:
-		image = pressedImage_;
-		if (type_ == TYPE_PRESS)
-			offset = 1;
-		break;
-	case PRESSED_ACTIVE:
-		image = pressedActiveImage_;
-		break;
-	case TOUCHED_NORMAL:
-	case TOUCHED_PRESSED:
-		image = touchedImage_;
-		break;
-	default:
-		break;
-	}
-
-	SDL_Rect const &loc = location();
-	SDL_Rect clipArea = loc;
-	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
-	int textx;
-
-	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
-		textx = loc.x + image.width() / 2 - textRect_.w / 2 + offset;
-	else {
-		clipArea.w += image_w + checkbox_horizontal_padding;
-		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
-	}
-
-	SDL_Color button_color = font::BUTTON_COLOR;
-
-	if (!enabled()) {
-
-		if (state_ == PRESSED || state_ == PRESSED_ACTIVE)
-			image = pressedDisabledImage_;
-		else image = disabledImage_;
-
-		button_color = font::GRAY_COLOR;
-	}
-
-	sdl::timage overlay;
-	if (!overlayImage_.null()) {
-
-		overlay = enabled() ? overlayImage_ : overlayDisabledImage_;
-
-		if (!overlayPressedImage_.null()) {
-			switch (state_) {
-			case ACTIVE:
-				if (!overlayActiveImage_.null())
-					overlay = overlayActiveImage_;
-				break;
-			case PRESSED:
-			case PRESSED_ACTIVE:
-			case TOUCHED_NORMAL:
-			case TOUCHED_PRESSED:
-				overlay = enabled() ? overlayPressedImage_ : overlayPressedDisabledImage_;
-				break;
-			default:
-				break;
-			}
-		}
-
-	}
-
-	image.set_scale(float(loc.w) / image.width(), float(loc.h) / image.height());
-	overlay.set_scale(float(loc.w) / overlay.width(), float(loc.h) / image.height());
-
-	video().draw_texture(image, loc.x, loc.y);
-	video().draw_texture(overlay, loc.x, loc.y);
-	if (type_ != TYPE_IMAGE){
-		clipArea.x += offset;
-		clipArea.y += offset;
-		clipArea.w -= 2*offset;
-		clipArea.h -= 2*offset;
-//		label_image_.set_clip(clipArea);
-		video().draw_texture(label_image_, textx, texty);
-	}
-#else
 	surface image = image_;
 	const int image_w = image_->w;
 
@@ -569,7 +390,6 @@ void button::draw_contents()
 	}
 
 	update_rect(loc);
-#endif
 }
 
 bool button::hit(int x, int y) const
@@ -615,11 +435,6 @@ void button::set_label(const std::string& val)
 	}
 
 	calculate_size();
-#ifdef SDL_GPU
-	font::ttext text;
-	text.set_text(label_text_, false);
-	label_image_ = text.render_as_texture();
-#endif
 
 	set_dirty(true);
 }

@@ -179,11 +179,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
 	reportRects_(),
-#ifdef SDL_GPU
-	reportImages_(),
-#else
 	reportSurfaces_(),
-#endif
 	reports_(),
 	menu_buttons_(),
 	action_buttons_(),
@@ -220,10 +216,6 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	arrows_map_(),
 	color_adjust_(),
 	dirty_()
-#ifdef SDL_GPU
-	, update_panel_image_(true),
-	panel_image_()
-#endif
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
@@ -337,27 +329,6 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	f.start_animation(rand() % f.get_end_time(), true);
 }
 
-#ifdef SDL_GPU
-sdl::timage display::get_flag(const map_location& loc)
-{
-	if(!get_map().is_village(loc)) {
-		return surface(nullptr);
-	}
-
-	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		if(dc_->teams()[i].owns_village(loc) &&
-		  (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(i+1)))
-		{
-			flags_[i].update_last_draw_time();
-			const image::locator &image_flag = animate_map_ ?
-				flags_[i].get_current_frame() : flags_[i].get_first_frame();
-			return image::get_texture(image_flag, image::TOD_COLORED);
-		}
-	}
-
-	return sdl::timage();
-}
-#else
 surface display::get_flag(const map_location& loc)
 {
 	if(!get_map().is_village(loc)) {
@@ -377,7 +348,6 @@ surface display::get_flag(const map_location& loc)
 
 	return surface(nullptr);
 }
-#endif
 
 void display::set_team(size_t teamindex, bool show_everything)
 {
@@ -1016,11 +986,7 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
-#ifdef SDL_GPU
-std::vector<sdl::timage> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
-#else
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
-#endif
 {
 	std::vector<std::string> names;
 
@@ -1098,45 +1064,23 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	}
 
 	// now get the surfaces
-#ifdef SDL_GPU
-	std::vector<sdl::timage> res;
-#else
 	std::vector<surface> res;
-#endif
 
 	for (std::string& name : names) {
-#ifdef SDL_GPU
-		const sdl::timage img(image::get_texture(name, image_type));
-		if (!img.null())
-			res.push_back(img);
-#else
 		const surface surf(image::get_image(name, image_type));
 		if (surf)
 			res.push_back(surf);
-#endif
 	}
 
 	return res;
 }
 
-#ifdef SDL_GPU
-std::vector<sdl::timage> display::get_terrain_images(
-								const map_location &loc,
-								const std::string& timeid,
-								image::TYPE image_type,
-								TERRAIN_TYPE terrain_type)
-#else
 std::vector<surface> display::get_terrain_images(const map_location &loc,
 						     const std::string& timeid,
 		image::TYPE image_type,
 		TERRAIN_TYPE terrain_type)
-#endif
 {
-#ifdef SDL_GPU
-	std::vector<sdl::timage> res;
-#else
 	std::vector<surface> res;
-#endif
 
 	terrain_builder::TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == FOREGROUND ?
@@ -1191,21 +1135,6 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
-#ifdef SDL_GPU
-			sdl::timage img;
-			const bool off_map = image.get_filename() == off_map_name;
-			if(!use_local_light || off_map) {
-				img = image::get_texture(image, off_map ? image::SCALED_TO_HEX : image_type);
-			} else if(lt.empty()) {
-				img = image::get_texture(image, image::SCALED_TO_HEX);
-			} else {
-				img = image::get_lighted_texture(image, lt, image::SCALED_TO_HEX);
-			}
-
-			if (!img.null()) {
-				res.push_back(img);
-			}
-#else
 			surface surf;
 			const bool off_map = image.get_filename() == off_map_name;
 			if(off_map) {
@@ -1219,28 +1148,12 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			if (!surf.null()) {
 				res.push_back(surf);
 			}
-#endif
 		}
 	}
 
 	return res;
 }
 
-#ifdef SDL_GPU
-void display::drawing_buffer_add(const tdrawing_layer layer,
-								 const map_location& loc, int x, int y,
-								 const sdl::timage &img)
-{
-	drawing_buffer_.push_back(tblit(layer, loc, x, y, img));
-}
-
-void display::drawing_buffer_add(const tdrawing_layer layer,
-								 const map_location& loc, int x, int y,
-								 const std::vector<sdl::timage> &imgs)
-{
-	drawing_buffer_.push_back(tblit(layer, loc, x, y, imgs));
-}
-#else
 void display::drawing_buffer_add(const tdrawing_layer layer,
 		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
@@ -1255,7 +1168,6 @@ void display::drawing_buffer_add(const tdrawing_layer layer,
 {
 	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));
 }
-#endif
 
 // FIXME: temporary method. Group splitting should be made
 // public into the definition of tdrawing_layer
@@ -1329,33 +1241,6 @@ void display::drawing_buffer_commit()
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
-#ifdef SDL_GPU
-	SDL_Rect clip_rect = map_area();
-	GPU_SetClip(get_render_target(), clip_rect.x, clip_rect.y, clip_rect.w, clip_rect.h);
-
-	/*
-	 * Info regarding the rendering algorithm.
-	 *
-	 * In order to render a hex properly it needs to be rendered per row. On
-	 * this row several layers need to be drawn at the same time. Mainly the
-	 * unit and the background terrain. This is needed since both can spill
-	 * in the next hex. The foreground terrain needs to be drawn before to
-	 * avoid decapitation a unit.
-	 *
-	 * This ended in the following priority order:
-	 * layergroup > location > layer > 'tblit' > surface
-	 */
-
-	for (tblit &blit : drawing_buffer_) {
-		for (sdl::timage& img : blit.images()) {
-			if (!img.null()) {
-				screen_.draw_texture(img, blit.x(), blit.y());
-			}
-		}
-	}
-	drawing_buffer_clear();
-	GPU_UnsetClip(get_render_target());
-#else
 	SDL_Rect clip_rect = map_area();
 	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
@@ -1387,7 +1272,6 @@ void display::drawing_buffer_commit()
 		}
 	}
 	drawing_buffer_clear();
-#endif
 }
 
 void display::drawing_buffer_clear()
@@ -1429,21 +1313,13 @@ void display::flip()
 		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
 	}
-#ifdef SDL_GPU
-	font::draw_floating_labels(screen_);
-#else
 	font::draw_floating_labels(frameBuffer);
-#endif
 	events::raise_volatile_draw_event();
 
 	video().flip();
 
 	events::raise_volatile_undraw_event();
-#ifdef SDL_GPU
-	font::undraw_floating_labels(screen_);
-#else
 	font::undraw_floating_labels(frameBuffer);
-#endif
 }
 
 void display::update_display()
@@ -1495,11 +1371,7 @@ void display::update_display()
 
 	flip();
 }
-#ifdef SDL_GPU
-static void draw_panel(surface &target, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
-#else
 static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std::shared_ptr<gui::button>>& /*buttons*/)
-#endif
 {
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
@@ -1516,12 +1388,8 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 		if(surf->w != loc.w || surf->h != loc.h) {
 			surf.assign(tile_surface(surf,loc.w,loc.h));
 		}
-#ifdef SDL_GPU
-		blit_surface(surf, nullptr, target, &loc);
-#else
 		video.blit_surface(loc.x, loc.y, surf);
 		update_rect(loc);
-#endif
 	}
 }
 
@@ -1570,23 +1438,6 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw_all_panels()
 {
-#ifdef SDL_GPU
-	const surface& screen(screen_.getSurface());
-
-	/*
-	 * The minimap is also a panel, force it to update its contents.
-	 * This is required when the size of the minimap has been modified.
-	 */
-	recalculate_minimap();
-
-	draw_panel_image();
-
-	const std::vector<theme::label>& labels = theme_.labels();
-	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-		draw_label(video(),screen,*i);
-	}
-	render_buttons();
-#else
 	surface& screen(screen_.getSurface());
 
 	/*
@@ -1606,47 +1457,9 @@ void display::draw_all_panels()
 	}
 
 	render_buttons();
-#endif
 }
 
-#ifdef SDL_GPU
-void display::draw_panel_image(SDL_Rect *clip)
-{
-	surface screen(video().getSurface());
 
-	if (update_panel_image_) {
-		surface surf = create_neutral_surface(screen->w, screen->h);
-		const std::vector<theme::panel>& panels = theme_.panels();
-		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-			draw_panel(surf, *p, menu_buttons_);
-		}
-
-		panel_image_ = sdl::timage(surf);
-		update_panel_image_ = false;
-	}
-
-	if (clip != nullptr)
-		GPU_SetClip(get_render_target(), clip->x, clip->y, clip->w, clip->h);
-
-	video().draw_texture(panel_image_, 0, 0);
-
-	if (clip != nullptr)
-		GPU_UnsetClip(get_render_target());
-}
-#endif
-
-#ifdef SDL_GPU
-static void draw_background(CVideo &video, const SDL_Rect& area, const std::string& image)
-{
-	sdl::timage img(image::get_texture(image));
-	if (img.null()) {
-		return;
-	}
-	img.set_wrap(GPU_WRAP_REPEAT, GPU_WRAP_REPEAT);
-	img.set_clip(sdl::create_rect(0, 0, area.w, area.h));
-	video.draw_texture(img, area.x, area.y);
-}
-#else
 static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
 {
 	const surface background(image::get_image(image));
@@ -1666,7 +1479,6 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 		}
 	}
 }
-#endif
 
 void display::draw_text_in_hex(const map_location& loc,
 		const tdrawing_layer layer, const std::string& text,
@@ -1682,19 +1494,6 @@ void display::draw_text_in_hex(const map_location& loc,
 	              + static_cast<int>(x_in_hex* hex_size());
 	const int y = get_location_y(loc) - text_surf->h/2
 	              + static_cast<int>(y_in_hex* hex_size());
-#ifdef SDL_GPU
-	sdl::timage text_img(text_surf);
-	sdl::timage back_img(back_surf);
-
-	for (int dy=-1; dy <= 1; ++dy) {
-		for (int dx=-1; dx <= 1; ++dx) {
-			if (dx!=0 || dy!=0) {
-				drawing_buffer_add(layer, loc, x + dx, y + dy, back_img);
-			}
-		}
-	}
-	drawing_buffer_add(layer, loc, x, y, text_img);
-#else
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
@@ -1703,27 +1502,9 @@ void display::draw_text_in_hex(const map_location& loc,
 		}
 	}
 	drawing_buffer_add(layer, loc, x, y, text_surf);
-#endif
 }
 
 //TODO: convert this to use sdl::ttexture
-#ifdef SDL_GPU
-void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
-		const map_location& loc, sdl::timage image,
-		bool hreverse, bool greyscale, fixed_t /*alpha*/,
-		Uint32 /*blendto*/, double /*blend_ratio*/, double submerged, bool vreverse)
-{
-	int effect_flags = hreverse ? SHADER_EFFECT_FLIP : SHADER_EFFECT_NONE |
-					   vreverse ? SHADER_EFFECT_FLOP : SHADER_EFFECT_NONE |
-					   greyscale ? SHADER_EFFECT_GRAYSCALE : SHADER_EFFECT_NONE;
-
-	image.set_effects(effect_flags);
-	image.set_submerge(submerged);
-
-	drawing_buffer_add(drawing_layer, loc, x, y, image);
-}
-
-#else
 void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
@@ -1793,7 +1574,6 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		drawing_buffer_add(drawing_layer, loc, x, y, surf);
 	}
 }
-#endif
 void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
@@ -1845,13 +1625,9 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
-#ifdef SDL_GPU
-		draw_background(screen_, clip_rect, theme_.border().background_image);
-#else
 		const surface& screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		draw_background(screen, clip_rect, theme_.border().background_image);
-#endif
 		update_rect(clip_rect);
 
 		redraw_background_ = false;
@@ -1967,67 +1743,6 @@ void display::announce(const std::string& message, const SDL_Color& color, int l
 
 void display::draw_border(const map_location& loc, const int xpos, const int ypos)
 {
-#ifdef SDL_GPU
-	/**
-	 * at the moment the border must be between 0.0 and 0.5
-	 * and the image should always be prepared for a 0.5 border.
-	 * This way this code doesn't need modifications for other border sizes.
-	 */
-
-	// First handle the corners :
-	if(loc.x == -1 && loc.y == -1) { // top left corner
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_texture(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
-	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 0) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_texture(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_texture(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM));
-		}
-	} else if(loc.x == -1 && loc.y == get_map().h()) { // bottom left corner
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_texture(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM));
-
-	} else if(loc.x == get_map().w() && loc.y == get_map().h()) { // bottom right corner
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_texture(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_texture(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM));
-		}
-
-	// Now handle the sides:
-	} else if(loc.x == -1) { // left side
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_texture(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
-	} else if(loc.x == get_map().w()) { // right side
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_texture(theme_.border().border_image_right, image::SCALED_TO_ZOOM));
-	} else if(loc.y == -1) { // top side
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_texture(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_texture(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM));
-		}
-	} else if(loc.y == get_map().h()) { // bottom side
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_texture(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_texture(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
-		}
-	}
-#else
 	/**
 	 * at the moment the border must be between 0.0 and 0.5
 	 * and the image should always be prepared for a 0.5 border.
@@ -2087,7 +1802,6 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 				image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
 		}
 	}
-#endif
 }
 
 void display::draw_minimap()
@@ -2098,11 +1812,6 @@ void display::draw_minimap()
 		return;
 	}
 
-#ifdef SDL_GPU
-	minimap_location_ = image::draw_minimap(screen_, area, get_map(), &dc_->teams()[currentTeam_], nullptr);
-
-	draw_minimap_units();
-#else
 	if(minimap_ == nullptr || minimap_->w > area.w || minimap_->h > area.h) {
 		minimap_ = image::getMinimap(area.w, area.h, get_map(),
 			dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
@@ -2150,7 +1859,6 @@ void display::draw_minimap()
                    minimap_location_.y + view_y - 1,
                    view_w + 2, view_h + 2,
 				   box_color, screen);
-#endif
 }
 
 void display::draw_minimap_units()
@@ -2201,12 +1909,8 @@ void display::draw_minimap_units()
 				, minimap_location_.y + round_double(u_y)
 				, round_double(u_w)
 				, round_double(u_h));
-#ifdef SDL_GPU
-		sdl::fill_rect(screen_, r, col);
-#else
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		sdl::fill_rect(video().getSurface(), &r, mapped_col);
-#endif
 	}
 }
 
@@ -2268,12 +1972,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		invalidate_locations_in_rect(r);
 	}
 	scroll_event_.notify_observers();
-#ifdef SDL_GPU
-	screen_.clear_overlay();
-	invalidate_all();
-#else
 	update_rect(map_area());
-#endif
 
 	redrawMinimap_ = true;
 	return true;
@@ -2662,11 +2361,7 @@ void display::redraw_everything()
 	invalidateGameStatus_ = true;
 
 	reportRects_.clear();
-#ifdef SDL_GPU
-	reportImages_.clear();
-#else
 	reportSurfaces_.clear();
-#endif
 	reports_.clear();
 
 	bounds_check_position();
@@ -2852,7 +2547,6 @@ void display::draw_invalidated() {
 
 }
 
-//TODO: proper SDL_gpu implementation
 void display::draw_hex(const map_location& loc) {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
@@ -2868,19 +2562,6 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
 			get_terrain_images(loc,tod.id,image_type, FOREGROUND));
 
-#ifdef SDL_GPU
-		// Draw the grid, if that's been enabled
-		if(grid_ && on_map && !off_map_tile) {
-			static const image::locator grid_top(game_config::images::grid_top);
-			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
-				image::get_texture(grid_top, image::TOD_COLORED));
-			static const image::locator grid_bottom(game_config::images::grid_bottom);
-			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
-				image::get_texture(grid_bottom, image::TOD_COLORED));
-		}
-		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
-#else
 		// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
 			static const image::locator grid_top(game_config::images::grid_top);
@@ -2892,7 +2573,6 @@ void display::draw_hex(const map_location& loc) {
 		}
 		// village-control flags.
 		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
-#endif
 	}
 
 	if(!shrouded(loc)) {
@@ -2921,16 +2601,9 @@ void display::draw_hex(const map_location& loc) {
 					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 			{
 
-#ifdef SDL_GPU
-				const sdl::timage img = use_local_light
-					   ? image::get_lighted_texture(overlays.first->second.image, lt, image::SCALED_TO_HEX)
-					   : image::get_texture(overlays.first->second.image, image_type);
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, img);
-#else
 				const surface surf =
                         image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX);
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
-#endif
 			}
 		}
 	}
@@ -2938,15 +2611,6 @@ void display::draw_hex(const map_location& loc) {
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
-#ifdef SDL_GPU
-	if(!tod_hex_mask1.null() || !tod_hex_mask2.null()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
-	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
-			image::get_texture(tod_hex_mask,image::SCALED_TO_HEX));
-	}
-#else
 	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
@@ -2954,15 +2618,10 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
-#endif
 
 	// Paint mouseover overlays
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-#ifdef SDL_GPU
-			&& !mouseover_hex_overlay_.null()) {
-#else
 			&& mouseover_hex_overlay_ != nullptr) {
-#endif
 		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
 	}
 
@@ -2976,19 +2635,6 @@ void display::draw_hex(const map_location& loc) {
 
 	// Apply shroud, fog and linger overlay
 
-#ifdef SDL_GPU
-	if(shrouded(loc)) {
-		// We apply void also on off-map tiles
-		// to shroud the half-hexes too
-		const std::string& shroud_image = get_variant(shroud_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_texture(shroud_image, image_type));
-	} else if(fogged(loc)) {
-		const std::string& fog_image = get_variant(fog_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_texture(fog_image, image_type));
-	}
-#else
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
@@ -3000,7 +2646,6 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
 			image::get_image(fog_image, image_type));
 	}
-#endif
 
 	if(!shrouded(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
@@ -3020,13 +2665,8 @@ void display::draw_hex(const map_location& loc) {
 			} else {
 				off_y -= text->h / 2;
 			}
-#ifdef SDL_GPU
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(text));
-#else
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
-#endif
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
@@ -3039,24 +2679,14 @@ void display::draw_hex(const map_location& loc) {
 			if (!draw_coordinates_) {
 				off_y -= text->h / 2;
 			}
-#ifdef SDL_GPU
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(text));
-#else
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
-#endif
 		}
 	}
 
 	if(debug_foreground) {
-#ifdef SDL_GPU
-		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
-			image::get_texture("terrain/foreground.png", image_type));
-#else
 		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
 			image::get_image("terrain/foreground.png", image_type));
-#endif
 	}
 
 }
@@ -3069,17 +2699,6 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 
 }*/
 
-#ifdef SDL_GPU
-void display::draw_image_for_report(sdl::timage& img, SDL_Rect& rect)
-{
-	const float scale_factor = std::min(rect.w / img.base_width(), rect.h / img.base_height());
-	img.set_scale(scale_factor, scale_factor);
-	const int xpos = rect.x + (rect.w - img.width())/2;
-	const int ypos = rect.y + (rect.h - img.height())/2;
-
-	screen_.draw_texture(img, xpos, ypos);
-}
-#else
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
 	SDL_Rect visible_area = get_non_transparent_portion(img);
@@ -3112,7 +2731,6 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 		sdl_blit(img,nullptr,screen_.getSurface(),&target);
 	}
 }
-#endif
 
 /**
  * Redraws the specified report (if anything has changed).
@@ -3121,218 +2739,6 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
  */
 void display::refresh_report(std::string const &report_name, const config * new_cfg)
 {
-#ifdef SDL_GPU
-	const theme::status_item *item = theme_.get_status_item(report_name);
-	if (!item) {
-		reportImages_[report_name] = sdl::timage();
-		return;
-	}
-
-	// Now we will need the config. Generate one if needed.
-
-	boost::optional <events::mouse_handler &> mhb = boost::none;
-
-	if (resources::controller) {
-		mhb = resources::controller->get_mouse_handler_base();
-	}
-
-	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
-
-	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
-	if ( new_cfg == nullptr )
-		new_cfg = &generated_cfg;
-
-	SDL_Rect &rect = reportRects_[report_name];
-	const SDL_Rect &new_rect = item->location(screen_area());
-	sdl::timage &img = reportImages_[report_name];
-	config &report = reports_[report_name];
-
-	// Report and its location is unchanged since last time. Do nothing.
-	if (!img.null() && rect == new_rect && report == *new_cfg) {
-		return;
-	}
-
-	// Update the config in reports_.
-	report = *new_cfg;
-
-	if (!img.null()) {
-		screen_.draw_texture(img, rect.x, rect.y);
-	}
-
-	// If the rectangle has just changed, assign the surface to it
-	if (img.null() || new_rect != rect)
-	{
-		img = sdl::timage();
-		rect = new_rect;
-
-		// If the rectangle is present, and we are blitting text,
-		// then we need to backup the surface.
-		// (Images generally won't need backing up,
-		// unless they are transparent, but that is done later).
-		// TODO: handle this somehow for SDL_gpu
-		/*if (rect.w > 0 && rect.h > 0) {
-			img.assign(get_surface_portion(screen_.getSurface(), rect));
-			if (reportSurfaces_[report_name] == nullptr) {
-				ERR_DP << "Could not backup background for report!" << std::endl;
-			}
-		}
-		update_rect(rect);*/
-	}
-
-	tooltips::clear_tooltips(rect);
-	draw_panel_image(&rect);
-
-	if (report.empty()) return;
-
-	int x = rect.x, y = rect.y;
-
-	// Add prefix, postfix elements.
-	// Make sure that they get the same tooltip
-	// as the guys around them.
-	std::string str = item->prefix();
-	if (!str.empty()) {
-		config &e = report.add_child_at("element", config(), 0);
-		e["text"] = str;
-		e["tooltip"] = report.child("element")["tooltip"];
-	}
-	str = item->postfix();
-	if (!str.empty()) {
-		config &e = report.add_child("element");
-		e["text"] = str;
-		e["tooltip"] = report.child("element", -1)["tooltip"];
-	}
-
-	// Loop through and display each report element.
-	int tallest = 0;
-	int image_count = 0;
-	bool used_ellipsis = false;
-	std::ostringstream ellipsis_tooltip;
-	SDL_Rect ellipsis_area = rect;
-
-	for (config::const_child_itors elements = report.child_range("element");
-	     elements.first != elements.second; ++elements.first)
-	{
-		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
-		if (area.h <= 0) break;
-
-		std::string t = (*elements.first)["text"];
-		if (!t.empty())
-		{
-			if (used_ellipsis) goto skip_element;
-
-			// Draw a text element.
-			font::ttext text;
-			if (item->font_rgb_set()) {
-				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
-				// layout instead of 0xRRGGBBAA which is what ttext expects,
-				// so shift the value to the left and add fully-opaque alpha.
-				text.set_foreground_color((item->font_rgb() << 8) + 0xFF);
-			}
-			bool eol = false;
-			if (t[t.size() - 1] == '\n') {
-				eol = true;
-				t = t.substr(0, t.size() - 1);
-			}
-			text.set_font_size(item->font_size());
-			text.set_text(t, true);
-			text.set_maximum_width(area.w);
-			text.set_maximum_height(area.h, false);
-			sdl::timage text_img = text.render_as_texture();
-
-			// check if next element is text with almost no space to show it
-			const int minimal_text = 12; // width in pixels
-			config::const_child_iterator ee = elements.first;
-			if (!eol && rect.w - (x - rect.x + text_img.width()) < minimal_text &&
-			    ++ee != elements.second && !(*ee)["text"].empty())
-			{
-				// make this element longer to trigger rendering of ellipsis
-				// (to indicate that next elements have not enough space)
-				//NOTE this space should be longer than minimal_text pixels
-				t = t + "    ";
-				text.set_text(t, true);
-				text_img = text.render_as_texture();
-				// use the area of this element for next tooltips
-				used_ellipsis = true;
-				ellipsis_area.x = x;
-				ellipsis_area.y = y;
-				ellipsis_area.w = text_img.width();
-				ellipsis_area.h = text_img.height();
-			}
-
-			screen_.draw_texture(text_img, x, y);
-			area.w = text_img.width();
-			area.h = text_img.height();
-			if (area.h > tallest) {
-				tallest = area.h;
-			}
-			if (eol) {
-				x = rect.x;
-				y += tallest;
-				tallest = 0;
-			} else {
-				x += area.w;
-			}
-		}
-		else if (!(t = (*elements.first)["image"].str()).empty())
-		{
-			if (used_ellipsis) goto skip_element;
-
-			// Draw an image element.
-			sdl::timage image(image::get_texture(t));
-
-			if (image.null()) {
-				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
-				continue;
-			}
-
-			if (area.w < image.width() && image_count) {
-				// We have more than one image, and this one doesn't fit.
-				image = image::get_texture(game_config::images::ellipsis);
-				used_ellipsis = true;
-			}
-
-			if (image.width() < area.w) area.w = image.width();
-			if (image.height() < area.h) area.h = image.height();
-			draw_image_for_report(image, area);
-
-			++image_count;
-			if (area.h > tallest) {
-				tallest = area.h;
-			}
-
-			if (!used_ellipsis) {
-				x += area.w;
-			} else {
-				ellipsis_area = area;
-			}
-		}
-		else
-		{
-			// No text nor image, skip this element
-			continue;
-		}
-
-		skip_element:
-		t = (*elements.first)["tooltip"].t_str().base_str();
-		if (!t.empty()) {
-			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, (*elements.first)["help"].t_str().base_str());
-			} else {
-				// Collect all tooltips for the ellipsis.
-				// TODO: need a better separator
-				// TODO: assign an action
-				ellipsis_tooltip << t;
-				config::const_child_iterator ee = elements.first;
-				if (++ee != elements.second)
-					ellipsis_tooltip << "\n  _________\n\n";
-			}
-		}
-	}
-
-	if (used_ellipsis) {
-		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
-	}
-#else
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
 		reportSurfaces_[report_name].assign(nullptr);
@@ -3542,7 +2948,6 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	if (used_ellipsis) {
 		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
 	}
-#endif
 }
 
 void display::invalidate_all()

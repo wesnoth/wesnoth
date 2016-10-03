@@ -28,7 +28,6 @@
 #include "sdl/rect.hpp"
 #include "sdl/window.hpp"
 #include "video.hpp"
-#include "sdl/gpu.hpp"
 #include "display.hpp"
 
 #include <vector>
@@ -44,17 +43,11 @@ static lg::log_domain log_display("display");
 CVideo* CVideo::singleton_ = nullptr;
 
 namespace {
-#ifdef SDL_GPU
-	GPU_Target *render_target_;
-#endif
 }
 
 static unsigned int get_flags(unsigned int flags)
 {
 	/* The wanted flags for the render need to be evaluated for SDL2. */
-#ifdef SDL_GPU
-	flags |= SDL_OPENGLBLIT;
-#endif
 
 	flags |= SDL_WINDOW_RESIZABLE;
 
@@ -120,12 +113,6 @@ bool CVideo::non_interactive()
 }
 
 
-#ifdef SDL_GPU
-GPU_Target *get_render_target()
-{
-	return render_target_;
-}
-#endif
 
 surface& get_video_surface()
 {
@@ -214,9 +201,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 
 CVideo::CVideo(FAKE_TYPES type) :
 	window(),
-#ifdef SDL_GPU
-	shader_(),
-#endif
 	mode_changed_(false),
 	fake_screen_(false),
 	help_string_(0),
@@ -241,43 +225,14 @@ CVideo::CVideo(FAKE_TYPES type) :
 
 void CVideo::initSDL()
 {
-#ifdef SDL_GPU
-	//800x600 is a dummy value, the actual resolution is set in setMode
-	render_target_ = GPU_Init(800, 600, GPU_DEFAULT_INIT_FLAGS);
-
-	if(render_target_ == nullptr) {
-		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
-		throw CVideo::error();
-	}
-
-	const std::string vertex_src = game_config::path + "/data/shaders/default.vert";
-	const std::string frag_src = game_config::path + "/data/shaders/default.frag";
-	shader_ = sdl::shader_program(vertex_src, frag_src);
-	shader_.activate();
-#else
 	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << std::endl;
 		throw CVideo::error();
 	}
-#endif
 }
 
-#ifdef SDL_GPU
-void CVideo::update_overlay(SDL_Rect *rect)
-{
-	sdl::timage img(overlay_);
-	shader_.set_overlay(img);
-
-	// Re-render the appropriate screen area so that overlay change is visible
-	static sdl::timage empty(image::get_texture("images/misc/blank.png"));
-	SDL_Rect whole = sdl::create_rect(0, 0, overlay_->w, overlay_->h);
-	SDL_Rect *r = rect == nullptr ? &whole : rect;
-	empty.set_scale(float(r->w) / empty.base_width(), float(r->h) / empty.base_height());
-	draw_texture(empty, r->x, r->y);
-}
-#endif
 
 CVideo::~CVideo()
 {
@@ -297,61 +252,6 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	sdl_blit(surf,srcrect,target,&dst);
 }
 
-#ifdef SDL_GPU
-GPU_Target *CVideo::render_target() const
-{
-	return render_target_;
-}
-
-void CVideo::draw_texture(sdl::timage &texture, int x, int y)
-{
-	texture.draw(*this, x, y);
-}
-
-void CVideo::set_texture_color_modulation(int r, int g, int b, int a)
-{
-	shader_.set_color_mod(r, g, b, a);
-}
-
-void CVideo::set_texture_submerge(float f)
-{
-	shader_.set_submerge(f);
-}
-
-void CVideo::set_texture_effects(int effects)
-{
-	shader_.set_effects(effects);
-}
-
-void CVideo::blit_to_overlay(surface surf, int x, int y)
-{
-	if (x < 0 || y < 0 || x > overlay_->w || y > overlay_->h) {
-		return;
-	}
-	SDL_Rect r = sdl::create_rect(x, y, surf->w, surf->h);
-	SDL_BlitSurface(surf, nullptr, overlay_, &r);
-	update_overlay(&r);
-}
-
-void CVideo::clear_overlay_area(SDL_Rect area)
-{
-	const Uint32 color = SDL_MapRGBA(overlay_->format, 0, 0, 0, 0);
-	Uint32 *pixels = static_cast<Uint32*>(overlay_->pixels);
-	for (int x = area.x; x<area.x + area.w; ++x) {
-		for (int y = area.y; y<area.y +area.h; ++y) {
-			const int index = y * (area.w + overlay_->pitch) + x;
-			pixels[index] = color;
-		}
-	}
-	update_overlay(&area);
-}
-
-void CVideo::clear_overlay()
-{
-	overlay_ = create_compatible_surface(overlay_, getx(), gety());
-	update_overlay();
-}
-#endif
 
 void CVideo::make_fake()
 {
@@ -472,20 +372,12 @@ bool CVideo::modeChanged()
 
 int CVideo::getx() const
 {
-#ifdef SDL_GPU
-	return GPU_GetContextTarget()->w;
-#else
 	return frameBuffer->w;
-#endif
 }
 
 int CVideo::gety() const
 {
-#ifdef SDL_GPU
-	return GPU_GetContextTarget()->h;
-#else
 	return frameBuffer->h;
-#endif
 }
 
 void CVideo::delay(unsigned int milliseconds)
@@ -498,13 +390,8 @@ void CVideo::flip()
 {
 	if(fake_screen_ || flip_locked_ > 0)
 		return;
-#ifdef SDL_GPU
-	assert(render_target_);
-	GPU_Flip(render_target_);
-#else
 	if (window)
 		window->render();
-#endif
 }
 
 void CVideo::lock_updates(bool value)

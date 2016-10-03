@@ -23,17 +23,10 @@ class team;
 struct map_location;
 class gamemap;
 
-#ifdef SDL_GPU
-class CVideo;
-struct SDL_Rect;
-#endif
 
 namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-#ifdef SDL_GPU
-	SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr);
-#endif
 	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr);
 }
 

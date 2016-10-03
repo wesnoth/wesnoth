@@ -67,11 +67,7 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.r = (0x00FF0000 & rgb )>> 16;
 	result.g = (0x0000FF00 & rgb) >> 8;
 	result.b = (0x000000FF & rgb);
-#ifdef SDL_GPU
-	result.unused = SDL_ALPHA_OPAQUE;
-#else
 	result.a = SDL_ALPHA_OPAQUE;
-#endif
 	return result;
 }
 

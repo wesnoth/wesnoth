@@ -25,11 +25,6 @@
 
 #include <SDL_rect.h>
 
-#ifdef SDL_GPU
-#include "gpu.hpp"
-
-class CVideo;
-#endif
 
 namespace sdl
 {
@@ -44,10 +39,6 @@ extern const SDL_Rect empty_rect;
  */
 SDL_Rect create_rect(const int x, const int y, const int w, const int h);
 
-#ifdef SDL_GPU
-GPU_Rect create_gpu_rect(const float x, const float y, const float w,
-						 const float h);
-#endif
 /**
  * Tests whether a point is inside a rectangle.
  *
@@ -145,17 +136,6 @@ inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 	SDL_FillRect(dst, dst_rect, color);
 }
 
-#ifdef SDL_GPU
-void fill_rect(CVideo &video, const SDL_Rect &rect, SDL_Color color);
-
-void fill_rect(CVideo &video, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a = SDL_ALPHA_OPAQUE);
-
-void draw_rect(CVideo &video, const SDL_Rect &rect, SDL_Color color);
-
-void draw_rect(CVideo &video, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a = SDL_ALPHA_OPAQUE);
-#endif
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);

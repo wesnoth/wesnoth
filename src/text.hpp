@@ -28,10 +28,6 @@
 
 #include "sdl/image.hpp"
 
-#ifdef SDL_GPU
-#include "sdl/gpu.hpp"
-#include "sdl/image.hpp"
-#endif
 
 struct language_def;
 
@@ -80,15 +76,6 @@ public:
 	 */
 	surface render() const;
 
-#ifdef SDL_GPU
-	/**
-	 * Returns the rendered text as a texture.
-	 *
-	 * Before rendering it tests whether a redraw is needed and if so it first
-	 * redraws the texture before returning it.
-	 */
-	sdl::timage render_as_texture() const;
-#endif
 
 	/** Returns the width needed for the text. */
 	int get_width() const;
@@ -256,9 +243,6 @@ private:
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
 
-#ifdef SDL_GPU
-	mutable sdl::timage texture_;
-#endif
 
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;

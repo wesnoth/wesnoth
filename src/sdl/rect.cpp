@@ -15,9 +15,6 @@
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 
-#ifdef SDL_GPU
-#include "video.hpp"
-#endif
 
 namespace sdl
 {
@@ -34,14 +31,6 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 	return rect;
 }
 
-#ifdef SDL_GPU
-GPU_Rect create_gpu_rect(const float x, const float y, const float w, const float h)
-{
-	GPU_Rect result = {x, y, w, h};
-
-	return result;
-}
-#endif
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
@@ -124,39 +113,6 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
-#ifdef SDL_GPU
-void draw_rect(CVideo &video, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	SDL_Color color = {r, g, b, a};
-	GPU_Rectangle(video.render_target(), rect.x, rect.y, rect.x + rect.w, rect.y + rect.h,
-				  color);
-}
-
-void draw_rect(CVideo &video, const SDL_Rect &rect, SDL_Color color)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	GPU_Rectangle(video.render_target(), rect.x, rect.y, rect.x + rect.w, rect.y + rect.h,
-				  color);
-}
-
-void fill_rect(CVideo &video, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	SDL_Color color = {r, g, b, a};
-	GPU_RectangleFilled(video.render_target(), rect.x, rect.y, rect.x + rect.w,
-						rect.y + rect.h, color);
-}
-
-void fill_rect(CVideo &video, const SDL_Rect &rect, SDL_Color color)
-{
-	video.set_texture_color_modulation(0, 0, 0, 0);
-	GPU_RectangleFilled(video.render_target(), rect.x, rect.y, rect.x + rect.w,
-						rect.y + rect.h, color);
-}
-#endif
 
 } // namespace sdl
 
