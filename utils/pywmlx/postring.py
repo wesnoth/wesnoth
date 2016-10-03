@@ -1,15 +1,33 @@
 import re
 
+# remember... I ised PoCommentedStringML instead of PoCommentedStringML... don't know if something remained in other files
+
+class PoCommentedStringPL:
+    def __init__(self, value, *, ismultiline=False):
+        self.value = value
+        self.ismultiline = ismultiline
+
+
+
 class PoCommentedString:
     def __init__(self, sentence, *, orderid, ismultiline, 
-                 wmlinfos, finfos, addedinfos):
+                 wmlinfos, finfos, addedinfos, plural=None):
         self.sentence = sentence
         self.wmlinfos = wmlinfos
         self.addedinfos = addedinfos
         self.finfos = finfos
         self.orderid = orderid
         self.ismultiline = ismultiline
+        self.plural = None
+        if isinstance(plural, PoCommentedStringPL):
+            self.plural = plural
         
+    def set_plural(self, plural_value, *, ismultiline=False):
+        # add_plural is a safe way to add a plural form into a sentence
+        # if plural form is still stored, no plural form is added
+        if self.plural is None:
+            self.plural = PoCommentedStringPL(plural_value, ismultiline)
+            
     def update_orderid(self, orderid):
         if orderid < self.orderid:
             self.orderid = orderid
@@ -22,9 +40,11 @@ class PoCommentedString:
             self.addedinfos += commented_string.addedinfos
         self.finfos += commented_string.finfos
         self.update_orderid(commented_string.orderid)
-        # if commented_string.orderid < self.orderid:
-        #     self.orderid = commented_string.orderid
-        #     self.sentence = commented_string.sentence
+        # update plural value only if current sentence actually don't have
+        # a plural form and only if the 
+        if self.plural is None and isinstance(commented_string.plural,
+                                              PoCommentedStringPL):
+            self.plural = commented_string.plural
             
     def write(self, filebuf, fuzzy):
         if self.wmlinfos is not None:
@@ -44,13 +64,19 @@ class PoCommentedString:
             self.sentence = re.sub(r'(\n\r|\r\n|[\n\r])', lf, self.sentence)
             self.sentence = '""\n' + self.sentence
         print('msgid', self.sentence, file=filebuf)
-        print('msgstr ""', file=filebuf)
+        if self.plural is None:
+            print('msgstr ""', file=filebuf)
+        else:
+            # self.plural must be an instance of PoCommentedStringPL
+            print('msgid_plural', self.plural.value, file=filebuf)
+            print('msgstr[0] ""', file=filebuf)
+            print('msgstr[1] ""', file=filebuf)
 
 
-
+# Also nodesentence use PoCommentedStringPL for 'plural' parameter
 class WmlNodeSentence:
     def __init__(self, sentence, *, ismultiline, lineno, lineno_sub=0,
-                 override=None, addition=None):
+                 plural=None, override=None, addition=None):
         self.sentence = sentence
         # Say if it is multiline or not.
         self.ismultiline = ismultiline
@@ -72,7 +98,18 @@ class WmlNodeSentence:
         # list will contains custom comment that will be added at the
         # end of translator's comment list.
         self.addedinfo = addition
-        if addition is None: self.addedinfo = []
+        if addition is None: 
+            self.addedinfo = []
+        # plural forms (if any) will be stored in WmlNodeSentence 
+        self.plural = None
+        if isinstance(plural, PoCommentedStringPL):
+            self.plural = plural
+    
+    def set_plural(self, plural_value, *, ismultiline=False):
+        # add_plural is a safe way to add a plural form into a sentence
+        # if plural form is still stored, no plural form is added
+        if self.plural is None:
+            self.plural = PoCommentedStringPL(plural_value, ismultiline)
 
 
 
@@ -86,13 +123,37 @@ class WmlNode:
         self.autowml = autowml
     
     def add_sentence(self, sentence, *, ismultiline, lineno, 
-                     lineno_sub=0, override=None, addition=None):
+                     lineno_sub=0, plural=None, override=None, addition=None):
         if self.sentences is None:
             self.sentences = []
+        # 'plural' parameter accepted by WmlNode.add_sentence can be:
+        #     1) A string
+        #     2) A tuple of two values (string, bool)
+        #     3) An actual PoCommentedStringPL object
+        # This is why we need to add an extra variable here (plural_value)
+        # wich will store an PoCommentedStringPL object (or will be None)
+        plural_value = None 
+        if plural is not None:
+            if isinstance(plural, str):
+                plural_value = PoCommentedStringPL(plural)
+            elif isinstance(plural, tuple) or isinstance(plural, list):
+                if len(plural) == 2:
+                    if(isinstance(plural[0], str) and 
+                          isinstance(plural[1], bool)):
+                        plural_value = PoCommentedStringPL(plural[0],
+                                                           plural[1])
+                    elif(isinstance(plural[0], bool) and 
+                          isinstance(plural[1], str)):
+                        plural_value = PoCommentedStringPL(plural[1],
+                                                           plural[0])
+            elif isinstance(plural, PoCommentedStringPL):
+                plural_value = plural
+                plural = None
         self.sentences.append( WmlNodeSentence(sentence, 
                                           ismultiline=ismultiline, 
                                           lineno=lineno, 
-                                          lineno_sub=lineno_sub, 
+                                          lineno_sub=lineno_sub,
+                                          plural=plural_value,
                                           override=override, 
                                           addition=addition) ) 
         
@@ -139,7 +200,8 @@ class WmlNode:
                                wmlinfos=[],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=nodesentence.addedinfo)
+                               addedinfos=nodesentence.addedinfo,
+                               plural=nodesentence.plural )
                 else:
                     return PoCommentedString(nodesentence.sentence, 
                                ismultiline=nodesentence.ismultiline, 
@@ -147,7 +209,8 @@ class WmlNode:
                                wmlinfos=[],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=[])
+                               addedinfos=[],
+                               plural=nodesentence.plural )
             else: # having a non-empty override
                 if(nodesentence.addedinfo is not None and 
                               nodesentence.addedinfo != ""):
@@ -157,7 +220,8 @@ class WmlNode:
                                wmlinfos=[nodesentence.overrideinfo],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=nodesentence.addedinfo)
+                               addedinfos=nodesentence.addedinfo,
+                               plural=nodesentence.plural )
                 else:
                     return PoCommentedString(nodesentence.sentence, 
                                ismultiline=nodesentence.ismultiline, 
@@ -165,7 +229,8 @@ class WmlNode:
                                wmlinfos=[nodesentence.overrideinfo],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=[])
+                               addedinfos=[],
+                               plural=nodesentence.plural )
         # if you don't have override and autowml is true 
         #  --> wmlinfos will be always added
         elif self.autowml == True:
@@ -177,7 +242,8 @@ class WmlNode:
                                wmlinfos=[self.assemble_wmlinfo()],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=nodesentence.addedinfo)
+                               addedinfos=nodesentence.addedinfo,
+                               plural=nodesentence.plural )
             else:
                 return PoCommentedString(nodesentence.sentence, 
                                ismultiline=nodesentence.ismultiline, 
@@ -185,7 +251,8 @@ class WmlNode:
                                wmlinfos=[self.assemble_wmlinfo()], 
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=[])
+                               addedinfos=[],
+                               plural=nodesentence.plural )
         # if you don't have override and autowml is false 
         #  --> wmlinfos will never added
         else:
@@ -197,7 +264,8 @@ class WmlNode:
                                wmlinfos=[],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=nodesentence.addedinfo)
+                               addedinfos=nodesentence.addedinfo,
+                               plural=nodesentence.plural )
             else:
                 return PoCommentedString(nodesentence.sentence, 
                                ismultiline=nodesentence.ismultiline, 
@@ -205,5 +273,6 @@ class WmlNode:
                                wml_infos=[],
                                finfos=[self.fileref + 
                                         str(nodesentence.lineno)],
-                               addedinfos=[])
+                               addedinfos=[],
+                               plural=nodesentence.plural )
 

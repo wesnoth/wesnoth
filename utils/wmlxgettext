@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-# encoding: utf-8
+
+
+# encoding: utf8
 #
 # wmlxgettext -- generate a blank .pot file for official campaigns translations
 #                    (build tool for wesnoth core)
@@ -47,6 +49,11 @@ def commandline(args):
                    [--package-version=PACKAGE_VERSION]
                    [--no-text-colors] [--fuzzy] [--warnall] [-o OUTPUT_FILE]
                    FILE1 FILE2 ... FILEN'''
+    )
+    parser.add_argument(
+        '--version',
+        action='version',
+        version='wmlxgettext 2016.10.03.py3'
     )
     parser.add_argument(
         '-o',
@@ -123,6 +130,15 @@ def commandline(args):
               "ignored.") 
     )
     parser.add_argument(
+        '--DMode',
+        action='store_true',
+        dest='debugmode',
+        default=False,
+        help=("DON'T USE THIS OPTION. It is reserved to test how wmlxgettext "
+              "internally works. If this option is enabled, an extra "
+              "file (debug.txt) will be created. ")
+    )
+    parser.add_argument(
         'filelist',
         help='List of WML/lua files of your UMC (source files)',
         nargs='*'
@@ -139,8 +155,11 @@ def main():
     startPath = os.path.realpath(os.path.normpath(args.start_path))
     sentlist = dict()
     fileno = 0
+    fdebug = None
+    if args.debugmode:
+        fdebug = open('debug.txt', 'w', encoding='utf-8')
     pywmlx.statemachine.setup(sentlist, args.initdom, args.domain, 
-                              args.warnall)
+                              args.warnall, fdebug)
     if args.warnall is True and args.outfile is None:
         pywmlx.wmlwarn('command line warning', 'Writing the output to stdout '
                        '(and then eventually redirect that output to a file) '
@@ -231,6 +250,8 @@ def main():
         print('', file=outfile)
     if args.outfile is not None:
         outfile.close()
+    if args.debugmode:
+        fdebug.close()
 
 
 
