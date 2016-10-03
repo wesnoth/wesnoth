@@ -42,6 +42,7 @@
 #include "reports.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "floating_label.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

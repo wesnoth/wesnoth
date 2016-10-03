@@ -19,7 +19,6 @@
 #include "context_manager.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
-#include "filechooser.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
@@ -35,6 +34,7 @@
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -190,9 +190,14 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_.video(), fn, _("Choose a File to Open"));
-	if (res == 0) {
-		load_map(fn, !force_same_context);
+
+	gui2::tfile_dialog dlg;
+
+	dlg.set_title(_("Choose a File to Open"))
+	   .set_path(fn);
+
+	if(dlg.show(gui_.video())) {
+		load_map(dlg.path(), !force_same_context);
 	}
 }
 
@@ -444,10 +449,15 @@ void context_manager::apply_mask_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_.video(), fn, _("Choose a Mask to Apply"));
-	if (res == 0) {
+
+	gui2::tfile_dialog dlg;
+
+	dlg.set_title(_("Choose a Mask to Apply"))
+	   .set_path(fn);
+
+	if(dlg.show(gui_.video())) {
 		try {
-			map_context mask(game_config_, fn, gui_);
+			map_context mask(game_config_, dlg.path(), gui_);
 			editor_action_apply_mask a(mask.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
@@ -481,10 +491,15 @@ void context_manager::create_mask_to_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_.video(), fn, _("Choose Target Map"));
-	if (res == 0) {
+
+	gui2::tfile_dialog dlg;
+
+	dlg.set_title(_("Choose Target Map"))
+	   .set_path(fn);
+
+	if(dlg.show(gui_.video())) {
 		try {
-			map_context map(game_config_, fn, gui_);
+			map_context map(game_config_, dlg.path(), gui_);
 			editor_action_create_mask a(map.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
@@ -605,10 +620,20 @@ void context_manager::save_map_as_dialog()
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		int res = dialogs::show_file_chooser_dialog_save(gui_.video(), input_name, _("Save the Map As"), ".map");
-		if (res == 0) {
+
+		gui2::tfile_dialog dlg;
+
+		dlg.set_title(_("Save the Map As"))
+		   .set_ok_label(_("Save"))
+		   .set_save_mode(true)
+		   .set_path(input_name)
+		   .set_extension(".map");
+
+		if(dlg.show(gui_.video())) {
+			input_name = dlg.path();
+
 			if (filesystem::file_exists(input_name)) {
-				res = gui2::show_message(gui_.video(), "",
+				int res = gui2::show_message(gui_.video(), "",
 						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {
@@ -633,10 +658,20 @@ void context_manager::save_scenario_as_dialog()
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		int res = dialogs::show_file_chooser_dialog_save(gui_.video(), input_name, _("Save the Scenario As"), ".cfg");
-		if (res == 0) {
+
+		gui2::tfile_dialog dlg;
+
+		dlg.set_title(_("Save the Scenario As"))
+		   .set_ok_label(_("Save"))
+		   .set_save_mode(true)
+		   .set_path(input_name)
+		   .set_extension(".cfg");
+
+		if(dlg.show(gui_.video())) {
+			input_name = dlg.path();
+
 			if (filesystem::file_exists(input_name)) {
-				res = gui2::show_message(gui_.video(), "",
+				int res = gui2::show_message(gui_.video(), "",
 						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {

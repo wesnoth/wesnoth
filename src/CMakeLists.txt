@@ -726,7 +726,6 @@ set(wesnoth-main_SRC
 	editor/map/context_manager.cpp
 	fake_unit_manager.cpp
 	fake_unit_ptr.cpp
-	filechooser.cpp
 	filesystem_sdl.cpp
 	game_initialization/flg_manager.cpp
 	floating_textbox.cpp
@@ -1026,7 +1025,6 @@ set(libwesnoth-game_STAT_SRC
 	video.cpp
 	theme.cpp
 	widgets/button.cpp
-	widgets/file_menu.cpp
 	widgets/label.cpp
 	widgets/menu.cpp
 	widgets/menu_style.cpp
