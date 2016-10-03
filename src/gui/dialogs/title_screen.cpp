@@ -426,7 +426,7 @@ void ttitle_screen::pre_show(twindow& window)
 			if(game_.change_language()) {
 				t_string::reset_translations();
 				image::flush_cache();
-				on_resize();
+				on_resize(window);
 			}
 		} catch(std::runtime_error& e) {
 			gui2::show_error_message(game_.video(), e.what());
