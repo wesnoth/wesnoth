@@ -85,7 +85,7 @@ void music_track::resolve()
 	}
 
 
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
+#if !defined(_WIN32) && !defined(__APPLE__)
 	if (title_.empty()) {
 		FILE* f;
 		f = fopen(file_path_.c_str(), "r");
