@@ -17,23 +17,24 @@
 #include "gui/dialogs/title_screen.hpp"
 
 #include "addon/manager_ui.hpp"
+#include "formatter.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
+#include "game_launcher.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/core/tips.hpp"
+#include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
-#include "game_config_manager.hpp"
-#include "gui/dialogs/core_selection.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
-#include "gui/dialogs/message.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tip.hpp"
@@ -45,19 +46,16 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "video.hpp"
 
 #include "utils/functional.hpp"
-#include "game_launcher.hpp"
 
 #include <algorithm>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
-
-static lg::log_domain log_general("general");
-#define ERR_GEN LOG_STREAM(err, log_general)
 
 namespace gui2
 {
@@ -133,8 +131,13 @@ REGISTER_DIALOG(title_screen)
 
 bool show_debug_clock_button = false;
 
-ttitle_screen::ttitle_screen(game_launcher& game) : game_(game), redraw_background_(true), debug_clock_(nullptr)
+ttitle_screen::ttitle_screen(game_launcher& game)
+	: game_(game)
+	, redraw_background_(true)
+	, debug_clock_(nullptr)
 {
+	set_restore(false);
+
 	// Need to set this in the constructor, pre_show() / post_build() is too late
 	set_allow_plugin_skip(false);
 }
@@ -154,68 +157,53 @@ static void register_button(twindow& window, const std::string& id, hotkey::HOTK
 			return true;
 		});
 	}
-	event::connect_signal_mouse_left_click(find_widget<tbutton>(&window, id, false), [callback](event::tdispatcher& win, event::tevent, bool&, bool&) {
-		callback(dynamic_cast<twindow&>(win));
-	});
+
+	event::connect_signal_mouse_left_click(find_widget<tbutton>(&window, id, false),
+		[callback](event::tdispatcher& win, event::tevent, bool&, bool&) { callback(dynamic_cast<twindow&>(win)); });
 }
 
 static bool fullscreen(CVideo& video)
 {
 	video.set_fullscreen(!preferences::fullscreen());
-
 	return true;
 }
 
-static bool launch_lua_console(twindow & window)
+static bool launch_lua_console(twindow& window)
 {
 	gui2::tlua_interpreter::display(window.video(), gui2::tlua_interpreter::APP);
 	return true;
 }
 
-void ttitle_screen::post_build(twindow& window)
-{
-	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
-		dynamic_cast<twindow&>(win).set_retval(RELOAD_GAME_DATA);
-		return true;
-	});
-
-	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-			std::bind(fullscreen, std::ref(window.video())));
-
-	window.register_hotkey(
-			hotkey::LUA_CONSOLE,
-			std::bind(&launch_lua_console, std::ref(window)));
-}
-
 #ifdef DEBUG_TOOLTIP
-static void
-debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
+/*
+ * This function is used to test the tooltip placement algorithms as
+ * described in the »Tooltip placement« section in the GUI2 design
+ * document.
+ *
+ * Use a 1024 x 768 screen size, set the maximum loop iteration to:
+ * - 0   to test with a normal tooltip placement.
+ * - 30  to test with a larger normal tooltip placement.
+ * - 60  to test with a huge tooltip placement.
+ * - 150 to test with a borderline to insanely huge tooltip placement.
+ * - 180 to test with an insanely huge tooltip placement.
+ */
+static void debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
 {
 	std::string message = "Hello world.";
-	/*
-	 * This function is used to test the tooltip placement algorithms as
-	 * described in the »Tooltip placement« section in the GUI2 design
-	 * document.
-	 *
-	 * Use a 1024 x 768 screen size, set the maximum loop iteration to:
-	 * - 0  to test with a normal tooltip placement.
-	 * - 30 to test with a larger normal tooltip placement.
-	 * - 60 to test with a huge tooltip placement.
-	 * - 150 to test with a borderline to insanely huge tooltip placement.
-	 * - 180 to test with an insanely huge tooltip placement.
-	 */
+
 	for(int i = 0; i < 0; ++i) {
 		message += " More greetings.";
 	}
+
 	gui2::tip::remove();
 	gui2::tip::show(window.video(), "tooltip", message, coordinate);
+
 	handled = true;
 }
 #endif
 
 void ttitle_screen::pre_show(twindow& window)
 {
-	set_restore(false);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
@@ -229,17 +217,51 @@ void ttitle_screen::pre_show(twindow& window)
 			event::tdispatcher::front_child);
 #endif
 
-	/**** Set the version number ****/
-	if(tcontrol* control
-	   = find_widget<tcontrol>(&window, "revision_number", false, false)) {
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&ttitle_screen::on_resize, this, std::ref(window)));
 
-		control->set_label(_("Version") + std::string(" ") + game_config::revision);
+	//
+	// General hotkeys
+	//
+	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
+		dynamic_cast<twindow&>(win).set_retval(RELOAD_GAME_DATA);
+		return true;
+	});
+
+	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(window.video())));
+	window.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console, std::ref(window)));
+
+	//
+	// Background and logo images
+	//
+	if(game_config::images::game_title.empty()) {
+		ERR_CF << "No title image defined" << std::endl;
+	} else {
+		window.canvas()[0].set_variable("title_image", variant(game_config::images::game_title));
 	}
-	window.canvas()[0].set_variable(
-			"revision_number",
-			variant(_("Version") + std::string(" ") + game_config::revision));
 
-	/**** Set the tip of the day ****/
+	if(game_config::images::game_title_background.empty()) {
+		ERR_CF << "No title background image defined" << std::endl;
+	} else {
+		window.canvas()[0].set_variable("background_image", variant(game_config::images::game_title_background));
+	}
+
+	find_widget<timage>(&window, "logo-bg", false).set_image(game_config::images::game_logo_background);
+	find_widget<timage>(&window, "logo", false).set_image(game_config::images::game_logo);
+
+	//
+	// Version string
+	//
+	const std::string version_string = formatter() << ("Version") << " " << game_config::revision;
+
+	if(tlabel* version_label = find_widget<tlabel>(&window, "revision_number", false, false)) {
+		version_label->set_label(version_string);
+	}
+
+	window.canvas()[0].set_variable("revision_number", variant(version_string));
+
+	//
+	// Tip-of-the-day browser
+	//
 	tmulti_page& tip_pages = find_widget<tmulti_page>(&window, "tips", false);
 
 	std::vector<ttip> tips(settings::get_tips());
@@ -247,19 +269,17 @@ void ttitle_screen::pre_show(twindow& window)
 		WRN_CF << "There are not tips of day available." << std::endl;
 	}
 
-	for(const auto & tip : tips)
-	{
-
+	for(const auto& tip : tips)	{
 		string_map widget;
 		std::map<std::string, string_map> page;
 
-		widget["label"] = tip.text();
 		widget["use_markup"] = "true";
-		page["tip"] = widget;
+
+		widget["label"] = tip.text();
+		page.emplace("tip", widget);
 
 		widget["label"] = tip.source();
-		widget["use_markup"] = "true";
-		page["source"] = widget;
+		page.emplace("source", widget);
 
 		tip_pages.add_page(page);
 	}
@@ -270,73 +290,40 @@ void ttitle_screen::pre_show(twindow& window)
 		std::bind(&ttitle_screen::update_tip, this, std::ref(window), true));
 	register_button(window, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&ttitle_screen::update_tip, this, std::ref(window), false));
+
+	//
+	// Help
+	//
 	register_button(window, "help", hotkey::HOTKEY_HELP, [this](twindow&) {
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help(game_.video());
 	});
 
-	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined" << std::endl;
-	} else {
-		window.canvas()[0].set_variable(
-				"title_image", variant(game_config::images::game_title));
-	}
+	//
+	// About
+	//
+	register_button(window, "about", hotkey::HOTKEY_NULL, std::bind(&tgame_version::display, std::ref(window.video())));
 
-	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined" << std::endl;
-	} else {
-		window.canvas()[0].set_variable(
-				"background_image",
-				variant(game_config::images::game_title_background));
-	}
-
-	/***** Logo *****/
-	find_widget<timage>(&window, "logo-bg", false).set_image(game_config::images::game_logo_background);
-
-	find_widget<timage>(&window, "logo", false).set_image(game_config::images::game_logo);
-
-	/***** About dialog button *****/
-	register_button(window, "about", hotkey::HOTKEY_NULL,
-			std::bind(&tgame_version::display, std::ref(window.video())));
-
-	/***** Set the clock button. *****/
-	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
-	clock.set_visible(show_debug_clock_button ? twidget::tvisible::visible
-											  : twidget::tvisible::invisible);
-	register_button(window, "clock", hotkey::HOTKEY_NULL,
-			std::bind(&ttitle_screen::show_debug_clock_window,
-						this,
-						std::ref(window.video())));
-
-	/***** Main menu buttons *****/
+	//
+	// Tutorial
+	//
 	register_button(window, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this](twindow& window) {
 		game_.set_tutorial();
 		window.set_retval(LAUNCH_GAME);
 	});
 
+	//
+	// Campaign
+	//
 	register_button(window, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](twindow& window) {
 		if(game_.new_campaign()) {
 			window.set_retval(LAUNCH_GAME);
 		}
 	});
 
-	register_button(window, "load", hotkey::HOTKEY_LOAD_GAME, [this](twindow& window) {
-		if(game_.load_game()) {
-			window.set_retval(LAUNCH_GAME);
-		} else {
-			game_.clear_loaded_game();
-		}
-	});
-
-	register_button(window, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](twindow&) {
-		// NOTE: we need the help_manager to get access to the Add-ons
-		// section in the game help!
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		if(manage_addons(game_.video())) {
-			game_config_manager::get()->reload_changed_game_config();
-		}
-	});
-
+	//
+	// Multiplayer
+	//
 	register_button(window, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](twindow& window) {
 		while(true) {
 			gui2::tmp_method_selection dlg;
@@ -346,9 +333,9 @@ void ttitle_screen::pre_show(twindow& window)
 				return;
 			}
 
-			int res = dlg.get_choice();
+			const int res = dlg.get_choice();
 
-			if(dlg.get_choice() == 2 && preferences::mp_server_warning_disabled() < 2) {
+			if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
 				if(!gui2::tmp_host_game_prompt::execute(game_.video())) {
 					continue;
 				}
@@ -376,53 +363,100 @@ void ttitle_screen::pre_show(twindow& window)
 		}
 	});
 
+	//
+	// Load game
+	//
+	register_button(window, "load", hotkey::HOTKEY_LOAD_GAME, [this](twindow& window) {
+		if(game_.load_game()) {
+			window.set_retval(LAUNCH_GAME);
+		} else {
+			game_.clear_loaded_game();
+		}
+	});
+
+	//
+	// Addons
+	//
+	register_button(window, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](twindow&) {
+		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
+		help::help_manager help_manager(&game_config_manager::get()->game_config());
+
+		if(manage_addons(game_.video())) {
+			game_config_manager::get()->reload_changed_game_config();
+		}
+	});
+
+	//
+	// Editor
+	//
 	register_button(window, "editor", hotkey::TITLE_SCREEN__EDITOR, [&](twindow& window) { window.set_retval(MAP_EDITOR); });
 
+	//
+	// Cores
+	//
 	register_button(window, "cores", hotkey::TITLE_SCREEN__CORES, [this](twindow&) {
 		int current = 0;
 		std::vector<config> cores;
-		for (const config& core : game_config_manager::get()->game_config().child_range("core")) {
+		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
 			cores.push_back(core);
-			if (core["id"] == preferences::core_id())
+
+			if(core["id"] == preferences::core_id()) {
 				current = cores.size() - 1;
+			}
 		}
 
 		gui2::tcore_selection core_dlg(cores, current);
-		if (core_dlg.show(game_.video())) {
-			int core_index = core_dlg.get_choice();
-			const std::string& core_id = cores[core_index]["id"];
+		if(core_dlg.show(game_.video())) {
+			const std::string& core_id = cores[core_dlg.get_choice()]["id"];
+
 			preferences::set_core_id(core_id);
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});
 
+	if(game_config_manager::get()->game_config().child_range("core").size() <= 1) {
+		find_widget<tbutton>(&window, "cores", false).set_visible(twindow::tvisible::invisible);
+	}
+
+	//
+	// Language
+	//
 	register_button(window, "language", hotkey::HOTKEY_LANGUAGE, [this](twindow& window) {
 		try {
 			if(game_.change_language()) {
 				t_string::reset_translations();
 				image::flush_cache();
-				redraw_background_ = true;
-				window.close();
+				on_resize();
 			}
 		} catch(std::runtime_error& e) {
 			gui2::show_error_message(game_.video(), e.what());
 		}
 	});
 
-	register_button(window, "preferences", hotkey::HOTKEY_PREFERENCES, [this](twindow&) {
-		game_.show_preferences();
-	});
+	//
+	// Preferences
+	//
+	register_button(window, "preferences", hotkey::HOTKEY_PREFERENCES, [this](twindow&) { game_.show_preferences(); });
 
+	//
+	// Credits
+	//
 	register_button(window, "credits", hotkey::TITLE_SCREEN__CREDITS, [&](twindow& window) { window.set_retval(SHOW_ABOUT); });
 
+	//
+	// Quit
+	//
 	register_button(window, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [&](twindow& window) { window.set_retval(QUIT_GAME); });
 
-	auto cores = game_config_manager::get()->game_config().child_range("core");
-	if(cores.size() <= 1) {
-		find_widget<tbutton>(&window, "cores", false).set_visible(twindow::tvisible::invisible);
-	}
+	//
+	// Debug clock
+	//
+	register_button(window, "clock", hotkey::HOTKEY_NULL,
+		std::bind(&ttitle_screen::show_debug_clock_window, this, std::ref(window.video())));
 
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&ttitle_screen::on_resize, this, std::ref(window)));
+	find_widget<tbutton>(&window, "clock", false).set_visible(show_debug_clock_button
+		? twidget::tvisible::visible
+		: twidget::tvisible::invisible);
 }
 
 void ttitle_screen::on_resize(twindow& window)
@@ -452,6 +486,7 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 	}
 
 	tips.select_page(page);
+
 	/**
 	 * @todo Look for a proper fix.
 	 *

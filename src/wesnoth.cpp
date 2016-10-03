@@ -780,7 +780,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		 * selection that results in leaving the dialog simply sets the window's retval and proceeds to the appropriate action.
 		 *
 		 * Certain actions (such as window resizing) set the flag to true, which allows the dialog to reopen with any layout
-		 * changes such as those dictatted by window resolution.
+		 * changes such as those dictated by window resolution.
 		 */
 		while(dlg.redraw_background()) {
 			dlg.show(game->video());

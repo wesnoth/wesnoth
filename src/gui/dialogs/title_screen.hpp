@@ -16,7 +16,6 @@
 #define GUI_DIALOGS_TITLE_SCREEN_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "hotkey/hotkey_command.hpp"
 
 class game_launcher;
 
@@ -33,8 +32,6 @@ extern bool show_debug_clock_button;
  *
  * The menu buttons return a result back to the caller with the button pressed.
  * So at the moment it only handles the tips itself.
- *
- * @todo Evaluate whether we can handle more buttons in this class.
  */
 class ttitle_screen : public tdialog
 {
@@ -48,14 +45,22 @@ public:
 	 * Actions that merely show a dialog are not included here.
 	 */
 	enum tresult {
-		LAUNCH_GAME, ///< Start playing a single-player game, such as the tutorial or a campaign
-		MP_CONNECT, ///< Connect to an MP server
-		MP_HOST, ///< Host an MP game
-		MP_LOCAL, ///< Start a local MP game
-		MAP_EDITOR, ///< Start the map/scenario editor
-		SHOW_ABOUT, ///< Show credits
-		QUIT_GAME, ///< Exit to desktop
-		RELOAD_GAME_DATA, ///< Used to reload all game data
+		// Start playing a single-player game, such as the tutorial or a campaign
+		LAUNCH_GAME,
+		// Connect to an MP server
+		MP_CONNECT,
+		// Host an MP game
+		MP_HOST,
+		// Start a local MP game
+		MP_LOCAL,
+		// Start the map/scenario editor
+		MAP_EDITOR,
+		// Show credits
+		SHOW_ABOUT,
+		// Exit to desktop
+		QUIT_GAME,
+		// Used to reload all game data
+		RELOAD_GAME_DATA,
 	};
 
 	bool redraw_background() const
@@ -72,9 +77,6 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	virtual void post_build(twindow& window);
-
-	/** Inherited from tdialog. */
 	void pre_show(twindow& window);
 
 	void on_resize(twindow& window);
@@ -86,8 +88,7 @@ private:
 	 * Updates the tip of day widget.
 	 *
 	 * @param window              The window being shown.
-	 * @param previous            Show the previous tip, else shows the next
-	 *                            one.
+	 * @param previous            Show the previous tip, else shows the next one.
 	 */
 	void update_tip(twindow& window, const bool previous);
 
