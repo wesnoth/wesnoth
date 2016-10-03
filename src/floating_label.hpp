@@ -70,13 +70,8 @@ public:
 	void use_markup(bool b) {use_markup_ = b;}
 
 	void move(double xmove, double ymove);
-#ifdef SDL_GPU
-	void draw(CVideo &video);
-	void undraw(CVideo &video);
-#else
 	void draw(surface screen);
 	void undraw(surface screen);
-#endif
 
 #if 0
 	sdl::timage create_image();
@@ -134,12 +129,7 @@ void remove_floating_label(int handle);
 void show_floating_label(int handle, bool show);
 
 SDL_Rect get_floating_label_rect(int handle);
-#ifdef SDL_GPU
-void draw_floating_labels(CVideo &video);
-void undraw_floating_labels(CVideo &video);
-#else
 void draw_floating_labels(surface screen);
 void undraw_floating_labels(surface screen);
-#endif
 
 } // end namespace font

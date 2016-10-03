@@ -18,9 +18,6 @@
 
 #include "exceptions.hpp"
 
-#ifdef SDL_GPU
-#include "sdl/image.hpp"
-#endif
 
 namespace gui {
 
@@ -75,18 +72,10 @@ private:
 
 	std::string label_text_;
 
-#ifdef SDL_GPU
-	sdl::timage label_image_;
-	sdl::timage image_, pressedImage_, activeImage_, pressedActiveImage_,
-		touchedImage_, disabledImage_, pressedDisabledImage_,
-		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
-		overlayActiveImage_;
-#else
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;
-#endif
 	SDL_Rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };

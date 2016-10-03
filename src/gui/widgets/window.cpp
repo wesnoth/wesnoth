@@ -676,11 +676,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 			update_rect(get_rectangle());
-#ifdef SDL_GPU
-			font::undraw_floating_labels(video_);
-#else
 			font::undraw_floating_labels(video_.getSurface());
-#endif
 		}
 		throw;
 	}
@@ -692,11 +688,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rectangle());
-#ifdef SDL_GPU
-		font::undraw_floating_labels(video_);
-#else
 		font::undraw_floating_labels(video_.getSurface());
-#endif
 	}
 
 	return retval_;
@@ -731,11 +723,7 @@ void twindow::draw()
 		SDL_Rect rect = get_rectangle();
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
-#ifdef SDL_GPU
-		font::draw_floating_labels(video_);
-#else
 		font::draw_floating_labels(frame_buffer);
-#endif
 		if(restore_) {
 			restorer_ = get_surface_portion(frame_buffer, rect);
 		}

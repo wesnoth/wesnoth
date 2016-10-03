@@ -227,30 +227,6 @@ surface floating_label::create_surface()
 }
 #endif
 
-#ifdef SDL_GPU
-void floating_label::draw(CVideo &video)
-{
-	if (!visible_) {
-		return;
-	}
-#if 0
-	create_image();
-	if (img_.null()) {
-		return;
-	}
-
-	video.draw_texture(img_, xpos(img_.width()), int(ypos_));
-#else
-	create_surface();
-	if (surf_.null()) {
-		return;
-	}
-
-	video.blit_to_overlay(surf_, xpos(surf_->w), int(ypos_));
-#endif
-}
-
-#else
 void floating_label::draw(surface screen)
 {
 	if(!visible_) {
@@ -281,15 +257,7 @@ void floating_label::draw(surface screen)
 
 	update_rect(rect);
 }
-#endif
 
-#ifdef SDL_GPU
-void floating_label::undraw(CVideo &video)
-{
-	SDL_Rect r = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
-	video.clear_overlay_area(r);
-}
-#else
 void floating_label::undraw(surface screen)
 {
 	if(screen == nullptr || buf_ == nullptr) {
@@ -311,7 +279,6 @@ void floating_label::undraw(surface screen)
 		}
 	}
 }
-#endif
 
 int add_floating_label(const floating_label& flabel)
 {
@@ -385,14 +352,10 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
-#ifdef SDL_GPU
-
-#else
 	surface const screen = nullptr;
 	if(screen != nullptr) {
 		draw_floating_labels(screen);
 	}
-#endif
 
 	label_contexts.push(std::set<int>());
 }
@@ -406,55 +369,12 @@ floating_label_context::~floating_label_context()
 
 	label_contexts.pop();
 
-#ifdef SDL_GPU
-	//TODO
-#else
 	surface const screen = nullptr;
 	if(screen != nullptr) {
 		undraw_floating_labels(screen);
 	}
-#endif
 }
 
-#ifdef SDL_GPU
-void draw_floating_labels(CVideo &video)
-{
-	if(label_contexts.empty()) {
-		return;
-	}
-
-	const std::set<int>& context = label_contexts.top();
-
-	//draw the labels in the order they were added, so later added labels (likely to be tooltips)
-	//are displayed over earlier added labels.
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(context.count(i->first) > 0) {
-			i->second.draw(video);
-		}
-	}
-}
-
-void undraw_floating_labels(CVideo &video)
-{
-	if(label_contexts.empty()) {
-		return;
-	}
-
-	std::set<int>& context = label_contexts.top();
-
-	//remove expired labels
-	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired()) {
-			j->second.undraw(video);
-			context.erase(j->first);
-			labels.erase(j++);
-		} else {
-			++j;
-		}
-	}
-}
-
-#else
 void draw_floating_labels(surface screen)
 {
 	if(label_contexts.empty()) {
@@ -498,6 +418,5 @@ void undraw_floating_labels(surface screen)
 		}
 	}
 }
-#endif
 }
 

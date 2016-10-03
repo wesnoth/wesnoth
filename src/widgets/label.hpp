@@ -36,11 +36,6 @@ public:
 	virtual void draw_contents();
 private:
 	void update_label_size();
-#ifdef SDL_GPU
-	void render_text();
-
-	sdl::timage text_image_;
-#endif
 	std::string text_;
 	int size_;
 	SDL_Color color_;

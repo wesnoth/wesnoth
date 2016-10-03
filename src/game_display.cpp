@@ -60,11 +60,7 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
  *
  * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
  */
-#ifdef SDL_GPU
-std::vector<sdl::timage> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
-#else
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
-#endif
 
 game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::manager> wb,
 		reports & reports_object,
@@ -109,7 +105,6 @@ game_display::~game_display()
 	} catch (...) {}
 }
 
-//TODO: proper SDL_gpu implementation
 void game_display::new_turn()
 {
 	const time_of_day& tod = tod_manager_->get_time_of_day();
@@ -126,17 +121,6 @@ void game_display::new_turn()
 			const int starting_ticks = SDL_GetTicks();
 			for(int i = 0; i != niterations; ++i) {
 
-#ifdef SDL_GPU
-				if(old_mask != nullptr) {
-					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
-					tod_hex_mask1 = sdl::timage(adjust_surface_alpha(old_mask,proportion));
-				}
-
-				if(new_mask != nullptr) {
-					const fixed_t proportion = fxpdiv(i,niterations);
-					tod_hex_mask2 = sdl::timage(adjust_surface_alpha(new_mask,proportion));
-				}
-#else
 				if(old_mask != nullptr) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					adjust_surface_alpha(old_mask, proportion);
@@ -148,7 +132,6 @@ void game_display::new_turn()
 					adjust_surface_alpha(new_mask, proportion);
 					tod_hex_mask2.assign(new_mask);
 				}
-#endif
 
 				invalidate_all();
 				draw();
@@ -161,13 +144,8 @@ void game_display::new_turn()
 			}
 		}
 
-#ifdef SDL_GPU
-		tod_hex_mask1 = sdl::timage();
-		tod_hex_mask2 = sdl::timage();
-#else
 		tod_hex_mask1.assign(nullptr);
 		tod_hex_mask2.assign(nullptr);
-#endif
 	}
 
 	first_turn_ = false;
@@ -313,29 +291,6 @@ void game_display::draw_hex(const map_location& loc)
 		if( u != nullptr ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
-#ifdef SDL_GPU
-		if(u == nullptr) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
-		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
-		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>green)", image::SCALED_TO_HEX));
-		} else {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
-		}
-#else
 		if(u == nullptr) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
@@ -357,7 +312,6 @@ void game_display::draw_hex(const map_location& loc)
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 		}
-#endif
 	}
 
 
@@ -368,13 +322,8 @@ void game_display::draw_hex(const map_location& loc)
 	if (!is_shrouded && !reach_map_.empty()
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
-#ifdef SDL_GPU
-		drawing_buffer_add(LAYER_REACHMAP, loc, xpos, ypos,
-				image::get_texture(unreachable,image::SCALED_TO_HEX));
-#else
 		drawing_buffer_add(LAYER_REACHMAP, loc, xpos, ypos,
 				image::get_image(unreachable,image::SCALED_TO_HEX));
-#endif
 	}
 
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
@@ -382,40 +331,13 @@ void game_display::draw_hex(const map_location& loc)
 
 		if (!(w->is_active() && w->has_temp_move()))
 		{
-#ifdef SDL_GPU
-			std::vector<sdl::timage> footstepImages = footsteps_images(loc, route_, dc_);
-#else
 			std::vector<surface> footstepImages = footsteps_images(loc, route_, dc_);
-#endif
 			if (!footstepImages.empty()) {
 				drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footsteps_images(loc, route_, dc_));
 			}
 		}
 	}
 	// Draw the attack direction indicator
-#ifdef SDL_GPU
-	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
-	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
-	}
-
-	// Linger overlay unconditionally otherwise it might give glitches
-	// so it's drawn over the shroud and fog.
-	if(game_mode_ != RUNNING) {
-		static const image::locator linger(game_config::images::linger);
-		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, xpos, ypos,
-			image::get_texture(linger, image::TOD_COLORED));
-	}
-
-	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
-		static const image::locator selected(game_config::images::selected);
-		drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
-				image::get_texture(selected, image::SCALED_TO_HEX));
-	}
-#else
 	if(on_map && loc == attack_indicator_src_) {
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
 			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
@@ -437,7 +359,6 @@ void game_display::draw_hex(const map_location& loc)
 		drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 				image::get_image(selected, image::SCALED_TO_HEX));
 	}
-#endif
 
 	// Show def% and turn to reach info
 	if(!is_shrouded && on_map) {
@@ -521,22 +442,6 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
-#ifdef SDL_GPU
-			if (w->second.invisible) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_texture("misc/hidden.png", image::SCALED_TO_HEX));
-			}
-
-			if (w->second.zoc) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_texture("misc/zoc.png", image::SCALED_TO_HEX));
-			}
-
-			if (w->second.capture) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_texture("misc/capture.png", image::SCALED_TO_HEX));
-			}
-#else
 			if (w->second.invisible) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
@@ -551,7 +456,6 @@ void game_display::draw_movement_info(const map_location& loc)
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/capture.png", image::SCALED_TO_HEX));
 			}
-#endif
 
 			//we display turn info only if different from a simple last "1"
 			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
@@ -592,17 +496,9 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
-#ifdef SDL_GPU
-std::vector<sdl::timage> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
-#else
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
-#endif
 {
-#ifdef SDL_GPU
-	std::vector<sdl::timage> res;
-#else
 	std::vector<surface> res;
-#endif
 
 	if (route_.steps.size() < 2) {
 		return res; // no real "route"
@@ -627,11 +523,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 	}
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 
-#ifdef SDL_GPU
-	sdl::timage teleport;
-#else
 	surface teleport = nullptr;
-#endif
 
 	// We draw 2 half-hex (with possibly different directions),
 	// but skip the first for the first step.
@@ -645,11 +537,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
 			std::string teleport_image =
 			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
-#ifdef SDL_GPU
-			teleport = image::get_texture(teleport_image, image::SCALED_TO_HEX);
-#else
 			teleport = image::get_image(teleport_image, image::SCALED_TO_HEX);
-#endif
 			continue;
 		}
 
@@ -667,19 +555,11 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 			+ sense + "-" + i->write_direction(dir)
 			+ ".png" + rotate;
 
-#ifdef SDL_GPU
-		res.push_back(image::get_texture(image, image::SCALED_TO_HEX));
-#else
 		res.push_back(image::get_image(image, image::SCALED_TO_HEX));
-#endif
 	}
 
 	// we draw teleport image (if any) in last
-#ifdef SDL_GPU
-	if (!teleport.null()) res.push_back(teleport);
-#else
 	if (teleport != nullptr) res.push_back(teleport);
-#endif
 
 	return res;
 }

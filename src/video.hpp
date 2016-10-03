@@ -24,25 +24,12 @@
 #include "sdl/window.hpp"
 
 class surface;
-#ifdef SDL_GPU
-#include "sdl/shader.hpp"
-#include "sdl/utils.hpp"
-
-namespace sdl
-{
-class timage;
-}
-#endif
 
 //possible flags when setting video modes
 #define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
 #define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
 #define SDL_APPACTIVE		0x04		/**< The application is active */
 
-#ifdef SDL_GPU
-struct GPU_Target;
-GPU_Target *get_render_target();
-#endif
 
 surface& get_video_surface();
 
@@ -112,18 +99,6 @@ public:
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=nullptr, SDL_Rect* clip_rect=nullptr);
-#ifdef SDL_GPU
-	GPU_Target *render_target() const;
-
-	void draw_texture(sdl::timage &texture, int x, int y);
-	void set_texture_color_modulation(int r, int g, int b, int a);
-	void set_texture_submerge(float f);
-	void set_texture_effects(int effects);
-
-	void blit_to_overlay(surface surf, int x, int y);
-	void clear_overlay_area(SDL_Rect area);
-	void clear_overlay();
-#endif
 	void flip();
 	static void delay(unsigned int milliseconds);
 
@@ -225,12 +200,6 @@ private:
 	};
 
 	void initSDL();
-#ifdef SDL_GPU
-	void update_overlay(SDL_Rect *rect = nullptr);
-
-	sdl::shader_program shader_;
-	surface overlay_;
-#endif
 
 	bool mode_changed_;
 

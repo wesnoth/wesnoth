@@ -43,11 +43,7 @@ public:
 	struct render_input
 	{
 		SDL_Rect rect;	/**< Corrected rectangle for rendering surf. */
-#ifdef SDL_GPU
-		sdl::timage image;
-#else
 		surface image;	/**< Surface, scaled if required. */
-#endif
 	};
 
 	/**
