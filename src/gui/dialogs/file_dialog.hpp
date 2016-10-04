@@ -106,6 +106,24 @@ public:
 	tfile_dialog& set_filename(const std::string& value);
 
 	/**
+	 * Sets the default file extension for file names in save mode.
+	 *
+	 * When this is set to a non-empty string and save mode is active, selecting
+	 * file entries will cause their name portions to be highlighted in the name
+	 * text box if their extensions match the provided template, and any time the
+	 * text box is cleared it will position the cursor before the extension as a
+	 * hint for the user.
+	 *
+	 * The value provided to this method should be preceded by a dot if
+	 * applicable (e.g. ".cfg").
+	 */
+	tfile_dialog& set_extension(const std::string& value)
+	{
+		extension_ = value;
+		return *this;
+	}
+
+	/**
 	 * Whether user interface elements for manipulating existing objects are provided.
 	 */
 	bool read_only() const
@@ -163,6 +181,7 @@ private:
 	std::string msg_;
 	std::string ok_label_;
 
+	std::string extension_;
 	std::string current_entry_;
 	std::string current_dir_;
 
@@ -236,6 +255,9 @@ private:
 	 * unchanged.
 	 */
 	SELECTION_TYPE register_new_selection(const std::string& name);
+
+	void set_input_text(class ttext_box& t, const std::string& value);
+	void clear_input_text(class ttext_box& t);
 
 	/**
 	 * Updates the dialog contents to match the internal state.

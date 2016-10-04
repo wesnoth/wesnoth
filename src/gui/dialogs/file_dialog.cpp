@@ -36,6 +36,7 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/unicode.hpp"
 
 #include <functional>
 
@@ -106,6 +107,7 @@ tfile_dialog::tfile_dialog()
 	: title_(_("Find File"))
 	, msg_()
 	, ok_label_()
+	, extension_()
 	, current_entry_()
 	, current_dir_()
 	, read_only_(false)
@@ -383,6 +385,36 @@ tfile_dialog::SELECTION_TYPE tfile_dialog::register_new_selection(const std::str
 	return SELECTION_PARENT_NOT_FOUND;
 }
 
+void tfile_dialog::set_input_text(ttext_box& t, const std::string& value)
+{
+	if(value.empty()) {
+		clear_input_text(t);
+		return;
+	}
+
+	t.set_value(value);
+
+	const size_t vallen = t.get_length();
+	const size_t extlen = utf8::size(extension_);
+
+	if(save_mode_ && extlen && vallen > extlen) {
+		// Highlight everything but the extension if it matches
+		if(value.substr(vallen - extlen) == extension_) {
+			t.set_selection(0, vallen - extlen);
+		}
+	}
+}
+
+void tfile_dialog::clear_input_text(ttext_box& t)
+{
+	if(save_mode_ && !extension_.empty()) {
+		t.set_value(extension_);
+		t.set_selection(0, 0);
+	} else {
+		t.clear();
+	}
+}
+
 void tfile_dialog::refresh_fileview(twindow& window)
 {
 	cursor::setter cur{cursor::WAIT};
@@ -423,7 +455,7 @@ void tfile_dialog::refresh_fileview(twindow& window)
 	}
 
 	find_widget<tcontrol>(&window, "current_dir", false).set_label(current_dir_);
-	find_widget<ttext_box>(&window, "filename", false).set_value(current_entry_);
+	set_input_text(find_widget<ttext_box>(&window, "filename", false), current_entry_);
 }
 
 void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name, const std::string& icon, bool check_selection)
@@ -464,9 +496,9 @@ void tfile_dialog::on_row_selected(twindow& window)
 
 	// Clear the textbox when selecting ..
 	if(current_entry_ != PARENT_DIR) {
-		file_textbox.set_value(current_entry_);
+		set_input_text(file_textbox, current_entry_);
 	} else {
-		file_textbox.clear();
+		clear_input_text(file_textbox);
 	}
 }
 
