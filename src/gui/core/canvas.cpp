@@ -738,7 +738,7 @@ void trectangle::draw(surface& canvas,
 	}
 
 	// Fill the background, if applicable
-	if(fill_color_) {
+	if(fill_color_ && w && h) {
 		set_renderer_color(renderer, fill_color_);
 
 		SDL_Rect area {
