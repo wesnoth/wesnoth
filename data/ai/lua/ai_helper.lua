@@ -323,7 +323,7 @@ function ai_helper.LS_of_triples(table)
     return set
 end
 
-function ai_helper.to_triples(set)
+function ai_helper.LS_to_triples(set)
     local res = {}
     set:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
     return res

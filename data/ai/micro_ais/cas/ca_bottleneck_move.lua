@@ -101,7 +101,7 @@ local function bottleneck_create_positioning_map(max_value, data)
     end)
 
     -- We need to sort the map, and assign descending values
-    local locs = AH.to_triples(map)
+    local locs = AH.LS_to_triples(map)
     table.sort(locs, function(a, b) return a[3] > b[3] end)
     for i,loc in ipairs(locs) do loc[3] = max_value + 10 - i * 10 end
     map = AH.LS_of_triples(locs)
