@@ -23,6 +23,8 @@
 
 #include "utils/functional.hpp"
 
+#include <limits>
+
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
@@ -195,6 +197,38 @@ void ttext_::set_selection_length(const int selection_length)
 		selection_length_ = selection_length;
 		set_is_dirty(true);
 	}
+}
+
+void ttext_::set_selection(size_t start, int length)
+{
+	const size_t text_size = text_.get_length();
+
+	if(start >= text_size) {
+		start = text_size;
+	}
+
+	if(length == 0) {
+		set_cursor(start, false);
+		return;
+	}
+
+	// The text pos/size type differs in both signedness and size with the
+	// selection length. Such is life.
+	const int sel_start = std::min<size_t>(start, std::numeric_limits<int>::max());
+	const int sel_max_length = std::min<size_t>(text_size - start, std::numeric_limits<int>::max());
+
+	const bool backwards = length < 0;
+
+	if(backwards && -length > sel_start) {
+		length = -sel_start;
+	} else if(!backwards && length > sel_max_length) {
+		length = sel_max_length;
+	}
+
+	set_selection_start(start);
+	set_selection_length(length);
+
+	update_canvas();
 }
 
 void ttext_::set_state(const tstate state)
