@@ -54,7 +54,7 @@ public:
 protected:
 	void access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out);
 
-	std::pair<map_location,map_location> choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
+	std::pair<map_location,map_location> choose_move(std::vector<target>& targets);
 
 	double compare_groups(const std::set<map_location>& our_group, const std::set<map_location>& their_group, const std::vector<map_location>& battlefield) const;
 
