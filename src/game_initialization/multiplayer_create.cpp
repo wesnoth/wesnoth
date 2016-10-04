@@ -447,8 +447,6 @@ void create::process_event_impl(const process_event_data & data)
 
 			break;
 		}
-		case ng::level::TYPE::SAVED_GAME:
-			break;
 		} // end switch
 
 		map_size_label_.set_text(map_size.str());

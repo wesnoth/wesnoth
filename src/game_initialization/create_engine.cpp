@@ -30,7 +30,6 @@
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
-#include "save_index.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
@@ -389,28 +388,6 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-engine_saved_game::engine_saved_game(const config& data, const std::string name)
-	: scenario(data)
-	, name_(name)
-	, id_(data["id"])
-{
-}
-
-std::string engine_saved_game::name() const
-{
-	return name_;
-}
-
-std::string engine_saved_game::id() const
-{
-	return id_;
-}
-
-bool engine_saved_game::can_launch_game() const
-{
-	return !data()["corrupt"].to_bool(false);
-}
-
 create_engine::create_engine(CVideo& v, saved_game& state) :
 	current_level_type_(),
 	current_level_index_(0),
@@ -726,11 +703,6 @@ void create_engine::reset_level_filters()
 		random_maps_filtered_.push_back(i);
 	}
 
-	saved_games_filtered_.clear();
-	for (size_t i = 0; i<saved_games_.size(); i++) {
-		saved_games_filtered_.push_back(i);
-	}
-
 	level_name_filter_ = "";
 }
 
@@ -790,12 +762,9 @@ level& create_engine::current_level() const
 	case level::TYPE::CAMPAIGN: {
 		return *campaigns_[current_level_index_];
 	}
-	case level::TYPE::SP_CAMPAIGN: {
-		return *sp_campaigns_[current_level_index_];
-	}
-	case level::TYPE::SAVED_GAME:
+	case level::TYPE::SP_CAMPAIGN:
 	default: {
-		return *saved_games_[current_level_index_];
+		return *sp_campaigns_[current_level_index_];
 	}
 	} // end switch
 }
@@ -840,9 +809,6 @@ void create_engine::set_current_level(const size_t index)
 			break;
 		case level::TYPE::USER_SCENARIO:
 			current_level_index_ = user_scenarios_filtered_.at(index);
-			break;
-		case level::TYPE::SAVED_GAME:
-			current_level_index_ = saved_games_filtered_.at(index);
 		}
 	}
 	catch (std::out_of_range&)
@@ -862,8 +828,7 @@ void create_engine::set_current_level(const size_t index)
 	}
 
 	if (current_level_type_ != level::TYPE::CAMPAIGN &&
-		current_level_type_ != level::TYPE::SP_CAMPAIGN &&
-		current_level_type_ != level::TYPE::SAVED_GAME) {
+		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
 
 		dependency_manager_->try_scenario(current_level().id());
 	}
@@ -909,7 +874,7 @@ bool create_engine::generator_assigned() const
 
 bool create_engine::generator_has_settings() const
 {
-	return generator_assigned() && generator_->allow_user_config();
+	return generator_->allow_user_config();
 }
 
 void create_engine::generator_user_config(CVideo& v)
@@ -967,14 +932,6 @@ int create_engine::find_level_by_id(const std::string& id) const
 		i++;
 	}
 
-	i = 0;
-	for (saved_game_ptr saved_game : saved_games_) {
-		if (saved_game->id() == id) {
-			return i;
-		}
-		i++;
-	}
-
 	return -1;
 }
 
@@ -1017,11 +974,6 @@ level::TYPE create_engine::find_level_type_by_id(const std::string& id) const
 	for (campaign_ptr campaign : campaigns_) {
 		if (campaign->id() == id) {
 			return level::TYPE::CAMPAIGN;
-		}
-	}
-	for (saved_game_ptr saved_game : saved_games_) {
-		if (saved_game->id() == id) {
-			return level::TYPE::SAVED_GAME;
 		}
 	}
 	return level::TYPE::SP_CAMPAIGN;
@@ -1189,17 +1141,6 @@ void create_engine::init_all_levels()
 
 	// Sort sp campaigns by rank.
 	std::stable_sort(sp_campaigns_.begin(),sp_campaigns_.end(),less_campaigns_rank);
-
-	// Saved games
-	for(const auto& save : savegame::get_saves_list()) {
-        // TODO: is this the right way to do this?
-		if(game_classification::CAMPAIGN_TYPE::string_to_enum(save.summary()["campaign_type"].str()) != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-			continue;
-		}
-
-		saved_game_ptr game(new engine_saved_game(save.summary(), save.name()));
-		saved_games_.push_back(game);
-	}
 }
 
 void create_engine::init_extras(const MP_EXTRA extra_type)
@@ -1283,15 +1224,6 @@ void create_engine::apply_level_filters()
 		}
 	}
 
-	saved_games_filtered_.clear();
-	for (size_t i = 0; i<saved_games_.size(); i++) {
-		//if (contains_ignore_case(saved_games_[i]->name(), level_name_filter_) &&
-		//	(player_count_filter_ == 1 ||
-		//	 saved_games_[i]->num_players() == player_count_filter_)) {
-			saved_games_filtered_.push_back(i);
-		//}
-	}
-
 }
 
 std::vector<create_engine::level_ptr>
@@ -1326,11 +1258,6 @@ std::vector<create_engine::level_ptr>
 		break;
 	case level::TYPE::SP_CAMPAIGN:
 		for (level_ptr level : sp_campaigns_) {
-			levels.push_back(level);
-		}
-		break;
-    case level::TYPE::SAVED_GAME:
-		for (level_ptr level : saved_games_) {
 			levels.push_back(level);
 		}
 		break;
@@ -1373,12 +1300,6 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
 			levels.push_back(sp_campaigns_[level]);
 		}
 		break;
-    case level::TYPE::SAVED_GAME:
-		for (size_t level : saved_games_filtered_) {
-			std::cerr << "pushing back saved game level\n";
-			levels.push_back(saved_games_[level]);
-		}
-		break;
 	} // end switch
 
 	return levels;
@@ -1399,8 +1320,6 @@ std::vector<size_t> create_engine::get_filtered_level_indices(level::TYPE type) 
 		return campaigns_filtered_;
 	case level::TYPE::SP_CAMPAIGN:
 		return sp_campaigns_filtered_;
-    case level::TYPE::SAVED_GAME:
-		return saved_games_filtered_;
 	} // end switch
 
 	return std::vector<size_t>();

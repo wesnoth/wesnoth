@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "utils/make_enum.hpp"
 #include "mp_game_settings.hpp"
-#include "save_index.hpp"
 #include "sdl/utils.hpp"
 
 #include <string>
@@ -43,7 +42,6 @@ public:
 		(RANDOM_MAP,    "random_map")
 		(CAMPAIGN,      "campaign")
 		(SP_CAMPAIGN,   "sp_campaign")
-		(SAVED_GAME,    "saved_game")
 	)
 
 	virtual bool can_launch_game() const = 0;
@@ -178,24 +176,6 @@ private:
 	int max_players_;
 };
 
-class engine_saved_game : public scenario
-{
-public:
-	engine_saved_game(const config& data, const std::string name);
-
-	std::string name() const;
-	std::string id() const;
-
-	bool can_launch_game() const;
-
-private:
-	engine_saved_game(const engine_saved_game&);
-	void operator=(const engine_saved_game&);
-
-	std::string name_;
-	std::string id_;
-};
-
 class create_engine
 {
 public:
@@ -219,7 +199,6 @@ public:
 	typedef std::shared_ptr<user_map> user_map_ptr;
 	typedef std::shared_ptr<random_map> random_map_ptr;
 	typedef std::shared_ptr<campaign> campaign_ptr;
-	typedef std::shared_ptr<engine_saved_game> saved_game_ptr;
 
 	void init_generated_level_data();
 
@@ -315,7 +294,6 @@ private:
 	std::vector<campaign_ptr> campaigns_;
 	std::vector<campaign_ptr> sp_campaigns_;
 	std::vector<random_map_ptr> random_maps_;
-	std::vector<saved_game_ptr> saved_games_;
 
 	std::vector<size_t> scenarios_filtered_;
 	std::vector<size_t> user_maps_filtered_;
@@ -323,7 +301,6 @@ private:
 	std::vector<size_t> campaigns_filtered_;
 	std::vector<size_t> sp_campaigns_filtered_;
 	std::vector<size_t> random_maps_filtered_;
-	std::vector<size_t> saved_games_filtered_;
 
 	std::vector<std::string> user_map_names_;
 	std::vector<std::string> user_scenario_names_;

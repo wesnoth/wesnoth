@@ -95,7 +95,6 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	};
 
 	if(game_config::debug) {
-		level_types_.push_back({ng::level::TYPE::SAVED_GAME, _("Saved Games")});
 		level_types_.push_back({ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns")});
 	}
 
@@ -631,8 +630,7 @@ void tmp_create_game::update_details(twindow& window)
 		case ng::level::TYPE::SCENARIO:
 		case ng::level::TYPE::USER_MAP:
 		case ng::level::TYPE::USER_SCENARIO:
-		case ng::level::TYPE::RANDOM_MAP:
-		case ng::level::TYPE::SAVED_GAME: {
+		case ng::level::TYPE::RANDOM_MAP: {
 			ng::scenario* current_scenario = dynamic_cast<ng::scenario*>(&create_engine_.current_level());
 
 			assert(current_scenario);
@@ -738,24 +736,6 @@ void tmp_create_game::post_show(twindow& window)
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(-1);
 
 	if(get_retval() == twindow::OK) {
-		// Saved games have a different loading process... at least, right now
-		if(create_engine_.current_level_type() == ng::level::TYPE::SAVED_GAME) {
-			std::string error_log;
-			savegame::read_save_file(create_engine_.current_level().name(), create_engine_.current_level().data(), &error_log);
-			//copy_era(create_engine_.current_level().data()); TODO
-
-			if(!error_log.empty()) {
-				gui2::show_error_message(window.video(), _("The file you have tried to load is corrupt: '") + error_log);
-				return;
-			}
-
-			create_engine_.get_state().set_data(create_engine_.current_level().data());
-
-			create_engine_.prepare_for_saved_game();
-
-			return;
-		}
-
 		preferences::set_modifications(create_engine_.active_mods());
 		preferences::set_level_type(create_engine_.current_level_type().v);
 		preferences::set_level(create_engine_.current_level().id());
