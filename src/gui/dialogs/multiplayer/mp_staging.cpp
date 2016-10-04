@@ -253,7 +253,10 @@ void tmp_staging::pre_show(twindow& window)
 	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
 
 	chat.set_lobby_info(lobby_info_);
-	chat.set_wesnothd_connection(*wesnothd_connection_);
+
+	if(wesnothd_connection_) {
+		chat.set_wesnothd_connection(*wesnothd_connection_);
+	}
 
 	chat.room_window_open("this game", true); // TODO: better title?
 	chat.active_window_changed();
