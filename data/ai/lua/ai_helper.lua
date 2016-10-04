@@ -750,6 +750,66 @@ function ai_helper.get_units_with_attacks(filter)
     return units
 end
 
+function ai_helper.get_attackable_enemies(filter, side, cfg)
+    -- Attackable enemies are defined as being both not petrified and visible
+    -- to the side under consideration. If called without parameters, all enemies
+    -- of the current side meeting these criteria are returned.
+    --
+    -- Optional parameters:
+    -- @filter: Standard unit filter WML table for the enemies
+    --   Example 1: { type = 'Orcish Grunt' }
+    --   Example 2: { { "filter_location", { x = 10, y = 12, radius = 5 } } }
+    -- @side: side number, if side other than current side is to be considered
+    -- @cfg: configuration table with (currently) only one option:
+    --   include_invisible_enemies: if true, also find invisible enemies
+
+    side = side or wesnoth.current.side
+
+    local filter_plus_vision = {}
+    if filter then filter_plus_vision = ai_helper.table_copy(filter) end
+    if (not cfg) or (not cfg.include_invisible_enemies) then
+        table.insert(filter_plus_vision, { "filter_vision", { side = side, visible = 'yes' } })
+    end
+
+    local enemies = {}
+    local all_units = wesnoth.get_units()
+    for _,unit in ipairs(all_units) do
+        if wesnoth.is_enemy(side, unit.side)
+           and (not unit.status.petrified)
+           and unit:matches(filter_plus_vision)
+        then
+            table.insert(enemies, unit)
+        end
+    end
+
+    return enemies
+end
+
+function ai_helper.is_attackable_enemy(unit, side, cfg)
+    -- In its default configuration this returns true if @unit is an enemy of the
+    -- current side, is visible to that side and is not petrified. This behavior
+    -- can be modified with the optional parameters below.
+    --
+    -- Optional parameters:
+    -- @side: side number, if side other than current side is to be considered
+    -- @cfg: configuration table with (currently) only one option:
+    --   include_invisible_enemies: if true, also return true for invisible enemies
+
+    side = side or wesnoth.current.side
+
+    if (not wesnoth.is_enemy(side, unit.side)) or unit.status.petrified then
+        return false
+    end
+
+    if ((not cfg) or (not cfg.include_invisible_enemies))
+        and unit:matches({ { "filter_vision", { side = side, visible = 'no' } } })
+    then
+        return false
+    end
+
+    return true
+end
+
 function ai_helper.get_closest_enemy(loc)
     -- Get the closest enemy to @loc, or to the current side's leader if @loc not specified
 
