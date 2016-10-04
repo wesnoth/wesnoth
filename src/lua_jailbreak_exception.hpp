@@ -72,7 +72,7 @@ private:
 	 *
 	 * @pre                       jailbreak_exception != nullptr
 	 */
-	virtual void execute() = 0;
+	NORETURN virtual void execute() = 0;
 };
 
 /**

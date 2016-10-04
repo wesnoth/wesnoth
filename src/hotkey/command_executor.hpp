@@ -132,8 +132,8 @@ public:
 	// Returns a vector of images for a given menu.
 	std::vector<config> get_menu_images(display &, const std::vector<std::string>& items_arg);
 
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
-	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	virtual int show_menu(const std::vector<config>& items, SDL_Rect& where, bool context_menu, display& gui);
+	void execute_action(const std::vector<std::string>& items, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
 	virtual bool execute_command(const hotkey_command& command, int index=-1, bool press=true);

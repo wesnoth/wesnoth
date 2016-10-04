@@ -110,7 +110,8 @@ class editor_controller : public controller_base,
 		bool execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true) override;
 
 		/** controller_base override */
-		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
+		int show_menu(const std::vector<config>& items, SDL_Rect& where, bool context_menu, display& disp) override;
+		std::vector<config> expand_menu(const std::vector<std::string>& items) override;
 
 		void show_help() override;
 		void status_table() override;
@@ -225,7 +226,10 @@ class editor_controller : public controller_base,
 		 */
 		void redo() override;
 
+		std::vector<config>::iterator set_active_menu(std::vector<config>& base_menu, const std::vector<config>& items, std::vector<config>::iterator base_pos, editor::menu_type type);
+
 		editor::menu_type active_menu_;
+		int active_menu_base_index_;
 
 		/** Reports object. Must be initialized before the gui_ */
 		const std::unique_ptr<reports> reports_;
@@ -236,6 +240,7 @@ class editor_controller : public controller_base,
 		/** Pre-defined time of day lighting settings for the settings dialog */
 		typedef std::map<std::string, std::pair<std::string ,std::vector<time_of_day> > > tods_map;
 		tods_map tods_;
+		std::vector<config> expand_schedules_menu(const std::string& id) const;
 
 		/* managers */
 	public:

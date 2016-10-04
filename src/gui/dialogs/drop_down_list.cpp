@@ -124,7 +124,11 @@ void tdrop_down_list::pre_show(twindow& window)
 
 void tdrop_down_list::post_show(twindow& window)
 {
-	selected_item_ = find_widget<tlistbox>(&window, "list", true).get_selected_row();
+	tlistbox& list = find_widget<tlistbox>(&window, "list", true);
+	selected_item_ = list.get_selected_row();
+	if(selected_item_ >= 0) {
+		selected_rect_ = list.get_row_grid(selected_item_)->get_rectangle();
+	}
 }
 
 } // namespace gui2
