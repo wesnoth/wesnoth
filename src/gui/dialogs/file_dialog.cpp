@@ -211,7 +211,8 @@ void tfile_dialog::pre_show(twindow& window)
 
 	refresh_fileview(window);
 
-	window.keyboard_capture(&filelist);
+	window.keyboard_capture(&find_widget<ttext_box>(&window, "filename", false));
+	window.add_to_keyboard_chain(&filelist);
 	window.set_exit_hook(std::bind(&tfile_dialog::on_exit, this, std::ref(window)));
 }
 
@@ -500,6 +501,10 @@ void tfile_dialog::on_row_selected(twindow& window)
 	} else {
 		clear_input_text(file_textbox);
 	}
+
+	// Need to do this every time so that input can still be sent to the
+	// textbox without clicking on it.
+	window.keyboard_capture(&file_textbox);
 }
 
 void tfile_dialog::on_dir_create_cmd(twindow& window)
