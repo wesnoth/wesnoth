@@ -90,6 +90,28 @@ public:
 		text_changed_callback_ = cb;
 	}
 
+	/**
+	 * Sets or clears the text selection.
+	 *
+	 * Setting the selection range will re-position the cursor depending on the
+	 * selection direction, specified by the length's sign. Selecting beyond the
+	 * start or end of the text is safe; the final selection will be limited
+	 * accordingly.
+	 *
+	 * @note The range extents are measured in Unicode characters, not bytes.
+	 *       Using byte offsets may produce unexpected results depending on the
+	 *       text contents.
+	 *
+	 * @param start               Start offset, in characters.
+	 * @param length              Selection length, in characters. If zero, the
+	 *                            current selection is canceled. If negative, the
+	 *                            selection extends towards the start of the text
+	 *                            and the cursor will be re-positioned in that
+	 *                            direction as well; otherwise the selection and
+	 *                            cursor extend towards the end.
+	 */
+	void set_selection(size_t start, int length);
+
 protected:
 	/**
 	 * Moves the cursor to the end of the line.
