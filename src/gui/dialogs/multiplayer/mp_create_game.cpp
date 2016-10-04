@@ -232,6 +232,8 @@ void tmp_create_game::pre_show(twindow& window)
 
 		tgrid* row_grid = &mod_list.add_row(data);
 
+		find_widget<ttoggle_panel>(row_grid, "panel", false).set_tooltip(mod->description);
+
 		ttoggle_button& mog_toggle = find_widget<ttoggle_button>(row_grid, "mod_active_state", false);
 
 		const int i = mod_list.get_item_count() - 1;
@@ -469,8 +471,6 @@ void tmp_create_game::on_tab_select(twindow& window)
 void tmp_create_game::on_mod_select(twindow& window)
 {
 	create_engine_.set_current_mod_index(find_widget<tlistbox>(&window, "mod_list", false).get_selected_row());
-
-	show_description(window, create_engine_.current_extra(ng::create_engine::MOD).description);
 }
 
 void tmp_create_game::on_mod_toggle(const int index)
