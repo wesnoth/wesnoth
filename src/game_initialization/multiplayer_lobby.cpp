@@ -591,11 +591,11 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 	// Don't throw the rendered minimaps away
 	std::vector<minimap_cache_item> minimap_cache;
 	for(std::vector<game_item>::iterator oldgame = games_.begin(); oldgame != games_.end(); ++oldgame) {
-		minimap_cache_item item;
-		item.map_data = oldgame->map_data;
-		item.mini_map = oldgame->mini_map;
-		item.map_info_size = oldgame->map_info_size;
-		minimap_cache.push_back(item);
+		minimap_cache_item cache_item;
+		cache_item.map_data = oldgame->map_data;
+		cache_item.mini_map = oldgame->mini_map;
+		cache_item.map_info_size = oldgame->map_info_size;
+		minimap_cache.push_back(cache_item);
 	}
 
 	item.map_data = game["map_data"].str();
@@ -1288,12 +1288,12 @@ void lobby::process_event_impl(const process_event_data & data)
 			}
 
 			config response;
-			config& join = response.add_child("join");
-			join["id"] = game.id;
-			join["observe"] = observe;
+			config& join_data = response.add_child("join");
+			join_data["id"] = game.id;
+			join_data["observe"] = observe;
 
 			if(!password.empty()) {
-				join["password"] = password;
+				join_data["password"] = password;
 			}
 			send_to_server(response);
 

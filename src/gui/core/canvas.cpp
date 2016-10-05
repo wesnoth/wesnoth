@@ -1058,23 +1058,23 @@ void timage::draw(surface& canvas,
 	local_variables.add("image_width", variant(w ? w : image_->w));
 	local_variables.add("image_height", variant(h ? h : image_->h));
 
-	const unsigned x = x_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(x) >= 0,
+	const unsigned clip_x = x_(local_variables);
+	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_x) >= 0,
 							  _("Image doesn't fit on canvas."),
 							  formatter() << "Image '" << name
-										   << "', x = " << static_cast<int>(x)
+										   << "', x = " << static_cast<int>(clip_x)
 										   << ".");
 
-	const unsigned y = y_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(y) >= 0,
+	const unsigned clip_y = y_(local_variables);
+	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_y) >= 0,
 							  _("Image doesn't fit on canvas."),
 							  formatter() << "Image '" << name
-										   << "', y = " << static_cast<int>(y)
+										   << "', y = " << static_cast<int>(clip_y)
 										   << ".");
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
-	SDL_Rect dst_clip = sdl::create_rect(x, y, 0, 0);
+	SDL_Rect dst_clip = sdl::create_rect(clip_x, clip_y, 0, 0);
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.

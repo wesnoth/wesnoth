@@ -77,10 +77,8 @@ protected:
 	virtual void do_idle_notification();
 	virtual void play_network_turn();
 	virtual void init_gui() override;
-	void store_recalls();
-	void store_gold(bool obs = false);
 
-	const cursor::setter cursor_setter;
+	const cursor::setter cursor_setter_;
 	gui::floating_textbox textbox_info_;
 
 	replay_network_sender replay_sender_;

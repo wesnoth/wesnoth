@@ -1663,8 +1663,8 @@ bool recruitment::is_enemy_in_radius(const map_location& loc, int radius) const 
 	if (surrounding.empty()) {
 		return false;
 	}
-	for (const map_location& loc : surrounding) {
-		const unit_map::const_iterator& enemy_it = units.find(loc);
+	for (const map_location& l : surrounding) {
+		const unit_map::const_iterator& enemy_it = units.find(l);
 		if(enemy_it == units.end()) {
 			continue;
 		}

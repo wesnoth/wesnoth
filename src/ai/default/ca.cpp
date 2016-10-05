@@ -1031,7 +1031,7 @@ void get_villages_phase::dispatch_complex(
 		for(u = 0; u < unit_count; ++u) {
 			std::cerr << units[u];
 
-			for(size_t v = 0; v < village_count; ++v) {
+			for(v = 0; v < village_count; ++v) {
 				std::cerr << '\t' << matrix[u][v];
 			}
 			std::cerr << "\t" << villages_per_unit[u] << '\n';
@@ -1174,9 +1174,8 @@ void get_villages_phase::dispatch_complex(
 		moves.insert(moves.end(), best_result.begin(), best_result.end());
 
 		// Clean up the reachmap for dispatched units.
-		for(std::vector<std::pair<map_location, map_location> >::const_iterator
-				itor = best_result.begin(); itor != best_result.end(); ++itor) {
-			reachmap.erase(itor->second);
+		for(const auto& unit_village_pair : best_result) {
+			reachmap.erase(unit_village_pair.second);
 		}
 
 		// Try to dispatch whatever is left
@@ -1215,9 +1214,8 @@ void get_villages_phase::dispatch_complex(
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
-		for(std::vector<std::pair<map_location, map_location> >::const_iterator
-				itor = best_result.begin(); itor != best_result.end(); ++itor) {
-			reachmap.erase(itor->second);
+		for(const auto& unit_village_pair : best_result) {
+			reachmap.erase(unit_village_pair.second);
 		}
 		treachmap::iterator unit = reachmap.find(leader_loc_);
 		if(unit != reachmap.end()) {
@@ -1258,9 +1256,8 @@ void get_villages_phase::dispatch_complex(
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
-		for(std::vector<std::pair<map_location, map_location> >::const_iterator
-				itor = best_result.begin(); itor != best_result.end(); ++itor) {
-			reachmap.erase(itor->second);
+		for(const auto& unit_village_pair : best_result) {
+			reachmap.erase(unit_village_pair.second);
 		}
 		treachmap::iterator unit = reachmap.find(leader_loc_);
 		if(unit != reachmap.end()) {

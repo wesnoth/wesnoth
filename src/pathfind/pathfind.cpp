@@ -76,15 +76,15 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 		std::set<map_location> tiles_checking;
 		tiles_checking.swap(pending_tiles_to_check);
 		//Iterate over all the hexes we need to check
-		for (const map_location &loc : tiles_checking)
+		for (const map_location &l : tiles_checking)
 		{
 			// Skip shrouded locations.
-			if ( do_shroud  &&  shroud_check->shrouded(loc) )
+			if ( do_shroud  &&  shroud_check->shrouded(l) )
 				continue;
 			//If this area is not a castle but should, skip it.
-			if ( vacancy == VACANT_CASTLE  &&  !map.is_castle(loc) ) continue;
+			if ( vacancy == VACANT_CASTLE  &&  !map.is_castle(l) ) continue;
 			const bool pass_check_and_unreachable = pass_check
-				&& pass_check->movement_cost(map[loc]) == movetype::UNREACHABLE;
+				&& pass_check->movement_cost(map[l]) == movetype::UNREACHABLE;
 			//If the unit can't reach the tile and we have searched
 			//an area of at least radius 10 (arbitrary), skip the tile.
 			//Neccessary for cases such as an unreachable
@@ -93,18 +93,18 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 			//even if there's a reachable hex for distance==2.
 			if (pass_check_and_unreachable && distance > 10) continue;
 			//If the hex is empty and we do either no pass check or the hex is reachable, return it.
-			if (units.find(loc) == units.end() && !pass_check_and_unreachable) return loc;
+			if (units.find(l) == units.end() && !pass_check_and_unreachable) return l;
 			map_location adjs[6];
-			get_adjacent_tiles(loc,adjs);
-			for (const map_location &loc : adjs)
+			get_adjacent_tiles(l,adjs);
+			for (const map_location &l2 : adjs)
 			{
-				if (!map.on_board(loc)) continue;
+				if (!map.on_board(l2)) continue;
 				// Add the tile to be checked if it hasn't already been and
 				// isn't being checked.
-				if (tiles_checked.find(loc) == tiles_checked.end() &&
-				    tiles_checking.find(loc) == tiles_checking.end())
+				if (tiles_checked.find(l2) == tiles_checked.end() &&
+				    tiles_checking.find(l2) == tiles_checking.end())
 				{
-					pending_tiles_to_check.insert(loc);
+					pending_tiles_to_check.insert(l2);
 				}
 			}
 		}

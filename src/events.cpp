@@ -580,8 +580,8 @@ void pump()
 			}
 		}
 
-		const handler_list& event_handlers = event_contexts.front().handlers;
-		for(auto handler : event_handlers) {
+		const handler_list& global_handlers = event_contexts.front().handlers;
+		for(auto handler : global_handlers) {
 			handler->handle_event(event);
 		}
 
@@ -589,8 +589,6 @@ void pump()
 
 			const handler_list& event_handlers = event_contexts.back().handlers;
 
-			//events may cause more event handlers to be added and/or removed,
-			//so we must use indexes instead of iterators here.
 			for(auto handler : event_handlers) {
 				handler->handle_event(event);
 			}

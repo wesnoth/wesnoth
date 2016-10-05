@@ -1139,25 +1139,25 @@ char compile_assert[0];
 			result = new tgenerator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::thorizontal_list,       \
-									select>;                                   \
+									select_action>;                            \
 			break;                                                             \
 		case tgenerator_::vertical_list:                                       \
 			result = new tgenerator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::tvertical_list,         \
-									select>;                                   \
+									select_action>;                            \
 			break;                                                             \
 		case tgenerator_::grid:                                                \
 			result = new tgenerator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::tmatrix,                \
-									select>;                                   \
+									select_action>;                            \
 			break;                                                             \
 		case tgenerator_::independent:                                         \
 			result = new tgenerator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::tindependent,           \
-									select>;                                   \
+									select_action>;                            \
 			break;                                                             \
 		default:                                                               \
 			assert(false);                                                     \
@@ -1169,10 +1169,10 @@ char compile_assert[0];
 #else
 #define GENERATE_SELECT                                                        \
 	if(select) {                                                               \
-		typedef policy::select_action::tselect select;                         \
+		typedef policy::select_action::tselect select_action;                  \
 		GENERATE_PLACEMENT                                                     \
 	} else {                                                                   \
-		typedef policy::select_action::tshow select;                           \
+		typedef policy::select_action::tshow select_action;                    \
 		GENERATE_PLACEMENT                                                     \
 	}
 #endif

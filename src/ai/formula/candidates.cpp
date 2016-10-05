@@ -97,16 +97,16 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	candidate_action_filters::const_iterator me_filter = filter_map_.find("me");
 
-	std::vector<variant> res;
+	std::vector<variant> unit_vector;
 
 	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 	{
 		if (i->side() == ai->get_side() && i->movement_left() > 0) {
-			res.push_back(variant(new unit_callable(*i)));
+			unit_vector.push_back(variant(new unit_callable(*i)));
 		}
 	}
 
-	variant my_units(&res);
+	variant my_units(&unit_vector);
 
 	variant filtered_units;
 	try {

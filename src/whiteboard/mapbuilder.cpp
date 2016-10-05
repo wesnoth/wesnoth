@@ -93,13 +93,13 @@ void mapbuilder::build_map()
 		return;
 	}
 
-	bool end = false;
-	for(size_t turn=0; !end; ++turn) {
-		end = true;
+	bool stop = false;
+	for(size_t turn=0; !stop; ++turn) {
+		stop = true;
 		for (team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
 			if(turn < actions.num_turns() && team_has_visible_plan(side)) {
-				end = false;
+				stop = false;
 				side_actions::iterator it = actions.turn_begin(turn), next = it, end = actions.turn_end(turn);
 				while(it != end) {
 					std::advance(next, 1);

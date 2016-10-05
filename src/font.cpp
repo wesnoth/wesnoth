@@ -864,7 +864,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 		for(std::vector< std::vector<surface> >::iterator i = surfaces.begin(),
 		    i_end = surfaces.end(); i != i_end; ++i) {
 			size_t xpos = 0;
-			size_t height = 0;
+			height = 0;
 
 			for(std::vector<surface>::iterator j = i->begin(),
 					j_end = i->end(); j != j_end; ++j) {

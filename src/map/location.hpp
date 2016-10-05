@@ -119,8 +119,8 @@ struct map_location {
 	void set_wml_x(int v) { x = v - 1; }
 	void set_wml_y(int v) { y = v - 1; }
 	//on purpose these functions don't take map_location objects, if you use map_location objects to store 'differences' between 2 locations use vector_sum().
-	void add(int x, int y) { this->x += x; this->y += y; }
-	map_location plus(int x, int y) const { return map_location(this->x + x, this->y + y); }
+	void add(int x_diff, int y_diff) { x += x_diff; y += y_diff; }
+	map_location plus(int x_diff, int y_diff) const { return map_location(x + x_diff, y + y_diff); }
 
 
 	int x, y;

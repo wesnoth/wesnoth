@@ -162,8 +162,8 @@ void positional_source::update(unsigned int time, const display &disp)
 		}
 
 		int distance_volume = DISTANCE_SILENT;
-		for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
-			int v = calculate_volume(*i, disp);
+		for(const map_location& l : locations_) {
+			int v = calculate_volume(l, disp);
 			if(v < distance_volume) {
 				distance_volume = v;
 			}

@@ -143,36 +143,35 @@ tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, grid(nullptr)
 {
-	const config& definition = cfg.child("definition");
+	const config& grid_definition = cfg.child("definition");
 
-	VALIDATE(definition, _("No list defined."));
-	grid = std::make_shared<tbuilder_grid>(definition);
+	VALIDATE(grid_definition, _("No list defined."));
+	grid = std::make_shared<tbuilder_grid>(grid_definition);
 	assert(grid);
 }
 
 twidget* tbuilder_scrollbar_panel::build() const
 {
-	tscrollbar_panel* widget = new tscrollbar_panel();
+	tscrollbar_panel* panel = new tscrollbar_panel();
 
-	init_control(widget);
+	init_control(panel);
 
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+	panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
 	std::shared_ptr<const tscrollbar_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const tscrollbar_panel_definition::
-												  tresolution>(
-					widget->config());
+			= std::static_pointer_cast<const tscrollbar_panel_definition::tresolution>(
+				panel->config());
 	assert(conf);
 
-	widget->init_grid(conf->grid);
-	widget->finalize_setup();
+	panel->init_grid(conf->grid);
+	panel->finalize_setup();
 
 	/*** Fill the content grid. ***/
-	tgrid* content_grid = widget->content_grid();
+	tgrid* content_grid = panel->content_grid();
 	assert(content_grid);
 
 	const unsigned rows = grid->rows;
@@ -198,7 +197,7 @@ twidget* tbuilder_scrollbar_panel::build() const
 		}
 	}
 
-	return widget;
+	return panel;
 }
 
 } // namespace implementation

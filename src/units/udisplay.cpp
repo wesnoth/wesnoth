@@ -863,12 +863,12 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			text_color = display::rgb(cfg["red"], cfg["green"], cfg["blue"]);
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
-		vconfig t_filter = cfg.child("facing");
+		vconfig t_filter_data = cfg.child("facing");
 		map_location secondary_loc = map_location::null_location();
-		if(!t_filter.empty()) {
-			terrain_filter filter(t_filter, resources::filter_con);
+		if(!t_filter_data.empty()) {
+			terrain_filter t_filter(t_filter_data, resources::filter_con);
 			std::set<map_location> locs;
-			filter.get_locations(locs);
+			t_filter.get_locations(locs);
 			if (!locs.empty() && u->get_location() != *locs.begin()) {
 				map_location::DIRECTION dir =u->get_location().get_relative_dir(*locs.begin());
 				u->set_facing(dir);

@@ -101,7 +101,7 @@ help_manager::~help_manager()
 {
 	game_cfg = nullptr;
 //	map = nullptr;
-	toplevel.clear();
+	default_toplevel.clear();
 	hidden_sections.clear();
     // These last numbers must be reset so that the content is regenerated.
     // Upon next start.
@@ -116,7 +116,7 @@ help_manager::~help_manager()
  */
 void show_help(CVideo& video, const std::string& show_topic, int xloc, int yloc)
 {
-	show_help(video, toplevel, show_topic, xloc, yloc);
+	show_help(video, default_toplevel, show_topic, xloc, yloc);
 }
 
 /**
@@ -126,7 +126,7 @@ void show_help(CVideo& video, const std::string& show_topic, int xloc, int yloc)
  */
 void show_unit_help(CVideo& video, const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
 {
-	show_help(video, toplevel,
+	show_help(video, default_toplevel,
 			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
 }
 
@@ -137,7 +137,7 @@ void show_unit_help(CVideo& video, const std::string& show_topic, bool has_varia
  */
 void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
-	show_help(video, toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+	show_help(video, default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
 }
 
 
@@ -147,7 +147,7 @@ void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden
  */
 void show_variation_help(CVideo& video, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
 {
-	show_help(video, toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
+	show_help(video, default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
 }
 
 /**

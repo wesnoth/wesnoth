@@ -191,7 +191,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					for(const t_translation::t_terrain& underlying_terrain : underlying_terrains) {
 
 						const std::string& terrain_id = tdata.get_terrain_info(underlying_terrain).id();
-						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);
+						it = game_config::team_rgb_range.find(terrain_id);
 						if (it == game_config::team_rgb_range.end())
 							continue;
 

@@ -147,12 +147,12 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 				std::vector<std::string> combo_values;
 
 				config::const_child_itors items = menu_button_option.child_range("item");
-				for(auto item : items) {
+				for(auto i : items) {
 					// Comboboxes expect this key to be 'label' not 'name'
-					item["label"] = item["name"];
+					i["label"] = i["name"];
 
-					combo_items.push_back(item);
-					combo_values.push_back(item["value"]);
+					combo_items.push_back(i);
+					combo_values.push_back(i["value"]);
 				}
 
 				if(combo_items.empty()) {

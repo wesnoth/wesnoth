@@ -72,9 +72,9 @@ void addon_info::read(const config& cfg)
 	this->uploads = cfg["uploads"];
 	this->type = get_addon_type(cfg["type"].str());
 
-	const config::const_child_itors& locales = cfg.child_range("translation");
+	const config::const_child_itors& locales_as_configs = cfg.child_range("translation");
 
-	for(const config& locale : locales) {
+	for(const config& locale : locales_as_configs) {
 		this->locales.push_back(locale["language"].str());
 	}
 

@@ -242,11 +242,11 @@ bool halo_impl::effect::render()
 
 	const clip_rect_setter clip_setter(screen, &clip_rect);
 	if(buffer_ == nullptr || buffer_->w != rect.w || buffer_->h != rect.h) {
-		SDL_Rect rect = rect_;
-		buffer_.assign(get_surface_portion(screen,rect));
+		SDL_Rect rect2 = rect_;
+		buffer_.assign(get_surface_portion(screen,rect2));
 	} else {
-		SDL_Rect rect = rect_;
-		sdl_copy_portion(screen,&rect,buffer_,nullptr);
+		SDL_Rect rect2 = rect_;
+		sdl_copy_portion(screen,&rect2,buffer_,nullptr);
 	}
 
 	sdl_blit(surf_,nullptr,screen,&rect);

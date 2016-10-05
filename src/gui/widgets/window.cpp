@@ -747,22 +747,18 @@ void twindow::draw()
 		}
 	}
 
-	if(dirty_list_.empty()) {
-		if(preferences::use_color_cursors() || sunset_) {
-			surface& frame_buffer = get_video_surface();
+	if (dirty_list_.empty()) {
+		if (sunset_) {
+			/** @todo should probably be moved to event::thandler::draw. */
+			static unsigned i = 0;
+			if (++i % sunset_ == 0) {
+				SDL_Rect r = sdl::create_rect(
+					0, 0, frame_buffer->w, frame_buffer->h);
+				const Uint32 color
+					= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, SDL_ALPHA_OPAQUE);
 
-			if(sunset_) {
-				/** @todo should probably be moved to event::thandler::draw. */
-				static unsigned i = 0;
-				if(++i % sunset_ == 0) {
-					SDL_Rect r = sdl::create_rect(
-							0, 0, frame_buffer->w, frame_buffer->h);
-					const Uint32 color
-							= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, SDL_ALPHA_OPAQUE);
-
-					sdl::fill_rect_alpha(r, color, 1, frame_buffer);
-					update_rect(r);
-				}
+				sdl::fill_rect_alpha(r, color, 1, frame_buffer);
+				update_rect(r);
 			}
 		}
 		return;

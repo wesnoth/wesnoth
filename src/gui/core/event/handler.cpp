@@ -470,9 +470,9 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	}
 
 	/***** Set proper state for the other dispatchers. *****/
-	for(auto dispatcher : dispatchers_)
+	for(auto d : dispatchers_)
 	{
-		dynamic_cast<twidget&>(*dispatcher).set_is_dirty(true);
+		dynamic_cast<twidget&>(*d).set_is_dirty(true);
 	}
 
 	activate();

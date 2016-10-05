@@ -610,12 +610,12 @@ void tpreferences::post_build(twindow& window)
 				std::vector<std::string> option_ids;
 
 				for(const config& choice : option.child_range("option")) {
-					config option;
-					option["label"] = choice["name"];
+					config menu_item;
+					menu_item["label"] = choice["name"];
 					if(choice.has_attribute("description")) {
-						option["details"] = std::string("<span color='#777'>") + choice["description"] + "</span>";
+						menu_item["details"] = std::string("<span color='#777'>") + choice["description"] + "</span>";
 					}
-					menu_data.push_back(option);
+					menu_data.push_back(menu_item);
 					option_ids.push_back(choice["id"]);
 				}
 

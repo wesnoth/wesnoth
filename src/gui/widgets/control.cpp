@@ -72,7 +72,7 @@ tcontrol::tcontrol(const implementation::tbuilder_control& builder,
 				   const std::string& control_type)
 	: twidget(builder)
 	, definition_(builder.definition)
-	, label_(builder.label)
+	, label_(builder.label_string)
 	, use_markup_(false)
 	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
 	, tooltip_(builder.tooltip)
@@ -438,8 +438,8 @@ void tcontrol::definition_load_configuration(const std::string& control_type)
 	update_canvas();
 }
 
-tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
-									const tpoint& maximum_size) const
+tpoint tcontrol::get_best_text_size(tpoint minimum_size,
+									tpoint maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -488,7 +488,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
-		const tpoint maximum_size(config_->max_width, config_->max_height);
+		maximum_size = tpoint(config_->max_width, config_->max_height);
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x
 												   : -1);
 	}
@@ -651,7 +651,7 @@ namespace implementation
 tbuilder_control::tbuilder_control(const config& cfg)
 	: tbuilder_widget(cfg)
 	, definition(cfg["definition"])
-	, label(cfg["label"].t_str())
+	, label_string(cfg["label"].t_str())
 	, tooltip(cfg["tooltip"].t_str())
 	, help(cfg["help"].t_str())
 	, use_tooltip_on_label_overflow(true)
@@ -664,7 +664,7 @@ tbuilder_control::tbuilder_control(const config& cfg)
 	VALIDATE_WITH_DEV_MESSAGE(
 			help.empty() || !tooltip.empty(),
 			_("Found a widget with a helptip and without a tooltip."),
-			formatter() << "id '" << id << "' label '" << label
+			formatter() << "id '" << id << "' label '" << label_string
 						 << "' helptip '" << help << "'.");
 
 
@@ -679,7 +679,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_id(id);
 	control->set_definition(definition);
 	control->set_linked_group(linked_group);
-	control->set_label(label);
+	control->set_label(label_string);
 	control->set_tooltip(tooltip);
 	control->set_help_message(help);
 	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);

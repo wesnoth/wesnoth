@@ -183,17 +183,17 @@ namespace { // Support functions
 
 			if (route.steps.empty()) {
 				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities" << std::endl;
-				pathfind::emergency_path_calculator calc(fake_unit, *game_map);
+				pathfind::emergency_path_calculator emergency_calc(fake_unit, *game_map);
 
-				route = pathfind::a_star_search(src, dst, 10000, calc,
+				route = pathfind::a_star_search(src, dst, 10000, emergency_calc,
 						game_map->w(), game_map->h());
 				if(route.steps.empty()) {
 					// This would occur when trying to do a MUF of a unit
 					// over locations which are unreachable to it (infinite movement
 					// costs). This really cannot fail.
 					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain" << std::endl;
-					pathfind::dummy_path_calculator calc(fake_unit, *game_map);
-					route = a_star_search(src, dst, 10000, calc, game_map->w(), game_map->h());
+					pathfind::dummy_path_calculator dummy_calc(fake_unit, *game_map);
+					route = a_star_search(src, dst, 10000, dummy_calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
 				}
 			}
@@ -688,8 +688,8 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 			{
 				//merge children into one
 				config merged_children;
-				for (const config &cfg : data) {
-					merged_children.append(cfg);
+				for (const config &ch : data) {
+					merged_children.append(ch);
 				}
 				data = {merged_children};
 			}

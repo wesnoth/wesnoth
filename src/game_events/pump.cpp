@@ -538,7 +538,7 @@ bool t_pump::operator()()
 		unit::clear_status_caches();
 
 		{ // Block for context::scoped
-			context::scoped evc(impl_->contexts_, false);
+			context::scoped inner_evc(impl_->contexts_, false);
 			if ( resources::lua_kernel->run_event(ev) ) {
 				++impl_->internal_wml_tracking;
 			}

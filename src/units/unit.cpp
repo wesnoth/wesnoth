@@ -526,8 +526,8 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	//don't use the unit_type's attacks if this config has its own defined
 	if(config::const_child_itors cfg_range = cfg.child_range("attack")) {
 		attacks_.clear();
-		for (const config& cfg : cfg_range) {
-			attacks_.emplace_back(new attack_type(cfg));
+		for (const config& c : cfg_range) {
+			attacks_.emplace_back(new attack_type(c));
 		}
 	}
 

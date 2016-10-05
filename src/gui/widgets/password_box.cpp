@@ -136,7 +136,7 @@ twidget* tbuilder_password_box::build() const
 
 	// A password box doesn't have a label but a text.
 	// It also has no history.
-	widget->set_value(label);
+	widget->set_value(label_string);
 
 	DBG_GUI_G << "Window builder: placed password box '" << id
 			  << "' with definition '" << definition << "'.\n";

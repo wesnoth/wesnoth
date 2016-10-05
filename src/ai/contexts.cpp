@@ -1178,14 +1178,14 @@ void readonly_context_impl::recalculate_move_maps() const
 		if (i.valid()) {
 			map_location loc = i->get_location();
 			srcdst_.erase(loc);
-			for(move_map::iterator i = dstsrc_.begin(); i != dstsrc_.end(); ) {
-				if(i->second == loc) {
-					dstsrc_.erase(i++);
+			for(move_map::iterator it = dstsrc_.begin(); it != dstsrc_.end(); ) {
+				if(it->second == loc) {
+					it = dstsrc_.erase(it);
 				} else {
-					++i;
+					++it;
 				}
 			}
-		///@todo 1.9: shall possible moves be modified as well ?
+		///@todo: shall possible moves be modified as well ?
 		}
 	}
 	move_maps_valid_ = true;

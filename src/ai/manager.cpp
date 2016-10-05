@@ -569,7 +569,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 	if (cmd.size()==3){
 		//!add_ai side file
 		if (cmd.at(0)=="!add_ai"){
-			side_number side = lexical_cast<side_number>(cmd.at(1));
+			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,false)){
 				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
@@ -579,7 +579,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 		}
 		//!replace_ai side file
 		if (cmd.at(0)=="!replace_ai"){
-			side_number side = lexical_cast<side_number>(cmd.at(1));
+			side = std::stoi(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,true)){
 					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
@@ -591,7 +591,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 	} else if (cmd.size()==2){
 		//!remove_ai side
 		if (cmd.at(0)=="!remove_ai"){
-			side_number side = lexical_cast<side_number>(cmd.at(1));
+			side = std::stoi(cmd.at(1));
 			remove_ai_for_side(side);
 			return std::string("AI MANAGER: made an attempt to remove AI for side ")+std::to_string(side);
 		}

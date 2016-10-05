@@ -492,7 +492,7 @@ twidget* tbuilder_text_box::build() const
 	init_control(widget);
 
 	// A textbox doesn't have a label but a text
-	widget->set_value(label);
+	widget->set_value(label_string);
 
 	if(!history.empty()) {
 		widget->set_history(history);

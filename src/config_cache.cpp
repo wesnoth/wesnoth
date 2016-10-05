@@ -86,28 +86,28 @@ void config_cache::clear_defines()
 	defines_map_["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 }
 
-void config_cache::get_config(const std::string& path, config& cfg)
+void config_cache::get_config(const std::string& file_path, config& cfg)
 {
-	load_configs(path, cfg);
+	load_configs(file_path, cfg);
 }
 
-void config_cache::write_file(std::string path, const config& cfg)
+void config_cache::write_file(std::string file_path, const config& cfg)
 {
-	filesystem::scoped_ostream stream = filesystem::ostream_file(path);
+	filesystem::scoped_ostream stream = filesystem::ostream_file(file_path);
 	config_writer writer(*stream, true, game_config::cache_compression_level);
 	writer.write(cfg);
 }
 
-void config_cache::write_file(std::string path, const preproc_map& defines)
+void config_cache::write_file(std::string file_path, const preproc_map& defines)
 {
 	if(defines.empty()) {
-		if(filesystem::file_exists(path)) {
-			filesystem::delete_directory(path);
+		if(filesystem::file_exists(file_path)) {
+			filesystem::delete_directory(file_path);
 		}
 		return;
 	}
 
-	filesystem::scoped_ostream stream = filesystem::ostream_file(path);
+	filesystem::scoped_ostream stream = filesystem::ostream_file(file_path);
 	config_writer writer(*stream, true, game_config::cache_compression_level);
 
 	// Write all defines to stream.
@@ -116,9 +116,9 @@ void config_cache::write_file(std::string path, const preproc_map& defines)
 	}
 }
 
-void config_cache::read_file(const std::string& path, config& cfg)
+void config_cache::read_file(const std::string& file_path, config& cfg)
 {
-	filesystem::scoped_istream stream = filesystem::istream_file(path);
+	filesystem::scoped_istream stream = filesystem::istream_file(file_path);
 	read_gz(cfg, *stream);
 }
 
@@ -132,19 +132,19 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 	return config_cache_transaction::instance().add_defines_map_diff(defines_map);
 }
 
-void config_cache::read_configs(const std::string& path, config& cfg, preproc_map& defines_map)
+void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map)
 {
 	//read the file and then write to the cache
-	filesystem::scoped_istream stream = preprocess_file(path, &defines_map);
+	filesystem::scoped_istream stream = preprocess_file(file_path, &defines_map);
 	read(cfg, *stream);
 }
 
-void config_cache::read_cache(const std::string& path, config& cfg)
+void config_cache::read_cache(const std::string& file_path, config& cfg)
 {
 	static const std::string extension = ".gz";
 
 	std::stringstream defines_string;
-	defines_string << path;
+	defines_string << file_path;
 
 	bool is_valid = true;
 
@@ -252,12 +252,12 @@ void config_cache::read_cache(const std::string& path, config& cfg)
 	add_defines_map_diff(copy_map);
 }
 
-void config_cache::read_defines_file(const std::string& path)
+void config_cache::read_defines_file(const std::string& file_path)
 {
 	config cfg;
-	read_file(path, cfg);
+	read_file(file_path, cfg);
 
-	DBG_CACHE << "Reading cached defines from: " << path << "\n";
+	DBG_CACHE << "Reading cached defines from: " << file_path << "\n";
 
 	// use static preproc_define::read_pair(config) to make a object
 	// and pass that object config_cache_transaction::insert_to_active method
@@ -271,21 +271,21 @@ void config_cache::read_defines_queue()
 {
 	const std::vector<std::string>& files = config_cache_transaction::instance().get_define_files();
 
-	for(const std::string &path : files) {
-		read_defines_file(path);
+	for(const std::string &p : files) {
+		read_defines_file(p);
 	}
 }
 
-void config_cache::load_configs(const std::string& path, config& cfg)
+void config_cache::load_configs(const std::string& config_path, config& cfg)
 {
 	// Make sure that we have fake transaction if no real one is going on
 	fake_transaction fake;
 
 	if (use_cache_) {
-		read_cache(path, cfg);
+		read_cache(config_path, cfg);
 	} else {
 		preproc_map copy_map(make_copy_map());
-		read_configs(path, cfg, copy_map);
+		read_configs(config_path, cfg, copy_map);
 		add_defines_map_diff(copy_map);
 	}
 }
@@ -377,22 +377,22 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 	const bool delete_everything = exclude_pattern.empty();
 	bool status = true;
 
-	for(const std::string& path : paths)
+	for(const std::string& file_path : paths)
 	{
 		if(!delete_everything) {
-			const std::string& fn = filesystem::base_name(path);
+			const std::string& fn = filesystem::base_name(file_path);
 
 			if(utils::wildcard_string_match(fn, exclude_pattern)) {
-				LOG_CACHE << "delete_cache_files(): skipping " << path
+				LOG_CACHE << "delete_cache_files(): skipping " << file_path
 						  << " excluded by '" << exclude_pattern << "'\n";
 				continue;
 			}
 		}
 
-		LOG_CACHE << "delete_cache_files(): deleting " << path << '\n';
-		if(!filesystem::delete_directory(path)) {
+		LOG_CACHE << "delete_cache_files(): deleting " << file_path << '\n';
+		if(!filesystem::delete_directory(file_path)) {
 			ERR_CACHE << "delete_cache_files(): could not delete "
-					  << path << '\n';
+					  << file_path << '\n';
 			status = false;
 		}
 	}

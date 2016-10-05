@@ -81,13 +81,13 @@ void terrain_palette::setup(const config& cfg)
 	{
 		if (group_names.find(group["id"]) == group_names.end()) {
 
-			config cfg;
-			cfg["id"] = group["id"];
-			cfg["name"] = group["name"];
+			config group_cfg;
+			group_cfg["id"] = group["id"];
+			group_cfg["name"] = group["name"];
 
-			cfg["icon"] = "icons/terrain/terrain_" + group["icon"].str();
-			cfg["core"] = group["core"];
-			groups_.push_back(item_group(cfg));
+			group_cfg["icon"] = "icons/terrain/terrain_" + group["icon"].str();
+			group_cfg["core"] = group["core"];
+			groups_.push_back(item_group(group_cfg));
 
 			group_names.insert(groups_.back().id);
 		}

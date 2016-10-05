@@ -575,10 +575,10 @@ void tlua_interpreter::controller::tab()
 	std::string text = text_entry->get_value();
 
 	std::string prefix;
-	size_t idx = text.find_last_of(" (");
-	if (idx != std::string::npos) {
-		prefix = text.substr(0, idx+1);
-		text = text.substr(idx+1);
+	size_t prefix_end_pos = text.find_last_of(" (");
+	if (prefix_end_pos != std::string::npos) {
+		prefix = text.substr(0, prefix_end_pos + 1);
+		text = text.substr(prefix_end_pos + 1);
 	}
 
 	std::vector<std::string> matches;

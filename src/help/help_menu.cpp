@@ -184,7 +184,7 @@ int help_menu::process()
 				display_visible_items();
 			} else if (x >= text_start){
 				// click on title open the topic associated to this section
-				chosen_topic_ = find_topic(toplevel, ".."+sec->id );
+				chosen_topic_ = find_topic(default_toplevel, ".."+sec->id );
 			}
 		} else if (selected_item_.t != nullptr) {
 			/// Choose a topic if it is clicked.

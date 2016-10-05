@@ -101,16 +101,16 @@ static void verify(const unit_map& units, const config& cfg) {
 			errbuf.clear();
 		}
 
-		config cfg;
-		u->write(cfg);
+		config u_cfg;
+		u->write(u_cfg);
 
 		bool is_ok = true;
 		static const std::string fields[] = {"type","hitpoints","experience","side",""};
 		for(const std::string* str = fields; str->empty() == false; ++str) {
-			if (cfg[*str] != un[*str]) {
+			if (u_cfg[*str] != un[*str]) {
 				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
 					   << loc << " data source: '" << un[*str]
-					   << "' local: '" << cfg[*str] << "'\n";
+					   << "' local: '" << u_cfg[*str] << "'\n";
 				is_ok = false;
 			}
 		}
@@ -626,10 +626,10 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 {
 	for (const config &cmd : cfg.child_range("command"))
 	{
-		config &cfg = base_->insert_command(base_->size());
-		cfg = cmd;
+		config &cmd_cfg = base_->insert_command(base_->size());
+		cmd_cfg = cmd;
 		if(mark == MARK_AS_SENT) {
-			cfg["sent"] = true;
+			cmd_cfg["sent"] = true;
 		}
 	}
 }

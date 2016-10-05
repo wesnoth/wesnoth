@@ -593,7 +593,6 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 
 bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
 {
-	const int zoom_amount = 4;
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	SCOPE_ED;
 	using namespace hotkey;

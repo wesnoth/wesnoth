@@ -36,7 +36,7 @@ struct ttimer
 };
 
 /** Ids for the timers. */
-static size_t id = 0;
+static size_t next_timer_id = 0;
 
 /** The active timers. */
 static std::map<size_t, ttimer> timers;
@@ -118,12 +118,12 @@ size_t add_timer(const Uint32 interval,
 	DBG_GUI_E << "Adding timer.\n";
 
 	do {
-		++id;
-	} while(id == 0 || timers.find(id) != timers.end());
+		++next_timer_id;
+	} while(next_timer_id == 0 || timers.find(next_timer_id) != timers.end());
 
 	ttimer timer;
 	timer.sdl_id = SDL_AddTimer(
-			interval, timer_callback, reinterpret_cast<void*>(id));
+			interval, timer_callback, reinterpret_cast<void*>(next_timer_id));
 	if(timer.sdl_id == 0) {
 		WRN_GUI_E << "Failed to create an sdl timer." << std::endl;
 		return 0;
@@ -135,10 +135,10 @@ size_t add_timer(const Uint32 interval,
 
 	timer.callback = callback;
 
-	timers.insert(std::make_pair(id, timer));
+	timers.insert(std::make_pair(next_timer_id, timer));
 
-	DBG_GUI_E << "Added timer " << id << ".\n";
-	return id;
+	DBG_GUI_E << "Added timer " << next_timer_id << ".\n";
+	return next_timer_id;
 }
 
 bool remove_timer(const size_t id)

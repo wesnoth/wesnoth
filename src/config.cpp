@@ -1528,7 +1528,6 @@ std::string config::hash() const
 	static const char hash_string[] =
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char hash_str[hash_length + 1];
-	std::string::const_iterator c;
 
 	unsigned int i;
 	for(i = 0; i != hash_length; ++i) {
@@ -1539,12 +1538,12 @@ std::string config::hash() const
 	i = 0;
 	for (const attribute &val : values)
 	{
-		for (c = val.first.begin(); c != val.first.end(); ++c) {
+		for (std::string::const_iterator c = val.first.begin(); c != val.first.end(); ++c) {
 			hash_str[i] ^= *c;
 			if (++i == hash_length) i = 0;
 		}
 		std::string base_str = val.second.t_str().base_str();
-		for (c = base_str.begin(); c != base_str.end(); ++c) {
+		for (std::string::const_iterator c = base_str.begin(); c != base_str.end(); ++c) {
 			hash_str[i] ^= *c;
 			if (++i == hash_length) i = 0;
 		}

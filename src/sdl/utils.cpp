@@ -434,16 +434,18 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				const fixed_t e = 0x000000FF & xsrc;
 				const fixed_t s = 0x000000FF & ysrc;
 				const fixed_t n = 0xFF - s;
-				const fixed_t w = 0xFF - e;
+				// Not called "w" to avoid hiding a function parameter
+				// (would cause a compiler warning in MSVC2015 with /W4)
+				const fixed_t we = 0xFF - e;
 
 				pix[0] = *src_word;              // northwest
 				pix[1] = *(src_word + dx);       // northeast
 				pix[2] = *(src_word + dy);       // southwest
 				pix[3] = *(src_word + dx + dy);  // southeast
 
-				bilin[0] = n*w;
+				bilin[0] = n*we;
 				bilin[1] = n*e;
-				bilin[2] = s*w;
+				bilin[2] = s*we;
 				bilin[3] = s*e;
 
 				int loc;
@@ -1941,8 +1943,9 @@ surface blend_surface(
 surface rotate_any_surface(const surface& surf, float angle, int zoom, int offset, bool optimize)
 {
 	int src_w, src_h, dst_w, dst_h;
-	float min_x, max_x, min_y, max_y, sine, cosine;
+	float min_x, min_y, sine, cosine;
 	{
+		float max_x, max_y;
 		// convert angle to radiant (angle * 2 * PI) / 360
 		const float radians = angle * boost::math::constants::pi<float>() / 180;
 		cosine = static_cast<float>(cos(radians));

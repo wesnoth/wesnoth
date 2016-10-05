@@ -189,33 +189,32 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 			for (size_t i=0; i < square_left.size(); i++) {
 				std::string tmp_val(square_left[i]+1,square_right[i]);
 				std::vector< std::string > tmp = split(tmp_val);
-				std::vector<std::string>::const_iterator itor = tmp.begin();
-				for(; itor != tmp.end(); ++itor) {
-					size_t found_tilde = (*itor).find_first_of('~');
+				for(const std::string& piece : tmp) {
+					size_t found_tilde = piece.find_first_of('~');
 					if (found_tilde == std::string::npos) {
-						size_t found_asterisk = (*itor).find_first_of('*');
+						size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
-							std::string tmp = (*itor);
-							square_expansion.push_back(strip(tmp));
+							std::string tmp2(piece);
+							square_expansion.push_back(strip(tmp2));
 						}
 						else { //'*' multiple expansion
-							std::string s_begin = (*itor).substr(0,found_asterisk);
+							std::string s_begin = piece.substr(0,found_asterisk);
 							s_begin = strip(s_begin);
-							std::string s_end = (*itor).substr(found_asterisk+1);
+							std::string s_end = piece.substr(found_asterisk+1);
 							s_end = strip(s_end);
 							for (int ast=std::stoi(s_end); ast>0; --ast)
 								square_expansion.push_back(s_begin);
 						}
 					}
 					else { //expand number range
-						std::string s_begin = (*itor).substr(0,found_tilde);
+						std::string s_begin = piece.substr(0,found_tilde);
 						s_begin = strip(s_begin);
 						int begin = std::stoi(s_begin);
 						size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
-						std::string s_end = (*itor).substr(found_tilde+1);
+						std::string s_end = piece.substr(found_tilde+1);
 						s_end = strip(s_end);
 						int end = std::stoi(s_end);
 						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
@@ -238,8 +237,8 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 					}
 				}
 				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
-					std::string tmp(i1, i2);
-					ERR_GENERAL << "Square bracket lengths do not match up: "+tmp+"" << std::endl;
+					std::string tmp2(i1, i2);
+					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2 << std::endl;
 					return res;
 				}
 				size_square_exp = square_expansion.size();

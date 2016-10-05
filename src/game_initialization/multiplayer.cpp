@@ -127,16 +127,16 @@ static std::unique_ptr<twesnothd_connection> open_connection(CVideo& video, cons
 	}
 	std::unique_ptr<twesnothd_connection> sock;
 
-	const int pos = h.find_first_of(":");
+	const int colon_index = h.find_first_of(":");
 	std::string host;
 	unsigned int port;
 
-	if(pos == -1) {
+	if(colon_index == -1) {
 		host = h;
 		port = 15000;
 	} else {
-		host = h.substr(0, pos);
-		port = lexical_cast_default<unsigned int>(h.substr(pos + 1), 15000);
+		host = h.substr(0, colon_index);
+		port = lexical_cast_default<unsigned int>(h.substr(colon_index + 1), 15000);
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect

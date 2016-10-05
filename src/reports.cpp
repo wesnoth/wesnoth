@@ -533,9 +533,9 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 				revert = false;
 			} else {
 				int t_def = 100 - u->defense_modifier(t);
-				SDL_Color color = int_to_color(game_config::red_to_green(t_def));
+				SDL_Color t_color = int_to_color(game_config::red_to_green(t_def));
 				tooltip << '\t' << map.get_terrain_info(t).description() << ": "
-					<< span_color(color) << t_def << '%' << naps
+					<< span_color(t_color) << t_def << '%' << naps
 					<< (revert ? _("maximum^max.") : _("minimum^min.")) << '\n';
 			}
 		}
@@ -774,8 +774,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 	typedef std::pair<int, std::set<std::string> > resist_units;
 	for (const resist_units &resist : resistances) {
-		int damage = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
-		tooltip << "<b>" << damage << "</b>  "
+		int damage_with_resistance = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
+		tooltip << "<b>" << damage_with_resistance << "</b>  "
 			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
 			<< utils::join(resist.second, ", ") << '\n';
 	}

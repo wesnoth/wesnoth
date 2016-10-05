@@ -317,9 +317,9 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
 {
-	for (const config &t : cfgs)
+	for (const config &terrain_data : cfgs)
 	{
-		terrain_type terrain(t);
+		terrain_type terrain(terrain_data);
 		DBG_G << "create_terrain_maps: " << terrain.number() << " "
 			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
 

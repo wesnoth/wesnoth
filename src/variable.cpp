@@ -152,9 +152,9 @@ config vconfig::get_parsed_config() const
 			try
 			{
 				config::const_child_itors range = as_nonempty_range(vname);
-				for (const config& child : range)
+				for (const config& ch : range)
 				{
-					res.add_child(name, vconfig(child).get_parsed_config());
+					res.add_child(name, vconfig(ch).get_parsed_config());
 				}
 			}
 			catch(const invalid_variablename_exception&)
@@ -194,9 +194,9 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 				try
 				{
 					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
-					for (const config& child : range)
+					for (const config& ch : range)
 					{
-						res.push_back(vconfig(child, true));
+						res.push_back(vconfig(ch, true));
 					}
 				}
 				catch(const invalid_variablename_exception&)

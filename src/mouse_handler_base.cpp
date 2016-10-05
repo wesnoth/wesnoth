@@ -162,16 +162,15 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			set_scroll_start(event.x, event.y);
 			scroll_started_ = true;
 
-			map_location loc = gui().minimap_location_on(event.x,event.y);
+			map_location minimap_loc = gui().minimap_location_on(event.x,event.y);
 			minimap_scrolling_ = false;
-			if(loc.valid()) {
+			if(minimap_loc.valid()) {
 				simple_warp_ = false;
 				minimap_scrolling_ = true;
-				last_hex_ = loc;
-				gui().scroll_to_tile(loc,display::WARP,false);
+				last_hex_ = minimap_loc;
+				gui().scroll_to_tile(minimap_loc,display::WARP,false);
 			} else if(simple_warp_) {
 				// middle click not on minimap, check gamemap instead
-				loc = gui().hex_clicked_on(event.x,event.y);
 				if(loc.valid()) {
 					last_hex_ = loc;
 					gui().scroll_to_tile(loc,display::WARP,false);

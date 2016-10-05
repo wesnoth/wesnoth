@@ -62,7 +62,7 @@ namespace help {
 
 const config *game_cfg = nullptr;
 // The default toplevel.
-help::section toplevel;
+help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
 help::section hidden_sections;
 
@@ -394,9 +394,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::map<t_string, std::string> special_description;
 	std::map<t_string, std::set<std::string, string_less> > special_units;
 
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &type_mapping : unit_types.types())
 	{
-		const unit_type &type = i.second;
+		const unit_type &type = type_mapping.second;
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
 		if (description_type(type) != FULL_DESCRIPTION)
@@ -494,9 +494,9 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
 	// not encountered yet.
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
+	for (const unit_type_data::unit_type_map::value_type &type_mapping : unit_types.types())
 	{
-		const unit_type &type = i.second;
+		const unit_type &type = type_mapping.second;
 		if (description_type(type) == FULL_DESCRIPTION) {
 
 			std::vector<t_string> const* abil_vecs[2];
@@ -1380,7 +1380,7 @@ std::string get_first_word(const std::string &s)
 
 void generate_contents()
 {
-	toplevel.clear();
+	default_toplevel.clear();
 	hidden_sections.clear();
 	if (game_cfg != nullptr) {
 		const config *help_config = &game_cfg->child("help");
@@ -1388,7 +1388,7 @@ void generate_contents()
 			help_config = &dummy_cfg;
 		}
 		try {
-			toplevel = parse_config(help_config);
+			default_toplevel = parse_config(help_config);
 			// Create a config object that contains everything that is
 			// not referenced from the toplevel element. Read this
 			// config and save these sections and topics so that they
@@ -1400,7 +1400,7 @@ void generate_contents()
 			for (const config &section : help_config->child_range("section"))
 			{
 				const std::string id = section["id"];
-				if (find_section(toplevel, id) == nullptr) {
+				if (find_section(default_toplevel, id) == nullptr) {
 					// This section does not exist referenced from the
 					// toplevel. Hence, add it to the hidden ones if it
 					// is not referenced from another section.
@@ -1417,7 +1417,7 @@ void generate_contents()
 			for (const config &topic : help_config->child_range("topic"))
 			{
 				const std::string id = topic["id"];
-				if (find_topic(toplevel, id) == nullptr) {
+				if (find_topic(default_toplevel, id) == nullptr) {
 					if (!topic_is_referenced(id, *help_config)) {
 						if (ss.str() != "") {
 							ss << ",";

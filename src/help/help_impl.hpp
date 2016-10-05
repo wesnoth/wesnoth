@@ -316,7 +316,7 @@ tdata_cache load_terrain_types_data();
 
 extern const config *game_cfg;
 // The default toplevel.
-extern help::section toplevel;
+extern help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
 extern help::section hidden_sections;
 

@@ -97,7 +97,6 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 		if(key == "!" || key =="(" || key == ")") {
 			throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 		}
-		std::string buf;
 		for(std::string str : rule.second) {
 			nonterminals_[key].possibilities_.emplace_back();
 			std::vector<std::string>* filled = &nonterminals_[key].possibilities_.back();

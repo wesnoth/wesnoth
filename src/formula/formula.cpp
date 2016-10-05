@@ -1117,17 +1117,17 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 				int n = std::stoi(std::string(i1->begin,dot));
 
-				iterator end = i1->end;
+				iterator literal_end = i1->end;
 
-				if( end - dot > 4)
-					end = dot + 4;
+				if(literal_end - dot > 4)
+				   literal_end = dot + 4;
 
 				++dot;
 
 				int f = 0;
 
 				int multiplicator = 100;
-				while( dot != end) {
+				while(dot != literal_end) {
 					f += (*dot - 48)*multiplicator;
 					multiplicator /= 10;
 					++dot;
@@ -1140,7 +1140,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if(i1->type == TOKEN_IDENTIFIER &&
 		          (i1+1)->type == TOKEN_LPARENS &&
 				  (i2-1)->type == TOKEN_RPARENS) {
-			const token* begin = i1, *end = i2;	//these are used for error reporting
+			const token* function_call_begin = i1, *function_call_end = i2;	//these are used for error reporting
 			int nleft = 0, nright = 0;
 			for(const token* i = i1; i != i2; ++i) {
 				if(i->type == TOKEN_LPARENS) {
@@ -1157,7 +1157,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 					return create_function(std::string(i1->begin,i1->end),args,symbols);
 				}
 				catch(formula_error& e) {
-					throw formula_error(e.type, tokens_to_string(begin,end), *i1->filename, i1->line_number);
+					throw formula_error(e.type, tokens_to_string(function_call_begin, function_call_end), *i1->filename, i1->line_number);
 				}
 			}
 		}
@@ -1216,9 +1216,9 @@ formula_ptr formula::create_optional_formula(const std::string& str, function_sy
 	return formula_ptr(new formula(str, symbols));
 }
 
-formula::formula(const std::string& str, function_symbol_table* symbols) :
+formula::formula(const std::string& text, function_symbol_table* symbols) :
 	expr_(),
-	str_(str),
+	str_(text),
 	symbols_(symbols),
 	managing_symbols(symbols == nullptr)
 {
@@ -1229,7 +1229,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	}
 
 	std::vector<token> tokens;
-	std::string::const_iterator i1 = str.begin(), i2 = str.end();
+	std::string::const_iterator i1 = text.begin(), i2 = text.end();
 
 	//set true when 'fai' keyword is found
 	bool fai_keyword = false;

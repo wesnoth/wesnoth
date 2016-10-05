@@ -468,8 +468,8 @@ private:
 	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_best_text_size(const tpoint& minimum_size,
-							  const tpoint& maximum_size = {0, 0}) const;
+	tpoint get_best_text_size(tpoint minimum_size,
+							  tpoint maximum_size = {0, 0}) const;
 
 	/**
 	 * Contains a helper cache for the rendering.
@@ -528,7 +528,7 @@ public:
 
 	/** Parameters for the control. */
 	std::string definition;
-	t_string label;
+	t_string label_string;
 	t_string tooltip;
 	t_string help;
 	bool use_tooltip_on_label_overflow;

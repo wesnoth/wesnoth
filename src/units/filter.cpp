@@ -228,7 +228,7 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 		scoped_xy_unit auto_store("this_unit", loc, fc_.get_disp_context().units());
 		if (u2) {
 			const map_location& loc2 = u2->get_location();
-			scoped_xy_unit auto_store("other_unit", loc2, fc_.get_disp_context().units());
+			scoped_xy_unit u2_auto_store("other_unit", loc2, fc_.get_disp_context().units());
 			matches = internal_matches_filter(u, loc, u2);
 		} else {
 			matches = internal_matches_filter(u, loc, u2);

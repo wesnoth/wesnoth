@@ -844,8 +844,8 @@ double move_to_targets_phase::rate_group(const std::set<map_location>& group, co
 
 		int best_attack = 0;
 		for(const attack_type& a : un.attacks()) {
-			const int strength = a.num_attacks() * a.damage();
-			best_attack = std::max<int>(strength,best_attack);
+			const int attack_strength = a.num_attacks() * a.damage();
+			best_attack = std::max<int>(attack_strength, best_attack);
 		}
 
 		const int rating = (defense*best_attack*un.hitpoints())/(100*un.max_hitpoints());

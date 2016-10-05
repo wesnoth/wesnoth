@@ -164,7 +164,7 @@ config teleport_group::to_config() const {
 
 teleport_map::teleport_map(
 		  const std::vector<teleport_group>& groups
-		, const unit& u
+		, const unit& unit
 		, const team &viewing_team
 		, const bool see_all
 		, const bool ignore_units
@@ -182,8 +182,8 @@ teleport_map::teleport_map(
 			continue;
 		}
 
-		group.get_teleport_pair(locations, u, ignore_units);
-		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
+		group.get_teleport_pair(locations, unit, ignore_units);
+		if (!see_all && !group.always_visible() && viewing_team.is_enemy(unit.side())) {
 			teleport_pair filter_locs;
 			for (const map_location &loc : locations.first) {
 				if(!viewing_team.fogged(loc))

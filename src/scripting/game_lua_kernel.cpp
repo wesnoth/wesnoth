@@ -1652,18 +1652,18 @@ error:
 int game_lua_kernel::intf_find_cost_map(lua_State *L)
 {
 	int arg = 1;
-	unit* u = luaW_tounit(L, arg, true);
+	unit* unit = luaW_tounit(L, arg, true);
 	vconfig filter = vconfig::unconstructed_vconfig();
 	luaW_tovconfig(L, arg, filter);
 
-	std::vector<const unit*> real_units;
+	std::vector<const ::unit*> real_units;
 	typedef std::vector<std::tuple<map_location, int, std::string> > unit_type_vector;
 	unit_type_vector fake_units;
 
 
-	if (u)  // 1. arg - unit
+	if (unit)  // 1. arg - unit
 	{
-		real_units.push_back(u);
+		real_units.push_back(unit);
 	}
 	else if (!filter.null())  // 1. arg - filter
 	{
@@ -1761,7 +1761,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	pathfind::full_cost_map cost_map(
 			ignore_units, !ignore_teleport, viewing_team, see_all, ignore_units);
 
-	for (const unit* const u : real_units)
+	for (const ::unit* const u : real_units)
 	{
 		cost_map.add_unit(*u, use_max_moves);
 	}
@@ -3365,7 +3365,6 @@ int game_lua_kernel::intf_kill(lua_State *L)
 	if((cfg_x.empty() || cfg_x == "recall")
 	&& (cfg_y.empty() || cfg_y == "recall"))
 	{
-		const unit_filter ufilt(cfg, &game_state_);
 		//remove the unit from the corresponding team's recall list
 		for(std::vector<team>::iterator pi = teams().begin();
 				pi!=teams().end(); ++pi)

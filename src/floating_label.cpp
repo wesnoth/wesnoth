@@ -362,9 +362,12 @@ floating_label_context::floating_label_context()
 
 floating_label_context::~floating_label_context()
 {
-	const std::set<int>& labels = label_contexts.top();
-	for(std::set<int>::const_iterator i = labels.begin(); i != labels.end(); ) {
-		remove_floating_label(*i++);
+	const std::set<int>& context = label_contexts.top();
+	while (!context.empty())
+	{
+		// Remove_floating_label removes the passed label from the context.
+		// This loop removes a different label in every iteration.
+		remove_floating_label(*context.begin());
 	}
 
 	label_contexts.pop();

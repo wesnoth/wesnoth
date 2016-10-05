@@ -419,7 +419,7 @@ static std::vector<std::string> get_variations(const std::string& base, const st
 
 	for (const std::string& v : vars) {
 		res.push_back(base);
-		std::string::size_type pos = 0;
+		pos = 0;
 		while ((pos = res.back().find("@V", pos)) != std::string::npos) {
 			res.back().replace(pos, 2, v);
 			pos += v.size();

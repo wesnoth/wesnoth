@@ -443,9 +443,9 @@ std::vector<map_location> gamemap::parse_location_range(const std::string &x, co
 			yrange.second = ymax;
 		}
 
-		for(int x = xrange.first; x <= xrange.second; ++x) {
-			for(int y = yrange.first; y <= yrange.second; ++y) {
-				res.push_back(map_location(x-1,y-1));
+		for(int x2 = xrange.first; x2 <= xrange.second; ++x2) {
+			for(int y2 = yrange.first; y2 <= yrange.second; ++y2) {
+				res.push_back(map_location(x2-1,y2-1));
 			}
 		}
 	}

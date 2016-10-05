@@ -375,8 +375,8 @@ const twidget* ttree_view_node::find(const std::string& id,
 void ttree_view_node::impl_populate_dirty_list(
 		twindow& caller, const std::vector<twidget*>& call_stack)
 {
-	std::vector<twidget*> child_call_stack = call_stack;
-	grid_.populate_dirty_list(caller, child_call_stack);
+	std::vector<twidget*> my_call_stack = call_stack;
+	grid_.populate_dirty_list(caller, my_call_stack);
 
 	if(is_folded()) {
 		return;

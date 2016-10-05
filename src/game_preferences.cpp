@@ -1167,8 +1167,8 @@ static void encounter_recallable_units(const std::vector<team>& teams){
 void encounter_map_terrain(const gamemap& map)
 {
 	map.for_each_loc([&](const map_location& loc) {
-		const t_translation::t_terrain t = map.get_terrain(loc);
-		preferences::encountered_terrains().insert(t);
+		const t_translation::t_terrain terrain = map.get_terrain(loc);
+		preferences::encountered_terrains().insert(terrain);
 		for (t_translation::t_terrain t : map.underlying_union_terrain(loc)) {
 			preferences::encountered_terrains().insert(t);
 		}

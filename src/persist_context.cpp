@@ -127,7 +127,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		} else {
 			if (immediate) {
 				cfg_ = bak;
-				config *active = get_node(cfg_, namespace_);
+				active = get_node(cfg_, namespace_);
 				if (active != nullptr) {
 					active->clear_children("variables");
 					active->remove_attribute("variables");

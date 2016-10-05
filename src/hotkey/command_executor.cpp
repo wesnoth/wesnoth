@@ -471,14 +471,14 @@ std::vector<config> command_executor::get_menu_images(display& disp, const std::
 				std::string label(item.begin(), item.begin() + item.find_last_not_of(' ') + 1);
 
 				// TODO: To away with the fugly markup, both '=' and 0x01
-				size_t i = label.find_first_of('=');
-				if(i != std::string::npos)
-					result.back()["label"] = label.substr(i + 1);
+				size_t separator_pos = label.find_first_of('=');
+				if(separator_pos != std::string::npos)
+					result.back()["label"] = label.substr(separator_pos + 1);
 				else {
-					i = label.find_first_of(1);
-					if(i != std::string::npos) {
-						result.back()["details"] = label.substr(i + 1);
-						result.back()["image"] = label.substr(1, i - 1);
+					separator_pos = label.find_first_of(1);
+					if(separator_pos != std::string::npos) {
+						result.back()["details"] = label.substr(separator_pos + 1);
+						result.back()["image"] = label.substr(1, separator_pos - 1);
 					} else {
 						result.back()["label"] = label;
 					}

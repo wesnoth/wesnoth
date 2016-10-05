@@ -335,17 +335,17 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 				const int xdiff = (x2-x1);
 				const int ydiff = (y2-y1);
 
-				const int height = radius - int(std::sqrt(double(xdiff*xdiff + ydiff*ydiff)));
+				const int hill_height = radius - int(std::sqrt(double(xdiff*xdiff + ydiff*ydiff)));
 
-				if(height > 0) {
+				if(hill_height > 0) {
 					if(is_valley) {
-						if(height > res[x2][y2]) {
+						if(hill_height > res[x2][y2]) {
 							res[x2][y2] = 0;
 						} else {
-							res[x2][y2] -= height;
+							res[x2][y2] -= hill_height;
 						}
 					} else {
-						res[x2][y2] += height;
+						res[x2][y2] += hill_height;
 					}
 				}
 			}
@@ -772,9 +772,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	}
 
 	terrain_map terrain(data.width, data.height, grassland);
-	size_t x, y;
-	for(x = 0; x != heights.size(); ++x) {
-		for(y = 0; y != heights[x].size(); ++y) {
+	for(size_t x = 0; x != heights.size(); ++x) {
+		for(size_t y = 0; y != heights[x].size(); ++y) {
 			for(auto i : height_conversion) {
 				if(i.convert_terrain(heights[x][y])) {
 					terrain[x][y] = i.convert_to();
@@ -905,8 +904,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	ticks = SDL_GetTicks();
 
 	// Iterate over every flatland tile, and determine what type of flatland it is, based on our [convert] tags.
-	for(x = 0; x != static_cast<unsigned>(data.width); ++x) {
-		for(y = 0; y != static_cast<unsigned>(data.height); ++y) {
+	for(int x = 0; x != data.width; ++x) {
+		for(int y = 0; y != data.height; ++y) {
 			for(auto i : converters) {
 				if(i.convert_terrain(terrain[x][y],heights[x][y],temperature_map[x][y])) {
 					terrain[x][y] = i.convert_to();
@@ -1152,20 +1151,20 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		starting_positions.insert(t_translation::tstarting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
-		const int castles[13][2] = {
+		const int castle_array[13][2] = {
 			{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
 			{-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
 		};
 
 		for(int i = 0; i < data.castle_size - 1; i++) {
-			terrain[x+castles[i][0]][y+castles[i][1]] = t_translation::HUMAN_CASTLE;
+			terrain[x+ castle_array[i][0]][y+ castle_array[i][1]] = t_translation::HUMAN_CASTLE;
 		}
 
 		// Remove all labels under the castle tiles
 		if(labels != nullptr) {
 			labels->erase(map_location(x-data.width/3,y-data.height/3));
 			for(int i = 0; i < data.castle_size - 1; i++) {
-				labels->erase(map_location(x+castles[i][0]-data.width/3, y+castles[i][1]-data.height/3));
+				labels->erase(map_location(x+ castle_array[i][0]-data.width/3, y+ castle_array[i][1]-data.height/3));
 			}
 		}
 	}
@@ -1178,8 +1177,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * roads could split a forest)
 	 */
 	if(misc_labels != nullptr) {
-		for(x = static_cast<unsigned>(data.width) / 3; x < (static_cast<unsigned>(data.width) / 3)*2; x++) {
-			for(y = static_cast<unsigned>(data.height) / 3; y < (static_cast<unsigned>(data.height) / 3) * 2;y++) {
+		for(int x = data.width / 3; x < (data.width / 3)*2; x++) {
+			for(int y = data.height / 3; y < (data.height / 3) * 2;y++) {
 				//check the terrain of the tile
 				const map_location loc(x - data.width / 3, y - data.height / 3);
 				const t_translation::t_terrain terr = terrain[x][y];

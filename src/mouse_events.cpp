@@ -733,17 +733,17 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 	wb::future_map_if_active planned_unit_map; //lasts for whole method
 
-	unit_map::iterator u = find_unit(selected_hex_);
+	unit_map::iterator unit = find_unit(selected_hex_);
 
-	if (selected_hex_.valid() && u.valid() && !u->get_hidden()) {
+	if (selected_hex_.valid() && unit.valid() && !unit->get_hidden()) {
 
-		next_unit_ = u->get_location();
+		next_unit_ = unit->get_location();
 
 		{
-			current_paths_ = pathfind::paths(*u, false, true, viewing_team(), path_turns_);
+			current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), path_turns_);
 		}
 		if(highlight) {
-			show_attack_options(u);
+			show_attack_options(unit);
 			gui().highlight_reach(current_paths_);
 		}
 		// the highlight now comes from selection
@@ -752,11 +752,11 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		gui().set_route(nullptr);
 
 		// selection have impact only if we are not observing and it's our unit
-		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && u->side() == gui().viewing_side()) {
-			if (!(browse || pc_.get_whiteboard()->unit_has_actions(&*u)))
+		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && unit->side() == gui().viewing_side()) {
+			if (!(browse || pc_.get_whiteboard()->unit_has_actions(&*unit)))
 			{
 				sound::play_UI_sound("select-unit.wav");
-				u->anim_comp().set_selecting();
+				unit->anim_comp().set_selecting();
 				if(fire_event) {
 					// ensure unit map is back to normal while event is fired
 					wb::real_map srum;
@@ -768,7 +768,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		return;
 	}
 
-	if (selected_hex_.valid() && !u) {
+	if (selected_hex_.valid() && !unit) {
 		// compute unit in range of the empty selected_hex field
 
 		gui_->unhighlight_reach();
