@@ -168,7 +168,7 @@ void menu_handler::save_map()
 	do {
 		gui2::tfile_dialog dlg;
 
-		dlg.set_title(_("Save the Map As"))
+		dlg.set_title(_("Save Map As"))
 		   .set_save_mode(true)
 		   .set_path(input_name)
 		   .set_extension(".map");
@@ -177,7 +177,7 @@ void menu_handler::save_map()
 			input_name = dlg.path();
 
 			if (filesystem::file_exists(input_name)) {
-				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you wish to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
 			}
 			else

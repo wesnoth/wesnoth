@@ -193,7 +193,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 
 	gui2::tfile_dialog dlg;
 
-	dlg.set_title(_("Choose a File to Open"))
+	dlg.set_title(_("Load Map"))
 	   .set_path(fn);
 
 	if(dlg.show(gui_.video())) {
@@ -452,7 +452,7 @@ void context_manager::apply_mask_dialog()
 
 	gui2::tfile_dialog dlg;
 
-	dlg.set_title(_("Choose a Mask to Apply"))
+	dlg.set_title(_("Apply Mask"))
 	   .set_path(fn);
 
 	if(dlg.show(gui_.video())) {
@@ -623,7 +623,7 @@ void context_manager::save_map_as_dialog()
 
 		gui2::tfile_dialog dlg;
 
-		dlg.set_title(_("Save the Map As"))
+		dlg.set_title(_("Save Map As"))
 		   .set_ok_label(_("Save"))
 		   .set_save_mode(true)
 		   .set_path(input_name)
@@ -634,7 +634,7 @@ void context_manager::save_map_as_dialog()
 
 			if (filesystem::file_exists(input_name)) {
 				int res = gui2::show_message(gui_.video(), "",
-						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+						_("The file already exists. Do you wish to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {
 				overwrite_res = 0;
@@ -661,7 +661,7 @@ void context_manager::save_scenario_as_dialog()
 
 		gui2::tfile_dialog dlg;
 
-		dlg.set_title(_("Save the Scenario As"))
+		dlg.set_title(_("Save Scenario As"))
 		   .set_ok_label(_("Save"))
 		   .set_save_mode(true)
 		   .set_path(input_name)
@@ -672,7 +672,7 @@ void context_manager::save_scenario_as_dialog()
 
 			if (filesystem::file_exists(input_name)) {
 				int res = gui2::show_message(gui_.video(), "",
-						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+						_("The file already exists. Do you wish to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
 			} else {
 				overwrite_res = 0;
