@@ -162,40 +162,27 @@ void menu_handler::status_table()
 
 void menu_handler::save_map()
 {
-	std::string input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
-	int res = 0;
-	int overwrite = 1;
-	do {
-		gui2::tfile_dialog dlg;
+	const std::string& input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
 
-		dlg.set_title(_("Save Map As"))
-		   .set_save_mode(true)
-		   .set_path(input_name)
-		   .set_extension(".map");
+	gui2::tfile_dialog dlg;
 
-		if(dlg.show(gui_->video())) {
-			input_name = dlg.path();
+	dlg.set_title(_("Save Map As"))
+	   .set_save_mode(true)
+	   .set_path(input_name)
+	   .set_extension(".map");
 
-			if (filesystem::file_exists(input_name)) {
-				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you wish to overwrite it?"), gui2::tmessage::yes_no_buttons);
-				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
-			}
-			else
-				overwrite = 0;
-		}
-	} while (res == 0 && overwrite != 0);
+	if(!dlg.show(gui_->video())) {
+		return;
+	}
 
-	// Try to save the map, if it fails we reset the filename.
-	if (res == 0) {
-		try {
-			filesystem::write_file(input_name, map().write());
-			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
-		} catch (filesystem::io_exception& e) {
-			utils::string_map symbols;
-			symbols["msg"] = e.what();
-			const std::string msg = vgettext("Could not save the map: $msg",symbols);
-			gui2::show_transient_message(gui_->video(), "", msg);
-		}
+	try {
+		filesystem::write_file(dlg.path(), map().write());
+		gui2::show_transient_message(gui_->video(), "", _("Map saved."));
+	} catch(filesystem::io_exception& e) {
+		utils::string_map symbols;
+		symbols["msg"] = e.what();
+		const std::string msg = vgettext("Could not save the map: $msg", symbols);
+		gui2::show_transient_message(gui_->video(), "", msg);
 	}
 }
 

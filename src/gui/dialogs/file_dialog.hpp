@@ -253,6 +253,16 @@ private:
 	bool is_selection_type_acceptable(SELECTION_TYPE stype) const;
 
 	/**
+	 * Prompts the user before overwriting an existing file.
+	 *
+	 * This only makes sense in save mode.
+	 *
+	 * @returns @a true if the selection does not refer to an existing file or the
+	 *          user accepted the overwrite prompt; @a false otherwise.
+	 */
+	bool confirm_overwrite(twindow& window, SELECTION_TYPE stype);
+
+	/**
 	 * Updates the internal state and returns the type of the selection.
 	 *
 	 * If the given @a name refers to a non-existent object, the internal state is

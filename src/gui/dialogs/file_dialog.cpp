@@ -248,6 +248,18 @@ bool tfile_dialog::is_selection_type_acceptable(tfile_dialog::SELECTION_TYPE sty
 			: stype == SELECTION_IS_FILE;
 }
 
+bool tfile_dialog::confirm_overwrite(twindow& window, tfile_dialog::SELECTION_TYPE stype)
+{
+	// TODO: Adapt for implementing directory selection mode.
+	if(stype != SELECTION_IS_FILE) {
+		return true;
+	}
+
+	const std::string& message
+			= _("The file already exists. Do you wish to overwrite it?");
+	return gui2::show_message(window.video(), _("Confirm"), message, gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+}
+
 bool tfile_dialog::process_submit_common(twindow& window, const std::string& name)
 {
 	const auto stype = register_new_selection(name);
@@ -255,7 +267,7 @@ bool tfile_dialog::process_submit_common(twindow& window, const std::string& nam
 	//DBG_FILEDLG << "current_dir_=" << current_dir_ << "  current_entry_=" << current_entry_ << '\n';
 
 	if(is_selection_type_acceptable(stype)) {
-		return true;
+		return save_mode_ ? confirm_overwrite(window, stype) : true;
 	}
 
 	switch(stype) {

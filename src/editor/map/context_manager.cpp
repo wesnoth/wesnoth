@@ -612,75 +612,43 @@ void context_manager::resize_map_dialog()
 void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if (input_name.empty()) {
+	if(input_name.empty()) {
 		input_name = filesystem::get_dir(default_dir_ + "/maps");
 	}
-	const std::string old_input_name = input_name;
 
-	int overwrite_res = 1;
-	do {
-		input_name = old_input_name;
+	gui2::tfile_dialog dlg;
 
-		gui2::tfile_dialog dlg;
+	dlg.set_title(_("Save Map As"))
+	   .set_save_mode(true)
+	   .set_path(input_name)
+	   .set_extension(".map");
 
-		dlg.set_title(_("Save Map As"))
-		   .set_save_mode(true)
-		   .set_path(input_name)
-		   .set_extension(".map");
+	if(!dlg.show(gui_.video())) {
+		return;
+	}
 
-		if(dlg.show(gui_.video())) {
-			input_name = dlg.path();
-
-			if (filesystem::file_exists(input_name)) {
-				int res = gui2::show_message(gui_.video(), "",
-						_("The file already exists. Do you wish to overwrite it?"), gui2::tmessage::yes_no_buttons);
-				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
-			} else {
-				overwrite_res = 0;
-			}
-		} else {
-			return; //cancel pressed
-		}
-	} while (overwrite_res != 0);
-
-	save_map_as(input_name);
+	save_map_as(dlg.path());
 }
 
 void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if (input_name.empty()) {
+	if(input_name.empty()) {
 		input_name = filesystem::get_dir(default_dir_ + "/scenarios");
 	}
-	const std::string old_input_name = input_name;
 
-	int overwrite_res = 1;
-	do {
-		input_name = old_input_name;
+	gui2::tfile_dialog dlg;
 
-		gui2::tfile_dialog dlg;
+	dlg.set_title(_("Save Scenario As"))
+	   .set_save_mode(true)
+	   .set_path(input_name)
+	   .set_extension(".cfg");
 
-		dlg.set_title(_("Save Scenario As"))
-		   .set_save_mode(true)
-		   .set_path(input_name)
-		   .set_extension(".cfg");
+	if(!dlg.show(gui_.video())) {
+		return;
+	}
 
-		if(dlg.show(gui_.video())) {
-			input_name = dlg.path();
-
-			if (filesystem::file_exists(input_name)) {
-				int res = gui2::show_message(gui_.video(), "",
-						_("The file already exists. Do you wish to overwrite it?"), gui2::tmessage::yes_no_buttons);
-				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
-			} else {
-				overwrite_res = 0;
-			}
-		} else {
-			return; //cancel pressed
-		}
-	} while (overwrite_res != 0);
-
-	save_scenario_as(input_name);
+	save_scenario_as(dlg.path());
 }
 
 void context_manager::init_map_generators(const config& game_config)
