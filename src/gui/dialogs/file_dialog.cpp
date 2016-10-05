@@ -115,6 +115,7 @@ tfile_dialog::tfile_dialog()
 	, dir_files_()
 	, dir_subdirs_()
 {
+	set_restore(true);
 }
 
 std::string tfile_dialog::path() const
