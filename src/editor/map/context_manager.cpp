@@ -624,7 +624,6 @@ void context_manager::save_map_as_dialog()
 		gui2::tfile_dialog dlg;
 
 		dlg.set_title(_("Save Map As"))
-		   .set_ok_label(_("Save"))
 		   .set_save_mode(true)
 		   .set_path(input_name)
 		   .set_extension(".map");
@@ -662,7 +661,6 @@ void context_manager::save_scenario_as_dialog()
 		gui2::tfile_dialog dlg;
 
 		dlg.set_title(_("Save Scenario As"))
-		   .set_ok_label(_("Save"))
 		   .set_save_mode(true)
 		   .set_path(input_name)
 		   .set_extension(".cfg");
