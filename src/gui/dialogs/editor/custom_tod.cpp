@@ -118,7 +118,8 @@ void tcustom_tod::select_file(const std::string& filename,
 
 	dlg.set_title(_("Choose File"))
 	   .set_ok_label(_("Select"))
-	   .set_path(dn);
+	   .set_path(dn)
+	   .set_read_only(true);
 
 	if(dlg.show(display_.video())) {
 		dn = dlg.path();
