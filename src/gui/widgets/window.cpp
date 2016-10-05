@@ -1135,11 +1135,14 @@ void twindow::layout()
 
 		variables_.add("size_request_mode", variant("size"));
 
-		origin.x = x_(variables_, &functions_);
-		origin.y = y_(variables_, &functions_);
-
 		size.x = w_(variables_, &functions_);
 		size.y = h_(variables_, &functions_);
+
+		variables_.add("window_width", variant(size.x));
+		variables_.add("window_height", variant(size.y));
+
+		origin.x = x_(variables_, &functions_);
+		origin.y = y_(variables_, &functions_);
 	}
 
 	/***** Set the window size *****/
