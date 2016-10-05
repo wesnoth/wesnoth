@@ -226,6 +226,7 @@ hotkey_command_temp hotkey_list_[] = {
 	{ HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", N_("Refresh Image Cache"), false, scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", N_("Draw Hex Coordinates"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes", N_("Draw Terrain Codes"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS, "editor-draw-num-of-bitmaps", N_("Draw Number of Bitmaps"), false, scope_editor, HKCAT_MAP, "" },
 
 	{ HOTKEY_EDITOR_AREA_SAVE,   "editor-save-area",   N_("Save Selection to Area"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_AREA_RENAME, "editor-rename-area", N_("Rename Selected Area"),   false, scope_editor, HKCAT_SCENARIO, "" },

@@ -368,6 +368,11 @@ public:
 	/** Setter for the terrain code debug overlay on tiles */
 	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
 
+	/** Getter for the number of bitmaps debug overlay on tiles */
+	bool get_draw_num_of_bitmaps() const { return draw_num_of_bitmaps_; }
+	/** Setter for the terrain code debug overlay on tiles */
+	void set_draw_num_of_bitmaps(bool value) { draw_num_of_bitmaps_ = value; }
+
 	/** Save a (map-)screenshot and return whether the operation succeeded. */
 	bool screenshot(const std::string& filename, bool map_screenshot = false);
 
@@ -1061,6 +1066,8 @@ private:
 	bool draw_coordinates_;
 	/** Debug flag - overlay terrain codes on tiles */
 	bool draw_terrain_codes_;
+	/** Debug flag - overlay number of bitmaps on tiles */
+	bool draw_num_of_bitmaps_;
 
 	typedef std::list<arrow*> arrows_list_t;
 	typedef std::map<map_location, arrows_list_t > arrows_map_t;

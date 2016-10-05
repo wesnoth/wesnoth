@@ -53,6 +53,8 @@ Version 1.13.5+dev:
    * When using the --wconsole option, the game now prints a prompt in the event
      of a fatal error to avoid closing the console before the error can be seen.
    * Restored GUI2 textbox selection highlight lost in version 1.13.3.
+   * Added a "Draw Number of Bitmaps" option to the map editor, for terrain
+     graphics diagnostics.
  * WML Engine:
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the

@@ -446,6 +446,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return false; //not implemented
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 			return true;
 		default:
 			return false;
@@ -518,6 +519,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 		return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
+	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
+		return gui_->get_draw_num_of_bitmaps() ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
@@ -979,6 +982,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
 			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
+			gui().invalidate_all();
+			return true;
+		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
+			gui().set_draw_num_of_bitmaps(!gui().get_draw_num_of_bitmaps());
+			preferences::editor::set_draw_num_of_bitmaps(gui().get_draw_num_of_bitmaps());
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {

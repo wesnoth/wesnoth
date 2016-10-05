@@ -42,6 +42,9 @@ namespace editor {
 	bool draw_hex_coordinates();
 	void set_draw_hex_coordinates(bool value);
 
+	bool draw_num_of_bitmaps();
+	void set_draw_num_of_bitmaps(bool value);
+
 	/** Retrieves the list of recently opened files. */
 	std::vector<std::string> recent_files();
 	/** Adds an entry to the recent files list. */

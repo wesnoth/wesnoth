@@ -2554,13 +2554,21 @@ void display::draw_hex(const map_location& loc) {
 	const bool on_map = get_map().on_board(loc);
 	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 	const time_of_day& tod = get_time_of_day(loc);
-	if(!shrouded(loc)) {
-		// unshrouded terrain (the normal case)
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos,
-			get_terrain_images(loc,tod.id, image_type, BACKGROUND));
 
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
-			get_terrain_images(loc,tod.id,image_type, FOREGROUND));
+	int num_images_fg = 0;
+	int num_images_bg = 0;
+
+	if(!shrouded(loc)) {
+		std::vector<surface> images_fg = get_terrain_images(loc,tod.id, image_type, FOREGROUND);
+		std::vector<surface> images_bg = get_terrain_images(loc,tod.id, image_type, BACKGROUND);
+
+		num_images_fg = images_fg.size();
+		num_images_bg = images_bg.size();
+
+		// unshrouded terrain (the normal case)
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
+
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
 
 		// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
@@ -2660,9 +2668,11 @@ void display::draw_hex(const map_location& loc) {
 			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
 			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
+			off_y -= text->h / 2;
 			if (draw_terrain_codes_) {
-				off_y -= text->h;
-			} else {
+				off_y -= text->h / 2;
+			}
+			if (draw_num_of_bitmaps_) {
 				off_y -= text->h / 2;
 			}
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
@@ -2676,8 +2686,29 @@ void display::draw_hex(const map_location& loc) {
 			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
 			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
-			if (!draw_coordinates_) {
+			off_y -= text->h / 2;
+			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
+				off_y += text->h / 2;
+			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
 				off_y -= text->h / 2;
+			}
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+		}
+		if (draw_num_of_bitmaps_) {
+			int off_x = xpos + hex_size()/2;
+			int off_y = ypos + hex_size()/2;
+			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface bg = create_neutral_surface(text->w, text->h);
+			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
+			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
+			off_x -= text->w / 2;
+			off_y -= text->h / 2;
+			if (draw_coordinates_) {
+				off_y += text->h / 2;
+			}
+			if (draw_terrain_codes_) {
+				off_y += text->h / 2;
 			}
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);

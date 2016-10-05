@@ -1055,6 +1055,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_event();
 		void do_toggle_draw_coordinates();
 		void do_toggle_draw_terrain_codes();
+		void do_toggle_draw_num_of_bitmaps();
 		void do_toggle_whiteboard();
 		void do_whiteboard_options();
 
@@ -1185,6 +1186,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("show_terrain_codes", &console_handler::do_toggle_draw_terrain_codes,
 				_("Toggle overlaying of terrain codes on hexes."));
 			register_alias("show_terrain_codes", "tc");
+			register_command("show_num_of_bitmaps", &console_handler::do_toggle_draw_num_of_bitmaps,
+				_("Toggle overlaying of number of bitmaps on hexes."));
+			register_alias("show_num_of_bitmaps", "bn");
 			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
 				_("Toggle planning mode."));
 			register_alias("whiteboard", "wb");
@@ -1868,6 +1872,10 @@ void console_handler::do_toggle_draw_coordinates() {
 }
 void console_handler::do_toggle_draw_terrain_codes() {
 	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
+	menu_handler_.gui_->invalidate_all();
+}
+void console_handler::do_toggle_draw_num_of_bitmaps() {
+	menu_handler_.gui_->set_draw_num_of_bitmaps(!menu_handler_.gui_->get_draw_num_of_bitmaps());
 	menu_handler_.gui_->invalidate_all();
 }
 

@@ -50,6 +50,14 @@ namespace editor {
 		preferences::set("editor_draw_hex_coordinates", value);
 	}
 
+	bool draw_num_of_bitmaps() {
+		return preferences::get("editor_draw_num_of_bitmaps", false);
+	}
+
+	void set_draw_num_of_bitmaps(bool value) {
+		preferences::set("editor_draw_num_of_bitmaps", value);
+	}
+
 	namespace {
 		size_t editor_mru_limit()
 		{
