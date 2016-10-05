@@ -163,7 +163,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>MSVCR90;MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -202,7 +202,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile />
@@ -244,7 +244,7 @@
       <PreprocessorDefinitions>_MSC_VER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -277,7 +277,7 @@
       <PreprocessorDefinitions>_MSC_VER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Debug\liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Debug\liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)test.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -316,7 +316,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Release\liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;Release\liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)test.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -364,7 +364,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;cairo.lib;winmm.lib;ws2_32.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;libpng.lib;$(IntDir)liblua.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile />
@@ -1148,7 +1148,6 @@
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\fake_unit_manager.cpp" />
     <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
-    <ClCompile Include="..\..\src\filechooser.cpp" />
     <ClCompile Include="..\..\src\filesystem_boost.cpp" />
     <ClCompile Include="..\..\src\filesystem_common.cpp" />
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
@@ -1860,6 +1859,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\file_dialog.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
@@ -3835,14 +3842,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\file_menu.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\label.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
@@ -4060,7 +4059,6 @@
     <ClInclude Include="..\..\src\exceptions.hpp" />
     <ClInclude Include="..\..\src\fake_unit_manager.hpp" />
     <ClInclude Include="..\..\src\fake_unit_ptr.hpp" />
-    <ClInclude Include="..\..\src\filechooser.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\floating_label.hpp" />
     <ClInclude Include="..\..\src\floating_textbox.hpp" />
@@ -4187,6 +4185,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\edit_label.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\edit_text.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\end_credits.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\file_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\formula_debugger.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp" />
@@ -4243,6 +4242,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\wml_error.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\wml_message.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\button.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\clickable.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\container.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\control.hpp" />
@@ -4264,7 +4264,6 @@
     <ClInclude Include="..\..\src\gui\widgets\matrix.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\menu_button.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\minimap.hpp" />
-    <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\multi_page.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\pane.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\panel.hpp" />
@@ -4527,7 +4526,6 @@
     <ClInclude Include="..\..\src\widgets\combo.hpp" />
     <ClInclude Include="..\..\src\widgets\combo_drag.hpp" />
     <ClInclude Include="..\..\src\widgets\drop_target.hpp" />
-    <ClInclude Include="..\..\src\widgets\file_menu.hpp" />
     <ClInclude Include="..\..\src\widgets\label.hpp" />
     <ClInclude Include="..\..\src\widgets\menu.hpp" />
     <ClInclude Include="..\..\src\widgets\multimenu.hpp" />

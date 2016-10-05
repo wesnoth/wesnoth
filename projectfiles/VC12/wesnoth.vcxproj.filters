@@ -560,6 +560,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\end_credits.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\file_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -740,6 +743,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
@@ -857,6 +863,9 @@
     <ClCompile Include="..\..\src\scripting\lua_map_location_ops.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_race.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
@@ -939,9 +948,6 @@
       <Filter>Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\widgets\drop_target.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\file_menu.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\widgets\label.cpp">
@@ -1431,7 +1437,6 @@
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\fake_unit_manager.cpp" />
     <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
-    <ClCompile Include="..\..\src\filechooser.cpp" />
     <ClCompile Include="..\..\src\filesystem_boost.cpp" />
     <ClCompile Include="..\..\src\filesystem_common.cpp" />
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
@@ -1526,12 +1531,6 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
-    <ClCompile Include="..\..\src\scripting\lua_preferences.cpp">
-      <Filter>Scripting</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.cpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -1957,6 +1956,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\end_credits.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\file_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2140,6 +2142,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
@@ -2305,6 +2310,9 @@
     <ClInclude Include="..\..\src\scripting\lua_pathfind_cost_calculator.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_preferences.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_race.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
@@ -2396,9 +2404,6 @@
       <Filter>Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\widgets\drop_target.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\widgets\file_menu.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\widgets\label.hpp">
@@ -2829,7 +2834,6 @@
     <ClInclude Include="..\..\src\exceptions.hpp" />
     <ClInclude Include="..\..\src\fake_unit_manager.hpp" />
     <ClInclude Include="..\..\src\fake_unit_ptr.hpp" />
-    <ClInclude Include="..\..\src\filechooser.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\floating_label.hpp" />
     <ClInclude Include="..\..\src\floating_textbox.hpp" />
@@ -2938,12 +2942,6 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
-    <ClInclude Include="..\..\src\scripting\lua_preferences.hpp">
-      <Filter>Scripting</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.hpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
