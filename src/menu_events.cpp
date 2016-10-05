@@ -182,7 +182,7 @@ void menu_handler::save_map()
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg", symbols);
-		gui2::show_transient_message(gui_->video(), "", msg);
+		gui2::show_transient_error_message(gui_->video(), msg);
 	}
 }
 
