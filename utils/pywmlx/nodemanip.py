@@ -61,9 +61,6 @@ def newnode(tagname):
     if tagname == "[lua]":
         nodes.append( pos.WmlNode(fileref, fileno, 
                                   tagname, autowml=False) )
-    # elif tagname == "":
-    # self.nodes.append( WmlNode(self.fileref, self.fileno, 
-    #                            "[unknown]", False) )
     else:
         nodes.append( pos.WmlNode(fileref, fileno, 
                                   tagname, autowml=True) )

@@ -122,11 +122,8 @@ class PendingPlural:
         # status values:
         #    'wait_string'    --> rightly after _ ( when we need to know
         #                         wich string type we will manage
-        #    'on_string'      --> on first argument, when ", ' or [ was found
         #    'wait_plural'    --> after first argument. Search for plural or
         #                         close parenthesis
-        #    'on_plural'      --> on second argument, when ", ' or [ is found
-        #                         (after a comma)
         #    'wait_close'     --> expect close parenthesis
         self.status = 'wait_string'
         self.pluraltype = 0
@@ -384,9 +381,6 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
             else:
                 cs_debug = cs.iffail
                 cs = _states.get(cs.iffail)
-            # debug_file = open(os.path.realpath('./debug.txt'), 'a')
-            # print(debug_cs, file=debug_file)
-            # debug_file.close()
         # end while xline
     # end for xline
     pywmlx.nodemanip.closefile(_dictionary, _current_lineno)

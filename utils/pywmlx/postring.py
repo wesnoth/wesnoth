@@ -1,7 +1,11 @@
 import re
 
-# remember... I ised PoCommentedStringML instead of PoCommentedStringML... don't know if something remained in other files
 
+
+# PoCommentedStringPL represents a 'plural' form of a PoCommentedString or a
+# WmlNode. Currently PoCommentedStringPL is currently used only within 
+# PoCommentedString, becouse translation plural forms, in wesnoth, are
+# currently supported only on lua code
 class PoCommentedStringPL:
     def __init__(self, value, *, ismultiline=False):
         self.value = value
@@ -23,7 +27,7 @@ class PoCommentedString:
             self.plural = plural
         
     def set_plural(self, plural_value, *, ismultiline=False):
-        # add_plural is a safe way to add a plural form into a sentence
+        # set_plural is a safe way to add a plural form into a sentence
         # if plural form is still stored, no plural form is added
         if self.plural is None:
             self.plural = PoCommentedStringPL(plural_value, ismultiline)
@@ -41,7 +45,7 @@ class PoCommentedString:
         self.finfos += commented_string.finfos
         self.update_orderid(commented_string.orderid)
         # update plural value only if current sentence actually don't have
-        # a plural form and only if the 
+        # a plural form
         if self.plural is None and isinstance(commented_string.plural,
                                               PoCommentedStringPL):
             self.plural = commented_string.plural
@@ -73,7 +77,7 @@ class PoCommentedString:
             print('msgstr[1] ""', file=filebuf)
 
 
-# Also nodesentence use PoCommentedStringPL for 'plural' parameter
+# WmlNodeSentence use PoCommentedStringPL for 'plural' parameter
 class WmlNodeSentence:
     def __init__(self, sentence, *, ismultiline, lineno, lineno_sub=0,
                  plural=None, override=None, addition=None):

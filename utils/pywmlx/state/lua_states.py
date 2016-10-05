@@ -304,7 +304,6 @@ class LuaPlIdle1:
                     # PendingLuaString.plural to None
                     if status == 'wait_plural':
                         pywmlx.state.machine._pending_luastring.plural = None
-                    # when parenthenthesis
                     xline = xline [ realmatch.end(): ]
                     return (xline, 'lua_idle')
             else:
@@ -320,7 +319,7 @@ class LuaPlIdle1:
                 
         else:
             # You can find a new line rigthly after _ (. In this case, we will
-            # continue
+            # continue to search a string into the next line
             return (None, 'lua_plidle1')
 
 

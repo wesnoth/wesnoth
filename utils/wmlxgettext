@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-# encoding: utf8
+# encoding: utf-8
 #
 # wmlxgettext -- generate a blank .pot file for official campaigns translations
 #                    (build tool for wesnoth core)
