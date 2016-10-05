@@ -145,7 +145,7 @@ void show_wesnothd_server_search(CVideo& video)
 		? old_path : filesystem::get_exe_dir();
 
 	const std::string msg = vgettext(
-			  "The <b>$filename</b> server application provides multiplayer server functionality and is required for hosting local network games. It will normally be found in the same folder where the game executable is installed.", {{"filename", filename}});
+			  "The <b>$filename</b> server application provides multiplayer server functionality and is required for hosting local network games. It will normally be found in the same folder as the game executable.", {{"filename", filename}});
 
 	gui2::tfile_dialog dlg;
 
