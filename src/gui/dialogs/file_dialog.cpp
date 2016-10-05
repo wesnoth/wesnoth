@@ -206,8 +206,8 @@ void tfile_dialog::pre_show(twindow& window)
 		mkdir_button.set_active(false);
 		rm_button.set_active(false);
 
-		mkdir_button.set_visible(twidget::tvisible::hidden);
-		rm_button.set_visible(twidget::tvisible::hidden);
+		mkdir_button.set_visible(twidget::tvisible::invisible);
+		rm_button.set_visible(twidget::tvisible::invisible);
 	}
 
 	refresh_fileview(window);
