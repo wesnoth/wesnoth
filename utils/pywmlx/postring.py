@@ -3,9 +3,9 @@ import re
 
 
 # PoCommentedStringPL represents a 'plural' form of a PoCommentedString or a
-# WmlNode. Currently PoCommentedStringPL is currently used only within 
-# PoCommentedString, becouse translation plural forms, in wesnoth, are
-# currently supported only on lua code
+# WmlNode. Currently PoCommentedStringPL is actually used only within 
+# PoCommentedString 
+# (until wesnoth supports plural forms only on lua code)
 class PoCommentedStringPL:
     def __init__(self, value, *, ismultiline=False):
         self.value = value
