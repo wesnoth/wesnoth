@@ -227,7 +227,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 
 		preproc_map copy_map(make_copy_map());
 
-		read_configs(path, cfg, copy_map);
+		read_configs(file_path, cfg, copy_map);
 		add_defines_map_diff(copy_map);
 
 		try {
@@ -248,7 +248,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 	LOG_CACHE << "Loading plain config instead of cache\n";
 
 	preproc_map copy_map(make_copy_map());
-	read_configs(path, cfg, copy_map);
+	read_configs(file_path, cfg, copy_map);
 	add_defines_map_diff(copy_map);
 }
 
