@@ -705,27 +705,27 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
 			//do nothing
 		}
-		else if (const config &child = cfg->child("speak"))
+		else if (const config &speak = cfg->child("speak"))
 		{
-			const std::string &team_name = child["team_name"];
-			const std::string &speaker_name = child["id"];
-			const std::string &message = child["message"];
+			const std::string &team_name = speak["team_name"];
+			const std::string &speaker_name = speak["id"];
+			const std::string &message = speak["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			if(resources::recorder->add_chat_message_location()) {
 				DBG_REPLAY << "tried to add a chat message twice.\n";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
-					int side = child["side"];
-					resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
+					int side = speak["side"];
+					resources::screen->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
 				}
 			}
 		}
-		else if (const config &child = cfg->child("label"))
+		else if (const config &label_config = cfg->child("label"))
 		{
-			terrain_label label(resources::screen->labels(), child);
+			terrain_label label(resources::screen->labels(), label_config);
 
 			resources::screen->labels().set_label(label.location(),
 						label.text(),
@@ -733,14 +733,14 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						label.team_name(),
 						label.color());
 		}
-		else if (const config &child = cfg->child("clear_labels"))
+		else if (const config &clear_labels = cfg->child("clear_labels"))
 		{
-			resources::screen->labels().clear(std::string(child["team_name"]), child["force"].to_bool());
+			resources::screen->labels().clear(std::string(clear_labels["team_name"]), clear_labels["force"].to_bool());
 		}
-		else if (const config &child = cfg->child("rename"))
+		else if (const config &rename = cfg->child("rename"))
 		{
-			const map_location loc(child);
-			const std::string &name = child["name"];
+			const map_location loc(rename);
+			const std::string &name = rename["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
 			if (u.valid() && !u->unrenamable()) {
@@ -786,17 +786,17 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 			else
 			{
-				if (const config &child = cfg->child("verify")) {
-					verify(*resources::units, child);
+				if (const config &cfg_verify = cfg->child("verify")) {
+					verify(*resources::units, cfg_verify);
 				}
 
 				return REPLAY_FOUND_END_TURN;
 			}
 		}
-		else if (const config &child = cfg->child("countdown_update"))
+		else if (const config &countdown_update = cfg->child("countdown_update"))
 		{
-			int val = child["value"];
-			int tval = child["team"];
+			int val = countdown_update["value"];
+			int tval = countdown_update["team"];
 			if (tval <= 0  || tval > int(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"

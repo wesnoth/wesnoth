@@ -512,12 +512,12 @@ void ui::process_message(const config& msg, const bool whisper) {
 
 void ui::process_network_data(const config& data)
 {
-	if (const config &c = data.child("error")) {
-		throw wesnothd_error(c["message"]);
-	} else if (const config &c = data.child("message")) {
-		process_message(c);
-	} else if (const config &c = data.child("whisper")) {
-		process_message(c, true);
+	if (const config &error = data.child("error")) {
+		throw wesnothd_error(error["message"]);
+	} else if (const config &message = data.child("message")) {
+		process_message(message);
+	} else if (const config &whisper = data.child("whisper")) {
+		process_message(whisper, true);
 	} else if(data.child("gamelist")) {
 		const cursor::setter cursor_setter(cursor::WAIT);
 		gamelist_initialized_ = true;
@@ -525,10 +525,10 @@ void ui::process_network_data(const config& data)
 		gamelist_updated(false);
 		gamelist_refresh_ = false;
 		lobby_clock_ = SDL_GetTicks();
-	} else if (const config &c = data.child("gamelist_diff")) {
+	} else if (const config &gamelist_diff = data.child("gamelist_diff")) {
 		if(gamelist_initialized_) {
 			try {
-				gamelist_.apply_diff(c);
+				gamelist_.apply_diff(gamelist_diff);
 			} catch(config::error& e) {
 				ERR_CF << "Error while applying the gamelist diff: '"
 					<< e.message << "' Getting a new gamelist.\n";
@@ -536,39 +536,39 @@ void ui::process_network_data(const config& data)
 			}
 			gamelist_refresh_ = true;
 		}
-	} else if (const config &c = data.child("room_join")) {
-		if (c["player"] == preferences::login()) {
+	} else if (const config &room_join = data.child("room_join")) {
+		if (room_join["player"] == preferences::login()) {
 			chat_.add_message(time(nullptr), "server",
-				"You have joined the room '" + c["room"].str() + "'");
+				"You have joined the room '" + room_join["room"].str() + "'");
 		} else {
 			chat_.add_message(time(nullptr), "server",
-				c["player"].str() + " has joined the room '" + c["room"].str() + "'");
+				room_join["player"].str() + " has joined the room '" + room_join["room"].str() + "'");
 		}
 		chat_.update_textbox(chat_textbox_);
-	} else if (const config &c = data.child("room_part")) {
-		if (c["player"] == preferences::login()) {
+	} else if (const config &room_part = data.child("room_part")) {
+		if (room_part["player"] == preferences::login()) {
 			chat_.add_message(time(nullptr), "server",
-				"You have left the room '" + c["room"].str() + "'");
+				"You have left the room '" + room_part["room"].str() + "'");
 		} else {
 			chat_.add_message(time(nullptr), "server",
-				c["player"].str() + " has left the room '" + c["room"].str() + "'");
+				room_part["player"].str() + " has left the room '" + room_part["room"].str() + "'");
 		}
 		chat_.update_textbox(chat_textbox_);
-	} else if (const config &c = data.child("room_query_response")) {
-		if (const config &ms = c.child("members")) {
+	} else if (const config &room_query_response = data.child("room_query_response")) {
+		if (const config &ms = room_query_response.child("members")) {
 			std::stringstream ss;
-			ss << "Room " << c["room"].str() << " members: ";
+			ss << "Room " << room_query_response["room"].str() << " members: ";
 			for (const config& m : ms.child_range("member")) {
 				ss << m["name"] << " ";
 			}
 			chat_.add_message(time(nullptr), "server", ss.str());
 			chat_.update_textbox(chat_textbox_);
 		}
-		if (const config &rs = c.child("rooms")) {
+		if (const config &rooms = room_query_response.child("rooms")) {
 			std::stringstream ss;
 			ss << "Rooms: ";
-			for (const config& r : rs.child_range("room")) {
-				ss << r["name"].str() << "(" << r["size"].str() << ") ";
+			for (const config& room : rooms.child_range("room")) {
+				ss << room["name"].str() << "(" << room["size"].str() << ") ";
 			}
 			chat_.add_message(time(nullptr), "server", ss.str());
 			chat_.update_textbox(chat_textbox_);

@@ -419,20 +419,20 @@ void theme::object::modify_location(const _rect& rect){
 	location_modified_ = true;
 }
 
-void theme::object::modify_location(std::string rect_str, SDL_Rect ref_rect){
+void theme::object::modify_location(std::string rect_str, SDL_Rect location_ref_rect){
 	_rect rect = { 0, 0, 0, 0 };
 	const std::vector<std::string> items = utils::split(rect_str.c_str());
 	if(items.size() >= 1) {
-		rect.x1 = compute(items[0], ref_rect.x, ref_rect.x + ref_rect.w);
+		rect.x1 = compute(items[0], location_ref_rect.x, location_ref_rect.x + location_ref_rect.w);
 	}
 	if(items.size() >= 2) {
-		rect.y1 = compute(items[1], ref_rect.y, ref_rect.y + ref_rect.h);
+		rect.y1 = compute(items[1], location_ref_rect.y, location_ref_rect.y + location_ref_rect.h);
 	}
 	if(items.size() >= 3) {
-		rect.x2 = compute(items[2], ref_rect.x + ref_rect.w, rect.x1);
+		rect.x2 = compute(items[2], location_ref_rect.x + location_ref_rect.w, rect.x1);
 	}
 	if(items.size() >= 4) {
-		rect.y2 = compute(items[3], ref_rect.y + ref_rect.h, rect.y1);
+		rect.y2 = compute(items[3], location_ref_rect.y + location_ref_rect.h, rect.y1);
 	}
 	modify_location(rect);
 }
@@ -825,8 +825,8 @@ void theme::set_object_location(theme::object& element, std::string rect_str, st
 		ref_element = find_element(ref_id);
 	}
 	if (ref_element.get_id() == ref_id){
-		SDL_Rect ref_rect = ref_element.get_location();
-		element.modify_location(rect_str, ref_rect);
+		SDL_Rect location_ref_rect = ref_element.get_location();
+		element.modify_location(rect_str, location_ref_rect);
 	}
 }
 

@@ -785,26 +785,26 @@ static int impl_ai_aspect_get(lua_State* L)
 	}
 	
 	typedef std::vector<std::string> string_list;
-	if(typesafe_aspect<bool>* aspect = try_aspect_as<bool>(iter->second)) {
-		lua_pushboolean(L, aspect->get());
-	} else if(typesafe_aspect<int>* aspect = try_aspect_as<int>(iter->second)) {
-		lua_pushinteger(L, aspect->get());
-	} else if(typesafe_aspect<double>* aspect = try_aspect_as<double>(iter->second)) {
-		lua_pushnumber(L, aspect->get());
-	} else if(typesafe_aspect<config>* aspect = try_aspect_as<config>(iter->second)) {
-		luaW_pushconfig(L, aspect->get());
-	} else if(typesafe_aspect<string_list>* aspect = try_aspect_as<string_list>(iter->second)) {
-		lua_push(L, aspect->get());
-	} else if(typesafe_aspect<terrain_filter>* aspect = try_aspect_as<terrain_filter>(iter->second)) {
+	if(typesafe_aspect<bool>* aspect_as_bool = try_aspect_as<bool>(iter->second)) {
+		lua_pushboolean(L, aspect_as_bool->get());
+	} else if(typesafe_aspect<int>* aspect_as_int = try_aspect_as<int>(iter->second)) {
+		lua_pushinteger(L, aspect_as_int->get());
+	} else if(typesafe_aspect<double>* aspect_as_double = try_aspect_as<double>(iter->second)) {
+		lua_pushnumber(L, aspect_as_double->get());
+	} else if(typesafe_aspect<config>* aspect_as_config = try_aspect_as<config>(iter->second)) {
+		luaW_pushconfig(L, aspect_as_config->get());
+	} else if(typesafe_aspect<string_list>* aspect_as_string_list = try_aspect_as<string_list>(iter->second)) {
+		lua_push(L, aspect_as_string_list->get());
+	} else if(typesafe_aspect<terrain_filter>* aspect_as_terrain_filter = try_aspect_as<terrain_filter>(iter->second)) {
 		std::set<map_location> result;
-		aspect->get().get_locations(result);
+		aspect_as_terrain_filter->get().get_locations(result);
 		lua_push(L, result);
-	} else if(typesafe_aspect<attacks_vector>* aspect = try_aspect_as<attacks_vector>(iter->second)) {
+	} else if(typesafe_aspect<attacks_vector>* aspect_as_attacks_vector = try_aspect_as<attacks_vector>(iter->second)) {
 		// This case is caught separately above, but should the get_* aspect functions ever be
 		// deprecated, this is the place to move the code of cfun_ai_get_attacks to.
-		(void) aspect;
-	} else if(typesafe_aspect<unit_advancements_aspect>* aspect = try_aspect_as<unit_advancements_aspect>(iter->second)) {
-		const unit_advancements_aspect& val = aspect->get();
+		(void) aspect_as_attacks_vector;
+	} else if(typesafe_aspect<unit_advancements_aspect>* aspect_as_unit_advancements_aspects = try_aspect_as<unit_advancements_aspect>(iter->second)) {
+		const unit_advancements_aspect& val = aspect_as_unit_advancements_aspects->get();
 		int my_side = luaW_getglobal(L, "ai", "side") - 1;
 		lua_newtable(L);
 		std::hash<map_location> lhash;

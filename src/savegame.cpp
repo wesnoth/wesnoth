@@ -697,12 +697,12 @@ static void convert_old_saves_1_11_0(config& cfg)
 
 		//get variables according to old hierarchy and copy them to new carryover_sides
 		if(!snapshot.empty()){
-			if(const config& variables = snapshot.child("variables")){
-				carryover.add_child("variables", variables);
+			if(const config& variables_from_snapshot = snapshot.child("variables")){
+				carryover.add_child("variables", variables_from_snapshot);
 				carryover_start.add_child("variables", replay_start.child_or_empty("variables"));
-			} else if (const config& variables = cfg.child("variables")){
-				carryover.add_child("variables", variables);
-				carryover_start.add_child("variables", variables);
+			} else if (const config& variables_from_cfg = cfg.child("variables")){
+				carryover.add_child("variables", variables_from_cfg);
+				carryover_start.add_child("variables", variables_from_cfg);
 			}
 		} else if (!replay_start.empty()){
 			if(const config& variables = replay_start.child("variables")){

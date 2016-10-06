@@ -711,16 +711,16 @@ void tchatbox::process_message(const ::config& data, bool whisper /*= false*/)
 
 bool tchatbox::process_network_data(const ::config& data)
 {
-	if(const ::config& c = data.child("message")) {
-		process_message(c);
-	} else if(const ::config& c = data.child("whisper")) {
-		process_message(c, true);
-	} else if(const ::config& c = data.child("room_join")) {
-		process_room_join(c);
-	} else if(const ::config& c = data.child("room_part")) {
-		process_room_part(c);
-	} else if(const ::config& c = data.child("room_query_response")) {
-		process_room_query_response(c);
+	if(const ::config& message = data.child("message")) {
+		process_message(message);
+	} else if(const ::config& whisper = data.child("whisper")) {
+		process_message(whisper, true);
+	} else if(const ::config& room_join = data.child("room_join")) {
+		process_room_join(room_join);
+	} else if(const ::config& room_part = data.child("room_part")) {
+		process_room_part(room_part);
+	} else if(const ::config& room_query_response = data.child("room_query_response")) {
+		process_room_query_response(room_query_response);
 	}
 
 	return false;
