@@ -213,6 +213,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	redraw_observers_(),
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
+	draw_num_of_bitmaps_(false),
 	arrows_map_(),
 	color_adjust_(),
 	dirty_()
