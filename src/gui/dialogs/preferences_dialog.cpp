@@ -664,12 +664,9 @@ void tpreferences::post_build(twindow& window)
 		std::ref(advanced),
 		std::ref(window)));
 #else
-	advanced.set_callback_value_change(make_dialog_callback(
-		std::bind(
-		&tpreferences::on_advanced_prefs_list_select,
-		this,
-		std::ref(advanced),
-		std::ref(window))));
+	advanced.set_callback_value_change([&, this](twidget&) {
+		on_advanced_prefs_list_select(advanced, window);
+	});
 #endif
 
 	on_advanced_prefs_list_select(advanced, window);
