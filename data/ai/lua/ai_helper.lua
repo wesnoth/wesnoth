@@ -152,8 +152,9 @@ function ai_helper.checked_move_core(ai, unit, x, y, move_type)
         -- The following errors are not fatal:
         -- E_EMPTY_MOVE = 2001
         -- E_AMBUSHED = 2005
+        -- E_FAILED_TELEPORT = 2006,
         -- E_NOT_REACHED_DESTINATION = 2007
-        if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
+        if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2006) and (check.status ~= 2007) then
             ai.stopunit_moves(unit)
             ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status)
             return
