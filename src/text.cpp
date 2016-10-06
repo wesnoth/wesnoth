@@ -128,7 +128,7 @@ ttext::ttext() :
 	 * Set the pango spacing a bit bigger since the default is deemed to small
 	 * http://www.wesnoth.org/forum/viewtopic.php?p=358832#p358832
 	 */
-	pango_layout_set_spacing(layout_, 2 * PANGO_SCALE);
+	pango_layout_set_spacing(layout_, 4 * PANGO_SCALE);
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
