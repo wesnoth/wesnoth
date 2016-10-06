@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/lobby/lobby.hpp"
 
-#include "gui/auxiliary/field.hpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
@@ -51,18 +51,6 @@
 #include "wesnothd_connection.hpp"
 
 #include "utils/functional.hpp"
-
-static lg::log_domain log_network("network");
-#define DBG_NW LOG_STREAM(debug, log_network)
-#define LOG_NW LOG_STREAM(info, log_network)
-#define ERR_NW LOG_STREAM(err, log_network)
-
-static lg::log_domain log_engine("engine");
-#define LOG_NG LOG_STREAM(info, log_engine)
-#define ERR_NG LOG_STREAM(err, log_engine)
-
-static lg::log_domain log_config("config");
-#define ERR_CF LOG_STREAM(err, log_config)
 
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
