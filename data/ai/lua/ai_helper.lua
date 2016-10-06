@@ -64,7 +64,7 @@ function ai_helper.put_labels(map, cfg)
     --   - show_coords: (boolean) use hex coordinates as labels instead of value
     --   - factor=1: (number) if value is a number, multiply by this factor
     --   - keys: (array) if the value to be displayed is a subelement of the LS data,
-    --     use these keys to access it.  For example, if we want to display data[3]
+    --     use these keys to access it. For example, if we want to display data[3]
     --     set keys = { 3 }, if it's data.arg[3], set keys = { 'arg', 3 }
 
     cfg = cfg or {}
@@ -521,7 +521,7 @@ end
 
 function ai_helper.get_angle(from_hex, to_hex)
     -- Returns the angle of the direction from @from_hex to @to_hex
-    -- Angle is in radians and goes from -pi to pi.  0 is toward east.
+    -- Angle is in radians and goes from -pi to pi. 0 is toward east.
     -- Input hex tables can be of form { x, y } or { x = x, y = y }, which
     -- means that it is also possible to pass a unit table
     local x1, y1 = from_hex.x or from_hex[1], from_hex.y or from_hex[2]
@@ -541,8 +541,8 @@ function ai_helper.get_direction_index(from_hex, to_hex, n, center_on_east)
     -- means that it is also possible to pass a unit table
     --
     -- Optional input:
-    -- @center_on_east (false): boolean.  By default, the eastern direction is the
-    -- northern border of the first slice.  If this parameter is set, east will
+    -- @center_on_east (false): boolean. By default, the eastern direction is the
+    -- northern border of the first slice. If this parameter is set, east will
     -- instead be the center direction of the first slice
 
     local d_east = 0
