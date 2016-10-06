@@ -132,25 +132,25 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;
 	}
 
-	if (const config &msg = cfg.child("message"))
+	if (const config &message = cfg.child("message"))
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(nullptr), msg["sender"], msg["side"],
-				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), message["sender"], message["side"],
+				message["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
-	else if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
+	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + msg["sender"].str(), 0,
-				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
+		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + whisper["sender"].str(), 0,
+				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
-	else if (const config &ob = cfg.child("observer") )
+	else if (const config &observer = cfg.child("observer") )
 	{
-		resources::screen->get_chat_manager().add_observer(ob["name"]);
+		resources::screen->get_chat_manager().add_observer(observer["name"]);
 	}
-	else if (const config &ob = cfg.child("observer_quit"))
+	else if (const config &observer_quit = cfg.child("observer_quit"))
 	{
-		resources::screen->get_chat_manager().remove_observer(ob["name"]);
+		resources::screen->get_chat_manager().remove_observer(observer_quit["name"]);
 	}
 	else if (cfg.child("leave_game")) {
 		throw ingame_wesnothd_error("");
@@ -269,10 +269,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
-			for (const std::string &ob : resources::screen->observers()) {
-				t_vars["player"] = ob;
+			for (const std::string &screen_observers : resources::screen->observers()) {
+				t_vars["player"] = screen_observers;
 				options.push_back(vgettext("Give control to observer $player", t_vars));
-				observers.push_back(ob);
+				observers.push_back(screen_observers);
 				control_change_options++;
 			}
 
@@ -282,8 +282,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			options.push_back(_("Save and abort game"));
 
 			t_vars["player"] = tm.current_player();
-			const std::string msg =  vgettext("$player has left the game. What do you want to do?", t_vars);
-			gui2::tsimple_item_selector dlg("", msg, options);
+			const std::string gettext_message =  vgettext("$player has left the game. What do you want to do?", t_vars);
+			gui2::tsimple_item_selector dlg("", gettext_message, options);
 			dlg.set_single_button(true);
 			dlg.show(resources::screen->video());
 			action = dlg.selected_index();

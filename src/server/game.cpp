@@ -960,8 +960,8 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 		simple_wml::node* const speak = (**command).child("speak");
 		if (speak == nullptr) {
 			simple_wml::document* mdata = new simple_wml::document;
-			simple_wml::node& turn = mdata->root().add_child("turn");
-			(**command).copy_into(turn.add_child("command"));
+			simple_wml::node& mturn = mdata->root().add_child("turn");
+			(**command).copy_into(mturn.add_child("command"));
 			send_data(*mdata, user, "game replay");
 			record_data(mdata);
 			continue;
@@ -974,9 +974,9 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 		}
 
 		std::unique_ptr<simple_wml::document> message(new simple_wml::document);
-		simple_wml::node& turn = message->root().add_child("turn");
-		simple_wml::node& command = turn.add_child("command");
-		speak->copy_into(command.add_child("speak"));
+		simple_wml::node& message_turn = message->root().add_child("turn");
+		simple_wml::node& message_turn_command = message_turn.add_child("command");
+		speak->copy_into(message_turn_command.add_child("speak"));
 		if (to_sides == "") {
 			send_data(*message, user, "game message");
 			record_data(message.release());

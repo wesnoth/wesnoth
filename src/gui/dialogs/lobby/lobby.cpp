@@ -833,12 +833,12 @@ void tlobby_main::network_handler()
 
 void tlobby_main::process_network_data(const config& data)
 {
-	if(const config& c = data.child("error")) {
-		throw wesnothd_error(c["message"]);
+	if(const config& error = data.child("error")) {
+		throw wesnothd_error(error["message"]);
 	} else if(data.child("gamelist")) {
 		process_gamelist(data);
-	} else if(const config& c = data.child("gamelist_diff")) {
-		process_gamelist_diff(c);
+	} else if(const config& gamelist_diff = data.child("gamelist_diff")) {
+		process_gamelist_diff(gamelist_diff);
 	}
 
 	chatbox_->process_network_data(data);

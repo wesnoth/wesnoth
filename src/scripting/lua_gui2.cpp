@@ -129,42 +129,42 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 	for (; !lua_isnoneornil(L, i); ++i)
 	{
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-		if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+		if (gui2::tlist *list = dynamic_cast<gui2::tlist *>(w))
 #else
-		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+		if (gui2::tlistbox *list = dynamic_cast<gui2::tlistbox *>(w))
 #endif
 		{
 			int v = lua_tointeger(L, i);
 			if (v < 1)
 				goto error_call_destructors_1;
-			int n = l->get_item_count();
+			int n = list->get_item_count();
 			if (v > n) {
 				if (readonly)
 					goto error_call_destructors_1;
 				utils::string_map dummy;
 				for (; n < v; ++n)
-					l->add_row(dummy);
+					list->add_row(dummy);
 			}
-			w = l->get_row_grid(v - 1);
+			w = list->get_row_grid(v - 1);
 		}
-		else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w))
+		else if (gui2::tmulti_page *multi_page = dynamic_cast<gui2::tmulti_page *>(w))
 		{
 			int v = lua_tointeger(L, i);
 			if (v < 1)
 				goto error_call_destructors_1;
-			int n = l->get_page_count();
+			int n = multi_page->get_page_count();
 			if (v > n) {
 				if (readonly)
 					goto error_call_destructors_1;
 				utils::string_map dummy;
 				for (; n < v; ++n)
-					l->add_page(dummy);
+					multi_page->add_page(dummy);
 			}
-			w = &l->page_grid(v - 1);
+			w = &multi_page->page_grid(v - 1);
 		}
-		else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w))
+		else if (gui2::ttree_view *tree_view = dynamic_cast<gui2::ttree_view *>(w))
 		{
-			gui2::ttree_view_node& tvn = tv->get_root_node();
+			gui2::ttree_view_node& tvn = tree_view->get_root_node();
 			if(lua_isnumber(L, i))
 			{
 				int v = lua_tointeger(L, i);
@@ -183,40 +183,40 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 				w = tvn.find(m, false);
 			}
 		}
-		else if (gui2::ttree_view_node *tvn = dynamic_cast<gui2::ttree_view_node *>(w))
+		else if (gui2::ttree_view_node *tree_view_node = dynamic_cast<gui2::ttree_view_node *>(w))
 		{
 			if(lua_isnumber(L, i))
 			{
 				int v = lua_tointeger(L, i);
 				if (v < 1)
 					goto error_call_destructors_1;
-				int n = tvn->count_children();
+				int n = tree_view_node->count_children();
 				if (v > n) {
 					goto error_call_destructors_1;
 				}
-				w = &tvn->get_child_at(v - 1);
+				w = &tree_view_node->get_child_at(v - 1);
 
 			}
 			else
 			{
 				std::string m = luaL_checkstring(L, i);
-				w = tvn->find(m, false);
+				w = tree_view_node->find(m, false);
 			}
 		}
-		else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+		else if(gui2::tstacked_widget* stacked_widget = dynamic_cast<gui2::tstacked_widget*>(w)) {
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
 					goto error_call_destructors_1;
 				}
-				int n = sw->get_layer_count();
+				int n = stacked_widget->get_layer_count();
 				if(v > n) {
 					goto error_call_destructors_1;
 				}
-				w = sw->get_layer_grid(v - 1);
+				w = stacked_widget->get_layer_grid(v - 1);
 			} else {
 				std::string m = luaL_checkstring(L, i);
-				w = sw->find(m, false);
+				w = stacked_widget->find(m, false);
 			}
 		}
 		else
@@ -423,71 +423,71 @@ int intf_set_dialog_value(lua_State *L)
 	gui2::twidget *w = find_widget(L, 2, false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+	if (gui2::tlist *list = dynamic_cast<gui2::tlist *>(w))
 #else
-	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+	if (gui2::tlistbox *list = dynamic_cast<gui2::tlistbox *>(w))
 #endif
 	{
 		int v = luaL_checkinteger(L, 1);
-		int n = l->get_item_count();
+		int n = list->get_item_count();
 		if (1 <= v && v <= n)
-			l->select_row(v - 1);
+			list->select_row(v - 1);
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
-	else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w))
+	else if (gui2::tmulti_page *multi_page = dynamic_cast<gui2::tmulti_page *>(w))
 	{
 		int v = luaL_checkinteger(L, 1);
-		int n = l->get_page_count();
+		int n = multi_page->get_page_count();
 		if (1 <= v && v <= n)
-			l->select_page(v - 1);
+			multi_page->select_page(v - 1);
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
-	else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w))
+	else if (gui2::tselectable_ *selectable = dynamic_cast<gui2::tselectable_ *>(w))
 	{
-		if(s->num_states() == 2) {
-			s->set_value_bool(luaW_toboolean(L, 1));
+		if(selectable->num_states() == 2) {
+			selectable->set_value_bool(luaW_toboolean(L, 1));
 		}
 		else {
-			s->set_value(luaL_checkinteger(L, 1) -1);
+			selectable->set_value(luaL_checkinteger(L, 1) -1);
 		}
 	}
-	else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w))
+	else if (gui2::ttext_box *text_box = dynamic_cast<gui2::ttext_box *>(w))
 	{
 		const t_string& text = luaW_checktstring(L, 1);
-		t->set_value(text.str());
+		text_box->set_value(text.str());
 	}
-	else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w))
+	else if (gui2::tslider *slider = dynamic_cast<gui2::tslider *>(w))
 	{
 		const int v = luaL_checkinteger(L, 1);
-		const int m = s->get_minimum_value();
-		const int n = s->get_maximum_value();
+		const int m = slider->get_minimum_value();
+		const int n = slider->get_maximum_value();
 		if (m <= v && v <= n)
-			s->set_value(v);
+			slider->set_value(v);
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
-	else if (gui2::tprogress_bar *p = dynamic_cast<gui2::tprogress_bar *>(w))
+	else if (gui2::tprogress_bar *progress_bar = dynamic_cast<gui2::tprogress_bar *>(w))
 	{
 		const int v = luaL_checkinteger(L, 1);
 		if (0 <= v && v <= 100)
-			p->set_percentage(v);
+			progress_bar->set_percentage(v);
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
-	else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
+	else if(gui2::tstacked_widget* stacked_widget = dynamic_cast<gui2::tstacked_widget*>(w)) {
 		const int v = luaL_checkinteger(L, 1);
-		const int n = sw->get_layer_count();
+		const int n = stacked_widget->get_layer_count();
 		if(v >= 0 && v <= n) {
-			sw->select_layer(v - 1);
+			stacked_widget->select_layer(v - 1);
 		}
 	}
-	else if(gui2::tunit_preview_pane* upp = dynamic_cast<gui2::tunit_preview_pane*>(w)) {
+	else if(gui2::tunit_preview_pane* unit_preview_pane = dynamic_cast<gui2::tunit_preview_pane*>(w)) {
 		if(const unit_type* ut = luaW_tounittype(L, 1)) {
-			upp->set_displayed_type(*ut);
+			unit_preview_pane->set_displayed_type(*ut);
 		} else if(unit* u = luaW_tounit(L, 1)) {
-			upp->set_displayed_unit(*u);
+			unit_preview_pane->set_displayed_unit(*u);
 		} else {
 			return luaL_typerror(L, 1, "unit or unit type");
 		}
@@ -513,37 +513,37 @@ int intf_get_dialog_value(lua_State *L)
 	gui2::twidget *w = find_widget(L, 1, true);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+	if (gui2::tlist *list = dynamic_cast<gui2::tlist *>(w))
 #else
-	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+	if (gui2::tlistbox *list = dynamic_cast<gui2::tlistbox *>(w))
 #endif
 	{
-		lua_pushinteger(L, l->get_selected_row() + 1);
-	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
-		lua_pushinteger(L, l->get_selected_page() + 1);
-	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
+		lua_pushinteger(L, list->get_selected_row() + 1);
+	} else if (gui2::tmulti_page *multi_page = dynamic_cast<gui2::tmulti_page *>(w)) {
+		lua_pushinteger(L, multi_page->get_selected_page() + 1);
+	} else if (gui2::tselectable_ *selectable = dynamic_cast<gui2::tselectable_ *>(w)) {
 
-		if(s->num_states() == 2) {
-			lua_pushboolean(L, s->get_value_bool());
+		if(selectable->num_states() == 2) {
+			lua_pushboolean(L, selectable->get_value_bool());
 		}
 		else {
-			lua_pushinteger(L, s->get_value() + 1);
+			lua_pushinteger(L, selectable->get_value() + 1);
 		}
-	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
-		lua_pushstring(L, t->get_value().c_str());
-	} else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w)) {
-		lua_pushinteger(L, s->get_value());
-	} else if (gui2::tprogress_bar *p = dynamic_cast<gui2::tprogress_bar *>(w)) {
-		lua_pushinteger(L, p->get_percentage());
-	} else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w)) {
-		std::vector<int> path = tv->selected_item()->describe_path();
+	} else if (gui2::ttext_box *text_box = dynamic_cast<gui2::ttext_box *>(w)) {
+		lua_pushstring(L, text_box->get_value().c_str());
+	} else if (gui2::tslider *slider = dynamic_cast<gui2::tslider *>(w)) {
+		lua_pushinteger(L, slider->get_value());
+	} else if (gui2::tprogress_bar *progress_bar = dynamic_cast<gui2::tprogress_bar *>(w)) {
+		lua_pushinteger(L, progress_bar->get_percentage());
+	} else if (gui2::ttree_view *tree_view = dynamic_cast<gui2::ttree_view *>(w)) {
+		std::vector<int> path = tree_view->selected_item()->describe_path();
 		lua_createtable(L, path.size(), 0);
 		for(size_t i =0; i < path.size(); ++i) {
 			lua_pushinteger(L, path[i] + 1);
 			lua_rawseti(L, -2, i + 1);
 		}
-	} else if(gui2::tstacked_widget* sw = dynamic_cast<gui2::tstacked_widget*>(w)) {
-		lua_pushinteger(L, sw->current_layer());
+	} else if(gui2::tstacked_widget* stacked_widget = dynamic_cast<gui2::tstacked_widget*>(w)) {
+		lua_pushinteger(L, stacked_widget->current_layer());
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
@@ -579,18 +579,18 @@ int intf_remove_dialog_item(lua_State *L)
 	gui2::twidget *w = find_widget(L, 3, true);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+	if (gui2::tlist *list = dynamic_cast<gui2::tlist *>(w))
 #else
-	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+	if (gui2::tlistbox *list = dynamic_cast<gui2::tlistbox *>(w))
 #endif
 	{
-		l->remove_row(pos, number);
-	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
-		l->remove_page(pos, number);
-	} else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w)) {
-		remove_treeview_node(tv->get_root_node(), pos, number);
-	} else if (gui2::ttree_view_node *tvn = dynamic_cast<gui2::ttree_view_node *>(w)) {
-		remove_treeview_node(*tvn, pos, number);
+		list->remove_row(pos, number);
+	} else if (gui2::tmulti_page *multi_page = dynamic_cast<gui2::tmulti_page *>(w)) {
+		multi_page->remove_page(pos, number);
+	} else if (gui2::ttree_view *tree_view = dynamic_cast<gui2::ttree_view *>(w)) {
+		remove_treeview_node(tree_view->get_root_node(), pos, number);
+	} else if (gui2::ttree_view_node *tree_view_node = dynamic_cast<gui2::ttree_view_node *>(w)) {
+		remove_treeview_node(*tree_view_node, pos, number);
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 

@@ -911,7 +911,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 
 	const std::string command(query["type"].to_string());
 	std::ostringstream response;
-	const std::string& help_msg = "Available commands are: adminmsg <msg>, help, games, metrics,"
+	const std::string& query_help_msg = "Available commands are: adminmsg <msg>, help, games, metrics,"
 								  " motd, netstats [all], requests, sample, stats, status, wml.";
 	// Commands a player may issue.
 	if (command == "status") {
@@ -948,7 +948,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 			LOG_SERVER << response.str() << std::endl;
 		}
 	} else if (command == "help" || command.empty()) {
-		response << help_msg;
+		response << query_help_msg;
 	} else if (command == "admin" || command.find("admin ") == 0) {
 		if (admin_passwd_.empty()) {
 			send_server_message(socket, "No password set.");
@@ -973,7 +973,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 			response << "Error: wrong password";
 		}
 	} else {
-		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
+		response << "Error: unrecognized query: '" << command << "'\n" << query_help_msg;
 	}
 	send_server_message(socket, response.str());
 }
@@ -1455,10 +1455,10 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		}
 		return;
 	// If this is data describing side changes by the host.
-	} else if (const simple_wml::node* diff = data.child("scenario_diff")) {
+	} else if (const simple_wml::node* scenario_diff = data.child("scenario_diff")) {
 		if (!g.is_owner(socket)) return;
-		g.level().root().apply_diff(*diff);
-		const simple_wml::node* cfg_change = diff->child("change_child");
+		g.level().root().apply_diff(*scenario_diff);
+		const simple_wml::node* cfg_change = scenario_diff->child("change_child");
 		if (cfg_change
 				/**&& cfg_change->child("side") it is very likeley that
 					the diff changes a side so this check isn't that important.
@@ -1510,12 +1510,12 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 				update_game_in_lobby(g, user);
 			}
 			// Send all other players in the lobby the update to the gamelist.
-			simple_wml::document diff;
+			simple_wml::document gamelist_diff;
 			make_change_diff(*games_and_users_list_.child("gamelist"),
-							 "gamelist", "game", g.description(), diff);
+							 "gamelist", "game", g.description(), gamelist_diff);
 			make_change_diff(games_and_users_list_.root(), NULL, "user",
-							 player_connections_.find(user)->info().config_address(), diff);
-			send_to_lobby(diff, socket);
+							 player_connections_.find(user)->info().config_address(), gamelist_diff);
+			send_to_lobby(gamelist_diff, socket);
 			// Send the removed user the lobby game list.
 			send_to_player(user, games_and_users_list_);
 		}
