@@ -219,6 +219,171 @@ function ai_helper.checked_stopunit_moves(ai, unit)
     ai.stopunit_moves(unit)
 end
 
+function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
+    -- Perform a move and/or attack with an AI unit in a way that is robust against
+    -- unexpected outcomes such as being ambushed or changes caused by WML events.
+    -- As much as possible, this function also tries to ensure that the gamestate
+    -- is changed in case an action turns out to be impossible due to such an
+    -- unexpected outcome.
+    --
+    -- Required input parameters:
+    -- @ai: the Lua ai table
+    -- @src: current coordinates of the AI unit to be used
+    -- @dst: coordinates to which the unit should move. This does not have to be
+    --   different from @src. In fact, the unit does not even need to have moves
+    --   left, as long as an attack is specified in the latter case. If another
+    --   AI unit is at @dst, it is moved out of the way.
+    --
+    -- Optional parameters:
+    -- @target_loc: coordinates of the enemy unit to be attacked. If not given, no
+    --   attack is attempted.
+    -- @cfg: configuration table with the following optional parameters:
+    --   partial_move: By default, this function performs full moves. If this
+    --     parameter is true, a partial move is done instead.
+    --   weapon: The number (starting at 1) of the attack weapon to be used.
+    --     If omitted, the best weapon is automatically selected.
+    --   dx, dy: the direction in which moving out of the way is preferred as
+    --        used by ai_helper.move_unit_out_of_way()
+
+    -- Notes:
+    -- - @src, @dst and @target_loc can be any table (including proxy units) that contains
+    --   the coordinates of the respective locations using either indices .x/.y or [1]/[2].
+    --   If both are given, .x/.y takes precedence over [1]/[2].
+    -- - This function only safeguards AI moves against outcomes that the AI cannot know
+    --   about, such as hidden units and WML events. It is assumed that the potential
+    --   move was tested for general feasibility (units are on AI side and have moves
+    --   left, terrain is passable, etc.) beforehand. If that is not done, it might
+    --   lead to very undesirable behavior, incl. the CA being blacklisted or even the
+    --   entire AI turn being ended.
+
+    local src_x, src_y = src.x or src[1], src.y or src[2] -- this works with units or locations
+    local dst_x, dst_y = dst.x or dst[1], dst.y or dst[2]
+
+    local unit = wesnoth.get_unit(src_x, src_y)
+    if (not unit) then return end
+
+    -- Getting target at beginning also, in case events mess up things along the way
+    local target, target_x, target_y
+    if target_loc then
+        target_x, target_y = target_loc.x or target_loc[1], target_loc.y or target_loc[2]
+        target = wesnoth.get_unit(target_x, target_y)
+
+        if (not target) then return end
+    end
+
+    local gamestate_changed = false
+
+    if (unit.moves > 0) then
+        if (src_x == dst_x) and (src_y == dst_y) then
+            local check = ai.stopunit_moves(unit)
+
+            -- The only possible failure modes are non-recoverable (such as E_NOT_OWN_UNIT)
+            if (not check.ok) then return end
+            if (not unit) or (not unit.valid) then return end
+
+            gamestate_changed = true
+        else
+            local unit_old_moves = unit.moves
+
+            local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
+            if unit_in_way and (unit_in_way.side == wesnoth.current.side) and (unit_in_way.moves > 0) then
+                local uiw_old_moves = unit_in_way.moves
+                ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
+
+                if (not unit_in_way) or (not unit_in_way.valid) then return end
+
+                -- Failed move out of way: abandon remaining actions
+                if (unit_in_way.x == dst_x) and (unit_in_way.y == dst_y) then
+                    if (unit_in_way.moves == uiw_old_moves) then
+                        -- Forcing a gamestate change, if necessary
+                        ai.stopunit_moves(unit_in_way)
+                    end
+                    return
+                end
+
+                -- Check whether dst hex is free now (an event could have done something funny)
+                local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
+                if unit_in_way then return end
+
+                gamestate_changed = true
+            end
+
+            if (not unit) or (not unit.valid) or (unit.x ~= src_x) or (unit.y ~= src_y) then
+                return
+            end
+
+            local check = ai.check_move(unit, dst_x, dst_y)
+            if (not check.ok) then
+                -- The following errors are not fatal:
+                -- E_EMPTY_MOVE = 2001
+                -- E_AMBUSHED = 2005
+                -- E_FAILED_TELEPORT = 2006,
+                -- E_NOT_REACHED_DESTINATION = 2007
+                -- In all other cases, we abandon after making sure a gamestate change has happened
+                if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2006) and (check.status ~= 2007) then
+                    if (not gamestate_changed) then
+                        ai.stopunit_moves(unit)
+                    end
+                    return
+                end
+            end
+
+            if cfg and cfg.partial_move then
+                ai.move(unit, dst_x, dst_y)
+            else
+                ai.move_full(unit, dst_x, dst_y)
+            end
+
+            if (not unit) or (not unit.valid) then return end
+
+            -- Failed move: abandon rest of actions
+            if (unit.x == src_x) and (unit.y == src_y) then
+                if (not gamestate_changed) and (unit.moves == unit_old_moves) then
+                    -- Forcing a gamestate change, if necessary
+                    ai.stopunit_moves(unit)
+                end
+                return
+            end
+
+            gamestate_changed = true
+        end
+    end
+
+    -- Tests after the move, before continuing to attack
+    if (not unit) or (not unit.valid) then return end
+    if (unit.x ~= dst_x) or (unit.y ~= dst_y) then return end
+    if (not target) or (not target.valid) then return end
+    if (target.x ~= target_x) or (target.y ~= target_y) then return end
+
+    local weapon = cfg and cfg.weapon
+    local old_attacks_left = unit.attacks_left
+
+    local check = ai.check_attack(unit, target, weapon)
+    if (not check.ok) then
+        if (not gamestate_changed) then
+            ai.stopunit_all(unit)
+        end
+        return
+    end
+
+    ai.attack(unit, target, weapon)
+
+    if (not unit) or (not unit.valid) then return end
+
+    if (unit.attacks_left == old_attacks_left) and (not gamestate_changed) then
+        ai.stopunit_all(unit)
+        return
+    else
+        gamestate_changed = true
+    end
+
+    -- This cannot possibly be reached with gamestate_changed=false at the moment,
+    -- but keeping it in case more is added later.
+    if (not gamestate_changed) then
+        ai.stopunit_all(unit)
+    end
+end
+
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)
