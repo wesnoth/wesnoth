@@ -15,19 +15,18 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
-#include "config_assign.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/field.hpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/chatbox.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -37,26 +36,12 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
-#include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/status_label_helper.hpp"
-#include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "game_config.hpp"
 #include "mp_ui_alerts.hpp"
-#include "settings.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
-#include "formatter.hpp"
 #include "wesnothd_connection.hpp"
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "utils/functional.hpp"
-#endif
 
 namespace gui2
 {
