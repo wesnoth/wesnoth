@@ -186,11 +186,11 @@ std::string get_timespan(const time_t& t) {
 	if(t <= 0) {
 		strncpy(buf, "expired", 100);
 	} else if(minutes == 0) {
-		snprintf(buf, 100, "00:00:%02ld", t);
+		snprintf(buf, 100, "%ld seconds", t);
 	} else if(days == 0) {
-		snprintf(buf, 100, "%02ld:%02ld", minutes / 60, minutes % 60);
+		snprintf(buf, 100, "%ld hours, %ld minutes", minutes / 60, minutes % 60);
 	} else {
-		snprintf(buf, 100, "%ld %02ld:%02ld", days, (minutes / 60) % 24, minutes % 60);
+		snprintf(buf, 100, "%ld days, %ld hours, %ld minutes", days, (minutes / 60) % 24, minutes % 60);
 	}
 	return buf;
 }
