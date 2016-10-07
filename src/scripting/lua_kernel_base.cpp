@@ -140,7 +140,7 @@ int lua_kernel_base::intf_show_lua_console(lua_State *L)
 		return 0;
 	}
 
-	if (cmd_log_.external_log_ != nullptr) {
+	if (cmd_log_.external_log_) {
 		std::string message = "There is already an external logger attached to this lua kernel, you cannot open the lua console right now.";
 		log_error(message.c_str());
 		cmd_log_ << message << "\n";
