@@ -181,6 +181,7 @@ Version 1.13.5+dev:
    * Add tip to recall units instead of recruiting them if costs exceed 20 gold (recruitment costs)
    * Resolve sides in map editor not having a proper side number and subsequently
      causing a crash upon editing (bug #25093)
+   * Avoid rare cases of mini-map producing a divide-by-zero error (bug #25155)
 
 Version 1.13.5:
  * Campaigns:
