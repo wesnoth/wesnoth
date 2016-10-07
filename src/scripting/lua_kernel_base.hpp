@@ -51,7 +51,9 @@ public:
 
 	const std::stringstream & get_log() { cmd_log_.log_ << std::flush; return cmd_log_.log_; }
 	void clear_log() { cmd_log_.log_.str(""); cmd_log_.log_.clear(); }
-	void set_external_log( std::ostream * lg ) { cmd_log_.external_log_ = lg; }
+
+	using external_log_type = std::function<void(const std::string &)>;
+	void set_external_log( external_log_type lg ) { cmd_log_.external_log_ = lg; }
 
 	virtual void log_error(char const* msg, char const* context = "Lua error");
 	virtual void throw_exception(char const* msg, char const* context = "Lua error"); //throws game::lua_error
@@ -74,8 +76,9 @@ protected:
 	CVideo * video_;
 
 	struct command_log {
+
 		std::stringstream log_;
-		std::ostream * external_log_;
+		external_log_type external_log_;
 
 		command_log()
 			: log_()
@@ -85,7 +88,7 @@ protected:
 		inline command_log & operator<< (const std::string & str) {
 			log_ << str;
 			if (external_log_) {
-				(*external_log_) << str;
+				external_log_(str);
 			}
 			return *this;
 		}
@@ -94,7 +97,7 @@ protected:
 			if (str != nullptr) {
 				log_ << str;
 				if (external_log_) {
-					(*external_log_) << str;
+					external_log_(str);
 				}
 			}
 			return *this;
