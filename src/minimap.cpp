@@ -162,16 +162,19 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 					}
 
-					surf = i->second;
+					if (i != cache->end())
+					{
+						surf = i->second;
 
-					if (need_fogging) {
-						surf = adjust_surface_color(surf,-50,-50,-50);
-						fog_cache->insert(cache_map::value_type(terrain,surf));
-					}
+						if (need_fogging) {
+							surf = adjust_surface_color(surf, -50, -50, -50);
+							fog_cache->insert(cache_map::value_type(terrain, surf));
+						}
 
-					if (need_highlighting) {
-						surf = adjust_surface_color(surf,50,50,50);
-						highlight_cache->insert(cache_map::value_type(terrain,surf));
+						if (need_highlighting) {
+							surf = adjust_surface_color(surf, 50, 50, 50);
+							highlight_cache->insert(cache_map::value_type(terrain, surf));
+						}
 					}
 
 					if(surf != nullptr)
