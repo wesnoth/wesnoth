@@ -50,9 +50,9 @@ public:
 	static bool default_prompt();
 
 private:
-	//noncopyable
-	quit_confirmation( const quit_confirmation& );
-	const quit_confirmation& operator=( const quit_confirmation& );
+	// noncopyable
+	quit_confirmation(const quit_confirmation&) = delete;
+	const quit_confirmation& operator=(const quit_confirmation&) = delete;
 	static std::vector<quit_confirmation*> blockers_;
 	static bool open_;
 
