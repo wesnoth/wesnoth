@@ -50,6 +50,7 @@ public:
 		, icon_alignment_(nullptr)
 		, label_name_(nullptr)
 		, label_level_(nullptr)
+		, label_race_(nullptr)
 		, label_details_(nullptr)
 		, label_details_minimal_(nullptr)
 		, tree_details_(nullptr)
@@ -96,6 +97,7 @@ private:
 
 	tlabel* label_name_;
 	tlabel* label_level_;
+	tlabel* label_race_;
 
 	tcontrol* label_details_;
 	tcontrol* label_details_minimal_;

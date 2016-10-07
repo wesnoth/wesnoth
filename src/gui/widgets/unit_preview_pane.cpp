@@ -62,13 +62,14 @@ REGISTER_WIDGET(unit_preview_pane)
 void tunit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<timage>(this, "type_image" , false, false);
-	icon_race_              = find_widget<timage>(this, "type_race" , false, false);
+	icon_type_              = find_widget<timage>(this, "type_image", false, false);
+	icon_race_              = find_widget<timage>(this, "type_race", false, false);
 	icon_alignment_         = find_widget<timage>(this, "type_alignment", false, false);
 
 	// Labels
-	label_name_             = find_widget<tlabel>(this, "type_name" , false, false);
-	label_level_            = find_widget<tlabel>(this, "type_level" , false, false);
+	label_name_             = find_widget<tlabel>(this, "type_name", false, false);
+	label_level_            = find_widget<tlabel>(this, "type_level", false, false);
+	label_race_             = find_widget<tlabel>(this, "type_race_label", false, false);
 	label_details_          = find_widget<tcontrol>(this, "type_details", false, false);
 	label_details_minimal_  = find_widget<tcontrol>(this, "type_details_minimal", false, false);
 
@@ -171,9 +172,12 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 		label_level_->set_use_markup(true);
 	}
 
+	if(label_race_) {
+		label_race_ ->set_label(type.race()->name(type.genders().front()));
+	}
+
 	if(icon_race_) {
 		icon_race_->set_label("icons/unit-groups/race_" + type.race_id() + "_30.png");
-		icon_race_->set_tooltip(type.race()->name(type.genders().front()));
 	}
 
 	if(icon_alignment_) {
@@ -295,9 +299,12 @@ void tunit_preview_pane::set_displayed_unit(const unit& u)
 		label_level_->set_use_markup(true);
 	}
 
+	if(label_race_) {
+		label_race_->set_label(u.race()->name(u.gender()));
+	}
+
 	if(icon_race_) {
 		icon_race_->set_label("icons/unit-groups/race_" + u.race()->id() + "_30.png");
-		icon_race_->set_tooltip(u.race()->name(u.gender()));
 	}
 
 	if(icon_alignment_) {
