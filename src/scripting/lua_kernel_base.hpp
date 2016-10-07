@@ -42,19 +42,24 @@ public:
 	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
 	void interactive_run(char const * prog);
 
+	/** Loads the `package` library into lua environment. Only in allow in `unsafe` modes. */
 	void load_package();
 
+	/** Get tab completion strings */
 	std::vector<std::string> get_global_var_names();
 	std::vector<std::string> get_attribute_names(const std::string & var_path);
 
+	/** User-visible name of the lua kernel that they are talking to */
 	virtual std::string my_name() { return "Basic Lua Kernel"; }
 
+	/** Access / manipulate logging of lua kernel activities */
 	const std::stringstream & get_log() { cmd_log_.log_ << std::flush; return cmd_log_.log_; }
 	void clear_log() { cmd_log_.log_.str(""); cmd_log_.log_.clear(); }
 
 	using external_log_type = std::function<void(const std::string &)>;
 	void set_external_log( external_log_type lg ) { cmd_log_.external_log_ = lg; }
 
+	/** Error reporting mechanisms, used by virtual methods protected_call and load_string*/
 	virtual void log_error(char const* msg, char const* context = "Lua error");
 	virtual void throw_exception(char const* msg, char const* context = "Lua error"); //throws game::lua_error
 
@@ -75,6 +80,7 @@ protected:
 
 	CVideo * video_;
 
+	/** Log implementation */
 	struct command_log {
 
 		std::stringstream log_;

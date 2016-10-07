@@ -425,7 +425,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
-		if (!protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+		if (!this->protected_call(0,0, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 			cmd_log_ << "Failed to activate strict mode.\n";
 		} else {
 			cmd_log_ << "Activated strict mode.\n";
@@ -456,18 +456,18 @@ void lua_kernel_base::throw_exception(char const * msg, char const * context)
 bool lua_kernel_base::protected_call(int nArgs, int nRets)
 {
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	return protected_call(nArgs, nRets, eh);
+	return this->protected_call(nArgs, nRets, eh);
 }
 
 bool lua_kernel_base::load_string(char const * prog)
 {
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	return load_string(prog, eh);
+	return this->load_string(prog, eh);
 }
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 {
-	return protected_call(mState, nArgs, nRets, e_h);
+	return this->protected_call(mState, nArgs, nRets, e_h);
 }
 
 extern int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
@@ -538,7 +538,7 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 		luaW_pushconfig(this->mState, args);
 		++nArgs;
 	}
-	run(cfg["code"].str().c_str(), nArgs);
+	this->run(cfg["code"].str().c_str(), nArgs);
 }
 // Call load_string and protected call. Make them throw exceptions.
 //
@@ -546,16 +546,16 @@ void lua_kernel_base::throwing_run(const char * prog, int nArgs)
 {
 	cmd_log_ << "$ " << prog << "\n";
 	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
-	load_string(prog, eh);
+	this->load_string(prog, eh);
 	lua_insert(mState, -nArgs - 1);
-	protected_call(nArgs, 0, eh);
+	this->protected_call(nArgs, 0, eh);
 }
 
 // Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
 void lua_kernel_base::run(const char * prog, int nArgs)
 {
 	try {
-		throwing_run(prog, nArgs);
+		this->throwing_run(prog, nArgs);
 	} catch (game::lua_error & e) {
 		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
@@ -572,14 +572,14 @@ void lua_kernel_base::interactive_run(char const * prog) {
 
 	try {
 		// Try to load the experiment without syntax errors
-		load_string(experiment.c_str(), eh);
+		this->load_string(experiment.c_str(), eh);
 	} catch (game::lua_error &) {
-		throwing_run(prog, 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		this->throwing_run(prog, 0);	// Since it failed, fall back to the usual throwing_run, on the original input.
 		return;
 	}
 	// experiment succeeded, now run but log normally.
 	cmd_log_ << "$ " << prog << "\n";
-	protected_call(0, 0, eh);
+	this->protected_call(0, 0, eh);
 }
 /**
  * Loads and executes a Lua file.
@@ -592,7 +592,7 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	protected_call(0, LUA_MULTRET, eh);
+	this->protected_call(0, LUA_MULTRET, eh);
 	return lua_gettop(L);
 }
 
@@ -626,7 +626,9 @@ int lua_kernel_base::intf_require(lua_State* L)
 	// stack is now [packagename] [wesnoth] [package] [chunk]
 	DBG_LUA << "require: loaded a file, now calling it\n";
 
-	if (!protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) return 0;
+	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+      return 0;
+    }
 	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 	// stack is now [packagename] [wesnoth] [package] [results]
 
