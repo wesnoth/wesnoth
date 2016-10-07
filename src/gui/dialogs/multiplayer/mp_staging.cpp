@@ -71,10 +71,12 @@ void tmp_staging::pre_show(twindow& window)
 	window.set_enter_disabled(true);
 
 	//
-	// Set title
+	// Set title and status widget states
 	//
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
 	title.set_label((formatter() << title.label() << " " << utils::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
+
+	update_status_label_and_buttons(window);
 
 	//
 	// Set up sides list
@@ -375,6 +377,17 @@ void tmp_staging::update_leader_display(ng::side_engine& side, tgrid& row_grid)
 	}
 }
 
+void tmp_staging::update_status_label_and_buttons(twindow& window)
+{
+	find_widget<tlabel>(&window, "status_label", false).set_label(
+		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
+			? _("Waiting for players to join...")
+			: _("Waiting for players to choose factions...")
+	);
+
+	find_widget<tbutton>(&window, "ok", false).set_active(connect_engine_.can_start_game());
+}
+
 void tmp_staging::network_handler(twindow& window)
 {
 	// First, send off any changes if they've been accumulated
@@ -428,14 +441,7 @@ void tmp_staging::network_handler(twindow& window)
 	update_player_list(window);
 
 	// Update status label and buttons
-	// T O D O F I X T H I S S H I T
-	find_widget<tlabel>(&window, "status_label", false).set_label(
-		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
-			? _("Waiting for players to join...")
-			: _("Waiting for players to choose factions...")
-	);
-
-	find_widget<tbutton>(&window, "ok", false).set_active(connect_engine_.can_start_game());
+	update_status_label_and_buttons(window);
 
 	if(!was_able_to_start && connect_engine_.can_start_game()) {
 		mp_ui_alerts::ready_for_start();

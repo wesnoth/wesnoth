@@ -68,6 +68,8 @@ private:
 
 	void update_leader_display(ng::side_engine& side, tgrid& row_grid);
 
+	void update_status_label_and_buttons(twindow& window);
+
 	void network_handler(twindow& window);
 
 	ng::connect_engine& connect_engine_;
