@@ -142,7 +142,6 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info, twesnothd_
 	, gamelist_diff_update_(true)
 	, wesnothd_connection_(wesnothd_connection)
 	, lobby_update_timer_(0)
-	, preferences_wrapper_()
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
@@ -184,10 +183,10 @@ void tlobby_main::post_build(twindow& window)
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(window.video())));
 
 	/*** Local hotkeys. ***/
-	preferences_wrapper_ = std::bind(&tlobby_main::show_preferences_button_callback, this, std::ref(window));
-
-	window.register_hotkey(hotkey::HOTKEY_PREFERENCES,
-			std::bind(function_wrapper<bool, std::function<void()>>, true, std::cref(preferences_wrapper_)));
+	window.register_hotkey(hotkey::HOTKEY_PREFERENCES, [this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND)->bool {
+		show_preferences_button_callback(dynamic_cast<twindow&>(win));
+		return true;
+	});
 }
 
 namespace
