@@ -188,15 +188,10 @@ void tmp_staging::pre_show(twindow& window)
 		// Colors
 		//
 		std::vector<config> color_options;
-		for(const auto& color : side.get_colors()) {
-			// BIG FAT TODO: get rid of the hardcoded GUI1 formatting and do something about this hideous string manipulation
-			const std::string c = color.substr(color.find_first_of(">") + 1);
-			std::string cid = c;
-			cid[0] = std::tolower(cid[0]);
-
+		for(const auto& color : side.get_colors_pango()) {
 			color_options.push_back(config_of
-				("label", c)
-				("icon", (formatter() << "misc/status.png~RC(magenta>" << cid << ")").str())
+				("label", color.second)
+				("icon", (formatter() << "misc/status.png~RC(magenta>" << color.first << ")").str())
 			);
 		}
 
@@ -204,6 +199,7 @@ void tmp_staging::pre_show(twindow& window)
 
 		color_selection.set_values(color_options, side.color());
 		color_selection.set_active(!saved_game);
+		color_selection.set_use_markup(true);
 		color_selection.connect_click_handler(std::bind(&tmp_staging::on_color_select, this, std::ref(side), std::ref(row_grid)));
 
 		//
