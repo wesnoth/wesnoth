@@ -1004,6 +1004,22 @@ void tscrollbar_container::set_vertical_scrollbar_item_position(
 	scrollbar_moved();
 }
 
+unsigned tscrollbar_container::get_horizontal_scrollbar_item_position() const
+{
+	assert(horizontal_scrollbar_);
+
+	return horizontal_scrollbar_->get_item_position();
+}
+
+void tscrollbar_container::set_horizontal_scrollbar_item_position(
+	const unsigned position)
+{
+	assert(horizontal_scrollbar_);
+
+	horizontal_scrollbar_->set_item_position(position);
+	scrollbar_moved();
+}
+
 void tscrollbar_container::scroll_vertical_scrollbar(
 		const tscrollbar_::tscroll scroll)
 {

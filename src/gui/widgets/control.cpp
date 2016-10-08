@@ -428,7 +428,7 @@ void tcontrol::definition_load_configuration(const std::string& control_type)
 	{
 		// TODO: Some widgets (toggle panel, toggle button) have a variable canvas count which is determined by its definition.
 		// I think we should remove the canvas_count from tcontrols constructor and always read it from the definition.
-		LOG_GUI_L << "Corrected canvas count to " << config()->state.size();
+		DBG_GUI_L << "Corrected canvas count to " << config()->state.size() << std::endl;
 		canvas() = std::vector<tcanvas>(config()->state.size());
 	}
 	for(size_t i = 0; i < canvas().size(); ++i) {

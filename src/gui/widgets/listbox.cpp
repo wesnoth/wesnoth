@@ -35,6 +35,8 @@
 
 #include "utils/functional.hpp"
 
+#include <boost/optional.hpp>
+
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
@@ -313,26 +315,22 @@ bool tlistbox::update_content_size()
 
 void tlistbox::place(const tpoint& origin, const tpoint& size)
 {
+	boost::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+	// Check if this is the first time placing the list box
+	if (get_origin() != tpoint{-1, -1})
+	{
+		vertical_scrollbar_position = get_vertical_scrollbar_item_position();
+		horizontal_scrollbar_position = get_horizontal_scrollbar_item_position();
+	}
+
 	// Inherited.
 	tscrollbar_container::place(origin, size);
 
-	/**
-	 * @todo Work-around to set the selected item visible again.
-	 *
-	 * At the moment the listboxes and dialogs in general are resized a lot as
-	 * work-around for sizing. So this function makes the selected item in view
-	 * again. It doesn't work great in all cases but the proper fix is to avoid
-	 * resizing dialogs a lot. Need more work later on.
-	 */
-	const int selected_item = generator_->get_selected_item();
-	if(selected_item != -1) {
-		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(selected_item).get_rectangle();
-
-		rect.x = visible.x;
-		rect.w = visible.w;
-
-		show_content_rect(rect);
+	if (vertical_scrollbar_position && horizontal_scrollbar_position)
+	{
+		LOG_GUI_L << LOG_HEADER << " restoring scroll position" << std::endl;
+		set_vertical_scrollbar_item_position(*vertical_scrollbar_position);
+		set_horizontal_scrollbar_item_position(*horizontal_scrollbar_position);
 	}
 }
 
