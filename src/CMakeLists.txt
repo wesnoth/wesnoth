@@ -334,6 +334,11 @@ set(libwesnoth-lua_STAT_SRC
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
 
+# Inject a header into the Lua sources for Wesnoth-specific changes
+# makedepend won't see it so we have to specifically add it as a dependancy.
+set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ../src/wesnoth_lua_config.h")
+set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS src/wesnoth_lua_config.h)
+
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
 	# It needs the files to be forced as c++ manually, it might be a newer
