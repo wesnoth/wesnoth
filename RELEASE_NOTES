@@ -24,9 +24,9 @@ Example contents.
 [*]A new candidate action (CA), called [wiki=RCA_AI#The_Candidate_Actions_.28CAs.29_of_the_main_loop_Stage_in_the_RCA_AI]high XP attack[/wiki], has been added to all general Wesnoth AIs in mainline, fixing a short-coming in the default AI's combat CA. Previously, the AI would only attack units 1 experience point (XP) from leveling under very specific and rarely occurring circumstances. It was possible to exploit this, for example, for blocking vital passages or keeping key units alive without these units ever being attacked, making scenarios much easier than they were intended.
 
 The new CA fixes this hole and will generally, but not blindly, attack such units now. The attack logic is explained [url=https://github.com/wesnoth/wesnoth/blob/master/data/ai/lua/ca_high_xp_attack.lua#L5]here[/url]. Since the new behavior is accomplished not by changing the existing attack code, but by adding a new candidate action, the previous behavior can be restored by removing the high_xp_attack CA, in case this is desired in specific scenarios.
+[*] Significantly improved move times for AI sides with many guardians
 [*]For content creators, a [wiki=Micro_AIs#Assassin_Squad_Micro_AI_.28ai_type.3Dassassin.29]new Micro AI[/wiki], controlling individual assassins or an entire assassin squad has been added. It is already being used in Heir to the Throne scenario 8, 'The Princess of Wesnoth'.
-[*]A long standing bug which caused units with zero maximum moves not to attack adjacent enemies under certain circumstances has been fixed. This also (sometimes) affected units which could not move due to other circumstances (such as terrain).
-[*]Two instances of the AI ignoring the [disable] weapon special have been fixed.
+[*]Many changes to the ai_helper utility function library, including bug fixes, making the functions deal correctly and consistently with hidden units and the addition of several new functions, as well as a variety of other AI bug fixes.
 [/list]
 [/rasection]
 
@@ -41,7 +41,7 @@ Tunnel functionality was expanded and the default behavior was altered in order 
 
 
 [rasection="scenario_generation=cave deprecated"]
-scenario_generation=cave is now deprecated and will be removed in 1.14 or 1.15, scenarios that previously used scenario_generation=cave shoudl use map_generation=lua with ´create_map = << params = ...; return wesnoth.dofile("lua/cave_map_generator.lua") >>´ instead  
+scenario_generation=cave is now deprecated and will be removed in 1.14 or 1.15, scenarios that previously used scenario_generation=cave shoudl use map_generation=lua with ´create_map = << params = ...; return wesnoth.dofile("lua/cave_map_generator.lua") >>´ instead
 [/rasection]
 
 

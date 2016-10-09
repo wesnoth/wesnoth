@@ -11,6 +11,15 @@ Version 1.13.5+dev:
    * Fix bug of Experimental AI recruiting sometimes failing under shroud
    * Fix some mainline campaigns custom AIs not working due to syntax changes
      after the AI refactoring for Wesnoth 1.13.5 (e.g. bug #25123)
+   * Significantly improve move times for AI sides with many guardians
+   * ai_helper.lua utility functions:
+     * Correctly and consistently deal with invisible units
+     * New functions get_attackable_enemies, get_visible_units,
+       is_attackable_enemy, is_visible_unit and robust_move_and_attack
+     * Renamed function to_triple to LS_to_triples for consistency with other
+       functions
+     * Some internal changes to fix rarely occurring bugs and to improve
+       robustness and speed
  * Campaigns:
    * Eastern Invasion:
      * Fixed broken village encounters.
@@ -182,6 +191,7 @@ Version 1.13.5+dev:
    * Resolve sides in map editor not having a proper side number and subsequently
      causing a crash upon editing (bug #25093)
    * Avoid rare cases of mini-map producing a divide-by-zero error (bug #25155)
+   * [filter_vision]: fix bug of filter not matching own/allied hidden units
 
 Version 1.13.5:
  * Campaigns:
