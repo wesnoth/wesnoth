@@ -40,6 +40,11 @@ Tunnel functionality was expanded and the default behavior was altered in order 
 [/rasection]
 
 
+[rasection="scenario_generation=cave deprecated"]
+scenario_generation=cave is now deprecated and will be removed in 1.14 or 1.15, scenarios that previously used scenario_generation=cave shoudl use map_generation=lua with ´create_map = << params = ...; return wesnoth.dofile("lua/cave_map_generator.lua") >>´ instead  
+[/rasection]
+
+
 ==========
 KNOWN BUGS
 ==========
