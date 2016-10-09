@@ -4118,7 +4118,6 @@ game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controlle
 		{ "find_reach",                &dispatch<&game_lua_kernel::intf_find_reach                 >        },
 		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
-		{ "fire_event_by_name",        &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
 		{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 		{ "float_label",               &dispatch<&game_lua_kernel::intf_float_label                >        },
