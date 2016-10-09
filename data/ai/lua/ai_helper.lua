@@ -7,6 +7,21 @@ local LS = wesnoth.require "lua/location_set.lua"
 -- frequently. Backward compatibility cannot be guaranteed at this time in
 -- development releases, but it is of course easily possible to copy a function
 -- from a previous release directly into an add-on if it is needed there.
+--
+-- Invisible units ('viewing_side' parameter):
+-- With their default settings, the ai_helper functions use the vision a player of
+-- the respective side would see, that is, they assume no knowledge of invisible
+-- units. This can be influenced with the 'viewing_side' parameter, which works
+-- in the same way as it does in wesnoth.find_reach() and wesnoth.find_path():
+--   - If set to a valid side number, vision for that side is used
+--   - If set to an invalid side number (e.g. 0), all units on the map are seen
+--   - If omitted and a function takes a a parameter linked to a specific side,
+--     such as a side number or a unit, as input, vision of that side is used. In
+--     this case, viewing_side is passed as part of the optional @cfg configuration
+--     table and can be passed from function to function.
+--   - If omitted and the function takes no such input, viewing_side is made a
+--     required parameter in order to avoid mismatches between the default values
+--     of different functions.
 
 local ai_helper = {}
 
@@ -60,7 +75,7 @@ end
 function ai_helper.put_labels(map, cfg)
     -- Take @map (location set) and put label containing 'value' onto the map.
     -- Print 'nan' if element exists but is not a number.
-    -- @cfg: table with optional parameters:
+    -- @cfg: table with optional configuration parameters:
     --   - show_coords: (boolean) use hex coordinates as labels instead of value
     --   - factor=1: (number) if value is a number, multiply by this factor
     --   - keys: (array) if the value to be displayed is a subelement of the LS data,
@@ -238,13 +253,12 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     -- Optional parameters:
     -- @target_loc: coordinates of the enemy unit to be attacked. If not given, no
     --   attack is attempted.
-    -- @cfg: configuration table with the following optional parameters:
+    -- @cfg: table with optional configuration parameters:
     --   partial_move: By default, this function performs full moves. If this
     --     parameter is true, a partial move is done instead.
     --   weapon: The number (starting at 1) of the attack weapon to be used.
     --     If omitted, the best weapon is automatically selected.
-    --   dx, dy: the direction in which moving out of the way is preferred as
-    --        used by ai_helper.move_unit_out_of_way()
+    --   all optional parameters for ai_helper.move_unit_out_of_way()
 
     -- Notes:
     -- - @src, @dst and @target_loc can be any table (including proxy units) that contains
@@ -916,25 +930,80 @@ function ai_helper.get_units_with_attacks(filter)
     return units
 end
 
+function ai_helper.get_visible_units(viewing_side, filter)
+    -- Get units that are visible to side @viewing_side
+    --
+    -- Required parameters:
+    -- @viewing_side: see comments at beginning of this file
+    --
+    -- Optional parameters:
+    -- @filter: Standard unit filter WML table for the units
+    --   Example 1: { type = 'Orcish Grunt' }
+    --   Example 2: { { "filter_location", { x = 10, y = 12, radius = 5 } } }
+
+    if (not viewing_side) then
+        error('ai_helper.get_visible_units() is missing required parameter viewing_side.')
+    end
+
+    local filter_plus_vision = {}
+    if filter then filter_plus_vision = ai_helper.table_copy(filter) end
+    if wesnoth.sides[viewing_side] then
+        table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
+    end
+
+    local units = {}
+    local all_units = wesnoth.get_units()
+    for _,unit in ipairs(all_units) do
+        if unit:matches(filter_plus_vision) then
+            table.insert(units, unit)
+        end
+    end
+
+    return units
+end
+
+function ai_helper.is_visible_unit(viewing_side, unit)
+    -- Check whether @unit is visible to side @viewing_side
+    --
+    -- Required parameters:
+    -- @viewing_side: see comments at beginning of this file.
+    -- @unit: unit proxy table
+
+    if (not viewing_side) then
+        error('ai_helper.is_visible_unit() is missing required parameter viewing_side.')
+    end
+
+    if wesnoth.sides[viewing_side]
+        and unit:matches({ { "filter_vision", { side = viewing_side, visible = 'no' } } })
+    then
+        return false
+    end
+
+    return true
+end
+
 function ai_helper.get_attackable_enemies(filter, side, cfg)
-    -- Attackable enemies are defined as being both not petrified and visible
-    -- to the side under consideration. If called without parameters, all enemies
-    -- of the current side meeting these criteria are returned.
+    -- Attackable enemies are defined as being being
+    --   - enemies of the side defined in @side,
+    --   - not petrified
+    --   - and visible to the side defined in @cfg.viewing_side.
+    -- For speed reasons, this is done separately, rather than calling ai_helper.get_visible_units().
     --
     -- Optional parameters:
     -- @filter: Standard unit filter WML table for the enemies
     --   Example 1: { type = 'Orcish Grunt' }
     --   Example 2: { { "filter_location", { x = 10, y = 12, radius = 5 } } }
     -- @side: side number, if side other than current side is to be considered
-    -- @cfg: configuration table with (currently) only one option:
-    --   include_invisible_enemies: if true, also find invisible enemies
+    -- @cfg: table with optional configuration parameters:
+    --   viewing_side: see comments at beginning of this file. Defaults to @side.
 
     side = side or wesnoth.current.side
+    local viewing_side = cfg and cfg.viewing_side or side
 
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
-    if (not cfg) or (not cfg.include_invisible_enemies) then
-        table.insert(filter_plus_vision, { "filter_vision", { side = side, visible = 'yes' } })
+    if wesnoth.sides[viewing_side] then
+        table.insert(filter_plus_vision, { "filter_vision", { side = viewing_side, visible = 'yes' } })
     end
 
     local enemies = {}
@@ -952,23 +1021,20 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
 end
 
 function ai_helper.is_attackable_enemy(unit, side, cfg)
-    -- In its default configuration this returns true if @unit is an enemy of the
-    -- current side, is visible to that side and is not petrified. This behavior
-    -- can be modified with the optional parameters below.
+    -- Check if @unit is an enemy of @side, is visible to the side defined
+    -- in @cfg.viewing_side and is not petrified.
     --
     -- Optional parameters:
-    -- @side: side number, if side other than current side is to be considered
-    -- @cfg: configuration table with (currently) only one option:
-    --   include_invisible_enemies: if true, also return true for invisible enemies
+    -- @side: side number, defaults to current side.
+    -- @cfg: table with optional configuration parameters:
+    --   viewing_side: see comments at beginning of this file. Defaults to @side.
 
     side = side or wesnoth.current.side
+    local viewing_side = cfg and cfg.viewing_side or side
 
-    if (not wesnoth.is_enemy(side, unit.side)) or unit.status.petrified then
-        return false
-    end
-
-    if ((not cfg) or (not cfg.include_invisible_enemies))
-        and unit:matches({ { "filter_vision", { side = side, visible = 'no' } } })
+    if (not wesnoth.is_enemy(side, unit.side))
+        or unit.status.petrified
+        or (not ai_helper.is_visible_unit(viewing_side, unit))
     then
         return false
     end
@@ -976,16 +1042,23 @@ function ai_helper.is_attackable_enemy(unit, side, cfg)
     return true
 end
 
-function ai_helper.get_closest_enemy(loc)
-    -- Get the closest enemy to @loc, or to the current side's leader if @loc not specified
+function ai_helper.get_closest_enemy(loc, side, cfg)
+    -- Return distance to and location of the enemy closest to @loc, or to the
+    -- leader of side with number @side if @loc is not specified
+    --
+    -- Optional parameters:
+    -- @loc: location in format { x , y }
+    -- @side: number of side for which to find enemy; defaults to current side
+    -- @cfg: table with optional configuration parameters:
+    --   viewing_side: see comments at beginning of this file. Defaults to @side.
+
+    side = side or wesnoth.current.side
+
+    local enemies = ai_helper.get_attackable_enemies({}, side, cfg)
 
     local x, y
-    local enemies = ai_helper.get_live_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
-
     if not loc then
-        local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
+        local leader = wesnoth.get_units { side = side, canrecruit = 'yes' }[1]
         x, y = leader.x, leader.y
     else
         x, y = loc[1], loc[2]
@@ -1045,8 +1118,9 @@ ai_helper.no_path = 42424242  -- Value returned by C++ engine for distance when 
 
 function ai_helper.get_dst_src_units(units, cfg)
     -- Get the dst_src location set for @units
-    -- @cfg: configuration table
-    --   - moves: if set to 'max' use max_moves of units, rather than current moves
+    -- @cfg: table with optional configuration parameters:
+    --   moves: if set to 'max' use max_moves of units, rather than current moves
+    --   all parameters for wesnoth.find_reach
 
     local max_moves = false
     if cfg then
@@ -1059,7 +1133,7 @@ function ai_helper.get_dst_src_units(units, cfg)
         if max_moves then
             unit.moves = unit.max_moves
         end
-        local reach = wesnoth.find_reach(unit)
+        local reach = wesnoth.find_reach(unit, cfg)
         if max_moves then
             unit.moves = tmp
         end
@@ -1074,18 +1148,23 @@ function ai_helper.get_dst_src_units(units, cfg)
     return dstsrc
 end
 
-function ai_helper.get_dst_src(units)
+function ai_helper.get_dst_src(units, cfg)
     -- If @units table is given use it, otherwise use all units on the current side
+    -- @cfg: table with optional configuration parameters:
+    --   moves: if set to 'max' use max_moves of units, rather than current moves
+    --   all parameters for wesnoth.find_reach
 
     if (not units) then
         units = wesnoth.get_units { side = wesnoth.current.side }
     end
 
-    return ai_helper.get_dst_src_units(units)
+    return ai_helper.get_dst_src_units(units, cfg)
 end
 
-function ai_helper.get_enemy_dst_src(enemies)
+function ai_helper.get_enemy_dst_src(enemies, cfg)
     -- If @enemies table is given use it, otherwise use all enemy units
+    -- @cfg: table with optional configuration parameters:
+    --   all parameters for wesnoth.find_reach
 
     if (not enemies) then
         enemies = wesnoth.get_units {
@@ -1093,7 +1172,11 @@ function ai_helper.get_enemy_dst_src(enemies)
         }
     end
 
-    return ai_helper.get_dst_src_units(enemies, { moves = 'max' })
+    local cfg_copy = {}
+    if cfg then cfg_copy = ai_helper.table_copy(attack_array) end
+    cfg_copy.moves = 'max'
+
+    return ai_helper.get_dst_src_units(enemies, cfg_copy)
 end
 
 function ai_helper.my_moves()
@@ -1140,6 +1223,8 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- (x,y) is found for the unit), and movement cost to get there.
     -- Only unoccupied hexes are considered
     -- @cfg: standard extra options for wesnoth.find_path()
+    --   including:
+    --     viewing_side: see comments at beginning of this file. Defaults to side of @unit
     --   plus:
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
 
@@ -1153,7 +1238,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
     for i = 2,#path do
-        local sub_path, sub_cost = wesnoth.find_path( unit, path[i][1], path[i][2], cfg)
+        local sub_path, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2], cfg)
 
         if sub_cost <= unit.moves then
             -- Check for unit in way only if cfg.ignore_units is not set
@@ -1164,7 +1249,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
                 -- If ignore_own_units is set, ignore own side units that can move out of the way
                 if cfg and cfg.ignore_own_units then
                     if unit_in_way and (unit_in_way.side == unit.side) then
-                        local reach = ai_helper.get_reachable_unocc(unit_in_way)
+                        local reach = ai_helper.get_reachable_unocc(unit_in_way, cfg)
                         if (reach:size() > 1) then unit_in_way = nil end
                     end
                 end
@@ -1182,25 +1267,37 @@ function ai_helper.next_hop(unit, x, y, cfg)
 end
 
 function ai_helper.can_reach(unit, x, y, cfg)
-    -- Returns true if @unit can reach (@x,@y), else false
-    -- This only returns true if the hex is unoccupied, or at most occupied by unit on same side as @unit
-    -- that can move away (can be modified with options below)
-    -- @cfg:
+    -- Returns true if hex (@x, @y) is unoccupied (by a visible unit), or
+    -- at most occupied by unit on same side as @unit that can move away
+    -- (can be modified with options below)
+    --
+    -- @cfg: table with optional configuration parameters:
     --   moves = 'max' use max_moves instead of current moves
     --   ignore_units: if true, ignore both own and enemy units
     --   exclude_occupied: if true, exclude hex if there's a unit there, irrespective of value of 'ignore_units'
+    --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
 
     cfg = cfg or {}
+    local viewing_side = cfg.viewing_side or unit.side
 
     -- Is there a unit at the goal hex?
     local unit_in_way = wesnoth.get_unit(x, y)
-    if (cfg.exclude_occupied) and unit_in_way then return false end
+    if (cfg.exclude_occupied)
+      and unit_in_way and ai_helper.is_visible_unit(viewing_side, unit_in_way)
+    then
+        return false
+    end
 
     -- Otherwise, if 'ignore_units' is not set, return false if there's a unit of other side,
     -- or a unit of own side that cannot move away (this might be slow, don't know)
     if (not cfg.ignore_units) then
         -- If there's a unit at the goal that's not on own side (even ally), return false
-        if unit_in_way and (unit_in_way.side ~= unit.side) then return false end
+        if unit_in_way
+            and (unit_in_way.side ~= unit.side)
+            and ai_helper.is_visible_unit(viewing_side, unit_in_way)
+        then
+            return false
+        end
 
         -- If the unit in the way is on 'unit's' side and cannot move away, also return false
         if unit_in_way and (unit_in_way.side == unit.side) then
@@ -1224,10 +1321,16 @@ function ai_helper.can_reach(unit, x, y, cfg)
 end
 
 function ai_helper.get_reachable_unocc(unit, cfg)
-    -- Get all reachable hexes for @unit that are unoccupied (incl. by allied units)
+    -- Get all reachable hexes for @unit that are (or appear) unoccupied, taking
+    -- vision into account as specified by the @cfg.viewing_side parameter.
     -- Returned array is a location set, with value = 1 for each reachable hex
-    -- @cfg: parameters to wesnoth.find_reach, such as { additional_turns = 1 }
-    -- Additionally, { moves = 'max' } can be set inside cfg, which sets unit MP to max_moves before calculation
+    --
+    -- @cfg: table with optional configuration parameters:
+    --   moves: if set to 'max', unit MP is set to max_moves before calculation
+    --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   plus all other parameters to wesnoth.find_reach
+
+    local viewing_side = cfg and cfg.viewing_side or unit.side
 
     local old_moves = unit.moves
     if cfg then
@@ -1238,7 +1341,7 @@ function ai_helper.get_reachable_unocc(unit, cfg)
     local initial_reach = wesnoth.find_reach(unit, cfg)
     for _,loc in ipairs(initial_reach) do
         local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-        if not unit_in_way then
+        if (not unit_in_way) or (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
             reach:insert(loc[1], loc[2], 1)
         end
     end
@@ -1254,12 +1357,13 @@ end
 function ai_helper.find_best_move(units, rating_function, cfg)
     -- Find the best move and best unit based on @rating_function
     -- INPUTS:
-    --  @units: single unit or table of units
-    --  @rating_function: function(x, y) with rating function for the hexes the unit can reach
-    --  @cfg: table with elements
+    --  @units: (required) single unit or table of units
+    --  @rating_function: (required) function(x, y) with rating function for the hexes the unit can reach
+    --  @cfg: table with optional configuration parameters:
     --    labels: if set, put labels with ratings onto map
     --    no_random: if set, do not add random value between 0.0001 and 0.0099 to each hex
-    --               (otherwise that's the default)
+    --    plus all the possible parameters for ai_helper.get_reachable_unocc()
+    --
     -- OUTPUTS:
     --  best_hex: format { x, y }
     --  best_unit: unit for which this rating function produced the maximum value
@@ -1276,7 +1380,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
     local max_rating, best_hex, best_unit = -9e99, {}, {}
     for _,unit in ipairs(units) do
         -- Hexes each unit can reach
-        local reach_map = ai_helper.get_reachable_unocc(unit)
+        local reach_map = ai_helper.get_reachable_unocc(unit, cfg)
         reach_map:iter( function(x, y, v)
             -- Rate based on rating_function argument
             local rating = rating_function(x, y)
@@ -1300,20 +1404,25 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     -- Move @unit to the best close location.
     -- Main rating is the moves the unit still has left after that
     -- Other, configurable, parameters are given to function in @cfg:
-    --   - dx, dy: the direction in which moving out of the way is preferred
-    --        assumed to be normalized so that dx^2 + dy^2 = 1
-    --   - labels: if set, display labels of the rating for each hex the unit can reach
+    --   dx, dy: the direction in which moving out of the way is preferred
+    --     assumed to be normalized so that dx^2 + dy^2 = 1
+    --   labels: if set, display labels of the rating for each hex the unit can reach
+    --   viewing_side: see comments at beginning of this file. Defaults to side of @unit.
+    --   all other optional parameters to wesnoth.find_reach()
 
     cfg = cfg or {}
+    local viewing_side = cfg.viewing_side or unit.side
 
-    local reach = wesnoth.find_reach(unit)
+    local reach = wesnoth.find_reach(unit, cfg)
     local reach_map = LS.create()
 
     local max_rating, best_hex = -9e99
     for _,loc in ipairs(reach) do
         local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-        if (not unit_in_way) then  -- also excludes current hex
-            local rating = loc[3]  -- also disfavors hexes next to enemy units for which loc[3] = 0
+        if (not unit_in_way)       -- also excludes current hex
+            or (not ai_helper.is_visible_unit(viewing_side, unit_in_way))
+        then
+            local rating = loc[3]  -- also disfavors hexes next to visible enemy units for which loc[3] = 0
 
             if cfg.dx then rating = rating + (loc[1] - unit.x) * cfg.dx * 0.01 end
             if cfg.dy then rating = rating + (loc[2] - unit.y) * cfg.dy * 0.01 end
@@ -1354,7 +1463,13 @@ end
 
 function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     -- Same as ai_help.movefull_stopunit(), but also moves a unit out of the way if there is one
-    -- Additional input: @cfg for ai_helper.move_unit_out_of_way()
+    --
+    -- @cfg: table with optional configuration parameters:
+    --   viewing_side: see comments at beginning of this file. Defaults to side of @unit
+    --   all other optional parameters to ai_helper.move_unit_out_of_way() and wesnoth.find_path()
+
+    local viewing_side = cfg and cfg.viewing_side or unit.side
+
     if (type(x) ~= 'number') then
         if x[1] then
             x, y = x[1], x[2]
@@ -1364,10 +1479,13 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     end
 
     -- Only move unit out of way if the main unit can get there
-    local path, cost = wesnoth.find_path(unit, x, y)
+    local path, cost = wesnoth.find_path(unit, x, y, cfg)
     if (cost <= unit.moves) then
         local unit_in_way = wesnoth.get_unit(x, y)
-        if unit_in_way and ((unit_in_way.x ~= unit.x) or (unit_in_way.y ~= unit.y)) then
+        if unit_in_way
+            and ((unit_in_way.x ~= unit.x) or (unit_in_way.y ~= unit.y))
+            and ai_helper.is_visible_unit(viewing_side, unit_in_way)
+        then
             --W.message { speaker = 'narrator', message = 'Moving out of way' }
             ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
         end
@@ -1384,13 +1502,17 @@ end
 ---------- Attack related helper functions --------------
 
 function ai_helper.get_attacks(units, cfg)
-    -- Get all attacks the units stored in @units can do
+    -- Get all attacks the units stored in @units can do. Invisible enemies are
+    -- excluded unless option @cfg.viewing_side=0 is used.
+    --
     -- This includes a variety of configurable options, passed in the @cfg table
-    -- @cfg: table with config parameters
-    --  moves: "current" (default for units on current side) or "max" (always used for units on other sides)
-    --  include_occupied (false): if set, also include hexes occupied by own-side units that can move away
-    --  simulate_combat (false): if set, also simulate the combat and return result (this is slow; only set if needed)
-
+    -- @cfg: table with optional configuration parameters:
+    --   moves: "current" (default for units on current side) or "max" (always used for units on other sides)
+    --   include_occupied (false): if set, also include hexes occupied by own-side units that can move away
+    --   simulate_combat (false): if set, also simulate the combat and return result (this is slow; only set if needed)
+    --   viewing_side: see comments at beginning of this file. Defaults to side of @units
+    --   all other optional parameters to wesnoth.find_reach()
+    --
     -- Returns {} if no attacks can be done, otherwise table with fields:
     --   dst: { x = x, y = y } of attack position
     --   src: { x = x, y = y } of attacking unit (don't use id, could be ambiguous)
@@ -1404,6 +1526,7 @@ function ai_helper.get_attacks(units, cfg)
     if (not units[1]) then return attacks end
 
     local side = units[1].side  -- all units need to be on same side
+    local viewing_side = cfg and cfg.viewing_side or side
 
     -- 'moves' can be either "current" or "max"
     -- For unit on current side: use "current" by default, or override by cfg.moves
@@ -1427,14 +1550,16 @@ function ai_helper.get_attacks(units, cfg)
     for i,unit in ipairs(all_units) do
         -- The value of all the location sets is the index of the
         -- unit in the all_units array
-        if wesnoth.is_enemy(unit.side, side) and (not unit.status.petrified) then
+        if ai_helper.is_attackable_enemy(unit, side, cfg) then
             enemy_map:insert(unit.x, unit.y, i)
         end
 
         if (unit.side == side) then
             my_unit_map:insert(unit.x, unit.y, i)
         else
-            other_unit_map:insert(unit.x, unit.y, i)
+            if ai_helper.is_visible_unit(viewing_side, unit) then
+                other_unit_map:insert(unit.x, unit.y, i)
+            end
         end
     end
 
@@ -1461,7 +1586,7 @@ function ai_helper.get_attacks(units, cfg)
         if reaches:get(unit.x, unit.y) then
             reach = reaches:get(unit.x, unit.y)
         else
-            reach = wesnoth.find_reach(unit)
+            reach = wesnoth.find_reach(unit, cfg)
             reaches:insert(unit.x, unit.y, reach)
         end
 
@@ -1481,7 +1606,7 @@ function ai_helper.get_attacks(units, cfg)
                         if reaches:get(unit_in_way.x, unit_in_way.y) then
                             uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
                         else
-                            uiw_reach = wesnoth.find_reach(unit_in_way)
+                            uiw_reach = wesnoth.find_reach(unit_in_way, cfg)
                             reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
                         end
 
@@ -1491,7 +1616,7 @@ function ai_helper.get_attacks(units, cfg)
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
                             local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
-                            if (not uiw_uiw) then
+                            if (not uiw_uiw) or (not ai_helper.is_visible_unit(viewing_side, uiw_uiw)) then
                                 add_target = true
                                 break
                             end
@@ -1583,15 +1708,19 @@ function ai_helper.add_next_attack_combo_level(combos, attacks)
     return combos_this_level
 end
 
-function ai_helper.get_attack_combos_full(units, enemy)
+function ai_helper.get_attack_combos_full(units, enemy, cfg)
     -- Calculate attack combination result by @units on @enemy
     -- All combinations of all units are taken into account, as well as their order
     -- This can result in a _very_ large number of possible combinations
     -- Use ai_helper.get_attack_combos() instead if order does not matter
+    --
+    -- Optional inputs:
+    --   @cfg: Configuration table to be passed on to ai_helper.get_attacks()
+    --
     -- Return value:
     --   1. Attack combinations in form { dst = src }
 
-    local all_attacks = ai_helper.get_attacks(units)
+    local all_attacks = ai_helper.get_attacks(units, cfg)
 
     -- Eliminate those that are not on @enemy
     local attacks = {}
@@ -1612,7 +1741,10 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     -- Calculate attack combination result by @units on @enemy
     -- All the unit/hex combinations are considered, but without specifying the order of the
     -- attacks. Use ai_helper.get_attack_combos_full() if order matters.
-    -- @cfg: A config table to be passed on to ai_helper.get_attacks
+    --
+    -- Optional inputs:
+    -- @cfg: Configuration table to be passed on to wesnoth.find_path()
+    --
     -- Return values:
     --   1. Attack combinations in form { dst = src }
     --   2. All the attacks indexed by [dst][src]
@@ -1662,7 +1794,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
                 -- This also means that only short paths have to be evaluated (in most situations)
                 if (cost <= unit.moves) then
                     local path  -- since cost is already defined outside this block
-                    path, cost = wesnoth.find_path(unit, xa, ya)
+                    path, cost = wesnoth.find_path(unit, xa, ya, cfg)
                 end
 
                 if (cost <= unit.moves) then
