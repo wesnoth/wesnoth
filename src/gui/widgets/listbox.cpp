@@ -326,11 +326,23 @@ void tlistbox::place(const tpoint& origin, const tpoint& size)
 	// Inherited.
 	tscrollbar_container::place(origin, size);
 
+	const int selected_item = generator_->get_selected_item();
 	if (vertical_scrollbar_position && horizontal_scrollbar_position)
 	{
 		LOG_GUI_L << LOG_HEADER << " restoring scroll position" << std::endl;
 		set_vertical_scrollbar_item_position(*vertical_scrollbar_position);
 		set_horizontal_scrollbar_item_position(*horizontal_scrollbar_position);
+	}
+	else if (selected_item != -1)
+	{
+		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible" << std::endl;
+		const SDL_Rect& visible = content_visible_area();
+		SDL_Rect rect = generator_->item(selected_item).get_rectangle();
+
+		rect.x = visible.x;
+		rect.w = visible.w;
+
+		show_content_rect(rect);
 	}
 }
 
