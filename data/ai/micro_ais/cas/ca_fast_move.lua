@@ -271,8 +271,6 @@ function ca_fast_move:execution(cfg)
 
             if best_hex then
                 local dx, dy = goal.x - best_hex[1], goal.y - best_hex[2]
-                local r = math.sqrt(dx * dx + dy * dy)
-                dx, dy = dx / r, dy / r
                 AH.movefull_outofway_stopunit(ai, unit, best_hex[1], best_hex[2], { dx = dx, dy = dy })
             end
 
