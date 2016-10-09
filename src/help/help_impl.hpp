@@ -34,7 +34,7 @@
 
 #include "exceptions.hpp"               // for error
 #include "font.hpp"                     // for line_width, relative_size
-
+#include "gettext.hpp"
 #include <cstring>
 #include <list>                         // for list
 #include <memory>
@@ -187,7 +187,7 @@ class title_less
 {
 public:
 	bool operator()(const topic &t1, const topic &t2) {
-            return strcoll(t1.title.c_str(), t2.title.c_str()) < 0; }
+            return translation::compare(t1.title.c_str(), t2.title.c_str()) < 0; }
 };
 
 /// To be used as a function object when sorting section lists on the title.
@@ -195,14 +195,14 @@ class section_less
 {
 public:
 	bool operator()(const section* s1, const section* s2) {
-            return strcoll(s1->title.c_str(), s2->title.c_str()) < 0; }
+            return translation::compare(s1->title.c_str(), s2->title.c_str()) < 0; }
 };
 
 class string_less
 {
 public:
 	bool operator() (const std::string &s1, const std::string &s2) const {
-		return strcoll(s1.c_str(), s2.c_str()) < 0;
+		return translation::compare(s1.c_str(), s2.c_str()) < 0;
 	}
 };
 
