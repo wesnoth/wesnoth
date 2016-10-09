@@ -226,6 +226,17 @@ public:
 	std::map<std::string, std::string> get_colors_pango() const;
 	std::string get_color(int index = -1) const;
 	int num_colors() const;
+
+	const std::string team_name() const
+	{
+		return parent_.team_names_[team_];
+	}
+
+	const std::string user_team_name() const
+	{
+		return t_string::from_serialized(parent_.user_team_names_[team_]);
+	}
+
 private:
 	side_engine(const side_engine& engine) = delete;
 	void operator=(const side_engine&) = delete;
