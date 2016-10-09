@@ -70,6 +70,14 @@ namespace {
  * (e.g. after SIGHUP).
  */
 sig_atomic_t need_reload = 0;
+/**
+ * Whether we've been requested to quit via SIGINT.
+ */
+sig_atomic_t sigint_exit = 0;
+/**
+ * Whether we've been requested to quit via SIGTERM.
+ */
+sig_atomic_t sigterm_exit = 0;
 
 void flag_sighup(int signal)
 {
@@ -78,18 +86,18 @@ void flag_sighup(int signal)
 	need_reload = 1;
 }
 
-void exit_sigint(int signal)
+void flag_sigint(int signal)
 {
 	assert(signal == SIGINT);
-	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
-	exit(0);
+	LOG_CS << "SIGINT caught, exiting...\n";
+	sigint_exit = 1;
 }
 
-void exit_sigterm(int signal)
+void flag_sigterm(int signal)
 {
 	assert(signal == SIGTERM);
-	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGTERM);
+	LOG_CS << "SIGTERM caught, exiting...\n";
+	sigterm_exit = 1;
 }
 
 time_t monotonic_clock()
@@ -154,8 +162,8 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 #ifndef _MSC_VER
 	signal(SIGHUP, flag_sighup);
 #endif
-	signal(SIGINT, exit_sigint);
-	signal(SIGTERM, exit_sigterm);
+	signal(SIGINT, flag_sigint);
+	signal(SIGTERM, flag_sigterm);
 
 	LOG_CS << "Port: " << port_ << "  Worker threads min/max: " << min_threads
 		   << '/' << max_threads << '\n';
@@ -330,7 +338,7 @@ void server::run()
 
 	time_t last_ts = monotonic_clock();
 
-	for(;;)
+	while(!sigterm_exit && !sigint_exit)
 	{
 		if(need_reload) {
 			load_config(); // TODO: handle port number config changes
@@ -463,6 +471,12 @@ void server::run()
 		}
 
 		SDL_Delay(20);
+	}
+
+	if(sigint_exit) {
+		std::exit(0);
+	} else if(sigterm_exit) {
+		std::exit(128 + SIGTERM);
 	}
 }
 
