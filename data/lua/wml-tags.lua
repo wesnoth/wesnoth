@@ -142,7 +142,7 @@ function wml_actions.fire_event(cfg)
 	if w2 then w1 = w1 or {} end
 
 	if cfg.id and cfg.id ~= "" then wesnoth.fire_event_by_id(cfg.id, x1, y1, x2, y2, w1, w2)
-	elseif cfg.name and cfg.name ~= "" then wesnoth.fire_event_by_name(cfg.name, x1, y1, x2, y2, w1, w2)
+	elseif cfg.name and cfg.name ~= "" then wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
 	end
 end
 
