@@ -197,7 +197,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	tmenu_button& ai_selection = find_widget<tmenu_button>(&row_grid, "ai_controller", false);
 
 	ai_selection.set_values(ai_options, selection);
-	ai_selection.connect_click_handler(std::bind(&tmp_staging::on_ai_select, this, std::ref(side), std::ref(ai_selection)));
+	ai_selection.connect_click_handler(std::bind(&tmp_staging::on_ai_select, this, side, std::ref(ai_selection)));
 
 	on_ai_select(side, ai_selection);
 
@@ -213,7 +213,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 
 	controller_selection.set_values(controller_names, side->current_controller_index());
 	controller_selection.set_active(controller_names.size() > 1);
-	controller_selection.connect_click_handler(std::bind(&tmp_staging::on_controller_select, this, std::ref(side), std::ref(row_grid)));
+	controller_selection.connect_click_handler(std::bind(&tmp_staging::on_controller_select, this, side, std::ref(row_grid)));
 
 	on_controller_select(side, row_grid);
 
@@ -222,7 +222,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	//
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&row_grid, "select_leader", false),
-		std::bind(&tmp_staging::select_leader_callback, this, std::ref(window), std::ref(side), std::ref(row_grid)));
+		std::bind(&tmp_staging::select_leader_callback, this, std::ref(window), side, std::ref(row_grid)));
 
 	//
 	// Team
@@ -240,7 +240,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	// dialog is dropped
 	team_selection.set_values(team_names, std::min<int>(team_names.size() - 1, side->team()));
 	team_selection.set_active(!saved_game);
-	team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(window), std::ref(side), std::ref(team_selection), _3, _4));
+	team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
 
 	//
 	// Colors
@@ -258,7 +258,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	color_selection.set_values(color_options, side->color());
 	color_selection.set_active(!saved_game);
 	color_selection.set_use_markup(true);
-	color_selection.connect_click_handler(std::bind(&tmp_staging::on_color_select, this, std::ref(side), std::ref(row_grid)));
+	color_selection.connect_click_handler(std::bind(&tmp_staging::on_color_select, this, side, std::ref(row_grid)));
 
 	//
 	// Gold and Income
