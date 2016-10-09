@@ -195,6 +195,19 @@ public:
 	void set_vertical_scrollbar_item_position(const unsigned position);
 
 	/**
+	 * Returns current position of the horizontal scrollbar.
+	 *
+	 */
+	unsigned get_horizontal_scrollbar_item_position() const;
+
+	/**
+	 * Move the horizontal scrollbar to a position.
+	 *
+	 * @param position              The position to scroll to.
+	 */
+	void set_horizontal_scrollbar_item_position(const unsigned position);
+
+	/**
 	 * Scrolls the vertical scrollbar.
 	 *
 	 * @param scroll              The position to scroll to.

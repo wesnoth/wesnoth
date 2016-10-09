@@ -213,9 +213,6 @@ private:
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;
 
-	/** Wrapper for the preferences hotkey. */
-	std::function<void()> preferences_wrapper_;
-
 	std::vector<int> gamelist_id_at_row_;
 
 	bool delay_playerlist_update_;

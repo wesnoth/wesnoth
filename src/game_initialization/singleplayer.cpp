@@ -134,8 +134,8 @@ bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& 
 		return false;
 	}
 
-	create_eng.prepare_for_new_level();
 	create_eng.get_parameters();
+	create_eng.prepare_for_new_level();
 
 	enter_connect_mode(video, game_config, state, local_players_only);
 
