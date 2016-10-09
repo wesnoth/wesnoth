@@ -61,9 +61,6 @@ def newnode(tagname):
     if tagname == "[lua]":
         nodes.append( pos.WmlNode(fileref, fileno, 
                                   tagname, autowml=False) )
-    # elif tagname == "":
-    # self.nodes.append( WmlNode(self.fileref, self.fileno, 
-    #                            "[unknown]", False) )
     else:
         nodes.append( pos.WmlNode(fileref, fileno, 
                                   tagname, autowml=True) )
@@ -100,14 +97,15 @@ def closenode(closetag, mydict, lineno):
 
 
 def addNodeSentence(sentence, *, ismultiline, lineno, lineno_sub,
-                    override, addition):
+                    override, addition, plural=None):
     global nodes
     if nodes is None:
         nodes = [pos.WmlNode(fileref=fileref, fileno=fileno, 
                               tagname="", autowml=False)]
     nodes[-1].add_sentence(sentence, ismultiline=ismultiline, 
                            lineno=lineno, lineno_sub=lineno_sub,
-                           override=override, addition=addition)
+                           override=override, addition=addition,
+                           plural=plural)
 
 
 def addWmlInfo(info):
