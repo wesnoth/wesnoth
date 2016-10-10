@@ -580,6 +580,7 @@ client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 campaignd_sources = Split("""
     campaign_server/addon_utils.cpp
     campaign_server/blacklist.cpp
+    campaign_server/fs_commit.cpp
     server/input_stream.cpp
     """)
 
