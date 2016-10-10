@@ -862,8 +862,8 @@ int main()
 	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(filesystem::io_exception& /*e*/) {
-		std::cerr << "File I/O error\n";
+	} catch(filesystem::io_exception& e) {
+		std::cerr << "File I/O error: " << e.what() << "\n";
 		return 2;
 	} catch(std::bad_function_call& /*e*/) {
 		std::cerr << "Bad request handler function call\n";
