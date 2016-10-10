@@ -1101,6 +1101,7 @@ set(campaignd_SRC
 	campaign_server/addon_utils.cpp
 	campaign_server/blacklist.cpp
 	campaign_server/campaign_server.cpp
+	campaign_server/fs_commit.cpp
 	server/input_stream.cpp
 	${network_implementation_files}
 	loadscreen_empty.cpp

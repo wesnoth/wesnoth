@@ -32,6 +32,7 @@
 #include "campaign_server/addon_utils.hpp"
 #include "campaign_server/blacklist.hpp"
 #include "campaign_server/control.hpp"
+#include "campaign_server/fs_commit.hpp"
 #include "version.hpp"
 #include "util.hpp"
 #include "hash.hpp"
@@ -271,8 +272,9 @@ void server::load_blacklist()
 void server::write_config()
 {
 	DBG_CS << "writing configuration and add-ons list to disk...\n";
-	filesystem::scoped_ostream out = filesystem::ostream_file(cfg_file_);
-	write(*out, cfg_);
+	filesystem::atomic_commit out(cfg_file_);
+	write(*out.ostream(), cfg_);
+	out.commit();
 	DBG_CS << "... done\n";
 }
 
@@ -794,9 +796,10 @@ void server::handle_upload(const server::request& req)
 		add_license(data);
 
 		{
-			filesystem::scoped_ostream campaign_file = filesystem::ostream_file(filename);
-			config_writer writer(*campaign_file, true, compress_level_);
+			filesystem::atomic_commit campaign_file(cfg_file_);
+			config_writer writer(*campaign_file.ostream(), true, compress_level_);
 			writer.write(data);
+			campaign_file.commit();
 		}
 
 		(*campaign)["size"] = filesystem::file_size(filename);
