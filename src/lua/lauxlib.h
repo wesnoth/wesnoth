@@ -31,7 +31,6 @@ LUALIB_API void (luaL_checkversion_) (lua_State *L, lua_Number ver);
 LUALIB_API int (luaL_getmetafield) (lua_State *L, int obj, const char *e);
 LUALIB_API int (luaL_callmeta) (lua_State *L, int obj, const char *e);
 LUALIB_API const char *(luaL_tolstring) (lua_State *L, int idx, size_t *len);
-LUALIB_API int (luaL_typerror) (lua_State *L, int narg, const char *tname);
 LUALIB_API int (luaL_argerror) (lua_State *L, int numarg, const char *extramsg);
 LUALIB_API const char *(luaL_checklstring) (lua_State *L, int numArg,
                                                           size_t *l);

@@ -6,7 +6,6 @@
 
 #include <stdlib.h>
 #include <math.h>
-#include <boost/math/constants/constants.hpp>
 
 #define lmathlib_c
 #define LUA_LIB
@@ -17,7 +16,9 @@
 #include "lualib.h"
 
 
-#define RADIANS_PER_DEGREE	( boost::math::constants::pi<lua_Number>()/180.0 )
+#undef PI
+#define PI	((lua_Number)(3.1415926535897932384626433832795))
+#define RADIANS_PER_DEGREE	((lua_Number)(PI/180.0))
 
 
 
@@ -268,7 +269,7 @@ static const luaL_Reg mathlib[] = {
 */
 LUAMOD_API int luaopen_math (lua_State *L) {
   luaL_newlib(L, mathlib);
-  lua_pushnumber(L, boost::math::constants::pi<lua_Number>());
+  lua_pushnumber(L, PI);
   lua_setfield(L, -2, "pi");
   lua_pushnumber(L, HUGE_VAL);
   lua_setfield(L, -2, "huge");

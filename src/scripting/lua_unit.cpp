@@ -165,7 +165,7 @@ static void unit_show_error(lua_State *L, int index, int error)
 {
 	switch(error) {
 		case LU_NOT_UNIT:
-			luaL_typerror(L, index, "unit");
+			luaW_type_error(L, index, "unit");
 		case LU_NOT_VALID:
 			luaL_argerror(L, index, "unit not found");
 		case LU_NOT_ON_MAP:
@@ -442,7 +442,7 @@ static int impl_unit_set(lua_State *L)
 static int impl_unit_status_get(lua_State *L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit status");
+		return luaW_type_error(L, 1, "unit status");
 	}
 	lua_rawgeti(L, 1, 1);
 	const unit* u = luaW_tounit(L, -1);
@@ -463,7 +463,7 @@ static int impl_unit_status_get(lua_State *L)
 static int impl_unit_status_set(lua_State *L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit status");
+		return luaW_type_error(L, 1, "unit status");
 	}
 	lua_rawgeti(L, 1, 1);
 	unit* u = luaW_tounit(L, -1);
@@ -484,7 +484,7 @@ static int impl_unit_status_set(lua_State *L)
 static int impl_unit_variables_get(lua_State *L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit variables");
+		return luaW_type_error(L, 1, "unit variables");
 	}
 	lua_rawgeti(L, 1, 1);
 	const unit* u = luaW_tounit(L, -1);
@@ -507,7 +507,7 @@ static int impl_unit_variables_get(lua_State *L)
 static int impl_unit_variables_set(lua_State *L)
 {
 	if(!lua_istable(L, 1)) {
-		return luaL_typerror(L, 1, "unit variables");
+		return luaW_type_error(L, 1, "unit variables");
 	}
 	lua_rawgeti(L, 1, 1);
 	unit* u = luaW_tounit(L, -1);

@@ -173,9 +173,6 @@ static int typeerror (lua_State *L, int narg, const char *tname) {
   return luaL_argerror(L, narg, msg);
 }
 
-LUALIB_API int luaL_typerror (lua_State *L, int narg, const char *tname) {
-	return typeerror(L, narg, tname);
-}
 
 static void tag_error (lua_State *L, int narg, int tag) {
   typeerror(L, narg, lua_typename(L, tag));
