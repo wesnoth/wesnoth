@@ -911,8 +911,8 @@ int main(int argc, char**argv)
 	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(filesystem::io_exception& /*e*/) {
-		std::cerr << "File I/O error\n";
+	} catch(filesystem::io_exception& e) {
+		std::cerr << "File I/O error: " << e.what() << "\n";
 		return 2;
 	} catch(network::error& e) {
 		std::cerr << "Aborted with network error: " << e.message << '\n';
