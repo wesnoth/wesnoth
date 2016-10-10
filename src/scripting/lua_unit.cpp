@@ -407,7 +407,7 @@ static int impl_unit_set(lua_State *L)
 
 	if(strcmp(m, "upkeep") == 0) {
 		if(lua_isnumber(L, 3)) {
-			u.set_upkeep(luaL_checkint(L, 3));
+			u.set_upkeep(luaL_checkinteger(L, 3));
 			return 0;
 		}
 		const char* v = luaL_checkstring(L, 3);

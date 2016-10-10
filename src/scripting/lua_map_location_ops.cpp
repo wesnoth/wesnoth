@@ -49,13 +49,13 @@ int intf_get_direction(lua_State* L)
 
 	int n = 1;
 	if (nargs == 3) {
-		n = luaL_checkint(L, -1);
+		n = luaL_checkinteger(L, -1);
 		lua_pop(L,1);
 	}
 
 	map_location::DIRECTION d;
 	if (lua_isnumber(L, -1)) {
-		d = map_location::rotate_right(map_location::NORTH, luaL_checkint(L, -1)); //easiest way to correctly convert int to direction
+		d = map_location::rotate_right(map_location::NORTH, static_cast<int>(luaL_checkinteger(L, -1))); //easiest way to correctly convert int to direction
 		lua_pop(L,1);
 	} else if (lua_isstring(L, -1)) {
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
@@ -114,7 +114,7 @@ int intf_vector_zero(lua_State* L)
  */
 int intf_rotate_right_around_center(lua_State* L)
 {
-	int k = luaL_checkint(L, -1);
+	int k = luaL_checkinteger(L, -1);
 	lua_pop(L,1);
 	map_location center, loc;
 	if(!luaW_tolocation(L, 1, loc) || !luaW_tolocation(L, 2, center)) {
@@ -228,7 +228,7 @@ int intf_parse_direction(lua_State* L)
  */
 int intf_write_direction(lua_State* L)
 {
-	int d = luaL_checkint(L, -1);
+	int d = luaL_checkinteger(L, -1);
 	if (d >= 0 && d < map_location::NDIRECTIONS) {
 		lua_pushstring(L, map_location::write_direction(static_cast<map_location::DIRECTION>(d)).c_str());
 		return 1;
