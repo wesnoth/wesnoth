@@ -220,7 +220,6 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * @end{table}
  * @begin{tag}{name="layer"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="layer"}
- * @end{tag}{name="stack"}
  * @end{tag}{name="stacked_widget"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
