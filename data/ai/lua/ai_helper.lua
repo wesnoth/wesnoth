@@ -963,7 +963,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
 end
 
 function ai_helper.is_visible_unit(viewing_side, unit)
-    -- Check whether @unit is visible to side @viewing_side
+    -- Check whether @unit exists and is visible to side @viewing_side.
     --
     -- Required parameters:
     -- @viewing_side: see comments at beginning of this file.
@@ -972,6 +972,8 @@ function ai_helper.is_visible_unit(viewing_side, unit)
     if (not viewing_side) then
         error('ai_helper.is_visible_unit() is missing required parameter viewing_side.')
     end
+
+    if (not unit) then return false end
 
     if wesnoth.sides[viewing_side]
         and unit:matches({ { "filter_vision", { side = viewing_side, visible = 'no' } } })
@@ -1021,7 +1023,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
 end
 
 function ai_helper.is_attackable_enemy(unit, side, cfg)
-    -- Check if @unit is an enemy of @side, is visible to the side defined
+    -- Check if @unit exists, is an enemy of @side, is visible to the side defined
     -- in @cfg.viewing_side and is not petrified.
     --
     -- Optional parameters:
@@ -1032,7 +1034,8 @@ function ai_helper.is_attackable_enemy(unit, side, cfg)
     side = side or wesnoth.current.side
     local viewing_side = cfg and cfg.viewing_side or side
 
-    if (not wesnoth.is_enemy(side, unit.side))
+    if (not unit)
+        or (not wesnoth.is_enemy(side, unit.side))
         or unit.status.petrified
         or (not ai_helper.is_visible_unit(viewing_side, unit))
     then
