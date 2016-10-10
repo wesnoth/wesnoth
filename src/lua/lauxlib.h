@@ -113,10 +113,10 @@ LUALIB_API void (luaL_requiref) (lua_State *L, const char *modname,
 		((void)((cond) || luaL_argerror(L, (numarg), (extramsg))))
 #define luaL_checkstring(L,n)	(luaL_checklstring(L, (n), NULL))
 #define luaL_optstring(L,n,d)	(luaL_optlstring(L, (n), (d), NULL))
-#define luaL_checkint(L,n)	(static_cast<int>(luaL_checkinteger(L, (n))))
-#define luaL_optint(L,n,d)	(static_cast<int>(luaL_optinteger(L, (n), (d))))
-#define luaL_checklong(L,n)	(static_cast<long>(luaL_checkinteger(L, (n))))
-#define luaL_optlong(L,n,d)	(static_cast<long>(luaL_optinteger(L, (n), (d))))
+#define luaL_checkint(L,n)	((int)luaL_checkinteger(L, (n)))
+#define luaL_optint(L,n,d)	((int)luaL_optinteger(L, (n), (d)))
+#define luaL_checklong(L,n)	((long)luaL_checkinteger(L, (n)))
+#define luaL_optlong(L,n,d)	((long)luaL_optinteger(L, (n), (d)))
 
 #define luaL_typename(L,i)	lua_typename(L, lua_type(L,(i)))
 

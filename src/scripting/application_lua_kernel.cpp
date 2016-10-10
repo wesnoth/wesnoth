@@ -93,7 +93,7 @@ static int intf_describe_plugins(lua_State * L)
 
 static int intf_delay(lua_State* L)
 {
-	unsigned int delay = static_cast<unsigned int>(luaL_checkint(L, 1));
+	unsigned int delay = static_cast<unsigned int>(luaL_checkinteger(L, 1));
 	SDL_Delay(delay);
 	return 0;
 }
