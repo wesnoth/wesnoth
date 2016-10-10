@@ -218,7 +218,6 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * @begin{tag}{name="stacked_widget"}{min="0"}{max="-1"}{super="generic/widget_instance"}
  * @begin{table}{config}
  * @end{table}
- * @begin{tag}{name="stack"}{min=0}{max=-1}
  * @begin{tag}{name="layer"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="layer"}
  * @end{tag}{name="stack"}
@@ -232,9 +231,8 @@ namespace implementation
 tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
 	: tbuilder_control(cfg), stack()
 {
-	const config& s = cfg.child("stack");
-	VALIDATE(s, _("No stack defined."));
-	for(const auto & layer : s.child_range("layer"))
+	VALIDATE(cfg.has_child("layer"), _("No stack defined."));
+	for(const auto & layer : cfg.child_range("layer"))
 	{
 		stack.push_back(std::make_shared<tbuilder_grid>(layer));
 	}
