@@ -693,6 +693,7 @@ set(wesnoth-main_SRC
 	game_initialization/depcheck.cpp
 	desktop/notifications.cpp
 	desktop/open.cpp
+	desktop/paths.cpp
 	desktop/version.cpp
 	display_chat_manager.cpp
 	editor/action/action.cpp
