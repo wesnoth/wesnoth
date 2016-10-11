@@ -57,4 +57,44 @@
 #include <string.h>
 #define strcoll(a,b) strcmp(a,b)
 
+/*  We need to rethrow exceptions.
+ *
+ *  The stock Lua catch(...) consumes the exception. We need to re-throw
+ *  it so. This allows the inner function (in C++ -> Lua -> C++) to pass
+ *  back information about the exception, instead of reclassifying all
+ *  exceptions to a single Lua status code.
+ */
+
+#include <cassert>
+#include <exception>
+
+#include "lua_jailbreak_exception.hpp"
+
+#define LUAI_THROW(L,c) throw(c)
+
+#define LUAI_TRY(L,c,a) \
+	try { \
+		try { \
+			a \
+		} catch(const tlua_jailbreak_exception &e) { \
+			e.store(); \
+			throw; \
+		} catch(const std::exception &e) { \
+			lua_pushstring(L, e.what()); \
+			luaG_errormsg(L); \
+			throw; \
+		} catch (const lua_longjmp *) { \
+			/*this exception is used internaly by lua exceptions*/ \
+			throw; \
+		} catch(...) { \
+			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from either std::exception, or tlua_jailbreak_exception (and not with multiple inheritance pathways to either or this exception handler will not work!)"); \
+			throw; \
+		} \
+	} catch(...) { \
+	if((c)->status == 0) \
+		(c)->status = -1;\
+	}
+
+#define luai_jmpbuf     int  /* dummy variable */
+
 #endif

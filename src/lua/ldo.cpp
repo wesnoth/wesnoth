@@ -3,19 +3,13 @@
 ** See Copyright Notice in lua.h
 */
 
-#include <cassert>
+
 #include <setjmp.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define ldo_c
 #define LUA_CORE
-
-#include "../lua_jailbreak_exception.hpp"
-#include <exception>
-#if !defined(__cplusplus)
-#error "Exception support requires a C++ compiler."
-#endif
 
 #include "lua.h"
 
@@ -51,33 +45,14 @@
 ** C++ code, with _longjmp/_setjmp when asked to use them, and with
 ** longjmp/setjmp otherwise.
 */
-#if defined(__cplusplus)
-/* C++ exceptions */
-#define LUAI_THROW(L,c) throw(c)
-#define LUAI_TRY(L,c,a) \
-	try { \
-		try { \
-			a \
-		} catch(const tlua_jailbreak_exception &e) { \
-			e.store(); \
-			throw; \
-		} catch(const std::exception &e) { \
-			lua_pushstring(L, e.what()); \
-			luaG_errormsg(L); \
-			throw; \
-		} catch (const lua_longjmp *) { \
-			/*this exception is used internaly by lua exceptions*/ \
-			throw; \
-		} catch(...) { \
-			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from either std::exception, or tlua_jailbreak_exception (and not with multiple inheritance pathways to either or this exception handler will not work!)"); \
-			throw; \
-		} \
-	} catch(...) { \
-	if((c)->status == 0) \
-		(c)->status = -1;\
-	}
-#define luai_jmpbuf     int  /* dummy variable */
+#if !defined(LUAI_THROW)
 
+#if defined(__cplusplus) && !defined(LUA_USE_LONGJMP)
+/* C++ exceptions */
+#define LUAI_THROW(L,c)		throw(c)
+#define LUAI_TRY(L,c,a) \
+	try { a } catch(...) { if ((c)->status == 0) (c)->status = -1; }
+#define luai_jmpbuf		int  /* dummy variable */
 
 #elif defined(LUA_USE_ULONGJMP)
 /* in Unix, try _longjmp/_setjmp (more efficient) */
@@ -90,6 +65,8 @@
 #define LUAI_THROW(L,c)		longjmp((c)->b, 1)
 #define LUAI_TRY(L,c,a)		if (setjmp((c)->b) == 0) { a }
 #define luai_jmpbuf		jmp_buf
+
+#endif
 
 #endif
 
