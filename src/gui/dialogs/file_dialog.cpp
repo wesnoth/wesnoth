@@ -117,6 +117,7 @@ tfile_dialog::tfile_dialog()
 	, dir_subdirs_()
 	, bookmark_paths_()
 	, current_bookmark_()
+	, user_bookmarks_begin_()
 {
 	set_restore(true);
 }
@@ -187,29 +188,42 @@ void tfile_dialog::pre_show(twindow& window)
 
 	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
 
+	//
+	// Push hard-coded bookmarks.
+	//
+
 	std::vector<desktop::path_info> bookmarks = desktop::game_paths();
 	const auto& sys_paths = desktop::system_paths();
 	bookmarks.insert(bookmarks.end(), sys_paths.begin(), sys_paths.end());
 
 	bookmark_paths_.clear();
-	current_bookmark_ = -1;
+	current_bookmark_ = user_bookmarks_begin_ = -1;
+
+	std::map<std::string, string_map> data;
 
 	for(const auto& pinfo : bookmarks) {
 		bookmark_paths_.push_back(pinfo.path);
-
-		std::map<std::string, string_map> data;
 		data["bookmark"]["label"] = pinfo.display_name();
-
 		bookmarks_bar.add_row(data);
 	}
 
-	if(bookmarks.empty()) {
-		// Can't happen but...
-		// TODO: remove when user-defined bookmarks support lands
-		bookmarks_bar.set_visible(twidget::tvisible::invisible);
-	} else {
-		sync_bookmarks_bar(window);
+	//
+	// Push user-defined bookmarks.
+	//
+
+	const std::vector<desktop::bookmark_info>& user_bookmarks = desktop::user_bookmarks();
+
+	if(!user_bookmarks.empty()) {
+		user_bookmarks_begin_ = bookmark_paths_.size();
 	}
+
+	for(const auto& bookmark : user_bookmarks) {
+		bookmark_paths_.push_back(bookmark.path);
+		data["bookmark"]["label"] = bookmark.label;
+		bookmarks_bar.add_row(data);
+	}
+
+	sync_bookmarks_bar(window);
 
 	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
 
@@ -231,11 +245,17 @@ void tfile_dialog::pre_show(twindow& window)
 
 	tbutton& mkdir_button = find_widget<tbutton>(&window, "new_dir", false);
 	tbutton& rm_button = find_widget<tbutton>(&window, "delete_file", false);
+	tbutton& bookmark_add_button = find_widget<tbutton>(&window, "add_bookmark", false);
+	tbutton& bookmark_del_button = find_widget<tbutton>(&window, "remove_bookmark", false);
 
 	connect_signal_mouse_left_click(mkdir_button,
 			std::bind(&tfile_dialog::on_dir_create_cmd, this, std::ref(window)));
 	connect_signal_mouse_left_click(rm_button,
 			std::bind(&tfile_dialog::on_file_delete_cmd, this, std::ref(window)));
+	connect_signal_mouse_left_click(bookmark_add_button,
+			std::bind(&tfile_dialog::on_bookmark_add_cmd, this, std::ref(window)));
+	connect_signal_mouse_left_click(bookmark_del_button,
+			std::bind(&tfile_dialog::on_bookmark_del_cmd, this, std::ref(window)));
 
 	if(read_only_) {
 		mkdir_button.set_active(false);
@@ -543,15 +563,19 @@ void tfile_dialog::sync_bookmarks_bar(twindow& window)
 	// resolved after callers call set_path(), so compare against a canonical
 	// version. The bookmark paths are already canonical, though.
 	const std::string& canon_current_dir = fs::normalize_path(current_dir_, true, true);
-	auto it = std::find(bookmark_paths_.begin(), bookmark_paths_.end(), canon_current_dir);
 
-	if(it == bookmark_paths_.end()) {
+	// Go backwards so we can match user-defined bookmarks first (otherwise it may
+	// become impossible for the user to delete them if they match any of the
+	// predefined paths).
+	auto it = std::find(bookmark_paths_.rbegin(), bookmark_paths_.rend(), canon_current_dir);
+
+	if(it == bookmark_paths_.rend()) {
 		if(current_bookmark_ >= 0) {
 			bookmarks_bar.select_row(unsigned(current_bookmark_), false);
 		}
 		current_bookmark_ = -1;
 	} else {
-		const int new_selection = int(std::distance(bookmark_paths_.begin(), it));
+		const int new_selection = int(std::distance(bookmark_paths_.begin(), it.base()) - 1);
 		if(new_selection != current_bookmark_) {
 			assert(unsigned(new_selection) < bookmarks_bar.get_item_count());
 			if(current_bookmark_ >= 0) {
@@ -560,6 +584,15 @@ void tfile_dialog::sync_bookmarks_bar(twindow& window)
 			bookmarks_bar.select_row(unsigned(new_selection), true);
 			current_bookmark_ = new_selection;
 		}
+	}
+
+	// Update bookmark edit controls.
+	tbutton& del_button = find_widget<tbutton>(&window, "remove_bookmark", false);
+
+	if(user_bookmarks_begin_ == -1) {
+		del_button.set_active(false);
+	} else {
+		del_button.set_active(current_bookmark_ >= user_bookmarks_begin_);
 	}
 }
 
@@ -607,6 +640,52 @@ void tfile_dialog::on_bookmark_selected(twindow& window)
 	current_bookmark_ = new_selection;
 	set_path(bookmark_paths_[new_selection]);
 	refresh_fileview(window);
+
+	// Update bookmark edit controls.
+	tbutton& del_button = find_widget<tbutton>(&window, "remove_bookmark", false);
+	del_button.set_active(user_bookmarks_begin_ >= 0
+						  && current_bookmark_ >= user_bookmarks_begin_);
+}
+
+void tfile_dialog::on_bookmark_add_cmd(twindow& window)
+{
+	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+
+	// TODO: Maybe let users set custom labels?
+	const std::string& label = fs::base_name(current_dir_);
+
+	desktop::add_user_bookmark(label, current_dir_);
+	bookmark_paths_.push_back(current_dir_);
+	const unsigned top_bookmark = bookmark_paths_.size() - 1;
+
+	if(user_bookmarks_begin_ == -1) {
+		user_bookmarks_begin_ = top_bookmark;
+	}
+
+	std::map<std::string, string_map> data;
+	data["bookmark"]["label"] = label;
+	bookmarks_bar.add_row(data);
+
+	current_bookmark_ = -1;
+
+	sync_bookmarks_bar(window);
+}
+
+void tfile_dialog::on_bookmark_del_cmd(twindow& window)
+{
+	assert(user_bookmarks_begin_ >= 0
+		   && current_bookmark_ >= 0
+		   && current_bookmark_ >= user_bookmarks_begin_
+		   && current_bookmark_ < int(bookmark_paths_.size()));
+
+	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	desktop::remove_user_bookmark(current_bookmark_ - user_bookmarks_begin_);
+	bookmark_paths_.erase(bookmark_paths_.begin() + current_bookmark_);
+	bookmarks_bar.remove_row(current_bookmark_);
+
+	current_bookmark_ = -1;
+
+	sync_bookmarks_bar(window);
 }
 
 void tfile_dialog::on_dir_create_cmd(twindow& window)
