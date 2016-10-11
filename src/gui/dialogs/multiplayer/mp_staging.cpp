@@ -373,10 +373,15 @@ void tmp_staging::update_leader_display(ng::side_engine_ptr side, tgrid& row_gri
 	const std::string current_gender = side->flg().current_gender() != "null" ? side->flg().current_gender() : utils::unicode_em_dash;
 
 	// Sprite
-	std::string new_image = "units/random-dice.png";
+	std::string new_image;
 
-	if(!side->flg().is_random_faction() && current_leader != "random") {
-		const unit_type& type = unit_types.find(current_leader)->get_gender_unit_type(current_gender);
+	if(side->flg().is_random_faction() || current_leader == "random") {
+		new_image = ng::random_enemy_picture;
+	}
+
+	if(const unit_type* ut = unit_types.find(current_leader)) {
+		const unit_type& type = ut->get_gender_unit_type(current_gender);
+
 		new_image = formatter() << type.image() << "~RC(magenta>" << side->color() + 1 << ")";
 
 		// We don't need the unit type id anymore, and can now replace this variable with the type name
