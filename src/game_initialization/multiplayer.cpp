@@ -30,6 +30,7 @@
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
@@ -572,7 +573,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 		dlg.show(video);
 
 		if(dlg.get_retval() == gui2::twindow::OK) {
-			enter_connect_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
+			enter_configure_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 		} else if(wesnothd_connection) {
 			wesnothd_connection->send_data(config("refresh_lobby"));
 		}
@@ -615,6 +616,43 @@ static bool enter_configure_mode(CVideo& video, const config& game_config,
 	saved_game& state, twesnothd_connection* wesnothd_connection, lobby_info& li, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;
+
+	if(preferences::new_lobby()) {
+		std::vector<const config*> entry_points;
+		std::vector<std::string> entry_point_titles;
+
+		if(state.classification().get_tagname() == "scenario") {
+			for(const config& scenario : game_config_manager::get()->game_config().child_range(state.classification().get_tagname())) {
+				if(scenario["allow_new_game"].to_bool(true) || game_config::debug) {
+					const std::string& title = (!scenario["new_game_title"].empty())
+						? scenario["new_game_title"]
+						: scenario["name"];
+
+					entry_points.push_back(&scenario);
+					entry_point_titles.push_back(title);
+				}
+			}
+		}
+
+		if(entry_points.size() > 1) {
+			gui2::tsimple_item_selector dlg(_("Choose Starting Scenario"), _("Select at which point to begin this campaign."), entry_point_titles);
+
+			dlg.set_single_button(true);
+			dlg.show(video);
+
+			const config& scenario = *entry_points[dlg.selected_index()];
+
+			//
+			// FIXME! VERY LIKELY OVERRIDES SETTINGS SET IN GAME CREATE! FIGURE OUT HOW BEST TO RE-APPLY THEM BEFORE 1.13.6!
+			//
+			state.mp_settings().hash = scenario.hash();
+			state.set_scenario(scenario);
+		}
+
+		enter_connect_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
+
+		return true;
+	}
 
 	bool connect_canceled;
 
