@@ -58,7 +58,6 @@ enum GAME_PATH_TYPES
 	GAME_CORE_DATA_DIR = 0x2,		/**< Game data dir. */
 	GAME_USER_PREFS_DIR = 0x4,		/**< User preferences dir. */
 	GAME_USER_DATA_DIR = 0x8,		/**< User data dir. */
-	GAME_USER_BOOKMARKS = 0x10		/**< User-defined bookmarked paths. */
 };
 
 enum SYSTEM_PATH_TYPES
@@ -74,7 +73,7 @@ enum SYSTEM_PATH_TYPES
  * These paths are guaranteed to be their canonical forms (with links and dot
  * entries resolved) and using the platform's preferred path delimiter.
  */
-std::vector<path_info> game_paths(unsigned path_types = GAME_CORE_DATA_DIR | GAME_USER_DATA_DIR | GAME_USER_BOOKMARKS);
+std::vector<path_info> game_paths(unsigned path_types = GAME_CORE_DATA_DIR | GAME_USER_DATA_DIR);
 
 /**
  * Returns a list of system-defined paths.
@@ -88,6 +87,20 @@ std::vector<path_info> game_paths(unsigned path_types = GAME_CORE_DATA_DIR | GAM
  * entries resolved) and using the platform's preferred path delimiter.
  */
 std::vector<path_info> system_paths(unsigned path_types = SYSTEM_ALL_DRIVES | SYSTEM_USER_PROFILE | SYSTEM_ROOTFS);
+
+struct bookmark_info
+{
+	/** User defined label. */
+	std::string label;
+	/** Real path. */
+	std::string path;
+};
+
+unsigned add_user_bookmark(const std::string& label, const std::string& path);
+
+void remove_user_bookmark(unsigned index);
+
+std::vector<bookmark_info> user_bookmarks();
 
 } // namespace desktop
 
