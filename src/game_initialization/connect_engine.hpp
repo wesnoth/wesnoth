@@ -213,9 +213,7 @@ public:
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
-	bool allow_player() const {
-		return cfg_["allow_player"].to_bool(true) && !cfg_["no_leader"].to_bool(false);
-	}
+	bool allow_player() const { return allow_player_; }
 	bool allow_changes() const { return allow_changes_; }
 	bool waiting_to_choose_faction() const { return waiting_to_choose_faction_; }
 	void set_waiting_to_choose_status(bool status) { waiting_to_choose_faction_ = status;}
@@ -255,6 +253,7 @@ private:
 	unsigned current_controller_index_;
 	std::vector<controller_option> controller_options_;
 
+	const bool allow_player_;
 	const bool controller_lock_;
 
 	int index_;
