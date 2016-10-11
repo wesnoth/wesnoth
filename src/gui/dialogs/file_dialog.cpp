@@ -649,10 +649,20 @@ void tfile_dialog::on_bookmark_selected(twindow& window)
 
 void tfile_dialog::on_bookmark_add_cmd(twindow& window)
 {
-	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	const std::string& default_label = fs::base_name(current_dir_);
 
-	// TODO: Maybe let users set custom labels?
-	const std::string& label = fs::base_name(current_dir_);
+	std::string label = default_label;
+
+	const bool confirm = gui2::tbookmark_create::execute(label, window.video());
+	if(!confirm) {
+		return;
+	}
+
+	if(label.empty()) {
+		label = default_label;
+	}
+
+	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
 
 	desktop::add_user_bookmark(label, current_dir_);
 	bookmark_paths_.push_back(current_dir_);

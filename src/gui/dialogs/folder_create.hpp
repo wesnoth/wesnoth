@@ -42,9 +42,34 @@ public:
 	}
 
 private:
+	friend class tbookmark_create;
+
+	bool bookmark_mode_;
+
+	/** Changes the dialog caption so it can be used for naming bookmarks. */
+	tfolder_create& enable_bookmark_mode()
+	{
+		bookmark_mode_ = true;
+		return *this;
+	}
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
+
+	/** Inherited from tdialog. */
+	void pre_show(twindow& window);
 };
+
+class tbookmark_create
+{
+public:
+	/** The execute function; see @ref tdialog for more information. */
+	static bool execute(std::string& bookmark_name, CVideo& video)
+	{
+		return tfolder_create(bookmark_name).enable_bookmark_mode().show(video);
+	}
+};
+
 }
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */
