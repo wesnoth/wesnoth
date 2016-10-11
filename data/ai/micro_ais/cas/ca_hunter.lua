@@ -129,7 +129,7 @@ function ca_hunter:execution(cfg)
 
     -- If we got here, this means the hunter is either returning, or resting
     if (hunter_vars.hunting_status == 'returning') then
-        goto_x, goto_y = wesnoth.find_vacant_tile(cfg.home_x, cfg.home_y)
+        goto_x, goto_y = wesnoth.find_vacant_tile(cfg.home_x, cfg.home_y, hunter)
 
         local next_hop = AH.next_hop(hunter, goto_x, goto_y)
         if next_hop then
