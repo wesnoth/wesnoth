@@ -75,7 +75,8 @@ namespace game_config
 			unmoved_orb_color,
 			partial_orb_color,
 			enemy_orb_color,
-			ally_orb_color;
+			ally_orb_color,
+			default_color_list;
 	}
 
 	bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
@@ -139,6 +140,8 @@ namespace game_config
 	std::map<std::string, t_string > team_rgb_name;
 
 	std::map<std::string, std::vector<uint32_t> > team_rgb_colors;
+
+	std::vector<std::string> default_colors;
 
 	const version_info wesnoth_version(VERSION);
 	const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
@@ -215,6 +218,7 @@ namespace game_config
 			partial_orb_color = i["partial_orb_color"].str();
 			enemy_orb_color = i["enemy_orb_color"].str();
 			ally_orb_color = i["ally_orb_color"].str();
+			default_color_list = i["default_color_list"].str();
 		} // colors
 
 		show_ally_orb = v["show_ally_orb"].to_bool(true);
@@ -377,6 +381,14 @@ namespace game_config
 				}
 				team_rgb_colors.insert(std::make_pair(rgb.first, temp));
 				LOG_NG << "registered color palette: " << rgb.first << '\n';
+			}
+		}
+
+		default_colors.clear();
+
+		for(const auto& color : utils::split(game_config::colors::default_color_list)) {
+			if(team_rgb_name.find(color) != team_rgb_name.end()) {
+				default_colors.push_back(color);
 			}
 		}
 	}

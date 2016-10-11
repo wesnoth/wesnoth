@@ -77,7 +77,8 @@ namespace game_config
 			partial_orb_color,
 			enemy_orb_color,
 			ally_orb_color,
-			moved_orb_color;
+			moved_orb_color,
+			default_color_list;
 	} // colors
 
 	extern bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
@@ -135,6 +136,8 @@ namespace game_config
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
 	extern std::map<std::string, std::vector<uint32_t> > team_rgb_colors;
+
+	extern std::vector<std::string> default_colors;
 
 	/** observer team name used for observer team chat */
 	extern const std::string observer_team_name;
