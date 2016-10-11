@@ -276,7 +276,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					scenario["require_scenario"] = require_campaign;
 					for (config& side : scenario.child_range("side"))
 					{
-						side["no_leader"] = side["no_leader"].to_bool(true);
+						side["no_leader"] = side["no_leader"].to_bool(false);
 					}
 				}
 			}
