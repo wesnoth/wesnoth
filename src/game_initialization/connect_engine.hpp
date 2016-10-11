@@ -225,9 +225,11 @@ public:
 	flg_manager& flg() { return flg_; }
 
 	std::vector<std::string> get_colors() const;
-	std::vector<std::pair<std::string, std::string>> get_colors_pango() const;
 	std::string get_color(int index = -1) const;
 	int num_colors() const;
+
+	const std::string color_id() const { return color_id_; }
+	const std::vector<std::string>& color_options() const { return color_options_; }
 
 	const std::string team_name() const
 	{
@@ -275,6 +277,9 @@ private:
 	const bool allow_changes_;
 	bool waiting_to_choose_faction_;
 	std::string custom_color_;
+	std::string color_id_;
+
+	std::vector<std::string> color_options_;
 };
 
 } // end namespace ng
