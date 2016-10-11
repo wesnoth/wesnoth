@@ -425,13 +425,11 @@ void tmp_staging::network_handler(twindow& window)
 	// First, send off any changes if they've been accumulated
 	if(state_changed_) {
 		connect_engine_.update_and_send_diff();
-
-		state_changed_ = false;
 	}
 
 	// Next, check for any incoming changes
 	config data;
-	if(!wesnothd_connection_ || !wesnothd_connection_->receive_data(data)) {
+	if(!state_changed_ && (!wesnothd_connection_ || !wesnothd_connection_->receive_data(data))) {
 		return;
 	}
 
@@ -478,6 +476,8 @@ void tmp_staging::network_handler(twindow& window)
 	if(!was_able_to_start && connect_engine_.can_start_game()) {
 		mp_ui_alerts::ready_for_start();
 	}
+
+	state_changed_ = false;
 }
 
 void tmp_staging::post_show(twindow& window)
