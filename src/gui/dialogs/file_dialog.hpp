@@ -197,6 +197,7 @@ private:
 
 	std::vector<std::string> bookmark_paths_;
 	int current_bookmark_;
+	int user_bookmarks_begin_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -210,6 +211,10 @@ private:
 	void on_row_selected(twindow& window);
 	/** Handles selection or deselection of bookmarks. */
 	void on_bookmark_selected(twindow& window);
+	/** Handles Add Bookmark button press events. */
+	void on_bookmark_add_cmd(twindow& window);
+	/** Handles Remove Bookmark button press events. */
+	void on_bookmark_del_cmd(twindow& window);
 	/** Handles New Folder button press events. */
 	void on_dir_create_cmd(twindow& window);
 	/** Handles Delete button press events. */
