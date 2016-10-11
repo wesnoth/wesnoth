@@ -1409,12 +1409,12 @@ std::vector<std::string> side_engine::get_colors() const
 	return res;
 }
 
-std::map<std::string, std::string> side_engine::get_colors_pango() const
+std::vector<std::pair<std::string, std::string>> side_engine::get_colors_pango() const
 {
-	std::map<std::string, std::string> res;
+	std::vector<std::pair<std::string, std::string>> res;
 	for(int i = 0; i < num_colors(); ++i) {
 		const std::string color = get_color(i);
-		res.emplace(color, mp::get_color_string_pango(color));
+		res.push_back({color, mp::get_color_string_pango(color)});
 	}
 	return res;
 }

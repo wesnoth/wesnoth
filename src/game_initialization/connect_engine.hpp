@@ -225,7 +225,7 @@ public:
 	flg_manager& flg() { return flg_; }
 
 	std::vector<std::string> get_colors() const;
-	std::map<std::string, std::string> get_colors_pango() const;
+	std::vector<std::pair<std::string, std::string>> get_colors_pango() const;
 	std::string get_color(int index = -1) const;
 	int num_colors() const;
 
