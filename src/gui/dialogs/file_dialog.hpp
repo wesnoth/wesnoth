@@ -195,6 +195,9 @@ private:
 	std::vector<std::string> dir_files_;
 	std::vector<std::string> dir_subdirs_;
 
+	std::vector<std::string> bookmark_paths_;
+	int current_bookmark_;
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -205,6 +208,8 @@ private:
 	bool on_exit(twindow& window);
 	/** Handles file/directory selection on single-click. */
 	void on_row_selected(twindow& window);
+	/** Handles selection or deselection of bookmarks. */
+	void on_bookmark_selected(twindow& window);
 	/** Handles New Folder button press events. */
 	void on_dir_create_cmd(twindow& window);
 	/** Handles Delete button press events. */
@@ -233,6 +238,11 @@ private:
 	bool process_textbox_submit(twindow& window);
 
 	bool process_submit_common(twindow& window, const std::string& name);
+
+	/**
+	 * Updates the bookmarks bar state to reflect the internal state.
+	 */
+	void sync_bookmarks_bar(twindow& window);
 
 	std::string get_filelist_selection(class tlistbox& filelist);
 
