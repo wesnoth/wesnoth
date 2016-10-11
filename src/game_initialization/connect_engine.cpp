@@ -161,7 +161,7 @@ connect_engine::connect_engine(saved_game& state,
 				"Team " + side_str);
 			user_team_names_.push_back(user_team_name.t_str().to_serialized());
 
-			if (side["allow_player"].to_bool(true) || game_config::debug) {
+			if((side["allow_player"].to_bool(true) && !side["no_leader"].to_bool(false)) || game_config::debug) {
 				player_teams_.push_back(user_team_name.str());
 			}
 		}
@@ -877,7 +877,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	controller_(CNTR_NETWORK),
 	current_controller_index_(0),
 	controller_options_(),
-	allow_player_(cfg["allow_player"].to_bool(true)),
 	controller_lock_(cfg["controller_lock"].to_bool(
 		parent_.force_lock_settings_) && parent_.params_.use_map_settings),
 	index_(index),
@@ -946,7 +945,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
-	} else if (allow_player_) {
+	} else if (allow_player()) {
 		set_controller(parent_.default_controller_);
 	} else {
 		// AI is the default.
@@ -996,7 +995,7 @@ std::string side_engine::user_description() const
 	case CNTR_LOCAL:
 		return N_("Anonymous player");
 	case CNTR_COMPUTER:
-		if (allow_player_) {
+		if (allow_player()) {
 			return ai::configuration::get_ai_config_for(ai_algorithm_)["description"];
 		} else {
 			return N_("Computer Player");
@@ -1044,7 +1043,7 @@ config side_engine::new_config() const
 	}
 
 	assert(controller_ != CNTR_LAST);
-	if(controller_ == CNTR_COMPUTER && allow_player_) {
+	if(controller_ == CNTR_COMPUTER && allow_player()) {
 		// Do not import default ai cfg otherwise - all is set by scenario config.
 		res.add_child_at("ai", config_of("ai_algorithm", ai_algorithm_), 0);
 	}
@@ -1142,7 +1141,7 @@ config side_engine::new_config() const
 		if ((res["user_team_name"] == "") || (!parent_.params_.use_map_settings)) {
 			res["user_team_name"] = parent_.user_team_names_[team_];
 		}
-		res["allow_player"] = allow_player_;
+		res["allow_player"] = cfg_["allow_player"].to_bool(true);
 		res["color"] = get_color(color_);
 		res["gold"] = gold_;
 		res["income"] = income_;
@@ -1168,7 +1167,7 @@ config side_engine::new_config() const
 
 bool side_engine::ready_for_start() const
 {
-	if (!allow_player_) {
+	if (!allow_player()) {
 		// Sides without players are always ready.
 		return true;
 	}
