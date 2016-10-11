@@ -39,6 +39,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "mp_ui_alerts.hpp"
+#include "game_initialization/multiplayer_ui.hpp"
 #include "units/types.hpp"
 #include "wesnothd_connection.hpp"
 
@@ -246,10 +247,10 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	// Colors
 	//
 	std::vector<config> color_options;
-	for(const auto& color : side->get_colors_pango()) {
+	for(const auto& color : side->color_options()) {
 		color_options.push_back(config_of
-			("label", color.second)
-			("icon", (formatter() << "misc/status.png~RC(magenta>" << color.first << ")").str())
+			("label", mp::get_color_string_pango(color))
+			("icon", (formatter() << "misc/status.png~RC(magenta>" << color << ")").str())
 		);
 	}
 
@@ -382,7 +383,7 @@ void tmp_staging::update_leader_display(ng::side_engine_ptr side, tgrid& row_gri
 	if(const unit_type* ut = unit_types.find(current_leader)) {
 		const unit_type& type = ut->get_gender_unit_type(current_gender);
 
-		new_image = formatter() << type.image() << "~RC(magenta>" << side->color() + 1 << ")";
+		new_image = formatter() << type.image() << "~RC(magenta>" << side->color_id() << ")";
 
 		// We don't need the unit type id anymore, and can now replace this variable with the type name
 		current_leader = type.type_name();
