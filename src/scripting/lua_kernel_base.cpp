@@ -722,7 +722,10 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 
 lua_kernel_base*& lua_kernel_base::get_lua_kernel_base_ptr(lua_State *L)
 {
-	return *reinterpret_cast<lua_kernel_base**>(reinterpret_cast<char*>(L) - LUA_KERNEL_BASE_OFFSET);
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wold-style-cast"
+	return *reinterpret_cast<lua_kernel_base**>(lua_getextraspace(L));
+	#pragma GCC diagnostic pop
 }
 
 uint32_t lua_kernel_base::get_random_seed()
