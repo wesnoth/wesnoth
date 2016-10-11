@@ -155,7 +155,7 @@ static lua_State * get_new_thread(lua_State * L)
 		lua_newtable(L);
 	}						// stack is now [script key] [table]
 
-	lua_pushinteger(L, lua_objlen(L, -1) + 1);	// push #table + 1 onto the stack
+	lua_pushinteger(L, lua_rawlen(L, -1) + 1);	// push #table + 1 onto the stack
 
 	lua_State * T = lua_newthread(L);		// create new thread T
 							// stack is now [script key] [table] [#table + 1] [thread]

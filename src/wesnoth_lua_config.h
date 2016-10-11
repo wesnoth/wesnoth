@@ -38,9 +38,19 @@
 **  wesnoth_lua_config.md
 */
 
+
+
 /*
 **  Standard Lua options.
 */
+
+/*  Wesnoth definitions for compatibility
+ *  No longer needed in C++, included only for Lua runtime.
+ */
+#define LUA_COMPAT_MODULE
+#define LUA_COMPAT_ALL
+
+
 
 /*
 **  Wesnoth-specific modifications.
