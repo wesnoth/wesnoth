@@ -20,6 +20,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
@@ -132,6 +133,17 @@ inline std::string pretty_path(const std::string& path)
 	return filesystem::normalize_path(path, true, true);
 }
 
+inline config get_bookmarks_config()
+{
+	const config& cfg = preferences::get_child("dir_bookmarks");
+	return cfg ? cfg : config{};
+}
+
+inline void commit_bookmarks_config(config& cfg)
+{
+	preferences::set_child("dir_bookmarks", cfg);
+}
+
 } // unnamed namespace
 
 std::string user_profile_dir()
@@ -193,10 +205,6 @@ std::vector<path_info> game_paths(unsigned path_types)
 		res.push_back({{ N_("filesystem_path_game^User preferences"), GETTEXT_DOMAIN }, "", game_user_pref_dir});
 	}
 
-	if(path_types & GAME_USER_BOOKMARKS) {
-		// TODO
-	}
-
 	return res;
 }
 
@@ -219,6 +227,45 @@ std::vector<path_info> system_paths(unsigned path_types)
 		res.push_back({{ N_("filesystem_path_system^Root"), GETTEXT_DOMAIN }, "", "/"});
 	}
 #endif
+
+	return res;
+}
+
+unsigned add_user_bookmark(const std::string& label, const std::string& path)
+{
+	config cfg = get_bookmarks_config();
+
+	config& bookmark_cfg = cfg.add_child("bookmark");
+	bookmark_cfg["label"] = label;
+	bookmark_cfg["path"]  = path;
+
+	commit_bookmarks_config(cfg);
+
+	return cfg.child_count("bookmark");
+}
+
+void remove_user_bookmark(unsigned index)
+{
+	config cfg = get_bookmarks_config();
+	const unsigned prev_size = cfg.child_count("bookmark");
+
+	if(index < prev_size) {
+		cfg.remove_child("bookmark", index);
+	}
+
+	commit_bookmarks_config(cfg);
+}
+
+std::vector<bookmark_info> user_bookmarks()
+{
+	const config& cfg = get_bookmarks_config();
+	std::vector<bookmark_info> res;
+
+	if(cfg.has_child("bookmark")) {
+		for(const config& bookmark_cfg : cfg.child_range("bookmark")) {
+			res.push_back({ bookmark_cfg["label"], bookmark_cfg["path"] });
+		}
+	}
 
 	return res;
 }
