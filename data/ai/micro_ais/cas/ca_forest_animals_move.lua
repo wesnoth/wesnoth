@@ -39,7 +39,7 @@ end
 
 function ca_forest_animals_move:execution(cfg)
     -- These animals run from any enemy
-    local forest_animals = get_forest_animals(cfg)
+    local unit = get_forest_animals(cfg)[1]
     local enemies = wesnoth.get_units { { "filter_side", { { "enemy_of", {side = wesnoth.current.side } } } } }
 
     -- Get the locations of all the rabbit holes
@@ -62,109 +62,106 @@ function ca_forest_animals_move:execution(cfg)
     local hole_map = LS.create()
     for _,hole in ipairs(holes) do hole_map:insert(hole.x, hole.y, 1) end
 
-    -- Each unit moves independently
-    for _,unit in ipairs(forest_animals) do
-        -- Behavior is different depending on whether a predator is close or not
-        local close_enemies = {}
+    -- Behavior is different depending on whether a predator is close or not
+    local close_enemies = {}
+    for _,enemy in ipairs(enemies) do
+        if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
+            table.insert(close_enemies, enemy)
+        end
+    end
+
+    -- If no close enemies, do a random move
+    local wander_terrain = H.get_child(cfg, "filter_location") or {}
+    if (not close_enemies[1]) then
+        local reach = AH.get_reachable_unocc(unit)
+        local width, height = wesnoth.get_map_size()
+        local wander_locs = wesnoth.get_locations {
+            x = '1-' .. width,
+            y = '1-' .. height,
+            { "and", wander_terrain }
+        }
+        local locs_map = LS.of_pairs(wander_locs)
+
+        local reachable_wander_terrain = {}
+        reach:iter( function(x, y, v)
+            if locs_map:get(x,y) then
+                table.insert(reachable_wander_terrain, {x, y})
+            end
+        end)
+
+        -- Choose one of the possible locations at random
+        if reachable_wander_terrain[1] then
+            local rand = math.random(#reachable_wander_terrain)
+            -- This is not a full move, as running away might happen next
+            if (unit.x ~= reachable_wander_terrain[rand][1]) or (unit.y ~= reachable_wander_terrain[rand][2]) then
+                AH.checked_move(ai, unit, reachable_wander_terrain[rand][1], reachable_wander_terrain[rand][2])
+            end
+        else  -- Or if no close reachable terrain was found, move toward the closest
+            local min_dist, best_hex = 9e99
+            for _,loc in ipairs(wander_locs) do
+                local dist = H.distance_between(loc[1], loc[2], unit.x, unit.y)
+                if dist < min_dist then
+                    best_hex, min_dist = loc, dist
+                end
+            end
+
+            if (best_hex) then
+                local x,y = wesnoth.find_vacant_tile(best_hex[1], best_hex[2], unit)
+                local next_hop = AH.next_hop(unit, x, y)
+
+                if (unit.x ~= next_hop[1]) or (unit.y ~= next_hop[2]) then
+                    AH.checked_move(ai, unit, next_hop[1], next_hop[2])
+                end
+            end
+        end
+    end
+
+    -- Now we check for close enemies again, as we might just have moved within reach of some
+    local close_enemies = {}
+    if unit and unit.valid then
         for _,enemy in ipairs(enemies) do
             if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
                 table.insert(close_enemies, enemy)
             end
         end
-
-        -- If no close enemies, do a random move
-        local wander_terrain = H.get_child(cfg, "filter_location") or {}
-        if (not close_enemies[1]) then
-            local reach = AH.get_reachable_unocc(unit)
-            local width, height = wesnoth.get_map_size()
-            local wander_locs = wesnoth.get_locations {
-                x = '1-' .. width,
-                y = '1-' .. height,
-                { "and", wander_terrain }
-            }
-            local locs_map = LS.of_pairs(wander_locs)
-
-            local reachable_wander_terrain = {}
-            reach:iter( function(x, y, v)
-                if locs_map:get(x,y) then
-                    table.insert(reachable_wander_terrain, {x, y})
-                end
-            end)
-
-            -- Choose one of the possible locations at random
-            if reachable_wander_terrain[1] then
-                local rand = math.random(#reachable_wander_terrain)
-                -- This is not a full move, as running away might happen next
-                if (unit.x ~= reachable_wander_terrain[rand][1]) or (unit.y ~= reachable_wander_terrain[rand][2]) then
-                    AH.checked_move(ai, unit, reachable_wander_terrain[rand][1], reachable_wander_terrain[rand][2])
-                end
-            else  -- Or if no close reachable terrain was found, move toward the closest
-                local min_dist, best_hex = 9e99
-                for _,loc in ipairs(wander_locs) do
-                    local dist = H.distance_between(loc[1], loc[2], unit.x, unit.y)
-                    if dist < min_dist then
-                        best_hex, min_dist = loc, dist
-                    end
-                end
-
-                if (best_hex) then
-                    local x,y = wesnoth.find_vacant_tile(best_hex[1], best_hex[2], unit)
-                    local next_hop = AH.next_hop(unit, x, y)
-
-                    if (unit.x ~= next_hop[1]) or (unit.y ~= next_hop[2]) then
-                        AH.checked_move(ai, unit, next_hop[1], next_hop[2])
-                    end
-                end
-            end
-        end
-
-        -- Now we check for close enemies again, as we might just have moved within reach of some
-        local close_enemies = {}
-        if unit and unit.valid then
-            for _,enemy in ipairs(enemies) do
-                if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
-                    table.insert(close_enemies, enemy)
-                end
-            end
-        end
-
-        -- If there are close enemies, run away (and rabbits disappear into holes)
-        local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
-        if close_enemies[1] then
-            -- Calculate the hex that maximizes distance of unit from enemies
-            -- Returns nil if the only hex that can be reached is the one the unit is on
-            local farthest_hex = AH.find_best_move(unit, function(x, y)
-                local rating = 0
-                for _,enemy in ipairs(close_enemies) do
-                    local dist = H.distance_between(enemy.x, enemy.y, x, y)
-                    rating = rating - 1 / dist^2
-                end
-
-                -- If this is a rabbit, try to go for holes
-                if (unit.type == rabbit_type) and hole_map:get(x, y) then
-                    rating = rating + 1000
-                    -- But if possible, go to another hole if unit is on one
-                    if (x == unit.x) and (y == unit.y) then rating = rating - 10 end
-                end
-
-                return rating
-            end)
-
-            AH.movefull_stopunit(ai, unit, farthest_hex)
-
-            -- If this is a rabbit ending on a hole -> disappears
-            if unit and unit.valid
-                and (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2])
-            then
-                local command =  "wesnoth.erase_unit(x1, y1)"
-                ai.synced_command(command, farthest_hex[1], farthest_hex[2])
-            end
-        end
-
-        -- Finally, take moves away, as only partial move might have been done
-        -- Also take attacks away, as these units never attack
-        if unit and unit.valid then AH.checked_stopunit_all(ai, unit) end
     end
+
+    -- If there are close enemies, run away (and rabbits disappear into holes)
+    local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
+    if close_enemies[1] then
+        -- Calculate the hex that maximizes distance of unit from enemies
+        -- Returns nil if the only hex that can be reached is the one the unit is on
+        local farthest_hex = AH.find_best_move(unit, function(x, y)
+            local rating = 0
+            for _,enemy in ipairs(close_enemies) do
+                local dist = H.distance_between(enemy.x, enemy.y, x, y)
+                rating = rating - 1 / dist^2
+            end
+
+            -- If this is a rabbit, try to go for holes
+            if (unit.type == rabbit_type) and hole_map:get(x, y) then
+                rating = rating + 1000
+                -- But if possible, go to another hole if unit is on one
+                if (x == unit.x) and (y == unit.y) then rating = rating - 10 end
+            end
+
+            return rating
+        end)
+
+        AH.movefull_stopunit(ai, unit, farthest_hex)
+
+        -- If this is a rabbit ending on a hole -> disappears
+        if unit and unit.valid
+            and (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2])
+        then
+            local command =  "wesnoth.erase_unit(x1, y1)"
+            ai.synced_command(command, farthest_hex[1], farthest_hex[2])
+        end
+    end
+
+    -- Finally, take moves away, as only partial move might have been done
+    -- Also take attacks away, as these units never attack
+    if unit and unit.valid then AH.checked_stopunit_all(ai, unit) end
 end
 
 return ca_forest_animals_move
