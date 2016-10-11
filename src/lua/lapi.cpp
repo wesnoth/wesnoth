@@ -28,6 +28,11 @@
 
 
 
+const char lua_ident[] =
+  "$LuaVersion: " LUA_COPYRIGHT " $"
+  "$LuaAuthors: " LUA_AUTHORS " $";
+
+
 /* value at a non-valid index */
 #define NONVALIDVALUE		cast(TValue *, luaO_nilobject)
 
