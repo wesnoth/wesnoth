@@ -628,7 +628,15 @@ void text_surface::bidi_cvt()
 
 
 	n = fribidi_charset_to_unicode(FRIBIDI_CHAR_SET_UTF8, c_str, len, bidi_logical);
+	#ifdef __GNUC__
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wunused-result"
+	#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+	#endif
 	fribidi_log2vis(bidi_logical, n, &base_dir, bidi_visual, nullptr, nullptr, nullptr);
+	#ifdef __GNUC__
+	#pragma GCC diagnostic pop
+	#endif
 
 	fribidi_unicode_to_charset(FRIBIDI_CHAR_SET_UTF8, bidi_visual, n, utf8str);
 	is_rtl_ = base_dir == FRIBIDI_TYPE_RTL;
