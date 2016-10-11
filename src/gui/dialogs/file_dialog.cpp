@@ -17,6 +17,7 @@
 #include "gui/dialogs/file_dialog.hpp"
 
 #include "cursor.hpp"
+#include "desktop/paths.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -114,6 +115,8 @@ tfile_dialog::tfile_dialog()
 	, save_mode_(false)
 	, dir_files_()
 	, dir_subdirs_()
+	, bookmark_paths_()
+	, current_bookmark_()
 {
 	set_restore(true);
 }
@@ -182,6 +185,32 @@ void tfile_dialog::pre_show(twindow& window)
 		ok.set_label(ok_label_);
 	}
 
+	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+
+	std::vector<desktop::path_info> bookmarks = desktop::game_paths();
+	const auto& sys_paths = desktop::system_paths();
+	bookmarks.insert(bookmarks.end(), sys_paths.begin(), sys_paths.end());
+
+	bookmark_paths_.clear();
+	current_bookmark_ = -1;
+
+	for(const auto& pinfo : bookmarks) {
+		bookmark_paths_.push_back(pinfo.path);
+
+		std::map<std::string, string_map> data;
+		data["bookmark"]["label"] = pinfo.display_name();
+
+		bookmarks_bar.add_row(data);
+	}
+
+	if(bookmarks.empty()) {
+		// Can't happen but...
+		// TODO: remove when user-defined bookmarks support lands
+		bookmarks_bar.set_visible(twidget::tvisible::invisible);
+	} else {
+		sync_bookmarks_bar(window);
+	}
+
 	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -189,9 +218,15 @@ void tfile_dialog::pre_show(twindow& window)
 				  &tfile_dialog::on_row_selected
 				, *this
 				, std::ref(window)));
+	connect_signal_notify_modified(bookmarks_bar, std::begin(
+				  &tfile_dialog::on_bookmark_selected
+				, *this
+				, std::ref(window)));
 #else
 	filelist.set_callback_value_change(
 			dialog_callback<tfile_dialog, &tfile_dialog::on_row_selected>);
+	bookmarks_bar.set_callback_value_change(
+			dialog_callback<tfile_dialog, &tfile_dialog::on_bookmark_selected>);
 #endif
 
 	tbutton& mkdir_button = find_widget<tbutton>(&window, "new_dir", false);
@@ -273,6 +308,7 @@ bool tfile_dialog::process_submit_common(twindow& window, const std::string& nam
 	switch(stype) {
 		case SELECTION_IS_DIR:
 			// TODO: Adapt for implementing directory selection mode.
+			sync_bookmarks_bar(window);
 			refresh_fileview(window);
 			break;
 		case SELECTION_PARENT_NOT_FOUND:
@@ -499,6 +535,34 @@ void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name
 	}
 }
 
+void tfile_dialog::sync_bookmarks_bar(twindow& window)
+{
+	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+
+	// Internal state has normalized path delimiters but dot entries aren't
+	// resolved after callers call set_path(), so compare against a canonical
+	// version. The bookmark paths are already canonical, though.
+	const std::string& canon_current_dir = fs::normalize_path(current_dir_, true, true);
+	auto it = std::find(bookmark_paths_.begin(), bookmark_paths_.end(), canon_current_dir);
+
+	if(it == bookmark_paths_.end()) {
+		if(current_bookmark_ >= 0) {
+			bookmarks_bar.select_row(unsigned(current_bookmark_), false);
+		}
+		current_bookmark_ = -1;
+	} else {
+		const int new_selection = int(std::distance(bookmark_paths_.begin(), it));
+		if(new_selection != current_bookmark_) {
+			assert(unsigned(new_selection) < bookmarks_bar.get_item_count());
+			if(current_bookmark_ >= 0) {
+				bookmarks_bar.select_row(unsigned(current_bookmark_), false);
+			}
+			bookmarks_bar.select_row(unsigned(new_selection), true);
+			current_bookmark_ = new_selection;
+		}
+	}
+}
+
 void tfile_dialog::on_row_selected(twindow& window)
 {
 	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
@@ -518,6 +582,31 @@ void tfile_dialog::on_row_selected(twindow& window)
 	// Need to do this every time so that input can still be sent to the
 	// textbox without clicking on it.
 	window.keyboard_capture(&file_textbox);
+}
+
+void tfile_dialog::on_bookmark_selected(twindow& window)
+{
+	// Don't let us steal the focus from the primary widgets.
+	ttext_box& file_textbox = find_widget<ttext_box>(&window, "filename", false);
+	window.keyboard_capture(&file_textbox);
+
+	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	const int new_selection = bookmarks_bar.get_selected_row();
+
+	if(new_selection < 0) {
+		if(current_bookmark_ >= 0) {
+			// Don't allow the user to unselect the selected bookmark. That wouldn't
+			// make any sense.
+			bookmarks_bar.select_row(unsigned(current_bookmark_));
+		}
+
+		return;
+	}
+
+	assert(unsigned(new_selection) < bookmark_paths_.size());
+	current_bookmark_ = new_selection;
+	set_path(bookmark_paths_[new_selection]);
+	refresh_fileview(window);
 }
 
 void tfile_dialog::on_dir_create_cmd(twindow& window)
