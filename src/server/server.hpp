@@ -117,8 +117,10 @@ private:
 		return result;
 	}
 
+#ifndef _WIN32
 	/** server socket/fifo. */
 	std::string input_path_;
+#endif
 
 	const std::string config_file_;
 	config cfg_;
