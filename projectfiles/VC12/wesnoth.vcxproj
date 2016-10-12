@@ -868,6 +868,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Desktop\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\desktop\paths.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Desktop\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Desktop\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Desktop\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Desktop\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\desktop\version.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Desktop\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
@@ -3998,6 +4006,7 @@
     <ClInclude Include="..\..\src\desktop\clipboard.hpp" />
     <ClInclude Include="..\..\src\desktop\notifications.hpp" />
     <ClInclude Include="..\..\src\desktop\open.hpp" />
+    <ClInclude Include="..\..\src\desktop\paths.hpp" />
     <ClInclude Include="..\..\src\desktop\version.hpp" />
     <ClInclude Include="..\..\src\desktop\windows_tray_notification.hpp" />
     <ClInclude Include="..\..\src\display.hpp" />
