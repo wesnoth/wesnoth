@@ -503,6 +503,7 @@ void tfile_dialog::refresh_fileview(twindow& window)
 	//
 
 	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
+	tbutton& rm_button = find_widget<tbutton>(&window, "delete_file", false);
 
 	filelist.clear();
 
@@ -513,6 +514,9 @@ void tfile_dialog::refresh_fileview(twindow& window)
 		push_fileview_row(filelist, label_parent, icon_parent, false);
 		if(current_entry_ == PARENT_DIR || current_entry_.empty()) {
 			filelist.select_row(0, true);
+			rm_button.set_active(false);
+		} else {
+			rm_button.set_active(true);
 		}
 	}
 
@@ -600,6 +604,7 @@ void tfile_dialog::on_row_selected(twindow& window)
 {
 	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
 	ttext_box& file_textbox = find_widget<ttext_box>(&window, "filename", false);
+	tbutton& rm_button = find_widget<tbutton>(&window, "delete_file", false);
 
 	// Don't use register_new_selection() here, we don't want any parsing to be
 	// performed at this point.
@@ -608,8 +613,10 @@ void tfile_dialog::on_row_selected(twindow& window)
 	// Clear the textbox when selecting ..
 	if(current_entry_ != PARENT_DIR) {
 		set_input_text(file_textbox, current_entry_);
+		rm_button.set_active(true);
 	} else {
 		clear_input_text(file_textbox);
+		rm_button.set_active(false);
 	}
 
 	// Need to do this every time so that input can still be sent to the
