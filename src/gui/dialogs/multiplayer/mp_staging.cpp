@@ -221,8 +221,11 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	//
 	// Leader controls
 	//
-	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&row_grid, "select_leader", false),
+	tbutton& leader_select = find_widget<tbutton>(&row_grid, "select_leader", false);
+
+	leader_select.set_active(!saved_game);
+
+	connect_signal_mouse_left_click(leader_select,
 		std::bind(&tmp_staging::select_leader_callback, this, std::ref(window), side, std::ref(row_grid)));
 
 	//
@@ -276,7 +279,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	connect_signal_notify_modified(slider_income, std::bind(
 		&tmp_staging::on_side_slider_change<&ng::side_engine::set_income>, this, side, std::ref(slider_income)));
 
-	// TODO: hide header, or maybe display the saved values
+	// TODO: maybe display the saved values
 	if(saved_game) {
 		slider_gold.set_visible(twidget::tvisible::invisible);
 		slider_income.set_visible(twidget::tvisible::invisible);
@@ -285,7 +288,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	//
 	// Gold, income, team, and color are only suggestions unless explicitly locked
 	//
-	if(ums) {
+	if(!saved_game && ums) {
 		team_selection.set_active(!lock_team);
 		color_selection.set_active(!lock_color);
 
