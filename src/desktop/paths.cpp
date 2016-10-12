@@ -74,7 +74,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 			wchar_t drive[] = L"A:\\";
 			drive[0] += n;
 
-			constexpr DWORD label_bufsize = MAX_PATH + 1;
+			const DWORD label_bufsize = MAX_PATH + 1;
 			wchar_t label[label_bufsize] = { 0 };
 
 			if(GetVolumeInformation(drive, label, label_bufsize, NULL, NULL, NULL, NULL, 0) == 0) {
