@@ -34,6 +34,7 @@ ltablib.cpp
 lstrlib.cpp
 loadlib.cpp
 linit.cpp
+lutf8lib.cpp
 """)
 env_lua = env.Clone(
     # Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.
