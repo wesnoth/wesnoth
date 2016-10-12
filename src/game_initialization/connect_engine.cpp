@@ -1160,7 +1160,7 @@ config side_engine::new_config() const
 			res["user_team_name"] = parent_.user_team_names_[team_];
 		}
 		res["allow_player"] = allow_player_;
-		res["color"] = get_color(color_);
+		res["color"] = color_id_;
 		res["gold"] = gold_;
 		res["income"] = income_;
 	}
