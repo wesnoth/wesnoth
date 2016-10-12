@@ -268,13 +268,13 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	slider_gold.set_value(side->cfg()["gold"].to_int(100));
 
 	connect_signal_notify_modified(slider_gold, std::bind(
-		&tmp_staging::on_side_slider_change<ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
+		&tmp_staging::on_side_slider_change<&ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
 
 	tslider& slider_income = find_widget<tslider>(&row_grid, "side_income_slider", false);
 	slider_income.set_value(side->cfg()["income"]);
 
 	connect_signal_notify_modified(slider_income, std::bind(
-		&tmp_staging::on_side_slider_change<ng::side_engine::set_income>, this, side, std::ref(slider_income)));
+		&tmp_staging::on_side_slider_change<&ng::side_engine::set_income>, this, side, std::ref(slider_income)));
 
 	// TODO: hide header, or maybe display the saved values
 	if(saved_game) {
