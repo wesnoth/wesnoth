@@ -28,12 +28,7 @@ class config;
 namespace gui2
 {
 
-class ttoggle_button;
-class ttoggle_panel;
-class tslider;
-class tlabel;
-class tmenu_button;
-class twidget;
+class ttree_view_node;
 
 class tmp_join_game : public tdialog, private plugin_executor
 {
@@ -60,8 +55,6 @@ private:
 
 	void update_player_list(twindow& window);
 
-	void update_leader_display(ng::side_engine& side, tgrid& row_grid);
-
 	void network_handler(twindow& window);
 
 	config& get_scenario();
@@ -80,6 +73,8 @@ private:
 	const bool observe_game_;
 
 	bool stop_updates_;
+
+	std::map<std::string, ttree_view_node*> team_tree_map_;
 };
 
 } // namespace gui2

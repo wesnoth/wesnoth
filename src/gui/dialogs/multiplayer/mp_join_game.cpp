@@ -31,13 +31,15 @@
 #include "gui/widgets/chatbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
+#include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/label.hpp"
+#include "gui/widgets/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
@@ -110,7 +112,6 @@ void tmp_join_game::post_build(twindow& window)
 
 			has_scenario_and_controllers = true;
 		}
-
 	}
 
 	if(level_["started"].to_bool()) {
@@ -307,15 +308,30 @@ void tmp_join_game::generate_side_list(twindow& window)
 		return;
 	}
 
-	tlistbox& list = find_widget<tlistbox>(&window, "side_list", false);
+	ttree_view& tree = find_widget<ttree_view>(&window, "side_list", false);
 
-	window.keyboard_capture(&list);
+	window.keyboard_capture(&tree);
 
-	list.clear();
+	tree.clear();
+	team_tree_map_.clear();
 
 	for(const auto& side : get_scenario().child_range("side")) {
 		if(!side["allow_player"].to_bool(true)) {
 			continue;
+		}
+
+		// Check to see whether we've added a toplevel tree node for this team. If not, add one
+		if(team_tree_map_.find(side["team_name"].str()) == team_tree_map_.end()) {
+			std::map<std::string, string_map> data;
+			string_map item;
+
+			item["label"] = (formatter() << _("Team:") << " " << side["user_team_name"]).str();
+			data.emplace("tree_view_node_label", item);
+
+			ttree_view_node& team_node = tree.add_node("team_header", data);
+			team_node.add_sibling("side_spacer", {});
+
+			team_tree_map_[side["team_name"].str()] = &team_node;
 		}
 
 		std::map<std::string, string_map> data;
@@ -373,10 +389,6 @@ void tmp_join_game::generate_side_list(twindow& window)
 
 		item.clear();
 
-		// TODO: why this tstring stuff?
-		item["label"] = t_string::from_serialized(side["user_team_name"].str());
-		data.emplace("side_team", item);
-
 		// Don't show gold for saved games
 		// TODO: gold icon
 		if(side["allow_changes"].to_bool()) {
@@ -395,7 +407,9 @@ void tmp_join_game::generate_side_list(twindow& window)
 		item["label"] = (formatter() << "buttons/misc/orb-active.png~RC(magenta>" << side["color"] << ")").str();
 		data.emplace("side_color", item);
 
-		tgrid& row_grid = list.add_row(data);
+		ttree_view_node& node = team_tree_map_[side["team_name"].str()]->add_child("side_panel", data);
+
+		tgrid& row_grid = node.get_grid();
 
 		if(income_amt == 0) {
 			find_widget<timage>(&row_grid, "income_icon", false).set_visible(twidget::tvisible::invisible);
@@ -478,6 +492,11 @@ config& tmp_join_game::get_scenario()
 
 void tmp_join_game::post_show(twindow& window)
 {
+	if(update_timer_ != 0) {
+		remove_timer(update_timer_);
+		update_timer_ = 0;
+	}
+
 	if(window.get_retval() == twindow::OK) {
 		if(const config& stats = level_.child("statistics")) {
 			statistics::fresh_stats();
