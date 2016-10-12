@@ -58,14 +58,12 @@ ttext_::ttext_()
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
 			std::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
 
-	cursor_timer_ = add_timer(cursor_blink_rate_ms_, std::bind(&ttext_::cursor_timer_callback, this), true);
+	toggle_cursor_timer(true);
 }
 
 ttext_::~ttext_()
 {
-	if(cursor_timer_) {
-		remove_timer(cursor_timer_);
-	}
+	toggle_cursor_timer(false);
 }
 
 void ttext_::set_active(const bool active)
@@ -254,6 +252,17 @@ void ttext_::set_state(const tstate state)
 	}
 }
 
+void ttext_::toggle_cursor_timer(bool enable)
+{
+	if(cursor_timer_) {
+		remove_timer(cursor_timer_);
+	}
+
+	cursor_timer_ = enable
+			? add_timer(cursor_blink_rate_ms_, std::bind(&ttext_::cursor_timer_callback, this), true)
+			: 0;
+}
+
 void ttext_::cursor_timer_callback()
 {
 	switch(state_) {
@@ -283,10 +292,7 @@ void ttext_::reset_cursor_state()
 	}
 
 	// Restart the blink timer.
-	if(cursor_timer_) {
-		remove_timer(cursor_timer_);
-	}
-	cursor_timer_ = add_timer(cursor_blink_rate_ms_, std::bind(&ttext_::cursor_timer_callback, this), true);
+	toggle_cursor_timer(true);
 }
 
 void ttext_::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)

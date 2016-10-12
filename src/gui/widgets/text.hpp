@@ -264,6 +264,8 @@ private:
 
 	void set_state(const tstate state);
 
+	virtual void toggle_cursor_timer(bool enable);
+
 	/** Implements blinking cursor functionality. */
 	virtual void cursor_timer_callback();
 
