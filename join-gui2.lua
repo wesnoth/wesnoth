@@ -42,7 +42,7 @@ local function plugin()
 
   log("hello world")
 
-  wesnoth.preferences.new_lobby = true
+  wesnoth.preferences.new_mp_ui = true
 
   repeat
     events, context, info = coroutine.yield()
