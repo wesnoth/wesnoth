@@ -29,6 +29,7 @@ namespace gui2
 {
 
 class tmenu_button;
+class tslider;
 class ttree_view_node;
 
 class tmp_staging : public tdialog, private plugin_executor
@@ -54,6 +55,9 @@ private:
 	void on_ai_select(ng::side_engine_ptr side, tmenu_button& ai_menu);
 	void on_color_select(ng::side_engine_ptr side, tgrid& row_grid);
 	void on_team_select(twindow& window, ng::side_engine_ptr side, tmenu_button& team_menu, bool& handled, bool& halt);
+
+	template<void(ng::side_engine::*fptr)(int)>
+	void on_side_slider_change(ng::side_engine_ptr side, tslider& slider);
 
 	void select_leader_callback(twindow& window, ng::side_engine_ptr side, tgrid& row_grid);
 
