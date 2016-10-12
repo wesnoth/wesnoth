@@ -30,6 +30,8 @@
 
 #include <iterator>
 
+#include <boost/algorithm/string.hpp>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 static lg::log_domain log_engine("engine");
@@ -387,6 +389,9 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		info_stream << scenario;
 		verified = false;
 	}
+
+	// Remove any newlines that might have been in game titles
+	boost::replace_all(scenario, "\n", " " + utils::unicode_em_dash + " ");
 
 	if(reloaded) {
 		info_stream << " — ";
