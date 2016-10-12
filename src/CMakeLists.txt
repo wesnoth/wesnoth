@@ -332,6 +332,7 @@ set(libwesnoth-lua_STAT_SRC
 	lua/lstrlib.cpp
 	lua/loadlib.cpp
 	lua/linit.cpp
+	lua/lutf8lib.cpp
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)

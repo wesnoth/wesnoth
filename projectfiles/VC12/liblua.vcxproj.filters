@@ -98,10 +98,10 @@
     <ClCompile Include="..\..\src\lua\ltm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\lua\luac.cpp">
+    <ClCompile Include="..\..\src\lua\lundump.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\lua\lundump.cpp">
+    <ClCompile Include="..\..\src\lua\lutf8lib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lvm.cpp">
@@ -155,6 +155,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\lua\lparser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lua\lprefix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\lua\lstate.h">
