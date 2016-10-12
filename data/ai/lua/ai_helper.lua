@@ -944,6 +944,9 @@ function ai_helper.get_visible_units(viewing_side, filter)
     if (not viewing_side) then
         error('ai_helper.get_visible_units() is missing required parameter viewing_side.')
     end
+    if (type(viewing_side) ~= 'number') then
+        error('ai_helper.get_visible_units(): parameter viewing_side must be a number.')
+    end
 
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
@@ -971,6 +974,9 @@ function ai_helper.is_visible_unit(viewing_side, unit)
 
     if (not viewing_side) then
         error('ai_helper.is_visible_unit() is missing required parameter viewing_side.')
+    end
+    if (type(viewing_side) ~= 'number') then
+        error('ai_helper.is_visible_unit(): parameter viewing_side must be a number.')
     end
 
     if (not unit) then return false end
