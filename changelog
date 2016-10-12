@@ -134,6 +134,10 @@ Version 1.13.5+dev:
    * Added text_alignment= key to [story][part] to specify horizonal alignment of
      text.
  * Lua API:
+   * Upgrade to Lua 5.3.3+
+     Consult http://www.lua.org/ for a full change list and updated documenation.
+     * bit32 functions removed
+     * utf8 support added
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
    * Added new function wesnoth.remove_modifications, which removes applied
