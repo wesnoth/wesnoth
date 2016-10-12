@@ -130,6 +130,11 @@ Version 1.13.5+dev:
        The blocking behavior can be reenabled by setting pass_allied_units=no
        in the [tunnel] tag.
  * Lua API:
+   * Upgrade to Lua 5.3.3+
+     Consult http://www.lua.org/ for a full change list and updated documenation.
+     * compatibility with Lua 5.0, 5.1 and 5.2 removed
+     * bit32 functions removed
+     * utf8 support added
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
    * Added new function wesnoth.remove_modifications, which removes applied
