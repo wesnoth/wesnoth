@@ -223,7 +223,8 @@ private:
 	tformula<unsigned> x1_, /**< The start x coordinate of the line. */
 			y1_,			/**< The start y coordinate of the line. */
 			x2_,			/**< The end x coordinate of the line. */
-			y2_;			/**< The end y coordinate of the line. */
+			y2_,			/**< The end y coordinate of the line. */
+			alpha_;			/**< Alpha value override computed as a formula. */
 
 	/** The color of the line. */
 	Uint32 color_;
@@ -556,6 +557,7 @@ tline::tline(const config& cfg)
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
+	, alpha_(cfg["alpha"])
 	, color_(decode_color(cfg["color"]))
 	, thickness_(cfg["thickness"])
 {
@@ -579,6 +581,12 @@ void tline::draw(surface& canvas,
 	const unsigned y1 = y1_(variables);
 	const unsigned x2 = x2_(variables);
 	const unsigned y2 = y2_(variables);
+	const unsigned alpha = alpha_(variables);
+
+	// Override alpha from color with formula.
+	const Uint32 final_color = alpha_.has_formula()
+			? (color_ & 0xFFFFFF00) + (alpha & 0xFF)
+			: color_;
 
 	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ','
 			  << y2 << " canvas size " << canvas->w << ',' << canvas->h
@@ -595,7 +603,7 @@ void tline::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_line(canvas, renderer, color_, x1, y1, x2, y2);
+	draw_line(canvas, renderer, final_color, x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
