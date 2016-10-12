@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
+#include "color_range.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
