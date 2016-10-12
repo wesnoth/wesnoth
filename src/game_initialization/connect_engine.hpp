@@ -201,7 +201,7 @@ public:
 	std::multimap<std::string, config> get_side_children();
 	void set_side_children(std::multimap<std::string, config> children);
 	int color() const { return color_; }
-	void set_color(int color) { color_ = color; }
+	void set_color(int color) { color_ = color; color_id_ = color_options_[color]; }
 	int gold() const { return gold_; }
 	void set_gold(int gold) { gold_ = gold; }
 	int income() const { return income_; }
