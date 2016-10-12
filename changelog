@@ -64,6 +64,11 @@ Version 1.13.5+dev:
    * Restored GUI2 textbox selection highlight lost in version 1.13.3.
    * Added a "Draw Number of Bitmaps" option to the map editor, for terrain
      graphics diagnostics.
+   * Ported file chooser dialog to GUI2, and redesigned it to include a
+     bookmarks bar with predefined and user-defined shortcuts.
+   * Tweaked the border/groove color scheme on textboxes and sliders to better
+     reflect their state and mimic window and button borders.
+   * Textboxes now have a blinking cursor when focused.
  * WML Engine:
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the
