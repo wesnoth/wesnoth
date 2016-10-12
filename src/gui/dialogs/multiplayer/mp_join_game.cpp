@@ -299,9 +299,16 @@ void tmp_join_game::pre_show(twindow& window)
 	find_widget<tbutton>(&window, "ok", false).set_visible(twidget::tvisible::hidden);
 }
 
-/*
- * We don't need the full widget setup as is done initially, just value setters.
- */
+static std::string get_pango_color_from_id(const std::string& id)
+{
+	const auto color = game_config::team_rgb_colors.find(id);
+	if(color != game_config::team_rgb_colors.end()) {
+		return rgb2highlight_pango(color->second[0]);
+	}
+
+	return "";
+}
+
 void tmp_join_game::generate_side_list(twindow& window)
 {
 	if(stop_updates_) {
@@ -337,7 +344,9 @@ void tmp_join_game::generate_side_list(twindow& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = side["side"];
+		const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
+
+		item["label"] = (formatter() << "<span color='" << get_pango_color_from_id(color) << "'>" << side["side"] << "</span>").str();
 		data.emplace("side_number", item);
 
 		std::string leader_image = ng::random_enemy_picture;
@@ -357,8 +366,6 @@ void tmp_join_game::generate_side_list(twindow& window)
 
 		if(const unit_type* ut = unit_types.find(leader_type)) {
 			const unit_type& type = ut->get_gender_unit_type(leader_gender);
-
-			const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
 
 			leader_image = formatter() << type.image() << "~RC(" << type.flag_rgb() << ">" << color << ")";
 			leader_name = type.type_name();
@@ -403,9 +410,6 @@ void tmp_join_game::generate_side_list(twindow& window)
 			item["label"] = income_string;
 			data.emplace("side_income", item);
 		}
-
-		item["label"] = (formatter() << "buttons/misc/orb-active.png~RC(magenta>" << side["color"] << ")").str();
-		data.emplace("side_color", item);
 
 		ttree_view_node& node = team_tree_map_[side["team_name"].str()]->add_child("side_panel", data);
 
