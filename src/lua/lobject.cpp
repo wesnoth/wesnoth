@@ -280,7 +280,7 @@ static const char *l_str2d (const char *s, lua_Number *result) {
   endptr = l_str2dloc(s, result, mode);  /* try to convert */
   if (endptr == NULL) {  /* failed? may be a different locale */
     char buff[L_MAXLENNUM + 1];
-    char *pdot = strchr(s, '.');
+    const char *pdot = strchr(s, '.');
     if (strlen(s) > L_MAXLENNUM || pdot == NULL)
       return NULL;  /* string too long or no dot; fail */
     strcpy(buff, s);  /* copy string to buffer */
