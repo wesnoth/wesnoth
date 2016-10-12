@@ -18,6 +18,7 @@
 
 #include "desktop/clipboard.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/timer.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
@@ -37,6 +38,9 @@ ttext_::ttext_()
 	, text_()
 	, selection_start_(0)
 	, selection_length_(0)
+	, cursor_timer_(0)
+	, cursor_alpha_(0)
+	, cursor_blink_rate_ms_(750)
 	, text_changed_callback_()
 {
 #ifdef __unix__
@@ -53,6 +57,15 @@ ttext_::ttext_()
 			&ttext_::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
 			std::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
+
+	cursor_timer_ = add_timer(cursor_blink_rate_ms_, std::bind(&ttext_::cursor_timer_callback, this), true);
+}
+
+ttext_::~ttext_()
+{
+	if(cursor_timer_) {
+		remove_timer(cursor_timer_);
+	}
 }
 
 void ttext_::set_active(const bool active)
@@ -109,6 +122,8 @@ void ttext_::set_value(const std::string& text)
 
 void ttext_::set_cursor(const size_t offset, const bool select)
 {
+	reset_cursor_state();
+
 	if(select) {
 
 		if(selection_start_ == offset) {
@@ -237,6 +252,41 @@ void ttext_::set_state(const tstate state)
 		state_ = state;
 		set_is_dirty(true);
 	}
+}
+
+void ttext_::cursor_timer_callback()
+{
+	switch(state_) {
+		case DISABLED:
+			cursor_alpha_ = 0;
+			return;
+		case ENABLED:
+			cursor_alpha_ = 255;
+			return;
+		default:
+			cursor_alpha_ = (~cursor_alpha_) & 0xFF;
+	}
+
+	for(auto& tmp : canvas()) {
+		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
+	}
+
+	set_is_dirty(true);
+}
+
+void ttext_::reset_cursor_state()
+{
+	cursor_alpha_ = 255;
+
+	for(auto& tmp : canvas()) {
+		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
+	}
+
+	// Restart the blink timer.
+	if(cursor_timer_) {
+		remove_timer(cursor_timer_);
+	}
+	cursor_timer_ = add_timer(cursor_blink_rate_ms_, std::bind(&ttext_::cursor_timer_callback, this), true);
 }
 
 void ttext_::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)

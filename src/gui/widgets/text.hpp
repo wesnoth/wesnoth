@@ -46,6 +46,8 @@ class ttext_ : public tcontrol
 public:
 	ttext_();
 
+	~ttext_();
+
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) override;
 
@@ -262,6 +264,11 @@ private:
 
 	void set_state(const tstate state);
 
+	/** Implements blinking cursor functionality. */
+	virtual void cursor_timer_callback();
+
+	virtual void reset_cursor_state();
+
 	/**
 	 * Current state of the widget.
 	 *
@@ -284,6 +291,11 @@ private:
 	 * * selection_len_ == 0 means no selection.
 	 */
 	int selection_length_;
+
+	size_t cursor_timer_;
+
+	unsigned short cursor_alpha_;
+	unsigned short cursor_blink_rate_ms_;
 
 	/****** handling of special keys first the pure virtuals *****/
 
