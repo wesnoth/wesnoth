@@ -91,7 +91,7 @@ developer to do it for you.
         for section in sections:
             print("=== %s ===" % section.title)
             for name, comment, wikiuser, email in section.lines:
-                if name == "*":
+                if name in ("*", "•"):
                     print("<hr>")
                     continue
                 if comment:
