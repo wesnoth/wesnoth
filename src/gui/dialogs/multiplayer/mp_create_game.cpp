@@ -717,15 +717,14 @@ void tmp_create_game::update_map_settings(twindow& window)
 }
 
 bool tmp_create_game::dialog_exit_hook(twindow&) {
-	if(create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
-		create_engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
-
-		if(create_engine_.select_campaign_difficulty() == "CANCEL") {
-			return false;
-		}
+	if(create_engine_.get_state().mp_settings().saved_game ||
+	  (create_engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
+	   create_engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN)
+	) {
+		return true;
 	}
 
-	return true;
+	return create_engine_.select_campaign_difficulty() != "CANCEL";
 }
 
 void tmp_create_game::post_show(twindow& window)
