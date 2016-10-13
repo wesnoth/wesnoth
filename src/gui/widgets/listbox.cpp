@@ -316,7 +316,7 @@ bool tlistbox::update_content_size()
 /* Suppress -Wmaybe-uninitialized warnings. @GregoryLundberg reported in IRC that GCC 6.2.1 with SCons gives a warning that
  * the value of horizontal_scrollbar_position can be used uninitialized. It's of course not possible (boost::optional
  * conversion to bool returns true only if the value is set), but GCC can't prove that to itself. */
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #endif
@@ -354,7 +354,7 @@ void tlistbox::place(const tpoint& origin, const tpoint& size)
 	}
 }
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic pop
 #endif
 
