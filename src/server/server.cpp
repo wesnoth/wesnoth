@@ -214,7 +214,9 @@ server::server(int port, bool keep_alive, const std::string& config_file, size_t
 	ip_log_(),
 	failed_logins_(),
 	user_handler_(nullptr),
+#ifndef _WIN32
 	input_path_(),
+#endif
 	config_file_(config_file),
 	cfg_(read_config()),
 	accepted_versions_(),
@@ -381,28 +383,19 @@ config server::read_config() const {
 }
 
 void server::load_config() {
-#ifndef FIFODIR
-# ifdef _MSC_VER
-#  pragma message ("No FIFODIR set")
-#  define FIFODIR "d:/"
-# else
-#  ifdef _WIN32
-#    define FIFODIR "d:/"
-#  else
-#    warning "No FIFODIR set"
-#    define FIFODIR "/var/run/wesnothd"
-#   endif
-# endif
-#endif
-	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
-	// Reset (replace) the input stream only if the FIFO path changed.
-	if(fifo_path != input_path_) {
-#ifndef _WIN32
-		input_.close();
-#endif
-		input_path_ = fifo_path;
-		setup_fifo();
-	}
+#	ifndef _WIN32
+#		ifndef FIFODIR
+#			warning No FIFODIR set
+#		    define FIFODIR "/var/run/wesnothd"
+#		endif
+		const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
+		// Reset (replace) the input stream only if the FIFO path changed.
+		if(fifo_path != input_path_) {
+			input_.close();
+			input_path_ = fifo_path;
+			setup_fifo();
+		}
+#	endif
 
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
