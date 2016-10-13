@@ -807,10 +807,10 @@ void gamebrowser::populate_game_item(gamebrowser::game_item & item, const config
 	} else {
 		item.started = false;
 		if (item.vacant_slots > 0) {
-			item.status = std::string(_n("Vacant Slot:", "Vacant Slots:",
-					item.vacant_slots)) + " " + slots;
+			item.status = _n("Vacant Slot:", "Vacant Slots:",
+					item.vacant_slots) + " " + slots;
 			if (item.password_required) {
-				item.status += std::string(" (") + std::string(_("Password Required")) + ")";
+				item.status += std::string(" (") + _("Password Required") + ")";
 			}
 		}
 	}

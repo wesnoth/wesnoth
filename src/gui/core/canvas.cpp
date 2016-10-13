@@ -161,10 +161,10 @@ static void draw_circle(surface& canvas,
 			  << " with radius " << radius << " canvas width " << w
 			  << " canvas height " << canvas->h << ".\n";
 
-	assert(static_cast<int>(x_center + radius) < canvas->w);
-	assert(static_cast<int>(x_center - radius) >= 0);
-	assert(static_cast<int>(y_center + radius) < canvas->h);
-	assert(static_cast<int>(y_center - radius) >= 0);
+	assert((x_center + radius) < canvas->w);
+	assert((x_center - radius) >= 0);
+	assert((y_center + radius) < canvas->h);
+	assert((y_center - radius) >= 0);
 
 	set_renderer_color(renderer, color);
 

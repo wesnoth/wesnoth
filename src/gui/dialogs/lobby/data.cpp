@@ -410,7 +410,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	} else {
 		started = false;
 		if(vacant_slots > 0) {
-			status = std::string(_n("Vacant Slot:", "Vacant Slots:", vacant_slots)) + " " + game["slots"];
+			status = _n("Vacant Slot:", "Vacant Slots:", vacant_slots) + " " + game["slots"];
 		}
 	}
 
