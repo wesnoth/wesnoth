@@ -87,6 +87,7 @@ void tmp_staging::pre_show(twindow& window)
 	// Set up sides list
 	//
 	ttree_view& tree = find_widget<ttree_view>(&window, "side_list", false);
+	const std::map<std::string, string_map> empty_map;
 
 	for(const auto& side : connect_engine_.side_engines()) {
 		if(!side->allow_player() && !game_config::debug) {
@@ -102,7 +103,7 @@ void tmp_staging::pre_show(twindow& window)
 			data.emplace("tree_view_node_label", item);
 
 			ttree_view_node& team_node = tree.add_node("team_header", data);
-			team_node.add_sibling("side_spacer", {});
+			team_node.add_sibling("side_spacer", empty_map);
 
 			team_tree_map_[side->team_name()] = &team_node;
 		}

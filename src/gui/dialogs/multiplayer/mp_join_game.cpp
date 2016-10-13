@@ -322,6 +322,7 @@ void tmp_join_game::generate_side_list(twindow& window)
 
 	tree.clear();
 	team_tree_map_.clear();
+	const std::map<std::string, string_map> empty_map;
 
 	for(const auto& side : get_scenario().child_range("side")) {
 		if(!side["allow_player"].to_bool(true)) {
@@ -337,7 +338,7 @@ void tmp_join_game::generate_side_list(twindow& window)
 			data.emplace("tree_view_node_label", item);
 
 			ttree_view_node& team_node = tree.add_node("team_header", data);
-			team_node.add_sibling("side_spacer", {});
+			team_node.add_sibling("side_spacer", empty_map);
 
 			team_tree_map_[side["team_name"].str()] = &team_node;
 		}
