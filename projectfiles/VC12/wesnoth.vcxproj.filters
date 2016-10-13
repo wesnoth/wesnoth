@@ -962,9 +962,6 @@
     <ClCompile Include="..\..\src\widgets\multimenu.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\progressbar.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\scrollarea.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
@@ -1295,6 +1292,9 @@
     <ClCompile Include="..\..\src\desktop\open.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\desktop\paths.cpp">
+      <Filter>Desktop</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\desktop\version.cpp">
       <Filter>Desktop</Filter>
     </ClCompile>
@@ -1531,9 +1531,6 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
-    <ClCompile Include="..\..\src\desktop\paths.cpp">
-      <Filter>Desktop</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2418,9 +2415,6 @@
     <ClInclude Include="..\..\src\widgets\multimenu.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\widgets\progressbar.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\widgets\scrollarea.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
@@ -2677,6 +2671,9 @@
       <Filter>Desktop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\desktop\open.hpp">
+      <Filter>Desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\desktop\paths.hpp">
       <Filter>Desktop</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\desktop\version.hpp">
@@ -2945,9 +2942,6 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
-    <ClInclude Include="..\..\src\desktop\paths.hpp">
-      <Filter>Desktop</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
