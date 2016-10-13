@@ -36,30 +36,30 @@ public:
 	/**
 	 * Overridden to allow special behavior based on modifier keys
 	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex) override;
 
 	/**
 	 * Force a fake "move" event to update brush overlay on key event
 	 */
-	editor_action* key_event(editor_display& disp, const SDL_Event& e);
+	editor_action* key_event(editor_display& disp, const SDL_Event& e) override;
 
 	/**
 	 * Left click/drag selects
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	/**
 	 * Right click does nothing for now
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action* click_right(editor_display& disp, int x, int y) override;
 
 
 	/**
 	 * Right click/drag
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
 
-	virtual void set_mouse_overlay(editor_display& disp);
+	virtual void set_mouse_overlay(editor_display& disp) override;
 
 	virtual bool has_context_menu() const override { return true; }
 	virtual bool supports_brushes() const override { return true; }
