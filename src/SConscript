@@ -6,6 +6,10 @@ from glob import glob
 
 Import("*")
 
+# Inject boost::bind patch everywhere
+for env in [test_env, client_env, env]:
+    env.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
+
 for env in [test_env, client_env, env]:
     env.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
