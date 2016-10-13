@@ -620,7 +620,7 @@ REGISTER_MOD_PARSER(TC, args)
 		       << ") passed to the ~TC() function\n";
 		return nullptr;
 	}
-	else if (side_n < static_cast<int>(image::get_team_colors().size())) {
+	else if (side_n <= static_cast<int>(image::get_team_colors().size())) {
 		team_color = image::get_team_colors()[side_n - 1];
 	}
 	else {
