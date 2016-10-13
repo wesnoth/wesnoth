@@ -202,7 +202,7 @@ static int impl_vconfig_get(lua_State *L)
 		lua_createtable(L, 2, 0);
 		lua_pushstring(L, i.get_key().c_str());
 		lua_rawseti(L, -2, 1);
-		luaW_pushvconfig(L, vconfig(i.get_child()));
+		luaW_pushvconfig(L, i.get_child());
 		lua_rawseti(L, -2, 2);
 		return 1;
 	}

@@ -121,7 +121,7 @@ static config &find_ref(const std::string &id, config &cfg, bool remove = false)
 	config::all_children_itors itors = cfg.all_children_range();
 	for (config::all_children_iterator i = itors.begin(); i != itors.end(); ++i)
 	{
-		config &icfg = const_cast<config &>(i->cfg);
+		config &icfg = i->cfg;
 		if (i->cfg["id"] == id) {
 			if (remove) {
 				cfg.erase(i);

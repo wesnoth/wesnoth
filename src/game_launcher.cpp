@@ -850,7 +850,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 	} catch(game::game_error& e) {
 		gui2::show_error_message(video(), _("Error while playing the game: ") + e.message);
 	} catch (mapgen_exception& e) {
-		gui2::show_error_message(video(), std::string(_("Map generator error: ") + e.message));
+		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
 	} catch(wesnothd_error& e) {
 		if(e.message != "") {
 			ERR_NET << "caught network error: " << e.message << std::endl;
@@ -868,7 +868,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 			ERR_CONFIG << "caught config::error" << std::endl;
 		}
 	} catch(incorrect_map_format_error& e) {
-		gui2::show_error_message(video(), std::string(_("The game map could not be loaded: ")) + e.message);
+		gui2::show_error_message(video(), _("The game map could not be loaded: ") + e.message);
 	} catch (savegame::load_game_exception & e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
