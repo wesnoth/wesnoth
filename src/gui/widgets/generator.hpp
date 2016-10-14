@@ -375,8 +375,11 @@ protected:
 	/** Gets the grid of an item. */
 	virtual const tgrid& item_ordered(const unsigned index) const = 0;
 
+public:
 	virtual unsigned get_ordered_index(unsigned index) const = 0;
+
 	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
+
 };
 
 using generator_sort_array = std::array<tgenerator_::torder_func, 2>;
