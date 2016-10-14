@@ -30,7 +30,8 @@ BOOST_AUTO_TEST_SUITE( lua )
 static int lua_round(lua_State * L, double d)
 {
 	lua_pushnumber(L, d);
-	int res = luaL_checkinteger(L, -1);
+	// int res = luaL_checkinteger(L, -1);
+	int res = luaL_checknumber(L, -1);
 	lua_pop(L, 1);
 	return res;
 }
