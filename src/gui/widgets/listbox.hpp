@@ -266,7 +266,18 @@ public:
 
 	using order_pair = std::pair<int, SORT_ORDER>;
 
-	void set_active_sorting_option(const order_pair& option);
+	/**
+	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
+	 * The sorting option should already have been registered by @ref tlistbox::register_sorting_option().
+	 *
+	 * @param sort_by         Pair of column index and sort direction. The column (first arguemnt)
+	 *                        argument will be sorted in the specified direction (second argument)
+	 *
+	 * @param select_first    If true, the first row post-sort will be selected. If false (default),
+	 *                        the selected row will be maintained post-sort  as per standard sorting
+	 *                        functionality.
+	 */
+	void set_active_sorting_option(const order_pair& sort_by, const bool select_first = false);
 
 	const order_pair get_active_sorting_option();
 

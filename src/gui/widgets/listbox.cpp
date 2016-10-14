@@ -646,15 +646,19 @@ void tlistbox::set_column_order(unsigned col, const generator_sort_array& func)
 	orders_[col].second = func;
 }
 
-void tlistbox::set_active_sorting_option(const order_pair& option)
+void tlistbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
 {
 	// TODO: should this be moved to a public header_grid() getter function?
 	tgrid& header_grid = find_widget<tgrid>(this, "_header_grid", false);
 
-	tselectable_& widget = find_widget<tselectable_>(&header_grid, "sort_" +  std::to_string(option.first), false);
-	widget.set_value(static_cast<int>(option.second));
+	tselectable_& widget = find_widget<tselectable_>(&header_grid, "sort_" +  std::to_string(sort_by.first), false);
+	widget.set_value(static_cast<int>(sort_by.second));
 
-	order_by_column(option.first, dynamic_cast<twidget&>(widget));
+	order_by_column(sort_by.first, dynamic_cast<twidget&>(widget));
+
+	if(select_first) {
+		select_row(generator_->get_item_at_ordered(0));
+	}
 }
 
 const tlistbox::order_pair tlistbox::get_active_sorting_option()
