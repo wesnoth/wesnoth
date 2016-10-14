@@ -739,6 +739,8 @@ void tpreferences::post_build(twindow& window)
 	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
 	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
 
+	hotkey_list.set_active_sorting_option({0, tlistbox::SORT_ASCENDING}, true);
+
 	connect_signal_mouse_left_click(
 		find_widget<tbutton>(&window, "btn_add_hotkey", false), std::bind(
 			&tpreferences::add_hotkey_callback,
