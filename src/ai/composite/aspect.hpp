@@ -362,6 +362,16 @@ public:
 		return b;
 	}
 
+	aspect& find_active()
+	{
+		for(aspect_ptr a : facets_) {
+			if(a->active()) {
+				return *a;
+			}
+		}
+		return *default_;
+	}
+
 protected:
 	typename aspect_type<T>::typesafe_ptr_vector facets_;
 	typename aspect_type<T>::typesafe_ptr default_;

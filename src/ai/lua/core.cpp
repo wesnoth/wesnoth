@@ -41,6 +41,7 @@
 #include "ai/actions.hpp"
 #include "ai/lua/engine_lua.hpp"
 #include "ai/composite/contexts.hpp"
+#include "ai/default/aspect_attacks.hpp"
 
 #include "lua/lualib.h"
 #include "lua/lauxlib.h"
@@ -776,14 +777,6 @@ static int impl_ai_aspect_get(lua_State* L)
 		return 0;
 	}
 	
-	// For attacks, just fall back to existing function
-	if(iter->first == "attacks") {
-		lua_pushlightuserdata(L, &get_engine(L));
-		lua_pushcclosure(L, &cfun_ai_get_attacks, 1);
-		lua_call(L, 0, 1);
-		return 1;
-	}
-	
 	typedef std::vector<std::string> string_list;
 	if(typesafe_aspect<bool>* aspect_as_bool = try_aspect_as<bool>(iter->second)) {
 		lua_pushboolean(L, aspect_as_bool->get());
@@ -800,12 +793,43 @@ static int impl_ai_aspect_get(lua_State* L)
 		aspect_as_terrain_filter->get().get_locations(result);
 		lua_push(L, result);
 	} else if(typesafe_aspect<attacks_vector>* aspect_as_attacks_vector = try_aspect_as<attacks_vector>(iter->second)) {
-		// This case is caught separately above, but should the get_* aspect functions ever be
-		// deprecated, this is the place to move the code of cfun_ai_get_attacks to.
-		(void) aspect_as_attacks_vector;
+		using ai_default_rca::aspect_attacks_base;
+		aspect_attacks_base* real_aspect = dynamic_cast<aspect_attacks_base*>(aspect_as_attacks_vector);
+		while(real_aspect == nullptr) {
+			// It's probably a composite aspect, so find the active facet
+			composite_aspect<attacks_vector>& composite = dynamic_cast<composite_aspect<attacks_vector>&>(*aspect_as_attacks_vector);
+			aspect_as_attacks_vector = &dynamic_cast<typesafe_aspect<attacks_vector>&>(composite.find_active());
+			real_aspect = dynamic_cast<aspect_attacks_base*>(aspect_as_attacks_vector);
+		}
+		int my_side = get_engine(L).get_readonly_context().get_side();
+		std::vector<unit_const_ptr> attackers, enemies;
+		for(unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+			if(!u.valid()) {
+				continue;
+			}
+			if(u->side() == my_side && real_aspect->is_allowed_attacker(*u)) {
+				attackers.push_back(u.get_shared_ptr());
+			} else if(u->side() != my_side && real_aspect->is_allowed_enemy(*u)) {
+				enemies.push_back(u.get_shared_ptr());
+			}
+		}
+		lua_createtable(L, 0, 2);
+		lua_createtable(L, attackers.size(), 0);
+		for(size_t i = 0; i < attackers.size(); i++) {
+			luaW_pushunit(L, attackers[i]->underlying_id());
+			lua_rawseti(L, -2, i + 1);
+		}
+		lua_setfield(L, -2, "own");
+		lua_createtable(L, enemies.size(), 0);
+		for(size_t i = 0; i < enemies.size(); i++) {
+			luaW_pushunit(L, enemies[i]->underlying_id());
+			lua_rawseti(L, -2, i + 1);
+		}
+		lua_setfield(L, -2, "enemy");
+		return 1;
 	} else if(typesafe_aspect<unit_advancements_aspect>* aspect_as_unit_advancements_aspects = try_aspect_as<unit_advancements_aspect>(iter->second)) {
 		const unit_advancements_aspect& val = aspect_as_unit_advancements_aspects->get();
-		int my_side = luaW_getglobal(L, "ai", "side") - 1;
+		int my_side = get_engine(L).get_readonly_context().get_side();
 		lua_newtable(L);
 		std::hash<map_location> lhash;
 		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
