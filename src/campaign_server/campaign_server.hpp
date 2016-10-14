@@ -30,10 +30,11 @@ namespace campaignd {
 /**
  * Legacy add-ons server.
  */
-class server : private boost::noncopyable, public server_base
+class server : public server_base
 {
 public:
 	explicit server(const std::string& cfg_file);
+	server(const config& server) = delete;
 	~server();
 
 private:
