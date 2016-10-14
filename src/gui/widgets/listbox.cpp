@@ -616,13 +616,13 @@ void tlistbox::order_by_column(unsigned column, twidget& widget)
 	for(auto& pair : orders_)
 	{
 		if(pair.first != nullptr && pair.first != &selectable) {
-			pair.first->set_value(0);
+			pair.first->set_value(SORT_NONE);
 		}
 	}
 	if(selectable.get_value() > orders_[column].second.size()) {
 		return;
 	}
-	if(selectable.get_value() == 0) {
+	if(selectable.get_value() == SORT_NONE) {
 		order_by(tgenerator_::torder_func(&default_sort));
 	}
 	else {
@@ -644,6 +644,30 @@ void tlistbox::set_column_order(unsigned col, const generator_sort_array& func)
 		orders_.resize(col + 1);
 	}
 	orders_[col].second = func;
+}
+
+void tlistbox::set_active_sorting_option(const order_pair& option)
+{
+	// TODO: should this be moved to a public header_grid() getter function?
+	tgrid& header_grid = find_widget<tgrid>(this, "_header_grid", false);
+
+	tselectable_& widget = find_widget<tselectable_>(&header_grid, "sort_" +  std::to_string(option.first), false);
+	widget.set_value(static_cast<int>(option.second));
+
+	order_by_column(option.first, dynamic_cast<twidget&>(widget));
+}
+
+const tlistbox::order_pair tlistbox::get_active_sorting_option()
+{
+	const auto iter = std::find_if(orders_.begin(), orders_.end(), [](const std::pair<tselectable_*, generator_sort_array>& option) {
+		return option.first != nullptr && option.first->get_value() != SORT_NONE;
+	});
+
+	if(iter != orders_.end()) {
+		return {iter - orders_.begin(), static_cast<SORT_ORDER>(iter->first->get_value())};
+	}
+
+	return {-1, SORT_NONE};
 }
 
 void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)

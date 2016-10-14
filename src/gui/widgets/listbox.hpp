@@ -258,6 +258,18 @@ public:
 		}});
 	};
 
+	enum SORT_ORDER {
+		SORT_NONE,
+		SORT_ASCENDING,
+		SORT_DESCENDING,
+	};
+
+	using order_pair = std::pair<int, SORT_ORDER>;
+
+	void set_active_sorting_option(const order_pair& option);
+
+	const order_pair get_active_sorting_option();
+
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
