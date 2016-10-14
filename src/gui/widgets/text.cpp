@@ -40,7 +40,7 @@ ttext_::ttext_()
 	, selection_length_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
-	, cursor_blink_rate_ms_(750)
+	, cursor_blink_rate_ms_(0) // TODO: disabled until there's a way to deal with textboxes on multiple windows
 	, text_changed_callback_()
 {
 #ifdef __unix__
@@ -254,6 +254,10 @@ void ttext_::set_state(const tstate state)
 
 void ttext_::toggle_cursor_timer(bool enable)
 {
+	if(!cursor_blink_rate_ms_) {
+		return;
+	}
+
 	if(cursor_timer_) {
 		remove_timer(cursor_timer_);
 	}
@@ -285,6 +289,10 @@ void ttext_::cursor_timer_callback()
 
 void ttext_::reset_cursor_state()
 {
+	if(!cursor_blink_rate_ms_) {
+		return;
+	}
+
 	cursor_alpha_ = 255;
 
 	for(auto& tmp : canvas()) {
