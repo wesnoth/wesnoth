@@ -35,19 +35,21 @@ static int lua_round(lua_State * L, double d)
 	return res;
 }
 
-static int lua_round2(double d)
-{
-	int res;
-	lua_number2int(res, d);
-	return res;
-}
+/* deprecated for Lua 5.3.3 */
+//	static int lua_round2(double d)
+//	{
+//		int res;
+//		lua_number2int(res, d);
+//		return res;
+//	}
 
-static int lua_round3(double d)
-{
-	LUAI_EXTRAIEEE
-    volatile union luai_Cast u; u.l_d = (d) + 6755399441055744.0;
-    return u.l_p[LUA_IEEEENDIANLOC];
-}
+/* deprecated for Lua 5.3.3 */
+//	static int lua_round3(double d)
+//	{
+//		LUAI_EXTRAIEEE
+//	    volatile union luai_Cast u; u.l_d = (d) + 6755399441055744.0;
+//	    return u.l_p[LUA_IEEEENDIANLOC];
+//	}
 
 BOOST_AUTO_TEST_CASE(fpu_rounding)
 {
@@ -79,10 +81,10 @@ BOOST_AUTO_TEST_CASE(lua_rounding)
 	BOOST_CHECK_EQUAL(lua_round(L,  3.5),   4);
 
 	
-	BOOST_CHECK_EQUAL(lua_round2(-1.5),  -2);
-	BOOST_CHECK_EQUAL(lua_round2(-1.5),  -2);
-	BOOST_CHECK_EQUAL(lua_round3( 0.6),   1);
-	BOOST_CHECK_EQUAL(lua_round3( 0.6),   1);
+//		BOOST_CHECK_EQUAL(lua_round2(-1.5),  -2);
+//		BOOST_CHECK_EQUAL(lua_round2(-1.5),  -2);
+//		BOOST_CHECK_EQUAL(lua_round3( 0.6),   1);
+//		BOOST_CHECK_EQUAL(lua_round3( 0.6),   1);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
