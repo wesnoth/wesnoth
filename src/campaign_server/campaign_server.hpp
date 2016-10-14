@@ -91,6 +91,8 @@ private:
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
+	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
+
 	void handle_new_client(socket_ptr socket);
 	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
@@ -100,7 +102,6 @@ private:
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
 #endif
 
-	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 	/**
 	 * Starts timer to write config to disk every ten minutes.
 	 */

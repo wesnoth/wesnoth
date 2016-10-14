@@ -129,7 +129,7 @@ server::server(const std::string& cfg_file)
 	if(!read_only_) {
 		for(config& campaign : campaigns().child_range("campaign")) {
 			// Campaign already has a hashed password
-			if (campaign["passphrase"].empty()) {
+			if(campaign["passphrase"].empty()) {
 				continue;
 			}
 
