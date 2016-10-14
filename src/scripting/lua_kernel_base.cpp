@@ -259,7 +259,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "coroutine",   luaopen_coroutine   },
 		{ "debug",  luaopen_debug  },
 		{ "os",     luaopen_os     },
-		{ "bit32",  luaopen_bit32  }, // added in Lua 5.2
+		{ "utf8",	luaopen_utf8   },
 		{ nullptr, nullptr }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
@@ -722,7 +722,14 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 
 lua_kernel_base*& lua_kernel_base::get_lua_kernel_base_ptr(lua_State *L)
 {
-	return *reinterpret_cast<lua_kernel_base**>(reinterpret_cast<char*>(L) - LUA_KERNEL_BASE_OFFSET);
+	#ifdef __GNUC__
+		#pragma GCC diagnostic push
+		#pragma GCC diagnostic ignored "-Wold-style-cast"
+	#endif
+	return *reinterpret_cast<lua_kernel_base**>(lua_getextraspace(L));
+	#ifdef __GNUC__
+		#pragma GCC diagnostic pop
+	#endif
 }
 
 uint32_t lua_kernel_base::get_random_seed()

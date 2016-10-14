@@ -98,16 +98,16 @@ std::string describe_addon_status(const addon_tracking_info& info)
 		// Consider add-ons without version information as installed
 		// for the main display. Their Description info should elaborate
 		// on their status.
-		return font::GOOD_TEXT + std::string(
+		return font::GOOD_TEXT + (
 			info.can_publish ? _("addon_state^Published") : _("addon_state^Installed"));
 	case ADDON_INSTALLED_UPGRADABLE:
-		return color_upgradable + std::string(
+		return color_upgradable + (
 			info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable"));
 	case ADDON_INSTALLED_OUTDATED:
-		return color_outdated + std::string(
+		return color_outdated + (
 			info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server"));
 	case ADDON_INSTALLED_BROKEN:
-		return font::BAD_TEXT + std::string(
+		return font::BAD_TEXT + (
 			info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken"));
 	default:
 		return font::color2markup(font::GRAY_COLOR) + _("addon_state^Unknown");
@@ -126,7 +126,7 @@ bool try_fetch_addon(CVideo & v, addons_client & client, const addon_info & addo
 		const std::string& server_error = client.get_last_server_error();
 		if(!server_error.empty()) {
 			gui2::show_error_message(v,
-				std::string(_("The server responded with an error:")) + "\n" + server_error);
+				_("The server responded with an error:") + "\n" + server_error);
 		}
 		return false;
 	} else {
@@ -368,7 +368,7 @@ void do_remote_addon_delete(CVideo& video, addons_client& client, const std::str
 	std::string server_msg;
 	if(!client.delete_remote_addon(addon_id, server_msg)) {
 		gui2::show_error_message(video,
-			std::string(_("The server responded with an error:")) + "\n" +
+			_("The server responded with an error:") + "\n" +
 			client.get_last_server_error());
 	} else {
 		// FIXME: translation needed!
@@ -400,12 +400,12 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 		gui2::show_error_message(video, _("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(video,
-			std::string(_("The server responded with an error:")) + "\n" +
+			_("The server responded with an error:") + "\n" +
 			client.get_last_server_error());
 	} else if(gui2::show_message(video, _("Terms"), server_msg, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
 		if(!client.upload_addon(addon_id, server_msg, cfg)) {
 			gui2::show_error_message(video,
-				std::string(_("The server responded with an error:")) + "\n" +
+				_("The server responded with an error:") + "\n" +
 				client.get_last_server_error());
 		} else {
 			gui2::show_transient_message(video, _("Response"), server_msg);

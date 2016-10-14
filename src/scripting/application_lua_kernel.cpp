@@ -93,7 +93,7 @@ static int intf_describe_plugins(lua_State * L)
 
 static int intf_delay(lua_State* L)
 {
-	unsigned int delay = static_cast<unsigned int>(luaL_checkint(L, 1));
+	unsigned int delay = static_cast<unsigned int>(luaL_checkinteger(L, 1));
 	SDL_Delay(delay);
 	return 0;
 }
@@ -155,7 +155,7 @@ static lua_State * get_new_thread(lua_State * L)
 		lua_newtable(L);
 	}						// stack is now [script key] [table]
 
-	lua_pushinteger(L, lua_objlen(L, -1) + 1);	// push #table + 1 onto the stack
+	lua_pushinteger(L, lua_rawlen(L, -1) + 1);	// push #table + 1 onto the stack
 
 	lua_State * T = lua_newthread(L);		// create new thread T
 							// stack is now [script key] [table] [#table + 1] [thread]

@@ -93,6 +93,7 @@
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>../src/wesnoth_lua_config.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -109,6 +110,7 @@
       <OpenMPSupport>true</OpenMPSupport>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>../src/wesnoth_lua_config.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -125,6 +127,7 @@
       <OpenMPSupport>true</OpenMPSupport>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ForcedIncludeFiles>../src/wesnoth_lua_config.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -141,6 +144,7 @@
       <OpenMPSupport>true</OpenMPSupport>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>../src/wesnoth_lua_config.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -176,8 +180,8 @@
     <ClCompile Include="..\..\src\lua\ltable.cpp" />
     <ClCompile Include="..\..\src\lua\ltablib.cpp" />
     <ClCompile Include="..\..\src\lua\ltm.cpp" />
-    <ClCompile Include="..\..\src\lua\luac.cpp" />
     <ClCompile Include="..\..\src\lua\lundump.cpp" />
+    <ClCompile Include="..\..\src\lua\lutf8lib.cpp" />
     <ClCompile Include="..\..\src\lua\lvm.cpp" />
     <ClCompile Include="..\..\src\lua\lzio.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
@@ -197,6 +201,7 @@
     <ClInclude Include="..\..\src\lua\lobject.h" />
     <ClInclude Include="..\..\src\lua\lopcodes.h" />
     <ClInclude Include="..\..\src\lua\lparser.h" />
+    <ClInclude Include="..\..\src\lua\lprefix.h" />
     <ClInclude Include="..\..\src\lua\lstate.h" />
     <ClInclude Include="..\..\src\lua\lstring.h" />
     <ClInclude Include="..\..\src\lua\ltable.h" />
@@ -209,6 +214,7 @@
     <ClInclude Include="..\..\src\lua\lvm.h" />
     <ClInclude Include="..\..\src\lua\lzio.h" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
+    <ClInclude Include="..\..\src\wesnoth_lua_config.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

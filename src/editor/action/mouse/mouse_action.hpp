@@ -262,24 +262,24 @@ public:
 	/**
 	 * Handle terrain sampling before calling generic handler
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action* click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Handle terrain sampling before calling generic handler
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action* click_right(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) override;
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) override;
 
-	void set_mouse_overlay(editor_display& disp);
+	void set_mouse_overlay(editor_display& disp) override;
 
 	virtual bool supports_brushes() const override { return true; }
 
@@ -307,19 +307,19 @@ public:
 	/**
 	 * Show an outline of where the paste will go
 	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex) override;
 
 	/**
 	 * Return a paste with offset action
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action* click_left(editor_display& disp, int x, int y) override;
 
 	/**
 	 * Right click does nothing for now
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action* click_right(editor_display& disp, int x, int y) override;
 
-	virtual void set_mouse_overlay(editor_display& disp);
+	virtual void set_mouse_overlay(editor_display& disp) override;
 
 protected:
 	/**

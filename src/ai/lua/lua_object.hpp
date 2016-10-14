@@ -102,7 +102,7 @@ inline std::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 template <>
 inline std::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
 {
-	return std::shared_ptr<int>(new int(lua_tointeger(L, n)));
+	return std::shared_ptr<int>(new int(static_cast<int>(lua_tointeger(L, n))));
 }
 
 template <>
@@ -159,12 +159,12 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		lua_pushstring(L, "x"); // st n + 3
 		lua_rawget(L, -2); // st n + 3
-		int x = lua_tointeger(L, -1); // st n + 3
+		int x = static_cast<int>(lua_tointeger(L, -1)); // st n + 3
 		lua_pop(L, 1); // st n + 2
 
 		lua_pushstring(L, "y"); // st n + 3
 		lua_rawget(L, -2); // st n + 3
-		int y = lua_tointeger(L, -1); // st n + 3
+		int y = static_cast<int>(lua_tointeger(L, -1)); // st n + 3
 
 		lua_pop(L, 2); // st n + 1
 
@@ -172,7 +172,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 		lua_rawget(L, -2);  // st n + 2
 		target::TYPE type = target::TYPE::EXPLICIT;
 		if(lua_isnumber(L, -1)) {
-			type = target::TYPE::from_int(lua_tointeger(L, -1));  // st n + 2
+			type = target::TYPE::from_int(static_cast<int>(lua_tointeger(L, -1)));  // st n + 2
 		} else if(lua_isstring(L, -1)) {
 			type = target::TYPE::string_to_enum(lua_tostring(L, -1));  // st n + 2
 		}
@@ -181,7 +181,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		lua_pushstring(L, "value");
 		lua_rawget(L, -2);
-		int value = lua_tointeger(L, -1);
+		int value = static_cast<int>(lua_tointeger(L, -1));
 
 		map_location ml(x, y, wml_loc());
 

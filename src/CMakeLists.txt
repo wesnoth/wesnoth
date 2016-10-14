@@ -330,9 +330,15 @@ set(libwesnoth-lua_STAT_SRC
 	lua/lstrlib.cpp
 	lua/loadlib.cpp
 	lua/linit.cpp
+	lua/lutf8lib.cpp
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
+
+# Inject a header into the Lua sources for Wesnoth-specific changes
+# makedepend won't see it so we have to specifically add it as a dependancy.
+set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ../src/wesnoth_lua_config.h")
+set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS src/wesnoth_lua_config.h)
 
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
@@ -1362,7 +1368,6 @@ if(ENABLE_TESTS)
 		tests/test_formula_function.cpp
 		tests/test_image_modifications.cpp
 		tests/test_lexical_cast.cpp
-		tests/test_lua.cpp
 		tests/test_map_location.cpp
 		tests/test_make_enum.cpp
 		tests/test_rng.cpp

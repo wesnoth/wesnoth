@@ -788,8 +788,8 @@ int game_lua_kernel::intf_highlight_hex(lua_State *L)
  */
 int game_lua_kernel::intf_is_enemy(lua_State *L)
 {
-	unsigned side_1 = luaL_checkint(L, 1) - 1;
-	unsigned side_2 = luaL_checkint(L, 2) - 1;
+	unsigned side_1 = luaL_checkinteger(L, 1) - 1;
+	unsigned side_2 = luaL_checkinteger(L, 2) - 1;
 	if (side_1 >= teams().size() || side_2 >= teams().size()) return 0;
 	lua_pushboolean(L, teams()[side_1].is_enemy(side_2 + 1));
 	return 1;
@@ -926,7 +926,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 
 	if(lua_isnumber(L, arg)) {
 		++arg;
-		for_turn = luaL_checkint(L, 1);
+		for_turn = luaL_checkinteger(L, 1);
 		int number_of_turns = tod_man().number_of_turns();
 		if(for_turn < 1 || (number_of_turns != -1 && for_turn > number_of_turns)) {
 			return luaL_argerror(L, 1, "turn number out of range");
@@ -997,7 +997,7 @@ int game_lua_kernel::intf_get_village_owner(lua_State *L)
 int game_lua_kernel::intf_set_village_owner(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	int new_side = lua_isnoneornil(L, 2) ? 0 : luaL_checkint(L, 2);
+	int new_side = lua_isnoneornil(L, 2) ? 0 : luaL_checkinteger(L, 2);
 
 	if (!board().map().is_village(loc))
 		return 0;
@@ -1076,7 +1076,7 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 */
 int game_lua_kernel::intf_get_starting_location(lua_State* L)
 {
-	const int side = luaL_checkint(L, 1);
+	const int side = luaL_checkinteger(L, 1);
 	if(side < 1 || static_cast<int>(teams().size()) < side)
 		return luaL_argerror(L, 1, "out of bounds");
 	const map_location& starting_pos = board().map().starting_position(side);

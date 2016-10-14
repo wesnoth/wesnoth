@@ -6,6 +6,10 @@ from glob import glob
 
 Import("*")
 
+# Inject boost::bind patch everywhere
+for env in [test_env, client_env, env]:
+    env.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
+
 for env in [test_env, client_env, env]:
     env.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
@@ -721,7 +725,6 @@ test_sources = Split("""
     tests/test_formula_function.cpp
     tests/test_image_modifications.cpp
     tests/test_lexical_cast.cpp
-    tests/test_lua.cpp
     tests/test_make_enum.cpp
     tests/test_map_location.cpp
     tests/test_mp_connect.cpp
