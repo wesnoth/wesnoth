@@ -312,8 +312,6 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 	read_from_fifo();
 }
 
-#endif
-
 void server::handle_sighup(const boost::system::error_code&, int)
 {
 	LOG_CS << "SIGHUP caught, reloading config.\n";
@@ -324,6 +322,8 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 	sighup_.async_wait(std::bind(&server::handle_sighup, this, _1, _2));
 }
+
+#endif
 
 void server::flush_cfg()
 {

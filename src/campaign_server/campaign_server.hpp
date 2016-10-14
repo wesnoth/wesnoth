@@ -95,7 +95,9 @@ private:
 
 	void handle_read_from_fifo(const boost::system::error_code& error, std::size_t bytes_transferred);
 
+#ifndef _WIN32
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
+#endif
 
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 	/**
