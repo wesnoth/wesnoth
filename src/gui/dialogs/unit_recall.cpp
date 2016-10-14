@@ -53,6 +53,10 @@ static lg::log_domain log_display("display");
 namespace gui2
 {
 
+// Index 2 is by-level
+static tlistbox::order_pair sort_last    = {-1, tlistbox::SORT_NONE};
+static tlistbox::order_pair sort_default = { 2, tlistbox::SORT_DESCENDING};
+
 REGISTER_DIALOG(unit_recall)
 
 tunit_recall::tunit_recall(recalls_ptr_vector& recall_list, team& team)
@@ -238,6 +242,8 @@ void tunit_recall::pre_show(twindow& window)
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
+	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default);
+
 	list_item_clicked(window);
 }
 
@@ -323,9 +329,11 @@ void tunit_recall::list_item_clicked(twindow& window)
 
 void tunit_recall::post_show(twindow& window)
 {
+	tlistbox& list = find_widget<tlistbox>(&window, "recall_list", false);
+	sort_last = list.get_active_sorting_option();
+
 	if(get_retval() == twindow::OK) {
-		selected_index_ = find_widget<tlistbox>(&window, "recall_list", false)
-			.get_selected_row();
+		selected_index_ = list.get_selected_row();
 	}
 }
 
