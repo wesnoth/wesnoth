@@ -694,9 +694,9 @@ void ttext::create_surface_buffer(const size_t size) const
 	surface_.assign(nullptr);
 
 	surface_buffer_.resize(size);
+
+	// Not sure why this is needed, perhaps SDL assumes it?
 	for (auto & c : surface_buffer_) { c = 0; }
-	// memset(&surface_buffer_[0], 0, surface_buffer_.size() * sizeof(unsigned char));
-	// std::fill(surface_buffer_.begin(), surface_buffer_.end(), 0);
 }
 
 bool ttext::set_markup(const std::string & text) {
