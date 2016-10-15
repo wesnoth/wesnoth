@@ -75,7 +75,7 @@ ttext::ttext() :
 	calculation_dirty_(true),
 	length_(0),
 	surface_dirty_(true),
-	surface_buffer_(nullptr)
+	surface_buffer_()
 {
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_, 72.0);
@@ -107,10 +107,7 @@ ttext::~ttext()
 	if(layout_) {
 		g_object_unref(layout_);
 	}
-	if(surface_buffer_) {
-		surface_.assign(nullptr);
-		delete[] surface_buffer_;
-	}
+	surface_.assign(nullptr);
 }
 
 surface ttext::render() const
@@ -661,7 +658,7 @@ void ttext::rerender(const bool force) const
 		this->create_surface_buffer(stride * height);
 
 		cairo_surface_t* cairo_surface =
-		cairo_image_surface_create_for_data(surface_buffer_, format, width, height, stride);
+		cairo_image_surface_create_for_data(&surface_buffer_[0], format, width, height, stride);
 		cairo_t* cr = cairo_create(cairo_surface);
 
 		/* set color (used for foreground). */
@@ -684,7 +681,7 @@ void ttext::rerender(const bool force) const
 		}
 
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
-			surface_buffer_, width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
+			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 		cairo_destroy(cr);
 		cairo_surface_destroy(cairo_surface);
 	}
@@ -693,13 +690,12 @@ void ttext::rerender(const bool force) const
 void ttext::create_surface_buffer(const size_t size) const
 {
 	// clear old buffer
-	if(surface_buffer_) {
-		surface_.assign(nullptr);
-		delete[] surface_buffer_;
-	}
+	surface_.assign(nullptr);
 
-	surface_buffer_ = new unsigned char [size];
-	memset(surface_buffer_, 0, size);
+	surface_buffer_.resize(size);
+	for (auto & c : surface_buffer_) { c = 0; }
+	// memset(&surface_buffer_[0], 0, surface_buffer_.size() * sizeof(unsigned char));
+	// std::fill(surface_buffer_.begin(), surface_buffer_.end(), 0);
 }
 
 bool ttext::set_markup(const std::string & text) {

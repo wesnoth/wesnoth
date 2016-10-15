@@ -23,6 +23,7 @@
 #include <pango/pangocairo.h>
 
 #include <string>
+#include <vector>
 
 #include "sdl/image.hpp"
 
@@ -377,7 +378,7 @@ private:
 	 * data source for the SDL_Surface. This means the buffer needs to be stored
 	 * in the object, since SDL_Surface doesn't own its buffer.
 	 */
-	mutable unsigned char* surface_buffer_;
+	mutable std::vector<unsigned char> surface_buffer_;
 
 	/**
 	 * Creates a new buffer.
