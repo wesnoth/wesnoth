@@ -85,7 +85,6 @@ bool playturn_network_adapter::read(config& dst)
 		assert(!is_at_end());
 	}
 	config& child = dst.add_child(next_->key);
-	//TODO: implement a non const version of ordered children
 	config& child_old = next_->cfg;
 	if(next_->key == "turn")
 	{
@@ -93,7 +92,6 @@ bool playturn_network_adapter::read(config& dst)
 		assert(next_->cfg.all_children_count() > next_command_num_);
 		config::all_children_iterator itor = child_old.ordered_begin();
 		std::advance(itor, next_command_num_);
-		//TODO: implement a non const version of ordered children
 		config& childchild_old = itor->cfg;
 		config& childchild = child.add_child(itor->key);
 		childchild.swap(childchild_old);

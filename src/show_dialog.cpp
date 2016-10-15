@@ -203,7 +203,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	}
 
 	y -= dim_.title.h;
-	w = std::max<int>(w,std::max<int>(dim_.title.w,int(buttons_width)));
+	w = std::max(w, std::max(dim_.title.w, static_cast<int>(buttons_width)));
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
