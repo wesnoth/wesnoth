@@ -47,7 +47,6 @@
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "marked-up_text.hpp"
-// #include "font.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
 #include "video.hpp"

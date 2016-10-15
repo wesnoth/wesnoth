@@ -15,6 +15,7 @@
 #ifndef FONT_SDL_TTF_HPP
 #define FONT_SDL_TTF_HPP
 
+#include "constants.hpp"
 #include "font_id.hpp"
 #include "font_description.hpp"
 
@@ -25,31 +26,6 @@
 class surface;
 
 namespace font {
-
-//various standard colors
-extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_COLOR,
-                       BLACK_COLOR, YELLOW_COLOR, BUTTON_COLOR, BIGMAP_COLOR,
-                       PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
-
-// font sizes, to be made theme parameters
-constexpr int SIZE_NORMAL = 14;
-// automatic computation of other font sizes, to be made a default for theme-provided values
-constexpr int
-	SIZE_TINY       = 10 * SIZE_NORMAL / 14,
-	SIZE_SMALL      = 12 * SIZE_NORMAL / 14,
-
-	SIZE_15         = 15 * SIZE_NORMAL / 14,
-	SIZE_PLUS       = 16 * SIZE_NORMAL / 14,
-	SIZE_LARGE      = 18 * SIZE_NORMAL / 14,
-	SIZE_TITLE      = 20 * SIZE_NORMAL / 14,
-	SIZE_XLARGE     = 24 * SIZE_NORMAL / 14
-  ;
-// For arbitrary scaling:
-// (Not used in defining the SIZE_* consts because of spurious compiler warnings.)
-inline int relative_size(int size)
-{
-	return (SIZE_NORMAL * size / 14);
-}
 
 // Returns a SDL surface containing the text rendered in a given color.
 surface get_rendered_text(const std::string& text, int size, const SDL_Color& color, int style=0);

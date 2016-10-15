@@ -985,6 +985,7 @@ set(libwesnoth-game_STAT_SRC
 	display_context.cpp
 	events.cpp
 	floating_label.cpp
+	font/constants.cpp
 	font/font_config.cpp
 	font/sdl_ttf.cpp
 	font/text.cpp

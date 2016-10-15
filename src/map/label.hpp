@@ -15,7 +15,7 @@
 #ifndef MAP_LABEL_HPP_INCLUDED
 #define MAP_LABEL_HPP_INCLUDED
 
-#include "font/sdl_ttf.hpp"
+#include "font/constants.hpp"
 #include "map/location.hpp"
 #include "tstring.hpp"
 

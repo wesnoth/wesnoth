@@ -21,6 +21,7 @@
 #include "addon/manager_ui.hpp"
 #include "construct_dialog.hpp"
 #include "filesystem.hpp"
+#include "font/sdl_ttf.hpp"
 #include "game_preferences.hpp"
 #include "lobby_preferences.hpp"
 #include "map/exception.hpp"
