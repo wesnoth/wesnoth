@@ -164,7 +164,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 
 	ttree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data);
 
-	side_tree_map_.emplace(side, &node);
+	side_tree_map_[side] = &node;
 
 	tgrid& row_grid = node.get_grid();
 
