@@ -19,7 +19,7 @@
 //#include "editor/editor_controller.hpp"
 //#include "editor/palette/terrain_palettes.hpp"
 #include "font/sdl_ttf.hpp"
-#include "font/text.hpp"
+#include "font/pango/escape.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"

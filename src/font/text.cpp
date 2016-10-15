@@ -16,11 +16,18 @@
 
 #include "text.hpp"
 
+#include "font_config.hpp"
+
+#include "pango/escape.hpp"
+#include "pango/font.hpp"
+#include "pango/hyperlink.hpp"
+#include "pango/iter.hpp"
+#include "pango/stream_ops.hpp"
+
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/point.hpp"
-#include "font/font_config.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences.hpp"
@@ -36,57 +43,10 @@
 
 namespace font {
 
-namespace {
-
-/**
- * Small helper wrapper for PangoLayoutIter*.
- *
- * Needed to make sure it gets freed properly.
- */
-class titor
-{
-public:
-
-	explicit titor(PangoLayout* layout_) :
-		itor_(pango_layout_get_iter(layout_))
-	{
-	}
-
-	titor(const titor &) = delete;
-
-	~titor() { pango_layout_iter_free(itor_); }
-
-	operator PangoLayoutIter*() { return itor_; }
-
-private:
-
-	PangoLayoutIter* itor_;
-};
-
-} // namespace
-
 const unsigned ttext::STYLE_NORMAL = TTF_STYLE_NORMAL;
 const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
 const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
 const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
-
-static bool looks_like_url(const std::string & token);
-
-std::string escape_text(const std::string& text)
-{
-	std::string result;
-	for(const char c : text) {
-		switch(c) {
-			case '&':  result += "&amp;";  break;
-			case '<':  result += "&lt;";   break;
-			case '>':  result += "&gt;";   break;
-			case '\'': result += "&apos;"; break;
-			case '"':  result += "&quot;"; break;
-			default:   result += c;
-		}
-	}
-	return result;
-}
 
 ttext::ttext() :
 #if PANGO_VERSION_CHECK(1,22,0)
@@ -155,31 +115,31 @@ ttext::~ttext()
 
 surface ttext::render() const
 {
-	rerender();
+	this->rerender();
 	return surface_;
 }
 
 
 int ttext::get_width() const
 {
-	return get_size().x;
+	return this->get_size().x;
 }
 
 int ttext::get_height() const
 {
-	return get_size().y;
+	return this->get_size().y;
 }
 
 gui2::tpoint ttext::get_size() const
 {
-	recalculate();
+	this->recalculate();
 
 	return gui2::tpoint(rect_.width, rect_.height);
 }
 
 bool ttext::is_truncated() const
 {
-	recalculate();
+	this->recalculate();
 
 	return (pango_layout_is_ellipsized(layout_) != 0);
 }
@@ -199,30 +159,30 @@ unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 	}
 	const utf8::string insert = text.substr(0, utf8::index(text, len));
 	utf8::string tmp = text_;
-	set_text(utf8::insert(tmp, offset, insert), false);
+	this->set_text(utf8::insert(tmp, offset, insert), false);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
 }
 
 bool ttext::insert_unicode(const unsigned offset, ucs4::char_t unicode)
 {
-	return (insert_unicode(offset, ucs4::string(1, unicode)) == 1);
+	return this->insert_unicode(offset, ucs4::string(1, unicode)) == 1;
 }
 
 unsigned ttext::insert_unicode(const unsigned offset, const ucs4::string& unicode)
 {
 	const utf8::string insert = unicode_cast<utf8::string>(unicode);
-	return insert_text(offset, insert);
+	return this->insert_text(offset, insert);
 }
 
 gui2::tpoint ttext::get_cursor_position(
 		const unsigned column, const unsigned line) const
 {
-	recalculate();
+	this->recalculate();
 
 	// First we need to determine the byte offset, if more routines need it it
 	// would be a good idea to make it a separate function.
-	titor itor(layout_);
+	p_itor itor{layout_};
 
 	// Go the wanted line.
 	if(line != 0) {
@@ -261,7 +221,7 @@ gui2::tpoint ttext::get_cursor_position(
 
 std::string ttext::get_token(const gui2::tpoint & position, const char * delim) const
 {
-	recalculate();
+	this->recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
@@ -297,7 +257,7 @@ std::string ttext::get_link(const gui2::tpoint & position) const
 		return "";
 	}
 
-	std::string tok = get_token(position, " \n\r\t");
+	std::string tok = this->get_token(position, " \n\r\t");
 
 	if (looks_like_url(tok)) {
 		return tok;
@@ -308,7 +268,7 @@ std::string ttext::get_link(const gui2::tpoint & position) const
 
 gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 {
-	recalculate();
+	this->recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
@@ -332,7 +292,7 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 	 * Until that time leave it as is.
 	 */
 	for(size_t i = 0; ; ++i) {
-		const int pos = get_cursor_position(i, line).x;
+		const int pos = this->get_cursor_position(i, line).x;
 
 		if(pos == offset) {
 			return  gui2::tpoint(i, line);
@@ -343,7 +303,7 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 bool ttext::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
-		assert(layout_);
+		// assert(layout_);
 
 		const ucs4::string wide = unicode_cast<ucs4::string>(text);
 		const std::string narrow = unicode_cast<utf8::string>(wide);
@@ -353,7 +313,7 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
 		}
 		if(markedup) {
-			if(!set_markup(narrow)) {
+			if(!this->set_markup(narrow)) {
 				return false;
 			}
 		} else {
@@ -421,9 +381,7 @@ ttext& ttext::set_foreground_color(const Uint32 color)
 
 ttext &ttext::set_foreground_color(const SDL_Color color)
 {
-	set_foreground_color((color.r << 16) + (color.g << 8) + color.b);
-
-	return *this;
+	return this->set_foreground_color((color.r << 16) + (color.g << 8) + color.b);
 }
 
 ttext& ttext::set_maximum_width(int width)
@@ -433,7 +391,7 @@ ttext& ttext::set_maximum_width(int width)
 	}
 
 	if(width != maximum_width_) {
-		assert(context_);
+		// assert(context_);
 #if 0
 		/**
 		 * todo Adding 4 extra pixels feels a bit hacky.
@@ -479,7 +437,7 @@ ttext& ttext::set_maximum_height(int height, bool multiline)
 	}
 
 	if(height != maximum_height_) {
-		assert(context_);
+		// assert(context_);
 
 		pango_layout_set_height(layout_, !multiline ? -1 : height * PANGO_SCALE);
 		maximum_height_ = height;
@@ -493,7 +451,7 @@ ttext& ttext::set_maximum_height(int height, bool multiline)
 ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 {
 	if(ellipse_mode != ellipse_mode_) {
-		assert(context_);
+		// assert(context_);
 
 		pango_layout_set_ellipsize(layout_, ellipse_mode);
 		ellipse_mode_ = ellipse_mode;
@@ -506,10 +464,12 @@ ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 
 ttext &ttext::set_alignment(const PangoAlignment alignment)
 {
-	if (alignment == alignment_) return *this;
-	pango_layout_set_alignment(layout_, alignment);
-	alignment_ = alignment;
-	surface_dirty_ = true;
+	if (alignment != alignment_) {
+		pango_layout_set_alignment(layout_, alignment);
+		alignment_ = alignment;
+		surface_dirty_ = true;
+	}
+
 	return *this;
 }
 
@@ -519,7 +479,7 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
 			utf8::string tmp = text_;
-			set_text(utf8::truncate(tmp, maximum_length_), false);
+			this->set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
 	}
 
@@ -547,58 +507,16 @@ ttext& ttext::set_link_color(const std::string & color)
 	return *this;
 }
 
-namespace {
-
-/** Small helper class to make sure the font object is destroyed properly. */
-class tfont
-{
-public:
-	tfont(const std::string& name, const unsigned size, const unsigned style) :
-		font_(pango_font_description_new())
-	{
-		pango_font_description_set_family(font_, name.c_str());
-		pango_font_description_set_size(font_, size * PANGO_SCALE);
-
-		if(style != ttext::STYLE_NORMAL) {
-			if(style & ttext::STYLE_ITALIC) {
-				pango_font_description_set_style(font_, PANGO_STYLE_ITALIC);
-			}
-			if(style & ttext::STYLE_BOLD) {
-				pango_font_description_set_weight(font_, PANGO_WEIGHT_BOLD);
-			}
-			if(style & ttext::STYLE_UNDERLINE) {
-				/* Do nothing here, underline is a property of the layout. */
-			}
-		}
-	}
-
-	tfont(const tfont &) = delete;
-
-	~tfont() { pango_font_description_free(font_); }
-
-	PangoFontDescription* get() { return font_; }
-
-private:
-	PangoFontDescription *font_;
-};
-
-std::ostream& operator<<(std::ostream& s, const PangoRectangle &rect)
-{
-	s << rect.x << ',' << rect.y << " x " << rect.width << ',' << rect.height;
-	return s;
-}
-
-} // namespace
 
 void ttext::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
-		assert(layout_);
+		// assert(layout_);
 
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		tfont font(get_font_families(font_class_), font_size_, font_style_);
+		p_font font{get_font_families(font_class_), font_size_, font_style_};
 		pango_layout_set_font_description(layout_, font.get());
 
 		if(font_style_ & ttext::STYLE_UNDERLINE) {
@@ -727,9 +645,9 @@ static void decode_pixel(unsigned char *p)
 void ttext::rerender(const bool force) const
 {
 	if(surface_dirty_ || force) {
-		assert(layout_);
+		// assert(layout_);
 
-		recalculate(force);
+		this->recalculate(force);
 		surface_dirty_ = false;
 
 		int width  = rect_.x + rect_.width;
@@ -740,10 +658,10 @@ void ttext::rerender(const bool force) const
 		cairo_format_t format = CAIRO_FORMAT_ARGB32;
 		const unsigned stride = cairo_format_stride_for_width(format, width);
 
-		create_surface_buffer(stride * height);
+		this->create_surface_buffer(stride * height);
 
 		cairo_surface_t* cairo_surface =
-			cairo_image_surface_create_for_data(surface_buffer_, format, width, height, stride);
+		cairo_image_surface_create_for_data(surface_buffer_, format, width, height, stride);
 		cairo_t* cr = cairo_create(cairo_surface);
 
 		/* set color (used for foreground). */
@@ -785,40 +703,35 @@ void ttext::create_surface_buffer(const size_t size) const
 }
 
 bool ttext::set_markup(const std::string & text) {
-	if (!link_aware_) {
-		return set_markup_helper(text);
-	} else {
-		std::string delim = " \n\r\t";
-
-		// Tokenize according to these delimiters, and stream the results of `handle_token` on each token to get the new text.
-
-		std::stringstream ss;
-
-		int last_delim = -1;
-		for (size_t index = 0; index < text.size(); ++index) {
-			if (delim.find(text.at(index)) != std::string::npos) {
-				ss << handle_token(text.substr(last_delim + 1, index - last_delim - 1)); // want to include chars from range since last token, dont want to include any delimiters
-				ss << text.at(index);
-				last_delim = index;
-			}
-		}
-		if (last_delim < static_cast<int>(text.size()) - 1) {
-			ss << handle_token(text.substr(last_delim + 1, text.size() - last_delim - 1));
-		}
-
-		return set_markup_helper(ss.str());
-	}
+	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text) : text);
 }
 
-static bool looks_like_url(const std::string & str)
-{
-	return (str.size() >= 8) && ((str.substr(0,7) == "http://") || (str.substr(0,8) == "https://"));
+std::string ttext::format_link_tokens(const std::string & text) const {
+	std::string delim = " \n\r\t";
+	// Tokenize according to these delimiters, and stream the results of `handle_token` on each token to get the new text.
+
+	std::string result;
+
+	int last_delim = -1;
+	for (size_t index = 0; index < text.size(); ++index) {
+		if (delim.find(text.at(index)) != std::string::npos) {
+			// want to include chars from range since last token, dont want to include any delimiters
+			result += this->handle_token(text.substr(last_delim + 1, index - last_delim - 1));
+			result += text.at(index);
+			last_delim = index;
+		}
+	}
+	if (last_delim < static_cast<int>(text.size()) - 1) {
+		result += this->handle_token(text.substr(last_delim + 1, text.size() - last_delim - 1));
+	}
+
+	return result;
 }
 
 std::string ttext::handle_token(const std::string & token) const
 {
 	if (looks_like_url(token)) {
-		return "<span underline=\'single\' color=\'" + link_color_ + "\'>" + token + "</span>";
+		return format_as_link(token, link_color_);
 	} else {
 		return token;
 	}
@@ -842,14 +755,7 @@ bool ttext::set_markup_helper(const std::string& text)
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	std::string semi_escaped;
-	for(const char c : text) {
-		if(c == '&') {
-			semi_escaped += "&amp;";
-		} else {
-			semi_escaped += c;
-		}
-	}
+	std::string semi_escaped{semi_escape_text(text)};
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
@@ -865,7 +771,7 @@ bool ttext::set_markup_helper(const std::string& text)
 				<< " text '" << text
 				<< "' has broken markup, set to normal text.\n";
 
-		set_text(_("The text contains invalid markup: ") + text, false);
+		this->set_text(_("The text contains invalid markup: ") + text, false);
 		return false;
 	}
 

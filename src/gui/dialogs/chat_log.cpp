@@ -29,6 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/slider.hpp"
 
+#include "font/pango/escape.hpp"
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
 #include "game_preferences.hpp"

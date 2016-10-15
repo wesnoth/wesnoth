@@ -38,20 +38,6 @@ namespace gui2 {
 
 namespace font {
 
-/**
- * Escapes the markup characters in a text.
- *
- * The markups escaped are the ones used in the pango markup. The special
- * characters are: @verbatim <>'"& @endverbatim
- * The escaping is the same as for HTML.
- *
- * @param text                    The text to escape.
- *
- * @returns                       The escaped text.
- */
-std::string escape_text(const std::string& text);
-
-
 // add background color and also font markup.
 
 /**
@@ -95,6 +81,7 @@ public:
 	ttext();
 
     ttext(const ttext &) = delete;
+    ttext & operator = (const ttext &) = delete;
 
 	~ttext();
 
@@ -421,6 +408,8 @@ private:
 	bool set_markup(const std::string& text);
 
 	bool set_markup_helper(const std::string & text);
+
+    std::string format_link_tokens(const std::string & text) const;
 
 	std::string handle_token(const std::string & token) const;
 };

@@ -34,6 +34,9 @@ struct manager {
 	manager();
 	~manager();
 
+	manager(const manager &) = delete;
+	manager & operator = (const manager &) = delete;
+
 	/**
 	 * Updates the font path, when initialized it sets the fontpath to
 	 * game_config::path. When this path is updated, this function should be

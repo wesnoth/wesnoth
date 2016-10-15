@@ -94,6 +94,7 @@ struct sdl_ttf {
   ~sdl_ttf();
 
   sdl_ttf(const sdl_ttf &) = delete;
+  sdl_ttf & operator = (const sdl_ttf &) = delete;
 
   // Load a font
   static TTF_Font * get_font(font_id);
