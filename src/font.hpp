@@ -24,6 +24,10 @@
 
 class t_string;
 
+/***
+ * Note: This is the SDL_TTF code path. For pango cairo code path, see class ttext.
+ */
+
 namespace font {
 
 //object which initializes and destroys structures needed for fonts

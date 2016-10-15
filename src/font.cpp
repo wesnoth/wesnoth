@@ -525,8 +525,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 {
 	clear_fonts();
 
-	std::vector<subset_descriptor>::const_iterator itor;
-	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
+	for(auto itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
 		if (!check_font_file(itor->name)) continue;
 		// Insert fonts only if the font file exists
 		const subset_id subset = font_names.size();
@@ -1089,13 +1088,13 @@ bool load_font_config()
 
 	const std::vector<std::string> font_order = utils::split(fonts_config["order"]);
 	std::vector<font::subset_descriptor> fontlist;
-	std::vector<std::string>::const_iterator font;
-	for(font = font_order.begin(); font != font_order.end(); ++font) {
+
+	for(auto font = font_order.begin(); font != font_order.end(); ++font) {
 		add_font_to_fontlist(fonts_config, fontlist, *font);
 		known_fonts.erase(*font);
 	}
-	std::set<std::string>::const_iterator kfont;
-	for(kfont = known_fonts.begin(); kfont != known_fonts.end(); ++kfont) {
+
+	for(auto kfont = known_fonts.begin(); kfont != known_fonts.end(); ++kfont) {
 		add_font_to_fontlist(fonts_config, fontlist, *kfont);
 	}
 
