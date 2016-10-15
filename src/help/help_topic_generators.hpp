@@ -15,7 +15,7 @@
 #ifndef HELP_TOPIC_GENERATORS_HPP
 #define HELP_TOPIC_GENERATORS_HPP
 
-#include "font.hpp"                     // for line_width
+#include "font/sdl_ttf.hpp"                     // for line_width
 #include "help_impl.hpp"
 
 #include <string>                       // for string

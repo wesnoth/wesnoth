@@ -16,7 +16,7 @@
 #define TEXTBOX_HPP_INCLUDED
 
 #include "serialization/unicode.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 
 #include "scrollarea.hpp"
 

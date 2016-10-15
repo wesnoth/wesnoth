@@ -19,7 +19,7 @@
 
 #include "widgets/menu.hpp"
 
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "image.hpp"
 #include "video.hpp"
 

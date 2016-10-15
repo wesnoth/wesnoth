@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "floating_label.hpp"
 #include "image.hpp"
 #include "log.hpp"
@@ -41,9 +41,6 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 CVideo* CVideo::singleton_ = nullptr;
-
-namespace {
-}
 
 static unsigned int get_flags(unsigned int flags)
 {

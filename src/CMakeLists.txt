@@ -150,7 +150,8 @@ if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIRS} )
 	# latest FriBiDi deprecated some functions we rely on...
 	set_source_files_properties(
-		font.cpp
+		font/sdl_ttf.cpp
+		font/text_surface.cpp
 		PROPERTIES COMPILE_FLAGS
 			"-Wno-deprecated-declarations -Wno-unused-result"
 	)
@@ -984,7 +985,10 @@ set(libwesnoth-game_STAT_SRC
 	display_context.cpp
 	events.cpp
 	floating_label.cpp
-	font.cpp
+    font/font_config.cpp
+    font/sdl_ttf.cpp
+    font/text_cache.cpp
+    font/text_surface.cpp
 	format_time_summary.cpp
   	generators/cave_map_generator.cpp
 	generators/map_create.cpp

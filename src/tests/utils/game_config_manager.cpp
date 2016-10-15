@@ -20,7 +20,7 @@
 #include "config.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "font.hpp"
+#include "font/font_config.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_manager.hpp"

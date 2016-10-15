@@ -15,7 +15,7 @@
 #include "floating_label.hpp"
 
 #include "display.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "log.hpp"
 #include "text.hpp"
 

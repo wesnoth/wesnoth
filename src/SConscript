@@ -90,7 +90,10 @@ libwesnoth_sources = Split("""
     display.cpp
     events.cpp
     floating_label.cpp
-    font.cpp
+    font/font_config.cpp
+    font/sdl_ttf.cpp
+    font/text_cache.cpp
+    font/text_surface.cpp
     format_time_summary.cpp
     game_end_exceptions.cpp
     generators/cave_map_generator.cpp

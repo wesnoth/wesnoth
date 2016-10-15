@@ -27,7 +27,7 @@
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
-#include "font.hpp"
+//#include "font.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/formula.hpp"

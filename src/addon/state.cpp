@@ -16,7 +16,6 @@
 #include "config.hpp"
 
 #include "addon/manager.hpp"
-#include "font.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 

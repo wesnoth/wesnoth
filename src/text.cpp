@@ -20,7 +20,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/point.hpp"
-#include "font.hpp"
+#include "font/font_config.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences.hpp"

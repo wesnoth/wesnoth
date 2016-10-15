@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2016 by Chris Beck<render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,47 +11,20 @@
 
    See the COPYING file for more details.
 */
-#ifndef FONT_HPP_INCLUDED
-#define FONT_HPP_INCLUDED
 
-#include "exceptions.hpp"
-#include "font_options.hpp"
+#ifndef FONT_SDL_TTF_HPP
+#define FONT_SDL_TTF_HPP
 
-#include "sdl/utils.hpp"
-#include "sdl/image.hpp"
+#include "font_id.hpp"
+#include "font_description.hpp"
+
+#include <string>
 
 #include <SDL_ttf.h>
 
-class t_string;
-
-/***
- * Note: This is the SDL_TTF code path. For pango cairo code path, see class ttext.
- */
+class surface;
 
 namespace font {
-
-//object which initializes and destroys structures needed for fonts
-struct manager {
-	manager();
-	~manager();
-
-	/**
-	 * Updates the font path, when initialized it sets the fontpath to
-	 * game_config::path. When this path is updated, this function should be
-	 * called.
-	 */
-	void update_font_path() const;
-
-	struct error : public game::error {
-		error() : game::error("Font initialization failed") {}
-	};
-private:
-	/** Initializes the font path. */
-	void init() const;
-
-	/** Deinitializes the font path. */
-	void deinit() const;
-};
 
 //various standard colors
 extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_COLOR,
@@ -59,9 +32,9 @@ extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_CO
                        PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
 
 // font sizes, to be made theme parameters
-const int SIZE_NORMAL = 14;
+constexpr int SIZE_NORMAL = 14;
 // automatic computation of other font sizes, to be made a default for theme-provided values
-const int
+constexpr int
 	SIZE_TINY       = 10 * SIZE_NORMAL / 14,
 	SIZE_SMALL      = 12 * SIZE_NORMAL / 14,
 
@@ -107,14 +80,33 @@ std::string make_text_ellipsis(const std::string& text, int font_size, int max_w
 	int style = TTF_STYLE_NORMAL);
 
 
-bool load_font_config();
-
-/** Returns the currently defined fonts. */
-const t_string& get_font_families(family_class fclass = FONT_SANS_SERIF);
-
 enum CACHE { CACHE_LOBBY, CACHE_GAME };
 void cache_mode(CACHE mode);
 
-}
+
+
+
+/***
+ * RAII object which initializes and destroys SDL_TTF, and manages caches of open fonts
+ */
+struct sdl_ttf {
+  sdl_ttf();
+  ~sdl_ttf();
+
+  sdl_ttf(const sdl_ttf &) = delete;
+
+  // Load a font
+  static TTF_Font * get_font(font_id);
+
+  // Set the list of fonts
+  static void set_font_list(const std::vector<subset_descriptor>& fontlist);
+
+  // Split a utf8 string into text_chunks
+  static std::vector<text_chunk> split_text(const std::string & utf8_text);
+
+};
+
+
+} // end namespace font
 
 #endif

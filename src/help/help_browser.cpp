@@ -16,7 +16,7 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <SDL_mouse.h>                  // for SDL_GetMouseState, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
-#include "font.hpp"                     // for relative_size
+#include "font/sdl_ttf.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
 #include "help/help_text_area.hpp"      // for help_text_area

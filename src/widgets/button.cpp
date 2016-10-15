@@ -19,7 +19,7 @@
 #include "global.hpp"
 
 #include "filesystem.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "image.hpp"

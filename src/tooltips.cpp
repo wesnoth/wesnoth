@@ -16,7 +16,7 @@
 #include "tooltips.hpp"
 
 #include "floating_label.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "game_display.hpp"
 #include "help/help.hpp"
 #include "marked-up_text.hpp"
