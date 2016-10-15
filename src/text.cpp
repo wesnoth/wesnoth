@@ -23,7 +23,6 @@
 #include "font.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "tstring.hpp"
 #include "preferences.hpp"
 
 #include <cassert>
@@ -45,7 +44,6 @@ namespace {
  * Needed to make sure it gets freed properly.
  */
 class titor
-	: private boost::noncopyable
 {
 public:
 
@@ -53,6 +51,8 @@ public:
 		itor_(pango_layout_get_iter(layout_))
 	{
 	}
+
+	titor(const titor &) = delete;
 
 	~titor() { pango_layout_iter_free(itor_); }
 
@@ -551,7 +551,6 @@ namespace {
 
 /** Small helper class to make sure the font object is destroyed properly. */
 class tfont
-	: private boost::noncopyable
 {
 public:
 	tfont(const std::string& name, const unsigned size, const unsigned style) :
@@ -572,6 +571,8 @@ public:
 			}
 		}
 	}
+
+	tfont(const tfont &) = delete;
 
 	~tfont() { pango_font_description_free(font_); }
 

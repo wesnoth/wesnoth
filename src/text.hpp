@@ -19,8 +19,6 @@
 #include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 
-#include <boost/noncopyable.hpp>
-
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
 
@@ -56,15 +54,44 @@ std::string escape_text(const std::string& text);
 /**
  * Text class.
  *
+ * This class represents text which is rendered using Pango.
+ *
+ * It takes text, as a utf-8 std::string, plus formatting options including
+ * font and color. It provides a surface object which holds the rendered text.
+ *
+ * Besides this, it can do some additional calculations using the font layout.
+ *
+ * It can take an index into the text, and convert it to pixel coordinates,
+ * so that if we want to draw a cursor in an editbox, we know where to draw it.
+ *
+ * It can also take a pixel coordinate with respect to the text layout, and
+ * translate it back to an index into the original text. This is useful if the
+ * user clicks on the text, and we want to know where to move the cursor.
+ *
+ * The get_token method takes a pixel coordinate, which we assume represents a
+ * click position, and gets the corresponding "token" from the string. The default
+ * token delimiters are whitespace " \n\r\t". So, this returns the "word" that the
+ * user clicked on.
+ *
+ * Finally, the get_link method represents special support for hyperlinks in text.
+ * A token "looks like a link" if it begins "http://" or "https://".
+ * If a text has link_aware enabled, then any such token is rendered with an
+ * underline and in a special color, see `link_color`.
+ * The get_link method calls get_token and further checks if the clicked token
+ * looks like a link.
+ *
  * This class stores the text to draw and uses pango with the cairo backend to
  * render the text. See http://pango.org for more info.
+ *
+ * 
  */
 class ttext
-	: private boost::noncopyable
 {
 public:
 
 	ttext();
+
+    ttext(const ttext &) = delete;
 
 	~ttext();
 
@@ -83,10 +110,10 @@ public:
 	/** Returns the height needed for the text. */
 	int get_height() const;
 
-	/** Returns the size needed for the text. */
+	/** Returns the pixel size needed for the text. */
 	gui2::tpoint get_size() const;
 
-	/** Has the text been truncated? */
+	/** Has the text been truncated? This happens if it exceeds max width or height. */
 	bool is_truncated() const;
 
 	/**
@@ -181,7 +208,7 @@ public:
 	gui2::tpoint get_column_line(const gui2::tpoint& position) const;
 
 	/**
-	 * Gets the length of the text in characters.
+	 * Gets the length of the text in bytes.
 	 *
 	 * The text set is UTF-8 so the length of the string might not be the length
 	 * of the text.
@@ -224,7 +251,7 @@ public:
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
-	ttext &set_alignment(const PangoAlignment alignment);
+	ttext& set_alignment(const PangoAlignment alignment);
 
 	ttext& set_maximum_length(const size_t maximum_length);
 
@@ -240,20 +267,26 @@ private:
 	PangoLayout* layout_;
 	mutable PangoRectangle rect_;
 
-	/** The surface to render upon used as a cache. */
+	/** The SDL surface to render upon used as a cache. */
 	mutable surface surface_;
 
 
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;
 
-	/** Is the text markedup if so the markedup render routines need to be used. */
+	/** Does the text contain pango markup? If different render routines must be used. */
 	bool markedup_text_;
 
 	/** Are hyperlinks in the text marked-up, and will get_link return them. */
 	bool link_aware_;
 
-	/** The color to render links in. */
+	/**
+     * The color to render links in.
+     *
+     * Links are formatted using pango <span> as follows:
+     *
+     * "<span underline=\'single\' color=\'" + link_color_ + "\'>"
+     */
 	std::string link_color_;
 
 	/** The font family class used. */
@@ -326,7 +359,7 @@ private:
 	mutable size_t length_;
 
 	/**
-	 * Recalculates the text.
+	 * Recalculates the text layout.
 	 *
 	 * When the text is recalculated the surface is dirtied.
 	 *
@@ -352,7 +385,7 @@ private:
 	 *
 	 * We use a cairo surface to draw on this buffer and then use the buffer as
 	 * data source for the SDL_Surface. This means the buffer needs to be stored
-	 * in the object.
+	 * in the object, since SDL_Surface doesn't own its buffer.
 	 */
 	mutable unsigned char* surface_buffer_;
 
