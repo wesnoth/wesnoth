@@ -37,10 +37,6 @@
 
 #include "video.hpp"
 
-#ifdef __GNUC__
-# pragma GCC diagnostic ignored "-Wold-style-cast"
-#endif
-
 namespace font {
 
 const unsigned ttext::STYLE_NORMAL = TTF_STYLE_NORMAL;
@@ -591,53 +587,55 @@ void ttext::recalculate(const bool force) const
 	}
 }
 
-struct decode_table
+/***
+ * Inverse table
+ */
+struct inverse_table
 {
 	// 1-based, from 1 to 255.
 	unsigned values[255];
-	decode_table()
-		: values()
+
+	inverse_table()
 	{
 		for (int i = 1; i < 256; ++i) values[i - 1] = (255 * 256) / i;
 	}
+
+	unsigned operator[](Uint8 x) const { return values[x]; }
 };
 
-static struct decode_table decode_table;
+static const inverse_table inverse_table_;
 
-
-/**
- * Converts from premultiplied alpha to plain alpha.
- * @param p pointer to a 4-byte endian-dependent color.
+/***
+ * Helper function for un-premultiplying alpha
  */
-static void decode_pixel(unsigned char *p)
-{
-// Assume everything not compiled with gcc to be on a little endian platform.
-#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
-	int alpha = p[0];
-#else
-	int alpha = p[3];
-#endif
-	if (alpha == 0) return;
-
-	int div = decode_table.values[alpha - 1];
-
-#define DECODE(i) \
-	do { \
-		unsigned color = p[i]; \
-		color = color * div / 256; \
-		if (color > 255) color = 255; \
-		p[i] = color; \
-	} while (0)
-
-#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
-	DECODE(3);
-#else
-	DECODE(0);
-#endif
-	DECODE(1);
-	DECODE(2);
+static void unpremultiply(Uint8 & value, const unsigned div) {
+	unsigned temp = value * div;
+	temp /= 256;
+	if (temp > 255) {
+		value = 255;
+	} else {
+		value = temp;
+	}
 }
 
+/**
+ * Converts from cairo-format ARGB32 premultiplied alpha to plain alpha.
+ * @param c a uint32 representing the color
+ */
+static void from_cairo_format(Uint32 & c)
+{
+	Uint8 a = (c >> 24) & 0xff;
+	Uint8 r = (c >> 16) & 0xff;
+	Uint8 g = (c >> 8) & 0xff;
+	Uint8 b = c & 0xff;
+
+	const unsigned div = inverse_table_[a];
+	unpremultiply(r, div);
+	unpremultiply(g, div);
+	unpremultiply(b, div);
+
+	c = (static_cast<Uint32>(a) << 24) | (static_cast<Uint32>(r) << 16) | (static_cast<Uint32>(g) << 8) | static_cast<Uint32>(b);
+}
 
 void ttext::rerender(const bool force) const
 {
@@ -670,13 +668,16 @@ void ttext::rerender(const bool force) const
 
 		pango_cairo_show_layout(cr, layout_);
 
+		static_assert(sizeof(Uint32) == 4, "Something is wrong with our typedefs");
+
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
+		Uint32 * pixels = reinterpret_cast<Uint32 *>(&surface_buffer_[0]);
+
 		for(int y = 0; y < height; ++y) {
 			for(int x = 0; x < width; ++x) {
-				unsigned char* pixel = &surface_buffer_[(y * width + x) * 4];
-				decode_pixel(pixel);
+				from_cairo_format(pixels[y * width + x]);
 			}
 		}
 
