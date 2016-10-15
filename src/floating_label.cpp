@@ -16,8 +16,9 @@
 
 #include "display.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/text.hpp"
 #include "log.hpp"
-#include "text.hpp"
+
 
 #include <map>
 #include <set>

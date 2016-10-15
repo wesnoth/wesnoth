@@ -22,7 +22,7 @@
 #include "sdl/texture.hpp"
 #include "sdl/window.hpp"
 #include "tools/sdl2/window.hpp"
-#include "text.hpp"
+#include "font/text.hpp"
 
 #include <SDL.h>
 

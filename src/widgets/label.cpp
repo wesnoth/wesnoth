@@ -16,9 +16,9 @@
 
 #include "global.hpp"
 
+#include "font/text.hpp"
 #include "widgets/label.hpp"
 #include "marked-up_text.hpp"
-#include "text.hpp"
 #include "video.hpp"
 
 namespace gui {

@@ -18,7 +18,7 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
-#include "../../text.hpp" // We want the file in src/
+#include "font/text.hpp" // We want the file in src/
 
 namespace gui2
 {

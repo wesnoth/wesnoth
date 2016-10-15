@@ -92,6 +92,7 @@ libwesnoth_sources = Split("""
     floating_label.cpp
     font/font_config.cpp
     font/sdl_ttf.cpp
+    font/text.cpp
     font/text_cache.cpp
     font/text_surface.cpp
     format_time_summary.cpp
@@ -127,7 +128,6 @@ libwesnoth_sources = Split("""
     terrain/builder.cpp
     terrain/terrain.cpp
     terrain/translation.cpp
-    text.cpp
     theme.cpp
     time_of_day.cpp
     tooltips.cpp

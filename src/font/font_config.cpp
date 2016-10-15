@@ -181,11 +181,11 @@ const t_string& get_font_families(family_class fclass)
  */
 
 manager::manager() {
-  this->init();
+	this->init();
 }
 
 manager::~manager() {
-  this->deinit();
+	this->deinit();
 }
 
 void manager::update_font_path() const

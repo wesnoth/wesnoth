@@ -15,7 +15,7 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
-#include "font_options.hpp"
+#include "font/font_options.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 
@@ -26,6 +26,9 @@
 
 #include "sdl/image.hpp"
 
+/***
+ * Note: This is the cairo-pango code path, not the SDL_TTF code path.
+ */
 
 struct language_def;
 

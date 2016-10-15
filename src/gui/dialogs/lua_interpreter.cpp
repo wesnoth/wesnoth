@@ -28,6 +28,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "font/text.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
@@ -38,7 +39,6 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "log.hpp"
-#include "text.hpp"
 
 #include <sstream>
 #include <string>

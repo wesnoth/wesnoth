@@ -33,7 +33,7 @@
 #define HELP_IMPL_INCLUDED
 
 #include "exceptions.hpp"               // for error
-#include "font/sdl_ttf.hpp"                     // for line_width, relative_size
+#include "font/sdl_ttf.hpp"             // for line_width, relative_size
 #include "gettext.hpp"
 #include <cstring>
 #include <list>                         // for list

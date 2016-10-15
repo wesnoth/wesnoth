@@ -16,7 +16,7 @@
 #define GUI_AUXILIARY_WIDGET_DEFINITION_HPP_INCLUDED
 
 #include "config.hpp"
-#include "font_options.hpp"
+#include "font/font_options.hpp"
 #include "gui/core/canvas.hpp"
 
 namespace gui2

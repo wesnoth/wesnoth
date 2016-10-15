@@ -20,6 +20,7 @@
 
 #include "filesystem.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/text.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "image.hpp"
@@ -29,7 +30,6 @@
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
-#include "text.hpp"
 #include "wml_separators.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>

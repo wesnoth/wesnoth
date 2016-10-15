@@ -985,10 +985,11 @@ set(libwesnoth-game_STAT_SRC
 	display_context.cpp
 	events.cpp
 	floating_label.cpp
-    font/font_config.cpp
-    font/sdl_ttf.cpp
-    font/text_cache.cpp
-    font/text_surface.cpp
+	font/font_config.cpp
+	font/sdl_ttf.cpp
+	font/text.cpp
+	font/text_cache.cpp
+	font/text_surface.cpp
 	format_time_summary.cpp
   	generators/cave_map_generator.cpp
 	generators/map_create.cpp
@@ -1024,7 +1025,6 @@ set(libwesnoth-game_STAT_SRC
 	terrain/terrain.cpp
 	terrain/builder.cpp
 	terrain/translation.cpp
-	text.cpp
 	time_of_day.cpp
 	tracer.cpp
 	video.cpp
