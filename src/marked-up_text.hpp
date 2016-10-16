@@ -108,15 +108,6 @@ bool is_cjk_char(const ucs4::char_t ch);
 /** Create string of color-markup, such as "<255,255,0>" for yellow. */
 std::string color2markup(const SDL_Color &color);
 
-/** Creates the hexadecimal string of a color, such as "#ffff00" for yellow. */
-std::string color2hexa(const SDL_Color &color);
-
-/**
- * Creates pango markup of a color.
- * Don't forget to close it with a @c \</span\>.
- */
-std::string span_color(const SDL_Color &color);
-
 /**
  * Wrap text.
  *

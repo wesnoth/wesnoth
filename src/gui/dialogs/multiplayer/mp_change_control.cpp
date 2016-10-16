@@ -28,12 +28,12 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "font/text_formatting.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 

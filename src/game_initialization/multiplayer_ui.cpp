@@ -102,22 +102,6 @@ std::string get_color_string(const std::string& id)
 	return rgb2highlight(has_color ? i_color->second.mid() : 0x00FF0000) + (has_name ? std::string(i_name->second) : _("Invalid Color"));
 }
 
-// TODO: should probably move this somewhere more general
-std::string get_color_string_pango(const std::string& id)
-{
-	const auto color = game_config::team_rgb_colors.find(id);
-	const auto name  = game_config::team_rgb_name.find(id);
-
-	const bool has_color = color != game_config::team_rgb_colors.end();
-	const bool has_name  = name  != game_config::team_rgb_name.end();
-
-	if(has_color && has_name) {
-		return formatter() << "<span color='" << rgb2highlight_pango(color->second[0]) << "'>" << name->second << "</span>";
-	}
-
-	return _("Invalid Color");
-}
-
 chat::chat() :
 	message_history_(),
 	last_update_()

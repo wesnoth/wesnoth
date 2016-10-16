@@ -17,7 +17,7 @@
 #include "editor_palettes.hpp"
 
 #include "gettext.hpp"
-#include "marked-up_text.hpp"
+#include "font/text_formatting.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"

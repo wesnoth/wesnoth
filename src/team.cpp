@@ -20,6 +20,7 @@
 #include "team.hpp"
 
 #include "ai/manager.hpp"
+#include "font/text_formatting.hpp"
 #include "formula/string_utils.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
@@ -854,7 +855,7 @@ std::string team::get_side_highlight(int side)
 
 std::string team::get_side_highlight_pango(int side)
 {
-	return rgb2highlight_pango(get_side_color_range(side+1).mid());
+	return font::rgb2highlight_pango(get_side_color_range(side+1).mid());
 }
 
 void team::log_recruitable() const {

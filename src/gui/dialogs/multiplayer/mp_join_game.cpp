@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
-#include "color_range.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
@@ -300,16 +300,6 @@ void tmp_join_game::pre_show(twindow& window)
 	find_widget<tbutton>(&window, "ok", false).set_visible(twidget::tvisible::hidden);
 }
 
-static std::string get_pango_color_from_id(const std::string& id)
-{
-	const auto color = game_config::team_rgb_colors.find(id);
-	if(color != game_config::team_rgb_colors.end()) {
-		return rgb2highlight_pango(color->second[0]);
-	}
-
-	return "";
-}
-
 void tmp_join_game::generate_side_list(twindow& window)
 {
 	if(stop_updates_) {
@@ -348,7 +338,7 @@ void tmp_join_game::generate_side_list(twindow& window)
 
 		const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
 
-		item["label"] = (formatter() << "<span color='" << get_pango_color_from_id(color) << "'>" << side["side"] << "</span>").str();
+		item["label"] = (formatter() << "<span color='" << font::get_pango_color_from_id(color) << "'>" << side["side"] << "</span>").str();
 		data.emplace("side_number", item);
 
 		std::string leader_image = ng::random_enemy_picture;

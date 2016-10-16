@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/unit_recall.hpp"
 
+#include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/dialogs/helper.hpp"
@@ -32,7 +33,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
-#include "marked-up_text.hpp"
 #include "help/help.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"

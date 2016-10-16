@@ -173,18 +173,6 @@ std::string color2markup(const SDL_Color &color)
 	return markup.str();
 }
 
-std::string color2hexa(const SDL_Color &color)
-{
-	char buf[7];
-	sprintf(buf, "%02x%02x%02x", color.r, color.g, color.b);
-	return buf;
-}
-
-std::string span_color(const SDL_Color &color)
-{
-	return "<span foreground=\"#" + font::color2hexa(color) + "\">";
-}
-
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};

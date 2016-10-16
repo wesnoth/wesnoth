@@ -990,6 +990,7 @@ set(libwesnoth-game_STAT_SRC
 	font/sdl_ttf.cpp
 	font/text.cpp
 	font/text_cache.cpp
+	font/text_formatting.cpp
 	font/text_surface.cpp
 	format_time_summary.cpp
   	generators/cave_map_generator.cpp

@@ -165,16 +165,6 @@ std::string rgb2highlight(uint32_t rgb)
 	return h.str();
 }
 
-std::string rgb2highlight_pango(uint32_t rgb)
-{
-	std::ostringstream h;
-	// Must match what the pango expects
-	h << "#" << std::hex << std::setfill('0') << std::setw(2) << ((rgb & 0xFF0000) >> 16)
-	  << std::hex << std::setfill('0') << std::setw(2) <<((rgb & 0x00FF00) >> 8)
-	  << std::hex << std::setfill('0') << std::setw(2) <<(rgb & 0x0000FF);
-	return h.str();
-}
-
 int color_range::index() const
 {
 	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {

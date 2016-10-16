@@ -18,6 +18,7 @@
 
 #include "gui/dialogs/unit_attack.hpp"
 
+#include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

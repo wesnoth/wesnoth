@@ -20,6 +20,7 @@
 //#include "editor/palette/terrain_palettes.hpp"
 #include "font/constants.hpp"
 #include "font/pango/escape.hpp"
+#include "font/text_formatting.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"

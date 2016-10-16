@@ -16,6 +16,7 @@
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 
 #include "config_assign.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -39,7 +40,6 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "mp_ui_alerts.hpp"
-#include "game_initialization/multiplayer_ui.hpp"
 #include "units/types.hpp"
 #include "wesnothd_connection.hpp"
 
@@ -253,7 +253,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	std::vector<config> color_options;
 	for(const auto& color : side->color_options()) {
 		color_options.push_back(config_of
-			("label", mp::get_color_string_pango(color))
+			("label", font::get_color_string_pango(color))
 			("icon", (formatter() << "misc/status.png~RC(magenta>" << color << ")").str())
 		);
 	}
