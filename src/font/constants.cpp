@@ -34,9 +34,9 @@ const SDL_Color NORMAL_COLOR = {0xDD,0xDD,0xDD,0},
 				BIGMAP_COLOR = {0xFF,0xFF,0xFF,0};
 const SDL_Color DISABLED_COLOR = inverse(PETRIFIED_COLOR);
 
-CONSTEXPR int SIZE_NORMAL = 14;
+const int SIZE_NORMAL = 14;
 
-CONSTEXPR int
+const int
 	SIZE_TINY = 10 * SIZE_NORMAL / 14,
 	SIZE_SMALL = 12 * SIZE_NORMAL / 14,
 
@@ -47,7 +47,7 @@ CONSTEXPR int
 	SIZE_XLARGE = 24 * SIZE_NORMAL / 14
 ;
 
-CONSTEXPR size_t max_text_line_width = 4096;
+const size_t max_text_line_width = 4096;
 
 const std::string
 	ellipsis = "...",

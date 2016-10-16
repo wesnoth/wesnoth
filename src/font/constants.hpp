@@ -34,7 +34,7 @@ extern const int SIZE_TINY, SIZE_SMALL,
 
 // For arbitrary scaling:
 // (Not used in defining the SIZE_* consts because of spurious compiler warnings.)
-const inline int relative_size(int size)
+inline int relative_size(int size)
 {
 	return (SIZE_NORMAL * size / 14);
 }
