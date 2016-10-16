@@ -573,7 +573,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 
 		dlg.show(video);
 
-		if(dlg.get_retval() == gui2::twindow::OK) {
+		if(dlg.get_retval() != gui2::twindow::CANCEL) {
 			enter_configure_mode(video, game_config, state, wesnothd_connection, li, local_players_only);
 		} else if(wesnothd_connection) {
 			wesnothd_connection->send_data(config("refresh_lobby"));

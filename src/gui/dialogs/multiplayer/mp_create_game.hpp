@@ -122,6 +122,11 @@ private:
 	void update_details(twindow& window);
 	void update_map_settings(twindow& window);
 
+	/**
+	 * Dialog exit hook to bring up the difficulty dialog when starting a campaign.
+	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
+	 * when loading a saved game.
+	 */
 	bool dialog_exit_hook(twindow&);
 
 	int convert_to_game_filtered_index(const int initial_index);

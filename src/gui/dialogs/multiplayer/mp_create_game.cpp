@@ -54,6 +54,9 @@
 namespace gui2
 {
 
+// Special retval value for loading a game
+static const int LOAD_GAME = 100;
+
 // Shorthand
 namespace prefs = preferences;
 
@@ -573,25 +576,6 @@ void tmp_create_game::regenerate_random_map(twindow& window)
 	update_details(window);
 }
 
-void tmp_create_game::load_game_callback(twindow& window)
-{
-	try {
-		savegame::loadgame load(window.video(), cfg_, create_engine_.get_state());
-
-		if(!load.load_multiplayer_game()) {
-			return ;
-		}
-
-		if(load.data().cancel_orders) {
-			create_engine_.get_state().cancel_orders();
-		}
-
-		create_engine_.prepare_for_saved_game();
-
-		window.set_retval(twindow::OK);
-	} catch(config::error&) {}
-}
-
 int tmp_create_game::convert_to_game_filtered_index(const int initial_index)
 {
 	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
@@ -716,10 +700,24 @@ void tmp_create_game::update_map_settings(twindow& window)
 	}
 }
 
+void tmp_create_game::load_game_callback(twindow& window)
+{
+	savegame::loadgame load(window.video(), cfg_, create_engine_.get_state());
+
+	if(!load.load_multiplayer_game()) {
+		return;
+	}
+
+	if(load.data().cancel_orders) {
+		create_engine_.get_state().cancel_orders();
+	}
+
+	window.set_retval(LOAD_GAME);
+}
+
 bool tmp_create_game::dialog_exit_hook(twindow&) {
-	if(create_engine_.get_state().mp_settings().saved_game ||
-	  (create_engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
-	   create_engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN)
+	if(create_engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
+	   create_engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN
 	) {
 		return true;
 	}
@@ -733,6 +731,11 @@ void tmp_create_game::post_show(twindow& window)
 
 	// Show all tabs so that find_widget works correctly
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(-1);
+
+	if(get_retval() == LOAD_GAME) {
+		create_engine_.prepare_for_saved_game();
+		return;
+	}
 
 	if(get_retval() == twindow::OK) {
 		preferences::set_modifications(create_engine_.active_mods());
