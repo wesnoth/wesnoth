@@ -37,6 +37,8 @@ public:
 	server(const config& server) = delete;
 	~server();
 
+	server& operator=(const config& server) = delete;
+
 private:
 	/**
 	 * Client request information object.
