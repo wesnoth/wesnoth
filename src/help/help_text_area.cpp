@@ -558,7 +558,7 @@ std::string help_text_area::ref_at(const int x, const int y)
 {
 	const int local_x = x - location().x;
 	const int local_y = y - location().y;
-	if (local_y < static_cast<int>(height()) && local_y > 0) {
+	if (local_y < height() && local_y > 0) {
 		const int cmp_y = local_y + get_position();
 		const std::list<item>::const_iterator it =
 			std::find_if(items_.begin(), items_.end(), item_at(local_x, cmp_y));

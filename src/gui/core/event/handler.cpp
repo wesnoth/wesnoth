@@ -710,7 +710,7 @@ void thandler::key_down(const SDL_Event& event)
 
 void thandler::text_input(const std::string& unicode)
 {
-	key_down(static_cast<SDL_Keycode>(0), static_cast<SDL_Keymod>(0), unicode);
+	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
 }
 
 bool thandler::hotkey_pressed(const hotkey::hotkey_ptr key)

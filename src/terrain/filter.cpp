@@ -168,7 +168,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if (!u.valid())
 			return false;
 		if (!cache_.ufilter_)
-			cache_.ufilter_.reset(new unit_filter(vconfig(cfg_.child("filter")), fc_, flat_));
+			cache_.ufilter_.reset(new unit_filter(cfg_.child("filter"), fc_, flat_));
 		if (!cache_.ufilter_->matches(*u, loc))
 			return false;
 	}

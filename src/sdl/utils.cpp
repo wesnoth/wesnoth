@@ -562,10 +562,10 @@ surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize)
 				}
 
 				if (alpha != 0) {
-					red = red / alpha + 0.5;
-					green = green / alpha + 0.5;
-					blue = blue / alpha + 0.5;
-					alpha = alpha / summation + 0.5;
+					red = red / alpha + 0.5f;
+					green = green / alpha + 0.5f;
+					blue = blue / alpha + 0.5f;
+					alpha = alpha / summation + 0.5f;
 				}
 
 				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(
@@ -1948,8 +1948,8 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 		float max_x, max_y;
 		// convert angle to radiant (angle * 2 * PI) / 360
 		const float radians = angle * boost::math::constants::pi<float>() / 180;
-		cosine = static_cast<float>(cos(radians));
-		sine   = static_cast<float>(sin(radians));
+		cosine = cos(radians);
+		sine   = sin(radians);
 		// calculate the size of the dst image
 		src_w = surf->w * zoom;
 		src_h = surf->h * zoom;
