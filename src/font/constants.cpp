@@ -53,13 +53,13 @@ const std::string
 	ellipsis = "...",
 
 	unicode_minus = "-",
-	unicode_en_dash = "–",
-	unicode_em_dash = "—",
+	unicode_en_dash = "â€“", // unicode u2013
+	unicode_em_dash = "â€”", // unicode u2014
 	unicode_figure_dash = "?",
-	unicode_multiplication_sign = "×",
-	unicode_bullet = "•",
+	unicode_multiplication_sign = "Ã—",
+	unicode_bullet = "â€¢", // unicode u2022
 
-	weapon_numbers_sep = "×",
-	weapon_details_sep = "–";
+	weapon_numbers_sep = "Ã—",
+	weapon_details_sep = "â€“";
 
 } // end namespace font
