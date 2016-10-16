@@ -25,18 +25,11 @@ extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_CO
                        PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
 
 // font sizes, to be made theme parameters
-CONSTEXPR int SIZE_NORMAL = 14;
+extern CONSTEXPR int SIZE_NORMAL;
 // automatic computation of other font sizes, to be made a default for theme-provided values
-CONSTEXPR int
-	SIZE_TINY       = 10 * SIZE_NORMAL / 14,
-	SIZE_SMALL      = 12 * SIZE_NORMAL / 14,
+extern CONSTEXPR int SIZE_TINY, SIZE_SMALL,
+	SIZE_15, SIZE_PLUS, SIZE_LARGE, SIZE_TITLE, SIZE_XLARGE;
 
-	SIZE_15         = 15 * SIZE_NORMAL / 14,
-	SIZE_PLUS       = 16 * SIZE_NORMAL / 14,
-	SIZE_LARGE      = 18 * SIZE_NORMAL / 14,
-	SIZE_TITLE      = 20 * SIZE_NORMAL / 14,
-	SIZE_XLARGE     = 24 * SIZE_NORMAL / 14
-  ;
 // For arbitrary scaling:
 // (Not used in defining the SIZE_* consts because of spurious compiler warnings.)
 CONSTEXPR inline int relative_size(int size)
@@ -45,6 +38,6 @@ CONSTEXPR inline int relative_size(int size)
 }
 
 // GUI1 built-in maximum
-CONSTEXPR size_t max_text_line_width = 4096;
+extern CONSTEXPR size_t max_text_line_width;
 
 } // end namespace font
