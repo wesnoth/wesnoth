@@ -27,20 +27,20 @@ extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_CO
                        PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
 
 // font sizes, to be made theme parameters
-extern CONSTEXPR int SIZE_NORMAL;
+extern const int SIZE_NORMAL;
 // automatic computation of other font sizes, to be made a default for theme-provided values
-extern CONSTEXPR int SIZE_TINY, SIZE_SMALL,
+extern const int SIZE_TINY, SIZE_SMALL,
 	SIZE_15, SIZE_PLUS, SIZE_LARGE, SIZE_TITLE, SIZE_XLARGE;
 
 // For arbitrary scaling:
 // (Not used in defining the SIZE_* consts because of spurious compiler warnings.)
-CONSTEXPR inline int relative_size(int size)
+const inline int relative_size(int size)
 {
 	return (SIZE_NORMAL * size / 14);
 }
 
 // GUI1 built-in maximum
-extern CONSTEXPR size_t max_text_line_width;
+extern const size_t max_text_line_width;
 
 // String constants
 extern const std::string

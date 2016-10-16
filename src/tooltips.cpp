@@ -29,8 +29,8 @@ namespace {
 
 CVideo* video_ = nullptr;
 
-static CONSTEXPR int font_size = font::SIZE_NORMAL;
-static CONSTEXPR int text_width = 400;
+static const int font_size = font::SIZE_NORMAL;
+static const int text_width = 400;
 
 struct tooltip
 {
