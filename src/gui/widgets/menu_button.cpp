@@ -146,15 +146,26 @@ void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 	tdrop_down_list droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
 
 	if(droplist.show(get_window()->video())) {
-		selected_ = droplist.selected_item();
+		const int selected = droplist.selected_item();
+
+		// Saftey check. If the user clicks a selection in the dropdown and moves their mouse away too
+		// quickly, selected_ could be set to -1. This returns in that case, preventing crashes.
+		if(selected < 0) {
+			return;
+		}
+
+		selected_ = selected;
+
 		this->set_label(values_[selected_]["label"]);
+
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 		if(selected_callback_) {
 			selected_callback_(*this);
 		}
+
 		if(retval_ != 0) {
-			twindow* window = get_window();
-			if(window) {
+			if(twindow* window = get_window()) {
 				window->set_retval(retval_);
 				return;
 			}
@@ -174,7 +185,6 @@ void tmenu_button::set_values(const std::vector<::config>& values, int selected)
 	values_ = values;
 	selected_ = selected;
 	set_label(values_[selected_]["label"]);
-
 }
 void tmenu_button::set_selected(int selected)
 {
