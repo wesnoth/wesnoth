@@ -101,6 +101,16 @@
 		9107AE351DB32922001927B0 /* lundump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1261879D17D00A3B0B1 /* lundump.cpp */; };
 		9107AE361DB32926001927B0 /* lvm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1271879D17D00A3B0B1 /* lvm.cpp */; };
 		9107AE371DB3292B001927B0 /* lzio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1281879D17D00A3B0B1 /* lzio.cpp */; };
+		9107AE3C1DB33386001927B0 /* lua_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB61831DA0A0C50055D3F8 /* lua_preferences.cpp */; };
+		9107AE3D1DB33391001927B0 /* file_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC04E34F1DA537F700025919 /* file_dialog.cpp */; };
+		9107AE3E1DB333B2001927B0 /* mp_join_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB61861DA0A0F70055D3F8 /* mp_join_game.cpp */; };
+		9107AE401DB333C2001927B0 /* constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7E91DB3144A0038337E /* constants.cpp */; };
+		9107AE411DB333C4001927B0 /* font_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7EB1DB3144A0038337E /* font_config.cpp */; };
+		9107AE421DB333C7001927B0 /* sdl_ttf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7F21DB314580038337E /* sdl_ttf.cpp */; };
+		9107AE431DB333CA001927B0 /* text_cache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7F41DB314580038337E /* text_cache.cpp */; };
+		9107AE441DB333CC001927B0 /* text_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7F61DB314580038337E /* text_surface.cpp */; };
+		9107AE451DB333CF001927B0 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7F81DB314580038337E /* text.cpp */; };
+		9107AE461DB335D5001927B0 /* paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE113A41DAECF3D00EBD7C4 /* paths.cpp */; };
 		911F2DAD1BA086A400E3102E /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAB1BA086A400E3102E /* window.cpp */; };
 		911F47171CADC83800F47035 /* libboost_unit_test_framework-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */; };
 		911F47181CADCF3F00F47035 /* libboost_program_options-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_options-mt.dylib */; };
@@ -5994,6 +6004,16 @@
 				918E9D071D8211130080686E /* chatbox.cpp in Sources */,
 				91F06A7F1D85FE6E0005C353 /* end_credits.cpp in Sources */,
 				91F860871D90B2E9008FE58F /* mp_staging.cpp in Sources */,
+				9107AE3C1DB33386001927B0 /* lua_preferences.cpp in Sources */,
+				9107AE3D1DB33391001927B0 /* file_dialog.cpp in Sources */,
+				9107AE3E1DB333B2001927B0 /* mp_join_game.cpp in Sources */,
+				9107AE401DB333C2001927B0 /* constants.cpp in Sources */,
+				9107AE411DB333C4001927B0 /* font_config.cpp in Sources */,
+				9107AE421DB333C7001927B0 /* sdl_ttf.cpp in Sources */,
+				9107AE431DB333CA001927B0 /* text_cache.cpp in Sources */,
+				9107AE441DB333CC001927B0 /* text_surface.cpp in Sources */,
+				9107AE451DB333CF001927B0 /* text.cpp in Sources */,
+				9107AE461DB335D5001927B0 /* paths.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
