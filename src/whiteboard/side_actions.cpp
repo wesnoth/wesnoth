@@ -574,11 +574,17 @@ side_actions::iterator side_actions::find_last_action_of(unit const& unit, side_
 
 side_actions::const_iterator side_actions::find_last_action_of(unit const& unit) const
 {
+	if(end() == begin()) {
+		return side_actions::const_iterator();
+	}
 	return find_last_action_of(unit, end() - 1);
 }
 
 side_actions::iterator side_actions::find_last_action_of(unit const& unit)
 {
+	if(end() == begin()) {
+		return side_actions::iterator();
+	}
 	return find_last_action_of(unit, end() - 1);
 }
 
