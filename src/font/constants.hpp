@@ -15,6 +15,7 @@
 #pragma once
 
 #include <SDL.h>
+#include "global.hpp"
 
 namespace font {
 
@@ -24,9 +25,9 @@ extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_CO
                        PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
 
 // font sizes, to be made theme parameters
-constexpr int SIZE_NORMAL = 14;
+CONSTEXPR int SIZE_NORMAL = 14;
 // automatic computation of other font sizes, to be made a default for theme-provided values
-constexpr int
+CONSTEXPR int
 	SIZE_TINY       = 10 * SIZE_NORMAL / 14,
 	SIZE_SMALL      = 12 * SIZE_NORMAL / 14,
 
@@ -38,12 +39,12 @@ constexpr int
   ;
 // For arbitrary scaling:
 // (Not used in defining the SIZE_* consts because of spurious compiler warnings.)
-constexpr inline int relative_size(int size)
+CONSTEXPR inline int relative_size(int size)
 {
 	return (SIZE_NORMAL * size / 14);
 }
 
 // GUI1 built-in maximum
-constexpr size_t max_text_line_width = 4096;
+CONSTEXPR size_t max_text_line_width = 4096;
 
 } // end namespace font
