@@ -160,8 +160,8 @@ void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
-		if(selected_callback_) {
-			selected_callback_(*this);
+		if(callback_state_change_) {
+			callback_state_change_(*this);
 		}
 
 		if(retval_ != 0) {

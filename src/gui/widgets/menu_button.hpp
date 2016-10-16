@@ -82,7 +82,7 @@ public:
 	/** Inherited from tselectable_ */
 	virtual void set_callback_state_change(std::function<void(twidget&)> callback) override
 	{
-		selected_callback_ = callback;
+		callback_state_change_ = callback;
 	}
 
 	/** Returns the value of the selected row */
@@ -124,8 +124,6 @@ private:
 	/**
 	 */
 	int selected_;
-
-	std::function<void(twidget&)> selected_callback_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
