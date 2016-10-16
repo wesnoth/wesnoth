@@ -17,11 +17,13 @@
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
 #include "config_assign.hpp"
+#include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/button.hpp"
@@ -758,6 +760,36 @@ void tmp_create_game::post_show(twindow& window)
 		create_engine_.prepare_for_new_level();
 
 		create_engine_.get_parameters();
+
+		std::vector<const config*> entry_points;
+		std::vector<std::string> entry_point_titles;
+
+		const auto& tagname = create_engine_.get_state().classification().get_tagname();
+
+		if(tagname == "scenario") {
+			for(const config& scenario : game_config_manager::get()->game_config().child_range(tagname)) {
+				if(scenario["allow_new_game"].to_bool(true) || game_config::debug) {
+					const std::string& title = !scenario["new_game_title"].empty()
+						? scenario["new_game_title"]
+						: scenario["name"];
+
+					entry_points.push_back(&scenario);
+					entry_point_titles.push_back(title);
+				}
+			}
+		}
+
+		if(entry_points.size() > 1) {
+			gui2::tsimple_item_selector dlg(_("Choose Starting Scenario"), _("Select at which point to begin this campaign."), entry_point_titles);
+
+			dlg.set_single_button(true);
+			dlg.show(window.video());
+
+			const config& scenario = *entry_points[dlg.selected_index()];
+
+			create_engine_.get_state().mp_settings().hash = scenario.hash();
+			create_engine_.get_state().set_scenario(scenario);
+		}
 
 		config_engine_->set_use_map_settings(use_map_settings_->get_widget_value(window));
 
