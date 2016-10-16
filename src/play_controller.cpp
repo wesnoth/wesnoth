@@ -315,6 +315,8 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::tunnels = nullptr;
 	resources::undo_stack = nullptr;
 
+	gui_->labels().set_team(nullptr);
+
 	gamestate_.reset(new game_state(level, *this, tdata_));
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
