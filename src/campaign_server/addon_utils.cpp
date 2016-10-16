@@ -45,7 +45,7 @@ std::string fast_interpolate_variables_into_string(const std::string &str, const
 
 	if(symbols) {
 		for(const plain_string_map::value_type& sym : *symbols) {
-			res = boost::replace_all(res, "$" + sym.first, sym.second);
+			boost::replace_all(res, "$" + sym.first, sym.second);
 		}
 	}
 
