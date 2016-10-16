@@ -594,7 +594,6 @@ void ttext::recalculate(const bool force) const
  */
 struct inverse_table
 {
-	// 1-based, from 1 to 255.
 	unsigned values[256];
 
 	inverse_table()
@@ -605,7 +604,7 @@ struct inverse_table
 		}
 	}
 
-	unsigned operator[](Uint8 x) const { return values[x]; }
+	unsigned operator[](Uint8 i) const { return values[i]; }
 };
 
 static const inverse_table inverse_table_;
