@@ -589,15 +589,20 @@ void ttext::recalculate(const bool force) const
 
 /***
  * Inverse table
+ *
+ * Holds a high-precision inverse for each number i, that is, a number x such that x * i / 256 is close to 255.
  */
 struct inverse_table
 {
 	// 1-based, from 1 to 255.
-	unsigned values[255];
+	unsigned values[256];
 
 	inverse_table()
 	{
-		for (int i = 1; i < 256; ++i) values[i - 1] = (255 * 256) / i;
+		values[0] = 0;
+		for (int i = 1; i < 256; ++i) {
+			values[i] = (255 * 256) / i;
+		}
 	}
 
 	unsigned operator[](Uint8 x) const { return values[x]; }
@@ -607,15 +612,11 @@ static const inverse_table inverse_table_;
 
 /***
  * Helper function for un-premultiplying alpha
+ * Div should be the high-precision inverse for the alpha value.
  */
 static void unpremultiply(Uint8 & value, const unsigned div) {
-	unsigned temp = value * div;
-	temp /= 256;
-	if (temp > 255) {
-		value = 255;
-	} else {
-		value = temp;
-	}
+	unsigned temp = value * div / 256;
+	value = std::min(255u, temp);
 }
 
 /**
