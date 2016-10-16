@@ -161,6 +161,12 @@
     <Filter Include="Units">
       <UniqueIdentifier>{b8e3886b-4e28-4452-b4e3-31822f7fd043}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Font">
+      <UniqueIdentifier>{05866c8e-84a2-4ff1-ace0-915c7d72f0db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Font\Pango">
+      <UniqueIdentifier>{c4a05de3-89fe-417e-a054-751a5d9d171b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\packaging\windows\wesnoth.rc">
@@ -1442,7 +1448,6 @@
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
     <ClCompile Include="..\..\src\floating_label.cpp" />
     <ClCompile Include="..\..\src\floating_textbox.cpp" />
-    <ClCompile Include="..\..\src\font.cpp" />
     <ClCompile Include="..\..\src\format_time_summary.cpp" />
     <ClCompile Include="..\..\src\game_board.cpp" />
     <ClCompile Include="..\..\src\game_classification.cpp" />
@@ -1519,7 +1524,6 @@
     <ClCompile Include="..\..\src\syncmp_handler.cpp" />
     <ClCompile Include="..\..\src\team.cpp" />
     <ClCompile Include="..\..\src\teambuilder.cpp" />
-    <ClCompile Include="..\..\src\text.cpp" />
     <ClCompile Include="..\..\src\theme.cpp" />
     <ClCompile Include="..\..\src\time_of_day.cpp" />
     <ClCompile Include="..\..\src\tod_manager.cpp" />
@@ -1531,6 +1535,24 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
+    <ClCompile Include="..\..\src\font\constants.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\font_config.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\sdl_ttf.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\text.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\text_cache.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\text_surface.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2837,7 +2859,6 @@
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\floating_label.hpp" />
     <ClInclude Include="..\..\src\floating_textbox.hpp" />
-    <ClInclude Include="..\..\src\font.hpp" />
     <ClInclude Include="..\..\src\format_time_summary.hpp" />
     <ClInclude Include="..\..\src\formatter.hpp" />
     <ClInclude Include="..\..\src\game_board.hpp" />
@@ -2924,7 +2945,6 @@
     <ClInclude Include="..\..\src\syncmp_handler.hpp" />
     <ClInclude Include="..\..\src\team.hpp" />
     <ClInclude Include="..\..\src\teambuilder.hpp" />
-    <ClInclude Include="..\..\src\text.hpp" />
     <ClInclude Include="..\..\src\theme.hpp" />
     <ClInclude Include="..\..\src\thread.hpp" />
     <ClInclude Include="..\..\src\time_of_day.hpp" />
@@ -2942,6 +2962,48 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
+    <ClInclude Include="..\..\src\font\pango\escape.hpp">
+      <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\pango\font.hpp">
+      <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\pango\hyperlink.hpp">
+      <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\pango\iter.hpp">
+      <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
+      <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\constants.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_config.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_description.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_id.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_options.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\sdl_ttf.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text_cache.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text_surface.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">
