@@ -116,6 +116,7 @@ server::server(const std::string& cfg_file)
 #ifndef _WIN32
 	struct sigaction sa;
 	std::memset( &sa, 0, sizeof(sa) );
+	#pragma GCC diagnostic ignored "-Wold-style-cast"
 	sa.sa_handler = SIG_IGN;
 	int res = sigaction( SIGPIPE, &sa, NULL);
 	assert( res == 0 );
