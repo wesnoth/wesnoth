@@ -47,8 +47,8 @@
 /*  Wesnoth definitions for compatibility
  *  No longer needed in C++, included only for Lua runtime.
  */
-#define LUA_COMPAT_MODULE
-#define LUA_COMPAT_ALL
+#define LUA_COMPAT_5_2
+#define LUA_COMPAT_5_1
 
 
 
