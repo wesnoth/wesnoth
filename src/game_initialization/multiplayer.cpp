@@ -15,6 +15,7 @@
 
 #include "addon/manager.hpp" // for get_installed_addons
 #include "config_assign.hpp"
+#include "font/sdl_ttf.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"

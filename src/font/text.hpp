@@ -15,7 +15,7 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
-#include "font_options.hpp"
+#include "font/font_options.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 
@@ -23,9 +23,13 @@
 #include <pango/pangocairo.h>
 
 #include <string>
+#include <vector>
 
 #include "sdl/image.hpp"
 
+/***
+ * Note: This is the cairo-pango code path, not the SDL_TTF code path.
+ */
 
 struct language_def;
 
@@ -34,20 +38,6 @@ namespace gui2 {
 } // namespace gui2;
 
 namespace font {
-
-/**
- * Escapes the markup characters in a text.
- *
- * The markups escaped are the ones used in the pango markup. The special
- * characters are: @verbatim <>'"& @endverbatim
- * The escaping is the same as for HTML.
- *
- * @param text                    The text to escape.
- *
- * @returns                       The escaped text.
- */
-std::string escape_text(const std::string& text);
-
 
 // add background color and also font markup.
 
@@ -92,6 +82,7 @@ public:
 	ttext();
 
     ttext(const ttext &) = delete;
+    ttext & operator = (const ttext &) = delete;
 
 	~ttext();
 
@@ -387,7 +378,7 @@ private:
 	 * data source for the SDL_Surface. This means the buffer needs to be stored
 	 * in the object, since SDL_Surface doesn't own its buffer.
 	 */
-	mutable unsigned char* surface_buffer_;
+	mutable std::vector<unsigned char> surface_buffer_;
 
 	/**
 	 * Creates a new buffer.
@@ -418,6 +409,8 @@ private:
 	bool set_markup(const std::string& text);
 
 	bool set_markup_helper(const std::string & text);
+
+    std::string format_link_tokens(const std::string & text) const;
 
 	std::string handle_token(const std::string & token) const;
 };

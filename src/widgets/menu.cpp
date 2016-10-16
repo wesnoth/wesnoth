@@ -19,7 +19,7 @@
 #include "widgets/menu.hpp"
 
 #include "game_config.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "language.hpp"
 #include "image.hpp"
 #include "marked-up_text.hpp"

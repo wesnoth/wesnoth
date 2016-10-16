@@ -15,9 +15,12 @@
 #ifndef MAP_LABEL_HPP_INCLUDED
 #define MAP_LABEL_HPP_INCLUDED
 
+#include "font/constants.hpp"
 #include "map/location.hpp"
-#include "font.hpp"
 #include "tstring.hpp"
+
+#include <map>
+#include <string>
 
 class config;
 class display;

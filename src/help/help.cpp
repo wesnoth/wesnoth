@@ -24,7 +24,7 @@
 
 #include "config.hpp"                   // for config, etc
 #include "events.hpp"                   // for raise_draw_event, pump, etc
-#include "font.hpp"                     // for relative_size
+#include "font/constants.hpp"           // for relative_size
 #include "game_preferences.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"

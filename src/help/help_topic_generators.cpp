@@ -14,19 +14,20 @@
 
 #include "help_topic_generators.hpp"
 
+#include "font/sdl_ttf.hpp"             // for line_width
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "game_preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "movetype.hpp"                 // for movetype, movetype::effects, etc
-#include "units/race.hpp"                     // for unit_race, etc
-#include "terrain/terrain.hpp"                  // for terrain_type
+#include "units/race.hpp"               // for unit_race, etc
+#include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/translation.hpp"      // for operator==, t_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "tstring.hpp"                  // for t_string, operator<<
-#include "units/helper.hpp"              // for resistance_color
-#include "units/types.hpp"               // for unit_type, unit_type_data, etc
+#include "units/helper.hpp"             // for resistance_color
+#include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "video.hpp"                    // fore current_resolution
 
 #include <boost/optional.hpp>  // for optional
@@ -784,6 +785,10 @@ std::string unit_topic_generator::operator()() const {
 		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
 	}
 	return ss.str();
+}
+
+void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
+	row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
 }
 
 } // end namespace help

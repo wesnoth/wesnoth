@@ -22,14 +22,15 @@
 #include "gui/core/canvas.hpp"
 
 #include "config.hpp"
-#include "image.hpp"
+#include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "image.hpp"
+
 #include "gui/auxiliary/formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
-#include "text.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 

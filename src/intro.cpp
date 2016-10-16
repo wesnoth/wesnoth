@@ -26,7 +26,7 @@
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "sdl/rect.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 
 void the_end(CVideo &video, std::string text, unsigned int duration)
 {

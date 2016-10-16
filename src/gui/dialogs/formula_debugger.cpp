@@ -23,6 +23,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/debugger.hpp"
+#include "font/pango/escape.hpp"
 
 #include "utils/functional.hpp"
 

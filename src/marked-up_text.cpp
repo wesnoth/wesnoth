@@ -22,7 +22,7 @@
 
 #include "global.hpp"
 
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"

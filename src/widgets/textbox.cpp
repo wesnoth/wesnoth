@@ -17,7 +17,9 @@
 #include "global.hpp"
 
 #include "widgets/textbox.hpp"
+
 #include "desktop/clipboard.hpp"
+#include "font/sdl_ttf.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"

@@ -17,10 +17,10 @@
 
 class config;
 class display;
+class surface;
 
 #include "cursor.hpp"
 #include "floating_label.hpp"
-#include "font.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 #include "widgets/menu.hpp"

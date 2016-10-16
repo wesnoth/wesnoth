@@ -16,7 +16,7 @@
 
 #include "gui/widgets/text_box.hpp"
 
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
@@ -250,6 +250,7 @@ void ttext_box::update_offsets()
 
 	assert(conf);
 
+	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
 	text_height_ = font::get_max_height(conf->text_font_size);
 
 	game_logic::map_formula_callable variables;

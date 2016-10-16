@@ -16,7 +16,7 @@
 #include "tooltips.hpp"
 
 #include "floating_label.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "game_display.hpp"
 #include "help/help.hpp"
 #include "marked-up_text.hpp"
@@ -29,8 +29,8 @@ namespace {
 
 CVideo* video_ = nullptr;
 
-static const int font_size = font::SIZE_NORMAL;
-static const int text_width = 400;
+static constexpr int font_size = font::SIZE_NORMAL;
+static constexpr int text_width = 400;
 
 struct tooltip
 {

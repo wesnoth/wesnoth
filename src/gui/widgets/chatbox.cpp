@@ -28,6 +28,7 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/multi_page.hpp"
 
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"

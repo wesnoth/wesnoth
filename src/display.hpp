@@ -51,7 +51,7 @@ namespace wb {
 #include "animated.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
-#include "font.hpp"
+#include "font/sdl_ttf.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "team.hpp"

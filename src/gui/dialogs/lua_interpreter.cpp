@@ -38,7 +38,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "log.hpp"
-#include "text.hpp"
+#include "font/pango/escape.hpp"
 
 #include <sstream>
 #include <string>
