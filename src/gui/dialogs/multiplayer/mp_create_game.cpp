@@ -757,9 +757,9 @@ void tmp_create_game::post_show(twindow& window)
 			create_engine_.prepare_for_other();
 		}
 
-		create_engine_.prepare_for_new_level();
-
 		create_engine_.get_parameters();
+
+		create_engine_.prepare_for_new_level();
 
 		std::vector<const config*> entry_points;
 		std::vector<std::string> entry_point_titles;
