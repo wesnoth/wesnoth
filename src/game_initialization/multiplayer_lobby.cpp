@@ -22,6 +22,7 @@
 #include "construct_dialog.hpp"
 #include "filesystem.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/standard_colors.hpp"
 #include "game_preferences.hpp"
 #include "lobby_preferences.hpp"
 #include "map/exception.hpp"

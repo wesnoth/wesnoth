@@ -47,6 +47,7 @@
 #include "widgets/multimenu.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
+#include "font/standard_colors.hpp"
 
 #include "utils/functional.hpp"
 

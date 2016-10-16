@@ -27,6 +27,7 @@
 #include "config.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
+#include "font/standard_colors.hpp"
 #include "game_board.hpp"
 #include "game_end_exceptions.hpp"
 #include "map/map.hpp"

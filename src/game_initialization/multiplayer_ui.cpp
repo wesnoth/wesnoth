@@ -17,6 +17,7 @@
 #include "construct_dialog.hpp"
 #include "video.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

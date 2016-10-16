@@ -38,6 +38,7 @@
 #include "formula/string_utils.hpp"
 #include "units/types.hpp"
 #include "units/udisplay.hpp"
+#include "font/standard_colors.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)

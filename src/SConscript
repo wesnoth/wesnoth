@@ -16,6 +16,7 @@ for env in [test_env, client_env, env]:
 libwesnoth_core_sources = Split("""
     color_range.cpp
     config.cpp
+    font/constants.cpp
     hash.cpp
     log.cpp
     map/location.cpp
@@ -90,10 +91,10 @@ libwesnoth_sources = Split("""
     display.cpp
     events.cpp
     floating_label.cpp
-    font/constants.cpp
     font/font_config.cpp
     font/marked-up_text.cpp
     font/sdl_ttf.cpp
+    font/standard_colors.cpp
     font/text.cpp
     font/text_cache.cpp
     font/text_formatting.cpp

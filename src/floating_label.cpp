@@ -16,6 +16,7 @@
 
 #include "display.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
 

@@ -19,6 +19,7 @@
 #include "widgets/slider.hpp"
 #include "game_config.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/standard_colors.hpp"
 #include "image.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"

@@ -20,6 +20,7 @@
 
 #include "font/constants.hpp"
 #include "font/sdl_ttf.hpp"
+#include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
 #include "log.hpp"

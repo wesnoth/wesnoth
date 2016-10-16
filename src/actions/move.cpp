@@ -41,6 +41,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/udisplay.hpp"
+#include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

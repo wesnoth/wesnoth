@@ -220,6 +220,7 @@ set(libwesnoth-core_STAT_SRC
 	config.cpp
 	filesystem_boost.cpp
 	filesystem_common.cpp
+	font/constants.cpp
 	game_config.cpp
 	hash.cpp
 	log.cpp
@@ -985,10 +986,10 @@ set(libwesnoth-game_STAT_SRC
 	display_context.cpp
 	events.cpp
 	floating_label.cpp
-	font/constants.cpp
 	font/font_config.cpp
 	font/marked-up_text.cpp
 	font/sdl_ttf.cpp
+	font/standard_colors.cpp
 	font/text.cpp
 	font/text_cache.cpp
 	font/text_formatting.cpp

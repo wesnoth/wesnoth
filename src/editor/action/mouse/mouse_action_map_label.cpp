@@ -23,6 +23,8 @@
 
 #include "gui/dialogs/editor/edit_label.hpp"
 
+#include "font/standard_colors.hpp"
+
 namespace editor {
 
 editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, int y)

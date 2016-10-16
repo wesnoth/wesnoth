@@ -34,6 +34,7 @@
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
+#include "font/standard_colors.hpp"
 
 #include "utils/functional.hpp"
 

@@ -13,6 +13,7 @@
 */
 
 #include "mp_options.hpp"
+#include "font/standard_colors.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/window_builder.hpp"

@@ -14,17 +14,9 @@
 
 #pragma once
 
-#include "global.hpp"
-
-#include <SDL.h>
 #include <string>
 
 namespace font {
-
-//various standard colors
-extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_COLOR,
-                       BLACK_COLOR, YELLOW_COLOR, BUTTON_COLOR, BIGMAP_COLOR,
-                       PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
 
 // font sizes, to be made theme parameters
 extern const int SIZE_NORMAL;

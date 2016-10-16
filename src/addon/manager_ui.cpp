@@ -37,6 +37,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/standard_colors.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 

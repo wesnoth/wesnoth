@@ -24,6 +24,7 @@
 #include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"
 
 namespace hotkey {

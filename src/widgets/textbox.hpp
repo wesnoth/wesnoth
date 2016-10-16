@@ -17,6 +17,7 @@
 
 #include "serialization/unicode.hpp"
 #include "font/constants.hpp"
+#include "font/standard_colors.hpp"
 
 #include "scrollarea.hpp"
 

@@ -22,6 +22,7 @@
 #include "game_display.hpp"
 #include "language.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/standard_colors.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"

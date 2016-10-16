@@ -24,6 +24,7 @@
 #include "sound.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/standard_colors.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/utils.hpp"

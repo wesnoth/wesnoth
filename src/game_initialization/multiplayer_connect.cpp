@@ -21,6 +21,7 @@
 #include "ai/configuration.hpp"
 #include "construct_dialog.hpp"
 #include "display_chat_manager.hpp"
+#include "font/standard_colors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

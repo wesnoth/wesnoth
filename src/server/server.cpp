@@ -2302,9 +2302,10 @@ void server::bans_handler(const std::string& /*issuer_name*/, const std::string&
 			ban_manager_.list_deleted_bans(*out);
 		} else if (utf8::lowercase(parameters).find("deleted") == 0) {
 			std::string mask = parameters.substr(7);
-			ban_manager_.list_deleted_bans(*out, boost::trim(mask));
+			ban_manager_.list_deleted_bans(*out, boost::trim_copy(mask));
 		} else {
-			ban_manager_.list_bans(*out, boost::trim(parameters));
+			boost::trim(parameters);
+			ban_manager_.list_bans(*out, parameters);
 		}
 
 	} catch ( utf8::invalid_utf8_exception & e ) {

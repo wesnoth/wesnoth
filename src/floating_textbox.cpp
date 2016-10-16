@@ -18,6 +18,7 @@
 
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
+#include "font/standard_colors.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"

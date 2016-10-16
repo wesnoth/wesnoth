@@ -25,23 +25,24 @@
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"                // for operator<<
-#include "map/map.hpp"                      // for gamemap
-#include "font/marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
-#include "units/race.hpp"                     // for unit_race, etc
+#include "utils/make_enum.hpp"          // for operator<<
+#include "map/map.hpp"                  // for gamemap
+#include "font/marked-up_text.hpp"      // for is_cjk_char, word_wrap_text
+#include "font/standard_colors.hpp"     // for NORMAL_COLOR
+#include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc
-#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/translation.hpp"      // for operator==, t_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator<<
-#include "units/types.hpp"               // for unit_type, unit_type_data, etc
-#include "serialization/unicode.hpp"  // for iterator
+#include "units/types.hpp"              // for unit_type, unit_type_data, etc
+#include "serialization/unicode.hpp"    // for iterator
 
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc

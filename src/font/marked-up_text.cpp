@@ -25,6 +25,7 @@
 #include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/standard_colors.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"

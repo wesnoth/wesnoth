@@ -18,6 +18,7 @@
 
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
+#include "font/standard_colors.hpp"
 #include "tooltips.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"
