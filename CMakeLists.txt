@@ -58,11 +58,7 @@ option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Lo
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 
-if(UNIX AND NOT APPLE AND NOT CYGWIN)
-	find_package(SDL2 2.0.2 REQUIRED)
-else (UNIX AND NOT APPLE AND NOT CYGWIN)
-	find_package(SDL2 2.0.4 REQUIRED)
-endif (UNIX AND NOT APPLE AND NOT CYGWIN)
+find_package(SDL2 2.0.4 REQUIRED)
   
 find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system thread)
 find_package(Boost 1.40 REQUIRED COMPONENTS random)

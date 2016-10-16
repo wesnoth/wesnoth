@@ -178,11 +178,7 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-SDL2_version = '';
-if env["PLATFORM"] is "win32" or env["PLATFORM"] is "cygwin" or env["PLATFORM"] is "darwin":
-    SDL2_version = '2.0.4';
-else:
-    SDL2_version = '2.0.2';
+SDL2_version = '2.0.4';
 
 
 Help("""Arguments may be a mixture of switches and targets in any order.
