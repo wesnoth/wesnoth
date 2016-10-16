@@ -227,10 +227,14 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
-	: tbuilder_control(cfg), stack()
+tbuilder_stacked_widget::tbuilder_stacked_widget(const config& real_cfg)
+	: tbuilder_control(real_cfg), stack()
 {
-	VALIDATE(cfg.has_child("layer"), _("No stack defined."));
+	const config& cfg = real_cfg.has_child("stack") ? real_cfg.child("stack") : real_cfg;
+	if(&cfg != &real_cfg) {
+		lg::wml_error() << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.\n";
+	}
+	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
 		stack.push_back(std::make_shared<tbuilder_grid>(layer));
