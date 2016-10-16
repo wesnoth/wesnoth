@@ -23,7 +23,7 @@
 #include "game_config.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"

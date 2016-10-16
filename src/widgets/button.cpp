@@ -25,7 +25,7 @@
 #include "game_errors.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"

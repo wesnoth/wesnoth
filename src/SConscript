@@ -92,6 +92,7 @@ libwesnoth_sources = Split("""
     floating_label.cpp
     font/constants.cpp
     font/font_config.cpp
+    font/marked-up_text.cpp
     font/sdl_ttf.cpp
     font/text.cpp
     font/text_cache.cpp
@@ -116,7 +117,6 @@ libwesnoth_sources = Split("""
     key.cpp
     language.cpp
     map/label.cpp
-    marked-up_text.cpp
     minimap.cpp
     pathfind/astarsearch.cpp
     pathutils.cpp

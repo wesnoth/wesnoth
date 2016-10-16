@@ -28,7 +28,7 @@
 #include "hotkey/command_executor.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
 #include "minimap.hpp"

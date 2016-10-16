@@ -36,7 +36,7 @@
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "language.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

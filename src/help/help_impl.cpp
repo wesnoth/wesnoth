@@ -27,7 +27,7 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for operator<<
 #include "map/map.hpp"                      // for gamemap
-#include "marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
+#include "font/marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
 #include "units/race.hpp"                     // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/utils.hpp"                // for surface

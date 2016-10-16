@@ -27,7 +27,7 @@
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 
 static lg::log_domain log_display("display");

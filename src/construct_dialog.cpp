@@ -23,7 +23,7 @@
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/utils.hpp"

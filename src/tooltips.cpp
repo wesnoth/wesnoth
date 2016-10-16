@@ -19,7 +19,7 @@
 #include "font/sdl_ttf.hpp"
 #include "game_display.hpp"
 #include "help/help.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "resources.hpp"
 #include "video.hpp"
 

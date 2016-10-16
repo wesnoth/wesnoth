@@ -22,7 +22,7 @@
 #include "font/sdl_ttf.hpp"
 #include "language.hpp"
 #include "image.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "video.hpp"

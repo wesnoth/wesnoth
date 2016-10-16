@@ -34,7 +34,7 @@
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                      // for gamemap
-#include "marked-up_text.hpp"           // for color2markup, BOLD_TEXT, etc
+#include "font/marked-up_text.hpp"           // for color2markup, BOLD_TEXT, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"		// for playing_side, set_button_state
 #include "replay_helper.hpp"

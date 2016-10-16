@@ -36,7 +36,7 @@
 #include "help/help_button.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 

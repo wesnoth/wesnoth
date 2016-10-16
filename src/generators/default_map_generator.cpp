@@ -23,7 +23,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "seed_rng.hpp"
 
 static lg::log_domain log_engine("engine");

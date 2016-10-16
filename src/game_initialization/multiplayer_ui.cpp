@@ -24,7 +24,7 @@
 #include "gui/dialogs/loadscreen.hpp"
 #include "lobby_preferences.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"

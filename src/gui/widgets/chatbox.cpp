@@ -32,7 +32,7 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "wesnothd_connection.hpp"
 #include "config_assign.hpp"
 #include "game_preferences.hpp"

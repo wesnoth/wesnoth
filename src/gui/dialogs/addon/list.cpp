@@ -46,7 +46,7 @@
 #include "gui/dialogs/addon/filter_options.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
 #include "video.hpp"

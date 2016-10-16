@@ -25,7 +25,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "mouse_events.hpp"
 #include "reports.hpp"
 #include "strftime.hpp"

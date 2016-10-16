@@ -27,7 +27,7 @@
 #include "generators/map_create.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
 #include "wml_separators.hpp"

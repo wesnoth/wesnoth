@@ -987,6 +987,7 @@ set(libwesnoth-game_STAT_SRC
 	floating_label.cpp
 	font/constants.cpp
 	font/font_config.cpp
+	font/marked-up_text.cpp
 	font/sdl_ttf.cpp
 	font/text.cpp
 	font/text_cache.cpp
@@ -1012,7 +1013,6 @@ set(libwesnoth-game_STAT_SRC
 	lobby_preferences.cpp
 	utils/make_enum.cpp
 	map/label.cpp
-	marked-up_text.cpp
 	minimap.cpp
 	pathfind/astarsearch.cpp
 	pathutils.cpp

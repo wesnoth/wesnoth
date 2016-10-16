@@ -17,7 +17,7 @@
 #include "location_palette.hpp"
 
 #include "gettext.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "tooltips.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"

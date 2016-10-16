@@ -36,7 +36,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "playturn.hpp"
 #include "random_new_deterministic.hpp"
 #include "replay_helper.hpp"

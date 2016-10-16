@@ -24,7 +24,7 @@
 
 #include "video.hpp"
 #include "gettext.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 #include "font/sdl_ttf.hpp"
 

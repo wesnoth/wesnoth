@@ -14,7 +14,7 @@
 */
 
 #include "gettext.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "statistics_dialog.hpp"
 #include "units/types.hpp"
 #include "wml_separators.hpp"

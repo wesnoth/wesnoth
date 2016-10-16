@@ -34,7 +34,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"

@@ -18,7 +18,7 @@
 
 #include "font/text.hpp"
 #include "widgets/label.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "video.hpp"
 
 namespace gui {

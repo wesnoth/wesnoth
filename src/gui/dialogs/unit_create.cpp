@@ -33,7 +33,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "help/help.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"

@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "utils/sha1.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"

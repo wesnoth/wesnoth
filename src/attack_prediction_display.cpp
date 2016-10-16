@@ -21,7 +21,7 @@
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "language.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"

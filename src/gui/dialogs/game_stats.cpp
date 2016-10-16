@@ -35,7 +35,7 @@
 #include "formatter.hpp"
 #include "game_board.hpp"
 #include "game_classification.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"

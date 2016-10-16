@@ -26,7 +26,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "marked-up_text.hpp"
+#include "font/marked-up_text.hpp"
 
 #include "utils/functional.hpp"
 
