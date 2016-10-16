@@ -29,6 +29,8 @@
 #include <cassert>
 #include <array>
 
+#include <boost/algorithm/string.hpp>
+
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general())
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -57,37 +59,6 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
-std::string replace(std::string str, const std::string &src, const std::string &dst)
-{
-	std::string::size_type pos = 0;
-	while ( (pos = str.find(src, pos)) != std::string::npos ) {
-		str.replace( pos, src.size(), dst );
-		pos++;
-	}
-	return str;
-}
-
-std::string &strip(std::string &str)
-{
-	// If all the string contains is whitespace,
-	// then the whitespace may have meaning, so don't strip it
-	std::string::iterator it = std::find_if(str.begin(), str.end(), notspace);
-	if (it == str.end())
-		return str;
-
-	str.erase(str.begin(), it);
-	str.erase(std::find_if(str.rbegin(), str.rend(), notspace).base(), str.end());
-
-	return str;
-}
-
-std::string &strip_end(std::string &str)
-{
-	str.erase(std::find_if(str.rbegin(), str.rend(), notspace).base(), str.end());
-
-	return str;
-}
-
 /**
  * Splits a (comma-)separated string into a vector of pieces.
  * @param[in]  val    A (comma-)separated string.
@@ -113,7 +84,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 		if (*i2 == c) {
 			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
-				strip_end(new_val);
+				boost::trim_right(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(std::move(new_val));
 			++i2;
@@ -130,7 +101,7 @@ std::vector< std::string > split(std::string const &val, const char c, const int
 
 	std::string new_val(i1, i2);
 	if (flags & STRIP_SPACES)
-		strip_end(new_val);
+		boost::trim_right(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(std::move(new_val));
 
@@ -186,27 +157,28 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 						size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
 							std::string tmp2(piece);
-							square_expansion.push_back(strip(tmp2));
+							boost::trim(tmp2);
+							square_expansion.push_back(tmp2);
 						}
 						else { //'*' multiple expansion
 							std::string s_begin = piece.substr(0,found_asterisk);
-							s_begin = strip(s_begin);
+							boost::trim(s_begin);
 							std::string s_end = piece.substr(found_asterisk+1);
-							s_end = strip(s_end);
+							boost::trim(s_end);
 							for (int ast=std::stoi(s_end); ast>0; --ast)
 								square_expansion.push_back(s_begin);
 						}
 					}
 					else { //expand number range
 						std::string s_begin = piece.substr(0,found_tilde);
-						s_begin = strip(s_begin);
+						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
 						size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
 						std::string s_end = piece.substr(found_tilde+1);
-						s_end = strip(s_end);
+						boost::trim(s_end);
 						int end = std::stoi(s_end);
 						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
 							padding_end++;
@@ -254,7 +226,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				std::string tmp_val(j1, i2);
 				new_val.append(tmp_val);
 				if (flags & STRIP_SPACES)
-					strip_end(new_val);
+					boost::trim_right(new_val);
 				if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 					res.push_back(new_val);
 				j++;
@@ -364,7 +336,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 		if(!in_parenthesis && separator && *i2 == separator){
 			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
-				strip_end(new_val);
+				boost::trim_right(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
@@ -380,7 +352,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 			if(!separator && part.empty()){
 				std::string new_val(i1, i2);
 				if (flags & STRIP_SPACES)
-					strip(new_val);
+					boost::trim(new_val);
 				res.push_back(new_val);
 				++i2;
 				i1=i2;
@@ -397,7 +369,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 				if (!separator && part.empty()){
 					std::string new_val(i1, i2);
 					if (flags & STRIP_SPACES)
-						strip(new_val);
+						boost::trim(new_val);
 					res.push_back(new_val);
 					++i2;
 					i1=i2;
@@ -417,7 +389,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 
 	std::string new_val(i1, i2);
 	if (flags & STRIP_SPACES)
-		strip(new_val);
+		boost::trim(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(std::move(new_val));
 
@@ -791,7 +763,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c, int flag
 		} else if (*i2 == c) {
 			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
-				strip(new_val);
+				boost::trim(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(std::move(new_val));
 			++i2;
@@ -808,7 +780,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c, int flag
 
 	std::string new_val(i1, i2);
 	if (flags & STRIP_SPACES)
-		strip(new_val);
+		boost::trim(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
 

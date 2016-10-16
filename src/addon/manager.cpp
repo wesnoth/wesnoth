@@ -38,6 +38,8 @@
 #include "formula/string_utils.hpp"
 #include "addon/client.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
 #define LOG_CFG LOG_STREAM(info, log_config)
@@ -235,7 +237,7 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 	std::istream *stream = filesystem::istream_file(ign_file);
 	std::string line;
 	while (std::getline(*stream, line)) {
-		utils::strip(line);
+		boost::trim(line);
 		const size_t l = line.size();
 		// .gitignore & WML like comments
 		if (l == 0 || !line.compare(0,2,"# ")) continue;

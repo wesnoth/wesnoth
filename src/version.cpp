@@ -19,6 +19,8 @@
 #include <cassert>
 #include <functional>
 
+#include <boost/algorithm/string.hpp>
+
 version_info::version_info()
 	: nums_(3,0), special_(""), special_separator_('\0')
 {
@@ -39,7 +41,7 @@ version_info::version_info(const std::string& str)
 	, special_separator_('\0')
 {
 	std::string v = str;
-	utils::strip(v);
+	boost::trim(v);
 
 	if(v.empty())
 		return;

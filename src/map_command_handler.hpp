@@ -19,6 +19,8 @@ See the COPYING file for more details.
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 namespace events {
 
 //simple command args parser, separated from command_handler for clarity.
@@ -70,7 +72,8 @@ public:
 		advance_to_arg(n);
 		if (n < args.size()) {
 			std::string data(str_, args[n]);
-			return utils::strip(data);
+			boost::trim(data);
+			return data;
 		}
 		else {
 			return "";

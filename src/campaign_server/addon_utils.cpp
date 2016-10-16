@@ -21,6 +21,8 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 static lg::log_domain log_network("network");
 #define LOG_CS if (lg::err().dont_log(log_network)) ; else lg::err()(log_network, false)
 
@@ -43,7 +45,7 @@ std::string fast_interpolate_variables_into_string(const std::string &str, const
 
 	if(symbols) {
 		for(const plain_string_map::value_type& sym : *symbols) {
-			res = utils::replace(res, "$" + sym.first, sym.second);
+			res = boost::replace_all(res, "$" + sym.first, sym.second);
 		}
 	}
 

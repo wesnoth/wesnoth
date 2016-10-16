@@ -26,6 +26,8 @@
 
 #include <algorithm>
 
+#include <boost/algorithm/string.hpp>
+
 context_free_grammar_generator::~context_free_grammar_generator()
 {
 }
@@ -40,7 +42,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 	while (*reading != 0) {
 		if (*reading == '=') {
 			// Leading and trailing whitespace is not significant, but internal whitespace is
-			std::string key = utils::strip(buf);
+			std::string key = boost::trim_copy(buf);
 			if(key == "!" || key =="(" || key == ")") {
 				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 			}
@@ -80,7 +82,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 				if (!filled) {
 					throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced } symbol");
 				}
-				filled->push_back('{' + utils::strip(buf));
+				filled->push_back('{' + boost::trim_copy(buf));
 				buf.clear();
 			} else buf.push_back(*reading);
 		}
@@ -93,7 +95,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 {
 	for(auto rule : source) {
 		std::string key = rule.first; // Need to do this because utils::strip is mutating
-		key = utils::strip(key);
+		boost::trim(key);
 		if(key == "!" || key =="(" || key == ")") {
 			throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 		}
@@ -114,8 +116,8 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 					if (!filled) {
 						throw  name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced } symbol");
 					}
-					
-					filled->push_back('{' + utils::strip(buf));
+
+					filled->push_back('{' + boost::trim_copy(buf));
 					buf.clear();
 				} else buf.push_back(c);
 			}

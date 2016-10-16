@@ -225,15 +225,6 @@ std::string unescape(const std::string &str);
 /** Percent-escape characters in a UTF-8 string intended to be part of a URL. */
 std::string urlencode(const std::string &str);
 
-/** Replace all instances of src in str with dst */
-std::string replace(std::string str, const std::string &src, const std::string &dst);
-
-/** Remove whitespace from the front and back of the string 'str'. */
-std::string &strip(std::string &str);
-
-/** Remove whitespace from the back of the string 'str'. */
-std::string &strip_end(std::string &str);
-
 /** Surround the string 'str' with double quotes. */
 inline std::string quote(const std::string &str)
 {

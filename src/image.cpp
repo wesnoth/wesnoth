@@ -43,6 +43,8 @@
 #include <SDL_image.h>
 
 #include "utils/functional.hpp"
+
+#include <boost/algorithm/string.hpp>
 #include <boost/functional/hash.hpp>
 
 #include <list>
@@ -410,7 +412,7 @@ static bool localized_file_uptodate (const std::string& loc_file)
 			if (p1 == std::string::npos)
 				continue;
 			std::string state = line.substr(0, p1);
-			utils::strip(state);
+			boost::trim(state);
 			if (state == "fuzzy") {
 				size_t p2 = line.find(fsep, p1 + fsep.length());
 				if (p2 == std::string::npos)

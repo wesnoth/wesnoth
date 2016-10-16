@@ -62,6 +62,8 @@
 
 #include <csignal>
 
+#include <boost/algorithm/string.hpp>
+
 static lg::log_domain log_server("server");
 /**
  * fatal and directly server related errors/warnings,
@@ -1965,7 +1967,7 @@ void server::start_new_server() {
 }
 
 std::string server::process_command(std::string query, std::string issuer_name) {
-	utils::strip(query);
+	boost::trim(query);
 
 	if (issuer_name == "*socket*" && query.at(0) == '+') {
 		// The first argument might be "+<issuer>: ".
@@ -1977,7 +1979,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		if (!issuer.empty()) {
 			issuer_name = "+" + issuer + "+";
 			query = std::string(issuer_end + 1, query.end());
-			utils::strip(query);
+			boost::trim(query);
 		}
 	}
 
@@ -1987,7 +1989,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 
 		const std::string command = utf8::lowercase(std::string(query.begin(), i));
 		std::string parameters = (i == query.end() ? "" : std::string(i + 1, query.end()));
-		utils::strip(parameters);
+		boost::trim(parameters);
 
 		std::ostringstream out;
 		std::map<std::string, server::cmd_handler>::iterator handler_itor = cmd_handlers_.find(command);
@@ -2175,7 +2177,7 @@ void server::pm_handler(const std::string& issuer_name, const std::string& /*que
 	const std::string& sender = issuer_name;
 	const std::string receiver(parameters.begin(), first_space);
 	std::string message(first_space + 1, parameters.end());
-	utils::strip(message);
+	boost::trim(message);
 	if (message.empty()) {
 		*out << "You must type a message.";
 		return;
@@ -2300,9 +2302,9 @@ void server::bans_handler(const std::string& /*issuer_name*/, const std::string&
 			ban_manager_.list_deleted_bans(*out);
 		} else if (utf8::lowercase(parameters).find("deleted") == 0) {
 			std::string mask = parameters.substr(7);
-			ban_manager_.list_deleted_bans(*out, utils::strip(mask));
+			ban_manager_.list_deleted_bans(*out, boost::trim(mask));
 		} else {
-			ban_manager_.list_bans(*out, utils::strip(parameters));
+			ban_manager_.list_bans(*out, boost::trim(parameters));
 		}
 
 	} catch ( utf8::invalid_utf8_exception & e ) {
@@ -2336,7 +2338,7 @@ void server::ban_handler(const std::string& issuer_name, const std::string& /*qu
 		--second_space;
 	}
 	std::string reason(second_space + 1, parameters.end());
-	utils::strip(reason);
+	boost::trim(reason);
 	if (reason.empty()) {
 		*out << "You need to give a reason for the ban.";
 		return;
@@ -2404,7 +2406,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 		--second_space;
 	}
 	std::string reason(second_space + 1, parameters.end());
-	utils::strip(reason);
+	boost::trim(reason);
 	if (reason.empty()) {
 		*out << "You need to give a reason for the ban.";
 		return;
@@ -2492,7 +2494,7 @@ void server::gban_handler(const std::string& issuer_name, const std::string& /*q
 		--second_space;
 	}
 	std::string reason(second_space + 1, parameters.end());
-	utils::strip(reason);
+	boost::trim(reason);
 	if (reason.empty()) {
 		*out << "You need to give a reason for the ban.";
 		return;
