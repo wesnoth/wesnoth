@@ -178,7 +178,10 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-SDL2_version = '2.0.4';
+if 'TRAVIS' in os.environ:
+    SDL2_version = '2.0.2';
+else:
+    SDL2_version = '2.0.4';
 
 
 Help("""Arguments may be a mixture of switches and targets in any order.

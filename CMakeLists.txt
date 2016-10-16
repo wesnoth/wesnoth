@@ -57,9 +57,12 @@ option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)
 option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
+if(DEFINED ENV{TRAVIS})
+	find_package(SDL2 2.0.2 REQUIRED)
+else()
+	find_package(SDL2 2.0.4 REQUIRED)
+endif()
 
-find_package(SDL2 2.0.4 REQUIRED)
-  
 find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system thread)
 find_package(Boost 1.40 REQUIRED COMPONENTS random)
 
