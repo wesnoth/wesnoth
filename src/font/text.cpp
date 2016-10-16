@@ -614,7 +614,14 @@ static const inverse_table inverse_table_;
  * Div should be the high-precision inverse for the alpha value.
  */
 static void unpremultiply(Uint8 & value, const unsigned div) {
-	unsigned temp = value * div / 256;
+	unsigned temp = (value * div) / 256u;
+	// Note: It's always the case that alpha * div < 256 if div is the inverse
+	// for alpha, so if cairo is computing premultiplied alpha by rounding down,
+	// this min is not necessary. However, if cairo generates illegal output,
+	// the min may be selected.
+	// It's probably not worth removing the min, since branch prediction will
+	// make it essentially free if one of the branches is never actually
+	// selected.
 	value = std::min(255u, temp);
 }
 
