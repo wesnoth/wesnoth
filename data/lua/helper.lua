@@ -157,7 +157,9 @@ function helper.move_unit_fake(filter, to_x, to_y)
 	wesnoth.set_variable("LUA_move_unit")
 end
 
-local variable_mt = {}
+local variable_mt = {
+	__metatable = "WML variable proxy"
+}
 
 local function get_variable_proxy(k)
 	local v = wesnoth.get_variable(k, true)
@@ -195,6 +197,7 @@ function variable_mt.__newindex(t, k, v)
 end
 
 local root_variable_mt = {
+	__metatable = "WML variables",
 	__index    = function(t, k)    return get_variable_proxy(k)    end,
 	__newindex = function(t, k, v)
 		if type(v) == "function" then
@@ -207,7 +210,7 @@ local root_variable_mt = {
 	end
 }
 
---! Sets the metable of @a t so that it can be used to access WML variables.
+--! Sets the metatable of @a t so that it can be used to access WML variables.
 --! @return @a t.
 --! @code
 --! helper.set_wml_var_metatable(_G)
@@ -218,12 +221,13 @@ function helper.set_wml_var_metatable(t)
 end
 
 local fire_action_mt = {
+	__metatable = "WML actions",
 	__index = function(t, n)
 		return function(cfg) wesnoth.fire(n, cfg) end
 	end
 }
 
---! Sets the metable of @a t so that it can be used to fire WML actions.
+--! Sets the metatable of @a t so that it can be used to fire WML actions.
 --! @return @a t.
 --! @code
 --! W = helper.set_wml_action_metatable {}
@@ -234,12 +238,13 @@ function helper.set_wml_action_metatable(t)
 end
 
 local create_tag_mt = {
+	__metatable = "WML tag builder",
 	__index = function(t, n)
 		return function(cfg) return { n, cfg } end
 	end
 }
 
---! Sets the metable of @a t so that it can be used to create subtags with less brackets.
+--! Sets the metatable of @a t so that it can be used to create subtags with less brackets.
 --! @return @a t.
 --! @code
 --! T = helper.set_wml_tag_metatable {}
