@@ -37,7 +37,7 @@ const std::string
 	unicode_minus = "-",
 	unicode_en_dash = "–", // unicode u2013
 	unicode_em_dash = "—", // unicode u2014
-	unicode_figure_dash = "?",
+	unicode_figure_dash = "‒", // unicode u2012
 	unicode_multiplication_sign = "×",
 	unicode_bullet = "•", // unicode u2022
 
