@@ -6075,11 +6075,6 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
-				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Debug;
@@ -6093,13 +6088,7 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
-				);
 				PRODUCT_NAME = campaignd;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -6115,10 +6104,6 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib\"",
-				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = unit_tests;
 			};
@@ -6134,13 +6119,8 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib\"",
-				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = unit_tests;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -6157,11 +6137,6 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
-				);
 				PRODUCT_NAME = wesnothd;
 			};
 			name = Debug;
@@ -6175,13 +6150,7 @@
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
-				);
 				PRODUCT_NAME = wesnothd;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -6192,8 +6161,6 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
@@ -6202,10 +6169,6 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6221,8 +6184,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
@@ -6232,17 +6193,12 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/lib",
-				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-lreadline",
 				);
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -6287,7 +6243,7 @@
 					./lib/SDL2_net.framework/Headers,
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = ./lib;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
@@ -6339,13 +6295,13 @@
 					./lib/SDL2_net.framework/Headers,
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = ./lib;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 				);
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
