@@ -120,7 +120,7 @@ void tunit_list::pre_show(twindow& window)
 		column["label"] = format_if_leader(unit, unit->type_name());
 		row_data.emplace("unit_type", column);
 
-		const std::string& name = !unit->name().empty() ? format_if_leader(unit, unit->name().str()) : utils::unicode_en_dash;
+		const std::string& name = !unit->name().empty() ? format_if_leader(unit, unit->name().str()) : font::unicode_en_dash;
 		column["label"] = name;
 		row_data.emplace("unit_name", column);
 
@@ -138,7 +138,7 @@ void tunit_list::pre_show(twindow& window)
 
 		std::stringstream exp_str;
 		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
-		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : utils::unicode_en_dash) << "</span>";
+		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : font::unicode_en_dash) << "</span>";
 
 		column["label"] = exp_str.str();
 		row_data.emplace("unit_experience", column);

@@ -152,7 +152,7 @@ void recruit::draw_hex(map_location const& hex)
 		const double y_offset = 0.7;
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
-		number_text << utils::unicode_minus << cost_;
+		number_text << font::unicode_minus << cost_;
 		size_t font_size = 16;
 		SDL_Color color; color.r = 255; color.g = 0; color.b = 0; //red
 		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,

@@ -203,7 +203,7 @@ void tunit_recall::pre_show(twindow& window)
 		column["label"] = format_cost_string(unit->recall_cost(), team_.recall_cost());
 		row_data.emplace("unit_recall_cost", column);
 
-		const std::string& name = !unit->name().empty() ? unit->name().str() : utils::unicode_en_dash;
+		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 		column["label"] = name;
 		row_data.emplace("unit_name", column);
 
@@ -212,7 +212,7 @@ void tunit_recall::pre_show(twindow& window)
 
 		std::stringstream exp_str;
 		exp_str << font::span_color(unit->xp_color()) << unit->experience() << "/"
-		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : utils::unicode_en_dash) << "</span>";
+		        << (unit->can_advance() ? std::to_string(unit->max_experience()) : font::unicode_en_dash) << "</span>";
 
 		column["label"] = exp_str.str();
 		row_data.emplace("unit_experience", column);
@@ -227,7 +227,7 @@ void tunit_recall::pre_show(twindow& window)
 			filter_text += " " + trait;
 		}
 
-		column["label"] = !traits.empty() ? traits : utils::unicode_en_dash;
+		column["label"] = !traits.empty() ? traits : font::unicode_en_dash;
 		row_data.emplace("unit_traits", column);
 
 		list.add_row(row_data);

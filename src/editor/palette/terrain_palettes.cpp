@@ -199,7 +199,7 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 
 	tooltip_text << map().get_terrain_editor_string(terrain);
 	if (gui_.get_draw_terrain_codes()) {
-		tooltip_text << " " + utils::unicode_em_dash + " " << terrain;
+		tooltip_text << " " + font::unicode_em_dash + " " << terrain;
 	}
 }
 

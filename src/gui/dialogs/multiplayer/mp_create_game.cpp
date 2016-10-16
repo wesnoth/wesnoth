@@ -607,7 +607,7 @@ void tmp_create_game::update_details(twindow& window)
 
 	// Set the title, with newlines replaced. Newlines are sometimes found in SP Campaign names
 	std::string title = create_engine_.current_level().name();
-	boost::replace_all(title, "\n", " " + utils::unicode_em_dash + " ");
+	boost::replace_all(title, "\n", " " + font::unicode_em_dash + " ");
 	find_widget<tcontrol>(&window, "game_title", false).set_label(title);
 
 	show_description(window, create_engine_.current_level().description());
@@ -652,7 +652,7 @@ void tmp_create_game::update_details(twindow& window)
 			}
 
 			players.set_label(players_str.str());
-			map_size.set_label(utils::unicode_em_dash);
+			map_size.set_label(font::unicode_em_dash);
 
 			break;
 		}

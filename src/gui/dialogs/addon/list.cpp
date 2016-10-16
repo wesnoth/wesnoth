@@ -468,7 +468,7 @@ static std::string format_addon_time(time_t time)
 		}
 	}
 
-	return utils::unicode_em_dash;
+	return font::unicode_em_dash;
 }
 
 void taddon_list::on_addon_select(twindow& window)

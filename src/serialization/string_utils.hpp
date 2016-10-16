@@ -16,6 +16,8 @@
 #ifndef SERIALIZATION_STRING_UTILS_HPP_INCLUDED
 #define SERIALIZATION_STRING_UTILS_HPP_INCLUDED
 
+#include "font/constants.hpp"
+
 #include <algorithm>
 #include <map>
 #include <set>
@@ -26,13 +28,6 @@
 class t_string;
 
 namespace utils {
-
-extern const std::string unicode_minus;
-extern const std::string unicode_en_dash;
-extern const std::string unicode_em_dash;
-extern const std::string unicode_figure_dash;
-extern const std::string unicode_multiplication_sign;
-extern const std::string unicode_bullet;
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
@@ -165,7 +160,7 @@ std::string join_map(
  * @param bullet The leading bullet string.
  */
 template<typename T>
-std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet = unicode_bullet)
+std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet = font::unicode_bullet)
 {
 	std::ostringstream str;
 
@@ -210,7 +205,7 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 /* add a "+" or replace the "-" par Unicode minus */
 inline std::string print_modifier(const std::string &mod)
 { return mod[0] == '-' ?
-	(unicode_minus + std::string(mod.begin()+1, mod.end())) : ("+" + mod);}
+	(font::unicode_minus + std::string(mod.begin()+1, mod.end())) : ("+" + mod);}
 
 /** Prepends a configurable set of characters with a backslash */
 std::string escape(const std::string &str, const char *special_chars);

@@ -49,4 +49,17 @@ CONSTEXPR int
 
 CONSTEXPR size_t max_text_line_width = 4096;
 
+const std::string
+	ellipsis = "...",
+
+	unicode_minus = "-",
+	unicode_en_dash = "–",
+	unicode_em_dash = "—",
+	unicode_figure_dash = "?",
+	unicode_multiplication_sign = "×",
+	unicode_bullet = "•",
+
+	weapon_numbers_sep = "×",
+	weapon_details_sep = "–";
+
 } // end namespace font

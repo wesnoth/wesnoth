@@ -35,15 +35,6 @@ static lg::log_domain log_engine("engine");
 
 namespace utils {
 
-const std::string ellipsis = "...";
-
-const std::string unicode_minus = "−";
-const std::string unicode_en_dash = "–";
-const std::string unicode_em_dash = "—";
-const std::string unicode_figure_dash = "‒";
-const std::string unicode_multiplication_sign = "×";
-const std::string unicode_bullet = "•";
-
 bool isnewline(const char c)
 {
 	return c == '\r' || c == '\n';
@@ -526,7 +517,7 @@ bool string_bool(const std::string& str, bool def) {
 std::string signed_value(int val)
 {
 	std::ostringstream oss;
-	oss << (val >= 0 ? "+" : unicode_minus) << abs(val);
+	oss << (val >= 0 ? "+" : font::unicode_minus) << abs(val);
 	return oss.str();
 }
 
@@ -534,7 +525,7 @@ std::string half_signed_value(int val)
 {
 	std::ostringstream oss;
 	if (val < 0)
-		oss << unicode_minus;
+		oss << font::unicode_minus;
 	oss << abs(val);
 	return oss.str();
 }
@@ -859,7 +850,7 @@ void ellipsis_truncate(std::string& str, const size_t size)
 	utf8::truncate(str, size);
 
 	if(str.length() != prev_size) {
-		str += ellipsis;
+		str += font::ellipsis;
 	}
 }
 

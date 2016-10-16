@@ -184,10 +184,10 @@ void recall::draw_hex(map_location const& hex)
 		unit &it = *get_unit();
 		int cost = statistics::un_recall_unit_cost(it);
 		if (cost < 0) {
-			number_text << utils::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
+			number_text << font::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}
 		else {
-			number_text << utils::unicode_minus << cost;
+			number_text << font::unicode_minus << cost;
 		}
 		size_t font_size = 16;
 		SDL_Color color; color.r = 255; color.g = 0; color.b = 0; //red

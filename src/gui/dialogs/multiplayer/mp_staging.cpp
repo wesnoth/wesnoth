@@ -79,7 +79,7 @@ void tmp_staging::pre_show(twindow& window)
 	// Set title and status widget states
 	//
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
-	title.set_label((formatter() << title.label() << " " << utils::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
+	title.set_label((formatter() << title.label() << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
 
 	update_status_label_and_buttons(window);
 
@@ -384,8 +384,8 @@ void tmp_staging::update_leader_display(ng::side_engine_ptr side, tgrid& row_gri
 	const std::string current_faction = (*side->flg().choosable_factions()[side->flg().current_faction_index()])["name"];
 
 	// BIG FAT TODO: get rid of this shitty "null" string value in the FLG manager
-	std::string current_leader = side->flg().current_leader() != "null" ? side->flg().current_leader() : utils::unicode_em_dash;
-	const std::string current_gender = side->flg().current_gender() != "null" ? side->flg().current_gender() : utils::unicode_em_dash;
+	std::string current_leader = side->flg().current_leader() != "null" ? side->flg().current_leader() : font::unicode_em_dash;
+	const std::string current_gender = side->flg().current_gender() != "null" ? side->flg().current_gender() : font::unicode_em_dash;
 
 	// Sprite
 	std::string new_image;
@@ -414,7 +414,7 @@ void tmp_staging::update_leader_display(ng::side_engine_ptr side, tgrid& row_gri
 	find_widget<tlabel>(&row_grid, "leader_faction", false).set_label("<span color='#a69275'>" + current_faction + "</span>");
 
 	// Gender
-	if(current_gender != utils::unicode_em_dash) {
+	if(current_gender != font::unicode_em_dash) {
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
 
 		timage& icon = find_widget<timage>(&row_grid, "leader_gender", false);

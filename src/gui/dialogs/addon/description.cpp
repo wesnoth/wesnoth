@@ -50,7 +50,7 @@ std::string format_addon_time(time_t time)
 		}
 	}
 
-	return utils::unicode_em_dash;
+	return font::unicode_em_dash;
 }
 
 std::string langcode_to_string(const std::string& lcode)

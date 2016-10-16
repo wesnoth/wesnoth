@@ -100,7 +100,7 @@ void tpreferences::set_resolution_list(tmenu_button& res_list, CVideo& video)
 	for(const auto& res : resolutions_)
 	{
 		config option;
-		option["label"] = formatter() << res.first << utils::unicode_multiplication_sign << res.second;
+		option["label"] = formatter() << res.first << font::unicode_multiplication_sign << res.second;
 
 		const int div = boost::math::gcd(res.first, res.second);
 		const int ratio[2] = {res.first/div, res.second/div};

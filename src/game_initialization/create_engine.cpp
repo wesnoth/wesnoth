@@ -189,7 +189,7 @@ std::string scenario::map_size() const
 
 	if (map_.get() != nullptr) {
 		map_size << map_.get()->w();
-		map_size << utils::unicode_multiplication_sign;
+		map_size << font::unicode_multiplication_sign;
 		map_size << map_.get()->h();
 	} else {
 		map_size << _("not available.");

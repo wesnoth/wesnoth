@@ -622,7 +622,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 			// A 5 MP margin; if the movement costs go above
 			// the unit's max moves + 5, we replace it with dashes.
 			if(cannot_move && (moves > u->total_movement() + 5)) {
-				tooltip << utils::unicode_figure_dash;
+				tooltip << font::unicode_figure_dash;
 			} else {
 				tooltip << moves;
 			}
@@ -909,7 +909,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 		// Total damage.
 		str << "  " << span_color(dmg_color) << total_damage << naps << span_color(font::weapon_color)
-			<< utils::unicode_en_dash << num_blows
+			<< font::unicode_en_dash << num_blows
 			<< " (" << span_color(chance_color) << chance_to_hit << "%" << naps << ")"
 			<< naps << "\n";
 
@@ -1309,7 +1309,7 @@ REPORT_GENERATOR(income, rc)
 		if (td.net_income < 0) {
 			td.net_income = - td.net_income;
 			str << span_color(font::GRAY_COLOR);
-			str << utils::unicode_minus;
+			str << font::unicode_minus;
 		}
 		else {
 			str << span_color(font::GRAY_COLOR);
@@ -1318,7 +1318,7 @@ REPORT_GENERATOR(income, rc)
 	else if (td.net_income < 0) {
 		td.net_income = - td.net_income;
 		str << span_color(font::BAD_COLOR);
-		str << utils::unicode_minus;
+		str << font::unicode_minus;
 	}
 	else {
 		end = "";

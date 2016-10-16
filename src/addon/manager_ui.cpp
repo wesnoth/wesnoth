@@ -186,7 +186,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 		broken_deps_report += "\n";
 
 		for(const std::string& broken_dep_id : broken_deps) {
-			broken_deps_report += "\n    " + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
+			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
 		if(gui2::show_message(v, _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {

@@ -14,8 +14,10 @@
 
 #pragma once
 
-#include <SDL.h>
 #include "global.hpp"
+
+#include <SDL.h>
+#include <string>
 
 namespace font {
 
@@ -39,5 +41,19 @@ CONSTEXPR inline int relative_size(int size)
 
 // GUI1 built-in maximum
 extern CONSTEXPR size_t max_text_line_width;
+
+// String constants
+extern const std::string
+	ellipsis,
+
+	unicode_minus,
+	unicode_en_dash,
+	unicode_em_dash,
+	unicode_figure_dash,
+	unicode_multiplication_sign,
+	unicode_bullet,
+
+	weapon_numbers_sep,
+	weapon_details_sep;
 
 } // end namespace font

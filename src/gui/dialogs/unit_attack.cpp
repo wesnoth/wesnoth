@@ -173,7 +173,7 @@ void tunit_attack::pre_show(twindow& window)
 		item["label"] = attacker_stats.str();
 		data.emplace("attacker_weapon", item);
 
-		item["label"] = "<span color='#a69275'>" + utils::unicode_em_dash + " " + range + " " + utils::unicode_em_dash + "</span>";
+		item["label"] = "<span color='#a69275'>" + font::unicode_em_dash + " " + range + " " + font::unicode_em_dash + "</span>";
 		data.emplace("range", item);
 
 		item["label"] = defender_stats.str();

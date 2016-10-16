@@ -259,7 +259,7 @@ void tmp_join_game::pre_show(twindow& window)
 	// Set title
 	//
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
-	title.set_label((formatter() << title.label() << " " << utils::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
+	title.set_label((formatter() << title.label() << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
 
 	//
 	// Set up sides list

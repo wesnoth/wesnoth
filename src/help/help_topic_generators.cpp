@@ -518,7 +518,7 @@ std::string unit_topic_generator::operator()() const {
 			push_tab_pair(row, lang_weapon);
 			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
-			attack_ss << attack.damage() << utils::unicode_en_dash << attack.num_attacks()
+			attack_ss << attack.damage() << font::unicode_en_dash << attack.num_attacks()
 				<< " " << attack.accuracy_parry_description();
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
@@ -585,7 +585,7 @@ std::string unit_topic_generator::operator()() const {
 		std::string resist = std::to_string(resistance) + '%';
 		const size_t pos = resist.find('-');
 		if (pos != std::string::npos) {
-			resist.replace(pos, 1, utils::unicode_minus);
+			resist.replace(pos, 1, font::unicode_minus);
 		}
 		std::string color = unit_helper::resistance_color(resistance);
 		std::string lang_weapon = string_table["type_" + dam_it.first];
@@ -690,7 +690,7 @@ std::string unit_topic_generator::operator()() const {
 				// A 5 MP margin; if the movement costs go above
 				// the unit's max moves + 5, we replace it with dashes.
 				if(cannot_move && (moves > type_.movement() + 5)) {
-					str << utils::unicode_figure_dash;
+					str << font::unicode_figure_dash;
 				} else {
 					str << moves;
 				}
@@ -708,14 +708,14 @@ std::string unit_topic_generator::operator()() const {
 					if (has_cap) {
 						str << "<format>color='"<< color <<"' text='" << defense << "%'</format>";
 					} else {
-						str << "<format>color=white text='" << utils::unicode_figure_dash << "'</format>";
+						str << "<format>color=white text='" << font::unicode_figure_dash << "'</format>";
 					}
 					markup = str.str();
 					str.str(clear_stringstream);
 					if (has_cap) {
 						str << defense << '%';
 					} else {
-						str << utils::unicode_figure_dash;
+						str << font::unicode_figure_dash;
 					}
 					row.push_back(std::make_pair(markup,
 						font::line_width(str.str(), normal_font_size)));
@@ -738,7 +738,7 @@ std::string unit_topic_generator::operator()() const {
 						// A 5 MP margin; if the vision costs go above
 						// the unit's vision + 5, we replace it with dashes.
 						if(cannot_view && (views > type_.vision() + 5)) {
-							str << utils::unicode_figure_dash;
+							str << font::unicode_figure_dash;
 						} else {
 							str << views;
 						}
@@ -767,7 +767,7 @@ std::string unit_topic_generator::operator()() const {
 					// A 5 MP margin; if the jamming costs go above
 					// the unit's jamming + 5, we replace it with dashes.
 					if ( cannot_jam  &&  jams > type_.jamming() + 5 ) {
-						str << utils::unicode_figure_dash;
+						str << font::unicode_figure_dash;
 					} else {
 						str << jams;
 					}

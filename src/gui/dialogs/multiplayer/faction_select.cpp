@@ -138,7 +138,7 @@ void tfaction_select::on_faction_select(twindow& window)
 		} else if(leader == "random") {
 			leaders.push_back(config_of("label", _("Random"))("icon", "units/random-dice.png"));
 		} else if(leader == "null") {
-			leaders.push_back(config_of("label", utils::unicode_em_dash));
+			leaders.push_back(config_of("label", font::unicode_em_dash));
 		} else {
 			leaders.push_back(config_of("label", "?"));
 		}

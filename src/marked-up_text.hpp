@@ -43,9 +43,6 @@ extern const SDL_Color weapon_color,
 		unit_type_color,
 		race_color;
 
-// separator between damage-hits and range--type
-extern const std::string weapon_numbers_sep, weapon_details_sep;
-
 /** Parses the markup-tags at the front of a string. */
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,

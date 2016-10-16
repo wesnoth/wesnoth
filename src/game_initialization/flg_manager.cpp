@@ -156,7 +156,7 @@ void flg_manager::reset_leader_combo(gui::combo& combo_leader, const std::string
 			leaders.push_back(IMAGE_PREFIX + random_enemy_picture +
 				COLUMN_SEPARATOR + _("Random"));
 		} else if (leader == "null") {
-			leaders.push_back(utils::unicode_em_dash);
+			leaders.push_back(font::unicode_em_dash);
 		} else {
 			leaders.push_back("?");
 		}
@@ -189,7 +189,7 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender, const std::string
 			genders.push_back(IMAGE_PREFIX + random_enemy_picture +
 				COLUMN_SEPARATOR + _("Random"));
 		} else if (gender == "null") {
-			genders.push_back(utils::unicode_em_dash);
+			genders.push_back(font::unicode_em_dash);
 		} else {
 			genders.push_back("?");
 		}

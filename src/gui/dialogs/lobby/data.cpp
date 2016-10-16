@@ -293,7 +293,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			// mini_map = image::getMinimap(minimap_size_, minimap_size_, map,
 			// 0);
 			std::ostringstream msi;
-			msi << map.w() << utils::unicode_multiplication_sign << map.h();
+			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
 			info_stream << " — " + map_size_info;
 		} catch(incorrect_map_format_error& e) {
@@ -391,7 +391,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	}
 
 	// Remove any newlines that might have been in game titles
-	boost::replace_all(scenario, "\n", " " + utils::unicode_em_dash + " ");
+	boost::replace_all(scenario, "\n", " " + font::unicode_em_dash + " ");
 
 	if(reloaded) {
 		info_stream << " — ";
