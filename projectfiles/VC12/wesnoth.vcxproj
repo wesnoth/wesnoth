@@ -1147,14 +1147,6 @@
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
     <ClCompile Include="..\..\src\floating_label.cpp" />
     <ClCompile Include="..\..\src\floating_textbox.cpp" />
-    <ClCompile Include="..\..\src\font\constants.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Font\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Font\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Font\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\font\font_config.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
@@ -1163,7 +1155,23 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Font\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\font\marked-up_text.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Font\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\font\sdl_ttf.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Font\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\standard_colors.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
@@ -1180,6 +1188,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Font\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_cache.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Font\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\text_formatting.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Font\</ObjectFileName>
@@ -2829,7 +2845,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Map\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Map\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\marked-up_text.cpp" />
     <ClCompile Include="..\..\src\md5.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
     <ClCompile Include="..\..\src\minimap.cpp" />
@@ -4095,19 +4110,21 @@
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\floating_label.hpp" />
     <ClInclude Include="..\..\src\floating_textbox.hpp" />
-    <ClInclude Include="..\..\src\font\constants.hpp" />
     <ClInclude Include="..\..\src\font\font_config.hpp" />
     <ClInclude Include="..\..\src\font\font_description.hpp" />
     <ClInclude Include="..\..\src\font\font_id.hpp" />
     <ClInclude Include="..\..\src\font\font_options.hpp" />
+    <ClInclude Include="..\..\src\font\marked-up_text.hpp" />
     <ClInclude Include="..\..\src\font\pango\escape.hpp" />
     <ClInclude Include="..\..\src\font\pango\font.hpp" />
     <ClInclude Include="..\..\src\font\pango\hyperlink.hpp" />
     <ClInclude Include="..\..\src\font\pango\iter.hpp" />
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp" />
     <ClInclude Include="..\..\src\font\sdl_ttf.hpp" />
+    <ClInclude Include="..\..\src\font\standard_colors.hpp" />
     <ClInclude Include="..\..\src\font\text.hpp" />
     <ClInclude Include="..\..\src\font\text_cache.hpp" />
+    <ClInclude Include="..\..\src\font\text_formatting.hpp" />
     <ClInclude Include="..\..\src\font\text_surface.hpp" />
     <ClInclude Include="..\..\src\formatter.hpp" />
     <ClInclude Include="..\..\src\format_time_summary.hpp" />
@@ -4369,7 +4386,6 @@
     <ClInclude Include="..\..\src\map\location.hpp" />
     <ClInclude Include="..\..\src\map\map.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
-    <ClInclude Include="..\..\src\marked-up_text.hpp" />
     <ClInclude Include="..\..\src\md5.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
     <ClInclude Include="..\..\src\minimap.hpp" />
