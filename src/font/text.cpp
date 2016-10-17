@@ -647,6 +647,9 @@ void ttext::rerender(const bool force) const
 		this->recalculate(force);
 		surface_dirty_ = false;
 
+		// TODO: This looks broken to me. If rect_.x is negative, shouldn't that increase width?
+		// I think it maybe should be
+		// int width  = (-rect_.x) + rect_.width;
 		int width  = rect_.x + rect_.width;
 		int height = rect_.y + rect_.height;
 		if(maximum_width_  > 0) { width  = std::min(width, maximum_width_); }
