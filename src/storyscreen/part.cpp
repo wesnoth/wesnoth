@@ -151,6 +151,7 @@ part::part(const vconfig &part_cfg)
 	, text_()
 	, text_title_()
 	, text_block_loc_(part::BLOCK_BOTTOM)
+	, text_alignment_(part::TEXT_LEFT)
 	, title_alignment_(part::TEXT_LEFT)
 	, music_()
 	, sound_()
@@ -240,6 +241,9 @@ void part::resolve_wml(const vconfig &cfg)
 	}
 	if(cfg.has_attribute("text_layout")) {
 		text_block_loc_ = string_tblock_loc(cfg["text_layout"]);
+	}
+	if(cfg.has_attribute("text_alignment")) {
+		text_alignment_ = string_title_align(cfg["text_alignment"]);
 	}
 	if(cfg.has_attribute("title_alignment")) {
 		title_alignment_ = string_title_align(cfg["title_alignment"]);
