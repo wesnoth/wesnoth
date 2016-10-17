@@ -589,7 +589,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
 	const unit_map::const_iterator u = resources::units->find(loc);
 	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
-	            destinations, &edges, &*u, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
+	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
 }
 
 /// Default destructor
