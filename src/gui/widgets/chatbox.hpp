@@ -219,11 +219,12 @@ public:
 
 	/**
 	* Check if a room window for "room" is open, if open_new is true
-	* then it will be created if not found.
+	* then it will be created if not found. If allow_close is false, the
+	* 'close' button will be disabled.
 	* @return valid ptr if the window was found or added, null otherwise
 	*/
 	tlobby_chat_window* room_window_open(const std::string& room,
-		bool open_new);
+		const bool open_new, const bool allow_close = true);
 
 	/**
 	* Check if a whisper window for user "name" is open, if open_new is true
@@ -236,7 +237,7 @@ public:
 	/**
 	* Helper function to find and open a new window, used by *_window_open
 	*/
-	tlobby_chat_window* search_create_window(const std::string& name, bool whisper, bool open_new);
+	tlobby_chat_window* search_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
 
 	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
 	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }

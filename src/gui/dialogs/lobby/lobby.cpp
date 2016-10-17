@@ -759,7 +759,7 @@ void tlobby_main::pre_show(twindow& window)
 			*filter_text_,
 			std::bind(&tlobby_main::game_filter_keypress_callback, this, _5));
 
-	chatbox_->room_window_open("lobby", true);
+	chatbox_->room_window_open("lobby", true, false);
 	chatbox_->active_window_changed();
 	game_filter_reload();
 

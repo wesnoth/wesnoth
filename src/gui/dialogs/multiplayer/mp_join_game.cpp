@@ -274,7 +274,7 @@ void tmp_join_game::pre_show(twindow& window)
 	chat.set_lobby_info(lobby_info_);
 	chat.set_wesnothd_connection(wesnothd_connection_);
 
-	chat.room_window_open("this game", true); // TODO: better title?
+	chat.room_window_open("this game", true, false); // TODO: better title?
 	chat.active_window_changed();
 
 	//

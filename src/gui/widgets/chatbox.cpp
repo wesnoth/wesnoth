@@ -360,19 +360,20 @@ bool tchatbox::room_window_active(const std::string& room)
 	return t.name == room && t.whisper == false;
 }
 
-tlobby_chat_window* tchatbox::room_window_open(const std::string& room, bool open_new)
+tlobby_chat_window* tchatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
 {
-	return search_create_window(room, false, open_new);
+	return search_create_window(room, false, open_new, allow_close);
 }
 
 tlobby_chat_window* tchatbox::whisper_window_open(const std::string& name, bool open_new)
 {
-	return search_create_window(name, true, open_new);
+	return search_create_window(name, true, open_new, true);
 }
 
 tlobby_chat_window* tchatbox::search_create_window(const std::string& name,
-	bool whisper,
-	bool open_new)
+	const bool whisper,
+	const bool open_new,
+	const bool allow_close)
 {
 	for(auto& t : open_windows_) {
 		if(t.name == name && t.whisper == whisper) {
@@ -415,7 +416,7 @@ tlobby_chat_window* tchatbox::search_create_window(const std::string& name,
 	connect_signal_mouse_left_click(close_button,
 		std::bind(&tchatbox::close_window_button_callback, this, open_windows_.back(), _3, _4));
 
-	if(name == "lobby") {
+	if(!allow_close) {
 		close_button.set_visible(tcontrol::tvisible::hidden);
 	}
 
