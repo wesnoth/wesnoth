@@ -507,7 +507,7 @@ void ttext::recalculate(const bool force) const
 		p_font font{get_font_families(font_class_), font_size_, font_style_};
 		pango_layout_set_font_description(layout_, font.get());
 
-		if(font_style_ == ttext::STYLE_UNDERLINE) {
+		if(font_style_ & ttext::STYLE_UNDERLINE) {
 			PangoAttrList *attribute_list = pango_attr_list_new();
 			pango_attr_list_insert(attribute_list
 					, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));

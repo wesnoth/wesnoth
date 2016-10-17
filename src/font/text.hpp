@@ -138,11 +138,12 @@ public:
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
+	// NOTE: these values must be powers of 2 in order to be bit-unique
 	enum FONT_STYLE {
-		STYLE_NORMAL,
-		STYLE_BOLD,
-		STYLE_ITALIC,
-		STYLE_UNDERLINE
+		STYLE_NORMAL = 0,
+		STYLE_BOLD = 1,
+		STYLE_ITALIC = 2,
+		STYLE_UNDERLINE = 4
 	};
 
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
