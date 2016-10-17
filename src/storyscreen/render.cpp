@@ -439,6 +439,21 @@ void part_ui::render_story_box()
 	SDL_Rect dstrect = {0,0,0,0};
 
 
+	// Convert the story part text alignment types into the Pango equivalents
+	PangoAlignment story_text_alignment = PANGO_ALIGN_LEFT;
+
+	switch(p_.story_text_alignment()) {
+	case part::TEXT_CENTERED:
+		story_text_alignment = PANGO_ALIGN_CENTER;
+		break;
+	case part::TEXT_RIGHT:
+		story_text_alignment = PANGO_ALIGN_RIGHT;
+		break;
+	default:
+		break; // already set before
+	}
+
+
 	while(true) {
 
 		if (dirty_) {
@@ -466,6 +481,7 @@ void part_ui::render_story_box()
 			t.set_text(p_.text(), false);
 		}
 		t.set_font_style(font::ttext::STYLE_NORMAL)
+				.set_alignment(story_text_alignment)
 				.set_font_size(storybox_font_size)
 				.set_foreground_color(storybox_font_color)
 				.set_maximum_width(max_width)

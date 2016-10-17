@@ -315,6 +315,11 @@ public:
 		return text_block_loc_;
 	}
 
+	/** Retrieves the alignment of the story text within the text area. */
+	TEXT_ALIGNMENT story_text_alignment() const {
+		return text_alignment_;
+	}
+
 	/** Retrieves the alignment of the title text against the screen. */
 	TEXT_ALIGNMENT title_text_alignment() const {
 		return title_alignment_;
@@ -341,6 +346,7 @@ private:
 	std::string text_;
 	std::string text_title_;
 	BLOCK_LOCATION text_block_loc_;
+	TEXT_ALIGNMENT text_alignment_;
 	TEXT_ALIGNMENT title_alignment_;
 
 	std::string music_;
