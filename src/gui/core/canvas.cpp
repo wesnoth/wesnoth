@@ -1204,7 +1204,7 @@ private:
 	unsigned font_size_;
 
 	/** The style of the text. */
-	unsigned font_style_;
+	font::ttext::FONT_STYLE font_style_;
 
 	/** The alignment of the text. */
 	tformula<PangoAlignment> text_alignment_;

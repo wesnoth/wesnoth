@@ -217,7 +217,7 @@ protected:
 		text_.set_font_size(font_size);
 	}
 
-	void set_font_style(const unsigned font_style)
+	void set_font_style(const font::ttext::FONT_STYLE font_style)
 	{
 		text_.set_font_style(font_style);
 	}

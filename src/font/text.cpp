@@ -39,11 +39,6 @@
 
 namespace font {
 
-const unsigned ttext::STYLE_NORMAL = TTF_STYLE_NORMAL;
-const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
-const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
-const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
-
 ttext::ttext() :
 #if PANGO_VERSION_CHECK(1,22,0)
 	context_(pango_font_map_create_context(pango_cairo_font_map_get_default())),
@@ -351,7 +346,7 @@ ttext& ttext::set_font_size(const unsigned font_size)
 	return *this;
 }
 
-ttext& ttext::set_font_style(const unsigned font_style)
+ttext& ttext::set_font_style(const ttext::FONT_STYLE font_style)
 {
 	if(font_style != font_style_) {
 		font_style_ = font_style;
@@ -512,7 +507,7 @@ void ttext::recalculate(const bool force) const
 		p_font font{get_font_families(font_class_), font_size_, font_style_};
 		pango_layout_set_font_description(layout_, font.get());
 
-		if(font_style_ & ttext::STYLE_UNDERLINE) {
+		if(font_style_ == ttext::STYLE_UNDERLINE) {
 			PangoAttrList *attribute_list = pango_attr_list_new();
 			pango_attr_list_insert(attribute_list
 					, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));

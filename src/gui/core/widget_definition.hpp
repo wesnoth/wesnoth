@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "font/font_options.hpp"
+#include "font/text.hpp"
 #include "gui/core/canvas.hpp"
 
 namespace gui2
@@ -58,7 +59,7 @@ struct tresolution_definition_
 	unsigned text_extra_height;
 	unsigned text_font_size;
 	font::family_class text_font_family;
-	int text_font_style;
+	font::ttext::FONT_STYLE text_font_style;
 
 	std::vector<tstate_definition> state;
 };

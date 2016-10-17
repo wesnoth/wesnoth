@@ -73,7 +73,6 @@ namespace font {
  * This class stores the text to draw and uses pango with the cairo backend to
  * render the text. See http://pango.org for more info.
  *
- * 
  */
 class ttext
 {
@@ -93,7 +92,6 @@ public:
 	 * redraws the surface before returning it.
 	 */
 	surface render() const;
-
 
 	/** Returns the width needed for the text. */
 	int get_width() const;
@@ -140,16 +138,12 @@ public:
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
-	/**
-	 * The flags have the same values as the ones in SDL_TTF so it's easy to mix
-	 * them for now. To avoid including SDL_TTF in the header they're only
-	 * declared here. Once SDL_TTF is removed they can be moved in the header.
-	 */
-
-	static const unsigned STYLE_NORMAL;     /**< Normal text. */
-	static const unsigned STYLE_BOLD;       /**< Bold text. */
-	static const unsigned STYLE_ITALIC;     /**< Italicized text. */
-	static const unsigned STYLE_UNDERLINE;  /**< Underlined text. */
+	enum FONT_STYLE {
+		STYLE_NORMAL,
+		STYLE_BOLD,
+		STYLE_ITALIC,
+		STYLE_UNDERLINE
+	};
 
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
 
@@ -228,7 +222,7 @@ public:
 
 	ttext& set_font_size(const unsigned font_size);
 
-	ttext& set_font_style(const unsigned font_style);
+	ttext& set_font_style(const FONT_STYLE font_style);
 
 	ttext& set_foreground_color(const Uint32 color);
 
@@ -287,7 +281,7 @@ private:
 	unsigned font_size_;
 
 	/** The style of the font, this is an orred mask of the font flags. */
-	unsigned font_style_;
+	FONT_STYLE font_style_;
 
 	/** The foreground color. */
 	Uint32 foreground_color_;

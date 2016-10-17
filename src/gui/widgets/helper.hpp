@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_HELPER_HPP_INCLUDED
 #define GUI_WIDGETS_HELPER_HPP_INCLUDED
 
+#include "font/text.hpp"
 #include "global.hpp"
 
 #include <pango/pango-layout.h>
@@ -97,7 +98,7 @@ std::string encode_text_alignment(const PangoAlignment alignment);
  *
  * @returns                       The font style.
  */
-unsigned decode_font_style(const std::string& style);
+font::ttext::FONT_STYLE decode_font_style(const std::string& style);
 
 /**
  * Returns a default error message if a mandatory widget is omitted.

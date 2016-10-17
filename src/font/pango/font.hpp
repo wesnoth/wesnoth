@@ -30,13 +30,13 @@ public:
 		pango_font_description_set_size(font_, size * PANGO_SCALE);
 
 		if(style != ttext::STYLE_NORMAL) {
-			if(style & ttext::STYLE_ITALIC) {
+			if(style == ttext::STYLE_ITALIC) {
 				pango_font_description_set_style(font_, PANGO_STYLE_ITALIC);
 			}
-			if(style & ttext::STYLE_BOLD) {
+			if(style == ttext::STYLE_BOLD) {
 				pango_font_description_set_weight(font_, PANGO_WEIGHT_BOLD);
 			}
-			if(style & ttext::STYLE_UNDERLINE) {
+			if(style == ttext::STYLE_UNDERLINE) {
 				/* Do nothing here, underline is a property of the layout. */
 			}
 		}

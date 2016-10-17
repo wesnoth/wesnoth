@@ -24,8 +24,6 @@
 #include "formula/string_utils.hpp"
 #include "tstring.hpp"
 
-#include <SDL_ttf.h>
-
 namespace gui2
 {
 
@@ -52,22 +50,25 @@ SDL_Rect create_rect(const tpoint& origin, const tpoint& size)
 	return sdl::create_rect(origin.x, origin.y, size.x, size.y);
 }
 
-unsigned decode_font_style(const std::string& style)
+font::ttext::FONT_STYLE decode_font_style(const std::string& style)
 {
-	if(style == "bold") {
-		return TTF_STYLE_BOLD;
-	} else if(style == "italic") {
-		return TTF_STYLE_ITALIC;
-	} else if(style == "underline") {
-		return TTF_STYLE_UNDERLINE;
-	} else if(style.empty() || style == "normal") {
-		return TTF_STYLE_NORMAL;
+	static std::map<std::string, font::ttext::FONT_STYLE> font_style_map = {
+		{"normal",    font::ttext::STYLE_NORMAL},
+		{"bold",      font::ttext::STYLE_BOLD},
+		{"italic",    font::ttext::STYLE_ITALIC},
+		{"underline", font::ttext::STYLE_UNDERLINE}
+	};
+
+	if(style.empty()) {
+		return font::ttext::STYLE_NORMAL;
 	}
 
-	ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead."
-			  << std::endl;
+	if(font_style_map.find(style) == font_style_map.end()) {
+		ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead." << std::endl;
+		return font::ttext::STYLE_NORMAL;
+	}
 
-	return TTF_STYLE_NORMAL;
+	return font_style_map[style];
 }
 
 uint32_t decode_color(const std::string& color)
