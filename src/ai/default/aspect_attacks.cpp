@@ -394,6 +394,9 @@ config aspect_attacks::to_config() const
 
 bool aspect_attacks::is_allowed_attacker(const unit& u) const
 {
+	if(u.side() != get_side()) {
+		return false;
+	}
 	if (filter_own_) {
 		return (*filter_own_)(u);
 	}
@@ -402,6 +405,10 @@ bool aspect_attacks::is_allowed_attacker(const unit& u) const
 
 bool aspect_attacks::is_allowed_enemy(const unit& u) const
 {
+	team& my_team = resources::gameboard->get_team(get_side());
+	if(!my_team.is_enemy(u.side())) {
+		return false;
+	}
 	if (filter_enemy_) {
 		return (*filter_enemy_)(u);
 	}
