@@ -85,7 +85,7 @@ return {
             local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'castle_switch'
             if AH.print_eval() then print_time('     - Evaluating castle_switch CA:') end
 
-            if ai.get_passive_leader() then
+            if ai.aspects.passive_leader then
                 -- Turn off this CA if the leader is passive
                 return 0
             end

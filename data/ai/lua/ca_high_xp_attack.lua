@@ -90,7 +90,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     local reaches = LS.create()
     local attacker_copies = LS.create()
 
-    local aggression = ai.get_aggression()
+    local aggression = ai.aspects.aggression
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
     local max_ca_score, max_rating, best_attack = 0, 0
     for _,target_info in ipairs(target_infos) do

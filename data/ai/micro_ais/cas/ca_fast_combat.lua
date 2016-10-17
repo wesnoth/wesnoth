@@ -65,7 +65,7 @@ function ca_fast_combat:evaluation(cfg, data)
         end
     end
 
-    local aggression = ai.get_aggression()
+    local aggression = ai.aspects.aggression
     if (aggression > 1) then aggression = 1 end
     local own_value_weight = 1. - aggression
 

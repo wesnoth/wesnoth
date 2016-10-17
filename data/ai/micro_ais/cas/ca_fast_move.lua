@@ -29,7 +29,7 @@ function ca_fast_move:execution(cfg)
     local goals = {}
 
     -- Villages get added first, so that (hopefully, scouts and faster units will go for them first)
-    local village_value = ai.get_village_value()
+    local village_value = ai.aspects.village_value
     if leader and (village_value > 0) then
         local villages = wesnoth.get_villages()
 

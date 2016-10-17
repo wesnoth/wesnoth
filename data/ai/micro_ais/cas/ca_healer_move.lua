@@ -61,7 +61,7 @@ function ca_healer_move:evaluation(cfg, data)
     local enemy_attack_map = BC.get_attack_map(enemies)
     for _,healee in ipairs(healees_MP) do wesnoth.put_unit(healee) end
 
-    local avoid_map = LS.of_pairs(ai.get_avoid())
+    local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
     local max_rating = -9e99
     for _,healer in ipairs(healers) do
