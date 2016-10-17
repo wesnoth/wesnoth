@@ -14,6 +14,7 @@
 
 #include "font_config.hpp"
 #include "font_description.hpp"
+#include "font/error.hpp"
 #include "sdl_ttf.hpp"
 
 #include "config.hpp"
@@ -183,18 +184,21 @@ const t_string& get_font_families(family_class fclass)
 manager::manager()
 {
 #ifdef CAIRO_HAS_FT_FONT
+	std::string font_path = game_config::path + "/fonts";
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
-		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))
+		reinterpret_cast<const FcChar8 *>(font_path.c_str())))
 	{
 		ERR_FT << "Could not load the true type fonts" << std::endl;
-		throw error();
+		throw font::error("font config lib failed to add the font path: '" + font_path + "'");
 	}
 
+	std::string font_file = font_path + "/fonts.conf";
 	if(!FcConfigParseAndLoad(FcConfigGetCurrent(),
-							 reinterpret_cast<const FcChar8*>((game_config::path + "/fonts/fonts.conf").c_str()),
+							 reinterpret_cast<const FcChar8*>(font_file.c_str()),
 							 FcFalse))
 	{
 		ERR_FT << "Could not load local font configuration\n";
+		throw font::error("font config lib failed to find font.conf: '" + font_file + "'");
 	}
 	else
 	{

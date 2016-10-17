@@ -20,7 +20,6 @@
  * sdl_ttf raii object.
  */
 
-#include "exceptions.hpp"
 #include "font_options.hpp"
 #include "sdl_ttf.hpp"
 
@@ -43,9 +42,6 @@ struct manager {
 	manager(const manager &) = delete;
 	manager & operator = (const manager &) = delete;
 
-	struct error : public game::error {
-		error() : game::error("Font initialization failed") {}
-	};
 private:
 
     /** Initialize sdl_ttf concurrent with font::manager lifetime */

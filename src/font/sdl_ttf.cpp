@@ -14,6 +14,7 @@
 
 #include "sdl_ttf.hpp"
 
+#include "font/error.hpp"
 #include "font_config.hpp"
 #include "font_id.hpp"
 #include "text_cache.hpp"
@@ -490,7 +491,7 @@ sdl_ttf::sdl_ttf() {
 	const int res = TTF_Init();
 	if(res == -1) {
 		ERR_FT << "Could not initialize SDL_TTF" << std::endl;
-		throw manager::error();
+		throw font::error("SDL_TTF could not initialize, TTF_INIT returned: " + std::to_string(res));
 	} else {
 		LOG_FT << "Initialized true type fonts\n";
 	}

@@ -23,17 +23,18 @@
 #include "filesystem.hpp"               // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/font_config.hpp"         // for load_font_config, etc
-#include "formula/formula.hpp"                  // for formula_error
+#include "font/error.hpp"				// for error
+#include "formula/formula.hpp"          // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
 #include "game_end_exceptions.hpp"
-#include "game_launcher.hpp"          // for game_launcher, etc
+#include "game_launcher.hpp"          	// for game_launcher, etc
 #include "gettext.hpp"
-#include "gui/core/event/handler.hpp"  // for tmanager
+#include "gui/core/event/handler.hpp"  	// for tmanager
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
-#include "gui/dialogs/message.hpp" 	// for show_error_message
+#include "gui/dialogs/message.hpp" 		// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "image.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
@@ -1058,7 +1059,7 @@ int main(int argc, char** argv)
 	} catch(CVideo::error & e) {
 		std::cerr << "Could not initialize video.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
-	} catch(font::manager::error & e) {
+	} catch(font::error & e) {
 		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
 	} catch(config::error& e) {
