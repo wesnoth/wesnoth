@@ -1055,11 +1055,11 @@ int main(int argc, char** argv)
 	} catch(boost::program_options::error& e) {
 		std::cerr << "Error in command line: " << e.what() << '\n';
 		error_exit(1);
-	} catch(CVideo::error&) {
-		std::cerr << "Could not initialize video. Exiting.\n";
+	} catch(CVideo::error & e) {
+		std::cerr << "Could not initialize video.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
-	} catch(font::manager::error&) {
-		std::cerr << "Could not initialize fonts. Exiting.\n";
+	} catch(font::manager::error & e) {
+		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
 		error_exit(1);
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";

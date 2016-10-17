@@ -108,7 +108,7 @@ private:
 	//Never null.
 	const std::unique_ptr<CVideo> video_;
 
-	const font::manager font_manager_;
+	font::manager font_manager_;
 	const preferences::manager prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;

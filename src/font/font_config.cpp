@@ -177,24 +177,10 @@ const t_string& get_font_families(family_class fclass)
 }
 
 /***
- * Manager methods
+ * Manager member functions
  */
 
-manager::manager() {
-	this->init();
-}
-
-manager::~manager() {
-	this->deinit();
-}
-
-void manager::update_font_path() const
-{
-	this->deinit();
-	this->init();
-}
-
-void manager::init() const
+manager::manager()
 {
 #ifdef CAIRO_HAS_FT_FONT
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
@@ -233,7 +219,7 @@ void manager::init() const
 #endif
 }
 
-void manager::deinit() const
+manager::~manager()
 {
 #ifdef CAIRO_HAS_FT_FONT
 	FcConfigAppFontClear(FcConfigGetCurrent());

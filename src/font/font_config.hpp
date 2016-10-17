@@ -28,7 +28,13 @@ class t_string;
 
 namespace font {
 
-//object which initializes and destroys structures needed for fonts
+// Object which initializes font rendering libraries and related caches.
+// When it is created, the font directory is found within game_config::path.
+// If that path changes then this object should be destroyed and recreated.
+//
+// You should not use GUI1 or GUI2 or any font api function unless a
+// font::manager is alive.
+// Don't create two font::manager objects at once.
 //
 struct manager {
 	manager();
@@ -37,22 +43,10 @@ struct manager {
 	manager(const manager &) = delete;
 	manager & operator = (const manager &) = delete;
 
-	/**
-	 * Updates the font path, when initialized it sets the fontpath to
-	 * game_config::path. When this path is updated, this function should be
-	 * called.
-	 */
-	void update_font_path() const;
-
 	struct error : public game::error {
 		error() : game::error("Font initialization failed") {}
 	};
 private:
-	/** Initializes the font path. */
-	void init() const;
-
-	/** Deinitializes the font path. */
-	void deinit() const;
 
     /** Initialize sdl_ttf concurrent with font::manager lifetime */
 	sdl_ttf sdl_ttf_initializer_;
@@ -61,6 +55,8 @@ private:
 /***
  * load_font_config actually searches the game font path for fonts, and refreshes
  * the set of loaded fonts
+ *
+ * Returns true in case of success
  */
 bool load_font_config();
 

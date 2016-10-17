@@ -65,6 +65,7 @@
 #include <boost/optional.hpp>           // for optional
 #include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
+#include <new>
 #include <utility>                      // for pair
 #include <SDL.h>                        // for SDL_INIT_JOYSTICK, etc
 #include <SDL_events.h>                 // for SDL_ENABLE
@@ -139,7 +140,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	)
 	{
 		game_config::path = filesystem::get_cwd() + '/' + game_config::path;
-		font_manager_.update_font_path();
+		// font_manager_.update_font_path()
+		// To update the font path, destroy and recreate the manager
+		font_manager_.~manager();
+		new (&font_manager_) font::manager();
 	}
 
 	const std::string app_basename = filesystem::base_name(appname);
