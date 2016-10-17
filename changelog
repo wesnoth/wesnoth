@@ -69,6 +69,8 @@ Version 1.13.5+dev:
    * Tweaked the border/groove color scheme on textboxes and sliders to better
      reflect their state and mimic window and button borders.
    * Textboxes now have a blinking cursor when focused.
+   * The following dialogs have been converted to GUI2: Unit Recall, Unit List,
+     Game Stats, MP Create, MP Game Lobby, Faction Select, Unit Advance.
  * WML Engine:
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the
@@ -129,6 +131,8 @@ Version 1.13.5+dev:
      * Own and allied units on tunnel exits do not block the tunnel any more.
        The blocking behavior can be reenabled by setting pass_allied_units=no
        in the [tunnel] tag.
+   * Added text_alignment= key to [story][part] to specify horizonal alignment of
+     text.
  * Lua API:
    * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
      old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
