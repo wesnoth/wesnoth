@@ -71,19 +71,19 @@ void text_surface::bidi_cvt()
 #endif
 
 text_surface::text_surface(std::string const &str, int size,
-		SDL_Color color, int style) :
-	hash_(0),
-	font_size_(size),
-	color_(color),
-	style_(style),
-	w_(-1),
-	h_(-1),
-	str_(str),
-	initialized_(false),
-	chunks_(),
-	surfs_()
+		SDL_Color color, int style)
+	: hash_(0)
+	, font_size_(size)
+	, color_(color)
+	, style_(style)
+	, w_(-1)
+	, h_(-1)
+	, str_(str)
+	, initialized_(false)
+	, chunks_()
+	, surfs_()
 #ifdef	HAVE_FRIBIDI
-	,is_rtl_(false)
+	, is_rtl_(false)
 #endif
 {
 #ifdef	HAVE_FRIBIDI

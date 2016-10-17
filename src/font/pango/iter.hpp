@@ -27,8 +27,8 @@ class p_itor
 {
 public:
 
-	explicit p_itor(PangoLayout* layout_) :
-		itor_(pango_layout_get_iter(layout_))
+	explicit p_itor(PangoLayout* layout_)
+		: itor_(pango_layout_get_iter(layout_))
 	{
 	}
 

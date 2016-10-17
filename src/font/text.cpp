@@ -39,34 +39,34 @@
 
 namespace font {
 
-ttext::ttext() :
+ttext::ttext()
 #if PANGO_VERSION_CHECK(1,22,0)
-	context_(pango_font_map_create_context(pango_cairo_font_map_get_default())),
+	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()))
 #else
-	context_(pango_cairo_font_map_create_context((
-		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())))),
+	, context_(pango_cairo_font_map_create_context((
+		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default()))))
 #endif
-	layout_(pango_layout_new(context_)),
-	rect_(),
-	surface_(),
-	text_(),
-	markedup_text_(false),
-	link_aware_(false),
-	link_color_(),
-	font_class_(font::FONT_SANS_SERIF),
-	font_size_(14),
-	font_style_(STYLE_NORMAL),
-	foreground_color_(0xFFFFFFFF), // solid white
-	maximum_width_(-1),
-	characters_per_line_(0),
-	maximum_height_(-1),
-	ellipse_mode_(PANGO_ELLIPSIZE_END),
-	alignment_(PANGO_ALIGN_LEFT),
-	maximum_length_(std::string::npos),
-	calculation_dirty_(true),
-	length_(0),
-	surface_dirty_(true),
-	surface_buffer_()
+	, layout_(pango_layout_new(context_))
+	, rect_()
+	, surface_()
+	, text_()
+	, markedup_text_(false)
+	, link_aware_(false)
+	, link_color_()
+	, font_class_(font::FONT_SANS_SERIF)
+	, font_size_(14)
+	, font_style_(STYLE_NORMAL)
+	, foreground_color_(0xFFFFFFFF) // solid white
+	, maximum_width_(-1)
+	, characters_per_line_(0)
+	, maximum_height_(-1)
+	, ellipse_mode_(PANGO_ELLIPSIZE_END)
+	, alignment_(PANGO_ALIGN_LEFT)
+	, maximum_length_(std::string::npos)
+	, calculation_dirty_(true)
+	, length_(0)
+	, surface_dirty_(true)
+	, surface_buffer_()
 {
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_, 72.0);

@@ -23,8 +23,8 @@ namespace font {
 class p_font
 {
 public:
-	p_font(const std::string& name, const unsigned size, const unsigned style) :
-		font_(pango_font_description_new())
+	p_font(const std::string& name, const unsigned size, const unsigned style)
+		: font_(pango_font_description_new())
 	{
 		pango_font_description_set_family(font_, name.c_str());
 		pango_font_description_set_size(font_, size * PANGO_SCALE);
