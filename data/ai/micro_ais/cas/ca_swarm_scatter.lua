@@ -3,8 +3,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_enemies(cfg)
     local scatter_distance = cfg.scatter_distance or 3
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+    local enemies = AH.get_attackable_enemies {
         { "filter_location",
             { radius = scatter_distance, { "filter", { side = wesnoth.current.side } } }
         }
@@ -49,6 +48,9 @@ function ca_swarm_scatter:execution(cfg)
             end)
 
             AH.movefull_stopunit(ai, unit, best_hex)
+
+            -- Reconsider, as situation on the map might have changed
+            return
         end
     end
 end

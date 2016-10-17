@@ -24,10 +24,7 @@ function ca_zone_guardian:execution(cfg)
 
     local zone = H.get_child(cfg, "filter_location")
     local zone_enemy = H.get_child(cfg, "filter_location_enemy") or zone
-    local enemies = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "filter_location", zone_enemy }
-        }
+    local enemies = AH.get_attackable_enemies { { "filter_location", zone_enemy } }
     if enemies[1] then
         local min_dist, target = 9e99
         for _,enemy in ipairs(enemies) do
@@ -44,8 +41,10 @@ function ca_zone_guardian:execution(cfg)
             local best_defense, attack_loc = -9e99
             for xa,ya in H.adjacent_tiles(target.x, target.y) do
                 -- Only consider unoccupied hexes
-                local occ_hex = wesnoth.get_units { x = xa, y = ya, { "not", { id = guardian.id } } }[1]
-                if not occ_hex then
+                local unit_in_way = wesnoth.get_unit(xa, ya)
+                if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
+                    or (unit_in_way == guardian)
+                then
                     local defense = 100 - wesnoth.unit_defense(guardian, wesnoth.get_terrain(xa, ya))
                     local nh = AH.next_hop(guardian, xa, ya)
                     if nh then
@@ -58,11 +57,7 @@ function ca_zone_guardian:execution(cfg)
 
             -- If a valid hex was found: move there and attack
             if attack_loc then
-                AH.movefull_stopunit(ai, guardian, attack_loc)
-                if (not guardian) or (not guardian.valid) then return end
-                if (not target) or (not target.valid) then return end
-
-                AH.checked_attack(ai, guardian, target)
+                AH.robust_move_and_attack(ai, guardian, attack_loc, target)
             else  -- Otherwise move toward that enemy
                 local reach = wesnoth.find_reach(guardian)
 
@@ -71,8 +66,10 @@ function ca_zone_guardian:execution(cfg)
                 local min_dist, nh = 9e99
                 for _,hex in ipairs(reach) do
                     -- Only consider unoccupied hexes
-                    local occ_hex = wesnoth.get_units { x = hex[1], y = hex[2], { "not", { id = guardian.id } } }[1]
-                    if not occ_hex then
+                    local unit_in_way = wesnoth.get_unit(hex[1], hex[2])
+                    if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
+                        or (unit_in_way == guardian)
+                    then
                         local dist = H.distance_between(hex[1], hex[2], target.x, target.y)
                         if (dist < min_dist) then
                             min_dist, nh = dist, { hex[1], hex[2] }

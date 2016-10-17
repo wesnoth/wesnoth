@@ -18,20 +18,16 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
 
     -- Is there an enemy unit on the second path hex?
     -- This would be caught by the adjacent hex check later, but not in the right order
-    local enemy = wesnoth.get_units { x = path[2][1], y = path[2][2],
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }[1]
-    if enemy then return enemy end
+    local enemy = wesnoth.get_unit(path[2][1], path[2][2])
+    if AH.is_attackable_enemy(enemy) then return enemy end
 
     -- After that, go through adjacent hexes of all the other path hexes
     for i = 2,#path do
         local sub_path, sub_cost = wesnoth.find_path(messenger, path[i][1], path[i][2], { ignore_units = true })
         if (sub_cost <= messenger.moves) then
             for xa,ya in H.adjacent_tiles(path[i][1], path[i][2]) do
-                local enemy = wesnoth.get_units { x = xa, y = ya,
-                    { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-                }[1]
-                if enemy then return enemy end
+                local enemy = wesnoth.get_unit(xa, ya)
+                if AH.is_attackable_enemy(enemy) then return enemy end
             end
         else  -- If we've reached the end of the path for this turn
             return
@@ -48,7 +44,6 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
 
     local enemy_in_way = messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     if (not enemy_in_way) then return end
-
 
     local filter = H.get_child(cfg, "filter") or { id = cfg.id }
     local units = AH.get_units_with_attacks {
@@ -113,14 +108,7 @@ function ca_messenger_attack:evaluation(cfg)
 end
 
 function ca_messenger_attack:execution(cfg)
-    local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
-    local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
-
-    AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
-    if (not attacker) or (not attacker.valid) then return end
-    if (not defender) or (not defender.valid) then return end
-
-    AH.checked_attack(ai, attacker, defender)
+    AH.robust_move_and_attack(ai, best_attack.src, best_attack.dst, best_attack.target)
     best_attack = nil
 end
 

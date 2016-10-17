@@ -100,11 +100,7 @@ function ca_fast_move:execution(cfg)
     end
 
     -- Now add enemy leaders to the goals
-    local enemy_leaders =
-        wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            canrecruit = 'yes'
-        }
+    local enemy_leaders = AH.get_attackable_enemies { canrecruit = 'yes' }
 
     -- Sort enemy leaders by distance to AI leader
     if leader then
@@ -212,7 +208,9 @@ function ca_fast_move:execution(cfg)
                     local unit_in_way
                     if (rating > max_rating) then
                         unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-                        if (unit_in_way == unit) then unit_in_way = nil end
+                        if (unit_in_way == unit) or (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
+                            unit_in_way = nil
+                        end
 
                         if unit_in_way and (unit_in_way.side == unit.side) then
                             local reach = AH.get_reachable_unocc(unit_in_way)
@@ -271,7 +269,7 @@ function ca_fast_move:execution(cfg)
 
             if best_hex then
                 local dx, dy = goal.x - best_hex[1], goal.y - best_hex[2]
-                AH.movefull_outofway_stopunit(ai, unit, best_hex[1], best_hex[2], { dx = dx, dy = dy })
+                AH.robust_move_and_attack(ai, unit, best_hex, nil, { dx = dx, dy = dy })
             end
 
             -- Also remove this unit from all the tables; using table.remove is fine here

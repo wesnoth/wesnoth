@@ -20,9 +20,7 @@ end
 
 function ca_lurkers:execution(cfg)
     local lurker = get_lurker(cfg)
-    local targets = AH.get_live_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local targets = AH.get_attackable_enemies()
 
     -- Sort targets by hitpoints (lurkers choose lowest HP target)
     table.sort(targets, function(a, b) return (a.hitpoints < b.hitpoints) end)
@@ -38,10 +36,10 @@ function ca_lurkers:execution(cfg)
 
     -- Need to restrict that to reachable and not occupied by an ally (except own position)
     local reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
-        local occ_hex = wesnoth.get_units {
+        local occ_hex = AH.get_visible_units(wesnoth.current.side, {
             x = x, y = y,
             { "not", { x = lurker.x, y = lurker.y } }
-        }[1]
+        })[1]
         return not occ_hex
     end)
 
@@ -58,12 +56,7 @@ function ca_lurkers:execution(cfg)
             local rand = math.random(1, reachable_attack_terrrain_adj_target:size())
             local dst = reachable_attack_terrrain_adj_target:to_stable_pairs()
 
-            AH.movefull_stopunit(ai, lurker, dst[rand])
-            if (not lurker) or (not lurker.valid) then return end
-            if (not target) or (not target.valid) then return end
-            if (H.distance_between(lurker.x, lurker.y, target.x, target.y) ~= 1) then return end
-
-            AH.checked_attack(ai, lurker, target)
+            AH.robust_move_and_attack(ai, lurker, dst[rand], target)
             return
        end
     end
@@ -79,10 +72,10 @@ function ca_lurkers:execution(cfg)
 
         -- Need to restrict that to reachable and not occupied by an ally (except own position)
         local reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
-            local occ_hex = wesnoth.get_units {
+            local occ_hex = AH.get_visible_units(wesnoth.current.side, {
                 x = x, y = y,
                 { "not", { x = lurker.x, y = lurker.y } }
-            }[1]
+            })[1]
             return not occ_hex
         end)
 

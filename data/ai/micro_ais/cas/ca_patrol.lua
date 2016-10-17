@@ -48,19 +48,18 @@ function ca_patrol:execution(cfg)
     while patrol.moves > 0 do
         -- Check whether one of the enemies to be attacked is next to the patroller
         -- If so, don't move, but attack that enemy
-        local adjacent_enemy = wesnoth.get_units {
+        local adjacent_enemy = AH.get_attackable_enemies {
             id = cfg.attack,
-            { "filter_adjacent", { id = patrol.id } },
-            { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
+            { "filter_adjacent", { id = patrol.id } }
         }[1]
         if adjacent_enemy then break end
 
         -- Also check whether we're next to any unit (enemy or ally) which is on the next waypoint
-        local unit_on_wp = wesnoth.get_units {
+        local unit_on_wp = AH.get_visible_units(wesnoth.current.side, {
             x = patrol_vars.patrol_x,
             y = patrol_vars.patrol_y,
             { "filter_adjacent", { id = patrol.id } }
-        }[1]
+        })[1]
 
         for i,wp in ipairs(waypoints) do
             -- If the patrol is on a waypoint or adjacent to one that is occupied by any unit
@@ -121,20 +120,18 @@ function ca_patrol:execution(cfg)
     -- Attack unit on the last waypoint under all circumstances if cfg.one_time_only is set
     local adjacent_enemy
     if cfg.one_time_only then
-        adjacent_enemy = wesnoth.get_units{
+        adjacent_enemy = AH.get_attackable_enemies {
             x = waypoints[n_wp][1],
             y = waypoints[n_wp][2],
-            { "filter_adjacent", { id = patrol.id } },
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
+            { "filter_adjacent", { id = patrol.id } }
         }[1]
     end
 
     -- Otherwise attack adjacent enemy (if specified)
     if (not adjacent_enemy) then
-        adjacent_enemy = wesnoth.get_units{
+        adjacent_enemy = AH.get_attackable_enemies {
             id = cfg.attack,
-            { "filter_adjacent", { id = patrol.id } },
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
+            { "filter_adjacent", { id = patrol.id } }
         }[1]
     end
 

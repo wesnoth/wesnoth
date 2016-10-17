@@ -27,9 +27,7 @@ function ca_protect_unit_move:execution(cfg, data)
     for _,unit in ipairs(protected_units) do wesnoth.extract_unit(unit) end
 
     local units = wesnoth.get_units { side = wesnoth.current.side }
-    local enemy_units = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemy_units = AH.get_attackable_enemies()
 
     local attack_map = BC.get_attack_map(units).units  -- enemy attack map
     local enemy_attack_map = BC.get_attack_map(enemy_units).units  -- enemy attack map

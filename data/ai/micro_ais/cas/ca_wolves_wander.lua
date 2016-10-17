@@ -29,9 +29,7 @@ function ca_wolves_wander:execution(cfg)
         reach_map:union_merge(r, function(x, y, v1, v2) return (v1 or 0) + (v2 or 0) end)
     end
 
-    local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local avoid_units = AH.get_attackable_enemies({ type = cfg.avoid_type })
     local avoid_map = BC.get_attack_map(avoid_units).units
 
     local max_rating, goal_hex = -9e99
@@ -55,6 +53,9 @@ function ca_wolves_wander:execution(cfg)
         end)
 
         AH.movefull_stopunit(ai, wolf, best_hex)
+        for _,check_wolf in ipairs(wolves) do
+            if (not check_wolf) or (not check_wolf.valid) then return end
+        end
     end
 end
 

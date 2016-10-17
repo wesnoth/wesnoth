@@ -27,11 +27,13 @@ function ca_big_animals:execution(cfg)
     local avoid_tag = H.get_child(cfg, "avoid_unit")
     local avoid_map = LS.create()
     if avoid_tag then
-        avoid_map = LS.of_pairs(wesnoth.get_locations { radius = 1,
-            { "filter", { { "and", avoid_tag },
-                { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-            } }
-        })
+        local enemies_to_be_avoided = AH.get_attackable_enemies(avoid_tag)
+        for _,enemy in ipairs(enemies_to_be_avoided) do
+            avoid_map:insert(enemy.x, enemy.y)
+            for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+                avoid_map:insert(xa, ya)
+            end
+        end
     end
 
     local goal = MAIUV.get_mai_unit_variables(unit, cfg.ai_id)
@@ -64,7 +66,7 @@ function ca_big_animals:execution(cfg)
         local enemy_hp = 500
         for xa,ya in H.adjacent_tiles(x, y) do
             local enemy = wesnoth.get_unit(xa, ya)
-            if enemy and wesnoth.is_enemy(enemy.side, wesnoth.current.side) then
+            if AH.is_attackable_enemy(enemy) then
                 if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
             end
         end
@@ -96,7 +98,7 @@ function ca_big_animals:execution(cfg)
     local min_hp, target = 9e99
     for xa,ya in H.adjacent_tiles(unit.x, unit.y) do
         local enemy = wesnoth.get_unit(xa, ya)
-        if enemy and wesnoth.is_enemy(enemy.side, wesnoth.current.side) then
+        if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
                 min_hp, target = enemy.hitpoints, enemy
             end

@@ -40,7 +40,7 @@ end
 function ca_forest_animals_move:execution(cfg)
     -- These animals run from any enemy
     local unit = get_forest_animals(cfg)[1]
-    local enemies = wesnoth.get_units { { "filter_side", { { "enemy_of", {side = wesnoth.current.side } } } } }
+    local enemies = AH.get_attackable_enemies()
 
     -- Get the locations of all the rabbit holes
     W.store_items { variable = 'holes_wml' }
@@ -108,17 +108,20 @@ function ca_forest_animals_move:execution(cfg)
             if (best_hex) then
                 local x,y = wesnoth.find_vacant_tile(best_hex[1], best_hex[2], unit)
                 local next_hop = AH.next_hop(unit, x, y)
+                if (not next_hop) then next_hop = { unit.x, unit.y } end
 
                 if (unit.x ~= next_hop[1]) or (unit.y ~= next_hop[2]) then
                     AH.checked_move(ai, unit, next_hop[1], next_hop[2])
                 end
             end
         end
-    end
 
-    -- Now we check for close enemies again, as we might just have moved within reach of some
-    local close_enemies = {}
-    if unit and unit.valid then
+        if (not unit) or (not unit.valid) then return end
+
+        -- We cannot return here, as the above might not have resulted in a move,
+        -- but we need to get the enemies again, in case a WML event or ambush changed something
+        enemies = AH.get_attackable_enemies()
+        close_enemies = {}
         for _,enemy in ipairs(enemies) do
             if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
                 table.insert(close_enemies, enemy)
@@ -149,17 +152,16 @@ function ca_forest_animals_move:execution(cfg)
         end)
 
         AH.movefull_stopunit(ai, unit, farthest_hex)
+        if (not unit) or (not unit.valid) then return end
 
         -- If this is a rabbit ending on a hole -> disappears
-        if unit and unit.valid
-            and (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2])
-        then
+        if (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2]) then
             local command =  "wesnoth.erase_unit(x1, y1)"
             ai.synced_command(command, farthest_hex[1], farthest_hex[2])
         end
     end
 
-    -- Finally, take moves away, as only partial move might have been done
+    -- Finally, take moves away, as only partial (or no) move might have been done
     -- Also take attacks away, as these units never attack
     if unit and unit.valid then AH.checked_stopunit_all(ai, unit) end
 end

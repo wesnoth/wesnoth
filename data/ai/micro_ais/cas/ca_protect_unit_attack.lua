@@ -18,9 +18,7 @@ function ca_protect_unit_attack:evaluation(cfg)
     local attacks = AH.get_attacks(units, { simulate_combat = true })
     if (not attacks[1]) then return 0 end
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
 
     -- Counter attack calculation
     local enemy_attacks = {}
@@ -102,14 +100,7 @@ function ca_protect_unit_attack:evaluation(cfg)
 end
 
 function ca_protect_unit_attack:execution(cfg)
-    local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
-    local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
-
-    AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
-    if (not attacker) or (not attacker.valid) then return end
-    if (not defender) or (not defender.valid) then return end
-
-    AH.checked_attack(ai, attacker, defender)
+    AH.robust_move_and_attack(ai, best_attack.src, best_attack.dst, best_attack.target)
     best_attack = nil
 end
 

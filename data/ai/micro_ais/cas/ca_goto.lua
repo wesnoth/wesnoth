@@ -93,17 +93,27 @@ function ca_goto:execution(cfg, data)
             H.wml_error("Goto AI avoid_enemies= argument must be >0")
         end
 
-        local enemies = wesnoth.get_units { { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } } }
+        local enemies = AH.get_visible_units(wesnoth.current.side, {
+            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+        })
+        local live_enemies = {}
+        for _,enemy in ipairs(enemies) do
+            if (not enemy.status.petrified) then
+                table.insert(live_enemies, enemy)
+            end
+        end
 
         enemy_map = LS.create()
         for _,enemy in ipairs(enemies) do
             enemy_map:insert(enemy.x, enemy.y, (enemy_map:get(enemy.x, enemy.y) or 0) + 1000)
+        end
+        for _,enemy in ipairs(live_enemies) do
             for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
                 enemy_map:insert(xa, ya, (enemy_map:get(xa, ya) or 0) + 10)
             end
         end
 
-        enemy_attack_map = BC.get_attack_map(enemies)
+        enemy_attack_map = BC.get_attack_map(live_enemies)
     end
 
     local max_rating, closest_hex, best_path, best_unit = -9e99
@@ -192,7 +202,7 @@ function ca_goto:execution(cfg, data)
         local sub_path, sub_cost = wesnoth.find_path(best_unit, best_path[i][1], best_path[i][2], cfg)
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.get_unit(best_path[i][1], best_path[i][2])
-            if not unit_in_way then
+            if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                 closest_hex = best_path[i]
             end
         else

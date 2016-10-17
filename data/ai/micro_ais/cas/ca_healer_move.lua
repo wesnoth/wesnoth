@@ -56,9 +56,7 @@ function ca_healer_move:evaluation(cfg, data)
         end
     end
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
     for _,healee in ipairs(healees_MP) do wesnoth.extract_unit(healee) end
     local enemy_attack_map = BC.get_attack_map(enemies)
     for _,healee in ipairs(healees_MP) do wesnoth.put_unit(healee) end
@@ -126,7 +124,7 @@ function ca_healer_move:evaluation(cfg, data)
 end
 
 function ca_healer_move:execution(cfg)
-    AH.movefull_outofway_stopunit(ai, best_healer, best_hex)
+    AH.robust_move_and_attack(ai, best_healer, best_hex)
     best_healer, best_hex = nil, nil
 end
 

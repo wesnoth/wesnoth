@@ -26,12 +26,12 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         if (not leader) then return 0 end
         excluded_enemies = FAU.get_attackers(data, "enemy")
     else
-        leader = wesnoth.get_units(
+        leader = AH.get_live_units(
             FAU.build_attack_filter("leader", filter_own)
         )[1]
         if (not leader) then return 0 end
         if filter_enemy then
-            excluded_enemies = wesnoth.get_units(
+            excluded_enemies = AH.get_live_units(
                 FAU.build_attack_filter("enemy", filter_enemy)
             )
         end
@@ -50,7 +50,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
     -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
     if (not cfg.attack_hidden_enemies) then
-        local hidden_enemies = wesnoth.get_units {
+        local hidden_enemies = AH.get_live_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
             { "filter_vision", { side = wesnoth.current.side, visible = 'no' } }
         }
@@ -70,7 +70,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     -- Enemy power and number maps
     -- Currently, the power is simply the summed hitpoints of all enemies that
     -- can get to a hex
-    local enemies = wesnoth.get_units {
+    local enemies = AH.get_live_units {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
     }
 
@@ -184,15 +184,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 end
 
 function ca_fast_combat_leader:execution(cfg, data)
-    local leader = data.leader
-    AH.movefull_outofway_stopunit(ai, leader, data.fast_dst.x, data.fast_dst.y)
-
-    if (not leader) or (not leader.valid) then return end
-    if (not data.fast_target) or (not data.fast_target.valid) then return end
-    if (H.distance_between(leader.x, leader.y, data.fast_target.x, data.fast_target.y) ~= 1) then return end
-
-    AH.checked_attack(ai, leader, data.fast_target)
-
+    AH.robust_move_and_attack(ai, data.leader, data.fast_dst, data.fast_target)
     data.leader = nil
 end
 

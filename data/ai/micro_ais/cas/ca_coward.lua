@@ -25,9 +25,10 @@ function ca_coward:execution(cfg)
     local filter_second =
         H.get_child(cfg, "filter_second")
         or { { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } } }
-    local enemies = wesnoth.get_units {
+    local enemies = AH.get_live_units {
         { "and", filter_second },
-        { "filter_location", { x = coward.x, y = coward.y, radius = cfg.distance } }
+        { "filter_location", { x = coward.x, y = coward.y, radius = cfg.distance } },
+        { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } }
     }
 
     -- If no enemies are close: keep unit from doing anything and exit
@@ -38,8 +39,10 @@ function ca_coward:execution(cfg)
 
     for i,hex in ipairs(reach) do
         -- Only consider unoccupied hexes
-        local occ_hex = wesnoth.get_units { x = hex[1], y = hex[2], { "not", { id = coward.id } } }[1]
-        if not occ_hex then
+        local unit_in_way = wesnoth.get_unit(hex[1], hex[2])
+        if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
+            or (unit_in_way == coward)
+        then
             local rating = 0
             for _,enemy in ipairs(enemies) do
                 local dist = H.distance_between(hex[1], hex[2], enemy.x, enemy.y)

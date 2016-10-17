@@ -10,7 +10,7 @@ local function get_sheep(cfg)
 end
 
 local function get_dogs(cfg)
-    local dogs = AH.get_units_with_moves {
+    local dogs = AH.get_units_with_attacks {
         side = wesnoth.current.side,
         { "and", H.get_child(cfg, "filter") }
     }
@@ -18,8 +18,7 @@ local function get_dogs(cfg)
 end
 
 local function get_enemies(cfg, radius)
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+    local enemies = AH.get_attackable_enemies {
         { "filter_location",
             { radius = radius,
             { "filter", { side = wesnoth.current.side, { "and", H.get_child(cfg, "filter_second") } } } }
@@ -74,19 +73,21 @@ function ca_herding_attack_close_enemy:execution(cfg)
 
     -- If we found a move, we do it, and attack if possible
     if best_dog then
-        AH.movefull_stopunit(ai, best_dog, best_hex)
-        if (not best_dog) or (not best_dog.valid) then return end
-        if (not best_enemy) or (not best_enemy.valid) then return end
-
-        if H.distance_between(best_dog.x, best_dog.y, best_enemy.x, best_enemy.y) == 1 then
-            AH.checked_attack(ai, best_dog, best_enemy)
-        end
+        AH.robust_move_and_attack(ai, best_dog, best_hex, best_enemy)
         return
     end
 
     -- If we got here, no enemies to attack where found, so we go on to block other enemies
     local radius = cfg.attention_distance or 8
     local enemies = get_enemies(cfg, radius)
+
+    -- We also need to remove dogs that have no moves left, since selection was done on attacks_left
+    for i=#dogs,1,-1 do
+        if (dogs[i].moves == 0) then
+            table.remove(dogs, i)
+        end
+    end
+    if (not dogs[1]) then return end
 
     -- Find closest sheep/enemy pair first
     local min_dist, closest_sheep, closest_enemy = 9e99

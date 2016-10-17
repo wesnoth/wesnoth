@@ -185,7 +185,7 @@ local function bottleneck_move_out_of_way(unit_in_way, data)
 
     local reach = wesnoth.find_reach(unit_in_way)
 
-    local all_units = wesnoth.get_units()
+    local all_units = AH.get_visible_units(wesnoth.current.side)
     local occ_hexes = LS:create()
     for _,unit in ipairs(all_units) do
         occ_hexes:insert(unit.x, unit.y)
@@ -309,14 +309,15 @@ function ca_bottleneck_move:evaluation(cfg, data)
         if (not best_move_away) then current_rating_map:insert(unit.x, unit.y, 20000) end
     end
 
-    local enemies = AH.get_live_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
     local attacks = {}
     for _,enemy in ipairs(enemies) do
         for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
             if data.BD_is_my_territory:get(xa, ya) then
                 local unit_in_way = wesnoth.get_unit(xa, ya)
+                if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
+                    unit_in_way = nil
+                end
                 local data = { x = xa, y = ya,
                     defender = enemy,
                     defender_level = enemy.level,
@@ -330,10 +331,10 @@ function ca_bottleneck_move:evaluation(cfg, data)
     -- Get a map of the allies, as hexes occupied by allied units count as
     -- reachable, but must be excluded. This could also be done below by
     -- using bottleneck_move_out_of_way(), but this is much faster
-    local allies = AH.get_live_units {
+    local allies = AH.get_visible_units(wesnoth.current.side, {
         { "filter_side", { { "allied_with", { side = wesnoth.current.side } } } },
         { "not", { side = wesnoth.current.side } }
-    }
+    })
     local allies_map = LS.create()
     for _,ally in ipairs(allies) do
         allies_map:insert(ally.x, ally.y)
@@ -434,6 +435,9 @@ function ca_bottleneck_move:evaluation(cfg, data)
         local unit_in_way = wesnoth.get_units { x = best_hex[1], y = best_hex[2],
             { "not", { id = best_unit.id } }
         }[1]
+        if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
+            unit_in_way = nil
+        end
 
         if unit_in_way then
             best_hex = bottleneck_move_out_of_way(unit_in_way, data)
@@ -462,15 +466,9 @@ function ca_bottleneck_move:execution(cfg, data)
             AH.checked_stopunit_moves(ai, unit)
         end
     else
-        if (data.BD_unit.x ~= data.BD_hex[1]) or (data.BD_unit.y ~= data.BD_hex[2]) then
-            -- Don't want full move, as this might be stepping out of the way
-            AH.checked_move(ai, data.BD_unit, data.BD_hex[1], data.BD_hex[2])
-        end
-        if (not data.BD_unit) or (not data.BD_unit.valid) then return end
-
-        if data.BD_level_up_defender then
-            AH.checked_attack(ai, data.BD_unit, data.BD_level_up_defender, data.BD_level_up_weapon)
-        end
+        -- Don't want full move, as this might be stepping out of the way
+        local cfg = { partial_move = true, weapon = data.BD_level_up_weapon }
+        AH.robust_move_and_attack(ai, data.BD_unit, data.BD_hex, data.BD_level_up_defender, cfg)
     end
 
     -- Now delete almost everything

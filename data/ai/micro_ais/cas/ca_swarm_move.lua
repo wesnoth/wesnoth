@@ -27,9 +27,7 @@ function ca_swarm_move:execution(cfg)
         end
     end
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", {side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
 
     -- Pick one unit at random, swarm does not move systematically
     local unit = units[math.random(#units)]

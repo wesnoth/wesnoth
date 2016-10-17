@@ -25,8 +25,7 @@ function ca_forest_animals_new_rabbit:execution(cfg)
     -- We also add a random number to the ones we keep, for selection of the holes later
     local holes = {}
     for _,item in ipairs(all_items) do
-        local enemies = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+        local enemies = AH.get_attackable_enemies {
             { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
         }
 

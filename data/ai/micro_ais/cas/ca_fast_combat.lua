@@ -22,14 +22,14 @@ function ca_fast_combat:evaluation(cfg, data)
 	    excluded_enemies = FAU.get_attackers(data, "enemy")
     else
 	    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
-			data.fast_combat_units = wesnoth.get_units(
+			data.fast_combat_units = AH.get_live_units(
 				FAU.build_attack_filter("own", filter_own)
 			)
         	if (not data.fast_combat_units[1]) then return 0 end
         	units_sorted = false
         end
         if filter_enemy then
-			excluded_enemies = wesnoth.get_units(
+			excluded_enemies = AH.get_live_units(
                 FAU.build_attack_filter("enemy", filter_enemy)
             )
 		end
@@ -55,7 +55,7 @@ function ca_fast_combat:evaluation(cfg, data)
 
     -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
     if (not cfg.attack_hidden_enemies) then
-        local hidden_enemies = wesnoth.get_units {
+        local hidden_enemies = AH.get_live_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
             { "filter_vision", { side = wesnoth.current.side, visible = 'no' } }
         }
@@ -126,15 +126,7 @@ function ca_fast_combat:evaluation(cfg, data)
 end
 
 function ca_fast_combat:execution(cfg, data)
-    local unit = data.fast_combat_units[data.fast_combat_unit_i]
-    AH.movefull_outofway_stopunit(ai, unit, data.fast_dst.x, data.fast_dst.y)
-
-    if (not unit) or (not unit.valid) then return end
-    if (not data.fast_target) or (not data.fast_target.valid) then return end
-    if (H.distance_between(unit.x, unit.y, data.fast_target.x, data.fast_target.y) ~= 1) then return end
-
-    AH.checked_attack(ai, unit, data.fast_target)
-
+    AH.robust_move_and_attack(ai, data.fast_combat_units[data.fast_combat_unit_i], data.fast_dst, data.fast_target)
     data.fast_combat_units[data.fast_combat_unit_i] = nil
 end
 

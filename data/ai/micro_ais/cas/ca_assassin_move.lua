@@ -53,39 +53,43 @@ function ca_assassin_move:execution(cfg)
     local units, target = get_units_target(cfg)
     local unit = units[1]
 
-    local enemies = wesnoth.get_units {
+    local enemies = AH.get_visible_units(wesnoth.current.side, {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
         { "not", H.get_child(cfg, "filter_second") }
-    }
+    })
 
     -- Maximum damage the enemies can theoretically do for all hexes they can attack
+    -- Note: petrified enemies need to be included for the blocked hexes rating below,
+    -- but need to be excluded from the damage rating
     local enemy_damage_map = LS.create()
     for _,enemy in ipairs(enemies) do
-        -- Need to "move" enemy next to unit for attack calculation
-        -- Do this with a unit copy, so that no actual unit has to be moved
-        local enemy_copy = wesnoth.copy_unit(enemy)
+        if (not enemy.status.petrified) then
+            -- Need to "move" enemy next to unit for attack calculation
+            -- Do this with a unit copy, so that no actual unit has to be moved
+            local enemy_copy = wesnoth.copy_unit(enemy)
 
-        -- First get the reach of the enemy with full moves though
-        enemy_copy.moves = enemy_copy.max_moves
-        local reach = wesnoth.find_reach(enemy_copy, { ignore_units = true })
+            -- First get the reach of the enemy with full moves though
+            enemy_copy.moves = enemy_copy.max_moves
+            local reach = wesnoth.find_reach(enemy_copy, { ignore_units = true })
 
-        enemy_copy.x = unit.x
-        enemy_copy.y = unit.y + 1 -- this even works at map border
+            enemy_copy.x = unit.x
+            enemy_copy.y = unit.y + 1 -- this even works at map border
 
-        local _, _, att_weapon, _ = wesnoth.simulate_combat(enemy_copy, unit)
-        local max_damage = att_weapon.damage * att_weapon.num_blows
+            local _, _, att_weapon, _ = wesnoth.simulate_combat(enemy_copy, unit)
+            local max_damage = att_weapon.damage * att_weapon.num_blows
 
-        local unit_damage_map = LS.create()
-        for _,loc in ipairs(reach) do
-            unit_damage_map:insert(loc[1], loc[2], max_damage)
-            for xa,ya in H.adjacent_tiles(loc[1], loc[2]) do
-                unit_damage_map:insert(xa, ya, max_damage)
+            local unit_damage_map = LS.create()
+            for _,loc in ipairs(reach) do
+                unit_damage_map:insert(loc[1], loc[2], max_damage)
+                for xa,ya in H.adjacent_tiles(loc[1], loc[2]) do
+                    unit_damage_map:insert(xa, ya, max_damage)
+                end
             end
-        end
 
-        enemy_damage_map:union_merge(unit_damage_map, function(x, y, v1, v2)
-            return (v1 or 0) + v2
-        end)
+            enemy_damage_map:union_merge(unit_damage_map, function(x, y, v1, v2)
+                return (v1 or 0) + v2
+            end)
+        end
     end
 
     -- Penalties for damage by enemies
@@ -107,12 +111,11 @@ function ca_assassin_move:execution(cfg)
         enemy_rating_map:insert(enemy.x, enemy.y, (enemy_rating_map:get(enemy.x, enemy.y) or 0) + 100)
 
         -- Hexes adjacent to enemies get max_moves penalty
-        -- except if AI unit is skirmisher or enemy is level 0
+        -- except if AI unit is skirmisher or enemy is level 0 or is petrified
         local zoc_active = (not is_skirmisher)
 
         if zoc_active then
-            local level = enemy.level
-            if (level == 0) then zoc_active = false end
+            if (enemy.level == 0) or enemy.status.petrified then zoc_active = false end
         end
 
         if zoc_active then
@@ -149,7 +152,7 @@ function ca_assassin_move:execution(cfg)
         local sub_path, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2])
         if sub_cost <= unit.moves then
             local unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
-            if not unit_in_way then
+            if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                 farthest_hex = path[i]
             end
         else

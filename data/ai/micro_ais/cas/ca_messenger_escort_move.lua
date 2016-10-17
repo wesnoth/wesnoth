@@ -32,9 +32,7 @@ function ca_messenger_escort_move:execution(cfg)
     local escorts = get_escorts(cfg)
     local _, _, _, messengers = messenger_next_waypoint(cfg)
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local enemies = AH.get_attackable_enemies()
 
     local base_rating_map = LS.create()
     local max_rating, best_unit, best_hex = -9e99

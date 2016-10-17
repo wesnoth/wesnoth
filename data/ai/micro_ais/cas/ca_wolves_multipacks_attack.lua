@@ -119,27 +119,21 @@ function ca_wolves_multipacks_attack:execution(cfg)
                     end
                 end
 
+                if cfg.show_pack_number then
+                    WMPF.clear_label(best_attack.src.x, best_attack.src.y)
+                end
+
                 local attacker = wesnoth.get_unit(best_attack.src.x, best_attack.src.y)
                 local defender = wesnoth.get_unit(best_attack.target.x, best_attack.target.y)
 
-                if cfg.show_pack_number then WMPF.clear_label(attacker.x, attacker.y) end
+                AH.robust_move_and_attack(ai, attacker, best_attack.dst, defender)
 
-                AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
-
-                if attacker and attacker.valid then
-                    if cfg.show_pack_number then WMPF.put_label(attacker.x, attacker.y, pack_number) end
-                end
-
-                if attacker and attacker.valid and defender and defender.valid then
-                    -- In case one of the units dies in the attack or is removed in an event, we need these:
-                    local ax, ay, dx, dy = attacker.x, attacker.y, defender.x, defender.y
-
-                    AH.checked_attack(ai, attacker, defender)
-
-                    -- Remove the labels, if one of the units isgone
-                    if cfg.show_pack_number then
-                        if (not attacker) or (not attacker.valid) then WMPF.clear_label(ax, ay) end
-                        if (not defender) or (not defender.valid) then WMPF.clear_label(dx, dy) end
+                if cfg.show_pack_number then
+                    if attacker and attacker.valid then
+                        if cfg.show_pack_number then WMPF.put_label(attacker.x, attacker.y, pack_number) end
+                    end
+                    if (not defender) or (not defender.valid) then
+                        WMPF.clear_label(best_attack.target.x, best_attack.target.y)
                     end
                 end
 
@@ -150,7 +144,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
         end
 
         -- Finally, if any of the wolves in this pack did attack, move the rest of the pack in close
-       if pack_has_attacked then
+        if pack_has_attacked then
             local wolves_moves, wolves_no_moves = {}, {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it

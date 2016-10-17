@@ -14,10 +14,7 @@ function ca_bottleneck_attack:evaluation(cfg, data)
 
     local max_rating, best_attacker, best_target, best_weapon = -9e99
     for _,attacker in ipairs(attackers) do
-        local targets = wesnoth.get_units {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-            { "filter_adjacent", { id = attacker.id } }
-        }
+        local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = attacker.id } } }
 
         for _,target in ipairs(targets) do
             local n_weapon = 0

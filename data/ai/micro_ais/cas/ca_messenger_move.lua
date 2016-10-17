@@ -38,6 +38,9 @@ function ca_messenger_move:execution(cfg)
             break
         else
             local unit_in_way = wesnoth.get_unit(step[1], step[2])
+            if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
+                unit_in_way = nil
+            end
 
             if unit_in_way and (unit_in_way.side == messenger.side) then
                 local reach = AH.get_reachable_unocc(unit_in_way)
@@ -76,11 +79,7 @@ function ca_messenger_move:execution(cfg)
     if (cost2 + messenger.max_moves/2 < cost1) then next_hop = optimum_hop end
 
     if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
-        local unit_in_way = wesnoth.get_unit(next_hop[1], next_hop[2])
-        if unit_in_way then AH.move_unit_out_of_way(ai, unit_in_way) end
-        if (not messenger) or (not messenger.valid) then return end
-
-        AH.checked_move(ai, messenger, next_hop[1], next_hop[2])
+        AH.robust_move_and_attack(ai, messenger, next_hop)
     else
         AH.checked_stopunit_moves(ai, messenger)
     end
@@ -90,10 +89,7 @@ function ca_messenger_move:execution(cfg)
     if (messenger.attacks_left <= 0) then return end
     if (#messenger.attacks == 0) then return end
 
-    local targets = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "filter_adjacent", { id = messenger.id } }
-    }
+    local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = messenger.id } } }
 
     local max_rating, best_target, best_weapon = -9e99
     for _,target in ipairs(targets) do
@@ -129,10 +125,9 @@ function ca_messenger_move:execution(cfg)
         -- Always attack enemy on last waypoint
         local waypoint_x = AH.split(cfg.waypoint_x, ",")
         local waypoint_y = AH.split(cfg.waypoint_y, ",")
-        local target = wesnoth.get_units {
+        local target = AH.get_attackable_enemies {
             x = tonumber(waypoint_x[#waypoint_x]),
             y = tonumber(waypoint_y[#waypoint_y]),
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
             { "filter_adjacent", { id = messenger.id } }
         }[1]
 

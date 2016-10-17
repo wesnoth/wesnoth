@@ -93,20 +93,20 @@ local function get_attack_filter_from_aspect(aspect, which, data, is_leader)
         local filter = loadstring(aspect.code)(nil, H.get_child(aspect, 'args'), data)
         if (type(filter[which]) == 'function') then
             temporary_attacks_filter_fcn = filter[which]
-            local units = wesnoth.get_units(attack_filter(which, {
+            local units = AH.get_live_units(attack_filter(which, {
                 lua_function = 'temporary_attacks_filter_fcn'
             }, is_leader))
             temporary_attacks_filter_fcn = nil
             return units
         else
-            return wesnoth.get_units(attack_filter(which, filter[which], is_leader))
+            return AH.get_live_units(attack_filter(which, filter[which], is_leader))
         end
     else -- Standard attacks aspect (though not name=standard_aspect)
         --print("Found standard aspect")
-        return wesnoth.get_units(attack_filter(which,
+        return AH.get_live_units(attack_filter(which,
             H.get_child(aspect, 'filter_' .. which), is_leader))
     end
-    return wesnoth.get_units(attack_filter(which, {}, is_leader))
+    return AH.get_live_units(attack_filter(which, {}, is_leader))
 end
 
 function ca_fast_attack_utils.get_attackers(data, which)
@@ -147,12 +147,12 @@ function ca_fast_attack_utils.test_attacks(my_ai, times)
             if (aspect.id == 'attacks') then
                 local facet = H.get_child(aspect, 'facet')
                 if facet then
-                    wesnoth.get_units{
+                    AH.get_live_units{
                         side = wesnoth.current.side,
                         canrecruit = false,
                         { "and", H.get_child(facet, 'filter_own') }
                     }
-                    wesnoth.get_units{
+                    AH.get_live_units{
                         side = wesnoth.current.side,
                         canrecruit = false,
                         { "and", H.get_child(facet, 'filter_enemy') }
@@ -189,7 +189,7 @@ function ca_fast_attack_utils.gamedata_setup()
     -- Only uses one leader per side right now, but only used for finding direction
     -- of move -> sufficient for this.
     gamedata.leaders = {}
-    for _,unit_proxy in ipairs(wesnoth.get_units { canrecruit = 'yes' }) do
+    for _,unit_proxy in ipairs(AH.get_live_units { canrecruit = 'yes' }) do
         gamedata.leaders[unit_proxy.side] = { unit_proxy.x, unit_proxy.y, id = unit_proxy.id }
     end
 

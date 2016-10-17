@@ -11,10 +11,7 @@ local function get_wolves(cfg)
 end
 
 local function get_prey(cfg)
-    local prey = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "and", H.get_child(cfg, "filter_second") }
-    }
+    local prey = AH.get_attackable_enemies(H.get_child(cfg, "filter_second"))
     return prey
 end
 
@@ -30,9 +27,7 @@ function ca_wolves_move:execution(cfg)
     local wolves = get_wolves(cfg)
     local prey = get_prey(cfg)
 
-    local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-    }
+    local avoid_units = AH.get_attackable_enemies({ type = cfg.avoid_type })
     local avoid_map = BC.get_attack_map(avoid_units).units
 
     -- Find prey that is closest to the wolves
@@ -69,6 +64,9 @@ function ca_wolves_move:execution(cfg)
     end)
 
     AH.movefull_stopunit(ai, wolves[1], wolf1)
+    for _,check_wolf in ipairs(wolves) do
+        if (not check_wolf) or (not check_wolf.valid) then return end
+    end
 
     for i = 2,#wolves do
         move = AH.find_best_move(wolves[i], function(x,y)
@@ -93,6 +91,9 @@ function ca_wolves_move:execution(cfg)
         end)
 
         AH.movefull_stopunit(ai, wolves[i], move)
+        for _,check_wolf in ipairs(wolves) do
+            if (not check_wolf) or (not check_wolf.valid) then return end
+        end
     end
 end
 
