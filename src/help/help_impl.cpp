@@ -274,7 +274,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		res = generate_trait_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
-		if (parts[0] == "units" && parts.size()>1) {
+		if (parts.size() > 1 && parts[0] == "units") {
 			res = generate_unit_topics(sort_generated, parts[1]);
 		} else if (parts[0] == "era" && parts.size()>1) {
 			res = generate_era_topics(sort_generated, parts[1]);
@@ -297,7 +297,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 		generate_era_sections(help_cfg, sec, level);
 	} else 	{
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
-		if (parts[0] == "units" && parts.size()>1) {
+		if (parts.size() > 1 && parts[0] == "units") {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
 		} else if (generator.size() > 0) {
 			WRN_HP << "Found a section generator that I didn't recognize: " << generator << "\n";
@@ -314,7 +314,7 @@ std::string generate_topic_text(const std::string &generator, const config *help
 		return generate_about_text();
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':');
-		if (parts.size()>1 && parts[0] == "contents") {
+		if (parts.size() > 1 && parts[0] == "contents") {
 			if (parts[1] == "generated") {
 				return generate_contents_links(sec, generated_topics);
 			} else {

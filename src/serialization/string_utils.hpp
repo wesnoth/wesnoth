@@ -38,7 +38,8 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 };
 
 /// Splits a (comma-)separated string into a vector of pieces.
-std::vector< std::string > split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+std::vector<std::string> split(const std::string& val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+
 /// Splits a (comma-)separated string into a set of pieces.
 /// See split() for the meanings of the parameters.
 inline std::set< std::string > set_split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)

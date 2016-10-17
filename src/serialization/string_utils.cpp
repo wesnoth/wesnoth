@@ -67,43 +67,26 @@ bool notspace(const char c)
  *                    This is a bit field with two settings (both on by default):
  *                    REMOVE_EMPTY causes empty pieces to be skipped/removed.
  *                    STRIP_SPACES causes the leading and trailing spaces of each piece to be ignored/stripped.
+ *
+ *                    Basic method taken from http://stackoverflow.com/a/236803
  */
-std::vector< std::string > split(std::string const &val, const char c, const int flags)
+std::vector<std::string> split(const std::string& val, const char c, const int flags)
 {
-	std::vector< std::string > res;
+	std::vector<std::string> res;
 
-	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2;
-	if (flags & STRIP_SPACES) {
-		while (i1 != val.end() && portable_isspace(*i1))
-			++i1;
-	}
-	i2=i1;
+	std::stringstream ss;
+	ss.str(val);
 
-	while (i2 != val.end()) {
-		if (*i2 == c) {
-			std::string new_val(i1, i2);
-			if (flags & STRIP_SPACES)
-				boost::trim_right(new_val);
-			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(std::move(new_val));
-			++i2;
-			if (flags & STRIP_SPACES) {
-				while (i2 != val.end() && portable_isspace(*i2))
-					++i2;
-			}
+	std::string item;
+	while(std::getline(ss, item, c)) {
+		if(flags & STRIP_SPACES) {
+			boost::trim(item);
+		}
 
-			i1 = i2;
-		} else {
-			++i2;
+		if(!(flags & REMOVE_EMPTY) || !item.empty()) {
+			res.push_back(std::move(item));
 		}
 	}
-
-	std::string new_val(i1, i2);
-	if (flags & STRIP_SPACES)
-		boost::trim_right(new_val);
-	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(std::move(new_val));
 
 	return res;
 }

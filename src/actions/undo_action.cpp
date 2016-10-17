@@ -113,11 +113,11 @@ namespace {
 
 		if(u1) {
 			unit_ptr who = get_unit(e.uid1, e.id1);
-			who->set_location(map_location(real1));
+			who->set_location(real1);
 		}
 		if(u2) {
 			unit_ptr who = get_unit(e.uid2, e.id2);
-			who->set_location(map_location(real2));
+			who->set_location(real2);
 		}
 
 		x1 = oldx1; y1 = oldy1;

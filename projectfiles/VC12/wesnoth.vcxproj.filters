@@ -1470,7 +1470,6 @@
     <ClCompile Include="..\..\src\language.cpp" />
     <ClCompile Include="..\..\src\lobby_preferences.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
-    <ClCompile Include="..\..\src\marked-up_text.cpp" />
     <ClCompile Include="..\..\src\md5.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
     <ClCompile Include="..\..\src\minimap.cpp" />
@@ -1535,9 +1534,6 @@
     <ClCompile Include="..\..\src\wesnoth.cpp" />
     <ClCompile Include="..\..\src\wesnothd_connection.cpp" />
     <ClCompile Include="..\..\src\wml_exception.cpp" />
-    <ClCompile Include="..\..\src\font\constants.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\font\font_config.cpp">
       <Filter>Font</Filter>
     </ClCompile>
@@ -1551,6 +1547,15 @@
       <Filter>Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_surface.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\marked-up_text.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\standard_colors.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\text_formatting.cpp">
       <Filter>Font</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2887,7 +2892,6 @@
     <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
-    <ClInclude Include="..\..\src\marked-up_text.hpp" />
     <ClInclude Include="..\..\src\md5.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
     <ClInclude Include="..\..\src\minimap.hpp" />
@@ -2977,9 +2981,6 @@
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\font\constants.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\font\font_config.hpp">
       <Filter>Font</Filter>
     </ClInclude>
@@ -3002,6 +3003,15 @@
       <Filter>Font</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\font\text_surface.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\marked-up_text.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\standard_colors.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text_formatting.hpp">
       <Filter>Font</Filter>
     </ClInclude>
   </ItemGroup>

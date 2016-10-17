@@ -8,6 +8,9 @@
     <Filter Include="Serialization">
       <UniqueIdentifier>{6dc90a51-9e0e-481d-aecb-1504d6f9a21b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Font">
+      <UniqueIdentifier>{2ce5a818-4bb3-4502-8751-f2d8f3f36527}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
@@ -45,6 +48,9 @@
     <ClCompile Include="..\..\src\thread.cpp" />
     <ClCompile Include="..\..\src\tstring.cpp" />
     <ClCompile Include="..\..\src\version.cpp" />
+    <ClCompile Include="..\..\src\font\constants.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -85,5 +91,8 @@
     <ClInclude Include="..\..\src\tstring.hpp" />
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
+    <ClInclude Include="..\..\src\font\constants.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

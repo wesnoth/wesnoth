@@ -111,7 +111,7 @@ connect_engine::connect_engine(saved_game& state,
 	// Set the team name lists and modify the original level sides,
 	// if necessary.
 	std::vector<std::string> original_team_names;
-	std::string team_prefix(std::string(_("Team")) + " ");
+	std::string team_prefix(_("Team") + " ");
 	int side_count = 1;
 	for (config& side : sides) {
 		const std::string side_str = std::to_string(side_count);

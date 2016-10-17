@@ -18,8 +18,8 @@
 
 #include <cassert>
 #include <stdlib.h>
-#include <boost/random/mersenne_twister.hpp>
 #include <random>
+#include <boost/random/random_device.hpp>
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
@@ -35,7 +35,10 @@ namespace {
 		rng_default()
 			: gen_()
 		{
-			std::random_device entropy_source;
+			/* Note: do not replace this with std::random_device.
+			 * @cbeck88 told in IRC (2016-10-16) that std::random_device
+			 * is very poorly implemented in MinGW. */
+			boost::random_device entropy_source;
 			gen_.seed(entropy_source());
 		}
 	protected:
@@ -44,7 +47,7 @@ namespace {
 			return gen_();
 		}
 	private:
-		boost::mt19937 gen_;
+		std::mt19937 gen_;
 	};
 }
 

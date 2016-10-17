@@ -109,7 +109,7 @@ private:
 	mutable map_location self_loc_, other_loc_;
 	mutable bool is_attacker_;
 	mutable const attack_type* other_attack_;
-	mutable bool is_for_listing_;
+	mutable bool is_for_listing_ = false;
 
 	t_string description_;
 	std::string id_;

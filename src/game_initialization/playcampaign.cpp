@@ -299,10 +299,10 @@ LEVEL_RESULT campaign_controller::play_game()
 			gui2::show_error_message(video_, _("Error while playing the game: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(incorrect_map_format_error& e) {
-			gui2::show_error_message(video_, std::string(_("The game map could not be loaded: ")) + e.message);
+			gui2::show_error_message(video_, _("The game map could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch (mapgen_exception& e) {
-			gui2::show_error_message(video_, std::string(_("Map generator error: ") + e.message));
+			gui2::show_error_message(video_, _("Map generator error: ") + e.message);
 		} catch(config::error& e) {
 			gui2::show_error_message(video_, _("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;

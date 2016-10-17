@@ -100,7 +100,7 @@ template<typename T>
 auto find_attack(T* u, size_t i) -> attack_ptr_in<T>
 {
 	auto attacks = u->attacks();
-	if(i < attacks.size()) {
+	if(i < static_cast<size_t>(attacks.size())) {
 		auto iter = attacks.begin();
 		iter += i;
 		return *iter.base();

@@ -126,7 +126,7 @@ variant variant_iterator::operator*() const
 {
 	if (type_ == TYPE_LIST)
 	{
-		return variant( *list_iterator_);
+		return *list_iterator_;
 	} else if (type_ == TYPE_MAP)
 	{
 		game_logic::key_value_pair* p = new game_logic::key_value_pair( map_iterator_->first, map_iterator_->second );

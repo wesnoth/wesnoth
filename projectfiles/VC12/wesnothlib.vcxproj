@@ -95,6 +95,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4503;4127;4512;4003;4068;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -116,6 +117,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4503</DisableSpecificWarnings>
+      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -136,6 +138,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4503;4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -157,6 +160,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4503</DisableSpecificWarnings>
+      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -167,6 +171,7 @@
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\filesystem_boost.cpp" />
     <ClCompile Include="..\..\src\filesystem_common.cpp" />
+    <ClCompile Include="..\..\src\font\constants.cpp" />
     <ClCompile Include="..\..\src\game_config.cpp" />
     <ClCompile Include="..\..\src\gettext_boost.cpp" />
     <ClCompile Include="..\..\src\log.cpp" />
@@ -192,6 +197,7 @@
     <ClInclude Include="..\..\src\config.hpp" />
     <ClInclude Include="..\..\src\config_assign.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
+    <ClInclude Include="..\..\src\font\constants.hpp" />
     <ClInclude Include="..\..\src\game_config.hpp" />
     <ClInclude Include="..\..\src\gettext.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
