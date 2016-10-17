@@ -393,11 +393,11 @@ tlobby_chat_window* tchatbox::search_create_window(const std::string& name,
 	item["use_markup"] = "true";
 
 	if(whisper) {
-		item["label"] = vgettext("Whisper session with $name started. "
+		item["label"] = vgettext("Whisper session with <i>“$name”</i> started. "
 			"If you do not want to receive messages from this user, type <i>/ignore $name</i>\n", {{"name", name}});
 		data.emplace("log_text", item);
 	} else {
-		item["label"] = vgettext("<i>Room</i> $name <i>joined</i>", {{"name", name}});
+		item["label"] = vgettext("Room <i>“$name”</i> joined", {{"name", name}});
 		data.emplace("log_text", item);
 
 		lobby_info().open_room(name);
