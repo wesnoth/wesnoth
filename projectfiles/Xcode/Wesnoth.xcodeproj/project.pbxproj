@@ -1564,6 +1564,12 @@
 		9107AE481DB3D8FE001927B0 /* standard_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = standard_colors.hpp; path = font/standard_colors.hpp; sourceTree = "<group>"; };
 		9107AE491DB3D8FE001927B0 /* text_formatting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = text_formatting.cpp; path = font/text_formatting.cpp; sourceTree = "<group>"; };
 		9107AE4A1DB3D8FE001927B0 /* text_formatting.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = text_formatting.hpp; path = font/text_formatting.hpp; sourceTree = "<group>"; };
+		9107AE4E1DB4828A001927B0 /* error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = error.hpp; path = font/error.hpp; sourceTree = "<group>"; };
+		9107AE501DB482B2001927B0 /* escape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = escape.hpp; sourceTree = "<group>"; };
+		9107AE511DB482B2001927B0 /* font.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = font.hpp; sourceTree = "<group>"; };
+		9107AE521DB482B2001927B0 /* hyperlink.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hyperlink.hpp; sourceTree = "<group>"; };
+		9107AE531DB482B2001927B0 /* iter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = iter.hpp; sourceTree = "<group>"; };
+		9107AE541DB482B2001927B0 /* stream_ops.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stream_ops.hpp; sourceTree = "<group>"; };
 		911F2DAB1BA086A400E3102E /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		911F2DAC1BA086A400E3102E /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
 		911F471B1CAE5A7E00F47035 /* iterable_pair.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iterable_pair.hpp; sourceTree = "<group>"; };
@@ -3489,6 +3495,19 @@
 			path = toolkit;
 			sourceTree = "<group>";
 		};
+		9107AE4F1DB482B2001927B0 /* pango */ = {
+			isa = PBXGroup;
+			children = (
+				9107AE501DB482B2001927B0 /* escape.hpp */,
+				9107AE511DB482B2001927B0 /* font.hpp */,
+				9107AE521DB482B2001927B0 /* hyperlink.hpp */,
+				9107AE531DB482B2001927B0 /* iter.hpp */,
+				9107AE541DB482B2001927B0 /* stream_ops.hpp */,
+			);
+			name = pango;
+			path = font/pango;
+			sourceTree = "<group>";
+		};
 		91273E541C7BF141005E7F81 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -4637,6 +4656,7 @@
 			children = (
 				EC67F7E91DB3144A0038337E /* constants.cpp */,
 				EC67F7EA1DB3144A0038337E /* constants.hpp */,
+				9107AE4E1DB4828A001927B0 /* error.hpp */,
 				EC67F7EB1DB3144A0038337E /* font_config.cpp */,
 				EC67F7EC1DB3144A0038337E /* font_config.hpp */,
 				EC67F7ED1DB3144A0038337E /* font_description.hpp */,
@@ -4644,6 +4664,7 @@
 				EC67F7EF1DB3144A0038337E /* font_options.hpp */,
 				B55999F20EC62181008DD061 /* marked-up_text.cpp */,
 				B55999F10EC62181008DD061 /* marked-up_text.hpp */,
+				9107AE4F1DB482B2001927B0 /* pango */,
 				EC67F7F21DB314580038337E /* sdl_ttf.cpp */,
 				EC67F7F31DB314580038337E /* sdl_ttf.hpp */,
 				9107AE471DB3D8FE001927B0 /* standard_colors.cpp */,
@@ -6245,6 +6266,11 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-include",
+					"../../src/boost-patched/bind/arg.hpp",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6270,6 +6296,11 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-include",
+					"../../src/boost-patched/bind/arg.hpp",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
