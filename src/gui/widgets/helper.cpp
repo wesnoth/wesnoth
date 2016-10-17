@@ -56,7 +56,8 @@ font::ttext::FONT_STYLE decode_font_style(const std::string& style)
 		{"normal",    font::ttext::STYLE_NORMAL},
 		{"bold",      font::ttext::STYLE_BOLD},
 		{"italic",    font::ttext::STYLE_ITALIC},
-		{"underline", font::ttext::STYLE_UNDERLINE}
+		{"underline", font::ttext::STYLE_UNDERLINE},
+		{"light",     font::ttext::STYLE_LIGHT},
 	};
 
 	if(style.empty()) {

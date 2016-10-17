@@ -36,6 +36,9 @@ public:
 			if(style & ttext::STYLE_BOLD) {
 				pango_font_description_set_weight(font_, PANGO_WEIGHT_BOLD);
 			}
+			if(style & ttext::STYLE_LIGHT) {
+				pango_font_description_set_weight(font_, PANGO_WEIGHT_LIGHT);
+			}
 			if(style & ttext::STYLE_UNDERLINE) {
 				/* Do nothing here, underline is a property of the layout. */
 			}

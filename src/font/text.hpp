@@ -143,7 +143,8 @@ public:
 		STYLE_NORMAL = 0,
 		STYLE_BOLD = 1,
 		STYLE_ITALIC = 2,
-		STYLE_UNDERLINE = 4
+		STYLE_UNDERLINE = 4,
+		STYLE_LIGHT = 8,
 	};
 
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
