@@ -161,6 +161,10 @@ void tfaction_select::on_faction_select(twindow& window)
 		}
 	}
 
+	std::sort(recruit_names.begin(), recruit_names.end(), [](const std::string& s1, const std::string& s2) {
+		return translation::compare(s1, s2) < 0;
+	});
+
 	find_widget<tcontrol>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
 }
 
