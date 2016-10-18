@@ -31,13 +31,11 @@ function ca_attack_highxp:evaluation(cfg, data)
     -- Note: (most of) the code below is set up to maximize speed. Do not
     -- "simplify" this unless you understand exactly what that means
 
-    -- E.g., getting all units, plus looping over them, is much faster than using a filter
-    local all_units = wesnoth.get_units()
-
+    local attacks_aspect = ai.aspects.attacks
     local max_unit_level = 0
     local units = {}
-    for _,unit in ipairs(all_units) do
-        if (unit.side == wesnoth.current.side) and (unit.attacks_left > 0) and (#unit.attacks > 0) then
+    for _,unit in ipairs(attacks_aspect.own) do
+        if (unit.attacks_left > 0) and (#unit.attacks > 0) then
             table.insert(units, unit)
 
             local level = unit.level
@@ -52,7 +50,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     -- that could trigger them leveling up; this is not a sufficient criterion,
     -- but it is much faster than path finding, so it is done for preselection.
     local target_infos = {}
-    for i_t,enemy in ipairs(all_units) do
+    for i_t,enemy in ipairs(attacks_aspect.enemy) do
         if AH.is_attackable_enemy(enemy) then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level >= XP_to_levelup) then
@@ -91,7 +89,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
     local max_ca_score, max_rating, best_attack = 0, 0
     for _,target_info in ipairs(target_infos) do
-        local target = all_units[target_info.ind_target]
+        local target = attacks_aspect.enemy[target_info.ind_target]
         local can_force_level = {}
         local attack_hexes = LS.create()
         for xa,ya in H.adjacent_tiles(target.x, target.y) do
