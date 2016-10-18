@@ -14,7 +14,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	local math_abs = math.abs	
 	local locs = wesnoth.get_locations(filter)
 	if type(num_items) == "string" then		
-		num_items = math.floor(loadstring("local size = " .. #locs .. "; return " .. num_items)())
+		num_items = math.floor(load("local size = " .. #locs .. "; return " .. num_items)())
 		print("num_items=" .. num_items .. ", #locs=" .. #locs)
 	end
 	local size = #locs

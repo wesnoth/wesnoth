@@ -90,7 +90,7 @@ local function get_attack_filter_from_aspect(aspect, which, data, is_leader)
         end
     elseif (aspect.name == "lua_aspect") then
         --print("Found lua aspect")
-        local filter = loadstring(aspect.code)(nil, H.get_child(aspect, 'args'), data)
+        local filter = load(aspect.code)(nil, H.get_child(aspect, 'args'), data)
         if (type(filter[which]) == 'function') then
             temporary_attacks_filter_fcn = filter[which]
             local units = AH.get_live_units(attack_filter(which, {

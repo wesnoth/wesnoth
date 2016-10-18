@@ -544,7 +544,7 @@ function ai_helper.get_angle(from_hex, to_hex)
     local _, y1cart =  ai_helper.cartesian_coords(x1, y1)
     local _, y2cart =  ai_helper.cartesian_coords(x2, y2)
 
-    return math.atan2(y2cart - y1cart, x2 - x1)
+    return math.atan(y2cart - y1cart, x2 - x1)
 end
 
 function ai_helper.get_direction_index(from_hex, to_hex, n, center_on_east)
