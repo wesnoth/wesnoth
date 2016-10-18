@@ -53,10 +53,7 @@ function ca_attack_highxp:evaluation(cfg, data)
     -- but it is much faster than path finding, so it is done for preselection.
     local target_infos = {}
     for i_t,enemy in ipairs(all_units) do
-        if wesnoth.is_enemy(wesnoth.current.side, enemy.side)
-            and enemy:matches({ { "filter_vision", { side = wesnoth.current.side, visible = 'yes' } } })
-            and (not enemy.status.petrified)
-        then
+        if AH.is_attackable_enemy(enemy) then
             local XP_to_levelup = enemy.max_experience - enemy.experience
             if (max_unit_level >= XP_to_levelup) then
                 local potential_target = false
@@ -101,7 +98,7 @@ function ca_attack_highxp:evaluation(cfg, data)
             if (not avoid_map:get(xa, ya)) then
                 local unit_in_way = wesnoth.get_unit(xa, ya)
 
-                if unit_in_way then
+                if AH.is_visible_unit(wesnoth.current.side, unit_in_way) then
                     if (unit_in_way.side == wesnoth.current.side) then
                         local uiw_reach
                         if reaches:get(unit_in_way.x, unit_in_way.y) then
@@ -118,7 +115,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
                             local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
-                            if (not uiw_uiw) then
+                            if (not AH.is_visible_unit(wesnoth.current.side, uiw_uiw)) then
                                 can_move = true
                                 break
                             end
@@ -295,15 +292,7 @@ function ca_attack_highxp:evaluation(cfg, data)
 end
 
 function ca_attack_highxp:execution(cfg, data)
-    local attacker = wesnoth.get_unit(data.XP_attack.src.x, data.XP_attack.src.y)
-    local defender = wesnoth.get_unit(data.XP_attack.target.x, data.XP_attack.target.y)
-
-    AH.movefull_outofway_stopunit(ai, attacker, data.XP_attack.dst.x, data.XP_attack.dst.y)
-
-    if (not attacker) or (not attacker.valid) then return end
-    if (not defender) or (not defender.valid) then return end
-    AH.checked_attack(ai, attacker, defender, data.XP_attack.attack_num)
-
+    AH.robust_move_and_attack(ai, data.XP_attack.src, data.XP_attack.dst, data.XP_attack.target, { weapon = data.XP_attack.attack_num })
     data.XP_attack = nil
 end
 
