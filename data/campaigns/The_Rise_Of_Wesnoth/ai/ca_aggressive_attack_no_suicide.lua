@@ -56,11 +56,7 @@ function ca_aggressive_attack_no_suicide:evaluation(cfg, data)
 end
 
 function ca_aggressive_attack_no_suicide:execution(cfg, data)
-    local attacker = wesnoth.get_unit(data.attack.src.x, data.attack.src.y)
-    local defender = wesnoth.get_unit(data.attack.target.x, data.attack.target.y)
-
-    AH.movefull_outofway_stopunit(ai, attacker, data.attack.dst.x, data.attack.dst.y)
-    ai.attack(attacker, defender)
+    AH.robust_move_and_attack(ai, data.attack.src, data.attack.dst, data.attack.target)
     data.attack = nil
 end
 
