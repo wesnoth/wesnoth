@@ -37,6 +37,7 @@
 #include "scripting/push_check.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc
+#include "video.hpp"
 
 #include "serialization/string_utils.hpp"
 #include "utils/functional.hpp"
@@ -122,24 +123,12 @@ int video_dispatch(lua_State *L) {
 // The show-dialog call back is here implemented as a method of lua kernel, since it needs a pointer to external object CVideo
 int lua_kernel_base::video_dispatch_impl(lua_State* L, lua_kernel_base::video_function callback)
 {
-	if (!video_) {
-		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
-		lua_error(L);
-		return 0;
-	}
-
-	return callback(L, *video_);
+	return callback(L, CVideo::get_singleton());
 }
 
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
-	if (!video_) {
-		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
-		lua_error(L);
-		return 0;
-	}
-
 	if (cmd_log_.external_log_) {
 		std::string message = "There is already an external logger attached to this lua kernel, you cannot open the lua console right now.";
 		log_error(message.c_str());
@@ -147,7 +136,7 @@ int lua_kernel_base::intf_show_lua_console(lua_State *L)
 		return 0;
 	}
 
-	return lua_gui2::show_lua_console(L, *video_, this);
+	return lua_gui2::show_lua_console(L, CVideo::get_singleton(), this);
 }
 
 static int impl_name_generator_call(lua_State *L)
@@ -237,9 +226,8 @@ int dispatch(lua_State *L) {
 extern void push_error_handler(lua_State *L);
 
 // Ctor, initialization
-lua_kernel_base::lua_kernel_base(CVideo * video)
+lua_kernel_base::lua_kernel_base()
  : mState(luaL_newstate())
- , video_(video)
  , cmd_log_()
 {
 	get_lua_kernel_base_ptr(mState) = this;

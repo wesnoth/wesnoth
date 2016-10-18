@@ -29,7 +29,7 @@ struct lua_State;
 
 class application_lua_kernel : public lua_kernel_base {
 public:
-	application_lua_kernel(CVideo *);
+	application_lua_kernel();
 
 	virtual std::string my_name() { return "Application Lua Kernel"; }
 

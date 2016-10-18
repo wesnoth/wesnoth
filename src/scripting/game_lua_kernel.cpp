@@ -4055,8 +4055,8 @@ const game_events::queued_event & game_lua_kernel::get_event_info() {
 }
 
 
-game_lua_kernel::game_lua_kernel(CVideo * video, game_state & gs, play_controller & pc, reports & reports_object)
-	: lua_kernel_base(video)
+game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports & reports_object)
+	: lua_kernel_base()
 	, game_display_(nullptr)
 	, game_state_(gs)
 	, play_controller_(pc)
@@ -4372,9 +4372,6 @@ void game_lua_kernel::initialize(const config& level)
 
 void game_lua_kernel::set_game_display(game_display * gd) {
 	game_display_ = gd;
-	if (gd) {
-		set_video(&gd->video());
-	}
 }
 
 /// These are the child tags of [scenario] (and the like) that are handled

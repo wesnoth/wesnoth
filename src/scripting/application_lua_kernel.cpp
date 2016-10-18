@@ -98,8 +98,8 @@ static int intf_delay(lua_State* L)
 	return 0;
 }
 
-application_lua_kernel::application_lua_kernel(CVideo * ptr)
- : lua_kernel_base(ptr)
+application_lua_kernel::application_lua_kernel()
+ : lua_kernel_base()
 {
 	lua_getglobal(mState, "wesnoth");
 	lua_pushcfunction(mState, intf_delay);

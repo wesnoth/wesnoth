@@ -27,7 +27,7 @@ class config;
 
 class lua_kernel_base {
 public:
-	lua_kernel_base(CVideo * ptr);
+	lua_kernel_base();
 	virtual ~lua_kernel_base();
 
 	/** Runs a [lua] tag. Doesn't throw lua_error.*/
@@ -65,8 +65,6 @@ public:
 
 	typedef std::function<void(char const*, char const*)> error_handler;
 
-	void set_video(CVideo * ptr) { video_ = ptr; }
-
 	template<typename T>
 	static T& get_lua_kernel(lua_State *L)
 	{
@@ -77,8 +75,6 @@ public:
 	lua_State * get_state() { return mState; }
 protected:
 	lua_State *mState;
-
-	CVideo * video_;
 
 	/** Log implementation */
 	struct command_log {

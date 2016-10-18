@@ -40,9 +40,8 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	}
 }
 
-void lua_map_generator::user_config(CVideo & v)
+void lua_map_generator::user_config()
 {
-	lk_.set_video(&v);
 	try {
 		lk_.user_config(user_config_.c_str(), generator_data_);
 	} catch (game::lua_error & e) {

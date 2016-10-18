@@ -662,7 +662,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	plugins_manager plugins_man(new application_lua_kernel(&game->video()));
+	plugins_manager plugins_man(new application_lua_kernel);
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},

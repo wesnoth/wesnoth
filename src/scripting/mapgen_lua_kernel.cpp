@@ -118,7 +118,7 @@ static int intf_find_path(lua_State *L)
 
 
 mapgen_lua_kernel::mapgen_lua_kernel()
-	: lua_kernel_base(nullptr)
+	: lua_kernel_base()
 	, random_seed_()
 	, default_rng_()
 {

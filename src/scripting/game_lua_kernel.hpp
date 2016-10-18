@@ -189,7 +189,7 @@ public:
 		lua_unit* userdata in its stack that prevents it from beeing collected.
 	*/
 	int map_locked_;
-	game_lua_kernel(CVideo *, game_state &, play_controller &, reports &);
+	game_lua_kernel(game_state &, play_controller &, reports &);
 
 	void set_game_display(game_display * gd);
 
