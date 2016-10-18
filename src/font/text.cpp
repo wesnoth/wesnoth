@@ -660,7 +660,11 @@ void ttext::rerender(const bool force) const
 
 		this->create_surface_buffer(stride * height);
 
-		if (!surface_buffer_.size()) { surface_.assign(nullptr); return; }
+		if (!surface_buffer_.size()) {
+			// surface_.assign(nullptr);
+			surface_.assign(create_neutral_surface(0, 0));
+			return;
+		}
 
 		cairo_surface_t* cairo_surface = cairo_image_surface_create_for_data(&surface_buffer_[0], format, width, height, stride);
 		cairo_t* cr = cairo_create(cairo_surface);
