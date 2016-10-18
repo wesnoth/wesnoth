@@ -22,7 +22,7 @@
 **  kit.
 **
 **  This file contains the cross-platform compile-time changes. Platform
-**  maintainers should consult wesnothluaconfig.md for guidance on building
+**  maintainers should consult wesnoth_lua_config.md for guidance on building
 **  Lua for Wesnoth on their platform using their toolset.
 **
 **  Lua comes with a number of configuration options, such as backward
@@ -56,7 +56,7 @@
 **  Wesnoth-specific modifications.
 */
 
-/*  We can NOT use strcoll on Windows!
+/*  We canNOT use strcoll on Windows!
  *
  *  All strings in Wesnoth are UTF-8 encoded. On Windows, strcoll assumes
  *  strings are UTF-16LE encoded; using strcoll will cause the strings to
