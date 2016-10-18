@@ -46,11 +46,12 @@ env_lua = env.Clone(
 #if env['strict']:
 #    env.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast"))
 
-env_lua.Append(CCFLAGS = Split("-include src/wesnoth_lua_config.h -Wno-deprecated-declarations"))
+env_lua["wesnoth_lua_config"] = File("#/src/wesnoth_lua_config.h").rfile()
+env_lua.Append(CCFLAGS = Split("-include $wesnoth_lua_config -Wno-deprecated-declarations"))
 
 objs_lua = env_lua.Object(lua_sources)
 for obj in objs_lua:
-    env_lua.Depends(obj, '../wesnoth_lua_config.h')
+    env_lua.Depends(obj, env_lua["wesnoth_lua_config"])
 
 liblua = env_lua.Library("lua", objs_lua)
 
