@@ -478,6 +478,8 @@ void tpreferences::post_build(twindow& window)
 		friends_list.add_row(get_friends_list_row_data(entry.second));
 	}
 
+	update_friends_list_controls(window, friends_list);
+
 	ttext_box& textbox = find_widget<ttext_box>(&window, "friend_name_box", false);
 
 	connect_signal_mouse_left_click(
