@@ -207,6 +207,7 @@ Version 1.13.5+dev:
      causing a crash upon editing (bug #25093)
    * Avoid rare cases of mini-map producing a divide-by-zero error (bug #25155)
    * [filter_vision]: fix bug of filter not matching own/allied hidden units
+   * Prevent crash on quitting scenario with planned recruits present (bugs #24022/25193)
 
 Version 1.13.5:
  * Campaigns:
