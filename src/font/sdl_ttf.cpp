@@ -449,8 +449,6 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 std::string make_text_ellipsis(const std::string &text, int font_size,
 	int max_width, int style)
 {
-	static const std::string ellipsis = "...";
-
 	if (line_width(text, font_size, style) <= max_width)
 		return text;
 	if(line_width(ellipsis, font_size, style) > max_width)
