@@ -720,9 +720,13 @@ void twindow::draw()
 
 		// Get new surface for restoring
 		SDL_Rect rect = get_rectangle();
+
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
-		font::draw_floating_labels(frame_buffer);
+		if(!is_in_dialog()) {
+			font::draw_floating_labels(frame_buffer);
+		}
+
 		if(restore_) {
 			restorer_ = get_surface_portion(frame_buffer, rect);
 		}

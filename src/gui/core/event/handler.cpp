@@ -962,9 +962,11 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 
 } // namespace event
 
+std::vector<twindow*> open_window_stack {};
+
 bool is_in_dialog()
 {
-	return event::handler && !event::handler->dispatchers_.empty();
+	return !open_window_stack.empty();
 }
 
 } // namespace gui2

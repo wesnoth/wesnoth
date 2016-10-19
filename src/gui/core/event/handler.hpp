@@ -23,9 +23,12 @@
 #include <boost/mpl/set.hpp>
 
 #include <iosfwd>
+#include <vector>
 
 namespace gui2
 {
+
+class twindow;
 
 namespace event
 {
@@ -322,6 +325,13 @@ void capture_keyboard(tdispatcher* dispatcher);
 std::ostream& operator<<(std::ostream& stream, const tevent event);
 
 } // namespace event
+
+/**
+ * Keeps track of any open windows of any type (modal, non-modal, or tooltip) in the
+ * order in which they were opened. Currently only used as a helper for is_in_dialog(),
+ * but could potentially be useful for other things in the future.
+ */
+extern std::vector<twindow*> open_window_stack;
 
 /**
  * Is a dialog open?

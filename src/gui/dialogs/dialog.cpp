@@ -63,7 +63,11 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 
 	pre_show(*window);
 
+	open_window_stack.push_back(window.get());
+
 	retval_ = window->show(restore_, auto_close_time);
+
+	open_window_stack.pop_back();
 
 	/*
 	 * It can happen that when two clicks follow each other fast that the event

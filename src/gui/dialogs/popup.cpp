@@ -47,11 +47,15 @@ void tpopup::show(CVideo& video,
 
 	pre_show(*window_);
 
+	open_window_stack.push_back(window_);
+
 	if(allow_interaction) {
 		window_->show_non_modal();
 	} else {
 		window_->show_tooltip(/*auto_close_time*/);
 	}
+
+	open_window_stack.pop_back();
 }
 
 void tpopup::hide()
