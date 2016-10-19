@@ -42,6 +42,8 @@ void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 {
 	int removed = 0;
+	if (fake_units_.empty())
+		return removed;
 	std::deque<internal_ptr_type>::iterator it =
 			std::remove(fake_units_.begin(), fake_units_.end(), u);
 	if (it != fake_units_.end()) {
