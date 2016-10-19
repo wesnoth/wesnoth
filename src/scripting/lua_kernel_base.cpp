@@ -593,8 +593,8 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 int lua_kernel_base::intf_require(lua_State* L)
 {
 	const char * m = luaL_checkstring(L, 1);
-	if (!m) {
-		luaL_argerror(L, 1, "found a null string argument to wesnoth require");
+	if(!m) {
+		return luaL_argerror(L, 1, "found a null string argument to wesnoth require");
 	}
 
 	// Check if there is already an entry.
@@ -604,20 +604,24 @@ int lua_kernel_base::intf_require(lua_State* L)
 	lua_rawget(L, -2);
 	lua_pushvalue(L, 1);
 	lua_rawget(L, -2);
-	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1;
+	if(!lua_isnil(L, -1) && !game_config::debug_lua) {
+		return 1;
+	}
 	lua_pop(L, 1);
 	lua_pushvalue(L, 1);
 	// stack is now [packagename] [wesnoth] [package] [packagename]
 
-	if (lua_fileops::load_file(L) != 1) return 0;
-	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
-	// stack is now [packagename] [wesnoth] [package] [chunk]
+	if(lua_fileops::load_file(L) != 1) {
+		// should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
+		// stack is now [packagename] [wesnoth] [package] [chunk]
+		return 0;
+	}
 	DBG_LUA << "require: loaded a file, now calling it\n";
 
 	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, _1, _2))) {
-      return 0;
+		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
+		return 0;
     }
-	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 	// stack is now [packagename] [wesnoth] [package] [results]
 
 	lua_pushvalue(L, 1);
@@ -672,39 +676,58 @@ std::vector<std::string> lua_kernel_base::get_global_var_names()
 std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string & input)
 {
 	std::vector<std::string> ret;
-	std::string var_path = input; // it's convenient to make a copy, even if it's a little slower
+	std::string base_path = input;
+	size_t last_dot = base_path.find_last_of('.');
+	std::string partial_name = base_path.substr(last_dot + 1);
+	base_path.erase(last_dot);
+	std::string load = "return " + base_path;
 
-	lua_State *L = mState;
-
-	int base = lua_gettop(L);
-	lua_getglobal(L, "_G");
-
-	size_t idx = var_path.find('.');
-	size_t last_dot = 0;
-	while (idx != std::string::npos ) {
-		last_dot += idx + 1; // Since idx was not npos, add it to the "last_dot" idx, so that last_dot keeps track of indices in input string
-		lua_pushstring(L, var_path.substr(0, idx).c_str()); //push the part of the path up to the period
-		lua_rawget(L, -2);
-
-		if (!lua_istable(L,-1) && !lua_isuserdata(L,-1)) {
-			lua_settop(L, base);
-			return ret; //if we didn't get a table or userdata we can't proceed
-		}
-
-		var_path = var_path.substr(idx+1); // chop off the part of the path we just dereferenced
-		idx = var_path.find('.'); // find the next .
+	lua_State* L = mState;
+	int save_stack = lua_gettop(L);
+	int result = luaL_loadstring(L, load.c_str());
+	if(result != LUA_OK) {
+		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
+		LOG_LUA << "Error when attempting tab completion:\n";
+		LOG_LUA << luaL_checkstring(L, -1) << '\n';
+		// Just return an empty list; no matches were found
+		lua_settop(L, save_stack);
+		return ret;
 	}
 
-	std::string prefix = input.substr(0, last_dot);
-
-	lua_pushnil(L);
-	while (lua_next(L, -2) != 0) {
-		if (lua_isstring(L, -2)) {
-			ret.push_back(prefix + lua_tostring(L,-2));
+	luaW_pcall(L, 0, 1);
+	if(lua_istable(L, -1) || lua_isuserdata(L, -1)) {
+		int top = lua_gettop(L);
+		int obj = lua_absindex(L, -1);
+		if(luaL_getmetafield(L, obj, "__tab_enum") == LUA_TFUNCTION) {
+			lua_pushvalue(L, obj);
+			lua_pushlstring(L, partial_name.c_str(), partial_name.size());
+			luaW_pcall(L, 2, 1);
+			ret = lua_check<std::vector<std::string>>(L, -1);
+		} else {
+			lua_settop(L, top);
+			// Metafunction not found, so use lua_next to enumerate the table
+			for(lua_pushnil(L); lua_next(L, obj); lua_pop(L, 1)) {
+				if(lua_isstring(L, -2)) {
+					std::string attr = lua_tostring(L, -2);
+					if(attr.empty()) {
+						continue;
+					}
+					if(!isalpha(attr[0]) && attr[0] != '_') {
+						continue;
+					}
+					if(std::any_of(attr.begin(), attr.end(), [](char c){
+						return !isalpha(c) && !isdigit(c) && c != '_';
+					})) {
+						continue;
+					}
+					if(attr.substr(0, partial_name.size()) == partial_name) {
+						ret.push_back(base_path + "." + attr);
+					}
+				}
+			}
 		}
-		lua_pop(L,1);
 	}
-	lua_settop(L, base);
+	lua_settop(L, save_stack);
 	return ret;
 }
 
