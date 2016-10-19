@@ -109,9 +109,7 @@ end
 
 function retreat_functions.get_retreat_injured_units(healees, regenerates)
     -- Only retreat to safe locations
-    local enemies = AH.get_live_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
-    }
+    local enemies = AH.get_attackable_enemies()
     local enemy_attack_map = BC.get_attack_map(enemies)
 
     local healing_locs = retreat_functions.get_healing_locations()
@@ -151,7 +149,9 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
 
         for j,loc in ipairs(possible_locations) do
             local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
-            if (not unit_in_way) or ((unit_in_way.moves > 0) and (unit_in_way.side == wesnoth.current.side)) then
+            if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
+                or ((unit_in_way.moves > 0) and (unit_in_way.side == wesnoth.current.side))
+            then
                 local rating = base_rating
                 local heal_score = 0
                 if regenerates then

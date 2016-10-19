@@ -14,6 +14,9 @@ return {
     --          (default always returns false)
     --      leader_takes_village: function that returns true if and only if the leader is going to move to capture a village this turn
     --          (default always returns true)
+    -- Note: the recruiting code assumes full knowledge of units on the map and the recruit lists of other sides for the purpose of
+    --   finding the best unit types to recruit. It does not work otherwise. It assumes normal vision of the AI side (that is, it disregards
+    --   hidden enemy units) for determining from which keep hex the leader should recruit and on which castle hexes to recruit new units
     init = function(ai_cas, params)
         if not params then
             params = {}
@@ -354,7 +357,7 @@ return {
             local no_space = true
             for i,c in ipairs(data.castle.locs) do
                 local unit = wesnoth.get_unit(c[1], c[2])
-                if (not unit) then
+                if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                     no_space = false
                     break
                 end
@@ -612,19 +615,19 @@ return {
                 -- and also the closest enemy
                 local max_rating = -1
 
-                local enemy_leaders = AH.get_live_units { canrecruit = 'yes',
-                    { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
-                }
+                local enemy_leaders = AH.get_attackable_enemies { canrecruit = 'yes' }
                 local closest_enemy_distance, closest_enemy_location = AH.get_closest_enemy()
 
                 for i,c in ipairs(data.castle.locs) do
                     local rating = 0
                     local unit = wesnoth.get_unit(c[1], c[2])
-                    if (not unit) then
+                    if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                         for j,e in ipairs(enemy_leaders) do
                             rating = rating + 1 / H.distance_between(c[1], c[2], e.x, e.y) ^ 2.
                         end
-                        rating = rating + 1 / H.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
+                        if closest_enemy_location then
+                            rating = rating + 1 / H.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
+                        end
                         if (rating > max_rating) then
                             max_rating, best_hex = rating, { c[1], c[2] }
                         end
@@ -650,9 +653,9 @@ return {
             local target_hex = recruit_data.recruit.target_hex
             local distance_to_enemy, enemy_location
             if target_hex[1] then
-                distance_to_enemy, enemy_location = AH.get_closest_enemy(target_hex)
+                distance_to_enemy, enemy_location = AH.get_closest_enemy(target_hex, wesnoth.current.side, { viewing_side = 0 })
             else
-                distance_to_enemy, enemy_location = AH.get_closest_enemy(best_hex)
+                distance_to_enemy, enemy_location = AH.get_closest_enemy(best_hex, wesnoth.current.side, { viewing_side = 0 })
             end
 
             local gold_limit = 9e99

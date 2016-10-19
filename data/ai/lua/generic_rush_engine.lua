@@ -67,6 +67,9 @@ return {
 
         -------- Castle Switch CA --------------
         local function get_reachable_enemy_leaders(unit)
+            -- We're cheating a little here and also find hidden enemy leaders. That's
+            -- because a human player could make a pretty good educated guess as to where
+            -- the enemy leaders are likely to be while the AI does not know how to do that.
             local potential_enemy_leaders = AH.get_live_units { canrecruit = 'yes',
                 { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
             }
@@ -228,7 +231,7 @@ return {
                     local should_wait = false
                     for i,loc in ipairs(castle) do
                         local unit = wesnoth.get_unit(loc[1], loc[2])
-                        if not unit then
+                        if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                             should_wait = false
                             break
                         elseif unit.moves > 0 then
@@ -273,9 +276,7 @@ return {
                 return 0
             end
 
-            local enemies = AH.get_live_units {
-                { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
-            }
+            local enemies = AH.get_attackable_enemies()
 
             local villages = wesnoth.get_villages()
             -- Just in case:
@@ -331,7 +332,7 @@ return {
                 for i,u in ipairs(units) do
                     -- Skip villages that have units other than 'u' itself on them
                     local village_occupied = false
-                    if unit_in_way and ((unit_in_way.x ~= u.x) or (unit_in_way.y ~= u.y)) then
+                    if AH.is_visible_unit(wesnoth.current.side, unit_in_way) and ((unit_in_way ~= u)) then
                         village_occupied = true
                     end
 
@@ -486,21 +487,13 @@ return {
 
         function generic_rush:spread_poison_exec()
             local attacker = wesnoth.get_unit(self.data.attack.src.x, self.data.attack.src.y)
+            -- If several attacks have poison, this will always find the last one
+            local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
 
             if AH.print_exec() then print_time('   Executing spread_poison CA') end
             if AH.show_messages() then W.message { speaker = attacker.id, message = 'Poison attack' } end
 
-            local defender = wesnoth.get_unit(self.data.attack.target.x, self.data.attack.target.y)
-
-            AH.movefull_stopunit(ai, attacker, self.data.attack.dst.x, self.data.attack.dst.y)
-            if (not attacker) or (not attacker.valid) then return end
-            if (not defender) or (not defender.valid) then return end
-
-            -- Find the poison weapon
-            -- If several attacks have poison, this will always find the last one
-            local is_poisoner, poison_weapon = AH.has_weapon_special(attacker, "poison")
-
-            AH.checked_attack(ai, attacker, defender, poison_weapon)
+            AH.robust_move_and_attack(ai, attacker, self.data.attack.dst, self.data.attack.target, { weapon = poison_weapon })
 
             self.data.attack = nil
         end
@@ -544,7 +537,7 @@ return {
         end
 
         function generic_rush:retreat_injured_units_exec()
-            AH.movefull_outofway_stopunit(ai, self.data.retreat_unit, self.data.retreat_loc)
+            AH.robust_move_and_attack(ai, self.data.retreat_unit, self.data.retreat_loc)
             self.data.retreat_unit = nil
             self.data.retreat_loc = nil
         end
