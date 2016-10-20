@@ -61,7 +61,7 @@ private:
 	void do_generator_selected(twindow& window);
 
 	/** Callback for the generator settings button. */
-	void do_settings(twindow& window);
+	void do_settings();
 
 	/** Available map generators */
 	std::vector<map_generator*> map_generators_;

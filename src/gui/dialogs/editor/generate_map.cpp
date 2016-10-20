@@ -84,9 +84,9 @@ void teditor_generate_map::do_generator_selected(twindow& window)
 	current_map_generator_ = current;
 }
 
-void teditor_generate_map::do_settings(twindow& window)
+void teditor_generate_map::do_settings()
 {
-	get_selected_map_generator()->user_config(window.video());
+	get_selected_map_generator()->user_config();
 }
 
 map_generator* teditor_generate_map::get_selected_map_generator()
@@ -137,9 +137,7 @@ void teditor_generate_map::pre_show(twindow& window)
 	tbutton& settings_button = find_widget<tbutton>(&window, "settings", false);
 	connect_signal_mouse_left_click(
 			settings_button,
-			std::bind(&teditor_generate_map::do_settings,
-						this,
-						std::ref(window)));
+			std::bind(&teditor_generate_map::do_settings,this));
 }
 
 boost::optional<uint32_t> teditor_generate_map::get_seed()

@@ -253,7 +253,7 @@ public:
 
 	bool generator_assigned() const;
 	bool generator_has_settings() const;
-	void generator_user_config(CVideo& v);
+	void generator_user_config();
 
 	int find_level_by_id(const std::string& id) const;
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;

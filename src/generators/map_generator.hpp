@@ -49,7 +49,7 @@ public:
 	 * to modify how the generator behaves.
 	 * (This function will not be called if allow_user_config() returns false).
 	 */
-	virtual void user_config(CVideo& v);
+	virtual void user_config();
 
 	/**
 	 * Returns a string identifying the generator by name.

@@ -42,15 +42,15 @@ class default_map_generator : public map_generator
 public:
 	default_map_generator(const config &game_config);
 
-	bool allow_user_config() const;
-	void user_config(CVideo& v);
+	bool allow_user_config() const override;
+	void user_config() override;
 
-	std::string name() const;
+	std::string name() const override;
 
-	std::string config_name() const;
+	std::string config_name() const override;
 
-	std::string create_map(boost::optional<uint32_t> randomseed);
-	config create_scenario(boost::optional<uint32_t> randomseed);
+	std::string create_map(boost::optional<uint32_t> randomseed) override;
+	config create_scenario(boost::optional<uint32_t> randomseed) override;
 
 private:
 	std::string generate_map(std::map<map_location,std::string>* labels, boost::optional<uint32_t> randomseed);

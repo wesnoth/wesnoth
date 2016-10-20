@@ -877,9 +877,9 @@ bool create_engine::generator_has_settings() const
 	return generator_->allow_user_config();
 }
 
-void create_engine::generator_user_config(CVideo& v)
+void create_engine::generator_user_config()
 {
-	generator_->user_config(v);
+	generator_->user_config();
 }
 
 int create_engine::find_level_by_id(const std::string& id) const

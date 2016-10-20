@@ -42,7 +42,7 @@ bool map_generator::allow_user_config() const
 	return false;
 }
 
-void map_generator::user_config(CVideo& /*v*/)
+void map_generator::user_config()
 {
 }
 

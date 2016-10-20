@@ -25,6 +25,7 @@
 #include "map/map.hpp"
 #include "font/marked-up_text.hpp"
 #include "seed_rng.hpp"
+#include "video.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -60,9 +61,9 @@ default_map_generator::default_map_generator(const config& cfg)
 
 bool default_map_generator::allow_user_config() const { return true; }
 
-void default_map_generator::user_config(CVideo& v)
+void default_map_generator::user_config()
 {
-	gui2::tgenerator_settings::execute(data_, v);
+	gui2::tgenerator_settings::execute(data_, CVideo::get_singleton());
 }
 
 std::string default_map_generator::name() const { return "default"; }

@@ -385,7 +385,7 @@ void create::process_event_impl(const process_event_data & data)
 	}
 
 	if (engine_.generator_assigned() && generator_settings_.pressed()) {
-		engine_.generator_user_config(video());
+		engine_.generator_user_config();
 
 		level_changed = true;
 	}

@@ -33,17 +33,17 @@ class lua_map_generator : public map_generator {
 public:
 	lua_map_generator(const config & cfg);
 
-	bool allow_user_config() const { return false; }
+	bool allow_user_config() const override { return false; }
 
-	std::string name() const { return "lua"; }
+	std::string name() const override { return "lua"; }
 
 	std::string id() const { return id_; }
 
-	std::string config_name() const { return config_name_; }
+	std::string config_name() const override { return config_name_; }
 
-	virtual void user_config();
-	virtual std::string create_map(boost::optional<uint32_t> randomseed);
-	virtual config create_scenario(boost::optional<uint32_t> randomseed);
+	virtual void user_config() override;
+	virtual std::string create_map(boost::optional<uint32_t> randomseed) override;
+	virtual config create_scenario(boost::optional<uint32_t> randomseed) override;
 
 private:
 	std::string id_, config_name_;
