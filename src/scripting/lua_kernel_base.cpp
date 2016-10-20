@@ -223,8 +223,6 @@ int dispatch(lua_State *L) {
 	return ((lua_kernel_base::get_lua_kernel<lua_kernel_base>(L)).*method)(L);
 }
 
-extern void push_error_handler(lua_State *L);
-
 // Ctor, initialization
 lua_kernel_base::lua_kernel_base()
  : mState(luaL_newstate())
@@ -457,8 +455,6 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 {
 	return this->protected_call(mState, nArgs, nRets, e_h);
 }
-
-extern int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
 
 bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_handler e_h)
 {

@@ -179,6 +179,11 @@ void chat_message(std::string const &caption, std::string const &msg);
  */
 bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);
 
+// Don't use these directly
+void push_error_handler(lua_State *L);
+int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
+
+
 int luaW_type_error (lua_State *L, int narg, const char *tname);
 
 #define return_tstring_attrib(name, accessor) \

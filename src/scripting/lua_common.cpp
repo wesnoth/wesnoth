@@ -922,10 +922,6 @@ void chat_message(std::string const &caption, std::string const &msg)
 														   events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
-// To silence "no prototype" warnings
-void push_error_handler(lua_State *L);
-int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
-
 void push_error_handler(lua_State *L)
 {
 	luaW_getglobal(L, "debug", "traceback");
@@ -943,10 +939,10 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 	// Call the function.
 	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 
+	tlua_jailbreak_exception::rethrow();
+
 	// Remove the error handler.
 	lua_remove(L, error_handler_index);
-
-	tlua_jailbreak_exception::rethrow();
 
 	return errcode;
 }
