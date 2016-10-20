@@ -20,32 +20,31 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
     local filter_own = H.get_child(cfg, "filter")
     local filter_enemy = H.get_child(cfg, "filter_second")
-    local excluded_enemies, leader
+
+    local enemies, leader
     if (not filter_own) and (not filter_enemy) then
-        leader = FAU.get_attackers(data, "leader")[1]
+        local attacks_aspect = ai.aspects.attacks
+        for _,unit in ipairs(attacks_aspect.own) do
+            if unit.canrecruit and (unit.attacks_left > 0) and (#unit.attacks > 0) then
+                leader = unit
+                break
+            end
+        end
         if (not leader) then return 0 end
-        excluded_enemies = FAU.get_attackers(data, "enemy")
+        enemies = attacks_aspect.enemy
     else
         leader = AH.get_live_units(
             FAU.build_attack_filter("leader", filter_own)
         )[1]
-        if (not leader) then return 0 end
-        if filter_enemy then
-            excluded_enemies = AH.get_live_units(
-                FAU.build_attack_filter("enemy", filter_enemy)
-            )
-        end
+        if (not leader) or (leader.attacks_left == 0) or (#leader.attacks == 0) then return 0 end
+        enemies = AH.get_live_units(
+            FAU.build_attack_filter("enemy", filter_enemy)
+        )
     end
 
-    if (leader.attacks_left == 0) or (#leader.attacks == 0) then return 0 end
-
-    local excluded_enemies_map = LS.create()
-
-    -- Exclude enemies not matching [filter_enemy]
-    if excluded_enemies then
-        for _,e in ipairs(excluded_enemies) do
-            excluded_enemies_map:insert(e.x, e.y)
-        end
+    local enemy_map = LS.create()
+    for _,e in ipairs(enemies) do
+        enemy_map:insert(e.x, e.y)
     end
 
     -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
@@ -56,7 +55,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
         }
 
         for _,e in ipairs(hidden_enemies) do
-            excluded_enemies_map:insert(e.x, e.y)
+            enemy_map:remove(e.x, e.y)
         end
     end
 
@@ -120,7 +119,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
     if (#attacks > 0) then
         local max_rating, best_target, best_dst = -9e99
         for _,attack in ipairs(attacks) do
-            if (not excluded_enemies_map:get(attack.target.x, attack.target.y))
+            if enemy_map:get(attack.target.x, attack.target.y)
                 and (not avoid_map:get(attack.dst.x, attack.dst.y))
             then
                 -- First check if the threat against the leader at this hex
