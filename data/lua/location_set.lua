@@ -167,8 +167,11 @@ function methods:to_wml_var(name)
 end
 
 function location_set.create()
-	local w,h,b = wesnoth.get_map_size()
-	assert(h + 2 * b < 9000)
+	if wesnoth.get_map_size then
+		-- If called from the mapgen kernel, there's no map
+		local w,h,b = wesnoth.get_map_size()
+		assert(h + 2 * b < 9000)
+	end
 	return setmetatable({ values = {} }, locset_meta)
 end
 
