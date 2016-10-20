@@ -156,7 +156,7 @@ bool schema_validator::read_config_file(const std::string &filename){
 		}
 		for(const config &type : g.child_range("type")) {
 			try{
-				types_[type["name"].str()] = boost::regex( type["value"].str());
+				types_[type["name"].str()] = std::regex( type["value"].str());
 			}
 			catch (std::exception){
 			// Need to check all type values in schema-generator
@@ -267,11 +267,11 @@ void schema_validator::validate_key(const config & cfg,
 		// checking existing keys
 		const class_key * key =stack_.top()->find_key(name);
 		if (key){
-			std::map<std::string,boost::regex>::iterator itt =
+			std::map<std::string,std::regex>::iterator itt =
 					types_.find(key->get_type());
 			if (itt != types_.end()){
-				boost::smatch sub;
-				bool res = boost::regex_match(value,sub,itt->second);
+				std::smatch sub;
+				bool res = std::regex_match(value,sub,itt->second);
 				if (!res ) {
 					cache_.top()[&cfg].push_back(
 							message_info(WRONG_VALUE,file,start_line,0,
