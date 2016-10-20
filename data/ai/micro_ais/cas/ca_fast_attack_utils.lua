@@ -31,6 +31,7 @@ function ca_fast_attack_utils.get_avoid_map(cfg)
 end
 
 local function attack_filter(which, filter, is_leader)
+    if (is_leader == nil) then is_leader = false end
     if (which == 'leader') then
         which = 'own'
         is_leader = true
