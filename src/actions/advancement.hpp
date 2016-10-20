@@ -46,7 +46,7 @@ struct advance_unit_params
 	advance_unit_params& animate(bool value) {animate_ = value; return *this;}
 	friend void advance_unit_at(const advance_unit_params&);
 private:
-	const map_location& loc_;
+	map_location loc_;
 	const ai::unit_advancements_aspect* ai_advancements_;
 	bool force_dialog_;
 	bool fire_events_;
