@@ -117,8 +117,7 @@ void tloadscreen::pre_show(twindow& window)
 		worker_.reset(new boost::thread([this]() {
 			try {
 				work_();
-			}
-			catch (const game::error&) {
+			} catch(...) {
 				//TODO: guard this with a mutex.
 				exception_ = std::current_exception();
 			}
