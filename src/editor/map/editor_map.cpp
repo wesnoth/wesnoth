@@ -292,10 +292,10 @@ void editor_map::expand_right(int count, const t_translation::t_terrain & filler
 	}
 	for (int x = tiles_.w, x_end = tiles_.w + count; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(count - 1, y) : filler;
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(tiles_.w - 1, y) : filler;
 		}
 	}
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::expand_left(int count, const t_translation::t_terrain & filler)
@@ -312,7 +312,7 @@ void editor_map::expand_left(int count, const t_translation::t_terrain & filler)
 			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(0, y) : filler;
 		}
 	}
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::expand_top(int count, const t_translation::t_terrain & filler)
@@ -326,10 +326,10 @@ void editor_map::expand_top(int count, const t_translation::t_terrain & filler)
 	}
 	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
 		for (int y = tiles_.h, y_end = tiles_.h + count; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, count - 1) : filler;
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, tiles_.h - 1) : filler;
 		}
 	}
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::expand_bottom(int count, const t_translation::t_terrain & filler)
@@ -346,7 +346,7 @@ void editor_map::expand_bottom(int count, const t_translation::t_terrain & fille
 			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, 0) : filler;
 		}
 	}
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::shrink_right(int count)
@@ -361,7 +361,7 @@ void editor_map::shrink_right(int count)
 		}
 	}
 	w_ -= count;
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::shrink_left(int count)
@@ -376,7 +376,7 @@ void editor_map::shrink_left(int count)
 		}
 	}
 	w_ -= count;
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::shrink_top(int count)
@@ -391,7 +391,7 @@ void editor_map::shrink_top(int count)
 		}
 	}
 	h_ -= count;
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 void editor_map::shrink_bottom(int count)
@@ -406,7 +406,7 @@ void editor_map::shrink_bottom(int count)
 		}
 	}
 	h_ -= count;
-	tiles_ = tiles_new;
+	tiles_ = std::move(tiles_new);
 }
 
 
