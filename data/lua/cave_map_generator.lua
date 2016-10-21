@@ -46,8 +46,12 @@ function callbacks.generate_map(params)
 		local y = chamber.y
 		local id = chamber.id
 		if chance == 0 or random(100) > chance then
+			-- Set chance to 0 so that the scenario generator can tell which chambers were used
+			params.chance = 0
 			goto continue
 		end
+		-- Ditto, set it to 100
+		params.chance = 100
 		if type(x) == "string" then
 			local x_min, x_max = x:match("(%d+)-(%d+)")
 			x = random(tonumber(x_min), tonumber(x_max))
@@ -159,6 +163,22 @@ function callbacks.generate_map(params)
 	end
 
 	return tostring(map)
+end
+
+function callbacks.generate_scenario(params)
+	-- This is more or less backwards compatible with the cave generator syntax
+	local scenario = helper.child(params, "scenario")
+	scenario.map_data = callbacks.generate_map(params)
+	for chamber in helper.child_range(params, "chamber") do
+		local items = helper.child(chamber, "items")
+		if chamber.chance == 100 and chamber_items then
+			-- TODO: Should we support [event]same_location_as_previous=yes?
+			for i,tag in ipairs(chamber_items) do
+				table.insert(scenario, tag)
+			end
+		end
+	end
+	return scenario
 end
 
 return callbacks
