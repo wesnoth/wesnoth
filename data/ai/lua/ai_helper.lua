@@ -141,6 +141,32 @@ end
 
 ----- AI execution helper functions ------
 
+function ai_helper.is_incomplete_move(check)
+    if (not check.ok) then
+        -- Legitimately interrupted moves have the following error codes:
+        -- E_AMBUSHED = 2005
+        -- E_FAILED_TELEPORT = 2006,
+        -- E_NOT_REACHED_DESTINATION = 2007
+        if (check.status == 2005) or (check.status == 2006) or (check.status == 2007) then
+            return check.status
+        end
+    end
+
+    return false
+end
+
+function ai_helper.is_incomplete_or_empty_move(check)
+    if (not check.ok) then
+        -- Empty moves have the following error code:
+        -- E_EMPTY_MOVE = 2001
+        if ai_helper.is_incomplete_move(check) or (check.status == 2001) then
+            return check.status
+        end
+    end
+
+    return false
+end
+
 function ai_helper.checked_action_error(action, error_code)
     if wesnoth.game_config.debug then
         wesnoth.message('Lua AI error', action .. ' could not be executed. Error code: ' .. error_code)
@@ -164,12 +190,7 @@ function ai_helper.checked_move_core(ai, unit, x, y, move_type)
     local check = ai.check_move(unit, x, y)
 
     if (not check.ok) then
-        -- The following errors are not fatal:
-        -- E_EMPTY_MOVE = 2001
-        -- E_AMBUSHED = 2005
-        -- E_FAILED_TELEPORT = 2006,
-        -- E_NOT_REACHED_DESTINATION = 2007
-        if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2006) and (check.status ~= 2007) then
+        if (not ai_helper.is_incomplete_or_empty_move(check)) then
             ai.stopunit_moves(unit)
             ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status .. ' (' .. check.result .. ')')
             return
@@ -329,13 +350,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
 
             local check = ai.check_move(unit, dst_x, dst_y)
             if (not check.ok) then
-                -- The following errors are not fatal:
-                -- E_EMPTY_MOVE = 2001
-                -- E_AMBUSHED = 2005
-                -- E_FAILED_TELEPORT = 2006,
-                -- E_NOT_REACHED_DESTINATION = 2007
-                -- In all other cases, we abandon after making sure a gamestate change has happened
-                if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2006) and (check.status ~= 2007) then
+                if (not ai_helper.is_incomplete_or_empty_move(check)) then
                     if (not gamestate_changed) then
                         ai.stopunit_moves(unit)
                     end
