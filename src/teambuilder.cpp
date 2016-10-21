@@ -287,7 +287,7 @@ protected:
 				uc.add_unit(*u);
 			}
 			catch (const unit_type::error& e) {
-				ERR_NG_TC << e << "\n";
+				ERR_NG_TC << e.what() << "\n";
 			}
 		}
 	}
