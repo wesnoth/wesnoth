@@ -184,7 +184,7 @@ end
 
 function ca_fast_combat_leader:execution(cfg, data)
     AH.robust_move_and_attack(ai, data.leader, data.fast_dst, data.fast_target)
-    data.leader = nil
+    data.leader, data.fast_target, data.fast_dst = nil, nil, nil
 end
 
 return ca_fast_combat_leader
