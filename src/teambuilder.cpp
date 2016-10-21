@@ -283,7 +283,12 @@ protected:
 			.allow_show(false);
 
 		for (const config *u : unit_configs_) {
-			uc.add_unit(*u);
+			try {
+				uc.add_unit(*u);
+			}
+			catch (const unit_type::error& e) {
+				ERR_NG_TC << e << "\n";
+			}
 		}
 	}
 
