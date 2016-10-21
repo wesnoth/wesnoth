@@ -41,9 +41,13 @@ function callbacks.generate_map(params)
 	local passages = {}
 
 	for chamber in helper.child_range(params, "chamber") do
+		local chance = tonumber(chamber.chance) or 100
 		local x = chamber.x
 		local y = chamber.y
 		local id = chamber.id
+		if chance == 0 or random(100) > chance then
+			goto continue
+		end
 		if type(x) == "string" then
 			local x_min, x_max = x:match("(%d+)-(%d+)")
 			x = random(tonumber(x_min), tonumber(x_max))
@@ -79,6 +83,7 @@ function callbacks.generate_map(params)
 				})
 			end
 		end
+		::continue::
 	end
 
 	for i,v in ipairs(chambers) do
