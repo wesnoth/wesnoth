@@ -16,27 +16,27 @@ function ca_fast_combat:evaluation(cfg, data)
     local units_sorted = true
     if (not filter_own) and (not filter_enemy) then
         local attacks_aspect = ai.aspects.attacks
-	    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
+        if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
             -- Leader is dealt with in a separate CA
-	    	data.fast_combat_units = {}
-	    	for _,unit in ipairs(attacks_aspect.own) do
-	    	    if (not unit.canrecruit) then
-	    	        table.insert(data.fast_combat_units, unit)
-	    	    end
-	    	end
-			if (not data.fast_combat_units[1]) then return 0 end
-	    	units_sorted = false
-	    end
+            data.fast_combat_units = {}
+            for _,unit in ipairs(attacks_aspect.own) do
+                if (not unit.canrecruit) then
+                    table.insert(data.fast_combat_units, unit)
+                end
+            end
+            if (not data.fast_combat_units[1]) then return 0 end
+            units_sorted = false
+        end
         enemies = attacks_aspect.enemy
     else
-	    if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
-			data.fast_combat_units = AH.get_live_units(
-				FAU.build_attack_filter("own", filter_own)
-			)
-        	if (not data.fast_combat_units[1]) then return 0 end
-        	units_sorted = false
+        if (not data.fast_combat_units) or (not data.fast_combat_units[1]) then
+            data.fast_combat_units = AH.get_live_units(
+                FAU.build_attack_filter("own", filter_own)
+            )
+            if (not data.fast_combat_units[1]) then return 0 end
+            units_sorted = false
         end
-		enemies = AH.get_live_units(
+        enemies = AH.get_live_units(
             FAU.build_attack_filter("enemy", filter_enemy)
         )
     end
