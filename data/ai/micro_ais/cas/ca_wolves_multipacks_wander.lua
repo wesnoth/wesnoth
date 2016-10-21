@@ -130,11 +130,14 @@ function ca_wolves_multipacks_wander:execution(cfg)
                 WMPF.clear_label(wolf.x, wolf.y)
             end
 
-            AH.movefull_stopunit(ai, wolf, best_hex)
+            local move_result = AH.movefull_stopunit(ai, wolf, best_hex)
 
             if cfg.show_pack_number and wolf and wolf.valid then
                 WMPF.put_label(wolf.x, wolf.y, pack_number)
             end
+
+            -- If the wolf was ambushed, return and reconsider
+            if (AH.is_incomplete_move(move_result)) then return end
         end
     end
 end
