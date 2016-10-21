@@ -1038,7 +1038,6 @@ void lua_ai_context::update_state()
 	
 	// Call the function
 	if (!luaW_pcall(L, 2, 1, true)) { // [-1: Result  -2: AI state]
-		lua_pop(L, 2); // (The result in this case is an error message.)
 		return; // return with stack size 0 []
 	}
 	
