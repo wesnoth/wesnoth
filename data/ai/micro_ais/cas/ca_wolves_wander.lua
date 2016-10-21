@@ -52,7 +52,9 @@ function ca_wolves_wander:execution(cfg)
             return rating
         end)
 
-        AH.movefull_stopunit(ai, wolf, best_hex)
+        local move_result = AH.movefull_stopunit(ai, wolf, best_hex)
+        -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
+        if (AH.is_incomplete_move(move_result)) then return end
         for _,check_wolf in ipairs(wolves) do
             if (not check_wolf) or (not check_wolf.valid) then return end
         end

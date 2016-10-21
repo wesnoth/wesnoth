@@ -63,7 +63,9 @@ function ca_wolves_move:execution(cfg)
        return rating
     end)
 
-    AH.movefull_stopunit(ai, wolves[1], wolf1)
+    local move_result = AH.movefull_stopunit(ai, wolves[1], wolf1)
+    -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
+    if (AH.is_incomplete_move(move_result)) then return end
     for _,check_wolf in ipairs(wolves) do
         if (not check_wolf) or (not check_wolf.valid) then return end
     end
@@ -90,7 +92,9 @@ function ca_wolves_move:execution(cfg)
             return rating
         end)
 
-        AH.movefull_stopunit(ai, wolves[i], move)
+        local move_result = AH.movefull_stopunit(ai, wolves[i], move)
+        -- If the wolf was ambushed, return and reconsider; also if an event removed a wolf
+        if (AH.is_incomplete_move(move_result)) then return end
         for _,check_wolf in ipairs(wolves) do
             if (not check_wolf) or (not check_wolf.valid) then return end
         end
