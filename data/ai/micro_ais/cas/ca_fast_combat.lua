@@ -56,6 +56,7 @@ function ca_fast_combat:evaluation(cfg, data)
     end
 
     -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
+    local viewing_side = wesnoth.current.side
     if (not cfg.attack_hidden_enemies) then
         local hidden_enemies = AH.get_live_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
@@ -65,6 +66,8 @@ function ca_fast_combat:evaluation(cfg, data)
         for _,e in ipairs(hidden_enemies) do
             enemy_map:remove(e.x, e.y)
         end
+    else
+        viewing_side = 0
     end
 
     local aggression = ai.aspects.aggression
@@ -80,7 +83,7 @@ function ca_fast_combat:evaluation(cfg, data)
         local unit_copy = FAU.get_unit_copy(unit.id, data.gamedata)
 
         if (unit.attacks_left > 0) and (#unit.attacks > 0) then
-            local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes })
+            local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side })
 
             if (#attacks > 0) then
                 local max_rating, best_target, best_dst = -9e99
