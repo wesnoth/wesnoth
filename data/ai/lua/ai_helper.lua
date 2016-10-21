@@ -180,10 +180,10 @@ function ai_helper.checked_attack(ai, attacker, defender, weapon)
     if (not check.ok) then
         ai.stopunit_attacks(attacker)
         ai_helper.checked_action_error('ai.attack from ' .. attacker.x .. ',' .. attacker.y .. ' to ' .. defender.x .. ',' .. defender.y, check.status .. ' (' .. check.result .. ')')
-        return
+        return check
     end
 
-    ai.attack(attacker, defender, weapon)
+    return ai.attack(attacker, defender, weapon)
 end
 
 function ai_helper.checked_move_core(ai, unit, x, y, move_type)
@@ -193,23 +193,23 @@ function ai_helper.checked_move_core(ai, unit, x, y, move_type)
         if (not ai_helper.is_incomplete_or_empty_move(check)) then
             ai.stopunit_moves(unit)
             ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status .. ' (' .. check.result .. ')')
-            return
+            return check
         end
     end
 
     if (move_type == 'ai.move_full') then
-        ai.move_full(unit, x, y)
+        return ai.move_full(unit, x, y)
     else
-        ai.move(unit, x, y)
+        return ai.move(unit, x, y)
     end
 end
 
 function ai_helper.checked_move_full(ai, unit, x, y)
-    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
+    return ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
 end
 
 function ai_helper.checked_move(ai, unit, x, y)
-    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
+    return ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
 end
 
 function ai_helper.checked_recruit(ai, unit_type, x, y)
@@ -217,10 +217,10 @@ function ai_helper.checked_recruit(ai, unit_type, x, y)
 
     if (not check.ok) then
         ai_helper.checked_action_error('ai.recruit of ' .. unit_type .. ' at ' .. x .. ',' .. y, check.status .. ' (' .. check.result .. ')')
-        return
+        return check
     end
 
-    ai.recruit(unit_type, x, y)
+    return ai.recruit(unit_type, x, y)
 end
 
 function ai_helper.checked_stopunit_all(ai, unit)
@@ -228,10 +228,10 @@ function ai_helper.checked_stopunit_all(ai, unit)
 
     if (not check.ok) then
         ai_helper.checked_action_error('ai.stopunit_all of ' .. unit.x .. ',' .. unit.y, check.status .. ' (' .. check.result .. ')')
-        return
+        return check
     end
 
-    ai.stopunit_all(unit)
+    return ai.stopunit_all(unit)
 end
 
 function ai_helper.checked_stopunit_attacks(ai, unit)
@@ -239,10 +239,10 @@ function ai_helper.checked_stopunit_attacks(ai, unit)
 
     if (not check.ok) then
         ai_helper.checked_action_error('ai.stopunit_attacks of ' .. unit.x .. ',' .. unit.y, check.status .. ' (' .. check.result .. ')')
-        return
+        return check
     end
 
-    ai.stopunit_attacks(unit)
+    return ai.stopunit_attacks(unit)
 end
 
 function ai_helper.checked_stopunit_moves(ai, unit)
@@ -250,10 +250,10 @@ function ai_helper.checked_stopunit_moves(ai, unit)
 
     if (not check.ok) then
         ai_helper.checked_action_error('ai.stopunit_moves of ' .. unit.x .. ',' .. unit.y, check.status .. ' (' .. check.result .. ')')
-        return
+        return check
     end
 
-    ai.stopunit_moves(unit)
+    return ai.stopunit_moves(unit)
 end
 
 function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
