@@ -143,8 +143,8 @@ end
 
 function ai_helper.checked_action_error(action, error_code)
     if wesnoth.game_config.debug then
-        wesnoth.message('Lua AI error', 'If you see this message, something has gone wrong. Please report this on the Wesnoth forums, ideally with a replay and/or savegame.')
-        error(action .. ' could not be executed. Error code: ' .. error_code)
+        wesnoth.message('Lua AI error', action .. ' could not be executed. Error code: ' .. error_code)
+        error()
     end
 end
 
@@ -153,7 +153,7 @@ function ai_helper.checked_attack(ai, attacker, defender, weapon)
 
     if (not check.ok) then
         ai.stopunit_attacks(attacker)
-        ai_helper.checked_action_error('ai.attack from ' .. attacker.x .. ',' .. attacker.y .. ' to ' .. defender.x .. ',' .. defender.y, check.status)
+        ai_helper.checked_action_error('ai.attack from ' .. attacker.x .. ',' .. attacker.y .. ' to ' .. defender.x .. ',' .. defender.y, check.status .. ' (' .. check.result .. ')')
         return
     end
 
@@ -171,7 +171,7 @@ function ai_helper.checked_move_core(ai, unit, x, y, move_type)
         -- E_NOT_REACHED_DESTINATION = 2007
         if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2006) and (check.status ~= 2007) then
             ai.stopunit_moves(unit)
-            ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status)
+            ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status .. ' (' .. check.result .. ')')
             return
         end
     end
@@ -195,7 +195,7 @@ function ai_helper.checked_recruit(ai, unit_type, x, y)
     local check = ai.check_recruit(unit_type, x, y)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.recruit of ' .. unit_type, check.status)
+        ai_helper.checked_action_error('ai.recruit of ' .. unit_type .. ' at ' .. x .. ',' .. y, check.status .. ' (' .. check.result .. ')')
         return
     end
 
@@ -206,7 +206,7 @@ function ai_helper.checked_stopunit_all(ai, unit)
     local check = ai.check_stopunit(unit)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.stopunit_all of ' .. unit.x .. ',' .. unit.y, check.status)
+        ai_helper.checked_action_error('ai.stopunit_all of ' .. unit.x .. ',' .. unit.y, check.status .. ' (' .. check.result .. ')')
         return
     end
 
@@ -217,7 +217,7 @@ function ai_helper.checked_stopunit_attacks(ai, unit)
     local check = ai.check_stopunit(unit)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.stopunit_attacks of ' .. unit.x .. ',' .. unit.y, check.status)
+        ai_helper.checked_action_error('ai.stopunit_attacks of ' .. unit.x .. ',' .. unit.y, check.status .. ' (' .. check.result .. ')')
         return
     end
 
@@ -228,7 +228,7 @@ function ai_helper.checked_stopunit_moves(ai, unit)
     local check = ai.check_stopunit(unit)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.stopunit_moves of ' .. unit.x .. ',' .. unit.y, check.status)
+        ai_helper.checked_action_error('ai.stopunit_moves of ' .. unit.x .. ',' .. unit.y, check.status .. ' (' .. check.result .. ')')
         return
     end
 
