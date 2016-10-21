@@ -142,6 +142,22 @@ function callbacks.generate_map(params)
 
 	end
 
+	if type(params.transform) == "string" then
+		local chance = params.transform_chance or 100
+		if random(100) <= chance then
+			local transforms = {}
+			for t in params.transform:gmatch("[^%s,][^,]*") do
+				-- TODO: Possibly support other transformations, such as transpose, rotate_cw, rotate_ccw, etc
+				if t == 'flip_x' or t == 'flip_y' then
+					table.insert(transforms, t)
+				else
+					error("Unknown transformation '" .. t .. "'")
+				end
+			end
+			map[transforms[random(#transforms)]](map)
+		end
+	end
+
 	return tostring(map)
 end
 
