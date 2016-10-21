@@ -1486,9 +1486,9 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
+        return ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai_helper.checked_stopunit_moves(ai, unit)
+        return ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 
