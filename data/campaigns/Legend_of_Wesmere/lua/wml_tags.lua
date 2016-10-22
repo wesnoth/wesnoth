@@ -73,13 +73,13 @@ function wesnoth.wml_actions.persistent_carryover_store(cfg)
 		--TODO: apply carryover multipler and carryover bonus.
 		V["side_store.gold"] = side.gold
 		for i = 1, V["side_store.unit.length"] do
-			V["side_store.unit[" .. (i - 1)  .. "].x"] = nil
-			V["side_store.unit[" .. (i - 1) .. "].y"] = nil
-			V["side_store.unit[" .. (i - 1) .. "].hitpoints"] = nil
-			V["side_store.unit[" .. (i - 1) .. "].moves"] = nil 
-			V["side_store.unit[" .. (i - 1) .. "].side"] = nil 
-			V["side_store.unit[" .. (i - 1) .. "].goto_x"] = nil 
-			V["side_store.unit[" .. (i - 1) .. "].goto_y"] = nil 
+			V[string.format("side_store.unit[%d].x", i - 1)] = nil
+			V[string.format("side_store.unit[%d].y", i - 1)] = nil
+			V[string.format("side_store.unit[%d].hitpoints", i - 1)] = nil
+			V[string.format("side_store.unit[%d].moves", i - 1)] = nil
+			V[string.format("side_store.unit[%d].side", i - 1)] = nil
+			V[string.format("side_store.unit[%d].goto_x", i - 1)] = nil
+			V[string.format("side_store.unit[%d].goto_y", i - 1)] = nil
 		end
 		wml_actions.set_global_variable {
 			namespace = cfg.scenario_id,
@@ -114,16 +114,16 @@ function wesnoth.wml_actions.persistent_carryover_unstore(cfg)
 			end
 		end
 		for i = 1, V["side_store.unit.length"] do
-			V["side_store.unit[" .. (i - 1) .. "].side"] = num
-			local u = wesnoth.get_unit(V["side_store.unit[" .. (i - 1) .. "].id"])
+			V[string.format("side_store.unit[%d].side", i - 1)] = num
+			local u = wesnoth.get_unit(V[string.format("side_store.unit[%d].id", i - 1)])
 			
 			if u then
-				V["side_store.unit[" .. (i - 1) .. "].x"] = u.x
-				V["side_store.unit[" .. (i - 1) .. "].y"] = u.y
+				V[string.format("side_store.unit[%d].x", i - 1)] = u.x
+				V[string.format("side_store.unit[%d].y", i - 1)] = u.y
 				u:extract()
 			end
 			wml_actions.unstore_unit {
-				variable = "side_store.unit[" .. (i - 1) .. "]",
+				variable = string.format("side_store.unit[%d]", i - 1),
 				find_vacant = false,
 				check_passability = false,
 				advance = false,

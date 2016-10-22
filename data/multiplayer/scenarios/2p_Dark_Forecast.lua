@@ -160,7 +160,7 @@ end
 -- @a base_gold_amount, gold_increment: used to cauculate the amount of gold available for each timed spawn
 -- @a units_amount, gold_per_unit_amount: used to cauculate the number of units spawned in each timed spawn
 local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
-	local configure_gold_factor = (wesnoth.get_variable("enemey_gold_factor") + 100)/100
+	local configure_gold_factor = ((wesnoth.get_variable("enemey_gold_factor") or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
 		table.insert(random_spawn_numbers, i)
@@ -191,14 +191,14 @@ local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_i
 					break
 				end
 			end
-			wesnoth.set_variable("timed_spawn[" .. (spawn_number - 1) .. "]", {
+			wesnoth.set_variable(string.format("timed_spawn[%d]", spawn_number - 1), {
 				units = math.ceil(units),
 				turn = turn,
 				gold = helper.round(gold * configure_gold_factor),
 				pool_num = random_spawn_numbers[spawn_number],
 			})
 		else
-			wesnoth.set_variable("timed_spawn[" .. (spawn_number - 1) .. "]", {
+			wesnoth.set_variable(string.format("timed_spawn[%d]", spawn_number - 1), {
 				units = units_amount + 1,
 				turn = turn,
 				gold = gold,
@@ -248,10 +248,10 @@ local function final_spawn()
 		return
 	end
 	local spawn_index = wesnoth.random(spawns_left) - 1
-	local spawn = wesnoth.get_variable("fixed_spawn[" .. spawn_index .. "]")
-	wesnoth.set_variable("fixed_spawn[" .. spawn_index .. "]")
+	local spawn = wesnoth.get_variable(string.format("fixed_spawn[%d]", spawn_index))
+	wesnoth.set_variable(string.format("fixed_spawn[%d]", spawn_index))
 	local types = {}
-	for tag in wesnoth.child_range(spawn, "type") do
+	for tag in helper.child_range(spawn, "type") do
 		table.insert(types, tag.type)
 	end
 	place_units(types, spawn.x, spawn.y)
@@ -325,7 +325,7 @@ on_event("die", function()
 	if wesnoth.current.turn < wesnoth.get_variable("final_turn") then
 		return
 	end
-	if wesnoth.have_unit { side = "1,2"} then
+	if wesnoth.wml_conditionals.have_unit { side = "1,2"} then
 		return
 	end
 	wesnoth.wml_actions.music {
@@ -392,7 +392,7 @@ on_event("prestart", function()
 		if weather_to_dispense[index].turns_left <= 0 then
 			table.remove(weather_to_dispense, index)
 		end
-		wesnoth.set_variable("weather_event[" .. event_num .. "]", {
+		wesnoth.set_variable(string.format("weather_event[%d]", event_num), {
 			turn = turn,
 			weather_id = weather_id,
 		})
@@ -401,7 +401,7 @@ on_event("prestart", function()
 		-- Second snow happens half the time.
 		if weather_id == "snowfall" and heavy_snowfall_turns_left >= 0 and wesnoth.random(2) == 2 then
 			num_turns = get_weather_duration(heavy_snowfall_turns_left)
-			wesnoth.set_variable("weather_event[" .. event_num .. "]", {
+			wesnoth.set_variable(string.format("weather_event[%d]", event_num), {
 				turn = turn,
 				weather_id = "heavy snowfall",
 			})
@@ -411,7 +411,7 @@ on_event("prestart", function()
 		end
 		-- Go back to clear weather.
 		num_turns = get_weather_duration(clear_turns_left)
-		wesnoth.set_variable("weather_event[" .. event_num .. "]", {
+		wesnoth.set_variable(string.format("weather_event[%d]", event_num), {
 			turn = turn,
 			weather_id = "clear",
 		})
