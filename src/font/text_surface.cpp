@@ -123,7 +123,7 @@ void text_surface::set_text(std::string const &str)
 
 void text_surface::hash()
 {
-	int h = 0;
+	unsigned int h = 0;
 	for(const char c : str_) {
 		h = ((h << 9) | (h >> (sizeof(int) * 8 - 9))) ^ (c);
     }
