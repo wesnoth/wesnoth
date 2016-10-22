@@ -25,6 +25,9 @@
 
 #include <SDL_rect.h>
 
+namespace gui2 {
+	class tpoint;
+}
 
 namespace sdl
 {
@@ -50,6 +53,8 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h);
  *                                of rect, false otherwise
  */
 bool point_in_rect(int x, int y, const SDL_Rect& rect);
+
+bool point_in_rect(const gui2::tpoint& point, const SDL_Rect& rect);
 
 /**
  * Tests whether two rectangles overlap.

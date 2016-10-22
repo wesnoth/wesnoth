@@ -12,9 +12,9 @@
    See the COPYING file for more details.
 */
 
+#include "gui/core/point.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
-
 
 namespace sdl
 {
@@ -31,10 +31,14 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 	return rect;
 }
 
-
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
+}
+
+bool point_in_rect(const gui2::tpoint& point, const SDL_Rect& rect)
+{
+	return point.x >= rect.x && point.y >= rect.y && point.x < rect.x + rect.w && point.y < rect.y + rect.h;
 }
 
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
