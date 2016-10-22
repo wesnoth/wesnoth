@@ -1544,8 +1544,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     local path, cost = wesnoth.find_path(unit, x, y, cfg)
     if (cost <= unit.moves) then
         local unit_in_way = wesnoth.get_unit(x, y)
-        if unit_in_way
-            and ((unit_in_way.x ~= unit.x) or (unit_in_way.y ~= unit.y))
+        if unit_in_way and (unit_in_way ~= unit)
             and ai_helper.is_visible_unit(viewing_side, unit_in_way)
         then
             --W.message { speaker = 'narrator', message = 'Moving out of way' }
