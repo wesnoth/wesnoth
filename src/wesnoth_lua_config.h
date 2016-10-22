@@ -49,6 +49,7 @@
  */
 #define LUA_COMPAT_5_2
 #define LUA_COMPAT_5_1
+#define LUA_COMPAT_FLOATSTRING
 
 
 
