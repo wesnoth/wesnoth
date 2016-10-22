@@ -111,6 +111,19 @@ public:
 	/** See @ref tcontrol::get_state. */
 	virtual unsigned get_state() const override;
 
+    /**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 */
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		PRESSED,
+		FOCUSED,
+		COUNT
+	};
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_item_count(const unsigned item_count)
@@ -183,19 +196,6 @@ protected:
 	}
 
 private:
-	/**
-	 * Possible states of the widget.
-	 *
-	 * Note the order of the states must be the same as defined in settings.hpp.
-	 */
-	enum tstate {
-		ENABLED,
-		DISABLED,
-		PRESSED,
-		FOCUSED,
-		COUNT
-	};
-
 	void set_state(const tstate state);
 	/**
 	 * Current state of the widget.
