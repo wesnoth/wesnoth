@@ -462,7 +462,6 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(L, -1);
-		std::string message = msg ? msg : "null string";
 
 		std::string context = "When executing, ";
 		if (errcode == LUA_ERRRUN) {
@@ -476,10 +475,11 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 		} else {
 			context += "unknown lua error";
 		}
+		context +=  msg ? msg : "null string";
 
 		lua_pop(L, 1);
 
-		e_h(message.c_str(), context.c_str());
+		e_h(context.c_str(), "Lua Error");
 
 		return false;
 	}
