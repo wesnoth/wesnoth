@@ -741,10 +741,10 @@ void tmp_create_game::post_show(twindow& window)
 	}
 
 	if(get_retval() == twindow::OK) {
-		preferences::set_modifications(create_engine_.active_mods());
-		preferences::set_level_type(create_engine_.current_level_type().v);
-		preferences::set_level(create_engine_.current_level().id());
-		preferences::set_era(create_engine_.current_extra(ng::create_engine::ERA).id);
+		prefs::set_modifications(create_engine_.active_mods());
+		prefs::set_level_type(create_engine_.current_level_type().v);
+		prefs::set_level(create_engine_.current_level().id());
+		prefs::set_era(create_engine_.current_extra(ng::create_engine::ERA).id);
 
 		create_engine_.prepare_for_era_and_mods();
 
@@ -824,7 +824,11 @@ void tmp_create_game::post_show(twindow& window)
 		// Since we don't have a tfield handling this option, we need to save the value manually
 		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
-		config_engine_->set_options(options_manager_->get_options_config());
+		// Save custom option settings
+		const config options_config = options_manager_->get_options_config();
+
+		config_engine_->set_options(options_config);
+		prefs::set_options(options_config);
 
 		// Set game name
 		const std::string name = find_widget<ttext_box>(&window, "game_name", false).get_value();

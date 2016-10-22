@@ -16,6 +16,7 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "config_assign.hpp"
+#include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -35,6 +36,14 @@ tmp_options_helper::tmp_options_helper(twindow& window, ng::create_engine& creat
 	, options_data_()
 	, create_engine_(create_engine)
 {
+	for(const auto& c : preferences::options().all_children_range()) {
+		for(const auto& saved_option : c.cfg.child_range("option")) {
+			const std::string& id = saved_option["id"];
+
+			options_data_[{c.key, id}][id] = saved_option["value"];
+		}
+	}
+
 	update_options_list();
 }
 
