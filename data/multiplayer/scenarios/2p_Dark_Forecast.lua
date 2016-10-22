@@ -251,7 +251,7 @@ local function final_spawn()
 	local spawn = wesnoth.get_variable(string.format("fixed_spawn[%d]", spawn_index))
 	wesnoth.set_variable(string.format("fixed_spawn[%d]", spawn_index))
 	local types = {}
-	for tag in wesnoth.child_range(spawn, "type") do
+	for tag in helper.child_range(spawn, "type") do
 		table.insert(types, tag.type)
 	end
 	place_units(types, spawn.x, spawn.y)
@@ -325,7 +325,7 @@ on_event("die", function()
 	if wesnoth.current.turn < wesnoth.get_variable("final_turn") then
 		return
 	end
-	if wesnoth.have_unit { side = "1,2"} then
+	if wesnoth.wml_conditionals.have_unit { side = "1,2"} then
 		return
 	end
 	wesnoth.wml_actions.music {
