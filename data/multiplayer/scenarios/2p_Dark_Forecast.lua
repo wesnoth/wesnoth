@@ -160,7 +160,7 @@ end
 -- @a base_gold_amount, gold_increment: used to cauculate the amount of gold available for each timed spawn
 -- @a units_amount, gold_per_unit_amount: used to cauculate the number of units spawned in each timed spawn
 local function create_timed_spaws(interval, num_spawns, base_gold_amount, gold_increment, units_amount, gold_per_unit_amount)
-	local configure_gold_factor = (wesnoth.get_variable("enemey_gold_factor") + 100)/100
+	local configure_gold_factor = ((wesnoth.get_variable("enemey_gold_factor") or 0) + 100)/100
 	local random_spawn_numbers = {}
 	for i = 1, #random_spawns do
 		table.insert(random_spawn_numbers, i)
