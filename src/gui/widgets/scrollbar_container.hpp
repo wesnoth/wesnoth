@@ -550,6 +550,27 @@ private:
 									   bool& handled);
 	void signal_handler_sdl_wheel_right(const event::tevent event,
 										bool& handled);
+
+public:
+	tscrollbar_* horizontal_scrollbar()
+	{
+		return horizontal_scrollbar_;
+	}
+
+	tscrollbar_* vertical_scrollbar()
+	{
+		return vertical_scrollbar_;
+	}
+
+	tgrid* get_horizontal_scrollbar_grid()
+	{
+		return horizontal_scrollbar_grid_;
+	}
+
+	tgrid* get_vertical_scrollbar_grid()
+	{
+		return vertical_scrollbar_grid_;
+	}
 };
 
 } // namespace gui2
