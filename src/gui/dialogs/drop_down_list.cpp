@@ -20,6 +20,7 @@
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
@@ -36,7 +37,7 @@ namespace {
 	{
 		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or more selections,
 		 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because
-		 * of this, selecting the same entry in the dropdown list essentilly sets the list's selected row to -1, causing problems.
+		 * of this, selecting the same entry in the dropdown list essentially sets the list's selected row to -1, causing problems.
 		 *
 		 * In order to work around this, we first manually deselect the selected entry here. This handler is called *before*
 		 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
@@ -45,6 +46,12 @@ namespace {
 		const int sel = list.get_selected_row();
 		if(sel >= 0) {
 			list.select_row(sel, false);
+		}
+
+		// Disregard clicks if they're on the scrollbar
+		// This check works since this function is called before tscrollbar_'s left-button-up handler
+		if(list.vertical_scrollbar()->get_state() == tscrollbar_::PRESSED) {
+			return;
 		}
 
 		SDL_Rect rect = window.get_rectangle();
@@ -115,10 +122,10 @@ void tdrop_down_list::pre_show(twindow& window)
 
 	window.keyboard_capture(&list);
 
-	//Dismiss on click outside the window
+	// Dismiss on click outside the window
 	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_child);
 
-	//Dismiss on resize
+	// Dismiss on resize
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::tdispatcher::front_child);
 }
 
