@@ -269,7 +269,9 @@ function ca_fast_move:execution(cfg)
 
             if best_hex then
                 local dx, dy = goal.x - best_hex[1], goal.y - best_hex[2]
-                AH.robust_move_and_attack(ai, unit, best_hex, nil, { dx = dx, dy = dy })
+                local move_result = AH.robust_move_and_attack(ai, unit, best_hex, nil, { dx = dx, dy = dy })
+                -- If something unexpected happened, return and reconsider
+                if (not move_result.ok) then return end
             end
 
             -- Also remove this unit from all the tables; using table.remove is fine here
