@@ -25,6 +25,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "sdl/rect.hpp"
 #include "utils/functional.hpp"
 
 namespace gui2
@@ -55,7 +56,7 @@ namespace {
 		}
 
 		SDL_Rect rect = window.get_rectangle();
-		if(coordinate.x < rect.x || coordinate.x > rect.x + rect.w || coordinate.y < rect.y || coordinate.y > rect.y + rect.h ) {
+		if(!sdl::point_in_rect(coordinate, rect)) {
 			window.set_retval(twindow::CANCEL);
 		} else {
 			window.set_retval(twindow::OK);
