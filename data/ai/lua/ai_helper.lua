@@ -167,6 +167,15 @@ function ai_helper.is_incomplete_or_empty_move(check)
     return false
 end
 
+function ai_helper.dummy_check_action(gamestate_changed, ok, result, status)
+    return {
+    gamestate_changed = gamestate_changed or false,
+    ok = ok or false,
+    result = result or 'ai_helper::DUMMY_FAILED_ACTION',
+    status = status or 99999
+}
+end
+
 function ai_helper.checked_action_error(action, error_code)
     if wesnoth.game_config.debug then
         error(action .. ' could not be executed. Error code: ' .. error_code)
@@ -295,7 +304,9 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     local dst_x, dst_y = dst.x or dst[1], dst.y or dst[2]
 
     local unit = wesnoth.get_unit(src_x, src_y)
-    if (not unit) then return end
+    if (not unit) then
+        return ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_UNIT')
+    end
 
     -- Getting target at beginning also, in case events mess up things along the way
     local target, target_x, target_y
@@ -303,18 +314,23 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
         target_x, target_y = target_loc.x or target_loc[1], target_loc.y or target_loc[2]
         target = wesnoth.get_unit(target_x, target_y)
 
-        if (not target) then return end
+        if (not target) then
+            return ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_TARGET')
+        end
     end
 
     local gamestate_changed = false
-
+    local move_result
     if (unit.moves > 0) then
         if (src_x == dst_x) and (src_y == dst_y) then
-            local check = ai.stopunit_moves(unit)
+            move_result = ai.stopunit_moves(unit)
 
             -- The only possible failure modes are non-recoverable (such as E_NOT_OWN_UNIT)
-            if (not check.ok) then return end
-            if (not unit) or (not unit.valid) then return end
+            if (not move_result.ok) then return move_result end
+
+            if (not unit) or (not unit.valid) then
+                return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_DISAPPEARED')
+            end
 
             gamestate_changed = true
         else
@@ -325,7 +341,9 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
                 local uiw_old_moves = unit_in_way.moves
                 ai_helper.move_unit_out_of_way(ai, unit_in_way, cfg)
 
-                if (not unit_in_way) or (not unit_in_way.valid) then return end
+                if (not unit_in_way) or (not unit_in_way.valid) then
+                    return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_IN_WAY_DISAPPEARED')
+                end
 
                 -- Failed move out of way: abandon remaining actions
                 if (unit_in_way.x == dst_x) and (unit_in_way.y == dst_y) then
@@ -333,37 +351,42 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
                         -- Forcing a gamestate change, if necessary
                         ai.stopunit_moves(unit_in_way)
                     end
-                    return
+                    return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_IN_WAY_EMPTY_MOVE')
                 end
 
                 -- Check whether dst hex is free now (an event could have done something funny)
                 local unit_in_way = wesnoth.get_unit(dst_x, dst_y)
-                if unit_in_way then return end
+                if unit_in_way then
+                    return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::ANOTHER_UNIT_IN_WAY')
+                end
 
                 gamestate_changed = true
             end
 
             if (not unit) or (not unit.valid) or (unit.x ~= src_x) or (unit.y ~= src_y) then
-                return
+                return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_DISAPPEARED')
             end
 
-            local check = ai.check_move(unit, dst_x, dst_y)
-            if (not check.ok) then
-                if (not ai_helper.is_incomplete_or_empty_move(check)) then
+            local check_result = ai.check_move(unit, dst_x, dst_y)
+            if (not check_result.ok) then
+                if (not ai_helper.is_incomplete_or_empty_move(check_result)) then
                     if (not gamestate_changed) then
                         ai.stopunit_moves(unit)
                     end
-                    return
+                    return check_result
                 end
             end
 
             if cfg and cfg.partial_move then
-                ai.move(unit, dst_x, dst_y)
+                move_result = ai.move(unit, dst_x, dst_y)
             else
-                ai.move_full(unit, dst_x, dst_y)
+                move_result = ai.move_full(unit, dst_x, dst_y)
             end
+            if (not move_result.ok) then return move_result end
 
-            if (not unit) or (not unit.valid) then return end
+            if (not unit) or (not unit.valid) then
+                return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_DISAPPEARED')
+            end
 
             -- Failed move: abandon rest of actions
             if (unit.x == src_x) and (unit.y == src_y) then
@@ -371,46 +394,57 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
                     -- Forcing a gamestate change, if necessary
                     ai.stopunit_moves(unit)
                 end
-                return
+                return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNPLANNED_EMPTY_MOVE')
             end
 
             gamestate_changed = true
         end
     end
 
-    -- Tests after the move, before continuing to attack
-    if (not unit) or (not unit.valid) then return end
-    if (unit.x ~= dst_x) or (unit.y ~= dst_y) then return end
-    if (not target) or (not target.valid) then return end
-    if (target.x ~= target_x) or (target.y ~= target_y) then return end
+    -- Tests after the move, before continuing to attack, to ensure WML events
+    -- did not do something funny
+    if (not unit) or (not unit.valid) then
+        return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_DISAPPEARED')
+    end
+    if (unit.x ~= dst_x) or (unit.y ~= dst_y) then
+        return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_NOT_AT_DESTINATION')
+    end
+
+    -- In case all went well and there's no attack to be done
+    if (not target_x) then return move_result end
+
+    if (not target) or (not target.valid) then
+        return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::TARGET_DISAPPEARED')
+    end
+    if (target.x ~= target_x) or (target.y ~= target_y) then
+        return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::TARGET_MOVED')
+    end
 
     local weapon = cfg and cfg.weapon
     local old_attacks_left = unit.attacks_left
 
-    local check = ai.check_attack(unit, target, weapon)
-    if (not check.ok) then
+    local check_result = ai.check_attack(unit, target, weapon)
+    if (not check_result.ok) then
         if (not gamestate_changed) then
             ai.stopunit_all(unit)
         end
-        return
+        return check_result
     end
 
-    ai.attack(unit, target, weapon)
+    move_result = ai.attack(unit, target, weapon)
+    -- This should not happen, given that we just checked, but just in case
+    if (not move_result.ok) then return move_result end
 
-    if (not unit) or (not unit.valid) then return end
+    if (not unit) or (not unit.valid) then
+        return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::UNIT_DISAPPEARED')
+    end
 
     if (unit.attacks_left == old_attacks_left) and (not gamestate_changed) then
         ai.stopunit_all(unit)
-        return
-    else
-        gamestate_changed = true
+        return ai_helper.dummy_check_action(true, false, 'robust_move_and_attack::NO_ATTACK')
     end
 
-    -- This cannot possibly be reached with gamestate_changed=false at the moment,
-    -- but keeping it in case more is added later.
-    if (not gamestate_changed) then
-        ai.stopunit_all(unit)
-    end
+    return move_result
 end
 
 ----- General functionality and maths helper functions ------
