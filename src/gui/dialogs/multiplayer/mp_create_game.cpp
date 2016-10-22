@@ -439,13 +439,35 @@ void tmp_create_game::on_game_select(twindow& window)
 {
 	const int selected_game = find_widget<tlistbox>(&window, "games_list", false).get_selected_row();
 
-	if(selected_game != selected_game_index_) {
-		// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
-		selected_game_index_ = convert_to_game_filtered_index(selected_game);
-
-		create_engine_.set_current_level(selected_game_index_);
-		update_details(window);
+	if(selected_game == selected_game_index_) {
+		return;
 	}
+
+	// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
+	selected_game_index_ = convert_to_game_filtered_index(selected_game);
+
+	create_engine_.set_current_level(selected_game_index_);
+	update_details(window);
+
+	// General settings
+	tstacked_widget& stack = find_widget<tstacked_widget>(&window, "pager", false);
+
+	const bool can_select_era = create_engine_.current_level().allow_era_choice();
+
+	tmenu_button& era_combo = find_widget<tmenu_button>(stack.get_layer_grid(TAB_GENERAL), "eras", false);
+	if(!can_select_era) {
+		era_combo.set_label(_("No eras available for this game."));
+	} else {
+		era_combo.set_selected(era_combo.get_value());
+	}
+
+	era_combo.set_active(can_select_era);
+
+	// Custom options
+	options_manager_->update_options_list();
+
+	// Game settings
+	update_map_settings(window);
 }
 
 void tmp_create_game::on_tab_select(twindow& window)
@@ -634,28 +656,6 @@ void tmp_create_game::update_details(twindow& window)
 			break;
 		}
 	}
-
-	// General settings
-	tstacked_widget& stack = find_widget<tstacked_widget>(&window, "pager", false);
-
-	const bool can_select_era = create_engine_.current_level().allow_era_choice();
-
-	tmenu_button& era_combo = find_widget<tmenu_button>(stack.get_layer_grid(TAB_GENERAL), "eras", false);
-	if(!can_select_era) {
-		era_combo.set_label(_("No eras available for this game."));
-	} else {
-		era_combo.set_selected(era_combo.get_value());
-	}
-
-	era_combo.set_active(can_select_era);
-
-	//
-	// Custom options
-	//
-	options_manager_->update_options_list();
-
-	// Game settings
-	update_map_settings(window);
 }
 
 void tmp_create_game::update_map_settings(twindow& window)
