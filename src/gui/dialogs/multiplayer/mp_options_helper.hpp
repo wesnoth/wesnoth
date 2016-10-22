@@ -15,6 +15,7 @@
 #define GUI_DIALOGS_MP_OPTIONS_HELPER_HPP_INCLUDED
 
 #include "game_initialization/create_engine.hpp"
+#include "gui/widgets/generator.hpp"
 
 class config;
 
@@ -24,6 +25,7 @@ namespace gui2
 class tcontrol;
 class ttoggle_button;
 class ttree_view;
+class ttree_view_node;
 class twindow;
 
 class tmp_options_helper
@@ -43,6 +45,12 @@ private:
 			return a.level_type < b.level_type && a.id < b.id;
 		}
 	};
+
+	using data_map = std::map<std::string, string_map>;
+
+	template <typename T>
+	std::pair<T*, config::attribute_value> add_node_and_get_widget(
+		ttree_view_node& option_node, const std::string& id, data_map& data, const config& cfg);
 
 	void display_custom_options(std::string&& type, const config& data);
 

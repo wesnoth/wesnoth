@@ -87,6 +87,27 @@ void tmp_options_helper::reset_options_data(const option_source& source, bool& h
 	halt = true;
 }
 
+template<typename T>
+std::pair<T*, config::attribute_value> tmp_options_helper::add_node_and_get_widget(
+		ttree_view_node& option_node, const std::string& id, data_map& data, const config& cfg)
+{
+	ttree_view_node& node = option_node.add_child(id + "_node", data);
+
+	T* widget = dynamic_cast<T*>(node.find(id, true));
+	VALIDATE(widget, missing_widget(id));
+
+	const std::string widget_id = cfg["id"];
+
+	auto& data_map = options_data_[visible_options_.back()];
+	if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
+		data_map[widget_id] = cfg["default"];
+	}
+
+	widget->set_id(widget_id);
+
+	return {widget, data_map[widget_id]};
+}
+
 void tmp_options_helper::display_custom_options(std::string&& type, const config& cfg)
 {
 	// Needed since some compilers don't like passing just {}
@@ -100,13 +121,6 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 	}
 
 	visible_options_.push_back({type, cfg["id"]});
-	auto& data_map = options_data_[visible_options_.back()];
-
-	auto set_default_data_value = [&](const std::string& widget_id, const config& cfg) {
-		if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-			data_map[widget_id] = cfg["default"];
-		}
-	};
 
 	for(const auto& options : cfg.child_range("options")) {
 		std::map<std::string, string_map> data;
@@ -127,18 +141,12 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 				item["tooltip"] = checkbox_option["description"];
 				data.emplace("option_checkbox", item);
 
-				ttree_view_node& node = option_node.add_child("option_checkbox_node", data);
+				ttoggle_button* checkbox;
+				config::attribute_value val;
 
-				ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("option_checkbox", true));
+				std::tie(checkbox, val) = add_node_and_get_widget<ttoggle_button>(option_node, "option_checkbox", data, checkbox_option);
 
-				VALIDATE(checkbox, missing_widget("option_checkbox"));
-
-				const std::string widget_id = checkbox_option["id"];
-
-				set_default_data_value(widget_id, checkbox_option);
-
-				checkbox->set_id(widget_id);
-				checkbox->set_value(data_map[widget_id].to_bool());
+				checkbox->set_value(val.to_bool());
 				checkbox->set_callback_state_change(
 					std::bind(&tmp_options_helper::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
 			} else if(opt.key == "spacer") {
@@ -175,20 +183,11 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 					continue;
 				}
 
-				ttree_view_node& node = option_node.add_child("option_menu_button_node", data);
+				tmenu_button* menu_button;
+				config::attribute_value val;
 
-				tmenu_button* menu_button = dynamic_cast<tmenu_button*>(node.find("option_menu_button", true));
+				std::tie(menu_button, val) = add_node_and_get_widget<tmenu_button>(option_node, "option_menu_button", data, menu_button_option);
 
-				VALIDATE(menu_button, missing_widget("option_menu_button"));
-
-				const std::string widget_id = menu_button_option["id"];
-
-				set_default_data_value(widget_id, menu_button_option);
-
-				menu_button->set_id(widget_id);
-				menu_button->set_values(combo_items);
-
-				config::attribute_value val = data_map[widget_id];
 				auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
 					return cfg["value"] == val;
 				});
@@ -197,6 +196,7 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 					menu_button->set_selected(iter - items.begin());
 				}
 
+				menu_button->set_values(combo_items);
 				menu_button->connect_click_handler(
 					std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
 			} else if(opt.key == "slider") {
@@ -211,21 +211,15 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 				item["tooltip"] = slider_option["description"];
 				data.emplace("option_slider", item);
 
-				ttree_view_node& node = option_node.add_child("option_slider_node", data);
+				tslider* slider;
+				config::attribute_value val;
 
-				tslider* slider = dynamic_cast<tslider*>(node.find("option_slider", true));
+				std::tie(slider, val) = add_node_and_get_widget<tslider>(option_node, "option_slider", data, slider_option);
 
-				VALIDATE(slider, missing_widget("option_slider"));
-
-				const std::string widget_id = slider_option["id"];
-
-				set_default_data_value(widget_id, slider_option);
-
-				slider->set_id(widget_id);
 				slider->set_maximum_value(slider_option["max"].to_int());
 				slider->set_minimum_value(slider_option["min"].to_int());
 				slider->set_step_size(slider_option["step"].to_int(1));
-				slider->set_value(data_map[widget_id].to_int());
+				slider->set_value(val.to_int());
 
 				connect_signal_notify_modified(*slider,
 					std::bind(&tmp_options_helper::update_options_data_map<tslider>, this, slider, visible_options_.back()));
@@ -241,18 +235,12 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 				item["tooltip"] = text_entry_option["description"];
 				data.emplace("option_text_entry", item);
 
-				ttree_view_node& node = option_node.add_child("option_text_entry_node", data);
+				ttext_box* textbox;
+				config::attribute_value val;
 
-				ttext_box* textbox = dynamic_cast<ttext_box*>(node.find("option_text_entry", true));
+				std::tie(textbox, val) = add_node_and_get_widget<ttext_box>(option_node, "option_text_entry", data, text_entry_option);
 
-				VALIDATE(textbox, missing_widget("option_text_entry"));
-
-				const std::string widget_id = text_entry_option["id"];
-
-				set_default_data_value(widget_id, text_entry_option);
-
-				textbox->set_id(widget_id);
-				textbox->set_value(data_map[widget_id].str());
+				textbox->set_value(val.str());
 				textbox->set_text_changed_callback(
 					std::bind(&tmp_options_helper::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
 			}
