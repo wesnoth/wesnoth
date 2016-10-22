@@ -92,6 +92,13 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 	// Needed since some compilers don't like passing just {}
 	static const std::map<std::string, string_map> empty_map;
 
+	// This ensures that any game, era, or mod with no options doesn't get an entry in the visible_options_
+	// vector and prevents invalid options from different games, era, or mods being created when the options
+	// config is created.
+	if(!cfg.has_child("options")) {
+		return;
+	}
+
 	visible_options_.push_back({type, cfg["id"]});
 	auto& data_map = options_data_[visible_options_.back()];
 
