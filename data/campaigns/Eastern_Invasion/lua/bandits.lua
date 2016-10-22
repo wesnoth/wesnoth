@@ -27,8 +27,8 @@ function wml_actions.spread_bandit_villages(cfg)
 	for i = 0, (count - 1) do
 		village_i = helper.rand("1.."..#villages)
 
-		wesnoth.set_variable("bandit_villages["..i.."].x", villages[village_i][1])
-		wesnoth.set_variable("bandit_villages["..i.."].y", villages[village_i][2])
+		wesnoth.set_variable(string.format("bandit_villages[%d].x", i), villages[village_i][1])
+		wesnoth.set_variable(string.format("bandit_villages[%d].y", i), villages[village_i][2])
 		table.remove(villages, village_i)
 	end
 end
@@ -75,7 +75,7 @@ function wml_actions.bandit_village_capture(cfg)
 
 	for i=1,#bandit_villages do
 		if bandit_villages[i].x == x and bandit_villages[i].y == y then
-			wesnoth.set_variable("bandit_villages["..(i - 1).."]")
+			wesnoth.set_variable(string.format("bandit_villages[%d]", i - 1))
 
 			local visited = wesnoth.get_variable("villages_visited")
 			wesnoth.set_variable("villages_visited", visited + 1)

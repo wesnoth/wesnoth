@@ -103,7 +103,7 @@ function helper.modify_unit(filter, vars)
 		kill = true
 	})
 	for i = 0, wesnoth.get_variable("LUA_modify_unit.length") - 1 do
-		local u = "LUA_modify_unit[" .. i .. "]"
+		local u = string.format("LUA_modify_unit[%d]", i)
 		for k, v in pairs(vars) do
 			wesnoth.set_variable(u .. '.' .. k, v)
 		end
