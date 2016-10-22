@@ -983,7 +983,7 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 		} else {
 			chat_message("Lua caught unknown exception", "");
 		}
-		lua_pop(L, 2);
+		lua_pop(L, 1);
 		return false;
 	}
 
