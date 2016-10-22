@@ -26,7 +26,7 @@
 #include <SDL_rect.h>
 
 namespace gui2 {
-	class tpoint;
+	struct tpoint;
 }
 
 namespace sdl
