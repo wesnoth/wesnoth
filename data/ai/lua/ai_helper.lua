@@ -169,11 +169,11 @@ end
 
 function ai_helper.dummy_check_action(gamestate_changed, ok, result, status)
     return {
-    gamestate_changed = gamestate_changed or false,
-    ok = ok or false,
-    result = result or 'ai_helper::DUMMY_FAILED_ACTION',
-    status = status or 99999
-}
+        gamestate_changed = gamestate_changed or false,
+        ok = ok or false,
+        result = result or 'ai_helper::DUMMY_FAILED_ACTION',
+        status = status or 99999
+    }
 end
 
 function ai_helper.checked_action_error(action, error_code)
