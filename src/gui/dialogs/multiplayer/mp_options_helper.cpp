@@ -188,6 +188,9 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 				std::tie(menu_button, val) = add_node_and_get_widget<tmenu_button>(option_node, "option_menu_button", data, menu_button_option);
 
+				// Needs to be called before set_selected
+				menu_button->set_values(combo_items);
+
 				auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
 					return cfg["value"] == val;
 				});
@@ -196,7 +199,6 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 					menu_button->set_selected(iter - items.begin());
 				}
 
-				menu_button->set_values(combo_items);
 				menu_button->connect_click_handler(
 					std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
 			} else if(opt.key == "slider") {
