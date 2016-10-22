@@ -93,10 +93,7 @@ function ca_messenger_move:execution(cfg)
 
     local max_rating, best_target, best_weapon = -9e99
     for _,target in ipairs(targets) do
-        local n_weapon = 0
-        for weapon in H.child_range(messenger.__cfg, "attack") do
-            n_weapon = n_weapon + 1
-
+        for n_weapon,weapon in ipairs(messenger.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(messenger, n_weapon, target)
 
             local rating = -9e99

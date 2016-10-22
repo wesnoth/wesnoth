@@ -379,9 +379,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
                 if (attack.x == loc[1]) and (attack.y == loc[2]) and
                     (unit.max_experience - unit.experience <= 8 * attack.defender_level)
                 then
-                    local n_weapon = 0
-                    for weapon in H.child_range(unit.__cfg, "attack") do
-                        n_weapon = n_weapon + 1
+                    for n_weapon,weapon in ipairs(unit.attacks) do
                         local att_stats, def_stats = BC.simulate_combat_loc(unit, { attack.x, attack.y }, attack.defender, n_weapon)
 
                         -- Execute level-up attack when:

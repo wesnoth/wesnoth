@@ -49,11 +49,8 @@ function ca_protect_unit_attack:evaluation(cfg)
                         max_counter_damage = max_counter_damage + counter_damage_table[str]
                     else  -- if not, calculate it and save value
                         -- Go thru all weapons, as "best weapon" might be different later on
-                        local n_weapon = 0
                         local min_hp = unit.hitpoints
-                        for weapon in H.child_range(enemy_attack.enemy.__cfg, "attack") do
-                            n_weapon = n_weapon + 1
-
+                        for n_weapon,weapon in ipairs(enemy_attack.enemy.attacks) do
                             -- Terrain does not matter for this, we're only interested in the maximum damage
                             local att_stats, def_stats = wesnoth.simulate_combat(enemy_attack.enemy, n_weapon, unit)
 

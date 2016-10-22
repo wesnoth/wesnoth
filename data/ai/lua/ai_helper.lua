@@ -1146,11 +1146,9 @@ end
 function ai_helper.has_weapon_special(unit, special)
     -- Returns true/false depending on whether @unit has a weapon with special @special
     -- Also returns the number of the first weapon with this special
-    local weapon_number = 0
-    for att in H.child_range(unit.__cfg, 'attack') do
-        weapon_number = weapon_number + 1
-        for sp in H.child_range(att, 'specials') do
-            if H.get_child(sp, special) then
+    for weapon_number,att in ipairs(unit.attacks) do
+        for _,sp in ipairs(att.specials) do
+            if (sp[1] == special) then
                 return true, weapon_number
             end
         end

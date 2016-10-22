@@ -17,10 +17,7 @@ function ca_bottleneck_attack:evaluation(cfg, data)
         local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = attacker.id } } }
 
         for _,target in ipairs(targets) do
-            local n_weapon = 0
-            for weapon in H.child_range(attacker.__cfg, "attack") do
-                n_weapon = n_weapon + 1
-
+            for n_weapon,weapon in ipairs(attacker.attacks) do
                 local att_stats, def_stats = wesnoth.simulate_combat(attacker, n_weapon, target)
 
                 local rating
