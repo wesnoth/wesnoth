@@ -316,6 +316,8 @@ void tmp_create_game::pre_show(twindow& window)
 			dialog_callback<tmp_create_game, &tmp_create_game::on_tab_select>);
 #endif
 
+	on_tab_select(window);
+
 	//
 	// Main games list
 	//
@@ -450,26 +452,6 @@ void tmp_create_game::on_tab_select(twindow& window)
 {
 	const int i = find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row();
 	find_widget<tstacked_widget>(&window, "pager", false).select_layer(i);
-
-	if(i == tab::TAB_GENERAL) {
-		const bool can_select_era = create_engine_.current_level().allow_era_choice();
-
-		tmenu_button& era_combo = find_widget<tmenu_button>(&window, "eras", false);
-		if(!can_select_era) {
-			era_combo.set_label(_("No eras available for this game."));
-		} else {
-			era_combo.set_selected(era_combo.get_value());
-		}
-
-		era_combo.set_active(can_select_era);
-	}
-
-	if(i == tab::TAB_OPTIONS) {
-		update_options_list();
-	}
-
-	// Map Settings can and should be updated every time
-	update_map_settings(window);
 }
 
 void tmp_create_game::on_mod_select(twindow& window)
@@ -557,11 +539,6 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 	selected_game_index_ = -1;
 
 	on_game_select(window);
-}
-
-void tmp_create_game::update_options_list()
-{
-	options_manager_->update_options_list();
 }
 
 void tmp_create_game::show_generator_settings(twindow& window)
@@ -658,7 +635,27 @@ void tmp_create_game::update_details(twindow& window)
 		}
 	}
 
-	on_tab_select(window);
+	// General settings
+	tstacked_widget& stack = find_widget<tstacked_widget>(&window, "pager", false);
+
+	const bool can_select_era = create_engine_.current_level().allow_era_choice();
+
+	tmenu_button& era_combo = find_widget<tmenu_button>(stack.get_layer_grid(TAB_GENERAL), "eras", false);
+	if(!can_select_era) {
+		era_combo.set_label(_("No eras available for this game."));
+	} else {
+		era_combo.set_selected(era_combo.get_value());
+	}
+
+	era_combo.set_active(can_select_era);
+
+	//
+	// Custom options
+	//
+	options_manager_->update_options_list();
+
+	// Game settings
+	update_map_settings(window);
 }
 
 void tmp_create_game::update_map_settings(twindow& window)
