@@ -43,7 +43,7 @@ private:
 		std::string level_type;
 		std::string id;
 		friend bool operator<(const option_source& a, const option_source& b) {
-			return a.level_type < b.level_type && a.id < b.id;
+			return a.level_type < b.level_type || (a.level_type == b.level_type && a.id < b.id);
 		}
 	};
 
