@@ -956,7 +956,7 @@ int main(int argc, char** argv)
 	//       running before then if requested, so just perform a trivial search
 	//       here and let program_options ignore the switch later.
 	for(size_t k = 0; k < args.size(); ++k) {
-		if(args[k] == "--wconsole" || args[k] == "--help" || args[k] == "--nogui" || args[k] == "--logdomains" || args[k] == "--path" || args[k] == "--render-image" || args[k] == "--screenshot" || args[k] == "--data-path" || args[k] == "--userdata-path" || args[k] == "--userconfig-path" || args[k] == "--version") {
+		if(args[k] == "--wconsole" || args[k] == "--help" || args[k] == "--logdomains" || args[k] == "--path" || args[k] == "--render-image" || args[k] == "--screenshot" || args[k] == "--data-path" || args[k] == "--userdata-path" || args[k] == "--userconfig-path" || args[k] == "--version") {
 			lg::enable_native_console_output();
 			break;
 		}

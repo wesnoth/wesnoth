@@ -21,10 +21,22 @@ local function create_game(context)
   context.create({})
 end
 
+local function exit_game(context)
+  local events, info
+
+  repeat
+    context.quit({})
+    events, context, info = coroutine.yield()
+  until info.name == "titlescreen"
+
+  context.exit({code = 0})
+  coroutine.yield()
+end
+
 return function()
   local events, context, info
 
-  wesnoth.preferences.new_lobby = true
+  wesnoth.preferences.new_mp_ui = true
 
   repeat
     events, context, info = coroutine.yield()
@@ -42,17 +54,22 @@ return function()
   -- Reached the lobby. Random delay before we start actually simulating activity.
   -- This is here to avoid a situation where activity arrives in bursts after a script
   -- has launched, say, 100 copies of Wesnoth at the same time.
-  wesnoth.delay(math.random(15000))
+  wesnoth.delay(wesnoth.random(15000))
 
   events, context, info = coroutine.yield()
 
   local in_staging = false
 
   while true do
-    if math.random() > 0.1 then
+    if info.name ~= "Multiplayer Lobby" and info.name ~= "Multiplayer Staging" then
+      -- most often, this means that the server was terminated -> stop generating traffic
+      exit_game(context)
+    end
+
+    if wesnoth.random() > 0.1 then
       -- chat message
       local messages = {"asdf", "qwerty", "zxc"}
-      context.chat({message = messages[math.random(#messages)]})
+      context.chat({message = messages[wesnoth.random(#messages)]})
     else
       -- toggle between creating a game and leaving it
       if not in_staging then

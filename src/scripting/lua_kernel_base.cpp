@@ -21,6 +21,7 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
+#include "random_new.hpp"
 #include "seed_rng.hpp"
 
 #ifdef DEBUG_LUA
@@ -213,6 +214,36 @@ static int intf_name_generator(lua_State *L)
 	return 1;
 }
 
+/**
+* Returns a random numer, same interface as math.random.
+*/
+static int intf_random(lua_State *L)
+{
+	if (lua_isnoneornil(L, 1)) {
+		double r = double(random_new::generator->next_random());
+		double r_max = double(std::numeric_limits<uint32_t>::max());
+		lua_push(L, r / (r_max + 1));
+		return 1;
+	}
+	else {
+		int32_t min;
+		int32_t max;
+		if (lua_isnumber(L, 2)) {
+			min = lua_check<int32_t>(L, 1);
+			max = lua_check<int32_t>(L, 2);
+		}
+		else {
+			min = 1;
+			max = lua_check<int32_t>(L, 1);
+		}
+		if (min > max) {
+			return luaL_argerror(L, 1, "min > max");
+		}
+		lua_push(L, random_new::generator->get_random_int(min, max));
+		return 1;
+	}
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -332,6 +363,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
+		{ "random",                   &intf_random                   },
 		{ nullptr, nullptr }
 	};
 

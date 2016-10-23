@@ -84,7 +84,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_recall_units(lua_State *L);
 	int intf_get_variable(lua_State *L);
 	int intf_get_side_variable(lua_State *L);
-	int intf_random(lua_State *L);
 	int intf_set_variable(lua_State *L);
 	int intf_set_side_variable(lua_State *L);
 	int intf_highlight_hex(lua_State *L);
