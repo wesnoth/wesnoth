@@ -41,7 +41,8 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	areas_(),
 	turn_(scenario_cfg["turn_at"].to_int(1)),
 	num_turns_(scenario_cfg["turns"].to_int(-1)),
-	has_turn_event_fired_(!scenario_cfg["it_is_a_new_turn"].to_bool(true))
+	has_turn_event_fired_(!scenario_cfg["it_is_a_new_turn"].to_bool(true)),
+	has_tod_bonus_changed_ (false)
 {
 	// ? : operator doesn't work in this case.
 	if (scenario_cfg["current_time"].to_int(-17403) == -17403)
