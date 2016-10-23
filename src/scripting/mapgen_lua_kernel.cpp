@@ -123,6 +123,13 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 	, default_rng_()
 {
 	lua_State *L = mState;
+
+	// Unset wesnoth.random. This guarantees that the mapgen_lua_kernel version
+	// of wesnoth.random overrides the lua_kernel_base version.
+	lua_getglobal(L, "wesnoth");
+	lua_pushnil(L);
+	lua_setfield(L, -2, "random");
+
 	lua_settop(L, 0);
 
 	static luaL_Reg const callbacks[] = {
