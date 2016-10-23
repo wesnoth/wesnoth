@@ -104,6 +104,7 @@ std::pair<T*, config::attribute_value> tmp_options_helper::add_node_and_get_widg
 	}
 
 	widget->set_id(widget_id);
+	widget->set_tooltip(cfg["description"]);
 
 	return {widget, data_map[widget_id]};
 }
@@ -133,45 +134,45 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 		for(const config::any_child opt : options.all_children_range()) {
 			data.clear();
+			item.clear();
+
+			const config& option_cfg = opt.cfg;
+
+			const auto add_name = [&](const std::string& id) {
+				item["label"] = option_cfg["name"];
+				data.emplace(id, item);
+			};
+
+			config::attribute_value val;
 
 			if(opt.key == "checkbox") {
-				const config& checkbox_option = opt.cfg;
-
-				item["label"] = checkbox_option["name"];
-				item["tooltip"] = checkbox_option["description"];
-				data.emplace("option_checkbox", item);
+				add_name("option_checkbox");
 
 				ttoggle_button* checkbox;
-				config::attribute_value val;
-
-				std::tie(checkbox, val) = add_node_and_get_widget<ttoggle_button>(option_node, "option_checkbox", data, checkbox_option);
+				std::tie(checkbox, val) = add_node_and_get_widget<ttoggle_button>(option_node, "option_checkbox", data, option_cfg);
 
 				checkbox->set_value(val.to_bool());
 				checkbox->set_callback_state_change(
 					std::bind(&tmp_options_helper::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
+
 			} else if(opt.key == "spacer") {
 				option_node.add_child("options_spacer_node", empty_map);
+
 			} else if(opt.key == "choice" || opt.key == "combo") {
 				if(opt.key == "combo") {
 					lg::wml_error() << "[options][combo] is deprecated; use [choice] instead\n";
 				}
 
-				const config& menu_button_option = opt.cfg;
+				if(!option_cfg.has_child("item")) {
+					continue;
+				}
 
-				data.clear();
-				item.clear();
-
-				item["label"] = menu_button_option["name"];
-				data.emplace("menu_button_label", item);
-
-				item["tooltip"] = menu_button_option["description"];
-				data.emplace("option_menu_button", item);
+				add_name("menu_button_label");
 
 				std::vector<config> combo_items;
 				std::vector<std::string> combo_values;
 
-				config::const_child_itors items = menu_button_option.child_range("item");
-				for(auto i : items) {
+				for(auto i : option_cfg.child_range("item")) {
 					// Comboboxes expect this key to be 'label' not 'name'
 					i["label"] = i["name"];
 
@@ -179,68 +180,40 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 					combo_values.push_back(i["value"]);
 				}
 
-				if(combo_items.empty()) {
-					continue;
-				}
-
 				tmenu_button* menu_button;
-				config::attribute_value val;
-
-				std::tie(menu_button, val) = add_node_and_get_widget<tmenu_button>(option_node, "option_menu_button", data, menu_button_option);
+				std::tie(menu_button, val) = add_node_and_get_widget<tmenu_button>(option_node, "option_menu_button", data, option_cfg);
 
 				// Needs to be called before set_selected
 				menu_button->set_values(combo_items);
 
-				auto iter = std::find_if(items.begin(), items.end(), [&val](const config& cfg) {
-					return cfg["value"] == val;
-				});
+				auto iter = std::find(combo_values.begin(), combo_values.end(), val.str());
 
-				if(iter != items.end()) {
-					menu_button->set_selected(iter - items.begin());
+				if(iter != combo_values.end()) {
+					menu_button->set_selected(iter - combo_values.begin());
 				}
 
 				menu_button->connect_click_handler(
 					std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
+
 			} else if(opt.key == "slider") {
-				const config& slider_option = opt.cfg;
-
-				data.clear();
-				item.clear();
-
-				item["label"] = slider_option["name"];
-				data.emplace("slider_label", item);
-
-				item["tooltip"] = slider_option["description"];
-				data.emplace("option_slider", item);
+				add_name("slider_label");
 
 				tslider* slider;
-				config::attribute_value val;
+				std::tie(slider, val) = add_node_and_get_widget<tslider>(option_node, "option_slider", data, option_cfg);
 
-				std::tie(slider, val) = add_node_and_get_widget<tslider>(option_node, "option_slider", data, slider_option);
-
-				slider->set_maximum_value(slider_option["max"].to_int());
-				slider->set_minimum_value(slider_option["min"].to_int());
-				slider->set_step_size(slider_option["step"].to_int(1));
+				slider->set_maximum_value(option_cfg["max"].to_int());
+				slider->set_minimum_value(option_cfg["min"].to_int());
+				slider->set_step_size(option_cfg["step"].to_int(1));
 				slider->set_value(val.to_int());
 
 				connect_signal_notify_modified(*slider,
 					std::bind(&tmp_options_helper::update_options_data_map<tslider>, this, slider, visible_options_.back()));
+
 			} else if(opt.key == "entry") {
-				const config& text_entry_option = opt.cfg;
-
-				data.clear();
-				item.clear();
-
-				item["label"] = text_entry_option["name"];
-				data.emplace("text_entry_label", item);
-
-				item["tooltip"] = text_entry_option["description"];
-				data.emplace("option_text_entry", item);
+				add_name("text_entry_label");
 
 				ttext_box* textbox;
-				config::attribute_value val;
-
-				std::tie(textbox, val) = add_node_and_get_widget<ttext_box>(option_node, "option_text_entry", data, text_entry_option);
+				std::tie(textbox, val) = add_node_and_get_widget<ttext_box>(option_node, "option_text_entry", data, option_cfg);
 
 				textbox->set_value(val.str());
 				textbox->set_text_changed_callback(
