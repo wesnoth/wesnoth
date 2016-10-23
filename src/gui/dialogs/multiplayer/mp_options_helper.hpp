@@ -23,6 +23,7 @@ namespace gui2
 {
 
 class tcontrol;
+class tmenu_button;
 class ttoggle_button;
 class ttree_view;
 class ttree_view_node;
@@ -57,6 +58,9 @@ private:
 	template<typename T>
 	void update_options_data_map(T* widget, const option_source& source);
 	void update_options_data_map(ttoggle_button* widget, const option_source& source);
+
+	// NOTE: this cannot be an overload of update_options_data_map since that's a templated function
+	void update_options_data_map_menu_button(tmenu_button* widget, const option_source& source, const config& cfg);
 
 	void reset_options_data(const option_source& source, bool& handled, bool& halt);
 

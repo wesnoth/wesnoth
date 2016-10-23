@@ -78,6 +78,11 @@ void tmp_options_helper::update_options_data_map(ttoggle_button* widget, const o
 	options_data_[source][widget->id()] = widget->get_value_bool();
 }
 
+void tmp_options_helper::update_options_data_map_menu_button(tmenu_button* widget, const option_source& source, const config& cfg)
+{
+	options_data_[source][widget->id()] = cfg.child_range("item")[widget->get_value()]["value"].str();
+}
+
 void tmp_options_helper::reset_options_data(const option_source& source, bool& handled, bool& halt)
 {
 	options_data_[source].clear();
@@ -193,7 +198,7 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 				}
 
 				menu_button->connect_click_handler(
-					std::bind(&tmp_options_helper::update_options_data_map<tmenu_button>, this, menu_button, visible_options_.back()));
+					std::bind(&tmp_options_helper::update_options_data_map_menu_button, this, menu_button, visible_options_.back(), option_cfg));
 
 			} else if(opt.key == "slider") {
 				add_name("slider_label");
