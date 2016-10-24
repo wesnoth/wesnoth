@@ -27,6 +27,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
 
 #include "font/pango/escape.hpp"
@@ -195,6 +196,13 @@ public:
 		std::ostringstream s;
 		stream_log(s, first, last);
 		msg_label->set_label(s.str());
+
+		// It makes sense to always scroll to the bottom, since the newest messages are there.
+		// The only time this might not be desired is tabbing forward through the pages, since
+		// one might want to continue reading the conversation in order.
+		//
+		// TODO: look into implementing the above suggestion
+		dynamic_cast<tscroll_label*>(msg_label)->scroll_vertical_scrollbar(tscrollbar_::END);
 	}
 
 	void chat_message_list_to_clipboard(int first, int last)
