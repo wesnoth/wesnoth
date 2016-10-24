@@ -352,10 +352,6 @@ void tpreferences::post_build(twindow& window)
 	register_bool("show_floating_labels", true,
 		show_floating_labels, set_show_floating_labels);
 
-	/* SHOW HALOES */
-	register_bool("show_halos", true,
-		show_haloes, set_show_haloes);
-
 	/* SHOW TEAM COLORS */
 	register_bool("show_ellipses", true,
 		show_side_colors, set_show_side_colors);
