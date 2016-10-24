@@ -12,12 +12,13 @@ Version 1.13.5+dev:
    * Fix some mainline campaigns custom AIs not working due to syntax changes
      after the AI refactoring for Wesnoth 1.13.5 (e.g. bug #25123)
    * Significantly improve move times for AI sides with many guardians
-   * ai_helper.lua utility functions:
+   * Micro AIs, other Lua AIs and ai_helper.lua utility functions:
      * Correctly and consistently deal with invisible units
-     * New functions get_attackable_enemies, get_visible_units,
-       is_attackable_enemy, is_visible_unit and robust_move_and_attack
-     * Renamed function to_triple to LS_to_triples for consistency with other
-       functions
+     * New ai_helper functions get_attackable_enemies, get_visible_units,
+       is_attackable_enemy, is_incomplete_move, is_incomplete_or_empty_move,
+       is_visible_unit and robust_move_and_attack
+     * Renamed function ai_helper.to_triple to LS_to_triples for consistency
+       with other functions
      * Some internal changes to fix rarely occurring bugs and to improve
        robustness and speed
  * Campaigns:
