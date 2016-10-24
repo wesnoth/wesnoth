@@ -352,36 +352,31 @@ public:
 	{
 	}
 
-	void pre_show(twindow& window)
+	void pre_show()
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
 		controller_.update_view_from_model(true);
-		window.invalidate_layout(); // workaround for assertion failure
 		LOG_CHAT_LOG << "Exiting tchat_log::view::pre_show" << std::endl;
 	}
 
-	void handle_page_number_changed(twindow& window)
+	void handle_page_number_changed()
 	{
 		controller_.handle_page_number_changed();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void next_page(twindow& window)
+	void next_page()
 	{
 		controller_.next_page();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void previous_page(twindow& window)
+	void previous_page()
 	{
 		controller_.previous_page();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void filter(twindow& window)
+	void filter()
 	{
 		controller_.filter();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 	void handle_copy_button_clicked(twindow& /*window*/)
@@ -397,22 +392,20 @@ public:
 				= &find_widget<tslider>(&window, "page_number", false);
 		connect_signal_notify_modified(
 				*model_.page_number,
-				std::bind(&view::handle_page_number_changed,
-							this,
-							std::ref(window)));
+				std::bind(&view::handle_page_number_changed, this));
 
 		model_.previous_page
 				= &find_widget<tbutton>(&window, "previous_page", false);
 		model_.previous_page->connect_click_handler(
-				std::bind(&view::previous_page, this, std::ref(window)));
+				std::bind(&view::previous_page, this));
 
 		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
 		model_.next_page->connect_click_handler(
-				std::bind(&view::next_page, this, std::ref(window)));
+				std::bind(&view::next_page, this));
 
 		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
 		model_.filter->set_text_changed_callback(
-				std::bind(&view::filter, this, std::ref(window)));
+				std::bind(&view::filter, this));
 		window.keyboard_capture(model_.filter);
 
 		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
@@ -458,7 +451,7 @@ void tchat_log::pre_show(twindow& window)
 {
 	LOG_CHAT_LOG << "Entering tchat_log::pre_show" << std::endl;
 	view_->bind(window);
-	view_->pre_show(window);
+	view_->pre_show();
 	LOG_CHAT_LOG << "Exiting tchat_log::pre_show" << std::endl;
 }
 
