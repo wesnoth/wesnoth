@@ -230,6 +230,7 @@ local function message_user_choice(cfg, speaker, options, text_input)
 			label = text_input.label or "",
 			text  = text_input.text	 or "",
 			max_length = input_max_size,
+			text_input_was_specified = "yes",
 		}
 	end
 

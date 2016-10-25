@@ -218,6 +218,8 @@ struct twml_message_input
 	mutable std::string text;
 	/// The maximum length of the text.
 	unsigned maximum_length;
+	/// True when [text_input] appeared in [message]
+	bool text_input_was_specified;
 };
 
 /**
