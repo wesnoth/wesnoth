@@ -36,7 +36,7 @@ public:
 
 	void update_options_list();
 
-	const config get_options_config();
+	config get_options_config();
 
 private:
 	struct option_source {

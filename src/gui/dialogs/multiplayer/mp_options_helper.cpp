@@ -233,7 +233,7 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 	}
 }
 
-const config tmp_options_helper::get_options_config()
+config tmp_options_helper::get_options_config()
 {
 	config options;
 	for(const auto& source : visible_options_) {
