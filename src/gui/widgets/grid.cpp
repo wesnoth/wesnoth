@@ -1117,9 +1117,9 @@ void set_single_child(tgrid& grid, twidget* widget)
  *  4.1 - 1.1 spacer
  *  4.1 - 1.2 spacer
  *  4.1 - 1.3 button : remove addon
- *  4.2 - 2.1 spacer
- *  4.2 - 2.2 button : connect
- *  4.2 - 2.3 button : cancel
+ *  4.1 - 2.1 spacer
+ *  4.1 - 2.2 button : connect
+ *  4.1 - 2.3 button : cancel
  *
  *
  *  |---------------------------------------|
@@ -1147,9 +1147,9 @@ void set_single_child(tgrid& grid, twidget* widget)
  *  3.1 - 1.2 text box : server to connect to
  *  4.1 - 1.1 spacer
  *  4.1 - 1.2 button : remove addon
- *  5.2 - 1.1 spacer
- *  5.2 - 1.2 button : connect
- *  5.2 - 1.3 button : cancel
+ *  5.1 - 1.1 spacer
+ *  5.1 - 1.2 button : connect
+ *  5.1 - 1.3 button : cancel
  *
  * = Praxis =
  *
