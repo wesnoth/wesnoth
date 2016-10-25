@@ -176,7 +176,7 @@ int show_wml_message(CVideo& video,
 	}
 	assert(dlg.get());
 
-	if(!input.caption.empty()) {
+	if(input.text_input_was_specified) {
 		dlg->set_input(input.caption, &input.text, input.maximum_length);
 	}
 
