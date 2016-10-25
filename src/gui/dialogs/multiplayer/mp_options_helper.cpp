@@ -38,9 +38,7 @@ tmp_options_helper::tmp_options_helper(twindow& window, ng::create_engine& creat
 {
 	for(const auto& c : preferences::options().all_children_range()) {
 		for(const auto& saved_option : c.cfg.child_range("option")) {
-			const std::string& id = saved_option["id"];
-
-			options_data_[{c.key, id}][id] = saved_option["value"];
+			options_data_[c.cfg["id"]][saved_option["id"]] = saved_option["value"];
 		}
 	}
 
@@ -69,23 +67,23 @@ void tmp_options_helper::update_options_list()
 template<typename T>
 void tmp_options_helper::update_options_data_map(T* widget, const option_source& source)
 {
-	options_data_[source][widget->id()] = widget->get_value();
+	options_data_[source.id][widget->id()] = widget->get_value();
 }
 
 template<>
 void tmp_options_helper::update_options_data_map(ttoggle_button* widget, const option_source& source)
 {
-	options_data_[source][widget->id()] = widget->get_value_bool();
+	options_data_[source.id][widget->id()] = widget->get_value_bool();
 }
 
 void tmp_options_helper::update_options_data_map_menu_button(tmenu_button* widget, const option_source& source, const config& cfg)
 {
-	options_data_[source][widget->id()] = cfg.child_range("item")[widget->get_value()]["value"].str();
+	options_data_[source.id][widget->id()] = cfg.child_range("item")[widget->get_value()]["value"].str();
 }
 
 void tmp_options_helper::reset_options_data(const option_source& source, bool& handled, bool& halt)
 {
-	options_data_[source].clear();
+	options_data_[source.id].clear();
 	update_options_list();
 
 	handled = true;
@@ -103,15 +101,15 @@ std::pair<T*, config::attribute_value> tmp_options_helper::add_node_and_get_widg
 
 	const std::string widget_id = cfg["id"];
 
-	auto& data_map = options_data_[visible_options_.back()];
-	if(data_map.find(widget_id) == data_map.end() || data_map[widget_id].empty()) {
-		data_map[widget_id] = cfg["default"];
+	auto& option_config = options_data_[visible_options_.back().id];
+	if(!option_config.has_attribute(widget_id) || option_config[widget_id].empty()) {
+		option_config[widget_id] = cfg["default"];
 	}
 
 	widget->set_id(widget_id);
 	widget->set_tooltip(cfg["description"]);
 
-	return {widget, data_map[widget_id]};
+	return {widget, option_config[widget_id]};
 }
 
 void tmp_options_helper::display_custom_options(std::string&& type, const config& cfg)
@@ -241,10 +239,14 @@ const config tmp_options_helper::get_options_config()
 	for(const auto& source : visible_options_) {
 		config& mod = options.add_child(source.level_type);
 		mod["id"] = source.id;
-		for(const auto& option : options_data_[source]) {
-			// TODO: change this to some key=value format as soon as we drop the old mp configure screen.
+#if 0
+		// TODO: enable this as soon as we drop the old mp configure screen.
+		mod.add_child("options", options_data_[source.id]);
+#else
+		for(const auto& option : options_data_[source.id].attribute_range()) {
 			mod.add_child("option", config_of("id", option.first)("value", option.second));
 		}
+#endif
 	}
 
 	return options;

@@ -67,10 +67,8 @@ private:
 	ttree_view& options_tree_;
 	tcontrol& no_options_notice_;
 
-	using option_map = std::map<std::string, config::attribute_value>;
-
 	std::vector<option_source> visible_options_;
-	std::map<option_source, option_map> options_data_;
+	std::map<std::string, config> options_data_;
 
 	ng::create_engine& create_engine_;
 
@@ -80,7 +78,7 @@ public:
 		return visible_options_;
 	}
 
-	std::map<option_source, option_map>& get_options_data()
+	std::map<std::string, config>& get_options_data()
 	{
 		return options_data_;
 	}
