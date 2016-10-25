@@ -13,7 +13,7 @@ local function create_game(context)
   context.select_type({type = "scenario"})
   local s = info.find_level({id = "test1"})
   context.select_level({index = s.index})
-  context.set_name({name = tostring(math.random(999999))})
+  context.set_name({name = tostring(wesnoth.random(999999))})
   context.update_settings({registered_users = false})
 
   events, context, info = coroutine.yield()
