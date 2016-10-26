@@ -153,7 +153,7 @@ private:
 	}
 
 	/** Inherited from tscrollbar. */
-	void move_positioner(const int distance) override;
+	//void move_positioner(const int distance) override;
 
 	/** See @ref tcontrol::update_canvas. */
 	virtual void update_canvas() override;
@@ -185,7 +185,7 @@ private:
 	 */
 	tpoint current_item_mouse_position_;
 
-	void update_current_item_mouse_position();
+	//void update_current_item_mouse_position();
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -203,7 +203,7 @@ private:
 									 bool& handled,
 									 const SDL_Keycode key);
 
-	void signal_handler_left_button_down(const event::tevent event, bool& handled);
+	//void signal_handler_left_button_down(const event::tevent event, bool& handled);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see tscrollbar class for more handling of this event.

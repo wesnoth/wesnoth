@@ -48,8 +48,8 @@ tslider::tslider()
 {
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
-	connect_signal<event::LEFT_BUTTON_DOWN>(
-			std::bind(&tslider::signal_handler_left_button_down, this, _2, _3));
+	//connect_signal<event::LEFT_BUTTON_DOWN>(
+	//		std::bind(&tslider::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
 			std::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
 }
@@ -224,16 +224,20 @@ bool tslider::in_orthogonal_range(const tpoint& coordinate) const
 	return static_cast<size_t>(coordinate.x) < (get_width() - offset_after());
 }
 
-void tslider::update_current_item_mouse_position()
+/*void tslider::update_current_item_mouse_position()
 {
 	tpoint mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
 	current_item_mouse_position_ = mouse;
-}
+}*/
 
-void tslider::move_positioner(const int)
+/* TODO: this is designed to allow the slider to snap to value on drag. However, it lags behind the
+ * mouse cursor too much and seems to cause problems with certain slider values. Will have to look
+ * into this further.
+ */
+/*void tslider::move_positioner(const int)
 {
 	const int distance_from_last_item = get_length_difference(current_item_mouse_position_, get_mouse_position_last_move());
 
@@ -251,7 +255,7 @@ void tslider::move_positioner(const int)
 
 		update_canvas();
 	}
-}
+}*/
 
 void tslider::update_canvas()
 {
@@ -305,14 +309,14 @@ void tslider::signal_handler_sdl_key_down(const event::tevent event,
 	}
 }
 
-void tslider::signal_handler_left_button_down(const event::tevent event, bool& handled)
+/*void tslider::signal_handler_left_button_down(const event::tevent event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	update_current_item_mouse_position();
 
 	handled = true;
-}
+}*/
 
 void tslider::signal_handler_left_button_up(const event::tevent event,
 											bool& handled)
