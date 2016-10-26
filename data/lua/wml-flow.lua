@@ -105,10 +105,13 @@ wesnoth.wml_actions["for"] = function(cfg)
 	if loop_lim.step == 0 then -- Sanity check
 		helper.wml_error("[for] has a step of 0!")
 	end
-	if (first < loop_lim.last and loop_lim.step <= 0) or (first > loop_lim.last and loop_lim.step >= 0) then
-		-- Sanity check: If they specify something like start,end,step=1,4,-1
-		-- then we do nothing
-		return
+	if loop_lim.step ~= nil then
+		if (first < loop_lim.last and loop_lim.step <= 0)
+				or (first > loop_lim.last and loop_lim.step >= 0) then
+			-- Sanity check: If they specify something like start,end,step=1,4,-1
+			-- then we do nothing
+			return
+		end
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
