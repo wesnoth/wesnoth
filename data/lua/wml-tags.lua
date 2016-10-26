@@ -1146,6 +1146,22 @@ function wml_actions.set_variable(cfg)
 		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) % modulo)
 	end
 
+	if cfg.abs then
+		wesnoth.set_variable(name, math.abs(tonumber(wesnoth.get_variable(name)) or 0))
+	end
+
+	if cfg.root then
+		if cfg.root == "square" then
+			local radicand = tonumber(wesnoth.get_variable(name)) or 0
+			if radicand < 0 then helper.wml_error("square root of negative number on variable " .. name) end
+			wesnoth.set_variable(name, math.sqrt(radicand))
+		end
+	end
+
+	if cfg.power then
+		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) ^ (tonumber(cfg.power) or 0))
+	end
+
 	if cfg.round then
 		local var = tonumber(wesnoth.get_variable(name) or 0)
 		local round_val = cfg.round
