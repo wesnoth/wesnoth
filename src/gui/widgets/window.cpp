@@ -574,7 +574,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		tdraw_interval_setter() : interval_(draw_interval)
 		{
 			if(interval_ == 0) {
-				draw_interval = 30;
+				draw_interval = 20;
 				SDL_AddTimer(draw_interval, draw_timer, nullptr);
 
 				// There might be some time between creation and showing so
