@@ -82,6 +82,9 @@ Version 1.13.5+dev:
    * The following dialogs have been converted to GUI2: Unit Recall, Unit List,
      Game Stats, MP Create, MP Game Lobby, Faction Select, Unit Advance.
    * Improved UI responsiveness.
+   * Tab completion in the Lua console is improved. It can now handle paths
+     containing square brackets (though it won't complete them) and will not
+     offer keys that are not valid identifiers.
  * WML Engine:
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the
@@ -152,8 +155,7 @@ Version 1.13.5+dev:
      Consult http://www.lua.org/ for a full change list and updated documenation.
      * bit32 functions removed
      * utf8 support added
-   * Added new functions wesnoth.fire_event_by_id and fire_event_by_name. The
-     old function wesnoth.fire_event is now an alias for wesnoth.fire_event_by_name
+   * Added new function wesnoth.fire_event_by_id to fire an event with a given ID.
    * Added new function wesnoth.remove_modifications, which removes applied
      modifications of the chosen type from a unit. The most efficient use is to
      remove all modifications with a specific duration value.
@@ -186,6 +188,14 @@ Version 1.13.5+dev:
      gettext plurals.
    * New matches function in team and unit attack metatables, which test if the
      side or weapon matches a filter.
+   * helper.lua metatables are now protected from external access; getmetatable()
+     will return a descriptive string instead of the metatable.
+   * ai.aspects.attacks no longer returns a full attacks analysis. Instead it
+     returns a table with "own" and "enemy" keys containing the valid units
+     for attackers and targets. The function ai.get_attacks() still returns the
+     full attack analysis.
+   * Aspect fetcher functions (eg ai.get_aggression()) are now deprecated in favour
+     of the ai.aspects table.
  * Networking
    * Ported campaignd to use boost.asio instead of SDL_net.
    * Removed unit tests for old networking stack. This was the last part that
