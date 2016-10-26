@@ -280,7 +280,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	input.caption = txt_cfg["label"].str();
 	input.text = txt_cfg["text"].str();
 	input.maximum_length = txt_cfg["max_length"].to_int(256);
-	input.text_input_was_specified = txt_cfg["text_input_was_specified"].to_bool(false);
+	input.text_input_was_specified = has_input;
 
 	gui2::twml_message_options options;
 	if (!lua_isnoneornil(L, 2)) {
