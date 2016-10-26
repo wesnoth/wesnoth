@@ -91,7 +91,7 @@ public:
 	 * Before rendering it tests whether a redraw is needed and if so it first
 	 * redraws the surface before returning it.
 	 */
-	surface render() const;
+	surface& render() const;
 
 	/** Returns the width needed for the text. */
 	int get_width() const;
