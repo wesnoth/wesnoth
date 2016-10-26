@@ -144,6 +144,9 @@ Version 1.13.5+dev:
        in the [tunnel] tag.
    * Added text_alignment= key to [story][part] to specify horizonal alignment of
      text.
+   * [set_variable] now supports abs= (absolute value), power= (raise to
+     power) and root= (extracts root, 'square' is the only value currently
+     supported) keys
  * Lua API:
    * Upgrade to Lua 5.3.3+
      Consult http://www.lua.org/ for a full change list and updated documenation.
