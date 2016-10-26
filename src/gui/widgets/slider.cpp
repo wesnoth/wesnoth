@@ -44,9 +44,12 @@ tslider::tslider()
 	, minimum_value_label_()
 	, maximum_value_label_()
 	, value_labels_()
+	, current_item_mouse_position_(0,0)
 {
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
+	connect_signal<event::LEFT_BUTTON_DOWN>(
+			std::bind(&tslider::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
 			std::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
 }
@@ -221,6 +224,35 @@ bool tslider::in_orthogonal_range(const tpoint& coordinate) const
 	return static_cast<size_t>(coordinate.x) < (get_width() - offset_after());
 }
 
+void tslider::update_current_item_mouse_position()
+{
+	tpoint mouse = get_mouse_position();
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	current_item_mouse_position_ = mouse;
+}
+
+void tslider::move_positioner(const int)
+{
+	const int distance_from_last_item = get_length_difference(current_item_mouse_position_, get_mouse_position_last_move());
+
+	if(std::abs(distance_from_last_item) >= get_pixels_per_step()) {
+		const int steps_traveled = distance_from_last_item / get_pixels_per_step();
+		set_item_position(get_item_position() + steps_traveled);
+
+		update_current_item_mouse_position();
+
+		child_callback_positioner_moved();
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
+		// positioner_moved_notifier_.notify();
+
+		update_canvas();
+	}
+}
+
 void tslider::update_canvas()
 {
 
@@ -271,6 +303,15 @@ void tslider::signal_handler_sdl_key_down(const event::tevent event,
 	} else {
 		// Do nothing. Ignore other keys.
 	}
+}
+
+void tslider::signal_handler_left_button_down(const event::tevent event, bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	update_current_item_mouse_position();
+
+	handled = true;
 }
 
 void tslider::signal_handler_left_button_up(const event::tevent event,

@@ -166,6 +166,11 @@ public:
 		recalculate();
 	}
 
+	float get_pixels_per_step() const
+	{
+		return pixels_per_step_;
+	}
+
 protected:
 	unsigned get_positioner_offset() const
 	{
@@ -175,6 +180,11 @@ protected:
 	unsigned get_positioner_length() const
 	{
 		return positioner_length_;
+	}
+
+	tpoint get_mouse_position_last_move() const
+	{
+		return mouse_;
 	}
 
 	/**
@@ -346,7 +356,7 @@ private:
 	 * @param distance           The distance moved, negative to begin, positive
 	 *                           to end.
 	*/
-	void move_positioner(const int distance);
+	virtual void move_positioner(const int distance);
 
 	/** Inherited from tcontrol. */
 	void load_config_extra() override;

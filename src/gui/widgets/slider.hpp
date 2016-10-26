@@ -152,6 +152,9 @@ private:
 		return current.x - original.x;
 	}
 
+	/** Inherited from tscrollbar. */
+	void move_positioner(const int distance) override;
+
 	/** See @ref tcontrol::update_canvas. */
 	virtual void update_canvas() override;
 
@@ -175,6 +178,15 @@ private:
 	 */
 	tlabel_creator value_labels_;
 
+	/**
+	 * When initially pessing the positioner and every time a new value is chosen through dragging,
+	 * this value is upda with the mouse position at the time. This allows the widget to track
+	 * how far the mouse has moved since setting the last value.
+	 */
+	tpoint current_item_mouse_position_;
+
+	void update_current_item_mouse_position();
+
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
@@ -190,6 +202,8 @@ private:
 	void signal_handler_sdl_key_down(const event::tevent event,
 									 bool& handled,
 									 const SDL_Keycode key);
+
+	void signal_handler_left_button_down(const event::tevent event, bool& handled);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see tscrollbar class for more handling of this event.
