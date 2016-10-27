@@ -319,22 +319,21 @@ public:
 
 	void handle_stuff_list_item_clicked(twidget& tree)
 	{
-		ttree_view_node* selected = dynamic_cast<ttree_view&>(tree).selected_item();
+		ttree_view& tree_widget = dynamic_cast<ttree_view&>(tree);
+
+		ttree_view_node* selected = tree_widget.selected_item();
 		callbacks[selected->describe_path()](*selected);
+
 		if(!selected->is_root_node()) {
-			using iter_t = iterator::twalker_*;
-			auto v = iterator::twalker_::child;
-			for(iter_t w = selected->parent_node().create_walker(); !w->at_end(v); w->next(v)) {
-				twidget* wgt = w->get(v);
-				if(ttree_view_node* node = dynamic_cast<ttree_view_node*>(wgt)) {
-					if(node != selected) {
-						node->fold();
-					} else {
-						node->unfold();
-					}
+			for(auto& node : tree_widget.get_root_node().children()) {
+				if(&node != selected) {
+					node.fold(true);
+				} else {
+					node.unfold(true);
 				}
 			}
 		}
+
 		view_.update(model_);
 	}
 
