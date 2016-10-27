@@ -86,6 +86,12 @@ function methods:filter(f)
 end
 
 function methods:iter(f)
+	if f == nil then
+		local locs = self
+		return coroutine.wrap(function()
+			locs:iter(coroutine.yield)
+		end)
+	end
 	for p,v in pairs(self.values) do
 		local x, y = revindex(p)
 		f(x, y, v)
@@ -97,10 +103,16 @@ function methods:stable_iter(f)
 	for p,v in pairs(self.values) do
 		table.insert(indices, p)
 	end
+	if f == nil then
+		local locs = self
+		return coroutine.wrap(function()
+			locs:stable_iter(coroutine.yield)
+		end)
+	end
 	table.sort(indices)
 	for i,p in ipairs(indices) do
 		local x, y = revindex(p)
-		f(x, y)
+		f(x, y, self.values[p])
 	end
 end
 

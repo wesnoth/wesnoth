@@ -92,11 +92,10 @@ function callbacks.generate_map(params)
 
 	for i,v in ipairs(chambers) do
 		local locs_list = {}
-		for k2,loc in ipairs(v.locs_set:to_pairs()) do
-			local x, y = table.unpack(loc)
+		for x, y in v.locs_set:stable_iter() do
 			clear_tile(x, y)
 			if map:on_inner_board(x, y) then
-				table.insert(locs_list, loc)
+				table.insert(locs_list, {x,y})
 			end
 		end
 		for i1, item in ipairs(v.items or {}) do
@@ -138,8 +137,8 @@ function callbacks.generate_map(params)
 			for i, loc in ipairs(path) do
 				local locs_set = LS.create()
 				build_chamber(loc[1], loc[2], locs_set, width, jagged)
-				for k,v in ipairs(locs_set:to_pairs()) do
-					clear_tile(v[1], v[2])
+				for x,y in locs_set:stable_iter() do
+					clear_tile(x, y)
 				end
 			end
 		end
