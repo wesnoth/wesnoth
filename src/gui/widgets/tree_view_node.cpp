@@ -229,7 +229,7 @@ bool ttree_view_node::is_folded() const
 	return !unfolded_;
 }
 
-void ttree_view_node::fold(/*const bool recursive*/)
+void ttree_view_node::fold(const bool recursive)
 {
 	if(!is_folded()) {
 		fold_internal();
@@ -237,14 +237,26 @@ void ttree_view_node::fold(/*const bool recursive*/)
 			toggle_->set_value(false);
 		}
 	}
+
+	if(recursive) {
+		for(auto& child_node : children_) {
+			child_node.fold(true);
+		}
+	}
 }
 
-void ttree_view_node::unfold(/*const texpand_mode mode*/)
+void ttree_view_node::unfold(const bool recursive)
 {
 	if(is_folded()) {
 		unfold_internal();
 		if(toggle_) {
 			toggle_->set_value(true);
+		}
+	}
+
+	if(recursive) {
+		for(auto& child_node : children_) {
+			child_node.unfold(true);
 		}
 	}
 }

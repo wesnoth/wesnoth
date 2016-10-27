@@ -117,19 +117,16 @@ public:
 	bool is_folded() const;
 
 #if 0
-	enum texpand_mode
-	{
-		  recursive_restore // recursively restores collapse mode
-		, recursive_expand // recursively expands the children
-		, not_recursive
+	// TODO: implement if different expand modes become necessary
+	enum texpand_mode {
+		recursive_restore, // recursively restores collapse mode
+		recursive_expand, // recursively expands the children
+		not_recursive
 	};
 #endif
 
-	// If recursive all children will be closed recursively causing
-	// restore expaning not to expand anything
-	// TODO: ^ implement
-	void fold(/*const bool recursive*/);
-	void unfold(/*const texpand_mode mode*/);
+	void fold(const bool recursive = false);
+	void unfold(const bool recursive = false);
 
 	/**
 	 * See @ref twidget::create_walker.
@@ -139,6 +136,11 @@ public:
 	virtual iterator::twalker_* create_walker() override
 	{
 		return new gui2::iterator::ttree_node(*this, children_);
+	}
+
+	boost::ptr_vector<ttree_view_node>& children()
+	{
+		return children_;
 	}
 
 	/** See @ref twidget::find_at. */
