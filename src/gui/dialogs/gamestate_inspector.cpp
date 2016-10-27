@@ -319,13 +319,11 @@ public:
 
 	void handle_stuff_list_item_clicked(twidget& tree)
 	{
-		ttree_view& tree_widget = dynamic_cast<ttree_view&>(tree);
-
-		ttree_view_node* selected = tree_widget.selected_item();
+		ttree_view_node* selected = dynamic_cast<ttree_view&>(tree).selected_item();
 		callbacks[selected->describe_path()](*selected);
 
 		if(!selected->is_root_node()) {
-			for(auto& node : tree_widget.get_root_node().children()) {
+			for(auto& node : selected->parent_node().children()) {
 				if(&node != selected) {
 					node.fold(true);
 				} else {
