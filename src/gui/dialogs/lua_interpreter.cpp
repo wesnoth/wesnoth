@@ -332,13 +332,12 @@ public:
 	bool do_history_expansion (std::string & cmd) {
 #ifdef HAVE_HISTORY
 		// Do history expansions
-		char * cmd_cstr = new char [cmd.length()+1];
-		strcpy (cmd_cstr, cmd.c_str());
+		std::unique_ptr<char[]> cmd_cstr(new char[cmd.length()+1]);
+		strcpy (cmd_cstr.get(), cmd.c_str());
 
 		char * expansion;
 
-		int result = history_expand(cmd_cstr, &expansion);
-		free(cmd_cstr);
+		int result = history_expand(cmd_cstr.get(), &expansion);
 
 		if (result < 0 || result == 2) {
 			cmd = expansion; // return error message in cmd var
