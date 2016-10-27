@@ -10,6 +10,19 @@ function mapgen_helper.create_map(width,height,default_terrain)
 	return map
 end
 
+local function rand_from_ranges(list)
+	if type(list) == 'number' then return list end
+	local choices = {}
+	for n in stringx.iter_ranges(list) do
+		table.insert(choices, n)
+	end
+	return mathx.random_choice(choices) or 0
+end
+
+function mapgen_helper.random_location(x_list, y_list)
+	return rand_from_ranges(x_list), rand_from_ranges(y_list)
+end
+
 local valid_transforms = {
 	flip_x = true,
 	flip_y = true,
