@@ -10,6 +10,16 @@ function mapgen_helper.create_map(width,height,default_terrain)
 	return map
 end
 
+local valid_transforms = {
+	flip_x = true,
+	flip_y = true,
+	flip_xy = true,
+}
+
+function mapgen_helper.is_valid_transform(t)
+	return valid_transforms[t]
+end
+
 local function loc_to_index(map,x,y)
 	return x + 1 + y * map.w
 end
@@ -63,6 +73,11 @@ function map_mt.__index.flip_y(map)
 			map[i], map[j] = map[j], map[i]
 		end
 	end
+end
+
+function map_mt.__index.flip_xy(map)
+	map:flip_x()
+	map:flip_y()
 end
 
 function map_mt.__tostring(map)

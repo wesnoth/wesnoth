@@ -151,8 +151,7 @@ function callbacks.generate_map(params)
 		if random(100) <= chance then
 			local transforms = {}
 			for t in params.transform:gmatch("[^%s,][^,]*") do
-				-- TODO: Possibly support other transformations, such as transpose, rotate_cw, rotate_ccw, etc
-				if t == 'flip_x' or t == 'flip_y' then
+				if MG.is_valid_transform(t) then
 					table.insert(transforms, t)
 				else
 					error("Unknown transformation '" .. t .. "'")
