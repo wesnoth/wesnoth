@@ -325,11 +325,11 @@ public:
 		if(!selected->is_root_node()) {
 			for(auto& node : selected->parent_node().children()) {
 				if(&node != selected) {
-					node.fold(true);
+					node.fold();
 				}
 			}
 
-			selected->unfold(true);
+			selected->unfold();
 		}
 
 		view_.update(model_);
