@@ -114,7 +114,10 @@ public:
 	}
 
 	/** Is the node folded? */
-	bool is_folded() const;
+	bool is_folded() const
+	{
+		return !unfolded_;
+	}
 
 #if 0
 	// TODO: implement if different expand modes become necessary
@@ -183,14 +186,21 @@ public:
 	/** The const version of @ref parent_node. */
 	const ttree_view_node& parent_node() const;
 
-	ttree_view& tree_view();
+	ttree_view& tree_view()
+	{
+		return *tree_view_;
+	}
 
-	const ttree_view& tree_view() const;
+	const ttree_view& tree_view() const
+	{
+		return *tree_view_;
+	}
 
 	ttree_view_node& get_child_at(int index);
+
 	/**
-		calculates the node indicies that we need to get from the root node to this node.
-	*/
+	 * Calculates the node indicies needed to get from the root node to this node.
+	 */
 	std::vector<int> describe_path();
 
 	enum NODE_CALLBACK_SCOPE {
@@ -233,8 +243,8 @@ public:
 	void clear_before_destruct();
 
 private:
-
 	int calculate_ypos();
+
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
