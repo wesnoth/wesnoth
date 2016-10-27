@@ -86,6 +86,12 @@ function methods:filter(f)
 end
 
 function methods:iter(f)
+	if f == nil then
+		local locs = self
+		return coroutine.wrap(function()
+			locs:iter(coroutine.yield)
+		end)
+	end
 	for p,v in pairs(self.values) do
 		local x, y = revindex(p)
 		f(x, y, v)
@@ -97,10 +103,16 @@ function methods:stable_iter(f)
 	for p,v in pairs(self.values) do
 		table.insert(indices, p)
 	end
+	if f == nil then
+		local locs = self
+		return coroutine.wrap(function()
+			locs:stable_iter(coroutine.yield)
+		end)
+	end
 	table.sort(indices)
 	for i,p in ipairs(indices) do
 		local x, y = revindex(p)
-		f(x, y)
+		f(x, y, self.values[p])
 	end
 end
 
@@ -167,8 +179,11 @@ function methods:to_wml_var(name)
 end
 
 function location_set.create()
-	local w,h,b = wesnoth.get_map_size()
-	assert(h + 2 * b < 9000)
+	if wesnoth.get_map_size then
+		-- If called from the mapgen kernel, there's no map
+		local w,h,b = wesnoth.get_map_size()
+		assert(h + 2 * b < 9000)
+	end
 	return setmetatable({ values = {} }, locset_meta)
 end
 

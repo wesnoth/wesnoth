@@ -967,6 +967,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
 		e.show(video());
+	} catch(mapgen_exception& e) {
+		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
 	}
 }
 
