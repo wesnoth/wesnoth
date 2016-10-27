@@ -193,6 +193,12 @@ public:
 	*/
 	std::vector<int> describe_path();
 
+	enum NODE_CALLBACK_SCOPE {
+		ON_BOTH,
+		ON_FOLD,
+		ON_UNFOLD
+	};
+
 	/** Inherited from tselectable_.
 	 *
 	 * @param scope      Specifies the scope of the callback event
@@ -201,16 +207,16 @@ public:
 	 *                   2 : on folded to unfolded
 	*/
 	void set_callback_state_change(
-			const int scope, std::function<void(twidget&)> callback)
+			const NODE_CALLBACK_SCOPE scope, std::function<void(twidget&)> callback)
 	{
-		switch (scope) {
-			case 0:
+		switch(scope) {
+			case ON_BOTH:
 				callback_state_change_ = callback;
 				break;
-			case 1:
+			case ON_FOLD:
 				callback_state_to_folded_ = callback;
 				break;
-			case 2:
+			case ON_UNFOLD:
 				callback_state_to_unfolded_ = callback;
 				break;
 		}
