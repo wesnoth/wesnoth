@@ -326,10 +326,10 @@ public:
 			for(auto& node : selected->parent_node().children()) {
 				if(&node != selected) {
 					node.fold(true);
-				} else {
-					node.unfold(true);
 				}
 			}
+
+			selected->unfold(true);
 		}
 
 		view_.update(model_);
