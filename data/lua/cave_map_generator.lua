@@ -47,6 +47,10 @@ function callbacks.generate_map(params)
 			params.chance = 0
 			goto continue
 		end
+		if type(chamber.require_player) == "number" and chamber.require_player > params.nplayers then
+			params.chance = 0
+			goto continue
+		end
 		-- Ditto, set it to 100
 		params.chance = 100
 		local locs_set = LS.create()
