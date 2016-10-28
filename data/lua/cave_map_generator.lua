@@ -61,7 +61,7 @@ function callbacks.generate_map(params)
 			y = random(tonumber(y_min), tonumber(y_max))
 		end
 		local locs_set = LS.create()
-		build_chamber(x, y, locs_set, chambers.size or 3, chambers.size or 0)
+		build_chamber(x, y, locs_set, chamber.size or 3, chamber.jagged or 0)
 		local items = {}
 		for item in helper.child_range(chamber, "item_location") do
 			table.insert(items, item)
@@ -165,10 +165,10 @@ end
 
 function callbacks.generate_scenario(params)
 	-- This is more or less backwards compatible with the cave generator syntax
-	local scenario = helper.child(params, "scenario")
+	local scenario = helper.get_child(params, "scenario")
 	scenario.map_data = callbacks.generate_map(params)
 	for chamber in helper.child_range(params, "chamber") do
-		local items = helper.child(chamber, "items")
+		local items = helper.get_child(chamber, "items")
 		if chamber.chance == 100 and chamber_items then
 			-- TODO: Should we support [event]same_location_as_previous=yes?
 			for i,tag in ipairs(chamber_items) do
