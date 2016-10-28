@@ -32,6 +32,10 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	const char* required[] = {"id", "config_name", "create_map"};
 	for (std::string req : required) {
 		if (!cfg.has_attribute(req)) {
+			if(req == "create_map" && cfg.has_attribute("create_scenario")) {
+				// One of these is required, but not both
+				continue;
+			}
 			std::string msg = "Error when constructing a lua map generator -- missing a required attribute '";
 			msg += req + "'\n";
 			msg += "Config was '" + cfg.debug() + "'";
@@ -54,6 +58,10 @@ void lua_map_generator::user_config()
 
 std::string lua_map_generator::create_map(boost::optional<uint32_t> seed)
 {
+	if(create_map_.empty()) {
+		return map_generator::create_map(seed);
+	}
+
 	try {
 		return lk_.create_map(create_map_.c_str(), generator_data_, seed);
 	} catch (game::lua_error & e) {
