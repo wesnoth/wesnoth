@@ -43,6 +43,10 @@ env_lua = env.Clone(
     CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
     CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
 
+if env_lua["build"] == "optimize":
+    env_lua["AR"] = 'gcc-ar'
+    env_lua["RANLIB"] = 'gcc-ranlib'
+
 #if env['strict']:
 #    env.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast"))
 

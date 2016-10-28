@@ -47,13 +47,14 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
-    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
+    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimize", "release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
+    ('extra_flags_optimize', 'Extra compiler and linker flags to use for optimized builds', ""),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -506,6 +507,7 @@ for env in [test_env, client_env, env]:
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+        env["HIGH_OPT_FLAGS"] = Split("-O3 -march=native -flto")
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
@@ -553,7 +555,8 @@ builds = {
     "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
     "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
-    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg")
+    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
+    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
