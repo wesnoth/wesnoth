@@ -66,8 +66,8 @@ std::string lua_map_generator::create_map(boost::optional<uint32_t> seed)
 
 config lua_map_generator::create_scenario(boost::optional<uint32_t> seed)
 {
-	if (!create_scenario_.size()) {
-		return map_generator::create_scenario();
+	if(create_scenario_.empty()) {
+		return map_generator::create_scenario(seed);
 	}
 
 	try {
