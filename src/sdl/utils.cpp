@@ -64,10 +64,10 @@ const_surface_lock::~const_surface_lock()
 SDL_Color int_to_color(const Uint32 rgb)
 {
 	SDL_Color result;
-	result.r = (0x00FF0000 & rgb )>> 16;
-	result.g = (0x0000FF00 & rgb) >> 8;
-	result.b = (0x000000FF & rgb);
-	result.a = SDL_ALPHA_OPAQUE;
+	result.r = static_cast<Uint8>((SDL_RED_MASK & rgb) >> SDL_RED_BITSHIFT);
+	result.g = static_cast<Uint8>((SDL_GREEN_MASK & rgb) >> SDL_GREEN_BITSHIFT);
+	result.b = static_cast<Uint8>((SDL_BLUE_MASK & rgb) >> SDL_BLUE_BITSHIFT);
+	result.a = static_cast<Uint8>((SDL_ALPHA_MASK & rgb) >> SDL_ALPHA_BITSHIFT);
 	return result;
 }
 
@@ -110,8 +110,8 @@ bool operator<(const surface& a, const surface& b)
 bool is_neutral(const surface& surf)
 {
 	return (surf->format->BytesPerPixel == 4 &&
-		surf->format->Rmask == 0xFF0000u &&
-		(surf->format->Amask | 0xFF000000u) == 0xFF000000u);
+		surf->format->Rmask == SDL_RED_MASK &&
+		(surf->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK);
 }
 
 static SDL_PixelFormat& get_neutral_pixel_format()
@@ -121,7 +121,8 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 
 		if(first_time) {
 			first_time = false;
-			surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+			surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,SDL_RED_MASK,SDL_GREEN_MASK,
+											  SDL_BLUE_MASK,SDL_ALPHA_MASK));
 			format = *surf->format;
 			format.palette = nullptr;
 		}

@@ -101,7 +101,7 @@ ttext::~ttext()
 	surface_.assign(nullptr);
 }
 
-surface ttext::render() const
+surface& ttext::render() const
 {
 	this->rerender();
 	return surface_;

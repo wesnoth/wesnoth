@@ -1125,9 +1125,9 @@ void timage::draw(surface& canvas,
 
 				for(int x = 0; x < columns; ++x) {
 					for(int y = 0; y < rows; ++y) {
-						const SDL_Rect dest = sdl::create_rect(
+						SDL_Rect dest = sdl::create_rect(
 								x * image_->w, y * image_->h, 0, 0);
-						blit_surface(image_, nullptr, surf, &dest);
+						sdl_blit(image_, nullptr, surf, &dest);
 					}
 				}
 
@@ -1153,7 +1153,7 @@ void timage::draw(surface& canvas,
 		surf = flip_surface(surf, false);
 	}
 
-	blit_surface(surf, &src_clip, canvas, &dst_clip);
+	sdl_blit(surf, &src_clip, canvas, &dst_clip);
 }
 
 timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
@@ -1350,7 +1350,7 @@ void ttext::draw(surface& canvas,
 							 : PANGO_ELLIPSIZE_END)
 			.set_characters_per_line(characters_per_line_);
 
-	surface surf = text_renderer.render();
+	surface& surf = text_renderer.render();
 	if(surf->w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";

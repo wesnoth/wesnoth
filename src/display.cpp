@@ -1506,7 +1506,6 @@ void display::draw_text_in_hex(const map_location& loc,
 	drawing_buffer_add(layer, loc, x, y, text_surf);
 }
 
-//TODO: convert this to use sdl::ttexture
 void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
