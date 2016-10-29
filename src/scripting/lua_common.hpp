@@ -262,14 +262,14 @@ int luaW_type_error (lua_State *L, int narg, const char *tname);
 
 #define modify_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		int value = luaL_checkinteger(L, 3); \
+		int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		accessor; \
 		return 0; \
 	}
 
 #define modify_int_attrib_check_range(name, accessor, allowed_min, allowed_max) \
 	if (strcmp(m, name) == 0) { \
-		int value = luaL_checkinteger(L, 3); \
+		int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		if (value < allowed_min || allowed_max < value) return luaL_argerror(L, 3, "out of bounds"); \
 		accessor; \
 		return 0; \
