@@ -556,7 +556,7 @@ builds = {
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
     "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
     "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
-    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_FLAGS"))
+    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_FLAGS"), LINKFLAGS=Split("-fuse-ld=gold -flto"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
