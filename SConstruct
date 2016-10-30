@@ -541,6 +541,8 @@ if not env['static_test']:
 try:
     if call(env.subst("utils/autorevision -t h > $build_dir/revision.h"), shell=True) == 0:
         env["have_autorevision"] = True
+        if not call(env.subst("cmp -s $build_dir/revision.h src/revision.h"), shell=True) == 0:
+            call(env.subst("cp $build_dir/revision.h src/revision.h"), shell=True)
 except:
     pass
 
