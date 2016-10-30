@@ -91,9 +91,9 @@ std::vector<std::string> split(const std::string& val, const char c, const int f
 	return res;
 }
 
-std::vector< std::string > square_parenthetical_split(std::string const &val,
-		const char separator, std::string const &left,
-		std::string const &right,const int flags)
+std::vector<std::string> square_parenthetical_split(const std::string& val,
+		const char separator, const std::string& left,
+		const std::string& right,const int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
@@ -260,12 +260,12 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	return res;
 }
 
-std::map< std::string, std::string > map_split(
-		  std::string const &val
+std::map<std::string, std::string> map_split(
+		  const std::string& val
 		, char major
 		, char minor
 		, int flags
-		, std::string const& default_value)
+		, const std::string& default_value)
 {
 	//first split by major so that we get a vector with the key-value pairs
 	std::vector< std::string > v = split(val, major, flags);
@@ -291,9 +291,9 @@ std::map< std::string, std::string > map_split(
 	return res;
 }
 
-std::vector< std::string > parenthetical_split(std::string const &val,
-		const char separator, std::string const &left,
-		std::string const &right,const int flags)
+std::vector<std::string> parenthetical_split(const std::string& val,
+		const char separator, const std::string& left,
+		const std::string& right,const int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
@@ -731,7 +731,7 @@ std::string indent(const std::string& string, size_t indent_size)
 	return res;
 }
 
-std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)
+std::vector<std::string> quoted_split(const std::string& val, char c, int flags, char quote)
 {
 	std::vector<std::string> res;
 
@@ -770,7 +770,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c, int flag
 	return res;
 }
 
-std::pair< int, int > parse_range(std::string const &str)
+std::pair<int, int> parse_range(std::string const &str)
 {
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
@@ -786,7 +786,7 @@ std::pair< int, int > parse_range(std::string const &str)
 	return res;
 }
 
-std::vector< std::pair< int, int > > parse_ranges(std::string const &str)
+std::vector<std::pair<int, int>> parse_ranges(std::string const &str)
 {
 	std::vector< std::pair< int, int > > to_return;
 	std::vector<std::string> strs = utils::split(str);
