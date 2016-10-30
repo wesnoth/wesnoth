@@ -55,6 +55,7 @@ opts.AddVariables(
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     ('extra_flags_optimize', 'Extra compiler and linker flags to use for optimized builds', ""),
+    EnumVariable('enable_lto', 'Whether to enable Link Time Optimization', "", ["", "yes", "no"]),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -507,7 +508,13 @@ for env in [test_env, client_env, env]:
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
-        env["HIGH_OPT_FLAGS"] = Split("-O3 -march=native -flto")
+        
+        if env["enable_lto"] == "yes":
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 -march=native -flto"
+            env["HIGH_OPT_LINK_FLAGS"] = "$HIGH_OPT_COMP_FLAGS -fuse-ld=gold"
+        else:
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 -march=native"
+            env["HIGH_OPT_LINK_FLAGS"] = ""
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
@@ -556,7 +563,7 @@ builds = {
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
     "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
     "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
-    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_FLAGS"), LINKFLAGS=Split("-fuse-ld=gold -flto"))
+    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
