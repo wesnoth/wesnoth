@@ -654,7 +654,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 		if ( only_active  &&  !special_active(sp.cfg, AFFECT_EITHER, is_backstab) )
 			continue;
 
-		std::string const &name = sp.cfg["name"].str();
+		const std::string& name = sp.cfg["name"].str();
 		if (!name.empty()) {
 			if (!res.empty()) res += ", ";
 			res += name;
@@ -757,7 +757,7 @@ namespace { // Helpers for attack_type::special_active()
 	bool special_affects_opponent(const config& special, bool is_attacker)
 	{
 		//log_scope("special_affects_opponent");
-		std::string const &apply_to = special["apply_to"];
+		const std::string& apply_to = special["apply_to"];
 		if ( apply_to.empty() )
 			return false;
 		if ( apply_to == "both" )
@@ -779,7 +779,7 @@ namespace { // Helpers for attack_type::special_active()
 	bool special_affects_self(const config& special, bool is_attacker)
 	{
 		//log_scope("special_affects_self");
-		std::string const &apply_to = special["apply_to"];
+		const std::string& apply_to = special["apply_to"];
 		if ( apply_to.empty() )
 			return true;
 		if ( apply_to == "both" )
@@ -1022,7 +1022,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.first;
-		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
+		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!cfg["backstab"].blank()) {
 			lg::wml_error() << "The backstab= key in weapon specials is deprecated; use [filter_adjacent] instead\n";

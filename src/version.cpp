@@ -162,8 +162,8 @@ namespace {
 			return false;
 		}
 
-		unsigned int const& lvalue = l[k];
-		unsigned int const& rvalue = r[k];
+		const unsigned int& lvalue = l[k];
+		const unsigned int& rvalue = r[k];
 
 		_Toperator o;
 		_Tfallback_operator fallback_o;
@@ -201,8 +201,8 @@ namespace {
 		{
 			case EQUAL: case NOT_EQUAL: {
 				for(size_t i = 0; i < csize; ++i) {
-					unsigned int const& lvalue = lc[i];
-					unsigned int const& rvalue = rc[i];
+					const unsigned int& lvalue = lc[i];
+					const unsigned int& rvalue = rc[i];
 					if(o == NOT_EQUAL) {
 						if((result = (lvalue != rvalue))) {
 #ifdef _MSC_VER

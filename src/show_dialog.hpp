@@ -59,7 +59,7 @@ public:
 	};
 	class style {
 	public:
-		style(std::string const& p, int br) : panel(p), blur_radius(br) {}
+		style(const std::string& p, int br) : panel(p), blur_radius(br) {}
 		std::string	panel;
 		int	blur_radius;
 	};

@@ -557,7 +557,7 @@ void sdl_ttf::set_font_list(const std::vector<subset_descriptor>& fontlist)
 }
 
 //Splits the UTF-8 text into text_chunks using the same font.
-std::vector<text_chunk> sdl_ttf::split_text(std::string const & utf8_text) {
+std::vector<text_chunk> sdl_ttf::split_text(const std::string& utf8_text) {
 	text_chunk current_chunk(0);
 	std::vector<text_chunk> chunks;
 

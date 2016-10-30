@@ -214,8 +214,8 @@ private:
 	team const &viewing_team_;
 	std::vector<team> const &teams_;
 	gamemap const &map_;
-	int const movement_left_;
-	int const total_movement_;
+	const int movement_left_;
+	const int total_movement_;
 	bool const ignore_unit_;
 	bool const ignore_defense_;
 	bool see_all_;

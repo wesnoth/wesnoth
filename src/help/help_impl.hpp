@@ -72,7 +72,7 @@ public:
 class text_topic_generator: public topic_generator {
 	std::string text_;
 public:
-	text_topic_generator(std::string const &t): text_(t) {}
+	text_topic_generator(const std::string& t): text_(t) {}
 	virtual std::string operator()() const { return text_; }
 };
 
@@ -90,7 +90,7 @@ public:
 	{
 	}
 
-	topic_text(std::string const &t):
+	topic_text(const std::string& t):
 		parsed_text_(),
 		generator_(new text_topic_generator(t))
 	{

@@ -513,7 +513,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 				std::vector<t_string> const& desc_vec = *desc_vecs[i];
 				for(size_t j=0; j < abil_vec.size(); ++j) {
 					t_string const& abil_name = abil_vec[j];
-					std::string const abil_desc =
+					const std::string abil_desc =
 						j >= desc_vec.size() ? "" : desc_vec[j].str();
 
 					ability_description.insert(std::make_pair(abil_name, abil_desc));

@@ -84,7 +84,7 @@ static int impl_side_get(lua_State *L)
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
-		for (std::string const &r : t.recruits()) {
+		for (const std::string& r : t.recruits()) {
 			lua_pushstring(L, r.c_str());
 			lua_rawseti(L, -2, i++);
 		}

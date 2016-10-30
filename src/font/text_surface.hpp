@@ -33,9 +33,9 @@ namespace font {
 class text_surface
 {
 public:
-	text_surface(std::string const &str, int size, SDL_Color color, int style);
+	text_surface(const std::string& str, int size, SDL_Color color, int style);
 	text_surface(int size, SDL_Color color, int style);
-	void set_text(std::string const &str);
+	void set_text(const std::string& str);
 
 	void measure() const;
 	size_t width() const;

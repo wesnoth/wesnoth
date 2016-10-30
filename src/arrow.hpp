@@ -48,7 +48,7 @@ public:
 	 * image::locator modifiers parameter. Examples: red is "red" or "FF0000" or "255,0,0".
 	 * Feel free to add another method that accepts an Uint32 as a parameter instead.
 	 */
-	virtual void set_color(std::string const& color);
+	virtual void set_color(const std::string& color);
 
 	virtual std::string get_color() const { return color_; }
 
@@ -59,12 +59,12 @@ public:
 	 * symbols instead of arrow graphics.
 	 */
 	std::string get_style() {return style_;}
-	void set_style(std::string const& style);
+	void set_style(const std::string& style);
 	///If you add more styles, you should look at move::update_arrow_style()
-	static std::string const STYLE_STANDARD;
-	static std::string const STYLE_HIGHLIGHTED;
-	static std::string const STYLE_FOCUS;
-	static std::string const STYLE_FOCUS_INVALID;
+	static const std::string STYLE_STANDARD;
+	static const std::string STYLE_HIGHLIGHTED;
+	static const std::string STYLE_FOCUS;
+	static const std::string STYLE_FOCUS_INVALID;
 
 	arrow_path_t const& get_path() const;
 	arrow_path_t const& get_previous_path() const;

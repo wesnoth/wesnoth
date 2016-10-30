@@ -694,7 +694,7 @@ void ui::gamelist_updated(bool silent)
 	// it works for me anyways
 	const std::string registered_user_tag = "~";
 
-	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
+	const std::string imgpre = IMAGE_PREFIX + std::string("misc/status-");
 	std::vector<std::string> user_strings;
 	std::vector<std::string> menu_strings;
 

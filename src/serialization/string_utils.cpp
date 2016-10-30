@@ -770,7 +770,7 @@ std::vector<std::string> quoted_split(const std::string& val, char c, int flags,
 	return res;
 }
 
-std::pair<int, int> parse_range(std::string const &str)
+std::pair<int, int> parse_range(const std::string& str)
 {
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
@@ -786,7 +786,7 @@ std::pair<int, int> parse_range(std::string const &str)
 	return res;
 }
 
-std::vector<std::pair<int, int>> parse_ranges(std::string const &str)
+std::vector<std::pair<int, int>> parse_ranges(const std::string& str)
 {
 	std::vector< std::pair< int, int > > to_return;
 	std::vector<std::string> strs = utils::split(str);

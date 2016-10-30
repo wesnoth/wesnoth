@@ -102,9 +102,9 @@ public:
 	friend class logger;
 };
 
-bool set_log_domain_severity(std::string const &name, int severity);
-bool set_log_domain_severity(std::string const &name, const logger &lg);
-bool get_log_domain_severity(std::string const &name, int &severity);
+bool set_log_domain_severity(const std::string& name, int severity);
+bool set_log_domain_severity(const std::string& name, const logger &lg);
+bool get_log_domain_severity(const std::string& name, int &severity);
 std::string list_logdomains(const std::string& filter);
 
 void set_strict_severity(int severity);

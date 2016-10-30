@@ -518,7 +518,7 @@ namespace {
 		{ lua_pushnumber(L, ull); }
 		void operator()(double d) const
 		{ lua_pushnumber(L, d); }
-		void operator()(std::string const &s) const
+		void operator()(const std::string& s) const
 		{ lua_pushstring(L, s.c_str()); }
 		void operator()(t_string const &s) const
 		{ luaW_pushtstring(L, s); }
@@ -915,7 +915,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 	}
 }
 
-void chat_message(std::string const &caption, std::string const &msg)
+void chat_message(const std::string& caption, const std::string& msg)
 {
 	if (!resources::screen) return;
 	resources::screen->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg,

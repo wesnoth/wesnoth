@@ -193,7 +193,7 @@ void game_lua_kernel::log_error(char const * msg, char const * context)
 	lua_chat(context, msg);
 }
 
-void game_lua_kernel::lua_chat(std::string const &caption, std::string const &msg)
+void game_lua_kernel::lua_chat(const std::string& caption, const std::string& msg)
 {
 	if (game_display_) {
 		game_display_->get_chat_manager().add_chat_message(time(nullptr), caption, 0, msg,
@@ -4514,7 +4514,7 @@ int game_lua_kernel::cfun_wml_action(lua_State *L)
 /**
  * Registers a function for use as an action handler.
  */
-void game_lua_kernel::set_wml_action(std::string const &cmd, game_events::wml_action::handler h)
+void game_lua_kernel::set_wml_action(const std::string& cmd, game_events::wml_action::handler h)
 {
 	lua_State *L = mState;
 
@@ -4546,7 +4546,7 @@ static int cfun_wml_condition(lua_State *L)
 /**
  * Registers a function for use as a conditional handler.
  */
-void game_lua_kernel::set_wml_condition(std::string const &cmd, wml_conditional_handler h)
+void game_lua_kernel::set_wml_condition(const std::string& cmd, wml_conditional_handler h)
 {
 	lua_State *L = mState;
 
@@ -4566,7 +4566,7 @@ void game_lua_kernel::set_wml_condition(std::string const &cmd, wml_conditional_
  * @note @a cfg should be either volatile or long-lived since the Lua
  *       code may grab it for an arbitrary long time.
  */
-bool game_lua_kernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
+bool game_lua_kernel::run_wml_action(const std::string& cmd, vconfig const &cfg,
 	game_events::queued_event const &ev)
 {
 	lua_State *L = mState;
@@ -4588,7 +4588,7 @@ bool game_lua_kernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
  * @note @a cfg should be either volatile or long-lived since the Lua
  *       code may grab it for an arbitrary long time.
  */
-bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const &cfg)
+bool game_lua_kernel::run_wml_conditional(const std::string& cmd, vconfig const &cfg)
 {
 	lua_State *L = mState;
 

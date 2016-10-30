@@ -211,19 +211,19 @@ public:
 	void set_max(int o){
 		max_ = o;
 	}
-	void set_min( std::string const& s){
+	void set_min(const std::string& s){
 		std::istringstream i(s);
 		if (!(i >> min_)){
 			min_ = 0;
 		}
 	}
-	void set_max( std::string const & s){
+	void set_max(const std::string& s){
 		std::istringstream i(s);
 		if (!(i >> max_)){
 			max_ = 0;
 		}
 	}
-	void set_super(std::string const & s){
+	void set_super(const std::string& s){
 		super_= s;
 	}
 	void add_key(const class_key& new_key){

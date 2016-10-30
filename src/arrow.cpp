@@ -97,7 +97,7 @@ void arrow::reset()
 	notify_arrow_changed();
 }
 
-void arrow::set_color(std::string const& color)
+void arrow::set_color(const std::string& color)
 {
 	color_ = color;
 	if (valid_path(path_))
@@ -106,10 +106,10 @@ void arrow::set_color(std::string const& color)
 	}
 }
 
-std::string const arrow::STYLE_STANDARD = "standard";
-std::string const arrow::STYLE_HIGHLIGHTED = "highlighted";
-std::string const arrow::STYLE_FOCUS = "focus";
-std::string const arrow::STYLE_FOCUS_INVALID = "focus_invalid";
+const std::string arrow::STYLE_STANDARD = "standard";
+const std::string arrow::STYLE_HIGHLIGHTED = "highlighted";
+const std::string arrow::STYLE_FOCUS = "focus";
+const std::string arrow::STYLE_FOCUS_INVALID = "focus_invalid";
 
 void arrow::set_style(const std::string& style)
 {
@@ -164,9 +164,9 @@ void arrow::update_symbols()
 	symbols_map_.clear();
 	invalidate_arrow_path(path_);
 
-	std::string const mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
+	const std::string mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
-	std::string const dirname = "arrows/";
+	const std::string dirname = "arrows/";
 	std::string prefix = "";
 	std::string suffix = "";
 	std::string image_filename = "";

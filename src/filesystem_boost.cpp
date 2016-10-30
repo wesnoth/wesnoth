@@ -796,7 +796,7 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 	}
 }
 
-std::ostream *ostream_file(std::string const &fname, bool create_directory)
+std::ostream *ostream_file(const std::string& fname, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1

@@ -173,7 +173,7 @@ class game_lua_kernel : public lua_kernel_base
 
 	//private helpers
 	std::string synced_state();
-	void lua_chat(std::string const &caption, std::string const &msg);
+	void lua_chat(const std::string& caption, const std::string& msg);
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
@@ -200,14 +200,14 @@ public:
 	void load_game(const config& level);
 	bool run_event(game_events::queued_event const &);
 	void push_builtin_effect();
-	void set_wml_action(std::string const &, game_events::wml_action::handler);
-	void set_wml_condition(std::string const &, bool(*)(const vconfig&));
-	bool run_wml_action(std::string const &, vconfig const &,
+	void set_wml_action(const std::string&, game_events::wml_action::handler);
+	void set_wml_condition(const std::string&, bool(*)(const vconfig&));
+	bool run_wml_action(const std::string&, vconfig const &,
 		game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
 	bool run_filter(char const *name, map_location const &l);
 	bool run_filter(char const *name, int nArgs);
-	bool run_wml_conditional(std::string const &, vconfig const &);
+	bool run_wml_conditional(const std::string&, vconfig const &);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error");
 

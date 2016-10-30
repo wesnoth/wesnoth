@@ -113,7 +113,7 @@ log_domain::log_domain(char const *name)
 	domain_ = &*domains->insert(logd(name, 1)).first;
 }
 
-bool set_log_domain_severity(std::string const &name, int severity)
+bool set_log_domain_severity(const std::string& name, int severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
@@ -133,11 +133,11 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	}
 	return true;
 }
-bool set_log_domain_severity(std::string const &name, const logger &lg) {
+bool set_log_domain_severity(const std::string& name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());
 }
 
-bool get_log_domain_severity(std::string const &name, int &severity)
+bool get_log_domain_severity(const std::string& name, int &severity)
 {
 	domain_map::iterator it = domains->find(name);
 	if (it == domains->end())

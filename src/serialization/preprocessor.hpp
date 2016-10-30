@@ -33,9 +33,9 @@ typedef std::map< std::string, preproc_define > preproc_map;
 struct preproc_define
 {
 	preproc_define() : value(), arguments(), textdomain(), linenum(0), location() {}
-	explicit preproc_define(std::string const &val) : value(val), arguments(), textdomain(), linenum(0), location() {}
-	preproc_define(std::string const &val, std::vector< std::string > const &args,
-	               std::string const &domain, int line, std::string const &loc)
+	explicit preproc_define(const std::string& val) : value(val), arguments(), textdomain(), linenum(0), location() {}
+	preproc_define(const std::string& val, std::vector< std::string > const &args,
+	               const std::string& domain, int line, const std::string& loc)
 		: value(val), arguments(args), textdomain(domain), linenum(line), location(loc) {}
 	std::string value;
 	std::vector< std::string > arguments;
@@ -71,7 +71,7 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  *
  * @returns                       The resulting preprocessed file data.
  */
-std::istream *preprocess_file(std::string const &fname, preproc_map *defines = nullptr);
+std::istream *preprocess_file(const std::string& fname, preproc_map *defines = nullptr);
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 			bool write_cfg=false, bool write_plain_cfg=false, std::string target_directory="");

@@ -984,7 +984,7 @@ gui::button::TYPE display::string_to_button_type(std::string type)
 
 static const std::string& get_direction(size_t n)
 {
-	static std::string const dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
+	static const std::string dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
@@ -2770,7 +2770,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
  * If a config is not supplied, it will be generated via
  * reports::generate_report().
  */
-void display::refresh_report(std::string const &report_name, const config * new_cfg)
+void display::refresh_report(const std::string& report_name, const config * new_cfg)
 {
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {

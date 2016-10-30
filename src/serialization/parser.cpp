@@ -61,7 +61,7 @@ public:
 private:
 	void parse_element();
 	void parse_variable();
-	std::string lineno_string(utils::string_map &map, std::string const &lineno,
+	std::string lineno_string(utils::string_map &map, const std::string& lineno,
 		const std::string &error_string,
 		const std::string &hint_string = "",
 		const std::string &debug_string = "");
@@ -72,7 +72,7 @@ private:
 	abstract_validator *validator_;
 
 	struct element {
-		element(config *cfg, std::string const &name,
+		element(config *cfg, const std::string& name,
 			int start_line = 0, const std::string &file = "") :
 			cfg(cfg), name(name), start_line(start_line), file(file)
 		{}
@@ -343,11 +343,11 @@ void parser::parse_variable()
 /**
  * This function is crap. Don't use it on a string_map with prefixes.
  */
-std::string parser::lineno_string(utils::string_map &i18n_symbols,
-								  std::string const &lineno,
-								  std::string const &error_string,
-								  std::string const &hint_string,
-								  std::string const &debug_string)
+std::string parser::lineno_string(utils::string_map& i18n_symbols,
+								  const std::string& lineno,
+								  const std::string& error_string,
+								  const std::string& hint_string,
+								  const std::string& debug_string)
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
 	std::string result = error_string;
@@ -508,7 +508,7 @@ namespace { // helpers for write_key_val().
 		// Specialized visitors for things that go in quotes:
 		void operator()(boost::blank const &) const
 		{ /* treat blank values as nonexistent which fits better than treating them as empty strings.*/ }
-		void operator()(std::string const &s) const
+		void operator()(const std::string& s) const
 		{ indent(); out_ << key_ << '=' << '"' << escaped_string(s) << '"' << '\n'; }
 		void operator()(t_string const &s) const;
 

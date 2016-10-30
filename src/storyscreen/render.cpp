@@ -41,29 +41,29 @@ static lg::log_domain log_engine("engine");
 
 
 namespace {
-	int const storybox_padding = 10; // px
-	double const storyshadow_opacity = 0.5;
-	int const storyshadow_r = 0;
-	int const storyshadow_g = 0;
-	int const storyshadow_b = 0;
+	const int storybox_padding = 10; // px
+	const double storyshadow_opacity = 0.5;
+	const int storyshadow_r = 0;
+	const int storyshadow_g = 0;
+	const int storyshadow_b = 0;
 
-	int const titlebox_padding = 20; // px
-	int const titleshadow_padding = 5; // px
-	double const titleshadow_opacity = 0.5;
-	int const titleshadow_r = 0;
-	int const titleshadow_g = 0;
-	int const titleshadow_b = 0;
+	const int titlebox_padding = 20; // px
+	const int titleshadow_padding = 5; // px
+	const double titleshadow_opacity = 0.5;
+	const int titleshadow_r = 0;
+	const int titleshadow_g = 0;
+	const int titleshadow_b = 0;
 
-	int const titlebox_font_size = 20; // pt?
-	int const storybox_font_size = 17; // pt?
+	const int titlebox_font_size = 20; // pt?
+	const int storybox_font_size = 17; // pt?
 
-	Uint32 const titlebox_font_color = 0xFFFFFFFF;
-	Uint32 const storybox_font_color = 0xDDDDDDFF;
+	const Uint32 titlebox_font_color = 0xFFFFFFFF;
+	const Uint32 storybox_font_color = 0xDDDDDDFF;
 
 #ifndef LOW_MEM
 	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
-	std::string const storybox_top_border_path = "dialogs/translucent54-border-top.png";
-	std::string const storybox_bottom_border_path = "dialogs/translucent54-border-bottom.png";
+	const std::string storybox_top_border_path = "dialogs/translucent54-border-top.png";
+	const std::string storybox_bottom_border_path = "dialogs/translucent54-border-bottom.png";
 	void blur_area(CVideo& video, int y, int h)
 	{
 		SDL_Rect blur_rect = sdl::create_rect(0, y, screen_area().w, h);

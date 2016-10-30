@@ -217,7 +217,7 @@ public:
 
 private:
 	tmp_change_control::model& model_;
-	std::string const name_;
+	const std::string name_;
 	int side_number_;
 };
 

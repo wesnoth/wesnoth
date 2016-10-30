@@ -57,7 +57,7 @@ std::vector<std::string> quoted_split(const std::string& val, char c= ',', int f
  * Splits a (comma-)separated string into a set of pieces.
  * See split() for the meanings of the parameters.
  */
-inline std::set<std::string> set_split(std::string const &val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)
+inline std::set<std::string> set_split(const std::string& val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)
 {
 	std::vector<std::string> vec_split = split(val, c, flags);
 	return std::set< std::string >(vec_split.begin(), vec_split.end());
@@ -222,9 +222,9 @@ std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet
  */
 std::string indent(const std::string& string, size_t indent_size = 4);
 
-std::pair<int, int> parse_range(std::string const &str);
+std::pair<int, int> parse_range(const std::string& str);
 
-std::vector<std::pair<int, int>> parse_ranges(std::string const &str);
+std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
 
 int apply_modifier(const int number, const std::string &amount, const int minimum = 0);
 

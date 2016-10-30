@@ -122,7 +122,7 @@ language_list get_languages()
 	return known_languages;
 }
 
-static void wesnoth_setlocale(int category, std::string const &slocale,
+static void wesnoth_setlocale(int category, const std::string& slocale,
 	std::vector<std::string> const *alternates)
 {
 	std::string locale = slocale;

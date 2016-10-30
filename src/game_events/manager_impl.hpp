@@ -60,7 +60,7 @@ namespace game_events {
 		/// Adds an event handler.
 		void add_event_handler(const config & cfg, manager & man, bool is_menu_item=false);
 		/// Removes an event handler, identified by its ID.
-		void remove_event_handler(std::string const & id);
+		void remove_event_handler(const std::string& id);
 		/// Gets an event handler, identified by its ID.
 		const handler_ptr get_event_handler_by_id(const std::string & id);
 

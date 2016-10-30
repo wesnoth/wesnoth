@@ -762,7 +762,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 			throw chunk_load_exception();
 		}
 		temp_chunk.group = group;
-		std::string const &filename = filesystem::get_binary_file_location("sounds", file);
+		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
 
 		if (!filename.empty()) {
 			SDL_RWops *rwops = filesystem::load_RWops(filename);

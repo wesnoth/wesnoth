@@ -97,7 +97,7 @@ SDL_Color create_color(const unsigned char red
 	return result;
 }
 
-SDL_Keycode sdl_keysym_from_name(std::string const &keyname)
+SDL_Keycode sdl_keysym_from_name(const std::string& keyname)
 {
 	return SDL_GetKeyFromName(keyname.c_str());
 }

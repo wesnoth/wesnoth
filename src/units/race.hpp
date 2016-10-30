@@ -68,7 +68,7 @@ private:
 };
 
 unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=unit_race::MALE);
-std::string const& gender_string(unit_race::GENDER gender);
+const std::string& gender_string(unit_race::GENDER gender);
 
 typedef std::map<std::string,unit_race> race_map;
 

@@ -143,7 +143,7 @@ namespace game_events {
 	 * Removes an event handler, identified by its ID.
 	 * Events with empty IDs cannot be removed.
 	 */
-	void t_event_handlers::remove_event_handler(std::string const & id)
+	void t_event_handlers::remove_event_handler(const std::string& id)
 	{
 		if ( id.empty() )
 			return;

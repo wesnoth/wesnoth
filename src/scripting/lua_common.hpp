@@ -170,7 +170,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 /**
  * Displays a message in the chat window.
  */
-void chat_message(std::string const &caption, std::string const &msg);
+void chat_message(const std::string& caption, const std::string& msg);
 
 /**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.

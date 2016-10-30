@@ -70,7 +70,7 @@ void text_surface::bidi_cvt()
 }
 #endif
 
-text_surface::text_surface(std::string const &str, int size,
+text_surface::text_surface(const std::string& str, int size,
 		SDL_Color color, int style)
 	: hash_(0)
 	, font_size_(size)
@@ -109,7 +109,7 @@ text_surface::text_surface(int size, SDL_Color color, int style) :
 {
 }
 
-void text_surface::set_text(std::string const &str)
+void text_surface::set_text(const std::string& str)
 {
 	initialized_ = false;
 	w_ = -1;

@@ -297,7 +297,7 @@ namespace {
 		T operator()(int i)                const { return static_cast<T>(i); }
 		T operator()(unsigned long long u) const { return static_cast<T>(u); }
 		T operator()(double d)             const { return static_cast<T>(d); }
-		T operator()(std::string const &s) const { return lexical_cast_default<T>(s, def_); }
+		T operator()(const std::string& s) const { return lexical_cast_default<T>(s, def_); }
 		T operator()(t_string const &)     const { return def_; }
 
 	private:
@@ -346,7 +346,7 @@ public:
 	std::string operator()(int i)                const { return lexical_cast<std::string>(i); }
 	std::string operator()(unsigned long long u) const { return lexical_cast<std::string>(u); }
 	std::string operator()(double d)             const { return lexical_cast<std::string>(d); }
-	std::string operator()(std::string const &s) const { return s; }
+	std::string operator()(const std::string& s) const { return s; }
 	std::string operator()(t_string const &s)    const { return s.str(); }
 };
 

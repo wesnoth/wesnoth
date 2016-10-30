@@ -411,7 +411,7 @@ public:
 
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(std::string const &report_name, const config * new_cfg=nullptr);
+	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
 
 	void draw_minimap_units();
 

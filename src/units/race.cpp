@@ -128,7 +128,7 @@ const config::const_child_itors &unit_race::additional_topics() const
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
 
-std::string const& gender_string(unit_race::GENDER gender) {
+const std::string& gender_string(unit_race::GENDER gender) {
 	switch(gender) {
 	case unit_race::FEMALE:
 		return unit_race::s_female;

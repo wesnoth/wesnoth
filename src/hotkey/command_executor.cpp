@@ -453,7 +453,7 @@ std::vector<config> command_executor::get_menu_images(display& disp, const std::
 	std::vector<config> result;
 
 	for(size_t i = 0; i < items.size(); ++i) {
-		std::string const& item = items[i];
+		const std::string& item = items[i];
 		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item);
 		result.emplace_back();
 
