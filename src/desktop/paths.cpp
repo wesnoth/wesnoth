@@ -109,9 +109,16 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 
 	for(const auto& mnt : candidates) {
 		bsys::error_code e;
-		if(bfs::is_directory(mnt, e) && !bfs::is_empty(mnt, e) && !e) {
-			DBG_DU << "enumerate_mount_parents(): " << mnt << " appears to be a non-empty dir\n";
-			res.push_back({mnt, "", mnt});
+		try {
+			if(bfs::is_directory(mnt, e) && !bfs::is_empty(mnt, e) && !e) {
+				DBG_DU << "enumerate_mount_parents(): " << mnt << " appears to be a non-empty dir\n";
+				res.push_back({mnt, "", mnt});
+			}
+		}
+		catch(...) {
+			//bool is_empty(const path& p, system::error_code& ec) might throw.
+			//For example if you have no permission on that directory. Don't list the file in that case.
+			DBG_DU << "caught exception in enumerate_storage_devices\n";
 		}
 	}
 
