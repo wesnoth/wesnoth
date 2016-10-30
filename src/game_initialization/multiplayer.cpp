@@ -428,6 +428,11 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 		if(preferences::new_lobby()) {
 
 			gui2::tmp_join_game dlg(state, li, *wesnothd_connection, true, observe);
+
+			if(!dlg.fetch_game_config(video)) {
+				return;
+			}
+
 			dlg.show(video);
 
 			if(dlg.get_retval() == gui2::twindow::OK) {

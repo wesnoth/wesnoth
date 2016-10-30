@@ -24,6 +24,7 @@
 #include "mp_game_settings.hpp"
 
 class config;
+class CVideo;
 
 namespace gui2
 {
@@ -38,12 +39,16 @@ public:
 
 	~tmp_join_game();
 
+	/**
+	 * FIXME: We shouldn't need to pass a CVideo argument here. Optimally, this would be done in
+	 * post_build or pre_show, but there's a bug where the Faction Select dialog does not display
+	 * there. This should be changed to either of those functions once that's fixed.
+	 */
+	bool fetch_game_config(CVideo& video);
+
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	/** Inherited from tdialog. */
-	void post_build(twindow& window);
 
 	/** Inherited from tdialog. */
 	void pre_show(twindow& window);

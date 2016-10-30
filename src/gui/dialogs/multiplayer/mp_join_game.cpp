@@ -44,6 +44,7 @@
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
+#include "video.hpp"
 #include "wesnothd_connection.hpp"
 
 namespace gui2
@@ -75,7 +76,7 @@ tmp_join_game::~tmp_join_game()
 /*
  * Fetch the selected game's config from the server and prompts an initial faction selection.
  */
-void tmp_join_game::post_build(twindow& window)
+bool tmp_join_game::fetch_game_config(CVideo& video)
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
@@ -86,16 +87,16 @@ void tmp_join_game::post_build(twindow& window)
 	while(!has_scenario_and_controllers) {
 		config revc;
 		const bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
-			window.video(), "download level data", revc, wesnothd_connection_);
+			video, "download level data", revc, wesnothd_connection_);
 
 		if(!data_res) {
-			window.set_retval(twindow::CANCEL);
+			return false;
 		}
 
 		mp::check_response(data_res, revc);
 
 		if(revc.child("leave_game")) {
-			window.set_retval(twindow::CANCEL);
+			return false;
 		} else if(config& next_scenario = revc.child("next_scenario")) {
 			level_.swap(next_scenario);
 		} else if(revc.has_attribute("version")) {
@@ -116,7 +117,7 @@ void tmp_join_game::post_build(twindow& window)
 	}
 
 	if(level_["started"].to_bool()) {
-		window.set_retval(twindow::OK);
+		return true;
 	}
 
 	if(first_scenario_) {
@@ -131,7 +132,7 @@ void tmp_join_game::post_build(twindow& window)
 
 	// If we're just an observer, we don't need to find an appropriate side and set faction selection
 	if(observe_game_) {
-		return;
+		return true;
 	}
 
 	// Search for an appropriate vacant slot. If a description is set (i.e. we're loading from a saved game),
@@ -162,14 +163,14 @@ void tmp_join_game::post_build(twindow& window)
 
 		if(side["player_id"] == preferences::login()) {
 			// We already own a side in this game
-			return;
+			return true;
 		}
 
 		++nb_sides;
 	}
 
 	if(!side_choice) {
-		window.set_retval(twindow::CANCEL);
+		return false;
 	}
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
@@ -184,8 +185,7 @@ void tmp_join_game::post_build(twindow& window)
 
 		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
 		if(possible_sides.empty()) {
-			// TODO: is this set_retval needed?
-			window.set_retval(twindow::CANCEL);
+			return false;
 
 			throw config::error(_("No multiplayer sides found"));
 		}
@@ -204,13 +204,11 @@ void tmp_join_game::post_build(twindow& window)
 
 		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game);
 
-		// FIXME: this dialog doesn't show!
 		gui2::tfaction_select dlg(flg, color, side_num);
-		dlg.show(window.video());
+		dlg.show(video);
 
 		if(dlg.get_retval() != gui2::twindow::OK) {
-			window.set_retval(twindow::CANCEL);
-			return;
+			return false;
 		}
 
 		config faction;
@@ -223,6 +221,8 @@ void tmp_join_game::post_build(twindow& window)
 
 		wesnothd_connection_.send_data(faction);
 	}
+
+	return true;
 }
 
 static std::string generate_user_description(const config& side)
