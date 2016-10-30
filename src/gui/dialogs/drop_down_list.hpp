@@ -31,6 +31,7 @@ public:
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
 	{
+		set_restore(true);
 	}
 	int selected_item() const { return selected_item_; }
 private:
