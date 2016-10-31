@@ -1,7 +1,7 @@
 ECLIPSE_LOCATION=
 JAVADOC_BINARY=javadoc
 JAVADOC_DIR=javadoc
-JAVADOC_FLAGS=-d $(JAVADOC_DIR) -sourcepath 'org.wesnoth/src;org.wesnoth/src-gen;org.wesnoth.ui/src;org.wesnoth.ui/src-gen' -classpath '.;$(ECLIPSE_LOCATION)/plugins/*' -public -source 1.6 -use -version -author -splitindex -link http://java.sun.com/javase/6/docs/api/ -link http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/ -link ftp://ftp.ulakbim.gov.tr/eclipse/eclipseMirror/modeling/tmf/xtext/javadoc/2.0.0/ -subpackages org.wesnoth
+JAVADOC_FLAGS=-d $(JAVADOC_DIR) -sourcepath 'org.wesnoth/src;org.wesnoth/src-gen;org.wesnoth.ui/src;org.wesnoth.ui/src-gen' -classpath '.;$(ECLIPSE_LOCATION)/plugins/*' -public -source 1.6 -use -version -author -splitindex -link http://java.sun.com/javase/6/docs/api/ -link http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/ -link http://download.eclipse.org/modeling/tmf/xtext/javadoc/2.0.0/ -subpackages org.wesnoth
 
 .PHONY: manual javadoc build
 manual:
