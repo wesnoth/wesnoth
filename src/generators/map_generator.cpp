@@ -34,6 +34,10 @@ config map_generator::create_scenario(boost::optional<uint32_t> randomseed)
 	res["map_data"] = create_map(randomseed);
 	return res;
 }
+std::string map_generator::create_map(boost::optional<uint32_t> randomseed)
+{
+	return create_scenario(randomseed)["map_data"];
+}
 /**
 	by default we don't allow user configs.
 */

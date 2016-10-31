@@ -322,10 +322,13 @@ public:
 		ttree_view_node* selected = dynamic_cast<ttree_view&>(tree).selected_item();
 		callbacks[selected->describe_path()](*selected);
 
+		// We recursively fold, but non-recursively unfold.
+		// This is because only one node on a level should be open at any given time.
+		// Furthermore, there's no need to remember that a subnode was open once the parent is closed.
 		if(!selected->is_root_node()) {
 			for(auto& node : selected->parent_node().children()) {
 				if(&node != selected) {
-					node.fold();
+					node.fold(true);
 				}
 			}
 
