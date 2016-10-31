@@ -186,8 +186,6 @@ bool tmp_join_game::fetch_game_config(CVideo& video)
 		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
 		if(possible_sides.empty()) {
 			return false;
-
-			throw config::error(_("No multiplayer sides found"));
 		}
 
 		const std::string color = (*side_choice)["color"].str();
