@@ -39,6 +39,7 @@ public class AddonManagerPreferencePage extends AbstractPreferencePage
     public final static Map< String, String > ADDON_SERVER_PORTS       = new HashMap< String, String >( );
 
     static {
+        ADDON_SERVER_PORTS.put( "15008", "1.13.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15007", "1.12.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15006", "1.11.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15002", "1.10.x" ); //$NON-NLS-1$ //$NON-NLS-2$
