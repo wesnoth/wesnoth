@@ -101,6 +101,8 @@ Version 1.13.5+dev:
        only used if any [option] appear
      * Added value= to [option]: if specified, gives value to store in variable
        instead of index number, only used if variable= appears in [message]
+     * New second_unit, second_image, second_mirror attributes for showing two
+       portraits on a single message.
    * New attributes for [role]:
      * search_recall_list=yes|no|only(default yes) controls where to look
      * reassign=yes|no(default yes) if no, check for a unit and do not assign to
@@ -137,7 +139,9 @@ Version 1.13.5+dev:
    * Fixed filter returning invalid locations if invalid locations were given
      in a variable that was used with find_in=
    * Moves cave map generator to lua. scenario_generation=cave is now deprecated and
-     will be removed soon.
+     will be removed soon. The Lua version has feature parity with the old one, but
+     the syntax is a little different. It supports both map_generation and
+     scenario_generation.
    * Tunnel functionality was expanded and the default behavior was altered in
      order to make moves through tunnels consistent with all other moves:
      * Vison through tunnels is now possible and enabled by default. It can be
@@ -196,6 +200,8 @@ Version 1.13.5+dev:
      full attack analysis.
    * Aspect fetcher functions (eg ai.get_aggression()) are now deprecated in favour
      of the ai.aspects table.
+   * The location_set iter and stable_iter functions can now be called with no argument.
+     In this case, they return an iterator suitable for use in a for loop.
  * Networking
    * Ported campaignd to use boost.asio instead of SDL_net.
    * Removed unit tests for old networking stack. This was the last part that
