@@ -869,6 +869,11 @@ void terrain_builder::add_rotated_rules(building_ruleset &rules, building_rule &
 			   and remove it if invalid. But since the ratio is so
 			   low, the speedup is not worth the extra multiset
 			   manipulations. */
+
+			if (rot.at(angle) == "skip") {
+				continue;
+			}
+
 			building_rule rule = tpl;
 			rotate_rule(rule, angle, rot);
 			add_rule(rules, rule);

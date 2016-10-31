@@ -150,6 +150,8 @@ Version 1.13.5+dev:
    * [set_variable] now supports abs= (absolute value), power= (raise to
      power) and root= (extracts root, 'square' is the only value currently
      supported) keys
+   * Individual [terrain_graphics] rotations can now be skipped entirely by
+     using "skip" in the rotations= list.
  * Lua API:
    * Upgrade to Lua 5.3.3+
      Consult http://www.lua.org/ for a full change list and updated documenation.
