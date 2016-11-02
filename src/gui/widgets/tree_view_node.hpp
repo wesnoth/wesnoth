@@ -37,7 +37,14 @@ class ttree_view_node : public twidget
 	friend class ttree_view;
 
 public:
-	typedef implementation::ttree_node tnode_definition;
+	using tnode_definition = implementation::ttree_node;
+	using node_children_vector = boost::ptr_vector<ttree_view_node>;
+
+	bool operator==(const ttree_view_node& node)
+	{
+		return &node == this;
+	}
+
 	ttree_view_node(
 			const std::string& id,
 			const std::vector<tnode_definition>& node_definitions,
@@ -141,7 +148,7 @@ public:
 		return new gui2::iterator::ttree_node(*this, children_);
 	}
 
-	boost::ptr_vector<ttree_view_node>& children()
+	node_children_vector& children()
 	{
 		return children_;
 	}
@@ -266,7 +273,7 @@ private:
 	 *
 	 * We want the returned child nodes to remain stable so store pointers.
 	 */
-	boost::ptr_vector<ttree_view_node> children_;
+	node_children_vector children_;
 
 	/**
 	 * The node definitions known to use.
