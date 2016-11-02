@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "filesystem.hpp"
+#include "wesconfig.h"
 
 #include "config.hpp"
 #include "game_config.hpp"
