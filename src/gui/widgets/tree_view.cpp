@@ -62,9 +62,10 @@ ttree_view::~ttree_view()
 }
 ttree_view_node& ttree_view::add_node(
 		const std::string& id,
-		const std::map<std::string /* widget id */, string_map>& data)
+		const std::map<std::string /* widget id */, string_map>& data,
+		const int index)
 {
-	return get_root_node().add_child(id, data);
+	return get_root_node().add_child(id, data, index);
 }
 
 int ttree_view::remove_node(ttree_view_node* node)

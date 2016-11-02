@@ -57,7 +57,8 @@ public:
 
 	ttree_view_node&
 	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data);
+			 const std::map<std::string /* widget id */, string_map>& data,
+			 const int index = -1);
 
 	int remove_node(ttree_view_node* tree_view_node);
 
