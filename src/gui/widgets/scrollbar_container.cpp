@@ -661,7 +661,9 @@ bool tscrollbar_container::content_resize_width(const int width_modification, co
 	DBG_GUI_L << LOG_HEADER << " current width " << content_grid_->get_width()
 			  << " wanted width " << new_width;
 
-	assert(new_width >= 0);
+	if(new_width < 0) {
+		return false;
+	}
 
 	if(static_cast<unsigned>(new_width) <= content_->get_width()) {
 		DBG_GUI_L << " width fits in container, test height.\n";
@@ -711,7 +713,9 @@ bool tscrollbar_container::content_resize_height(const int height_modification, 
 	DBG_GUI_L << LOG_HEADER << " current height " << content_grid_->get_height()
 			  << " wanted height " << new_height;
 
-	assert(new_height >= 0);
+	if(new_height < 0) {
+		return false;
+	}
 
 	if(static_cast<unsigned>(new_height) <= content_->get_height()) {
 		DBG_GUI_L << " height in container, resize allowed.\n";

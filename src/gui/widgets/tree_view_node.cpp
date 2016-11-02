@@ -152,15 +152,20 @@ ttree_view_node& ttree_view_node::add_child(
 	}
 
 	assert(tree_view().content_grid());
-	const int current_width = tree_view().content_grid()->get_width();
+	const tpoint current_size = tree_view().content_grid()->get_size();
 
 	// Calculate width modification.
+	// This increases tree width if the width of the new node is greater than the current width.
 	tpoint best_size = itor->get_best_size();
 	best_size.x += get_indentation_level() * tree_view().indentation_step_size_;
-	const unsigned width_modification = best_size.x > current_width ? best_size.x - current_width : 0;
+	const int width_modification = best_size.x > current_size.x ? best_size.x - current_size.x : 0;
 
 	// Calculate height modification.
-	const int height_modification = best_size.y;
+	// For this, we only increase height if the best size of the tree (that is, the size with the new node)
+	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
+	// enough visual space.
+	const tpoint tree_best_size = tree_view().get_best_size();
+	const int height_modification = tree_best_size.y > current_size.y ? tree_best_size.y - current_size.y : 0;
 	assert(height_modification >= 0);
 
 	// Request new size.
