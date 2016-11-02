@@ -508,6 +508,11 @@ list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
 string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
 set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
 
+# replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
+# this matches the flags of scons' debug build
+MESSAGE("Replacing flags used for Debug build")
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
 
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
