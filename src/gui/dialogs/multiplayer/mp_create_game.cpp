@@ -464,7 +464,7 @@ void tmp_create_game::on_game_select(twindow& window)
 	era_combo.set_active(can_select_era);
 
 	// Custom options
-	options_manager_->update_options_list();
+	options_manager_->update_game_options();
 
 	// Game settings
 	update_map_settings(window);
@@ -486,7 +486,7 @@ void tmp_create_game::on_mod_toggle(const int index)
 	create_engine_.set_current_mod_index(index);
 	create_engine_.toggle_current_mod();
 
-	options_manager_->update_options_list();
+	options_manager_->update_mod_options();
 }
 
 void tmp_create_game::on_era_select(twindow& window)
@@ -495,7 +495,7 @@ void tmp_create_game::on_era_select(twindow& window)
 
 	find_widget<tmenu_button>(&window, "eras", false).set_tooltip(create_engine_.current_extra(ng::create_engine::ERA).description);
 
-	options_manager_->update_options_list();
+	options_manager_->update_era_options();
 }
 
 void tmp_create_game::on_random_faction_mode_select(twindow& window)

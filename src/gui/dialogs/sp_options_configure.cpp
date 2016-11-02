@@ -36,7 +36,7 @@ tsp_options_configure::tsp_options_configure(ng::create_engine& create_engine)
 void tsp_options_configure::pre_show(twindow& window)
 {
 	options_manager_.reset(new tmp_options_helper(window, create_engine_));
-	options_manager_->update_options_list();
+	options_manager_->update_all_options();
 }
 
 void tsp_options_configure::post_show(twindow& window)

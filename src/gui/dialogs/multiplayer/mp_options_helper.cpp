@@ -30,11 +30,15 @@
 namespace gui2 {
 
 tmp_options_helper::tmp_options_helper(twindow& window, ng::create_engine& create_engine)
-	: options_tree_(find_widget<ttree_view>(&window, "custom_options", false))
+	: create_engine_(create_engine)
+	, options_tree_(find_widget<ttree_view>(&window, "custom_options", false))
 	, no_options_notice_(find_widget<tcontrol>(&window, "no_options_notice", false))
+	, last_game_pos_(-1)
+	, last_era_pos_(-1)
+	, last_mod_pos_(-1)
+	, node_map_()
 	, visible_options_()
 	, options_data_()
-	, create_engine_(create_engine)
 {
 	for(const auto& c : preferences::options().all_children_range()) {
 		for(const auto& saved_option : c.cfg.child_range("option")) {
@@ -42,24 +46,94 @@ tmp_options_helper::tmp_options_helper(twindow& window, ng::create_engine& creat
 		}
 	}
 
-	update_options_list();
+	update_all_options();
 }
 
-void tmp_options_helper::update_options_list()
+void tmp_options_helper::update_all_options()
 {
 	visible_options_.clear();
-	options_tree_.clear();
+	node_map_.clear();
 
-	display_custom_options(
-		create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer",
-		create_engine_.current_level().data());
+	update_game_options();
+	update_era_options();
+	update_mod_options();
+}
 
-	display_custom_options("era", create_engine_.curent_era_cfg());
+void tmp_options_helper::update_game_options()
+{
+	const std::string type = create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer";
+
+	int pos = remove_nodes_for_type(type, last_game_pos_);
+	pos = std::max(pos, last_game_pos_);
+
+	display_custom_options(type, pos, create_engine_.current_level().data());
+
+	update_status_label();
+}
+
+void tmp_options_helper::update_era_options()
+{
+	static const std::string type = "era";
+
+	int pos = remove_nodes_for_type(type, last_era_pos_);
+	pos = std::max(pos, last_era_pos_);
+
+	display_custom_options(type, pos, create_engine_.curent_era_cfg());
+
+	update_status_label();
+}
+
+void tmp_options_helper::update_mod_options()
+{
+	static const std::string type = "modification";
+
+	int pos = remove_nodes_for_type(type, last_mod_pos_);
+	pos = std::max(pos, last_mod_pos_);
 
 	for(const auto& mod : create_engine_.active_mods_data()) {
-		display_custom_options("modification", *mod->cfg);
+		display_custom_options(type, pos, *mod->cfg);
 	}
 
+	update_status_label();
+}
+
+int tmp_options_helper::remove_nodes_for_type(const std::string& type, int& saved_pos)
+{
+	// Remove all visible options of the specified source type
+	if(!visible_options_.empty()) {
+		auto vo_iter = std::remove_if(visible_options_.begin(), visible_options_.end(), [&type](const option_source& source) {
+			return source.level_type == type;
+		});
+
+		visible_options_.erase(vo_iter, visible_options_.end());
+	}
+
+	// Get the node vector for this specific source type
+	node_vector* type_node_vector;
+
+	auto node_map_iter = node_map_.end();
+	std::tie(node_map_iter, std::ignore) = node_map_.emplace(type, node_vector());
+
+	type_node_vector = &node_map_iter->second;
+
+	// The position to insert a new node of this type. If no nodes exist yet, this default value is
+	// accepted by ttree_view_node as meaning at-end.
+	int position = -1;
+
+	// Remove each node in reverse, so that in the end we have the position of the first node removed
+	if(!type_node_vector->empty()) {
+		for(auto i = type_node_vector->rbegin(); i != type_node_vector->rend(); i++) {
+			saved_pos = position = options_tree_.remove_node(*i);
+		}
+
+		type_node_vector->clear();
+	}
+
+	return position;
+}
+
+void tmp_options_helper::update_status_label()
+{
 	// No custom options, display a message
 	no_options_notice_.set_visible(options_tree_.empty() ? twindow::tvisible::visible : twindow::tvisible::invisible);
 }
@@ -84,7 +158,14 @@ void tmp_options_helper::update_options_data_map_menu_button(tmenu_button* widge
 void tmp_options_helper::reset_options_data(const option_source& source, bool& handled, bool& halt)
 {
 	options_data_[source.id].clear();
-	update_options_list();
+
+	if(source.level_type == "campaign" || source.level_type == "multiplayer") {
+		update_game_options();
+	} else if(source.level_type == "era") {
+		update_era_options();
+	} else if(source.level_type == "modification") {
+		update_mod_options();
+	}
 
 	handled = true;
 	halt = true;
@@ -112,7 +193,7 @@ std::pair<T*, config::attribute_value> tmp_options_helper::add_node_and_get_widg
 	return {widget, option_config[widget_id]};
 }
 
-void tmp_options_helper::display_custom_options(std::string&& type, const config& cfg)
+void tmp_options_helper::display_custom_options(const std::string& type, int node_position, const config& cfg)
 {
 	// Needed since some compilers don't like passing just {}
 	static const std::map<std::string, string_map> empty_map;
@@ -126,6 +207,9 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 
 	visible_options_.push_back({type, cfg["id"]});
 
+	// Get the node vector for this specific source type
+	node_vector& type_node_vector = node_map_[type];
+
 	for(const auto& options : cfg.child_range("options")) {
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -133,7 +217,8 @@ void tmp_options_helper::display_custom_options(std::string&& type, const config
 		item["label"] = cfg["name"];
 		data.emplace("tree_view_node_label", item);
 
-		ttree_view_node& option_node = options_tree_.add_node("option_node", data);
+		ttree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
+		type_node_vector.push_back(&option_node);
 
 		for(const config::any_child opt : options.all_children_range()) {
 			data.clear();

@@ -34,7 +34,11 @@ class tmp_options_helper
 public:
 	tmp_options_helper(twindow& window, ng::create_engine& create_engine);
 
-	void update_options_list();
+	void update_all_options();
+
+	void update_game_options();
+	void update_era_options();
+	void update_mod_options();
 
 	config get_options_config();
 
@@ -47,13 +51,15 @@ private:
 		}
 	};
 
+	int remove_nodes_for_type(const std::string& type, int& saved_pos);
+
 	using data_map = std::map<std::string, string_map>;
 
 	template <typename T>
 	std::pair<T*, config::attribute_value> add_node_and_get_widget(
 		ttree_view_node& option_node, const std::string& id, data_map& data, const config& cfg);
 
-	void display_custom_options(std::string&& type, const config& data);
+	void display_custom_options(const std::string& type, int node_position, const config& data);
 
 	template<typename T>
 	void update_options_data_map(T* widget, const option_source& source);
@@ -64,13 +70,22 @@ private:
 
 	void reset_options_data(const option_source& source, bool& handled, bool& halt);
 
+	void update_status_label();
+
+	ng::create_engine& create_engine_;
+
 	ttree_view& options_tree_;
 	tcontrol& no_options_notice_;
 
+	int last_game_pos_;
+	int last_era_pos_;
+	int last_mod_pos_;
+
+	using node_vector = std::vector<ttree_view_node*>;
+	std::map<std::string, node_vector> node_map_;
+
 	std::vector<option_source> visible_options_;
 	std::map<std::string, config> options_data_;
-
-	ng::create_engine& create_engine_;
 
 public:
 	const std::vector<option_source>& get_visible_options() const
