@@ -59,7 +59,7 @@ public:
 	add_node(const std::string& id,
 			 const std::map<std::string /* widget id */, string_map>& data);
 
-	void remove_node(ttree_view_node* tree_view_node);
+	int remove_node(ttree_view_node* tree_view_node);
 
 	void clear();
 

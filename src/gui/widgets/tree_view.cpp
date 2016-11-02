@@ -67,30 +67,23 @@ ttree_view_node& ttree_view::add_node(
 	return get_root_node().add_child(id, data);
 }
 
-void ttree_view::remove_node(ttree_view_node* node)
+int ttree_view::remove_node(ttree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
-	const tpoint node_size = node->get_size();
 
-	boost::ptr_vector<ttree_view_node>::iterator itor
-			= node->parent_node_->children_.begin();
+	ttree_view_node::node_children_vector& parent_children = node->parent_node_->children_;
 
-	for(; itor != node->parent_node_->children_.end(); ++itor) {
-		if(&*itor == node) {
-			break;
-		}
+	auto itor = std::find(parent_children.begin(), parent_children.end(), *node);
+	assert(itor != parent_children.end());
+
+	parent_children.erase(itor);
+
+	if(get_size() != tpoint()) {
+		// Don't shrink the width, need to think about a good algorithm to do so.
+		resize_content(0, -node->get_size().y);
 	}
 
-	assert(itor != node->parent_node_->children_.end());
-
-	node->parent_node_->children_.erase(itor);
-
-	if(get_size() == tpoint()) {
-		return;
-	}
-
-	// Don't shrink the width, need to think about a good algorithm to do so.
-	resize_content(0, -node_size.y);
+	return itor - parent_children.begin();
 }
 
 void ttree_view::clear()
