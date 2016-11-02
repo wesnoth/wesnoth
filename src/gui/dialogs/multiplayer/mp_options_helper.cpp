@@ -100,13 +100,11 @@ void tmp_options_helper::update_mod_options()
 int tmp_options_helper::remove_nodes_for_type(const std::string& type, int& saved_pos)
 {
 	// Remove all visible options of the specified source type
-	if(!visible_options_.empty()) {
-		auto vo_iter = std::remove_if(visible_options_.begin(), visible_options_.end(), [&type](const option_source& source) {
-			return source.level_type == type;
-		});
+	auto vo_iter = std::remove_if(visible_options_.begin(), visible_options_.end(), [&type](const option_source& source) {
+		return source.level_type == type;
+	});
 
-		visible_options_.erase(vo_iter, visible_options_.end());
-	}
+	visible_options_.erase(vo_iter, visible_options_.end());
 
 	// Get the node vector for this specific source type
 	node_vector* type_node_vector;
@@ -121,13 +119,11 @@ int tmp_options_helper::remove_nodes_for_type(const std::string& type, int& save
 	int position = -1;
 
 	// Remove each node in reverse, so that in the end we have the position of the first node removed
-	if(!type_node_vector->empty()) {
-		for(auto i = type_node_vector->rbegin(); i != type_node_vector->rend(); i++) {
-			saved_pos = position = options_tree_.remove_node(*i);
-		}
-
-		type_node_vector->clear();
+	for(auto i = type_node_vector->rbegin(); i != type_node_vector->rend(); i++) {
+		saved_pos = position = options_tree_.remove_node(*i);
 	}
+
+	type_node_vector->clear();
 
 	return position;
 }
