@@ -42,7 +42,7 @@ friend void sim_gamestate_changed(action_result *result, bool gamestate_changed)
 
 public:
 
-	enum tresult {
+	enum result {
 		AI_ACTION_SUCCESS = 0,
 		AI_ACTION_STARTED = 1,
 		AI_ACTION_FAILURE = -1
@@ -137,7 +137,7 @@ public:
 		double aggression,
 		const unit_advancements_aspect& advancements = unit_advancements_aspect());
 
-	enum tresult {
+	enum result {
 		E_EMPTY_ATTACKER = 1001,
 		E_EMPTY_DEFENDER = 1002,
 		E_INCAPACITATED_ATTACKER = 1003,
@@ -172,7 +172,7 @@ public:
 		bool remove_movement,
 		bool unreach_is_ok);
 
-	enum tresult {
+	enum result {
 		E_EMPTY_MOVE = 2001,
 		E_NO_UNIT = 2002,
 		E_NOT_OWN_UNIT = 2003,
@@ -208,7 +208,7 @@ class recall_result : public action_result {
 public:
 	recall_result (side_number side, const std::string &unit_id, const map_location& where, const map_location& from);
 
-	enum tresult {
+	enum result {
 		E_NOT_AVAILABLE_FOR_RECALLING = 6001,
 		E_NO_GOLD = 6003,
 		E_NO_LEADER = 6004,
@@ -239,7 +239,7 @@ class recruit_result : public action_result {
 public:
 	recruit_result( side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
 
-	enum tresult {
+	enum result {
 		E_NOT_AVAILABLE_FOR_RECRUITING = 3001,
 		E_UNKNOWN_OR_DUMMY_UNIT_TYPE = 3002,
 		E_NO_GOLD = 3003,
@@ -275,7 +275,7 @@ public:
 		bool remove_movement,
 		bool remove_attacks );
 
-	enum tresult {
+	enum result {
 		E_NO_UNIT = 4002,
 		E_NOT_OWN_UNIT = 4003,
 		E_INCAPACITATED_UNIT = 4004
