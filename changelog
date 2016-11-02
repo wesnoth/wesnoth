@@ -204,6 +204,8 @@ Version 1.13.5+dev:
      of the ai.aspects table.
    * The location_set iter and stable_iter functions can now be called with no argument.
      In this case, they return an iterator suitable for use in a for loop.
+   * New wesnoth.wml_matches_filter function takes a WML table and a WML filter and tests
+     if the table matches the filter. The filter syntax is as with [filter_wml].
  * Networking
    * Ported campaignd to use boost.asio instead of SDL_net.
    * Removed unit tests for old networking stack. This was the last part that

@@ -244,6 +244,14 @@ static int intf_random(lua_State *L)
 	}
 }
 
+static int intf_wml_matches_filter(lua_State* L)
+{
+	config cfg = luaW_checkconfig(L, 1);
+	config filter = luaW_checkconfig(L, 2);
+	lua_pushboolean(L, cfg.matches(filter));
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -364,6 +372,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
 		{ "random",                   &intf_random                   },
+		{ "wml_matches_filter",       &intf_wml_matches_filter       },
 		{ nullptr, nullptr }
 	};
 
