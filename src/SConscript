@@ -54,7 +54,7 @@ if env["PLATFORM"] != "win32":
     if env['version_suffix'] and not env['prefsdir']:
         filesystem_env['prefsdir'] = ".wesnoth$version_suffix"
     if filesystem_env['prefsdir']:
-        filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
+        filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR=\\\"$prefsdir\\\"")
 
 if env['default_prefs_file']:
     client_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
