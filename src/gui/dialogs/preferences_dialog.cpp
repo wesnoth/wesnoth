@@ -74,10 +74,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg, const PREFEREN
 	: resolutions_(video.get_available_resolutions(true))
 	, adv_preferences_cfg_()
 	, last_selected_item_(0)
-	, accl_speeds_(
-		// IMPORTANT: NEVER have trailing zeroes here, or else the cast from doubles
-		// to string will not match, since lexical_cast strips trailing zeroes.
-		{"0.25", "0.5", "0.75", "1", "1.25", "1.5", "1.75", "2", "3", "4", "8", "16" })
+	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
 	, initial_index_(pef_view_map[initial_view])
 {
@@ -266,19 +263,24 @@ void tpreferences::post_build(twindow& window)
 		[&](twidget& w) { disable_widget_on_toggle<tslider>(window, w, "turbo_slider"); }, true);
 
 	const auto accl_load = [this]()->int {
-		return std::find(accl_speeds_.begin(), accl_speeds_.end(),
-			lexical_cast<std::string>(turbo_speed())) - accl_speeds_.begin() + 1;
+		return std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed()) - accl_speeds_.begin() + 1;
 	};
 
 	const auto accl_save = [this](int i) {
-		set_turbo_speed(lexical_cast<double>(accl_speeds_[i - 1]));
+		set_turbo_speed(accl_speeds_[i - 1]);
 	};
 
 	register_integer("turbo_slider", true,
 		accl_load, accl_save);
 
 	// Manually set the value labels
-	find_widget<tslider>(&window, "turbo_slider", false).set_value_labels(accl_speeds_);
+	std::vector<t_string> accl_speed_labels(accl_speeds_.size());
+
+	std::transform(accl_speeds_.begin(), accl_speeds_.end(), accl_speed_labels.begin(),	[](double speed) {
+		return lexical_cast<std::string>(speed);
+	});
+
+	find_widget<tslider>(&window, "turbo_slider", false).set_value_labels(accl_speed_labels);
 
 	/* SKIP AI MOVES */
 	register_bool("skip_ai_moves", true,

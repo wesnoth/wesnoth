@@ -127,7 +127,7 @@ private:
 
 	int last_selected_item_;
 
-	std::vector<t_string> accl_speeds_;
+	std::vector<double> accl_speeds_;
 	t_visible_hotkeys visible_hotkeys_;
 
 	// The page/tab index pairs for setting visible pages
