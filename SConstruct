@@ -183,6 +183,8 @@ if 'TRAVIS' in os.environ:
 else:
     SDL2_version = '2.0.4';
 
+boost_version = '1.48.0'
+
 
 Help("""Arguments may be a mixture of switches and targets in any order.
 Switches apply to the entire build regardless of where they are in the order.
@@ -377,15 +379,15 @@ if env["prereqs"]:
             return conf.CheckBoost("locale")
 
     have_server_prereqs = (\
-        conf.CheckCPlusPlus(gcc_version = "3.3") & \
-        conf.CheckBoost("iostreams", require_version = "1.34.1") & \
+        conf.CheckCPlusPlus(gcc_version = "4.8") & \
+        conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
         CheckAsio(conf) & \
-        conf.CheckBoost("random",require_version = "1.40.0") & \
+        conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
-        conf.CheckBoost("filesystem", require_version = "1.44.0") & \
+        conf.CheckBoost("filesystem", require_version = boost_version) & \
         have_i18n_prereqs() \
             and Info("GOOD: Base prerequisites are met")) \
             or Warning("WARN: Base prerequisites are not met")
@@ -401,7 +403,7 @@ if env["prereqs"]:
         conf.CheckJPG() & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
         conf.CheckPKG("fontconfig") & \
-        conf.CheckBoost("program_options", require_version="1.35.0") & \
+        conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("thread") & \
         conf.CheckBoost("regex") \
             or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
