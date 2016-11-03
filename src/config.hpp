@@ -80,7 +80,7 @@ std::ostream &operator << (std::ostream &, const config &);
 class config
 {
 	friend bool operator==(const config& a, const config& b);
-	friend struct tconfig_implementation;
+	friend struct config_implementation;
 
 	static config invalid;
 

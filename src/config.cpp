@@ -59,7 +59,7 @@ struct config_simple_key
 };
 #endif
 
-struct tconfig_implementation
+struct config_implementation
 {
 	/**
 	 * Implementation for the wrappers for
@@ -710,14 +710,14 @@ config &config::child_impl(const char* key, int len, int n)
 
 config& config::child(const std::string& key, const std::string& parent)
 {
-	return tconfig_implementation::child(this, key, parent);
+	return config_implementation::child(this, key, parent);
 }
 
 const config& config::child(
 		  const std::string& key
 		, const std::string& parent) const
 {
-	return tconfig_implementation::child(this, key, parent);
+	return config_implementation::child(this, key, parent);
 }
 
 const config & config::child_or_empty(const std::string& key) const

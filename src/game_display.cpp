@@ -80,7 +80,7 @@ game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::m
 		first_turn_(true),
 		in_game_(false),
 		chat_man_(new display_chat_manager(*this)),
-		game_mode_(RUNNING),
+		mode_(RUNNING),
 		needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
@@ -287,7 +287,7 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	if(on_map && loc == mouseoverHex_) {
-		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
+		drawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
 		if( u != nullptr ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
@@ -349,7 +349,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
-	if(game_mode_ != RUNNING) {
+	if(mode_ != RUNNING) {
 		static const image::locator linger(game_config::images::linger);
 		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, xpos, ypos,
 			image::get_image(linger, image::TOD_COLORED));
@@ -408,10 +408,10 @@ void game_display::draw_sidebar()
 }
 
 
-void game_display::set_game_mode(const tgame_mode game_mode)
+void game_display::set_game_mode(const game_mode mode)
 {
-	if(game_mode != game_mode_) {
-		game_mode_ = game_mode;
+	if(mode != mode_) {
+		mode_ = mode;
 		invalidate_all();
 	}
 }
