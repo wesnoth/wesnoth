@@ -299,11 +299,11 @@ if sys.platform == 'win32':
 print "---[checking prerequisites]---"
 
 def Info(message):
-    print message
+    print "INFO: " + message
     return True
 
 def Warning(message):
-    print message
+    print "WARNING: " + message
     return False
 
 from metasconf import init_metasconf
@@ -389,8 +389,8 @@ if env["prereqs"]:
         conf.CheckBoost("system") & \
         conf.CheckBoost("filesystem", require_version = boost_version) & \
         have_i18n_prereqs() \
-            and Info("GOOD: Base prerequisites are met")) \
-            or Warning("WARN: Base prerequisites are not met")
+            and Info("Base prerequisites are met")) \
+            or Warning("Base prerequisites are not met")
 
     env = conf.Finish()
 
@@ -406,7 +406,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("thread") & \
         conf.CheckBoost("regex") \
-            or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
+            or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
     if have_client_prereqs:
@@ -414,7 +414,7 @@ if env["prereqs"]:
             have_X = conf.CheckLib('X11')
         else:
             if env["libintl"]:
-                Warning("ERROR: You cannot use the libintl option when building for windows")
+                Warning("You cannot use the libintl option when building for windows")
                 have_client_prereqs = False
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
@@ -448,7 +448,7 @@ if env["prereqs"]:
     conf = test_env.Configure(**configure_args)
 
     have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') \
-                            or Warning("WARN: Unit tests are disabled because their prerequisites are not met")
+                            or Warning("Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
