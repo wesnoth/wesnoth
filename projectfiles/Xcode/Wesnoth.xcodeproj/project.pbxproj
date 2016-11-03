@@ -1076,7 +1076,6 @@
 		B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AD0EC62181008DD061 /* preprocessor.cpp */; };
 		B5BB6C910F89448200444FBF /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
 		B5BB6C920F89448300444FBF /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B10EC62181008DD061 /* tokenizer.cpp */; };
-		B5BB6CD90F89470B00444FBF /* server_main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6CD80F89470B00444FBF /* server_main.m */; };
 		B5BB6D040F8949CF00444FBF /* wesnothd in Copy Game Server */ = {isa = PBXBuildFile; fileRef = B5BB6B4B0F890FBA00444FBF /* wesnothd */; };
 		B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6EFD0F93B83500444FBF /* SDLMain.nib */; };
 		B5CE46F912A0417D00D665EE /* side_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE46F712A0417D00D665EE /* side_filter.cpp */; };
@@ -1966,8 +1965,8 @@
 		B552D92B108694BB002D8F86 /* ca_move_to_targets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ca_move_to_targets.hpp; sourceTree = "<group>"; };
 		B553B6B812189C5900CC8C58 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		B553B6B912189C5900CC8C58 /* utility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
-		B559986A0EC616B3008DD061 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "Mac Sources/SDLMain.h"; sourceTree = "<group>"; };
-		B559986B0EC616B3008DD061 /* SDLMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SDLMain.mm; path = "Mac Sources/SDLMain.mm"; sourceTree = "<group>"; };
+		B559986A0EC616B3008DD061 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = ../../src/macosx/SDLMain.h; sourceTree = "<group>"; };
+		B559986B0EC616B3008DD061 /* SDLMain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SDLMain.mm; path = ../../src/macosx/SDLMain.mm; sourceTree = "<group>"; };
 		B55998F70EC61EA5008DD061 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = lib/SDL2.framework; sourceTree = "<group>"; };
 		B55999220EC61F59008DD061 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = lib/SDL2_image.framework; sourceTree = "<group>"; };
 		B55999240EC61F59008DD061 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = lib/SDL2_mixer.framework; sourceTree = "<group>"; };
@@ -2416,7 +2415,6 @@
 		B5BB6B7A0F893E7500444FBF /* ban.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ban.hpp; sourceTree = "<group>"; };
 		B5BB6B7B0F893E7500444FBF /* forum_user_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = forum_user_handler.cpp; sourceTree = "<group>"; };
 		B5BB6B7C0F893E7500444FBF /* ban.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ban.cpp; sourceTree = "<group>"; };
-		B5BB6CD80F89470B00444FBF /* server_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = server_main.m; path = "Mac Sources/server_main.m"; sourceTree = "<group>"; };
 		B5BB6EFD0F93B83500444FBF /* SDLMain.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = SDLMain.nib; path = Resources/SDLMain.nib; sourceTree = "<group>"; };
 		B5CE46F712A0417D00D665EE /* side_filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = side_filter.cpp; sourceTree = "<group>"; };
 		B5CE46F812A0417D00D665EE /* side_filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = side_filter.hpp; sourceTree = "<group>"; };
@@ -2887,7 +2885,6 @@
 				F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */,
 				B559986A0EC616B3008DD061 /* SDLMain.h */,
 				B559986B0EC616B3008DD061 /* SDLMain.mm */,
-				B5BB6CD80F89470B00444FBF /* server_main.m */,
 			);
 			name = "Mac-specific";
 			sourceTree = "<group>";
@@ -6078,7 +6075,6 @@
 				B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */,
 				B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */,
 				EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */,
-				B5BB6CD90F89470B00444FBF /* server_main.m in Sources */,
 				B5BB6B840F893E7500444FBF /* server.cpp in Sources */,
 				EC2194461960614000420969 /* sha1.cpp in Sources */,
 				B5BB6B820F893E7500444FBF /* simple_wml.cpp in Sources */,
