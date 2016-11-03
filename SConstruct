@@ -533,7 +533,7 @@ for env in [test_env, client_env, env]:
         env.Append(LIBS = ["wsock32", "iconv", "z", "shlwapi"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0501"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
-        env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
+        env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
