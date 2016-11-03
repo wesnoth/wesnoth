@@ -17,11 +17,16 @@ def CheckCPlusPlus(context, gcc_version = None):
         multipliers = (10000, 100, 1)
         version_num = sum(map(operator.mul, version, multipliers))
         test_program += """
+        #ifndef __clang__
+
         #define GCC_VERSION (__GNUC__ * 10000 \\
                            + __GNUC_MINOR__ * 100 \\
                            + __GNUC_PATCHLEVEL__)
+
         #if GCC_VERSION < %d
         #error Compiler version is too old!
+        #endif
+
         #endif
         \n""" % version_num
     message += "... "
