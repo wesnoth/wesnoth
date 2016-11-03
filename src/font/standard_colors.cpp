@@ -14,7 +14,7 @@
 
 #include "standard_colors.hpp"
 
-#include <sdl/utils.hpp>
+#include "sdl/utils.hpp"
 
 namespace font {
 	const SDL_Color NORMAL_COLOR = {0xDD,0xDD,0xDD,0},
