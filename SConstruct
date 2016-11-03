@@ -179,9 +179,9 @@ if env['distcc']:
 if env['ccache']: env.Tool('ccache')
 
 if 'TRAVIS' in os.environ:
-    SDL2_version = '2.0.2';
+    SDL2_version = '2.0.2'
 else:
-    SDL2_version = '2.0.4';
+    SDL2_version = '2.0.4'
 
 boost_version = '1.48.0'
 
@@ -283,8 +283,8 @@ if sys.platform == 'win32':
                 hProcess, hThread, dwPid, dwTid = win32process.CreateProcess(None, cmdline, None, None, 1, 0, spawnenv, None, StartupInfo)
                 win32event.WaitForSingleObject(hProcess, win32event.INFINITE)
                 exit_code = win32process.GetExitCodeProcess(hProcess)
-                win32file.CloseHandle(hProcess);
-                win32file.CloseHandle(hThread);
+                win32file.CloseHandle(hProcess)
+                win32file.CloseHandle(hThread)
             return exit_code
 
         env['SPAWN'] = my_spawn
