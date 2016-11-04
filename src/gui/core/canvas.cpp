@@ -601,9 +601,6 @@ void tline::draw(surface& canvas,
 
 	// @todo FIXME respect the thickness.
 
-	// lock the surface
-	surface_lock locker(canvas);
-
 	draw_line(canvas, renderer, final_color, x1, y1, x2, y2);
 }
 
@@ -648,7 +645,7 @@ private:
 	Uint32 border_color_;
 
 	/**
-	 * The border color of the rectangle.
+	 * The fill color of the rectangle.
 	 *
 	 * If the color is fully transparent the rectangle won't be filled.
 	 */
@@ -729,8 +726,6 @@ void trectangle::draw(surface& canvas,
 	      && x + w <= canvas->w
 	      && y     <  canvas->h
 	      && y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
-
-	surface_lock locker(canvas);
 
 	// Draw the border
 	for(int i = 0; i < border_thickness_; ++i) {
@@ -867,9 +862,6 @@ void tcircle::draw(surface& canvas,
 			_("Circle doesn't fit on canvas."),
 			formatter() << "y = " << y << ", radius = " << radius
 						 << "', canvas height = " << canvas->h << ".");
-
-	// lock the surface
-	surface_lock locker(canvas);
 
 	draw_circle(canvas, renderer, color_, x, y, radius);
 }
@@ -1012,8 +1004,8 @@ timage::timage(const config& cfg)
 	}
 }
 
-void timage::draw(surface& canvas,
-				  SDL_Renderer* /*renderer*/,
+void timage::draw(surface& /*canvas*/,
+				  SDL_Renderer* renderer,
 				  const game_logic::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
@@ -1114,22 +1106,27 @@ void timage::draw(surface& canvas,
 		}
 
 		if(!done) {
-
 			if(resize_mode_ == tile) {
 				DBG_GUI_D << "Image: tiling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
 				const int columns = (w + image_->w - 1) / image_->w;
 				const int rows = (h + image_->h - 1) / image_->h;
+
 				surf = create_neutral_surface(w, h);
+				SDL_Renderer * rend2 = SDL_CreateSoftwareRenderer(surf);
 
 				for(int x = 0; x < columns; ++x) {
 					for(int y = 0; y < rows; ++y) {
 						SDL_Rect dest = sdl::create_rect(
-								x * image_->w, y * image_->h, 0, 0);
-						sdl_blit(image_, nullptr, surf, &dest);
+								x * image_->w, y * image_->h, image_->w, image_->h);
+						SDL_Texture * texture = SDL_CreateTextureFromSurface(rend2, image_);
+						SDL_RenderCopy(rend2, texture, NULL, &dest);
+						SDL_DestroyTexture(texture);
 					}
 				}
+
+				SDL_DestroyRenderer(rend2);
 
 			} else {
 				if(resize_mode_ == stretch) {
@@ -1140,7 +1137,7 @@ void timage::draw(surface& canvas,
 				DBG_GUI_D << "Image: scaling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				surf = scale_surface(image_, w, h, false);
+				surf = image_;
 			}
 		}
 		src_clip.w = w;
@@ -1153,7 +1150,13 @@ void timage::draw(surface& canvas,
 		surf = flip_surface(surf, false);
 	}
 
-	sdl_blit(surf, &src_clip, canvas, &dst_clip);
+
+	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surf);
+	dst_clip.w = src_clip.w;
+	dst_clip.h = src_clip.h;
+	SDL_RenderCopy(renderer, texture, &src_clip, &dst_clip);
+	SDL_DestroyTexture(texture);
+
 }
 
 timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
@@ -1313,7 +1316,7 @@ ttext::ttext(const config& cfg)
 }
 
 void ttext::draw(surface& canvas,
-				 SDL_Renderer* /*renderer*/,
+				 SDL_Renderer* renderer,
 				 const game_logic::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
@@ -1394,8 +1397,10 @@ void ttext::draw(surface& canvas,
 					 "canvas and will be clipped.\n";
 	}
 
-	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
-	blit_surface(surf, 0, canvas, &dst);
+	SDL_Rect dst = sdl::create_rect(x, y, surf->w, surf->h);
+	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surf);
+	SDL_RenderCopy(renderer, texture, NULL, &dst);
+	SDL_DestroyTexture(texture);
 }
 
 } // namespace
@@ -1441,7 +1446,6 @@ void tcanvas::draw(const bool force)
 	SDL_DestroyRenderer(renderer_);
 
 	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
-	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
 
 	// draw items
 	for(auto& shape : shapes_) {
