@@ -89,7 +89,7 @@ private:
 		int position;
 
 		bool operator<(const type_node_data& data) {
-			return data.position < (*this).position;
+			return (*this).position < data.position;
 		}
 	};
 
