@@ -1429,7 +1429,7 @@ void twindow::signal_handler_message_show_tooltip(const event::tevent event,
 	event::tmessage_show_tooltip& request
 			= dynamic_cast<event::tmessage_show_tooltip&>(message);
 
-	tip::show(video_, tooltip_.id, request.message, request.location);
+	tip::show(video_, tooltip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }
@@ -1443,7 +1443,7 @@ void twindow::signal_handler_message_show_helptip(const event::tevent event,
 	event::tmessage_show_helptip& request
 			= dynamic_cast<event::tmessage_show_helptip&>(message);
 
-	tip::show(video_, helptip_.id, request.message, request.location);
+	tip::show(video_, helptip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }

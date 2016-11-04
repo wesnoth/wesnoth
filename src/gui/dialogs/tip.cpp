@@ -87,6 +87,11 @@ public:
 		mouse_ = mouse;
 	}
 
+	void set_source_rect(const SDL_Rect& rect)
+	{
+		source_rect_ = rect;
+	}
+
 private:
 	/** The id of the window to use to show the tip. */
 	std::string window_id_;
@@ -96,6 +101,9 @@ private:
 
 	/** The position of the mouse. */
 	tpoint mouse_;
+
+	/** The size of the requestor. */
+	SDL_Rect source_rect_;
 
 	/** Inherited from tpopup. */
 	virtual const std::string& window_id() const;
@@ -110,6 +118,11 @@ void ttip::pre_show(twindow& window)
 
 	window.set_variable("mouse_x", variant(mouse_.x));
 	window.set_variable("mouse_y", variant(mouse_.y));
+
+	window.set_variable("source_x", variant(source_rect_.x));
+	window.set_variable("source_y", variant(source_rect_.y));
+	window.set_variable("source_w", variant(source_rect_.w));
+	window.set_variable("source_h", variant(source_rect_.h));
 }
 
 const std::string& ttip::window_id() const
@@ -133,7 +146,8 @@ static ttip& tip()
 void show(CVideo& video,
 		  const std::string& window_id,
 		  const t_string& message,
-		  const tpoint& mouse)
+		  const tpoint& mouse,
+		  const SDL_Rect& source_rect)
 {
 	/*
 	 * For now allow invalid tip names, might turn them to invalid wml messages
@@ -143,6 +157,7 @@ void show(CVideo& video,
 	t.set_window_id(window_id);
 	t.set_message(message);
 	t.set_mouse(mouse);
+	t.set_source_rect(source_rect);
 	try
 	{
 		t.show(video);

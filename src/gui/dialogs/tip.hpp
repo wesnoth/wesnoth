@@ -15,6 +15,7 @@
 #ifndef GUI_DIALOGS_TIP_HPP_INCLUDED
 #define GUI_DIALOGS_TIP_HPP_INCLUDED
 
+#include <SDL.h>
 #include <string>
 
 class CVideo;
@@ -43,7 +44,8 @@ namespace tip
 void show(CVideo& video,
 		  const std::string& window_id,
 		  const t_string& message,
-		  const tpoint& mouse);
+		  const tpoint& mouse,
+		  const SDL_Rect& source_rect);
 
 /**
  * Removes a tip.

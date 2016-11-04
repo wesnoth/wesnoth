@@ -525,7 +525,7 @@ void tcontrol::signal_handler_show_tooltip(const event::tevent event,
 									 settings::has_helptip_message, &symbols);
 		}
 
-		event::tmessage_show_tooltip message(tip, location);
+		event::tmessage_show_tooltip message(tip, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
 	}
 }
@@ -537,7 +537,7 @@ void tcontrol::signal_handler_show_helptip(const event::tevent event,
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!help_message_.empty()) {
-		event::tmessage_show_helptip message(help_message_, location);
+		event::tmessage_show_helptip message(help_message_, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_HELPTIP, *this, message);
 	}
 }

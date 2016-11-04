@@ -24,6 +24,8 @@
 
 #include "gui/widgets/helper.hpp"
 
+#include <SDL.h>
+
 namespace gui2
 {
 
@@ -52,8 +54,8 @@ struct tmessage
 /** The message for MESSAGE_SHOW_TOOLTIP. */
 struct tmessage_show_tooltip : public tmessage
 {
-	tmessage_show_tooltip(const std::string& message_, const tpoint& location_)
-		: message(message_), location(location_)
+	tmessage_show_tooltip(const std::string& message_, const tpoint& location_, const SDL_Rect& source_rect_)
+		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
 
@@ -62,13 +64,16 @@ struct tmessage_show_tooltip : public tmessage
 
 	/** The location where to show the tooltip. */
 	const tpoint location;
+
+	/** The size of the entity requesting to show a tooltip. */
+	const SDL_Rect source_rect;
 };
 
 /** The message for MESSAGE_SHOW_HELPTIP. */
 struct tmessage_show_helptip : public tmessage
 {
-	tmessage_show_helptip(const std::string& message_, const tpoint& location_)
-		: message(message_), location(location_)
+	tmessage_show_helptip(const std::string& message_, const tpoint& location_, const SDL_Rect& source_rect_)
+		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
 
@@ -77,6 +82,9 @@ struct tmessage_show_helptip : public tmessage
 
 	/** The location where to show the helptip. */
 	const tpoint location;
+
+	/** The size of the entity requesting to show a helptip. */
+	const SDL_Rect source_rect;
 };
 
 } // namespace event
