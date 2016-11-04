@@ -93,7 +93,7 @@ NORETURN void wml_exception(
 
 /** Helper class, don't construct this directly. */
 struct twml_exception
-	: public tlua_jailbreak_exception
+	: public lua_jailbreak_exception
 {
 	twml_exception(const std::string& user_msg, const std::string& dev_msg)
 		: user_message(user_msg)

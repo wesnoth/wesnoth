@@ -42,7 +42,7 @@
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
-#include "sdl/exception.hpp"            // for texception
+#include "sdl/exception.hpp"            // for exception
 #include "sdl/rect.hpp"
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
@@ -1082,7 +1082,7 @@ int main(int argc, char** argv)
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
 		error_exit(1);
-	} catch(const sdl::texception& e) {
+	} catch(const sdl::exception& e) {
 		std::cerr << e.what();
 		error_exit(1);
 	} catch(game::error &) {

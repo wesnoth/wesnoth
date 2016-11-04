@@ -26,7 +26,7 @@ struct wesnothd_error : public game::error
 ///We received invalid data from wesnothd during a game 
 ///This means we cannot continue with the game but we can stay connected to wesnothd and start a new game
 ///TODO: find a short name
-struct ingame_wesnothd_error : public wesnothd_error ,public tlua_jailbreak_exception
+struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_exception
 {
 	ingame_wesnothd_error(const std::string& error) : wesnothd_error(error) {}
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ingame_wesnothd_error)
@@ -35,7 +35,7 @@ struct ingame_wesnothd_error : public wesnothd_error ,public tlua_jailbreak_exce
 
 ///an error occured inside the underlying network comminication code (boost asio)
 ///TODO: find a short name
-struct wesnothd_connection_error : public wesnothd_error ,public tlua_jailbreak_exception
+struct wesnothd_connection_error : public wesnothd_error ,public lua_jailbreak_exception
 {
 	wesnothd_connection_error(const boost::system::error_code& error) : wesnothd_error(error.message()) {}
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wesnothd_connection_error)

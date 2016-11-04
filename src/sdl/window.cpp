@@ -32,21 +32,21 @@ twindow::twindow(const std::string& title,
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
 	if(!window_) {
-		throw texception("Failed to create a SDL_Window object.", true);
+		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
-		throw texception("Failed to create a SDL_Renderer object.", true);
+		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
 	SDL_RendererInfo info;
 	if(SDL_GetRendererInfo(*this, &info) != 0) {
-		throw texception("Failed to retrieve the information of the renderer.",
+		throw exception("Failed to retrieve the information of the renderer.",
 						 true);
 	}
 
 	if(info.num_texture_formats == 0) {
-		throw texception("The renderer has no texture information available.\n",
+		throw exception("The renderer has no texture information available.\n",
 						 false);
 	}
 
@@ -98,7 +98,7 @@ void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
 	if(SDL_RenderClear(*this) != 0) {
-		throw texception("Failed to clear the SDL_Renderer object.",
+		throw exception("Failed to clear the SDL_Renderer object.",
 						 true);
 	}
 }

@@ -939,7 +939,7 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 	// Call the function.
 	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 
-	tlua_jailbreak_exception::rethrow();
+	lua_jailbreak_exception::rethrow();
 
 	// Remove the error handler.
 	lua_remove(L, error_handler_index);

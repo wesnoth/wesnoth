@@ -87,7 +87,7 @@
 	try { \
 		try { \
 			a \
-		} catch(const tlua_jailbreak_exception &e) { \
+		} catch(const lua_jailbreak_exception &e) { \
 			e.store(); \
 			throw; \
 		} catch(const std::exception &e) { \
@@ -98,7 +98,7 @@
 			/*this exception is used internaly by lua exceptions*/ \
 			throw; \
 		} catch(...) { \
-			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from either std::exception, or tlua_jailbreak_exception (and not with multiple inheritance pathways to either or this exception handler will not work!)"); \
+			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from either std::exception, or lua_jailbreak_exception (and not with multiple inheritance pathways to either or this exception handler will not work!)"); \
 			throw; \
 		} \
 	} catch(...) { \

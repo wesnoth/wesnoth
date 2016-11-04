@@ -528,7 +528,7 @@ static surface load_image_sub_file(const image::locator &loc)
 
 		try {
 			surf = (*mod)(surf);
-		} catch(const image::modification::texception& e) {
+		} catch(const image::modification::imod_exception& e) {
 			ERR_CFG << "Failed to apply a modification to an image:\n"
 				<< "Image: " << loc.get_filename() << ".\n"
 				<< "Modifications: " << loc.get_modifications() << ".\n"

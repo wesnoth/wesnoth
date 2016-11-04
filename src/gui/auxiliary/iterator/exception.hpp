@@ -36,12 +36,12 @@ namespace iterator
  *
  * Invalid means the initial state at_end() == true.
  */
-class tlogic_error : public std::logic_error, public tlua_jailbreak_exception
+class tlogic_error : public std::logic_error, public lua_jailbreak_exception
 {
 public:
 	explicit tlogic_error(const std::string& message)
 		: std::logic_error("GUI2 ITERATOR: " + message)
-		, tlua_jailbreak_exception()
+		, lua_jailbreak_exception()
 	{
 	}
 
@@ -54,12 +54,12 @@ private:
  *
  * Invalid means the initial state at_end() == true.
  */
-class trange_error : public std::range_error, public tlua_jailbreak_exception
+class trange_error : public std::range_error, public lua_jailbreak_exception
 {
 public:
 	explicit trange_error(const std::string& message)
 		: std::range_error("GUI2 ITERATOR: " + message)
-		, tlua_jailbreak_exception()
+		, lua_jailbreak_exception()
 	{
 	}
 

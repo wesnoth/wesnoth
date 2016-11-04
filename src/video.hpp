@@ -112,12 +112,12 @@ public:
 	};
 
 	class quit
-		: public tlua_jailbreak_exception
+		: public lua_jailbreak_exception
 	{
 	public:
 
 		quit()
-			: tlua_jailbreak_exception()
+			: lua_jailbreak_exception()
 		{
 		}
 

@@ -29,7 +29,7 @@ static std::string create_error(const std::string& operation,
 	}
 }
 
-texception::texception(const std::string& operation, const bool use_sdl_error)
+exception::exception(const std::string& operation, const bool use_sdl_error)
 	: game::error(create_error(operation, use_sdl_error))
 {
 }
