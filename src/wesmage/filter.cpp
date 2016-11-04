@@ -20,6 +20,7 @@
 #include "utils/functional.hpp"
 
 #include <iostream>
+#include <cassert>
 
 /** Contains the definition of a filter. */
 struct filter
