@@ -351,7 +351,7 @@ void aspect_attacks_base::do_attack_analysis(
 int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 {
 	const gamemap &map_ = resources::gameboard->map();
-	const t_translation::t_terrain terrain = map_.get_terrain(loc);
+	const t_translation::terrain_code terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
 

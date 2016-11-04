@@ -801,7 +801,7 @@ int game_lua_kernel::intf_get_terrain(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 
-	t_translation::t_terrain const &t = board().map().
+	t_translation::terrain_code const &t = board().map().
 		get_terrain(loc);
 	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
 	return 1;
@@ -848,7 +848,7 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 int game_lua_kernel::intf_get_terrain_info(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
 	terrain_type const &info = board().map().tdata()->get_terrain_info(t);
 
@@ -2214,7 +2214,7 @@ static int intf_unit_movement_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.movement_cost(t));
 	return 1;
 }
@@ -2229,7 +2229,7 @@ static int intf_unit_vision_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.vision_cost(t));
 	return 1;
 }
@@ -2244,7 +2244,7 @@ static int intf_unit_jamming_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.jamming_cost(t));
 	return 1;
 }
@@ -2259,7 +2259,7 @@ static int intf_unit_defense(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.defense_modifier(t));
 	return 1;
 }

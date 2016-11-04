@@ -23,7 +23,7 @@
 #include "movetype.hpp"                 // for movetype, movetype::effects, etc
 #include "units/race.hpp"               // for unit_race, etc
 #include "terrain/terrain.hpp"          // for terrain_type
-#include "terrain/translation.hpp"      // for operator==, t_list, etc
+#include "terrain/translation.hpp"      // for operator==, ter_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
@@ -49,8 +49,8 @@ static std::string best_str(bool best) {
 	return "<format>color='" + color_policy + "' text='" + lang_policy + "'</format>";
 }
 
-typedef t_translation::t_list::const_iterator t_it;
-// Gets an english desription of a terrain t_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
+typedef t_translation::ter_list::const_iterator t_it;
+// Gets an english desription of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
 static std::string print_behavior_description(t_it start, t_it end, const tdata_cache & tdata, bool first_level = true, bool begin_best = true)
 {
 
@@ -137,12 +137,12 @@ std::string terrain_topic_generator::operator()() const {
 
 	if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
-		const t_translation::t_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
+		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 
 		ss << "\n" << _("Base Terrain: ");
 
 		bool first = true;
-		for (const t_translation::t_terrain& underlying_terrain : underlying_mvt_terrains) {
+		for (const t_translation::terrain_code& underlying_terrain : underlying_mvt_terrains) {
 			const terrain_type& mvt_base = tdata->get_terrain_info(underlying_terrain);
 
 			if (mvt_base.editor_name().empty()) continue;
@@ -161,7 +161,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << "\n" << _("Movement properties: ");
 		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), tdata) << "\n";
 
-		const t_translation::t_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
+		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\n" << _("Defense properties: ");
 		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), tdata) << "\n";
 	}
@@ -197,15 +197,15 @@ std::string terrain_topic_generator::operator()() const {
 			ss << "\nEditor Image: " << type_.editor_image() << "\n";
 		}
 
-		const t_translation::t_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
+		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
-		for (const t_translation::t_terrain & t : underlying_mvt_terrains) {
+		for (const t_translation::terrain_code & t : underlying_mvt_terrains) {
 			ss << " " << t;
 		}
 
-		const t_translation::t_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
+		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
-		for (const t_translation::t_terrain & t : underlying_def_terrains) {
+		for (const t_translation::terrain_code & t : underlying_def_terrains) {
 			ss << " " << t;
 		}
 
@@ -626,12 +626,12 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		table.push_back(first_row);
-		std::set<t_translation::t_terrain>::const_iterator terrain_it =
+		std::set<t_translation::terrain_code>::const_iterator terrain_it =
 			preferences::encountered_terrains().begin();
 
 		for (; terrain_it != preferences::encountered_terrains().end();
 			 	++terrain_it) {
-			const t_translation::t_terrain terrain = *terrain_it;
+			const t_translation::terrain_code terrain = *terrain_it;
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
 				continue;
 			}

@@ -26,11 +26,11 @@ namespace editor {
 
 class editor_toolkit;
 
-const t_translation::t_terrain& get_selected_fg_terrain();
-const t_translation::t_terrain& get_selected_bg_terrain();
+const t_translation::terrain_code& get_selected_fg_terrain();
+const t_translation::terrain_code& get_selected_bg_terrain();
 
 /** Palette where the terrain to be drawn can be selected. */
-class terrain_palette : public editor_palette<t_translation::t_terrain> {
+class terrain_palette : public editor_palette<t_translation::terrain_code> {
 
 public:
 
@@ -41,11 +41,11 @@ public:
 
 	virtual void setup(const config& cfg);
 
-	void select_bg_item(const t_translation::t_terrain& terrain);
-	void select_fg_item(const t_translation::t_terrain& terrain);
+	void select_bg_item(const t_translation::terrain_code& terrain);
+	void select_fg_item(const t_translation::terrain_code& terrain);
 
-	const t_translation::t_terrain& selected_fg_item() const;
-	const t_translation::t_terrain& selected_bg_item() const;
+	const t_translation::terrain_code& selected_fg_item() const;
+	const t_translation::terrain_code& selected_bg_item() const;
 
 	virtual std::string get_help_string();
 
@@ -54,9 +54,9 @@ private:
 	virtual void select_bg_item(const std::string& item_id);
 	virtual void select_fg_item(const std::string& item_id);
 
-	virtual const std::string& get_id(const t_translation::t_terrain& terrain);
+	virtual const std::string& get_id(const t_translation::terrain_code& terrain);
 
-	virtual void draw_item(const t_translation::t_terrain& terrain, surface& item_image, std::stringstream& tooltip_text);
+	virtual void draw_item(const t_translation::terrain_code& terrain, surface& item_image, std::stringstream& tooltip_text);
 
 };
 

@@ -28,7 +28,7 @@ terrain_type_data::terrain_type_data(const config & game_config)
 {
 }
 
-const t_translation::t_list & terrain_type_data::list() const
+const t_translation::ter_list & terrain_type_data::list() const
 {
 	if (!initialized_) {
 		create_terrain_maps(game_config_.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
@@ -39,7 +39,7 @@ const t_translation::t_list & terrain_type_data::list() const
 }
 
 
-const std::map<t_translation::t_terrain, terrain_type> & terrain_type_data::map() const
+const std::map<t_translation::terrain_code, terrain_type> & terrain_type_data::map() const
 {
 	if (!initialized_) {
 		create_terrain_maps(game_config_.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
@@ -50,10 +50,10 @@ const std::map<t_translation::t_terrain, terrain_type> & terrain_type_data::map(
 }
 
 
-const terrain_type& terrain_type_data::get_terrain_info(const t_translation::t_terrain & terrain) const
+const terrain_type& terrain_type_data::get_terrain_info(const t_translation::terrain_code & terrain) const
 {
 	static const terrain_type default_terrain;
-	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
+	const std::map<t_translation::terrain_code,terrain_type>::const_iterator i =
 		tcodeToTerrain_.find(terrain);
 
 	if(i != tcodeToTerrain_.end())
@@ -62,13 +62,13 @@ const terrain_type& terrain_type_data::get_terrain_info(const t_translation::t_t
 		return default_terrain;
 }
 
-const t_translation::t_list& terrain_type_data::underlying_mvt_terrain(const t_translation::t_terrain & terrain) const
+const t_translation::ter_list& terrain_type_data::underlying_mvt_terrain(const t_translation::terrain_code & terrain) const
 {
-	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
+	const std::map<t_translation::terrain_code,terrain_type>::const_iterator i =
 		tcodeToTerrain_.find(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
-		static t_translation::t_list result(1);
+		static t_translation::ter_list result(1);
 		result[0] = terrain;
 		return result;
 	} else {
@@ -76,13 +76,13 @@ const t_translation::t_list& terrain_type_data::underlying_mvt_terrain(const t_t
 	}
 }
 
-const t_translation::t_list& terrain_type_data::underlying_def_terrain(const t_translation::t_terrain & terrain) const
+const t_translation::ter_list& terrain_type_data::underlying_def_terrain(const t_translation::terrain_code & terrain) const
 {
-	const std::map<t_translation::t_terrain, terrain_type>::const_iterator i =
+	const std::map<t_translation::terrain_code, terrain_type>::const_iterator i =
 		tcodeToTerrain_.find(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
-		static t_translation::t_list result(1);
+		static t_translation::ter_list result(1);
 		result[0] = terrain;
 		return result;
 	} else {
@@ -90,13 +90,13 @@ const t_translation::t_list& terrain_type_data::underlying_def_terrain(const t_t
 	}
 }
 
-const t_translation::t_list& terrain_type_data::underlying_union_terrain(const t_translation::t_terrain & terrain) const
+const t_translation::ter_list& terrain_type_data::underlying_union_terrain(const t_translation::terrain_code & terrain) const
 {
-	const std::map<t_translation::t_terrain,terrain_type>::const_iterator i =
+	const std::map<t_translation::terrain_code,terrain_type>::const_iterator i =
 		tcodeToTerrain_.find(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
-		static t_translation::t_list result(1);
+		static t_translation::ter_list result(1);
 		result[0] = terrain;
 		return result;
 	} else {
@@ -106,7 +106,7 @@ const t_translation::t_list& terrain_type_data::underlying_union_terrain(const t
 
 
 
-std::string terrain_type_data::get_terrain_string(const t_translation::t_terrain& terrain) const
+std::string terrain_type_data::get_terrain_string(const t_translation::terrain_code& terrain) const
 {
 	std::string str =
 		get_terrain_info(terrain).description();
@@ -116,7 +116,7 @@ std::string terrain_type_data::get_terrain_string(const t_translation::t_terrain
 	return str;
 }
 
-std::string terrain_type_data::get_terrain_editor_string(const t_translation::t_terrain& terrain) const
+std::string terrain_type_data::get_terrain_editor_string(const t_translation::terrain_code& terrain) const
 {
 	std::string str =
 		get_terrain_info(terrain).editor_name();
@@ -133,16 +133,16 @@ std::string terrain_type_data::get_terrain_editor_string(const t_translation::t_
 	return str;
 }
 
-std::string terrain_type_data::get_underlying_terrain_string(const t_translation::t_terrain& terrain) const
+std::string terrain_type_data::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
 {
 	std::string str;
 
-	const t_translation::t_list& underlying = underlying_union_terrain(terrain);
+	const t_translation::ter_list& underlying = underlying_union_terrain(terrain);
 	assert(!underlying.empty());
 
 	if(underlying.size() > 1 || underlying[0] != terrain) {
 		str += " (";
-        t_translation::t_list::const_iterator i = underlying.begin();
+        t_translation::ter_list::const_iterator i = underlying.begin();
         str += get_terrain_info(*i).name();
         while (++i != underlying.end()) {
 			str += ", " + get_terrain_info(*i).name();
@@ -153,13 +153,13 @@ std::string terrain_type_data::get_underlying_terrain_string(const t_translation
 	return str;
 }
 
-bool terrain_type_data::try_merge_terrains(const t_translation::t_terrain & terrain) {
+bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code & terrain) {
 
 	if(tcodeToTerrain_.count(terrain) == 0) {
-		const std::map<t_translation::t_terrain, terrain_type>::const_iterator base_iter =
-			tcodeToTerrain_.find(t_translation::t_terrain(terrain.base, t_translation::NO_LAYER));
-		const std::map<t_translation::t_terrain, terrain_type>::const_iterator overlay_iter =
-			tcodeToTerrain_.find(t_translation::t_terrain(t_translation::NO_LAYER, terrain.overlay));
+		const std::map<t_translation::terrain_code, terrain_type>::const_iterator base_iter =
+			tcodeToTerrain_.find(t_translation::terrain_code(terrain.base, t_translation::NO_LAYER));
+		const std::map<t_translation::terrain_code, terrain_type>::const_iterator overlay_iter =
+			tcodeToTerrain_.find(t_translation::terrain_code(t_translation::NO_LAYER, terrain.overlay));
 
 		if(base_iter == tcodeToTerrain_.end() || overlay_iter == tcodeToTerrain_.end()) {
 			return false;
@@ -167,24 +167,24 @@ bool terrain_type_data::try_merge_terrains(const t_translation::t_terrain & terr
 
 		terrain_type new_terrain(base_iter->second, overlay_iter->second);
 		terrainList_.push_back(new_terrain.number());
-		tcodeToTerrain_.insert(std::pair<t_translation::t_terrain, terrain_type>(
+		tcodeToTerrain_.insert(std::pair<t_translation::terrain_code, terrain_type>(
 								   new_terrain.number(), new_terrain));
 		return true;
 	}
 	return true; // Terrain already exists, nothing to do
 }
 
-t_translation::t_terrain terrain_type_data::merge_terrains(const t_translation::t_terrain & old_t, const t_translation::t_terrain & new_t, const tmerge_mode mode, bool replace_if_failed) {
-	t_translation::t_terrain result = t_translation::NONE_TERRAIN;
+t_translation::terrain_code terrain_type_data::merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const tmerge_mode mode, bool replace_if_failed) {
+	t_translation::terrain_code result = t_translation::NONE_TERRAIN;
 
 	if(mode == OVERLAY) {
-		const t_translation::t_terrain t = t_translation::t_terrain(old_t.base, new_t.overlay);
+		const t_translation::terrain_code t = t_translation::terrain_code(old_t.base, new_t.overlay);
 		if (try_merge_terrains(t)) {
 			result = t;
 		}
 	}
 	else if(mode == BASE) {
-		const t_translation::t_terrain t = t_translation::t_terrain(new_t.base, old_t.overlay);
+		const t_translation::terrain_code t = t_translation::terrain_code(new_t.base, old_t.overlay);
 		if (try_merge_terrains(t)) {
 			result = t;
 		}

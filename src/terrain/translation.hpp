@@ -35,9 +35,9 @@ namespace t_translation {
      */
     int max_map_size();
 
-	typedef uint32_t t_layer;
-	const t_layer WILDCARD = 0x2A000000;
-	const t_layer NO_LAYER = 0xFFFFFFFF;
+	typedef uint32_t ter_layer;
+	const ter_layer WILDCARD = 0x2A000000;
+	const ter_layer NO_LAYER = 0xFFFFFFFF;
 
 	// The definitions for a terrain
 	/**
@@ -46,57 +46,57 @@ namespace t_translation {
 	 * if no second layer is defined it is stored as 0xFFFFFFFF, if the second layer
 	 * is empty (needed for matching) the layer has the value 0.
 	 */
-	struct t_terrain {
-		t_terrain(const std::string& b, const std::string& o);
-		t_terrain(const std::string& b, t_layer o = NO_LAYER);
-		t_terrain(t_layer b, t_layer o) : base(b), overlay(o) {}
-		t_terrain() : base(0), overlay(NO_LAYER) {}
+	struct terrain_code {
+		terrain_code(const std::string& b, const std::string& o);
+		terrain_code(const std::string& b, ter_layer o = NO_LAYER);
+		terrain_code(ter_layer b, ter_layer o) : base(b), overlay(o) {}
+		terrain_code() : base(0), overlay(NO_LAYER) {}
 
-		t_layer base;
-		t_layer overlay;
+		ter_layer base;
+		ter_layer overlay;
 	};
-	const t_terrain NONE_TERRAIN = t_terrain();
+	const terrain_code NONE_TERRAIN = terrain_code();
 
-	inline bool operator<(const t_terrain& a, const t_terrain& b)
+	inline bool operator<(const terrain_code& a, const terrain_code& b)
 		{ return a.base < b.base ||  (a.base == b.base && a.overlay < b.overlay); }
 
-	inline bool operator==(const t_terrain& a, const t_terrain& b)
+	inline bool operator==(const terrain_code& a, const terrain_code& b)
 		{ return a.base == b.base && a.overlay == b.overlay; }
 
-	inline bool operator!=(const t_terrain& a, const t_terrain& b)
+	inline bool operator!=(const terrain_code& a, const terrain_code& b)
 		{ return a.base != b.base || a.overlay != b.overlay; }
 
-	inline t_terrain operator&(const t_terrain& a, const t_terrain& b)
-		{ return t_terrain(a.base & b.base, a.overlay & b.overlay); }
+	inline terrain_code operator&(const terrain_code& a, const terrain_code& b)
+		{ return terrain_code(a.base & b.base, a.overlay & b.overlay); }
 
-	inline t_terrain operator|(const t_terrain& a, const t_terrain& b)
-		{ return t_terrain(a.base | b.base, a.overlay | b.overlay); }
+	inline terrain_code operator|(const terrain_code& a, const terrain_code& b)
+		{ return terrain_code(a.base | b.base, a.overlay | b.overlay); }
 
 	// operator<< is defined later
 
-	typedef std::vector<t_terrain> t_list;
-	struct t_map {
+	typedef std::vector<terrain_code> ter_list;
+	struct ter_map {
 
-		t_map() = default;
-		t_map(const t_map&) = default;
+		ter_map() = default;
+		ter_map(const ter_map&) = default;
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-		t_map(t_map&&) = default;
+		ter_map(ter_map&&) = default;
 #endif
-		t_map(int w, int h, t_terrain fill = t_terrain()) : data(w * h, fill), w(w), h(h) {}
+		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(w * h, fill), w(w), h(h) {}
 
-		t_map & operator= (const t_map &) = default;
+		ter_map & operator= (const ter_map &) = default;
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-		t_map & operator= (t_map &&) = default;
+		ter_map & operator= (ter_map &&) = default;
 #endif
 
-		t_terrain& get(int x, int y) { return data[x * h + y]; }
-		const t_terrain& get(int x, int y) const { return data[x * h + y]; }
+		terrain_code& get(int x, int y) { return data[x * h + y]; }
+		const terrain_code& get(int x, int y) const { return data[x * h + y]; }
 
-		std::vector<t_terrain> data;
+		std::vector<terrain_code> data;
 		int w;
 		int h;
-		std::vector<t_terrain>::iterator operator[](int x) { return data.begin() + h * x; }
-		std::vector<t_terrain>::const_iterator operator[](int x) const { return data.begin() + h * x; }
+		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + h * x; }
+		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + h * x; }
 	};
 
 	/**
@@ -104,14 +104,14 @@ namespace t_translation {
 	 * It optimized for strings that need to be matched often,
 	 * and caches the wildcard info required for matching.
 	 */
-	struct t_match{
-		t_match();
-		t_match(const std::string& str, const t_layer filler = NO_LAYER);
-		t_match(const t_terrain& tcode);
+	struct ter_match{
+		ter_match();
+		ter_match(const std::string& str, const ter_layer filler = NO_LAYER);
+		ter_match(const terrain_code& tcode);
 
-		t_list terrain;
-		t_list mask;
-		t_list masked_terrain;
+		ter_list terrain;
+		ter_list mask;
+		ter_list masked_terrain;
 		bool has_wildcard;
 		bool is_empty;
 	};
@@ -130,37 +130,37 @@ namespace t_translation {
 	// be loaded in dynamically because they're special.
 	// It's asserted that there will be corresponding entries for
 	// these types of terrain in the terrain configuration file.
-	extern const t_terrain VOID_TERRAIN;
-	extern const t_terrain FOGGED;
+	extern const terrain_code VOID_TERRAIN;
+	extern const terrain_code FOGGED;
 
 	// On the map the user can use this type to make odd shaped maps look good.
-	extern const t_terrain OFF_MAP_USER;
+	extern const terrain_code OFF_MAP_USER;
 
-	extern const t_terrain HUMAN_CASTLE;
-	extern const t_terrain HUMAN_KEEP;
-	extern const t_terrain SHALLOW_WATER;
-	extern const t_terrain DEEP_WATER;
-	extern const t_terrain GRASS_LAND;
-	extern const t_terrain FOREST;
-	extern const t_terrain MOUNTAIN;
-	extern const t_terrain HILL;
+	extern const terrain_code HUMAN_CASTLE;
+	extern const terrain_code HUMAN_KEEP;
+	extern const terrain_code SHALLOW_WATER;
+	extern const terrain_code DEEP_WATER;
+	extern const terrain_code GRASS_LAND;
+	extern const terrain_code FOREST;
+	extern const terrain_code MOUNTAIN;
+	extern const terrain_code HILL;
 
-	extern const t_terrain CAVE_WALL;
-	extern const t_terrain CAVE;
-	extern const t_terrain UNDERGROUND_VILLAGE;
-	extern const t_terrain DWARVEN_CASTLE;
-	extern const t_terrain DWARVEN_KEEP;
+	extern const terrain_code CAVE_WALL;
+	extern const terrain_code CAVE;
+	extern const terrain_code UNDERGROUND_VILLAGE;
+	extern const terrain_code DWARVEN_CASTLE;
+	extern const terrain_code DWARVEN_KEEP;
 
-	extern const t_terrain PLUS;	// +
-	extern const t_terrain MINUS;	// -
-	extern const t_terrain NOT;		// !
-	extern const t_terrain STAR;	// *
-	extern const t_terrain BASE;	// references the base terrain in movement/defense aliases
+	extern const terrain_code PLUS;	// +
+	extern const terrain_code MINUS;	// -
+	extern const terrain_code NOT;		// !
+	extern const terrain_code STAR;	// *
+	extern const terrain_code BASE;	// references the base terrain in movement/defense aliases
 
-	extern const t_match ALL_FORESTS;
-	extern const t_match ALL_HILLS;
-	extern const t_match ALL_MOUNTAINS; //excluding impassable mountains
-	extern const t_match ALL_SWAMPS;
+	extern const ter_match ALL_FORESTS;
+	extern const ter_match ALL_HILLS;
+	extern const ter_match ALL_MOUNTAINS; //excluding impassable mountains
+	extern const ter_match ALL_SWAMPS;
 
 	/**
 	 * Reads a single terrain from a string.
@@ -183,7 +183,7 @@ namespace t_translation {
 	 *
 	 * @return			A single terrain code
 	 */
-	t_terrain read_terrain_code(const std::string& str, const t_layer filler = NO_LAYER);
+	terrain_code read_terrain_code(const std::string& str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a single terrain code to a string.
@@ -193,8 +193,8 @@ namespace t_translation {
 	 *
 	 * @return		A string containing the terrain code
 	 */
-	std::string write_terrain_code(const t_terrain& tcode);
-	inline std::ostream &operator<<(std::ostream &s, const t_terrain &a)
+	std::string write_terrain_code(const terrain_code& tcode);
+	inline std::ostream &operator<<(std::ostream &s, const terrain_code &a)
 		{ s << write_terrain_code(a); return s; }
 
 	/**
@@ -205,7 +205,7 @@ namespace t_translation {
 	 *
 	 * @returns		A vector which contains the terrain codes found in the string
 	 */
-	 t_list read_list(const std::string& str, const t_layer filler = NO_LAYER);
+	 ter_list read_list(const std::string& str, const ter_layer filler = NO_LAYER);
 
 	/**
 	 * Writes a list of terrains to a string, only writes the new format.
@@ -215,7 +215,7 @@ namespace t_translation {
 	 * @returns		A string with the terrain codes, comma separated
 	 *			and a space behind the commas. Not padded.
 	 */
-	std::string write_list(const t_list& list);
+	std::string write_list(const ter_list& list);
 
 	using tstarting_positions = boost::bimaps::bimap<boost::bimaps::set_of<std::string>, boost::bimaps::multiset_of<coordinate>>;
 	/**
@@ -250,7 +250,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	t_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset = coordinate{ 0, 0 });
+	ter_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.
@@ -262,7 +262,7 @@ namespace t_translation {
 	 *					For readability the map is padded to groups of 12 chars,
 	 *					followed by a comma and space.
 	 */
-	std::string write_game_map(const t_map& map, const tstarting_positions& starting_positions = tstarting_positions(), coordinate border_offset = coordinate{ 0, 0 });
+	std::string write_game_map(const ter_map& map, const tstarting_positions& starting_positions = tstarting_positions(), coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Tests whether a specific terrain matches a list of expressions.
@@ -298,7 +298,7 @@ namespace t_translation {
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_terrain& src, const t_list& dest);
+	bool terrain_matches(const terrain_code& src, const ter_list& dest);
 
 	/**
 	 * Tests whether a specific terrain matches an expression,
@@ -309,7 +309,7 @@ namespace t_translation {
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_terrain& src, const t_terrain& dest);
+	bool terrain_matches(const terrain_code& src, const terrain_code& dest);
 
 	/**
 	 * Tests whether a certain terrain matches a list of expressions, for matching
@@ -322,7 +322,7 @@ namespace t_translation {
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
-	bool terrain_matches(const t_terrain& src, const t_match& dest);
+	bool terrain_matches(const terrain_code& src, const ter_match& dest);
 
 	/**
 	 * Tests whether a terrain code contains a wildcard
@@ -331,7 +331,7 @@ namespace t_translation {
 	 *
 	 *  @returns		true if wildcard found,	else false
 	 */
-	bool has_wildcard(const t_terrain& tcode);
+	bool has_wildcard(const terrain_code& tcode);
 
 	/**
 	 * Tests whether a terrain-code list contains at least
@@ -341,12 +341,12 @@ namespace t_translation {
 	 *
 	 *  @returns		true if a wildcard found, else false
 	 */
-	bool has_wildcard(const t_list& list);
+	bool has_wildcard(const ter_list& list);
 
 	// These terrain letters are in the builder format,
 	// and not usable in other parts of the engine
-	const t_layer TB_STAR = '*' << 24;	// It can be assumed this is the equivalent of STAR
-	const t_layer TB_DOT  = '.' << 24;
+	const ter_layer TB_STAR = '*' << 24;	// It can be assumed this is the equivalent of STAR
+	const ter_layer TB_DOT  = '.' << 24;
 
 	/**
 	 * Reads a builder map.
@@ -362,7 +362,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the data found the vector data is stored
 	 *					like result[y][x] where x the column number is and y the row number.
 	 */
-	t_map read_builder_map(const std::string& str);
+	ter_map read_builder_map(const std::string& str);
 
 } // end namespace t_translation
 

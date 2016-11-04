@@ -70,7 +70,7 @@
 #include <SDL_video.h>                  // for SDL_Color
 
 
-namespace t_translation { struct t_terrain; }
+namespace t_translation { struct terrain_code; }
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
@@ -1519,7 +1519,7 @@ bool unit::loyal() const
 	return boost::get<upkeep_loyal>(&upkeep_) != nullptr;
 }
 
-int unit::defense_modifier(const t_translation::t_terrain & terrain) const
+int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 {
 	int def = movement_type_.defense_modifier(terrain);
 #if 0

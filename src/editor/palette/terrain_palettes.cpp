@@ -24,53 +24,53 @@
 #include "formula/string_utils.hpp"
 
 namespace {
-	static t_translation::t_terrain fg_terrain;
-	static t_translation::t_terrain bg_terrain;
+	static t_translation::terrain_code fg_terrain;
+	static t_translation::terrain_code bg_terrain;
 }
 
 namespace editor {
 
-const t_translation::t_terrain& get_selected_bg_terrain() {
+const t_translation::terrain_code& get_selected_bg_terrain() {
 	return bg_terrain;
 }
 
-const t_translation::t_terrain& get_selected_fg_terrain() {
+const t_translation::terrain_code& get_selected_fg_terrain() {
 	return fg_terrain;
 }
 
-const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; }
-const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; }
+const t_translation::terrain_code& terrain_palette::selected_fg_item() const { return fg_terrain; }
+const t_translation::terrain_code& terrain_palette::selected_bg_item() const { return bg_terrain; }
 
 
-static bool is_valid_terrain(const t_translation::t_terrain & c) {
+static bool is_valid_terrain(const t_translation::terrain_code & c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
 void terrain_palette::select_bg_item(const std::string& item_id) {
 	bg_terrain = item_map_[item_id];
-	editor_palette<t_translation::t_terrain>::select_bg_item(item_id);
+	editor_palette<t_translation::terrain_code>::select_bg_item(item_id);
 }
 
 void terrain_palette::select_fg_item(const std::string& item_id) {
 	fg_terrain = item_map_[item_id];
-	editor_palette<t_translation::t_terrain>::select_fg_item(item_id);
+	editor_palette<t_translation::terrain_code>::select_fg_item(item_id);
 }
 
-void terrain_palette::select_bg_item(const t_translation::t_terrain& terrain) {
+void terrain_palette::select_bg_item(const t_translation::terrain_code& terrain) {
 	bg_terrain = terrain;
-	editor_palette<t_translation::t_terrain>::select_bg_item(get_id(terrain));
+	editor_palette<t_translation::terrain_code>::select_bg_item(get_id(terrain));
 }
 
-void terrain_palette::select_fg_item(const t_translation::t_terrain& terrain) {
+void terrain_palette::select_fg_item(const t_translation::terrain_code& terrain) {
 	fg_terrain = terrain;
-	editor_palette<t_translation::t_terrain>::select_fg_item(get_id(terrain));
+	editor_palette<t_translation::terrain_code>::select_fg_item(get_id(terrain));
 }
 
 
 void terrain_palette::setup(const config& cfg)
 {
 	// Get the available terrains temporary in items
-	t_translation::t_list items = map().get_terrain_list();
+	t_translation::ter_list items = map().get_terrain_list();
 
 	//move "invalid" items to the end
 	std::stable_partition(items.begin(), items.end(), is_valid_terrain);
@@ -99,7 +99,7 @@ void terrain_palette::setup(const config& cfg)
 	}
 
 	// add the groups for all terrains to the map
-	for (const t_translation::t_terrain& t : items) {
+	for (const t_translation::terrain_code& t : items) {
 
 		const terrain_type& t_info = map().get_terrain_info(t);
 		DBG_ED << "Palette: processing terrain " << t_info.name()
@@ -153,10 +153,10 @@ void terrain_palette::setup(const config& cfg)
 	}
 }
 
-void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
+void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 		surface& image, std::stringstream& tooltip_text) {
 
-	const t_translation::t_terrain base_terrain =
+	const t_translation::terrain_code base_terrain =
 			map().get_terrain_info(terrain).default_base();
 
 	//Draw default base for overlay terrains
@@ -206,11 +206,11 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 terrain_palette::terrain_palette(editor_display &gui, const config& cfg,
                                  editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<t_translation::t_terrain>(gui, cfg, 36, 4, toolkit)
+	:	editor_palette<t_translation::terrain_code>(gui, cfg, 36, 4, toolkit)
 {
 }
 
-const std::string& terrain_palette::get_id(const t_translation::t_terrain& terrain)
+const std::string& terrain_palette::get_id(const t_translation::terrain_code& terrain)
 {
 	const terrain_type& t_info = map().get_terrain_info(terrain);
 	return t_info.id();

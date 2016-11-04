@@ -70,7 +70,7 @@ private:
 
 		void place_passage(const passage& p);
 
-		void set_terrain(map_location loc, const t_translation::t_terrain & t);
+		void set_terrain(map_location loc, const t_translation::terrain_code & t);
 		void place_castle(int starting_position, const map_location &loc);
 
 		size_t translate_x(size_t x) const;
@@ -80,7 +80,7 @@ private:
 		const cave_map_generator& params;
 		bool flipx_, flipy_;
 
-		t_translation::t_map map_;
+		t_translation::ter_map map_;
 		t_translation::tstarting_positions starting_positions_;
 		std::map<std::string,size_t> chamber_ids_;
 		std::vector<chamber> chambers_;
@@ -94,7 +94,7 @@ private:
 		return loc.x >= 0 && loc.y >= 0 && loc.x < width_ && loc.y < height_;
 	}
 
-	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;
+	t_translation::terrain_code wall_, clear_, village_, castle_, keep_;
 
 	config cfg_;
 	int width_, height_, village_density_;

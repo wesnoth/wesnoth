@@ -116,7 +116,7 @@ public:
 	/// Read-only access to our parameters.
 	const parameters & params() const { return params_; }
 	/// Returns the value associated with the given terrain.
-	int value(const t_translation::t_terrain & terrain,
+	int value(const t_translation::terrain_code & terrain,
 	          const terrain_info * fallback) const
 	{ return value(terrain, fallback, 0); }
 	/// If there is data, writes it to the config.
@@ -127,14 +127,14 @@ public:
 
 private:
 	/// Calculates the value associated with the given terrain.
-	int calc_value(const t_translation::t_terrain & terrain,
+	int calc_value(const t_translation::terrain_code & terrain,
 	               const terrain_info * fallback, unsigned recurse_count) const;
 	/// Returns the value associated with the given terrain (possibly cached).
-	int value(const t_translation::t_terrain & terrain,
+	int value(const t_translation::terrain_code & terrain,
 	          const terrain_info * fallback, unsigned recurse_count) const;
 
 private:
-	typedef std::map<t_translation::t_terrain, int> cache_t;
+	typedef std::map<t_translation::terrain_code, int> cache_t;
 
 	/// Config describing the terrain values.
 	config cfg_;
@@ -268,7 +268,7 @@ void movetype::terrain_info::data::write(
  * @param[in]  recurse_count  Detects (probable) infinite recursion.
  */
 int movetype::terrain_info::data::calc_value(
-	const t_translation::t_terrain & terrain,
+	const t_translation::terrain_code & terrain,
 	const terrain_info * fallback,
 	unsigned recurse_count) const
 {
@@ -288,7 +288,7 @@ int movetype::terrain_info::data::calc_value(
 	assert(tdata);
 
 	// Get a list of underlying terrains.
-	const t_translation::t_list & underlying = params_.use_move ?
+	const t_translation::ter_list & underlying = params_.use_move ?
 			tdata->underlying_mvt_terrain(terrain) :
 			tdata->underlying_def_terrain(terrain);
 	assert(!underlying.empty());
@@ -340,7 +340,7 @@ int movetype::terrain_info::data::calc_value(
 			                                        params_.max_value;
 
 		// Loop through all underlying terrains.
-		t_translation::t_list::const_iterator i;
+		t_translation::ter_list::const_iterator i;
 		for ( i = underlying.begin(); i != underlying.end(); ++i )
 		{
 			if ( *i == t_translation::PLUS ) {
@@ -373,7 +373,7 @@ int movetype::terrain_info::data::calc_value(
  * @param[in]  recurse_count  Detects (probable) infinite recursion.
  */
 int movetype::terrain_info::data::value(
-	const t_translation::t_terrain & terrain,
+	const t_translation::terrain_code & terrain,
 	const terrain_info * fallback,
 	unsigned recurse_count) const
 {
@@ -540,7 +540,7 @@ void movetype::terrain_info::merge(const config & new_values, bool overwrite)
 /**
  * Returns the value associated with the given terrain.
  */
-int movetype::terrain_info::value(const t_translation::t_terrain & terrain) const
+int movetype::terrain_info::value(const t_translation::terrain_code & terrain) const
 {
 	return data_->value(terrain, fallback_);
 }
@@ -737,8 +737,8 @@ movetype::movetype(const movetype & that) :
 /**
  * Checks if we have a defense cap (nontrivial min value) for any of the given terrain types.
  */
-bool movetype::has_terrain_defense_caps(const std::set<t_translation::t_terrain> & ts) const {
-	for (const t_translation::t_terrain & t : ts) {
+bool movetype::has_terrain_defense_caps(const std::set<t_translation::terrain_code> & ts) const {
+	for (const t_translation::terrain_code & t : ts) {
 		if (defense_.capped(t))
 			return true;
 	}

@@ -258,7 +258,7 @@ class acquaintance;
 	compression::format save_compression_format();
 
 	std::set<std::string> &encountered_units();
-	std::set<t_translation::t_terrain> &encountered_terrains();
+	std::set<t_translation::terrain_code> &encountered_terrains();
 
 	std::string custom_command();
 	void set_custom_command(const std::string& command);

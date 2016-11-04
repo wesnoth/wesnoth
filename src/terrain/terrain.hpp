@@ -40,13 +40,13 @@ public:
 	bool hide_in_editor() const { return hide_in_editor_; }
 
 	//the character representing this terrain
-	t_translation::t_terrain number() const { return number_; }
+	t_translation::terrain_code number() const { return number_; }
 
 	//the underlying type of the terrain
-	const t_translation::t_list& mvt_type() const { return mvt_type_; }
-	const t_translation::t_list& def_type() const { return def_type_; }
-	const t_translation::t_list& vision_type() const { return vision_type_; }
-	const t_translation::t_list& union_type() const { return union_type_; }
+	const t_translation::ter_list& mvt_type() const { return mvt_type_; }
+	const t_translation::ter_list& def_type() const { return def_type_; }
+	const t_translation::ter_list& vision_type() const { return vision_type_; }
+	const t_translation::ter_list& union_type() const { return union_type_; }
 
 	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
 		(number_ != t_translation::VOID_TERRAIN ); }
@@ -76,8 +76,8 @@ public:
 	bool is_overlay() const { return overlay_; }
 	bool is_combined() const { return combined_; }
 
-	t_translation::t_terrain default_base() const { return editor_default_base_; }
-	t_translation::t_terrain terrain_with_default_base() const;
+	t_translation::terrain_code default_base() const { return editor_default_base_; }
+	t_translation::terrain_code terrain_with_default_base() const;
 
 	bool operator==(const terrain_type& other) const;
 private:
@@ -104,11 +104,11 @@ private:
 	//terrain type. The 'type' is a list of the 'underlying types'
 	//of the terrain. This may simply be the same as the number.
 	//This is the internal number used, WML still uses character strings.
-	t_translation::t_terrain number_;
-	t_translation::t_list mvt_type_;
-	t_translation::t_list vision_type_;
-	t_translation::t_list def_type_;
-	t_translation::t_list union_type_;
+	t_translation::terrain_code number_;
+	t_translation::ter_list mvt_type_;
+	t_translation::ter_list vision_type_;
+	t_translation::ter_list def_type_;
+	t_translation::ter_list union_type_;
 
 	int height_adjust_;
 	bool height_adjust_set_;
@@ -131,14 +131,14 @@ private:
 	bool village_, castle_, keep_;
 
 	bool overlay_, combined_;
-	t_translation::t_terrain editor_default_base_;
+	t_translation::terrain_code editor_default_base_;
 	bool hide_help_, hide_in_editor_;
 };
 
 void create_terrain_maps(const config::const_child_itors &cfgs,
-                         t_translation::t_list& terrain_list,
-                         std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain);
+                         t_translation::ter_list& terrain_list,
+                         std::map<t_translation::terrain_code, terrain_type>& letter_to_terrain);
 
-void merge_alias_lists(t_translation::t_list& first, const t_translation::t_list& second);
+void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second);
 
 #endif

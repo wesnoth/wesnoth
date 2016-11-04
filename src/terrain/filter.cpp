@@ -119,10 +119,10 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == nullptr) {
-			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
+			cache_.parsed_terrain = new t_translation::ter_match(cfg_["terrain"]);
 		}
 		if(!cache_.parsed_terrain->is_empty) {
-			const t_translation::t_terrain letter = fc_->get_disp_context().map().get_terrain_info(loc).number();
+			const t_translation::terrain_code letter = fc_->get_disp_context().map().get_terrain_info(loc).number();
 			if(!t_translation::terrain_matches(letter, *cache_.parsed_terrain)) {
 				return false;
 			}
@@ -329,7 +329,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	if(cfg_.has_attribute("formula")) {
 		try {
 			const gamemap& map = fc_->get_disp_context().map();
-			t_translation::t_terrain t = map.get_terrain(loc);
+			t_translation::terrain_code t = map.get_terrain(loc);
 			const terrain_type& ter = map.tdata()->get_terrain_info(t);
 			const terrain_callable callable(ter,loc);
 			const game_logic::formula form(cfg_["formula"]);

@@ -34,7 +34,7 @@ struct map_location;
 class  vconfig;
 
 namespace t_translation {
-	struct t_terrain;
+	struct terrain_code;
 }
 
 
@@ -70,7 +70,7 @@ namespace game_events
 	 * Changes a terrain location.
 	 * Ensures that villages are properly lost and that new terrains are discovered.
 	 */
-	void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
+	void change_terrain(const map_location &loc, const t_translation::terrain_code &t,
 	                    terrain_type_data::tmerge_mode mode, bool replace_if_failed);
 }
 

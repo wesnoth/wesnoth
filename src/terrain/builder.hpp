@@ -271,7 +271,7 @@ public:
 			{}
 
 		map_location loc;
-		t_translation::t_match terrain_types_match;
+		t_translation::ter_match terrain_types_match;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
@@ -656,7 +656,7 @@ private:
 	 *                      describing rule-global images.
 	 */
 	terrain_constraint &add_constraints(constraint_set& constraints,
-			const map_location &loc, const t_translation::t_match& type,
+			const map_location &loc, const t_translation::ter_match& type,
 			const config& global_images);
 
 	/**
@@ -744,7 +744,7 @@ private:
 	 * @return			returns true if "tcode" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(const t_translation::t_terrain & tcode, const t_translation::t_list& terrains) const
+	bool terrain_matches(const t_translation::terrain_code & tcode, const t_translation::ter_list& terrains) const
 		{ return terrains.empty()? true : t_translation::terrain_matches(tcode, terrains); }
 
 	/**
@@ -757,7 +757,7 @@ private:
 	 * @return			returns true if "tcode" matches the list or the list is empty,
 	 *					else false.
 	 */
-	bool terrain_matches(const t_translation::t_terrain & tcode, const t_translation::t_match &terrain) const
+	bool terrain_matches(const t_translation::terrain_code & tcode, const t_translation::ter_match &terrain) const
 		{ return terrain.is_empty ? true : t_translation::terrain_matches(tcode, terrain); }
 
 	/**
@@ -802,7 +802,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<t_translation::t_terrain, std::vector<map_location> > terrain_by_type_map;
+	typedef std::map<t_translation::terrain_code, std::vector<map_location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

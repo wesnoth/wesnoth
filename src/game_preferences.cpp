@@ -58,7 +58,7 @@ bool haloes = true;
 
 std::map<std::string, std::set<std::string> > completed_campaigns;
 std::set<std::string> encountered_units_set;
-std::set<t_translation::t_terrain> encountered_terrains_set;
+std::set<t_translation::terrain_code> encountered_terrains_set;
 
 std::map<std::string, std::vector<std::string> > history_map;
 
@@ -149,7 +149,7 @@ manager::manager() :
 	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
 	encountered_units_set.insert(v.begin(), v.end());
 
-	const t_translation::t_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
+	const t_translation::ter_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
 	encountered_terrains_set.insert(terrain.begin(), terrain.end());
 
 	if (const config &history = preferences::get_child("history"))
@@ -185,7 +185,7 @@ manager::~manager()
 	preferences::set_child("completed_campaigns", campaigns);
 	std::vector<std::string> v (encountered_units_set.begin(), encountered_units_set.end());
 	preferences::set("encountered_units", utils::join(v));
-	t_translation::t_list terrain (encountered_terrains_set.begin(), encountered_terrains_set.end());
+	t_translation::ter_list terrain (encountered_terrains_set.begin(), encountered_terrains_set.end());
 	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
 
 /* Structure of the history
@@ -1097,7 +1097,7 @@ std::set<std::string> &encountered_units() {
 	return encountered_units_set;
 }
 
-std::set<t_translation::t_terrain> &encountered_terrains() {
+std::set<t_translation::terrain_code> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
@@ -1167,9 +1167,9 @@ static void encounter_recallable_units(const std::vector<team>& teams){
 void encounter_map_terrain(const gamemap& map)
 {
 	map.for_each_loc([&](const map_location& loc) {
-		const t_translation::t_terrain terrain = map.get_terrain(loc);
+		const t_translation::terrain_code terrain = map.get_terrain(loc);
 		preferences::encountered_terrains().insert(terrain);
-		for (t_translation::t_terrain t : map.underlying_union_terrain(loc)) {
+		for (t_translation::terrain_code t : map.underlying_union_terrain(loc)) {
 			preferences::encountered_terrains().insert(t);
 		}
 	});

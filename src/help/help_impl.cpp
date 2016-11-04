@@ -36,7 +36,7 @@
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc
 #include "terrain/terrain.hpp"          // for terrain_type
-#include "terrain/translation.hpp"      // for operator==, t_list, etc
+#include "terrain/translation.hpp"      // for operator==, ter_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
@@ -836,9 +836,9 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 	std::map<std::string, section> base_map;
 
-	const t_translation::t_list& t_listi = tdata->list();
+	const t_translation::ter_list& t_listi = tdata->list();
 
-	for (const t_translation::t_terrain& t : t_listi) {
+	for (const t_translation::terrain_code& t : t_listi) {
 
 		const terrain_type& info = tdata->get_terrain_info(t);
 
@@ -853,8 +853,8 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
 		terrain_topic.text  = new terrain_topic_generator(info);
 
-		t_translation::t_list base_terrains = tdata->underlying_union_terrain(t);
-		for (const t_translation::t_terrain& base : base_terrains) {
+		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
+		for (const t_translation::terrain_code& base : base_terrains) {
 
 			const terrain_type& base_info = tdata->get_terrain_info(base);
 

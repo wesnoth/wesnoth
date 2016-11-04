@@ -299,7 +299,7 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
                     const std::string & mode_str, bool replace_if_failed)
 {
 	//Code internalized from the implementation in lua.cpp
-	t_translation::t_terrain terrain = t_translation::read_terrain_code(t_str);
+	t_translation::terrain_code terrain = t_translation::read_terrain_code(t_str);
 	if (terrain == t_translation::NONE_TERRAIN) return false;
 
 	terrain_type_data::tmerge_mode mode = terrain_type_data::BOTH;
@@ -317,7 +317,7 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 	 * easier to do this as wanted by the author in WML.
 	 */
 
-	t_translation::t_terrain
+	t_translation::terrain_code
 		old_t = map_->get_terrain(loc),
 		new_t = map_->tdata()->merge_terrains(old_t, terrain, mode, replace_if_failed);
 	if (new_t == t_translation::NONE_TERRAIN) return false;
@@ -331,7 +331,7 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 
 	map_->set_terrain(loc, new_t);
 
-	for(const t_translation::t_terrain &ut : map_->underlying_union_terrain(loc)) {
+	for(const t_translation::terrain_code &ut : map_->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
 	}
 	return true;

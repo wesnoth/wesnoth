@@ -131,24 +131,24 @@ terrain_type::terrain_type(const config& cfg) :
 	def_type_.push_back(number_);
 	vision_type_.push_back(number_);
 
-	const t_translation::t_list& alias = t_translation::read_list(cfg["aliasof"]);
+	const t_translation::ter_list& alias = t_translation::read_list(cfg["aliasof"]);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
 		vision_type_ = alias;
 		def_type_ = alias;
 	}
 
-	const t_translation::t_list& mvt_alias = t_translation::read_list(cfg["mvt_alias"]);
+	const t_translation::ter_list& mvt_alias = t_translation::read_list(cfg["mvt_alias"]);
 	if(!mvt_alias.empty()) {
 		mvt_type_ = mvt_alias;
 	}
 
-	const t_translation::t_list& def_alias = t_translation::read_list(cfg["def_alias"]);
+	const t_translation::ter_list& def_alias = t_translation::read_list(cfg["def_alias"]);
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
 
-	const t_translation::t_list& vision_alias = t_translation::read_list(cfg["vision_alias"]);
+	const t_translation::ter_list& vision_alias = t_translation::read_list(cfg["vision_alias"]);
 	if(!vision_alias.empty()) {
 		vision_type_ = vision_alias;
 	}
@@ -204,7 +204,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	editor_name_((base.editor_name_.empty() ? base.name_ : base.editor_name_) + " / " + (overlay.editor_name_.empty() ? overlay.name_ : overlay.editor_name_)),
 	description_(overlay.description()),
 	help_topic_text_(),
-	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
+	number_(t_translation::terrain_code(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
 	vision_type_(overlay.vision_type_),
 	def_type_(overlay.def_type_),
@@ -282,9 +282,9 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 
 }
 
-t_translation::t_terrain terrain_type::terrain_with_default_base() const {
+t_translation::terrain_code terrain_type::terrain_with_default_base() const {
 	if(overlay_ && editor_default_base_ != t_translation::NONE_TERRAIN) {
-		return t_translation::t_terrain(editor_default_base_.base, number_.overlay);
+		return t_translation::terrain_code(editor_default_base_.base, number_.overlay);
 	}
 	return number_;
 }
@@ -314,8 +314,8 @@ bool terrain_type::operator==(const terrain_type& other) const {
 }
 
 void create_terrain_maps(const config::const_child_itors &cfgs,
-                         t_translation::t_list& terrain_list,
-                         std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
+                         t_translation::ter_list& terrain_list,
+                         std::map<t_translation::terrain_code, terrain_type>& letter_to_terrain)
 {
 	for (const config &terrain_data : cfgs)
 	{
@@ -323,7 +323,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 		DBG_G << "create_terrain_maps: " << terrain.number() << " "
 			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
 
-		std::pair<std::map<t_translation::t_terrain, terrain_type>::iterator, bool> res;
+		std::pair<std::map<t_translation::terrain_code, terrain_type>::iterator, bool> res;
 		res = letter_to_terrain.insert(std::make_pair(terrain.number(), terrain));
 		if (!res.second) {
 			terrain_type& curr = res.first->second;
@@ -364,12 +364,12 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 	}
 }
 
-void merge_alias_lists(t_translation::t_list& first, const t_translation::t_list& second)
+void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second)
 {
 	// Insert second vector into first when the terrain _ref^base is encountered
 
 	bool revert = (first.front() == t_translation::MINUS ? true : false);
-	t_translation::t_list::iterator i;
+	t_translation::ter_list::iterator i;
 
 	for(i = first.begin(); i != first.end(); ++i) {
 		if(*i == t_translation::PLUS) {
@@ -381,7 +381,7 @@ void merge_alias_lists(t_translation::t_list& first, const t_translation::t_list
 		}
 
 		if(*i == t_translation::BASE) {
-			t_translation::t_list::iterator insert_it = first.erase(i);
+			t_translation::ter_list::iterator insert_it = first.erase(i);
 			//if we are in reverse mode, insert PLUS before and MINUS after the base list
             //so calculation of base aliases will work normal
 			if(revert) {

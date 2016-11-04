@@ -43,7 +43,7 @@ static lg::log_domain log_config("config");
 #define DBG_G LOG_STREAM(debug, lg::general())
 
 /** Gets the list of terrains. */
-const t_translation::t_list& gamemap::get_terrain_list() const
+const t_translation::ter_list& gamemap::get_terrain_list() const
 {
 	return tdata_->list();
 }
@@ -54,11 +54,11 @@ const terrain_type& gamemap::get_terrain_info(const map_location &loc) const
 	return tdata_->get_terrain_info(get_terrain(loc));
 }
 
-const t_translation::t_list& gamemap::underlying_mvt_terrain(const map_location& loc) const
+const t_translation::ter_list& gamemap::underlying_mvt_terrain(const map_location& loc) const
 	{ return underlying_mvt_terrain(get_terrain(loc)); }
-const t_translation::t_list& gamemap::underlying_def_terrain(const map_location& loc) const
+const t_translation::ter_list& gamemap::underlying_def_terrain(const map_location& loc) const
 	{ return underlying_def_terrain(get_terrain(loc)); }
-const t_translation::t_list& gamemap::underlying_union_terrain(const map_location& loc) const
+const t_translation::ter_list& gamemap::underlying_union_terrain(const map_location& loc) const
 	{ return underlying_union_terrain(get_terrain(loc)); }
 std::string gamemap::get_terrain_string(const map_location& loc) const
 	{ return get_terrain_string(get_terrain(loc)); }
@@ -76,28 +76,28 @@ bool gamemap::is_keep(const map_location& loc) const
 
 
 /* Forwarded methods of tdata_ */
-const t_translation::t_list& gamemap::underlying_mvt_terrain(const t_translation::t_terrain & terrain) const
+const t_translation::ter_list& gamemap::underlying_mvt_terrain(const t_translation::terrain_code & terrain) const
 	{ return tdata_->underlying_mvt_terrain(terrain); }
-const t_translation::t_list& gamemap::underlying_def_terrain(const t_translation::t_terrain & terrain) const
+const t_translation::ter_list& gamemap::underlying_def_terrain(const t_translation::terrain_code & terrain) const
 	{ return tdata_->underlying_def_terrain(terrain); }
-const t_translation::t_list& gamemap::underlying_union_terrain(const t_translation::t_terrain & terrain) const
+const t_translation::ter_list& gamemap::underlying_union_terrain(const t_translation::terrain_code & terrain) const
 	{ return tdata_->underlying_union_terrain(terrain); }
-std::string gamemap::get_terrain_string(const t_translation::t_terrain & terrain) const
+std::string gamemap::get_terrain_string(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_string(terrain); }
-std::string gamemap::get_terrain_editor_string(const t_translation::t_terrain & terrain) const
+std::string gamemap::get_terrain_editor_string(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_editor_string(terrain); }
-std::string gamemap::get_underlying_terrain_string(const t_translation::t_terrain& terrain) const
+std::string gamemap::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
 	{ return tdata_->get_underlying_terrain_string(terrain); }
-bool gamemap::is_village(const t_translation::t_terrain & terrain) const
+bool gamemap::is_village(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_info(terrain).is_village(); }
-int gamemap::gives_healing(const t_translation::t_terrain & terrain) const
+int gamemap::gives_healing(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_info(terrain).gives_healing(); }
-bool gamemap::is_castle(const t_translation::t_terrain & terrain) const
+bool gamemap::is_castle(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_info(terrain).is_castle(); }
-bool gamemap::is_keep(const t_translation::t_terrain & terrain) const
+bool gamemap::is_keep(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_info(terrain).is_keep(); }
 
-const terrain_type& gamemap::get_terrain_info(const t_translation::t_terrain & terrain) const
+const terrain_type& gamemap::get_terrain_info(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_info(terrain); }
 
 void gamemap::write_terrain(const map_location &loc, config& cfg) const
@@ -123,7 +123,7 @@ gamemap::~gamemap()
 
 void gamemap::read(const std::string& data, const bool allow_invalid)
 {
-	tiles_ = t_translation::t_map();
+	tiles_ = t_translation::ter_map();
 	villages_.clear();
 	starting_positions_.clear();
 
@@ -158,7 +158,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 		for(int y = 0; y < total_height(); ++y) {
 
 			// Is the terrain valid?
-			t_translation::t_terrain t = tiles_.get(x, y);
+			t_translation::terrain_code t = tiles_.get(x, y);
 			if(tdata_->map().count(t) == 0) {
 				if(!tdata_->try_merge_terrains(t)) {
 					std::stringstream ss;
@@ -213,10 +213,10 @@ namespace
 {
 	struct overlay_rule
 	{
-		t_translation::t_list old_;
-		t_translation::t_list new_;
+		t_translation::ter_list old_;
+		t_translation::ter_list new_;
 		terrain_type_data::tmerge_mode mode_;
-		boost::optional<t_translation::t_terrain> terrain_;
+		boost::optional<t_translation::terrain_code> terrain_;
 		bool use_old_;
 		bool replace_if_failed_;
 
@@ -244,7 +244,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 		rules[i].old_ = t_translation::read_list(cfg["old"]);
 		rules[i].new_ = t_translation::read_list(cfg["new"]);
 		rules[i].mode_ = cfg["layer"] == "base" ? terrain_type_data::BASE : cfg["layer"] == "overlay" ? terrain_type_data::OVERLAY : terrain_type_data::BOTH;
-		const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
+		const t_translation::ter_list& terrain = t_translation::read_list(cfg["terrain"]);
 		if(!terrain.empty()) {
 			rules[i].terrain_ = terrain[0];
 		}
@@ -262,8 +262,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 			const int x2 = x1 + xpos;
 			const int y2 = y1 + ypos + ((xpos & 1) && (x1 & 1) ? 1 : 0);
 
-			const t_translation::t_terrain t = m[{x1,y1}];
-			const t_translation::t_terrain current = (*this)[{x2, y2}];
+			const t_translation::terrain_code t = m[{x1,y1}];
+			const t_translation::terrain_code current = (*this)[{x2, y2}];
 
 			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
@@ -300,14 +300,14 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 	}
 }
 
-t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
+t_translation::terrain_code gamemap::get_terrain(const map_location& loc) const
 {
 
 	if(on_board_with_border(loc)) {
 		return (*this)[loc];
 	}
 
-	return loc == map_location::null_location() ? t_translation::NONE_TERRAIN : t_translation::t_terrain();
+	return loc == map_location::null_location() ? t_translation::NONE_TERRAIN : t_translation::terrain_code();
 }
 
 map_location gamemap::special_location(const std::string& id) const
@@ -380,13 +380,13 @@ bool gamemap::on_board_with_border(const map_location& loc) const
 	       loc.y >= -border_size() &&  loc.y < h_ + border_size();
 }
 
-void gamemap::set_terrain(const map_location& loc, const t_translation::t_terrain & terrain, const terrain_type_data::tmerge_mode mode, bool replace_if_failed) {
+void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::tmerge_mode mode, bool replace_if_failed) {
 	if(!on_board_with_border(loc)) {
 		// off the map: ignore request
 		return;
 	}
 
-	t_translation::t_terrain new_terrain = tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
+	t_translation::terrain_code new_terrain = tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
 
 	if(new_terrain == t_translation::NONE_TERRAIN) {
 		return;
@@ -454,7 +454,7 @@ std::vector<map_location> gamemap::parse_location_range(const std::string &x, co
 
 void gamemap::add_fog_border()
 {
-	t_translation::t_map tiles_new(tiles_.w + 1, tiles_.h + 1);
+	t_translation::ter_map tiles_new(tiles_.w + 1, tiles_.h + 1);
 	for (int x = 0, x_end = tiles_new.w; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_new.h; y != y_end; ++y) {
 			tiles_new.get(x, y) = (x == 0 || y == 0) ? t_translation::VOID_TERRAIN : tiles_.get(x - 1, y - 1);

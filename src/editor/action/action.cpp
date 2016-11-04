@@ -304,7 +304,7 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 	std::vector<map_location>::const_iterator shuffle_it = shuffle.begin();
 	std::set<map_location>::const_iterator orig_it = area_.begin();
 	while (orig_it != area_.end()) {
-		t_translation::t_terrain tmp = mc.get_map().get_terrain(*orig_it);
+		t_translation::terrain_code tmp = mc.get_map().get_terrain(*orig_it);
 		mc.draw_terrain(mc.get_map().get_terrain(*shuffle_it), *orig_it);
 		mc.draw_terrain(tmp, *shuffle_it);
 		++orig_it;

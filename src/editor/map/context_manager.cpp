@@ -263,7 +263,7 @@ void context_manager::new_map_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
-		const t_translation::t_terrain& fill = get_selected_bg_terrain();
+		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_map(w, h, fill, true);
 	}
 }
@@ -273,7 +273,7 @@ void context_manager::new_scenario_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
-		const t_translation::t_terrain& fill = get_selected_bg_terrain();
+		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_scenario(w, h, fill, true);
 	}
 }
@@ -560,7 +560,7 @@ void context_manager::resize_map_dialog()
 	if(gui2::teditor_resize_map::execute(w, h, dir, copy, gui_.video())) {
 
 		if (w != get_map().w() || h != get_map().h()) {
-	        t_translation::t_terrain fill = get_selected_bg_terrain();
+	        t_translation::terrain_code fill = get_selected_bg_terrain();
 			if (copy) {
 				fill = t_translation::NONE_TERRAIN;
 			}
@@ -724,7 +724,7 @@ void context_manager::create_default_context()
 {
 	if(saved_windows_.empty()) {
 
-		t_translation::t_terrain default_terrain =
+		t_translation::terrain_code default_terrain =
 				t_translation::read_terrain_code(game_config::default_terrain);
 		const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true, default_schedule);
@@ -944,7 +944,7 @@ void context_manager::revert_map()
 	load_map(filename, false);
 }
 
-void context_manager::new_map(int width, int height, const t_translation::t_terrain & fill, bool new_context)
+void context_manager::new_map(int width, int height, const t_translation::terrain_code & fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
@@ -956,7 +956,7 @@ void context_manager::new_map(int width, int height, const t_translation::t_terr
 	}
 }
 
-void context_manager::new_scenario(int width, int height, const t_translation::t_terrain & fill, bool new_context)
+void context_manager::new_scenario(int width, int height, const t_translation::terrain_code & fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
