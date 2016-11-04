@@ -196,7 +196,7 @@ static void test_grid()
 
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iterator::titerator<gui2::iterator::policy::order::ttop_down<
 				true
@@ -212,7 +212,7 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iterator::titerator<gui2::iterator::policy::order::ttop_down<
 				true
@@ -228,7 +228,7 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<
 				true
@@ -244,7 +244,7 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::tredirect_output_setter redirect_output(sstr);
+		lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<
 				true
@@ -273,7 +273,7 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 	lg::timestamps(false);
 
 	std::stringstream sstr;
-	lg::tredirect_output_setter redirect_output(sstr);
+	lg::redirect_output_setter redirect_output(sstr);
 
 	test_control();
 	test_grid();

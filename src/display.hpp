@@ -945,17 +945,17 @@ protected:
 	};
 
 	/** Helper structure for rendering the terrains. */
-	class tblit
+	class blit_helper
 	{
 	public:
-		tblit(const drawing_layer layer, const map_location& loc,
+		blit_helper(const drawing_layer layer, const map_location& loc,
 				const int x, const int y, const surface& surf,
 				const SDL_Rect& clip)
 			: x_(x), y_(y), surf_(1, surf), clip_(clip),
 			key_(loc, layer)
 		{}
 
-		tblit(const drawing_layer layer, const map_location& loc,
+		blit_helper(const drawing_layer layer, const map_location& loc,
 				const int x, const int y, const std::vector<surface>& surf,
 				const SDL_Rect& clip)
 			: x_(x), y_(y), surf_(surf), clip_(clip),
@@ -967,7 +967,7 @@ protected:
 		const std::vector<surface> &surf() const { return surf_; }
 		const SDL_Rect &clip() const { return clip_; }
 
-		bool operator<(const tblit &rhs) const { return key_ < rhs.key_; }
+		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
 
 	private:
 		int x_;                      /**< x screen coordinate to render at. */
@@ -980,8 +980,8 @@ protected:
 		drawing_buffer_key key_;
 	};
 
-	typedef std::list<tblit> tdrawing_buffer;
-	tdrawing_buffer drawing_buffer_;
+	typedef std::list<blit_helper> drawing_buffer;
+	drawing_buffer drawing_buffer_;
 
 public:
 	/**

@@ -1160,7 +1160,7 @@ void display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));
+	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
@@ -1168,7 +1168,7 @@ void display::drawing_buffer_add(const drawing_layer layer,
 		const std::vector<surface> &surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));
+	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
 }
 
 // FIXME: temporary method. Group splitting should be made
@@ -1257,10 +1257,10 @@ void display::drawing_buffer_commit()
 	 * avoid decapitation a unit.
 	 *
 	 * This ended in the following priority order:
-	 * layergroup > location > layer > 'tblit' > surface
+	 * layergroup > location > layer > 'blit_helper' > surface
 	 */
 
-	for (const tblit &blit : drawing_buffer_) {
+	for (const blit_helper &blit : drawing_buffer_) {
 		for (const surface& surf : blit.surf()) {
 			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
