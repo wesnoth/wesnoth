@@ -30,9 +30,9 @@ class unit_map;
 
 namespace game_events {
 
-	class t_pump;
+	class pump;
 
-	class t_event_handlers;
+	class event_handlers;
 
 	/// The game event manager loads the scenario configuration object,
 	/// and ensures that events are handled according to the
@@ -94,10 +94,10 @@ namespace game_events {
 			game_data * gamedata_;
 		};
 
-		const std::unique_ptr<t_event_handlers> event_handlers_;
+		const std::unique_ptr<event_handlers> event_handlers_;
 		std::set<std::string> unit_wml_ids_;
 
-		const std::unique_ptr<game_events::t_pump> pump_;
+		const std::unique_ptr<game_events::pump> pump_;
 		game_events::wmi_container wml_menu_items_;
 
 	public:
@@ -116,7 +116,7 @@ namespace game_events {
 		                const std::string& type = std::string());
 		void write_events(config& cfg) const;
 
-		game_events::t_pump & pump();
+		game_events::pump & pump();
 	};
 }
 

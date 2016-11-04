@@ -1025,7 +1025,7 @@ void play_controller::update_savegame_snapshot() const
 	this->saved_game_.set_snapshot(to_config());
 }
 
-game_events::t_pump& play_controller::pump()
+game_events::pump& play_controller::pump()
 {
 	return gamestate().events_manager_->pump();
 }

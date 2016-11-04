@@ -60,15 +60,15 @@ namespace game_events
 
 	struct pump_impl;
 
-	struct t_context;
+	struct event_context;
 
 	class manager;
 
-	class t_pump {
+	class pump {
 		const std::unique_ptr<pump_impl> impl_;
 	public:
-		t_pump(manager &);
-		~t_pump();
+		pump(manager &);
+		~pump();
 		/// Context: The general environment within which events are processed.
 		/// Returns whether or not we believe WML might have changed something.
 		bool context_mutated();

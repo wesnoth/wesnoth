@@ -29,7 +29,7 @@ class game_lua_kernel;
 class reports;
 
 namespace game_events { class manager; class wmi_container; }
-namespace game_events { struct t_context; }
+namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
 
