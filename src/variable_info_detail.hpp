@@ -67,9 +67,9 @@ namespace variable_info_detail
 	template<const variable_info_type vit>
 	struct variable_info_state
 	{
-		typedef typename maybe_const<vit,config>::type t_child;
+		typedef typename maybe_const<vit,config>::type child_t;
 
-		variable_info_state(t_child& vars)
+		variable_info_state(child_t& vars)
 			: child_(&vars)
 			, key_()
 			, index_(0)
@@ -81,7 +81,7 @@ namespace variable_info_detail
 
 		// The meaning of the following 3 depends on 'type_', but usualy the case is:
 		// the current config is  child_->child_at(key_, index_).
-		t_child* child_;
+		child_t* child_;
 		std::string key_;
 		int index_;
 

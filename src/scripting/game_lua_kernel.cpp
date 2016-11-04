@@ -3200,8 +3200,8 @@ int game_lua_kernel::intf_delay(lua_State *L)
 namespace { // Types
 
 	class recursion_preventer {
-		typedef std::map<map_location, int> t_counter;
-		static t_counter counter_;
+		typedef std::map<map_location, int> counter;
+		static counter counter_;
 		static const int max_recursion = 10;
 
 		map_location loc_;
@@ -3212,13 +3212,13 @@ namespace { // Types
 			loc_(loc),
 			too_many_recursions_(false)
 		{
-			t_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
+			counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
 			++inserted->second;
 			too_many_recursions_ = inserted->second >= max_recursion;
 		}
 		~recursion_preventer()
 		{
-			t_counter::iterator itor = counter_.find(loc_);
+			counter::iterator itor = counter_.find(loc_);
 			if (--itor->second == 0)
 			{
 				counter_.erase(itor);
@@ -3229,7 +3229,7 @@ namespace { // Types
 			return too_many_recursions_;
 		}
 	};
-	recursion_preventer::t_counter recursion_preventer::counter_;
+	recursion_preventer::counter recursion_preventer::counter_;
 	typedef std::unique_ptr<recursion_preventer> recursion_preventer_ptr;
 } // end anonymouse namespace (types)
 
