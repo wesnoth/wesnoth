@@ -97,17 +97,6 @@ private:
 
 	std::vector<option_source> visible_options_;
 	std::map<std::string, config> options_data_;
-
-public:
-	const std::vector<option_source>& get_visible_options() const
-	{
-		return visible_options_;
-	}
-
-	std::map<std::string, config>& get_options_data()
-	{
-		return options_data_;
-	}
 };
 
 } // namespace gui2
