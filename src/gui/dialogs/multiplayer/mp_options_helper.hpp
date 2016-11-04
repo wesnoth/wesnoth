@@ -43,15 +43,17 @@ public:
 	config get_options_config();
 
 private:
-	struct option_source {
+	struct option_source
+	{
 		std::string level_type;
 		std::string id;
+
 		friend bool operator<(const option_source& a, const option_source& b) {
 			return a.level_type < b.level_type || (a.level_type == b.level_type && a.id < b.id);
 		}
 	};
 
-	int remove_nodes_for_type(const std::string& type, int& saved_pos);
+	int remove_nodes_for_type(const std::string& type);
 
 	using data_map = std::map<std::string, string_map>;
 
@@ -77,12 +79,21 @@ private:
 	ttree_view& options_tree_;
 	tcontrol& no_options_notice_;
 
-	int last_game_pos_;
-	int last_era_pos_;
-	int last_mod_pos_;
-
 	using node_vector = std::vector<ttree_view_node*>;
-	std::map<std::string, node_vector> node_map_;
+
+	struct type_node_data
+	{
+		type_node_data() : nodes(), position(-1) {}
+
+		node_vector nodes;
+		int position;
+
+		bool operator<(const type_node_data& data) {
+			return data.position < (*this).position;
+		}
+	};
+
+	std::map<std::string, type_node_data> node_data_map_;
 
 	std::vector<option_source> visible_options_;
 	std::map<std::string, config> options_data_;
