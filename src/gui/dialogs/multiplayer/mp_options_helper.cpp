@@ -109,20 +109,19 @@ int tmp_options_helper::remove_nodes_for_type(const std::string& type)
 	data = &node_data_map_iter->second;
 
 	node_vector& type_node_vector = data->nodes;
-	int& saved_pos = data->position;
 
-	// The position to insert a new node of this type. If no nodes exist yet, this default value is
+	// The position to insert a new node of this type. If no nodes exist yet, the default value (-1) is
 	// accepted by ttree_view_node as meaning at-end.
-	int position = -1;
+	int& position = data->position;
 
 	// Remove each node in reverse, so that in the end we have the position of the first node removed
 	for(auto i = type_node_vector.rbegin(); i != type_node_vector.rend(); i++) {
-		saved_pos = position = options_tree_.remove_node(*i);
+		position = options_tree_.remove_node(*i);
 	}
 
 	type_node_vector.clear();
 
-	return std::max(position, saved_pos);
+	return position;
 }
 
 void tmp_options_helper::update_status_label()
