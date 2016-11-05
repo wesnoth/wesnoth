@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 #  expand-terrain-macros.py - Expand "meta-macros" for terrain WML
 #

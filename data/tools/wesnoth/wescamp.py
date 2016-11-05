@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
 #
 """
